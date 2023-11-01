@@ -1,5 +1,5 @@
-when not declared CPLIB_SHEEP:
-    const CPLIB_SHEEP* = 1
+when not declared CPLIB_TMPL_SHEEP:
+    const CPLIB_TMPL_SHEEP* = 1
     {.warning[UnusedImport]: off.}
     {.hint[XDeclaredButNotUsed]: off.}
     import algorithm
@@ -19,13 +19,13 @@ when not declared CPLIB_SHEEP:
     proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
     proc getchar():char {. importc:"getchar_unlocked",header: "<stdio.h>" ,discardable.}
     proc ii(): int {.inline.}= scanf("%lld\n",addr result)
-    proc si(): string {.inline.}= 
+    proc si(): string {.inline.}=
         result=""
         var c: char
         while true:
             c = getchar()
             if c == ' ' or c == '\n':
-                break 
+                break
             result &= c
     proc lii(long:int): seq[int] = newSeqWith(long,ii())
     #chmin,chmax
@@ -56,7 +56,7 @@ when not declared CPLIB_SHEEP:
     proc `!`(x:char, a = '0'):int=int(x)-int(a)
     #定数
     const INF = int(3300300300300300491)
-    #converter 
+    #converter
 
     #range
     iterator range(start:int,ends:int,step:int): int =
