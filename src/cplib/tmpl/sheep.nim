@@ -1,5 +1,5 @@
-when not declared CPLIB_SHEEP:
-    const CPLIB_SHEEP* = 1
+when not declared CPLIB_TMPL_SHEEP:
+    const CPLIB_TMPL_SHEEP* = 1
     {.warning[UnusedImport]: off.}
     {.hint[XDeclaredButNotUsed]: off.}
     import algorithm
@@ -17,10 +17,10 @@ when not declared CPLIB_SHEEP:
     import bitops
     #入力系
     proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
-    proc getchar(): char {.importc: "getchar_unlocked", header: "<stdio.h>", discardable.}
-    proc ii(): int {.inline.} = scanf("%lld\n", addr result)
-    proc si(): string {.inline.} =
-        result = ""
+    proc getchar():char {. importc:"getchar_unlocked",header: "<stdio.h>" ,discardable.}
+    proc ii(): int {.inline.}= scanf("%lld\n",addr result)
+    proc si(): string {.inline.}=
+        result=""
         var c: char
         while true:
             c = getchar()
