@@ -2,8 +2,20 @@ when not declared CPLIB_TMPL_CITRUS:
     const CPLIB_TMPL_CITRUS* = 1
     {.warning[UnusedImport]: off.}
     {.hint[XDeclaredButNotUsed]: off.}
-    import os, algorithm, sequtils, tables, macros, std/math, sets, strutils,
-            strformat, sugar, streams, deques, bitops, heapqueue
+    import os
+    import algorithm
+    import sequtils
+    import tables
+    import macros
+    import std/math
+    import sets
+    import strutils
+    import strformat
+    import sugar
+    import streams
+    import deques
+    import bitops
+    import heapqueue
     const MODINT998244353* = 998244353
     const MODINT1000000007* = 1000000007
     const INF* = 100100111
@@ -116,9 +128,9 @@ when not declared CPLIB_TMPL_CITRUS:
         while result * result > x: result -= 1
         while (result+1) * (result+1) <= x: result += 1
     proc chmax*[T](x: var T, y: T): bool = (if x < y: (x = y; return true;
-            ) return false)
+        ) return false)
     proc chmin*[T](x: var T, y: T): bool = (if x > y: (x = y; return true;
-            ) return false)
+        ) return false)
     proc `max=`*[T](x: var T, y: T) = x = max(x, y)
     proc `min=`*[T](x: var T, y: T) = x = min(x, y)
     proc at*(x: char, a = '0'): int = int(x) - int(a)
