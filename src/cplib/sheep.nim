@@ -1,7 +1,20 @@
 when not declared CPLIB_SHEEP:
     const CPLIB_SHEEP* = 1
+    {.warning[UnusedImport]: off.}
+    {.hint[XDeclaredButNotUsed]: off.}
+    import algorithm
     import sequtils
+    import tables
+    import macros
     import math
+    import sets
+    import strutils
+    import strformat
+    import sugar
+    import heapqueue
+    import streams
+    import deques
+    import bitops
     #入力系
     proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
     proc getchar():char {. importc:"getchar_unlocked",header: "<stdio.h>" ,discardable.}
