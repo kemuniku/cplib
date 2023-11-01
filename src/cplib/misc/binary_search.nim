@@ -10,7 +10,8 @@ when not declared CPLIB_MISC_BINARY_SEARCH:
             else: ng = mid
         return ok
 
-    proc meguru_bisect*(mn, mx: SomeFloat, is_ok: proc(x: SomeFloat): bool, eps: SomeFloat = 1e-10): SomeFloat =
+    proc meguru_bisect*(mn, mx: SomeFloat, is_ok: proc(x: SomeFloat): bool,
+            eps: SomeFloat = 1e-10): SomeFloat =
         var
             ok = mn
             ng = mx
