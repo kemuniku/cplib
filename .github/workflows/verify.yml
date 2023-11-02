@@ -3,7 +3,7 @@ name: verify
 on:
   push:
     branches:
-    - main 
+    - main
   pull_request:
 
 jobs:
@@ -41,4 +41,4 @@ jobs:
     - name: Run tests
       env:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-      run: oj-verify all
+      run: oj-verify run
