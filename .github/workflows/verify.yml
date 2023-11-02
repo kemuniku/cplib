@@ -1,0 +1,50 @@
+name: verify
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+
+    - name: Install dependencies
+      run: pip3 install -U online-judge-verify-helper
+
+    # required only if you want to verify Nim code
+    - name: Cache choosenim
+      id: cache-choosenim
+      uses: actions/cache@v1
+      with:
+        path: ~/.choosenim
+        key: ${{ runner.os }}-choosenim-stable
+
+    - name: Cache nimble
+      id: cache-nimble
+      uses: actions/cache@v1
+      with:
+        path: ~/.nimble
+        key: ${{ runner.os }}-nimble-stable
+
+    - uses: jiro4989/setup-nim-action@v1
+      with:
+        nim-version: 1.6.14
+
+    - name: Install Dependency
+      id: install-dependency
+      run: nimble install https://github.com/zer0-star/Nim-ACL -y
+
+    - name: Run tests
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: cd src && oj-verify all
