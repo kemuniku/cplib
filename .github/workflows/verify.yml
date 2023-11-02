@@ -40,7 +40,7 @@ jobs:
 
     - name: Install Dependency
       id: install-dependency
-      run: nimble install https://github.com/zer0-star/Nim-ACL
+      run: nimble install https://github.com/zer0-star/Nim-ACL -y
 
     - name: Run tests
       env:
