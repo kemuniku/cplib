@@ -1,4 +1,4 @@
-# verify-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B
+# verify-helper: PROBLEM https://yukicoder.me/problems/no/1469
 include cplib/tmpl/citrus
 import cplib/string/string_utils
 
