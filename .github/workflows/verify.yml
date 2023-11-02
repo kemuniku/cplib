@@ -44,5 +44,6 @@ jobs:
 
     - name: Run tests
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-      run: cd src && oj-verify run
+      run: cd src && oj-verify all
