@@ -1,0 +1,3 @@
+[[languages.nim.environments]]
+compile_to = "cpp"
+NIMFLAGS = ["-d:release"]

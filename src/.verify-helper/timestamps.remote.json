@@ -2,7 +2,7 @@
 "verify/judge/decimal_yukicoder_test.nim": "2023-11-03 12:47:02 +0900",
 "verify/judge/hello_world_aoj_test.nim": "2023-11-03 12:47:02 +0900",
 "verify/judge/hello_world_yukicoder_test.nim": "2023-11-03 12:47:02 +0900",
-"verify/misc/binary_search_int_test.nim": "2023-11-03 12:47:02 +0900",
-"verify/misc/inversion_number_test.nim": "2023-11-03 12:47:02 +0900",
-"verify/string/run_length_encoding_test.nim": "2023-11-03 12:47:02 +0900"
+"verify/string/run_length_encoding_test.nim": "2023-11-03 12:47:02 +0900",
+"verify/utils/binary_search_int_test.nim": "2023-11-04 02:51:01 +0900",
+"verify/utils/inversion_number_test.nim": "2023-11-04 02:51:01 +0900"
 }

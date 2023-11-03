@@ -1,6 +1,6 @@
 # verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B
 include cplib/tmpl/citrus
-import cplib/misc/binary_search
+import cplib/utils/binary_search
 
 let n = input(int)
 let s = input(int, n).concat(@[-INFL, INFL]).sorted
