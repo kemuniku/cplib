@@ -19,13 +19,7 @@ jobs:
       uses: actions/setup-python@v4
 
     - name: Install dependencies
-      # run: pip3 install -U online-judge-verify-helper
-      run: |
-        git clone https://github.com/seekworser/verification-helper.git
-        cd verification-helper
-        git checkout test-cplib
-        pip install .
-        cd ..
+      run: pip3 install -U online-judge-verify-helper
 
     # required only if you want to verify Nim code
     - name: Cache choosenim
@@ -55,5 +49,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
-        # TZ: 'Asia/Tokyo'
       run: cd src && oj-verify all
