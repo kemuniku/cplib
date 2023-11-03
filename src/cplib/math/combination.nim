@@ -22,9 +22,7 @@ when not declared CPLIB_MATH_COMBINATION:
         result = Combination_Type[ModInt](fact: fact, inv: inv, fact_inv: fact_inv)
 
     proc ncr*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =
-        if n < 0 or r < 0:
-            return 0
-        if n < r:
+        if n < 0 or r < 0 or n < r:
             return 0
         return c.fact[n]*c.fact_inv[n-r]*c.fact_inv[r]
 
