@@ -1,4 +1,4 @@
-# verify-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B
+# verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B
 include cplib/tmpl/citrus
 import cplib/misc/binary_search
 
