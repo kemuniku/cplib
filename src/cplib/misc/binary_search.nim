@@ -15,7 +15,7 @@ when not declared CPLIB_MISC_BINARY_SEARCH:
         var
             ok = mn
             ng = mx
-        while abs(ok - ng) > eps or abs(ok - ng) / max(ok, ng) > eps:
+        while abs(ok - ng) > eps and abs(ok - ng) / max(ok, ng) > eps:
             var mid = (ok + ng) / 2
             if is_ok(mid): ok = mid
             else: ng = mid
