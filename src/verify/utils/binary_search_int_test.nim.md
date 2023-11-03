@@ -19,14 +19,14 @@ data:
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_4_B
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B
+    - https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_4_B
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "# verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B\n\
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_4_B\n\
     include cplib/tmpl/citrus\nimport cplib/utils/binary_search\n\nlet n = input(int)\n\
     let s = input(int, n).concat(@[-INFL, INFL]).sorted\nlet q = input(int)\nlet t\
     \ = input(int, q)\nvar ans = 0\nfor i in 0..<q:\n    proc ubound(x: int): bool\
@@ -41,7 +41,7 @@ data:
   isVerificationFile: true
   path: verify/utils/binary_search_int_test.nim
   requiredBy: []
-  timestamp: '2023-11-04 02:51:01+09:00'
+  timestamp: '2023-11-04 04:14:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/binary_search_int_test.nim

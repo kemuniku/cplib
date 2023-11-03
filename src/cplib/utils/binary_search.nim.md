@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/utils/binary_search_float_test.nim
+    title: verify/utils/binary_search_float_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/binary_search_float_test.nim
+    title: verify/utils/binary_search_float_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/binary_search_int_test.nim
     title: verify/utils/binary_search_int_test.nim
   - icon: ':heavy_check_mark:'
@@ -25,16 +31,18 @@ data:
     \ ok = mid\n            else: ng = mid\n        return ok\n\n    proc meguru_bisect*(mn,\
     \ mx: SomeFloat, is_ok: proc(x: SomeFloat): bool,\n            eps: SomeFloat\
     \ = 1e-10): SomeFloat =\n        var\n            ok = mn\n            ng = mx\n\
-    \        while abs(ok - ng) > eps or abs(ok - ng) / max(ok, ng) > eps:\n     \
-    \       var mid = (ok + ng) / 2\n            if is_ok(mid): ok = mid\n       \
-    \     else: ng = mid\n        return ok\n"
+    \        while abs(ok - ng) > eps and abs(ok - ng) / max(ok, ng) > eps:\n    \
+    \        var mid = (ok + ng) / 2\n            if is_ok(mid): ok = mid\n      \
+    \      else: ng = mid\n        return ok\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/binary_search.nim
   requiredBy: []
-  timestamp: '2023-11-04 02:51:01+09:00'
+  timestamp: '2023-11-04 04:14:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/binary_search_float_test.nim
+  - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_int_test.nim
   - verify/utils/binary_search_int_test.nim
 documentation_of: cplib/utils/binary_search.nim

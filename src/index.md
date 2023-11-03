@@ -6,6 +6,11 @@ data:
     - icon: ':warning:'
       path: cplib/cplib.nim
       title: cplib/cplib.nim
+  - name: cplib/data_structure
+    pages:
+    - icon: ':warning:'
+      path: cplib/data_structure/fenwick_tree.nim
+      title: cplib/data_structure/fenwick_tree.nim
   - name: cplib/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -54,6 +59,9 @@ data:
       title: verify/string/run_length_encoding_test.nim
   - name: verify/utils
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/binary_search_float_test.nim
+      title: verify/utils/binary_search_float_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_int_test.nim
       title: verify/utils/binary_search_int_test.nim

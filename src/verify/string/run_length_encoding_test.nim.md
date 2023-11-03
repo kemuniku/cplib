@@ -39,9 +39,9 @@ data:
 
     '
   dependsOn:
-  - cplib/tmpl/citrus.nim
-  - cplib/tmpl/citrus.nim
   - cplib/string/string_utils.nim
+  - cplib/tmpl/citrus.nim
+  - cplib/tmpl/citrus.nim
   - cplib/string/string_utils.nim
   isVerificationFile: true
   path: verify/string/run_length_encoding_test.nim

@@ -10,6 +10,12 @@ data:
     path: verify/string/run_length_encoding_test.nim
     title: verify/string/run_length_encoding_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/utils/binary_search_float_test.nim
+    title: verify/utils/binary_search_float_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/binary_search_float_test.nim
+    title: verify/utils/binary_search_float_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/binary_search_int_test.nim
     title: verify/utils/binary_search_int_test.nim
   - icon: ':heavy_check_mark:'
@@ -137,6 +143,8 @@ data:
   timestamp: '2023-11-02 03:54:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/binary_search_float_test.nim
+  - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_int_test.nim
   - verify/utils/binary_search_int_test.nim
   - verify/utils/inversion_number_test.nim
