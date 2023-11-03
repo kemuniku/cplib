@@ -15,15 +15,15 @@ data:
   code: ''
   dependsOn: []
   isVerificationFile: false
-  path: cplib.nim
+  path: cplib/cplib.nim
   requiredBy: []
-  timestamp: '2023-11-02 23:17:10+09:00'
+  timestamp: '2023-11-04 01:38:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: cplib.nim
+documentation_of: cplib/cplib.nim
 layout: document
 redirect_from:
-- /library/cplib.nim
-- /library/cplib.nim.html
-title: cplib.nim
+- /library/cplib/cplib.nim
+- /library/cplib/cplib.nim.html
+title: cplib/cplib.nim
 ---

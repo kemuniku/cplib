@@ -55,7 +55,7 @@ data:
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy: []
-  timestamp: '2023-11-02 23:17:10+09:00'
+  timestamp: '2023-11-02 03:46:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/tmpl/sheep.nim

@@ -15,9 +15,9 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verify-helper: PROBLEM https://yukicoder.me/problems/no/9003
+  code: '# verification-helper: PROBLEM https://yukicoder.me/problems/no/9003
 
-    # verify-helper: ERROR 1e-4
+    # verification-helper: ERROR 1e-4
 
     import strscans, strformat
 
@@ -35,7 +35,7 @@ data:
   isVerificationFile: true
   path: verify/judge/decimal_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2023-11-02 23:17:10+09:00'
+  timestamp: '2023-11-03 12:47:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/judge/decimal_yukicoder_test.nim

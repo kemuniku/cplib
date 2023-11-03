@@ -29,7 +29,7 @@ data:
   isVerificationFile: false
   path: cplib/misc/inversion_number.nim
   requiredBy: []
-  timestamp: '2023-11-02 23:17:10+09:00'
+  timestamp: '2023-11-02 03:46:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/misc/inversion_number_test.nim

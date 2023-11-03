@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: cplib
+    pages:
+    - icon: ':warning:'
+      path: cplib/cplib.nim
+      title: cplib/cplib.nim
   - name: cplib/misc
     pages:
     - icon: ':heavy_check_mark:'
@@ -11,7 +16,7 @@ data:
       title: cplib/misc/inversion_number.nim
   - name: cplib/string
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/string/string_utils.nim
       title: cplib/string/string_utils.nim
   - name: cplib/tmpl
@@ -25,11 +30,6 @@ data:
     - icon: ':warning:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
-  - name: .
-    pages:
-    - icon: ':warning:'
-      path: cplib.nim
-      title: cplib.nim
   - name: verify/judge
     pages:
     - icon: ':warning:'
@@ -55,5 +55,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/misc/inversion_number_test.nim
       title: verify/misc/inversion_number_test.nim
+  - name: verify/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/string/run_length_encoding_test.nim
+      title: verify/string/run_length_encoding_test.nim
 layout: toppage
 ---

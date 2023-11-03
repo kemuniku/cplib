@@ -15,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/misc/inversion_number_test.nim
     title: verify/misc/inversion_number_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/string/run_length_encoding_test.nim
+    title: verify/string/run_length_encoding_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/string/run_length_encoding_test.nim
+    title: verify/string/run_length_encoding_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -128,13 +134,15 @@ data:
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2023-11-02 23:17:10+09:00'
+  timestamp: '2023-11-02 03:54:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/misc/binary_search_int_test.nim
   - verify/misc/binary_search_int_test.nim
   - verify/misc/inversion_number_test.nim
   - verify/misc/inversion_number_test.nim
+  - verify/string/run_length_encoding_test.nim
+  - verify/string/run_length_encoding_test.nim
 documentation_of: cplib/tmpl/citrus.nim
 layout: document
 redirect_from:
