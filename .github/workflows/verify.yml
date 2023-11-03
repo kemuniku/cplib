@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -40,7 +42,7 @@ jobs:
 
     - name: Install Dependency
       id: install-dependency
-      run: nimble install https://github.com/zer0-star/Nim-ACL -y
+      run: nimble install https://github.com/zer0-star/Nim-ACL -N
 
     - name: Run tests
       env:

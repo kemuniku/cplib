@@ -1,4 +1,4 @@
-# verify-helper: PROBLEM https://judge.yosupo.jp/problem/aplusb
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/aplusb
 import strscans
 
 var a, b: int
