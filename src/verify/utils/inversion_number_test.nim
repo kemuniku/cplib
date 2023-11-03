@@ -1,7 +1,7 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
-include cplib/tmpl/citrus
+import sequtils, strutils
 import cplib/utils/inversion_number
 
-var n = input(int)
-var a = input(int, n)
-print(inversion_number(a))
+discard stdin.readLine.parseInt
+var a = stdin.readLine.split.map(parseInt)
+echo inversion_number(a)
