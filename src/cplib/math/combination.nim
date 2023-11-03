@@ -10,7 +10,7 @@ when not declared CPLIB_MATH_COMBINATION:
         result.inv = newSeq[T](max_N+1)
         result.fact_inv = newSeq[T](max_N+1)
         result.fact[0] = 1
-        result.fact[1] = 1
+        result.fact[1] = 1  
         result.inv[1] = 1
         result.fact_inv[0] = 1
         result.fact_inv[1] = 1
@@ -25,3 +25,11 @@ when not declared CPLIB_MATH_COMBINATION:
         if n < r:
             return 0
         return c.fact[n]*c.fact_inv[n-r]*c.fact_inv[r]
+    proc npr*[T](c:Combination_Type[T],n,r:int):T=
+        if n < 0 or r < 0:
+            return 0
+        if n < r:
+            return 0
+        return c.fact[n]*c.fact_inv[r]
+    proc nhr*[T](c:Combination_Type[T],n,r:int):T=
+        return c.ncr(n+r-1,r)
