@@ -18,7 +18,7 @@ data:
       title: cplib/string/string_utils.nim
   - name: cplib/tmpl
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: cplib/tmpl/citrus.nim
       title: cplib/tmpl/citrus.nim
     - icon: ':warning:'

@@ -2,12 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
   - icon: ':heavy_check_mark:'
@@ -28,27 +22,25 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
 
-    include cplib/tmpl/citrus
+    import sequtils, strutils
 
     import cplib/utils/inversion_number
 
 
-    var n = input(int)
+    discard stdin.readLine.parseInt
 
-    var a = input(int, n)
+    var a = stdin.readLine.split.map(parseInt)
 
-    print(inversion_number(a))
+    echo inversion_number(a)
 
     '
   dependsOn:
   - cplib/utils/inversion_number.nim
-  - cplib/tmpl/citrus.nim
   - cplib/utils/inversion_number.nim
-  - cplib/tmpl/citrus.nim
   isVerificationFile: true
   path: verify/utils/inversion_number_test.nim
   requiredBy: []
-  timestamp: '2023-11-04 02:51:01+09:00'
+  timestamp: '2023-11-04 05:07:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/inversion_number_test.nim

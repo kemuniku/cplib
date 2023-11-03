@@ -2,12 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   - icon: ':heavy_check_mark:'
@@ -31,31 +25,32 @@ data:
 
     # verification-helper: ERROR 1e-5
 
-    include cplib/tmpl/citrus
+    import sequtils, strutils
 
     import cplib/utils/binary_search
 
 
-    var a, b = input(int)
+    var a, b: int
+
+    (a, b) = stdin.readLine.split.map(parseInt)
 
     var div_int = meguru_bisect(0, a+1, proc(x: int): bool = a >= b * x)
 
     var rem = a - b * div_int
 
-    var div_flaot = meguru_bisect(0.0, float64(a + 1), (x)=>(a >= b * x))
+    var div_flaot = meguru_bisect(0.0, float64(a + 1), proc(x: float64): bool = (float64(a)
+    >= float64(b) * x))
 
-    print(div_int, rem, div_flaot)
+    echo div_int, " ", rem, " ", div_flaot
 
     '
   dependsOn:
   - cplib/utils/binary_search.nim
-  - cplib/tmpl/citrus.nim
-  - cplib/tmpl/citrus.nim
   - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/utils/binary_search_float_test.nim
   requiredBy: []
-  timestamp: '2023-11-04 04:14:27+09:00'
+  timestamp: '2023-11-04 05:12:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/binary_search_float_test.nim

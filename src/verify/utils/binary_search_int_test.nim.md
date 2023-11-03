@@ -2,12 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   - icon: ':heavy_check_mark:'
@@ -27,21 +21,20 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_4_B\n\
-    include cplib/tmpl/citrus\nimport cplib/utils/binary_search\n\nlet n = input(int)\n\
-    let s = input(int, n).concat(@[-INFL, INFL]).sorted\nlet q = input(int)\nlet t\
-    \ = input(int, q)\nvar ans = 0\nfor i in 0..<q:\n    proc ubound(x: int): bool\
-    \ = s[x] <= t[i]\n    proc lbound(x: int): bool = s[x] < t[i]\n    var upper =\
-    \ meguru_bisect(0, n+1, ubound)\n    var lower = meguru_bisect(0, n+1, lbound)\n\
-    \    if upper - lower != 0: ans += 1\nprint(ans)\n"
+    import sequtils, strutils, algorithm\nimport cplib/utils/binary_search\n\nconst\
+    \ INF = int(1_000_000_000_000)\nlet n = stdin.readLine.parseInt\nlet s = stdin.readLine.split().map(parseInt).concat(@[-INF,\
+    \ INF]).sorted\nlet q = stdin.readLine.parseInt\nlet t = stdin.readLine.split().map(parseInt)\n\
+    var ans = 0\nfor i in 0..<q:\n    proc ubound(x: int): bool = s[x] <= t[i]\n \
+    \   proc lbound(x: int): bool = s[x] < t[i]\n    var upper = meguru_bisect(0,\
+    \ n+1, ubound)\n    var lower = meguru_bisect(0, n+1, lbound)\n    if upper -\
+    \ lower != 0: ans += 1\necho ans\n"
   dependsOn:
   - cplib/utils/binary_search.nim
-  - cplib/tmpl/citrus.nim
-  - cplib/tmpl/citrus.nim
   - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/utils/binary_search_int_test.nim
   requiredBy: []
-  timestamp: '2023-11-04 04:14:27+09:00'
+  timestamp: '2023-11-04 05:08:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/binary_search_int_test.nim

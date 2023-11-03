@@ -7,12 +7,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/string/string_utils.nim
     title: cplib/string/string_utils.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/citrus.nim
-    title: cplib/tmpl/citrus.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -28,25 +22,23 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: '# verification-helper: PROBLEM https://yukicoder.me/problems/no/1469
 
-    include cplib/tmpl/citrus
+    import sequtils, strutils
 
     import cplib/string/string_utils
 
 
-    var s = input(string)
+    var s = stdin.readLine
 
-    print(s.run_length_encode.mapIt(it[0]).join(""))
+    echo s.run_length_encode.mapIt(it[0]).join("")
 
     '
   dependsOn:
   - cplib/string/string_utils.nim
-  - cplib/tmpl/citrus.nim
-  - cplib/tmpl/citrus.nim
   - cplib/string/string_utils.nim
   isVerificationFile: true
   path: verify/string/run_length_encoding_test.nim
   requiredBy: []
-  timestamp: '2023-11-03 12:47:02+09:00'
+  timestamp: '2023-11-04 05:07:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/string/run_length_encoding_test.nim
