@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/misc/inversion_number_test.nim
-    title: verify/misc/inversion_number_test.nim
+    path: verify/utils/inversion_number_test.nim
+    title: verify/utils/inversion_number_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/misc/inversion_number_test.nim
-    title: verify/misc/inversion_number_test.nim
+    path: verify/utils/inversion_number_test.nim
+    title: verify/utils/inversion_number_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -27,17 +27,17 @@ data:
     \            tree.add(pos, 1)\n        return ans\n"
   dependsOn: []
   isVerificationFile: false
-  path: cplib/misc/inversion_number.nim
+  path: cplib/utils/inversion_number.nim
   requiredBy: []
-  timestamp: '2023-11-02 03:46:07+09:00'
+  timestamp: '2023-11-04 02:51:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/misc/inversion_number_test.nim
-  - verify/misc/inversion_number_test.nim
-documentation_of: cplib/misc/inversion_number.nim
+  - verify/utils/inversion_number_test.nim
+  - verify/utils/inversion_number_test.nim
+documentation_of: cplib/utils/inversion_number.nim
 layout: document
 redirect_from:
-- /library/cplib/misc/inversion_number.nim
-- /library/cplib/misc/inversion_number.nim.html
-title: cplib/misc/inversion_number.nim
+- /library/cplib/utils/inversion_number.nim
+- /library/cplib/utils/inversion_number.nim.html
+title: cplib/utils/inversion_number.nim
 ---

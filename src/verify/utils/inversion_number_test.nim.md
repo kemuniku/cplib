@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/misc/inversion_number.nim
-    title: cplib/misc/inversion_number.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/misc/inversion_number.nim
-    title: cplib/misc/inversion_number.nim
-  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/inversion_number.nim
+    title: cplib/utils/inversion_number.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/inversion_number.nim
+    title: cplib/utils/inversion_number.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -30,7 +30,7 @@ data:
 
     include cplib/tmpl/citrus
 
-    import cplib/misc/inversion_number
+    import cplib/utils/inversion_number
 
 
     var n = input(int)
@@ -42,19 +42,19 @@ data:
     '
   dependsOn:
   - cplib/tmpl/citrus.nim
-  - cplib/misc/inversion_number.nim
-  - cplib/misc/inversion_number.nim
   - cplib/tmpl/citrus.nim
+  - cplib/utils/inversion_number.nim
+  - cplib/utils/inversion_number.nim
   isVerificationFile: true
-  path: verify/misc/inversion_number_test.nim
+  path: verify/utils/inversion_number_test.nim
   requiredBy: []
-  timestamp: '2023-11-03 12:47:02+09:00'
+  timestamp: '2023-11-04 02:51:01+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/misc/inversion_number_test.nim
+documentation_of: verify/utils/inversion_number_test.nim
 layout: document
 redirect_from:
-- /verify/verify/misc/inversion_number_test.nim
-- /verify/verify/misc/inversion_number_test.nim.html
-title: verify/misc/inversion_number_test.nim
+- /verify/verify/utils/inversion_number_test.nim
+- /verify/verify/utils/inversion_number_test.nim.html
+title: verify/utils/inversion_number_test.nim
 ---

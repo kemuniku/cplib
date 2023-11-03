@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/misc/binary_search_int_test.nim
-    title: verify/misc/binary_search_int_test.nim
+    path: verify/utils/binary_search_int_test.nim
+    title: verify/utils/binary_search_int_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/misc/binary_search_int_test.nim
-    title: verify/misc/binary_search_int_test.nim
+    path: verify/utils/binary_search_int_test.nim
+    title: verify/utils/binary_search_int_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -30,17 +30,17 @@ data:
     \     else: ng = mid\n        return ok\n"
   dependsOn: []
   isVerificationFile: false
-  path: cplib/misc/binary_search.nim
+  path: cplib/utils/binary_search.nim
   requiredBy: []
-  timestamp: '2023-11-02 03:46:07+09:00'
+  timestamp: '2023-11-04 02:51:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/misc/binary_search_int_test.nim
-  - verify/misc/binary_search_int_test.nim
-documentation_of: cplib/misc/binary_search.nim
+  - verify/utils/binary_search_int_test.nim
+  - verify/utils/binary_search_int_test.nim
+documentation_of: cplib/utils/binary_search.nim
 layout: document
 redirect_from:
-- /library/cplib/misc/binary_search.nim
-- /library/cplib/misc/binary_search.nim.html
-title: cplib/misc/binary_search.nim
+- /library/cplib/utils/binary_search.nim
+- /library/cplib/utils/binary_search.nim.html
+title: cplib/utils/binary_search.nim
 ---

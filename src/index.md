@@ -6,14 +6,6 @@ data:
     - icon: ':warning:'
       path: cplib/cplib.nim
       title: cplib/cplib.nim
-  - name: cplib/misc
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: cplib/misc/binary_search.nim
-      title: cplib/misc/binary_search.nim
-    - icon: ':heavy_check_mark:'
-      path: cplib/misc/inversion_number.nim
-      title: cplib/misc/inversion_number.nim
   - name: cplib/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -30,6 +22,14 @@ data:
     - icon: ':warning:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
+  - name: cplib/utils
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/binary_search.nim
+      title: cplib/utils/binary_search.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/inversion_number.nim
+      title: cplib/utils/inversion_number.nim
   - name: verify/judge
     pages:
     - icon: ':warning:'
@@ -47,18 +47,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/judge/hello_world_yukicoder_test.nim
       title: verify/judge/hello_world_yukicoder_test.nim
-  - name: verify/misc
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/misc/binary_search_int_test.nim
-      title: verify/misc/binary_search_int_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/misc/inversion_number_test.nim
-      title: verify/misc/inversion_number_test.nim
   - name: verify/string
     pages:
     - icon: ':heavy_check_mark:'
       path: verify/string/run_length_encoding_test.nim
       title: verify/string/run_length_encoding_test.nim
+  - name: verify/utils
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/binary_search_int_test.nim
+      title: verify/utils/binary_search_int_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/inversion_number_test.nim
+      title: verify/utils/inversion_number_test.nim
 layout: toppage
 ---
