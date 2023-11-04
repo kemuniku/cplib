@@ -5,7 +5,9 @@ author        = "kemuniku"
 description   = "A new awesome nimble package"
 license       = "MIT"
 srcDir        = "src"
+skipDirs      = @["verify", ".verify-helper"]
 
+backend       = "cpp"
 
 # Dependencies
 
