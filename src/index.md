@@ -11,6 +11,11 @@ data:
     - icon: ':warning:'
       path: cplib/data_structure/fenwick_tree.nim
       title: cplib/data_structure/fenwick_tree.nim
+  - name: cplib/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/combination.nim
+      title: cplib/math/combination.nim
   - name: cplib/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -52,6 +57,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/judge/hello_world_yukicoder_test.nim
       title: verify/judge/hello_world_yukicoder_test.nim
+  - name: verify/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/math/combination_test.nim
+      title: verify/math/combination_test.nim
   - name: verify/string
     pages:
     - icon: ':heavy_check_mark:'
