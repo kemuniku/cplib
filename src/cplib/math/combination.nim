@@ -29,7 +29,7 @@ when not declared CPLIB_MATH_COMBINATION:
     proc npr*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =
         if n < 0 or r < 0 or n < r:
             return 0
-        return c.fact[n]*c.fact_inv[r]
+        return c.fact[n]*c.fact_inv[n-r]
 
     proc nhr*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =
         return c.ncr(n+r-1, r)
