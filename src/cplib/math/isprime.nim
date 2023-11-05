@@ -1,8 +1,6 @@
 when not declared CPLIB_MATH_ISPRIME:
     const COMPETITIVE_MATH_ISPRIME* = 1
     import cplib/math/powmod
-    import std/bitops
-
     proc isprime*(N:int):bool=
         let bases = [2,325,9375,28178,450775,9780504,1795265022]
         if N == 2:
