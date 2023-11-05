@@ -16,6 +16,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/combination.nim
       title: cplib/math/combination.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/isprime.nim
+      title: cplib/math/isprime.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/powmod.nim
+      title: cplib/math/powmod.nim
   - name: cplib/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -29,7 +35,7 @@ data:
     - icon: ':warning:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
   - name: cplib/utils
@@ -62,6 +68,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/combination_test.nim
       title: verify/math/combination_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/isprime_yosupo_test.nim
+      title: verify/math/isprime_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/isprime_yukicoder_test.nim
+      title: verify/math/isprime_yukicoder_test.nim
   - name: verify/string
     pages:
     - icon: ':heavy_check_mark:'
