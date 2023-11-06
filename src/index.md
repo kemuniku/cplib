@@ -8,7 +8,10 @@ data:
       title: cplib/cplib.nim
   - name: cplib/graph
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/dijkstra.nim
+      title: cplib/graph/dijkstra.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
   - name: cplib/math
@@ -52,6 +55,14 @@ data:
       path: verify/judge/aplusb_library_checker.nim
       title: verify/judge/aplusb_library_checker.nim
   verificationCategories:
+  - name: verify/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/restore_dijkstra_test.nim
+      title: verify/graph/restore_dijkstra_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/shortest_path_test.nim
+      title: verify/graph/shortest_path_test.nim
   - name: verify/judge
     pages:
     - icon: ':heavy_check_mark:'

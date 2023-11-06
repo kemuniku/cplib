@@ -1,11 +1,29 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dijkstra.nim
+    title: cplib/graph/dijkstra.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dijkstra.nim
+    title: cplib/graph/dijkstra.nim
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/restore_dijkstra_test.nim
+    title: verify/graph/restore_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/restore_dijkstra_test.nim
+    title: verify/graph/restore_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/shortest_path_test.nim
+    title: verify/graph/shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/shortest_path_test.nim
+    title: verify/graph/shortest_path_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -13,7 +31,7 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_GRAPH:\n    const CPLIB_GRAPH_GRAPH* = 1 \n\
-    \n    type Graph*[T] = ref object of RootObj\n        edges:seq[seq[(int,T)]]\n\
+    \n    type Graph*[T] = ref object of RootObj\n        edges*:seq[seq[(int,T)]]\n\
     \    \n    type WeightedDirectedGraph*[T] =  ref object of Graph[T]\n    type\
     \ WeightedUnDirectedGraph*[T] =  ref object of Graph[T]\n    type UnWeightedDirectedGraph*\
     \ =  ref object of Graph[int]\n    type UnWeightedUnDirectedGraph* =  ref object\
@@ -34,10 +52,16 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/graph/graph.nim
-  requiredBy: []
-  timestamp: '2023-11-07 00:55:53+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  requiredBy:
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  timestamp: '2023-11-07 02:00:37+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/restore_dijkstra_test.nim
+  - verify/graph/restore_dijkstra_test.nim
 documentation_of: cplib/graph/graph.nim
 layout: document
 redirect_from:

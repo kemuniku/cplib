@@ -4,6 +4,18 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/graph/restore_dijkstra_test.nim
+    title: verify/graph/restore_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/restore_dijkstra_test.nim
+    title: verify/graph/restore_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/shortest_path_test.nim
+    title: verify/graph/shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/shortest_path_test.nim
+    title: verify/graph/shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
   - icon: ':heavy_check_mark:'
@@ -70,6 +82,10 @@ data:
   timestamp: '2023-11-02 03:46:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/restore_dijkstra_test.nim
+  - verify/graph/restore_dijkstra_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
