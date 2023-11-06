@@ -6,6 +6,11 @@ data:
     - icon: ':warning:'
       path: cplib/cplib.nim
       title: cplib/cplib.nim
+  - name: cplib/graph
+    pages:
+    - icon: ':warning:'
+      path: cplib/graph/graph.nim
+      title: cplib/graph/graph.nim
   - name: cplib/math
     pages:
     - icon: ':heavy_check_mark:'
