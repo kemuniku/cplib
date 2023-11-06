@@ -6,11 +6,6 @@ data:
     - icon: ':warning:'
       path: cplib/cplib.nim
       title: cplib/cplib.nim
-  - name: cplib/data_structure
-    pages:
-    - icon: ':warning:'
-      path: cplib/data_structure/fenwick_tree.nim
-      title: cplib/data_structure/fenwick_tree.nim
   - name: cplib/math
     pages:
     - icon: ':heavy_check_mark:'

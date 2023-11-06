@@ -37,10 +37,10 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\""
   dependsOn:
+  - cplib/math/powmod.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/powmod.nim
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   isVerificationFile: true
