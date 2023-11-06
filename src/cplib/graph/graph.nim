@@ -16,7 +16,7 @@ when not declared CPLIB_GRAPH_GRAPH:
         g.edges[u].add((v,cost))
     
     #WeightedUnDirectedGraph
-    proc initWeightedUnDirectedGrapl*(N:int,edgetype:typedesc = int):WeightedUnDirectedGraph[edgetype]=
+    proc initWeightedUnDirectedGraph*(N:int,edgetype:typedesc = int):WeightedUnDirectedGraph[edgetype]=
         result = WeightedUnDirectedGraph[edgetype](edges:newSeq[seq[(int,edgetype)]](N))
     proc add_edge*[T](g:var WeightedUnDirectedGraph[T],u,v:int,cost:T)=
         g.edges[u].add((v,cost))
@@ -34,4 +34,3 @@ when not declared CPLIB_GRAPH_GRAPH:
     proc add_edge*[T](g:var UnWeightedUnDirectedGraph,u,v:int)=
         g.edges[u].add((v,1))
         g.edges[v].add((u,1))
-
