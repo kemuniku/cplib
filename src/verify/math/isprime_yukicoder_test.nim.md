@@ -37,16 +37,16 @@ data:
     \    let x = ii()\n    if isprime(x):\n        echo x,\" \",1\n    else:\n   \
     \     echo x,\" \",0"
   dependsOn:
+  - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2023-11-06 03:34:03+09:00'
+  timestamp: '2023-11-09 20:55:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yukicoder_test.nim

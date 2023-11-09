@@ -69,17 +69,12 @@ data:
     \ step > 0:\n            while i < ends:\n                yield i\n          \
     \      i += step\n    iterator range(ends: int): int = (for i in 0..<ends: yield\
     \ i)\n    iterator range(start: int, ends: int): int = (for i in\n           \
-    \ start..<ends: yield i)\n    #powmod\n    proc pow(a, n: int, m = INF): int =\n\
-    \        var rev: int = 1\n        var a = a\n        var n = n\n        while\
-    \ n > 0:\n            if n % 2 != 0:\n                rev = (rev * a) mod m\n\
-    \            if n > 1:\n                a = (a * a) mod m\n            n >>= 1\n\
-    \        return rev\n\n    #\u3053\u3053\u307E\u3067\u30C6\u30F3\u30D7\u30EC\u30FC\
-    \u30C8 v1.1.0\n"
+    \ start..<ends: yield i)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy: []
-  timestamp: '2023-11-02 03:46:07+09:00'
+  timestamp: '2023-11-09 20:55:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/shortest_path_test.nim
