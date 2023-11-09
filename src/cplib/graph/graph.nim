@@ -2,7 +2,7 @@ when not declared CPLIB_GRAPH_GRAPH:
     const CPLIB_GRAPH_GRAPH* = 1 
 
     type Graph*[T] = ref object of RootObj
-        edges:seq[seq[(int,T)]]
+        edges*:seq[seq[(int,T)]]
     
     type WeightedDirectedGraph*[T] =  ref object of Graph[T]
     type WeightedUnDirectedGraph*[T] =  ref object of Graph[T]
