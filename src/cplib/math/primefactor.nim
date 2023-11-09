@@ -8,22 +8,21 @@ when not declared CPLIB_MATH_PRIMEFACTOR:
     proc find_factor*(n: int): int =
         if not ((n and 1) != 0): return 2
         if isprime(n): return n
+        const m = 128
         while true:
-            var x, y, ys, q, r = 1
-            var rnd = rand(0..n-1)
-            proc f(x: int): int = (mul(x, 2, n) + rnd) mod n
-            var g = 1
-            const m = 128
+            var x, ys, q, r, g = 1
+            var rnd, y = rand(0..n-3) + 2
+            proc f(x: int): int = (mul(x, x, n) + rnd) mod n
             while g == 1:
                 x = y
                 for i in 0..<r: y = f(y)
                 for k in countup(0, r-1, m):
                     ys = y
-                    if g != 1: break
                     for _ in 0..<min(m, r-k):
                         y = f(y)
                         q = mul(q, abs(x-y), n)
                     g = gcd(q, n)
+                    if g != 1: break
                 r = r shl 1
             if g == n:
                 g = 1
