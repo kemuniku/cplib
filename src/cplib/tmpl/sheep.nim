@@ -72,17 +72,3 @@ when not declared CPLIB_TMPL_SHEEP:
     iterator range(ends: int): int = (for i in 0..<ends: yield i)
     iterator range(start: int, ends: int): int = (for i in
             start..<ends: yield i)
-    #powmod
-    proc pow(a, n: int, m = INF): int =
-        var rev: int = 1
-        var a = a
-        var n = n
-        while n > 0:
-            if n % 2 != 0:
-                rev = (rev * a) mod m
-            if n > 1:
-                a = (a * a) mod m
-            n >>= 1
-        return rev
-
-    #ここまでテンプレート v1.1.0

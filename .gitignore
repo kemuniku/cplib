@@ -6,3 +6,5 @@ combined.nim
 main.py
 /nimcache/
 testresults*
+sub.nim
+sub.py
