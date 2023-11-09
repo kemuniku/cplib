@@ -5,7 +5,7 @@ when not declared CPLIB_MATH_PRIMEFACTOR:
     import random, std/math, algorithm, tables
 
     randomize()
-    proc find_factor*(n: int): int =
+    proc find_factor(n: int): int =
         if not ((n and 1) != 0): return 2
         if isprime(n): return n
         const m = 128
