@@ -20,47 +20,48 @@ data:
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/sheep.nim
-    title: cplib/tmpl/sheep.nim
+    path: cplib/math/primefactor.nim
+    title: cplib/math/primefactor.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/sheep.nim
-    title: cplib/tmpl/sheep.nim
+    path: cplib/math/primefactor.nim
+    title: cplib/math/primefactor.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    PROBLEM: https://yukicoder.me/problems/no/3030
+    PROBLEM: https://judge.yosupo.jp/problem/factorize
     links:
-    - https://yukicoder.me/problems/no/3030
+    - https://judge.yosupo.jp/problem/factorize
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "# verification-helper: PROBLEM https://yukicoder.me/problems/no/3030\ninclude\
-    \ cplib/tmpl/sheep\nimport cplib/math/isprime\n\nvar N = ii()\nfor i in 0..<N:\n\
-    \    let x = ii()\n    if isprime(x):\n        echo x,\" \",1\n    else:\n   \
-    \     echo x,\" \",0"
+  code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/factorize\n\
+    import cplib/math/primefactor\nimport strscans, strutils\n\nvar q: int\ndiscard\
+    \ stdin.readLine.scanf(\"$i\", q)\nfor _ in 0..<q:\n    var a: int\n    discard\
+    \ stdin.readLine.scanf(\"$i\", a)\n    var ans = primefactor(a)\n    if ans.len\
+    \ == 0: echo 0\n    else: echo ans.len, \" \", ans.join(\" \")\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
   - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
-  path: verify/math/isprime_yukicoder_test.nim
+  path: verify/math/factorize_yosupo_test.nim
   requiredBy: []
-  timestamp: '2023-11-10 01:03:01+09:00'
+  timestamp: '2023-11-10 01:29:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/math/isprime_yukicoder_test.nim
+documentation_of: verify/math/factorize_yosupo_test.nim
 layout: document
 redirect_from:
-- /verify/verify/math/isprime_yukicoder_test.nim
-- /verify/verify/math/isprime_yukicoder_test.nim.html
-title: verify/math/isprime_yukicoder_test.nim
+- /verify/verify/math/factorize_yosupo_test.nim
+- /verify/verify/math/factorize_yosupo_test.nim.html
+title: verify/math/factorize_yosupo_test.nim
 ---

@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':heavy_check_mark:'
@@ -37,16 +43,18 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\""
   dependsOn:
+  - cplib/tmpl/sheep.nim
+  - cplib/math/powmod.nim
   - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2023-11-09 20:55:35+09:00'
+  timestamp: '2023-11-10 01:03:01+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim

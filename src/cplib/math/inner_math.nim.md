@@ -1,12 +1,6 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
+  _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
@@ -14,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
@@ -48,17 +48,15 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_MATH_POWMOD:\n    const COMPETITIVE_MATH_POWMOD*\
-    \ = 1\n    import cplib/math/inner_math\n    proc powmod*(a, n, m: int): int =\n\
-    \        var\n            rev = 1\n            a = a\n            n = n\n    \
-    \    while n > 0:\n            if n mod 2 != 0: rev = mul(rev, a, m)\n       \
-    \     if n > 1: a = mul(a, a, m)\n            n = n shr 1\n        return rev\n"
-  dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
+  code: "when not declared COMPETITIVE_MATH_INNER_MATH:\n    const COMPETITIVE_MATH_INNER_MATH*\
+    \ = 1\n    proc mul*(a, b, m: int): int {.importcpp: \"(__int128)(#) * (#) % (#)\"\
+    , nodecl.}\n"
+  dependsOn: []
   isVerificationFile: false
-  path: cplib/math/powmod.nim
+  path: cplib/math/inner_math.nim
   requiredBy:
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
@@ -72,10 +70,10 @@ data:
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
-documentation_of: cplib/math/powmod.nim
+documentation_of: cplib/math/inner_math.nim
 layout: document
 redirect_from:
-- /library/cplib/math/powmod.nim
-- /library/cplib/math/powmod.nim.html
-title: cplib/math/powmod.nim
+- /library/cplib/math/inner_math.nim
+- /library/cplib/math/inner_math.nim.html
+title: cplib/math/inner_math.nim
 ---

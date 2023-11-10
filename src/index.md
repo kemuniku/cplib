@@ -20,11 +20,17 @@ data:
       path: cplib/math/combination.nim
       title: cplib/math/combination.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/inner_math.nim
+      title: cplib/math/inner_math.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/powmod.nim
       title: cplib/math/powmod.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/primefactor.nim
+      title: cplib/math/primefactor.nim
   - name: cplib/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -79,6 +85,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/combination_test.nim
       title: verify/math/combination_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/factorize_yosupo_test.nim
+      title: verify/math/factorize_yosupo_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yosupo_test.nim
       title: verify/math/isprime_yosupo_test.nim
