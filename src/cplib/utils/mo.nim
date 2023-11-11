@@ -8,8 +8,7 @@ when not declared CPLIB_UTILS_MO:
         qli: seq[seq[int]]
         size: int
 
-    proc initMo*(N, Q: int, width = max(1, int(1.0 * float(N) / max(1.0, sqrt(
-            float(Q) * 2.0 / 3.0))))): Mo =
+    proc initMo*(N, Q: int, width = max(1, int(1.0 * float(N) / max(1.0, sqrt(float(Q) * 2.0 / 3.0))))): Mo =
         result.width = width
         result.N = N
         result.Q = Q
@@ -20,8 +19,7 @@ when not declared CPLIB_UTILS_MO:
         self.qli[l div self.width].add((r shl 40) or ((l) shl 20) or self.size)
         self.size += 1
 
-    proc run*[AL, AR, DL, DR, REM](self: var Mo, add_left: AL, add_right: AR,
-            delete_left: DL, delete_right: DR, rem: REM) =
+    proc run*[AL, AR, DL, DR, REM](self: var Mo, add_left: AL, add_right: AR,delete_left: DL, delete_right: DR, rem: REM) =
         var nl = 0
         var nr = 0
         const mask2 = ((1 shl 20)-1) shl 20
