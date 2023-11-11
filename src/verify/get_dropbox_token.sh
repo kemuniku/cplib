@@ -1,4 +1,3 @@
-#/usr/bin/bash
 RESPONSE=$( \
     curl --silent https://api.dropbox.com/oauth2/token \
     --user ${DROPBOX_APP_KEY}:${DROPBOX_APP_SECRET} \
