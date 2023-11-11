@@ -43,6 +43,9 @@ jobs:
     - name: Install Dependency
       id: install-dependency
       run: nimble install https://github.com/zer0-star/Nim-ACL -N
+    
+    - name: Get dropbox token
+      run: echo "DROPBOX_TOKEN=$(bash src/verify/get_dropbox_token.sh)" >> $GITHUB_ENV
 
     - name: Run tests
       env:
