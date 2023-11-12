@@ -41,10 +41,10 @@ data:
     \ path[i],\" \",path[i+1]"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/graph/shortest_path_test.nim

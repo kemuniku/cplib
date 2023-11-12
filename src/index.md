@@ -72,6 +72,9 @@ data:
   - name: verify/judge
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/judge/abc051a_atcoder_test.nim
+      title: verify/judge/abc051a_atcoder_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/judge/decimal_yukicoder_test.nim
       title: verify/judge/decimal_yukicoder_test.nim
     - icon: ':heavy_check_mark:'
