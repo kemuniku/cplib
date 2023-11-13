@@ -44,13 +44,13 @@ data:
     \     echo x,\" \",0"
   dependsOn:
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []

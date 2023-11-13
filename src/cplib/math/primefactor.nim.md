@@ -62,9 +62,9 @@ data:
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy: []

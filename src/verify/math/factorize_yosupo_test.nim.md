@@ -46,11 +46,11 @@ data:
   dependsOn:
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   isVerificationFile: true
   path: verify/math/factorize_yosupo_test.nim
