@@ -18,7 +18,7 @@ jobs:
 
       - name: 'Fetch main'
         run: |
-          git fetch origin main --depth 0
+          git fetch origin main --depth 1
           git checkout origin/main
 
       - name: Set up Python
