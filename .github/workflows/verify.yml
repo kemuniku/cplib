@@ -70,7 +70,6 @@ jobs:
           git switch gh-pages
           rm -rf docs
           cp -R src docs
-          git add -A
           git add docs
           git commit -m "[workflow] copy docs $(git rev-parse HEAD~1)"
           git push "https://${{ secrets.GH_PAT }}@github.com/kemuniku/cplib.git" gh-pages
