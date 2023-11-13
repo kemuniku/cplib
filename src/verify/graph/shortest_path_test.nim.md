@@ -42,8 +42,8 @@ data:
   dependsOn:
   - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
