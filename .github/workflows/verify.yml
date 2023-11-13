@@ -14,6 +14,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: gh-pages
+
+      - name: 'Fetch main'
+        run: |
+          git fetch origin main --depth 0 --unshallow
+          git checkout origin/main
 
       - name: Set up Python
         uses: actions/setup-python@v4
