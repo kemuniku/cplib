@@ -5,7 +5,7 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
@@ -27,16 +27,16 @@ data:
 
     '
   dependsOn: []
-  isVerificationFile: false
-  path: verify/judge/aplusb_library_checker.nim
+  isVerificationFile: true
+  path: verify/judge/aplusb_library_checker_test.nim
   requiredBy: []
-  timestamp: '2023-11-03 12:47:02+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2023-11-14 07:01:38+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/judge/aplusb_library_checker.nim
+documentation_of: verify/judge/aplusb_library_checker_test.nim
 layout: document
 redirect_from:
-- /library/verify/judge/aplusb_library_checker.nim
-- /library/verify/judge/aplusb_library_checker.nim.html
-title: verify/judge/aplusb_library_checker.nim
+- /verify/verify/judge/aplusb_library_checker_test.nim
+- /verify/verify/judge/aplusb_library_checker_test.nim.html
+title: verify/judge/aplusb_library_checker_test.nim
 ---

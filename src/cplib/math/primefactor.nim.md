@@ -59,11 +59,11 @@ data:
     \    proc primefactor_cnt*(n: int): Table[int, int] =\n        for p in primefactor(n):\n\
     \            if p in result: result[p] += 1\n            else: result[p] = 1\n"
   dependsOn:
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim

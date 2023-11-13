@@ -54,12 +54,7 @@ data:
       title: cplib/utils/binary_search.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
-      title: cplib/utils/inversion_number.nim
-  - name: verify/judge
-    pages:
-    - icon: ':warning:'
-      path: verify/judge/aplusb_library_checker.nim
-      title: verify/judge/aplusb_library_checker.nim
+      title: "\u8EE2\u5012\u6570"
   verificationCategories:
   - name: verify/graph
     pages:
@@ -74,6 +69,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/judge/abc051a_atcoder_test.nim
       title: verify/judge/abc051a_atcoder_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/judge/aplusb_library_checker_test.nim
+      title: verify/judge/aplusb_library_checker_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/judge/decimal_yukicoder_test.nim
       title: verify/judge/decimal_yukicoder_test.nim

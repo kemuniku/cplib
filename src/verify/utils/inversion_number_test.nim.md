@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
-    title: cplib/utils/inversion_number.nim
+    title: "\u8EE2\u5012\u6570"
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
-    title: cplib/utils/inversion_number.nim
+    title: "\u8EE2\u5012\u6570"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
