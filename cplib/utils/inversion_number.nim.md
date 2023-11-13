@@ -36,8 +36,11 @@ data:
   - verify/utils/inversion_number_test.nim
 documentation_of: cplib/utils/inversion_number.nim
 layout: document
-redirect_from:
-- /library/cplib/utils/inversion_number.nim
-- /library/cplib/utils/inversion_number.nim.html
-title: cplib/utils/inversion_number.nim
+title: "\u8EE2\u5012\u6570"
 ---
+
+## 計算量
+$\mathrm{O} (N \log N)$
+
+## 概要
+配列に対して、転倒数（バブルソートの操作回数の最小値）を返します。
