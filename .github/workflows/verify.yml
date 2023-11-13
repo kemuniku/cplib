@@ -14,7 +14,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: gh-pages
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -66,4 +65,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: cd src && oj-verify all
+        run: |
+          cd src && oj-verify all
+          cd ..
+          git config --global user.name GitHub
+          git config --global user.email noreply@github.com
+          git switch gh-pages
+          cp -rf src/* .
+          git add -A
+          git commit -m "[workflow] copy docs $(git rev-parse HEAD~1)"
+          git push "https://${{ secrets.GH_PAT }}@github.com/kemuniku/cplib.git" gh-pages
