@@ -21,9 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/shortest_path_test.nim
     title: verify/graph/shortest_path_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/graph/unweighted_directed_graph_typical90_test.nim
+    title: verify/graph/unweighted_directed_graph_typical90_test.nim
+  - icon: ':x:'
+    path: verify/graph/unweighted_directed_graph_typical90_test.nim
+    title: verify/graph/unweighted_directed_graph_typical90_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -56,10 +62,12 @@ data:
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   timestamp: '2023-11-07 02:00:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/shortest_path_test.nim
   - verify/graph/shortest_path_test.nim
+  - verify/graph/unweighted_directed_graph_typical90_test.nim
+  - verify/graph/unweighted_directed_graph_typical90_test.nim
   - verify/graph/restore_dijkstra_test.nim
   - verify/graph/restore_dijkstra_test.nim
 documentation_of: cplib/graph/graph.nim

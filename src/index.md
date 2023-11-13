@@ -11,7 +11,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
   - name: cplib/math
@@ -69,6 +69,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/shortest_path_test.nim
       title: verify/graph/shortest_path_test.nim
+    - icon: ':x:'
+      path: verify/graph/unweighted_directed_graph_typical90_test.nim
+      title: verify/graph/unweighted_directed_graph_typical90_test.nim
   - name: verify/judge
     pages:
     - icon: ':heavy_check_mark:'
