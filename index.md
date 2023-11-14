@@ -64,6 +64,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/shortest_path_test.nim
       title: verify/graph/shortest_path_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/unweighted_directed_graph_aoj_test.nim
+      title: verify/graph/unweighted_directed_graph_aoj_test.nim
   - name: verify/judge
     pages:
     - icon: ':heavy_check_mark:'
