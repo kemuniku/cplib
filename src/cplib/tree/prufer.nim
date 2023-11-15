@@ -15,9 +15,11 @@ when not declared CPLIB_TREE_PRUFER:
             q.push((cnt[i], i))
         for i in 0..<a.len:
             var (c, u) = q.pop
+            while cnt[u] != c: (c, u) = q.pop
             result.add_edge(u, a[i])
-            if c != 1:
-                q.push((c-1, u))
-        var (_, u) = q.pop
-        var (_, v) = q.pop
-        result.add_edge(u, v)
+            cnt[u] -= 1
+            cnt[a[i]] -= 1
+            if cnt[u] != 0: q.push((cnt[u], u))
+            if cnt[a[i]] != 0: q.push((cnt[a[i]], a[i]))
+        var u = (0..<n).toSeq.filterIt(cnt[it] == 1)
+        result.add_edge(u[0], u[1])
