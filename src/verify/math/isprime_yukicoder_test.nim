@@ -6,6 +6,6 @@ var N = ii()
 for i in 0..<N:
     let x = ii()
     if isprime(x):
-        echo x," ",1
+        echo x, " ", 1
     else:
-        echo x," ",0
+        echo x, " ", 0

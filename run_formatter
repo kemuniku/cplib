@@ -1,0 +1,3 @@
+#/bin/bash
+nimpretty --maxLineLen:300 src/*/*.nim
+nimpretty --maxLineLen:300 src/*/*/*.nim
