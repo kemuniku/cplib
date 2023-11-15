@@ -3,8 +3,8 @@ name: deploy-doc
 on:
   workflow_run:
     workflows: ["verify"]
-    types:
-        - completed
+    types: [completed]
+    branches: [main]
 
 jobs:
   deploy-doc:
