@@ -3,7 +3,7 @@ when not declared CPLIB_TREE_PRUFER:
 
     import cplib/tree/tree
     import sequtils, heapqueue
-    proc make_tree_from_prufer*(a: seq[int]): UnWeightedTree =
+    proc prufer_decode*(a: seq[int]): UnWeightedTree =
         var n = a.len + 2
         assert a.allIt(it in 0..<n)
         result = initUnWeightedTree(n)
