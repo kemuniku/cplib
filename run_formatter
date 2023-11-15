@@ -1,0 +1,2 @@
+#/bin/bash
+nimpretty --maxLineLen:300 src/**/*.nim
