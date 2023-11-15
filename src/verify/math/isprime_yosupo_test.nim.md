@@ -41,20 +41,20 @@ data:
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/primality_test\n\
     include cplib/tmpl/sheep\nimport cplib/math/isprime\n\nvar Q = ii()\n\nfor i in\
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
-    \        echo \"No\""
+    \        echo \"No\"\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2023-11-10 01:03:01+09:00'
+  timestamp: '2023-11-16 05:13:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim

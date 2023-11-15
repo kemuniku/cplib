@@ -40,21 +40,21 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://yukicoder.me/problems/no/3030\ninclude\
     \ cplib/tmpl/sheep\nimport cplib/math/isprime\n\nvar N = ii()\nfor i in 0..<N:\n\
-    \    let x = ii()\n    if isprime(x):\n        echo x,\" \",1\n    else:\n   \
-    \     echo x,\" \",0"
+    \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
+    \       echo x, \" \", 0\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2023-11-10 01:03:01+09:00'
+  timestamp: '2023-11-16 05:13:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yukicoder_test.nim

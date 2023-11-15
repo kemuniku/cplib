@@ -12,12 +12,14 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: ''
+  code: '
+
+    '
   dependsOn: []
   isVerificationFile: false
   path: cplib/cplib.nim
   requiredBy: []
-  timestamp: '2023-11-04 01:38:04+09:00'
+  timestamp: '2023-11-16 05:10:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/cplib.nim
