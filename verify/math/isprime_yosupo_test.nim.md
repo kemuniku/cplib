@@ -44,17 +44,17 @@ data:
     \        echo \"No\"\n"
   dependsOn:
   - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2023-11-16 05:13:09+09:00'
+  timestamp: '2023-11-18 14:31:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim
