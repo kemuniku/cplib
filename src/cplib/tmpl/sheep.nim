@@ -19,6 +19,7 @@ when not declared CPLIB_TMPL_SHEEP:
     proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
     proc getchar(): char {.importc: "getchar_unlocked", header: "<stdio.h>", discardable.}
     proc ii(): int {.inline.} = scanf("%lld\n", addr result)
+    proc lii(N:int): seq[int] {.inline.} = newSeqWith(N,ii())
     proc si(): string {.inline.} =
         result = ""
         var c: char
