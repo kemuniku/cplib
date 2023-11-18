@@ -11,42 +11,61 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
 
-    - name: Install dependencies
-      run: pip3 install -U online-judge-verify-helper
+      - name: Install dependencies
+        run: pip3 install -U online-judge-verify-helper
 
-    # required only if you want to verify Nim code
-    - name: Cache choosenim
-      id: cache-choosenim
-      uses: actions/cache@v1
-      with:
-        path: ~/.choosenim
-        key: ${{ runner.os }}-choosenim-stable
+      # required only if you want to verify Nim code
+      - name: Cache choosenim
+        id: cache-choosenim
+        uses: actions/cache@v1
+        with:
+          path: ~/.choosenim
+          key: ${{ runner.os }}-choosenim-stable
 
-    - name: Cache nimble
-      id: cache-nimble
-      uses: actions/cache@v1
-      with:
-        path: ~/.nimble
-        key: ${{ runner.os }}-nimble-stable
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v1
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-stable
 
-    - uses: jiro4989/setup-nim-action@v1
-      with:
-        nim-version: 1.6.14
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: 1.6.14
 
-    - name: Install Dependency
-      id: install-dependency
-      run: nimble install https://github.com/zer0-star/Nim-ACL -N
+      - name: Install Dependency
+        id: install-dependency
+        run: nimble install https://github.com/zer0-star/Nim-ACL -N
 
-    - name: Run tests
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-        GH_PAT: ${{ secrets.GH_PAT }}
-      run: cd src && oj-verify all
+      - name: Get dropbox token
+        env:
+          DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
+          DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
+          DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
+        run:  |
+          {
+            echo 'DROPBOX_TOKEN<<EOF'
+            curl --silent https://api.dropbox.com/oauth2/token \
+            --user ${DROPBOX_APP_KEY}:${DROPBOX_APP_SECRET} \
+            --data grant_type=refresh_token \
+            --data refresh_token=${DROPBOX_REFRESH_TOKEN} \
+            | jq -r .access_token
+            echo EOF
+          } >> "$GITHUB_ENV"
+
+      - name: Remove init.sh
+        run: rm -f init.sh
+
+      - name: Run tests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: cd src && oj-verify all
