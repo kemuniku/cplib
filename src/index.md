@@ -47,6 +47,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
+  - name: cplib/tree
+    pages:
+    - icon: ':warning:'
+      path: cplib/tree/prufer.nim
+      title: cplib/tree/prufer.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/tree/tree.nim
+      title: cplib/tree/tree.nim
   - name: cplib/utils
     pages:
     - icon: ':heavy_check_mark:'
@@ -103,6 +111,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/string/run_length_encoding_test.nim
       title: verify/string/run_length_encoding_test.nim
+  - name: verify/tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/tree_atcoder_test.nim
+      title: verify/tree/tree_atcoder_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/tree_init_by_parent_atcoder_test.nim
+      title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/utils
     pages:
     - icon: ':heavy_check_mark:'
