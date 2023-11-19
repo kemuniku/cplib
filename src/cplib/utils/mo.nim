@@ -39,5 +39,3 @@ when not declared CPLIB_UTILS_MO:
                 while nl < li: delete_left(nl); nl.inc
                 while nr > ri: nr.dec; delete_right(nr)
                 rem(idx)
-
-
