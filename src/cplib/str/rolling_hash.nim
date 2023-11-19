@@ -4,7 +4,7 @@ when not declared CPLIB_STR_ROLLING_HASH:
 
     type RollingHash*[T] = object
         s: T
-        hash_accum: seq[uint]
+        hash_accum, base_pow, base_inv_pow: seq[uint]
 
     const MASK30 = (1u shl 30) - 1
     const MASK31 = (1u shl 31) - 1
@@ -57,13 +57,17 @@ when not declared CPLIB_STR_ROLLING_HASH:
             (base, base_inv) = find_base(maxa, seed)
         rh.hash_accum = newSeq[uint](rh.s.len + 1)
         rh.hash_accum[0] = 0u
-        var base_pow = 1u
+        rh.base_pow = newSeq[uint](rh.s.len + 1)
+        rh.base_pow[0] = 1u
+        rh.base_inv_pow = newSeq[uint](rh.s.len + 1)
+        rh.base_inv_pow[0] = 1u
         for i in 0..<rh.s.len:
-            rh.hash_accum[i+1] = (rh.hash_accum[i] + mul(uint(rh.s[i]), base_pow)).calc_mod
-            base_pow = mul(base_pow, base).calc_mod
+            rh.hash_accum[i+1] = (rh.hash_accum[i] + mul(uint(rh.s[i]), rh.base_pow[i])).calc_mod
+            rh.base_pow[i+1] = mul(rh.base_pow[i], base).calc_mod
+            rh.base_inv_pow[i+1] = mul(rh.base_inv_pow[i], base_inv).calc_mod
 
     proc initRollingHash*[T](s: T): RollingHash[T] =
-        result = RollingHash[T](s: s, hash_accum: newSeq[uint]())
+        result = RollingHash[T](s: s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())
         result.build
 
     proc query*(rh: RollingHash, rng: HSlice[int, int]): uint =
@@ -71,4 +75,4 @@ when not declared CPLIB_STR_ROLLING_HASH:
             l = rng.a
             r = rng.b + 1
         assert l in 0..<rh.hash_accum.len and r in 0..<rh.hash_accum.len
-        return mul(rh.hash_accum[r] + RH_MOD - rh.hash_accum[l], pow(base_inv, uint(l))).calc_mod
+        return mul(rh.hash_accum[r] + RH_MOD - rh.hash_accum[l], rh.base_inv_pow[l]).calc_mod
