@@ -19,7 +19,7 @@ when not declared CPLIB_UTILS_MO:
         self.qli[l div self.width].add((r shl 40) or ((l) shl 20) or self.size)
         self.size += 1
 
-    proc run*[AL, AR, DL, DR, REM](self: var Mo, add_left: AL, add_right: AR,delete_left: DL, delete_right: DR, rem: REM) =
+    proc run*[AL, AR, DL, DR, REM](self: var Mo, add_left: AL, add_right: AR, delete_left: DL, delete_right: DR, rem: REM) =
         var nl = 0
         var nr = 0
         const mask2 = ((1 shl 20)-1) shl 20
