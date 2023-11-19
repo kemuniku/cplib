@@ -1,10 +1,9 @@
-when not declared CPLIB_STRING_ROLLING_HASH:
-    const CPLIB_STRING_ROLLING_HASH* = 1
+when not declared CPLIB_STR_ROLLING_HASH:
+    const CPLIB_STR_ROLLING_HASH* = 1
     import random, math
 
-    type RollingHash* = object
-        base, base_inv: uint
-        s: string
+    type RollingHash*[T] = object
+        s: T
         hash_accum: seq[uint]
 
     const MASK30 = (1u shl 30) - 1
@@ -38,7 +37,7 @@ when not declared CPLIB_STRING_ROLLING_HASH:
             a = mul(a, a).calc_mod
             n = n shr 1
 
-    proc find_base(maxa: uint, seed: int64): (uint, uint) =
+    proc find_base(maxa: uint, seed: int64 = -1): (uint, uint) =
         var
             rng = if seed == -1: initRand() else: initRand(seed)
             k = 0u
@@ -49,18 +48,27 @@ when not declared CPLIB_STRING_ROLLING_HASH:
         let base_inv = pow(base, RH_MOD-2)
         return (base, base_inv)
 
-    proc build*(rh: var RollingHash) =
+    var base, base_inv: uint
+    var initialized = false
+
+    proc build*(rh: var RollingHash, maxa: uint = 1000000000, seed: int = -1) =
+        if not initialized:
+            initialized = true
+            (base, base_inv) = find_base(maxa, seed)
         rh.hash_accum = newSeq[uint](rh.s.len + 1)
         rh.hash_accum[0] = 0u
         var base_pow = 1u
         for i in 0..<rh.s.len:
             rh.hash_accum[i+1] = (rh.hash_accum[i] + mul(uint(rh.s[i]), base_pow)).calc_mod
-            base_pow = mul(base_pow, rh.base).calc_mod
+            base_pow = mul(base_pow, base).calc_mod
 
-    proc initRollingHash*(s: string, seed: int64 = -1): RollingHash =
-        let (base, base_inv) = find_base(256u, seed)
-        result = RollingHash(base: base, base_inv: base_inv, s: s, hash_accum: newSeq[uint]())
+    proc initRollingHash*[T](s: T): RollingHash[T] =
+        result = RollingHash[T](s: s, hash_accum: newSeq[uint]())
         result.build
 
     proc query*(rh: RollingHash, rng: HSlice[int, int]): uint =
-        return 0u
+        var
+            l = rng.a
+            r = rng.b + 1
+        assert l in 0..<rh.hash_accum.len and r in 0..<rh.hash_accum.len
+        return mul(rh.hash_accum[r] + RH_MOD - rh.hash_accum[l], pow(base_inv, uint(l))).calc_mod
