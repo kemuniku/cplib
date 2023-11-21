@@ -41,8 +41,8 @@ data:
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
