@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: cplib/collections
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/unionfind.nim
+      title: cplib/collections/unionfind.nim
   - name: cplib
     pages:
     - icon: ':warning:'
@@ -14,6 +19,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
+  - name: cplib/itertools
+    pages:
+    - icon: ':warning:'
+      path: cplib/itertools/combinations.nim
+      title: cplib/itertools/combinations.nim
   - name: cplib/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -66,7 +76,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
+  - name: verify/itertools
+    pages:
+    - icon: ':warning:'
+      path: verify/itertools/itertools_combinations_test_.nim
+      title: verify/itertools/itertools_combinations_test_.nim
   verificationCategories:
+  - name: verify/collections
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/unionfind_test.nim
+      title: verify/collections/unionfind_test.nim
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'
