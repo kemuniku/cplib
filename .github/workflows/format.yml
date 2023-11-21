@@ -1,0 +1,50 @@
+name: format
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr checkout ${{ github.event.pull_request.number }}
+
+      - name: Cache choosenim
+        id: cache-choosenim
+        uses: actions/cache@v1
+        with:
+          path: ~/.choosenim
+          key: ${{ runner.os }}-choosenim-stable
+
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v1
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-stable
+
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: 1.6.14
+
+      - name: Remove init.sh
+        run: rm -f init.sh
+
+      - name: Run Fomatter and Push
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config --global user.email "<EMAIL>"
+          git config --global user.name "GitHub Action"
+          ./run_formatter
+          git add src/cplib
+          git diff --quiet && git diff --staged --quiet || git commit -m "[workflow] copy docs $(git rev-parse HEAD~1)"
+          git push
+
