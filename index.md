@@ -4,6 +4,9 @@ data:
   - name: cplib/collections
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/QSWAG.nim
+      title: cplib/collections/QSWAG.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
     - icon: ':heavy_check_mark:'
@@ -95,6 +98,9 @@ data:
   verificationCategories:
   - name: verify/collections
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/QSWAG_test.nim
+      title: verify/collections/QSWAG_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/SWAG_test.nim
       title: verify/collections/SWAG_test.nim
