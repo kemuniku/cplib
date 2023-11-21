@@ -37,12 +37,16 @@ data:
     \         self.pushtop(self.popbottom)\n            return self.poptop()\n   \
     \ proc fold*[T](self: QSWAG[T]): T =\n        return self.op(self.topfold[^1],\
     \ self.bottomfold[^1])\n    proc `$`*[T](self: QSWAG[T]): string =\n        return\
-    \ $reversed(self.top) & $self.bottom\n"
+    \ $reversed(self.top) & $self.bottom\n    proc len*[T](self: QSWAG[T]): int =\n\
+    \        return len(self.bottom)+len(self.top)\n    proc `[]`*[T](self: QSWAG[T],\
+    \ index: int): T =\n        if index >= len(self):\n            raise newException(IndexDefect,\
+    \ \"index \" & $index & \" not in 0 .. \" & len(self))\n        if index < len(self.top):\n\
+    \            return self.top[len(self.top)-1-index]\n        return self.bottom[index-len(self.top)]\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/QSWAG.nim
   requiredBy: []
-  timestamp: '2023-11-21 14:03:26+00:00'
+  timestamp: '2023-11-21 23:57:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/QSWAG_test.nim

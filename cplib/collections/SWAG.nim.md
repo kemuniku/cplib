@@ -19,7 +19,7 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SWAG:\n    const CPLIB_COLLECTIONS_SWAG*\
-    \ = 1\n\n    import algorithm\n\n    type SWAG*[T] = ref object\n        op: proc(x,\
+    \ = 1\n\n    import algorithm\n    type SWAG*[T] = ref object\n        op: proc(x,\
     \ y: T): T\n        e: T\n        top: seq[T]\n        bottom: seq[T]\n      \
     \  topfold: seq[T]\n        bottomfold: seq[T]\n    proc initSWAG*[T](op: proc(x,\
     \ y: T): T, e: T): SWAG[T] =\n        result = SWAG[T](op: op, e: e, top: @[],\
@@ -49,12 +49,17 @@ data:
     \            for _ in 0..<len(stack2):\n                self.pushbottom(stack2.pop())\n\
     \            return self.popbottom()\n    proc fold*[T](self: SWAG[T]): T =\n\
     \        return self.op(self.topfold[^1], self.bottomfold[^1])\n    proc `$`*[T](self:\
-    \ SWAG[T]): string =\n        return $reversed(self.top) & $self.bottom\n"
+    \ SWAG[T]): string =\n        return \"swag\" & $(reversed(self.top)&self.bottom)\n\
+    \    proc len*[T](self: SWAG[T]): int =\n        return len(self.bottom)+len(self.top)\n\
+    \    proc `[]`*[T](self: SWAG[T], index: int): T =\n        if index >= len(self):\n\
+    \            raise newException(IndexDefect, \"index \" & $index & \" not in 0\
+    \ .. \" & len(self))\n        if index < len(self.top):\n            return self.top[len(self.top)-1-index]\n\
+    \        return self.bottom[index-len(self.top)]\n\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/SWAG.nim
   requiredBy: []
-  timestamp: '2023-11-21 14:03:26+00:00'
+  timestamp: '2023-11-21 23:57:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/SWAG_test.nim
