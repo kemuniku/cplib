@@ -38,3 +38,11 @@ when not declared CPLIB_COLLECTIONS_SWAG:
         return self.op(self.topfold[^1], self.bottomfold[^1])
     proc `$`*[T](self: QSWAG[T]): string =
         return $reversed(self.top) & $self.bottom
+    proc len*[T](self:QSWAG[T]):int=
+        return len(self.bottom)+len(self.top)
+    proc `[]`*[T](self:QSWAG[T],index:int):T=
+        if index >= len(self):
+            raise newException(IndexDefect, "index " & $index & " not in 0 .. " & len(self))
+        if index < len(self.top):
+            return self.top[len(self.top)-1-index]
+        return self.bottom[len(self.bottom)-1-(index-len(self.top))]
