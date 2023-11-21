@@ -45,4 +45,4 @@ when not declared CPLIB_COLLECTIONS_SWAG:
             raise newException(IndexDefect, "index " & $index & " not in 0 .. " & len(self))
         if index < len(self.top):
             return self.top[len(self.top)-1-index]
-        return self.bottom[len(self.bottom)-1-(index-len(self.top))]
+        return self.bottom[index-len(self.top)]
