@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/str/rolling_hash_pun.nim
+    title: verify/str/rolling_hash_pun.nim
+  - icon: ':warning:'
+    path: verify/str/rolling_hash_pun.nim
+    title: verify/str/rolling_hash_pun.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/utils/binary_search_float_test.nim
@@ -37,7 +43,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/binary_search.nim
-  requiredBy: []
+  requiredBy:
+  - verify/str/rolling_hash_pun.nim
+  - verify/str/rolling_hash_pun.nim
   timestamp: '2023-11-04 04:14:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
