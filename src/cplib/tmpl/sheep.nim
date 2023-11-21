@@ -28,7 +28,6 @@ when not declared CPLIB_TMPL_SHEEP:
             if c == ' ' or c == '\n':
                 break
             result &= c
-    proc lii(long: int): seq[int] = newSeqWith(long, ii())
     #chmin,chmax
     template `max=`(x, y) = x = max(x, y)
     template `min=`(x, y) = x = min(x, y)
