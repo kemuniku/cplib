@@ -1,5 +1,6 @@
 {
-"verify/collections/SWAG_test.nim": "2023-11-21 16:26:49 +0900",
+"verify/collections/QSWAG_test.nim": "2023-11-21 18:53:04 +0900",
+"verify/collections/SWAG_test.nim": "2023-11-21 18:50:53 +0900",
 "verify/collections/unionfind_test.nim": "2023-11-21 13:10:39 +0900",
 "verify/graph/restore_dijkstra_test.nim": "2023-11-19 18:36:24 +0900",
 "verify/graph/shortest_path_test.nim": "2023-11-19 18:36:24 +0900",
@@ -9,6 +10,7 @@
 "verify/judge/decimal_yukicoder_test.nim": "2023-11-03 12:47:02 +0900",
 "verify/judge/hello_world_aoj_test.nim": "2023-11-04 05:12:26 +0900",
 "verify/judge/hello_world_yukicoder_test.nim": "2023-11-03 12:47:02 +0900",
+"verify/math/combination_npr_test.nim": "2023-11-21 19:18:30 +0900",
 "verify/math/combination_test.nim": "2023-11-04 18:00:40 +0900",
 "verify/math/factorize_yosupo_test.nim": "2023-11-10 01:29:02 +0900",
 "verify/math/isprime_yosupo_test.nim": "2023-11-19 18:36:24 +0900",
