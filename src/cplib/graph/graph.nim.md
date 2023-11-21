@@ -88,25 +88,25 @@ data:
   isVerificationFile: false
   path: cplib/graph/graph.nim
   requiredBy:
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tree/tree.nim
   - cplib/tree/tree.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   timestamp: '2023-11-16 00:40:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/shortest_path_test.nim
-  - verify/graph/shortest_path_test.nim
-  - verify/graph/unweighted_directed_graph_aoj_test.nim
-  - verify/graph/unweighted_directed_graph_aoj_test.nim
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/restore_dijkstra_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
+  - verify/graph/unweighted_directed_graph_aoj_test.nim
+  - verify/graph/unweighted_directed_graph_aoj_test.nim
+  - verify/graph/restore_dijkstra_test.nim
+  - verify/graph/restore_dijkstra_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/shortest_path_test.nim
 documentation_of: cplib/graph/graph.nim
 layout: document
 redirect_from:

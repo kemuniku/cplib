@@ -63,6 +63,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: "\u8EE2\u5012\u6570"
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/mo.nim
+      title: cplib/utils/mo.nim
   verificationCategories:
   - name: verify/graph
     pages:
@@ -130,5 +133,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/mo_test.nim
+      title: verify/utils/mo_test.nim
 layout: toppage
 ---
