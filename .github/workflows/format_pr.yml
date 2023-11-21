@@ -45,6 +45,6 @@ jobs:
           git config --global user.email "<EMAIL>"
           git config --global user.name "GitHub Action"
           ./run_formatter
-          git add src/cplib
+          git add src
           git diff --quiet && git diff --staged --quiet || git commit -m "[workflow] format $(git rev-parse HEAD~1)"
           git push
