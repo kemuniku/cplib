@@ -37,8 +37,8 @@ data:
     \ mod K\n    if uf.count == 1:\n        ans = min(ans,tmp)\necho ans\n\n"
   dependsOn:
   - cplib/itertools/combinations.nim
-  - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
+  - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/itertools/itertools_combinations_test_.nim

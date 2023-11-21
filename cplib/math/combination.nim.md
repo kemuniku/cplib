@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/math/combination_npr_test.nim
+    title: verify/math/combination_npr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_npr_test.nim
+    title: verify/math/combination_npr_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/combination_test.nim
     title: verify/math/combination_test.nim
   - icon: ':heavy_check_mark:'
@@ -42,6 +48,8 @@ data:
   timestamp: '2023-11-04 18:00:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/combination_npr_test.nim
+  - verify/math/combination_npr_test.nim
   - verify/math/combination_test.nim
   - verify/math/combination_test.nim
 documentation_of: cplib/math/combination.nim
