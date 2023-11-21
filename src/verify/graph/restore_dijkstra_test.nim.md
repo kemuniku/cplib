@@ -39,10 +39,10 @@ data:
     \ t)\nif len(path) == 1:\n    echo -1\nelse:\n    echo cost, \" \", len(path)-1\n\
     \    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
