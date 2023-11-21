@@ -132,6 +132,9 @@ data:
   - name: verify/math
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/math/combination_npr_test.nim
+      title: verify/math/combination_npr_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/math/combination_test.nim
       title: verify/math/combination_test.nim
     - icon: ':heavy_check_mark:'
