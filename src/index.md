@@ -4,6 +4,9 @@ data:
   - name: cplib/collections
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/SWAG.nim
+      title: cplib/collections/SWAG.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
   - name: cplib
@@ -41,11 +44,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/primefactor.nim
       title: cplib/math/primefactor.nim
-  - name: cplib/string
+  - name: cplib/str
     pages:
     - icon: ':heavy_check_mark:'
-      path: cplib/string/string_utils.nim
-      title: cplib/string/string_utils.nim
+      path: cplib/str/rolling_hash.nim
+      title: cplib/str/rolling_hash.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/str/run_length_encode.nim
+      title: cplib/str/run_length_encode.nim
   - name: cplib/tmpl
     pages:
     - icon: ':warning:'
@@ -81,9 +87,17 @@ data:
     - icon: ':warning:'
       path: verify/itertools/itertools_combinations_test_.nim
       title: verify/itertools/itertools_combinations_test_.nim
+  - name: verify/str
+    pages:
+    - icon: ':warning:'
+      path: verify/str/rolling_hash_pun.nim
+      title: verify/str/rolling_hash_pun.nim
   verificationCategories:
   - name: verify/collections
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/SWAG_test.nim
+      title: verify/collections/SWAG_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
@@ -129,11 +143,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yukicoder_test.nim
       title: verify/math/isprime_yukicoder_test.nim
-  - name: verify/string
+  - name: verify/str
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/string/run_length_encoding_test.nim
-      title: verify/string/run_length_encoding_test.nim
+      path: verify/str/rolling_hash_abcbac_test.nim
+      title: verify/str/rolling_hash_abcbac_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/rolling_hash_aoj_test.nim
+      title: verify/str/rolling_hash_aoj_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/run_length_encode_test.nim
+      title: verify/str/run_length_encode_test.nim
   - name: verify/tree
     pages:
     - icon: ':heavy_check_mark:'

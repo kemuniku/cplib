@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/string/string_utils.nim
-    title: cplib/string/string_utils.nim
+    path: cplib/str/run_length_encode.nim
+    title: cplib/str/run_length_encode.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/string/string_utils.nim
-    title: cplib/string/string_utils.nim
+    path: cplib/str/run_length_encode.nim
+    title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -24,7 +24,7 @@ data:
 
     import sequtils, strutils
 
-    import cplib/string/string_utils
+    import cplib/str/run_length_encode
 
 
     var s = stdin.readLine
@@ -33,18 +33,18 @@ data:
 
     '
   dependsOn:
-  - cplib/string/string_utils.nim
-  - cplib/string/string_utils.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: true
-  path: verify/string/run_length_encoding_test.nim
+  path: verify/str/run_length_encode_test.nim
   requiredBy: []
-  timestamp: '2023-11-04 05:07:35+09:00'
+  timestamp: '2023-11-19 19:53:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/string/run_length_encoding_test.nim
+documentation_of: verify/str/run_length_encode_test.nim
 layout: document
 redirect_from:
-- /verify/verify/string/run_length_encoding_test.nim
-- /verify/verify/string/run_length_encoding_test.nim.html
-title: verify/string/run_length_encoding_test.nim
+- /verify/verify/str/run_length_encode_test.nim
+- /verify/verify/str/run_length_encode_test.nim.html
+title: verify/str/run_length_encode_test.nim
 ---
