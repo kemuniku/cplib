@@ -1,17 +1,18 @@
 name: format
 
 on:
-  pull_request:
+  push:
+    branches:
+    - main
 
 jobs:
   verify:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr checkout ${{ github.event.pull_request.number }}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Cache choosenim
         id: cache-choosenim
@@ -42,6 +43,5 @@ jobs:
           git config --global user.name "GitHub Action"
           ./run_formatter
           git add src/cplib
-          git diff --quiet && git diff --staged --quiet || git commit -m "[workflow] copy docs $(git rev-parse HEAD~1)"
+          git diff --quiet && git diff --staged --quiet || git commit -m "[workflow] format $(git rev-parse HEAD~1)"
           git push
-
