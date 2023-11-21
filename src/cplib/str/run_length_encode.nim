@@ -1,5 +1,5 @@
-when not declared CPLIB_STRING_UTILS:
-    const CPLIB_STRING_UTILS* = 1
+when not declared CPLIB_STR_RUN_LENGTH_ENCODE_UTILS:
+    const CPLIB_STR_RUN_LENGTH_ENCODE_UTILS* = 1
     import sequtils
     proc run_length_encode*[T](a: seq[T]): seq[(T, int)] =
         for i in 0..<len(a):
