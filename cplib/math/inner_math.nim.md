@@ -57,19 +57,19 @@ data:
   requiredBy:
   - cplib/math/powmod.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   timestamp: '2023-11-10 01:03:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
 documentation_of: cplib/math/inner_math.nim
 layout: document
 redirect_from:
