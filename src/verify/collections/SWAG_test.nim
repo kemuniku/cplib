@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://judge.yosupo.jp/problem/queue_operate_all_composite
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/deque_operate_all_composite
 import cplib/collections/SWAG
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
@@ -12,9 +12,14 @@ for i in 0..<Q:
     var q = ii()
     if q == 0:
         var a, b = ii()
-        swag.addLast((a, b))
+        swag.addFirst((a, b))
     elif q == 1:
+        var a, b = ii()
+        swag.addLast((a, b))
+    elif q == 2:
         discard swag.popFirst()
+    elif q == 3:
+        discard swag.popLast()
     else:
         var x = ii()
         var (a, b) = swag.fold()
