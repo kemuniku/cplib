@@ -41,15 +41,15 @@ data:
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/shortest_path_test.nim
   requiredBy: []
-  timestamp: '2023-11-19 18:36:24+09:00'
+  timestamp: '2023-11-22 08:15:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/shortest_path_test.nim
