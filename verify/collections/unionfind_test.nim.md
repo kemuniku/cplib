@@ -21,19 +21,19 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/unionfind\n\
-    import math,sequtils\nimport cplib/collections/unionfind\n\nproc scanf(formatstr:\
+    import math, sequtils\nimport cplib/collections/unionfind\n\nproc scanf(formatstr:\
     \ cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
-    %lld\\n\", addr result)\n\nvar N,Q = ii()\nvar uf = initUnionFind(N)\nfor i in\
-    \ 0..<Q:\n    var t,u,v = ii()\n    if t == 0:\n        uf.unite(u,v)\n    else:\n\
-    \        if uf.issame(u,v):\n            echo 1\n        else:\n            echo\
-    \ 0"
+    %lld\\n\", addr result)\n\nvar N, Q = ii()\nvar uf = initUnionFind(N)\nfor i in\
+    \ 0..<Q:\n    var t, u, v = ii()\n    if t == 0:\n        uf.unite(u, v)\n   \
+    \ else:\n        if uf.issame(u, v):\n            echo 1\n        else:\n    \
+    \        echo 0\n"
   dependsOn:
   - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/collections/unionfind_test.nim
   requiredBy: []
-  timestamp: '2023-11-21 13:57:21+00:00'
+  timestamp: '2023-11-21 14:11:07+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/unionfind_test.nim
