@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/str/rolling_hash_pun.nim
-    title: verify/str/rolling_hash_pun.nim
-  - icon: ':warning:'
-    path: verify/str/rolling_hash_pun.nim
-    title: verify/str/rolling_hash_pun.nim
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/str/rolling_hash_pun_test.nim
+    title: verify/str/rolling_hash_pun_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/rolling_hash_pun_test.nim
+    title: verify/str/rolling_hash_pun_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/binary_search_float_test.nim
     title: verify/utils/binary_search_float_test.nim
@@ -43,9 +43,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/binary_search.nim
-  requiredBy:
-  - verify/str/rolling_hash_pun.nim
-  - verify/str/rolling_hash_pun.nim
+  requiredBy: []
   timestamp: '2023-11-28 01:21:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -53,6 +51,8 @@ data:
   - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_int_test.nim
   - verify/utils/binary_search_int_test.nim
+  - verify/str/rolling_hash_pun_test.nim
+  - verify/str/rolling_hash_pun_test.nim
 documentation_of: cplib/utils/binary_search.nim
 layout: document
 redirect_from:

@@ -1,13 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/str/rolling_hash_pun.nim
-    title: verify/str/rolling_hash_pun.nim
-  - icon: ':warning:'
-    path: verify/str/rolling_hash_pun.nim
-    title: verify/str/rolling_hash_pun.nim
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_abcbac_test.nim
@@ -21,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_aoj_test.nim
     title: verify/str/rolling_hash_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/rolling_hash_pun_test.nim
+    title: verify/str/rolling_hash_pun_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/rolling_hash_pun_test.nim
+    title: verify/str/rolling_hash_pun_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -69,9 +69,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/rolling_hash.nim
-  requiredBy:
-  - verify/str/rolling_hash_pun.nim
-  - verify/str/rolling_hash_pun.nim
+  requiredBy: []
   timestamp: '2023-11-19 20:31:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -79,6 +77,8 @@ data:
   - verify/str/rolling_hash_abcbac_test.nim
   - verify/str/rolling_hash_aoj_test.nim
   - verify/str/rolling_hash_aoj_test.nim
+  - verify/str/rolling_hash_pun_test.nim
+  - verify/str/rolling_hash_pun_test.nim
 documentation_of: cplib/str/rolling_hash.nim
 layout: document
 redirect_from:

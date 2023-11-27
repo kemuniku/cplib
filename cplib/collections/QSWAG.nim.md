@@ -18,7 +18,7 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_COLLECTIONS_SWAG:\n    const CPLIB_COLLECTIONS_SWAG*\
+  code: "when not declared CPLIB_COLLECTIONS_QSWAG:\n    const CPLIB_COLLECTIONS_QSWAG*\
     \ = 1\n\n    import algorithm\n    type QSWAG*[T] = ref object\n        op: proc(x,\
     \ y: T): T\n        e: T\n        top: seq[T]\n        bottom: seq[T]\n      \
     \  topfold: seq[T]\n        bottomfold: seq[T]\n    proc initSWAG*[T](op: proc(x,\
@@ -46,7 +46,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/QSWAG.nim
   requiredBy: []
-  timestamp: '2023-11-21 23:57:46+09:00'
+  timestamp: '2023-11-28 01:45:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/QSWAG_test.nim
