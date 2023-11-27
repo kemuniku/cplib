@@ -52,10 +52,10 @@ data:
       title: cplib/str/run_length_encode.nim
   - name: cplib/tmpl
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/citrus.nim
       title: cplib/tmpl/citrus.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
     - icon: ':heavy_check_mark:'
@@ -85,11 +85,6 @@ data:
     - icon: ':warning:'
       path: verify/itertools/itertools_combinations_test_.nim
       title: verify/itertools/itertools_combinations_test_.nim
-  - name: verify/str
-    pages:
-    - icon: ':warning:'
-      path: verify/str/rolling_hash_pun.nim
-      title: verify/str/rolling_hash_pun.nim
   verificationCategories:
   - name: verify/collections
     pages:
@@ -156,8 +151,16 @@ data:
       path: verify/str/rolling_hash_aoj_test.nim
       title: verify/str/rolling_hash_aoj_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/str/rolling_hash_pun_test.nim
+      title: verify/str/rolling_hash_pun_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/str/run_length_encode_test.nim
       title: verify/str/run_length_encode_test.nim
+  - name: verify/tmpl
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/tmpl/citrus_and_qcfium_test.nim
+      title: verify/tmpl/citrus_and_qcfium_test.nim
   - name: verify/tree
     pages:
     - icon: ':heavy_check_mark:'

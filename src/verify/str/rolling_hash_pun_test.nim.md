@@ -17,7 +17,7 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc141/tasks/abc141_e
     links:
@@ -36,19 +36,19 @@ data:
     \  quit()\necho meguru_bisect(1, n div 2 + 1, is_ok)\n"
   dependsOn:
   - cplib/str/rolling_hash.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
-  isVerificationFile: false
-  path: verify/str/rolling_hash_pun.nim
+  - cplib/utils/binary_search.nim
+  isVerificationFile: true
+  path: verify/str/rolling_hash_pun_test.nim
   requiredBy: []
-  timestamp: '2023-11-28 01:21:59+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2023-11-28 01:47:13+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/str/rolling_hash_pun.nim
+documentation_of: verify/str/rolling_hash_pun_test.nim
 layout: document
 redirect_from:
-- /library/verify/str/rolling_hash_pun.nim
-- /library/verify/str/rolling_hash_pun.nim.html
-title: verify/str/rolling_hash_pun.nim
+- /verify/verify/str/rolling_hash_pun_test.nim
+- /verify/verify/str/rolling_hash_pun_test.nim.html
+title: verify/str/rolling_hash_pun_test.nim
 ---
