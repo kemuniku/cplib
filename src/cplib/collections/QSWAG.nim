@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_SWAG:
-    const CPLIB_COLLECTIONS_SWAG* = 1
+when not declared CPLIB_COLLECTIONS_QSWAG:
+    const CPLIB_COLLECTIONS_QSWAG* = 1
 
     import algorithm
     type QSWAG*[T] = ref object
