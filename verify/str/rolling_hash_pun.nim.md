@@ -35,14 +35,14 @@ data:
     \            seen[sh] = i\n    return false\nif not is_ok(1):\n    echo 0\n  \
     \  quit()\necho meguru_bisect(1, n div 2 + 1, is_ok)\n"
   dependsOn:
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: false
   path: verify/str/rolling_hash_pun.nim
   requiredBy: []
-  timestamp: '2023-11-19 20:31:33+09:00'
+  timestamp: '2023-11-28 01:21:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/rolling_hash_pun.nim
