@@ -31,22 +31,22 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MISC_BINARY_SEARCH:\n    const CPLIB_MISC_BINARY_SEARCH*\
-    \ = 1\n    proc meguru_bisect*(mn, mx: int, is_ok: proc(x: int): bool): int =\n\
-    \        var\n            ok = mn\n            ng = mx\n        while abs(ok -\
+    \ = 1\n    proc meguru_bisect*(ok, ng: int, is_ok: proc(x: int): bool): int =\n\
+    \        var\n            ok = ok\n            ng = ng\n        while abs(ok -\
     \ ng) > 1:\n            var mid = (ok + ng) div 2\n            if is_ok(mid):\
-    \ ok = mid\n            else: ng = mid\n        return ok\n\n    proc meguru_bisect*(mn,\
-    \ mx: SomeFloat, is_ok: proc(x: SomeFloat): bool,\n            eps: SomeFloat\
-    \ = 1e-10): SomeFloat =\n        var\n            ok = mn\n            ng = mx\n\
-    \        while abs(ok - ng) > eps and abs(ok - ng) / max(ok, ng) > eps:\n    \
-    \        var mid = (ok + ng) / 2\n            if is_ok(mid): ok = mid\n      \
-    \      else: ng = mid\n        return ok\n"
+    \ ok = mid\n            else: ng = mid\n        return ok\n\n    proc meguru_bisect*(ok,\
+    \ ng: SomeFloat, is_ok: proc(x: SomeFloat): bool, eps: SomeFloat = 1e-10): SomeFloat\
+    \ =\n        var\n            ok = ok\n            ng = ng\n        while abs(ok\
+    \ - ng) > eps and abs(ok - ng) / max(ok, ng) > eps:\n            var mid = (ok\
+    \ + ng) / 2\n            if is_ok(mid): ok = mid\n            else: ng = mid\n\
+    \        return ok\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/binary_search.nim
   requiredBy:
   - verify/str/rolling_hash_pun.nim
   - verify/str/rolling_hash_pun.nim
-  timestamp: '2023-11-04 04:14:27+09:00'
+  timestamp: '2023-11-28 01:21:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/binary_search_float_test.nim
