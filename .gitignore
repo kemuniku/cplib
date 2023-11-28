@@ -8,3 +8,6 @@ main.py
 testresults*
 sub.nim
 sub.py
+makerandom.py
+naive.py
+randomtest
