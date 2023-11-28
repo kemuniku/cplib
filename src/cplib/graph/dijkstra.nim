@@ -24,7 +24,7 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
                     queue.push((temp, j))
         return (costs, prev)
     proc dijkstra*[T](G: Graph[T], start: int, ZERO: T = 0, INF: T = int(3300300300300300491)): seq[T] =
-        var costs, _ = restore_dijkstra(G, start, ZERO, INF)
+        var (costs, _) = restore_dijkstra(G, start, ZERO, INF)
         return costs
     proc restore_shortestpath_from_prev*(prev: seq[int], goal: int): seq[int] =
         var i = goal
