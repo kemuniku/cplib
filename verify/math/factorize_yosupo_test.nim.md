@@ -46,8 +46,8 @@ data:
   dependsOn:
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
