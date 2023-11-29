@@ -43,10 +43,10 @@ data:
     \ temp < costs[j]:\n                    prev[j] = i\n                    costs[j]\
     \ = temp\n                    queue.push((temp, j))\n        return (costs, prev)\n\
     \    proc dijkstra*[T](G: Graph[T], start: int, ZERO: T = 0, INF: T = int(3300300300300300491)):\
-    \ seq[T] =\n        var costs, _ = restore_dijkstra(G, start, ZERO, INF)\n   \
-    \     return costs\n    proc restore_shortestpath_from_prev*(prev: seq[int], goal:\
-    \ int): seq[int] =\n        var i = goal\n        while i != -1:\n           \
-    \ result.add(i)\n            i = prev[i]\n        result = result.reversed()\n\
+    \ seq[T] =\n        var (costs, _) = restore_dijkstra(G, start, ZERO, INF)\n \
+    \       return costs\n    proc restore_shortestpath_from_prev*(prev: seq[int],\
+    \ goal: int): seq[int] =\n        var i = goal\n        while i != -1:\n     \
+    \       result.add(i)\n            i = prev[i]\n        result = result.reversed()\n\
     \    proc shortest_path*[T](G: Graph[T], start: int, goal: int, ZERO: T = 0, INF:\
     \ T = int(3300300300300300491)): tuple[path: seq[int], cost: int] =\n        var\
     \ (costs, prev) = restore_dijkstra(G, start, ZERO, INF)\n        result.path =\
@@ -57,7 +57,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy: []
-  timestamp: '2023-11-16 00:48:34+09:00'
+  timestamp: '2023-11-28 23:03:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/restore_dijkstra_test.nim

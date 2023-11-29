@@ -39,16 +39,16 @@ data:
     \ t)\nif len(path) == 1:\n    echo -1\nelse:\n    echo cost, \" \", len(path)-1\n\
     \    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/restore_dijkstra_test.nim
   requiredBy: []
-  timestamp: '2023-11-22 08:15:35+09:00'
+  timestamp: '2023-11-28 23:03:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/restore_dijkstra_test.nim
