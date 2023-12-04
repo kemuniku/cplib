@@ -19,7 +19,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         #1-indexedで作成する
         for i in 0..<len(v):
             self.arr[self.lastnode+i] = v[i]
-        for i in countdown(lastnode-1, 0):
+        for i in countdown(lastnode-1, 1):
             self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
 
