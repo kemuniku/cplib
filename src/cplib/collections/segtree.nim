@@ -59,3 +59,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T) =
         assert index < self.length
         self.update(index, val)
+    proc get_all*[T](self:SegmentTree[T]): T =
+        ## [0,len(self))区間の演算結果をO(1)で返す
+        return self.arr[1]
+    proc len*[T](self:SegmentTree[T]): int =
+        return self.length
