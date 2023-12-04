@@ -58,4 +58,4 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         return self.arr[index+self.lastnode]
     proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T) =
         assert index < self.length
-        return self.update(index, val)
+        self.update(index, val)
