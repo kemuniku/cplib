@@ -22,7 +22,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
 
-    proc update*[T](self: SegmentTree[T], x: int, val: T) =
+    proc update*[T](self: SegmentTree[T], x: Natural, val: T) =
         ## xの要素をvalに変更します。
         var x = x
         x += self.lastnode
@@ -30,7 +30,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         while x > 0:
             x = x shr 1
             self.arr[x] = self.merge(self.arr[2*x], self.arr[2*x+1])
-    proc get*[T](self: SegmentTree[T], q_left: int, q_right: int): T =
+    proc get*[T](self: SegmentTree[T], q_left: Natural, q_right: Natural): T =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
         var q_left = q_left
         var q_right = q_right
@@ -47,3 +47,5 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             q_left = q_left shr 1
             q_right = q_right shr 1
         return self.merge(lres, rres)
+    
+    proc `[]`*[T](self: SegmentTree[T], index: Natural):T = self.arr[index+self.lastnode]
