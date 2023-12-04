@@ -7,17 +7,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/itertools/combinations.nim
     title: cplib/itertools/combinations.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/itertools/combinations.nim
     title: cplib/itertools/combinations.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc328/tasks/abc328_e
     links:
@@ -37,20 +37,20 @@ data:
     \     tmp = tmp mod K\n    if uf.count == 1:\n        ans = min(ans, tmp)\necho\
     \ ans\n\n"
   dependsOn:
-  - cplib/itertools/combinations.nim
   - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
   - cplib/collections/unionfind.nim
-  isVerificationFile: false
-  path: verify/itertools/itertools_combinations_test_.nim
+  - cplib/itertools/combinations.nim
+  isVerificationFile: true
+  path: verify/itertools/itertools_combinations_test.nim
   requiredBy: []
-  timestamp: '2023-11-21 14:11:07+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2023-12-04 23:57:27+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/itertools/itertools_combinations_test_.nim
+documentation_of: verify/itertools/itertools_combinations_test.nim
 layout: document
 redirect_from:
-- /library/verify/itertools/itertools_combinations_test_.nim
-- /library/verify/itertools/itertools_combinations_test_.nim.html
-title: verify/itertools/itertools_combinations_test_.nim
+- /verify/verify/itertools/itertools_combinations_test.nim
+- /verify/verify/itertools/itertools_combinations_test.nim.html
+title: verify/itertools/itertools_combinations_test.nim
 ---

@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
@@ -25,7 +25,7 @@ data:
       title: cplib/graph/graph.nim
   - name: cplib/itertools
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/itertools/combinations.nim
       title: cplib/itertools/combinations.nim
   - name: cplib/math
@@ -83,11 +83,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
-  - name: verify/itertools
-    pages:
-    - icon: ':warning:'
-      path: verify/itertools/itertools_combinations_test_.nim
-      title: verify/itertools/itertools_combinations_test_.nim
   verificationCategories:
   - name: verify/collections
     pages:
@@ -120,10 +115,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_static_test.nim
       title: verify/collections/segtree/segtree_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_xor1_test.nim
       title: verify/collections/segtree/segtree_xor1_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_xor2_test.nim
       title: verify/collections/segtree/segtree_xor2_test.nim
   - name: verify/graph
@@ -137,6 +132,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/unweighted_directed_graph_aoj_test.nim
       title: verify/graph/unweighted_directed_graph_aoj_test.nim
+  - name: verify/itertools
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/itertools/itertools_combinations_test.nim
+      title: verify/itertools/itertools_combinations_test.nim
   - name: verify/judge
     pages:
     - icon: ':heavy_check_mark:'
