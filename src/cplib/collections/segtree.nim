@@ -29,7 +29,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         var x = x
         x += self.lastnode
         self.arr[x] = val
-        while x > 0:
+        while x > 1:
             x = x shr 1
             self.arr[x] = self.merge(self.arr[2*x], self.arr[2*x+1])
     proc get*[T](self: SegmentTree[T], q_left: Natural, q_right: Natural): T =
