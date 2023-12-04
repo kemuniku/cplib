@@ -11,6 +11,6 @@ var st = initSegmentTree(A, (a, b: int)=>a xor b, 0)
 for i in 0..<Q:
     var T, X, Y = ii()
     if T == 1:
-        st[X-1] =  st[X-1] xor Y
+        st[X-1] = st[X-1] xor Y
     else:
         echo st.get((X-1)..(Y-1))
