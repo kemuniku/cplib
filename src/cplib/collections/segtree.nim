@@ -47,5 +47,5 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             q_left = q_left shr 1
             q_right = q_right shr 1
         return self.merge(lres, rres)
-    
-    proc `[]`*[T](self: SegmentTree[T], index: Natural):T = self.arr[index+self.lastnode]
+
+    proc `[]`*[T](self: SegmentTree[T], index: Natural): T = self.arr[index+self.lastnode]
