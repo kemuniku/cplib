@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://atcoder.jp/contests/abc265/submissions/48196666
+# verification-helper: PROBLEM https://atcoder.jp/contests/abc265/tasks/abc265_b
 import sequtils,tables,sugar
 import cplib/collections/segtree
 
