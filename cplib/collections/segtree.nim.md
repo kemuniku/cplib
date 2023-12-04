@@ -39,21 +39,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_xor1_test.nim
     title: verify/collections/segtree/segtree_xor1_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_xor1_test.nim
     title: verify/collections/segtree/segtree_xor1_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_xor2_test.nim
     title: verify/collections/segtree/segtree_xor2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_xor2_test.nim
     title: verify/collections/segtree/segtree_xor2_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -106,7 +106,7 @@ data:
   path: cplib/collections/segtree.nim
   requiredBy: []
   timestamp: '2023-12-04 23:06:36+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/segtree/segtree_RMQ_test.nim
   - verify/collections/segtree/segtree_RMQ_test.nim
