@@ -3,21 +3,21 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     import algorithm
     type SegmentTree[T] = ref object
         default: T
-        marge: proc(x: T, y: T): T
+        merge: proc(x: T, y: T): T
         arr: seq[T]
         lastnode: int
-    proc initSegmentTree*[T](v: seq[T], marge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
+    proc initSegmentTree*[T](v: seq[T], merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
         var lastnode = 1
         while lastnode < len(v):
             lastnode*=2
         var arr = newSeq[T](2*lastnode)
         arr.fill(default)
-        var self = SegmentTree[T](default: default, marge: marge, arr: arr, lastnode: lastnode)
+        var self = SegmentTree[T](default: default, merge: merge, arr: arr, lastnode: lastnode)
         #1-indexedで作成する
         for i in 0..<len(v):
             self.arr[self.lastnode+i] = v[i]
         for i in countdown(lastnode-1, 0):
-            self.arr[i] = self.marge(self.arr[2*i], self.arr[2*i+1])
+            self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
 
     proc update*[T](self: SegmentTree[T], x: int, val: T) =
@@ -26,7 +26,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         self.arr[x] = val
         while x > 0:
             x = x shr 1
-            self.arr[x] = self.marge(self.arr[2*x], self.arr[2*x+1])
+            self.arr[x] = self.merge(self.arr[2*x], self.arr[2*x+1])
     proc get*[T](self: SegmentTree[T], q_left: int, q_right: int): T =
         var q_left = q_left
         var q_right = q_right
@@ -35,11 +35,11 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         var (lres, rres) = (self.default, self.default)
         while q_left < q_right:
             if (q_left and 1) > 0:
-                lres = self.marge(lres, self.arr[q_left])
+                lres = self.merge(lres, self.arr[q_left])
                 q_left += 1
             if (q_right and 1) > 0:
                 q_right -= 1
-                rres = self.marge(self.arr[q_right], rres)
+                rres = self.merge(self.arr[q_right], rres)
             q_left = q_left shr 1
             q_right = q_right shr 1
-        return self.marge(lres, rres)
+        return self.merge(lres, rres)
