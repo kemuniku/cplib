@@ -4,7 +4,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     type SegmentTree[T] = ref object
         default: T
         merge: proc(x: T, y: T): T
-        arr: seq[T]
+        arr*: seq[T]
         lastnode: int
         length: int
     proc initSegmentTree*[T](v: seq[T], merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
@@ -19,7 +19,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         #1-indexedで作成する
         for i in 0..<len(v):
             self.arr[self.lastnode+i] = v[i]
-        for i in countdown(lastnode-1, 1):
+        for i in countdown(lastnode-1, 0):
             self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
 
