@@ -1,6 +1,12 @@
 {
 "verify/collections/QSWAG_test.nim": "2023-11-28 01:45:16 +0900",
 "verify/collections/SWAG_test.nim": "2023-11-21 23:57:44 +0900",
+"verify/collections/segtree/segtree_PARS_test.nim": "2023-12-04 23:06:36 +0900",
+"verify/collections/segtree/segtree_PSRC_2_test.nim": "2023-12-04 23:06:36 +0900",
+"verify/collections/segtree/segtree_PSRC_test.nim": "2023-12-04 23:06:36 +0900",
+"verify/collections/segtree/segtree_RMQ_test.nim": "2023-12-04 23:06:36 +0900",
+"verify/collections/segtree/segtree_get1item_test.nim": "2023-12-04 23:22:47 +0900",
+"verify/collections/segtree/segtree_static_test.nim": "2023-12-04 23:06:36 +0900",
 "verify/collections/unionfind_test.nim": "2023-11-21 14:11:07 +0000",
 "verify/graph/restore_dijkstra_test.nim": "2023-11-28 23:03:59 +0900",
 "verify/graph/shortest_path_test.nim": "2023-11-28 23:03:59 +0900",
