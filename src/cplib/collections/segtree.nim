@@ -52,7 +52,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         return self.merge(lres, rres)
     proc get*[T](self: SegmentTree[T], segment: HSlice[int,int]): T = 
         assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length
-        return self.get(self,segment.a,segment.b+1)
+        return self.get(segment.a,segment.b+1)
     proc `[]`*[T](self: SegmentTree[T], index: Natural):T = 
         assert index < self.length
         return self.arr[index+self.lastnode]
