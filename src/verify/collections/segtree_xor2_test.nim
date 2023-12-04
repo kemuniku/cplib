@@ -5,13 +5,12 @@ import cplib/collections/segtree
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
-var N,Q = ii()
-var A = newSeqWith(N,ii())
-A[0] = A[0] xor 30
-var st = initSegmentTree(A,(a,b:int)=>a xor b,0)
+var N, Q = ii()
+var A = newSeqWith(N, ii())
+var st = initSegmentTree(A, (a, b: int)=>a xor b, 0)
 for i in 0..<Q:
-    var T,X,Y = ii()
+    var T, X, Y = ii()
     if T == 1:
-        st[X-1] = st[X-1] xor Y
+        st[X-1] =  st[X-1] xor Y
     else:
-        echo st.get(X-1,Y)
+        echo st.get(X-1, Y)
