@@ -6,6 +6,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         merge: proc(x: T, y: T): T
         arr: seq[T]
         lastnode: int
+        length: int
     proc initSegmentTree*[T](v: seq[T], merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
         ## セグメントツリーを生成します。
         ## vに元となるリスト、mergeに二つの区間をマージする関数、デフォルトに単位元を与えてください。
@@ -14,7 +15,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             lastnode*=2
         var arr = newSeq[T](2*lastnode)
         arr.fill(default)
-        var self = SegmentTree[T](default: default, merge: merge, arr: arr, lastnode: lastnode)
+        var self = SegmentTree[T](default: default, merge: merge, arr: arr, lastnode: lastnode,length:len(v))
         #1-indexedで作成する
         for i in 0..<len(v):
             self.arr[self.lastnode+i] = v[i]
@@ -24,6 +25,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
 
     proc update*[T](self: SegmentTree[T], x: Natural, val: T) =
         ## xの要素をvalに変更します。
+        assert x < self.length 
         var x = x
         x += self.lastnode
         self.arr[x] = val
@@ -32,6 +34,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             self.arr[x] = self.merge(self.arr[2*x], self.arr[2*x+1])
     proc get*[T](self: SegmentTree[T], q_left: Natural, q_right: Natural): T =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
         var q_left = q_left
         var q_right = q_right
         q_left += self.lastnode
@@ -47,5 +50,12 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             q_left = q_left shr 1
             q_right = q_right shr 1
         return self.merge(lres, rres)
-    proc `[]`*[T](self: SegmentTree[T], index: Natural):T = self.arr[index+self.lastnode]
-    proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T)=self.update(index,val)
+    proc get*[T](self: SegmentTree[T], segment: HSlice[int,int]): T = 
+        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length
+        return self.get(self,segment.a,segment.b+1)
+    proc `[]`*[T](self: SegmentTree[T], index: Natural):T = 
+        assert index < self.length
+        return self.arr[index+self.lastnode]
+    proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T)=
+        assert index < self.length
+        return self.update(index,val)

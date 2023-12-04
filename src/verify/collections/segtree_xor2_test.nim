@@ -13,4 +13,4 @@ for i in 0..<Q:
     if T == 1:
         st[X-1] =  st[X-1] xor Y
     else:
-        echo st.get(X-1, Y)
+        echo st.get((X-1)..(Y-1))
