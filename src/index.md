@@ -9,6 +9,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
+    - icon: ':question:'
+      path: cplib/collections/segtree.nim
+      title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
@@ -97,6 +100,32 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
+  - name: verify/collections/segtree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_PARS_test.nim
+      title: verify/collections/segtree/segtree_PARS_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_PSRC_2_test.nim
+      title: verify/collections/segtree/segtree_PSRC_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_PSRC_test.nim
+      title: verify/collections/segtree/segtree_PSRC_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_RMQ_test.nim
+      title: verify/collections/segtree/segtree_RMQ_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_get1item_test.nim
+      title: verify/collections/segtree/segtree_get1item_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_static_test.nim
+      title: verify/collections/segtree/segtree_static_test.nim
+    - icon: ':x:'
+      path: verify/collections/segtree/segtree_xor1_test.nim
+      title: verify/collections/segtree/segtree_xor1_test.nim
+    - icon: ':x:'
+      path: verify/collections/segtree/segtree_xor2_test.nim
+      title: verify/collections/segtree/segtree_xor2_test.nim
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'
