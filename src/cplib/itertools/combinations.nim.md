@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/itertools/itertools_combinations_2_test.nim
+    title: verify/itertools/itertools_combinations_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/itertools/itertools_combinations_2_test.nim
+    title: verify/itertools/itertools_combinations_2_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/itertools/itertools_combinations_test.nim
     title: verify/itertools/itertools_combinations_test.nim
   - icon: ':heavy_check_mark:'
@@ -35,6 +41,8 @@ data:
   timestamp: '2023-11-21 13:57:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/itertools/itertools_combinations_2_test.nim
+  - verify/itertools/itertools_combinations_2_test.nim
   - verify/itertools/itertools_combinations_test.nim
   - verify/itertools/itertools_combinations_test.nim
 documentation_of: cplib/itertools/combinations.nim

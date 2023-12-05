@@ -135,6 +135,9 @@ data:
   - name: verify/itertools
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/itertools/itertools_combinations_2_test.nim
+      title: verify/itertools/itertools_combinations_2_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/itertools/itertools_combinations_test.nim
       title: verify/itertools/itertools_combinations_test.nim
   - name: verify/judge
