@@ -75,10 +75,10 @@ data:
   verifiedWith:
   - verify/str/rolling_hash_abcbac_test.nim
   - verify/str/rolling_hash_abcbac_test.nim
-  - verify/str/rolling_hash_aoj_test.nim
-  - verify/str/rolling_hash_aoj_test.nim
   - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_pun_test.nim
+  - verify/str/rolling_hash_aoj_test.nim
+  - verify/str/rolling_hash_aoj_test.nim
 documentation_of: cplib/str/rolling_hash.nim
 layout: document
 redirect_from:
