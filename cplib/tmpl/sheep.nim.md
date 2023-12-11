@@ -77,14 +77,14 @@ data:
   timestamp: '2023-11-22 08:15:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/shortest_path_test.nim
-  - verify/graph/shortest_path_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/restore_dijkstra_test.nim
+  - verify/graph/restore_dijkstra_test.nim
 documentation_of: cplib/tmpl/sheep.nim
 layout: document
 redirect_from:

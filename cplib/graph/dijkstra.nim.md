@@ -60,10 +60,10 @@ data:
   timestamp: '2023-11-28 23:03:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/restore_dijkstra_test.nim
   - verify/graph/shortest_path_test.nim
   - verify/graph/shortest_path_test.nim
+  - verify/graph/restore_dijkstra_test.nim
+  - verify/graph/restore_dijkstra_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

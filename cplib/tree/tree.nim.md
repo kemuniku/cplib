@@ -61,10 +61,10 @@ data:
   timestamp: '2023-11-16 00:40:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/tree_atcoder_test.nim
-  - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
+  - verify/tree/tree_atcoder_test.nim
+  - verify/tree/tree_atcoder_test.nim
 documentation_of: cplib/tree/tree.nim
 layout: document
 redirect_from:

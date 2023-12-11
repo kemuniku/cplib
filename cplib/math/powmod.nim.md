@@ -68,10 +68,10 @@ data:
   verifiedWith:
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
 documentation_of: cplib/math/powmod.nim
 layout: document
 redirect_from:

@@ -61,8 +61,8 @@ data:
     \                  if t == N1:\n                        break test\n         \
     \       return false\n        return true\n"
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   isVerificationFile: false
@@ -75,10 +75,10 @@ data:
   verifiedWith:
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
 documentation_of: cplib/math/isprime.nim
 layout: document
 redirect_from:
