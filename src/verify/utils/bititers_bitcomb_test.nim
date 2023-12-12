@@ -1,3 +1,4 @@
+# verification-helper: PROBLEM https://atcoder.jp/contests/arc161/tasks/arc161_b
 import cplib/utils/bititers
 import sequtils,algorithm
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
