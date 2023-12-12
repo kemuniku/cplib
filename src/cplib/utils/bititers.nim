@@ -49,8 +49,8 @@ when not declared CPLIB_UTILS_BITITERS:
         ## 与えられた集合を包含する集合を列挙します。bit数上限をnとします。
         var i = bits
         while true:
-            i = (i+1) or bits
             yield i
+            i = (i+1) or bits
             if i >= (1 shl n):
                 break
 
@@ -59,15 +59,16 @@ when not declared CPLIB_UTILS_BITITERS:
         var i = bits and (-bits)
         while true:
             yield i
-            i = i and (not bits + (i shr 1))
+            i = i and (not bits + (i shl 1))
             if i == 0:
                 break
 
     iterator standingbits*(bits: int): int =
         #bits & (1<<i)が0でない値になるようなiを列挙します。
         var i = bits and (-bits)
-        while true:
-            yield fastLog2(i)
-            i = i and (not bits + (i shr 1))
-            if i == 0:
-                break
+        if i != 0:
+            while true:
+                yield fastLog2(i)
+                i = bits and (not bits + (i shl 1))
+                if i == 0:
+                    break
