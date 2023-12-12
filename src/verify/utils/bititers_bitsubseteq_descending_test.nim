@@ -1,5 +1,5 @@
 import cplib/utils/bititers
-import sequtils,strutils,algorithm
+import sequtils, strutils, algorithm
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
