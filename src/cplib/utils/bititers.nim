@@ -27,8 +27,8 @@ when not declared CPLIB_UTILS_BITITERS:
             i = (i-bits) and bits
             if bits == i:
                 break
-    iterator bitsubset_descendingeq*(bits: int): int =
-        ##与えられた集合の部分集合を昇順で列挙します。与えられた集合も含みます。
+    iterator bitsubseteq_descending*(bits: int): int =
+        ##与えられた集合の部分集合を降順で列挙します。与えられた集合も含みます。
         var i = bits
         while true:
             yield i
@@ -36,7 +36,7 @@ when not declared CPLIB_UTILS_BITITERS:
                 break
             i = (i-1) and bits
     iterator bitsubset_descending*(bits: int): int =
-        ##与えられた集合の部分集合を昇順で列挙します。与えられた集合は含みません。
+        ##与えられた集合の部分集合を降順で列挙します。与えられた集合は含みません。
         var i = bits
         while true:
             i = (i-1) and bits
@@ -45,14 +45,23 @@ when not declared CPLIB_UTILS_BITITERS:
                 break
 
 
-    iterator bitsuperset*(bits, n: int): int =
-        ## 与えられた集合を包含する集合を列挙します。bit数上限をnとします。
+    iterator bitsuperseteq*(bits, n: int): int =
+        ## 与えられた集合を包含する集合(上位集合)を列挙します。与えられた集合も含みます。bit数上限をnとします。
         var i = bits
         while true:
             yield i
             i = (i+1) or bits
             if i >= (1 shl n):
                 break
+    iterator bitsuperset*(bits, n: int): int =
+        ## 与えられた集合を包含する集合(上位集合)を列挙します。与えられた集合は含みません。bit数上限をnとします。
+        var i = bits
+        while true:
+            i = (i+1) or bits
+            if i >= (1 shl n):
+                break
+            yield i
+
 
     iterator bitsingleton*(bits: int): int =
         ##立っているbitを一つずつ取り出します。
