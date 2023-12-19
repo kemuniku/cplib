@@ -73,12 +73,12 @@ data:
   timestamp: '2023-11-19 20:31:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/rolling_hash_aoj_test.nim
+  - verify/str/rolling_hash_aoj_test.nim
   - verify/str/rolling_hash_abcbac_test.nim
   - verify/str/rolling_hash_abcbac_test.nim
   - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_pun_test.nim
-  - verify/str/rolling_hash_aoj_test.nim
-  - verify/str/rolling_hash_aoj_test.nim
 documentation_of: cplib/str/rolling_hash.nim
 layout: document
 redirect_from:

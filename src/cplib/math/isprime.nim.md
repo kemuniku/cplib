@@ -63,8 +63,8 @@ data:
   dependsOn:
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
@@ -73,12 +73,12 @@ data:
   timestamp: '2023-11-10 01:03:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
 documentation_of: cplib/math/isprime.nim
 layout: document
 redirect_from:

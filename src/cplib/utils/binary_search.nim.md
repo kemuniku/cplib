@@ -47,10 +47,10 @@ data:
   timestamp: '2023-11-28 01:21:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/binary_search_int_test.nim
-  - verify/utils/binary_search_int_test.nim
   - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_float_test.nim
+  - verify/utils/binary_search_int_test.nim
+  - verify/utils/binary_search_int_test.nim
   - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_pun_test.nim
 documentation_of: cplib/utils/binary_search.nim

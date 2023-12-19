@@ -101,10 +101,10 @@ data:
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
-  - verify/graph/shortest_path_test.nim
-  - verify/graph/shortest_path_test.nim
   - verify/graph/unweighted_directed_graph_aoj_test.nim
   - verify/graph/unweighted_directed_graph_aoj_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/shortest_path_test.nim
   - verify/graph/restore_dijkstra_test.nim
   - verify/graph/restore_dijkstra_test.nim
 documentation_of: cplib/graph/graph.nim
