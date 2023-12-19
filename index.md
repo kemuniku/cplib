@@ -78,6 +78,9 @@ data:
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/bititers.nim
+      title: cplib/utils/bititers.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: "\u8EE2\u5012\u6570"
     - icon: ':heavy_check_mark:'
@@ -209,6 +212,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_int_test.nim
       title: verify/utils/binary_search_int_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/bititers_bitcomb_test.nim
+      title: verify/utils/bititers_bitcomb_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/bititers_bitsubseteq_descending_test.nim
+      title: verify/utils/bititers_bitsubseteq_descending_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/bititers_bitsubseteq_test.nim
+      title: verify/utils/bititers_bitsubseteq_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim
