@@ -23,6 +23,6 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
             self.par_or_siz[x] += self.par_or_siz[y]
             self.par_or_siz[y] = x
             self.count -= 1
-    proc siz*(self: UnionFind, x: int):int =
+    proc siz*(self: UnionFind, x: int): int =
         var x = self.root(x)
         return -self.par_or_siz[x]
