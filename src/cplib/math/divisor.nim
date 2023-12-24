@@ -1,5 +1,5 @@
 when not declared CPLIB_MATH_DIVISOR:
-    const COMPETITIVE_MATH_DIVISOR* = 1
+    const CPLIB_MATH_DIVISOR* = 1
     import sequtils, tables, algorithm
     import cplib/math/primefactor
     proc divisor_naive(x: int, sorted: bool): seq[int] =

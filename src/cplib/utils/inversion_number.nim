@@ -1,5 +1,5 @@
-when not declared CPLIB_MISC_INVERSION_NUMBER:
-    const COMPETITIVE_MISC_INVERSION_NUMBER* = 1
+when not declared CPLIB_UTILS_INVERSION_NUMBER:
+    const COMPETITIVE_UTILS_INVERSION_NUMBER* = 1
     import algorithm, sequtils
     import atcoder/fenwicktree
     proc inversion_number*(a: seq[int]): int =
