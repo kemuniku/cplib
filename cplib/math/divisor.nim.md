@@ -7,13 +7,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/divisor.nim
-    title: cplib/math/divisor.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/divisor.nim
-    title: cplib/math/divisor.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
@@ -21,11 +14,18 @@ data:
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/math/divisor_atcoder_test.nim
@@ -39,24 +39,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/divisor_many_atcoder_test.nim
     title: verify/math/divisor_many_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_yosupo_test.nim
-    title: verify/math/factorize_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_yosupo_test.nim
-    title: verify/math/factorize_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/isprime_yosupo_test.nim
-    title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/isprime_yosupo_test.nim
-    title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/isprime_yukicoder_test.nim
-    title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/isprime_yukicoder_test.nim
-    title: verify/math/isprime_yukicoder_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -66,40 +48,42 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_MATH_POWMOD:\n    const COMPETITIVE_MATH_POWMOD*\
-    \ = 1\n    import cplib/math/inner_math\n    proc powmod*(a, n, m: int): int =\n\
-    \        var\n            rev = 1\n            a = a\n            n = n\n    \
-    \    while n > 0:\n            if n mod 2 != 0: rev = mul(rev, a, m)\n       \
-    \     if n > 1: a = mul(a, a, m)\n            n = n shr 1\n        return rev\n"
+  code: "when not declared CPLIB_MATH_DIVISOR:\n    const COMPETITIVE_MATH_DIVISOR*\
+    \ = 1\n    import sequtils, tables, algorithm\n    import cplib/math/primefactor\n\
+    \    proc divisor_naive(x: int, sorted: bool): seq[int] =\n        for i in 1..x:\n\
+    \            if i*i > x: break\n            if x mod i == 0:\n               \
+    \ result.add(i)\n                if i*i != x:\n                    result.add(x\
+    \ div i)\n        if sorted: result.sort\n\n    proc divisor*(x: int, sorted:\
+    \ bool = true): seq[int] =\n        if x <= 1000_000: return divisor_naive(x,\
+    \ sorted)\n        var factor = primefactor(x).toCountTable.pairs.toSeq\n    \
+    \    var ans = newSeq[int](0)\n        proc dfs(d, x: int) =\n            if d\
+    \ == factor.len:\n                ans.add(x)\n                return\n       \
+    \     var mul = 1\n            for i in 0..factor[d][1]:\n                dfs(d+1,\
+    \ x*mul)\n                if i != factor[d][1]: mul *= factor[d][0]\n        dfs(0,\
+    \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
-  path: cplib/math/powmod.nim
-  requiredBy:
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/primefactor.nim
-  timestamp: '2023-11-10 01:03:01+09:00'
+  path: cplib/math/divisor.nim
+  requiredBy: []
+  timestamp: '2023-12-25 04:12:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
-documentation_of: cplib/math/powmod.nim
+documentation_of: cplib/math/divisor.nim
 layout: document
 redirect_from:
-- /library/cplib/math/powmod.nim
-- /library/cplib/math/powmod.nim.html
-title: cplib/math/powmod.nim
+- /library/cplib/math/divisor.nim
+- /library/cplib/math/divisor.nim.html
+title: cplib/math/divisor.nim
 ---
