@@ -12,7 +12,7 @@ when not declared CPLIB_MATH_DIVISOR:
         if sorted: result.sort
 
     proc divisor*(x: int, sorted: bool = true): seq[int] =
-        if x <= 1000000: return divisor_naive(x, sorted)
+        if x <= 1000_000: return divisor_naive(x, sorted)
         var factor = primefactor(x).toCountTable.pairs.toSeq
         var ans = newSeq[int](0)
         proc dfs(d, x: int) =
