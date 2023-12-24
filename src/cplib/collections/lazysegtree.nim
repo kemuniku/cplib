@@ -26,12 +26,13 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         return self
     proc propagate*[S,F](self:LazySegmentTree[S,F],i:int)=
         var v = self.lazy[i]
-        self.lazy[i] = self.id
-        if i < self.lastnode:
-            self.lazy[2*i] = self.composition(self.lazy[2*i],v)
-            self.lazy[2*i+1] = self.composition(self.lazy[2*i+1],v)
-            self.arr[2*i] = self.mapping(v,self.arr[2*i])
-            self.arr[2*i+1] = self.mapping(v,self.arr[2*i+1])
+        if v != self.id:
+            self.lazy[i] = self.id
+            if i < self.lastnode:
+                self.lazy[2*i] = self.composition(v,self.lazy[2*i])
+                self.lazy[2*i+1] = self.composition(v,self.lazy[2*i+1])
+                self.arr[2*i] = self.mapping(v,self.arr[2*i])
+                self.arr[2*i+1] = self.mapping(v,self.arr[2*i+1])
     proc eval*[S,F](self:LazySegmentTree[S,F],L,R:int)=
         var L = L
         var R = R
