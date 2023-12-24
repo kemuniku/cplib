@@ -34,6 +34,9 @@ data:
       path: cplib/math/combination.nim
       title: cplib/math/combination.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/divisor.nim
+      title: cplib/math/divisor.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/inner_math.nim
       title: cplib/math/inner_math.nim
     - icon: ':heavy_check_mark:'
@@ -168,6 +171,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/combination_test.nim
       title: verify/math/combination_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/divisor_atcoder_test.nim
+      title: verify/math/divisor_atcoder_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/divisor_many_atcoder_test.nim
+      title: verify/math/divisor_many_atcoder_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/factorize_yosupo_test.nim
       title: verify/math/factorize_yosupo_test.nim

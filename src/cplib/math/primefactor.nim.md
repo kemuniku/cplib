@@ -19,8 +19,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_atcoder_test.nim
+    title: verify/math/divisor_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_atcoder_test.nim
+    title: verify/math/divisor_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_many_atcoder_test.nim
+    title: verify/math/divisor_many_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_many_atcoder_test.nim
+    title: verify/math/divisor_many_atcoder_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
@@ -60,17 +78,23 @@ data:
     \            if p in result: result[p] += 1\n            else: result[p] = 1\n"
   dependsOn:
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
   timestamp: '2023-11-10 01:29:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
 documentation_of: cplib/math/primefactor.nim

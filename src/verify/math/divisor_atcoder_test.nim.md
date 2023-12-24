@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
   - icon: ':heavy_check_mark:'
@@ -31,37 +37,46 @@ data:
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    PROBLEM: https://judge.yosupo.jp/problem/factorize
+    PROBLEM: https://atcoder.jp/contests/abc180/tasks/abc180_c
     links:
-    - https://judge.yosupo.jp/problem/factorize
+    - https://atcoder.jp/contests/abc180/tasks/abc180_c
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/factorize\n\
-    import cplib/math/primefactor\nimport strscans, strutils\n\nvar q: int\ndiscard\
-    \ stdin.readLine.scanf(\"$i\", q)\nfor _ in 0..<q:\n    var a: int\n    discard\
-    \ stdin.readLine.scanf(\"$i\", a)\n    var ans = primefactor(a)\n    if ans.len\
-    \ == 0: echo 0\n    else: echo ans.len, \" \", ans.join(\" \")\n"
+  code: '# verification-helper: PROBLEM https://atcoder.jp/contests/abc180/tasks/abc180_c
+
+    import strutils
+
+    import cplib/math/divisor
+
+
+    var n = stdin.readLine.parseInt
+
+    echo divisor(n).join("\n")
+
+    '
   dependsOn:
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
+  - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
+  - cplib/math/divisor.nim
   isVerificationFile: true
-  path: verify/math/factorize_yosupo_test.nim
+  path: verify/math/divisor_atcoder_test.nim
   requiredBy: []
-  timestamp: '2023-11-10 01:29:02+09:00'
+  timestamp: '2023-12-25 04:12:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/math/factorize_yosupo_test.nim
+documentation_of: verify/math/divisor_atcoder_test.nim
 layout: document
 redirect_from:
-- /verify/verify/math/factorize_yosupo_test.nim
-- /verify/verify/math/factorize_yosupo_test.nim.html
-title: verify/math/factorize_yosupo_test.nim
+- /verify/verify/math/divisor_atcoder_test.nim
+- /verify/verify/math/divisor_atcoder_test.nim.html
+title: verify/math/divisor_atcoder_test.nim
 ---

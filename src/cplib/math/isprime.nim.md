@@ -15,12 +15,30 @@ data:
     title: cplib/math/powmod.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_atcoder_test.nim
+    title: verify/math/divisor_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_atcoder_test.nim
+    title: verify/math/divisor_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_many_atcoder_test.nim
+    title: verify/math/divisor_many_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_many_atcoder_test.nim
+    title: verify/math/divisor_many_atcoder_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
@@ -62,17 +80,23 @@ data:
     \       return false\n        return true\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
   timestamp: '2023-11-10 01:03:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
