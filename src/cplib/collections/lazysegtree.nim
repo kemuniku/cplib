@@ -5,7 +5,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         e: S
         merge: proc(x: S, y: S): S
         arr*: seq[S]
-        lazy:seq[F]
+        lazy*:seq[F]
         mapping: proc(f:F,x:S): S
         composition: proc(f,g:F):F
         id:F
@@ -16,7 +16,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         while lastnode < len(v):
             lastnode*=2
         var arr = newSeqWith(2*lastnode,e)
-        var lazy = newseqwith(2*lastnode,id)
+        var lazy = newseqwith(lastnode,id)
         var self = LazySegmentTree[S,F](e:e, merge: merge, arr: arr,lazy: lazy,mapping:mapping,composition:composition,id:id, lastnode: lastnode, length: len(v))
         #1-indexedで作成する
         for i in 0..<len(v):
@@ -25,12 +25,13 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
     proc propagate*[S,F](self:LazySegmentTree[S,F],i:int)=
-        var v = self.lazy[i]
-        if v != self.id:
-            self.lazy[i] = self.id
-            if i < self.lastnode:
-                self.lazy[2*i] = self.composition(v,self.lazy[2*i])
-                self.lazy[2*i+1] = self.composition(v,self.lazy[2*i+1])
+        if i < self.lastnode:
+            var v = self.lazy[i]
+            if v != self.id:
+                self.lazy[i] = self.id
+                if 2*i < self.lastnode:
+                    self.lazy[2*i] = self.composition(v,self.lazy[2*i])
+                    self.lazy[2*i+1] = self.composition(v,self.lazy[2*i+1])
                 self.arr[2*i] = self.mapping(v,self.arr[2*i])
                 self.arr[2*i+1] = self.mapping(v,self.arr[2*i+1])
     proc eval*[S,F](self:LazySegmentTree[S,F],L,R:int)=
@@ -75,12 +76,14 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         while q_left < q_right:
             if (q_left and 1) != 0:
                 self.arr[q_left] = self.mapping(f,self.arr[q_left])
-                self.lazy[q_left] = self.composition(f,self.lazy[q_left])
+                if q_left < self.lastnode:
+                    self.lazy[q_left] = self.composition(f,self.lazy[q_left])
                 q_left += 1
             if (q_right and 1) != 0:
                 q_right -= 1
                 self.arr[q_right] = self.mapping(f,self.arr[q_right])
-                self.lazy[q_right] = self.composition(f,self.lazy[q_right])
+                if q_left < self.lastnode:
+                    self.lazy[q_right] = self.composition(f,self.lazy[q_right])
             q_left = q_left shr 1
             q_right = q_right shr 1
         self.recalc(L,R)
