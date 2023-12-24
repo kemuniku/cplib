@@ -36,12 +36,13 @@ data:
     \  var x = self.root(x)\n        var y = self.root(y)\n        if(x != y):\n \
     \           if(self.par_or_siz[x] > self.par_or_siz[y]):\n                swap(x,\
     \ y)\n            self.par_or_siz[x] += self.par_or_siz[y]\n            self.par_or_siz[y]\
-    \ = x\n            self.count -= 1\n"
+    \ = x\n            self.count -= 1\n    proc siz*(self: UnionFind, x: int):int\
+    \ =\n        var x = self.root(x)\n        return -self.par_or_siz[x]"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/unionfind.nim
   requiredBy: []
-  timestamp: '2023-11-21 13:57:21+00:00'
+  timestamp: '2023-12-25 03:33:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/itertools/itertools_combinations_test.nim
