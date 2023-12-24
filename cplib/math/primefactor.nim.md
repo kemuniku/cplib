@@ -60,11 +60,11 @@ data:
     \            if p in result: result[p] += 1\n            else: result[p] = 1\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy: []
