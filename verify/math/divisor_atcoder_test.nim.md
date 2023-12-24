@@ -57,20 +57,20 @@ data:
 
     '
   dependsOn:
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/divisor.nim
-  - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/divisor.nim
   isVerificationFile: true
   path: verify/math/divisor_atcoder_test.nim
   requiredBy: []
-  timestamp: '2023-12-25 04:12:54+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/divisor_atcoder_test.nim

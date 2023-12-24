@@ -24,7 +24,7 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_MATH_COMBINATION:\n    const COMPETITIVE_MATH_COMBINATION*\
+  code: "when not declared CPLIB_MATH_COMBINATION:\n    const CPLIB_MATH_COMBINATION*\
     \ = 1\n    import atcoder/modint\n    type Combination_Type[ModInt] = ref object\n\
     \        fact: seq[ModInt]\n        inv: seq[ModInt]\n        fact_inv: seq[ModInt]\n\
     \n    proc initCombination*[ModInt](max_N: int): Combination_Type[ModInt] =\n\
@@ -45,7 +45,7 @@ data:
   isVerificationFile: false
   path: cplib/math/combination.nim
   requiredBy: []
-  timestamp: '2023-11-04 18:00:40+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/combination_test.nim

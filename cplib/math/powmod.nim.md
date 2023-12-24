@@ -66,11 +66,11 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_MATH_POWMOD:\n    const COMPETITIVE_MATH_POWMOD*\
-    \ = 1\n    import cplib/math/inner_math\n    proc powmod*(a, n, m: int): int =\n\
-    \        var\n            rev = 1\n            a = a\n            n = n\n    \
-    \    while n > 0:\n            if n mod 2 != 0: rev = mul(rev, a, m)\n       \
-    \     if n > 1: a = mul(a, a, m)\n            n = n shr 1\n        return rev\n"
+  code: "when not declared CPLIB_MATH_POWMOD:\n    const CPLIB_MATH_POWMOD* = 1\n\
+    \    import cplib/math/inner_math\n    proc powmod*(a, n, m: int): int =\n   \
+    \     var\n            rev = 1\n            a = a\n            n = n\n       \
+    \ while n > 0:\n            if n mod 2 != 0: rev = mul(rev, a, m)\n          \
+    \  if n > 1: a = mul(a, a, m)\n            n = n shr 1\n        return rev\n"
   dependsOn:
   - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
@@ -83,7 +83,7 @@ data:
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
-  timestamp: '2023-11-10 01:03:01+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim

@@ -30,7 +30,7 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_MISC_BINARY_SEARCH:\n    const CPLIB_MISC_BINARY_SEARCH*\
+  code: "when not declared CPLIB_UTILS_BINARY_SEARCH:\n    const CPLIB_UTILS_BINARY_SEARCH*\
     \ = 1\n    proc meguru_bisect*(ok, ng: int, is_ok: proc(x: int): bool): int =\n\
     \        var\n            ok = ok\n            ng = ng\n        while abs(ok -\
     \ ng) > 1:\n            var mid = (ok + ng) div 2\n            if is_ok(mid):\
@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/binary_search.nim
   requiredBy: []
-  timestamp: '2023-11-28 01:21:59+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/binary_search_float_test.nim
