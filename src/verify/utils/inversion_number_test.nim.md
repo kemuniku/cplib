@@ -40,7 +40,7 @@ data:
   isVerificationFile: true
   path: verify/utils/inversion_number_test.nim
   requiredBy: []
-  timestamp: '2023-11-16 05:13:09+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/inversion_number_test.nim

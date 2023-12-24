@@ -66,23 +66,23 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_MATH_ISPRIME:\n    const COMPETITIVE_MATH_ISPRIME*\
-    \ = 1\n    import cplib/math/powmod\n    proc isprime*(N: int): bool =\n     \
-    \   let bases = [2, 325, 9375, 28178, 450775, 9780504, 1795265022]\n        if\
-    \ N == 2:\n            return true\n        if N < 2 or (N and 1) == 0:\n    \
-    \        return false\n        let N1 = N-1\n        var d = N1\n        var s\
-    \ = 0\n        while (d and 1) == 0:\n            d = d shr 1\n            s +=\
-    \ 1\n        for a in bases:\n            var t: int\n            if a mod N ==\
-    \ 0:\n                continue\n            t = powmod(a, d, N)\n            if\
-    \ t == 1 or t == N1:\n                continue\n            block test:\n    \
-    \            for _ in 0..<(s-1):\n                    t = powmod(t, 2, N)\n  \
-    \                  if t == N1:\n                        break test\n         \
-    \       return false\n        return true\n"
+  code: "when not declared CPLIB_MATH_ISPRIME:\n    const CPLIB_MATH_ISPRIME* = 1\n\
+    \    import cplib/math/powmod\n    proc isprime*(N: int): bool =\n        let\
+    \ bases = [2, 325, 9375, 28178, 450775, 9780504, 1795265022]\n        if N ==\
+    \ 2:\n            return true\n        if N < 2 or (N and 1) == 0:\n         \
+    \   return false\n        let N1 = N-1\n        var d = N1\n        var s = 0\n\
+    \        while (d and 1) == 0:\n            d = d shr 1\n            s += 1\n\
+    \        for a in bases:\n            var t: int\n            if a mod N == 0:\n\
+    \                continue\n            t = powmod(a, d, N)\n            if t ==\
+    \ 1 or t == N1:\n                continue\n            block test:\n         \
+    \       for _ in 0..<(s-1):\n                    t = powmod(t, 2, N)\n       \
+    \             if t == N1:\n                        break test\n              \
+    \  return false\n        return true\n"
   dependsOn:
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
@@ -90,7 +90,7 @@ data:
   - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
-  timestamp: '2023-11-10 01:03:01+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim

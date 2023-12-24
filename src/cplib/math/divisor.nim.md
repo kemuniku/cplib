@@ -48,9 +48,9 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_MATH_DIVISOR:\n    const COMPETITIVE_MATH_DIVISOR*\
-    \ = 1\n    import sequtils, tables, algorithm\n    import cplib/math/primefactor\n\
-    \    proc divisor_naive(x: int, sorted: bool): seq[int] =\n        for i in 1..x:\n\
+  code: "when not declared CPLIB_MATH_DIVISOR:\n    const CPLIB_MATH_DIVISOR* = 1\n\
+    \    import sequtils, tables, algorithm\n    import cplib/math/primefactor\n \
+    \   proc divisor_naive(x: int, sorted: bool): seq[int] =\n        for i in 1..x:\n\
     \            if i*i > x: break\n            if x mod i == 0:\n               \
     \ result.add(i)\n                if i*i != x:\n                    result.add(x\
     \ div i)\n        if sorted: result.sort\n\n    proc divisor*(x: int, sorted:\
@@ -62,18 +62,18 @@ data:
     \ x*mul)\n                if i != factor[d][1]: mul *= factor[d][0]\n        dfs(0,\
     \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
-  - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/divisor.nim
   requiredBy: []
-  timestamp: '2023-12-25 04:12:54+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim

@@ -77,18 +77,18 @@ data:
     \    proc primefactor_cnt*(n: int): Table[int, int] =\n        for p in primefactor(n):\n\
     \            if p in result: result[p] += 1\n            else: result[p] = 1\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
-  timestamp: '2023-11-10 01:29:02+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim

@@ -32,7 +32,7 @@ data:
   isVerificationFile: true
   path: verify/math/combination_test.nim
   requiredBy: []
-  timestamp: '2023-11-04 18:00:40+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/combination_test.nim

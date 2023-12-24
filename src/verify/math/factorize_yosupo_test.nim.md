@@ -44,18 +44,18 @@ data:
     \ stdin.readLine.scanf(\"$i\", a)\n    var ans = primefactor(a)\n    if ans.len\
     \ == 0: echo 0\n    else: echo ans.len, \" \", ans.join(\" \")\n"
   dependsOn:
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/math/factorize_yosupo_test.nim
   requiredBy: []
-  timestamp: '2023-11-10 01:29:02+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/factorize_yosupo_test.nim

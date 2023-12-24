@@ -66,7 +66,7 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared COMPETITIVE_MATH_INNER_MATH:\n    const COMPETITIVE_MATH_INNER_MATH*\
+  code: "when not declared CPLIB_MATH_INNER_MATH:\n    const CPLIB_MATH_INNER_MATH*\
     \ = 1\n    proc mul*(a, b, m: int): int {.importcpp: \"(__int128)(#) * (#) % (#)\"\
     , nodecl.}\n"
   dependsOn: []
@@ -81,7 +81,7 @@ data:
   - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
-  timestamp: '2023-11-10 01:03:01+09:00'
+  timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim
