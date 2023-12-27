@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_SEGTREE:
-    const CPLIB_COLLECTIONS_SEGTREE* = 1
+when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
+    const CPLIB_COLLECTIONS_LAZYSEGTREE* = 1
     import algorithm,sequtils,bitops
     type LazySegmentTree[S,F] = ref object
         e: S
