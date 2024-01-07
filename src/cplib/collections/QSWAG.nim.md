@@ -40,13 +40,13 @@ data:
     \ $reversed(self.top) & $self.bottom\n    proc len*[T](self: QSWAG[T]): int =\n\
     \        return len(self.bottom)+len(self.top)\n    proc `[]`*[T](self: QSWAG[T],\
     \ index: int): T =\n        if index >= len(self):\n            raise newException(IndexDefect,\
-    \ \"index \" & $index & \" not in 0 .. \" & len(self))\n        if index < len(self.top):\n\
+    \ \"index \" & $index & \" not in 0 .. \" & $len(self))\n        if index < len(self.top):\n\
     \            return self.top[len(self.top)-1-index]\n        return self.bottom[index-len(self.top)]\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/QSWAG.nim
   requiredBy: []
-  timestamp: '2023-11-28 01:45:16+09:00'
+  timestamp: '2024-01-07 15:42:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/QSWAG_test.nim
