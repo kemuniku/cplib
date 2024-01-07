@@ -37,6 +37,9 @@ data:
       path: cplib/math/divisor.nim
       title: cplib/math/divisor.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/euler_phi.nim
+      title: cplib/math/euler_phi.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/inner_math.nim
       title: cplib/math/inner_math.nim
     - icon: ':heavy_check_mark:'
@@ -180,6 +183,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/divisor_many_atcoder_test.nim
       title: verify/math/divisor_many_atcoder_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/euler_phi_aoj_test.nim
+      title: verify/math/euler_phi_aoj_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/euler_phi_list_yukicoder_test.nim
+      title: verify/math/euler_phi_list_yukicoder_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/euler_phi_yukicoder_test.nim
+      title: verify/math/euler_phi_yukicoder_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/factorize_yosupo_test.nim
       title: verify/math/factorize_yosupo_test.nim
