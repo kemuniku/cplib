@@ -3,11 +3,23 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/SCC.nim
+    title: cplib/graph/SCC.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/SCC.nim
+    title: cplib/graph/SCC.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/reverse_edge.nim
+    title: cplib/graph/reverse_edge.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/reverse_edge.nim
+    title: cplib/graph/reverse_edge.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
@@ -27,6 +39,12 @@ data:
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/SCC_test.nim
+    title: verify/graph/SCC_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/SCC_test.nim
+    title: verify/graph/SCC_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/restore_dijkstra_test.nim
     title: verify/graph/restore_dijkstra_test.nim
@@ -113,8 +131,12 @@ data:
   - cplib/tree/prufer.nim
   - cplib/tree/tree.nim
   - cplib/tree/tree.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   timestamp: '2024-01-07 09:42:27+00:00'
@@ -126,6 +148,8 @@ data:
   - verify/tree/tree_atcoder_test.nim
   - verify/graph/unweighted_directed_graph_aoj_test.nim
   - verify/graph/unweighted_directed_graph_aoj_test.nim
+  - verify/graph/SCC_test.nim
+  - verify/graph/SCC_test.nim
   - verify/graph/topologicalsort_1_test.nim
   - verify/graph/topologicalsort_1_test.nim
   - verify/graph/topologicalsort_2_test.nim
