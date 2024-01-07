@@ -40,6 +40,12 @@ data:
     path: verify/math/divisor_many_atcoder_test.nim
     title: verify/math/divisor_many_atcoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
   - icon: ':heavy_check_mark:'
@@ -88,6 +94,8 @@ data:
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim

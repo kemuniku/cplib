@@ -39,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/divisor_many_atcoder_test.nim
     title: verify/math/divisor_many_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -62,14 +68,14 @@ data:
     \ x*mul)\n                if i != factor[d][1]: mul *= factor[d][0]\n        dfs(0,\
     \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
   isVerificationFile: false
   path: cplib/math/divisor.nim
   requiredBy: []
@@ -80,6 +86,8 @@ data:
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
 documentation_of: cplib/math/divisor.nim
 layout: document
 redirect_from:

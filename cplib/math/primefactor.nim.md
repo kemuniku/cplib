@@ -40,6 +40,12 @@ data:
     path: verify/math/divisor_many_atcoder_test.nim
     title: verify/math/divisor_many_atcoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
   - icon: ':heavy_check_mark:'
@@ -77,12 +83,12 @@ data:
     \    proc primefactor_cnt*(n: int): Table[int, int] =\n        for p in primefactor(n):\n\
     \            if p in result: result[p] += 1\n            else: result[p] = 1\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
@@ -95,6 +101,8 @@ data:
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
 documentation_of: cplib/math/primefactor.nim
