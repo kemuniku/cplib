@@ -51,6 +51,9 @@ data:
   - name: cplib/str
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/str/manachar.nim
+      title: cplib/str/manachar.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/rolling_hash.nim
       title: cplib/str/rolling_hash.nim
     - icon: ':heavy_check_mark:'
@@ -188,6 +191,9 @@ data:
       title: verify/math/isprime_yukicoder_test.nim
   - name: verify/str
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/manachar_test.nim
+      title: verify/str/manachar_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_abcbac_test.nim
       title: verify/str/rolling_hash_abcbac_test.nim
