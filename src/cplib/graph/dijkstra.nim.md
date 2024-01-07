@@ -57,7 +57,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy: []
-  timestamp: '2023-11-28 23:03:59+09:00'
+  timestamp: '2024-01-07 09:42:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/shortest_path_test.nim

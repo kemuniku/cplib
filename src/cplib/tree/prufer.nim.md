@@ -38,12 +38,12 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/prufer.nim
   requiredBy: []
-  timestamp: '2023-11-16 05:02:40+09:00'
+  timestamp: '2024-01-07 09:42:27+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/tree/prufer.nim

@@ -61,12 +61,12 @@ data:
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
   - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/divisor.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/divisor_atcoder_test.nim
   requiredBy: []
