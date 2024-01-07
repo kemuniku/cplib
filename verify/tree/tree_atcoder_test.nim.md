@@ -37,12 +37,12 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/tree_atcoder_test.nim
   requiredBy: []
-  timestamp: '2023-11-16 01:40:41+09:00'
+  timestamp: '2024-01-07 09:42:27+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/tree_atcoder_test.nim

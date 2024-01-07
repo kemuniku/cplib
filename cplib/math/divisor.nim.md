@@ -72,10 +72,10 @@ data:
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/divisor.nim
   requiredBy: []

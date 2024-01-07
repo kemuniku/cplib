@@ -58,7 +58,7 @@ data:
   requiredBy:
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
-  timestamp: '2023-11-16 00:40:08+09:00'
+  timestamp: '2024-01-07 09:42:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/tree_init_by_parent_atcoder_test.nim

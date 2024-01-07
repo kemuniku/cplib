@@ -23,6 +23,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/topologicalsort.nim
+      title: cplib/graph/topologicalsort.nim
   - name: cplib/itertools
     pages:
     - icon: ':heavy_check_mark:'
@@ -141,6 +144,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/shortest_path_test.nim
       title: verify/graph/shortest_path_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/topologicalsort_1_test.nim
+      title: verify/graph/topologicalsort_1_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/topologicalsort_2_test.nim
+      title: verify/graph/topologicalsort_2_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/unweighted_directed_graph_aoj_test.nim
       title: verify/graph/unweighted_directed_graph_aoj_test.nim

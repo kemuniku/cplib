@@ -35,14 +35,14 @@ data:
     \    if insi > 0: result = 1\n    for (v, c) in g.edges[u]:\n        if v == par:\
     \ continue\n        result += dfs(v, u, insi-1)\necho dfs(0, -1, 0)\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/tree_init_by_parent_atcoder_test.nim
   requiredBy: []
-  timestamp: '2023-11-16 02:00:27+09:00'
+  timestamp: '2024-01-07 09:42:27+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/tree_init_by_parent_atcoder_test.nim
