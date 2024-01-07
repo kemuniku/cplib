@@ -27,6 +27,7 @@
 "verify/math/factorize_yosupo_test.nim": "2023-12-25 07:39:58 +0900",
 "verify/math/isprime_yosupo_test.nim": "2023-12-25 07:39:58 +0900",
 "verify/math/isprime_yukicoder_test.nim": "2023-12-25 07:39:58 +0900",
+"verify/str/manachar_test.nim": "2024-01-07 15:19:23 +0900",
 "verify/str/rolling_hash_abcbac_test.nim": "2023-11-19 20:31:33 +0900",
 "verify/str/rolling_hash_aoj_test.nim": "2023-11-19 20:31:33 +0900",
 "verify/str/rolling_hash_pun_test.nim": "2023-12-25 07:39:58 +0900",
