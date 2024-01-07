@@ -16,3 +16,4 @@ when not declared CPLIB_GRAPH_TOPOLOGICALSORT:
                 gin[j] -= 1
                 if gin[j] == 0:
                     stack.add(j)
+    proc isDAG*(G:DirectedGraph):bool=G.topologicalsort.len == G.N
