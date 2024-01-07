@@ -67,7 +67,7 @@ when not declared CPLIB_COLLECTIONS_SWAG:
         return len(self.bottom)+len(self.top)
     proc `[]`*[T](self: SWAG[T], index: int): T =
         if index >= len(self):
-            raise newException(IndexDefect, "index " & $index & " not in 0 .. " & len(self))
+            raise newException(IndexDefect, "index " & $index & " not in 0 .. " & $len(self))
         if index < len(self.top):
             return self.top[len(self.top)-1-index]
         return self.bottom[index-len(self.top)]
