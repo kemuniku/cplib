@@ -18,11 +18,17 @@ data:
   - name: cplib/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/SCC.nim
+      title: cplib/graph/SCC.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/reverse_edge.nim
+      title: cplib/graph/reverse_edge.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
@@ -138,6 +144,9 @@ data:
       title: verify/collections/segtree/segtree_xor2_test.nim
   - name: verify/graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/SCC_test.nim
+      title: verify/graph/SCC_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/restore_dijkstra_test.nim
       title: verify/graph/restore_dijkstra_test.nim
