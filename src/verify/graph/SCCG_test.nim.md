@@ -37,8 +37,8 @@ data:
     \ scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
     \ {.inline.} = scanf(\"%lld\\n\", addr result)\nvar N = ii()\nvar A = newseqwith(N,\
     \ ii())\nvar G = initUnWeightedDirectedGraph(N)\nvar ans = 0\nfor i in 0..<N:\n\
-    \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nvar group =\
-    \ G.SCC()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
+    \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nvar (_, _,\
+    \ group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/reverse_edge.nim
   - cplib/graph/SCC.nim
@@ -47,15 +47,15 @@ data:
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
-  path: verify/graph/SCC_test.nim
+  path: verify/graph/SCCG_test.nim
   requiredBy: []
   timestamp: '2024-01-08 08:28:16+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/graph/SCC_test.nim
+documentation_of: verify/graph/SCCG_test.nim
 layout: document
 redirect_from:
-- /verify/verify/graph/SCC_test.nim
-- /verify/verify/graph/SCC_test.nim.html
-title: verify/graph/SCC_test.nim
+- /verify/verify/graph/SCCG_test.nim
+- /verify/verify/graph/SCCG_test.nim.html
+title: verify/graph/SCCG_test.nim
 ---

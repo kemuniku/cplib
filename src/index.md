@@ -145,6 +145,9 @@ data:
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/graph/SCCG_test.nim
+      title: verify/graph/SCCG_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/SCC_test.nim
       title: verify/graph/SCC_test.nim
     - icon: ':heavy_check_mark:'

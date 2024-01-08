@@ -16,6 +16,12 @@ data:
     title: cplib/graph/SCC.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/graph/SCCG_test.nim
+    title: verify/graph/SCCG_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/SCCG_test.nim
+    title: verify/graph/SCCG_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/SCC_test.nim
     title: verify/graph/SCC_test.nim
   - icon: ':heavy_check_mark:'
@@ -52,6 +58,8 @@ data:
   verifiedWith:
   - verify/graph/SCC_test.nim
   - verify/graph/SCC_test.nim
+  - verify/graph/SCCG_test.nim
+  - verify/graph/SCCG_test.nim
 documentation_of: cplib/graph/reverse_edge.nim
 layout: document
 redirect_from:
