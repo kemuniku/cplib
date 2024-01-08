@@ -12,5 +12,5 @@ for i in 0..<N:
     G.add_edge(i, A[i]-1)
     if i == A[i]-1:
         ans += 1
-var group = G.SCC()
+var (_, _, group) = G.SCCG()
 echo group.mapit(len(it)).filterIt(it >= 2).sum()+ans
