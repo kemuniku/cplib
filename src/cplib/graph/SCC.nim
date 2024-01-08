@@ -25,7 +25,10 @@ when not declared CPLIB_GRAPH_SCC:
                 used[i] = true
                 fdfs(i)
 
-        var RG = reverse_edge(G)
+        var gout = newseq[seq[int]](G.N)
+        for i in 0..<G.N:
+            for (j,_) in G.edges[i]:
+                gout[j].add(i)
         var i_to_group = newSeqWith(G.N, -0)
         var group: seq[seq[int]]
         used = newSeqWith(G.N, false)
@@ -34,7 +37,7 @@ when not declared CPLIB_GRAPH_SCC:
         proc sdfs(x: int) =
             i_to_group[x] = count
             group[count].add(x)
-            for (i, _) in RG.edges[x]:
+            for i in gout[x]:
                 if not used[i]:
                     used[i] = true
                     sdfs(i)
