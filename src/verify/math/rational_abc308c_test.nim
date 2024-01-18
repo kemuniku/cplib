@@ -3,7 +3,7 @@ import algorithm, strutils, sequtils
 import cplib/math/rational
 
 var n = stdin.readLine.parseint
-var people: seq[(Rational, int)]
+var people: seq[(Rational[int], int)]
 for i in 0..<n:
     var a, b: int
     (a, b) = stdin.readLine.split.map parseInt

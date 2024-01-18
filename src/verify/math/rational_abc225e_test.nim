@@ -3,14 +3,14 @@ import strutils, sequtils, algorithm
 import cplib/math/rational
 
 var n = stdin.readLine.parseint
-var p = newSeq[(Rational, Rational)](n)
+var p = newSeq[(Rational[int], Rational[int])](n)
 for i in 0..<n:
     var x, y: int
     (x, y) = stdin.readLine.split.map parseInt
     var lower = initRational(y-1, x)
     var upper = if x != 1: initRational(y, x-1) else: initRational(int(2000000000), 1)
     p[i] = (lower, upper)
-p.sort(proc(x, y: (Rational, Rational)): int =
+p.sort(proc(x, y: (Rational[int], Rational[int])): int =
     if x[1] != y[1]: return cmp(x[1], y[1])
     return cmp(x[0], y[0])
 )
