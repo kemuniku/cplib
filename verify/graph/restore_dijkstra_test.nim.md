@@ -41,14 +41,14 @@ data:
   dependsOn:
   - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/graph/restore_dijkstra_test.nim
   requiredBy: []
-  timestamp: '2024-01-07 09:42:27+00:00'
+  timestamp: '2024-01-18 19:23:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/restore_dijkstra_test.nim

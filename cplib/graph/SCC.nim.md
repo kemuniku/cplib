@@ -69,10 +69,10 @@ data:
     \ != i_to_group[j]:\n                    newG.add_edge(i_to_group[i], i_to_group[j])\n\
     \        return (newG, i_to_group, group)\n"
   dependsOn:
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
+  - cplib/graph/reverse_edge.nim
   isVerificationFile: false
   path: cplib/graph/SCC.nim
   requiredBy: []
