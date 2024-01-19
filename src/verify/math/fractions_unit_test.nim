@@ -1,34 +1,34 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 echo "Hello World"
 import sequtils, math, sets, algorithm
-import cplib/math/rational
+import cplib/math/fractions
 
-var r = newSeq[Rational[int]](0)
+var r = newSeq[Fraction[int]](0)
 for i in -3..3:
     for j in -3..3:
         if i == 0 or j == 0: continue
-        r.add(initRational(i, j))
+        r.add(initFraction(i, j))
 for i in 1..2:
-    r.add(initRational(0, i))
-    r.add(initRational(0, -i))
+    r.add(initFraction(0, i))
+    r.add(initFraction(0, -i))
 for i in 1..2:
-    r.add(initRational(i, 0))
-    r.add(initRational(-i, 0))
+    r.add(initFraction(i, 0))
+    r.add(initFraction(-i, 0))
 var t = (-3..3).toSeq
 
 template assert_op(op1, op2: untyped) =
-    var x = initrational(1, 0)
+    var x = initFraction(1, 0)
     for i in r:
         for j in r:
-            if isNaN(x): x = initRational(1, 0)
+            if isNaN(x): x = initFraction(1, 0)
             var xi = x
             op2(x, i)
             assert op1(xi, i) == x or isNaN(x)
             assert (abs(op1(i, j).tofloat - op1(i.tofloat, j.tofloat)) <= 1e-10) or (op1(i.toFloat, j.toFloat).abs.classify == fcInf) or (op1(i.toFloat, j.toFloat).abs.classify == fcNan)
-    x = initrational(1, 0)
+    x = initFraction(1, 0)
     for i in r:
         for j in t:
-            if isNaN(x): x = initRational(1, 0)
+            if isNaN(x): x = initFraction(1, 0)
             var xi = x
             op2(x, i)
             assert op1(xi, i) == x or isNaN(x)
@@ -75,7 +75,7 @@ proc assert_cmp() =
             assert cmp(i.toFloat, j.toFloat) == cmp(i, j)
 assert_cmp()
 
-var st = initHashSet[Rational[int]](0)
+var st = initHashSet[Fraction[int]](0)
 for _ in 0..1:
     for ri in r:
         st.incl(ri)

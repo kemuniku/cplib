@@ -1,13 +1,13 @@
 # verification-helper: PROBLEM https://atcoder.jp/contests/abc308/tasks/abc308_c
 import algorithm, strutils, sequtils
-import cplib/math/rational
+import cplib/math/fractions
 
 var n = stdin.readLine.parseint
-var people: seq[(Rational[int], int)]
+var people: seq[(Fraction[int], int)]
 for i in 0..<n:
     var a, b: int
     (a, b) = stdin.readLine.split.map parseInt
-    var x = initRational(a, a+b)
+    var x = initFraction(a, a+b)
     people.add((x, -i-1))
 people.sort(Descending)
 echo people.mapit(-it[1]).join(" ")
