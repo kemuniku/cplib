@@ -49,6 +49,9 @@ data:
       path: cplib/math/euler_phi.nim
       title: cplib/math/euler_phi.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/fractions.nim
+      title: cplib/math/fractions.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/inner_math.nim
       title: cplib/math/inner_math.nim
     - icon: ':heavy_check_mark:'
@@ -216,6 +219,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/factorize_yosupo_test.nim
       title: verify/math/factorize_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/fractions_abc225e_test.nim
+      title: verify/math/fractions_abc225e_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/fractions_abc226d_test.nim
+      title: verify/math/fractions_abc226d_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/fractions_abc308c_test.nim
+      title: verify/math/fractions_abc308c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/fractions_unit_test.nim
+      title: verify/math/fractions_unit_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yosupo_test.nim
       title: verify/math/isprime_yosupo_test.nim
