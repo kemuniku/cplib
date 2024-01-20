@@ -26,10 +26,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   - icon: ':heavy_check_mark:'
@@ -58,6 +58,12 @@ data:
     path: verify/graph/restore_dijkstra_test.nim
     title: verify/graph/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/scc_abc335e_test.nim
+    title: verify/graph/scc_abc335e_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/scc_abc335e_test.nim
+    title: verify/graph/scc_abc335e_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/shortest_path_test.nim
     title: verify/graph/shortest_path_test.nim
   - icon: ':heavy_check_mark:'
@@ -81,6 +87,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/unweighted_directed_graph_aoj_test.nim
     title: verify/graph/unweighted_directed_graph_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/prufer_abc328e_test.nim
+    title: verify/tree/prufer_abc328e_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/prufer_abc328e_test.nim
+    title: verify/tree/prufer_abc328e_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
@@ -150,6 +162,8 @@ data:
   verifiedWith:
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
+  - verify/tree/prufer_abc328e_test.nim
+  - verify/tree/prufer_abc328e_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/graph/unweighted_directed_graph_aoj_test.nim
@@ -162,6 +176,8 @@ data:
   - verify/graph/topologicalsort_1_test.nim
   - verify/graph/topologicalsort_2_test.nim
   - verify/graph/topologicalsort_2_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/scc_abc335e_test.nim
   - verify/graph/shortest_path_test.nim
   - verify/graph/shortest_path_test.nim
   - verify/graph/restore_dijkstra_test.nim

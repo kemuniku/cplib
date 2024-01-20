@@ -8,13 +8,19 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/prufer_abc328e_test.nim
+    title: verify/tree/prufer_abc328e_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/prufer_abc328e_test.nim
+    title: verify/tree/prufer_abc328e_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
@@ -63,6 +69,8 @@ data:
   verifiedWith:
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
+  - verify/tree/prufer_abc328e_test.nim
+  - verify/tree/prufer_abc328e_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
 documentation_of: cplib/tree/tree.nim
