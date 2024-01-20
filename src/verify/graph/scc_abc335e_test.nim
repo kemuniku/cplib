@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://atcoder.jp/contests/abc296/tasks/abc335_e
+# verification-helper: PROBLEM https://atcoder.jp/contests/abc335/tasks/abc335_e
 import strutils, sequtils
 import cplib/graph/graph
 import cplib/graph/SCC
