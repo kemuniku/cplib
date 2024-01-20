@@ -87,7 +87,7 @@ data:
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
     - icon: ':heavy_check_mark:'
@@ -107,6 +107,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
+  - name: verify/str
+    pages:
+    - icon: ':warning:'
+      path: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+      title: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
   verificationCategories:
   - name: verify/collections
     pages:
@@ -156,6 +161,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/restore_dijkstra_test.nim
       title: verify/graph/restore_dijkstra_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/scc_abc335e_test.nim
+      title: verify/graph/scc_abc335e_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/shortest_path_test.nim
       title: verify/graph/shortest_path_test.nim
@@ -252,6 +260,9 @@ data:
       path: verify/str/rolling_hash_pun_test.nim
       title: verify/str/rolling_hash_pun_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+      title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/str/run_length_encode_test.nim
       title: verify/str/run_length_encode_test.nim
   - name: verify/tmpl
@@ -261,6 +272,9 @@ data:
       title: verify/tmpl/citrus_and_qcfium_test.nim
   - name: verify/tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/prufer_abc328e_test.nim
+      title: verify/tree/prufer_abc328e_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/tree/tree_atcoder_test.nim
       title: verify/tree/tree_atcoder_test.nim

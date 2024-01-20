@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+    title: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+  - icon: ':warning:'
+    path: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+    title: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_abcbac_test.nim
@@ -21,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_pun_test.nim
     title: verify/str/rolling_hash_pun_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+    title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+    title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -69,10 +81,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/rolling_hash.nim
-  requiredBy: []
+  requiredBy:
+  - verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+  - verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
   timestamp: '2023-11-19 20:31:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_aoj_test.nim
   - verify/str/rolling_hash_aoj_test.nim
   - verify/str/rolling_hash_abcbac_test.nim

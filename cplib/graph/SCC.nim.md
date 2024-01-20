@@ -27,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/SCC_test.nim
     title: verify/graph/SCC_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/scc_abc335e_test.nim
+    title: verify/graph/scc_abc335e_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/scc_abc335e_test.nim
+    title: verify/graph/scc_abc335e_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -70,9 +76,9 @@ data:
     \        return (newG, i_to_group, group)\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/reverse_edge.nim
   isVerificationFile: false
   path: cplib/graph/SCC.nim
   requiredBy: []
@@ -83,6 +89,8 @@ data:
   - verify/graph/SCC_test.nim
   - verify/graph/SCCG_test.nim
   - verify/graph/SCCG_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/scc_abc335e_test.nim
 documentation_of: cplib/graph/SCC.nim
 layout: document
 redirect_from:

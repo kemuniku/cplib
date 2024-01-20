@@ -69,13 +69,13 @@ data:
     \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/math/primefactor.nim
   isVerificationFile: false
   path: cplib/math/divisor.nim
   requiredBy: []
