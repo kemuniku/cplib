@@ -3,7 +3,6 @@ import strutils, sequtils
 import cplib/graph/graph
 import cplib/graph/SCC
 
-
 var n, m: int
 (n, m) = stdin.readline.split.map parseInt
 var a = stdin.readLine.split.map parseInt
