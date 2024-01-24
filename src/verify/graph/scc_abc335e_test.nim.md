@@ -44,10 +44,10 @@ data:
     \ max(dp[j], dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
-  - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/graph/scc_abc335e_test.nim

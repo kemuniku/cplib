@@ -17,7 +17,7 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
     links:
@@ -39,20 +39,20 @@ data:
     \ 2))\n        var x = meguru_bisect(0, mx+1, isok)\n        ans[i] = x * 2\n\
     echo ans.join(\" \")\n"
   dependsOn:
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
-  isVerificationFile: false
-  path: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+  - cplib/utils/binary_search.nim
+  isVerificationFile: true
+  path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   requiredBy: []
-  timestamp: '2024-01-20 09:29:29+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2024-01-24 11:30:33+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+documentation_of: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
 layout: document
 redirect_from:
-- /library/verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
-- /library/verify/str/rolling_hash_yosupo_enumerate_palindromes.nim.html
-title: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
+- /verify/verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
+- /verify/verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim.html
+title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
 ---
