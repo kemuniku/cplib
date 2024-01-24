@@ -29,8 +29,9 @@ data:
     \ = iterator(getsChar: bool = false): string {.closure.} =\n        while true:\n\
     \            var si: string\n            try: si = stdin.readLine\n          \
     \  except EOFError: yield \"\"\n            for s in si.split:\n             \
-    \   if getsChar:\n                    for i in 0..<s.len(): yield s[i..i]\n  \
-    \              else:\n                    yield s\n    proc input*(t: typedesc[string]):\
+    \   if getsChar:\n                    for i in 0..<s.len():\n                \
+    \        yield s[i..i]\n                else:\n                    if s.isEmptyOrWhitespace:\
+    \ continue\n                    yield s\n    proc input*(t: typedesc[string]):\
     \ string = readNext()\n    proc input*(t: typedesc[char]): char = readNext(true)[0]\n\
     \    proc input*(t: typedesc[int]): int = readNext().parseInt\n    proc input*(t:\
     \ typedesc[float]): float = readNext().parseFloat\n    macro input*(t: typedesc,\
@@ -42,87 +43,69 @@ data:
     \  for typ in ts:\n            if typ.typeKind != ntyAnything:\n             \
     \   error(\"Expected typedesc, got \" & typ.repr, typ)\n        parseExpr(&\"\
     ({n.repr}).newSeqWith input({ts.repr})\")\n    proc `fmtprint`*(x: int or string\
-    \ or char): string = return $x\n    proc `fmtprint`*(x: float or float32 or\n\
-    \            float64): string = return &\"{x:.16f}\"\n    proc `fmtprint`*[T](x:\
-    \ seq[T] or Deque[T] or HashSet[T] or set[\n            T]): string = return x.toSeq.join(\"\
-    \ \")\n    proc `fmtprint`*[T, N](x: array[T, N]): string = return x.toSeq.join(\"\
-    \ \")\n    proc `fmtprint`*[T](x: HeapQueue[T]): string =\n        var q = x\n\
-    \        while q.len != 0:\n            result &= &\"{q.pop()}\"\n           \
-    \ if q.len != 0: result &= \" \"\n    proc `fmtprint`*[T](x: CountTable[T]): string\
+    \ or char or bool): string = return $x\n    proc `fmtprint`*(x: float or float32\
+    \ or float64): string = return &\"{x:.16f}\"\n    proc `fmtprint`*[T](x: seq[T]\
+    \ or Deque[T] or HashSet[T] or set[T]): string = return x.toSeq.join(\" \")\n\
+    \    proc `fmtprint`*[T, N](x: array[T, N]): string = return x.toSeq.join(\" \"\
+    )\n    proc `fmtprint`*[T](x: HeapQueue[T]): string =\n        var q = x\n   \
+    \     while q.len != 0:\n            result &= &\"{q.pop()}\"\n            if\
+    \ q.len != 0: result &= \" \"\n    proc `fmtprint`*[T](x: CountTable[T]): string\
     \ =\n        result = x.pairs.toSeq.mapIt(&\"{it[0]}: {it[1]}\").join(\" \")\n\
     \    proc `fmtprint`*[K, V](x: Table[K, V]): string =\n        result = x.pairs.toSeq.mapIt(&\"\
     {it[0]}: {it[1]}\").join(\" \")\n    proc print*(prop: tuple[f: File, sepc: string,\
-    \ endc: string, flush: bool],\n            args: varargs[string, `fmtprint`])\
-    \ =\n        for i in 0..<len(args):\n            prop.f.write(&\"{args[i]}\"\
-    )\n            if i != len(args) - 1: prop.f.write(prop.sepc) else: prop.f.write(prop.endc)\n\
+    \ endc: string, flush: bool], args: varargs[string, `fmtprint`]) =\n        for\
+    \ i in 0..<len(args):\n            prop.f.write(&\"{args[i]}\")\n            if\
+    \ i != len(args) - 1: prop.f.write(prop.sepc) else: prop.f.write(prop.endc)\n\
     \        if prop.flush: prop.f.flushFile()\n    proc print*(args: varargs[string,\
-    \ `fmtprint`]) = print((f: stdout,\n            sepc: \" \", endc: \"\\n\", flush:\
-    \ false), args)\n    proc inner_debug*(x: auto) = print((f: stderr, sepc: \"\"\
-    , endc: \"\",\n            flush: true), x)\n    const LOCAL_DEBUG{.booldefine.}\
-    \ = false\n    macro debug*(n: varargs[typed]): untyped =\n        when LOCAL_DEBUG:\n\
-    \            result = newNimNode(nnkStmtList, n)\n            for i in 0..n.len-1:\n\
-    \                if n[i].kind == nnkStrLit:\n                    result.add(newCall(\"\
-    inner_debug\", n[i]))\n                    result.add(newCall(\"inner_debug\"\
-    , newStrLitNode(\": \")))\n                    result.add(newCall(\"inner_debug\"\
-    , n[i]))\n                else:\n                    result.add(newCall(\"inner_debug\"\
-    , toStrLit(n[i])))\n                    result.add(newCall(\"inner_debug\", newStrLitNode(\"\
-    : \")))\n                    result.add(newCall(\"inner_debug\", n[i]))\n    \
-    \            if i != n.len-1:\n                    result.add(newCall(\"inner_debug\"\
-    , newStrLitNode(\", \")))\n                else:\n                    result.add(newCall(\"\
-    inner_debug\", newStrLitNode(\"\\n\")))\n        else:\n            return quote\
-    \ do:\n                discard\n    proc `%`*(x: SomeInteger, y: SomeInteger):\
-    \ int = (((x mod y) + y) mod y)\n    proc `//`*(x: int, y: int): int = ((x - (x%y))\
-    \ div y)\n    proc `^`*(x: int, y: int): int = x xor y\n    proc `&`*(x: int,\
-    \ y: int): int = x and y\n    proc `|`*(x: int, y: int): int = x or y\n    proc\
-    \ `>>`*(x: int, y: int): int = x shr y\n    proc `<<`*(x: int, y: int): int =\
-    \ x shl y\n    proc `%=`*(x: var SomeInteger or int64, y: SomeInteger or\n   \
-    \         int64): void = x = x % y\n    proc `//=`*(x: var int, y: int): void\
-    \ = x = x // y\n    proc `^=`*(x: var int, y: int): void = x = x ^ y\n    proc\
-    \ `&=`*(x: var int, y: int): void = x = x & y\n    proc `|=`*(x: var int, y: int):\
-    \ void = x = x | y\n    proc `>>=`*(x: var int, y: int): void = x = x >> y\n \
-    \   proc `<<=`*(x: var int, y: int): void = x = x << y\n    proc `[]`*(x: int,\
-    \ n: int): bool = (x and (1 shl n)) != 0\n\n    proc pow*(a, n: int, m = INFL):\
-    \ int =\n        var\n            rev = 1\n            a = a\n            n =\
-    \ n\n        while n > 0:\n            if n % 2 != 0: rev = (rev * a) mod m\n\
-    \            if n > 1: a = (a * a) mod m\n            n >>= 1\n        return\
-    \ rev\n    proc sqrt*(x: int): int =\n        assert(x >= 0)\n        result =\
-    \ int(sqrt(float64(x)))\n        while result * result > x: result -= 1\n    \
-    \    while (result+1) * (result+1) <= x: result += 1\n    proc chmax*[T](x: var\
-    \ T, y: T): bool = (if x < y: (x = y; return true;\n        ) return false)\n\
-    \    proc chmin*[T](x: var T, y: T): bool = (if x > y: (x = y; return true;\n\
-    \        ) return false)\n    proc `max=`*[T](x: var T, y: T) = x = max(x, y)\n\
-    \    proc `min=`*[T](x: var T, y: T) = x = min(x, y)\n    proc at*(x: char, a\
-    \ = '0'): int = int(x) - int(a)\n    converter tofloat*(n: int): float = float(n)\n\
-    \    iterator rangeiter*(start: int, ends: int, step: int): int =\n        var\
-    \ i = start\n        if step < 0:\n            while i > ends:\n             \
-    \   yield i\n                i += step\n        elif step > 0:\n            while\
-    \ i < ends:\n                yield i\n                i += step\n    iterator\
-    \ rangeiter*(ends: int): int = (for i in 0..<ends: yield i)\n    iterator rangeiter*(start:\
-    \ int, ends: int): int = (for i in\n            start..<ends: yield i)\n    proc\
-    \ Yes*(b: bool = true): void = print(if b: \"Yes\" else: \"No\")\n    proc No*(b:\
-    \ bool = true): void = Yes(not b)\n    proc YES_upper*(b: bool = true): void =\
-    \ print(if b: \"YES\" else: \"NO\")\n    proc NO_upper*(b: bool = true): void\
-    \ = Yes_upper(not b)\n    const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]\n  \
-    \  const DDXY* = [(1, -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0),\n\
-    \            (-1, 1)]\n    macro exit*(statement: untyped): untyped =\n      \
-    \  quote do:\n            `statement`\n            quit()\n    proc vector*[T](d1,\
-    \ : int, default: T = T(0)): seq[T] = newSeqWith(d1, default)\n    proc vv*[T](d1,\
-    \ d2: int, default: T = T(0)): seq[seq[T]] = newSeqWith(d1,\n            newSeqWith(d2,\
-    \ default))\n    proc vvv*[T](d1, d2, d3: int, default: T = T(0)): seq[seq[seq[\n\
-    \            T]]] = newSeqWith(d1, newSeqWith(d2, newSeqWith(d3, default)))\n\
-    \    proc vvvv*[T](d1, d2, d3, d4: int, default: T = T(0)): seq[seq[seq[seq[\n\
-    \            T]]]] = newSeqWith(d1, newSeqWith(d2, newSeqWith(d3, newSeqWith(d4,\
-    \ default))))\n    proc vvvvv*[T](d1, d2, d3, d4, d5: int, default: T = T(0)):\
-    \ seq[seq[seq[seq[\n            seq[T]]]]] = newSeqWith(d1, newSeqWith(d2, newSeqWith(d3,\n\
-    \            newSeqWith(d4, newSeqWith(d5, default)))))\n    proc vvvvvv*[T](d1,\
-    \ d2, d3, d4, d5, d6: int, default: T = T(0)): seq[seq[\n            seq[seq[seq[seq[T]]]]]]\
-    \ = newSeqWith(d1, newSeqWith(d2, newSeqWith(\n            d3, newSeqWith(d4,\
-    \ newSeqWith(d5, newSeqWith(d6, default))))))\n"
+    \ `fmtprint`]) = print((f: stdout, sepc: \" \", endc: \"\\n\", flush: false),\
+    \ args)\n    const LOCAL_DEBUG{.booldefine.} = false\n    macro getSymbolName(x:\
+    \ typed): string = x.toStrLit\n    macro debug*(args: varargs[untyped]): untyped\
+    \ =\n        when LOCAL_DEBUG:\n            result = newNimNode(nnkStmtList, args)\n\
+    \            template prop(e: string = \"\"): untyped = (f: stderr, sepc: \"\"\
+    , endc: e, flush: true)\n            for i, arg in args:\n                if arg.kind\
+    \ == nnkStrLit:\n                    result.add(quote do: print(prop(), \"\\\"\
+    \", `arg`, \"\\\"\"))\n                else:\n                    result.add(quote\
+    \ do: print(prop(\": \"), getSymbolName(`arg`)))\n                    result.add(quote\
+    \ do: print(prop(), `arg`))\n                if i != args.len - 1: result.add(quote\
+    \ do: print(prop(), \", \"))\n                else: result.add(quote do: print(prop(),\
+    \ \"\\n\"))\n        else:\n            return (quote do: discard)\n    proc `%`*(x:\
+    \ SomeInteger, y: SomeInteger): int = (((x mod y) + y) mod y)\n    proc `//`*(x:\
+    \ SomeInteger, y: SomeInteger): int = ((x - (x % y)) div y)\n    proc `^`*(x:\
+    \ SomeInteger, y: SomeInteger): int = x xor y\n    proc `&`*(x: SomeInteger, y:\
+    \ SomeInteger): int = x and y\n    proc `|`*(x: SomeInteger, y: SomeInteger):\
+    \ int = x or y\n    proc `>>`*(x: SomeInteger, y: SomeInteger): int = x shr y\n\
+    \    proc `<<`*(x: SomeInteger, y: SomeInteger): int = x shl y\n    proc `%=`*(x:\
+    \ var SomeInteger, y: SomeInteger): void = x = x % y\n    proc `//=`*(x: var SomeInteger,\
+    \ y: SomeInteger): void = x = x // y\n    proc `^=`*(x: var SomeInteger, y: SomeInteger):\
+    \ void = x = x ^ y\n    proc `&=`*(x: var SomeInteger, y: SomeInteger): void =\
+    \ x = x & y\n    proc `|=`*(x: var SomeInteger, y: SomeInteger): void = x = x\
+    \ | y\n    proc `>>=`*(x: var SomeInteger, y: SomeInteger): void = x = x >> y\n\
+    \    proc `<<=`*(x: var SomeInteger, y: SomeInteger): void = x = x << y\n    proc\
+    \ `[]`*(x, n: int): bool = (x and (1 shl n)) != 0\n    proc `[]=`*(x: var int,\
+    \ n: int, i: bool) =\n        if i: x = x or (1 << n)\n        else: (if x[n]:\
+    \ x = x xor (1 << n))\n    proc pow*(a, n: int, m = INFL): int =\n        var\n\
+    \            rev = 1\n            a = a\n            n = n\n        while n >\
+    \ 0:\n            if n % 2 != 0: rev = (rev * a) mod m\n            if n > 1:\
+    \ a = (a * a) mod m\n            n >>= 1\n        return rev\n    proc sqrt*(x:\
+    \ int): int =\n        assert(x >= 0)\n        result = int(sqrt(float64(x)))\n\
+    \        while result * result > x: result -= 1\n        while (result+1) * (result+1)\
+    \ <= x: result += 1\n    proc chmax*[T](x: var T, y: T): bool {.discardable.}\
+    \ = (if x < y: (x = y; return true; ) return false)\n    proc chmin*[T](x: var\
+    \ T, y: T): bool {.discardable.} = (if x > y: (x = y; return true; ) return false)\n\
+    \    proc `max=`*[T](x: var T, y: T) = x = max(x, y)\n    proc `min=`*[T](x: var\
+    \ T, y: T) = x = min(x, y)\n    proc at*(x: char, a = '0'): int = int(x) - int(a)\n\
+    \    converter tofloat*(n: int): float = float(n)\n    proc Yes*(b: bool = true):\
+    \ void = print(if b: \"Yes\" else: \"No\")\n    proc No*(b: bool = true): void\
+    \ = Yes(not b)\n    proc YES_upper*(b: bool = true): void = print(if b: \"YES\"\
+    \ else: \"NO\")\n    proc NO_upper*(b: bool = true): void = Yes_upper(not b)\n\
+    \    const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]\n    const DDXY* = [(1, -1),\
+    \ (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1)]\n    macro exit*(statement:\
+    \ untyped): untyped = (quote do: (`statement`; quit()))\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2023-11-02 03:54:12+09:00'
+  timestamp: '2024-01-24 11:20:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
