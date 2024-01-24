@@ -43,14 +43,14 @@ data:
 
     '
   dependsOn:
-  - cplib/tmpl/citrus.nim
   - cplib/tmpl/qcfium.nim
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/qcfium.nim
+  - cplib/tmpl/citrus.nim
   isVerificationFile: true
   path: verify/tmpl/citrus_and_qcfium_test.nim
   requiredBy: []
-  timestamp: '2024-01-24 11:20:06+09:00'
+  timestamp: '2024-01-24 11:35:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tmpl/citrus_and_qcfium_test.nim
