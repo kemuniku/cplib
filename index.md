@@ -107,11 +107,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
-  - name: verify/str
-    pages:
-    - icon: ':warning:'
-      path: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
-      title: verify/str/rolling_hash_yosupo_enumerate_palindromes.nim
   verificationCategories:
   - name: verify/collections
     pages:
@@ -259,6 +254,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_pun_test.nim
       title: verify/str/rolling_hash_pun_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
+      title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
       title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
