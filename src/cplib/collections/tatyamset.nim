@@ -1,14 +1,15 @@
 # https://github.com/tatyam-prime/SortedSet/blob/main/SortedMultiset.py
 when not declared CPLIB_COLLECTIONS_TATYAMSET:
     import algorithm,math,sequtils,sugar
+    import options
     const CPLIB_COLLECTIONS_TATYAMSET* = 1
     
     const BUCKET_RATIO = 8
     const SPLIT_RATIO = 3
-    type SortedMultiSet[T] = ref object
+    type SortedMultiSet*[T] = ref object
         size :int
         arr* :seq[seq[T]] 
-    proc initSortedMultiset*[T](v:seq[T]):SortedMultiSet[T]=
+    proc initSortedMultiset*[T](v:seq[T]= @[]):SortedMultiSet[T]=
         #Make a new SortedMultiset from seq. / O(N) if sorted / O(N log N)
         var v = v
         if not isSorted(v):
@@ -65,13 +66,14 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
             self.arr.insert(self.arr[b][mid..<len(self.arr[b])],b+1)
             self.arr[b] = self.arr[b][0..<mid]
 
-    proc innerpop[T](self:SortedMultiSet[T], b: int, i: int):T=
+    proc innerpop[T](self:SortedMultiSet[T], b: int, i: int):T{.discardable.}=
         var b = b
         if b < 0:
             b = self.size + b
-        var ans = self.arr[b].pop(i)
+        var ans = self.arr[b][i]
+        self.arr[b].delete(i)
         self.size -= 1
-        if len(self.arr) == 0: self.a.delete(b)
+        if len(self.arr[b]) == 0: self.arr.delete(b)
         return ans
 
     proc excl*[T](self:SortedMultiSet[T], x: T):bool{.discardable.}=
@@ -82,35 +84,36 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
         self.innerpop(b, i)
         return true
 
-    proc lt*[T](self:SortedMultiSet[T], x: T):T=
+    proc lt*[T](self:SortedMultiSet[T], x: T):Option[T]=
         #"Find the largest element < x, or None if it doesn't exist."
         for i in countdown(len(self.arr)-1,0,1):
             if self.arr[i][0] < x:
-                return self.arr[i][lowerBound(self.arr[i], x) - 1]
-        return nil
+                return some(self.arr[i][lowerBound(self.arr[i], x) - 1])
+        return none(T)
 
-    proc le*[T](self:SortedMultiSet[T], x: T):T=
+    proc le*[T](self:SortedMultiSet[T], x: T):Option[T]=
         #"Find the largest element <= x, or None if it doesn't exist."
         for i in countdown(len(self.arr)-1,0,1):
             if self.arr[i][0] <= x:
-                return self.arr[i][upperBound(self.arr[i], x) - 1]
-        return nil
+                return some(self.arr[i][upperBound(self.arr[i], x) - 1])
+        return none(T)
 
-    proc gt*[T](self:SortedMultiSet[T], x: T):T=
+    proc gt*[T](self:SortedMultiSet[T], x: T):Option[T]=
         #"Find the smallest element > x, or None if it doesn't exist."
         for i in 0..<len(self.arr):
             if self.arr[i][^1] > x:
-                return self.arr[i][upperBound(self.arr[i], x)]
-        return nil
+                return some(self.arr[i][upperBound(self.arr[i], x)])
+        return none(T)
 
-    proc ge*[T](self:SortedMultiSet[T], x: T):T=
+    proc ge*[T](self:SortedMultiSet[T], x: T):Option[T]=
         #"Find the smallest element >= x, or None if it doesn't exist."
         for i in 0..<len(self.arr):
             if self.arr[i][^1] >= x:
-                return self.arr[i][lowerBound(self.arr[i], x)]
-        return nil
+                return some(self.arr[i][lowerBound(self.arr[i], x)])
+        return none(T)
     
     proc `[]`*[T](self:SortedMultiSet[T], i: int):T=
+        var i = i
         #"Return the i-th element."
         if i < 0:
             for j in countdown(len(self.arr)-1,0,1):
@@ -120,7 +123,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
             for j in 0..<len(self.arr):
                 if i < len(self.arr[j]): return self.arr[j][i]
                 i -= len(self.arr[j])
-        raise newException(IndexDefect, "index " & $i & " not in 0 .. " & $self.size-1)
+        raise newException(IndexDefect, "index " & $i & " not in 0 .. " & $(self.size-1))
     
     proc pop*[T](self:SortedMultiSet[T], i: int = -1):T=
         #"Pop and return the i-th element."
