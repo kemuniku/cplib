@@ -5,7 +5,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
     const CPLIB_COLLECTIONS_TATYAMSET* = 1
     
     const BUCKET_RATIO = 8
-    const SPLIT_RATIO = 3
+    const SPLIT_RATIO = 12
     type SortedMultiSet*[T] = ref object
         size :int
         arr* :seq[seq[T]] 
@@ -18,10 +18,6 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
         var bucket_size = int(ceil(sqrt(n/BUCKET_RATIO)))
         var arr = collect(newseq): (for i in 0..<bucket_size: v[(n*i div bucket_size) ..< (n*(i+1) div bucket_size)])
         result = SortedMultiSet[T](size:n,arr:arr)
-
-    # def __iter__(self) -> Iterator[T]:
-    #     for i in self.a:
-    #         for j in i: yield j
 
     # def __reversed__(self) -> Iterator[T]:
     #     for i in reversed(self.a):
@@ -127,6 +123,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
     
     proc pop*[T](self:SortedMultiSet[T], i: int = -1):T=
         #"Pop and return the i-th element."
+        var i = i
         if i < 0:
             for b in countdown(len(self.arr)-1,0,1):
                 i += len(self.arr[b])
@@ -135,7 +132,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
             for b in 0..<len(self.arr):
                 if i < len(self.arr[b]): return self.innerpop(b, i)
                 i -= len(self.arr[b])
-        raise newException(IndexDefect, "index " & $i & " not in 0 .. " & $self.size-1)
+        raise newException(IndexDefect, "index " & $i & " not in 0 .. " & $(self.size-1))
 
     proc index*[T](self:SortedMultiSet[T], x: T):int=
         #"Count the number of elements < x."
@@ -153,3 +150,8 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
     proc count*[T](self:SortedMultiSet[T], x: T):int=
         #"Count the number of x."
         return self.index_right(x) - self.index(x)
+
+    iterator items*[T](self:SortedMultiSet[T]):T=
+        for i in 0..<len(self.arr):
+            for j in self.arr[i]:
+                yield j
