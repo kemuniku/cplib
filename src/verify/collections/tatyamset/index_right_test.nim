@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://atcoder.jp/contests/arc075/tasks/arc075_c
+# verification-helper: PROBLEM https://atcoder.jp/contests/arc075/tasks/arc075_e
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import sequtils
