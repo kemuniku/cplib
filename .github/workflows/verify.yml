@@ -5,6 +5,7 @@ on:
     branches:
     - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   verify:
@@ -82,6 +83,7 @@ jobs:
         run: cd src && oj-verify all -j 4 --tle 10
 
       - name: Clear Verify Cache
+        if: always()
         id: clear-verify-cache
         run: |
           gh extension install actions/gh-actions-cache
@@ -97,6 +99,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save Verify Cache
+        if: always()
         id: same-verify-cache
         uses: actions/cache/save@v4
         with:
