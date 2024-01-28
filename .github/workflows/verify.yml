@@ -69,3 +69,11 @@ jobs:
           YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
         run: cd src && oj-verify all --tle 10
+
+      - name: Cache cases
+        id: cache-verify
+        uses: actions/cache@v1
+        with:
+          path: src/.verify-helper
+          key: ${{ runner.os }}-verify-cases-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-verify-cases-
