@@ -10,6 +10,10 @@ jobs:
   verify:
     runs-on: ubuntu-latest
 
+    permissions:
+      actions: write
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,17 +25,16 @@ jobs:
       - name: Install dependencies
         run: pip3 install -U online-judge-verify-helper
 
-      # required only if you want to verify Nim code
       - name: Cache choosenim
         id: cache-choosenim
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.choosenim
           key: ${{ runner.os }}-choosenim-stable
 
       - name: Cache nimble
         id: cache-nimble
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-stable
@@ -43,6 +46,14 @@ jobs:
       - name: Install Dependency
         id: install-dependency
         run: nimble install https://github.com/zer0-star/Nim-ACL -N
+
+      - name: Restore Verify Cache
+        id: restore-verify-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: src/.verify-helper/cache
+          key: ${{ runner.os }}-verify-cases-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-verify-cases-
 
       - name: Get dropbox token
         env:
@@ -68,4 +79,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: cd src && oj-verify all --tle 10
+        run: cd src && oj-verify all -j 4 --tle 10
+
+      - name: Clear Verify Cache
+        id: clear-verify-cache
+        run: |
+          gh extension install actions/gh-actions-cache
+          REPO=${{ github.repository }}
+          cacheKeys=$(gh actions-cache list -R $REPO --key ${{ runner.os }}-verify-cases | cut -f 1 )
+          set +e
+          for cacheKey in $cacheKeys
+          do
+            echo "Deleting caches... $cacheKey"
+            gh actions-cache delete $cacheKey -R $REPO --confirm
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save Verify Cache
+        id: same-verify-cache
+        uses: actions/cache/save@v4
+        with:
+          path: src/.verify-helper/cache
+          key: ${{ runner.os }}-verify-cases-${{ github.sha }}
