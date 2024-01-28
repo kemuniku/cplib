@@ -23,6 +23,7 @@
 "verify/judge/abc051a_atcoder_test.nim": "2023-11-11 17:30:49 +0900",
 "verify/judge/aplusb_library_checker_test.nim": "2023-11-14 07:01:38 +0900",
 "verify/judge/decimal_yukicoder_test.nim": "2023-11-03 12:47:02 +0900",
+"verify/judge/gcd_test.nim": "2024-01-28 10:32:21 +0900",
 "verify/judge/hello_world_aoj_test.nim": "2023-11-04 05:12:26 +0900",
 "verify/judge/hello_world_yukicoder_test.nim": "2023-11-03 12:47:02 +0900",
 "verify/math/combination_npr_test.nim": "2023-12-25 07:39:58 +0900",
