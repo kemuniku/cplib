@@ -13,6 +13,9 @@ data:
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/tatyamset.nim
+      title: cplib/collections/tatyamset.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
   - name: cplib/graph
@@ -107,6 +110,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
+  - name: verify/collections/tatyamset
+    pages:
+    - icon: ':warning:'
+      path: verify/collections/tatyamset/ABC337_test_.nim
+      title: verify/collections/tatyamset/ABC337_test_.nim
   verificationCategories:
   - name: verify/collections
     pages:
@@ -145,6 +153,29 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_xor2_test.nim
       title: verify/collections/segtree/segtree_xor2_test.nim
+  - name: verify/collections/tatyamset
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/ABC217_gele_test.nim
+      title: verify/collections/tatyamset/ABC217_gele_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/ABC217_gtlt_test.nim
+      title: verify/collections/tatyamset/ABC217_gtlt_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/ABC217_index_test.nim
+      title: verify/collections/tatyamset/ABC217_index_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/ABC234D_access_test.nim
+      title: verify/collections/tatyamset/ABC234D_access_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/ABC236_test.nim
+      title: verify/collections/tatyamset/ABC236_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/ABC294_test.nim
+      title: verify/collections/tatyamset/ABC294_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/index_right_test.nim
+      title: verify/collections/tatyamset/index_right_test.nim
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'

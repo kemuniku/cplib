@@ -24,7 +24,7 @@ data:
     import sequtils, sugar\nimport cplib/collections/segtree\n\nproc scanf(formatstr:\
     \ cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
     %lld\\n\", addr result)\n\nvar N, Q = ii()\nvar A = newSeqWith(N, ii())\nvar st\
-    \ = initSegmentTree(A, (a, b: int)=>a + b, 0)\nfor i in 0..<Q:\n    var L,R =\
+    \ = initSegmentTree(A, (a, b: int)=>a + b, 0)\nfor i in 0..<Q:\n    var L, R =\
     \ ii()\n    echo st.get(L..<R)\n"
   dependsOn:
   - cplib/collections/segtree.nim
@@ -32,7 +32,7 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree/segtree_static_test.nim
   requiredBy: []
-  timestamp: '2023-12-04 23:06:36+09:00'
+  timestamp: '2024-01-28 10:52:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_static_test.nim

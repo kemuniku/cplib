@@ -43,8 +43,8 @@ data:
   - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/SCC_test.nim
