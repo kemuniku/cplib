@@ -11,8 +11,8 @@ var st = initSegmentTree(A, (a, b: int)=>a + b, 0)
 for i in 0..<Q:
     var T = ii()
     if T == 0:
-        var p,x = ii()
-        st.update(p,st.get(p,p+1) + x)
+        var p, x = ii()
+        st.update(p, st.get(p, p+1) + x)
     else:
-        var l,r = ii()
-        echo st.get(l,r)
+        var l, r = ii()
+        echo st.get(l, r)

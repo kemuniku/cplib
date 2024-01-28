@@ -1,6 +1,6 @@
 # verification-helper: PROBLEM https://atcoder.jp/contests/abc236/tasks/abc236_c
 import cplib/collections/tatyamset
-import sequtils,strutils
+import sequtils, strutils
 discard stdin.readLine
 var S = stdin.readLine.split()
 var T = stdin.readLine.split()

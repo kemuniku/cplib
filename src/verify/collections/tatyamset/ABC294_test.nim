@@ -3,7 +3,7 @@ proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import sequtils
 import cplib/collections/tatyamset
-let N,Q = ii()
+let N, Q = ii()
 var st1 = initSortedMultiset((1..N).toseq())
 var st2 = initSortedMultiset[int]()
 
