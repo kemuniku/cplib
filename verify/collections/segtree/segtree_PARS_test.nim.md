@@ -25,15 +25,15 @@ data:
     \ cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
     %lld\\n\", addr result)\n\nvar N, Q = ii()\nvar A = newSeqWith(N, ii())\nvar st\
     \ = initSegmentTree(A, (a, b: int)=>a + b, 0)\nfor i in 0..<Q:\n    var T = ii()\n\
-    \    if T == 0:\n        var p,x = ii()\n        st.update(p,st.get(p,p+1) + x)\n\
-    \    else:\n        var l,r = ii()\n        echo st.get(l,r)\n"
+    \    if T == 0:\n        var p, x = ii()\n        st.update(p, st.get(p, p+1)\
+    \ + x)\n    else:\n        var l, r = ii()\n        echo st.get(l, r)\n"
   dependsOn:
   - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/collections/segtree/segtree_PARS_test.nim
   requiredBy: []
-  timestamp: '2023-12-04 23:06:36+09:00'
+  timestamp: '2024-01-28 10:52:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_PARS_test.nim
