@@ -36,7 +36,7 @@ data:
   isVerificationFile: true
   path: verify/collections/SWAG_test.nim
   requiredBy: []
-  timestamp: '2024-01-07 15:42:30+09:00'
+  timestamp: '2024-01-28 11:14:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/SWAG_test.nim
