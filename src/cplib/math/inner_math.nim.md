@@ -79,29 +79,29 @@ data:
   isVerificationFile: false
   path: cplib/math/inner_math.nim
   requiredBy:
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
 documentation_of: cplib/math/inner_math.nim
 layout: document
 redirect_from:
