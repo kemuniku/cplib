@@ -43,12 +43,12 @@ data:
     \    if dp[i] > 0:\n        for (j, _) in newG.edges[i]:\n            dp[j] =\
     \ max(dp[j], dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   - cplib/graph/reverse_edge.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/reverse_edge.nim
   isVerificationFile: true
   path: verify/graph/scc_abc335e_test.nim
   requiredBy: []

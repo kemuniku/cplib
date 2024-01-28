@@ -53,13 +53,14 @@ data:
     \    proc len*[T](self: SWAG[T]): int =\n        return len(self.bottom)+len(self.top)\n\
     \    proc `[]`*[T](self: SWAG[T], index: int): T =\n        if index >= len(self):\n\
     \            raise newException(IndexDefect, \"index \" & $index & \" not in 0\
-    \ .. \" & $len(self))\n        if index < len(self.top):\n            return self.top[len(self.top)-1-index]\n\
-    \        return self.bottom[index-len(self.top)]\n\n"
+    \ .. \" & $(len(self)-1))\n        if index < len(self.top):\n            return\
+    \ self.top[len(self.top)-1-index]\n        return self.bottom[index-len(self.top)]\n\
+    \n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/SWAG.nim
   requiredBy: []
-  timestamp: '2024-01-07 15:42:30+09:00'
+  timestamp: '2024-01-28 11:14:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/SWAG_test.nim
