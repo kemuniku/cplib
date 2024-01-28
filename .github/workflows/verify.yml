@@ -53,7 +53,7 @@ jobs:
         with:
           path: src/.verify-helper
           key: ${{ runner.os }}-verify-cases-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-verify-cases
+          restore-keys: ${{ runner.os }}-verify-cases-
 
       - name: Get dropbox token
         env:
