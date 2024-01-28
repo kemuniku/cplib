@@ -83,10 +83,10 @@ data:
   isVerificationFile: false
   path: cplib/math/powmod.nim
   requiredBy:
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
   timestamp: '2023-12-25 07:39:58+09:00'
@@ -94,16 +94,16 @@ data:
   verifiedWith:
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
 documentation_of: cplib/math/powmod.nim
 layout: document
 redirect_from:

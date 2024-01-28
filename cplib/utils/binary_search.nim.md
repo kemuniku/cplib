@@ -65,10 +65,10 @@ data:
   - verify/utils/binary_search_int_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
-  - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
-  - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_pun_test.nim
+  - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
+  - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
 documentation_of: cplib/utils/binary_search.nim
 layout: document
 redirect_from:

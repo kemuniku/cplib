@@ -191,6 +191,9 @@ data:
       path: verify/judge/decimal_yukicoder_test.nim
       title: verify/judge/decimal_yukicoder_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/judge/gcd_test.nim
+      title: verify/judge/gcd_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/judge/hello_world_aoj_test.nim
       title: verify/judge/hello_world_aoj_test.nim
     - icon: ':heavy_check_mark:'

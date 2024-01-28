@@ -67,10 +67,10 @@ data:
   timestamp: '2024-01-07 09:42:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/tree_init_by_parent_atcoder_test.nim
-  - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/prufer_abc328e_test.nim
   - verify/tree/prufer_abc328e_test.nim
+  - verify/tree/tree_init_by_parent_atcoder_test.nim
+  - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
 documentation_of: cplib/tree/tree.nim
