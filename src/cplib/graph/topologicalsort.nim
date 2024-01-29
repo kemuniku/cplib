@@ -1,4 +1,5 @@
 when not declared CPLIB_GRAPH_TOPOLOGICALSORT:
+    const CPLIB_GRAPH_TOPOLOGICALSORT* = 1
     import cplib/graph/graph
     proc topologicalsort*(G: DirectedGraph): seq[int] =
         var gin = newseq[int](G.N)
