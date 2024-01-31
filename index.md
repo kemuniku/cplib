@@ -66,6 +66,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/primefactor.nim
       title: cplib/math/primefactor.nim
+  - name: cplib/matrix
+    pages:
+    - icon: ':question:'
+      path: cplib/matrix/matops.nim
+      title: cplib/matrix/matops.nim
   - name: cplib/str
     pages:
     - icon: ':heavy_check_mark:'
@@ -115,6 +120,11 @@ data:
     - icon: ':warning:'
       path: verify/collections/tatyamset/ABC337_test_.nim
       title: verify/collections/tatyamset/ABC337_test_.nim
+  - name: verify/matrix
+    pages:
+    - icon: ':warning:'
+      path: verify/matrix/rotate_abc336f_test_.nim
+      title: verify/matrix/rotate_abc336f_test_.nim
   verificationCategories:
   - name: verify/collections
     pages:
@@ -274,6 +284,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yukicoder_test.nim
       title: verify/math/isprime_yukicoder_test.nim
+  - name: verify/matrix
+    pages:
+    - icon: ':x:'
+      path: verify/matrix/matops_polyomino_test.nim
+      title: verify/matrix/matops_polyomino_test.nim
+    - icon: ':x:'
+      path: verify/matrix/rotate_abc298b_test.nim
+      title: verify/matrix/rotate_abc298b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/transpose_abc237b_test.nim
+      title: verify/matrix/transpose_abc237b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/transposed_abc237b_test.nim
+      title: verify/matrix/transposed_abc237b_test.nim
+    - icon: ':x:'
+      path: verify/matrix/trimmed_seq_abc307c_test.nim
+      title: verify/matrix/trimmed_seq_abc307c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/trimmed_string_abc307c_test.nim
+      title: verify/matrix/trimmed_string_abc307c_test.nim
   - name: verify/str
     pages:
     - icon: ':heavy_check_mark:'
