@@ -1,4 +1,4 @@
-# verification-helper: https://atcoder.jp/contests/abc298/tasks/abc298_b
+# verification-helper: PROBLEM https://atcoder.jp/contests/abc298/tasks/abc298_b
 import cplib/matrix/matops
 import strutils, sequtils, sugar
 var n = stdin.readLine.parseInt
