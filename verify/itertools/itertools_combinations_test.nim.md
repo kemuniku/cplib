@@ -38,8 +38,8 @@ data:
     \ ans\n\n"
   dependsOn:
   - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
+  - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
   isVerificationFile: true
   path: verify/itertools/itertools_combinations_test.nim

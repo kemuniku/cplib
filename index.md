@@ -68,7 +68,7 @@ data:
       title: cplib/math/primefactor.nim
   - name: cplib/matrix
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matops.nim
       title: cplib/matrix/matops.nim
   - name: cplib/str
@@ -286,10 +286,10 @@ data:
       title: verify/math/isprime_yukicoder_test.nim
   - name: verify/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matops_polyomino_test.nim
       title: verify/matrix/matops_polyomino_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/rotate_abc298b_test.nim
       title: verify/matrix/rotate_abc298b_test.nim
     - icon: ':heavy_check_mark:'
@@ -298,7 +298,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/transposed_abc237b_test.nim
       title: verify/matrix/transposed_abc237b_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/trimmed_seq_abc307c_test.nim
       title: verify/matrix/trimmed_seq_abc307c_test.nim
     - icon: ':heavy_check_mark:'
