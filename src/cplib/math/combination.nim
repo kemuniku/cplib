@@ -1,5 +1,5 @@
 when not declared CPLIB_MATH_COMBINATION:
-    const COMPETITIVE_MATH_COMBINATION* = 1
+    const CPLIB_MATH_COMBINATION* = 1
     import atcoder/modint
     type Combination_Type[ModInt] = ref object
         fact: seq[ModInt]

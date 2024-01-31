@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_SWAG:
-    const CPLIB_COLLECTIONS_SWAG* = 1
+when not declared CPLIB_COLLECTIONS_QSWAG:
+    const CPLIB_COLLECTIONS_QSWAG* = 1
 
     import algorithm
     type QSWAG*[T] = ref object
@@ -42,7 +42,7 @@ when not declared CPLIB_COLLECTIONS_SWAG:
         return len(self.bottom)+len(self.top)
     proc `[]`*[T](self: QSWAG[T], index: int): T =
         if index >= len(self):
-            raise newException(IndexDefect, "index " & $index & " not in 0 .. " & len(self))
+            raise newException(IndexDefect, "index " & $index & " not in 0 .. " & $len(self))
         if index < len(self.top):
             return self.top[len(self.top)-1-index]
         return self.bottom[index-len(self.top)]

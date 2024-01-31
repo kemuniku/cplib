@@ -1,5 +1,5 @@
 when not declared CPLIB_MATH_POWMOD:
-    const COMPETITIVE_MATH_POWMOD* = 1
+    const CPLIB_MATH_POWMOD* = 1
     import cplib/math/inner_math
     proc powmod*(a, n, m: int): int =
         var
