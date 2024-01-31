@@ -30,22 +30,23 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_GRAPH_TOPOLOGICALSORT:\n    import cplib/graph/graph\n\
-    \    proc topologicalsort*(G: DirectedGraph): seq[int] =\n        var gin = newseq[int](G.N)\n\
-    \        for i in 0..<G.N:\n            for (j, _) in G.edges[i]:\n          \
-    \      gin[j] += 1\n        var stack: seq[int]\n        for i in 0..<G.N:\n \
-    \           if gin[i] == 0:\n                stack.add(i)\n        while len(stack)\
-    \ != 0:\n            var i = stack.pop()\n            result.add(i)\n        \
-    \    for (j, _) in G.edges[i]:\n                gin[j] -= 1\n                if\
-    \ gin[j] == 0:\n                    stack.add(j)\n    proc isDAG*(G: DirectedGraph):\
-    \ bool = G.topologicalsort.len == G.N\n"
+  code: "when not declared CPLIB_GRAPH_TOPOLOGICALSORT:\n    const CPLIB_GRAPH_TOPOLOGICALSORT*\
+    \ = 1\n    import cplib/graph/graph\n    proc topologicalsort*(G: DirectedGraph):\
+    \ seq[int] =\n        var gin = newseq[int](G.N)\n        for i in 0..<G.N:\n\
+    \            for (j, _) in G.edges[i]:\n                gin[j] += 1\n        var\
+    \ stack: seq[int]\n        for i in 0..<G.N:\n            if gin[i] == 0:\n  \
+    \              stack.add(i)\n        while len(stack) != 0:\n            var i\
+    \ = stack.pop()\n            result.add(i)\n            for (j, _) in G.edges[i]:\n\
+    \                gin[j] -= 1\n                if gin[j] == 0:\n              \
+    \      stack.add(j)\n    proc isDAG*(G: DirectedGraph): bool = G.topologicalsort.len\
+    \ == G.N\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/topologicalsort.nim
   requiredBy: []
-  timestamp: '2024-01-07 11:04:33+00:00'
+  timestamp: '2024-01-29 18:48:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/topologicalsort_1_test.nim

@@ -42,10 +42,10 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/graph/shortest_path_test.nim
   requiredBy: []

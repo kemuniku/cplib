@@ -32,14 +32,14 @@ data:
     %lld\\n\", addr result)\nvar N, M = ii()\nvar G = initUnWeightedDirectedGraph(N)\n\
     for i in 0..<M:\n    var U, V = ii()-1\n    G.add_edge(V, U)\necho N-len(G.topologicalsort())\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/topologicalsort_2_test.nim
   requiredBy: []
-  timestamp: '2024-01-07 11:17:54+00:00'
+  timestamp: '2024-01-29 18:48:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/topologicalsort_2_test.nim
