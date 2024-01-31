@@ -70,43 +70,44 @@ data:
     \    if i != args.len - 1: result.add(quote do: print(prop(), \", \"))\n     \
     \           else: result.add(quote do: print(prop(), \"\\n\"))\n        else:\n\
     \            return (quote do: discard)\n    proc `%`*(x: SomeInteger, y: SomeInteger):\
-    \ int = (((x mod y) + y) mod y)\n    proc `//`*(x: SomeInteger, y: SomeInteger):\
-    \ int = ((x - (x % y)) div y)\n    proc `^`*(x: SomeInteger, y: SomeInteger):\
-    \ int = x xor y\n    proc `&`*(x: SomeInteger, y: SomeInteger): int = x and y\n\
-    \    proc `|`*(x: SomeInteger, y: SomeInteger): int = x or y\n    proc `>>`*(x:\
-    \ SomeInteger, y: SomeInteger): int = x shr y\n    proc `<<`*(x: SomeInteger,\
-    \ y: SomeInteger): int = x shl y\n    proc `%=`*(x: var SomeInteger, y: SomeInteger):\
-    \ void = x = x % y\n    proc `//=`*(x: var SomeInteger, y: SomeInteger): void\
-    \ = x = x // y\n    proc `^=`*(x: var SomeInteger, y: SomeInteger): void = x =\
-    \ x ^ y\n    proc `&=`*(x: var SomeInteger, y: SomeInteger): void = x = x & y\n\
-    \    proc `|=`*(x: var SomeInteger, y: SomeInteger): void = x = x | y\n    proc\
-    \ `>>=`*(x: var SomeInteger, y: SomeInteger): void = x = x >> y\n    proc `<<=`*(x:\
-    \ var SomeInteger, y: SomeInteger): void = x = x << y\n    proc `[]`*(x, n: int):\
-    \ bool = (x and (1 shl n)) != 0\n    proc `[]=`*(x: var int, n: int, i: bool)\
-    \ =\n        if i: x = x or (1 << n)\n        else: (if x[n]: x = x xor (1 <<\
-    \ n))\n    proc pow*(a, n: int, m = INFL): int =\n        var\n            rev\
-    \ = 1\n            a = a\n            n = n\n        while n > 0:\n          \
-    \  if n % 2 != 0: rev = (rev * a) mod m\n            if n > 1: a = (a * a) mod\
-    \ m\n            n >>= 1\n        return rev\n    proc sqrt*(x: int): int =\n\
-    \        assert(x >= 0)\n        result = int(sqrt(float64(x)))\n        while\
-    \ result * result > x: result -= 1\n        while (result+1) * (result+1) <= x:\
-    \ result += 1\n    proc chmax*[T](x: var T, y: T): bool {.discardable.} = (if\
-    \ x < y: (x = y; return true; ) return false)\n    proc chmin*[T](x: var T, y:\
-    \ T): bool {.discardable.} = (if x > y: (x = y; return true; ) return false)\n\
-    \    proc `max=`*[T](x: var T, y: T) = x = max(x, y)\n    proc `min=`*[T](x: var\
-    \ T, y: T) = x = min(x, y)\n    proc at*(x: char, a = '0'): int = int(x) - int(a)\n\
-    \    converter tofloat*(n: int): float = float(n)\n    proc Yes*(b: bool = true):\
-    \ void = print(if b: \"Yes\" else: \"No\")\n    proc No*(b: bool = true): void\
-    \ = Yes(not b)\n    proc YES_upper*(b: bool = true): void = print(if b: \"YES\"\
-    \ else: \"NO\")\n    proc NO_upper*(b: bool = true): void = Yes_upper(not b)\n\
-    \    const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]\n    const DDXY* = [(1, -1),\
-    \ (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1)]\n    macro exit*(statement:\
-    \ untyped): untyped = (quote do: (`statement`; quit()))\n"
+    \ int = (result = x mod y; if result < 0: result += y)\n    proc `//`*(x: SomeInteger,\
+    \ y: SomeInteger): int = (result = x div y; if result * y > x: result -= 1)\n\
+    \    proc `^`*(x: SomeInteger, y: SomeInteger): int = x xor y\n    proc `&`*(x:\
+    \ SomeInteger, y: SomeInteger): int = x and y\n    proc `|`*(x: SomeInteger, y:\
+    \ SomeInteger): int = x or y\n    proc `>>`*(x: SomeInteger, y: SomeInteger):\
+    \ int = x shr y\n    proc `<<`*(x: SomeInteger, y: SomeInteger): int = x shl y\n\
+    \    proc `%=`*(x: var SomeInteger, y: SomeInteger): void = x = x % y\n    proc\
+    \ `//=`*(x: var SomeInteger, y: SomeInteger): void = x = x // y\n    proc `^=`*(x:\
+    \ var SomeInteger, y: SomeInteger): void = x = x ^ y\n    proc `&=`*(x: var SomeInteger,\
+    \ y: SomeInteger): void = x = x & y\n    proc `|=`*(x: var SomeInteger, y: SomeInteger):\
+    \ void = x = x | y\n    proc `>>=`*(x: var SomeInteger, y: SomeInteger): void\
+    \ = x = x >> y\n    proc `<<=`*(x: var SomeInteger, y: SomeInteger): void = x\
+    \ = x << y\n    proc `[]`*(x, n: int): bool = (x and (1 shl n)) != 0\n    proc\
+    \ `[]=`*(x: var int, n: int, i: bool) =\n        if i: x = x or (1 << n)\n   \
+    \     else: (if x[n]: x = x xor (1 << n))\n    proc pow*(a, n: int, m = INFL):\
+    \ int =\n        var\n            rev = 1\n            a = a\n            n =\
+    \ n\n        while n > 0:\n            if n % 2 != 0: rev = (rev * a) mod m\n\
+    \            if n > 1: a = (a * a) mod m\n            n >>= 1\n        return\
+    \ rev\n    proc sqrt*(x: int): int =\n        assert(x >= 0)\n        result =\
+    \ int(sqrt(float64(x)))\n        while result * result > x: result -= 1\n    \
+    \    while (result+1) * (result+1) <= x: result += 1\n    proc chmax*[T](x: var\
+    \ T, y: T): bool {.discardable.} = (if x < y: (x = y; return true; ) return false)\n\
+    \    proc chmin*[T](x: var T, y: T): bool {.discardable.} = (if x > y: (x = y;\
+    \ return true; ) return false)\n    proc `max=`*[T](x: var T, y: T) = x = max(x,\
+    \ y)\n    proc `min=`*[T](x: var T, y: T) = x = min(x, y)\n    proc at*(x: char,\
+    \ a = '0'): int = int(x) - int(a)\n    converter tofloat*(n: int): float = float(n)\n\
+    \    proc Yes*(b: bool = true): void = print(if b: \"Yes\" else: \"No\")\n   \
+    \ proc No*(b: bool = true): void = Yes(not b)\n    proc YES_upper*(b: bool = true):\
+    \ void = print(if b: \"YES\" else: \"NO\")\n    proc NO_upper*(b: bool = true):\
+    \ void = Yes_upper(not b)\n    const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]\n\
+    \    const DDXY* = [(1, -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0),\
+    \ (-1, 1)]\n    macro exit*(statement: untyped): untyped = (quote do: (`statement`;\
+    \ quit()))\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2024-01-24 11:35:43+09:00'
+  timestamp: '2024-01-31 17:18:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim

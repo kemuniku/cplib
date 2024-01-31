@@ -9,16 +9,16 @@ data:
     path: verify/matrix/rotate_abc336f_test_.nim
     title: verify/matrix/rotate_abc336f_test_.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matops_polyomino_test.nim
     title: verify/matrix/matops_polyomino_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matops_polyomino_test.nim
     title: verify/matrix/matops_polyomino_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/rotate_abc298b_test.nim
     title: verify/matrix/rotate_abc298b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/rotate_abc298b_test.nim
     title: verify/matrix/rotate_abc298b_test.nim
   - icon: ':heavy_check_mark:'
@@ -33,10 +33,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/transposed_abc237b_test.nim
     title: verify/matrix/transposed_abc237b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/trimmed_seq_abc307c_test.nim
     title: verify/matrix/trimmed_seq_abc307c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/trimmed_seq_abc307c_test.nim
     title: verify/matrix/trimmed_seq_abc307c_test.nim
   - icon: ':heavy_check_mark:'
@@ -45,9 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/trimmed_string_abc307c_test.nim
     title: verify/matrix/trimmed_string_abc307c_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -87,7 +87,7 @@ data:
   - verify/matrix/rotate_abc336f_test_.nim
   - verify/matrix/rotate_abc336f_test_.nim
   timestamp: '2024-01-31 11:34:09+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/transposed_abc237b_test.nim
   - verify/matrix/transposed_abc237b_test.nim
