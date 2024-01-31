@@ -36,7 +36,7 @@ when not declared CPLIB_MATRIX_MATOPS:
     proc rotate*[T](a: var seq[seq[T]], num: int = 1) = (a = rotated(a, num))
     proc rotate*(a: var seq[string], num: int = 1) = (a = rotated(a, num))
     proc transposed*(a: seq[string]): seq[string] = a.mapIt(it.toSeq).transposed.mapIt(it.join(""))
-    proc transpose*[T](a: var seq[seq[T]]) = (a = a.transpoed)
+    proc transpose*[T](a: var seq[seq[T]]) = (a = a.transposed)
     proc transpose*(a: var seq[string]) = (a = a.transposed)
     proc trimmed*(a: seq[string], zero: char = '0'): seq[string] = a.mapIt(it.toSeq).trimmed(zero).mapIt(it.join(""))
     proc trim*[T](a: var seq[seq[T]], zero: T) = (a = trimmed(a, zero))

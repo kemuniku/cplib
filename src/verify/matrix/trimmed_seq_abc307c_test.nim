@@ -5,7 +5,7 @@ proc load(): (int, int, seq[seq[bool]]) =
     var h, w: int
     (h, w) = stdin.readLine.split.map(parseInt)
     var s = newSeqWith(h, stdin.readLine).mapIt(it.mapIt(if it == '.': false else: true))
-    s.trim(false)
+    s = s.trimmed(false)
     return (s.len, s[0].len, s)
 var (ha, wa, a) = load()
 var (hb, wb, b) = load()
