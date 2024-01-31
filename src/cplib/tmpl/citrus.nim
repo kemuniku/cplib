@@ -88,8 +88,8 @@ when not declared CPLIB_TMPL_CITRUS:
                 else: result.add(quote do: print(prop(), "\n"))
         else:
             return (quote do: discard)
-    proc `%`*(x: SomeInteger, y: SomeInteger): int = (((x mod y) + y) mod y)
-    proc `//`*(x: SomeInteger, y: SomeInteger): int = ((x - (x % y)) div y)
+    proc `%`*(x: SomeInteger, y: SomeInteger): int = (result = x mod y; if result < 0: result += y)
+    proc `//`*(x: SomeInteger, y: SomeInteger): int = (result = x div y; if result * y > x: result -= 1)
     proc `^`*(x: SomeInteger, y: SomeInteger): int = x xor y
     proc `&`*(x: SomeInteger, y: SomeInteger): int = x and y
     proc `|`*(x: SomeInteger, y: SomeInteger): int = x or y
