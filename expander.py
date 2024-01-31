@@ -13,11 +13,10 @@ import tempfile
 
 logger = getLogger(__name__)  # type: Logger
 
-ATCODER_INCLUDE = re.compile(
-        r'\s*(include|import)\s*([a-zA-Z0-9_,./\s"]*)\s*')
+ATCODER_INCLUDE = re.compile(r'\s*(include|import)\s*([a-zA-Z0-9_,./\s"]*)\s*')
 
 WHEN_STATEMENT = re.compile(r'^\s*when\s+.*:')
-ATCODER_DIR = re.compile('^(?:cplib|lib)\/')
+ATCODER_DIR = re.compile('^(?:cplib)\/')
 INDENT_WIDTH = 2
 compress_type = "xz"  # "xz" or "bzip2" or "gzip"
 
@@ -56,9 +55,9 @@ def main():
     """
     メイン関数
     """
+    global ATCODER_DIR
     td = tempfile.TemporaryDirectory()
     lib_tmp = Path(td.name)
-    lib_path = Path(__file__).parent.resolve()
     basicConfig(
         format="%(asctime)s [%(levelname)s] %(message)s",
         datefmt="%H:%M:%S",
@@ -66,28 +65,25 @@ def main():
     )
     parser = argparse.ArgumentParser(description='Expander')
     parser.add_argument('source', help='Source File')
-    parser.add_argument('-c', '--console',
-                        action='store_true', help='Print to Console')
-    parser.add_argument('-s', '--single-line',
-                        action='store_true', help='Single line import')
-    parser.add_argument('-cmp', '--compress',
-                        action='store_true', help='Compress import')
-    parser.add_argument('--lib', help='Path to Atcoder Library')
-    parser.add_argument('-d', '--directory',
-                        action='store_true', help='Submit by directory')
-    parser.add_argument('-b', '--raw',
-                        action='store_true', help='submit raw data')
-
+    parser.add_argument('-c', '--console', action='store_true', help='Print to console')
+    parser.add_argument('-s', '--single-line', action='store_true', help='Single line import')
+    parser.add_argument('-cmp', '--compress', action='store_true', help='Compress import')
+    parser.add_argument('--lib', nargs='*', help='Path to library')
+    parser.add_argument('-d', '--directory', action='store_true', help='Submit by directory')
+    parser.add_argument('-b', '--raw', action='store_true', help='Submit raw data')
+    parser.add_argument('--expand-atcoder', action='store_true', help='Expand Nim-ACL')
     opts = parser.parse_args()
 
+    if opts.expand_atcoder:
+        ATCODER_DIR = re.compile('^(?:cplib|atcoder)\/')
     if opts.lib:
-        lib_path = Path(opts.lib) / "src"
+        lib_path = [Path(__file__).parent.resolve()]
+        for d in opts.lib:
+            lib_path.append(Path(d) / "src")
     elif 'NIM_INCLUDE_PATH' in environ:
-        lib_path = Path(environ['NIM_INCLUDE_PATH']) / "src"
-#    source = open(opts.source, encoding="utf8", errors='ignore').read()
+        lib_path.append(Path(environ['NIM_INCLUDE_PATH']) / "src")
 
-    def read_source(f: str, prefix: str, defined: set, lib_path, is_main=True,
-                    load_type=None) -> List[str]:
+    def read_source(f: str, prefix: str, defined: set, lib_path: List[str], is_main=True, load_type=None) -> List[str]:
         """
         stringで渡されたsourceを読み。import, includeが出てきたら深堀りする
         深さ優先でimport/includeを調べる
@@ -101,14 +97,23 @@ def main():
         if is_main:
             source = open(f, encoding="utf8", errors='ignore').read()
         else:
-            source = open(str(lib_path / f), encoding="utf8",
-                          errors='ignore').read()
+            for d in lib_path:
+                if not path.exists(str(d / f)): continue
+                source = open(str(d / f), encoding="utf8", errors='ignore').read()
+                break
+            else:
+                raise Exception("Can't find {:s}".format(f))
             logger.info('{:s} {:s}'.format(load_type, f))
 
         if not is_main and opts.directory:
             copy_source_path = lib_tmp / f
             os.makedirs(copy_source_path.parents[0], exist_ok=True)
-            r = open(Path(lib_path / f)).read()
+            for d in lib_path:
+                if not path.exists(str(d / f)): continue
+                r = open(Path(lib_path / f)).read()
+                break
+            else:
+                raise Exception("Can't find {:s}".format(f))
             open(copy_source_path, "w").write(r)
 
         result = []
@@ -155,22 +160,17 @@ def main():
                             original_fname = fname
                             if not fname.endswith(".nim"):
                                 fname += ".nim"
-                            s = read_source(fname, " " * spaces, defined,
-                                            lib_path, False, load_type_local)
+                            s = read_source(fname, " " * spaces, defined, lib_path, False, load_type_local)
                             if opts.single_line and is_main:
                                 s0 = ""
-
                                 if opts.compress:
                                     for l in s:
                                         s0 += l
                                         s0 += '\n'
-
                                     with open('/tmp/expander_tmp.txt', 'w') as f:
-                                        #f.write(s0 + "\n")
+                                        f.write(s0 + "\n")
                                         f.write(s0)
-                                    #s0 = subprocess.run("cat /tmp/expander_tmp.txt | {:s} -9 | base64 -w 0".format(compress_type), shell=True, stdout=subprocess.PIPE).stdout.decode()
                                     s0 = subprocess.run("cat /tmp/expander_tmp.txt | {:s} -9 | base64 -b 0".format(compress_type), shell=True, stdout=subprocess.PIPE).stdout.decode()
-                                    #s0 = base64.b64encode(s0.encode()).decode()
                                 else:
                                     for l in s:
                                         l = l.replace("\\", "\\\\")
@@ -182,10 +182,8 @@ def main():
                                 #result.append("# see {}".format(url))
                                 if opts.directory:
                                     result.append("{} {}".format(keyword, original_fname))
-                                    result.append("")
                                 else:
                                     result.append("ImportExpand \"{}\" <=== \"{}\"".format(fname, s0))
-                                    result.append("")
                             else:
                                 import_message = " " * spaces + "#[ " + line_local + " ]#"
                                 result.append(import_message)
@@ -195,8 +193,6 @@ def main():
                 else:
                     result.append(line)
             i += 1
-        if not is_main:
-            result.append("    discard")
         result2 = []
         for line in result:
             result2.append(prefix + line)
@@ -218,7 +214,6 @@ def main():
         second_compile_command = "nim cpp -d:release -d:SecondCompile -d:danger --path:./ --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off --checks:off -o:a.out"
         if opts.raw:
             d = open(lib_tmp / "atcoder.tar.xz", 'rb').read()
-      #let (output, ex) = gorgeEx("tail -c " & $zs & " " & fn & " > atcoder.tar.xz && tar -Jxvf atcoder.tar.xz && rm atcoder.tar.xz")
             outputPrefix += """
 static:
   when not defined SecondCompile:
@@ -245,7 +240,6 @@ static:
 """.format(len(d), md5sum, len(d), second_compile_command)
             outputSuffix += d
         else:
-            #s = subprocess.run("cat atcoder.tar.xz | base64 -w 0", cwd=lib_tmp, shell=True, stdout=subprocess.PIPE).stdout.decode()
             s = subprocess.run("cat atcoder.tar.xz | base64 -b 0", cwd=lib_tmp, shell=True, stdout=subprocess.PIPE).stdout.decode()
             if s[-1] == '\n':
                 print("WARNING!!! newline")
@@ -264,11 +258,10 @@ static:
     discard staticExec("rm -rf ./atcoder");doAssert ex == 0, output;quit(0)
 """.format(md5sum, s, second_compile_command)
 
-    output = ('\n'.join(result) + '\n').encode() + outputSuffix
+    output = ('\n'.join(result)).encode() + outputSuffix
     if opts.console:
         print(output.decode())
     else:
-        #with open('combined.nim', 'w', encoding="utf8", errors='ignore') as f:
         with open('combined.nim', 'wb') as f:
             f.write(output)
         md5sum_combined = subprocess.run("md5sum combined.nim", shell=True, stdout=subprocess.PIPE).stdout.decode()
