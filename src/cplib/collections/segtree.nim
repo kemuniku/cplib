@@ -1,7 +1,7 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE:
     const CPLIB_COLLECTIONS_SEGTREE* = 1
     import algorithm
-    type SegmentTree[T] = ref object
+    type SegmentTree*[T] = ref object
         default: T
         merge: proc(x: T, y: T): T
         arr*: seq[T]
