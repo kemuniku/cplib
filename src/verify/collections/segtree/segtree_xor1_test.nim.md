@@ -33,7 +33,7 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree/segtree_xor1_test.nim
   requiredBy: []
-  timestamp: '2023-12-04 23:06:36+09:00'
+  timestamp: '2024-02-05 04:26:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_xor1_test.nim

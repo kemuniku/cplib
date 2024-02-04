@@ -61,7 +61,7 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE:\n    const CPLIB_COLLECTIONS_SEGTREE*\
-    \ = 1\n    import algorithm\n    type SegmentTree[T] = ref object\n        default:\
+    \ = 1\n    import algorithm\n    type SegmentTree*[T] = ref object\n        default:\
     \ T\n        merge: proc(x: T, y: T): T\n        arr*: seq[T]\n        lastnode:\
     \ int\n        length: int\n    proc initSegmentTree*[T](v: seq[T], merge: proc(x:\
     \ T, y: T): T, default: T): SegmentTree[T] =\n        ## \u30BB\u30B0\u30E1\u30F3\
@@ -105,25 +105,25 @@ data:
   isVerificationFile: false
   path: cplib/collections/segtree.nim
   requiredBy: []
-  timestamp: '2023-12-04 23:06:36+09:00'
+  timestamp: '2024-02-05 04:26:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/segtree/segtree_xor1_test.nim
-  - verify/collections/segtree/segtree_xor1_test.nim
+  - verify/collections/segtree/segtree_PSRC_2_test.nim
+  - verify/collections/segtree/segtree_PSRC_2_test.nim
   - verify/collections/segtree/segtree_RMQ_test.nim
   - verify/collections/segtree/segtree_RMQ_test.nim
   - verify/collections/segtree/segtree_PARS_test.nim
   - verify/collections/segtree/segtree_PARS_test.nim
+  - verify/collections/segtree/segtree_static_test.nim
+  - verify/collections/segtree/segtree_static_test.nim
+  - verify/collections/segtree/segtree_xor1_test.nim
+  - verify/collections/segtree/segtree_xor1_test.nim
+  - verify/collections/segtree/segtree_xor2_test.nim
+  - verify/collections/segtree/segtree_xor2_test.nim
   - verify/collections/segtree/segtree_get1item_test.nim
   - verify/collections/segtree/segtree_get1item_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
-  - verify/collections/segtree/segtree_PSRC_2_test.nim
-  - verify/collections/segtree/segtree_PSRC_2_test.nim
-  - verify/collections/segtree/segtree_xor2_test.nim
-  - verify/collections/segtree/segtree_xor2_test.nim
-  - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/segtree/segtree_static_test.nim
 documentation_of: cplib/collections/segtree.nim
 layout: document
 redirect_from:

@@ -114,14 +114,14 @@ data:
   timestamp: '2024-01-20 04:30:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/fractions_abc226d_test.nim
-  - verify/math/fractions_abc226d_test.nim
-  - verify/math/fractions_unit_test.nim
-  - verify/math/fractions_unit_test.nim
   - verify/math/fractions_abc308c_test.nim
   - verify/math/fractions_abc308c_test.nim
+  - verify/math/fractions_abc226d_test.nim
+  - verify/math/fractions_abc226d_test.nim
   - verify/math/fractions_abc225e_test.nim
   - verify/math/fractions_abc225e_test.nim
+  - verify/math/fractions_unit_test.nim
+  - verify/math/fractions_unit_test.nim
 documentation_of: cplib/math/fractions.nim
 layout: document
 redirect_from:
