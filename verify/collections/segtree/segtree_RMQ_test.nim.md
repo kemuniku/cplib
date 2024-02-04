@@ -32,7 +32,7 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree/segtree_RMQ_test.nim
   requiredBy: []
-  timestamp: '2024-01-28 10:52:19+09:00'
+  timestamp: '2024-02-05 04:26:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_RMQ_test.nim
