@@ -16,6 +16,7 @@ when not declared CPLIB_TMPL_SHEEP:
     import deques
     import bitops
     import std/lenientops
+    import options
     #入力系
     proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
     proc getchar(): char {.importc: "getchar_unlocked", header: "<stdio.h>", discardable.}
