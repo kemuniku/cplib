@@ -17,6 +17,7 @@ when not declared CPLIB_TMPL_CITRUS:
     import bitops
     import heapqueue
     import options
+    import hashes
     const MODINT998244353* = 998244353
     const MODINT1000000007* = 1000000007
     const INF* = 100100111
