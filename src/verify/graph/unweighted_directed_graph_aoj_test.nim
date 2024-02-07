@@ -15,7 +15,7 @@ proc dfs(x, cnt: int): int =
         return cnt - 1
     var cnt = cnt
     ans[x][0] = cnt
-    for (y, c) in g.edges[x]:
+    for y in g[x]:
         cnt = dfs(y, cnt+1)
     ans[x][1] = cnt + 1
     return cnt + 1

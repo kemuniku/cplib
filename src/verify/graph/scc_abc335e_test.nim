@@ -22,6 +22,6 @@ var dp = newSeqWith(n, 0)
 dp[itg[0]] = 1
 for i in 0..<newg.N:
     if dp[i] > 0:
-        for (j, _) in newG.edges[i]:
+        for j in newG[i]:
             dp[j] = max(dp[j], dp[i] + 1)
 echo dp[itg[n-1]]

@@ -6,8 +6,8 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
     proc restore_dijkstra*[T](G: Graph[T], start: int, ZERO: T = 0, INF: T = int(3300300300300300491)): tuple[costs: seq[T], prev: seq[int]] =
         var
             queue = initHeapQueue[(T, int)]()
-            costs = newSeq[T](len(G.edges))
-            prev = newseq[int](len(G.edges))
+            costs = newSeq[T](len(G))
+            prev = newseq[int](len(G))
         costs.fill(INF)
         prev.fill(-1)
         queue.push((ZERO, start))
