@@ -1,6 +1,7 @@
 when not declared CPLIB_GRAPH_GRAPH:
     const CPLIB_GRAPH_GRAPH* = 1
 
+    import sequtils
     type Graph*[T] = ref object of RootObj
         edges*: seq[seq[(int, T)]]
         N*: int
@@ -12,7 +13,9 @@ when not declared CPLIB_GRAPH_GRAPH:
 
     type GraphTypes* = Graph or WeightedDirectedGraph or WeightedUnDirectedGraph or UnWeightedDirectedGraph or UnWeightedUnDirectedGraph
     type DirectedGraph* = WeightedDirectedGraph or UnWeightedDirectedGraph
-    type WeightedGraph* = WeightedDirectedGraph or WeightedUnDirectedGraph
+    type UnDirectedGraph* = WeightedUnDirectedGraph or UnWeightedUnDirectedGraph
+    type WeightedGraph*[T] = WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T]
+    type UnWeightedGraph* = UnWeightedDirectedGraph or UnWeightedUnDirectedGraph
     proc add_edge_impl[T](g: GraphTypes, u, v: int, cost: T, directed: bool) =
         g.edges[u].add((v, cost))
         if not directed: g.edges[v].add((u, cost))
@@ -43,3 +46,6 @@ when not declared CPLIB_GRAPH_GRAPH:
 
 
     proc len*(G: GraphTypes): int = G.N
+
+    proc `[]`*[T](g: WeightedGraph[T], x: int): seq[(int, T)] = return g.edges[x]
+    proc `[]`*(g: UnWeightedGraph, x: int): seq[int] = return g.edges[x].mapIt(it[0])
