@@ -32,7 +32,7 @@ data:
     - icon: ':question:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
     - icon: ':heavy_check_mark:'

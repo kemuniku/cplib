@@ -68,14 +68,14 @@ data:
     \ x*mul)\n                if i != factor[d][1]: mul *= factor[d][0]\n        dfs(0,\
     \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
-  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/divisor.nim
   requiredBy: []

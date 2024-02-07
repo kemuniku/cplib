@@ -46,8 +46,8 @@ data:
     \ =\n        if key notin d.table: return d.default()\n        return d.table[key]\n\
     \    proc `[]`*[K, V](d: var DefaultDict[K, V], key: K): var V =\n        if key\
     \ notin d.table: d.table[key] = d.default\n        return d.table[key]\n    proc\
-    \ clear*[K, V](d: var DefaultDict[K, V]) = d.table = initTable[int, int](0)\n\
-    \    proc contains*[K, V](d: var DefaultDict[K, V], key: K): bool = d.table.contains(key)\n\
+    \ clear*[K, V](d: var DefaultDict[K, V]) = d.table = initTable[K, V](0)\n    proc\
+    \ contains*[K, V](d: var DefaultDict[K, V], key: K): bool = d.table.contains(key)\n\
     \    proc del*[K, V](d: var DefaultDict[K, V], key: K) = d.table.del(key)\n  \
     \  proc hash*[K, V](d: DefaultDict[K, V]): Hash = d.table.hash\n    proc hasKey*[K,\
     \ V](d: DefaultDict[K, V], key: K): bool = d.table.hasKey(key)\n    proc len*[K,\
@@ -64,7 +64,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/defaultdict.nim
   requiredBy: []
-  timestamp: '2024-02-07 11:08:04+09:00'
+  timestamp: '2024-02-08 03:05:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/defaultdict/defaultdict_abc278d_test.nim

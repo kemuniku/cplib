@@ -13,12 +13,6 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/graph/reverse_edge.nim
-    title: cplib/graph/reverse_edge.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/graph/reverse_edge.nim
-    title: cplib/graph/reverse_edge.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -41,15 +35,13 @@ data:
     \ group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/SCC.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/SCCG_test.nim
   requiredBy: []
-  timestamp: '2024-02-08 02:13:36+09:00'
+  timestamp: '2024-02-08 03:05:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/SCCG_test.nim
