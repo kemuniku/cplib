@@ -29,7 +29,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'
@@ -101,10 +101,10 @@ data:
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -229,7 +229,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/topologicalsort_2_test.nim
       title: verify/graph/topologicalsort_2_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/unweighted_directed_graph_aoj_test.nim
       title: verify/graph/unweighted_directed_graph_aoj_test.nim
   - name: verify/itertools
@@ -357,13 +357,13 @@ data:
       title: verify/tmpl/citrus_and_qcfium_test.nim
   - name: verify/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/tree_atcoder_test.nim
       title: verify/tree/tree_atcoder_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/tree_init_by_parent_atcoder_test.nim
       title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/utils

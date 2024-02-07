@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -40,16 +40,16 @@ data:
     \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nvar (_, _,\
     \ group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/SCCG_test.nim
   requiredBy: []
-  timestamp: '2024-01-08 08:28:16+00:00'
+  timestamp: '2024-02-08 02:13:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/SCCG_test.nim

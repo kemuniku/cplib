@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_11_B
     links:
@@ -26,18 +26,18 @@ data:
     \    for j in 0..<line[1]:\n        g.add_edge(line[0]-1, line[2+j]-1)\n\nvar\
     \ ans = newSeqWith(n, (-1, -1))\nproc dfs(x, cnt: int): int =\n    if ans[x][0]\
     \ != -1:\n        return cnt - 1\n    var cnt = cnt\n    ans[x][0] = cnt\n   \
-    \ for (y, c) in g.edges[x]:\n        cnt = dfs(y, cnt+1)\n    ans[x][1] = cnt\
-    \ + 1\n    return cnt + 1\n\nvar pos = 1\nfor i in 0..<n:\n    if ans[i][0] ==\
-    \ -1:\n        pos = dfs(i, pos) + 1\n\nfor i in 0..<n:\n    var (s, t) = ans[i]\n\
-    \    echo i+1, \" \", s, \" \", t\n"
+    \ for y in g[x]:\n        cnt = dfs(y, cnt+1)\n    ans[x][1] = cnt + 1\n    return\
+    \ cnt + 1\n\nvar pos = 1\nfor i in 0..<n:\n    if ans[i][0] == -1:\n        pos\
+    \ = dfs(i, pos) + 1\n\nfor i in 0..<n:\n    var (s, t) = ans[i]\n    echo i+1,\
+    \ \" \", s, \" \", t\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/unweighted_directed_graph_aoj_test.nim
   requiredBy: []
-  timestamp: '2024-01-07 09:42:27+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-02-08 02:13:36+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/unweighted_directed_graph_aoj_test.nim
 layout: document
