@@ -2,7 +2,6 @@ when not declared CPLIB_GRAPH_SCC:
     const CPLIB_GRAPH_SCC* = 1
     import cplib/graph/graph
     import sequtils
-    import cplib/graph/reverse_edge
     proc SCC*(G: UnweightedDirectedGraph): seq[seq[int]] =
         ##強連結成分分解をして、強連結成分を返します。リストはトポロジカルソートされています。
         var postorder = newseqwith(len(G), -1)

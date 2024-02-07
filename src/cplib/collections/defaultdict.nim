@@ -13,7 +13,7 @@ when not declared CPLIB_COLLECTIONS_DEFAULTDICT:
     proc `[]`*[K, V](d: var DefaultDict[K, V], key: K): var V =
         if key notin d.table: d.table[key] = d.default
         return d.table[key]
-    proc clear*[K, V](d: var DefaultDict[K, V]) = d.table = initTable[int, int](0)
+    proc clear*[K, V](d: var DefaultDict[K, V]) = d.table = initTable[K, V](0)
     proc contains*[K, V](d: var DefaultDict[K, V], key: K): bool = d.table.contains(key)
     proc del*[K, V](d: var DefaultDict[K, V], key: K) = d.table.del(key)
     proc hash*[K, V](d: DefaultDict[K, V]): Hash = d.table.hash
