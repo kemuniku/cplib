@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/citrus.nim
+    title: cplib/tmpl/citrus.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/citrus.nim
+    title: cplib/tmpl/citrus.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/math/isqrt_test.nim
@@ -9,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isqrt_test.nim
     title: verify/math/isqrt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tmpl/citrus_and_qcfium_test.nim
+    title: verify/tmpl/citrus_and_qcfium_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tmpl/citrus_and_qcfium_test.nim
+    title: verify/tmpl/citrus_and_qcfium_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -25,10 +37,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/isqrt.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/tmpl/citrus.nim
+  - cplib/tmpl/citrus.nim
   timestamp: '2024-02-07 16:25:18+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/math/isqrt_test.nim
   - verify/math/isqrt_test.nim
 documentation_of: cplib/math/isqrt.nim
