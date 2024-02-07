@@ -51,6 +51,7 @@
 "verify/math/fractions_unit_test.nim": "2024-01-20 04:30:03 +0900",
 "verify/math/isprime_yosupo_test.nim": "2024-02-06 03:39:26 +0900",
 "verify/math/isprime_yukicoder_test.nim": "2024-02-06 03:39:26 +0900",
+"verify/math/isqrt_test.nim": "2024-02-07 16:25:18 +0000",
 "verify/matrix/matops_polyomino_test.nim": "2024-01-31 11:34:09 +0900",
 "verify/matrix/rotate_abc298b_test.nim": "2024-01-31 11:34:09 +0900",
 "verify/matrix/transpose_abc237b_test.nim": "2024-01-31 11:34:09 +0900",
