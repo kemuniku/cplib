@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -35,14 +35,14 @@ data:
     \        quit()\n    for i in 0..<K-1:\n        G.add_edge(A[i]-1, A[i+1]-1)\n\
     if G.isDAG():\n    echo \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/topologicalsort_1_test.nim
   requiredBy: []
-  timestamp: '2024-01-29 18:48:17+09:00'
+  timestamp: '2024-02-08 02:13:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/topologicalsort_1_test.nim

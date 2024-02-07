@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -40,19 +40,19 @@ data:
     \    if a[u] != a[v]:\n        if a[u] > a[v]: swap(u, v)\n        g.add_edge(u,\
     \ v)\n    else:\n        g.add_edge(u, v)\n        g.add_edge(v, u)\nvar (newg,\
     \ itg, _) = g.SCCG()\nvar dp = newSeqWith(n, 0)\ndp[itg[0]] = 1\nfor i in 0..<newg.N:\n\
-    \    if dp[i] > 0:\n        for (j, _) in newG.edges[i]:\n            dp[j] =\
-    \ max(dp[j], dp[i] + 1)\necho dp[itg[n-1]]\n"
+    \    if dp[i] > 0:\n        for j in newG[i]:\n            dp[j] = max(dp[j],\
+    \ dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/scc_abc335e_test.nim
   requiredBy: []
-  timestamp: '2024-01-20 09:39:28+09:00'
+  timestamp: '2024-02-08 02:13:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/scc_abc335e_test.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -32,21 +32,20 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_TOPOLOGICALSORT:\n    const CPLIB_GRAPH_TOPOLOGICALSORT*\
     \ = 1\n    import cplib/graph/graph\n    proc topologicalsort*(G: DirectedGraph):\
-    \ seq[int] =\n        var gin = newseq[int](G.N)\n        for i in 0..<G.N:\n\
-    \            for (j, _) in G.edges[i]:\n                gin[j] += 1\n        var\
-    \ stack: seq[int]\n        for i in 0..<G.N:\n            if gin[i] == 0:\n  \
-    \              stack.add(i)\n        while len(stack) != 0:\n            var i\
-    \ = stack.pop()\n            result.add(i)\n            for (j, _) in G.edges[i]:\n\
-    \                gin[j] -= 1\n                if gin[j] == 0:\n              \
-    \      stack.add(j)\n    proc isDAG*(G: DirectedGraph): bool = G.topologicalsort.len\
-    \ == G.N\n"
+    \ seq[int] =\n        var gin = newseq[int](len(G))\n        for i in 0..<len(G):\n\
+    \            for j in G[i]:\n                gin[j] += 1\n        var stack: seq[int]\n\
+    \        for i in 0..<len(G):\n            if gin[i] == 0:\n                stack.add(i)\n\
+    \        while len(stack) != 0:\n            var i = stack.pop()\n           \
+    \ result.add(i)\n            for j in G[i]:\n                gin[j] -= 1\n   \
+    \             if gin[j] == 0:\n                    stack.add(j)\n    proc isDAG*(G:\
+    \ DirectedGraph): bool = G.topologicalsort.len == G.len\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/topologicalsort.nim
   requiredBy: []
-  timestamp: '2024-01-29 18:48:17+09:00'
+  timestamp: '2024-02-08 02:13:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/topologicalsort_1_test.nim

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -40,16 +40,16 @@ data:
     \    echo costs[t], \" \", len(path)-1\n    for i in 0..<len(path)-1:\n      \
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/shortest_path_test.nim
   requiredBy: []
-  timestamp: '2024-02-06 03:39:26+09:00'
+  timestamp: '2024-02-08 02:13:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/shortest_path_test.nim
