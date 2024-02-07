@@ -145,43 +145,43 @@ data:
   isVerificationFile: false
   path: cplib/graph/graph.nim
   requiredBy:
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   - cplib/tree/tree.nim
   - cplib/tree/tree.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   timestamp: '2024-01-07 09:42:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/tree/prufer_abc328e_test.nim
+  - verify/tree/prufer_abc328e_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
-  - verify/tree/prufer_abc328e_test.nim
-  - verify/tree/prufer_abc328e_test.nim
-  - verify/graph/SCCG_test.nim
-  - verify/graph/SCCG_test.nim
-  - verify/graph/scc_abc335e_test.nim
-  - verify/graph/scc_abc335e_test.nim
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/unweighted_directed_graph_aoj_test.nim
-  - verify/graph/unweighted_directed_graph_aoj_test.nim
   - verify/graph/SCC_test.nim
   - verify/graph/SCC_test.nim
-  - verify/graph/shortest_path_test.nim
-  - verify/graph/shortest_path_test.nim
   - verify/graph/topologicalsort_1_test.nim
   - verify/graph/topologicalsort_1_test.nim
+  - verify/graph/restore_dijkstra_test.nim
+  - verify/graph/restore_dijkstra_test.nim
   - verify/graph/topologicalsort_2_test.nim
   - verify/graph/topologicalsort_2_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/shortest_path_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/SCCG_test.nim
+  - verify/graph/SCCG_test.nim
+  - verify/graph/unweighted_directed_graph_aoj_test.nim
+  - verify/graph/unweighted_directed_graph_aoj_test.nim
 documentation_of: cplib/graph/graph.nim
 layout: document
 redirect_from:
