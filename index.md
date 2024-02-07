@@ -64,6 +64,9 @@ data:
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/isqrt.nim
+      title: cplib/math/isqrt.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/powmod.nim
       title: cplib/math/powmod.nim
     - icon: ':heavy_check_mark:'
@@ -301,6 +304,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yukicoder_test.nim
       title: verify/math/isprime_yukicoder_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/isqrt_test.nim
+      title: verify/math/isqrt_test.nim
   - name: verify/matrix
     pages:
     - icon: ':heavy_check_mark:'
