@@ -117,11 +117,7 @@ when not declared CPLIB_TMPL_CITRUS:
             if n > 1: a = (a * a) mod m
             n >>= 1
         return rev
-    proc sqrt*(x: int): int =
-        assert(x >= 0)
-        result = int(sqrt(float64(x)))
-        while result * result > x: result -= 1
-        while (result+1) * (result+1) <= x: result += 1
+    include cplib/math/isqrt
     proc chmax*[T](x: var T, y: T): bool {.discardable.} = (if x < y: (x = y; return true; ) return false)
     proc chmin*[T](x: var T, y: T): bool {.discardable.} = (if x > y: (x = y; return true; ) return false)
     proc `max=`*[T](x: var T, y: T) = x = max(x, y)
