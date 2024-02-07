@@ -65,6 +65,6 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     proc len*[T](self: SegmentTree[T]): int =
         return self.length
 
-    template newSegWith*(V,merge,default:untyped):untyped=
-        initSegmentTree(V,(l,r{.inject.}:typeof(default)) => merge,default)
+    template newSegWith*(V, merge, default: untyped): untyped =
+        initSegmentTree(V, (l, r{.inject.}: typeof(default)) => merge, default)
 
