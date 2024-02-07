@@ -91,16 +91,16 @@ data:
   verifiedWith:
   - verify/matrix/transpose_abc237b_test.nim
   - verify/matrix/transpose_abc237b_test.nim
-  - verify/matrix/rotate_abc298b_test.nim
-  - verify/matrix/rotate_abc298b_test.nim
-  - verify/matrix/trimmed_seq_abc307c_test.nim
-  - verify/matrix/trimmed_seq_abc307c_test.nim
-  - verify/matrix/trimmed_string_abc307c_test.nim
-  - verify/matrix/trimmed_string_abc307c_test.nim
   - verify/matrix/transposed_abc237b_test.nim
   - verify/matrix/transposed_abc237b_test.nim
+  - verify/matrix/trimmed_seq_abc307c_test.nim
+  - verify/matrix/trimmed_seq_abc307c_test.nim
   - verify/matrix/matops_polyomino_test.nim
   - verify/matrix/matops_polyomino_test.nim
+  - verify/matrix/trimmed_string_abc307c_test.nim
+  - verify/matrix/trimmed_string_abc307c_test.nim
+  - verify/matrix/rotate_abc298b_test.nim
+  - verify/matrix/rotate_abc298b_test.nim
 documentation_of: cplib/matrix/matops.nim
 layout: document
 redirect_from:

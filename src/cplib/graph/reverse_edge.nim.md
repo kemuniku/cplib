@@ -62,12 +62,12 @@ data:
   timestamp: '2024-01-07 18:41:40+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/SCCG_test.nim
-  - verify/graph/SCCG_test.nim
-  - verify/graph/scc_abc335e_test.nim
-  - verify/graph/scc_abc335e_test.nim
   - verify/graph/SCC_test.nim
   - verify/graph/SCC_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/SCCG_test.nim
+  - verify/graph/SCCG_test.nim
 documentation_of: cplib/graph/reverse_edge.nim
 layout: document
 redirect_from:

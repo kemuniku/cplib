@@ -75,22 +75,22 @@ data:
     \ != i_to_group[j]:\n                    newG.add_edge(i_to_group[i], i_to_group[j])\n\
     \        return (newG, i_to_group, group)\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/SCC.nim
   requiredBy: []
   timestamp: '2024-01-08 08:28:16+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/SCCG_test.nim
-  - verify/graph/SCCG_test.nim
-  - verify/graph/scc_abc335e_test.nim
-  - verify/graph/scc_abc335e_test.nim
   - verify/graph/SCC_test.nim
   - verify/graph/SCC_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/scc_abc335e_test.nim
+  - verify/graph/SCCG_test.nim
+  - verify/graph/SCCG_test.nim
 documentation_of: cplib/graph/SCC.nim
 layout: document
 redirect_from:
