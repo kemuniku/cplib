@@ -10,6 +10,9 @@ data:
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/defaultdict.nim
+      title: cplib/collections/defaultdict.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
@@ -137,6 +140,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
+  - name: verify/collections/defaultdict
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/defaultdict/defaultdict_abc235c_test.nim
+      title: verify/collections/defaultdict/defaultdict_abc235c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/defaultdict/defaultdict_abc278c_test.nim
+      title: verify/collections/defaultdict/defaultdict_abc278c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/defaultdict/defaultdict_abc278d_test.nim
+      title: verify/collections/defaultdict/defaultdict_abc278d_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/defaultdict/defaultdict_unit_test.nim
+      title: verify/collections/defaultdict/defaultdict_unit_test.nim
   - name: verify/collections/segtree
     pages:
     - icon: ':heavy_check_mark:'
