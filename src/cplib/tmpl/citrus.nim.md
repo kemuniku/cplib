@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -88,14 +94,12 @@ data:
     \ int =\n        var\n            rev = 1\n            a = a\n            n =\
     \ n\n        while n > 0:\n            if n % 2 != 0: rev = (rev * a) mod m\n\
     \            if n > 1: a = (a * a) mod m\n            n >>= 1\n        return\
-    \ rev\n    proc sqrt*(x: int): int =\n        assert(x >= 0)\n        result =\
-    \ int(sqrt(float64(x)))\n        while result * result > x: result -= 1\n    \
-    \    while (result+1) * (result+1) <= x: result += 1\n    proc chmax*[T](x: var\
-    \ T, y: T): bool {.discardable.} = (if x < y: (x = y; return true; ) return false)\n\
-    \    proc chmin*[T](x: var T, y: T): bool {.discardable.} = (if x > y: (x = y;\
-    \ return true; ) return false)\n    proc `max=`*[T](x: var T, y: T) = x = max(x,\
-    \ y)\n    proc `min=`*[T](x: var T, y: T) = x = min(x, y)\n    proc at*(x: char,\
-    \ a = '0'): int = int(x) - int(a)\n    converter tofloat*(n: int): float = float(n)\n\
+    \ rev\n    include cplib/math/isqrt\n    proc chmax*[T](x: var T, y: T): bool\
+    \ {.discardable.} = (if x < y: (x = y; return true; ) return false)\n    proc\
+    \ chmin*[T](x: var T, y: T): bool {.discardable.} = (if x > y: (x = y; return\
+    \ true; ) return false)\n    proc `max=`*[T](x: var T, y: T) = x = max(x, y)\n\
+    \    proc `min=`*[T](x: var T, y: T) = x = min(x, y)\n    proc at*(x: char, a\
+    \ = '0'): int = int(x) - int(a)\n    converter tofloat*(n: int): float = float(n)\n\
     \    proc Yes*(b: bool = true): void = print(if b: \"Yes\" else: \"No\")\n   \
     \ proc No*(b: bool = true): void = Yes(not b)\n    proc YES_upper*(b: bool = true):\
     \ void = print(if b: \"YES\" else: \"NO\")\n    proc NO_upper*(b: bool = true):\
@@ -103,11 +107,13 @@ data:
     \    const DDXY* = [(1, -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0),\
     \ (-1, 1)]\n    macro exit*(statement: untyped): untyped = (quote do: (`statement`;\
     \ quit()))\n"
-  dependsOn: []
+  dependsOn:
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2024-02-07 10:39:38+09:00'
+  timestamp: '2024-02-08 04:44:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
