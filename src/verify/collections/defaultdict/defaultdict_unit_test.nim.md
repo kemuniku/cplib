@@ -34,7 +34,7 @@ data:
   isVerificationFile: true
   path: verify/collections/defaultdict/defaultdict_unit_test.nim
   requiredBy: []
-  timestamp: '2024-02-07 11:08:04+09:00'
+  timestamp: '2024-02-08 03:05:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/defaultdict/defaultdict_unit_test.nim
