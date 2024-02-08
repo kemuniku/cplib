@@ -34,6 +34,12 @@ data:
     path: verify/collections/segtree/segtree_get1item_test.nim
     title: verify/collections/segtree/segtree_get1item_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree/segtree_newsegwith_test.nim
+    title: verify/collections/segtree/segtree_newsegwith_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree/segtree_newsegwith_test.nim
+    title: verify/collections/segtree/segtree_newsegwith_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -100,14 +106,18 @@ data:
     \ < self.length\n        self.update(index, val)\n    proc get_all*[T](self: SegmentTree[T]):\
     \ T =\n        ## [0,len(self))\u533A\u9593\u306E\u6F14\u7B97\u7D50\u679C\u3092\
     O(1)\u3067\u8FD4\u3059\n        return self.arr[1]\n    proc len*[T](self: SegmentTree[T]):\
-    \ int =\n        return self.length\n"
+    \ int =\n        return self.length\n\n    template newSegWith*(V, merge, default:\
+    \ untyped): untyped =\n        initSegmentTree(V, (l, r{.inject.}: typeof(default))\
+    \ => merge, default)\n\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/segtree.nim
   requiredBy: []
-  timestamp: '2024-02-05 04:26:12+09:00'
+  timestamp: '2024-02-07 20:17:37+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_static_test.nim
   - verify/collections/segtree/segtree_static_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim
