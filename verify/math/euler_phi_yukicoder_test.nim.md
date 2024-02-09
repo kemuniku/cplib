@@ -59,17 +59,17 @@ data:
     \ == 1:\n            ans.add(p)\n            break\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/math/divisor.nim
+  - cplib/math/euler_phi.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/euler_phi.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   - cplib/math/divisor.nim
-  - cplib/math/euler_phi.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/euler_phi.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/math/euler_phi_yukicoder_test.nim
   requiredBy: []
