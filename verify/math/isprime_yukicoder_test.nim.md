@@ -43,9 +43,9 @@ data:
     \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
     \       echo x, \" \", 0\n"
   dependsOn:
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
