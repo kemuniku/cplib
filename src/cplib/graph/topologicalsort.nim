@@ -4,7 +4,7 @@ when not declared CPLIB_GRAPH_TOPOLOGICALSORT:
     proc topologicalsort*(G: DirectedGraph): seq[int] =
         var gin = newseq[int](len(G))
         for i in 0..<len(G):
-            for j in G[i]:
+            for (j, _) in G.to_and_cost(i):
                 gin[j] += 1
         var stack: seq[int]
         for i in 0..<len(G):

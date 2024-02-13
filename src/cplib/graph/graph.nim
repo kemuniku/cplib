@@ -1,7 +1,7 @@
 when not declared CPLIB_GRAPH_GRAPH:
     const CPLIB_GRAPH_GRAPH* = 1
 
-    import sequtils
+    import sequtils, math
     type DynamicGraph*[T] = ref object of RootObj
         edges*: seq[seq[(int, T)]]
         N*: int
@@ -57,7 +57,7 @@ when not declared CPLIB_GRAPH_GRAPH:
 
     iterator `[]`*[T](g: WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T], x: int): (int, T) =
         for e in g.edges[x]: yield e
-    iterator `[]`*(g: UnWeightedDirectedGraph or UnWeightedUnDirectedGraph, x: int): seq[int] =
+    iterator `[]`*(g: UnWeightedDirectedGraph or UnWeightedUnDirectedGraph, x: int): int =
         for e in g.edges[x]: yield e[0]
 
     proc add_edge_static_impl[T](g: StaticGraphs, u, v: int, cost: T, directed: bool) =
@@ -132,3 +132,8 @@ when not declared CPLIB_GRAPH_GRAPH:
         for i in g.start[x]..<g.start[x+1]: yield g.elist[i]
     iterator `[]`*(g: UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph, x: int): int =
         for i in g.start[x]..<g.start[x+1]: yield g.elist[i][0]
+
+    iterator to_and_cost*[T](g: WeightedGraph[T], x: int): (int, T) =
+        for (i, c) in g[x]: yield (i, c)
+    iterator to_and_cost*(g: UnWeightedGraph, x: int): (int, int) =
+        for i in g[x]: yield (i, 1)

@@ -2,7 +2,7 @@ when not declared CPLIB_GRAPH_SCC:
     const CPLIB_GRAPH_SCC* = 1
     import cplib/graph/graph
     import sequtils
-    proc SCC*(G: UnweightedDirectedGraph): seq[seq[int]] =
+    proc SCC*(G: UnweightedDirectedGraph or UnWeightedDirectedStaticGraph): seq[seq[int]] =
         ##強連結成分分解をして、強連結成分を返します。リストはトポロジカルソートされています。
         var postorder = newseqwith(len(G), -1)
         var used = newSeqWith(len(G), false)
@@ -42,9 +42,10 @@ when not declared CPLIB_GRAPH_SCC:
                 sdfs(i)
                 count += 1
         return group
-    proc SCCG*(G: UnweightedDirectedGraph): (UnweightedDirectedGraph, seq[int], seq[seq[int]]) =
+    proc SCCG*[UG](G: UG): (UG, seq[int], seq[seq[int]]) =
         ##強連結成分分解をします。
         ##結果を、(頂点をまとめたグラフ,元の頂点→新頂点への対応,新頂点に含まれる頂点一覧)で返します。
+        assert UG is UnWeightedDirectedGraph or UG is UnWeightedDirectedStaticGraph
         var group = SCC(G)
         var i_to_group = newSeqWith(len(G), -1)
         for i in 0..<len(group):
@@ -52,7 +53,7 @@ when not declared CPLIB_GRAPH_SCC:
                 i_to_group[j] = i
         var newG = initUnWeightedDirectedGraph(len(group))
         for i in 0..<len(G):
-            for j in G[i]:
+            for j in G.to_and_cost(i):
                 if i_to_group[i] != i_to_group[j]:
                     newG.add_edge(i_to_group[i], i_to_group[j])
         return (newG, i_to_group, group)
