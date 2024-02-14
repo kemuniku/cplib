@@ -45,15 +45,16 @@ when not declared CPLIB_GRAPH_SCC:
     proc SCCG*[UG](G: UG): (UG, seq[int], seq[seq[int]]) =
         ##強連結成分分解をします。
         ##結果を、(頂点をまとめたグラフ,元の頂点→新頂点への対応,新頂点に含まれる頂点一覧)で返します。
+        when UG isnot UnWeightedDirectedGraph and UG isnot UnWeightedDirectedStaticGraph:
+            raise newException(Exception, "Type must be UnweightedDirectedGraph or UnweightedDirectedStaticGraph")
         var group = SCC(G)
         var i_to_group = newSeqWith(len(G), -1)
         for i in 0..<len(group):
             for j in group[i]:
                 i_to_group[j] = i
-        proc initUG[UG](N: int): auto =
-            when UG is UnWeightedDirectedGraph: return initUnWeightedDirectedGraph(N)
-            when UG is UnWeightedDirectedStaticGraph: return initUnWeightedDirectedStaticGraph(N)
-            raise newException(Exception, "Type must be UnweightedDirectedGraph or UnweightedDirectedStaticGraph")
+        proc initUG[UG](N: int): UG =
+            when UG is UnWeightedDirectedGraph: result = initUnWeightedDirectedGraph(N)
+            when UG is UnWeightedDirectedStaticGraph: result = initUnWeightedDirectedStaticGraph(N)
         var newG = initUG[UG](len(group))
         for i in 0..<len(G):
             for j in G[i]:
