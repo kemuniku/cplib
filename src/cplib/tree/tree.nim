@@ -2,8 +2,8 @@ when not declared CPLIB_TREE_TREE:
     const CPLIB_TREE_TREE* = 1
     import cplib/graph/graph
 
-    type WeightedTree*[T] = ref object of Graph[T]
-    type UnWeightedTree* = ref object of Graph[int]
+    type WeightedTree*[T] = ref object of DynamicGraph[T]
+    type UnWeightedTree* = ref object of DynamicGraph[int]
 
     type TreeTypes* = WeightedTree or UnWeightedTree
 
