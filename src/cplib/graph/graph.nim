@@ -65,9 +65,10 @@ when not declared CPLIB_GRAPH_GRAPH:
         g.dst.add(v)
         g.cost.add(cost)
         if not directed:
-            g.src.add(u)
-            g.dst.add(v)
+            g.src.add(v)
+            g.dst.add(u)
             g.cost.add(cost)
+
     proc build*[T](g: var StaticGraphs[T]) =
         g.start = newSeqWith(g.N+1, 0)
         for i in 0..<g.src.len:
