@@ -71,8 +71,10 @@ when not declared CPLIB_TREE_TREE:
     iterator `[]`*(g: UnWeightedTree, x: int): int =
         for e in g.edges[x]: yield e[0]
     iterator `[]`*[T](g: WeightedStaticTree[T], x: int): (int, T) =
+        g.static_graph_initialized_check()
         for i in g.start[x]..<g.start[x+1]: yield g.elist[i]
     iterator `[]`*(g: UnWeightedStaticTree, x: int): int =
+        g.static_graph_initialized_check()
         for i in g.start[x]..<g.start[x+1]: yield g.elist[i][0]
 
     iterator to_and_cost*[T](g: WeightedTree[T] or WeightedStaticTree[T], x: int): (int, T) =

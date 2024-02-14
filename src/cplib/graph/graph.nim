@@ -21,15 +21,15 @@ when not declared CPLIB_GRAPH_GRAPH:
     type UnWeightedDirectedStaticGraph* = ref object of StaticGraph[int]
     type UnWeightedUnDirectedStaticGraph* = ref object of StaticGraph[int]
 
-    type DynamicGraphs*[T] = DynamicGraph[T] or WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T] or UnWeightedDirectedGraph or UnWeightedUnDirectedGraph
-    type StaticGraphs*[T] = StaticGraph[T] or WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T] or UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
-    type GraphTypes*[T] = DynamicGraphs[T] or StaticGraphs[T]
-    type DirectedGraph*[T] = WeightedDirectedGraph[T] or UnWeightedDirectedGraph or WeightedDirectedStaticGraph[T] or UnWeightedDirectedStaticGraph
-    type UnDirectedGraph*[T] = WeightedUnDirectedGraph[T] or UnWeightedUnDirectedGraph or WeightedUnDirectedStaticGraph[T] or UnWeightedUnDirectedStaticGraph
+    # type DynamicGraphs* = DynamicGraph or WeightedDirectedGraph or WeightedUnDirectedGraph or UnWeightedDirectedGraph or UnWeightedUnDirectedGraph
+    # type StaticGraphs* = StaticGraph or WeightedDirectedStaticGraph or WeightedUnDirectedStaticGraph or UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
+    type GraphTypes*[T] = DynamicGraph[T] or StaticGraph[T]
+    type DirectedGraph* = WeightedDirectedGraph or UnWeightedDirectedGraph or WeightedDirectedStaticGraph or UnWeightedDirectedStaticGraph
+    type UnDirectedGraph* = WeightedUnDirectedGraph or UnWeightedUnDirectedGraph or WeightedUnDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
     type WeightedGraph*[T] = WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T] or WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T]
     type UnWeightedGraph* = UnWeightedDirectedGraph or UnWeightedUnDirectedGraph or UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
 
-    proc add_edge_dynamic_impl[T](g: DynamicGraphs, u, v: int, cost: T, directed: bool) =
+    proc add_edge_dynamic_impl[T](g: DynamicGraph[T], u, v: int, cost: T, directed: bool) =
         g.edges[u].add((v, cost))
         if not directed: g.edges[v].add((u, cost))
 
@@ -53,14 +53,14 @@ when not declared CPLIB_GRAPH_GRAPH:
     proc add_edge*(g: var UnWeightedUnDirectedGraph, u, v: int) =
         g.add_edge_dynamic_impl(u, v, 1, false)
 
-    proc len*(G: GraphTypes): int = G.N
+    proc len*[T](G: GraphTypes[T]): int = G.N
 
     iterator `[]`*[T](g: WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T], x: int): (int, T) =
         for e in g.edges[x]: yield e
     iterator `[]`*(g: UnWeightedDirectedGraph or UnWeightedUnDirectedGraph, x: int): int =
         for e in g.edges[x]: yield e[0]
 
-    proc add_edge_static_impl[T](g: StaticGraphs, u, v: int, cost: T, directed: bool) =
+    proc add_edge_static_impl[T](g: StaticGraph[T], u, v: int, cost: T, directed: bool) =
         g.src.add(u)
         g.dst.add(v)
         g.cost.add(cost)
@@ -69,8 +69,8 @@ when not declared CPLIB_GRAPH_GRAPH:
             g.dst.add(u)
             g.cost.add(cost)
 
-    proc build*[T](g: var StaticGraphs[T]) =
-        g.start = newSeqWith(g.N+1, 0)
+    proc build*[T](g: StaticGraph[T]) =
+        g.start = newSeqWith(g.len + 1, 0)
         for i in 0..<g.src.len:
             g.start[g.src[i]] += 1
         g.start.cumsum
@@ -129,12 +129,17 @@ when not declared CPLIB_GRAPH_GRAPH:
     proc add_edge*(g: var UnWeightedUnDirectedStaticGraph, u, v: int) =
         g.add_edge_static_impl(u, v, 1, false)
 
+    proc static_graph_initialized_check*[T](g: StaticGraph[T]) = assert g.start.len > 0, "Static Graph must be initialized before use."
+
     iterator `[]`*[T](g: WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T], x: int): (int, T) =
+        g.static_graph_initialized_check()
         for i in g.start[x]..<g.start[x+1]: yield g.elist[i]
     iterator `[]`*(g: UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph, x: int): int =
+        g.static_graph_initialized_check()
         for i in g.start[x]..<g.start[x+1]: yield g.elist[i][0]
 
-    iterator to_and_cost*[T](g: WeightedGraph[T], x: int): (int, T) =
-        for (i, c) in g[x]: yield (i, c)
-    iterator to_and_cost*(g: UnWeightedGraph, x: int): (int, int) =
-        for i in g[x]: yield (i, 1)
+    iterator to_and_cost*[T](g: DynamicGraph[T], x: int): (int, T) =
+        for e in g.edges[x]: yield e
+    iterator to_and_cost*[T](g: StaticGraph[T], x: int): (int, T) =
+        g.static_graph_initialized_check()
+        for i in g.start[x]..<g.start[x+1]: yield g.elist[i]
