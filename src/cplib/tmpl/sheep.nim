@@ -45,6 +45,7 @@ when not declared CPLIB_TMPL_SHEEP:
     proc `&`(x: int, y: int): int = x and y
     proc `>>`(x: int, y: int): int = x shr y
     proc `<<`(x: int, y: int): int = x shl y
+    proc `~`(x: int): int = not x 
     proc `^=`(x: var int, y: int): void = x = x ^ y
     proc `&=`(x: var int, y: int): void = x = x & y
     proc `|=`(x: var int, y: int): void = x = x | y
