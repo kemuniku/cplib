@@ -76,12 +76,12 @@ data:
   timestamp: '2024-02-08 03:05:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/SCCG_test.nim
+  - verify/graph/SCCG_test.nim
   - verify/graph/SCC_test.nim
   - verify/graph/SCC_test.nim
   - verify/graph/scc_abc335e_test.nim
   - verify/graph/scc_abc335e_test.nim
-  - verify/graph/SCCG_test.nim
-  - verify/graph/SCCG_test.nim
 documentation_of: cplib/graph/SCC.nim
 layout: document
 redirect_from:
