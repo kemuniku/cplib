@@ -57,14 +57,14 @@ data:
 
     '
   dependsOn:
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   isVerificationFile: true

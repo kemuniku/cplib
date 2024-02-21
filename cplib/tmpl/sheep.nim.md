@@ -57,24 +57,25 @@ data:
     \ y: int): void = x = x^y\n    proc `^`(x: int, y: int): int = x xor y\n    proc\
     \ `|`(x: int, y: int): int = x or y\n    proc `&`(x: int, y: int): int = x and\
     \ y\n    proc `>>`(x: int, y: int): int = x shr y\n    proc `<<`(x: int, y: int):\
-    \ int = x shl y\n    proc `^=`(x: var int, y: int): void = x = x ^ y\n    proc\
-    \ `&=`(x: var int, y: int): void = x = x & y\n    proc `|=`(x: var int, y: int):\
-    \ void = x = x | y\n    proc `>>=`(x: var int, y: int): void = x = x >> y\n  \
-    \  proc `<<=`(x: var int, y: int): void = x = x << y\n    proc `[]`(x: int, n:\
-    \ int): bool = (x and (1 shl n)) != 0\n    #\u4FBF\u5229\u306A\u5909\u63DB\n \
-    \   proc `!`(x: char, a = '0'): int = int(x)-int(a)\n    #\u5B9A\u6570\n    const\
-    \ INF = int(3300300300300300491)\n    #converter\n\n    #range\n    iterator range(start:\
-    \ int, ends: int, step: int): int =\n        var i = start\n        if step <\
-    \ 0:\n            while i > ends:\n                yield i\n                i\
-    \ += step\n        elif step > 0:\n            while i < ends:\n             \
-    \   yield i\n                i += step\n    iterator range(ends: int): int = (for\
-    \ i in 0..<ends: yield i)\n    iterator range(start: int, ends: int): int = (for\
-    \ i in\n            start..<ends: yield i)\n"
+    \ int = x shl y\n    proc `~`(x: int): int = not x \n    proc `^=`(x: var int,\
+    \ y: int): void = x = x ^ y\n    proc `&=`(x: var int, y: int): void = x = x &\
+    \ y\n    proc `|=`(x: var int, y: int): void = x = x | y\n    proc `>>=`(x: var\
+    \ int, y: int): void = x = x >> y\n    proc `<<=`(x: var int, y: int): void =\
+    \ x = x << y\n    proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0\n \
+    \   #\u4FBF\u5229\u306A\u5909\u63DB\n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n\
+    \    #\u5B9A\u6570\n    const INF = int(3300300300300300491)\n    #converter\n\
+    \n    #range\n    iterator range(start: int, ends: int, step: int): int =\n  \
+    \      var i = start\n        if step < 0:\n            while i > ends:\n    \
+    \            yield i\n                i += step\n        elif step > 0:\n    \
+    \        while i < ends:\n                yield i\n                i += step\n\
+    \    iterator range(ends: int): int = (for i in 0..<ends: yield i)\n    iterator\
+    \ range(start: int, ends: int): int = (for i in\n            start..<ends: yield\
+    \ i)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy: []
-  timestamp: '2024-02-22 03:27:17+09:00'
+  timestamp: '2024-02-22 03:29:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/restore_dijkstra_test.nim
