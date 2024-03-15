@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   _extendedRequiredBy:
@@ -46,26 +46,38 @@ data:
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_table_abc284d_test.nim
+    title: verify/math/factorize_table_abc284d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_table_abc284d_test.nim
+    title: verify/math/factorize_table_abc284d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_tuple_abc324b_test.nim
+    title: verify/math/factorize_tuple_abc324b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_tuple_abc324b_test.nim
+    title: verify/math/factorize_tuple_abc324b_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -86,8 +98,8 @@ data:
     \  return false\n        return true\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
@@ -96,9 +108,11 @@ data:
   - cplib/math/primefactor.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
-  timestamp: '2023-12-25 07:39:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2024-03-16 01:58:47+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/factorize_table_abc284d_test.nim
+  - verify/math/factorize_table_abc284d_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/divisor_atcoder_test.nim
@@ -111,6 +125,8 @@ data:
   - verify/math/divisor_many_atcoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
 documentation_of: cplib/math/isprime.nim
 layout: document
 redirect_from:

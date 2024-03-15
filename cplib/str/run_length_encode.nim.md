@@ -1,8 +1,56 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/divisor.nim
+    title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/primefactor.nim
+    title: cplib/math/primefactor.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/primefactor.nim
+    title: cplib/math/primefactor.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_atcoder_test.nim
+    title: verify/math/divisor_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_atcoder_test.nim
+    title: verify/math/divisor_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_many_atcoder_test.nim
+    title: verify/math/divisor_many_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/divisor_many_atcoder_test.nim
+    title: verify/math/divisor_many_atcoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/euler_phi_yukicoder_test.nim
+    title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_table_abc284d_test.nim
+    title: verify/math/factorize_table_abc284d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_table_abc284d_test.nim
+    title: verify/math/factorize_table_abc284d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_tuple_abc324b_test.nim
+    title: verify/math/factorize_tuple_abc324b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_tuple_abc324b_test.nim
+    title: verify/math/factorize_tuple_abc324b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_yosupo_test.nim
+    title: verify/math/factorize_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/factorize_yosupo_test.nim
+    title: verify/math/factorize_yosupo_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/run_length_encode_test.nim
     title: verify/str/run_length_encode_test.nim
@@ -28,10 +76,26 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/run_length_encode.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
   timestamp: '2023-11-19 18:26:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/factorize_table_abc284d_test.nim
+  - verify/math/factorize_table_abc284d_test.nim
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
   - verify/str/run_length_encode_test.nim
   - verify/str/run_length_encode_test.nim
 documentation_of: cplib/str/run_length_encode.nim
