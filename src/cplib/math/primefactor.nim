@@ -2,6 +2,7 @@ when not declared CPLIB_MATH_PRIMEFACTOR:
     const CPLIB_MATH_PRIMEFACTOR* = 1
     import cplib/math/inner_math
     import cplib/math/isprime
+    import cplib/str/run_length_encode
     import random, std/math, algorithm, tables
 
     randomize()
@@ -12,7 +13,7 @@ when not declared CPLIB_MATH_PRIMEFACTOR:
         while true:
             var x, ys, q, r, g = 1
             var rnd, y = rand(0..n-3) + 2
-            proc f(x: int): int = (mul(x, x, n) + rnd) mod n
+            proc f(x: int): int = add(mul(x, x, n), rnd, n)
             while g == 1:
                 x = y
                 for i in 0..<r: y = f(y)
@@ -44,7 +45,9 @@ when not declared CPLIB_MATH_PRIMEFACTOR:
         if n > 1: result.add(n)
         if sorted: return result.sorted
 
-    proc primefactor_cnt*(n: int): Table[int, int] =
+    proc primefactor_table*(n: int): Table[int, int] =
         for p in primefactor(n):
             if p in result: result[p] += 1
             else: result[p] = 1
+
+    proc primefactor_tuple*(n: int): seq[(int, int)] = primefactor(n, true).run_length_encode
