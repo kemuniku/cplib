@@ -50,9 +50,9 @@ data:
     '
   dependsOn:
   - cplib/tmpl/qcfium.nim
-  - cplib/tmpl/citrus.nim
   - cplib/tmpl/qcfium.nim
   - cplib/math/isqrt.nim
+  - cplib/tmpl/citrus.nim
   - cplib/tmpl/citrus.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true

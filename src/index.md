@@ -23,10 +23,10 @@ data:
       title: cplib/collections/unionfind.nim
   - name: cplib/graph
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/SCC.nim
       title: cplib/graph/SCC.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':question:'
@@ -35,7 +35,7 @@ data:
     - icon: ':warning:'
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
   - name: cplib/itertools
@@ -57,16 +57,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/fractions.nim
       title: cplib/math/fractions.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/inner_math.nim
       title: cplib/math/inner_math.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/powmod.nim
       title: cplib/math/powmod.nim
     - icon: ':heavy_check_mark:'
@@ -96,15 +96,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':x:'
+    - icon: ':question:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -211,7 +211,7 @@ data:
       title: verify/collections/tatyamset/index_right_test.nim
   - name: verify/graph/dynamic
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/SCCG_test.nim
       title: verify/graph/dynamic/SCCG_test.nim
     - icon: ':heavy_check_mark:'
@@ -232,33 +232,33 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/topologicalsort_2_test.nim
       title: verify/graph/dynamic/topologicalsort_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
       title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - name: verify/graph/static
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/SCCG_static_test.nim
       title: verify/graph/static/SCCG_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/SCC_static_test.nim
       title: verify/graph/static/SCC_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/restore_dijkstra_static_test.nim
       title: verify/graph/static/restore_dijkstra_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/scc_abc335e_static_test.nim
       title: verify/graph/static/scc_abc335e_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/shortest_path_static_test.nim
       title: verify/graph/static/shortest_path_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/topologicalsort_1_static_test.nim
       title: verify/graph/static/topologicalsort_1_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/topologicalsort_2_static_test.nim
       title: verify/graph/static/topologicalsort_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
       title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   - name: verify/itertools
@@ -313,6 +313,12 @@ data:
       path: verify/math/euler_phi_yukicoder_test.nim
       title: verify/math/euler_phi_yukicoder_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/math/factorize_table_abc284d_test.nim
+      title: verify/math/factorize_table_abc284d_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/factorize_tuple_abc324b_test.nim
+      title: verify/math/factorize_tuple_abc324b_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/math/factorize_yosupo_test.nim
       title: verify/math/factorize_yosupo_test.nim
     - icon: ':heavy_check_mark:'
@@ -327,10 +333,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/fractions_unit_test.nim
       title: verify/math/fractions_unit_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yosupo_test.nim
       title: verify/math/isprime_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yukicoder_test.nim
       title: verify/math/isprime_yukicoder_test.nim
     - icon: ':heavy_check_mark:'
@@ -386,7 +392,7 @@ data:
       title: verify/tmpl/citrus_and_qcfium_test.nim
   - name: verify/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
     - icon: ':x:'
