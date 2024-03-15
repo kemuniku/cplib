@@ -1,29 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/graph/topologicalsort_1_test.nim
-    title: verify/graph/topologicalsort_1_test.nim
+    path: verify/graph/dynamic/topologicalsort_1_test.nim
+    title: verify/graph/dynamic/topologicalsort_1_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/graph/topologicalsort_1_test.nim
-    title: verify/graph/topologicalsort_1_test.nim
+    path: verify/graph/dynamic/topologicalsort_1_test.nim
+    title: verify/graph/dynamic/topologicalsort_1_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/graph/topologicalsort_2_test.nim
-    title: verify/graph/topologicalsort_2_test.nim
+    path: verify/graph/dynamic/topologicalsort_2_test.nim
+    title: verify/graph/dynamic/topologicalsort_2_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/graph/topologicalsort_2_test.nim
-    title: verify/graph/topologicalsort_2_test.nim
-  _isVerificationFailed: false
+    path: verify/graph/dynamic/topologicalsort_2_test.nim
+    title: verify/graph/dynamic/topologicalsort_2_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/topologicalsort_1_static_test.nim
+    title: verify/graph/static/topologicalsort_1_static_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/topologicalsort_1_static_test.nim
+    title: verify/graph/static/topologicalsort_1_static_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/topologicalsort_2_static_test.nim
+    title: verify/graph/static/topologicalsort_2_static_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/topologicalsort_2_static_test.nim
+    title: verify/graph/static/topologicalsort_2_static_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -33,25 +45,30 @@ data:
   code: "when not declared CPLIB_GRAPH_TOPOLOGICALSORT:\n    const CPLIB_GRAPH_TOPOLOGICALSORT*\
     \ = 1\n    import cplib/graph/graph\n    proc topologicalsort*(G: DirectedGraph):\
     \ seq[int] =\n        var gin = newseq[int](len(G))\n        for i in 0..<len(G):\n\
-    \            for j in G[i]:\n                gin[j] += 1\n        var stack: seq[int]\n\
-    \        for i in 0..<len(G):\n            if gin[i] == 0:\n                stack.add(i)\n\
-    \        while len(stack) != 0:\n            var i = stack.pop()\n           \
-    \ result.add(i)\n            for j in G[i]:\n                gin[j] -= 1\n   \
-    \             if gin[j] == 0:\n                    stack.add(j)\n    proc isDAG*(G:\
-    \ DirectedGraph): bool = G.topologicalsort.len == G.len\n"
+    \            for (j, _) in G.to_and_cost(i):\n                gin[j] += 1\n  \
+    \      var stack: seq[int]\n        for i in 0..<len(G):\n            if gin[i]\
+    \ == 0:\n                stack.add(i)\n        while len(stack) != 0:\n      \
+    \      var i = stack.pop()\n            result.add(i)\n            for j in G[i]:\n\
+    \                gin[j] -= 1\n                if gin[j] == 0:\n              \
+    \      stack.add(j)\n    proc isDAG*(G: DirectedGraph): bool = G.topologicalsort.len\
+    \ == G.len\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/topologicalsort.nim
   requiredBy: []
-  timestamp: '2024-02-08 02:13:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-02-14 18:36:42+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/graph/topologicalsort_1_test.nim
-  - verify/graph/topologicalsort_1_test.nim
-  - verify/graph/topologicalsort_2_test.nim
-  - verify/graph/topologicalsort_2_test.nim
+  - verify/graph/static/topologicalsort_2_static_test.nim
+  - verify/graph/static/topologicalsort_2_static_test.nim
+  - verify/graph/static/topologicalsort_1_static_test.nim
+  - verify/graph/static/topologicalsort_1_static_test.nim
+  - verify/graph/dynamic/topologicalsort_2_test.nim
+  - verify/graph/dynamic/topologicalsort_2_test.nim
+  - verify/graph/dynamic/topologicalsort_1_test.nim
+  - verify/graph/dynamic/topologicalsort_1_test.nim
 documentation_of: cplib/graph/topologicalsort.nim
 layout: document
 redirect_from:

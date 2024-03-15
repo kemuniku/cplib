@@ -4,32 +4,44 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/graph/restore_dijkstra_test.nim
-    title: verify/graph/restore_dijkstra_test.nim
+    path: verify/graph/dynamic/restore_dijkstra_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/graph/restore_dijkstra_test.nim
-    title: verify/graph/restore_dijkstra_test.nim
+    path: verify/graph/dynamic/restore_dijkstra_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/graph/shortest_path_test.nim
-    title: verify/graph/shortest_path_test.nim
+    path: verify/graph/dynamic/shortest_path_test.nim
+    title: verify/graph/dynamic/shortest_path_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/graph/shortest_path_test.nim
-    title: verify/graph/shortest_path_test.nim
-  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/shortest_path_test.nim
+    title: verify/graph/dynamic/shortest_path_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/restore_dijkstra_static_test.nim
+    title: verify/graph/static/restore_dijkstra_static_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/restore_dijkstra_static_test.nim
+    title: verify/graph/static/restore_dijkstra_static_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/shortest_path_static_test.nim
+    title: verify/graph/static/shortest_path_static_test.nim
+  - icon: ':x:'
+    path: verify/graph/static/shortest_path_static_test.nim
+    title: verify/graph/static/shortest_path_static_test.nim
+  - icon: ':x:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -57,7 +69,7 @@ data:
     \ y: int): void = x = x^y\n    proc `^`(x: int, y: int): int = x xor y\n    proc\
     \ `|`(x: int, y: int): int = x or y\n    proc `&`(x: int, y: int): int = x and\
     \ y\n    proc `>>`(x: int, y: int): int = x shr y\n    proc `<<`(x: int, y: int):\
-    \ int = x shl y\n    proc `~`(x: int): int = not x \n    proc `^=`(x: var int,\
+    \ int = x shl y\n    proc `~`(x: int): int = not x\n    proc `^=`(x: var int,\
     \ y: int): void = x = x ^ y\n    proc `&=`(x: var int, y: int): void = x = x &\
     \ y\n    proc `|=`(x: var int, y: int): void = x = x | y\n    proc `>>=`(x: var\
     \ int, y: int): void = x = x >> y\n    proc `<<=`(x: var int, y: int): void =\
@@ -75,17 +87,21 @@ data:
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy: []
-  timestamp: '2024-02-22 03:29:57+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-02-21 18:32:05+00:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/restore_dijkstra_test.nim
-  - verify/graph/shortest_path_test.nim
-  - verify/graph/shortest_path_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
 documentation_of: cplib/tmpl/sheep.nim
 layout: document
 redirect_from:

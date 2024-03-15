@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
@@ -40,22 +40,22 @@ data:
     \    echo costs[t], \" \", len(path)-1\n    for i in 0..<len(path)-1:\n      \
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
   isVerificationFile: true
-  path: verify/graph/shortest_path_test.nim
+  path: verify/graph/static/shortest_path_static_test.nim
   requiredBy: []
-  timestamp: '2024-02-22 03:29:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-03-16 01:24:58+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/graph/shortest_path_test.nim
+documentation_of: verify/graph/static/shortest_path_static_test.nim
 layout: document
 redirect_from:
-- /verify/verify/graph/shortest_path_test.nim
-- /verify/verify/graph/shortest_path_test.nim.html
-title: verify/graph/shortest_path_test.nim
+- /verify/verify/graph/static/shortest_path_static_test.nim
+- /verify/verify/graph/static/shortest_path_static_test.nim.html
+title: verify/graph/static/shortest_path_static_test.nim
 ---

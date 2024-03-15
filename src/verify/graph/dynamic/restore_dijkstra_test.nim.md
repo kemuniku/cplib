@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   _extendedRequiredBy: []
@@ -39,22 +39,22 @@ data:
     \ t)\nif len(path) == 1:\n    echo -1\nelse:\n    echo cost, \" \", len(path)-1\n\
     \    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
   isVerificationFile: true
-  path: verify/graph/restore_dijkstra_test.nim
+  path: verify/graph/dynamic/restore_dijkstra_test.nim
   requiredBy: []
-  timestamp: '2024-02-22 03:29:57+09:00'
+  timestamp: '2024-03-16 01:24:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/graph/restore_dijkstra_test.nim
+documentation_of: verify/graph/dynamic/restore_dijkstra_test.nim
 layout: document
 redirect_from:
-- /verify/verify/graph/restore_dijkstra_test.nim
-- /verify/verify/graph/restore_dijkstra_test.nim.html
-title: verify/graph/restore_dijkstra_test.nim
+- /verify/verify/graph/dynamic/restore_dijkstra_test.nim
+- /verify/verify/graph/dynamic/restore_dijkstra_test.nim.html
+title: verify/graph/dynamic/restore_dijkstra_test.nim
 ---

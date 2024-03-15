@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc296/tasks/abc296_e
     links:
@@ -31,23 +31,23 @@ data:
     \ scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
     \ {.inline.} = scanf(\"%lld\\n\", addr result)\nvar N = ii()\nvar A = newseqwith(N,\
     \ ii())\nvar G = initUnWeightedDirectedGraph(N)\nvar ans = 0\nfor i in 0..<N:\n\
-    \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nvar group =\
-    \ G.SCC()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
+    \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nvar (_, _,\
+    \ group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
-  path: verify/graph/SCC_test.nim
+  path: verify/graph/dynamic/SCCG_test.nim
   requiredBy: []
-  timestamp: '2024-02-08 03:05:04+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-02-14 18:36:42+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/graph/SCC_test.nim
+documentation_of: verify/graph/dynamic/SCCG_test.nim
 layout: document
 redirect_from:
-- /verify/verify/graph/SCC_test.nim
-- /verify/verify/graph/SCC_test.nim.html
-title: verify/graph/SCC_test.nim
+- /verify/verify/graph/dynamic/SCCG_test.nim
+- /verify/verify/graph/dynamic/SCCG_test.nim.html
+title: verify/graph/dynamic/SCCG_test.nim
 ---
