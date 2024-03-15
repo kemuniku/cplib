@@ -43,10 +43,10 @@ data:
   timestamp: '2024-02-07 16:25:18+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tmpl/citrus_and_qcfium_test.nim
-  - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/math/isqrt_test.nim
   - verify/math/isqrt_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
 documentation_of: cplib/math/isqrt.nim
 layout: document
 redirect_from:

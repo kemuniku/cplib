@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   _extendedRequiredBy:
@@ -51,21 +51,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -85,32 +85,32 @@ data:
     \             if t == N1:\n                        break test\n              \
     \  return false\n        return true\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
   timestamp: '2023-12-25 07:39:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_atcoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
   - verify/math/divisor_many_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
 documentation_of: cplib/math/isprime.nim
 layout: document
 redirect_from:

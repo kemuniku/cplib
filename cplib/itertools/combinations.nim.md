@@ -41,10 +41,10 @@ data:
   timestamp: '2023-11-21 13:57:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/itertools/itertools_combinations_test.nim
-  - verify/itertools/itertools_combinations_test.nim
   - verify/itertools/itertools_combinations_2_test.nim
   - verify/itertools/itertools_combinations_2_test.nim
+  - verify/itertools/itertools_combinations_test.nim
+  - verify/itertools/itertools_combinations_test.nim
 documentation_of: cplib/itertools/combinations.nim
 layout: document
 redirect_from:
