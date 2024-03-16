@@ -1,9 +1,9 @@
 when not declared CPLIB_UTILS_MO:
-    {.checks: off.}
+    #{.checks: off.}
     const CPLIB_UTILS_MO* = 1
     import std/math, std/algorithm
     type Mo* = object
-        width: int
+        width*: int
         N, Q: int
         qli: seq[seq[int]]
         size: int
@@ -12,7 +12,7 @@ when not declared CPLIB_UTILS_MO:
         result.width = width
         result.N = N
         result.Q = Q
-        let qlisize = Q div width + 1
+        let qlisize = N div width + 1
         result.qli = newSeq[seq[int]](qlisize)
 
     proc insert*(self: var Mo, l, r: int) =
