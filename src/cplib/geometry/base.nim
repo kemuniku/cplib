@@ -8,9 +8,14 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc initPoint*[T](p: (T, T)): Point[T] = Point[T](x: p[0], y: p[1])
     proc initPoint*[T](x, y: T): Point[T] = Point[T](x: x, y: y)
 
+    proc `+`*[T](p: Point[T]): Point[T] = p
     proc `-`*[T](p: Point[T]): Point[T] = Point[T](x: -p.x, y: -p.y)
     proc `+=`*[T](p: var Point[T], q: Point[T]) = (p.x += q.x; p.y += q.y)
     proc `-=`*[T](p: var Point[T], q: Point[T]) = (p.x -= q.x; p.y -= q.y)
+    proc `*=`*[S](p: var Point[SomeFloat], x: S) = (p.x *= float(x); p.y *= float(x))
+    proc `*=`*[T, S](p: var Point[T], x: S) = (p.x *= x; p.y *= x)
+    proc `/=`*[S](p: var Point[SomeFloat], x: S) = (p.x /= float(x); p.y /= float(x))
+    proc `/=`*[T, S](p: var Point[T], x: S) = (p.x /= x; p.y /= x)
     proc dot*[T](p, q: Point[T]): T = p.x * q.x + p.y * q.y
     proc cross*[T](p, q: Point[T]): T = p.x * q.y - p.y * q.x
     proc `*`*[T](p, q: Point[T]): T = dot(p, q)
@@ -37,6 +42,9 @@ when not declared CPLIB_GEOMETRY_BASE:
 
     proc `+`*[T](p: Point[T], q: Point[T]): Point[T] = (result = p; result += q)
     proc `-`*[T](p: Point[T], q: Point[T]): Point[T] = (result = p; result -= q)
+    proc `*`*[T, S](p: Point[T], x: S): Point[T] = (result = p; result *= x)
+    proc `*`*[T, S](x: S, p: Point[T]): Point[T] = p * x
+    proc `/`*[T, S](p: Point[T], x: S): Point[T] = (result = p; result *= x)
     proc `<=`*[T](p, q: Point[T]): bool = not (p > q)
     proc `>=`*[T](p, q: Point[T]): bool = not (p < q)
 
