@@ -23,13 +23,13 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc norm*[T](p: Point[T]): T = dot(p, p)
     proc `$`*[T](p: Point[T]): string = &"({p.x}, {p.y})"
 
-    proc geometry_eq*[T](x, y: T): bool = x == y
+    proc geometry_eq*[T, S](x: T, y: S): bool = x == y
     proc geometry_eq*(x, y: SomeFloat): bool = (abs(x - y) < GEOMETRY_EPS * x) or (abs(x - y) < GEOMETRY_EPS)
-    proc geometry_neq*[T](x, y: T): bool = not geometry_eq(x, y)
-    proc geometry_ge*[T](x, y: T): bool = geometry_eq(x, y) or (x > y)
-    proc geometry_le*[T](x, y: T): bool = geometry_eq(x, y) or (x < y)
-    proc geometry_gt*[T](x, y: T): bool = not geometry_le(x, y)
-    proc geometry_lt*[T](x, y: T): bool = not geometry_ge(x, y)
+    proc geometry_neq*[T, S](x: T, y: S): bool = not geometry_eq(x, y)
+    proc geometry_ge*[T, S](x: T, y: S): bool = geometry_eq(x, y) or (x > y)
+    proc geometry_le*[T, S](x: T, y: S): bool = geometry_eq(x, y) or (x < y)
+    proc geometry_gt*[T, S](x: T, y: S): bool = not geometry_le(x, y)
+    proc geometry_lt*[T, S](x: T, y: S): bool = not geometry_ge(x, y)
     proc `<`*[T](p, q: Point[T]): bool =
         if geometry_eq(p.x, q.x): return geometry_lt(p.y, q.y)
         return geometry_lt(p.x, q.x)

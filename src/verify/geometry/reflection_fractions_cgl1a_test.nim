@@ -1,6 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
 # verification-helper: ERROR 1e-8
-
 include cplib/geometry/projection
 include cplib/math/fractions
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
