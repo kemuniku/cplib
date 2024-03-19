@@ -20,8 +20,8 @@ when not declared CPLIB_GEOMETRY_POLYGON:
         for i in 0..<p.v.len: result += cross(p.v[i], p.v[(i+1) mod p.v.len]) / 2.0
 
     proc is_convex_ccw*[T](poly: Polygon[T], strict: bool = true): bool =
-        for i in 0..<poly.v.len:
-            var ccwi = ccw(poly.v[i], poly.v[(i+1) mod poly.v.len], poly.v[(i+2) mod poly.v.len])
+        for i in 0..<poly.len:
+            var ccwi = ccw(poly.v[i], poly.v[(i+1) mod poly.len], poly.v[(i+2) mod poly.len])
             if strict and ccwi != COUNTER_CLOCKWISE: return false
             if (not strict) and ccwi == CLOCKWISE: return false
         return true
@@ -29,6 +29,24 @@ when not declared CPLIB_GEOMETRY_POLYGON:
         if is_convex_ccw(poly, strict): return true
         var pn = Polygon[T](v: poly.v.reversed)
         return is_convex_ccw(pn, strict)
+
+    proc on_edge*[T](poly: Polygon[T], p: Point[T]): bool =
+        for i in 0..<poly.len:
+            if ccw(poly.v[i], poly.v[(i+1) mod poly.len], p) == ON_SEGMENT: return true
+        return false
+    proc contains*[T](poly: Polygon[T], p: Point[T], strict: bool = false): bool =
+        if on_edge(poly, p):
+            if strict: return false
+            else: return true
+        result = false
+        for i in 0..<poly.len:
+            var a = poly.v[i] - p
+            var b = poly.v[(i+1) mod poly.len] - p
+            if a.y > b.y: swap(a, b)
+            if geometry_le(a.y, 0) and geometry_gt(b.y, 0) and geometry_lt(cross(a, b), 0):
+                result = not result
+
+    # proc contains*[T](poly: Polygon[T], p: Point[T]): bool = contains(poly, p, false)
 
     proc convex_hull*[T](poly: Polygon[T], strict: bool = true): Polygon[T] =
         var n = poly.v.len
