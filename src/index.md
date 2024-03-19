@@ -21,6 +21,29 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
+  - name: cplib/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/angle.nim
+      title: cplib/geometry/angle.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/base.nim
+      title: cplib/geometry/base.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/ccw.nim
+      title: cplib/geometry/ccw.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/distance.nim
+      title: cplib/geometry/distance.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/intersect.nim
+      title: cplib/geometry/intersect.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/polygon.nim
+      title: cplib/geometry/polygon.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/projection.nim
+      title: cplib/geometry/projection.nim
   - name: cplib/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -29,7 +52,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':warning:'
@@ -104,7 +127,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -126,6 +149,11 @@ data:
     - icon: ':warning:'
       path: verify/collections/tatyamset/ABC337_test_.nim
       title: verify/collections/tatyamset/ABC337_test_.nim
+  - name: verify/geometry/CGL_2
+    pages:
+    - icon: ':warning:'
+      path: verify/geometry/CGL_2/intersect_past16m_test_.nim
+      title: verify/geometry/CGL_2/intersect_past16m_test_.nim
   - name: verify/matrix
     pages:
     - icon: ':warning:'
@@ -209,6 +237,80 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/tatyamset/index_right_test.nim
       title: verify/collections/tatyamset/index_right_test.nim
+  - name: verify/geometry/CGL_1
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
+      title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
+      title: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+      title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_1/projection_cgl1a_test.nim
+      title: verify/geometry/CGL_1/projection_cgl1a_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
+      title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
+      title: verify/geometry/CGL_1/reflection_cgl1a_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+      title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - name: verify/geometry/CGL_2
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+      title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+      title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_2/distance_cgl2d_test.nim
+      title: verify/geometry/CGL_2/distance_cgl2d_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
+      title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+      title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+      title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
+      title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
+  - name: verify/geometry/CGL_3
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
+      title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+      title: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
+      title: verify/geometry/CGL_3/area_int_cgl3a_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_3/contains_cgl3c_test.nim
+      title: verify/geometry/CGL_3/contains_cgl3c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+      title: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+      title: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+      title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - name: verify/geometry/CGL_4
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+      title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - name: verify/graph/dynamic
     pages:
     - icon: ':heavy_check_mark:'
@@ -395,10 +497,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/tree_atcoder_test.nim
       title: verify/tree/tree_atcoder_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/tree_init_by_parent_atcoder_test.nim
       title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/utils

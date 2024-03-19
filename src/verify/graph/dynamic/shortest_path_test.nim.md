@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -41,8 +41,8 @@ data:
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim

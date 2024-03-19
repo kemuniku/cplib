@@ -32,10 +32,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedVerifiedWith:
@@ -141,21 +141,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -267,7 +267,7 @@ data:
   - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
   timestamp: '2024-02-14 18:36:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/prufer_abc328e_test.nim
   - verify/tree/prufer_abc328e_test.nim
