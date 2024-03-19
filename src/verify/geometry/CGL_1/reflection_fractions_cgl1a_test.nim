@@ -2,6 +2,7 @@
 # verification-helper: ERROR 1e-8
 include cplib/geometry/projection
 include cplib/math/fractions
+import strformat
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 

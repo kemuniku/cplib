@@ -1,4 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_C
+# verification-helper: ERROR 1e-8
 include cplib/geometry/intersect
 import strformat
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
