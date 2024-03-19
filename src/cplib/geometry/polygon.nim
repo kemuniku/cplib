@@ -5,7 +5,10 @@ when not declared CPLIB_GEOMETRY_POLYGON:
     import cplib/math/fractions
     import algorithm
     type Polygon*[T] = object
-        v: seq[Point[T]]
+        v*: seq[Point[T]]
+    proc len*[T](poly: Polygon[T]): int = poly.v.len
+    iterator items*[T](poly: Polygon[T]): Point[T] =
+        for item in poly.v: yield item
 
     proc initPolygon*[T](v: seq[Point[T]]): Polygon[T] = Polygon[T](v: v)
     proc area*(p: Polygon[int]): int =
@@ -26,3 +29,24 @@ when not declared CPLIB_GEOMETRY_POLYGON:
         if is_convex_ccw(poly, strict): return true
         var pn = Polygon[T](v: poly.v.reversed)
         return is_convex_ccw(pn, strict)
+
+    proc convex_hull*[T](poly: Polygon[T], strict: bool = true): Polygon[T] =
+        var n = poly.v.len
+        if n < 3: return poly
+        var s = poly.v.sorted
+        var v = s[0..1]
+        for i in 2..<n:
+            if strict:
+                while v.len >= 2 and ccw(v[^2], v[^1], s[i]) != COUNTER_CLOCKWISE: discard v.pop
+            else:
+                while v.len >= 2 and ccw(v[^2], v[^1], s[i]) == CLOCKWISE: discard v.pop
+            v.add(s[i])
+        var lower_size = v.len
+        for i in countdown(n-2, 0):
+            if strict:
+                while v.len > lower_size and ccw(v[^2], v[^1], s[i]) != COUNTER_CLOCKWISE: discard v.pop
+            else:
+                while v.len > lower_size and ccw(v[^2], v[^1], s[i]) == CLOCKWISE: discard v.pop
+            v.add(s[i])
+        v.delete(0)
+        return Polygon[T](v: v)
