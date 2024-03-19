@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
