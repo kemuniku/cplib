@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_3_C
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_4_A
 include cplib/geometry/polygon
 import sequtils, strformat
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
