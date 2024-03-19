@@ -1,6 +1,6 @@
 when not declared CPLIB_GEOMETRY_INTERSECT:
     const CPLIB_GEOMETRY_INTERSECT* = 1
-    include cplib/geometry/base
+    import cplib/geometry/base
     const ANGLE_0* = 0;
     const ANGLE_0_90* = 1;
     const ANGLE_90* = 2;
