@@ -17,6 +17,7 @@ when not declared CPLIB_TMPL_CITRUS:
     import bitops
     import heapqueue
     import options
+    import hashes
     const MODINT998244353* = 998244353
     const MODINT1000000007* = 1000000007
     const INF* = 100100111
@@ -88,8 +89,14 @@ when not declared CPLIB_TMPL_CITRUS:
                 else: result.add(quote do: print(prop(), "\n"))
         else:
             return (quote do: discard)
-    proc `%`*(x: SomeInteger, y: SomeInteger): int = (result = x mod y; if result < 0: result += y)
-    proc `//`*(x: SomeInteger, y: SomeInteger): int = (result = x div y; if result * y > x: result -= 1)
+    proc `%`*(x: SomeInteger, y: SomeInteger): int =
+        result = x mod y
+        if y > 0 and result < 0: result += y
+        if y < 0 and result > 0: result += y
+    proc `//`*(x: SomeInteger, y: SomeInteger): int =
+        result = x div y
+        if y > 0 and result * y > x: result -= 1
+        if y < 0 and result * y < x: result -= 1
     proc `^`*(x: SomeInteger, y: SomeInteger): int = x xor y
     proc `&`*(x: SomeInteger, y: SomeInteger): int = x and y
     proc `|`*(x: SomeInteger, y: SomeInteger): int = x or y
@@ -116,17 +123,12 @@ when not declared CPLIB_TMPL_CITRUS:
             if n > 1: a = (a * a) mod m
             n >>= 1
         return rev
-    proc sqrt*(x: int): int =
-        assert(x >= 0)
-        result = int(sqrt(float64(x)))
-        while result * result > x: result -= 1
-        while (result+1) * (result+1) <= x: result += 1
+    include cplib/math/isqrt
     proc chmax*[T](x: var T, y: T): bool {.discardable.} = (if x < y: (x = y; return true; ) return false)
     proc chmin*[T](x: var T, y: T): bool {.discardable.} = (if x > y: (x = y; return true; ) return false)
     proc `max=`*[T](x: var T, y: T) = x = max(x, y)
     proc `min=`*[T](x: var T, y: T) = x = min(x, y)
     proc at*(x: char, a = '0'): int = int(x) - int(a)
-    converter tofloat*(n: int): float = float(n)
     proc Yes*(b: bool = true): void = print(if b: "Yes" else: "No")
     proc No*(b: bool = true): void = Yes(not b)
     proc YES_upper*(b: bool = true): void = print(if b: "YES" else: "NO")
@@ -134,3 +136,4 @@ when not declared CPLIB_TMPL_CITRUS:
     const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]
     const DDXY* = [(1, -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1)]
     macro exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))
+    proc initHashSet[T](): Hashset[T] = initHashSet[T](0)

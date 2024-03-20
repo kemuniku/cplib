@@ -1,0 +1,2 @@
+#/usr/bin/bash
+oj g/i -j 20 --hack-actual "./a.out" --hack-expected "pypy3 naive.py" "python3 makerandom.py" 1

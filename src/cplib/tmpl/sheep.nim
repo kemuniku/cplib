@@ -16,6 +16,7 @@ when not declared CPLIB_TMPL_SHEEP:
     import deques
     import bitops
     import std/lenientops
+    import options
     #入力系
     proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
     proc getchar(): char {.importc: "getchar_unlocked", header: "<stdio.h>", discardable.}
@@ -38,21 +39,19 @@ when not declared CPLIB_TMPL_SHEEP:
     proc `%=`(x: var int, y: int): void = x = x%y
     proc `//=`(x: var int, y: int): void = x = x//y
     proc `**`(x: int, y: int): int = x^y
+    proc `**=`(x: var int, y: int): void = x = x^y
     proc `^`(x: int, y: int): int = x xor y
     proc `|`(x: int, y: int): int = x or y
     proc `&`(x: int, y: int): int = x and y
     proc `>>`(x: int, y: int): int = x shr y
     proc `<<`(x: int, y: int): int = x shl y
+    proc `~`(x: int): int = not x
     proc `^=`(x: var int, y: int): void = x = x ^ y
     proc `&=`(x: var int, y: int): void = x = x & y
     proc `|=`(x: var int, y: int): void = x = x | y
     proc `>>=`(x: var int, y: int): void = x = x >> y
     proc `<<=`(x: var int, y: int): void = x = x << y
     proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0
-    proc `@`(x: int): seq[int] =
-        for i in 0..<64:
-            if x[i]:
-                result.add(i)
     #便利な変換
     proc `!`(x: char, a = '0'): int = int(x)-int(a)
     #定数
