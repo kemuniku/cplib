@@ -11,6 +11,7 @@ when not declared CPLIB_GEOMETRY_ANGLE:
     const ANGLE_270_360* = -1;
 
     proc angle*[T](p1, p2: Point[T]): int =
+        ##p1, p2のなす角を八方位で返す
         proc iszero(p: Point[T]): bool = geometry_eq(p1.x, 0) and geometry_eq(p1.y, 0)
         assert (not iszero(p1)) and (not iszero(p2))
         var d = dot(p1, p2)
@@ -29,8 +30,10 @@ when not declared CPLIB_GEOMETRY_ANGLE:
     proc angle*[T](l1, l2: Line[T]): int = angle(l1.vector, l2.vector)
     type PointOrLine = Point or Line
     proc is_parallel*(p1, p2: PointOrLine): bool =
+        ##p1, p2が平行かどうかを判定
         var a = angle(p1, p2)
         return (a == ANGLE_0) or (a == ANGLE_180)
     proc is_orthogonal*(p1, p2: PointOrLine): bool =
+        ##p1, p2が直角かどうかを判定
         var a = angle(p1, p2)
         return (a == ANGLE_90) or (a == ANGLE_270)

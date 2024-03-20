@@ -7,8 +7,7 @@ proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 var n = ii()
 proc get(): Point[int] = initPoint(ii(), ii())
 var v = newSeqWith(n, get())
-var p = initPolygon(v)
-var ans = convex_hull(p, false)
+var ans = convex_hull(v, false)
 echo ans.len
 var ps = (10001, 10001)
 var s = 0
