@@ -119,12 +119,12 @@ data:
     \ s[i]) == CLOCKWISE: discard v.pop\n            v.add(s[i])\n        v.delete(0)\n\
     \        return Polygon[T](v: v)\n"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy: []

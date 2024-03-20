@@ -100,21 +100,20 @@ data:
     \ return true; ) return false)\n    proc chmin*[T](x: var T, y: T): bool {.discardable.}\
     \ = (if x > y: (x = y; return true; ) return false)\n    proc `max=`*[T](x: var\
     \ T, y: T) = x = max(x, y)\n    proc `min=`*[T](x: var T, y: T) = x = min(x, y)\n\
-    \    proc at*(x: char, a = '0'): int = int(x) - int(a)\n    converter tofloat*(n:\
-    \ int): float = float(n)\n    proc Yes*(b: bool = true): void = print(if b: \"\
-    Yes\" else: \"No\")\n    proc No*(b: bool = true): void = Yes(not b)\n    proc\
-    \ YES_upper*(b: bool = true): void = print(if b: \"YES\" else: \"NO\")\n    proc\
-    \ NO_upper*(b: bool = true): void = Yes_upper(not b)\n    const DXY* = [(0, -1),\
-    \ (0, 1), (-1, 0), (1, 0)]\n    const DDXY* = [(1, -1), (1, 0), (1, 1), (0, -1),\
-    \ (0, 1), (-1, -1), (-1, 0), (-1, 1)]\n    macro exit*(statement: untyped): untyped\
-    \ = (quote do: (`statement`; quit()))\n"
+    \    proc at*(x: char, a = '0'): int = int(x) - int(a)\n    proc Yes*(b: bool\
+    \ = true): void = print(if b: \"Yes\" else: \"No\")\n    proc No*(b: bool = true):\
+    \ void = Yes(not b)\n    proc YES_upper*(b: bool = true): void = print(if b: \"\
+    YES\" else: \"NO\")\n    proc NO_upper*(b: bool = true): void = Yes_upper(not\
+    \ b)\n    const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]\n    const DDXY* = [(1,\
+    \ -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1)]\n    macro\
+    \ exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))\n"
   dependsOn:
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2024-02-11 02:18:58+09:00'
+  timestamp: '2024-03-20 10:27:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
