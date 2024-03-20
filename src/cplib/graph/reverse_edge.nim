@@ -1,6 +1,6 @@
 when not declared CPLIB_GRAPH_REVERSE_EDGE:
     const CPLIB_GRAPH_REVERSE_EDGE* = 1
-    include cplib/graph/graph, std/math
+    import cplib/graph/graph, std/math
     proc reverse_edge*[T](G: WeightedDirectedGraph[T]): WeightedDirectedGraph[T] =
         result = WeightedDirectedGraph[T](edges: newSeq[seq[(int, T)]](G.N), N: G.N)
         for i in 0..<G.N:
