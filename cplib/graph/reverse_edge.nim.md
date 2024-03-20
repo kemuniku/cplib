@@ -19,7 +19,7 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_REVERSE_EDGE:\n    const CPLIB_GRAPH_REVERSE_EDGE*\
-    \ = 1\n    include cplib/graph/graph, std/math\n    proc reverse_edge*[T](G: WeightedDirectedGraph[T]):\
+    \ = 1\n    import cplib/graph/graph, std/math\n    proc reverse_edge*[T](G: WeightedDirectedGraph[T]):\
     \ WeightedDirectedGraph[T] =\n        result = WeightedDirectedGraph[T](edges:\
     \ newSeq[seq[(int, T)]](G.N), N: G.N)\n        for i in 0..<G.N:\n           \
     \ for (j, c) in G[i]:\n                result.add_edge(j, i, c)\n    proc reverse_edge*(G:\
@@ -41,7 +41,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/reverse_edge.nim
   requiredBy: []
-  timestamp: '2024-02-14 18:36:42+09:00'
+  timestamp: '2024-03-20 10:38:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/reverse_edge.nim

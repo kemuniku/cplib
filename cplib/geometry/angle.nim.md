@@ -78,7 +78,7 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_GEOMETRY_INTERSECT:\n    const CPLIB_GEOMETRY_INTERSECT*\
+  code: "when not declared CPLIB_GEOMETRY_ANGLE:\n    const CPLIB_GEOMETRY_ANGLE*\
     \ = 1\n    import cplib/geometry/base\n    const ANGLE_0* = 0;\n    const ANGLE_0_90*\
     \ = 1;\n    const ANGLE_90* = 2;\n    const ANGLE_90_180* = 3;\n    const ANGLE_180*\
     \ = 4;\n    const ANGLE_180_270* = -3;\n    const ANGLE_270* = -2;\n    const\
@@ -109,7 +109,7 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
-  timestamp: '2024-03-19 10:05:44+09:00'
+  timestamp: '2024-03-20 10:38:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim

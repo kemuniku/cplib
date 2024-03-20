@@ -83,10 +83,10 @@ data:
     \ + l2.vector * (d2 / d1)\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
@@ -95,7 +95,7 @@ data:
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - cplib/geometry/distance.nim
   - cplib/geometry/distance.nim
-  timestamp: '2024-03-19 10:05:44+09:00'
+  timestamp: '2024-03-20 10:38:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
