@@ -311,6 +311,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
       title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - name: verify/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/convex_hull_abc286ex_test.nim
+      title: verify/geometry/convex_hull_abc286ex_test.nim
   - name: verify/graph/dynamic
     pages:
     - icon: ':heavy_check_mark:'

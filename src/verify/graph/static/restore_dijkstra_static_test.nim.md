@@ -40,12 +40,12 @@ data:
     \ \" \", len(path)-1\n    for i in 0..<len(path)-1:\n        echo path[i], \"\
     \ \", path[i+1]\n"
   dependsOn:
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []
