@@ -44,6 +44,7 @@
 "verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim": "2024-03-20 09:39:29 +0900",
 "verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim": "2024-03-20 09:39:29 +0900",
 "verify/geometry/CGL_4/convex_hull_cgl4a_test.nim": "2024-03-20 09:39:29 +0900",
+"verify/geometry/convex_hull_abc286ex_test.nim": "2024-03-20 11:11:14 +0900",
 "verify/graph/dynamic/SCCG_test.nim": "2024-02-14 18:36:42 +0900",
 "verify/graph/dynamic/SCC_test.nim": "2024-02-14 18:36:42 +0900",
 "verify/graph/dynamic/restore_dijkstra_test.nim": "2024-03-16 01:24:58 +0900",
