@@ -60,18 +60,18 @@ data:
     \ Point[T]): T = abs(p.x) + abs(p.y)\n    proc manhattan*[T](p1, p2: Point[T]):\
     \ T = manhattan(p1 - p2)\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/intersect.nim
   isVerificationFile: false
   path: cplib/geometry/distance.nim
   requiredBy: []
-  timestamp: '2024-03-19 13:56:32+09:00'
+  timestamp: '2024-03-20 10:38:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim

@@ -47,18 +47,18 @@ data:
     \ get())\n    var p = cross_point(l1, l2)\n    echo &\"{p.x:.10f} {p.y:.10f}\"\
     \n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   requiredBy: []
-  timestamp: '2024-03-19 10:20:16+09:00'
+  timestamp: '2024-03-20 10:38:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
