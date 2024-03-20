@@ -106,14 +106,15 @@ data:
     YES\" else: \"NO\")\n    proc NO_upper*(b: bool = true): void = Yes_upper(not\
     \ b)\n    const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]\n    const DDXY* = [(1,\
     \ -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1)]\n    macro\
-    \ exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))\n"
+    \ exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))\n   \
+    \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2024-03-20 10:27:57+09:00'
+  timestamp: '2024-03-21 06:55:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
