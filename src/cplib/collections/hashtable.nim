@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_HASHSET:
-    const CPLIB_COLLECTIONS_HASHSET* = 1
+when not declared CPLIB_COLLECTIONS_HASHTABLE:
+    const CPLIB_COLLECTIONS_HASHTABLE* = 1
     import bitops, sequtils, hashes
     type State = enum
         empty, active, inactive
