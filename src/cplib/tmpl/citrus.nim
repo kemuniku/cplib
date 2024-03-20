@@ -129,7 +129,6 @@ when not declared CPLIB_TMPL_CITRUS:
     proc `max=`*[T](x: var T, y: T) = x = max(x, y)
     proc `min=`*[T](x: var T, y: T) = x = min(x, y)
     proc at*(x: char, a = '0'): int = int(x) - int(a)
-    converter tofloat*(n: int): float = float(n)
     proc Yes*(b: bool = true): void = print(if b: "Yes" else: "No")
     proc No*(b: bool = true): void = Yes(not b)
     proc YES_upper*(b: bool = true): void = print(if b: "YES" else: "NO")
