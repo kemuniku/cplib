@@ -136,3 +136,4 @@ when not declared CPLIB_TMPL_CITRUS:
     const DXY* = [(0, -1), (0, 1), (-1, 0), (1, 0)]
     const DDXY* = [(1, -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1)]
     macro exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))
+    proc initHashSet[T](): Hashset[T] = initHashSet[T](0)
