@@ -136,16 +136,24 @@ data:
     \    import cplib/geometry/base\n    const\n        COUNTER_CLOCKWISE* = 2\n \
     \       CLOCKWISE* = -2\n        ON_SEGMENT* = 0\n        ONLINE_BACK* = 1\n \
     \       ONLINE_FRONT* = -1\n\n    proc ccw*[T](l: Line[T], p: Point[T], strict:\
-    \ bool = false): int =\n        var crs = cross(l.vector, p - l.s)\n        if\
-    \ geometry_lt(crs, 0): return CLOCKWISE\n        if geometry_gt(crs, 0): return\
-    \ COUNTER_CLOCKWISE\n        var d = dot(l.vector, p - l.s)\n        if strict:\n\
-    \            if geometry_le(d, 0): return ONLINE_BACK\n            if geometry_ge(d,\
-    \ l.vector.norm): return ONLINE_FRONT\n        else:\n            if geometry_lt(d,\
-    \ 0): return ONLINE_BACK\n            if geometry_gt(d, l.vector.norm): return\
-    \ ONLINE_FRONT\n        return ON_SEGMENT\n\n    proc ccw*[T](p1, p2, p3: Point[T],\
-    \ strict: bool = false): int = ccw(initLine(p1, p2), p3)\n    proc online*[T](l:\
-    \ Line[T], p: Point[T]): bool = ccw(l, p) in -1..1\n    proc online*[T](p1, p2,\
-    \ p3: Point[T]): bool = ccw(p1, p2, p3) in -1..1\n"
+    \ bool = false): int =\n        ##\u76F4\u7DDA\u3068\u70B9\u306E\u4F4D\u7F6E\u95A2\
+    \u4FC2\u3092\u6574\u6570\u3067\u8FD4\u3059. COUNTER_CLOCKWISE: 2, CLOCKWISE: -2,\
+    \ ON_SEGMENT: 0, ONLINE_BACK: 1, ONLINE_FRONT: -1\n        var crs = cross(l.vector,\
+    \ p - l.s)\n        if geometry_lt(crs, 0): return CLOCKWISE\n        if geometry_gt(crs,\
+    \ 0): return COUNTER_CLOCKWISE\n        var d = dot(l.vector, p - l.s)\n     \
+    \   if strict:\n            if geometry_le(d, 0): return ONLINE_BACK\n       \
+    \     if geometry_ge(d, l.vector.norm): return ONLINE_FRONT\n        else:\n \
+    \           if geometry_lt(d, 0): return ONLINE_BACK\n            if geometry_gt(d,\
+    \ l.vector.norm): return ONLINE_FRONT\n        return ON_SEGMENT\n\n    proc ccw*[T](p1,\
+    \ p2, p3: Point[T], strict: bool = false): int =\n        ##3\u70B9\u306E\u4F4D\
+    \u7F6E\u95A2\u4FC2\u3092\u6574\u6570\u3067\u8FD4\u3059. COUNTER_CLOCKWISE: 2,\
+    \ CLOCKWISE: -2, ON_SEGMENT: 0, ONLINE_BACK: 1, ONLINE_FRONT: -1\n        ccw(initLine(p1,\
+    \ p2), p3)\n    proc online*[T](l: Line[T], p: Point[T]): bool =\n        ##\u70B9\
+    p\u304C\u76F4\u7DDAl\u4E0A\u306B\u3042\u308B\u304B\u3069\u3046\u304B\u3092\u5224\
+    \u5B9A\n        ccw(l, p) in -1..1\n    proc online*[T](p1, p2, p3: Point[T]):\
+    \ bool =\n        ##\u70B9p3\u304C p1, p2 \u3092\u901A\u308B\u76F4\u7DDA\u4E0A\
+    \u306B\u3042\u308B\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\n        ccw(p1,\
+    \ p2, p3) in -1..1\n"
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
@@ -160,7 +168,7 @@ data:
   - cplib/geometry/intersect.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
-  timestamp: '2024-03-19 02:38:26+09:00'
+  timestamp: '2024-03-20 09:39:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_1/ccw_cgl1c_test.nim

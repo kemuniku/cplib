@@ -83,7 +83,8 @@ data:
     \ = 1;\n    const ANGLE_90* = 2;\n    const ANGLE_90_180* = 3;\n    const ANGLE_180*\
     \ = 4;\n    const ANGLE_180_270* = -3;\n    const ANGLE_270* = -2;\n    const\
     \ ANGLE_270_360* = -1;\n\n    proc angle*[T](p1, p2: Point[T]): int =\n      \
-    \  proc iszero(p: Point[T]): bool = geometry_eq(p1.x, 0) and geometry_eq(p1.y,\
+    \  ##p1, p2\u306E\u306A\u3059\u89D2\u3092\u516B\u65B9\u4F4D\u3067\u8FD4\u3059\n\
+    \        proc iszero(p: Point[T]): bool = geometry_eq(p1.x, 0) and geometry_eq(p1.y,\
     \ 0)\n        assert (not iszero(p1)) and (not iszero(p2))\n        var d = dot(p1,\
     \ p2)\n        var c = cross(p1, p2)\n        if geometry_eq(c, 0):\n        \
     \    if geometry_gt(c, 0): return ANGLE_0\n            else: return ANGLE_180\n\
@@ -94,9 +95,11 @@ data:
     \        if geometry_gt(d, 0) and geometry_lt(c, 0): return ANGLE_270_360\n\n\
     \    proc angle*[T](l1, l2: Line[T]): int = angle(l1.vector, l2.vector)\n    type\
     \ PointOrLine = Point or Line\n    proc is_parallel*(p1, p2: PointOrLine): bool\
-    \ =\n        var a = angle(p1, p2)\n        return (a == ANGLE_0) or (a == ANGLE_180)\n\
-    \    proc is_orthogonal*(p1, p2: PointOrLine): bool =\n        var a = angle(p1,\
-    \ p2)\n        return (a == ANGLE_90) or (a == ANGLE_270)\n"
+    \ =\n        ##p1, p2\u304C\u5E73\u884C\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\
+    \n        var a = angle(p1, p2)\n        return (a == ANGLE_0) or (a == ANGLE_180)\n\
+    \    proc is_orthogonal*(p1, p2: PointOrLine): bool =\n        ##p1, p2\u304C\u76F4\
+    \u89D2\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\n        var a = angle(p1, p2)\n\
+    \        return (a == ANGLE_90) or (a == ANGLE_270)\n"
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
@@ -109,7 +112,7 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
-  timestamp: '2024-03-20 10:38:41+09:00'
+  timestamp: '2024-03-20 10:45:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim

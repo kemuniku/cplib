@@ -43,15 +43,15 @@ data:
     \ {ans.y.toFloat:.10f}\"\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/projection.nim
+  - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/projection.nim
-  - cplib/geometry/projection.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   requiredBy: []
-  timestamp: '2024-03-19 10:20:16+09:00'
+  timestamp: '2024-03-20 09:39:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
