@@ -42,9 +42,9 @@ data:
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/dynamic/restore_dijkstra_test.nim
   requiredBy: []

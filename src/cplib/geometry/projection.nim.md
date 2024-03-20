@@ -44,16 +44,18 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_PROJECTION:\n    const CPLIB_GEOMETRY_PROJECTION*\
     \ = 1\n    import cplib/geometry/base\n    proc projection*[T](l: Line[T], p:\
-    \ Point[T]): Point[T] =\n        var t = dot(p - l.s, l.vector) / norm(l.vector)\n\
-    \        return l.s + l.vector * t\n    proc reflection*[T](l: Line[T], p: Point[T]):\
-    \ Point[T] = p + (projection(l, p) - p) * 2\n"
+    \ Point[T]): Point[T] =\n        ##\u76F4\u7DDA l \u3078\u306E\u70B9 p \u306E\u5C04\
+    \u5F71\n        var t = dot(p - l.s, l.vector) / norm(l.vector)\n        return\
+    \ l.s + l.vector * t\n    proc reflection*[T](l: Line[T], p: Point[T]): Point[T]\
+    \ =\n        ##\u70B9 p \u306E\u76F4\u7DDA l \u306B\u5BFE\u3059\u308B\u53CD\u5C04\
+    \n        p + (projection(l, p) - p) * 2\n"
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/projection.nim
   requiredBy: []
-  timestamp: '2024-03-19 10:05:44+09:00'
+  timestamp: '2024-03-20 09:39:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_1/reflection_cgl1a_test.nim

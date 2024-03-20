@@ -35,14 +35,14 @@ data:
     \    var p = get()\n    var ans = projection(l, p)\n    echo &\"{ans.x:.10f} {ans.y:.10f}\"\
     \n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/projection.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/projection_cgl1a_test.nim
   requiredBy: []
-  timestamp: '2024-03-19 10:20:16+09:00'
+  timestamp: '2024-03-20 09:39:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/projection_cgl1a_test.nim

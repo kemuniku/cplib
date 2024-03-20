@@ -42,24 +42,24 @@ data:
     include cplib/geometry/polygon\nimport sequtils, strformat\nproc scanf(formatstr:\
     \ cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
     %lld\\n\", addr result)\n\nvar n = ii()\nproc get(): Point[int] = initPoint(ii(),\
-    \ ii())\nvar v = newSeqWith(n, get())\nvar p = initPolygon(v)\nvar ans = convex_hull(p,\
-    \ false)\necho ans.len\nvar ps = (10001, 10001)\nvar s = 0\nfor i in 0..<ans.len:\n\
-    \    if ps > (ans.v[i].y, ans.v[i].x):\n        s = i\n        ps = (ans.v[i].y,\
-    \ ans.v[i].x)\nfor i in 0..<ans.len:\n    var pi = ans.v[(i+s) mod ans.len]\n\
-    \    echo &\"{pi.x} {pi.y}\"\n"
+    \ ii())\nvar v = newSeqWith(n, get())\nvar ans = convex_hull(v, false)\necho ans.len\n\
+    var ps = (10001, 10001)\nvar s = 0\nfor i in 0..<ans.len:\n    if ps > (ans.v[i].y,\
+    \ ans.v[i].x):\n        s = i\n        ps = (ans.v[i].y, ans.v[i].x)\nfor i in\
+    \ 0..<ans.len:\n    var pi = ans.v[(i+s) mod ans.len]\n    echo &\"{pi.x} {pi.y}\"\
+    \n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
   isVerificationFile: true
   path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   requiredBy: []
-  timestamp: '2024-03-20 03:35:18+09:00'
+  timestamp: '2024-03-20 09:39:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
