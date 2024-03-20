@@ -88,6 +88,12 @@ data:
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/convex_hull_abc286ex_test.nim
+    title: verify/geometry/convex_hull_abc286ex_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/convex_hull_abc286ex_test.nim
+    title: verify/geometry/convex_hull_abc286ex_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/fractions_abc225e_test.nim
     title: verify/math/fractions_abc225e_test.nim
   - icon: ':heavy_check_mark:'
@@ -218,6 +224,8 @@ data:
   - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
