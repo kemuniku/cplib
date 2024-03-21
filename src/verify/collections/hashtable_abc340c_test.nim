@@ -1,4 +1,4 @@
-# verification-helper: https://atcoder.jp/contests/abc340/tasks/abc340_c
+# verification-helper: PROBLEM https://atcoder.jp/contests/abc340/tasks/abc340_c
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import cplib/collections/hashtable
