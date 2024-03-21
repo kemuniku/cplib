@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://yukicoder.me/problems/no/2686
+# verification-helper: PROBLEM https://atcoder.jp/contests/abc334/tasks/abc334_b
 import strutils, sequtils
 import cplib/math/nearest_equiv
 
