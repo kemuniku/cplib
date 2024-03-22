@@ -1,5 +1,4 @@
 # verification-helper: PROBLEM https://atcoder.jp/contests/past202004-open/tasks/past202004_o
-# import sequtils, heapqueue, tables, sets, sugar, macros, algorithm
 import sequtils, tables, strutils, sugar, heapqueue, hashes
 import cplib/graph/graph
 import cplib/collections/unionfind
@@ -45,7 +44,7 @@ for i in 0..<m:
     var (a, b, c) = abc[i]
     var l = hld.lca(a, b)
     var mx = -INFL
-    for (l, r) in hld.path(l, a, true, false): mx = max(mx, seg.get(l..<r))
-    for (l, r) in hld.path(l, b, true, false): mx = max(mx, seg.get(l..<r))
+    for (l, r) in hld.path(l, a, false, false): mx = max(mx, seg.get(l..<r))
+    for (l, r) in hld.path(l, b, false, false): mx = max(mx, seg.get(l..<r))
     ans[i] = ai - mx + c
 echo ans.join("\n")
