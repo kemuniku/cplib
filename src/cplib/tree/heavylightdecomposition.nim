@@ -6,13 +6,7 @@ when not declared CPLIB_TREE_HLD:
     # ↑上記の提出より引用
     type HeavyLightDecomposition* = object
         N*: int
-        P*: seq[int]
-        PP*: seq[int]
-        PD*: seq[int]
-        D*: seq[int]
-        I*: seq[int]
-        rangeL*: seq[int]
-        rangeR*: seq[int]
+        P*, PP*, PD*, D*, I*, rangeL*, rangeR*: seq[int]
     proc initHld*(g: UnWeightedGraph, root: int): HeavyLightDecomposition =
         var hld = HeavyLightDecomposition()
         var n: int = g.len
@@ -127,9 +121,7 @@ when not declared CPLIB_TREE_HLD:
             c = hld.P[hld.PP[c]]
         if hld.PP[r] != hld.PP[c] or hld.D[r] > hld.D[c]:
             return @[]
-        var root_off: int = 0
-        if include_root:
-            root_off = 1
+        var root_off = int(not include_root)
         res[^1] = (hld.rangeL[r]+root_off, hld.rangeL[c]+1)
         if res[^1][0] == res[^1][1]:
             discard res.pop()
