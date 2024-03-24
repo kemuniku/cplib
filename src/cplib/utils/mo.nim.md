@@ -18,12 +18,12 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_UTILS_MO:\n    {.checks: off.}\n    const CPLIB_UTILS_MO*\
-    \ = 1\n    import std/math, std/algorithm\n    type Mo* = object\n        width:\
+  code: "when not declared CPLIB_UTILS_MO:\n    #{.checks: off.}\n    const CPLIB_UTILS_MO*\
+    \ = 1\n    import std/math, std/algorithm\n    type Mo* = object\n        width*:\
     \ int\n        N, Q: int\n        qli: seq[seq[int]]\n        size: int\n\n  \
     \  proc initMo*(N, Q: int, width = max(1, int(1.0 * float(N) / max(1.0, sqrt(float(Q)\
     \ * 2.0 / 3.0))))): Mo =\n        result.width = width\n        result.N = N\n\
-    \        result.Q = Q\n        let qlisize = Q div width + 1\n        result.qli\
+    \        result.Q = Q\n        let qlisize = N div width + 1\n        result.qli\
     \ = newSeq[seq[int]](qlisize)\n\n    proc insert*(self: var Mo, l, r: int) =\n\
     \        self.qli[l div self.width].add((r shl 40) or ((l) shl 20) or self.size)\n\
     \        self.size += 1\n\n    proc run*[AL, AR, DL, DR, REM](self: var Mo, add_left:\
@@ -41,7 +41,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/mo.nim
   requiredBy: []
-  timestamp: '2023-11-19 18:41:38+09:00'
+  timestamp: '2024-03-16 18:25:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/mo_test.nim
