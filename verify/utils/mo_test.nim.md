@@ -36,7 +36,7 @@ data:
   isVerificationFile: true
   path: verify/utils/mo_test.nim
   requiredBy: []
-  timestamp: '2023-11-19 18:41:38+09:00'
+  timestamp: '2024-03-16 18:25:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/mo_test.nim
