@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc335/tasks/abc335_e
     links:
@@ -37,15 +37,15 @@ data:
     \    if dp[i] > 0:\n        for j in newG[i]:\n            dp[j] = max(dp[j],\
     \ dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
-  - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/graph/dynamic/scc_abc335e_test.nim
   requiredBy: []
-  timestamp: '2024-02-14 18:36:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-03-22 18:42:41+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/dynamic/scc_abc335e_test.nim
 layout: document

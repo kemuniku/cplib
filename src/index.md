@@ -12,13 +12,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
   - name: cplib/geometry
@@ -46,19 +46,19 @@ data:
       title: cplib/geometry/projection.nim
   - name: cplib/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/SCC.nim
       title: cplib/graph/SCC.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':warning:'
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
   - name: cplib/itertools
@@ -124,10 +124,13 @@ data:
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
+      path: cplib/tree/heavylightdecomposition.nim
+      title: cplib/tree/heavylightdecomposition.nim
+    - icon: ':x:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -327,13 +330,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/restore_dijkstra_test.nim
       title: verify/graph/dynamic/restore_dijkstra_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/dynamic/scc_abc335e_test.nim
       title: verify/graph/dynamic/scc_abc335e_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/shortest_path_test.nim
       title: verify/graph/dynamic/shortest_path_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/dynamic/topologicalsort_1_test.nim
       title: verify/graph/dynamic/topologicalsort_1_test.nim
     - icon: ':heavy_check_mark:'
@@ -353,7 +356,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/restore_dijkstra_static_test.nim
       title: verify/graph/static/restore_dijkstra_static_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/static/scc_abc335e_static_test.nim
       title: verify/graph/static/scc_abc335e_static_test.nim
     - icon: ':heavy_check_mark:'
@@ -362,10 +365,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/topologicalsort_1_static_test.nim
       title: verify/graph/static/topologicalsort_1_static_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/static/topologicalsort_2_static_test.nim
       title: verify/graph/static/topologicalsort_2_static_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
       title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   - name: verify/itertools
@@ -497,15 +500,29 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tmpl/citrus_and_qcfium_test.nim
       title: verify/tmpl/citrus_and_qcfium_test.nim
+  - name: verify/tree/hld
+    pages:
+    - icon: ':x:'
+      path: verify/tree/hld/hld_past202004o_test.nim
+      title: verify/tree/hld/hld_past202004o_test.nim
+    - icon: ':x:'
+      path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+      title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+    - icon: ':x:'
+      path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+      title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+    - icon: ':x:'
+      path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+      title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - name: verify/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/tree_atcoder_test.nim
       title: verify/tree/tree_atcoder_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/tree_init_by_parent_atcoder_test.nim
       title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/utils
