@@ -53,7 +53,8 @@ when not declared CPLIB_GRAPH_GRAPH:
     proc add_edge*(g: var UnWeightedUnDirectedGraph, u, v: int) =
         g.add_edge_dynamic_impl(u, v, 1, false)
 
-    proc len*[T](G: GraphTypes[T]): int = G.N
+    proc len*[T](G: WeightedGraph[T]): int = G.N
+    proc len*(G: UnWeightedGraph): int = G.N
 
     iterator `[]`*[T](g: WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T], x: int): (int, T) =
         for e in g.edges[x]: yield e
@@ -69,12 +70,24 @@ when not declared CPLIB_GRAPH_GRAPH:
             g.dst.add(u)
             g.cost.add(cost)
 
-    proc build*[T](g: StaticGraph[T]) =
+    proc build*[T](g: WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T]) =
         g.start = newSeqWith(g.len + 1, 0)
         for i in 0..<g.src.len:
             g.start[g.src[i]] += 1
         g.start.cumsum
         g.elist = newSeq[(int, T)](g.start[^1])
+        for i in countdown(g.src.len - 1, 0):
+            var u = g.src[i]
+            var v = g.dst[i]
+            g.start[u] -= 1
+            g.elist[g.start[u]] = (v, g.cost[i])
+
+    proc build*(g: UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph) =
+        g.start = newSeqWith(g.len + 1, 0)
+        for i in 0..<g.src.len:
+            g.start[g.src[i]] += 1
+        g.start.cumsum
+        g.elist = newSeq[(int, int)](g.start[^1])
         for i in countdown(g.src.len - 1, 0):
             var u = g.src[i]
             var v = g.dst[i]
