@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -34,14 +34,14 @@ data:
     \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nG.build()\n\
     var (_, _, group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
-  - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/graph/static/SCCG_static_test.nim
   requiredBy: []
-  timestamp: '2024-02-14 18:36:42+09:00'
+  timestamp: '2024-03-22 18:42:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/SCCG_static_test.nim

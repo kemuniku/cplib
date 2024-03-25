@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -70,7 +70,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy: []
-  timestamp: '2024-02-14 18:36:42+09:00'
+  timestamp: '2024-03-22 18:42:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/shortest_path_static_test.nim

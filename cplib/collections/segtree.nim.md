@@ -57,9 +57,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_xor2_test.nim
     title: verify/collections/segtree/segtree_xor2_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/tree/hld/hld_past202004o_test.nim
+    title: verify/tree/hld/hld_past202004o_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_past202004o_test.nim
+    title: verify/tree/hld/hld_past202004o_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+    title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+    title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -114,8 +138,16 @@ data:
   path: cplib/collections/segtree.nim
   requiredBy: []
   timestamp: '2024-02-07 20:17:37+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/collections/segtree/segtree_xor1_test.nim
   - verify/collections/segtree/segtree_xor1_test.nim
   - verify/collections/segtree/segtree_xor2_test.nim

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
   - icon: ':heavy_check_mark:'
@@ -20,22 +20,28 @@ data:
   - icon: ':warning:'
     path: cplib/graph/reverse_edge.nim
     title: cplib/graph/reverse_edge.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: cplib/tree/heavylightdecomposition.nim
+    title: cplib/tree/heavylightdecomposition.nim
+  - icon: ':x:'
+    path: cplib/tree/heavylightdecomposition.nim
+    title: cplib/tree/heavylightdecomposition.nim
+  - icon: ':x:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedVerifiedWith:
@@ -57,10 +63,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/scc_abc335e_test.nim
     title: verify/graph/dynamic/scc_abc335e_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/scc_abc335e_test.nim
     title: verify/graph/dynamic/scc_abc335e_test.nim
   - icon: ':heavy_check_mark:'
@@ -69,10 +75,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/topologicalsort_1_test.nim
     title: verify/graph/dynamic/topologicalsort_1_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/topologicalsort_1_test.nim
     title: verify/graph/dynamic/topologicalsort_1_test.nim
   - icon: ':heavy_check_mark:'
@@ -105,10 +111,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/scc_abc335e_static_test.nim
     title: verify/graph/static/scc_abc335e_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/scc_abc335e_static_test.nim
     title: verify/graph/static/scc_abc335e_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -123,39 +129,63 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/topologicalsort_1_static_test.nim
     title: verify/graph/static/topologicalsort_1_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/topologicalsort_2_static_test.nim
     title: verify/graph/static/topologicalsort_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/topologicalsort_2_static_test.nim
     title: verify/graph/static/topologicalsort_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
     title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
     title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: verify/tree/hld/hld_past202004o_test.nim
+    title: verify/tree/hld/hld_past202004o_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_past202004o_test.nim
+    title: verify/tree/hld/hld_past202004o_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+    title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+    title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - icon: ':x:'
+    path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+    title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - icon: ':x:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -202,18 +232,25 @@ data:
     \ int): UnWeightedUnDirectedGraph =\n        result = UnWeightedUnDirectedGraph(edges:\
     \ newSeq[seq[(int, int)]](N), N: N)\n    proc add_edge*(g: var UnWeightedUnDirectedGraph,\
     \ u, v: int) =\n        g.add_edge_dynamic_impl(u, v, 1, false)\n\n    proc len*[T](G:\
-    \ GraphTypes[T]): int = G.N\n\n    iterator `[]`*[T](g: WeightedDirectedGraph[T]\
-    \ or WeightedUnDirectedGraph[T], x: int): (int, T) =\n        for e in g.edges[x]:\
-    \ yield e\n    iterator `[]`*(g: UnWeightedDirectedGraph or UnWeightedUnDirectedGraph,\
-    \ x: int): int =\n        for e in g.edges[x]: yield e[0]\n\n    proc add_edge_static_impl[T](g:\
-    \ StaticGraph[T], u, v: int, cost: T, directed: bool) =\n        g.src.add(u)\n\
-    \        g.dst.add(v)\n        g.cost.add(cost)\n        if not directed:\n  \
-    \          g.src.add(v)\n            g.dst.add(u)\n            g.cost.add(cost)\n\
-    \n    proc build*[T](g: StaticGraph[T]) =\n        g.start = newSeqWith(g.len\
-    \ + 1, 0)\n        for i in 0..<g.src.len:\n            g.start[g.src[i]] += 1\n\
-    \        g.start.cumsum\n        g.elist = newSeq[(int, T)](g.start[^1])\n   \
-    \     for i in countdown(g.src.len - 1, 0):\n            var u = g.src[i]\n  \
-    \          var v = g.dst[i]\n            g.start[u] -= 1\n            g.elist[g.start[u]]\
+    \ WeightedGraph[T]): int = G.N\n    proc len*(G: UnWeightedGraph): int = G.N\n\
+    \n    iterator `[]`*[T](g: WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T],\
+    \ x: int): (int, T) =\n        for e in g.edges[x]: yield e\n    iterator `[]`*(g:\
+    \ UnWeightedDirectedGraph or UnWeightedUnDirectedGraph, x: int): int =\n     \
+    \   for e in g.edges[x]: yield e[0]\n\n    proc add_edge_static_impl[T](g: StaticGraph[T],\
+    \ u, v: int, cost: T, directed: bool) =\n        g.src.add(u)\n        g.dst.add(v)\n\
+    \        g.cost.add(cost)\n        if not directed:\n            g.src.add(v)\n\
+    \            g.dst.add(u)\n            g.cost.add(cost)\n\n    proc build*[T](g:\
+    \ WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T]) =\n    \
+    \    g.start = newSeqWith(g.len + 1, 0)\n        for i in 0..<g.src.len:\n   \
+    \         g.start[g.src[i]] += 1\n        g.start.cumsum\n        g.elist = newSeq[(int,\
+    \ T)](g.start[^1])\n        for i in countdown(g.src.len - 1, 0):\n          \
+    \  var u = g.src[i]\n            var v = g.dst[i]\n            g.start[u] -= 1\n\
+    \            g.elist[g.start[u]] = (v, g.cost[i])\n\n    proc build*(g: UnWeightedDirectedStaticGraph\
+    \ or UnWeightedUnDirectedStaticGraph) =\n        g.start = newSeqWith(g.len +\
+    \ 1, 0)\n        for i in 0..<g.src.len:\n            g.start[g.src[i]] += 1\n\
+    \        g.start.cumsum\n        g.elist = newSeq[(int, int)](g.start[^1])\n \
+    \       for i in countdown(g.src.len - 1, 0):\n            var u = g.src[i]\n\
+    \            var v = g.dst[i]\n            g.start[u] -= 1\n            g.elist[g.start[u]]\
     \ = (v, g.cost[i])\n\n    proc initWeightedDirectedStaticGraph*(N: int, edgetype:\
     \ typedesc = int, capacity: int = 0): WeightedDirectedStaticGraph[edgetype] =\n\
     \        result = WeightedDirectedStaticGraph[edgetype](\n            src: newSeqOfCap[int](capacity),\n\
@@ -258,6 +295,8 @@ data:
   - cplib/tree/prufer.nim
   - cplib/tree/tree.nim
   - cplib/tree/tree.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/SCC.nim
@@ -266,11 +305,19 @@ data:
   - cplib/graph/dijkstra.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
-  timestamp: '2024-02-14 18:36:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-03-22 18:42:41+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/prufer_abc328e_test.nim
   - verify/tree/prufer_abc328e_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
