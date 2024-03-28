@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -42,16 +42,16 @@ data:
     \ 0..<q:\n    var p = get()\n    var ans = projection(l, p)\n    echo &\"{ans.x.toFloat:.10f}\
     \ {ans.y.toFloat:.10f}\"\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2024-03-28 19:09:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim

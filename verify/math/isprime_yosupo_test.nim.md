@@ -44,12 +44,12 @@ data:
     \        echo \"No\"\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim

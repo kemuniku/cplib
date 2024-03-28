@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -41,16 +41,16 @@ data:
     \  if is_parallel(s1, s2): echo 2\n    elif is_orthogonal(s1, s2): echo 1\n  \
     \  else: echo 0\n"
   dependsOn:
-  - cplib/geometry/angle.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2024-03-28 19:09:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
