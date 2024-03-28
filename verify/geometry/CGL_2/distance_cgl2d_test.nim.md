@@ -51,20 +51,20 @@ data:
     for _ in 0..<q:\n    var s1, s2 = initSegment(get(), get())\n    var ans = distance(s1,\
     \ s2)\n    echo &\"{ans:.10f}\"\n"
   dependsOn:
-  - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/distance.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/distance.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/distance_cgl2d_test.nim
   requiredBy: []
-  timestamp: '2024-03-20 10:45:20+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/distance_cgl2d_test.nim

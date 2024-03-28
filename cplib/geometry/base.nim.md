@@ -235,7 +235,7 @@ data:
     \ q: Point[T]): Point[T] = (result = p; result -= q)\n    proc `*`*[T, S](p: Point[T],\
     \ x: S): Point[T] = (result = p; result *= x)\n    proc `*`*[T, S](x: S, p: Point[T]):\
     \ Point[T] = p * x\n    proc `/`*[T, S](p: Point[T], x: S): Point[T] = (result\
-    \ = p; result *= x)\n    proc `<=`*[T](p, q: Point[T]): bool = not (p > q)\n \
+    \ = p; result /= x)\n    proc `<=`*[T](p, q: Point[T]): bool = not (p > q)\n \
     \   proc `>=`*[T](p, q: Point[T]): bool = not (p < q)\n\n    proc hash*[T](p:\
     \ Point[T]): Hash =\n        result = result !& hash(p.x)\n        result = result\
     \ !& hash(p.y)\n\n    type Line*[T] = object\n        s*, t*: Point[T]\n\n   \
@@ -276,7 +276,7 @@ data:
   - cplib/geometry/polygon.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
-  timestamp: '2024-03-20 09:39:29+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_1/ccw_cgl1c_test.nim

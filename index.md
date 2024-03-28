@@ -52,7 +52,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':warning:'
@@ -133,7 +133,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -528,10 +528,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/tree_atcoder_test.nim
       title: verify/tree/tree_atcoder_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/tree_init_by_parent_atcoder_test.nim
       title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/utils

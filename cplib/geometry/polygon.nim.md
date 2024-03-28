@@ -142,16 +142,16 @@ data:
     \ discard vi.pop\n            vi.add(s[i])\n        vi.delete(0)\n        return\
     \ Polygon[T](v: vi)\n"
   dependsOn:
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy: []
-  timestamp: '2024-03-20 09:39:29+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/convex_hull_abc286ex_test.nim
