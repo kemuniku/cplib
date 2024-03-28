@@ -4,7 +4,7 @@ when not declared CPLIB_MATRIX_MATRIX:
     type Matrix*[T] = object
         arr: seq[seq[T]]
     proc initMatrix*[T](arr: seq[seq[T]]): Matrix[T] =
-        assert arr.len == 0 or arr.mapIt(it.len).toHashSet.len == 1, "all elements in arr must be the same size."
+        assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "all elements in arr must be the same size."
         Matrix[T](arr: arr)
     proc toMatrix*[T](arr: seq[seq[T]]): Matrix[T] = initMatrix(arr)
     proc initMatrix*[T](arr: seq[T], vertical: bool = false): Matrix[T] =
