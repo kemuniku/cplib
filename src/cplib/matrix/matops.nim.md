@@ -16,6 +16,12 @@ data:
     path: verify/matrix/matops_polyomino_test.nim
     title: verify/matrix/matops_polyomino_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_unit_test.nim
+    title: verify/matrix/matrix_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_unit_test.nim
+    title: verify/matrix/matrix_unit_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/rotate_abc298b_test.nim
     title: verify/matrix/rotate_abc298b_test.nim
   - icon: ':heavy_check_mark:'
@@ -107,6 +113,8 @@ data:
   - verify/matrix/trimmed_seq_abc307c_test.nim
   - verify/matrix/rotate_abc298b_test.nim
   - verify/matrix/rotate_abc298b_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_unit_test.nim
   - verify/collections/hashset_abc336f_test.nim
   - verify/collections/hashset_abc336f_test.nim
 documentation_of: cplib/matrix/matops.nim
