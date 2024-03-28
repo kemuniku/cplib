@@ -60,7 +60,7 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc `-`*[T](p: Point[T], q: Point[T]): Point[T] = (result = p; result -= q)
     proc `*`*[T, S](p: Point[T], x: S): Point[T] = (result = p; result *= x)
     proc `*`*[T, S](x: S, p: Point[T]): Point[T] = p * x
-    proc `/`*[T, S](p: Point[T], x: S): Point[T] = (result = p; result *= x)
+    proc `/`*[T, S](p: Point[T], x: S): Point[T] = (result = p; result /= x)
     proc `<=`*[T](p, q: Point[T]): bool = not (p > q)
     proc `>=`*[T](p, q: Point[T]): bool = not (p < q)
 
