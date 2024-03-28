@@ -11,7 +11,7 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc337/tasks/abc337_b
     links:
@@ -27,16 +27,16 @@ data:
   dependsOn:
   - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
-  isVerificationFile: false
-  path: verify/collections/tatyamset/ABC337_test_.nim
+  isVerificationFile: true
+  path: verify/collections/tatyamset/ABC337_test.nim
   requiredBy: []
-  timestamp: '2024-01-28 10:52:19+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2024-03-21 10:31:56+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/collections/tatyamset/ABC337_test_.nim
+documentation_of: verify/collections/tatyamset/ABC337_test.nim
 layout: document
 redirect_from:
-- /library/verify/collections/tatyamset/ABC337_test_.nim
-- /library/verify/collections/tatyamset/ABC337_test_.nim.html
-title: verify/collections/tatyamset/ABC337_test_.nim
+- /verify/verify/collections/tatyamset/ABC337_test.nim
+- /verify/verify/collections/tatyamset/ABC337_test.nim.html
+title: verify/collections/tatyamset/ABC337_test.nim
 ---

@@ -13,6 +13,12 @@ data:
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/hashset.nim
+      title: cplib/collections/hashset.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/hashtable.nim
+      title: cplib/collections/hashtable.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
@@ -150,21 +156,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
-  - name: verify/collections/tatyamset
-    pages:
-    - icon: ':warning:'
-      path: verify/collections/tatyamset/ABC337_test_.nim
-      title: verify/collections/tatyamset/ABC337_test_.nim
   - name: verify/geometry/CGL_2
     pages:
     - icon: ':warning:'
       path: verify/geometry/CGL_2/intersect_past16m_test_.nim
       title: verify/geometry/CGL_2/intersect_past16m_test_.nim
-  - name: verify/matrix
-    pages:
-    - icon: ':warning:'
-      path: verify/matrix/rotate_abc336f_test_.nim
-      title: verify/matrix/rotate_abc336f_test_.nim
   verificationCategories:
   - name: verify/collections
     pages:
@@ -174,6 +170,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/SWAG_test.nim
       title: verify/collections/SWAG_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/associative_array_test.nim
+      title: verify/collections/associative_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/hashset_abc336f_test.nim
+      title: verify/collections/hashset_abc336f_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/hashtable_abc340c_test.nim
+      title: verify/collections/hashtable_abc340c_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/hashtable_yuki2686_test.nim
+      title: verify/collections/hashtable_yuki2686_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
@@ -240,6 +248,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/tatyamset/ABC294_test.nim
       title: verify/collections/tatyamset/ABC294_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/tatyamset/ABC337_test.nim
+      title: verify/collections/tatyamset/ABC337_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/tatyamset/index_right_test.nim
       title: verify/collections/tatyamset/index_right_test.nim
@@ -469,6 +480,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/rotate_abc298b_test.nim
       title: verify/matrix/rotate_abc298b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/rotate_abc336f_test.nim
+      title: verify/matrix/rotate_abc336f_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/transpose_abc237b_test.nim
       title: verify/matrix/transpose_abc237b_test.nim

@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/hashset.nim
+    title: cplib/collections/hashset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/hashset.nim
+    title: cplib/collections/hashset.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
   - icon: ':heavy_check_mark:'
@@ -11,7 +17,7 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc336/tasks/abc336_f
     links:
@@ -21,8 +27,8 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc336/tasks/abc336_f\n\
-    {.checks: off.}\nimport sequtils, strutils, sugar, deques, sets, hashes\nimport\
-    \ cplib/matrix/matops\n\nvar h, w: int\n(h, w) = stdin.readLine.split.map(parseInt)\n\
+    import cplib/collections/hashset\nimport cplib/matrix/matops\nimport sequtils,\
+    \ strutils, hashes, sugar, deques\n\nvar h, w: int\n(h, w) = stdin.readLine.split.map(parseInt)\n\
     var s = newSeq[seq[int]](h)\nfor i in 0..<h: s[i] = stdin.readLine.split.map(parseInt)\n\
     var t = collect(newSeq): (for i in 0..<h: (i*w+1..i*w+w).toseq)\nproc bfs(s: seq[seq[int]]):\
     \ seq[seq[Hash]] =\n    result = newSeqWith(11, newSeq[Hash](0))\n    result[0].add(hash(s))\n\
@@ -41,16 +47,18 @@ data:
   dependsOn:
   - cplib/matrix/matops.nim
   - cplib/matrix/matops.nim
-  isVerificationFile: false
-  path: verify/matrix/rotate_abc336f_test_.nim
+  - cplib/collections/hashset.nim
+  - cplib/collections/hashset.nim
+  isVerificationFile: true
+  path: verify/collections/hashset_abc336f_test.nim
   requiredBy: []
-  timestamp: '2024-01-31 11:34:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2024-03-21 10:21:36+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/matrix/rotate_abc336f_test_.nim
+documentation_of: verify/collections/hashset_abc336f_test.nim
 layout: document
 redirect_from:
-- /library/verify/matrix/rotate_abc336f_test_.nim
-- /library/verify/matrix/rotate_abc336f_test_.nim.html
-title: verify/matrix/rotate_abc336f_test_.nim
+- /verify/verify/collections/hashset_abc336f_test.nim
+- /verify/verify/collections/hashset_abc336f_test.nim.html
+title: verify/collections/hashset_abc336f_test.nim
 ---
