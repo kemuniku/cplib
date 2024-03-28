@@ -46,7 +46,6 @@ template check(op1, op2, a, b: untyped) =
             assert m1[i][j] == m2[i, j]
 assert_op(`+`, `+=`)
 assert_op(`-`, `-=`)
-assert_op(`*`, `*=`)
 assert_op(`and`, `and=`)
 assert_op(`or`, `or=`)
 assert_op(`xor`, `xor=`)
@@ -77,15 +76,16 @@ for i in 0..<3:
         else: assert iden[i, j] == 0
 for i in [0, 1, 2, 10, 100, 1000]:
     assert iden.pow(i) == iden
+    assert iden ** i == iden
 assert iden.sum == 3
 
 for a in l:
     for b in r:
-        var m1 = a @ b
+        var m1 = a * b
         var m2 = a
-        m2 @= b
+        m2 *= b
         assert m1 == m2
-    var m3 = r2 @ a
-    var m4 = a @ c3
+    var m3 = r2 * a
+    var m4 = a * c3
     assert m3.h == 1 and m3.w == 3
     assert m4.h == 2 and m4.w == 1
