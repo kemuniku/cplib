@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc138/tasks/abc138_d
     links:
@@ -35,15 +35,15 @@ data:
     \  for (v, c) in g.edges[u]:\n        if v == par: continue\n        dfs(v, u,\
     \ cnt[u])\ndfs(0, -1, 0)\necho cnt.join(\" \")\n"
   dependsOn:
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/tree_atcoder_test.nim
   requiredBy: []
   timestamp: '2024-03-22 18:42:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/tree_atcoder_test.nim
 layout: document

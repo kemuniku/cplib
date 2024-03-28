@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -44,11 +44,11 @@ data:
     \ g[i][j]\n        ans = min(ans, cur mod k)\n        return\n    for i in 0..<n:\n\
     \        a[d] = i\n        dfs(d+1)\ndfs(0)\necho ans\n"
   dependsOn:
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/prufer_abc328e_test.nim

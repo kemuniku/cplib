@@ -42,16 +42,16 @@ data:
     \ 0..<q:\n    var p = get()\n    var ans = reflection(l, p)\n    echo &\"{ans.x.toFloat:.10f}\
     \ {ans.y.toFloat:.10f}\"\n"
   dependsOn:
+  - cplib/geometry/projection.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/projection.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/projection.nim
-  - cplib/geometry/projection.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   requiredBy: []
-  timestamp: '2024-03-20 09:39:29+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim

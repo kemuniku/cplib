@@ -53,20 +53,20 @@ data:
     for _ in 0..<q:\n    var l1, l2 = initLine(get(), get())\n    var p = cross_point(l1,\
     \ l2)\n    echo &\"{p.x.toFloat:.10f} {p.y.toFloat:.10f}\"\n"
   dependsOn:
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/intersect.nim
+  - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   requiredBy: []
-  timestamp: '2024-03-20 10:45:20+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim

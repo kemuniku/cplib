@@ -46,18 +46,18 @@ data:
     \ 0..<q:\n    var p = get()\n    if on_edge(poly, p): echo 1\n    elif p in poly:\
     \ echo 2\n    else: echo 0\n"
   dependsOn:
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_3/contains_cgl3c_test.nim
   requiredBy: []
-  timestamp: '2024-03-20 09:39:29+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_3/contains_cgl3c_test.nim

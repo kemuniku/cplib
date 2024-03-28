@@ -95,12 +95,12 @@ data:
     \ l2.vector)\n        var d2 = cross(l1.vector, l1.t - l2.s)\n        return l2.s\
     \ + l2.vector * (d2 / d1)\n"
   dependsOn:
+  - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:
@@ -108,7 +108,7 @@ data:
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - cplib/geometry/distance.nim
   - cplib/geometry/distance.nim
-  timestamp: '2024-03-20 10:45:20+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim

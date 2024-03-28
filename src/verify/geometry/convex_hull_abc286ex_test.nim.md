@@ -74,24 +74,24 @@ data:
     \ vi.v[^(i+1)])).sqrt\na2 += float(norm(vi.v[^1], vi.v[0])).sqrt\necho min(a1,\
     \ a2)\n"
   dependsOn:
-  - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/geometry/distance.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/distance.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/convex_hull_abc286ex_test.nim
   requiredBy: []
-  timestamp: '2024-03-20 11:11:14+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/convex_hull_abc286ex_test.nim

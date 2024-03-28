@@ -78,18 +78,18 @@ data:
     \ manhattan*[T](p1, p2: Point[T]): T =\n        ##2\u70B9 p1, p2 \u306E\u30DE\u30F3\
     \u30CF\u30C3\u30BF\u30F3\u8DDD\u96E2\n        manhattan(p1 - p2)\n"
   dependsOn:
+  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/distance.nim
   requiredBy: []
-  timestamp: '2024-03-20 10:45:20+09:00'
+  timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
