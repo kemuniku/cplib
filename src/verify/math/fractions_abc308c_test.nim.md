@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -32,7 +32,7 @@ data:
   isVerificationFile: true
   path: verify/math/fractions_abc308c_test.nim
   requiredBy: []
-  timestamp: '2024-01-20 04:30:03+09:00'
+  timestamp: '2024-03-28 19:09:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/fractions_abc308c_test.nim

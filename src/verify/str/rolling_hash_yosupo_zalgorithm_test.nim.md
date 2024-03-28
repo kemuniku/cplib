@@ -35,8 +35,8 @@ data:
   dependsOn:
   - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   requiredBy: []

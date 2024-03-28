@@ -53,9 +53,9 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
