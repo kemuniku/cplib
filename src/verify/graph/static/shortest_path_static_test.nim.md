@@ -41,11 +41,11 @@ data:
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/shortest_path_static_test.nim
   requiredBy: []
