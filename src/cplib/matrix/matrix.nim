@@ -1,6 +1,6 @@
 when not declared CPLIB_MATRIX_MATRIX:
     const CPLIB_MATRIX_MATRIX* = 1
-    import sequtils, hashes, std/math
+    import sequtils, strutils, hashes, std/math
     type Matrix*[T] = object
         arr: seq[seq[T]]
     proc initMatrix*[T](arr: seq[seq[T]]): Matrix[T] =
@@ -76,6 +76,7 @@ when not declared CPLIB_MATRIX_MATRIX:
     defineMatrixIntOps(`shl=`, `shl`)
     defineMatrixIntOps(`shr=`, `shr`)
     defineMatrixIntOps(`div=`, `div`)
+    defineMatrixIntOps(`mod=`, `mod`)
 
     proc hash*[T](m: Matrix[T]): Hash = hash(m.arr)
     proc identity_matrix*[T](n: int, one, zero: T): Matrix[T] =
