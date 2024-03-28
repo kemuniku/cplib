@@ -8,5 +8,5 @@ type mint = modint998244353
 var n = ii()
 var a = @[@[mint(1), mint(1)], @[mint(1), mint(0)]].toMatrix
 var ans = initMatrix(@[mint(1), mint(0)], true)
-ans = a.pow(n) @ ans
+ans = a.pow(n) * ans
 echo ans[0, 0] - 1

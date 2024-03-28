@@ -30,7 +30,7 @@ when not declared CPLIB_MATRIX_MATRIX:
     proc `[]=`*[T](m: var Matrix[T], r: int, c: int, val: T) = m.arr[r][c] = val
 
     proc `-`*[T](m: Matrix[T]): Matrix[T] = Matrix[T](arr: m.arr.mapIt(it.mapIt(-it)))
-    proc `@=`*[T](a: var Matrix[T], b: Matrix[T]) =
+    proc `*=`*[T](a: var Matrix[T], b: Matrix[T]) =
         assert a.w == b.h
         var ans = initMatrix[T](a.h, b.w, 0)
         for i in 0..<a.h:
@@ -38,7 +38,13 @@ when not declared CPLIB_MATRIX_MATRIX:
                 for k in 0..<a.w:
                     ans[i, j] += a[i, k] * b[k, j]
         swap(ans, a)
-    proc `@`*[T](a, b: Matrix[T]): Matrix[T] = (result = a; result @= b)
+    proc `*=`*[T](a: var Matrix[T], x: T) =
+        for i in 0..<a.h:
+            for j in 0..<a.w:
+                a[i, j] *= x
+    proc `*`*[T](a, b: Matrix[T]): Matrix[T] = (result = a; result *= b)
+    proc `*`*[T](a: Matrix[T], x: T): Matrix[T] = (result = a; result *= x)
+    proc `*`*[T](x: T, a: Matrix[T]): Matrix[T] = a * x
     template defineMatrixAssignmentOp(assign, op: untyped) =
         proc assign*[T](a: var Matrix[T], b: Matrix[T]) =
             assert a.h == b.h and a.w == b.w
@@ -54,8 +60,6 @@ when not declared CPLIB_MATRIX_MATRIX:
         proc op*[T](x: T, a: Matrix[T]): Matrix[T] = op(a, x)
     defineMatrixAssignmentOp(`+=`, `+`)
     defineMatrixAssignmentOp(`-=`, `-`)
-    defineMatrixAssignmentOp(`*=`, `*`)
-    defineMatrixAssignmentOp(`/=`, `/`)
 
     template defineMatrixIntOps(assign, op: untyped) =
         proc assign*(a: var Matrix[int], b: Matrix[int]) =
@@ -88,7 +92,8 @@ when not declared CPLIB_MATRIX_MATRIX:
         var m = m
         var n = n
         while n > 0:
-            if (n and 1) == 1: result @= m
-            m @= m
+            if (n and 1) == 1: result *= m
+            m *= m
             n = n shr 1
+    proc `**`*[T](m: Matrix[T], n: int): Matrix[T] = m.pow(n)
     proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum
