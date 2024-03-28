@@ -109,6 +109,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/matops.nim
       title: cplib/matrix/matops.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/matrix/matrix.nim
+      title: cplib/matrix/matrix.nim
   - name: cplib/str
     pages:
     - icon: ':heavy_check_mark:'
@@ -477,6 +480,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matops_polyomino_test.nim
       title: verify/matrix/matops_polyomino_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_dpr_test.nim
+      title: verify/matrix/matrix_dpr_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_unit_test.nim
+      title: verify/matrix/matrix_unit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_zoistring_test.nim
+      title: verify/matrix/matrix_zoistring_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/rotate_abc298b_test.nim
       title: verify/matrix/rotate_abc298b_test.nim

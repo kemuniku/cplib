@@ -43,8 +43,8 @@ data:
     \ = (0..<n).toSeq.filterIt(cnt[it] == 1)\n        result.add_edge(u[0], u[1])\n"
   dependsOn:
   - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/prufer.nim
