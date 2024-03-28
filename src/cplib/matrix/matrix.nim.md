@@ -50,22 +50,25 @@ data:
     \ Matrix[T], r: int, c: int): T = m.arr[r][c]\n    proc `[]`*[T](m: var Matrix[T],\
     \ r: int, c: int): var T = m.arr[r][c]\n    proc `[]=`*[T](m: var Matrix[T], r:\
     \ int, c: int, val: T) = m.arr[r][c] = val\n\n    proc `-`*[T](m: Matrix[T]):\
-    \ Matrix[T] = Matrix[T](arr: m.arr.mapIt(it.mapIt(-it)))\n    proc `@=`*[T](a:\
+    \ Matrix[T] = Matrix[T](arr: m.arr.mapIt(it.mapIt(-it)))\n    proc `*=`*[T](a:\
     \ var Matrix[T], b: Matrix[T]) =\n        assert a.w == b.h\n        var ans =\
     \ initMatrix[T](a.h, b.w, 0)\n        for i in 0..<a.h:\n            for j in\
     \ 0..<b.w:\n                for k in 0..<a.w:\n                    ans[i, j] +=\
-    \ a[i, k] * b[k, j]\n        swap(ans, a)\n    proc `@`*[T](a, b: Matrix[T]):\
-    \ Matrix[T] = (result = a; result @= b)\n    template defineMatrixAssignmentOp(assign,\
-    \ op: untyped) =\n        proc assign*[T](a: var Matrix[T], b: Matrix[T]) =\n\
-    \            assert a.h == b.h and a.w == b.w\n            for i in 0..<a.h:\n\
-    \                for j in 0..<a.w:\n                    assign(a[i, j], b[i, j])\n\
-    \        proc assign*[T](a: var Matrix[T], x: T) =\n            for i in 0..<a.h:\n\
-    \                for j in 0..<a.w:\n                    assign(a[i, j], x)\n \
-    \       proc op*[T](a, b: Matrix[T]): Matrix[T] = (result = a; assign(result,\
-    \ b))\n        proc op*[T](a: Matrix[T], x: T): Matrix[T] = (result = a; assign(result,\
-    \ x))\n        proc op*[T](x: T, a: Matrix[T]): Matrix[T] = op(a, x)\n    defineMatrixAssignmentOp(`+=`,\
-    \ `+`)\n    defineMatrixAssignmentOp(`-=`, `-`)\n    defineMatrixAssignmentOp(`*=`,\
-    \ `*`)\n    defineMatrixAssignmentOp(`/=`, `/`)\n\n    template defineMatrixIntOps(assign,\
+    \ a[i, k] * b[k, j]\n        swap(ans, a)\n    proc `*=`*[T](a: var Matrix[T],\
+    \ x: T) =\n        for i in 0..<a.h:\n            for j in 0..<a.w:\n        \
+    \        a[i, j] *= x\n    proc `*`*[T](a, b: Matrix[T]): Matrix[T] = (result\
+    \ = a; result *= b)\n    proc `*`*[T](a: Matrix[T], x: T): Matrix[T] = (result\
+    \ = a; result *= x)\n    proc `*`*[T](x: T, a: Matrix[T]): Matrix[T] = a * x\n\
+    \    template defineMatrixAssignmentOp(assign, op: untyped) =\n        proc assign*[T](a:\
+    \ var Matrix[T], b: Matrix[T]) =\n            assert a.h == b.h and a.w == b.w\n\
+    \            for i in 0..<a.h:\n                for j in 0..<a.w:\n          \
+    \          assign(a[i, j], b[i, j])\n        proc assign*[T](a: var Matrix[T],\
+    \ x: T) =\n            for i in 0..<a.h:\n                for j in 0..<a.w:\n\
+    \                    assign(a[i, j], x)\n        proc op*[T](a, b: Matrix[T]):\
+    \ Matrix[T] = (result = a; assign(result, b))\n        proc op*[T](a: Matrix[T],\
+    \ x: T): Matrix[T] = (result = a; assign(result, x))\n        proc op*[T](x: T,\
+    \ a: Matrix[T]): Matrix[T] = op(a, x)\n    defineMatrixAssignmentOp(`+=`, `+`)\n\
+    \    defineMatrixAssignmentOp(`-=`, `-`)\n\n    template defineMatrixIntOps(assign,\
     \ op: untyped) =\n        proc assign*(a: var Matrix[int], b: Matrix[int]) =\n\
     \            assert a.h == b.h and a.w == b.w\n            for i in 0..<a.h:\n\
     \                for j in 0..<a.w:\n                    a[i, j] = op(a[i, j],\
@@ -83,13 +86,14 @@ data:
     \ = one\n    proc identity_matrix*[T](n: int): Matrix[T] = identity_matrix[T](n,\
     \ 1, 0)\n    proc pow*[T](m: Matrix[T], n: int): Matrix[T] =\n        result =\
     \ identity_matrix[T](m.h)\n        var m = m\n        var n = n\n        while\
-    \ n > 0:\n            if (n and 1) == 1: result @= m\n            m @= m\n   \
-    \         n = n shr 1\n    proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum\n"
+    \ n > 0:\n            if (n and 1) == 1: result *= m\n            m *= m\n   \
+    \         n = n shr 1\n    proc `**`*[T](m: Matrix[T], n: int): Matrix[T] = m.pow(n)\n\
+    \    proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/matrix/matrix.nim
   requiredBy: []
-  timestamp: '2024-03-28 20:27:50+09:00'
+  timestamp: '2024-03-28 20:50:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_zoistring_test.nim

@@ -43,30 +43,30 @@ data:
     \ b in lr:\n                check(op1, op2, a, b)\ntemplate check(op1, op2, a,\
     \ b: untyped) =\n    var m1 = op1(a, b)\n    var m2 = a\n    op2(m2, b)\n    for\
     \ i in 0..<a.h:\n        for j in 0..<a.w:\n            assert m1[i][j] == m2[i,\
-    \ j]\nassert_op(`+`, `+=`)\nassert_op(`-`, `-=`)\nassert_op(`*`, `*=`)\nassert_op(`and`,\
-    \ `and=`)\nassert_op(`or`, `or=`)\nassert_op(`xor`, `xor=`)\ncheck(`shl`, `shl=`,\
-    \ l[^1], l[^1])\ncheck(`shr`, `shr=`, l[^1], l[^1])\ncheck(`div`, `div=`, l[^1],\
-    \ l[^1])\ncheck(`mod`, `mod=`, l[^1], l[^1])\n\nfor item in l:\n    assert item\
-    \ == item\n    assert $item == $item\n    assert hash(item) == hash(item)\n  \
-    \  assert -item + 10 != item\nfor item in r:\n    assert item == item\n    assert\
-    \ $item == $item\n    assert -item + 10 != item\n\nvar st = initHashSet[Matrix[int]]()\n\
-    for item in l: st.incl(item)\nfor item in r: st.incl(item)\nassert st.len == 14\n\
-    \nvar iden = identity_matrix[int](3)\nfor i in 0..<3:\n    for j in 0..<3:\n \
-    \       if i == j: assert iden[i, j] == 1\n        else: assert iden[i, j] ==\
-    \ 0\nfor i in [0, 1, 2, 10, 100, 1000]:\n    assert iden.pow(i) == iden\nassert\
-    \ iden.sum == 3\n\nfor a in l:\n    for b in r:\n        var m1 = a @ b\n    \
-    \    var m2 = a\n        m2 @= b\n        assert m1 == m2\n    var m3 = r2 @ a\n\
-    \    var m4 = a @ c3\n    assert m3.h == 1 and m3.w == 3\n    assert m4.h == 2\
-    \ and m4.w == 1\n"
+    \ j]\nassert_op(`+`, `+=`)\nassert_op(`-`, `-=`)\nassert_op(`and`, `and=`)\nassert_op(`or`,\
+    \ `or=`)\nassert_op(`xor`, `xor=`)\ncheck(`shl`, `shl=`, l[^1], l[^1])\ncheck(`shr`,\
+    \ `shr=`, l[^1], l[^1])\ncheck(`div`, `div=`, l[^1], l[^1])\ncheck(`mod`, `mod=`,\
+    \ l[^1], l[^1])\n\nfor item in l:\n    assert item == item\n    assert $item ==\
+    \ $item\n    assert hash(item) == hash(item)\n    assert -item + 10 != item\n\
+    for item in r:\n    assert item == item\n    assert $item == $item\n    assert\
+    \ -item + 10 != item\n\nvar st = initHashSet[Matrix[int]]()\nfor item in l: st.incl(item)\n\
+    for item in r: st.incl(item)\nassert st.len == 14\n\nvar iden = identity_matrix[int](3)\n\
+    for i in 0..<3:\n    for j in 0..<3:\n        if i == j: assert iden[i, j] ==\
+    \ 1\n        else: assert iden[i, j] == 0\nfor i in [0, 1, 2, 10, 100, 1000]:\n\
+    \    assert iden.pow(i) == iden\n    assert iden ** i == iden\nassert iden.sum\
+    \ == 3\n\nfor a in l:\n    for b in r:\n        var m1 = a * b\n        var m2\
+    \ = a\n        m2 *= b\n        assert m1 == m2\n    var m3 = r2 * a\n    var\
+    \ m4 = a * c3\n    assert m3.h == 1 and m3.w == 3\n    assert m4.h == 2 and m4.w\
+    \ == 1\n"
   dependsOn:
   - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 20:27:50+09:00'
+  timestamp: '2024-03-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_unit_test.nim

@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -61,13 +61,13 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   isVerificationFile: true
   path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim

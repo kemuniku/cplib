@@ -39,7 +39,7 @@ data:
 
     var ans = initMatrix(@[mint(1), mint(0)], true)
 
-    ans = a.pow(n) @ ans
+    ans = a.pow(n) * ans
 
     echo ans[0, 0] - 1
 
@@ -50,7 +50,7 @@ data:
   isVerificationFile: true
   path: verify/matrix/matrix_zoistring_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 20:27:50+09:00'
+  timestamp: '2024-03-29 02:44:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_zoistring_test.nim
