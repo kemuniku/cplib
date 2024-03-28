@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/hashtable_yuki2686_test.nim
+    title: verify/collections/hashtable_yuki2686_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/hashtable_yuki2686_test.nim
+    title: verify/collections/hashtable_yuki2686_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PARS_test.nim
     title: verify/collections/segtree/segtree_PARS_test.nim
   - icon: ':heavy_check_mark:'
@@ -166,6 +172,8 @@ data:
   - verify/collections/segtree/segtree_RMQ_test.nim
   - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
 documentation_of: cplib/collections/segtree.nim
 layout: document
 redirect_from:

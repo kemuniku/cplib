@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/matrix/rotate_abc336f_test_.nim
-    title: verify/matrix/rotate_abc336f_test_.nim
-  - icon: ':warning:'
-    path: verify/matrix/rotate_abc336f_test_.nim
-    title: verify/matrix/rotate_abc336f_test_.nim
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/hashset_abc336f_test.nim
+    title: verify/collections/hashset_abc336f_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/hashset_abc336f_test.nim
+    title: verify/collections/hashset_abc336f_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matops_polyomino_test.nim
     title: verify/matrix/matops_polyomino_test.nim
   - icon: ':heavy_check_mark:'
@@ -21,6 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/rotate_abc298b_test.nim
     title: verify/matrix/rotate_abc298b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/rotate_abc336f_test.nim
+    title: verify/matrix/rotate_abc336f_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/rotate_abc336f_test.nim
+    title: verify/matrix/rotate_abc336f_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/transpose_abc237b_test.nim
     title: verify/matrix/transpose_abc237b_test.nim
@@ -83,9 +89,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/matrix/matops.nim
-  requiredBy:
-  - verify/matrix/rotate_abc336f_test_.nim
-  - verify/matrix/rotate_abc336f_test_.nim
+  requiredBy: []
   timestamp: '2024-01-31 11:34:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -95,12 +99,16 @@ data:
   - verify/matrix/matops_polyomino_test.nim
   - verify/matrix/trimmed_string_abc307c_test.nim
   - verify/matrix/trimmed_string_abc307c_test.nim
+  - verify/matrix/rotate_abc336f_test.nim
+  - verify/matrix/rotate_abc336f_test.nim
   - verify/matrix/transpose_abc237b_test.nim
   - verify/matrix/transpose_abc237b_test.nim
   - verify/matrix/trimmed_seq_abc307c_test.nim
   - verify/matrix/trimmed_seq_abc307c_test.nim
   - verify/matrix/rotate_abc298b_test.nim
   - verify/matrix/rotate_abc298b_test.nim
+  - verify/collections/hashset_abc336f_test.nim
+  - verify/collections/hashset_abc336f_test.nim
 documentation_of: cplib/matrix/matops.nim
 layout: document
 redirect_from:

@@ -1,13 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/collections/tatyamset/ABC337_test_.nim
-    title: verify/collections/tatyamset/ABC337_test_.nim
-  - icon: ':warning:'
-    path: verify/collections/tatyamset/ABC337_test_.nim
-    title: verify/collections/tatyamset/ABC337_test_.nim
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/tatyamset/ABC217_gele_test.nim
@@ -45,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/tatyamset/ABC294_test.nim
     title: verify/collections/tatyamset/ABC294_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/tatyamset/ABC337_test.nim
+    title: verify/collections/tatyamset/ABC337_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/tatyamset/ABC337_test.nim
+    title: verify/collections/tatyamset/ABC337_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/tatyamset/index_right_test.nim
     title: verify/collections/tatyamset/index_right_test.nim
@@ -143,9 +143,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/tatyamset.nim
-  requiredBy:
-  - verify/collections/tatyamset/ABC337_test_.nim
-  - verify/collections/tatyamset/ABC337_test_.nim
+  requiredBy: []
   timestamp: '2024-01-27 02:21:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -159,6 +157,8 @@ data:
   - verify/collections/tatyamset/ABC294_test.nim
   - verify/collections/tatyamset/ABC236_test.nim
   - verify/collections/tatyamset/ABC236_test.nim
+  - verify/collections/tatyamset/ABC337_test.nim
+  - verify/collections/tatyamset/ABC337_test.nim
   - verify/collections/tatyamset/index_right_test.nim
   - verify/collections/tatyamset/index_right_test.nim
   - verify/collections/tatyamset/ABC217_gtlt_test.nim
