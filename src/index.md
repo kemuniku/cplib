@@ -159,6 +159,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
+  - name: verify/collections/defaultdict
+    pages:
+    - icon: ':warning:'
+      path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+      title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   - name: verify/geometry/CGL_2
     pages:
     - icon: ':warning:'

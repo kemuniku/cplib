@@ -59,13 +59,13 @@ data:
     \    ans[i] = ai - mx + c\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/unionfind.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/unionfind.nim
-  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []

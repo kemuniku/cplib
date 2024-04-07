@@ -95,12 +95,12 @@ data:
     \ l2.vector)\n        var d2 = cross(l1.vector, l1.t - l2.s)\n        return l2.s\
     \ + l2.vector * (d2 / d1)\n"
   dependsOn:
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:
@@ -113,12 +113,12 @@ data:
   verifiedWith:
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/convex_hull_abc286ex_test.nim
   - verify/geometry/convex_hull_abc286ex_test.nim
 documentation_of: cplib/geometry/intersect.nim
