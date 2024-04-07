@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/inversion_number.nim
+    title: "\u8EE2\u5012\u6570"
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/inversion_number.nim
+    title: "\u8EE2\u5012\u6570"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/hashtable_yuki2686_test.nim
@@ -87,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/inversion_number_test.nim
+    title: verify/utils/inversion_number_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/inversion_number_test.nim
+    title: verify/utils/inversion_number_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -142,10 +154,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/segtree.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/utils/inversion_number.nim
+  - cplib/utils/inversion_number.nim
   timestamp: '2024-02-07 20:17:37+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/inversion_number_test.nim
+  - verify/utils/inversion_number_test.nim
   - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_RMQ_test.nim
