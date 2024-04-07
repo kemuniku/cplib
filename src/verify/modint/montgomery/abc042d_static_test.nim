@@ -1,9 +1,9 @@
-# verification-helper: PROBLEM https://atcoder.jp/contests/abc042/tasks/arc058_b
+# verification-helper: PROBLEM https://atcoder.jp/contests/arc058_abc042/tasks/arc058_abc042_d
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import cplib/modint/modint
 import cplib/math/combination
-type mint = modint1000000007_montgomery
+type mint = mint1000000007_montgomery
 
 var h, w, a, b = ii()
 var c = initCombination[mint](h+w)

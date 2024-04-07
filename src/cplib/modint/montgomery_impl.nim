@@ -15,9 +15,10 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         assert M < (1u32 shl 30), "invalid mod >= 2^30"
         assert (M and 1u32) == 1u32, "invalid mod % 2 == 0"
         assert r * M == 1, "r * mod != 1"
-    proc get_param*[M: static[uint32]](self: typedesc[DynamicMontgomeryModint[M]]): ptr[tuple[M, r, n2: uint32]] =
-        var p {.global.}: tuple[M, r, n2: uint32] = (998244353u32, get_r(998244353u32), get_n2(998244353u32))
-        return p.addr
+    func get_param*[M: static[uint32]](self: typedesc[DynamicMontgomeryModint[M]]): ptr[tuple[M, r, n2: uint32]] =
+        {.cast(noSideEffect).}:
+            var p {.global.}: tuple[M, r, n2: uint32] = (998244353u32, get_r(998244353u32), get_n2(998244353u32))
+            return p.addr
     template get_M*(T: typedesc[MontgomeryModint]): uint32 =
         when T is StaticMontgomeryModint: T.M
         else: (get_param(T))[].M
@@ -35,7 +36,7 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         else: T.umod
     template `mod`*[T: MontgomeryModint](self: typedesc[T] or T): int32 = (T.umod).int32
 
-    proc reduce(T: typedesc[MontgomeryModint], b: uint): uint32 {.inline.} =
+    func reduce(T: typedesc[MontgomeryModint], b: uint): uint32 =
         when T is StaticMontgomeryModint:
             const r = get_r(T.M)
             return cast[uint32]((b + uint(cast[uint32](b) * (not (r - 1u32))) * T.M) shr 32)
@@ -63,26 +64,9 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     proc val*[T: MontgomeryModint](a: T): int =
         result = reduce(T, a.a).int
         if result.uint32 >= T.get_M: result -= T.get_M.int
-    proc `$`*(a: MontgomeryModint): string = $(a.val)
 
-    proc `+`*[T: MontgomeryModint](a, b: T): T = (result = a; result += b)
-    proc `-`*[T: MontgomeryModint](a, b: T): T = (result = a; result -= b)
     proc `-`*[T: MontgomeryModint](a: T): T = init(T, 0) - a
-
-
     proc `*=`*[T: MontgomeryModint] (a: var T, b: T) = a.a = reduce(T, uint(a.a) * b.a)
-    proc `*`*[T: MontgomeryModint](a, b: T): T = (result = a; result *= b)
-    proc `*=`*[T: MontgomeryModint] (a: var T, b: SomeInteger) = a.a = reduce(T, uint(a.a) * init(T, b).a)
-    proc `*`*[T: MontgomeryModint](a: T, b: SomeInteger): T = (result = a; result *= b)
-    proc `*`*[T: MontgomeryModint](a: SomeInteger, b: T): T = (result = b; result *= a)
-    proc pow*[T: MontgomeryModint](a: T, n: int): T =
-        result = init(T, 1)
-        var a = a
-        var n = n
-        while n > 0:
-            if (n and 1) == 1: result *= a
-            a *= a
-            n = (n shr 1)
     proc inv*[T: MontgomeryModint](x: T): T =
         var x: int32 = int32(x.val)
         var y: int32 = T.mod
@@ -96,7 +80,6 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
             swap(u, v)
         return init(T, u)
     proc `/=`*[T: MontgomeryModint](a: var T, b: T) = a *= b.inv
-    proc `/`*[T: MontgomeryModint](a, b: T): T = (result = a; result /= b)
 
     macro declarStaticMontgomeryModint*(name, M) =
         let converter_name = ident("to" & $`name`)

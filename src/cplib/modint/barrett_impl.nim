@@ -9,9 +9,10 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
     type BarrettModint* = StaticBarrettModint or DynamicBarrettModint
 
     proc get_im*(M: uint32): uint = cast[uint](-1) div M + 1
-    proc get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]): ptr[tuple[M, im: uint]] =
-        var p {.global.}: tuple[M, im: uint] = (998244353u, get_im(998244353u32))
-        return p.addr
+    func get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]): ptr[tuple[M, im: uint]] =
+        {.cast(noSideEffect).}:
+            var p {.global.}: tuple[M, im: uint] = (998244353u, get_im(998244353u32))
+            return p.addr
     template get_M*(T: typedesc[BarrettModint]): uint =
         when T is StaticBarrettModint: T.M.uint
         else: (get_param(T))[].M.uint
@@ -73,20 +74,7 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             swap(u, v)
         return init(T, u)
     proc `/=`*[T: BarrettModint](a: var T, b: T) = a *= b.inv
-    proc `+`*[T: BarrettModint](a, b: T): T = (result = a; result += b)
-    proc `-`*[T: BarrettModint](a, b: T): T = (result = a; result -= b)
-    proc `*`*[T: BarrettModint](a, b: T): T = (result = a; result *= b)
-    proc `/`*[T: BarrettModint](a, b: T): T = (result = a; result /= b)
     proc val*(a: BarrettModint): int = a.a.int
-    proc `$`*(a: BarrettModint): string = $(a.val)
-    proc pow*[T: BarrettModint](a: T, n: int): T =
-        result = init(T, 1)
-        var a = a
-        var n = n
-        while n > 0:
-            if (n and 1) == 1: result *= a
-            a *= a
-            n = (n shr 1)
     macro declarStaticBarrettModint*(name, M) =
         let converter_name = ident("to" & $`name`)
         quote do:

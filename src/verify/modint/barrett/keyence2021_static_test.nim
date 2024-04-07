@@ -4,7 +4,7 @@ proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 proc getchar(): char {.importc: "getchar_unlocked", header: "<stdio.h>", discardable.}
 import sequtils, strutils
 import cplib/modint/modint
-type mint = modint_barrett
+type mint = mint_barrett
 mint.setMod(998244353)
 
 var h, w, k = ii()
