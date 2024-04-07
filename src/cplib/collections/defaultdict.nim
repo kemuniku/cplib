@@ -29,4 +29,10 @@ when not declared CPLIB_COLLECTIONS_DEFAULTDICT:
         result.table = table
     iterator pairs*[K, V](d: DefaultDict[K, V]): (K, V) =
         for k, v in d.table: yield (k, v)
+    iterator mpairs*[K, V](d: var DefaultDict[K, V]): (K, var V) =
+        for k, v in d.table.mpairs: yield (k, v)
+    iterator keys*[K, V](d: DefaultDict[K, V]): K =
+        for k in d.table.keys: yield k
+    iterator values*[K, V](d: DefaultDict[K, V]): V =
+        for v in d.table.values: yield v
     proc `$`*[K, V](d: DefaultDict[K, V]): string = $(d.table)
