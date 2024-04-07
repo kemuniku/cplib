@@ -123,6 +123,6 @@
 "verify/utils/bititers_bitcomb_test.nim": "2023-12-13 00:30:20 +0900",
 "verify/utils/bititers_bitsubseteq_descending_test.nim": "2023-12-13 00:30:20 +0900",
 "verify/utils/bititers_bitsubseteq_test.nim": "2023-12-13 00:30:20 +0900",
-"verify/utils/inversion_number_test.nim": "2023-12-25 07:39:58 +0900",
+"verify/utils/inversion_number_test.nim": "2024-04-08 08:07:48 +0900",
 "verify/utils/mo_test.nim": "2024-03-16 18:25:22 +0900"
 }
