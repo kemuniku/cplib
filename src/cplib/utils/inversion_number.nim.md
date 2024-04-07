@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/segtree.nim
+    title: cplib/collections/segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/segtree.nim
+    title: cplib/collections/segtree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -19,17 +25,20 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_INVERSION_NUMBER:\n    const COMPETITIVE_UTILS_INVERSION_NUMBER*\
-    \ = 1\n    import algorithm, sequtils\n    import atcoder/fenwicktree\n    proc\
-    \ inversion_number*(a: seq[int]): int =\n        let c = a.sorted.deduplicate(isSorted\
-    \ = true)\n        var tree = initFenwickTree[int](c.len)\n        var ans = 0\n\
-    \        for i in 0..<a.len:\n            var pos = c.lowerBound(a[i])\n     \
-    \       if pos + 1 < c.len:\n                ans += tree.sum(pos+1..<c.len)\n\
-    \            tree.add(pos, 1)\n        return ans\n"
-  dependsOn: []
+    \ = 1\n    import algorithm, sequtils\n    import cplib/collections/segtree\n\
+    \    proc inversion_number*(a: seq[int]): int =\n        let c = a.sorted.deduplicate(true)\n\
+    \        var seg = initSegmentTree(newSeqWith(c.len, 0), proc(l, r: int): int\
+    \ = l+r, 0)\n        var ans = 0\n        for i in 0..<a.len:\n            let\
+    \ pos = c.lowerbound(a[i])\n            if pos + 1 < c.len:\n                ans\
+    \ += seg.get(pos+1..<c.len)\n            seg[pos] = seg[pos] + 1\n        return\
+    \ ans\n"
+  dependsOn:
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: false
   path: cplib/utils/inversion_number.nim
   requiredBy: []
-  timestamp: '2023-12-25 07:39:58+09:00'
+  timestamp: '2024-04-08 08:07:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/inversion_number_test.nim

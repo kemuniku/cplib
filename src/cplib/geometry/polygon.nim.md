@@ -143,8 +143,8 @@ data:
     \ Polygon[T](v: vi)\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
