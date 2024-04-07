@@ -37,10 +37,10 @@ data:
   timestamp: '2024-03-21 20:57:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/nearear_equiv_abc342e_test.nim
-  - verify/math/nearear_equiv_abc342e_test.nim
   - verify/math/nearest_equiv_test.nim
   - verify/math/nearest_equiv_test.nim
+  - verify/math/nearear_equiv_abc342e_test.nim
+  - verify/math/nearear_equiv_abc342e_test.nim
 documentation_of: cplib/math/nearest_equiv.nim
 layout: document
 redirect_from:

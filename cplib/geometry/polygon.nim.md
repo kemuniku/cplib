@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -142,36 +142,36 @@ data:
     \ discard vi.pop\n            vi.add(s[i])\n        vi.delete(0)\n        return\
     \ Polygon[T](v: vi)\n"
   dependsOn:
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy: []
   timestamp: '2024-03-28 19:09:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
   - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
 documentation_of: cplib/geometry/polygon.nim
 layout: document
 redirect_from:

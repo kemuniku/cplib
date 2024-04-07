@@ -83,7 +83,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/euler_phi.nim
       title: cplib/math/euler_phi.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/fractions.nim
       title: cplib/math/fractions.nim
     - icon: ':heavy_check_mark:'
@@ -159,6 +159,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
+  - name: verify/collections/defaultdict
+    pages:
+    - icon: ':warning:'
+      path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+      title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   - name: verify/geometry/CGL_2
     pages:
     - icon: ':warning:'
@@ -457,7 +462,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/fractions_abc308c_test.nim
       title: verify/math/fractions_abc308c_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/math/fractions_unit_test.nim
       title: verify/math/fractions_unit_test.nim
     - icon: ':heavy_check_mark:'

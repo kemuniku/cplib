@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/defaultdict/defaultdict_abc235c_test.nim
@@ -59,22 +65,28 @@ data:
     \ proc toDefaultDict*[K, V](table: Table[K, V], default: V): DefaultDict[K, V]\
     \ =\n        result = initDefaultDict[K, V](default)\n        result.table = table\n\
     \    iterator pairs*[K, V](d: DefaultDict[K, V]): (K, V) =\n        for k, v in\
-    \ d.table: yield (k, v)\n    proc `$`*[K, V](d: DefaultDict[K, V]): string = $(d.table)\n"
+    \ d.table: yield (k, v)\n    iterator mpairs*[K, V](d: var DefaultDict[K, V]):\
+    \ (K, var V) =\n        for k, v in d.table.mpairs: yield (k, v)\n    iterator\
+    \ keys*[K, V](d: DefaultDict[K, V]): K =\n        for k in d.table.keys: yield\
+    \ k\n    iterator values*[K, V](d: DefaultDict[K, V]): V =\n        for v in d.table.values:\
+    \ yield v\n    proc `$`*[K, V](d: DefaultDict[K, V]): string = $(d.table)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/defaultdict.nim
-  requiredBy: []
-  timestamp: '2024-02-08 03:05:04+09:00'
+  requiredBy:
+  - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+  timestamp: '2024-04-08 07:44:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/defaultdict/defaultdict_abc278c_test.nim
-  - verify/collections/defaultdict/defaultdict_abc278c_test.nim
-  - verify/collections/defaultdict/defaultdict_abc235c_test.nim
-  - verify/collections/defaultdict/defaultdict_abc235c_test.nim
-  - verify/collections/defaultdict/defaultdict_unit_test.nim
-  - verify/collections/defaultdict/defaultdict_unit_test.nim
   - verify/collections/defaultdict/defaultdict_abc278d_test.nim
   - verify/collections/defaultdict/defaultdict_abc278d_test.nim
+  - verify/collections/defaultdict/defaultdict_unit_test.nim
+  - verify/collections/defaultdict/defaultdict_unit_test.nim
+  - verify/collections/defaultdict/defaultdict_abc235c_test.nim
+  - verify/collections/defaultdict/defaultdict_abc235c_test.nim
+  - verify/collections/defaultdict/defaultdict_abc278c_test.nim
+  - verify/collections/defaultdict/defaultdict_abc278c_test.nim
 documentation_of: cplib/collections/defaultdict.nim
 layout: document
 redirect_from:

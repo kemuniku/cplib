@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -42,9 +42,9 @@ data:
     \  else: echo 0\n"
   dependsOn:
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
   - cplib/math/fractions.nim
   - cplib/geometry/angle.nim
   isVerificationFile: true
