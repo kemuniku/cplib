@@ -46,21 +46,23 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             var r = a - x * p.M
             if p.M <= r: r += p.M
             return cast[uint32](r)
-    proc init*(T: typedesc[BarrettModint], a: int): auto =
-        if a in 0..<T.mod.int: return T(a: a.uint32)
-        var a = a mod T.mod.int
-        if a < 0: a += T.mod.int
-        return T(a: a.uint32)
+    proc init*(T: typedesc[BarrettModint], a: T or SomeInteger): auto =
+        when a is T: return a
+        else:
+            if a in 0..<T.mod.int: return T(a: a.uint32)
+            var a = a mod T.mod.int
+            if a < 0: a += T.mod.int
+            return T(a: a.uint32)
 
     proc `-`*[T: BarrettModint](a: T): T = T(a: T.umod - a.a)
-    proc `+=`*[T: BarrettModint](a: var T, b: T) =
-        a.a += b.a
+    proc `+=`*[T: BarrettModint](a: var T, b: T or SomeInteger) =
+        a.a += init(T, b).a
         if a.a >= T.umod: a.a -= T.umod
-    proc `-=`*[T: BarrettModint](a: var T, b: T) =
-        a.a -= b.a
+    proc `-=`*[T: BarrettModint](a: var T, b: T or SomeInteger) =
+        a.a -= init(T, b).a
         if a.a >= T.umod: a.a += T.umod
-    proc `*=`*[T: BarrettModint] (a: var T, b: T) =
-        a.a = rem(T, cast[uint](a.a) * cast[uint](b.a))
+    proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) =
+        a.a = rem(T, cast[uint](a.a) * cast[uint](init(T, b).a))
     proc inv*[T: BarrettModint](x: T): T =
         var x: int32 = int32(x.val)
         var y: int32 = T.mod
@@ -73,7 +75,7 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             swap(x, y)
             swap(u, v)
         return init(T, u)
-    proc `/=`*[T: BarrettModint](a: var T, b: T) = a *= b.inv
+    proc `/=`*[T: BarrettModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv
     proc val*(a: BarrettModint): int = a.a.int
     macro declarStaticBarrettModint*(name, M) =
         let converter_name = ident("to" & $`name`)
