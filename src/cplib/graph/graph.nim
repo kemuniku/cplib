@@ -4,13 +4,13 @@ when not declared CPLIB_GRAPH_GRAPH:
     import sequtils, math
     type DynamicGraph*[T] = ref object of RootObj
         edges*: seq[seq[(int, T)]]
-        N*: int
+        len*: int
     type StaticGraph*[T] = ref object of RootObj
         src*, dst*: seq[int]
         cost*: seq[T]
         elist*: seq[(int, T)]
         start*: seq[int]
-        N*: int
+        len*: int
 
     type WeightedDirectedGraph*[T] = ref object of DynamicGraph[T]
     type WeightedUnDirectedGraph*[T] = ref object of DynamicGraph[T]
@@ -21,47 +21,47 @@ when not declared CPLIB_GRAPH_GRAPH:
     type UnWeightedDirectedStaticGraph* = ref object of StaticGraph[int]
     type UnWeightedUnDirectedStaticGraph* = ref object of StaticGraph[int]
 
-    # type DynamicGraphs* = DynamicGraph or WeightedDirectedGraph or WeightedUnDirectedGraph or UnWeightedDirectedGraph or UnWeightedUnDirectedGraph
-    # type StaticGraphs* = StaticGraph or WeightedDirectedStaticGraph or WeightedUnDirectedStaticGraph or UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
     type GraphTypes*[T] = DynamicGraph[T] or StaticGraph[T]
     type DirectedGraph* = WeightedDirectedGraph or UnWeightedDirectedGraph or WeightedDirectedStaticGraph or UnWeightedDirectedStaticGraph
     type UnDirectedGraph* = WeightedUnDirectedGraph or UnWeightedUnDirectedGraph or WeightedUnDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
     type WeightedGraph*[T] = WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T] or WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T]
     type UnWeightedGraph* = UnWeightedDirectedGraph or UnWeightedUnDirectedGraph or UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
+    type DynamicGraphTypes* = WeightedDirectedGraph or UnWeightedDirectedGraph or WeightedUnDirectedGraph or UnWeightedUnDirectedGraph
+    type StaticGraphTypes* = WeightedDirectedStaticGraph or UnWeightedDirectedStaticGraph or WeightedUnDirectedStaticGraph or UnWeightedUnDirectedStaticGraph
 
-    proc add_edge_dynamic_impl[T](g: DynamicGraph[T], u, v: int, cost: T, directed: bool) =
+    proc add_edge_dynamic_impl*[T](g: DynamicGraph[T], u, v: int, cost: T, directed: bool) =
         g.edges[u].add((v, cost))
         if not directed: g.edges[v].add((u, cost))
 
     proc initWeightedDirectedGraph*(N: int, edgetype: typedesc = int): WeightedDirectedGraph[edgetype] =
-        result = WeightedDirectedGraph[edgetype](edges: newSeq[seq[(int, edgetype)]](N), N: N)
+        result = WeightedDirectedGraph[edgetype](edges: newSeq[seq[(int, edgetype)]](N), len: N)
     proc add_edge*[T](g: var WeightedDirectedGraph[T], u, v: int, cost: T) =
         g.add_edge_dynamic_impl(u, v, cost, true)
 
     proc initWeightedUnDirectedGraph*(N: int, edgetype: typedesc = int): WeightedUnDirectedGraph[edgetype] =
-        result = WeightedUnDirectedGraph[edgetype](edges: newSeq[seq[(int, edgetype)]](N), N: N)
+        result = WeightedUnDirectedGraph[edgetype](edges: newSeq[seq[(int, edgetype)]](N), len: N)
     proc add_edge*[T](g: var WeightedUnDirectedGraph[T], u, v: int, cost: T) =
         g.add_edge_dynamic_impl(u, v, cost, false)
 
     proc initUnWeightedDirectedGraph*(N: int): UnWeightedDirectedGraph =
-        result = UnWeightedDirectedGraph(edges: newSeq[seq[(int, int)]](N), N: N)
+        result = UnWeightedDirectedGraph(edges: newSeq[seq[(int, int)]](N), len: N)
     proc add_edge*(g: var UnWeightedDirectedGraph, u, v: int) =
         g.add_edge_dynamic_impl(u, v, 1, true)
 
     proc initUnWeightedUnDirectedGraph*(N: int): UnWeightedUnDirectedGraph =
-        result = UnWeightedUnDirectedGraph(edges: newSeq[seq[(int, int)]](N), N: N)
+        result = UnWeightedUnDirectedGraph(edges: newSeq[seq[(int, int)]](N), len: N)
     proc add_edge*(g: var UnWeightedUnDirectedGraph, u, v: int) =
         g.add_edge_dynamic_impl(u, v, 1, false)
 
-    proc len*[T](G: WeightedGraph[T]): int = G.N
-    proc len*(G: UnWeightedGraph): int = G.N
+    proc len*[T](G: WeightedGraph[T]): int = G.len
+    proc len*(G: UnWeightedGraph): int = G.len
 
     iterator `[]`*[T](g: WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T], x: int): (int, T) =
         for e in g.edges[x]: yield e
     iterator `[]`*(g: UnWeightedDirectedGraph or UnWeightedUnDirectedGraph, x: int): int =
         for e in g.edges[x]: yield e[0]
 
-    proc add_edge_static_impl[T](g: StaticGraph[T], u, v: int, cost: T, directed: bool) =
+    proc add_edge_static_impl*[T](g: StaticGraph[T], u, v: int, cost: T, directed: bool) =
         g.src.add(u)
         g.dst.add(v)
         g.cost.add(cost)
@@ -70,7 +70,7 @@ when not declared CPLIB_GRAPH_GRAPH:
             g.dst.add(u)
             g.cost.add(cost)
 
-    proc build*[T](g: WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T]) =
+    proc build_impl*[T](g: StaticGraph[T]) =
         g.start = newSeqWith(g.len + 1, 0)
         for i in 0..<g.src.len:
             g.start[g.src[i]] += 1
@@ -81,18 +81,7 @@ when not declared CPLIB_GRAPH_GRAPH:
             var v = g.dst[i]
             g.start[u] -= 1
             g.elist[g.start[u]] = (v, g.cost[i])
-
-    proc build*(g: UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph) =
-        g.start = newSeqWith(g.len + 1, 0)
-        for i in 0..<g.src.len:
-            g.start[g.src[i]] += 1
-        g.start.cumsum
-        g.elist = newSeq[(int, int)](g.start[^1])
-        for i in countdown(g.src.len - 1, 0):
-            var u = g.src[i]
-            var v = g.dst[i]
-            g.start[u] -= 1
-            g.elist[g.start[u]] = (v, g.cost[i])
+    proc build*(g: StaticGraphTypes) = g.build_impl()
 
     proc initWeightedDirectedStaticGraph*(N: int, edgetype: typedesc = int, capacity: int = 0): WeightedDirectedStaticGraph[edgetype] =
         result = WeightedDirectedStaticGraph[edgetype](
@@ -101,7 +90,7 @@ when not declared CPLIB_GRAPH_GRAPH:
             cost: newSeqOfCap[edgetype](capacity),
             elist: newSeq[(int, edgetype)](0),
             start: newSeq[int](0),
-            N: N
+            len: N
         )
     proc add_edge*[T](g: var WeightedDirectedStaticGraph[T], u, v: int, cost: T) =
         g.add_edge_static_impl(u, v, cost, true)
@@ -113,7 +102,7 @@ when not declared CPLIB_GRAPH_GRAPH:
             cost: newSeqOfCap[edgetype](capacity*2),
             elist: newSeq[(int, edgetype)](0),
             start: newSeq[int](0),
-            N: N
+            len: N
         )
     proc add_edge*[T](g: var WeightedUnDirectedStaticGraph[T], u, v: int, cost: T) =
         g.add_edge_static_impl(u, v, cost, false)
@@ -125,7 +114,7 @@ when not declared CPLIB_GRAPH_GRAPH:
             cost: newSeqOfCap[int](capacity),
             elist: newSeq[(int, int)](0),
             start: newSeq[int](0),
-            N: N
+            len: N
         )
     proc add_edge*(g: var UnWeightedDirectedStaticGraph, u, v: int) =
         g.add_edge_static_impl(u, v, 1, true)
@@ -137,7 +126,7 @@ when not declared CPLIB_GRAPH_GRAPH:
             cost: newSeqOfCap[int](capacity*2),
             elist: newSeq[(int, int)](0),
             start: newSeq[int](0),
-            N: N
+            len: N
         )
     proc add_edge*(g: var UnWeightedUnDirectedStaticGraph, u, v: int) =
         g.add_edge_static_impl(u, v, 1, false)
