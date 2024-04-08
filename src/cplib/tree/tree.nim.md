@@ -14,10 +14,10 @@ data:
   - icon: ':question:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedVerifiedWith:
@@ -45,10 +45,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
   - icon: ':heavy_check_mark:'

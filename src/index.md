@@ -67,6 +67,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/warshall_floyd.nim
+      title: cplib/graph/warshall_floyd.nim
   - name: cplib/itertools
     pages:
     - icon: ':heavy_check_mark:'
@@ -153,7 +156,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
     - icon: ':question:'
@@ -168,9 +171,12 @@ data:
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/infl.nim
+      title: cplib/utils/infl.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: "\u8EE2\u5012\u6570"
-    - icon: ':x:'
+    - icon: ':question:'
       path: cplib/utils/lis.nim
       title: cplib/utils/lis.nim
     - icon: ':heavy_check_mark:'
@@ -384,6 +390,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
       title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+      title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - name: verify/graph/static
     pages:
     - icon: ':heavy_check_mark:'
@@ -410,6 +419,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
       title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/static/warshall_floyd_aoj_test.nim
+      title: verify/graph/static/warshall_floyd_aoj_test.nim
   - name: verify/itertools
     pages:
     - icon: ':heavy_check_mark:'
@@ -611,7 +623,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_static_test.nim
       title: verify/tree/diameter_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
     - icon: ':heavy_check_mark:'
@@ -657,7 +669,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/lis_aoj_test.nim
       title: verify/utils/lis_aoj_test.nim
     - icon: ':x:'
@@ -666,7 +678,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/mo_test.nim
       title: verify/utils/mo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/restore_lis_aoj_test.nim
       title: verify/utils/restore_lis_aoj_test.nim
 layout: toppage

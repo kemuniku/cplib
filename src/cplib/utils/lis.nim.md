@@ -3,10 +3,10 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/lis_aoj_test.nim
     title: verify/utils/lis_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/lis_aoj_test.nim
     title: verify/utils/lis_aoj_test.nim
   - icon: ':x:'
@@ -15,15 +15,15 @@ data:
   - icon: ':x:'
     path: verify/utils/lis_arc126b_test.nim
     title: verify/utils/lis_arc126b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/restore_lis_aoj_test.nim
     title: verify/utils/restore_lis_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/restore_lis_aoj_test.nim
     title: verify/utils/restore_lis_aoj_test.nim
   _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -46,7 +46,7 @@ data:
   path: cplib/utils/lis.nim
   requiredBy: []
   timestamp: '2024-04-09 01:08:32+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/utils/restore_lis_aoj_test.nim
   - verify/utils/restore_lis_aoj_test.nim

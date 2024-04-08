@@ -26,6 +26,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd.nim
+    title: cplib/graph/warshall_floyd.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd.nim
+    title: cplib/graph/warshall_floyd.nim
   - icon: ':question:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
@@ -38,10 +44,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   - icon: ':question:'
@@ -100,6 +106,12 @@ data:
     path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
     title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+    title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+    title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCCG_static_test.nim
     title: verify/graph/static/SCCG_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -147,6 +159,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
     title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/warshall_floyd_aoj_test.nim
+    title: verify/graph/static/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/warshall_floyd_aoj_test.nim
+    title: verify/graph/static/warshall_floyd_aoj_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/nearear_equiv_abc342e_test.nim
     title: verify/math/nearear_equiv_abc342e_test.nim
@@ -201,10 +219,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
   - icon: ':heavy_check_mark:'
@@ -338,6 +356,8 @@ data:
   - cplib/graph/SCC.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
   timestamp: '2024-04-08 19:13:57+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
@@ -379,6 +399,8 @@ data:
   - verify/graph/dynamic/SCCG_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim
+  - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/scc_abc335e_test.nim
   - verify/graph/dynamic/scc_abc335e_test.nim
   - verify/graph/static/shortest_path_static_test.nim
@@ -397,6 +419,8 @@ data:
   - verify/graph/static/topologicalsort_2_static_test.nim
   - verify/graph/static/scc_abc335e_static_test.nim
   - verify/graph/static/scc_abc335e_static_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
 documentation_of: cplib/graph/graph.nim
 layout: document
 redirect_from:

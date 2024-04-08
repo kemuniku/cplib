@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/qcfium.nim
     title: cplib/tmpl/qcfium.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/infl.nim
+    title: cplib/utils/infl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/infl.nim
+    title: cplib/utils/infl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -49,16 +55,18 @@ data:
 
     '
   dependsOn:
-  - cplib/tmpl/qcfium.nim
-  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/tmpl/qcfium.nim
+  - cplib/tmpl/qcfium.nim
+  - cplib/utils/infl.nim
   - cplib/tmpl/citrus.nim
+  - cplib/utils/infl.nim
+  - cplib/math/isqrt.nim
   - cplib/tmpl/citrus.nim
   isVerificationFile: true
   path: verify/tmpl/citrus_and_qcfium_test.nim
   requiredBy: []
-  timestamp: '2024-03-21 06:55:55+09:00'
+  timestamp: '2024-04-09 00:37:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tmpl/citrus_and_qcfium_test.nim

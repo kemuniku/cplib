@@ -7,6 +7,12 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/infl.nim
+    title: cplib/utils/infl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/infl.nim
+    title: cplib/utils/infl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -31,19 +37,19 @@ data:
     \    import strformat\n    import sugar\n    import streams\n    import deques\n\
     \    import bitops\n    import heapqueue\n    import options\n    import hashes\n\
     \    const MODINT998244353* = 998244353\n    const MODINT1000000007* = 1000000007\n\
-    \    const INF* = 100100111\n    const INFL* = int(3300300300300300491)\n    type\
-    \ double* = float64\n    let readNext = iterator(getsChar: bool = false): string\
-    \ {.closure.} =\n        while true:\n            var si: string\n           \
-    \ try: si = stdin.readLine\n            except EOFError: yield \"\"\n        \
-    \    for s in si.split:\n                if getsChar:\n                    for\
-    \ i in 0..<s.len():\n                        yield s[i..i]\n                else:\n\
-    \                    if s.isEmptyOrWhitespace: continue\n                    yield\
-    \ s\n    proc input*(t: typedesc[string]): string = readNext()\n    proc input*(t:\
-    \ typedesc[char]): char = readNext(true)[0]\n    proc input*(t: typedesc[int]):\
-    \ int = readNext().parseInt\n    proc input*(t: typedesc[float]): float = readNext().parseFloat\n\
-    \    macro input*(t: typedesc, n: varargs[int]): untyped =\n        var repStr\
-    \ = \"\"\n        for arg in n:\n            repStr &= &\"({arg.repr}).newSeqWith\
-    \ \"\n        parseExpr(&\"{repStr}input({t})\")\n    macro input*(ts: varargs[auto]):\
+    \    const INF* = 100100111\n    include cplib/utils/infl\n    type double* =\
+    \ float64\n    let readNext = iterator(getsChar: bool = false): string {.closure.}\
+    \ =\n        while true:\n            var si: string\n            try: si = stdin.readLine\n\
+    \            except EOFError: yield \"\"\n            for s in si.split:\n   \
+    \             if getsChar:\n                    for i in 0..<s.len():\n      \
+    \                  yield s[i..i]\n                else:\n                    if\
+    \ s.isEmptyOrWhitespace: continue\n                    yield s\n    proc input*(t:\
+    \ typedesc[string]): string = readNext()\n    proc input*(t: typedesc[char]):\
+    \ char = readNext(true)[0]\n    proc input*(t: typedesc[int]): int = readNext().parseInt\n\
+    \    proc input*(t: typedesc[float]): float = readNext().parseFloat\n    macro\
+    \ input*(t: typedesc, n: varargs[int]): untyped =\n        var repStr = \"\"\n\
+    \        for arg in n:\n            repStr &= &\"({arg.repr}).newSeqWith \"\n\
+    \        parseExpr(&\"{repStr}input({t})\")\n    macro input*(ts: varargs[auto]):\
     \ untyped =\n        var tupStr = \"\"\n        for t in ts:\n            tupStr\
     \ &= &\"input({t.repr}),\"\n        parseExpr(&\"({tupStr})\")\n    macro input*(n:\
     \ int, ts: varargs[auto]): untyped =\n        for typ in ts:\n            if typ.typeKind\
@@ -110,11 +116,13 @@ data:
     \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2024-03-21 06:55:55+09:00'
+  timestamp: '2024-04-09 00:37:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
