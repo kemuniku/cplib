@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
   _extendedRequiredBy: []
@@ -33,13 +33,13 @@ data:
     for i in 0..<M:\n    var U, V = ii()-1\n    G.add_edge(V, U)\necho N-len(G.topologicalsort())\n"
   dependsOn:
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/topologicalsort_2_test.nim
   requiredBy: []
-  timestamp: '2024-03-22 18:42:41+09:00'
+  timestamp: '2024-04-08 19:13:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/topologicalsort_2_test.nim

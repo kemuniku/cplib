@@ -1,18 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/topologicalsort_1_test.nim
     title: verify/graph/dynamic/topologicalsort_1_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/topologicalsort_1_test.nim
     title: verify/graph/dynamic/topologicalsort_1_test.nim
   - icon: ':heavy_check_mark:'
@@ -21,21 +21,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/topologicalsort_2_test.nim
     title: verify/graph/dynamic/topologicalsort_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/topologicalsort_1_static_test.nim
     title: verify/graph/static/topologicalsort_1_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/topologicalsort_1_static_test.nim
     title: verify/graph/static/topologicalsort_1_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/topologicalsort_2_static_test.nim
     title: verify/graph/static/topologicalsort_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/topologicalsort_2_static_test.nim
     title: verify/graph/static/topologicalsort_2_static_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -58,8 +58,8 @@ data:
   isVerificationFile: false
   path: cplib/graph/topologicalsort.nim
   requiredBy: []
-  timestamp: '2024-03-22 18:42:41+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-04-08 19:13:57+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/dynamic/topologicalsort_2_test.nim
   - verify/graph/dynamic/topologicalsort_2_test.nim

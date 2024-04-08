@@ -8,6 +8,12 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':x:'
+    path: cplib/tree/diameter.nim
+    title: cplib/tree/diameter.nim
+  - icon: ':x:'
+    path: cplib/tree/diameter.nim
+    title: cplib/tree/diameter.nim
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   - icon: ':x:'
@@ -19,36 +25,35 @@ data:
   _pathExtension: nim
   _verificationStatusIcon: ':x:'
   attributes:
-    PROBLEM: https://atcoder.jp/contests/abc138/tasks/abc138_d
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_A
     links:
-    - https://atcoder.jp/contests/abc138/tasks/abc138_d
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_A
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc138/tasks/abc138_d\n\
-    import sequtils, strutils\nimport cplib/tree/tree\n\nvar n, q, a, b, p, x: int\n\
-    (n, q) = stdin.readLine.split.map(parseInt)\nvar g = initUnWeightedTree(n)\nfor\
-    \ i in 0..<n-1:\n    (a, b) = stdin.readLine.split.map(parseInt)\n    g.add_edge(a-1,\
-    \ b-1)\nvar cnt = newSeqWith(n, 0)\nfor i in 0..<q:\n    (p, x) = stdin.readLine.split.map(parseInt)\n\
-    \    cnt[p-1] += x\nproc dfs(u, par, val: int): void =\n    cnt[u] += val\n  \
-    \  for (v, c) in g.edges[u]:\n        if v == par: continue\n        dfs(v, u,\
-    \ cnt[u])\ndfs(0, -1, 0)\necho cnt.join(\" \")\n"
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_A\n\
+    import cplib/tree/tree\nimport cplib/tree/diameter\nproc scanf(formatstr: cstring){.header:\
+    \ \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr\
+    \ result)\n\nvar n = ii()\nvar g = initWeightedStaticTree(n)\nfor i in 0..<n-1:\n\
+    \    var a, b, c = ii()\n    g.add_edge(a, b, c)\ng.build\necho g.diameter\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
   - cplib/tree/tree.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
-  path: verify/tree/tree_atcoder_test.nim
+  path: verify/tree/diameter_static_test.nim
   requiredBy: []
   timestamp: '2024-04-08 19:13:57+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/tree/tree_atcoder_test.nim
+documentation_of: verify/tree/diameter_static_test.nim
 layout: document
 redirect_from:
-- /verify/verify/tree/tree_atcoder_test.nim
-- /verify/verify/tree/tree_atcoder_test.nim.html
-title: verify/tree/tree_atcoder_test.nim
+- /verify/verify/tree/diameter_static_test.nim
+- /verify/verify/tree/diameter_static_test.nim.html
+title: verify/tree/diameter_static_test.nim
 ---
