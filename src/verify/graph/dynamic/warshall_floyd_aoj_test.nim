@@ -11,8 +11,8 @@ var g = initWeightedDirectedGraph(n, int)
 for i in 0..<m:
     var u, v, c = ii()
     g.add_edge(u, v, c)
-var d = g.warshall_floyd
-if d.has_negative_cycle:
+var (negative_cycle, d) = g.warshall_floyd
+if negative_cycle:
     echo "NEGATIVE CYCLE"
     quit()
 for i in 0..<n:
