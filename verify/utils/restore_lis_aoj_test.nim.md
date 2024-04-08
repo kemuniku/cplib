@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/utils/lis.nim
     title: cplib/utils/lis.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/utils/lis.nim
     title: cplib/utils/lis.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/1/DPL_1_D
     links:
@@ -45,7 +45,7 @@ data:
   path: verify/utils/restore_lis_aoj_test.nim
   requiredBy: []
   timestamp: '2024-04-09 01:08:32+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/restore_lis_aoj_test.nim
 layout: document

@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc328/tasks/abc328_e
     links:
@@ -44,17 +44,17 @@ data:
     \ g[i][j]\n        ans = min(ans, cur mod k)\n        return\n    for i in 0..<n:\n\
     \        a[d] = i\n        dfs(d+1)\ndfs(0)\necho ans\n"
   dependsOn:
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/tree/tree.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/tree/tree.nim
   isVerificationFile: true
   path: verify/tree/prufer_abc328e_test.nim
   requiredBy: []
   timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/prufer_abc328e_test.nim
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/utils/lis.nim
     title: cplib/utils/lis.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/utils/lis.nim
     title: cplib/utils/lis.nim
   _extendedRequiredBy: []
