@@ -13,10 +13,10 @@ data:
   - icon: ':x:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -45,11 +45,11 @@ data:
     \        a[d] = i\n        dfs(d+1)\ndfs(0)\necho ans\n"
   dependsOn:
   - cplib/tree/prufer.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
   - cplib/tree/prufer.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   isVerificationFile: true
   path: verify/tree/prufer_abc328e_test.nim
   requiredBy: []

@@ -27,10 +27,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/scc_abc335e_test.nim
     title: verify/graph/dynamic/scc_abc335e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCCG_static_test.nim
     title: verify/graph/static/SCCG_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCCG_static_test.nim
     title: verify/graph/static/SCCG_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -45,9 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/scc_abc335e_static_test.nim
     title: verify/graph/static/scc_abc335e_static_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -98,20 +98,20 @@ data:
   path: cplib/graph/SCC.nim
   requiredBy: []
   timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/SCC_static_test.nim
-  - verify/graph/static/SCC_static_test.nim
-  - verify/graph/static/scc_abc335e_static_test.nim
-  - verify/graph/static/scc_abc335e_static_test.nim
-  - verify/graph/static/SCCG_static_test.nim
-  - verify/graph/static/SCCG_static_test.nim
-  - verify/graph/dynamic/scc_abc335e_test.nim
-  - verify/graph/dynamic/scc_abc335e_test.nim
   - verify/graph/dynamic/SCC_test.nim
   - verify/graph/dynamic/SCC_test.nim
   - verify/graph/dynamic/SCCG_test.nim
   - verify/graph/dynamic/SCCG_test.nim
+  - verify/graph/dynamic/scc_abc335e_test.nim
+  - verify/graph/dynamic/scc_abc335e_test.nim
+  - verify/graph/static/SCC_static_test.nim
+  - verify/graph/static/SCC_static_test.nim
+  - verify/graph/static/SCCG_static_test.nim
+  - verify/graph/static/SCCG_static_test.nim
+  - verify/graph/static/scc_abc335e_static_test.nim
+  - verify/graph/static/scc_abc335e_static_test.nim
 documentation_of: cplib/graph/SCC.nim
 layout: document
 redirect_from:

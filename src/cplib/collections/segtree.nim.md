@@ -69,28 +69,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_xor2_test.nim
     title: verify/collections/segtree/segtree_xor2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - icon: ':heavy_check_mark:'
@@ -99,9 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -158,24 +158,20 @@ data:
   - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
   timestamp: '2024-02-07 20:17:37+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_RMQ_test.nim
+  - verify/collections/segtree/segtree_RMQ_test.nim
   - verify/collections/segtree/segtree_xor1_test.nim
   - verify/collections/segtree/segtree_xor1_test.nim
-  - verify/collections/segtree/segtree_xor2_test.nim
-  - verify/collections/segtree/segtree_xor2_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
+  - verify/collections/segtree/segtree_xor2_test.nim
+  - verify/collections/segtree/segtree_xor2_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim
   - verify/collections/segtree/segtree_get1item_test.nim
@@ -184,12 +180,16 @@ data:
   - verify/collections/segtree/segtree_PARS_test.nim
   - verify/collections/segtree/segtree_static_test.nim
   - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/segtree/segtree_RMQ_test.nim
-  - verify/collections/segtree/segtree_RMQ_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
 documentation_of: cplib/collections/segtree.nim
 layout: document
 redirect_from:

@@ -147,22 +147,22 @@ data:
   timestamp: '2024-01-27 02:21:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/tatyamset/ABC234D_access_test.nim
-  - verify/collections/tatyamset/ABC234D_access_test.nim
-  - verify/collections/tatyamset/ABC217_gele_test.nim
-  - verify/collections/tatyamset/ABC217_gele_test.nim
-  - verify/collections/tatyamset/ABC217_index_test.nim
-  - verify/collections/tatyamset/ABC217_index_test.nim
-  - verify/collections/tatyamset/ABC294_test.nim
-  - verify/collections/tatyamset/ABC294_test.nim
-  - verify/collections/tatyamset/ABC236_test.nim
-  - verify/collections/tatyamset/ABC236_test.nim
-  - verify/collections/tatyamset/ABC337_test.nim
-  - verify/collections/tatyamset/ABC337_test.nim
   - verify/collections/tatyamset/index_right_test.nim
   - verify/collections/tatyamset/index_right_test.nim
   - verify/collections/tatyamset/ABC217_gtlt_test.nim
   - verify/collections/tatyamset/ABC217_gtlt_test.nim
+  - verify/collections/tatyamset/ABC236_test.nim
+  - verify/collections/tatyamset/ABC236_test.nim
+  - verify/collections/tatyamset/ABC337_test.nim
+  - verify/collections/tatyamset/ABC337_test.nim
+  - verify/collections/tatyamset/ABC217_gele_test.nim
+  - verify/collections/tatyamset/ABC217_gele_test.nim
+  - verify/collections/tatyamset/ABC294_test.nim
+  - verify/collections/tatyamset/ABC294_test.nim
+  - verify/collections/tatyamset/ABC217_index_test.nim
+  - verify/collections/tatyamset/ABC217_index_test.nim
+  - verify/collections/tatyamset/ABC234D_access_test.nim
+  - verify/collections/tatyamset/ABC234D_access_test.nim
 documentation_of: cplib/collections/tatyamset.nim
 layout: document
 redirect_from:

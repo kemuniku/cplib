@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/itertools/itertools_combinations_test.nim
     title: verify/itertools/itertools_combinations_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -49,14 +49,14 @@ data:
   path: cplib/collections/unionfind.nim
   requiredBy: []
   timestamp: '2023-12-24 18:36:32+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/unionfind_test.nim
+  - verify/collections/unionfind_test.nim
   - verify/itertools/itertools_combinations_test.nim
   - verify/itertools/itertools_combinations_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
-  - verify/collections/unionfind_test.nim
-  - verify/collections/unionfind_test.nim
 documentation_of: cplib/collections/unionfind.nim
 layout: document
 redirect_from:

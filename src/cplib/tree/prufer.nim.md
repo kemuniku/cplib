@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -42,9 +42,9 @@ data:
     \ u))\n            if cnt[a[i]] != 0: q.push((cnt[a[i]], a[i]))\n        var u\
     \ = (0..<n).toSeq.filterIt(cnt[it] == 1)\n        result.add_edge(u[0], u[1])\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   isVerificationFile: false
   path: cplib/tree/prufer.nim
