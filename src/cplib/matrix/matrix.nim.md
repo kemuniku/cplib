@@ -21,6 +21,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_zoistring_test.nim
     title: verify/matrix/matrix_zoistring_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_dynamic_test.nim
+    title: verify/modint/barrett/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_dynamic_test.nim
+    title: verify/modint/barrett/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_static_test.nim
+    title: verify/modint/barrett/dpr_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_static_test.nim
+    title: verify/modint/barrett/dpr_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_dynamic_test.nim
+    title: verify/modint/montgomery/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_dynamic_test.nim
+    title: verify/modint/montgomery/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_static_test.nim
+    title: verify/modint/montgomery/dpr_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_static_test.nim
+    title: verify/modint/montgomery/dpr_static_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -102,6 +126,14 @@ data:
   - verify/matrix/matrix_zoistring_test.nim
   - verify/matrix/matrix_unit_test.nim
   - verify/matrix/matrix_unit_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/montgomery/dpr_static_test.nim
+  - verify/modint/montgomery/dpr_static_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
 documentation_of: cplib/matrix/matrix.nim
 layout: document
 redirect_from:
