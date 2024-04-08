@@ -93,14 +93,14 @@ data:
   timestamp: '2023-12-13 00:26:11+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
   - verify/utils/bititers_bitcomb_test.nim
   - verify/utils/bititers_bitcomb_test.nim
   - verify/utils/bititers_bitsubseteq_test.nim
   - verify/utils/bititers_bitsubseteq_test.nim
   - verify/utils/bititers_bitsuperset_test.nim
   - verify/utils/bititers_bitsuperset_test.nim
+  - verify/utils/bititers_bitsubseteq_descending_test.nim
+  - verify/utils/bititers_bitsubseteq_descending_test.nim
 documentation_of: cplib/utils/bititers.nim
 layout: document
 redirect_from:

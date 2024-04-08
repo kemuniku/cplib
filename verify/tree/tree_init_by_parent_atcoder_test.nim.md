@@ -7,17 +7,17 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc309/tasks/abc309_e
     links:
@@ -35,15 +35,15 @@ data:
     \    if insi > 0: result = 1\n    for (v, c) in g.edges[u]:\n        if v == par:\
     \ continue\n        result += dfs(v, u, insi-1)\necho dfs(0, -1, 0)\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   isVerificationFile: true
   path: verify/tree/tree_init_by_parent_atcoder_test.nim
   requiredBy: []
   timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/tree_init_by_parent_atcoder_test.nim
 layout: document
