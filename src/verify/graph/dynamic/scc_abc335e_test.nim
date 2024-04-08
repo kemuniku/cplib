@@ -20,7 +20,7 @@ for i in 0..<m:
 var (newg, itg, _) = g.SCCG()
 var dp = newSeqWith(n, 0)
 dp[itg[0]] = 1
-for i in 0..<newg.N:
+for i in 0..<newg.len:
     if dp[i] > 0:
         for j in newG[i]:
             dp[j] = max(dp[j], dp[i] + 1)
