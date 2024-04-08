@@ -164,7 +164,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
     - icon: ':heavy_check_mark:'
@@ -372,13 +372,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/shortest_path_test.nim
       title: verify/graph/dynamic/shortest_path_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/topologicalsort_1_test.nim
       title: verify/graph/dynamic/topologicalsort_1_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/topologicalsort_2_test.nim
       title: verify/graph/dynamic/topologicalsort_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
       title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - name: verify/graph/static
@@ -386,13 +386,13 @@ data:
     - icon: ':x:'
       path: verify/graph/static/SCCG_static_test.nim
       title: verify/graph/static/SCCG_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/SCC_static_test.nim
       title: verify/graph/static/SCC_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/restore_dijkstra_static_test.nim
       title: verify/graph/static/restore_dijkstra_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/scc_abc335e_static_test.nim
       title: verify/graph/static/scc_abc335e_static_test.nim
     - icon: ':x:'
@@ -648,6 +648,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/bititers_bitsubseteq_test.nim
       title: verify/utils/bititers_bitsubseteq_test.nim
+    - icon: ':x:'
+      path: verify/utils/bititers_bitsuperset_test.nim
+      title: verify/utils/bititers_bitsuperset_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim

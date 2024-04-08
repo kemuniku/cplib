@@ -15,9 +15,9 @@ data:
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc335/tasks/abc335_e
     links:
@@ -38,14 +38,14 @@ data:
     \   dp[j] = max(dp[j], dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/graph/static/scc_abc335e_static_test.nim
   requiredBy: []
   timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/scc_abc335e_static_test.nim
 layout: document

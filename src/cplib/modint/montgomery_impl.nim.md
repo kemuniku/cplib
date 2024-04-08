@@ -167,30 +167,30 @@ data:
   timestamp: '2024-04-08 07:09:25+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/modint/barrett/keyence2021_dynamic_test.nim
-  - verify/modint/barrett/keyence2021_dynamic_test.nim
-  - verify/modint/barrett/keyence2021_static_test.nim
-  - verify/modint/barrett/keyence2021_static_test.nim
-  - verify/modint/barrett/dpr_static_test.nim
-  - verify/modint/barrett/dpr_static_test.nim
-  - verify/modint/barrett/dpr_dynamic_test.nim
-  - verify/modint/barrett/dpr_dynamic_test.nim
-  - verify/modint/barrett/abc277g_dynamic_test.nim
-  - verify/modint/barrett/abc277g_dynamic_test.nim
-  - verify/modint/barrett/abc277g_static_test.nim
-  - verify/modint/barrett/abc277g_static_test.nim
-  - verify/modint/montgomery/keyence2021_static_test.nim
-  - verify/modint/montgomery/keyence2021_static_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
-  - verify/modint/montgomery/dpr_dynamic_test.nim
-  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/montgomery/keyence2021_static_test.nim
+  - verify/modint/montgomery/keyence2021_static_test.nim
   - verify/modint/montgomery/keyence2021c_dynamic_test.nim
   - verify/modint/montgomery/keyence2021c_dynamic_test.nim
   - verify/modint/montgomery/abc277g_dynamic_test.nim
   - verify/modint/montgomery/abc277g_dynamic_test.nim
   - verify/modint/montgomery/abc277g_static_test.nim
   - verify/modint/montgomery/abc277g_static_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/keyence2021_static_test.nim
+  - verify/modint/barrett/keyence2021_static_test.nim
+  - verify/modint/barrett/abc277g_dynamic_test.nim
+  - verify/modint/barrett/abc277g_dynamic_test.nim
+  - verify/modint/barrett/abc277g_static_test.nim
+  - verify/modint/barrett/abc277g_static_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_dynamic_test.nim
