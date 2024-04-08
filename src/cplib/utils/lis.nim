@@ -10,7 +10,7 @@ when not declared CPLIB_UTILS_LIS:
         return dp.len
 
     proc restore_lis*[T](a: openArray[T]): seq[T] =
-        proc p = newSeq[int](a.len)
+        var p = newSeq[int](a.len)
         var dp = newSeq[T]()
         for i in 0..<a.len:
             var pos = dp.lowerBound(a[i])
