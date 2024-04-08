@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
   - icon: ':heavy_check_mark:'
@@ -15,6 +21,78 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isqrt_test.nim
     title: verify/math/isqrt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/abc277g_dynamic_test.nim
+    title: verify/modint/barrett/abc277g_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/abc277g_dynamic_test.nim
+    title: verify/modint/barrett/abc277g_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/abc277g_static_test.nim
+    title: verify/modint/barrett/abc277g_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/abc277g_static_test.nim
+    title: verify/modint/barrett/abc277g_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_dynamic_test.nim
+    title: verify/modint/barrett/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_dynamic_test.nim
+    title: verify/modint/barrett/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_static_test.nim
+    title: verify/modint/barrett/dpr_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/dpr_static_test.nim
+    title: verify/modint/barrett/dpr_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_dynamic_test.nim
+    title: verify/modint/barrett/keyence2021_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_dynamic_test.nim
+    title: verify/modint/barrett/keyence2021_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_static_test.nim
+    title: verify/modint/barrett/keyence2021_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_static_test.nim
+    title: verify/modint/barrett/keyence2021_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/abc277g_dynamic_test.nim
+    title: verify/modint/montgomery/abc277g_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/abc277g_dynamic_test.nim
+    title: verify/modint/montgomery/abc277g_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/abc277g_static_test.nim
+    title: verify/modint/montgomery/abc277g_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/abc277g_static_test.nim
+    title: verify/modint/montgomery/abc277g_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_dynamic_test.nim
+    title: verify/modint/montgomery/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_dynamic_test.nim
+    title: verify/modint/montgomery/dpr_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_static_test.nim
+    title: verify/modint/montgomery/dpr_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/dpr_static_test.nim
+    title: verify/modint/montgomery/dpr_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021_static_test.nim
+    title: verify/modint/montgomery/keyence2021_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021_static_test.nim
+    title: verify/modint/montgomery/keyence2021_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
+    title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
+    title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
@@ -38,11 +116,37 @@ data:
   isVerificationFile: false
   path: cplib/math/isqrt.nim
   requiredBy:
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/citrus.nim
   timestamp: '2024-02-07 16:25:18+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/modint/barrett/keyence2021_dynamic_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_test.nim
+  - verify/modint/barrett/keyence2021_static_test.nim
+  - verify/modint/barrett/keyence2021_static_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/abc277g_dynamic_test.nim
+  - verify/modint/barrett/abc277g_dynamic_test.nim
+  - verify/modint/barrett/abc277g_static_test.nim
+  - verify/modint/barrett/abc277g_static_test.nim
+  - verify/modint/montgomery/keyence2021_static_test.nim
+  - verify/modint/montgomery/keyence2021_static_test.nim
+  - verify/modint/montgomery/dpr_static_test.nim
+  - verify/modint/montgomery/dpr_static_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/montgomery/keyence2021c_dynamic_test.nim
+  - verify/modint/montgomery/keyence2021c_dynamic_test.nim
+  - verify/modint/montgomery/abc277g_dynamic_test.nim
+  - verify/modint/montgomery/abc277g_dynamic_test.nim
+  - verify/modint/montgomery/abc277g_static_test.nim
+  - verify/modint/montgomery/abc277g_static_test.nim
   - verify/math/isqrt_test.nim
   - verify/math/isqrt_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
