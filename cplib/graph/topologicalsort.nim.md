@@ -9,10 +9,10 @@ data:
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/topologicalsort_1_test.nim
     title: verify/graph/dynamic/topologicalsort_1_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/topologicalsort_1_test.nim
     title: verify/graph/dynamic/topologicalsort_1_test.nim
   - icon: ':heavy_check_mark:'
@@ -61,14 +61,14 @@ data:
   timestamp: '2024-04-08 19:13:57+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/graph/static/topologicalsort_2_static_test.nim
+  - verify/graph/static/topologicalsort_2_static_test.nim
+  - verify/graph/static/topologicalsort_1_static_test.nim
+  - verify/graph/static/topologicalsort_1_static_test.nim
   - verify/graph/dynamic/topologicalsort_2_test.nim
   - verify/graph/dynamic/topologicalsort_2_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim
-  - verify/graph/static/topologicalsort_1_static_test.nim
-  - verify/graph/static/topologicalsort_1_static_test.nim
-  - verify/graph/static/topologicalsort_2_static_test.nim
-  - verify/graph/static/topologicalsort_2_static_test.nim
 documentation_of: cplib/graph/topologicalsort.nim
 layout: document
 redirect_from:

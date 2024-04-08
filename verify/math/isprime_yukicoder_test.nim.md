@@ -46,8 +46,8 @@ data:
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
