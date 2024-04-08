@@ -12,7 +12,8 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
         for k in 0..<g.len:
             for i in 0..<g.len:
                 for j in 0..<g.len:
-                    result[i][j] = min(result[i][j], result[i][k] + result[k][j])
+                    if result[i][k] != inf and result[k][j] != inf:
+                        result[i][j] = min(result[i][j], result[i][k] + result[k][j])
 
     proc warshall_floyd*(g: DynamicGraph[SomeInteger] or StaticGraph[SomeInteger], zero: SomeInteger = 0, inf: SomeInteger = INFL): seq[seq[int]] = warshall_floyd_impl(g, zero, inf)
     proc warshall_floyd*(g: DynamicGraph[SomeFloat] or StaticGraph[SomeFloat], zero: SomeFloat = 0.0, inf: SomeFloat = 1e100): seq[seq[int]] = warshall_floyd_impl(g, zero, inf)
