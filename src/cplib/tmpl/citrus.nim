@@ -21,7 +21,7 @@ when not declared CPLIB_TMPL_CITRUS:
     const MODINT998244353* = 998244353
     const MODINT1000000007* = 1000000007
     const INF* = 100100111
-    const INFL* = int(3300300300300300491)
+    include cplib/utils/infl
     type double* = float64
     let readNext = iterator(getsChar: bool = false): string {.closure.} =
         while true:
