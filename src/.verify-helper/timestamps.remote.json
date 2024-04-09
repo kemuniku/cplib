@@ -141,6 +141,7 @@
 "verify/utils/bititers_bitcomb_test.nim": "2023-12-13 00:30:20 +0900",
 "verify/utils/bititers_bitsubseteq_descending_test.nim": "2023-12-13 00:30:20 +0900",
 "verify/utils/bititers_bitsubseteq_test.nim": "2023-12-13 00:30:20 +0900",
+"verify/utils/bititers_bitsuperset_test.nim": "2024-04-09 13:29:23 +0900",
 "verify/utils/inversion_number_test.nim": "2024-04-08 08:07:48 +0900",
 "verify/utils/lis_aoj_test.nim": "2024-04-09 01:08:32 +0900",
 "verify/utils/lis_arc126b_test.nim": "2024-04-09 01:13:26 +0900",
