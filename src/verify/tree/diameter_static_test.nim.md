@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -39,11 +39,11 @@ data:
     \    var a, b, c = ii()\n    g.add_edge(a, b, c)\ng.build\necho g.diameter\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/diameter.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/diameter.nim
-  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_static_test.nim
   requiredBy: []
