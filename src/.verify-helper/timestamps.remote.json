@@ -127,6 +127,7 @@
 "verify/tmpl/citrus_and_qcfium_test.nim": "2024-04-09 00:37:18 +0900",
 "verify/tree/diameter_dynamic_test.nim": "2024-04-08 19:13:57 +0900",
 "verify/tree/diameter_path_dynamic_test.nim": "2024-04-08 19:13:57 +0900",
+"verify/tree/diameter_path_static_test.nim": "2024-04-08 19:13:57 +0900",
 "verify/tree/diameter_static_test.nim": "2024-04-08 19:13:57 +0900",
 "verify/tree/hld/hld_past202004o_test.nim": "2024-04-08 19:13:57 +0900",
 "verify/tree/hld/hld_vertex_add_path_sum_test.nim": "2024-04-08 19:13:57 +0900",
@@ -142,6 +143,7 @@
 "verify/utils/bititers_bitsubseteq_test.nim": "2023-12-13 00:30:20 +0900",
 "verify/utils/inversion_number_test.nim": "2024-04-08 08:07:48 +0900",
 "verify/utils/lis_aoj_test.nim": "2024-04-09 01:08:32 +0900",
+"verify/utils/lis_arc126b_test.nim": "2024-04-09 01:13:26 +0900",
 "verify/utils/mo_test.nim": "2024-03-16 18:25:22 +0900",
 "verify/utils/restore_lis_aoj_test.nim": "2024-04-09 01:08:32 +0900"
 }
