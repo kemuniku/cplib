@@ -1,4 +1,5 @@
 # verification-helper: PROBLEM https://atcoder.jp/contests/abc332/tasks/abc332_e
+# verification-helper: ERROR 1e-6
 {.checks: off.}
 import cplib/utils/bititers
 import sequtils, std/math
