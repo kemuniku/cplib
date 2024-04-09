@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -58,14 +58,14 @@ data:
     \    for (l, r) in hld.path(l, b, false, false): mx = max(mx, seg.get(l..<r))\n\
     \    ans[i] = ai - mx + c\necho ans.join(\"\\n\")\n"
   dependsOn:
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
   - cplib/collections/unionfind.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/lis.nim
     title: cplib/utils/lis.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/lis.nim
     title: cplib/utils/lis.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/arc126/tasks/arc126_b
     links:
@@ -47,7 +47,7 @@ data:
   path: verify/utils/lis_arc126b_test.nim
   requiredBy: []
   timestamp: '2024-04-09 01:13:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/lis_arc126b_test.nim
 layout: document

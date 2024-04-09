@@ -58,7 +58,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':warning:'
@@ -95,7 +95,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
     - icon: ':heavy_check_mark:'
@@ -117,13 +117,13 @@ data:
       title: cplib/matrix/matrix.nim
   - name: cplib/modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/barrett_impl.nim
       title: cplib/modint/barrett_impl.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/modint.nim
       title: cplib/modint/modint.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/montgomery_impl.nim
       title: cplib/modint/montgomery_impl.nim
   - name: cplib/str
@@ -150,7 +150,7 @@ data:
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
     - icon: ':heavy_check_mark:'
@@ -159,7 +159,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -167,7 +167,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
     - icon: ':heavy_check_mark:'
@@ -176,7 +176,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: "\u8EE2\u5012\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/lis.nim
       title: cplib/utils/lis.nim
     - icon: ':heavy_check_mark:'
@@ -617,7 +617,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_path_dynamic_test.nim
       title: verify/tree/diameter_path_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_path_static_test.nim
       title: verify/tree/diameter_path_static_test.nim
     - icon: ':heavy_check_mark:'
@@ -663,7 +663,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/bititers_bitsubseteq_test.nim
       title: verify/utils/bititers_bitsubseteq_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/bititers_bitsuperset_test.nim
       title: verify/utils/bititers_bitsuperset_test.nim
     - icon: ':heavy_check_mark:'
@@ -672,7 +672,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/lis_aoj_test.nim
       title: verify/utils/lis_aoj_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/lis_arc126b_test.nim
       title: verify/utils/lis_arc126b_test.nim
     - icon: ':heavy_check_mark:'

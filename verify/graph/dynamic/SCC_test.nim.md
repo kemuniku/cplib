@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -35,9 +35,9 @@ data:
     \ G.SCC()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
-  - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/graph/dynamic/SCC_test.nim
   requiredBy: []
