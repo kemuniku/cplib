@@ -1,30 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_UTILS_INVERSION_NUMBER:\n    const COMPETITIVE_UTILS_INVERSION_NUMBER*\
+  code: "when not declared CPLIB_UTILS_INVERSION_NUMBER:\n    const CPLIB_UTILS_INVERSION_NUMBER*\
     \ = 1\n    import algorithm, sequtils\n    import cplib/collections/segtree\n\
     \    proc inversion_number*(a: seq[int]): int =\n        let c = a.sorted.deduplicate(true)\n\
     \        var seg = initSegmentTree(newSeqWith(c.len, 0), proc(l, r: int): int\
@@ -38,8 +38,8 @@ data:
   isVerificationFile: false
   path: cplib/utils/inversion_number.nim
   requiredBy: []
-  timestamp: '2024-04-08 08:07:48+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-04-09 18:27:29+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim

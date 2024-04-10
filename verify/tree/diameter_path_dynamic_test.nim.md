@@ -1,53 +1,53 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc221/tasks/abc221_f
     links:
@@ -75,24 +75,24 @@ data:
     \ * mint(ch2))\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tree/diameter.nim
   - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/tree/diameter.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_path_dynamic_test.nim
   requiredBy: []
-  timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-11 03:42:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/diameter_path_dynamic_test.nim
 layout: document
