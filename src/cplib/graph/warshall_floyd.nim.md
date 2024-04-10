@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -57,14 +57,14 @@ data:
     \ zero, inf)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []
-  timestamp: '2024-04-09 02:23:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-04-11 03:42:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim

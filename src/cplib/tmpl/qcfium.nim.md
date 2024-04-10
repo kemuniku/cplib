@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -26,7 +26,7 @@ data:
   path: cplib/tmpl/qcfium.nim
   requiredBy: []
   timestamp: '2023-11-02 03:44:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim

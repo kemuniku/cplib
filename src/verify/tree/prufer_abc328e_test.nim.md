@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc328/tasks/abc328_e
     links:
@@ -45,16 +45,16 @@ data:
     \        a[d] = i\n        dfs(d+1)\ndfs(0)\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/tree.nim
   - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/tree/prufer_abc328e_test.nim
   requiredBy: []
-  timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-11 03:42:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/prufer_abc328e_test.nim
 layout: document

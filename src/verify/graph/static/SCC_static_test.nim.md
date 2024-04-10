@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc296/tasks/abc296_e
     links:
@@ -35,14 +35,14 @@ data:
     var group = G.SCC()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/graph/static/SCC_static_test.nim
   requiredBy: []
-  timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-11 03:42:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/static/SCC_static_test.nim
 layout: document

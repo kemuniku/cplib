@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tmpl/qcfium.nim
     title: cplib/tmpl/qcfium.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tmpl/qcfium.nim
     title: cplib/tmpl/qcfium.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
@@ -55,19 +55,19 @@ data:
 
     '
   dependsOn:
+  - cplib/tmpl/qcfium.nim
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/qcfium.nim
   - cplib/utils/infl.nim
-  - cplib/tmpl/qcfium.nim
   - cplib/math/isqrt.nim
-  - cplib/utils/infl.nim
   - cplib/tmpl/citrus.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/infl.nim
   isVerificationFile: true
   path: verify/tmpl/citrus_and_qcfium_test.nim
   requiredBy: []
-  timestamp: '2024-04-09 00:37:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-11 00:54:40+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tmpl/citrus_and_qcfium_test.nim
 layout: document

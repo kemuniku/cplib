@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_C
     links:
@@ -42,17 +42,17 @@ data:
     \ quit()\nfor i in 0..<n:\n    var d = d[i].mapIt(if it == INFL: \"INF\" else:\
     \ ($it)).join(\" \")\n    echo d\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   - cplib/graph/warshall_floyd.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim
   requiredBy: []
-  timestamp: '2024-04-09 02:23:43+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-11 03:42:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/static/warshall_floyd_aoj_test.nim
 layout: document

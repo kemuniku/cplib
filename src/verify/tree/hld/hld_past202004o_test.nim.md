@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/past202004-open/tasks/past202004_o
     links:
@@ -58,19 +58,19 @@ data:
     \    for (l, r) in hld.path(l, b, false, false): mx = max(mx, seg.get(l..<r))\n\
     \    ans[i] = ai - mx + c\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/unionfind.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []
-  timestamp: '2024-04-08 19:13:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-11 03:42:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_past202004o_test.nim
 layout: document
