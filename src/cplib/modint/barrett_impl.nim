@@ -1,6 +1,5 @@
 when not declared CPLIB_MODINT_MODINT_BARRETT:
     const CPLIB_MODINT_MODINT_BARRETT* = 1
-    {.warning[CastSizes]: off.}
     import std/macros
     type StaticBarrettModint*[M: static[uint32]] = object
         a: uint32
@@ -36,13 +35,13 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
         when T is StaticBarrettModint:
             const im = get_im(T.M)
             const M = get_M(T)
-            var x = cast[uint](calc_mul(cast[culonglong](a), cast[culonglong](im)))
+            var x = (calc_mul(cast[culonglong](a), cast[culonglong](im))).uint
             var r = a - x * M
             if M <= r: r += M
             return cast[uint32](r)
         else:
             var p = get_param(T)[]
-            var x = cast[uint](calc_mul(cast[culonglong](a), cast[culonglong](p.im)))
+            var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint
             var r = a - x * p.M
             if p.M <= r: r += p.M
             return cast[uint32](r)
@@ -62,7 +61,7 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
         a.a -= init(T, b).a
         if a.a >= T.umod: a.a += T.umod
     proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) =
-        a.a = rem(T, cast[uint](a.a) * cast[uint](init(T, b).a))
+        a.a = rem(T, (a.a).uint * (init(T, b).a).uint)
     proc inv*[T: BarrettModint](x: T): T =
         var x: int32 = int32(x.val)
         var y: int32 = T.mod
