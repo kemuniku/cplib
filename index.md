@@ -52,28 +52,28 @@ data:
       title: cplib/geometry/projection.nim
   - name: cplib/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/SCC.nim
       title: cplib/graph/SCC.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':question:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/grid_to_graph.nim
       title: cplib/graph/grid_to_graph.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/maxk_dijkstra.nim
       title: cplib/graph/maxk_dijkstra.nim
     - icon: ':warning:'
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/warshall_floyd.nim
       title: cplib/graph/warshall_floyd.nim
   - name: cplib/itertools
@@ -104,7 +104,7 @@ data:
     - icon: ':question:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/nearest_equiv.nim
       title: cplib/math/nearest_equiv.nim
     - icon: ':heavy_check_mark:'
@@ -151,7 +151,7 @@ data:
     - icon: ':x:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
@@ -372,13 +372,13 @@ data:
       title: verify/geometry/convex_hull_abc286ex_test.nim
   - name: verify/graph/dynamic
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/SCCG_test.nim
       title: verify/graph/dynamic/SCCG_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/SCC_test.nim
       title: verify/graph/dynamic/SCC_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
       title: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
     - icon: ':heavy_check_mark:'
@@ -387,16 +387,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/restore_dijkstra_test.nim
       title: verify/graph/dynamic/restore_dijkstra_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/scc_abc335e_test.nim
       title: verify/graph/dynamic/scc_abc335e_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/shortest_path_test.nim
       title: verify/graph/dynamic/shortest_path_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/topologicalsort_1_test.nim
       title: verify/graph/dynamic/topologicalsort_1_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/topologicalsort_2_test.nim
       title: verify/graph/dynamic/topologicalsort_2_test.nim
     - icon: ':heavy_check_mark:'
@@ -407,37 +407,37 @@ data:
       title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - name: verify/graph/static
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/SCCG_static_test.nim
       title: verify/graph/static/SCCG_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/SCC_static_test.nim
       title: verify/graph/static/SCC_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/grid_to_graph_abc151d_test.nim
       title: verify/graph/static/grid_to_graph_abc151d_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
       title: verify/graph/static/maxk_dijkstra_abc176d_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/restore_dijkstra_static_test.nim
       title: verify/graph/static/restore_dijkstra_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/scc_abc335e_static_test.nim
       title: verify/graph/static/scc_abc335e_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/shortest_path_static_test.nim
       title: verify/graph/static/shortest_path_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/topologicalsort_1_static_test.nim
       title: verify/graph/static/topologicalsort_1_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/topologicalsort_2_static_test.nim
       title: verify/graph/static/topologicalsort_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
       title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/warshall_floyd_aoj_test.nim
       title: verify/graph/static/warshall_floyd_aoj_test.nim
   - name: verify/itertools
@@ -521,7 +521,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/isqrt_test.nim
       title: verify/math/isqrt_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/math/nearear_equiv_abc342e_test.nim
       title: verify/math/nearear_equiv_abc342e_test.nim
     - icon: ':heavy_check_mark:'
@@ -561,10 +561,10 @@ data:
       title: verify/matrix/trimmed_string_abc307c_test.nim
   - name: verify/modint/barrett
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/modint/barrett/abc277g_dynamic_test.nim
       title: verify/modint/barrett/abc277g_dynamic_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/modint/barrett/abc277g_static_test.nim
       title: verify/modint/barrett/abc277g_static_test.nim
     - icon: ':heavy_check_mark:'
@@ -596,7 +596,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_static_test.nim
       title: verify/modint/montgomery/keyence2021_static_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
       title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
   - name: verify/str

@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_C
     links:
@@ -43,16 +43,16 @@ data:
     \ ($it)).join(\" \")\n    echo d\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   - cplib/utils/infl.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim
   requiredBy: []
   timestamp: '2024-04-11 03:42:22+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/warshall_floyd_aoj_test.nim
 layout: document

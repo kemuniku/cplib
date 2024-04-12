@@ -40,8 +40,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
   - cplib/tree/diameter.nim
   isVerificationFile: true
