@@ -58,18 +58,18 @@ data:
     \ i != 1: uc.inc(i)\nvar ans = mint(1)\nfor i in count:\n    ans *= mint(i + 1)\n\
     for k, v in uc:\n    ans *= mint(v + 1)\necho ans\n"
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/modint/montgomery/abc277g_dynamic_test.nim
   requiredBy: []
-  timestamp: '2024-04-08 07:09:25+09:00'
+  timestamp: '2024-04-12 16:59:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/montgomery/abc277g_dynamic_test.nim

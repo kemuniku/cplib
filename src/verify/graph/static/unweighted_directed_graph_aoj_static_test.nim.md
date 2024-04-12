@@ -9,9 +9,9 @@ data:
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_11_B
     links:
@@ -37,7 +37,7 @@ data:
   path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   requiredBy: []
   timestamp: '2024-04-11 03:42:22+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
 layout: document

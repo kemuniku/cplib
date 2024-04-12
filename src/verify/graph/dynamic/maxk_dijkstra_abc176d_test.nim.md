@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':question:'
@@ -48,11 +48,11 @@ data:
     if ans == INFi32: ans = -1\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/maxk_dijkstra.nim
   isVerificationFile: true
   path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   requiredBy: []

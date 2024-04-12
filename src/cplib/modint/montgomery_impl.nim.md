@@ -9,16 +9,16 @@ data:
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/abc277g_dynamic_test.nim
     title: verify/modint/barrett/abc277g_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/abc277g_dynamic_test.nim
     title: verify/modint/barrett/abc277g_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/abc277g_static_test.nim
     title: verify/modint/barrett/abc277g_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/abc277g_static_test.nim
     title: verify/modint/barrett/abc277g_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -75,10 +75,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/keyence2021_static_test.nim
     title: verify/modint/montgomery/keyence2021_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
     title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
     title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
   - icon: ':x:'

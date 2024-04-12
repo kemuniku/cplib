@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
   - icon: ':question:'
@@ -43,10 +43,10 @@ data:
     \ d\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   - cplib/utils/infl.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd.nim
   isVerificationFile: true
   path: verify/graph/dynamic/warshall_floyd_aoj_test.nim

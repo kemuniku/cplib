@@ -7,16 +7,16 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/grid_to_graph.nim
     title: cplib/graph/grid_to_graph.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/grid_to_graph.nim
     title: cplib/graph/grid_to_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc151/tasks/abc151_d
     links:
@@ -47,19 +47,19 @@ data:
     \ g.maxk_dijkstra(sx*w+sy, 1).mapIt(if it == INFL: -1 else: it)\n        ans =\
     \ max(ans, d.max)\necho ans\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/grid_to_graph.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
-  - cplib/graph/grid_to_graph.nim
-  - cplib/graph/grid_to_graph.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/infl.nim
+  - cplib/graph/grid_to_graph.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   requiredBy: []
   timestamp: '2024-04-11 04:28:13+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
 layout: document
