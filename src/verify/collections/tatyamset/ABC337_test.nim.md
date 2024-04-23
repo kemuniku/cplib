@@ -30,7 +30,7 @@ data:
   isVerificationFile: true
   path: verify/collections/tatyamset/ABC337_test.nim
   requiredBy: []
-  timestamp: '2024-03-21 10:31:56+09:00'
+  timestamp: '2024-04-23 21:11:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/tatyamset/ABC337_test.nim

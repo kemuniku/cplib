@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
@@ -86,8 +86,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy: []
@@ -98,10 +98,10 @@ data:
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

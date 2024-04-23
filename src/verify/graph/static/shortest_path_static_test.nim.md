@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
@@ -47,13 +47,13 @@ data:
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
   - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   - cplib/utils/infl.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/static/shortest_path_static_test.nim
   requiredBy: []

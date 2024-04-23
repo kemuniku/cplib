@@ -27,9 +27,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc227/tasks/abc227_g
     links:
@@ -58,19 +58,19 @@ data:
     \ i != 1: uc.inc(i)\nvar ans = mint(1)\nfor i in count:\n    ans *= mint(i + 1)\n\
     for k, v in uc:\n    ans *= mint(v + 1)\necho ans\n"
   dependsOn:
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/modint/barrett/abc277g_dynamic_test.nim
   requiredBy: []
   timestamp: '2024-04-12 16:59:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/barrett/abc277g_dynamic_test.nim
 layout: document
