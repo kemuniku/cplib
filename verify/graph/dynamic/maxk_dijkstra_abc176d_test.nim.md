@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
@@ -49,10 +49,10 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/maxk_dijkstra.nim
   isVerificationFile: true
   path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   requiredBy: []

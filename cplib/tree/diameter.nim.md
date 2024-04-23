@@ -68,20 +68,20 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
   isVerificationFile: false
   path: cplib/tree/diameter.nim
   requiredBy: []
   timestamp: '2024-04-11 03:42:22+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - verify/tree/diameter_static_test.nim
+  - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_dynamic_test.nim
   - verify/tree/diameter_path_dynamic_test.nim
-  - verify/tree/diameter_static_test.nim
-  - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
 documentation_of: cplib/tree/diameter.nim

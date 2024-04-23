@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -39,7 +39,7 @@ data:
   path: cplib/utils/inversion_number.nim
   requiredBy: []
   timestamp: '2024-04-09 18:27:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim

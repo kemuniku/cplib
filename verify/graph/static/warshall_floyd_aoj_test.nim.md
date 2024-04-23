@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/infl.nim
     title: cplib/utils/infl.nim
   _extendedRequiredBy: []
@@ -45,8 +45,8 @@ data:
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   - cplib/graph/warshall_floyd.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
   - cplib/graph/warshall_floyd.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim

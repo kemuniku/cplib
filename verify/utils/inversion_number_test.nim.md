@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
     title: "\u8EE2\u5012\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
     title: "\u8EE2\u5012\u6570"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
     links:
@@ -42,14 +42,14 @@ data:
     '
   dependsOn:
   - cplib/utils/inversion_number.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/utils/inversion_number.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/utils/inversion_number_test.nim
   requiredBy: []
   timestamp: '2024-04-09 18:27:29+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/inversion_number_test.nim
 layout: document

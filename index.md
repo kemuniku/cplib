@@ -18,13 +18,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/hashtable.nim
       title: cplib/collections/hashtable.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
   - name: cplib/geometry
@@ -145,10 +145,10 @@ data:
       title: cplib/str/run_length_encode.nim
   - name: cplib/tmpl
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/citrus.nim
       title: cplib/tmpl/citrus.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
     - icon: ':heavy_check_mark:'
@@ -159,7 +159,7 @@ data:
     - icon: ':x:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
     - icon: ':x:'
@@ -176,10 +176,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/infl.nim
       title: cplib/utils/infl.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: "\u8EE2\u5012\u6570"
     - icon: ':heavy_check_mark:'
@@ -561,10 +561,10 @@ data:
       title: verify/matrix/trimmed_string_abc307c_test.nim
   - name: verify/modint/barrett
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/abc277g_dynamic_test.nim
       title: verify/modint/barrett/abc277g_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/abc277g_static_test.nim
       title: verify/modint/barrett/abc277g_static_test.nim
     - icon: ':heavy_check_mark:'
@@ -596,7 +596,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_static_test.nim
       title: verify/modint/montgomery/keyence2021_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
       title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
   - name: verify/str
@@ -624,7 +624,7 @@ data:
       title: verify/str/run_length_encode_test.nim
   - name: verify/tmpl
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tmpl/citrus_and_qcfium_test.nim
       title: verify/tmpl/citrus_and_qcfium_test.nim
   - name: verify/tree
@@ -652,16 +652,16 @@ data:
       title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/tree/hld
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_past202004o_test.nim
       title: verify/tree/hld/hld_past202004o_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - name: verify/utils
@@ -684,7 +684,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/bititers_bitsuperset_test.nim
       title: verify/utils/bititers_bitsuperset_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim
     - icon: ':heavy_check_mark:'

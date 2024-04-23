@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
   - icon: ':heavy_check_mark:'
@@ -37,9 +37,9 @@ data:
     \     tmp = tmp mod K\n    if uf.count == 1:\n        ans = min(ans, tmp)\necho\
     \ ans\n\n"
   dependsOn:
-  - cplib/itertools/combinations.nim
-  - cplib/itertools/combinations.nim
   - cplib/collections/unionfind.nim
+  - cplib/itertools/combinations.nim
+  - cplib/itertools/combinations.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/itertools/itertools_combinations_test.nim

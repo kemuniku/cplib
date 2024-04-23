@@ -71,24 +71,19 @@ data:
     \            v.sort()\n        var n = len(v)\n        var bucket_size = int(ceil(sqrt(n/BUCKET_RATIO)))\n\
     \        var arr = collect(newseq): (for i in 0..<bucket_size: v[(n*i div bucket_size)\
     \ ..< (n*(i+1) div bucket_size)])\n        result = SortedMultiSet[T](size: n,\
-    \ arr: arr)\n\n    # def __reversed__(self) -> Iterator[T]:\n    #     for i in\
-    \ reversed(self.a):\n    #         for j in reversed(i): yield j\n\n    # def\
-    \ __eq__(self, other) -> bool:\n    #     return list(self) == list(other)\n\n\
-    \    proc len*(self: SortedMultiSet): int =\n        return self.size\n\n    #\
-    \ def __repr__(self) -> str:\n    #     return \"SortedMultiset\" + str(self.a)\n\
-    \n    # proc `$`*(self:SortedMultiSet):string=\n    #     var s = $(toseq(self))\n\
-    \    #     return \"{\" & s[1 : len(s) - 1] & \"}\"\n\n    proc position[T](self:\
-    \ SortedMultiSet[T], x: T): (int, int) =\n        #\"return the bucket, index\
-    \ of the bucket and position in which x should be. self must not be empty.\"\n\
-    \        for i, a in self.arr:\n            if x <= a[^1]:\n                return\
-    \ (i, a.lowerBound(x))\n        return (len(self.arr)-1, self.arr[^1].lowerBound(x))\n\
-    \n    proc contains*[T](self: SortedMultiSet[T], x: T): bool =\n        if self.size\
-    \ == 0: return false\n        var (i, j) = self.position(x)\n        return j\
-    \ != len(self.arr[i]) and self.arr[i][j] == x\n\n    proc incl*[T](self: SortedMultiSet[T],\
-    \ x: T) =\n        #\"Add an element. / O(\u221AN)\"\n        if self.size ==\
-    \ 0:\n            self.arr = @[@[x]]\n            self.size = 1\n            return\n\
-    \        var (b, i) = self.position(x)\n        self.arr[b].insert(x, i)\n   \
-    \     self.size += 1\n        if len(self.arr[b]) > len(self.arr) * SPLIT_RATIO:\n\
+    \ arr: arr)\n\n    proc len*(self: SortedMultiSet): int =\n        return self.size\n\
+    \n    proc position[T](self: SortedMultiSet[T], x: T): (int, int) =\n        #\"\
+    return the bucket, index of the bucket and position in which x should be. self\
+    \ must not be empty.\"\n        for i in 0..<self.arr.len:\n            if x <=\
+    \ self.arr[i][^1]:\n                return (i, self.arr[i].lowerBound(x))\n  \
+    \      return (len(self.arr)-1, self.arr[^1].lowerBound(x))\n\n    proc contains*[T](self:\
+    \ SortedMultiSet[T], x: T): bool =\n        if self.size == 0: return false\n\
+    \        var (i, j) = self.position(x)\n        return j != len(self.arr[i]) and\
+    \ self.arr[i][j] == x\n\n    proc incl*[T](self: SortedMultiSet[T], x: T) =\n\
+    \        #\"Add an element. / O(\u221AN)\"\n        if self.size == 0:\n     \
+    \       self.arr = @[@[x]]\n            self.size = 1\n            return\n  \
+    \      var (b, i) = self.position(x)\n        self.arr[b].insert(x, i)\n     \
+    \   self.size += 1\n        if len(self.arr[b]) > len(self.arr) * SPLIT_RATIO:\n\
     \            var mid = len(self.arr[b]) shr 1\n            self.arr.insert(self.arr[b][mid..<len(self.arr[b])],\
     \ b+1)\n            self.arr[b] = self.arr[b][0..<mid]\n\n    proc innerpop[T](self:\
     \ SortedMultiSet[T], b: int, i: int): T{.discardable.} =\n        var b = b\n\
@@ -144,25 +139,25 @@ data:
   isVerificationFile: false
   path: cplib/collections/tatyamset.nim
   requiredBy: []
-  timestamp: '2024-01-27 02:21:27+00:00'
+  timestamp: '2024-04-23 21:11:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/tatyamset/index_right_test.nim
-  - verify/collections/tatyamset/index_right_test.nim
-  - verify/collections/tatyamset/ABC217_gtlt_test.nim
-  - verify/collections/tatyamset/ABC217_gtlt_test.nim
-  - verify/collections/tatyamset/ABC236_test.nim
-  - verify/collections/tatyamset/ABC236_test.nim
-  - verify/collections/tatyamset/ABC337_test.nim
-  - verify/collections/tatyamset/ABC337_test.nim
-  - verify/collections/tatyamset/ABC217_gele_test.nim
-  - verify/collections/tatyamset/ABC217_gele_test.nim
-  - verify/collections/tatyamset/ABC294_test.nim
-  - verify/collections/tatyamset/ABC294_test.nim
   - verify/collections/tatyamset/ABC217_index_test.nim
   - verify/collections/tatyamset/ABC217_index_test.nim
   - verify/collections/tatyamset/ABC234D_access_test.nim
   - verify/collections/tatyamset/ABC234D_access_test.nim
+  - verify/collections/tatyamset/ABC217_gele_test.nim
+  - verify/collections/tatyamset/ABC217_gele_test.nim
+  - verify/collections/tatyamset/ABC236_test.nim
+  - verify/collections/tatyamset/ABC236_test.nim
+  - verify/collections/tatyamset/ABC217_gtlt_test.nim
+  - verify/collections/tatyamset/ABC217_gtlt_test.nim
+  - verify/collections/tatyamset/index_right_test.nim
+  - verify/collections/tatyamset/index_right_test.nim
+  - verify/collections/tatyamset/ABC337_test.nim
+  - verify/collections/tatyamset/ABC337_test.nim
+  - verify/collections/tatyamset/ABC294_test.nim
+  - verify/collections/tatyamset/ABC294_test.nim
 documentation_of: cplib/collections/tatyamset.nim
 layout: document
 redirect_from:
