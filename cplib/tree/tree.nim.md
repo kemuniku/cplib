@@ -1,71 +1,71 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -83,24 +83,24 @@ data:
     \ or UnWeightedTree\n    type StaticTree* = WeightedStaticTree or UnWeightedStaticTree\n\
     \n    proc len*(g: TreeTypes): int = g.len\n\n    proc initWeightedTree*(N: int,\
     \ edgetype: typedesc = int): WeightedTree[edgetype] =\n        result = WeightedTree[edgetype](edges:\
-    \ newSeq[seq[(int, edgetype)]](N))\n    proc add_edge*[T](g: var WeightedTree[T],\
+    \ newSeq[seq[(int32, edgetype)]](N))\n    proc add_edge*[T](g: var WeightedTree[T],\
     \ u, v: int, cost: T) =\n        g.add_edge_dynamic_impl(u, v, cost, false)\n\n\
     \    proc initUnWeightedTree*(N: int): UnWeightedTree =\n        result = UnWeightedTree(edges:\
-    \ newSeq[seq[(int, int)]](N))\n    proc add_edge*(g: var UnWeightedTree, u, v:\
-    \ int) =\n        g.add_edge_dynamic_impl(u, v, 1, false)\n    proc initUnWeightedTree*(parents:\
+    \ newSeq[seq[(int32, int)]](N))\n    proc add_edge*(g: var UnWeightedTree, u,\
+    \ v: int) =\n        g.add_edge_dynamic_impl(u, v, 1, false)\n    proc initUnWeightedTree*(parents:\
     \ seq[int]): UnWeightedTree =\n        result = initUnWeightedTree(parents.len\
     \ + 1)\n        for i in 0..<parents.len:\n            result.add_edge(i+1, parents[i])\n\
     \n    proc initWeightedStaticTree*(N: int, edgetype: typedesc = int): WeightedStaticTree[edgetype]\
     \ =\n        var capacity = (N - 1) * 2\n        result = WeightedStaticTree[edgetype](\n\
-    \            src: newSeqOfCap[int](capacity*2),\n            dst: newSeqOfCap[int](capacity*2),\n\
-    \            cost: newSeqOfCap[int](capacity*2),\n            elist: newSeq[(int,\
-    \ int)](0),\n            start: newSeq[int](0),\n            len: N\n        )\n\
-    \    proc add_edge*[T](g: var WeightedStaticTree[T], u, v: int, cost: T) =\n \
-    \       g.add_edge_static_impl(u, v, cost, false)\n\n    proc initUnWeightedStaticTree*(N:\
+    \            src: newSeqOfCap[int32](capacity*2),\n            dst: newSeqOfCap[int32](capacity*2),\n\
+    \            cost: newSeqOfCap[int](capacity*2),\n            elist: newSeq[(int32,\
+    \ int)](0),\n            start: newSeq[int32](0),\n            len: N\n      \
+    \  )\n    proc add_edge*[T](g: var WeightedStaticTree[T], u, v: int, cost: T)\
+    \ =\n        g.add_edge_static_impl(u, v, cost, false)\n\n    proc initUnWeightedStaticTree*(N:\
     \ int): UnWeightedStaticTree =\n        var capacity = (N - 1) * 2\n        result\
-    \ = UnWeightedStaticTree(\n            src: newSeqOfCap[int](capacity*2),\n  \
-    \          dst: newSeqOfCap[int](capacity*2),\n            cost: newSeqOfCap[int](capacity*2),\n\
-    \            elist: newSeq[(int, int)](0),\n            start: newSeq[int](0),\n\
+    \ = UnWeightedStaticTree(\n            src: newSeqOfCap[int32](capacity*2),\n\
+    \            dst: newSeqOfCap[int32](capacity*2),\n            cost: newSeqOfCap[int](capacity*2),\n\
+    \            elist: newSeq[(int32, int)](0),\n            start: newSeq[int32](0),\n\
     \            len: N\n        )\n    proc add_edge*(g: var UnWeightedStaticTree,\
     \ u, v: int) =\n        g.add_edge_static_impl(u, v, 1, false)\n    proc initUnWeightedStaticTree*(parents:\
     \ seq[int]): UnWeightedStaticTree =\n        result = initUnWeightedStaticTree(parents.len\
@@ -122,8 +122,8 @@ data:
   - cplib/tree/diameter.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
-  timestamp: '2024-04-11 03:42:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-04-23 22:14:31+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim
