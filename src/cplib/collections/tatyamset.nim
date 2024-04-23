@@ -19,28 +19,14 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
         var arr = collect(newseq): (for i in 0..<bucket_size: v[(n*i div bucket_size) ..< (n*(i+1) div bucket_size)])
         result = SortedMultiSet[T](size: n, arr: arr)
 
-    # def __reversed__(self) -> Iterator[T]:
-    #     for i in reversed(self.a):
-    #         for j in reversed(i): yield j
-
-    # def __eq__(self, other) -> bool:
-    #     return list(self) == list(other)
-
     proc len*(self: SortedMultiSet): int =
         return self.size
 
-    # def __repr__(self) -> str:
-    #     return "SortedMultiset" + str(self.a)
-
-    # proc `$`*(self:SortedMultiSet):string=
-    #     var s = $(toseq(self))
-    #     return "{" & s[1 : len(s) - 1] & "}"
-
     proc position[T](self: SortedMultiSet[T], x: T): (int, int) =
         #"return the bucket, index of the bucket and position in which x should be. self must not be empty."
-        for i, a in self.arr:
-            if x <= a[^1]:
-                return (i, a.lowerBound(x))
+        for i in 0..<self.arr.len:
+            if x <= self.arr[i][^1]:
+                return (i, self.arr[i].lowerBound(x))
         return (len(self.arr)-1, self.arr[^1].lowerBound(x))
 
     proc contains*[T](self: SortedMultiSet[T], x: T): bool =
