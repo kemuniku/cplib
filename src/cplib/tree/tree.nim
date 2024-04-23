@@ -16,12 +16,12 @@ when not declared CPLIB_TREE_TREE:
     proc len*(g: TreeTypes): int = g.len
 
     proc initWeightedTree*(N: int, edgetype: typedesc = int): WeightedTree[edgetype] =
-        result = WeightedTree[edgetype](edges: newSeq[seq[(int, edgetype)]](N))
+        result = WeightedTree[edgetype](edges: newSeq[seq[(int32, edgetype)]](N))
     proc add_edge*[T](g: var WeightedTree[T], u, v: int, cost: T) =
         g.add_edge_dynamic_impl(u, v, cost, false)
 
     proc initUnWeightedTree*(N: int): UnWeightedTree =
-        result = UnWeightedTree(edges: newSeq[seq[(int, int)]](N))
+        result = UnWeightedTree(edges: newSeq[seq[(int32, int)]](N))
     proc add_edge*(g: var UnWeightedTree, u, v: int) =
         g.add_edge_dynamic_impl(u, v, 1, false)
     proc initUnWeightedTree*(parents: seq[int]): UnWeightedTree =
@@ -32,11 +32,11 @@ when not declared CPLIB_TREE_TREE:
     proc initWeightedStaticTree*(N: int, edgetype: typedesc = int): WeightedStaticTree[edgetype] =
         var capacity = (N - 1) * 2
         result = WeightedStaticTree[edgetype](
-            src: newSeqOfCap[int](capacity*2),
-            dst: newSeqOfCap[int](capacity*2),
+            src: newSeqOfCap[int32](capacity*2),
+            dst: newSeqOfCap[int32](capacity*2),
             cost: newSeqOfCap[int](capacity*2),
-            elist: newSeq[(int, int)](0),
-            start: newSeq[int](0),
+            elist: newSeq[(int32, int)](0),
+            start: newSeq[int32](0),
             len: N
         )
     proc add_edge*[T](g: var WeightedStaticTree[T], u, v: int, cost: T) =
@@ -45,11 +45,11 @@ when not declared CPLIB_TREE_TREE:
     proc initUnWeightedStaticTree*(N: int): UnWeightedStaticTree =
         var capacity = (N - 1) * 2
         result = UnWeightedStaticTree(
-            src: newSeqOfCap[int](capacity*2),
-            dst: newSeqOfCap[int](capacity*2),
+            src: newSeqOfCap[int32](capacity*2),
+            dst: newSeqOfCap[int32](capacity*2),
             cost: newSeqOfCap[int](capacity*2),
-            elist: newSeq[(int, int)](0),
-            start: newSeq[int](0),
+            elist: newSeq[(int32, int)](0),
+            start: newSeq[int32](0),
             len: N
         )
     proc add_edge*(g: var UnWeightedStaticTree, u, v: int) =
