@@ -38,7 +38,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
 
     proc position[T](self: SortedMultiSet[T], x: T): (int, int) =
         #"return the bucket, index of the bucket and position in which x should be. self must not be empty."
-        for i, a in 0..<self.arr.len:
+        for i in 0..<self.arr.len:
             var a = self.arr[i]
             if x <= a[^1]:
                 return (i, a.lowerBound(x))
