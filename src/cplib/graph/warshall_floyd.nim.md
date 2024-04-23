@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -56,8 +56,8 @@ data:
     \ zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g,\
     \ zero, inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   isVerificationFile: false
