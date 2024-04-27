@@ -82,12 +82,14 @@ data:
     \        while i < ends:\n                yield i\n                i += step\n\
     \    iterator range(ends: int): int = (for i in 0..<ends: yield i)\n    iterator\
     \ range(start: int, ends: int): int = (for i in\n            start..<ends: yield\
-    \ i)\n"
+    \ i)\n    \n    #join\u304C\u975Estring\u3067\u3081\u3061\u3083\u304F\u3061\u3083\
+    \u9045\u3044\u3084\u3064\u306E\u30D1\u30C3\u30C1\n    proc join*[T: not string](a:\
+    \ openArray[T], sep: string = \"\"): string = a.mapit($it).join(sep)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy: []
-  timestamp: '2024-02-21 18:32:05+00:00'
+  timestamp: '2024-04-27 20:12:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dynamic/restore_dijkstra_test.nim

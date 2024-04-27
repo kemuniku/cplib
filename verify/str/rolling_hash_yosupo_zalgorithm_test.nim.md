@@ -33,10 +33,10 @@ data:
     \ == rh.query(0..<x)\n    ans[i] = meguru_bisect(0, s.len - i + 1, isok)\necho\
     \ ans.join(\" \")\n"
   dependsOn:
-  - cplib/str/rolling_hash.nim
-  - cplib/utils/binary_search.nim
   - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
+  - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   requiredBy: []

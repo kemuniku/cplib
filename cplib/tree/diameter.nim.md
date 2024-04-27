@@ -66,10 +66,10 @@ data:
     \ x)\n                if result: break\n            if not result:\n         \
     \       discard path.pop\n        discard dfs(u, -1)\n        return (d, path)\n"
   dependsOn:
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   isVerificationFile: false
   path: cplib/tree/diameter.nim
   requiredBy: []

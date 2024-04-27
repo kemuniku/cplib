@@ -91,8 +91,8 @@ data:
     \       result.path = prev.restore_shortestpath_from_prev(goal)\n        result.cost\
     \ = costs[goal]\n"
   dependsOn:
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   isVerificationFile: false
