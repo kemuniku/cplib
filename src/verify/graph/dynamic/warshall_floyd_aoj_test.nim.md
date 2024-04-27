@@ -43,9 +43,9 @@ data:
     \ d\n"
   dependsOn:
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   isVerificationFile: true

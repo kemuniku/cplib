@@ -74,18 +74,18 @@ data:
     \ vi.v[^(i+1)])).sqrt\na2 += float(norm(vi.v[^1], vi.v[0])).sqrt\necho min(a1,\
     \ a2)\n"
   dependsOn:
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/intersect.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/distance.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/intersect.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/distance.nim
   - cplib/geometry/angle.nim
   isVerificationFile: true

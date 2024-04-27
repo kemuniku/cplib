@@ -48,10 +48,10 @@ data:
     \ max(ans, d.max)\necho ans\n"
   dependsOn:
   - cplib/graph/grid_to_graph.nim
-  - cplib/graph/grid_to_graph.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/grid_to_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/infl.nim
