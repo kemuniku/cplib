@@ -72,3 +72,6 @@ when not declared CPLIB_TMPL_SHEEP:
     iterator range(ends: int): int = (for i in 0..<ends: yield i)
     iterator range(start: int, ends: int): int = (for i in
             start..<ends: yield i)
+    
+    #joinが非stringでめちゃくちゃ遅いやつのパッチ
+    proc join*[T: not string](a: openArray[T], sep: string = ""): string = a.mapit($it).join(sep)
