@@ -5,7 +5,7 @@ import cplib/tree/diameter
 import cplib/modint/modint
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
-type mint = mint998244353_montgomery
+type mint = modint998244353_montgomery
 
 var n = ii()
 var g = initUnWeightedStaticTree(n)
