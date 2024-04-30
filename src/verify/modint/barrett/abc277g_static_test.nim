@@ -4,7 +4,7 @@ proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import sequtils, algorithm, tables
 import cplib/math/isqrt
 import cplib/modint/modint
-type mint = mint998244353_barrett
+type mint = modint998244353_barrett
 
 var n, k = ii()
 if k == 0:

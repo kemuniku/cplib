@@ -4,7 +4,7 @@ proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import sequtils
 import cplib/modint/modint
 import cplib/matrix/matrix
-type mint = mint_montgomery
+type mint = modint_montgomery
 mint.setMod(1000000007)
 
 var n, k = ii()
