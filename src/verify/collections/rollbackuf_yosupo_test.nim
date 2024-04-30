@@ -5,8 +5,8 @@ proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
 var n, q = ii()
-var g = newSeqWith(q, newseq[(int, int, int)]())
-var query = newSeqWith(q, newSeq[(int, int, int)]())
+var g = newSeqWith(q+1, newseq[(int, int, int)]())
+var query = newSeqWith(q+1, newSeq[(int, int, int)]())
 var ans = newSeq[int]()
 for i in 0..<q:
     var t, k, u, v = ii()
