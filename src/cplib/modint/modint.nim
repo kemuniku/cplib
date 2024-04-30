@@ -4,12 +4,12 @@ when not declared CPLIB_MODINT_MODINT:
     include cplib/modint/montgomery_impl
     import std/math, std/algorithm
     import cplib/math/isqrt
-    declarStaticMontgomeryModint(mint998244353_montgomery, 998244353u32)
-    declarStaticMontgomeryModint(mint1000000007_montgomery, 1000000007u32)
-    declarDynamicMontgomeryModint(mint_montgomery, 1u32)
-    declarStaticBarrettModint(mint998244353_barrett, 998244353u32)
-    declarStaticBarrettModint(mint1000000007_barrett, 1000000007u32)
-    declarDynamicBarrettModint(mint_barrett, 1u32)
+    declarStaticMontgomeryModint(modint998244353_montgomery, 998244353u32)
+    declarStaticMontgomeryModint(modint1000000007_montgomery, 1000000007u32)
+    declarDynamicMontgomeryModint(modint_montgomery, 1u32)
+    declarStaticBarrettModint(modint998244353_barrett, 998244353u32)
+    declarStaticBarrettModint(modint1000000007_barrett, 1000000007u32)
+    declarDynamicBarrettModint(modint_barrett, 1u32)
     func `+`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result += b)
     func `-`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result -= b)
     func `*`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result *= b)
