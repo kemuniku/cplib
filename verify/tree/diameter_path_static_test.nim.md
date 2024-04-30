@@ -60,7 +60,7 @@ data:
     import sequtils, math\nimport cplib/tree/tree\nimport cplib/tree/diameter\nimport\
     \ cplib/modint/modint\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\",\
     \ varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\ntype\
-    \ mint = mint998244353_montgomery\n\nvar n = ii()\nvar g = initUnWeightedStaticTree(n)\n\
+    \ mint = modint998244353_montgomery\n\nvar n = ii()\nvar g = initUnWeightedStaticTree(n)\n\
     for i in 0..<n-1:\n    var u, v = ii() - 1\n    g.add_edge(u, v)\ng.build\n\n\
     var (d, path) = g.diameter_path\nif d mod 2 == 0:\n    var center = path[d div\
     \ 2]\n    var cnt = 0\n    proc find_leaf(x, par, di: int) =\n        if di ==\
@@ -75,23 +75,23 @@ data:
     \ * mint(ch2))\n"
   dependsOn:
   - cplib/tree/diameter.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/graph/graph.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/modint/modint.nim
+  - cplib/tree/tree.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/tree/tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tree/diameter_path_static_test.nim
   requiredBy: []
-  timestamp: '2024-04-23 22:14:31+09:00'
+  timestamp: '2024-04-30 16:37:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/diameter_path_static_test.nim

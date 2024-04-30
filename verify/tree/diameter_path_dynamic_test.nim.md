@@ -60,7 +60,7 @@ data:
     import sequtils, math\nimport cplib/tree/tree\nimport cplib/tree/diameter\nimport\
     \ cplib/modint/modint\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\",\
     \ varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\ntype\
-    \ mint = mint998244353_montgomery\n\nvar n = ii()\nvar g = initUnWeightedTree(n)\n\
+    \ mint = modint998244353_montgomery\n\nvar n = ii()\nvar g = initUnWeightedTree(n)\n\
     for i in 0..<n-1:\n    var u, v = ii() - 1\n    g.add_edge(u, v)\n\nvar (d, path)\
     \ = g.diameter_path\nif d mod 2 == 0:\n    var center = path[d div 2]\n    var\
     \ cnt = 0\n    proc find_leaf(x, par, di: int) =\n        if di == d div 2 - 1:\
@@ -74,24 +74,24 @@ data:
     \ ch1 = find_leaf(c1, c2, 0)\n    var ch2 = find_leaf(c2, c1, 0)\n    echo (mint(ch1)\
     \ * mint(ch2))\n"
   dependsOn:
-  - cplib/tree/diameter.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/tree/diameter.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/tree/diameter.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tree/diameter.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
+  - cplib/tree/tree.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/tree/tree.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tree/diameter_path_dynamic_test.nim
   requiredBy: []
-  timestamp: '2024-04-23 22:14:31+09:00'
+  timestamp: '2024-04-30 16:38:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/diameter_path_dynamic_test.nim

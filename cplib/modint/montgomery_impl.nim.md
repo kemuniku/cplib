@@ -156,15 +156,14 @@ data:
     \   macro declarDynamicMontgomeryModint*(name, id) =\n        let converter_name\
     \ = ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = DynamicMontgomeryModint[`id`]\n\
     \            converter `converter_name`*(a: int): DynamicMontgomeryModint[`id`]\
-    \ = init(DynamicMontgomeryModint[`id`], a)\n\n    declarDynamicMontgomeryModint(modint_montgomery,\
-    \ 1u32)\n"
+    \ = init(DynamicMontgomeryModint[`id`], a)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/modint/montgomery_impl.nim
   requiredBy:
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  timestamp: '2024-04-08 07:09:25+09:00'
+  timestamp: '2024-04-30 14:50:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/modint/montgomery/keyence2021_static_test.nim

@@ -42,7 +42,7 @@ data:
     proc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
     \ {.inline.} = scanf(\"%lld\\n\", addr result)\nproc getchar(): char {.importc:\
     \ \"getchar_unlocked\", header: \"<stdio.h>\", discardable.}\nimport sequtils,\
-    \ strutils\nimport cplib/modint/modint\ntype mint = mint998244353_montgomery\n\
+    \ strutils\nimport cplib/modint/modint\ntype mint = modint998244353_montgomery\n\
     \nvar h, w, k = ii()\nvar s = newSeqWith(h, \"?\".repeat(w).join(\"\"))\nfor i\
     \ in 0..<k:\n    var x, y = ii()-1\n    var c = getchar()\n    s[x][y] = c\n\n\
     var dp = newSeqWith(h, newseqwith(w, mint(0)))\ndp[0][0] = mint(3).pow(h*w - k)\n\
@@ -54,18 +54,18 @@ data:
     \    if i+1 in 0..<h: dp[i+1][j] += dp[i][j] * mul\n            if j+1 in 0..<w:\
     \ dp[i][j+1] += dp[i][j] * mul\necho dp[h-1][w-1].val\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/modint/montgomery/keyence2021_static_test.nim
   requiredBy: []
-  timestamp: '2024-04-12 16:59:42+09:00'
+  timestamp: '2024-04-30 16:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/montgomery/keyence2021_static_test.nim

@@ -42,11 +42,11 @@ data:
     \ quit()\nfor i in 0..<n:\n    var d = d[i].mapIt(if it == INFL: \"INF\" else:\
     \ ($it)).join(\" \")\n    echo d\n"
   dependsOn:
-  - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/utils/infl.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/utils/infl.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim
