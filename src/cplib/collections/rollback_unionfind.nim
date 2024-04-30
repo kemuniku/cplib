@@ -1,6 +1,6 @@
 when not declared CPLIB_COLLECTIONS_ROLLBACK_UNIONFIND:
     const CPLIB_COLLECTIONS_ROLLBACK_UNIONFIND* = 1
-    import sequtils
+    import sequtils, strformat
     type RollbackUnionFind* = object
         count: int
         par_or_siz: seq[int]
@@ -34,7 +34,7 @@ when not declared CPLIB_COLLECTIONS_ROLLBACK_UNIONFIND:
     proc clear_snapshot*(self: var RollbackUnionFind) = self.snap = 0
     proc rollback*(self: var RollbackUnionFind, state: int = -1) =
         var state = (if state == -1: self.snap else: state) shl 1
-        assert state < self.get_state, "Rollback state must be smaller than current state."
+        assert state <= self.history.len, &"Rollback state must be the same or smaller than current state. state: {state}, self.history.len: {self.history.len}"
         while state < self.history.len: self.undo()
     proc siz*(self: RollbackUnionFind, x: int): int =
         var x = self.root(x)
