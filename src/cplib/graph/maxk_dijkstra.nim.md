@@ -92,8 +92,8 @@ data:
     \ = costs[goal]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
   - cplib/utils/infl.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim

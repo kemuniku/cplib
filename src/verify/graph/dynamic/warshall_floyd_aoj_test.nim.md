@@ -43,11 +43,11 @@ data:
     \ d\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
   isVerificationFile: true
   path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   requiredBy: []

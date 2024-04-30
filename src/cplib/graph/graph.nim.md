@@ -70,6 +70,12 @@ data:
     title: cplib/tree/tree.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/rollback_uf_abc302ex_test.nim
+    title: verify/collections/rollback_uf_abc302ex_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/rollback_uf_abc302ex_test.nim
+    title: verify/collections/rollback_uf_abc302ex_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/SCCG_test.nim
     title: verify/graph/dynamic/SCCG_test.nim
   - icon: ':heavy_check_mark:'
@@ -402,6 +408,8 @@ data:
   timestamp: '2024-04-11 03:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/rollback_uf_abc302ex_test.nim
+  - verify/collections/rollback_uf_abc302ex_test.nim
   - verify/graph/dynamic/scc_abc335e_test.nim
   - verify/graph/dynamic/scc_abc335e_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim

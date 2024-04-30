@@ -48,11 +48,11 @@ data:
     if ans == INFi32: ans = -1\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
   isVerificationFile: true
   path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   requiredBy: []
