@@ -46,14 +46,14 @@ data:
     \    echo costs[t], \" \", len(path)-1\n    for i in 0..<len(path)-1:\n      \
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/dynamic/shortest_path_test.nim
   requiredBy: []
