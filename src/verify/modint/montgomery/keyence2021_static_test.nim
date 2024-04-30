@@ -4,7 +4,7 @@ proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 proc getchar(): char {.importc: "getchar_unlocked", header: "<stdio.h>", discardable.}
 import sequtils, strutils
 import cplib/modint/modint
-type mint = mint998244353_montgomery
+type mint = modint998244353_montgomery
 
 var h, w, k = ii()
 var s = newSeqWith(h, "?".repeat(w).join(""))

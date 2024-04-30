@@ -92,5 +92,3 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         quote do:
             type `name`* = DynamicMontgomeryModint[`id`]
             converter `converter_name`*(a: int): DynamicMontgomeryModint[`id`] = init(DynamicMontgomeryModint[`id`], a)
-
-    declarDynamicMontgomeryModint(modint_montgomery, 1u32)
