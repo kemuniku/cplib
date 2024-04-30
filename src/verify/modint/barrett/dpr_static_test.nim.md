@@ -56,7 +56,7 @@ data:
 
     import cplib/matrix/matrix
 
-    type mint = mint1000000007_barrett
+    type mint = modint1000000007_barrett
 
 
     var n, k = ii()
@@ -68,19 +68,19 @@ data:
     '
   dependsOn:
   - cplib/matrix/matrix.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/matrix/matrix.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/modint/barrett/dpr_static_test.nim
   requiredBy: []
-  timestamp: '2024-04-12 16:59:42+09:00'
+  timestamp: '2024-04-30 16:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/barrett/dpr_static_test.nim

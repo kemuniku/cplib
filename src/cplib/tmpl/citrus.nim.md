@@ -115,8 +115,8 @@ data:
     \ exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))\n   \
     \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
-  - cplib/utils/infl.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/infl.nim
   - cplib/math/isqrt.nim
   - cplib/utils/infl.nim
   isVerificationFile: false

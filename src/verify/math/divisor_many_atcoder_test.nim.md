@@ -71,18 +71,18 @@ data:
 
     '
   dependsOn:
-  - cplib/math/primefactor.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/divisor.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/divisor.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/divisor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
   isVerificationFile: true
   path: verify/math/divisor_many_atcoder_test.nim
   requiredBy: []

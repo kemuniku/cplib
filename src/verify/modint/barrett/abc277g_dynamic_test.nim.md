@@ -41,7 +41,7 @@ data:
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc227/tasks/abc227_g\n\
     proc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
     \ {.inline.} = scanf(\"%lld\\n\", addr result)\nimport sequtils, algorithm, tables\n\
-    import cplib/math/isqrt\nimport cplib/modint/modint\ntype mint = mint_barrett\n\
+    import cplib/math/isqrt\nimport cplib/modint/modint\ntype mint = modint_barrett\n\
     mint.setMod(998244353)\n\nvar n, k = ii()\nif k == 0:\n    echo 1\n    quit()\n\
     var mf = newSeqWith(k+1, -1)\nfor i in 2..k:\n    if mf[i] == -1:\n        mf[i]\
     \ = i\n        for j in countup(i*2, k, i):\n            if mf[j] == -1: mf[j]\
@@ -58,18 +58,18 @@ data:
     \ i != 1: uc.inc(i)\nvar ans = mint(1)\nfor i in count:\n    ans *= mint(i + 1)\n\
     for k, v in uc:\n    ans *= mint(v + 1)\necho ans\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/modint/barrett/abc277g_dynamic_test.nim
   requiredBy: []
-  timestamp: '2024-04-12 16:59:42+09:00'
+  timestamp: '2024-04-30 16:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/barrett/abc277g_dynamic_test.nim
