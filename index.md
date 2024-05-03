@@ -59,6 +59,9 @@ data:
       path: cplib/graph/SCC.nim
       title: cplib/graph/SCC.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/bellmanford.nim
+      title: cplib/graph/bellmanford.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':heavy_check_mark:'
@@ -391,6 +394,9 @@ data:
       path: verify/graph/dynamic/SCC_test.nim
       title: verify/graph/dynamic/SCC_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/bellmanford_grl1b_test.nim
+      title: verify/graph/dynamic/bellmanford_grl1b_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
       title: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
     - icon: ':heavy_check_mark:'
@@ -425,6 +431,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/SCC_static_test.nim
       title: verify/graph/static/SCC_static_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/static/bellmanford_grl1b_test.nim
+      title: verify/graph/static/bellmanford_grl1b_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/grid_to_graph_abc151d_test.nim
       title: verify/graph/static/grid_to_graph_abc151d_test.nim

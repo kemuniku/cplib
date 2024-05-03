@@ -9,6 +9,12 @@ data:
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/bellmanford.nim
+    title: cplib/graph/bellmanford.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/bellmanford.nim
+    title: cplib/graph/bellmanford.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -88,6 +94,12 @@ data:
     path: verify/graph/dynamic/SCC_test.nim
     title: verify/graph/dynamic/SCC_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/bellmanford_grl1b_test.nim
+    title: verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/bellmanford_grl1b_test.nim
+    title: verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
     title: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - icon: ':heavy_check_mark:'
@@ -153,6 +165,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCC_static_test.nim
     title: verify/graph/static/SCC_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/bellmanford_grl1b_test.nim
+    title: verify/graph/static/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/bellmanford_grl1b_test.nim
+    title: verify/graph/static/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/grid_to_graph_abc151d_test.nim
     title: verify/graph/static/grid_to_graph_abc151d_test.nim
@@ -391,6 +409,8 @@ data:
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/bellmanford.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
   - cplib/graph/warshall_floyd.nim
@@ -428,6 +448,8 @@ data:
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/SCCG_test.nim
   - verify/graph/dynamic/SCCG_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
@@ -450,6 +472,8 @@ data:
   - verify/graph/static/topologicalsort_1_static_test.nim
   - verify/graph/static/SCC_static_test.nim
   - verify/graph/static/SCC_static_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
