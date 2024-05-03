@@ -10,11 +10,9 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
             prev = newSeqWith(N, -1)
             changed: bool
         when start is int:
-            queue.addLast(start)
             costs[start] = ZERO
         else:
             for s in start:
-                queue.addLast(s)
                 costs[s] = ZERO
         for _ in 0..<N:
             changed = false
