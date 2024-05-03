@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/bellmanford.nim
+    title: cplib/graph/bellmanford.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/bellmanford.nim
+    title: cplib/graph/bellmanford.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -28,6 +34,12 @@ data:
     title: cplib/tmpl/citrus.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/bellmanford_grl1b_test.nim
+    title: verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/bellmanford_grl1b_test.nim
+    title: verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
     title: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - icon: ':heavy_check_mark:'
@@ -57,6 +69,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/bellmanford_grl1b_test.nim
+    title: verify/graph/static/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/bellmanford_grl1b_test.nim
+    title: verify/graph/static/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/grid_to_graph_abc151d_test.nim
     title: verify/graph/static/grid_to_graph_abc151d_test.nim
@@ -114,6 +132,8 @@ data:
   - cplib/graph/dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/bellmanford.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
   timestamp: '2024-04-11 00:54:40+09:00'
@@ -127,6 +147,8 @@ data:
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
@@ -137,6 +159,8 @@ data:
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/maxk_dijkstra_abc176d_test.nim
   - verify/graph/static/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
