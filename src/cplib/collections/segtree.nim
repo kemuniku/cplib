@@ -72,5 +72,5 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         var s = self.arr.len div 2
         return self.arr[s..<s+self.len].join(" ")
     template newSegWith*(V, merge, default: untyped): untyped =
-        initSegmentTree(V, (l, r{.inject.}: typeof(default)) => merge, default)
+        initSegmentTree(V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
 
