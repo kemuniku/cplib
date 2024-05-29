@@ -103,13 +103,13 @@ data:
     \ result[p] += 1\n            else: result[p] = 1\n\n    proc primefactor_tuple*(n:\
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
@@ -121,16 +121,16 @@ data:
   verifiedWith:
   - verify/math/divisor_many_atcoder_test.nim
   - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/factorize_table_abc284d_test.nim
   - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/divisor_atcoder_test.nim
-  - verify/math/divisor_atcoder_test.nim
   - verify/math/factorize_tuple_abc324b_test.nim
   - verify/math/factorize_tuple_abc324b_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/divisor_atcoder_test.nim
 documentation_of: cplib/math/primefactor.nim
 layout: document
 redirect_from:

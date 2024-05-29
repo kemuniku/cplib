@@ -92,8 +92,8 @@ data:
     \ = costs[goal]\n"
   dependsOn:
   - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
   - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
@@ -101,14 +101,14 @@ data:
   timestamp: '2024-04-11 03:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - verify/graph/static/maxk_dijkstra_abc176d_test.nim
   - verify/graph/static/maxk_dijkstra_abc176d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
 documentation_of: cplib/graph/maxk_dijkstra.nim
 layout: document
 redirect_from:
