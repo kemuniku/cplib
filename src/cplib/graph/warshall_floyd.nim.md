@@ -56,9 +56,9 @@ data:
     \ zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g,\
     \ zero, inf)\n"
   dependsOn:
-  - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim

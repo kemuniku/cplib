@@ -48,11 +48,11 @@ data:
     \ = d[tx*w+ty]\nif ans == INFi32: ans = -1\necho ans\n"
   dependsOn:
   - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/graph/maxk_dijkstra.nim
   isVerificationFile: true
   path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
   requiredBy: []

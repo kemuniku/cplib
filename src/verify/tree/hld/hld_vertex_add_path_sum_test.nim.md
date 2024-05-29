@@ -46,16 +46,16 @@ data:
     \ false): a += seg.get(l..<r)\n        for (l, r) in hld.path(l, v, false, false):\
     \ a += seg.get(l..<r)\n        ans.add(a)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
   requiredBy: []
-  timestamp: '2024-04-11 03:42:22+09:00'
+  timestamp: '2024-05-29 21:04:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_vertex_add_path_sum_test.nim

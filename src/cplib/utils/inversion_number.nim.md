@@ -38,7 +38,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/inversion_number.nim
   requiredBy: []
-  timestamp: '2024-04-09 18:27:29+09:00'
+  timestamp: '2024-05-29 21:04:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/inversion_number_test.nim
