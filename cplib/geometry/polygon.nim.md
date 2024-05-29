@@ -142,10 +142,10 @@ data:
     \ discard vi.pop\n            vi.add(s[i])\n        vi.delete(0)\n        return\
     \ Polygon[T](v: vi)\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
