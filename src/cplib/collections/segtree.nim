@@ -1,6 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE:
     const CPLIB_COLLECTIONS_SEGTREE* = 1
-    import algorithm
+    import algorithm, strutils
     type SegmentTree*[T] = ref object
         default: T
         merge: proc(x: T, y: T): T
@@ -53,6 +53,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     proc get*[T](self: SegmentTree[T], segment: HSlice[int, int]): T =
         assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length
         return self.get(segment.a, segment.b+1)
+    proc `[]`*[T](self: SegmentTree[T], segment: HSlice[int, int]): T = self.get(segment)
     proc `[]`*[T](self: SegmentTree[T], index: Natural): T =
         assert index < self.length
         return self.arr[index+self.lastnode]
@@ -64,7 +65,9 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         return self.arr[1]
     proc len*[T](self: SegmentTree[T]): int =
         return self.length
-
+    proc `$`*[T](self: SegmentTree[T]): string =
+        var s = self.arr.len div 2
+        return self.arr[s..<s+self.len].join(" ")
     template newSegWith*(V, merge, default: untyped): untyped =
-        initSegmentTree(V, (l, r{.inject.}: typeof(default)) => merge, default)
+        initSegmentTree(V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
 
