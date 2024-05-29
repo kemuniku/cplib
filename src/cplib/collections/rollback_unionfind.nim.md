@@ -65,10 +65,10 @@ data:
   verifiedWith:
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
-  - verify/collections/rollback_uf_abc302ex_test.nim
-  - verify/collections/rollback_uf_abc302ex_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
+  - verify/collections/rollback_uf_abc302ex_test.nim
+  - verify/collections/rollback_uf_abc302ex_test.nim
 documentation_of: cplib/collections/rollback_unionfind.nim
 layout: document
 redirect_from:

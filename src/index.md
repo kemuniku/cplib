@@ -149,6 +149,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/run_length_encode.nim
       title: cplib/str/run_length_encode.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/str/zalgorithm.nim
+      title: cplib/str/zalgorithm.nim
   - name: cplib/tmpl
     pages:
     - icon: ':heavy_check_mark:'
@@ -643,6 +646,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/run_length_encode_test.nim
       title: verify/str/run_length_encode_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/zalgorithm_test.nim
+      title: verify/str/zalgorithm_test.nim
   - name: verify/tmpl
     pages:
     - icon: ':heavy_check_mark:'

@@ -42,11 +42,11 @@ data:
     \        if cost[i] == INFL: echo \"INF\"\n        else: echo cost[i]\n"
   dependsOn:
   - cplib/utils/infl.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/bellmanford.nim
   isVerificationFile: true
   path: verify/graph/static/bellmanford_grl1b_test.nim
   requiredBy: []

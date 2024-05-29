@@ -48,13 +48,13 @@ data:
     \     ans = max(ans, d.max)\necho ans\n"
   dependsOn:
   - cplib/utils/infl.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/grid_to_graph.nim
   - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/graph.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/grid_to_graph.nim
+  - cplib/graph/maxk_dijkstra.nim
   isVerificationFile: true
   path: verify/graph/static/grid_to_graph_abc151d_test.nim
   requiredBy: []
