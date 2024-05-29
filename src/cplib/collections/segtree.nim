@@ -57,9 +57,6 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     proc `[]`*[T](self: SegmentTree[T], index: Natural): T =
         assert index < self.length
         return self.arr[index+self.lastnode]
-    proc `[]`*[T](self: var SegmentTree[T], index: Natural): var T =
-        assert index < self.length
-        return self.arr[index+self.lastnode]
     proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T) =
         assert index < self.length
         self.update(index, val)
