@@ -10,6 +10,18 @@ data:
     path: verify/matrix/matrix_dpr_test.nim
     title: verify/matrix/matrix_dpr_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_pow_test.nim
+    title: verify/matrix/matrix_pow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_pow_test.nim
+    title: verify/matrix/matrix_pow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_test.nim
+    title: verify/matrix/matrix_product_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_test.nim
+    title: verify/matrix/matrix_product_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_unit_test.nim
     title: verify/matrix/matrix_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -132,8 +144,12 @@ data:
   - verify/matrix/matrix_zoistring_test.nim
   - verify/matrix/matrix_dpr_test.nim
   - verify/matrix/matrix_dpr_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_unit_test.nim
   - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
 documentation_of: cplib/matrix/matrix.nim
 layout: document
 redirect_from:

@@ -39,8 +39,8 @@ data:
     \  var a, b, c = ii()\n    g.add_edge(a, b, c)\necho g.diameter\n"
   dependsOn:
   - cplib/tree/diameter.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim

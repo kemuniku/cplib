@@ -560,6 +560,12 @@ data:
       path: verify/matrix/matrix_dpr_test.nim
       title: verify/matrix/matrix_dpr_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_pow_test.nim
+      title: verify/matrix/matrix_pow_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_product_test.nim
+      title: verify/matrix/matrix_product_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_unit_test.nim
       title: verify/matrix/matrix_unit_test.nim
     - icon: ':heavy_check_mark:'
