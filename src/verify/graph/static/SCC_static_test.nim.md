@@ -34,8 +34,8 @@ data:
     \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nG.build()\n\
     var group = G.SCC()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

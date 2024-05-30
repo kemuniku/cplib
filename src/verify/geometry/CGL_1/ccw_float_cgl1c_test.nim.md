@@ -37,8 +37,8 @@ data:
     ONLINE_FRONT\"\n    else: echo \"ON_SEGMENT\"\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim

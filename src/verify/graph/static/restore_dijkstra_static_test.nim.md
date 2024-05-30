@@ -47,13 +47,13 @@ data:
     \ \", path[i+1]\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []

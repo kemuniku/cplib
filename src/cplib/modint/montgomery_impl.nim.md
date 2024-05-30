@@ -10,6 +10,18 @@ data:
     title: cplib/modint/modint.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_pow_test.nim
+    title: verify/matrix/matrix_pow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_pow_test.nim
+    title: verify/matrix/matrix_pow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_test.nim
+    title: verify/matrix/matrix_product_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_test.nim
+    title: verify/matrix/matrix_product_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/abc277g_dynamic_test.nim
     title: verify/modint/barrett/abc277g_dynamic_test.nim
   - icon: ':heavy_check_mark:'
@@ -190,6 +202,10 @@ data:
   - verify/modint/barrett/dpr_dynamic_test.nim
   - verify/modint/barrett/abc277g_dynamic_test.nim
   - verify/modint/barrett/abc277g_dynamic_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_dynamic_test.nim
