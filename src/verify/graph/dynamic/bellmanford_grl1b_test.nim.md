@@ -44,9 +44,9 @@ data:
   - cplib/graph/bellmanford.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   - cplib/graph/bellmanford.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/bellmanford_grl1b_test.nim
   requiredBy: []

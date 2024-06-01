@@ -47,17 +47,17 @@ data:
     \ \", path[i+1]\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []
-  timestamp: '2024-04-27 20:12:57+09:00'
+  timestamp: '2024-06-02 05:32:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/restore_dijkstra_static_test.nim
