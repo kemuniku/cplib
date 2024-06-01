@@ -34,8 +34,14 @@ when not declared CPLIB_TMPL_SHEEP:
     template `max=`(x, y) = x = max(x, y)
     template `min=`(x, y) = x = min(x, y)
     #bit演算
-    proc `%`(x: int, y: int): int = (((x mod y)+y) mod y)
-    proc `//`(x: int, y: int): int = (((x) - (x%y)) div (y))
+    proc `%`*(x: int, y: int): int =
+        result = x mod y
+        if y > 0 and result < 0: result += y
+        if y < 0 and result > 0: result += y
+    proc `//`*(x: int, y: int): int{.inline.} =
+        result = x div y
+        if y > 0 and result * y > x: result -= 1
+        if y < 0 and result * y < x: result -= 1
     proc `%=`(x: var int, y: int): void = x = x%y
     proc `//=`(x: var int, y: int): void = x = x//y
     proc `**`(x: int, y: int): int = x^y
