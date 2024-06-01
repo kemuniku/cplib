@@ -62,34 +62,37 @@ data:
     \ true:\n            c = getchar()\n            if c == ' ' or c == '\\n':\n \
     \               break\n            result &= c\n    #chmin,chmax\n    template\
     \ `max=`(x, y) = x = max(x, y)\n    template `min=`(x, y) = x = min(x, y)\n  \
-    \  #bit\u6F14\u7B97\n    proc `%`(x: int, y: int): int = (((x mod y)+y) mod y)\n\
-    \    proc `//`(x: int, y: int): int = (((x) - (x%y)) div (y))\n    proc `%=`(x:\
-    \ var int, y: int): void = x = x%y\n    proc `//=`(x: var int, y: int): void =\
-    \ x = x//y\n    proc `**`(x: int, y: int): int = x^y\n    proc `**=`(x: var int,\
-    \ y: int): void = x = x^y\n    proc `^`(x: int, y: int): int = x xor y\n    proc\
-    \ `|`(x: int, y: int): int = x or y\n    proc `&`(x: int, y: int): int = x and\
-    \ y\n    proc `>>`(x: int, y: int): int = x shr y\n    proc `<<`(x: int, y: int):\
-    \ int = x shl y\n    proc `~`(x: int): int = not x\n    proc `^=`(x: var int,\
-    \ y: int): void = x = x ^ y\n    proc `&=`(x: var int, y: int): void = x = x &\
-    \ y\n    proc `|=`(x: var int, y: int): void = x = x | y\n    proc `>>=`(x: var\
-    \ int, y: int): void = x = x >> y\n    proc `<<=`(x: var int, y: int): void =\
-    \ x = x << y\n    proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0\n \
-    \   #\u4FBF\u5229\u306A\u5909\u63DB\n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n\
-    \    #\u5B9A\u6570\n    const INF = int(3300300300300300491)\n    #converter\n\
-    \n    #range\n    iterator range(start: int, ends: int, step: int): int =\n  \
-    \      var i = start\n        if step < 0:\n            while i > ends:\n    \
-    \            yield i\n                i += step\n        elif step > 0:\n    \
-    \        while i < ends:\n                yield i\n                i += step\n\
-    \    iterator range(ends: int): int = (for i in 0..<ends: yield i)\n    iterator\
-    \ range(start: int, ends: int): int = (for i in\n            start..<ends: yield\
-    \ i)\n    \n    #join\u304C\u975Estring\u3067\u3081\u3061\u3083\u304F\u3061\u3083\
-    \u9045\u3044\u3084\u3064\u306E\u30D1\u30C3\u30C1\n    proc join*[T: not string](a:\
-    \ openArray[T], sep: string = \"\"): string = a.mapit($it).join(sep)\n"
+    \  #bit\u6F14\u7B97\n    proc `%`*(x: int, y: int): int =\n        result = x\
+    \ mod y\n        if y > 0 and result < 0: result += y\n        if y < 0 and result\
+    \ > 0: result += y\n    proc `//`*(x: int, y: int): int{.inline.} =\n        result\
+    \ = x div y\n        if y > 0 and result * y > x: result -= 1\n        if y <\
+    \ 0 and result * y < x: result -= 1\n    proc `%=`(x: var int, y: int): void =\
+    \ x = x%y\n    proc `//=`(x: var int, y: int): void = x = x//y\n    proc `**`(x:\
+    \ int, y: int): int = x^y\n    proc `**=`(x: var int, y: int): void = x = x^y\n\
+    \    proc `^`(x: int, y: int): int = x xor y\n    proc `|`(x: int, y: int): int\
+    \ = x or y\n    proc `&`(x: int, y: int): int = x and y\n    proc `>>`(x: int,\
+    \ y: int): int = x shr y\n    proc `<<`(x: int, y: int): int = x shl y\n    proc\
+    \ `~`(x: int): int = not x\n    proc `^=`(x: var int, y: int): void = x = x ^\
+    \ y\n    proc `&=`(x: var int, y: int): void = x = x & y\n    proc `|=`(x: var\
+    \ int, y: int): void = x = x | y\n    proc `>>=`(x: var int, y: int): void = x\
+    \ = x >> y\n    proc `<<=`(x: var int, y: int): void = x = x << y\n    proc `[]`(x:\
+    \ int, n: int): bool = (x and (1 shl n)) != 0\n    #\u4FBF\u5229\u306A\u5909\u63DB\
+    \n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n    #\u5B9A\u6570\n   \
+    \ const INF = int(3300300300300300491)\n    #converter\n\n    #range\n    iterator\
+    \ range(start: int, ends: int, step: int): int =\n        var i = start\n    \
+    \    if step < 0:\n            while i > ends:\n                yield i\n    \
+    \            i += step\n        elif step > 0:\n            while i < ends:\n\
+    \                yield i\n                i += step\n    iterator range(ends:\
+    \ int): int = (for i in 0..<ends: yield i)\n    iterator range(start: int, ends:\
+    \ int): int = (for i in\n            start..<ends: yield i)\n    \n    #join\u304C\
+    \u975Estring\u3067\u3081\u3061\u3083\u304F\u3061\u3083\u9045\u3044\u3084\u3064\
+    \u306E\u30D1\u30C3\u30C1\n    proc join*[T: not string](a: openArray[T], sep:\
+    \ string = \"\"): string = a.mapit($it).join(sep)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy: []
-  timestamp: '2024-04-27 20:12:57+09:00'
+  timestamp: '2024-06-02 05:32:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/shortest_path_static_test.nim

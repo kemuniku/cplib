@@ -47,11 +47,11 @@ data:
     \ echo 2\n    else: echo 0\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/polygon.nim
   isVerificationFile: true

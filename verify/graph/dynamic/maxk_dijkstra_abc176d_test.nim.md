@@ -50,9 +50,9 @@ data:
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
   - cplib/utils/infl.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   requiredBy: []

@@ -44,17 +44,17 @@ data:
     \       echo x, \" \", 0\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2024-04-27 20:12:57+09:00'
+  timestamp: '2024-06-02 05:32:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yukicoder_test.nim
