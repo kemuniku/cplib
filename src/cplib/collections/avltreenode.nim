@@ -143,6 +143,7 @@ when not declared CPLIB_COLLECTIONS_AVLTREE:
         while node.p.l == node: node = node.p
         return node.p
     proc get*[K](node: AvlTreeNode[K], idx: int): AvlTreeNode[K] =
+        assert idx >= 0
         if idx >= node.len: return get_avltree_nilnode[K]()
         result = node
         var idx = idx
@@ -152,4 +153,11 @@ when not declared CPLIB_COLLECTIONS_AVLTREE:
                 result = result.r
             else:
                 result = result.l
+    proc index*[K](node: AvlTreeNode[K]): int =
+        var node = node
+        if node == get_avltree_nilnode[K](): return 0
+        result = node.l.len
+        while node.p != get_avltree_nilnode[K]():
+            if node.p.r == node: result += node.p.l.len + 1
+            node = node.p
 

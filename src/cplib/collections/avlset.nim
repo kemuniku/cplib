@@ -1,6 +1,7 @@
 when not declared CPLIB_COLLECTIONS_AVLSET:
     const CPLIB_COLLECTIONS_AVLSET* = 1
     import cplib/collections/avltreenode
+    import options
 
     type AvlSortedMultiSet*[T] = object
         root*: AvlTreeNode[T]
@@ -8,19 +9,37 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
     proc len*[T](self: AvlSortedMultiSet[T]): int = self.root.len
     proc lowerBound*[T](self: AvlSortedMultiSet[T], x: T): int =
         var (ql, qr) = self.root.lower_bound_node(x)
-        return ql.len
+        if qr == get_avltree_nilnode[T](): return self.len
+        return qr.index
     proc index*[T](self: AvlSortedMultiSet[T], x: T): int = self.lowerBound(x)
     proc upperBound*[T](self: AvlSortedMultiSet[T], x: T): int =
         var (ql, qr) = self.root.upper_bound_node(x)
-        return ql.len
+        if qr == get_avltree_nilnode[T](): return self.len
+        return qr.index
     proc index_right*[T](self: AvlSortedMultiSet[T], x: T): int = self.upperBound(x)
     proc count*[T](self: AvlSortedMultiSet[T], x: T): int = self.upperBound(x) - self.lowerBound(x)
-    proc contains*[T](self: AvlSortedMultiSet[T], x: T): bool =
-        var (_, node) = self.root.lower_bound_node(x)
-        return node != get_avltree_nilnode[T]() and node.key == x
     proc newnode[T](x: T): AvlTreeNode[T] =
         var nil_node = get_avltree_nilnode[T]()
         return AvlTreeNode[T](p: nil_node, l: nil_node, r: nil_node, len: 1, h: 1, key: x)
+    proc lt*[T](self: AvlSortedMultiSet[T], x: T): Option[T] =
+        var (node, _) = self.root.lower_bound_node(x)
+        if node == get_avltree_nilnode[T](): return none(T)
+        return some(node.key)
+    proc le*[T](self: AvlSortedMultiSet[T], x: T): Option[T] =
+        var (node, _) = self.root.upper_bound_node(x)
+        if node == get_avltree_nilnode[T](): return none(T)
+        return some(node.key)
+    proc gt*[T](self: AvlSortedMultiSet[T], x: T): Option[T] =
+        var (_, node) = self.root.upper_bound_node(x)
+        if node == get_avltree_nilnode[T](): return none(T)
+        return some(node.key)
+    proc ge*[T](self: AvlSortedMultiSet[T], x: T): Option[T] =
+        var (_, node) = self.root.lower_bound_node(x)
+        if node == get_avltree_nilnode[T](): return none(T)
+        return some(node.key)
+    proc contains*[T](self: AvlSortedMultiSet[T], x: T): bool =
+        var (_, node) = self.root.lower_bound_node(x)
+        return node != get_avltree_nilnode[T]() and node.key == x
     proc incl*[T](self: var AvlSortedMultiSet[T], x: T) =
         var node = newnode(x)
         self.root = self.root.insert(node)
