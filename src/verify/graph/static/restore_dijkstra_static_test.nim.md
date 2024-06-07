@@ -46,12 +46,12 @@ data:
     \ \" \", len(path)-1\n    for i in 0..<len(path)-1:\n        echo path[i], \"\
     \ \", path[i+1]\n"
   dependsOn:
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true

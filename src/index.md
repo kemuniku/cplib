@@ -10,6 +10,12 @@ data:
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/avlset.nim
+      title: cplib/collections/avlset.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/avltreenode.nim
+      title: cplib/collections/avltreenode.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
     - icon: ':heavy_check_mark:'
@@ -240,6 +246,32 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
+  - name: verify/collections/avlset
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/ABC217_gele_test.nim
+      title: verify/collections/avlset/ABC217_gele_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/ABC217_gtlt_test.nim
+      title: verify/collections/avlset/ABC217_gtlt_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/ABC217_index_test.nim
+      title: verify/collections/avlset/ABC217_index_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/ABC234D_access_test.nim
+      title: verify/collections/avlset/ABC234D_access_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/ABC236_test.nim
+      title: verify/collections/avlset/ABC236_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/ABC294_test.nim
+      title: verify/collections/avlset/ABC294_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/ABC337_test.nim
+      title: verify/collections/avlset/ABC337_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/index_right_test.nim
+      title: verify/collections/avlset/index_right_test.nim
   - name: verify/collections/defaultdict
     pages:
     - icon: ':heavy_check_mark:'
