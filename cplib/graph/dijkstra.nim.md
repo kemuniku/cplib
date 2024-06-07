@@ -84,9 +84,9 @@ data:
     \ (costs, prev) = restore_dijkstra(G, start, ZERO, INF)\n        result.path =\
     \ prev.restore_shortestpath_from_prev(goal)\n        result.cost = costs[goal]\n"
   dependsOn:
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
