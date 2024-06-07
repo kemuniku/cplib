@@ -32,6 +32,9 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
     proc `[]`*[T](self: AvlSortedMultiSet[T], idx: int): T =
         assert idx < self.root.len
         return self.root.get(idx).key
+    proc `[]`*[T](self: AvlSortedMultiSet[T], idx: BackwardsIndex): T =
+        var idx = self.len - int(idx)
+        return self[idx]
     proc pop*[T](self: var AvlSortedMultiSet[T], idx: int = -1): T =
         var idx = idx
         if idx < 0: idx = self.len - idx
@@ -51,3 +54,4 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
                 if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))
     proc initAvlSortedMultiSet*[T](v: seq[T] = @[]): AvlSortedMultiSet[T] =
         result = AvlSortedMultiSet[T](root: get_avltree_nilnode[T]())
+        for item in v: result.incl(item)
