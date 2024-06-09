@@ -42,7 +42,7 @@ when not declared CPLIB_STR_ROLLING_HASH:
             rng = if seed == -1: initRand() else: initRand(seed)
             k = 0u
             base = pow(RH_ROOT, k)
-        while base <= maxa or gcd(RH_MOD, k) != 1:
+        while base <= maxa or gcd(RH_MOD-1, k) != 1:
             k = rng.rand(0u..<RH_MOD)
             base = pow(RH_ROOT, k)
         let base_inv = pow(base, RH_MOD-2)
