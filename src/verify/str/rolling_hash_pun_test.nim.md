@@ -36,13 +36,13 @@ data:
     \  quit()\necho meguru_bisect(1, n div 2 + 1, is_ok)\n"
   dependsOn:
   - cplib/str/rolling_hash.nim
-  - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
+  - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_pun_test.nim
   requiredBy: []
-  timestamp: '2023-12-25 07:39:58+09:00'
+  timestamp: '2024-06-07 22:14:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/rolling_hash_pun_test.nim

@@ -42,10 +42,10 @@ data:
     \ echo \"CLOCKWISE\"\n    elif c == ONLINE_BACK: echo \"ONLINE_BACK\"\n    elif\
     \ c == ONLINE_FRONT: echo \"ONLINE_FRONT\"\n    else: echo \"ON_SEGMENT\"\n"
   dependsOn:
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   isVerificationFile: true
