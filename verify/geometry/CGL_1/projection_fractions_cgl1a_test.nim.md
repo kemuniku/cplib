@@ -42,12 +42,12 @@ data:
     \ 0..<q:\n    var p = get()\n    var ans = projection(l, p)\n    echo &\"{ans.x.toFloat:.10f}\
     \ {ans.y.toFloat:.10f}\"\n"
   dependsOn:
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/projection.nim
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   requiredBy: []

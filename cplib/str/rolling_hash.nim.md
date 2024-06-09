@@ -60,9 +60,9 @@ data:
     \ = n shr 1\n\n    proc find_base(maxa: uint, seed: int64 = -1): (uint, uint)\
     \ =\n        var\n            rng = if seed == -1: initRand() else: initRand(seed)\n\
     \            k = 0u\n            base = pow(RH_ROOT, k)\n        while base <=\
-    \ maxa or gcd(RH_MOD, k) != 1:\n            k = rng.rand(0u..<RH_MOD)\n      \
-    \      base = pow(RH_ROOT, k)\n        let base_inv = pow(base, RH_MOD-2)\n  \
-    \      return (base, base_inv)\n\n    var base, base_inv: uint\n    var initialized\
+    \ maxa or gcd(RH_MOD-1, k) != 1:\n            k = rng.rand(0u..<RH_MOD)\n    \
+    \        base = pow(RH_ROOT, k)\n        let base_inv = pow(base, RH_MOD-2)\n\
+    \        return (base, base_inv)\n\n    var base, base_inv: uint\n    var initialized\
     \ = false\n\n    proc build*(rh: var RollingHash, maxa: uint = 1000000000, seed:\
     \ int = -1) =\n        if not initialized:\n            initialized = true\n \
     \           (base, base_inv) = find_base(maxa, seed)\n        rh.hash_accum =\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: false
   path: cplib/str/rolling_hash.nim
   requiredBy: []
-  timestamp: '2023-11-19 20:31:33+09:00'
+  timestamp: '2024-06-07 22:14:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim

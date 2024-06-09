@@ -34,7 +34,7 @@ data:
   isVerificationFile: true
   path: verify/str/rolling_hash_abcbac_test.nim
   requiredBy: []
-  timestamp: '2023-11-19 20:31:33+09:00'
+  timestamp: '2024-06-07 22:14:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/rolling_hash_abcbac_test.nim
