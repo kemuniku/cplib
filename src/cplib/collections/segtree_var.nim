@@ -12,7 +12,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
         v: T
         index: int
     proc initSegmentTreeElem[T](st: ptr SegmentTree[T, SegmentTreeElem[T]], v: T, index: int): SegmentTreeElem[T] = SegmentTreeElem[T](st: st, v: v, index: index)
-    # converter convertTo*[T](self: SegmentTreeElem[T]): T = self.v
+    converter convertTo*[T](self: SegmentTreeElem[T]): T = self.v
     proc `$`*[T](self: SegmentTreeElem[T]): string = $(self.v)
     proc get*[T](self: var SegmentTree[T, SegmentTreeElem[T]], q_left: Natural, q_right: Natural): T =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
