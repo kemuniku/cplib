@@ -117,8 +117,8 @@ data:
   dependsOn:
   - cplib/utils/infl.nim
   - cplib/math/isqrt.nim
-  - cplib/utils/infl.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/infl.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
