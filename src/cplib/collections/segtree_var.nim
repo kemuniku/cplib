@@ -9,9 +9,10 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
         length: int
     type SegmentTreeElem[T] = object
         st: ptr SegmentTree[T, SegmentTreeElem[T]]
-        v, index: T
+        v: T
+        index: int
     proc initSegmentTreeElem[T](st: ptr SegmentTree[T, SegmentTreeElem[T]], v: T, index: int): SegmentTreeElem[T] = SegmentTreeElem[T](st: st, v: v, index: index)
-    converter convertTo*[T](self: SegmentTreeElem[T]): T = self.v
+    # converter convertTo*[T](self: SegmentTreeElem[T]): T = self.v
     proc `$`*[T](self: SegmentTreeElem[T]): string = $(self.v)
     proc get*[T](self: var SegmentTree[T, SegmentTreeElem[T]], q_left: Natural, q_right: Natural): T =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
@@ -51,7 +52,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
     proc `[]=`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], index: Natural, val: T) = self.update(index, val)
     proc get_all*[T](self: SegmentTree[T, SegmentTreeElem[T]]): T =
         ## [0,len(self))区間の演算結果をO(1)で返す
-        return self.arr[1]
+        return self.arr[1].v
     proc len*[T](self: SegmentTree[T, SegmentTreeElem[T]]): int =
         return self.length
     proc `$`*[T](self: SegmentTree[T, SegmentTreeElem[T]]): string =
@@ -59,13 +60,21 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
         return self.arr[s..<s+self.len].mapIt(it.v).join(" ")
     macro declareOperation(op) =
         quote do:
-            proc `op`[T](self: var SegmentTreeElem[T], v: T) =
+            proc `op`*[T](self: var SegmentTreeElem[T], v: T) =
                 `op`(self.v, v)
                 self.st[].propagete_update(self.index)
     declareOperation(`+=`)
     declareOperation(`-=`)
     declareOperation(`*=`)
     declareOperation(`/=`)
+    declareOperation(`^=`)
+    declareOperation(`&=`)
+    declareOperation(`|=`)
+    declareOperation(`%=`)
+    declareOperation(`//=`)
+    declareOperation(`>>=`)
+    declareOperation(`<<=`)
+    declareOperation(`**=`)
     proc initSegmentTree*[T](v: seq[T], merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] =
         ## セグメントツリーを生成します。
         ## vに元となるリスト、mergeに二つの区間をマージする関数、デフォルトに単位元を与えてください。
@@ -76,7 +85,9 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
         result = SegmentTree[T, SegmentTreeElem[T]](default: default, merge: merge, arr: arr, lastnode: lastnode, length: len(v))
         #1-indexedで作成する
         for i in 0..<len(v):
-            result.arr[result.lastnode+i] = initSegmentTreeElem(result.addr, v[i], result.lastnode+i)
+            result.arr[lastnode+i] = initSegmentTreeElem(result.addr, v[i], lastnode+i)
+        for i in len(v)..<lastnode:
+            result.arr[lastnode+i] = initSegmentTreeElem(result.addr, default, lastnode+i)
         for i in countdown(lastnode-1, 1):
             result.arr[i] = initSegmentTreeElem(result.addr, merge(result.arr[2*i].v, result.arr[2*i+1].v), i)
     proc initSegmentTree*[T](n: int, merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] = initSegmentTree(newSeqWith(n, default), merge, default)
