@@ -45,9 +45,9 @@ data:
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   requiredBy: []

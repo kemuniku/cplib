@@ -31,6 +31,9 @@ data:
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/segtree_var.nim
+      title: cplib/collections/segtree_var.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
     - icon: ':heavy_check_mark:'
@@ -315,6 +318,35 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_xor2_test.nim
       title: verify/collections/segtree/segtree_xor2_test.nim
+  - name: verify/collections/segtree_var
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_PARS_test.nim
+      title: verify/collections/segtree_var/segtree_PARS_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_PSRC_2_test.nim
+      title: verify/collections/segtree_var/segtree_PSRC_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_PSRC_test.nim
+      title: verify/collections/segtree_var/segtree_PSRC_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_RMQ_test.nim
+      title: verify/collections/segtree_var/segtree_RMQ_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_get1item_test.nim
+      title: verify/collections/segtree_var/segtree_get1item_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_newsegwith_test.nim
+      title: verify/collections/segtree_var/segtree_newsegwith_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_static_test.nim
+      title: verify/collections/segtree_var/segtree_static_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_xor1_test.nim
+      title: verify/collections/segtree_var/segtree_xor1_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_xor2_test.nim
+      title: verify/collections/segtree_var/segtree_xor2_test.nim
   - name: verify/collections/tatyamset
     pages:
     - icon: ':heavy_check_mark:'
