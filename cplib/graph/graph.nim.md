@@ -256,6 +256,12 @@ data:
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/tree/diameter_yosupo_test.nim
+    title: verify/tree/diameter_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/diameter_yosupo_test.nim
+    title: verify/tree/diameter_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
   - icon: ':heavy_check_mark:'
@@ -480,6 +486,8 @@ data:
   - verify/collections/rollback_uf_abc302ex_test.nim
   - verify/math/nearear_equiv_abc342e_test.nim
   - verify/math/nearear_equiv_abc342e_test.nim
+  - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_yosupo_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/diameter_path_static_test.nim

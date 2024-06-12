@@ -58,8 +58,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
   - cplib/utils/infl.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []

@@ -48,12 +48,12 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/infl.nim
-  - cplib/tmpl/sheep.nim
+  - cplib/utils/infl.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/dynamic/shortest_path_test.nim
   requiredBy: []
