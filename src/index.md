@@ -739,6 +739,9 @@ data:
       path: verify/tree/diameter_static_test.nim
       title: verify/tree/diameter_static_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/tree/diameter_yosupo_test.nim
+      title: verify/tree/diameter_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
     - icon: ':heavy_check_mark:'

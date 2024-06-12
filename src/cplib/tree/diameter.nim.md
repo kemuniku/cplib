@@ -39,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/diameter_yosupo_test.nim
+    title: verify/tree/diameter_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/diameter_yosupo_test.nim
+    title: verify/tree/diameter_yosupo_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -67,15 +73,17 @@ data:
     \       discard path.pop\n        discard dfs(u, -1)\n        return (d, path)\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   isVerificationFile: false
   path: cplib/tree/diameter.nim
   requiredBy: []
   timestamp: '2024-04-23 22:14:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_yosupo_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_dynamic_test.nim

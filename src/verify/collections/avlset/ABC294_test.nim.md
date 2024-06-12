@@ -34,9 +34,9 @@ data:
     \    elif T == 2:\n        st2.excl(ii())\n    else:\n        echo st2[0]\n"
   dependsOn:
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/collections/avlset/ABC294_test.nim
   requiredBy: []
