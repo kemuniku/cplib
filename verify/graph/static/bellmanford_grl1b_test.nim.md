@@ -43,9 +43,9 @@ data:
   dependsOn:
   - cplib/graph/bellmanford.nim
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/bellmanford.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/bellmanford_grl1b_test.nim
