@@ -34,7 +34,7 @@ data:
   isVerificationFile: true
   path: verify/math/combination_npr_test.nim
   requiredBy: []
-  timestamp: '2024-04-07 21:06:25+09:00'
+  timestamp: '2024-06-14 11:21:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/combination_npr_test.nim

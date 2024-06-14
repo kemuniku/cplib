@@ -25,7 +25,7 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_COMBINATION:\n    const CPLIB_MATH_COMBINATION*\
-    \ = 1\n    type Combination_Type[ModInt] = ref object\n        fact: seq[ModInt]\n\
+    \ = 1\n    type Combination_Type[ModInt] = object\n        fact: seq[ModInt]\n\
     \        inv: seq[ModInt]\n        fact_inv: seq[ModInt]\n\n    proc initCombination*[ModInt](max_N:\
     \ int): Combination_Type[ModInt] =\n        var fact = newSeq[ModInt](max_N+1)\n\
     \        var inv = newSeq[ModInt](max_N+1)\n        var fact_inv = newSeq[ModInt](max_N+1)\n\
@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: cplib/math/combination.nim
   requiredBy: []
-  timestamp: '2024-04-07 21:06:25+09:00'
+  timestamp: '2024-06-14 11:21:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/combination_test.nim

@@ -41,8 +41,8 @@ data:
   dependsOn:
   - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   requiredBy: []
