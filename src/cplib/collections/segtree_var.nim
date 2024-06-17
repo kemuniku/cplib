@@ -93,3 +93,42 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
     proc initSegmentTree*[T](n: int, merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] = initSegmentTree(newSeqWith(n, default), merge, default)
     template newSegWith*(V, merge, default: untyped): untyped =
         initSegmentTree(V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
+    proc max_right*[T](self: SegmentTree[T, SegmentTreeElem[T]], l: int, f: proc(l: T): bool): int =
+        assert 0 <= l and l <= self.len
+        assert f(self.default)
+        if l == self.len: return self.len
+        var l = l
+        l += self.lastnode
+        var sm = self.default
+        while true:
+            while l mod 2 == 0: l = (l shr 1)
+            if not f(self.merge(sm, self.arr[l])):
+                while l < self.lastnode:
+                    l *= 2
+                    if f(self.merge(sm, self.arr[l])):
+                        sm = self.merge(sm, self.arr[l])
+                        l += 1
+                return l - self.lastnode
+            sm = self.merge(sm, self.arr[l])
+            l += 1
+            if (l and -l) == l: break
+        return self.len
+    proc min_left*[T](self: SegmentTree[T, SegmentTreeElem[T]], r: int, f: proc(l: T): bool): int =
+        assert 0 <= r and r <= self.len
+        assert f(self.default)
+        if r == 0: return 0
+        var r = r
+        r += self.lastnode
+        var sm = self.default
+        while true:
+            r -= 1
+            while (r > 1 and r mod 2 != 0): r = (r shr 1)
+            if not f(self.merge(self.arr[r], sm)):
+                while r < self.lastnode:
+                    r = 2 * r + 1
+                    if f(self.merge(self.arr[r], sm)):
+                        sm = self.merge(self.arr[r], sm)
+                        r -= 1
+                return r + 1 - self.lastnode
+            if (r and -r) == r: break
+        return 0
