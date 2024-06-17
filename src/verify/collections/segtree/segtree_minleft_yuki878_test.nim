@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://yukicoder.me/problems/no/878 import cplib/collections/segtree
+# verification-helper: PROBLEM https://yukicoder.me/problems/no/878
 import cplib/collections/segtree
 import sequtils, strutils, algorithm
 
