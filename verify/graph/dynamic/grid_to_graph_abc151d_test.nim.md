@@ -47,14 +47,14 @@ data:
     \ g.maxk_dijkstra(sx*w+sy, 1).mapIt(if it == INFL: -1 else: it)\n        ans =\
     \ max(ans, d.max)\necho ans\n"
   dependsOn:
+  - cplib/utils/infl.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
+  - cplib/graph/grid_to_graph.nim
   - cplib/utils/infl.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/grid_to_graph.nim
-  - cplib/graph/grid_to_graph.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   isVerificationFile: true
   path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   requiredBy: []

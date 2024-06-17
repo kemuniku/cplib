@@ -34,6 +34,18 @@ data:
     path: verify/collections/segtree_var/segtree_get1item_test.nim
     title: verify/collections/segtree_var/segtree_get1item_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+    title: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+    title: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+    title: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+    title: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_newsegwith_test.nim
     title: verify/collections/segtree_var/segtree_newsegwith_test.nim
   - icon: ':heavy_check_mark:'
@@ -131,16 +143,40 @@ data:
     \ y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] = initSegmentTree(newSeqWith(n,\
     \ default), merge, default)\n    template newSegWith*(V, merge, default: untyped):\
     \ untyped =\n        initSegmentTree(V, proc (l{.inject.}, r{.inject.}: typeof(default)):\
-    \ typeof(default) = merge, default)\n"
+    \ typeof(default) = merge, default)\n    proc max_right*[T](self: SegmentTree[T,\
+    \ SegmentTreeElem[T]], l: int, f: proc(l: T): bool): int =\n        assert 0 <=\
+    \ l and l <= self.len\n        assert f(self.default)\n        if l == self.len:\
+    \ return self.len\n        var l = l\n        l += self.lastnode\n        var\
+    \ sm = self.default\n        while true:\n            while l mod 2 == 0: l =\
+    \ (l shr 1)\n            if not f(self.merge(sm, self.arr[l])):\n            \
+    \    while l < self.lastnode:\n                    l *= 2\n                  \
+    \  if f(self.merge(sm, self.arr[l])):\n                        sm = self.merge(sm,\
+    \ self.arr[l])\n                        l += 1\n                return l - self.lastnode\n\
+    \            sm = self.merge(sm, self.arr[l])\n            l += 1\n          \
+    \  if (l and -l) == l: break\n        return self.len\n    proc min_left*[T](self:\
+    \ SegmentTree[T, SegmentTreeElem[T]], r: int, f: proc(l: T): bool): int =\n  \
+    \      assert 0 <= r and r <= self.len\n        assert f(self.default)\n     \
+    \   if r == 0: return 0\n        var r = r\n        r += self.lastnode\n     \
+    \   var sm = self.default\n        while true:\n            r -= 1\n         \
+    \   while (r > 1 and r mod 2 != 0): r = (r shr 1)\n            if not f(self.merge(self.arr[r],\
+    \ sm)):\n                while r < self.lastnode:\n                    r = 2 *\
+    \ r + 1\n                    if f(self.merge(self.arr[r], sm)):\n            \
+    \            sm = self.merge(self.arr[r], sm)\n                        r -= 1\n\
+    \                return r + 1 - self.lastnode\n            if (r and -r) == r:\
+    \ break\n        return 0\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/segtree_var.nim
   requiredBy: []
-  timestamp: '2024-06-11 06:34:58+09:00'
+  timestamp: '2024-06-17 22:20:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
   - verify/collections/segtree_var/segtree_RMQ_test.nim
   - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
   - verify/collections/segtree_var/segtree_newsegwith_test.nim
   - verify/collections/segtree_var/segtree_newsegwith_test.nim
   - verify/collections/segtree_var/segtree_PSRC_2_test.nim

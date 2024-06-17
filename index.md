@@ -307,6 +307,12 @@ data:
       path: verify/collections/segtree/segtree_get1item_test.nim
       title: verify/collections/segtree/segtree_get1item_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_maxright_yuki878_test.nim
+      title: verify/collections/segtree/segtree_maxright_yuki878_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_minleft_yuki878_test.nim
+      title: verify/collections/segtree/segtree_minleft_yuki878_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_newsegwith_test.nim
       title: verify/collections/segtree/segtree_newsegwith_test.nim
     - icon: ':heavy_check_mark:'
@@ -335,6 +341,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_get1item_test.nim
       title: verify/collections/segtree_var/segtree_get1item_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+      title: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+      title: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_newsegwith_test.nim
       title: verify/collections/segtree_var/segtree_newsegwith_test.nim
