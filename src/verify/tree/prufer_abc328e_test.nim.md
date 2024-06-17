@@ -47,9 +47,9 @@ data:
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
   isVerificationFile: true
   path: verify/tree/prufer_abc328e_test.nim
   requiredBy: []

@@ -41,14 +41,14 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/inversion_number.nim
   - cplib/collections/segtree.nim
   - cplib/utils/inversion_number.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/inversion_number.nim
   isVerificationFile: true
   path: verify/utils/inversion_number_test.nim
   requiredBy: []
-  timestamp: '2024-05-29 21:04:03+09:00'
+  timestamp: '2024-06-17 22:20:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/inversion_number_test.nim
