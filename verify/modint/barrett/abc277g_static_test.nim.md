@@ -58,18 +58,18 @@ data:
     var ans = mint(1)\nfor i in count:\n    ans *= mint(i + 1)\nfor k, v in uc:\n\
     \    ans *= mint(v + 1)\necho ans\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/modint/barrett/abc277g_static_test.nim
   requiredBy: []
-  timestamp: '2024-04-30 16:15:27+09:00'
+  timestamp: '2024-06-18 18:51:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/barrett/abc277g_static_test.nim

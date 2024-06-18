@@ -170,10 +170,12 @@ data:
     \ or BarrettModint): auto = b + a\n    func `-`*(a: SomeInteger, b: MontgomeryModint\
     \ or BarrettModint): auto = b - a\n    func `*`*(a: SomeInteger, b: MontgomeryModint\
     \ or BarrettModint): auto = b * a\n    func `/`*(a: SomeInteger, b: MontgomeryModint\
-    \ or BarrettModint): auto = b / a\n    func pow*(a: MontgomeryModint or BarrettModint,\
-    \ n: int): auto =\n        result = init(typeof(a), 1)\n        var a = a\n  \
-    \      var n = n\n        while n > 0:\n            if (n and 1) == 1: result\
-    \ *= a\n            a *= a\n            n = (n shr 1)\n    func `$`*(a: MontgomeryModint\
+    \ or BarrettModint): auto = b / a\n    proc `/`*[ModInt: MontgomeryModint or BarrettModint](a:\
+    \ ModInt, b: static int): auto =\n        const tmp = init(Modint, b).inv\n  \
+    \      return a * tmp\n    func pow*(a: MontgomeryModint or BarrettModint, n:\
+    \ int): auto =\n        result = init(typeof(a), 1)\n        var a = a\n     \
+    \   var n = n\n        while n > 0:\n            if (n and 1) == 1: result *=\
+    \ a\n            a *= a\n            n = (n shr 1)\n    func `$`*(a: MontgomeryModint\
     \ or BarrettModint): string = $(a.val)\n    proc estimate_rational*(a: MontgomeryModint\
     \ or BarrettModint, ub: int = isqrt(typeof(a).mod)): string =\n        var v:\
     \ seq[tuple[s, n, d: int]]\n        for d in 1..ub:\n            var n = (a *\
@@ -181,16 +183,16 @@ data:
     \           if gcd(n, d) > 1: continue\n            v.add((n.abs + d, n, d))\n\
     \        v.sort\n        return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy: []
-  timestamp: '2024-04-30 14:50:09+09:00'
+  timestamp: '2024-06-18 18:51:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/modint/montgomery/keyence2021_static_staticinv_test.nim
