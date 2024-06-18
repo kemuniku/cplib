@@ -58,11 +58,23 @@ data:
     path: verify/modint/barrett/dpr_static_test.nim
     title: verify/modint/barrett/dpr_static_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+    title: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+    title: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/keyence2021_dynamic_test.nim
     title: verify/modint/barrett/keyence2021_dynamic_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/keyence2021_dynamic_test.nim
     title: verify/modint/barrett/keyence2021_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_static_staticinv_test.nim
+    title: verify/modint/barrett/keyence2021_static_staticinv_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/barrett/keyence2021_static_staticinv_test.nim
+    title: verify/modint/barrett/keyence2021_static_staticinv_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/keyence2021_static_test.nim
     title: verify/modint/barrett/keyence2021_static_test.nim
@@ -94,17 +106,29 @@ data:
     path: verify/modint/montgomery/dpr_static_test.nim
     title: verify/modint/montgomery/dpr_static_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/modint/montgomery/keyence2021_static_test.nim
-    title: verify/modint/montgomery/keyence2021_static_test.nim
+    path: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+    title: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+    title: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021_dynamic_test.nim
+    title: verify/modint/montgomery/keyence2021_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021_dynamic_test.nim
+    title: verify/modint/montgomery/keyence2021_dynamic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+    title: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+    title: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/keyence2021_static_test.nim
     title: verify/modint/montgomery/keyence2021_static_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
-    title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
-    title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
+    path: verify/modint/montgomery/keyence2021_static_test.nim
+    title: verify/modint/montgomery/keyence2021_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
@@ -149,24 +173,32 @@ data:
   verifiedWith:
   - verify/math/isqrt_test.nim
   - verify/math/isqrt_test.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test.nim
   - verify/modint/montgomery/abc277g_static_test.nim
   - verify/modint/montgomery/abc277g_static_test.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test.nim
   - verify/modint/montgomery/keyence2021_static_test.nim
   - verify/modint/montgomery/keyence2021_static_test.nim
-  - verify/modint/montgomery/keyence2021c_dynamic_test.nim
-  - verify/modint/montgomery/keyence2021c_dynamic_test.nim
+  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
   - verify/modint/montgomery/abc277g_dynamic_test.nim
   - verify/modint/montgomery/abc277g_dynamic_test.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test.nim
   - verify/modint/barrett/abc277g_static_test.nim
   - verify/modint/barrett/abc277g_static_test.nim
   - verify/modint/barrett/keyence2021_dynamic_test.nim
   - verify/modint/barrett/keyence2021_dynamic_test.nim
   - verify/modint/barrett/keyence2021_static_test.nim
   - verify/modint/barrett/keyence2021_static_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
   - verify/modint/barrett/dpr_static_test.nim
   - verify/modint/barrett/dpr_static_test.nim
   - verify/modint/barrett/dpr_dynamic_test.nim
