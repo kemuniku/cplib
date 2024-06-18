@@ -680,8 +680,14 @@ data:
       path: verify/modint/barrett/dpr_static_test.nim
       title: verify/modint/barrett/dpr_static_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+      title: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/keyence2021_dynamic_test.nim
       title: verify/modint/barrett/keyence2021_dynamic_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/modint/barrett/keyence2021_static_staticinv_test.nim
+      title: verify/modint/barrett/keyence2021_static_staticinv_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/keyence2021_static_test.nim
       title: verify/modint/barrett/keyence2021_static_test.nim
@@ -700,11 +706,17 @@ data:
       path: verify/modint/montgomery/dpr_static_test.nim
       title: verify/modint/montgomery/dpr_static_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+      title: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/modint/montgomery/keyence2021_dynamic_test.nim
+      title: verify/modint/montgomery/keyence2021_dynamic_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+      title: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_static_test.nim
       title: verify/modint/montgomery/keyence2021_static_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/modint/montgomery/keyence2021c_dynamic_test.nim
-      title: verify/modint/montgomery/keyence2021c_dynamic_test.nim
   - name: verify/str
     pages:
     - icon: ':heavy_check_mark:'

@@ -43,8 +43,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/math/nearest_equiv.nim
-  - cplib/math/nearest_equiv.nim
   - cplib/graph/graph.nim
+  - cplib/math/nearest_equiv.nim
   isVerificationFile: true
   path: verify/math/nearear_equiv_abc342e_test.nim
   requiredBy: []
