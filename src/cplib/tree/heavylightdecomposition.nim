@@ -140,7 +140,7 @@ when not declared CPLIB_TREE_HLD:
         if d < 0:
             return -1
         var g = hld.lca(u, v)
-        var dist0 = hld.D[u] - hld.D[g]*2 + hld.D[v]
+        var dist0 = hld.D[u] - hld.D[g] * 2 + hld.D[v]
         if dist0 < d:
             return -1
         var p = u
