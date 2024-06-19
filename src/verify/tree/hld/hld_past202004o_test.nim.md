@@ -58,18 +58,18 @@ data:
     \    for (l, r) in hld.path(l, b, false, false): mx = max(mx, seg.get(l..<r))\n\
     \    ans[i] = ai - mx + c\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/unionfind.nim
+  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []
-  timestamp: '2024-06-17 22:20:15+09:00'
+  timestamp: '2024-06-18 19:28:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_past202004o_test.nim

@@ -51,12 +51,12 @@ data:
   timestamp: '2023-12-24 18:36:32+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/itertools/itertools_combinations_test.nim
-  - verify/itertools/itertools_combinations_test.nim
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
+  - verify/itertools/itertools_combinations_test.nim
+  - verify/itertools/itertools_combinations_test.nim
 documentation_of: cplib/collections/unionfind.nim
 layout: document
 redirect_from:
