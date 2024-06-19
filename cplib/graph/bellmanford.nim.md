@@ -76,9 +76,9 @@ data:
     \ (costs, prev) = restore_bellmanford(G, start, ZERO, INF)\n        result.path\
     \ = prev.restore_shortestpath_from_prev(goal)\n        result.cost = costs[goal]\n"
   dependsOn:
-  - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
@@ -86,10 +86,10 @@ data:
   timestamp: '2024-05-03 17:47:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
 documentation_of: cplib/graph/bellmanford.nim
 layout: document
 redirect_from:

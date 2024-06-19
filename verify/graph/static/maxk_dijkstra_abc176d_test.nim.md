@@ -47,12 +47,12 @@ data:
     \ (i+dx)*w+j+dy, 1i32)\ng.build\nvar d = g.maxk_dijkstra(sx*w+sy, 1i32)\nvar ans\
     \ = d[tx*w+ty]\nif ans == INFi32: ans = -1\necho ans\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
   requiredBy: []

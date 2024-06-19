@@ -777,6 +777,12 @@ data:
   - name: verify/tree/hld
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/tree/hld/hld_la_yosupo_test.nim
+      title: verify/tree/hld/hld_la_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/hld/hld_lca_yosupo_test.nim
+      title: verify/tree/hld/hld_lca_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_past202004o_test.nim
       title: verify/tree/hld/hld_past202004o_test.nim
     - icon: ':heavy_check_mark:'

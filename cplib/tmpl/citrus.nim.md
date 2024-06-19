@@ -116,8 +116,8 @@ data:
     \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
   - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/infl.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim

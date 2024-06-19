@@ -45,16 +45,16 @@ data:
     \ = hld.subtree(u)\n        var a = seg.get(l..<r)\n        ans.add(a)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   requiredBy: []
-  timestamp: '2024-06-17 22:20:15+09:00'
+  timestamp: '2024-06-18 19:28:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim

@@ -10,6 +10,18 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/tree/hld/hld_la_yosupo_test.nim
+    title: verify/tree/hld/hld_la_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/hld/hld_la_yosupo_test.nim
+    title: verify/tree/hld/hld_la_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/hld/hld_lca_yosupo_test.nim
+    title: verify/tree/hld/hld_lca_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/hld/hld_lca_yosupo_test.nim
+    title: verify/tree/hld/hld_lca_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
   - icon: ':heavy_check_mark:'
@@ -116,8 +128,8 @@ data:
     \ y) xor hld.lca(y, z) xor hld.lca(x, z)\n    proc la*(hld: HeavyLightDecomposition,\
     \ starting: int, goal: int, d: int): int =\n        var (u, v, d) = (starting,\
     \ goal, d)\n        if d < 0:\n            return -1\n        var g = hld.lca(u,\
-    \ v)\n        var dist0 = hld.D[u] - hld.D[g]*2 + hld.D[v]\n        if dist0 <\
-    \ d:\n            return -1\n        var p = u\n        if hld.D[u] - hld.D[g]\
+    \ v)\n        var dist0 = hld.D[u] - hld.D[g] * 2 + hld.D[v]\n        if dist0\
+    \ < d:\n            return -1\n        var p = u\n        if hld.D[u] - hld.D[g]\
     \ < d:\n            p = v\n            d = dist0 - d\n        while hld.D[p] -\
     \ hld.D[hld.PP[p]] < d:\n            d -= hld.D[p] - hld.D[hld.PP[p]] + 1\n  \
     \          p = hld.P[hld.PP[p]]\n        hld.I[hld.rangeL[p] - d]\n    iterator\
@@ -130,17 +142,21 @@ data:
   isVerificationFile: false
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy: []
-  timestamp: '2024-04-11 03:42:22+09:00'
+  timestamp: '2024-06-18 19:28:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_la_yosupo_test.nim
+  - verify/tree/hld/hld_la_yosupo_test.nim
 documentation_of: cplib/tree/heavylightdecomposition.nim
 layout: document
 redirect_from:

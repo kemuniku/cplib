@@ -56,9 +56,9 @@ data:
     \ zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g,\
     \ zero, inf)\n"
   dependsOn:
-  - cplib/utils/infl.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/utils/infl.nim
+  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
@@ -66,10 +66,10 @@ data:
   timestamp: '2024-04-11 03:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
 documentation_of: cplib/graph/warshall_floyd.nim
 layout: document
 redirect_from:
