@@ -34,45 +34,45 @@ when not declared CPLIB_MATH_INT128:
         return minus ? -result : result;
     }
     """.}
-    type int128 {.importcpp: "__int128_t", nodecl.} = object
-    converter to_int128*(x: SomeInteger): int128 {.importcpp: "(__int128_t)(#)", nodecl.}
-    converter int*(x: int128): int {.importcpp: "(long long)(#)", nodecl.}
-    proc abs*(x: int128): int128 {.importcpp: "abs(#)", nodecl.}
-    proc `-`*(x: int128): int128 {.importcpp: "-(#)", nodecl.}
-    proc `+=`*(x: var int128, y: int128) {.importcpp: "((#) += (#))", nodecl.}
-    proc `-=`*(x: var int128, y: int128) {.importcpp: "((#) -= (#))", nodecl.}
-    proc `*=`*(x: var int128, y: int128) {.importcpp: "((#) *= (#))", nodecl.}
-    proc `//=`*(x: var int128, y: int128) {.importcpp: "((#) /= (#))", nodecl.}
-    proc `%=`*(x: var int128, y: int128) {.importcpp: "((#) %= (#))", nodecl.}
-    proc `&=`*(x: var int128, y: int128) {.importcpp: "((#) &= (#))", nodecl.}
-    proc `|=`*(x: var int128, y: int128) {.importcpp: "((#) |= (#))", nodecl.}
-    proc `^=`*(x: var int128, y: int128) {.importcpp: "((#) ^= (#))", nodecl.}
-    proc `<<=`*(x: var int128, y: int128) {.importcpp: "((#) <<= (#))", nodecl.}
-    proc `>>=`*(x: var int128, y: int128) {.importcpp: "((#) >>= (#))", nodecl.}
+    type Int128* {.importcpp: "__int128_t", nodecl.} = object
+    converter to_Int128*(x: SomeInteger): Int128 {.importcpp: "(__int128_t)(#)", nodecl.}
+    converter int*(x: Int128): int {.importcpp: "(long long)(#)", nodecl.}
+    proc abs*(x: Int128): Int128 {.importcpp: "abs(#)", nodecl.}
+    proc `-`*(x: Int128): Int128 {.importcpp: "-(#)", nodecl.}
+    proc `+=`*(x: var Int128, y: Int128) {.importcpp: "((#) += (#))", nodecl.}
+    proc `-=`*(x: var Int128, y: Int128) {.importcpp: "((#) -= (#))", nodecl.}
+    proc `*=`*(x: var Int128, y: Int128) {.importcpp: "((#) *= (#))", nodecl.}
+    proc `//=`*(x: var Int128, y: Int128) {.importcpp: "((#) /= (#))", nodecl.}
+    proc `%=`*(x: var Int128, y: Int128) {.importcpp: "((#) %= (#))", nodecl.}
+    proc `&=`*(x: var Int128, y: Int128) {.importcpp: "((#) &= (#))", nodecl.}
+    proc `|=`*(x: var Int128, y: Int128) {.importcpp: "((#) |= (#))", nodecl.}
+    proc `^=`*(x: var Int128, y: Int128) {.importcpp: "((#) ^= (#))", nodecl.}
+    proc `<<=`*(x: var Int128, y: Int128) {.importcpp: "((#) <<= (#))", nodecl.}
+    proc `>>=`*(x: var Int128, y: Int128) {.importcpp: "((#) >>= (#))", nodecl.}
 
-    proc `+`*(x, y: int128): int128 = (result = x; result += y)
-    proc `-`*(x, y: int128): int128 = (result = x; result -= y)
-    proc `*`*(x, y: int128): int128 = (result = x; result *= y)
-    proc `//`*(x, y: int128): int128 = (result = x; result //= y)
-    proc `%`*(x, y: int128): int128 = (result = x; result %= y)
-    proc `&`*(x, y: int128): int128 = (result = x; result &= y)
-    proc `|`*(x, y: int128): int128 = (result = x; result |= y)
-    proc `^`*(x, y: int128): int128 = (result = x; result ^= y)
-    proc `<<`*(x, y: int128): int128 = (result = x; result <<= y)
-    proc `>>`*(x, y: int128): int128 = (result = x; result >>= y)
+    proc `+`*(x, y: Int128): Int128 = (result = x; result += y)
+    proc `-`*(x, y: Int128): Int128 = (result = x; result -= y)
+    proc `*`*(x, y: Int128): Int128 = (result = x; result *= y)
+    proc `//`*(x, y: Int128): Int128 = (result = x; result //= y)
+    proc `%`*(x, y: Int128): Int128 = (result = x; result %= y)
+    proc `&`*(x, y: Int128): Int128 = (result = x; result &= y)
+    proc `|`*(x, y: Int128): Int128 = (result = x; result |= y)
+    proc `^`*(x, y: Int128): Int128 = (result = x; result ^= y)
+    proc `<<`*(x, y: Int128): Int128 = (result = x; result <<= y)
+    proc `>>`*(x, y: Int128): Int128 = (result = x; result >>= y)
 
-    proc `>`*(x, y: int128): bool {.importcpp: "((#) > (#))", nodecl.}
-    proc `>=`*(x, y: int128): bool {.importcpp: "((#) >= (#))", nodecl.}
-    proc `<`*(x, y: int128): bool {.importcpp: "((#) < (#))", nodecl.}
-    proc `<=`*(x, y: int128): bool {.importcpp: "((#) <= (#))", nodecl.}
-    proc `==`*(x, y: int128): bool {.importcpp: "((#) == (#))", nodecl.}
+    proc `>`*(x, y: Int128): bool {.importcpp: "((#) > (#))", nodecl.}
+    proc `>=`*(x, y: Int128): bool {.importcpp: "((#) >= (#))", nodecl.}
+    proc `<`*(x, y: Int128): bool {.importcpp: "((#) < (#))", nodecl.}
+    proc `<=`*(x, y: Int128): bool {.importcpp: "((#) <= (#))", nodecl.}
+    proc `==`*(x, y: Int128): bool {.importcpp: "((#) == (#))", nodecl.}
 
-    proc cmp*(x, y: int128): int = (if x < y: -1 elif x == y: 0 else: 1)
-    proc hash*(x: int128): Hash = hash(x // int(100000000000000000)) !& hash(x % int(100000000000000000))
+    proc cmp*(x, y: Int128): int = (if x < y: -1 elif x == y: 0 else: 1)
+    proc hash*(x: Int128): Hash = hash(x // int(100000000000000000)) !& hash(x % int(100000000000000000))
 
-    proc to_int128_inner(s: cstring): int128 {.importcpp: "parse_int128(#)".}
-    proc to_int128*(s: string): int128 = to_int128_inner(cstring(s))
-    proc pow*(x, n, m: int128): int128 =
+    proc to_Int128_inner(s: cstring): Int128 {.importcpp: "parse_int128(#)".}
+    proc to_Int128*(s: string): Int128 = to_Int128_inner(cstring(s))
+    proc pow*(x, n, m: Int128): Int128 =
         result = 1
         var x = x
         var n = n
@@ -81,7 +81,7 @@ when not declared CPLIB_MATH_INT128:
             x *= x
             n >>= 1
 
-    proc `$`*(x: int128): string =
+    proc `$`*(x: Int128): string =
         if (x == 0): return "0"
         var x = x
         const digit = (proc(): array[10000, string] =
