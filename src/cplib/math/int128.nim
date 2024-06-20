@@ -33,6 +33,21 @@ when not declared CPLIB_MATH_INT128:
         if (pos != 0) result += base * parseint_raw8b_wrap(s.substr(0, pos));
         return minus ? -result : result;
     }
+    char int128_string_buffer[40];
+    char* to_string(__int128_t &x) {
+        __int128_t tmp = x < 0 ? -x : x;
+        char* d = std::end(int128_string_buffer);
+        while (1) {
+            *(--d) = "0123456789"[tmp % 10];
+            tmp /= 10;
+            if (tmp == 0) break;
+        }
+        if (x < 0) *(--d) = '-';
+        return d;
+    }
+    void test(char* s) {
+        std::cout << *s << std::endl;
+    }
     """.}
     type Int128* {.importcpp: "__int128_t", nodecl.} = object
     converter to_Int128*(x: SomeInteger): Int128 {.importcpp: "(__int128_t)(#)", nodecl.}
@@ -80,28 +95,5 @@ when not declared CPLIB_MATH_INT128:
             if (n & 1) == 1: result = (result * x) % m
             x *= x
             n >>= 1
-
-    proc `$`*(x: Int128): string =
-        if (x == 0): return "0"
-        var x = x
-        const digit = (proc(): array[10000, string] =
-            var digit: array[10000, string]
-            for i in 0..<10000:
-                var sz = ($i).len
-                for j in 0..<4-sz: digit[i] &= '0'
-                digit[i] &= $i
-            digit
-        )()
-        var arr: array[11, string]
-        for i in 0..<11: arr[i] = ""
-        if x < 0:
-            arr[^1] = "-"
-            x = -x
-        var pos = 0
-        while x > 0:
-            arr[pos] = digit[int(x % 10000)]
-            x //= 10000
-            pos += 1
-        while arr[pos-1][0] == '0': arr[pos-1] = arr[pos-1][1..^1]
-        arr.reverse
-        return arr.join("")
+    proc to_string_inner(x: Int128): cstring {.importcpp: "to_string(#)", nodecl.}
+    proc `$`*(x: Int128): string = $(to_string_inner(x))
