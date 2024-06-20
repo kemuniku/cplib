@@ -34,19 +34,6 @@ when not declared CPLIB_MATH_INT128:
         }
         return minus ? -result : result;
     }
-    __int128_t read_and_parse_int128() {
-        char buffer[40];
-        size_t offset = 0;
-        while (1) {
-            char c = getchar_unlocked();
-            if (c == '0' || c == '\n' || c == '\0') {
-                *(buffer + offset++) = '\0';
-                break;
-            }
-            *(buffer + offset++) = c;
-        }
-        return parse_int128(buffer);
-    }
     constexpr size_t INT128_DIGIT_STRING_SIZE = 10000;
     constexpr size_t INT128_DIGIT_STRING_LENGHT = 4;
     struct Int128FourDigitStrings {
@@ -106,13 +93,26 @@ when not declared CPLIB_MATH_INT128:
         }
         return dest;
     }
-    const char ENDL_NO_FLUSH = '\n';
+    __int128_t read_and_parse_int128(int x) {
+        char buffer[40];
+        size_t offset = 0;
+        while (1) {
+            char c = getchar_unlocked();
+            if (c == ' ' || c == '\n' || c == '\0') {
+                *(buffer + offset++) = '\0';
+                break;
+            }
+            *(buffer + offset++) = c;
+        }
+        return parse_int128(buffer);
+    }
+    void output_int128(__int128_t &x) { std::cout << x << '\n'; }
     """.}
     type Int128* {.importcpp: "__int128_t", nodecl.} = object
-    converter to_Int128*(x: SomeInteger): Int128 {.importcpp: "(__int128_t)(#)", nodecl.}
+    converter to_Int128*(x: SomeInteger): Int128 {.importcpp: "(__int128_t)((#))", nodecl.}
     converter to_int*(x: Int128): int {.importcpp: "(long long)(#)", nodecl.}
-    proc abs*(x: Int128): Int128 {.importcpp: "abs(#)", nodecl.}
-    proc `-`*(x: Int128): Int128 {.importcpp: "-(#)", nodecl.}
+    proc abs*(x: Int128): Int128 {.importcpp: "abs((#))", nodecl.}
+    proc `-`*(x: Int128): Int128 {.importcpp: "-((#))", nodecl.}
     proc `+=`*(x: var Int128, y: Int128) {.importcpp: "((#) += (#))", nodecl.}
     proc `-=`*(x: var Int128, y: Int128) {.importcpp: "((#) -= (#))", nodecl.}
     proc `*=`*(x: var Int128, y: Int128) {.importcpp: "((#) *= (#))", nodecl.}
@@ -144,9 +144,10 @@ when not declared CPLIB_MATH_INT128:
     proc cmp*(x, y: Int128): int = (if x < y: -1 elif x == y: 0 else: 1)
     proc hash*(x: Int128): Hash = hash(x // int(100000000000000000)) !& hash(x % int(100000000000000000))
 
-    proc parse_Int128_inner(s: cstring): Int128 {.importcpp: "parse_int128(#)", nodecl.}
+    proc parse_Int128_inner(s: cstring): Int128 {.importcpp: "parse_int128((#))", nodecl.}
     proc parseInt128*(s: string): Int128 = parse_Int128_inner(cstring(s))
-    proc read_and_parse_int128*(): Int128 {.importcpp: "read_and_parse_int128()", nodecl.}
+    proc read_and_parse_int128_inner(x: int): Int128 {.importcpp: "read_and_parse_int128((#))".}
+    proc read_and_parse_int128*(): Int128 = read_and_parse_int128_inner(0)
     proc pow*(x, n, m: Int128): Int128 =
         result = 1
         var x = x
@@ -155,6 +156,6 @@ when not declared CPLIB_MATH_INT128:
             if (n & 1) == 1: result = (result * x) % m
             x *= x
             n >>= 1
-    proc to_string_inner(x: Int128): cstring {.importcpp: "to_string(#)", nodecl.}
+    proc to_string_inner(x: Int128): cstring {.importcpp: "to_string((#))", nodecl.}
     proc `$`*(x: Int128): string = $(to_string_inner(x))
-    proc put*(x: Int128) {.importcpp: "std::cout << (#) << std::endl", nodecl.}
+    proc put*(x: Int128) {.importcpp: "output_int128((#))", nodecl.}
