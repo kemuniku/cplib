@@ -1,9 +1,8 @@
 when not declared CPLIB_MATH_INT128:
     const CPLIB_MATH_INT128* = 1
-    import algorithm, hashes, strutils, sequtils
+    import hashes
     {.emit: """
     #include <bits/stdc++.h>
-    #include <cassert>
     unsigned long long parseuint_raw8b(const unsigned long long &x) {
         // https://zenn.dev/mizar/articles/fc87d667153080
         unsigned long long result = (x & 0x0f0f0f0f0f0f0f0f);
@@ -35,22 +34,83 @@ when not declared CPLIB_MATH_INT128:
         }
         return minus ? -result : result;
     }
+    __int128_t read_and_parse_int128() {
+        char buffer[40];
+        size_t offset = 0;
+        while (1) {
+            char c = getchar_unlocked();
+            if (c == '0' || c == '\n' || c == '\0') {
+                *(buffer + offset++) = '\0';
+                break;
+            }
+            *(buffer + offset++) = c;
+        }
+        return parse_int128(buffer);
+    }
+    constexpr size_t INT128_DIGIT_STRING_SIZE = 10000;
+    constexpr size_t INT128_DIGIT_STRING_LENGHT = 4;
+    struct Int128FourDigitStrings {
+        char d[INT128_DIGIT_STRING_SIZE * INT128_DIGIT_STRING_LENGHT];
+        constexpr Int128FourDigitStrings() : d() {
+            for (size_t i=0; i<INT128_DIGIT_STRING_SIZE * INT128_DIGIT_STRING_LENGHT; i++) d[i] = '0';
+            for (size_t i=0; i<INT128_DIGIT_STRING_SIZE; i++) {
+                size_t pos = INT128_DIGIT_STRING_LENGHT - 1;
+                size_t tmp = i;
+                while (tmp) {
+                    d[i*INT128_DIGIT_STRING_LENGHT+pos--] = "0123456789"[tmp % 10];
+                    tmp /= 10;
+                }
+            }
+        }
+    };
     char int128_string_buffer[40];
+    constexpr auto int128_four_digit_strings = Int128FourDigitStrings();
     char* to_string(__int128_t &x) {
         __int128_t tmp = x < 0 ? -x : x;
         char* d = std::end(int128_string_buffer);
-        while (1) {
+        while (tmp >= INT128_DIGIT_STRING_SIZE) {
+            size_t pos = (tmp % INT128_DIGIT_STRING_SIZE) * INT128_DIGIT_STRING_LENGHT;
+            d -= INT128_DIGIT_STRING_LENGHT;
+            std::memcpy(d, int128_four_digit_strings.d+pos, INT128_DIGIT_STRING_LENGHT);
+            tmp /= INT128_DIGIT_STRING_SIZE;
+        }
+        while (tmp > 0) {
             *(--d) = "0123456789"[tmp % 10];
             tmp /= 10;
-            if (tmp == 0) break;
         }
+        if (d == std::end(int128_string_buffer)) *(--d) = '0';
         if (x < 0) *(--d) = '-';
         return d;
     }
+    std::ostream &operator<<(std::ostream &dest, __int128_t &x) {
+        std::ostream::sentry s(dest);
+        if (s) {
+            __uint128_t tmp = x < 0 ? -x : x;
+            char* d = std::end(int128_string_buffer);
+            while (tmp >= INT128_DIGIT_STRING_SIZE) {
+                size_t pos = (tmp % INT128_DIGIT_STRING_SIZE) * INT128_DIGIT_STRING_LENGHT;
+                d -= INT128_DIGIT_STRING_LENGHT;
+                std::memcpy(d, int128_four_digit_strings.d+pos, INT128_DIGIT_STRING_LENGHT);
+                tmp /= INT128_DIGIT_STRING_SIZE;
+            }
+            while (tmp > 0) {
+                *(--d) = "0123456789"[tmp % 10];
+                tmp /= 10;
+            }
+            if (d == std::end(int128_string_buffer)) *(--d) = '0';
+            if (x < 0) *(--d) = '-';
+            int len = std::end(int128_string_buffer) - d;
+            if (dest.rdbuf()->sputn(d, len) != len) {
+                dest.setstate(std::ios_base::badbit);
+            }
+        }
+        return dest;
+    }
+    const char ENDL_NO_FLUSH = '\n';
     """.}
     type Int128* {.importcpp: "__int128_t", nodecl.} = object
     converter to_Int128*(x: SomeInteger): Int128 {.importcpp: "(__int128_t)(#)", nodecl.}
-    converter int*(x: Int128): int {.importcpp: "(long long)(#)", nodecl.}
+    converter to_int*(x: Int128): int {.importcpp: "(long long)(#)", nodecl.}
     proc abs*(x: Int128): Int128 {.importcpp: "abs(#)", nodecl.}
     proc `-`*(x: Int128): Int128 {.importcpp: "-(#)", nodecl.}
     proc `+=`*(x: var Int128, y: Int128) {.importcpp: "((#) += (#))", nodecl.}
@@ -84,8 +144,9 @@ when not declared CPLIB_MATH_INT128:
     proc cmp*(x, y: Int128): int = (if x < y: -1 elif x == y: 0 else: 1)
     proc hash*(x: Int128): Hash = hash(x // int(100000000000000000)) !& hash(x % int(100000000000000000))
 
-    proc to_Int128_inner(s: cstring): Int128 {.importcpp: "parse_int128(#)".}
-    proc to_Int128*(s: string): Int128 = to_Int128_inner(cstring(s))
+    proc parse_Int128_inner(s: cstring): Int128 {.importcpp: "parse_int128(#)", nodecl.}
+    proc parseInt128*(s: string): Int128 = parse_Int128_inner(cstring(s))
+    proc read_and_parse_int128*(): Int128 {.importcpp: "read_and_parse_int128()", nodecl.}
     proc pow*(x, n, m: Int128): Int128 =
         result = 1
         var x = x
@@ -96,3 +157,4 @@ when not declared CPLIB_MATH_INT128:
             n >>= 1
     proc to_string_inner(x: Int128): cstring {.importcpp: "to_string(#)", nodecl.}
     proc `$`*(x: Int128): string = $(to_string_inner(x))
+    proc put*(x: Int128) {.importcpp: "std::cout << (#) << std::endl", nodecl.}
