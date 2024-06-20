@@ -12,25 +12,27 @@ when not declared CPLIB_MATH_INT128:
         result *= ((10000ul << 32) + 1); result >>= 32;
         return result;
     }
-    unsigned long long parseint_raw8b_wrap(const std::string &s) {
+    unsigned long long parseint_raw8b_wrap(char* p, size_t sz) {
         char c[8] = {0};
-        size_t sz = s.size();
-        for (size_t i=0; i<sz; i++) c[7-i] = s[sz-1-i];
+        for (size_t i=0; i<sz; i++) c[8-sz+i] = *(p++);
         unsigned long long x;
         std::memcpy(&x, &c, 8);
         return parseuint_raw8b(x);
     }
-    __int128_t parse_int128(std::string s) {
-        bool minus = (s[0] == '-' ? (s = s.substr(1, s.size()-1), true) : false);
+    __int128_t parse_int128(char* p) {
+        bool minus = *p == '-' ? (p++, true) : false;
+        const __int128_t base[9] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
         __int128_t result = 0;
-        __int128_t base = 1;
-        size_t pos = s.size();
-        while (pos >= 8) {
-            pos -= 8;
-            result += parseint_raw8b_wrap(s.substr(pos, 8)) * base;
-            base *= 100000000;
+        while (1) {
+            size_t sz = 0;
+            for (size_t i=0; i<8; i++) {
+                if (*(p + sz) == '\0') break;
+                sz++;
+            }
+            result = result * base[sz] + parseint_raw8b_wrap(p, sz);
+            p += sz;
+            if (*p == '\0') break;
         }
-        if (pos != 0) result += base * parseint_raw8b_wrap(s.substr(0, pos));
         return minus ? -result : result;
     }
     char int128_string_buffer[40];
@@ -44,9 +46,6 @@ when not declared CPLIB_MATH_INT128:
         }
         if (x < 0) *(--d) = '-';
         return d;
-    }
-    void test(char* s) {
-        std::cout << *s << std::endl;
     }
     """.}
     type Int128* {.importcpp: "__int128_t", nodecl.} = object
