@@ -14,17 +14,23 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/sheep.nim
-    title: cplib/tmpl/sheep.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/tmpl/sheep.nim
+    title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -42,22 +48,24 @@ data:
     include cplib/tmpl/sheep\ninclude cplib/graph/graph\ninclude cplib/graph/dijkstra\n\
     var N, M, s, t = ii()\nvar G = initWeightedDirectedStaticGraph(N)\nfor i in 0..<M:\n\
     \    var a, b, c = ii()\n    G.add_edge(a, b, c)\nG.build()\nvar (path, cost)\
-    \ = G.shortest_path(s, t)\nif len(path) == 1:\n    echo -1\nelse:\n    echo cost,\
-    \ \" \", len(path)-1\n    for i in 0..<len(path)-1:\n        echo path[i], \"\
-    \ \", path[i+1]\n"
+    \ = G.shortest_path_dijkstra(s, t)\nif len(path) == 1:\n    echo -1\nelse:\n \
+    \   echo cost, \" \", len(path)-1\n    for i in 0..<len(path)-1:\n        echo\
+    \ path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/infl.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []
-  timestamp: '2024-06-02 05:32:48+09:00'
+  timestamp: '2024-06-25 04:43:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/restore_dijkstra_static_test.nim

@@ -20,11 +20,11 @@ data:
     path: cplib/tmpl/qcfium.nim
     title: cplib/tmpl/qcfium.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -55,18 +55,18 @@ data:
 
     '
   dependsOn:
-  - cplib/tmpl/citrus.nim
   - cplib/tmpl/qcfium.nim
-  - cplib/utils/infl.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/infl.nim
-  - cplib/tmpl/qcfium.nim
-  - cplib/math/isqrt.nim
   - cplib/tmpl/citrus.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/qcfium.nim
+  - cplib/tmpl/citrus.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/tmpl/citrus_and_qcfium_test.nim
   requiredBy: []
-  timestamp: '2024-04-11 00:54:40+09:00'
+  timestamp: '2024-06-25 03:55:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tmpl/citrus_and_qcfium_test.nim

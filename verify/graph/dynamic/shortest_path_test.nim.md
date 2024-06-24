@@ -14,17 +14,23 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/tmpl/sheep.nim
-    title: cplib/tmpl/sheep.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/tmpl/sheep.nim
+    title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -39,25 +45,27 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/shortest_path\n\
-    include cplib/tmpl/sheep\nimport cplib/graph/graph\nimport cplib/graph/dijkstra\n\
-    var N, M, s, t = ii()\nvar G = initWeightedDirectedGraph(N)\nfor i in 0..<M:\n\
-    \    var a, b, c = ii()\n    G.add_edge(a, b, c)\nvar (costs, prev) = G.restore_dijkstra(s)\n\
-    if costs[t] == INF:\n    echo -1\nelse:\n    var path = prev.restore_shortestpath_from_prev(t)\n\
-    \    echo costs[t], \" \", len(path)-1\n    for i in 0..<len(path)-1:\n      \
-    \  echo path[i], \" \", path[i+1]\n"
+    include cplib/tmpl/sheep\nimport cplib/graph/graph\nimport cplib/graph/restore_shortest_path_from_prev\n\
+    import cplib/graph/dijkstra\nvar N, M, s, t = ii()\nvar G = initWeightedDirectedGraph(N)\n\
+    for i in 0..<M:\n    var a, b, c = ii()\n    G.add_edge(a, b, c)\nvar (costs,\
+    \ prev) = G.restore_dijkstra(s)\nif costs[t] == INF:\n    echo -1\nelse:\n   \
+    \ var path = prev.restore_shortestpath_from_prev(t)\n    echo costs[t], \" \"\
+    , len(path)-1\n    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/infl.nim
   - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/dynamic/shortest_path_test.nim
   requiredBy: []
-  timestamp: '2024-06-02 05:32:48+09:00'
+  timestamp: '2024-06-25 04:43:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/shortest_path_test.nim

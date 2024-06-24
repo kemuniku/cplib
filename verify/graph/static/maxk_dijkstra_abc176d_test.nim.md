@@ -14,11 +14,17 @@ data:
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -34,7 +40,7 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc176/tasks/abc176_d\n\
     import sequtils\nimport cplib/graph/graph\nimport cplib/graph/maxk_dijkstra\n\
-    import cplib/utils/infl\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
+    import cplib/utils/constants\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
     , varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\nvar\
     \ h, w = ii()\nvar sx, sy, tx, ty = ii() - 1\nvar g = initWeightedDirectedStaticGraph(h*w,\
     \ int32)\nvar s = newSeqWith(h, stdin.readLine).mapIt(it.mapit(it == '.'))\nvar\
@@ -45,18 +51,20 @@ data:
     \    if abs(dx) + abs(dy) <= 1: continue\n                if i+dx notin 0..<h\
     \ or j+dy notin 0..<w or not s[i+dx][j+dy]: continue\n                g.add_edge(i*w+j,\
     \ (i+dx)*w+j+dy, 1i32)\ng.build\nvar d = g.maxk_dijkstra(sx*w+sy, 1i32)\nvar ans\
-    \ = d[tx*w+ty]\nif ans == INFi32: ans = -1\necho ans\n"
+    \ = d[tx*w+ty]\nif ans == INF32: ans = -1\necho ans\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
   requiredBy: []
-  timestamp: '2024-04-11 03:42:22+09:00'
+  timestamp: '2024-06-25 04:43:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/maxk_dijkstra_abc176d_test.nim
