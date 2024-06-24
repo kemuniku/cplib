@@ -14,11 +14,17 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -34,23 +40,25 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_B\n\
     import sequtils\nimport cplib/graph/graph\nimport cplib/graph/bellmanford\nimport\
-    \ cplib/utils/infl\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\n\
-    proc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\nvar v, e, r = ii()\n\
-    var g = initWeightedDirectedGraph(v, int)\nfor i in 0..<e:\n    var s, t, d =\
-    \ ii()\n    g.add_edge(s, t, d)\nvar cost = bellmanford(g, r)\nif cost.min ==\
-    \ -INFL:\n    echo \"NEGATIVE CYCLE\"\nelse:\n    for i in 0..<v:\n        if\
-    \ cost[i] == INFL: echo \"INF\"\n        else: echo cost[i]\n"
+    \ cplib/utils/constants\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
+    , varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\nvar\
+    \ v, e, r = ii()\nvar g = initWeightedDirectedGraph(v, int)\nfor i in 0..<e:\n\
+    \    var s, t, d = ii()\n    g.add_edge(s, t, d)\nvar cost = bellmanford(g, r)\n\
+    if cost.min == -INF64:\n    echo \"NEGATIVE CYCLE\"\nelse:\n    for i in 0..<v:\n\
+    \        if cost[i] == INF64: echo \"INF\"\n        else: echo cost[i]\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/utils/infl.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/bellmanford.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/dynamic/bellmanford_grl1b_test.nim
   requiredBy: []
-  timestamp: '2024-05-03 17:47:59+09:00'
+  timestamp: '2024-06-25 04:43:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/bellmanford_grl1b_test.nim

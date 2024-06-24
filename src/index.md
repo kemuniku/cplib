@@ -82,6 +82,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/maxk_dijkstra.nim
       title: cplib/graph/maxk_dijkstra.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/restore_shortest_path_from_prev.nim
+      title: cplib/graph/restore_shortest_path_from_prev.nim
     - icon: ':warning:'
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
@@ -195,8 +198,8 @@ data:
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
     - icon: ':heavy_check_mark:'
-      path: cplib/utils/infl.nim
-      title: cplib/utils/infl.nim
+      path: cplib/utils/constants.nim
+      title: cplib/utils/constants.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: "\u8EE2\u5012\u6570"

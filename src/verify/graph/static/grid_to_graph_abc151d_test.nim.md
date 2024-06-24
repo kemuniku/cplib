@@ -20,11 +20,17 @@ data:
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/infl.nim
-    title: cplib/utils/infl.nim
+    path: cplib/graph/restore_shortest_path_from_prev.nim
+    title: cplib/graph/restore_shortest_path_from_prev.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/constants.nim
+    title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -40,25 +46,27 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc151/tasks/abc151_d\n\
     import sequtils\nimport cplib/graph/graph\nimport cplib/graph/grid_to_graph\n\
-    import cplib/graph/maxk_dijkstra\nimport cplib/utils/infl\nproc scanf(formatstr:\
+    import cplib/graph/maxk_dijkstra\nimport cplib/utils/constants\nproc scanf(formatstr:\
     \ cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
     %lld\\n\", addr result)\n\nvar h, w = ii()\nvar g = newSeqWith(h, stdin.readLine).grid_to_graph('.',\
     \ true)\ng.build\nvar ans = 0\nfor sx in 0..<h:\n    for sy in 0..<w:\n      \
-    \  var d = g.maxk_dijkstra(sx*w+sy, 1).mapIt(if it == INFL: -1 else: it)\n   \
-    \     ans = max(ans, d.max)\necho ans\n"
+    \  var d = g.maxk_dijkstra(sx*w+sy, 1).mapIt(if it == INF64: -1 else: it)\n  \
+    \      ans = max(ans, d.max)\necho ans\n"
   dependsOn:
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/grid_to_graph.nim
-  - cplib/utils/infl.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/grid_to_graph.nim
-  - cplib/utils/infl.nim
-  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/grid_to_graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/grid_to_graph_abc151d_test.nim
   requiredBy: []
-  timestamp: '2024-04-11 04:28:13+09:00'
+  timestamp: '2024-06-25 04:43:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/grid_to_graph_abc151d_test.nim

@@ -33,9 +33,9 @@ data:
     var ans = 0\nfor i in 0..<N:\n    now += a[i]\n    ans += st.index_right(now)\n\
     \    st.incl(now)\necho ans\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/index_right_test.nim

@@ -51,14 +51,14 @@ data:
   dependsOn:
   - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/math/factorize_tuple_abc324b_test.nim
   requiredBy: []
