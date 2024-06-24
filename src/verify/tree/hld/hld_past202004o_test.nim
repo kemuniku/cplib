@@ -1,8 +1,9 @@
 # verification-helper: PROBLEM https://atcoder.jp/contests/past202004-open/tasks/past202004_o
-import sequtils, tables, strutils, sugar, heapqueue, hashes
+import sequtils, tables, strutils, heapqueue, hashes
 import cplib/graph/graph
 import cplib/collections/unionfind
 import cplib/collections/segtree
+import cplib/utils/constants
 import cplib/tree/heavylightdecomposition
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
@@ -36,14 +37,13 @@ for i in 0..<m:
 var hld = initHld(g, 0)
 var v = (0..<n).toSeq.mapIt(hld.toVtx(it)).mapIt(if hld.P[it] == -1: 0 else: e[(it, hld.P[it])])
 
-var INFL* = int(3300300300300300491)
-var seg = newSegWith(v, max(l, r), -INFL)
+var seg = newSegWith(v, max(l, r), -INF64)
 
 for i in 0..<m:
     if ans[i] != -1: continue
     var (a, b, c) = abc[i]
     var l = hld.lca(a, b)
-    var mx = -INFL
+    var mx = -INF64
     for (l, r) in hld.path(l, a, false, false): mx = max(mx, seg.get(l..<r))
     for (l, r) in hld.path(l, b, false, false): mx = max(mx, seg.get(l..<r))
     ans[i] = ai - mx + c
