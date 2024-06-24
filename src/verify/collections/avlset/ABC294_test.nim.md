@@ -33,14 +33,14 @@ data:
     \nfor _ in 0..<Q:\n    let T = ii()\n    if T == 1:\n        st2.incl(st1.pop(0))\n\
     \    elif T == 2:\n        st2.excl(ii())\n    else:\n        echo st2[0]\n"
   dependsOn:
-  - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/collections/avlset/ABC294_test.nim
   requiredBy: []
-  timestamp: '2024-06-07 12:16:34+09:00'
+  timestamp: '2024-06-25 05:12:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/avlset/ABC294_test.nim
