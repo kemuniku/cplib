@@ -20,7 +20,8 @@ when not declared CPLIB_TMPL_CITRUS:
     import hashes
     const MODINT998244353* = 998244353
     const MODINT1000000007* = 1000000007
-    include cplib/utils/infl
+    include cplib/utils/constants
+    const INFL = INF64
     type double* = float64
     let readNext = iterator(getsChar: bool = false): string {.closure.} =
         while true:
@@ -112,7 +113,7 @@ when not declared CPLIB_TMPL_CITRUS:
     proc `[]=`*(x: var int, n: int, i: bool) =
         if i: x = x or (1 << n)
         else: (if x[n]: x = x xor (1 << n))
-    proc pow*(a, n: int, m = INFL): int =
+    proc pow*(a, n: int, m = INF64): int =
         var
             rev = 1
             a = a

@@ -2,7 +2,7 @@
 import sequtils
 import cplib/graph/graph
 import cplib/graph/maxk_dijkstra
-import cplib/utils/infl
+import cplib/utils/constants
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
@@ -23,5 +23,5 @@ for i in 0..<h:
                 g.add_edge(i*w+j, (i+dx)*w+j+dy, 1i32)
 var d = g.maxk_dijkstra(sx*w+sy, 1i32)
 var ans = d[tx*w+ty]
-if ans == INFi32: ans = -1
+if ans == INF32: ans = -1
 echo ans
