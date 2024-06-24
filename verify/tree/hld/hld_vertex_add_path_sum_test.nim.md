@@ -48,9 +48,9 @@ data:
   dependsOn:
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
