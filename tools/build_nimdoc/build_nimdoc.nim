@@ -21,7 +21,7 @@ block:
 
 if dirExists(&"{REPOSITORY_ROOT}htmldocs"):
     removeDir(&"{REPOSITORY_ROOT}hemldocs")
-var doc_gen_command = &"cd {REPOSITORY_ROOT} && nim doc --project --index:off --git.url:{GITHUB_REPOSITORY} --git.commit:main --git.devel:main --outdir:htmldocs {LIBRARY_ROOT_FROM_REPOSITORY_ROOT}cplib.nim"
+var doc_gen_command = &"cd {REPOSITORY_ROOT} && nim doc --project --index:off --git.url:{GITHUB_REPOSITORY} --git.commit:main --git.devel:main --outdir:nimdoc {LIBRARY_ROOT_FROM_REPOSITORY_ROOT}cplib.nim"
 echo doc_gen_command
 assert execShellCmd(doc_gen_command) == 0, &"{doc_gen_command} end with non-zero status code"
 
