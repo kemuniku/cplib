@@ -61,7 +61,8 @@ when not declared CPLIB_TMPL_SHEEP:
     #便利な変換
     proc `!`(x: char, a = '0'): int = int(x)-int(a)
     #定数
-    const INF = int(3300300300300300491)
+    include cplib/utils/constants
+    const INF = INF64
     #converter
 
     #range
@@ -78,6 +79,6 @@ when not declared CPLIB_TMPL_SHEEP:
     iterator range(ends: int): int = (for i in 0..<ends: yield i)
     iterator range(start: int, ends: int): int = (for i in
             start..<ends: yield i)
-    
+
     #joinが非stringでめちゃくちゃ遅いやつのパッチ
     proc join*[T: not string](a: openArray[T], sep: string = ""): string = a.mapit($it).join(sep)
