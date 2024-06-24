@@ -47,11 +47,13 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
     declareDijkstra(dijkstra, float, 0.0, 1e100)
     proc dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto =
         dijkstra_impl(G, start, ZERO, INF)
-    proc shortest_path_dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T], start: int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =
+    proc shortest_path_dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T], start: int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =
         var (costs, prev) = restore_dijkstra(G, start, ZERO, INF)
         result.path = prev.restore_shortest_path_from_prev(goal)
         result.cost = costs[goal]
     proc shortest_path_dijkstra*(G: DynamicGraph[int] or StaticGraph[int], start: int, goal: int, ZERO: int = 0, INF: int = INF64): tuple[path: seq[int], cost: int] =
-        shortest_path_dijkstra(G, start, goal, ZERO, INF)
+        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)
     proc shortest_path_dijkstra*(G: DynamicGraph[int32] or StaticGraph[int32], start: int, goal: int, ZERO: int32 = 0.int32, INF: int32 = INF32): tuple[path: seq[int], cost: int32] =
-        shortest_path_dijkstra(G, start, goal, ZERO, INF)
+        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)
+    proc shortest_path_dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T], start: int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =
+        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)

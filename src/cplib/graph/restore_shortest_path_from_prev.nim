@@ -6,4 +6,4 @@ when not declared CPLIB_GRAPH_RESTORE_SHORTESTPATH_FROM_PREV:
         while i != -1:
             result.add(i)
             i = prev[i]
-        result = result.reversed()
+        result.reverse

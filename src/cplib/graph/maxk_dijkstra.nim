@@ -58,11 +58,13 @@ when not declared CPLIB_GRAPH_MAXK_DIJKSTRA:
     declareMaxkDijkstra(maxk_dijkstra, int32, 0i32, INF32)
     proc maxk_dijkstra*[T: SomeInteger](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], k, ZERO, INF: T): auto =
         maxk_dijkstra_impl(G, start, k, ZERO, INF)
-    proc shortest_path_dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, k, ZERO, INF: T): tuple[path: seq[int], cost: T] =
+    proc shortest_path_maxk_dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, k, ZERO, INF: T): tuple[path: seq[int], cost: T] =
         var (costs, prev) = restore_maxk_dijkstra(G, start, k, ZERO, INF)
         result.path = prev.restore_shortest_path_from_prev(goal)
         result.cost = costs[goal]
-    proc shortest_path_dijkstra*(G: DynamicGraph[int] or StaticGraph[int], start, goal: int, k: int, ZERO: int = 0, INF: int = INF64): tuple[path: seq[int], cost: int] =
-        return shortest_path_dijkstra(G, start, goal, k, ZERO, INF)
-    proc shortest_path_dijkstra*(G: DynamicGraph[int32] or StaticGraph[int32], start, goal: int, k: int32, ZERO: int32 = 0.int32, INF: int = INF32): tuple[path: seq[int], cost: int] =
-        return shortest_path_dijkstra(G, start, goal, k, ZERO, INF)
+    proc shortest_path_maxk_dijkstra*(G: DynamicGraph[int] or StaticGraph[int], start, goal: int, k: int, ZERO: int = 0, INF: int = INF64): tuple[path: seq[int], cost: int] =
+        return shortest_path_maxk_dijkstra_impl(G, start, goal, k, ZERO, INF)
+    proc shortest_path_maxk_dijkstra*(G: DynamicGraph[int32] or StaticGraph[int32], start, goal: int, k: int32, ZERO: int32 = 0.int32, INF: int = INF32): tuple[path: seq[int], cost: int] =
+        return shortest_path_maxk_dijkstra_impl(G, start, goal, k, ZERO, INF)
+    proc shortest_path_maxk_dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, k, ZERO, INF: T): tuple[path: seq[int], cost: T] =
+        return shortest_path_maxk_dijkstra_impl(G, start, goal, k, ZERO, INF)

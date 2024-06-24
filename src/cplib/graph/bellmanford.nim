@@ -54,11 +54,13 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
     declareBellmanFord(bellmanford, float, 0.0, 1e100)
     proc bellmanford*[T](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto =
         bellmanford_impl(G, start, ZERO, INF)
-    proc shortest_path_bellmanford*[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =
+    proc shortest_path_bellmanford_impl[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =
         var (costs, prev) = restore_bellmanford(G, start, ZERO, INF)
         result.path = prev.restore_shortest_path_from_prev(goal)
         result.cost = costs[goal]
     proc shortest_path_bellmanford*(G: DynamicGraph[int] or StaticGraph[int], start, goal: int, ZERO: int = 0, INF: int = INF64): tuple[path: seq[int], cost: int] =
-        shortest_path_bellmanford(G, start, goal, ZERO, INF)
+        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
     proc shortest_path_bellmanford*(G: DynamicGraph[int32] or StaticGraph[int32], start, goal: int, ZERO: int32 = 0, INF: int32 = INF32): tuple[path: seq[int], cost: int32] =
-        shortest_path_bellmanford(G, start, goal, ZERO, INF)
+        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
+    proc shortest_path_bellmanford*[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =
+        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
