@@ -56,7 +56,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
         return self[idx]
     proc pop*[T](self: var AvlSortedMultiSet[T], idx: int = -1): T =
         var idx = idx
-        if idx < 0: idx = self.len - idx
+        if idx < 0: idx = self.len + idx
         assert idx < self.root.len
         var node = self.root.get(idx)
         result = node.key
