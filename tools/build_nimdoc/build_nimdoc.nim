@@ -1,6 +1,8 @@
 import os, re, strformat
 
-const LIBRARY_ROOT = "../src/cplib/"
+const REPOSITORY_ROOT = "../"
+const LIBRARY_ROOT_FROM_REPOSITORY_ROOT = "src/cplib/"
+const LIBRARY_ROOT = REPOSITORY_ROOT & LIBRARY_ROOT_FROM_REPOSITORY_ROOT
 const GITHUB_REPOSITORY = "https://github.com/kemuniku/cplib"
 var import_string = """
 {.warning[UnusedImport]: off.}
@@ -17,20 +19,21 @@ block:
     defer: close(f)
     f.write(import_string)
 
-if dirExists(&"{LIBRARY_ROOT}htmldocs"):
-    removeDir(&"{LIBRARY_ROOT}hemldocs")
-var doc_gen_command = &"cd {LIBRARY_ROOT} && nim doc --project --index:off --git.url:{GITHUB_REPOSITORY} --outdir:htmldocs cplib.nim"
+if dirExists(&"{REPOSITORY_ROOT}htmldocs"):
+    removeDir(&"{REPOSITORY_ROOT}hemldocs")
+var doc_gen_command = &"cd {REPOSITORY_ROOT} && nim doc --project --index:off --git.url:{GITHUB_REPOSITORY} --git.commit:main --git.devel:main --outdir:htmldocs {LIBRARY_ROOT_FROM_REPOSITORY_ROOT}cplib.nim"
+echo doc_gen_command
 assert execShellCmd(doc_gen_command) == 0, &"{doc_gen_command} end with non-zero status code"
 
 # modify content in cplib.html for readability
 var newcontent: string
 block:
-    var f = open(LIBRARY_ROOT & "htmldocs/cplib.html", FileMode.fmRead)
+    var f = open(&"{REPOSITORY_ROOT}htmldocs/cplib.html", FileMode.fmRead)
     defer: close(f)
     var content = f.readAll
     newcontent = replacef(content, re"""(<a class="reference external" href="[A-z/]*\.html">[A-z/]*</a>),""", "$1<br/>")
 block:
-    var f = open(LIBRARY_ROOT & "htmldocs/cplib.html", FileMode.fmWrite)
+    var f = open(&"{REPOSITORY_ROOT}htmldocs/cplib.html", FileMode.fmWrite)
     defer: close(f)
     f.write(newcontent)
 
