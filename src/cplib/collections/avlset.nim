@@ -1,7 +1,7 @@
 when not declared CPLIB_COLLECTIONS_AVLSET:
     const CPLIB_COLLECTIONS_AVLSET* = 1
     import cplib/collections/avltreenode
-    import options
+    import options, sequtils, strutils
 
     type AvlSortedMultiSet*[T] = object
         root*: AvlTreeNode[T]
@@ -56,7 +56,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
         return self[idx]
     proc pop*[T](self: var AvlSortedMultiSet[T], idx: int = -1): T =
         var idx = idx
-        if idx < 0: idx = self.len - idx
+        if idx < 0: idx = self.len + idx
         assert idx < self.root.len
         var node = self.root.get(idx)
         result = node.key
@@ -71,6 +71,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
             elif t == 1:
                 yield node.key
                 if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))
+    proc `$`*[T](self: AvlSortedMultiSet[T]): string = self.toSeq.join(" ")
     proc initAvlSortedMultiSet*[T](v: seq[T] = @[]): AvlSortedMultiSet[T] =
         result = AvlSortedMultiSet[T](root: get_avltree_nilnode[T]())
         for item in v: result.incl(item)
