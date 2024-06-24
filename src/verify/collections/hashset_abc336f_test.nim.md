@@ -45,10 +45,10 @@ data:
     \        if si in tb2[i]:\n                ans = min(ans, i + k)\n           \
     \     break\necho if ans == 30: -1 else: ans\n"
   dependsOn:
-  - cplib/matrix/matops.nim
-  - cplib/collections/hashset.nim
   - cplib/collections/hashset.nim
   - cplib/matrix/matops.nim
+  - cplib/matrix/matops.nim
+  - cplib/collections/hashset.nim
   isVerificationFile: true
   path: verify/collections/hashset_abc336f_test.nim
   requiredBy: []

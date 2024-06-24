@@ -42,8 +42,8 @@ data:
     \ quit()\nfor i in 0..<n:\n    var d = d[i].mapIt(if it == INF64: \"INF\" else:\
     \ ($it)).join(\" \")\n    echo d\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
