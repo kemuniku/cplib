@@ -2,6 +2,7 @@
 include cplib/tmpl/sheep
 import cplib/graph/graph
 import cplib/graph/dijkstra
+import cplib/graph/restore_shortest_path_from_prev
 var N, M, s, t = ii()
 var G = initWeightedDirectedGraph(N)
 for i in 0..<M:

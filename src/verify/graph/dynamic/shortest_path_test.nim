@@ -1,6 +1,7 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/shortest_path
 include cplib/tmpl/sheep
 import cplib/graph/graph
+import cplib/graph/restore_shortest_path_from_prev
 import cplib/graph/dijkstra
 var N, M, s, t = ii()
 var G = initWeightedDirectedGraph(N)
