@@ -39,6 +39,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
+  - name: cplib
+    pages:
+    - icon: ':warning:'
+      path: cplib/cplib.nim
+      title: cplib/cplib.nim
   - name: cplib/geometry
     pages:
     - icon: ':heavy_check_mark:'
