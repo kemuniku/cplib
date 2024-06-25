@@ -40,6 +40,8 @@ jobs:
 
       - name: Build Nimdoc
         run: |
+          git config --global user.email "<EMAIL>"
+          git config --global user.name "GitHub Action"
           git fetch origin && git checkout main
           nimble install -y
           cd tools
