@@ -19,21 +19,21 @@ block:
     defer: close(f)
     f.write(import_string)
 
-if dirExists(&"{LIBRARY_ROOT}nimdocs"):
-    removeDir(&"{LIBRARY_ROOT}nimdocs")
-var doc_gen_command = &"cd {LIBRARY_ROOT} && nim doc --project --index:off --git.url:{GITHUB_REPOSITORY} --git.commit:main --git.devel:main --outdir:nimdoc cplib.nim"
+if dirExists(&"{REPOSITORY_ROOT}nimdocs"):
+    removeDir(&"{REPOSITORY_ROOT}nimdocs")
+var doc_gen_command = &"cd {REPOSITORY_ROOT} && nim doc --project --index:off --git.url:{GITHUB_REPOSITORY} --git.commit:main --git.devel:main --outdir:nimdoc {LIBRARY_ROOT_FROM_REPOSITORY_ROOT}cplib.nim"
 echo doc_gen_command
 assert execShellCmd(doc_gen_command) == 0, &"{doc_gen_command} end with non-zero status code"
 
 # modify content in cplib.html for readability
 var newcontent: string
 block:
-    var f = open(&"{LIBRARY_ROOT}nimdoc/cplib.html", FileMode.fmRead)
+    var f = open(&"{REPOSITORY_ROOT}nimdoc/cplib.html", FileMode.fmRead)
     defer: close(f)
     var content = f.readAll
     newcontent = replacef(content, re"""(<a class="reference external" href="[A-z/]*\.html">[A-z/]*</a>),""", "$1<br/>")
 block:
-    var f = open(&"{LIBRARY_ROOT}nimdoc/cplib.html", FileMode.fmWrite)
+    var f = open(&"{REPOSITORY_ROOT}nimdoc/cplib.html", FileMode.fmWrite)
     defer: close(f)
     f.write(newcontent)
 

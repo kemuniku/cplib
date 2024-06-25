@@ -47,7 +47,7 @@ jobs:
           cd tools
           make clean && make build_nimdoc.o
           ./build_nimdoc.o
-          cd ../src/cplib
+          cd ..
           git add nimdoc
           git stash push nimdoc
           git checkout gh-pages
