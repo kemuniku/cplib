@@ -49,12 +49,12 @@ jobs:
           git add nimdoc
           git stash push nimdoc
           git checkout gh-pages
-          git checkout stash@{0} --theirs
+          rm -rf nimdoc
+          git commit -am "[workflow] remove old nimdocs $(git rev-parse HEAD~1)"
+          git stash pop stash@{0}
           git add nimdoc
-          if ! git diff --exit-code --quiet
-          then
-            git commit && git push
-          fi
+          git commit -am "[workflow] add nimdocs $(git rev-parse HEAD~1)"
+          git push
 
       - name: Copy and Push
         env:
