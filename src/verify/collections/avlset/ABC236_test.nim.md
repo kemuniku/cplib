@@ -32,10 +32,10 @@ data:
     for s in S:\n    if s in st:\n        echo \"Yes\"\n    else:\n        echo \"\
     No\"\n"
   dependsOn:
-  - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/ABC236_test.nim
   requiredBy: []

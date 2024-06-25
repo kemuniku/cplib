@@ -58,9 +58,9 @@ data:
   - cplib/tmpl/qcfium.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/qcfium.nim
-  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
   - cplib/tmpl/citrus.nim
+  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
   - cplib/tmpl/citrus.nim
   isVerificationFile: true
