@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
   requiredBy: []

@@ -48,10 +48,10 @@ data:
     \        if cost[i] == INF64: echo \"INF\"\n        else: echo cost[i]\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/bellmanford.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/graph/bellmanford.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
