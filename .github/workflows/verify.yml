@@ -75,6 +75,12 @@ jobs:
       - name: Remove init.sh
         run: rm -f init.sh
 
+      - name: Build Nimdoc
+        run: |
+          cd tools
+          make clean && make build_nimdoc.o
+          ./build_nimdoc.o
+
       - name: Run tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
