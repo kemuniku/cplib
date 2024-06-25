@@ -77,19 +77,6 @@ jobs:
       - name: Remove init.sh
         run: rm -f init.sh
 
-      - name: Build Nimdoc
-        run: |
-          cd tools
-          make clean && make build_nimdoc.o
-          ./build_nimdoc.o
-          cd ../src/cplib
-          git fetch origin gh-pages && git checkout gh-pages
-          git add nimdoc
-          if ! git diff --exit-code --quiet
-          then
-            git commit && git push
-          fi
-
       - name: Run tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

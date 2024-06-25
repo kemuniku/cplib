@@ -16,6 +16,23 @@ jobs:
           fetch-depth: 0
           ref: gh-pages
 
+      - name: Build Nimdoc
+        run: |
+          git fetch origin && git checkout main
+          cd tools
+          make clean && make build_nimdoc.o
+          ./build_nimdoc.o
+          cd ../src/cplib
+          git add nimdoc
+          git stash push nimdoc
+          git checkout gh-pages
+          git stash pop stash@{0}
+          git add nimdoc
+          if ! git diff --exit-code --quiet
+          then
+            git commit && git push
+          fi
+
       - name: Copy and Push
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
