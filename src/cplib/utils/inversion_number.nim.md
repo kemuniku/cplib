@@ -26,7 +26,9 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_INVERSION_NUMBER:\n    const CPLIB_UTILS_INVERSION_NUMBER*\
     \ = 1\n    import algorithm, sequtils\n    import cplib/collections/segtree\n\
-    \    proc inversion_number*(a: seq[int]): int =\n        let c = a.sorted.deduplicate(true)\n\
+    \    proc inversion_number*(a: seq[int]): int =\n        ## Calculate the inversion\
+    \ number of sequence a\n        runnableExamples:\n            var a = @[2, 1,\
+    \ 5, 3, 4]\n            assert inversion_number(a) == 3\n        let c = a.sorted.deduplicate(true)\n\
     \        var seg = initSegmentTree(newSeqWith(c.len, 0), proc(l, r: int): int\
     \ = l+r, 0)\n        var ans = 0\n        for i in 0..<a.len:\n            let\
     \ pos = c.lowerbound(a[i])\n            if pos + 1 < c.len:\n                ans\
@@ -38,18 +40,15 @@ data:
   isVerificationFile: false
   path: cplib/utils/inversion_number.nim
   requiredBy: []
-  timestamp: '2024-06-17 22:20:15+09:00'
+  timestamp: '2024-06-25 10:24:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
 documentation_of: cplib/utils/inversion_number.nim
 layout: document
-title: "\u8EE2\u5012\u6570"
+redirect_from:
+- /library/cplib/utils/inversion_number.nim
+- /library/cplib/utils/inversion_number.nim.html
+title: cplib/utils/inversion_number.nim
 ---
-
-## 計算量
-$\mathrm{O} (N \log N)$
-
-## 概要
-配列に対して、転倒数（バブルソートの操作回数の最小値）を返します。

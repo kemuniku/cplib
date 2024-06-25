@@ -98,10 +98,10 @@ data:
     \ shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
