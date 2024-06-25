@@ -98,9 +98,9 @@ data:
   - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:
