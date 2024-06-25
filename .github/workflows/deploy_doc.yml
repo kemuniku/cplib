@@ -49,8 +49,7 @@ jobs:
           git add nimdoc
           git stash push nimdoc
           git checkout gh-pages
-          git stash pop stash@{0}
-          git checkout --theirs .
+          git checkout stash@{0} --theirs
           git add nimdoc
           if ! git diff --exit-code --quiet
           then
