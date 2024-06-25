@@ -4,10 +4,10 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
-    title: "\u8EE2\u5012\u6570"
+    title: cplib/utils/inversion_number.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
-    title: "\u8EE2\u5012\u6570"
+    title: cplib/utils/inversion_number.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/hashtable_yuki2686_test.nim

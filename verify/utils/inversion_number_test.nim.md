@@ -9,10 +9,10 @@ data:
     title: cplib/collections/segtree.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
-    title: "\u8EE2\u5012\u6570"
+    title: cplib/utils/inversion_number.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
-    title: "\u8EE2\u5012\u6570"
+    title: cplib/utils/inversion_number.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -41,14 +41,14 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/segtree.nim
   - cplib/utils/inversion_number.nim
   - cplib/collections/segtree.nim
   - cplib/utils/inversion_number.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/utils/inversion_number_test.nim
   requiredBy: []
-  timestamp: '2024-06-17 22:20:15+09:00'
+  timestamp: '2024-06-25 10:24:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/inversion_number_test.nim

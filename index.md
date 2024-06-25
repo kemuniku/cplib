@@ -202,7 +202,7 @@ data:
       title: cplib/utils/constants.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
-      title: "\u8EE2\u5012\u6570"
+      title: cplib/utils/inversion_number.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/lis.nim
       title: cplib/utils/lis.nim
