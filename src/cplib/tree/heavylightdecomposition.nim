@@ -7,7 +7,7 @@ when not declared CPLIB_TREE_HLD:
     type HeavyLightDecomposition* = object
         N*: int
         P*, PP*, PD*, D*, I*, rangeL*, rangeR*: seq[int]
-    proc initHld*(g: UnWeightedGraph, root: int): HeavyLightDecomposition =
+    proc initHld*(g: UnDirectedGraph, root: int): HeavyLightDecomposition =
         var hld = HeavyLightDecomposition()
         var n: int = g.len
         hld.N = n
@@ -57,7 +57,7 @@ when not declared CPLIB_TREE_HLD:
         for i in 0..<n:
             hld.I[hld.rangeL[i]] = i
         return hld
-    proc initHld*[T](g: WeightedGraph[T], root: int): HeavyLightDecomposition =
+    proc initHld*(g: DirectedGraph, root: int): HeavyLightDecomposition =
         var n = g.len
         var gn = initUnWeightedUnDirectedStaticGraph(n)
         var seen = initHashSet[(int, int)]()
