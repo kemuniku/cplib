@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -51,7 +51,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 19:09:38+09:00'
+  timestamp: '2024-06-27 15:21:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
