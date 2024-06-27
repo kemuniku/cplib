@@ -41,7 +41,7 @@ for i in 1..<lib_dirs.len:
 var combined = newSeq[string]()
 if single_line:
     combined.add("import macros;macro ImportExpand(s:untyped):untyped = parseStmt($s[2])")
-proc read_source(dir, filename, git_url: string, is_main, direct_import: bool): seq[string] =
+proc read_source(dir, filename, git_url, indent: string, is_main, direct_import: bool): seq[string] =
     var fullfilename = dir & filename & (if filename.endsWith(".nim"): "" else: ".nim")
     if fullfilename in loaded_file: return
     if not quiet: info(&"file: {fullfilename}")
@@ -56,7 +56,7 @@ proc read_source(dir, filename, git_url: string, is_main, direct_import: bool): 
     var example_indent_width: int
     while lines.len > 0:
         var line = lines.popFirst()
-        var indent = (proc(line: var string): string =
+        var indent = indent & (proc(line: var string): string =
             var indent_count = 0
             for i in 0..<line.len:
                 if line[i] != ' ': break
@@ -75,7 +75,7 @@ proc read_source(dir, filename, git_url: string, is_main, direct_import: bool): 
                         var lib_dir = lib_dirs[i]
                         if fileExists(lib_dir & lib & ".nim"):
                             var git_url = git_urls[i]
-                            for item in read_source(lib_dir, lib, git_url, false, is_main):
+                            for item in read_source(lib_dir, lib, git_url, indent, false, is_main):
                                 result_lines.add(item)
                             return newSeq[string]()
                     return @[&"{indent}{prefix} {lib}"]
@@ -98,7 +98,7 @@ proc read_source(dir, filename, git_url: string, is_main, direct_import: bool): 
             line = line.replace("\"", "\\\"")
         var s0 = result_lines.join("\\n")
         combined.add(&"# source: {git_url}src/{filename}.nim")
-        combined.add(&"ImportExpand \"{filename}\" <=== \"\"\"{s0}\"\"\"")
+        combined.add(&"ImportExpand \"{filename}\" <=== \"{s0}\"")
         return newSeq[string]()
     if is_main or not single_line:
         if not is_main: combined.add(&"# source: {git_url}src/{filename}.nim")
@@ -106,7 +106,7 @@ proc read_source(dir, filename, git_url: string, is_main, direct_import: bool): 
         for line in result_lines: combined.add(line)
         return newSeq[string]()
     return result_lines
-discard read_source("./", filename, "", true, false)
+discard read_source("./", filename, "", "", true, false)
 block:
     var file = open(outfile, fmWrite)
     defer: close(file)
