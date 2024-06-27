@@ -19,7 +19,6 @@ when not declared CPLIB_MATH_FRACTIONS:
         result = Fraction[T](num: num, den: den)
         if reduce: result.reduce()
     proc initFraction*[T](num: T): Fraction[T] = Fraction[T](num: num, den: T(1))
-    converter toFraction*[T](x: T): Fraction[T] = initFraction(x)
     proc `$`*[T](x: Fraction[T]): string =
         var x = x
         x.reduce()
