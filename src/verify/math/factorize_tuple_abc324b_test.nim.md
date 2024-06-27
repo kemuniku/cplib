@@ -49,15 +49,15 @@ data:
     for (k, v) in primefactor_tuple(n):\n    if k != 2 and k != 3:\n        echo \"\
     No\"\n        quit()\necho \"Yes\"\n\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/factorize_tuple_abc324b_test.nim

@@ -59,7 +59,7 @@ data:
     \ sequtils, algorithm, sets\n    import cplib/graph/graph\n    # https://atcoder.jp/contests/abc337/submissions/50216964\n\
     \    # \u2191\u4E0A\u8A18\u306E\u63D0\u51FA\u3088\u308A\u5F15\u7528\n    type\
     \ HeavyLightDecomposition* = object\n        N*: int\n        P*, PP*, PD*, D*,\
-    \ I*, rangeL*, rangeR*: seq[int]\n    proc initHld*(g: UnWeightedGraph, root:\
+    \ I*, rangeL*, rangeR*: seq[int]\n    proc initHld*(g: UnDirectedGraph, root:\
     \ int): HeavyLightDecomposition =\n        var hld = HeavyLightDecomposition()\n\
     \        var n: int = g.len\n        hld.N = n\n        hld.P = newSeqWith(n,\
     \ -1)\n        hld.I = newSeqWith(n, 0)\n        hld.I[0] = root\n        var\
@@ -82,7 +82,7 @@ data:
     \                    ir -= Z[e]\n                    hld.rangeL[e] = ir\n    \
     \        if nx[p] != -1:\n                hld.rangeL[nx[p]] = hld.rangeL[p] +\
     \ 1\n        for i in 0..<n:\n            hld.I[hld.rangeL[i]] = i\n        return\
-    \ hld\n    proc initHld*[T](g: WeightedGraph[T], root: int): HeavyLightDecomposition\
+    \ hld\n    proc initHld*(g: DirectedGraph, root: int): HeavyLightDecomposition\
     \ =\n        var n = g.len\n        var gn = initUnWeightedUnDirectedStaticGraph(n)\n\
     \        var seen = initHashSet[(int, int)]()\n        for i in 0..<n:\n     \
     \       for (j, _) in g[i]:\n                if (i, j) notin seen:\n         \
@@ -142,7 +142,7 @@ data:
   isVerificationFile: false
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy: []
-  timestamp: '2024-06-18 19:28:07+09:00'
+  timestamp: '2024-06-28 02:03:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
