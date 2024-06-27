@@ -111,15 +111,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/fractions_abc308c_test.nim
     title: verify/math/fractions_abc308c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -204,7 +204,7 @@ data:
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
   timestamp: '2024-06-27 15:21:09+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/fractions_abc226d_test.nim
   - verify/math/fractions_abc226d_test.nim

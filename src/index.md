@@ -110,7 +110,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/euler_phi.nim
       title: cplib/math/euler_phi.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/fractions.nim
       title: cplib/math/fractions.nim
     - icon: ':heavy_check_mark:'
@@ -612,7 +612,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/fractions_abc308c_test.nim
       title: verify/math/fractions_abc308c_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/math/fractions_unit_test.nim
       title: verify/math/fractions_unit_test.nim
     - icon: ':heavy_check_mark:'

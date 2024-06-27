@@ -104,12 +104,12 @@ data:
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
   - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim

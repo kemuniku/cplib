@@ -49,12 +49,12 @@ data:
   dependsOn:
   - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   requiredBy: []

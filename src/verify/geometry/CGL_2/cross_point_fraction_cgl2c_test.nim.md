@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -55,13 +55,13 @@ data:
   dependsOn:
   - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
