@@ -54,14 +54,14 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []
