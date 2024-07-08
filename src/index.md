@@ -694,6 +694,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/keyence2021_static_test.nim
       title: verify/modint/barrett/keyence2021_static_test.nim
+  - name: verify/modint
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/modint/check_zerodivision_test.nim
+      title: verify/modint/check_zerodivision_test.nim
   - name: verify/modint/montgomery
     pages:
     - icon: ':heavy_check_mark:'

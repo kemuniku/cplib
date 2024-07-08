@@ -54,15 +54,15 @@ data:
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/shortest_path_static_test.nim
   requiredBy: []

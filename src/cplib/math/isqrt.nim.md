@@ -82,6 +82,12 @@ data:
     path: verify/modint/barrett/keyence2021_static_test.nim
     title: verify/modint/barrett/keyence2021_static_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/check_zerodivision_test.nim
+    title: verify/modint/check_zerodivision_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/check_zerodivision_test.nim
+    title: verify/modint/check_zerodivision_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/abc277g_dynamic_test.nim
     title: verify/modint/montgomery/abc277g_dynamic_test.nim
   - icon: ':heavy_check_mark:'
@@ -199,6 +205,8 @@ data:
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/check_zerodivision_test.nim
+  - verify/modint/check_zerodivision_test.nim
   - verify/modint/barrett/abc277g_dynamic_test.nim
   - verify/modint/barrett/abc277g_dynamic_test.nim
   - verify/modint/barrett/abc277g_static_test.nim
