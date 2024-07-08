@@ -48,7 +48,7 @@ jobs:
           make clean && make build_nimdoc.o
           ./build_nimdoc.o
           cd ..
-          git add nimdoc
+          git add -f nimdoc
           git stash push nimdoc
           git checkout gh-pages
           rm -rf nimdoc
