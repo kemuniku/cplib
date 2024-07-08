@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: verify/math/fractions_unit_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 19:09:38+09:00'
+  timestamp: '2024-06-27 15:21:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/fractions_unit_test.nim

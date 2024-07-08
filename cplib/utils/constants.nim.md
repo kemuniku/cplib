@@ -32,6 +32,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep.nim
+    title: cplib/tmpl/sheep.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep.nim
+    title: cplib/tmpl/sheep.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -106,6 +112,18 @@ data:
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/isprime_yosupo_test.nim
+    title: verify/math/isprime_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/isprime_yosupo_test.nim
+    title: verify/math/isprime_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/isprime_yukicoder_test.nim
+    title: verify/math/isprime_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/isprime_yukicoder_test.nim
+    title: verify/math/isprime_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
   - icon: ':heavy_check_mark:'
@@ -134,6 +152,8 @@ data:
   requiredBy:
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/citrus.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/maxk_dijkstra.nim
@@ -147,6 +167,10 @@ data:
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim

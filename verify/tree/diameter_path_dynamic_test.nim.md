@@ -74,24 +74,24 @@ data:
     \ ch1 = find_leaf(c1, c2, 0)\n    var ch2 = find_leaf(c2, c1, 0)\n    echo (mint(ch1)\
     \ * mint(ch2))\n"
   dependsOn:
-  - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tree/diameter.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/tree/diameter.nim
+  - cplib/tree/diameter.nim
+  - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/tree/diameter_path_dynamic_test.nim
   requiredBy: []
-  timestamp: '2024-06-18 18:51:02+09:00'
+  timestamp: '2024-07-08 10:27:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/diameter_path_dynamic_test.nim

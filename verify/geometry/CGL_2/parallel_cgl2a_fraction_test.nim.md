@@ -43,14 +43,14 @@ data:
   dependsOn:
   - cplib/math/fractions.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 19:09:38+09:00'
+  timestamp: '2024-06-27 15:21:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim

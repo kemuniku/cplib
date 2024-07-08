@@ -70,6 +70,12 @@ data:
     path: verify/modint/barrett/keyence2021_static_test.nim
     title: verify/modint/barrett/keyence2021_static_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/check_zerodivision_test.nim
+    title: verify/modint/check_zerodivision_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/check_zerodivision_test.nim
+    title: verify/modint/check_zerodivision_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/abc277g_dynamic_test.nim
     title: verify/modint/montgomery/abc277g_dynamic_test.nim
   - icon: ':heavy_check_mark:'
@@ -176,14 +182,14 @@ data:
     \ -= init(T, b).a\n        if a.a >= T.umod: a.a += T.umod\n    proc `*=`*[T:\
     \ BarrettModint] (a: var T, b: T or SomeInteger) =\n        a.a = rem(T, (a.a).uint\
     \ * (init(T, b).a).uint)\n    proc inv*[T: BarrettModint](x: T): T =\n       \
-    \ var x: int32 = int32(x.val)\n        var y: int32 = T.mod\n        var u = 1i32\n\
-    \        var v, t = 0i32\n        while y > 0:\n            t = x div y\n    \
-    \        x -= t * y\n            u -= t * v\n            swap(x, y)\n        \
-    \    swap(u, v)\n        return init(T, u)\n    proc `/=`*[T: BarrettModint](a:\
-    \ var T, b: T or SomeInteger) = a *= init(T, b).inv\n    proc val*(a: BarrettModint):\
-    \ int = a.a.int\n    macro declarStaticBarrettModint*(name, M) =\n        let\
-    \ converter_name = ident(\"to\" & $`name`)\n        quote do:\n            type\
-    \ `name`* = StaticBarrettModint[`M`]\n            converter `converter_name`*(a:\
+    \ assert x.val != 0\n        var x: int32 = int32(x.val)\n        var y: int32\
+    \ = T.mod\n        var u = 1i32\n        var v, t = 0i32\n        while y > 0:\n\
+    \            t = x div y\n            x -= t * y\n            u -= t * v\n   \
+    \         swap(x, y)\n            swap(u, v)\n        return init(T, u)\n    proc\
+    \ `/=`*[T: BarrettModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv\n\
+    \    proc val*(a: BarrettModint): int = a.a.int\n    macro declarStaticBarrettModint*(name,\
+    \ M) =\n        let converter_name = ident(\"to\" & $`name`)\n        quote do:\n\
+    \            type `name`* = StaticBarrettModint[`M`]\n            converter `converter_name`*(a:\
     \ int): StaticBarrettModint[`M`] = init(StaticBarrettModint[`M`], a)\n    macro\
     \ declarDynamicBarrettModint*(name, id) =\n        let converter_name = ident(\"\
     to\" & $`name`)\n        quote do:\n            type `name`* = DynamicBarrettModint[`id`]\n\
@@ -195,7 +201,7 @@ data:
   requiredBy:
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  timestamp: '2024-04-12 16:59:42+09:00'
+  timestamp: '2024-07-08 10:27:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/diameter_path_dynamic_test.nim
@@ -222,6 +228,8 @@ data:
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/check_zerodivision_test.nim
+  - verify/modint/check_zerodivision_test.nim
   - verify/modint/barrett/abc277g_dynamic_test.nim
   - verify/modint/barrett/abc277g_dynamic_test.nim
   - verify/modint/barrett/abc277g_static_test.nim

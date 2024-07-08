@@ -43,15 +43,15 @@ data:
     \ c == ONLINE_FRONT: echo \"ONLINE_FRONT\"\n    else: echo \"ON_SEGMENT\"\n"
   dependsOn:
   - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 19:09:38+09:00'
+  timestamp: '2024-06-27 15:21:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
