@@ -69,6 +69,7 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     proc `-`*[T: MontgomeryModint](a: T): T = init(T, 0) - a
     proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger) = a.a = reduce(T, uint(a.a) * init(T, b).a)
     proc inv*[T: MontgomeryModint](x: T): T =
+        assert x.val != 0
         var x: int32 = int32(x.val)
         var y: int32 = T.mod
         var u = 1i32
