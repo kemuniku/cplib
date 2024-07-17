@@ -1,13 +1,22 @@
+## このコードの主要部分はNachiaさんによって作成されたものを利用しています。\
+## https://gist.github.com/NachiaVivias/2468bb1f9b7fbccd0af4e2114a139f97
+## 
+## 根付き木に対してHL分解を行うライブラリです。
+## 
+## 頂点数Nの木に対して、頂点の順番を適切に並べた列をA = [A_0,A_1,...,A_(N-1)]とします。
+
+
 when not declared CPLIB_TREE_HLD:
     const CPLIB_TREE_HLD* = 1
     import sequtils, algorithm, sets
     import cplib/graph/graph
-    # https://atcoder.jp/contests/abc337/submissions/50216964
-    # ↑上記の提出より引用
     type HeavyLightDecomposition* = object
         N*: int
         P*, PP*, PD*, D*, I*, rangeL*, rangeR*: seq[int]
     proc initHld*(g: UnDirectedGraph, root: int): HeavyLightDecomposition =
+        ## 木をrootを根としてHL分解を行う
+        ## 
+        ## 時間計算量:O(N)
         var hld = HeavyLightDecomposition()
         var n: int = g.len
         hld.N = n
@@ -82,14 +91,51 @@ when not declared CPLIB_TREE_HLD:
         gn.build
         return initHld(gn, root)
     proc numVertices*(hld: HeavyLightDecomposition): int = hld.N
+        ## 木の頂点数を返す
+        ## 
+        ## 時間計算量:O(1)
     proc depth*(hld: HeavyLightDecomposition, p: int): int = hld.D[p]
+        ## 頂点の深さを返す
+        ## 
+        ## 時間計算量:O(1)
     proc toSeq*(hld: HeavyLightDecomposition, vtx: int): int = hld.rangeL[vtx]
+        ## A[i] = vtxを満たすiを返す
+        ## 
+        ## 時間計算量:O(1)
     proc toVtx*(hld: HeavyLightDecomposition, seqidx: int): int = hld.I[seqidx]
+        ## A[seqidx]を返す
+        ## 
+        ## 時間計算量:O(1)
     proc toSeq2In*(hld: HeavyLightDecomposition, vtx: int): int = hld.rangeL[vtx] * 2 - hld.D[vtx]
+        ## toseqで得られる順序と同じ順序でDFSを行い、各頂点について
+        ## - (in) その頂点に初めて訪れた
+        ## - (out) 全ての子を訪れたのち、最後にその頂点を訪れた
+        ## タイミングを記録し、その記録順に0から2n-1の番号を振ったとき、頂点vtxの(in)記録タイミングの番号を返す
+        ## 
+        ## 時間計算量:O(1)
     proc toSeq2Out*(hld: HeavyLightDecomposition, vtx: int): int = hld.rangeR[vtx] * 2 - hld.D[vtx] - 1
+        ## toseqで得られる順序と同じ順序でDFSを行い、各頂点について
+        ## - (in) その頂点に初めて訪れた
+        ## - (out) 全ての子を訪れたのち、最後にその頂点を訪れた
+        ## タイミングを記録し、その記録順に0から2n-1の番号を振ったとき、頂点vtxの(out)記録タイミングの番号を返す
+        ## 
+        ## 時間計算量:O(1)
     proc parentOf*(hld: HeavyLightDecomposition, v: int): int = hld.P[v]
+        ## 頂点vの親の頂点番号を返す
+        ## 
+        ## 頂点vが根の場合、-1を返す
+        ## 
+        ## 時間計算量:O(1)
     proc heavyRootOf*(hld: HeavyLightDecomposition, v: int): int = hld.PP[v]
+        ## 頂点vと同じheavy pathに含まれている頂点で、最も根に近い頂点の頂点番号を返す
+        ## 
+        ## 時間計算量:O(1)
     proc heavyChildOf*(hld: HeavyLightDecomposition, v: int): int =
+        ## 頂点vにheavy pathでつながれた子の頂点番号を返す
+        ## 
+        ## 存在しない場合、-1を返す
+        ## 
+        ## 時間計算量:O(1)
         if hld.toSeq(v) == hld.N-1:
             return -1
         var cand = hld.toVtx(hld.toSeq(v) + 1)
@@ -97,6 +143,9 @@ when not declared CPLIB_TREE_HLD:
             return cand
         -1
     proc lca*(hld: HeavyLightDecomposition, u: int, v: int): int =
+        ## lca(u,v)を返す
+        ## 
+        ## 時間計算量:O(log N)
         var (u, v) = (u, v)
         if hld.PD[u] < hld.PD[v]:
             swap(u, v)
@@ -109,8 +158,14 @@ when not declared CPLIB_TREE_HLD:
             return v
         u
     proc dist*(hld: HeavyLightDecomposition, u: int, v: int): int =
+        ## dist(u,v)を返す
+        ## 
+        ## dist(u,v)は、頂点間に存在する辺の本数を表す。
+        ## 
+        ## 時間計算量:O(log N)
         hld.depth(u) + hld.depth(v) - hld.depth(hld.lca(u, v)) * 2
     proc path*(hld: HeavyLightDecomposition, r: int, c: int, include_root: bool, reverse_path: bool): seq[(int, int)] =
+        
         var (r, c) = (r, c)
         var k = hld.PD[c] - hld.PD[r] + 1
         if k <= 0:
