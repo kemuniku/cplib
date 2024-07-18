@@ -1,7 +1,7 @@
 when not declared CPLIB_COLLECTIONS_STATICRMQ:
     const CPLIB_COLLECTIONS_STATICRMQ* = 1
     import sequtils,bitops
-    type StaticRMQ[T] = object
+    type StaticRMQ*[T] = object
         table : seq[seq[T]]
     proc initRMQ*[T](V:seq[T]):StaticRMQ[T]=
         var b = fastLog2(len(V))
@@ -18,4 +18,7 @@ when not declared CPLIB_COLLECTIONS_STATICRMQ:
                 j += 1
     proc query*[T](RMQ:StaticRMQ[T],l,r:int):T=
         var k = fastLog2(r-l)
-        return min(RMQ.table[k][l],RMQ.table[k][r-(1 shl k)])
+        if RMQ.table[k][l] > RMQ.table[k][r-(1 shl k)]:
+            return RMQ.table[k][r-(1 shl k)]
+        else:
+            return RMQ.table[k][l]
