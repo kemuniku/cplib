@@ -1,7 +1,7 @@
 import random
 type HashString* =object
     hash:uint
-    size:uint
+    size:int
 const MASK30 = (1u shl 30) - 1
 const MASK31 = (1u shl 31) - 1
 const RH_MOD = (1u shl 61) - 1
@@ -26,18 +26,18 @@ proc mul(a, b: uint): uint =
     result = a_upper * b_upper * 2 + mid_upper + (mid_lower shl 31) + a_lower * b_lower
 
 
-proc inner_pow(a, n: uint): uint =
+proc inner_pow(a:uint, n: int): uint =
     var a = a
     var n = n
     result = 1
     while n > 0:
-        if (n and 1u) != 0u:
+        if (n and 1) != 0:
             result = mul(result, a).calc_mod
         a = mul(a, a).calc_mod
         n = n shr 1
 
 let hashstring_base:uint = rand(129u..(1u shl 30))
-let inv_hashstring_base:uint = inner_pow(hashstring_base,RH_MOD-2)
+let inv_hashstring_base:uint = inner_pow(hashstring_base,int(RH_MOD)-2)
 var pows : seq[uint] = newseq[uint](POW_CALC+1)
 var invpows : seq[uint] = newseq[uint](POW_CALC+1)
 pows[0] = 1
@@ -46,8 +46,8 @@ for i in 1..POW_CALC:
     pows[i] = (mul(pows[i-1],hashstring_base).calc_mod)
     invpows[i] = (mul(invpows[i-1],inv_hashstring_base).calc_mod)
 
-proc base_pow(n:uint):uint=
-    if n >= uint(len(pows)):
+proc base_pow(n:int):uint=
+    if n >= len(pows):
         return inner_pow(hashstring_base,n)
     else:
         return pows[n]
@@ -58,7 +58,7 @@ proc tohash*(S:string):HashString=
     for i in countdown(len(S)-1,0,1):
         hash = (hash+mul(uint(int(S[i])),tmp)).calc_mod
         tmp = mul(tmp,hashstring_base).calc_mod 
-    result = HashString(hash:hash,size:uint(len(S)))
+    result = HashString(hash:hash,size:len(S))
 
 proc tohash*(S:char):HashString=
     result = HashString(hash:uint(int(S)),size:1)
@@ -82,19 +82,19 @@ proc `*`*(H:HashString,x:int):HashString=
         x = x shr 1
 
 proc removePrefix(H,suffix:HashString):HashString=
-    var hash = (H.hash + (RH_MOD - mul(suffix.hash,base_pow(uint(len(H)-len(suffix)))).calc_mod)).calc_mod
-    var l = uint(len(H)-len(suffix))
+    var hash = (H.hash + (RH_MOD - mul(suffix.hash,base_pow(len(H)-len(suffix))).calc_mod)).calc_mod
+    var l = len(H)-len(suffix)
     return HashString(hash:hash,size:l)
 
 type RollingHashBase = ref object
     S : string
     prefixs : seq[uint]
-    size : uint 
+    size : int 
 
 type RollingHash= object
     R : RollingHashBase
-    l : uint
-    r : uint
+    l : int
+    r : int
 
 proc len*(S:RollingHashBase):int=
     return int(S.size)
@@ -102,24 +102,24 @@ proc len*(S:RollingHashBase):int=
 proc len*(S:RollingHash):int=
     return int(S.r-S.l)
 
-proc get_substring(R:RollingHashBase,l,r:uint):RollingHash=
+proc get_substring(R:RollingHashBase,l,r:int):RollingHash=
     #半開区間とする。
-    assert l in 0u..<R.size and r in 1u..R.size and l < r
+    assert l in 0..<R.size and r in 1..R.size and l < r
     result.R = R
     result.l = l
     result.r = r
 
 proc `[]`*(R:RollingHashBase,slice:HSlice[int,int]):RollingHash=
     assert slice.a >= 0 and slice.b >= 0
-    return R.get_substring(uint(slice.a),uint(slice.b)+1)
+    return R.get_substring(slice.a,slice.b+1)
 
 
 proc `[]`*(S:RollingHash,slice:HSlice[int,int]):RollingHash=
     assert slice.a in 0..<len(S) and slice.b in 0..<len(S)
-    return S.R.get_substring(S.l+uint(slice.a),S.l+uint(slice.b)+1)
+    return S.R.get_substring(S.l+slice.a,S.l+slice.b+1)
 
-proc gethash(S:RollingHash,slice:HSlice[uint,uint]):uint=
-    return (S.R.prefixs[(S.l+slice.b+1)] + (RH_MOD - mul(S.R.prefixs[S.l+slice.a],base_pow((S.l+slice.b+1)-(S.l+slice.a))).calc_mod)).calc_mod
+proc gethash(S:RollingHash,slice:HSlice[int,int]):uint=
+    return (S.R.prefixs[(S.l+slice.b+1)] + (RH_MOD - mul(S.R.prefixs[S.l+slice.a],base_pow(((S.l+slice.b+1)-(S.l+slice.a)))).calc_mod)).calc_mod
 
 
 proc `[]`*(S:RollingHash,idx:int):char=
@@ -132,7 +132,7 @@ proc initRollingHash*(S:string):RollingHash=
     rolling.prefixs[0] = 0
     for i in 1..len(S):
         rolling.prefixs[i] = (mul(rolling.prefixs[i-1],hashstring_base) + uint(int(S[i-1]))).calc_mod()
-    rolling.size = uint(len(S))
+    rolling.size = (len(S))
     return rolling[0..<len(S)]
 
 
@@ -148,13 +148,13 @@ proc `==`*(S,T:RollingHash):bool=
            (T.R.prefixs[T.r] + (RH_MOD - mul(T.R.prefixs[T.l],base_pow(T.r-T.l)).calc_mod)).calc_mod
 
 proc LCP*(S,T:RollingHash):int=
-    var ok = 0u
-    var ng = uint(min(len(S),len(T))+1)
+    var ok = 0
+    var ng = min(len(S),len(T))+1
     while ng-ok > 1:
         var mid = (ok + ng) div 2
-        if S.gethash(0u..<mid) == T.gethash(0u..<mid): ok = mid
+        if S.gethash(0..<mid) == T.gethash(0..<mid): ok = mid
         else: ng = mid
-    return int(ok)
+    return ok
 
 proc cmp*(S,T:RollingHash):int=
     var S = S
