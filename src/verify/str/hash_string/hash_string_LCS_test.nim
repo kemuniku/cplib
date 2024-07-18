@@ -3,13 +3,14 @@ include cplib/str/hash_string
 
 {.checks:off.}
 import algorithm,sequtils,strutils
+import atcoder/string
 var S = stdin.readLine()
 var T = stdin.readLine()
+var SA = suffix_array((S & '$' & T))
 var X = (S & '$' & T).initRollingHash()
 var tmp : seq[RollingHash]
 for i in 0..<len(X):
-    tmp.add(X[i..<len(X)])
-tmp.sort()
+    tmp.add(X[SA[i]..<len(X)])
 var ans = 0
 var a = 0
 var b = 0
