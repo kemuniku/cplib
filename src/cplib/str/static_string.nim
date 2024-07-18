@@ -15,17 +15,18 @@ when not declared CPLIB_STR_STATIC_STRING:
         base* : StaticStringBase
         l* : int
         r* : int
-
-    proc toStaticString*(S:string):StaticString=
-        var base = StaticStringBase()
-        base.S = S
-        base.SA = suffix_array(S)
-        base.RSA = newseq[int](len(S))
+    proc initStaticStringBase(S:string):StaticStringBase=
+        result = StaticStringBase()
+        result.S = S
+        result.SA = suffix_array(S)
+        result.RSA = newseq[int](len(S))
         for i in 0..<len(S):
-            base.RSA[base.SA[i]] = i
-        base.LCP = lcp_array(S,base.SA)
-        base.RMQ = initRMQ(base.LCP)
-        base.size = len(S)
+            result.RSA[result.SA[i]] = i
+        result.LCP = lcp_array(S,result.SA)
+        result.RMQ = initRMQ(result.LCP)
+        result.size = len(S)
+    proc toStaticString*(S:string):StaticString=
+        var base = initStaticStringBase(S)
         return StaticString(base:base,l:0,r:len(S))
 
 
@@ -87,3 +88,17 @@ when not declared CPLIB_STR_STATIC_STRING:
             result[i].base = S.base
             result[i].l = SA[i]+S.l
             result[i].r = S.r
+    
+    proc toStaticStrings*(strings:seq[string]):seq[StaticString]=
+        var tmp = ""
+        for i in 0..<len(strings):
+            tmp &= strings[i]
+            tmp &= '$'
+        var base = initStaticStringBase(tmp)
+        result = newseq[StaticString](len(strings))
+        var now = 0
+        for i in 0..<len(strings):
+            result[i].base = base
+            result[i].l = now
+            result[i].r = now+len(strings[i])
+            now += len(strings[i]) + 1
