@@ -96,31 +96,31 @@ data:
     \ + l2.vector * (d2 / d1)\n"
   dependsOn:
   - cplib/geometry/ccw.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:
-  - cplib/geometry/distance.nim
-  - cplib/geometry/distance.nim
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/distance.nim
   timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
 documentation_of: cplib/geometry/intersect.nim
 layout: document
 redirect_from:
