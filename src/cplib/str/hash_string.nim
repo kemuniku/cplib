@@ -88,8 +88,8 @@ proc removePrefix(H,suffix:HashString):HashString=
 
 type RollingHashBase = ref object
     S : string
-    prefixs : seq[HashString]
-    size : uint
+    prefixs : seq[uint]
+    size : uint 
 
 type RollingHash= object
     R : RollingHashBase
@@ -114,11 +114,6 @@ proc `[]`*(R:RollingHashBase,slice:HSlice[int,int]):RollingHash=
     return R.get_substring(uint(slice.a),uint(slice.b)+1)
 
 
-proc get_hashstring(R:RollingHashBase,l,r:uint):HashString=
-    return R.prefixs[r].removePrefix(R.prefixs[l])
-
-
-
 proc `[]`*(S:RollingHash,slice:HSlice[int,int]):RollingHash=
     assert slice.a in 0..<len(S) and slice.b in 0..<len(S)
     return S.R.get_substring(S.l+uint(slice.a),S.l+uint(slice.b)+1)
@@ -129,23 +124,24 @@ proc `[]`*(S:RollingHash,idx:int):char=
 proc initRollingHash*(S:string):RollingHash=
     var rolling = RollingHashBase()
     rolling.S = S
-    rolling.prefixs = newSeq[HashString](len(S)+1)
-    rolling.prefixs[0] = HashString(hash:0u,size:0u)
+    rolling.prefixs = newSeq[uint](len(S)+1)
+    rolling.prefixs[0] = 0
     for i in 1..len(S):
-        rolling.prefixs[i] = (rolling.prefixs[i-1]) & (S[i-1].tohash())
+        rolling.prefixs[i] = (mul(rolling.prefixs[i-1],hashstring_base) + uint(int(S[i-1]))).calc_mod()
     rolling.size = uint(len(S))
     return rolling[0..<len(S)]
 
 
 
 converter toHashString*(self:RollingHash):HashString=
-    get_hashstring(self.R,self.l,self.r)
+    return HashString(hash:(self.R.prefixs[self.r] + (RH_MOD - mul(self.R.prefixs[self.l],base_pow(self.r-self.l)).calc_mod)).calc_mod,size:self.r-self.l)
 
 proc`$`*(S:RollingHash):string=
     return S.R.S[S.l..<S.r]
 
 proc `==`*(S,T:RollingHash):bool=
-    S.toHashString() == T.toHashString()
+    return (S.R.prefixs[S.r] + (RH_MOD - mul(S.R.prefixs[S.l],base_pow(S.r-S.l)).calc_mod)).calc_mod == 
+           (T.R.prefixs[T.r] + (RH_MOD - mul(T.R.prefixs[T.l],base_pow(T.r-T.l)).calc_mod)).calc_mod
 
 proc LCP*(S,T:RollingHash):int=
     var ok = 0
