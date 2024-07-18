@@ -34,6 +34,9 @@ data:
       path: cplib/collections/segtree_var.nim
       title: cplib/collections/segtree_var.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/staticRMQ.nim
+      title: cplib/collections/staticRMQ.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
     - icon: ':heavy_check_mark:'
@@ -252,6 +255,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/rollbackuf_yosupo_test.nim
       title: verify/collections/rollbackuf_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/staticRMQ_test.nim
+      title: verify/collections/staticRMQ_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
