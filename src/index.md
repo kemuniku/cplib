@@ -153,6 +153,9 @@ data:
   - name: cplib/str
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/str/hash_string.nim
+      title: cplib/str/hash_string.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/manachar.nim
       title: cplib/str/manachar.nim
     - icon: ':heavy_check_mark:'
@@ -725,6 +728,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_static_test.nim
       title: verify/modint/montgomery/keyence2021_static_test.nim
+  - name: verify/str/hash_string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
+      title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str
     pages:
     - icon: ':heavy_check_mark:'
