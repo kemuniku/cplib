@@ -72,3 +72,18 @@ when not declared CPLIB_STR_STATIC_STRING:
 
     proc `==`*(S,T:StaticString):bool=
         return len(S) == len(T) and lcp(S,T) == len(S)
+
+    proc initSuffixArray*(base:StaticStringBase):seq[StaticSTring]=
+        result = newseq[StaticString](base.size)
+        for i in 0..<base.size:
+            result[i].base = base
+            result[i].l = base.SA[i]
+            result[i].r = base.size
+
+    proc initSuffixArray*(S:StaticString):seq[StaticString]=
+        var SA = suffix_array(S.base.S[S.l..<S.r])
+        result = newseq[StaticString](len(SA))
+        for i in 0..<len(SA):
+            result[i].base = S.base
+            result[i].l = SA[i]+S.l
+            result[i].r = S.r
