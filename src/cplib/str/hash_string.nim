@@ -118,6 +118,10 @@ proc `[]`*(S:RollingHash,slice:HSlice[int,int]):RollingHash=
     assert slice.a in 0..<len(S) and slice.b in 0..<len(S)
     return S.R.get_substring(S.l+uint(slice.a),S.l+uint(slice.b)+1)
 
+proc gethash(S:RollingHash,slice:HSlice[uint,uint]):uint=
+    return (S.R.prefixs[(S.l+slice.b+1)] + (RH_MOD - mul(S.R.prefixs[S.l+slice.a],base_pow((S.l+slice.b+1)-(S.l+slice.a))).calc_mod)).calc_mod
+
+
 proc `[]`*(S:RollingHash,idx:int):char=
     return S.R.S[idx+int(S.l)]
 
@@ -140,17 +144,17 @@ proc`$`*(S:RollingHash):string=
     return S.R.S[S.l..<S.r]
 
 proc `==`*(S,T:RollingHash):bool=
-    return (S.R.prefixs[S.r] + (RH_MOD - mul(S.R.prefixs[S.l],base_pow(S.r-S.l)).calc_mod)).calc_mod == 
+    return len(S) == len(T) and (S.R.prefixs[S.r] + (RH_MOD - mul(S.R.prefixs[S.l],base_pow(S.r-S.l)).calc_mod)).calc_mod == 
            (T.R.prefixs[T.r] + (RH_MOD - mul(T.R.prefixs[T.l],base_pow(T.r-T.l)).calc_mod)).calc_mod
 
 proc LCP*(S,T:RollingHash):int=
-    var ok = 0
-    var ng = min(len(S),len(T))+1
-    while abs(ng-ok) > 1:
+    var ok = 0u
+    var ng = uint(min(len(S),len(T))+1)
+    while ng-ok > 1:
         var mid = (ok + ng) div 2
-        if S[0..<mid] == T[0..<mid]: ok = mid
+        if S.gethash(0u..<mid) == T.gethash(0u..<mid): ok = mid
         else: ng = mid
-    return ok
+    return int(ok)
 
 proc cmp*(S,T:RollingHash):int=
     var S = S
