@@ -731,6 +731,15 @@ data:
   - name: verify/str/hash_string
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/str/hash_string/hash_string_LCP_test.nim
+      title: verify/str/hash_string/hash_string_LCP_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/hash_string/hash_string_LCS_test.nim
+      title: verify/str/hash_string/hash_string_LCS_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/hash_string/hash_string_Z_algo_test.nim
+      title: verify/str/hash_string/hash_string_Z_algo_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
       title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str
