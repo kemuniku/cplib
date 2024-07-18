@@ -38,11 +38,11 @@ data:
     \ result)\n\nvar n = ii()\nvar g = initWeightedTree(n)\nfor i in 0..<n-1:\n  \
     \  var a, b, c = ii()\n    g.add_edge(a, b, c)\necho g.diameter\n"
   dependsOn:
+  - cplib/tree/tree.nim
   - cplib/tree/diameter.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
   - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_dynamic_test.nim

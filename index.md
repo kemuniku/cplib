@@ -168,6 +168,9 @@ data:
       path: cplib/str/run_length_encode.nim
       title: cplib/str/run_length_encode.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/static_string.nim
+      title: cplib/str/static_string.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/zalgorithm.nim
       title: cplib/str/zalgorithm.nim
   - name: cplib/tmpl
@@ -774,6 +777,32 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/zalgorithm_test.nim
       title: verify/str/zalgorithm_test.nim
+  - name: verify/str/static_string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_LCS_test.nim
+      title: verify/str/static_string/static_string_LCS_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+      title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_LCS_useSA_test.nim
+      title: verify/str/static_string/static_string_LCS_useSA_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_SA_test.nim
+      title: verify/str/static_string/static_string_SA_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+      title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_initSA_test.nim
+      title: verify/str/static_string/static_string_initSA_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_lcp_test.nim
+      title: verify/str/static_string/static_string_lcp_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_zalgo_test.nim
+      title: verify/str/static_string/static_string_zalgo_test.nim
   - name: verify/tmpl
     pages:
     - icon: ':heavy_check_mark:'
