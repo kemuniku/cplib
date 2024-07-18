@@ -42,6 +42,7 @@
 "verify/collections/segtree_var/segtree_static_test.nim": "2024-06-17 22:20:15 +0900",
 "verify/collections/segtree_var/segtree_xor1_test.nim": "2024-06-17 22:20:15 +0900",
 "verify/collections/segtree_var/segtree_xor2_test.nim": "2024-06-17 22:20:15 +0900",
+"verify/collections/staticRMQ_test.nim": "2024-07-19 06:59:04 +0900",
 "verify/collections/tatyamset/ABC217_gele_test.nim": "2024-04-23 21:11:58 +0900",
 "verify/collections/tatyamset/ABC217_gtlt_test.nim": "2024-04-23 21:11:58 +0900",
 "verify/collections/tatyamset/ABC217_index_test.nim": "2024-04-23 21:11:58 +0900",
