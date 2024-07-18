@@ -52,7 +52,7 @@ proc base_pow(n:uint):uint=
     else:
         return pows[n]
 
-proc tohash(S:string):HashString=
+proc tohash*(S:string):HashString=
     var hash = 0u
     var tmp = 1u
     for i in countdown(len(S)-1,0,1):
@@ -60,18 +60,18 @@ proc tohash(S:string):HashString=
         tmp = mul(tmp,hashstring_base).calc_mod 
     result = HashString(hash:hash,size:uint(len(S)))
 
-proc tohash(S:char):HashString=
+proc tohash*(S:char):HashString=
     result = HashString(hash:uint(int(S)),size:1)
 
-proc `&`(L,R:HashString):HashString=
+proc `&`*(L,R:HashString):HashString=
     result = HashString(hash:(mul(L.hash,base_pow(R.size)).calc_mod+R.hash).calc_mod,size:L.size+R.size)
 
-proc `==`(L,R:HashString):bool=
+proc `==`*(L,R:HashString):bool=
     return (L.size == R.size) and (L.hash == R.hash)
 
-proc len(H:HashString):int=int(H.size)
+proc len*(H:HashString):int=int(H.size)
 
-proc `*`(H:HashString,x:int):HashString=
+proc `*`*(H:HashString,x:int):HashString=
     result = "".toHash()
     var
         x = x
@@ -96,10 +96,10 @@ type RollingHash= object
     l : uint
     r : uint
 
-proc len(S:RollingHashBase):int=
+proc len*(S:RollingHashBase):int=
     return int(S.size)
 
-proc len(S:RollingHash):int=
+proc len*(S:RollingHash):int=
     return int(S.r-S.l)
 
 proc get_substring(R:RollingHashBase,l,r:uint):RollingHash=
@@ -109,7 +109,7 @@ proc get_substring(R:RollingHashBase,l,r:uint):RollingHash=
     result.l = l
     result.r = r
 
-proc `[]`(R:RollingHashBase,slice:HSlice[int,int]):RollingHash=
+proc `[]`*(R:RollingHashBase,slice:HSlice[int,int]):RollingHash=
     assert slice.a >= 0 and slice.b >= 0
     return R.get_substring(uint(slice.a),uint(slice.b)+1)
 
@@ -119,14 +119,14 @@ proc get_hashstring(R:RollingHashBase,l,r:uint):HashString=
 
 
 
-proc `[]`(S:RollingHash,slice:HSlice[int,int]):RollingHash=
+proc `[]`*(S:RollingHash,slice:HSlice[int,int]):RollingHash=
     assert slice.a in 0..<len(S) and slice.b in 0..<len(S)
     return S.R.get_substring(S.l+uint(slice.a),S.l+uint(slice.b)+1)
 
-proc `[]`(S:RollingHash,idx:int):char=
+proc `[]`*(S:RollingHash,idx:int):char=
     return S.R.S[idx+int(S.l)]
 
-proc initRollingHash(S:string):RollingHash=
+proc initRollingHash*(S:string):RollingHash=
     var rolling = RollingHashBase()
     rolling.S = S
     rolling.prefixs = newSeq[HashString](len(S)+1)
@@ -138,16 +138,16 @@ proc initRollingHash(S:string):RollingHash=
 
 
 
-converter toHashString(self:RollingHash):HashString=
+converter toHashString*(self:RollingHash):HashString=
     get_hashstring(self.R,self.l,self.r)
 
-proc`$`(S:RollingHash):string=
+proc`$`*(S:RollingHash):string=
     return S.R.S[S.l..<S.r]
 
-proc `==`(S,T:RollingHash):bool=
+proc `==`*(S,T:RollingHash):bool=
     S.toHashString() == T.toHashString()
 
-proc LCP(S,T:RollingHash):int=
+proc LCP*(S,T:RollingHash):int=
     var ok = 0
     var ng = min(len(S),len(T))+1
     while abs(ng-ok) > 1:
@@ -156,7 +156,7 @@ proc LCP(S,T:RollingHash):int=
         else: ng = mid
     return ok
 
-proc cmp(S,T:RollingHash):int=
+proc cmp*(S,T:RollingHash):int=
     var S = S
     var T = T
     var flg = 1
@@ -175,5 +175,5 @@ proc cmp(S,T:RollingHash):int=
         else:
             return flg
 
-proc `<`(S,T:RollingHash):bool=
+proc `<`*(S,T:RollingHash):bool=
     return cmp(S,T) < 0
