@@ -3,6 +3,7 @@ when not declared CPLIB_STR_STATIC_STRING:
     import cplib/collections/staticRMQ
     import atcoder/string
     import sequtils
+    import algorithm
 
     type StaticStringBase* = ref object
         S* : string
@@ -15,7 +16,7 @@ when not declared CPLIB_STR_STATIC_STRING:
         base* : StaticStringBase
         l* : int
         r* : int
-    proc initStaticStringBase(S:string):StaticStringBase=
+    proc initStaticStringBase*(S:string):StaticStringBase=
         result = StaticStringBase()
         result.S = S
         result.SA = suffix_array(S)
@@ -71,6 +72,15 @@ when not declared CPLIB_STR_STATIC_STRING:
     proc `<`*(S,T:StaticString):bool=
         return cmp(S,T) < 0
 
+    proc `>`*(S,T:StaticString):bool=
+        return cmp(S,T) > 0
+
+    proc `<=`*(S,T:StaticString):bool=
+        return cmp(S,T) <= 0
+    
+    proc `>=`*(S,T:StaticString):bool=
+        return cmp(S,T) >= 0
+
     proc `==`*(S,T:StaticString):bool=
         return len(S) == len(T) and lcp(S,T) == len(S)
 
@@ -102,3 +112,29 @@ when not declared CPLIB_STR_STATIC_STRING:
             result[i].l = now
             result[i].r = now+len(strings[i])
             now += len(strings[i]) + 1
+        
+    proc startsWith*(s,prefix:StaticString):bool=
+        return lcp(s,prefix) == len(prefix)
+    
+    
+    proc suffix_lowerbound*(base:StaticStringBase,S:string):int=
+        proc cmp(x:int,s:string):int=
+            for i in 0..<len(s):
+                if i+x >= base.size:return -1
+                if base.S[i+x] < s[i]:return -1
+                if base.S[i+x] > s[i]:return 1
+            return 0
+        return base.SA.lowerBound(S,cmp)
+
+    proc suffix_upperbound*(base:StaticStringBase,S:string):int=
+        proc cmp(x:int,s:string):int=
+            for i in 0..<len(s):
+                if i+x >= base.size:return -1
+                if base.S[i+x] < s[i]:return -1
+                if base.S[i+x] > s[i]:return 1
+            return 0
+        return base.SA.upperBound(S,cmp)
+
+    proc count*(base:StaticStringBase,S:string):int=
+        return base.suffix_upperbound(S) - base.suffix_lowerbound(S)
+    
