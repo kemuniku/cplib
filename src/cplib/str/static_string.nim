@@ -36,7 +36,7 @@ when not declared CPLIB_STR_STATIC_STRING:
         return S.base.S[S.l+idx]
 
     proc `[]`*(S:StaticString,slice:HSlice[int,int]):StaticString=
-        assert slice.a <= slice.b
+        assert slice.a <= slice.b and S.l + slice.b < S.r
         return StaticString(base:S.base,l:S.l+slice.a,r:S.l+slice.b+1)
 
 
