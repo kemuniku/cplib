@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
+  - icon: ':warning:'
+    path: verify/str/static_string/static_string_count_test_.nim
+    title: verify/str/static_string/static_string_count_test_.nim
+  - icon: ':warning:'
+    path: verify/str/static_string/static_string_count_test_.nim
+    title: verify/str/static_string/static_string_count_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/staticRMQ_test.nim
@@ -91,6 +97,8 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticRMQ.nim
   requiredBy:
+  - verify/str/static_string/static_string_count_test_.nim
+  - verify/str/static_string/static_string_count_test_.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   timestamp: '2024-07-19 08:04:11+09:00'

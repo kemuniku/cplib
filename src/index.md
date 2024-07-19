@@ -228,6 +228,11 @@ data:
     - icon: ':warning:'
       path: verify/geometry/CGL_2/intersect_past16m_test_.nim
       title: verify/geometry/CGL_2/intersect_past16m_test_.nim
+  - name: verify/str/static_string
+    pages:
+    - icon: ':warning:'
+      path: verify/str/static_string/static_string_count_test_.nim
+      title: verify/str/static_string/static_string_count_test_.nim
   verificationCategories:
   - name: verify/collections
     pages:
