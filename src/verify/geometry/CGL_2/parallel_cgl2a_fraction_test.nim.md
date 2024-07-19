@@ -42,11 +42,11 @@ data:
     \  else: echo 0\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   requiredBy: []

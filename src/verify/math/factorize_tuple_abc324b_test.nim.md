@@ -50,15 +50,15 @@ data:
     No\"\n        quit()\necho \"Yes\"\n\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/factorize_tuple_abc324b_test.nim
   requiredBy: []

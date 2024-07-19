@@ -87,7 +87,7 @@ data:
     \ = initStaticStringBase(S)\n        return StaticString(base:base,l:0,r:len(S))\n\
     \n\n    proc `[]`*(S:StaticString,idx:Natural):char=\n        assert S.l+idx <\
     \ S.base.size\n        return S.base.S[S.l+idx]\n\n    proc `[]`*(S:StaticString,slice:HSlice[int,int]):StaticString=\n\
-    \        assert slice.a <= slice.b\n        return StaticString(base:S.base,l:S.l+slice.a,r:S.l+slice.b+1)\n\
+    \        assert slice.a <= slice.b and S.l + slice.b < S.r\n        return StaticString(base:S.base,l:S.l+slice.a,r:S.l+slice.b+1)\n\
     \n\n    proc `$`*(S:StaticString):string=S.base.S[S.l..<S.r]\n\n    proc len*(S:StaticString):int\
     \ = S.r-S.l\n\n    proc lcp*(S,T:StaticString):int=\n        assert S.base ==\
     \ T.base\n        var l = S.base.RSA[S.l]\n        var r = S.base.RSA[T.l]\n \
@@ -133,7 +133,7 @@ data:
   requiredBy:
   - verify/str/static_string/static_string_count_test_.nim
   - verify/str/static_string/static_string_count_test_.nim
-  timestamp: '2024-07-19 12:22:06+09:00'
+  timestamp: '2024-07-19 14:19:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/static_string/static_string_initSA_test.nim
