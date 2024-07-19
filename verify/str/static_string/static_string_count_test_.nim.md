@@ -17,34 +17,34 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
+    PROBLEM: https://atcoder.jp/contests/abc362/tasks/abc362_g
     links:
-    - https://judge.yosupo.jp/problem/zalgorithm
+    - https://atcoder.jp/contests/abc362/tasks/abc362_g
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/zalgorithm\n\
-    import cplib/str/static_string\n\nimport algorithm,sequtils,strutils\nvar S =\
-    \ stdin.readLine().toStaticString()\nvar ans : seq[int]\nfor i in 0..<len(S):\n\
-    \    ans.add(lcp(S,S[i..<len(S)]))\n\necho ans.join(\" \")"
+  code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc362/tasks/abc362_g\n\
+    import cplib/str/static_string\nimport strutils\nvar S = stdin.readLine()\nvar\
+    \ Q = stdin.readLine().parseInt()\nvar SB = initStaticStringBase(S)\nfor i in\
+    \ 0..<Q:\n    var T = stdin.readLine()\n    stdout.writeLine(SB.count(T))"
   dependsOn:
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
-  isVerificationFile: true
-  path: verify/str/static_string/static_string_zalgo_test.nim
+  isVerificationFile: false
+  path: verify/str/static_string/static_string_count_test_.nim
   requiredBy: []
-  timestamp: '2024-07-19 12:22:06+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-19 12:27:14+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: verify/str/static_string/static_string_zalgo_test.nim
+documentation_of: verify/str/static_string/static_string_count_test_.nim
 layout: document
 redirect_from:
-- /verify/verify/str/static_string/static_string_zalgo_test.nim
-- /verify/verify/str/static_string/static_string_zalgo_test.nim.html
-title: verify/str/static_string/static_string_zalgo_test.nim
+- /library/verify/str/static_string/static_string_count_test_.nim
+- /library/verify/str/static_string/static_string_count_test_.nim.html
+title: verify/str/static_string/static_string_count_test_.nim
 ---

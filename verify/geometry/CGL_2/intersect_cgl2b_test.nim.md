@@ -47,12 +47,12 @@ data:
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
   requiredBy: []

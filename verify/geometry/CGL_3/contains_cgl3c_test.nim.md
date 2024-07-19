@@ -49,9 +49,9 @@ data:
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/geometry/polygon.nim
   isVerificationFile: true

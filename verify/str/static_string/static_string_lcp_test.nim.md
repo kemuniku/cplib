@@ -33,13 +33,13 @@ data:
     echo len(S)*(len(S)+1) div 2 - sm"
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_lcp_test.nim
   requiredBy: []
-  timestamp: '2024-07-19 08:40:58+09:00'
+  timestamp: '2024-07-19 12:22:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_lcp_test.nim
