@@ -31,14 +31,14 @@ data:
     \ Q = stdin.readLine().parseInt()\nvar SB = initStaticStringBase(S)\nfor i in\
     \ 0..<Q:\n    var T = stdin.readLine()\n    stdout.writeLine(SB.count(T))"
   dependsOn:
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   isVerificationFile: false
   path: verify/str/static_string/static_string_count_test_.nim
   requiredBy: []
-  timestamp: '2024-07-19 12:27:14+09:00'
+  timestamp: '2024-07-19 14:19:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_count_test_.nim
