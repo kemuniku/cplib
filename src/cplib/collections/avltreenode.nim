@@ -1,5 +1,7 @@
 when not declared CPLIB_COLLECTIONS_AVLTREE:
     const CPLIB_COLLECTIONS_AVLTREE* = 1
+    when compileOption("mm", "orc") or compileOption("mm", "arc"):
+        {.fatal: "Plese Use refc".}
     # 以下をNimに移植
     # https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html
     type AvlTreeNode*[K] = ref object

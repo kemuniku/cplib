@@ -1,5 +1,7 @@
 when not declared CPLIB_MODINT_MODINT_BARRETT:
     const CPLIB_MODINT_MODINT_BARRETT* = 1
+    when compileOption("mm", "orc") or compileOption("mm", "arc"):
+        {.fatal: "Plese Use refc".}
     import std/macros
     type StaticBarrettModint*[M: static[uint32]] = object
         a: uint32

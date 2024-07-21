@@ -1,5 +1,7 @@
 when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     const CPLIB_MODINT_MODINT_MONTGOMERY* = 1
+    when compileOption("mm", "orc") or compileOption("mm", "arc"):
+        {.fatal: "Plese Use refc".}
     import std/macros
     type StaticMontgomeryModint*[M: static[uint32]] = object
         a: uint32
