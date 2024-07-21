@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -56,11 +56,11 @@ data:
   - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
   requiredBy: []

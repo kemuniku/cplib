@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -56,13 +56,13 @@ data:
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/grid_to_graph_abc151d_test.nim
   requiredBy: []

@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -21,16 +21,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -45,9 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -72,15 +72,15 @@ data:
     \ x)\n                if result: break\n            if not result:\n         \
     \       discard path.pop\n        discard dfs(u, -1)\n        return (d, path)\n"
   dependsOn:
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   isVerificationFile: false
   path: cplib/tree/diameter.nim
   requiredBy: []
   timestamp: '2024-04-23 22:14:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim

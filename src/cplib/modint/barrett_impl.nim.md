@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
   _extendedVerifiedWith:
@@ -39,105 +39,105 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/dpr_dynamic_test.nim
     title: verify/modint/barrett/dpr_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/dpr_static_test.nim
     title: verify/modint/barrett/dpr_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/dpr_static_test.nim
     title: verify/modint/barrett/dpr_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
     title: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
     title: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_dynamic_test.nim
     title: verify/modint/barrett/keyence2021_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_dynamic_test.nim
     title: verify/modint/barrett/keyence2021_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_static_staticinv_test.nim
     title: verify/modint/barrett/keyence2021_static_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_static_staticinv_test.nim
     title: verify/modint/barrett/keyence2021_static_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_static_test.nim
     title: verify/modint/barrett/keyence2021_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/barrett/keyence2021_static_test.nim
     title: verify/modint/barrett/keyence2021_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/abc277g_dynamic_test.nim
     title: verify/modint/montgomery/abc277g_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/abc277g_dynamic_test.nim
     title: verify/modint/montgomery/abc277g_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/abc277g_static_test.nim
     title: verify/modint/montgomery/abc277g_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/abc277g_static_test.nim
     title: verify/modint/montgomery/abc277g_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/dpr_dynamic_test.nim
     title: verify/modint/montgomery/dpr_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/dpr_dynamic_test.nim
     title: verify/modint/montgomery/dpr_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/dpr_static_test.nim
     title: verify/modint/montgomery/dpr_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/dpr_static_test.nim
     title: verify/modint/montgomery/dpr_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
     title: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
     title: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_dynamic_test.nim
     title: verify/modint/montgomery/keyence2021_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_dynamic_test.nim
     title: verify/modint/montgomery/keyence2021_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
     title: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
     title: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_static_test.nim
     title: verify/modint/montgomery/keyence2021_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/montgomery/keyence2021_static_test.nim
     title: verify/modint/montgomery/keyence2021_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -145,11 +145,12 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MODINT_MODINT_BARRETT:\n    const CPLIB_MODINT_MODINT_BARRETT*\
-    \ = 1\n    import std/macros\n    type StaticBarrettModint*[M: static[uint32]]\
-    \ = object\n        a: uint32\n    type DynamicBarrettModint*[M: static[uint32]]\
-    \ = object\n        a: uint32\n    type BarrettModint* = StaticBarrettModint or\
-    \ DynamicBarrettModint\n\n    proc get_im*(M: uint32): uint = cast[uint](-1) div\
-    \ M + 1\n    func get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]):\
+    \ = 1\n    when compileOption(\"mm\", \"orc\") or compileOption(\"mm\", \"arc\"\
+    ):\n        {.fatal: \"Plese Use refc\".}\n    import std/macros\n    type StaticBarrettModint*[M:\
+    \ static[uint32]] = object\n        a: uint32\n    type DynamicBarrettModint*[M:\
+    \ static[uint32]] = object\n        a: uint32\n    type BarrettModint* = StaticBarrettModint\
+    \ or DynamicBarrettModint\n\n    proc get_im*(M: uint32): uint = cast[uint](-1)\
+    \ div M + 1\n    func get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]):\
     \ ptr[tuple[M, im: uint]] =\n        {.cast(noSideEffect).}:\n            var\
     \ p {.global.}: tuple[M, im: uint] = (998244353u, get_im(998244353u32))\n    \
     \        return p.addr\n    template get_M*(T: typedesc[BarrettModint]): uint\
@@ -201,8 +202,8 @@ data:
   requiredBy:
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  timestamp: '2024-07-08 10:27:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-07-21 20:30:56+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/modint/barrett/keyence2021_dynamic_test.nim
   - verify/modint/barrett/keyence2021_dynamic_test.nim
