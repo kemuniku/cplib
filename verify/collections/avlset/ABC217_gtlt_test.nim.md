@@ -35,12 +35,12 @@ data:
   dependsOn:
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/ABC217_gtlt_test.nim
   requiredBy: []
-  timestamp: '2024-06-25 05:12:55+09:00'
+  timestamp: '2024-07-21 20:30:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/avlset/ABC217_gtlt_test.nim

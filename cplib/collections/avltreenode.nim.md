@@ -68,7 +68,9 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_AVLTREE:\n    const CPLIB_COLLECTIONS_AVLTREE*\
-    \ = 1\n    # \u4EE5\u4E0B\u3092Nim\u306B\u79FB\u690D\n    # https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html\n\
+    \ = 1\n    when compileOption(\"mm\", \"orc\") or compileOption(\"mm\", \"arc\"\
+    ):\n        {.fatal: \"Plese Use refc\".}\n    # \u4EE5\u4E0B\u3092Nim\u306B\u79FB\
+    \u690D\n    # https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html\n\
     \    type AvlTreeNode*[K] = ref object\n        l*, r*, p*: AvlTreeNode[K]\n \
     \       h*, len*: int\n        key*: K\n    proc get_avltree_nilnode*[K](): AvlTreeNode[K]\
     \ =\n        let nil_node {.global.} = (block:\n            var nil_node = AvlTreeNode[K](h:\
@@ -154,7 +156,7 @@ data:
   requiredBy:
   - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
-  timestamp: '2024-06-07 12:16:34+09:00'
+  timestamp: '2024-07-21 20:30:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/avlset/ABC236_test.nim
