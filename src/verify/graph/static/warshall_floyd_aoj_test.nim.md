@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -44,10 +44,10 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim
   requiredBy: []

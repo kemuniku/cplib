@@ -39,27 +39,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/dpr_dynamic_test.nim
     title: verify/modint/barrett/dpr_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/dpr_static_test.nim
     title: verify/modint/barrett/dpr_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/modint/barrett/dpr_static_test.nim
     title: verify/modint/barrett/dpr_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/dpr_dynamic_test.nim
     title: verify/modint/montgomery/dpr_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/dpr_dynamic_test.nim
     title: verify/modint/montgomery/dpr_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/dpr_static_test.nim
     title: verify/modint/montgomery/dpr_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/dpr_static_test.nim
     title: verify/modint/montgomery/dpr_static_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -130,7 +130,7 @@ data:
   path: cplib/matrix/matrix.nim
   requiredBy: []
   timestamp: '2024-03-28 20:50:59+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/modint/barrett/dpr_static_test.nim
   - verify/modint/barrett/dpr_static_test.nim
