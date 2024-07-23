@@ -1,6 +1,6 @@
 import random
 type HashString* =object
-    hash:uint
+    hash* :uint
     size:int
 const MASK30 = (1u shl 30) - 1
 const MASK31 = (1u shl 31) - 1
@@ -11,7 +11,7 @@ randomize()
 
 proc calc_mod(x: uint): uint =
     result = (x shr 61) + (x and RH_MOD)
-    if result > RH_MOD:
+    if result >= RH_MOD:
         result -= RH_MOD
 
 proc mul(a, b: uint): uint =
@@ -81,7 +81,7 @@ proc `*`*(H:HashString,x:int):HashString=
         if x > 1: tmp = tmp & tmp
         x = x shr 1
 
-proc removePrefix(H,suffix:HashString):HashString=
+proc removePrefix*(H,suffix:HashString):HashString=
     var hash = (H.hash + (RH_MOD - mul(suffix.hash,base_pow(len(H)-len(suffix))).calc_mod)).calc_mod
     var l = len(H)-len(suffix)
     return HashString(hash:hash,size:l)
@@ -91,7 +91,7 @@ type RollingHashBase = ref object
     prefixs : seq[uint]
     size : int 
 
-type RollingHash= object
+type RollingHash* = object
     R : RollingHashBase
     l : int
     r : int
@@ -103,8 +103,10 @@ proc len*(S:RollingHash):int=
     return int(S.r-S.l)
 
 proc get_substring(R:RollingHashBase,l,r:int):RollingHash=
-    #半開区間とする。
-    assert l in 0..<R.size and r in 1..R.size and l < r
+    # 半開区間とする。
+    # 空文字列用にr=0も許容していることに注意。
+    # 空文字列はl=0,r=0のみ許容している。
+    assert l in 0..<R.size and r in 0..R.size and (l < r or (l == 0 and r == 0))
     result.R = R
     result.l = l
     result.r = r
@@ -115,6 +117,8 @@ proc `[]`*(R:RollingHashBase,slice:HSlice[int,int]):RollingHash=
 
 
 proc `[]`*(S:RollingHash,slice:HSlice[int,int]):RollingHash=
+    if len(slice) == 0:
+        return S.R.get_substring(0,0)
     assert slice.a in 0..<len(S) and slice.b in 0..<len(S)
     return S.R.get_substring(S.l+slice.a,S.l+slice.b+1)
 
