@@ -36,10 +36,10 @@ data:
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "import random\ntype HashString* =object\n    hash:uint\n    size:int\nconst\
-    \ MASK30 = (1u shl 30) - 1\nconst MASK31 = (1u shl 31) - 1\nconst RH_MOD = (1u\
-    \ shl 61) - 1\nconst POW_CALC = 500000\n\nrandomize()\n\nproc calc_mod(x: uint):\
-    \ uint =\n    result = (x shr 61) + (x and RH_MOD)\n    if result > RH_MOD:\n\
+  code: "import random\ntype HashString* =object\n    hash* :uint\n    size:int\n\
+    const MASK30 = (1u shl 30) - 1\nconst MASK31 = (1u shl 31) - 1\nconst RH_MOD =\
+    \ (1u shl 61) - 1\nconst POW_CALC = 500000\n\nrandomize()\n\nproc calc_mod(x:\
+    \ uint): uint =\n    result = (x shr 61) + (x and RH_MOD)\n    if result >= RH_MOD:\n\
     \        result -= RH_MOD\n\nproc mul(a, b: uint): uint =\n    let\n        a_upper\
     \ = a shr 31\n        a_lower = a and MASK31\n        b_upper = b shr 31\n   \
     \     b_lower = b and MASK31\n        mid = a_lower * b_upper + a_upper * b_lower\n\
@@ -64,19 +64,23 @@ data:
     \ == R.hash)\n\nproc len*(H:HashString):int=int(H.size)\n\nproc `*`*(H:HashString,x:int):HashString=\n\
     \    result = \"\".toHash()\n    var\n        x = x\n        tmp = H\n    while\
     \ x > 0:\n        if x mod 2 != 0: result = result&tmp\n        if x > 1: tmp\
-    \ = tmp & tmp\n        x = x shr 1\n\nproc removePrefix(H,suffix:HashString):HashString=\n\
+    \ = tmp & tmp\n        x = x shr 1\n\nproc removePrefix*(H,suffix:HashString):HashString=\n\
     \    var hash = (H.hash + (RH_MOD - mul(suffix.hash,base_pow(len(H)-len(suffix))).calc_mod)).calc_mod\n\
     \    var l = len(H)-len(suffix)\n    return HashString(hash:hash,size:l)\n\ntype\
     \ RollingHashBase = ref object\n    S : string\n    prefixs : seq[uint]\n    size\
-    \ : int \n\ntype RollingHash= object\n    R : RollingHashBase\n    l : int\n \
-    \   r : int\n\nproc len*(S:RollingHashBase):int=\n    return int(S.size)\n\nproc\
-    \ len*(S:RollingHash):int=\n    return int(S.r-S.l)\n\nproc get_substring(R:RollingHashBase,l,r:int):RollingHash=\n\
-    \    #\u534A\u958B\u533A\u9593\u3068\u3059\u308B\u3002\n    assert l in 0..<R.size\
-    \ and r in 1..R.size and l < r\n    result.R = R\n    result.l = l\n    result.r\
-    \ = r\n\nproc `[]`*(R:RollingHashBase,slice:HSlice[int,int]):RollingHash=\n  \
-    \  assert slice.a >= 0 and slice.b >= 0\n    return R.get_substring(slice.a,slice.b+1)\n\
-    \n\nproc `[]`*(S:RollingHash,slice:HSlice[int,int]):RollingHash=\n    assert slice.a\
-    \ in 0..<len(S) and slice.b in 0..<len(S)\n    return S.R.get_substring(S.l+slice.a,S.l+slice.b+1)\n\
+    \ : int \n\ntype RollingHash* = object\n    R : RollingHashBase\n    l : int\n\
+    \    r : int\n\nproc len*(S:RollingHashBase):int=\n    return int(S.size)\n\n\
+    proc len*(S:RollingHash):int=\n    return int(S.r-S.l)\n\nproc get_substring(R:RollingHashBase,l,r:int):RollingHash=\n\
+    \    # \u534A\u958B\u533A\u9593\u3068\u3059\u308B\u3002\n    # \u7A7A\u6587\u5B57\
+    \u5217\u7528\u306Br=0\u3082\u8A31\u5BB9\u3057\u3066\u3044\u308B\u3053\u3068\u306B\
+    \u6CE8\u610F\u3002\n    # \u7A7A\u6587\u5B57\u5217\u306Fl=0,r=0\u306E\u307F\u8A31\
+    \u5BB9\u3057\u3066\u3044\u308B\u3002\n    assert l in 0..<R.size and r in 0..R.size\
+    \ and (l < r or (l == 0 and r == 0))\n    result.R = R\n    result.l = l\n   \
+    \ result.r = r\n\nproc `[]`*(R:RollingHashBase,slice:HSlice[int,int]):RollingHash=\n\
+    \    assert slice.a >= 0 and slice.b >= 0\n    return R.get_substring(slice.a,slice.b+1)\n\
+    \n\nproc `[]`*(S:RollingHash,slice:HSlice[int,int]):RollingHash=\n    if len(slice)\
+    \ == 0:\n        return S.R.get_substring(0,0)\n    assert slice.a in 0..<len(S)\
+    \ and slice.b in 0..<len(S)\n    return S.R.get_substring(S.l+slice.a,S.l+slice.b+1)\n\
     \nproc gethash(S:RollingHash,slice:HSlice[int,int]):uint=\n    return (S.R.prefixs[(S.l+slice.b+1)]\
     \ + (RH_MOD - mul(S.R.prefixs[S.l+slice.a],base_pow(((S.l+slice.b+1)-(S.l+slice.a)))).calc_mod)).calc_mod\n\
     \n\nproc `[]`*(S:RollingHash,idx:int):char=\n    return S.R.S[idx+int(S.l)]\n\n\
@@ -102,7 +106,7 @@ data:
   isVerificationFile: false
   path: cplib/str/hash_string.nim
   requiredBy: []
-  timestamp: '2024-07-18 19:32:42+09:00'
+  timestamp: '2024-07-23 21:53:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/hash_string/hash_string_LCS_test.nim
