@@ -76,7 +76,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'
@@ -114,6 +114,9 @@ data:
       path: cplib/math/euler_phi.nim
       title: cplib/math/euler_phi.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/ext_gcd.nim
+      title: cplib/math/ext_gcd.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/fractions.nim
       title: cplib/math/fractions.nim
     - icon: ':heavy_check_mark:'
@@ -122,7 +125,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
     - icon: ':heavy_check_mark:'
@@ -139,18 +142,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/matops.nim
       title: cplib/matrix/matops.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix.nim
       title: cplib/matrix/matrix.nim
   - name: cplib/modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/barrett_impl.nim
       title: cplib/modint/barrett_impl.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/modint.nim
       title: cplib/modint/modint.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/montgomery_impl.nim
       title: cplib/modint/montgomery_impl.nim
   - name: cplib/str
@@ -186,7 +189,7 @@ data:
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
     - icon: ':heavy_check_mark:'
@@ -195,7 +198,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -612,6 +615,9 @@ data:
       path: verify/math/euler_phi_yukicoder_test.nim
       title: verify/math/euler_phi_yukicoder_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/math/ext_gcd_aoj_test.nim
+      title: verify/math/ext_gcd_aoj_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/math/factorize_table_abc284d_test.nim
       title: verify/math/factorize_table_abc284d_test.nim
     - icon: ':heavy_check_mark:'
@@ -696,50 +702,50 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/dpr_dynamic_test.nim
       title: verify/modint/barrett/dpr_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/dpr_static_test.nim
       title: verify/modint/barrett/dpr_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
       title: verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/keyence2021_dynamic_test.nim
       title: verify/modint/barrett/keyence2021_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/keyence2021_static_staticinv_test.nim
       title: verify/modint/barrett/keyence2021_static_staticinv_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/barrett/keyence2021_static_test.nim
       title: verify/modint/barrett/keyence2021_static_test.nim
   - name: verify/modint
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/check_zerodivision_test.nim
       title: verify/modint/check_zerodivision_test.nim
   - name: verify/modint/montgomery
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/abc277g_dynamic_test.nim
       title: verify/modint/montgomery/abc277g_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/abc277g_static_test.nim
       title: verify/modint/montgomery/abc277g_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/dpr_dynamic_test.nim
       title: verify/modint/montgomery/dpr_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/dpr_static_test.nim
       title: verify/modint/montgomery/dpr_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
       title: verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_dynamic_test.nim
       title: verify/modint/montgomery/keyence2021_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
       title: verify/modint/montgomery/keyence2021_static_staticinv_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_static_test.nim
       title: verify/modint/montgomery/keyence2021_static_test.nim
   - name: verify/str/hash_string
@@ -818,10 +824,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_dynamic_test.nim
       title: verify/tree/diameter_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_path_dynamic_test.nim
       title: verify/tree/diameter_path_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_path_static_test.nim
       title: verify/tree/diameter_path_static_test.nim
     - icon: ':heavy_check_mark:'

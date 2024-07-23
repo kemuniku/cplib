@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
@@ -115,8 +115,8 @@ data:
     \ exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))\n   \
     \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
