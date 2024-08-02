@@ -34,8 +34,8 @@ data:
     \ = initHld(g, 0)\nvar ans = newSeq[int](q)\nfor i in 0..<q:\n    var s, t, k\
     \ = ii()\n    ans[i] = hld.la(s, t, k)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true

@@ -129,16 +129,16 @@ data:
   - verify/collections/avlset/ABC217_gtlt_test.nim
   - verify/collections/avlset/ABC337_test.nim
   - verify/collections/avlset/ABC337_test.nim
-  - verify/collections/avlset/ABC294_test.nim
-  - verify/collections/avlset/ABC294_test.nim
-  - verify/collections/avlset/index_right_test.nim
-  - verify/collections/avlset/index_right_test.nim
   - verify/collections/avlset/ABC217_gele_test.nim
   - verify/collections/avlset/ABC217_gele_test.nim
-  - verify/collections/avlset/ABC234D_access_test.nim
-  - verify/collections/avlset/ABC234D_access_test.nim
+  - verify/collections/avlset/ABC294_test.nim
+  - verify/collections/avlset/ABC294_test.nim
   - verify/collections/avlset/ABC217_index_test.nim
   - verify/collections/avlset/ABC217_index_test.nim
+  - verify/collections/avlset/ABC234D_access_test.nim
+  - verify/collections/avlset/ABC234D_access_test.nim
+  - verify/collections/avlset/index_right_test.nim
+  - verify/collections/avlset/index_right_test.nim
 documentation_of: cplib/collections/avlset.nim
 layout: document
 redirect_from:

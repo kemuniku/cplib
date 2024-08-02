@@ -204,6 +204,9 @@ data:
   - name: cplib/utils
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/accumulate.nim
+      title: cplib/utils/accumulate.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
     - icon: ':heavy_check_mark:'
@@ -865,6 +868,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - name: verify/utils/accumulate
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/accumulate/accumulate_test.nim
+      title: verify/utils/accumulate/accumulate_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/accumulate/accumulated_2_test.nim
+      title: verify/utils/accumulate/accumulated_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/accumulate/accumulated_test.nim
+      title: verify/utils/accumulate/accumulated_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/accumulate/accumulatedr_2_test.nim
+      title: verify/utils/accumulate/accumulatedr_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/accumulate/accumulatedr_test.nim
+      title: verify/utils/accumulate/accumulatedr_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/accumulate/accumulater_test.nim
+      title: verify/utils/accumulate/accumulater_test.nim
   - name: verify/utils
     pages:
     - icon: ':heavy_check_mark:'

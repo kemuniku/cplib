@@ -47,10 +47,10 @@ data:
   timestamp: '2024-06-14 11:21:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/combination_npr_test.nim
-  - verify/math/combination_npr_test.nim
   - verify/math/combination_test.nim
   - verify/math/combination_test.nim
+  - verify/math/combination_npr_test.nim
+  - verify/math/combination_npr_test.nim
 documentation_of: cplib/math/combination.nim
 layout: document
 redirect_from:
