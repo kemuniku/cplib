@@ -27,6 +27,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/rollback_unionfind.nim
       title: cplib/collections/rollback_unionfind.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/root_rangesum.nim
+      title: cplib/collections/root_rangesum.nim
     - icon: ':warning:'
       path: cplib/collections/rootvalue_unionfind.nim
       title: cplib/collections/rootvalue_unionfind.nim
@@ -272,6 +275,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/rollbackuf_yosupo_test.nim
       title: verify/collections/rollbackuf_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/root_rangesum_test.nim
+      title: verify/collections/root_rangesum_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/staticRMQ_test.nim
       title: verify/collections/staticRMQ_test.nim
