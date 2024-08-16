@@ -27,6 +27,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/rollback_unionfind.nim
       title: cplib/collections/rollback_unionfind.nim
+    - icon: ':warning:'
+      path: cplib/collections/rootvalue_unionfind.nim
+      title: cplib/collections/rootvalue_unionfind.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
