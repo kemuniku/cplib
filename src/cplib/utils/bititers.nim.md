@@ -95,10 +95,10 @@ data:
   verifiedWith:
   - verify/utils/bititers_bitcomb_test.nim
   - verify/utils/bititers_bitcomb_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
   - verify/utils/bititers_bitsubseteq_descending_test.nim
   - verify/utils/bititers_bitsubseteq_descending_test.nim
+  - verify/utils/bititers_bitsubseteq_test.nim
+  - verify/utils/bititers_bitsubseteq_test.nim
   - verify/utils/bititers_bitsuperset_test.nim
   - verify/utils/bititers_bitsuperset_test.nim
 documentation_of: cplib/utils/bititers.nim

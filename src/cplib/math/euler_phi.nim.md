@@ -47,12 +47,12 @@ data:
   timestamp: '2024-01-07 17:44:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/euler_phi_list_yukicoder_test.nim
+  - verify/math/euler_phi_list_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_aoj_test.nim
   - verify/math/euler_phi_aoj_test.nim
-  - verify/math/euler_phi_list_yukicoder_test.nim
-  - verify/math/euler_phi_list_yukicoder_test.nim
 documentation_of: cplib/math/euler_phi.nim
 layout: document
 redirect_from:
