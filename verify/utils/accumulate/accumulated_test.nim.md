@@ -31,7 +31,7 @@ data:
   isVerificationFile: true
   path: verify/utils/accumulate/accumulated_test.nim
   requiredBy: []
-  timestamp: '2024-08-03 02:34:31+09:00'
+  timestamp: '2024-08-17 01:24:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/accumulate/accumulated_test.nim
