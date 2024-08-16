@@ -1,6 +1,6 @@
 when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
     const CPLIB_COLLECTIONS_ROOTRANGESUM* = 1
-    import algorithm, strutils,sequtils
+    import algorithm, strutils,sequtils,math
     type RootRangeSum*[T] = ref object
         blocksize : int
         length : int
