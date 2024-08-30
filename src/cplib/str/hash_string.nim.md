@@ -22,6 +22,12 @@ data:
     path: verify/str/hash_string/hash_string_Z_algo_test.nim
     title: verify/str/hash_string/hash_string_Z_algo_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/str/hash_string/hash_string_mul_test.nim
+    title: verify/str/hash_string/hash_string_mul_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/hash_string/hash_string_mul_test.nim
+    title: verify/str/hash_string/hash_string_mul_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - icon: ':heavy_check_mark:'
@@ -38,7 +44,7 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_HASHSTRING:\n    const CPLIB_STR_HASHSTRING*\
     \ = 1\n    import random\n    type HashString* =object\n        hash* :uint\n\
-    \        size:int\n    const MASK30 = (1u shl 30) - 1\n    const MASK31 = (1u\
+    \        size: int\n    const MASK30 = (1u shl 30) - 1\n    const MASK31 = (1u\
     \ shl 31) - 1\n    const RH_MOD = (1u shl 61) - 1\n    const POW_CALC = 500000\n\
     \n    randomize()\n\n    proc calc_mod(x: uint): uint =\n        result = (x shr\
     \ 61) + (x and RH_MOD)\n        if result >= RH_MOD:\n            result -= RH_MOD\n\
@@ -65,10 +71,13 @@ data:
     \n    proc `&`*(L,R:HashString):HashString=\n        result = HashString(hash:(mul(L.hash,base_pow(R.size)).calc_mod+R.hash).calc_mod,size:L.size+R.size)\n\
     \n    proc `==`*(L,R:HashString):bool=\n        return (L.size == R.size) and\
     \ (L.hash == R.hash)\n\n    proc len*(H:HashString):int=int(H.size)\n\n    proc\
-    \ `*`*(H:HashString,x:int):HashString=\n        result = \"\".toHash()\n     \
-    \   var\n            x = x\n            tmp = H\n        while x > 0:\n      \
-    \      if x mod 2 != 0: result = result&tmp\n            if x > 1: tmp = tmp &\
-    \ tmp\n            x = x shr 1\n\n    proc removePrefix*(H,suffix:HashString):HashString=\n\
+    \ `*`*(H:HashString,x:int):HashString=\n        var\n            size = H.size\
+    \ * x\n            tmp_hash = H.hash\n            tmp_b = base_pow(H.size)\n \
+    \           hash = uint(0)\n            x = x\n        while x > 0:\n        \
+    \    if x mod 2 != 0:\n                hash = (mul(hash,tmp_b).calc_mod+tmp_hash).calc_mod\n\
+    \            if x > 1:\n                tmp_hash = (mul(tmp_hash,tmp_b).calc_mod+tmp_hash).calc_mod\n\
+    \                tmp_b = mul(tmp_b,tmp_b).calc_mod\n            x = x shr 1\n\
+    \        return HashString(hash:hash,size:size)\n\n    proc removePrefix*(H,suffix:HashString):HashString=\n\
     \        var hash = (H.hash + (RH_MOD - mul(suffix.hash,base_pow(len(H)-len(suffix))).calc_mod)).calc_mod\n\
     \        var l = len(H)-len(suffix)\n        return HashString(hash:hash,size:l)\n\
     \n    type RollingHashBase = ref object\n        S : string\n        prefixs :\
@@ -115,13 +124,15 @@ data:
   isVerificationFile: false
   path: cplib/str/hash_string.nim
   requiredBy: []
-  timestamp: '2024-08-17 01:24:43+09:00'
+  timestamp: '2024-08-31 00:22:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/hash_string/hash_string_LCS_test.nim
   - verify/str/hash_string/hash_string_LCS_test.nim
   - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_Z_algo_test.nim
   - verify/str/hash_string/hash_string_Z_algo_test.nim
   - verify/str/hash_string/hash_string_LCP_test.nim

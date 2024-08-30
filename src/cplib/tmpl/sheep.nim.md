@@ -45,6 +45,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/hash_string/hash_string_mul_test.nim
+    title: verify/str/hash_string/hash_string_mul_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/hash_string/hash_string_mul_test.nim
+    title: verify/str/hash_string/hash_string_mul_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -115,6 +121,8 @@ data:
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
 documentation_of: cplib/tmpl/sheep.nim
 layout: document
 redirect_from:
