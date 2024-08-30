@@ -33,8 +33,8 @@ data:
   dependsOn:
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: verify/str/static_string/static_string_count_test_.nim
   requiredBy: []
