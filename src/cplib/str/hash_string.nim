@@ -3,7 +3,7 @@ when not declared CPLIB_STR_HASHSTRING:
     import random
     type HashString* =object
         hash* :uint
-        size:int
+        size: int
     const MASK30 = (1u shl 30) - 1
     const MASK31 = (1u shl 31) - 1
     const RH_MOD = (1u shl 61) - 1
@@ -74,14 +74,20 @@ when not declared CPLIB_STR_HASHSTRING:
     proc len*(H:HashString):int=int(H.size)
 
     proc `*`*(H:HashString,x:int):HashString=
-        result = "".toHash()
         var
+            size = H.size * x
+            tmp_hash = H.hash
+            tmp_b = base_pow(H.size)
+            hash = uint(0)
             x = x
-            tmp = H
         while x > 0:
-            if x mod 2 != 0: result = result&tmp
-            if x > 1: tmp = tmp & tmp
+            if x mod 2 != 0:
+                hash = (mul(hash,tmp_b).calc_mod+tmp_hash).calc_mod
+            if x > 1:
+                tmp_hash = (mul(tmp_hash,tmp_b).calc_mod+tmp_hash).calc_mod
+                tmp_b = mul(tmp_b,tmp_b).calc_mod
             x = x shr 1
+        return HashString(hash:hash,size:size)
 
     proc removePrefix*(H,suffix:HashString):HashString=
         var hash = (H.hash + (RH_MOD - mul(suffix.hash,base_pow(len(H)-len(suffix))).calc_mod)).calc_mod
