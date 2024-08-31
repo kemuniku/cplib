@@ -31,7 +31,7 @@ data:
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   requiredBy: []
-  timestamp: '2024-08-31 00:50:27+09:00'
+  timestamp: '2024-08-31 11:41:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim

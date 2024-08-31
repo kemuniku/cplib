@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+    title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+    title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_pun_test.nim
     title: verify/str/rolling_hash_pun_test.nim
   - icon: ':heavy_check_mark:'
@@ -67,6 +73,8 @@ data:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_pun_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
 documentation_of: cplib/utils/binary_search.nim

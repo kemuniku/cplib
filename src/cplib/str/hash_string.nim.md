@@ -82,8 +82,8 @@ data:
     \        var hash = (H.hash + (RH_MOD - mul(prefix.hash,base_pow(len(H)-len(prefix))).calc_mod)).calc_mod\n\
     \        var l = len(H)-len(prefix)\n        return HashString(hash:hash,bpow:base_pow(l),size:l)\n\
     \n    type RollingHashBase = ref object\n        S : string\n        prefixs :\
-    \ seq[uint]\n        size : int \n\n    type RollingHash* = object\n        R\
-    \ : RollingHashBase\n        l : int\n        r : int\n\n    proc len*(S:RollingHashBase):int=\n\
+    \ seq[uint]\n        size : int \n\n    type RollingHash* = object\n        R*\
+    \ : RollingHashBase\n        l* : int\n        r* : int\n\n    proc len*(S:RollingHashBase):int=\n\
     \        return int(S.size)\n\n    proc len*(S:RollingHash):int=\n        return\
     \ int(S.r-S.l)\n\n    proc get_substring(R:RollingHashBase,l,r:int):RollingHash=\n\
     \        # \u534A\u958B\u533A\u9593\u3068\u3059\u308B\u3002\n        # \u7A7A\u6587\
@@ -125,7 +125,7 @@ data:
   isVerificationFile: false
   path: cplib/str/hash_string.nim
   requiredBy: []
-  timestamp: '2024-08-31 00:50:27+09:00'
+  timestamp: '2024-08-31 11:41:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/hash_string/hash_string_LCS_test.nim

@@ -165,6 +165,9 @@ data:
   - name: cplib/str
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/str/can_reverse_hash_string.nim
+      title: cplib/str/can_reverse_hash_string.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/hash_string.nim
       title: cplib/str/hash_string.nim
     - icon: ':heavy_check_mark:'
@@ -760,6 +763,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery/keyence2021_static_test.nim
       title: verify/modint/montgomery/keyence2021_static_test.nim
+  - name: verify/str/can_reverse_hash_string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
+      title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+      title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
+      title: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+      title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+      title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
+      title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str/hash_string
     pages:
     - icon: ':heavy_check_mark:'
