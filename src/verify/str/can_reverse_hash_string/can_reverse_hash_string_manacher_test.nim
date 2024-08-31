@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://judge.yosupo.jp/problem/zalgorithm
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/enumerate_palindromes
 import cplib/str/can_reverse_hash_string
 import cplib/utils/binary_search
 import strutils
