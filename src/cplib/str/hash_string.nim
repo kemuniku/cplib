@@ -103,9 +103,9 @@ when not declared CPLIB_STR_HASHSTRING:
         size : int 
 
     type RollingHash* = object
-        R : RollingHashBase
-        l : int
-        r : int
+        R* : RollingHashBase
+        l* : int
+        r* : int
 
     proc len*(S:RollingHashBase):int=
         return int(S.size)
