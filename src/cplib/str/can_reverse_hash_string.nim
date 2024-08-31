@@ -1,8 +1,10 @@
 when not declared CPLIB_STR_HASHSTRING:
     const CPLIB_STR_HASHSTRING* = 1
+    # hash_stringといっしょに使われるのは想定していないのであえてconstを衝突させています
     import random
     type HashString* =object
         hash* :uint
+        rhash* :uint
         bpow  :uint
         size: int
     const MASK30 = (1u shl 30) - 1
@@ -54,20 +56,30 @@ when not declared CPLIB_STR_HASHSTRING:
             return inner_pow(hashstring_base,n)
         else:
             return pows[n]
+    
+    proc base_inv_pow(n:int):uint=
+        if n >= len(invpows):
+            return inner_pow(inv_hashstring_base,n)
+        else:
+            return invpows[n]
 
     proc tohash*(S:string):HashString=
         var hash = 0u
+        var rhash = 0u
         var tmp = 1u
         for i in countdown(len(S)-1,0,1):
             hash = (hash+mul(uint(int(S[i])),tmp)).calc_mod
+            rhash = (rhash+mul(uint(int(S[len(S)-1-i])),tmp)).calc_mod
             tmp = mul(tmp,hashstring_base).calc_mod 
-        result = HashString(hash:hash,bpow:base_pow(len(S)),size:len(S))
+        result = HashString(hash:hash,rhash:rhash,bpow:base_pow(len(S)),size:len(S))
 
     proc tohash*(S:char):HashString=
-        result = HashString(hash:uint(int(S)),bpow:hashstring_base,size:1)
+        result = HashString(hash:uint(int(S)),rhash:uint(int(S)),bpow:hashstring_base,size:1)
 
     proc `&`*(L,R:HashString):HashString=
-        result = HashString(hash:(mul(L.hash,R.bpow).calc_mod+R.hash).calc_mod,bpow:mul(L.bpow,R.bpow).calc_mod,size:L.size+R.size)
+        result = HashString(hash:(mul(L.hash,R.bpow).calc_mod+R.hash).calc_mod,
+                            rhash:(mul(R.rhash,L.bpow).calc_mod+L.rhash).calc_mod,
+                            bpow:mul(L.bpow,R.bpow).calc_mod,size:L.size+R.size)
 
     proc `==`*(L,R:HashString):bool=
         return (L.size == R.size) and (L.hash == R.hash)
@@ -79,27 +91,38 @@ when not declared CPLIB_STR_HASHSTRING:
             size = H.size * x
             bpow = uint(1)
             tmp_hash = H.hash
+            tmp_rhash = H.rhash
             tmp_b = H.bpow
             hash = uint(0)
+            rhash = uint(0)
             x = x
         while x > 0:
             if x mod 2 != 0:
                 hash = (mul(hash,tmp_b).calc_mod+tmp_hash).calc_mod
+                rhash = (mul(tmp_rhash,bpow).calc_mod+rhash).calc_mod
                 bpow = mul(bpow,tmp_b).calc_mod
             if x > 1:
                 tmp_hash = (mul(tmp_hash,tmp_b).calc_mod+tmp_hash).calc_mod
+                tmp_rhash = (mul(tmp_rhash,tmp_b).calc_mod+tmp_rhash).calc_mod
                 tmp_b = mul(tmp_b,tmp_b).calc_mod
             x = x shr 1
-        return HashString(hash:hash,bpow:bpow,size:size)
+        return HashString(hash:hash,rhash:rhash,bpow:bpow,size:size)
+    
+    proc isPalindrome*(H:HashString):bool=
+        H.hash == H.rhash
 
-    proc removePrefix*(H,prefix:HashString):HashString=
-        var hash = (H.hash + (RH_MOD - mul(prefix.hash,base_pow(len(H)-len(prefix))).calc_mod)).calc_mod
-        var l = len(H)-len(prefix)
-        return HashString(hash:hash,bpow:base_pow(l),size:l)
+    proc reversed*(H:HashString):HashString=
+        return HashString(hash:H.rhash,rhash:H.hash,bpow:H.bpow,size:H.size)
+
+    # proc removePrefix*(H,prefix:HashString):HashString=
+    #     var hash = (H.hash + (RH_MOD - mul(prefix.hash,base_pow(len(H)-len(prefix))).calc_mod)).calc_mod
+    #     var l = len(H)-len(prefix)
+    #     return HashString(hash:hash,bpow:base_pow(l),size:l)
 
     type RollingHashBase = ref object
         S : string
         prefixs : seq[uint]
+        rprefixs : seq[uint]
         size : int 
 
     type RollingHash* = object
@@ -144,23 +167,32 @@ when not declared CPLIB_STR_HASHSTRING:
         var rolling = RollingHashBase()
         rolling.S = S
         rolling.prefixs = newSeq[uint](len(S)+1)
+        rolling.rprefixs = newSeq[uint](len(S)+1)
+        rolling.rprefixs[0] = 0
         rolling.prefixs[0] = 0
+        var tmp = 1u
         for i in 1..len(S):
             rolling.prefixs[i] = (mul(rolling.prefixs[i-1],hashstring_base) + uint(int(S[i-1]))).calc_mod()
+            rolling.rprefixs[i] = (mul(uint(int(S[i-1])),tmp) + rolling.rprefixs[i-1]).calc_mod()
+            tmp = mul(tmp,hashstring_base).calc_mod
         rolling.size = (len(S))
         return rolling[0..<len(S)]
 
 
 
     converter toHashString*(self:RollingHash):HashString=
-        return HashString(hash:(self.R.prefixs[self.r] + (RH_MOD - mul(self.R.prefixs[self.l],base_pow(self.r-self.l)).calc_mod)).calc_mod,bpow:base_pow(self.r-self.l),size:self.r-self.l)
+
+        return HashString(  hash:(self.R.prefixs[self.r] + (RH_MOD - mul(self.R.prefixs[self.l],base_pow(self.r-self.l)).calc_mod)).calc_mod,
+                            rhash:mul((self.R.rprefixs[self.r] + (RH_MOD - self.R.rprefixs[self.l])).calc_mod,base_inv_pow(self.l)).calc_mod,
+                            bpow:base_pow(self.r-self.l),
+                            size:self.r-self.l)
 
     proc`$`*(S:RollingHash):string=
         return S.R.S[S.l..<S.r]
 
     proc `==`*(S,T:RollingHash):bool=
         return len(S) == len(T) and (S.R.prefixs[S.r] + (RH_MOD - mul(S.R.prefixs[S.l],base_pow(S.r-S.l)).calc_mod)).calc_mod == 
-            (T.R.prefixs[T.r] + (RH_MOD - mul(T.R.prefixs[T.l],base_pow(T.r-T.l)).calc_mod)).calc_mod
+                                    (T.R.prefixs[T.r] + (RH_MOD - mul(T.R.prefixs[T.l],base_pow(T.r-T.l)).calc_mod)).calc_mod
 
     proc LCP*(S,T:RollingHash):int=
         var ok = 0
@@ -192,3 +224,5 @@ when not declared CPLIB_STR_HASHSTRING:
 
     proc `<`*(S,T:RollingHash):bool=
         return cmp(S,T) < 0
+
+    
