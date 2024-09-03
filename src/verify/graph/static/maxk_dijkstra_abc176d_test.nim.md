@@ -54,12 +54,12 @@ data:
     \ = d[tx*w+ty]\nif ans == INF32: ans = -1\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/maxk_dijkstra_abc176d_test.nim

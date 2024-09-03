@@ -50,10 +50,10 @@ data:
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/bellmanford.nim
   - cplib/utils/constants.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/bellmanford.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/bellmanford_grl1b_test.nim

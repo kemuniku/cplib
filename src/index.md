@@ -19,6 +19,9 @@ data:
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/deletable_heapqueue.nim
+      title: cplib/collections/deletable_heapqueue.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/hashset.nim
       title: cplib/collections/hashset.nim
     - icon: ':heavy_check_mark:'
@@ -260,6 +263,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/associative_array_test.nim
       title: verify/collections/associative_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/deletable_heapqueue_test.nim
+      title: verify/collections/deletable_heapqueue_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/hashset_abc336f_test.nim
       title: verify/collections/hashset_abc336f_test.nim
