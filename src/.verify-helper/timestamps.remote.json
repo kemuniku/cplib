@@ -14,6 +14,7 @@
 "verify/collections/defaultdict/defaultdict_abc278c_test.nim": "2024-04-08 07:44:23 +0900",
 "verify/collections/defaultdict/defaultdict_abc278d_test.nim": "2024-04-08 07:44:23 +0900",
 "verify/collections/defaultdict/defaultdict_unit_test.nim": "2024-04-08 07:44:23 +0900",
+"verify/collections/deletable_heapqueue_test.nim": "2024-09-04 03:52:27 +0900",
 "verify/collections/hashset_abc336f_test.nim": "2024-03-21 10:21:36 +0900",
 "verify/collections/hashtable_abc340c_test.nim": "2024-03-21 10:31:56 +0900",
 "verify/collections/hashtable_yuki2686_test.nim": "2024-06-17 22:20:15 +0900",
