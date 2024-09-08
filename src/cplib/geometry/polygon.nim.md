@@ -146,8 +146,8 @@ data:
   - cplib/math/fractions.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy: []

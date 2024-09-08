@@ -101,6 +101,9 @@ data:
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/steiner_tree.nim
+      title: cplib/graph/steiner_tree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
     - icon: ':heavy_check_mark:'
@@ -584,6 +587,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/warshall_floyd_aoj_test.nim
       title: verify/graph/static/warshall_floyd_aoj_test.nim
+  - name: verify/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/steiner_tree_abc364g_test.nim
+      title: verify/graph/steiner_tree_abc364g_test.nim
   - name: verify/itertools
     pages:
     - icon: ':heavy_check_mark:'

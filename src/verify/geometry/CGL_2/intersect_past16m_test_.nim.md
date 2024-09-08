@@ -60,12 +60,12 @@ data:
     '
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: verify/geometry/CGL_2/intersect_past16m_test_.nim

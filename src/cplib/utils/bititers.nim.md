@@ -1,8 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/steiner_tree.nim
+    title: cplib/graph/steiner_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/steiner_tree.nim
+    title: cplib/graph/steiner_tree.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/steiner_tree_abc364g_test.nim
+    title: verify/graph/steiner_tree_abc364g_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/steiner_tree_abc364g_test.nim
+    title: verify/graph/steiner_tree_abc364g_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/bititers_bitcomb_test.nim
     title: verify/utils/bititers_bitcomb_test.nim
@@ -89,7 +101,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/bititers.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
   timestamp: '2023-12-13 00:26:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -101,6 +115,8 @@ data:
   - verify/utils/bititers_bitsuperset_test.nim
   - verify/utils/bititers_bitsubseteq_test.nim
   - verify/utils/bititers_bitsubseteq_test.nim
+  - verify/graph/steiner_tree_abc364g_test.nim
+  - verify/graph/steiner_tree_abc364g_test.nim
 documentation_of: cplib/utils/bititers.nim
 layout: document
 redirect_from:
