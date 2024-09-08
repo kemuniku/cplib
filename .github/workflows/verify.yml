@@ -46,7 +46,9 @@ jobs:
 
       - name: Install Dependency
         id: install-dependency
-        run: nimble install https://github.com/zer0-star/Nim-ACL -N
+        run: |
+          nimble install -y
+          nimble install https://github.com/zer0-star/Nim-ACL -N
 
       - name: Restore Verify Cache
         id: restore-verify-cache

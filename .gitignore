@@ -11,3 +11,6 @@ sub.py
 makerandom.py
 naive.py
 sub2.py
+*.o
+nimdoc
+cplib.nim

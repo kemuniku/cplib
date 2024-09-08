@@ -1,6 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE:
     const CPLIB_COLLECTIONS_SEGTREE* = 1
-    import algorithm
+    import algorithm, strutils
     type SegmentTree*[T] = ref object
         default: T
         merge: proc(x: T, y: T): T
@@ -53,6 +53,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     proc get*[T](self: SegmentTree[T], segment: HSlice[int, int]): T =
         assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length
         return self.get(segment.a, segment.b+1)
+    proc `[]`*[T](self: SegmentTree[T], segment: HSlice[int, int]): T = self.get(segment)
     proc `[]`*[T](self: SegmentTree[T], index: Natural): T =
         assert index < self.length
         return self.arr[index+self.lastnode]
@@ -64,7 +65,47 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         return self.arr[1]
     proc len*[T](self: SegmentTree[T]): int =
         return self.length
-
+    proc `$`*[T](self: SegmentTree[T]): string =
+        var s = self.arr.len div 2
+        return self.arr[s..<s+self.len].join(" ")
     template newSegWith*(V, merge, default: untyped): untyped =
-        initSegmentTree(V, (l, r{.inject.}: typeof(default)) => merge, default)
-
+        initSegmentTree(V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
+    proc max_right*[T](self: SegmentTree[T], l: int, f: proc(l: T): bool): int =
+        assert 0 <= l and l <= self.len
+        assert f(self.default)
+        if l == self.len: return self.len
+        var l = l
+        l += self.lastnode
+        var sm = self.default
+        while true:
+            while l mod 2 == 0: l = (l shr 1)
+            if not f(self.merge(sm, self.arr[l])):
+                while l < self.lastnode:
+                    l *= 2
+                    if f(self.merge(sm, self.arr[l])):
+                        sm = self.merge(sm, self.arr[l])
+                        l += 1
+                return l - self.lastnode
+            sm = self.merge(sm, self.arr[l])
+            l += 1
+            if (l and -l) == l: break
+        return self.len
+    proc min_left*[T](self: SegmentTree[T], r: int, f: proc(l: T): bool): int =
+        assert 0 <= r and r <= self.len
+        assert f(self.default)
+        if r == 0: return 0
+        var r = r
+        r += self.lastnode
+        var sm = self.default
+        while true:
+            r -= 1
+            while (r > 1 and r mod 2 != 0): r = (r shr 1)
+            if not f(self.merge(self.arr[r], sm)):
+                while r < self.lastnode:
+                    r = 2 * r + 1
+                    if f(self.merge(self.arr[r], sm)):
+                        sm = self.merge(self.arr[r], sm)
+                        r -= 1
+                return r + 1 - self.lastnode
+            if (r and -r) == r: break
+        return 0

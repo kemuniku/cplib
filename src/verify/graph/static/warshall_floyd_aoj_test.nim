@@ -2,7 +2,7 @@
 import sequtils, strutils
 import cplib/graph/graph
 import cplib/graph/warshall_floyd
-import cplib/utils/infl
+import cplib/utils/constants
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
@@ -17,5 +17,5 @@ if negative_cycle:
     echo "NEGATIVE CYCLE"
     quit()
 for i in 0..<n:
-    var d = d[i].mapIt(if it == INFL: "INF" else: ($it)).join(" ")
+    var d = d[i].mapIt(if it == INF64: "INF" else: ($it)).join(" ")
     echo d

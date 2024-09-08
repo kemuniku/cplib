@@ -22,6 +22,9 @@ when not declared CPLIB_MODINT_MODINT:
     func `-`*(a: SomeInteger, b: MontgomeryModint or BarrettModint): auto = b - a
     func `*`*(a: SomeInteger, b: MontgomeryModint or BarrettModint): auto = b * a
     func `/`*(a: SomeInteger, b: MontgomeryModint or BarrettModint): auto = b / a
+    proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt, b: static int): auto =
+        const tmp = init(Modint, b).inv
+        return a * tmp
     func pow*(a: MontgomeryModint or BarrettModint, n: int): auto =
         result = init(typeof(a), 1)
         var a = a

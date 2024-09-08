@@ -1,5 +1,7 @@
 when not declared CPLIB_MODINT_MODINT_BARRETT:
     const CPLIB_MODINT_MODINT_BARRETT* = 1
+    when compileOption("mm", "orc") or compileOption("mm", "arc"):
+        {.fatal: "Plese Use refc".}
     import std/macros
     type StaticBarrettModint*[M: static[uint32]] = object
         a: uint32
@@ -63,6 +65,7 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
     proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) =
         a.a = rem(T, (a.a).uint * (init(T, b).a).uint)
     proc inv*[T: BarrettModint](x: T): T =
+        assert x.val != 0
         var x: int32 = int32(x.val)
         var y: int32 = T.mod
         var u = 1i32

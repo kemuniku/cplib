@@ -2,13 +2,13 @@ when not declared CPLIB_GRAPH_REVERSE_EDGE:
     const CPLIB_GRAPH_REVERSE_EDGE* = 1
     import cplib/graph/graph, std/math
     proc reverse_edge*[T](G: WeightedDirectedGraph[T]): WeightedDirectedGraph[T] =
-        result = WeightedDirectedGraph[T](edges: newSeq[seq[(int, T)]](G.N), N: G.N)
-        for i in 0..<G.N:
+        result = WeightedDirectedGraph[T](edges: newSeq[seq[(int32, T)]](G.len), len: G.len)
+        for i in 0..<G.len:
             for (j, c) in G[i]:
                 result.add_edge(j, i, c)
     proc reverse_edge*(G: UnWeightedDirectedGraph): UnWeightedDirectedGraph =
-        result = UnWeightedDirectedGraph(edges: newSeq[seq[(int, int)]](G.N), N: G.N)
-        for i in 0..<G.N:
+        result = UnWeightedDirectedGraph(edges: newSeq[seq[(int32, int)]](G.len), len: G.len)
+        for i in 0..<G.len:
             for j in G[i]:
                 result.add_edge(j, i)
 
@@ -18,9 +18,9 @@ when not declared CPLIB_GRAPH_REVERSE_EDGE:
             src: G.dst,
             dst: G.src,
             cost: G.cost,
-            elist: newSeq[(int, T)](0),
-            start: newSeq[int](0),
-            N: G.N
+            elist: newSeq[(int32, T)](0),
+            start: newSeq[int32](0),
+            len: G.len
         )
         result.build
 
@@ -29,8 +29,8 @@ when not declared CPLIB_GRAPH_REVERSE_EDGE:
             src: G.dst,
             dst: G.src,
             cost: G.cost,
-            elist: newSeq[(int, int)](0),
-            start: newSeq[int](0),
-            N: G.N
+            elist: newSeq[(int32, int)](0),
+            start: newSeq[int32](0),
+            len: G.len
         )
         result.build

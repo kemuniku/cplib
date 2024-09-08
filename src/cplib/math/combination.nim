@@ -1,6 +1,6 @@
 when not declared CPLIB_MATH_COMBINATION:
     const CPLIB_MATH_COMBINATION* = 1
-    type Combination_Type[ModInt] = ref object
+    type Combination_Type[ModInt] = object
         fact: seq[ModInt]
         inv: seq[ModInt]
         fact_inv: seq[ModInt]
