@@ -7,7 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/grid_searcher.nim
+    title: cplib/utils/grid_searcher.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/grid_searcher.nim
+    title: cplib/utils/grid_searcher.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/avlset/ABC217_gele_test.nim
@@ -57,6 +63,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/avlset/index_right_test.nim
     title: verify/collections/avlset/index_right_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_get_test.nim
+    title: verify/utils/grid_searcher/skate_get_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_get_test.nim
+    title: verify/utils/grid_searcher/skate_get_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_get_tuple_test.nim
+    title: verify/utils/grid_searcher/skate_get_tuple_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_get_tuple_test.nim
+    title: verify/utils/grid_searcher/skate_get_tuple_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_test.nim
+    title: verify/utils/grid_searcher/skate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_test.nim
+    title: verify/utils/grid_searcher/skate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_tuple_test.nim
+    title: verify/utils/grid_searcher/skate_tuple_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/grid_searcher/skate_tuple_test.nim
+    title: verify/utils/grid_searcher/skate_tuple_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -119,10 +149,20 @@ data:
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: cplib/collections/avlset.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/utils/grid_searcher.nim
+  - cplib/utils/grid_searcher.nim
   timestamp: '2024-07-21 20:30:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/grid_searcher/skate_get_test.nim
+  - verify/utils/grid_searcher/skate_get_test.nim
+  - verify/utils/grid_searcher/skate_get_tuple_test.nim
+  - verify/utils/grid_searcher/skate_get_tuple_test.nim
+  - verify/utils/grid_searcher/skate_test.nim
+  - verify/utils/grid_searcher/skate_test.nim
+  - verify/utils/grid_searcher/skate_tuple_test.nim
+  - verify/utils/grid_searcher/skate_tuple_test.nim
   - verify/collections/avlset/ABC217_gele_test.nim
   - verify/collections/avlset/ABC217_gele_test.nim
   - verify/collections/avlset/ABC236_test.nim

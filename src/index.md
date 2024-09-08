@@ -231,6 +231,9 @@ data:
       path: cplib/utils/constants.nim
       title: cplib/utils/constants.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/grid_searcher.nim
+      title: cplib/utils/grid_searcher.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: cplib/utils/inversion_number.nim
     - icon: ':heavy_check_mark:'
@@ -972,5 +975,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/restore_lis_aoj_test.nim
       title: verify/utils/restore_lis_aoj_test.nim
+  - name: verify/utils/grid_searcher
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/grid_searcher/skate_get_test.nim
+      title: verify/utils/grid_searcher/skate_get_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/grid_searcher/skate_get_tuple_test.nim
+      title: verify/utils/grid_searcher/skate_get_tuple_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/grid_searcher/skate_test.nim
+      title: verify/utils/grid_searcher/skate_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/grid_searcher/skate_tuple_test.nim
+      title: verify/utils/grid_searcher/skate_tuple_test.nim
 layout: toppage
 ---
