@@ -159,20 +159,20 @@ data:
   timestamp: '2024-07-21 20:30:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/avlset/ABC217_gtlt_test.nim
-  - verify/collections/avlset/ABC217_gtlt_test.nim
-  - verify/collections/avlset/ABC234D_access_test.nim
-  - verify/collections/avlset/ABC234D_access_test.nim
   - verify/collections/avlset/ABC217_gele_test.nim
   - verify/collections/avlset/ABC217_gele_test.nim
-  - verify/collections/avlset/ABC294_test.nim
-  - verify/collections/avlset/ABC294_test.nim
-  - verify/collections/avlset/ABC337_test.nim
-  - verify/collections/avlset/ABC337_test.nim
   - verify/collections/avlset/ABC236_test.nim
   - verify/collections/avlset/ABC236_test.nim
+  - verify/collections/avlset/ABC294_test.nim
+  - verify/collections/avlset/ABC294_test.nim
+  - verify/collections/avlset/ABC234D_access_test.nim
+  - verify/collections/avlset/ABC234D_access_test.nim
+  - verify/collections/avlset/ABC217_gtlt_test.nim
+  - verify/collections/avlset/ABC217_gtlt_test.nim
   - verify/collections/avlset/index_right_test.nim
   - verify/collections/avlset/index_right_test.nim
+  - verify/collections/avlset/ABC337_test.nim
+  - verify/collections/avlset/ABC337_test.nim
   - verify/collections/avlset/ABC217_index_test.nim
   - verify/collections/avlset/ABC217_index_test.nim
 documentation_of: cplib/collections/avltreenode.nim
