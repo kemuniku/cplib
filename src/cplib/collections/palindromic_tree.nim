@@ -12,6 +12,7 @@ when not declared CPLIB_COLLECTIONS_PALINDROMIC_TREE:
 
     proc len*(node: PalindromicTreeNode): int = node.len
     proc count*(node: PalindromicTreeNode): int = node.count
+    proc id*(node: PalindromicTreeNode): int = node.id
     proc suffix_link*(node: PalindromicTreeNode): ref PalindromicTreeNode = node.suffix_link
     proc link*(node: PalindromicTreeNode): seq[ref PalindromicTreeNode] = node.link
     proc nodes*(pt: PalindromicTree): seq[ref PalindromicTreeNode] = pt.nodes
