@@ -28,9 +28,6 @@ data:
       path: cplib/collections/hashtable.nim
       title: cplib/collections/hashtable.nim
     - icon: ':heavy_check_mark:'
-      path: cplib/collections/palindromic_tree.nim
-      title: cplib/collections/palindromic_tree.nim
-    - icon: ':heavy_check_mark:'
       path: cplib/collections/rollback_unionfind.nim
       title: cplib/collections/rollback_unionfind.nim
     - icon: ':heavy_check_mark:'
@@ -183,6 +180,9 @@ data:
       path: cplib/str/manachar.nim
       title: cplib/str/manachar.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/palindromic_tree.nim
+      title: cplib/str/palindromic_tree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/rolling_hash.nim
       title: cplib/str/rolling_hash.nim
     - icon: ':heavy_check_mark:'
@@ -284,9 +284,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/hashtable_yuki2686_test.nim
       title: verify/collections/hashtable_yuki2686_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/collections/palindromic_tree_test.nim
-      title: verify/collections/palindromic_tree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/rollback_uf_abc302ex_test.nim
       title: verify/collections/rollback_uf_abc302ex_test.nim
@@ -828,6 +825,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/manachar_test.nim
       title: verify/str/manachar_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/palindromic_tree_test.nim
+      title: verify/str/palindromic_tree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_abcbac_test.nim
       title: verify/str/rolling_hash_abcbac_test.nim

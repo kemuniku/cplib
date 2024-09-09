@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/collections/palindromic_tree_test.nim
-    title: verify/collections/palindromic_tree_test.nim
+    path: verify/str/palindromic_tree_test.nim
+    title: verify/str/palindromic_tree_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/collections/palindromic_tree_test.nim
-    title: verify/collections/palindromic_tree_test.nim
+    path: verify/str/palindromic_tree_test.nim
+    title: verify/str/palindromic_tree_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,17 +60,17 @@ data:
     \ += node[].count\n"
   dependsOn: []
   isVerificationFile: false
-  path: cplib/collections/palindromic_tree.nim
+  path: cplib/str/palindromic_tree.nim
   requiredBy: []
-  timestamp: '2024-09-10 01:09:34+09:00'
+  timestamp: '2024-09-10 01:13:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/palindromic_tree_test.nim
-  - verify/collections/palindromic_tree_test.nim
-documentation_of: cplib/collections/palindromic_tree.nim
+  - verify/str/palindromic_tree_test.nim
+  - verify/str/palindromic_tree_test.nim
+documentation_of: cplib/str/palindromic_tree.nim
 layout: document
 redirect_from:
-- /library/cplib/collections/palindromic_tree.nim
-- /library/cplib/collections/palindromic_tree.nim.html
-title: cplib/collections/palindromic_tree.nim
+- /library/cplib/str/palindromic_tree.nim
+- /library/cplib/str/palindromic_tree.nim.html
+title: cplib/str/palindromic_tree.nim
 ---
