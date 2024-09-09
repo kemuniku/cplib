@@ -35,8 +35,8 @@ data:
   dependsOn:
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/ABC294_test.nim
   requiredBy: []

@@ -50,12 +50,12 @@ data:
     No\"\n        quit()\necho \"Yes\"\n\n"
   dependsOn:
   - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
   - cplib/str/run_length_encode.nim

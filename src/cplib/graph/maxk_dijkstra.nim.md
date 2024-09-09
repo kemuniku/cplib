@@ -104,12 +104,12 @@ data:
     \ cost: T] =\n        return shortest_path_maxk_dijkstra_impl(G, start, goal,\
     \ k, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
   requiredBy: []

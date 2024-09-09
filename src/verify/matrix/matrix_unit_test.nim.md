@@ -61,8 +61,8 @@ data:
   dependsOn:
   - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
-  - cplib/matrix/matops.nim
   - cplib/matrix/matrix.nim
+  - cplib/matrix/matops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim
   requiredBy: []
