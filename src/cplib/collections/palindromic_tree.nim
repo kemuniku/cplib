@@ -2,21 +2,18 @@ when not declared CPLIB_COLLECTIONS_PALINDROMIC_TREE:
     const CPLIB_COLLECTIONS_PALINDROMIC_TREE* = 1
     import sequtils, algorithm
     type PalindromicTreeNode* = object
-        link: seq[ref PalindromicTreeNode]
-        suffix_link: ref PalindromicTreeNode
+        link*: seq[ref PalindromicTreeNode]
+        suffix_link*: ref PalindromicTreeNode
         len, count, id: int
 
     type PalindromicTree* = object
         amax: int
-        nodes: seq[ref PalindromicTreeNode]
+        nodes*: seq[ref PalindromicTreeNode]
 
     proc len*(node: PalindromicTreeNode): int = node.len
     proc count*(node: PalindromicTreeNode): int = node.count
     proc id*(node: PalindromicTreeNode): int = node.id
-    proc suffix_link*(node: PalindromicTreeNode): ref PalindromicTreeNode = node.suffix_link
-    proc link*(node: PalindromicTreeNode): seq[ref PalindromicTreeNode] = node.link
-    proc nodes*(pt: PalindromicTree): seq[ref PalindromicTreeNode] = pt.nodes
-
+    
     proc newPalindromicTreeNode(pt: var PalindromicTree, amax, len: int): ref PalindromicTreeNode =
         result = new PalindromicTreeNode
         result[].link = newSeq[ref PalindromicTreeNode](amax)
