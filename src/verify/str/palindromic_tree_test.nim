@@ -1,6 +1,6 @@
 # verification-helper: PROBLEM https://yukicoder.me/problems/no/2606
 import strutils, sequtils, algorithm
-import cplib/collections/palindromic_tree
+import cplib/str/palindromic_tree
 
 var s = stdin.readLine.reversed.join("")
 var pt = initPalindromicTree(s)
