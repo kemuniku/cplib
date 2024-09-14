@@ -16,6 +16,9 @@ data:
       path: cplib/collections/avltreenode.nim
       title: cplib/collections/avltreenode.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/binary_trie.nim
+      title: cplib/collections/binary_trie.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
     - icon: ':heavy_check_mark:'
@@ -272,6 +275,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/associative_array_test.nim
       title: verify/collections/associative_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/binary_trie_test.nim
+      title: verify/collections/binary_trie_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/deletable_heapqueue_test.nim
       title: verify/collections/deletable_heapqueue_test.nim
