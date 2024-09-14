@@ -1,7 +1,8 @@
 when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
     const CPLIB_COLLECTION_BINARY_TRIE* = 1
     type BinaryTrieNode = ref object
-        child : array[2,BinaryTrieNode]
+        zero:BinaryTrieNode
+        one:BinaryTrieNode
         value : int
     type BinaryTrie = object
         root : BinaryTrieNode
@@ -16,13 +17,13 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
         now.value += v
         for i in countdown(self.h-1,0,1):
             if (x and (1 shl i)) == 0:
-                if now.child[0].isNil():
-                    now.child[0] = BinaryTrieNode()
-                now = now.child[0]
+                if now.zero.isNil():
+                    now.zero = BinaryTrieNode()
+                now = now.zero
             else:
-                if now.child[1].isNil():
-                    now.child[1] = BinaryTrieNode()
-                now = now.child[1]
+                if now.one.isNil():
+                    now.one = BinaryTrieNode()
+                now = now.one
             now.value += v
 
     proc del*(self:BinaryTrie,x:int,v:int=1)=
@@ -30,26 +31,26 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
         now.value -= v
         for i in countdown(self.h-1,0,1):
             if (x and (1 shl i)) == 0:
-                if now.child[0].isNil():
-                    now.child[0] = BinaryTrieNode()
-                now = now.child[0]
+                if now.zero.isNil():
+                    now.zero = BinaryTrieNode()
+                now = now.zero
             else:
-                if now.child[1].isNil():
-                    now.child[1] = BinaryTrieNode()
-                now = now.child[1]
+                if now.one.isNil():
+                    now.one = BinaryTrieNode()
+                now = now.one
             now.value -= v
 
     proc count*(self:BinaryTrie,x:int):int=
         var now = self.root
         for i in countdown(self.h-1,0,1):
             if (x and (1 shl i)) == 0:
-                if now.child[0].isNil():
+                if now.zero.isNil():
                     return 0
-                now = now.child[0]
+                now = now.zero
             else:
-                if now.child[1].isNil():
+                if now.one.isNil():
                     return 0
-                now = now.child[1]
+                now = now.one
         return now.value
 
     proc get_kth*(self:BinaryTrie,k:int,xor_value:int=0):int=
@@ -61,38 +62,38 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
         var cnt = 0
         
         for i in countdown(self.h-1,0,1):
-            if now.child[0].isNil():
-                now = now.child[1]
+            if now.zero.isNil():
+                now = now.one
                 result = (result shl 1) or 1
-            elif now.child[1].isNil():
-                now = now.child[0]
+            elif now.one.isNil():
+                now = now.zero
                 result = (result shl 1)
             else:
                 if (xor_value and (1 shl i)) == 0:
-                    if cnt + now.child[0].value > k:
-                        now = now.child[0]
+                    if cnt + now.zero.value > k:
+                        now = now.zero
                         result = (result shl 1)
                     else:
-                        cnt += now.child[0].value
-                        now = now.child[1]
+                        cnt += now.zero.value
+                        now = now.one
                         result = (result shl 1) or 1
                 else:
-                    if cnt + now.child[1].value > k:
-                        now = now.child[1]
+                    if cnt + now.one.value > k:
+                        now = now.one
                         result = (result shl 1) or 1
                     else:
-                        cnt += now.child[1].value
-                        now = now.child[0]
+                        cnt += now.one.value
+                        now = now.zero
                         result = (result shl 1) 
 
     proc `$`*(self:BinaryTrie):string=
         var S : seq[int]
         proc dfs_node(self:BinaryTrieNode,now:int)=
-            if not self.child[0].isNil():
-                dfs_node(self.child[0],(now shl 1))
-            if not self.child[1].isNil():
-                dfs_node(self.child[1],(now shl 1) + 1)
-            if self.child[0].isNil() and self.child[1].isNil():
+            if not self.zero.isNil():
+                dfs_node(self.zero,(now shl 1))
+            if not self.one.isNil():
+                dfs_node(self.one,(now shl 1) + 1)
+            if self.zero.isNil() and self.one.isNil():
                 if self.value != 0:
                     S.add(now)
         dfs_node(self.root,0)
