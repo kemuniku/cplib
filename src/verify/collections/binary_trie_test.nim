@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://atcoder.jp/contests/abc170/tasks/abc170_e
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/set_xor_min
 import cplib/collections/binary_trie
 import sequtils
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
