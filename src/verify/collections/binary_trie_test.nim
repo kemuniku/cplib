@@ -8,7 +8,7 @@ var S = initBineryTrie(30)
 for i in 0..<(Q):
     var t,x = ii()
     if t == 0:
-        if x in S:
+        if x notin S:
             S.incl(x)
     elif t == 1:
         if x in S:
