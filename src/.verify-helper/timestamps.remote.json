@@ -10,6 +10,7 @@
 "verify/collections/avlset/ABC294_test.nim": "2024-07-21 20:30:56 +0900",
 "verify/collections/avlset/ABC337_test.nim": "2024-07-21 20:30:56 +0900",
 "verify/collections/avlset/index_right_test.nim": "2024-07-21 20:30:56 +0900",
+"verify/collections/binary_trie_test.nim": "2024-09-14 23:10:31 +0900",
 "verify/collections/defaultdict/defaultdict_abc235c_test.nim": "2024-04-08 07:44:23 +0900",
 "verify/collections/defaultdict/defaultdict_abc278c_test.nim": "2024-04-08 07:44:23 +0900",
 "verify/collections/defaultdict/defaultdict_abc278d_test.nim": "2024-04-08 07:44:23 +0900",
