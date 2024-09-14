@@ -1,3 +1,4 @@
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/predecessor_problem
 import cplib/collections/wordsizetree
 import sequtils
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
