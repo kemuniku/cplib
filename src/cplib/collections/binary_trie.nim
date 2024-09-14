@@ -12,7 +12,7 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
     proc initBineryTrie*(h:int):BinaryTrie=
         return BinaryTrie(root:BinaryTrieNode(),h:h)
 
-    proc add*(self:BinaryTrie,x:int,v:int=1)=
+    proc incl*(self:BinaryTrie,x:int,v:int=1)=
         var now = self.root
         now.value += v
         for i in countdown(self.h-1,0,1):
@@ -26,9 +26,10 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                 now = now.one
             now.value += v
 
-    proc del*(self:BinaryTrie,x:int,v:int=1)=
+    proc excl*(self:BinaryTrie,x:int,v:int=1)=
         var now = self.root
         now.value -= v
+        assert now.value >= 0
         for i in countdown(self.h-1,0,1):
             if (x and (1 shl i)) == 0:
                 if now.zero.isNil():
@@ -39,6 +40,7 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                     now.one = BinaryTrieNode()
                 now = now.one
             now.value -= v
+            assert now.value >= 0
 
     proc count*(self:BinaryTrie,x:int):int=
         var now = self.root
@@ -52,6 +54,9 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                     return 0
                 now = now.one
         return now.value
+
+    proc contains*(self:BinaryTrie,x:int):bool=
+        return self.count(x) != 0
 
     proc get_kth*(self:BinaryTrie,k:int,xor_value:int=0):int=
         ## 存在するならば値を返す
@@ -85,6 +90,9 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                         cnt += now.one.value
                         now = now.zero
                         result = (result shl 1) 
+    
+    proc `[]`*(self:BinaryTrie,idx:int):int=
+        return self.get_kth(idx)
 
     proc `$`*(self:BinaryTrie):string=
         var S : seq[int]

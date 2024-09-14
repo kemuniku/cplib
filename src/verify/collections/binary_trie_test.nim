@@ -8,10 +8,10 @@ var S = initBineryTrie(30)
 for i in 0..<(Q):
     var t,x = ii()
     if t == 0:
-        if S.count(x) == 0:
-            S.add(x)
+        if x in S:
+            S.incl(x)
     elif t == 1:
-        if S.count(x) != 0:
-            S.del(x)
+        if x in S:
+            S.excl(x)
     else:
         stdout.writeLine S.get_kth(0,x) xor x
