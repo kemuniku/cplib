@@ -49,14 +49,14 @@ data:
     \        pos += 1\n    var r = c.upperBound(q - y)\n    ans = max(ans, seg.get(0..<r)\
     \ + v)\necho ans\n"
   dependsOn:
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/hashtable.nim
   - cplib/collections/hashtable.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/collections/hashtable_yuki2686_test.nim
   requiredBy: []
-  timestamp: '2024-06-17 22:20:15+09:00'
+  timestamp: '2024-09-16 02:10:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/hashtable_yuki2686_test.nim

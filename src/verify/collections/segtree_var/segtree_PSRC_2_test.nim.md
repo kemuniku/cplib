@@ -38,7 +38,7 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_PSRC_2_test.nim
   requiredBy: []
-  timestamp: '2024-06-17 22:20:15+09:00'
+  timestamp: '2024-09-16 02:10:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree_var/segtree_PSRC_2_test.nim

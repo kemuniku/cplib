@@ -32,6 +32,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/merge_tree.nim
+    title: cplib/graph/merge_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/merge_tree.nim
+    title: cplib/graph/merge_tree.nim
   - icon: ':warning:'
     path: cplib/graph/reverse_edge.nim
     title: cplib/graph/reverse_edge.nim
@@ -159,6 +165,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/merge_tree_test.nim
+    title: verify/graph/merge_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/merge_tree_test.nim
+    title: verify/graph/merge_tree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCCG_static_test.nim
     title: verify/graph/static/SCCG_static_test.nim
@@ -455,6 +467,8 @@ data:
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/merge_tree.nim
+  - cplib/graph/merge_tree.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
   timestamp: '2024-04-11 03:42:22+09:00'
@@ -516,6 +530,8 @@ data:
   - verify/graph/static/scc_abc335e_static_test.nim
   - verify/graph/static/SCC_static_test.nim
   - verify/graph/static/SCC_static_test.nim
+  - verify/graph/merge_tree_test.nim
+  - verify/graph/merge_tree_test.nim
   - verify/graph/steiner_tree_abc364g_test.nim
   - verify/graph/steiner_tree_abc364g_test.nim
   - verify/graph/dynamic/topologicalsort_2_test.nim

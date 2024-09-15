@@ -49,6 +49,9 @@ data:
       path: cplib/collections/staticRMQ.nim
       title: cplib/collections/staticRMQ.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/staticrangecount.nim
+      title: cplib/collections/staticrangecount.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
     - icon: ':heavy_check_mark:'
@@ -100,6 +103,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/maxk_dijkstra.nim
       title: cplib/graph/maxk_dijkstra.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/merge_tree.nim
+      title: cplib/graph/merge_tree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/restore_shortest_path_from_prev.nim
       title: cplib/graph/restore_shortest_path_from_prev.nim
@@ -375,6 +381,9 @@ data:
       path: verify/collections/segtree/segtree_get1item_test.nim
       title: verify/collections/segtree/segtree_get1item_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_init_with_size_test.nim
+      title: verify/collections/segtree/segtree_init_with_size_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_maxright_yuki878_test.nim
       title: verify/collections/segtree/segtree_maxright_yuki878_test.nim
     - icon: ':heavy_check_mark:'
@@ -409,6 +418,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_get1item_test.nim
       title: verify/collections/segtree_var/segtree_get1item_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/segtree_init_with_size_test.nim
+      title: verify/collections/segtree_var/segtree_init_with_size_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
       title: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
@@ -570,6 +582,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
       title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - name: verify/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/merge_tree_test.nim
+      title: verify/graph/merge_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/steiner_tree_abc364g_test.nim
+      title: verify/graph/steiner_tree_abc364g_test.nim
   - name: verify/graph/static
     pages:
     - icon: ':heavy_check_mark:'
@@ -608,11 +628,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/warshall_floyd_aoj_test.nim
       title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - name: verify/graph
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/steiner_tree_abc364g_test.nim
-      title: verify/graph/steiner_tree_abc364g_test.nim
   - name: verify/itertools
     pages:
     - icon: ':heavy_check_mark:'

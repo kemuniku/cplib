@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/merge_tree.nim
+    title: cplib/graph/merge_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/merge_tree.nim
+    title: cplib/graph/merge_tree.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/unionfind_test.nim
@@ -9,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/unionfind_test.nim
     title: verify/collections/unionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/merge_tree_test.nim
+    title: verify/graph/merge_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/merge_tree_test.nim
+    title: verify/graph/merge_tree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/itertools/itertools_combinations_test.nim
     title: verify/itertools/itertools_combinations_test.nim
@@ -47,7 +59,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/unionfind.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/graph/merge_tree.nim
+  - cplib/graph/merge_tree.nim
   timestamp: '2024-09-16 02:33:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -57,6 +71,8 @@ data:
   - verify/itertools/itertools_combinations_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
+  - verify/graph/merge_tree_test.nim
+  - verify/graph/merge_tree_test.nim
 documentation_of: cplib/collections/unionfind.nim
 layout: document
 redirect_from:
