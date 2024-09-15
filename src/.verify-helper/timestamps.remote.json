@@ -55,6 +55,7 @@
 "verify/collections/tatyamset/ABC337_test.nim": "2024-04-23 21:11:58 +0900",
 "verify/collections/tatyamset/index_right_test.nim": "2024-04-23 21:11:58 +0900",
 "verify/collections/unionfind_test.nim": "2023-12-24 18:36:32 +0000",
+"verify/collections/word_size_tree_test.nim": "2024-09-15 02:32:00 +0900",
 "verify/geometry/CGL_1/ccw_cgl1c_test.nim": "2024-03-28 16:38:54 +0900",
 "verify/geometry/CGL_1/ccw_float_cgl1c_test.nim": "2024-03-28 16:38:54 +0900",
 "verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim": "2024-06-27 15:21:09 +0900",
