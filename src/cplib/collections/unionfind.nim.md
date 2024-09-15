@@ -31,8 +31,8 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_UNIONFIND:\n    const CPLIB_COLLECTIONS_UNIONFIND*\
-    \ = 1\n    import algorithm, sequtils\n    type UnionFind = ref object\n     \
-    \   count*: int\n        par_or_siz: seq[int]\n    proc initUnionFind*(N: int):\
+    \ = 1\n    import algorithm, sequtils\n    type UnionFind* = ref object\n    \
+    \    count*: int\n        par_or_siz: seq[int]\n    proc initUnionFind*(N: int):\
     \ UnionFind =\n        result = UnionFind(count: N, par_or_siz: newSeqwith(N,\
     \ -1))\n    proc root*(self: UnionFind, x: int): int =\n        if self.par_or_siz[x]\
     \ < 0:\n            return x\n        else:\n            self.par_or_siz[x] =\
@@ -48,7 +48,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/unionfind.nim
   requiredBy: []
-  timestamp: '2023-12-24 18:36:32+00:00'
+  timestamp: '2024-09-16 02:33:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/unionfind_test.nim

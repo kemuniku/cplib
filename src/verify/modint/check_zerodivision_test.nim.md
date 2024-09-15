@@ -49,14 +49,14 @@ data:
     \ Division Test\":\n    type mint = modint998244353_barrett\n    expect(Defect):\n\
     \        discard mint(0).inv\n\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/modint/check_zerodivision_test.nim
   requiredBy: []

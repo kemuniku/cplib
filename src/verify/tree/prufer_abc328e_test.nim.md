@@ -46,8 +46,8 @@ data:
   dependsOn:
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
   - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

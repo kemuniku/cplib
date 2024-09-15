@@ -48,9 +48,9 @@ data:
     \ -1)\necho ans.join(\" \")\n"
   dependsOn:
   - cplib/collections/rollback_unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/collections/rollback_unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/collections/rollback_uf_abc302ex_test.nim
   requiredBy: []
