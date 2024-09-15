@@ -294,6 +294,9 @@ data:
       path: verify/collections/hashtable_yuki2686_test.nim
       title: verify/collections/hashtable_yuki2686_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/range_kth_smallest_test.nim
+      title: verify/collections/range_kth_smallest_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/rollback_uf_abc302ex_test.nim
       title: verify/collections/rollback_uf_abc302ex_test.nim
     - icon: ':heavy_check_mark:'

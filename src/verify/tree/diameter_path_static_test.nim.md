@@ -74,20 +74,20 @@ data:
     \ ch1 = find_leaf(c1, c2, 0)\n    var ch2 = find_leaf(c2, c1, 0)\n    echo (mint(ch1)\
     \ * mint(ch2))\n"
   dependsOn:
-  - cplib/tree/diameter.nim
-  - cplib/tree/tree.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/graph/graph.nim
   - cplib/modint/barrett_impl.nim
   - cplib/graph/graph.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/tree/diameter.nim
   - cplib/tree/tree.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/tree/diameter.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_path_static_test.nim
   requiredBy: []

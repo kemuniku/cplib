@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/range_kth_smallest_test.nim
+    title: verify/collections/range_kth_smallest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_kth_smallest_test.nim
+    title: verify/collections/range_kth_smallest_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/mo_test.nim
     title: verify/utils/mo_test.nim
   - icon: ':heavy_check_mark:'
@@ -46,6 +52,8 @@ data:
   verifiedWith:
   - verify/utils/mo_test.nim
   - verify/utils/mo_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
 documentation_of: cplib/utils/mo.nim
 layout: document
 redirect_from:

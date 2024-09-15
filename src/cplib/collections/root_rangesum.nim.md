@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/range_kth_smallest_test.nim
+    title: verify/collections/range_kth_smallest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_kth_smallest_test.nim
+    title: verify/collections/range_kth_smallest_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/root_rangesum_test.nim
     title: verify/collections/root_rangesum_test.nim
   - icon: ':heavy_check_mark:'
@@ -81,6 +87,8 @@ data:
   verifiedWith:
   - verify/collections/root_rangesum_test.nim
   - verify/collections/root_rangesum_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
 documentation_of: cplib/collections/root_rangesum.nim
 layout: document
 redirect_from:
