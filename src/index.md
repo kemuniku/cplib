@@ -54,6 +54,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/wordsizetree.nim
+      title: cplib/collections/wordsizetree.nim
   - name: cplib/geometry
     pages:
     - icon: ':heavy_check_mark:'
@@ -308,6 +311,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/word_size_tree_test.nim
+      title: verify/collections/word_size_tree_test.nim
   - name: verify/collections/avlset
     pages:
     - icon: ':heavy_check_mark:'
