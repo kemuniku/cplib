@@ -1,7 +1,7 @@
 when not declared CPLIB_COLLECTIONS_UNIONFIND:
     const CPLIB_COLLECTIONS_UNIONFIND* = 1
     import algorithm, sequtils
-    type UnionFind = ref object
+    type UnionFind* = ref object
         count*: int
         par_or_siz: seq[int]
     proc initUnionFind*(N: int): UnionFind =
