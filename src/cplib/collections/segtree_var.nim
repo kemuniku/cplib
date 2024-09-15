@@ -92,7 +92,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
             result.arr[i] = initSegmentTreeElem(result.addr, merge(result.arr[2*i].v, result.arr[2*i+1].v), i)
     proc initSegmentTree*[T](n: int, merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] = initSegmentTree(newSeqWith(n, default), merge, default)
     template newSegWith*(V, merge, default: untyped): untyped =
-        initSegmentTree(V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
+        initSegmentTree[typeof(default)](V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
     proc max_right*[T](self: SegmentTree[T, SegmentTreeElem[T]], l: int, f: proc(l: T): bool): int =
         assert 0 <= l and l <= self.len
         assert f(self.default)

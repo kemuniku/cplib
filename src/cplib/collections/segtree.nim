@@ -1,6 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE:
     const CPLIB_COLLECTIONS_SEGTREE* = 1
-    import algorithm, strutils
+    import algorithm, strutils, sequtils
     type SegmentTree*[T] = ref object
         default: T
         merge: proc(x: T, y: T): T
@@ -22,6 +22,10 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         for i in countdown(lastnode-1, 1):
             self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
+    proc initSegmentTree*[T](n: int, merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
+        ## セグメントツリーを生成します。
+        ## nにサイズ、mergeに二つの区間をマージする関数、デフォルトに単位元を与えてください。（全て単位元で構築されます）
+        initSegmentTree(newSeqWith(n, default), merge, default)
 
     proc update*[T](self: SegmentTree[T], x: Natural, val: T) =
         ## xの要素をvalに変更します。
@@ -69,7 +73,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         var s = self.arr.len div 2
         return self.arr[s..<s+self.len].join(" ")
     template newSegWith*(V, merge, default: untyped): untyped =
-        initSegmentTree(V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
+        initSegmentTree[typeof(default)](V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
     proc max_right*[T](self: SegmentTree[T], l: int, f: proc(l: T): bool): int =
         assert 0 <= l and l <= self.len
         assert f(self.default)
