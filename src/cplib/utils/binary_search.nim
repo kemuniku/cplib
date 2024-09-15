@@ -1,5 +1,5 @@
-when not declared CPLIB_MISC_BINARY_SEARCH:
-    const CPLIB_MISC_BINARY_SEARCH* = 1
+when not declared CPLIB_UTILS_BINARY_SEARCH:
+    const CPLIB_UTILS_BINARY_SEARCH* = 1
     proc meguru_bisect*(ok, ng: int, is_ok: proc(x: int): bool): int =
         var
             ok = ok

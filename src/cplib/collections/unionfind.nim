@@ -1,7 +1,7 @@
 when not declared CPLIB_COLLECTIONS_UNIONFIND:
     const CPLIB_COLLECTIONS_UNIONFIND* = 1
     import algorithm, sequtils
-    type UnionFind = ref object
+    type UnionFind* = ref object
         count*: int
         par_or_siz: seq[int]
     proc initUnionFind*(N: int): UnionFind =
@@ -23,3 +23,6 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
             self.par_or_siz[x] += self.par_or_siz[y]
             self.par_or_siz[y] = x
             self.count -= 1
+    proc siz*(self: UnionFind, x: int): int =
+        var x = self.root(x)
+        return -self.par_or_siz[x]

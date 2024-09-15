@@ -1,9 +1,9 @@
 # Package
 
-version       = "0.0.0.0.0.0.0.0.0.0.0.0.0.1"
+version       = "1.0"
 author        = "kemuniku"
 description   = "A new awesome nimble package"
-license       = "MIT"
+license       = "CC0"
 srcDir        = "src"
 skipDirs      = @["verify", ".verify-helper", "docs"]
 

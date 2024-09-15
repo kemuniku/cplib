@@ -7,7 +7,7 @@ proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
 var N, Q = ii()
 var A = newSeqWith(N, ii())
-var st = initSegmentTree(A, (a, b: int)=>min(a,b), int(1e18))
+var st = initSegmentTree(A, (a, b: int)=>min(a, b), int(1e18))
 for i in 0..<Q:
-    var L,R = ii()
+    var L, R = ii()
     echo st.get(L, R)

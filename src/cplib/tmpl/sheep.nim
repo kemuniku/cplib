@@ -15,6 +15,8 @@ when not declared CPLIB_TMPL_SHEEP:
     import streams
     import deques
     import bitops
+    import std/lenientops
+    import options
     #入力系
     proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
     proc getchar(): char {.importc: "getchar_unlocked", header: "<stdio.h>", discardable.}
@@ -32,30 +34,35 @@ when not declared CPLIB_TMPL_SHEEP:
     template `max=`(x, y) = x = max(x, y)
     template `min=`(x, y) = x = min(x, y)
     #bit演算
-    proc `%`(x: int, y: int): int = (((x mod y)+y) mod y)
-    proc `//`(x: int, y: int): int = (((x) - (x%y)) div (y))
+    proc `%`*(x: int, y: int): int =
+        result = x mod y
+        if y > 0 and result < 0: result += y
+        if y < 0 and result > 0: result += y
+    proc `//`*(x: int, y: int): int{.inline.} =
+        result = x div y
+        if y > 0 and result * y > x: result -= 1
+        if y < 0 and result * y < x: result -= 1
     proc `%=`(x: var int, y: int): void = x = x%y
     proc `//=`(x: var int, y: int): void = x = x//y
     proc `**`(x: int, y: int): int = x^y
+    proc `**=`(x: var int, y: int): void = x = x^y
     proc `^`(x: int, y: int): int = x xor y
     proc `|`(x: int, y: int): int = x or y
     proc `&`(x: int, y: int): int = x and y
     proc `>>`(x: int, y: int): int = x shr y
     proc `<<`(x: int, y: int): int = x shl y
+    proc `~`(x: int): int = not x
     proc `^=`(x: var int, y: int): void = x = x ^ y
     proc `&=`(x: var int, y: int): void = x = x & y
     proc `|=`(x: var int, y: int): void = x = x | y
     proc `>>=`(x: var int, y: int): void = x = x >> y
     proc `<<=`(x: var int, y: int): void = x = x << y
     proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0
-    proc `@`(x: int): seq[int] =
-        for i in 0..<64:
-            if x[i]:
-                result.add(i)
     #便利な変換
     proc `!`(x: char, a = '0'): int = int(x)-int(a)
     #定数
-    const INF = int(3300300300300300491)
+    include cplib/utils/constants
+    const INF = INF64
     #converter
 
     #range
@@ -72,3 +79,6 @@ when not declared CPLIB_TMPL_SHEEP:
     iterator range(ends: int): int = (for i in 0..<ends: yield i)
     iterator range(start: int, ends: int): int = (for i in
             start..<ends: yield i)
+
+    #joinが非stringでめちゃくちゃ遅いやつのパッチ
+    proc join*[T: not string](a: openArray[T], sep: string = ""): string = a.mapit($it).join(sep)

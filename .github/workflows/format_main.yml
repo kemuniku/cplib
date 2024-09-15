@@ -42,7 +42,10 @@ jobs:
         run: |
           git config --global user.email "<EMAIL>"
           git config --global user.name "GitHub Action"
-          ./run_formatter
+          cd tools
+          make clean
+          make run_formatter.o
+          ./run_formatter.o
           git add src
           git diff --quiet && git diff --staged --quiet || git commit -m "[workflow] format $(git rev-parse HEAD~1)"
           git push

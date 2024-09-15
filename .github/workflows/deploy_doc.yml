@@ -16,6 +16,48 @@ jobs:
           fetch-depth: 0
           ref: gh-pages
 
+      - name: Cache choosenim
+        id: cache-choosenim
+        uses: actions/cache@v4
+        with:
+          path: ~/.choosenim
+          key: ${{ runner.os }}-choosenim-stable
+
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v4
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-stable
+
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: 1.6.14
+
+      - name: Install Dependency
+        id: install-dependency
+        run: nimble install -y
+
+      - name: Build Nimdoc
+        run: |
+          git config --global user.email "<EMAIL>"
+          git config --global user.name "GitHub Action"
+          git fetch origin && git checkout main
+          nimble install -y
+          cd tools
+          make clean && make build_nimdoc.o
+          ./build_nimdoc.o
+          cd ..
+          git add -f nimdoc
+          git stash push nimdoc
+          git checkout gh-pages
+          rm -rf nimdoc
+          git commit -am "[workflow] remove old nimdocs $(git rev-parse HEAD~1)"
+          git stash pop stash@{0}
+          git add nimdoc
+          git commit -am "[workflow] add nimdocs $(git rev-parse HEAD~1)"
+          git push
+
       - name: Copy and Push
         env:
           GH_PAT: ${{ secrets.GH_PAT }}

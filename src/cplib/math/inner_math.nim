@@ -1,3 +1,4 @@
-when not declared COMPETITIVE_MATH_INNER_MATH:
-    const COMPETITIVE_MATH_INNER_MATH* = 1
-    proc mul*(a, b, m: int): int {.importcpp: "(__int128)(#) * (#) % (#)", nodecl.}
+when not declared CPLIB_MATH_INNER_MATH:
+    const CPLIB_MATH_INNER_MATH* = 1
+    proc add*(a, b, m: int): int {.importcpp: "((__int128)(#) + (__int128)(#)) % (__int128)(#)", nodecl.}
+    proc mul*(a, b, m: int): int {.importcpp: "(__int128)(#) * (__int128)(#) % (__int128)(#)", nodecl.}
