@@ -1,8 +1,8 @@
 # cplib
 
 [![Actions Status](https://github.com/kemuniku/cplib/workflows/verify/badge.svg)](https://github.com/kemuniku/cplib/actions?branch=main)
-[![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://kemuniku.github.io/cplib/)
-[![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://kemuniku.github.io/cplib/nimdoc/cplib.html)
+[![GitHub Pages (oj)](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://kemuniku.github.io/cplib/)
+[![GitHub Pages (nimdoc)](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://kemuniku.github.io/cplib/nimdoc/cplib.html)
 
 
 競技プログラミング (AtCoder, yukicoderなど) の問題をNimで解くためのライブラリおよび `online-judge-tools` 実行用シェルスクリプト
