@@ -43,6 +43,7 @@ jobs:
           git config --global user.email "<EMAIL>"
           git config --global user.name "GitHub Action"
           git clean -df
+          ls
           echo git checkout main
           git fetch origin && git checkout main
           echo nimble install -y
