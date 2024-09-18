@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_range_sum import sequtils
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_range_sum
 import sequtils
 import cplib/collections/lazysegtree
 import cplib/modint/modint

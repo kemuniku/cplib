@@ -51,8 +51,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     proc update*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: var S) =
         ## pの要素をvalに変更します。
         assert p < self.length
-        var p = p
-        p += self.lastnode
+        var p = p + self.lastnode
         self.all_push(p)
         self.arr[p] = val
         for i in 1..self.log:
@@ -67,10 +66,8 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         ## 半解区間[q_left,q_right)についての演算結果を返します。
         assert q_left <= q_right and 0 <= q_left and q_right <= self.length
         if q_left == q_right: return self.default
-        var q_left = q_left
-        var q_right = q_right
-        q_left += self.lastnode
-        q_right += self.lastnode
+        var q_left = q_left + self.lastnode
+        var q_right = q_right + self.lastnode
         for i in countdown(self.log, 1):
             if i <= countTrailingZeroBits(q_left): break
             self.push(q_left shr i)
@@ -113,11 +110,8 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         ## 半解区間[q_left,q_right)についての演算結果を返します。
         assert q_left <= q_right and 0 <= q_left and q_right <= self.length
         if q_left == q_right: return
-        var q_left = q_left
-        var q_right = q_right
-        var f = f
-        q_left += self.lastnode
-        q_right += self.lastnode
+        var q_left = q_left + self.lastnode
+        var q_right = q_right + self.lastnode
         var mx = countTrailingZeroBits(q_left) + 1
         for i in countdown(self.log, mx):
             self.push(q_left shr i)
@@ -142,7 +136,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
             self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
         mn = countTrailingZeroBits(q_right) + 1
         for i in mn..self.log:
-            var p = q_right shr i
+            var p = ((q_right - 1) shr i)
             self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
     proc apply*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int], f: F) =
         self.apply(segment.a, segment.b+1, f)
