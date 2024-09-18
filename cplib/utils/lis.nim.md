@@ -50,10 +50,10 @@ data:
   verifiedWith:
   - verify/utils/lis_arc126b_test.nim
   - verify/utils/lis_arc126b_test.nim
-  - verify/utils/restore_lis_aoj_test.nim
-  - verify/utils/restore_lis_aoj_test.nim
   - verify/utils/lis_aoj_test.nim
   - verify/utils/lis_aoj_test.nim
+  - verify/utils/restore_lis_aoj_test.nim
+  - verify/utils/restore_lis_aoj_test.nim
 documentation_of: cplib/utils/lis.nim
 layout: document
 redirect_from:

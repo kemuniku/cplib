@@ -63,12 +63,12 @@ data:
   timestamp: '2024-04-30 17:08:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/rollback_uf_abc302ex_test.nim
-  - verify/collections/rollback_uf_abc302ex_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
+  - verify/collections/rollback_uf_abc302ex_test.nim
+  - verify/collections/rollback_uf_abc302ex_test.nim
 documentation_of: cplib/collections/rollback_unionfind.nim
 layout: document
 redirect_from:
