@@ -36,9 +36,9 @@ data:
     \ S[(i-arg)..<(i+arg)].isPalindrome()\n        L.add meguru_bisect(0,min(i,len(S)-i)+1,is_ok)*2\n\
     \necho L.join(\" \")"
   dependsOn:
-  - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/binary_search.nim
+  - cplib/utils/binary_search.nim
   - cplib/str/can_reverse_hash_string.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
