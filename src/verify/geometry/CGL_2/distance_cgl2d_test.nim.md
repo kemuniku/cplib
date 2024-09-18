@@ -52,15 +52,15 @@ data:
     \ s2)\n    echo &\"{ans:.10f}\"\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/distance.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/distance.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/distance_cgl2d_test.nim
   requiredBy: []
