@@ -19,6 +19,7 @@
 "verify/collections/hashset_abc336f_test.nim": "2024-03-21 10:21:36 +0900",
 "verify/collections/hashtable_abc340c_test.nim": "2024-03-21 10:31:56 +0900",
 "verify/collections/hashtable_yuki2686_test.nim": "2024-09-16 02:10:51 +0900",
+"verify/collections/ppunionfind/stamp_rally_test.nim": "2024-09-19 01:13:36 +0900",
 "verify/collections/range_kth_smallest_test.nim": "2024-09-15 20:15:04 +0900",
 "verify/collections/rollback_uf_abc302ex_test.nim": "2024-04-30 17:08:19 +0900",
 "verify/collections/rollbackuf_yosupo_snap_test.nim": "2024-04-30 17:08:19 +0900",
