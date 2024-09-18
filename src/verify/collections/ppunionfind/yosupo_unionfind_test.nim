@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://atcoder.jp/contests/past202004-open/tasks/past202004_o
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/unionfind
 import cplib/collections/ppunionfind
 import algorithm
 
