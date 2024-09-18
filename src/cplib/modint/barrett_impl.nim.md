@@ -10,6 +10,18 @@ data:
     title: cplib/modint/modint.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+    title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+    title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+    title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+    title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
   - icon: ':heavy_check_mark:'
@@ -205,6 +217,10 @@ data:
   timestamp: '2024-07-21 20:30:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/montgomery/abc277g_static_test.nim

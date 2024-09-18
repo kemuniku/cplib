@@ -16,6 +16,18 @@ data:
     title: cplib/tmpl/citrus.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+    title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+    title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+    title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+    title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/isqrt_test.nim
     title: verify/math/isqrt_test.nim
   - icon: ':heavy_check_mark:'
@@ -179,6 +191,10 @@ data:
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/math/isqrt_test.nim
   - verify/math/isqrt_test.nim
   - verify/modint/check_zerodivision_test.nim

@@ -53,13 +53,13 @@ data:
     \ (i+dx)*w+j+dy, 1i32)\nvar d = g.maxk_dijkstra(sx*w+sy, 1i32)\nvar ans = d[tx*w+ty]\n\
     if ans == INF32: ans = -1\necho ans\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim

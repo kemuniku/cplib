@@ -40,9 +40,9 @@ data:
 
     echo tmp.mapit(it.l).join(" ")'
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim

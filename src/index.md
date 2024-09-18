@@ -31,6 +31,9 @@ data:
       path: cplib/collections/hashtable.nim
       title: cplib/collections/hashtable.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/lazysegtree.nim
+      title: cplib/collections/lazysegtree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
     - icon: ':heavy_check_mark:'
@@ -366,6 +369,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/defaultdict/defaultdict_unit_test.nim
       title: verify/collections/defaultdict/defaultdict_unit_test.nim
+  - name: verify/collections/lazysegtree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+      title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+      title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - name: verify/collections/ppunionfind
     pages:
     - icon: ':heavy_check_mark:'

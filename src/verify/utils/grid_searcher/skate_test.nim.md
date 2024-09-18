@@ -45,8 +45,8 @@ data:
     \ in alr:\n    echo alr[(gx,gy)]\nelse:\n    echo -1"
   dependsOn:
   - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/utils/grid_searcher.nim
+  - cplib/collections/avlset.nim
   - cplib/utils/grid_searcher.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
