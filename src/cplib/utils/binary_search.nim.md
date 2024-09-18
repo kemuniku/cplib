@@ -71,6 +71,8 @@ data:
   timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/ppunionfind/stamp_rally_test.nim
+  - verify/collections/ppunionfind/stamp_rally_test.nim
   - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_int_test.nim
@@ -79,12 +81,10 @@ data:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_pun_test.nim
-  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
-  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
+  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
 documentation_of: cplib/utils/binary_search.nim
 layout: document
 redirect_from:
