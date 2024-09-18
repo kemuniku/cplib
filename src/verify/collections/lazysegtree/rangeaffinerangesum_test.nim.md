@@ -57,13 +57,13 @@ data:
     \    if t == 0:\n        var l, r, b, c = ii()\n        seg.apply(l..<r, (mint(b),\
     \ mint(c)))\n    else:\n        var l, r = ii()\n        echo seg[l..<r][0]\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/collections/lazysegtree.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/collections/lazysegtree.nim
   - cplib/modint/montgomery_impl.nim

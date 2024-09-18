@@ -52,9 +52,9 @@ data:
     \ -1\n    else:\n        echo ans"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
   - cplib/str/hash_string.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/str/hash_string.nim
   isVerificationFile: true
