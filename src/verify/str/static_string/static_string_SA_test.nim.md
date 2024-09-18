@@ -31,10 +31,10 @@ data:
     \ stdin.readLine().toStaticString()\nvar tmp : seq[StaticString]\nfor i in 0..<len(S):\n\
     \    tmp.add(S[i..<len(S)])\ntmp.sort()\n\necho tmp.mapit(it.l).join(\" \")"
   dependsOn:
-  - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_SA_test.nim
   requiredBy: []

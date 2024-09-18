@@ -65,11 +65,11 @@ data:
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/collections/lazysegtree.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   requiredBy: []

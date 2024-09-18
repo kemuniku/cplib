@@ -97,10 +97,10 @@ data:
     \             if t == N1:\n                        break test\n              \
     \  return false\n        return true\n"
   dependsOn:
-  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
@@ -111,20 +111,20 @@ data:
   timestamp: '2024-03-16 01:58:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_atcoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_table_abc284d_test.nim
+  - verify/math/factorize_table_abc284d_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
 documentation_of: cplib/math/isprime.nim

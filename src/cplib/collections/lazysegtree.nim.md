@@ -113,10 +113,10 @@ data:
   timestamp: '2024-09-19 01:47:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
 documentation_of: cplib/collections/lazysegtree.nim
 layout: document
 redirect_from:

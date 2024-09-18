@@ -132,24 +132,24 @@ data:
   timestamp: '2024-03-28 20:50:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix/matrix_dpr_test.nim
-  - verify/matrix/matrix_dpr_test.nim
-  - verify/matrix/matrix_pow_test.nim
-  - verify/matrix/matrix_pow_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_zoistring_test.nim
-  - verify/matrix/matrix_zoistring_test.nim
-  - verify/matrix/matrix_unit_test.nim
-  - verify/matrix/matrix_unit_test.nim
-  - verify/modint/barrett/dpr_dynamic_test.nim
-  - verify/modint/barrett/dpr_dynamic_test.nim
-  - verify/modint/barrett/dpr_static_test.nim
-  - verify/modint/barrett/dpr_static_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
   - verify/modint/montgomery/dpr_dynamic_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_dpr_test.nim
+  - verify/matrix/matrix_dpr_test.nim
 documentation_of: cplib/matrix/matrix.nim
 layout: document
 redirect_from:

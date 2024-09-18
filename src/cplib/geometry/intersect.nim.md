@@ -113,14 +113,14 @@ data:
   verifiedWith:
   - verify/geometry/convex_hull_abc286ex_test.nim
   - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
 documentation_of: cplib/geometry/intersect.nim
 layout: document
 redirect_from:

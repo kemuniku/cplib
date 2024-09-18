@@ -57,11 +57,11 @@ data:
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/modint/montgomery/keyence2021_dynamic_test.nim
   requiredBy: []

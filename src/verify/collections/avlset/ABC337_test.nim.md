@@ -32,8 +32,8 @@ data:
     \ \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
   - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/collections/avlset/ABC337_test.nim

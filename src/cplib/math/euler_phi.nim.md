@@ -49,10 +49,10 @@ data:
   verifiedWith:
   - verify/math/euler_phi_aoj_test.nim
   - verify/math/euler_phi_aoj_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_list_yukicoder_test.nim
   - verify/math/euler_phi_list_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
 documentation_of: cplib/math/euler_phi.nim
 layout: document
 redirect_from:

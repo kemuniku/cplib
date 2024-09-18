@@ -107,8 +107,6 @@ data:
   timestamp: '2023-12-13 00:26:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/steiner_tree_abc364g_test.nim
-  - verify/graph/steiner_tree_abc364g_test.nim
   - verify/utils/bititers_bitsubseteq_descending_test.nim
   - verify/utils/bititers_bitsubseteq_descending_test.nim
   - verify/utils/bititers_bitcomb_test.nim
@@ -117,6 +115,8 @@ data:
   - verify/utils/bititers_bitsuperset_test.nim
   - verify/utils/bititers_bitsubseteq_test.nim
   - verify/utils/bititers_bitsubseteq_test.nim
+  - verify/graph/steiner_tree_abc364g_test.nim
+  - verify/graph/steiner_tree_abc364g_test.nim
 documentation_of: cplib/utils/bititers.nim
 layout: document
 redirect_from:

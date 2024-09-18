@@ -50,10 +50,10 @@ data:
   timestamp: '2024-03-16 18:25:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/range_kth_smallest_test.nim
-  - verify/collections/range_kth_smallest_test.nim
   - verify/utils/mo_test.nim
   - verify/utils/mo_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
 documentation_of: cplib/utils/mo.nim
 layout: document
 redirect_from:
