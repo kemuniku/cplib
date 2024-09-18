@@ -1,8 +1,8 @@
 when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     const CPLIB_COLLECTIONS_LAZYSEGTREE* = 1
-    import algorithm, sequtils, bitops
+    import algorithm, sequtils, bitops, strutils
     type LazySegmentTree[S, F] = ref object
-        e: S
+        default: S
         merge: proc(x: S, y: S): S
         arr*: seq[S]
         lazy*: seq[F]
@@ -10,98 +10,139 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         composition: proc(f, g: F): F
         id: F
         lastnode: int
+        log: int
         length: int
-    proc initLazySegmentTree*[S, F](v: seq[S], merge: proc(x: S, y: S): S, e: S, mapping: proc(f: F, x: S): S, composition: proc(f, g: F): F, id: F): LazySegmentTree[S, F] =
+    proc initLazySegmentTree*[S, F](v_or_n: int or seq[S], merge: proc(x: S, y: S): S, default: S, mapping: proc(f: F, x: S): S, composition: proc(f, g: F): F, id: F): LazySegmentTree[S, F] =
+        var v: seq[S]
+        var n: int
+        when v_or_n is seq[S]:
+            v = v_or_n
+            n = len(v)
+        else:
+            n = v_or_n
         var lastnode = 1
-        while lastnode < len(v):
+        while lastnode < n:
             lastnode*=2
-        var arr = newSeqWith(2*lastnode, e)
-        var lazy = newseqwith(lastnode, id)
-        var self = LazySegmentTree[S, F](e: e, merge: merge, arr: arr, lazy: lazy, mapping: mapping, composition: composition, id: id, lastnode: lastnode, length: len(v))
-        # 1-indexedで作成する
-        for i in 0..<len(v):
-            self.arr[self.lastnode+i] = v[i]
-        for i in countdown(lastnode-1, 1):
-            self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
+        var log = countTrailingZeroBits(lastnode)
+        var arr = newSeqWith(2*lastnode, default)
+        var lazy = newSeqWith(lastnode, id)
+        var self = LazySegmentTree[S, F](default: default, merge: merge, arr: arr, lazy: lazy, mapping: mapping, composition: composition, id: id, lastnode: lastnode, log: log, length: n)
+        when v_or_n is seq[S]:
+            for i in 0..<len(v):
+                self.arr[self.lastnode+i] = v[i]
+            for i in countdown(lastnode-1, 1):
+                self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
-    proc propagate*[S, F](self: LazySegmentTree[S, F], i: int) =
-        if i < self.lastnode:
-            var v = self.lazy[i]
-            if v != self.id:
-                self.lazy[i] = self.id
-                if 2*i < self.lastnode:
-                    self.lazy[2*i] = self.composition(v, self.lazy[2*i])
-                    self.lazy[2*i+1] = self.composition(v, self.lazy[2*i+1])
-                self.arr[2*i] = self.mapping(v, self.arr[2*i])
-                self.arr[2*i+1] = self.mapping(v, self.arr[2*i+1])
-    proc eval*[S, F](self: LazySegmentTree[S, F], L, R: int) =
-        var L = L
-        var R = R
-        L+=self.lastnode
-        R+=self.lastnode
-        var
-            L0 = L div (L and -L) # 奇数になるまで L を 2 で割ったもの
-            R0 = R div (R and -R) # 奇数になるまで R を 2 で割ったもの
-            HL = L0.fastLog2
-            HR = R0.fastLog2
-        for n in countdown(HL, 0, 1):
-            self.propagate(L0 shr n)
 
-        for n in countdown(HR, 0, 1):
-            self.propagate(R0 shr n)
+    template all_apply(self, p, f: untyped) =
+        ## pの要素にlzの値を作用させる。子がある場合はlazyを更新する。
+        self.arr[p] = self.mapping(f, self.arr[p])
+        if p < self.lastnode: self.lazy[p] = self.composition(f, self.lazy[p])
 
-    proc recalc*[S, F](self: LazySegmentTree[S, F], L, R: int) =
-        var L = L
-        var R = R
-        L+=self.lastnode
-        R+=self.lastnode
-        var
-            L0 = L div (L and -L) # 奇数になるまで L を 2 で割ったもの
-            R0 = R div (R and -R) # 奇数になるまで R を 2 で割ったもの
-        while L0 > 1:
-            L0 = L0 shr 1
-            self.arr[L0] = self.merge(self.arr[2*L0], self.arr[2*L0+1])
-        while R0 > 1:
-            R0 = R0 shr 1
-            self.arr[R0] = self.merge(self.arr[2*R0], self.arr[2*R0+1])
-    proc apply*[S, F](self: LazySegmentTree[S, F], q_left, q_right: int, f: F) =
-        self.eval(q_left, q_right)
-        var
-            L = q_left
-            R = q_right
-            q_left = q_left
-            q_right = q_right
-        q_left += self.lastnode
-        q_right += self.lastnode
-        while q_left < q_right:
-            if (q_left and 1) != 0:
-                self.arr[q_left] = self.mapping(f, self.arr[q_left])
-                if q_left < self.lastnode:
-                    self.lazy[q_left] = self.composition(f, self.lazy[q_left])
-                q_left += 1
-            if (q_right and 1) != 0:
-                q_right -= 1
-                self.arr[q_right] = self.mapping(f, self.arr[q_right])
-                if q_left < self.lastnode:
-                    self.lazy[q_right] = self.composition(f, self.lazy[q_right])
-            q_left = q_left shr 1
-            q_right = q_right shr 1
-        self.recalc(L, R)
-    proc query*[S, F](self: LazySegmentTree[S, F], q_left, q_right: int): S =
-        self.eval(q_left, q_right)
+    template push(self, p: untyped) =
+        ## pの子に作用を伝播させる。
+        self.all_apply(2*p, self.lazy[p])
+        self.all_apply(2*p + 1, self.lazy[p])
+        self.lazy[p] = self.id
+
+    template all_push(self, p: untyped) =
+        for i in countdown(self.log, 1): self.push(p shr i)
+
+    proc update*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: var S) =
+        ## pの要素をvalに変更します。
+        assert p < self.length
+        var p = p
+        p += self.lastnode
+        self.all_push(p)
+        self.arr[p] = val
+        for i in 1..self.log:
+            self.arr[p shr i] = self.merge(self.arr[2*(p shr i)], self.arr[2*(p shr i)+1])
+
+    proc `[]`*[S, F](self: var LazySegmentTree[S, F], p: Natural): S =
+        assert p < self.length
+        self.all_push(p + self.lastnode)
+        return self.arr[p + self.lastnode]
+
+    proc get*[S, F](self: var LazySegmentTree[S, F], q_left, q_right: int): S =
+        ## 半解区間[q_left,q_right)についての演算結果を返します。
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        if q_left == q_right: return self.default
         var q_left = q_left
         var q_right = q_right
         q_left += self.lastnode
         q_right += self.lastnode
+        for i in countdown(self.log, 1):
+            if i <= countTrailingZeroBits(q_left): break
+            self.push(q_left shr i)
+        for i in countdown(self.log, 1):
+            if i <= countTrailingZeroBits(q_right): break
+            self.push((q_right - 1) shr i)
         var
-            lres, rres = self.e
+            lres = self.default
+            rres = self.default
         while q_left < q_right:
-            if (q_left and 1) != 0:
+            if (q_left and 1) > 0:
                 lres = self.merge(lres, self.arr[q_left])
-                q_left += 1
-            if (q_right and 1) != 0:
-                q_right -= 1
+                q_left.inc
+            if (q_right and 1) > 0:
+                q_right.dec
                 rres = self.merge(self.arr[q_right], rres)
             q_left = q_left shr 1
             q_right = q_right shr 1
         return self.merge(lres, rres)
+    proc get*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]): S =
+        return self.get(segment.a, segment.b+1)
+    proc `[]`*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]): S = self.get(segment)
+    proc `[]=`*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: S) = self.update(p, val)
+    proc len*[S, F](self: var LazySegmentTree[S, F]): int =
+        return self.length
+    proc `$`*[S, F](self: var LazySegmentTree[S, F]): string =
+        # var self = self
+        return (0..<self.len).toSeq.mapIt(self[it]).join(" ")
+    template newLazySegWith*(v_or_n, merge, default, mapping, composition, id: untyped): untyped =
+        type S = typeof(default)
+        type F = typeof(id)
+        initLazySegmentTree[S, F](
+            v_or_n,
+            proc (l{.inject.}, r{.inject.}: S): S = merge,
+            default, proc (f{.inject.}: F, x{.inject.}: S): S = mapping,
+            proc (f{.inject.}, g{.inject.}: F): F = composition,
+            id
+        )
+    proc apply*[S, F](self: var LazySegmentTree[S, F], q_left, q_right: int, f: F) =
+        ## 半解区間[q_left,q_right)についての演算結果を返します。
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        if q_left == q_right: return
+        var q_left = q_left
+        var q_right = q_right
+        var f = f
+        q_left += self.lastnode
+        q_right += self.lastnode
+        var mx = countTrailingZeroBits(q_left) + 1
+        for i in countdown(self.log, mx):
+            self.push(q_left shr i)
+        mx = countTrailingZeroBits(q_right) + 1
+        for i in countdown(self.log, mx):
+            self.push((q_right - 1) shr i)
+        block:
+            var q_left = q_left
+            var q_right = q_right
+            while q_left < q_right:
+                if (q_left and 1) > 0:
+                    self.all_apply(q_left, f)
+                    q_left.inc
+                if (q_right and 1) > 0:
+                    q_right.dec
+                    self.all_apply(q_right, f)
+                q_left = q_left shr 1
+                q_right = q_right shr 1
+        var mn = countTrailingZeroBits(q_left) + 1
+        for i in mn..self.log:
+            var p = q_left shr i
+            self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
+        mn = countTrailingZeroBits(q_right) + 1
+        for i in mn..self.log:
+            var p = q_right shr i
+            self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
+    proc apply*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int], f: F) =
+        self.apply(segment.a, segment.b+1, f)
