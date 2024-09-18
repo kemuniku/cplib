@@ -31,6 +31,9 @@ data:
       path: cplib/collections/hashtable.nim
       title: cplib/collections/hashtable.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/ppunionfind.nim
+      title: cplib/collections/ppunionfind.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/rollback_unionfind.nim
       title: cplib/collections/rollback_unionfind.nim
     - icon: ':heavy_check_mark:'
@@ -363,6 +366,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/defaultdict/defaultdict_unit_test.nim
       title: verify/collections/defaultdict/defaultdict_unit_test.nim
+  - name: verify/collections/ppunionfind
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/ppunionfind/stamp_rally_test.nim
+      title: verify/collections/ppunionfind/stamp_rally_test.nim
   - name: verify/collections/segtree
     pages:
     - icon: ':heavy_check_mark:'
