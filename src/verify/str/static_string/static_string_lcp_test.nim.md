@@ -32,8 +32,8 @@ data:
     tmp.sort()\nvar sm = 0\nfor i in 0..<(len(S)-1):\n    sm += lcp(tmp[i],tmp[i+1])\n\
     echo len(S)*(len(S)+1) div 2 - sm"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: true
