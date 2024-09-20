@@ -186,13 +186,13 @@ when not declared CPLIB_GRAPH_GRAPH:
     proc initWeightedUnDirectedTableGraph*[T](V:seq[T],S:typedesc = int):WeightedUnDirectedTableGraph[T,S]=
         for i in 0..<len(V):
             result.toi[V[i]] = i
-        result.graph = initUnWeightedUnDirectedGraph[S](len(V))
+        result.graph = initWeightedUnDirectedGraph(len(V),S)
         result.v = V
 
     proc initWeightedDirectedTableGraph*[T](V:seq[T],S:typedesc = int):WeightedDirectedTableGraph[T,S]=
         for i in 0..<len(V):
             result.toi[V[i]] = i
-        result.graph = initWeightedDirectedGraph[S](len(V))
+        result.graph = initWeightedDirectedGraph(len(V),S)
         result.v = V
 
     proc add_edge*[T](g: var UnWeightedTableGraph[T],u,v:int)=

@@ -175,4 +175,20 @@ when not declared CPLIB_TREE_HLD:
             if len(stack) != 0:
                 result.add_edge(stack[^1],v[i])
             stack.add(v[i])
+    
+    proc initAuxiliaryWeightedTree*(hld:HeavyLightDecomposition,v:seq[int]):WeightedUnDirectedTableGraph[int,int]=
+        ## 根が欲しかったらG.v[0]を使ってください　けむにく
+        var v = v.sortedByit(hld.toseq(it))
+        for i in 0..<(len(v)-1):
+            v.add(hld.lca(v[i],v[i+1]))
+        v = v.sortedByIt(hld.toseq(it)).deduplicate(true)
+        var stack :seq[int]
+        result = initWeightedUnDirectedTableGraph(v,int)
+        stack.add(v[0])
+        for i in 1..<len(v):
+            while len(stack) > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):
+                discard stack.pop()
+            if len(stack) != 0:
+                result.add_edge(stack[^1],v[i],hld.depth(v[i])-hld.depth(stack[^1]))
+            stack.add(v[i])
 
