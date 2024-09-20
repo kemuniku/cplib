@@ -60,12 +60,12 @@ data:
   verifiedWith:
   - verify/geometry/CGL_1/projection_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
 documentation_of: cplib/geometry/projection.nim
 layout: document
 redirect_from:

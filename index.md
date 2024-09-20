@@ -380,8 +380,14 @@ data:
   - name: verify/collections/ppunionfind
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/collections/ppunionfind/past_ppuf_test.nim
+      title: verify/collections/ppunionfind/past_ppuf_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/ppunionfind/stamp_rally_test.nim
       title: verify/collections/ppunionfind/stamp_rally_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
+      title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - name: verify/collections/segtree
     pages:
     - icon: ':heavy_check_mark:'

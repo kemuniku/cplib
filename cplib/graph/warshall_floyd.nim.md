@@ -59,8 +59,8 @@ data:
     \ zero, inf)\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
@@ -68,10 +68,10 @@ data:
   timestamp: '2024-06-25 03:55:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
 documentation_of: cplib/graph/warshall_floyd.nim
 layout: document
 redirect_from:
