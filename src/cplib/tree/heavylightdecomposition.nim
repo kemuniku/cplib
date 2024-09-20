@@ -2,7 +2,6 @@ when not declared CPLIB_TREE_HLD:
     const CPLIB_TREE_HLD* = 1
     import sequtils, algorithm, sets
     import cplib/graph/graph
-    import cplib/graph/tablegraph
     # https://atcoder.jp/contests/abc337/submissions/50216964
     # ↑上記の提出より引用
     type HeavyLightDecomposition* = ref object 
