@@ -160,7 +160,7 @@ when not declared CPLIB_TREE_HLD:
             s += hld.rangeR[w] - hld.rangeL[w]
     
 
-    proc initAuxiliaryTree*(hld:var HeavyLightDecomposition,v:seq[int]):UnWeightedUnDirectedTableGraph[int]=
+    proc initAuxiliaryTree*(hld:HeavyLightDecomposition,v:seq[int]):UnWeightedUnDirectedTableGraph[int]=
         ## 根が欲しかったらG.v[0]を使ってください　けむにく
         var v = v.sortedByit(hld.toseq(it))
         for i in 0..<(len(v)-1):
