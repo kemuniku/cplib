@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/qcfium.nim
     title: cplib/tmpl/qcfium.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -55,14 +55,14 @@ data:
 
     '
   dependsOn:
+  - cplib/tmpl/citrus.nim
+  - cplib/tmpl/qcfium.nim
+  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/qcfium.nim
+  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/qcfium.nim
   - cplib/tmpl/citrus.nim
-  - cplib/tmpl/citrus.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tmpl/citrus_and_qcfium_test.nim
   requiredBy: []

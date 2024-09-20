@@ -44,10 +44,10 @@ data:
     \     alr[(i,j)] = alr[(x,y)] + 1\n                d.addLast((i,j))\n\nif (gx,gy)\
     \ in alr:\n    echo alr[(gx,gy)]\nelse:\n    echo -1"
   dependsOn:
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   - cplib/utils/grid_searcher.nim
   - cplib/utils/grid_searcher.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true

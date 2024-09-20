@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/rollback_unionfind.nim
     title: cplib/collections/rollback_unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -48,13 +48,13 @@ data:
     \ -1)\necho ans.join(\" \")\n"
   dependsOn:
   - cplib/collections/rollback_unionfind.nim
-  - cplib/graph/graph.nim
   - cplib/collections/rollback_unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/collections/rollback_uf_abc302ex_test.nim
   requiredBy: []
-  timestamp: '2024-04-30 17:08:19+09:00'
+  timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/rollback_uf_abc302ex_test.nim
