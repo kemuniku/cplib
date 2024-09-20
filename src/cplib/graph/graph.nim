@@ -145,3 +145,66 @@ when not declared CPLIB_GRAPH_GRAPH:
     iterator to_and_cost*[T](g: StaticGraph[T], x: int): (int, T) =
         g.static_graph_initialized_check()
         for i in g.start[x]..<g.start[x+1]: yield (g.elist[i][0].int, g.elist[i][1])
+    
+    import tables
+
+    type UnWeightedUnDirectedTableGraph*[T] = object 
+        toi* : Table[T,int]
+        v* : seq[T]
+        graph* : UnWeightedUnDirectedGraph
+
+    type UnWeightedDirectedTableGraph*[T] = object 
+        toi* : Table[T,int]
+        v* : seq[T]
+        graph* : UnWeightedDirectedGraph
+
+    type WeightedUnDirectedTableGraph*[T,S] = object 
+        toi* : Table[T,int]
+        v* : seq[T]
+        graph* : WeightedUnDirectedGraph[S]
+
+    type WeightedDirectedTableGraph*[T,S] = object 
+        toi* : Table[T,int]
+        v* : seq[T]
+        graph* : WeightedDirectedGraph[S]
+
+    type UnWeightedTableGraph*[T] = UnWeightedUnDirectedTableGraph[T] or UnWeightedDirectedTableGraph[T]
+    type WeightedTableGraph*[T,S] = WeightedUnDirectedTableGraph[T,S] or WeightedDirectedTableGraph[T,S]
+
+    proc initUnWeightedUnDirectedTableGraph*[T](V:seq[T]):UnWeightedUnDirectedTableGraph[T]=
+        for i in 0..<len(V):
+            result.toi[V[i]] = i
+        result.graph = initUnWeightedUnDirectedGraph(len(V))
+        result.v = V
+
+    proc initUnWeightedDirectedTableGraph*[T](V:seq[T]):UnWeightedDirectedTableGraph[T]=
+        for i in 0..<len(V):
+            result.toi[V[i]] = i
+        result.graph = initUnWeightedDirectedGraph(len(V))
+        result.v = V
+
+    proc initWeightedUnDirectedTableGraph*[T](V:seq[T],S:typedesc = int):WeightedUnDirectedTableGraph[T,S]=
+        for i in 0..<len(V):
+            result.toi[V[i]] = i
+        result.graph = initWeightedUnDirectedGraph(len(V),S)
+        result.v = V
+
+    proc initWeightedDirectedTableGraph*[T](V:seq[T],S:typedesc = int):WeightedDirectedTableGraph[T,S]=
+        for i in 0..<len(V):
+            result.toi[V[i]] = i
+        result.graph = initWeightedDirectedGraph(len(V),S)
+        result.v = V
+
+    proc add_edge*[T](g: var UnWeightedTableGraph[T],u,v:int)=
+        g.graph.add_edge(g.toi[u],g.toi[v])
+
+    proc add_edge*[T,S](g: var WeightedTableGraph[T,S],u,v:int,cost:S)=
+        g.graph.add_edge(g.toi[u],g.toi[v],cost)
+
+    iterator `[]`*[T,S](g: WeightedDirectedTableGraph[T,S] or WeightedUnDirectedTableGraph[T,S], x: T): (T, S) = 
+        for (x,y) in g.graph[g.toi[x]]:
+            yield (g.v[x],y)
+    iterator `[]`*[T](g: UnWeightedDirectedTableGraph[T] or UnWeightedUnDirectedTableGraph[T], x: T): T = 
+        for x in g.graph[g.toi[x]]:
+            yield g.v[x]
+
