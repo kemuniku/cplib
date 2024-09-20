@@ -1,9 +1,9 @@
 when not declared CPLIB_MATH_COMBINATION:
     const CPLIB_MATH_COMBINATION* = 1
     type Combination_Type[ModInt] = object
-        fact: seq[ModInt]
-        inv: seq[ModInt]
-        fact_inv: seq[ModInt]
+        fact*: seq[ModInt]
+        inv*: seq[ModInt]
+        fact_inv*: seq[ModInt]
 
     proc initCombination*[ModInt](max_N: int): Combination_Type[ModInt] =
         var fact = newSeq[ModInt](max_N+1)
