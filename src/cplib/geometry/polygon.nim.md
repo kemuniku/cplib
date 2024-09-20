@@ -142,34 +142,34 @@ data:
     \ discard vi.pop\n            vi.add(s[i])\n        vi.delete(0)\n        return\
     \ Polygon[T](v: vi)\n"
   dependsOn:
+  - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy: []
   timestamp: '2024-06-27 15:21:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
   - verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
 documentation_of: cplib/geometry/polygon.nim

@@ -65,14 +65,14 @@ data:
   timestamp: '2024-09-16 02:33:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/merge_tree_test.nim
+  - verify/graph/merge_tree_test.nim
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
   - verify/itertools/itertools_combinations_test.nim
   - verify/itertools/itertools_combinations_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
-  - verify/graph/merge_tree_test.nim
-  - verify/graph/merge_tree_test.nim
 documentation_of: cplib/collections/unionfind.nim
 layout: document
 redirect_from:
