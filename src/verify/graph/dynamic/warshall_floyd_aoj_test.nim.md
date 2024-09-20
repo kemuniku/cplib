@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_C
     links:
@@ -42,17 +42,17 @@ data:
     \    var d = d[i].mapIt(if it == INF64: \"INF\" else: ($it)).join(\" \")\n   \
     \ echo d\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   requiredBy: []
-  timestamp: '2024-06-25 03:55:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-09-21 03:52:16+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/dynamic/warshall_floyd_aoj_test.nim
 layout: document

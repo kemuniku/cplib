@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/nearest_equiv.nim
     title: cplib/math/nearest_equiv.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/nearest_equiv.nim
     title: cplib/math/nearest_equiv.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc342/tasks/abc342_e
     links:
@@ -41,15 +41,15 @@ data:
     \ y))\n\nfor i in 0..<n-1:\n    if dp[i] == -inf: echo \"Unreachable\"\n    else:\
     \ echo dp[i]\n"
   dependsOn:
+  - cplib/math/nearest_equiv.nim
+  - cplib/math/nearest_equiv.nim
   - cplib/graph/graph.nim
-  - cplib/math/nearest_equiv.nim
-  - cplib/math/nearest_equiv.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/math/nearear_equiv_abc342e_test.nim
   requiredBy: []
-  timestamp: '2024-04-11 03:42:22+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-09-21 03:52:16+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/math/nearear_equiv_abc342e_test.nim
 layout: document

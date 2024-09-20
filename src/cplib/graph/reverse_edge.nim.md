@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -42,7 +42,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/reverse_edge.nim
   requiredBy: []
-  timestamp: '2024-06-25 07:54:00+09:00'
+  timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/reverse_edge.nim

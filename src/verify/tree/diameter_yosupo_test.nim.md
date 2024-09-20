@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
     links:
@@ -39,17 +39,17 @@ data:
     \ i in 0..<n-1:\n    var a, b, c = ii()\n    g.add_edge(a, b, c)\ng.build\nvar\
     \ (d, path) = g.diameter_path\necho d, \" \", path.len\necho path.join(\" \")\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   - cplib/tree/tree.nim
   - cplib/tree/diameter.nim
-  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_yosupo_test.nim
   requiredBy: []
-  timestamp: '2024-06-12 20:25:01+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-09-21 03:52:16+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/diameter_yosupo_test.nim
 layout: document

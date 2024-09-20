@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
   - icon: ':heavy_check_mark:'
@@ -38,8 +38,8 @@ data:
     \ ans\n\n"
   dependsOn:
   - cplib/itertools/combinations.nim
-  - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
+  - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/itertools/itertools_combinations_test.nim
