@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticrangecount.nim
     title: cplib/collections/staticrangecount.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticrangecount.nim
     title: cplib/collections/staticrangecount.nim
   - icon: ':question:'
@@ -19,17 +19,17 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc183/tasks/abc183_f
     links:
@@ -48,19 +48,19 @@ data:
     for i in 0..<(Q):\n    var (t,x,y) = querys[i]\n    if t == 1:\n        MT.unite(x-1,y-1)\n\
     \    else:\n        echo SRC.count(MT.get_range(x-1),y)"
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/collections/staticrangecount.nim
-  - cplib/collections/staticrangecount.nim
+  - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/merge_tree.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/collections/staticrangecount.nim
+  - cplib/collections/staticrangecount.nim
   isVerificationFile: true
   path: verify/graph/merge_tree_test.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/merge_tree_test.nim
 layout: document

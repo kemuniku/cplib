@@ -36,9 +36,9 @@ data:
     \ cnt[u])\ndfs(0, -1, 0)\necho cnt.join(\" \")\n"
   dependsOn:
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/tree_atcoder_test.nim
   requiredBy: []
