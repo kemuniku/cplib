@@ -27,16 +27,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/scc_abc335e_test.nim
     title: verify/graph/dynamic/scc_abc335e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCCG_static_test.nim
     title: verify/graph/static/SCCG_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCCG_static_test.nim
     title: verify/graph/static/SCCG_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCC_static_test.nim
     title: verify/graph/static/SCC_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/SCC_static_test.nim
     title: verify/graph/static/SCC_static_test.nim
   - icon: ':x:'

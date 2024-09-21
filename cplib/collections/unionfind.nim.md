@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
   _extendedVerifiedWith:
@@ -15,10 +15,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/unionfind_test.nim
     title: verify/collections/unionfind_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/merge_tree_test.nim
     title: verify/graph/merge_tree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/merge_tree_test.nim
     title: verify/graph/merge_tree_test.nim
   - icon: ':heavy_check_mark:'
