@@ -8,10 +8,10 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
   - icon: ':x:'
@@ -21,34 +21,34 @@ data:
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
   - icon: ':x:'
@@ -71,7 +71,7 @@ data:
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
   _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -129,7 +129,7 @@ data:
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim

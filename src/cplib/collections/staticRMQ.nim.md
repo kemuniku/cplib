@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   - icon: ':warning:'
@@ -21,57 +21,57 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/staticRMQ_test.nim
     title: verify/collections/staticRMQ_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -102,7 +102,7 @@ data:
   - verify/str/static_string/static_string_count_test_.nim
   - verify/str/static_string/static_string_count_test_.nim
   timestamp: '2024-09-21 17:03:37+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/staticRMQ_test.nim
   - verify/collections/staticRMQ_test.nim

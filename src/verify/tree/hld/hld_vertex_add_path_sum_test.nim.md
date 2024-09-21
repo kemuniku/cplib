@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy: []
@@ -47,11 +47,11 @@ data:
     \ a += seg.get(l..<r)\n        ans.add(a)\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
   requiredBy: []

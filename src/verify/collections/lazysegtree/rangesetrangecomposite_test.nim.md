@@ -7,28 +7,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lazysegtree.nim
     title: cplib/collections/lazysegtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -60,16 +60,16 @@ data:
     \ r, x = ii()\n        var (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\n\
     echo ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/collections/lazysegtree.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   requiredBy: []
