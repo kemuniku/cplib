@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/SWAG.nim
     title: cplib/collections/SWAG.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/SWAG.nim
     title: cplib/collections/SWAG.nim
   _extendedRequiredBy: []

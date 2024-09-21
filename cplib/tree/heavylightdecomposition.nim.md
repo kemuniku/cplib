@@ -9,28 +9,28 @@ data:
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliarytree_test.nim
     title: verify/tree/auxiliarytree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliarytree_test.nim
     title: verify/tree/auxiliarytree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
   - icon: ':x:'
@@ -59,7 +59,7 @@ data:
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc337/submissions/50216964
@@ -175,7 +175,7 @@ data:
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/auxiliarytree_test.nim
   - verify/tree/auxiliarytree_test.nim

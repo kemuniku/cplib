@@ -62,16 +62,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   - icon: ':x:'
@@ -80,10 +80,10 @@ data:
   - icon: ':x:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedVerifiedWith:
@@ -249,64 +249,64 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/steiner_tree_abc364g_test.nim
     title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/nearear_equiv_abc342e_test.nim
     title: verify/math/nearear_equiv_abc342e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/nearear_equiv_abc342e_test.nim
     title: verify/math/nearear_equiv_abc342e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliarytree_test.nim
     title: verify/tree/auxiliarytree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliarytree_test.nim
     title: verify/tree/auxiliarytree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_dynamic_test.nim
     title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_path_static_test.nim
     title: verify/tree/diameter_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
   - icon: ':x:'

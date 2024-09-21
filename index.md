@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/QSWAG.nim
       title: cplib/collections/QSWAG.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
     - icon: ':heavy_check_mark:'
@@ -54,7 +54,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree_var.nim
       title: cplib/collections/segtree_var.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/staticRMQ.nim
       title: cplib/collections/staticRMQ.nim
     - icon: ':heavy_check_mark:'
@@ -158,10 +158,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/nearest_equiv.nim
       title: cplib/math/nearest_equiv.nim
     - icon: ':heavy_check_mark:'
@@ -180,13 +180,13 @@ data:
       title: cplib/matrix/matrix.nim
   - name: cplib/modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/barrett_impl.nim
       title: cplib/modint/barrett_impl.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/modint.nim
       title: cplib/modint/modint.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/montgomery_impl.nim
       title: cplib/modint/montgomery_impl.nim
   - name: cplib/str
@@ -209,7 +209,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/run_length_encode.nim
       title: cplib/str/run_length_encode.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/static_string.nim
       title: cplib/str/static_string.nim
     - icon: ':heavy_check_mark:'
@@ -228,16 +228,16 @@ data:
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
-    - icon: ':x:'
+    - icon: ':question:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
     - icon: ':x:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':x:'
+    - icon: ':question:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -746,7 +746,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/isqrt_test.nim
       title: verify/math/isqrt_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/math/nearear_equiv_abc342e_test.nim
       title: verify/math/nearear_equiv_abc342e_test.nim
     - icon: ':heavy_check_mark:'
@@ -915,28 +915,28 @@ data:
       title: verify/str/zalgorithm_test.nim
   - name: verify/str/static_string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_LCS_test.nim
       title: verify/str/static_string/static_string_LCS_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
       title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_LCS_useSA_test.nim
       title: verify/str/static_string/static_string_LCS_useSA_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_SA_test.nim
       title: verify/str/static_string/static_string_SA_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
       title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_initSA_test.nim
       title: verify/str/static_string/static_string_initSA_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_lcp_test.nim
       title: verify/str/static_string/static_string_lcp_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_zalgo_test.nim
       title: verify/str/static_string/static_string_zalgo_test.nim
   - name: verify/tmpl
@@ -946,25 +946,25 @@ data:
       title: verify/tmpl/citrus_and_qcfium_test.nim
   - name: verify/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/auxiliarytree_test.nim
       title: verify/tree/auxiliarytree_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/auxiliaryweightedtree_test.nim
       title: verify/tree/auxiliaryweightedtree_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_dynamic_test.nim
       title: verify/tree/diameter_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_path_dynamic_test.nim
       title: verify/tree/diameter_path_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_path_static_test.nim
       title: verify/tree/diameter_path_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_static_test.nim
       title: verify/tree/diameter_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_yosupo_test.nim
       title: verify/tree/diameter_yosupo_test.nim
     - icon: ':x:'
@@ -978,10 +978,10 @@ data:
       title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/tree/hld
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_la_yosupo_test.nim
       title: verify/tree/hld/hld_la_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_lca_yosupo_test.nim
       title: verify/tree/hld/hld_lca_yosupo_test.nim
     - icon: ':x:'

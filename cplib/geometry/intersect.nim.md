@@ -95,12 +95,12 @@ data:
     \ l2.vector)\n        var d2 = cross(l1.vector, l1.t - l2.s)\n        return l2.s\
     \ + l2.vector * (d2 / d1)\n"
   dependsOn:
+  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:

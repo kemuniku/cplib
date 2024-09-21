@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -36,9 +36,9 @@ data:
     \ continue\n        result += dfs(v, u, insi-1)\necho dfs(0, -1, 0)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   isVerificationFile: true
   path: verify/tree/tree_init_by_parent_atcoder_test.nim
   requiredBy: []

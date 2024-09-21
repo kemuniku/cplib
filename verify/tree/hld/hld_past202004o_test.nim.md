@@ -19,10 +19,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':x:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   - icon: ':question:'
@@ -66,15 +66,15 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/constants.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []
