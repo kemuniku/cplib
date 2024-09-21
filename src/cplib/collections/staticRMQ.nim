@@ -9,7 +9,7 @@ when not declared CPLIB_COLLECTIONS_STATICRMQ:
             return StaticRMQ[T](size:0)
         result.size = len(V)
         var b = fastLog2(len(V))
-        result.table = newSeqwith(fastLog2(len(V))+1,newseq[int](len(V)))
+        result.table = newSeqwith(fastLog2(len(V))+1,newseq[T](len(V)))
         for i in 0..<len(V):
             result.table[0][i] = V[i]
         for i in 1..b:
