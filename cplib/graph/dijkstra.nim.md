@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':question:'
@@ -33,21 +33,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -97,17 +97,17 @@ data:
     \ int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =\n       \
     \ shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim

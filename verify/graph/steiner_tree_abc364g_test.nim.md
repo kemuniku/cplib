@@ -7,16 +7,16 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc364/tasks/abc364_g
     links:
@@ -47,19 +47,19 @@ data:
     \ v, c)\n\nvar terminal = (0..<k-1).toseq\n\nvar dp = steiner_tree_dp(g, terminal,\
     \ INF64)\nfor i in k-1..<n:\n    echo dp[^1][i]\n"
   dependsOn:
-  - cplib/graph/steiner_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
   - cplib/graph/steiner_tree.nim
   - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/steiner_tree_abc364g_test.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/steiner_tree_abc364g_test.nim
 layout: document

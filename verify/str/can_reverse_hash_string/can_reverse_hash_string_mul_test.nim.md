@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -48,10 +48,10 @@ data:
     \ + 1\n        if solve(i,M+1):\n            ans.min = (M+1-(N-i)+(N-1))//N +\
     \ 1\n\n    if ans == INF:\n        echo -1\n    else:\n        echo ans"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/str/can_reverse_hash_string.nim
   isVerificationFile: true

@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':question:'
@@ -88,12 +88,12 @@ data:
     \ start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =\n        shortest_path_bellmanford_impl(G,\
     \ start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
   requiredBy: []
