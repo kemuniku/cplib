@@ -5,22 +5,22 @@ when not declared CPLIB_COLLECTIONS_ROOT_VALUE_UNIONFIND:
         count*: int
         par_or_siz: seq[int]
         op : proc(x,y:var T)
-        values : seq[T]
+        values* : seq[T]
     proc initRootValueUnionFind*[T](N: int,op:(proc(x,y:var T)),default:(proc():T)): RootValueUnionFind[T] =
         ## opについて、xのほうが新しくrootになるものとする(よって、xのサイズはyのサイズ以上である)
         ## 関数にvarで与えられるので、関数内でxを書き換えてください
         ## なんでこうしてるの？　-> HashSetとかを載せてマージできると嬉しさがあるので。
-        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),f:op,values:newseqwith(N,default()))
+        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),op:op,values:newseqwith(N,default()))
     proc initRootValueUnionFind*[T](N: int,op:(proc(x,y:var T)),default:T): RootValueUnionFind[T] =
         ## opについて、xのほうが新しくrootになるものとする(よって、xのサイズはyのサイズ以上である)
         ## 関数にvarで与えられるので、関数内でxを書き換えてください
         ## なんでこうしてるの？　-> HashSetとかを載せてマージできると嬉しさがあるので。
-        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),f:op,values:newseqwith(N,default))
+        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),op:op,values:newseqwith(N,default))
     proc initRootValueUnionFind*[T](N: int,op:(proc(x,y:var T)),values:seq[T]): RootValueUnionFind[T] =
         ## opについて、xのほうが新しくrootになるものとする(よって、xのサイズはyのサイズ以上である)
         ## 関数にvarで与えられるので、関数内でxを書き換えてください
         ## なんでこうしてるの？　-> HashSetとかを載せてマージできると嬉しさがあるので。
-        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),f:op,values:values)
+        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),op:op,values:values)
     proc root*[T](self: RootValueUnionFind[T], x: int): int =
         if self.par_or_siz[x] < 0:
             return x
