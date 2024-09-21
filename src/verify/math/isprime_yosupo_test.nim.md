@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -49,16 +49,16 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/math/powmod.nim
+  - cplib/utils/constants.nim
+  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []

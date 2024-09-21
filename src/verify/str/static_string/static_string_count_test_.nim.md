@@ -31,8 +31,8 @@ data:
     \ Q = stdin.readLine().parseInt()\nvar SB = initStaticStringBase(S)\nfor i in\
     \ 0..<Q:\n    var T = stdin.readLine()\n    stdout.writeLine(SB.count(T))"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false

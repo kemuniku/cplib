@@ -7,17 +7,17 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc245/tasks/abc245_f
     links:
@@ -33,15 +33,15 @@ data:
     for i in 0..<M:\n    var U, V = ii()-1\n    G.add_edge(V, U)\nG.build()\necho\
     \ N-len(G.topologicalsort())\n"
   dependsOn:
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/topologicalsort_2_static_test.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/topologicalsort_2_static_test.nim
 layout: document

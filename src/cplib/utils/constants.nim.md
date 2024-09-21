@@ -8,10 +8,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -20,16 +20,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
   - icon: ':heavy_check_mark:'
@@ -38,10 +38,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   _extendedVerifiedWith:
@@ -99,28 +99,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
     title: verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/steiner_tree_abc364g_test.nim
     title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/steiner_tree_abc364g_test.nim
     title: verify/graph/steiner_tree_abc364g_test.nim
   - icon: ':heavy_check_mark:'

@@ -34,6 +34,9 @@ data:
       path: cplib/collections/lazysegtree.nim
       title: cplib/collections/lazysegtree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/persistent_binary_trie.nim
+      title: cplib/collections/persistent_binary_trie.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
     - icon: ':heavy_check_mark:'
@@ -91,13 +94,13 @@ data:
       title: cplib/geometry/projection.nim
   - name: cplib/graph
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/SCC.nim
       title: cplib/graph/SCC.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/bellmanford.nim
       title: cplib/graph/bellmanford.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':question:'
@@ -112,19 +115,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/merge_tree.nim
       title: cplib/graph/merge_tree.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/restore_shortest_path_from_prev.nim
       title: cplib/graph/restore_shortest_path_from_prev.nim
     - icon: ':warning:'
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/steiner_tree.nim
       title: cplib/graph/steiner_tree.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/warshall_floyd.nim
       title: cplib/graph/warshall_floyd.nim
   - name: cplib/itertools
@@ -220,7 +223,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
@@ -245,7 +248,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
     - icon: ':question:'
@@ -305,6 +308,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/hashtable_yuki2686_test.nim
       title: verify/collections/hashtable_yuki2686_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/persistent_binary_trie_test.nim
+      title: verify/collections/persistent_binary_trie_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/persistnt_binary_trie_unionfind_test.nim
+      title: verify/collections/persistnt_binary_trie_unionfind_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_kth_smallest_test.nim
       title: verify/collections/range_kth_smallest_test.nim
@@ -612,7 +621,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/merge_tree_test.nim
       title: verify/graph/merge_tree_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/steiner_tree_abc364g_test.nim
       title: verify/graph/steiner_tree_abc364g_test.nim
   - name: verify/graph/static
@@ -632,25 +641,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
       title: verify/graph/static/maxk_dijkstra_abc176d_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/restore_dijkstra_static_test.nim
       title: verify/graph/static/restore_dijkstra_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/scc_abc335e_static_test.nim
       title: verify/graph/static/scc_abc335e_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/shortest_path_static_test.nim
       title: verify/graph/static/shortest_path_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/topologicalsort_1_static_test.nim
       title: verify/graph/static/topologicalsort_1_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/topologicalsort_2_static_test.nim
       title: verify/graph/static/topologicalsort_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
       title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/static/warshall_floyd_aoj_test.nim
       title: verify/graph/static/warshall_floyd_aoj_test.nim
   - name: verify/itertools

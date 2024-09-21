@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
   - icon: ':question:'
@@ -35,8 +35,8 @@ data:
     \ group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/graph/dynamic/SCCG_test.nim

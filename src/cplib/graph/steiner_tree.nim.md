@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
   - icon: ':question:'
@@ -21,15 +21,15 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/steiner_tree_abc364g_test.nim
     title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/steiner_tree_abc364g_test.nim
     title: verify/graph/steiner_tree_abc364g_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -66,17 +66,17 @@ data:
     \ terminal, inf)\n    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T],\
     \ terminal: seq[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/steiner_tree_abc364g_test.nim
   - verify/graph/steiner_tree_abc364g_test.nim
