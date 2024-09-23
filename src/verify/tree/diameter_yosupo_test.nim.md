@@ -40,11 +40,11 @@ data:
     \ (d, path) = g.diameter_path\necho d, \" \", path.len\necho path.join(\" \")\n"
   dependsOn:
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   - cplib/tree/diameter.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/diameter_yosupo_test.nim
   requiredBy: []

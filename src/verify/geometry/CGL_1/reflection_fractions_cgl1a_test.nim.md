@@ -42,10 +42,10 @@ data:
     \ 0..<q:\n    var p = get()\n    var ans = reflection(l, p)\n    echo &\"{ans.x.toFloat:.10f}\
     \ {ans.y.toFloat:.10f}\"\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/math/fractions.nim
   - cplib/geometry/projection.nim
   isVerificationFile: true
