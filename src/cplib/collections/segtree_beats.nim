@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
-    const CPLIB_COLLECTIONS_LAZYSEGTREE* = 1
+when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
+    const CPLIB_COLLECTIONS_SEGTREE_BEATS* = 1
     import algorithm, sequtils, bitops, strutils
     type SegmentTreeBeats*[S, F] = object
         default: S
@@ -34,7 +34,9 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
                 self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
         return self
 
-    template push(self, p: untyped) =
+    proc all_apply[S, F](self: var SegmentTreeBeats[S, F], p: int, f: F)
+
+    proc push[S, F](self: var SegmentTreeBeats[S, F], p: int) =
         ## pの子に作用を伝播させる。
         self.all_apply(2*p, self.lazy[p])
         self.all_apply(2*p + 1, self.lazy[p])
@@ -43,13 +45,13 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     template all_push(self, p: untyped) =
         for i in countdown(self.log, 1): self.push(p shr i)
 
-    template all_apply(self, p, f: untyped) =
+    proc all_apply[S, F](self: var SegmentTreeBeats[S, F], p: int, f: F) =
         ## pの要素にlzの値を作用させる。子がある場合はlazyを更新する。
         self.arr[p] = self.mapping(f, self.arr[p])
         if p < self.lastnode:
             self.lazy[p] = self.composition(f, self.lazy[p])
             if self.arr[p].fail:
-                self.push(k)
+                self.push(p)
                 self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
 
     proc update*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val: var S) =
@@ -95,11 +97,8 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         return self.get(segment.a, segment.b+1)
     proc `[]`*[S, F](self: var SegmentTreeBeats[S, F], segment: HSlice[int, int]): S = self.get(segment)
     proc `[]=`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val: S) = self.update(p, val)
-    proc len*[S, F](self: var SegmentTreeBeats[S, F]): int =
-        return self.length
-    proc `$`*[S, F](self: var SegmentTreeBeats[S, F]): string =
-        # var self = self
-        return (0..<self.len).toSeq.mapIt(self[it]).join(" ")
+    proc len*[S, F](self: var SegmentTreeBeats[S, F]): int = self.length
+    proc `$`*[S, F](self: var SegmentTreeBeats[S, F]): string = (0..<self.len).toSeq.mapIt(self[it]).join(" ")
     template newLazySegWith*(v_or_n, merge, default, mapping, composition, id: untyped): untyped =
         type S = typeof(default)
         type F = typeof(id)
