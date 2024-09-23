@@ -66,9 +66,9 @@ data:
     \ terminal, inf)\n    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T],\
     \ terminal: seq[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)\n"
   dependsOn:
+  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
