@@ -25,7 +25,7 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:\n    const CPLIB_COLLECTIONS_LAZYSEGTREE*\
-    \ = 1\n    import algorithm, sequtils, bitops, strutils\n    type LazySegmentTree[S,\
+    \ = 1\n    import algorithm, sequtils, bitops, strutils\n    type LazySegmentTree*[S,\
     \ F] = ref object\n        default: S\n        merge: proc(x: S, y: S): S\n  \
     \      arr*: seq[S]\n        lazy*: seq[F]\n        mapping: proc(f: F, x: S):\
     \ S\n        composition: proc(f, g: F): F\n        id: F\n        lastnode: int\n\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree.nim
   requiredBy: []
-  timestamp: '2024-09-19 01:47:42+09:00'
+  timestamp: '2024-09-21 20:51:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim

@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -54,9 +54,9 @@ data:
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/str/hash_string.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/str/hash_string.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []

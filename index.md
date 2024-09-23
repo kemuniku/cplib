@@ -48,9 +48,15 @@ data:
     - icon: ':warning:'
       path: cplib/collections/rootvalue_unionfind.nim
       title: cplib/collections/rootvalue_unionfind.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/segtree_beats.nim
+      title: cplib/collections/segtree_beats.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/segtree_beats_template.nim
+      title: cplib/collections/segtree_beats_template.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree_var.nim
       title: cplib/collections/segtree_var.nim
@@ -63,7 +69,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
     - icon: ':heavy_check_mark:'
@@ -103,7 +109,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'
@@ -231,13 +237,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -251,7 +257,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/constants.nim
       title: cplib/utils/constants.nim
     - icon: ':heavy_check_mark:'
@@ -314,6 +320,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/persistnt_binary_trie_unionfind_test.nim
       title: verify/collections/persistnt_binary_trie_unionfind_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
+      title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_kth_smallest_test.nim
       title: verify/collections/range_kth_smallest_test.nim
@@ -967,13 +976,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_yosupo_test.nim
       title: verify/tree/diameter_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/tree_atcoder_test.nim
       title: verify/tree/tree_atcoder_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/tree_init_by_parent_atcoder_test.nim
       title: verify/tree/tree_init_by_parent_atcoder_test.nim
   - name: verify/tree/hld
@@ -984,16 +993,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_lca_yosupo_test.nim
       title: verify/tree/hld/hld_lca_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_past202004o_test.nim
       title: verify/tree/hld/hld_past202004o_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - name: verify/utils/accumulate

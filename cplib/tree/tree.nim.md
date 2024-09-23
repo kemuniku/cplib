@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedVerifiedWith:
@@ -51,27 +51,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -129,7 +129,7 @@ data:
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim

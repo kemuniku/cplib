@@ -7,22 +7,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/SWAG.nim
     title: cplib/collections/SWAG.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -64,13 +64,13 @@ data:
     \\n\")\n\n\n\n\n\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/collections/SWAG.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/SWAG.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
-  - cplib/collections/SWAG.nim
-  - cplib/collections/SWAG.nim
   isVerificationFile: true
   path: verify/tree/auxiliaryweightedtree_test.nim
   requiredBy: []

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -37,10 +37,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -74,18 +74,18 @@ data:
     \ ch1 = find_leaf(c1, c2, 0)\n    var ch2 = find_leaf(c2, c1, 0)\n    echo (mint(ch1)\
     \ * mint(ch2))\n"
   dependsOn:
+  - cplib/tree/diameter.nim
+  - cplib/modint/modint.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tree/tree.nim
+  - cplib/modint/modint.nim
+  - cplib/graph/graph.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/graph/graph.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/diameter.nim
   - cplib/math/isqrt.nim
   - cplib/tree/tree.nim
   isVerificationFile: true
