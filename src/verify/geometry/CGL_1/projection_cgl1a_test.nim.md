@@ -35,8 +35,8 @@ data:
     \    var p = get()\n    var ans = projection(l, p)\n    echo &\"{ans.x:.10f} {ans.y:.10f}\"\
     \n"
   dependsOn:
-  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
