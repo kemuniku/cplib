@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/segtree_beats_template.nim
+    title: cplib/collections/segtree_beats_template.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/segtree_beats_template.nim
+    title: cplib/collections/segtree_beats_template.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
   - icon: ':heavy_check_mark:'
@@ -46,6 +52,12 @@ data:
     title: cplib/tmpl/sheep.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
+    title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
+    title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
@@ -159,15 +171,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -194,8 +206,10 @@ data:
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats_template.nim
   timestamp: '2024-06-25 02:14:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -225,6 +239,8 @@ data:
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim

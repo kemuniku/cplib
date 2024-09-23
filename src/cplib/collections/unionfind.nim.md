@@ -27,15 +27,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/itertools/itertools_combinations_test.nim
     title: verify/itertools/itertools_combinations_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -63,7 +63,7 @@ data:
   - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
   timestamp: '2024-09-16 02:33:05+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/merge_tree_test.nim
   - verify/graph/merge_tree_test.nim

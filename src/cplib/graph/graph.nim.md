@@ -68,22 +68,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedVerifiedWith:
@@ -309,51 +309,51 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_init_by_parent_atcoder_test.nim
     title: verify/tree/tree_init_by_parent_atcoder_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -511,7 +511,7 @@ data:
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dynamic/SCCG_test.nim
   - verify/graph/dynamic/SCCG_test.nim

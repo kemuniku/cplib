@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -48,13 +48,13 @@ data:
     \ 0..<v:\n        if cost[i] == INF64: echo \"INF\"\n        else: echo cost[i]\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/bellmanford.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/bellmanford.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/bellmanford_grl1b_test.nim
   requiredBy: []

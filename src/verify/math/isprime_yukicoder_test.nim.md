@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -49,16 +49,16 @@ data:
     \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
     \       echo x, \" \", 0\n"
   dependsOn:
-  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/utils/constants.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []

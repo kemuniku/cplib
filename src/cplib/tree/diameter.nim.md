@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   _extendedRequiredBy: []
@@ -73,8 +73,8 @@ data:
     \       discard path.pop\n        discard dfs(u, -1)\n        return (d, path)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   isVerificationFile: false
   path: cplib/tree/diameter.nim

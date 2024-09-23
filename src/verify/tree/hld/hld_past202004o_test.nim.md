@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/past202004-open/tasks/past202004_o
     links:
@@ -65,21 +65,21 @@ data:
     \ false): mx = max(mx, seg.get(l..<r))\n    ans[i] = ai - mx + c\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_past202004o_test.nim
 layout: document
