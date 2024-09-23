@@ -31,9 +31,9 @@ data:
     var st = initAvlSortedMultiset(S.toseq())\nif st.toseq().join() == S:\n    echo\
     \ \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/ABC337_test.nim

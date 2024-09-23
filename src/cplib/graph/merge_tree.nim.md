@@ -85,8 +85,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy: []
