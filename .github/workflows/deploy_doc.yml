@@ -2,7 +2,7 @@ name: deploy-doc
 
 on:
   workflow_run:
-    workflows: ["pages-build-deployment"]
+    workflows: ["pages-build-deployment-dummy"]
     types: [completed]
 
 jobs:
