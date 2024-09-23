@@ -4,7 +4,6 @@ on:
   workflow_run:
     workflows: ["pages-build-and-deployment"]
     types: [completed]
-    branches: ["main"]
 
 jobs:
   deploy-doc:
