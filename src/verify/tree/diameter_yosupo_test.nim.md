@@ -39,12 +39,12 @@ data:
     \ i in 0..<n-1:\n    var a, b, c = ii()\n    g.add_edge(a, b, c)\ng.build\nvar\
     \ (d, path) = g.diameter_path\necho d, \" \", path.len\necho path.join(\" \")\n"
   dependsOn:
+  - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
+  - cplib/tree/tree.nim
   - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   isVerificationFile: true
   path: verify/tree/diameter_yosupo_test.nim
   requiredBy: []
