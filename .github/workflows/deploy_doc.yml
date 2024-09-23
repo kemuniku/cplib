@@ -2,7 +2,7 @@ name: deploy-doc
 
 on:
   workflow_run:
-    workflows: ["verify"]
+    workflows: ["github-pages"]
     types: [completed]
     branches: ["main"]
 
