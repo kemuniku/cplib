@@ -43,9 +43,9 @@ data:
     \        var l, r = ii()\n        echo seg[l..<r].sum\n"
   dependsOn:
   - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
