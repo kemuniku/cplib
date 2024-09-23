@@ -52,15 +52,15 @@ data:
     \ var path = prev.restore_shortestpath_from_prev(t)\n    echo costs[t], \" \"\
     , len(path)-1\n    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
+  - cplib/tmpl/sheep.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/graph/dynamic/shortest_path_test.nim

@@ -43,10 +43,10 @@ data:
     \ ($it)).join(\" \")\n    echo d\n"
   dependsOn:
   - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim
