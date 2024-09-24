@@ -1,3 +1,5 @@
+# verification-helper: PROBLEM https://judge.yosupo.jp/problem/persistent_unionfind
+
 import cplib/collections/persistent_unionfind
 
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
