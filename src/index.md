@@ -34,8 +34,14 @@ data:
       path: cplib/collections/lazysegtree.nim
       title: cplib/collections/lazysegtree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/persistent_array.nim
+      title: cplib/collections/persistent_array.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/persistent_binary_trie.nim
       title: cplib/collections/persistent_binary_trie.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/persistent_unionfind.nim
+      title: cplib/collections/persistent_unionfind.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
@@ -317,6 +323,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/persistent_binary_trie_test.nim
       title: verify/collections/persistent_binary_trie_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/persistent_unionfind_test.nim
+      title: verify/collections/persistent_unionfind_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/persistnt_binary_trie_unionfind_test.nim
       title: verify/collections/persistnt_binary_trie_unionfind_test.nim
