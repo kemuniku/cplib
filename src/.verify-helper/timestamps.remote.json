@@ -22,6 +22,7 @@
 "verify/collections/lazysegtree/rangeaffinerangesum_test.nim": "2024-09-21 20:51:22 +0900",
 "verify/collections/lazysegtree/rangesetrangecomposite_test.nim": "2024-09-21 20:51:22 +0900",
 "verify/collections/persistent_binary_trie_test.nim": "2024-09-21 18:34:12 +0900",
+"verify/collections/persistent_unionfind_test.nim": "2024-09-25 01:01:29 +0900",
 "verify/collections/persistnt_binary_trie_unionfind_test.nim": "2024-09-21 18:34:12 +0900",
 "verify/collections/ppunionfind/past_ppuf_test.nim": "2024-09-19 02:36:23 +0900",
 "verify/collections/ppunionfind/stamp_rally_test.nim": "2024-09-19 01:13:36 +0900",
