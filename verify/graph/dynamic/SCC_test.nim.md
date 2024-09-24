@@ -35,8 +35,8 @@ data:
     \ G.SCC()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/SCC_test.nim
