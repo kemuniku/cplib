@@ -29,24 +29,24 @@ data:
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc217/tasks/abc217_d\n\
     import cplib/collections/avlset\nimport options\nproc scanf(formatstr: cstring){.header:\
     \ \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr\
-    \ result)\nvar L, Q = ii()\nvar st = initAvlSortedMultiset[int]()\nst.incl(0)\n\
-    st.incl(L)\nfor i in 0..<Q:\n    var c, x = ii()\n    if c == 1:\n        st.incl(x)\n\
-    \    else:\n        var l = st.le(x)\n        var r = st.ge(x)\n        echo r.get()-l.get()\n"
+    \ result)\nvar L, Q = ii()\nvar st = initAvlSortedset[int]()\nst.incl(0)\nst.incl(L)\n\
+    for i in 0..<Q:\n    var c, x = ii()\n    if c == 1:\n        st.incl(x)\n   \
+    \ else:\n        var l = st.le(x)\n        var r = st.ge(x)\n        echo r.get()-l.get()\n"
   dependsOn:
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
-  path: verify/collections/avlset/ABC217_gele_test.nim
+  path: verify/collections/avlset/set/ABC217_gele_test.nim
   requiredBy: []
-  timestamp: '2024-07-21 20:30:56+09:00'
+  timestamp: '2024-09-28 12:27:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/collections/avlset/ABC217_gele_test.nim
+documentation_of: verify/collections/avlset/set/ABC217_gele_test.nim
 layout: document
 redirect_from:
-- /verify/verify/collections/avlset/ABC217_gele_test.nim
-- /verify/verify/collections/avlset/ABC217_gele_test.nim.html
-title: verify/collections/avlset/ABC217_gele_test.nim
+- /verify/verify/collections/avlset/set/ABC217_gele_test.nim
+- /verify/verify/collections/avlset/set/ABC217_gele_test.nim.html
+title: verify/collections/avlset/set/ABC217_gele_test.nim
 ---

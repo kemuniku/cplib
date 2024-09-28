@@ -19,34 +19,34 @@ data:
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    PROBLEM: https://atcoder.jp/contests/abc217/tasks/abc217_d
+    PROBLEM: https://atcoder.jp/contests/abc234/tasks/abc234_d
     links:
-    - https://atcoder.jp/contests/abc217/tasks/abc217_d
+    - https://atcoder.jp/contests/abc234/tasks/abc234_d
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc217/tasks/abc217_d\n\
-    import cplib/collections/avlset\nimport options\nproc scanf(formatstr: cstring){.header:\
-    \ \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr\
-    \ result)\nvar L, Q = ii()\nvar st = initAvlSortedMultiset[int]()\nst.incl(0)\n\
-    st.incl(L)\nfor i in 0..<Q:\n    var c, x = ii()\n    if c == 1:\n        st.incl(x)\n\
-    \    else:\n        var l = st.lt(x)\n        var r = st.gt(x)\n        echo r.get()-l.get()\n"
+  code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc234/tasks/abc234_d\n\
+    proc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
+    \ {.inline.} = scanf(\"%lld\\n\", addr result)\nimport sequtils, strutils\nimport\
+    \ cplib/collections/avlset\nvar N, K = ii()\nvar P = newseqwith(N, ii())\nK -=\
+    \ 1\nvar s = initAvlSortedMultiSet(P[0..<K])\nvar ans: seq[int]\nfor i in K..<N:\n\
+    \    s.incl(P[i])\n    ans.add(s[^(K+1)])\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
-  path: verify/collections/avlset/ABC217_gtlt_test.nim
+  path: verify/collections/avlset/multiset/ABC234D_access_test.nim
   requiredBy: []
-  timestamp: '2024-07-21 20:30:56+09:00'
+  timestamp: '2024-09-28 12:27:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/collections/avlset/ABC217_gtlt_test.nim
+documentation_of: verify/collections/avlset/multiset/ABC234D_access_test.nim
 layout: document
 redirect_from:
-- /verify/verify/collections/avlset/ABC217_gtlt_test.nim
-- /verify/verify/collections/avlset/ABC217_gtlt_test.nim.html
-title: verify/collections/avlset/ABC217_gtlt_test.nim
+- /verify/verify/collections/avlset/multiset/ABC234D_access_test.nim
+- /verify/verify/collections/avlset/multiset/ABC234D_access_test.nim.html
+title: verify/collections/avlset/multiset/ABC234D_access_test.nim
 ---

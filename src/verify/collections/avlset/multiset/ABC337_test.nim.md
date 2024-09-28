@@ -36,15 +36,15 @@ data:
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
-  path: verify/collections/avlset/ABC337_test.nim
+  path: verify/collections/avlset/multiset/ABC337_test.nim
   requiredBy: []
-  timestamp: '2024-07-21 20:30:56+09:00'
+  timestamp: '2024-09-28 12:27:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/collections/avlset/ABC337_test.nim
+documentation_of: verify/collections/avlset/multiset/ABC337_test.nim
 layout: document
 redirect_from:
-- /verify/verify/collections/avlset/ABC337_test.nim
-- /verify/verify/collections/avlset/ABC337_test.nim.html
-title: verify/collections/avlset/ABC337_test.nim
+- /verify/verify/collections/avlset/multiset/ABC337_test.nim
+- /verify/verify/collections/avlset/multiset/ABC337_test.nim.html
+title: verify/collections/avlset/multiset/ABC337_test.nim
 ---
