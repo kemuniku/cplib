@@ -356,32 +356,52 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/word_size_tree_test.nim
       title: verify/collections/word_size_tree_test.nim
-  - name: verify/collections/avlset
+  - name: verify/collections/avlset/multiset
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/ABC217_gele_test.nim
-      title: verify/collections/avlset/ABC217_gele_test.nim
+      path: verify/collections/avlset/multiset/ABC217_gele_test.nim
+      title: verify/collections/avlset/multiset/ABC217_gele_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/ABC217_gtlt_test.nim
-      title: verify/collections/avlset/ABC217_gtlt_test.nim
+      path: verify/collections/avlset/multiset/ABC217_gtlt_test.nim
+      title: verify/collections/avlset/multiset/ABC217_gtlt_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/ABC217_index_test.nim
-      title: verify/collections/avlset/ABC217_index_test.nim
+      path: verify/collections/avlset/multiset/ABC217_index_test.nim
+      title: verify/collections/avlset/multiset/ABC217_index_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/ABC234D_access_test.nim
-      title: verify/collections/avlset/ABC234D_access_test.nim
+      path: verify/collections/avlset/multiset/ABC234D_access_test.nim
+      title: verify/collections/avlset/multiset/ABC234D_access_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/ABC236_test.nim
-      title: verify/collections/avlset/ABC236_test.nim
+      path: verify/collections/avlset/multiset/ABC236_test.nim
+      title: verify/collections/avlset/multiset/ABC236_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/ABC294_test.nim
-      title: verify/collections/avlset/ABC294_test.nim
+      path: verify/collections/avlset/multiset/ABC294_test.nim
+      title: verify/collections/avlset/multiset/ABC294_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/ABC337_test.nim
-      title: verify/collections/avlset/ABC337_test.nim
+      path: verify/collections/avlset/multiset/ABC337_test.nim
+      title: verify/collections/avlset/multiset/ABC337_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/collections/avlset/index_right_test.nim
-      title: verify/collections/avlset/index_right_test.nim
+      path: verify/collections/avlset/multiset/index_right_test.nim
+      title: verify/collections/avlset/multiset/index_right_test.nim
+  - name: verify/collections/avlset/set
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/set/ABC217_gele_test.nim
+      title: verify/collections/avlset/set/ABC217_gele_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/set/ABC217_gtlt_test.nim
+      title: verify/collections/avlset/set/ABC217_gtlt_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/set/ABC217_index_test.nim
+      title: verify/collections/avlset/set/ABC217_index_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/set/ABC234D_access_test.nim
+      title: verify/collections/avlset/set/ABC234D_access_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/set/ABC236_test.nim
+      title: verify/collections/avlset/set/ABC236_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/set/ABC294_test.nim
+      title: verify/collections/avlset/set/ABC294_test.nim
   - name: verify/collections/defaultdict
     pages:
     - icon: ':heavy_check_mark:'

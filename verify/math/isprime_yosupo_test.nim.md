@@ -51,14 +51,14 @@ data:
   dependsOn:
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/math/inner_math.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
