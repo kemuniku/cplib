@@ -7,12 +7,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -55,31 +49,30 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TREE_DIAMETER:\n    const CPLIB_TREE_DIAMETER* =\
-    \ 1\n    import cplib/tree/tree\n    proc diameter_and_edge*(g: TreeTypes): auto\
-    \ =\n        var u, v: int\n        when g is WeightedTreeTypes:\n           \
-    \ type Cost = g.T\n        else:\n            type Cost = int\n        var cur\
+    \ 1\n    import cplib/graph/graph\n    proc diameter_and_edge*(g:UnDirectedGraph):\
+    \ auto =\n        var u, v: int\n        when g is WeightedGraph:\n          \
+    \  type Cost = g.T\n        else:\n            type Cost = int\n        var cur\
     \ = Cost(0)\n        proc dfs(x, par: int, d: Cost, u: var int) =\n          \
     \  if d > cur:\n                cur = d\n                u = x\n            for\
     \ (y, cost) in g.to_and_cost(x):\n                if y == par: continue\n    \
     \            dfs(y, x, d + cost, u)\n        dfs(0, -1, Cost(0), u)\n        cur\
     \ = Cost(0)\n        dfs(u, -1, Cost(0), v)\n        return (cur, u, v)\n\n  \
-    \  proc diameter*(g: TreeTypes): auto =\n        var (d, _, _) = g.diameter_and_edge\n\
-    \        return d\n\n    proc diameter_path*(g: TreeTypes): auto =\n        var\
-    \ (d, u, v) = g.diameter_and_edge\n        var path = newSeq[int]()\n        proc\
-    \ dfs(x, par: int): bool =\n            result = false\n            path.add(x)\n\
-    \            if x == v: return true\n            for (y, cost) in g.to_and_cost(x):\n\
-    \                if y == par: continue\n                result = result or dfs(y,\
-    \ x)\n                if result: break\n            if not result:\n         \
-    \       discard path.pop\n        discard dfs(u, -1)\n        return (d, path)\n"
+    \  proc diameter*(g: UnDirectedGraph): auto =\n        var (d, _, _) = g.diameter_and_edge\n\
+    \        return d\n\n    proc diameter_path*(g: UnDirectedGraph): auto =\n   \
+    \     var (d, u, v) = g.diameter_and_edge\n        var path = newSeq[int]()\n\
+    \        proc dfs(x, par: int): bool =\n            result = false\n         \
+    \   path.add(x)\n            if x == v: return true\n            for (y, cost)\
+    \ in g.to_and_cost(x):\n                if y == par: continue\n              \
+    \  result = result or dfs(y, x)\n                if result: break\n          \
+    \  if not result:\n                discard path.pop\n        discard dfs(u, -1)\n\
+    \        return (d, path)\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   isVerificationFile: false
   path: cplib/tree/diameter.nim
   requiredBy: []
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2024-10-02 22:06:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/diameter_static_test.nim

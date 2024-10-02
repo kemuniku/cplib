@@ -43,10 +43,10 @@ data:
     \ echo d\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/dynamic/warshall_floyd_aoj_test.nim

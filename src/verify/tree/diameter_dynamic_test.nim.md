@@ -13,12 +13,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -33,21 +27,19 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_A\n\
-    import cplib/tree/tree\nimport cplib/tree/diameter\nproc scanf(formatstr: cstring){.header:\
+    import cplib/graph/graph\nimport cplib/tree/diameter\nproc scanf(formatstr: cstring){.header:\
     \ \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr\
-    \ result)\n\nvar n = ii()\nvar g = initWeightedTree(n)\nfor i in 0..<n-1:\n  \
-    \  var a, b, c = ii()\n    g.add_edge(a, b, c)\necho g.diameter\n"
+    \ result)\n\nvar n = ii()\nvar g = initWeightedUnDirectedGraph(n)\nfor i in 0..<n-1:\n\
+    \    var a, b, c = ii()\n    g.add_edge(a, b, c)\necho g.diameter"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
-  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_dynamic_test.nim
   requiredBy: []
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2024-10-02 22:06:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/diameter_dynamic_test.nim

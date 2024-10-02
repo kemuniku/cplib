@@ -54,14 +54,14 @@ data:
     \ = max(ans, d.max)\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/grid_to_graph.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/grid_to_graph.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/grid_to_graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim

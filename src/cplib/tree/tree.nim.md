@@ -9,48 +9,12 @@ data:
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: cplib/tree/diameter.nim
-    title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/diameter.nim
-    title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_dynamic_test.nim
-    title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_dynamic_test.nim
-    title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_path_dynamic_test.nim
-    title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_path_dynamic_test.nim
-    title: verify/tree/diameter_path_dynamic_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_path_static_test.nim
-    title: verify/tree/diameter_path_static_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_path_static_test.nim
-    title: verify/tree/diameter_path_static_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_static_test.nim
-    title: verify/tree/diameter_static_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_static_test.nim
-    title: verify/tree/diameter_static_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_yosupo_test.nim
-    title: verify/tree/diameter_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/diameter_yosupo_test.nim
-    title: verify/tree/diameter_yosupo_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
@@ -124,29 +88,17 @@ data:
   isVerificationFile: false
   path: cplib/tree/tree.nim
   requiredBy:
-  - cplib/tree/diameter.nim
-  - cplib/tree/diameter.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/diameter_static_test.nim
-  - verify/tree/diameter_static_test.nim
   - verify/tree/prufer_abc328e_test.nim
   - verify/tree/prufer_abc328e_test.nim
-  - verify/tree/diameter_yosupo_test.nim
-  - verify/tree/diameter_yosupo_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_init_by_parent_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/tree_atcoder_test.nim
-  - verify/tree/diameter_dynamic_test.nim
-  - verify/tree/diameter_dynamic_test.nim
-  - verify/tree/diameter_path_static_test.nim
-  - verify/tree/diameter_path_static_test.nim
-  - verify/tree/diameter_path_dynamic_test.nim
-  - verify/tree/diameter_path_dynamic_test.nim
 documentation_of: cplib/tree/tree.nim
 layout: document
 redirect_from:
