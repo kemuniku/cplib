@@ -1,6 +1,7 @@
 {
 "verify/collections/QSWAG_test.nim": "2024-01-07 15:42:30 +0900",
 "verify/collections/SWAG_test.nim": "2024-01-28 11:14:45 +0900",
+"verify/collections/WeightedUnionFind_test.nim": "2024-10-02 14:29:54 +0900",
 "verify/collections/associative_array_test.nim": "2024-03-21 23:52:09 +0900",
 "verify/collections/avlset/multiset/ABC217_gele_test.nim": "2024-09-28 12:27:57 +0900",
 "verify/collections/avlset/multiset/ABC217_gtlt_test.nim": "2024-09-28 12:27:57 +0900",
