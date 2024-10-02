@@ -37,12 +37,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -57,10 +51,10 @@ data:
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc221/tasks/abc221_f\n\
-    import sequtils, math\nimport cplib/tree/tree\nimport cplib/tree/diameter\nimport\
-    \ cplib/modint/modint\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\",\
-    \ varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\ntype\
-    \ mint = modint998244353_montgomery\n\nvar n = ii()\nvar g = initUnWeightedTree(n)\n\
+    import sequtils, math\nimport cplib/tree/diameter\nimport cplib/graph/graph\n\
+    import cplib/modint/modint\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
+    , varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\ntype\
+    \ mint = modint998244353_montgomery\n\nvar n = ii()\nvar g = initUnWeightedUnDirectedGraph(n)\n\
     for i in 0..<n-1:\n    var u, v = ii() - 1\n    g.add_edge(u, v)\n\nvar (d, path)\
     \ = g.diameter_path\nif d mod 2 == 0:\n    var center = path[d div 2]\n    var\
     \ cnt = 0\n    proc find_leaf(x, par, di: int) =\n        if di == d div 2 - 1:\
@@ -75,23 +69,21 @@ data:
     \ * mint(ch2))\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/tree/diameter.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tree/diameter.nim
-  - cplib/tree/tree.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/tree/diameter.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/tree/diameter_path_dynamic_test.nim
   requiredBy: []
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2024-10-02 22:06:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/diameter_path_dynamic_test.nim
