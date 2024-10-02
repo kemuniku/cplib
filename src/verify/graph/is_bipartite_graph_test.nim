@@ -1,4 +1,4 @@
-# verification-helper: PROBLEMhttps://atcoder.jp/contests/abc327/tasks/abc327_d
+# verification-helper: PROBLEM https://atcoder.jp/contests/abc327/tasks/abc327_d
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import cplib/graph/bipartite_graph
