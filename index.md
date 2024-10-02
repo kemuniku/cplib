@@ -262,6 +262,9 @@ data:
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/tree/rerooting.nim
+      title: cplib/tree/rerooting.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/tree.nim
       title: cplib/tree/tree.nim
   - name: cplib/utils
@@ -1038,6 +1041,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/rerooting_big_test.nim
+      title: verify/tree/rerooting_big_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/rerooting_test.nim
+      title: verify/tree/rerooting_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/tree/tree_atcoder_test.nim
       title: verify/tree/tree_atcoder_test.nim

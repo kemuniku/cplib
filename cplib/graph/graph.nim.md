@@ -87,6 +87,12 @@ data:
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tree/rerooting.nim
+    title: cplib/tree/rerooting.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/rerooting.nim
+    title: cplib/tree/rerooting.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
   - icon: ':heavy_check_mark:'
@@ -352,6 +358,18 @@ data:
     path: verify/tree/prufer_abc328e_test.nim
     title: verify/tree/prufer_abc328e_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_big_test.nim
+    title: verify/tree/rerooting_big_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_big_test.nim
+    title: verify/tree/rerooting_big_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_test.nim
+    title: verify/tree/rerooting_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_test.nim
+    title: verify/tree/rerooting_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/tree_atcoder_test.nim
     title: verify/tree/tree_atcoder_test.nim
   - icon: ':heavy_check_mark:'
@@ -518,6 +536,8 @@ data:
   - cplib/graph/bipartite_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/rerooting.nim
+  - cplib/tree/rerooting.nim
   - cplib/tree/tree.nim
   - cplib/tree/tree.nim
   - cplib/tree/diameter.nim
@@ -587,6 +607,8 @@ data:
   - verify/math/nearear_equiv_abc342e_test.nim
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim
+  - verify/tree/rerooting_big_test.nim
+  - verify/tree/rerooting_big_test.nim
   - verify/tree/prufer_abc328e_test.nim
   - verify/tree/prufer_abc328e_test.nim
   - verify/tree/diameter_yosupo_test.nim
@@ -601,6 +623,8 @@ data:
   - verify/tree/tree_atcoder_test.nim
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
+  - verify/tree/rerooting_test.nim
+  - verify/tree/rerooting_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/hld/hld_past202004o_test.nim

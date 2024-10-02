@@ -48,11 +48,11 @@ data:
     for i in 0..<(Q):\n    var (t,x,y) = querys[i]\n    if t == 1:\n        MT.unite(x-1,y-1)\n\
     \    else:\n        echo SRC.count(MT.get_range(x-1),y)"
   dependsOn:
-  - cplib/collections/staticrangecount.nim
-  - cplib/collections/staticrangecount.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
+  - cplib/collections/staticrangecount.nim
   - cplib/graph/merge_tree.nim
+  - cplib/collections/staticrangecount.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
