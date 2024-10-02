@@ -79,11 +79,11 @@ data:
     \u30CF\u30C3\u30BF\u30F3\u8DDD\u96E2\n        manhattan(p1 - p2)\n"
   dependsOn:
   - cplib/geometry/base.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/intersect.nim
   isVerificationFile: false
