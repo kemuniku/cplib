@@ -19,6 +19,9 @@ data:
       path: cplib/collections/binary_trie.nim
       title: cplib/collections/binary_trie.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/bitset.nim
+      title: cplib/collections/bitset.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
     - icon: ':heavy_check_mark:'
@@ -69,6 +72,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/staticRMQ.nim
       title: cplib/collections/staticRMQ.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/staticbitset.nim
+      title: cplib/collections/staticbitset.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/staticrangecount.nim
       title: cplib/collections/staticrangecount.nim
@@ -315,6 +321,12 @@ data:
       path: verify/collections/binary_trie_test.nim
       title: verify/collections/binary_trie_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/bitset_andpopcnt_test.nim
+      title: verify/collections/bitset_andpopcnt_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/bitset_test.nim
+      title: verify/collections/bitset_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/deletable_heapqueue_test.nim
       title: verify/collections/deletable_heapqueue_test.nim
     - icon: ':heavy_check_mark:'
@@ -356,6 +368,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/staticRMQ_test.nim
       title: verify/collections/staticRMQ_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/static_bitset_seqint_test.nim
+      title: verify/collections/static_bitset_seqint_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/static_bitset_test.nim
+      title: verify/collections/static_bitset_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
