@@ -122,6 +122,9 @@ data:
       path: cplib/graph/bellmanford.nim
       title: cplib/graph/bellmanford.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/bipartite_graph.nim
+      title: cplib/graph/bipartite_graph.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':heavy_check_mark:'
@@ -680,6 +683,9 @@ data:
       title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - name: verify/graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/is_bipartite_graph_test.nim
+      title: verify/graph/is_bipartite_graph_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/merge_tree_test.nim
       title: verify/graph/merge_tree_test.nim

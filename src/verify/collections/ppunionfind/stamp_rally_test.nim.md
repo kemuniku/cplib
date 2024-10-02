@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/collections/ppunionfind.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/collections/ppunionfind/stamp_rally_test.nim
   requiredBy: []

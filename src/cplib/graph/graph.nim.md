@@ -15,6 +15,12 @@ data:
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/bipartite_graph.nim
+    title: cplib/graph/bipartite_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/bipartite_graph.nim
+    title: cplib/graph/bipartite_graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -165,6 +171,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/is_bipartite_graph_test.nim
+    title: verify/graph/is_bipartite_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/is_bipartite_graph_test.nim
+    title: verify/graph/is_bipartite_graph_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/merge_tree_test.nim
     title: verify/graph/merge_tree_test.nim
@@ -502,6 +514,8 @@ data:
   - cplib/graph/bellmanford.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/bipartite_graph.nim
+  - cplib/graph/bipartite_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/tree.nim
@@ -563,6 +577,8 @@ data:
   - verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   - verify/graph/static/topologicalsort_2_static_test.nim
   - verify/graph/static/topologicalsort_2_static_test.nim
+  - verify/graph/is_bipartite_graph_test.nim
+  - verify/graph/is_bipartite_graph_test.nim
   - verify/graph/merge_tree_test.nim
   - verify/graph/merge_tree_test.nim
   - verify/collections/rollback_uf_abc302ex_test.nim
