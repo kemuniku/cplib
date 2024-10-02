@@ -42,9 +42,9 @@ data:
     \ t == 2:\n        var l, r, b = ii()\n        seg.add(l..<r, b)\n    else:\n\
     \        var l, r = ii()\n        echo seg[l..<r].sum\n"
   dependsOn:
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
