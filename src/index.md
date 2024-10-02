@@ -79,6 +79,9 @@ data:
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/weightedunionfind.nim
+      title: cplib/collections/weightedunionfind.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/wordsizetree.nim
       title: cplib/collections/wordsizetree.nim
   - name: cplib/geometry
@@ -302,6 +305,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/SWAG_test.nim
       title: verify/collections/SWAG_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/WeightedUnionFind_test.nim
+      title: verify/collections/WeightedUnionFind_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/associative_array_test.nim
       title: verify/collections/associative_array_test.nim
