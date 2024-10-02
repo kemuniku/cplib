@@ -1,9 +1,9 @@
 when not declared CPLIB_TREE_DIAMETER:
     const CPLIB_TREE_DIAMETER* = 1
-    import cplib/tree/tree
-    proc diameter_and_edge*(g: TreeTypes): auto =
+    import cplib/graph/graph
+    proc diameter_and_edge*(g:UnDirectedGraph): auto =
         var u, v: int
-        when g is WeightedTreeTypes:
+        when g is WeightedGraph:
             type Cost = g.T
         else:
             type Cost = int
@@ -20,11 +20,11 @@ when not declared CPLIB_TREE_DIAMETER:
         dfs(u, -1, Cost(0), v)
         return (cur, u, v)
 
-    proc diameter*(g: TreeTypes): auto =
+    proc diameter*(g: UnDirectedGraph): auto =
         var (d, _, _) = g.diameter_and_edge
         return d
 
-    proc diameter_path*(g: TreeTypes): auto =
+    proc diameter_path*(g: UnDirectedGraph): auto =
         var (d, u, v) = g.diameter_and_edge
         var path = newSeq[int]()
         proc dfs(x, par: int): bool =

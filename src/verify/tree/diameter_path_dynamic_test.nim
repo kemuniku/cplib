@@ -1,14 +1,14 @@
 # verification-helper: PROBLEM https://atcoder.jp/contests/abc221/tasks/abc221_f
 import sequtils, math
-import cplib/tree/tree
 import cplib/tree/diameter
+import cplib/graph/graph
 import cplib/modint/modint
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 type mint = modint998244353_montgomery
 
 var n = ii()
-var g = initUnWeightedTree(n)
+var g = initUnWeightedUnDirectedGraph(n)
 for i in 0..<n-1:
     var u, v = ii() - 1
     g.add_edge(u, v)
