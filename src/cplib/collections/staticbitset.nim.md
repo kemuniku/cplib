@@ -91,10 +91,10 @@ data:
   timestamp: '2024-10-02 16:59:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/static_bitset_test.nim
-  - verify/collections/static_bitset_test.nim
   - verify/collections/static_bitset_seqint_test.nim
   - verify/collections/static_bitset_seqint_test.nim
+  - verify/collections/static_bitset_test.nim
+  - verify/collections/static_bitset_test.nim
 documentation_of: cplib/collections/staticbitset.nim
 layout: document
 redirect_from:

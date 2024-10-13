@@ -34,8 +34,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
-  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/diameter_dynamic_test.nim
   requiredBy: []

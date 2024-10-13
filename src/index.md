@@ -892,6 +892,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/check_zerodivision_test.nim
       title: verify/modint/check_zerodivision_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/modint/integer_operation_test.nim
+      title: verify/modint/integer_operation_test.nim
   - name: verify/modint/montgomery
     pages:
     - icon: ':heavy_check_mark:'
