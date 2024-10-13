@@ -18,10 +18,10 @@ when not declared CPLIB_MODINT_MODINT:
     func `-`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result -= b)
     func `*`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result *= b)
     func `/`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result /= b)
-    func `+`*(a: SomeInteger, b: MontgomeryModint or BarrettModint): auto = b + a
-    func `-`*(a: SomeInteger, b: MontgomeryModint or BarrettModint): auto = b - a
-    func `*`*(a: SomeInteger, b: MontgomeryModint or BarrettModint): auto = b * a
-    func `/`*(a: SomeInteger, b: MontgomeryModint or BarrettModint): auto = b / a
+    func `+`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) + b
+    func `-`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) - b
+    func `*`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) * b
+    func `/`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) / b
     proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt, b: static int): auto =
         const tmp = init(Modint, b).inv
         return a * tmp
