@@ -75,6 +75,8 @@ data:
   timestamp: '2024-10-02 22:06:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/tree/diameter_path_dynamic_test.nim
+  - verify/tree/diameter_path_dynamic_test.nim
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_yosupo_test.nim
@@ -83,8 +85,6 @@ data:
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_path_static_test.nim
-  - verify/tree/diameter_path_dynamic_test.nim
-  - verify/tree/diameter_path_dynamic_test.nim
 documentation_of: cplib/tree/diameter.nim
 layout: document
 redirect_from:

@@ -87,12 +87,12 @@ data:
   timestamp: '2024-09-19 01:13:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/ppunionfind/past_ppuf_test.nim
-  - verify/collections/ppunionfind/past_ppuf_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/stamp_rally_test.nim
   - verify/collections/ppunionfind/stamp_rally_test.nim
+  - verify/collections/ppunionfind/past_ppuf_test.nim
+  - verify/collections/ppunionfind/past_ppuf_test.nim
 documentation_of: cplib/collections/ppunionfind.nim
 layout: document
 redirect_from:

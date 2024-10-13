@@ -130,14 +130,14 @@ data:
   verifiedWith:
   - verify/str/hash_string/hash_string_Z_algo_test.nim
   - verify/str/hash_string/hash_string_Z_algo_test.nim
-  - verify/str/hash_string/hash_string_LCP_test.nim
-  - verify/str/hash_string/hash_string_LCP_test.nim
-  - verify/str/hash_string/hash_string_LCS_test.nim
-  - verify/str/hash_string/hash_string_LCS_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_LCP_test.nim
+  - verify/str/hash_string/hash_string_LCP_test.nim
   - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
+  - verify/str/hash_string/hash_string_LCS_test.nim
+  - verify/str/hash_string/hash_string_LCS_test.nim
 documentation_of: cplib/str/hash_string.nim
 layout: document
 redirect_from:

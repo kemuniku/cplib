@@ -115,22 +115,22 @@ data:
   timestamp: '2024-06-25 04:52:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
 documentation_of: cplib/tmpl/sheep.nim
 layout: document
 redirect_from:

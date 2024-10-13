@@ -100,6 +100,12 @@ data:
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/integer_operation_test.nim
+    title: verify/modint/integer_operation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/integer_operation_test.nim
+    title: verify/modint/integer_operation_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery/abc277g_dynamic_test.nim
     title: verify/modint/montgomery/abc277g_dynamic_test.nim
   - icon: ':heavy_check_mark:'
@@ -184,81 +190,85 @@ data:
     \ or BarrettModint, b: SomeInteger): auto = (result = a; result -= b)\n    func\
     \ `*`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result =\
     \ a; result *= b)\n    func `/`*(a: MontgomeryModint or BarrettModint, b: SomeInteger):\
-    \ auto = (result = a; result /= b)\n    func `+`*(a: SomeInteger, b: MontgomeryModint\
-    \ or BarrettModint): auto = b + a\n    func `-`*(a: SomeInteger, b: MontgomeryModint\
-    \ or BarrettModint): auto = b - a\n    func `*`*(a: SomeInteger, b: MontgomeryModint\
-    \ or BarrettModint): auto = b * a\n    func `/`*(a: SomeInteger, b: MontgomeryModint\
-    \ or BarrettModint): auto = b / a\n    proc `/`*[ModInt: MontgomeryModint or BarrettModint](a:\
-    \ ModInt, b: static int): auto =\n        const tmp = init(Modint, b).inv\n  \
-    \      return a * tmp\n    func pow*(a: MontgomeryModint or BarrettModint, n:\
-    \ int): auto =\n        result = init(typeof(a), 1)\n        var a = a\n     \
-    \   var n = n\n        while n > 0:\n            if (n and 1) == 1: result *=\
-    \ a\n            a *= a\n            n = (n shr 1)\n    func `$`*(a: MontgomeryModint\
-    \ or BarrettModint): string = $(a.val)\n    proc estimate_rational*(a: MontgomeryModint\
-    \ or BarrettModint, ub: int = isqrt(typeof(a).mod)): string =\n        var v:\
-    \ seq[tuple[s, n, d: int]]\n        for d in 1..ub:\n            var n = (a *\
-    \ d).val\n            if n * 2 > a.mod:\n                n = - (a.mod - n)\n \
-    \           if gcd(n, d) > 1: continue\n            v.add((n.abs + d, n, d))\n\
-    \        v.sort\n        return $v[0].n & \"/\" & $v[0].d\n"
+    \ auto = (result = a; result /= b)\n    func `+`*[ModInt: MontgomeryModint or\
+    \ BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) + b\n    func\
+    \ `-`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint):\
+    \ auto = init(Modint, a) - b\n    func `*`*[ModInt: MontgomeryModint or BarrettModint](a:\
+    \ SomeInteger, b: Modint): auto = init(Modint, a) * b\n    func `/`*[ModInt: MontgomeryModint\
+    \ or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) / b\n \
+    \   proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt, b: static\
+    \ int): auto =\n        const tmp = init(Modint, b).inv\n        return a * tmp\n\
+    \    func pow*(a: MontgomeryModint or BarrettModint, n: int): auto =\n       \
+    \ result = init(typeof(a), 1)\n        var a = a\n        var n = n\n        while\
+    \ n > 0:\n            if (n and 1) == 1: result *= a\n            a *= a\n   \
+    \         n = (n shr 1)\n    func `$`*(a: MontgomeryModint or BarrettModint):\
+    \ string = $(a.val)\n    proc estimate_rational*(a: MontgomeryModint or BarrettModint,\
+    \ ub: int = isqrt(typeof(a).mod)): string =\n        var v: seq[tuple[s, n, d:\
+    \ int]]\n        for d in 1..ub:\n            var n = (a * d).val\n          \
+    \  if n * 2 > a.mod:\n                n = - (a.mod - n)\n            if gcd(n,\
+    \ d) > 1: continue\n            v.add((n.abs + d, n, d))\n        v.sort\n   \
+    \     return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy: []
-  timestamp: '2024-07-21 20:30:56+09:00'
+  timestamp: '2024-10-13 16:58:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/matrix/matrix_pow_test.nim
-  - verify/matrix/matrix_pow_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/tree/diameter_path_static_test.nim
-  - verify/tree/diameter_path_static_test.nim
-  - verify/tree/diameter_path_dynamic_test.nim
-  - verify/tree/diameter_path_dynamic_test.nim
-  - verify/modint/barrett/dpr_dynamic_test.nim
-  - verify/modint/barrett/dpr_dynamic_test.nim
-  - verify/modint/barrett/abc277g_dynamic_test.nim
-  - verify/modint/barrett/abc277g_dynamic_test.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test.nim
-  - verify/modint/barrett/keyence2021_dynamic_test.nim
-  - verify/modint/barrett/keyence2021_dynamic_test.nim
-  - verify/modint/barrett/keyence2021_static_test.nim
-  - verify/modint/barrett/keyence2021_static_test.nim
-  - verify/modint/barrett/abc277g_static_test.nim
-  - verify/modint/barrett/abc277g_static_test.nim
-  - verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
-  - verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
-  - verify/modint/barrett/dpr_static_test.nim
-  - verify/modint/barrett/dpr_static_test.nim
-  - verify/modint/montgomery/dpr_dynamic_test.nim
-  - verify/modint/montgomery/dpr_dynamic_test.nim
-  - verify/modint/montgomery/abc277g_dynamic_test.nim
-  - verify/modint/montgomery/abc277g_dynamic_test.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test.nim
-  - verify/modint/montgomery/keyence2021_dynamic_test.nim
-  - verify/modint/montgomery/keyence2021_dynamic_test.nim
   - verify/modint/montgomery/keyence2021_static_test.nim
   - verify/modint/montgomery/keyence2021_static_test.nim
-  - verify/modint/montgomery/abc277g_static_test.nim
-  - verify/modint/montgomery/abc277g_static_test.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/montgomery/dpr_dynamic_test.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test.nim
+  - verify/modint/montgomery/abc277g_dynamic_test.nim
+  - verify/modint/montgomery/abc277g_dynamic_test.nim
+  - verify/modint/montgomery/abc277g_static_test.nim
+  - verify/modint/montgomery/abc277g_static_test.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
   - verify/modint/montgomery/dpr_static_test.nim
+  - verify/modint/barrett/keyence2021_static_test.nim
+  - verify/modint/barrett/keyence2021_static_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/dpr_dynamic_test.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test.nim
+  - verify/modint/barrett/abc277g_dynamic_test.nim
+  - verify/modint/barrett/abc277g_dynamic_test.nim
+  - verify/modint/barrett/abc277g_static_test.nim
+  - verify/modint/barrett/abc277g_static_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_test.nim
+  - verify/modint/barrett/keyence2021_dynamic_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
+  - verify/modint/barrett/dpr_static_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
+  - verify/modint/integer_operation_test.nim
+  - verify/modint/integer_operation_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/tree/diameter_path_dynamic_test.nim
+  - verify/tree/diameter_path_dynamic_test.nim
+  - verify/tree/diameter_path_static_test.nim
+  - verify/tree/diameter_path_static_test.nim
 documentation_of: cplib/modint/modint.nim
 layout: document
 redirect_from:
