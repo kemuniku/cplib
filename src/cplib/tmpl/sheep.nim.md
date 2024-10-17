@@ -105,14 +105,15 @@ data:
     \ range(start: int, ends: int): int = (for i in\n            start..<ends: yield\
     \ i)\n\n    #join\u304C\u975Estring\u3067\u3081\u3061\u3083\u304F\u3061\u3083\u9045\
     \u3044\u3084\u3064\u306E\u30D1\u30C3\u30C1\n    proc join*[T: not string](a: openArray[T],\
-    \ sep: string = \"\"): string = a.mapit($it).join(sep)\n"
+    \ sep: string = \"\"): string = a.mapit($it).join(sep)\n\n    proc dump[T](arr:seq[seq[T]])=\n\
+    \        for i in 0..<len(arr):\n            echo arr[i]\n"
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy: []
-  timestamp: '2024-06-25 04:52:11+09:00'
+  timestamp: '2024-10-17 13:28:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/isprime_yosupo_test.nim
