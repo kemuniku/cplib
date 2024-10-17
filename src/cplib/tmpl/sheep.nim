@@ -82,3 +82,7 @@ when not declared CPLIB_TMPL_SHEEP:
 
     #joinが非stringでめちゃくちゃ遅いやつのパッチ
     proc join*[T: not string](a: openArray[T], sep: string = ""): string = a.mapit($it).join(sep)
+
+    proc dump[T](arr:seq[seq[T]])=
+        for i in 0..<len(arr):
+            echo arr[i]
