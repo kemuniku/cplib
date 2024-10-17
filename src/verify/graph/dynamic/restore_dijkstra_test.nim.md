@@ -54,12 +54,12 @@ data:
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/dynamic/restore_dijkstra_test.nim
