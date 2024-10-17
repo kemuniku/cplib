@@ -95,8 +95,8 @@ data:
   dependsOn:
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []

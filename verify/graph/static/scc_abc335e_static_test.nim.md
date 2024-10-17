@@ -37,8 +37,8 @@ data:
     \ i in 0..<newg.len:\n    if dp[i] > 0:\n        for j in newG[i]:\n         \
     \   dp[j] = max(dp[j], dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

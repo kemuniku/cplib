@@ -130,6 +130,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
+    - icon: ':warning:'
+      path: cplib/graph/graph_debug.nim
+      title: cplib/graph/graph_debug.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/grid_to_graph.nim
       title: cplib/graph/grid_to_graph.nim
