@@ -32,9 +32,9 @@ data:
     \    ans.add(lcp(S,S[i..<len(S)]))\n\necho ans.join(\" \")"
   dependsOn:
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_zalgo_test.nim
   requiredBy: []

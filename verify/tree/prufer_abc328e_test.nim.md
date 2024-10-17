@@ -13,12 +13,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -44,16 +38,14 @@ data:
     \ g[i][j]\n        ans = min(ans, cur mod k)\n        return\n    for i in 0..<n:\n\
     \        a[d] = i\n        dfs(d+1)\ndfs(0)\necho ans\n"
   dependsOn:
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/prufer_abc328e_test.nim
   requiredBy: []
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2024-10-18 07:02:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/prufer_abc328e_test.nim
