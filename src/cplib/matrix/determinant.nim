@@ -5,16 +5,19 @@ when not declared CPLIB_MATRIX_DETERMINANT:
         var H = len(X)
         var W = len(X[0])
         var w = 0
-        result = 1
+        result = T(1)
         for i in 0..<(H):
             block test:
                 for k in i..<H:
                     if X[k][i] != 0:
+                        echo (k,i,X[k][i])
+                        echo X
                         if i != k:
                             swap(X[i],X[k])
-                            result *= -1
+                            result *= T(-1)
+                        echo X
                         result *= X[i][i]
-                        var inv = 1/(X[i][i])
+                        var inv = T(1)/(X[i][i])
                         for l in (i..<W):
                             X[i][l] *= inv
                         for a in 0..<H:
