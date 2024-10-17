@@ -71,16 +71,16 @@ data:
 
     '
   dependsOn:
-  - cplib/math/divisor.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   - cplib/math/divisor.nim
   - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: true

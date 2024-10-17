@@ -67,10 +67,10 @@ data:
     \ terminal: seq[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
-  - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim

@@ -98,8 +98,8 @@ data:
     \  return false\n        return true\n"
   dependsOn:
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim

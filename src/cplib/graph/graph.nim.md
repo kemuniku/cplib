@@ -26,6 +26,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
+  - icon: ':warning:'
+    path: cplib/graph/graph_debug.nim
+    title: cplib/graph/graph_debug.nim
+  - icon: ':warning:'
+    path: cplib/graph/graph_debug.nim
+    title: cplib/graph/graph_debug.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/grid_to_graph.nim
     title: cplib/graph/grid_to_graph.nim
@@ -528,6 +534,8 @@ data:
   - cplib/graph/steiner_tree.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph_debug.nim
+  - cplib/graph/graph_debug.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
   - cplib/graph/topologicalsort.nim
