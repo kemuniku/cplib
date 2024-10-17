@@ -32,8 +32,8 @@ data:
     for s in S:\n    if s in st:\n        echo \"Yes\"\n    else:\n        echo \"\
     No\"\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true

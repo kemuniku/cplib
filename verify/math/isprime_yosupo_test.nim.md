@@ -50,19 +50,19 @@ data:
     \        echo \"No\"\n"
   dependsOn:
   - cplib/math/isprime.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/utils/constants.nim
+  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2024-06-25 04:52:11+09:00'
+  timestamp: '2024-10-17 13:28:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim
