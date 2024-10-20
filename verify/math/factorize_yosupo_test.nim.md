@@ -50,14 +50,14 @@ data:
     \ stdin.readLine.scanf(\"$i\", a)\n    var ans = primefactor(a)\n    if ans.len\
     \ == 0: echo 0\n    else: echo ans.len, \" \", ans.join(\" \")\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
   isVerificationFile: true

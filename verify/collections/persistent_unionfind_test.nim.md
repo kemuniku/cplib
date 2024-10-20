@@ -34,10 +34,10 @@ data:
     \    if t == 0:\n        UFS[i] = UFS[k].unite(u,v)\n    else:\n        echo if\
     \ UFS[k].issame(u,v):1 else:0\n"
   dependsOn:
-  - cplib/collections/persistent_unionfind.nim
+  - cplib/collections/persistent_array.nim
   - cplib/collections/persistent_array.nim
   - cplib/collections/persistent_unionfind.nim
-  - cplib/collections/persistent_array.nim
+  - cplib/collections/persistent_unionfind.nim
   isVerificationFile: true
   path: verify/collections/persistent_unionfind_test.nim
   requiredBy: []

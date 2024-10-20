@@ -39,8 +39,8 @@ data:
     \ => (x <= k))\n    ans[idx] = cmp[tmp]\n\nM.run(ad,ad,dl,dl,mem)\n\necho ans.join(\"\
     \\n\")"
   dependsOn:
-  - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
+  - cplib/collections/root_rangesum.nim
   - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
   isVerificationFile: true
