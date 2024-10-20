@@ -26,3 +26,9 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
     proc siz*(self: UnionFind, x: int): int =
         var x = self.root(x)
         return -self.par_or_siz[x]
+    proc roots*(self:UnionFind):seq[int]=
+        ## O(N)かけて、rootになっている頂点を列挙します。
+        ## 注意:O(root数)でないことに注意してください。
+        for i in 0..<len(self.par_or_siz):
+            if self.par_or_siz[i] < 0:
+                result.add(i)
