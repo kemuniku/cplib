@@ -44,8 +44,8 @@ data:
     \ else:\n                ans += result[0]\n            return result\n       \
     \ discard dfs(G.v[0],-1)\n        anss += ans\n\necho anss\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
