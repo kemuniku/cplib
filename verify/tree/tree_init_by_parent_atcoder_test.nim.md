@@ -35,8 +35,8 @@ data:
     \    if insi > 0: result = 1\n    for (v, c) in g.edges[u]:\n        if v == par:\
     \ continue\n        result += dfs(v, u, insi-1)\necho dfs(0, -1, 0)\n"
   dependsOn:
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   isVerificationFile: true

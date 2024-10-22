@@ -21,6 +21,12 @@ data:
     path: cplib/graph/bipartite_graph.nim
     title: cplib/graph/bipartite_graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/dag_minimum_path_cover.nim
+    title: cplib/graph/dag_minimum_path_cover.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dag_minimum_path_cover.nim
+    title: cplib/graph/dag_minimum_path_cover.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -111,6 +117,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/rollback_uf_abc302ex_test.nim
     title: verify/collections/rollback_uf_abc302ex_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dag_minimum_path_cover_hakata_test.nim
+    title: verify/graph/dag_minimum_path_cover_hakata_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dag_minimum_path_cover_hakata_test.nim
+    title: verify/graph/dag_minimum_path_cover_hakata_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/SCCG_test.nim
     title: verify/graph/dynamic/SCCG_test.nim
@@ -522,6 +534,8 @@ data:
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/bipartite_graph.nim
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/bellmanford.nim
@@ -583,6 +597,8 @@ data:
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/SCCG_static_test.nim
   - verify/graph/static/SCCG_static_test.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim

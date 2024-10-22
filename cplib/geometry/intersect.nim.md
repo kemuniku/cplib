@@ -96,10 +96,10 @@ data:
     \ + l2.vector * (d2 / d1)\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
