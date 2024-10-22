@@ -49,9 +49,9 @@ data:
     \ 1\n\n    if ans == INF:\n        echo -1\n    else:\n        echo ans"
   dependsOn:
   - cplib/str/can_reverse_hash_string.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/constants.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

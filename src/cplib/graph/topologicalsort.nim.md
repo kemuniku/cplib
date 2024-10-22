@@ -7,8 +7,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dag_minimum_path_cover.nim
+    title: cplib/graph/dag_minimum_path_cover.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dag_minimum_path_cover.nim
+    title: cplib/graph/dag_minimum_path_cover.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dag_minimum_path_cover_hakata_test.nim
+    title: verify/graph/dag_minimum_path_cover_hakata_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dag_minimum_path_cover_hakata_test.nim
+    title: verify/graph/dag_minimum_path_cover_hakata_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/topologicalsort_1_test.nim
     title: verify/graph/dynamic/topologicalsort_1_test.nim
@@ -57,7 +69,9 @@ data:
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/topologicalsort.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -65,6 +79,8 @@ data:
   - verify/graph/static/topologicalsort_1_static_test.nim
   - verify/graph/static/topologicalsort_2_static_test.nim
   - verify/graph/static/topologicalsort_2_static_test.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test.nim
   - verify/graph/dynamic/topologicalsort_2_test.nim
   - verify/graph/dynamic/topologicalsort_2_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim

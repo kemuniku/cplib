@@ -125,6 +125,9 @@ data:
       path: cplib/graph/bipartite_graph.nim
       title: cplib/graph/bipartite_graph.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/dag_minimum_path_cover.nim
+      title: cplib/graph/dag_minimum_path_cover.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':heavy_check_mark:'
@@ -649,6 +652,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/convex_hull_abc286ex_test.nim
       title: verify/geometry/convex_hull_abc286ex_test.nim
+  - name: verify/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dag_minimum_path_cover_hakata_test.nim
+      title: verify/graph/dag_minimum_path_cover_hakata_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/is_bipartite_graph_test.nim
+      title: verify/graph/is_bipartite_graph_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/merge_tree_test.nim
+      title: verify/graph/merge_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/steiner_tree_abc364g_test.nim
+      title: verify/graph/steiner_tree_abc364g_test.nim
   - name: verify/graph/dynamic
     pages:
     - icon: ':heavy_check_mark:'
@@ -687,17 +704,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
       title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - name: verify/graph
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/is_bipartite_graph_test.nim
-      title: verify/graph/is_bipartite_graph_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/merge_tree_test.nim
-      title: verify/graph/merge_tree_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/steiner_tree_abc364g_test.nim
-      title: verify/graph/steiner_tree_abc364g_test.nim
   - name: verify/graph/static
     pages:
     - icon: ':heavy_check_mark:'
