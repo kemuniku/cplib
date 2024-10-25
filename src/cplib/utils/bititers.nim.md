@@ -51,26 +51,27 @@ data:
   code: "when not declared CPLIB_UTILS_BITITERS:\n    const CPLIB_UTILS_BITITERS*\
     \ = 1\n    import bitops\n    iterator bitcomb*(n, r: int): int =\n        ##n\
     \ bit\u4E2D r bit\u304C1\u3067\u3042\u308B\u3088\u3046\u306Abit\u5217\u3092\u5217\
-    \u6319\u3057\u307E\u3059\u3002\n        var x = (1 shl r)-1\n        while true:\n\
-    \            yield x\n            var t = x or (x-1)\n            x = (t+1) or\
-    \ (((not t and - not t) - 1) shr (x.countTrailingZeroBits() + 1))\n          \
-    \  if x >= (1 shl n):\n                break\n\n    iterator bitsubseteq*(bits:\
-    \ int): int =\n        ##\u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u306E\u90E8\
-    \u5206\u96C6\u5408\u3092\u6607\u9806\u3067\u5217\u6319\u3057\u307E\u3059\u3002\
-    \u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u3082\u542B\u307F\u307E\u3059\u3002\
-    \n        var i = 0\n        while true:\n            yield i\n            if\
-    \ bits == i:\n                break\n            i = (i-bits) and bits\n    iterator\
-    \ bitsubset*(bits: int): int =\n        ##\u4E0E\u3048\u3089\u308C\u305F\u96C6\
-    \u5408\u306E\u90E8\u5206\u96C6\u5408\u3092\u6607\u9806\u3067\u5217\u6319\u3057\
-    \u307E\u3059\u3002\u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u306F\u542B\u307F\
-    \u307E\u305B\u3093\u3002\n        var i = 0\n        while true:\n           \
-    \ yield i\n            i = (i-bits) and bits\n            if bits == i:\n    \
-    \            break\n    iterator bitsubseteq_descending*(bits: int): int =\n \
-    \       ##\u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u306E\u90E8\u5206\u96C6\u5408\
-    \u3092\u964D\u9806\u3067\u5217\u6319\u3057\u307E\u3059\u3002\u4E0E\u3048\u3089\
-    \u308C\u305F\u96C6\u5408\u3082\u542B\u307F\u307E\u3059\u3002\n        var i =\
-    \ bits\n        while true:\n            yield i\n            if i == 0:\n   \
-    \             break\n            i = (i-1) and bits\n    iterator bitsubset_descending*(bits:\
+    \u6319\u3057\u307E\u3059\u3002\n        assert n >= r\n        var x = (1 shl\
+    \ r)-1\n        if r == 0:\n            yield x\n        else:\n            while\
+    \ true:\n                yield x\n                var t = x or (x-1)\n       \
+    \         x = (t+1) or (((not t and - not t) - 1) shr (x.countTrailingZeroBits()\
+    \ + 1))\n                if x >= (1 shl n):\n                    break\n\n   \
+    \ iterator bitsubseteq*(bits: int): int =\n        ##\u4E0E\u3048\u3089\u308C\u305F\
+    \u96C6\u5408\u306E\u90E8\u5206\u96C6\u5408\u3092\u6607\u9806\u3067\u5217\u6319\
+    \u3057\u307E\u3059\u3002\u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u3082\u542B\
+    \u307F\u307E\u3059\u3002\n        var i = 0\n        while true:\n           \
+    \ yield i\n            if bits == i:\n                break\n            i = (i-bits)\
+    \ and bits\n    iterator bitsubset*(bits: int): int =\n        ##\u4E0E\u3048\u3089\
+    \u308C\u305F\u96C6\u5408\u306E\u90E8\u5206\u96C6\u5408\u3092\u6607\u9806\u3067\
+    \u5217\u6319\u3057\u307E\u3059\u3002\u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\
+    \u306F\u542B\u307F\u307E\u305B\u3093\u3002\n        var i = 0\n        while true:\n\
+    \            yield i\n            i = (i-bits) and bits\n            if bits ==\
+    \ i:\n                break\n    iterator bitsubseteq_descending*(bits: int):\
+    \ int =\n        ##\u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u306E\u90E8\u5206\
+    \u96C6\u5408\u3092\u964D\u9806\u3067\u5217\u6319\u3057\u307E\u3059\u3002\u4E0E\
+    \u3048\u3089\u308C\u305F\u96C6\u5408\u3082\u542B\u307F\u307E\u3059\u3002\n   \
+    \     var i = bits\n        while true:\n            yield i\n            if i\
+    \ == 0:\n                break\n            i = (i-1) and bits\n    iterator bitsubset_descending*(bits:\
     \ int): int =\n        ##\u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u306E\u90E8\
     \u5206\u96C6\u5408\u3092\u964D\u9806\u3067\u5217\u6319\u3057\u307E\u3059\u3002\
     \u4E0E\u3048\u3089\u308C\u305F\u96C6\u5408\u306F\u542B\u307F\u307E\u305B\u3093\
@@ -104,7 +105,7 @@ data:
   requiredBy:
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
-  timestamp: '2023-12-13 00:26:11+09:00'
+  timestamp: '2024-10-25 15:54:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/steiner_tree_abc364g_test.nim

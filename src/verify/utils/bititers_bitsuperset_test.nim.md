@@ -37,7 +37,7 @@ data:
   isVerificationFile: true
   path: verify/utils/bititers_bitsuperset_test.nim
   requiredBy: []
-  timestamp: '2024-04-09 13:29:23+09:00'
+  timestamp: '2024-10-25 15:54:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/bititers_bitsuperset_test.nim

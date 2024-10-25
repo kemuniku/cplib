@@ -42,7 +42,7 @@ data:
   isVerificationFile: true
   path: verify/utils/bititers_bitsubseteq_descending_test.nim
   requiredBy: []
-  timestamp: '2023-12-13 00:30:20+09:00'
+  timestamp: '2024-10-25 15:54:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/bititers_bitsubseteq_descending_test.nim
