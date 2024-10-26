@@ -94,9 +94,9 @@ data:
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n\n"
   dependsOn:
   - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []
