@@ -32,6 +32,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph.nim
+    title: cplib/graph/functional_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph.nim
+    title: cplib/graph/functional_graph.nim
   - icon: ':warning:'
     path: cplib/graph/graph_debug.nim
     title: cplib/graph/graph_debug.nim
@@ -195,6 +201,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_test.nim
+    title: verify/graph/functional_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_test.nim
+    title: verify/graph/functional_graph_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/is_bipartite_graph_test.nim
     title: verify/graph/is_bipartite_graph_test.nim
@@ -536,6 +548,8 @@ data:
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/bellmanford.nim
@@ -623,6 +637,8 @@ data:
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
+  - verify/graph/functional_graph_test.nim
+  - verify/graph/functional_graph_test.nim
   - verify/graph/is_bipartite_graph_test.nim
   - verify/graph/is_bipartite_graph_test.nim
   - verify/graph/steiner_tree_abc364g_test.nim

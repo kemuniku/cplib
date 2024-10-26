@@ -131,6 +131,9 @@ data:
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/functional_graph.nim
+      title: cplib/graph/functional_graph.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':warning:'
@@ -657,6 +660,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dag_minimum_path_cover_hakata_test.nim
       title: verify/graph/dag_minimum_path_cover_hakata_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/functional_graph_test.nim
+      title: verify/graph/functional_graph_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/is_bipartite_graph_test.nim
       title: verify/graph/is_bipartite_graph_test.nim
