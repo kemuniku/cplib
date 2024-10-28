@@ -202,6 +202,7 @@
 "verify/str/hash_string/hash_string_Z_algo_test.nim": "2024-08-31 11:41:07 +0900",
 "verify/str/hash_string/hash_string_mul_test.nim": "2024-10-17 13:28:40 +0900",
 "verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim": "2024-08-31 11:41:07 +0900",
+"verify/str/lcs_test.nim": "2024-10-29 00:42:25 +0900",
 "verify/str/manachar_test.nim": "2024-01-07 15:19:23 +0900",
 "verify/str/palindromic_tree_test.nim": "2024-09-10 01:13:27 +0900",
 "verify/str/rolling_hash_abcbac_test.nim": "2024-06-07 22:14:11 +0900",
