@@ -36,9 +36,9 @@ data:
     \    else:\n            return UF.size(x,arg)+UF.size(y,arg) >= z\n    echo meguru_bisect(M,0,is_ok)\n\
     \n"
   dependsOn:
+  - cplib/collections/ppunionfind.nim
+  - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
-  - cplib/collections/ppunionfind.nim
-  - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/collections/ppunionfind/stamp_rally_test.nim
