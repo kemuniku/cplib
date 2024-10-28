@@ -149,6 +149,9 @@ data:
       path: cplib/graph/merge_tree.nim
       title: cplib/graph/merge_tree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/namori_graph.nim
+      title: cplib/graph/namori_graph.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/restore_shortest_path_from_prev.nim
       title: cplib/graph/restore_shortest_path_from_prev.nim
     - icon: ':warning:'
@@ -669,6 +672,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/merge_tree_test.nim
       title: verify/graph/merge_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/namori_graph_test.nim
+      title: verify/graph/namori_graph_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/namori_incycle_test.nim
+      title: verify/graph/namori_incycle_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/steiner_tree_abc364g_test.nim
       title: verify/graph/steiner_tree_abc364g_test.nim

@@ -51,9 +51,9 @@ data:
     \        ans.min = (M+1-(N-i)+(N-1))//N + 1\n\n    if ans == INF:\n        echo\
     \ -1\n    else:\n        echo ans"
   dependsOn:
-  - cplib/str/hash_string.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/str/hash_string.nim
   - cplib/str/hash_string.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim

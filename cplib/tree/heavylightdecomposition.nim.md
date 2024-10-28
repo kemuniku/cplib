@@ -14,6 +14,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/namori_graph.nim
+    title: cplib/graph/namori_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/namori_graph.nim
+    title: cplib/graph/namori_graph.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/graph/functional_graph_test.nim
@@ -21,6 +27,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/functional_graph_test.nim
     title: verify/graph/functional_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_graph_test.nim
+    title: verify/graph/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_graph_test.nim
+    title: verify/graph/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_incycle_test.nim
+    title: verify/graph/namori_incycle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_incycle_test.nim
+    title: verify/graph/namori_incycle_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliarytree_test.nim
     title: verify/tree/auxiliarytree_test.nim
@@ -186,11 +204,17 @@ data:
   isVerificationFile: false
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy:
+  - cplib/graph/namori_graph.nim
+  - cplib/graph/namori_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
   timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/namori_graph_test.nim
+  - verify/graph/namori_graph_test.nim
   - verify/graph/functional_graph_test.nim
   - verify/graph/functional_graph_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim

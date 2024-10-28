@@ -133,9 +133,9 @@ data:
     \ len*(grid:GridSearcher):int=\n        return len(grid.row)"
   dependsOn:
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: false
   path: cplib/utils/grid_searcher.nim
   requiredBy: []
