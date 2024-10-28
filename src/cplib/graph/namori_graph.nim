@@ -12,7 +12,6 @@ when not declared CPLIB_GRAPH_NAMORI:
 
 
     proc initNamoriGraph*(graph:UnWeightedUnDirectedGraph):NamoriGraph=
-        ## 注意！連結性を仮定しています
         var stack : seq[int]
         var sizes = newseqwith(len(graph),0)
         var rootNo = newseqwith(len(graph),-1)
@@ -70,3 +69,12 @@ when not declared CPLIB_GRAPH_NAMORI:
             var b = namori.cyclesize - a
             var tmp = namori.tree.depth(u) + namori.tree.depth(v) - 2
             return (min(a,b)+tmp,max(a,b)+tmp)
+    
+    proc incycle*(namori:NamoriGraph,x:int):bool=
+        return namori.roots[x] == x
+    
+    proc root*(namori:NamoriGraph,x:int):int=
+        return namori.roots[x]
+
+    proc same_tree*(namori:NamoriGraph,x,y:int):bool=
+        return namori.roots[x] == namori.roots[y]
