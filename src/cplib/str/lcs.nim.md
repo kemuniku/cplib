@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_test.nim
+    title: verify/str/lcs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_test.nim
+    title: verify/str/lcs_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -38,8 +44,10 @@ data:
   path: cplib/str/lcs.nim
   requiredBy: []
   timestamp: '2024-10-29 00:24:54+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/str/lcs_test.nim
+  - verify/str/lcs_test.nim
 documentation_of: cplib/str/lcs.nim
 layout: document
 redirect_from:

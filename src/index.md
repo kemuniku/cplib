@@ -233,7 +233,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/hash_string.nim
       title: cplib/str/hash_string.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/lcs.nim
       title: cplib/str/lcs.nim
     - icon: ':heavy_check_mark:'
@@ -987,6 +987,9 @@ data:
       title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/lcs_test.nim
+      title: verify/str/lcs_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/manachar_test.nim
       title: verify/str/manachar_test.nim
