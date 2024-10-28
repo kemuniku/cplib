@@ -32,9 +32,9 @@ data:
     \ \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/multiset/ABC337_test.nim
   requiredBy: []

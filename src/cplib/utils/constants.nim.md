@@ -27,6 +27,12 @@ data:
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/namori_graph.nim
+    title: cplib/graph/namori_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/namori_graph.nim
+    title: cplib/graph/namori_graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
   - icon: ':heavy_check_mark:'
@@ -93,6 +99,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_graph_test.nim
+    title: verify/graph/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_graph_test.nim
+    title: verify/graph/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_incycle_test.nim
+    title: verify/graph/namori_incycle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_incycle_test.nim
+    title: verify/graph/namori_incycle_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
@@ -200,6 +218,8 @@ data:
   - cplib/collections/segtree_beats_template.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/graph/namori_graph.nim
+  - cplib/graph/namori_graph.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/bellmanford.nim
@@ -235,6 +255,10 @@ data:
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/namori_graph_test.nim
+  - verify/graph/namori_graph_test.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
