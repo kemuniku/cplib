@@ -32,8 +32,8 @@ data:
     \ result)\n\nvar n = ii()\nvar g = initWeightedUnDirectedGraph(n)\nfor i in 0..<n-1:\n\
     \    var a, b, c = ii()\n    g.add_edge(a, b, c)\necho g.diameter"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
   isVerificationFile: true
