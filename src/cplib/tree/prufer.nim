@@ -1,12 +1,12 @@
 when not declared CPLIB_TREE_PRUFER:
     const CPLIB_TREE_PRUFER* = 1
 
-    import cplib/tree/tree
+    import cplib/graph/graph
     import sequtils, heapqueue
-    proc prufer_decode*(a: seq[int]): UnWeightedTree =
+    proc prufer_decode*(a: seq[int]): UnWeightedUnDirectedGraph =
         var n = a.len + 2
         assert a.allIt(it in 0..<n)
-        result = initUnWeightedTree(n)
+        result = initUnWeightedUnDirectedGraph(n)
         var cnt = newSeqWith(n, 1)
         for ai in a:
             cnt[ai] += 1

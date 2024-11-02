@@ -3,13 +3,17 @@ when not declared CPLIB_UTILS_BITITERS:
     import bitops
     iterator bitcomb*(n, r: int): int =
         ##n bit中 r bitが1であるようなbit列を列挙します。
+        assert n >= r
         var x = (1 shl r)-1
-        while true:
+        if r == 0:
             yield x
-            var t = x or (x-1)
-            x = (t+1) or (((not t and - not t) - 1) shr (x.countTrailingZeroBits() + 1))
-            if x >= (1 shl n):
-                break
+        else:
+            while true:
+                yield x
+                var t = x or (x-1)
+                x = (t+1) or (((not t and - not t) - 1) shr (x.countTrailingZeroBits() + 1))
+                if x >= (1 shl n):
+                    break
 
     iterator bitsubseteq*(bits: int): int =
         ##与えられた集合の部分集合を昇順で列挙します。与えられた集合も含みます。
