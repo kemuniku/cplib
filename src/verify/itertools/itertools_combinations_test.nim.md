@@ -37,14 +37,14 @@ data:
     \     tmp = tmp mod K\n    if uf.count == 1:\n        ans = min(ans, tmp)\necho\
     \ ans\n\n"
   dependsOn:
-  - cplib/itertools/combinations.nim
+  - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
+  - cplib/itertools/combinations.nim
   isVerificationFile: true
   path: verify/itertools/itertools_combinations_test.nim
   requiredBy: []
-  timestamp: '2024-10-21 02:50:20+09:00'
+  timestamp: '2024-11-02 13:05:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/itertools/itertools_combinations_test.nim

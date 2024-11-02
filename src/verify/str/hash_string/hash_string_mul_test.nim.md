@@ -53,8 +53,8 @@ data:
   dependsOn:
   - cplib/str/hash_string.nim
   - cplib/utils/constants.nim
-  - cplib/str/hash_string.nim
   - cplib/tmpl/sheep.nim
+  - cplib/str/hash_string.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true

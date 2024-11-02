@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/utils/binary_search.nim
   - cplib/str/can_reverse_hash_string.nim
-  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/binary_search.nim
+  - cplib/str/can_reverse_hash_string.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   requiredBy: []
