@@ -110,14 +110,14 @@ when not declared CPLIB_MATH_INT128:
     """.}
     type Int128* {.importcpp: "__int128_t", nodecl.} = object
     converter to_Int128*(x: SomeInteger): Int128 {.importcpp: "(__int128_t)((#))", nodecl.}
-    converter to_int*(x: Int128): int {.importcpp: "(long long)(#)", nodecl.}
+    proc to_int*(x: Int128): int {.importcpp: "(long long)(#)", nodecl.}
     proc abs*(x: Int128): Int128 {.importcpp: "abs((#))", nodecl.}
     proc `-`*(x: Int128): Int128 {.importcpp: "-((#))", nodecl.}
     proc `+=`*(x: var Int128, y: Int128) {.importcpp: "((#) += (#))", nodecl.}
     proc `-=`*(x: var Int128, y: Int128) {.importcpp: "((#) -= (#))", nodecl.}
     proc `*=`*(x: var Int128, y: Int128) {.importcpp: "((#) *= (#))", nodecl.}
-    proc `//=`*(x: var Int128, y: Int128) {.importcpp: "((#) /= (#))", nodecl.}
-    proc `%=`*(x: var Int128, y: Int128) {.importcpp: "((#) %= (#))", nodecl.}
+    proc `div=`*(x: var Int128, y: Int128) {.importcpp: "((#) /= (#))", nodecl.}
+    proc `mod=`*(x: var Int128, y: Int128) {.importcpp: "((#) %= (#))", nodecl.}
     proc `&=`*(x: var Int128, y: Int128) {.importcpp: "((#) &= (#))", nodecl.}
     proc `|=`*(x: var Int128, y: Int128) {.importcpp: "((#) |= (#))", nodecl.}
     proc `^=`*(x: var Int128, y: Int128) {.importcpp: "((#) ^= (#))", nodecl.}
@@ -127,8 +127,8 @@ when not declared CPLIB_MATH_INT128:
     proc `+`*(x, y: Int128): Int128 = (result = x; result += y)
     proc `-`*(x, y: Int128): Int128 = (result = x; result -= y)
     proc `*`*(x, y: Int128): Int128 = (result = x; result *= y)
-    proc `//`*(x, y: Int128): Int128 = (result = x; result //= y)
-    proc `%`*(x, y: Int128): Int128 = (result = x; result %= y)
+    proc `div`*(x, y: Int128): Int128 = (result = x; result.div= y)
+    proc `mod`*(x, y: Int128): Int128 = (result = x; result.mod= y)
     proc `&`*(x, y: Int128): Int128 = (result = x; result &= y)
     proc `|`*(x, y: Int128): Int128 = (result = x; result |= y)
     proc `^`*(x, y: Int128): Int128 = (result = x; result ^= y)
@@ -142,7 +142,7 @@ when not declared CPLIB_MATH_INT128:
     proc `==`*(x, y: Int128): bool {.importcpp: "((#) == (#))", nodecl.}
 
     proc cmp*(x, y: Int128): int = (if x < y: -1 elif x == y: 0 else: 1)
-    proc hash*(x: Int128): Hash = hash(x // int(100000000000000000)) !& hash(x % int(100000000000000000))
+    proc hash*(x: Int128): Hash = hash(x div int(100000000000000000)) !& hash(x mod int(100000000000000000))
 
     proc parse_Int128_inner(s: cstring): Int128 {.importcpp: "parse_int128((#))", nodecl.}
     proc parseInt128*(s: string): Int128 = parse_Int128_inner(cstring(s))
@@ -153,7 +153,7 @@ when not declared CPLIB_MATH_INT128:
         var x = x
         var n = n
         while n > 0:
-            if (n & 1) == 1: result = (result * x) % m
+            if (n & 1) == 1: result = (result * x) mod m
             x *= x
             n >>= 1
     proc to_string_inner(x: Int128): cstring {.importcpp: "to_string((#))", nodecl.}
