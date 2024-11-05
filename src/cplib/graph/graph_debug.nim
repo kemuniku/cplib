@@ -10,7 +10,7 @@ when not declared CPLIB_GRAPH_GRAPHDEBUG:
         output.writeLine($len(G)&" " & $M)
         for x in 0..<len(G):
             for (y,c) in G[x]:
-                output.writeLine($x & " " & $y &" " & $c)
+                output.writeLine($x & " " & $y & " " & $c)
     
     proc dump_graph*(G: WeightedUnDirectedGraph or WeightedUnDirectedStaticGraph,output:File=stdout)=
         var M = 0
