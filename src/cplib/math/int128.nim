@@ -111,7 +111,6 @@ when not declared CPLIB_MATH_INT128:
     type Int128* {.importcpp: "__int128_t", nodecl.} = object
     converter to_Int128*(x: SomeInteger): Int128 {.importcpp: "(__int128_t)((#))", nodecl.}
     proc to_int*(x: Int128): int {.importcpp: "(long long)(#)", nodecl.}
-    proc abs*(x: Int128): Int128 {.importcpp: "abs((#))", nodecl.}
     proc `-`*(x: Int128): Int128 {.importcpp: "-((#))", nodecl.}
     proc `+=`*(x: var Int128, y: Int128) {.importcpp: "((#) += (#))", nodecl.}
     proc `-=`*(x: var Int128, y: Int128) {.importcpp: "((#) -= (#))", nodecl.}
@@ -140,7 +139,7 @@ when not declared CPLIB_MATH_INT128:
     proc `<`*(x, y: Int128): bool {.importcpp: "((#) < (#))", nodecl.}
     proc `<=`*(x, y: Int128): bool {.importcpp: "((#) <= (#))", nodecl.}
     proc `==`*(x, y: Int128): bool {.importcpp: "((#) == (#))", nodecl.}
-
+    proc abs*(x: Int128): Int128 = (if x >= 0:x else: -x)
     proc cmp*(x, y: Int128): int = (if x < y: -1 elif x == y: 0 else: 1)
     proc hash*(x: Int128): Hash = hash(x div int(100000000000000000)) !& hash(x mod int(100000000000000000))
 
