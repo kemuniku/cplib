@@ -37,8 +37,8 @@ data:
     \n"
   dependsOn:
   - cplib/utils/binary_search.nim
-  - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
+  - cplib/collections/ppunionfind.nim
   - cplib/collections/ppunionfind.nim
   isVerificationFile: true
   path: verify/collections/ppunionfind/stamp_rally_test.nim

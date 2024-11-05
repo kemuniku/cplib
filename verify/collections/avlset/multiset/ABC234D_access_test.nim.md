@@ -34,8 +34,8 @@ data:
     \    s.incl(P[i])\n    ans.add(s[^(K+1)])\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/multiset/ABC234D_access_test.nim

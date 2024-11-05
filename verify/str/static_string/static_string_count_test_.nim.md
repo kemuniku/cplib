@@ -32,8 +32,8 @@ data:
     \ 0..<Q:\n    var T = stdin.readLine()\n    stdout.writeLine(SB.count(T))"
   dependsOn:
   - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   isVerificationFile: false
   path: verify/str/static_string/static_string_count_test_.nim

@@ -24,7 +24,7 @@ data:
     \        var M = 0\n        for x in 0..<len(G):\n            for (y,c) in G[x]:\n\
     \                M += 1\n        output.writeLine($len(G)&\" \" & $M)\n      \
     \  for x in 0..<len(G):\n            for (y,c) in G[x]:\n                output.writeLine($x\
-    \ & \" \" & $y &\" \" & $c)\n    \n    proc dump_graph*(G: WeightedUnDirectedGraph\
+    \ & \" \" & $y & \" \" & $c)\n    \n    proc dump_graph*(G: WeightedUnDirectedGraph\
     \ or WeightedUnDirectedStaticGraph,output:File=stdout)=\n        var M = 0\n \
     \       for x in 0..<len(G):\n            for (y,c) in G[x]:\n               \
     \ if y >= x:\n                    M += 1\n        output.writeLine($len(G)&\"\
@@ -45,7 +45,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/graph_debug.nim
   requiredBy: []
-  timestamp: '2024-10-17 13:43:57+09:00'
+  timestamp: '2024-11-05 09:47:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/graph_debug.nim

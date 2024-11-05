@@ -50,12 +50,12 @@ data:
   dependsOn:
   - cplib/collections/unionfind.nim
   - cplib/collections/staticrangecount.nim
-  - cplib/graph/merge_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
   - cplib/collections/staticrangecount.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/merge_tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/merge_tree_test.nim
   requiredBy: []
