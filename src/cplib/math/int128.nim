@@ -158,4 +158,5 @@ when not declared CPLIB_MATH_INT128:
             n >>= 1
     proc to_string_inner(x: Int128): cstring {.importcpp: "to_string((#))", nodecl.}
     proc `$`*(x: Int128): string = $(to_string_inner(x))
-    proc put*(x: Int128) {.importcpp: "output_int128((#))", nodecl.}
+    proc put_inner*(x:Int128) {.importcpp: "output_int128((#))", nodecl.}
+    proc put*(x: Int128)=put_inner(x)
