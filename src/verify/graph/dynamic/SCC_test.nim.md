@@ -36,8 +36,8 @@ data:
   dependsOn:
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/SCC_test.nim
   requiredBy: []
