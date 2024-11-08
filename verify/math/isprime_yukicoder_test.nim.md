@@ -50,19 +50,19 @@ data:
     \       echo x, \" \", 0\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
+  - cplib/utils/constants.nim
+  - cplib/math/isprime.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2024-10-17 13:28:40+09:00'
+  timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yukicoder_test.nim

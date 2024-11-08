@@ -51,19 +51,19 @@ data:
     \ = stdin.readLine.parseInt\nfor _ in 0..<t: solve()\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: true
   path: verify/math/factorize_table_abc284d_test.nim
   requiredBy: []
-  timestamp: '2024-03-16 01:58:47+09:00'
+  timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/factorize_table_abc284d_test.nim
