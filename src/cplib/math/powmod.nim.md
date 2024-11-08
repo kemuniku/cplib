@@ -86,9 +86,10 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_POWMOD:\n    const CPLIB_MATH_POWMOD* = 1\n\
     \    import cplib/math/inner_math\n    proc powmod*(a, n, m: int): int =\n   \
-    \     var\n            rev = 1\n            a = a\n            n = n\n       \
-    \ while n > 0:\n            if n mod 2 != 0: rev = mul(rev, a, m)\n          \
-    \  if n > 1: a = mul(a, a, m)\n            n = n shr 1\n        return rev\n"
+    \     assert m != 0\n        if m == 1:\n            return 0\n        var\n \
+    \           rev = 1\n            a = a\n            n = n\n        while n > 0:\n\
+    \            if n mod 2 != 0: rev = mul(rev, a, m)\n            if n > 1: a =\
+    \ mul(a, a, m)\n            n = n shr 1\n        return rev\n"
   dependsOn:
   - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
@@ -101,7 +102,7 @@ data:
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
-  timestamp: '2024-03-16 01:58:47+09:00'
+  timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_many_atcoder_test.nim

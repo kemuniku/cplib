@@ -108,7 +108,7 @@ data:
   - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
-  timestamp: '2024-03-16 01:58:47+09:00'
+  timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/divisor_many_atcoder_test.nim
