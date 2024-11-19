@@ -70,6 +70,12 @@ data:
     path: verify/collections/segtree/segtree_newsegwith_test.nim
     title: verify/collections/segtree/segtree_newsegwith_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree/segtree_ordered_set_test.nim
+    title: verify/collections/segtree/segtree_ordered_set_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree/segtree_ordered_set_test.nim
+    title: verify/collections/segtree/segtree_ordered_set_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -222,6 +228,8 @@ data:
   - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_get1item_test.nim
   - verify/collections/segtree/segtree_get1item_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim

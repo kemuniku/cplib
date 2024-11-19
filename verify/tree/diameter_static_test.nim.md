@@ -34,8 +34,8 @@ data:
     \ g.diameter\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
   - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_static_test.nim
