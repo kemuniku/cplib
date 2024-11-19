@@ -39,8 +39,8 @@ data:
     \            MFG.add_edge(2*len(G),i,1)\n            MFG.add_edge(len(G)+i,2*len(G)+1,1)\n\
     \        return len(G)-MFG.flow(2*len(G),2*len(G)+1)"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

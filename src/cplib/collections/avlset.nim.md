@@ -100,6 +100,12 @@ data:
     path: verify/collections/avlset/set/ABC294_test.nim
     title: verify/collections/avlset/set/ABC294_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/avlset/set/ordered_set_test.nim
+    title: verify/collections/avlset/set/ordered_set_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/avlset/set/ordered_set_test.nim
+    title: verify/collections/avlset/set/ordered_set_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/grid_searcher/skate_get_test.nim
     title: verify/utils/grid_searcher/skate_get_test.nim
   - icon: ':heavy_check_mark:'
@@ -196,6 +202,8 @@ data:
   timestamp: '2024-09-28 12:21:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/avlset/set/ordered_set_test.nim
+  - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/set/ABC217_index_test.nim
   - verify/collections/avlset/set/ABC217_index_test.nim
   - verify/collections/avlset/set/ABC234D_access_test.nim

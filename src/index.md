@@ -456,6 +456,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/avlset/set/ABC294_test.nim
       title: verify/collections/avlset/set/ABC294_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/set/ordered_set_test.nim
+      title: verify/collections/avlset/set/ordered_set_test.nim
   - name: verify/collections/defaultdict
     pages:
     - icon: ':heavy_check_mark:'
@@ -518,6 +521,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_newsegwith_test.nim
       title: verify/collections/segtree/segtree_newsegwith_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/segtree_ordered_set_test.nim
+      title: verify/collections/segtree/segtree_ordered_set_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_static_test.nim
       title: verify/collections/segtree/segtree_static_test.nim
