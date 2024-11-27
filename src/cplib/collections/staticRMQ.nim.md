@@ -2,12 +2,24 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/str/merged_static_string.nim
+    title: cplib/str/merged_static_string.nim
+  - icon: ':warning:'
+    path: cplib/str/merged_static_string.nim
+    title: cplib/str/merged_static_string.nim
   - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
+  - icon: ':warning:'
+    path: verify/str/merged_static_string.nim
+    title: verify/str/merged_static_string.nim
+  - icon: ':warning:'
+    path: verify/str/merged_static_string.nim
+    title: verify/str/merged_static_string.nim
   - icon: ':warning:'
     path: verify/str/static_string/static_string_count_test_.nim
     title: verify/str/static_string/static_string_count_test_.nim
@@ -99,8 +111,12 @@ data:
   requiredBy:
   - verify/str/static_string/static_string_count_test_.nim
   - verify/str/static_string/static_string_count_test_.nim
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/str/merged_static_string.nim
   timestamp: '2024-09-21 17:03:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

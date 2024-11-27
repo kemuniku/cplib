@@ -56,6 +56,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
+  - icon: ':warning:'
+    path: verify/str/merged_static_string.nim
+    title: verify/str/merged_static_string.nim
+  - icon: ':warning:'
+    path: verify/str/merged_static_string.nim
+    title: verify/str/merged_static_string.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
@@ -210,6 +216,8 @@ data:
   isVerificationFile: false
   path: cplib/utils/constants.nim
   requiredBy:
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/citrus.nim
