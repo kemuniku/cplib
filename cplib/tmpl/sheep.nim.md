@@ -7,7 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/str/merged_static_string.nim
+    title: verify/str/merged_static_string.nim
+  - icon: ':warning:'
+    path: verify/str/merged_static_string.nim
+    title: verify/str/merged_static_string.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
@@ -112,7 +118,9 @@ data:
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
-  requiredBy: []
+  requiredBy:
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
   timestamp: '2024-10-17 13:28:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

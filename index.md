@@ -245,6 +245,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/manachar.nim
       title: cplib/str/manachar.nim
+    - icon: ':warning:'
+      path: cplib/str/merged_static_string.nim
+      title: cplib/str/merged_static_string.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/palindromic_tree.nim
       title: cplib/str/palindromic_tree.nim
@@ -324,6 +327,11 @@ data:
     - icon: ':warning:'
       path: verify/geometry/CGL_2/intersect_past16m_test_.nim
       title: verify/geometry/CGL_2/intersect_past16m_test_.nim
+  - name: verify/str
+    pages:
+    - icon: ':warning:'
+      path: verify/str/merged_static_string.nim
+      title: verify/str/merged_static_string.nim
   - name: verify/str/static_string
     pages:
     - icon: ':warning:'
