@@ -1,12 +1,13 @@
 when not declared CPLIB_STR_MERGED_STATIC_STRING:
     const CPLIB_STR_MERGED_STATIC_STRING* = 1
-    include cplib/str/static_string
+    import cplib/str/static_string
+    import algorithm
 
     type MergedStaticString* = object
         S : seq[StaticString]
         lencum : seq[int]
 
-    proc `&=`(S:var MergedStaticString,T:StaticString)=
+    proc `&=`*(S:var MergedStaticString,T:StaticString)=
         if S.S.len == 0:
             S.S = @[T]
             S.lencum = @[len(T)]
