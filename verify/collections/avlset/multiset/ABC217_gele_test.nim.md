@@ -34,8 +34,8 @@ data:
     \    else:\n        var l = st.le(x)\n        var r = st.ge(x)\n        echo r.get()-l.get()\n"
   dependsOn:
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/collections/avlset/multiset/ABC217_gele_test.nim

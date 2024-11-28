@@ -32,12 +32,14 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_MERGED_STATIC_STRING:\n    const CPLIB_STR_MERGED_STATIC_STRING*\
     \ = 1\n    import cplib/str/static_string\n    import algorithm\n\n    type MergedStaticString*\
-    \ = object\n        S : seq[StaticString]\n        lencum : seq[int]\n\n    proc\
-    \ `&=`*(S:var MergedStaticString,T:StaticString)=\n        if S.S.len == 0:\n\
-    \            S.S = @[T]\n            S.lencum = @[len(T)]\n        else:\n   \
-    \         S.S.add(T)\n            S.lencum.add(S.lencum[^1] + len(T))\n\n\n  \
-    \  proc initMergedStaticString*(S:seq[StaticString]):MergedStaticString=\n   \
-    \     result.S = S\n        result.lencum = newSeq[int](len(S))\n        result.lencum[0]\
+    \ = object\n        S : seq[StaticString]\n        lencum : seq[int]\n    \n \
+    \   proc `&`*(S,T:StaticString):MergedStaticString=\n        result.S = @[S,T]\n\
+    \        result.lencum = @[len(S),len(S)+len(T)]\n    proc `&=`*(S:var MergedStaticString,T:StaticString)=\n\
+    \        if S.S.len == 0:\n            S.S = @[T]\n            S.lencum = @[len(T)]\n\
+    \        else:\n            S.S.add(T)\n            S.lencum.add(S.lencum[^1]\
+    \ + len(T))\n    proc `&`*(S:MergedStaticString,T:StaticString):MergedStaticString=\n\
+    \        result = S\n        result &= T\n    \n\n\n    proc initMergedStaticString*(S:seq[StaticString]):MergedStaticString=\n\
+    \        result.S = S\n        result.lencum = newSeq[int](len(S))\n        result.lencum[0]\
     \ = len(S[0])\n        for i in 1..<len(S):\n            result.lencum[i] = result.lencum[i-1]\
     \ + len(S[i])\n\n    proc len*(S:MergedStaticString):int=\n        if S.lencum.len\
     \ == 0:\n            return 0\n        else:\n            return S.lencum[^1]\n\
@@ -76,16 +78,16 @@ data:
     \        result = \"\"\n        for i in 0..<len(S.S):\n            result &=\
     \ $(S.S[i])\n        return result"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/merged_static_string.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2024-11-27 18:23:35+09:00'
+  timestamp: '2024-11-28 13:16:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/str/merged_static_string.nim
