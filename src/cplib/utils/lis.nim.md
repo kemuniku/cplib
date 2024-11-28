@@ -16,6 +16,12 @@ data:
     path: verify/utils/lis_arc126b_test.nim
     title: verify/utils/lis_arc126b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/utils/list_procs_test.nim
+    title: verify/utils/list_procs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/list_procs_test.nim
+    title: verify/utils/list_procs_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/restore_lis_aoj_test.nim
     title: verify/utils/restore_lis_aoj_test.nim
   - icon: ':heavy_check_mark:'
@@ -54,6 +60,8 @@ data:
   - verify/utils/lis_arc126b_test.nim
   - verify/utils/restore_lis_aoj_test.nim
   - verify/utils/restore_lis_aoj_test.nim
+  - verify/utils/list_procs_test.nim
+  - verify/utils/list_procs_test.nim
 documentation_of: cplib/utils/lis.nim
 layout: document
 redirect_from:
