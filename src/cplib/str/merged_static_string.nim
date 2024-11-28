@@ -6,7 +6,10 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
     type MergedStaticString* = object
         S : seq[StaticString]
         lencum : seq[int]
-
+    
+    proc `&`*(S,T:StaticString):MergedStaticString=
+        result.S = @[S,T]
+        result.lencum = @[len(S),len(S)+len(T)]
     proc `&=`*(S:var MergedStaticString,T:StaticString)=
         if S.S.len == 0:
             S.S = @[T]
@@ -14,6 +17,10 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         else:
             S.S.add(T)
             S.lencum.add(S.lencum[^1] + len(T))
+    proc `&`*(S:MergedStaticString,T:StaticString):MergedStaticString=
+        result = S
+        result &= T
+    
 
 
     proc initMergedStaticString*(S:seq[StaticString]):MergedStaticString=
