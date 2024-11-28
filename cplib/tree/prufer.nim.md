@@ -7,7 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/utils/random_helper.nim
+    title: cplib/utils/random_helper.nim
+  - icon: ':warning:'
+    path: cplib/utils/random_helper.nim
+    title: cplib/utils/random_helper.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/tree/prufer_abc328e_test.nim
@@ -41,7 +47,9 @@ data:
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/prufer.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/utils/random_helper.nim
+  - cplib/utils/random_helper.nim
   timestamp: '2024-10-18 07:02:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

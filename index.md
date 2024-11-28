@@ -320,6 +320,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
+    - icon: ':warning:'
+      path: cplib/utils/random_helper.nim
+      title: cplib/utils/random_helper.nim
   - name: verify/collections/defaultdict
     pages:
     - icon: ':warning:'
