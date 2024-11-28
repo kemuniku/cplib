@@ -315,6 +315,9 @@ data:
       path: cplib/utils/lis.nim
       title: cplib/utils/lis.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/list_procs.nim
+      title: cplib/utils/list_procs.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
   - name: verify/collections/defaultdict
@@ -1184,6 +1187,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/lis_arc126b_test.nim
       title: verify/utils/lis_arc126b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/list_procs_test.nim
+      title: verify/utils/list_procs_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/mo_test.nim
       title: verify/utils/mo_test.nim

@@ -36,8 +36,8 @@ data:
     \ \"ONLINE_BACK\"\n    elif c == ONLINE_FRONT: echo \"ONLINE_FRONT\"\n    else:\
     \ echo \"ON_SEGMENT\"\n"
   dependsOn:
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
