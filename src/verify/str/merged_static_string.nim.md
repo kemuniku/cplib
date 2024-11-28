@@ -65,20 +65,20 @@ data:
     \        assert $tmp2 == naive2\n        assert $tmp3 == naive3\n        assert\
     \ cmp(tmp2,tmp2) == 0\n\n\n\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/utils/constants.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/merged_static_string.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []
-  timestamp: '2024-11-27 18:25:46+09:00'
+  timestamp: '2024-11-28 13:16:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/merged_static_string.nim
