@@ -26,6 +26,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
+  - icon: ':warning:'
+    path: cplib/utils/random_helper.nim
+    title: cplib/utils/random_helper.nim
+  - icon: ':warning:'
+    path: cplib/utils/random_helper.nim
+    title: cplib/utils/random_helper.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/math/divisor_atcoder_test.nim
@@ -102,6 +108,8 @@ data:
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/utils/random_helper.nim
+  - cplib/utils/random_helper.nim
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

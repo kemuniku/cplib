@@ -122,6 +122,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/tree.nim
     title: cplib/tree/tree.nim
+  - icon: ':warning:'
+    path: cplib/utils/random_helper.nim
+    title: cplib/utils/random_helper.nim
+  - icon: ':warning:'
+    path: cplib/utils/random_helper.nim
+    title: cplib/utils/random_helper.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/rollback_uf_abc302ex_test.nim
@@ -600,6 +606,8 @@ data:
   - cplib/tree/prufer.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/random_helper.nim
+  - cplib/utils/random_helper.nim
   timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
