@@ -263,6 +263,7 @@
 "verify/utils/inversion_number_test.nim": "2024-09-16 02:10:51 +0900",
 "verify/utils/lis_aoj_test.nim": "2024-04-09 01:08:32 +0900",
 "verify/utils/lis_arc126b_test.nim": "2024-04-09 01:13:26 +0900",
+"verify/utils/list_procs_test.nim": "2024-11-28 13:20:58 +0900",
 "verify/utils/mo_test.nim": "2024-03-16 18:25:22 +0900",
 "verify/utils/restore_lis_aoj_test.nim": "2024-04-09 01:08:32 +0900"
 }
