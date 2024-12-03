@@ -40,8 +40,8 @@ data:
     \            echo -1"
   dependsOn:
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/set/ordered_set_test.nim
