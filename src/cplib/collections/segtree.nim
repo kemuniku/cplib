@@ -78,8 +78,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         assert 0 <= l and l <= self.len
         assert f(self.default)
         if l == self.len: return self.len
-        var l = l
-        l += self.lastnode
+        var l = l + self.lastnode
         var sm = self.default
         while true:
             while l mod 2 == 0: l = (l shr 1)
@@ -98,12 +97,11 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         assert 0 <= r and r <= self.len
         assert f(self.default)
         if r == 0: return 0
-        var r = r
-        r += self.lastnode
+        var r = r + self.lastnode
         var sm = self.default
         while true:
             r -= 1
-            while (r > 1 and r mod 2 != 0): r = (r shr 1)
+            while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)
             if not f(self.merge(self.arr[r], sm)):
                 while r < self.lastnode:
                     r = 2 * r + 1
@@ -111,5 +109,6 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
                         sm = self.merge(self.arr[r], sm)
                         r -= 1
                 return r + 1 - self.lastnode
+            sm = self.merge(self.arr[r], sm)
             if (r and -r) == r: break
         return 0
