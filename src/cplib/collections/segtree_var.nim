@@ -130,5 +130,6 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
                         sm = self.merge(self.arr[r], sm)
                         r -= 1
                 return r + 1 - self.lastnode
+            sm = self.merge(self.arr[r], sm)
             if (r and -r) == r: break
         return 0
