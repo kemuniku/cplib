@@ -14,3 +14,4 @@ sub2.py
 *.o
 nimdoc
 cplib.nim
+Main
