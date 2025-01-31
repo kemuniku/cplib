@@ -133,6 +133,10 @@ when not declared CPLIB_TREE_HLD:
             res.reverse()
         res
     proc subtree*(hld: HeavyLightDecomposition, p: int): (int, int) = (hld.rangeL[p], hld.rangeR[p])
+    iterator subtreeV*(hld: HeavyLightDecomposition, p: int):int=
+        ## 部分木について、その頂点番号のイテレータ
+        for i in hld.rangeL[p]..<hld.rangeR[p]:
+            yield hld.toVtx(i)
     proc median*(hld: HeavyLightDecomposition, x: int, y: int, z: int): int =
         hld.lca(x, y) xor hld.lca(y, z) xor hld.lca(x, z)
     proc la*(hld: HeavyLightDecomposition, starting: int, goal: int, d: int): int =
