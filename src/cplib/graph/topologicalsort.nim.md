@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -50,9 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_TOPOLOGICALSORT:\n    const CPLIB_GRAPH_TOPOLOGICALSORT*\
     \ = 1\n    import cplib/graph/graph\n    proc topologicalsort*(G: DirectedGraph):\
@@ -79,12 +81,12 @@ data:
   - verify/graph/static/topologicalsort_1_static_test.nim
   - verify/graph/static/topologicalsort_2_static_test.nim
   - verify/graph/static/topologicalsort_2_static_test.nim
-  - verify/graph/dag_minimum_path_cover_hakata_test.nim
-  - verify/graph/dag_minimum_path_cover_hakata_test.nim
-  - verify/graph/dynamic/topologicalsort_2_test.nim
-  - verify/graph/dynamic/topologicalsort_2_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim
   - verify/graph/dynamic/topologicalsort_1_test.nim
+  - verify/graph/dynamic/topologicalsort_2_test.nim
+  - verify/graph/dynamic/topologicalsort_2_test.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test.nim
 documentation_of: cplib/graph/topologicalsort.nim
 layout: document
 redirect_from:

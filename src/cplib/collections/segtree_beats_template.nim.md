@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -26,9 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:\n    const CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE*\
     \ = 1\n    import sequtils\n    import cplib/collections/segtree_beats\n    import\
@@ -93,10 +95,10 @@ data:
     \ RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n\n"
   dependsOn:
-  - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []

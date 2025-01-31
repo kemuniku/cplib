@@ -26,10 +26,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':heavy_check_mark:'
@@ -105,10 +105,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_graph_test.nim
     title: verify/graph/namori_graph_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_graph_test.nim
     title: verify/graph/namori_graph_test.nim
   - icon: ':heavy_check_mark:'
@@ -195,20 +195,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_CONSTANTS:\n    const CPLIB_UTILS_CONSTANTS*\
     \ = 1\n    const INF32*: int32 = 100100111.int32\n    const INF64*: int = int(3300300300300300491)\n"
@@ -216,71 +218,71 @@ data:
   isVerificationFile: false
   path: cplib/utils/constants.nim
   requiredBy:
-  - verify/str/merged_static_string.nim
-  - verify/str/merged_static_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/citrus.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/steiner_tree.nim
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
   timestamp: '2024-06-25 02:14:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
-  - verify/tmpl/citrus_and_qcfium_test.nim
-  - verify/tmpl/citrus_and_qcfium_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/namori_incycle_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
-  - verify/graph/namori_incycle_test.nim
-  - verify/graph/namori_incycle_test.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/namori_graph_test.nim
   - verify/graph/namori_graph_test.nim
+  - verify/graph/steiner_tree_abc364g_test.nim
+  - verify/graph/steiner_tree_abc364g_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/steiner_tree_abc364g_test.nim
-  - verify/graph/steiner_tree_abc364g_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

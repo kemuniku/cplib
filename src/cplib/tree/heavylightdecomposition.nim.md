@@ -1,36 +1,36 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/functional_graph_test.nim
     title: verify/graph/functional_graph_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/functional_graph_test.nim
     title: verify/graph/functional_graph_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_graph_test.nim
     title: verify/graph/namori_graph_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_graph_test.nim
     title: verify/graph/namori_graph_test.nim
   - icon: ':heavy_check_mark:'
@@ -39,10 +39,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliarytree_test.nim
     title: verify/tree/auxiliarytree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliarytree_test.nim
     title: verify/tree/auxiliarytree_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,10 +63,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
   - icon: ':heavy_check_mark:'
@@ -87,15 +87,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc337/submissions/50216964
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TREE_HLD:\n    const CPLIB_TREE_HLD* = 1\n    import\
     \ sequtils, algorithm, sets\n    import cplib/graph/graph\n    # https://atcoder.jp/contests/abc337/submissions/50216964\n\
@@ -165,20 +167,23 @@ data:
     \ res.pop()\n            k -= 1\n        if reverse_path:\n            for i in\
     \ 0..<k:\n                res[i] = (hld.N - res[i][1], hld.N - res[i][0])\n  \
     \      else:\n            res.reverse()\n        res\n    proc subtree*(hld: HeavyLightDecomposition,\
-    \ p: int): (int, int) = (hld.rangeL[p], hld.rangeR[p])\n    proc median*(hld:\
-    \ HeavyLightDecomposition, x: int, y: int, z: int): int =\n        hld.lca(x,\
-    \ y) xor hld.lca(y, z) xor hld.lca(x, z)\n    proc la*(hld: HeavyLightDecomposition,\
-    \ starting: int, goal: int, d: int): int =\n        var (u, v, d) = (starting,\
-    \ goal, d)\n        if d < 0:\n            return -1\n        var g = hld.lca(u,\
-    \ v)\n        var dist0 = hld.D[u] - hld.D[g] * 2 + hld.D[v]\n        if dist0\
-    \ < d:\n            return -1\n        var p = u\n        if hld.D[u] - hld.D[g]\
-    \ < d:\n            p = v\n            d = dist0 - d\n        while hld.D[p] -\
-    \ hld.D[hld.PP[p]] < d:\n            d -= hld.D[p] - hld.D[hld.PP[p]] + 1\n  \
-    \          p = hld.P[hld.PP[p]]\n        hld.I[hld.rangeL[p] - d]\n    iterator\
-    \ children*(hld: HeavyLightDecomposition, v: int): int =\n        var s = hld.rangeL[v]\
-    \ + 1\n        while s < hld.rangeR[v]:\n            var w = hld.toVtx(s)\n  \
-    \          yield w\n            s += hld.rangeR[w] - hld.rangeL[w]\n    \n\n \
-    \   proc initAuxiliaryTree*(hld:HeavyLightDecomposition,v:seq[int]):UnWeightedUnDirectedTableGraph[int]=\n\
+    \ p: int): (int, int) = (hld.rangeL[p], hld.rangeR[p])\n    iterator subtreeV*(hld:\
+    \ HeavyLightDecomposition, p: int):int=\n        ## \u90E8\u5206\u6728\u306B\u3064\
+    \u3044\u3066\u3001\u305D\u306E\u9802\u70B9\u756A\u53F7\u306E\u30A4\u30C6\u30EC\
+    \u30FC\u30BF\n        for i in hld.rangeL[p]..<hld.rangeR[p]:\n            yield\
+    \ hld.toVtx(i)\n    proc median*(hld: HeavyLightDecomposition, x: int, y: int,\
+    \ z: int): int =\n        hld.lca(x, y) xor hld.lca(y, z) xor hld.lca(x, z)\n\
+    \    proc la*(hld: HeavyLightDecomposition, starting: int, goal: int, d: int):\
+    \ int =\n        var (u, v, d) = (starting, goal, d)\n        if d < 0:\n    \
+    \        return -1\n        var g = hld.lca(u, v)\n        var dist0 = hld.D[u]\
+    \ - hld.D[g] * 2 + hld.D[v]\n        if dist0 < d:\n            return -1\n  \
+    \      var p = u\n        if hld.D[u] - hld.D[g] < d:\n            p = v\n   \
+    \         d = dist0 - d\n        while hld.D[p] - hld.D[hld.PP[p]] < d:\n    \
+    \        d -= hld.D[p] - hld.D[hld.PP[p]] + 1\n            p = hld.P[hld.PP[p]]\n\
+    \        hld.I[hld.rangeL[p] - d]\n    iterator children*(hld: HeavyLightDecomposition,\
+    \ v: int): int =\n        var s = hld.rangeL[v] + 1\n        while s < hld.rangeR[v]:\n\
+    \            var w = hld.toVtx(s)\n            yield w\n            s += hld.rangeR[w]\
+    \ - hld.rangeL[w]\n    \n\n    proc initAuxiliaryTree*(hld:HeavyLightDecomposition,v:seq[int]):UnWeightedUnDirectedTableGraph[int]=\n\
     \        ## \u6839\u304C\u6B32\u3057\u304B\u3063\u305F\u3089G.v[0]\u3092\u4F7F\
     \u3063\u3066\u304F\u3060\u3055\u3044\u3000\u3051\u3080\u306B\u304F\n        var\
     \ v = v.sortedByit(hld.toseq(it))\n        for i in 0..<(len(v)-1):\n        \
@@ -208,27 +213,27 @@ data:
   - cplib/graph/namori_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
-  timestamp: '2024-09-21 03:52:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-01-30 13:56:50+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/graph/functional_graph_test.nim
+  - verify/graph/functional_graph_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_graph_test.nim
   - verify/graph/namori_graph_test.nim
-  - verify/graph/functional_graph_test.nim
-  - verify/graph/functional_graph_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
+  - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/auxiliarytree_test.nim
   - verify/tree/auxiliarytree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

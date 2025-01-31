@@ -86,9 +86,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_ISPRIME:\n    const CPLIB_MATH_ISPRIME* = 1\n\
     \    import cplib/math/powmod\n    proc isprime*(N: int): bool =\n        let\
@@ -104,9 +106,9 @@ data:
     \  return false\n        return true\n"
   dependsOn:
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
@@ -119,22 +121,22 @@ data:
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
+  - verify/math/divisor_atcoder_test.nim
+  - verify/math/divisor_atcoder_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_table_abc284d_test.nim
   - verify/math/factorize_table_abc284d_test.nim
   - verify/math/factorize_tuple_abc324b_test.nim
   - verify/math/factorize_tuple_abc324b_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
-  - verify/math/divisor_atcoder_test.nim
-  - verify/math/divisor_atcoder_test.nim
 documentation_of: cplib/math/isprime.nim
 layout: document
 redirect_from:

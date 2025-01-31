@@ -60,7 +60,7 @@ data:
     - icon: ':warning:'
       path: cplib/collections/rootvalue_unionfind.nim
       title: cplib/collections/rootvalue_unionfind.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
@@ -84,7 +84,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
     - icon: ':heavy_check_mark:'
@@ -133,10 +133,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/graph/functional_graph.nim
       title: cplib/graph/functional_graph.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':warning:'
@@ -151,7 +151,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/merge_tree.nim
       title: cplib/graph/merge_tree.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/namori_graph.nim
       title: cplib/graph/namori_graph.nim
     - icon: ':heavy_check_mark:'
@@ -279,7 +279,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
     - icon: ':heavy_check_mark:'
@@ -302,7 +302,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/utils/constants.nim
       title: cplib/utils/constants.nim
     - icon: ':heavy_check_mark:'
@@ -695,7 +695,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dag_minimum_path_cover_hakata_test.nim
       title: verify/graph/dag_minimum_path_cover_hakata_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/functional_graph_test.nim
       title: verify/graph/functional_graph_test.nim
     - icon: ':heavy_check_mark:'
@@ -704,7 +704,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/merge_tree_test.nim
       title: verify/graph/merge_tree_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/namori_graph_test.nim
       title: verify/graph/namori_graph_test.nim
     - icon: ':heavy_check_mark:'
@@ -1085,7 +1085,7 @@ data:
       title: verify/tmpl/citrus_and_qcfium_test.nim
   - name: verify/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/auxiliarytree_test.nim
       title: verify/tree/auxiliarytree_test.nim
     - icon: ':heavy_check_mark:'
@@ -1129,7 +1129,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_lca_yosupo_test.nim
       title: verify/tree/hld/hld_lca_yosupo_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/hld/hld_past202004o_test.nim
       title: verify/tree/hld/hld_past202004o_test.nim
     - icon: ':heavy_check_mark:'

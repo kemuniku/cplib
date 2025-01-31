@@ -80,9 +80,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:\n    const CPLIB_COLLECTIONS_SEGTREE_VAR*\
     \ = 1\n    import algorithm, strutils, sequtils, macros\n    type SegmentTree*[T,\
@@ -177,30 +179,30 @@ data:
   timestamp: '2024-09-16 02:10:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/segtree_var/segtree_xor1_test.nim
-  - verify/collections/segtree_var/segtree_xor1_test.nim
-  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_xor2_test.nim
-  - verify/collections/segtree_var/segtree_xor2_test.nim
-  - verify/collections/segtree_var/segtree_static_test.nim
-  - verify/collections/segtree_var/segtree_static_test.nim
   - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
   - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/segtree_get1item_test.nim
-  - verify/collections/segtree_var/segtree_get1item_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_xor1_test.nim
+  - verify/collections/segtree_var/segtree_xor1_test.nim
   - verify/collections/segtree_var/segtree_RMQ_test.nim
   - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_get1item_test.nim
+  - verify/collections/segtree_var/segtree_get1item_test.nim
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_static_test.nim
+  - verify/collections/segtree_var/segtree_static_test.nim
+  - verify/collections/segtree_var/segtree_xor2_test.nim
+  - verify/collections/segtree_var/segtree_xor2_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
 documentation_of: cplib/collections/segtree_var.nim
 layout: document
 redirect_from:

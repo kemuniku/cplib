@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -34,9 +34,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc364/tasks/abc364_g
     links:
     - https://atcoder.jp/contests/abc364/tasks/abc364_g
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc364/tasks/abc364_g\n\
     import cplib/graph/graph\nimport cplib/graph/steiner_tree\nimport cplib/utils/constants\n\
@@ -48,13 +50,13 @@ data:
     \ INF64)\nfor i in k-1..<n:\n    echo dp[^1][i]\n"
   dependsOn:
   - cplib/graph/steiner_tree.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/steiner_tree.nim
-  - cplib/utils/bititers.nim
-  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
   isVerificationFile: true
   path: verify/graph/steiner_tree_abc364g_test.nim
   requiredBy: []

@@ -57,9 +57,11 @@ data:
   attributes:
     links:
     - https://github.com/tatyam-prime/SortedSet/blob/main/SortedMultiset.py
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# https://github.com/tatyam-prime/SortedSet/blob/main/SortedMultiset.py\n\
     when not declared CPLIB_COLLECTIONS_TATYAMSET:\n    import algorithm, math, sequtils,\
@@ -146,18 +148,18 @@ data:
   - verify/collections/tatyamset/ABC217_index_test.nim
   - verify/collections/tatyamset/ABC234D_access_test.nim
   - verify/collections/tatyamset/ABC234D_access_test.nim
-  - verify/collections/tatyamset/ABC236_test.nim
-  - verify/collections/tatyamset/ABC236_test.nim
-  - verify/collections/tatyamset/ABC217_gele_test.nim
-  - verify/collections/tatyamset/ABC217_gele_test.nim
-  - verify/collections/tatyamset/ABC294_test.nim
-  - verify/collections/tatyamset/ABC294_test.nim
   - verify/collections/tatyamset/ABC337_test.nim
   - verify/collections/tatyamset/ABC337_test.nim
+  - verify/collections/tatyamset/ABC236_test.nim
+  - verify/collections/tatyamset/ABC236_test.nim
   - verify/collections/tatyamset/index_right_test.nim
   - verify/collections/tatyamset/index_right_test.nim
+  - verify/collections/tatyamset/ABC294_test.nim
+  - verify/collections/tatyamset/ABC294_test.nim
   - verify/collections/tatyamset/ABC217_gtlt_test.nim
   - verify/collections/tatyamset/ABC217_gtlt_test.nim
+  - verify/collections/tatyamset/ABC217_gele_test.nim
+  - verify/collections/tatyamset/ABC217_gele_test.nim
 documentation_of: cplib/collections/tatyamset.nim
 layout: document
 redirect_from:

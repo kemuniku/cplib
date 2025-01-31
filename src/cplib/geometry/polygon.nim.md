@@ -80,9 +80,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_POLYGON:\n    const CPLIB_GEOMETRY_POLYGON*\
     \ = 1\n    import cplib/geometry/base\n    import cplib/geometry/ccw\n    import\
@@ -144,34 +146,34 @@ data:
   dependsOn:
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy: []
   timestamp: '2024-06-27 15:21:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - verify/geometry/CGL_3/contains_cgl3c_test.nim
   - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
 documentation_of: cplib/geometry/polygon.nim
 layout: document
 redirect_from:

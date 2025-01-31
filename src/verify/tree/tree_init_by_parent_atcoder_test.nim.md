@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc309/tasks/abc309_e
     links:
     - https://atcoder.jp/contests/abc309/tasks/abc309_e
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc309/tasks/abc309_e\n\
     import strutils, sequtils\nimport cplib/tree/tree\n\nvar n, m, x, y: int\n(n,\
@@ -35,10 +37,10 @@ data:
     \    if insi > 0: result = 1\n    for (v, c) in g.edges[u]:\n        if v == par:\
     \ continue\n        result += dfs(v, u, insi-1)\necho dfs(0, -1, 0)\n"
   dependsOn:
-  - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
   isVerificationFile: true
   path: verify/tree/tree_init_by_parent_atcoder_test.nim
   requiredBy: []

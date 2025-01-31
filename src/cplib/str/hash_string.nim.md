@@ -38,9 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_HASHSTRING:\n    const CPLIB_STR_HASHSTRING*\
     \ = 1\n    import random\n    type HashString* =object\n        hash* :uint\n\
@@ -128,16 +130,16 @@ data:
   timestamp: '2024-08-31 11:41:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/hash_string/hash_string_Z_algo_test.nim
-  - verify/str/hash_string/hash_string_Z_algo_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_LCP_test.nim
   - verify/str/hash_string/hash_string_LCP_test.nim
-  - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - verify/str/hash_string/hash_string_LCS_test.nim
   - verify/str/hash_string/hash_string_LCS_test.nim
+  - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
+  - verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_Z_algo_test.nim
+  - verify/str/hash_string/hash_string_Z_algo_test.nim
 documentation_of: cplib/str/hash_string.nim
 layout: document
 redirect_from:

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/bipartite_graph.nim
     title: cplib/graph/bipartite_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc327/tasks/abc327_d
     links:
     - https://atcoder.jp/contests/abc327/tasks/abc327_d
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc327/tasks/abc327_d\n\
     proc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
@@ -34,10 +36,10 @@ data:
     \ 0..<(M):\n    G.add_edge(A[i]-1,B[i]-1)\nif G.is_bipartite_graph():\n    echo\
     \ \"Yes\"\nelse:\n    echo \"No\""
   dependsOn:
-  - cplib/graph/bipartite_graph.nim
-  - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/bipartite_graph.nim
+  - cplib/graph/bipartite_graph.nim
   isVerificationFile: true
   path: verify/graph/is_bipartite_graph_test.nim
   requiredBy: []

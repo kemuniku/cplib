@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc336/tasks/abc336_f
     links:
     - https://atcoder.jp/contests/abc336/tasks/abc336_f
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc336/tasks/abc336_f\n\
     import cplib/collections/hashset\nimport cplib/matrix/matops\nimport sequtils,\
@@ -45,10 +47,10 @@ data:
     \        if si in tb2[i]:\n                ans = min(ans, i + k)\n           \
     \     break\necho if ans == 30: -1 else: ans\n"
   dependsOn:
-  - cplib/matrix/matops.nim
-  - cplib/collections/hashset.nim
   - cplib/collections/hashset.nim
   - cplib/matrix/matops.nim
+  - cplib/matrix/matops.nim
+  - cplib/collections/hashset.nim
   isVerificationFile: true
   path: verify/collections/hashset_abc336f_test.nim
   requiredBy: []

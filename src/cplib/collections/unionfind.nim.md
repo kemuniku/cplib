@@ -27,20 +27,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/itertools/itertools_combinations_test.nim
     title: verify/itertools/itertools_combinations_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_past202004o_test.nim
     title: verify/tree/hld/hld_past202004o_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_UNIONFIND:\n    const CPLIB_COLLECTIONS_UNIONFIND*\
     \ = 1\n    import algorithm, sequtils\n    type UnionFind* = ref object\n    \
@@ -69,16 +71,16 @@ data:
   - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
   timestamp: '2024-11-02 13:05:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/itertools/itertools_combinations_test.nim
+  - verify/itertools/itertools_combinations_test.nim
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
   - verify/graph/merge_tree_test.nim
   - verify/graph/merge_tree_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
-  - verify/itertools/itertools_combinations_test.nim
-  - verify/itertools/itertools_combinations_test.nim
 documentation_of: cplib/collections/unionfind.nim
 layout: document
 redirect_from:

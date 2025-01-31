@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc220/tasks/abc220_f
     links:
     - https://atcoder.jp/contests/abc220/tasks/abc220_f
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc220/tasks/abc220_f\n\
     import sequtils, strutils, tables\nimport cplib/tree/rerooting\nimport cplib/graph/graph\n\
@@ -37,9 +39,9 @@ data:
     \necho G.solve_Rerooting(merge,(0,0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \\n\")\n"
   dependsOn:
+  - cplib/tree/rerooting.nim
+  - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
-  - cplib/tree/rerooting.nim
-  - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/rerooting_big_test.nim

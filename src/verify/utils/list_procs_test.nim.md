@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc237/tasks/abc237_d
     links:
     - https://atcoder.jp/contests/abc237/tasks/abc237_d
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc237/tasks/abc237_d\n\
     import sequtils, algorithm\nimport cplib/utils/lis\nproc scanf(formatstr: cstring){.header:\
@@ -38,8 +40,8 @@ data:
   dependsOn:
   - cplib/utils/lis.nim
   - cplib/utils/list_procs.nim
-  - cplib/utils/list_procs.nim
   - cplib/utils/lis.nim
+  - cplib/utils/list_procs.nim
   isVerificationFile: true
   path: verify/utils/list_procs_test.nim
   requiredBy: []

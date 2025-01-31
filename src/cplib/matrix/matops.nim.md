@@ -62,9 +62,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATRIX_MATOPS:\n    const CPLIB_MATRIX_MATOPS* =\
     \ 1\n    import sequtils, strutils\n    proc rotated*[T](a: seq[seq[T]], num:\
@@ -99,22 +101,22 @@ data:
   timestamp: '2024-01-31 11:34:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix/transposed_abc237b_test.nim
-  - verify/matrix/transposed_abc237b_test.nim
-  - verify/matrix/rotate_abc336f_test.nim
-  - verify/matrix/rotate_abc336f_test.nim
-  - verify/matrix/trimmed_string_abc307c_test.nim
-  - verify/matrix/trimmed_string_abc307c_test.nim
   - verify/matrix/rotate_abc298b_test.nim
   - verify/matrix/rotate_abc298b_test.nim
-  - verify/matrix/matrix_unit_test.nim
-  - verify/matrix/matrix_unit_test.nim
   - verify/matrix/trimmed_seq_abc307c_test.nim
   - verify/matrix/trimmed_seq_abc307c_test.nim
+  - verify/matrix/rotate_abc336f_test.nim
+  - verify/matrix/rotate_abc336f_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/transposed_abc237b_test.nim
+  - verify/matrix/transposed_abc237b_test.nim
   - verify/matrix/transpose_abc237b_test.nim
   - verify/matrix/transpose_abc237b_test.nim
   - verify/matrix/matops_polyomino_test.nim
   - verify/matrix/matops_polyomino_test.nim
+  - verify/matrix/trimmed_string_abc307c_test.nim
+  - verify/matrix/trimmed_string_abc307c_test.nim
   - verify/collections/hashset_abc336f_test.nim
   - verify/collections/hashset_abc336f_test.nim
 documentation_of: cplib/matrix/matops.nim

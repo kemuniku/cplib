@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -50,9 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_MAXK_DIJKSTRA:\n    const CPLIB_GRAPH_MAXK_DIJKSTRA*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
@@ -105,25 +107,25 @@ data:
     \ k, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
   requiredBy: []
   timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
   - verify/graph/static/grid_to_graph_abc151d_test.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
 documentation_of: cplib/graph/maxk_dijkstra.nim
 layout: document
 redirect_from:

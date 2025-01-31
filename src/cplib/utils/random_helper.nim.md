@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -39,9 +39,11 @@ data:
   attributes:
     links:
     - https://kanpurin.hatenablog.com/entry/2023/02/20/184752
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_RANDOMHELPER:\n    const CPLIB_UTILS_RANDOMHELPER*\
     \ = 1\n    import random,sequtils,sets,algorithm,math,strutils\n    import cplib/graph/graph\n\
@@ -147,16 +149,16 @@ data:
     \     result = newseqwith(n,0)\n        for x in tmp:\n            result[x] =\
     \ 1"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
-  - cplib/math/powmod.nim
   - cplib/graph/graph.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []

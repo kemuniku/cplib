@@ -122,9 +122,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_FRACTIONS:\n    const CPLIB_MATH_FRACTIONS*\
     \ = 1\n    import strformat, std/math, hashes\n    type Fraction*[T] = object\n\
@@ -206,42 +208,42 @@ data:
   timestamp: '2024-06-27 15:21:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/fractions_unit_test.nim
-  - verify/math/fractions_unit_test.nim
   - verify/math/fractions_abc225e_test.nim
   - verify/math/fractions_abc225e_test.nim
   - verify/math/fractions_abc308c_test.nim
   - verify/math/fractions_abc308c_test.nim
   - verify/math/fractions_abc226d_test.nim
   - verify/math/fractions_abc226d_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/math/fractions_unit_test.nim
+  - verify/math/fractions_unit_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
 documentation_of: cplib/math/fractions.nim
 layout: document
 redirect_from:

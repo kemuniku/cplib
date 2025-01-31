@@ -38,9 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_ROLLING_HASH:\n    const CPLIB_STR_ROLLING_HASH*\
     \ = 1\n    import random, math\n\n    type RollingHash*[T] = object\n        s:\
@@ -85,16 +87,16 @@ data:
   timestamp: '2024-06-07 22:14:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/rolling_hash_abcbac_test.nim
-  - verify/str/rolling_hash_abcbac_test.nim
-  - verify/str/rolling_hash_pun_test.nim
-  - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
+  - verify/str/rolling_hash_abcbac_test.nim
+  - verify/str/rolling_hash_abcbac_test.nim
   - verify/str/rolling_hash_aoj_test.nim
   - verify/str/rolling_hash_aoj_test.nim
+  - verify/str/rolling_hash_pun_test.nim
+  - verify/str/rolling_hash_pun_test.nim
 documentation_of: cplib/str/rolling_hash.nim
 layout: document
 redirect_from:

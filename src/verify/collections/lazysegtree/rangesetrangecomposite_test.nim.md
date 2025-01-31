@@ -40,9 +40,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_set_range_composite
     links:
     - https://judge.yosupo.jp/problem/range_set_range_composite
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_set_range_composite\n\
     import sequtils, strutils\nimport cplib/collections/lazysegtree\nimport cplib/modint/modint\n\
@@ -60,16 +62,16 @@ data:
     \ r, x = ii()\n        var (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\n\
     echo ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/collections/lazysegtree.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/collections/lazysegtree.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   requiredBy: []

@@ -20,9 +20,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_STATIC_BITSET:\n    const CPLIB_COLLECTIONS_STATIC_BITSET*\
     \ = 1\n    import math,bitops,algorithm,strutils\n    \n    type BitSet*[size:static\
@@ -91,10 +93,10 @@ data:
   timestamp: '2024-10-02 16:59:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/static_bitset_seqint_test.nim
-  - verify/collections/static_bitset_seqint_test.nim
   - verify/collections/static_bitset_test.nim
   - verify/collections/static_bitset_test.nim
+  - verify/collections/static_bitset_seqint_test.nim
+  - verify/collections/static_bitset_seqint_test.nim
 documentation_of: cplib/collections/staticbitset.nim
 layout: document
 redirect_from:

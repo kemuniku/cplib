@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc342/tasks/abc342_e
     links:
     - https://atcoder.jp/contests/abc342/tasks/abc342_e
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc342/tasks/abc342_e\n\
     import sequtils, heapqueue\nimport cplib/math/nearest_equiv\nimport cplib/graph/graph\n\
@@ -41,10 +43,10 @@ data:
     \ y))\n\nfor i in 0..<n-1:\n    if dp[i] == -inf: echo \"Unreachable\"\n    else:\
     \ echo dp[i]\n"
   dependsOn:
-  - cplib/math/nearest_equiv.nim
-  - cplib/math/nearest_equiv.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/math/nearest_equiv.nim
+  - cplib/math/nearest_equiv.nim
   isVerificationFile: true
   path: verify/math/nearear_equiv_abc342e_test.nim
   requiredBy: []

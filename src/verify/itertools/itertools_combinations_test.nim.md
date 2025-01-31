@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
   - icon: ':heavy_check_mark:'
@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc328/tasks/abc328_e
     links:
     - https://atcoder.jp/contests/abc328/tasks/abc328_e
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc328/tasks/abc328_e\n\
     import math, sequtils\nimport cplib/itertools/combinations\nimport cplib/collections/unionfind\n\
@@ -37,10 +39,10 @@ data:
     \     tmp = tmp mod K\n    if uf.count == 1:\n        ans = min(ans, tmp)\necho\
     \ ans\n\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
   - cplib/itertools/combinations.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/itertools/itertools_combinations_test.nim
   requiredBy: []
