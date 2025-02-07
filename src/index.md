@@ -72,6 +72,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree_var.nim
       title: cplib/collections/segtree_var.nim
+    - icon: ':warning:'
+      path: cplib/collections/slopetrick.nim
+      title: cplib/collections/slopetrick.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/staticRMQ.nim
       title: cplib/collections/staticRMQ.nim

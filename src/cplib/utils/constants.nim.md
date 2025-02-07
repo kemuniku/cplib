@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
+  - icon: ':warning:'
+    path: cplib/collections/slopetrick.nim
+    title: cplib/collections/slopetrick.nim
+  - icon: ':warning:'
+    path: cplib/collections/slopetrick.nim
+    title: cplib/collections/slopetrick.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
@@ -224,6 +230,8 @@ data:
   - cplib/tmpl/citrus.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/slopetrick.nim
+  - cplib/collections/slopetrick.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/warshall_floyd.nim

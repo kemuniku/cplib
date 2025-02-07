@@ -51,13 +51,13 @@ data:
     \    else:\n        echo SRC.count(MT.get_range(x-1),y)"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/merge_tree.nim
   - cplib/collections/staticrangecount.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
-  - cplib/graph/merge_tree.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
   - cplib/collections/staticrangecount.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/graph/merge_tree_test.nim
   requiredBy: []

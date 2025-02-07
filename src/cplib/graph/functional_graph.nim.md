@@ -101,10 +101,10 @@ data:
     \u3001\u521D\u3081\u3066\u30B5\u30A4\u30AF\u30EB\u306B\u5165\u3063\u305F\u3068\
     \u304D\u306E\u9802\u70B9\u3092\u8FD4\u3059\n        return functional_graph.roots[x]"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
   requiredBy: []
