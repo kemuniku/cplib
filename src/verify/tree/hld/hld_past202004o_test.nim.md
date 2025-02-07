@@ -67,20 +67,20 @@ data:
     \ false): mx = max(mx, seg.get(l..<r))\n    ans[i] = ai - mx + c\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
+  - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []
-  timestamp: '2025-01-30 13:56:50+09:00'
+  timestamp: '2025-02-07 22:33:05+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_past202004o_test.nim

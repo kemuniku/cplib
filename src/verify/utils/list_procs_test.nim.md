@@ -40,8 +40,8 @@ data:
   dependsOn:
   - cplib/utils/list_procs.nim
   - cplib/utils/lis.nim
-  - cplib/utils/list_procs.nim
   - cplib/utils/lis.nim
+  - cplib/utils/list_procs.nim
   isVerificationFile: true
   path: verify/utils/list_procs_test.nim
   requiredBy: []

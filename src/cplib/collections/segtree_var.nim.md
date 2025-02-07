@@ -27,10 +27,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_RMQ_test.nim
     title: verify/collections/segtree_var/segtree_RMQ_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree_var/segtree_get1item_test.nim
     title: verify/collections/segtree_var/segtree_get1item_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree_var/segtree_get1item_test.nim
     title: verify/collections/segtree_var/segtree_get1item_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,21 +63,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_static_test.nim
     title: verify/collections/segtree_var/segtree_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree_var/segtree_xor1_test.nim
     title: verify/collections/segtree_var/segtree_xor1_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree_var/segtree_xor1_test.nim
     title: verify/collections/segtree_var/segtree_xor1_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree_var/segtree_xor2_test.nim
     title: verify/collections/segtree_var/segtree_xor2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree_var/segtree_xor2_test.nim
     title: verify/collections/segtree_var/segtree_xor2_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -170,14 +170,14 @@ data:
     \ sm)):\n                while r < self.lastnode:\n                    r = 2 *\
     \ r + 1\n                    if f(self.merge(self.arr[r], sm)):\n            \
     \            sm = self.merge(self.arr[r], sm)\n                        r -= 1\n\
-    \                return r + 1 - self.lastnode\n            if (r and -r) == r:\
-    \ break\n        return 0\n"
+    \                return r + 1 - self.lastnode\n            sm = self.merge(self.arr[r],\
+    \ sm)\n            if (r and -r) == r: break\n        return 0\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/segtree_var.nim
   requiredBy: []
-  timestamp: '2024-09-16 02:10:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-12-19 23:28:40+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
   - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim

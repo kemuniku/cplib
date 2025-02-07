@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc185/tasks/abc185_f
     links:
@@ -35,8 +35,8 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_xor2_test.nim
   requiredBy: []
-  timestamp: '2024-09-16 02:10:51+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-19 23:28:40+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/segtree_var/segtree_xor2_test.nim
 layout: document

@@ -45,7 +45,7 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree/segtree_ordered_set_test.nim
   requiredBy: []
-  timestamp: '2024-11-19 18:37:35+09:00'
+  timestamp: '2024-12-19 23:19:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_ordered_set_test.nim

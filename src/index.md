@@ -69,7 +69,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree_beats_template.nim
       title: cplib/collections/segtree_beats_template.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/segtree_var.nim
       title: cplib/collections/segtree_var.nim
     - icon: ':warning:'
@@ -523,7 +523,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_RMQ_test.nim
       title: verify/collections/segtree/segtree_RMQ_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/segtree/segtree_get1item_test.nim
       title: verify/collections/segtree/segtree_get1item_test.nim
     - icon: ':heavy_check_mark:'
@@ -544,10 +544,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_static_test.nim
       title: verify/collections/segtree/segtree_static_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/segtree/segtree_xor1_test.nim
       title: verify/collections/segtree/segtree_xor1_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/segtree/segtree_xor2_test.nim
       title: verify/collections/segtree/segtree_xor2_test.nim
   - name: verify/collections/segtree_var
@@ -564,7 +564,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_RMQ_test.nim
       title: verify/collections/segtree_var/segtree_RMQ_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/segtree_var/segtree_get1item_test.nim
       title: verify/collections/segtree_var/segtree_get1item_test.nim
     - icon: ':heavy_check_mark:'
@@ -582,10 +582,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_static_test.nim
       title: verify/collections/segtree_var/segtree_static_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/segtree_var/segtree_xor1_test.nim
       title: verify/collections/segtree_var/segtree_xor1_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/segtree_var/segtree_xor2_test.nim
       title: verify/collections/segtree_var/segtree_xor2_test.nim
   - name: verify/collections/tatyamset
