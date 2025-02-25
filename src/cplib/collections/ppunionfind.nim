@@ -78,12 +78,12 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
             discard tu.pop()
             discard tv.pop()
         result = -1
-        for t in tu:
-            if t > result:
-                result = t
-        for t in tv:
-            if t > result:
-                result = t
+        if len(tu) != 0:
+            if tu[^1] > result:
+                result = tu[^1]
+        if len(tv) != 0:
+            if tv[^1] > result:
+                result = tv[^1]
 
     proc size_ge(self:var PartialPersistentUnionFind,x,size:int):int=
         ## xが属する集合のサイズがsizeを超える時間を返す
