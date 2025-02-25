@@ -25,7 +25,7 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
         return self.root(x,self.last)
 
     proc unite*(self:var PartialPersistentUnionFind,u,v,t:int):bool {.discardable.}=
-        assert self.last < t
+        assert self.last <= t
         self.last = t
         var u = self.root(u)
         var v = self.root(v)
@@ -61,17 +61,16 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
     proc when_unite*(self:var PartialPersistentUnionFind,u,v:int):int=
         ## 頂点uとvが連結になった時間を返す。
         ## 連結ではない場合、-2が返る(最悪か？ 時刻-1を開始にしてしまったため仕方なく...)
-        
-        var tu : seq[int]
+        var tu : seq[int] = @[u]
         var u = u
-        var tv : seq[int]
+        var tv : seq[int] = @[v]
         var v = v
-        while self.time[u] != -1:
-            tu.add(self.time[u])
+        while self.par_or_siz[u] >= 0:
             u = self.par_or_siz[u]
-        while self.time[v] != -1:
-            tv.add(self.time[v])
+            tu.add(u)
+        while self.par_or_siz[v] >= 0:
             v = self.par_or_siz[v]
+            tv.add(v)
         if u != v:
             return -2
         while len(tu) > 0 and len(tv) > 0 and tu[^1] == tv[^1]:
@@ -79,11 +78,10 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
             discard tv.pop()
         result = -1
         if len(tu) != 0:
-            if tu[^1] > result:
-                result = tu[^1]
+            result = max(result,self.time[tu[^1]])
         if len(tv) != 0:
-            if tv[^1] > result:
-                result = tv[^1]
+            result = max(result,self.time[tv[^1]])
+
 
     proc size_ge(self:var PartialPersistentUnionFind,x,size:int):int=
         ## xが属する集合のサイズがsizeを超える時間を返す
