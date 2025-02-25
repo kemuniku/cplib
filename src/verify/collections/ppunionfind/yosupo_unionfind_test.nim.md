@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
   _extendedRequiredBy: []
@@ -34,7 +34,7 @@ data:
   isVerificationFile: true
   path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
   requiredBy: []
-  timestamp: '2024-09-19 02:46:02+09:00'
+  timestamp: '2025-02-26 01:40:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/ppunionfind/yosupo_unionfind_test.nim

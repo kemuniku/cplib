@@ -48,7 +48,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/persistent_unionfind.nim
       title: cplib/collections/persistent_unionfind.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
     - icon: ':heavy_check_mark:'
@@ -299,7 +299,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/accumulate.nim
       title: cplib/utils/accumulate.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
     - icon: ':heavy_check_mark:'
@@ -500,10 +500,10 @@ data:
       title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - name: verify/collections/ppunionfind
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/ppunionfind/past_ppuf_test.nim
       title: verify/collections/ppunionfind/past_ppuf_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/ppunionfind/stamp_rally_test.nim
       title: verify/collections/ppunionfind/stamp_rally_test.nim
     - icon: ':heavy_check_mark:'

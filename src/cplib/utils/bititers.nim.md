@@ -110,14 +110,14 @@ data:
   timestamp: '2024-10-25 15:54:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
-  - verify/utils/bititers_bitsuperset_test.nim
-  - verify/utils/bititers_bitsuperset_test.nim
   - verify/utils/bititers_bitcomb_test.nim
   - verify/utils/bititers_bitcomb_test.nim
+  - verify/utils/bititers_bitsubseteq_descending_test.nim
+  - verify/utils/bititers_bitsubseteq_descending_test.nim
+  - verify/utils/bititers_bitsuperset_test.nim
+  - verify/utils/bititers_bitsuperset_test.nim
+  - verify/utils/bititers_bitsubseteq_test.nim
+  - verify/utils/bititers_bitsubseteq_test.nim
   - verify/graph/steiner_tree_abc364g_test.nim
   - verify/graph/steiner_tree_abc364g_test.nim
 documentation_of: cplib/utils/bititers.nim

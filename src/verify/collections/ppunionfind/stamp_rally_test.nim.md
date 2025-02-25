@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/agc002/tasks/agc002_d
     links:
@@ -38,15 +38,15 @@ data:
     \    else:\n            return UF.size(x,arg)+UF.size(y,arg) >= z\n    echo meguru_bisect(M,0,is_ok)\n\
     \n"
   dependsOn:
-  - cplib/collections/ppunionfind.nim
-  - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
+  - cplib/collections/ppunionfind.nim
+  - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/collections/ppunionfind/stamp_rally_test.nim
   requiredBy: []
-  timestamp: '2024-09-19 01:13:36+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-02-26 01:40:00+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/ppunionfind/stamp_rally_test.nim
 layout: document

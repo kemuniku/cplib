@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/past202004-open/tasks/past202004_o
     links:
@@ -36,8 +36,8 @@ data:
   isVerificationFile: true
   path: verify/collections/ppunionfind/past_ppuf_test.nim
   requiredBy: []
-  timestamp: '2024-09-19 02:36:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-02-26 01:40:00+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/ppunionfind/past_ppuf_test.nim
 layout: document

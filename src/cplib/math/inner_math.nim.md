@@ -100,35 +100,35 @@ data:
   isVerificationFile: false
   path: cplib/math/inner_math.nim
   requiredBy:
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/primefactor.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   timestamp: '2024-03-16 01:58:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/factorize_table_abc284d_test.nim
+  - verify/math/factorize_table_abc284d_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/divisor_many_atcoder_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
+  - verify/math/factorize_tuple_abc324b_test.nim
   - verify/math/divisor_atcoder_test.nim
   - verify/math/divisor_atcoder_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
 documentation_of: cplib/math/inner_math.nim
 layout: document
 redirect_from:

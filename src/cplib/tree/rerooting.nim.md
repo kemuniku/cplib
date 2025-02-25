@@ -75,10 +75,10 @@ data:
   timestamp: '2024-10-03 01:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/rerooting_big_test.nim
-  - verify/tree/rerooting_big_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
+  - verify/tree/rerooting_big_test.nim
+  - verify/tree/rerooting_big_test.nim
 documentation_of: cplib/tree/rerooting.nim
 layout: document
 redirect_from:

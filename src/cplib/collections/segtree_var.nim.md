@@ -179,30 +179,30 @@ data:
   timestamp: '2024-12-19 23:28:40+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_xor1_test.nim
-  - verify/collections/segtree_var/segtree_xor1_test.nim
-  - verify/collections/segtree_var/segtree_RMQ_test.nim
-  - verify/collections/segtree_var/segtree_RMQ_test.nim
-  - verify/collections/segtree_var/segtree_get1item_test.nim
-  - verify/collections/segtree_var/segtree_get1item_test.nim
-  - verify/collections/segtree_var/segtree_init_with_size_test.nim
-  - verify/collections/segtree_var/segtree_init_with_size_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_test.nim
   - verify/collections/segtree_var/segtree_static_test.nim
   - verify/collections/segtree_var/segtree_static_test.nim
   - verify/collections/segtree_var/segtree_xor2_test.nim
   - verify/collections/segtree_var/segtree_xor2_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_test.nim
   - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
   - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_init_with_size_test.nim
+  - verify/collections/segtree_var/segtree_init_with_size_test.nim
+  - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_get1item_test.nim
+  - verify/collections/segtree_var/segtree_get1item_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_xor1_test.nim
+  - verify/collections/segtree_var/segtree_xor1_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
 documentation_of: cplib/collections/segtree_var.nim
 layout: document
 redirect_from:
