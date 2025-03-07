@@ -133,6 +133,7 @@ when not declared CPLIB_TREE_HLD:
             res.reverse()
         res
     proc subtree*(hld: HeavyLightDecomposition, p: int): (int, int) = (hld.rangeL[p], hld.rangeR[p])
+    proc subtree_size*(hld: HeavyLightDecomposition, p: int):int = hld.rangeR[p] - hld.rangeL[p]
     iterator subtreeV*(hld: HeavyLightDecomposition, p: int):int=
         ## 部分木について、その頂点番号のイテレータ
         for i in hld.rangeL[p]..<hld.rangeR[p]:
@@ -196,3 +197,22 @@ when not declared CPLIB_TREE_HLD:
                 result.add_edge(stack[^1],v[i],hld.depth(v[i])-hld.depth(stack[^1]))
             stack.add(v[i])
 
+    proc initAuxiliaryVertexCountTree*(hld:HeavyLightDecomposition,v:seq[int]):WeightedUnDirectedTableGraph[int,int]=
+        ## 
+        ## 根が欲しかったらG.v[0]を使ってください　けむにく
+        var v = v.sortedByit(hld.toseq(it))
+        for i in 0..<(len(v)-1):
+            v.add(hld.lca(v[i],v[i+1]))
+        v = v.sortedByIt(hld.toseq(it)).deduplicate(true)
+        var stack :seq[int]
+        result = initWeightedUnDirectedTableGraph(v,int)
+        stack.add(v[0])
+        for i in 1..<len(v):
+            while len(stack) > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):
+                discard stack.pop()
+            if len(stack) != 0:
+                if hld.parentOf(v[i]) == stack[^1]:
+                    result.add_edge(stack[^1],v[i],0)
+                else:
+                    result.add_edge(stack[^1],v[i],hld.subtree_size(hld.la(stack[^1],v[i],1))-hld.subtree_size(v[i]))
+            stack.add(v[i])
