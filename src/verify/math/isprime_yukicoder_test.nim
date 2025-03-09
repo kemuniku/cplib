@@ -1,4 +1,4 @@
-# verification-helper: PROBLEM https://yukicoder.me/problems/no/3030
+# verification-helper: PROBLEM https://yukicoder.me/problems/no/8030
 include cplib/tmpl/sheep
 import cplib/math/isprime
 
