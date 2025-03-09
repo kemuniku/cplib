@@ -27,7 +27,7 @@ when not declared CPLIB_TMPL_SHEEP:
         var c: char
         while true:
             c = getchar()
-            if c == ' ' or c == '\n':
+            if c == ' ' or c == '\n' or c == '\255':
                 break
             result &= c
     #chmin,chmax
