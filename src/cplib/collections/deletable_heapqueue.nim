@@ -2,7 +2,7 @@
 when not declared CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:
     const CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUET* = 1
     import heapqueue
-    type Deletable_HeapQueue[T] = object
+    type Deletable_HeapQueue*[T] = object
         hq : HeapQueue[T]
         dlhq : HeapQueue[T]
 

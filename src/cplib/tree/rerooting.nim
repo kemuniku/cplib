@@ -11,7 +11,7 @@ when not declared CPLIB_TREE_REROOTING:
         ## put_vertex 頂点vの頂点情報を付与
         var L = newseq[seq[E]](len(G))
         var R = newseq[seq[E]](len(G))
-        var res = newseq[V](len(G))
+        var res = newseq[E](len(G))
         proc dfs1(x,p:int):E=
             var values : seq[E]
             values.add(e)

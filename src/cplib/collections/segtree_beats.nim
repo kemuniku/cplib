@@ -54,7 +54,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
                 self.push(p)
                 self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
 
-    proc update*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val: var S) =
+    proc update*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val:S) =
         ## pの要素をvalに変更します。
         assert p < self.length
         var p = p + self.lastnode

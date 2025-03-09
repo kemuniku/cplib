@@ -28,11 +28,11 @@ when not declared CPLIB_MATH_FRACTIONS:
     proc `-`*[T](x: Fraction[T]): Fraction[T] = Fraction[T](num: -x.num, den: x.den)
     proc `+=`*[T](x: var Fraction[T], y: Fraction[T]) =
         if isNaN(x) or isNaN(y):
-            x = initFraction(0, 0)
+            x = initFraction(T(0), T(0))
             return
         if x.den == 0 and y.den == 0:
             if (x.num > 0) == (y.num > 0): return
-            x = initFraction(0, 0)
+            x = initFraction(T(0), T(0))
             return
         if x.den == 0 or y.den == 0:
             if x.den != 0: x = y
@@ -43,14 +43,14 @@ when not declared CPLIB_MATH_FRACTIONS:
     proc `-=`*[T](x: var Fraction[T], y: Fraction[T]) = x += (-y)
     proc `*=`*[T](x: var Fraction[T], y: Fraction[T]) =
         if isNaN(x) or isNaN(y):
-            x = initFraction(0, 0)
+            x = initFraction(T(0), T(0))
             return
         x.den *= y.den
         x.num *= y.num
         x.check_and_reduce()
     proc `/=`*[T](x: var Fraction[T], y: Fraction[T]) =
         if isNaN(x) or isNaN(y):
-            x = initFraction(0, 0)
+            x = initFraction(T(0), T(0))
             return
         x.den *= y.num
         x.num *= y.den
