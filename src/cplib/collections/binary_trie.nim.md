@@ -79,12 +79,13 @@ data:
     \ shl 1))\n            if not self.one.isNil():\n                dfs_node(self.one,(now\
     \ shl 1) + 1)\n            if self.zero.isNil() and self.one.isNil():\n      \
     \          if self.value != 0:\n                    S.add((now,self.value))\n\
-    \        dfs_node(self.root,0)\n        return $S"
+    \        dfs_node(self.root,0)\n        return $S\n    \n    proc len*(self:BinaryTrie):int=\n\
+    \        return self.root.value"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/binary_trie.nim
   requiredBy: []
-  timestamp: '2024-09-16 00:58:37+09:00'
+  timestamp: '2025-03-09 17:40:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/binary_trie_test.nim

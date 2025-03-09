@@ -68,19 +68,19 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
+  - cplib/collections/segtree.nim
   - cplib/utils/constants.nim
+  - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_past202004o_test.nim
   requiredBy: []
-  timestamp: '2025-02-07 22:33:05+09:00'
+  timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_past202004o_test.nim

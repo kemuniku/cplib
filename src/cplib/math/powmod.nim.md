@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
   _extendedRequiredBy:
@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':heavy_check_mark:'
@@ -26,6 +26,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
   - icon: ':warning:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
@@ -75,15 +81,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -106,6 +112,8 @@ data:
   requiredBy:
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/primitive_root.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
   - cplib/math/isprime.nim
@@ -113,7 +121,7 @@ data:
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
   timestamp: '2024-11-07 17:54:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim

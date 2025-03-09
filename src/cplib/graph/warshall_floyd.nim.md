@@ -67,7 +67,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/warshall_floyd_aoj_test.nim

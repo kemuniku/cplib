@@ -46,14 +46,14 @@ data:
   dependsOn:
   - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   isVerificationFile: true
   path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
   requiredBy: []
-  timestamp: '2024-09-23 17:09:04+09:00'
+  timestamp: '2025-03-09 17:51:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_chmin_chmax_add_range_sum_test.nim

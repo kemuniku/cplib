@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   - icon: ':warning:'
@@ -123,15 +123,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/convex_hull_abc286ex_test.nim
     title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/convex_hull_abc286ex_test.nim
     title: verify/geometry/convex_hull_abc286ex_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -177,7 +177,7 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/distance.nim
   timestamp: '2024-03-28 16:38:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim

@@ -9,10 +9,10 @@ data:
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/rerooting_big_test.nim
     title: verify/tree/rerooting_big_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/rerooting_big_test.nim
     title: verify/tree/rerooting_big_test.nim
   - icon: ':heavy_check_mark:'
@@ -21,9 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://trap.jp/post/1702/
@@ -42,7 +42,7 @@ data:
     \n        ## e:\u5358\u4F4D\u5143\n        ## put_edge \u8FBAu,v\u9593\u306E\u8FBA\
     \u60C5\u5831\u3092\u4ED8\u4E0E\n        ## put_vertex \u9802\u70B9v\u306E\u9802\
     \u70B9\u60C5\u5831\u3092\u4ED8\u4E0E\n        var L = newseq[seq[E]](len(G))\n\
-    \        var R = newseq[seq[E]](len(G))\n        var res = newseq[V](len(G))\n\
+    \        var R = newseq[seq[E]](len(G))\n        var res = newseq[E](len(G))\n\
     \        proc dfs1(x,p:int):E=\n            var values : seq[E]\n            values.add(e)\n\
     \            for y in G[x]:\n                if y != p:\n                    values.add(put_edge(put_vertex(dfs1(y,x),y),x,y))\n\
     \            values.add(e)\n            var now = e\n            var l = newseq[E](len(values))\n\
@@ -72,8 +72,8 @@ data:
   isVerificationFile: false
   path: cplib/tree/rerooting.nim
   requiredBy: []
-  timestamp: '2024-10-03 01:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-03-09 17:43:30+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim

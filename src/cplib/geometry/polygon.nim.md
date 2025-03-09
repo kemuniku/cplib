@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -69,15 +69,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/convex_hull_abc286ex_test.nim
     title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/convex_hull_abc286ex_test.nim
     title: verify/geometry/convex_hull_abc286ex_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -144,17 +144,17 @@ data:
     \ discard vi.pop\n            vi.add(s[i])\n        vi.delete(0)\n        return\
     \ Polygon[T](v: vi)\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy: []
-  timestamp: '2024-06-27 15:21:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-03-09 17:42:08+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim

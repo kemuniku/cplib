@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
   - icon: ':question:'
@@ -21,15 +21,15 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/steiner_tree_abc364g_test.nim
     title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/steiner_tree_abc364g_test.nim
     title: verify/graph/steiner_tree_abc364g_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -69,16 +69,16 @@ data:
     \ terminal: seq[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy: []
-  timestamp: '2024-10-25 15:54:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-03-09 17:42:58+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/graph/steiner_tree_abc364g_test.nim
   - verify/graph/steiner_tree_abc364g_test.nim

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc308/tasks/abc308_c
     links:
@@ -34,8 +34,8 @@ data:
   isVerificationFile: true
   path: verify/math/fractions_abc308c_test.nim
   requiredBy: []
-  timestamp: '2024-06-27 15:21:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-03-09 17:42:08+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/math/fractions_abc308c_test.nim
 layout: document

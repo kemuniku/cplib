@@ -45,10 +45,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,9 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -85,31 +85,31 @@ data:
     , discardable.}\n    proc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\
     \    proc lii(N: int): seq[int] {.inline.} = newSeqWith(N, ii())\n    proc si():\
     \ string {.inline.} =\n        result = \"\"\n        var c: char\n        while\
-    \ true:\n            c = getchar()\n            if c == ' ' or c == '\\n':\n \
-    \               break\n            result &= c\n    #chmin,chmax\n    template\
-    \ `max=`(x, y) = x = max(x, y)\n    template `min=`(x, y) = x = min(x, y)\n  \
-    \  #bit\u6F14\u7B97\n    proc `%`*(x: int, y: int): int =\n        result = x\
-    \ mod y\n        if y > 0 and result < 0: result += y\n        if y < 0 and result\
-    \ > 0: result += y\n    proc `//`*(x: int, y: int): int{.inline.} =\n        result\
-    \ = x div y\n        if y > 0 and result * y > x: result -= 1\n        if y <\
-    \ 0 and result * y < x: result -= 1\n    proc `%=`(x: var int, y: int): void =\
-    \ x = x%y\n    proc `//=`(x: var int, y: int): void = x = x//y\n    proc `**`(x:\
-    \ int, y: int): int = x^y\n    proc `**=`(x: var int, y: int): void = x = x^y\n\
-    \    proc `^`(x: int, y: int): int = x xor y\n    proc `|`(x: int, y: int): int\
-    \ = x or y\n    proc `&`(x: int, y: int): int = x and y\n    proc `>>`(x: int,\
-    \ y: int): int = x shr y\n    proc `<<`(x: int, y: int): int = x shl y\n    proc\
-    \ `~`(x: int): int = not x\n    proc `^=`(x: var int, y: int): void = x = x ^\
-    \ y\n    proc `&=`(x: var int, y: int): void = x = x & y\n    proc `|=`(x: var\
-    \ int, y: int): void = x = x | y\n    proc `>>=`(x: var int, y: int): void = x\
-    \ = x >> y\n    proc `<<=`(x: var int, y: int): void = x = x << y\n    proc `[]`(x:\
-    \ int, n: int): bool = (x and (1 shl n)) != 0\n    #\u4FBF\u5229\u306A\u5909\u63DB\
-    \n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n    #\u5B9A\u6570\n   \
-    \ include cplib/utils/constants\n    const INF = INF64\n    #converter\n\n   \
-    \ #range\n    iterator range(start: int, ends: int, step: int): int =\n      \
-    \  var i = start\n        if step < 0:\n            while i > ends:\n        \
-    \        yield i\n                i += step\n        elif step > 0:\n        \
-    \    while i < ends:\n                yield i\n                i += step\n   \
-    \ iterator range(ends: int): int = (for i in 0..<ends: yield i)\n    iterator\
+    \ true:\n            c = getchar()\n            if c == ' ' or c == '\\n' or c\
+    \ == '\\255':\n                break\n            result &= c\n    #chmin,chmax\n\
+    \    template `max=`(x, y) = x = max(x, y)\n    template `min=`(x, y) = x = min(x,\
+    \ y)\n    #bit\u6F14\u7B97\n    proc `%`*(x: int, y: int): int =\n        result\
+    \ = x mod y\n        if y > 0 and result < 0: result += y\n        if y < 0 and\
+    \ result > 0: result += y\n    proc `//`*(x: int, y: int): int{.inline.} =\n \
+    \       result = x div y\n        if y > 0 and result * y > x: result -= 1\n \
+    \       if y < 0 and result * y < x: result -= 1\n    proc `%=`(x: var int, y:\
+    \ int): void = x = x%y\n    proc `//=`(x: var int, y: int): void = x = x//y\n\
+    \    proc `**`(x: int, y: int): int = x^y\n    proc `**=`(x: var int, y: int):\
+    \ void = x = x^y\n    proc `^`(x: int, y: int): int = x xor y\n    proc `|`(x:\
+    \ int, y: int): int = x or y\n    proc `&`(x: int, y: int): int = x and y\n  \
+    \  proc `>>`(x: int, y: int): int = x shr y\n    proc `<<`(x: int, y: int): int\
+    \ = x shl y\n    proc `~`(x: int): int = not x\n    proc `^=`(x: var int, y: int):\
+    \ void = x = x ^ y\n    proc `&=`(x: var int, y: int): void = x = x & y\n    proc\
+    \ `|=`(x: var int, y: int): void = x = x | y\n    proc `>>=`(x: var int, y: int):\
+    \ void = x = x >> y\n    proc `<<=`(x: var int, y: int): void = x = x << y\n \
+    \   proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0\n    #\u4FBF\u5229\
+    \u306A\u5909\u63DB\n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n    #\u5B9A\
+    \u6570\n    include cplib/utils/constants\n    const INF = INF64\n    #converter\n\
+    \n    #range\n    iterator range(start: int, ends: int, step: int): int =\n  \
+    \      var i = start\n        if step < 0:\n            while i > ends:\n    \
+    \            yield i\n                i += step\n        elif step > 0:\n    \
+    \        while i < ends:\n                yield i\n                i += step\n\
+    \    iterator range(ends: int): int = (for i in 0..<ends: yield i)\n    iterator\
     \ range(start: int, ends: int): int = (for i in\n            start..<ends: yield\
     \ i)\n\n    #join\u304C\u975Estring\u3067\u3081\u3061\u3083\u304F\u3061\u3083\u9045\
     \u3044\u3084\u3064\u306E\u30D1\u30C3\u30C1\n    proc join*[T: not string](a: openArray[T],\
@@ -123,8 +123,8 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2024-10-17 13:28:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-03-09 17:51:38+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim

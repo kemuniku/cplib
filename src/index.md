@@ -24,7 +24,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/collections/deletable_heapqueue.nim
       title: cplib/collections/deletable_heapqueue.nim
     - icon: ':heavy_check_mark:'
@@ -90,6 +90,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/tatyamset.nim
       title: cplib/collections/tatyamset.nim
+    - icon: ':warning:'
+      path: cplib/collections/topk_sum_heapq.nim
+      title: cplib/collections/topk_sum_heapq.nim
     - icon: ':question:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
@@ -99,24 +102,29 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/wordsizetree.nim
       title: cplib/collections/wordsizetree.nim
-  - name: cplib/geometry
+  - name: cplib/convolution
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/convolution/xor_convolution.nim
+      title: cplib/convolution/xor_convolution.nim
+  - name: cplib/geometry
+    pages:
+    - icon: ':question:'
       path: cplib/geometry/angle.nim
       title: cplib/geometry/angle.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/geometry/base.nim
       title: cplib/geometry/base.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/geometry/ccw.nim
       title: cplib/geometry/ccw.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/geometry/distance.nim
       title: cplib/geometry/distance.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/geometry/intersect.nim
       title: cplib/geometry/intersect.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/geometry/polygon.nim
       title: cplib/geometry/polygon.nim
     - icon: ':heavy_check_mark:'
@@ -148,10 +156,10 @@ data:
     - icon: ':warning:'
       path: cplib/graph/graph_debug.nim
       title: cplib/graph/graph_debug.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/graph/grid_to_graph.nim
       title: cplib/graph/grid_to_graph.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/graph/maxk_dijkstra.nim
       title: cplib/graph/maxk_dijkstra.nim
     - icon: ':heavy_check_mark:'
@@ -160,13 +168,13 @@ data:
     - icon: ':question:'
       path: cplib/graph/namori_graph.nim
       title: cplib/graph/namori_graph.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/restore_shortest_path_from_prev.nim
       title: cplib/graph/restore_shortest_path_from_prev.nim
     - icon: ':warning:'
       path: cplib/graph/reverse_edge.nim
       title: cplib/graph/reverse_edge.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/graph/steiner_tree.nim
       title: cplib/graph/steiner_tree.nim
     - icon: ':heavy_check_mark:'
@@ -194,16 +202,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/ext_gcd.nim
       title: cplib/math/ext_gcd.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
+      path: cplib/math/float128.nim
+      title: cplib/math/float128.nim
+    - icon: ':question:'
       path: cplib/math/fractions.nim
       title: cplib/math/fractions.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/inner_math.nim
       title: cplib/math/inner_math.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/int128.nim
       title: cplib/math/int128.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
     - icon: ':heavy_check_mark:'
@@ -212,12 +223,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/nearest_equiv.nim
       title: cplib/math/nearest_equiv.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
+      path: cplib/math/osa_k.nim
+      title: cplib/math/osa_k.nim
+    - icon: ':question:'
       path: cplib/math/powmod.nim
       title: cplib/math/powmod.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/primefactor.nim
       title: cplib/math/primefactor.nim
+    - icon: ':warning:'
+      path: cplib/math/primitive_root.nim
+      title: cplib/math/primitive_root.nim
   - name: cplib/matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -226,6 +243,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix.nim
       title: cplib/matrix/matrix.nim
+    - icon: ':warning:'
+      path: cplib/matrix/rolling_hash_2d.nim
+      title: cplib/matrix/rolling_hash_2d.nim
   - name: cplib/modint
     pages:
     - icon: ':heavy_check_mark:'
@@ -260,7 +280,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/rolling_hash.nim
       title: cplib/str/rolling_hash.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/str/run_length_encode.nim
       title: cplib/str/run_length_encode.nim
     - icon: ':heavy_check_mark:'
@@ -277,7 +297,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
   - name: cplib/tree
@@ -291,7 +311,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/tree/rerooting.nim
       title: cplib/tree/rerooting.nim
     - icon: ':heavy_check_mark:'
@@ -305,7 +325,7 @@ data:
     - icon: ':question:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
     - icon: ':question:'
@@ -329,6 +349,9 @@ data:
     - icon: ':warning:'
       path: cplib/utils/random_helper.nim
       title: cplib/utils/random_helper.nim
+    - icon: ':warning:'
+      path: cplib/utils/sequtils2D.nim
+      title: cplib/utils/sequtils2D.nim
   - name: verify/collections/defaultdict
     pages:
     - icon: ':warning:'
@@ -373,7 +396,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/bitset_test.nim
       title: verify/collections/bitset_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/collections/deletable_heapqueue_test.nim
       title: verify/collections/deletable_heapqueue_test.nim
     - icon: ':heavy_check_mark:'
@@ -620,6 +643,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/tatyamset/index_right_test.nim
       title: verify/collections/tatyamset/index_right_test.nim
+  - name: verify/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/xor_convolution_test.nim
+      title: verify/convolution/xor_convolution_test.nim
   - name: verify/geometry/CGL_1
     pages:
     - icon: ':heavy_check_mark:'
@@ -696,7 +724,7 @@ data:
       title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - name: verify/geometry
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/geometry/convex_hull_abc286ex_test.nim
       title: verify/geometry/convex_hull_abc286ex_test.nim
   - name: verify/graph
@@ -719,7 +747,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/namori_incycle_test.nim
       title: verify/graph/namori_incycle_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/steiner_tree_abc364g_test.nim
       title: verify/graph/steiner_tree_abc364g_test.nim
   - name: verify/graph/dynamic
@@ -733,10 +761,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/bellmanford_grl1b_test.nim
       title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
       title: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
       title: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
     - icon: ':heavy_check_mark:'
@@ -771,10 +799,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/bellmanford_grl1b_test.nim
       title: verify/graph/static/bellmanford_grl1b_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/static/grid_to_graph_abc151d_test.nim
       title: verify/graph/static/grid_to_graph_abc151d_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
       title: verify/graph/static/maxk_dijkstra_abc176d_test.nim
     - icon: ':heavy_check_mark:'
@@ -861,13 +889,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/factorize_yosupo_test.nim
       title: verify/math/factorize_yosupo_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/math/fractions_abc225e_test.nim
       title: verify/math/fractions_abc225e_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/math/fractions_abc226d_test.nim
       title: verify/math/fractions_abc226d_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/math/fractions_abc308c_test.nim
       title: verify/math/fractions_abc308c_test.nim
     - icon: ':heavy_check_mark:'
@@ -882,7 +910,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yosupo_test.nim
       title: verify/math/isprime_yosupo_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/math/isprime_yukicoder_test.nim
       title: verify/math/isprime_yukicoder_test.nim
     - icon: ':heavy_check_mark:'
@@ -894,6 +922,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/nearest_equiv_test.nim
       title: verify/math/nearest_equiv_test.nim
+    - icon: ':x:'
+      path: verify/math/osa_k_test.nim
+      title: verify/math/osa_k_test.nim
   - name: verify/matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -1118,7 +1149,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/prufer_abc328e_test.nim
       title: verify/tree/prufer_abc328e_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/tree/rerooting_big_test.nim
       title: verify/tree/rerooting_big_test.nim
     - icon: ':heavy_check_mark:'

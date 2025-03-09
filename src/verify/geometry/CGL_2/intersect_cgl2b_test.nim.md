@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   _extendedRequiredBy: []
@@ -47,14 +47,14 @@ data:
     \    var s1, s2 = initSegment(get(), get())\n    echo int(intersect(s1, s2))\n\
     \n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
   requiredBy: []

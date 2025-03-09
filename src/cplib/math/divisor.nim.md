@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
@@ -76,14 +76,14 @@ data:
     \ x*mul)\n                if i != factor[d][1]: mul *= factor[d][0]\n        dfs(0,\
     \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
-  - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
-  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: false

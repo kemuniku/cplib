@@ -96,13 +96,13 @@ data:
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []
-  timestamp: '2024-09-23 17:09:04+09:00'
+  timestamp: '2025-03-09 17:51:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim

@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   _extendedRequiredBy: []
@@ -49,14 +49,14 @@ data:
     \ get())\n    var p = cross_point(l1, l2)\n    echo &\"{p.x:.10f} {p.y:.10f}\"\
     \n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   requiredBy: []

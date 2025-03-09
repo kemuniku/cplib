@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   _extendedVerifiedWith:
@@ -87,28 +87,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/convex_hull_abc286ex_test.nim
     title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/convex_hull_abc286ex_test.nim
     title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/fractions_abc225e_test.nim
     title: verify/math/fractions_abc225e_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/fractions_abc225e_test.nim
     title: verify/math/fractions_abc225e_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/fractions_abc226d_test.nim
     title: verify/math/fractions_abc226d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/fractions_abc226d_test.nim
     title: verify/math/fractions_abc226d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/fractions_abc308c_test.nim
     title: verify/math/fractions_abc308c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/fractions_abc308c_test.nim
     title: verify/math/fractions_abc308c_test.nim
   - icon: ':heavy_check_mark:'
@@ -117,9 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -146,27 +146,27 @@ data:
     \ = (if x.num < 0: Fraction[T](num: -x.num, den: x.den) else: x)\n    proc `-`*[T](x:\
     \ Fraction[T]): Fraction[T] = Fraction[T](num: -x.num, den: x.den)\n    proc `+=`*[T](x:\
     \ var Fraction[T], y: Fraction[T]) =\n        if isNaN(x) or isNaN(y):\n     \
-    \       x = initFraction(0, 0)\n            return\n        if x.den == 0 and\
-    \ y.den == 0:\n            if (x.num > 0) == (y.num > 0): return\n           \
-    \ x = initFraction(0, 0)\n            return\n        if x.den == 0 or y.den ==\
-    \ 0:\n            if x.den != 0: x = y\n            return\n        x.num = x.num\
-    \ * y.den + y.num * x.den\n        x.den *= y.den\n        x.check_and_reduce()\n\
+    \       x = initFraction(T(0), T(0))\n            return\n        if x.den ==\
+    \ 0 and y.den == 0:\n            if (x.num > 0) == (y.num > 0): return\n     \
+    \       x = initFraction(T(0), T(0))\n            return\n        if x.den ==\
+    \ 0 or y.den == 0:\n            if x.den != 0: x = y\n            return\n   \
+    \     x.num = x.num * y.den + y.num * x.den\n        x.den *= y.den\n        x.check_and_reduce()\n\
     \    proc `-=`*[T](x: var Fraction[T], y: Fraction[T]) = x += (-y)\n    proc `*=`*[T](x:\
     \ var Fraction[T], y: Fraction[T]) =\n        if isNaN(x) or isNaN(y):\n     \
-    \       x = initFraction(0, 0)\n            return\n        x.den *= y.den\n \
-    \       x.num *= y.num\n        x.check_and_reduce()\n    proc `/=`*[T](x: var\
+    \       x = initFraction(T(0), T(0))\n            return\n        x.den *= y.den\n\
+    \        x.num *= y.num\n        x.check_and_reduce()\n    proc `/=`*[T](x: var\
     \ Fraction[T], y: Fraction[T]) =\n        if isNaN(x) or isNaN(y):\n         \
-    \   x = initFraction(0, 0)\n            return\n        x.den *= y.num\n     \
-    \   x.num *= y.den\n        x.check_and_reduce()\n    proc `>`*[T](x, y: Fraction[T]):\
+    \   x = initFraction(T(0), T(0))\n            return\n        x.den *= y.num\n\
+    \        x.num *= y.den\n        x.check_and_reduce()\n    proc `>`*[T](x, y:\
+    \ Fraction[T]): bool =\n        if isNaN(x) or isNaN(y): return false\n      \
+    \  if x.den == 0 and y.den == 0: return x.num > y.num\n        x.num * y.den >\
+    \ y.num * x.den\n    proc `<`*[T](x, y: Fraction[T]): bool =\n        if isNaN(x)\
+    \ or isNaN(y): return false\n        if x.den == 0 and y.den == 0: return x.num\
+    \ < y.num\n        x.num * y.den < y.num * x.den\n    proc `==`*[T](x, y: Fraction[T]):\
     \ bool =\n        if isNaN(x) or isNaN(y): return false\n        if x.den == 0\
-    \ and y.den == 0: return x.num > y.num\n        x.num * y.den > y.num * x.den\n\
-    \    proc `<`*[T](x, y: Fraction[T]): bool =\n        if isNaN(x) or isNaN(y):\
-    \ return false\n        if x.den == 0 and y.den == 0: return x.num < y.num\n \
-    \       x.num * y.den < y.num * x.den\n    proc `==`*[T](x, y: Fraction[T]): bool\
-    \ =\n        if isNaN(x) or isNaN(y): return false\n        if x.den == 0 and\
-    \ y.den == 0: return (x.num div abs(x.num)) * (y.num div abs(y.num)) > 0\n   \
-    \     x.num * y.den == y.num * x.den\n    proc cmp*[T](x, y: Fraction[T]): int\
-    \ = (if x < y: -1 elif x == y: 0 else: 1)\n\n    proc `+=`*[T](x: var Fraction[T],\
+    \ and y.den == 0: return (x.num div abs(x.num)) * (y.num div abs(y.num)) > 0\n\
+    \        x.num * y.den == y.num * x.den\n    proc cmp*[T](x, y: Fraction[T]):\
+    \ int = (if x < y: -1 elif x == y: 0 else: 1)\n\n    proc `+=`*[T](x: var Fraction[T],\
     \ y: T) = (x += initFraction[T](y))\n    proc `+`*[T](x, y: Fraction[T]): Fraction[T]\
     \ = (result = x; result += y)\n    proc `+`*[T](x: Fraction[T], y: T): Fraction[T]\
     \ = (result = x; result += y)\n    proc `+`*[T](x: T, y: Fraction[T]): Fraction[T]\
@@ -205,8 +205,8 @@ data:
   requiredBy:
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
-  timestamp: '2024-06-27 15:21:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-03-09 17:42:08+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/fractions_abc308c_test.nim
   - verify/math/fractions_abc308c_test.nim

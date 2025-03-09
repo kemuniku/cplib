@@ -53,7 +53,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/slopetrick.nim
   requiredBy: []
-  timestamp: '2025-02-07 19:01:28+09:00'
+  timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/slopetrick.nim

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/collections/deletable_heapqueue.nim
     title: cplib/collections/deletable_heapqueue.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/collections/deletable_heapqueue.nim
     title: cplib/collections/deletable_heapqueue.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://atcoder.jp/contests/abc170/tasks/abc170_e
     links:
@@ -40,8 +40,8 @@ data:
   isVerificationFile: true
   path: verify/collections/deletable_heapqueue_test.nim
   requiredBy: []
-  timestamp: '2024-09-04 03:52:27+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-03-09 17:46:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/deletable_heapqueue_test.nim
 layout: document

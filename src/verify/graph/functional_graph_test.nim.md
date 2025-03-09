@@ -44,10 +44,10 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_test.nim
   requiredBy: []

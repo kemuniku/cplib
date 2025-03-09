@@ -37,9 +37,9 @@ data:
     \ \"Yes\"\nelse:\n    echo \"No\""
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/bipartite_graph.nim
+  - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/bipartite_graph.nim
-  - cplib/graph/bipartite_graph.nim
   isVerificationFile: true
   path: verify/graph/is_bipartite_graph_test.nim
   requiredBy: []

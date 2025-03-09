@@ -8,12 +8,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
+  - icon: ':x:'
+    path: cplib/math/osa_k.nim
+    title: cplib/math/osa_k.nim
+  - icon: ':x:'
+    path: cplib/math/osa_k.nim
+    title: cplib/math/osa_k.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/math/divisor_atcoder_test.nim
@@ -51,15 +63,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
+  - icon: ':x:'
+    path: verify/math/osa_k_test.nim
+    title: verify/math/osa_k_test.nim
+  - icon: ':x:'
+    path: verify/math/osa_k_test.nim
+    title: verify/math/osa_k_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/run_length_encode_test.nim
     title: verify/str/run_length_encode_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/run_length_encode_test.nim
     title: verify/str/run_length_encode_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -81,10 +99,14 @@ data:
   requiredBy:
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
+  - cplib/math/osa_k.nim
+  - cplib/math/osa_k.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/primitive_root.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
   timestamp: '2023-11-19 18:26:38+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/run_length_encode_test.nim
   - verify/str/run_length_encode_test.nim
@@ -92,6 +114,8 @@ data:
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_table_abc284d_test.nim
   - verify/math/factorize_table_abc284d_test.nim
+  - verify/math/osa_k_test.nim
+  - verify/math/osa_k_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/factorize_tuple_abc324b_test.nim

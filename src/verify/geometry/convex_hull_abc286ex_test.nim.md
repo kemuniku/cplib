@@ -1,53 +1,53 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     ERROR: 1e-6
     PROBLEM: https://atcoder.jp/contests/abc286/tasks/abc286_ex
@@ -76,25 +76,25 @@ data:
     \ vi.v[^(i+1)])).sqrt\na2 += float(norm(vi.v[^1], vi.v[0])).sqrt\necho min(a1,\
     \ a2)\n"
   dependsOn:
-  - cplib/geometry/distance.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/intersect.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/polygon.nim
   - cplib/geometry/distance.nim
+  - cplib/geometry/polygon.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/convex_hull_abc286ex_test.nim
   requiredBy: []
-  timestamp: '2024-06-27 15:21:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-03-09 17:42:08+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/geometry/convex_hull_abc286ex_test.nim
 layout: document

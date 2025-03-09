@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy:
@@ -32,6 +32,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/math/divisor_atcoder_test.nim
@@ -105,17 +111,19 @@ data:
     \ result[p] += 1\n            else: result[p] = 1\n\n    proc primefactor_tuple*(n:\
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
-  - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
+  - cplib/math/primitive_root.nim
+  - cplib/math/primitive_root.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
   timestamp: '2024-11-07 17:54:13+09:00'

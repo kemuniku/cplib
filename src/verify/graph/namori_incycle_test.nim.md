@@ -49,17 +49,17 @@ data:
     \ and namori.incycle(b):\n        echo 2\n    else:\n        echo 1\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/namori_graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/namori_graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/namori_graph.nim
   - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/graph/namori_incycle_test.nim
   requiredBy: []
-  timestamp: '2025-01-30 13:56:50+09:00'
+  timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/namori_incycle_test.nim

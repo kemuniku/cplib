@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':question:'
@@ -51,16 +51,16 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/bellmanford.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/bellmanford.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/bellmanford.nim
   isVerificationFile: true
   path: verify/graph/static/bellmanford_grl1b_test.nim
   requiredBy: []
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/bellmanford_grl1b_test.nim

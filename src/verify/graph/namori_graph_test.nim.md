@@ -50,17 +50,17 @@ data:
     \ INF64:\n        echo \"Yes\"\n    else:\n        echo \"No\"\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
+  - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/namori_graph.nim
   - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/graph/namori_graph_test.nim
   requiredBy: []
-  timestamp: '2025-01-30 13:56:50+09:00'
+  timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/namori_graph_test.nim

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -54,15 +54,15 @@ data:
     \ -1\n    else:\n        echo ans"
   dependsOn:
   - cplib/str/hash_string.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
   - cplib/str/hash_string.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []
-  timestamp: '2024-10-17 13:28:40+09:00'
+  timestamp: '2025-03-09 17:51:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_mul_test.nim

@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -67,20 +67,20 @@ data:
     \        assert $tmp2 == naive2\n        assert $tmp3 == naive3\n        assert\
     \ cmp(tmp2,tmp2) == 0\n\n\n\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/utils/constants.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/static_string.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []
-  timestamp: '2024-11-28 13:16:15+09:00'
+  timestamp: '2025-03-09 17:51:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/merged_static_string.nim
