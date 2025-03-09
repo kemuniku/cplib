@@ -78,18 +78,18 @@ data:
   dependsOn:
   - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/polygon.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/distance.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/distance.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/angle.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: verify/geometry/convex_hull_abc286ex_test_.nim
   requiredBy: []
