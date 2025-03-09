@@ -47,9 +47,9 @@ data:
   dependsOn:
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/utils/grid_searcher.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   - cplib/utils/grid_searcher.nim
   isVerificationFile: false
   path: verify/utils/grid_searcher/skate_get_tuple_test_.nim
