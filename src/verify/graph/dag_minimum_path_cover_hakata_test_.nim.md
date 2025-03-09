@@ -46,10 +46,10 @@ data:
   dependsOn:
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
   isVerificationFile: false
   path: verify/graph/dag_minimum_path_cover_hakata_test_.nim
   requiredBy: []

@@ -36,10 +36,10 @@ data:
     \ = initHld(g, 0)\nvar ans = newSeq[int](q)\nfor i in 0..<q:\n    var u, v = ii()\n\
     \    ans[i] = hld.lca(u, v)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_lca_yosupo_test.nim
   requiredBy: []
