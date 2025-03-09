@@ -65,14 +65,14 @@ data:
     \                    now = min(now,tmp)\n        dfs2(G.v[0],-1,INF64)\necho ans.join(\"\
     \\n\")\n\n\n\n\n\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/SWAG.nim
-  - cplib/collections/SWAG.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/SWAG.nim
+  - cplib/collections/SWAG.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/tree/auxiliaryweightedtree_test.nim
   requiredBy: []

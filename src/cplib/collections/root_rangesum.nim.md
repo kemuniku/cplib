@@ -87,10 +87,10 @@ data:
   timestamp: '2024-08-17 04:11:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/range_kth_smallest_test.nim
-  - verify/collections/range_kth_smallest_test.nim
   - verify/collections/root_rangesum_test.nim
   - verify/collections/root_rangesum_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
 documentation_of: cplib/collections/root_rangesum.nim
 layout: document
 redirect_from:

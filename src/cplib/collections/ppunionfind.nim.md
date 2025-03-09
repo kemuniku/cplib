@@ -89,12 +89,12 @@ data:
   timestamp: '2025-02-26 01:40:00+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/collections/ppunionfind/stamp_rally_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
   - verify/collections/ppunionfind/past_ppuf_test.nim
   - verify/collections/ppunionfind/past_ppuf_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
+  - verify/collections/ppunionfind/stamp_rally_test.nim
+  - verify/collections/ppunionfind/stamp_rally_test.nim
 documentation_of: cplib/collections/ppunionfind.nim
 layout: document
 redirect_from:

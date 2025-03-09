@@ -79,10 +79,10 @@ data:
   verifiedWith:
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim
-  - verify/tree/diameter_path_static_test.nim
-  - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
+  - verify/tree/diameter_path_static_test.nim
+  - verify/tree/diameter_path_static_test.nim
   - verify/tree/diameter_yosupo_test.nim
   - verify/tree/diameter_yosupo_test.nim
   - verify/tree/diameter_path_dynamic_test.nim

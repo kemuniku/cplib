@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
   _extendedRequiredBy: []

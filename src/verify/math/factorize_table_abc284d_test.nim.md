@@ -52,16 +52,16 @@ data:
     \        if v == 2: p = k\n        else: q = k\n    echo p, \" \", q\n\nvar t\
     \ = stdin.readLine.parseInt\nfor _ in 0..<t: solve()\n"
   dependsOn:
-  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
   isVerificationFile: true
   path: verify/math/factorize_table_abc284d_test.nim
   requiredBy: []

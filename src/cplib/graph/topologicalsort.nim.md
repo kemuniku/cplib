@@ -77,16 +77,16 @@ data:
   timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/topologicalsort_2_static_test.nim
-  - verify/graph/static/topologicalsort_2_static_test.nim
   - verify/graph/static/topologicalsort_1_static_test.nim
   - verify/graph/static/topologicalsort_1_static_test.nim
-  - verify/graph/dynamic/topologicalsort_1_test.nim
-  - verify/graph/dynamic/topologicalsort_1_test.nim
-  - verify/graph/dynamic/topologicalsort_2_test.nim
-  - verify/graph/dynamic/topologicalsort_2_test.nim
+  - verify/graph/static/topologicalsort_2_static_test.nim
+  - verify/graph/static/topologicalsort_2_static_test.nim
   - verify/graph/dag_minimum_path_cover_hakata_test.nim
   - verify/graph/dag_minimum_path_cover_hakata_test.nim
+  - verify/graph/dynamic/topologicalsort_2_test.nim
+  - verify/graph/dynamic/topologicalsort_2_test.nim
+  - verify/graph/dynamic/topologicalsort_1_test.nim
+  - verify/graph/dynamic/topologicalsort_1_test.nim
 documentation_of: cplib/graph/topologicalsort.nim
 layout: document
 redirect_from:

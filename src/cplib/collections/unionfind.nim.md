@@ -73,14 +73,14 @@ data:
   timestamp: '2024-11-02 13:05:22+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/itertools/itertools_combinations_test.nim
-  - verify/itertools/itertools_combinations_test.nim
-  - verify/graph/merge_tree_test.nim
-  - verify/graph/merge_tree_test.nim
-  - verify/collections/unionfind_test.nim
-  - verify/collections/unionfind_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_past202004o_test.nim
+  - verify/graph/merge_tree_test.nim
+  - verify/graph/merge_tree_test.nim
+  - verify/itertools/itertools_combinations_test.nim
+  - verify/itertools/itertools_combinations_test.nim
+  - verify/collections/unionfind_test.nim
+  - verify/collections/unionfind_test.nim
 documentation_of: cplib/collections/unionfind.nim
 layout: document
 redirect_from:

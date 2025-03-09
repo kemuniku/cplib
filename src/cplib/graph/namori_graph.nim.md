@@ -85,22 +85,22 @@ data:
     \        return namori.roots[x]\n\n    proc same_tree*(namori:NamoriGraph,x,y:int):bool=\n\
     \        return namori.roots[x] == namori.roots[y]\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/namori_graph.nim
   requiredBy: []
   timestamp: '2025-01-30 13:56:50+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/graph/namori_incycle_test.nim
-  - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_graph_test.nim
   - verify/graph/namori_graph_test.nim
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/namori_incycle_test.nim
 documentation_of: cplib/graph/namori_graph.nim
 layout: document
 redirect_from:

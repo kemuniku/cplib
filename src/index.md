@@ -9,10 +9,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/avlset.nim
       title: cplib/collections/avlset.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/avltreenode.nim
       title: cplib/collections/avltreenode.nim
     - icon: ':heavy_check_mark:'
@@ -51,6 +51,9 @@ data:
     - icon: ':question:'
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
+    - icon: ':x:'
+      path: cplib/collections/rangeset.nim
+      title: cplib/collections/rangeset.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/rollback_unionfind.nim
       title: cplib/collections/rollback_unionfind.nim
@@ -400,6 +403,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_kth_smallest_test.nim
       title: verify/collections/range_kth_smallest_test.nim
+    - icon: ':x:'
+      path: verify/collections/rangeset_test.nim
+      title: verify/collections/rangeset_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/rollback_uf_abc302ex_test.nim
       title: verify/collections/rollback_uf_abc302ex_test.nim

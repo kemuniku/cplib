@@ -99,12 +99,12 @@ data:
     \ int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =\n       \
     \ shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy: []
@@ -115,10 +115,10 @@ data:
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

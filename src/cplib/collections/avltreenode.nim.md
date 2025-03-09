@@ -2,12 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
+  - icon: ':x:'
+    path: cplib/collections/rangeset.nim
+    title: cplib/collections/rangeset.nim
+  - icon: ':x:'
+    path: cplib/collections/rangeset.nim
+    title: cplib/collections/rangeset.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/grid_searcher.nim
     title: cplib/utils/grid_searcher.nim
@@ -105,6 +111,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/avlset/set/ordered_set_test.nim
     title: verify/collections/avlset/set/ordered_set_test.nim
+  - icon: ':x:'
+    path: verify/collections/rangeset_test.nim
+    title: verify/collections/rangeset_test.nim
+  - icon: ':x:'
+    path: verify/collections/rangeset_test.nim
+    title: verify/collections/rangeset_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/grid_searcher/skate_get_test.nim
     title: verify/utils/grid_searcher/skate_get_test.nim
@@ -129,9 +141,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/grid_searcher/skate_tuple_test.nim
     title: verify/utils/grid_searcher/skate_tuple_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html
@@ -230,49 +242,53 @@ data:
   requiredBy:
   - cplib/utils/grid_searcher.nim
   - cplib/utils/grid_searcher.nim
+  - cplib/collections/rangeset.nim
+  - cplib/collections/rangeset.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   timestamp: '2024-07-21 20:30:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/utils/grid_searcher/skate_get_test.nim
-  - verify/utils/grid_searcher/skate_get_test.nim
-  - verify/utils/grid_searcher/skate_test.nim
-  - verify/utils/grid_searcher/skate_test.nim
   - verify/utils/grid_searcher/skate_tuple_test.nim
   - verify/utils/grid_searcher/skate_tuple_test.nim
+  - verify/utils/grid_searcher/skate_test.nim
+  - verify/utils/grid_searcher/skate_test.nim
   - verify/utils/grid_searcher/skate_get_tuple_test.nim
   - verify/utils/grid_searcher/skate_get_tuple_test.nim
-  - verify/collections/avlset/multiset/ABC217_gtlt_test.nim
-  - verify/collections/avlset/multiset/ABC217_gtlt_test.nim
-  - verify/collections/avlset/multiset/ABC217_index_test.nim
-  - verify/collections/avlset/multiset/ABC217_index_test.nim
-  - verify/collections/avlset/multiset/ABC294_test.nim
-  - verify/collections/avlset/multiset/ABC294_test.nim
-  - verify/collections/avlset/multiset/index_right_test.nim
-  - verify/collections/avlset/multiset/index_right_test.nim
-  - verify/collections/avlset/multiset/ABC337_test.nim
-  - verify/collections/avlset/multiset/ABC337_test.nim
-  - verify/collections/avlset/multiset/ABC234D_access_test.nim
-  - verify/collections/avlset/multiset/ABC234D_access_test.nim
-  - verify/collections/avlset/multiset/ABC236_test.nim
-  - verify/collections/avlset/multiset/ABC236_test.nim
-  - verify/collections/avlset/multiset/ABC217_gele_test.nim
-  - verify/collections/avlset/multiset/ABC217_gele_test.nim
-  - verify/collections/avlset/set/ordered_set_test.nim
-  - verify/collections/avlset/set/ordered_set_test.nim
-  - verify/collections/avlset/set/ABC217_gtlt_test.nim
-  - verify/collections/avlset/set/ABC217_gtlt_test.nim
+  - verify/utils/grid_searcher/skate_get_test.nim
+  - verify/utils/grid_searcher/skate_get_test.nim
+  - verify/collections/rangeset_test.nim
+  - verify/collections/rangeset_test.nim
   - verify/collections/avlset/set/ABC217_index_test.nim
   - verify/collections/avlset/set/ABC217_index_test.nim
   - verify/collections/avlset/set/ABC294_test.nim
   - verify/collections/avlset/set/ABC294_test.nim
-  - verify/collections/avlset/set/ABC234D_access_test.nim
-  - verify/collections/avlset/set/ABC234D_access_test.nim
-  - verify/collections/avlset/set/ABC236_test.nim
-  - verify/collections/avlset/set/ABC236_test.nim
   - verify/collections/avlset/set/ABC217_gele_test.nim
   - verify/collections/avlset/set/ABC217_gele_test.nim
+  - verify/collections/avlset/set/ordered_set_test.nim
+  - verify/collections/avlset/set/ordered_set_test.nim
+  - verify/collections/avlset/set/ABC234D_access_test.nim
+  - verify/collections/avlset/set/ABC234D_access_test.nim
+  - verify/collections/avlset/set/ABC217_gtlt_test.nim
+  - verify/collections/avlset/set/ABC217_gtlt_test.nim
+  - verify/collections/avlset/set/ABC236_test.nim
+  - verify/collections/avlset/set/ABC236_test.nim
+  - verify/collections/avlset/multiset/ABC217_index_test.nim
+  - verify/collections/avlset/multiset/ABC217_index_test.nim
+  - verify/collections/avlset/multiset/ABC294_test.nim
+  - verify/collections/avlset/multiset/ABC294_test.nim
+  - verify/collections/avlset/multiset/ABC217_gele_test.nim
+  - verify/collections/avlset/multiset/ABC217_gele_test.nim
+  - verify/collections/avlset/multiset/ABC234D_access_test.nim
+  - verify/collections/avlset/multiset/ABC234D_access_test.nim
+  - verify/collections/avlset/multiset/ABC217_gtlt_test.nim
+  - verify/collections/avlset/multiset/ABC217_gtlt_test.nim
+  - verify/collections/avlset/multiset/index_right_test.nim
+  - verify/collections/avlset/multiset/index_right_test.nim
+  - verify/collections/avlset/multiset/ABC236_test.nim
+  - verify/collections/avlset/multiset/ABC236_test.nim
+  - verify/collections/avlset/multiset/ABC337_test.nim
+  - verify/collections/avlset/multiset/ABC337_test.nim
 documentation_of: cplib/collections/avltreenode.nim
 layout: document
 redirect_from:
