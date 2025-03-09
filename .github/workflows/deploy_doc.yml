@@ -15,6 +15,11 @@ jobs:
         with:
           fetch-depth: 0
           ref: gh-pages
+      - name: Install libpcre
+        id: install-libpcre
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libpcre3 libpcre3-dev
 
       - name: Cache choosenim
         id: cache-choosenim
