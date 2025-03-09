@@ -32,37 +32,43 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
+  - icon: ':warning:'
+    path: cplib/math/primitive_root.nim
+    title: cplib/math/primitive_root.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_atcoder_test_.nim
+    title: verify/math/divisor_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_atcoder_test_.nim
+    title: verify/math/divisor_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_many_atcoder_test_.nim
+    title: verify/math/divisor_many_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_many_atcoder_test_.nim
+    title: verify/math/divisor_many_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_table_abc284d_test_.nim
+    title: verify/math/factorize_table_abc284d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_table_abc284d_test_.nim
+    title: verify/math/factorize_table_abc284d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_tuple_abc324b_test_.nim
+    title: verify/math/factorize_tuple_abc324b_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_tuple_abc324b_test_.nim
+    title: verify/math/factorize_tuple_abc324b_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_atcoder_test.nim
-    title: verify/math/divisor_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_atcoder_test.nim
-    title: verify/math/divisor_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_many_atcoder_test.nim
-    title: verify/math/divisor_many_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_many_atcoder_test.nim
-    title: verify/math/divisor_many_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_table_abc284d_test.nim
-    title: verify/math/factorize_table_abc284d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_table_abc284d_test.nim
-    title: verify/math/factorize_table_abc284d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_tuple_abc324b_test.nim
-    title: verify/math/factorize_tuple_abc324b_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_tuple_abc324b_test.nim
-    title: verify/math/factorize_tuple_abc324b_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
@@ -74,9 +80,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_PRIMEFACTOR:\n    const CPLIB_MATH_PRIMEFACTOR*\
     \ = 1\n    import cplib/math/inner_math\n    import cplib/math/isprime\n    import\
@@ -103,34 +111,36 @@ data:
     \ result[p] += 1\n            else: result[p] = 1\n\n    proc primefactor_tuple*(n:\
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
+  - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
+  - verify/math/factorize_tuple_abc324b_test_.nim
+  - verify/math/factorize_tuple_abc324b_test_.nim
+  - verify/math/divisor_many_atcoder_test_.nim
+  - verify/math/divisor_many_atcoder_test_.nim
+  - verify/math/factorize_table_abc284d_test_.nim
+  - verify/math/factorize_table_abc284d_test_.nim
+  - verify/math/divisor_atcoder_test_.nim
+  - verify/math/divisor_atcoder_test_.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/primitive_root.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/divisor_atcoder_test.nim
-  - verify/math/divisor_atcoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
 documentation_of: cplib/math/primefactor.nim
 layout: document
 redirect_from:

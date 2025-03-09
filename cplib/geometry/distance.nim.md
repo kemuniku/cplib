@@ -25,7 +25,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
@@ -33,20 +39,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_DISTANCE:\n    const CPLIB_GEOMETRY_DISTANCE*\
     \ = 1\n    import math\n    import cplib/geometry/base\n    import cplib/geometry/intersect\n\
@@ -81,19 +83,19 @@ data:
   - cplib/geometry/ccw.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/distance.nim
-  requiredBy: []
+  requiredBy:
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
   timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
 documentation_of: cplib/geometry/distance.nim

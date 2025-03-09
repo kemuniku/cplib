@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/utils/mo_test_.nim
+    title: verify/utils/mo_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/mo_test_.nim
+    title: verify/utils/mo_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
@@ -9,20 +15,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
     title: verify/collections/range_kth_smallest_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/mo_test.nim
-    title: verify/utils/mo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/mo_test.nim
-    title: verify/utils/mo_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_MO:\n    #{.checks: off.}\n    const CPLIB_UTILS_MO*\
     \ = 1\n    import std/math, std/algorithm\n    type Mo* = object\n        width*:\
@@ -46,14 +48,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/mo.nim
-  requiredBy: []
+  requiredBy:
+  - verify/utils/mo_test_.nim
+  - verify/utils/mo_test_.nim
   timestamp: '2024-03-16 18:25:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_kth_smallest_test.nim
   - verify/collections/range_kth_smallest_test.nim
-  - verify/utils/mo_test.nim
-  - verify/utils/mo_test.nim
 documentation_of: cplib/utils/mo.nim
 layout: document
 redirect_from:

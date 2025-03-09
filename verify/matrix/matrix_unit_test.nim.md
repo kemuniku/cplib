@@ -22,9 +22,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\nimport sequtils, strutils, sets\nimport cplib/matrix/matrix\n\
@@ -59,9 +61,9 @@ data:
     \ m4 = a * c3\n    assert m3.h == 1 and m3.w == 3\n    assert m4.h == 2 and m4.w\
     \ == 1\n"
   dependsOn:
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim

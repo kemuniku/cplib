@@ -28,9 +28,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_A\n\
     include cplib/geometry/angle\ninclude cplib/math/fractions\nproc scanf(formatstr:\
@@ -41,16 +43,16 @@ data:
     \  if is_parallel(s1, s2): echo 2\n    elif is_orthogonal(s1, s2): echo 1\n  \
     \  else: echo 0\n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   requiredBy: []
-  timestamp: '2024-06-27 15:21:09+09:00'
+  timestamp: '2025-03-09 17:42:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim

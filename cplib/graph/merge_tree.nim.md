@@ -13,22 +13,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/merge_tree_test.nim
-    title: verify/graph/merge_tree_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/merge_tree_test.nim
-    title: verify/graph/merge_tree_test.nim
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/graph/merge_tree_test_.nim
+    title: verify/graph/merge_tree_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/merge_tree_test_.nim
+    title: verify/graph/merge_tree_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_MERGE_TREE:\n    const CPLIB_GRAPH_MERGE_TREE*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/collections/unionfind\n\
@@ -83,18 +85,18 @@ data:
     \        ## \u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u3067x\u306F\u4F55\
     \u756A\u76EE\u304B\u3092\u8FD4\u3059\n        self.ret[x]"
   dependsOn:
-  - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
-  requiredBy: []
+  requiredBy:
+  - verify/graph/merge_tree_test_.nim
+  - verify/graph/merge_tree_test_.nim
   timestamp: '2024-11-02 13:05:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/graph/merge_tree_test.nim
-  - verify/graph/merge_tree_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/graph/merge_tree.nim
 layout: document
 redirect_from:

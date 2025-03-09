@@ -13,22 +13,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/functional_graph_test.nim
-    title: verify/graph/functional_graph_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/functional_graph_test.nim
-    title: verify/graph/functional_graph_test.nim
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_FUNCTIONALGRAPH:\n    const CPLIB_GRAPH_FUNCTIONALGRAPH*\
     \ = 1\n    import sequtils\n    import cplib/graph/graph\n    import cplib/tree/heavylightdecomposition\n\
@@ -99,18 +101,18 @@ data:
     \u3001\u521D\u3081\u3066\u30B5\u30A4\u30AF\u30EB\u306B\u5165\u3063\u305F\u3068\
     \u304D\u306E\u9802\u70B9\u3092\u8FD4\u3059\n        return functional_graph.roots[x]"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
-  requiredBy: []
-  timestamp: '2024-10-27 03:06:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/graph/functional_graph_test.nim
-  - verify/graph/functional_graph_test.nim
+  requiredBy:
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  timestamp: '2025-01-30 13:56:50+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/graph/functional_graph.nim
 layout: document
 redirect_from:

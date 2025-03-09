@@ -44,9 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_ACCUMULATE:\n    const CPLIB_UTILS_ACCUMULATE*\
     \ = 1\n    template accumulated*[T](sequence:seq[T],operation:untyped,first:T):seq[T]=\n\
@@ -83,18 +85,18 @@ data:
   timestamp: '2024-08-17 01:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/accumulate/accumulatedr_2_test.nim
-  - verify/utils/accumulate/accumulatedr_2_test.nim
   - verify/utils/accumulate/accumulate_test.nim
   - verify/utils/accumulate/accumulate_test.nim
   - verify/utils/accumulate/accumulated_2_test.nim
   - verify/utils/accumulate/accumulated_2_test.nim
+  - verify/utils/accumulate/accumulated_test.nim
+  - verify/utils/accumulate/accumulated_test.nim
   - verify/utils/accumulate/accumulatedr_test.nim
   - verify/utils/accumulate/accumulatedr_test.nim
   - verify/utils/accumulate/accumulater_test.nim
   - verify/utils/accumulate/accumulater_test.nim
-  - verify/utils/accumulate/accumulated_test.nim
-  - verify/utils/accumulate/accumulated_test.nim
+  - verify/utils/accumulate/accumulatedr_2_test.nim
+  - verify/utils/accumulate/accumulatedr_2_test.nim
 documentation_of: cplib/utils/accumulate.nim
 layout: document
 redirect_from:

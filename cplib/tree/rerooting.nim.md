@@ -7,14 +7,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/tree/rerooting_big_test_.nim
+    title: verify/tree/rerooting_big_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/rerooting_big_test_.nim
+    title: verify/tree/rerooting_big_test_.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/rerooting_big_test.nim
-    title: verify/tree/rerooting_big_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/rerooting_big_test.nim
-    title: verify/tree/rerooting_big_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
@@ -27,9 +27,11 @@ data:
   attributes:
     links:
     - https://trap.jp/post/1702/
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# https://trap.jp/post/1702/ \u3092\u53C2\u8003\u306B\u4F5C\u6210\nwhen not\
     \ declared CPLIB_TREE_REROOTING:\n    const CPLIB_TREE_REROOTING* = 1\n    import\
@@ -40,7 +42,7 @@ data:
     \n        ## e:\u5358\u4F4D\u5143\n        ## put_edge \u8FBAu,v\u9593\u306E\u8FBA\
     \u60C5\u5831\u3092\u4ED8\u4E0E\n        ## put_vertex \u9802\u70B9v\u306E\u9802\
     \u70B9\u60C5\u5831\u3092\u4ED8\u4E0E\n        var L = newseq[seq[E]](len(G))\n\
-    \        var R = newseq[seq[E]](len(G))\n        var res = newseq[V](len(G))\n\
+    \        var R = newseq[seq[E]](len(G))\n        var res = newseq[E](len(G))\n\
     \        proc dfs1(x,p:int):E=\n            var values : seq[E]\n            values.add(e)\n\
     \            for y in G[x]:\n                if y != p:\n                    values.add(put_edge(put_vertex(dfs1(y,x),y),x,y))\n\
     \            values.add(e)\n            var now = e\n            var l = newseq[E](len(values))\n\
@@ -69,12 +71,12 @@ data:
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/rerooting.nim
-  requiredBy: []
-  timestamp: '2024-10-03 01:54:09+09:00'
+  requiredBy:
+  - verify/tree/rerooting_big_test_.nim
+  - verify/tree/rerooting_big_test_.nim
+  timestamp: '2025-03-09 17:43:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/rerooting_big_test.nim
-  - verify/tree/rerooting_big_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
 documentation_of: cplib/tree/rerooting.nim

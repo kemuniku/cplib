@@ -14,9 +14,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_BINARY_TRIE:\n    const CPLIB_COLLECTION_BINARY_TRIE*\
     \ = 1\n    type BinaryTrieNode = ref object\n        zero:BinaryTrieNode\n   \
@@ -77,12 +79,13 @@ data:
     \ shl 1))\n            if not self.one.isNil():\n                dfs_node(self.one,(now\
     \ shl 1) + 1)\n            if self.zero.isNil() and self.one.isNil():\n      \
     \          if self.value != 0:\n                    S.add((now,self.value))\n\
-    \        dfs_node(self.root,0)\n        return $S"
+    \        dfs_node(self.root,0)\n        return $S\n    \n    proc len*(self:BinaryTrie):int=\n\
+    \        return self.root.value"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/binary_trie.nim
   requiredBy: []
-  timestamp: '2024-09-16 00:58:37+09:00'
+  timestamp: '2025-03-09 17:40:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/binary_trie_test.nim

@@ -1,22 +1,24 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/merge_tree_test.nim
-    title: verify/graph/merge_tree_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/merge_tree_test.nim
-    title: verify/graph/merge_tree_test.nim
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/graph/merge_tree_test_.nim
+    title: verify/graph/merge_tree_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/merge_tree_test_.nim
+    title: verify/graph/merge_tree_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_STATIC_RANGE_COUNT:\n    const CPLIB_COLLECTIONS_STATIC_RANGE_COUNT*\
     \ = 1\n    import tables,algorithm\n    type StaticRangeCount[T] = object\n  \
@@ -31,12 +33,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/staticrangecount.nim
-  requiredBy: []
+  requiredBy:
+  - verify/graph/merge_tree_test_.nim
+  - verify/graph/merge_tree_test_.nim
   timestamp: '2024-09-16 03:24:25+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/graph/merge_tree_test.nim
-  - verify/graph/merge_tree_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/collections/staticrangecount.nim
 layout: document
 redirect_from:

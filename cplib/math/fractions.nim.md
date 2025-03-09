@@ -8,6 +8,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc225e_test_.nim
+    title: verify/math/fractions_abc225e_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc225e_test_.nim
+    title: verify/math/fractions_abc225e_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc226d_test_.nim
+    title: verify/math/fractions_abc226d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc226d_test_.nim
+    title: verify/math/fractions_abc226d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc308c_test_.nim
+    title: verify/math/fractions_abc308c_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc308c_test_.nim
+    title: verify/math/fractions_abc308c_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
@@ -88,30 +112,6 @@ data:
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/fractions_abc225e_test.nim
-    title: verify/math/fractions_abc225e_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/fractions_abc225e_test.nim
-    title: verify/math/fractions_abc225e_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/fractions_abc226d_test.nim
-    title: verify/math/fractions_abc226d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/fractions_abc226d_test.nim
-    title: verify/math/fractions_abc226d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/fractions_abc308c_test.nim
-    title: verify/math/fractions_abc308c_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/fractions_abc308c_test.nim
-    title: verify/math/fractions_abc308c_test.nim
-  - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -122,9 +122,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_FRACTIONS:\n    const CPLIB_MATH_FRACTIONS*\
     \ = 1\n    import strformat, std/math, hashes\n    type Fraction*[T] = object\n\
@@ -144,27 +146,27 @@ data:
     \ = (if x.num < 0: Fraction[T](num: -x.num, den: x.den) else: x)\n    proc `-`*[T](x:\
     \ Fraction[T]): Fraction[T] = Fraction[T](num: -x.num, den: x.den)\n    proc `+=`*[T](x:\
     \ var Fraction[T], y: Fraction[T]) =\n        if isNaN(x) or isNaN(y):\n     \
-    \       x = initFraction(0, 0)\n            return\n        if x.den == 0 and\
-    \ y.den == 0:\n            if (x.num > 0) == (y.num > 0): return\n           \
-    \ x = initFraction(0, 0)\n            return\n        if x.den == 0 or y.den ==\
-    \ 0:\n            if x.den != 0: x = y\n            return\n        x.num = x.num\
-    \ * y.den + y.num * x.den\n        x.den *= y.den\n        x.check_and_reduce()\n\
+    \       x = initFraction(T(0), T(0))\n            return\n        if x.den ==\
+    \ 0 and y.den == 0:\n            if (x.num > 0) == (y.num > 0): return\n     \
+    \       x = initFraction(T(0), T(0))\n            return\n        if x.den ==\
+    \ 0 or y.den == 0:\n            if x.den != 0: x = y\n            return\n   \
+    \     x.num = x.num * y.den + y.num * x.den\n        x.den *= y.den\n        x.check_and_reduce()\n\
     \    proc `-=`*[T](x: var Fraction[T], y: Fraction[T]) = x += (-y)\n    proc `*=`*[T](x:\
     \ var Fraction[T], y: Fraction[T]) =\n        if isNaN(x) or isNaN(y):\n     \
-    \       x = initFraction(0, 0)\n            return\n        x.den *= y.den\n \
-    \       x.num *= y.num\n        x.check_and_reduce()\n    proc `/=`*[T](x: var\
+    \       x = initFraction(T(0), T(0))\n            return\n        x.den *= y.den\n\
+    \        x.num *= y.num\n        x.check_and_reduce()\n    proc `/=`*[T](x: var\
     \ Fraction[T], y: Fraction[T]) =\n        if isNaN(x) or isNaN(y):\n         \
-    \   x = initFraction(0, 0)\n            return\n        x.den *= y.num\n     \
-    \   x.num *= y.den\n        x.check_and_reduce()\n    proc `>`*[T](x, y: Fraction[T]):\
+    \   x = initFraction(T(0), T(0))\n            return\n        x.den *= y.num\n\
+    \        x.num *= y.den\n        x.check_and_reduce()\n    proc `>`*[T](x, y:\
+    \ Fraction[T]): bool =\n        if isNaN(x) or isNaN(y): return false\n      \
+    \  if x.den == 0 and y.den == 0: return x.num > y.num\n        x.num * y.den >\
+    \ y.num * x.den\n    proc `<`*[T](x, y: Fraction[T]): bool =\n        if isNaN(x)\
+    \ or isNaN(y): return false\n        if x.den == 0 and y.den == 0: return x.num\
+    \ < y.num\n        x.num * y.den < y.num * x.den\n    proc `==`*[T](x, y: Fraction[T]):\
     \ bool =\n        if isNaN(x) or isNaN(y): return false\n        if x.den == 0\
-    \ and y.den == 0: return x.num > y.num\n        x.num * y.den > y.num * x.den\n\
-    \    proc `<`*[T](x, y: Fraction[T]): bool =\n        if isNaN(x) or isNaN(y):\
-    \ return false\n        if x.den == 0 and y.den == 0: return x.num < y.num\n \
-    \       x.num * y.den < y.num * x.den\n    proc `==`*[T](x, y: Fraction[T]): bool\
-    \ =\n        if isNaN(x) or isNaN(y): return false\n        if x.den == 0 and\
-    \ y.den == 0: return (x.num div abs(x.num)) * (y.num div abs(y.num)) > 0\n   \
-    \     x.num * y.den == y.num * x.den\n    proc cmp*[T](x, y: Fraction[T]): int\
-    \ = (if x < y: -1 elif x == y: 0 else: 1)\n\n    proc `+=`*[T](x: var Fraction[T],\
+    \ and y.den == 0: return (x.num div abs(x.num)) * (y.num div abs(y.num)) > 0\n\
+    \        x.num * y.den == y.num * x.den\n    proc cmp*[T](x, y: Fraction[T]):\
+    \ int = (if x < y: -1 elif x == y: 0 else: 1)\n\n    proc `+=`*[T](x: var Fraction[T],\
     \ y: T) = (x += initFraction[T](y))\n    proc `+`*[T](x, y: Fraction[T]): Fraction[T]\
     \ = (result = x; result += y)\n    proc `+`*[T](x: Fraction[T], y: T): Fraction[T]\
     \ = (result = x; result += y)\n    proc `+`*[T](x: T, y: Fraction[T]): Fraction[T]\
@@ -201,47 +203,47 @@ data:
   isVerificationFile: false
   path: cplib/math/fractions.nim
   requiredBy:
+  - verify/math/fractions_abc226d_test_.nim
+  - verify/math/fractions_abc226d_test_.nim
+  - verify/math/fractions_abc225e_test_.nim
+  - verify/math/fractions_abc225e_test_.nim
+  - verify/math/fractions_abc308c_test_.nim
+  - verify/math/fractions_abc308c_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
-  timestamp: '2024-06-27 15:21:09+09:00'
+  timestamp: '2025-03-09 17:42:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/fractions_unit_test.nim
   - verify/math/fractions_unit_test.nim
-  - verify/math/fractions_abc225e_test.nim
-  - verify/math/fractions_abc225e_test.nim
-  - verify/math/fractions_abc308c_test.nim
-  - verify/math/fractions_abc308c_test.nim
-  - verify/math/fractions_abc226d_test.nim
-  - verify/math/fractions_abc226d_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
 documentation_of: cplib/math/fractions.nim
 layout: document
 redirect_from:

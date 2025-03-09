@@ -80,9 +80,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_STATIC_STRING:\n    const CPLIB_STR_STATIC_STRING*\
     \ = 1\n    import cplib/collections/staticRMQ\n    import atcoder/string\n   \
@@ -152,22 +154,22 @@ data:
   timestamp: '2024-09-21 17:03:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
   - verify/str/static_string/static_string_SA_test.nim
   - verify/str/static_string/static_string_SA_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
   - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
   - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
   - verify/str/static_string/static_string_LCS_useSA_test.nim
   - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
 documentation_of: cplib/str/static_string.nim
 layout: document
 redirect_from:

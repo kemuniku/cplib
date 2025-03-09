@@ -28,9 +28,11 @@ data:
     PROBLEM: https://yukicoder.me/problems/no/2858
     links:
     - https://yukicoder.me/problems/no/2858
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://yukicoder.me/problems/no/2858\ninclude\
     \ cplib/tmpl/sheep\nimport cplib/str/can_reverse_hash_string\nvar T = ii()\n\n\
@@ -49,15 +51,15 @@ data:
     \ 1\n\n    if ans == INF:\n        echo -1\n    else:\n        echo ans"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/can_reverse_hash_string.nim
   - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/constants.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   requiredBy: []
-  timestamp: '2024-10-17 13:28:40+09:00'
+  timestamp: '2025-03-09 17:51:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim

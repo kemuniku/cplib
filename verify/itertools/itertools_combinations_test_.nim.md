@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/itertools/combinations.nim
     title: cplib/itertools/combinations.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/itertools/combinations.nim
     title: cplib/itertools/combinations.nim
   _extendedRequiredBy: []
@@ -22,9 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc328/tasks/abc328_e
     links:
     - https://atcoder.jp/contests/abc328/tasks/abc328_e
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc328/tasks/abc328_e\n\
     import math, sequtils\nimport cplib/itertools/combinations\nimport cplib/collections/unionfind\n\
@@ -38,13 +40,13 @@ data:
     \ ans\n\n"
   dependsOn:
   - cplib/itertools/combinations.nim
-  - cplib/collections/unionfind.nim
   - cplib/itertools/combinations.nim
+  - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/itertools/itertools_combinations_test_.nim
   requiredBy: []
-  timestamp: '2023-11-21 14:11:07+00:00'
+  timestamp: '2025-03-09 18:22:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/itertools/itertools_combinations_test_.nim

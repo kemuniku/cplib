@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/past_ppuf_test_.nim
+    title: verify/collections/ppunionfind/past_ppuf_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/past_ppuf_test_.nim
+    title: verify/collections/ppunionfind/past_ppuf_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/stamp_rally_test_.nim
+    title: verify/collections/ppunionfind/stamp_rally_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/stamp_rally_test_.nim
+    title: verify/collections/ppunionfind/stamp_rally_test_.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/ppunionfind/past_ppuf_test.nim
-    title: verify/collections/ppunionfind/past_ppuf_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/ppunionfind/past_ppuf_test.nim
-    title: verify/collections/ppunionfind/past_ppuf_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/ppunionfind/stamp_rally_test.nim
-    title: verify/collections/ppunionfind/stamp_rally_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/ppunionfind/stamp_rally_test.nim
-    title: verify/collections/ppunionfind/stamp_rally_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
@@ -26,9 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:\n    const\
     \ CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND* = 1\n    import sequtils,algorithm\n\
@@ -48,7 +50,7 @@ data:
     \ t:\n            now = self.par_or_siz[now]\n        return now\n\n    proc root*(self:var\
     \ PartialPersistentUnionFind,x:int):int=\n        return self.root(x,self.last)\n\
     \n    proc unite*(self:var PartialPersistentUnionFind,u,v,t:int):bool {.discardable.}=\n\
-    \        assert self.last < t\n        self.last = t\n        var u = self.root(u)\n\
+    \        assert self.last <= t\n        self.last = t\n        var u = self.root(u)\n\
     \        var v = self.root(v)\n        if u == v:\n            return false\n\
     \        if self.par_or_siz[u] > self.par_or_siz[v]:\n            swap(u,v)\n\
     \        self.par_or_siz[u] += self.par_or_siz[v]\n        self.par_or_siz[v]\
@@ -65,34 +67,34 @@ data:
     \u9593\u3092\u8FD4\u3059\u3002\n        ## \u9023\u7D50\u3067\u306F\u306A\u3044\
     \u5834\u5408\u3001-2\u304C\u8FD4\u308B(\u6700\u60AA\u304B\uFF1F \u6642\u523B-1\u3092\
     \u958B\u59CB\u306B\u3057\u3066\u3057\u307E\u3063\u305F\u305F\u3081\u4ED5\u65B9\
-    \u306A\u304F...)\n        \n        var tu : seq[int]\n        var u = u\n   \
-    \     var tv : seq[int]\n        var v = v\n        while self.time[u] != -1:\n\
-    \            tu.add(self.time[u])\n            u = self.par_or_siz[u]\n      \
-    \  while self.time[v] != -1:\n            tv.add(self.time[v])\n            v\
-    \ = self.par_or_siz[v]\n        if u != v:\n            return -2\n        while\
-    \ len(tu) > 0 and len(tv) > 0 and tu[^1] == tv[^1]:\n            discard tu.pop()\n\
-    \            discard tv.pop()\n        result = -1\n        for t in tu:\n   \
-    \         if t > result:\n                result = t\n        for t in tv:\n \
-    \           if t > result:\n                result = t\n\n    proc size_ge(self:var\
-    \ PartialPersistentUnionFind,x,size:int):int=\n        ## x\u304C\u5C5E\u3059\u308B\
-    \u96C6\u5408\u306E\u30B5\u30A4\u30BA\u304Csize\u3092\u8D85\u3048\u308B\u6642\u9593\
-    \u3092\u8FD4\u3059\n        if size <= 1:\n            return -1\n        var\
-    \ now = x\n        while self.time[now] != -1:\n            now = self.par_or_siz[now]\n\
-    \            if self.size_value[now][^1] >= size:\n                return self.size_time[now][self.size_value[now].lowerBound(size)]\n\
+    \u306A\u304F...)\n        var tu : seq[int] = @[u]\n        var u = u\n      \
+    \  var tv : seq[int] = @[v]\n        var v = v\n        while self.par_or_siz[u]\
+    \ >= 0:\n            u = self.par_or_siz[u]\n            tu.add(u)\n        while\
+    \ self.par_or_siz[v] >= 0:\n            v = self.par_or_siz[v]\n            tv.add(v)\n\
+    \        if u != v:\n            return -2\n        while len(tu) > 0 and len(tv)\
+    \ > 0 and tu[^1] == tv[^1]:\n            discard tu.pop()\n            discard\
+    \ tv.pop()\n        result = -1\n        if len(tu) != 0:\n            result\
+    \ = max(result,self.time[tu[^1]])\n        if len(tv) != 0:\n            result\
+    \ = max(result,self.time[tv[^1]])\n\n\n    proc size_ge(self:var PartialPersistentUnionFind,x,size:int):int=\n\
+    \        ## x\u304C\u5C5E\u3059\u308B\u96C6\u5408\u306E\u30B5\u30A4\u30BA\u304C\
+    size\u3092\u8D85\u3048\u308B\u6642\u9593\u3092\u8FD4\u3059\n        if size <=\
+    \ 1:\n            return -1\n        var now = x\n        while self.time[now]\
+    \ != -1:\n            now = self.par_or_siz[now]\n            if self.size_value[now][^1]\
+    \ >= size:\n                return self.size_time[now][self.size_value[now].lowerBound(size)]\n\
     \n\n\n\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/ppunionfind.nim
-  requiredBy: []
-  timestamp: '2024-09-19 01:13:36+09:00'
+  requiredBy:
+  - verify/collections/ppunionfind/past_ppuf_test_.nim
+  - verify/collections/ppunionfind/past_ppuf_test_.nim
+  - verify/collections/ppunionfind/stamp_rally_test_.nim
+  - verify/collections/ppunionfind/stamp_rally_test_.nim
+  timestamp: '2025-02-26 01:40:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
-  - verify/collections/ppunionfind/past_ppuf_test.nim
-  - verify/collections/ppunionfind/past_ppuf_test.nim
 documentation_of: cplib/collections/ppunionfind.nim
 layout: document
 redirect_from:

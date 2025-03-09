@@ -22,9 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
     links:
     - https://judge.yosupo.jp/problem/zalgorithm
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/zalgorithm\n\
     import sequtils, strutils\nimport cplib/str/rolling_hash\nimport cplib/utils/binary_search\n\
@@ -33,10 +35,10 @@ data:
     \ == rh.query(0..<x)\n    ans[i] = meguru_bisect(0, s.len - i + 1, isok)\necho\
     \ ans.join(\" \")\n"
   dependsOn:
-  - cplib/str/rolling_hash.nim
-  - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
   - cplib/utils/binary_search.nim
+  - cplib/str/rolling_hash.nim
+  - cplib/str/rolling_hash.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   requiredBy: []

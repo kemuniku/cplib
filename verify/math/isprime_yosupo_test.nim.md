@@ -40,29 +40,31 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/primality_test
     links:
     - https://judge.yosupo.jp/problem/primality_test
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/primality_test\n\
     include cplib/tmpl/sheep\nimport cplib/math/isprime\n\nvar Q = ii()\n\nfor i in\
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2024-11-07 17:54:13+09:00'
+  timestamp: '2025-03-09 17:51:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim

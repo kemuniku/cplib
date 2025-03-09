@@ -1,28 +1,36 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/deletable_heapqueue_test.nim
-    title: verify/collections/deletable_heapqueue_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/deletable_heapqueue_test.nim
-    title: verify/collections/deletable_heapqueue_test.nim
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/collections/topk_sum_heapq.nim
+    title: cplib/collections/topk_sum_heapq.nim
+  - icon: ':warning:'
+    path: cplib/collections/topk_sum_heapq.nim
+    title: cplib/collections/topk_sum_heapq.nim
+  - icon: ':warning:'
+    path: verify/collections/deletable_heapqueue_test_.nim
+    title: verify/collections/deletable_heapqueue_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/deletable_heapqueue_test_.nim
+    title: verify/collections/deletable_heapqueue_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u5B58\u5728\u3057\u306A\u3044\u8981\u7D20\u3092\u6D88\u305D\u3046\u3068\
     \u3059\u308B\u3068\u30D0\u30B0\u308B\u306E\u3067\u6CE8\u610F\nwhen not declared\
     \ CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:\n    const CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUET*\
-    \ = 1\n    import heapqueue\n    type Deletable_HeapQueue[T] = object\n      \
-    \  hq : HeapQueue[T]\n        dlhq : HeapQueue[T]\n\n    proc initDeletableHeapQueue*[T]():Deletable_HeapQueue[T]=\n\
+    \ = 1\n    import heapqueue\n    type Deletable_HeapQueue*[T] = object\n     \
+    \   hq : HeapQueue[T]\n        dlhq : HeapQueue[T]\n\n    proc initDeletableHeapQueue*[T]():Deletable_HeapQueue[T]=\n\
     \        Deletable_HeapQueue[T](hq:initHeapQueue[T](),dlhq:initHeapQueue[T]())\n\
     \n    proc toDeletableHeapQueue*[T](v:seq[T]):Deletable_HeapQueue[T]=\n      \
     \  Deletable_HeapQueue[T](hq:v.toHeapQueue(),dlhq:initHeapQueue[T]())\n\n    proc\
@@ -38,12 +46,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/deletable_heapqueue.nim
-  requiredBy: []
-  timestamp: '2024-09-04 03:40:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/collections/deletable_heapqueue_test.nim
-  - verify/collections/deletable_heapqueue_test.nim
+  requiredBy:
+  - verify/collections/deletable_heapqueue_test_.nim
+  - verify/collections/deletable_heapqueue_test_.nim
+  - cplib/collections/topk_sum_heapq.nim
+  - cplib/collections/topk_sum_heapq.nim
+  timestamp: '2025-03-09 17:46:15+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/collections/deletable_heapqueue.nim
 layout: document
 redirect_from:

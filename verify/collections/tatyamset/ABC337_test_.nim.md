@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: cplib/collections/tatyamset.nim
     title: cplib/collections/tatyamset.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: cplib/collections/tatyamset.nim
     title: cplib/collections/tatyamset.nim
   _extendedRequiredBy: []
@@ -16,9 +16,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc337/tasks/abc337_b
     links:
     - https://atcoder.jp/contests/abc337/tasks/abc337_b
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc337/tasks/abc337_b\n\
     import cplib/collections/tatyamset\nimport sequtils, strutils\nvar S = stdin.readLine()\n\
@@ -30,7 +32,7 @@ data:
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC337_test_.nim
   requiredBy: []
-  timestamp: '2024-01-28 10:52:19+09:00'
+  timestamp: '2025-03-09 18:22:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/tatyamset/ABC337_test_.nim

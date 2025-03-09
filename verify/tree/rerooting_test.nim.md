@@ -22,9 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
     links:
     - https://judge.yosupo.jp/problem/tree_path_composite_sum
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/tree_path_composite_sum\n\
     import sequtils, strutils, tables\nimport cplib/tree/rerooting\nimport cplib/graph/graph\n\
@@ -39,14 +41,14 @@ data:
     \    return (b*x[0]+c*x[1],x[1])\n\necho G.solve_Rerooting(merge,(mint(0),0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \ \")\n\n"
   dependsOn:
-  - cplib/tree/rerooting.nim
-  - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/rerooting.nim
+  - cplib/tree/rerooting.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
   requiredBy: []
-  timestamp: '2024-10-03 01:54:09+09:00'
+  timestamp: '2025-03-09 17:43:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/rerooting_test.nim

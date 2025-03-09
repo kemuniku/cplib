@@ -22,9 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
     links:
     - https://judge.yosupo.jp/problem/enumerate_palindromes
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/enumerate_palindromes\n\
     import cplib/str/can_reverse_hash_string\nimport cplib/utils/binary_search\nimport\
@@ -37,9 +39,9 @@ data:
     \necho L.join(\" \")"
   dependsOn:
   - cplib/utils/binary_search.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/binary_search.nim
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/str/can_reverse_hash_string.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   requiredBy: []

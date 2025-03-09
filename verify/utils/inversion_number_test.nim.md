@@ -22,9 +22,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
 
@@ -41,14 +43,14 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/segtree.nim
-  - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/inversion_number.nim
   isVerificationFile: true
   path: verify/utils/inversion_number_test.nim
   requiredBy: []
-  timestamp: '2024-09-16 02:10:51+09:00'
+  timestamp: '2024-12-19 23:19:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/inversion_number_test.nim

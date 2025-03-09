@@ -20,9 +20,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:\n    const CPLIB_COLLECTIONS_SEGTREE_BEATS*\
     \ = 1\n    import algorithm, sequtils, bitops, strutils\n    type SegmentTreeBeats*[S,\
@@ -54,15 +56,15 @@ data:
     \ self.arr[p])\n        if p < self.lastnode:\n            self.lazy[p] = self.composition(f,\
     \ self.lazy[p])\n            if self.arr[p].fail:\n                self.push(p)\n\
     \                self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])\n\n\
-    \    proc update*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val: var\
-    \ S) =\n        ## p\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\u307E\u3059\
-    \u3002\n        assert p < self.length\n        var p = p + self.lastnode\n  \
-    \      self.all_push(p)\n        self.arr[p] = val\n        for i in 1..self.log:\n\
-    \            self.arr[p shr i] = self.merge(self.arr[2*(p shr i)], self.arr[2*(p\
-    \ shr i)+1])\n\n    proc `[]`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural):\
-    \ S =\n        assert p < self.length\n        self.all_push(p + self.lastnode)\n\
-    \        return self.arr[p + self.lastnode]\n\n    proc get*[S, F](self: var SegmentTreeBeats[S,\
-    \ F], q_left, q_right: int): S =\n        ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\
+    \    proc update*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val:S) =\n\
+    \        ## p\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\
+    \n        assert p < self.length\n        var p = p + self.lastnode\n        self.all_push(p)\n\
+    \        self.arr[p] = val\n        for i in 1..self.log:\n            self.arr[p\
+    \ shr i] = self.merge(self.arr[2*(p shr i)], self.arr[2*(p shr i)+1])\n\n    proc\
+    \ `[]`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural): S =\n        assert\
+    \ p < self.length\n        self.all_push(p + self.lastnode)\n        return self.arr[p\
+    \ + self.lastnode]\n\n    proc get*[S, F](self: var SegmentTreeBeats[S, F], q_left,\
+    \ q_right: int): S =\n        ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\
     \u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\
     \u3002\n        assert q_left <= q_right and 0 <= q_left and q_right <= self.length\n\
     \        if q_left == q_right: return self.default\n        var q_left = q_left\
@@ -115,7 +117,7 @@ data:
   requiredBy:
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats_template.nim
-  timestamp: '2024-09-23 17:09:04+09:00'
+  timestamp: '2025-03-09 17:45:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim

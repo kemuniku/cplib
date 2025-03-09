@@ -1,7 +1,25 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_get1item_test_.nim
+    title: verify/collections/segtree_var/segtree_get1item_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_get1item_test_.nim
+    title: verify/collections/segtree_var/segtree_get1item_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor1_test_.nim
+    title: verify/collections/segtree_var/segtree_xor1_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor1_test_.nim
+    title: verify/collections/segtree_var/segtree_xor1_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor2_test_.nim
+    title: verify/collections/segtree_var/segtree_xor2_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor2_test_.nim
+    title: verify/collections/segtree_var/segtree_xor2_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PARS_test.nim
@@ -28,12 +46,6 @@ data:
     path: verify/collections/segtree_var/segtree_RMQ_test.nim
     title: verify/collections/segtree_var/segtree_RMQ_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/collections/segtree_var/segtree_get1item_test.nim
-    title: verify/collections/segtree_var/segtree_get1item_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/segtree_var/segtree_get1item_test.nim
-    title: verify/collections/segtree_var/segtree_get1item_test.nim
-  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_init_with_size_test.nim
     title: verify/collections/segtree_var/segtree_init_with_size_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,26 +75,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_static_test.nim
     title: verify/collections/segtree_var/segtree_static_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/segtree_var/segtree_xor1_test.nim
-    title: verify/collections/segtree_var/segtree_xor1_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/segtree_var/segtree_xor1_test.nim
-    title: verify/collections/segtree_var/segtree_xor1_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/segtree_var/segtree_xor2_test.nim
-    title: verify/collections/segtree_var/segtree_xor2_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/segtree_var/segtree_xor2_test.nim
-    title: verify/collections/segtree_var/segtree_xor2_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:\n    const CPLIB_COLLECTIONS_SEGTREE_VAR*\
     \ = 1\n    import algorithm, strutils, sequtils, macros\n    type SegmentTree*[T,\
@@ -168,39 +170,39 @@ data:
     \ sm)):\n                while r < self.lastnode:\n                    r = 2 *\
     \ r + 1\n                    if f(self.merge(self.arr[r], sm)):\n            \
     \            sm = self.merge(self.arr[r], sm)\n                        r -= 1\n\
-    \                return r + 1 - self.lastnode\n            if (r and -r) == r:\
-    \ break\n        return 0\n"
+    \                return r + 1 - self.lastnode\n            sm = self.merge(self.arr[r],\
+    \ sm)\n            if (r and -r) == r: break\n        return 0\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/segtree_var.nim
-  requiredBy: []
-  timestamp: '2024-09-16 02:10:51+09:00'
+  requiredBy:
+  - verify/collections/segtree_var/segtree_xor1_test_.nim
+  - verify/collections/segtree_var/segtree_xor1_test_.nim
+  - verify/collections/segtree_var/segtree_get1item_test_.nim
+  - verify/collections/segtree_var/segtree_get1item_test_.nim
+  - verify/collections/segtree_var/segtree_xor2_test_.nim
+  - verify/collections/segtree_var/segtree_xor2_test_.nim
+  timestamp: '2024-12-19 23:28:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/segtree_var/segtree_xor1_test.nim
-  - verify/collections/segtree_var/segtree_xor1_test.nim
-  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_xor2_test.nim
-  - verify/collections/segtree_var/segtree_xor2_test.nim
-  - verify/collections/segtree_var/segtree_static_test.nim
-  - verify/collections/segtree_var/segtree_static_test.nim
-  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/segtree_get1item_test.nim
-  - verify/collections/segtree_var/segtree_get1item_test.nim
   - verify/collections/segtree_var/segtree_PSRC_test.nim
   - verify/collections/segtree_var/segtree_PSRC_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
-  - verify/collections/segtree_var/segtree_RMQ_test.nim
-  - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_static_test.nim
+  - verify/collections/segtree_var/segtree_static_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_RMQ_test.nim
 documentation_of: cplib/collections/segtree_var.nim
 layout: document
 redirect_from:

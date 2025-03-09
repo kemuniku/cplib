@@ -22,9 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/longest_common_substring
     links:
     - https://judge.yosupo.jp/problem/longest_common_substring
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/longest_common_substring\n\
     include cplib/str/static_string\nimport algorithm,sequtils,strutils\nvar S = stdin.readLine()\n\
@@ -39,9 +41,9 @@ data:
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
     echo a,\" \",b,\" \",c,\" \",d"
   dependsOn:
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim

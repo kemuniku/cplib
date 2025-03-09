@@ -2,51 +2,53 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/steiner_tree_abc364g_test.nim
-    title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/steiner_tree_abc364g_test.nim
-    title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitcomb_test.nim
-    title: verify/utils/bititers_bitcomb_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitcomb_test.nim
-    title: verify/utils/bititers_bitcomb_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_descending_test.nim
-    title: verify/utils/bititers_bitsubseteq_descending_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_descending_test.nim
-    title: verify/utils/bititers_bitsubseteq_descending_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_test.nim
-    title: verify/utils/bititers_bitsubseteq_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_test.nim
-    title: verify/utils/bititers_bitsubseteq_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsuperset_test.nim
-    title: verify/utils/bititers_bitsuperset_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsuperset_test.nim
-    title: verify/utils/bititers_bitsuperset_test.nim
+  - icon: ':warning:'
+    path: verify/graph/steiner_tree_abc364g_test_.nim
+    title: verify/graph/steiner_tree_abc364g_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/steiner_tree_abc364g_test_.nim
+    title: verify/graph/steiner_tree_abc364g_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitcomb_test_.nim
+    title: verify/utils/bititers_bitcomb_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitcomb_test_.nim
+    title: verify/utils/bititers_bitcomb_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_descending_test_.nim
+    title: verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_descending_test_.nim
+    title: verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_test_.nim
+    title: verify/utils/bititers_bitsubseteq_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_test_.nim
+    title: verify/utils/bititers_bitsubseteq_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsuperset_test_.nim
+    title: verify/utils/bititers_bitsuperset_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsuperset_test_.nim
+    title: verify/utils/bititers_bitsuperset_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_BITITERS:\n    const CPLIB_UTILS_BITITERS*\
     \ = 1\n    import bitops\n    iterator bitcomb*(n, r: int): int =\n        ##n\
@@ -103,21 +105,21 @@ data:
   isVerificationFile: false
   path: cplib/utils/bititers.nim
   requiredBy:
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/utils/bititers_bitsuperset_test_.nim
+  - verify/utils/bititers_bitsuperset_test_.nim
+  - verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - verify/utils/bititers_bitcomb_test_.nim
+  - verify/utils/bititers_bitcomb_test_.nim
+  - verify/utils/bititers_bitsubseteq_test_.nim
+  - verify/utils/bititers_bitsubseteq_test_.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
   timestamp: '2024-10-25 15:54:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/graph/steiner_tree_abc364g_test.nim
-  - verify/graph/steiner_tree_abc364g_test.nim
-  - verify/utils/bititers_bitsuperset_test.nim
-  - verify/utils/bititers_bitsuperset_test.nim
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
-  - verify/utils/bititers_bitcomb_test.nim
-  - verify/utils/bititers_bitcomb_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/utils/bititers.nim
 layout: document
 redirect_from:

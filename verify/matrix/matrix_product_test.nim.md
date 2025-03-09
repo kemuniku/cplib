@@ -40,9 +40,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
     links:
     - https://judge.yosupo.jp/problem/matrix_product
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/matrix_product\n\
     {.checks:off.}\nimport cplib/modint/modint\nimport cplib/matrix/matrix\nimport\
@@ -53,15 +55,15 @@ data:
     \ in 0..<N:\n    echo C[i].join(\" \")"
   dependsOn:
   - cplib/matrix/matrix.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/matrix.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/matrix/matrix_product_test.nim
   requiredBy: []

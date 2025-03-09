@@ -14,21 +14,23 @@ data:
   - icon: ':warning:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/prufer_abc328e_test.nim
-    title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/prufer_abc328e_test.nim
-    title: verify/tree/prufer_abc328e_test.nim
+  - icon: ':warning:'
+    path: verify/tree/prufer_abc328e_test_.nim
+    title: verify/tree/prufer_abc328e_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/prufer_abc328e_test_.nim
+    title: verify/tree/prufer_abc328e_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TREE_PRUFER:\n    const CPLIB_TREE_PRUFER* = 1\n\n\
     \    import cplib/graph/graph\n    import sequtils, heapqueue\n    proc prufer_decode*(a:\
@@ -48,13 +50,13 @@ data:
   isVerificationFile: false
   path: cplib/tree/prufer.nim
   requiredBy:
+  - verify/tree/prufer_abc328e_test_.nim
+  - verify/tree/prufer_abc328e_test_.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
   timestamp: '2024-10-18 07:02:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/tree/prufer_abc328e_test.nim
-  - verify/tree/prufer_abc328e_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/tree/prufer.nim
 layout: document
 redirect_from:

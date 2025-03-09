@@ -26,9 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/home/runner/.local/lib/python3.10/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TMPL_CITRUS:\n    const CPLIB_TMPL_CITRUS* = 1\n\
     \    {.warning[UnusedImport]: off.}\n    {.hint[XDeclaredButNotUsed]: off.}\n\
@@ -115,14 +117,14 @@ data:
     \ exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))\n   \
     \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
-  timestamp: '2024-06-25 03:55:23+09:00'
+  timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
