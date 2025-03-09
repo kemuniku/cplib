@@ -24,12 +24,12 @@ for f in walkDirRec(VERIFY_ROOT):
         defer: close(reader)
         var line = readLine(reader)
         if "atcoder" in line:
-            if split_filename[^1][0] != '_' and not revert:
+            if "_." notin split_filename[^1] and not revert:
                 echo &"ignore {f}"
-                split_filename[^1] = "_" & split_filename[^1]
-            if split_filename[^1][0] == '_' and revert:
+                split_filename[^1] = split_filename[^1].replace(".", "_.")
+            if "_." in split_filename[^1] and revert:
                 echo &"revert {f}"
-                split_filename[^1] = split_filename[^1][1..^1]
+                split_filename[^1] = split_filename[^1].replace("_.", ".")
 
     var fn = split_filename.join("/")
     if f != fn:
