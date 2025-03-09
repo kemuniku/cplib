@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -44,12 +44,12 @@ data:
     \ 0..<q:\n    var p = get()\n    var ans = reflection(l, p)\n    echo &\"{ans.x.toFloat:.10f}\
     \ {ans.y.toFloat:.10f}\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/projection.nim
+  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   requiredBy: []

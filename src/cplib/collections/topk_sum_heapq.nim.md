@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: cplib/collections/deletable_heapqueue.nim
     title: cplib/collections/deletable_heapqueue.nim
-  - icon: ':x:'
+  - icon: ':warning:'
     path: cplib/collections/deletable_heapqueue.nim
     title: cplib/collections/deletable_heapqueue.nim
   _extendedRequiredBy: []

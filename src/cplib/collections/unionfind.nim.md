@@ -2,12 +2,30 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
+  - icon: ':warning:'
+    path: verify/graph/merge_tree_test_.nim
+    title: verify/graph/merge_tree_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/merge_tree_test_.nim
+    title: verify/graph/merge_tree_test_.nim
+  - icon: ':warning:'
+    path: verify/itertools/itertools_combinations_test_.nim
+    title: verify/itertools/itertools_combinations_test_.nim
+  - icon: ':warning:'
+    path: verify/itertools/itertools_combinations_test_.nim
+    title: verify/itertools/itertools_combinations_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/hld/hld_past202004o_test_.nim
+    title: verify/tree/hld/hld_past202004o_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/hld/hld_past202004o_test_.nim
+    title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/unionfind_test.nim
@@ -15,27 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/unionfind_test.nim
     title: verify/collections/unionfind_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/merge_tree_test.nim
-    title: verify/graph/merge_tree_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/merge_tree_test.nim
-    title: verify/graph/merge_tree_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/itertools/itertools_combinations_test.nim
-    title: verify/itertools/itertools_combinations_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/itertools/itertools_combinations_test.nim
-    title: verify/itertools/itertools_combinations_test.nim
-  - icon: ':x:'
-    path: verify/tree/hld/hld_past202004o_test.nim
-    title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
-    path: verify/tree/hld/hld_past202004o_test.nim
-    title: verify/tree/hld/hld_past202004o_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -68,17 +68,17 @@ data:
   isVerificationFile: false
   path: cplib/collections/unionfind.nim
   requiredBy:
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/graph/merge_tree_test_.nim
+  - verify/graph/merge_tree_test_.nim
+  - verify/itertools/itertools_combinations_test_.nim
+  - verify/itertools/itertools_combinations_test_.nim
   - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
   timestamp: '2024-11-02 13:05:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/graph/merge_tree_test.nim
-  - verify/graph/merge_tree_test.nim
-  - verify/itertools/itertools_combinations_test.nim
-  - verify/itertools/itertools_combinations_test.nim
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
 documentation_of: cplib/collections/unionfind.nim

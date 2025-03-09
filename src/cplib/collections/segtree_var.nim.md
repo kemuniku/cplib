@@ -1,7 +1,25 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_get1item_test_.nim
+    title: verify/collections/segtree_var/segtree_get1item_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_get1item_test_.nim
+    title: verify/collections/segtree_var/segtree_get1item_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor1_test_.nim
+    title: verify/collections/segtree_var/segtree_xor1_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor1_test_.nim
+    title: verify/collections/segtree_var/segtree_xor1_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor2_test_.nim
+    title: verify/collections/segtree_var/segtree_xor2_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree_var/segtree_xor2_test_.nim
+    title: verify/collections/segtree_var/segtree_xor2_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PARS_test.nim
@@ -27,12 +45,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_RMQ_test.nim
     title: verify/collections/segtree_var/segtree_RMQ_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree_var/segtree_get1item_test.nim
-    title: verify/collections/segtree_var/segtree_get1item_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree_var/segtree_get1item_test.nim
-    title: verify/collections/segtree_var/segtree_get1item_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_init_with_size_test.nim
     title: verify/collections/segtree_var/segtree_init_with_size_test.nim
@@ -63,21 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_static_test.nim
     title: verify/collections/segtree_var/segtree_static_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree_var/segtree_xor1_test.nim
-    title: verify/collections/segtree_var/segtree_xor1_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree_var/segtree_xor1_test.nim
-    title: verify/collections/segtree_var/segtree_xor1_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree_var/segtree_xor2_test.nim
-    title: verify/collections/segtree_var/segtree_xor2_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree_var/segtree_xor2_test.nim
-    title: verify/collections/segtree_var/segtree_xor2_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -175,26 +175,26 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/segtree_var.nim
-  requiredBy: []
+  requiredBy:
+  - verify/collections/segtree_var/segtree_xor1_test_.nim
+  - verify/collections/segtree_var/segtree_xor1_test_.nim
+  - verify/collections/segtree_var/segtree_get1item_test_.nim
+  - verify/collections/segtree_var/segtree_get1item_test_.nim
+  - verify/collections/segtree_var/segtree_xor2_test_.nim
+  - verify/collections/segtree_var/segtree_xor2_test_.nim
   timestamp: '2024-12-19 23:28:40+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/segtree_var/segtree_get1item_test.nim
-  - verify/collections/segtree_var/segtree_get1item_test.nim
   - verify/collections/segtree_var/segtree_PSRC_test.nim
   - verify/collections/segtree_var/segtree_PSRC_test.nim
   - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
   - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
-  - verify/collections/segtree_var/segtree_xor2_test.nim
-  - verify/collections/segtree_var/segtree_xor2_test.nim
   - verify/collections/segtree_var/segtree_PARS_test.nim
   - verify/collections/segtree_var/segtree_PARS_test.nim
   - verify/collections/segtree_var/segtree_static_test.nim
   - verify/collections/segtree_var/segtree_static_test.nim
-  - verify/collections/segtree_var/segtree_xor1_test.nim
-  - verify/collections/segtree_var/segtree_xor1_test.nim
   - verify/collections/segtree_var/segtree_newsegwith_test.nim
   - verify/collections/segtree_var/segtree_newsegwith_test.nim
   - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim

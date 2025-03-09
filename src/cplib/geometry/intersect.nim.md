@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
   - icon: ':warning:'
@@ -32,6 +32,12 @@ data:
   - icon: ':warning:'
     path: verify/geometry/CGL_2/intersect_past16m_test_.nim
     title: verify/geometry/CGL_2/intersect_past16m_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
@@ -57,15 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':x:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':x:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -99,19 +99,21 @@ data:
   dependsOn:
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - cplib/geometry/distance.nim
   - cplib/geometry/distance.nim
   timestamp: '2024-03-28 16:38:54+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
@@ -121,8 +123,6 @@ data:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
 documentation_of: cplib/geometry/intersect.nim
 layout: document
 redirect_from:

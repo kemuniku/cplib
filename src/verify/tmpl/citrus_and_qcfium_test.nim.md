@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/qcfium.nim
     title: cplib/tmpl/qcfium.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -58,13 +58,13 @@ data:
     '
   dependsOn:
   - cplib/tmpl/qcfium.nim
+  - cplib/tmpl/citrus.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/qcfium.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/citrus.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/citrus.nim
   isVerificationFile: true
   path: verify/tmpl/citrus_and_qcfium_test.nim
   requiredBy: []

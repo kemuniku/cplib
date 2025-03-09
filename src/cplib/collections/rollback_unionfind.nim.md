@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/rollback_uf_abc302ex_test_.nim
+    title: verify/collections/rollback_uf_abc302ex_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/rollback_uf_abc302ex_test_.nim
+    title: verify/collections/rollback_uf_abc302ex_test_.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/rollback_uf_abc302ex_test.nim
-    title: verify/collections/rollback_uf_abc302ex_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/rollback_uf_abc302ex_test.nim
-    title: verify/collections/rollback_uf_abc302ex_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/rollbackuf_yosupo_snap_test.nim
     title: verify/collections/rollbackuf_yosupo_snap_test.nim
@@ -61,12 +61,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/rollback_unionfind.nim
-  requiredBy: []
+  requiredBy:
+  - verify/collections/rollback_uf_abc302ex_test_.nim
+  - verify/collections/rollback_uf_abc302ex_test_.nim
   timestamp: '2024-04-30 17:08:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/rollback_uf_abc302ex_test.nim
-  - verify/collections/rollback_uf_abc302ex_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim

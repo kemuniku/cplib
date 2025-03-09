@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -14,16 +14,16 @@ data:
   - icon: ':warning:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/prufer_abc328e_test.nim
-    title: verify/tree/prufer_abc328e_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/tree/prufer_abc328e_test.nim
-    title: verify/tree/prufer_abc328e_test.nim
+  - icon: ':warning:'
+    path: verify/tree/prufer_abc328e_test_.nim
+    title: verify/tree/prufer_abc328e_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/prufer_abc328e_test_.nim
+    title: verify/tree/prufer_abc328e_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -50,13 +50,13 @@ data:
   isVerificationFile: false
   path: cplib/tree/prufer.nim
   requiredBy:
+  - verify/tree/prufer_abc328e_test_.nim
+  - verify/tree/prufer_abc328e_test_.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
   timestamp: '2024-10-18 07:02:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/tree/prufer_abc328e_test.nim
-  - verify/tree/prufer_abc328e_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/tree/prufer.nim
 layout: document
 redirect_from:

@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/itertools/itertools_combinations_test_.nim
+    title: verify/itertools/itertools_combinations_test_.nim
+  - icon: ':warning:'
+    path: verify/itertools/itertools_combinations_test_.nim
+    title: verify/itertools/itertools_combinations_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/itertools/itertools_combinations_2_test.nim
@@ -9,12 +15,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/itertools/itertools_combinations_2_test.nim
     title: verify/itertools/itertools_combinations_2_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/itertools/itertools_combinations_test.nim
-    title: verify/itertools/itertools_combinations_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/itertools/itertools_combinations_test.nim
-    title: verify/itertools/itertools_combinations_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -39,12 +39,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/itertools/combinations.nim
-  requiredBy: []
+  requiredBy:
+  - verify/itertools/itertools_combinations_test_.nim
+  - verify/itertools/itertools_combinations_test_.nim
   timestamp: '2023-11-21 13:57:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/itertools/itertools_combinations_test.nim
-  - verify/itertools/itertools_combinations_test.nim
   - verify/itertools/itertools_combinations_2_test.nim
   - verify/itertools/itertools_combinations_2_test.nim
 documentation_of: cplib/itertools/combinations.nim

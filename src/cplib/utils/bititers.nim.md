@@ -2,46 +2,46 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':x:'
+  - icon: ':warning:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/graph/steiner_tree_abc364g_test.nim
-    title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':x:'
-    path: verify/graph/steiner_tree_abc364g_test.nim
-    title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitcomb_test.nim
-    title: verify/utils/bititers_bitcomb_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitcomb_test.nim
-    title: verify/utils/bititers_bitcomb_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_descending_test.nim
-    title: verify/utils/bititers_bitsubseteq_descending_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_descending_test.nim
-    title: verify/utils/bititers_bitsubseteq_descending_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_test.nim
-    title: verify/utils/bititers_bitsubseteq_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsubseteq_test.nim
-    title: verify/utils/bititers_bitsubseteq_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsuperset_test.nim
-    title: verify/utils/bititers_bitsuperset_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/bititers_bitsuperset_test.nim
-    title: verify/utils/bititers_bitsuperset_test.nim
-  _isVerificationFailed: true
+  - icon: ':warning:'
+    path: verify/graph/steiner_tree_abc364g_test_.nim
+    title: verify/graph/steiner_tree_abc364g_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/steiner_tree_abc364g_test_.nim
+    title: verify/graph/steiner_tree_abc364g_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitcomb_test_.nim
+    title: verify/utils/bititers_bitcomb_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitcomb_test_.nim
+    title: verify/utils/bititers_bitcomb_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_descending_test_.nim
+    title: verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_descending_test_.nim
+    title: verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_test_.nim
+    title: verify/utils/bititers_bitsubseteq_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsubseteq_test_.nim
+    title: verify/utils/bititers_bitsubseteq_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsuperset_test_.nim
+    title: verify/utils/bititers_bitsuperset_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/bititers_bitsuperset_test_.nim
+    title: verify/utils/bititers_bitsuperset_test_.nim
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -105,21 +105,21 @@ data:
   isVerificationFile: false
   path: cplib/utils/bititers.nim
   requiredBy:
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/utils/bititers_bitsuperset_test_.nim
+  - verify/utils/bititers_bitsuperset_test_.nim
+  - verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - verify/utils/bititers_bitsubseteq_descending_test_.nim
+  - verify/utils/bititers_bitcomb_test_.nim
+  - verify/utils/bititers_bitcomb_test_.nim
+  - verify/utils/bititers_bitsubseteq_test_.nim
+  - verify/utils/bititers_bitsubseteq_test_.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
   timestamp: '2024-10-25 15:54:28+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - verify/graph/steiner_tree_abc364g_test.nim
-  - verify/graph/steiner_tree_abc364g_test.nim
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
-  - verify/utils/bititers_bitsubseteq_descending_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
-  - verify/utils/bititers_bitsubseteq_test.nim
-  - verify/utils/bititers_bitcomb_test.nim
-  - verify/utils/bititers_bitcomb_test.nim
-  - verify/utils/bititers_bitsuperset_test.nim
-  - verify/utils/bititers_bitsuperset_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/utils/bititers.nim
 layout: document
 redirect_from:

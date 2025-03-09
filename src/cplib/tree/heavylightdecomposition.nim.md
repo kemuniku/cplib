@@ -1,50 +1,56 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
-  - icon: ':x:'
+  - icon: ':warning:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
+  - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_graph_test_.nim
+    title: verify/graph/namori_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_graph_test_.nim
+    title: verify/graph/namori_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/auxiliarytree_test_.nim
+    title: verify/tree/auxiliarytree_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/auxiliarytree_test_.nim
+    title: verify/tree/auxiliarytree_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/hld/hld_past202004o_test_.nim
+    title: verify/tree/hld/hld_past202004o_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/hld/hld_past202004o_test_.nim
+    title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/graph/functional_graph_test.nim
-    title: verify/graph/functional_graph_test.nim
-  - icon: ':x:'
-    path: verify/graph/functional_graph_test.nim
-    title: verify/graph/functional_graph_test.nim
-  - icon: ':x:'
-    path: verify/graph/namori_graph_test.nim
-    title: verify/graph/namori_graph_test.nim
-  - icon: ':x:'
-    path: verify/graph/namori_graph_test.nim
-    title: verify/graph/namori_graph_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':x:'
-    path: verify/tree/auxiliarytree_test.nim
-    title: verify/tree/auxiliarytree_test.nim
-  - icon: ':x:'
-    path: verify/tree/auxiliarytree_test.nim
-    title: verify/tree/auxiliarytree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
@@ -63,12 +69,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
-    path: verify/tree/hld/hld_past202004o_test.nim
-    title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
-    path: verify/tree/hld/hld_past202004o_test.nim
-    title: verify/tree/hld/hld_past202004o_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
@@ -87,9 +87,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc337/submissions/50216964
@@ -209,12 +209,20 @@ data:
   isVerificationFile: false
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy:
+  - verify/tree/auxiliarytree_test_.nim
+  - verify/tree/auxiliarytree_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/namori_graph_test_.nim
+  - verify/graph/namori_graph_test_.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
   timestamp: '2025-01-30 13:56:50+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
@@ -222,20 +230,12 @@ data:
   - verify/tree/hld/hld_la_yosupo_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_lca_yosupo_test.nim
   - verify/tree/hld/hld_lca_yosupo_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/auxiliarytree_test.nim
-  - verify/tree/auxiliarytree_test.nim
-  - verify/graph/namori_graph_test.nim
-  - verify/graph/namori_graph_test.nim
-  - verify/graph/functional_graph_test.nim
-  - verify/graph/functional_graph_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
 documentation_of: cplib/tree/heavylightdecomposition.nim

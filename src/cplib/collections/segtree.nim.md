@@ -8,6 +8,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree/segtree_get1item_test_.nim
+    title: verify/collections/segtree/segtree_get1item_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree/segtree_get1item_test_.nim
+    title: verify/collections/segtree/segtree_get1item_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree/segtree_xor1_test_.nim
+    title: verify/collections/segtree/segtree_xor1_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree/segtree_xor1_test_.nim
+    title: verify/collections/segtree/segtree_xor1_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree/segtree_xor2_test_.nim
+    title: verify/collections/segtree/segtree_xor2_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/segtree/segtree_xor2_test_.nim
+    title: verify/collections/segtree/segtree_xor2_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/hld/hld_past202004o_test_.nim
+    title: verify/tree/hld/hld_past202004o_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/hld/hld_past202004o_test_.nim
+    title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/hashtable_yuki2686_test.nim
@@ -39,12 +63,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_RMQ_test.nim
     title: verify/collections/segtree/segtree_RMQ_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree/segtree_get1item_test.nim
-    title: verify/collections/segtree/segtree_get1item_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree/segtree_get1item_test.nim
-    title: verify/collections/segtree/segtree_get1item_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_init_with_size_test.nim
     title: verify/collections/segtree/segtree_init_with_size_test.nim
@@ -81,24 +99,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree/segtree_xor1_test.nim
-    title: verify/collections/segtree/segtree_xor1_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree/segtree_xor1_test.nim
-    title: verify/collections/segtree/segtree_xor1_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree/segtree_xor2_test.nim
-    title: verify/collections/segtree/segtree_xor2_test.nim
-  - icon: ':x:'
-    path: verify/collections/segtree/segtree_xor2_test.nim
-    title: verify/collections/segtree/segtree_xor2_test.nim
-  - icon: ':x:'
-    path: verify/tree/hld/hld_past202004o_test.nim
-    title: verify/tree/hld/hld_past202004o_test.nim
-  - icon: ':x:'
-    path: verify/tree/hld/hld_past202004o_test.nim
-    title: verify/tree/hld/hld_past202004o_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
@@ -123,9 +123,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -212,23 +212,27 @@ data:
   isVerificationFile: false
   path: cplib/collections/segtree.nim
   requiredBy:
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/collections/segtree/segtree_xor1_test_.nim
+  - verify/collections/segtree/segtree_xor1_test_.nim
+  - verify/collections/segtree/segtree_get1item_test_.nim
+  - verify/collections/segtree/segtree_get1item_test_.nim
+  - verify/collections/segtree/segtree_xor2_test_.nim
+  - verify/collections/segtree/segtree_xor2_test_.nim
   - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
   timestamp: '2024-12-19 23:19:11+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
-  - verify/tree/hld/hld_past202004o_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
-  - verify/collections/segtree/segtree_get1item_test.nim
-  - verify/collections/segtree/segtree_get1item_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_minleft_yuki878_test.nim
@@ -237,14 +241,10 @@ data:
   - verify/collections/segtree/segtree_init_with_size_test.nim
   - verify/collections/segtree/segtree_ordered_set_test.nim
   - verify/collections/segtree/segtree_ordered_set_test.nim
-  - verify/collections/segtree/segtree_xor2_test.nim
-  - verify/collections/segtree/segtree_xor2_test.nim
   - verify/collections/segtree/segtree_PARS_test.nim
   - verify/collections/segtree/segtree_PARS_test.nim
   - verify/collections/segtree/segtree_static_test.nim
   - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/segtree/segtree_xor1_test.nim
-  - verify/collections/segtree/segtree_xor1_test.nim
   - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_maxright_yuki878_test.nim

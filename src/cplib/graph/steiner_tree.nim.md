@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':warning:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':warning:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/graph/steiner_tree_abc364g_test.nim
-    title: verify/graph/steiner_tree_abc364g_test.nim
-  - icon: ':x:'
-    path: verify/graph/steiner_tree_abc364g_test.nim
-    title: verify/graph/steiner_tree_abc364g_test.nim
-  _isVerificationFailed: true
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/graph/steiner_tree_abc364g_test_.nim
+    title: verify/graph/steiner_tree_abc364g_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/steiner_tree_abc364g_test_.nim
+    title: verify/graph/steiner_tree_abc364g_test_.nim
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -76,12 +76,12 @@ data:
   - cplib/utils/bititers.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
-  requiredBy: []
+  requiredBy:
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/graph/steiner_tree_abc364g_test_.nim
   timestamp: '2025-03-09 17:42:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/graph/steiner_tree_abc364g_test.nim
-  - verify/graph/steiner_tree_abc364g_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/graph/steiner_tree.nim
 layout: document
 redirect_from:

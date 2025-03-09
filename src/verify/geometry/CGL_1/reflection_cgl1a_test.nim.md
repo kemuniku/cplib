@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
   - icon: ':heavy_check_mark:'
@@ -38,9 +38,9 @@ data:
     \n"
   dependsOn:
   - cplib/geometry/base.nim
+  - cplib/geometry/projection.nim
+  - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/projection.nim
-  - cplib/geometry/projection.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
   requiredBy: []

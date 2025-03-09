@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/graph/functional_graph_test.nim
-    title: verify/graph/functional_graph_test.nim
-  - icon: ':x:'
-    path: verify/graph/functional_graph_test.nim
-    title: verify/graph/functional_graph_test.nim
-  _isVerificationFailed: true
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -107,12 +107,12 @@ data:
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
-  requiredBy: []
+  requiredBy:
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/functional_graph_test_.nim
   timestamp: '2025-01-30 13:56:50+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/graph/functional_graph_test.nim
-  - verify/graph/functional_graph_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/graph/functional_graph.nim
 layout: document
 redirect_from:

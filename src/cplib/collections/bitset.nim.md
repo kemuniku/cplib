@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/bitset_andpopcnt_test.nim
-    title: verify/collections/bitset_andpopcnt_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/bitset_andpopcnt_test.nim
-    title: verify/collections/bitset_andpopcnt_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/bitset_test.nim
-    title: verify/collections/bitset_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/bitset_test.nim
-    title: verify/collections/bitset_test.nim
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/bitset_andpopcnt_test_.nim
+    title: verify/collections/bitset_andpopcnt_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/bitset_andpopcnt_test_.nim
+    title: verify/collections/bitset_andpopcnt_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/bitset_test_.nim
+    title: verify/collections/bitset_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/bitset_test_.nim
+    title: verify/collections/bitset_test_.nim
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -64,14 +64,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/bitset.nim
-  requiredBy: []
+  requiredBy:
+  - verify/collections/bitset_test_.nim
+  - verify/collections/bitset_test_.nim
+  - verify/collections/bitset_andpopcnt_test_.nim
+  - verify/collections/bitset_andpopcnt_test_.nim
   timestamp: '2024-10-02 16:59:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/collections/bitset_test.nim
-  - verify/collections/bitset_test.nim
-  - verify/collections/bitset_andpopcnt_test.nim
-  - verify/collections/bitset_andpopcnt_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/collections/bitset.nim
 layout: document
 redirect_from:

@@ -1,53 +1,53 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-    title: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-  - icon: ':x:'
-    path: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-    title: verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-  - icon: ':x:'
-    path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-    title: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - icon: ':x:'
-    path: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-    title: verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - icon: ':x:'
-    path: verify/graph/static/grid_to_graph_abc151d_test.nim
-    title: verify/graph/static/grid_to_graph_abc151d_test.nim
-  - icon: ':x:'
-    path: verify/graph/static/grid_to_graph_abc151d_test.nim
-    title: verify/graph/static/grid_to_graph_abc151d_test.nim
-  - icon: ':x:'
-    path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
-    title: verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  - icon: ':x:'
-    path: verify/graph/static/maxk_dijkstra_abc176d_test.nim
-    title: verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  _isVerificationFailed: true
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+    title: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+    title: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+    title: verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+    title: verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/static/grid_to_graph_abc151d_test_.nim
+    title: verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/static/grid_to_graph_abc151d_test_.nim
+    title: verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+    title: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+    title: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -107,25 +107,25 @@ data:
     \ k, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
-  requiredBy: []
+  requiredBy:
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   timestamp: '2025-03-09 17:42:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/static/grid_to_graph_abc151d_test.nim
-  - verify/graph/static/grid_to_graph_abc151d_test.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/graph/maxk_dijkstra.nim
 layout: document
 redirect_from:

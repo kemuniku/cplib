@@ -2,12 +2,36 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc225e_test_.nim
+    title: verify/math/fractions_abc225e_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc225e_test_.nim
+    title: verify/math/fractions_abc225e_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc226d_test_.nim
+    title: verify/math/fractions_abc226d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc226d_test_.nim
+    title: verify/math/fractions_abc226d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc308c_test_.nim
+    title: verify/math/fractions_abc308c_test_.nim
+  - icon: ':warning:'
+    path: verify/math/fractions_abc308c_test_.nim
+    title: verify/math/fractions_abc308c_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
@@ -87,39 +111,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':x:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':x:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':x:'
-    path: verify/math/fractions_abc225e_test.nim
-    title: verify/math/fractions_abc225e_test.nim
-  - icon: ':x:'
-    path: verify/math/fractions_abc225e_test.nim
-    title: verify/math/fractions_abc225e_test.nim
-  - icon: ':x:'
-    path: verify/math/fractions_abc226d_test.nim
-    title: verify/math/fractions_abc226d_test.nim
-  - icon: ':x:'
-    path: verify/math/fractions_abc226d_test.nim
-    title: verify/math/fractions_abc226d_test.nim
-  - icon: ':x:'
-    path: verify/math/fractions_abc308c_test.nim
-    title: verify/math/fractions_abc308c_test.nim
-  - icon: ':x:'
-    path: verify/math/fractions_abc308c_test.nim
-    title: verify/math/fractions_abc308c_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -203,19 +203,21 @@ data:
   isVerificationFile: false
   path: cplib/math/fractions.nim
   requiredBy:
+  - verify/math/fractions_abc226d_test_.nim
+  - verify/math/fractions_abc226d_test_.nim
+  - verify/math/fractions_abc225e_test_.nim
+  - verify/math/fractions_abc225e_test_.nim
+  - verify/math/fractions_abc308c_test_.nim
+  - verify/math/fractions_abc308c_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
   timestamp: '2025-03-09 17:42:08+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/fractions_abc308c_test.nim
-  - verify/math/fractions_abc308c_test.nim
   - verify/math/fractions_unit_test.nim
   - verify/math/fractions_unit_test.nim
-  - verify/math/fractions_abc225e_test.nim
-  - verify/math/fractions_abc225e_test.nim
-  - verify/math/fractions_abc226d_test.nim
-  - verify/math/fractions_abc226d_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
@@ -242,8 +244,6 @@ data:
   - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
 documentation_of: cplib/math/fractions.nim
 layout: document
 redirect_from:

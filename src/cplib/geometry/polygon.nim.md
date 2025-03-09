@@ -1,25 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/convex_hull_abc286ex_test_.nim
+    title: verify/geometry/convex_hull_abc286ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
@@ -69,15 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':x:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  - icon: ':x:'
-    path: verify/geometry/convex_hull_abc286ex_test.nim
-    title: verify/geometry/convex_hull_abc286ex_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -145,16 +145,18 @@ data:
     \ Polygon[T](v: vi)\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
-  requiredBy: []
+  requiredBy:
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
   timestamp: '2025-03-09 17:42:08+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
@@ -172,8 +174,6 @@ data:
   - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
-  - verify/geometry/convex_hull_abc286ex_test.nim
 documentation_of: cplib/geometry/polygon.nim
 layout: document
 redirect_from:

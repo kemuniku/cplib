@@ -3,30 +3,30 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc278c_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc278c_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc278c_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc278c_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc278d_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc278d_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/defaultdict/defaultdict_abc278d_test_.nim
+    title: verify/collections/defaultdict/defaultdict_abc278d_test_.nim
+  - icon: ':warning:'
     path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
     title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   - icon: ':warning:'
     path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
     title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/defaultdict/defaultdict_abc235c_test.nim
-    title: verify/collections/defaultdict/defaultdict_abc235c_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/defaultdict/defaultdict_abc235c_test.nim
-    title: verify/collections/defaultdict/defaultdict_abc235c_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/defaultdict/defaultdict_abc278c_test.nim
-    title: verify/collections/defaultdict/defaultdict_abc278c_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/defaultdict/defaultdict_abc278c_test.nim
-    title: verify/collections/defaultdict/defaultdict_abc278c_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/defaultdict/defaultdict_abc278d_test.nim
-    title: verify/collections/defaultdict/defaultdict_abc278d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/defaultdict/defaultdict_abc278d_test.nim
-    title: verify/collections/defaultdict/defaultdict_abc278d_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/defaultdict/defaultdict_unit_test.nim
     title: verify/collections/defaultdict/defaultdict_unit_test.nim
@@ -76,19 +76,19 @@ data:
   isVerificationFile: false
   path: cplib/collections/defaultdict.nim
   requiredBy:
+  - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278d_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278d_test_.nim
   timestamp: '2024-04-08 07:44:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/defaultdict/defaultdict_abc278d_test.nim
-  - verify/collections/defaultdict/defaultdict_abc278d_test.nim
   - verify/collections/defaultdict/defaultdict_unit_test.nim
   - verify/collections/defaultdict/defaultdict_unit_test.nim
-  - verify/collections/defaultdict/defaultdict_abc278c_test.nim
-  - verify/collections/defaultdict/defaultdict_abc278c_test.nim
-  - verify/collections/defaultdict/defaultdict_abc235c_test.nim
-  - verify/collections/defaultdict/defaultdict_abc235c_test.nim
 documentation_of: cplib/collections/defaultdict.nim
 layout: document
 redirect_from:

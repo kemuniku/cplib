@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/utils/mo_test_.nim
+    title: verify/utils/mo_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/mo_test_.nim
+    title: verify/utils/mo_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
@@ -9,12 +15,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
     title: verify/collections/range_kth_smallest_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/mo_test.nim
-    title: verify/utils/mo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/mo_test.nim
-    title: verify/utils/mo_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -48,12 +48,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/mo.nim
-  requiredBy: []
+  requiredBy:
+  - verify/utils/mo_test_.nim
+  - verify/utils/mo_test_.nim
   timestamp: '2024-03-16 18:25:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/mo_test.nim
-  - verify/utils/mo_test.nim
   - verify/collections/range_kth_smallest_test.nim
   - verify/collections/range_kth_smallest_test.nim
 documentation_of: cplib/utils/mo.nim

@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/collections/rangeset_test.nim
-    title: verify/collections/rangeset_test.nim
-  - icon: ':x:'
-    path: verify/collections/rangeset_test.nim
-    title: verify/collections/rangeset_test.nim
-  _isVerificationFailed: true
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/rangeset_test_.nim
+    title: verify/collections/rangeset_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/rangeset_test_.nim
+    title: verify/collections/rangeset_test_.nim
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -59,17 +59,17 @@ data:
     \u3068\u304D\u306B\u30D0\u30B0\u308A\u307E\u3059\n    self.st.le((x,high(int),self.default)).get()"
   dependsOn:
   - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: cplib/collections/rangeset.nim
-  requiredBy: []
+  requiredBy:
+  - verify/collections/rangeset_test_.nim
+  - verify/collections/rangeset_test_.nim
   timestamp: '2024-11-28 13:30:55+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/collections/rangeset_test.nim
-  - verify/collections/rangeset_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/collections/rangeset.nim
 layout: document
 redirect_from:

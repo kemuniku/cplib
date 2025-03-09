@@ -8,16 +8,16 @@ data:
   - icon: ':warning:'
     path: cplib/collections/topk_sum_heapq.nim
     title: cplib/collections/topk_sum_heapq.nim
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/collections/deletable_heapqueue_test.nim
-    title: verify/collections/deletable_heapqueue_test.nim
-  - icon: ':x:'
-    path: verify/collections/deletable_heapqueue_test.nim
-    title: verify/collections/deletable_heapqueue_test.nim
-  _isVerificationFailed: true
+  - icon: ':warning:'
+    path: verify/collections/deletable_heapqueue_test_.nim
+    title: verify/collections/deletable_heapqueue_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/deletable_heapqueue_test_.nim
+    title: verify/collections/deletable_heapqueue_test_.nim
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -47,13 +47,13 @@ data:
   isVerificationFile: false
   path: cplib/collections/deletable_heapqueue.nim
   requiredBy:
+  - verify/collections/deletable_heapqueue_test_.nim
+  - verify/collections/deletable_heapqueue_test_.nim
   - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/topk_sum_heapq.nim
   timestamp: '2025-03-09 17:46:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/collections/deletable_heapqueue_test.nim
-  - verify/collections/deletable_heapqueue_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/collections/deletable_heapqueue.nim
 layout: document
 redirect_from:

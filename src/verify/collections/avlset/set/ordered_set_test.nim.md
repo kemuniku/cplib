@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
   _extendedRequiredBy: []
@@ -42,8 +42,8 @@ data:
     \            echo -1"
   dependsOn:
   - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/collections/avlset/set/ordered_set_test.nim

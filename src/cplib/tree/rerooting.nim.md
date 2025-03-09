@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/tree/rerooting_big_test_.nim
+    title: verify/tree/rerooting_big_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/rerooting_big_test_.nim
+    title: verify/tree/rerooting_big_test_.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/tree/rerooting_big_test.nim
-    title: verify/tree/rerooting_big_test.nim
-  - icon: ':x:'
-    path: verify/tree/rerooting_big_test.nim
-    title: verify/tree/rerooting_big_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://trap.jp/post/1702/
@@ -71,14 +71,14 @@ data:
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/rerooting.nim
-  requiredBy: []
+  requiredBy:
+  - verify/tree/rerooting_big_test_.nim
+  - verify/tree/rerooting_big_test_.nim
   timestamp: '2025-03-09 17:43:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
-  - verify/tree/rerooting_big_test.nim
-  - verify/tree/rerooting_big_test.nim
 documentation_of: cplib/tree/rerooting.nim
 layout: document
 redirect_from:

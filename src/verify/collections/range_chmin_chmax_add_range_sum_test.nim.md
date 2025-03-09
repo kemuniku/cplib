@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -45,10 +45,10 @@ data:
     \        var l, r = ii()\n        echo seg[l..<r].sum\n"
   dependsOn:
   - cplib/collections/segtree_beats_template.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: true
   path: verify/collections/range_chmin_chmax_add_range_sum_test.nim

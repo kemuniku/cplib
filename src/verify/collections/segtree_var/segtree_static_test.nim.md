@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
   _extendedRequiredBy: []

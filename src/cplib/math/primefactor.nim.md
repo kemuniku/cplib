@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy:
@@ -38,37 +38,37 @@ data:
   - icon: ':warning:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_atcoder_test_.nim
+    title: verify/math/divisor_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_atcoder_test_.nim
+    title: verify/math/divisor_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_many_atcoder_test_.nim
+    title: verify/math/divisor_many_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/divisor_many_atcoder_test_.nim
+    title: verify/math/divisor_many_atcoder_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_table_abc284d_test_.nim
+    title: verify/math/factorize_table_abc284d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_table_abc284d_test_.nim
+    title: verify/math/factorize_table_abc284d_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_tuple_abc324b_test_.nim
+    title: verify/math/factorize_tuple_abc324b_test_.nim
+  - icon: ':warning:'
+    path: verify/math/factorize_tuple_abc324b_test_.nim
+    title: verify/math/factorize_tuple_abc324b_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_atcoder_test.nim
-    title: verify/math/divisor_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_atcoder_test.nim
-    title: verify/math/divisor_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_many_atcoder_test.nim
-    title: verify/math/divisor_many_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/divisor_many_atcoder_test.nim
-    title: verify/math/divisor_many_atcoder_test.nim
-  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_table_abc284d_test.nim
-    title: verify/math/factorize_table_abc284d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_table_abc284d_test.nim
-    title: verify/math/factorize_table_abc284d_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_tuple_abc324b_test.nim
-    title: verify/math/factorize_tuple_abc324b_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/math/factorize_tuple_abc324b_test.nim
-    title: verify/math/factorize_tuple_abc324b_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
@@ -111,17 +111,25 @@ data:
     \ result[p] += 1\n            else: result[p] = 1\n\n    proc primefactor_tuple*(n:\
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
+  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
+  - verify/math/factorize_tuple_abc324b_test_.nim
+  - verify/math/factorize_tuple_abc324b_test_.nim
+  - verify/math/divisor_many_atcoder_test_.nim
+  - verify/math/divisor_many_atcoder_test_.nim
+  - verify/math/factorize_table_abc284d_test_.nim
+  - verify/math/factorize_table_abc284d_test_.nim
+  - verify/math/divisor_atcoder_test_.nim
+  - verify/math/divisor_atcoder_test_.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   - cplib/math/divisor.nim
@@ -131,16 +139,8 @@ data:
   verifiedWith:
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
-  - verify/math/factorize_table_abc284d_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/factorize_tuple_abc324b_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_many_atcoder_test.nim
-  - verify/math/divisor_atcoder_test.nim
-  - verify/math/divisor_atcoder_test.nim
 documentation_of: cplib/math/primefactor.nim
 layout: document
 redirect_from:

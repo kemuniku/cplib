@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/rolling_hash.nim
     title: cplib/str/rolling_hash.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []
@@ -36,9 +36,9 @@ data:
     \ ans.join(\" \")\n"
   dependsOn:
   - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
+  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
-  - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   requiredBy: []

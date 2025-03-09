@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/past_ppuf_test_.nim
+    title: verify/collections/ppunionfind/past_ppuf_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/past_ppuf_test_.nim
+    title: verify/collections/ppunionfind/past_ppuf_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/stamp_rally_test_.nim
+    title: verify/collections/ppunionfind/stamp_rally_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/stamp_rally_test_.nim
+    title: verify/collections/ppunionfind/stamp_rally_test_.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/collections/ppunionfind/past_ppuf_test.nim
-    title: verify/collections/ppunionfind/past_ppuf_test.nim
-  - icon: ':x:'
-    path: verify/collections/ppunionfind/past_ppuf_test.nim
-    title: verify/collections/ppunionfind/past_ppuf_test.nim
-  - icon: ':x:'
-    path: verify/collections/ppunionfind/stamp_rally_test.nim
-    title: verify/collections/ppunionfind/stamp_rally_test.nim
-  - icon: ':x:'
-    path: verify/collections/ppunionfind/stamp_rally_test.nim
-    title: verify/collections/ppunionfind/stamp_rally_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -85,16 +85,16 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/ppunionfind.nim
-  requiredBy: []
+  requiredBy:
+  - verify/collections/ppunionfind/past_ppuf_test_.nim
+  - verify/collections/ppunionfind/past_ppuf_test_.nim
+  - verify/collections/ppunionfind/stamp_rally_test_.nim
+  - verify/collections/ppunionfind/stamp_rally_test_.nim
   timestamp: '2025-02-26 01:40:00+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/ppunionfind/past_ppuf_test.nim
-  - verify/collections/ppunionfind/past_ppuf_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
 documentation_of: cplib/collections/ppunionfind.nim
 layout: document
 redirect_from:

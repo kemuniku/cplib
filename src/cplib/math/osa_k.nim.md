@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/math/osa_k_test.nim
-    title: verify/math/osa_k_test.nim
-  - icon: ':x:'
-    path: verify/math/osa_k_test.nim
-    title: verify/math/osa_k_test.nim
-  _isVerificationFailed: true
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/math/osa_k_test_.nim
+    title: verify/math/osa_k_test_.nim
+  - icon: ':warning:'
+    path: verify/math/osa_k_test_.nim
+    title: verify/math/osa_k_test_.nim
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -45,12 +45,12 @@ data:
   - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/osa_k.nim
-  requiredBy: []
+  requiredBy:
+  - verify/math/osa_k_test_.nim
+  - verify/math/osa_k_test_.nim
   timestamp: '2024-12-08 16:30:25+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/math/osa_k_test.nim
-  - verify/math/osa_k_test.nim
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: cplib/math/osa_k.nim
 layout: document
 redirect_from:

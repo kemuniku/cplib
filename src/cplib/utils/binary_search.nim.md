@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/stamp_rally_test_.nim
+    title: verify/collections/ppunionfind/stamp_rally_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/ppunionfind/stamp_rally_test_.nim
+    title: verify/collections/ppunionfind/stamp_rally_test_.nim
+  - icon: ':warning:'
+    path: verify/str/rolling_hash_pun_test_.nim
+    title: verify/str/rolling_hash_pun_test_.nim
+  - icon: ':warning:'
+    path: verify/str/rolling_hash_pun_test_.nim
+    title: verify/str/rolling_hash_pun_test_.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/collections/ppunionfind/stamp_rally_test.nim
-    title: verify/collections/ppunionfind/stamp_rally_test.nim
-  - icon: ':x:'
-    path: verify/collections/ppunionfind/stamp_rally_test.nim
-    title: verify/collections/ppunionfind/stamp_rally_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/str/rolling_hash_pun_test.nim
-    title: verify/str/rolling_hash_pun_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/str/rolling_hash_pun_test.nim
-    title: verify/str/rolling_hash_pun_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
     title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
@@ -45,9 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/binary_search_int_test.nim
     title: verify/utils/binary_search_int_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -69,14 +69,16 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/binary_search.nim
-  requiredBy: []
+  requiredBy:
+  - verify/str/rolling_hash_pun_test_.nim
+  - verify/str/rolling_hash_pun_test_.nim
+  - verify/collections/ppunionfind/stamp_rally_test_.nim
+  - verify/collections/ppunionfind/stamp_rally_test_.nim
   timestamp: '2023-12-25 07:39:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
-  - verify/str/rolling_hash_pun_test.nim
-  - verify/str/rolling_hash_pun_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
@@ -85,8 +87,6 @@ data:
   - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_int_test.nim
   - verify/utils/binary_search_int_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
-  - verify/collections/ppunionfind/stamp_rally_test.nim
 documentation_of: cplib/utils/binary_search.nim
 layout: document
 redirect_from:
