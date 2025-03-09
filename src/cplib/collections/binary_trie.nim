@@ -135,3 +135,6 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                     S.add((now,self.value))
         dfs_node(self.root,0)
         return $S
+    
+    proc len*(self:BinaryTrie):int=
+        return self.root.value
