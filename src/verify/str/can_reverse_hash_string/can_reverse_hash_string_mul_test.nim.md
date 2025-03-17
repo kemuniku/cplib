@@ -50,16 +50,16 @@ data:
     \ + 1\n        if solve(i,M+1):\n            ans.min = (M+1-(N-i)+(N-1))//N +\
     \ 1\n\n    if ans == INF:\n        echo -1\n    else:\n        echo ans"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/constants.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:51:38+09:00'
+  timestamp: '2025-03-17 20:44:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim

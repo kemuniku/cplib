@@ -46,8 +46,8 @@ data:
   dependsOn:
   - cplib/geometry/projection.nim
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/projection.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
