@@ -86,3 +86,14 @@ when not declared CPLIB_TMPL_SHEEP:
     proc dump[T](arr:seq[seq[T]])=
         for i in 0..<len(arr):
             echo arr[i]
+
+    proc sum(slice:HSlice[int,int]):int=
+        return (slice.a+slice.b)*len(slice)//2
+    
+    proc `<`[T](l,r:seq[T]):bool=
+        for i in 0..<min(len(l),len(r)):
+            if l[i] > r[i]:
+                return false
+            elif l[i] < r[i]:
+                return true
+        return len(l) < len(r)
