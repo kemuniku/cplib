@@ -51,20 +51,20 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/utils/constants.nim
+  - cplib/math/powmod.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:51:38+09:00'
+  timestamp: '2025-03-17 20:44:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim

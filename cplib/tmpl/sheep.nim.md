@@ -114,7 +114,11 @@ data:
     \ i)\n\n    #join\u304C\u975Estring\u3067\u3081\u3061\u3083\u304F\u3061\u3083\u9045\
     \u3044\u3084\u3064\u306E\u30D1\u30C3\u30C1\n    proc join*[T: not string](a: openArray[T],\
     \ sep: string = \"\"): string = a.mapit($it).join(sep)\n\n    proc dump[T](arr:seq[seq[T]])=\n\
-    \        for i in 0..<len(arr):\n            echo arr[i]\n"
+    \        for i in 0..<len(arr):\n            echo arr[i]\n\n    proc sum(slice:HSlice[int,int]):int=\n\
+    \        return (slice.a+slice.b)*len(slice)//2\n    \n    proc `<`[T](l,r:seq[T]):bool=\n\
+    \        for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n     \
+    \           return false\n            elif l[i] < r[i]:\n                return\
+    \ true\n        return len(l) < len(r)"
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
@@ -123,7 +127,7 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2025-03-09 17:51:38+09:00'
+  timestamp: '2025-03-17 20:44:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/hash_string/hash_string_mul_test.nim
