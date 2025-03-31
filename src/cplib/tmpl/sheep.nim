@@ -33,6 +33,16 @@ when not declared CPLIB_TMPL_SHEEP:
     #chmin,chmax
     template `max=`(x, y) = x = max(x, y)
     template `min=`(x, y) = x = min(x, y)
+    proc chmin[T](x: var T, y: T):bool=
+        if x > y:
+            x = y
+            return true
+        return false
+    proc chmax[T](x: var T, y: T):bool=
+        if x < y:
+            x = y
+            return true
+        return false
     #bit演算
     proc `%`*(x: int, y: int): int =
         result = x mod y
