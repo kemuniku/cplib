@@ -66,12 +66,12 @@ data:
     \\n\")\n\n\n\n\n\n"
   dependsOn:
   - cplib/utils/constants.nim
+  - cplib/collections/SWAG.nim
+  - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/collections/SWAG.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/SWAG.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/auxiliaryweightedtree_test.nim

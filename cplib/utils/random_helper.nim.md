@@ -149,16 +149,16 @@ data:
     \     result = newseqwith(n,0)\n        for x in tmp:\n            result[x] =\
     \ 1"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/graph/graph.nim
   - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   - cplib/math/powmod.nim
+  - cplib/tree/prufer.nim
+  - cplib/math/isprime.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []

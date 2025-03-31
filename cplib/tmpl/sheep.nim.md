@@ -88,36 +88,40 @@ data:
     \ true:\n            c = getchar()\n            if c == ' ' or c == '\\n' or c\
     \ == '\\255':\n                break\n            result &= c\n    #chmin,chmax\n\
     \    template `max=`(x, y) = x = max(x, y)\n    template `min=`(x, y) = x = min(x,\
-    \ y)\n    #bit\u6F14\u7B97\n    proc `%`*(x: int, y: int): int =\n        result\
-    \ = x mod y\n        if y > 0 and result < 0: result += y\n        if y < 0 and\
-    \ result > 0: result += y\n    proc `//`*(x: int, y: int): int{.inline.} =\n \
-    \       result = x div y\n        if y > 0 and result * y > x: result -= 1\n \
-    \       if y < 0 and result * y < x: result -= 1\n    proc `%=`(x: var int, y:\
-    \ int): void = x = x%y\n    proc `//=`(x: var int, y: int): void = x = x//y\n\
-    \    proc `**`(x: int, y: int): int = x^y\n    proc `**=`(x: var int, y: int):\
-    \ void = x = x^y\n    proc `^`(x: int, y: int): int = x xor y\n    proc `|`(x:\
-    \ int, y: int): int = x or y\n    proc `&`(x: int, y: int): int = x and y\n  \
-    \  proc `>>`(x: int, y: int): int = x shr y\n    proc `<<`(x: int, y: int): int\
-    \ = x shl y\n    proc `~`(x: int): int = not x\n    proc `^=`(x: var int, y: int):\
-    \ void = x = x ^ y\n    proc `&=`(x: var int, y: int): void = x = x & y\n    proc\
-    \ `|=`(x: var int, y: int): void = x = x | y\n    proc `>>=`(x: var int, y: int):\
-    \ void = x = x >> y\n    proc `<<=`(x: var int, y: int): void = x = x << y\n \
-    \   proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0\n    #\u4FBF\u5229\
-    \u306A\u5909\u63DB\n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n    #\u5B9A\
-    \u6570\n    include cplib/utils/constants\n    const INF = INF64\n    #converter\n\
-    \n    #range\n    iterator range(start: int, ends: int, step: int): int =\n  \
-    \      var i = start\n        if step < 0:\n            while i > ends:\n    \
-    \            yield i\n                i += step\n        elif step > 0:\n    \
-    \        while i < ends:\n                yield i\n                i += step\n\
-    \    iterator range(ends: int): int = (for i in 0..<ends: yield i)\n    iterator\
-    \ range(start: int, ends: int): int = (for i in\n            start..<ends: yield\
-    \ i)\n\n    #join\u304C\u975Estring\u3067\u3081\u3061\u3083\u304F\u3061\u3083\u9045\
-    \u3044\u3084\u3064\u306E\u30D1\u30C3\u30C1\n    proc join*[T: not string](a: openArray[T],\
-    \ sep: string = \"\"): string = a.mapit($it).join(sep)\n\n    proc dump[T](arr:seq[seq[T]])=\n\
-    \        for i in 0..<len(arr):\n            echo arr[i]\n\n    proc sum(slice:HSlice[int,int]):int=\n\
-    \        return (slice.a+slice.b)*len(slice)//2\n    \n    proc `<`[T](l,r:seq[T]):bool=\n\
-    \        for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n     \
-    \           return false\n            elif l[i] < r[i]:\n                return\
+    \ y)\n    proc chmin[T](x: var T, y: T):bool=\n        if x > y:\n           \
+    \ x = y\n            return true\n        return false\n    proc chmax[T](x: var\
+    \ T, y: T):bool=\n        if x < y:\n            x = y\n            return true\n\
+    \        return false\n    #bit\u6F14\u7B97\n    proc `%`*(x: int, y: int): int\
+    \ =\n        result = x mod y\n        if y > 0 and result < 0: result += y\n\
+    \        if y < 0 and result > 0: result += y\n    proc `//`*(x: int, y: int):\
+    \ int{.inline.} =\n        result = x div y\n        if y > 0 and result * y >\
+    \ x: result -= 1\n        if y < 0 and result * y < x: result -= 1\n    proc `%=`(x:\
+    \ var int, y: int): void = x = x%y\n    proc `//=`(x: var int, y: int): void =\
+    \ x = x//y\n    proc `**`(x: int, y: int): int = x^y\n    proc `**=`(x: var int,\
+    \ y: int): void = x = x^y\n    proc `^`(x: int, y: int): int = x xor y\n    proc\
+    \ `|`(x: int, y: int): int = x or y\n    proc `&`(x: int, y: int): int = x and\
+    \ y\n    proc `>>`(x: int, y: int): int = x shr y\n    proc `<<`(x: int, y: int):\
+    \ int = x shl y\n    proc `~`(x: int): int = not x\n    proc `^=`(x: var int,\
+    \ y: int): void = x = x ^ y\n    proc `&=`(x: var int, y: int): void = x = x &\
+    \ y\n    proc `|=`(x: var int, y: int): void = x = x | y\n    proc `>>=`(x: var\
+    \ int, y: int): void = x = x >> y\n    proc `<<=`(x: var int, y: int): void =\
+    \ x = x << y\n    proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0\n \
+    \   #\u4FBF\u5229\u306A\u5909\u63DB\n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n\
+    \    #\u5B9A\u6570\n    include cplib/utils/constants\n    const INF = INF64\n\
+    \    #converter\n\n    #range\n    iterator range(start: int, ends: int, step:\
+    \ int): int =\n        var i = start\n        if step < 0:\n            while\
+    \ i > ends:\n                yield i\n                i += step\n        elif\
+    \ step > 0:\n            while i < ends:\n                yield i\n          \
+    \      i += step\n    iterator range(ends: int): int = (for i in 0..<ends: yield\
+    \ i)\n    iterator range(start: int, ends: int): int = (for i in\n           \
+    \ start..<ends: yield i)\n\n    #join\u304C\u975Estring\u3067\u3081\u3061\u3083\
+    \u304F\u3061\u3083\u9045\u3044\u3084\u3064\u306E\u30D1\u30C3\u30C1\n    proc join*[T:\
+    \ not string](a: openArray[T], sep: string = \"\"): string = a.mapit($it).join(sep)\n\
+    \n    proc dump[T](arr:seq[seq[T]])=\n        for i in 0..<len(arr):\n       \
+    \     echo arr[i]\n\n    proc sum(slice:HSlice[int,int]):int=\n        return\
+    \ (slice.a+slice.b)*len(slice)//2\n    \n    proc `<`[T](l,r:seq[T]):bool=\n \
+    \       for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n      \
+    \          return false\n            elif l[i] < r[i]:\n                return\
     \ true\n        return len(l) < len(r)"
   dependsOn:
   - cplib/utils/constants.nim
@@ -127,7 +131,7 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2025-03-17 20:44:29+09:00'
+  timestamp: '2025-04-01 08:20:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/hash_string/hash_string_mul_test.nim
