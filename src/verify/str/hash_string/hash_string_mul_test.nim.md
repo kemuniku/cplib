@@ -55,14 +55,14 @@ data:
   dependsOn:
   - cplib/str/hash_string.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/str/hash_string.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []
-  timestamp: '2025-03-17 20:44:29+09:00'
+  timestamp: '2025-04-01 08:20:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_mul_test.nim

@@ -55,13 +55,13 @@ data:
   dependsOn:
   - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/distance.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/distance.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/distance_cgl2d_test.nim
