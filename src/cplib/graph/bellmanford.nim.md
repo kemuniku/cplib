@@ -90,22 +90,22 @@ data:
     \ start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =\n        shortest_path_bellmanford_impl(G,\
     \ start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
   requiredBy: []
   timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
 documentation_of: cplib/graph/bellmanford.nim
 layout: document
 redirect_from:

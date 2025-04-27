@@ -104,10 +104,10 @@ data:
   timestamp: '2024-09-21 18:34:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/persistent_binary_trie_test.nim
-  - verify/collections/persistent_binary_trie_test.nim
   - verify/collections/persistnt_binary_trie_unionfind_test.nim
   - verify/collections/persistnt_binary_trie_unionfind_test.nim
+  - verify/collections/persistent_binary_trie_test.nim
+  - verify/collections/persistent_binary_trie_test.nim
 documentation_of: cplib/collections/persistent_binary_trie.nim
 layout: document
 redirect_from:

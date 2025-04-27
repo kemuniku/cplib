@@ -53,10 +53,10 @@ data:
     \ self.lazy[p])\n        self.all_apply(2*p + 1, self.lazy[p])\n        self.lazy[p]\
     \ = self.id\n\n    template all_push(self, p: untyped) =\n        for i in countdown(self.log,\
     \ 1): self.push(p shr i)\n\n    proc update*[S, F](self: var LazySegmentTree[S,\
-    \ F], p: Natural, val: var S) =\n        ## p\u306E\u8981\u7D20\u3092val\u306B\
-    \u5909\u66F4\u3057\u307E\u3059\u3002\n        assert p < self.length\n       \
-    \ var p = p + self.lastnode\n        self.all_push(p)\n        self.arr[p] = val\n\
-    \        for i in 1..self.log:\n            self.arr[p shr i] = self.merge(self.arr[2*(p\
+    \ F], p: Natural, val: S) =\n        ## p\u306E\u8981\u7D20\u3092val\u306B\u5909\
+    \u66F4\u3057\u307E\u3059\u3002\n        assert p < self.length\n        var p\
+    \ = p + self.lastnode\n        self.all_push(p)\n        self.arr[p] = val\n \
+    \       for i in 1..self.log:\n            self.arr[p shr i] = self.merge(self.arr[2*(p\
     \ shr i)], self.arr[2*(p shr i)+1])\n\n    proc `[]`*[S, F](self: var LazySegmentTree[S,\
     \ F], p: Natural): S =\n        assert p < self.length\n        self.all_push(p\
     \ + self.lastnode)\n        return self.arr[p + self.lastnode]\n\n    proc get*[S,\
@@ -112,13 +112,13 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree.nim
   requiredBy: []
-  timestamp: '2024-09-21 20:51:22+09:00'
+  timestamp: '2025-04-27 16:37:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
 documentation_of: cplib/collections/lazysegtree.nim
 layout: document
 redirect_from:

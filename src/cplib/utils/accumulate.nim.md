@@ -85,18 +85,18 @@ data:
   timestamp: '2024-08-17 01:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/accumulate/accumulatedr_2_test.nim
+  - verify/utils/accumulate/accumulatedr_2_test.nim
   - verify/utils/accumulate/accumulate_test.nim
   - verify/utils/accumulate/accumulate_test.nim
+  - verify/utils/accumulate/accumulatedr_test.nim
+  - verify/utils/accumulate/accumulatedr_test.nim
   - verify/utils/accumulate/accumulated_2_test.nim
   - verify/utils/accumulate/accumulated_2_test.nim
   - verify/utils/accumulate/accumulated_test.nim
   - verify/utils/accumulate/accumulated_test.nim
-  - verify/utils/accumulate/accumulatedr_test.nim
-  - verify/utils/accumulate/accumulatedr_test.nim
   - verify/utils/accumulate/accumulater_test.nim
   - verify/utils/accumulate/accumulater_test.nim
-  - verify/utils/accumulate/accumulatedr_2_test.nim
-  - verify/utils/accumulate/accumulatedr_2_test.nim
 documentation_of: cplib/utils/accumulate.nim
 layout: document
 redirect_from:
