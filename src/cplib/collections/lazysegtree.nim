@@ -48,7 +48,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     template all_push(self, p: untyped) =
         for i in countdown(self.log, 1): self.push(p shr i)
 
-    proc update*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: var S) =
+    proc update*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: S) =
         ## pの要素をvalに変更します。
         assert p < self.length
         var p = p + self.lastnode
