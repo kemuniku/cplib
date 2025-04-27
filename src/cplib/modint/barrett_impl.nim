@@ -1,7 +1,5 @@
 when not declared CPLIB_MODINT_MODINT_BARRETT:
     const CPLIB_MODINT_MODINT_BARRETT* = 1
-    when compileOption("mm", "orc") or compileOption("mm", "arc"):
-        {.fatal: "Plese Use refc".}
     import std/macros
     type StaticBarrettModint*[M: static[uint32]] = object
         a: uint32
@@ -12,6 +10,7 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
     proc get_im*(M: uint32): uint = cast[uint](-1) div M + 1
     func get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]): ptr[tuple[M, im: uint]] =
         {.cast(noSideEffect).}:
+            #FIXME: nim 2.0 で global の動作が怪しいので、変更したい
             var p {.global.}: tuple[M, im: uint] = (998244353u, get_im(998244353u32))
             return p.addr
     template get_M*(T: typedesc[BarrettModint]): uint =
