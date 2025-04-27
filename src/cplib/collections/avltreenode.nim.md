@@ -9,6 +9,12 @@ data:
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
   - icon: ':warning:'
+    path: cplib/collections/avlset_old.nim
+    title: cplib/collections/avlset_old.nim
+  - icon: ':warning:'
+    path: cplib/collections/avlset_old.nim
+    title: cplib/collections/avlset_old.nim
+  - icon: ':warning:'
     path: cplib/collections/rangeset.nim
     title: cplib/collections/rangeset.nim
   - icon: ':warning:'
@@ -154,88 +160,86 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_AVLTREE:\n    const CPLIB_COLLECTIONS_AVLTREE*\
-    \ = 1\n    when compileOption(\"mm\", \"orc\") or compileOption(\"mm\", \"arc\"\
-    ):\n        {.fatal: \"Plese Use refc\".}\n    # \u4EE5\u4E0B\u3092Nim\u306B\u79FB\
-    \u690D\n    # https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html\n\
+    \ = 1\n    # \u4EE5\u4E0B\u3092Nim\u306B\u79FB\u690D\n    # https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html\n\
     \    type AvlTreeNode*[K] = ref object\n        l*, r*, p*: AvlTreeNode[K]\n \
-    \       h*, len*: int\n        key*: K\n    proc get_avltree_nilnode*[K](): AvlTreeNode[K]\
-    \ =\n        let nil_node {.global.} = (block:\n            var nil_node = AvlTreeNode[K](h:\
-    \ 0, len: 0)\n            nil_node.l = nil_node\n            nil_node.r = nil_node\n\
-    \            nil_node.p = nil_node\n            nil_node\n        )\n        return\
-    \ nil_node\n    proc update[K](node: AvlTreeNode[K]) =\n        node.h = max(node.l.h\
-    \ + 1, node.r.h + 1)\n        node.len = 1 + node.l.len + node.r.len\n    proc\
-    \ set_children[K](node, l, r: AvlTreeNode[K]) =\n        node.l = l\n        if\
-    \ l != get_avltree_nilnode[K](): l.p = node\n        node.r = r\n        if r\
-    \ != get_avltree_nilnode[K](): r.p = node\n        node.update()\n    proc rebalance[K](node:\
-    \ AvlTreeNode[K]): AvlTreeNode[K] =\n        var node = node\n        var l =\
-    \ node.l\n        var r = node.r\n        if l.h + 1 < r.h:\n            var rl\
-    \ = r.l\n            var rr = r.r\n            if rl.h <= rr.h:\n            \
-    \    r.p = node.p\n                node.set_children(l, rl)\n                r.set_children(node,\
+    \       h*, len*: int\n        key*: K\n    proc update[K](node: AvlTreeNode[K])\
+    \ =\n        node.h = 0\n        node.len = 1\n        if not node.l.isNil:\n\
+    \            if node.l.h + 1 > node.h: node.h = node.l.h + 1\n            node.len\
+    \ += node.l.len\n        if not node.r.isNil:\n            if node.r.h + 1 > node.h:\
+    \ node.h = node.r.h + 1\n            node.len += node.r.len\n    proc set_children[K](node,\
+    \ l, r: AvlTreeNode[K]) =\n        node.l = l\n        if not l.isNil: l.p = node\n\
+    \        node.r = r\n        if not r.isNil: r.p = node\n        node.update()\n\
+    \    proc rebalance[K](node: AvlTreeNode[K]): AvlTreeNode[K] =\n        var node\
+    \ = node\n        var l = node.l\n        var r = node.r\n        var lh = if\
+    \ not l.isNil: l.h else: 0\n        var rh = if not r.isNil: r.h else: 0\n   \
+    \     if lh + 1 < rh:\n            var rl = r.l\n            var rr = r.r\n  \
+    \          var rlh = if not rl.isNil: rl.h else: 0\n            var rrh = if not\
+    \ rr.isNil: rr.h else: 0\n            if rlh <= rrh:\n                r.p = node.p\n\
+    \                node.set_children(l, rl)\n                r.set_children(node,\
     \ rr)\n                return r\n            else:\n                rl.p = node.p\n\
     \                node.set_children(l, rl.l)\n                r.set_children(rl.r,\
     \ rr)\n                rl.set_children(node, r)\n                return rl\n \
-    \       elif r.h + 1 < l.h:\n            var ll = l.l\n            var lr = l.r\n\
-    \            if lr.h <= ll.h:\n                l.p = node.p\n                node.set_children(lr,\
-    \ r)\n                l.set_children(ll, node)\n                return l\n   \
-    \         else:\n                lr.p = node.p\n                node.set_children(lr.r,\
-    \ r)\n                l.set_children(ll, lr.l)\n                lr.set_children(l,\
-    \ node)\n                return lr\n        node.update\n        return node\n\
-    \    proc rebalance_to_root[K](node: AvlTreeNode[K]): AvlTreeNode[K] =\n     \
-    \   var node = node\n        while node.p != get_avltree_nilnode[K]():\n     \
-    \       var cp = node.p\n            if cp.l == node: cp.l = node.rebalance\n\
-    \            else: cp.r = node.rebalance\n            node = cp\n        return\
-    \ node.rebalance\n    proc rootOf*[K](node: AvlTreeNode[K]): AvlTreeNode[K] =\n\
-    \        result = node\n        while result.p != get_avltree_nilnode[K](): result\
+    \       elif rh + 1 < lh:\n            var ll = l.l\n            var lr = l.r\n\
+    \            var llh = if not ll.isNil: ll.h else: 0\n            var lrh = if\
+    \ not lr.isNil: lr.h else: 0\n            if lrh <= llh:\n                l.p\
+    \ = node.p\n                node.set_children(lr, r)\n                l.set_children(ll,\
+    \ node)\n                return l\n            else:\n                lr.p = node.p\n\
+    \                node.set_children(lr.r, r)\n                l.set_children(ll,\
+    \ lr.l)\n                lr.set_children(l, node)\n                return lr\n\
+    \        node.update\n        return node\n    proc rebalance_to_root[K](node:\
+    \ AvlTreeNode[K]): AvlTreeNode[K] =\n        var node = node\n        while not\
+    \ node.p.isNil:\n            var cp = node.p\n            if cp.l == node: cp.l\
+    \ = node.rebalance\n            else: cp.r = node.rebalance\n            node\
+    \ = cp\n        return node.rebalance\n    proc rootOf*[K](node: AvlTreeNode[K]):\
+    \ AvlTreeNode[K] =\n        result = node\n        while not result.p.isNil: result\
     \ = result.p\n    proc node_search[K](node: AvlTreeNode[K], key: K, strict: bool):\
-    \ (AvlTreeNode[K], AvlTreeNode[K]) =\n        var node = node\n        var result_l\
-    \ = get_avltree_nilnode[K]()\n        var result_r = get_avltree_nilnode[K]()\n\
-    \        while node != get_avltree_nilnode[K]():\n            if (strict and key\
-    \ < node.key) or (not strict and key <= node.key):\n                result_r =\
-    \ node\n                node = node.l\n            else:\n                result_l\
-    \ = node\n                node = node.r\n        return (result_l, result_r)\n\
-    \    proc lower_bound_node*[K](node: AvlTreeNode[K], key: K): (AvlTreeNode[K],\
-    \ AvlTreeNode[K]) = node_search[K](node, key, false)\n    proc upper_bound_node*[K](node:\
-    \ AvlTreeNode[K], key: K): (AvlTreeNode[K], AvlTreeNode[K]) = node_search[K](node,\
-    \ key, true)\n    proc insert*[K](node, x: AvlTreeNode[K]): AvlTreeNode[K] =\n\
-    \        if node == get_avltree_nilnode[K](): return x\n        var (ql, qr) =\
-    \ node.lower_bound_node(x.key)\n        if ql != get_avltree_nilnode[K]() and\
-    \ ql.r == get_avltree_nilnode[K]():\n            ql.set_children(ql.l, x)\n  \
-    \          return ql.rebalance_to_root\n        qr.set_children(x, qr.r)\n   \
-    \     return qr.rebalance_to_root\n    proc erase*[K](node, x, nxt: AvlTreeNode[K]):\
-    \ AvlTreeNode[K] =\n        var xp = x.p\n        result = get_avltree_nilnode[K]()\n\
-    \        if x.r == get_avltree_nilnode[K]():\n            var xl = x.l\n     \
-    \       if xl != get_avltree_nilnode[K](): xl.p = xp\n            if xp != get_avltree_nilnode[K]():\n\
-    \                if xp.l == x: xp.l = xl\n                else: xp.r = xl\n  \
-    \          if xp == get_avltree_nilnode[K](): result = xl\n            else: result\
-    \ = xp.rebalance_to_root\n        else:\n            var nxtp = nxt.p\n      \
-    \      var nxtr = nxt.r\n            if xp != get_avltree_nilnode[K]():\n    \
-    \            if xp.l == x: xp.l = nxt\n                else: xp.r = nxt\n    \
-    \        nxt.p = xp\n            nxt.l = x.l\n            if nxt.l != get_avltree_nilnode[K]():\
+    \ (AvlTreeNode[K], AvlTreeNode[K]) =\n        var node = node\n        var result_l:\
+    \ AvlTreeNode[K] = nil\n        var result_r: AvlTreeNode[K] = nil\n        while\
+    \ not node.isNil:\n            if (strict and key < node.key) or (not strict and\
+    \ key <= node.key):\n                result_r = node\n                node = node.l\n\
+    \            else:\n                result_l = node\n                node = node.r\n\
+    \        return (result_l, result_r)\n    proc lower_bound_node*[K](node: AvlTreeNode[K],\
+    \ key: K): (AvlTreeNode[K], AvlTreeNode[K]) = node_search[K](node, key, false)\n\
+    \    proc upper_bound_node*[K](node: AvlTreeNode[K], key: K): (AvlTreeNode[K],\
+    \ AvlTreeNode[K]) = node_search[K](node, key, true)\n    proc insert*[K](node,\
+    \ x: AvlTreeNode[K]): AvlTreeNode[K] =\n        if node.isNil: return x\n    \
+    \    var (ql, qr) = node.lower_bound_node(x.key)\n        if not ql.isNil and\
+    \ ql.r.isNil:\n            ql.set_children(ql.l, x)\n            return ql.rebalance_to_root\n\
+    \        qr.set_children(x, qr.r)\n        return qr.rebalance_to_root\n    proc\
+    \ erase*[K](node, x, nxt: AvlTreeNode[K]): AvlTreeNode[K] =\n        var xp =\
+    \ x.p\n        if x.r.isNil:\n            var xl = x.l\n            if not xl.isNil:\
+    \ xl.p = xp\n            if not xp.isNil:\n                if xp.l == x: xp.l\
+    \ = xl\n                else: xp.r = xl\n            if xp.isNil: result = xl\n\
+    \            else: result = xp.rebalance_to_root\n        else:\n            var\
+    \ nxtp = nxt.p\n            var nxtr = nxt.r\n            if not xp.isNil:\n \
+    \               if xp.l == x: xp.l = nxt\n                else: xp.r = nxt\n \
+    \           nxt.p = xp\n            nxt.l = x.l\n            if not nxt.l.isNil:\
     \ nxt.l.p = nxt\n            if x.r == nxt:\n                nxt.update\n    \
     \            result = nxt.rebalance_to_root\n            else:\n             \
     \   if nxtp.l == nxt: nxtp.l = nxtr\n                else: nxtp.r = nxtr\n   \
-    \             if nxtr != get_avltree_nilnode[K](): nxtr.p = nxtp\n           \
-    \     nxt.r = x.r\n                nxt.r.p = nxt\n                nxt.update\n\
-    \                result = nxtp.rebalance_to_root\n        x.l = get_avltree_nilnode[K]()\n\
-    \        x.r = get_avltree_nilnode[K]()\n        x.p = get_avltree_nilnode[K]()\n\
-    \        x.update\n    proc next*[K](node: AvlTreeNode[K]): AvlTreeNode[K] =\n\
-    \        var node = node\n        if node.r != get_avltree_nilnode[K]():\n   \
-    \         node = node.r\n            while node.l != get_avltree_nilnode[K]():\
-    \ node = node.l\n            return node\n        while node.p.r == node: node\
-    \ = node.p\n        return node.p\n    proc prev*[K](node: AvlTreeNode[K]): AvlTreeNode[K]\
-    \ =\n        var node = node\n        if node.l != get_avltree_nilnode[K]():\n\
-    \            node = node.l\n            while node.r != get_avltree_nilnode[K]():\
-    \ node = node.r\n            return node\n        while node.p.l == node: node\
-    \ = node.p\n        return node.p\n    proc get*[K](node: AvlTreeNode[K], idx:\
-    \ int): AvlTreeNode[K] =\n        assert idx >= 0\n        if idx >= node.len:\
-    \ return get_avltree_nilnode[K]()\n        result = node\n        var idx = idx\n\
-    \        while result.l.len != idx:\n            if result.l.len < idx:\n    \
-    \            idx -= result.l.len + 1\n                result = result.r\n    \
-    \        else:\n                result = result.l\n    proc index*[K](node: AvlTreeNode[K]):\
-    \ int =\n        var node = node\n        if node == get_avltree_nilnode[K]():\
-    \ return 0\n        result = node.l.len\n        while node.p != get_avltree_nilnode[K]():\n\
-    \            if node.p.r == node: result += node.p.l.len + 1\n            node\
-    \ = node.p\n\n"
+    \             if not nxtr.isNil: nxtr.p = nxtp\n                nxt.r = x.r\n\
+    \                nxt.r.p = nxt\n                nxt.update\n                result\
+    \ = nxtp.rebalance_to_root\n        x.l = nil\n        x.r = nil\n        x.p\
+    \ = nil\n        x.update\n    proc next*[K](node: AvlTreeNode[K]): AvlTreeNode[K]\
+    \ =\n        var node = node\n        if not node.r.isNil:\n            node =\
+    \ node.r\n            while not node.l.isNil: node = node.l\n            return\
+    \ node\n        while not node.p.isNil and node.p.r == node: node = node.p\n \
+    \       return node.p\n    proc prev*[K](node: AvlTreeNode[K]): AvlTreeNode[K]\
+    \ =\n        var node = node\n        if not node.l.isNil:\n            node =\
+    \ node.l\n            while not node.r.isNil: node = node.r\n            return\
+    \ node\n        while not node.p.isNil and node.p.l == node: node = node.p\n \
+    \       return node.p\n    proc get*[K](node: AvlTreeNode[K], idx: int): AvlTreeNode[K]\
+    \ =\n        assert idx >= 0\n        if idx >= node.len: return nil\n       \
+    \ result = node\n        var idx = idx\n        while (result.l.isNil and idx\
+    \ != 0) or (not result.l.isNil and result.l.len != idx):\n            if result.l.isNil\
+    \ or result.l.len < idx:\n                idx -= (if result.l.isNil: 1 else: result.l.len\
+    \ + 1)\n                assert(not result.r.isNil)\n                result = result.r\n\
+    \            else:\n                result = result.l\n    proc index*[K](node:\
+    \ AvlTreeNode[K]): int =\n        var node = node\n        if node.isNil: return\
+    \ 0\n        result = (if node.l.isNil: 0 else: node.l.len)\n        while not\
+    \ node.p.isNil:\n            if node.p.r == node:\n                if node.p.l.isNil:\
+    \ result += 1\n                else: result += node.p.l.len + 1\n            node\
+    \ = node.p\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/avltreenode.nim
@@ -284,7 +288,9 @@ data:
   - cplib/collections/avlset.nim
   - cplib/collections/rangeset.nim
   - cplib/collections/rangeset.nim
-  timestamp: '2024-07-21 20:30:56+09:00'
+  - cplib/collections/avlset_old.nim
+  - cplib/collections/avlset_old.nim
+  timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/avlset/set/ordered_set_test.nim

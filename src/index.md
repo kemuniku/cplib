@@ -12,9 +12,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/avlset.nim
       title: cplib/collections/avlset.nim
+    - icon: ':warning:'
+      path: cplib/collections/avlset_old.nim
+      title: cplib/collections/avlset_old.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/avltreenode.nim
       title: cplib/collections/avltreenode.nim
+    - icon: ':warning:'
+      path: cplib/collections/avltreenode_old.nim
+      title: cplib/collections/avltreenode_old.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/binary_trie.nim
       title: cplib/collections/binary_trie.nim

@@ -67,7 +67,7 @@ data:
   requiredBy:
   - verify/collections/rangeset_test_.nim
   - verify/collections/rangeset_test_.nim
-  timestamp: '2024-11-28 13:30:55+09:00'
+  timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/rangeset.nim

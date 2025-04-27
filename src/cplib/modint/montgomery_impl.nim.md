@@ -165,10 +165,9 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MODINT_MODINT_MONTGOMERY:\n    const CPLIB_MODINT_MODINT_MONTGOMERY*\
-    \ = 1\n    when compileOption(\"mm\", \"orc\") or compileOption(\"mm\", \"arc\"\
-    ):\n        {.fatal: \"Plese Use refc\".}\n    import std/macros\n    type StaticMontgomeryModint*[M:\
-    \ static[uint32]] = object\n        a: uint32\n    type DynamicMontgomeryModint*[M:\
-    \ static[uint32]] = object\n        a: uint32\n    type MontgomeryModint* = StaticMontgomeryModint\
+    \ = 1\n    import std/macros\n    type StaticMontgomeryModint*[M: static[uint32]]\
+    \ = object\n        a: uint32\n    type DynamicMontgomeryModint*[M: static[uint32]]\
+    \ = object\n        a: uint32\n    type MontgomeryModint* = StaticMontgomeryModint\
     \ or DynamicMontgomeryModint\n\n    proc get_r*(M: uint32): uint32 =\n       \
     \ result = M\n        for _ in 0..<4: result *= 2u32 - M * result\n    proc get_n2*(M:\
     \ uint32): uint32 = uint32((not uint(M - 1u32)) mod uint(M))\n    proc check_params(M,\
@@ -176,8 +175,10 @@ data:
     \      assert (M and 1u32) == 1u32, \"invalid mod % 2 == 0\"\n        assert r\
     \ * M == 1, \"r * mod != 1\"\n    func get_param*[M: static[uint32]](self: typedesc[DynamicMontgomeryModint[M]]):\
     \ ptr[tuple[M, r, n2: uint32]] =\n        {.cast(noSideEffect).}:\n          \
-    \  var p {.global.}: tuple[M, r, n2: uint32] = (998244353u32, get_r(998244353u32),\
-    \ get_n2(998244353u32))\n            return p.addr\n    template get_M*(T: typedesc[MontgomeryModint]):\
+    \  #FIXME: nim 2.0 \u3067 global \u306E\u52D5\u4F5C\u304C\u602A\u3057\u3044\u306E\
+    \u3067\u3001\u5909\u66F4\u3057\u305F\u3044\n            var p {.global.}: tuple[M,\
+    \ r, n2: uint32] = (998244353u32, get_r(998244353u32), get_n2(998244353u32))\n\
+    \            return p.addr\n    template get_M*(T: typedesc[MontgomeryModint]):\
     \ uint32 =\n        when T is StaticMontgomeryModint: T.M\n        else: (get_param(T))[].M\n\
     \    proc setMod*[T: static[uint32]](self: typedesc[DynamicMontgomeryModint[T]],\
     \ M: SomeInteger or SomeUnsignedInt) =\n        var r = get_r(M.uint32)\n    \
@@ -262,7 +263,7 @@ data:
   - verify/modint/montgomery/abc277g_dynamic_test_.nim
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  timestamp: '2024-07-21 20:30:56+09:00'
+  timestamp: '2025-04-27 18:34:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/modint/integer_operation_test.nim

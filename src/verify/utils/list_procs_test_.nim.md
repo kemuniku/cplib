@@ -38,10 +38,10 @@ data:
     \    else:\n        list.insertPrev(bef,tmp)\n    bef = tmp\necho list.toseq().join(\"\
     \ \")"
   dependsOn:
-  - cplib/utils/lis.nim
+  - cplib/utils/list_procs.nim
   - cplib/utils/list_procs.nim
   - cplib/utils/lis.nim
-  - cplib/utils/list_procs.nim
+  - cplib/utils/lis.nim
   isVerificationFile: false
   path: verify/utils/list_procs_test_.nim
   requiredBy: []
