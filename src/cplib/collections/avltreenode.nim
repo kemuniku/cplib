@@ -159,7 +159,9 @@ when not declared CPLIB_COLLECTIONS_AVLTREE:
     proc index*[K](node: AvlTreeNode[K]): int =
         var node = node
         if node.isNil: return 0
-        result = node.l.len
+        result = (if node.l.isNil: 0 else: node.l.len)
         while not node.p.isNil:
-            if node.p.r == node: result += node.p.l.len + 1
+            if node.p.r == node:
+                if node.p.l.isNil: result += 1
+                else: result += node.p.l.len + 1
             node = node.p

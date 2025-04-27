@@ -1,15 +1,15 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/ordered_set
-import sequtils,options
+import sequtils, options
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
 import cplib/collections/avlset
-var N,Q = ii()
-var A = newseqwith(N,ii())
+var N, Q = ii()
+var A = newseqwith(N, ii())
 var st = initAvlSortedSet[int](A)
 
 for i in 0..<Q:
-    var t,x = ii()
+    var t, x = ii()
     if t == 0:
         st.incl(x)
     elif t == 1:

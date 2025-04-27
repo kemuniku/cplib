@@ -11,7 +11,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
 
     type AVLSets[T] = AvlSortedMultiSet[T] or AVLSortedSet[T]
 
-    proc len*[T](self: AVLSets[T]): int = self.root.len
+    proc len*[T](self: AVLSets[T]): int = (if self.root.isNil: 0 else: self.root.len)
     proc lowerBound*[T](self: AVLSets[T], x: T): int =
         var (ql, qr) = self.root.lower_bound_node(x)
         if qr.isNil: return self.len
