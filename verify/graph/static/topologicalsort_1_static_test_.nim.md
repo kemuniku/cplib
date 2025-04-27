@@ -37,10 +37,10 @@ data:
     \ \"No\"\n        quit()\n    for i in 0..<K-1:\n        G.add_edge(A[i]-1, A[i+1]-1)\n\
     G.build()\nif G.isDAG():\n    echo \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
-  - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
   isVerificationFile: false
   path: verify/graph/static/topologicalsort_1_static_test_.nim
   requiredBy: []

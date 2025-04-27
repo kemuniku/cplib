@@ -54,10 +54,10 @@ data:
   isVerificationFile: false
   path: cplib/graph/grid_to_graph.nim
   requiredBy:
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
   timestamp: '2024-09-21 03:52:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -36,10 +36,10 @@ data:
     \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nG.build()\n\
     var (_, _, group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
-  - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   isVerificationFile: false
   path: verify/graph/static/SCCG_static_test_.nim
   requiredBy: []
