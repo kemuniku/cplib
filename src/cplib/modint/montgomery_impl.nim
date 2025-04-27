@@ -1,7 +1,5 @@
 when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     const CPLIB_MODINT_MODINT_MONTGOMERY* = 1
-    when compileOption("mm", "orc") or compileOption("mm", "arc"):
-        {.fatal: "Plese Use refc".}
     import std/macros
     type StaticMontgomeryModint*[M: static[uint32]] = object
         a: uint32
@@ -19,6 +17,7 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         assert r * M == 1, "r * mod != 1"
     func get_param*[M: static[uint32]](self: typedesc[DynamicMontgomeryModint[M]]): ptr[tuple[M, r, n2: uint32]] =
         {.cast(noSideEffect).}:
+            #FIXME: nim 2.0 で global の動作が怪しいので、変更したい
             var p {.global.}: tuple[M, r, n2: uint32] = (998244353u32, get_r(998244353u32), get_n2(998244353u32))
             return p.addr
     template get_M*(T: typedesc[MontgomeryModint]): uint32 =
