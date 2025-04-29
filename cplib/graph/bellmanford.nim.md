@@ -90,9 +90,9 @@ data:
     \ start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =\n        shortest_path_bellmanford_impl(G,\
     \ start, goal, ZERO, INF)\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
