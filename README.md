@@ -13,6 +13,7 @@
 あらかじめ各ソフトウェアのガイドに従ってインストールしてください。
 
 - [Nim](https://github.com/nim-lang/Nim) (1.6.14)
+- [Nim-ACL](https://github.com/zer0-star/Nim-ACL/tree/master)
 - [online-judge-tools](https://github.com/online-judge-tools/oj)
 
 # Getting Started
