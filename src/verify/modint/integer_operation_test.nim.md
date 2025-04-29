@@ -57,13 +57,13 @@ data:
     \        for y in 1..10:\n            assert (x + mint(y)).val == (mint(x) + mint(y)).val\n\
     \            assert (mint(x) + y).val == (mint(x) + mint(y)).val\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/modint/integer_operation_test.nim
