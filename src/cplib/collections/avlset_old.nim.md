@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: cplib/collections/avltreenode.nim
-    title: cplib/collections/avltreenode.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/collections/avltreenode.nim
-    title: cplib/collections/avltreenode.nim
+  - icon: ':warning:'
+    path: cplib/collections/avltreenode_old.nim
+    title: cplib/collections/avltreenode_old.nim
+  - icon: ':warning:'
+    path: cplib/collections/avltreenode_old.nim
+    title: cplib/collections/avltreenode_old.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -21,7 +21,7 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_AVLSET:\n    const CPLIB_COLLECTIONS_AVLSET*\
-    \ = 1\n    import cplib/collections/avltreenode\n    import options, sequtils,\
+    \ = 1\n    import cplib/collections/avltreenode_old\n    import options, sequtils,\
     \ strutils\n\n    type AvlSortedMultiSet*[T] = object\n        root*: AvlTreeNode[T]\n\
     \n    type AVLSortedSet*[T] = object\n        root*: AvlTreeNode[T]\n\n    type\
     \ AVLSets[T] = AvlSortedMultiSet[T] or AVLSortedSet[T]\n\n    proc len*[T](self:\
@@ -74,12 +74,12 @@ data:
     \ =\n        result = AvlSortedSet[T](root: get_avltree_nilnode[T]())\n      \
     \  for item in v: result.incl(item)\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode_old.nim
+  - cplib/collections/avltreenode_old.nim
   isVerificationFile: false
   path: cplib/collections/avlset_old.nim
   requiredBy: []
-  timestamp: '2025-04-27 19:08:43+09:00'
+  timestamp: '2025-04-29 18:42:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/avlset_old.nim

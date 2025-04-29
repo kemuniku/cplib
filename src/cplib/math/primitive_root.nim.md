@@ -54,11 +54,11 @@ data:
     \ = false\n                    break\n            if flg:\n                return\
     \ a"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim

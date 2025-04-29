@@ -9,12 +9,6 @@ data:
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
   - icon: ':warning:'
-    path: cplib/collections/avlset_old.nim
-    title: cplib/collections/avlset_old.nim
-  - icon: ':warning:'
-    path: cplib/collections/avlset_old.nim
-    title: cplib/collections/avlset_old.nim
-  - icon: ':warning:'
     path: cplib/collections/rangeset.nim
     title: cplib/collections/rangeset.nim
   - icon: ':warning:'
@@ -288,8 +282,6 @@ data:
   - cplib/collections/avlset.nim
   - cplib/collections/rangeset.nim
   - cplib/collections/rangeset.nim
-  - cplib/collections/avlset_old.nim
-  - cplib/collections/avlset_old.nim
   timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

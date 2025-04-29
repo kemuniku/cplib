@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/collections/avlset_old.nim
+    title: cplib/collections/avlset_old.nim
+  - icon: ':warning:'
+    path: cplib/collections/avlset_old.nim
+    title: cplib/collections/avlset_old.nim
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
@@ -102,7 +108,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/avltreenode_old.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/collections/avlset_old.nim
+  - cplib/collections/avlset_old.nim
   timestamp: '2025-04-27 18:32:02+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
