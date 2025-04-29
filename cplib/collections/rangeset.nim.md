@@ -58,16 +58,16 @@ data:
     \u6700\u5927\u5024\u533A\u9593\u304C\u7DE8\u96C6\u3055\u308C\u3066\u3044\u308B\
     \u3068\u304D\u306B\u30D0\u30B0\u308A\u307E\u3059\n    self.st.le((x,high(int),self.default)).get()"
   dependsOn:
-  - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: false
   path: cplib/collections/rangeset.nim
   requiredBy:
   - verify/collections/rangeset_test_.nim
   - verify/collections/rangeset_test_.nim
-  timestamp: '2024-11-28 13:30:55+09:00'
+  timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/rangeset.nim

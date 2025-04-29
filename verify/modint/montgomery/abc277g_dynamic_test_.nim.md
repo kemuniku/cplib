@@ -61,17 +61,17 @@ data:
     for k, v in uc:\n    ans *= mint(v + 1)\necho ans\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: verify/modint/montgomery/abc277g_dynamic_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2025-04-27 18:34:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/modint/montgomery/abc277g_dynamic_test_.nim

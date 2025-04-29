@@ -212,11 +212,11 @@ data:
     \     return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -256,7 +256,7 @@ data:
   - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
   - verify/modint/montgomery/abc277g_dynamic_test_.nim
   - verify/modint/montgomery/abc277g_dynamic_test_.nim
-  timestamp: '2024-10-13 16:58:04+09:00'
+  timestamp: '2025-04-27 18:34:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/modint/integer_operation_test.nim

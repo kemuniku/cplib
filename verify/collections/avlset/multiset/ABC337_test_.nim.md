@@ -33,14 +33,14 @@ data:
     var st = initAvlSortedMultiset(S.toseq())\nif st.toseq().join() == S:\n    echo\
     \ \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
-  - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: false
   path: verify/collections/avlset/multiset/ABC337_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/avlset/multiset/ABC337_test_.nim

@@ -35,14 +35,14 @@ data:
     st.incl(L)\nfor i in 0..<Q:\n    var c, x = ii()\n    if c == 1:\n        st.incl(x)\n\
     \    else:\n        var l = st.lt(x)\n        var r = st.gt(x)\n        echo r.get()-l.get()\n"
   dependsOn:
-  - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: false
   path: verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/avlset/multiset/ABC217_gtlt_test_.nim

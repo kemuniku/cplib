@@ -52,15 +52,15 @@ data:
     \       echo x, \" \", 0\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/utils/constants.nim
+  - cplib/math/isprime.nim
+  - cplib/utils/constants.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/powmod.nim
-  - cplib/utils/constants.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []

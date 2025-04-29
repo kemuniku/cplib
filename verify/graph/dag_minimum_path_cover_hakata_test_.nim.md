@@ -44,9 +44,9 @@ data:
     \    for j in 0..<(len(palindromes)):\n        if i != j:\n            if palindromes[i]\
     \ in palindromes[j]:\n                G.add_edge(i,j)\n\necho G.dag_minimum_path_cover()"
   dependsOn:
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim

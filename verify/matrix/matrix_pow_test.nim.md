@@ -53,20 +53,20 @@ data:
     var N,K = ii()\nvar A = newSeqWith(N,newSeqWith(N,mint(ii()))).toMatrix()\nvar\
     \ B = A.pow(K)\nfor i in 0..<N:\n    echo B[i].join(\" \")"
   dependsOn:
+  - cplib/matrix/matrix.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/matrix/matrix.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/matrix/matrix_pow_test.nim
   requiredBy: []
-  timestamp: '2024-10-13 16:58:04+09:00'
+  timestamp: '2025-04-27 18:34:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_pow_test.nim

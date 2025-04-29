@@ -29,26 +29,26 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/ordered_set\n\
-    import sequtils,options\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
+    import sequtils, options\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
     , varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\nimport\
-    \ cplib/collections/avlset\nvar N,Q = ii()\nvar A = newseqwith(N,ii())\nvar st\
-    \ = initAvlSortedSet[int](A)\n\nfor i in 0..<Q:\n    var t,x = ii()\n    if t\
-    \ == 0:\n        st.incl(x)\n    elif t == 1:\n        st.excl(x)\n    elif t\
-    \ == 2:\n        if len(st) < x:\n            echo -1\n        else:\n       \
-    \     echo st[x-1]\n    elif t == 3:\n        echo st.upperBound(x)\n    elif\
+    \ cplib/collections/avlset\nvar N, Q = ii()\nvar A = newseqwith(N, ii())\nvar\
+    \ st = initAvlSortedSet[int](A)\n\nfor i in 0..<Q:\n    var t, x = ii()\n    if\
+    \ t == 0:\n        st.incl(x)\n    elif t == 1:\n        st.excl(x)\n    elif\
+    \ t == 2:\n        if len(st) < x:\n            echo -1\n        else:\n     \
+    \       echo st[x-1]\n    elif t == 3:\n        echo st.upperBound(x)\n    elif\
     \ t == 4:\n        var tmp = st.le(x)\n        if tmp.issome():\n            echo\
     \ tmp.get()\n        else:\n            echo -1\n    else:\n        var tmp =\
     \ st.ge(x)\n        if tmp.issome():\n            echo tmp.get()\n        else:\n\
-    \            echo -1"
+    \            echo -1\n"
   dependsOn:
-  - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/set/ordered_set_test.nim
   requiredBy: []
-  timestamp: '2024-11-19 18:37:35+09:00'
+  timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/avlset/set/ordered_set_test.nim

@@ -52,17 +52,17 @@ data:
     \        discard mint(0).inv\n\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/modint/check_zerodivision_test.nim
   requiredBy: []
-  timestamp: '2024-10-13 16:58:04+09:00'
+  timestamp: '2025-04-27 18:34:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/check_zerodivision_test.nim
