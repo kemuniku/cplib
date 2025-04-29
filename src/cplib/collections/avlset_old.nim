@@ -1,6 +1,6 @@
 when not declared CPLIB_COLLECTIONS_AVLSET:
     const CPLIB_COLLECTIONS_AVLSET* = 1
-    import cplib/collections/avltreenode
+    import cplib/collections/avltreenode_old
     import options, sequtils, strutils
 
     type AvlSortedMultiSet*[T] = object
