@@ -5,6 +5,7 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
         count*: int
         par_or_siz: seq[int]
         next : seq[int]
+        edge_cnt : seq[int]
     proc initUnionFind*(N: int): UnionFind =
         result = UnionFind(count: N, par_or_siz: newSeqwith(N, -1),next:(0..<N).toseq())
     proc root*(self: UnionFind, x: int): int =
@@ -24,7 +25,9 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
                 swap(x, y)
             self.par_or_siz[x] += self.par_or_siz[y]
             self.par_or_siz[y] = x
+            self.edge_cnt[x] += self.edge_cnt[y]
             self.count -= 1
+        self.edge_cnt[x] += 1
     proc siz*(self: UnionFind, x: int): int =
         var x = self.root(x)
         return -self.par_or_siz[x]
@@ -41,3 +44,22 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
             now = self.next[now]
             if now == x:
                 break
+    proc groups*(self: UnionFind): seq[seq[int]] =
+        for root in self.roots():
+            result.add(self.get_group(root))
+    proc edge_count*(self: UnionFind, x: int): int =
+        ## xの属するグループの辺の数を返します。
+        var x = self.root(x)
+        return self.edge_cnt[x]
+    proc is_tree*(self: UnionFind, x: int): bool =
+        ## xの属する連結成分が木かどうかを返します。
+        var x = self.root(x)
+        return self.edge_cnt[x] == self.siz(x) - 1
+    proc is_namori*(self: UnionFind, x: int): bool =
+        ## xの属する連結成分がなもりグラフかどうかを返します。
+        var x = self.root(x)
+        return self.edge_cnt[x] == self.siz(x)
+    proc has_cycle*(self: UnionFind, x: int): bool =
+        ## xの属する連結成分にサイクルがあるかどうかを返します。
+        var x = self.root(x)
+        return self.edge_cnt[x] >= self.siz(x)
