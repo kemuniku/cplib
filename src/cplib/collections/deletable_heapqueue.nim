@@ -18,7 +18,7 @@ when not declared CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:
 
     proc delete*[T](self:var Deletable_HeapQueue[T],x:T)=
         self.dlhq.push(x)
-        while len(self.dlhq) != 0 and self.dlhq[0] == self.hq[0]:
+        while len(self.dlhq) != 0 and len(self.hq) != 0 and self.dlhq[0] == self.hq[0]:
             discard self.dlhq.pop()
             discard self.hq.pop()
 
@@ -28,7 +28,7 @@ when not declared CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:
 
     proc pop*[T](self:var Deletable_HeapQueue[T]):T=
         result = self.hq.pop()
-        while len(self.dlhq) != 0 and self.dlhq[0] == self.hq[0]:
+        while len(self.dlhq) != 0 and len(self.hq) != 0 and self.dlhq[0] == self.hq[0]:
             discard self.dlhq.pop()
             discard self.hq.pop()
 
