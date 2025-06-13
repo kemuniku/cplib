@@ -216,45 +216,45 @@ data:
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/collections/segtree/segtree_xor1_test_.nim
   - verify/collections/segtree/segtree_xor1_test_.nim
-  - verify/collections/segtree/segtree_xor2_test_.nim
-  - verify/collections/segtree/segtree_xor2_test_.nim
   - verify/collections/segtree/segtree_get1item_test_.nim
   - verify/collections/segtree/segtree_get1item_test_.nim
+  - verify/collections/segtree/segtree_xor2_test_.nim
+  - verify/collections/segtree/segtree_xor2_test_.nim
   - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
   timestamp: '2024-12-19 23:19:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/inversion_number_test.nim
-  - verify/utils/inversion_number_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/collections/segtree/segtree_PARS_test.nim
-  - verify/collections/segtree/segtree_PARS_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
-  - verify/collections/segtree/segtree_init_with_size_test.nim
-  - verify/collections/segtree/segtree_init_with_size_test.nim
-  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim
-  - verify/collections/segtree/segtree_ordered_set_test.nim
-  - verify/collections/segtree/segtree_ordered_set_test.nim
   - verify/collections/segtree/segtree_maxright_yuki878_test.nim
   - verify/collections/segtree/segtree_maxright_yuki878_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_RMQ_test.nim
   - verify/collections/segtree/segtree_RMQ_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_init_with_size_test.nim
+  - verify/collections/segtree/segtree_init_with_size_test.nim
   - verify/collections/segtree/segtree_static_test.nim
   - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/hashtable_yuki2686_test.nim
-  - verify/collections/hashtable_yuki2686_test.nim
+  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree/segtree_PARS_test.nim
+  - verify/collections/segtree/segtree_PARS_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
+  - verify/utils/inversion_number_test.nim
+  - verify/utils/inversion_number_test.nim
 documentation_of: cplib/collections/segtree.nim
 layout: document
 redirect_from:

@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/osa_k.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: verify/math/osa_k_test_.nim
   requiredBy: []
