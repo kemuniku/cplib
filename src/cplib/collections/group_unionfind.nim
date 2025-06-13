@@ -7,7 +7,7 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
         next : seq[int]
         edge_cnt : seq[int]
     proc initUnionFind*(N: int): UnionFind =
-        result = UnionFind(count: N, par_or_siz: newSeqwith(N, -1),next:(0..<N).toseq())
+        result = UnionFind(count: N, par_or_siz: newSeqwith(N, -1),next:(0..<N).toseq(),edge_cnt:newseqwith(N,0))
     proc root*(self: UnionFind, x: int): int =
         if self.par_or_siz[x] < 0:
             return x
