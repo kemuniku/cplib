@@ -83,10 +83,10 @@ data:
   verifiedWith:
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
-  - verify/tree/diameter_yosupo_test.nim
-  - verify/tree/diameter_yosupo_test.nim
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim
+  - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_yosupo_test.nim
 documentation_of: cplib/tree/diameter.nim
 layout: document
 redirect_from:

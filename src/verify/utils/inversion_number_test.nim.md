@@ -43,10 +43,10 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/inversion_number.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/utils/inversion_number.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/inversion_number.nim
   isVerificationFile: true
   path: verify/utils/inversion_number_test.nim
   requiredBy: []
