@@ -45,11 +45,11 @@ data:
     \  stdout.writeLine cnt[c]"
   dependsOn:
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/rangeset.nim
-  - cplib/collections/rangeset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/rangeset.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/rangeset.nim
   isVerificationFile: false
   path: verify/collections/rangeset_test_.nim
   requiredBy: []
