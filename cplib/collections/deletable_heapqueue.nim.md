@@ -36,13 +36,14 @@ data:
     \  Deletable_HeapQueue[T](hq:v.toHeapQueue(),dlhq:initHeapQueue[T]())\n\n    proc\
     \ `[]`*[T](self:var Deletable_HeapQueue[T],i:Natural):T=\n        assert i ==\
     \ 0\n        return self.hq[i]\n\n    proc delete*[T](self:var Deletable_HeapQueue[T],x:T)=\n\
-    \        self.dlhq.push(x)\n        while len(self.dlhq) != 0 and self.dlhq[0]\
-    \ == self.hq[0]:\n            discard self.dlhq.pop()\n            discard self.hq.pop()\n\
-    \n    proc push*[T](self:var Deletable_HeapQueue[T],x:T)=\n        self.hq.push(x)\n\
-    \n\n    proc pop*[T](self:var Deletable_HeapQueue[T]):T=\n        result = self.hq.pop()\n\
-    \        while len(self.dlhq) != 0 and self.dlhq[0] == self.hq[0]:\n         \
-    \   discard self.dlhq.pop()\n            discard self.hq.pop()\n\n    proc len*[T](self:var\
-    \ Deletable_HeapQueue[T]):int=\n        return len(self.hq)-len(self.dlhq)"
+    \        self.dlhq.push(x)\n        while len(self.dlhq) != 0 and len(self.hq)\
+    \ != 0 and self.dlhq[0] == self.hq[0]:\n            discard self.dlhq.pop()\n\
+    \            discard self.hq.pop()\n\n    proc push*[T](self:var Deletable_HeapQueue[T],x:T)=\n\
+    \        self.hq.push(x)\n\n\n    proc pop*[T](self:var Deletable_HeapQueue[T]):T=\n\
+    \        result = self.hq.pop()\n        while len(self.dlhq) != 0 and len(self.hq)\
+    \ != 0 and self.dlhq[0] == self.hq[0]:\n            discard self.dlhq.pop()\n\
+    \            discard self.hq.pop()\n\n    proc len*[T](self:var Deletable_HeapQueue[T]):int=\n\
+    \        return len(self.hq)-len(self.dlhq)"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/deletable_heapqueue.nim
@@ -51,7 +52,7 @@ data:
   - verify/collections/deletable_heapqueue_test_.nim
   - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/topk_sum_heapq.nim
-  timestamp: '2025-03-09 17:46:15+09:00'
+  timestamp: '2025-06-13 12:04:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/deletable_heapqueue.nim
