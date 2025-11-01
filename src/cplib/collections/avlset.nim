@@ -71,6 +71,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
         result = node.key
         self.root = self.root.erase(node, node.next)
     iterator items*[T](self: AVLSets[T]): T =
+        if self.root.isNil: return
         var stack = @[(0, self.root)]
         while stack.len > 0:
             var (t, node) = stack.pop
