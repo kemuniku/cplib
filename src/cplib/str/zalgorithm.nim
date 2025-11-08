@@ -22,5 +22,5 @@ when not declared CPLIB_STR_ZALGORITHM:
             j -= k
 
     proc zalgorithm*(S: string): seq[int] =
-        var a = S.items.toSeq
+        var a = S.toSeq()
         return zalgorithm(a)
