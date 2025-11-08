@@ -840,6 +840,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/word_size_tree_test.nim
       title: verify/collections/word_size_tree_test.nim
+  - name: verify/collections/avlset
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avlset/avlset_empty_string_test.nim
+      title: verify/collections/avlset/avlset_empty_string_test.nim
   - name: verify/collections/avlset/set
     pages:
     - icon: ':heavy_check_mark:'

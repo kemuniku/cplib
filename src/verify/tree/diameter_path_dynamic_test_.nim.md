@@ -71,17 +71,17 @@ data:
     \ * mint(ch2))\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/diameter.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/tree/diameter.nim
-  - cplib/math/isqrt.nim
   - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/tree/diameter.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/tree/diameter.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: verify/tree/diameter_path_dynamic_test_.nim
   requiredBy: []

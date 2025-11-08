@@ -136,6 +136,12 @@ data:
     title: verify/utils/grid_searcher/skate_tuple_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/collections/avlset/avlset_empty_string_test.nim
+    title: verify/collections/avlset/avlset_empty_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/avlset/avlset_empty_string_test.nim
+    title: verify/collections/avlset/avlset_empty_string_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/avlset/set/ordered_set_test.nim
     title: verify/collections/avlset/set/ordered_set_test.nim
   - icon: ':heavy_check_mark:'
@@ -191,14 +197,15 @@ data:
     \    var idx = idx\n        if idx < 0: idx = self.len + idx\n        assert idx\
     \ < self.root.len\n        var node = self.root.get(idx)\n        result = node.key\n\
     \        self.root = self.root.erase(node, node.next)\n    iterator items*[T](self:\
-    \ AVLSets[T]): T =\n        var stack = @[(0, self.root)]\n        while stack.len\
-    \ > 0:\n            var (t, node) = stack.pop\n            if t == 0:\n      \
-    \          stack.add((1, node))\n                if not node.l.isNil: stack.add((0,\
-    \ node.l))\n            elif t == 1:\n                yield node.key\n       \
-    \         if not node.r.isNil: stack.add((0, node.r))\n    proc `$`*[T](self:\
-    \ AVLSets[T]): string = self.toSeq.join(\" \")\n    proc initAvlSortedMultiSet*[T](v:\
-    \ seq[T] = @[]): AvlSortedMultiSet[T] =\n        result = AvlSortedMultiSet[T]()\n\
-    \        for item in v: result.incl(item)\n    proc initAvlSortedSet*[T](v: seq[T]\
+    \ AVLSets[T]): T =\n        if not self.root.isNil:\n            var stack = @[(0,\
+    \ self.root)]\n            while stack.len > 0:\n                var (t, node)\
+    \ = stack.pop\n                if t == 0:\n                    stack.add((1, node))\n\
+    \                    if not node.l.isNil: stack.add((0, node.l))\n           \
+    \     elif t == 1:\n                    yield node.key\n                    if\
+    \ not node.r.isNil: stack.add((0, node.r))\n    proc `$`*[T](self: AVLSets[T]):\
+    \ string = self.toSeq.join(\" \")\n    proc initAvlSortedMultiSet*[T](v: seq[T]\
+    \ = @[]): AvlSortedMultiSet[T] =\n        result = AvlSortedMultiSet[T]()\n  \
+    \      for item in v: result.incl(item)\n    proc initAvlSortedSet*[T](v: seq[T]\
     \ = @[]): AvlSortedSet[T] =\n        result = AvlSortedSet[T]()\n        for item\
     \ in v: result.incl(item)\n"
   dependsOn:
@@ -207,53 +214,55 @@ data:
   isVerificationFile: false
   path: cplib/collections/avlset.nim
   requiredBy:
-  - verify/collections/rangeset_test_.nim
-  - verify/collections/rangeset_test_.nim
-  - verify/collections/avlset/set/ABC236_test_.nim
-  - verify/collections/avlset/set/ABC236_test_.nim
-  - verify/collections/avlset/set/ABC217_index_test_.nim
-  - verify/collections/avlset/set/ABC217_index_test_.nim
-  - verify/collections/avlset/set/ABC294_test_.nim
-  - verify/collections/avlset/set/ABC294_test_.nim
-  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/set/ABC217_gele_test_.nim
-  - verify/collections/avlset/set/ABC217_gele_test_.nim
-  - verify/collections/avlset/set/ABC234D_access_test_.nim
-  - verify/collections/avlset/set/ABC234D_access_test_.nim
-  - verify/collections/avlset/multiset/ABC236_test_.nim
-  - verify/collections/avlset/multiset/ABC236_test_.nim
-  - verify/collections/avlset/multiset/index_right_test_.nim
-  - verify/collections/avlset/multiset/index_right_test_.nim
-  - verify/collections/avlset/multiset/ABC217_index_test_.nim
-  - verify/collections/avlset/multiset/ABC217_index_test_.nim
-  - verify/collections/avlset/multiset/ABC294_test_.nim
-  - verify/collections/avlset/multiset/ABC294_test_.nim
-  - verify/collections/avlset/multiset/ABC337_test_.nim
-  - verify/collections/avlset/multiset/ABC337_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
-  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
-  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
+  - cplib/utils/grid_searcher.nim
+  - cplib/utils/grid_searcher.nim
+  - cplib/collections/rangeset.nim
+  - cplib/collections/rangeset.nim
   - verify/utils/grid_searcher/skate_test_.nim
   - verify/utils/grid_searcher/skate_test_.nim
+  - verify/utils/grid_searcher/skate_tuple_test_.nim
+  - verify/utils/grid_searcher/skate_tuple_test_.nim
   - verify/utils/grid_searcher/skate_get_tuple_test_.nim
   - verify/utils/grid_searcher/skate_get_tuple_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
-  - verify/utils/grid_searcher/skate_tuple_test_.nim
-  - verify/utils/grid_searcher/skate_tuple_test_.nim
-  - cplib/collections/rangeset.nim
-  - cplib/collections/rangeset.nim
-  - cplib/utils/grid_searcher.nim
-  - cplib/utils/grid_searcher.nim
-  timestamp: '2025-04-27 19:08:43+09:00'
+  - verify/collections/rangeset_test_.nim
+  - verify/collections/rangeset_test_.nim
+  - verify/collections/avlset/multiset/index_right_test_.nim
+  - verify/collections/avlset/multiset/index_right_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/multiset/ABC294_test_.nim
+  - verify/collections/avlset/multiset/ABC294_test_.nim
+  - verify/collections/avlset/multiset/ABC337_test_.nim
+  - verify/collections/avlset/multiset/ABC337_test_.nim
+  - verify/collections/avlset/multiset/ABC217_index_test_.nim
+  - verify/collections/avlset/multiset/ABC217_index_test_.nim
+  - verify/collections/avlset/multiset/ABC236_test_.nim
+  - verify/collections/avlset/multiset/ABC236_test_.nim
+  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
+  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
+  - verify/collections/avlset/set/ABC217_gele_test_.nim
+  - verify/collections/avlset/set/ABC217_gele_test_.nim
+  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/set/ABC294_test_.nim
+  - verify/collections/avlset/set/ABC294_test_.nim
+  - verify/collections/avlset/set/ABC217_index_test_.nim
+  - verify/collections/avlset/set/ABC217_index_test_.nim
+  - verify/collections/avlset/set/ABC236_test_.nim
+  - verify/collections/avlset/set/ABC236_test_.nim
+  - verify/collections/avlset/set/ABC234D_access_test_.nim
+  - verify/collections/avlset/set/ABC234D_access_test_.nim
+  timestamp: '2025-11-08 19:42:23+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
+  - verify/collections/avlset/avlset_empty_string_test.nim
+  - verify/collections/avlset/avlset_empty_string_test.nim
 documentation_of: cplib/collections/avlset.nim
 layout: document
 redirect_from:

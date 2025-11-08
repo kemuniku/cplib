@@ -61,9 +61,9 @@ data:
     \ zero, inf)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []

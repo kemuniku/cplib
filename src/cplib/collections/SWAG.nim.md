@@ -71,10 +71,10 @@ data:
   timestamp: '2024-01-28 11:14:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/auxiliaryweightedtree_test.nim
-  - verify/tree/auxiliaryweightedtree_test.nim
   - verify/collections/SWAG_test.nim
   - verify/collections/SWAG_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
 documentation_of: cplib/collections/SWAG.nim
 layout: document
 redirect_from:

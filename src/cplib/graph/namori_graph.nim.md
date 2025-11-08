@@ -86,11 +86,11 @@ data:
     \        return namori.roots[x] == namori.roots[y]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/namori_graph.nim
   requiredBy:
