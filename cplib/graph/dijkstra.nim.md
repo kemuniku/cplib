@@ -100,25 +100,25 @@ data:
     \ shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy: []
   timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

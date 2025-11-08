@@ -36,10 +36,10 @@ data:
   isVerificationFile: false
   path: cplib/math/nearest_equiv.nim
   requiredBy:
-  - verify/math/nearear_equiv_abc342e_test_.nim
-  - verify/math/nearear_equiv_abc342e_test_.nim
   - verify/math/nearest_equiv_test_.nim
   - verify/math/nearest_equiv_test_.nim
+  - verify/math/nearear_equiv_abc342e_test_.nim
+  - verify/math/nearear_equiv_abc342e_test_.nim
   timestamp: '2024-03-21 20:57:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

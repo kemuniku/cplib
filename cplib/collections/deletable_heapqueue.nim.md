@@ -48,10 +48,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/deletable_heapqueue.nim
   requiredBy:
-  - verify/collections/deletable_heapqueue_test_.nim
-  - verify/collections/deletable_heapqueue_test_.nim
   - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/topk_sum_heapq.nim
+  - verify/collections/deletable_heapqueue_test_.nim
+  - verify/collections/deletable_heapqueue_test_.nim
   timestamp: '2025-06-13 12:04:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

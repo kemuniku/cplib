@@ -90,10 +90,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticbitset.nim
   requiredBy:
-  - verify/collections/static_bitset_seqint_test_.nim
-  - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_test_.nim
+  - verify/collections/static_bitset_seqint_test_.nim
+  - verify/collections/static_bitset_seqint_test_.nim
   timestamp: '2024-10-02 16:59:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

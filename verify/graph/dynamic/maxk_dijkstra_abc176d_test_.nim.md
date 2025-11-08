@@ -56,13 +56,13 @@ data:
     if ans == INF32: ans = -1\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   requiredBy: []
