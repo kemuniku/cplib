@@ -63,3 +63,5 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
         ## xの属する連結成分にサイクルがあるかどうかを返します。
         var x = self.root(x)
         return self.edge_cnt[x] >= self.siz(x)
+    proc copy*(self:UnionFind):UnionFind=
+        result = UnionFind(count: self.count, par_or_siz: self.par_or_siz,next:self.next)
