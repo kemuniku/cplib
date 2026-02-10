@@ -4,7 +4,7 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
         zero:BinaryTrieNode
         one:BinaryTrieNode
         value : int
-    type BinaryTrie = object
+    type BinaryTrie* = object
         root : BinaryTrieNode
         h: int
 
