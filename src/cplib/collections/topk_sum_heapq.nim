@@ -6,13 +6,13 @@ when not declared CPLIB_COLLECTIONS_TOPK_SUM_HEAPQ:
     type TopK_sum_heapq = ref object
         G : Deletable_HeapQueue[int]
         L : Deletable_HeapQueue[int]
-        sm : int
-        topk : int
-        k : int
+        sm* : int
+        topk* : int
+        k* : int
 
     proc initTopKHeapq*(v:seq[int],k:int):TopK_sum_heapq=
         result = TopK_sum_heapq(G:initDeletableHeapQueue[int](),L:initDeletableHeapQueue[int](),sm:0,topk:0,k:k)
-        var v = v.sorted()
+        var v = v.sorted(Descending)
         for i in 0..<k:
             result.G.push(v[i])
             result.sm += v[i]
@@ -57,3 +57,16 @@ when not declared CPLIB_COLLECTIONS_TOPK_SUM_HEAPQ:
         self.topk += tmp
         self.k += 1
         self.G.push(tmp)
+    
+    proc minusK*(self:TopK_sum_heapq)=
+        var tmp = self.G.pop()
+        self.topk -= tmp
+        self.k -= 1
+        self.L.push(-tmp)
+    
+    proc setK*(self:TopK_sum_heapq,k:int)=
+        ## 計算量注意！
+        while self.k > k:
+            self.minusK()
+        while self.k < k:
+            self.addK()
