@@ -59,9 +59,9 @@ data:
     \u3068\u304D\u306B\u30D0\u30B0\u308A\u307E\u3059\n    self.st.le((x,high(int),self.default)).get()"
   dependsOn:
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   isVerificationFile: false
   path: cplib/collections/rangeset.nim
   requiredBy:

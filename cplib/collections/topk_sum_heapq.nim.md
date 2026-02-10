@@ -23,10 +23,10 @@ data:
   code: "when not declared CPLIB_COLLECTIONS_TOPK_SUM_HEAPQ:\n    const CPLIB_COLLECTIONS_TOPK_SUM_HEAPQ*\
     \ = 1\n    import heapqueue\n    import algorithm\n    import cplib/collections/deletable_heapqueue\n\
     \    type TopK_sum_heapq = ref object\n        G : Deletable_HeapQueue[int]\n\
-    \        L : Deletable_HeapQueue[int]\n        sm : int\n        topk : int\n\
-    \        k : int\n\n    proc initTopKHeapq*(v:seq[int],k:int):TopK_sum_heapq=\n\
+    \        L : Deletable_HeapQueue[int]\n        sm* : int\n        topk* : int\n\
+    \        k* : int\n\n    proc initTopKHeapq*(v:seq[int],k:int):TopK_sum_heapq=\n\
     \        result = TopK_sum_heapq(G:initDeletableHeapQueue[int](),L:initDeletableHeapQueue[int](),sm:0,topk:0,k:k)\n\
-    \        var v = v.sorted()\n        for i in 0..<k:\n            result.G.push(v[i])\n\
+    \        var v = v.sorted(Descending)\n        for i in 0..<k:\n            result.G.push(v[i])\n\
     \            result.sm += v[i]\n            result.topk += v[i]\n        for i\
     \ in k..<len(v):\n            result.L.push(-v[i])\n            result.sm += v[i]\n\
     \n\n    proc incl*(self:TopK_sum_heapq,x:int)=\n        self.sm += x\n       \
@@ -41,14 +41,18 @@ data:
     \              self.G.push(tmp)\n                self.topk += tmp\n        else:\n\
     \            self.L.delete(-x)\n\n    proc addK*(self:TopK_sum_heapq)=\n     \
     \   var tmp = -self.L.pop()\n        self.topk += tmp\n        self.k += 1\n \
-    \       self.G.push(tmp)"
+    \       self.G.push(tmp)\n    \n    proc minusK*(self:TopK_sum_heapq)=\n     \
+    \   var tmp = self.G.pop()\n        self.topk -= tmp\n        self.k -= 1\n  \
+    \      self.L.push(-tmp)\n    \n    proc setK*(self:TopK_sum_heapq,k:int)=\n \
+    \       ## \u8A08\u7B97\u91CF\u6CE8\u610F\uFF01\n        while self.k > k:\n \
+    \           self.minusK()\n        while self.k < k:\n            self.addK()"
   dependsOn:
   - cplib/collections/deletable_heapqueue.nim
   - cplib/collections/deletable_heapqueue.nim
   isVerificationFile: false
   path: cplib/collections/topk_sum_heapq.nim
   requiredBy: []
-  timestamp: '2025-06-13 12:04:22+09:00'
+  timestamp: '2026-02-11 03:57:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/topk_sum_heapq.nim

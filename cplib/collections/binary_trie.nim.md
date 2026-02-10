@@ -22,7 +22,7 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_BINARY_TRIE:\n    const CPLIB_COLLECTION_BINARY_TRIE*\
     \ = 1\n    type BinaryTrieNode = ref object\n        zero:BinaryTrieNode\n   \
-    \     one:BinaryTrieNode\n        value : int\n    type BinaryTrie = object\n\
+    \     one:BinaryTrieNode\n        value : int\n    type BinaryTrie* = object\n\
     \        root : BinaryTrieNode\n        h: int\n\n\n    proc initBineryTrie*(h:int):BinaryTrie=\n\
     \        return BinaryTrie(root:BinaryTrieNode(),h:h)\n\n    proc incl*(self:BinaryTrie,x:Natural,v:int=1)=\n\
     \        var now = self.root\n        now.value += v\n        for i in countdown(self.h-1,0,1):\n\
@@ -85,7 +85,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/binary_trie.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:40:43+09:00'
+  timestamp: '2026-02-11 03:55:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/binary_trie_test.nim
