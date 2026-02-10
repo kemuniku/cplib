@@ -33,3 +33,5 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
         for i in 0..<len(self.par_or_siz):
             if self.par_or_siz[i] < 0:
                 result.add(i)
+    proc copy*(self:UnionFind):UnionFind=
+        result = UnionFind(count: self.count, par_or_siz: self.par_or_siz)
