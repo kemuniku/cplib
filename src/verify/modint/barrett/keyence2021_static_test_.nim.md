@@ -57,13 +57,13 @@ data:
     \ dp[i][j+1] += dp[i][j] * mul\necho dp[h-1][w-1].val\n"
   dependsOn:
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: verify/modint/barrett/keyence2021_static_test_.nim
   requiredBy: []

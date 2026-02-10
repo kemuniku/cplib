@@ -36,9 +36,9 @@ data:
     \    st.incl(now)\necho ans\n"
   dependsOn:
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   isVerificationFile: false
   path: verify/collections/avlset/multiset/index_right_test_.nim
   requiredBy: []

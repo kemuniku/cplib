@@ -50,18 +50,18 @@ data:
     for i in 0..<(Q):\n    var (t,x,y) = querys[i]\n    if t == 1:\n        MT.unite(x-1,y-1)\n\
     \    else:\n        echo SRC.count(MT.get_range(x-1),y)"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/merge_tree.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/staticrangecount.nim
   - cplib/collections/unionfind.nim
   - cplib/collections/staticrangecount.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/staticrangecount.nim
   - cplib/graph/merge_tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/merge_tree_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2026-02-11 03:57:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/merge_tree_test_.nim

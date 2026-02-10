@@ -63,7 +63,8 @@ data:
     \u3002\n        ## \u6CE8\u610F:O(root\u6570)\u3067\u306A\u3044\u3053\u3068\u306B\
     \u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        result = newSeqOfCap[int](self.count)\n\
     \        for i in 0..<len(self.par_or_siz):\n            if self.par_or_siz[i]\
-    \ < 0:\n                result.add(i)"
+    \ < 0:\n                result.add(i)\n    proc copy*(self:UnionFind):UnionFind=\n\
+    \        result = UnionFind(count: self.count, par_or_siz: self.par_or_siz)"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/unionfind.nim
@@ -76,7 +77,7 @@ data:
   - verify/graph/merge_tree_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
-  timestamp: '2024-11-02 13:05:22+09:00'
+  timestamp: '2026-02-11 03:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/unionfind_test.nim
