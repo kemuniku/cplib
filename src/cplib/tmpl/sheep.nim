@@ -30,6 +30,42 @@ when not declared CPLIB_TMPL_SHEEP:
             if c == ' ' or c == '\n' or c == '\255':
                 break
             result &= c
+    
+    # 出力系
+    proc `fmtprint`*(x: int or string or char or bool): string = return $x
+    proc `fmtprint`*(x: float or float32 or float64): string = return &"{x:.16f}"
+    proc `fmtprint`*[T](x: seq[T] or Deque[T] or HashSet[T] or set[T]): string = return x.toSeq.join(" ")
+    proc `fmtprint`*[T, N](x: array[T, N]): string = return x.toSeq.join(" ")
+    proc `fmtprint`*[T](x: HeapQueue[T]): string =
+        var q = x
+        while q.len != 0:
+            result &= &"{q.pop()}"
+            if q.len != 0: result &= " "
+    proc `fmtprint`*[T](x: CountTable[T]): string =
+        result = x.pairs.toSeq.mapIt(&"{it[0]}: {it[1]}").join(" ")
+    proc `fmtprint`*[K, V](x: Table[K, V]): string =
+        result = x.pairs.toSeq.mapIt(&"{it[0]}: {it[1]}").join(" ")
+    proc print*(prop: tuple[f: File, sepc: string, endc: string, flush: bool], args: varargs[string, `fmtprint`]) =
+        for i in 0..<len(args):
+            prop.f.write(&"{args[i]}")
+            if i != len(args) - 1: prop.f.write(prop.sepc) else: prop.f.write(prop.endc)
+        if prop.flush: prop.f.flushFile()
+    proc print*(args: varargs[string, `fmtprint`]) = print((f: stdout, sepc: " ", endc: "\n", flush: false), args)
+    macro getSymbolName(x: typed): string = x.toStrLit
+    macro debug*(args: varargs[untyped]): untyped =
+        when defined(debug):
+            result = newNimNode(nnkStmtList, args)
+            template prop(e: string = ""): untyped = (f: stderr, sepc: "", endc: e, flush: true)
+            for i, arg in args:
+                if arg.kind == nnkStrLit:
+                    result.add(quote do: print(prop(), "\"", `arg`, "\""))
+                else:
+                    result.add(quote do: print(prop(": "), getSymbolName(`arg`)))
+                    result.add(quote do: print(prop(), `arg`))
+                if i != args.len - 1: result.add(quote do: print(prop(), ", "))
+                else: result.add(quote do: print(prop(), "\n"))
+        else:
+            return (quote do: discard)
     #chmin,chmax
     template `max=`(x, y) = x = max(x, y)
     template `min=`(x, y) = x = min(x, y)
@@ -107,3 +143,14 @@ when not declared CPLIB_TMPL_SHEEP:
             elif l[i] < r[i]:
                 return true
         return len(l) < len(r)
+    
+    # Yes/No
+    proc yes*(b: bool = true): void = print(if b: "Yes" else: "No")
+    proc oo*(b: bool = true): void = yes(not b)
+
+    proc takahashi(b:bool = true) : void = print(if b: "Takahashi" else: "Aoki")
+    proc aoki(b:bool = true) : void = takahashi(not b)
+
+    template dblock(body: untyped) =
+        when defined(debug):
+            body
