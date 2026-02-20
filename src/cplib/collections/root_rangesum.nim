@@ -75,7 +75,7 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         return len(self.arr)
     proc min_left*[T](self: RootRangeSum[T], r: int, f: proc(l: T): bool): int =
         assert 0 <= r and r <= self.len
-        assert f(self.default)
+        assert f(self.e)
         if r == 0: return 0
         var sm = self.e
         let bidx_right = (r div self.blocksize)
