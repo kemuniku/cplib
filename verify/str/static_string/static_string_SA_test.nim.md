@@ -34,13 +34,13 @@ data:
     \    tmp.add(S[i..<len(S)])\ntmp.sort()\n\necho tmp.mapit(it.l).join(\" \")"
   dependsOn:
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_SA_test.nim
   requiredBy: []
-  timestamp: '2024-09-21 17:03:37+09:00'
+  timestamp: '2026-02-20 16:39:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_SA_test.nim

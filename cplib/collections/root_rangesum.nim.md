@@ -69,7 +69,7 @@ data:
     \ return i\n                    else:\n                        sm = sm + self.arr[i]\n\
     \            else:\n                sm = sm + self.blockvalue[bi]\n        return\
     \ len(self.arr)\n    proc min_left*[T](self: RootRangeSum[T], r: int, f: proc(l:\
-    \ T): bool): int =\n        assert 0 <= r and r <= self.len\n        assert f(self.default)\n\
+    \ T): bool): int =\n        assert 0 <= r and r <= self.len\n        assert f(self.e)\n\
     \        if r == 0: return 0\n        var sm = self.e\n        let bidx_right\
     \ = (r div self.blocksize)\n        for i in countdown(r,(bidx_right)*self.blocksize):\n\
     \            if not f(sm + self.arr[i]):\n                return i+1\n       \
@@ -84,7 +84,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/root_rangesum.nim
   requiredBy: []
-  timestamp: '2024-08-17 04:11:20+09:00'
+  timestamp: '2026-02-20 16:41:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/root_rangesum_test.nim

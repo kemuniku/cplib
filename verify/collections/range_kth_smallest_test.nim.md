@@ -41,14 +41,14 @@ data:
     \ => (x <= k))\n    ans[idx] = cmp[tmp]\n\nM.run(ad,ad,dl,dl,mem)\n\necho ans.join(\"\
     \\n\")"
   dependsOn:
-  - cplib/collections/root_rangesum.nim
-  - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
+  - cplib/collections/root_rangesum.nim
+  - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []
-  timestamp: '2024-09-15 20:15:04+09:00'
+  timestamp: '2026-02-20 16:41:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_kth_smallest_test.nim
