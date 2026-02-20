@@ -58,7 +58,7 @@ proc add_line*(self:LiChaoTree,a,b:int)=
     ## aは32bit整数に収まるようにしてください。
     self.query(a,b,1)
 
-proc add_segment(self:LiChaoTree,a,b,l,r:int)=
+proc add_segment*(self:LiChaoTree,a,b,l,r:int)=
     ## 線分ax+b (l<=x<r)を追加します。
     ## aは32bit整数に収まるようにしてください。
     var l = self.X.lowerBound(l)
