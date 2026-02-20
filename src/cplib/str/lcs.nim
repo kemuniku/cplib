@@ -17,6 +17,9 @@ when not declared CPLIB_STR_LCS:
                     if DP[i][j] > now:
                         now = DP[i][j]
         return DP[^1].max
+
+    proc LCS*(A,B:string):int=
+        return LCS(A.toseq(),B.toseq())
     
     proc restoreLCS*[T](A,B:seq[T]):seq[T]=
         var DP = newseqwith(len(B)+1,newSeqWith(len(A),0))
