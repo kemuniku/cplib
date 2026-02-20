@@ -9,6 +9,7 @@ when not declared CPLIB_COLLECTIONS_PALINDROMIC_TREE:
     type PalindromicTree* = object
         amax: int
         nodes*: seq[ref PalindromicTreeNode]
+        last_node* : ref PalindromicTreeNode
 
     proc len*(node: PalindromicTreeNode): int = node.len
     proc count*(node: PalindromicTreeNode): int = node.count
@@ -50,6 +51,7 @@ when not declared CPLIB_COLLECTIONS_PALINDROMIC_TREE:
                 current_node[].link[a[i]][].suffix_link = find_longest(i, current_node[].suffix_link)[].link[a[i]]
             current_node = current_node[].link[a[i]]
             current_node[].count += 1
+        result.last_node = current_node
 
     proc initPalindromicTree*(s: string, c: char = 'a'): PalindromicTree =
         return initPalindromicTree(s.mapIt(int(it) - int(c)), 26)
