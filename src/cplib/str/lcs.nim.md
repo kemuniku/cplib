@@ -28,24 +28,24 @@ data:
     \                    if tmp > now:\n                        now = tmp\n      \
     \          else:\n                    DP[i+1][j] = DP[i][j]\n                \
     \    if DP[i][j] > now:\n                        now = DP[i][j]\n        return\
-    \ DP[^1].max\n    \n    proc restoreLCS*[T](A,B:seq[T]):seq[T]=\n        var DP\
-    \ = newseqwith(len(B)+1,newSeqWith(len(A),0))\n        for i in 0..<(len(B)):\n\
-    \            var t = B[i]\n            var now = 0\n            for j in 0..<(len(A)):\n\
-    \                if A[j] == t:\n                    var tmp = DP[i][j]\n     \
-    \               DP[i+1][j] = now+1\n                    if tmp > now:\n      \
-    \                  now = tmp\n                else:\n                    DP[i+1][j]\
-    \ = DP[i][j]\n                    if DP[i][j] > now:\n                       \
-    \ now = DP[i][j]\n        var ans : seq[T]\n        var now = DP[^1].maxindex()\n\
-    \        for i in countdown(len(B),1):\n            if DP[i-1][now] == DP[i][now]:\n\
-    \                continue\n            else:\n                for j in countdown(now-1,0):\n\
-    \                    if DP[i-1][j] == DP[i][now]-1:\n                        now\
-    \ = j\n                        break\n                ans.add(B[i-1])\n      \
-    \  return ans.reversed()"
+    \ DP[^1].max\n\n    proc LCS*(A,B:string):int=\n        return LCS(A.toseq(),B.toseq())\n\
+    \    \n    proc restoreLCS*[T](A,B:seq[T]):seq[T]=\n        var DP = newseqwith(len(B)+1,newSeqWith(len(A),0))\n\
+    \        for i in 0..<(len(B)):\n            var t = B[i]\n            var now\
+    \ = 0\n            for j in 0..<(len(A)):\n                if A[j] == t:\n   \
+    \                 var tmp = DP[i][j]\n                    DP[i+1][j] = now+1\n\
+    \                    if tmp > now:\n                        now = tmp\n      \
+    \          else:\n                    DP[i+1][j] = DP[i][j]\n                \
+    \    if DP[i][j] > now:\n                        now = DP[i][j]\n        var ans\
+    \ : seq[T]\n        var now = DP[^1].maxindex()\n        for i in countdown(len(B),1):\n\
+    \            if DP[i-1][now] == DP[i][now]:\n                continue\n      \
+    \      else:\n                for j in countdown(now-1,0):\n                 \
+    \   if DP[i-1][j] == DP[i][now]-1:\n                        now = j\n        \
+    \                break\n                ans.add(B[i-1])\n        return ans.reversed()"
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/lcs.nim
   requiredBy: []
-  timestamp: '2024-10-29 00:24:54+09:00'
+  timestamp: '2026-02-20 16:40:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/lcs_test.nim

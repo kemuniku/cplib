@@ -47,8 +47,8 @@ data:
     \ discard dfs(G.v[0],-1)\n        anss += ans\n\necho anss\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/tree/auxiliarytree_test_.nim

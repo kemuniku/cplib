@@ -52,11 +52,11 @@ data:
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/bellmanford.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/bellmanford_grl1b_test.nim
   requiredBy: []

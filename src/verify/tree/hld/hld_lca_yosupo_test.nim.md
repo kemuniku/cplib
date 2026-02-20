@@ -37,8 +37,8 @@ data:
     \    ans[i] = hld.lca(u, v)\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_lca_yosupo_test.nim

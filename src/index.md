@@ -309,6 +309,9 @@ data:
   - name: cplib/tree
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/tree/cartesiantree.nim
+      title: cplib/tree/cartesiantree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
     - icon: ':heavy_check_mark:'
@@ -1228,6 +1231,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/auxiliaryweightedtree_test.nim
       title: verify/tree/auxiliaryweightedtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/cartesiantree_test.nim
+      title: verify/tree/cartesiantree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_dynamic_test.nim
       title: verify/tree/diameter_dynamic_test.nim
