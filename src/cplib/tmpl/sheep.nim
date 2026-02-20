@@ -32,25 +32,25 @@ when not declared CPLIB_TMPL_SHEEP:
             result &= c
     
     # 出力系
-    proc `fmtprint`*(x: int or string or char or bool): string = return $x
-    proc `fmtprint`*(x: float or float32 or float64): string = return &"{x:.16f}"
-    proc `fmtprint`*[T](x: seq[T] or Deque[T] or HashSet[T] or set[T]): string = return x.toSeq.join(" ")
-    proc `fmtprint`*[T, N](x: array[T, N]): string = return x.toSeq.join(" ")
-    proc `fmtprint`*[T](x: HeapQueue[T]): string =
-        var q = x
-        while q.len != 0:
-            result &= &"{q.pop()}"
-            if q.len != 0: result &= " "
-    proc `fmtprint`*[T](x: CountTable[T]): string =
-        result = x.pairs.toSeq.mapIt(&"{it[0]}: {it[1]}").join(" ")
-    proc `fmtprint`*[K, V](x: Table[K, V]): string =
-        result = x.pairs.toSeq.mapIt(&"{it[0]}: {it[1]}").join(" ")
-    proc print*(prop: tuple[f: File, sepc: string, endc: string, flush: bool], args: varargs[string, `fmtprint`]) =
-        for i in 0..<len(args):
-            prop.f.write(&"{args[i]}")
-            if i != len(args) - 1: prop.f.write(prop.sepc) else: prop.f.write(prop.endc)
-        if prop.flush: prop.f.flushFile()
-    proc print*(args: varargs[string, `fmtprint`]) = print((f: stdout, sepc: " ", endc: "\n", flush: false), args)
+    # 1. 実際の処理を行う proc (openArray を受け取る)
+    proc print_internal(prop: tuple[f: File, sepc: string, endc: string, flush: bool], args: openArray[string]) =
+        for i in 0 ..< args.len:
+            prop.f.write(args[i])
+            if i != args.len - 1:
+                prop.f.write(prop.sepc)
+            else:
+                prop.f.write(prop.endc)
+        if prop.flush:
+            prop.f.flushFile()
+
+    # 2. ユーザーが呼び出すためのインターフェース (varargs を受け取る)
+    proc print*(prop: tuple[f: File, sepc: string, endc: string, flush: bool], args: varargs[string, `$`]) =
+        # varargs は内部では openArray として扱えるので、そのまま渡せる
+        print_internal(prop, args)
+
+    proc print*(args: varargs[string, `$`]) =
+        # こちらも内部用の proc を呼ぶ
+        print_internal((f: stdout, sepc: " ", endc: "\n", flush: false), args)
     macro getSymbolName(x: typed): string = x.toStrLit
     macro debug*(args: varargs[untyped]): untyped =
         when defined(debug):
