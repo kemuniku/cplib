@@ -1,0 +1,4 @@
+#/usr/bin/bash
+./tools/expander.o Main.nim -l:./ -l:/home/kemuniku/atcoder/Nim-ACL/ -s
+cat combined.nim | xsel --clipboard --input
+nim cpp -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off --hints:off -o:a.out combined.nim && oj t 
