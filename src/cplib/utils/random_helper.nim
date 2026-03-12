@@ -221,3 +221,11 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
         result = newseqwith(n,0)
         for x in tmp:
             result[x] = 1
+    
+    proc random_string*(n:int,slice:HSlice[char,char]):string=
+        ## sliceに含まれる文字からなる長さnの文字列を一様ランダムに返す
+        assert n >= 0
+        assert slice.len >= 1
+        for i in 0..<n:
+            result.add(rand(slice))
+        return result
