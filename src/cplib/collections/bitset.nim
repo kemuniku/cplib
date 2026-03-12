@@ -9,6 +9,9 @@ when not declared CPLIB_COLLECTIONS_BITSET:
     proc varand(x:var uint,y:uint) {.importcpp:"# &= #".}
     proc varxor(x:var uint,y:uint) {.importcpp:"# ^= #".}
 
+    proc initBitSet*(N:int):Bitset=
+        result.bits = newseq[uint](ceilDiv(N,64))
+
     proc initBitSet*(v:seq[bool]):Bitset=
         result.bits = newseq[uint](ceilDiv(len(v),64))
         const mask = ((1 shl 6) - 1)
