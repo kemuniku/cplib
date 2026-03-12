@@ -4,16 +4,16 @@ when not declared CPLIB_GRAPH_MERGE_TREE:
     import cplib/collections/unionfind
     import sequtils
     type MergeTree* = object
-        ein : seq[int]
-        eout : seq[int]
-        et : seq[int]
-        ret : seq[int]
-        tree : UnWeightedUnDirectedGraph
-        uf : UnionFind
-        now : seq[int]
-        N : int
-        alr_query : int
-        v:seq[(int,int)]
+        ein* : seq[int]
+        eout* : seq[int]
+        et* : seq[int]
+        ret* : seq[int]
+        tree* : UnWeightedUnDirectedGraph
+        uf* : UnionFind
+        now* : seq[int]
+        N* : int
+        alr_query* : int
+        v*:seq[(int,int)]
     proc initMergeTree*(N:int,v:seq[(int,int)]):MergeTree=
         ## クエリを前読みする必要があるので、頂点数とマージを配列で与える
         var tree = initUnWeightedUnDirectedGraph(N+len(v)+1)
