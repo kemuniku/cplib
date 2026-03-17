@@ -23,7 +23,10 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
             montgomeryParamCache[M] = newLit(value)
         return montgomeryParamCache[M]
     template get_param*(self: typedesc[DynamicMontgomeryModint]): tuple[M, r, n2: uint32] =
-        montgomeryCachedParam
+        # FIXME: cast(noSideEffect)を付けないと、set_of_mint.join(" ")とかで死ぬ。
+        # もうちょっと筋の良い解決方法があればそうしたい
+        {.cast(noSideEffect).}:
+            montgomeryCachedParam
     template get_M*(T: typedesc[MontgomeryModint]): uint32 =
         when T is StaticMontgomeryModint: T.M
         else: get_param(T).M
