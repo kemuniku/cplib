@@ -1,6 +1,6 @@
 when not declared CPLIB_MODINT_MODINT_BARRETT:
     const CPLIB_MODINT_MODINT_BARRETT* = 1
-    import std/macros
+    import std/macros, std/tables
     type StaticBarrettModint*[M: static[uint32]] = object
         a: uint32
     type DynamicBarrettModint*[M: static[uint32]] = object
@@ -8,21 +8,26 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
     type BarrettModint* = StaticBarrettModint or DynamicBarrettModint
 
     proc get_im*(M: uint32): uint = cast[uint](-1) div M + 1
-    func get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]): ptr[tuple[M, im: uint]] =
-        {.cast(noSideEffect).}:
-            #FIXME: nim 2.0 で global の動作が怪しいので、変更したい
-            var p {.global.}: tuple[M, im: uint] = (998244353u, get_im(998244353u32))
-            return p.addr
+    var barrettParamCache {.compileTime.}: Table[uint32, NimNode]
+    var barrettCachedParam: tuple[M: uint32, im: uint]
+
+    macro get_param*[M: static[uint32]](self: typedesc[StaticBarrettModint[M]]): untyped =
+        if M notin barrettParamCache:
+            let value = (M.uint32, get_im(M))
+            barrettParamCache[M] = newLit(value)
+        return barrettParamCache[M]
+    template get_param*(self: typedesc[DynamicBarrettModint]): tuple[M: uint32, im: uint] =
+        barrettCachedParam
     template get_M*(T: typedesc[BarrettModint]): uint =
         when T is StaticBarrettModint: T.M.uint
-        else: (get_param(T))[].M.uint
+        else: get_param(T).M.uint
     proc setMod*[T: static[uint32]](self: typedesc[DynamicBarrettModint[T]], M: SomeInteger or SomeUnsignedInt) =
-        (get_param(self))[] = (M: M.uint, im: get_im(M.uint32))
+        barrettCachedParam = (M: M.uint32, im: get_im(M.uint32))
 
     template umod*[T: BarrettModint](self: typedesc[T] or T): uint32 =
         when self is typedesc:
             when self is StaticBarrettModint: self.M
-            else: cast[uint32](((get_param(self))[]).M)
+            else: (get_param(self)).M
         else: T.umod
     template `mod`*[T: BarrettModint](self: typedesc[T] or T): int32 = (T.umod).int32
     {.emit: """
@@ -41,7 +46,7 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             if M <= r: r += M
             return cast[uint32](r)
         else:
-            var p = get_param(T)[]
+            var p = get_param(T)
             var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint
             var r = a - x * p.M
             if p.M <= r: r += p.M
