@@ -98,10 +98,6 @@ data:
   isVerificationFile: false
   path: cplib/matrix/matops.nim
   requiredBy:
-  - verify/matrix/rotate_abc336f_test_.nim
-  - verify/matrix/rotate_abc336f_test_.nim
-  - verify/matrix/rotate_abc298b_test_.nim
-  - verify/matrix/rotate_abc298b_test_.nim
   - verify/matrix/transpose_abc237b_test_.nim
   - verify/matrix/transpose_abc237b_test_.nim
   - verify/matrix/matops_polyomino_test_.nim
@@ -112,6 +108,10 @@ data:
   - verify/matrix/transposed_abc237b_test_.nim
   - verify/matrix/trimmed_seq_abc307c_test_.nim
   - verify/matrix/trimmed_seq_abc307c_test_.nim
+  - verify/matrix/rotate_abc336f_test_.nim
+  - verify/matrix/rotate_abc336f_test_.nim
+  - verify/matrix/rotate_abc298b_test_.nim
+  - verify/matrix/rotate_abc298b_test_.nim
   - verify/collections/hashset_abc336f_test_.nim
   - verify/collections/hashset_abc336f_test_.nim
   timestamp: '2024-01-31 11:34:09+09:00'
