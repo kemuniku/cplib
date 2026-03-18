@@ -56,18 +56,18 @@ data:
     \ += dp[i][j] * 2 / 3\n            if j+1 in 0..<w: dp[i][j+1] += dp[i][j] * 2\
     \ / 3\necho dp[h-1][w-1].val\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
   requiredBy: []
-  timestamp: '2025-04-27 18:34:28+09:00'
+  timestamp: '2026-03-17 23:37:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/modint/montgomery/keyence2021_static_staticinv_test_.nim

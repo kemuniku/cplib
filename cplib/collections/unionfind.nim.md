@@ -71,12 +71,12 @@ data:
   requiredBy:
   - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
-  - verify/itertools/itertools_combinations_test_.nim
-  - verify/itertools/itertools_combinations_test_.nim
   - verify/graph/merge_tree_test_.nim
   - verify/graph/merge_tree_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/itertools/itertools_combinations_test_.nim
+  - verify/itertools/itertools_combinations_test_.nim
   timestamp: '2026-02-11 03:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

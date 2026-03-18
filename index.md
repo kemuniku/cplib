@@ -111,6 +111,12 @@ data:
   - name: cplib/convolution
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/convolution/convolution.nim
+      title: cplib/convolution/convolution.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/convolution/ntt.nim
+      title: cplib/convolution/ntt.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/convolution/xor_convolution.nim
       title: cplib/convolution/xor_convolution.nim
   - name: cplib/geometry
@@ -220,6 +226,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/int128.nim
       title: cplib/math/int128.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/inv_gcd.nim
+      title: cplib/math/inv_gcd.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
@@ -932,6 +941,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_static_test.nim
       title: verify/collections/segtree_var/segtree_static_test.nim
+  - name: verify/convolution/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+      title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+      title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_static_barrett_test.nim
+      title: verify/convolution/convolution/convolution_static_barrett_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_static_montgomery_test.nim
+      title: verify/convolution/convolution/convolution_static_montgomery_test.nim
   - name: verify/convolution
     pages:
     - icon: ':heavy_check_mark:'

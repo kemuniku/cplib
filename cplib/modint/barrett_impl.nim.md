@@ -3,6 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution.nim
+    title: cplib/convolution/convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution.nim
+    title: cplib/convolution/convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/ntt.nim
+    title: cplib/convolution/ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/ntt.nim
+    title: cplib/convolution/ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
   - icon: ':heavy_check_mark:'
@@ -130,6 +142,30 @@ data:
     path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
     title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
   - icon: ':heavy_check_mark:'
@@ -165,22 +201,23 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MODINT_MODINT_BARRETT:\n    const CPLIB_MODINT_MODINT_BARRETT*\
-    \ = 1\n    import std/macros\n    type StaticBarrettModint*[M: static[uint32]]\
+    \ = 1\n    import std/macros, std/tables\n    type StaticBarrettModint*[M: static[uint32]]\
     \ = object\n        a: uint32\n    type DynamicBarrettModint*[M: static[uint32]]\
     \ = object\n        a: uint32\n    type BarrettModint* = StaticBarrettModint or\
     \ DynamicBarrettModint\n\n    proc get_im*(M: uint32): uint = cast[uint](-1) div\
-    \ M + 1\n    func get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]):\
-    \ ptr[tuple[M, im: uint]] =\n        {.cast(noSideEffect).}:\n            #FIXME:\
-    \ nim 2.0 \u3067 global \u306E\u52D5\u4F5C\u304C\u602A\u3057\u3044\u306E\u3067\
-    \u3001\u5909\u66F4\u3057\u305F\u3044\n            var p {.global.}: tuple[M, im:\
-    \ uint] = (998244353u, get_im(998244353u32))\n            return p.addr\n    template\
-    \ get_M*(T: typedesc[BarrettModint]): uint =\n        when T is StaticBarrettModint:\
-    \ T.M.uint\n        else: (get_param(T))[].M.uint\n    proc setMod*[T: static[uint32]](self:\
-    \ typedesc[DynamicBarrettModint[T]], M: SomeInteger or SomeUnsignedInt) =\n  \
-    \      (get_param(self))[] = (M: M.uint, im: get_im(M.uint32))\n\n    template\
-    \ umod*[T: BarrettModint](self: typedesc[T] or T): uint32 =\n        when self\
-    \ is typedesc:\n            when self is StaticBarrettModint: self.M\n       \
-    \     else: cast[uint32](((get_param(self))[]).M)\n        else: T.umod\n    template\
+    \ M + 1\n    var barrettParamCache {.compileTime.}: Table[uint32, NimNode]\n \
+    \   var barrettCachedParam: tuple[M: uint32, im: uint]\n\n    macro get_param*[M:\
+    \ static[uint32]](self: typedesc[StaticBarrettModint[M]]): untyped =\n       \
+    \ if M notin barrettParamCache:\n            let value = (M.uint32, get_im(M))\n\
+    \            barrettParamCache[M] = newLit(value)\n        return barrettParamCache[M]\n\
+    \    template get_param*(self: typedesc[DynamicBarrettModint]): tuple[M: uint32,\
+    \ im: uint] =\n        barrettCachedParam\n    template get_M*(T: typedesc[BarrettModint]):\
+    \ uint =\n        when T is StaticBarrettModint: T.M.uint\n        else: get_param(T).M.uint\n\
+    \    proc setMod*[T: static[uint32]](self: typedesc[DynamicBarrettModint[T]],\
+    \ M: SomeInteger or SomeUnsignedInt) =\n        barrettCachedParam = (M: M.uint32,\
+    \ im: get_im(M.uint32))\n\n    template umod*[T: BarrettModint](self: typedesc[T]\
+    \ or T): uint32 =\n        when self is typedesc:\n            when self is StaticBarrettModint:\
+    \ self.M\n            else: (get_param(self)).M\n        else: T.umod\n    template\
     \ `mod`*[T: BarrettModint](self: typedesc[T] or T): int32 = (T.umod).int32\n \
     \   {.emit: \"\"\"\n    #include <cstdio>\n    inline unsigned long long calc_mul(const\
     \ unsigned long long &a, const unsigned long long &b) {\n        return (unsigned\
@@ -190,30 +227,30 @@ data:
     \ is StaticBarrettModint:\n            const im = get_im(T.M)\n            const\
     \ M = get_M(T)\n            var x = (calc_mul(cast[culonglong](a), cast[culonglong](im))).uint\n\
     \            var r = a - x * M\n            if M <= r: r += M\n            return\
-    \ cast[uint32](r)\n        else:\n            var p = get_param(T)[]\n       \
-    \     var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint\n \
-    \           var r = a - x * p.M\n            if p.M <= r: r += p.M\n         \
-    \   return cast[uint32](r)\n    proc init*(T: typedesc[BarrettModint], a: T or\
-    \ SomeInteger): auto =\n        when a is T: return a\n        else:\n       \
-    \     if a in 0..<T.mod.int: return T(a: a.uint32)\n            var a = a mod\
-    \ T.mod.int\n            if a < 0: a += T.mod.int\n            return T(a: a.uint32)\n\
-    \n    proc `-`*[T: BarrettModint](a: T): T = T(a: T.umod - a.a)\n    proc `+=`*[T:\
-    \ BarrettModint](a: var T, b: T or SomeInteger) =\n        a.a += init(T, b).a\n\
-    \        if a.a >= T.umod: a.a -= T.umod\n    proc `-=`*[T: BarrettModint](a:\
-    \ var T, b: T or SomeInteger) =\n        a.a -= init(T, b).a\n        if a.a >=\
-    \ T.umod: a.a += T.umod\n    proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger)\
-    \ =\n        a.a = rem(T, (a.a).uint * (init(T, b).a).uint)\n    proc inv*[T:\
-    \ BarrettModint](x: T): T =\n        assert x.val != 0\n        var x: int32 =\
-    \ int32(x.val)\n        var y: int32 = T.mod\n        var u = 1i32\n        var\
-    \ v, t = 0i32\n        while y > 0:\n            t = x div y\n            x -=\
-    \ t * y\n            u -= t * v\n            swap(x, y)\n            swap(u, v)\n\
-    \        return init(T, u)\n    proc `/=`*[T: BarrettModint](a: var T, b: T or\
-    \ SomeInteger) = a *= init(T, b).inv\n    proc val*(a: BarrettModint): int = a.a.int\n\
-    \    macro declarStaticBarrettModint*(name, M) =\n        let converter_name =\
-    \ ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = StaticBarrettModint[`M`]\n\
-    \            converter `converter_name`*(a: int): StaticBarrettModint[`M`] = init(StaticBarrettModint[`M`],\
-    \ a)\n    macro declarDynamicBarrettModint*(name, id) =\n        let converter_name\
-    \ = ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = DynamicBarrettModint[`id`]\n\
+    \ cast[uint32](r)\n        else:\n            var p = get_param(T)\n         \
+    \   var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint\n   \
+    \         var r = a - x * p.M\n            if p.M <= r: r += p.M\n           \
+    \ return cast[uint32](r)\n    proc init*(T: typedesc[BarrettModint], a: T or SomeInteger):\
+    \ auto =\n        when a is T: return a\n        else:\n            if a in 0..<T.mod.int:\
+    \ return T(a: a.uint32)\n            var a = a mod T.mod.int\n            if a\
+    \ < 0: a += T.mod.int\n            return T(a: a.uint32)\n\n    proc `-`*[T: BarrettModint](a:\
+    \ T): T = T(a: T.umod - a.a)\n    proc `+=`*[T: BarrettModint](a: var T, b: T\
+    \ or SomeInteger) =\n        a.a += init(T, b).a\n        if a.a >= T.umod: a.a\
+    \ -= T.umod\n    proc `-=`*[T: BarrettModint](a: var T, b: T or SomeInteger) =\n\
+    \        a.a -= init(T, b).a\n        if a.a >= T.umod: a.a += T.umod\n    proc\
+    \ `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) =\n        a.a = rem(T,\
+    \ (a.a).uint * (init(T, b).a).uint)\n    proc inv*[T: BarrettModint](x: T): T\
+    \ =\n        assert x.val != 0\n        var x: int32 = int32(x.val)\n        var\
+    \ y: int32 = T.mod\n        var u = 1i32\n        var v, t = 0i32\n        while\
+    \ y > 0:\n            t = x div y\n            x -= t * y\n            u -= t\
+    \ * v\n            swap(x, y)\n            swap(u, v)\n        return init(T,\
+    \ u)\n    proc `/=`*[T: BarrettModint](a: var T, b: T or SomeInteger) = a *= init(T,\
+    \ b).inv\n    proc val*(a: BarrettModint): int = a.a.int\n    macro declarStaticBarrettModint*(name,\
+    \ M) =\n        let converter_name = ident(\"to\" & $`name`)\n        quote do:\n\
+    \            type `name`* = StaticBarrettModint[`M`]\n            converter `converter_name`*(a:\
+    \ int): StaticBarrettModint[`M`] = init(StaticBarrettModint[`M`], a)\n    macro\
+    \ declarDynamicBarrettModint*(name, id) =\n        let converter_name = ident(\"\
+    to\" & $`name`)\n        quote do:\n            type `name`* = DynamicBarrettModint[`id`]\n\
     \            converter `converter_name`*(a: int): DynamicBarrettModint[`id`] =\
     \ init(DynamicBarrettModint[`id`], a)\n"
   dependsOn: []
@@ -222,53 +259,65 @@ data:
   requiredBy:
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
-  - verify/modint/montgomery/keyence2021_static_test_.nim
-  - verify/modint/montgomery/keyence2021_static_test_.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
-  - verify/modint/montgomery/abc277g_static_test_.nim
-  - verify/modint/montgomery/abc277g_static_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
-  - verify/modint/montgomery/abc277g_dynamic_test_.nim
-  - verify/modint/montgomery/abc277g_dynamic_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
-  - verify/modint/barrett/keyence2021_static_test_.nim
-  - verify/modint/barrett/keyence2021_static_test_.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
-  - verify/modint/barrett/abc277g_static_test_.nim
-  - verify/modint/barrett/abc277g_static_test_.nim
-  - verify/modint/barrett/dpr_dynamic_test_.nim
-  - verify/modint/barrett/dpr_dynamic_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_test_.nim
-  - verify/modint/barrett/abc277g_dynamic_test_.nim
-  - verify/modint/barrett/abc277g_dynamic_test_.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/ntt.nim
   - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
-  timestamp: '2025-04-27 18:34:28+09:00'
+  - verify/modint/barrett/dpr_dynamic_test_.nim
+  - verify/modint/barrett/dpr_dynamic_test_.nim
+  - verify/modint/barrett/abc277g_dynamic_test_.nim
+  - verify/modint/barrett/abc277g_dynamic_test_.nim
+  - verify/modint/barrett/keyence2021_static_test_.nim
+  - verify/modint/barrett/keyence2021_static_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
+  - verify/modint/barrett/abc277g_static_test_.nim
+  - verify/modint/barrett/abc277g_static_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/modint/montgomery/abc277g_dynamic_test_.nim
+  - verify/modint/montgomery/abc277g_dynamic_test_.nim
+  - verify/modint/montgomery/keyence2021_static_test_.nim
+  - verify/modint/montgomery/keyence2021_static_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
+  - verify/modint/montgomery/abc277g_static_test_.nim
+  - verify/modint/montgomery/abc277g_static_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
+  timestamp: '2026-03-17 20:23:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_product_test.nim
   - verify/matrix/matrix_product_test.nim
-  - verify/modint/check_zerodivision_test.nim
-  - verify/modint/check_zerodivision_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/integer_operation_test.nim
+  - verify/modint/check_zerodivision_test.nim
+  - verify/modint/check_zerodivision_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
