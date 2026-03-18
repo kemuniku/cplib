@@ -10,22 +10,22 @@ when not declared CPLIB_MODINT_MODINT:
     declarStaticBarrettModint(modint998244353_barrett, 998244353u32)
     declarStaticBarrettModint(modint1000000007_barrett, 1000000007u32)
     declarDynamicBarrettModint(modint_barrett, 1u32)
-    func `+`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result += b)
-    func `-`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result -= b)
-    func `*`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result *= b)
-    func `/`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result /= b)
-    func `+`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result += b)
-    func `-`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result -= b)
-    func `*`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result *= b)
-    func `/`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result /= b)
-    func `+`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) + b
-    func `-`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) - b
-    func `*`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) * b
-    func `/`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) / b
+    proc `+`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result += b)
+    proc `-`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result -= b)
+    proc `*`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result *= b)
+    proc `/`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result /= b)
+    proc `+`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result += b)
+    proc `-`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result -= b)
+    proc `*`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result *= b)
+    proc `/`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result /= b)
+    proc `+`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) + b
+    proc `-`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) - b
+    proc `*`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) * b
+    proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) / b
     proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt, b: static int): auto =
         const tmp = init(Modint, b).inv
         return a * tmp
-    func pow*(a: MontgomeryModint or BarrettModint, n: int): auto =
+    proc pow*(a: MontgomeryModint or BarrettModint, n: int): auto =
         result = init(typeof(a), 1)
         var a = a
         var n = n
@@ -33,7 +33,7 @@ when not declared CPLIB_MODINT_MODINT:
             if (n and 1) == 1: result *= a
             a *= a
             n = (n shr 1)
-    func `$`*(a: MontgomeryModint or BarrettModint): string = $(a.val)
+    proc `$`*(a: MontgomeryModint or BarrettModint): string = $(a.val)
     proc estimate_rational*(a: MontgomeryModint or BarrettModint, ub: int = isqrt(typeof(a).mod)): string =
         var v: seq[tuple[s, n, d: int]]
         for d in 1..ub:
