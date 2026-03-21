@@ -71,20 +71,20 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/matrix/matrix.nim
-  - cplib/math/isqrt.nim
-  - cplib/matrix/matrix.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: false
   path: verify/modint/barrett/dpr_dynamic_test_.nim
   requiredBy: []
-  timestamp: '2026-03-17 23:37:45+09:00'
+  timestamp: '2026-03-21 18:55:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/modint/barrett/dpr_dynamic_test_.nim
