@@ -17,7 +17,8 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             barrettParamCache[M] = newLit(value)
         return barrettParamCache[M]
     template get_param*(self: typedesc[DynamicBarrettModint]): tuple[M: uint32, im: uint] =
-        barrettCachedParam
+        {.cast(noSideEffect).}:
+            barrettCachedParam
     template get_M*(T: typedesc[BarrettModint]): uint =
         when T is StaticBarrettModint: T.M.uint
         else: get_param(T).M.uint
