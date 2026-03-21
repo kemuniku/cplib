@@ -211,15 +211,16 @@ data:
     \ if M notin barrettParamCache:\n            let value = (M.uint32, get_im(M))\n\
     \            barrettParamCache[M] = newLit(value)\n        return barrettParamCache[M]\n\
     \    template get_param*(self: typedesc[DynamicBarrettModint]): tuple[M: uint32,\
-    \ im: uint] =\n        barrettCachedParam\n    template get_M*(T: typedesc[BarrettModint]):\
-    \ uint =\n        when T is StaticBarrettModint: T.M.uint\n        else: get_param(T).M.uint\n\
-    \    proc setMod*[T: static[uint32]](self: typedesc[DynamicBarrettModint[T]],\
-    \ M: SomeInteger or SomeUnsignedInt) =\n        barrettCachedParam = (M: M.uint32,\
-    \ im: get_im(M.uint32))\n\n    template umod*[T: BarrettModint](self: typedesc[T]\
-    \ or T): uint32 =\n        when self is typedesc:\n            when self is StaticBarrettModint:\
-    \ self.M\n            else: (get_param(self)).M\n        else: T.umod\n    template\
-    \ `mod`*[T: BarrettModint](self: typedesc[T] or T): int32 = (T.umod).int32\n \
-    \   {.emit: \"\"\"\n    #include <cstdio>\n    inline unsigned long long calc_mul(const\
+    \ im: uint] =\n        {.cast(noSideEffect).}:\n            barrettCachedParam\n\
+    \    template get_M*(T: typedesc[BarrettModint]): uint =\n        when T is StaticBarrettModint:\
+    \ T.M.uint\n        else: get_param(T).M.uint\n    proc setMod*[T: static[uint32]](self:\
+    \ typedesc[DynamicBarrettModint[T]], M: SomeInteger or SomeUnsignedInt) =\n  \
+    \      barrettCachedParam = (M: M.uint32, im: get_im(M.uint32))\n\n    template\
+    \ umod*[T: BarrettModint](self: typedesc[T] or T): uint32 =\n        when self\
+    \ is typedesc:\n            when self is StaticBarrettModint: self.M\n       \
+    \     else: (get_param(self)).M\n        else: T.umod\n    template `mod`*[T:\
+    \ BarrettModint](self: typedesc[T] or T): int32 = (T.umod).int32\n    {.emit:\
+    \ \"\"\"\n    #include <cstdio>\n    inline unsigned long long calc_mul(const\
     \ unsigned long long &a, const unsigned long long &b) {\n        return (unsigned\
     \ long long)(((__uint128_t)(a) * b) >> 64);\n    }\n    \"\"\".}\n    proc calc_mul*(a,\
     \ b: culonglong): culonglong {.importcpp: \"calc_mul(#, #)\", nodecl, inline.}\n\
@@ -299,7 +300,7 @@ data:
   - verify/modint/montgomery/abc277g_static_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
-  timestamp: '2026-03-17 20:23:08+09:00'
+  timestamp: '2026-03-21 18:55:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_pow_test.nim

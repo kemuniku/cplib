@@ -247,12 +247,12 @@ data:
     \ d) > 1: continue\n            v.add((n.abs + d, n, d))\n        v.sort\n   \
     \     return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -296,7 +296,7 @@ data:
   - verify/modint/montgomery/abc277g_static_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
-  timestamp: '2026-03-17 23:37:45+09:00'
+  timestamp: '2026-03-21 18:55:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_pow_test.nim
