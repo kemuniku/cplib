@@ -1,7 +1,7 @@
 when not declared CPLIB_STR_ZALGORITHM:
     const CPLIB_STR_ZALGORITHM* = 1
     import sequtils
-    proc zalgorithm*(S:string):seq[int]=
+    proc zalgorithm*[T](S: seq[T]): seq[int] =
         var N = len(S)
         result = newseqwith(N,-1)
         result[0] = S.len();
@@ -20,3 +20,7 @@ when not declared CPLIB_STR_ZALGORITHM:
                 k += 1
             i += k
             j -= k
+
+    proc zalgorithm*(S: string): seq[int] =
+        var a = S.toSeq()
+        return zalgorithm(a)
