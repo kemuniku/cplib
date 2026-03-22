@@ -202,6 +202,9 @@ data:
       title: cplib/itertools/combinations.nim
   - name: cplib/math
     pages:
+    - icon: ':warning:'
+      path: cplib/math/baser.nim
+      title: cplib/math/baser.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/combination.nim
       title: cplib/math/combination.nim

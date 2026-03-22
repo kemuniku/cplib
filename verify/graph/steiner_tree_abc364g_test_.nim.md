@@ -50,11 +50,11 @@ data:
     \ INF64)\nfor i in k-1..<n:\n    echo dp[^1][i]\n"
   dependsOn:
   - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/steiner_tree.nim
   - cplib/utils/bititers.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/graph.nim
   - cplib/graph/steiner_tree.nim
   isVerificationFile: false
