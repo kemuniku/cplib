@@ -51,8 +51,8 @@ data:
     \        pos += 1\n    var r = c.upperBound(q - y)\n    ans = max(ans, seg.get(0..<r)\
     \ + v)\necho ans\n"
   dependsOn:
-  - cplib/collections/hashtable.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/hashtable.nim
   - cplib/collections/segtree.nim
   - cplib/collections/hashtable.nim
   isVerificationFile: true
