@@ -48,8 +48,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: verify/tree/auxiliarytree_test_.nim
   requiredBy: []
