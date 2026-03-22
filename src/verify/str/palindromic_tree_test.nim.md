@@ -34,7 +34,7 @@ data:
   isVerificationFile: true
   path: verify/str/palindromic_tree_test.nim
   requiredBy: []
-  timestamp: '2024-09-10 01:13:27+09:00'
+  timestamp: '2026-02-20 16:40:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/palindromic_tree_test.nim
