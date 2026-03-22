@@ -80,8 +80,8 @@ data:
     \        result = \"\"\n        for i in 0..<len(S.S):\n            result &=\
     \ $(S.S[i])\n        return result"
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false

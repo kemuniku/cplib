@@ -248,8 +248,8 @@ data:
     \     return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim

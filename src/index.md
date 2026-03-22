@@ -236,6 +236,9 @@ data:
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
     - icon: ':warning:'
+      path: cplib/math/mex_naive.nim
+      title: cplib/math/mex_naive.nim
+    - icon: ':warning:'
       path: cplib/math/nearest_equiv.nim
       title: cplib/math/nearest_equiv.nim
     - icon: ':warning:'

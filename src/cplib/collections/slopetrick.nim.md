@@ -43,17 +43,21 @@ data:
     \    f.pushL(x)\n\n    proc add_abs*(f:SlopeTrick, a:int)=\n        add_x_minus_a(f,a)\n\
     \        add_a_minus_x(f,a)\n\n    proc min_index*(f:SlopeTrick):int=\n      \
     \  return f.L0\n\n    proc shift*(f:SlopeTrick, a:int)=\n        f.l_add += a\n\
-    \        f.r_add += a\n\n    proc initSlopeTrick*(a:int):SlopeTrick=\n       \
-    \ result = SlopeTrick(L: initHeapQueue[int](), R: initHeapQueue[int](), min_f:\
-    \ a, l_add: 0, r_add: 0)\n        result.pushL(-INF64)\n        result.pushR(INF64)\n\
-    \n\n"
+    \        f.r_add += a\n    \n    proc shift*(f:SlopeTrick, a,b:int)=\n       \
+    \ f.l_add += a\n        f.r_add += b\n    \n    proc get_value*(f:SlopeTrick,x:int):int=\n\
+    \        ## O(N)\u304B\u304B\u308B\u306E\u3067\u6CE8\u610F\u3002\n        result\
+    \ = f.min_f\n        for i in 0..<len(f.L):\n            result += max(0,(-f.L[i]+f.l_add)-x)\n\
+    \        for i in 0..<len(f.R):\n            result += max(0,x-(f.R[i]+f.r_add))\n\
+    \            \n\n    proc initSlopeTrick*(a:int):SlopeTrick=\n        result =\
+    \ SlopeTrick(L: initHeapQueue[int](), R: initHeapQueue[int](), min_f: a, l_add:\
+    \ 0, r_add: 0)\n        result.pushL(-INF64)\n        result.pushR(INF64)\n\n\n"
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/collections/slopetrick.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:58+09:00'
+  timestamp: '2026-03-12 21:21:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/slopetrick.nim
