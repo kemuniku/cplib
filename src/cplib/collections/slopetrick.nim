@@ -75,6 +75,19 @@ when not declared CPLIB_COLLECTIONS_SLOPETRICK:
     proc shift*(f:SlopeTrick, a:int)=
         f.l_add += a
         f.r_add += a
+    
+    proc shift*(f:SlopeTrick, a,b:int)=
+        f.l_add += a
+        f.r_add += b
+    
+    proc get_value*(f:SlopeTrick,x:int):int=
+        ## O(N)かかるので注意。
+        result = f.min_f
+        for i in 0..<len(f.L):
+            result += max(0,(-f.L[i]+f.l_add)-x)
+        for i in 0..<len(f.R):
+            result += max(0,x-(f.R[i]+f.r_add))
+            
 
     proc initSlopeTrick*(a:int):SlopeTrick=
         result = SlopeTrick(L: initHeapQueue[int](), R: initHeapQueue[int](), min_f: a, l_add: 0, r_add: 0)
