@@ -23,6 +23,7 @@ when not declared CPLIB_FPS_FPS:
     proc `*=`*[T](a: var FormalPowerSeries[T], b: FormalPowerSeries[T]) = inplace_convolution(seq[T](a), seq[T](b))
     proc `*`*[T](a, b: FormalPowerSeries[T]): FormalPowerSeries[T] = (var ans = a; ans *= b; ans)
     proc inverse*[T](f: FormalPowerSeries[T], deg: int = -1): FormalPowerSeries[T] =
+        #FIXME: 関数名をinvにすると、なぜかmodintのinvと衝突して死ぬ、なんで？？？
         assert(f[0].val != 0)
         var ln = (if deg != -1: deg else: f.len)
         var ans = initFormalPowerSeries[T](ln)
