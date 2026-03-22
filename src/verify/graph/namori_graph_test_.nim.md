@@ -51,12 +51,12 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/namori_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/namori_graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/namori_graph.nim
   - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: verify/graph/namori_graph_test_.nim
   requiredBy: []

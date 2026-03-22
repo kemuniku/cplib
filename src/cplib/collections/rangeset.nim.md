@@ -60,8 +60,8 @@ data:
   dependsOn:
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: cplib/collections/rangeset.nim
   requiredBy:

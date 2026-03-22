@@ -147,22 +147,31 @@ data:
     n\u306E01\u5217\u3092\u4E00\u69D8\u30E9\u30F3\u30C0\u30E0\u306B\u8FD4\u3059\n\
     \        assert one in 0..n\n        var tmp = randomseq(one,0..<n,true)\n   \
     \     result = newseqwith(n,0)\n        for x in tmp:\n            result[x] =\
-    \ 1"
+    \ 1\n    \n    proc random_string*(n:int,slice:HSlice[char,char]):string=\n  \
+    \      ## slice\u306B\u542B\u307E\u308C\u308B\u6587\u5B57\u304B\u3089\u306A\u308B\
+    \u9577\u3055n\u306E\u6587\u5B57\u5217\u3092\u4E00\u69D8\u30E9\u30F3\u30C0\u30E0\
+    \u306B\u8FD4\u3059\n        assert n >= 0\n        assert slice.len >= 1\n   \
+    \     for i in 0..<n:\n            result.add(rand(slice))\n        return result\n\
+    \    \n    proc random_string*(n:int,s:string):string=\n        ## s\u306B\u542B\
+    \u307E\u308C\u308B\u6587\u5B57\u304B\u3089\u306A\u308B\u9577\u3055n\u306E\u6587\
+    \u5B57\u5217\u3092\u4E00\u69D8\u30E9\u30F3\u30C0\u30E0\u306B\u8FD4\u3059\n   \
+    \     assert n >= 0\n        assert s.len >= 1\n        for i in 0..<n:\n    \
+    \        result.add(s[rand(0..<len(s))])\n        return result"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/math/powmod.nim
-  - cplib/tree/prufer.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2024-11-28 17:57:29+09:00'
+  timestamp: '2026-03-23 02:22:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/utils/random_helper.nim

@@ -70,8 +70,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
   isVerificationFile: false

@@ -42,8 +42,8 @@ data:
     \ \")\n\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
+  - cplib/tree/rerooting.nim
   - cplib/tree/rerooting.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
