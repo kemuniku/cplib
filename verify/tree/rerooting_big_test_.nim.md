@@ -39,8 +39,8 @@ data:
     \necho G.solve_Rerooting(merge,(0,0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
+  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

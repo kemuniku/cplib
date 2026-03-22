@@ -51,17 +51,17 @@ data:
     \    else:\n        echo SRC.count(MT.get_range(x-1),y)"
   dependsOn:
   - cplib/graph/merge_tree.nim
-  - cplib/graph/graph.nim
   - cplib/collections/staticrangecount.nim
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
   - cplib/collections/staticrangecount.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/merge_tree_test_.nim
   requiredBy: []
-  timestamp: '2026-02-11 03:57:06+09:00'
+  timestamp: '2026-03-12 21:22:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/merge_tree_test_.nim

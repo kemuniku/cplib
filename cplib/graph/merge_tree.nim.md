@@ -34,19 +34,19 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_MERGE_TREE:\n    const CPLIB_GRAPH_MERGE_TREE*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/collections/unionfind\n\
-    \    import sequtils\n    type MergeTree* = object\n        ein : seq[int]\n \
-    \       eout : seq[int]\n        et : seq[int]\n        ret : seq[int]\n     \
-    \   tree : UnWeightedUnDirectedGraph\n        uf : UnionFind\n        now : seq[int]\n\
-    \        N : int\n        alr_query : int\n        v:seq[(int,int)]\n    proc\
-    \ initMergeTree*(N:int,v:seq[(int,int)]):MergeTree=\n        ## \u30AF\u30A8\u30EA\
-    \u3092\u524D\u8AAD\u307F\u3059\u308B\u5FC5\u8981\u304C\u3042\u308B\u306E\u3067\
-    \u3001\u9802\u70B9\u6570\u3068\u30DE\u30FC\u30B8\u3092\u914D\u5217\u3067\u4E0E\
-    \u3048\u308B\n        var tree = initUnWeightedUnDirectedGraph(N+len(v)+1)\n \
-    \       var uf = initUnionFind(N)\n        var now = newseqwith(N,0)\n       \
-    \ for i in 0..<(N):\n            now[i] = i\n        for i in 0..<len(v):\n  \
-    \          var (u,v) = v[i]\n            var x = now[uf.root(u)]\n           \
-    \ var y = now[uf.root(v)]\n            \n            tree.add_edge(x,N+i)\n  \
-    \          if x != y:\n                tree.add_edge(y,N+i)\n            uf.unite(u,v)\n\
+    \    import sequtils\n    type MergeTree* = object\n        ein* : seq[int]\n\
+    \        eout* : seq[int]\n        et* : seq[int]\n        ret* : seq[int]\n \
+    \       tree* : UnWeightedUnDirectedGraph\n        uf* : UnionFind\n        now*\
+    \ : seq[int]\n        N* : int\n        alr_query* : int\n        v*:seq[(int,int)]\n\
+    \    proc initMergeTree*(N:int,v:seq[(int,int)]):MergeTree=\n        ## \u30AF\
+    \u30A8\u30EA\u3092\u524D\u8AAD\u307F\u3059\u308B\u5FC5\u8981\u304C\u3042\u308B\
+    \u306E\u3067\u3001\u9802\u70B9\u6570\u3068\u30DE\u30FC\u30B8\u3092\u914D\u5217\
+    \u3067\u4E0E\u3048\u308B\n        var tree = initUnWeightedUnDirectedGraph(N+len(v)+1)\n\
+    \        var uf = initUnionFind(N)\n        var now = newseqwith(N,0)\n      \
+    \  for i in 0..<(N):\n            now[i] = i\n        for i in 0..<len(v):\n \
+    \           var (u,v) = v[i]\n            var x = now[uf.root(u)]\n          \
+    \  var y = now[uf.root(v)]\n            \n            tree.add_edge(x,N+i)\n \
+    \           if x != y:\n                tree.add_edge(y,N+i)\n            uf.unite(u,v)\n\
     \            now[uf.root(u)] = N+i\n        var alr = newSeqWith(N,false)\n  \
     \      for i in 0..<N:\n            if not alr[uf.root(i)]:\n                alr[uf.root(i)]\
     \ = true\n                tree.add_edge(N+len(v),now[uf.root(i)])\n        var\
@@ -94,7 +94,7 @@ data:
   requiredBy:
   - verify/graph/merge_tree_test_.nim
   - verify/graph/merge_tree_test_.nim
-  timestamp: '2026-02-11 03:57:06+09:00'
+  timestamp: '2026-03-12 21:22:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/merge_tree.nim

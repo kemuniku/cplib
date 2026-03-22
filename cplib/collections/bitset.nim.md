@@ -30,7 +30,8 @@ data:
     \ = 1\n    import math,bitops\n    \n    type BitSet* {.byref.}= object\n    \
     \    bits : seq[uint]\n    \n    proc varor(x:var uint,y:uint) {.importcpp:\"\
     # |= #\".}\n    proc varand(x:var uint,y:uint) {.importcpp:\"# &= #\".}\n    proc\
-    \ varxor(x:var uint,y:uint) {.importcpp:\"# ^= #\".}\n\n    proc initBitSet*(v:seq[bool]):Bitset=\n\
+    \ varxor(x:var uint,y:uint) {.importcpp:\"# ^= #\".}\n\n    proc initBitSet*(N:int):Bitset=\n\
+    \        result.bits = newseq[uint](ceilDiv(N,64))\n\n    proc initBitSet*(v:seq[bool]):Bitset=\n\
     \        result.bits = newseq[uint](ceilDiv(len(v),64))\n        const mask =\
     \ ((1 shl 6) - 1)\n        for i in 0..<len(v):\n            if v[i]:\n      \
     \          varor(result.bits[i shr 6],1u shl (i and mask))\n    \n    proc `&`*(x,y:BitSet):BitSet=\n\
@@ -69,7 +70,7 @@ data:
   - verify/collections/bitset_andpopcnt_test_.nim
   - verify/collections/bitset_test_.nim
   - verify/collections/bitset_test_.nim
-  timestamp: '2024-10-02 16:59:06+09:00'
+  timestamp: '2026-03-12 21:21:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/bitset.nim
