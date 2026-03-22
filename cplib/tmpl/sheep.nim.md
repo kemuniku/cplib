@@ -152,7 +152,7 @@ data:
     \ void = yes(not b)\n\n    proc takahashi(b:bool = true) : void = print(if b:\
     \ \"Takahashi\" else: \"Aoki\")\n    proc aoki(b:bool = true) : void = takahashi(not\
     \ b)\n\n    template dblock(body: untyped) =\n        when defined(debug):\n \
-    \           body\n"
+    \           block:\n                body\n"
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
@@ -161,7 +161,7 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-02-20 17:27:16+09:00'
+  timestamp: '2026-03-23 02:18:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dynamic/restore_dijkstra_test.nim

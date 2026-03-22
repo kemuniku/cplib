@@ -54,15 +54,15 @@ data:
     \ -1\n    else:\n        echo ans"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/hash_string.nim
   - cplib/str/hash_string.nim
   - cplib/utils/constants.nim
+  - cplib/str/hash_string.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []
-  timestamp: '2026-02-20 17:27:16+09:00'
+  timestamp: '2026-03-23 02:18:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_mul_test.nim

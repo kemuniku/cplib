@@ -40,9 +40,9 @@ data:
     \ dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
-  - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
   isVerificationFile: false
   path: verify/graph/dynamic/scc_abc335e_test_.nim
   requiredBy: []
