@@ -40,9 +40,9 @@ data:
     \ ans\n\n"
   dependsOn:
   - cplib/collections/unionfind.nim
+  - cplib/itertools/combinations.nim
+  - cplib/itertools/combinations.nim
   - cplib/collections/unionfind.nim
-  - cplib/itertools/combinations.nim
-  - cplib/itertools/combinations.nim
   isVerificationFile: false
   path: verify/itertools/itertools_combinations_test_.nim
   requiredBy: []

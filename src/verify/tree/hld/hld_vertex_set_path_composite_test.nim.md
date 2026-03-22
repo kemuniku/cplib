@@ -54,8 +54,8 @@ data:
     \ a = op(a, seg.get(l..<r))\n        ans.add((a[0] * x + a[1]).val)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim

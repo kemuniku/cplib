@@ -160,14 +160,14 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
+  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
