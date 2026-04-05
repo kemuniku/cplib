@@ -141,24 +141,24 @@ data:
   timestamp: '2026-02-11 05:00:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
   - verify/collections/staticRMQ_test.nim
   - verify/collections/staticRMQ_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
 documentation_of: cplib/collections/staticRMQ.nim
 layout: document
 redirect_from:

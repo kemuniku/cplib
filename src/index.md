@@ -290,8 +290,8 @@ data:
       path: cplib/str/lcs.nim
       title: cplib/str/lcs.nim
     - icon: ':heavy_check_mark:'
-      path: cplib/str/manachar.nim
-      title: cplib/str/manachar.nim
+      path: cplib/str/manacher.nim
+      title: cplib/str/manacher.nim
     - icon: ':warning:'
       path: cplib/str/merged_static_string.nim
       title: cplib/str/merged_static_string.nim
@@ -1204,8 +1204,8 @@ data:
       path: verify/str/lcs_test.nim
       title: verify/str/lcs_test.nim
     - icon: ':heavy_check_mark:'
-      path: verify/str/manachar_test.nim
-      title: verify/str/manachar_test.nim
+      path: verify/str/manacher_test.nim
+      title: verify/str/manacher_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/palindromic_tree_test.nim
       title: verify/str/palindromic_tree_test.nim
