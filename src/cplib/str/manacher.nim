@@ -17,6 +17,8 @@ when not declared CPLIB_STR_MANACHER:
     proc manacher*(s: string): seq[int] = manacher(s.toSeq)
 
     proc get_palindromes*[T](S:seq[T],partition:T): seq[(int,int)]=
+        if len(S) == 0:
+            return @[]
         result = newseq[(int,int)](2*len(S)-1)
         var tmp = newseqwith(2*len(S)-1,partition)
         for i in 0..<len(S):
@@ -39,4 +41,5 @@ when not declared CPLIB_STR_MANACHER:
         ## Sに含まれる回文の中心として考えられる位置は文字、文字と文字の間の2N-1通り
         ## これらについて、その位置を中心とする回文を[l,r)のtupleで返す。
         ## ただし、存在しない場合は(-1,-1)を返す。
-        return get_palindromes(s.toseq(),'$')
+        ## partitionはsに含まれない
+        return get_palindromes(s.toseq(),partition)
