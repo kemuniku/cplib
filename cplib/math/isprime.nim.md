@@ -112,35 +112,35 @@ data:
     \  return false\n        return true\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
+  - verify/math/divisor_many_atcoder_test_.nim
+  - verify/math/divisor_many_atcoder_test_.nim
   - verify/math/factorize_tuple_abc324b_test_.nim
   - verify/math/factorize_tuple_abc324b_test_.nim
   - verify/math/divisor_atcoder_test_.nim
   - verify/math/divisor_atcoder_test_.nim
-  - verify/math/divisor_many_atcoder_test_.nim
-  - verify/math/divisor_many_atcoder_test_.nim
   - verify/math/factorize_table_abc284d_test_.nim
   - verify/math/factorize_table_abc284d_test_.nim
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim

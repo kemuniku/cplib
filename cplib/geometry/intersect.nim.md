@@ -99,8 +99,8 @@ data:
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
@@ -115,12 +115,12 @@ data:
   timestamp: '2024-03-28 16:38:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
 documentation_of: cplib/geometry/intersect.nim
