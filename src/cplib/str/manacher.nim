@@ -1,7 +1,7 @@
-when not declared CPLIB_STR_MANACHAR:
-    const CPLIB_STR_MANACHAR* = 1
+when not declared CPLIB_STR_MANACHER:
+    const CPLIB_STR_MANACHER* = 1
     import sequtils
-    proc manachar*[T](s: seq[T]): seq[int] =
+    proc manacher*[T](s: seq[T]): seq[int] =
         result = newSeq[int](s.len)
         result[0] = 0
         var c = 0
@@ -14,4 +14,4 @@ when not declared CPLIB_STR_MANACHAR:
                 while i-j >= 0 and i+j < s.len and s[i-j] == s[i+j]: j += 1
                 result[i] = j
                 c = i
-    proc manachar*(s: string): seq[int] = manachar(s.toSeq)
+    proc manacher*(s: string): seq[int] = manacher(s.toSeq)
