@@ -190,6 +190,12 @@ data:
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/str/get_palindromes_test.nim
+    title: verify/str/get_palindromes_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/get_palindromes_test.nim
+    title: verify/str/get_palindromes_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
   - icon: ':heavy_check_mark:'
@@ -289,6 +295,8 @@ data:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/get_palindromes_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/math/isprime_yukicoder_test.nim

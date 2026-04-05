@@ -2,23 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
+    path: cplib/str/can_reverse_hash_string.nim
+    title: cplib/str/can_reverse_hash_string.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
+    path: cplib/str/can_reverse_hash_string.nim
+    title: cplib/str/can_reverse_hash_string.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/math/isprime.nim
-    title: cplib/math/isprime.nim
+    path: cplib/str/manacher.nim
+    title: cplib/str/manacher.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/math/isprime.nim
-    title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/powmod.nim
-    title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/powmod.nim
-    title: cplib/math/powmod.nim
+    path: cplib/str/manacher.nim
+    title: cplib/str/manacher.nim
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
@@ -37,40 +31,41 @@ data:
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    PROBLEM: https://yukicoder.me/problems/no/8030
+    PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
     links:
-    - https://yukicoder.me/problems/no/8030
+    - https://judge.yosupo.jp/problem/enumerate_palindromes
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "# verification-helper: PROBLEM https://yukicoder.me/problems/no/8030\ninclude\
-    \ cplib/tmpl/sheep\nimport cplib/math/isprime\n\nvar N = ii()\nfor i in 0..<N:\n\
-    \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
-    \       echo x, \" \", 0\n"
+  code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/enumerate_palindromes\n\
+    \ninclude cplib/tmpl/sheep\nimport cplib/str/manacher\nimport cplib/str/can_reverse_hash_string\n\
+    \nvar S = si()\n\nvar HS = S.initRollingHash()\n\nvar palindromes = get_palindromes(S)\n\
+    \nfor i in range(len(palindromes)):\n    var (l,r) = palindromes[i]\n    assert\
+    \ HS[l..<r].isPalindrome()\n    if l != 0 and r != len(S) and l != -1:\n     \
+    \   assert not HS[(l-1)..<(r+1)].isPalindrome()\n\necho palindromes.mapit(it[1]-it[0]).join(\"\
+    \ \")"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
+  - cplib/str/manacher.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/constants.nim
-  - cplib/math/inner_math.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/powmod.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/str/manacher.nim
   isVerificationFile: true
-  path: verify/math/isprime_yukicoder_test.nim
+  path: verify/str/get_palindromes_test.nim
   requiredBy: []
-  timestamp: '2026-03-23 02:18:30+09:00'
+  timestamp: '2026-04-05 17:46:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/math/isprime_yukicoder_test.nim
+documentation_of: verify/str/get_palindromes_test.nim
 layout: document
 redirect_from:
-- /verify/verify/math/isprime_yukicoder_test.nim
-- /verify/verify/math/isprime_yukicoder_test.nim.html
-title: verify/math/isprime_yukicoder_test.nim
+- /verify/verify/str/get_palindromes_test.nim
+- /verify/verify/str/get_palindromes_test.nim.html
+title: verify/str/get_palindromes_test.nim
 ---

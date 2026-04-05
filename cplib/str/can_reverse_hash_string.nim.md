@@ -39,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/get_palindromes_test.nim
+    title: verify/str/get_palindromes_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/get_palindromes_test.nim
+    title: verify/str/get_palindromes_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -156,6 +162,8 @@ data:
   timestamp: '2024-08-31 11:41:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/get_palindromes_test.nim
+  - verify/str/get_palindromes_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
