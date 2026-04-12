@@ -65,10 +65,10 @@ data:
   verifiedWith:
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
 documentation_of: cplib/math/inv_gcd.nim

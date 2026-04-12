@@ -45,6 +45,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/lazysegtree.nim
       title: cplib/collections/lazysegtree.nim
+    - icon: ':warning:'
+      path: cplib/collections/parsistent_segtree.nim
+      title: cplib/collections/parsistent_segtree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/persistent_array.nim
       title: cplib/collections/persistent_array.nim
