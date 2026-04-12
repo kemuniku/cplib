@@ -162,14 +162,14 @@ data:
     \ b)]\n            width = (width shl 2)\n        var ninv = T(n).inv\n      \
     \  for i in 0..<n: f[i] *= ninv\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/convolution/ntt.nim
   requiredBy:
@@ -180,10 +180,10 @@ data:
   verifiedWith:
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
 documentation_of: cplib/convolution/ntt.nim

@@ -117,16 +117,16 @@ data:
     \ = cast[int](x)\n        return ans\n"
   dependsOn:
   - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
@@ -136,10 +136,10 @@ data:
   verifiedWith:
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
 documentation_of: cplib/convolution/convolution.nim

@@ -44,10 +44,10 @@ data:
     \ += r-l\n        st.update(l,r,c)\n    else:\n        var c = ii()-1\n      \
     \  stdout.writeLine cnt[c]"
   dependsOn:
+  - cplib/collections/rangeset.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/rangeset.nim
   - cplib/collections/avlset.nim
   - cplib/collections/rangeset.nim
   isVerificationFile: false
