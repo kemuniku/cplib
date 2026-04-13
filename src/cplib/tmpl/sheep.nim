@@ -153,4 +153,5 @@ when not declared CPLIB_TMPL_SHEEP:
 
     template dblock(body: untyped) =
         when defined(debug):
-            body
+            block:
+                body
