@@ -1,34 +1,34 @@
 when not declared CPLIB_STR_STATIC_STRING:
     const CPLIB_STR_STATIC_STRING* = 1
-    import cplib/collections/staticRMQ
-    import atcoder/string
     import sequtils
     import algorithm
+    import atcoder/string
+    import cplib/collections/staticRMQ
 
     type StaticStringBase* = ref object
         S* : string
-        RMQ* : StaticRMQ[int]
-        SA* : seq[int]
-        RSA* : seq[int]
-        LCP* : seq[int]
-        size* : int
+        RMQ* : StaticRMQ[int32]
+        SA* : seq[int32]
+        RSA* : seq[int32]
+        LCP* : seq[int32]
+        size* : int32
     type StaticString* = object
         base* : StaticStringBase
-        l* : int
-        r* : int
+        l* : int32
+        r* : int32
     proc initStaticStringBase*(S:string):StaticStringBase=
         result = StaticStringBase()
         result.S = S
-        result.SA = suffix_array(S)
-        result.RSA = newseq[int](len(S))
-        for i in 0..<len(S):
+        result.SA = suffix_array(S).mapit(int32(it))
+        result.RSA = newseq[int32](len(S))
+        for i in 0.int32()..<len(S).int32():
             result.RSA[result.SA[i]] = i
-        result.LCP = lcp_array(S,result.SA)
+        result.LCP = lcp_array(S,result.SA.mapIt(int(it))).mapit(int32(it))
         result.RMQ = initRMQ(result.LCP)
-        result.size = len(S)
+        result.size = len(S).int32()
     proc toStaticString*(S:string):StaticString=
         var base = initStaticStringBase(S)
-        return StaticString(base:base,l:0,r:len(S))
+        return StaticString(base:base,l:0,r:len(S).int32())
 
 
     proc `[]`*(S:StaticString,idx:Natural):char=
@@ -37,14 +37,14 @@ when not declared CPLIB_STR_STATIC_STRING:
 
     proc `[]`*(S:StaticString,slice:HSlice[int,int]):StaticString=
         assert slice.a <= slice.b+1 and S.l + slice.b < S.r
-        return StaticString(base:S.base,l:S.l+slice.a,r:S.l+slice.b+1)
+        return StaticString(base:S.base,l:S.l+slice.a.int32(),r:S.l+slice.b.int32()+1)
 
 
     proc `$`*(S:StaticString):string=S.base.S[S.l..<S.r]
 
-    proc len*(S:StaticString):int = S.r-S.l
+    proc len*(S:StaticString): int {.inline.} = S.r - S.l
 
-    proc lcp*(S,T:StaticString):int=
+    proc lcp*(S,T:StaticString):int {.inline.}=
         assert S.base == T.base
         var l = S.base.RSA[S.l]
         var r = S.base.RSA[T.l]
@@ -54,7 +54,7 @@ when not declared CPLIB_STR_STATIC_STRING:
             return min(len(S),len(T))
         return min(min(len(S),len(T)),S.base.RMQ.query(l,r))
 
-    proc cmp*(S,T:StaticString):int=
+    proc cmp*(S,T:StaticString):int {.inline.}=
         var lcp = lcp(S,T)
         if min(len(S),len(T)) == lcp:
             if len(S) == len(T):
@@ -84,7 +84,7 @@ when not declared CPLIB_STR_STATIC_STRING:
     proc `==`*(S,T:StaticString):bool=
         return len(S) == len(T) and lcp(S,T) == len(S)
 
-    proc initSuffixArray*(base:StaticStringBase):seq[StaticSTring]=
+    proc initSuffixArray*(base:StaticStringBase):seq[StaticString]=
         result = newseq[StaticString](base.size)
         for i in 0..<base.size:
             result[i].base = base
@@ -92,7 +92,7 @@ when not declared CPLIB_STR_STATIC_STRING:
             result[i].r = base.size
 
     proc initSuffixArray*(S:StaticString):seq[StaticString]=
-        var SA = suffix_array(S.base.S[S.l..<S.r])
+        var SA = suffix_array(S.base.S[S.l..<S.r]).mapit(int32(it))
         result = newseq[StaticString](len(SA))
         for i in 0..<len(SA):
             result[i].base = S.base
@@ -106,19 +106,19 @@ when not declared CPLIB_STR_STATIC_STRING:
             tmp &= '$'
         var base = initStaticStringBase(tmp)
         result = newseq[StaticString](len(strings))
-        var now = 0
+        var now = int32(0)
         for i in 0..<len(strings):
             result[i].base = base
             result[i].l = now
-            result[i].r = now+len(strings[i])
-            now += len(strings[i]) + 1
+            result[i].r = now+len(strings[i]).int32()
+            now += len(strings[i]).int32() + 1
         
     proc startsWith*(s,prefix:StaticString):bool=
         return lcp(s,prefix) == len(prefix)
     
     
     proc suffix_lowerbound*(base:StaticStringBase,S:string):int=
-        proc cmp(x:int,s:string):int=
+        proc cmp(x:int32,s:string):int=
             for i in 0..<len(s):
                 if i+x >= base.size:return -1
                 if base.S[i+x] < s[i]:return -1
@@ -127,7 +127,7 @@ when not declared CPLIB_STR_STATIC_STRING:
         return base.SA.lowerBound(S,cmp)
 
     proc suffix_upperbound*(base:StaticStringBase,S:string):int=
-        proc cmp(x:int,s:string):int=
+        proc cmp(x:int32,s:string):int=
             for i in 0..<len(s):
                 if i+x >= base.size:return -1
                 if base.S[i+x] < s[i]:return -1
@@ -137,4 +137,3 @@ when not declared CPLIB_STR_STATIC_STRING:
 
     proc count*(base:StaticStringBase,S:string):int=
         return base.suffix_upperbound(S) - base.suffix_lowerbound(S)
-    
