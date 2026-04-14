@@ -43,12 +43,12 @@ data:
   dependsOn:
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_useSA_test.nim
   requiredBy: []
-  timestamp: '2026-02-20 16:39:12+09:00'
+  timestamp: '2026-04-15 04:05:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_LCS_useSA_test.nim
