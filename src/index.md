@@ -318,6 +318,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/citrus.nim
       title: cplib/tmpl/citrus.nim
+    - icon: ':warning:'
+      path: cplib/tmpl/optimize.nim
+      title: cplib/tmpl/optimize.nim
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
