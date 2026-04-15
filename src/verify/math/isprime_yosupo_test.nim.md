@@ -52,15 +52,15 @@ data:
     \        echo \"No\"\n"
   dependsOn:
   - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/powmod.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
   - cplib/math/isprime.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
+  - cplib/utils/constants.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
