@@ -40,8 +40,8 @@ data:
     \ g[i][j]\n        ans = min(ans, cur mod k)\n        return\n    for i in 0..<n:\n\
     \        a[d] = i\n        dfs(d+1)\ndfs(0)\necho ans\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

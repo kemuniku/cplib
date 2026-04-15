@@ -36,8 +36,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/dynamic/topologicalsort_2_test_.nim
   requiredBy: []
