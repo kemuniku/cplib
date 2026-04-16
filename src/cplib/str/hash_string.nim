@@ -65,6 +65,12 @@ when not declared CPLIB_STR_HASHSTRING:
 
     proc tohash*(S:char):HashString=
         result = HashString(hash:uint(int(S)),bpow:hashstring_base,size:1)
+    
+    proc get_emptystring_hash*():HashString=
+        result = HashString(hash:0u,bpow:1u,size:0)
+
+    proc tohash*(S:int):HashString=
+        result = HashString(hash:uint(S) mod RH_MOD,bpow:hashstring_base,size:1)
 
     proc `&`*(L,R:HashString):HashString=
         result = HashString(hash:(mul(L.hash,R.bpow).calc_mod+R.hash).calc_mod,bpow:mul(L.bpow,R.bpow).calc_mod,size:L.size+R.size)
