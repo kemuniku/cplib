@@ -52,9 +52,9 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/str/can_reverse_hash_string.nim
-  - cplib/utils/constants.nim
   - cplib/str/can_reverse_hash_string.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
