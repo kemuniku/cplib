@@ -70,7 +70,10 @@ data:
     \ = 1u\n        for i in countdown(len(S)-1,0,1):\n            hash = (hash+mul(uint(int(S[i])),tmp)).calc_mod\n\
     \            tmp = mul(tmp,hashstring_base).calc_mod \n        result = HashString(hash:hash,bpow:base_pow(len(S)),size:len(S))\n\
     \n    proc tohash*(S:char):HashString=\n        result = HashString(hash:uint(int(S)),bpow:hashstring_base,size:1)\n\
-    \n    proc `&`*(L,R:HashString):HashString=\n        result = HashString(hash:(mul(L.hash,R.bpow).calc_mod+R.hash).calc_mod,bpow:mul(L.bpow,R.bpow).calc_mod,size:L.size+R.size)\n\
+    \    \n    proc get_emptystring_hash*():HashString=\n        result = HashString(hash:0u,bpow:1u,size:0)\n\
+    \n    proc tohash*(S:int):HashString=\n        result = HashString(hash:uint(S)\
+    \ mod RH_MOD,bpow:hashstring_base,size:1)\n\n    proc `&`*(L,R:HashString):HashString=\n\
+    \        result = HashString(hash:(mul(L.hash,R.bpow).calc_mod+R.hash).calc_mod,bpow:mul(L.bpow,R.bpow).calc_mod,size:L.size+R.size)\n\
     \n    proc `==`*(L,R:HashString):bool=\n        return (L.size == R.size) and\
     \ (L.hash == R.hash)\n\n    proc len*(H:HashString):int=int(H.size)\n\n    proc\
     \ `*`*(H:HashString,x:int):HashString=\n        var\n            size = H.size\
@@ -127,7 +130,7 @@ data:
   isVerificationFile: false
   path: cplib/str/hash_string.nim
   requiredBy: []
-  timestamp: '2024-08-31 11:41:07+09:00'
+  timestamp: '2026-04-15 04:06:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/hash_string/hash_string_mul_test.nim
