@@ -67,8 +67,15 @@ when not declared CPLIB_TMPL_SHEEP:
         else:
             return (quote do: discard)
     #chmin,chmax
-    template `max=`(x, y) = x = max(x, y)
-    template `min=`(x, y) = x = min(x, y)
+    template `max=`(x, y) =
+        let yVal = y # yが計算式の場合に評価を1回にするため
+        if x < yVal:
+            x = yVal
+
+    template `min=`(x, y) =
+        let yVal = y
+        if x > yVal:
+            x = yVal
     proc chmin[T](x: var T, y: T):bool=
         if x > y:
             x = y
