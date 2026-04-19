@@ -14,15 +14,15 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared(CPLIB_MATH_BASER):\n  const CPLIB_MATH_BASER* = 1\n\n \
-    \ proc baser*(num,base,size:int):seq[int]=\n      var num = num\n      for _ in\
-    \ 0..<size:\n          result.add(num mod base)\n          num = num div base\n\
-    \      return result"
+  code: "when not declared(CPLIB_MATH_BASER):\n    const CPLIB_MATH_BASER* = 1\n\n\
+    \    proc baser*(num,base,size:int):seq[int]=\n        var num = num\n       \
+    \ for _ in 0..<size:\n            result.add(num mod base)\n            num =\
+    \ num div base\n        return result"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/baser.nim
   requiredBy: []
-  timestamp: '2026-03-23 02:52:45+09:00'
+  timestamp: '2026-04-19 23:21:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/baser.nim

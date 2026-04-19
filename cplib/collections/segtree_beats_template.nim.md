@@ -95,8 +95,8 @@ data:
     \ RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: false

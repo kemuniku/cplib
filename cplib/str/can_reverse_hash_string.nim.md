@@ -89,7 +89,11 @@ data:
     \ = (rhash+mul(uint(int(S[len(S)-1-i])),tmp)).calc_mod\n            tmp = mul(tmp,hashstring_base).calc_mod\
     \ \n        result = HashString(hash:hash,rhash:rhash,bpow:base_pow(len(S)),size:len(S))\n\
     \n    proc tohash*(S:char):HashString=\n        result = HashString(hash:uint(int(S)),rhash:uint(int(S)),bpow:hashstring_base,size:1)\n\
-    \n    proc `&`*(L,R:HashString):HashString=\n        result = HashString(hash:(mul(L.hash,R.bpow).calc_mod+R.hash).calc_mod,\n\
+    \n    proc get_emptystring_hash*():HashString=\n        result = HashString(hash:0u,rhash:0u,bpow:1u,size:0)\n\
+    \n    proc tohash*(S:int):HashString=\n        assert S >= 0\n        assert S\
+    \ < int(RH_MOD)\n        var us = uint(S)\n        result = HashString(hash:us\
+    \ mod RH_MOD,rhash : us mod RH_MOD,bpow:hashstring_base,size:1)\n\n    proc `&`*(L,R:HashString):HashString=\n\
+    \        result = HashString(hash:(mul(L.hash,R.bpow).calc_mod+R.hash).calc_mod,\n\
     \                            rhash:(mul(R.rhash,L.bpow).calc_mod+L.rhash).calc_mod,\n\
     \                            bpow:mul(L.bpow,R.bpow).calc_mod,size:L.size+R.size)\n\
     \n    proc `==`*(L,R:HashString):bool=\n        return (L.size == R.size) and\
@@ -159,7 +163,7 @@ data:
   isVerificationFile: false
   path: cplib/str/can_reverse_hash_string.nim
   requiredBy: []
-  timestamp: '2024-08-31 11:41:07+09:00'
+  timestamp: '2026-04-19 23:22:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim

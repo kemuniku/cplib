@@ -51,20 +51,20 @@ data:
     \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
     \       echo x, \" \", 0\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/powmod.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2026-03-23 02:18:30+09:00'
+  timestamp: '2026-04-19 23:22:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yukicoder_test.nim
