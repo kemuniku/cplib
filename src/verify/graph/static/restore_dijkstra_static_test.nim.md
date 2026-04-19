@@ -54,20 +54,20 @@ data:
     \   echo cost, \" \", len(path)-1\n    for i in 0..<len(path)-1:\n        echo\
     \ path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []
-  timestamp: '2026-03-23 02:18:30+09:00'
+  timestamp: '2026-04-19 23:22:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/restore_dijkstra_static_test.nim
