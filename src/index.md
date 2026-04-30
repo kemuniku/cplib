@@ -198,11 +198,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/warshall_floyd.nim
       title: cplib/graph/warshall_floyd.nim
-  - name: cplib/itertools
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: cplib/itertools/combinations.nim
-      title: cplib/itertools/combinations.nim
   - name: cplib/math
     pages:
     - icon: ':warning:'
@@ -350,9 +345,6 @@ data:
   - name: cplib/utils
     pages:
     - icon: ':heavy_check_mark:'
-      path: cplib/utils/accumulate.nim
-      title: cplib/utils/accumulate.nim
-    - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
     - icon: ':warning:'
@@ -367,6 +359,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: cplib/utils/inversion_number.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/itertools.nim
+      title: cplib/utils/itertools.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/lis.nim
       title: cplib/utils/lis.nim
@@ -1301,26 +1296,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - name: verify/utils/accumulate
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/utils/accumulate/accumulate_test.nim
-      title: verify/utils/accumulate/accumulate_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/utils/accumulate/accumulated_2_test.nim
-      title: verify/utils/accumulate/accumulated_2_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/utils/accumulate/accumulated_test.nim
-      title: verify/utils/accumulate/accumulated_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/utils/accumulate/accumulatedr_2_test.nim
-      title: verify/utils/accumulate/accumulatedr_2_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/utils/accumulate/accumulatedr_test.nim
-      title: verify/utils/accumulate/accumulatedr_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/utils/accumulate/accumulater_test.nim
-      title: verify/utils/accumulate/accumulater_test.nim
   - name: verify/utils
     pages:
     - icon: ':heavy_check_mark:'
@@ -1338,5 +1313,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/restore_lis_aoj_test.nim
       title: verify/utils/restore_lis_aoj_test.nim
+  - name: verify/utils/itertools
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/itertools/accumulate_test.nim
+      title: verify/utils/itertools/accumulate_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/itertools/accumulated_2_test.nim
+      title: verify/utils/itertools/accumulated_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/itertools/accumulated_test.nim
+      title: verify/utils/itertools/accumulated_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/itertools/accumulatedr_2_test.nim
+      title: verify/utils/itertools/accumulatedr_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/itertools/accumulatedr_test.nim
+      title: verify/utils/itertools/accumulatedr_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/itertools/accumulater_test.nim
+      title: verify/utils/itertools/accumulater_test.nim
 layout: toppage
 ---

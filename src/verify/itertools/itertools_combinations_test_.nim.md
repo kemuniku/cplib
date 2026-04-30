@@ -7,12 +7,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/itertools/combinations.nim
-    title: cplib/itertools/combinations.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/itertools/combinations.nim
-    title: cplib/itertools/combinations.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -40,8 +34,6 @@ data:
     \ ans\n\n"
   dependsOn:
   - cplib/collections/unionfind.nim
-  - cplib/itertools/combinations.nim
-  - cplib/itertools/combinations.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/itertools/itertools_combinations_test_.nim

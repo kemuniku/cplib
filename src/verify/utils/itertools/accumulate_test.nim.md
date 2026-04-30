@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/accumulate.nim
-    title: cplib/utils/accumulate.nim
+    path: cplib/utils/itertools.nim
+    title: cplib/utils/itertools.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/utils/accumulate.nim
-    title: cplib/utils/accumulate.nim
+    path: cplib/utils/itertools.nim
+    title: cplib/utils/itertools.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -23,23 +23,23 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_sum\n\
-    \nimport cplib/utils/accumulate\nimport sequtils\n\nproc scanf(formatstr: cstring){.header:\
+    \nimport cplib/utils/itertools\nimport sequtils\n\nproc scanf(formatstr: cstring){.header:\
     \ \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr\
     \ result)\n\nvar N,Q = ii()\nvar a = (@[0]&newseqwith(N,ii()))\na.accumulate(a+b)\n\
     \nfor i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[r]-a[l]"
   dependsOn:
-  - cplib/utils/accumulate.nim
-  - cplib/utils/accumulate.nim
+  - cplib/utils/itertools.nim
+  - cplib/utils/itertools.nim
   isVerificationFile: true
-  path: verify/utils/accumulate/accumulate_test.nim
+  path: verify/utils/itertools/accumulate_test.nim
   requiredBy: []
-  timestamp: '2024-08-17 01:24:43+09:00'
+  timestamp: '2026-05-01 08:28:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/utils/accumulate/accumulate_test.nim
+documentation_of: verify/utils/itertools/accumulate_test.nim
 layout: document
 redirect_from:
-- /verify/verify/utils/accumulate/accumulate_test.nim
-- /verify/verify/utils/accumulate/accumulate_test.nim.html
-title: verify/utils/accumulate/accumulate_test.nim
+- /verify/verify/utils/itertools/accumulate_test.nim
+- /verify/verify/utils/itertools/accumulate_test.nim.html
+title: verify/utils/itertools/accumulate_test.nim
 ---

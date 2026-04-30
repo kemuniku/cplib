@@ -1,12 +1,6 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: cplib/itertools/combinations.nim
-    title: cplib/itertools/combinations.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/itertools/combinations.nim
-    title: cplib/itertools/combinations.nim
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -28,9 +22,7 @@ data:
     %lld\\n\", addr result)\n\nvar N, K = ii()\nvar A = newSeqWith(N, ii())\nvar ans\
     \ = 0\nfor x in combinations(A, K):\n    var S = sum(x)\n    if S mod 998 >= S\
     \ mod 998244353:\n        ans += 1\necho ans mod 998\n"
-  dependsOn:
-  - cplib/itertools/combinations.nim
-  - cplib/itertools/combinations.nim
+  dependsOn: []
   isVerificationFile: true
   path: verify/itertools/itertools_combinations_2_test.nim
   requiredBy: []
