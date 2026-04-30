@@ -1,13 +1,13 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_sum
 
-import cplib/itertools/accumulate
+import cplib/utils/itertools
 import sequtils
 
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
 var N,Q = ii()
-var a = (newseqwith(N,ii()) & @[0]).accumulatedr(a+b)
+var a = (newseqwith(N,ii())).accumulatedr(a+b,0)
 
 for i in 0..<Q:
     var l = ii()

@@ -1,5 +1,23 @@
-when not declared CPLIB_ITERTOOLS_ACCUMULATE:
-    const CPLIB_ITERTOOLS_ACCUMULATE* = 1
+when not declared CPLIB_UTILS_ITERTOOLS:
+    const CPLIB_UTILS_ITERTOOLS* = 1
+    import algorithm,sequtils
+
+    iterator permutations*[T](v : seq[T]):seq[T]=
+        ## pythonのitertoolsのpermutationsと同じ動作をします。
+        var idxs = (0..<len(v)).toseq()
+        while true:
+            yield idxs.mapit(v[it])
+            if not nextPermutation(idxs):
+                break
+
+    iterator distinct_permutations*[T](v : seq[T]):seq[T]=
+        ## next_permutaionをするのと同じ動作をします。
+        var tmp = v
+        while true:
+            yield tmp
+            if not nextPermutation(tmp):
+                break
+
     template accumulated*[T](sequence:seq[T],operation:untyped,first:T):seq[T]=
         let inner_seq = sequence
         var result = newseq[T](len(inner_seq)+1)
@@ -59,4 +77,47 @@ when not declared CPLIB_ITERTOOLS_ACCUMULATE:
                 a {.inject.} = sequence[i]
                 b {.inject.} = sequence[i+1]
             sequence[i] = operation
+
+    iterator combinations*[T](v: seq[T], r: int): seq[T] =
+        let n = len(v)
+        if r == 0:
+            yield @[]
+        elif 0 <= r and r <= n:
+            var idx = newSeq[int](r)
+            for i in 0..<r:
+                idx[i] = i
+
+            var x = newSeq[T](r)
+            while true:
+                for i in 0..<r:
+                    x[i] = v[idx[i]]
+                yield x
+
+                var i = r - 1
+                while i >= 0 and idx[i] == i + n - r:
+                    dec i
+                if i < 0:
+                    break
+
+                inc idx[i]
+                for j in (i + 1)..<r:
+                    idx[j] = idx[j - 1] + 1
+    iterator product*[T](v: seq[T],repeat:int):seq[T]=
+        if repeat == 0:
+            yield @[]
+        else:
+            var idxs = newseq[int](repeat)
+            var f = true
+            while f:
+                yield idxs.mapit(v[it])
+                for i in 0..<repeat:
+                    idxs[i] += 1
+                    if idxs[i] == len(v):
+                        idxs[i] = 0
+                        if i == repeat-1:
+                            f = false
+                        continue
+                    else:
+                        break
+
 
