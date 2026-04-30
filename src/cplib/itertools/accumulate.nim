@@ -1,5 +1,5 @@
-when not declared CPLIB_UTILS_ACCUMULATE:
-    const CPLIB_UTILS_ACCUMULATE* = 1
+when not declared CPLIB_ITERTOOLS_ACCUMULATE:
+    const CPLIB_ITERTOOLS_ACCUMULATE* = 1
     template accumulated*[T](sequence:seq[T],operation:untyped,first:T):seq[T]=
         let inner_seq = sequence
         var result = newseq[T](len(inner_seq)+1)
