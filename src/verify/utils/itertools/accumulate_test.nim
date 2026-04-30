@@ -1,6 +1,6 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_sum
 
-import cplib/utils/accumulate
+import cplib/utils/itertools
 import sequtils
 
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
