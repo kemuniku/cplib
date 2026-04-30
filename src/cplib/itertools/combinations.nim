@@ -1,20 +1,27 @@
 when not declared CPLIB_ITERTOOLS_COMBINATIONS:
     const CPLIB_ITERTOOLS_COMBINATIONS* = 1
-    import std/sequtils, std/algorithm
+
     iterator combinations*[T](v: seq[T], r: int): seq[T] =
-        var x: seq[T]
-        var stack = @[not 0, 0]
-        while len(stack) != 0:
-            var sindex = stack.pop()
-            if sindex >= 0:
-                if sindex != 0:
-                    x.add(v[sindex-1])
-                if len(x) == r:
-                    yield x
-                else:
-                    for i in countdown(len(v)-(r-len(x)), sindex, 1):
-                        stack.add(not(i+1))
-                        stack.add(i+1)
-            else:
-                if sindex != -1:
-                    discard x.pop()
+        let n = len(v)
+        if r == 0:
+            yield @[]
+        elif 0 <= r and r <= n:
+            var idx = newSeq[int](r)
+            for i in 0..<r:
+                idx[i] = i
+
+            var x = newSeq[T](r)
+            while true:
+                for i in 0..<r:
+                    x[i] = v[idx[i]]
+                yield x
+
+                var i = r - 1
+                while i >= 0 and idx[i] == i + n - r:
+                    dec i
+                if i < 0:
+                    break
+
+                inc idx[i]
+                for j in (i + 1)..<r:
+                    idx[j] = idx[j - 1] + 1
