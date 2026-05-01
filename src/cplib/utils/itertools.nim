@@ -102,6 +102,33 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                 inc idx[i]
                 for j in (i + 1)..<r:
                     idx[j] = idx[j - 1] + 1
+
+    iterator combinations*[T](v: seq[T], r: static[int]): array[r, T] =
+        let n = len(v)
+        when r == 0:
+            var x: array[r, T]
+            yield x
+        else:
+            if r <= n:
+                var idx: array[r, int]
+                var x: array[r, T]
+                for i in 0..<r:
+                    idx[i] = i
+                    x[i] = v[i]
+                yield x
+                while true:
+                    var i = r - 1
+                    while i >= 0 and idx[i] == i + n - r:
+                        dec i
+                    if i < 0:
+                        break
+                    inc idx[i]
+                    x[i] = v[idx[i]]
+                    for j in (i + 1)..<r:
+                        idx[j] = idx[j - 1] + 1
+                        x[j] = v[idx[j]]
+                    yield x
+
     iterator product*[T](v: seq[T],repeat:int):seq[T]=
         if repeat == 0:
             yield @[]
@@ -119,5 +146,23 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                         continue
                     else:
                         break
+    iterator partitions*(n: int): seq[int] =
+        ## 分割数列挙
+        if n == 0:
+            yield @[]
+        else:
+            var a = newSeq[int](n + 1)
+            var k = 1
+            a[1] = n
+            while k != 0:
+                var x = a[k - 1] + 1
+                var y = a[k] - 1
+                dec k
+                while x <= y:
+                    a[k] = x
+                    y -= x
+                    inc k
+                a[k] = x + y
+                yield a[0 .. k]
 
 
