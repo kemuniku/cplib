@@ -102,6 +102,39 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                 inc idx[i]
                 for j in (i + 1)..<r:
                     idx[j] = idx[j - 1] + 1
+    
+    iterator combinations_withf*[T](v: seq[T], r: int, f: proc(l, r: T): T): T =
+        ## `combinations(v, r)` の各組合せを `f` で左畳み込みした値を yield する。
+        ## 例: `f = proc(a,b:int):int = a*b` なら 各組合せの総積。
+        ## 接頭辞畳み込みを保持し、変化のあった添字以降のみ再計算する差分更新版。
+        let n = len(v)
+        if r == 0:
+            discard # 0 要素の組合せは畳み込み単位元が不明なので何も yield しない
+        else:
+            if r <= n:
+                var idx = newSeq[int](r)
+                var pref = newSeq[T](r)
+                for i in 0..<r:
+                    idx[i] = i
+                pref[0] = v[0]
+                for i in 1..<r:
+                    pref[i] = f(pref[i - 1], v[i])
+                yield pref[r - 1]
+                while true:
+                    var i = r - 1
+                    while i >= 0 and idx[i] == i + n - r:
+                        dec i
+                    if i < 0:
+                        break
+                    inc idx[i]
+                    if i == 0:
+                        pref[0] = v[idx[0]]
+                    else:
+                        pref[i] = f(pref[i - 1], v[idx[i]])
+                    for j in (i + 1)..<r:
+                        idx[j] = idx[j - 1] + 1
+                        pref[j] = f(pref[j - 1], v[idx[j]])
+                    yield pref[r - 1]
 
     iterator combinations*[T](v: seq[T], r: static[int]): array[r, T] =
         let n = len(v)
