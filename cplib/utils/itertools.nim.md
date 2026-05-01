@@ -94,20 +94,38 @@ data:
     \           yield x\n\n                var i = r - 1\n                while i\
     \ >= 0 and idx[i] == i + n - r:\n                    dec i\n                if\
     \ i < 0:\n                    break\n\n                inc idx[i]\n          \
-    \      for j in (i + 1)..<r:\n                    idx[j] = idx[j - 1] + 1\n  \
-    \  iterator product*[T](v: seq[T],repeat:int):seq[T]=\n        if repeat == 0:\n\
-    \            yield @[]\n        else:\n            var idxs = newseq[int](repeat)\n\
+    \      for j in (i + 1)..<r:\n                    idx[j] = idx[j - 1] + 1\n\n\
+    \    iterator combinations*[T](v: seq[T], r: static[int]): array[r, T] =\n   \
+    \     let n = len(v)\n        when r == 0:\n            var x: array[r, T]\n \
+    \           yield x\n        else:\n            if r <= n:\n                var\
+    \ idx: array[r, int]\n                var x: array[r, T]\n                for\
+    \ i in 0..<r:\n                    idx[i] = i\n                    x[i] = v[i]\n\
+    \                yield x\n                while true:\n                    var\
+    \ i = r - 1\n                    while i >= 0 and idx[i] == i + n - r:\n     \
+    \                   dec i\n                    if i < 0:\n                   \
+    \     break\n                    inc idx[i]\n                    x[i] = v[idx[i]]\n\
+    \                    for j in (i + 1)..<r:\n                        idx[j] = idx[j\
+    \ - 1] + 1\n                        x[j] = v[idx[j]]\n                    yield\
+    \ x\n\n    iterator product*[T](v: seq[T],repeat:int):seq[T]=\n        if repeat\
+    \ == 0:\n            yield @[]\n        else:\n            var idxs = newseq[int](repeat)\n\
     \            var f = true\n            while f:\n                yield idxs.mapit(v[it])\n\
     \                for i in 0..<repeat:\n                    idxs[i] += 1\n    \
     \                if idxs[i] == len(v):\n                        idxs[i] = 0\n\
     \                        if i == repeat-1:\n                            f = false\n\
     \                        continue\n                    else:\n               \
-    \         break\n\n\n"
+    \         break\n    iterator partitions*(n: int): seq[int] =\n        ## \u5206\
+    \u5272\u6570\u5217\u6319\n        if n == 0:\n            yield @[]\n        else:\n\
+    \            var a = newSeq[int](n + 1)\n            var k = 1\n            a[1]\
+    \ = n\n            while k != 0:\n                var x = a[k - 1] + 1\n     \
+    \           var y = a[k] - 1\n                dec k\n                while x <=\
+    \ y:\n                    a[k] = x\n                    y -= x\n             \
+    \       inc k\n                a[k] = x + y\n                yield a[0 .. k]\n\
+    \n\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []
-  timestamp: '2026-05-01 08:28:38+09:00'
+  timestamp: '2026-05-01 09:22:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/itertools/accumulated_2_test.nim
