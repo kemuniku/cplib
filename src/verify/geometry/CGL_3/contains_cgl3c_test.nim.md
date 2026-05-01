@@ -49,12 +49,12 @@ data:
     \ echo 2\n    else: echo 0\n"
   dependsOn:
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
+  - cplib/math/fractions.nim
   - cplib/math/fractions.nim
   - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_3/contains_cgl3c_test.nim

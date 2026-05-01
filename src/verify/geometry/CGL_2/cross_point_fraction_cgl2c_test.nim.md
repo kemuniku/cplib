@@ -56,13 +56,13 @@ data:
     \ l2)\n    echo &\"{p.x.toFloat:.10f} {p.y.toFloat:.10f}\"\n"
   dependsOn:
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
-  - cplib/math/fractions.nim
+  - cplib/geometry/intersect.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: true
