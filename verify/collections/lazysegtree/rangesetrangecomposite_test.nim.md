@@ -63,15 +63,15 @@ data:
     echo ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/math/isqrt.nim
-  - cplib/collections/lazysegtree.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/collections/lazysegtree.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
+  - cplib/collections/lazysegtree.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   requiredBy: []
