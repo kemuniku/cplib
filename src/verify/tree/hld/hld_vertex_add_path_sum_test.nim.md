@@ -49,9 +49,9 @@ data:
     \ a += seg.get(l..<r)\n        ans.add(a)\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/collections/segtree.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
