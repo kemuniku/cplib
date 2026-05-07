@@ -41,15 +41,15 @@ data:
     \    return dfs(st.root,0,st.lastnode)\n\n"
   dependsOn: []
   isVerificationFile: false
-  path: cplib/collections/parsistent_segtree.nim
+  path: cplib/collections/persistent_segtree.nim
   requiredBy: []
-  timestamp: '2026-03-12 21:20:12+09:00'
+  timestamp: '2026-05-01 08:01:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: cplib/collections/parsistent_segtree.nim
+documentation_of: cplib/collections/persistent_segtree.nim
 layout: document
 redirect_from:
-- /library/cplib/collections/parsistent_segtree.nim
-- /library/cplib/collections/parsistent_segtree.nim.html
-title: cplib/collections/parsistent_segtree.nim
+- /library/cplib/collections/persistent_segtree.nim
+- /library/cplib/collections/persistent_segtree.nim.html
+title: cplib/collections/persistent_segtree.nim
 ---
