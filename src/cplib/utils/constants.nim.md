@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/collections/lichaotree.nim
+    title: cplib/collections/lichaotree.nim
+  - icon: ':warning:'
+    path: cplib/collections/lichaotree.nim
+    title: cplib/collections/lichaotree.nim
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
@@ -246,6 +252,8 @@ data:
   - cplib/graph/namori_graph.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/collections/lichaotree.nim
+  - cplib/collections/lichaotree.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/slopetrick.nim

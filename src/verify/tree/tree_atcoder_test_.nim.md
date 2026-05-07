@@ -39,8 +39,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/tree/tree_atcoder_test_.nim
   requiredBy: []
