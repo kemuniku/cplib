@@ -368,6 +368,9 @@ data:
     - icon: ':warning:'
       path: cplib/utils/list_procs.nim
       title: cplib/utils/list_procs.nim
+    - icon: ':warning:'
+      path: cplib/utils/memo.nim
+      title: cplib/utils/memo.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/mo.nim
       title: cplib/utils/mo.nim
