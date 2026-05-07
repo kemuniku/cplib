@@ -12,7 +12,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
 
     iterator distinct_permutations*[T](v : seq[T]):seq[T]=
         ## next_permutaionをするのと同じ動作をします。
-        var tmp = v
+        var tmp = v.sorted()
         while true:
             yield tmp
             if not nextPermutation(tmp):
