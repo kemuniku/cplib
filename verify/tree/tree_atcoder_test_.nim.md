@@ -37,9 +37,9 @@ data:
     \  for (v, c) in g.edges[u]:\n        if v == par: continue\n        dfs(v, u,\
     \ cnt[u])\ndfs(0, -1, 0)\necho cnt.join(\" \")\n"
   dependsOn:
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree.nim
+  - cplib/tree/tree.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/tree/tree_atcoder_test_.nim
