@@ -44,8 +44,8 @@ data:
     \ echo dp[i]\n"
   dependsOn:
   - cplib/math/nearest_equiv.nim
-  - cplib/graph/graph.nim
   - cplib/math/nearest_equiv.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/math/nearear_equiv_abc342e_test_.nim
