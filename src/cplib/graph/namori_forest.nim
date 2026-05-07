@@ -97,6 +97,7 @@ when not declared CPLIB_GRAPH_NAMORI_FOREST:
 
     proc dist*(namori: NamoriForest, u, v: int): (int, int) =
         ## u, v 間の距離を二通り返します。
+        ## (小さいほう,大きいほう)
         ## 同じ木部分にいるなら二通り目は INF64。
         ## 別連結成分なら (INF64, INF64)。
 
