@@ -33,7 +33,7 @@ data:
   isVerificationFile: true
   path: verify/utils/itertools/accumulatedr_test.nim
   requiredBy: []
-  timestamp: '2026-05-01 09:32:31+09:00'
+  timestamp: '2026-05-07 18:27:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/itertools/accumulatedr_test.nim

@@ -37,8 +37,8 @@ data:
     \ = ii()\n    ans[i] = hld.la(s, t, k)\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_la_yosupo_test.nim

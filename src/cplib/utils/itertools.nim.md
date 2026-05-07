@@ -57,9 +57,9 @@ data:
     \    while true:\n            yield idxs.mapit(v[it])\n            if not nextPermutation(idxs):\n\
     \                break\n\n    iterator distinct_permutations*[T](v : seq[T]):seq[T]=\n\
     \        ## next_permutaion\u3092\u3059\u308B\u306E\u3068\u540C\u3058\u52D5\u4F5C\
-    \u3092\u3057\u307E\u3059\u3002\n        var tmp = v\n        while true:\n   \
-    \         yield tmp\n            if not nextPermutation(tmp):\n              \
-    \  break\n\n    template accumulated*[T](sequence:seq[T],operation:untyped,first:T):seq[T]=\n\
+    \u3092\u3057\u307E\u3059\u3002\n        var tmp = v.sorted()\n        while true:\n\
+    \            yield tmp\n            if not nextPermutation(tmp):\n           \
+    \     break\n\n    template accumulated*[T](sequence:seq[T],operation:untyped,first:T):seq[T]=\n\
     \        let inner_seq = sequence\n        var result = newseq[T](len(inner_seq)+1)\n\
     \        result[0] = first\n        for i in 0..<len(inner_seq):\n           \
     \ let\n                a {.inject.} = result[i]\n                b {.inject.}\
@@ -147,7 +147,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []
-  timestamp: '2026-05-01 09:32:31+09:00'
+  timestamp: '2026-05-07 18:27:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/itertools/accumulated_2_test.nim
