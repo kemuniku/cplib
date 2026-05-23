@@ -153,7 +153,7 @@ when not declared CPLIB_TMPL_SHEEP:
     
     # Yes/No
     proc yes*(b: bool = true): void = print(if b: "Yes" else: "No")
-    proc oo*(b: bool = true): void = yes(not b)
+    proc no*(b: bool = true): void = yes(not b)
 
     proc takahashi(b:bool = true) : void = print(if b: "Takahashi" else: "Aoki")
     proc aoki(b:bool = true) : void = takahashi(not b)
