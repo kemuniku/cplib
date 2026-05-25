@@ -1389,5 +1389,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
       title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/knapsack/solve_Bknapsack_test.nim
+      title: verify/utils/knapsack/solve_Bknapsack_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+      title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
 layout: toppage
 ---
