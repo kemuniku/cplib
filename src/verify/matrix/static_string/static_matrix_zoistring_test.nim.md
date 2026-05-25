@@ -1,0 +1,66 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/static_matrix.nim
+    title: cplib/matrix/static_matrix.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/static_matrix.nim
+    title: cplib/matrix/static_matrix.nim
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: nim
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    PROBLEM: https://yukicoder.me/problems/no/2156
+    links:
+    - https://yukicoder.me/problems/no/2156
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
+  code: '# verification-helper: PROBLEM https://yukicoder.me/problems/no/2156
+
+    import cplib/matrix/static_matrix
+
+
+    proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
+
+    proc ii(): int {.inline.} = scanf("%lld\n", addr result)
+
+
+    import atcoder/modint
+
+    type mint = modint998244353
+
+
+    var n = ii()
+
+    var a = [[mint(1), mint(1)], [mint(1), mint(0)]].toMatrix()
+
+    var ans = [[mint(1)], [mint(0)]].toMatrix()
+
+    ans = a.pow(n) * ans
+
+    echo ans[0, 0] - 1
+
+    '
+  dependsOn:
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/static_matrix.nim
+  isVerificationFile: true
+  path: verify/matrix/static_string/static_matrix_zoistring_test.nim
+  requiredBy: []
+  timestamp: '2026-05-26 07:54:36+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/matrix/static_string/static_matrix_zoistring_test.nim
+layout: document
+redirect_from:
+- /verify/verify/matrix/static_string/static_matrix_zoistring_test.nim
+- /verify/verify/matrix/static_string/static_matrix_zoistring_test.nim.html
+title: verify/matrix/static_string/static_matrix_zoistring_test.nim
+---
