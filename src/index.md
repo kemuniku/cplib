@@ -136,6 +136,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/geometry/angle.nim
       title: cplib/geometry/angle.nim
+    - icon: ':warning:'
+      path: cplib/geometry/argsort.nim
+      title: cplib/geometry/argsort.nim
     - icon: ':heavy_check_mark:'
       path: cplib/geometry/base.nim
       title: cplib/geometry/base.nim
