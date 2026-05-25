@@ -91,35 +91,59 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                         now = now.zero
                         result = (result shl 1) 
     
-    proc upperBound*(self:BinaryTrie,x:Natural):int=
+    proc upperBound*(self:BinaryTrie,x:Natural,xor_value:int=0):int=
         ## x以下の要素数
         var now = self.root
         for i in countdown(self.h-1,0,1):
-            if (x and (1 shl i)) == 0:
-                if now.zero.isNil():
-                    return result
-                now = now.zero
+            if (xor_value and (1 shl i)) == 0:
+                if (x and (1 shl i)) == 0:
+                    if now.zero.isNil():
+                        return result
+                    now = now.zero
+                else:
+                    if not now.zero.isNil():
+                        result += now.zero.value
+                    if now.one.isNil():
+                        return result
+                    now = now.one
             else:
-                if not now.zero.isNil():
-                    result += now.zero.value
-                if now.one.isNil():
-                    return result
-                now = now.one
+                if (x and (1 shl i)) == 0:
+                    if now.one.isNil():
+                        return result
+                    now = now.one
+                else:
+                    if not now.one.isNil():
+                        result += now.one.value
+                    if now.zero.isNil():
+                        return result
+                    now = now.zero
         result += now.value
-    proc lowerBound*(self:BinaryTrie,x:Natural):int=
+    proc lowerBound*(self:BinaryTrie,x:Natural,xor_value:int=0):int=
         ## x未満の要素数
         var now = self.root
         for i in countdown(self.h-1,0,1):
-            if (x and (1 shl i)) == 0:
-                if now.zero.isNil():
-                    return result
-                now = now.zero
+            if (xor_value and (1 shl i)) == 0:
+                if (x and (1 shl i)) == 0:
+                    if now.zero.isNil():
+                        return result
+                    now = now.zero
+                else:
+                    if not now.zero.isNil():
+                        result += now.zero.value
+                    if now.one.isNil():
+                        return result
+                    now = now.one
             else:
-                if not now.zero.isNil():
-                    result += now.zero.value
-                if now.one.isNil():
-                    return result
-                now = now.one
+                if (x and (1 shl i)) == 0:
+                    if now.one.isNil():
+                        return result
+                    now = now.one
+                else:
+                    if not now.one.isNil():
+                        result += now.one.value
+                    if now.zero.isNil():
+                        return result
+                    now = now.zero
     proc `[]`*(self:BinaryTrie,idx:Natural):int=
         return self.get_kth(idx)
 
