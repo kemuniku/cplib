@@ -1,18 +1,28 @@
 when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
     const CPLIB_COLLECTIONS_WAVELETMATRIX* = 1
     import cplib/collections/bitvector
-    import sequtils,bitops
+    import sequtils
+    import bitops
 
     type WaveletMatrix* = ref object
         dat : seq[BitVector]
         H : int
         N : int
     
-    proc initWaveletMatrix*(v:seq[int],H:int):WaveletMatrix=
+    proc initWaveletMatrix*(v:seq[int],H:int = -1):WaveletMatrix=
         var v = v
         var N = len(v)
+        var H = H
+        if H == -1:
+            if N == 0:
+                H = 0
+            elif max(v) == 0:
+                H = 1
+            else:
+                H = fastLog2(max(v))+1
         result = WaveletMatrix(dat:newSeqWith(H,newBitVector(N)),N:N,H:H)
-        var zero,one = newseqwith(N,-1)
+        var zero = newSeqWith(N,-1)
+        var one = newSeqWith(N,-1)
         var a = 0
         var b = 0
         for h in countdown(H-1,0,1):
@@ -31,12 +41,6 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
             a = 0
             b = 0
             result.dat[h].build()
-    
-    proc initWaveletMatrix*(v:seq[int]):WaveletMatrix=
-        var x = v.max()
-        if x == 0:
-            return initWaveletMatrix(v,1)
-        return initWaveletMatrix(v,x.fastLog2()+1)
     
     proc get_child*(self:WaveletMatrix,h,l,r:int):tuple[l0,r0,l1,r1:int]=
         # 高さh+1における[l,r)に該当する部分を見ているとする。
@@ -87,7 +91,7 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
         var now = 0
         for h in countdown(self.H-1,0,1):
             var (l0,r0,l1,r1) = self.get_child(h,l,r)
-            if (now + 1 shl h) >= x:
+            if (now + 1 shl h) > x:
                 l = l0
                 r = r0
             else:
