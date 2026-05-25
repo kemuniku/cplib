@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/modint/exp_modint.nim
+    title: cplib/modint/exp_modint.nim
+  - icon: ':warning:'
+    path: cplib/modint/exp_modint.nim
+    title: cplib/modint/exp_modint.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_aoj_test.nim
@@ -45,7 +51,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/euler_phi.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/modint/exp_modint.nim
+  - cplib/modint/exp_modint.nim
   timestamp: '2024-01-07 17:44:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

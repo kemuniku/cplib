@@ -108,16 +108,16 @@ data:
   requiredBy:
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
+  - cplib/math/divisor.nim
+  - cplib/math/divisor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/divisor.nim
-  - cplib/math/divisor.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/primefactor.nim
   - verify/math/divisor_atcoder_test_.nim
   - verify/math/divisor_atcoder_test_.nim
   - verify/math/factorize_tuple_abc324b_test_.nim
@@ -129,10 +129,10 @@ data:
   timestamp: '2024-03-16 01:58:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim

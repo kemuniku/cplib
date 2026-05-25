@@ -21,6 +21,12 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: cplib/graph/tsp.nim
+    title: cplib/graph/tsp.nim
+  - icon: ':warning:'
+    path: cplib/graph/tsp.nim
+    title: cplib/graph/tsp.nim
+  - icon: ':warning:'
     path: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
     title: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - icon: ':warning:'
@@ -125,20 +131,22 @@ data:
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
   requiredBy:
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/tsp.nim
   - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/static/grid_to_graph_abc151d_test_.nim
   - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   timestamp: '2026-05-07 18:28:29+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

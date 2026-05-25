@@ -28,6 +28,9 @@ data:
       path: cplib/collections/bitset.nim
       title: cplib/collections/bitset.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/bitvector.nim
+      title: cplib/collections/bitvector.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
     - icon: ':warning:'
@@ -108,6 +111,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/unionfind.nim
       title: cplib/collections/unionfind.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/waveletmatrix.nim
+      title: cplib/collections/waveletmatrix.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/weightedunionfind.nim
       title: cplib/collections/weightedunionfind.nim
@@ -198,6 +204,9 @@ data:
     - icon: ':warning:'
       path: cplib/graph/topologicalsort.nim
       title: cplib/graph/topologicalsort.nim
+    - icon: ':warning:'
+      path: cplib/graph/tsp.nim
+      title: cplib/graph/tsp.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/warshall_floyd.nim
       title: cplib/graph/warshall_floyd.nim
@@ -257,6 +266,12 @@ data:
     - icon: ':warning:'
       path: cplib/math/primitive_root.nim
       title: cplib/math/primitive_root.nim
+    - icon: ':warning:'
+      path: cplib/math/sqrt_heuristic_for_floor_sum.nim
+      title: cplib/math/sqrt_heuristic_for_floor_sum.nim
+    - icon: ':warning:'
+      path: cplib/math/xor_basis.nim
+      title: cplib/math/xor_basis.nim
   - name: cplib/matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -273,6 +288,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/modint/barrett_impl.nim
       title: cplib/modint/barrett_impl.nim
+    - icon: ':warning:'
+      path: cplib/modint/exp_modint.nim
+      title: cplib/modint/exp_modint.nim
     - icon: ':heavy_check_mark:'
       path: cplib/modint/modint.nim
       title: cplib/modint/modint.nim
@@ -357,8 +375,14 @@ data:
       path: cplib/utils/constants.nim
       title: cplib/utils/constants.nim
     - icon: ':warning:'
+      path: cplib/utils/cumsum2d.nim
+      title: cplib/utils/cumsum2d.nim
+    - icon: ':warning:'
       path: cplib/utils/grid_searcher.nim
       title: cplib/utils/grid_searcher.nim
+    - icon: ':warning:'
+      path: cplib/utils/imos2d.nim
+      title: cplib/utils/imos2d.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: cplib/utils/inversion_number.nim
@@ -862,6 +886,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/waveletmatrix_test.nim
+      title: verify/collections/waveletmatrix_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/word_size_tree_test.nim
       title: verify/collections/word_size_tree_test.nim
