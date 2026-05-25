@@ -1,4 +1,4 @@
-when not declared CPLIB_UTILS_GRID_CUMSUM2D:
+when not declared CPLIB_UTILS_CUMSUM2D:
     const CPLIB_UTILS_CUMSUM2D* = 1
     import sequtils
 
@@ -13,7 +13,7 @@ when not declared CPLIB_UTILS_GRID_CUMSUM2D:
         var B = newseqwith(H+1,newseqwith(W+1,0))
         for i in 1..H:
             for j in 1..W:
-                B[i][j] = B[i-1][j] + B[i][j-1] - B[i-1][j-1] + X[i][j]
+                B[i][j] = B[i-1][j] + B[i][j-1] - B[i-1][j-1] + X[i-1][j-1]
 
         result = Cumsum2D(B:B,H:H,W:W)
     

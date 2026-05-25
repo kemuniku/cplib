@@ -1,4 +1,4 @@
-when not declared CPLIB_UTILS_GRID_IMOS2D:
+when not declared CPLIB_UTILS_IMOS2D:
     const CPLIB_UTILS_IMOS2D* = 1
     import sequtils
 
