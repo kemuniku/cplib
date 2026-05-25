@@ -154,9 +154,11 @@
 "verify/utils/itertools/accumulatedr_2_test.nim": "2026-05-07 18:27:55 +0900",
 "verify/utils/itertools/accumulatedr_test.nim": "2026-05-07 18:27:55 +0900",
 "verify/utils/itertools/accumulater_test.nim": "2026-05-07 18:27:55 +0900",
-"verify/utils/knapsack/solve_01knapsack_MIM_test.nim": "2026-05-26 06:35:21 +0900",
-"verify/utils/knapsack/solve_01knapsack_NV_test.nim": "2026-05-26 06:35:21 +0900",
-"verify/utils/knapsack/solve_01knapsack_NW_test.nim": "2026-05-26 06:35:21 +0900",
+"verify/utils/knapsack/solve_01knapsack_MIM_test.nim": "2026-05-26 07:40:48 +0900",
+"verify/utils/knapsack/solve_01knapsack_NV_test.nim": "2026-05-26 07:40:48 +0900",
+"verify/utils/knapsack/solve_01knapsack_NW_test.nim": "2026-05-26 07:40:48 +0900",
+"verify/utils/knapsack/solve_Bknapsack_test.nim": "2026-05-26 07:40:48 +0900",
+"verify/utils/knapsack/solve_UBknapsack_NW_test.nim": "2026-05-26 07:40:48 +0900",
 "verify/utils/lis_aoj_test.nim": "2024-04-09 01:08:32 +0900",
 "verify/utils/restore_lis_aoj_test.nim": "2024-04-09 01:08:32 +0900"
 }
