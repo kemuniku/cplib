@@ -381,6 +381,9 @@ data:
       path: cplib/utils/grid_searcher.nim
       title: cplib/utils/grid_searcher.nim
     - icon: ':warning:'
+      path: cplib/utils/gridutils.nim
+      title: cplib/utils/gridutils.nim
+    - icon: ':warning:'
       path: cplib/utils/imos2d.nim
       title: cplib/utils/imos2d.nim
     - icon: ':heavy_check_mark:'
