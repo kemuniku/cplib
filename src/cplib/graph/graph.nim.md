@@ -62,6 +62,12 @@ data:
   - icon: ':warning:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
+  - icon: ':warning:'
+    path: cplib/graph/namori_forest.nim
+    title: cplib/graph/namori_forest.nim
+  - icon: ':warning:'
+    path: cplib/graph/namori_forest.nim
+    title: cplib/graph/namori_forest.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
@@ -206,6 +212,12 @@ data:
   - icon: ':warning:'
     path: verify/graph/merge_tree_test_.nim
     title: verify/graph/merge_tree_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_forest_test_.nim
+    title: verify/graph/namori_forest_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_forest_test_.nim
+    title: verify/graph/namori_forest_test_.nim
   - icon: ':warning:'
     path: verify/graph/namori_graph_test_.nim
     title: verify/graph/namori_graph_test_.nim
@@ -584,6 +596,8 @@ data:
   - cplib/graph/dijkstra.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
   - cplib/graph/graph_debug.nim
   - cplib/graph/graph_debug.nim
   - cplib/graph/namori_graph.nim
@@ -636,6 +650,8 @@ data:
   - verify/graph/static/SCCG_static_test_.nim
   - verify/graph/is_bipartite_graph_test_.nim
   - verify/graph/is_bipartite_graph_test_.nim
+  - verify/graph/namori_forest_test_.nim
+  - verify/graph/namori_forest_test_.nim
   - verify/graph/dynamic/topologicalsort_1_test_.nim
   - verify/graph/dynamic/topologicalsort_1_test_.nim
   - verify/graph/dynamic/SCC_test_.nim
