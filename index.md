@@ -189,6 +189,9 @@ data:
     - icon: ':warning:'
       path: cplib/graph/merge_tree.nim
       title: cplib/graph/merge_tree.nim
+    - icon: ':warning:'
+      path: cplib/graph/namori_forest.nim
+      title: cplib/graph/namori_forest.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/namori_graph.nim
       title: cplib/graph/namori_graph.nim
@@ -393,6 +396,9 @@ data:
       path: cplib/utils/itertools.nim
       title: cplib/utils/itertools.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/knapsack.nim
+      title: cplib/utils/knapsack.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/lis.nim
       title: cplib/utils/lis.nim
     - icon: ':warning:'
@@ -579,6 +585,9 @@ data:
     - icon: ':warning:'
       path: verify/graph/merge_tree_test_.nim
       title: verify/graph/merge_tree_test_.nim
+    - icon: ':warning:'
+      path: verify/graph/namori_forest_test_.nim
+      title: verify/graph/namori_forest_test_.nim
     - icon: ':warning:'
       path: verify/graph/namori_graph_test_.nim
       title: verify/graph/namori_graph_test_.nim
@@ -1369,5 +1378,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulater_test.nim
       title: verify/utils/itertools/accumulater_test.nim
+  - name: verify/utils/knapsack
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+      title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
+      title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
+      title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
 layout: toppage
 ---

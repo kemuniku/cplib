@@ -38,6 +38,12 @@ data:
   - icon: ':warning:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
+  - icon: ':warning:'
+    path: cplib/graph/namori_forest.nim
+    title: cplib/graph/namori_forest.nim
+  - icon: ':warning:'
+    path: cplib/graph/namori_forest.nim
+    title: cplib/graph/namori_forest.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
@@ -74,6 +80,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/knapsack.nim
+    title: cplib/utils/knapsack.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/knapsack.nim
+    title: cplib/utils/knapsack.nim
   - icon: ':warning:'
     path: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
     title: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
@@ -86,6 +98,12 @@ data:
   - icon: ':warning:'
     path: verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
     title: verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_forest_test_.nim
+    title: verify/graph/namori_forest_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_forest_test_.nim
+    title: verify/graph/namori_forest_test_.nim
   - icon: ':warning:'
     path: verify/graph/namori_graph_test_.nim
     title: verify/graph/namori_graph_test_.nim
@@ -225,6 +243,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+    title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+    title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
+    title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
+    title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
+    title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
+    title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -248,6 +284,8 @@ data:
   - cplib/graph/dijkstra.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/bellmanford.nim
@@ -256,6 +294,8 @@ data:
   - cplib/graph/tsp.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/knapsack.nim
+  - cplib/utils/knapsack.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/citrus.nim
@@ -272,6 +312,8 @@ data:
   - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/static/grid_to_graph_abc151d_test_.nim
   - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/namori_forest_test_.nim
+  - verify/graph/namori_forest_test_.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
@@ -311,6 +353,12 @@ data:
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim

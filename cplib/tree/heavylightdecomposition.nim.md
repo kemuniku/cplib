@@ -14,6 +14,12 @@ data:
   - icon: ':warning:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
+  - icon: ':warning:'
+    path: cplib/graph/namori_forest.nim
+    title: cplib/graph/namori_forest.nim
+  - icon: ':warning:'
+    path: cplib/graph/namori_forest.nim
+    title: cplib/graph/namori_forest.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
@@ -26,6 +32,12 @@ data:
   - icon: ':warning:'
     path: verify/graph/functional_graph_test_.nim
     title: verify/graph/functional_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_forest_test_.nim
+    title: verify/graph/namori_forest_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/namori_forest_test_.nim
+    title: verify/graph/namori_forest_test_.nim
   - icon: ':warning:'
     path: verify/graph/namori_graph_test_.nim
     title: verify/graph/namori_graph_test_.nim
@@ -209,10 +221,14 @@ data:
   isVerificationFile: false
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy:
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
+  - verify/graph/namori_forest_test_.nim
+  - verify/graph/namori_forest_test_.nim
   - verify/graph/functional_graph_test_.nim
   - verify/graph/functional_graph_test_.nim
   - verify/graph/namori_graph_test_.nim
