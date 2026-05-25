@@ -286,6 +286,9 @@ data:
     - icon: ':warning:'
       path: cplib/matrix/rolling_hash_2d.nim
       title: cplib/matrix/rolling_hash_2d.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/matrix/static_matrix.nim
+      title: cplib/matrix/static_matrix.nim
   - name: cplib/modint
     pages:
     - icon: ':heavy_check_mark:'
@@ -1199,6 +1202,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_zoistring_test.nim
       title: verify/matrix/matrix_zoistring_test.nim
+  - name: verify/matrix/static_string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/static_string/static_matrix_unit_test.nim
+      title: verify/matrix/static_string/static_matrix_unit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/static_string/static_matrix_zoistring_test.nim
+      title: verify/matrix/static_string/static_matrix_zoistring_test.nim
   - name: verify/modint
     pages:
     - icon: ':heavy_check_mark:'
