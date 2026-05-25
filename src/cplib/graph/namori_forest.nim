@@ -29,21 +29,29 @@ when not declared CPLIB_GRAPH_NAMORI_FOREST:
             if sizes[i] == 1:
                 stack.add(i)
 
-        # 葉を削って、木部分の辺だけ tree に入れる
+        # 葉を削って、cycle 上に残る頂点を判定する
         while stack.len != 0:
             let i = stack.pop()
             for j in graph[i]:
                 if sizes[j] != 1:
-                    tree.add_edge(i, j)
                     sizes[j] -= 1
                     if sizes[j] == 1:
                         stack.add(j)
+
+        var onCycle = newSeqWith(n, false)
+        for i in 0 ..< n:
+            onCycle[i] = sizes[i] > 1
+
+        for i in 0 ..< n:
+            for j in graph[i]:
+                if i < j and not (onCycle[i] and onCycle[j]):
+                    tree.add_edge(i, j)
 
         var usedCycle = newSeqWith(n, false)
         var cyclesize: seq[int]
 
         for s in 0 ..< n:
-            if sizes[s] == 1 or usedCycle[s]:
+            if not onCycle[s] or usedCycle[s]:
                 continue
 
             # s を含む cycle を一周する
@@ -57,7 +65,7 @@ when not declared CPLIB_GRAPH_NAMORI_FOREST:
 
                 var nxt = -1
                 for to in graph[now]:
-                    if sizes[to] != 1 and to != prev:
+                    if onCycle[to] and to != prev:
                         nxt = to
                         break
 
@@ -81,10 +89,29 @@ when not declared CPLIB_GRAPH_NAMORI_FOREST:
                     for y in graph[x]:
                         if y == p:
                             continue
-                        if sizes[y] == 1:
+                        if not onCycle[y]:
                             dfs(y, x)
 
                 dfs(r, -1)
+
+        for s in 0 ..< n:
+            if comp[s] != -1:
+                continue
+
+            let cid = cyclesize.len
+            cyclesize.add(0)
+            roots[s] = s
+            comp[s] = cid
+            tree.add_edge(s, superRoot)
+
+            var stack = @[s]
+            while stack.len != 0:
+                let x = stack.pop()
+                for y in graph[x]:
+                    if comp[y] == -1:
+                        roots[y] = s
+                        comp[y] = cid
+                        stack.add(y)
 
         return NamoriForest(
             tree: tree.initHld(superRoot),
@@ -123,7 +150,7 @@ when not declared CPLIB_GRAPH_NAMORI_FOREST:
         return (min(a, b) + base, max(a, b) + base)
 
     proc incycle*(namori: NamoriForest, x: int): bool =
-        return namori.roots[x] == x
+        return namori.roots[x] == x and namori.rootNo[x] != -1
 
     proc root*(namori: NamoriForest, x: int): int =
         return namori.roots[x]
