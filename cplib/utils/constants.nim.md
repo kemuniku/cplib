@@ -261,6 +261,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_Bknapsack_test.nim
+    title: verify/utils/knapsack/solve_Bknapsack_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_Bknapsack_test.nim
+    title: verify/utils/knapsack/solve_Bknapsack_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+    title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+    title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -357,8 +369,12 @@ data:
   - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
   - verify/utils/knapsack/solve_01knapsack_NV_test.nim
   - verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - verify/utils/knapsack/solve_Bknapsack_test.nim
+  - verify/utils/knapsack/solve_Bknapsack_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
