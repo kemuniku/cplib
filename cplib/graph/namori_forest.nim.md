@@ -111,10 +111,10 @@ data:
     \ x: int): int =\n        return namori.comp[x]\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/namori_forest.nim
