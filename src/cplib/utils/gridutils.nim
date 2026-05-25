@@ -28,7 +28,7 @@ when not declared CPLIB_UTILS_GRIDUTILS:
         grid.len
 
     proc width*[T](grid: seq[seq[T]]): int {.inline.} =
-        if grid.lejn == 0: 0 else: grid[0].len
+        if grid.len == 0: 0 else: grid[0].len
     
     proc getid*[T](grid: seq[seq[T]],i,j:int):int=
         return i*(grid.width) + j
