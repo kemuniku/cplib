@@ -35,10 +35,10 @@ data:
     for i in 0..<Q:\n    var c, x = ii()\n    if c == 1:\n        st.incl(x)\n   \
     \ else:\n        var l = st.le(x)\n        var r = st.ge(x)\n        echo r.get()-l.get()\n"
   dependsOn:
-  - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: verify/collections/avlset/set/ABC217_gele_test_.nim
   requiredBy: []

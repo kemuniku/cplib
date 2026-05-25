@@ -19,7 +19,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/graph/tsp.nim
+    title: cplib/graph/tsp.nim
+  - icon: ':warning:'
+    path: cplib/graph/tsp.nim
+    title: cplib/graph/tsp.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
@@ -102,23 +108,25 @@ data:
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/graph/tsp.nim
+  - cplib/graph/tsp.nim
   timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

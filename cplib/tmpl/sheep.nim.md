@@ -156,7 +156,7 @@ data:
     \        for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n     \
     \           return false\n            elif l[i] < r[i]:\n                return\
     \ true\n        return len(l) < len(r)\n    \n    # Yes/No\n    proc yes*(b: bool\
-    \ = true): void = print(if b: \"Yes\" else: \"No\")\n    proc oo*(b: bool = true):\
+    \ = true): void = print(if b: \"Yes\" else: \"No\")\n    proc no*(b: bool = true):\
     \ void = yes(not b)\n\n    proc takahashi(b:bool = true) : void = print(if b:\
     \ \"Takahashi\" else: \"Aoki\")\n    proc aoki(b:bool = true) : void = takahashi(not\
     \ b)\n\n    template dblock(body: untyped) =\n        when defined(debug):\n \
@@ -169,27 +169,27 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-04-19 23:22:18+09:00'
+  timestamp: '2026-05-24 07:19:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/get_palindromes_test.nim
 documentation_of: cplib/tmpl/sheep.nim
 layout: document
 redirect_from:
