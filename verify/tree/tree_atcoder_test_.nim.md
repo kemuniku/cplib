@@ -1,18 +1,6 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':warning:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
-  - icon: ':warning:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -36,11 +24,7 @@ data:
     \    cnt[p-1] += x\nproc dfs(u, par, val: int): void =\n    cnt[u] += val\n  \
     \  for (v, c) in g.edges[u]:\n        if v == par: continue\n        dfs(v, u,\
     \ cnt[u])\ndfs(0, -1, 0)\necho cnt.join(\" \")\n"
-  dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/tree.nim
+  dependsOn: []
   isVerificationFile: false
   path: verify/tree/tree_atcoder_test_.nim
   requiredBy: []

@@ -41,10 +41,10 @@ data:
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
     echo a,\" \",b,\" \",c,\" \",d"
   dependsOn:
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
   requiredBy: []

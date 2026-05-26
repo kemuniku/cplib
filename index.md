@@ -372,9 +372,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/rerooting.nim
       title: cplib/tree/rerooting.nim
-    - icon: ':warning:'
-      path: cplib/tree/tree.nim
-      title: cplib/tree/tree.nim
   - name: cplib/utils
     pages:
     - icon: ':heavy_check_mark:'
