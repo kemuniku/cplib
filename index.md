@@ -802,12 +802,6 @@ data:
     - icon: ':warning:'
       path: verify/tree/rerooting_big_test_.nim
       title: verify/tree/rerooting_big_test_.nim
-    - icon: ':warning:'
-      path: verify/tree/tree_atcoder_test_.nim
-      title: verify/tree/tree_atcoder_test_.nim
-    - icon: ':warning:'
-      path: verify/tree/tree_init_by_parent_atcoder_test_.nim
-      title: verify/tree/tree_init_by_parent_atcoder_test_.nim
   - name: verify/tree/hld
     pages:
     - icon: ':warning:'

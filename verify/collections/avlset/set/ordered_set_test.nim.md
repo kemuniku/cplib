@@ -41,8 +41,8 @@ data:
     \ st.ge(x)\n        if tmp.issome():\n            echo tmp.get()\n        else:\n\
     \            echo -1\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
