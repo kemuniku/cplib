@@ -404,6 +404,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/knapsack.nim
       title: cplib/utils/knapsack.nim
+    - icon: ':warning:'
+      path: cplib/utils/kth_element.nim
+      title: cplib/utils/kth_element.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/lis.nim
       title: cplib/utils/lis.nim
