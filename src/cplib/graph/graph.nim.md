@@ -135,12 +135,6 @@ data:
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
   - icon: ':warning:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
-  - icon: ':warning:'
-    path: cplib/tree/tree.nim
-    title: cplib/tree/tree.nim
-  - icon: ':warning:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
   - icon: ':warning:'
@@ -320,18 +314,6 @@ data:
   - icon: ':warning:'
     path: verify/tree/rerooting_big_test_.nim
     title: verify/tree/rerooting_big_test_.nim
-  - icon: ':warning:'
-    path: verify/tree/tree_atcoder_test_.nim
-    title: verify/tree/tree_atcoder_test_.nim
-  - icon: ':warning:'
-    path: verify/tree/tree_atcoder_test_.nim
-    title: verify/tree/tree_atcoder_test_.nim
-  - icon: ':warning:'
-    path: verify/tree/tree_init_by_parent_atcoder_test_.nim
-    title: verify/tree/tree_init_by_parent_atcoder_test_.nim
-  - icon: ':warning:'
-    path: verify/tree/tree_init_by_parent_atcoder_test_.nim
-    title: verify/tree/tree_init_by_parent_atcoder_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -636,8 +618,6 @@ data:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
-  - cplib/tree/tree.nim
-  - cplib/tree/tree.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
   - verify/graph/merge_tree_test_.nim
@@ -688,10 +668,6 @@ data:
   - verify/tree/prufer_abc328e_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
-  - verify/tree/tree_atcoder_test_.nim
-  - verify/tree/tree_atcoder_test_.nim
-  - verify/tree/tree_init_by_parent_atcoder_test_.nim
-  - verify/tree/tree_init_by_parent_atcoder_test_.nim
   - verify/tree/rerooting_big_test_.nim
   - verify/tree/rerooting_big_test_.nim
   - verify/tree/diameter_path_static_test_.nim
