@@ -9,6 +9,12 @@ data:
     title: cplib/collections/staticRMQ.nim
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: cplib/str/compressed_trie.nim
+    title: cplib/str/compressed_trie.nim
+  - icon: ':warning:'
+    path: cplib/str/compressed_trie.nim
+    title: cplib/str/compressed_trie.nim
+  - icon: ':warning:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
   - icon: ':warning:'
@@ -148,6 +154,8 @@ data:
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:
+  - cplib/str/compressed_trie.nim
+  - cplib/str/compressed_trie.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/merged_static_string.nim
   - verify/str/static_string/static_string_count_test_.nim

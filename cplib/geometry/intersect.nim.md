@@ -99,8 +99,8 @@ data:
   dependsOn:
   - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
