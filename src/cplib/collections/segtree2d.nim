@@ -53,7 +53,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE2D:
         return self.merge(lres, rres)
 
     proc update*[T](self: SegmentTree2D[T], i,j: Natural, val: T) =
-        ## xの要素をvalに変更します。
+        ## (i, j)の要素をvalに変更します。
         assert i < self.H
         assert j < self.W
         var i = i
