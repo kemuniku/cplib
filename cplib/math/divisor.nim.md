@@ -77,14 +77,14 @@ data:
     \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
   - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/divisor.nim

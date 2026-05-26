@@ -420,6 +420,9 @@ data:
       path: cplib/utils/random_helper.nim
       title: cplib/utils/random_helper.nim
     - icon: ':warning:'
+      path: cplib/utils/seqidx.nim
+      title: cplib/utils/seqidx.nim
+    - icon: ':warning:'
       path: cplib/utils/sequtils2D.nim
       title: cplib/utils/sequtils2D.nim
   - name: verify/collections/avlset/multiset
