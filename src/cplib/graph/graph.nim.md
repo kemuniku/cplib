@@ -33,6 +33,12 @@ data:
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':warning:'
+    path: cplib/graph/dynamic_bipartite.nim
+    title: cplib/graph/dynamic_bipartite.nim
+  - icon: ':warning:'
+    path: cplib/graph/dynamic_bipartite.nim
+    title: cplib/graph/dynamic_bipartite.nim
+  - icon: ':warning:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
   - icon: ':warning:'
@@ -612,6 +618,8 @@ data:
   - cplib/graph/tsp.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/dynamic_bipartite.nim
+  - cplib/graph/dynamic_bipartite.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
   - cplib/graph/bipartite_graph.nim

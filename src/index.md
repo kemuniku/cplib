@@ -175,6 +175,9 @@ data:
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
     - icon: ':warning:'
+      path: cplib/graph/dynamic_bipartite.nim
+      title: cplib/graph/dynamic_bipartite.nim
+    - icon: ':warning:'
       path: cplib/graph/functional_graph.nim
       title: cplib/graph/functional_graph.nim
     - icon: ':heavy_check_mark:'
