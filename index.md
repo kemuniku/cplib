@@ -81,6 +81,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
+    - icon: ':warning:'
+      path: cplib/collections/segtree2d.nim
+      title: cplib/collections/segtree2d.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree_beats.nim
       title: cplib/collections/segtree_beats.nim

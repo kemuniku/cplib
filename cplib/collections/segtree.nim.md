@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/collections/segtree2d.nim
+    title: cplib/collections/segtree2d.nim
+  - icon: ':warning:'
+    path: cplib/collections/segtree2d.nim
+    title: cplib/collections/segtree2d.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
@@ -214,6 +220,8 @@ data:
   requiredBy:
   - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
+  - cplib/collections/segtree2d.nim
+  - cplib/collections/segtree2d.nim
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/collections/segtree/segtree_get1item_test_.nim
