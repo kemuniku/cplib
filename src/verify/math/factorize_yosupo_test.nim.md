@@ -54,14 +54,14 @@ data:
   dependsOn:
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
   isVerificationFile: true
   path: verify/math/factorize_yosupo_test.nim
   requiredBy: []
