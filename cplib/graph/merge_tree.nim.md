@@ -86,9 +86,9 @@ data:
     \u756A\u76EE\u304B\u3092\u8FD4\u3059\n        self.ret[x]"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy:

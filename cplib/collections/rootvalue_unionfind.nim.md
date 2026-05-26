@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: cplib/graph/dynamic_bipartite.nim
+    title: cplib/graph/dynamic_bipartite.nim
+  - icon: ':warning:'
+    path: cplib/graph/dynamic_bipartite.nim
+    title: cplib/graph/dynamic_bipartite.nim
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
@@ -15,7 +21,7 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_ROOT_VALUE_UNIONFIND:\n    const CPLIB_COLLECTIONS_UNIONFIND*\
-    \ = 1\n    import algorithm, sequtils\n    type RootValueUnionFind[T] = ref object\n\
+    \ = 1\n    import algorithm, sequtils\n    type RootValueUnionFind*[T] = ref object\n\
     \        count*: int\n        par_or_siz: seq[int]\n        op : proc(x,y:var\
     \ T)\n        values* : seq[T]\n    proc initRootValueUnionFind*[T](N: int,op:(proc(x,y:var\
     \ T)),default:(proc():T)): RootValueUnionFind[T] =\n        ## op\u306B\u3064\u3044\
@@ -66,8 +72,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/rootvalue_unionfind.nim
-  requiredBy: []
-  timestamp: '2024-09-21 22:43:30+09:00'
+  requiredBy:
+  - cplib/graph/dynamic_bipartite.nim
+  - cplib/graph/dynamic_bipartite.nim
+  timestamp: '2026-05-26 09:16:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/rootvalue_unionfind.nim
