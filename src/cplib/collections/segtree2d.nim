@@ -33,7 +33,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE2D:
         return self
 
     proc get*[T](self: SegmentTree2D[T], il: Natural, ir: Natural,jl: Natural, jr: Natural): T =
-        ## 半解区間[il,ir)についての演算結果を返します。
+        ## 長方形領域 i∈[il,ir), j∈[jl,jr) についての演算結果を返します。
         assert il <= ir and 0 <= il and ir <= self.H
         assert jl <= jr and 0 <= jl and jr <= self.W
         var il = il
