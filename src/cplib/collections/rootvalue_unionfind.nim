@@ -1,7 +1,7 @@
 when not declared CPLIB_COLLECTIONS_ROOT_VALUE_UNIONFIND:
     const CPLIB_COLLECTIONS_UNIONFIND* = 1
     import algorithm, sequtils
-    type RootValueUnionFind[T] = ref object
+    type RootValueUnionFind*[T] = ref object
         count*: int
         par_or_siz: seq[int]
         op : proc(x,y:var T)
