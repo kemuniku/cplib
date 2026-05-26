@@ -314,6 +314,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/can_reverse_hash_string.nim
       title: cplib/str/can_reverse_hash_string.nim
+    - icon: ':warning:'
+      path: cplib/str/compressed_trie.nim
+      title: cplib/str/compressed_trie.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/hash_string.nim
       title: cplib/str/hash_string.nim

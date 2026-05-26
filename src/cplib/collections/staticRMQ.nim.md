@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: cplib/str/compressed_trie.nim
+    title: cplib/str/compressed_trie.nim
+  - icon: ':warning:'
+    path: cplib/str/compressed_trie.nim
+    title: cplib/str/compressed_trie.nim
+  - icon: ':warning:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
   - icon: ':warning:'
@@ -130,6 +136,8 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticRMQ.nim
   requiredBy:
+  - cplib/str/compressed_trie.nim
+  - cplib/str/compressed_trie.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim

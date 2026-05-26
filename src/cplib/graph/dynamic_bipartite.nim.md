@@ -47,10 +47,10 @@ data:
     \  self.cnt_sum += max(self.uf.get(u),self.uf.get(u+self.N))\n    \n    proc is_bipartite*(self:DynamicBipartite):bool=\n\
     \        return self.is_bipartite"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
-  - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim
   requiredBy: []

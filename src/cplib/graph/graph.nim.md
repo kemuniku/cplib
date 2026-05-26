@@ -110,6 +110,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
+  - icon: ':warning:'
+    path: cplib/str/compressed_trie.nim
+    title: cplib/str/compressed_trie.nim
+  - icon: ':warning:'
+    path: cplib/str/compressed_trie.nim
+    title: cplib/str/compressed_trie.nim
   - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
@@ -574,6 +580,8 @@ data:
   isVerificationFile: false
   path: cplib/graph/graph.nim
   requiredBy:
+  - cplib/str/compressed_trie.nim
+  - cplib/str/compressed_trie.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/warshall_floyd.nim
