@@ -66,10 +66,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/bitset.nim
   requiredBy:
-  - verify/collections/bitset_andpopcnt_test_.nim
-  - verify/collections/bitset_andpopcnt_test_.nim
   - verify/collections/bitset_test_.nim
   - verify/collections/bitset_test_.nim
+  - verify/collections/bitset_andpopcnt_test_.nim
+  - verify/collections/bitset_andpopcnt_test_.nim
   timestamp: '2026-03-12 21:21:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

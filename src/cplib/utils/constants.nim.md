@@ -33,6 +33,12 @@ data:
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':warning:'
+    path: cplib/graph/kruskal.nim
+    title: cplib/graph/kruskal.nim
+  - icon: ':warning:'
+    path: cplib/graph/kruskal.nim
+    title: cplib/graph/kruskal.nim
+  - icon: ':warning:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':warning:'
@@ -290,87 +296,63 @@ data:
   isVerificationFile: false
   path: cplib/utils/constants.nim
   requiredBy:
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/namori_forest.nim
+  - verify/graph/namori_graph_test_.nim
+  - verify/graph/namori_graph_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/namori_forest_test_.nim
+  - verify/graph/namori_forest_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - cplib/utils/knapsack.nim
+  - cplib/utils/knapsack.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/knapsack.nim
-  - cplib/utils/knapsack.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/collections/lichaotree.nim
+  - cplib/collections/lichaotree.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/slopetrick.nim
+  - cplib/collections/slopetrick.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/citrus.nim
-  - cplib/collections/slopetrick.nim
-  - cplib/collections/slopetrick.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/lichaotree.nim
-  - cplib/collections/lichaotree.nim
-  - verify/str/merged_static_string.nim
-  - verify/str/merged_static_string.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
-  - verify/graph/namori_forest_test_.nim
-  - verify/graph/namori_forest_test_.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  - verify/graph/steiner_tree_abc364g_test_.nim
-  - verify/graph/steiner_tree_abc364g_test_.nim
-  - verify/graph/namori_graph_test_.nim
-  - verify/graph/namori_graph_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
   timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/graph/namori_incycle_test.nim
-  - verify/graph/namori_incycle_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - verify/tree/auxiliaryweightedtree_test.nim
-  - verify/tree/auxiliaryweightedtree_test.nim
   - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
   - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim
@@ -379,10 +361,36 @@ data:
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
-  - verify/tmpl/citrus_and_qcfium_test.nim
-  - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/namori_incycle_test.nim
+  - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
 documentation_of: cplib/utils/constants.nim
 layout: document
 redirect_from:

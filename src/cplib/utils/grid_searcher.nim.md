@@ -134,8 +134,8 @@ data:
     \            if xy.isSome():\n                result.add(xy.get())\n\n\n    proc\
     \ len*(grid:GridSearcher):int=\n        return len(grid.row)"
   dependsOn:
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
@@ -143,12 +143,12 @@ data:
   requiredBy:
   - verify/utils/grid_searcher/skate_get_tuple_test_.nim
   - verify/utils/grid_searcher/skate_get_tuple_test_.nim
-  - verify/utils/grid_searcher/skate_test_.nim
-  - verify/utils/grid_searcher/skate_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
   - verify/utils/grid_searcher/skate_tuple_test_.nim
   - verify/utils/grid_searcher/skate_tuple_test_.nim
+  - verify/utils/grid_searcher/skate_test_.nim
+  - verify/utils/grid_searcher/skate_test_.nim
   timestamp: '2025-11-08 19:42:23+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

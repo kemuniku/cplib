@@ -92,10 +92,10 @@ data:
   timestamp: '2024-03-21 10:21:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/hashtable_yuki2686_test.nim
-  - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/associative_array_test.nim
   - verify/collections/associative_array_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
 documentation_of: cplib/collections/hashtable.nim
 layout: document
 redirect_from:

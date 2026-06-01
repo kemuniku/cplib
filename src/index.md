@@ -193,6 +193,9 @@ data:
       path: cplib/graph/grid_to_graph.nim
       title: cplib/graph/grid_to_graph.nim
     - icon: ':warning:'
+      path: cplib/graph/kruskal.nim
+      title: cplib/graph/kruskal.nim
+    - icon: ':warning:'
       path: cplib/graph/maxk_dijkstra.nim
       title: cplib/graph/maxk_dijkstra.nim
     - icon: ':warning:'
