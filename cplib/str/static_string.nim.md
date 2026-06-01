@@ -154,14 +154,14 @@ data:
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
+  - verify/str/static_string/static_string_count_test_.nim
+  - verify/str/static_string/static_string_count_test_.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/merged_static_string.nim
-  - verify/str/static_string/static_string_count_test_.nim
-  - verify/str/static_string/static_string_count_test_.nim
-  - verify/str/merged_static_string.nim
-  - verify/str/merged_static_string.nim
   timestamp: '2026-04-15 04:05:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -169,18 +169,18 @@ data:
   - verify/str/static_string/static_string_initSA_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
   - verify/str/static_string/static_string_SA_test.nim
   - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
 documentation_of: cplib/str/static_string.nim
 layout: document
 redirect_from:
