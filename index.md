@@ -36,6 +36,9 @@ data:
     - icon: ':warning:'
       path: cplib/collections/deletable_heapqueue.nim
       title: cplib/collections/deletable_heapqueue.nim
+    - icon: ':warning:'
+      path: cplib/collections/fenwick2d.nim
+      title: cplib/collections/fenwick2d.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/group_unionfind.nim
       title: cplib/collections/group_unionfind.nim
