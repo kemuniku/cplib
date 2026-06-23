@@ -99,7 +99,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH:
             return -1
         var lca = functional_graph.tree.lca(u,v)
         if lca == v:
-            return functional_graph.tree.depth(v)-functional_graph.tree.depth(u)
+            return functional_graph.tree.depth(u)-functional_graph.tree.depth(v)
         if lca == len(functional_graph.cycle_number):
             if functional_graph.incycle(v):
                 var x = functional_graph.cycle_idx[functional_graph.roots[u]]
