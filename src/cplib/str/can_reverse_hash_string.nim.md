@@ -166,20 +166,20 @@ data:
   timestamp: '2026-04-19 23:22:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/get_palindromes_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/get_palindromes_test.nim
 documentation_of: cplib/str/can_reverse_hash_string.nim
 layout: document
 redirect_from:

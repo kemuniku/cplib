@@ -87,7 +87,7 @@ data:
     \u306A\u3044\u3068\u304D\u306F-1\u3092\u8FD4\u3059\u3002\n        if functional_graph.cycle_number[functional_graph.roots[u]]\
     \ != functional_graph.cycle_number[functional_graph.roots[v]]:\n            return\
     \ -1\n        var lca = functional_graph.tree.lca(u,v)\n        if lca == v:\n\
-    \            return functional_graph.tree.depth(v)-functional_graph.tree.depth(u)\n\
+    \            return functional_graph.tree.depth(u)-functional_graph.tree.depth(v)\n\
     \        if lca == len(functional_graph.cycle_number):\n            if functional_graph.incycle(v):\n\
     \                var x = functional_graph.cycle_idx[functional_graph.roots[u]]\n\
     \                var y = functional_graph.cycle_idx[v]\n                if x <\
@@ -101,16 +101,16 @@ data:
     \u3001\u521D\u3081\u3066\u30B5\u30A4\u30AF\u30EB\u306B\u5165\u3063\u305F\u3068\
     \u304D\u306E\u9802\u70B9\u3092\u8FD4\u3059\n        return functional_graph.roots[x]"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
   requiredBy:
   - verify/graph/functional_graph_test_.nim
   - verify/graph/functional_graph_test_.nim
-  timestamp: '2025-01-30 13:56:50+09:00'
+  timestamp: '2026-06-23 13:10:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/functional_graph.nim

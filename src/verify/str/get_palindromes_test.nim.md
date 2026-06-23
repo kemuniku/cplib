@@ -49,13 +49,13 @@ data:
     \ \")"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/str/manacher.nim
   - cplib/str/can_reverse_hash_string.nim
   - cplib/str/manacher.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/str/manacher.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/str/get_palindromes_test.nim
   requiredBy: []

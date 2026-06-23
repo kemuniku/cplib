@@ -42,16 +42,16 @@ data:
     var f = G.initFunctionalGraph()\nvar ans = 0\nfor i in 0..<N:\n    ans += f.cycle_size(i)\
     \ + f.depth(i)\necho ans\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: verify/graph/functional_graph_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2026-06-23 13:10:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/functional_graph_test_.nim

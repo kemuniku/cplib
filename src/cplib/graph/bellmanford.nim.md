@@ -93,19 +93,19 @@ data:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
   requiredBy: []
   timestamp: '2025-03-09 17:42:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
 documentation_of: cplib/graph/bellmanford.nim
 layout: document
 redirect_from:
