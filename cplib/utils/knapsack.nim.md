@@ -104,16 +104,16 @@ data:
   timestamp: '2026-05-26 07:40:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim
+  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
 documentation_of: cplib/utils/knapsack.nim
 layout: document
 redirect_from:
