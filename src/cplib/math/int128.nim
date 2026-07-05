@@ -149,7 +149,7 @@ when not declared CPLIB_MATH_INT128:
     proc read_and_parse_int128*(): Int128 = read_and_parse_int128_inner(0)
     proc pow*(x, n, m: Int128): Int128 =
         result = 1
-        var x = x
+        var x = x mod m
         var n = n
         while n > 0:
             if (n & 1) == 1: result = (result * x) mod m
