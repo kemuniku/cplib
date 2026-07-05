@@ -8,7 +8,7 @@ type LiChaoTree = ref object
     B : seq[int]
     lastnode : int
 
-proc initLiChaoTree*(X:seq[int]):LiChaoTree=
+proc initLiChaoTree*(X:openArray[int]):LiChaoTree=
     ## LiChaoTreeを初期化します
     ## get_minで用いる可能性のあるXを配列で与えてください。
     var X = X.sorted().deduplicate(true)

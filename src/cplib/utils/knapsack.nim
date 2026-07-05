@@ -2,7 +2,7 @@ when not declared CPLIB_UTILS_KNAPSACK:
     const CPLIB_UTILS_KNAPSACK* = 1
     import sequtils,math,bitops,algorithm
     import cplib/utils/constants
-    proc solve_01knapsack_NW*(items:seq[tuple[v:int,w:int]],W:int):int=
+    proc solve_01knapsack_NW*(items:openArray[tuple[v:int,w:int]],W:int):int=
         ## sum(w_i) <= Wとなるようなitemの取り方で、vが最大のものを選ぶ
         ## O(NW)
         var DP = newseqwith(W+1,-INF64)
@@ -13,7 +13,7 @@ when not declared CPLIB_UTILS_KNAPSACK:
                 DP[j+w] = max(DP[j+w],DP[j]+v)
         return DP.max()
 
-    proc solve_01knapsack_NV*(items:seq[tuple[v:int,w:int]],W:int):int=
+    proc solve_01knapsack_NV*(items:openArray[tuple[v:int,w:int]],W:int):int=
         ## sum(w_i) <= Wとなるようなitemの取り方で、vが最大のものを選ぶ
         ## O(N sum(v_i))
         var V = items.mapit(it.v).sum()
@@ -27,10 +27,11 @@ when not declared CPLIB_UTILS_KNAPSACK:
             if DP[i] <= W:
                 return i
 
-    proc solve_01knapsack_meet_in_middle*(items:seq[tuple[v:int,w:int]],W:int):int=
+    proc solve_01knapsack_meet_in_middle*(items:openArray[tuple[v:int,w:int]],W:int):int=
         ## sum(w_i) <= Wとなるようなitemの取り方で、vが最大のものを選ぶ
         ## O(N 2^{N/2})
         
+        let items = @items
         proc naive_knapsack(items:seq[tuple[v:int,w:int]]):seq[tuple[v:int,w:int]]=
             var X = len(items)
             result = newseqwith(1 shl X,(0,0))
@@ -51,7 +52,7 @@ when not declared CPLIB_UTILS_KNAPSACK:
             ans = max(ans,b+v)
         return ans
     
-    proc solve_UBknapsack_NW*(items:seq[tuple[v:int,w:int]],W:int):int=
+    proc solve_UBknapsack_NW*(items:openArray[tuple[v:int,w:int]],W:int):int=
         ## 各アイテムを何回でも選んでいいナップサック問題
         ## O(NW)
         var DP = newseqwith(W+1,-INF64)
@@ -62,7 +63,7 @@ when not declared CPLIB_UTILS_KNAPSACK:
                 DP[j+w] = max(DP[j+w],DP[j]+v)
         return DP.max()
     
-    proc solve_BoundedKnapsack*(items:seq[tuple[v:int,w:int,m:int]], W:int):int =
+    proc solve_BoundedKnapsack*(items:openArray[tuple[v:int,w:int,m:int]], W:int):int =
         var dp = newSeq[int](W + 1)
         for (v, w, m0) in items:
             if w > W:

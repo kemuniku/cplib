@@ -16,11 +16,11 @@ when not declared CPLIB_COLLECTIONS_ROOT_VALUE_UNIONFIND:
         ## 関数にvarで与えられるので、関数内でxを書き換えてください
         ## なんでこうしてるの？　-> HashSetとかを載せてマージできると嬉しさがあるので。
         result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),op:op,values:newseqwith(N,default))
-    proc initRootValueUnionFind*[T](N: int,op:(proc(x,y:var T)),values:seq[T]): RootValueUnionFind[T] =
+    proc initRootValueUnionFind*[T](N: int,op:(proc(x,y:var T)),values:openArray[T]): RootValueUnionFind[T] =
         ## opについて、xのほうが新しくrootになるものとする(よって、xのサイズはyのサイズ以上である)
         ## 関数にvarで与えられるので、関数内でxを書き換えてください
         ## なんでこうしてるの？　-> HashSetとかを載せてマージできると嬉しさがあるので。
-        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),op:op,values:values)
+        result = RootValueUnionFind[T](count: N, par_or_siz: newSeqwith(N, -1),op:op,values: @values)
     proc root*[T](self: RootValueUnionFind[T], x: int): int =
         if self.par_or_siz[x] < 0:
             return x
@@ -46,5 +46,3 @@ when not declared CPLIB_COLLECTIONS_ROOT_VALUE_UNIONFIND:
         return self.values[self.root(x)]
     proc set*[T](self: RootValueUnionFind[T],x:int,value:T)=
         self.values[self.root(x)] = value
-
-

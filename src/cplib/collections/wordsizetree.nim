@@ -10,7 +10,7 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
     proc initWordsizeTree*():WordsizeTree=
         discard
 
-    proc initWordsizeTree*(v:seq[bool]):WordsizeTree=
+    proc initWordsizeTree*(v:openArray[bool]):WordsizeTree=
         for i in 0..<len(v):
             if v[i]: result.A3[i shr 6] = result.A3[i shr 6] or (1u shl (i and(0b111111)))
         for i in 0..<((len(v)+(63)) shr 6):

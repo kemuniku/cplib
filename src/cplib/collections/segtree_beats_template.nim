@@ -24,7 +24,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:
         inf*, zero*: T
     proc init_S[T](val: T, inf: T, sz: int = 1): S_rch[T] = S_rch[T](max: val, max2: -inf, min: val, min2: inf, sum: val * T(sz), sz: sz, n_min: sz, n_max: sz, fail: false)
 
-    proc initRangeChminChmaxRangeSumMaxMin*[T](v: seq[T], inf: T, zero: T): auto =
+    proc initRangeChminChmaxRangeSumMaxMin*[T](v: openArray[T], inf: T, zero: T): auto =
         proc op(l, r: S_rch[T]): S_rch[T] =
             proc second_lowest(a, b, c, d: T): T {.inline.} =
                 if a == c: return min(b, d)
@@ -75,9 +75,9 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:
         var vn = v.mapIt(init_S(it, inf))
         var seg = initSegmentTreeBeats(vn, op, e(), mapping, composition, id())
         return RangeChminChmaxRangeSumMaxMin[T](seg: seg, inf: inf, zero: zero)
-    proc initRangeChminChmaxRangeSumMaxMin*(v: seq[int]): RangeChminChmaxRangeSumMaxMin[int] = initRangeChminChmaxRangeSumMaxMin(v, INF64, 0)
-    proc initRangeChminChmaxRangeSumMaxMin*(v: seq[int32]): RangeChminChmaxRangeSumMaxMin[int32] = initRangeChminChmaxRangeSumMaxMin(v, INF32, 0.int32)
-    proc initRangeChminChmaxRangeSumMaxMin*(v: seq[float]): RangeChminChmaxRangeSumMaxMin[float] = initRangeChminChmaxRangeSumMaxMin(v, 1e100, 0.0)
+    proc initRangeChminChmaxRangeSumMaxMin*(v: openArray[int]): RangeChminChmaxRangeSumMaxMin[int] = initRangeChminChmaxRangeSumMaxMin(v, INF64, 0)
+    proc initRangeChminChmaxRangeSumMaxMin*(v: openArray[int32]): RangeChminChmaxRangeSumMaxMin[int32] = initRangeChminChmaxRangeSumMaxMin(v, INF32, 0.int32)
+    proc initRangeChminChmaxRangeSumMaxMin*(v: openArray[float]): RangeChminChmaxRangeSumMaxMin[float] = initRangeChminChmaxRangeSumMaxMin(v, 1e100, 0.0)
 
     proc update*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T) = self.seg.update(p, init_S(val, self.inf))
     proc `[]`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural or HSlice[int, int]): S_rch[T] = self.seg[p]
@@ -87,4 +87,3 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:
     proc chmin*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf, ub: val, add: self.zero))
     proc chmax*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: val, ub: self.inf, add: self.zero))
     proc add*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf, ub: self.inf, add: val))
-

@@ -75,7 +75,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
     declareOperation(`>>=`)
     declareOperation(`<<=`)
     declareOperation(`**=`)
-    proc initSegmentTree*[T](v: seq[T], merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] =
+    proc initSegmentTree*[T](v: openArray[T], merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] =
         ## セグメントツリーを生成します。
         ## vに元となるリスト、mergeに二つの区間をマージする関数、デフォルトに単位元を与えてください。
         var lastnode = 1
@@ -90,7 +90,16 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
             result.arr[lastnode+i] = initSegmentTreeElem(result.addr, default, lastnode+i)
         for i in countdown(lastnode-1, 1):
             result.arr[i] = initSegmentTreeElem(result.addr, merge(result.arr[2*i].v, result.arr[2*i+1].v), i)
-    proc initSegmentTree*[T](n: int, merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] = initSegmentTree(newSeqWith(n, default), merge, default)
+    proc initSegmentTree*[T](n: int, merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] =
+        var lastnode = 1
+        while lastnode < n:
+            lastnode*=2
+        var arr = newSeq[SegmentTreeElem[T]](2*lastnode)
+        result = SegmentTree[T, SegmentTreeElem[T]](default: default, merge: merge, arr: arr, lastnode: lastnode, length: n)
+        for i in 0..<lastnode:
+            result.arr[lastnode+i] = initSegmentTreeElem(result.addr, default, lastnode+i)
+        for i in countdown(lastnode-1, 1):
+            result.arr[i] = initSegmentTreeElem(result.addr, merge(result.arr[2*i].v, result.arr[2*i+1].v), i)
     template newSegWith*(V, merge, default: untyped): untyped =
         initSegmentTree[typeof(default)](V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
     proc max_right*[T](self: SegmentTree[T, SegmentTreeElem[T]], l: int, f: proc(l: T): bool): int =

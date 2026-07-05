@@ -9,8 +9,8 @@ when not declared CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:
     proc initDeletableHeapQueue*[T]():Deletable_HeapQueue[T]=
         Deletable_HeapQueue[T](hq:initHeapQueue[T](),dlhq:initHeapQueue[T]())
 
-    proc toDeletableHeapQueue*[T](v:seq[T]):Deletable_HeapQueue[T]=
-        Deletable_HeapQueue[T](hq:v.toHeapQueue(),dlhq:initHeapQueue[T]())
+    proc toDeletableHeapQueue*[T](v:openArray[T]):Deletable_HeapQueue[T]=
+        Deletable_HeapQueue[T](hq:(@v).toHeapQueue(),dlhq:initHeapQueue[T]())
 
     proc `[]`*[T](self:var Deletable_HeapQueue[T],i:Natural):T=
         assert i == 0

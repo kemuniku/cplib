@@ -12,7 +12,7 @@ when not declared CPLIB_COLLECTIONS_BITSET:
     proc initBitSet*(N:int):Bitset=
         result.bits = newseq[uint](ceilDiv(N,64))
 
-    proc initBitSet*(v:seq[bool]):Bitset=
+    proc initBitSet*(v:openArray[bool]):Bitset=
         result.bits = newseq[uint](ceilDiv(len(v),64))
         const mask = ((1 shl 6) - 1)
         for i in 0..<len(v):

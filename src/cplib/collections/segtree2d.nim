@@ -10,7 +10,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE2D:
         H: int
         W: int
 
-    proc initSegmentTree2D*[T](v: seq[seq[T]], merge: proc(x: T, y: T): T, default: T): SegmentTree2D[T] =
+    proc initSegmentTree2D*[T](v: openArray[seq[T]], merge: proc(x: T, y: T): T, default: T): SegmentTree2D[T] =
         var H = len(v)
         var W = 0
         if H != 0:
@@ -20,15 +20,15 @@ when not declared CPLIB_COLLECTIONS_SEGTREE2D:
             lastnode*=2
         var arr = newSeq[SegmentTree[T]](2*lastnode)
         for i in 0..<len(v):
-            arr[i+lastnode] = initSegmentTree(v[i],merge,default)
+            arr[i+lastnode] = segtree.initSegmentTree(v[i],merge,default)
         for i in len(v)..<lastnode:
-            arr[i+lastnode] = initSegmentTree(W,merge,default)
+            arr[i+lastnode] = segtree.initSegmentTree(W,merge,default)
         
         for i in countdown(lastnode-1, 1):
             var tmp = newseq[T](W)
             for j in 0..<W:
                 tmp[j] = merge(arr[2*i][j],arr[2*i+1][j])
-            arr[i] = initSegmentTree(tmp,merge,default)
+            arr[i] = segtree.initSegmentTree(tmp,merge,default)
         var self = SegmentTree2D[T](default: default, merge: merge, arr: arr, lastnode: lastnode, H:H,W:W)
         return self
 

@@ -7,9 +7,9 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         arr : seq[T]
         blockvalue : seq[T]
         e : T
-    proc initrangesum*[T](v:seq[T],bsize:int = v.len.float.sqrt.int(),e:T=0):RootRangeSum[T]=
+    proc initrangesum*[T](v:openArray[T],bsize:int = v.len.float.sqrt.int(),e:T=0):RootRangeSum[T]=
         var b = newseqwith((len(v)+bsize-1) div bsize,e)
-        result = RootRangeSum[T](blocksize:bsize,length:len(v),arr:v,blockvalue:b,e:e)
+        result = RootRangeSum[T](blocksize:bsize,length:len(v),arr: @v,blockvalue:b,e:e)
         for i in 0..<(len(v)):
             result.blockvalue[i div bsize] = result.blockvalue[i div bsize] + v[i]
 

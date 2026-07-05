@@ -1,7 +1,7 @@
 when not declared CPLIB_STR_LCS:
     const CPLIB_STR_LCS* = 1
     import sequtils,algorithm
-    proc LCS*[T](A,B:seq[T]):int=
+    proc LCS*[T](A,B:openArray[T]):int=
         var DP = newseqwith(len(B)+1,newSeqWith(len(A),0))
         for i in 0..<(len(B)):
             var t = B[i]

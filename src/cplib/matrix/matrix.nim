@@ -3,13 +3,13 @@ when not declared CPLIB_MATRIX_MATRIX:
     import sequtils, strutils, hashes, std/math
     type Matrix*[T] = object
         arr: seq[seq[T]]
-    proc initMatrix*[T](arr: seq[seq[T]]): Matrix[T] =
+    proc initMatrix*[T](arr: openArray[seq[T]]): Matrix[T] =
         assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "all elements in arr must be the same size."
-        Matrix[T](arr: arr)
-    proc toMatrix*[T](arr: seq[seq[T]]): Matrix[T] = initMatrix(arr)
-    proc initMatrix*[T](arr: seq[T], vertical: bool = false): Matrix[T] =
+        Matrix[T](arr: @arr)
+    proc toMatrix*[T](arr: openArray[seq[T]]): Matrix[T] = initMatrix(arr)
+    proc initMatrix*[T](arr: openArray[T], vertical: bool = false): Matrix[T] =
         if vertical: Matrix[T](arr: arr.mapIt(@[it]))
-        else: Matrix[T](arr: @[arr])
+        else: Matrix[T](arr: @[@arr])
     proc initMatrix*[T](h, w: int, val: T): Matrix[T] = Matrix[T](arr: newSeqWith(h, newSeqWith(w, val)))
 
     proc h*[T](m: Matrix[T]): int = m.arr.len
@@ -23,7 +23,7 @@ when not declared CPLIB_MATRIX_MATRIX:
     proc `==`*[T](a, b: Matrix[T]): bool = a.arr == b.arr
     proc `[]`*[T](m: Matrix[T], r: int): seq[T] = m.arr[r]
     proc `[]`*[T](m: var Matrix[T], r: int): var seq[T] = m.arr[r]
-    proc `[]=`*[T](m: var Matrix[T], r: int, row: seq[T]) = m.arr[r] = row
+    proc `[]=`*[T](m: var Matrix[T], r: int, row: openArray[T]) = m.arr[r] = @row
 
     proc `[]`*[T](m: Matrix[T], r: int, c: int): T = m.arr[r][c]
     proc `[]`*[T](m: var Matrix[T], r: int, c: int): var T = m.arr[r][c]

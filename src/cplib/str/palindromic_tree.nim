@@ -31,7 +31,8 @@ when not declared CPLIB_COLLECTIONS_PALINDROMIC_TREE:
         result.nodes[1][].suffix_link = result.nodes[0]
 
 
-    proc initPalindromicTree*(a: seq[int], amax: int = -1): PalindromicTree =
+    proc initPalindromicTree*(a: openArray[int], amax: int = -1): PalindromicTree =
+        let a = @a
         var amax = amax
         if amax < 0: amax = a.max
         result = init(amax)

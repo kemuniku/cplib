@@ -9,8 +9,8 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
         H : int
         N : int
     
-    proc initWaveletMatrix*(v:seq[int],H:int = -1):WaveletMatrix=
-        var v = v
+    proc initWaveletMatrix*(v:openArray[int],H:int = -1):WaveletMatrix=
+        var v = @v
         var N = len(v)
         var H = H
         if H == -1:

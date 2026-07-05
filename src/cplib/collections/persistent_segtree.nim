@@ -9,7 +9,8 @@ type PSegmentTree* = ref object
     op : proc(l:int,r:int):int
     e : int
 
-proc initSegmentTree*(v:seq[int],op : proc(l:int,r:int):int,e:int):PSegmentTree=
+proc initSegmentTree*(v:openArray[int],op : proc(l:int,r:int):int,e:int):PSegmentTree=
+    let v = @v
     var size = 1
     while size < len(v):
         size *= 2
@@ -50,4 +51,3 @@ proc query*(st:PSegmentTree,l:int,r:int):int=
         var right_value = dfs(node.right,mid,nr)
         return st.op(left_value,right_value)
     return dfs(st.root,0,st.lastnode)
-

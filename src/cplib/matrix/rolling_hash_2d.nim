@@ -95,7 +95,7 @@ when not declared CPLIB_MATRIX_ROLLINGHASH2D:
         HM : HashMatrix[T]
         i : int
 
-    proc initHashMatrixBase[T](x:seq[seq[T]]):HashMatrixBase[T]=
+    proc initHashMatrixBase[T](x:openArray[seq[T]]):HashMatrixBase[T]=
         var H = len(x)
         var W : int
         if H == 0:
@@ -110,9 +110,9 @@ when not declared CPLIB_MATRIX_ROLLINGHASH2D:
         for i in 0..<H:
             for j in 0..<W:
                 hash[i+1][j+1] = (hash[i+1][j+1]+((hash[i][j+1] + hash[i+1][j]).calc_mod() + RH_MOD - hash[i][j]).calc_mod()).calc_mod()
-        return HashMatrixBase[T](matrix:x,hash:hash,H:H,W:W)
+        return HashMatrixBase[T](matrix: @x,hash:hash,H:H,W:W)
 
-    proc initHashMartix*[T](x:seq[seq[T]]):HashMatrix[T]=
+    proc initHashMartix*[T](x:openArray[seq[T]]):HashMatrix[T]=
         var base = initHashMatrixBase[T](x)
         return HashMatrix[T](base:base,i:0,j:0,H:base.H,W:base.W)
 

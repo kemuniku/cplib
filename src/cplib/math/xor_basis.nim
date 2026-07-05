@@ -5,7 +5,7 @@ when not declared CPLIB_COLLECTIONS_XOR_BASIS:
     type XorBasis* = ref object
         basis* : seq[int]
 
-    proc initXorBasis*(A:seq[int]):XorBasis=
+    proc initXorBasis*(A:openArray[int]):XorBasis=
         result = XorBasis()
         for i in 0..<len(A):
             var e = A[i]
@@ -98,4 +98,3 @@ when not declared CPLIB_COLLECTIONS_XOR_BASIS:
             if (v xor self.basis[i]) < v:
                 v = v xor self.basis[i]
         return v xor x
-
