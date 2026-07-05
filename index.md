@@ -329,6 +329,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/hash_string.nim
       title: cplib/str/hash_string.nim
+    - icon: ':warning:'
+      path: cplib/str/lcp_naive.nim
+      title: cplib/str/lcp_naive.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/lcs.nim
       title: cplib/str/lcs.nim

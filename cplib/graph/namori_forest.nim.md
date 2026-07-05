@@ -110,12 +110,12 @@ data:
     \ namori.comp[x] == namori.comp[y]\n\n    proc component*(namori: NamoriForest,\
     \ x: int): int =\n        return namori.comp[x]\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/namori_forest.nim
   requiredBy:
