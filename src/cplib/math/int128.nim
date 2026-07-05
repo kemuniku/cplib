@@ -154,6 +154,7 @@ when not declared CPLIB_MATH_INT128:
         while n > 0:
             if (n & 1) == 1: result = (result * x) mod m
             x *= x
+            x.mod= m
             n >>= 1
     proc to_string_inner(x: Int128): cstring {.importcpp: "to_string((#))", nodecl.}
     proc `$`*(x: Int128): string = $(to_string_inner(x))
