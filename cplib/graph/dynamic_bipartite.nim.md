@@ -48,13 +48,13 @@ data:
     \        return self.is_bipartite"
   dependsOn:
   - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim
   requiredBy: []
-  timestamp: '2026-05-26 09:16:21+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/dynamic_bipartite.nim

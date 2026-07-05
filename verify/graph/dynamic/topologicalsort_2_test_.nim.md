@@ -35,13 +35,13 @@ data:
     for i in 0..<M:\n    var U, V = ii()-1\n    G.add_edge(V, U)\necho N-len(G.topologicalsort())\n"
   dependsOn:
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/dynamic/topologicalsort_2_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/dynamic/topologicalsort_2_test_.nim

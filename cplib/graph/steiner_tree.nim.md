@@ -68,18 +68,18 @@ data:
     \ terminal, inf)\n    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T],\
     \ terminal: seq[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)\n"
   dependsOn:
+  - cplib/utils/bititers.nim
+  - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/utils/bititers.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:
   - verify/graph/steiner_tree_abc364g_test_.nim
   - verify/graph/steiner_tree_abc364g_test_.nim
-  timestamp: '2025-03-09 17:42:58+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/steiner_tree.nim

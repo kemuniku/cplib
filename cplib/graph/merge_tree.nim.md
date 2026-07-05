@@ -86,15 +86,15 @@ data:
     \u756A\u76EE\u304B\u3092\u8FD4\u3059\n        self.ret[x]"
   dependsOn:
   - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy:
   - verify/graph/merge_tree_test_.nim
   - verify/graph/merge_tree_test_.nim
-  timestamp: '2026-03-12 21:22:44+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/merge_tree.nim

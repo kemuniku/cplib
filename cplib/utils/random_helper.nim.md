@@ -159,19 +159,19 @@ data:
     \        result.add(s[rand(0..<len(s))])\n        return result"
   dependsOn:
   - cplib/tree/prufer.nim
-  - cplib/math/powmod.nim
   - cplib/tree/prufer.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/math/powmod.nim
-  - cplib/graph/graph.nim
-  - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2026-03-23 02:22:40+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/utils/random_helper.nim

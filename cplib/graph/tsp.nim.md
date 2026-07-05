@@ -93,20 +93,20 @@ data:
     \        for i in 0..<N:\n            for (j,c) in G.to_and_cost(i):\n       \
     \         result[i][j] = min(result[i][j],c)\n"
   dependsOn:
-  - cplib/graph/dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/tsp.nim
   requiredBy: []
-  timestamp: '2026-05-24 07:19:32+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/tsp.nim

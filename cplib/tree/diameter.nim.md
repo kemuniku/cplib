@@ -78,7 +78,7 @@ data:
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_static_test_.nim
-  timestamp: '2024-10-02 22:06:50+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/diameter_yosupo_test.nim

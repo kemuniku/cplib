@@ -54,7 +54,7 @@ data:
   - verify/tree/prufer_abc328e_test_.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
-  timestamp: '2024-10-18 07:02:11+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/tree/prufer.nim

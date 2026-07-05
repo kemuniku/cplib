@@ -49,18 +49,18 @@ data:
     \ 0..<Q:\n    var x,y = ii()-1\n    var (_,a) = namori.dist(x,y)\n    if a ==\
     \ INF64:\n        echo \"Yes\"\n    else:\n        echo \"No\"\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/namori_graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/namori_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/namori_graph_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:49:49+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/namori_graph_test_.nim
