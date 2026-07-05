@@ -147,14 +147,26 @@ when not declared CPLIB_MATH_INT128:
     proc parseInt128*(s: string): Int128 = parse_Int128_inner(cstring(s))
     proc read_and_parse_int128_inner(x: int): Int128 {.importcpp: "read_and_parse_int128((#))".}
     proc read_and_parse_int128*(): Int128 = read_and_parse_int128_inner(0)
+    proc pow*(x, n: Int128): Int128 =
+        result = 1
+        var x = x
+        var n = n
+        while n > 0:
+            if (n & 1) == 1: result *= x
+            if n > 1: x *= x
+            n >>= 1
     proc pow*(x, n, m: Int128): Int128 =
+        assert m != 0
+        if m == 1:
+            return 0
         result = 1
         var x = x mod m
         var n = n
         while n > 0:
             if (n & 1) == 1: result = (result * x) mod m
-            x *= x
-            x.mod= m
+            if n > 1:
+                x *= x
+                x.mod= m
             n >>= 1
     proc to_string_inner(x: Int128): cstring {.importcpp: "to_string((#))", nodecl.}
     proc `$`*(x: Int128): string = $(to_string_inner(x))
