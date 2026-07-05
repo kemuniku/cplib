@@ -91,15 +91,15 @@ data:
     \ start, goal, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:58+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/bellmanford_grl1b_test.nim

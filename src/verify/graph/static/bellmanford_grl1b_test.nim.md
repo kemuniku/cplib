@@ -49,18 +49,18 @@ data:
     \ r)\nif cost.min == -INF64:\n    echo \"NEGATIVE CYCLE\"\nelse:\n    for i in\
     \ 0..<v:\n        if cost[i] == INF64: echo \"INF\"\n        else: echo cost[i]\n"
   dependsOn:
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/bellmanford.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/bellmanford.nim
   isVerificationFile: true
   path: verify/graph/static/bellmanford_grl1b_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:58+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/bellmanford_grl1b_test.nim

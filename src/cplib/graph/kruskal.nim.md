@@ -50,16 +50,16 @@ data:
     \        for (c,i,j) in edges:\n            if not uf.issame(i,j):\n         \
     \       result.add_edge(i,j,c)\n                uf.unite(i,j)\n"
   dependsOn:
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/kruskal.nim
   requiredBy: []
-  timestamp: '2026-05-26 15:51:52+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/kruskal.nim

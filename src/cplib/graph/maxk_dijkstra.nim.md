@@ -129,9 +129,9 @@ data:
     \ k, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
@@ -147,7 +147,7 @@ data:
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  timestamp: '2026-05-07 18:28:29+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/maxk_dijkstra.nim

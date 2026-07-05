@@ -46,14 +46,14 @@ data:
     \ else:\n                ans += result[0]\n            return result\n       \
     \ discard dfs(G.v[0],-1)\n        anss += ans\n\necho anss\n"
   dependsOn:
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/tree/auxiliarytree_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/tree/auxiliarytree_test_.nim

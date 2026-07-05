@@ -84,7 +84,7 @@ data:
   - verify/graph/dynamic/topologicalsort_1_test_.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/topologicalsort.nim

@@ -47,13 +47,13 @@ data:
   - cplib/graph/warshall_floyd.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:58+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/warshall_floyd_aoj_test.nim

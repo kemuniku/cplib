@@ -574,9 +574,9 @@ data:
     \        result.v = V\n\n    proc initWeightedDirectedTableGraph*[T](V:seq[T],S:typedesc\
     \ = int):WeightedDirectedTableGraph[T,S]=\n        for i in 0..<len(V):\n    \
     \        result.toi[V[i]] = i\n        result.graph = initWeightedDirectedGraph(len(V),S)\n\
-    \        result.v = V\n\n    proc add_edge*[T](g: var UnWeightedTableGraph[T],u,v:int)=\n\
+    \        result.v = V\n\n    proc add_edge*[T](g: var UnWeightedTableGraph[T],u,v:T)=\n\
     \        g.graph.add_edge(g.toi[u],g.toi[v])\n\n    proc add_edge*[T,S](g: var\
-    \ WeightedTableGraph[T,S],u,v:int,cost:S)=\n        g.graph.add_edge(g.toi[u],g.toi[v],cost)\n\
+    \ WeightedTableGraph[T,S],u,v:T,cost:S)=\n        g.graph.add_edge(g.toi[u],g.toi[v],cost)\n\
     \n    iterator `[]`*[T,S](g: WeightedDirectedTableGraph[T,S] or WeightedUnDirectedTableGraph[T,S],\
     \ x: T): (T, S) = \n        for (x,y) in g.graph[g.toi[x]]:\n            yield\
     \ (g.v[x],y)\n    iterator `[]`*[T](g: UnWeightedDirectedTableGraph[T] or UnWeightedUnDirectedTableGraph[T],\
@@ -694,7 +694,7 @@ data:
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/diameter_yosupo_test.nim

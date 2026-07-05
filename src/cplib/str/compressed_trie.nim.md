@@ -86,15 +86,15 @@ data:
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum"
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []
-  timestamp: '2026-05-26 11:04:37+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/str/compressed_trie.nim

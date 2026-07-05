@@ -38,7 +38,7 @@ data:
   isVerificationFile: true
   path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   requiredBy: []
-  timestamp: '2024-09-21 03:52:16+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim

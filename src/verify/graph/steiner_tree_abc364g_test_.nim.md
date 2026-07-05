@@ -50,17 +50,17 @@ data:
     \ INF64)\nfor i in k-1..<n:\n    echo dp[^1][i]\n"
   dependsOn:
   - cplib/graph/steiner_tree.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/steiner_tree.nim
   - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/steiner_tree_abc364g_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:49:49+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/steiner_tree_abc364g_test_.nim

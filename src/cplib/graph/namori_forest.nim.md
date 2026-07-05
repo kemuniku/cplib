@@ -110,18 +110,18 @@ data:
     \ namori.comp[x] == namori.comp[y]\n\n    proc component*(namori: NamoriForest,\
     \ x: int): int =\n        return namori.comp[x]\n"
   dependsOn:
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/namori_forest.nim
   requiredBy:
   - verify/graph/namori_forest_test_.nim
   - verify/graph/namori_forest_test_.nim
-  timestamp: '2026-05-26 06:23:12+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/namori_forest.nim

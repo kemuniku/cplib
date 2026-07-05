@@ -38,13 +38,13 @@ data:
     G.build()\nif G.isDAG():\n    echo \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/static/topologicalsort_1_static_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/static/topologicalsort_1_static_test_.nim

@@ -42,15 +42,15 @@ data:
     \        return len(G)-MFG.flow(2*len(G),2*len(G)+1)"
   dependsOn:
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dag_minimum_path_cover.nim
   requiredBy:
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  timestamp: '2024-10-23 03:26:51+09:00'
+  timestamp: '2026-07-05 21:14:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/graph/dag_minimum_path_cover.nim
