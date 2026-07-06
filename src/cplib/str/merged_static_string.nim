@@ -23,8 +23,8 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
     
 
 
-    proc initMergedStaticString*(S:seq[StaticString]):MergedStaticString=
-        result.S = S
+    proc initMergedStaticString*(S:openArray[StaticString]):MergedStaticString=
+        result.S = @S
         result.lencum = newSeq[int](len(S))
         result.lencum[0] = len(S[0])
         for i in 1..<len(S):

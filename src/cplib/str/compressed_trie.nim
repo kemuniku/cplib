@@ -10,8 +10,8 @@ when not declared CPLIB_STR_COMPRESSED_TRIE:
         cnt* : int32
         subtree_sum* : int32
 
-    proc initCompressedTrie*(S:seq[StaticString],sorted:bool=false):CompressedTrieNode=
-        var S = S
+    proc initCompressedTrie*(S:openArray[StaticString],sorted:bool=false):CompressedTrieNode=
+        var S = @S
         if not sorted:
             S.sort()
         var root = CompressedTrieNode(s:S[0][0..<0])

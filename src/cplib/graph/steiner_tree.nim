@@ -30,12 +30,12 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
                         q.push((dp[bit][v], v))
         return dp
 
-    proc steiner_tree_mincost_impl[T](g: StaticGraph[T] or DynamicGraph[T], terminal: seq[int], inf: T): T =
-        var dp = steiner_tree_dp(g, terminal, inf)
+    proc steiner_tree_mincost_impl[T](g: StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], inf: T): T =
+        var dp = steiner_tree_dp(g, @terminal, inf)
         var k = terminal.len
         return dp[(1 shl k) - 1][terminal[0]]
 
-    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int], terminal: seq[int], inf: int = INF64): int = steiner_tree_mincost_impl(g, terminal, inf)
-    proc steiner_tree_mincost*(g: StaticGraph[int32] or DynamicGraph[int32], terminal: seq[int], inf: int32 = INF32): int32 = steiner_tree_mincost_impl(g, terminal, inf)
-    proc steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float], terminal: seq[int], inf: float = 1e100): float = steiner_tree_mincost_impl(g, terminal, inf)
-    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T], terminal: seq[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)
+    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int], terminal: openArray[int], inf: int = INF64): int = steiner_tree_mincost_impl(g, terminal, inf)
+    proc steiner_tree_mincost*(g: StaticGraph[int32] or DynamicGraph[int32], terminal: openArray[int], inf: int32 = INF32): int32 = steiner_tree_mincost_impl(g, terminal, inf)
+    proc steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float], terminal: openArray[int], inf: float = 1e100): float = steiner_tree_mincost_impl(g, terminal, inf)
+    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)

@@ -2,11 +2,11 @@ when not declared CPLIB_UTILS_KTH_ELEMENT:
     const COMPETITIVE_UTILS_KTH_ELEMENT* = 1
     import random,sequtils
     randomize()
-    proc kth_element*[T](X:seq[T],K:int):T=
+    proc kth_element*[T](X:openArray[T],K:int):T=
         var now = 0
         var r = len(X)
         var C = newseqwith(r,0)
-        var X = X
+        var X = @X
         while true:
             var L = 0
             var S = 1

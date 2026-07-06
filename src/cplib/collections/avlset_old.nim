@@ -82,9 +82,9 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
                 yield node.key
                 if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))
     proc `$`*[T](self: AVLSets[T]): string = self.toSeq.join(" ")
-    proc initAvlSortedMultiSet*[T](v: seq[T] = @[]): AvlSortedMultiSet[T] =
+    proc initAvlSortedMultiSet*[T](v: openArray[T] = []): AvlSortedMultiSet[T] =
         result = AvlSortedMultiSet[T](root: get_avltree_nilnode[T]())
         for item in v: result.incl(item)
-    proc initAvlSortedSet*[T](v: seq[T] = @[]): AvlSortedSet[T] =
+    proc initAvlSortedSet*[T](v: openArray[T] = []): AvlSortedSet[T] =
         result = AvlSortedSet[T](root: get_avltree_nilnode[T]())
         for item in v: result.incl(item)

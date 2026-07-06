@@ -171,29 +171,29 @@ when not declared CPLIB_GRAPH_GRAPH:
     type UnWeightedTableGraph*[T] = UnWeightedUnDirectedTableGraph[T] or UnWeightedDirectedTableGraph[T]
     type WeightedTableGraph*[T,S] = WeightedUnDirectedTableGraph[T,S] or WeightedDirectedTableGraph[T,S]
 
-    proc initUnWeightedUnDirectedTableGraph*[T](V:seq[T]):UnWeightedUnDirectedTableGraph[T]=
+    proc initUnWeightedUnDirectedTableGraph*[T](V:openArray[T]):UnWeightedUnDirectedTableGraph[T]=
         for i in 0..<len(V):
             result.toi[V[i]] = i
         result.graph = initUnWeightedUnDirectedGraph(len(V))
-        result.v = V
+        result.v = @V
 
-    proc initUnWeightedDirectedTableGraph*[T](V:seq[T]):UnWeightedDirectedTableGraph[T]=
+    proc initUnWeightedDirectedTableGraph*[T](V:openArray[T]):UnWeightedDirectedTableGraph[T]=
         for i in 0..<len(V):
             result.toi[V[i]] = i
         result.graph = initUnWeightedDirectedGraph(len(V))
-        result.v = V
+        result.v = @V
 
-    proc initWeightedUnDirectedTableGraph*[T](V:seq[T],S:typedesc = int):WeightedUnDirectedTableGraph[T,S]=
+    proc initWeightedUnDirectedTableGraph*[T](V:openArray[T],S:typedesc = int):WeightedUnDirectedTableGraph[T,S]=
         for i in 0..<len(V):
             result.toi[V[i]] = i
         result.graph = initWeightedUnDirectedGraph(len(V),S)
-        result.v = V
+        result.v = @V
 
-    proc initWeightedDirectedTableGraph*[T](V:seq[T],S:typedesc = int):WeightedDirectedTableGraph[T,S]=
+    proc initWeightedDirectedTableGraph*[T](V:openArray[T],S:typedesc = int):WeightedDirectedTableGraph[T,S]=
         for i in 0..<len(V):
             result.toi[V[i]] = i
         result.graph = initWeightedDirectedGraph(len(V),S)
-        result.v = V
+        result.v = @V
 
     proc add_edge*[T](g: var UnWeightedTableGraph[T],u,v:T)=
         g.graph.add_edge(g.toi[u],g.toi[v])
@@ -207,4 +207,3 @@ when not declared CPLIB_GRAPH_GRAPH:
     iterator `[]`*[T](g: UnWeightedDirectedTableGraph[T] or UnWeightedUnDirectedTableGraph[T], x: T): T = 
         for x in g.graph[g.toi[x]]:
             yield g.v[x]
-

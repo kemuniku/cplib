@@ -3,7 +3,7 @@ when not declared CPLIB_TREE_PRUFER:
 
     import cplib/graph/graph
     import sequtils, heapqueue
-    proc prufer_decode*(a: seq[int]): UnWeightedUnDirectedGraph =
+    proc prufer_decode*(a: openArray[int]): UnWeightedUnDirectedGraph =
         var n = a.len + 2
         assert a.allIt(it in 0..<n)
         result = initUnWeightedUnDirectedGraph(n)

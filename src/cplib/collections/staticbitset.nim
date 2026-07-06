@@ -19,13 +19,13 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
     proc initBitSet*(x:static int):BitSet[x]=
         discard
 
-    proc initBitSet*(v:seq[bool],size:static int):Bitset[size]=
+    proc initBitSet*(v:openArray[bool],size:static int):Bitset[size]=
         const mask = ((1 shl 6) - 1)
         for i in 0..<len(v):
             if v[i]:
                 varor(result.bits[i shr 6],1u shl (i and mask))
 
-    proc initBitSet*(v:seq[int],size:static int):Bitset[size]=
+    proc initBitSet*(v:openArray[int],size:static int):Bitset[size]=
         const mask = ((1 shl 6) - 1)
         for i in v:
             varor(result.bits[i shr 6],1u shl (i and mask))

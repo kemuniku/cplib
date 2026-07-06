@@ -8,8 +8,8 @@ when not declared CPLIB_COLLECTIONS_STATICRMQ:
         prefix_product : seq[T]
         suffix_product : seq[T]
         V : seq[T]
-    proc initRMQ*[T](V:seq[T]):StaticRMQ[T]=
-        result.V = V
+    proc initRMQ*[T](V:openArray[T]):StaticRMQ[T]=
+        result.V = @V
         if len(V) == 0:
             return StaticRMQ[T](size:0)
         const B = 16

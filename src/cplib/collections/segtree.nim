@@ -1,13 +1,13 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE:
     const CPLIB_COLLECTIONS_SEGTREE* = 1
-    import algorithm, strutils, sequtils
+    import algorithm, strutils
     type SegmentTree*[T] = ref object
         default: T
         merge: proc(x: T, y: T): T
         arr*: seq[T]
         lastnode: int
         length: int
-    proc initSegmentTree*[T](v: seq[T], merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
+    proc initSegmentTree*[T](v: openArray[T], merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
         ## セグメントツリーを生成します。
         ## vに元となるリスト、mergeに二つの区間をマージする関数、デフォルトに単位元を与えてください。
         var lastnode = 1
@@ -25,7 +25,15 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     proc initSegmentTree*[T](n: int, merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =
         ## セグメントツリーを生成します。
         ## nにサイズ、mergeに二つの区間をマージする関数、デフォルトに単位元を与えてください。（全て単位元で構築されます）
-        initSegmentTree(newSeqWith(n, default), merge, default)
+        var lastnode = 1
+        while lastnode < n:
+            lastnode*=2
+        var arr = newSeq[T](2*lastnode)
+        arr.fill(default)
+        var self = SegmentTree[T](default: default, merge: merge, arr: arr, lastnode: lastnode, length: n)
+        for i in countdown(lastnode-1, 1):
+            self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
+        return self
 
     proc update*[T](self: SegmentTree[T], x: Natural, val: T) =
         ## xの要素をvalに変更します。

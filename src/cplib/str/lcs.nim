@@ -1,7 +1,7 @@
 when not declared CPLIB_STR_LCS:
     const CPLIB_STR_LCS* = 1
     import sequtils,algorithm
-    proc LCS*[T](A,B:seq[T]):int=
+    proc LCS*[T](A,B:openArray[T]):int=
         var DP = newseqwith(len(B)+1,newSeqWith(len(A),0))
         for i in 0..<(len(B)):
             var t = B[i]
@@ -18,10 +18,7 @@ when not declared CPLIB_STR_LCS:
                         now = DP[i][j]
         return DP[^1].max
 
-    proc LCS*(A,B:string):int=
-        return LCS(A.toseq(),B.toseq())
-    
-    proc restoreLCS*[T](A,B:seq[T]):seq[T]=
+    proc restoreLCS*[T](A,B:openArray[T]):seq[T]=
         var DP = newseqwith(len(B)+1,newSeqWith(len(A),0))
         for i in 0..<(len(B)):
             var t = B[i]

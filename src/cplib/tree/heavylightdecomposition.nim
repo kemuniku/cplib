@@ -69,7 +69,7 @@ when not declared CPLIB_TREE_HLD:
                     seen.incl((j, i))
         gn.build
         return initHld(gn, root)
-    proc initHld*(adj: seq[seq[int]], root: int): HeavyLightDecomposition =
+    proc initHld*(adj: openArray[seq[int]], root: int): HeavyLightDecomposition =
         var n = adj.len
         var gn = initUnWeightedUnDirectedStaticGraph(n)
         var seen = initHashSet[(int, int)]()
@@ -163,7 +163,7 @@ when not declared CPLIB_TREE_HLD:
             s += hld.rangeR[w] - hld.rangeL[w]
     
 
-    proc initAuxiliaryTree*(hld:HeavyLightDecomposition,v:seq[int]):UnWeightedUnDirectedTableGraph[int]=
+    proc initAuxiliaryTree*(hld:HeavyLightDecomposition,v:openArray[int]):UnWeightedUnDirectedTableGraph[int]=
         ## 根が欲しかったらG.v[0]を使ってください　けむにく
         var v = v.sortedByit(hld.toseq(it))
         for i in 0..<(len(v)-1):
@@ -180,7 +180,7 @@ when not declared CPLIB_TREE_HLD:
                 result.add_edge(stack[^1],v[i])
             stack.add(v[i])
     
-    proc initAuxiliaryWeightedTree*(hld:HeavyLightDecomposition,v:seq[int]):WeightedUnDirectedTableGraph[int,int]=
+    proc initAuxiliaryWeightedTree*(hld:HeavyLightDecomposition,v:openArray[int]):WeightedUnDirectedTableGraph[int,int]=
         ## 根が欲しかったらG.v[0]を使ってください　けむにく
         var v = v.sortedByit(hld.toseq(it))
         for i in 0..<(len(v)-1):
@@ -195,4 +195,3 @@ when not declared CPLIB_TREE_HLD:
             if len(stack) != 0:
                 result.add_edge(stack[^1],v[i],hld.depth(v[i])-hld.depth(stack[^1]))
             stack.add(v[i])
-

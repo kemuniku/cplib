@@ -14,7 +14,7 @@ when not declared CPLIB_GRAPH_MERGE_TREE:
         N* : int
         alr_query* : int
         v*:seq[(int,int)]
-    proc initMergeTree*(N:int,v:seq[(int,int)]):MergeTree=
+    proc initMergeTree*(N:int,v:openArray[(int,int)]):MergeTree=
         ## クエリを前読みする必要があるので、頂点数とマージを配列で与える
         var tree = initUnWeightedUnDirectedGraph(N+len(v)+1)
         var uf = initUnionFind(N)
@@ -55,7 +55,7 @@ when not declared CPLIB_GRAPH_MERGE_TREE:
         result.ret = newseqwith(N,-1)
         result.uf = initUnionFind(N)
         result.now = newseqwith(N,0)
-        result.v = v
+        result.v = @v
         result.N = N
         for i in 0..<(N):
             result.now[i] = i

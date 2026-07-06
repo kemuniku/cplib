@@ -10,9 +10,9 @@ when not declared CPLIB_GEOMETRY_POLYGON:
     iterator items*[T](poly: Polygon[T]): Point[T] =
         for item in poly.v: yield item
 
-    proc initPolygon*[T](v: seq[Point[T]]): Polygon[T] =
+    proc initPolygon*[T](v: openArray[Point[T]]): Polygon[T] =
         ## 頂点列 v の多角形型を初期化
-        Polygon[T](v: v)
+        Polygon[T](v: @v)
     proc area*(p: Polygon[int]): int =
         ## 多角形の面積の2倍、頂点列が時計回りの場合負の数が返る
         for i in 0..<p.v.len: result += cross(p.v[i], p.v[(i+1) mod p.v.len])
@@ -55,10 +55,10 @@ when not declared CPLIB_GEOMETRY_POLYGON:
             if geometry_le(a.y, 0) and geometry_gt(b.y, 0) and geometry_lt(cross(a, b), 0):
                 result = not result
 
-    proc convex_hull*[T](v: seq[Point[T]], strict: bool = true): Polygon[T] =
+    proc convex_hull*[T](v: openArray[Point[T]], strict: bool = true): Polygon[T] =
         ## 点群 v の凸包
         var n = v.len
-        if n < 3: return Polygon[T](v: v)
+        if n < 3: return Polygon[T](v: @v)
         var s = v.sorted
         var vi = s[0..1]
         for i in 2..<n:

@@ -7,7 +7,7 @@ when not declared CPLIB_UTILS_CUMSUM2D:
         H : int
         W : int
     
-    proc toCumSum2D*(X:seq[seq[int]]):Cumsum2D=
+    proc toCumSum2D*(X:openArray[seq[int]]):Cumsum2D=
         var H = len(X)
         var W = if H != 0 : len(X[0]) else: 0
         var B = newseqwith(H+1,newseqwith(W+1,0))
@@ -20,4 +20,3 @@ when not declared CPLIB_UTILS_CUMSUM2D:
     proc query*(self:Cumsum2D,il,ir,jl,jr:int):int=
         # i in [il,ir) j in [jl,jr)を満たすようなマスの総和
         return self.B[ir][jr] - self.B[ir][jl] - self.B[il][jr] + self.B[il][jl]
-

@@ -103,7 +103,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                 for j in (i + 1)..<r:
                     idx[j] = idx[j - 1] + 1
     
-    iterator combinations_withf*[T](v: seq[T], r: int, f: proc(l, r: T): T): T =
+    iterator combinations_withf*[T](v: openArray[T], r: int, f: proc(l, r: T): T): T =
         ## `combinations(v, r)` の各組合せを `f` で左畳み込みした値を yield する。
         ## 例: `f = proc(a,b:int):int = a*b` なら 各組合せの総積。
         ## 接頭辞畳み込みを保持し、変化のあった添字以降のみ再計算する差分更新版。
@@ -136,7 +136,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                         pref[j] = f(pref[j - 1], v[idx[j]])
                     yield pref[r - 1]
 
-    iterator combinations*[T](v: seq[T], r: static[int]): array[r, T] =
+    iterator combinations*[T](v: openArray[T], r: static[int]): array[r, T] =
         let n = len(v)
         when r == 0:
             var x: array[r, T]
@@ -197,5 +197,3 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                     inc k
                 a[k] = x + y
                 yield a[0 .. k]
-
-

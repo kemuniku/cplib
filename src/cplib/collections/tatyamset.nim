@@ -9,9 +9,9 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
     type SortedMultiSet*[T] = ref object
         size: int
         arr*: seq[seq[T]]
-    proc initSortedMultiset*[T](v: seq[T] = @[]): SortedMultiSet[T] =
+    proc initSortedMultiset*[T](v: openArray[T] = []): SortedMultiSet[T] =
         #Make a new SortedMultiset from seq. / O(N) if sorted / O(N log N)
-        var v = v
+        var v = @v
         if not isSorted(v):
             v.sort()
         var n = len(v)

@@ -20,9 +20,9 @@ when not declared CPLIB_GRAPH_TSP:
                             DP[j][bit or (1 shl j)] = min(DP[j][bit or (1 shl j)],DP[i][bit] + dist[i][j])
         return DP
 
-    proc tspPathCostFrom*(dist:seq[seq[int]],start_v:int,floydwarshall:bool=true):int=
+    proc tspPathCostFrom*(dist:openArray[seq[int]],start_v:int,floydwarshall:bool=true):int=
         ## start_vからすべての頂点を訪問して、終点はどこでもいいときのコストの最小値
-        var dist = dist
+        var dist = @dist
         if floydwarshall:
             for k in 0..<len(dist):
                 for i in 0..<len(dist):
@@ -36,9 +36,9 @@ when not declared CPLIB_GRAPH_TSP:
             result = min(result,res[i][^1])
         return result
 
-    proc tspPathCostFromTo*(dist:seq[seq[int]],start_v:int,goal_v:int,floydwarshall:bool=true):int=
+    proc tspPathCostFromTo*(dist:openArray[seq[int]],start_v:int,goal_v:int,floydwarshall:bool=true):int=
         ## start_vからすべての頂点を訪問して、終点も指定するパターン
-        var dist = dist
+        var dist = @dist
         if floydwarshall:
             for k in 0..<len(dist):
                 for i in 0..<len(dist):
@@ -52,9 +52,9 @@ when not declared CPLIB_GRAPH_TSP:
             result = min(result,res[i][^1] + dist[i][goal_v])
         return result
 
-    proc tspPathAnyStart*(dist:seq[seq[int]],floydwarshall:bool=true):int=
+    proc tspPathAnyStart*(dist:openArray[seq[int]],floydwarshall:bool=true):int=
         ## グラフの何処かからスタートし、すべての頂点を通るまでのコスト
-        var dist = dist
+        var dist = @dist
         if floydwarshall:
             for k in 0..<len(dist):
                 for i in 0..<len(dist):
@@ -68,14 +68,14 @@ when not declared CPLIB_GRAPH_TSP:
         return result
 
 
-    proc toContractionGraph*(G:WeightedGraph[int],v:seq[int]):WeightedDirectedGraph[int]=
+    proc toContractionGraph*(G:WeightedGraph[int],v:openArray[int]):WeightedDirectedGraph[int]=
         result = initWeightedDirectedGraph(len(v))
         for i in 0..<len(v):
             var res = G.dijkstra(v[i])
             for j in 0..<len(v):
                 result.add_edge(i,j,res[v[j]])
     
-    proc toContractionGraph*(G:UnWeightedGraph,v:seq[int]):WeightedDirectedGraph[int]=
+    proc toContractionGraph*(G:UnWeightedGraph,v:openArray[int]):WeightedDirectedGraph[int]=
         result = initWeightedDirectedGraph(len(v))
         for i in 0..<len(v):
             var res = G.maxk_dijkstra(v[i],1)

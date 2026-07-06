@@ -69,7 +69,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
     proc random_parenthesis_string*(n:int):string=
         return random_parenthesis_sequence(n).mapit(").("[1+it]).join("")
 
-    proc make_binary_tree_from_sequence*(PS:seq[int]):UnWeightedUnDirectedGraph=
+    proc make_binary_tree_from_sequence*(PS:openArray[int]):UnWeightedUnDirectedGraph=
         ## 括弧列から二分木を復元
         var n = len(PS) div 2
         var stack : seq[int]

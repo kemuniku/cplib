@@ -4,7 +4,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_RANGE_COUNT:
     type StaticRangeCount[T] = object
         t : Table[T,seq[int]]
 
-    proc initStaticRangeCount*[T](v:seq[T]):StaticRangeCount[T]=
+    proc initStaticRangeCount*[T](v:openArray[T]):StaticRangeCount[T]=
         for i in 0..<len(v):
             if v[i] in result.t:
                 result.t[v[i]].add(i)

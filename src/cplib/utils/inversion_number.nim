@@ -2,7 +2,7 @@ when not declared CPLIB_UTILS_INVERSION_NUMBER:
     const CPLIB_UTILS_INVERSION_NUMBER* = 1
     import algorithm, sequtils
     import cplib/collections/segtree
-    proc inversion_number*(a: seq[int]): int =
+    proc inversion_number*(a: openArray[int]): int =
         ## Calculate the inversion number of sequence a
         runnableExamples:
             var a = @[2, 1, 5, 3, 4]

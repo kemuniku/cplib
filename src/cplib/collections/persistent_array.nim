@@ -11,8 +11,8 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_ARRAY:
         root : PersistentArrayNode[shift,T]
         h:int
 
-    proc initPersistentArray*[T](v:seq[T],shift:static int = 5):PersistentArray[shift,T] =
-        var v = v
+    proc initPersistentArray*[T](v:openArray[T],shift:static int = 5):PersistentArray[shift,T] =
+        let v = @v
         var bitsize = fastLog2(len(v))+1
         var h = (bitsize+shift-1) div shift
         result = PersistentArray[shift,T]()

@@ -10,7 +10,7 @@ when not declared CPLIB_COLLECTIONS_TOPK_SUM_HEAPQ:
         topk* : int
         k* : int
 
-    proc initTopKHeapq*(v:seq[int],k:int):TopK_sum_heapq=
+    proc initTopKHeapq*(v:openArray[int],k:int):TopK_sum_heapq=
         result = TopK_sum_heapq(G:initDeletableHeapQueue[int](),L:initDeletableHeapQueue[int](),sm:0,topk:0,k:k)
         var v = v.sorted(Descending)
         for i in 0..<k:
