@@ -8,16 +8,16 @@ data:
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rangeset.nim
     title: cplib/collections/rangeset.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rangeset.nim
     title: cplib/collections/rangeset.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/grid_searcher.nim
     title: cplib/utils/grid_searcher.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/grid_searcher.nim
     title: cplib/utils/grid_searcher.nim
   - icon: ':warning:'
@@ -136,6 +136,24 @@ data:
     title: verify/utils/grid_searcher/skate_tuple_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_test.nim
+    title: verify/AI/avlset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_test.nim
+    title: verify/AI/avlset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/grid_searcher_test.nim
+    title: verify/AI/grid_searcher_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/grid_searcher_test.nim
+    title: verify/AI/grid_searcher_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rangeset_test.nim
+    title: verify/AI/rangeset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rangeset_test.nim
+    title: verify/AI/rangeset_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/avlset/avlset_empty_string_test.nim
     title: verify/collections/avlset/avlset_empty_string_test.nim
   - icon: ':heavy_check_mark:'
@@ -203,10 +221,10 @@ data:
     \                    if not node.l.isNil: stack.add((0, node.l))\n           \
     \     elif t == 1:\n                    yield node.key\n                    if\
     \ not node.r.isNil: stack.add((0, node.r))\n    proc `$`*[T](self: AVLSets[T]):\
-    \ string = self.toSeq.join(\" \")\n    proc initAvlSortedMultiSet*[T](v: seq[T]\
-    \ = @[]): AvlSortedMultiSet[T] =\n        result = AvlSortedMultiSet[T]()\n  \
-    \      for item in v: result.incl(item)\n    proc initAvlSortedSet*[T](v: seq[T]\
-    \ = @[]): AvlSortedSet[T] =\n        result = AvlSortedSet[T]()\n        for item\
+    \ string = self.toSeq.join(\" \")\n    proc initAvlSortedMultiSet*[T](v: openArray[T]\
+    \ = []): AvlSortedMultiSet[T] =\n        result = AvlSortedMultiSet[T]()\n   \
+    \     for item in v: result.incl(item)\n    proc initAvlSortedSet*[T](v: openArray[T]\
+    \ = []): AvlSortedSet[T] =\n        result = AvlSortedSet[T]()\n        for item\
     \ in v: result.incl(item)\n"
   dependsOn:
   - cplib/collections/avltreenode.nim
@@ -256,9 +274,15 @@ data:
   - cplib/utils/grid_searcher.nim
   - cplib/collections/rangeset.nim
   - cplib/collections/rangeset.nim
-  timestamp: '2025-11-08 19:42:23+00:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/avlset_test.nim
+  - verify/AI/avlset_test.nim
+  - verify/AI/grid_searcher_test.nim
+  - verify/AI/grid_searcher_test.nim
+  - verify/AI/rangeset_test.nim
+  - verify/AI/rangeset_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/avlset_empty_string_test.nim

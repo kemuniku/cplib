@@ -10,6 +10,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/projection_test.nim
+    title: verify/AI/projection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/projection_test.nim
+    title: verify/AI/projection_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/projection_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_cgl1a_test.nim
   - icon: ':heavy_check_mark:'
@@ -57,9 +63,11 @@ data:
   isVerificationFile: false
   path: cplib/geometry/projection.nim
   requiredBy: []
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/projection_test.nim
+  - verify/AI/projection_test.nim
   - verify/geometry/CGL_1/reflection_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim

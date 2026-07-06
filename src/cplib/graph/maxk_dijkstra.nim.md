@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,17 +13,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
   - icon: ':warning:'
@@ -50,10 +50,22 @@ data:
   - icon: ':warning:'
     path: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
     title: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/maxk_dijkstra_test.nim
+    title: verify/AI/maxk_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/maxk_dijkstra_test.nim
+    title: verify/AI/maxk_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -128,12 +140,12 @@ data:
     \ cost: T] =\n        return shortest_path_maxk_dijkstra_impl(G, start, goal,\
     \ k, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
   requiredBy:
@@ -147,9 +159,13 @@ data:
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
 documentation_of: cplib/graph/maxk_dijkstra.nim
 layout: document
 redirect_from:

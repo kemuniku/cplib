@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/lichaotree.nim
     title: cplib/collections/lichaotree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/lichaotree.nim
     title: cplib/collections/lichaotree.nim
   - icon: ':heavy_check_mark:'
@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/slopetrick.nim
     title: cplib/collections/slopetrick.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/slopetrick.nim
     title: cplib/collections/slopetrick.nim
   - icon: ':heavy_check_mark:'
@@ -32,22 +32,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
   - icon: ':heavy_check_mark:'
@@ -56,16 +56,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
   - icon: ':heavy_check_mark:'
@@ -86,10 +86,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
   - icon: ':warning:'
@@ -148,6 +148,102 @@ data:
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bellmanford_test.nim
+    title: verify/AI/bellmanford_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bellmanford_test.nim
+    title: verify/AI/bellmanford_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/citrus_test.nim
+    title: verify/AI/citrus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/citrus_test.nim
+    title: verify/AI/citrus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/constants_test.nim
+    title: verify/AI/constants_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/constants_test.nim
+    title: verify/AI/constants_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_test.nim
+    title: verify/AI/dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_test.nim
+    title: verify/AI/dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/knapsack_test.nim
+    title: verify/AI/knapsack_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/knapsack_test.nim
+    title: verify/AI/knapsack_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kruskal_test.nim
+    title: verify/AI/kruskal_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kruskal_test.nim
+    title: verify/AI/kruskal_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lichaotree_test.nim
+    title: verify/AI/lichaotree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lichaotree_test.nim
+    title: verify/AI/lichaotree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/maxk_dijkstra_test.nim
+    title: verify/AI/maxk_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/maxk_dijkstra_test.nim
+    title: verify/AI/maxk_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_forest_test.nim
+    title: verify/AI/namori_forest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_forest_test.nim
+    title: verify/AI/namori_forest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_graph_test.nim
+    title: verify/AI/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_graph_test.nim
+    title: verify/AI/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_template_test.nim
+    title: verify/AI/segtree_beats_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_template_test.nim
+    title: verify/AI/segtree_beats_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sheep_test.nim
+    title: verify/AI/sheep_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sheep_test.nim
+    title: verify/AI/sheep_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/slopetrick_test.nim
+    title: verify/AI/slopetrick_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/slopetrick_test.nim
+    title: verify/AI/slopetrick_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/steiner_tree_test.nim
+    title: verify/AI/steiner_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/steiner_tree_test.nim
+    title: verify/AI/steiner_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_test.nim
+    title: verify/AI/warshall_floyd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_test.nim
+    title: verify/AI/warshall_floyd_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - icon: ':heavy_check_mark:'
@@ -243,45 +339,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_Bknapsack_test.nim
     title: verify/utils/knapsack/solve_Bknapsack_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_Bknapsack_test.nim
     title: verify/utils/knapsack/solve_Bknapsack_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
     title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
     title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -345,10 +441,42 @@ data:
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
   timestamp: '2025-03-09 17:42:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/AI/namori_graph_test.nim
+  - verify/AI/namori_graph_test.nim
+  - verify/AI/kruskal_test.nim
+  - verify/AI/kruskal_test.nim
+  - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/steiner_tree_test.nim
+  - verify/AI/steiner_tree_test.nim
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/warshall_floyd_test.nim
+  - verify/AI/warshall_floyd_test.nim
+  - verify/AI/slopetrick_test.nim
+  - verify/AI/slopetrick_test.nim
+  - verify/AI/lichaotree_test.nim
+  - verify/AI/lichaotree_test.nim
+  - verify/AI/citrus_test.nim
+  - verify/AI/citrus_test.nim
+  - verify/AI/sheep_test.nim
+  - verify/AI/sheep_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/segtree_beats_template_test.nim
+  - verify/AI/segtree_beats_template_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/constants_test.nim
+  - verify/AI/constants_test.nim
+  - verify/AI/knapsack_test.nim
+  - verify/AI/knapsack_test.nim
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim

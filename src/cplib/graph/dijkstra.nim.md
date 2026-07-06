@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,20 +13,32 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_test.nim
+    title: verify/AI/dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_test.nim
+    title: verify/AI/dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
@@ -64,11 +76,11 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_DIJKSTRA:\n    const CPLIB_GRAPH_DIJKSTRA*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
-    \ cplib/graph/restore_shortest_path_from_prev\n    import std/heapqueue, macros\n\
-    \    proc restore_dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T], start:\
-    \ int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =\n   \
-    \     var\n            queue = initHeapQueue[(T, int)]()\n            costs =\
-    \ newSeq[T](len(G))\n            prev = newseq[int](len(G))\n        costs.fill(INF)\n\
+    \ cplib/graph/restore_shortest_path_from_prev\n    import std/heapqueue, macros,\
+    \ algorithm\n    proc restore_dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T],\
+    \ start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]]\
+    \ =\n        var\n            queue = initHeapQueue[(T, int)]()\n            costs\
+    \ = newSeq[T](len(G))\n            prev = newseq[int](len(G))\n        costs.fill(INF)\n\
     \        prev.fill(-1)\n        when start is int:\n            queue.push((ZERO,\
     \ start))\n            costs[start] = ZERO\n        else:\n            for s in\
     \ start:\n                queue.push((ZERO, s))\n                costs[s] = ZERO\n\
@@ -105,20 +117,24 @@ data:
     \ int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =\n       \
     \ shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy:
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/dijkstra_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim

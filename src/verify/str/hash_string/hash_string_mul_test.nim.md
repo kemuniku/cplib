@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -53,12 +53,12 @@ data:
     \        ans.min = (M+1-(N-i)+(N-1))//N + 1\n\n    if ans == INF:\n        echo\
     \ -1\n    else:\n        echo ans"
   dependsOn:
+  - cplib/str/hash_string.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/str/hash_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/hash_string.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []

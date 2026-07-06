@@ -10,6 +10,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_test.nim
+    title: verify/AI/waveletmatrix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_test.nim
+    title: verify/AI/waveletmatrix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/waveletmatrix_test.nim
     title: verify/collections/waveletmatrix_test.nim
   - icon: ':heavy_check_mark:'
@@ -29,8 +35,8 @@ data:
   code: "when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:\n    const CPLIB_COLLECTIONS_WAVELETMATRIX*\
     \ = 1\n    import cplib/collections/bitvector\n    import sequtils\n    import\
     \ bitops\n\n    type WaveletMatrix* = ref object\n        dat : seq[BitVector]\n\
-    \        H : int\n        N : int\n    \n    proc initWaveletMatrix*(v:seq[int],H:int\
-    \ = -1):WaveletMatrix=\n        var v = v\n        var N = len(v)\n        var\
+    \        H : int\n        N : int\n    \n    proc initWaveletMatrix*(v:openArray[int],H:int\
+    \ = -1):WaveletMatrix=\n        var v = @v\n        var N = len(v)\n        var\
     \ H = H\n        if H == -1:\n            if N == 0:\n                H = 0\n\
     \            elif max(v) == 0:\n                H = 1\n            else:\n   \
     \             H = fastLog2(max(v))+1\n        result = WaveletMatrix(dat:newSeqWith(H,newBitVector(N)),N:N,H:H)\n\
@@ -73,9 +79,11 @@ data:
   isVerificationFile: false
   path: cplib/collections/waveletmatrix.nim
   requiredBy: []
-  timestamp: '2026-05-26 04:52:54+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
 documentation_of: cplib/collections/waveletmatrix.nim

@@ -44,15 +44,15 @@ data:
     \  else: echo 0\n"
   dependsOn:
   - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:08+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim

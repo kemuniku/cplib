@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/collections/staticRMQ.nim
+    title: cplib/collections/staticRMQ.nim
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/collections/staticRMQ.nim
-    title: cplib/collections/staticRMQ.nim
-  - icon: ':warning:'
-    path: cplib/str/merged_static_string.nim
-    title: cplib/str/merged_static_string.nim
-  - icon: ':warning:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/merged_static_string.nim
+    title: cplib/str/merged_static_string.nim
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   - icon: ':heavy_check_mark:'
@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -68,19 +68,19 @@ data:
     \ cmp(tmp2,tmp2) == 0\n\n\n\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/utils/constants.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/str/static_string.nim
   - cplib/tmpl/sheep.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/utils/constants.nim
-  - cplib/str/static_string.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []
-  timestamp: '2026-05-24 07:19:32+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/merged_static_string.nim

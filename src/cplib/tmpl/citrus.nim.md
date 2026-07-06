@@ -1,20 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/citrus_test.nim
+    title: verify/AI/citrus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/citrus_test.nim
+    title: verify/AI/citrus_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
@@ -117,8 +123,8 @@ data:
     \ exit*(statement: untyped): untyped = (quote do: (`statement`; quit()))\n   \
     \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
@@ -129,6 +135,8 @@ data:
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/AI/citrus_test.nim
+  - verify/AI/citrus_test.nim
 documentation_of: cplib/tmpl/citrus.nim
 layout: document
 redirect_from:

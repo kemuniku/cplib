@@ -16,6 +16,12 @@ data:
     title: verify/utils/list_procs_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/lis_test.nim
+    title: verify/AI/lis_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lis_test.nim
+    title: verify/AI/lis_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/lis_aoj_test.nim
     title: verify/utils/lis_aoj_test.nim
   - icon: ':heavy_check_mark:'
@@ -60,6 +66,8 @@ data:
   timestamp: '2024-04-09 01:08:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/lis_test.nim
+  - verify/AI/lis_test.nim
   - verify/utils/restore_lis_aoj_test.nim
   - verify/utils/restore_lis_aoj_test.nim
   - verify/utils/lis_aoj_test.nim

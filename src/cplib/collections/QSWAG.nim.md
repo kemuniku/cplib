@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/QSWAG_test.nim
+    title: verify/AI/QSWAG_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/QSWAG_test.nim
+    title: verify/AI/QSWAG_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/QSWAG_test.nim
     title: verify/collections/QSWAG_test.nim
   - icon: ':heavy_check_mark:'
@@ -51,6 +57,8 @@ data:
   timestamp: '2024-01-07 15:42:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/QSWAG_test.nim
+  - verify/AI/QSWAG_test.nim
   - verify/collections/QSWAG_test.nim
   - verify/collections/QSWAG_test.nim
 documentation_of: cplib/collections/QSWAG.nim

@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/optimize_test.nim
+    title: verify/AI/optimize_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/optimize_test.nim
+    title: verify/AI/optimize_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -33,8 +39,10 @@ data:
   path: cplib/tmpl/optimize.nim
   requiredBy: []
   timestamp: '2026-04-15 20:27:54+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/optimize_test.nim
+  - verify/AI/optimize_test.nim
 documentation_of: cplib/tmpl/optimize.nim
 layout: document
 redirect_from:

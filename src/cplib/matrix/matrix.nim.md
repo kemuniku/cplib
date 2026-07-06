@@ -34,32 +34,38 @@ data:
     title: verify/modint/montgomery/dpr_static_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/matrix/matrix_pow_test.nim
-    title: verify/matrix/matrix_pow_test.nim
+    path: verify/AI/matrix_test.nim
+    title: verify/AI/matrix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/matrix_test.nim
+    title: verify/AI/matrix_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_pow_test.nim
+    title: verify/matrix/matrix_pow_test.nim
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_unit_test.nim
     title: verify/matrix/matrix_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_unit_test.nim
     title: verify/matrix/matrix_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_zoistring_test.nim
     title: verify/matrix/matrix_zoistring_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_zoistring_test.nim
     title: verify/matrix/matrix_zoistring_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -70,21 +76,21 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATRIX_MATRIX:\n    const CPLIB_MATRIX_MATRIX* =\
     \ 1\n    import sequtils, strutils, hashes, std/math\n    type Matrix*[T] = object\n\
-    \        arr: seq[seq[T]]\n    proc initMatrix*[T](arr: seq[seq[T]]): Matrix[T]\
+    \        arr: seq[seq[T]]\n    proc initMatrix*[T](arr: openArray[seq[T]]): Matrix[T]\
     \ =\n        assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len),\
-    \ \"all elements in arr must be the same size.\"\n        Matrix[T](arr: arr)\n\
-    \    proc toMatrix*[T](arr: seq[seq[T]]): Matrix[T] = initMatrix(arr)\n    proc\
-    \ initMatrix*[T](arr: seq[T], vertical: bool = false): Matrix[T] =\n        if\
-    \ vertical: Matrix[T](arr: arr.mapIt(@[it]))\n        else: Matrix[T](arr: @[arr])\n\
-    \    proc initMatrix*[T](h, w: int, val: T): Matrix[T] = Matrix[T](arr: newSeqWith(h,\
-    \ newSeqWith(w, val)))\n\n    proc h*[T](m: Matrix[T]): int = m.arr.len\n    proc\
-    \ w*[T](m: Matrix[T]): int =\n        if m.h == 0: return 0\n        m.arr[0].len\n\
+    \ \"all elements in arr must be the same size.\"\n        Matrix[T](arr: @arr)\n\
+    \    proc toMatrix*[T](arr: openArray[seq[T]]): Matrix[T] = initMatrix(arr)\n\
+    \    proc initMatrix*[T](arr: openArray[T], vertical: bool = false): Matrix[T]\
+    \ =\n        if vertical: Matrix[T](arr: arr.mapIt(@[it]))\n        else: Matrix[T](arr:\
+    \ @[@arr])\n    proc initMatrix*[T](h, w: int, val: T): Matrix[T] = Matrix[T](arr:\
+    \ newSeqWith(h, newSeqWith(w, val)))\n\n    proc h*[T](m: Matrix[T]): int = m.arr.len\n\
+    \    proc w*[T](m: Matrix[T]): int =\n        if m.h == 0: return 0\n        m.arr[0].len\n\
     \    proc `$`*[T](m: Matrix[T]): string =\n        for i in 0..<m.arr.len:\n \
     \           result &= m.arr[i].mapIt($it).join(\" \")\n            if i != m.arr.len\
     \ - 1: result &= \"\\n\"\n    proc `==`*[T](a, b: Matrix[T]): bool = a.arr ==\
     \ b.arr\n    proc `[]`*[T](m: Matrix[T], r: int): seq[T] = m.arr[r]\n    proc\
     \ `[]`*[T](m: var Matrix[T], r: int): var seq[T] = m.arr[r]\n    proc `[]=`*[T](m:\
-    \ var Matrix[T], r: int, row: seq[T]) = m.arr[r] = row\n\n    proc `[]`*[T](m:\
+    \ var Matrix[T], r: int, row: openArray[T]) = m.arr[r] = @row\n\n    proc `[]`*[T](m:\
     \ Matrix[T], r: int, c: int): T = m.arr[r][c]\n    proc `[]`*[T](m: var Matrix[T],\
     \ r: int, c: int): var T = m.arr[r][c]\n    proc `[]=`*[T](m: var Matrix[T], r:\
     \ int, c: int, val: T) = m.arr[r][c] = val\n\n    proc `-`*[T](m: Matrix[T]):\
@@ -141,9 +147,11 @@ data:
   - verify/modint/montgomery/dpr_static_test_.nim
   - verify/matrix/matrix_dpr_test_.nim
   - verify/matrix/matrix_dpr_test_.nim
-  timestamp: '2024-03-28 20:50:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/matrix_test.nim
+  - verify/AI/matrix_test.nim
   - verify/matrix/matrix_unit_test.nim
   - verify/matrix/matrix_unit_test.nim
   - verify/matrix/matrix_product_test.nim

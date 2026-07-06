@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/imos2d_test.nim
+    title: verify/AI/imos2d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/imos2d_test.nim
+    title: verify/AI/imos2d_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -34,8 +40,10 @@ data:
   path: cplib/utils/imos2d.nim
   requiredBy: []
   timestamp: '2026-05-26 04:57:32+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/imos2d_test.nim
+  - verify/AI/imos2d_test.nim
 documentation_of: cplib/utils/imos2d.nim
 layout: document
 redirect_from:

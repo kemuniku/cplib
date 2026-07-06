@@ -16,6 +16,12 @@ data:
     title: verify/str/rolling_hash_pun_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/rolling_hash_test.nim
+    title: verify/AI/rolling_hash_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rolling_hash_test.nim
+    title: verify/AI/rolling_hash_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_aoj_test.nim
     title: verify/str/rolling_hash_aoj_test.nim
   - icon: ':heavy_check_mark:'
@@ -91,6 +97,8 @@ data:
   timestamp: '2024-06-07 22:14:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/rolling_hash_test.nim
+  - verify/AI/rolling_hash_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim

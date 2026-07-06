@@ -47,13 +47,13 @@ data:
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
-  - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/projection.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:08+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim

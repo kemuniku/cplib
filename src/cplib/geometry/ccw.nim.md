@@ -40,6 +40,30 @@ data:
     title: verify/geometry/convex_hull_abc286ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/ccw_test.nim
+    title: verify/AI/ccw_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ccw_test.nim
+    title: verify/AI/ccw_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/distance_test.nim
+    title: verify/AI/distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/distance_test.nim
+    title: verify/AI/distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/intersect_test.nim
+    title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/intersect_test.nim
+    title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
   - icon: ':heavy_check_mark:'
@@ -156,11 +180,11 @@ data:
     \ p2, p3: Point[T], strict: bool = false): int =\n        ##3\u70B9\u306E\u4F4D\
     \u7F6E\u95A2\u4FC2\u3092\u6574\u6570\u3067\u8FD4\u3059. COUNTER_CLOCKWISE: 2,\
     \ CLOCKWISE: -2, ON_SEGMENT: 0, ONLINE_BACK: 1, ONLINE_FRONT: -1\n        ccw(initLine(p1,\
-    \ p2), p3)\n    proc online*[T](l: Line[T], p: Point[T]): bool =\n        ##\u70B9\
-    p\u304C\u76F4\u7DDAl\u4E0A\u306B\u3042\u308B\u304B\u3069\u3046\u304B\u3092\u5224\
-    \u5B9A\n        ccw(l, p) in -1..1\n    proc online*[T](p1, p2, p3: Point[T]):\
-    \ bool =\n        ##\u70B9p3\u304C p1, p2 \u3092\u901A\u308B\u76F4\u7DDA\u4E0A\
-    \u306B\u3042\u308B\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\n        ccw(p1,\
+    \ p2), p3, strict)\n    proc online*[T](l: Line[T], p: Point[T]): bool =\n   \
+    \     ##\u70B9p\u304C\u76F4\u7DDAl\u4E0A\u306B\u3042\u308B\u304B\u3069\u3046\u304B\
+    \u3092\u5224\u5B9A\n        ccw(l, p) in -1..1\n    proc online*[T](p1, p2, p3:\
+    \ Point[T]): bool =\n        ##\u70B9p3\u304C p1, p2 \u3092\u901A\u308B\u76F4\u7DDA\
+    \u4E0A\u306B\u3042\u308B\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\n        ccw(p1,\
     \ p2, p3) in -1..1\n"
   dependsOn:
   - cplib/geometry/base.nim
@@ -178,9 +202,17 @@ data:
   - cplib/geometry/intersect.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/ccw_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/distance_test.nim
+  - verify/AI/distance_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim

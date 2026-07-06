@@ -14,10 +14,16 @@ data:
   - icon: ':warning:'
     path: verify/math/osa_k_test_.nim
     title: verify/math/osa_k_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/osa_k_test.nim
+    title: verify/AI/osa_k_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/osa_k_test.nim
+    title: verify/AI/osa_k_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -49,8 +55,10 @@ data:
   - verify/math/osa_k_test_.nim
   - verify/math/osa_k_test_.nim
   timestamp: '2024-12-08 16:30:25+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/osa_k_test.nim
+  - verify/AI/osa_k_test.nim
 documentation_of: cplib/math/osa_k.nim
 layout: document
 redirect_from:

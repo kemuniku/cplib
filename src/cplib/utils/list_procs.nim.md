@@ -8,10 +8,16 @@ data:
   - icon: ':warning:'
     path: verify/utils/list_procs_test_.nim
     title: verify/utils/list_procs_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/list_procs_test.nim
+    title: verify/AI/list_procs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/list_procs_test.nim
+    title: verify/AI/list_procs_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -34,8 +40,10 @@ data:
   - verify/utils/list_procs_test_.nim
   - verify/utils/list_procs_test_.nim
   timestamp: '2024-11-28 13:20:58+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/list_procs_test.nim
+  - verify/AI/list_procs_test.nim
 documentation_of: cplib/utils/list_procs.nim
 layout: document
 redirect_from:

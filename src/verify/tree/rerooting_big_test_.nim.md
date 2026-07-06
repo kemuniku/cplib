@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
   _extendedRequiredBy: []
@@ -40,13 +40,13 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tree/rerooting.nim
+  - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
-  - cplib/tree/rerooting.nim
-  - cplib/tree/rerooting.nim
   isVerificationFile: false
   path: verify/tree/rerooting_big_test_.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/tree/rerooting_big_test_.nim

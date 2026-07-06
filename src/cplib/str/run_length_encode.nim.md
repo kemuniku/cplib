@@ -8,10 +8,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/osa_k.nim
     title: cplib/math/osa_k.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/osa_k.nim
     title: cplib/math/osa_k.nim
   - icon: ':heavy_check_mark:'
@@ -20,10 +20,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':warning:'
@@ -57,6 +57,36 @@ data:
     path: verify/math/osa_k_test_.nim
     title: verify/math/osa_k_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/divisor_test.nim
+    title: verify/AI/divisor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/divisor_test.nim
+    title: verify/AI/divisor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/osa_k_test.nim
+    title: verify/AI/osa_k_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/osa_k_test.nim
+    title: verify/AI/osa_k_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primefactor_test.nim
+    title: verify/AI/primefactor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primefactor_test.nim
+    title: verify/AI/primefactor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/run_length_encode_test.nim
+    title: verify/AI/run_length_encode_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/run_length_encode_test.nim
+    title: verify/AI/run_length_encode_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
@@ -118,6 +148,16 @@ data:
   timestamp: '2023-11-19 18:26:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/run_length_encode_test.nim
+  - verify/AI/run_length_encode_test.nim
+  - verify/AI/osa_k_test.nim
+  - verify/AI/osa_k_test.nim
+  - verify/AI/primefactor_test.nim
+  - verify/AI/primefactor_test.nim
+  - verify/AI/divisor_test.nim
+  - verify/AI/divisor_test.nim
   - verify/str/run_length_encode_test.nim
   - verify/str/run_length_encode_test.nim
   - verify/math/factorize_yosupo_test.nim

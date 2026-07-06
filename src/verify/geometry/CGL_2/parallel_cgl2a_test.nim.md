@@ -36,14 +36,14 @@ data:
     \ p4)\n\n    if is_parallel(s1, s2): echo 2\n    elif is_orthogonal(s1, s2): echo\
     \ 1\n    else: echo 0\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/parallel_cgl2a_test.nim

@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/static_matrix_test.nim
+    title: verify/AI/static_matrix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_matrix_test.nim
+    title: verify/AI/static_matrix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/static_string/static_matrix_unit_test.nim
     title: verify/matrix/static_string/static_matrix_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -116,6 +122,8 @@ data:
   timestamp: '2026-05-26 07:51:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/static_matrix_test.nim
+  - verify/AI/static_matrix_test.nim
   - verify/matrix/static_string/static_matrix_unit_test.nim
   - verify/matrix/static_string/static_matrix_unit_test.nim
   - verify/matrix/static_string/static_matrix_zoistring_test.nim

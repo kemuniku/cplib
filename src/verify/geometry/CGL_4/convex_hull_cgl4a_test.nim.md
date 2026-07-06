@@ -50,18 +50,18 @@ data:
     \ 0..<ans.len:\n    var pi = ans.v[(i+s) mod ans.len]\n    echo &\"{pi.x} {pi.y}\"\
     \n"
   dependsOn:
-  - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
   isVerificationFile: true
   path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:08+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
     links:
@@ -43,8 +43,8 @@ data:
   isVerificationFile: true
   path: verify/tree/diameter_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/diameter_yosupo_test.nim
 layout: document

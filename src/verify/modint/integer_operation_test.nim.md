@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -57,19 +57,19 @@ data:
     \        for y in 1..10:\n            assert (x + mint(y)).val == (mint(x) + mint(y)).val\n\
     \            assert (mint(x) + y).val == (mint(x) + mint(y)).val\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/modint/integer_operation_test.nim
   requiredBy: []
-  timestamp: '2026-03-21 18:55:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-06 22:23:54+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/modint/integer_operation_test.nim
 layout: document

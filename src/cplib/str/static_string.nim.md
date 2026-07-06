@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
   - icon: ':warning:'
@@ -34,56 +34,74 @@ data:
     title: verify/str/static_string/static_string_count_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_trie_test.nim
+    title: verify/AI/compressed_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_trie_test.nim
+    title: verify/AI/compressed_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merged_static_string_test.nim
+    title: verify/AI/merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merged_static_string_test.nim
+    title: verify/AI/merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_test.nim
+    title: verify/AI/static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_test.nim
+    title: verify/AI/static_string_test.nim
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -147,7 +165,7 @@ data:
     \               if i+x >= base.size:return -1\n                if base.S[i+x]\
     \ < s[i]:return -1\n                if base.S[i+x] > s[i]:return 1\n         \
     \   return 0\n        return base.SA.upperBound(S,cmp)\n\n    proc count*(base:StaticStringBase,S:string):int=\n\
-    \        return base.suffix_upperbound(S) - base.suffix_lowerbound(S)"
+    \        return base.suffix_upperbound(S) - base.suffix_lowerbound(S)\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
@@ -162,9 +180,15 @@ data:
   - cplib/str/compressed_trie.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/merged_static_string.nim
-  timestamp: '2026-04-15 04:05:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/static_string_test.nim
+  - verify/AI/static_string_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/merged_static_string_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim

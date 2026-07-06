@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitset.nim
     title: cplib/collections/bitset.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitset.nim
     title: cplib/collections/bitset.nim
   _extendedRequiredBy: []
@@ -34,7 +34,7 @@ data:
   isVerificationFile: false
   path: verify/collections/bitset_test_.nim
   requiredBy: []
-  timestamp: '2026-03-12 21:21:00+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/bitset_test_.nim

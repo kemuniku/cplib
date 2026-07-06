@@ -1,17 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/deletable_heapqueue.nim
     title: cplib/collections/deletable_heapqueue.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/deletable_heapqueue.nim
     title: cplib/collections/deletable_heapqueue.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/topk_sum_heapq_test.nim
+    title: verify/AI/topk_sum_heapq_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/topk_sum_heapq_test.nim
+    title: verify/AI/topk_sum_heapq_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -24,7 +30,7 @@ data:
     \ = 1\n    import heapqueue\n    import algorithm\n    import cplib/collections/deletable_heapqueue\n\
     \    type TopK_sum_heapq = ref object\n        G : Deletable_HeapQueue[int]\n\
     \        L : Deletable_HeapQueue[int]\n        sm* : int\n        topk* : int\n\
-    \        k* : int\n\n    proc initTopKHeapq*(v:seq[int],k:int):TopK_sum_heapq=\n\
+    \        k* : int\n\n    proc initTopKHeapq*(v:openArray[int],k:int):TopK_sum_heapq=\n\
     \        result = TopK_sum_heapq(G:initDeletableHeapQueue[int](),L:initDeletableHeapQueue[int](),sm:0,topk:0,k:k)\n\
     \        var v = v.sorted(Descending)\n        for i in 0..<k:\n            result.G.push(v[i])\n\
     \            result.sm += v[i]\n            result.topk += v[i]\n        for i\
@@ -45,16 +51,18 @@ data:
     \   var tmp = self.G.pop()\n        self.topk -= tmp\n        self.k -= 1\n  \
     \      self.L.push(-tmp)\n    \n    proc setK*(self:TopK_sum_heapq,k:int)=\n \
     \       ## \u8A08\u7B97\u91CF\u6CE8\u610F\uFF01\n        while self.k > k:\n \
-    \           self.minusK()\n        while self.k < k:\n            self.addK()"
+    \           self.minusK()\n        while self.k < k:\n            self.addK()\n"
   dependsOn:
   - cplib/collections/deletable_heapqueue.nim
   - cplib/collections/deletable_heapqueue.nim
   isVerificationFile: false
   path: cplib/collections/topk_sum_heapq.nim
   requiredBy: []
-  timestamp: '2026-02-11 03:57:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/topk_sum_heapq_test.nim
+  - verify/AI/topk_sum_heapq_test.nim
 documentation_of: cplib/collections/topk_sum_heapq.nim
 layout: document
 redirect_from:

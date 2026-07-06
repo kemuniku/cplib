@@ -16,6 +16,12 @@ data:
     title: verify/collections/ppunionfind/stamp_rally_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/ppunionfind_test.nim
+    title: verify/AI/ppunionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ppunionfind_test.nim
+    title: verify/AI/ppunionfind_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - icon: ':heavy_check_mark:'
@@ -93,6 +99,8 @@ data:
   timestamp: '2025-02-26 01:40:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/ppunionfind_test.nim
+  - verify/AI/ppunionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
 documentation_of: cplib/collections/ppunionfind.nim

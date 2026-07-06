@@ -1,23 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
-    path: cplib/collections/rootvalue_unionfind.nim
-    title: cplib/collections/rootvalue_unionfind.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rootvalue_unionfind.nim
     title: cplib/collections/rootvalue_unionfind.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/rootvalue_unionfind.nim
+    title: cplib/collections/rootvalue_unionfind.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dynamic_bipartite_test.nim
+    title: verify/AI/dynamic_bipartite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dynamic_bipartite_test.nim
+    title: verify/AI/dynamic_bipartite_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -47,16 +53,18 @@ data:
     \  self.cnt_sum += max(self.uf.get(u),self.uf.get(u+self.N))\n    \n    proc is_bipartite*(self:DynamicBipartite):bool=\n\
     \        return self.is_bipartite"
   dependsOn:
-  - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/rootvalue_unionfind.nim
   - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/dynamic_bipartite_test.nim
+  - verify/AI/dynamic_bipartite_test.nim
 documentation_of: cplib/graph/dynamic_bipartite.nim
 layout: document
 redirect_from:

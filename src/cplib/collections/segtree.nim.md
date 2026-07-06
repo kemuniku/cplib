@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: cplib/collections/segtree2d.nim
-    title: cplib/collections/segtree2d.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree2d.nim
     title: cplib/collections/segtree2d.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/segtree2d.nim
+    title: cplib/collections/segtree2d.nim
+  - icon: ':question:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
   - icon: ':warning:'
@@ -40,6 +40,24 @@ data:
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/inversion_number_test.nim
+    title: verify/AI/inversion_number_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/inversion_number_test.nim
+    title: verify/AI/inversion_number_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree2d_test.nim
+    title: verify/AI/segtree2d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree2d_test.nim
+    title: verify/AI/segtree2d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_test.nim
+    title: verify/AI/segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_test.nim
+    title: verify/AI/segtree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/hashtable_yuki2686_test.nim
     title: verify/collections/hashtable_yuki2686_test.nim
   - icon: ':heavy_check_mark:'
@@ -105,33 +123,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -141,16 +159,16 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE:\n    const CPLIB_COLLECTIONS_SEGTREE*\
-    \ = 1\n    import algorithm, strutils, sequtils\n    type SegmentTree*[T] = ref\
-    \ object\n        default: T\n        merge: proc(x: T, y: T): T\n        arr*:\
-    \ seq[T]\n        lastnode: int\n        length: int\n    proc initSegmentTree*[T](v:\
-    \ seq[T], merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =\n        ##\
-    \ \u30BB\u30B0\u30E1\u30F3\u30C8\u30C4\u30EA\u30FC\u3092\u751F\u6210\u3057\u307E\
-    \u3059\u3002\n        ## v\u306B\u5143\u3068\u306A\u308B\u30EA\u30B9\u30C8\u3001\
-    merge\u306B\u4E8C\u3064\u306E\u533A\u9593\u3092\u30DE\u30FC\u30B8\u3059\u308B\u95A2\
-    \u6570\u3001\u30C7\u30D5\u30A9\u30EB\u30C8\u306B\u5358\u4F4D\u5143\u3092\u4E0E\
-    \u3048\u3066\u304F\u3060\u3055\u3044\u3002\n        var lastnode = 1\n       \
-    \ while lastnode < len(v):\n            lastnode*=2\n        var arr = newSeq[T](2*lastnode)\n\
+    \ = 1\n    import algorithm, strutils\n    type SegmentTree*[T] = ref object\n\
+    \        default: T\n        merge: proc(x: T, y: T): T\n        arr*: seq[T]\n\
+    \        lastnode: int\n        length: int\n    proc initSegmentTree*[T](v: openArray[T],\
+    \ merge: proc(x: T, y: T): T, default: T): SegmentTree[T] =\n        ## \u30BB\
+    \u30B0\u30E1\u30F3\u30C8\u30C4\u30EA\u30FC\u3092\u751F\u6210\u3057\u307E\u3059\
+    \u3002\n        ## v\u306B\u5143\u3068\u306A\u308B\u30EA\u30B9\u30C8\u3001merge\u306B\
+    \u4E8C\u3064\u306E\u533A\u9593\u3092\u30DE\u30FC\u30B8\u3059\u308B\u95A2\u6570\
+    \u3001\u30C7\u30D5\u30A9\u30EB\u30C8\u306B\u5358\u4F4D\u5143\u3092\u4E0E\u3048\
+    \u3066\u304F\u3060\u3055\u3044\u3002\n        var lastnode = 1\n        while\
+    \ lastnode < len(v):\n            lastnode*=2\n        var arr = newSeq[T](2*lastnode)\n\
     \        arr.fill(default)\n        var self = SegmentTree[T](default: default,\
     \ merge: merge, arr: arr, lastnode: lastnode, length: len(v))\n        #1-indexed\u3067\
     \u4F5C\u6210\u3059\u308B\n        for i in 0..<len(v):\n            self.arr[self.lastnode+i]\
@@ -162,8 +180,12 @@ data:
     \u4E8C\u3064\u306E\u533A\u9593\u3092\u30DE\u30FC\u30B8\u3059\u308B\u95A2\u6570\
     \u3001\u30C7\u30D5\u30A9\u30EB\u30C8\u306B\u5358\u4F4D\u5143\u3092\u4E0E\u3048\
     \u3066\u304F\u3060\u3055\u3044\u3002\uFF08\u5168\u3066\u5358\u4F4D\u5143\u3067\
-    \u69CB\u7BC9\u3055\u308C\u307E\u3059\uFF09\n        initSegmentTree(newSeqWith(n,\
-    \ default), merge, default)\n\n    proc update*[T](self: SegmentTree[T], x: Natural,\
+    \u69CB\u7BC9\u3055\u308C\u307E\u3059\uFF09\n        var lastnode = 1\n       \
+    \ while lastnode < n:\n            lastnode*=2\n        var arr = newSeq[T](2*lastnode)\n\
+    \        arr.fill(default)\n        var self = SegmentTree[T](default: default,\
+    \ merge: merge, arr: arr, lastnode: lastnode, length: n)\n        for i in countdown(lastnode-1,\
+    \ 1):\n            self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])\n\
+    \        return self\n\n    proc update*[T](self: SegmentTree[T], x: Natural,\
     \ val: T) =\n        ## x\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\u307E\
     \u3059\u3002\n        assert x < self.length\n        var x = x\n        x +=\
     \ self.lastnode\n        self.arr[x] = val\n        while x > 1:\n           \
@@ -230,9 +252,15 @@ data:
   - cplib/utils/inversion_number.nim
   - cplib/collections/segtree2d.nim
   - cplib/collections/segtree2d.nim
-  timestamp: '2024-12-19 23:19:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/segtree_test.nim
+  - verify/AI/segtree_test.nim
+  - verify/AI/inversion_number_test.nim
+  - verify/AI/inversion_number_test.nim
+  - verify/AI/segtree2d_test.nim
+  - verify/AI/segtree2d_test.nim
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim

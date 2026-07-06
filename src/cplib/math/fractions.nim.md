@@ -34,6 +34,18 @@ data:
     title: verify/math/fractions_abc308c_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fractions_test.nim
+    title: verify/AI/fractions_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fractions_test.nim
+    title: verify/AI/fractions_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   - icon: ':heavy_check_mark:'
@@ -216,6 +228,10 @@ data:
   timestamp: '2025-03-09 17:42:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/polygon_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/fractions_test.nim
+  - verify/AI/fractions_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim

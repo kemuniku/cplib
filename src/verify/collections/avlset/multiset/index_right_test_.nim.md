@@ -35,14 +35,14 @@ data:
     var ans = 0\nfor i in 0..<N:\n    now += a[i]\n    ans += st.index_right(now)\n\
     \    st.incl(now)\necho ans\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: verify/collections/avlset/multiset/index_right_test_.nim
   requiredBy: []
-  timestamp: '2025-11-08 19:42:23+00:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/avlset/multiset/index_right_test_.nim

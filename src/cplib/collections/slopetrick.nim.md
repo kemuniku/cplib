@@ -1,17 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/slopetrick_test.nim
+    title: verify/AI/slopetrick_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/slopetrick_test.nim
+    title: verify/AI/slopetrick_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://ei1333.github.io/library/structure/others/slope-trick.hpp
@@ -58,8 +64,10 @@ data:
   path: cplib/collections/slopetrick.nim
   requiredBy: []
   timestamp: '2026-03-12 21:21:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/slopetrick_test.nim
+  - verify/AI/slopetrick_test.nim
 documentation_of: cplib/collections/slopetrick.nim
 layout: document
 redirect_from:

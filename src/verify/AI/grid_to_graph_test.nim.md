@@ -1,0 +1,87 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/grid_to_graph.nim
+    title: cplib/graph/grid_to_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/grid_to_graph.nim
+    title: cplib/graph/grid_to_graph.nim
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: nim
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
+  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+
+    echo "Hello World"
+
+
+    import algorithm, sequtils
+
+    import cplib/graph/graph
+
+    import cplib/graph/grid_to_graph
+
+
+    let grid = @["..", "#."]
+
+    let g = grid.grid_to_graph(''.'')
+
+    assert g.len == 4
+
+    assert toSeq(g[0]).sorted == @[1]
+
+    assert toSeq(g[1]).sorted == @[0, 3]
+
+    assert toSeq(g[3]).sorted == @[1]
+
+
+    var sg = grid.grid_to_graph(''.'', true)
+
+    sg.build()
+
+    assert sg.len == 4
+
+    assert toSeq(sg[1]).sorted == @[0, 3]
+
+
+    let nums = @[@[1, 1], @[0, 1]]
+
+    assert nums.grid_to_graph(1).len == 4
+
+    '
+  dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/grid_to_graph.nim
+  - cplib/graph/grid_to_graph.nim
+  - cplib/graph/graph.nim
+  isVerificationFile: true
+  path: verify/AI/grid_to_graph_test.nim
+  requiredBy: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/AI/grid_to_graph_test.nim
+layout: document
+redirect_from:
+- /verify/verify/AI/grid_to_graph_test.nim
+- /verify/verify/AI/grid_to_graph_test.nim.html
+title: verify/AI/grid_to_graph_test.nim
+---

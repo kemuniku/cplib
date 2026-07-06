@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
     links:
@@ -36,15 +36,15 @@ data:
     \ = initHld(g, 0)\nvar ans = newSeq[int](q)\nfor i in 0..<q:\n    var s, t, k\
     \ = ii()\n    ans[i] = hld.la(s, t, k)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_la_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_la_yosupo_test.nim
 layout: document

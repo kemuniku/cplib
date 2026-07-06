@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
   - icon: ':warning:'
@@ -33,6 +33,24 @@ data:
     path: verify/tree/hld/hld_past202004o_test_.nim
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kruskal_test.nim
+    title: verify/AI/kruskal_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kruskal_test.nim
+    title: verify/AI/kruskal_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merge_tree_test.nim
+    title: verify/AI/merge_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merge_tree_test.nim
+    title: verify/AI/merge_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/unionfind_test.nim
+    title: verify/AI/unionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/unionfind_test.nim
+    title: verify/AI/unionfind_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/unionfind_test.nim
     title: verify/collections/unionfind_test.nim
@@ -88,6 +106,12 @@ data:
   timestamp: '2026-02-11 03:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/kruskal_test.nim
+  - verify/AI/kruskal_test.nim
+  - verify/AI/merge_tree_test.nim
+  - verify/AI/merge_tree_test.nim
+  - verify/AI/unionfind_test.nim
+  - verify/AI/unionfind_test.nim
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
 documentation_of: cplib/collections/unionfind.nim

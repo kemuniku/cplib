@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -38,7 +38,7 @@ data:
   isVerificationFile: true
   path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim

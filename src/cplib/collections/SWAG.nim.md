@@ -4,20 +4,26 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/collections/SWAG_test.nim
-    title: verify/collections/SWAG_test.nim
+    path: verify/AI/SWAG_test.nim
+    title: verify/AI/SWAG_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/SWAG_test.nim
+    title: verify/AI/SWAG_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/SWAG_test.nim
     title: verify/collections/SWAG_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/SWAG_test.nim
+    title: verify/collections/SWAG_test.nim
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -69,8 +75,10 @@ data:
   path: cplib/collections/SWAG.nim
   requiredBy: []
   timestamp: '2024-01-28 11:14:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/SWAG_test.nim
+  - verify/AI/SWAG_test.nim
   - verify/collections/SWAG_test.nim
   - verify/collections/SWAG_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

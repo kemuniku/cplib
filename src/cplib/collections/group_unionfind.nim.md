@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/group_unionfind_test.nim
+    title: verify/AI/group_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/group_unionfind_test.nim
+    title: verify/AI/group_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/groupunionfind_test.nim
     title: verify/collections/groupunionfind_test.nim
   - icon: ':heavy_check_mark:'
@@ -60,14 +66,17 @@ data:
     \u6210\u5206\u306B\u30B5\u30A4\u30AF\u30EB\u304C\u3042\u308B\u304B\u3069\u3046\
     \u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\n        var x = self.root(x)\n   \
     \     return self.edge_cnt[x] >= self.siz(x)\n    proc copy*(self:UnionFind):UnionFind=\n\
-    \        result = UnionFind(count: self.count, par_or_siz: self.par_or_siz,next:self.next)\n"
+    \        result = UnionFind(count: self.count, par_or_siz: self.par_or_siz, next:\
+    \ self.next, edge_cnt: self.edge_cnt)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/group_unionfind.nim
   requiredBy: []
-  timestamp: '2026-02-11 03:55:41+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/group_unionfind_test.nim
+  - verify/AI/group_unionfind_test.nim
   - verify/collections/groupunionfind_test.nim
   - verify/collections/groupunionfind_test.nim
 documentation_of: cplib/collections/group_unionfind.nim

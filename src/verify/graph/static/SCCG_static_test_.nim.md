@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
-    path: cplib/graph/SCC.nim
-    title: cplib/graph/SCC.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/SCC.nim
+    title: cplib/graph/SCC.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -43,7 +43,7 @@ data:
   isVerificationFile: false
   path: verify/graph/static/SCCG_static_test_.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/static/SCCG_static_test_.nim

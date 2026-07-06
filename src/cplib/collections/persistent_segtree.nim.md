@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_segtree_test.nim
+    title: verify/AI/persistent_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_segtree_test.nim
+    title: verify/AI/persistent_segtree_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -16,9 +22,9 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "type SegmentTreeNode* = ref object\n    value : int\n    left : SegmentTreeNode\n\
     \    right : SegmentTreeNode\n\ntype PSegmentTree* = ref object\n    root : SegmentTreeNode\n\
-    \    lastnode : int\n    op : proc(l:int,r:int):int\n    e : int\n\nproc initSegmentTree*(v:seq[int],op\
-    \ : proc(l:int,r:int):int,e:int):PSegmentTree=\n    var size = 1\n    while size\
-    \ < len(v):\n        size *= 2\n    proc buildNode(l:int,r:int):SegmentTreeNode=\n\
+    \    lastnode : int\n    op : proc(l:int,r:int):int\n    e : int\n\nproc initSegmentTree*(v:openArray[int],op\
+    \ : proc(l:int,r:int):int,e:int):PSegmentTree=\n    let v = @v\n    var size =\
+    \ 1\n    while size < len(v):\n        size *= 2\n    proc buildNode(l:int,r:int):SegmentTreeNode=\n\
     \        if r-l == 1:\n            if l < len(v):\n                return SegmentTreeNode(value:v[l],\
     \ left:nil, right:nil)\n            else:\n                return SegmentTreeNode(value:e,\
     \ left:nil, right:nil)\n        var L = buildNode(l,(l+r) shr 1)\n        var\
@@ -38,14 +44,16 @@ data:
     \           return st.e\n        if l <= nl and nr <= r:\n            return node.value\n\
     \        var mid = (nl + nr) shr 1\n        var left_value = dfs(node.left,nl,mid)\n\
     \        var right_value = dfs(node.right,mid,nr)\n        return st.op(left_value,right_value)\n\
-    \    return dfs(st.root,0,st.lastnode)\n\n"
+    \    return dfs(st.root,0,st.lastnode)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/persistent_segtree.nim
   requiredBy: []
-  timestamp: '2026-05-01 08:01:08+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/persistent_segtree_test.nim
+  - verify/AI/persistent_segtree_test.nim
 documentation_of: cplib/collections/persistent_segtree.nim
 layout: document
 redirect_from:

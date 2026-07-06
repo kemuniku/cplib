@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/tatyamset.nim
     title: cplib/collections/tatyamset.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/tatyamset.nim
     title: cplib/collections/tatyamset.nim
   _extendedRequiredBy: []
@@ -34,7 +34,7 @@ data:
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC294_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/tatyamset/ABC294_test_.nim

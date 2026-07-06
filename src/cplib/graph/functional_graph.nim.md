@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy:
@@ -20,10 +20,16 @@ data:
   - icon: ':warning:'
     path: verify/graph/functional_graph_test_.nim
     title: verify/graph/functional_graph_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_test.nim
+    title: verify/AI/functional_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_test.nim
+    title: verify/AI/functional_graph_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -101,18 +107,20 @@ data:
     \u3001\u521D\u3081\u3066\u30B5\u30A4\u30AF\u30EB\u306B\u5165\u3063\u305F\u3068\
     \u304D\u306E\u9802\u70B9\u3092\u8FD4\u3059\n        return functional_graph.roots[x]"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
   requiredBy:
   - verify/graph/functional_graph_test_.nim
   - verify/graph/functional_graph_test_.nim
-  timestamp: '2026-07-06 01:32:55+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/functional_graph_test.nim
 documentation_of: cplib/graph/functional_graph.nim
 layout: document
 redirect_from:

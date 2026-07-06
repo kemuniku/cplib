@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/suffixarray
     links:
@@ -33,15 +33,15 @@ data:
     \ stdin.readLine().toStaticString()\nvar tmp : seq[StaticString]\nfor i in 0..<len(S):\n\
     \    tmp.add(S[i..<len(S)])\ntmp.sort()\n\necho tmp.mapit(it.l).join(\" \")"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_SA_test.nim
   requiredBy: []
-  timestamp: '2026-04-15 04:05:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_SA_test.nim
 layout: document

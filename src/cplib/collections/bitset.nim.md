@@ -14,10 +14,16 @@ data:
   - icon: ':warning:'
     path: verify/collections/bitset_test_.nim
     title: verify/collections/bitset_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_test.nim
+    title: verify/AI/bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_test.nim
+    title: verify/AI/bitset_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -31,25 +37,26 @@ data:
     \    bits : seq[uint]\n    \n    proc varor(x:var uint,y:uint) {.importcpp:\"\
     # |= #\".}\n    proc varand(x:var uint,y:uint) {.importcpp:\"# &= #\".}\n    proc\
     \ varxor(x:var uint,y:uint) {.importcpp:\"# ^= #\".}\n\n    proc initBitSet*(N:int):Bitset=\n\
-    \        result.bits = newseq[uint](ceilDiv(N,64))\n\n    proc initBitSet*(v:seq[bool]):Bitset=\n\
+    \        result.bits = newseq[uint](ceilDiv(N,64))\n\n    proc initBitSet*(v:openArray[bool]):Bitset=\n\
     \        result.bits = newseq[uint](ceilDiv(len(v),64))\n        const mask =\
     \ ((1 shl 6) - 1)\n        for i in 0..<len(v):\n            if v[i]:\n      \
     \          varor(result.bits[i shr 6],1u shl (i and mask))\n    \n    proc `&`*(x,y:BitSet):BitSet=\n\
     \        result.bits = newseq[uint](min(len(x.bits),len(y.bits)))\n        for\
     \ i in 0..<len(result.bits):\n            result.bits[i] = x.bits[i] and y.bits[i]\n\
-    \    \n    proc `&=`*(x:var BitSet,y:BitSet)=\n        for i in 0..<len(y.bits):\n\
-    \            varand(x.bits[i],y.bits[i])\n        for j in len(y.bits)..<len(x.bits):\n\
-    \            discard x.bits.pop()\n    \n    proc `|`*(x,y:BitSet):BitSet=\n \
-    \       result.bits = newseq[uint](max(len(x.bits),len(y.bits)))\n        if len(y.bits)\
-    \ < len(x.bits):\n            for i in 0..<len(y.bits):\n                result.bits[i]\
-    \ = x.bits[i] or y.bits[i]\n            for i in len(y.bits)..<len(x.bits):\n\
-    \                result.bits[i] = x.bits[i]\n        else:\n            for i\
-    \ in 0..<len(x.bits):\n                result.bits[i] = x.bits[i] or y.bits[i]\n\
-    \            for i in len(x.bits)..<len(y.bits):\n                result.bits[i]\
-    \ = y.bits[i]\n    \n    proc `|=`*(x:var BitSet,y:BitSet)=\n        if len(y.bits)\
-    \ < len(x.bits):\n            for i in 0..<len(y.bits):\n                varor(x.bits[i],y.bits[i])\n\
-    \        else:\n            for i in 0..<len(x.bits):\n                varor(x.bits[i],y.bits[i])\n\
-    \            for i in len(x.bits)..<len(y.bits):\n                x.bits.add(y.bits[i])\n\
+    \    \n    proc `&=`*(x:var BitSet,y:BitSet)=\n        let n = min(len(x.bits),\
+    \ len(y.bits))\n        for i in 0..<n:\n            varand(x.bits[i],y.bits[i])\n\
+    \        while len(x.bits) > n:\n            discard x.bits.pop()\n    \n    proc\
+    \ `|`*(x,y:BitSet):BitSet=\n        result.bits = newseq[uint](max(len(x.bits),len(y.bits)))\n\
+    \        if len(y.bits) < len(x.bits):\n            for i in 0..<len(y.bits):\n\
+    \                result.bits[i] = x.bits[i] or y.bits[i]\n            for i in\
+    \ len(y.bits)..<len(x.bits):\n                result.bits[i] = x.bits[i]\n   \
+    \     else:\n            for i in 0..<len(x.bits):\n                result.bits[i]\
+    \ = x.bits[i] or y.bits[i]\n            for i in len(x.bits)..<len(y.bits):\n\
+    \                result.bits[i] = y.bits[i]\n    \n    proc `|=`*(x:var BitSet,y:BitSet)=\n\
+    \        if len(y.bits) < len(x.bits):\n            for i in 0..<len(y.bits):\n\
+    \                varor(x.bits[i],y.bits[i])\n        else:\n            for i\
+    \ in 0..<len(x.bits):\n                varor(x.bits[i],y.bits[i])\n          \
+    \  for i in len(x.bits)..<len(y.bits):\n                x.bits.add(y.bits[i])\n\
     \    \n    proc `^=`*(x:var BitSet,y:BitSet)=\n        if len(y.bits) < len(x.bits):\n\
     \            for i in 0..<len(y.bits):\n                varxor(x.bits[i],y.bits[i])\n\
     \        else:\n            for i in 0..<len(x.bits):\n                varxor(x.bits[i],y.bits[i])\n\
@@ -61,7 +68,7 @@ data:
     \ shr 6].testBit(idx and 63)\n\n    proc `[]=`*(bitset:var BitSet,idx:Natural,x:bool)=\n\
     \        while len(bitset.bits)-1 < idx shr 6:\n            bitset.bits.add(0u)\n\
     \        if x:\n            bitset.bits[idx shr 6].setBit((idx and 63))\n    \
-    \    else:\n            bitset.bits[idx shr 6].clearBit((idx and 63))"
+    \    else:\n            bitset.bits[idx shr 6].clearBit((idx and 63))\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/bitset.nim
@@ -70,9 +77,11 @@ data:
   - verify/collections/bitset_andpopcnt_test_.nim
   - verify/collections/bitset_test_.nim
   - verify/collections/bitset_test_.nim
-  timestamp: '2026-03-12 21:21:00+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/bitset_test.nim
+  - verify/AI/bitset_test.nim
 documentation_of: cplib/collections/bitset.nim
 layout: document
 redirect_from:

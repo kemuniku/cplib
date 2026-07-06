@@ -28,6 +28,12 @@ data:
     title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/defaultdict_test.nim
+    title: verify/AI/defaultdict_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/defaultdict_test.nim
+    title: verify/AI/defaultdict_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/defaultdict/defaultdict_unit_test.nim
     title: verify/collections/defaultdict/defaultdict_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -51,7 +57,7 @@ data:
     \ default)\n    proc `==`*[K, V](src, dst: DefaultDict[K, V]): bool = src.table\
     \ == dst.table\n    proc `[]=`*[K, V](d: var DefaultDict[K, V], key: K, val: V)\
     \ = d.table[key] = val\n    proc `[]`*[K, V](d: DefaultDict[K, V], key: K): V\
-    \ =\n        if key notin d.table: return d.default()\n        return d.table[key]\n\
+    \ =\n        if key notin d.table: return d.default\n        return d.table[key]\n\
     \    proc `[]`*[K, V](d: var DefaultDict[K, V], key: K): var V =\n        if key\
     \ notin d.table: d.table[key] = d.default\n        return d.table[key]\n    proc\
     \ clear*[K, V](d: var DefaultDict[K, V]) = d.table = initTable[K, V](0)\n    proc\
@@ -84,9 +90,11 @@ data:
   - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
-  timestamp: '2024-04-08 07:44:23+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/defaultdict_test.nim
+  - verify/AI/defaultdict_test.nim
   - verify/collections/defaultdict/defaultdict_unit_test.nim
   - verify/collections/defaultdict/defaultdict_unit_test.nim
 documentation_of: cplib/collections/defaultdict.nim

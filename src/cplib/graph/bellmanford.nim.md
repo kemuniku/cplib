@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,14 +13,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bellmanford_test.nim
+    title: verify/AI/bellmanford_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bellmanford_test.nim
+    title: verify/AI/bellmanford_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -90,18 +96,20 @@ data:
     \ start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =\n        shortest_path_bellmanford_impl(G,\
     \ start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/bellmanford_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim

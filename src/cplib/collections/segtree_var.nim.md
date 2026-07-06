@@ -22,6 +22,12 @@ data:
     title: verify/collections/segtree_var/segtree_xor2_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_var_test.nim
+    title: verify/AI/segtree_var_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_var_test.nim
+    title: verify/AI/segtree_var_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PARS_test.nim
     title: verify/collections/segtree_var/segtree_PARS_test.nim
   - icon: ':heavy_check_mark:'
@@ -133,7 +139,7 @@ data:
     \    declareOperation(`^=`)\n    declareOperation(`&=`)\n    declareOperation(`|=`)\n\
     \    declareOperation(`%=`)\n    declareOperation(`//=`)\n    declareOperation(`>>=`)\n\
     \    declareOperation(`<<=`)\n    declareOperation(`**=`)\n    proc initSegmentTree*[T](v:\
-    \ seq[T], merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]]\
+    \ openArray[T], merge: proc(x, y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]]\
     \ =\n        ## \u30BB\u30B0\u30E1\u30F3\u30C8\u30C4\u30EA\u30FC\u3092\u751F\u6210\
     \u3057\u307E\u3059\u3002\n        ## v\u306B\u5143\u3068\u306A\u308B\u30EA\u30B9\
     \u30C8\u3001merge\u306B\u4E8C\u3064\u306E\u533A\u9593\u3092\u30DE\u30FC\u30B8\u3059\
@@ -148,8 +154,14 @@ data:
     \ default, lastnode+i)\n        for i in countdown(lastnode-1, 1):\n         \
     \   result.arr[i] = initSegmentTreeElem(result.addr, merge(result.arr[2*i].v,\
     \ result.arr[2*i+1].v), i)\n    proc initSegmentTree*[T](n: int, merge: proc(x,\
-    \ y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] = initSegmentTree(newSeqWith(n,\
-    \ default), merge, default)\n    template newSegWith*(V, merge, default: untyped):\
+    \ y: T): T, default: T): SegmentTree[T, SegmentTreeElem[T]] =\n        var lastnode\
+    \ = 1\n        while lastnode < n:\n            lastnode*=2\n        var arr =\
+    \ newSeq[SegmentTreeElem[T]](2*lastnode)\n        result = SegmentTree[T, SegmentTreeElem[T]](default:\
+    \ default, merge: merge, arr: arr, lastnode: lastnode, length: n)\n        for\
+    \ i in 0..<lastnode:\n            result.arr[lastnode+i] = initSegmentTreeElem(result.addr,\
+    \ default, lastnode+i)\n        for i in countdown(lastnode-1, 1):\n         \
+    \   result.arr[i] = initSegmentTreeElem(result.addr, merge(result.arr[2*i].v,\
+    \ result.arr[2*i+1].v), i)\n    template newSegWith*(V, merge, default: untyped):\
     \ untyped =\n        initSegmentTree[typeof(default)](V, proc (l{.inject.}, r{.inject.}:\
     \ typeof(default)): typeof(default) = merge, default)\n    proc max_right*[T](self:\
     \ SegmentTree[T, SegmentTreeElem[T]], l: int, f: proc(l: T): bool): int =\n  \
@@ -182,9 +194,11 @@ data:
   - verify/collections/segtree_var/segtree_xor2_test_.nim
   - verify/collections/segtree_var/segtree_get1item_test_.nim
   - verify/collections/segtree_var/segtree_get1item_test_.nim
-  timestamp: '2024-12-19 23:28:40+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/segtree_var_test.nim
+  - verify/AI/segtree_var_test.nim
   - verify/collections/segtree_var/segtree_PSRC_test.nim
   - verify/collections/segtree_var/segtree_PSRC_test.nim
   - verify/collections/segtree_var/segtree_RMQ_test.nim

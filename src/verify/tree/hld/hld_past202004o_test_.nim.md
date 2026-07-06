@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   - icon: ':heavy_check_mark:'
@@ -13,22 +13,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -67,20 +67,20 @@ data:
     \ false): mx = max(mx, seg.get(l..<r))\n    ans[i] = ai - mx + c\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/segtree.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/constants.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/tree/hld/hld_past202004o_test_.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_past202004o_test_.nim

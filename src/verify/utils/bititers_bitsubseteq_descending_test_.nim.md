@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
   _extendedRequiredBy: []
@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: verify/utils/bititers_bitsubseteq_descending_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:22:34+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/utils/bititers_bitsubseteq_descending_test_.nim

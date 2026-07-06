@@ -20,10 +20,16 @@ data:
   - icon: ':warning:'
     path: verify/collections/rangeset_test_.nim
     title: verify/collections/rangeset_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rangeset_test.nim
+    title: verify/AI/rangeset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rangeset_test.nim
+    title: verify/AI/rangeset_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -54,12 +60,12 @@ data:
     \                self.st.incl((a,l,c))\n            else:\n                self.st.excl((a,b,c))\n\
     \                l = a\n        elif l == b:\n            if c == value:\n   \
     \             self.st.excl((a,b,c))\n                l = a\n    self.st.incl((l,r,value))\n\
-    \nproc get_segment*[T](self:RangeSet[T],x:int):(int,int,int)=\n    #\u3053\u308C\
+    \nproc get_segment*[T](self:RangeSet[T],x:int):(int,int,T)=\n    #\u3053\u308C\
     \u6700\u5927\u5024\u533A\u9593\u304C\u7DE8\u96C6\u3055\u308C\u3066\u3044\u308B\
-    \u3068\u304D\u306B\u30D0\u30B0\u308A\u307E\u3059\n    self.st.le((x,high(int),self.default)).get()"
+    \u3068\u304D\u306B\u30D0\u30B0\u308A\u307E\u3059\n    self.st.le((x,high(int),self.default)).get()\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
@@ -67,9 +73,11 @@ data:
   requiredBy:
   - verify/collections/rangeset_test_.nim
   - verify/collections/rangeset_test_.nim
-  timestamp: '2025-11-08 19:42:23+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/rangeset_test.nim
+  - verify/AI/rangeset_test.nim
 documentation_of: cplib/collections/rangeset.nim
 layout: document
 redirect_from:

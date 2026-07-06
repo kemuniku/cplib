@@ -2,16 +2,28 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avlset_old.nim
     title: cplib/collections/avlset_old.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avlset_old.nim
     title: cplib/collections/avlset_old.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_old_test.nim
+    title: verify/AI/avlset_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_old_test.nim
+    title: verify/AI/avlset_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avltreenode_old_test.nim
+    title: verify/AI/avltreenode_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avltreenode_old_test.nim
+    title: verify/AI/avltreenode_old_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html
@@ -112,8 +124,12 @@ data:
   - cplib/collections/avlset_old.nim
   - cplib/collections/avlset_old.nim
   timestamp: '2025-04-27 18:32:02+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/avlset_old_test.nim
+  - verify/AI/avlset_old_test.nim
+  - verify/AI/avltreenode_old_test.nim
+  - verify/AI/avltreenode_old_test.nim
 documentation_of: cplib/collections/avltreenode_old.nim
 layout: document
 redirect_from:

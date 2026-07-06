@@ -10,6 +10,18 @@ data:
     title: cplib/collections/segtree_beats_template.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_template_test.nim
+    title: verify/AI/segtree_beats_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_template_test.nim
+    title: verify/AI/segtree_beats_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_test.nim
+    title: verify/AI/segtree_beats_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_test.nim
+    title: verify/AI/segtree_beats_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - icon: ':heavy_check_mark:'
@@ -120,6 +132,10 @@ data:
   timestamp: '2025-03-09 17:45:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/segtree_beats_test.nim
+  - verify/AI/segtree_beats_test.nim
+  - verify/AI/segtree_beats_template_test.nim
+  - verify/AI/segtree_beats_template_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
 documentation_of: cplib/collections/segtree_beats.nim

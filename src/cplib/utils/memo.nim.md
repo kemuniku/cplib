@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/memo_test.nim
+    title: verify/AI/memo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/memo_test.nim
+    title: verify/AI/memo_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -45,18 +51,20 @@ data:
     \ argNames:\n            callImpl.add(a)\n\n        # \u30AD\u30E3\u30C3\u30B7\
     \u30E5\u4ED8\u304D\u30E9\u30C3\u30D1\u30FC\n        var wrapperProc = copyNimTree(p)\n\
     \        wrapperProc[4] = newEmptyNode()\n        wrapperProc[6] = quote do:\n\
-    \            let `keyName` = `keyExpr`\n\n            if `keyName` in `cacheName`:\n\
+    \            let `keyName` = `keyExpr`\n\n            if `cacheName`.hasKey(`keyName`):\n\
     \                return `cacheName`[`keyName`]\n\n            result = `callImpl`\n\
     \            `cacheName`[`keyName`] = result\n\n        result = quote do:\n \
     \           `forwardProc`\n            var `cacheName` = initTable[`keyType`,\
-    \ `retType`]()\n            `implProc`\n            `wrapperProc`"
+    \ `retType`]()\n            `implProc`\n            `wrapperProc`\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/memo.nim
   requiredBy: []
-  timestamp: '2026-05-07 18:28:55+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 22:23:54+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/memo_test.nim
+  - verify/AI/memo_test.nim
 documentation_of: cplib/utils/memo.nim
 layout: document
 redirect_from:

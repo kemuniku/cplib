@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/hash_string_test.nim
+    title: verify/AI/hash_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/hash_string_test.nim
+    title: verify/AI/hash_string_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_LCP_test.nim
     title: verify/str/hash_string/hash_string_LCP_test.nim
   - icon: ':heavy_check_mark:'
@@ -133,6 +139,8 @@ data:
   timestamp: '2026-04-15 04:06:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/hash_string_test.nim
+  - verify/AI/hash_string_test.nim
   - verify/str/hash_string/hash_string_Z_algo_test.nim
   - verify/str/hash_string/hash_string_Z_algo_test.nim
   - verify/str/hash_string/hash_string_LCP_test.nim

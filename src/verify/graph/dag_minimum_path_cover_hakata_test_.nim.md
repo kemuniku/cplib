@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
-    path: cplib/graph/dag_minimum_path_cover.nim
-    title: cplib/graph/dag_minimum_path_cover.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/dag_minimum_path_cover.nim
+    title: cplib/graph/dag_minimum_path_cover.nim
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':warning:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
   _extendedRequiredBy: []
@@ -44,16 +44,16 @@ data:
     \    for j in 0..<(len(palindromes)):\n        if i != j:\n            if palindromes[i]\
     \ in palindromes[j]:\n                G.add_edge(i,j)\n\necho G.dag_minimum_path_cover()"
   dependsOn:
-  - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/dag_minimum_path_cover_hakata_test_.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/dag_minimum_path_cover_hakata_test_.nim

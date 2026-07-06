@@ -10,6 +10,12 @@ data:
     title: verify/collections/rollback_uf_abc302ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_unionfind_test.nim
+    title: verify/AI/rollback_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_unionfind_test.nim
+    title: verify/AI/rollback_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/rollbackuf_yosupo_snap_test.nim
     title: verify/collections/rollbackuf_yosupo_snap_test.nim
   - icon: ':heavy_check_mark:'
@@ -67,6 +73,8 @@ data:
   timestamp: '2024-04-30 17:08:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/rollback_unionfind_test.nim
+  - verify/AI/rollback_unionfind_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim

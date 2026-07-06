@@ -8,10 +8,16 @@ data:
   - icon: ':warning:'
     path: verify/collections/hashset_abc336f_test_.nim
     title: verify/collections/hashset_abc336f_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/hashset_test.nim
+    title: verify/AI/hashset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/hashset_test.nim
+    title: verify/AI/hashset_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -39,8 +45,8 @@ data:
     \    proc resize[T](self: var HashSet[T]) =\n        var vlen = self.len.vlen\n\
     \        var vi = newSeq[Node[T]](vlen)\n        self.mask = vlen - 1\n      \
     \  self.len = 0\n        self.fill = 0\n        swap(vi, self.values)\n      \
-    \  for item in vi:\n            if item.state == State.empty: continue\n     \
-    \       var val = item.value\n            self.add_item(val)\n    proc incl*[T](self:\
+    \  for item in vi:\n            if item.state != State.active: continue\n    \
+    \        var val = item.value\n            self.add_item(val)\n    proc incl*[T](self:\
     \ var HashSet[T], val: T) =\n        self.add_item(val)\n        if self.fill.vlen\
     \ > self.values.len: self.resize\n        # if self.fill > self.values.len div\
     \ HASHSET_INCL_RESIZE_RATIO: self.resize\n    proc contains*[T](self: var HashSet[T],\
@@ -58,9 +64,11 @@ data:
   requiredBy:
   - verify/collections/hashset_abc336f_test_.nim
   - verify/collections/hashset_abc336f_test_.nim
-  timestamp: '2024-03-21 07:08:43+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 22:23:54+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/hashset_test.nim
+  - verify/AI/hashset_test.nim
 documentation_of: cplib/collections/hashset.nim
 layout: document
 redirect_from:

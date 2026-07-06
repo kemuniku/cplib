@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
   - icon: ':warning:'
@@ -44,10 +44,22 @@ data:
   - icon: ':warning:'
     path: verify/graph/static/topologicalsort_2_static_test_.nim
     title: verify/graph/static/topologicalsort_2_static_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dag_minimum_path_cover_test.nim
+    title: verify/AI/dag_minimum_path_cover_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dag_minimum_path_cover_test.nim
+    title: verify/AI/dag_minimum_path_cover_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/topologicalsort_test.nim
+    title: verify/AI/topologicalsort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/topologicalsort_test.nim
+    title: verify/AI/topologicalsort_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -84,9 +96,13 @@ data:
   - verify/graph/dynamic/topologicalsort_1_test_.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/topologicalsort_test.nim
+  - verify/AI/topologicalsort_test.nim
 documentation_of: cplib/graph/topologicalsort.nim
 layout: document
 redirect_from:

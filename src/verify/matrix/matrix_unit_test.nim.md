@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -63,13 +63,13 @@ data:
   dependsOn:
   - cplib/matrix/matops.nim
   - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 20:50:59+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/matrix/matrix_unit_test.nim
 layout: document

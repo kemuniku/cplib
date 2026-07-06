@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
-  - icon: ':warning:'
-    path: cplib/str/merged_static_string.nim
-    title: cplib/str/merged_static_string.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/merged_static_string.nim
+    title: cplib/str/merged_static_string.nim
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   - icon: ':warning:'
@@ -34,62 +34,86 @@ data:
     title: verify/str/static_string/static_string_count_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/collections/staticRMQ_test.nim
-    title: verify/collections/staticRMQ_test.nim
+    path: verify/AI/compressed_trie_test.nim
+    title: verify/AI/compressed_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_trie_test.nim
+    title: verify/AI/compressed_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merged_static_string_test.nim
+    title: verify/AI/merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merged_static_string_test.nim
+    title: verify/AI/merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/staticRMQ_test.nim
+    title: verify/AI/staticRMQ_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/staticRMQ_test.nim
+    title: verify/AI/staticRMQ_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_test.nim
+    title: verify/AI/static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_test.nim
+    title: verify/AI/static_string_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/staticRMQ_test.nim
     title: verify/collections/staticRMQ_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/staticRMQ_test.nim
+    title: verify/collections/staticRMQ_test.nim
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://maspypy.com/library-checker-static-rmq
@@ -103,11 +127,11 @@ data:
     \ = 1\n    import sequtils,bitops\n    # https://maspypy.com/library-checker-static-rmq\n\
     \    type StaticRMQ*[T] = object\n        table : seq[seq[T]]\n        size :\
     \ int\n        prefix_product : seq[T]\n        suffix_product : seq[T]\n    \
-    \    V : seq[T]\n    proc initRMQ*[T](V:seq[T]):StaticRMQ[T]=\n        result.V\
-    \ = V\n        if len(V) == 0:\n            return StaticRMQ[T](size:0)\n    \
-    \    const B = 16\n        const sft = 4\n        const mask = 0b1111\n      \
-    \  result.size = len(V)\n        result.prefix_product = newseq[T](len(V))\n \
-    \       result.suffix_product = newseq[T](len(V))\n        for i in 0..<len(V):\n\
+    \    V : seq[T]\n    proc initRMQ*[T](V:openArray[T]):StaticRMQ[T]=\n        result.V\
+    \ = @V\n        if len(V) == 0:\n            return StaticRMQ[T](size:0)\n   \
+    \     const B = 16\n        const sft = 4\n        const mask = 0b1111\n     \
+    \   result.size = len(V)\n        result.prefix_product = newseq[T](len(V))\n\
+    \        result.suffix_product = newseq[T](len(V))\n        for i in 0..<len(V):\n\
     \            if (i and mask) == 0:\n                result.prefix_product[i] =\
     \ V[i]\n            else:\n                result.prefix_product[i] = min(result.prefix_product[i-1],V[i])\n\
     \        result.suffix_product[^1] = V[^1]\n        for i in countdown(len(V)-2,0,1):\n\
@@ -131,7 +155,7 @@ data:
     \                    return min(RMQ.table[k][a+1],min(RMQ.suffix_product[l],RMQ.prefix_product[r]))\n\
     \            else:\n                return min(RMQ.suffix_product[l],RMQ.prefix_product[r])\n\
     \        \n        result = RMQ.V[l]\n        for i in (l+1)..r:\n           \
-    \ if RMQ.V[i] < result:\n                result = RMQ.V[i]\n        return result"
+    \ if RMQ.V[i] < result:\n                result = RMQ.V[i]\n        return result\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/staticRMQ.nim
@@ -146,9 +170,17 @@ data:
   - cplib/str/compressed_trie.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/merged_static_string.nim
-  timestamp: '2026-02-11 05:00:27+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/static_string_test.nim
+  - verify/AI/static_string_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/staticRMQ_test.nim
+  - verify/AI/staticRMQ_test.nim
   - verify/collections/staticRMQ_test.nim
   - verify/collections/staticRMQ_test.nim
   - verify/str/static_string/static_string_LCS_test.nim

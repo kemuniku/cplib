@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/binary_trie_test.nim
+    title: verify/AI/binary_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/binary_trie_test.nim
+    title: verify/AI/binary_trie_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/binary_trie_test.nim
     title: verify/collections/binary_trie_test.nim
   - icon: ':heavy_check_mark:'
@@ -100,6 +106,8 @@ data:
   timestamp: '2026-04-05 16:17:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/binary_trie_test.nim
+  - verify/AI/binary_trie_test.nim
   - verify/collections/binary_trie_test.nim
   - verify/collections/binary_trie_test.nim
 documentation_of: cplib/collections/binary_trie.nim

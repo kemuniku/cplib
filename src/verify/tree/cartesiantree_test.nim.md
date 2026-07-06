@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/cartesiantree.nim
     title: cplib/tree/cartesiantree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/cartesiantree.nim
     title: cplib/tree/cartesiantree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/cartesian_tree
     links:
@@ -49,8 +49,8 @@ data:
   isVerificationFile: true
   path: verify/tree/cartesiantree_test.nim
   requiredBy: []
-  timestamp: '2026-02-11 05:05:44+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/cartesiantree_test.nim
 layout: document

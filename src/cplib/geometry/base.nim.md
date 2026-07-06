@@ -52,6 +52,48 @@ data:
     title: verify/geometry/convex_hull_abc286ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/angle_test.nim
+    title: verify/AI/angle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/angle_test.nim
+    title: verify/AI/angle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ccw_test.nim
+    title: verify/AI/ccw_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ccw_test.nim
+    title: verify/AI/ccw_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/distance_test.nim
+    title: verify/AI/distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/distance_test.nim
+    title: verify/AI/distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/geometry_base_test.nim
+    title: verify/AI/geometry_base_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/geometry_base_test.nim
+    title: verify/AI/geometry_base_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/intersect_test.nim
+    title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/intersect_test.nim
+    title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/projection_test.nim
+    title: verify/AI/projection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/projection_test.nim
+    title: verify/AI/projection_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
   - icon: ':heavy_check_mark:'
@@ -223,8 +265,8 @@ data:
     \ y) or (x > y)\n    proc geometry_ge*(x: int, y: SomeFloat): bool = geometry_ge(float(x),\
     \ y)\n    proc geometry_ge*(x: SomeFloat, y: int): bool = geometry_ge(x, float(y))\n\
     \    proc geometry_le*[T, S](x: T, y: S): bool = geometry_eq(x, y) or (x < y)\n\
-    \    proc geometry_le*(x: int, y: SomeFloat): bool = geometry_eq(float(x), y)\n\
-    \    proc geometry_le*(x: SomeFloat, y: int): bool = geometry_eq(x, float(y))\n\
+    \    proc geometry_le*(x: int, y: SomeFloat): bool = geometry_le(float(x), y)\n\
+    \    proc geometry_le*(x: SomeFloat, y: int): bool = geometry_le(x, float(y))\n\
     \    proc geometry_gt*[T, S](x: T, y: S): bool = not geometry_le(x, y)\n    proc\
     \ geometry_lt*[T, S](x: T, y: S): bool = not geometry_ge(x, y)\n    proc `<`*[T](p,\
     \ q: Point[T]): bool =\n        if geometry_eq(p.x, q.x): return geometry_lt(p.y,\
@@ -259,7 +301,7 @@ data:
     \ = object\n        s*, t*: Point[T]\n    proc initSegment*[T](s, t: Point[T]):\
     \ Segment[T] =\n        ##2\u70B9 (s, t) \u3092\u7D50\u3076\u7DDA\u5206\u306E\u521D\
     \u671F\u5316\n        (assert s != t; return Segment[T](s: s, t: t))\n    converter\
-    \ toLine*[T](s: Segment[T]): Line[T] = initLine(s.s, s.t)\n\n"
+    \ toLine*[T](s: Segment[T]): Line[T] = initLine(s.s, s.t)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/geometry/base.nim
@@ -280,9 +322,23 @@ data:
   - cplib/geometry/angle.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/ccw_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/projection_test.nim
+  - verify/AI/projection_test.nim
+  - verify/AI/distance_test.nim
+  - verify/AI/distance_test.nim
+  - verify/AI/geometry_base_test.nim
+  - verify/AI/geometry_base_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim

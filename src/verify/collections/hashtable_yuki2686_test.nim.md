@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/hashtable.nim
     title: cplib/collections/hashtable.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   _extendedRequiredBy: []
@@ -51,14 +51,14 @@ data:
     \        pos += 1\n    var r = c.upperBound(q - y)\n    ans = max(ans, seg.get(0..<r)\
     \ + v)\necho ans\n"
   dependsOn:
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/hashtable.nim
   - cplib/collections/hashtable.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/collections/hashtable_yuki2686_test.nim
   requiredBy: []
-  timestamp: '2024-12-19 23:19:11+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/hashtable_yuki2686_test.nim

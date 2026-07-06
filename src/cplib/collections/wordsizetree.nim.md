@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/wordsizetree_test.nim
+    title: verify/AI/wordsizetree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/wordsizetree_test.nim
+    title: verify/AI/wordsizetree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/word_size_tree_test.nim
     title: verify/collections/word_size_tree_test.nim
   - icon: ':heavy_check_mark:'
@@ -23,7 +29,7 @@ data:
   code: "when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:\n    const CPLIB_COLLECTIONS_WORD_SIZE_TREE*\
     \ = 1\n    import bitops\n    type WordsizeTree = object\n        A0 : uint\n\
     \        A1 : array[64,uint]\n        A2 : array[64*64,uint]\n        A3 : array[64*64*64,uint]\n\
-    \n    proc initWordsizeTree*():WordsizeTree=\n        discard\n\n    proc initWordsizeTree*(v:seq[bool]):WordsizeTree=\n\
+    \n    proc initWordsizeTree*():WordsizeTree=\n        discard\n\n    proc initWordsizeTree*(v:openArray[bool]):WordsizeTree=\n\
     \        for i in 0..<len(v):\n            if v[i]: result.A3[i shr 6] = result.A3[i\
     \ shr 6] or (1u shl (i and(0b111111)))\n        for i in 0..<((len(v)+(63)) shr\
     \ 6):\n            if result.A3[i] != 0:result.A2[i shr 6] = result.A2[i shr 6]\
@@ -77,14 +83,16 @@ data:
     \ x = x shr 6\n        t = self.A0 and (bitnot(0u) shr y)\n        if y != 64\
     \ and t != 0:\n            x = (t.fastLog2())\n            x = (x shl 6) or (self.A1[x].fastLog2())\n\
     \            x = (x shl 6) or (self.A2[x].fastLog2())\n            return (x shl\
-    \ 6) or (self.A3[x].fastLog2())\n        return -1"
+    \ 6) or (self.A3[x].fastLog2())\n        return -1\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/wordsizetree.nim
   requiredBy: []
-  timestamp: '2024-09-15 02:30:26+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/wordsizetree_test.nim
+  - verify/AI/wordsizetree_test.nim
   - verify/collections/word_size_tree_test.nim
   - verify/collections/word_size_tree_test.nim
 documentation_of: cplib/collections/wordsizetree.nim

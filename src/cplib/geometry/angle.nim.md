@@ -34,6 +34,24 @@ data:
     title: verify/geometry/convex_hull_abc286ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/angle_test.nim
+    title: verify/AI/angle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/angle_test.nim
+    title: verify/AI/angle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/distance_test.nim
+    title: verify/AI/distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/distance_test.nim
+    title: verify/AI/distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/intersect_test.nim
+    title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/intersect_test.nim
+    title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - icon: ':heavy_check_mark:'
@@ -92,10 +110,10 @@ data:
     \ = 4;\n    const ANGLE_180_270* = -3;\n    const ANGLE_270* = -2;\n    const\
     \ ANGLE_270_360* = -1;\n\n    proc angle*[T](p1, p2: Point[T]): int =\n      \
     \  ##p1, p2\u306E\u306A\u3059\u89D2\u3092\u516B\u65B9\u4F4D\u3067\u8FD4\u3059\n\
-    \        proc iszero(p: Point[T]): bool = geometry_eq(p1.x, 0) and geometry_eq(p1.y,\
+    \        proc iszero(p: Point[T]): bool = geometry_eq(p.x, 0) and geometry_eq(p.y,\
     \ 0)\n        assert (not iszero(p1)) and (not iszero(p2))\n        var d = dot(p1,\
     \ p2)\n        var c = cross(p1, p2)\n        if geometry_eq(c, 0):\n        \
-    \    if geometry_gt(c, 0): return ANGLE_0\n            else: return ANGLE_180\n\
+    \    if geometry_gt(d, 0): return ANGLE_0\n            else: return ANGLE_180\n\
     \        if geometry_eq(d, 0):\n            if geometry_gt(c, 0): return ANGLE_90\n\
     \            else: return ANGLE_270\n        if geometry_gt(d, 0) and geometry_gt(c,\
     \ 0): return ANGLE_0_90\n        if geometry_lt(d, 0) and geometry_gt(c, 0): return\
@@ -122,9 +140,15 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/angle_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/distance_test.nim
+  - verify/AI/distance_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim

@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lcp_naive_test.nim
+    title: verify/AI/lcp_naive_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lcp_naive_test.nim
+    title: verify/AI/lcp_naive_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -22,8 +28,10 @@ data:
   path: cplib/str/lcp_naive.nim
   requiredBy: []
   timestamp: '2026-07-05 23:03:18+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/lcp_naive_test.nim
+  - verify/AI/lcp_naive_test.nim
 documentation_of: cplib/str/lcp_naive.nim
 layout: document
 redirect_from:

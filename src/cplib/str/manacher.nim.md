@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/manacher_test.nim
+    title: verify/AI/manacher_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/manacher_test.nim
+    title: verify/AI/manacher_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
   - icon: ':heavy_check_mark:'
@@ -59,6 +65,8 @@ data:
   timestamp: '2026-04-05 17:46:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/manacher_test.nim
+  - verify/AI/manacher_test.nim
   - verify/str/manacher_test.nim
   - verify/str/manacher_test.nim
   - verify/str/get_palindromes_test.nim

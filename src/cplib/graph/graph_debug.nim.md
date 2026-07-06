@@ -1,17 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_debug_test.nim
+    title: verify/AI/graph_debug_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_debug_test.nim
+    title: verify/AI/graph_debug_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://hello-world-494ec.firebaseapp.com/?format=normal&indexed={indexed}&weighted=false&directed=false&data={len(G)}+{M}
@@ -75,9 +81,11 @@ data:
   isVerificationFile: false
   path: cplib/graph/graph_debug.nim
   requiredBy: []
-  timestamp: '2026-07-06 01:32:55+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/graph_debug_test.nim
+  - verify/AI/graph_debug_test.nim
 documentation_of: cplib/graph/graph_debug.nim
 layout: document
 redirect_from:

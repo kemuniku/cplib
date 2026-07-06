@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/xor_basis_test.nim
+    title: verify/AI/xor_basis_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/xor_basis_test.nim
+    title: verify/AI/xor_basis_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -16,10 +22,10 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_XOR_BASIS:\n    const CPLIB_COLLECTION_XOR_BASIS*\
     \ = 1\n    import algorithm\n\n    type XorBasis* = ref object\n        basis*\
-    \ : seq[int]\n\n    proc initXorBasis*(A:seq[int]):XorBasis=\n        result =\
-    \ XorBasis()\n        for i in 0..<len(A):\n            var e = A[i]\n       \
-    \     for b in result.basis:\n                if (e xor b) < e:\n            \
-    \        e = e xor b\n            if e != 0:\n                for j in 0..<len(result.basis):\n\
+    \ : seq[int]\n\n    proc initXorBasis*(A:openArray[int]):XorBasis=\n        result\
+    \ = XorBasis()\n        for i in 0..<len(A):\n            var e = A[i]\n     \
+    \       for b in result.basis:\n                if (e xor b) < e:\n          \
+    \          e = e xor b\n            if e != 0:\n                for j in 0..<len(result.basis):\n\
     \                    if (e xor result.basis[j]) < result.basis[j]:\n         \
     \               result.basis[j] = result.basis[j] xor e\n                result.basis.add(e)\n\
     \        result.basis.sort()\n\n    proc initXorBasis*():XorBasis=\n        result\
@@ -67,14 +73,17 @@ data:
     -1\u3092\u8FD4\u3059\u3002\n        if k >= (1 shl len(self.basis)):\n       \
     \     return -1\n        \n        var v = self.xor_min(x) xor x\n        for\
     \ i in countdown(len(self.basis)-1,0,1):\n            if (v xor self.basis[i])\
-    \ < v:\n                v = v xor self.basis[i]\n        return v xor x\n\n"
+    \ < v:\n                v = v xor self.basis[i]\n        return (v xor self.kth_smallest(k))\
+    \ xor x\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/xor_basis.nim
   requiredBy: []
-  timestamp: '2026-04-05 16:19:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/xor_basis_test.nim
+  - verify/AI/xor_basis_test.nim
 documentation_of: cplib/math/xor_basis.nim
 layout: document
 redirect_from:
