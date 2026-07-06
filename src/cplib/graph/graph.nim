@@ -195,10 +195,10 @@ when not declared CPLIB_GRAPH_GRAPH:
         result.graph = initWeightedDirectedGraph(len(V),S)
         result.v = @V
 
-    proc add_edge*[T](g: var UnWeightedTableGraph[T],u,v:int)=
+    proc add_edge*[T](g: var UnWeightedTableGraph[T],u,v:T)=
         g.graph.add_edge(g.toi[u],g.toi[v])
 
-    proc add_edge*[T,S](g: var WeightedTableGraph[T,S],u,v:int,cost:S)=
+    proc add_edge*[T,S](g: var WeightedTableGraph[T,S],u,v:T,cost:S)=
         g.graph.add_edge(g.toi[u],g.toi[v],cost)
 
     iterator `[]`*[T,S](g: WeightedDirectedTableGraph[T,S] or WeightedUnDirectedTableGraph[T,S], x: T): (T, S) = 

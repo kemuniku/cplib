@@ -42,8 +42,8 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc geometry_ge*(x: int, y: SomeFloat): bool = geometry_ge(float(x), y)
     proc geometry_ge*(x: SomeFloat, y: int): bool = geometry_ge(x, float(y))
     proc geometry_le*[T, S](x: T, y: S): bool = geometry_eq(x, y) or (x < y)
-    proc geometry_le*(x: int, y: SomeFloat): bool = geometry_eq(float(x), y)
-    proc geometry_le*(x: SomeFloat, y: int): bool = geometry_eq(x, float(y))
+    proc geometry_le*(x: int, y: SomeFloat): bool = geometry_le(float(x), y)
+    proc geometry_le*(x: SomeFloat, y: int): bool = geometry_le(x, float(y))
     proc geometry_gt*[T, S](x: T, y: S): bool = not geometry_le(x, y)
     proc geometry_lt*[T, S](x: T, y: S): bool = not geometry_ge(x, y)
     proc `<`*[T](p, q: Point[T]): bool =
@@ -98,4 +98,3 @@ when not declared CPLIB_GEOMETRY_BASE:
         ##2点 (s, t) を結ぶ線分の初期化
         (assert s != t; return Segment[T](s: s, t: t))
     converter toLine*[T](s: Segment[T]): Line[T] = initLine(s.s, s.t)
-

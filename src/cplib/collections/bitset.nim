@@ -25,9 +25,10 @@ when not declared CPLIB_COLLECTIONS_BITSET:
             result.bits[i] = x.bits[i] and y.bits[i]
     
     proc `&=`*(x:var BitSet,y:BitSet)=
-        for i in 0..<len(y.bits):
+        let n = min(len(x.bits), len(y.bits))
+        for i in 0..<n:
             varand(x.bits[i],y.bits[i])
-        for j in len(y.bits)..<len(x.bits):
+        while len(x.bits) > n:
             discard x.bits.pop()
     
     proc `|`*(x,y:BitSet):BitSet=

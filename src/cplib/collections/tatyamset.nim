@@ -113,7 +113,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
         if i < 0:
             for b in countdown(len(self.arr)-1, 0, 1):
                 i += len(self.arr[b])
-                if i >= 0: return self.innerpop(not b, i)
+                if i >= 0: return self.innerpop(b, i)
         else:
             for b in 0..<len(self.arr):
                 if i < len(self.arr[b]): return self.innerpop(b, i)

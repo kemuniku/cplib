@@ -3,7 +3,7 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
     import cplib/graph/graph
     import cplib/utils/constants
     import cplib/graph/restore_shortest_path_from_prev
-    import std/heapqueue, macros
+    import std/heapqueue, macros, algorithm
     proc restore_dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =
         var
             queue = initHeapQueue[(T, int)]()

@@ -56,7 +56,7 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         if l == self.len: return self.len
         var sm = self.e
         let bidx_left = (l div self.blocksize)
-        for i in l..<(bidx_left+1)*self.blocksize:
+        for i in l..<min((bidx_left+1)*self.blocksize, self.len):
             if not f(sm + self.arr[i]):
                 return i
             else:
@@ -78,15 +78,15 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         assert f(self.e)
         if r == 0: return 0
         var sm = self.e
-        let bidx_right = (r div self.blocksize)
-        for i in countdown(r,(bidx_right)*self.blocksize):
+        let bidx_right = ((r-1) div self.blocksize)
+        for i in countdown(r-1, bidx_right*self.blocksize):
             if not f(sm + self.arr[i]):
                 return i+1
             else:
                 sm = sm + self.arr[i]
-        for bi in countdown((bidx_right-1),0):
+        for bi in countdown(bidx_right-1, 0):
             if not f(sm + self.blockvalue[bi]):
-                for i in countdown((bi)*self.blocksize+1,bi*self.blocksize):
+                for i in countdown(min((bi+1)*self.blocksize, self.len)-1, bi*self.blocksize):
                     if i notin 0..<len(self.arr):
                         return i+1
                     if not f(sm + self.arr[i]):

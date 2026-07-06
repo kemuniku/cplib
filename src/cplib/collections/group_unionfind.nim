@@ -64,4 +64,4 @@ when not declared CPLIB_COLLECTIONS_UNIONFIND:
         var x = self.root(x)
         return self.edge_cnt[x] >= self.siz(x)
     proc copy*(self:UnionFind):UnionFind=
-        result = UnionFind(count: self.count, par_or_siz: self.par_or_siz,next:self.next)
+        result = UnionFind(count: self.count, par_or_siz: self.par_or_siz, next: self.next, edge_cnt: self.edge_cnt)

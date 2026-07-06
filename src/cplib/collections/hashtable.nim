@@ -50,11 +50,11 @@ when not declared CPLIB_COLLECTIONS_HASHTABLE:
         self.fill = 0
         swap(vi, self.values)
         for item in vi:
-            if item.state == State.empty: continue
+            if item.state != State.active: continue
             var (key, val) = item.value
             self.add_item(key, val)
     proc incl*[K, V](self: var HashTable[K, V], val: (K, V)) =
-        self.add_item(val)
+        self.add_item(val[0], val[1])
         if self.fill.vlen > self.values.len: self.resize
         # if self.fill > self.values.len div HASHSET_INCL_RESIZE_RATIO: self.resize
     proc contains*[K, V](self: var HashTable[K, V], key: K): bool = (self.values[self.find(key)].state == State.active)
@@ -69,6 +69,9 @@ when not declared CPLIB_COLLECTIONS_HASHTABLE:
         return self.values[pos].value[1]
     proc `[]=`*[K, V](self: var HashTable[K, V], key: K, val: V) =
         var pos = self.find(key)
+        if self.values[pos].state == State.active:
+            self.values[pos].value[1] = val
+            return
         self.values[pos].value = (key, val)
         self.values[pos].state = State.active
         self.len += 1
