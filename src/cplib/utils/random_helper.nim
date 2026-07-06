@@ -153,7 +153,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
 
     proc random_simple_graph*(n,m:int):UnWeightedUnDirectedGraph=
         ## ランダムな単純グラフを作成。
-        assert m <= n*(n-1)
+        assert m <= n*(n-1) div 2
         result = initUnWeightedUnDirectedGraph(n)
         if n*(n-1) <= 10_000_000:
             var tmp : seq[(int,int)]
