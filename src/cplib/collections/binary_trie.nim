@@ -1,13 +1,12 @@
 when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
     const CPLIB_COLLECTIONS_BINARY_TRIE* = 1
-    type BinaryTrieNode = ref object
+    type BinaryTrieNode {.acyclic.} = ref object
         zero:BinaryTrieNode
         one:BinaryTrieNode
         value : int
     type BinaryTrie* = object
         root : BinaryTrieNode
         h: int
-
 
     proc initBineryTrie*(h:int):BinaryTrie=
         return BinaryTrie(root:BinaryTrieNode(),h:h)
