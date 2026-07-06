@@ -5,4 +5,10 @@ import cplib/str/lcs
 
 assert LCS(@[1, 3, 4, 1], @[3, 4, 1, 2]) == 3
 assert LCS("abcbdab", "bdcaba") == 4
+assert LCS("", "abc") == 0
+assert LCS("abc", "") == 0
+assert LCS("", "") == 0
 assert restoreLCS(@['a', 'b', 'c', 'b', 'd', 'a', 'b'], @['b', 'd', 'c', 'a', 'b', 'a']) == @['b', 'c', 'b', 'a']
+assert restoreLCS("", "abc") == newSeq[char](0)
+assert restoreLCS("abc", "") == newSeq[char](0)
+assert restoreLCS("", "") == newSeq[char](0)
