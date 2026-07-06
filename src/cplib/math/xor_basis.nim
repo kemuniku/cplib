@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_XOR_BASIS:
-    const CPLIB_COLLECTION_XOR_BASIS* = 1
+when not declared CPLIB_MATH_XOR_BASIS:
+    const CPLIB_MATH_XOR_BASIS* = 1
     import algorithm
 
     type XorBasis* = ref object

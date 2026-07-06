@@ -1,5 +1,5 @@
 when not declared CPLIB_UTILS_LIS:
-    const COMPETITIVE_UTILS_LIS* = 1
+    const CPLIB_UTILS_LIS* = 1
     import algorithm
     proc lis*[T](a: openArray[T]): int =
         var dp = newSeq[T]()

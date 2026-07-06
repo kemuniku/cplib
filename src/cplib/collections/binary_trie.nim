@@ -1,5 +1,5 @@
 when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
-    const CPLIB_COLLECTION_BINARY_TRIE* = 1
+    const CPLIB_COLLECTIONS_BINARY_TRIE* = 1
     type BinaryTrieNode {.acyclic.} = ref object
         zero:BinaryTrieNode
         one:BinaryTrieNode

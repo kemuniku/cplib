@@ -10,23 +10,11 @@ when not declared CPLIB_MATH_FLOAT128:
     proc `-=`*(x: var float128, y: float128) {.importcpp: "((#) -= (#))", nodecl.}
     proc `*=`*(x: var float128, y: float128) {.importcpp: "((#) *= (#))", nodecl.}
     proc `/=`*(x: var float128, y: float128) {.importcpp: "((#) /= (#))", nodecl.}
-    proc `mod=`*(x: var float128, y: float128) {.importcpp: "((#) %= (#))", nodecl.}
-    proc `&=`*(x: var float128, y: float128) {.importcpp: "((#) &= (#))", nodecl.}
-    proc `|=`*(x: var float128, y: float128) {.importcpp: "((#) |= (#))", nodecl.}
-    proc `^=`*(x: var float128, y: float128) {.importcpp: "((#) ^= (#))", nodecl.}
-    proc `<<=`*(x: var float128, y: float128) {.importcpp: "((#) <<= (#))", nodecl.}
-    proc `>>=`*(x: var float128, y: float128) {.importcpp: "((#) >>= (#))", nodecl.}
 
     proc `+`*(x, y: float128): float128 = (result = x; result += y)
     proc `-`*(x, y: float128): float128 = (result = x; result -= y)
     proc `*`*(x, y: float128): float128 = (result = x; result *= y)
     proc `/`*(x, y: float128): float128 = (result = x; result /= y)
-    proc `mod`*(x, y: float128): float128 = (result = x; result.mod= y)
-    proc `&`*(x, y: float128): float128 = (result = x; result &= y)
-    proc `|`*(x, y: float128): float128 = (result = x; result |= y)
-    proc `^`*(x, y: float128): float128 = (result = x; result ^= y)
-    proc `<<`*(x, y: float128): float128 = (result = x; result <<= y)
-    proc `>>`*(x, y: float128): float128 = (result = x; result >>= y)
 
     proc `>`*(x, y: float128): bool {.importcpp: "((#) > (#))", nodecl.}
     proc `>=`*(x, y: float128): bool {.importcpp: "((#) >= (#))", nodecl.}

@@ -1,5 +1,5 @@
-when not declared CPLIB_GRAPH_BIPATITE_GRAPH:
-    const CPLIB_GRAPH_BIPATITE_GRAPH* = 1
+when not declared CPLIB_GRAPH_BIPARTITE_GRAPH:
+    const CPLIB_GRAPH_BIPARTITE_GRAPH* = 1
     import cplib/graph/graph
     import sequtils
     proc is_bipartite_graph*(G:UnDirectedGraph):bool=
