@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rolling_hash_2d_test.nim
+    title: verify/AI/rolling_hash_2d_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rolling_hash_2d_test.nim
+    title: verify/AI/rolling_hash_2d_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -51,14 +57,14 @@ data:
     \      H : int\n        W : int\n\n    type HashMatrix[T] = object\n        base\
     \ : HashMatrixBase[T]\n        i : int\n        j : int\n        H : int\n   \
     \     W : int\n\n    type HashMatrixRow[T] = object\n        HM : HashMatrix[T]\n\
-    \        i : int\n\n    proc initHashMatrixBase[T](x:seq[seq[T]]):HashMatrixBase[T]=\n\
+    \        i : int\n\n    proc initHashMatrixBase[T](x:openArray[seq[T]]):HashMatrixBase[T]=\n\
     \        var H = len(x)\n        var W : int\n        if H == 0:\n           \
     \ W = 0\n        else:\n            W = len(x[0])\n        var hash = newseqwith(H+1,newseqwith(W+1,0u))\n\
     \        \n        for i in 0..<H:\n            for j in 0..<W:\n            \
     \    hash[i+1][j+1] = mul(mul(uint(x[i][j]),base_powi(i)).calc_mod(),base_powj(j)).calc_mod()\n\
     \        for i in 0..<H:\n            for j in 0..<W:\n                hash[i+1][j+1]\
     \ = (hash[i+1][j+1]+((hash[i][j+1] + hash[i+1][j]).calc_mod() + RH_MOD - hash[i][j]).calc_mod()).calc_mod()\n\
-    \        return HashMatrixBase[T](matrix:x,hash:hash,H:H,W:W)\n\n    proc initHashMartix*[T](x:seq[seq[T]]):HashMatrix[T]=\n\
+    \        return HashMatrixBase[T](matrix: @x,hash:hash,H:H,W:W)\n\n    proc initHashMartix*[T](x:openArray[seq[T]]):HashMatrix[T]=\n\
     \        var base = initHashMatrixBase[T](x)\n        return HashMatrix[T](base:base,i:0,j:0,H:base.H,W:base.W)\n\
     \n    proc get*[T](HM:HashMatrix[T],islice:HSlice[int,int],jslice:HSlice[int,int]):HashMatrix[T]=\n\
     \        var i = HM.i + islice.a\n        var j = HM.j + jslice.a\n        var\
@@ -76,9 +82,11 @@ data:
   isVerificationFile: false
   path: cplib/matrix/rolling_hash_2d.nim
   requiredBy: []
-  timestamp: '2025-02-07 19:33:27+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/rolling_hash_2d_test.nim
+  - verify/AI/rolling_hash_2d_test.nim
 documentation_of: cplib/matrix/rolling_hash_2d.nim
 layout: document
 redirect_from:

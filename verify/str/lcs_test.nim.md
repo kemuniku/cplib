@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/lcs.nim
     title: cplib/str/lcs.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/lcs.nim
     title: cplib/str/lcs.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C
     links:
@@ -32,8 +32,8 @@ data:
   isVerificationFile: true
   path: verify/str/lcs_test.nim
   requiredBy: []
-  timestamp: '2026-02-20 16:40:08+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-07 07:45:03+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/str/lcs_test.nim
 layout: document

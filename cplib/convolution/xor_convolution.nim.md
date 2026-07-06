@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/xor_convolution_test.nim
+    title: verify/AI/xor_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/xor_convolution_test.nim
+    title: verify/AI/xor_convolution_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/xor_convolution_test.nim
     title: verify/convolution/xor_convolution_test.nim
   - icon: ':heavy_check_mark:'
@@ -38,6 +44,8 @@ data:
   timestamp: '2025-03-09 17:38:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/xor_convolution_test.nim
+  - verify/AI/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim
 documentation_of: cplib/convolution/xor_convolution.nim

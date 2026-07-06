@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://yukicoder.me/problems/no/2156
     links:
@@ -52,8 +52,8 @@ data:
   isVerificationFile: true
   path: verify/matrix/matrix_zoistring_test.nim
   requiredBy: []
-  timestamp: '2024-03-29 02:44:59+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/matrix/matrix_zoistring_test.nim
 layout: document

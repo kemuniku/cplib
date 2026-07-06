@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -25,17 +25,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/random_helper_test.nim
+    title: verify/AI/random_helper_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/random_helper_test.nim
+    title: verify/AI/random_helper_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://kanpurin.hatenablog.com/entry/2023/02/20/184752
@@ -78,7 +84,7 @@ data:
     \              check += 1\n                M -= 1\n            assert check >=\
     \ 0\n        assert check == 0\n\n    proc random_parenthesis_string*(n:int):string=\n\
     \        return random_parenthesis_sequence(n).mapit(\").(\"[1+it]).join(\"\"\
-    )\n\n    proc make_binary_tree_from_sequence*(PS:seq[int]):UnWeightedUnDirectedGraph=\n\
+    )\n\n    proc make_binary_tree_from_sequence*(PS:openArray[int]):UnWeightedUnDirectedGraph=\n\
     \        ## \u62EC\u5F27\u5217\u304B\u3089\u4E8C\u5206\u6728\u3092\u5FA9\u5143\
     \n        var n = len(PS) div 2\n        var stack : seq[int]\n        var memo\
     \ = newseqwith(2*n,-1)\n        for i in 0..<2*n:\n            if PS[i] == 1:\n\
@@ -156,24 +162,26 @@ data:
     \u307E\u308C\u308B\u6587\u5B57\u304B\u3089\u306A\u308B\u9577\u3055n\u306E\u6587\
     \u5B57\u5217\u3092\u4E00\u69D8\u30E9\u30F3\u30C0\u30E0\u306B\u8FD4\u3059\n   \
     \     assert n >= 0\n        assert s.len >= 1\n        for i in 0..<n:\n    \
-    \        result.add(s[rand(0..<len(s))])\n        return result"
+    \        result.add(s[rand(0..<len(s))])\n        return result\n"
   dependsOn:
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
   - cplib/graph/graph.nim
   - cplib/math/inner_math.nim
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/random_helper_test.nim
+  - verify/AI/random_helper_test.nim
 documentation_of: cplib/utils/random_helper.nim
 layout: document
 redirect_from:

@@ -32,10 +32,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':warning:'
@@ -63,6 +63,24 @@ data:
     path: verify/math/factorize_tuple_abc324b_test_.nim
     title: verify/math/factorize_tuple_abc324b_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/divisor_test.nim
+    title: verify/AI/divisor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/divisor_test.nim
+    title: verify/AI/divisor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primefactor_test.nim
+    title: verify/AI/primefactor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primefactor_test.nim
+    title: verify/AI/primefactor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
@@ -111,13 +129,13 @@ data:
     \ result[p] += 1\n            else: result[p] = 1\n\n    proc primefactor_tuple*(n:\
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
@@ -137,6 +155,12 @@ data:
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primefactor_test.nim
+  - verify/AI/primefactor_test.nim
+  - verify/AI/divisor_test.nim
+  - verify/AI/divisor_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/euler_phi_yukicoder_test.nim

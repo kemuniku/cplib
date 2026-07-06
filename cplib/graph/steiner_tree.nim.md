@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':warning:'
-    path: cplib/utils/bititers.nim
-    title: cplib/utils/bititers.nim
-  - icon: ':warning:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/utils/bititers.nim
+    title: cplib/utils/bititers.nim
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -26,10 +26,16 @@ data:
   - icon: ':warning:'
     path: verify/graph/steiner_tree_abc364g_test_.nim
     title: verify/graph/steiner_tree_abc364g_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/steiner_tree_test.nim
+    title: verify/AI/steiner_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/steiner_tree_test.nim
+    title: verify/AI/steiner_tree_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -57,31 +63,34 @@ data:
     \             if dp[bit][v] > d + cost:\n                        dp[bit][v] =\
     \ d + cost\n                        q.push((dp[bit][v], v))\n        return dp\n\
     \n    proc steiner_tree_mincost_impl[T](g: StaticGraph[T] or DynamicGraph[T],\
-    \ terminal: seq[int], inf: T): T =\n        var dp = steiner_tree_dp(g, terminal,\
-    \ inf)\n        var k = terminal.len\n        return dp[(1 shl k) - 1][terminal[0]]\n\
-    \n    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int], terminal:\
-    \ seq[int], inf: int = INF64): int = steiner_tree_mincost_impl(g, terminal, inf)\n\
-    \    proc steiner_tree_mincost*(g: StaticGraph[int32] or DynamicGraph[int32],\
-    \ terminal: seq[int], inf: int32 = INF32): int32 = steiner_tree_mincost_impl(g,\
+    \ terminal: openArray[int], inf: T): T =\n        var dp = steiner_tree_dp(g,\
+    \ @terminal, inf)\n        var k = terminal.len\n        return dp[(1 shl k) -\
+    \ 1][terminal[0]]\n\n    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int],\
+    \ terminal: openArray[int], inf: int = INF64): int = steiner_tree_mincost_impl(g,\
+    \ terminal, inf)\n    proc steiner_tree_mincost*(g: StaticGraph[int32] or DynamicGraph[int32],\
+    \ terminal: openArray[int], inf: int32 = INF32): int32 = steiner_tree_mincost_impl(g,\
     \ terminal, inf)\n    proc steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float],\
-    \ terminal: seq[int], inf: float = 1e100): float = steiner_tree_mincost_impl(g,\
+    \ terminal: openArray[int], inf: float = 1e100): float = steiner_tree_mincost_impl(g,\
     \ terminal, inf)\n    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T],\
-    \ terminal: seq[int], inf: T): T = steiner_tree_mincost_impl(g, terminal, inf)\n"
+    \ terminal: openArray[int], inf: T): T = steiner_tree_mincost_impl(g, terminal,\
+    \ inf)\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
+  - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:
   - verify/graph/steiner_tree_abc364g_test_.nim
   - verify/graph/steiner_tree_abc364g_test_.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/steiner_tree_test.nim
+  - verify/AI/steiner_tree_test.nim
 documentation_of: cplib/graph/steiner_tree.nim
 layout: document
 redirect_from:

@@ -1,17 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode_old.nim
     title: cplib/collections/avltreenode_old.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode_old.nim
     title: cplib/collections/avltreenode_old.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_old_test.nim
+    title: verify/AI/avlset_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_old_test.nim
+    title: verify/AI/avlset_old_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -68,20 +74,22 @@ data:
     \ stack.add((0, node.l))\n            elif t == 1:\n                yield node.key\n\
     \                if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))\n\
     \    proc `$`*[T](self: AVLSets[T]): string = self.toSeq.join(\" \")\n    proc\
-    \ initAvlSortedMultiSet*[T](v: seq[T] = @[]): AvlSortedMultiSet[T] =\n       \
-    \ result = AvlSortedMultiSet[T](root: get_avltree_nilnode[T]())\n        for item\
-    \ in v: result.incl(item)\n    proc initAvlSortedSet*[T](v: seq[T] = @[]): AvlSortedSet[T]\
-    \ =\n        result = AvlSortedSet[T](root: get_avltree_nilnode[T]())\n      \
-    \  for item in v: result.incl(item)\n"
+    \ initAvlSortedMultiSet*[T](v: openArray[T] = []): AvlSortedMultiSet[T] =\n  \
+    \      result = AvlSortedMultiSet[T](root: get_avltree_nilnode[T]())\n       \
+    \ for item in v: result.incl(item)\n    proc initAvlSortedSet*[T](v: openArray[T]\
+    \ = []): AvlSortedSet[T] =\n        result = AvlSortedSet[T](root: get_avltree_nilnode[T]())\n\
+    \        for item in v: result.incl(item)\n"
   dependsOn:
   - cplib/collections/avltreenode_old.nim
   - cplib/collections/avltreenode_old.nim
   isVerificationFile: false
   path: cplib/collections/avlset_old.nim
   requiredBy: []
-  timestamp: '2025-04-29 18:42:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/avlset_old_test.nim
+  - verify/AI/avlset_old_test.nim
 documentation_of: cplib/collections/avlset_old.nim
 layout: document
 redirect_from:

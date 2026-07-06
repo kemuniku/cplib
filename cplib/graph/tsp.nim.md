@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':warning:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -25,17 +25,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -54,38 +60,38 @@ data:
     \ (1 shl i)) != 0):\n                    if DP[i][bit] == INF64: continue\n  \
     \                  for j in 0..<N:\n                        if (bit and (1 shl\
     \ j)) == 0:\n                            DP[j][bit or (1 shl j)] = min(DP[j][bit\
-    \ or (1 shl j)],DP[i][bit] + dist[i][j])\n        return DP\n\n    proc tspPathCostFrom*(dist:seq[seq[int]],start_v:int,floydwarshall:bool=true):int=\n\
+    \ or (1 shl j)],DP[i][bit] + dist[i][j])\n        return DP\n\n    proc tspPathCostFrom*(dist:openArray[seq[int]],start_v:int,floydwarshall:bool=true):int=\n\
     \        ## start_v\u304B\u3089\u3059\u3079\u3066\u306E\u9802\u70B9\u3092\u8A2A\
     \u554F\u3057\u3066\u3001\u7D42\u70B9\u306F\u3069\u3053\u3067\u3082\u3044\u3044\
     \u3068\u304D\u306E\u30B3\u30B9\u30C8\u306E\u6700\u5C0F\u5024\n        var dist\
-    \ = dist\n        if floydwarshall:\n            for k in 0..<len(dist):\n   \
-    \             for i in 0..<len(dist):\n                    for j in 0..<len(dist):\n\
+    \ = @dist\n        if floydwarshall:\n            for k in 0..<len(dist):\n  \
+    \              for i in 0..<len(dist):\n                    for j in 0..<len(dist):\n\
     \                        dist[i][j] = min(dist[i][j],dist[i][k] + dist[k][j])\n\
     \        var start = newseqwith(len(dist),INF64)\n        start[start_v] = 0\n\
     \        var res = solveTSP(dist,start)\n        result = INF64\n        for i\
     \ in 0..<len(dist):\n            result = min(result,res[i][^1])\n        return\
-    \ result\n\n    proc tspPathCostFromTo*(dist:seq[seq[int]],start_v:int,goal_v:int,floydwarshall:bool=true):int=\n\
+    \ result\n\n    proc tspPathCostFromTo*(dist:openArray[seq[int]],start_v:int,goal_v:int,floydwarshall:bool=true):int=\n\
     \        ## start_v\u304B\u3089\u3059\u3079\u3066\u306E\u9802\u70B9\u3092\u8A2A\
     \u554F\u3057\u3066\u3001\u7D42\u70B9\u3082\u6307\u5B9A\u3059\u308B\u30D1\u30BF\
-    \u30FC\u30F3\n        var dist = dist\n        if floydwarshall:\n           \
-    \ for k in 0..<len(dist):\n                for i in 0..<len(dist):\n         \
-    \           for j in 0..<len(dist):\n                        dist[i][j] = min(dist[i][j],dist[i][k]\
+    \u30FC\u30F3\n        var dist = @dist\n        if floydwarshall:\n          \
+    \  for k in 0..<len(dist):\n                for i in 0..<len(dist):\n        \
+    \            for j in 0..<len(dist):\n                        dist[i][j] = min(dist[i][j],dist[i][k]\
     \ + dist[k][j])\n        var start = newseqwith(len(dist),INF64)\n        start[start_v]\
     \ = 0\n        var res = solveTSP(dist,start)\n        result = INF64\n      \
     \  for i in 0..<len(dist):\n            result = min(result,res[i][^1] + dist[i][goal_v])\n\
-    \        return result\n\n    proc tspPathAnyStart*(dist:seq[seq[int]],floydwarshall:bool=true):int=\n\
+    \        return result\n\n    proc tspPathAnyStart*(dist:openArray[seq[int]],floydwarshall:bool=true):int=\n\
     \        ## \u30B0\u30E9\u30D5\u306E\u4F55\u51E6\u304B\u304B\u3089\u30B9\u30BF\
     \u30FC\u30C8\u3057\u3001\u3059\u3079\u3066\u306E\u9802\u70B9\u3092\u901A\u308B\
-    \u307E\u3067\u306E\u30B3\u30B9\u30C8\n        var dist = dist\n        if floydwarshall:\n\
+    \u307E\u3067\u306E\u30B3\u30B9\u30C8\n        var dist = @dist\n        if floydwarshall:\n\
     \            for k in 0..<len(dist):\n                for i in 0..<len(dist):\n\
     \                    for j in 0..<len(dist):\n                        dist[i][j]\
     \ = min(dist[i][j],dist[i][k] + dist[k][j])\n        var start = newseqwith(len(dist),0)\n\
     \        var res = solveTSP(dist,start)\n        result = INF64\n        for i\
     \ in 0..<len(dist):\n            result = min(result,res[i][^1])\n        return\
-    \ result\n\n\n    proc toContractionGraph*(G:WeightedGraph[int],v:seq[int]):WeightedDirectedGraph[int]=\n\
+    \ result\n\n\n    proc toContractionGraph*(G:WeightedGraph[int],v:openArray[int]):WeightedDirectedGraph[int]=\n\
     \        result = initWeightedDirectedGraph(len(v))\n        for i in 0..<len(v):\n\
     \            var res = G.dijkstra(v[i])\n            for j in 0..<len(v):\n  \
-    \              result.add_edge(i,j,res[v[j]])\n    \n    proc toContractionGraph*(G:UnWeightedGraph,v:seq[int]):WeightedDirectedGraph[int]=\n\
+    \              result.add_edge(i,j,res[v[j]])\n    \n    proc toContractionGraph*(G:UnWeightedGraph,v:openArray[int]):WeightedDirectedGraph[int]=\n\
     \        result = initWeightedDirectedGraph(len(v))\n        for i in 0..<len(v):\n\
     \            var res = G.maxk_dijkstra(v[i],1)\n            for j in 0..<len(v):\n\
     \                result.add_edge(i,j,res[v[j]])\n\n    proc to_adjacency_matrix*(G:WeightedDirectedGraph[int],none:int=INF64):seq[seq[int]]=\n\
@@ -93,22 +99,24 @@ data:
     \        for i in 0..<N:\n            for (j,c) in G.to_and_cost(i):\n       \
     \         result[i][j] = min(result[i][j],c)\n"
   dependsOn:
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/tsp.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
 documentation_of: cplib/graph/tsp.nim
 layout: document
 redirect_from:

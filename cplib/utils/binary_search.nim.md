@@ -16,6 +16,12 @@ data:
     title: verify/str/rolling_hash_pun_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/binary_search_test.nim
+    title: verify/AI/binary_search_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/binary_search_test.nim
+    title: verify/AI/binary_search_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - icon: ':heavy_check_mark:'
@@ -77,6 +83,8 @@ data:
   timestamp: '2023-12-25 07:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/binary_search_test.nim
+  - verify/AI/binary_search_test.nim
   - verify/utils/binary_search_int_test.nim
   - verify/utils/binary_search_int_test.nim
   - verify/utils/binary_search_float_test.nim

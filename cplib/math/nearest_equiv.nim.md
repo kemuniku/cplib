@@ -14,10 +14,16 @@ data:
   - icon: ':warning:'
     path: verify/math/nearest_equiv_test_.nim
     title: verify/math/nearest_equiv_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/nearest_equiv_test.nim
+    title: verify/AI/nearest_equiv_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/nearest_equiv_test.nim
+    title: verify/AI/nearest_equiv_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -41,8 +47,10 @@ data:
   - verify/math/nearest_equiv_test_.nim
   - verify/math/nearest_equiv_test_.nim
   timestamp: '2024-03-21 20:57:05+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/nearest_equiv_test.nim
+  - verify/AI/nearest_equiv_test.nim
 documentation_of: cplib/math/nearest_equiv.nim
 layout: document
 redirect_from:

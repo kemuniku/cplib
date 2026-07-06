@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kth_element_test.nim
+    title: verify/AI/kth_element_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kth_element_test.nim
+    title: verify/AI/kth_element_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -15,9 +21,9 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_KTH_ELEMENT:\n    const COMPETITIVE_UTILS_KTH_ELEMENT*\
-    \ = 1\n    import random,sequtils\n    randomize()\n    proc kth_element*[T](X:seq[T],K:int):T=\n\
+    \ = 1\n    import random,sequtils\n    randomize()\n    proc kth_element*[T](X:openArray[T],K:int):T=\n\
     \        var now = 0\n        var r = len(X)\n        var C = newseqwith(r,0)\n\
-    \        var X = X\n        while true:\n            var L = 0\n            var\
+    \        var X = @X\n        while true:\n            var L = 0\n            var\
     \ S = 1\n            swap(X[rand(0..<r)],X[r-1])\n            C[r-1] = 0\n   \
     \         for i in 0..<(r-1):\n                var tmp = cmp(X[i],X[r-1])\n  \
     \              if tmp < 0:\n                    L += 1\n                elif tmp\
@@ -52,14 +58,16 @@ data:
     \u7BC4\u56F2\u5185\u306B\u5165\u308C\u3070\u7D42\u4E86\n                return\
     \ nums[lt]\n            elif target < lt:\n                # \u5DE6\u5074\u3092\
     \u63A2\u7D22\n                right = lt - 1\n            else:\n            \
-    \    # \u53F3\u5074\u3092\u63A2\u7D22\n                left = gt + 1"
+    \    # \u53F3\u5074\u3092\u63A2\u7D22\n                left = gt + 1\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/kth_element.nim
   requiredBy: []
-  timestamp: '2026-05-26 10:40:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/kth_element_test.nim
+  - verify/AI/kth_element_test.nim
 documentation_of: cplib/utils/kth_element.nim
 layout: document
 redirect_from:

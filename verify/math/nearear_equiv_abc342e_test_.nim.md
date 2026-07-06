@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':warning:'
     path: cplib/math/nearest_equiv.nim
     title: cplib/math/nearest_equiv.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/nearest_equiv.nim
     title: cplib/math/nearest_equiv.nim
   _extendedRequiredBy: []
@@ -43,14 +43,14 @@ data:
     \ y))\n\nfor i in 0..<n-1:\n    if dp[i] == -inf: echo \"Unreachable\"\n    else:\
     \ echo dp[i]\n"
   dependsOn:
-  - cplib/math/nearest_equiv.nim
   - cplib/graph/graph.nim
+  - cplib/math/nearest_equiv.nim
   - cplib/math/nearest_equiv.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/math/nearear_equiv_abc342e_test_.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/math/nearear_equiv_abc342e_test_.nim

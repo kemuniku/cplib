@@ -56,19 +56,19 @@ data:
     \ l2)\n    echo &\"{p.x.toFloat:.10f} {p.y.toFloat:.10f}\"\n"
   dependsOn:
   - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:08+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim

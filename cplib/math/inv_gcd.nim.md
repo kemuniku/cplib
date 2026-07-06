@@ -10,6 +10,18 @@ data:
     title: cplib/convolution/convolution.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_test.nim
+    title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_test.nim
+    title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/inv_gcd_test.nim
+    title: verify/AI/inv_gcd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/inv_gcd_test.nim
+    title: verify/AI/inv_gcd_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,6 +75,10 @@ data:
   timestamp: '2026-03-18 01:19:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/inv_gcd_test.nim
+  - verify/AI/inv_gcd_test.nim
+  - verify/AI/convolution_test.nim
+  - verify/AI/convolution_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim

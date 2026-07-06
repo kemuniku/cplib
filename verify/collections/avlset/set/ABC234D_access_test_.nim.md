@@ -35,14 +35,14 @@ data:
     \ 1\nvar s = initAvlSortedSet(P[0..<K])\nvar ans: seq[int]\nfor i in K..<N:\n\
     \    s.incl(P[i])\n    ans.add(s[^(K+1)])\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: verify/collections/avlset/set/ABC234D_access_test_.nim
   requiredBy: []
-  timestamp: '2025-11-08 19:42:23+00:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/avlset/set/ABC234D_access_test_.nim

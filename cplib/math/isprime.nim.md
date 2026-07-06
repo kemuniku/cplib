@@ -26,16 +26,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
   - icon: ':warning:'
@@ -63,6 +63,36 @@ data:
     path: verify/math/factorize_tuple_abc324b_test_.nim
     title: verify/math/factorize_tuple_abc324b_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/divisor_test.nim
+    title: verify/AI/divisor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/divisor_test.nim
+    title: verify/AI/divisor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/isprime_test.nim
+    title: verify/AI/isprime_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/isprime_test.nim
+    title: verify/AI/isprime_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primefactor_test.nim
+    title: verify/AI/primefactor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primefactor_test.nim
+    title: verify/AI/primefactor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/random_helper_test.nim
+    title: verify/AI/random_helper_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/random_helper_test.nim
+    title: verify/AI/random_helper_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
@@ -111,9 +141,9 @@ data:
     \             if t == N1:\n                        break test\n              \
     \  return false\n        return true\n"
   dependsOn:
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
@@ -137,6 +167,16 @@ data:
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primefactor_test.nim
+  - verify/AI/primefactor_test.nim
+  - verify/AI/divisor_test.nim
+  - verify/AI/divisor_test.nim
+  - verify/AI/isprime_test.nim
+  - verify/AI/isprime_test.nim
+  - verify/AI/random_helper_test.nim
+  - verify/AI/random_helper_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yukicoder_test.nim

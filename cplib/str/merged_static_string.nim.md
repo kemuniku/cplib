@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy:
@@ -20,10 +20,16 @@ data:
   - icon: ':warning:'
     path: verify/str/merged_static_string.nim
     title: verify/str/merged_static_string.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merged_static_string_test.nim
+    title: verify/AI/merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merged_static_string_test.nim
+    title: verify/AI/merged_static_string_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -40,8 +46,8 @@ data:
     \        if S.S.len == 0:\n            S.S = @[T]\n            S.lencum = @[len(T)]\n\
     \        else:\n            S.S.add(T)\n            S.lencum.add(S.lencum[^1]\
     \ + len(T))\n    proc `&`*(S:MergedStaticString,T:StaticString):MergedStaticString=\n\
-    \        result = S\n        result &= T\n    \n\n\n    proc initMergedStaticString*(S:seq[StaticString]):MergedStaticString=\n\
-    \        result.S = S\n        result.lencum = newSeq[int](len(S))\n        result.lencum[0]\
+    \        result = S\n        result &= T\n    \n\n\n    proc initMergedStaticString*(S:openArray[StaticString]):MergedStaticString=\n\
+    \        result.S = @S\n        result.lencum = newSeq[int](len(S))\n        result.lencum[0]\
     \ = len(S[0])\n        for i in 1..<len(S):\n            result.lencum[i] = result.lencum[i-1]\
     \ + len(S[i])\n\n    proc len*(S:MergedStaticString):int=\n        if S.lencum.len\
     \ == 0:\n            return 0\n        else:\n            return S.lencum[^1]\n\
@@ -78,20 +84,22 @@ data:
     \        return cmp(S,T) >= 0\n\n    proc `==`*(S,T:MergedStaticString):bool=\n\
     \        return len(S) == len(T) and lcp(S,T) == len(S)\n\n    proc `$`*(S:MergedStaticString):string=\n\
     \        result = \"\"\n        for i in 0..<len(S.S):\n            result &=\
-    \ $(S.S[i])\n        return result"
+    \ $(S.S[i])\n        return result\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/merged_static_string.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-04-15 04:05:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/merged_static_string_test.nim
 documentation_of: cplib/str/merged_static_string.nim
 layout: document
 redirect_from:

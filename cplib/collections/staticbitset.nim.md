@@ -14,10 +14,16 @@ data:
   - icon: ':warning:'
     path: verify/collections/static_bitset_test_.nim
     title: verify/collections/static_bitset_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/staticbitset_test.nim
+    title: verify/AI/staticbitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/staticbitset_test.nim
+    title: verify/AI/staticbitset_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -32,12 +38,14 @@ data:
     \    proc varor(x:var uint,y:uint) {.importcpp:\"# |= #\".}\n    proc varand(x:var\
     \ uint,y:uint) {.importcpp:\"# &= #\".}\n    proc varxor(x:var uint,y:uint) {.importcpp:\"\
     # ^= #\".}\n    proc varshr(x:var uint,y:int) {.importcpp:\"# >>= #\".}\n    proc\
-    \ varshl(x:var uint,y:int) {.importcpp:\"# <<= #\".}\n\n    proc initBitSet*(x:static\
-    \ int):BitSet[x]=\n        discard\n\n    proc initBitSet*(v:seq[bool],size:static\
+    \ varshl(x:var uint,y:int) {.importcpp:\"# <<= #\".}\n\n    proc trim[size](bitset:\
+    \ var BitSet[size]) =\n        const mod64 = size mod 64\n        when mod64 !=\
+    \ 0:\n            bitset.bits[^1].varand((1u shl mod64) - 1)\n\n    proc initBitSet*(x:static\
+    \ int):BitSet[x]=\n        discard\n\n    proc initBitSet*(v:openArray[bool],size:static\
     \ int):Bitset[size]=\n        const mask = ((1 shl 6) - 1)\n        for i in 0..<len(v):\n\
     \            if v[i]:\n                varor(result.bits[i shr 6],1u shl (i and\
-    \ mask))\n\n    proc initBitSet*(v:seq[int],size:static int):Bitset[size]=\n \
-    \       const mask = ((1 shl 6) - 1)\n        for i in v:\n            varor(result.bits[i\
+    \ mask))\n\n    proc initBitSet*(v:openArray[int],size:static int):Bitset[size]=\n\
+    \        const mask = ((1 shl 6) - 1)\n        for i in v:\n            varor(result.bits[i\
     \ shr 6],1u shl (i and mask))\n    \n    proc `&`*[size](x,y:BitSet[size]):BitSet[size]=\n\
     \        for i in 0..<len(result.bits):\n            result.bits[i] = x.bits[i]\
     \ and y.bits[i]\n    \n    proc `&=`*[size](x:var BitSet[size],y:BitSet[size])=\n\
@@ -63,9 +71,9 @@ data:
     \ != 0:\n            for i in 0..<len(bitset.bits):\n                var msk =\
     \ result.bits[i] and bitnot((1u shl mod64) - 1)\n                result.bits[i].varshl(mod64)\n\
     \                result.bits[i].varor(tmp shr (64-mod64))\n                tmp\
-    \ = msk\n    \n    proc andpopcount*[size](x,y:BitSet[size]):int=\n        for\
-    \ i in 0..<min(len(x.bits),len(y.bits)):\n            result += (x.bits[i] and\
-    \ y.bits[i]).popcount()\n    \n    proc orpopcount*[size](x,y:BitSet[size]):int=\n\
+    \ = msk\n        result.trim()\n    \n    proc andpopcount*[size](x,y:BitSet[size]):int=\n\
+    \        for i in 0..<min(len(x.bits),len(y.bits)):\n            result += (x.bits[i]\
+    \ and y.bits[i]).popcount()\n    \n    proc orpopcount*[size](x,y:BitSet[size]):int=\n\
     \        for i in 0..<min(len(x.bits),len(y.bits)):\n            result += (x.bits[i]\
     \ or y.bits[i]).popcount()\n    \n    proc xorpopcount*[size](x,y:BitSet[size]):int=\n\
     \        for i in 0..<min(len(x.bits),len(y.bits)):\n            result += (x.bits[i]\
@@ -85,7 +93,7 @@ data:
     \    \n    proc `$`*[size](bitset:BitSet[size]):string=\n        var tmp : seq[char]\n\
     \        for i in 0..<size:\n            if bitset[i]:\n                tmp.add\
     \ '1'\n            else:\n                tmp.add '0'\n        return tmp.reversed().join(\"\
-    \")"
+    \")\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/staticbitset.nim
@@ -94,9 +102,11 @@ data:
   - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_seqint_test_.nim
-  timestamp: '2024-10-02 16:59:06+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/staticbitset_test.nim
+  - verify/AI/staticbitset_test.nim
 documentation_of: cplib/collections/staticbitset.nim
 layout: document
 redirect_from:

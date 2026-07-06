@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/can_reverse_hash_string_test.nim
+    title: verify/AI/can_reverse_hash_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/can_reverse_hash_string_test.nim
+    title: verify/AI/can_reverse_hash_string_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
   - icon: ':heavy_check_mark:'
@@ -166,6 +172,8 @@ data:
   timestamp: '2026-04-19 23:22:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/can_reverse_hash_string_test.nim
+  - verify/AI/can_reverse_hash_string_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim

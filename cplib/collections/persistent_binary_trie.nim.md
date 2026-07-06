@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_binary_trie_test.nim
+    title: verify/AI/persistent_binary_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_binary_trie_test.nim
+    title: verify/AI/persistent_binary_trie_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/persistent_binary_trie_test.nim
     title: verify/collections/persistent_binary_trie_test.nim
   - icon: ':heavy_check_mark:'
@@ -104,6 +110,8 @@ data:
   timestamp: '2024-09-21 18:34:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/persistent_binary_trie_test.nim
+  - verify/AI/persistent_binary_trie_test.nim
   - verify/collections/persistnt_binary_trie_unionfind_test.nim
   - verify/collections/persistnt_binary_trie_unionfind_test.nim
   - verify/collections/persistent_binary_trie_test.nim

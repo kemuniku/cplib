@@ -4,44 +4,50 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_test.nim
+    title: verify/AI/itertools_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_test.nim
+    title: verify/AI/itertools_test.nim
+  - icon: ':x:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -95,8 +101,8 @@ data:
     \ >= 0 and idx[i] == i + n - r:\n                    dec i\n                if\
     \ i < 0:\n                    break\n\n                inc idx[i]\n          \
     \      for j in (i + 1)..<r:\n                    idx[j] = idx[j - 1] + 1\n  \
-    \  \n    iterator combinations_withf*[T](v: seq[T], r: int, f: proc(l, r: T):\
-    \ T): T =\n        ## `combinations(v, r)` \u306E\u5404\u7D44\u5408\u305B\u3092\
+    \  \n    iterator combinations_withf*[T](v: openArray[T], r: int, f: proc(l, r:\
+    \ T): T): T =\n        ## `combinations(v, r)` \u306E\u5404\u7D44\u5408\u305B\u3092\
     \ `f` \u3067\u5DE6\u7573\u307F\u8FBC\u307F\u3057\u305F\u5024\u3092 yield \u3059\
     \u308B\u3002\n        ## \u4F8B: `f = proc(a,b:int):int = a*b` \u306A\u3089 \u5404\
     \u7D44\u5408\u305B\u306E\u7DCF\u7A4D\u3002\n        ## \u63A5\u982D\u8F9E\u7573\
@@ -117,7 +123,7 @@ data:
     \                 else:\n                        pref[i] = f(pref[i - 1], v[idx[i]])\n\
     \                    for j in (i + 1)..<r:\n                        idx[j] = idx[j\
     \ - 1] + 1\n                        pref[j] = f(pref[j - 1], v[idx[j]])\n    \
-    \                yield pref[r - 1]\n\n    iterator combinations*[T](v: seq[T],\
+    \                yield pref[r - 1]\n\n    iterator combinations*[T](v: openArray[T],\
     \ r: static[int]): array[r, T] =\n        let n = len(v)\n        when r == 0:\n\
     \            var x: array[r, T]\n            yield x\n        else:\n        \
     \    if r <= n:\n                var idx: array[r, int]\n                var x:\
@@ -142,14 +148,16 @@ data:
     \                var x = a[k - 1] + 1\n                var y = a[k] - 1\n    \
     \            dec k\n                while x <= y:\n                    a[k] =\
     \ x\n                    y -= x\n                    inc k\n                a[k]\
-    \ = x + y\n                yield a[0 .. k]\n\n\n"
+    \ = x + y\n                yield a[0 .. k]\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []
-  timestamp: '2026-05-07 18:27:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_test.nim
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulatedr_test.nim

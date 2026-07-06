@@ -2,13 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/exp_modint.nim
     title: cplib/modint/exp_modint.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/exp_modint.nim
     title: cplib/modint/exp_modint.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/euler_phi_test.nim
+    title: verify/AI/euler_phi_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/euler_phi_test.nim
+    title: verify/AI/euler_phi_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exp_modint_test.nim
+    title: verify/AI/exp_modint_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exp_modint_test.nim
+    title: verify/AI/exp_modint_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_aoj_test.nim
     title: verify/math/euler_phi_aoj_test.nim
@@ -57,6 +69,10 @@ data:
   timestamp: '2024-01-07 17:44:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/exp_modint_test.nim
+  - verify/AI/exp_modint_test.nim
+  - verify/AI/euler_phi_test.nim
+  - verify/AI/euler_phi_test.nim
   - verify/math/euler_phi_aoj_test.nim
   - verify/math/euler_phi_aoj_test.nim
   - verify/math/euler_phi_yukicoder_test.nim

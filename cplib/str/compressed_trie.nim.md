@@ -1,29 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_trie_test.nim
+    title: verify/AI/compressed_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_trie_test.nim
+    title: verify/AI/compressed_trie_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -36,8 +42,8 @@ data:
     \    import algorithm\n    import cplib/graph/graph\n    const CPLIB_STR_COMPRESSED_TRIE*\
     \ = 1\n    type CompressedTrieNode* = ref object\n        parent* : CompressedTrieNode\n\
     \        child* : array['a'..'z',CompressedTrieNode]\n        s* : StaticString\n\
-    \        cnt* : int32\n        subtree_sum* : int32\n\n    proc initCompressedTrie*(S:seq[StaticString],sorted:bool=false):CompressedTrieNode=\n\
-    \        var S = S\n        if not sorted:\n            S.sort()\n        var\
+    \        cnt* : int32\n        subtree_sum* : int32\n\n    proc initCompressedTrie*(S:openArray[StaticString],sorted:bool=false):CompressedTrieNode=\n\
+    \        var S = @S\n        if not sorted:\n            S.sort()\n        var\
     \ root = CompressedTrieNode(s:S[0][0..<0])\n        var stack = @[root]\n    \
     \    for s in S:\n            while not s.startsWith(stack[^1].s):\n         \
     \       discard stack.pop()\n            var l = lcp(stack[^1].s,s)\n        \
@@ -83,20 +89,22 @@ data:
     \ == c\n\n    proc get_cnt*(node:VirtualTrieNode):int=\n        if node.now.len()\
     \ != 0:\n            return 0\n        return node.current_node.cnt\n\n    proc\
     \ get_subtree_sum*(node:VirtualTrieNode):int=\n        if node.now.len() == 0:\n\
-    \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum"
+    \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/graph/graph.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
-  - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/compressed_trie_test.nim
 documentation_of: cplib/str/compressed_trie.nim
 layout: document
 redirect_from:

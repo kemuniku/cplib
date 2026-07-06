@@ -14,16 +14,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
   - icon: ':warning:'
@@ -51,6 +51,36 @@ data:
     path: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
     title: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bellmanford_test.nim
+    title: verify/AI/bellmanford_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bellmanford_test.nim
+    title: verify/AI/bellmanford_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_test.nim
+    title: verify/AI/dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_test.nim
+    title: verify/AI/dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/maxk_dijkstra_test.nim
+    title: verify/AI/maxk_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/maxk_dijkstra_test.nim
+    title: verify/AI/maxk_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/restore_shortest_path_from_prev_test.nim
+    title: verify/AI/restore_shortest_path_from_prev_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/restore_shortest_path_from_prev_test.nim
+    title: verify/AI/restore_shortest_path_from_prev_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tsp_test.nim
+    title: verify/AI/tsp_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -126,6 +156,16 @@ data:
   timestamp: '2024-06-25 04:43:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/restore_shortest_path_from_prev_test.nim
+  - verify/AI/restore_shortest_path_from_prev_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/dijkstra_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim

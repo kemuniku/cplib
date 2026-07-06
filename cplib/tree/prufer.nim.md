@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
   - icon: ':warning:'
@@ -20,10 +20,22 @@ data:
   - icon: ':warning:'
     path: verify/tree/prufer_abc328e_test_.nim
     title: verify/tree/prufer_abc328e_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/prufer_test.nim
+    title: verify/AI/prufer_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/prufer_test.nim
+    title: verify/AI/prufer_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/random_helper_test.nim
+    title: verify/AI/random_helper_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/random_helper_test.nim
+    title: verify/AI/random_helper_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -34,12 +46,12 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TREE_PRUFER:\n    const CPLIB_TREE_PRUFER* = 1\n\n\
     \    import cplib/graph/graph\n    import sequtils, heapqueue\n    proc prufer_decode*(a:\
-    \ seq[int]): UnWeightedUnDirectedGraph =\n        var n = a.len + 2\n        assert\
-    \ a.allIt(it in 0..<n)\n        result = initUnWeightedUnDirectedGraph(n)\n  \
-    \      var cnt = newSeqWith(n, 1)\n        for ai in a:\n            cnt[ai] +=\
-    \ 1\n        var q = initHeapQueue[(int, int)]()\n        for i in 0..<n:\n  \
-    \          q.push((cnt[i], i))\n        for i in 0..<a.len:\n            var (c,\
-    \ u) = q.pop\n            while cnt[u] != c: (c, u) = q.pop\n            result.add_edge(u,\
+    \ openArray[int]): UnWeightedUnDirectedGraph =\n        var n = a.len + 2\n  \
+    \      assert a.allIt(it in 0..<n)\n        result = initUnWeightedUnDirectedGraph(n)\n\
+    \        var cnt = newSeqWith(n, 1)\n        for ai in a:\n            cnt[ai]\
+    \ += 1\n        var q = initHeapQueue[(int, int)]()\n        for i in 0..<n:\n\
+    \            q.push((cnt[i], i))\n        for i in 0..<a.len:\n            var\
+    \ (c, u) = q.pop\n            while cnt[u] != c: (c, u) = q.pop\n            result.add_edge(u,\
     \ a[i])\n            cnt[u] -= 1\n            cnt[a[i]] -= 1\n            if cnt[u]\
     \ != 0: q.push((cnt[u], u))\n            if cnt[a[i]] != 0: q.push((cnt[a[i]],\
     \ a[i]))\n        var u = (0..<n).toSeq.filterIt(cnt[it] == 1)\n        result.add_edge(u[0],\
@@ -54,9 +66,13 @@ data:
   - verify/tree/prufer_abc328e_test_.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/prufer_test.nim
+  - verify/AI/prufer_test.nim
+  - verify/AI/random_helper_test.nim
+  - verify/AI/random_helper_test.nim
 documentation_of: cplib/tree/prufer.nim
 layout: document
 redirect_from:

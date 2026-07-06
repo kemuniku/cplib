@@ -10,6 +10,18 @@ data:
     title: cplib/collections/waveletmatrix.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bitvector_test.nim
+    title: verify/AI/bitvector_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitvector_test.nim
+    title: verify/AI/bitvector_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_test.nim
+    title: verify/AI/waveletmatrix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_test.nim
+    title: verify/AI/waveletmatrix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/waveletmatrix_test.nim
     title: verify/collections/waveletmatrix_test.nim
   - icon: ':heavy_check_mark:'
@@ -48,6 +60,10 @@ data:
   timestamp: '2026-05-01 08:04:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_test.nim
+  - verify/AI/bitvector_test.nim
+  - verify/AI/bitvector_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
 documentation_of: cplib/collections/bitvector.nim

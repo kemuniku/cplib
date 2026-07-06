@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticrangecount.nim
     title: cplib/collections/staticrangecount.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticrangecount.nim
     title: cplib/collections/staticrangecount.nim
   - icon: ':heavy_check_mark:'
@@ -13,16 +13,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':warning:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/merge_tree.nim
     title: cplib/graph/merge_tree.nim
   _extendedRequiredBy: []
@@ -50,18 +50,18 @@ data:
     for i in 0..<(Q):\n    var (t,x,y) = querys[i]\n    if t == 1:\n        MT.unite(x-1,y-1)\n\
     \    else:\n        echo SRC.count(MT.get_range(x-1),y)"
   dependsOn:
-  - cplib/collections/unionfind.nim
+  - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/staticrangecount.nim
+  - cplib/collections/unionfind.nim
   - cplib/collections/staticrangecount.nim
   - cplib/graph/graph.nim
-  - cplib/collections/staticrangecount.nim
-  - cplib/graph/merge_tree.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/graph/merge_tree_test_.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/merge_tree_test_.nim

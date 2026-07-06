@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/lazysegtree_test.nim
+    title: verify/AI/lazysegtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lazysegtree_test.nim
+    title: verify/AI/lazysegtree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
     title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - icon: ':heavy_check_mark:'
@@ -115,6 +121,8 @@ data:
   timestamp: '2025-04-27 16:37:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/lazysegtree_test.nim
+  - verify/AI/lazysegtree_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim

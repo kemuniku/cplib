@@ -32,10 +32,16 @@ data:
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/primitive_root_test.nim
+    title: verify/AI/primitive_root_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -54,22 +60,24 @@ data:
     \ = false\n                    break\n            if flg:\n                return\
     \ a"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
   - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/primitive_root.nim
   requiredBy: []
   timestamp: '2025-02-07 19:28:35+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primitive_root_test.nim
 documentation_of: cplib/math/primitive_root.nim
 layout: document
 redirect_from:

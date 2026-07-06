@@ -1,0 +1,53 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: nim
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
+  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+
+    echo "Hello World"
+
+
+    import cplib/math/inner_math
+
+
+    assert add(4_000_000_000.int, 4_000_000_000.int, 7) == 6
+
+    assert mul(1_000_000_000.int, 1_000_000_000.int, 13) == 1
+
+    '
+  dependsOn:
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  isVerificationFile: true
+  path: verify/AI/inner_math_test.nim
+  requiredBy: []
+  timestamp: '2026-07-06 22:23:54+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/AI/inner_math_test.nim
+layout: document
+redirect_from:
+- /verify/verify/AI/inner_math_test.nim
+- /verify/verify/AI/inner_math_test.nim.html
+title: verify/AI/inner_math_test.nim
+---

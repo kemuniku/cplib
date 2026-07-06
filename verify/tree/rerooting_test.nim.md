@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
     links:
@@ -41,15 +41,15 @@ data:
     \    return (b*x[0]+c*x[1],x[1])\n\necho G.solve_Rerooting(merge,(mint(0),0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \ \")\n\n"
   dependsOn:
-  - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
+  - cplib/tree/rerooting.nim
   - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/rerooting_test.nim
 layout: document

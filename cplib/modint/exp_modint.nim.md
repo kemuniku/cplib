@@ -8,10 +8,16 @@ data:
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exp_modint_test.nim
+    title: verify/AI/exp_modint_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exp_modint_test.nim
+    title: verify/AI/exp_modint_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -48,8 +54,10 @@ data:
   path: cplib/modint/exp_modint.nim
   requiredBy: []
   timestamp: '2026-03-23 02:51:01+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/exp_modint_test.nim
+  - verify/AI/exp_modint_test.nim
 documentation_of: cplib/modint/exp_modint.nim
 layout: document
 redirect_from:

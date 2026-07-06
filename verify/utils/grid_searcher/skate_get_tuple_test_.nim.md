@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/avltreenode.nim
     title: cplib/collections/avltreenode.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/grid_searcher.nim
     title: cplib/utils/grid_searcher.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/grid_searcher.nim
     title: cplib/utils/grid_searcher.nim
   _extendedRequiredBy: []
@@ -46,15 +46,15 @@ data:
     \nif (gx,gy) in alr:\n    echo alr[(gx,gy)]\nelse:\n    echo -1"
   dependsOn:
   - cplib/utils/grid_searcher.nim
+  - cplib/collections/avlset.nim
   - cplib/utils/grid_searcher.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: verify/utils/grid_searcher/skate_get_tuple_test_.nim
   requiredBy: []
-  timestamp: '2025-11-08 19:42:23+00:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/utils/grid_searcher/skate_get_tuple_test_.nim

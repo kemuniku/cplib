@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
   - icon: ':heavy_check_mark:'
@@ -142,6 +142,42 @@ data:
     title: verify/tree/diameter_path_static_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/citrus_test.nim
+    title: verify/AI/citrus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/citrus_test.nim
+    title: verify/AI/citrus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/combination_test.nim
+    title: verify/AI/combination_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/combination_test.nim
+    title: verify/AI/combination_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_test.nim
+    title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_test.nim
+    title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/isqrt_test.nim
+    title: verify/AI/isqrt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/isqrt_test.nim
+    title: verify/AI/isqrt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/modint_test.nim
+    title: verify/AI/modint_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/modint_test.nim
+    title: verify/AI/modint_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ntt_test.nim
+    title: verify/AI/ntt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ntt_test.nim
+    title: verify/AI/ntt_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
     title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - icon: ':heavy_check_mark:'
@@ -183,22 +219,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
   - icon: ':heavy_check_mark:'
@@ -207,9 +243,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -273,10 +309,22 @@ data:
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   timestamp: '2024-02-07 16:25:18+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/AI/isqrt_test.nim
+  - verify/AI/isqrt_test.nim
+  - verify/AI/combination_test.nim
+  - verify/AI/combination_test.nim
+  - verify/AI/citrus_test.nim
+  - verify/AI/citrus_test.nim
+  - verify/AI/modint_test.nim
+  - verify/AI/modint_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/convolution_test.nim
+  - verify/AI/convolution_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim

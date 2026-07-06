@@ -7,23 +7,29 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kruskal_test.nim
+    title: verify/AI/kruskal_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/kruskal_test.nim
+    title: verify/AI/kruskal_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -50,18 +56,20 @@ data:
     \        for (c,i,j) in edges:\n            if not uf.issame(i,j):\n         \
     \       result.add_edge(i,j,c)\n                uf.unite(i,j)\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/kruskal.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/kruskal_test.nim
+  - verify/AI/kruskal_test.nim
 documentation_of: cplib/graph/kruskal.nim
 layout: document
 redirect_from:

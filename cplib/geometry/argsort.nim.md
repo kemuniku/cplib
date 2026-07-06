@@ -8,10 +8,16 @@ data:
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/argsort_test.nim
+    title: verify/AI/argsort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/argsort_test.nim
+    title: verify/AI/argsort_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -27,16 +33,18 @@ data:
     \ 0)\n        if a != b:\n            return cmp(b,a)\n        else:\n       \
     \     return cmp(to_Int128(L[1])*R[0],to_Int128(L[0])*R[1])\n\n    proc argsorted*(X:seq[(int,int)]):seq[(int,int)]=\n\
     \        ## \u504F\u89D2\u30BD\u30FC\u30C8\n        ## 0\xB0 opened\n        return\
-    \ sorted(X,argcmp)\n\n    proc argsort*(X:var seq[(int,int)])=\n        X.sort(argcmp)"
+    \ sorted(X,argcmp)\n\n    proc argsort*(X:var seq[(int,int)])=\n        X.sort(argcmp)\n"
   dependsOn:
   - cplib/math/int128.nim
   - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/geometry/argsort.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:48:49+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/argsort_test.nim
+  - verify/AI/argsort_test.nim
 documentation_of: cplib/geometry/argsort.nim
 layout: document
 redirect_from:

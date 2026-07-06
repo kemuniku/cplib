@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -54,20 +54,20 @@ data:
     \   echo cost, \" \", len(path)-1\n    for i in 0..<len(path)-1:\n        echo\
     \ path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []
-  timestamp: '2026-07-05 21:14:46+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/restore_dijkstra_static_test.nim

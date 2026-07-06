@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
   - icon: ':warning:'
@@ -130,6 +130,36 @@ data:
     title: verify/tree/diameter_path_static_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/combination_test.nim
+    title: verify/AI/combination_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/combination_test.nim
+    title: verify/AI/combination_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_test.nim
+    title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_test.nim
+    title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/modint_test.nim
+    title: verify/AI/modint_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/modint_test.nim
+    title: verify/AI/modint_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/montgomery_impl_test.nim
+    title: verify/AI/montgomery_impl_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/montgomery_impl_test.nim
+    title: verify/AI/montgomery_impl_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ntt_test.nim
+    title: verify/AI/ntt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/ntt_test.nim
+    title: verify/AI/ntt_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
     title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - icon: ':heavy_check_mark:'
@@ -171,27 +201,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -247,9 +277,9 @@ data:
     \ SomeInteger) =\n        a.a -= init(T, b).a\n        if cast[int32](a.a) < 0i32:\
     \ a.a += T.get_M * 2u32\n    proc val*[T: MontgomeryModint](a: T): int =\n   \
     \     result = reduce(T, a.a).int\n        if result.uint32 >= T.get_M: result\
-    \ -= T.get_M.int\n\n    proc `-`*[T: MontgomeryModint](a: T): T = init(T, 0) -\
-    \ a\n    proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger) = a.a\
-    \ = reduce(T, uint(a.a) * init(T, b).a)\n    proc inv*[T: MontgomeryModint](x:\
+    \ -= T.get_M.int\n\n    proc `-`*[T: MontgomeryModint](a: T): T = (result = init(T,\
+    \ 0); result -= a)\n    proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger)\
+    \ = a.a = reduce(T, uint(a.a) * init(T, b).a)\n    proc inv*[T: MontgomeryModint](x:\
     \ T): T =\n        assert x.val != 0\n        var x: int32 = int32(x.val)\n  \
     \      var y: int32 = T.mod\n        var u = 1i32\n        var v, t = 0i32\n \
     \       while y > 0:\n            t = x div y\n            x -= t * y\n      \
@@ -309,9 +339,19 @@ data:
   - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  timestamp: '2026-03-17 23:37:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 22:23:54+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/combination_test.nim
+  - verify/AI/combination_test.nim
+  - verify/AI/montgomery_impl_test.nim
+  - verify/AI/montgomery_impl_test.nim
+  - verify/AI/modint_test.nim
+  - verify/AI/modint_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/convolution_test.nim
+  - verify/AI/convolution_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim

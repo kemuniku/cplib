@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
   - icon: ':heavy_check_mark:'
@@ -58,50 +58,74 @@ data:
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/graph/namori_incycle_test.nim
-    title: verify/graph/namori_incycle_test.nim
+    path: verify/AI/functional_graph_test.nim
+    title: verify/AI/functional_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_test.nim
+    title: verify/AI/functional_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/heavylightdecomposition_test.nim
+    title: verify/AI/heavylightdecomposition_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/heavylightdecomposition_test.nim
+    title: verify/AI/heavylightdecomposition_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_forest_test.nim
+    title: verify/AI/namori_forest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_forest_test.nim
+    title: verify/AI/namori_forest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_graph_test.nim
+    title: verify/AI/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/namori_graph_test.nim
+    title: verify/AI/namori_graph_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/namori_incycle_test.nim
+    title: verify/graph/namori_incycle_test.nim
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc337/submissions/50216964
@@ -144,7 +168,7 @@ data:
     \       for (j, _) in g[i]:\n                if (i, j) notin seen:\n         \
     \           gn.add_edge(i, j)\n                    seen.incl((i, j))\n       \
     \             seen.incl((j, i))\n        gn.build\n        return initHld(gn,\
-    \ root)\n    proc initHld*(adj: seq[seq[int]], root: int): HeavyLightDecomposition\
+    \ root)\n    proc initHld*(adj: openArray[seq[int]], root: int): HeavyLightDecomposition\
     \ =\n        var n = adj.len\n        var gn = initUnWeightedUnDirectedStaticGraph(n)\n\
     \        var seen = initHashSet[(int, int)]()\n        for i in 0..<n:\n     \
     \       for j in adj[i]:\n                if (i, j) notin seen:\n            \
@@ -195,7 +219,7 @@ data:
     \        hld.I[hld.rangeL[p] - d]\n    iterator children*(hld: HeavyLightDecomposition,\
     \ v: int): int =\n        var s = hld.rangeL[v] + 1\n        while s < hld.rangeR[v]:\n\
     \            var w = hld.toVtx(s)\n            yield w\n            s += hld.rangeR[w]\
-    \ - hld.rangeL[w]\n    \n\n    proc initAuxiliaryTree*(hld:HeavyLightDecomposition,v:seq[int]):UnWeightedUnDirectedTableGraph[int]=\n\
+    \ - hld.rangeL[w]\n    \n\n    proc initAuxiliaryTree*(hld:HeavyLightDecomposition,v:openArray[int]):UnWeightedUnDirectedTableGraph[int]=\n\
     \        ## \u6839\u304C\u6B32\u3057\u304B\u3063\u305F\u3089G.v[0]\u3092\u4F7F\
     \u3063\u3066\u304F\u3060\u3055\u3044\u3000\u3051\u3080\u306B\u304F\n        var\
     \ v = v.sortedByit(hld.toseq(it))\n        for i in 0..<(len(v)-1):\n        \
@@ -205,7 +229,7 @@ data:
     \ while len(stack) > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):\n  \
     \              discard stack.pop()\n            if len(stack) != 0:\n        \
     \        result.add_edge(stack[^1],v[i])\n            stack.add(v[i])\n    \n\
-    \    proc initAuxiliaryWeightedTree*(hld:HeavyLightDecomposition,v:seq[int]):WeightedUnDirectedTableGraph[int,int]=\n\
+    \    proc initAuxiliaryWeightedTree*(hld:HeavyLightDecomposition,v:openArray[int]):WeightedUnDirectedTableGraph[int,int]=\n\
     \        ## \u6839\u304C\u6B32\u3057\u304B\u3063\u305F\u3089G.v[0]\u3092\u4F7F\
     \u3063\u3066\u304F\u3060\u3055\u3044\u3000\u3051\u3080\u306B\u304F\n        var\
     \ v = v.sortedByit(hld.toseq(it))\n        for i in 0..<(len(v)-1):\n        \
@@ -214,7 +238,7 @@ data:
     \        stack.add(v[0])\n        for i in 1..<len(v):\n            while len(stack)\
     \ > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):\n                discard\
     \ stack.pop()\n            if len(stack) != 0:\n                result.add_edge(stack[^1],v[i],hld.depth(v[i])-hld.depth(stack[^1]))\n\
-    \            stack.add(v[i])\n\n"
+    \            stack.add(v[i])\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
@@ -237,9 +261,17 @@ data:
   - cplib/graph/namori_forest.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/namori_graph_test.nim
+  - verify/AI/namori_graph_test.nim
+  - verify/AI/heavylightdecomposition_test.nim
+  - verify/AI/heavylightdecomposition_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/functional_graph_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/hld/hld_lca_yosupo_test.nim

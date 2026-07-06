@@ -8,16 +8,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rangeset.nim
     title: cplib/collections/rangeset.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rangeset.nim
     title: cplib/collections/rangeset.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/grid_searcher.nim
     title: cplib/utils/grid_searcher.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/grid_searcher.nim
     title: cplib/utils/grid_searcher.nim
   - icon: ':warning:'
@@ -135,6 +135,30 @@ data:
     path: verify/utils/grid_searcher/skate_tuple_test_.nim
     title: verify/utils/grid_searcher/skate_tuple_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_test.nim
+    title: verify/AI/avlset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avlset_test.nim
+    title: verify/AI/avlset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avltreenode_test.nim
+    title: verify/AI/avltreenode_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/avltreenode_test.nim
+    title: verify/AI/avltreenode_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/grid_searcher_test.nim
+    title: verify/AI/grid_searcher_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/grid_searcher_test.nim
+    title: verify/AI/grid_searcher_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rangeset_test.nim
+    title: verify/AI/rangeset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rangeset_test.nim
+    title: verify/AI/rangeset_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/avlset/avlset_empty_string_test.nim
     title: verify/collections/avlset/avlset_empty_string_test.nim
@@ -291,6 +315,14 @@ data:
   timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/avltreenode_test.nim
+  - verify/AI/avltreenode_test.nim
+  - verify/AI/avlset_test.nim
+  - verify/AI/avlset_test.nim
+  - verify/AI/grid_searcher_test.nim
+  - verify/AI/grid_searcher_test.nim
+  - verify/AI/rangeset_test.nim
+  - verify/AI/rangeset_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/avlset_empty_string_test.nim

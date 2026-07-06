@@ -35,7 +35,7 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_PARS_test.nim
   requiredBy: []
-  timestamp: '2024-12-19 23:28:40+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree_var/segtree_PARS_test.nim

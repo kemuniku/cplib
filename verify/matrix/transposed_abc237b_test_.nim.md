@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
   _extendedRequiredBy: []

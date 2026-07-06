@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
   - icon: ':warning:'
@@ -38,10 +38,22 @@ data:
   - icon: ':warning:'
     path: verify/utils/bititers_bitsuperset_test_.nim
     title: verify/utils/bititers_bitsuperset_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bititers_test.nim
+    title: verify/AI/bititers_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bititers_test.nim
+    title: verify/AI/bititers_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/steiner_tree_test.nim
+    title: verify/AI/steiner_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/steiner_tree_test.nim
+    title: verify/AI/steiner_tree_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -93,14 +105,14 @@ data:
     \    while true:\n            i = (i+1) or bits\n            if i >= (1 shl n):\n\
     \                break\n            yield i\n\n\n    iterator bitsingleton*(bits:\
     \ int): int =\n        ##\u7ACB\u3063\u3066\u3044\u308Bbit\u3092\u4E00\u3064\u305A\
-    \u3064\u53D6\u308A\u51FA\u3057\u307E\u3059\u3002\n        var i = bits and (-bits)\n\
-    \        while true:\n            yield i\n            i = i and (not bits + (i\
-    \ shl 1))\n            if i == 0:\n                break\n\n    iterator standingbits*(bits:\
-    \ int): int =\n        #bits & (1<<i)\u304C0\u3067\u306A\u3044\u5024\u306B\u306A\
-    \u308B\u3088\u3046\u306Ai\u3092\u5217\u6319\u3057\u307E\u3059\u3002\n        var\
-    \ i = bits and (-bits)\n        if i != 0:\n            while true:\n        \
-    \        yield fastLog2(i)\n                i = bits and (not bits + (i shl 1))\n\
-    \                if i == 0:\n                    break\n"
+    \u3064\u53D6\u308A\u51FA\u3057\u307E\u3059\u3002\n        var rest = bits\n  \
+    \      while rest != 0:\n            var i = rest and (-rest)\n            yield\
+    \ i\n            rest -= i\n\n    iterator standingbits*(bits: int): int =\n \
+    \       #bits & (1<<i)\u304C0\u3067\u306A\u3044\u5024\u306B\u306A\u308B\u3088\u3046\
+    \u306Ai\u3092\u5217\u6319\u3057\u307E\u3059\u3002\n        var i = bits and (-bits)\n\
+    \        if i != 0:\n            while true:\n                yield fastLog2(i)\n\
+    \                i = bits and (not bits + (i shl 1))\n                if i ==\
+    \ 0:\n                    break\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/bititers.nim
@@ -117,9 +129,13 @@ data:
   - verify/graph/steiner_tree_abc364g_test_.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
-  timestamp: '2024-10-25 15:54:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 22:23:54+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/bititers_test.nim
+  - verify/AI/bititers_test.nim
+  - verify/AI/steiner_tree_test.nim
+  - verify/AI/steiner_tree_test.nim
 documentation_of: cplib/utils/bititers.nim
 layout: document
 redirect_from:

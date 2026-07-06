@@ -28,6 +28,12 @@ data:
     title: verify/geometry/convex_hull_abc286ex_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_test.nim
+    title: verify/AI/polygon_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - icon: ':heavy_check_mark:'
@@ -91,10 +97,10 @@ data:
     \ cplib/math/fractions\n    import algorithm\n    type Polygon*[T] = object\n\
     \        v*: seq[Point[T]]\n    proc len*[T](poly: Polygon[T]): int = poly.v.len\n\
     \    iterator items*[T](poly: Polygon[T]): Point[T] =\n        for item in poly.v:\
-    \ yield item\n\n    proc initPolygon*[T](v: seq[Point[T]]): Polygon[T] =\n   \
-    \     ## \u9802\u70B9\u5217 v \u306E\u591A\u89D2\u5F62\u578B\u3092\u521D\u671F\
-    \u5316\n        Polygon[T](v: v)\n    proc area*(p: Polygon[int]): int =\n   \
-    \     ## \u591A\u89D2\u5F62\u306E\u9762\u7A4D\u306E2\u500D\u3001\u9802\u70B9\u5217\
+    \ yield item\n\n    proc initPolygon*[T](v: openArray[Point[T]]): Polygon[T] =\n\
+    \        ## \u9802\u70B9\u5217 v \u306E\u591A\u89D2\u5F62\u578B\u3092\u521D\u671F\
+    \u5316\n        Polygon[T](v: @v)\n    proc area*(p: Polygon[int]): int =\n  \
+    \      ## \u591A\u89D2\u5F62\u306E\u9762\u7A4D\u306E2\u500D\u3001\u9802\u70B9\u5217\
     \u304C\u6642\u8A08\u56DE\u308A\u306E\u5834\u5408\u8CA0\u306E\u6570\u304C\u8FD4\
     \u308B\n        for i in 0..<p.v.len: result += cross(p.v[i], p.v[(i+1) mod p.v.len])\n\
     \    proc area*[T](p: Polygon[Fraction[T]]): Fraction[T] =\n        ## \u591A\u89D2\
@@ -131,9 +137,9 @@ data:
     \            var b = poly.v[(i+1) mod poly.len] - p\n            if a.y > b.y:\
     \ swap(a, b)\n            if geometry_le(a.y, 0) and geometry_gt(b.y, 0) and geometry_lt(cross(a,\
     \ b), 0):\n                result = not result\n\n    proc convex_hull*[T](v:\
-    \ seq[Point[T]], strict: bool = true): Polygon[T] =\n        ## \u70B9\u7FA4 v\
-    \ \u306E\u51F8\u5305\n        var n = v.len\n        if n < 3: return Polygon[T](v:\
-    \ v)\n        var s = v.sorted\n        var vi = s[0..1]\n        for i in 2..<n:\n\
+    \ openArray[Point[T]], strict: bool = true): Polygon[T] =\n        ## \u70B9\u7FA4\
+    \ v \u306E\u51F8\u5305\n        var n = v.len\n        if n < 3: return Polygon[T](v:\
+    \ @v)\n        var s = v.sorted\n        var vi = s[0..1]\n        for i in 2..<n:\n\
     \            if strict:\n                while vi.len >= 2 and ccw(vi[^2], vi[^1],\
     \ s[i]) != COUNTER_CLOCKWISE: discard vi.pop\n            else:\n            \
     \    while vi.len >= 2 and ccw(vi[^2], vi[^1], s[i]) == CLOCKWISE: discard vi.pop\n\
@@ -146,8 +152,8 @@ data:
   dependsOn:
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: false
@@ -155,9 +161,11 @@ data:
   requiredBy:
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
-  timestamp: '2025-03-09 17:42:08+09:00'
+  timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/polygon_test.nim
+  - verify/AI/polygon_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim

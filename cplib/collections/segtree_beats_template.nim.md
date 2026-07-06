@@ -7,14 +7,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_template_test.nim
+    title: verify/AI/segtree_beats_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/segtree_beats_template_test.nim
+    title: verify/AI/segtree_beats_template_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
@@ -42,7 +48,7 @@ data:
     \ F_rch[T]]\n        inf*, zero*: T\n    proc init_S[T](val: T, inf: T, sz: int\
     \ = 1): S_rch[T] = S_rch[T](max: val, max2: -inf, min: val, min2: inf, sum: val\
     \ * T(sz), sz: sz, n_min: sz, n_max: sz, fail: false)\n\n    proc initRangeChminChmaxRangeSumMaxMin*[T](v:\
-    \ seq[T], inf: T, zero: T): auto =\n        proc op(l, r: S_rch[T]): S_rch[T]\
+    \ openArray[T], inf: T, zero: T): auto =\n        proc op(l, r: S_rch[T]): S_rch[T]\
     \ =\n            proc second_lowest(a, b, c, d: T): T {.inline.} =\n         \
     \       if a == c: return min(b, d)\n                if b <= c: return b\n   \
     \             if d <= a: return d\n                return max(a, c)\n        \
@@ -76,10 +82,10 @@ data:
     \ id(): F_rch[T] = F_rch[T](lb: -inf, ub: inf, add: zero)\n        var vn = v.mapIt(init_S(it,\
     \ inf))\n        var seg = initSegmentTreeBeats(vn, op, e(), mapping, composition,\
     \ id())\n        return RangeChminChmaxRangeSumMaxMin[T](seg: seg, inf: inf, zero:\
-    \ zero)\n    proc initRangeChminChmaxRangeSumMaxMin*(v: seq[int]): RangeChminChmaxRangeSumMaxMin[int]\
+    \ zero)\n    proc initRangeChminChmaxRangeSumMaxMin*(v: openArray[int]): RangeChminChmaxRangeSumMaxMin[int]\
     \ = initRangeChminChmaxRangeSumMaxMin(v, INF64, 0)\n    proc initRangeChminChmaxRangeSumMaxMin*(v:\
-    \ seq[int32]): RangeChminChmaxRangeSumMaxMin[int32] = initRangeChminChmaxRangeSumMaxMin(v,\
-    \ INF32, 0.int32)\n    proc initRangeChminChmaxRangeSumMaxMin*(v: seq[float]):\
+    \ openArray[int32]): RangeChminChmaxRangeSumMaxMin[int32] = initRangeChminChmaxRangeSumMaxMin(v,\
+    \ INF32, 0.int32)\n    proc initRangeChminChmaxRangeSumMaxMin*(v: openArray[float]):\
     \ RangeChminChmaxRangeSumMaxMin[float] = initRangeChminChmaxRangeSumMaxMin(v,\
     \ 1e100, 0.0)\n\n    proc update*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
     \ p: Natural, val: T) = self.seg.update(p, init_S(val, self.inf))\n    proc `[]`*[T](self:\
@@ -93,7 +99,7 @@ data:
     \ var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
     \ F_rch[T](lb: val, ub: self.inf, add: self.zero))\n    proc add*[T](self: var\
     \ RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
-    \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n\n"
+    \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n"
   dependsOn:
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
@@ -102,9 +108,11 @@ data:
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:51:47+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/segtree_beats_template_test.nim
+  - verify/AI/segtree_beats_template_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
 documentation_of: cplib/collections/segtree_beats_template.nim

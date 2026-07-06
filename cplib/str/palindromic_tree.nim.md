@@ -4,14 +4,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/str/palindromic_tree_test.nim
-    title: verify/str/palindromic_tree_test.nim
+    path: verify/AI/palindromic_tree_test.nim
+    title: verify/AI/palindromic_tree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/palindromic_tree_test.nim
+    title: verify/AI/palindromic_tree_test.nim
+  - icon: ':x:'
     path: verify/str/palindromic_tree_test.nim
     title: verify/str/palindromic_tree_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/str/palindromic_tree_test.nim
+    title: verify/str/palindromic_tree_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -35,16 +41,16 @@ data:
     \  proc init(amax: int): PalindromicTree =\n        discard result.newPalindromicTreeNode(amax,\
     \ -1)\n        discard result.newPalindromicTreeNode(amax, 0)\n        result.amax\
     \ = amax\n        result.nodes[1][].suffix_link = result.nodes[0]\n\n\n    proc\
-    \ initPalindromicTree*(a: seq[int], amax: int = -1): PalindromicTree =\n     \
-    \   var amax = amax\n        if amax < 0: amax = a.max\n        result = init(amax)\n\
-    \        proc find_longest(pos: int, node: ref PalindromicTreeNode): ref PalindromicTreeNode\
-    \ =\n            var ln = pos - node[].len - 1\n            if ln >= 0 and a[ln]\
-    \ == a[pos]:\n                return node\n            return find_longest(pos,\
-    \ node[].suffix_link)\n        var current_node = result.nodes[0]\n        for\
-    \ i in 0..<a.len:\n            current_node = find_longest(i, current_node)\n\
-    \            if current_node[].link[a[i]] == nil:\n                current_node[].link[a[i]]\
-    \ = result.newPalindromicTreeNode(amax, current_node[].len + 2)\n            if\
-    \ current_node == result.nodes[0]:\n                current_node[].link[a[i]][].suffix_link\
+    \ initPalindromicTree*(a: openArray[int], amax: int = -1): PalindromicTree =\n\
+    \        let a = @a\n        var amax = amax\n        if amax < 0: amax = a.max\n\
+    \        result = init(amax)\n        proc find_longest(pos: int, node: ref PalindromicTreeNode):\
+    \ ref PalindromicTreeNode =\n            var ln = pos - node[].len - 1\n     \
+    \       if ln >= 0 and a[ln] == a[pos]:\n                return node\n       \
+    \     return find_longest(pos, node[].suffix_link)\n        var current_node =\
+    \ result.nodes[0]\n        for i in 0..<a.len:\n            current_node = find_longest(i,\
+    \ current_node)\n            if current_node[].link[a[i]] == nil:\n          \
+    \      current_node[].link[a[i]] = result.newPalindromicTreeNode(amax, current_node[].len\
+    \ + 2)\n            if current_node == result.nodes[0]:\n                current_node[].link[a[i]][].suffix_link\
     \ = result.nodes[1]\n            else:\n                current_node[].link[a[i]][].suffix_link\
     \ = find_longest(i, current_node[].suffix_link)[].link[a[i]]\n            current_node\
     \ = current_node[].link[a[i]]\n            current_node[].count += 1\n       \
@@ -65,9 +71,11 @@ data:
   isVerificationFile: false
   path: cplib/str/palindromic_tree.nim
   requiredBy: []
-  timestamp: '2026-02-20 16:40:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/palindromic_tree_test.nim
+  - verify/AI/palindromic_tree_test.nim
   - verify/str/palindromic_tree_test.nim
   - verify/str/palindromic_tree_test.nim
 documentation_of: cplib/str/palindromic_tree.nim

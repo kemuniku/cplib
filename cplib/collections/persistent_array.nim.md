@@ -10,6 +10,18 @@ data:
     title: cplib/collections/persistent_unionfind.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_array_test.nim
+    title: verify/AI/persistent_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_array_test.nim
+    title: verify/AI/persistent_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_unionfind_test.nim
+    title: verify/AI/persistent_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_unionfind_test.nim
+    title: verify/AI/persistent_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/persistent_unionfind_test.nim
     title: verify/collections/persistent_unionfind_test.nim
   - icon: ':heavy_check_mark:'
@@ -31,8 +43,8 @@ data:
     \ {.acyclic.} = ref object\n        arr :seq[PersistentArrayNode[shift,T]]\n \
     \       value: T\n\n    type PersistentArray*[shift:static int,T] = ref object\n\
     \        size : int\n        root : PersistentArrayNode[shift,T]\n        h:int\n\
-    \n    proc initPersistentArray*[T](v:seq[T],shift:static int = 5):PersistentArray[shift,T]\
-    \ =\n        var v = v\n        var bitsize = fastLog2(len(v))+1\n        var\
+    \n    proc initPersistentArray*[T](v:openArray[T],shift:static int = 5):PersistentArray[shift,T]\
+    \ =\n        let v = @v\n        var bitsize = fastLog2(len(v))+1\n        var\
     \ h = (bitsize+shift-1) div shift\n        result = PersistentArray[shift,T]()\n\
     \        result.size = len(v)\n        result.root = PersistentArrayNode[shift,T]()\n\
     \        result.h = h\n        proc dfs[shift,T](node:PersistentArrayNode[shift,T],now:int,depth:int):bool=\n\
@@ -69,9 +81,13 @@ data:
   requiredBy:
   - cplib/collections/persistent_unionfind.nim
   - cplib/collections/persistent_unionfind.nim
-  timestamp: '2024-09-25 00:57:26+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/persistent_unionfind_test.nim
+  - verify/AI/persistent_unionfind_test.nim
+  - verify/AI/persistent_array_test.nim
+  - verify/AI/persistent_array_test.nim
   - verify/collections/persistent_unionfind_test.nim
   - verify/collections/persistent_unionfind_test.nim
 documentation_of: cplib/collections/persistent_array.nim

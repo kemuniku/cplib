@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/topk_sum_heapq.nim
     title: cplib/collections/topk_sum_heapq.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/topk_sum_heapq.nim
     title: cplib/collections/topk_sum_heapq.nim
   - icon: ':warning:'
@@ -14,10 +14,22 @@ data:
   - icon: ':warning:'
     path: verify/collections/deletable_heapqueue_test_.nim
     title: verify/collections/deletable_heapqueue_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/deletable_heapqueue_test.nim
+    title: verify/AI/deletable_heapqueue_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/deletable_heapqueue_test.nim
+    title: verify/AI/deletable_heapqueue_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/topk_sum_heapq_test.nim
+    title: verify/AI/topk_sum_heapq_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/topk_sum_heapq_test.nim
+    title: verify/AI/topk_sum_heapq_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -32,10 +44,10 @@ data:
     \ = 1\n    import heapqueue\n    type Deletable_HeapQueue*[T] = object\n     \
     \   hq : HeapQueue[T]\n        dlhq : HeapQueue[T]\n\n    proc initDeletableHeapQueue*[T]():Deletable_HeapQueue[T]=\n\
     \        Deletable_HeapQueue[T](hq:initHeapQueue[T](),dlhq:initHeapQueue[T]())\n\
-    \n    proc toDeletableHeapQueue*[T](v:seq[T]):Deletable_HeapQueue[T]=\n      \
-    \  Deletable_HeapQueue[T](hq:v.toHeapQueue(),dlhq:initHeapQueue[T]())\n\n    proc\
-    \ `[]`*[T](self:var Deletable_HeapQueue[T],i:Natural):T=\n        assert i ==\
-    \ 0\n        return self.hq[i]\n\n    proc delete*[T](self:var Deletable_HeapQueue[T],x:T)=\n\
+    \n    proc toDeletableHeapQueue*[T](v:openArray[T]):Deletable_HeapQueue[T]=\n\
+    \        Deletable_HeapQueue[T](hq:(@v).toHeapQueue(),dlhq:initHeapQueue[T]())\n\
+    \n    proc `[]`*[T](self:var Deletable_HeapQueue[T],i:Natural):T=\n        assert\
+    \ i == 0\n        return self.hq[i]\n\n    proc delete*[T](self:var Deletable_HeapQueue[T],x:T)=\n\
     \        self.dlhq.push(x)\n        while len(self.dlhq) != 0 and len(self.hq)\
     \ != 0 and self.dlhq[0] == self.hq[0]:\n            discard self.dlhq.pop()\n\
     \            discard self.hq.pop()\n\n    proc push*[T](self:var Deletable_HeapQueue[T],x:T)=\n\
@@ -43,7 +55,7 @@ data:
     \        result = self.hq.pop()\n        while len(self.dlhq) != 0 and len(self.hq)\
     \ != 0 and self.dlhq[0] == self.hq[0]:\n            discard self.dlhq.pop()\n\
     \            discard self.hq.pop()\n\n    proc len*[T](self:var Deletable_HeapQueue[T]):int=\n\
-    \        return len(self.hq)-len(self.dlhq)"
+    \        return len(self.hq)-len(self.dlhq)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/deletable_heapqueue.nim
@@ -52,9 +64,13 @@ data:
   - verify/collections/deletable_heapqueue_test_.nim
   - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/topk_sum_heapq.nim
-  timestamp: '2025-06-13 12:04:22+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/deletable_heapqueue_test.nim
+  - verify/AI/deletable_heapqueue_test.nim
+  - verify/AI/topk_sum_heapq_test.nim
+  - verify/AI/topk_sum_heapq_test.nim
 documentation_of: cplib/collections/deletable_heapqueue.nim
 layout: document
 redirect_from:

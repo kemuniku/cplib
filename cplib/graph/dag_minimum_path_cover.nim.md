@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/graph/graph.nim
-    title: cplib/graph/graph.nim
-  - icon: ':warning:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
   _extendedRequiredBy:
@@ -20,10 +20,16 @@ data:
   - icon: ':warning:'
     path: verify/graph/dag_minimum_path_cover_hakata_test_.nim
     title: verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dag_minimum_path_cover_test.nim
+    title: verify/AI/dag_minimum_path_cover_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dag_minimum_path_cover_test.nim
+    title: verify/AI/dag_minimum_path_cover_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -50,9 +56,11 @@ data:
   requiredBy:
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
 documentation_of: cplib/graph/dag_minimum_path_cover.nim
 layout: document
 redirect_from:

@@ -10,6 +10,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_unionfind_test.nim
+    title: verify/AI/persistent_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_unionfind_test.nim
+    title: verify/AI/persistent_unionfind_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/persistent_unionfind_test.nim
     title: verify/collections/persistent_unionfind_test.nim
   - icon: ':heavy_check_mark:'
@@ -48,9 +54,11 @@ data:
   isVerificationFile: false
   path: cplib/collections/persistent_unionfind.nim
   requiredBy: []
-  timestamp: '2024-09-25 00:57:26+09:00'
+  timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/persistent_unionfind_test.nim
+  - verify/AI/persistent_unionfind_test.nim
   - verify/collections/persistent_unionfind_test.nim
   - verify/collections/persistent_unionfind_test.nim
 documentation_of: cplib/collections/persistent_unionfind.nim

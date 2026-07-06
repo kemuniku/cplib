@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -20,10 +20,16 @@ data:
   - icon: ':warning:'
     path: verify/graph/merge_tree_test_.nim
     title: verify/graph/merge_tree_test_.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merge_tree_test.nim
+    title: verify/AI/merge_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/merge_tree_test.nim
+    title: verify/AI/merge_tree_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -38,10 +44,10 @@ data:
     \        eout* : seq[int]\n        et* : seq[int]\n        ret* : seq[int]\n \
     \       tree* : UnWeightedUnDirectedGraph\n        uf* : UnionFind\n        now*\
     \ : seq[int]\n        N* : int\n        alr_query* : int\n        v*:seq[(int,int)]\n\
-    \    proc initMergeTree*(N:int,v:seq[(int,int)]):MergeTree=\n        ## \u30AF\
-    \u30A8\u30EA\u3092\u524D\u8AAD\u307F\u3059\u308B\u5FC5\u8981\u304C\u3042\u308B\
-    \u306E\u3067\u3001\u9802\u70B9\u6570\u3068\u30DE\u30FC\u30B8\u3092\u914D\u5217\
-    \u3067\u4E0E\u3048\u308B\n        var tree = initUnWeightedUnDirectedGraph(N+len(v)+1)\n\
+    \    proc initMergeTree*(N:int,v:openArray[(int,int)]):MergeTree=\n        ##\
+    \ \u30AF\u30A8\u30EA\u3092\u524D\u8AAD\u307F\u3059\u308B\u5FC5\u8981\u304C\u3042\
+    \u308B\u306E\u3067\u3001\u9802\u70B9\u6570\u3068\u30DE\u30FC\u30B8\u3092\u914D\
+    \u5217\u3067\u4E0E\u3048\u308B\n        var tree = initUnWeightedUnDirectedGraph(N+len(v)+1)\n\
     \        var uf = initUnionFind(N)\n        var now = newseqwith(N,0)\n      \
     \  for i in 0..<(N):\n            now[i] = i\n        for i in 0..<len(v):\n \
     \           var (u,v) = v[i]\n            var x = now[uf.root(u)]\n          \
@@ -57,7 +63,7 @@ data:
     \ = len(et)\n        dfs(N+len(v),-1)\n        result.tree = move(tree)\n    \
     \    result.ein = move(ein)\n        result.eout = move(eout)\n        result.et\
     \ = move(et)\n        result.ret = newseqwith(N,-1)\n        result.uf = initUnionFind(N)\n\
-    \        result.now = newseqwith(N,0)\n        result.v = v\n        result.N\
+    \        result.now = newseqwith(N,0)\n        result.v = @v\n        result.N\
     \ = N\n        for i in 0..<(N):\n            result.now[i] = i\n        for i\
     \ in 0..<N:\n            result.ret[result.et[i]] = i\n\n    proc unite*(self:var\
     \ MergeTree,u,v:int)=\n        ## \u9802\u70B9u,v\u3092\u30DE\u30FC\u30B8\u3059\
@@ -83,20 +89,22 @@ data:
     \        result = newseq[T](len(v))\n        for i in 0..<self.N:\n          \
     \  result[self.et[i]] = v[i]\n\n    proc index*(self:var MergeTree,x:int):int=\n\
     \        ## \u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u3067x\u306F\u4F55\
-    \u756A\u76EE\u304B\u3092\u8FD4\u3059\n        self.ret[x]"
+    \u756A\u76EE\u304B\u3092\u8FD4\u3059\n        self.ret[x]\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy:
   - verify/graph/merge_tree_test_.nim
   - verify/graph/merge_tree_test_.nim
-  timestamp: '2026-07-05 21:14:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-07-07 06:48:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/merge_tree_test.nim
+  - verify/AI/merge_tree_test.nim
 documentation_of: cplib/graph/merge_tree.nim
 layout: document
 redirect_from:

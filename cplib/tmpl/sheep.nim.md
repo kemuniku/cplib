@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -15,6 +15,12 @@ data:
     path: verify/str/merged_static_string.nim
     title: verify/str/merged_static_string.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sheep_test.nim
+    title: verify/AI/sheep_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sheep_test.nim
+    title: verify/AI/sheep_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
@@ -172,6 +178,8 @@ data:
   timestamp: '2026-05-24 07:19:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/sheep_test.nim
+  - verify/AI/sheep_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim

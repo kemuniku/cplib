@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/nearest_equiv.nim
     title: cplib/math/nearest_equiv.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/nearest_equiv.nim
     title: cplib/math/nearest_equiv.nim
   _extendedRequiredBy: []

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_B
     links:
@@ -34,15 +34,15 @@ data:
     \ result)\n\nvar N,W = ii()\n\nvar tmp : seq[(int,int)]\nfor _ in 0..<N:\n   \
     \ var v,w = ii()\n    tmp.add((v,w))\n\necho solve_01knapsack_NW(tmp,W)"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/knapsack.nim
   - cplib/utils/knapsack.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/knapsack.nim
   isVerificationFile: true
   path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
   requiredBy: []
-  timestamp: '2026-05-26 07:40:48+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/utils/knapsack/solve_01knapsack_NW_test.nim
 layout: document

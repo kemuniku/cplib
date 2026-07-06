@@ -47,18 +47,18 @@ data:
     \    var s1, s2 = initSegment(get(), get())\n    echo int(intersect(s1, s2))\n\
     \n"
   dependsOn:
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
   requiredBy: []
-  timestamp: '2024-03-28 16:38:54+09:00'
+  timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/intersect_cgl2b_test.nim

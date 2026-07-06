@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/qcfium_test.nim
+    title: verify/AI/qcfium_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/qcfium_test.nim
+    title: verify/AI/qcfium_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
   - icon: ':heavy_check_mark:'
@@ -32,6 +38,8 @@ data:
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/AI/qcfium_test.nim
+  - verify/AI/qcfium_test.nim
 documentation_of: cplib/tmpl/qcfium.nim
 layout: document
 redirect_from:

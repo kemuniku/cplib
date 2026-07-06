@@ -4,14 +4,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/tree/cartesiantree_test.nim
-    title: verify/tree/cartesiantree_test.nim
+    path: verify/AI/cartesiantree_test.nim
+    title: verify/AI/cartesiantree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/cartesiantree_test.nim
+    title: verify/AI/cartesiantree_test.nim
+  - icon: ':x:'
     path: verify/tree/cartesiantree_test.nim
     title: verify/tree/cartesiantree_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/tree/cartesiantree_test.nim
+    title: verify/tree/cartesiantree_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -29,14 +35,16 @@ data:
     \ , result[s].l)\n                else:\n                    result[i].l = s\n\
     \                result[s].p = i\n            if len(stack) > 0:\n           \
     \     result[i].p = stack[^1]\n                result[stack[^1]].r = i\n     \
-    \       stack.add(i)\n\n            #echo stack.mapit(A[it])"
+    \       stack.add(i)\n\n            #echo stack.mapit(A[it])\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tree/cartesiantree.nim
   requiredBy: []
-  timestamp: '2026-02-11 05:05:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-06 04:42:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/AI/cartesiantree_test.nim
+  - verify/AI/cartesiantree_test.nim
   - verify/tree/cartesiantree_test.nim
   - verify/tree/cartesiantree_test.nim
 documentation_of: cplib/tree/cartesiantree.nim
