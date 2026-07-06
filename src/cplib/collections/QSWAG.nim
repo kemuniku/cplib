@@ -46,3 +46,19 @@ when not declared CPLIB_COLLECTIONS_QSWAG:
         if index < len(self.top):
             return self.top[len(self.top)-1-index]
         return self.bottom[index-len(self.top)]
+    proc get_maxrights*[T](v:seq[T],op:proc(l,r:T):T,e:T,f:proc(x:T):bool):seq[int]=
+        assert f(e)
+        var swag = initSWAG(op,e)
+        var r = 0
+        for l in 0..<(len(v)):
+            if l > r:
+                r = l
+            while r != len(v) and swag.fold().f():
+                swag.push(v[r])
+                r += 1
+            if swag.fold().f():
+                result.add(len(v))
+            else:
+                result.add(r-1)
+            if len(swag) > 0:
+                discard swag.pop()
