@@ -17,7 +17,7 @@ when not declared CPLIB_TREE_HLD:
         var iI = 1
         for i in 0..<n:
             var p = hld.I[i]
-            for e in g[p]:
+            for (e, _) in g.to_and_cost(p):
                 if hld.P[p] != e:
                     hld.I[iI] = e
                     hld.P[e] = p
@@ -48,7 +48,7 @@ when not declared CPLIB_TREE_HLD:
         for p in hld.I:
             hld.rangeR[p] = hld.rangeL[p] + Z[p]
             var ir = hld.rangeR[p]
-            for e in g[p]:
+            for (e, _) in g.to_and_cost(p):
                 if hld.P[p] != e and e != nx[p]:
                     ir -= Z[e]
                     hld.rangeL[e] = ir
@@ -62,7 +62,7 @@ when not declared CPLIB_TREE_HLD:
         var gn = initUnWeightedUnDirectedStaticGraph(n)
         var seen = initHashSet[(int, int)]()
         for i in 0..<n:
-            for (j, _) in g[i]:
+            for (j, _) in g.to_and_cost(i):
                 if (i, j) notin seen:
                     gn.add_edge(i, j)
                     seen.incl((i, j))
@@ -180,18 +180,18 @@ when not declared CPLIB_TREE_HLD:
                 result.add_edge(stack[^1],v[i])
             stack.add(v[i])
     
-    proc initAuxiliaryWeightedTree*(hld:HeavyLightDecomposition,v:openArray[int]):WeightedUnDirectedTableGraph[int,int]=
+    proc initAuxiliaryWeightedTree*(hld: HeavyLightDecomposition, v: openArray[int], S: typedesc = int): WeightedUnDirectedTableGraph[int, S] =
         ## 根が欲しかったらG.v[0]を使ってください　けむにく
         var v = v.sortedByit(hld.toseq(it))
         for i in 0..<(len(v)-1):
             v.add(hld.lca(v[i],v[i+1]))
         v = v.sortedByIt(hld.toseq(it)).deduplicate(true)
         var stack :seq[int]
-        result = initWeightedUnDirectedTableGraph(v,int)
+        result = initWeightedUnDirectedTableGraph(v, S)
         stack.add(v[0])
         for i in 1..<len(v):
             while len(stack) > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):
                 discard stack.pop()
             if len(stack) != 0:
-                result.add_edge(stack[^1],v[i],hld.depth(v[i])-hld.depth(stack[^1]))
+                result.add_edge(stack[^1], v[i], S(hld.depth(v[i]) - hld.depth(stack[^1])))
             stack.add(v[i])
