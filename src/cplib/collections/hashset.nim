@@ -39,7 +39,7 @@ when not declared CPLIB_COLLECTIONS_HASHSET:
         self.fill = 0
         swap(vi, self.values)
         for item in vi:
-            if item.state == State.empty: continue
+            if item.state != State.active: continue
             var val = item.value
             self.add_item(val)
     proc incl*[T](self: var HashSet[T], val: T) =

@@ -24,7 +24,7 @@ when not declared CPLIB_GEOMETRY_CCW:
 
     proc ccw*[T](p1, p2, p3: Point[T], strict: bool = false): int =
         ##3点の位置関係を整数で返す. COUNTER_CLOCKWISE: 2, CLOCKWISE: -2, ON_SEGMENT: 0, ONLINE_BACK: 1, ONLINE_FRONT: -1
-        ccw(initLine(p1, p2), p3)
+        ccw(initLine(p1, p2), p3, strict)
     proc online*[T](l: Line[T], p: Point[T]): bool =
         ##点pが直線l上にあるかどうかを判定
         ccw(l, p) in -1..1

@@ -23,8 +23,11 @@ when not declared CPLIB_MODINT_MODINT:
     proc `*`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) * b
     proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) / b
     proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt, b: static int): auto =
-        const tmp = init(Modint, b).inv
-        return a * tmp
+        when ModInt is StaticMontgomeryModint or ModInt is StaticBarrettModint:
+            const tmp = init(Modint, b).inv
+            return a * tmp
+        else:
+            return a * init(Modint, b).inv
     proc pow*(a: MontgomeryModint or BarrettModint, n: int): auto =
         result = init(typeof(a), 1)
         var a = a
