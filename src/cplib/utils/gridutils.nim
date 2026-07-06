@@ -18,7 +18,7 @@ when not declared CPLIB_UTILS_GRIDUTILS:
                     return (i,j)
         return (-1,-1)
 
-    proc gridfinds*[T](grid : seq[seq[T]],value:T):seq[(int,int)]=
+    proc gridfinds*[T](grid : openArray[seq[T]],value:T):seq[(int,int)]=
         for i in 0..<len(grid):
             for j in 0..<len(grid[i]):
                 if grid[i][j] == value:
@@ -33,7 +33,7 @@ when not declared CPLIB_UTILS_GRIDUTILS:
                     return (i,j)
         return (-1,-1)
 
-    proc gridfinds*(grid : seq[string],value:char):seq[(int,int)]=
+    proc gridfinds*(grid : openArray[string],value:char):seq[(int,int)]=
         for i in 0..<len(grid):
             for j in 0..<len(grid[i]):
                 if grid[i][j] == value:
