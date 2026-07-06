@@ -15,3 +15,10 @@ assert cmp(a, b) < 0
 assert b > a
 assert a < b
 assert a == a
+
+doAssert not compiles(a mod b)
+doAssert not compiles(a & b)
+doAssert not compiles(a | b)
+doAssert not compiles(a ^ b)
+doAssert not compiles(a << b)
+doAssert not compiles(a >> b)
