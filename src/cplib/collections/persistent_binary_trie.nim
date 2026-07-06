@@ -1,6 +1,6 @@
 ## --mm:arc推奨かも。
-when not declared CPLIB_COLLECTIONS_PERSITENT_BINARY_TRIE:
-    const CPLIB_COLLECTIONS_PERSITENT_BINARY_TRIE* = 1
+when not declared CPLIB_COLLECTIONS_PERSISTENT_BINARY_TRIE:
+    const CPLIB_COLLECTIONS_PERSISTENT_BINARY_TRIE* = 1
     type PersistentBinaryTrieNode = ref object
         zero:PersistentBinaryTrieNode
         one:PersistentBinaryTrieNode
