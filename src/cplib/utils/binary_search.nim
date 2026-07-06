@@ -14,7 +14,7 @@ when not declared CPLIB_UTILS_BINARY_SEARCH:
         var
             ok = ok
             ng = ng
-        while abs(ok - ng) > eps and abs(ok - ng) / max(ok, ng) > eps:
+        while abs(ok - ng) > eps and abs(ok - ng) / max(abs(ok), abs(ng)) > eps:
             var mid = (ok + ng) / 2
             if is_ok(mid): ok = mid
             else: ng = mid
