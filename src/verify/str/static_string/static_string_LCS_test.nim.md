@@ -42,8 +42,8 @@ data:
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
     echo a,\" \",b,\" \",c,\" \",d"
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   isVerificationFile: true

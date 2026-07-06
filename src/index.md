@@ -69,6 +69,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/range_reverse_array.nim
+      title: cplib/collections/range_reverse_array.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/range_reverse_array_monoid.nim
+      title: cplib/collections/range_reverse_array_monoid.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/range_reverse_dualsegtree.nim
+      title: cplib/collections/range_reverse_dualsegtree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/range_reverse_lazysegtree.nim
+      title: cplib/collections/range_reverse_lazysegtree.nim
     - icon: ':warning:'
       path: cplib/collections/rangeset.nim
       title: cplib/collections/rangeset.nim
@@ -904,6 +916,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_kth_smallest_test.nim
       title: verify/collections/range_kth_smallest_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_reverse_array_monoid_test.nim
+      title: verify/collections/range_reverse_array_monoid_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_reverse_array_test.nim
+      title: verify/collections/range_reverse_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_reverse_dualsegtree_test.nim
+      title: verify/collections/range_reverse_dualsegtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_reverse_lazysegtree_test.nim
+      title: verify/collections/range_reverse_lazysegtree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/rollbackuf_yosupo_snap_test.nim
       title: verify/collections/rollbackuf_yosupo_snap_test.nim
