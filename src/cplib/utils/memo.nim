@@ -73,7 +73,7 @@ when not declared CPLIB_UTILS_MEMO:
         wrapperProc[6] = quote do:
             let `keyName` = `keyExpr`
 
-            if `keyName` in `cacheName`:
+            if `cacheName`.hasKey(`keyName`):
                 return `cacheName`[`keyName`]
 
             result = `callImpl`

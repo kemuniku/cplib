@@ -69,12 +69,11 @@ when not declared CPLIB_UTILS_BITITERS:
 
     iterator bitsingleton*(bits: int): int =
         ##立っているbitを一つずつ取り出します。
-        var i = bits and (-bits)
-        while true:
+        var rest = bits
+        while rest != 0:
+            var i = rest and (-rest)
             yield i
-            i = i and (not bits + (i shl 1))
-            if i == 0:
-                break
+            rest -= i
 
     iterator standingbits*(bits: int): int =
         #bits & (1<<i)が0でない値になるようなiを列挙します。

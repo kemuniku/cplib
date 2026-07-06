@@ -8,7 +8,7 @@ when not declared CPLIB_COLLECTIONS_DEFAULTDICT:
     proc `==`*[K, V](src, dst: DefaultDict[K, V]): bool = src.table == dst.table
     proc `[]=`*[K, V](d: var DefaultDict[K, V], key: K, val: V) = d.table[key] = val
     proc `[]`*[K, V](d: DefaultDict[K, V], key: K): V =
-        if key notin d.table: return d.default()
+        if key notin d.table: return d.default
         return d.table[key]
     proc `[]`*[K, V](d: var DefaultDict[K, V], key: K): var V =
         if key notin d.table: d.table[key] = d.default

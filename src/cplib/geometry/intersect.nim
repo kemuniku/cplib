@@ -4,7 +4,7 @@ when not declared CPLIB_GEOMETRY_INTERSECT:
     import cplib/geometry/ccw
     import cplib/geometry/angle
     proc intersect*[T](s1, s2: Segment[T], strict: bool = false): bool =
-        ##線分 s1, s2 が交わるかどうかを判定、端点で交わる場合を含む場合は strict = true を設定
+        ##線分 s1, s2 が交わるかどうかを判定、端点のみで交わる場合を含まない場合は strict = true を設定
         if strict:
             if ccw(s1, s2.s, true) == ON_SEGMENT: return online(s1, s2.t)
             if ccw(s1, s2.t, true) == ON_SEGMENT: return online(s1, s2.s)

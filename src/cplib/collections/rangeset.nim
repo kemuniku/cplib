@@ -54,6 +54,6 @@ proc update*[T](self:RangeSet[T],l,r:int,value:T)=
                 l = a
     self.st.incl((l,r,value))
 
-proc get_segment*[T](self:RangeSet[T],x:int):(int,int,int)=
+proc get_segment*[T](self:RangeSet[T],x:int):(int,int,T)=
     #これ最大値区間が編集されているときにバグります
     self.st.le((x,high(int),self.default)).get()

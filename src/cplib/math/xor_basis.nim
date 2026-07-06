@@ -97,5 +97,4 @@ when not declared CPLIB_COLLECTIONS_XOR_BASIS:
         for i in countdown(len(self.basis)-1,0,1):
             if (v xor self.basis[i]) < v:
                 v = v xor self.basis[i]
-        return v xor x
-
+        return (v xor self.kth_smallest(k)) xor x

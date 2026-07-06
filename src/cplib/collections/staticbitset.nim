@@ -11,6 +11,11 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
     proc varshr(x:var uint,y:int) {.importcpp:"# >>= #".}
     proc varshl(x:var uint,y:int) {.importcpp:"# <<= #".}
 
+    proc trim[size](bitset: var BitSet[size]) =
+        const mod64 = size mod 64
+        when mod64 != 0:
+            bitset.bits[^1].varand((1u shl mod64) - 1)
+
     proc initBitSet*(x:static int):BitSet[x]=
         discard
 
@@ -78,6 +83,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
                 result.bits[i].varshl(mod64)
                 result.bits[i].varor(tmp shr (64-mod64))
                 tmp = msk
+        result.trim()
     
     proc andpopcount*[size](x,y:BitSet[size]):int=
         for i in 0..<min(len(x.bits),len(y.bits)):

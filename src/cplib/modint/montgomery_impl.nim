@@ -70,7 +70,7 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         result = reduce(T, a.a).int
         if result.uint32 >= T.get_M: result -= T.get_M.int
 
-    proc `-`*[T: MontgomeryModint](a: T): T = init(T, 0) - a
+    proc `-`*[T: MontgomeryModint](a: T): T = (result = init(T, 0); result -= a)
     proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger) = a.a = reduce(T, uint(a.a) * init(T, b).a)
     proc inv*[T: MontgomeryModint](x: T): T =
         assert x.val != 0
