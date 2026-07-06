@@ -1,5 +1,5 @@
 when not declared CPLIB_UTILS_KTH_ELEMENT:
-    const COMPETITIVE_UTILS_KTH_ELEMENT* = 1
+    const CPLIB_UTILS_KTH_ELEMENT* = 1
     import random,sequtils
     randomize()
     proc kth_element*[T](X:openArray[T],K:int):T=

@@ -1,5 +1,5 @@
 when not declared CPLIB_COLLECTIONS_ROOT_VALUE_UNIONFIND:
-    const CPLIB_COLLECTIONS_UNIONFIND* = 1
+    const CPLIB_COLLECTIONS_ROOT_VALUE_UNIONFIND* = 1
     import algorithm, sequtils
     type RootValueUnionFind*[T] = ref object
         count*: int

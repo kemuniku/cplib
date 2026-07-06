@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_UNIONFIND:
-    const CPLIB_COLLECTIONS_UNIONFIND* = 1
+when not declared CPLIB_COLLECTIONS_GROUP_UNIONFIND:
+    const CPLIB_COLLECTIONS_GROUP_UNIONFIND* = 1
     import algorithm, sequtils
     type UnionFind* = ref object
         count*: int
