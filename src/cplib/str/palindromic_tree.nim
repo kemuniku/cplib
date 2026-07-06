@@ -1,5 +1,5 @@
-when not declared CPLIB_COLLECTIONS_PALINDROMIC_TREE:
-    const CPLIB_COLLECTIONS_PALINDROMIC_TREE* = 1
+when not declared CPLIB_STR_PALINDROMIC_TREE:
+    const CPLIB_STR_PALINDROMIC_TREE* = 1
     import sequtils, algorithm
     type PalindromicTreeNode* = object
         link*: seq[ref PalindromicTreeNode]

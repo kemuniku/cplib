@@ -1,6 +1,6 @@
 ## 存在しない要素を消そうとするとバグるので注意
 when not declared CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:
-    const CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUET* = 1
+    const CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE* = 1
     import heapqueue
     type Deletable_HeapQueue*[T] = object
         hq : HeapQueue[T]

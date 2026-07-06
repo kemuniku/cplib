@@ -1,5 +1,5 @@
 when not declared CPLIB_GRAPH_STEINER_TREE:
-    const CPLIB_GRAPH_RESTORE_STEINER_TREE* = 1
+    const CPLIB_GRAPH_STEINER_TREE* = 1
     import cplib/graph/graph
     import cplib/utils/constants
     import cplib/utils/bititers
