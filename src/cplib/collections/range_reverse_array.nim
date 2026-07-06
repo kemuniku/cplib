@@ -1,35 +1,31 @@
-when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
-    const CPLIB_COLLECTIONS_REVERSIBLE_ARRAY* = 1
-    import strutils
+when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY:
+    const CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY* = 1
+    import random, strutils
 
-    type ReversibleArrayNode[T] {.acyclic.} = ref object
-        left, right: ReversibleArrayNode[T]
+    randomize()
+
+    type RangeReverseArrayNode[T] {.acyclic.} = ref object
+        left, right: RangeReverseArrayNode[T]
         priority: uint64
         size: int
         rev: bool
         value: T
 
-    type ReversibleArray*[T] = ref object
-        root: ReversibleArrayNode[T]
+    type RangeReverseArray*[T] = ref object
+        root: RangeReverseArrayNode[T]
         length: int
 
-    proc splitMix64(x: uint64): uint64 =
-        var z = x + 0x9e3779b97f4a7c15'u64
-        z = (z xor (z shr 30)) * 0xbf58476d1ce4e5b9'u64
-        z = (z xor (z shr 27)) * 0x94d049bb133111eb'u64
-        return z xor (z shr 31)
-
-    proc nodeLen[T](node: ReversibleArrayNode[T]): int {.inline.} =
+    proc nodeLen[T](node: RangeReverseArrayNode[T]): int {.inline.} =
         if node.isNil: 0 else: node.size
 
-    proc update[T](node: ReversibleArrayNode[T]) =
+    proc update[T](node: RangeReverseArrayNode[T]) =
         node.size = 1 + node.left.nodeLen + node.right.nodeLen
 
-    proc toggle[T](node: ReversibleArrayNode[T]) =
+    proc toggle[T](node: RangeReverseArrayNode[T]) =
         if not node.isNil:
             node.rev = not node.rev
 
-    proc push[T](node: ReversibleArrayNode[T]) =
+    proc push[T](node: RangeReverseArrayNode[T]) =
         if node.isNil or not node.rev: return
         let tmp = node.left
         node.left = node.right
@@ -38,20 +34,20 @@ when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
         node.right.toggle
         node.rev = false
 
-    proc newNode[T](value: T, priority: uint64): ReversibleArrayNode[T] =
-        ReversibleArrayNode[T](priority: priority, size: 1, value: value)
+    proc newNode[T](value: T, priority: uint64): RangeReverseArrayNode[T] =
+        RangeReverseArrayNode[T](priority: priority, size: 1, value: value)
 
-    proc updateAll[T](node: ReversibleArrayNode[T]) =
+    proc updateAll[T](node: RangeReverseArrayNode[T]) =
         if node.isNil: return
         node.left.updateAll
         node.right.updateAll
         node.update
 
-    proc build[T](v: openArray[T]): ReversibleArrayNode[T] =
-        var stack: seq[ReversibleArrayNode[T]]
+    proc build[T](v: openArray[T]): RangeReverseArrayNode[T] =
+        var stack: seq[RangeReverseArrayNode[T]]
         for i in 0..<v.len:
-            let node = newNode(v[i], splitMix64(uint64(i)))
-            var last: ReversibleArrayNode[T] = nil
+            let node = newNode(v[i], rand(uint64))
+            var last: RangeReverseArrayNode[T] = nil
             while stack.len > 0 and stack[^1].priority < node.priority:
                 last = stack.pop()
             node.left = last
@@ -63,7 +59,7 @@ when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
         result = stack[0]
         result.updateAll
 
-    proc merge[T](left, right: ReversibleArrayNode[T]): ReversibleArrayNode[T] =
+    proc merge[T](left, right: RangeReverseArrayNode[T]): RangeReverseArrayNode[T] =
         if left.isNil: return right
         if right.isNil: return left
         if left.priority > right.priority:
@@ -77,7 +73,7 @@ when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
             right.update
             return right
 
-    proc split[T](node: ReversibleArrayNode[T], k: int): (ReversibleArrayNode[T], ReversibleArrayNode[T]) =
+    proc split[T](node: RangeReverseArrayNode[T], k: int): (RangeReverseArrayNode[T], RangeReverseArrayNode[T]) =
         if node.isNil:
             return (nil, nil)
         node.push
@@ -93,18 +89,18 @@ when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
             node.update
             return (node, right)
 
-    proc initReversibleArray*[T](v: openArray[T]): ReversibleArray[T] =
+    proc initRangeReverseArray*[T](v: openArray[T]): RangeReverseArray[T] =
         ## vで初期化します。
-        ## 区間反転、一点取得はともにO(log N)です。
-        ReversibleArray[T](root: build(v), length: v.len)
+        ## 区間反転、一点取得、一点更新はすべてO(log N)です。
+        RangeReverseArray[T](root: build(v), length: v.len)
 
-    proc toReversibleArray*[T](v: openArray[T]): ReversibleArray[T] =
-        initReversibleArray(v)
+    proc toRangeReverseArray*[T](v: openArray[T]): RangeReverseArray[T] =
+        initRangeReverseArray(v)
 
-    proc len*[T](self: ReversibleArray[T]): int =
+    proc len*[T](self: RangeReverseArray[T]): int =
         self.length
 
-    proc reverse*[T](self: ReversibleArray[T], l, r: int) =
+    proc reverse*[T](self: RangeReverseArray[T], l, r: int) =
         ## 半開区間[l, r)を反転します。
         assert 0 <= l and l <= r and r <= self.length
         var (left, middleRight) = split(self.root, l)
@@ -112,11 +108,11 @@ when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
         middle.toggle
         self.root = merge(left, merge(middle, right))
 
-    proc reverse*[T](self: ReversibleArray[T], segment: HSlice[int, int]) =
+    proc reverse*[T](self: RangeReverseArray[T], segment: HSlice[int, int]) =
         ## 閉区間segmentを反転します。
         self.reverse(segment.a, segment.b + 1)
 
-    proc get*[T](self: ReversibleArray[T], index: int): T =
+    proc get*[T](self: RangeReverseArray[T], index: int): T =
         ## index番目の値を返します。
         assert 0 <= index and index < self.length
         var node = self.root
@@ -132,13 +128,36 @@ when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
                 k -= leftSize + 1
                 node = node.right
 
-    proc `[]`*[T](self: ReversibleArray[T], index: int): T =
+    proc update*[T](self: RangeReverseArray[T], index: int, value: T) =
+        ## index番目の値をvalueに変更します。
+        assert 0 <= index and index < self.length
+        var node = self.root
+        var k = index
+        while true:
+            node.push
+            let leftSize = node.left.nodeLen
+            if k < leftSize:
+                node = node.left
+            elif k == leftSize:
+                node.value = value
+                return
+            else:
+                k -= leftSize + 1
+                node = node.right
+
+    proc `[]`*[T](self: RangeReverseArray[T], index: int): T =
         self.get(index)
 
-    proc `[]`*[T](self: ReversibleArray[T], index: BackwardsIndex): T =
+    proc `[]`*[T](self: RangeReverseArray[T], index: BackwardsIndex): T =
         self.get(self.length - int(index))
 
-    iterator items*[T](self: ReversibleArray[T]): T =
+    proc `[]=`*[T](self: RangeReverseArray[T], index: int, value: T) =
+        self.update(index, value)
+
+    proc `[]=`*[T](self: RangeReverseArray[T], index: BackwardsIndex, value: T) =
+        self.update(self.length - int(index), value)
+
+    iterator items*[T](self: RangeReverseArray[T]): T =
         if not self.root.isNil:
             var stack = @[(0, self.root)]
             while stack.len > 0:
@@ -151,11 +170,11 @@ when not declared CPLIB_COLLECTIONS_REVERSIBLE_ARRAY:
                 else:
                     yield node.value
 
-    proc toSeq*[T](self: ReversibleArray[T]): seq[T] =
+    proc toSeq*[T](self: RangeReverseArray[T]): seq[T] =
         for x in self:
             result.add(x)
 
-    proc `$`*[T](self: ReversibleArray[T]): string =
+    proc `$`*[T](self: RangeReverseArray[T]): string =
         var s: seq[string]
         for x in self:
             s.add($x)

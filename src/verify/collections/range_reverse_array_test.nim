@@ -1,14 +1,14 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 echo "Hello World"
 import sequtils
-import cplib/collections/reversible_array
+import cplib/collections/range_reverse_array
 
-var empty = initReversibleArray(newSeq[int]())
+var empty = initRangeReverseArray(newSeq[int]())
 empty.reverse(0, 0)
 assert empty.len == 0
 assert empty.toSeq == newSeq[int]()
 
-var a = initReversibleArray((0..<10).toSeq)
+var a = initRangeReverseArray((0..<10).toSeq)
 assert a.len == 10
 assert a.toSeq == (0..<10).toSeq
 
@@ -24,13 +24,19 @@ assert a.toSeq == @[0, 1, 6, 5, 4, 3, 2, 7, 8, 9]
 
 a.reverse(0..9)
 assert a.toSeq == @[9, 8, 7, 2, 3, 4, 5, 6, 1, 0]
+a.update(3, 100)
+assert a.toSeq == @[9, 8, 7, 100, 3, 4, 5, 6, 1, 0]
+a[^1] = -1
+assert a.toSeq == @[9, 8, 7, 100, 3, 4, 5, 6, 1, -1]
 
-var b = initReversibleArray(["a", "b", "c", "d"])
+var b = initRangeReverseArray(["a", "b", "c", "d"])
 b.reverse(1, 4)
 assert b[1] == "d"
-assert $b == "a d c b"
+b[2] = "x"
+assert b.toSeq == @["a", "d", "x", "b"]
+assert $b == "a d x b"
 
-var c = initReversibleArray((0..<12).toSeq)
+var c = initRangeReverseArray((0..<12).toSeq)
 var expected = (0..<12).toSeq
 for l in 0..12:
     for r in l..12:
