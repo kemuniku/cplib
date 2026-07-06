@@ -3,7 +3,7 @@ echo "Hello World"
 
 import cplib/matrix/rolling_hash_2d
 
-let hm = initHashMartix(@[@[1, 2, 1], @[3, 4, 3]])
+let hm = initHashMatrix(@[@[1, 2, 1], @[3, 4, 3]])
 assert hm[0, 1] == 2
 assert hm[1][2] == 3
 let leftCol = hm[0..1, 0..0]
