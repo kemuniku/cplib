@@ -13,3 +13,5 @@ g.add_edge(0, 3, 10)
 let dp = g.steiner_tree_dp(@[0, 2, 3], INF64)
 assert dp[(1 shl 3) - 1][0] == 6
 assert g.steiner_tree_mincost(@[0, 2, 3]) == 6
+assert g.steiner_tree_mincost(@[0, 2, 3], INF64) == 6
+assert g.steiner_tree_mincost(@[0, 2, 3], 0, INF64) == 6

@@ -19,7 +19,7 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
             changed = false
             for i in 0..<N:
                 if costs[i] == INF: continue
-                for (j, c) in G[i]:
+                for (j, c) in G.to_and_cost(i):
                     var temp = costs[i] + c
                     if temp < costs[j]:
                         prev[j] = i
@@ -30,7 +30,7 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
             for _ in 0..<N:
                 for i in 0..<N:
                     if costs[i] == INF: continue
-                    for (j, c) in G[i]:
+                    for (j, c) in G.to_and_cost(i):
                         var temp = costs[i] + c
                         if temp < costs[j]:
                             costs[j] = -INF
@@ -42,16 +42,18 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
             proc `name`*(G: DynamicGraph[`t`] or StaticGraph[`t`], start: int or seq[int], ZERO: `t` = `zero`, INF: `t` = `inf`): auto =
                 `impl_name`(G, start, ZERO, INF)
     declareBellmanFord(restore_bellmanford, int, 0, INF64)
-    declareBellmanFord(restore_bellmanford, int32, 0, INF32)
+    declareBellmanFord(restore_bellmanford, int32, 0i32, INF32)
     declareBellmanFord(restore_bellmanford, float, 0.0, 1e100)
+    declareBellmanFord(restore_bellmanford, float32, 0.0'f32, 1e30'f32)
     proc restore_bellmanford*[T](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto =
         restore_bellmanford_impl(G, start, ZERO, INF)
     proc bellmanford_impl[T](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto =
         var (costs, _) = restore_bellmanford(G, start, ZERO, INF)
         return costs
     declareBellmanFord(bellmanford, int, 0, INF64)
-    declareBellmanFord(bellmanford, int32, 0, INF32)
+    declareBellmanFord(bellmanford, int32, 0i32, INF32)
     declareBellmanFord(bellmanford, float, 0.0, 1e100)
+    declareBellmanFord(bellmanford, float32, 0.0'f32, 1e30'f32)
     proc bellmanford*[T](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto =
         bellmanford_impl(G, start, ZERO, INF)
     proc shortest_path_bellmanford_impl[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =
@@ -61,6 +63,10 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
     proc shortest_path_bellmanford*(G: DynamicGraph[int] or StaticGraph[int], start, goal: int, ZERO: int = 0, INF: int = INF64): tuple[path: seq[int], cost: int] =
         shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
     proc shortest_path_bellmanford*(G: DynamicGraph[int32] or StaticGraph[int32], start, goal: int, ZERO: int32 = 0, INF: int32 = INF32): tuple[path: seq[int], cost: int32] =
+        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
+    proc shortest_path_bellmanford*(G: DynamicGraph[float] or StaticGraph[float], start, goal: int, ZERO: float = 0.0, INF: float = 1e100): tuple[path: seq[int], cost: float] =
+        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
+    proc shortest_path_bellmanford*(G: DynamicGraph[float32] or StaticGraph[float32], start, goal: int, ZERO: float32 = 0.0'f32, INF: float32 = 1e30'f32): tuple[path: seq[int], cost: float32] =
         shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
     proc shortest_path_bellmanford*[T](G: DynamicGraph[T] or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost: T] =
         shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)
