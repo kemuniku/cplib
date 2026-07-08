@@ -335,8 +335,9 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
 
 
 
-    proc initAuxiliaryWeightedTree*(v:seq[SBTNode[int]]):WeightedUnDirectedTableGraph[SBTNode[int],int]=
+    proc initAuxiliaryWeightedTree*(v:openArray[SBTNode[int]]):WeightedUnDirectedTableGraph[SBTNode[int],int]=
         ## 根が欲しかったらG.v[0]を使ってください　けむにく
+        assert len(v) > 0
         var v = v.sorted(cmp_with_ein)
         for i in 0..<(len(v)-1):
             v.add(LCA(v[i],v[i+1]))
