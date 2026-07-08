@@ -338,7 +338,6 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
     proc initAuxiliaryWeightedTree*(v:seq[SBTNode[int]]):WeightedUnDirectedTableGraph[SBTNode[int],int]=
         ## 根が欲しかったらG.v[0]を使ってください　けむにく
         var v = v.sorted(cmp_with_ein)
-        echo v.mapit(it.get_range_fraction())
         for i in 0..<(len(v)-1):
             v.add(LCA(v[i],v[i+1]))
         v = v.sorted(cmp_with_ein).deduplicate(true)
@@ -346,7 +345,6 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         result = initWeightedUnDirectedTableGraph(v,int)
         stack.add(v[0])
         for i in 1..<len(v):
-            echo stack.mapit(it.toFraction())
             while len(stack) > 0 and LCA(stack[^1],v[i]) != stack[^1]:
                 discard stack.pop()
             if len(stack) != 0:
