@@ -52,6 +52,7 @@ assertClose(ug.get_MST_cost(), 4.25)
 let mst = ug.to_MST_Graph()
 assertClose(mst.get_MST_cost(), 4.25)
 assertClose(ug.steiner_tree_mincost(@[0, 2, 3]), 4.25)
+assertClose(ug.steiner_tree_mincost(@[0, 2, 3], 0.0, 1e100), 4.25)
 
 var tree = initWeightedUnDirectedGraph(4, float)
 tree.add_edge(0, 1, 1.0)
@@ -74,6 +75,7 @@ sg.add_edge(0, 2, 10.int32)
 sg.build()
 assert sg.get_MST_cost() == 5.int32
 assert sg.to_MST_Graph().get_MST_cost() == 5.int32
+assert sg.steiner_tree_mincost(@[0, 2], 0.int32, 100.int32) == 5.int32
 
 var kg = initWeightedDirectedGraph(3, int32)
 kg.add_edge(0, 1, 1.int32)
