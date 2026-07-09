@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/SWAG_test.nim
     title: verify/collections/SWAG_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -69,13 +69,19 @@ data:
     \            raise newException(IndexDefect, \"index \" & $index & \" not in 0\
     \ .. \" & $(len(self)-1))\n        if index < len(self.top):\n            return\
     \ self.top[len(self.top)-1-index]\n        return self.bottom[index-len(self.top)]\n\
-    \n"
+    \n    proc get_maxrights*[T](v:seq[T],op:proc(l,r:T):T,e:T,f:proc(x:T):bool):seq[int]=\n\
+    \        assert f(e)\n        var swag = initSWAG(op,e)\n        var r = 0\n \
+    \       for l in 0..<(len(v)):\n            if l > r:\n                r = l\n\
+    \            while r != len(v) and swag.fold().f():\n                swag.addLast(v[r])\n\
+    \                r += 1\n            if swag.fold().f():\n                result.add(len(v))\n\
+    \            else:\n                result.add(r-1)\n            if len(swag)\
+    \ > 0:\n                discard swag.popFirst()\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/SWAG.nim
   requiredBy: []
-  timestamp: '2024-01-28 11:14:45+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2026-07-07 08:02:44+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/SWAG_test.nim
   - verify/AI/SWAG_test.nim

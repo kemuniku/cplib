@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -15,39 +15,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/knapsack_test.nim
     title: verify/AI/knapsack_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_Bknapsack_test.nim
     title: verify/utils/knapsack/solve_Bknapsack_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_Bknapsack_test.nim
     title: verify/utils/knapsack/solve_Bknapsack_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
     title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
     title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -108,7 +108,7 @@ data:
   path: cplib/utils/knapsack.nim
   requiredBy: []
   timestamp: '2026-07-06 04:42:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/knapsack_test.nim
   - verify/AI/knapsack_test.nim

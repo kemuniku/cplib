@@ -64,6 +64,12 @@ data:
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/maxk_dijkstra_test.nim
     title: verify/AI/maxk_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -166,6 +172,8 @@ data:
   - verify/AI/restore_shortest_path_from_prev_test.nim
   - verify/AI/dijkstra_test.nim
   - verify/AI/dijkstra_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim

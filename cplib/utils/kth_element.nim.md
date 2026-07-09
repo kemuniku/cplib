@@ -20,7 +20,7 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_UTILS_KTH_ELEMENT:\n    const COMPETITIVE_UTILS_KTH_ELEMENT*\
+  code: "when not declared CPLIB_UTILS_KTH_ELEMENT:\n    const CPLIB_UTILS_KTH_ELEMENT*\
     \ = 1\n    import random,sequtils\n    randomize()\n    proc kth_element*[T](X:openArray[T],K:int):T=\n\
     \        var now = 0\n        var r = len(X)\n        var C = newseqwith(r,0)\n\
     \        var X = @X\n        while true:\n            var L = 0\n            var\
@@ -63,7 +63,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/kth_element.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/kth_element_test.nim

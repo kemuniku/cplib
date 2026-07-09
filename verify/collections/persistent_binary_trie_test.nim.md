@@ -35,7 +35,7 @@ data:
   isVerificationFile: true
   path: verify/collections/persistent_binary_trie_test.nim
   requiredBy: []
-  timestamp: '2024-09-21 18:34:12+09:00'
+  timestamp: '2026-07-07 07:23:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/persistent_binary_trie_test.nim

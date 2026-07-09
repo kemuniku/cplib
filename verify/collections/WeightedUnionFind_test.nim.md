@@ -37,7 +37,7 @@ data:
   isVerificationFile: true
   path: verify/collections/WeightedUnionFind_test.nim
   requiredBy: []
-  timestamp: '2024-10-02 14:29:54+09:00'
+  timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/WeightedUnionFind_test.nim

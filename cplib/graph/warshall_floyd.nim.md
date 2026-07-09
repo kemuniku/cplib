@@ -1,20 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
@@ -54,30 +60,34 @@ data:
     \ i in 0..<g.len:\n                for j in 0..<g.len:\n                    if\
     \ d[i][k] != inf and d[k][j] != inf:\n                        d[i][j] = min(d[i][j],\
     \ d[i][k] + d[k][j])\n            for i in 0..<g.len:\n                if d[i][i]\
-    \ < 0: return (negative_cycle: true, d: d)\n        return (negative_cycle: false,\
-    \ d: d)\n\n    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int],\
+    \ < zero: return (negative_cycle: true, d: d)\n        return (negative_cycle:\
+    \ false, d: d)\n\n    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int],\
     \ zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]]\
     \ = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*(g: DynamicGraph[int32]\
-    \ or StaticGraph[int32], zero: int32 = 0.int32, inf: int = INF32): tuple[negative_cycle:\
+    \ or StaticGraph[int32], zero: int32 = 0.int32, inf: int32 = INF32): tuple[negative_cycle:\
     \ bool, d: seq[seq[int32]]] = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*(g:\
-    \ DynamicGraph[SomeFloat] or StaticGraph[SomeFloat], zero: SomeFloat = 0.0, inf:\
-    \ SomeFloat = 1e100): tuple[negative_cycle: bool, d: seq[seq[float]]] = warshall_floyd_impl(g,\
-    \ zero, inf)\n    proc warshall_floyd*[T](g: DynamicGraph[T] or StaticGraph[T],\
-    \ zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g,\
-    \ zero, inf)\n"
+    \ DynamicGraph[float] or StaticGraph[float], zero: float = 0.0, inf: float = 1e100):\
+    \ tuple[negative_cycle: bool, d: seq[seq[float]]] = warshall_floyd_impl(g, zero,\
+    \ inf)\n    proc warshall_floyd*(g: DynamicGraph[float32] or StaticGraph[float32],\
+    \ zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): tuple[negative_cycle: bool,\
+    \ d: seq[seq[float32]]] = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*[T](g:\
+    \ DynamicGraph[T] or StaticGraph[T], zero, inf: T): tuple[negative_cycle: bool,\
+    \ d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/warshall_floyd_test.nim
   - verify/AI/warshall_floyd_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim

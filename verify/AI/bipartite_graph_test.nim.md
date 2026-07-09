@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/bipartite_graph.nim
     title: cplib/graph/bipartite_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -54,14 +54,14 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/bipartite_graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/bipartite_graph_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/bipartite_graph_test.nim

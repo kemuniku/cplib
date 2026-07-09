@@ -32,8 +32,8 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "## --mm:arc\u63A8\u5968\u304B\u3082\u3002\nwhen not declared CPLIB_COLLECTIONS_PERSITENT_BINARY_TRIE:\n\
-    \    const CPLIB_COLLECTION_PERSITENT_BINARY_TRIE* = 1\n    type PersistentBinaryTrieNode\
+  code: "## --mm:arc\u63A8\u5968\u304B\u3082\u3002\nwhen not declared CPLIB_COLLECTIONS_PERSISTENT_BINARY_TRIE:\n\
+    \    const CPLIB_COLLECTIONS_PERSISTENT_BINARY_TRIE* = 1\n    type PersistentBinaryTrieNode\
     \ = ref object\n        zero:PersistentBinaryTrieNode\n        one:PersistentBinaryTrieNode\n\
     \        value : int\n    type PersistentBinaryTrie* = object\n        root :\
     \ PersistentBinaryTrieNode\n        h: int\n\n    proc initPersistentBineryTrie*(h:int):PersistentBinaryTrie=\n\
@@ -107,7 +107,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/persistent_binary_trie.nim
   requiredBy: []
-  timestamp: '2024-09-21 18:34:12+09:00'
+  timestamp: '2026-07-07 07:23:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/persistent_binary_trie_test.nim

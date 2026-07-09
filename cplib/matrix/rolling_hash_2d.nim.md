@@ -64,7 +64,7 @@ data:
     \    hash[i+1][j+1] = mul(mul(uint(x[i][j]),base_powi(i)).calc_mod(),base_powj(j)).calc_mod()\n\
     \        for i in 0..<H:\n            for j in 0..<W:\n                hash[i+1][j+1]\
     \ = (hash[i+1][j+1]+((hash[i][j+1] + hash[i+1][j]).calc_mod() + RH_MOD - hash[i][j]).calc_mod()).calc_mod()\n\
-    \        return HashMatrixBase[T](matrix: @x,hash:hash,H:H,W:W)\n\n    proc initHashMartix*[T](x:openArray[seq[T]]):HashMatrix[T]=\n\
+    \        return HashMatrixBase[T](matrix: @x,hash:hash,H:H,W:W)\n\n    proc initHashMatrix*[T](x:openArray[seq[T]]):HashMatrix[T]=\n\
     \        var base = initHashMatrixBase[T](x)\n        return HashMatrix[T](base:base,i:0,j:0,H:base.H,W:base.W)\n\
     \n    proc get*[T](HM:HashMatrix[T],islice:HSlice[int,int],jslice:HSlice[int,int]):HashMatrix[T]=\n\
     \        var i = HM.i + islice.a\n        var j = HM.j + jslice.a\n        var\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: false
   path: cplib/matrix/rolling_hash_2d.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-07 06:58:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/rolling_hash_2d_test.nim

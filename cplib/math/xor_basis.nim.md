@@ -20,7 +20,7 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_COLLECTIONS_XOR_BASIS:\n    const CPLIB_COLLECTION_XOR_BASIS*\
+  code: "when not declared CPLIB_MATH_XOR_BASIS:\n    const CPLIB_MATH_XOR_BASIS*\
     \ = 1\n    import algorithm\n\n    type XorBasis* = ref object\n        basis*\
     \ : seq[int]\n\n    proc initXorBasis*(A:openArray[int]):XorBasis=\n        result\
     \ = XorBasis()\n        for i in 0..<len(A):\n            var e = A[i]\n     \
@@ -79,7 +79,7 @@ data:
   isVerificationFile: false
   path: cplib/math/xor_basis.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:24:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/xor_basis_test.nim

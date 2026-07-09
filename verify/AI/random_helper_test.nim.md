@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -74,22 +74,22 @@ data:
     \ 'a'..'c').allIt(it in 'a'..'c')\nassert random_string(4, \"xyz\").allIt(it in\
     \ {'x', 'y', 'z'})\n"
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
-  - cplib/math/inner_math.nim
   - cplib/utils/random_helper.nim
   - cplib/tree/prufer.nim
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
-  - cplib/utils/random_helper.nim
-  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
+  - cplib/math/powmod.nim
+  - cplib/graph/graph.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/utils/random_helper.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 06:56:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/random_helper_test.nim

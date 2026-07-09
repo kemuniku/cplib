@@ -86,10 +86,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
   - icon: ':warning:'
@@ -172,6 +172,12 @@ data:
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/knapsack_test.nim
     title: verify/AI/knapsack_test.nim
   - icon: ':heavy_check_mark:'
@@ -339,45 +345,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NV_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_NW_test.nim
     title: verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_Bknapsack_test.nim
     title: verify/utils/knapsack/solve_Bknapsack_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_Bknapsack_test.nim
     title: verify/utils/knapsack/solve_Bknapsack_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
     title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
     title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -441,7 +447,7 @@ data:
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
   timestamp: '2025-03-09 17:42:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
@@ -475,6 +481,8 @@ data:
   - verify/AI/namori_forest_test.nim
   - verify/AI/constants_test.nim
   - verify/AI/constants_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
   - verify/AI/knapsack_test.nim
   - verify/AI/knapsack_test.nim
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim

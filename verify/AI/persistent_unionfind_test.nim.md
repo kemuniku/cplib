@@ -65,14 +65,14 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/persistent_array.nim
+  - cplib/collections/persistent_unionfind.nim
   - cplib/collections/persistent_array.nim
   - cplib/collections/persistent_unionfind.nim
-  - cplib/collections/persistent_unionfind.nim
+  - cplib/collections/persistent_array.nim
   isVerificationFile: true
   path: verify/AI/persistent_unionfind_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/persistent_unionfind_test.nim

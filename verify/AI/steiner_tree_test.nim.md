@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -68,20 +68,24 @@ data:
 
     assert g.steiner_tree_mincost(@[0, 2, 3]) == 6
 
+    assert g.steiner_tree_mincost(@[0, 2, 3], INF64) == 6
+
+    assert g.steiner_tree_mincost(@[0, 2, 3], 0, INF64) == 6
+
     '
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
   isVerificationFile: true
   path: verify/AI/steiner_tree_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-09 05:18:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/steiner_tree_test.nim

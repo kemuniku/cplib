@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -44,10 +44,10 @@ data:
 
     '
   dependsOn:
-  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []

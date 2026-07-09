@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/palindromic_tree.nim
     title: cplib/str/palindromic_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/palindromic_tree.nim
     title: cplib/str/palindromic_tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://yukicoder.me/problems/no/2606
     links:
@@ -34,8 +34,8 @@ data:
   isVerificationFile: true
   path: verify/str/palindromic_tree_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-07-07 07:12:05+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/palindromic_tree_test.nim
 layout: document

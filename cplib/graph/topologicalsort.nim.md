@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -52,6 +52,12 @@ data:
     path: verify/AI/dag_minimum_path_cover_test.nim
     title: verify/AI/dag_minimum_path_cover_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/topologicalsort_test.nim
     title: verify/AI/topologicalsort_test.nim
   - icon: ':heavy_check_mark:'
@@ -74,10 +80,10 @@ data:
     \            for (j, _) in G.to_and_cost(i):\n                gin[j] += 1\n  \
     \      var stack: seq[int]\n        for i in 0..<len(G):\n            if gin[i]\
     \ == 0:\n                stack.add(i)\n        while len(stack) != 0:\n      \
-    \      var i = stack.pop()\n            result.add(i)\n            for j in G[i]:\n\
-    \                gin[j] -= 1\n                if gin[j] == 0:\n              \
-    \      stack.add(j)\n    proc isDAG*(G: DirectedGraph): bool = G.topologicalsort.len\
-    \ == G.len\n"
+    \      var i = stack.pop()\n            result.add(i)\n            for (j, _)\
+    \ in G.to_and_cost(i):\n                gin[j] -= 1\n                if gin[j]\
+    \ == 0:\n                    stack.add(j)\n    proc isDAG*(G: DirectedGraph):\
+    \ bool = G.topologicalsort.len == G.len\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
@@ -96,13 +102,15 @@ data:
   - verify/graph/dynamic/topologicalsort_1_test_.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/dag_minimum_path_cover_test.nim
   - verify/AI/dag_minimum_path_cover_test.nim
   - verify/AI/topologicalsort_test.nim
   - verify/AI/topologicalsort_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/topologicalsort.nim
 layout: document
 redirect_from:

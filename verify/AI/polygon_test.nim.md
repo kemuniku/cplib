@@ -57,11 +57,11 @@ data:
   dependsOn:
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/polygon.nim
   isVerificationFile: true
   path: verify/AI/polygon_test.nim

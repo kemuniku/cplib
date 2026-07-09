@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dynamic_bipartite.nim
     title: cplib/graph/dynamic_bipartite.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -70,16 +70,16 @@ data:
 
     '
   dependsOn:
+  - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/dynamic_bipartite.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dynamic_bipartite.nim
   - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
-  - cplib/graph/dynamic_bipartite.nim
-  - cplib/collections/rootvalue_unionfind.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/dynamic_bipartite_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/dynamic_bipartite_test.nim

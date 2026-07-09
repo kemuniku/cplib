@@ -30,7 +30,7 @@ data:
     import cplib/matrix/rolling_hash_2d
 
 
-    let hm = initHashMartix(@[@[1, 2, 1], @[3, 4, 3]])
+    let hm = initHashMatrix(@[@[1, 2, 1], @[3, 4, 3]])
 
     assert hm[0, 1] == 2
 
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: verify/AI/rolling_hash_2d_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:15:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/rolling_hash_2d_test.nim

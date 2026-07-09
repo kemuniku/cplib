@@ -26,10 +26,10 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_COLLECTIONS_BINARY_TRIE:\n    const CPLIB_COLLECTION_BINARY_TRIE*\
-    \ = 1\n    type BinaryTrieNode = ref object\n        zero:BinaryTrieNode\n   \
-    \     one:BinaryTrieNode\n        value : int\n    type BinaryTrie* = object\n\
-    \        root : BinaryTrieNode\n        h: int\n\n\n    proc initBineryTrie*(h:int):BinaryTrie=\n\
+  code: "when not declared CPLIB_COLLECTIONS_BINARY_TRIE:\n    const CPLIB_COLLECTIONS_BINARY_TRIE*\
+    \ = 1\n    type BinaryTrieNode {.acyclic.} = ref object\n        zero:BinaryTrieNode\n\
+    \        one:BinaryTrieNode\n        value : int\n    type BinaryTrie* = object\n\
+    \        root : BinaryTrieNode\n        h: int\n\n    proc initBineryTrie*(h:int):BinaryTrie=\n\
     \        return BinaryTrie(root:BinaryTrieNode(),h:h)\n\n    proc incl*(self:BinaryTrie,x:Natural,v:int=1)=\n\
     \        var now = self.root\n        now.value += v\n        for i in countdown(self.h-1,0,1):\n\
     \            if (x and (1 shl i)) == 0:\n                if now.zero.isNil():\n\
@@ -103,7 +103,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/binary_trie.nim
   requiredBy: []
-  timestamp: '2026-04-05 16:17:20+09:00'
+  timestamp: '2026-07-07 08:40:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/binary_trie_test.nim

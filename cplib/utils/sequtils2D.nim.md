@@ -20,17 +20,19 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "proc maxIndex*[T](V : openArray[seq[T]]):(int,int)=\n    result = (-1,-1)\n\
-    \    for i in 0..<len(V):\n        for j in 0..<len(V[i]):\n            if result\
-    \ == (-1,-1) or V[i][j] > V[result[0]][result[1]]:\n                result = (i,j)\n\
-    \nproc minIndex*[T](V : openArray[seq[T]]):(int,int)=\n    result = (-1,-1)\n\
-    \    for i in 0..<len(V):\n        for j in 0..<len(V[i]):\n            if result\
-    \ == (-1,-1) or V[i][j] < V[result[0]][result[1]]:\n                result = (i,j)\n"
+  code: "when not declared CPLIB_UTILS_SEQUTILS2D:\n    const CPLIB_UTILS_SEQUTILS2D*\
+    \ = 1\n    proc maxIndex*[T](V : openArray[seq[T]]):(int,int)=\n        result\
+    \ = (-1,-1)\n        for i in 0..<len(V):\n            for j in 0..<len(V[i]):\n\
+    \                if result == (-1,-1) or V[i][j] > V[result[0]][result[1]]:\n\
+    \                    result = (i,j)\n\n    proc minIndex*[T](V : openArray[seq[T]]):(int,int)=\n\
+    \        result = (-1,-1)\n        for i in 0..<len(V):\n            for j in\
+    \ 0..<len(V[i]):\n                if result == (-1,-1) or V[i][j] < V[result[0]][result[1]]:\n\
+    \                    result = (i,j)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/sequtils2D.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/sequtils2D_test.nim

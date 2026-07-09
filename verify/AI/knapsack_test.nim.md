@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
   _extendedRequiredBy: []
@@ -51,9 +51,9 @@ data:
 
     '
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
   isVerificationFile: true
   path: verify/AI/knapsack_test.nim

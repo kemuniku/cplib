@@ -37,7 +37,7 @@ data:
   isVerificationFile: true
   path: verify/collections/QSWAG_test.nim
   requiredBy: []
-  timestamp: '2024-01-07 15:42:30+09:00'
+  timestamp: '2026-07-07 08:02:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/QSWAG_test.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/cartesiantree.nim
     title: cplib/tree/cartesiantree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/cartesiantree.nim
     title: cplib/tree/cartesiantree.nim
   _extendedRequiredBy: []

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -34,9 +34,9 @@ data:
     for i in 0..<g.len:\n  for j in g[i]:\n    if i < j:\n      edges.add((i, j))\n\
     assert edges == @[(0, 1), (1, 2), (1, 3)]\n"
   dependsOn:
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/prufer_test.nim

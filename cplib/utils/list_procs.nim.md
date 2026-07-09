@@ -26,20 +26,22 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "import lists\nproc insertPrev*[T](L: var DoublyLinkedList[T], a,b: DoublyLinkedNode[T])=\n\
-    \    if L.head == a:\n        L.head = b\n        a.prev = b\n        b.next =\
-    \ a\n    else:\n        a.prev.next = b\n        b.prev = a.prev\n        a.prev\
-    \ = b\n        b.next = a\n\nproc insert*[T](L: var DoublyLinkedList[T], a,b:\
-    \ DoublyLinkedNode[T])=\n    if L.tail == a:\n        L.tail = b\n        a.next\
-    \ = b\n        b.prev = a\n    else:\n        a.next.prev = b\n        b.next\
-    \ = a.next\n        a.next = b\n        b.prev = a"
+  code: "when not declared CPLIB_UTILS_LIST_PROCS:\n    const CPLIB_UTILS_LIST_PROCS*\
+    \ = 1\n    import lists\n    proc insertPrev*[T](L: var DoublyLinkedList[T], a,b:\
+    \ DoublyLinkedNode[T])=\n        if L.head == a:\n            L.head = b\n   \
+    \         a.prev = b\n            b.next = a\n        else:\n            a.prev.next\
+    \ = b\n            b.prev = a.prev\n            a.prev = b\n            b.next\
+    \ = a\n\n    proc insert*[T](L: var DoublyLinkedList[T], a,b: DoublyLinkedNode[T])=\n\
+    \        if L.tail == a:\n            L.tail = b\n            a.next = b\n   \
+    \         b.prev = a\n        else:\n            a.next.prev = b\n           \
+    \ b.next = a.next\n            a.next = b\n            b.prev = a"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/list_procs.nim
   requiredBy:
   - verify/utils/list_procs_test_.nim
   - verify/utils/list_procs_test_.nim
-  timestamp: '2024-11-28 13:20:58+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/list_procs_test.nim

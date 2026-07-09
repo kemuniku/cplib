@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   - icon: ':heavy_check_mark:'
@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -68,14 +68,14 @@ data:
     \ cmp(tmp2,tmp2) == 0\n\n\n\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/utils/constants.nim
+  - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/tmpl/sheep.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim

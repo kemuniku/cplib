@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -72,16 +72,16 @@ data:
 
     '
   dependsOn:
+  - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
-  - cplib/graph/merge_tree.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
+  - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/merge_tree_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/merge_tree_test.nim

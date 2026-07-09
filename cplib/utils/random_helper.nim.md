@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -122,7 +122,7 @@ data:
     \ result.add(x)\n        else:\n            for i in 0..<n:\n                result.add(random_prime(slice))\n\
     \n    proc random_simple_graph*(n,m:int):UnWeightedUnDirectedGraph=\n        ##\
     \ \u30E9\u30F3\u30C0\u30E0\u306A\u5358\u7D14\u30B0\u30E9\u30D5\u3092\u4F5C\u6210\
-    \u3002\n        assert m <= n*(n-1)\n        result = initUnWeightedUnDirectedGraph(n)\n\
+    \u3002\n        assert m <= n*(n-1) div 2\n        result = initUnWeightedUnDirectedGraph(n)\n\
     \        if n*(n-1) <= 10_000_000:\n            var tmp : seq[(int,int)]\n   \
     \         for i in 0..<(n-1):\n                for j in (i+1)..<n:\n         \
     \           tmp.add((i,j))\n            shuffle(tmp)\n            \n         \
@@ -164,20 +164,20 @@ data:
     \     assert n >= 0\n        assert s.len >= 1\n        for i in 0..<n:\n    \
     \        result.add(s[rand(0..<len(s))])\n        return result\n"
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
+  - cplib/math/powmod.nim
+  - cplib/graph/graph.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 06:56:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/random_helper_test.nim

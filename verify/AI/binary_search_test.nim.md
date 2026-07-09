@@ -36,6 +36,11 @@ data:
 
     assert abs(root2 * root2 - 2.0) < 1e-9
 
+    let negRoot2 = meguru_bisect(-2.0, -1.0, proc(x: float): bool = x * x >= 2.0,
+    1e-12)
+
+    assert abs(negRoot2 * negRoot2 - 2.0) < 1e-9
+
     '
   dependsOn:
   - cplib/utils/binary_search.nim
@@ -43,7 +48,7 @@ data:
   isVerificationFile: true
   path: verify/AI/binary_search_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-07-07 06:54:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/binary_search_test.nim

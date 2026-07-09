@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -64,6 +64,12 @@ data:
     path: verify/AI/functional_graph_test.nim
     title: verify/AI/functional_graph_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/heavylightdecomposition_test.nim
     title: verify/AI/heavylightdecomposition_test.nim
   - icon: ':heavy_check_mark:'
@@ -87,45 +93,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc337/submissions/50216964
@@ -144,11 +150,11 @@ data:
     \        var n: int = g.len\n        hld.N = n\n        hld.P = newSeqWith(n,\
     \ -1)\n        hld.I = newSeqWith(n, 0)\n        hld.I[0] = root\n        var\
     \ iI = 1\n        for i in 0..<n:\n            var p = hld.I[i]\n            for\
-    \ e in g[p]:\n                if hld.P[p] != e:\n                    hld.I[iI]\
-    \ = e\n                    hld.P[e] = p\n                    iI += 1\n       \
-    \ var Z = newSeqWith(n, 1)\n        var nx = newSeqWith(n, -1)\n        hld.PP\
-    \ = newSeqWith(n, 0)\n        for i in 0..<n:\n            hld.PP[i] = i\n   \
-    \     for i in 1..<n:\n            var p = hld.I[n-i]\n            Z[hld.P[p]]\
+    \ (e, _) in g.to_and_cost(p):\n                if hld.P[p] != e:\n           \
+    \         hld.I[iI] = e\n                    hld.P[e] = p\n                  \
+    \  iI += 1\n        var Z = newSeqWith(n, 1)\n        var nx = newSeqWith(n, -1)\n\
+    \        hld.PP = newSeqWith(n, 0)\n        for i in 0..<n:\n            hld.PP[i]\
+    \ = i\n        for i in 1..<n:\n            var p = hld.I[n-i]\n            Z[hld.P[p]]\
     \ += Z[p]\n            if nx[hld.P[p]] == -1 or Z[nx[hld.P[p]]] < Z[p]:\n    \
     \            nx[hld.P[p]] = p\n        for p in hld.I:\n            if nx[p] !=\
     \ -1:\n                hld.PP[nx[p]] = p\n        hld.PD = newSeqWith(n, n)\n\
@@ -158,16 +164,16 @@ data:
     \            hld.D[p] = hld.D[hld.P[p]]+1\n        hld.rangeL = newSeqWith(n,\
     \ 0)\n        hld.rangeR = newSeqWith(n, 0)\n        for p in hld.I:\n       \
     \     hld.rangeR[p] = hld.rangeL[p] + Z[p]\n            var ir = hld.rangeR[p]\n\
-    \            for e in g[p]:\n                if hld.P[p] != e and e != nx[p]:\n\
-    \                    ir -= Z[e]\n                    hld.rangeL[e] = ir\n    \
-    \        if nx[p] != -1:\n                hld.rangeL[nx[p]] = hld.rangeL[p] +\
-    \ 1\n        for i in 0..<n:\n            hld.I[hld.rangeL[i]] = i\n        return\
-    \ hld\n    proc initHld*(g: DirectedGraph, root: int): HeavyLightDecomposition\
+    \            for (e, _) in g.to_and_cost(p):\n                if hld.P[p] != e\
+    \ and e != nx[p]:\n                    ir -= Z[e]\n                    hld.rangeL[e]\
+    \ = ir\n            if nx[p] != -1:\n                hld.rangeL[nx[p]] = hld.rangeL[p]\
+    \ + 1\n        for i in 0..<n:\n            hld.I[hld.rangeL[i]] = i\n       \
+    \ return hld\n    proc initHld*(g: DirectedGraph, root: int): HeavyLightDecomposition\
     \ =\n        var n = g.len\n        var gn = initUnWeightedUnDirectedStaticGraph(n)\n\
     \        var seen = initHashSet[(int, int)]()\n        for i in 0..<n:\n     \
-    \       for (j, _) in g[i]:\n                if (i, j) notin seen:\n         \
-    \           gn.add_edge(i, j)\n                    seen.incl((i, j))\n       \
-    \             seen.incl((j, i))\n        gn.build\n        return initHld(gn,\
+    \       for (j, _) in g.to_and_cost(i):\n                if (i, j) notin seen:\n\
+    \                    gn.add_edge(i, j)\n                    seen.incl((i, j))\n\
+    \                    seen.incl((j, i))\n        gn.build\n        return initHld(gn,\
     \ root)\n    proc initHld*(adj: openArray[seq[int]], root: int): HeavyLightDecomposition\
     \ =\n        var n = adj.len\n        var gn = initUnWeightedUnDirectedStaticGraph(n)\n\
     \        var seen = initHashSet[(int, int)]()\n        for i in 0..<n:\n     \
@@ -229,16 +235,17 @@ data:
     \ while len(stack) > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):\n  \
     \              discard stack.pop()\n            if len(stack) != 0:\n        \
     \        result.add_edge(stack[^1],v[i])\n            stack.add(v[i])\n    \n\
-    \    proc initAuxiliaryWeightedTree*(hld:HeavyLightDecomposition,v:openArray[int]):WeightedUnDirectedTableGraph[int,int]=\n\
-    \        ## \u6839\u304C\u6B32\u3057\u304B\u3063\u305F\u3089G.v[0]\u3092\u4F7F\
-    \u3063\u3066\u304F\u3060\u3055\u3044\u3000\u3051\u3080\u306B\u304F\n        var\
-    \ v = v.sortedByit(hld.toseq(it))\n        for i in 0..<(len(v)-1):\n        \
-    \    v.add(hld.lca(v[i],v[i+1]))\n        v = v.sortedByIt(hld.toseq(it)).deduplicate(true)\n\
-    \        var stack :seq[int]\n        result = initWeightedUnDirectedTableGraph(v,int)\n\
-    \        stack.add(v[0])\n        for i in 1..<len(v):\n            while len(stack)\
-    \ > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):\n                discard\
-    \ stack.pop()\n            if len(stack) != 0:\n                result.add_edge(stack[^1],v[i],hld.depth(v[i])-hld.depth(stack[^1]))\n\
-    \            stack.add(v[i])\n"
+    \    proc initAuxiliaryWeightedTree*(hld: HeavyLightDecomposition, v: openArray[int],\
+    \ S: typedesc = int): WeightedUnDirectedTableGraph[int, S] =\n        ## \u6839\
+    \u304C\u6B32\u3057\u304B\u3063\u305F\u3089G.v[0]\u3092\u4F7F\u3063\u3066\u304F\
+    \u3060\u3055\u3044\u3000\u3051\u3080\u306B\u304F\n        var v = v.sortedByit(hld.toseq(it))\n\
+    \        for i in 0..<(len(v)-1):\n            v.add(hld.lca(v[i],v[i+1]))\n \
+    \       v = v.sortedByIt(hld.toseq(it)).deduplicate(true)\n        var stack :seq[int]\n\
+    \        result = initWeightedUnDirectedTableGraph(v, S)\n        stack.add(v[0])\n\
+    \        for i in 1..<len(v):\n            while len(stack) > 0 and hld.toSeq2Out(stack[^1])\
+    \ < hld.toseq2In(v[i]):\n                discard stack.pop()\n            if len(stack)\
+    \ != 0:\n                result.add_edge(stack[^1], v[i], S(hld.depth(v[i]) -\
+    \ hld.depth(stack[^1])))\n            stack.add(v[i])\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
@@ -261,8 +268,8 @@ data:
   - cplib/graph/namori_forest.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2026-07-07 07:56:57+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/namori_graph_test.nim
   - verify/AI/namori_graph_test.nim
@@ -272,6 +279,8 @@ data:
   - verify/AI/namori_forest_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/hld/hld_lca_yosupo_test.nim
