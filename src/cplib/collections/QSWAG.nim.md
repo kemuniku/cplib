@@ -49,12 +49,19 @@ data:
     \        return len(self.bottom)+len(self.top)\n    proc `[]`*[T](self: QSWAG[T],\
     \ index: int): T =\n        if index >= len(self):\n            raise newException(IndexDefect,\
     \ \"index \" & $index & \" not in 0 .. \" & $len(self))\n        if index < len(self.top):\n\
-    \            return self.top[len(self.top)-1-index]\n        return self.bottom[index-len(self.top)]\n"
+    \            return self.top[len(self.top)-1-index]\n        return self.bottom[index-len(self.top)]\n\
+    \    proc get_maxrights*[T](v:seq[T],op:proc(l,r:T):T,e:T,f:proc(x:T):bool):seq[int]=\n\
+    \        assert f(e)\n        var swag = initSWAG(op,e)\n        var r = 0\n \
+    \       for l in 0..<(len(v)):\n            if l > r:\n                r = l\n\
+    \            while r != len(v) and swag.fold().f():\n                swag.push(v[r])\n\
+    \                r += 1\n            if swag.fold().f():\n                result.add(len(v))\n\
+    \            else:\n                result.add(r-1)\n            if len(swag)\
+    \ > 0:\n                discard swag.pop()\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/QSWAG.nim
   requiredBy: []
-  timestamp: '2024-01-07 15:42:30+09:00'
+  timestamp: '2026-07-07 08:02:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/QSWAG_test.nim

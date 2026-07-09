@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -32,7 +32,7 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_GRAPH_BIPATITE_GRAPH:\n    const CPLIB_GRAPH_BIPATITE_GRAPH*\
+  code: "when not declared CPLIB_GRAPH_BIPARTITE_GRAPH:\n    const CPLIB_GRAPH_BIPARTITE_GRAPH*\
     \ = 1\n    import cplib/graph/graph\n    import sequtils\n    proc is_bipartite_graph*(G:UnDirectedGraph):bool=\n\
     \        var c = newseqwith(len(G),-1)\n        for i in 0..<len(G):\n       \
     \     if c[i] == -1:\n                proc dfs(x:int):bool=\n                \
@@ -50,7 +50,7 @@ data:
   requiredBy:
   - verify/graph/is_bipartite_graph_test_.nim
   - verify/graph/is_bipartite_graph_test_.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/bipartite_graph_test.nim

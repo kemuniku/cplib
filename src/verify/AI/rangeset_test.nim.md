@@ -83,14 +83,14 @@ data:
   dependsOn:
   - cplib/collections/rangeset.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/rangeset.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/rangeset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/AI/rangeset_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/rangeset_test.nim

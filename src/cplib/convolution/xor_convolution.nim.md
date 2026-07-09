@@ -26,22 +26,24 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "import bitops\nproc FastHadamardTransForm*[T](u:var seq[T])=\n    var n =\
-    \ len(u)\n    var i = 1\n    while i<n:\n        for j in 0..<(n):\n         \
-    \   if (j and i) == 0:\n                var x = u[j]\n                var y =\
-    \ u[j+i]\n                u[j] = x+y\n                u[j+i] = x-y\n        i\
-    \ = i shl 1\n\nproc xorConvolution*[T](u,v:seq[T]):seq[T]=\n    var u = u;var\
-    \ v = v;\n    FastHadamardTransForm(u)\n    FastHadamardTransForm(v)\n    for\
-    \ i in 0..<len(u):\n        u[i] *= v[i]\n    FastHadamardTransForm(u)\n    when\
-    \ T is int:\n        var k = (len(u)-1).fastLog2() + 1\n        assert len(u)\
-    \ == (1 shl k)\n        for i in 0..<len(u):\n            u[i] = u[i] shr k\n\
-    \        return u\n    else:\n        var inv = T(1)/T(len(u))\n        for i\
-    \ in 0..<len(u):\n            u[i] *= inv\n        return u\n"
+  code: "when not declared CPLIB_CONVOLUTION_XOR_CONVOLUTION:\n    const CPLIB_CONVOLUTION_XOR_CONVOLUTION*\
+    \ = 1\n    import bitops\n    proc FastHadamardTransForm*[T](u:var seq[T])=\n\
+    \        var n = len(u)\n        var i = 1\n        while i<n:\n            for\
+    \ j in 0..<(n):\n                if (j and i) == 0:\n                    var x\
+    \ = u[j]\n                    var y = u[j+i]\n                    u[j] = x+y\n\
+    \                    u[j+i] = x-y\n            i = i shl 1\n\n    proc xorConvolution*[T](u,v:seq[T]):seq[T]=\n\
+    \        var u = u;var v = v;\n        FastHadamardTransForm(u)\n        FastHadamardTransForm(v)\n\
+    \        for i in 0..<len(u):\n            u[i] *= v[i]\n        FastHadamardTransForm(u)\n\
+    \        when T is int:\n            var k = (len(u)-1).fastLog2() + 1\n     \
+    \       assert len(u) == (1 shl k)\n            for i in 0..<len(u):\n       \
+    \         u[i] = u[i] shr k\n            return u\n        else:\n           \
+    \ var inv = T(1)/T(len(u))\n            for i in 0..<len(u):\n               \
+    \ u[i] *= inv\n            return u\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/convolution/xor_convolution.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:38:58+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/xor_convolution_test.nim

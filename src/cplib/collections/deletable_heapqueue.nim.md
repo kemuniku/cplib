@@ -40,7 +40,7 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u5B58\u5728\u3057\u306A\u3044\u8981\u7D20\u3092\u6D88\u305D\u3046\u3068\
     \u3059\u308B\u3068\u30D0\u30B0\u308B\u306E\u3067\u6CE8\u610F\nwhen not declared\
-    \ CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:\n    const CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUET*\
+    \ CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:\n    const CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE*\
     \ = 1\n    import heapqueue\n    type Deletable_HeapQueue*[T] = object\n     \
     \   hq : HeapQueue[T]\n        dlhq : HeapQueue[T]\n\n    proc initDeletableHeapQueue*[T]():Deletable_HeapQueue[T]=\n\
     \        Deletable_HeapQueue[T](hq:initHeapQueue[T](),dlhq:initHeapQueue[T]())\n\
@@ -64,7 +64,7 @@ data:
   - verify/collections/deletable_heapqueue_test_.nim
   - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/topk_sum_heapq.nim
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/deletable_heapqueue_test.nim

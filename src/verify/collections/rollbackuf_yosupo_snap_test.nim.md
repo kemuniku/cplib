@@ -40,7 +40,7 @@ data:
   isVerificationFile: true
   path: verify/collections/rollbackuf_yosupo_snap_test.nim
   requiredBy: []
-  timestamp: '2024-04-30 17:08:19+09:00'
+  timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/rollbackuf_yosupo_snap_test.nim

@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
   _extendedRequiredBy: []
@@ -39,10 +39,10 @@ data:
     \necho G.solve_Rerooting(merge,(0,0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/rerooting.nim
   - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/rerooting.nim
   isVerificationFile: false
   path: verify/tree/rerooting_big_test_.nim
   requiredBy: []

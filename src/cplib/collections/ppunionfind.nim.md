@@ -40,7 +40,7 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:\n    const\
     \ CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND* = 1\n    import sequtils,algorithm\n\
-    \    type PartialPersistentUnionFind* = object\n        par_or_siz : seq[int]\
+    \    type PartialPersistentUnionFind* = object\n        par_or_siz : seq[int32]\
     \ #0\u4EE5\u4E0A\u306E\u3068\u304D\u3001\u89AA\u306E\u9802\u70B9\u756A\u53F7\u3092\
     \u8868\u3059\u30020\u672A\u6E80\u306E\u3068\u304D\u3001-(\u96C6\u5408\u306E\u30B5\
     \u30A4\u30BA)\u3092\u8868\u3059\u3002\n        time : seq[int] # \u89AA\u3068\u306E\
@@ -49,45 +49,49 @@ data:
     \        size_value : seq[seq[int]] # \u3042\u308B\u6642\u70B9\u3067\u306E\u9802\
     \u70B9x\u304Croot\u3068\u306A\u308B\u96C6\u5408\u306E\u5927\u304D\u3055\n    \
     \    last : int \n\n    proc initPartialPersistentUnionFind*(N:int): PartialPersistentUnionFind=\n\
-    \        result.par_or_siz = newSeqWith(N,-1)\n        result.time = newseqwith(N,-1)\n\
+    \        result.par_or_siz = newSeqWith(N,-1'i32)\n        result.time = newseqwith(N,-1)\n\
     \        result.size_time = newseqwith(N,@[-1])\n        result.size_value = newseqwith(N,@[1])\n\
-    \        result.last = -1\n\n    proc root*(self:var PartialPersistentUnionFind,x:int,t:int):int=\n\
+    \        result.last = -1\n\n    proc root_i32(self:var PartialPersistentUnionFind,x:int,t:int):int32=\n\
     \        var now = x\n        while self.time[now] != -1 and self.time[now] <=\
-    \ t:\n            now = self.par_or_siz[now]\n        return now\n\n    proc root*(self:var\
-    \ PartialPersistentUnionFind,x:int):int=\n        return self.root(x,self.last)\n\
-    \n    proc unite*(self:var PartialPersistentUnionFind,u,v,t:int):bool {.discardable.}=\n\
-    \        assert self.last <= t\n        self.last = t\n        var u = self.root(u)\n\
-    \        var v = self.root(v)\n        if u == v:\n            return false\n\
-    \        if self.par_or_siz[u] > self.par_or_siz[v]:\n            swap(u,v)\n\
-    \        self.par_or_siz[u] += self.par_or_siz[v]\n        self.par_or_siz[v]\
-    \ = u\n        self.size_time[u].add(t)\n        self.size_value[u].add(-self.par_or_siz[u])\n\
-    \        self.time[v] = t\n        return true\n\n    proc unite*(self:var PartialPersistentUnionFind,u,v:int):int\
+    \ t:\n            now = self.par_or_siz[now].int\n        return now.int32\n\n\
+    \    proc root*(self:var PartialPersistentUnionFind,x:int,t:int):int=\n      \
+    \  return self.root_i32(x,t).int\n\n    proc root*(self:var PartialPersistentUnionFind,x:int):int=\n\
+    \        return self.root(x,self.last)\n\n    proc unite*(self:var PartialPersistentUnionFind,u,v,t:int):bool\
+    \ {.discardable.}=\n        assert self.last <= t\n        self.last = t\n   \
+    \     var u = self.root_i32(u,self.last)\n        var v = self.root_i32(v,self.last)\n\
+    \        if u == v:\n            return false\n        if self.par_or_siz[u.int]\
+    \ > self.par_or_siz[v.int]:\n            swap(u,v)\n        let ui = u.int\n \
+    \       let vi = v.int\n        self.par_or_siz[ui] += self.par_or_siz[vi]\n \
+    \       self.par_or_siz[vi] = u\n        self.size_time[ui].add(t)\n        self.size_value[ui].add((-self.par_or_siz[ui]).int)\n\
+    \        self.time[vi] = t\n        return true\n\n    proc unite*(self:var PartialPersistentUnionFind,u,v:int):int\
     \ {.discardable.}=\n        self.unite(u,v,self.last+1)\n        return self.last\n\
     \n    proc issame*(self:var PartialPersistentUnionFind,u,v,t:int):bool=\n    \
-    \    return self.root(u,t) == self.root(v,t)\n\n    proc issame*(self:var PartialPersistentUnionFind,u,v:int):bool=\n\
-    \        return self.root(u) == self.root(v)\n\n    proc size*(self:var PartialPersistentUnionFind,x,t:int):int=\n\
-    \        assert t >= -1\n        var x = self.root(x,t)\n        return self.size_value[x][self.size_time[x].upperBound(t)-1]\n\
-    \n    proc size*(self:var PartialPersistentUnionFind,x:int):int=\n        return\
-    \ self.size(x,self.last)\n\n    proc when_unite*(self:var PartialPersistentUnionFind,u,v:int):int=\n\
-    \        ## \u9802\u70B9u\u3068v\u304C\u9023\u7D50\u306B\u306A\u3063\u305F\u6642\
-    \u9593\u3092\u8FD4\u3059\u3002\n        ## \u9023\u7D50\u3067\u306F\u306A\u3044\
-    \u5834\u5408\u3001-2\u304C\u8FD4\u308B(\u6700\u60AA\u304B\uFF1F \u6642\u523B-1\u3092\
+    \    return self.root_i32(u,t) == self.root_i32(v,t)\n\n    proc issame*(self:var\
+    \ PartialPersistentUnionFind,u,v:int):bool=\n        return self.root_i32(u,self.last)\
+    \ == self.root_i32(v,self.last)\n\n    proc size*(self:var PartialPersistentUnionFind,x,t:int):int=\n\
+    \        assert t >= -1\n        var x = self.root_i32(x,t).int\n        return\
+    \ self.size_value[x][self.size_time[x].upperBound(t)-1]\n\n    proc size*(self:var\
+    \ PartialPersistentUnionFind,x:int):int=\n        return self.size(x,self.last)\n\
+    \n    proc when_unite*(self:var PartialPersistentUnionFind,u,v:int):int=\n   \
+    \     ## \u9802\u70B9u\u3068v\u304C\u9023\u7D50\u306B\u306A\u3063\u305F\u6642\u9593\
+    \u3092\u8FD4\u3059\u3002\n        ## \u9023\u7D50\u3067\u306F\u306A\u3044\u5834\
+    \u5408\u3001-2\u304C\u8FD4\u308B(\u6700\u60AA\u304B\uFF1F \u6642\u523B-1\u3092\
     \u958B\u59CB\u306B\u3057\u3066\u3057\u307E\u3063\u305F\u305F\u3081\u4ED5\u65B9\
     \u306A\u304F...)\n        var tu : seq[int] = @[u]\n        var u = u\n      \
     \  var tv : seq[int] = @[v]\n        var v = v\n        while self.par_or_siz[u]\
-    \ >= 0:\n            u = self.par_or_siz[u]\n            tu.add(u)\n        while\
-    \ self.par_or_siz[v] >= 0:\n            v = self.par_or_siz[v]\n            tv.add(v)\n\
-    \        if u != v:\n            return -2\n        while len(tu) > 0 and len(tv)\
-    \ > 0 and tu[^1] == tv[^1]:\n            discard tu.pop()\n            discard\
-    \ tv.pop()\n        result = -1\n        if len(tu) != 0:\n            result\
-    \ = max(result,self.time[tu[^1]])\n        if len(tv) != 0:\n            result\
-    \ = max(result,self.time[tv[^1]])\n\n\n    proc size_ge(self:var PartialPersistentUnionFind,x,size:int):int=\n\
-    \        ## x\u304C\u5C5E\u3059\u308B\u96C6\u5408\u306E\u30B5\u30A4\u30BA\u304C\
-    size\u3092\u8D85\u3048\u308B\u6642\u9593\u3092\u8FD4\u3059\n        if size <=\
-    \ 1:\n            return -1\n        var now = x\n        while self.time[now]\
-    \ != -1:\n            now = self.par_or_siz[now]\n            if self.size_value[now][^1]\
-    \ >= size:\n                return self.size_time[now][self.size_value[now].lowerBound(size)]\n\
-    \n\n\n\n"
+    \ >= 0:\n            u = self.par_or_siz[u].int\n            tu.add(u)\n     \
+    \   while self.par_or_siz[v] >= 0:\n            v = self.par_or_siz[v].int\n \
+    \           tv.add(v)\n        if u != v:\n            return -2\n        while\
+    \ len(tu) > 0 and len(tv) > 0 and tu[^1] == tv[^1]:\n            discard tu.pop()\n\
+    \            discard tv.pop()\n        result = -1\n        if len(tu) != 0:\n\
+    \            result = max(result,self.time[tu[^1]])\n        if len(tv) != 0:\n\
+    \            result = max(result,self.time[tv[^1]])\n\n\n    proc size_ge(self:var\
+    \ PartialPersistentUnionFind,x,size:int):int=\n        ## x\u304C\u5C5E\u3059\u308B\
+    \u96C6\u5408\u306E\u30B5\u30A4\u30BA\u304Csize\u3092\u8D85\u3048\u308B\u6642\u9593\
+    \u3092\u8FD4\u3059\n        if size <= 1:\n            return -1\n        var\
+    \ now = x\n        while self.time[now] != -1:\n            now = self.par_or_siz[now].int\n\
+    \            if self.size_value[now][^1] >= size:\n                return self.size_time[now][self.size_value[now].lowerBound(size)]\n\
+    \n\n\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/ppunionfind.nim
@@ -96,7 +100,7 @@ data:
   - verify/collections/ppunionfind/past_ppuf_test_.nim
   - verify/collections/ppunionfind/stamp_rally_test_.nim
   - verify/collections/ppunionfind/stamp_rally_test_.nim
-  timestamp: '2025-02-26 01:40:00+09:00'
+  timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/ppunionfind_test.nim

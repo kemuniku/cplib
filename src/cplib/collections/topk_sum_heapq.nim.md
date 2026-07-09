@@ -58,7 +58,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/topk_sum_heapq.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/topk_sum_heapq_test.nim

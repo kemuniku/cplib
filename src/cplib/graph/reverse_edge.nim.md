@@ -1,14 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/reverse_edge_test.nim
     title: verify/AI/reverse_edge_test.nim
@@ -28,9 +34,9 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_REVERSE_EDGE:\n    const CPLIB_GRAPH_REVERSE_EDGE*\
     \ = 1\n    import cplib/graph/graph, std/math\n    proc reverse_edge*[T](G: WeightedDirectedGraph[T]):\
-    \ WeightedDirectedGraph[T] =\n        result = initWeightedDirectedGraph(G.len)\n\
-    \        for i in 0..<G.len:\n            for (j, c) in G[i]:\n              \
-    \  result.add_edge(j, i, c)\n    proc reverse_edge*(G: UnWeightedDirectedGraph):\
+    \ WeightedDirectedGraph[T] =\n        result = initWeightedDirectedGraph(G.len,\
+    \ T)\n        for i in 0..<G.len:\n            for (j, c) in G[i]:\n         \
+    \       result.add_edge(j, i, c)\n    proc reverse_edge*(G: UnWeightedDirectedGraph):\
     \ UnWeightedDirectedGraph =\n        result = UnWeightedDirectedGraph(edges: newSeq[seq[(int32,\
     \ int)]](G.len), len: G.len)\n        for i in 0..<G.len:\n            for j in\
     \ G[i]:\n                result.add_edge(j, i)\n\n    #FIXME: optimize for CSR\
@@ -49,11 +55,13 @@ data:
   isVerificationFile: false
   path: cplib/graph/reverse_edge.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/reverse_edge_test.nim
   - verify/AI/reverse_edge_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/reverse_edge.nim
 layout: document
 redirect_from:

@@ -44,11 +44,11 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_UTILS_LIS:\n    const COMPETITIVE_UTILS_LIS* = 1\n\
-    \    import algorithm\n    proc lis*[T](a: openArray[T]): int =\n        var dp\
-    \ = newSeq[T]()\n        for i in 0..<a.len:\n            var pos = dp.lowerBound(a[i])\n\
-    \            if pos == dp.len: dp.add(a[i])\n            else: dp[pos] = a[i]\n\
-    \        return dp.len\n\n    proc restore_lis*[T](a: openArray[T]): seq[T] =\n\
+  code: "when not declared CPLIB_UTILS_LIS:\n    const CPLIB_UTILS_LIS* = 1\n    import\
+    \ algorithm\n    proc lis*[T](a: openArray[T]): int =\n        var dp = newSeq[T]()\n\
+    \        for i in 0..<a.len:\n            var pos = dp.lowerBound(a[i])\n    \
+    \        if pos == dp.len: dp.add(a[i])\n            else: dp[pos] = a[i]\n  \
+    \      return dp.len\n\n    proc restore_lis*[T](a: openArray[T]): seq[T] =\n\
     \        var p = newSeq[int](a.len)\n        var dp = newSeq[T]()\n        for\
     \ i in 0..<a.len:\n            var pos = dp.lowerBound(a[i])\n            if pos\
     \ == dp.len: dp.add(a[i])\n            else: dp[pos] = a[i]\n            p[i]\
@@ -63,7 +63,7 @@ data:
   - verify/utils/list_procs_test_.nim
   - verify/utils/lis_arc126b_test_.nim
   - verify/utils/lis_arc126b_test_.nim
-  timestamp: '2024-04-09 01:08:32+09:00'
+  timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/lis_test.nim

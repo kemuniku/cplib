@@ -54,6 +54,19 @@ data:
 
     assert a == a
 
+
+    doAssert not compiles(a mod b)
+
+    doAssert not compiles(a & b)
+
+    doAssert not compiles(a | b)
+
+    doAssert not compiles(a ^ b)
+
+    doAssert not compiles(a << b)
+
+    doAssert not compiles(a >> b)
+
     '
   dependsOn:
   - cplib/math/float128.nim
@@ -61,7 +74,7 @@ data:
   isVerificationFile: true
   path: verify/AI/float128_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-07-07 07:39:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/float128_test.nim

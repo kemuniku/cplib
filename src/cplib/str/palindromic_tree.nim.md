@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/palindromic_tree_test.nim
     title: verify/AI/palindromic_tree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/palindromic_tree_test.nim
     title: verify/str/palindromic_tree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/palindromic_tree_test.nim
     title: verify/str/palindromic_tree_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -26,7 +26,7 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "when not declared CPLIB_COLLECTIONS_PALINDROMIC_TREE:\n    const CPLIB_COLLECTIONS_PALINDROMIC_TREE*\
+  code: "when not declared CPLIB_STR_PALINDROMIC_TREE:\n    const CPLIB_STR_PALINDROMIC_TREE*\
     \ = 1\n    import sequtils, algorithm\n    type PalindromicTreeNode* = object\n\
     \        link*: seq[ref PalindromicTreeNode]\n        suffix_link*: ref PalindromicTreeNode\n\
     \        len, count, id: int\n\n    type PalindromicTree* = object\n        amax:\
@@ -71,8 +71,8 @@ data:
   isVerificationFile: false
   path: cplib/str/palindromic_tree.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2026-07-07 07:12:05+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/palindromic_tree_test.nim
   - verify/AI/palindromic_tree_test.nim

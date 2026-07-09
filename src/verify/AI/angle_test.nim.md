@@ -56,8 +56,8 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   isVerificationFile: true

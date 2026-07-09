@@ -38,7 +38,7 @@ data:
   isVerificationFile: false
   path: verify/itertools/itertools_combinations_test_.nim
   requiredBy: []
-  timestamp: '2026-02-11 03:57:06+09:00'
+  timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/itertools/itertools_combinations_test_.nim

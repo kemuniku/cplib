@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -33,6 +33,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/tsp_test.nim
     title: verify/AI/tsp_test.nim
@@ -95,13 +101,14 @@ data:
     \ `t` = `zero`, INF: `t` = `inf`): auto =\n                `impl_name`(G, start,\
     \ ZERO, INF)\n    declareDijkstra(restore_dijkstra, int, 0, INF64)\n    declareDijkstra(restore_dijkstra,\
     \ int32, 0i32, INF32)\n    declareDijkstra(restore_dijkstra, float, 0.0, 1e100)\n\
-    \    proc restore_dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T], start: int\
-    \ or seq[int], ZERO, INF: T): auto =\n        restore_dijkstra_impl(G, start,\
-    \ ZERO, INF)\n    proc dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T],\
-    \ start: int or seq[int], ZERO, INF: T): seq[T] =\n        var (costs, _) = restore_dijkstra(G,\
-    \ start, ZERO, INF)\n        return costs\n    declareDijkstra(dijkstra, int,\
-    \ 0, INF64)\n    declareDijkstra(dijkstra, int32, 0i32, INF32)\n    declareDijkstra(dijkstra,\
-    \ float, 0.0, 1e100)\n    proc dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T],\
+    \    declareDijkstra(restore_dijkstra, float32, 0.0'f32, 1e30'f32)\n    proc restore_dijkstra*[T](G:\
+    \ DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto\
+    \ =\n        restore_dijkstra_impl(G, start, ZERO, INF)\n    proc dijkstra_impl[T](G:\
+    \ DynamicGraph[T] or StaticGraph[T], start: int or seq[int], ZERO, INF: T): seq[T]\
+    \ =\n        var (costs, _) = restore_dijkstra(G, start, ZERO, INF)\n        return\
+    \ costs\n    declareDijkstra(dijkstra, int, 0, INF64)\n    declareDijkstra(dijkstra,\
+    \ int32, 0i32, INF32)\n    declareDijkstra(dijkstra, float, 0.0, 1e100)\n    declareDijkstra(dijkstra,\
+    \ float32, 0.0'f32, 1e30'f32)\n    proc dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T],\
     \ start: int or seq[int], ZERO, INF: T): auto =\n        dijkstra_impl(G, start,\
     \ ZERO, INF)\n    proc shortest_path_dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T],\
     \ start: int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =\n\
@@ -113,28 +120,36 @@ data:
     \ proc shortest_path_dijkstra*(G: DynamicGraph[int32] or StaticGraph[int32], start:\
     \ int, goal: int, ZERO: int32 = 0.int32, INF: int32 = INF32): tuple[path: seq[int],\
     \ cost: int32] =\n        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n\
-    \    proc shortest_path_dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T], start:\
-    \ int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =\n       \
-    \ shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
+    \    proc shortest_path_dijkstra*(G: DynamicGraph[float] or StaticGraph[float],\
+    \ start: int, goal: int, ZERO: float = 0.0, INF: float = 1e100): tuple[path: seq[int],\
+    \ cost: float] =\n        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n\
+    \    proc shortest_path_dijkstra*(G: DynamicGraph[float32] or StaticGraph[float32],\
+    \ start: int, goal: int, ZERO: float32 = 0.0'f32, INF: float32 = 1e30'f32): tuple[path:\
+    \ seq[int], cost: float32] =\n        shortest_path_dijkstra_impl(G, start, goal,\
+    \ ZERO, INF)\n    proc shortest_path_dijkstra*[T](G: DynamicGraph[T] or StaticGraph[T],\
+    \ start: int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =\n\
+    \        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy:
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/tsp_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/dijkstra_test.nim
   - verify/AI/dijkstra_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim

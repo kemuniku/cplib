@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/cartesiantree_test.nim
     title: verify/AI/cartesiantree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/cartesiantree_test.nim
     title: verify/tree/cartesiantree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/cartesiantree_test.nim
     title: verify/tree/cartesiantree_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -41,7 +41,7 @@ data:
   path: cplib/tree/cartesiantree.nim
   requiredBy: []
   timestamp: '2026-07-06 04:42:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/cartesiantree_test.nim
   - verify/AI/cartesiantree_test.nim

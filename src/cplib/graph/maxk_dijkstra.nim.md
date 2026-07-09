@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -51,6 +51,12 @@ data:
     path: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
     title: verify/graph/static/maxk_dijkstra_abc176d_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/maxk_dijkstra_test.nim
     title: verify/AI/maxk_dijkstra_test.nim
@@ -125,26 +131,26 @@ data:
     \    declareMaxkDijkstra(maxk_dijkstra, int32, 0i32, INF32)\n    proc maxk_dijkstra*[T:\
     \ SomeInteger](G: DynamicGraph[T] or StaticGraph[T], start: int or seq[int], k,\
     \ ZERO, INF: T): auto =\n        maxk_dijkstra_impl(G, start, k, ZERO, INF)\n\
-    \    proc shortest_path_maxk_dijkstra_impl[T](G: DynamicGraph[T] or StaticGraph[T],\
-    \ start, goal: int, k, ZERO, INF: T): tuple[path: seq[int], cost: T] =\n     \
-    \   var (costs, prev) = restore_maxk_dijkstra(G, start, k, ZERO, INF)\n      \
-    \  result.path = prev.restore_shortest_path_from_prev(goal)\n        result.cost\
-    \ = costs[goal]\n    proc shortest_path_maxk_dijkstra*(G: DynamicGraph[int] or\
-    \ StaticGraph[int], start, goal: int, k: int, ZERO: int = 0, INF: int = INF64):\
+    \    proc shortest_path_maxk_dijkstra_impl[T: SomeInteger](G: DynamicGraph[T]\
+    \ or StaticGraph[T], start, goal: int, k, ZERO, INF: T): tuple[path: seq[int],\
+    \ cost: T] =\n        var (costs, prev) = restore_maxk_dijkstra(G, start, k, ZERO,\
+    \ INF)\n        result.path = prev.restore_shortest_path_from_prev(goal)\n   \
+    \     result.cost = costs[goal]\n    proc shortest_path_maxk_dijkstra*(G: DynamicGraph[int]\
+    \ or StaticGraph[int], start, goal: int, k: int, ZERO: int = 0, INF: int = INF64):\
     \ tuple[path: seq[int], cost: int] =\n        return shortest_path_maxk_dijkstra_impl(G,\
     \ start, goal, k, ZERO, INF)\n    proc shortest_path_maxk_dijkstra*(G: DynamicGraph[int32]\
     \ or StaticGraph[int32], start, goal: int, k: int32, ZERO: int32 = 0.int32, INF:\
-    \ int = INF32): tuple[path: seq[int], cost: int] =\n        return shortest_path_maxk_dijkstra_impl(G,\
-    \ start, goal, k, ZERO, INF)\n    proc shortest_path_maxk_dijkstra*[T](G: DynamicGraph[T]\
-    \ or StaticGraph[T], start, goal: int, k, ZERO, INF: T): tuple[path: seq[int],\
-    \ cost: T] =\n        return shortest_path_maxk_dijkstra_impl(G, start, goal,\
-    \ k, ZERO, INF)\n"
+    \ int32 = INF32): tuple[path: seq[int], cost: int32] =\n        return shortest_path_maxk_dijkstra_impl(G,\
+    \ start, goal, k, ZERO, INF)\n    proc shortest_path_maxk_dijkstra*[T: SomeInteger](G:\
+    \ DynamicGraph[T] or StaticGraph[T], start, goal: int, k, ZERO, INF: T): tuple[path:\
+    \ seq[int], cost: T] =\n        return shortest_path_maxk_dijkstra_impl(G, start,\
+    \ goal, k, ZERO, INF)\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
@@ -159,13 +165,15 @@ data:
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/tsp_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/maxk_dijkstra.nim
 layout: document
 redirect_from:

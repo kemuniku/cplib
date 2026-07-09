@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -49,18 +49,18 @@ data:
     \ v, c)\n\nvar terminal = (0..<k-1).toseq\n\nvar dp = steiner_tree_dp(g, terminal,\
     \ INF64)\nfor i in k-1..<n:\n    echo dp[^1][i]\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
   isVerificationFile: false
   path: verify/graph/steiner_tree_abc364g_test_.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-09 05:18:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/steiner_tree_abc364g_test_.nim

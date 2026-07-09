@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -101,10 +101,10 @@ data:
     \ RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n"
   dependsOn:
-  - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []

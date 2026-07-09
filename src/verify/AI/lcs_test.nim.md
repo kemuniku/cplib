@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/lcs.nim
     title: cplib/str/lcs.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/lcs.nim
     title: cplib/str/lcs.nim
   _extendedRequiredBy: []

@@ -46,6 +46,12 @@ data:
     path: verify/AI/bititers_test.nim
     title: verify/AI/bititers_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/steiner_tree_test.nim
     title: verify/AI/steiner_tree_test.nim
   - icon: ':heavy_check_mark:'
@@ -136,6 +142,8 @@ data:
   - verify/AI/bititers_test.nim
   - verify/AI/steiner_tree_test.nim
   - verify/AI/steiner_tree_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/utils/bititers.nim
 layout: document
 redirect_from:

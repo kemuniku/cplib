@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -76,11 +76,11 @@ data:
 
     '
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_template_test.nim
