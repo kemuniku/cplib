@@ -94,14 +94,14 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/str/compressed_trie.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/compressed_trie.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim
   requiredBy: []

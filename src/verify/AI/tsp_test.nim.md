@@ -63,18 +63,18 @@ data:
     dg.add_edge(0, 1, 10)\ndg.add_edge(0, 1, 4)\ndg.add_edge(1, 2, 8)\nlet mat = dg.to_adjacency_matrix()\n\
     assert mat[0][1] == 4\nassert mat[0][2] == INF64\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/tsp.nim
   - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/tsp.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/AI/tsp_test.nim
   requiredBy: []

@@ -74,10 +74,10 @@ data:
     \ DynamicGraph[T] or StaticGraph[T], zero, inf: T): tuple[negative_cycle: bool,\
     \ d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []

@@ -53,8 +53,8 @@ data:
   dependsOn:
   - cplib/collections/segtree2d.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/segtree2d.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/AI/segtree2d_test.nim
   requiredBy: []

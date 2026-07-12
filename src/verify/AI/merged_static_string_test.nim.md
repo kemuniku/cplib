@@ -74,9 +74,9 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim
