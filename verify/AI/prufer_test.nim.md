@@ -35,8 +35,8 @@ data:
     assert edges == @[(0, 1), (1, 2), (1, 3)]\n"
   dependsOn:
   - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/prufer_test.nim

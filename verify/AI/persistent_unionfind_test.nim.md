@@ -65,8 +65,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/persistent_unionfind.nim
   - cplib/collections/persistent_array.nim
+  - cplib/collections/persistent_unionfind.nim
   - cplib/collections/persistent_unionfind.nim
   - cplib/collections/persistent_array.nim
   isVerificationFile: true

@@ -9,6 +9,12 @@ data:
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   - icon: ':warning:'
+    path: cplib/math/stern_brocot_tree.nim
+    title: cplib/math/stern_brocot_tree.nim
+  - icon: ':warning:'
+    path: cplib/math/stern_brocot_tree.nim
+    title: cplib/math/stern_brocot_tree.nim
+  - icon: ':warning:'
     path: verify/geometry/convex_hull_abc286ex_test_.nim
     title: verify/geometry/convex_hull_abc286ex_test_.nim
   - icon: ':warning:'
@@ -225,6 +231,8 @@ data:
   - verify/math/fractions_abc225e_test_.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/stern_brocot_tree.nim
   timestamp: '2025-03-09 17:42:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

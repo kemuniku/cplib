@@ -305,6 +305,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/sqrt_heuristic_for_floor_sum.nim
       title: cplib/math/sqrt_heuristic_for_floor_sum.nim
+    - icon: ':warning:'
+      path: cplib/math/stern_brocot_tree.nim
+      title: cplib/math/stern_brocot_tree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/xor_basis.nim
       title: cplib/math/xor_basis.nim

@@ -54,9 +54,9 @@ data:
     \        return self.is_bipartite"
   dependsOn:
   - cplib/collections/rootvalue_unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim
   requiredBy: []

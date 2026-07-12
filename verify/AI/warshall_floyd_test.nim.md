@@ -70,11 +70,11 @@ data:
     '
   dependsOn:
   - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/utils/constants.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_test.nim
   requiredBy: []

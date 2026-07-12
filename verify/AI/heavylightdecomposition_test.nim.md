@@ -47,8 +47,8 @@ data:
     weightedEdges.sort()\nassert weightedEdges == @[(1, 2), (2, 2)]\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/heavylightdecomposition_test.nim

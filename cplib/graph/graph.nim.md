@@ -122,6 +122,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
+  - icon: ':warning:'
+    path: cplib/math/stern_brocot_tree.nim
+    title: cplib/math/stern_brocot_tree.nim
+  - icon: ':warning:'
+    path: cplib/math/stern_brocot_tree.nim
+    title: cplib/math/stern_brocot_tree.nim
   - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
@@ -823,6 +829,8 @@ data:
   - cplib/tree/prufer.nim
   - cplib/tree/rerooting.nim
   - cplib/tree/rerooting.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/stern_brocot_tree.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/steiner_tree.nim
