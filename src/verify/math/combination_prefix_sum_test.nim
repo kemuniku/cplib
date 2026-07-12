@@ -22,6 +22,22 @@ proc check[ModInt]() =
     let empty: seq[(int, int)] = @[]
     doAssert combination_prefix_sum.combinationPrefixSum[ModInt](empty).len == 0
 
+    var rangeQueries: seq[(int, int, int)]
+    for n in countdown(20, 0):
+        for l in -2..22:
+            for r in -2..22:
+                rangeQueries.add((n, l, r))
+
+    let rangeActual = combinationRangeSum[ModInt](rangeQueries)
+    for queryIndex, (n, l, r) in rangeQueries:
+        var expected: ModInt = 0
+        for i in max(0, l)..<min(n + 1, r):
+            expected += combination.ncr(n, i)
+        doAssert rangeActual[queryIndex] == expected
+
+    let emptyRange: seq[(int, int, int)] = @[]
+    doAssert combinationRangeSum[ModInt](emptyRange).len == 0
+
 check[modint998244353]()
 check[modint1000000007]()
 
