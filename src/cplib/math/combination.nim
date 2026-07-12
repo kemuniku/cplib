@@ -31,4 +31,6 @@ when not declared CPLIB_MATH_COMBINATION:
         return c.fact[n]*c.fact_inv[n-r]
 
     proc nhr*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =
+        if n == 0 and r == 0:
+            return Modint(1)
         return c.ncr(n+r-1, r)
