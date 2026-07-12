@@ -3,6 +3,7 @@ when not declared CPLIB_UTILS_GRIDUTILS:
 
     const dij4* = @[(0,1),(-1,0),(0,-1),(1,0)]
     const dij8* = @[(0,1),(-1,1),(-1,0),(-1,-1),(0,-1),(1,-1),(1,0),(1,1)]
+    const dij4_str* = "RULD"
 
     iterator griditer*(i,j,H,W:int,dij:openArray[(int,int)] = dij4):(int,int)=
         for (di,dj) in dij:
