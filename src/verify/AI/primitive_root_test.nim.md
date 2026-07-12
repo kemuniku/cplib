@@ -57,18 +57,18 @@ data:
     \nlet g = primitive_root(17)\nvar seen: seq[int]\nvar cur = 1\nfor _ in 0..<16:\n\
     \  seen.add(cur)\n  cur = (cur * g) mod 17\nassert seen.sorted == (1..16).toSeq\n"
   dependsOn:
-  - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/primitive_root.nim
-  - cplib/math/primitive_root.nim
+  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/AI/primitive_root_test.nim
   requiredBy: []

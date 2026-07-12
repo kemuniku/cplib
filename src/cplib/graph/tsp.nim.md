@@ -162,16 +162,16 @@ data:
     \ none)\n    proc to_adjacency_matrix*[T](G: WeightedDirectedGraph[T] or WeightedDirectedStaticGraph[T],\
     \ none: T): seq[seq[T]] =\n        to_adjacency_matrix_impl(G, none)\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/dijkstra.nim
   isVerificationFile: false
   path: cplib/graph/tsp.nim
   requiredBy: []

@@ -74,18 +74,18 @@ data:
     \ 'a'..'c').allIt(it in 'a'..'c')\nassert random_string(4, \"xyz\").allIt(it in\
     \ {'x', 'y', 'z'})\n"
   dependsOn:
-  - cplib/math/isprime.nim
+  - cplib/graph/graph.nim
   - cplib/utils/random_helper.nim
-  - cplib/tree/prufer.nim
+  - cplib/utils/random_helper.nim
+  - cplib/math/inner_math.nim
+  - cplib/graph/graph.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
   - cplib/math/powmod.nim
-  - cplib/graph/graph.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/utils/random_helper.nim
+  - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
   requiredBy: []

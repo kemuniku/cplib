@@ -22,22 +22,22 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_GRIDUTILS:\n    const CPLIB_UTILS_GRIDUTILS*\
     \ = 1\n\n    const dij4* = @[(0,1),(-1,0),(0,-1),(1,0)]\n    const dij8* = @[(0,1),(-1,1),(-1,0),(-1,-1),(0,-1),(1,-1),(1,0),(1,1)]\n\
-    \n    iterator griditer*(i,j,H,W:int,dij:openArray[(int,int)] = dij4):(int,int)=\n\
-    \        for (di,dj) in dij:\n            if i+di in 0..<H and j+dj in 0..<W:\n\
-    \                yield (i+di,j+dj)\n    \n    proc gridfind*[T](grid : openArray[seq[T]],value:T):(int,int)=\n\
+    \    const dij4_str* = \"RULD\"\n\n    iterator griditer*(i,j,H,W:int,dij:openArray[(int,int)]\
+    \ = dij4):(int,int)=\n        for (di,dj) in dij:\n            if i+di in 0..<H\
+    \ and j+dj in 0..<W:\n                yield (i+di,j+dj)\n    \n    proc gridfind*[T](grid\
+    \ : openArray[seq[T]],value:T):(int,int)=\n        # \u898B\u3064\u304B\u3063\u305F\
+    \u3089 (i,j) \u306E\u5185\u8F9E\u66F8\u9806\u6700\u5C0F\n        # \u305D\u3046\
+    \u3067\u306A\u3044\u5834\u5408\u306F (-1,-1)\n        for i in 0..<len(grid):\n\
+    \            for j in 0..<len(grid[i]):\n                if grid[i][j] == value:\n\
+    \                    return (i,j)\n        return (-1,-1)\n\n    proc gridfinds*[T](grid\
+    \ : openArray[seq[T]],value:T):seq[(int,int)]=\n        for i in 0..<len(grid):\n\
+    \            for j in 0..<len(grid[i]):\n                if grid[i][j] == value:\n\
+    \                    result.add((i,j))\n\n    proc gridfind*(grid : openArray[string],value:char):(int,int)=\n\
     \        # \u898B\u3064\u304B\u3063\u305F\u3089 (i,j) \u306E\u5185\u8F9E\u66F8\
     \u9806\u6700\u5C0F\n        # \u305D\u3046\u3067\u306A\u3044\u5834\u5408\u306F\
     \ (-1,-1)\n        for i in 0..<len(grid):\n            for j in 0..<len(grid[i]):\n\
     \                if grid[i][j] == value:\n                    return (i,j)\n \
-    \       return (-1,-1)\n\n    proc gridfinds*[T](grid : openArray[seq[T]],value:T):seq[(int,int)]=\n\
-    \        for i in 0..<len(grid):\n            for j in 0..<len(grid[i]):\n   \
-    \             if grid[i][j] == value:\n                    result.add((i,j))\n\
-    \n    proc gridfind*(grid : openArray[string],value:char):(int,int)=\n       \
-    \ # \u898B\u3064\u304B\u3063\u305F\u3089 (i,j) \u306E\u5185\u8F9E\u66F8\u9806\u6700\
-    \u5C0F\n        # \u305D\u3046\u3067\u306A\u3044\u5834\u5408\u306F (-1,-1)\n \
-    \       for i in 0..<len(grid):\n            for j in 0..<len(grid[i]):\n    \
-    \            if grid[i][j] == value:\n                    return (i,j)\n     \
-    \   return (-1,-1)\n\n    proc gridfinds*(grid : openArray[string],value:char):seq[(int,int)]=\n\
+    \       return (-1,-1)\n\n    proc gridfinds*(grid : openArray[string],value:char):seq[(int,int)]=\n\
     \        for i in 0..<len(grid):\n            for j in 0..<len(grid[i]):\n   \
     \             if grid[i][j] == value:\n                    result.add((i,j))\n\
     \n    proc height*[T](grid: openArray[seq[T]]): int {.inline.} =\n        grid.len\n\
@@ -54,7 +54,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/gridutils.nim
   requiredBy: []
-  timestamp: '2026-07-06 19:10:53+09:00'
+  timestamp: '2026-07-13 00:10:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/gridutils_test.nim
