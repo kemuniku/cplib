@@ -1,3 +1,6 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+echo "Hello World"
+
 import std/unittest
 import cplib/modint/[modint, modfast]
 
