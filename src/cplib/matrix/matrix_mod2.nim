@@ -1,7 +1,7 @@
 when not declared CPLIB_MATRIX_MATRIX_MOD2:
     const CPLIB_MATRIX_MATRIX_MOD2* = 1
 
-    import std/[bitops, options]
+    import bitops,options
 
     type MatrixMod2* = object
         ## A dynamically-sized matrix over GF(2).
