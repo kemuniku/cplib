@@ -60,6 +60,31 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
                 if j > 0: result.add ' '
                 result.add(if a[i, j]: '1' else: '0')
 
+    {.push checks: off.}
+    proc setRowBitsUnchecked(a: var MatrixMod2, i: int, values: string) =
+        for k in 0..<a.rows[i].len:
+            a.rows[i][k] = 0
+        for j in 0..<values.len:
+            if values[j] == '1':
+                a.rows[i][j shr 6] = a.rows[i][j shr 6] or (1'u64 shl (j and 63))
+
+    proc rowBitsUnchecked(a: MatrixMod2, i, width: int): string =
+        result = newString(width)
+        for j in 0..<width:
+            result[j] = char(ord('0') + int((a.rows[i][j shr 6] shr (j and 63)) and 1))
+    {.pop.}
+
+    proc setRowBits*(a: var MatrixMod2, i: int, values: string) =
+        assert i in 0..<a.height and values.len <= a.width
+        a.setRowBitsUnchecked(i, values)
+
+    proc rowBits*(a: MatrixMod2, i, width: int): string =
+        assert i in 0..<a.height and width in 0..a.width
+        a.rowBitsUnchecked(i, width)
+
+    proc rowBits*(a: MatrixMod2, i: int): string =
+        a.rowBits(i, a.width)
+
     proc identityMatrixMod2*(n: int): MatrixMod2 =
         result = initMatrixMod2(n, n)
         for i in 0..<n: result[i, i] = true
@@ -70,16 +95,52 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
             for j in 0..<a.width:
                 if a[i, j]: result[j, i] = true
 
+    {.push checks: off.}
+    proc multiplyUnchecked(a, b: MatrixMod2): MatrixMod2 =
+        result = initMatrixMod2(a.height, b.width)
+        if a.height < 40 or a.width < 64:
+            let bt = b.transposed()
+            for i in 0..<a.height:
+                for j in 0..<b.width:
+                    var parity = 0
+                    for k in 0..<a.rows[i].len:
+                        parity = parity xor ((a.rows[i][k] and bt.rows[j][k]).countSetBits and 1)
+                    if parity != 0: result[i, j] = true
+        else:
+            # Method of Four Russians: process eight columns of a at once and
+            # look up the corresponding xor of rows of b.
+            const BlockBits = 8
+            let wordCount = (b.width + 63) div 64
+            if wordCount == 0: return
+            var table = newSeq[uint64]((1 shl BlockBits) * wordCount)
+            let tableData = cast[ptr UncheckedArray[uint64]](table[0].addr)
+            var blockStart = 0
+            while blockStart < a.width:
+                let bits = min(BlockBits, a.width - blockStart)
+                for mask in 1..<(1 shl bits):
+                    let previous = mask and (mask - 1)
+                    let bit = mask.countTrailingZeroBits
+                    let offset = mask * wordCount
+                    let previousOffset = previous * wordCount
+                    let bRow = cast[ptr UncheckedArray[uint64]](
+                        unsafeAddr b.rows[blockStart + bit][0])
+                    for k in 0..<wordCount:
+                        tableData[offset + k] = tableData[previousOffset + k] xor bRow[k]
+                let shift = blockStart and 63
+                let mask = uint64((1 shl bits) - 1)
+                for i in 0..<a.height:
+                    let aRow = cast[ptr UncheckedArray[uint64]](unsafeAddr a.rows[i][0])
+                    let resultRow = cast[ptr UncheckedArray[uint64]](result.rows[i][0].addr)
+                    let index = int((aRow[blockStart shr 6] shr shift) and mask)
+                    let offset = index * wordCount
+                    for k in 0..<wordCount:
+                        resultRow[k] = resultRow[k] xor tableData[offset + k]
+                blockStart += BlockBits
+    {.pop.}
+
     proc `*`*(a, b: MatrixMod2): MatrixMod2 =
         assert a.width == b.height
-        result = initMatrixMod2(a.height, b.width)
-        let bt = b.transposed()
-        for i in 0..<a.height:
-            for j in 0..<b.width:
-                var parity = 0
-                for k in 0..<a.rows[i].len:
-                    parity = parity xor ((a.rows[i][k] and bt.rows[j][k]).countSetBits and 1)
-                if parity != 0: result[i, j] = true
+        multiplyUnchecked(a, b)
 
     proc `*=`*(a: var MatrixMod2, b: MatrixMod2) = a = a * b
 

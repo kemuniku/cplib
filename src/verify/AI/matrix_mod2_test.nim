@@ -11,6 +11,9 @@ assert a * b == initMatrixMod2(@[@[0, 1], @[1, 0]])
 assert a.rank == 2
 a[0, 1] = true
 assert a[0, 1]
+a.setRowBits(0, "101")
+assert a.rowBits(0) == "101"
+assert a.rowBits(0, 2) == "10"
 
 let d = initMatrixMod2(@[@[1, 1, 0], @[1, 0, 1], @[0, 1, 1]])
 assert not d.determinant
@@ -37,3 +40,6 @@ wide[64, 1] = true
 assert wide.rank == 65
 assert wide.inverse.isSome
 assert wide * wide.inverse.get == identityMatrixMod2(65)
+
+let zeroWidthProduct = initMatrixMod2(40, 64) * initMatrixMod2(64, 0)
+assert zeroWidthProduct.h == 40 and zeroWidthProduct.w == 0

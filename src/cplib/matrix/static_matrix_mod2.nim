@@ -1,7 +1,7 @@
 when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
     const CPLIB_MATRIX_STATIC_MATRIX_MOD2* = 1
 
-    import std/[bitops, options]
+    import bitops,options
 
     type StaticMatrixMod2*[H: static int, W: static int] = object
         ## A compile-time-sized matrix over GF(2).
@@ -49,6 +49,36 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
                 if j > 0: result.add ' '
                 result.add(if a[i, j]: '1' else: '0')
 
+    {.push checks: off.}
+    proc setRowBitsUnchecked[H: static int, W: static int](
+            a: var StaticMatrixMod2[H, W], i: int, values: string) =
+        for k in 0..<a.rows[i].len:
+            a.rows[i][k] = 0
+        for j in 0..<values.len:
+            if values[j] == '1':
+                a.rows[i][j shr 6] = a.rows[i][j shr 6] or (1'u64 shl (j and 63))
+
+    proc rowBitsUnchecked[H: static int, W: static int](
+            a: StaticMatrixMod2[H, W], i, width: int): string =
+        result = newString(width)
+        for j in 0..<width:
+            result[j] = char(ord('0') + int((a.rows[i][j shr 6] shr (j and 63)) and 1))
+    {.pop.}
+
+    proc setRowBits*[H: static int, W: static int](
+            a: var StaticMatrixMod2[H, W], i: int, values: string) =
+        assert i in 0..<H and values.len <= W
+        a.setRowBitsUnchecked(i, values)
+
+    proc rowBits*[H: static int, W: static int](
+            a: StaticMatrixMod2[H, W], i, width: int): string =
+        assert i in 0..<H and width in 0..W
+        a.rowBitsUnchecked(i, width)
+
+    proc rowBits*[H: static int, W: static int](
+            a: StaticMatrixMod2[H, W], i: int): string =
+        a.rowBits(i, W)
+
     proc identityStaticMatrixMod2*[N: static int](): StaticMatrixMod2[N, N] =
         for i in 0..<N: result[i, i] = true
 
@@ -57,14 +87,39 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
             for j in 0..<W:
                 if a[i, j]: result[j, i] = true
 
+    {.push checks: off.}
     proc `*`*[H: static int, M: static int, W: static int](a: StaticMatrixMod2[H, M], b: StaticMatrixMod2[M, W]): StaticMatrixMod2[H, W] =
-        let bt = b.transposed()
-        for i in 0..<H:
-            for j in 0..<W:
-                var parity = 0
-                for k in 0..<a.rows[i].len:
-                    parity = parity xor ((a.rows[i][k] and bt.rows[j][k]).countSetBits and 1)
-                if parity != 0: result[i, j] = true
+        when H < 40 or M < 64:
+            let bt = b.transposed()
+            for i in 0..<H:
+                for j in 0..<W:
+                    var parity = 0
+                    for k in 0..<a.rows[i].len:
+                        parity = parity xor ((a.rows[i][k] and bt.rows[j][k]).countSetBits and 1)
+                    if parity != 0: result[i, j] = true
+        else:
+            # Method of Four Russians: process eight columns of a at once and
+            # look up the corresponding xor of rows of b.
+            const
+                BlockBits = 8
+                WordCount = (W + 63) div 64
+            var table: array[1 shl BlockBits, array[WordCount, uint64]]
+            var blockStart = 0
+            while blockStart < M:
+                let bits = min(BlockBits, M - blockStart)
+                for mask in 1..<(1 shl bits):
+                    let previous = mask and (mask - 1)
+                    let bit = mask.countTrailingZeroBits
+                    for k in 0..<WordCount:
+                        table[mask][k] = table[previous][k] xor b.rows[blockStart + bit][k]
+                let shift = blockStart and 63
+                let mask = uint64((1 shl bits) - 1)
+                for i in 0..<H:
+                    let index = int((a.rows[i][blockStart shr 6] shr shift) and mask)
+                    for k in 0..<WordCount:
+                        result.rows[i][k] = result.rows[i][k] xor table[index][k]
+                blockStart += BlockBits
+    {.pop.}
 
     proc `*=`*[N: static int](a: var StaticMatrixMod2[N, N], b: StaticMatrixMod2[N, N]) = a = a * b
 
