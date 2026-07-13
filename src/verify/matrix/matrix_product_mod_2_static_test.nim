@@ -1,4 +1,5 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/matrix_product_mod_2
+{.checks: off.}
 import cplib/matrix/static_matrix_mod2
 import strutils,sequtils
 
