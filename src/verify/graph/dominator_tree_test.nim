@@ -1,3 +1,6 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+echo "Hello World"
+
 import cplib/graph/dominator_tree
 import cplib/graph/graph
 import std/sequtils
