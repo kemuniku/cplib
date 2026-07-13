@@ -1,3 +1,6 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+echo "Hello World"
+
 import cplib/graph/graph
 import cplib/graph/eulerian_path
 
