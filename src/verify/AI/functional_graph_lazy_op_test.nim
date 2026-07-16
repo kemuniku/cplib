@@ -1,5 +1,6 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-import cplib/graph/functional_graph
+import cplib/graph/functional_graph_with_op
+import cplib/graph/functional_graph_with_lazy_op
 import cplib/graph/graph
 import atcoder/lazysegtree
 import std/random
