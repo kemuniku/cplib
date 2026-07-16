@@ -136,7 +136,10 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
     proc `**`*[N: static int](a: StaticMatrixMod2[N, N], exponent: int): StaticMatrixMod2[N, N] = a.pow(exponent)
 
     proc rank*[H: static int, W: static int](a: StaticMatrixMod2[H, W]): int =
-        var b = a
+        var storage: ref StaticMatrixMod2[H, W]
+        new storage
+        storage[] = a
+        template b: untyped = storage[]
         for col in 0..<W:
             var pivot = result
             while pivot < H and not b[pivot, col]: inc pivot
