@@ -7,6 +7,79 @@ when not declared CPLIB_TREE_HLD:
     type HeavyLightDecomposition* = ref object 
         N*: int
         P*, PP*, PD*, D*, I*, rangeL*, rangeR*: seq[int]
+
+    proc initHldFromParent*(parent: openArray[int], root: int): HeavyLightDecomposition =
+        ## 根付き木の親配列からHLDを構築する。parent[root]は参照しない。O(N)
+        let n = len(parent)
+        assert 0 <= root and root < n
+        var hld = HeavyLightDecomposition(N:n)
+        hld.P = @parent
+        hld.P[root] = -1
+
+        # 親から子を列挙するための連結リスト。
+        var head = newSeqWith(n,-1)
+        var next = newSeqWith(n,-1)
+        for v in 0..<n:
+            if v != root:
+                assert 0 <= hld.P[v] and hld.P[v] < n
+                next[v] = head[hld.P[v]]
+                head[hld.P[v]] = v
+
+        # 親が必ず子より先に現れる順序。
+        hld.I = newSeq[int](n)
+        hld.I[0] = root
+        var iI = 1
+        for i in 0..<n:
+            var v = head[hld.I[i]]
+            while v != -1:
+                hld.I[iI] = v
+                iI += 1
+                v = next[v]
+        assert iI == n
+
+        var size = newSeqWith(n,1)
+        var heavy = newSeqWith(n,-1)
+        for i in countdown(n-1,1):
+            let v = hld.I[i]
+            let p = hld.P[v]
+            size[p] += size[v]
+            if heavy[p] == -1 or size[heavy[p]] < size[v]:
+                heavy[p] = v
+
+        hld.PP = newSeq[int](n)
+        for v in 0..<n:
+            hld.PP[v] = v
+        for v in hld.I:
+            if heavy[v] != -1:
+                hld.PP[heavy[v]] = v
+
+        hld.PD = newSeqWith(n,n)
+        hld.PD[root] = 0
+        hld.D = newSeq[int](n)
+        for v in hld.I:
+            if v != root:
+                hld.PP[v] = hld.PP[hld.PP[v]]
+                hld.PD[v] = min(hld.PD[hld.PP[v]],hld.PD[hld.P[v]]+1)
+                hld.D[v] = hld.D[hld.P[v]]+1
+
+        hld.rangeL = newSeq[int](n)
+        hld.rangeR = newSeq[int](n)
+        for p in hld.I:
+            hld.rangeR[p] = hld.rangeL[p]+size[p]
+            var ir = hld.rangeR[p]
+            var v = head[p]
+            while v != -1:
+                if v != heavy[p]:
+                    ir -= size[v]
+                    hld.rangeL[v] = ir
+                v = next[v]
+            if heavy[p] != -1:
+                hld.rangeL[heavy[p]] = hld.rangeL[p]+1
+
+        for v in 0..<n:
+            hld.I[hld.rangeL[v]] = v
+        return hld
+
     proc initHld*(g: UnDirectedGraph, root: int): HeavyLightDecomposition =
         var hld = HeavyLightDecomposition()
         var n: int = g.len
