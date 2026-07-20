@@ -1,6 +1,6 @@
 when not declared CPLIB_MATRIX_STATIC_MATRIX:
     const CPLIB_MATRIX_STATIC_MATRIX* = 1
-    import sequtils, hashes
+    import sequtils, hashes, options
     type StaticMatrix*[H: static int, W: static int, T] = object
         arr: array[H*W,T]
     type SubArray*[H:static int,W:static int,T] = object
@@ -125,3 +125,100 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
     proc sum*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): T =
         for i in 0..<H*W:
             result += m.arr[i]
+
+    proc gaussJordan*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]):
+            tuple[matrix: StaticMatrix[H,W,T], pivotColumns: seq[int]] =
+        ## Returns the reduced row echelon form and its pivot columns.
+        result.matrix = m
+        var row = 0
+        for col in 0..<W:
+            var pivot = row
+            while pivot < H and result.matrix[pivot, col] == default(T):
+                pivot += 1
+            if pivot == H:
+                continue
+            for j in 0..<W:
+                swap(result.matrix[pivot, j], result.matrix[row, j])
+            let x = result.matrix[row, col]
+            for j in col..<W:
+                result.matrix[row, j] /= x
+            for i in 0..<H:
+                if i == row or result.matrix[i, col] == default(T):
+                    continue
+                let y = result.matrix[i, col]
+                for j in col..<W:
+                    result.matrix[i, j] -= y * result.matrix[row, j]
+            result.pivotColumns.add(col)
+            row += 1
+            if row == H:
+                break
+
+    proc rank*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): int =
+        m.gaussJordan.pivotColumns.len
+
+    proc solveLinearEquation*[H: static int, W: static int, T](
+            a: StaticMatrix[H,W,T], b: array[H,T]): Option[array[W,T]] =
+        ## Returns one solution of A*x=b (free variables are set to zero),
+        ## or none when the system is inconsistent.
+        var augmented: StaticMatrix[H,W + 1,T]
+        for i in 0..<H:
+            for j in 0..<W:
+                augmented[i, j] = a[i, j]
+            augmented[i, W] = b[i]
+        let reduced = augmented.gaussJordan
+        for i in 0..<H:
+            var allZero = true
+            for j in 0..<W:
+                if reduced.matrix[i, j] != default(T):
+                    allZero = false
+                    break
+            if allZero and reduced.matrix[i, W] != default(T):
+                return none(array[W,T])
+        var solution: array[W,T]
+        for i, col in reduced.pivotColumns:
+            if col < W:
+                solution[col] = reduced.matrix[i, W]
+        some(solution)
+
+    proc inverse*[N: static int, T](m: StaticMatrix[N,N,T]): Option[StaticMatrix[N,N,T]] =
+        var augmented: StaticMatrix[N,2 * N,T]
+        let one: T = 1
+        for i in 0..<N:
+            for j in 0..<N:
+                augmented[i, j] = m[i, j]
+            augmented[i, N + i] = one
+        let reduced = augmented.gaussJordan
+        if reduced.pivotColumns.countIt(it < N) < N:
+            return none(StaticMatrix[N,N,T])
+        var inv: StaticMatrix[N,N,T]
+        for i in 0..<N:
+            for j in 0..<N:
+                inv[i, j] = reduced.matrix[i, N + j]
+        some(inv)
+
+    proc kernel*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): seq[array[W,T]] =
+        ## A basis of {x | m*x=0}.
+        let reduced = m.gaussJordan
+        let one: T = 1
+        var pivotRow: array[W,int]
+        for j in 0..<W:
+            pivotRow[j] = -1
+        for i, col in reduced.pivotColumns:
+            pivotRow[col] = i
+        for freeCol in 0..<W:
+            if pivotRow[freeCol] >= 0:
+                continue
+            var v: array[W,T]
+            v[freeCol] = one
+            for pivotCol in 0..<W:
+                if pivotRow[pivotCol] >= 0:
+                    v[pivotCol] = -reduced.matrix[pivotRow[pivotCol], freeCol]
+            result.add(v)
+
+    proc image*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): seq[array[H,T]] =
+        ## A basis of the column space, using columns of the original matrix.
+        for col in m.gaussJordan.pivotColumns:
+            var v: array[H,T]
+            for i in 0..<H:
+                v[i] = m[i, col]
+            result.add(v)
