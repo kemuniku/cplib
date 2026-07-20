@@ -98,10 +98,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticbitset.nim
   requiredBy:
-  - verify/collections/static_bitset_test_.nim
-  - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_seqint_test_.nim
+  - verify/collections/static_bitset_test_.nim
+  - verify/collections/static_bitset_test_.nim
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -160,45 +160,45 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticRMQ.nim
   requiredBy:
-  - verify/str/static_string/static_string_count_test_.nim
-  - verify/str/static_string/static_string_count_test_.nim
-  - verify/str/merged_static_string.nim
-  - verify/str/merged_static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/merged_static_string.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
+  - verify/str/static_string/static_string_count_test_.nim
+  - verify/str/static_string/static_string_count_test_.nim
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/static_string_test.nim
   - verify/AI/static_string_test.nim
-  - verify/AI/compressed_trie_test.nim
-  - verify/AI/compressed_trie_test.nim
   - verify/AI/merged_static_string_test.nim
   - verify/AI/merged_static_string_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/compressed_trie_test.nim
   - verify/AI/staticRMQ_test.nim
   - verify/AI/staticRMQ_test.nim
-  - verify/collections/staticRMQ_test.nim
-  - verify/collections/staticRMQ_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
   - verify/str/static_string/static_string_LCS_useSA_test.nim
   - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
+  - verify/collections/staticRMQ_test.nim
+  - verify/collections/staticRMQ_test.nim
 documentation_of: cplib/collections/staticRMQ.nim
 layout: document
 redirect_from:

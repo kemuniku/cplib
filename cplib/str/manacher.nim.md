@@ -67,10 +67,10 @@ data:
   verifiedWith:
   - verify/AI/manacher_test.nim
   - verify/AI/manacher_test.nim
-  - verify/str/manacher_test.nim
-  - verify/str/manacher_test.nim
   - verify/str/get_palindromes_test.nim
   - verify/str/get_palindromes_test.nim
+  - verify/str/manacher_test.nim
+  - verify/str/manacher_test.nim
 documentation_of: cplib/str/manacher.nim
 layout: document
 redirect_from:

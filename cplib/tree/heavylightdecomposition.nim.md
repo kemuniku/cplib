@@ -58,6 +58,12 @@ data:
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/functional_graph_test.nim
     title: verify/AI/functional_graph_test.nim
   - icon: ':heavy_check_mark:'
@@ -145,15 +151,46 @@ data:
     \ sequtils, algorithm, sets\n    import cplib/graph/graph\n    # https://atcoder.jp/contests/abc337/submissions/50216964\n\
     \    # \u2191\u4E0A\u8A18\u306E\u63D0\u51FA\u3088\u308A\u5F15\u7528\n    type\
     \ HeavyLightDecomposition* = ref object \n        N*: int\n        P*, PP*, PD*,\
-    \ D*, I*, rangeL*, rangeR*: seq[int]\n    proc initHld*(g: UnDirectedGraph, root:\
-    \ int): HeavyLightDecomposition =\n        var hld = HeavyLightDecomposition()\n\
-    \        var n: int = g.len\n        hld.N = n\n        hld.P = newSeqWith(n,\
-    \ -1)\n        hld.I = newSeqWith(n, 0)\n        hld.I[0] = root\n        var\
-    \ iI = 1\n        for i in 0..<n:\n            var p = hld.I[i]\n            for\
-    \ (e, _) in g.to_and_cost(p):\n                if hld.P[p] != e:\n           \
-    \         hld.I[iI] = e\n                    hld.P[e] = p\n                  \
-    \  iI += 1\n        var Z = newSeqWith(n, 1)\n        var nx = newSeqWith(n, -1)\n\
-    \        hld.PP = newSeqWith(n, 0)\n        for i in 0..<n:\n            hld.PP[i]\
+    \ D*, I*, rangeL*, rangeR*: seq[int]\n\n    proc initHldFromParent*(parent: openArray[int],\
+    \ root: int): HeavyLightDecomposition =\n        ## \u6839\u4ED8\u304D\u6728\u306E\
+    \u89AA\u914D\u5217\u304B\u3089HLD\u3092\u69CB\u7BC9\u3059\u308B\u3002parent[root]\u306F\
+    \u53C2\u7167\u3057\u306A\u3044\u3002O(N)\n        let n = len(parent)\n      \
+    \  assert 0 <= root and root < n\n        var hld = HeavyLightDecomposition(N:n)\n\
+    \        hld.P = @parent\n        hld.P[root] = -1\n\n        # \u89AA\u304B\u3089\
+    \u5B50\u3092\u5217\u6319\u3059\u308B\u305F\u3081\u306E\u9023\u7D50\u30EA\u30B9\
+    \u30C8\u3002\n        var head = newSeqWith(n,-1)\n        var next = newSeqWith(n,-1)\n\
+    \        for v in 0..<n:\n            if v != root:\n                assert 0\
+    \ <= hld.P[v] and hld.P[v] < n\n                next[v] = head[hld.P[v]]\n   \
+    \             head[hld.P[v]] = v\n\n        # \u89AA\u304C\u5FC5\u305A\u5B50\u3088\
+    \u308A\u5148\u306B\u73FE\u308C\u308B\u9806\u5E8F\u3002\n        hld.I = newSeq[int](n)\n\
+    \        hld.I[0] = root\n        var iI = 1\n        for i in 0..<n:\n      \
+    \      var v = head[hld.I[i]]\n            while v != -1:\n                hld.I[iI]\
+    \ = v\n                iI += 1\n                v = next[v]\n        assert iI\
+    \ == n\n\n        var size = newSeqWith(n,1)\n        var heavy = newSeqWith(n,-1)\n\
+    \        for i in countdown(n-1,1):\n            let v = hld.I[i]\n          \
+    \  let p = hld.P[v]\n            size[p] += size[v]\n            if heavy[p] ==\
+    \ -1 or size[heavy[p]] < size[v]:\n                heavy[p] = v\n\n        hld.PP\
+    \ = newSeq[int](n)\n        for v in 0..<n:\n            hld.PP[v] = v\n     \
+    \   for v in hld.I:\n            if heavy[v] != -1:\n                hld.PP[heavy[v]]\
+    \ = v\n\n        hld.PD = newSeqWith(n,n)\n        hld.PD[root] = 0\n        hld.D\
+    \ = newSeq[int](n)\n        for v in hld.I:\n            if v != root:\n     \
+    \           hld.PP[v] = hld.PP[hld.PP[v]]\n                hld.PD[v] = min(hld.PD[hld.PP[v]],hld.PD[hld.P[v]]+1)\n\
+    \                hld.D[v] = hld.D[hld.P[v]]+1\n\n        hld.rangeL = newSeq[int](n)\n\
+    \        hld.rangeR = newSeq[int](n)\n        for p in hld.I:\n            hld.rangeR[p]\
+    \ = hld.rangeL[p]+size[p]\n            var ir = hld.rangeR[p]\n            var\
+    \ v = head[p]\n            while v != -1:\n                if v != heavy[p]:\n\
+    \                    ir -= size[v]\n                    hld.rangeL[v] = ir\n \
+    \               v = next[v]\n            if heavy[p] != -1:\n                hld.rangeL[heavy[p]]\
+    \ = hld.rangeL[p]+1\n\n        for v in 0..<n:\n            hld.I[hld.rangeL[v]]\
+    \ = v\n        return hld\n\n    proc initHld*(g: UnDirectedGraph, root: int):\
+    \ HeavyLightDecomposition =\n        var hld = HeavyLightDecomposition()\n   \
+    \     var n: int = g.len\n        hld.N = n\n        hld.P = newSeqWith(n, -1)\n\
+    \        hld.I = newSeqWith(n, 0)\n        hld.I[0] = root\n        var iI = 1\n\
+    \        for i in 0..<n:\n            var p = hld.I[i]\n            for (e, _)\
+    \ in g.to_and_cost(p):\n                if hld.P[p] != e:\n                  \
+    \  hld.I[iI] = e\n                    hld.P[e] = p\n                    iI +=\
+    \ 1\n        var Z = newSeqWith(n, 1)\n        var nx = newSeqWith(n, -1)\n  \
+    \      hld.PP = newSeqWith(n, 0)\n        for i in 0..<n:\n            hld.PP[i]\
     \ = i\n        for i in 1..<n:\n            var p = hld.I[n-i]\n            Z[hld.P[p]]\
     \ += Z[p]\n            if nx[hld.P[p]] == -1 or Z[nx[hld.P[p]]] < Z[p]:\n    \
     \            nx[hld.P[p]] = p\n        for p in hld.I:\n            if nx[p] !=\
@@ -252,47 +289,49 @@ data:
   isVerificationFile: false
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy:
+  - cplib/graph/namori_graph.nim
+  - cplib/graph/namori_graph.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph.nim
   - verify/tree/auxiliarytree_test_.nim
   - verify/tree/auxiliarytree_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/graph/namori_graph_test_.nim
-  - verify/graph/namori_graph_test_.nim
   - verify/graph/functional_graph_test_.nim
   - verify/graph/functional_graph_test_.nim
+  - verify/graph/namori_graph_test_.nim
+  - verify/graph/namori_graph_test_.nim
   - verify/graph/namori_forest_test_.nim
   - verify/graph/namori_forest_test_.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/namori_graph.nim
-  - cplib/graph/namori_graph.nim
-  timestamp: '2026-07-07 07:56:57+09:00'
+  timestamp: '2026-07-13 00:09:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/namori_graph_test.nim
-  - verify/AI/namori_graph_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/heavylightdecomposition_test.nim
   - verify/AI/heavylightdecomposition_test.nim
-  - verify/AI/namori_forest_test.nim
-  - verify/AI/namori_forest_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/namori_graph_test.nim
+  - verify/AI/namori_graph_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
 documentation_of: cplib/tree/heavylightdecomposition.nim

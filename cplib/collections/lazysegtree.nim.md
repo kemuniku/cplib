@@ -123,10 +123,10 @@ data:
   verifiedWith:
   - verify/AI/lazysegtree_test.nim
   - verify/AI/lazysegtree_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
 documentation_of: cplib/collections/lazysegtree.nim
 layout: document
 redirect_from:

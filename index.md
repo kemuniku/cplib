@@ -254,6 +254,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/combination.nim
       title: cplib/math/combination.nim
+    - icon: ':warning:'
+      path: cplib/math/combination_int.nim
+      title: cplib/math/combination_int.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/combination_prefix_sum.nim
+      title: cplib/math/combination_prefix_sum.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/divisor.nim
       title: cplib/math/divisor.nim
@@ -431,6 +437,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/imos2d.nim
       title: cplib/utils/imos2d.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/implicit_dijkstra.nim
+      title: cplib/utils/implicit_dijkstra.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: cplib/utils/inversion_number.nim
@@ -1013,6 +1022,9 @@ data:
       path: verify/AI/fractions_test.nim
       title: verify/AI/fractions_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/functional_graph_lazy_op_test.nim
+      title: verify/AI/functional_graph_lazy_op_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/functional_graph_test.nim
       title: verify/AI/functional_graph_test.nim
     - icon: ':heavy_check_mark:'
@@ -1054,6 +1066,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/imos2d_test.nim
       title: verify/AI/imos2d_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/implicit_dijkstra_test.nim
+      title: verify/AI/implicit_dijkstra_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/inner_math_test.nim
       title: verify/AI/inner_math_test.nim
@@ -1631,6 +1646,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/combination_npr_test.nim
       title: verify/math/combination_npr_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/combination_prefix_sum_test.nim
+      title: verify/math/combination_prefix_sum_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/combination_test.nim
       title: verify/math/combination_test.nim

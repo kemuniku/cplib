@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/combination_prefix_sum.nim
+    title: cplib/math/combination_prefix_sum.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/combination_prefix_sum.nim
+    title: cplib/math/combination_prefix_sum.nim
   - icon: ':warning:'
     path: verify/utils/mo_test_.nim
     title: verify/utils/mo_test_.nim
@@ -21,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
     title: verify/collections/range_kth_smallest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -55,11 +67,15 @@ data:
   isVerificationFile: false
   path: cplib/utils/mo.nim
   requiredBy:
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/math/combination_prefix_sum.nim
   - verify/utils/mo_test_.nim
   - verify/utils/mo_test_.nim
   timestamp: '2024-03-16 18:25:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/math/combination_prefix_sum_test.nim
   - verify/AI/mo_test.nim
   - verify/AI/mo_test.nim
   - verify/collections/range_kth_smallest_test.nim
