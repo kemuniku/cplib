@@ -1,6 +1,6 @@
 when not declared CPLIB_MATRIX_MATRIX:
     const CPLIB_MATRIX_MATRIX* = 1
-    import sequtils, strutils, hashes, std/math
+    import sequtils, strutils, hashes, std/math, options
     type Matrix*[T] = object
         arr: seq[seq[T]]
     proc initMatrix*[T](arr: openArray[seq[T]]): Matrix[T] =
@@ -97,3 +97,97 @@ when not declared CPLIB_MATRIX_MATRIX:
             n = n shr 1
     proc `**`*[T](m: Matrix[T], n: int): Matrix[T] = m.pow(n)
     proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum
+
+    proc gaussJordan*[T](m: Matrix[T]): tuple[matrix: Matrix[T], pivotColumns: seq[int]] =
+        ## Returns the reduced row echelon form and its pivot columns.
+        result.matrix = m
+        var row = 0
+        for col in 0..<m.w:
+            var pivot = row
+            while pivot < m.h and result.matrix[pivot, col] == default(T):
+                pivot += 1
+            if pivot == m.h:
+                continue
+            swap(result.matrix[pivot], result.matrix[row])
+            let x = result.matrix[row, col]
+            for j in col..<m.w:
+                result.matrix[row, j] /= x
+            for i in 0..<m.h:
+                if i == row or result.matrix[i, col] == default(T):
+                    continue
+                let y = result.matrix[i, col]
+                for j in col..<m.w:
+                    result.matrix[i, j] -= y * result.matrix[row, j]
+            result.pivotColumns.add(col)
+            row += 1
+            if row == m.h:
+                break
+
+    proc rank*[T](m: Matrix[T]): int = m.gaussJordan.pivotColumns.len
+
+    proc solveLinearEquation*[T](a: Matrix[T], b: openArray[T]): Option[seq[T]] =
+        ## Returns one solution of A*x=b (free variables are set to zero),
+        ## or none when the system is inconsistent.
+        assert a.h == b.len
+        var augmented = initMatrix[T](a.h, a.w + 1, default(T))
+        for i in 0..<a.h:
+            for j in 0..<a.w:
+                augmented[i, j] = a[i, j]
+            augmented[i, a.w] = b[i]
+        let reduced = augmented.gaussJordan
+        for i in 0..<a.h:
+            var allZero = true
+            for j in 0..<a.w:
+                if reduced.matrix[i, j] != default(T):
+                    allZero = false
+                    break
+            if allZero and reduced.matrix[i, a.w] != default(T):
+                return none(seq[T])
+        var solution = newSeq[T](a.w)
+        for i, col in reduced.pivotColumns:
+            if col < a.w:
+                solution[col] = reduced.matrix[i, a.w]
+        some(solution)
+
+    proc inverse*[T](m: Matrix[T]): Option[Matrix[T]] =
+        assert m.h == m.w
+        let n = m.h
+        var augmented = initMatrix[T](n, 2 * n, default(T))
+        let one: T = 1
+        for i in 0..<n:
+            for j in 0..<n:
+                augmented[i, j] = m[i, j]
+            augmented[i, n + i] = one
+        let reduced = augmented.gaussJordan
+        if reduced.pivotColumns.countIt(it < n) < n:
+            return none(Matrix[T])
+        var inv = initMatrix[T](n, n, default(T))
+        for i in 0..<n:
+            for j in 0..<n:
+                inv[i, j] = reduced.matrix[i, n + j]
+        some(inv)
+
+    proc kernel*[T](m: Matrix[T]): seq[seq[T]] =
+        ## A basis of {x | m*x=0}.
+        let reduced = m.gaussJordan
+        let one: T = 1
+        var pivotRow = newSeqWith(m.w, -1)
+        for i, col in reduced.pivotColumns:
+            pivotRow[col] = i
+        for freeCol in 0..<m.w:
+            if pivotRow[freeCol] >= 0:
+                continue
+            var v = newSeq[T](m.w)
+            v[freeCol] = one
+            for pivotCol in 0..<m.w:
+                if pivotRow[pivotCol] >= 0:
+                    v[pivotCol] = -reduced.matrix[pivotRow[pivotCol], freeCol]
+            result.add(v)
+
+    proc image*[T](m: Matrix[T]): seq[seq[T]] =
+        ## A basis of the column space, using columns of the original matrix.
+        for col in m.gaussJordan.pivotColumns:
+            var v = newSeq[T](m.h)
+            for i in 0..<m.h:
+                v[i] = m[i, col]
+            result.add(v)
