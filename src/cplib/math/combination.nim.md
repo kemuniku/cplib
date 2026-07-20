@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/combination_prefix_sum.nim
+    title: cplib/math/combination_prefix_sum.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/combination_prefix_sum.nim
+    title: cplib/math/combination_prefix_sum.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/combination_test.nim
@@ -15,6 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/combination_npr_test.nim
     title: verify/math/combination_npr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/combination_test.nim
     title: verify/math/combination_test.nim
@@ -47,20 +59,25 @@ data:
     \ Combination_Type[ModInt], n, r: int): ModInt =\n        if n < 0 or r < 0 or\
     \ n < r:\n            return 0\n        return c.fact[n]*c.fact_inv[n-r]\n\n \
     \   proc nhr*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =\n    \
-    \    return c.ncr(n+r-1, r)\n"
+    \    if n == 0 and r == 0:\n            return Modint(1)\n        return c.ncr(n+r-1,\
+    \ r)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/combination.nim
-  requiredBy: []
-  timestamp: '2024-09-20 23:06:13+09:00'
+  requiredBy:
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/math/combination_prefix_sum.nim
+  timestamp: '2026-07-13 04:32:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/combination_test.nim
-  - verify/AI/combination_test.nim
   - verify/math/combination_npr_test.nim
   - verify/math/combination_npr_test.nim
   - verify/math/combination_test.nim
   - verify/math/combination_test.nim
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/AI/combination_test.nim
+  - verify/AI/combination_test.nim
 documentation_of: cplib/math/combination.nim
 layout: document
 redirect_from:

@@ -158,18 +158,18 @@ data:
   verifiedWith:
   - verify/AI/itertools_test.nim
   - verify/AI/itertools_test.nim
-  - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulatedr_test.nim
-  - verify/utils/itertools/accumulatedr_test.nim
-  - verify/utils/itertools/accumulate_test.nim
-  - verify/utils/itertools/accumulate_test.nim
-  - verify/utils/itertools/accumulatedr_2_test.nim
-  - verify/utils/itertools/accumulatedr_2_test.nim
   - verify/utils/itertools/accumulater_test.nim
   - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
   - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_test.nim
 documentation_of: cplib/utils/itertools.nim
 layout: document
 redirect_from:

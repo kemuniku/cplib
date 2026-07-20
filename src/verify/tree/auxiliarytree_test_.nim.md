@@ -47,13 +47,13 @@ data:
     \ discard dfs(G.v[0],-1)\n        anss += ans\n\necho anss\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/tree/auxiliarytree_test_.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
+  timestamp: '2026-07-13 00:09:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/tree/auxiliarytree_test_.nim

@@ -9,6 +9,12 @@ data:
     path: cplib/collections/segtree2d.nim
     title: cplib/collections/segtree2d.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph.nim
+    title: cplib/graph/functional_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph.nim
+    title: cplib/graph/functional_graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
   - icon: ':heavy_check_mark:'
@@ -33,12 +39,30 @@ data:
     path: verify/collections/segtree/segtree_xor2_test_.nim
     title: verify/collections/segtree/segtree_xor2_test_.nim
   - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  - icon: ':warning:'
+    path: verify/graph/functional_graph_test_.nim
+    title: verify/graph/functional_graph_test_.nim
+  - icon: ':warning:'
     path: verify/tree/hld/hld_past202004o_test_.nim
     title: verify/tree/hld/hld_past202004o_test_.nim
   - icon: ':warning:'
     path: verify/tree/hld/hld_past202004o_test_.nim
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_test.nim
+    title: verify/AI/functional_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_test.nim
+    title: verify/AI/functional_graph_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/inversion_number_test.nim
     title: verify/AI/inversion_number_test.nim
@@ -240,57 +264,65 @@ data:
   isVerificationFile: false
   path: cplib/collections/segtree.nim
   requiredBy:
+  - cplib/utils/inversion_number.nim
+  - cplib/utils/inversion_number.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/collections/segtree2d.nim
+  - cplib/collections/segtree2d.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/collections/segtree/segtree_get1item_test_.nim
+  - verify/collections/segtree/segtree_get1item_test_.nim
   - verify/collections/segtree/segtree_xor1_test_.nim
   - verify/collections/segtree/segtree_xor1_test_.nim
   - verify/collections/segtree/segtree_xor2_test_.nim
   - verify/collections/segtree/segtree_xor2_test_.nim
-  - verify/collections/segtree/segtree_get1item_test_.nim
-  - verify/collections/segtree/segtree_get1item_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - cplib/utils/inversion_number.nim
-  - cplib/utils/inversion_number.nim
-  - cplib/collections/segtree2d.nim
-  - cplib/collections/segtree2d.nim
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/segtree_test.nim
-  - verify/AI/segtree_test.nim
-  - verify/AI/inversion_number_test.nim
-  - verify/AI/inversion_number_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/segtree2d_test.nim
   - verify/AI/segtree2d_test.nim
+  - verify/AI/inversion_number_test.nim
+  - verify/AI/inversion_number_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/segtree_test.nim
+  - verify/AI/segtree_test.nim
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
-  - verify/collections/segtree/segtree_PSRC_test.nim
-  - verify/collections/segtree/segtree_PSRC_test.nim
-  - verify/collections/segtree/segtree_RMQ_test.nim
-  - verify/collections/segtree/segtree_RMQ_test.nim
-  - verify/collections/segtree/segtree_ordered_set_test.nim
-  - verify/collections/segtree/segtree_ordered_set_test.nim
-  - verify/collections/segtree/segtree_init_with_size_test.nim
-  - verify/collections/segtree/segtree_init_with_size_test.nim
-  - verify/collections/segtree/segtree_PSRC_2_test.nim
-  - verify/collections/segtree/segtree_PSRC_2_test.nim
-  - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
-  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree/segtree_PARS_test.nim
-  - verify/collections/segtree/segtree_PARS_test.nim
-  - verify/collections/hashtable_yuki2686_test.nim
-  - verify/collections/hashtable_yuki2686_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_init_with_size_test.nim
+  - verify/collections/segtree/segtree_init_with_size_test.nim
+  - verify/collections/segtree/segtree_PARS_test.nim
+  - verify/collections/segtree/segtree_PARS_test.nim
+  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
+  - verify/collections/segtree/segtree_PSRC_2_test.nim
+  - verify/collections/segtree/segtree_PSRC_2_test.nim
+  - verify/collections/segtree/segtree_RMQ_test.nim
+  - verify/collections/segtree/segtree_RMQ_test.nim
+  - verify/collections/segtree/segtree_static_test.nim
+  - verify/collections/segtree/segtree_static_test.nim
+  - verify/collections/segtree/segtree_PSRC_test.nim
+  - verify/collections/segtree/segtree_PSRC_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
+  - verify/collections/hashtable_yuki2686_test.nim
 documentation_of: cplib/collections/segtree.nim
 layout: document
 redirect_from:

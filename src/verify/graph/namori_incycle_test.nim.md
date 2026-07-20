@@ -48,18 +48,18 @@ data:
     var Q = ii()\nfor i in 0..<Q:\n    var a,b = ii()-1\n    if namori.incycle(a)\
     \ and namori.incycle(b):\n        echo 2\n    else:\n        echo 1\n"
   dependsOn:
-  - cplib/graph/namori_graph.nim
-  - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/namori_graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/namori_graph.nim
   isVerificationFile: true
   path: verify/graph/namori_incycle_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
+  timestamp: '2026-07-13 00:09:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/namori_incycle_test.nim

@@ -65,12 +65,12 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/dag_minimum_path_cover_test.nim
   requiredBy: []

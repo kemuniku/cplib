@@ -57,15 +57,15 @@ data:
     \ Mint(10)]\n  ntt(f)\n  intt(f)\n  assert f.mapIt(it.val) == @[9, 10]\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/ntt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/ntt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/ntt_test.nim
   requiredBy: []

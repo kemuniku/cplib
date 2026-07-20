@@ -78,10 +78,10 @@ data:
   verifiedWith:
   - verify/AI/rollback_unionfind_test.nim
   - verify/AI/rollback_unionfind_test.nim
-  - verify/collections/rollbackuf_yosupo_test.nim
-  - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
+  - verify/collections/rollbackuf_yosupo_test.nim
+  - verify/collections/rollbackuf_yosupo_test.nim
 documentation_of: cplib/collections/rollback_unionfind.nim
 layout: document
 redirect_from:

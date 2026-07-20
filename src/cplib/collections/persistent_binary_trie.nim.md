@@ -112,10 +112,10 @@ data:
   verifiedWith:
   - verify/AI/persistent_binary_trie_test.nim
   - verify/AI/persistent_binary_trie_test.nim
-  - verify/collections/persistnt_binary_trie_unionfind_test.nim
-  - verify/collections/persistnt_binary_trie_unionfind_test.nim
   - verify/collections/persistent_binary_trie_test.nim
   - verify/collections/persistent_binary_trie_test.nim
+  - verify/collections/persistnt_binary_trie_unionfind_test.nim
+  - verify/collections/persistnt_binary_trie_unionfind_test.nim
 documentation_of: cplib/collections/persistent_binary_trie.nim
 layout: document
 redirect_from:

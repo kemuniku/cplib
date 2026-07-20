@@ -54,16 +54,16 @@ data:
     \ a = op(a, seg.get(l..<r))\n        ans.add((a[0] * x + a[1]).val)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
+  timestamp: '2026-07-13 00:09:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_vertex_set_path_composite_test.nim

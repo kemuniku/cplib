@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/segtree.nim
+    title: cplib/collections/segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/segtree.nim
+    title: cplib/collections/segtree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
   - icon: ':heavy_check_mark:'
@@ -89,15 +95,17 @@ data:
     '
   dependsOn:
   - cplib/graph/functional_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/AI/functional_graph_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
+  timestamp: '2026-07-16 11:31:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/functional_graph_test.nim

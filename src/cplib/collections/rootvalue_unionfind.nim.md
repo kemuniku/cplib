@@ -93,10 +93,10 @@ data:
   timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/rootvalue_unionfind_test.nim
-  - verify/AI/rootvalue_unionfind_test.nim
   - verify/AI/dynamic_bipartite_test.nim
   - verify/AI/dynamic_bipartite_test.nim
+  - verify/AI/rootvalue_unionfind_test.nim
+  - verify/AI/rootvalue_unionfind_test.nim
 documentation_of: cplib/collections/rootvalue_unionfind.nim
 layout: document
 redirect_from:

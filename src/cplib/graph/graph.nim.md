@@ -388,6 +388,12 @@ data:
     path: verify/AI/dynamic_bipartite_test.nim
     title: verify/AI/dynamic_bipartite_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/functional_graph_test.nim
     title: verify/AI/functional_graph_test.nim
   - icon: ':heavy_check_mark:'
@@ -759,213 +765,215 @@ data:
   isVerificationFile: false
   path: cplib/graph/graph.nim
   requiredBy:
-  - verify/collections/rollback_uf_abc302ex_test_.nim
-  - verify/collections/rollback_uf_abc302ex_test_.nim
-  - verify/tree/prufer_abc328e_test_.nim
-  - verify/tree/prufer_abc328e_test_.nim
-  - verify/tree/auxiliarytree_test_.nim
-  - verify/tree/auxiliarytree_test_.nim
-  - verify/tree/diameter_path_dynamic_test_.nim
-  - verify/tree/diameter_path_dynamic_test_.nim
-  - verify/tree/diameter_path_static_test_.nim
-  - verify/tree/diameter_path_static_test_.nim
-  - verify/tree/rerooting_big_test_.nim
-  - verify/tree/rerooting_big_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/math/nearear_equiv_abc342e_test_.nim
-  - verify/math/nearear_equiv_abc342e_test_.nim
-  - verify/graph/namori_graph_test_.nim
-  - verify/graph/namori_graph_test_.nim
-  - verify/graph/static/SCCG_static_test_.nim
-  - verify/graph/static/SCCG_static_test_.nim
-  - verify/graph/static/topologicalsort_1_static_test_.nim
-  - verify/graph/static/topologicalsort_1_static_test_.nim
-  - verify/graph/static/topologicalsort_2_static_test_.nim
-  - verify/graph/static/topologicalsort_2_static_test_.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
-  - verify/graph/static/SCC_static_test_.nim
-  - verify/graph/static/SCC_static_test_.nim
-  - verify/graph/static/scc_abc335e_static_test_.nim
-  - verify/graph/static/scc_abc335e_static_test_.nim
-  - verify/graph/steiner_tree_abc364g_test_.nim
-  - verify/graph/steiner_tree_abc364g_test_.nim
-  - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  - verify/graph/merge_tree_test_.nim
-  - verify/graph/merge_tree_test_.nim
-  - verify/graph/is_bipartite_graph_test_.nim
-  - verify/graph/is_bipartite_graph_test_.nim
-  - verify/graph/functional_graph_test_.nim
-  - verify/graph/functional_graph_test_.nim
-  - verify/graph/namori_forest_test_.nim
-  - verify/graph/namori_forest_test_.nim
-  - verify/graph/dynamic/SCC_test_.nim
-  - verify/graph/dynamic/SCC_test_.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/scc_abc335e_test_.nim
-  - verify/graph/dynamic/scc_abc335e_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  - verify/graph/dynamic/topologicalsort_2_test_.nim
-  - verify/graph/dynamic/topologicalsort_2_test_.nim
-  - verify/graph/dynamic/topologicalsort_1_test_.nim
-  - verify/graph/dynamic/topologicalsort_1_test_.nim
-  - verify/graph/dynamic/SCCG_test_.nim
-  - verify/graph/dynamic/SCCG_test_.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/stern_brocot_tree.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
-  - cplib/str/compressed_trie.nim
-  - cplib/str/compressed_trie.nim
   - cplib/tree/diameter.nim
   - cplib/tree/diameter.nim
+  - cplib/tree/rerooting.nim
+  - cplib/tree/rerooting.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
-  - cplib/tree/rerooting.nim
-  - cplib/tree/rerooting.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/str/compressed_trie.nim
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/bipartite_graph.nim
-  - cplib/graph/dynamic_bipartite.nim
-  - cplib/graph/dynamic_bipartite.nim
-  - cplib/graph/graph_debug.nim
-  - cplib/graph/graph_debug.nim
-  - cplib/graph/range_edge_graph.nim
-  - cplib/graph/range_edge_graph.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/merge_tree.nim
-  - cplib/graph/merge_tree.nim
-  - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/grid_to_graph.nim
-  - cplib/graph/grid_to_graph.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/range_edge_graph.nim
+  - cplib/graph/range_edge_graph.nim
+  - cplib/graph/graph_debug.nim
+  - cplib/graph/graph_debug.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/dynamic_bipartite.nim
+  - cplib/graph/dynamic_bipartite.nim
+  - cplib/graph/grid_to_graph.nim
+  - cplib/graph/grid_to_graph.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/merge_tree.nim
+  - cplib/graph/merge_tree.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/kruskal.nim
+  - verify/math/nearear_equiv_abc342e_test_.nim
+  - verify/math/nearear_equiv_abc342e_test_.nim
+  - verify/tree/auxiliarytree_test_.nim
+  - verify/tree/auxiliarytree_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/diameter_path_static_test_.nim
+  - verify/tree/diameter_path_static_test_.nim
+  - verify/tree/prufer_abc328e_test_.nim
+  - verify/tree/prufer_abc328e_test_.nim
+  - verify/tree/rerooting_big_test_.nim
+  - verify/tree/rerooting_big_test_.nim
+  - verify/tree/diameter_path_dynamic_test_.nim
+  - verify/tree/diameter_path_dynamic_test_.nim
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/graph/steiner_tree_abc364g_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/static/SCC_static_test_.nim
+  - verify/graph/static/SCC_static_test_.nim
+  - verify/graph/static/scc_abc335e_static_test_.nim
+  - verify/graph/static/scc_abc335e_static_test_.nim
+  - verify/graph/static/topologicalsort_1_static_test_.nim
+  - verify/graph/static/topologicalsort_1_static_test_.nim
+  - verify/graph/static/SCCG_static_test_.nim
+  - verify/graph/static/SCCG_static_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/topologicalsort_2_static_test_.nim
+  - verify/graph/static/topologicalsort_2_static_test_.nim
+  - verify/graph/merge_tree_test_.nim
+  - verify/graph/merge_tree_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test_.nim
+  - verify/graph/dag_minimum_path_cover_hakata_test_.nim
+  - verify/graph/namori_graph_test_.nim
+  - verify/graph/namori_graph_test_.nim
+  - verify/graph/namori_forest_test_.nim
+  - verify/graph/namori_forest_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/topologicalsort_1_test_.nim
+  - verify/graph/dynamic/topologicalsort_1_test_.nim
+  - verify/graph/dynamic/scc_abc335e_test_.nim
+  - verify/graph/dynamic/scc_abc335e_test_.nim
+  - verify/graph/dynamic/SCC_test_.nim
+  - verify/graph/dynamic/SCC_test_.nim
+  - verify/graph/dynamic/topologicalsort_2_test_.nim
+  - verify/graph/dynamic/topologicalsort_2_test_.nim
+  - verify/graph/dynamic/SCCG_test_.nim
+  - verify/graph/dynamic/SCCG_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/is_bipartite_graph_test_.nim
+  - verify/graph/is_bipartite_graph_test_.nim
+  - verify/collections/rollback_uf_abc302ex_test_.nim
+  - verify/collections/rollback_uf_abc302ex_test_.nim
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/namori_graph_test.nim
-  - verify/AI/namori_graph_test.nim
-  - verify/AI/kruskal_test.nim
-  - verify/AI/kruskal_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
-  - verify/AI/dag_minimum_path_cover_test.nim
-  - verify/AI/dag_minimum_path_cover_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/steiner_tree_test.nim
-  - verify/AI/steiner_tree_test.nim
-  - verify/AI/bellmanford_test.nim
-  - verify/AI/bellmanford_test.nim
-  - verify/AI/warshall_floyd_test.nim
-  - verify/AI/warshall_floyd_test.nim
-  - verify/AI/grid_to_graph_test.nim
-  - verify/AI/grid_to_graph_test.nim
-  - verify/AI/topologicalsort_test.nim
-  - verify/AI/topologicalsort_test.nim
-  - verify/AI/merge_tree_test.nim
-  - verify/AI/merge_tree_test.nim
-  - verify/AI/compressed_trie_test.nim
-  - verify/AI/compressed_trie_test.nim
-  - verify/AI/diameter_test.nim
-  - verify/AI/diameter_test.nim
-  - verify/AI/prufer_test.nim
-  - verify/AI/prufer_test.nim
-  - verify/AI/dijkstra_test.nim
-  - verify/AI/dijkstra_test.nim
-  - verify/AI/SCC_test.nim
-  - verify/AI/SCC_test.nim
-  - verify/AI/heavylightdecomposition_test.nim
-  - verify/AI/heavylightdecomposition_test.nim
-  - verify/AI/rerooting_test.nim
-  - verify/AI/rerooting_test.nim
-  - verify/AI/random_helper_test.nim
-  - verify/AI/random_helper_test.nim
-  - verify/AI/namori_forest_test.nim
-  - verify/AI/namori_forest_test.nim
-  - verify/AI/graph_test.nim
-  - verify/AI/graph_test.nim
-  - verify/AI/dynamic_bipartite_test.nim
-  - verify/AI/dynamic_bipartite_test.nim
-  - verify/AI/graph_debug_test.nim
-  - verify/AI/graph_debug_test.nim
-  - verify/AI/functional_graph_test.nim
-  - verify/AI/functional_graph_test.nim
-  - verify/AI/reverse_edge_test.nim
-  - verify/AI/reverse_edge_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
   - verify/AI/bipartite_graph_test.nim
   - verify/AI/bipartite_graph_test.nim
-  - verify/tree/diameter_yosupo_test.nim
-  - verify/tree/diameter_yosupo_test.nim
+  - verify/AI/warshall_floyd_test.nim
+  - verify/AI/warshall_floyd_test.nim
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/random_helper_test.nim
+  - verify/AI/random_helper_test.nim
+  - verify/AI/dynamic_bipartite_test.nim
+  - verify/AI/dynamic_bipartite_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/grid_to_graph_test.nim
+  - verify/AI/grid_to_graph_test.nim
+  - verify/AI/heavylightdecomposition_test.nim
+  - verify/AI/heavylightdecomposition_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/graph_debug_test.nim
+  - verify/AI/graph_debug_test.nim
+  - verify/AI/kruskal_test.nim
+  - verify/AI/kruskal_test.nim
+  - verify/AI/prufer_test.nim
+  - verify/AI/prufer_test.nim
+  - verify/AI/SCC_test.nim
+  - verify/AI/SCC_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/rerooting_test.nim
+  - verify/AI/rerooting_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/reverse_edge_test.nim
+  - verify/AI/reverse_edge_test.nim
+  - verify/AI/topologicalsort_test.nim
+  - verify/AI/topologicalsort_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/diameter_test.nim
+  - verify/AI/diameter_test.nim
+  - verify/AI/namori_graph_test.nim
+  - verify/AI/namori_graph_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/steiner_tree_test.nim
+  - verify/AI/steiner_tree_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_test.nim
+  - verify/AI/graph_test.nim
+  - verify/AI/merge_tree_test.nim
+  - verify/AI/merge_tree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
-  - verify/tree/diameter_dynamic_test.nim
-  - verify/tree/diameter_dynamic_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim
+  - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_dynamic_test.nim
+  - verify/tree/diameter_dynamic_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
-  - verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-  - verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
+  - verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - verify/graph/dynamic/shortest_path_test.nim

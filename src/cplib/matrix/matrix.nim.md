@@ -137,29 +137,29 @@ data:
   isVerificationFile: false
   path: cplib/matrix/matrix.nim
   requiredBy:
-  - verify/modint/barrett/dpr_dynamic_test_.nim
-  - verify/modint/barrett/dpr_dynamic_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
   - verify/matrix/matrix_dpr_test_.nim
   - verify/matrix/matrix_dpr_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/dpr_dynamic_test_.nim
+  - verify/modint/barrett/dpr_dynamic_test_.nim
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/matrix_test.nim
   - verify/AI/matrix_test.nim
-  - verify/matrix/matrix_unit_test.nim
-  - verify/matrix/matrix_unit_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_zoistring_test.nim
-  - verify/matrix/matrix_zoistring_test.nim
   - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
 documentation_of: cplib/matrix/matrix.nim
 layout: document
 redirect_from:

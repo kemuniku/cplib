@@ -141,18 +141,18 @@ data:
     \ len*(grid:GridSearcher):int=\n        return len(grid.row)"
   dependsOn:
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: cplib/utils/grid_searcher.nim
   requiredBy:
-  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
-  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
   - verify/utils/grid_searcher/skate_test_.nim
   - verify/utils/grid_searcher/skate_test_.nim
   - verify/utils/grid_searcher/skate_tuple_test_.nim
   - verify/utils/grid_searcher/skate_tuple_test_.nim
+  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
+  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
   timestamp: '2026-07-06 04:42:52+09:00'

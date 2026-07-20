@@ -102,10 +102,10 @@ data:
   verifiedWith:
   - verify/AI/hashtable_test.nim
   - verify/AI/hashtable_test.nim
-  - verify/collections/associative_array_test.nim
-  - verify/collections/associative_array_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
+  - verify/collections/associative_array_test.nim
+  - verify/collections/associative_array_test.nim
 documentation_of: cplib/collections/hashtable.nim
 layout: document
 redirect_from:
