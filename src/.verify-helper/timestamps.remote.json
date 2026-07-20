@@ -55,6 +55,7 @@
 "verify/AI/hashtable_test.nim": "2026-07-06 22:23:54 +0900",
 "verify/AI/heavylightdecomposition_test.nim": "2026-07-13 00:09:08 +0900",
 "verify/AI/imos2d_test.nim": "2026-07-06 22:23:54 +0900",
+"verify/AI/implicit_dijkstra_test.nim": "2026-07-20 01:43:13 +0900",
 "verify/AI/inner_math_test.nim": "2026-07-06 22:23:54 +0900",
 "verify/AI/int128_test.nim": "2026-07-06 22:23:54 +0900",
 "verify/AI/intersect_test.nim": "2026-07-06 22:23:54 +0900",
