@@ -86,10 +86,10 @@ data:
   isVerificationFile: false
   path: cplib/tree/diameter.nim
   requiredBy:
-  - verify/tree/diameter_path_static_test_.nim
-  - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
+  - verify/tree/diameter_path_static_test_.nim
+  - verify/tree/diameter_path_static_test_.nim
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

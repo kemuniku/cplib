@@ -202,6 +202,12 @@ data:
       path: cplib/graph/functional_graph.nim
       title: cplib/graph/functional_graph.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/functional_graph_with_lazy_op.nim
+      title: cplib/graph/functional_graph_with_lazy_op.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/functional_graph_with_op.nim
+      title: cplib/graph/functional_graph_with_op.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'

@@ -51,10 +51,10 @@ data:
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/inversion_number_test.nim
-  - verify/AI/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
+  - verify/AI/inversion_number_test.nim
+  - verify/AI/inversion_number_test.nim
 documentation_of: cplib/utils/inversion_number.nim
 layout: document
 redirect_from:

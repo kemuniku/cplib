@@ -67,10 +67,10 @@ data:
   isVerificationFile: false
   path: cplib/utils/mo.nim
   requiredBy:
-  - cplib/math/combination_prefix_sum.nim
-  - cplib/math/combination_prefix_sum.nim
   - verify/utils/mo_test_.nim
   - verify/utils/mo_test_.nim
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/math/combination_prefix_sum.nim
   timestamp: '2024-03-16 18:25:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
