@@ -42,10 +42,10 @@ data:
   timestamp: '2024-05-29 17:28:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/zalgorithm_test.nim
-  - verify/AI/zalgorithm_test.nim
   - verify/str/zalgorithm_test.nim
   - verify/str/zalgorithm_test.nim
+  - verify/AI/zalgorithm_test.nim
+  - verify/AI/zalgorithm_test.nim
 documentation_of: cplib/str/zalgorithm.nim
 layout: document
 redirect_from:

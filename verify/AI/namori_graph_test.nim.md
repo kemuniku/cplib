@@ -87,9 +87,9 @@ data:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/namori_graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/namori_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true

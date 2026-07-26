@@ -14,6 +14,18 @@ data:
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_lazy_op.nim
+    title: cplib/graph/functional_graph_with_lazy_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_lazy_op.nim
+    title: cplib/graph/functional_graph_with_lazy_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_op.nim
+    title: cplib/graph/functional_graph_with_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_op.nim
+    title: cplib/graph/functional_graph_with_op.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -41,10 +53,11 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
-    import cplib/graph/functional_graph\nimport cplib/graph/graph\nimport atcoder/lazysegtree\n\
-    import std/random\n\ntype\n    Sum = tuple[sum,len:int]\n    Affine = tuple[a,b:int]\n\
-    \nproc sumOp(x,y:Sum):Sum=\n    return (x.sum+y.sum,x.len+y.len)\n\nproc sumE():Sum=\n\
-    \    return (0,0)\n\nproc affineMapping(f:Affine,x:Sum):Sum=\n    return (f.a*x.sum+f.b*x.len,x.len)\n\
+    import cplib/graph/functional_graph_with_op\nimport cplib/graph/functional_graph_with_lazy_op\n\
+    import cplib/graph/graph\nimport atcoder/lazysegtree\nimport std/random\n\ntype\n\
+    \    Sum = tuple[sum,len:int]\n    Affine = tuple[a,b:int]\n\nproc sumOp(x,y:Sum):Sum=\n\
+    \    return (x.sum+y.sum,x.len+y.len)\n\nproc sumE():Sum=\n    return (0,0)\n\n\
+    proc affineMapping(f:Affine,x:Sum):Sum=\n    return (f.a*x.sum+f.b*x.len,x.len)\n\
     \nproc affineComposition(f,g:Affine):Affine=\n    # f(g(x))\n    return (f.a*g.a,f.a*g.b+f.b)\n\
     \nproc affineId():Affine=\n    return (1,0)\n\nlet nxt = @[1,2,3,1,2,5,7,6,7]\n\
     var naive = @[1,2,3,4,5,6,7,8,9]\nvar initial = newSeq[Sum](len(naive))\nfor i,x\
@@ -189,18 +202,22 @@ data:
     \                if step < l+i:\n                    now = orderNext[now]\n  \
     \          doAssert product == expected\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/collections/segtree.nim
   - cplib/graph/functional_graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/AI/functional_graph_lazy_op_test.nim
   requiredBy: []
-  timestamp: '2026-07-16 11:31:11+09:00'
+  timestamp: '2026-07-17 07:16:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/functional_graph_lazy_op_test.nim

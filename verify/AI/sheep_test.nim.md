@@ -44,10 +44,10 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []

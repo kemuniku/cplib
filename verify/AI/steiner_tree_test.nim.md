@@ -75,13 +75,13 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/steiner_tree.nim
   - cplib/graph/graph.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/steiner_tree.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/steiner_tree_test.nim
   requiredBy: []

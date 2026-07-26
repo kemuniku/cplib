@@ -50,12 +50,12 @@ data:
     \ INF64:\n        echo \"Yes\"\n    else:\n        echo \"No\"\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/namori_forest.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/graph/namori_forest.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: verify/graph/namori_forest_test_.nim

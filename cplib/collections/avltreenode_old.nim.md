@@ -126,10 +126,10 @@ data:
   timestamp: '2025-04-27 18:32:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/avlset_old_test.nim
-  - verify/AI/avlset_old_test.nim
   - verify/AI/avltreenode_old_test.nim
   - verify/AI/avltreenode_old_test.nim
+  - verify/AI/avlset_old_test.nim
+  - verify/AI/avlset_old_test.nim
 documentation_of: cplib/collections/avltreenode_old.nim
 layout: document
 redirect_from:

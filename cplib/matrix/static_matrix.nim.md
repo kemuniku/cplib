@@ -122,12 +122,12 @@ data:
   timestamp: '2026-05-26 07:51:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/static_matrix_test.nim
-  - verify/AI/static_matrix_test.nim
   - verify/matrix/static_string/static_matrix_zoistring_test.nim
   - verify/matrix/static_string/static_matrix_zoistring_test.nim
   - verify/matrix/static_string/static_matrix_unit_test.nim
   - verify/matrix/static_string/static_matrix_unit_test.nim
+  - verify/AI/static_matrix_test.nim
+  - verify/AI/static_matrix_test.nim
 documentation_of: cplib/matrix/static_matrix.nim
 layout: document
 redirect_from:
