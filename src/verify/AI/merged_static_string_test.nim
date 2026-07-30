@@ -35,3 +35,17 @@ var emptyIntegerMerged: MergedStaticString[int]
 assert $emptyIntegerMerged == ""
 let initializedEmptyIntegerMerged = initMergedStaticString(newSeq[StaticString[int]]())
 assert initializedEmptyIntegerMerged.len == 0
+
+let integerMergedFromRanges = initMergedStaticString(integerStatic, @[(0, 2), (2, 4)])
+assert integerMergedFromRanges == integerMerged
+let integerSubStatic = integerStatic[1..5]
+let integerSubMergedFromRanges = initMergedStaticString(integerSubStatic, @[(0, 2), (3, 5)])
+assert $integerSubMergedFromRanges == "2 3 2 4"
+let emptyIntegerMergedFromRanges = initMergedStaticString(integerStatic, newSeq[(int, int)]())
+assert emptyIntegerMergedFromRanges.len == 0
+let integerMergedWithEmptyRange = initMergedStaticString(integerStatic, @[(1, 1), (0, 2)])
+assert $integerMergedWithEmptyRange == "1 2"
+
+let reversibleIntegerStatic = toStaticString([1, 2, 3, 4], reversible=true).reversed
+let reversedIntegerMergedFromRanges = initMergedStaticString(reversibleIntegerStatic, @[(1, 3), (0, 1)])
+assert $reversedIntegerMergedFromRanges == "3 2 4"
