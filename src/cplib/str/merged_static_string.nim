@@ -3,47 +3,49 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
     import cplib/str/static_string
     import algorithm
 
-    type MergedStaticString* = object
-        S : seq[StaticString]
+    type MergedStaticString*[T] = object
+        S : seq[StaticString[T]]
         lencum : seq[int]
     
-    proc `&`*(S,T:StaticString):MergedStaticString=
+    proc `&`*[Element](S,T:StaticString[Element]):MergedStaticString[Element]=
         result.S = @[S,T]
         result.lencum = @[len(S),len(S)+len(T)]
-    proc `&=`*(S:var MergedStaticString,T:StaticString)=
+    proc `&=`*[T](S:var MergedStaticString[T],value:StaticString[T])=
         if S.S.len == 0:
-            S.S = @[T]
-            S.lencum = @[len(T)]
+            S.S = @[value]
+            S.lencum = @[len(value)]
         else:
-            S.S.add(T)
-            S.lencum.add(S.lencum[^1] + len(T))
-    proc `&`*(S:MergedStaticString,T:StaticString):MergedStaticString=
+            S.S.add(value)
+            S.lencum.add(S.lencum[^1] + len(value))
+    proc `&`*[T](S:MergedStaticString[T],value:StaticString[T]):MergedStaticString[T]=
         result = S
-        result &= T
+        result &= value
     
 
 
-    proc initMergedStaticString*(S:openArray[StaticString]):MergedStaticString=
+    proc initMergedStaticString*[T](S:openArray[StaticString[T]]):MergedStaticString[T]=
         result.S = @S
         result.lencum = newSeq[int](len(S))
+        if len(S) == 0:
+            return
         result.lencum[0] = len(S[0])
         for i in 1..<len(S):
             result.lencum[i] = result.lencum[i-1] + len(S[i])
 
-    proc len*(S:MergedStaticString):int=
+    proc len*[T](S:MergedStaticString[T]):int=
         if S.lencum.len == 0:
             return 0
         else:
             return S.lencum[^1]
 
-    proc `[]`*(S:MergedStaticString,idx:int):char=
+    proc `[]`*[T](S:MergedStaticString[T],idx:int):T=
         var tmp = S.lencum.upperBound(idx)
         if tmp == 0:
             return S.S[0][idx]
         else:
             return S.S[tmp][idx-S.lencum[tmp-1]]
 
-    proc `[]`*(S:MergedStaticString,slice:HSlice[int,int]):MergedStaticString=
+    proc `[]`*[T](S:MergedStaticString[T],slice:HSlice[int,int]):MergedStaticString[T]=
         var tmp = 0
         for i in 0..<len(S.S):
             if tmp < slice.a:
@@ -59,7 +61,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
 
 
 
-    proc lcp*(S,T:MergedStaticString):int=
+    proc lcp*[Element](S,T:MergedStaticString[Element]):int=
         if S.S.len == 0 or T.S.len == 0:
             return 0
         var s = S.S[0]
@@ -93,7 +95,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
             else:
                 return result + tmp
 
-    proc cmp*(S,T:MergedStaticString):int=
+    proc cmp*[Element](S,T:MergedStaticString[Element]):int=
         var lcp = lcp(S,T)
         if min(len(S),len(T)) == lcp:
             if len(S) == len(T):
@@ -108,23 +110,29 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
             else:
                 return 1
 
-    proc `<`*(S,T:MergedStaticString):bool=
+    proc `<`*[Element](S,T:MergedStaticString[Element]):bool=
         return cmp(S,T) < 0
 
-    proc `>`*(S,T:MergedStaticString):bool=
+    proc `>`*[Element](S,T:MergedStaticString[Element]):bool=
         return cmp(S,T) > 0
 
-    proc `<=`*(S,T:MergedStaticString):bool=
+    proc `<=`*[Element](S,T:MergedStaticString[Element]):bool=
         return cmp(S,T) <= 0
 
-    proc `>=`*(S,T:MergedStaticString):bool=
+    proc `>=`*[Element](S,T:MergedStaticString[Element]):bool=
         return cmp(S,T) >= 0
 
-    proc `==`*(S,T:MergedStaticString):bool=
+    proc `==`*[Element](S,T:MergedStaticString[Element]):bool=
         return len(S) == len(T) and lcp(S,T) == len(S)
 
-    proc `$`*(S:MergedStaticString):string=
-        result = ""
-        for i in 0..<len(S.S):
-            result &= $(S.S[i])
-        return result
+    proc `$`*[T](S:MergedStaticString[T]):string=
+        when T is char:
+            for i in 0..<len(S.S):
+                result &= $(S.S[i])
+        else:
+            for staticString in S.S:
+                let value = $staticString
+                if len(value) > 0:
+                    if len(result) > 0:
+                        result &= " "
+                    result &= value
