@@ -45,6 +45,12 @@ let emptyIntegerMergedFromRanges = initMergedStaticString(integerStatic, newSeq[
 assert emptyIntegerMergedFromRanges.len == 0
 let integerMergedWithEmptyRange = initMergedStaticString(integerStatic, @[(1, 1), (0, 2)])
 assert $integerMergedWithEmptyRange == "1 2"
+let allEmptyIntegerMerged = initMergedStaticString(integerStatic, @[(0, 0), (2, 2)])
+let integerMergedWithTrailingEmpty = initMergedStaticString(integerStatic, @[(0, 2), (3, 3)])
+assert cmp(allEmptyIntegerMerged, integerMergedWithEmptyRange) < 0
+assert cmp(integerMergedWithEmptyRange, allEmptyIntegerMerged) > 0
+assert cmp(allEmptyIntegerMerged, allEmptyIntegerMerged) == 0
+assert cmp(integerMergedWithEmptyRange, integerMergedWithTrailingEmpty) == 0
 
 let reversibleIntegerStatic = toStaticString([1, 2, 3, 4], reversible=true).reversed
 let reversedIntegerMergedFromRanges = initMergedStaticString(reversibleIntegerStatic, @[(1, 3), (0, 1)])
