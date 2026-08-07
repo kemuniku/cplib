@@ -360,6 +360,9 @@ data:
       path: cplib/str/compressed_trie.nim
       title: cplib/str/compressed_trie.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/fixedlength_merged_static_string.nim
+      title: cplib/str/fixedlength_merged_static_string.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/hash_string.nim
       title: cplib/str/hash_string.nim
     - icon: ':heavy_check_mark:'
@@ -1021,6 +1024,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/fenwick2d_test.nim
       title: verify/AI/fenwick2d_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/fixedlength_merged_static_string_test.nim
+      title: verify/AI/fixedlength_merged_static_string_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/float128_test.nim
       title: verify/AI/float128_test.nim

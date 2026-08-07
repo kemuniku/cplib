@@ -41,8 +41,8 @@ data:
   code: "when not declared CPLIB_STR_COMPRESSED_TRIE:\n    import cplib/str/static_string\n\
     \    import algorithm\n    import cplib/graph/graph\n    const CPLIB_STR_COMPRESSED_TRIE*\
     \ = 1\n    type CompressedTrieNode* = ref object\n        parent* : CompressedTrieNode\n\
-    \        child* : array['a'..'z',CompressedTrieNode]\n        s* : StaticString\n\
-    \        cnt* : int32\n        subtree_sum* : int32\n\n    proc initCompressedTrie*(S:openArray[StaticString],sorted:bool=false):CompressedTrieNode=\n\
+    \        child* : array['a'..'z',CompressedTrieNode]\n        s* : StaticString[char]\n\
+    \        cnt* : int32\n        subtree_sum* : int32\n\n    proc initCompressedTrie*(S:openArray[StaticString[char]],sorted:bool=false):CompressedTrieNode=\n\
     \        var S = @S\n        if not sorted:\n            S.sort()\n        var\
     \ root = CompressedTrieNode(s:S[0][0..<0])\n        var stack = @[root]\n    \
     \    for s in S:\n            while not s.startsWith(stack[^1].s):\n         \
@@ -66,15 +66,15 @@ data:
     \                dfs_stack.add((node.child[c],false))\n        return root\n\n\
     \    proc debug_dfs(node:CompressedTrieNode,depth:int = 0)=\n        echo node.s\n\
     \        for c in 'a'..'z':\n            if node.child[c].isNil():\n         \
-    \       continue\n            debug_dfs(node.child[c],depth+1)\n\n    proc toGraph*(root:CompressedTrieNode):WeightedDirectedGraph[StaticString]=\n\
-    \        var p = @[(-1,StaticString())]\n        var cnt = 1\n        proc dfs(node:CompressedTrieNode,id:int)=\n\
-    \            for c in 'a'..'z':\n                if not node.child[c].isNil():\n\
-    \                    cnt += 1\n                    var l = lcp(node.s,node.child[c].s)\n\
-    \                    p.add((id,node.child[c].s[l..<len(node.child[c].s)]))\n \
-    \                   dfs(node.child[c],cnt-1)\n        dfs(root,0)\n        result\
-    \ = initWeightedDirectedGraph(len(p),StaticString)\n        for i in 1..<len(p):\n\
+    \       continue\n            debug_dfs(node.child[c],depth+1)\n\n    proc toGraph*(root:CompressedTrieNode):WeightedDirectedGraph[StaticString[char]]=\n\
+    \        var p = @[(-1,StaticString[char]())]\n        var cnt = 1\n        proc\
+    \ dfs(node:CompressedTrieNode,id:int)=\n            for c in 'a'..'z':\n     \
+    \           if not node.child[c].isNil():\n                    cnt += 1\n    \
+    \                var l = lcp(node.s,node.child[c].s)\n                    p.add((id,node.child[c].s[l..<len(node.child[c].s)]))\n\
+    \                    dfs(node.child[c],cnt-1)\n        dfs(root,0)\n        result\
+    \ = initWeightedDirectedGraph(len(p),StaticString[char])\n        for i in 1..<len(p):\n\
     \            result.add_edge(p[i][0],i,p[i][1])\n\n    type VirtualTrieNode =\
-    \ ref object\n        current_node* : CompressedTrieNode\n        now* : StaticString\n\
+    \ ref object\n        current_node* : CompressedTrieNode\n        now* : StaticString[char]\n\
     \n    proc get_virtualnode*(node:CompressedTrieNode):VirtualTrieNode=\n      \
     \  return VirtualTrieNode(current_node:node,now:node.s[0..<0])\n\n    proc get_child*(node:VirtualTrieNode,c:char):VirtualTrieNode=\n\
     \        if len(node.now) == 0:\n            if node.current_node.child[c].s.len()\
@@ -91,16 +91,16 @@ data:
     \ get_subtree_sum*(node:VirtualTrieNode):int=\n        if node.now.len() == 0:\n\
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-31 04:48:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/compressed_trie_test.nim
