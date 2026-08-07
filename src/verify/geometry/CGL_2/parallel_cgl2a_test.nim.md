@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
   requiredBy: []

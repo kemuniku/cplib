@@ -30,17 +30,18 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/suffixarray\n\
     import cplib/str/static_string\n\nimport algorithm,sequtils,strutils\nvar S =\
-    \ stdin.readLine().toStaticString()\nvar tmp : seq[StaticString]\nfor i in 0..<len(S):\n\
-    \    tmp.add(S[i..<len(S)])\ntmp.sort()\n\necho tmp.mapit(it.l).join(\" \")"
+    \ stdin.readLine().toStaticString()\nvar tmp : seq[StaticString[char]]\nfor i\
+    \ in 0..<len(S):\n    tmp.add(S[i..<len(S)])\ntmp.sort()\n\necho tmp.mapit(it.l).join(\"\
+    \ \")\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_SA_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-31 04:48:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_SA_test.nim

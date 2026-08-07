@@ -41,8 +41,8 @@ data:
   dependsOn:
   - cplib/math/int128.nim
   - cplib/utils/constants.nim
-  - cplib/math/int128.nim
   - cplib/utils/constants.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/math/combination_int.nim
   requiredBy: []

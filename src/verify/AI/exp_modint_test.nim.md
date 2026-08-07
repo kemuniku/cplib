@@ -41,9 +41,9 @@ data:
     '
   dependsOn:
   - cplib/modint/exp_modint.nim
-  - cplib/math/euler_phi.nim
-  - cplib/math/euler_phi.nim
   - cplib/modint/exp_modint.nim
+  - cplib/math/euler_phi.nim
+  - cplib/math/euler_phi.nim
   isVerificationFile: true
   path: verify/AI/exp_modint_test.nim
   requiredBy: []

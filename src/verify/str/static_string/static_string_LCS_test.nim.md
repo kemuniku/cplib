@@ -30,7 +30,7 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/longest_common_substring\n\
     include cplib/str/static_string\nimport algorithm,sequtils,strutils\nvar S = stdin.readLine()\n\
-    var T = stdin.readLine()\nvar X = (S & '$' & T).toStaticString\nvar tmp : seq[StaticString]\n\
+    var T = stdin.readLine()\nvar X = (S & '$' & T).toStaticString\nvar tmp : seq[StaticString[char]]\n\
     for i in 0..<len(X):\n    tmp.add(X[i..<len(X)])\ntmp.sort()\nvar ans = 0\nvar\
     \ a = 0\nvar b = 0\nvar c = 0\nvar d = 0\nfor i in 0..<(len(X)-1):\n    if (tmp[i].l\
     \ in 0..<len(S) and tmp[i+1].l notin 0..<len(S)) or (tmp[i+1].l in 0..<len(S)\
@@ -40,16 +40,16 @@ data:
     \    c = tmp[i+1].l-len(S)-1\n                d = tmp[i+1].l+lcp-len(S)-1\n  \
     \          else:\n                a = tmp[i+1].l\n                b = tmp[i+1].l+lcp\n\
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
-    echo a,\" \",b,\" \",c,\" \",d"
+    echo a,\" \",b,\" \",c,\" \",d\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-31 04:48:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_LCS_test.nim

@@ -94,18 +94,18 @@ data:
 
     '
   dependsOn:
+  - cplib/str/static_string.nim
+  - cplib/graph/graph.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/graph/graph.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/compressed_trie.nim
-  - cplib/str/compressed_trie.nim
-  - cplib/str/static_string.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-07-31 04:48:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/compressed_trie_test.nim

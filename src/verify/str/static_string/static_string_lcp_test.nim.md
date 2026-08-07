@@ -30,18 +30,18 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/number_of_substrings\n\
     import cplib/str/static_string\n\nimport algorithm\nvar S = stdin.readLine().toStaticString()\n\
-    var tmp : seq[StaticString]\nfor i in 0..<len(S):\n    tmp.add(S[i..<len(S)])\n\
+    var tmp : seq[StaticString[char]]\nfor i in 0..<len(S):\n    tmp.add(S[i..<len(S)])\n\
     tmp.sort()\nvar sm = 0\nfor i in 0..<(len(S)-1):\n    sm += lcp(tmp[i],tmp[i+1])\n\
-    echo len(S)*(len(S)+1) div 2 - sm"
+    echo len(S)*(len(S)+1) div 2 - sm\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_lcp_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-07-31 04:48:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_lcp_test.nim
