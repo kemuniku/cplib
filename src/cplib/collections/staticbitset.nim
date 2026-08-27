@@ -28,6 +28,8 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
     proc initBitSetFromIndexes*(indexes:openArray[int],size:static int):Bitset[size]=
         const mask = ((1 shl 6) - 1)
         for i in indexes:
+            if i < 0 or i >= size:
+                raise newException(IndexDefect, "BitSet index out of bounds")
             varor(result.bits[i shr 6],1u shl (i and mask))
     
     proc `&`*[size](x,y:BitSet[size]):BitSet[size]=
