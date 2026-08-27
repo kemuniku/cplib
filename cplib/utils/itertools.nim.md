@@ -156,16 +156,16 @@ data:
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulatedr_2_test.nim
   - verify/utils/itertools/accumulatedr_2_test.nim
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulate_test.nim
-  - verify/utils/itertools/accumulate_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulater_test.nim
   - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulate_test.nim
   - verify/utils/itertools/accumulatedr_test.nim
   - verify/utils/itertools/accumulatedr_test.nim
   - verify/AI/itertools_test.nim

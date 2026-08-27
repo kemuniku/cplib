@@ -41,10 +41,10 @@ data:
     \ 2))\n        var x = meguru_bisect(0, mx+1, isok)\n        ans[i] = x * 2\n\
     echo ans.join(\" \")\n"
   dependsOn:
-  - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
   - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
-  - cplib/utils/binary_search.nim
+  - cplib/str/rolling_hash.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   requiredBy: []

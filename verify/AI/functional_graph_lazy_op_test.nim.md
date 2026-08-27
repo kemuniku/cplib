@@ -204,15 +204,15 @@ data:
   dependsOn:
   - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph_with_lazy_op.nim
-  - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph_with_op.nim
   isVerificationFile: true
   path: verify/AI/functional_graph_lazy_op_test.nim

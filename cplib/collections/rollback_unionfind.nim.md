@@ -76,12 +76,12 @@ data:
   timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/rollback_unionfind_test.nim
-  - verify/AI/rollback_unionfind_test.nim
-  - verify/collections/rollbackuf_yosupo_test.nim
-  - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
+  - verify/collections/rollbackuf_yosupo_test.nim
+  - verify/collections/rollbackuf_yosupo_test.nim
+  - verify/AI/rollback_unionfind_test.nim
+  - verify/AI/rollback_unionfind_test.nim
 documentation_of: cplib/collections/rollback_unionfind.nim
 layout: document
 redirect_from:

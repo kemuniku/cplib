@@ -381,6 +381,9 @@ data:
       path: cplib/str/palindromic_tree.nim
       title: cplib/str/palindromic_tree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/repeated_static_string.nim
+      title: cplib/str/repeated_static_string.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/rolling_hash.nim
       title: cplib/str/rolling_hash.nim
     - icon: ':heavy_check_mark:'
@@ -1228,6 +1231,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/rangeset_test.nim
       title: verify/AI/rangeset_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/repeated_static_string_test.nim
+      title: verify/AI/repeated_static_string_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/rerooting_test.nim
       title: verify/AI/rerooting_test.nim

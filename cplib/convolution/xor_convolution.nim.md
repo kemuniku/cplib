@@ -46,10 +46,10 @@ data:
   timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/xor_convolution_test.nim
-  - verify/AI/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim
+  - verify/AI/xor_convolution_test.nim
+  - verify/AI/xor_convolution_test.nim
 documentation_of: cplib/convolution/xor_convolution.nim
 layout: document
 redirect_from:

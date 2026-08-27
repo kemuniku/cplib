@@ -176,12 +176,12 @@ data:
   dependsOn:
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/ntt.nim
   requiredBy:
@@ -190,18 +190,18 @@ data:
   timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/convolution_test.nim
-  - verify/AI/convolution_test.nim
-  - verify/AI/ntt_test.nim
-  - verify/AI/ntt_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/convolution_test.nim
+  - verify/AI/convolution_test.nim
 documentation_of: cplib/convolution/ntt.nim
 layout: document
 redirect_from:

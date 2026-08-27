@@ -72,8 +72,8 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   isVerificationFile: true
   path: verify/AI/topologicalsort_test.nim

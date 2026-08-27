@@ -103,10 +103,10 @@ data:
   timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/ppunionfind_test.nim
-  - verify/AI/ppunionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
+  - verify/AI/ppunionfind_test.nim
+  - verify/AI/ppunionfind_test.nim
 documentation_of: cplib/collections/ppunionfind.nim
 layout: document
 redirect_from:

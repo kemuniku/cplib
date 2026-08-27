@@ -27,16 +27,16 @@ data:
     \ cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
     %lld\\n\", addr result)\n\nvar N = ii()\nvar A : seq[BitSet[3000]]\nfor i in 0..<(N):\n\
     \    var S = stdin.readline()\n    var tmp : seq[int]\n    for j in 0..<(N):\n\
-    \        if S[j] == '1':\n            tmp.add(j)\n    A.add(tmp.initBitSet(3000))\n\
+    \        if S[j] == '1':\n            tmp.add(j)\n    A.add(tmp.initBitSetFromIndexes(3000))\n\
     \nvar ans = 0\nfor i in 0..<(N-1):\n    for j in (i+1)..<N:\n        if A[i][j]:\n\
-    \            ans += (A[i]&A[j]).popcount()\necho (ans div 3)"
+    \            ans += (A[i]&A[j]).popcount()\necho (ans div 3)\n"
   dependsOn:
   - cplib/collections/staticbitset.nim
   - cplib/collections/staticbitset.nim
   isVerificationFile: false
   path: verify/collections/static_bitset_seqint_test_.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-08-28 03:07:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/static_bitset_seqint_test_.nim
