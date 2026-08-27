@@ -25,9 +25,11 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
             if v[i]:
                 varor(result.bits[i shr 6],1u shl (i and mask))
 
-    proc initBitSet*(v:openArray[int],size:static int):Bitset[size]=
+    proc initBitSetFromIndexes*(indexes:openArray[int],size:static int):Bitset[size]=
         const mask = ((1 shl 6) - 1)
-        for i in v:
+        for i in indexes:
+            if i < 0 or i >= size:
+                raise newException(IndexDefect, "BitSet index out of bounds")
             varor(result.bits[i shr 6],1u shl (i and mask))
     
     proc `&`*[size](x,y:BitSet[size]):BitSet[size]=
@@ -108,6 +110,25 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
     proc popcount*[size](x:BitSet[size]):int=
         for i in 0..<len(x.bits):
             result += x.bits[i].popcount()
+
+    iterator items*[size](bitset:BitSet[size]):int=
+        for wordIndex in 0..<len(bitset.bits):
+            var word = bitset.bits[wordIndex]
+            while word != 0:
+                let bitIndex = word.countTrailingZeroBits()
+                let index = wordIndex * 64 + bitIndex
+                if index >= size:
+                    break
+                yield index
+                word = word and (word - 1)
+
+    proc lowestBit*[size](bitset:BitSet[size]):int=
+        for wordIndex in 0..<len(bitset.bits):
+            if bitset.bits[wordIndex] != 0:
+                let index = wordIndex * 64 + bitset.bits[wordIndex].countTrailingZeroBits()
+                if index < size:
+                    return index
+        -1
     
     proc `[]`*[size](bitset:BitSet[size],idx:Natural):bool=
         return bitset.bits[idx shr 6].testBit(idx and 63)
