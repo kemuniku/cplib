@@ -4,7 +4,7 @@ echo "Hello World"
 import cplib/collections/staticbitset
 
 var a = initBitSet(@[true, false, true, false, true], 70)
-var b = initBitSet(@[2, 4, 65], 70)
+var b = initBitSetFromIndexes(@[2, 4, 65], 70)
 assert a[0]
 assert not a[1]
 assert a.popcount() == 3
