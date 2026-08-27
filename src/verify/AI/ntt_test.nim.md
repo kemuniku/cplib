@@ -59,13 +59,13 @@ data:
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
   isVerificationFile: true
   path: verify/AI/ntt_test.nim
   requiredBy: []

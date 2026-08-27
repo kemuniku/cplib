@@ -91,10 +91,10 @@ data:
     \ get_subtree_sum*(node:VirtualTrieNode):int=\n        if node.now.len() == 0:\n\
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false

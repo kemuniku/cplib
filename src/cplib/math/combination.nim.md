@@ -70,12 +70,12 @@ data:
   timestamp: '2026-07-13 04:32:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/combination_npr_test.nim
-  - verify/math/combination_npr_test.nim
   - verify/math/combination_test.nim
   - verify/math/combination_test.nim
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
+  - verify/math/combination_npr_test.nim
+  - verify/math/combination_npr_test.nim
   - verify/AI/combination_test.nim
   - verify/AI/combination_test.nim
 documentation_of: cplib/math/combination.nim

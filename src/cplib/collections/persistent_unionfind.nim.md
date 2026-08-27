@@ -60,10 +60,10 @@ data:
   timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/persistent_unionfind_test.nim
-  - verify/AI/persistent_unionfind_test.nim
   - verify/collections/persistent_unionfind_test.nim
   - verify/collections/persistent_unionfind_test.nim
+  - verify/AI/persistent_unionfind_test.nim
+  - verify/AI/persistent_unionfind_test.nim
 documentation_of: cplib/collections/persistent_unionfind.nim
 layout: document
 redirect_from:

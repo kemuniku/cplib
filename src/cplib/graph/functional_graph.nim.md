@@ -191,19 +191,19 @@ data:
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
   requiredBy:
-  - verify/graph/functional_graph_test_.nim
-  - verify/graph/functional_graph_test_.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/functional_graph_test_.nim
   timestamp: '2026-07-17 07:16:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/functional_graph_test.nim
-  - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/functional_graph_test.nim
 documentation_of: cplib/graph/functional_graph.nim
 layout: document
 redirect_from:

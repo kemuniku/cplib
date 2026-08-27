@@ -96,12 +96,12 @@ data:
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/root_rangesum_test.nim
-  - verify/AI/root_rangesum_test.nim
-  - verify/collections/range_kth_smallest_test.nim
-  - verify/collections/range_kth_smallest_test.nim
   - verify/collections/root_rangesum_test.nim
   - verify/collections/root_rangesum_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/AI/root_rangesum_test.nim
+  - verify/AI/root_rangesum_test.nim
 documentation_of: cplib/collections/root_rangesum.nim
 layout: document
 redirect_from:

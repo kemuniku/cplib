@@ -91,10 +91,10 @@ data:
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/wordsizetree_test.nim
-  - verify/AI/wordsizetree_test.nim
   - verify/collections/word_size_tree_test.nim
   - verify/collections/word_size_tree_test.nim
+  - verify/AI/wordsizetree_test.nim
+  - verify/AI/wordsizetree_test.nim
 documentation_of: cplib/collections/wordsizetree.nim
 layout: document
 redirect_from:

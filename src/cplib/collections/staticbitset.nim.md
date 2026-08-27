@@ -44,10 +44,12 @@ data:
     \ int):BitSet[x]=\n        discard\n\n    proc initBitSet*(v:openArray[bool],size:static\
     \ int):Bitset[size]=\n        const mask = ((1 shl 6) - 1)\n        for i in 0..<len(v):\n\
     \            if v[i]:\n                varor(result.bits[i shr 6],1u shl (i and\
-    \ mask))\n\n    proc initBitSet*(v:openArray[int],size:static int):Bitset[size]=\n\
-    \        const mask = ((1 shl 6) - 1)\n        for i in v:\n            varor(result.bits[i\
-    \ shr 6],1u shl (i and mask))\n    \n    proc `&`*[size](x,y:BitSet[size]):BitSet[size]=\n\
-    \        for i in 0..<len(result.bits):\n            result.bits[i] = x.bits[i]\
+    \ mask))\n\n    proc initBitSetFromIndexes*(indexes:openArray[int],size:static\
+    \ int):Bitset[size]=\n        const mask = ((1 shl 6) - 1)\n        for i in indexes:\n\
+    \            if i < 0 or i >= size:\n                raise newException(IndexDefect,\
+    \ \"BitSet index out of bounds\")\n            varor(result.bits[i shr 6],1u shl\
+    \ (i and mask))\n    \n    proc `&`*[size](x,y:BitSet[size]):BitSet[size]=\n \
+    \       for i in 0..<len(result.bits):\n            result.bits[i] = x.bits[i]\
     \ and y.bits[i]\n    \n    proc `&=`*[size](x:var BitSet[size],y:BitSet[size])=\n\
     \        for i in 0..<len(y.bits):\n            varand(x.bits[i],y.bits[i])\n\
     \    \n    proc `|`*[size](x,y:BitSet[size]):BitSet[size]=\n        for i in 0..<len(y.bits):\n\
@@ -83,6 +85,15 @@ data:
     \ = bitnot(x.bits[^1])\n        else:\n            result.bits[^1] = x.bits[^1]\
     \ xor ((1u shl mod64) - 1)\n    proc popcount*[size](x:BitSet[size]):int=\n  \
     \      for i in 0..<len(x.bits):\n            result += x.bits[i].popcount()\n\
+    \n    iterator items*[size](bitset:BitSet[size]):int=\n        for wordIndex in\
+    \ 0..<len(bitset.bits):\n            var word = bitset.bits[wordIndex]\n     \
+    \       while word != 0:\n                let bitIndex = word.countTrailingZeroBits()\n\
+    \                let index = wordIndex * 64 + bitIndex\n                if index\
+    \ >= size:\n                    break\n                yield index\n         \
+    \       word = word and (word - 1)\n\n    proc lowestBit*[size](bitset:BitSet[size]):int=\n\
+    \        for wordIndex in 0..<len(bitset.bits):\n            if bitset.bits[wordIndex]\
+    \ != 0:\n                let index = wordIndex * 64 + bitset.bits[wordIndex].countTrailingZeroBits()\n\
+    \                if index < size:\n                    return index\n        -1\n\
     \    \n    proc `[]`*[size](bitset:BitSet[size],idx:Natural):bool=\n        return\
     \ bitset.bits[idx shr 6].testBit(idx and 63)\n\n    proc `[]=`*[size](bitset:var\
     \ BitSet[size],idx:Natural,x:bool)=\n        if x:\n            bitset.bits[idx\
@@ -98,11 +109,11 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticbitset.nim
   requiredBy:
-  - verify/collections/static_bitset_seqint_test_.nim
-  - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_test_.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
+  - verify/collections/static_bitset_seqint_test_.nim
+  - verify/collections/static_bitset_seqint_test_.nim
+  timestamp: '2026-08-28 03:07:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/staticbitset_test.nim

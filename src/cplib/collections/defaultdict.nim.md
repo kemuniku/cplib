@@ -86,17 +86,17 @@ data:
   - verify/collections/defaultdict/defaultdict_abc278d_test_.nim
   - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
-  - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
-  - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/defaultdict_test.nim
-  - verify/AI/defaultdict_test.nim
   - verify/collections/defaultdict/defaultdict_unit_test.nim
   - verify/collections/defaultdict/defaultdict_unit_test.nim
+  - verify/AI/defaultdict_test.nim
+  - verify/AI/defaultdict_test.nim
 documentation_of: cplib/collections/defaultdict.nim
 layout: document
 redirect_from:

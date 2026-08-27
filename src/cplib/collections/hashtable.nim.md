@@ -100,12 +100,12 @@ data:
   timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/hashtable_test.nim
-  - verify/AI/hashtable_test.nim
-  - verify/collections/associative_array_test.nim
-  - verify/collections/associative_array_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
+  - verify/collections/associative_array_test.nim
+  - verify/collections/associative_array_test.nim
+  - verify/AI/hashtable_test.nim
+  - verify/AI/hashtable_test.nim
 documentation_of: cplib/collections/hashtable.nim
 layout: document
 redirect_from:

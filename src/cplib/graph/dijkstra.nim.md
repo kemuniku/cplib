@@ -131,9 +131,9 @@ data:
     \        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
@@ -154,10 +154,10 @@ data:
   - verify/graph/static/shortest_path_static_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/tsp_test.nim
-  - verify/AI/dijkstra_test.nim
-  - verify/AI/dijkstra_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/dijkstra_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

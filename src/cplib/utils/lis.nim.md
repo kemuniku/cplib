@@ -59,17 +59,17 @@ data:
   isVerificationFile: false
   path: cplib/utils/lis.nim
   requiredBy:
-  - verify/utils/list_procs_test_.nim
-  - verify/utils/list_procs_test_.nim
   - verify/utils/lis_arc126b_test_.nim
   - verify/utils/lis_arc126b_test_.nim
+  - verify/utils/list_procs_test_.nim
+  - verify/utils/list_procs_test_.nim
   timestamp: '2026-07-07 07:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/lis_aoj_test.nim
-  - verify/utils/lis_aoj_test.nim
   - verify/utils/restore_lis_aoj_test.nim
   - verify/utils/restore_lis_aoj_test.nim
+  - verify/utils/lis_aoj_test.nim
+  - verify/utils/lis_aoj_test.nim
   - verify/AI/lis_test.nim
   - verify/AI/lis_test.nim
 documentation_of: cplib/utils/lis.nim

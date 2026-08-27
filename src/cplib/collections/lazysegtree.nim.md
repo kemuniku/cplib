@@ -121,12 +121,12 @@ data:
   timestamp: '2025-04-27 16:37:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/lazysegtree_test.nim
-  - verify/AI/lazysegtree_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/AI/lazysegtree_test.nim
+  - verify/AI/lazysegtree_test.nim
 documentation_of: cplib/collections/lazysegtree.nim
 layout: document
 redirect_from:

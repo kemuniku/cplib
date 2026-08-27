@@ -82,10 +82,10 @@ data:
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/waveletmatrix_test.nim
-  - verify/AI/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_test.nim
 documentation_of: cplib/collections/waveletmatrix.nim
 layout: document
 redirect_from:

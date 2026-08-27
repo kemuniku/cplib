@@ -62,10 +62,10 @@ data:
   timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/weightedunionfind_test.nim
-  - verify/AI/weightedunionfind_test.nim
   - verify/collections/WeightedUnionFind_test.nim
   - verify/collections/WeightedUnionFind_test.nim
+  - verify/AI/weightedunionfind_test.nim
+  - verify/AI/weightedunionfind_test.nim
 documentation_of: cplib/collections/weightedunionfind.nim
 layout: document
 redirect_from:

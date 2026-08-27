@@ -60,12 +60,12 @@ data:
   timestamp: '2026-05-01 08:04:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/waveletmatrix_test.nim
+  - verify/collections/waveletmatrix_test.nim
   - verify/AI/bitvector_test.nim
   - verify/AI/bitvector_test.nim
   - verify/AI/waveletmatrix_test.nim
   - verify/AI/waveletmatrix_test.nim
-  - verify/collections/waveletmatrix_test.nim
-  - verify/collections/waveletmatrix_test.nim
 documentation_of: cplib/collections/bitvector.nim
 layout: document
 redirect_from:

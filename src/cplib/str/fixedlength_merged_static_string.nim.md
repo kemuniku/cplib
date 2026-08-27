@@ -13,7 +13,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/repeated_static_string.nim
+    title: cplib/str/repeated_static_string.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/repeated_static_string.nim
+    title: cplib/str/repeated_static_string.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fixedlength_merged_static_string_test.nim
@@ -21,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fixedlength_merged_static_string_test.nim
     title: verify/AI/fixedlength_merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/repeated_static_string_test.nim
+    title: verify/AI/repeated_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/repeated_static_string_test.nim
+    title: verify/AI/repeated_static_string_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -124,16 +136,20 @@ data:
     \       result &= \" \"\n                    first = false\n                 \
     \   result &= $S.base.S[j]\n"
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/str/repeated_static_string.nim
+  - cplib/str/repeated_static_string.nim
   timestamp: '2026-08-01 10:17:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/repeated_static_string_test.nim
+  - verify/AI/repeated_static_string_test.nim
   - verify/AI/fixedlength_merged_static_string_test.nim
   - verify/AI/fixedlength_merged_static_string_test.nim
 documentation_of: cplib/str/fixedlength_merged_static_string.nim

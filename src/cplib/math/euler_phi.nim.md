@@ -71,10 +71,10 @@ data:
   verifiedWith:
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_list_yukicoder_test.nim
-  - verify/math/euler_phi_list_yukicoder_test.nim
   - verify/math/euler_phi_aoj_test.nim
   - verify/math/euler_phi_aoj_test.nim
+  - verify/math/euler_phi_list_yukicoder_test.nim
+  - verify/math/euler_phi_list_yukicoder_test.nim
   - verify/AI/exp_modint_test.nim
   - verify/AI/exp_modint_test.nim
   - verify/AI/euler_phi_test.nim

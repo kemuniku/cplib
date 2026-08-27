@@ -106,10 +106,10 @@ data:
   timestamp: '2026-07-07 08:40:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/binary_trie_test.nim
-  - verify/AI/binary_trie_test.nim
   - verify/collections/binary_trie_test.nim
   - verify/collections/binary_trie_test.nim
+  - verify/AI/binary_trie_test.nim
+  - verify/AI/binary_trie_test.nim
 documentation_of: cplib/collections/binary_trie.nim
 layout: document
 redirect_from:
