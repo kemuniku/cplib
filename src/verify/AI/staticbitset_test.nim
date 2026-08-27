@@ -5,6 +5,12 @@ import cplib/collections/staticbitset
 
 var a = initBitSet(@[true, false, true, false, true], 70)
 var b = initBitSetFromIndexes(@[2, 4, 65], 70)
+var bItems: seq[int]
+for i in b:
+    bItems.add(i)
+assert bItems == @[2, 4, 65]
+assert b.lowestBit == 2
+assert initBitSet(70).lowestBit == -1
 assert a[0]
 assert not a[1]
 assert a.popcount() == 3

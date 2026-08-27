@@ -139,6 +139,20 @@ when not declared CPLIB_COLLECTIONS_BITSET:
         for i in 0..<len(x.bits):
             result += x.bits[i].popcount()
 
+    iterator items*(bitset: BitSet): int =
+        for wordIndex in 0..<len(bitset.bits):
+            var word = bitset.bits[wordIndex]
+            while word != 0:
+                let bitIndex = word.countTrailingZeroBits()
+                yield wordIndex * WordBits + bitIndex
+                word = word and (word - 1)
+
+    proc lowestBit*(bitset: BitSet): int =
+        for wordIndex in 0..<len(bitset.bits):
+            if bitset.bits[wordIndex] != 0:
+                return wordIndex * WordBits + bitset.bits[wordIndex].countTrailingZeroBits()
+        -1
+
     proc `[]`*(bitset: BitSet, idx: Natural): bool =
         bitset.checkIndex(idx)
         bitset.bits[idx shr 6].testBit(idx and 63)

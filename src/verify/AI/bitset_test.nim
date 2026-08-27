@@ -32,6 +32,12 @@ assert not a[70]
 
 var c = initBitSetFromIndexes(@[0, 63, 64, 129], 130)
 assert c.popcount == 4
+var cItems: seq[int]
+for i in c:
+    cItems.add(i)
+assert cItems == @[0, 63, 64, 129]
+assert c.lowestBit == 0
+assert initBitSet(130).lowestBit == -1
 assert (c << 1).popcount == 3
 assert (c << 1)[1]
 assert (c << 1)[64]
