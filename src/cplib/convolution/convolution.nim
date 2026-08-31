@@ -6,7 +6,7 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     import cplib/math/inv_gcd
 
     {.emit: """
-    // Independently written AVX2 kernel for convolution modulo 998244353.
+    // Independently written AVX2 kernel for convolution over 30-bit NTT primes.
     //
     // The transform is the standard decimation-in-frequency NTT followed by its
     // decimation-in-time inverse.  Values stay in the ordinary residue domain;
@@ -30,8 +30,11 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     using u32 = std::uint32_t;
     using u64 = std::uint64_t;
 
-    constexpr u32 modulus = 998244353U;
-    constexpr u32 primitive_root = 3U;
+    // Set once at the start of each transform.  Convolution is deliberately
+    // single-threaded; keeping these values in one context lets the same AVX2
+    // code serve every suitable 30-bit NTT prime without duplicating the kernel.
+    u32 modulus = 998244353U;
+    u32 primitive_root = 3U;
 
     struct Montgomery {
         u32 negative_inverse;
@@ -78,6 +81,37 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
             exponent >>= 1;
         }
         return result;
+    }
+
+    inline u32 find_primitive_root(u32 prime) {
+        switch (prime) {
+            case 998244353U: return 3U;
+            case 754974721U: return 11U;
+            case 167772161U: return 3U;
+            case 469762049U: return 3U;
+            default: break;
+        }
+        u32 factors[16];
+        int factor_count = 0;
+        u32 remaining = prime - 1;
+        for (u32 divisor = 2; u64(divisor) * divisor <= remaining; ++divisor) {
+            if (remaining % divisor != 0) continue;
+            factors[factor_count++] = divisor;
+            do {
+                remaining /= divisor;
+            } while (remaining % divisor == 0);
+        }
+        if (remaining != 1) factors[factor_count++] = remaining;
+        for (u32 candidate = 2;; ++candidate) {
+            bool valid = true;
+            for (int i = 0; i < factor_count; ++i) {
+                if (power_mod(candidate, (prime - 1) / factors[i]) == 1) {
+                    valid = false;
+                    break;
+                }
+            }
+            if (valid) return candidate;
+        }
     }
 
     inline __m256i shrink(__m256i value) {
@@ -583,13 +617,19 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
         }
     };
 
-    inline void convolution_998244353(
+    inline void convolution_ntt_friendly(
             u32* output,
             const u32* left,
             std::size_t left_size,
             const u32* right,
             std::size_t right_size,
-            std::size_t transform_size) {
+            std::size_t transform_size,
+            u32 modulus_value,
+            u32 primitive_root_value,
+            bool montgomery_representation) {
+        modulus = modulus_value;
+        primitive_root = primitive_root_value != 0
+            ? primitive_root_value : find_primitive_root(modulus_value);
         u32* a = output;
         u32* b = static_cast<u32*>(
             _mm_malloc(sizeof(u32) * transform_size, 32));
@@ -598,6 +638,28 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
 
         TransformPlan plan(transform_size);
         const Montgomery& montgomery = plan.montgomery();
+
+        if (montgomery_representation) {
+            const __m256i one = _mm256_set1_epi32(1);
+            std::size_t i = 0;
+            for (; i + 8 <= left_size; i += 8) {
+                const __m256i value = _mm256_loadu_si256(
+                    reinterpret_cast<const __m256i*>(a + i));
+                _mm256_storeu_si256(
+                    reinterpret_cast<__m256i*>(a + i),
+                    montgomery_multiply(value, one, montgomery));
+            }
+            for (; i < left_size; ++i) a[i] = montgomery.multiply(a[i], 1);
+            i = 0;
+            for (; i + 8 <= right_size; i += 8) {
+                const __m256i value = _mm256_loadu_si256(
+                    reinterpret_cast<const __m256i*>(b + i));
+                _mm256_storeu_si256(
+                    reinterpret_cast<__m256i*>(b + i),
+                    montgomery_multiply(value, one, montgomery));
+            }
+            for (; i < right_size; ++i) b[i] = montgomery.multiply(b[i], 1);
+        }
 
         const std::size_t half = transform_size >> 1;
         const bool left_half_zero = left_size <= half;
@@ -634,6 +696,23 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
         plan.prepare_inverse();
         plan.inverse(a);
 
+        if (montgomery_representation) {
+            const std::size_t output_size = left_size + right_size - 1;
+            const __m256i radix_squared = _mm256_set1_epi32(
+                static_cast<int>(montgomery.radix_squared));
+            std::size_t i = 0;
+            for (; i + 8 <= output_size; i += 8) {
+                const __m256i value = _mm256_loadu_si256(
+                    reinterpret_cast<const __m256i*>(a + i));
+                _mm256_storeu_si256(
+                    reinterpret_cast<__m256i*>(a + i),
+                    montgomery_multiply(value, radix_squared, montgomery));
+            }
+            for (; i < output_size; ++i) {
+                a[i] = montgomery.to_montgomery(a[i]);
+            }
+        }
+
         _mm_free(b);
     }
 
@@ -641,30 +720,33 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
 
     #endif
 
-    extern "C" void cplib_convolution_998244353(
+    extern "C" void cplib_convolution_ntt_friendly(
             std::uint32_t* output,
             std::uint32_t* left,
             std::size_t left_size,
             std::uint32_t* right,
             std::size_t right_size,
-            std::size_t transform_size) {
-        cplib_avx2_ntt::convolution_998244353(
-            output, left, left_size, right, right_size, transform_size);
+            std::size_t transform_size,
+            std::uint32_t modulus,
+            std::uint32_t primitive_root,
+            bool montgomery_representation) {
+        cplib_avx2_ntt::convolution_ntt_friendly(
+            output, left, left_size, right, right_size, transform_size,
+            modulus, primitive_root, montgomery_representation);
     }
     """.}
 
-    declarStaticMontgomeryModint(mint754974721, 754974721u32)
-    declarStaticMontgomeryModint(mint167772161, 167772161u32)
-    declarStaticMontgomeryModint(mint469762049, 469762049u32)
-
-    proc convolution998244353Avx2(
+    proc convolutionNttFriendlyAvx2(
         output: ptr uint32,
         f: ptr uint32,
         fLen: csize_t,
         g: ptr uint32,
         gLen: csize_t,
-        nttLen: csize_t
-    ) {.importc: "cplib_convolution_998244353".}
+        nttLen: csize_t,
+        modulus: uint32,
+        primitiveRoot: uint32,
+        montgomeryRepresentation: bool
+    ) {.importc: "cplib_convolution_ntt_friendly".}
 
     proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =
         var ans = newSeqWith(f.len + g.len - 1, T(0))
@@ -684,26 +766,42 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
         let deg = m + n - 1
         if min(n, m) <= 60: return convolution_naive(f, g)
         var l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))
-        when T is StaticBarrettModint[998244353u32]:
-            result = newSeq[T](l)
-            convolution998244353Avx2(
-                cast[ptr uint32](addr result[0]),
-                cast[ptr uint32](unsafeAddr f[0]), m.csize_t,
-                cast[ptr uint32](unsafeAddr g[0]), n.csize_t,
-                l.csize_t)
-            result.setLen(deg)
-        else:
-            var f = f
-            var g = g
-            f.setLen(l)
-            g.setLen(l)
-            ntt(f)
-            ntt(g)
-            for i in 0..<f.len:
-                f[i] *= g[i]
-            intt(f)
-            f.setlen(deg)
-            return f
+        when T is StaticBarrettModint or T is StaticMontgomeryModint or
+                T is DynamicMontgomeryModint:
+            if T.umod < (1u32 shl 30) and
+                    (T.umod - 1u32) mod l.uint32 == 0u32:
+                result = newSeq[T](l)
+                convolutionNttFriendlyAvx2(
+                    cast[ptr uint32](addr result[0]),
+                    cast[ptr uint32](unsafeAddr f[0]), m.csize_t,
+                    cast[ptr uint32](unsafeAddr g[0]), n.csize_t,
+                    l.csize_t, T.umod, 0u32,
+                    T is MontgomeryModint)
+                result.setLen(deg)
+                return
+        var f = f
+        var g = g
+        f.setLen(l)
+        g.setLen(l)
+        ntt(f)
+        ntt(g)
+        for i in 0..<f.len:
+            f[i] *= g[i]
+        intt(f)
+        f.setlen(deg)
+        return f
+
+    proc convolutionNttFriendlyU32(
+            f, g: seq[uint32], modulus, primitiveRoot: uint32): seq[uint32] =
+        if f.len == 0 or g.len == 0: return @[]
+        let deg = f.len + g.len - 1
+        let l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))
+        result = newSeq[uint32](l)
+        convolutionNttFriendlyAvx2(
+            addr result[0], cast[ptr uint32](unsafeAddr f[0]), f.len.csize_t,
+            cast[ptr uint32](unsafeAddr g[0]), g.len.csize_t, l.csize_t,
+            modulus, primitiveRoot, false)
+        result.setLen(deg)
 
 
     proc convolution_ll*(f, g: seq[int]): seq[int] =
@@ -722,29 +820,24 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
             i1 = inv_gcd((M2 * M3).int, M1.int)[1].uint
             i2 = inv_gcd((M3 * M1).int, M2.int)[1].uint
             i3 = inv_gcd((M1 * M2).int, M3.int)[1].uint
-        # FIXME: mapitでf1, g1を作ろうとするとなぜか壊れる……
-        var f1 = newSeq[mint754974721](n)
-        var g1 = newSeq[mint754974721](m)
-        for i in 0..<n: f1[i] = mint754974721(f[i])
-        for i in 0..<m: g1[i] = mint754974721(g[i])
-        let c1 = convolution(f1, g1)
-        var f2 = newSeq[mint167772161](n)
-        var g2 = newSeq[mint167772161](m)
-        for i in 0..<n: f2[i] = mint167772161(f[i])
-        for i in 0..<m: g2[i] = mint167772161(g[i])
-        let c2 = convolution(f2, g2)
-        var f3 = newSeq[mint469762049](n)
-        var g3 = newSeq[mint469762049](m)
-        for i in 0..<n: f3[i] = mint469762049(f[i])
-        for i in 0..<m: g3[i] = mint469762049(g[i])
-        let c3 = convolution(f3, g3)
+        var fm = newSeq[uint32](n)
+        var gm = newSeq[uint32](m)
+        for i in 0..<n: fm[i] = floorMod(f[i], M1.int).uint32
+        for i in 0..<m: gm[i] = floorMod(g[i], M1.int).uint32
+        let c1 = convolutionNttFriendlyU32(fm, gm, M1.uint32, 11u32)
+        for i in 0..<n: fm[i] = floorMod(f[i], M2.int).uint32
+        for i in 0..<m: gm[i] = floorMod(g[i], M2.int).uint32
+        let c2 = convolutionNttFriendlyU32(fm, gm, M2.uint32, 3u32)
+        for i in 0..<n: fm[i] = floorMod(f[i], M3.int).uint32
+        for i in 0..<m: gm[i] = floorMod(g[i], M3.int).uint32
+        let c3 = convolutionNttFriendlyU32(fm, gm, M3.uint32, 3u32)
         var ans = newseqwith(n + m - 1, 0)
         for i in 0..<ans.len:
             var x = 0.uint
-            x += (c1[i].val.uint * i1) mod M1 * M23
-            x += (c2[i].val.uint * i2) mod M2 * M31
-            x += (c3[i].val.uint * i3) mod M3 * M12
-            var diff = c1[i].val - floorMod(x.int, M1.int)
+            x += (c1[i].uint * i1) mod M1 * M23
+            x += (c2[i].uint * i2) mod M2 * M31
+            x += (c3[i].uint * i3) mod M3 * M12
+            var diff = c1[i].int - floorMod(x.int, M1.int)
             if diff < 0: diff += M1.int
             const offset = [0u, 0u, M123, 2u * M123, 3u * M123]
             x -= offset[diff mod 5]
