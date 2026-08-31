@@ -794,6 +794,19 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     proc convolutionNttFriendlyU32(
             f, g: seq[uint32], modulus, primitiveRoot: uint32): seq[uint32] =
         if f.len == 0 or g.len == 0: return @[]
+        if min(f.len, g.len) <= 60:
+            result = newSeq[uint32](f.len + g.len - 1)
+            if f.len > g.len:
+                for i in 0..<f.len:
+                    for j in 0..<g.len:
+                        result[i + j] = ((result[i + j].uint64 +
+                            f[i].uint64 * g[j].uint64) mod modulus.uint64).uint32
+            else:
+                for j in 0..<g.len:
+                    for i in 0..<f.len:
+                        result[i + j] = ((result[i + j].uint64 +
+                            f[i].uint64 * g[j].uint64) mod modulus.uint64).uint32
+            return
         let deg = f.len + g.len - 1
         let l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))
         result = newSeq[uint32](l)
@@ -837,7 +850,10 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
             x += (c1[i].uint * i1) mod M1 * M23
             x += (c2[i].uint * i2) mod M2 * M31
             x += (c3[i].uint * i3) mod M3 * M12
-            var diff = c1[i].int - floorMod(x.int, M1.int)
+            # x intentionally wraps modulo 2^64.  Reinterpret those bits as a
+            # signed value for the CRT overflow correction; a numeric `.int`
+            # conversion raises RangeDefect when the top bit is set.
+            var diff = c1[i].int - floorMod(cast[int](x), M1.int)
             if diff < 0: diff += M1.int
             const offset = [0u, 0u, M123, 2u * M123, 3u * M123]
             x -= offset[diff mod 5]

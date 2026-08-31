@@ -37,3 +37,6 @@ when not declared CPLIB_GRAPH_DYNAMIC_BIPARTITE_GRAPH:
     
     proc is_bipartite*(self:DynamicBipartite):bool=
         return self.is_bipartite
+    
+    proc issame*(self:DynamicBipartite,u,v:int):bool=
+        return self.uf.issame(u,v) or self.uf.issame(u,v+self.N)
