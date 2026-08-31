@@ -2,7 +2,6 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     const CPLIB_CONVOLUTION_CONVOLUTION* = 1
     import bitops, sequtils, std/math
     import cplib/modint/modint
-    import cplib/convolution/ntt
     import cplib/math/inv_gcd
 
     {.emit: """
@@ -748,8 +747,17 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
         montgomeryRepresentation: bool
     ) {.importc: "cplib_convolution_ntt_friendly".}
 
+    proc convolutionNttFriendlyU32(
+        f, g: seq[uint32], modulus, primitiveRoot: uint32
+    ): seq[uint32]
+
+    proc convolutionArbitraryMod[T: BarrettModint or MontgomeryModint](
+        f, g: seq[T]
+    ): seq[T]
+
     proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =
-        var ans = newSeqWith(f.len + g.len - 1, T(0))
+        if f.len == 0 or g.len == 0: return @[]
+        var ans = newSeq[T](f.len + g.len - 1)
         if f.len > g.len:
             for i in 0..<f.len:
                 for j in 0..<g.len:
@@ -763,33 +771,35 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     proc convolution*[T: BarrettModint or MontgomeryModint](f, g: seq[T]): seq[T] =
         let m = f.len
         let n = g.len
+        if m == 0 or n == 0: return @[]
         let deg = m + n - 1
         if min(n, m) <= 60: return convolution_naive(f, g)
         var l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))
-        when T is StaticBarrettModint or T is StaticMontgomeryModint or
-                T is DynamicMontgomeryModint:
-            if T.umod < (1u32 shl 30) and
-                    (T.umod - 1u32) mod l.uint32 == 0u32:
-                result = newSeq[T](l)
-                convolutionNttFriendlyAvx2(
-                    cast[ptr uint32](addr result[0]),
-                    cast[ptr uint32](unsafeAddr f[0]), m.csize_t,
-                    cast[ptr uint32](unsafeAddr g[0]), n.csize_t,
-                    l.csize_t, T.umod, 0u32,
-                    T is MontgomeryModint)
-                result.setLen(deg)
-                return
-        var f = f
-        var g = g
-        f.setLen(l)
-        g.setLen(l)
-        ntt(f)
-        ntt(g)
-        for i in 0..<f.len:
-            f[i] *= g[i]
-        intt(f)
-        f.setlen(deg)
-        return f
+        if T.umod < (1u32 shl 30) and
+                (T.umod - 1u32) mod l.uint32 == 0u32:
+            result = newSeq[T](l)
+            convolutionNttFriendlyAvx2(
+                cast[ptr uint32](addr result[0]),
+                cast[ptr uint32](unsafeAddr f[0]), m.csize_t,
+                cast[ptr uint32](unsafeAddr g[0]), n.csize_t,
+                l.csize_t, T.umod, 0u32,
+                T is MontgomeryModint)
+            result.setLen(deg)
+            return
+        return convolutionArbitraryMod(f, g)
+
+    proc convolution*[m: static[int]](f, g: seq[int]): seq[int] =
+        doAssert m > 0 and m < (1 shl 31),
+            "convolution modulus must be in [1, 2^31)"
+        if f.len == 0 or g.len == 0: return @[]
+        type Mint = StaticBarrettModint[m.uint32]
+        var fm = newSeq[Mint](f.len)
+        var gm = newSeq[Mint](g.len)
+        for i in 0..<f.len: fm[i] = init(Mint, f[i])
+        for i in 0..<g.len: gm[i] = init(Mint, g[i])
+        let product = convolution(fm, gm)
+        result = newSeq[int](product.len)
+        for i in 0..<product.len: result[i] = product[i].val
 
     proc convolutionNttFriendlyU32(
             f, g: seq[uint32], modulus, primitiveRoot: uint32): seq[uint32] =
@@ -815,6 +825,54 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
             cast[ptr uint32](unsafeAddr g[0]), g.len.csize_t, l.csize_t,
             modulus, primitiveRoot, false)
         result.setLen(deg)
+
+    proc convolutionArbitraryMod[T: BarrettModint or MontgomeryModint](
+            f, g: seq[T]): seq[T] =
+        const
+            M1 = 754974721u64
+            M2 = 167772161u64
+            M3 = 469762049u64
+            M12 = M1 * M2
+            InvM1ModM2 = inv_gcd((M1 mod M2).int, M2.int)[1].uint64
+            InvM12ModM3 = inv_gcd((M12 mod M3).int, M3.int)[1].uint64
+
+        # With mod < 2^31 and this transform-size limit, every integer
+        # coefficient is smaller than M1*M2*M3, so the three residues identify
+        # it uniquely before reducing it modulo the requested modulus.
+        let targetMod = T.umod.uint64
+        assert targetMod > 0 and targetMod < (1u64 shl 31),
+            "arbitrary-mod convolution requires a modulus in [1, 2^31)"
+        let transformSize = 1 shl (fastLog2(f.len + g.len - 2) + 1)
+        assert transformSize <= (1 shl 24),
+            "arbitrary-mod convolution requires an NTT length at most 2^24"
+
+        var fm = newSeq[uint32](f.len)
+        var gm = newSeq[uint32](g.len)
+        for i in 0..<f.len: fm[i] = (f[i].val.uint64 mod M1).uint32
+        for i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M1).uint32
+        let c1 = convolutionNttFriendlyU32(fm, gm, M1.uint32, 11u32)
+
+        for i in 0..<f.len: fm[i] = (f[i].val.uint64 mod M2).uint32
+        for i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M2).uint32
+        let c2 = convolutionNttFriendlyU32(fm, gm, M2.uint32, 3u32)
+
+        for i in 0..<f.len: fm[i] = (f[i].val.uint64 mod M3).uint32
+        for i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M3).uint32
+        let c3 = convolutionNttFriendlyU32(fm, gm, M3.uint32, 3u32)
+
+        let m1Target = M1 mod targetMod
+        let m12Target = M12 mod targetMod
+        result = newSeq[T](c1.len)
+        for i in 0..<result.len:
+            let r1 = c1[i].uint64
+            let t2 = ((c2[i].uint64 + M2 - r1 mod M2) mod M2 *
+                InvM1ModM2) mod M2
+            let r12ModM3 = (r1 + (M1 mod M3) * t2) mod M3
+            let t3 = ((c3[i].uint64 + M3 - r12ModM3) mod M3 *
+                InvM12ModM3) mod M3
+            let value = ((r1 mod targetMod) + m1Target * t2 mod targetMod +
+                m12Target * t3 mod targetMod) mod targetMod
+            result[i] = init(T, value.int)
 
 
     proc convolution_ll*(f, g: seq[int]): seq[int] =
