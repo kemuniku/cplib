@@ -26,6 +26,41 @@ assert wideWf.d[0][2] == int(7_000_000_000)
 assert wideWf.d[0][9] == int(12_000_000_000)
 assert wideWf.d[9][0] == INF64
 
+# A complete graph selects the branch-free dense int64 kernel.  Potentials
+# make some edges negative while every cycle remains positive.
+var dense64 = initWeightedDirectedGraph(9)
+for i in 0..<9:
+    for j in 0..<9:
+        if i != j:
+            dense64.add_edge(i, j, 10 + 3 * j - 3 * i)
+let denseWf64 = dense64.warshall_floyd()
+assert not denseWf64.negative_cycle
+for i in 0..<9:
+    for j in 0..<9:
+        let expected = if i == j: 0 else: 10 + 3 * j - 3 * i
+        assert denseWf64.d[i][j] == expected
+
+# Cross the dense 256-vertex tile boundary.  Reduced costs are either one on
+# the directed ring or 100 otherwise; vertex potentials also create negative
+# edges without creating a negative cycle.
+const denseBlockedN = 257
+var denseBlocked = initWeightedDirectedGraph(denseBlockedN)
+for i in 0..<denseBlockedN:
+    let pi = 3 * (i mod 17)
+    for j in 0..<denseBlockedN:
+        if i != j:
+            let pj = 3 * (j mod 17)
+            let reduced = if j == (i + 1) mod denseBlockedN: 1 else: 100
+            denseBlocked.add_edge(i, j, reduced + pj - pi)
+let denseBlockedWf = denseBlocked.warshall_floyd()
+assert not denseBlockedWf.negative_cycle
+for i in 0..<denseBlockedN:
+    for j in 0..<denseBlockedN:
+        let ringDistance = (j - i + denseBlockedN) mod denseBlockedN
+        let reduced = if i == j: 0 else: min(ringDistance, 100)
+        let expected = reduced + 3 * (j mod 17) - 3 * (i mod 17)
+        assert denseBlockedWf.d[i][j] == expected
+
 let empty = initWeightedDirectedGraph(0).warshall_floyd()
 assert not empty.negative_cycle
 assert empty.d.len == 0
