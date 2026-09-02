@@ -2,7 +2,7 @@
 echo "Hello World"
 
 import std/[options, sequtils]
-import cplib/fps/fps
+include cplib/fps/fps
 import cplib/modint/modint
 
 type Mint = modint998244353_barrett
@@ -115,6 +115,92 @@ block bostanMoriAndRecurrence:
   for i in 0..<fib.len:
     assert linearRecurrenceKth(@[Mint(0), Mint(1)], @[Mint(1), Mint(1)], i).val == fib[i]
 
+block sparseOperations:
+  let sparse = initSparseFPS[Mint](@[
+    (degree: 3, coefficient: Mint(5)),
+    (degree: 0, coefficient: Mint(2)),
+    (degree: 1, coefficient: Mint(3)),
+    (degree: 3, coefficient: Mint(-1)),
+    (degree: 7, coefficient: Mint(0))
+  ])
+  assert sparse.len == 3
+  assert sparse.degree == 3
+  assert sparse.constantTerm == Mint(2)
+  assert sparse.coefficient(2) == Mint(0)
+  assert sparse.toDense(5).values == @[2, 3, 0, 4, 0]
+
+  let dense = @[Mint(7), Mint(1), Mint(4), Mint(9), Mint(2)]
+  let sparseDense = sparse.toDense(sparse.degree + 1)
+  assert (dense * sparse).values == (dense * sparseDense).values
+  assert (sparse * dense).values == (dense * sparseDense).values
+  assert dense.mulPrefix(sparse, 4).values == prefix(dense * sparseDense, 4).values
+  assert (dense / sparse).values ==
+    prefix(dense * sparseDense.inv(dense.len), dense.len).values
+  assert dense.divPrefix(sparse, 12).values ==
+    prefix(prefix(dense, 12) * sparseDense.inv(12), 12).values
+
+block sparseElementaryFunctions:
+  let unit = initSparseFPS[Mint](@[
+    (degree: 0, coefficient: Mint(1)),
+    (degree: 1, coefficient: Mint(2)),
+    (degree: 3, coefficient: Mint(3)),
+    (degree: 5, coefficient: Mint(5))
+  ])
+  let exponent = initSparseFPS[Mint](@[
+    (degree: 1, coefficient: Mint(2)),
+    (degree: 4, coefficient: Mint(7)),
+    (degree: 6, coefficient: Mint(11))
+  ])
+  let n = 160
+  let unitDense = unit.toDense(n)
+  let exponentDense = exponent.toDense(n)
+  assert unit.inv(n) == unitDense.inv(n)
+  assert unit.log(n) == unitDense.log(n)
+  assert unit.pow(17, n) == unitDense.pow(17, n)
+  assert exponent.exp(n) == exponentDense.exp(n)
+
+  let square = initSparseFPS[Mint](@[
+    (degree: 0, coefficient: Mint(1)),
+    (degree: 3, coefficient: Mint(2)),
+    (degree: 6, coefficient: Mint(1))
+  ])
+  let root = square.sqrt(n)
+  assert root.isSome
+  assert prefix(root.get * root.get, n) == square.toDense(n)
+
+block sparseSingleCoefficient:
+  let unit = initSparseFPS[Mint](@[
+    (degree: 0, coefficient: Mint(1)),
+    (degree: 1, coefficient: Mint(2)),
+    (degree: 3, coefficient: Mint(3)),
+    (degree: 5, coefficient: Mint(5))
+  ])
+  let exponent = initSparseFPS[Mint](@[
+    (degree: 1, coefficient: Mint(2)),
+    (degree: 4, coefficient: Mint(7)),
+    (degree: 6, coefficient: Mint(11))
+  ])
+  let n = 2000
+  let inverse = unit.inv(n)
+  let logarithm = unit.log(n)
+  let power = unit.pow(123, n)
+  let exponential = exponent.exp(n)
+  for degree in [0, 1, 2, 3, 7, 31, 127, 511, n - 1]:
+    assert unit.invCoefficient(degree) == inverse[degree]
+    assert unit.logCoefficient(degree) == logarithm[degree]
+    assert unit.powCoefficient(123, degree) == power[degree]
+    assert exponent.expCoefficient(degree) == exponential[degree]
+
+  let shifted = initSparseFPS[Mint](@[
+    (degree: 2, coefficient: Mint(3)),
+    (degree: 3, coefficient: Mint(5)),
+    (degree: 7, coefficient: Mint(11))
+  ])
+  let shiftedDense = shifted.toDense(300)
+  let shiftedPower = shiftedDense.pow(9, 300)
+  for degree in [0, 17, 18, 19, 51, 127, 299]:
+    assert shifted.powCoefficient(9, degree) == shiftedPower[degree]
+
 block arbitraryModulus:
   type OtherMint = modint1000000007_montgomery
   var f = newSeq[OtherMint](75)
@@ -131,3 +217,15 @@ block arbitraryModulus:
   denominator[0] += 1
   let composed = compose(outer, inner, outer.len)
   assert composed == denominator.inv(denominator.len)
+
+  let sparse = initSparseFPS[OtherMint](@[
+    (degree: 0, coefficient: OtherMint(1)),
+    (degree: 1, coefficient: OtherMint(3)),
+    (degree: 4, coefficient: OtherMint(7))
+  ])
+  let inverse = sparse.inv(300)
+  let logarithm = sparse.log(300)
+  let power = sparse.pow(31, 300)
+  assert sparse.invCoefficient(299).val == inverse[299].val
+  assert sparse.logCoefficient(299).val == logarithm[299].val
+  assert sparse.powCoefficient(31, 299).val == power[299].val
