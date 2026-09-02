@@ -22,4 +22,4 @@ when not declared CPLIB_FPS_POLYNOMIAL_INTERPOLATION:
         for i in countdown(tree.leafCount - 1, 1):
             partial[i] = partial[i * 2] * tree.nodes[i * 2 + 1] +
                 partial[i * 2 + 1] * tree.nodes[i * 2]
-        partial[1].prefix(xs.len).normalized
+        partial[1].prefix(xs.len)
