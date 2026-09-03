@@ -13,6 +13,15 @@ let wf = g.warshall_floyd()
 assert not wf.negative_cycle
 assert wf.d[0][2] == 5
 
+var parallel = initWeightedDirectedGraph(2)
+parallel.add_edge(0, 1, 3)
+parallel.add_edge(0, 1, 7)
+parallel.add_edge(0, 0, 5)
+let parallelWf = parallel.warshall_floyd()
+assert not parallelWf.negative_cycle
+assert parallelWf.d[0][0] == 0
+assert parallelWf.d[0][1] == 3
+
 # Exercise both the four-lane AVX2 loop and its scalar tail with costs which
 # cannot be represented by int32.
 var wide = initWeightedDirectedGraph(10)
@@ -66,13 +75,13 @@ assert not empty.negative_cycle
 assert empty.d.len == 0
 
 # Cross a cache-block boundary in every phase of the blocked algorithm.
-var blocked = initWeightedDirectedGraph(193)
-for i in 0..<192:
+var blocked = initWeightedDirectedGraph(217)
+for i in 0..<216:
     blocked.add_edge(i, i + 1, 1)
 let blockedWf = blocked.warshall_floyd()
 assert not blockedWf.negative_cycle
-assert blockedWf.d[0][192] == 192
-assert blockedWf.d[192][0] == INF64
+assert blockedWf.d[0][216] == 216
+assert blockedWf.d[216][0] == INF64
 
 # int32 uses eight AVX2 lanes and a separately tuned cache block.
 var g32 = initWeightedDirectedGraph(11, int32)
@@ -85,6 +94,15 @@ assert not wf32.negative_cycle
 assert wf32.d[0][2] == 700_000_000.int32
 assert wf32.d[0][10] == 750_000_000.int32
 assert wf32.d[10][0] == INF32
+
+var parallel32 = initWeightedDirectedGraph(2, int32)
+parallel32.add_edge(0, 1, 3.int32)
+parallel32.add_edge(0, 1, 7.int32)
+parallel32.add_edge(0, 0, 5.int32)
+let parallelWf32 = parallel32.warshall_floyd()
+assert not parallelWf32.negative_cycle
+assert parallelWf32.d[0][0] == 0.int32
+assert parallelWf32.d[0][1] == 3.int32
 
 let empty32 = initWeightedDirectedGraph(0, int32).warshall_floyd()
 assert not empty32.negative_cycle

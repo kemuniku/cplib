@@ -195,10 +195,9 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                             d[i], row_k, dik, kk, kend, inf4, inf,
                             all_reachable);
                     }
-                }
-
-                for (std::size_t i = 0; i < n; ++i) {
-                    if (d[i][i] < zero) return true;
+                    for (std::size_t i = kk; i < kend; ++i) {
+                        if (d[i][i] < zero) return true;
+                    }
                 }
 
                 // Phase 2a: update the blocks in the diagonal block row.
@@ -342,13 +341,13 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                             diagonal[i * block_size + k], 0, k_size,
                             inf4, inf, true);
                     }
-                }
-
-                for (std::size_t i = 0; i < k_size; ++i) {
-                    if (diagonal[i * block_size + i] < zero) {
-                        negative_cycle = true;
-                        break;
+                    for (std::size_t i = 0; i < k_size; ++i) {
+                        if (diagonal[i * block_size + i] < zero) {
+                            negative_cycle = true;
+                            break;
+                        }
                     }
+                    if (negative_cycle) break;
                 }
                 if (negative_cycle) break;
 
@@ -644,10 +643,9 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                         if (dik != inf) cplib_warshall_floyd_relax_int32_avx2(
                             d[i], row_k, dik, kk, kend, inf8, inf);
                     }
-                }
-
-                for (std::size_t i = 0; i < n; ++i) {
-                    if (d[i][i] < zero) return true;
+                    for (std::size_t i = kk; i < kend; ++i) {
+                        if (d[i][i] < zero) return true;
+                    }
                 }
 
                 // Phase 2a: update the blocks in the diagonal block row.
@@ -729,7 +727,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
         for i in 0..<g.len: d[i][i] = zero
         for i in 0..<g.len:
             for (j, cost) in g.to_and_cost(i):
-                d[i][j] = cost
+                d[i][j] = min(d[i][j], cost)
         for k in 0..<g.len:
             for i in 0..<g.len:
                 for j in 0..<g.len:
@@ -745,7 +743,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             for i in 0..<g.len: d[i][i] = zero
             for i in 0..<g.len:
                 for (j, cost) in g.to_and_cost(i):
-                    d[i][j] = cost
+                    d[i][j] = min(d[i][j], cost)
 
             if g.len == 0:
                 return (negative_cycle: false, d: d)
@@ -764,7 +762,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             for i in 0..<g.len: d[i][i] = zero
             for i in 0..<g.len:
                 for (j, cost) in g.to_and_cost(i):
-                    d[i][j] = cost
+                    d[i][j] = min(d[i][j], cost)
 
             if g.len == 0:
                 return (negative_cycle: false, d: d)
