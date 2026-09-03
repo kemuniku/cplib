@@ -1,7 +1,7 @@
 when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
     const CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES* = 1
 
-    import algorithm, options
+    import algorithm, macros, options
     import cplib/convolution/convolution
     import cplib/fps/bostan_mori
     import cplib/fps/formal_power_series
@@ -31,6 +31,73 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
             else:
                 normalized.add(term)
         result = move(normalized)
+
+    proc sparseMonomialDegree(node: NimNode): NimNode {.compileTime.} =
+        if node.eqIdent("x"): return newLit(1)
+        if node.kind == nnkInfix and node.len == 3 and
+                node[0].eqIdent("^") and node[1].eqIdent("x"):
+            return node[2]
+        nil
+
+    proc collectSparseTerms(node: NimNode, sign: int,
+            terms: var seq[tuple[degree, coefficient: NimNode]]) {.compileTime.} =
+        if node.kind == nnkInfix and node.len == 3 and node[0].eqIdent("+"):
+            collectSparseTerms(node[1], sign, terms)
+            collectSparseTerms(node[2], sign, terms)
+            return
+        if node.kind == nnkInfix and node.len == 3 and node[0].eqIdent("-"):
+            collectSparseTerms(node[1], sign, terms)
+            collectSparseTerms(node[2], -sign, terms)
+            return
+        if node.kind == nnkPrefix and node.len == 2 and node[0].eqIdent("-"):
+            collectSparseTerms(node[1], -sign, terms)
+            return
+
+        var degree = sparseMonomialDegree(node)
+        var coefficient = newLit(1)
+        if degree == nil and node.kind == nnkInfix and node.len == 3 and
+                node[0].eqIdent("*"):
+            degree = sparseMonomialDegree(node[2])
+            if degree != nil:
+                coefficient = node[1]
+            else:
+                degree = sparseMonomialDegree(node[1])
+                if degree != nil: coefficient = node[2]
+        if degree == nil:
+            if node.findChild(it.eqIdent("x")) != nil:
+                error("SFPSの各項は coefficient * x^degree の形で指定してください", node)
+            degree = newLit(0)
+            coefficient = node
+        if sign < 0: coefficient = newTree(nnkPrefix, ident("-"), coefficient)
+        terms.add((degree, coefficient))
+
+    proc buildSparseFPS(coefficientType, expression: NimNode): NimNode {.compileTime.} =
+        var terms: seq[tuple[degree, coefficient: NimNode]]
+        collectSparseTerms(expression, 1, terms)
+        var termNodes = newNimNode(nnkBracket)
+        for term in terms:
+            let coefficient = newCall(bindSym("init"), coefficientType.copyNimTree,
+                term.coefficient)
+            termNodes.add(newTree(nnkTupleConstr,
+                newTree(nnkExprColonExpr, ident("degree"), term.degree),
+                newTree(nnkExprColonExpr, ident("coefficient"), coefficient)))
+        let constructor = newTree(nnkBracketExpr, bindSym("initSparseFPS"),
+            coefficientType.copyNimTree)
+        newCall(constructor, termNodes)
+
+    macro sparseFPSLiteral(coefficientType,
+            expression: untyped): untyped =
+        buildSparseFPS(coefficientType, expression)
+
+    template sfps*[T](expression: untyped): untyped =
+        ## 多項式風の式から疎なFPSを構築する。
+        ## 指数には非負のint式を指定できる。
+        ## 例: sfps[Mint](1 + 2*x - x^3 + x^k)
+        sparseFPSLiteral(type(T), expression)
+
+    template SFPS*[T](expression: untyped): untyped =
+        ## sfpsの大文字始まりの別名。
+        sparseFPSLiteral(type(T), expression)
 
     proc isZero*[T](f: SparseFPS[T]): bool = f.len == 0
 
@@ -81,6 +148,11 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
 
     proc `*`*[T](f: SparseFPS[T], g: seq[T]): seq[T] = g * f
 
+    proc `*=`*[T](f: var seq[T], g: SparseFPS[T]) =
+        ## fの長さを保ち、疎なFPSを掛けた結果で置き換える。
+        let n = f.len
+        f = f.mulPrefix(g, n)
+
     proc divPrefix*[T](f: seq[T], g: SparseFPS[T], n: int): seq[T] =
         ## f / g を x^n で打ち切って返す。
         if n <= 0: return @[]
@@ -97,6 +169,11 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
             result[i] *= constantInverse
 
     proc `/`*[T](f: seq[T], g: SparseFPS[T]): seq[T] = f.divPrefix(g, f.len)
+
+    proc `/=`*[T](f: var seq[T], g: SparseFPS[T]) =
+        ## fの長さを保ち、疎なFPSで割った結果で置き換える。
+        let n = f.len
+        f = f.divPrefix(g, n)
 
     proc inv*[T](f: SparseFPS[T], n: int): seq[T] =
         ## 疎なFPSの乗法逆元を x^n で打ち切って返す。

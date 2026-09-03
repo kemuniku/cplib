@@ -18,6 +18,16 @@ proc naiveComposition[T: BarrettModint or MontgomeryModint](
     result.setLen(n)
     power = prefix(power * inner, n)
 
+proc naivePowEnumerate[T: BarrettModint or MontgomeryModint](
+    f, g: seq[T], m: int): seq[T] =
+  let n = f.len - 1
+  result = newSeq[T](m + 1)
+  var power = @[init(T, 1)]
+  for exponent in 0..m:
+    let product = power * g
+    if n < product.len: result[exponent] = product[n]
+    power = prefix(power * f, n + 1)
+
 block basicOperations:
   let f = @[Mint(1), Mint(2), Mint(3)]
   let g = @[Mint(4), Mint(5)]
@@ -229,6 +239,22 @@ block compositionAndInverse:
   assert compose(longOuter, longInner, longOuter.len).values ==
     oneMinusInner.inv(oneMinusInner.len).values
 
+block powEnumeration:
+  for n in [0, 1, 2, 3, 4, 7, 8, 15, 16, 31, 70]:
+    var f = newSeq[Mint](n + 1)
+    var g = newSeq[Mint](n + 4)
+    for i in 0..<f.len: f[i] = Mint(17 * i * i + 31 * i + 3)
+    for i in 0..<g.len: g[i] = Mint(23 * i * i + 11 * i + 5)
+    for m in [0, 1, 5, n, n + 3]:
+      assert powEnumerate(f, g, m) == naivePowEnumerate(f, g, m)
+    assert powEnumerate(f, g) == naivePowEnumerate(f, g, n)
+    assert powEnumerate(f) ==
+      naivePowEnumerate(f, @[Mint(1)], n)
+
+  let zeroConstant = @[Mint(0), Mint(2), Mint(3), Mint(5), Mint(7)]
+  assert powEnumerate(zeroConstant, 8) ==
+    naivePowEnumerate(zeroConstant, @[Mint(1)], 8)
+
 proc checkCompositionalInverse[T: BarrettModint or MontgomeryModint](
     M: typedesc[T], n: int) =
   var f = newSeq[T](n)
@@ -256,6 +282,28 @@ block bostanMoriAndRecurrence:
     assert linearRecurrenceKth(@[Mint(0), Mint(1)], @[Mint(1), Mint(1)], i).val == fib[i]
 
 block sparseOperations:
+  let literal = sfps[Mint](x + x^3 + x^4 + x^6)
+  assert literal == initSparseFPS[Mint](@[
+    (degree: 1, coefficient: Mint(1)),
+    (degree: 3, coefficient: Mint(1)),
+    (degree: 4, coefficient: Mint(1)),
+    (degree: 6, coefficient: Mint(1))
+  ])
+  let runtimeCoefficient = Mint(7)
+  let weightedLiteral = SFPS[Mint](3 - 2*x + runtimeCoefficient*x^2 + x^2 - x^5)
+  assert weightedLiteral == initSparseFPS[Mint](@[
+    (degree: 0, coefficient: Mint(3)),
+    (degree: 1, coefficient: Mint(-2)),
+    (degree: 2, coefficient: Mint(8)),
+    (degree: 5, coefficient: Mint(-1))
+  ])
+  let runtimeDegree = 9
+  assert sfps[Mint](x^runtimeDegree + 4*x^(runtimeDegree + 2)) ==
+    initSparseFPS[Mint](@[
+      (degree: 9, coefficient: Mint(1)),
+      (degree: 11, coefficient: Mint(4))
+    ])
+
   let sparse = initSparseFPS[Mint](@[
     (degree: 3, coefficient: Mint(5)),
     (degree: 0, coefficient: Mint(2)),
@@ -278,6 +326,21 @@ block sparseOperations:
     prefix(dense * sparseDense.inv(dense.len), dense.len).values
   assert dense.divPrefix(sparse, 12).values ==
     prefix(prefix(dense, 12) * sparseDense.inv(12), 12).values
+
+  var inplace = dense
+  let expectedProduct = dense.mulPrefix(sparse, dense.len)
+  inplace *= sparse
+  assert inplace == expectedProduct
+  inplace /= sparse
+  assert inplace == dense
+
+  var quotient = dense
+  quotient /= sparse
+  assert quotient == dense.divPrefix(sparse, dense.len)
+
+  var empty: seq[Mint]
+  empty *= sparse
+  assert empty.len == 0
 
 block sparseElementaryFunctions:
   let unit = initSparseFPS[Mint](@[
@@ -359,6 +422,14 @@ block arbitraryModulus:
   let denominatorInverse = denominator.inv(denominator.len)
   for i in 0..<composed.len:
     assert composed[i].val == denominatorInverse[i].val
+
+  let enumerateF = @[
+    OtherMint(2), OtherMint(3), OtherMint(5), OtherMint(7), OtherMint(11)]
+  let enumerateG = @[OtherMint(13), OtherMint(17), OtherMint(19)]
+  let enumerated = powEnumerate(enumerateF, enumerateG, 12)
+  let naiveEnumerated = naivePowEnumerate(enumerateF, enumerateG, 12)
+  for i in 0..<enumerated.len:
+    assert enumerated[i].val == naiveEnumerated[i].val
 
   let sparse = initSparseFPS[OtherMint](@[
     (degree: 0, coefficient: OtherMint(1)),
