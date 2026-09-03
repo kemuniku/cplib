@@ -21,6 +21,8 @@ let ss = toStaticStrings(@["aba", "abc"])
 assert ss[0].startsWith(ss[0][0..1])
 assert ss[0].base.count("ab") == 2
 assert ss[0].base.suffix_lowerbound("ab") < ss[0].base.suffix_upperbound("ab")
+let arrayStrings = toStaticStrings(["aba", "abc"])
+assert arrayStrings.mapIt($it) == @["aba", "abc"]
 
 let plain = toStaticString("foobarbar")
 let reversible = toStaticString("foobarbar", reversible=true)

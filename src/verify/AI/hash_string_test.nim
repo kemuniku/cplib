@@ -12,6 +12,8 @@ assert get_emptystring_hash() & abc == abc
 assert "xy".tohash * 3 == "xyxyxy".tohash
 assert "abc".tohash.removePrefix("ab".tohash) == "c".tohash
 assert 65.tohash == 'A'.tohash
+assert ['a', 'b', 'c'].tohash == abc
+assert [65, 66].tohash == "AB".tohash
 
 let rh = initRollingHash("banana")
 assert $rh[1..3] == "ana"
@@ -22,3 +24,6 @@ assert cmp(rh[1..3], rh[1..3]) == 0
 assert rh[1..3] < rh[0..2]
 let hs: HashString = rh[1..3]
 assert hs == "ana".tohash
+let arrayRh = initRollingHash(['b', 'a', 'n', 'a', 'n', 'a'])
+assert arrayRh[1..3] == rh[1..3]
+assert initRollingHash(newSeq[char]()).len == 0
