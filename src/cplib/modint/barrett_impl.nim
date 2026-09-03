@@ -60,7 +60,9 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             if a < 0: a += T.mod.int
             return T(a: a.uint32)
 
-    proc `-`*[T: BarrettModint](a: T): T = T(a: T.umod - a.a)
+    proc `-`*[T: BarrettModint](a: T): T =
+        if a.a == 0u32: return a
+        return T(a: T.umod - a.a)
     proc `+=`*[T: BarrettModint](a: var T, b: T or SomeInteger) =
         a.a += init(T, b).a
         if a.a >= T.umod: a.a -= T.umod
