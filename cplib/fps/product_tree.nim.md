@@ -262,26 +262,26 @@ data:
     \            let lastPoint = min(firstPoint + blockSize, xs.len)\n           \
     \ for i in firstPoint..<lastPoint:\n                result[i] = remainder.eval(xs[i])\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/powmod.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/fps/product_tree.nim
   requiredBy:

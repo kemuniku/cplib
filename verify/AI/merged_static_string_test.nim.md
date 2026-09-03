@@ -152,11 +152,11 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/AI/merged_static_string_test.nim

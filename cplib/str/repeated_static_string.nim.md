@@ -99,10 +99,10 @@ data:
     \     result &= \" \"\n                result &= $S[i]\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/repeated_static_string.nim

@@ -63,14 +63,14 @@ data:
     \ (true, mint(c), mint(d)))\n    else:\n        let l, r, x = ii()\n        let\
     \ (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/collections/lazysegtree_static_op.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/collections/lazysegtree_static_op.nim
   isVerificationFile: true

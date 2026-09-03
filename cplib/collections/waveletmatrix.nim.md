@@ -62,24 +62,25 @@ data:
     \                r = r0\n            else:\n                l = l1\n         \
     \       r = r1\n                k -= r0-l0\n                result += 1 shl h\n\
     \    \n    proc range_lowerbound*(self:WaveletMatrix,l,r,x:int):int=\n       \
-    \ var x = x\n        var l = l\n        var r = r\n        var now = 0\n     \
-    \   for h in countdown(self.H-1,0,1):\n            var (l0,r0,l1,r1) = self.get_child(h,l,r)\n\
+    \ if x <= 0:\n            return 0\n        if self.H < sizeof(int) * 8 and (x\
+    \ shr self.H) != 0:\n            return r-l\n        var l = l\n        var r\
+    \ = r\n        for h in countdown(self.H-1,0,1):\n            var (l0,r0,l1,r1)\
+    \ = self.get_child(h,l,r)\n            if x.testBit(h):\n                l = l1\n\
+    \                r = r1\n                result += r0-l0\n            else:\n\
+    \                l = l0\n                r = r0\n    \n    proc range_upperbound*(self:WaveletMatrix,l,r,x:int):int=\n\
+    \        var x = x\n        var l = l\n        var r = r\n        var now = 0\n\
+    \        for h in countdown(self.H-1,0,1):\n            var (l0,r0,l1,r1) = self.get_child(h,l,r)\n\
     \            if (now + 1 shl h) > x:\n                l = l0\n               \
     \ r = r0\n            else:\n                l = l1\n                r = r1\n\
-    \                now += 1 shl h\n                result += r0-l0\n    \n    proc\
-    \ range_upperbound*(self:WaveletMatrix,l,r,x:int):int=\n        var x = x\n  \
-    \      var l = l\n        var r = r\n        var now = 0\n        for h in countdown(self.H-1,0,1):\n\
-    \            var (l0,r0,l1,r1) = self.get_child(h,l,r)\n            if (now +\
-    \ 1 shl h) > x:\n                l = l0\n                r = r0\n            else:\n\
-    \                l = l1\n                r = r1\n                now += 1 shl\
-    \ h\n                result += r0-l0\n        result += r-l\n"
+    \                now += 1 shl h\n                result += r0-l0\n        result\
+    \ += r-l\n"
   dependsOn:
   - cplib/collections/bitvector.nim
   - cplib/collections/bitvector.nim
   isVerificationFile: false
   path: cplib/collections/waveletmatrix.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-03 23:47:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/waveletmatrix_test.nim
