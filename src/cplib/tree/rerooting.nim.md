@@ -83,10 +83,10 @@ data:
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/rerooting_test.nim
-  - verify/tree/rerooting_test.nim
   - verify/AI/rerooting_test.nim
   - verify/AI/rerooting_test.nim
+  - verify/tree/rerooting_test.nim
+  - verify/tree/rerooting_test.nim
 documentation_of: cplib/tree/rerooting.nim
 layout: document
 redirect_from:

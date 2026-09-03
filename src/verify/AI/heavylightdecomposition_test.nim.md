@@ -46,10 +46,10 @@ data:
     \ == @[0, 3, 5]\nvar weightedEdges = waux.graph.edges[0].mapIt((it[0].int, it[1]))\n\
     weightedEdges.sort()\nassert weightedEdges == @[(1, 2), (2, 2)]\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/AI/heavylightdecomposition_test.nim
   requiredBy: []

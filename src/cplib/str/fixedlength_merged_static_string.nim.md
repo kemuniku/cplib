@@ -136,10 +136,10 @@ data:
     \       result &= \" \"\n                    first = false\n                 \
     \   result &= $S.base.S[j]\n"
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
   requiredBy:
@@ -148,10 +148,10 @@ data:
   timestamp: '2026-08-01 10:17:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/fixedlength_merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
 documentation_of: cplib/str/fixedlength_merged_static_string.nim
 layout: document
 redirect_from:

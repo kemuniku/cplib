@@ -444,6 +444,9 @@ data:
       path: cplib/utils/cumsum2d.nim
       title: cplib/utils/cumsum2d.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/game.nim
+      title: cplib/utils/game.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/grid_searcher.nim
       title: cplib/utils/grid_searcher.nim
     - icon: ':heavy_check_mark:'
@@ -1890,6 +1893,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_int_test.nim
       title: verify/utils/binary_search_int_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/game_test.nim
+      title: verify/utils/game_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim

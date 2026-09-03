@@ -434,15 +434,15 @@ data:
     \ M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n         \
     \   ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
@@ -452,14 +452,14 @@ data:
   verifiedWith:
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - verify/convolution/convolution/convolution_static_barrett_test.nim
-  - verify/convolution/convolution/convolution_static_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/AI/convolution_test.nim
