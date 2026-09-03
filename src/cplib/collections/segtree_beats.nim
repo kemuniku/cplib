@@ -12,7 +12,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
         lastnode: int
         log: int
         length: int
-    proc initSegmentTreeBeats*[S, F](v_or_n: int or seq[S], merge: proc(x: S, y: S): S, default: S, mapping: proc(f: F, x: S): S, composition: proc(f, g: F): F, id: F): SegmentTreeBeats[S, F] =
+    proc initSegmentTreeBeatsInPlace*[S, F](self: var SegmentTreeBeats[S, F], v_or_n: int or seq[S], merge: proc(x: S, y: S): S, default: S, mapping: proc(f: F, x: S): S, composition: proc(f, g: F): F, id: F) =
         var v: seq[S]
         var n: int
         when v_or_n is seq[S]:
@@ -26,13 +26,24 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
         var log = countTrailingZeroBits(lastnode)
         var arr = newSeqWith(2*lastnode, default)
         var lazy = newSeqWith(lastnode, id)
-        var self = SegmentTreeBeats[S, F](default: default, merge: merge, arr: arr, lazy: lazy, mapping: mapping, composition: composition, id: id, lastnode: lastnode, log: log, length: n)
+        self.default = default
+        self.merge = merge
+        self.arr = arr
+        self.lazy = lazy
+        self.mapping = mapping
+        self.composition = composition
+        self.id = id
+        self.lastnode = lastnode
+        self.log = log
+        self.length = n
         when v_or_n is seq[S]:
             for i in 0..<len(v):
                 self.arr[self.lastnode+i] = v[i]
             for i in countdown(lastnode-1, 1):
                 self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])
-        return self
+
+    proc initSegmentTreeBeats*[S, F](v_or_n: int or seq[S], merge: proc(x: S, y: S): S, default: S, mapping: proc(f: F, x: S): S, composition: proc(f, g: F): F, id: F): SegmentTreeBeats[S, F] =
+        result.initSegmentTreeBeatsInPlace(v_or_n, merge, default, mapping, composition, id)
 
     proc all_apply[S, F](self: var SegmentTreeBeats[S, F], p: int, f: F)
 
@@ -143,4 +154,3 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
             self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
     proc apply*[S, F](self: var SegmentTreeBeats[S, F], segment: HSlice[int, int], f: F) =
         self.apply(segment.a, segment.b+1, f)
-
