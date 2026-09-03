@@ -56,6 +56,21 @@ when not declared CPLIB_MATRIX_MATRIX:
     proc `[]=`*[T](row: MatrixRow[T], c: int, val: T) {.inline.} =
         assert c in 0..<row.width
         row.data[c] = val
+    proc `==`*[T](a, b: MatrixRow[T]): bool =
+        if a.len != b.len: return false
+        for i in 0..<a.len:
+            if a[i] != b[i]: return false
+        true
+    proc `==`*[T](row: MatrixRow[T], other: openArray[T]): bool =
+        if row.len != other.len: return false
+        for i in 0..<row.len:
+            if row[i] != other[i]: return false
+        true
+    proc `==`*[T](other: openArray[T], row: MatrixRow[T]): bool = row == other
+    proc join*[T](row: MatrixRow[T], sep: string = ""): string =
+        for i in 0..<row.len:
+            if i > 0: result.add sep
+            result.add $row[i]
     proc `[]=`*[T](m: var Matrix[T], r: int, row: openArray[T]) =
         assert r in 0..<m.height and row.len == m.width
         for j in 0..<m.width: m.arr[r * m.width + j] = row[j]

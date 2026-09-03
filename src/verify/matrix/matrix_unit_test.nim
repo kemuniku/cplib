@@ -33,6 +33,10 @@ assert writable == initMatrix(@[@[7, 5], @[9, 4]])
 assert writableRow.len == 2
 writable[0] = writable[1]
 assert writable == initMatrix(@[@[9, 4], @[9, 4]])
+assert writable[0] == writable[1]
+assert writable[0] == @[9, 4]
+assert @[9, 4] == writable[0]
+assert writable[0].join(",") == "9,4"
 
 proc makeWritableRow(): MatrixRow[int] =
     var local = initMatrix(@[@[1, 2], @[3, 4]])
