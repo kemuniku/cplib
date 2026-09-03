@@ -74,8 +74,8 @@ data:
     \ DynamicGraph[T] or StaticGraph[T], zero, inf: T): tuple[negative_cycle: bool,\
     \ d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
@@ -84,14 +84,14 @@ data:
   timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - verify/AI/warshall_floyd_test.nim
-  - verify/AI/warshall_floyd_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/warshall_floyd_test.nim
+  - verify/AI/warshall_floyd_test.nim
 documentation_of: cplib/graph/warshall_floyd.nim
 layout: document
 redirect_from:

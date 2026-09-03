@@ -98,12 +98,12 @@ data:
     \            for i in 0..<len(S):\n                if i > 0:\n               \
     \     result &= \" \"\n                result &= $S[i]\n"
   dependsOn:
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/repeated_static_string.nim
   requiredBy: []

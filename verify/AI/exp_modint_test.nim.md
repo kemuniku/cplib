@@ -40,8 +40,8 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/exp_modint.nim
   - cplib/math/euler_phi.nim
+  - cplib/modint/exp_modint.nim
   - cplib/math/euler_phi.nim
   - cplib/modint/exp_modint.nim
   isVerificationFile: true

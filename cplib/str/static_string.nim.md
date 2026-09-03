@@ -225,47 +225,47 @@ data:
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:
+  - cplib/str/merged_static_string.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
   - verify/str/static_string/static_string_count_test_.nim
   - verify/str/static_string/static_string_count_test_.nim
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  - cplib/str/repeated_static_string.nim
-  - cplib/str/repeated_static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/str/compressed_trie.nim
-  - cplib/str/compressed_trie.nim
   timestamp: '2026-07-31 04:48:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
   - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
   - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
   - verify/str/static_string/static_string_LCS_useSA_test.nim
   - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/AI/merged_static_string_test.nim
-  - verify/AI/merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/AI/static_string_test.nim
+  - verify/AI/static_string_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
-  - verify/AI/static_string_test.nim
-  - verify/AI/static_string_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
 documentation_of: cplib/str/static_string.nim
 layout: document
 redirect_from:

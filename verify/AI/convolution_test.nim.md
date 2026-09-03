@@ -79,18 +79,18 @@ data:
     \ intB) ==\n  convolutionNaiveMod[1_000_000_007](intA, intB)\nassert convolution[998_244_353](intA,\
     \ intB) ==\n  convolutionNaiveMod[998_244_353](intA, intB)\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: true
   path: verify/AI/convolution_test.nim
   requiredBy: []

@@ -46,8 +46,8 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
   isVerificationFile: true

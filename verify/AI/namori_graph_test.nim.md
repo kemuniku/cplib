@@ -85,13 +85,13 @@ data:
     '
   dependsOn:
   - cplib/graph/namori_graph.nim
-  - cplib/utils/constants.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/namori_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/AI/namori_graph_test.nim
   requiredBy: []
