@@ -168,48 +168,48 @@ data:
 
     '
   dependsOn:
-  - cplib/fps/product_tree.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/fps/bostan_mori.nim
   - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/ntt.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/fps/product_tree.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/product_tree.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/fps/fps.nim
   - cplib/fps/fps.nim
   - cplib/math/inner_math.nim
+  - cplib/fps/composition.nim
   - cplib/fps/taylor_shift.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/fps/fps.nim
+  - cplib/math/powmod.nim
+  - cplib/fps/composition.nim
   - cplib/convolution/convolution.nim
   - cplib/fps/sparse_formal_power_series.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/convolution/ntt.nim
+  - cplib/fps/product_tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/math/powmod.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/fps/composition.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/composition.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/math/inv_gcd.nim
   isVerificationFile: true
   path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
   requiredBy: []

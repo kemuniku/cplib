@@ -36,8 +36,8 @@ data:
     \ N-len(G.topologicalsort())\n"
   dependsOn:
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/static/topologicalsort_2_static_test_.nim

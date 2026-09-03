@@ -57,20 +57,31 @@ data:
     assert child == (l0: 0, r0: 7, l1: 7, r1: 8)
 
 
+    let boundary = initWaveletMatrix(@[0, 7, 3, 7])
+
+    assert boundary.range_lowerbound(0, 4, 8) == 4
+
+    assert boundary.range_lowerbound(1, 4, 9) == 3
+
+    assert boundary.range_lowerbound(0, 4, int.high) == 4
+
+    assert boundary.range_lowerbound(0, 4, -1) == 0
+
+
     let empty = initWaveletMatrix(@[])
 
     assert empty.range_lowerbound(0, 0, 10) == 0
 
     '
   dependsOn:
-  - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-03 23:47:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/waveletmatrix_test.nim
