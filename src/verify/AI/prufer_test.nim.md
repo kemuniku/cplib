@@ -34,8 +34,8 @@ data:
     for i in 0..<g.len:\n  for j in g[i]:\n    if i < j:\n      edges.add((i, j))\n\
     assert edges == @[(0, 1), (1, 2), (1, 3)]\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   isVerificationFile: true

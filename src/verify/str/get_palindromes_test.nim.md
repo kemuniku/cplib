@@ -48,18 +48,18 @@ data:
     \   assert not HS[(l-1)..<(r+1)].isPalindrome()\n\necho palindromes.mapit(it[1]-it[0]).join(\"\
     \ \")"
   dependsOn:
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/str/manacher.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/str/manacher.nim
   - cplib/str/manacher.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/str/get_palindromes_test.nim
   requiredBy: []
-  timestamp: '2026-05-24 07:19:32+09:00'
+  timestamp: '2026-09-02 04:31:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/get_palindromes_test.nim

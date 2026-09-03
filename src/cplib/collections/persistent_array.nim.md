@@ -86,10 +86,10 @@ data:
   verifiedWith:
   - verify/collections/persistent_unionfind_test.nim
   - verify/collections/persistent_unionfind_test.nim
-  - verify/AI/persistent_array_test.nim
-  - verify/AI/persistent_array_test.nim
   - verify/AI/persistent_unionfind_test.nim
   - verify/AI/persistent_unionfind_test.nim
+  - verify/AI/persistent_array_test.nim
+  - verify/AI/persistent_array_test.nim
 documentation_of: cplib/collections/persistent_array.nim
 layout: document
 redirect_from:

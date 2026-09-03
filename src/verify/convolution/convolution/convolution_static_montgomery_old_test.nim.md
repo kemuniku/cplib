@@ -8,17 +8,35 @@ data:
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isprime.nim
+    title: cplib/math/isprime.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isprime.nim
+    title: cplib/math/isprime.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
@@ -81,21 +99,27 @@ data:
     '
   dependsOn:
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: true
   path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   requiredBy: []
-  timestamp: '2026-09-03 08:04:54+09:00'
+  timestamp: '2026-09-03 22:19:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/convolution/convolution/convolution_static_montgomery_old_test.nim

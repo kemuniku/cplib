@@ -48,8 +48,8 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/argsort.nim
   - cplib/math/int128.nim
+  - cplib/geometry/argsort.nim
   - cplib/math/int128.nim
   - cplib/geometry/argsort.nim
   isVerificationFile: true

@@ -43,32 +43,38 @@ data:
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\n\nimport unittest\nimport cplib/modint/modint\n\naddOutputFormatter(newConsoleOutputFormatter(OutputLevel.PRINT_FAILURES))\n\
     \ntest \"Dynamic Montgomery Integer Operation Test\":\n    type mint = modint_montgomery\n\
-    \    mint.setMod(998244353)\n    for x in 1..10:\n        for y in 1..10:\n  \
-    \          assert (x + mint(y)).val == (mint(x) + mint(y)).val\n            assert\
-    \ (mint(x) + y).val == (mint(x) + mint(y)).val\ntest \"Static Montogomery Integer\
-    \ Operation Test\":\n    type mint = modint998244353_montgomery\n    for x in\
-    \ 1..10:\n        for y in 1..10:\n            assert (x + mint(y)).val == (mint(x)\
-    \ + mint(y)).val\n            assert (mint(x) + y).val == (mint(x) + mint(y)).val\n\
-    test \"Dynamic Barrett Integer Operation Test\":\n    type mint = modint_barrett\n\
-    \    mint.setMod(998244353)\n    for x in 1..10:\n        for y in 1..10:\n  \
-    \          assert (x + mint(y)).val == (mint(x) + mint(y)).val\n            assert\
-    \ (mint(x) + y).val == (mint(x) + mint(y)).val\ntest \"Static Barrett Integer\
-    \ Operation Test\":\n    type mint = modint998244353_barrett\n    for x in 1..10:\n\
+    \    mint.setMod(998244353)\n    assert mint(1_000_000_000_000_000_000).val ==\
+    \ 716070898\n    assert mint(-1_000_000_000_000_000_000).val == 282173455\n  \
+    \  assert mint(high(uint64)).val == 932051909\n    for x in 1..10:\n        for\
+    \ y in 1..10:\n            assert (x + mint(y)).val == (mint(x) + mint(y)).val\n\
+    \            assert (mint(x) + y).val == (mint(x) + mint(y)).val\ntest \"Static\
+    \ Montogomery Integer Operation Test\":\n    type mint = modint998244353_montgomery\n\
+    \    assert mint(1_000_000_000_000_000_000).val == 716070898\n    assert mint(-1_000_000_000_000_000_000).val\
+    \ == 282173455\n    assert mint(high(uint64)).val == 932051909\n    for x in 1..10:\n\
     \        for y in 1..10:\n            assert (x + mint(y)).val == (mint(x) + mint(y)).val\n\
-    \            assert (mint(x) + y).val == (mint(x) + mint(y)).val\n"
+    \            assert (mint(x) + y).val == (mint(x) + mint(y)).val\ntest \"Dynamic\
+    \ Barrett Integer Operation Test\":\n    type mint = modint_barrett\n    mint.setMod(998244353)\n\
+    \    assert (-mint(0)).val == 0\n    assert (-mint(1)).val == 998244352\n    for\
+    \ x in 1..10:\n        for y in 1..10:\n            assert (x + mint(y)).val ==\
+    \ (mint(x) + mint(y)).val\n            assert (mint(x) + y).val == (mint(x) +\
+    \ mint(y)).val\ntest \"Static Barrett Integer Operation Test\":\n    type mint\
+    \ = modint998244353_barrett\n    assert (-mint(0)).val == 0\n    assert (-mint(1)).val\
+    \ == 998244352\n    for x in 1..10:\n        for y in 1..10:\n            assert\
+    \ (x + mint(y)).val == (mint(x) + mint(y)).val\n            assert (mint(x) +\
+    \ y).val == (mint(x) + mint(y)).val\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/modint/integer_operation_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/integer_operation_test.nim

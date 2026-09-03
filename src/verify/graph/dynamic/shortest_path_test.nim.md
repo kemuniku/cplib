@@ -54,20 +54,20 @@ data:
     \ var path = prev.restore_shortestpath_from_prev(t)\n    echo costs[t], \" \"\
     , len(path)-1\n    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/dijkstra.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/shortest_path_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
+  timestamp: '2026-09-02 04:31:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/shortest_path_test.nim

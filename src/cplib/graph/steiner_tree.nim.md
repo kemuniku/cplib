@@ -97,10 +97,10 @@ data:
     \ openArray[int], zero, inf: T): T = steiner_tree_mincost_impl(g, terminal, zero,\
     \ inf)\n"
   dependsOn:
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
   - cplib/utils/bititers.nim
-  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
