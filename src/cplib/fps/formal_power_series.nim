@@ -97,7 +97,9 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
         doAssert n <= T.umod.int, "FPSの形式的対数では n が法以下である必要がある"
         doAssert f.len > 0 and f[0].val == 1,
             "FPSの形式的対数を求めるには定数項が1である必要がある"
-        result = prefix(integral(derivative(f) * f.inv(n)), n)
+        let fPrefix = if f.len <= n: f else: f[0..<n]
+        let product = prefix(derivative(fPrefix) * fPrefix.inv(n), n - 1)
+        result = integral(product)
 
     proc log*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] = f.log(f.len)
 

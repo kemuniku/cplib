@@ -41,6 +41,13 @@ block inverseLogExpAndPower:
   assert shifted.pow(2, 10).values == prefix(shifted * shifted, 10).values
   assert shifted.pow(0, 5).values == @[1, 0, 0, 0, 0]
 
+block logarithmIgnoresHigherTerms:
+  type SmallMint = StaticBarrettModint[17u32]
+  var f = newSeq[SmallMint](18)
+  f[0] = init(SmallMint, 1)
+  for i in 1..<f.len: f[i] = init(SmallMint, i * i + 3 * i + 1)
+  assert f.log(2).mapIt(it.val) == @[0, f[1].val]
+
 proc checkRelaxedFormalPowerSeries[T: BarrettModint or MontgomeryModint](
     M: typedesc[T], n: int) =
   var unit = newSeq[T](n)

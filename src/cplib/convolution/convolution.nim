@@ -3,6 +3,7 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     import bitops, sequtils, std/math
     import cplib/modint/modint
     import cplib/math/inv_gcd
+    import cplib/math/isprime
 
     {.emit: """
 #ifndef CPLIB_CONVOLUTION_AVX2_NTT_HPP
@@ -941,6 +942,16 @@ output, factors, sizes, factor_count);
         f, g: seq[T]
     ): seq[T]
 
+    var nttPrimalityCache: tuple[modulus: uint32, isPrime: bool]
+
+    proc isNttFriendlyModulus(modulus, transformSize: uint32): bool =
+        ## 指定した長さのNTTが法の下で成立するか判定する。
+        if modulus <= 1u32 or modulus >= (1u32 shl 30): return false
+        if (modulus - 1u32) mod transformSize != 0u32: return false
+        if nttPrimalityCache.modulus != modulus:
+            nttPrimalityCache = (modulus, isprime(modulus.int))
+        return nttPrimalityCache.isPrime
+
     proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =
         if f.len == 0 or g.len == 0: return @[]
         var ans = newSeq[T](f.len + g.len - 1)
@@ -961,8 +972,7 @@ output, factors, sizes, factor_count);
         let deg = m + n - 1
         if min(n, m) <= 60: return convolution_naive(f, g)
         var l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))
-        if T.umod < (1u32 shl 30) and
-                (T.umod - 1u32) mod l.uint32 == 0u32:
+        if isNttFriendlyModulus(T.umod, l.uint32):
             result = newSeq[T](l)
             convolutionNttFriendlyAvx2(
                 cast[ptr uint32](addr result[0]),
@@ -981,8 +991,7 @@ output, factors, sizes, factor_count);
         doAssert f.len <= n and g.len <= n
         result = newSeq[T](n)
         if f.len == 0 or g.len == 0: return
-        if n >= 64 and T.umod < (1u32 shl 30) and
-                (T.umod - 1u32) mod n.uint32 == 0u32:
+        if n >= 64 and isNttFriendlyModulus(T.umod, n.uint32):
             when T is MontgomeryModint:
                 var normalF = newSeq[uint32](f.len)
                 var normalG = newSeq[uint32](g.len)
@@ -1054,9 +1063,8 @@ output, factors, sizes, factor_count);
             InvM1ModM2 = inv_gcd((M1 mod M2).int, M2.int)[1].uint64
             InvM12ModM3 = inv_gcd((M12 mod M3).int, M3.int)[1].uint64
 
-        # With mod < 2^31 and this transform-size limit, every integer
-        # coefficient is smaller than M1*M2*M3, so the three residues identify
-        # it uniquely before reducing it modulo the requested modulus.
+        # mod < 2^31かつこの変換長の上限では、各整数係数はM1*M2*M3未満になる。
+        # そのため、3個の剰余から要求された法で還元する前の値を一意に特定できる。
         let targetMod = T.umod.uint64
         assert targetMod > 0 and targetMod < (1u64 shl 31),
             "arbitrary-mod convolution requires a modulus in [1, 2^31)"
@@ -1126,9 +1134,9 @@ output, factors, sizes, factor_count);
             x += (c1[i].uint * i1) mod M1 * M23
             x += (c2[i].uint * i2) mod M2 * M31
             x += (c3[i].uint * i3) mod M3 * M12
-            # x intentionally wraps modulo 2^64.  Reinterpret those bits as a
-            # signed value for the CRT overflow correction; a numeric `.int`
-            # conversion raises RangeDefect when the top bit is set.
+            # xは意図的に2^64を法としてオーバーフローさせる。
+            # CRTのオーバーフロー補正では同じビット列を符号付き整数として解釈する。
+            # 数値変換の`.int`では最上位ビットが立っているとRangeDefectになる。
             var diff = c1[i].int - floorMod(cast[int](x), M1.int)
             if diff < 0: diff += M1.int
             const offset = [0u, 0u, M123, 2u * M123, 3u * M123]

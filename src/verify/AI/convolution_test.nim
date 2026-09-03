@@ -19,8 +19,8 @@ proc checkCyclicConvolution[T: BarrettModint or MontgomeryModint](M: typedesc[T]
   const n = 128
   var a = newSeq[T](n)
   var b = newSeq[T](73)
-  for i in 0..<a.len: a[i] = T(i * 1_000_003 + 17)
-  for i in 0..<b.len: b[i] = T(i * 999_983 + 31)
+  for i in 0..<a.len: a[i] = init(T, i * 1_000_003 + 17)
+  for i in 0..<b.len: b[i] = init(T, i * 999_983 + 31)
   let product = convolution_naive(a, b)
   var expected = newSeq[T](n)
   for i in 0..<product.len: expected[i mod n] += product[i]
@@ -33,6 +33,11 @@ checkCyclicConvolution(modint998244353_barrett)
 checkCyclicConvolution(modint998244353_montgomery)
 checkCyclicConvolution(modint1000000007_barrett)
 checkCyclicConvolution(modint1000000007_montgomery)
+
+type CompositeBarrett = StaticBarrettModint[129u32]
+type CompositeMontgomery = StaticMontgomeryModint[129u32]
+checkCyclicConvolution(CompositeBarrett)
+checkCyclicConvolution(CompositeMontgomery)
 
 proc checkRelaxedConvolution[T: BarrettModint or MontgomeryModint](
     M: typedesc[T], n: int) =
@@ -97,6 +102,18 @@ proc checkArbitraryMod[T: BarrettModint or MontgomeryModint](M: typedesc[T]) =
 
 checkArbitraryMod(modint1000000007_barrett)
 checkArbitraryMod(modint1000000007_montgomery)
+
+proc checkCompositeMod[T: BarrettModint or MontgomeryModint](M: typedesc[T]) =
+  var a = newSeq[T](61)
+  var b = newSeq[T](61)
+  for i in 0..<a.len:
+    a[i] = init(T, i * i + 17 * i + 3)
+    b[i] = init(T, i * i + 31 * i + 7)
+  doAssert convolution(a, b).mapIt(it.val) ==
+    convolution_naive(a, b).mapIt(it.val), $M
+
+checkCompositeMod(CompositeBarrett)
+checkCompositeMod(CompositeMontgomery)
 
 type DynamicBarrett = modint_barrett
 DynamicBarrett.setMod(1_000_000_007)
