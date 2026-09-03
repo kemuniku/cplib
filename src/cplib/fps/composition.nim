@@ -16,9 +16,13 @@ when not declared CPLIB_FPS_COMPOSITION:
             return
 
         # V(x^2, y) = Q(x, y) Q(-x, y) を計算する。
-        # x次数の2倍より広い間隔で平坦化すれば、二変数積を1回の畳み込みにできる。
-        let stride = 2 * (n + 1)
-        let encodedLength = (yDegree + 1) * stride
+        # 復元時のx次数より広い間隔で平坦化すれば、二変数積を1回の畳み込みにできる。
+        var denominatorDegree = 0
+        for polynomial in denominator:
+            denominatorDegree = max(denominatorDegree,
+                min(polynomial.len, n + 1) - 1)
+        let stride = n + denominatorDegree + 1
+        let encodedLength = yDegree * stride + denominatorDegree + 1
         var positive = newSeq[T](encodedLength)
         var negative = newSeq[T](encodedLength)
         for y in 0..yDegree:
@@ -38,7 +42,8 @@ when not declared CPLIB_FPS_COMPOSITION:
         let projected = compositionRec(outer, nextDenominator, half, 2 * yDegree)
 
         # x^2 を x に戻してQ(-x, y)を掛け、yの指数が -yDegree+1 .. 0 の項だけ残す。
-        var lifted = newSeq[T](2 * yDegree * stride)
+        let liftedLength = (2 * yDegree - 1) * stride + 2 * half + 1
+        var lifted = newSeq[T](liftedLength)
         for y in 0..<2 * yDegree:
             for x in 0..<projected[y].len:
                 lifted[y * stride + 2 * x] = projected[y][x]
@@ -84,10 +89,19 @@ when not declared CPLIB_FPS_COMPOSITION:
         var m = 2
         while m < n:
             let next = min(m * 2, n)
-            var error = compose(f, result, next)
-            error[1] -= 1
-            let slope = compose(f.derivative, result, next)
-            result = prefix(result - prefix(error * slope.inv(next), next), next)
+            let composed = compose(f, result, next)
+            let correctionSize = next - m
+            var upperError = newSeq[T](correctionSize)
+            for i in 0..<correctionSize:
+                upperError[i] = composed[m + i]
+            let inverseSlope = prefix(
+                result.derivative * composed.derivative.inv(correctionSize),
+                correctionSize)
+            let upperCorrection = prefix(
+                upperError * inverseSlope, correctionSize)
+            result.setLen(next)
+            for i in 0..<correctionSize:
+                result[m + i] -= upperCorrection[i]
             m = next
 
     proc compositionalInverse*[T: BarrettModint or MontgomeryModint](

@@ -11,7 +11,7 @@ when not declared CPLIB_FPS_POLYNOMIAL_INTERPOLATION:
         doAssert xs.len == ys.len, "補間ではx座標とy座標の個数が一致する必要がある"
         if xs.len == 0: return @[]
         let tree: PolynomialProductTree[T] = initPolynomialProductTree[T](xs)
-        let denominators = evaluate[T](tree, tree.nodes[1].derivative)
+        let denominators = multipointEvaluation[T](tree.nodes[1].derivative, xs)
         var partial = newSeq[seq[T]](tree.nodes.len)
         for i in 0..<tree.leafCount:
             if i < xs.len:

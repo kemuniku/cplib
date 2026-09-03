@@ -78,13 +78,16 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
         result = @[f[0].inv]
         var m = 1
         while m < n:
-            let next = min(m * 2, n)
-            let fg = prefix(f, next) * result
-            var correction = newSeq[T](next)
-            correction[0] = 2
-            for i in 0..<min(fg.len, next): correction[i] -= fg[i]
-            result = prefix(result * correction, next)
+            let next = m * 2
+            let fPrefix = if f.len <= next: f else: f[0..<next]
+            let product = convolutionCyclicPowerOfTwo(fPrefix, result, next)
+            var error = newSeq[T](m)
+            for i in 0..<m: error[i] = -product[m + i]
+            let extension = result * error
+            result.setLen(next)
+            for i in 0..<m: result[m + i] = extension[i]
             m = next
+        result.setLen(n)
 
     proc inv*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] = f.inv(f.len)
 
