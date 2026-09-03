@@ -24,6 +24,44 @@ var r3 = initMatrix((1..3).toSeq)
 var c2 = initMatrix((1..2).toSeq, true)
 var c3 = initMatrix((1..3).toSeq, true)
 
+var writable = initMatrix(@[@[1, 2], @[3, 4]])
+writable[0][1] = 5
+writable[1][0] += 6
+var writableRow = writable[0]
+writableRow[0] = 7
+assert writable == initMatrix(@[@[7, 5], @[9, 4]])
+assert writableRow.len == 2
+writable[0] = writable[1]
+assert writable == initMatrix(@[@[9, 4], @[9, 4]])
+assert writable[0] == writable[1]
+assert writable[0] == @[9, 4]
+assert @[9, 4] == writable[0]
+assert writable[0].join(",") == "9,4"
+
+proc makeWritableRow(): MatrixRow[int] =
+    var local = initMatrix(@[@[1, 2], @[3, 4]])
+    local[1]
+
+var survivingRow = makeWritableRow()
+GC_fullCollect()
+survivingRow[1] = 8
+assert survivingRow[0] == 3 and survivingRow[1] == 8
+
+let readonly = initMatrix(@[@[1, 2], @[3, 4]])
+var readBoundsChecked = false
+try:
+    discard readonly[0, 2]
+except AssertionDefect:
+    readBoundsChecked = true
+assert readBoundsChecked
+
+var writeBoundsChecked = false
+try:
+    writable[1, -1] = 10
+except AssertionDefect:
+    writeBoundsChecked = true
+assert writeBoundsChecked
+
 assert l.mapIt(it.h).allIt(it == 2) and l.mapIt(it.w).allIt(it == 3)
 assert r.mapIt(it.h).allIt(it == 3) and r.mapIt(it.w).allIt(it == 2)
 assert r2.h == 1 and r2.w == 2
