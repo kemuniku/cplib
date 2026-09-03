@@ -9,7 +9,15 @@ on:
 
 jobs:
   verify:
+    name: verify (Nim ${{ matrix.nim-version }})
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        nim-version:
+          - 2.2.4
+          - 1.6.20
 
     permissions:
       actions: write
@@ -31,18 +39,18 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.choosenim
-          key: ${{ runner.os }}-choosenim-stable
+          key: ${{ runner.os }}-choosenim-${{ matrix.nim-version }}
 
       - name: Cache nimble
         id: cache-nimble
         uses: actions/cache@v4
         with:
           path: ~/.nimble
-          key: ${{ runner.os }}-nimble-stable
+          key: ${{ runner.os }}-nimble-${{ matrix.nim-version }}
 
       - uses: jiro4989/setup-nim-action@v1
         with:
-          nim-version: 1.6.14
+          nim-version: ${{ matrix.nim-version }}
 
       - name: Install Dependency
         id: install-dependency
@@ -55,8 +63,8 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: src/.verify-helper/cache
-          key: ${{ runner.os }}-verify-cases-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-verify-cases-
+          key: ${{ runner.os }}-nim-${{ matrix.nim-version }}-verify-cases-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-nim-${{ matrix.nim-version }}-verify-cases-
 
       - name: Get dropbox token
         env:
@@ -90,7 +98,7 @@ jobs:
         run: |
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
-          cacheKeys=$(gh actions-cache list -R $REPO --key ${{ runner.os }}-verify-cases | cut -f 1 )
+          cacheKeys=$(gh actions-cache list -R $REPO --key ${{ runner.os }}-nim-${{ matrix.nim-version }}-verify-cases | cut -f 1 )
           set +e
           for cacheKey in $cacheKeys
           do
@@ -106,4 +114,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: src/.verify-helper/cache
-          key: ${{ runner.os }}-verify-cases-${{ github.sha }}
+          key: ${{ runner.os }}-nim-${{ matrix.nim-version }}-verify-cases-${{ github.sha }}
