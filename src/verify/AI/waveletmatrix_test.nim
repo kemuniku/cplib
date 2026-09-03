@@ -14,5 +14,11 @@ assert wm.range_upperbound(1, 5, 1) == 2
 let child = wm.get_child(3, 0, 8)
 assert child == (l0: 0, r0: 7, l1: 7, r1: 8)
 
+let boundary = initWaveletMatrix(@[0, 7, 3, 7])
+assert boundary.range_lowerbound(0, 4, 8) == 4
+assert boundary.range_lowerbound(1, 4, 9) == 3
+assert boundary.range_lowerbound(0, 4, int.high) == 4
+assert boundary.range_lowerbound(0, 4, -1) == 0
+
 let empty = initWaveletMatrix(@[])
 assert empty.range_lowerbound(0, 0, 10) == 0
