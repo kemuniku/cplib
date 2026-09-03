@@ -16,7 +16,10 @@ proc op(l, r: S): S = (r[0] * l[0], r[0] * l[1] + r[1], l[2] + r[2])
 proc mapping(f: F, x: S): S =
     if f[0]:
         let pw = f[1].pow(x[2])
-        (pw, f[2] * (1 - pw) / (1 - f[1]), x[2])
+        if f[1] == 1:
+            (pw, f[2] * x[2], x[2])
+        else:
+            (pw, f[2] * (1 - pw) / (1 - f[1]), x[2])
     else:
         x
 proc composition(f: F, g: F): F = (if f[0]: f else: g)
