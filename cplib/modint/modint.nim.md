@@ -27,6 +27,12 @@ data:
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution_old.nim
+    title: cplib/convolution/convolution_old.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution_old.nim
+    title: cplib/convolution/convolution_old.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
   - icon: ':heavy_check_mark:'
@@ -148,6 +154,12 @@ data:
     path: verify/AI/combination_test.nim
     title: verify/AI/combination_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_old_test.nim
+    title: verify/AI/convolution_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_old_test.nim
+    title: verify/AI/convolution_old_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
   - icon: ':heavy_check_mark:'
@@ -178,11 +190,23 @@ data:
     path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
     title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
@@ -190,11 +214,23 @@ data:
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_montgomery_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_test.nim
@@ -273,85 +309,97 @@ data:
     \ n, d))\n        v.sort\n        return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/ntt.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
-  - verify/modint/montgomery/keyence2021_static_test_.nim
-  - verify/modint/montgomery/keyence2021_static_test_.nim
-  - verify/modint/montgomery/abc277g_dynamic_test_.nim
-  - verify/modint/montgomery/abc277g_dynamic_test_.nim
-  - verify/modint/montgomery/abc277g_static_test_.nim
-  - verify/modint/montgomery/abc277g_static_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
-  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_test_.nim
-  - verify/modint/barrett/keyence2021_static_test_.nim
-  - verify/modint/barrett/keyence2021_static_test_.nim
-  - verify/modint/barrett/abc277g_dynamic_test_.nim
-  - verify/modint/barrett/abc277g_dynamic_test_.nim
-  - verify/modint/barrett/abc277g_static_test_.nim
-  - verify/modint/barrett/abc277g_static_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
-  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
   - verify/modint/barrett/dpr_dynamic_test_.nim
   - verify/modint/barrett/dpr_dynamic_test_.nim
+  - verify/modint/barrett/abc277g_static_test_.nim
+  - verify/modint/barrett/abc277g_static_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/abc277g_dynamic_test_.nim
+  - verify/modint/barrett/abc277g_dynamic_test_.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_static_test_.nim
+  - verify/modint/barrett/keyence2021_static_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/modint/montgomery/abc277g_static_test_.nim
+  - verify/modint/montgomery/abc277g_static_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/abc277g_dynamic_test_.nim
+  - verify/modint/montgomery/abc277g_dynamic_test_.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_static_test_.nim
+  - verify/modint/montgomery/keyence2021_static_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_static_test_.nim
+  - cplib/convolution/convolution_old.nim
+  - cplib/convolution/convolution_old.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
   timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
-  - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_static_barrett_test.nim
-  - verify/convolution/convolution/convolution_static_barrett_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_pow_test.nim
-  - verify/matrix/matrix_pow_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/AI/ntt_test.nim
-  - verify/AI/ntt_test.nim
-  - verify/AI/modint_test.nim
-  - verify/AI/modint_test.nim
   - verify/AI/combination_test.nim
   - verify/AI/combination_test.nim
+  - verify/AI/convolution_old_test.nim
+  - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
+  - verify/AI/modint_test.nim
+  - verify/AI/modint_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_pow_test.nim
 documentation_of: cplib/modint/modint.nim
 layout: document
 redirect_from:

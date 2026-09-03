@@ -252,20 +252,20 @@ data:
   isVerificationFile: false
   path: cplib/collections/segtree.nim
   requiredBy:
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/utils/inversion_number.nim
-  - cplib/utils/inversion_number.nim
-  - cplib/collections/segtree2d.nim
-  - cplib/collections/segtree2d.nim
-  - verify/collections/segtree/segtree_xor1_test_.nim
-  - verify/collections/segtree/segtree_xor1_test_.nim
   - verify/collections/segtree/segtree_get1item_test_.nim
   - verify/collections/segtree/segtree_get1item_test_.nim
+  - verify/collections/segtree/segtree_xor1_test_.nim
+  - verify/collections/segtree/segtree_xor1_test_.nim
   - verify/collections/segtree/segtree_xor2_test_.nim
   - verify/collections/segtree/segtree_xor2_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
+  - cplib/utils/inversion_number.nim
+  - cplib/utils/inversion_number.nim
+  - cplib/collections/segtree2d.nim
+  - cplib/collections/segtree2d.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/functional_graph_with_op.nim
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -273,40 +273,40 @@ data:
   - verify/utils/inversion_number_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
-  - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/segtree/segtree_static_test.nim
-  - verify/collections/segtree/segtree_ordered_set_test.nim
-  - verify/collections/segtree/segtree_ordered_set_test.nim
   - verify/collections/segtree/segtree_init_with_size_test.nim
   - verify/collections/segtree/segtree_init_with_size_test.nim
-  - verify/collections/segtree/segtree_RMQ_test.nim
-  - verify/collections/segtree/segtree_RMQ_test.nim
-  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree/segtree_PARS_test.nim
-  - verify/collections/segtree/segtree_PARS_test.nim
-  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree/segtree_PSRC_2_test.nim
-  - verify/collections/segtree/segtree_PSRC_2_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
-  - verify/collections/segtree/segtree_newsegwith_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
   - verify/collections/segtree/segtree_PSRC_test.nim
-  - verify/AI/segtree2d_test.nim
-  - verify/AI/segtree2d_test.nim
-  - verify/AI/segtree_test.nim
-  - verify/AI/segtree_test.nim
-  - verify/AI/inversion_number_test.nim
-  - verify/AI/inversion_number_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/collections/segtree/segtree_PSRC_2_test.nim
+  - verify/collections/segtree/segtree_PSRC_2_test.nim
+  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree/segtree_RMQ_test.nim
+  - verify/collections/segtree/segtree_RMQ_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
+  - verify/collections/segtree/segtree_ordered_set_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_newsegwith_test.nim
+  - verify/collections/segtree/segtree_PARS_test.nim
+  - verify/collections/segtree/segtree_PARS_test.nim
+  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree/segtree_static_test.nim
+  - verify/collections/segtree/segtree_static_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/segtree_test.nim
+  - verify/AI/segtree_test.nim
+  - verify/AI/segtree2d_test.nim
+  - verify/AI/segtree2d_test.nim
+  - verify/AI/inversion_number_test.nim
+  - verify/AI/inversion_number_test.nim
 documentation_of: cplib/collections/segtree.nim
 layout: document
 redirect_from:

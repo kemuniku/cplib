@@ -147,6 +147,9 @@ data:
       path: cplib/convolution/convolution.nim
       title: cplib/convolution/convolution.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/convolution/convolution_old.nim
+      title: cplib/convolution/convolution_old.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/convolution/ntt.nim
       title: cplib/convolution/ntt.nim
     - icon: ':heavy_check_mark:'
@@ -986,6 +989,9 @@ data:
       path: verify/AI/constants_test.nim
       title: verify/AI/constants_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/convolution_old_test.nim
+      title: verify/AI/convolution_old_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/convolution_test.nim
       title: verify/AI/convolution_test.nim
     - icon: ':heavy_check_mark:'
@@ -1508,14 +1514,26 @@ data:
   - name: verify/convolution/convolution
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+      title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
       title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+      title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
       title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+      title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/convolution/convolution/convolution_static_barrett_test.nim
       title: verify/convolution/convolution/convolution_static_barrett_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+      title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/convolution/convolution/convolution_static_montgomery_test.nim
       title: verify/convolution/convolution/convolution_static_montgomery_test.nim

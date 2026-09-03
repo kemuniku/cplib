@@ -70,8 +70,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

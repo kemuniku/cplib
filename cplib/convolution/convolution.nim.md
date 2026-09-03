@@ -2,12 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/convolution/ntt.nim
-    title: cplib/convolution/ntt.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/convolution/ntt.nim
-    title: cplib/convolution/ntt.nim
-  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
   - icon: ':heavy_check_mark:'
@@ -58,11 +52,23 @@ data:
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_montgomery_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_test.nim
@@ -82,72 +88,380 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_CONVOLUTION_CONVOLUTION:\n    const CPLIB_CONVOLUTION_CONVOLUTION*\
     \ = 1\n    import bitops, sequtils, std/math\n    import cplib/modint/modint\n\
-    \    import cplib/convolution/ntt\n    import cplib/math/inv_gcd\n\n    declarStaticMontgomeryModint(mint754974721,\
-    \ 754974721u32)\n    declarStaticMontgomeryModint(mint167772161, 167772161u32)\n\
-    \    declarStaticMontgomeryModint(mint469762049, 469762049u32)\n\n    proc convolution_naive*[T:\
-    \ BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =\n        var\
-    \ ans = newSeqWith(f.len + g.len - 1, T(0))\n        if f.len > g.len:\n     \
-    \       for i in 0..<f.len:\n                for j in 0..<g.len:\n           \
-    \         ans[i+j] += f[i] * g[j]\n        else:\n            for j in 0..<g.len:\n\
-    \                for i in 0..<f.len:\n                    ans[i+j] += f[i] * g[j]\n\
-    \        return ans\n\n    proc convolution*[T: BarrettModint or MontgomeryModint](f,\
-    \ g: seq[T]): seq[T] =\n        var f = f\n        var g = g\n        let m =\
-    \ f.len\n        let n = g.len\n        let deg = m + n - 1\n        if min(n,\
-    \ m) <= 60: return convolution_naive(f, g)\n        var l = (if deg == 1: 1 else:\
-    \ (1 shl (fastLog2(deg - 1) + 1)))\n        f.setLen(l)\n        g.setLen(l)\n\
-    \        ntt(f)\n        ntt(g)\n        for i in 0..<f.len:\n            f[i]\
-    \ *= g[i]\n        intt(f)\n        f.setlen(deg)\n        return f\n\n\n    proc\
-    \ convolution_ll*(f, g: seq[int]): seq[int] =\n        var n = f.len\n       \
-    \ var m = g.len\n        if n == 0 or m == 0: return newSeq[int]()\n\n       \
-    \ const\n            M1 = 754974721u\n            M2 = 167772161u\n          \
-    \  M3 = 469762049u\n            M12 = M1 * M2\n            M23 = M2 * M3\n   \
-    \         M31 = M3 * M1\n            M123 = M1 * M2 * M3\n            i1 = inv_gcd((M2\
-    \ * M3).int, M1.int)[1].uint\n            i2 = inv_gcd((M3 * M1).int, M2.int)[1].uint\n\
-    \            i3 = inv_gcd((M1 * M2).int, M3.int)[1].uint\n        # FIXME: mapit\u3067\
-    f1, g1\u3092\u4F5C\u308D\u3046\u3068\u3059\u308B\u3068\u306A\u305C\u304B\u58CA\
-    \u308C\u308B\u2026\u2026\n        var f1 = newSeq[mint754974721](n)\n        var\
-    \ g1 = newSeq[mint754974721](m)\n        for i in 0..<n: f1[i] = mint754974721(f[i])\n\
-    \        for i in 0..<m: g1[i] = mint754974721(g[i])\n        let c1 = convolution(f1,\
-    \ g1)\n        var f2 = newSeq[mint167772161](n)\n        var g2 = newSeq[mint167772161](m)\n\
-    \        for i in 0..<n: f2[i] = mint167772161(f[i])\n        for i in 0..<m:\
-    \ g2[i] = mint167772161(g[i])\n        let c2 = convolution(f2, g2)\n        var\
-    \ f3 = newSeq[mint469762049](n)\n        var g3 = newSeq[mint469762049](m)\n \
-    \       for i in 0..<n: f3[i] = mint469762049(f[i])\n        for i in 0..<m: g3[i]\
-    \ = mint469762049(g[i])\n        let c3 = convolution(f3, g3)\n        var ans\
-    \ = newseqwith(n + m - 1, 0)\n        for i in 0..<ans.len:\n            var x\
-    \ = 0.uint\n            x += (c1[i].val.uint * i1) mod M1 * M23\n            x\
-    \ += (c2[i].val.uint * i2) mod M2 * M31\n            x += (c3[i].val.uint * i3)\
-    \ mod M3 * M12\n            var diff = c1[i].val - floorMod(x.int, M1.int)\n \
-    \           if diff < 0: diff += M1.int\n            const offset = [0u, 0u, M123,\
-    \ 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n            ans[i]\
-    \ = cast[int](x)\n        return ans\n"
+    \    import cplib/math/inv_gcd\n\n    {.emit: \"\"\"\n#ifndef CPLIB_CONVOLUTION_AVX2_NTT_HPP\n\
+    #define CPLIB_CONVOLUTION_AVX2_NTT_HPP\n#include <immintrin.h>\n#include <algorithm>\n\
+    #include <cstddef>\n#include <cstdint>\n#include <cstring>\n#pragma GCC target(\"\
+    avx2,bmi2\")\n#pragma GCC optimize(\"O3\")\nnamespace cplib_avx2_ntt {\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\nusing Z=std::size_t;\nusing\
+    \ V=__m256i;\nu32 modulus = 998244353U;\nu32 primitive_root = 3U;\nstruct Montgomery\
+    \ {\nu32 negative_inverse;\nu32 radix;\nu32 radix_squared;\nMontgomery() {\nnegative_inverse\
+    \ = 1;\nfor (int i = 0; i < 5; ++i) {\nnegative_inverse *= 2U + negative_inverse\
+    \ * modulus;\n}\nradix = (u32)((u64(1) << 32) % modulus);\nradix_squared = (u32)(u64(radix)\
+    \ * radix % modulus);\n}\ninline u32 multiply(u32 a, u32 b) const {\nconst u64\
+    \ product = u64(a) * b;\nconst u32 correction = (u32)(product) * negative_inverse;\n\
+    u32 value = (u32)(\n(product + u64(correction) * modulus) >> 32);\nif (value >=\
+    \ modulus) value -= modulus;\nreturn value;\n}\ninline u32 to_montgomery(u32 value)\
+    \ const {\nreturn multiply(value, radix_squared);\n}\n};\ninline u32 add_mod(u32\
+    \ a, u32 b) {\nconst u32 sum = a + b;\nreturn sum >= modulus ? sum - modulus :\
+    \ sum;\n}\ninline u32 subtract_mod(u32 a, u32 b) {\nreturn a >= b ? a - b : a\
+    \ + modulus - b;\n}\ninline u32 power_mod(u32 base, u32 exponent) {\nu32 result\
+    \ = 1;\nwhile (exponent != 0) {\nif (exponent & 1U) result = (u32)(u64(result)\
+    \ * base % modulus);\nbase = (u32)(u64(base) * base % modulus);\nexponent >>=\
+    \ 1;\n}\nreturn result;\n}\ninline u32 find_primitive_root(u32 prime) {\nswitch\
+    \ (prime) {\ncase 998244353U: return 3U;\ncase 754974721U: return 11U;\ncase 167772161U:\
+    \ return 3U;\ncase 469762049U: return 3U;\ndefault: break;\n}\nu32 factors[16];\n\
+    int factor_count = 0;\nu32 remaining = prime - 1;\nfor (u32 divisor = 2; u64(divisor)\
+    \ * divisor <= remaining; ++divisor) {\nif (remaining % divisor != 0) continue;\n\
+    factors[factor_count++] = divisor;\ndo {\nremaining /= divisor;\n} while (remaining\
+    \ % divisor == 0);\n}\nif (remaining != 1) factors[factor_count++] = remaining;\n\
+    for (u32 candidate = 2;; ++candidate) {\nbool valid = true;\nfor (int i = 0; i\
+    \ < factor_count; ++i) {\nif (power_mod(candidate, (prime - 1) / factors[i]) ==\
+    \ 1) {\nvalid = false;\nbreak;\n}\n}\nif (valid) return candidate;\n}\n}\ninline\
+    \ V shrink(V value) {\nconst V mod = _mm256_set1_epi32((int)(modulus));\nreturn\
+    \ _mm256_min_epu32(value, _mm256_sub_epi32(value, mod));\n}\ninline V shrink_twice_modulus(V\
+    \ value) {\nconst V twice_modulus = _mm256_set1_epi32(\n(int)(2U * modulus));\n\
+    return _mm256_min_epu32(\nvalue, _mm256_sub_epi32(value, twice_modulus));\n}\n\
+    inline V add_lazy(V a, V b) {\nreturn _mm256_add_epi32(a, b);\n}\ninline V subtract_lazy(V\
+    \ a, V b) {\nconst V twice_modulus = _mm256_set1_epi32(\n(int)(2U * modulus));\n\
+    return _mm256_sub_epi32(_mm256_add_epi32(a, twice_modulus), b);\n}\ninline V add_mod(V\
+    \ a, V b) {\nreturn shrink(_mm256_add_epi32(a, b));\n}\ninline V subtract_mod(V\
+    \ a, V b) {\nconst V mod = _mm256_set1_epi32((int)(modulus));\nreturn shrink(_mm256_sub_epi32(_mm256_add_epi32(a,\
+    \ mod), b));\n}\ninline V montgomery_multiply_lazy(\nV a, V b, const Montgomery&\
+    \ montgomery) {\nconst V inverse = _mm256_set1_epi32(\n(int)(montgomery.negative_inverse));\n\
+    const V mod = _mm256_set1_epi32((int)(modulus));\nconst V even_product = _mm256_mul_epu32(a,\
+    \ b);\nconst V odd_product = _mm256_mul_epu32(\n_mm256_srli_epi64(a, 32), _mm256_srli_epi64(b,\
+    \ 32));\nconst V even_correction = _mm256_mul_epu32(even_product, inverse);\n\
+    const V odd_correction = _mm256_mul_epu32(odd_product, inverse);\nconst V even_sum\
+    \ = _mm256_add_epi64(\neven_product, _mm256_mul_epu32(even_correction, mod));\n\
+    const V odd_sum = _mm256_add_epi64(\nodd_product, _mm256_mul_epu32(odd_correction,\
+    \ mod));\nconst V even_result = _mm256_srli_epi64(even_sum, 32);\nconst V odd_result\
+    \ = _mm256_slli_epi64(\n_mm256_srli_epi64(odd_sum, 32), 32);\nreturn _mm256_or_si256(even_result,\
+    \ odd_result);\n}\ninline V montgomery_multiply(\nV a, V b, const Montgomery&\
+    \ montgomery) {\nreturn shrink(montgomery_multiply_lazy(a, b, montgomery));\n\
+    }\nclass TransformPlan {\nZ size_;\nMontgomery montgomery_;\nu32* twiddles_;\n\
+    void fill_stage(u32* destination, Z count, u32 ratio) {\nconst u32 ratio_montgomery\
+    \ = montgomery_.to_montgomery(ratio);\nu32 first_powers[8];\nfirst_powers[0] =\
+    \ montgomery_.radix;\nfor (int i = 1; i < 8; ++i) {\nfirst_powers[i] = montgomery_.multiply(\n\
+    first_powers[i - 1], ratio_montgomery);\n}\nif (count < 8) {\nstd::memcpy(destination,\
+    \ first_powers, count * sizeof(u32));\nreturn;\n}\nV powers = _mm256_loadu_si256(\n\
+    (const V*)(first_powers));\nu32 ratio_eighth = first_powers[7];\nratio_eighth\
+    \ = montgomery_.multiply(ratio_eighth, ratio_montgomery);\nconst V step = _mm256_set1_epi32((int)(ratio_eighth));\n\
+    for (Z i = 0; i < count; i += 8) {\n_mm256_storeu_si256(\n(V*)(destination + i),\
+    \ powers);\npowers = montgomery_multiply(powers, step, montgomery_);\n}\n}\nvoid\
+    \ build_twiddles() {\nfor (Z length = size_;; length >>= 1) {\nconst Z half =\
+    \ length >> 1;\nconst Z offset = size_ - length;\nconst u32 root = power_mod(\n\
+    primitive_root,\n(u32)((modulus - 1) / length));\nfill_stage(twiddles_ + offset,\
+    \ half, root);\nif (length == 2) break;\n}\n}\nvoid forward_single(\nu32* data,\
+    \ Z length, u32* second = nullptr) const {\nconst Z half = length >> 1;\nconst\
+    \ u32* twiddle = twiddles_ + size_ - length;\nfor (Z block = 0; block < size_;\
+    \ block += length) {\nfor (Z j = 0; j < half; j += 8) {\nconst V weight = _mm256_loadu_si256(\n\
+    (const V*)(twiddle + j));\nconst auto process = [&](u32* target) {\nconst V left\
+    \ = shrink_twice_modulus(\n_mm256_loadu_si256((const V*)(\ntarget + block + j)));\n\
+    const V right = shrink_twice_modulus(\n_mm256_loadu_si256((const V*)(\ntarget\
+    \ + block + half + j)));\n_mm256_storeu_si256(\n(V*)(target + block + j),\nadd_lazy(left,\
+    \ right));\n_mm256_storeu_si256(\n(V*)(target + block + half + j),\nmontgomery_multiply_lazy(\n\
+    subtract_lazy(left, right), weight, montgomery_));\n};\nprocess(data);\nif (second\
+    \ != nullptr) process(second);\n}\n}\n}\nvoid forward_pair(\nu32* data, Z length,\
+    \ u32* second = nullptr) const {\nconst Z quarter = length >> 2;\nconst u32* outer\
+    \ = twiddles_ + size_ - length;\nconst u32* inner = twiddles_ + size_ - (length\
+    \ >> 1);\nfor (Z block = 0; block < size_; block += length) {\nfor (Z j = 0; j\
+    \ < quarter; j += 8) {\nconst V outer0 = _mm256_loadu_si256(\n(const V*)(outer\
+    \ + j));\nconst V outer1 = _mm256_loadu_si256(\n(const V*)(outer + quarter + j));\n\
+    const V inner_weight = _mm256_loadu_si256(\n(const V*)(inner + j));\nconst auto\
+    \ process = [&](u32* target) {\nconst V a = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(target + block + j)));\nconst V b = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(target + block + quarter + j)));\nconst V c = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(target + block + 2 * quarter + j)));\nconst V d = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(target + block + 3 * quarter + j)));\nconst V ac_sum = shrink_twice_modulus(add_lazy(a,\
+    \ c));\nconst V ac_difference = montgomery_multiply_lazy(\nsubtract_lazy(a, c),\
+    \ outer0, montgomery_);\nconst V bd_sum = shrink_twice_modulus(add_lazy(b, d));\n\
+    const V bd_difference = montgomery_multiply_lazy(\nsubtract_lazy(b, d), outer1,\
+    \ montgomery_);\n_mm256_storeu_si256(\n(V*)(target + block + j),\nadd_lazy(ac_sum,\
+    \ bd_sum));\n_mm256_storeu_si256(\n(V*)(target + block + quarter + j),\nmontgomery_multiply_lazy(\n\
+    subtract_lazy(ac_sum, bd_sum), inner_weight, montgomery_));\n_mm256_storeu_si256(\n\
+    (V*)(target + block + 2 * quarter + j),\nadd_lazy(ac_difference, bd_difference));\n\
+    _mm256_storeu_si256(\n(V*)(target + block + 3 * quarter + j),\nmontgomery_multiply_lazy(\n\
+    subtract_lazy(ac_difference, bd_difference),\ninner_weight, montgomery_));\n};\n\
+    process(data);\nif (second != nullptr) process(second);\n}\n}\n}\nvoid forward_pair_half_zero(u32*\
+    \ data, u32* second = nullptr) const {\nconst Z quarter = size_ >> 2;\nconst u32*\
+    \ outer = twiddles_;\nconst u32* inner = twiddles_ + (size_ >> 1);\nfor (Z j =\
+    \ 0; j < quarter; j += 8) {\nconst V outer0 = _mm256_loadu_si256(\n(const V*)(outer\
+    \ + j));\nconst V outer1 = _mm256_loadu_si256(\n(const V*)(outer + quarter + j));\n\
+    const V inner_weight = _mm256_loadu_si256(\n(const V*)(inner + j));\nconst auto\
+    \ process = [&](u32* target) {\nconst V a = _mm256_loadu_si256(\n(const V*)(target\
+    \ + j));\nconst V b = _mm256_loadu_si256(\n(const V*)(target + quarter + j));\n\
+    const V first = montgomery_multiply_lazy(\na, outer0, montgomery_);\nconst V second_value\
+    \ = montgomery_multiply_lazy(\nb, outer1, montgomery_);\n_mm256_storeu_si256(\n\
+    (V*)(target + j), add_lazy(a, b));\n_mm256_storeu_si256(\n(V*)(target + quarter\
+    \ + j),\nmontgomery_multiply_lazy(\nsubtract_lazy(a, b), inner_weight, montgomery_));\n\
+    _mm256_storeu_si256(\n(V*)(target + 2 * quarter + j),\nadd_lazy(first, second_value));\n\
+    _mm256_storeu_si256(\n(V*)(target + 3 * quarter + j),\nmontgomery_multiply_lazy(\n\
+    subtract_lazy(first, second_value),\ninner_weight, montgomery_));\n};\nprocess(data);\n\
+    if (second != nullptr) process(second);\n}\n}\nvoid forward_single_half_zero(u32*\
+    \ data, u32* second = nullptr) const {\nconst Z half = size_ >> 1;\nfor (Z j =\
+    \ 0; j < half; j += 8) {\nconst V value = _mm256_loadu_si256(\n(const V*)(data\
+    \ + j));\nconst V weight = _mm256_loadu_si256(\n(const V*)(twiddles_ + j));\n\
+    _mm256_storeu_si256(\n(V*)(data + half + j),\nmontgomery_multiply_lazy(value,\
+    \ weight, montgomery_));\nif (second != nullptr) {\nconst V second_value = _mm256_loadu_si256(\n\
+    (const V*)(second + j));\n_mm256_storeu_si256(\n(V*)(second + half + j),\nmontgomery_multiply_lazy(\n\
+    second_value, weight, montgomery_));\n}\n}\n}\nvoid forward_bottom8(u32* data,\
+    \ u32* product = nullptr) const {\nconst u32* twiddle8 = twiddles_ + size_ - 8;\n\
+    const u32* twiddle4 = twiddles_ + size_ - 4;\nconst __m128i w8_low = _mm_loadu_si128(\n\
+    reinterpret_cast<const __m128i*>(twiddle8));\nconst V w8 = _mm256_broadcastsi128_si256(w8_low);\n\
+    const V w4 = _mm256_setr_epi32(\ntwiddle4[0], twiddle4[1], twiddle4[0], twiddle4[1],\n\
+    twiddle4[0], twiddle4[1], twiddle4[0], twiddle4[1]);\nfor (Z block = 0; block\
+    \ < size_; block += 8) {\nV value = shrink(shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(data + block))));\nV other = _mm256_permute2x128_si256(value, value,\
+    \ 1);\nV sum = add_mod(value, other);\nV difference = montgomery_multiply(\nsubtract_mod(value,\
+    \ other), w8, montgomery_);\nvalue = _mm256_blend_epi32(\nsum, _mm256_permute2x128_si256(difference,\
+    \ difference, 1), 0xF0);\nother = _mm256_shuffle_epi32(value, 0x4E);\nsum = add_mod(value,\
+    \ other);\ndifference = montgomery_multiply(\nsubtract_mod(value, other), w4,\
+    \ montgomery_);\nvalue = _mm256_blend_epi32(\nsum, _mm256_shuffle_epi32(difference,\
+    \ 0x4E), 0xCC);\nother = _mm256_shuffle_epi32(value, 0xB1);\nsum = add_mod(value,\
+    \ other);\ndifference = subtract_mod(value, other);\nvalue = _mm256_blend_epi32(\n\
+    sum, _mm256_shuffle_epi32(difference, 0xB1), 0xAA);\nif (product == nullptr) {\n\
+    _mm256_storeu_si256(\n(V*)(data + block), value);\n} else {\nconst V other_transform\
+    \ = _mm256_loadu_si256(\n(const V*)(product + block));\n_mm256_storeu_si256(\n\
+    (V*)(product + block),\nmontgomery_multiply(\nother_transform, value, montgomery_));\n\
+    }\n}\n}\nvoid inverse_single(\nu32* data, Z length, bool canonicalize = false)\
+    \ const {\nconst Z half = length >> 1;\nconst u32* twiddle = twiddles_ + size_\
+    \ - length;\nfor (Z block = 0; block < size_; block += length) {\nfor (Z j = 0;\
+    \ j < half; j += 8) {\nconst V left = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(data + block + j)));\nconst V right = montgomery_multiply_lazy(\nshrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(data + block + half + j))),\n_mm256_loadu_si256((const V*)(\ntwiddle\
+    \ + j)),\nmontgomery_);\nV sum = add_lazy(left, right);\nV difference = subtract_lazy(left,\
+    \ right);\nif (canonicalize) {\nsum = shrink(shrink_twice_modulus(sum));\ndifference\
+    \ = shrink(shrink_twice_modulus(difference));\n}\n_mm256_storeu_si256(\n(V*)(data\
+    \ + block + j), sum);\n_mm256_storeu_si256(\n(V*)(data + block + half + j),\n\
+    difference);\n}\n}\n}\nvoid inverse_pair(u32* data, Z length) const {\nconst Z\
+    \ quarter = length >> 2;\nconst u32* outer = twiddles_ + size_ - length;\nconst\
+    \ u32* inner = twiddles_ + size_ - (length >> 1);\nfor (Z block = 0; block < size_;\
+    \ block += length) {\nfor (Z j = 0; j < quarter; j += 8) {\nconst V a = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(data + block + j)));\nconst V b = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(data + block + quarter + j)));\nconst V c = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(data + block + 2 * quarter + j)));\nconst V d = shrink_twice_modulus(_mm256_loadu_si256(\n\
+    (const V*)(data + block + 3 * quarter + j)));\nconst V inner_weight = _mm256_loadu_si256(\n\
+    (const V*)(inner + j));\nconst V outer0 = _mm256_loadu_si256(\n(const V*)(outer\
+    \ + j));\nconst V outer1 = _mm256_loadu_si256(\n(const V*)(outer + quarter + j));\n\
+    const V bw = montgomery_multiply_lazy(b, inner_weight, montgomery_);\nconst V\
+    \ dw = montgomery_multiply_lazy(d, inner_weight, montgomery_);\nconst V ab_sum\
+    \ = shrink_twice_modulus(add_lazy(a, bw));\nconst V ab_difference = shrink_twice_modulus(subtract_lazy(a,\
+    \ bw));\nconst V cd_sum = add_lazy(c, dw);\nconst V cd_difference = subtract_lazy(c,\
+    \ dw);\nconst V cd_sum_weighted = montgomery_multiply_lazy(\ncd_sum, outer0, montgomery_);\n\
+    const V cd_difference_weighted = montgomery_multiply_lazy(\ncd_difference, outer1,\
+    \ montgomery_);\nV output0 = add_lazy(ab_sum, cd_sum_weighted);\nV output1 = add_lazy(\n\
+    ab_difference, cd_difference_weighted);\nV output2 = subtract_lazy(ab_sum, cd_sum_weighted);\n\
+    V output3 = subtract_lazy(\nab_difference, cd_difference_weighted);\nif (length\
+    \ == size_) {\noutput0 = shrink(shrink_twice_modulus(output0));\noutput1 = shrink(shrink_twice_modulus(output1));\n\
+    output2 = shrink(shrink_twice_modulus(output2));\noutput3 = shrink(shrink_twice_modulus(output3));\n\
+    }\n_mm256_storeu_si256(\n(V*)(data + block + j), output0);\n_mm256_storeu_si256(\n\
+    (V*)(data + block + quarter + j),\noutput1);\n_mm256_storeu_si256(\n(V*)(data\
+    \ + block + 2 * quarter + j),\noutput2);\n_mm256_storeu_si256(\n(V*)(data + block\
+    \ + 3 * quarter + j),\noutput3);\n}\n}\n}\nvoid inverse_bottom8(u32* data) const\
+    \ {\nconst u32* twiddle4 = twiddles_ + size_ - 4;\nconst u32* twiddle8 = twiddles_\
+    \ + size_ - 8;\nconst V w4 = _mm256_setr_epi32(\ntwiddle4[0], twiddle4[1], twiddle4[0],\
+    \ twiddle4[1],\ntwiddle4[0], twiddle4[1], twiddle4[0], twiddle4[1]);\nconst __m128i\
+    \ w8_low = _mm_loadu_si128(\nreinterpret_cast<const __m128i*>(twiddle8));\nconst\
+    \ V w8 = _mm256_broadcastsi128_si256(w8_low);\nfor (Z block = 0; block < size_;\
+    \ block += 8) {\nV value = _mm256_loadu_si256(\n(const V*)(data + block));\nV\
+    \ other = _mm256_shuffle_epi32(value, 0xB1);\nV sum = add_mod(value, other);\n\
+    V difference = subtract_mod(value, other);\nvalue = _mm256_blend_epi32(\nsum,\
+    \ _mm256_shuffle_epi32(difference, 0xB1), 0xAA);\nother = _mm256_shuffle_epi32(value,\
+    \ 0x4E);\nother = montgomery_multiply(other, w4, montgomery_);\nsum = add_mod(value,\
+    \ other);\ndifference = subtract_mod(value, other);\nvalue = _mm256_blend_epi32(\n\
+    sum, _mm256_shuffle_epi32(difference, 0x4E), 0xCC);\nother = _mm256_permute2x128_si256(value,\
+    \ value, 1);\nother = montgomery_multiply(other, w8, montgomery_);\nsum = add_mod(value,\
+    \ other);\ndifference = subtract_mod(value, other);\nvalue = _mm256_blend_epi32(\n\
+    sum, _mm256_permute2x128_si256(difference, difference, 1), 0xF0);\n_mm256_storeu_si256(\n\
+    (V*)(data + block), value);\n}\n}\npublic:\nexplicit TransformPlan(Z size)\n:\
+    \ size_(size),\ntwiddles_(static_cast<u32*>(\n_mm_malloc(sizeof(u32) * size, 32)))\
+    \ {\nbuild_twiddles();\n}\n~TransformPlan() {\n_mm_free(twiddles_);\n}\nconst\
+    \ Montgomery& montgomery() const { return montgomery_; }\nvoid prepare_inverse()\
+    \ {\nfor (Z length = size_;; length >>= 1) {\nconst Z half = length >> 1;\nu32*\
+    \ stage = twiddles_ + size_ - length;\nZ left = 1;\nZ right = half - 1;\nwhile\
+    \ (left < right) {\nconst u32 a = stage[left];\nconst u32 b = stage[right];\n\
+    stage[left++] = modulus - b;\nstage[right--] = modulus - a;\n}\nif (left == right\
+    \ && left != 0) {\nstage[left] = modulus - stage[left];\n}\nif (length == 2) break;\n\
+    }\n}\nvoid forward(u32* data, u32* product = nullptr) const {\nZ length = size_;\n\
+    if ((__builtin_ctzll(size_) & 1) != 0) {\nforward_single(data, length);\nlength\
+    \ >>= 1;\n}\nwhile (length > 16) {\nforward_pair(data, length);\nlength >>= 2;\n\
+    }\nforward_single(data, 16);\nforward_bottom8(data, product);\n}\nvoid forward_half_zero(u32*\
+    \ data, u32* product = nullptr) const {\nZ length;\nif ((__builtin_ctzll(size_)\
+    \ & 1) == 0) {\nforward_pair_half_zero(data);\nlength = size_ >> 2;\n} else {\n\
+    forward_single_half_zero(data);\nlength = size_ >> 1;\n}\nwhile (length > 16)\
+    \ {\nforward_pair(data, length);\nlength >>= 2;\n}\nforward_single(data, 16);\n\
+    forward_bottom8(data, product);\n}\nvoid inverse(u32* data) const {\ninverse_bottom8(data);\n\
+    inverse_single(data, 16);\nconst bool has_unpaired_top = (__builtin_ctzll(size_)\
+    \ & 1) != 0;\nconst Z paired_limit = has_unpaired_top ? size_ >> 1 : size_;\n\
+    for (Z length = 64; length <= paired_limit; length <<= 2) {\ninverse_pair(data,\
+    \ length);\n}\nif (has_unpaired_top) inverse_single(data, size_, true);\n}\n};\n\
+    inline void convolution_ntt_friendly(\nu32* output,\nconst u32* left,\nZ left_size,\n\
+    const u32* right,\nZ right_size,\nZ transform_size,\nu32 modulus_value,\nu32 primitive_root_value,\n\
+    bool montgomery_representation) {\nmodulus = modulus_value;\nprimitive_root =\
+    \ primitive_root_value != 0\n? primitive_root_value : find_primitive_root(modulus_value);\n\
+    u32* a = output;\nu32* b = static_cast<u32*>(\n_mm_malloc(sizeof(u32) * transform_size,\
+    \ 32));\nstd::memcpy(a, left, sizeof(u32) * left_size);\nstd::memcpy(b, right,\
+    \ sizeof(u32) * right_size);\nTransformPlan plan(transform_size);\nconst Montgomery&\
+    \ montgomery = plan.montgomery();\nif (montgomery_representation) {\nconst V one\
+    \ = _mm256_set1_epi32(1);\nZ i = 0;\nfor (; i + 8 <= left_size; i += 8) {\nconst\
+    \ V value = _mm256_loadu_si256(\n(const V*)(a + i));\n_mm256_storeu_si256(\n(V*)(a\
+    \ + i),\nmontgomery_multiply(value, one, montgomery));\n}\nfor (; i < left_size;\
+    \ ++i) a[i] = montgomery.multiply(a[i], 1);\ni = 0;\nfor (; i + 8 <= right_size;\
+    \ i += 8) {\nconst V value = _mm256_loadu_si256(\n(const V*)(b + i));\n_mm256_storeu_si256(\n\
+    (V*)(b + i),\nmontgomery_multiply(value, one, montgomery));\n}\nfor (; i < right_size;\
+    \ ++i) b[i] = montgomery.multiply(b[i], 1);\n}\nconst Z half = transform_size\
+    \ >> 1;\nconst bool left_half_zero = left_size <= half;\nconst bool right_half_zero\
+    \ = right_size <= half;\nstd::memset(a + left_size, 0, sizeof(u32) *\n((left_half_zero\
+    \ ? half : transform_size) - left_size));\nstd::memset(b + right_size, 0, sizeof(u32)\
+    \ *\n((right_half_zero ? half : transform_size) - right_size));\nconst u32 inverse_size\
+    \ = power_mod(\n(u32)(transform_size % modulus), modulus - 2);\nconst u32 scaled_radix_squared\
+    \ = (u32)(\nu64(montgomery.radix_squared) * inverse_size % modulus);\nconst V\
+    \ conversion = _mm256_set1_epi32(\n(int)(scaled_radix_squared));\nconst Z right_initialized\
+    \ = right_half_zero ? half : transform_size;\nfor (Z i = 0; i < right_initialized;\
+    \ i += 8) {\nconst V value = _mm256_loadu_si256(\n(const V*)(b + i));\n_mm256_storeu_si256(\n\
+    (V*)(b + i),\nmontgomery_multiply(value, conversion, montgomery));\n}\nif (left_half_zero)\
+    \ plan.forward_half_zero(a); else plan.forward(a);\nif (right_half_zero) {\nplan.forward_half_zero(b,\
+    \ a);\n} else {\nplan.forward(b, a);\n}\nplan.prepare_inverse();\nplan.inverse(a);\n\
+    if (montgomery_representation) {\nconst Z output_size = left_size + right_size\
+    \ - 1;\nconst V radix_squared = _mm256_set1_epi32(\n(int)(montgomery.radix_squared));\n\
+    Z i = 0;\nfor (; i + 8 <= output_size; i += 8) {\nconst V value = _mm256_loadu_si256(\n\
+    (const V*)(a + i));\n_mm256_storeu_si256(\n(V*)(a + i),\nmontgomery_multiply(value,\
+    \ radix_squared, montgomery));\n}\nfor (; i < output_size; ++i) {\na[i] = montgomery.to_montgomery(a[i]);\n\
+    }\n}\n_mm_free(b);\n}\n}\n#endif\nextern \"C\" void cplib_convolution_ntt_friendly(\n\
+    std::uint32_t* output,\nstd::uint32_t* left,\nstd::size_t left_size,\nstd::uint32_t*\
+    \ right,\nstd::size_t right_size,\nstd::size_t transform_size,\nstd::uint32_t\
+    \ modulus,\nstd::uint32_t primitive_root,\nbool montgomery_representation) {\n\
+    cplib_avx2_ntt::convolution_ntt_friendly(\noutput, left, left_size, right, right_size,\
+    \ transform_size,\nmodulus, primitive_root, montgomery_representation);\n}\n \
+    \   \"\"\".}\n\n    proc convolutionNttFriendlyAvx2(\n        output: ptr uint32,\n\
+    \        f: ptr uint32,\n        fLen: csize_t,\n        g: ptr uint32,\n    \
+    \    gLen: csize_t,\n        nttLen: csize_t,\n        modulus: uint32,\n    \
+    \    primitiveRoot: uint32,\n        montgomeryRepresentation: bool\n    ) {.importc:\
+    \ \"cplib_convolution_ntt_friendly\".}\n\n    proc convolutionNttFriendlyU32(\n\
+    \        f, g: seq[uint32], modulus, primitiveRoot: uint32\n    ): seq[uint32]\n\
+    \n    proc convolutionArbitraryMod[T: BarrettModint or MontgomeryModint](\n  \
+    \      f, g: seq[T]\n    ): seq[T]\n\n    proc convolution_naive*[T: BarrettModint\
+    \ or MontgomeryModint or int](f, g: seq[T]): seq[T] =\n        if f.len == 0 or\
+    \ g.len == 0: return @[]\n        var ans = newSeq[T](f.len + g.len - 1)\n   \
+    \     if f.len > g.len:\n            for i in 0..<f.len:\n                for\
+    \ j in 0..<g.len:\n                    ans[i+j] += f[i] * g[j]\n        else:\n\
+    \            for j in 0..<g.len:\n                for i in 0..<f.len:\n      \
+    \              ans[i+j] += f[i] * g[j]\n        return ans\n\n    proc convolution*[T:\
+    \ BarrettModint or MontgomeryModint](f, g: seq[T]): seq[T] =\n        let m =\
+    \ f.len\n        let n = g.len\n        if m == 0 or n == 0: return @[]\n    \
+    \    let deg = m + n - 1\n        if min(n, m) <= 60: return convolution_naive(f,\
+    \ g)\n        var l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))\n\
+    \        if T.umod < (1u32 shl 30) and\n                (T.umod - 1u32) mod l.uint32\
+    \ == 0u32:\n            result = newSeq[T](l)\n            convolutionNttFriendlyAvx2(\n\
+    \                cast[ptr uint32](addr result[0]),\n                cast[ptr uint32](unsafeAddr\
+    \ f[0]), m.csize_t,\n                cast[ptr uint32](unsafeAddr g[0]), n.csize_t,\n\
+    \                l.csize_t, T.umod, 0u32,\n                T is MontgomeryModint)\n\
+    \            result.setLen(deg)\n            return\n        return convolutionArbitraryMod(f,\
+    \ g)\n\n    proc convolution*[m: static[int]](f, g: seq[int]): seq[int] =\n  \
+    \      doAssert m > 0 and m < (1 shl 31),\n            \"convolution modulus must\
+    \ be in [1, 2^31)\"\n        if f.len == 0 or g.len == 0: return @[]\n       \
+    \ type Mint = StaticBarrettModint[m.uint32]\n        var fm = newSeq[Mint](f.len)\n\
+    \        var gm = newSeq[Mint](g.len)\n        for i in 0..<f.len: fm[i] = init(Mint,\
+    \ f[i])\n        for i in 0..<g.len: gm[i] = init(Mint, g[i])\n        let product\
+    \ = convolution(fm, gm)\n        result = newSeq[int](product.len)\n        for\
+    \ i in 0..<product.len: result[i] = product[i].val\n\n    proc convolutionNttFriendlyU32(\n\
+    \            f, g: seq[uint32], modulus, primitiveRoot: uint32): seq[uint32] =\n\
+    \        if f.len == 0 or g.len == 0: return @[]\n        if min(f.len, g.len)\
+    \ <= 60:\n            result = newSeq[uint32](f.len + g.len - 1)\n           \
+    \ if f.len > g.len:\n                for i in 0..<f.len:\n                   \
+    \ for j in 0..<g.len:\n                        result[i + j] = ((result[i + j].uint64\
+    \ +\n                            f[i].uint64 * g[j].uint64) mod modulus.uint64).uint32\n\
+    \            else:\n                for j in 0..<g.len:\n                    for\
+    \ i in 0..<f.len:\n                        result[i + j] = ((result[i + j].uint64\
+    \ +\n                            f[i].uint64 * g[j].uint64) mod modulus.uint64).uint32\n\
+    \            return\n        let deg = f.len + g.len - 1\n        let l = (if\
+    \ deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))\n        result = newSeq[uint32](l)\n\
+    \        convolutionNttFriendlyAvx2(\n            addr result[0], cast[ptr uint32](unsafeAddr\
+    \ f[0]), f.len.csize_t,\n            cast[ptr uint32](unsafeAddr g[0]), g.len.csize_t,\
+    \ l.csize_t,\n            modulus, primitiveRoot, false)\n        result.setLen(deg)\n\
+    \n    proc convolutionArbitraryMod[T: BarrettModint or MontgomeryModint](\n  \
+    \          f, g: seq[T]): seq[T] =\n        const\n            M1 = 754974721u64\n\
+    \            M2 = 167772161u64\n            M3 = 469762049u64\n            M12\
+    \ = M1 * M2\n            InvM1ModM2 = inv_gcd((M1 mod M2).int, M2.int)[1].uint64\n\
+    \            InvM12ModM3 = inv_gcd((M12 mod M3).int, M3.int)[1].uint64\n\n   \
+    \     # With mod < 2^31 and this transform-size limit, every integer\n       \
+    \ # coefficient is smaller than M1*M2*M3, so the three residues identify\n   \
+    \     # it uniquely before reducing it modulo the requested modulus.\n       \
+    \ let targetMod = T.umod.uint64\n        assert targetMod > 0 and targetMod <\
+    \ (1u64 shl 31),\n            \"arbitrary-mod convolution requires a modulus in\
+    \ [1, 2^31)\"\n        let transformSize = 1 shl (fastLog2(f.len + g.len - 2)\
+    \ + 1)\n        assert transformSize <= (1 shl 24),\n            \"arbitrary-mod\
+    \ convolution requires an NTT length at most 2^24\"\n\n        var fm = newSeq[uint32](f.len)\n\
+    \        var gm = newSeq[uint32](g.len)\n        for i in 0..<f.len: fm[i] = (f[i].val.uint64\
+    \ mod M1).uint32\n        for i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M1).uint32\n\
+    \        let c1 = convolutionNttFriendlyU32(fm, gm, M1.uint32, 11u32)\n\n    \
+    \    for i in 0..<f.len: fm[i] = (f[i].val.uint64 mod M2).uint32\n        for\
+    \ i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M2).uint32\n        let c2 = convolutionNttFriendlyU32(fm,\
+    \ gm, M2.uint32, 3u32)\n\n        for i in 0..<f.len: fm[i] = (f[i].val.uint64\
+    \ mod M3).uint32\n        for i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M3).uint32\n\
+    \        let c3 = convolutionNttFriendlyU32(fm, gm, M3.uint32, 3u32)\n\n     \
+    \   let m1Target = M1 mod targetMod\n        let m12Target = M12 mod targetMod\n\
+    \        result = newSeq[T](c1.len)\n        for i in 0..<result.len:\n      \
+    \      let r1 = c1[i].uint64\n            let t2 = ((c2[i].uint64 + M2 - r1 mod\
+    \ M2) mod M2 *\n                InvM1ModM2) mod M2\n            let r12ModM3 =\
+    \ (r1 + (M1 mod M3) * t2) mod M3\n            let t3 = ((c3[i].uint64 + M3 - r12ModM3)\
+    \ mod M3 *\n                InvM12ModM3) mod M3\n            let value = ((r1\
+    \ mod targetMod) + m1Target * t2 mod targetMod +\n                m12Target *\
+    \ t3 mod targetMod) mod targetMod\n            result[i] = init(T, value.int)\n\
+    \n\n    proc convolution_ll*(f, g: seq[int]): seq[int] =\n        var n = f.len\n\
+    \        var m = g.len\n        if n == 0 or m == 0: return newSeq[int]()\n\n\
+    \        const\n            M1 = 754974721u\n            M2 = 167772161u\n   \
+    \         M3 = 469762049u\n            M12 = M1 * M2\n            M23 = M2 * M3\n\
+    \            M31 = M3 * M1\n            M123 = M1 * M2 * M3\n            i1 =\
+    \ inv_gcd((M2 * M3).int, M1.int)[1].uint\n            i2 = inv_gcd((M3 * M1).int,\
+    \ M2.int)[1].uint\n            i3 = inv_gcd((M1 * M2).int, M3.int)[1].uint\n \
+    \       var fm = newSeq[uint32](n)\n        var gm = newSeq[uint32](m)\n     \
+    \   for i in 0..<n: fm[i] = floorMod(f[i], M1.int).uint32\n        for i in 0..<m:\
+    \ gm[i] = floorMod(g[i], M1.int).uint32\n        let c1 = convolutionNttFriendlyU32(fm,\
+    \ gm, M1.uint32, 11u32)\n        for i in 0..<n: fm[i] = floorMod(f[i], M2.int).uint32\n\
+    \        for i in 0..<m: gm[i] = floorMod(g[i], M2.int).uint32\n        let c2\
+    \ = convolutionNttFriendlyU32(fm, gm, M2.uint32, 3u32)\n        for i in 0..<n:\
+    \ fm[i] = floorMod(f[i], M3.int).uint32\n        for i in 0..<m: gm[i] = floorMod(g[i],\
+    \ M3.int).uint32\n        let c3 = convolutionNttFriendlyU32(fm, gm, M3.uint32,\
+    \ 3u32)\n        var ans = newseqwith(n + m - 1, 0)\n        for i in 0..<ans.len:\n\
+    \            var x = 0.uint\n            x += (c1[i].uint * i1) mod M1 * M23\n\
+    \            x += (c2[i].uint * i2) mod M2 * M31\n            x += (c3[i].uint\
+    \ * i3) mod M3 * M12\n            # x intentionally wraps modulo 2^64.  Reinterpret\
+    \ those bits as a\n            # signed value for the CRT overflow correction;\
+    \ a numeric `.int`\n            # conversion raises RangeDefect when the top bit\
+    \ is set.\n            var diff = c1[i].int - floorMod(cast[int](x), M1.int)\n\
+    \            if diff < 0: diff += M1.int\n            const offset = [0u, 0u,\
+    \ M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n         \
+    \   ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/ntt.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/ntt.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-02 04:29:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
 documentation_of: cplib/convolution/convolution.nim

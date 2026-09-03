@@ -8,8 +8,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution_old.nim
+    title: cplib/convolution/convolution_old.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution_old.nim
+    title: cplib/convolution/convolution_old.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_old_test.nim
+    title: verify/AI/convolution_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convolution_old_test.nim
+    title: verify/AI/convolution_old_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
   - icon: ':heavy_check_mark:'
@@ -22,11 +34,23 @@ data:
     path: verify/AI/inv_gcd_test.nim
     title: verify/AI/inv_gcd_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
@@ -34,11 +58,23 @@ data:
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_montgomery_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_test.nim
@@ -70,6 +106,8 @@ data:
   isVerificationFile: false
   path: cplib/math/inv_gcd.nim
   requiredBy:
+  - cplib/convolution/convolution_old.nim
+  - cplib/convolution/convolution_old.nim
   - cplib/convolution/convolution.nim
   - cplib/convolution/convolution.nim
   timestamp: '2026-03-18 01:19:58+09:00'
@@ -77,14 +115,24 @@ data:
   verifiedWith:
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/AI/inv_gcd_test.nim
   - verify/AI/inv_gcd_test.nim
+  - verify/AI/convolution_old_test.nim
+  - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
 documentation_of: cplib/math/inv_gcd.nim

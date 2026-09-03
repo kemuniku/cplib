@@ -74,8 +74,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/slopetrick.nim
   - cplib/utils/constants.nim
+  - cplib/collections/slopetrick.nim
   - cplib/collections/slopetrick.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
