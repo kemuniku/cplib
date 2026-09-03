@@ -70,9 +70,15 @@ data:
 
     type DMint = DynamicBarrettModint[101u32]
 
+    type DMint2 = DynamicBarrettModint[102u32]
+
     DMint.setMod(19)
 
+    DMint2.setMod(23)
+
     assert DMint.umod == 19u32
+
+    assert DMint2.umod == 23u32
 
     var b = init(DMint, -2)
 
@@ -82,6 +88,14 @@ data:
 
     assert b.val == 3
 
+    var c = init(DMint2, -2)
+
+    assert c.val == 21
+
+    c += 5
+
+    assert c.val == 3
+
     '
   dependsOn:
   - cplib/modint/barrett_impl.nim
@@ -89,7 +103,7 @@ data:
   isVerificationFile: true
   path: verify/AI/barrett_impl_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/barrett_impl_test.nim

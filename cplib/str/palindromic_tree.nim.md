@@ -42,15 +42,16 @@ data:
     \ -1)\n        discard result.newPalindromicTreeNode(amax, 0)\n        result.amax\
     \ = amax\n        result.nodes[1][].suffix_link = result.nodes[0]\n\n\n    proc\
     \ initPalindromicTree*(a: openArray[int], amax: int = -1): PalindromicTree =\n\
-    \        let a = @a\n        var amax = amax\n        if amax < 0: amax = a.max\n\
-    \        result = init(amax)\n        proc find_longest(pos: int, node: ref PalindromicTreeNode):\
-    \ ref PalindromicTreeNode =\n            var ln = pos - node[].len - 1\n     \
-    \       if ln >= 0 and a[ln] == a[pos]:\n                return node\n       \
-    \     return find_longest(pos, node[].suffix_link)\n        var current_node =\
-    \ result.nodes[0]\n        for i in 0..<a.len:\n            current_node = find_longest(i,\
-    \ current_node)\n            if current_node[].link[a[i]] == nil:\n          \
-    \      current_node[].link[a[i]] = result.newPalindromicTreeNode(amax, current_node[].len\
-    \ + 2)\n            if current_node == result.nodes[0]:\n                current_node[].link[a[i]][].suffix_link\
+    \        let a = @a\n        var amax = amax\n        if amax < 0:\n         \
+    \   amax = if a.len == 0: 0 else: a.max + 1\n        result = init(amax)\n   \
+    \     proc find_longest(pos: int, node: ref PalindromicTreeNode): ref PalindromicTreeNode\
+    \ =\n            var ln = pos - node[].len - 1\n            if ln >= 0 and a[ln]\
+    \ == a[pos]:\n                return node\n            return find_longest(pos,\
+    \ node[].suffix_link)\n        var current_node = result.nodes[0]\n        for\
+    \ i in 0..<a.len:\n            current_node = find_longest(i, current_node)\n\
+    \            if current_node[].link[a[i]] == nil:\n                current_node[].link[a[i]]\
+    \ = result.newPalindromicTreeNode(amax, current_node[].len + 2)\n            if\
+    \ current_node == result.nodes[0]:\n                current_node[].link[a[i]][].suffix_link\
     \ = result.nodes[1]\n            else:\n                current_node[].link[a[i]][].suffix_link\
     \ = find_longest(i, current_node[].suffix_link)[].link[a[i]]\n            current_node\
     \ = current_node[].link[a[i]]\n            current_node[].count += 1\n       \
@@ -71,7 +72,7 @@ data:
   isVerificationFile: false
   path: cplib/str/palindromic_tree.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:12:05+09:00'
+  timestamp: '2026-09-03 23:01:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/palindromic_tree_test.nim

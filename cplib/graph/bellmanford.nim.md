@@ -110,10 +110,10 @@ data:
     \ or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost:\
     \ T] =\n        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
@@ -122,14 +122,14 @@ data:
   timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/AI/bellmanford_test.nim
-  - verify/AI/bellmanford_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/bellmanford_test.nim
+  - verify/AI/bellmanford_test.nim
 documentation_of: cplib/graph/bellmanford.nim
 layout: document
 redirect_from:

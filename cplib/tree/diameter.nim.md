@@ -93,16 +93,16 @@ data:
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/diameter_test.nim
-  - verify/AI/diameter_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/tree/diameter_static_test.nim
-  - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_yosupo_test.nim
   - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_static_test.nim
+  - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/diameter_test.nim
+  - verify/AI/diameter_test.nim
 documentation_of: cplib/tree/diameter.nim
 layout: document
 redirect_from:

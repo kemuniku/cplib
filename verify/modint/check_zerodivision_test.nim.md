@@ -51,18 +51,18 @@ data:
     \ Division Test\":\n    type mint = modint998244353_barrett\n    expect(Defect):\n\
     \        discard mint(0).inv\n\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/modint/check_zerodivision_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/check_zerodivision_test.nim

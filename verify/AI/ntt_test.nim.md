@@ -56,20 +56,20 @@ data:
     \  type Mint = modint_barrett\n  Mint.setMod(998244353)\n  var f = @[Mint(9),\
     \ Mint(10)]\n  ntt(f)\n  intt(f)\n  assert f.mapIt(it.val) == @[9, 10]\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
   - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/AI/ntt_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/ntt_test.nim

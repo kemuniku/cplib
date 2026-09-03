@@ -58,10 +58,10 @@ data:
   timestamp: '2026-07-07 07:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
   - verify/AI/reverse_edge_test.nim
   - verify/AI/reverse_edge_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/reverse_edge.nim
 layout: document
 redirect_from:

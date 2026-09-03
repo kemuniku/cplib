@@ -110,22 +110,22 @@ data:
     \ 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n            ans[i]\
     \ = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
   - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/convolution/convolution_old.nim
   requiredBy: []
-  timestamp: '2026-09-03 08:04:54+09:00'
+  timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim

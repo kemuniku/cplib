@@ -74,20 +74,20 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/combination.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/math/combination.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/combination.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/AI/combination_test.nim
   requiredBy: []
-  timestamp: '2026-07-13 04:32:23+09:00'
+  timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/combination_test.nim
