@@ -1,7 +1,7 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 echo "Hello World"
 
-import std/[options, sequtils]
+import options, sequtils
 include cplib/fps/fps
 import cplib/modint/modint
 
@@ -41,6 +41,80 @@ block inverseLogExpAndPower:
   assert shifted.pow(2, 10).values == prefix(shifted * shifted, 10).values
   assert shifted.pow(0, 5).values == @[1, 0, 0, 0, 0]
 
+proc checkRelaxedFormalPowerSeries[T: BarrettModint or MontgomeryModint](
+    M: typedesc[T], n: int) =
+  var unit = newSeq[T](n)
+  var exponent = newSeq[T](n)
+  unit[0] = T(1)
+  for i in 1..<n:
+    unit[i] = T(i * i * 17 + i * 31 + 9)
+    exponent[i] = T(i * i * 13 + i * 29 + 7)
+
+  let inverse = unit.inv(n)
+  let relaxedInverse = unit.invRelaxed(n)
+  let logarithm = unit.log(n)
+  let relaxedLogarithm = unit.logRelaxed(n)
+  let exponential = exponent.exp(n)
+  let relaxedExponential = exponent.expRelaxed(n)
+  let power = unit.pow(37, n)
+  let relaxedPower = unit.powRelaxed(37, n)
+  let square = prefix(unit * unit, n)
+  var inverseState = initRelaxedInv[T](n)
+  var logarithmState = initRelaxedLog[T](n)
+  var exponentialState = initRelaxedExp[T](n)
+  var powerState = initRelaxedPow[T](n, 37)
+  var squareRootState = initRelaxedSqrt[T](n)
+  for i in 0..<n:
+    doAssert relaxedInverse[i].val == inverse[i].val, $M & " inv " & $n & " " & $i
+    doAssert relaxedLogarithm[i].val == logarithm[i].val, $M & " log " & $n & " " & $i
+    doAssert relaxedExponential[i].val == exponential[i].val, $M & " exp " & $n & " " & $i
+    doAssert relaxedPower[i].val == power[i].val, $M & " pow " & $n & " " & $i
+    doAssert inverseState.add(unit[i]).val == inverse[i].val,
+      $M & " streaming inv " & $n & " " & $i
+    doAssert logarithmState.add(unit[i]).val == logarithm[i].val,
+      $M & " streaming log " & $n & " " & $i
+    doAssert exponentialState.add(exponent[i]).val == exponential[i].val,
+      $M & " streaming exp " & $n & " " & $i
+    doAssert powerState.add(unit[i]).val == power[i].val,
+      $M & " streaming pow " & $n & " " & $i
+    let rootCoefficient = squareRootState.add(square[i])
+    doAssert rootCoefficient.isSome and rootCoefficient.get.val == unit[i].val,
+      $M & " streaming sqrt " & $n & " " & $i
+  doAssert inverseState.len == n and inverseState.coefficients.len == n
+  doAssert logarithmState.len == n and logarithmState.coefficients.len == n
+  doAssert exponentialState.len == n and exponentialState.coefficients.len == n
+  doAssert powerState.len == n and powerState.coefficients.len == n
+  doAssert squareRootState.len == n and
+    squareRootState.coefficients.get.len == n
+
+  let relaxedRoot = square.sqrtRelaxed(n)
+  doAssert relaxedRoot.isSome, $M & " sqrt " & $n
+  let restoredSquare = prefix(relaxedRoot.get * relaxedRoot.get, n)
+  for i in 0..<n:
+    doAssert restoredSquare[i].val == square[i].val,
+      $M & " sqrt " & $n & " " & $i
+
+block relaxedFormalPowerSeries:
+  for n in [1, 2, 3, 7, 16, 17, 31, 32, 33, 63, 64, 65, 127, 130]:
+    checkRelaxedFormalPowerSeries(Mint, n)
+  checkRelaxedFormalPowerSeries(modint998244353_montgomery, 70)
+  checkRelaxedFormalPowerSeries(modint1000000007_barrett, 70)
+  checkRelaxedFormalPowerSeries(modint1000000007_montgomery, 70)
+
+  let shifted = @[Mint(0), Mint(0), Mint(4), Mint(12), Mint(13), Mint(9)]
+  let shiftedRoot = shifted.sqrtRelaxed(12)
+  assert shiftedRoot.isSome
+  assert prefix(shiftedRoot.get * shiftedRoot.get, 12).values ==
+    prefix(shifted, 12).values
+  assert @[Mint(0), Mint(1)].sqrtRelaxed(2).isNone
+
+  var shiftedPowerState = initRelaxedPow[Mint](12, 2)
+  var shiftedPower = newSeq[Mint](12)
+  for i in 0..<shiftedPower.len:
+    let coefficient = if i < shifted.len: shifted[i] else: Mint(0)
+    shiftedPower[i] = shiftedPowerState.add(coefficient)
+  assert shiftedPower.values == prefix(shifted * shifted, 12).values
+
 block squareRoot:
   let f = @[Mint(2), Mint(5), Mint(7), Mint(11), Mint(13), Mint(17)]
   let square = prefix(f * f, 12)
@@ -66,6 +140,47 @@ block evaluationAndInterpolation:
   let interpolated = polynomialInterpolation(xs[0..<f.len], ys[0..<f.len])
   assert interpolated.values == f.values
   assert polynomialInterpolation(newSeq[Mint](), newSeq[Mint]()).len == 0
+
+proc checkMultipointEvaluation[T: BarrettModint or MontgomeryModint](
+    M: typedesc[T], pointCount, coefficientCount: int) =
+  var f = newSeq[T](coefficientCount)
+  var xs = newSeq[T](pointCount)
+  for i in 0..<f.len: f[i] = T(i * i * 17 + i * 31 + 9)
+  for i in 0..<xs.len: xs[i] = T(i * i * 13 + i * 29 + 7)
+  let actual = multipointEvaluation[T](f, xs)
+  assert actual.len == xs.len
+  for i in 0..<xs.len:
+    doAssert actual[i].val == f.eval(xs[i]).val,
+      $M & " " & $pointCount & " " & $coefficientCount & " " & $i
+
+proc checkPolynomialInterpolation[T: BarrettModint or MontgomeryModint](
+    M: typedesc[T], n: int) =
+  var polynomial = newSeq[T](n)
+  var xs = newSeq[T](n)
+  var ys = newSeq[T](n)
+  for i in 0..<n:
+    polynomial[i] = T(i * i * 19 + i * 37 + 11)
+    xs[i] = T(i * 3 + 2)
+  for i in 0..<n:
+    ys[i] = polynomial.eval(xs[i])
+  let restored = polynomialInterpolation(xs, ys)
+  for i in 0..<n:
+    doAssert restored[i].val == polynomial[i].val, $M & " " & $n & " " & $i
+
+block multipointEvaluationVariousSizes:
+  for pointCount in [0, 1, 2, 7, 16, 17, 31, 32, 63, 64, 65, 127, 128, 129]:
+    for coefficientCount in [0, 1, 5, 19, 70, 150]:
+      checkMultipointEvaluation(Mint, pointCount, coefficientCount)
+  checkMultipointEvaluation(modint998244353_montgomery, 129, 173)
+  checkMultipointEvaluation(modint1000000007_barrett, 70, 131)
+  checkMultipointEvaluation(modint1000000007_montgomery, 70, 131)
+
+block polynomialInterpolationVariousSizes:
+  for n in [1, 2, 7, 16, 17, 31, 32, 65, 130]:
+    checkPolynomialInterpolation(Mint, n)
+  checkPolynomialInterpolation(modint998244353_montgomery, 70)
+  checkPolynomialInterpolation(modint1000000007_barrett, 70)
+  checkPolynomialInterpolation(modint1000000007_montgomery, 70)
 
 block shift:
   let f = @[Mint(3), Mint(1), Mint(4), Mint(1), Mint(5), Mint(9)]
@@ -106,6 +221,24 @@ block compositionAndInverse:
   oneMinusInner[0] += 1
   assert compose(longOuter, longInner, longOuter.len).values ==
     oneMinusInner.inv(oneMinusInner.len).values
+
+proc checkCompositionalInverse[T: BarrettModint or MontgomeryModint](
+    M: typedesc[T], n: int) =
+  var f = newSeq[T](n)
+  f[1] = T(3)
+  for i in 2..<n: f[i] = T(i * i * 23 + i * 41 + 13)
+  let inverse = compositionalInverse(f, n)
+  let composed = compose(f, inverse, n)
+  for i in 0..<n:
+    let expected = if i == 1: 1 else: 0
+    doAssert composed[i].val == expected, $M & " " & $n & " " & $i
+
+block compositionalInverseVariousSizes:
+  for n in [2, 3, 4, 5, 7, 8, 9, 15, 16, 17, 31, 32, 33, 65, 130]:
+    checkCompositionalInverse(Mint, n)
+  checkCompositionalInverse(modint998244353_montgomery, 70)
+  checkCompositionalInverse(modint1000000007_barrett, 70)
+  checkCompositionalInverse(modint1000000007_montgomery, 70)
 
 block bostanMoriAndRecurrence:
   let p = @[Mint(0), Mint(1)]
@@ -216,7 +349,9 @@ block arbitraryModulus:
   var denominator = -inner
   denominator[0] += 1
   let composed = compose(outer, inner, outer.len)
-  assert composed == denominator.inv(denominator.len)
+  let denominatorInverse = denominator.inv(denominator.len)
+  for i in 0..<composed.len:
+    assert composed[i].val == denominatorInverse[i].val
 
   let sparse = initSparseFPS[OtherMint](@[
     (degree: 0, coefficient: OtherMint(1)),
