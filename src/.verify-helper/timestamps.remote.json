@@ -304,6 +304,7 @@
 "verify/tree/rerooting_test.nim": "2026-07-07 06:48:43 +0900",
 "verify/utils/binary_search_float_test.nim": "2026-07-07 06:54:50 +0900",
 "verify/utils/binary_search_int_test.nim": "2026-07-07 06:54:50 +0900",
+"verify/utils/game_test.nim": "2026-07-27 08:09:57 +0900",
 "verify/utils/inversion_number_test.nim": "2026-07-06 04:42:52 +0900",
 "verify/utils/itertools/accumulate_test.nim": "2026-07-06 04:42:52 +0900",
 "verify/utils/itertools/accumulated_2_test.nim": "2026-07-06 04:42:52 +0900",
