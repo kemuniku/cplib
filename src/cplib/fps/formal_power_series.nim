@@ -11,6 +11,11 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
         result = newSeq[T](n)
         for i in 0..<min(f.len, n): result[i] = f[i]
 
+    proc coefficient*[T: BarrettModint or MontgomeryModint](f: seq[T], degree: int): T =
+        ## 指定した次数の係数を返す。範囲外なら零を返す。
+        if degree < 0 or degree >= f.len: return init(T, 0)
+        result = f[degree]
+
     proc normalized*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] =
         ## 高次側の不要な零係数を取り除く。
         result = f
@@ -20,6 +25,13 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
         result = newSeq[T](max(f.len, g.len))
         for i in 0..<f.len: result[i] += f[i]
         for i in 0..<g.len: result[i] += g[i]
+
+    proc `+`*[T: BarrettModint or MontgomeryModint](f: seq[T], c: SomeInteger): seq[T] =
+        result = f
+        if result.len == 0: result.add(init(T, c))
+        else: result[0] += c
+
+    proc `+`*[T: BarrettModint or MontgomeryModint](c: SomeInteger, f: seq[T]): seq[T] = f + c
 
     proc `-`*[T: BarrettModint or MontgomeryModint](f, g: seq[T]): seq[T] =
         result = newSeq[T](max(f.len, g.len))
@@ -47,6 +59,10 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
     proc `+=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T]) =
         if f.len < g.len: f.setLen(g.len)
         for i in 0..<g.len: f[i] += g[i]
+
+    proc `+=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], c: SomeInteger) =
+        if f.len == 0: f.add(init(T, c))
+        else: f[0] += c
 
     proc `-=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T]) =
         if f.len < g.len: f.setLen(g.len)
@@ -90,6 +106,15 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
         result.setLen(n)
 
     proc inv*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] = f.inv(f.len)
+
+    proc `/`*[T: BarrettModint or MontgomeryModint](f, g: seq[T]): seq[T] =
+        ## f / g の先頭 max(f.len, g.len) 項を求める。
+        let n = max(f.len, g.len)
+        if n == 0: return @[]
+        result = prefix(f * g.inv(n), n)
+
+    proc `/=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T]) =
+        f = f / g
 
     proc log*[T: BarrettModint or MontgomeryModint](f: seq[T], n: int): seq[T] =
         ## x^n で打ち切った形式的対数を求める。f(0) = 1 を仮定する。

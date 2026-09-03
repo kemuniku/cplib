@@ -99,6 +99,21 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
         ## sfpsの大文字始まりの別名。
         sparseFPSLiteral(type(T), expression)
 
+    proc `+`*[T](f: SparseFPS[T], c: SomeInteger): SparseFPS[T] =
+        result = f
+        let constant = init(T, c)
+        if constant.val == 0: return
+        if result.len == 0 or result[0].degree > 0:
+            result.insert((degree: 0, coefficient: constant), 0)
+        else:
+            result[0].coefficient += constant
+            if result[0].coefficient.val == 0: result.delete(0)
+
+    proc `+`*[T](c: SomeInteger, f: SparseFPS[T]): SparseFPS[T] = f + c
+
+    proc `+=`*[T](f: var SparseFPS[T], c: SomeInteger) =
+        f = f + c
+
     proc isZero*[T](f: SparseFPS[T]): bool = f.len == 0
 
     proc degree*[T](f: SparseFPS[T]): int =

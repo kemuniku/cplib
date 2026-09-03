@@ -31,9 +31,29 @@ proc naivePowEnumerate[T: BarrettModint or MontgomeryModint](
 block basicOperations:
   let f = @[Mint(1), Mint(2), Mint(3)]
   let g = @[Mint(4), Mint(5)]
+  assert f.coefficient(0).val == 1
+  assert f.coefficient(2).val == 3
+  assert f.coefficient(-1).val == 0
+  assert f.coefficient(3).val == 0
   assert (f + g).values == @[5, 7, 3]
+  assert (f + 4).values == @[5, 2, 3]
+  assert (4 + f).values == @[5, 2, 3]
+  var h = f
+  h += -2
+  assert h.values == @[998244352, 2, 3]
+  var empty: seq[Mint]
+  empty += 7
+  assert empty.values == @[7]
   assert (f - g).values == @[998244350, 998244350, 3]
   assert (f * g).values == @[4, 13, 22, 15]
+  assert (f / @[Mint(1), Mint(1)]).values == @[1, 1, 2]
+  assert (@[Mint(1), Mint(2)] / @[Mint(1), Mint(1), Mint(1), Mint(1)]).values ==
+    @[1, 1, 998244351, 0]
+  var quotient = f
+  quotient /= @[Mint(1), Mint(1)]
+  assert quotient.values == @[1, 1, 2]
+  let zero: seq[Mint] = @[]
+  assert (zero / @[Mint(1), Mint(2)]).values == @[0, 0]
   assert f.derivative.values == @[2, 6]
   assert f.derivative.integral.values == @[0, 2, 3]
   assert f.eval(Mint(2)).val == 17
@@ -316,6 +336,17 @@ block sparseOperations:
   assert sparse.constantTerm == Mint(2)
   assert sparse.coefficient(2) == Mint(0)
   assert sparse.toDense(5).values == @[2, 3, 0, 4, 0]
+
+  let withoutConstant = sfps[Mint](2*x + x^3)
+  assert withoutConstant + 5 == sfps[Mint](5 + 2*x + x^3)
+  assert 5 + withoutConstant == sfps[Mint](5 + 2*x + x^3)
+  assert sfps[Mint](5 + 2*x + x^3) + -5 == withoutConstant
+  var addedInPlace = withoutConstant
+  addedInPlace += 7
+  assert addedInPlace == sfps[Mint](7 + 2*x + x^3)
+  var emptySparse = initSparseFPS[Mint]([])
+  emptySparse += 4
+  assert emptySparse == sfps[Mint](4)
 
   let dense = @[Mint(7), Mint(1), Mint(4), Mint(9), Mint(2)]
   let sparseDense = sparse.toDense(sparse.degree + 1)
