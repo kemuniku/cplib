@@ -3,6 +3,7 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     import bitops, sequtils, std/math
     import cplib/modint/modint
     import cplib/math/inv_gcd
+    import cplib/math/isprime
 
     {.emit: """
 #ifndef CPLIB_CONVOLUTION_AVX2_NTT_HPP
@@ -629,6 +630,272 @@ a[i] = montgomery.to_montgomery(a[i]);
 }
 _mm_free(b);
 }
+
+class PolynomialSequenceProduct998 {
+struct Product {
+const u32* data;
+Z size;
+};
+const Z* sizes_;
+Z factor_count_;
+Z* degree_prefix_;
+u32* coefficients_;
+u32* pool_;
+Z current_;
+u32* work_left_;
+u32* work_right_;
+Z work_size_;
+TransformPlan* forward_plans_[32];
+TransformPlan* inverse_plans_[32];
+u32 inverse_scales_[32];
+Montgomery montgomery_;
+
+inline u32 multiply_mod(u32 a, u32 b) const {
+return montgomery_.multiply(a, b);
+}
+inline void add_product(u32& destination, u32 a, u32 b) const {
+const u32 product = multiply_mod(a, b);
+destination += product;
+if (destination >= 998244353U) destination -= 998244353U;
+}
+Z balanced_middle(Z left, Z right) const {
+if (right - left == 2) return left + 1;
+const Z target = degree_prefix_[left] +
+(degree_prefix_[right] - degree_prefix_[left]) / 2;
+Z low = left + 1;
+Z high = right;
+while (low < high) {
+const Z middle = (low + high) / 2;
+if (degree_prefix_[middle] < target) low = middle + 1;
+else high = middle;
+}
+if (low > left + 1) {
+const Z left_degree = degree_prefix_[low] - degree_prefix_[left];
+const Z right_degree = degree_prefix_[right] - degree_prefix_[low];
+const Z current_difference = left_degree > right_degree
+? left_degree - right_degree : right_degree - left_degree;
+const Z previous_left = degree_prefix_[low - 1] - degree_prefix_[left];
+const Z previous_right = degree_prefix_[right] - degree_prefix_[low - 1];
+const Z previous_difference = previous_left > previous_right
+? previous_left - previous_right : previous_right - previous_left;
+if (previous_difference < current_difference) --low;
+}
+return low;
+}
+Z required_capacity(Z left, Z right) const {
+if (left + 1 == right) return 0;
+const Z middle = balanced_middle(left, right);
+const Z output_size = degree_prefix_[right] - degree_prefix_[left] + 1;
+const Z left_size = degree_prefix_[middle] - degree_prefix_[left] + 1;
+const Z left_capacity = required_capacity(left, middle);
+const Z right_capacity = required_capacity(middle, right);
+const Z right_offset = middle - left > 1 ? left_size : 0;
+const Z child_capacity = left_capacity > right_offset + right_capacity
+? left_capacity : right_offset + right_capacity;
+return output_size + child_capacity;
+}
+void reserve_work(Z size) {
+if (work_size_ >= size) return;
+_mm_free(work_left_);
+_mm_free(work_right_);
+work_left_ = static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));
+work_right_ = static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));
+work_size_ = size;
+}
+TransformPlan& forward_plan(Z size) {
+const unsigned index = (unsigned)__builtin_ctzll(size);
+if (forward_plans_[index] == nullptr) {
+forward_plans_[index] = new TransformPlan(size);
+inverse_plans_[index] = new TransformPlan(size);
+inverse_plans_[index]->prepare_inverse();
+const u32 inverse_size = power_mod(
+(u32)(size % 998244353U), 998244351U);
+inverse_scales_[index] = (u32)(
+u64(montgomery_.radix) * inverse_size % 998244353U);
+}
+return *forward_plans_[index];
+}
+TransformPlan& inverse_plan(Z size) {
+const unsigned index = (unsigned)__builtin_ctzll(size);
+return *inverse_plans_[index];
+}
+void multiply_schoolbook(
+u32* output, const u32* left, Z left_size,
+const u32* right, Z right_size) const {
+const Z output_size = left_size + right_size - 1;
+std::memset(output, 0, sizeof(u32) * output_size);
+const u32* outer = left;
+const u32* inner = right;
+Z outer_size = left_size;
+Z inner_size = right_size;
+if (inner_size < outer_size) {
+const u32* pointer_swap = outer;
+outer = inner;
+inner = pointer_swap;
+const Z size_swap = outer_size;
+outer_size = inner_size;
+inner_size = size_swap;
+}
+for (Z i = 0; i < outer_size; ++i) {
+const V coefficient = _mm256_set1_epi32((int)outer[i]);
+Z j = 0;
+for (; j + 8 <= inner_size; j += 8) {
+const V value = _mm256_loadu_si256((const V*)(inner + j));
+const V product = montgomery_multiply(value, coefficient, montgomery_);
+const V previous = _mm256_loadu_si256((const V*)(output + i + j));
+_mm256_storeu_si256((V*)(output + i + j), add_mod(previous, product));
+}
+for (; j < inner_size; ++j) {
+add_product(output[i + j], outer[i], inner[j]);
+}
+}
+}
+void multiply_naive(
+u32* output, const u32* left, Z left_size,
+const u32* right, Z right_size) const {
+multiply_schoolbook(output, left, left_size, right, right_size);
+}
+void multiply_ntt(
+u32* output, const u32* left, Z left_size,
+const u32* right, Z right_size, Z transform_size) {
+reserve_work(transform_size);
+u32* a = work_left_;
+u32* b = work_right_;
+std::memcpy(a, left, sizeof(u32) * left_size);
+std::memcpy(b, right, sizeof(u32) * right_size);
+TransformPlan& forward = forward_plan(transform_size);
+const Z half = transform_size >> 1;
+const bool left_half_zero = left_size <= half;
+const bool right_half_zero = right_size <= half;
+std::memset(a + left_size, 0, sizeof(u32) *
+((left_half_zero ? half : transform_size) - left_size));
+std::memset(b + right_size, 0, sizeof(u32) *
+((right_half_zero ? half : transform_size) - right_size));
+const unsigned index = (unsigned)__builtin_ctzll(transform_size);
+const V conversion = _mm256_set1_epi32((int)inverse_scales_[index]);
+const Z right_initialized = right_half_zero ? half : transform_size;
+for (Z i = 0; i < right_initialized; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(b + i));
+_mm256_storeu_si256(
+(V*)(b + i), montgomery_multiply(value, conversion, montgomery_));
+}
+if (left_half_zero) forward.forward_half_zero(a);
+else forward.forward(a);
+if (right_half_zero) forward.forward_half_zero(b, a);
+else forward.forward(b, a);
+inverse_plan(transform_size).inverse(a);
+std::memcpy(output, a, sizeof(u32) * (left_size + right_size - 1));
+}
+void multiply(
+u32* output, const u32* left, Z left_size,
+const u32* right, Z right_size) {
+if (left_size <= 60 || right_size <= 60) {
+multiply_naive(output, left, left_size, right, right_size);
+return;
+}
+const Z output_size = left_size + right_size - 1;
+Z transform_size = 1;
+while (transform_size < output_size) transform_size <<= 1;
+if (left_size + right_size - 3 <= (transform_size >> 1)) {
+multiply(output, left, left_size - 1, right, right_size - 1);
+output[output_size - 2] = 0;
+output[output_size - 1] = multiply_mod(
+left[left_size - 1], right[right_size - 1]);
+const u32 right_last = right[right_size - 1];
+for (Z i = 0; i + 1 < left_size; ++i) {
+add_product(output[i + right_size - 1], left[i], right_last);
+}
+const u32 left_last = left[left_size - 1];
+for (Z i = 0; i + 1 < right_size; ++i) {
+add_product(output[i + left_size - 1], right[i], left_last);
+}
+return;
+}
+multiply_ntt(output, left, left_size, right, right_size, transform_size);
+}
+Product solve(Z left, Z right) {
+if (left + 1 == right) {
+return Product{
+coefficients_ + degree_prefix_[left] + left, sizes_[left]};
+}
+const Z middle = balanced_middle(left, right);
+const Z output_size = degree_prefix_[right] - degree_prefix_[left] + 1;
+const Z mark = current_;
+u32* output = pool_ + current_;
+current_ += output_size;
+const Product left_product = solve(left, middle);
+const Product right_product = solve(middle, right);
+multiply(output, left_product.data, left_product.size,
+right_product.data, right_product.size);
+current_ = mark + output_size;
+return Product{output, output_size};
+}
+
+public:
+PolynomialSequenceProduct998(
+const u32* const* factors, const Z* sizes, Z factor_count)
+: sizes_(sizes), factor_count_(factor_count),
+degree_prefix_(new Z[factor_count + 1]),
+coefficients_(nullptr), pool_(nullptr), current_(0),
+work_left_(nullptr), work_right_(nullptr), work_size_(0),
+forward_plans_{}, inverse_plans_{}, inverse_scales_{} {
+Z coefficient_count = 0;
+for (Z i = 0; i < factor_count_; ++i) coefficient_count += sizes_[i];
+coefficients_ = static_cast<u32*>(_mm_malloc(
+sizeof(u32) * coefficient_count, 32));
+Z offset = 0;
+degree_prefix_[0] = 0;
+for (Z i = 0; i < factor_count_; ++i) {
+for (Z j = 0; j < sizes_[i]; ++j) {
+coefficients_[offset + j] = montgomery_.to_montgomery(factors[i][j]);
+}
+offset += sizes_[i];
+degree_prefix_[i + 1] = degree_prefix_[i] + sizes_[i] - 1;
+}
+if (factor_count_ > 1) {
+pool_ = static_cast<u32*>(_mm_malloc(
+sizeof(u32) * required_capacity(0, factor_count_), 32));
+}
+}
+~PolynomialSequenceProduct998() {
+for (unsigned i = 0; i < 32; ++i) {
+delete forward_plans_[i];
+delete inverse_plans_[i];
+}
+_mm_free(work_left_);
+_mm_free(work_right_);
+_mm_free(coefficients_);
+_mm_free(pool_);
+delete[] degree_prefix_;
+}
+void run(u32* output) {
+Product product;
+if (factor_count_ == 1) {
+product = Product{coefficients_, sizes_[0]};
+} else {
+product = solve(0, factor_count_);
+}
+const V one = _mm256_set1_epi32(1);
+Z i = 0;
+for (; i + 8 <= product.size; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(product.data + i));
+_mm256_storeu_si256(
+(V*)(output + i), montgomery_multiply(value, one, montgomery_));
+}
+for (; i < product.size; ++i) {
+output[i] = montgomery_.multiply(product.data[i], 1);
+}
+}
+};
+
+inline void product_polynomial_sequence_998(
+u32* output, const u32* const* factors,
+const Z* sizes, Z factor_count) {
+modulus = 998244353U;
+primitive_root = 3U;
+PolynomialSequenceProduct998 context(factors, sizes, factor_count);
+context.run(output);
+}
 }
 #endif
 extern "C" void cplib_convolution_ntt_friendly(
@@ -644,6 +911,14 @@ bool montgomery_representation) {
 cplib_avx2_ntt::convolution_ntt_friendly(
 output, left, left_size, right, right_size, transform_size,
 modulus, primitive_root, montgomery_representation);
+}
+extern "C" void cplib_product_polynomial_sequence_998(
+std::uint32_t* output,
+std::uint32_t** factors,
+std::size_t* sizes,
+std::size_t factor_count) {
+cplib_avx2_ntt::product_polynomial_sequence_998(
+output, factors, sizes, factor_count);
 }
     """.}
 
@@ -667,6 +942,16 @@ modulus, primitive_root, montgomery_representation);
         f, g: seq[T]
     ): seq[T]
 
+    var nttPrimalityCache: tuple[modulus: uint32, isPrime: bool]
+
+    proc isNttFriendlyModulus(modulus, transformSize: uint32): bool =
+        ## 指定した長さのNTTが法の下で成立するか判定する。
+        if modulus <= 1u32 or modulus >= (1u32 shl 30): return false
+        if (modulus - 1u32) mod transformSize != 0u32: return false
+        if nttPrimalityCache.modulus != modulus:
+            nttPrimalityCache = (modulus, isprime(modulus.int))
+        return nttPrimalityCache.isPrime
+
     proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =
         if f.len == 0 or g.len == 0: return @[]
         var ans = newSeq[T](f.len + g.len - 1)
@@ -687,8 +972,7 @@ modulus, primitive_root, montgomery_representation);
         let deg = m + n - 1
         if min(n, m) <= 60: return convolution_naive(f, g)
         var l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))
-        if T.umod < (1u32 shl 30) and
-                (T.umod - 1u32) mod l.uint32 == 0u32:
+        if isNttFriendlyModulus(T.umod, l.uint32):
             result = newSeq[T](l)
             convolutionNttFriendlyAvx2(
                 cast[ptr uint32](addr result[0]),
@@ -699,6 +983,37 @@ modulus, primitive_root, montgomery_representation);
             result.setLen(deg)
             return
         return convolutionArbitraryMod(f, g)
+
+    proc convolutionCyclicPowerOfTwo*[T: BarrettModint or MontgomeryModint](
+            f, g: seq[T], n: int): seq[T] =
+        ## 長さnの巡回畳み込みを求める。nは2の冪でなければならない。
+        doAssert n > 0 and (n and (n - 1)) == 0
+        doAssert f.len <= n and g.len <= n
+        result = newSeq[T](n)
+        if f.len == 0 or g.len == 0: return
+        if n >= 64 and isNttFriendlyModulus(T.umod, n.uint32):
+            when T is MontgomeryModint:
+                var normalF = newSeq[uint32](f.len)
+                var normalG = newSeq[uint32](g.len)
+                var normalResult = newSeq[uint32](n)
+                for i in 0..<f.len: normalF[i] = f[i].val.uint32
+                for i in 0..<g.len: normalG[i] = g[i].val.uint32
+                convolutionNttFriendlyAvx2(
+                    addr normalResult[0], addr normalF[0], f.len.csize_t,
+                    addr normalG[0], g.len.csize_t, n.csize_t,
+                    T.umod, 0u32, false)
+                for i in 0..<n: result[i] = init(T, normalResult[i])
+            else:
+                convolutionNttFriendlyAvx2(
+                    cast[ptr uint32](addr result[0]),
+                    cast[ptr uint32](unsafeAddr f[0]), f.len.csize_t,
+                    cast[ptr uint32](unsafeAddr g[0]), g.len.csize_t,
+                    n.csize_t, T.umod, 0u32, false)
+            return
+        let product = convolution(f, g)
+        for i in 0..<product.len:
+            if i < n: result[i] += product[i]
+            else: result[i - n] += product[i]
 
     proc convolution*[m: static[int]](f, g: seq[int]): seq[int] =
         doAssert m > 0 and m < (1 shl 31),
@@ -748,9 +1063,8 @@ modulus, primitive_root, montgomery_representation);
             InvM1ModM2 = inv_gcd((M1 mod M2).int, M2.int)[1].uint64
             InvM12ModM3 = inv_gcd((M12 mod M3).int, M3.int)[1].uint64
 
-        # With mod < 2^31 and this transform-size limit, every integer
-        # coefficient is smaller than M1*M2*M3, so the three residues identify
-        # it uniquely before reducing it modulo the requested modulus.
+        # mod < 2^31かつこの変換長の上限では、各整数係数はM1*M2*M3未満になる。
+        # そのため、3個の剰余から要求された法で還元する前の値を一意に特定できる。
         let targetMod = T.umod.uint64
         assert targetMod > 0 and targetMod < (1u64 shl 31),
             "arbitrary-mod convolution requires a modulus in [1, 2^31)"
@@ -820,9 +1134,9 @@ modulus, primitive_root, montgomery_representation);
             x += (c1[i].uint * i1) mod M1 * M23
             x += (c2[i].uint * i2) mod M2 * M31
             x += (c3[i].uint * i3) mod M3 * M12
-            # x intentionally wraps modulo 2^64.  Reinterpret those bits as a
-            # signed value for the CRT overflow correction; a numeric `.int`
-            # conversion raises RangeDefect when the top bit is set.
+            # xは意図的に2^64を法としてオーバーフローさせる。
+            # CRTのオーバーフロー補正では同じビット列を符号付き整数として解釈する。
+            # 数値変換の`.int`では最上位ビットが立っているとRangeDefectになる。
             var diff = c1[i].int - floorMod(cast[int](x), M1.int)
             if diff < 0: diff += M1.int
             const offset = [0u, 0u, M123, 2u * M123, 3u * M123]
