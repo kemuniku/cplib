@@ -9,21 +9,25 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
 
     proc get_im*(M: uint32): uint = cast[uint](-1) div M + 1
     var barrettParamCache {.compileTime.}: Table[uint32, NimNode]
-    var barrettCachedParam: tuple[M: uint32, im: uint]
+
+    proc get_barrett_cached_param[M: static[uint32]](): var tuple[M: uint32, im: uint] =
+        var param {.global.}: tuple[M: uint32, im: uint]
+        return param
 
     macro get_param*[M: static[uint32]](self: typedesc[StaticBarrettModint[M]]): untyped =
         if M notin barrettParamCache:
             let value = (M.uint32, get_im(M))
             barrettParamCache[M] = newLit(value)
         return barrettParamCache[M]
-    template get_param*(self: typedesc[DynamicBarrettModint]): tuple[M: uint32, im: uint] =
+    template get_param*[M: static[uint32]](self: typedesc[DynamicBarrettModint[M]]): tuple[M: uint32, im: uint] =
         {.cast(noSideEffect).}:
-            barrettCachedParam
+            let param = get_barrett_cached_param[M]()
+            param
     template get_M*(T: typedesc[BarrettModint]): uint =
         when T is StaticBarrettModint: T.M.uint
         else: get_param(T).M.uint
     proc setMod*[T: static[uint32]](self: typedesc[DynamicBarrettModint[T]], M: SomeInteger or SomeUnsignedInt) =
-        barrettCachedParam = (M: M.uint32, im: get_im(M.uint32))
+        get_barrett_cached_param[T]() = (M: M.uint32, im: get_im(M.uint32))
 
     template umod*[T: BarrettModint](self: typedesc[T] or T): uint32 =
         when self is typedesc:

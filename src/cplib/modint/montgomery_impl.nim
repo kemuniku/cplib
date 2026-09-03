@@ -16,24 +16,28 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         assert (M and 1u32) == 1u32, "invalid mod % 2 == 0"
         assert r * M == 1, "r * mod != 1"
     var montgomeryParamCache {.compileTime.}: Table[uint32, NimNode]
-    var montgomeryCachedParam: tuple[M, r, n2: uint32]
+
+    proc get_montgomery_cached_param[M: static[uint32]](): var tuple[M, r, n2: uint32] =
+        var param {.global.}: tuple[M, r, n2: uint32]
+        return param
     macro get_param*[M: static[uint32]](self: typedesc[StaticMontgomeryModint[M]]): untyped =
         if M notin montgomeryParamCache:
             let value = (M.uint32, get_r(M), get_n2(M))
             montgomeryParamCache[M] = newLit(value)
         return montgomeryParamCache[M]
-    template get_param*(self: typedesc[DynamicMontgomeryModint]): tuple[M, r, n2: uint32] =
+    template get_param*[M: static[uint32]](self: typedesc[DynamicMontgomeryModint[M]]): tuple[M, r, n2: uint32] =
         # FIXME: cast(noSideEffect)を付けないと、set_of_mint.join(" ")とかで死ぬ。
         # もうちょっと筋の良い解決方法があればそうしたい
         {.cast(noSideEffect).}:
-            montgomeryCachedParam
+            let param = get_montgomery_cached_param[M]()
+            param
     template get_M*(T: typedesc[MontgomeryModint]): uint32 =
         when T is StaticMontgomeryModint: T.M
         else: get_param(T).M
     proc setMod*[T: static[uint32]](self: typedesc[DynamicMontgomeryModint[T]], M: SomeInteger or SomeUnsignedInt) =
         var r = get_r(M.uint32)
         var n2 = get_n2(M.uint32)
-        montgomeryCachedParam = (M: M.uint32, r: get_r(M.uint32), n2: n2)
+        get_montgomery_cached_param[T]() = (M: M.uint32, r: r, n2: n2)
         check_params(M.uint32, r)
     template umod*[T: MontgomeryModint](self: typedesc[T] or T): uint32 =
         when self is typedesc:
