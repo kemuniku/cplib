@@ -34,7 +34,8 @@ when not declared CPLIB_STR_PALINDROMIC_TREE:
     proc initPalindromicTree*(a: openArray[int], amax: int = -1): PalindromicTree =
         let a = @a
         var amax = amax
-        if amax < 0: amax = a.max
+        if amax < 0:
+            amax = if a.len == 0: 0 else: a.max + 1
         result = init(amax)
         proc find_longest(pos: int, node: ref PalindromicTreeNode): ref PalindromicTreeNode =
             var ln = pos - node[].len - 1
