@@ -4,6 +4,10 @@ when not declared CPLIB_MATRIX_MATRIX:
     type Matrix*[T] = object
         height, width: int
         arr: seq[T]
+    type MatrixRow*[T] = ref object
+        owner: seq[T]
+        data: ptr UncheckedArray[T]
+        width: int
     proc initMatrix*[T](arr: openArray[seq[T]]): Matrix[T] =
         assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "all elements in arr must be the same size."
         result.height = arr.len
@@ -38,15 +42,35 @@ when not declared CPLIB_MATRIX_MATRIX:
         assert r in 0..<m.height
         result = newSeq[T](m.width)
         for j in 0..<m.width: result[j] = m.arr[r * m.width + j]
+    proc `[]`*[T](m: var Matrix[T], r: int): MatrixRow[T] =
+        assert r in 0..<m.height
+        if m.width > 0:
+            let data = cast[ptr UncheckedArray[T]](addr m.arr[r * m.width])
+            result = MatrixRow[T](owner: m.arr, data: data, width: m.width)
+        else:
+            result = MatrixRow[T](owner: m.arr, width: m.width)
+    proc len*[T](row: MatrixRow[T]): int {.inline.} = row.width
+    proc `[]`*[T](row: MatrixRow[T], c: int): var T {.inline.} =
+        assert c in 0..<row.width
+        row.data[c]
+    proc `[]=`*[T](row: MatrixRow[T], c: int, val: T) {.inline.} =
+        assert c in 0..<row.width
+        row.data[c] = val
     proc `[]=`*[T](m: var Matrix[T], r: int, row: openArray[T]) =
+        assert r in 0..<m.height and row.len == m.width
+        for j in 0..<m.width: m.arr[r * m.width + j] = row[j]
+    proc `[]=`*[T](m: var Matrix[T], r: int, row: MatrixRow[T]) =
         assert r in 0..<m.height and row.len == m.width
         for j in 0..<m.width: m.arr[r * m.width + j] = row[j]
 
     proc `[]`*[T](m: Matrix[T], r: int, c: int): T {.inline.} =
+        assert r in 0..<m.height and c in 0..<m.width
         m.arr[r * m.width + c]
     proc `[]`*[T](m: var Matrix[T], r: int, c: int): var T {.inline.} =
+        assert r in 0..<m.height and c in 0..<m.width
         m.arr[r * m.width + c]
     proc `[]=`*[T](m: var Matrix[T], r: int, c: int, val: T) {.inline.} =
+        assert r in 0..<m.height and c in 0..<m.width
         m.arr[r * m.width + c] = val
 
     proc `-`*[T](m: Matrix[T]): Matrix[T] =
@@ -156,9 +180,9 @@ when not declared CPLIB_MATRIX_MATRIX:
         assert aw == bh
         result = initMatrix[T](ah, bw, 0)
         when compiles(T.mod) and compiles(default(T).val) and compiles(T.init(0)):
-            # Convert canonical modint values once, then delay reductions for
-            # as many scalar products as fit safely in a uint64 accumulator.
-            # The public matrix and result types remain Matrix[T].
+            # modint の正規化された値を一度だけ取り出し、uint64 の累積値が
+            # オーバーフローしない範囲で剰余計算を遅延する。
+            # 公開する行列と結果の型は Matrix[T] のまま維持する。
             let modulus = uint64(T.mod)
             assert modulus > 0 and modulus <= (1'u64 shl 32)
             var aValues = newSeq[uint64](ah * aw)
@@ -188,8 +212,8 @@ when not declared CPLIB_MATRIX_MATRIX:
                         if value >= modulus: value -= modulus
                     result.arr[i * bw + j] = T.init(int(value))
         else:
-            # Strassen changes the evaluation order, so keep it to exact
-            # modular types whose representation is not exposed above.
+            # Strassen 法は評価順序を変更するため、上記で内部表現を
+            # 取得できない厳密な剰余型に限定する。
             when compiles(T.mod) and compiles(default(T) - default(T)):
                 if ah >= 256 and ah == aw and aw == bw and (ah and (ah - 1)) == 0:
                     result.arr = multiplySquareStrassen(a.arr, b.arr, ah, result.arr[0])
@@ -198,8 +222,8 @@ when not declared CPLIB_MATRIX_MATRIX:
             for k in 0..<bh:
                 for j in 0..<bw:
                     bt[j * bh + k] = b.arr[k * bw + j]
-            # Transposing b makes both operands of every dot product contiguous,
-            # and accumulating locally avoids writing the result aw times.
+            # b を転置して内積ごとの両オペランドを連続配置にし、
+            # 結果への書き込みを aw 回繰り返さず局所的に累積する。
             for i in 0..<ah:
                 for j in 0..<bw:
                     var
