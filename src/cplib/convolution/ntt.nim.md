@@ -27,48 +27,36 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: cplib/convolution/convolution.nim
-    title: cplib/convolution/convolution.nim
+    path: cplib/convolution/convolution_old.nim
+    title: cplib/convolution/convolution_old.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/convolution/convolution.nim
-    title: cplib/convolution/convolution.nim
+    path: cplib/convolution/convolution_old.nim
+    title: cplib/convolution/convolution_old.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/AI/convolution_test.nim
-    title: verify/AI/convolution_test.nim
+    path: verify/AI/convolution_old_test.nim
+    title: verify/AI/convolution_old_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/AI/convolution_test.nim
-    title: verify/AI/convolution_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/AI/ntt_test.nim
-    title: verify/AI/ntt_test.nim
+    path: verify/AI/convolution_old_test.nim
+    title: verify/AI/convolution_old_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/ntt_test.nim
     title: verify/AI/ntt_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-    title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+    path: verify/AI/ntt_test.nim
+    title: verify/AI/ntt_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-    title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+    path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-    title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+    path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-    title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_static_barrett_test.nim
-    title: verify/convolution/convolution/convolution_static_barrett_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_static_barrett_test.nim
-    title: verify/convolution/convolution/convolution_static_barrett_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_static_montgomery_test.nim
-    title: verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/convolution_static_montgomery_test.nim
-    title: verify/convolution/convolution/convolution_static_montgomery_test.nim
+    path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+    title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -175,33 +163,29 @@ data:
     \  for i in 0..<n: f[i] *= ninv\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/ntt.nim
   requiredBy:
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution_old.nim
+  - cplib/convolution/convolution_old.nim
   timestamp: '2026-07-06 22:23:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_static_barrett_test.nim
-  - verify/convolution/convolution/convolution_static_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - verify/AI/convolution_old_test.nim
+  - verify/AI/convolution_old_test.nim
   - verify/AI/ntt_test.nim
   - verify/AI/ntt_test.nim
-  - verify/AI/convolution_test.nim
-  - verify/AI/convolution_test.nim
 documentation_of: cplib/convolution/ntt.nim
 layout: document
 redirect_from:

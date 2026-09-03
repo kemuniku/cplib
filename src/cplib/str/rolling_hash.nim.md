@@ -90,10 +90,10 @@ data:
   isVerificationFile: false
   path: cplib/str/rolling_hash.nim
   requiredBy:
-  - verify/str/rolling_hash_pun_test_.nim
-  - verify/str/rolling_hash_pun_test_.nim
   - verify/str/rolling_hash_abcbac_test_.nim
   - verify/str/rolling_hash_abcbac_test_.nim
+  - verify/str/rolling_hash_pun_test_.nim
+  - verify/str/rolling_hash_pun_test_.nim
   timestamp: '2024-06-07 22:14:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -99,8 +99,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/avlset_old.nim
   - cplib/collections/avltreenode_old.nim
+  - cplib/collections/avlset_old.nim
   - cplib/collections/avltreenode_old.nim
   - cplib/collections/avlset_old.nim
   isVerificationFile: true

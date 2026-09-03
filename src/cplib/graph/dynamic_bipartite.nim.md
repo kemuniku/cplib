@@ -51,16 +51,17 @@ data:
     \        self.cnt_sum -= max(self.uf.get(u),self.uf.get(u+self.N)) + max(self.uf.get(v),self.uf.get(v+self.N))\n\
     \        self.uf.unite(u,self.N+v)\n        self.uf.unite(v,self.N+u)\n      \
     \  self.cnt_sum += max(self.uf.get(u),self.uf.get(u+self.N))\n    \n    proc is_bipartite*(self:DynamicBipartite):bool=\n\
-    \        return self.is_bipartite"
+    \        return self.is_bipartite\n    \n    proc issame*(self:DynamicBipartite,u,v:int):bool=\n\
+    \        return self.uf.issame(u,v) or self.uf.issame(u,v+self.N)"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim
   requiredBy: []
-  timestamp: '2026-07-09 02:51:42+09:00'
+  timestamp: '2026-09-01 00:10:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/dynamic_bipartite_test.nim

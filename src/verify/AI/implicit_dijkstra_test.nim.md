@@ -55,8 +55,8 @@ data:
   dependsOn:
   - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/utils/implicit_dijkstra.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/implicit_dijkstra_test.nim
   requiredBy: []

@@ -70,16 +70,16 @@ data:
 
     '
   dependsOn:
+  - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/dynamic_bipartite.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
-  - cplib/graph/graph.nim
   - cplib/graph/dynamic_bipartite.nim
-  - cplib/graph/dynamic_bipartite.nim
-  - cplib/collections/rootvalue_unionfind.nim
   isVerificationFile: true
   path: verify/AI/dynamic_bipartite_test.nim
   requiredBy: []
-  timestamp: '2026-07-09 02:51:42+09:00'
+  timestamp: '2026-09-01 00:10:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/dynamic_bipartite_test.nim

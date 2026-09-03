@@ -76,12 +76,12 @@ data:
     \        assert cmp(left, right) == sign(cmp(materializedLeft, materializedRight))\n\
     \        assert cmp(right, left) == sign(cmp(materializedRight, materializedLeft))\n"
   dependsOn:
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/str/repeated_static_string.nim
   - cplib/str/repeated_static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: true
