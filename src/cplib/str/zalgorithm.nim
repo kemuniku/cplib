@@ -4,6 +4,8 @@ when not declared CPLIB_STR_ZALGORITHM:
     proc zalgorithm*(S:string):seq[int]=
         var N = len(S)
         result = newseqwith(N,-1)
+        if N == 0:
+            return
         result[0] = S.len();
         var i = 1
         var j = 0

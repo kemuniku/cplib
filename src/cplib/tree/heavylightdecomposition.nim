@@ -244,6 +244,8 @@ when not declared CPLIB_TREE_HLD:
         v = v.sortedByIt(hld.toseq(it)).deduplicate(true)
         var stack :seq[int]
         result = initUnWeightedUnDirectedTableGraph[int](v)
+        if v.len == 0:
+            return
         stack.add(v[0])
         
         for i in 1..<len(v):
@@ -261,6 +263,8 @@ when not declared CPLIB_TREE_HLD:
         v = v.sortedByIt(hld.toseq(it)).deduplicate(true)
         var stack :seq[int]
         result = initWeightedUnDirectedTableGraph(v, S)
+        if v.len == 0:
+            return
         stack.add(v[0])
         for i in 1..<len(v):
             while len(stack) > 0 and hld.toSeq2Out(stack[^1]) < hld.toseq2In(v[i]):

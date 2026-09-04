@@ -3,6 +3,8 @@ when not declared CPLIB_STR_MANACHER:
     import sequtils
     proc manacher*[T](s: seq[T]): seq[int] =
         result = newSeq[int](s.len)
+        if s.len == 0:
+            return
         result[0] = 0
         var c = 0
         for i in 0..<s.len:

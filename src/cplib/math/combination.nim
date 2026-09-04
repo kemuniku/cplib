@@ -6,14 +6,16 @@ when not declared CPLIB_MATH_COMBINATION:
         fact_inv*: seq[ModInt]
 
     proc initCombination*[ModInt](max_N: int): Combination_Type[ModInt] =
+        assert max_N >= 0
         var fact = newSeq[ModInt](max_N+1)
         var inv = newSeq[ModInt](max_N+1)
         var fact_inv = newSeq[ModInt](max_N+1)
         fact[0] = 1
-        fact[1] = 1
-        inv[1] = 1
         fact_inv[0] = 1
-        fact_inv[1] = 1
+        if max_N >= 1:
+            fact[1] = 1
+            inv[1] = 1
+            fact_inv[1] = 1
         for i in 2..max_N:
             fact[i] = fact[i-1] * i
             inv[i] = -inv[int(ModInt.umod()) mod i]*(int(ModInt.umod()) div i)

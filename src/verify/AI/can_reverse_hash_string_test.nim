@@ -3,6 +3,12 @@ echo "Hello World"
 
 import cplib/str/can_reverse_hash_string
 
+let emptyRollingHash = initRollingHash("")
+assert emptyRollingHash.len == 0
+assert $emptyRollingHash == ""
+assert HashString(emptyRollingHash) == get_emptystring_hash()
+assert emptyRollingHash[0..<0].len == 0
+
 let aba = "aba".tohash
 let ab = "ab".tohash
 assert aba.isPalindrome

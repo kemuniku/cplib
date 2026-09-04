@@ -56,7 +56,7 @@ when not declared CPLIB_STR_HASHSTRING:
             return inner_pow(hashstring_base,n)
         else:
             return pows[n]
-    
+
     proc base_inv_pow(n:int):uint=
         if n >= len(invpows):
             return inner_pow(inv_hashstring_base,n)
@@ -149,7 +149,8 @@ when not declared CPLIB_STR_HASHSTRING:
         # 半開区間とする。
         # 空文字列用にr=0も許容していることに注意。
         # 空文字列はl=0,r=0のみ許容している。
-        assert l in 0..<R.size and r in 0..R.size and (l < r or (l == 0 and r == 0))
+        assert (l == 0 and r == 0) or
+            (l in 0..<R.size and r in 1..R.size and l < r)
         result.R = R
         result.l = l
         result.r = r
@@ -185,6 +186,8 @@ when not declared CPLIB_STR_HASHSTRING:
             rolling.rprefixs[i] = (mul(uint(int(S[i-1])),tmp) + rolling.rprefixs[i-1]).calc_mod()
             tmp = mul(tmp,hashstring_base).calc_mod
         rolling.size = (len(S))
+        if S.len == 0:
+            return RollingHash(R: rolling, l: 0, r: 0)
         return rolling[0..<len(S)]
 
 
@@ -233,5 +236,3 @@ when not declared CPLIB_STR_HASHSTRING:
 
     proc `<`*(S,T:RollingHash):bool=
         return cmp(S,T) < 0
-
-    

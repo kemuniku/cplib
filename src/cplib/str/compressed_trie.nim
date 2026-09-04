@@ -14,6 +14,8 @@ when not declared CPLIB_STR_COMPRESSED_TRIE:
         var S = @S
         if not sorted:
             S.sort()
+        if S.len == 0:
+            return CompressedTrieNode()
         var root = CompressedTrieNode(s:S[0][0..<0])
         var stack = @[root]
         for s in S:

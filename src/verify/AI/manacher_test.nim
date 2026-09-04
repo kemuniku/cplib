@@ -4,6 +4,8 @@ echo "Hello World"
 import sequtils
 import cplib/str/manacher
 
+assert manacher(newSeq[int]()) == @[]
+assert manacher("") == @[]
 assert manacher("ababa".toSeq)[2] == 3
 assert manacher(@[1, 2, 2, 1])[1] == 1
 let pals = get_palindromes("abba".toSeq, '$')

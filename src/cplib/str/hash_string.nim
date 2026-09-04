@@ -123,7 +123,8 @@ when not declared CPLIB_STR_HASHSTRING:
         # 半開区間とする。
         # 空文字列用にr=0も許容していることに注意。
         # 空文字列はl=0,r=0のみ許容している。
-        assert l in 0..<R.size and r in 0..R.size and (l < r or (l == 0 and r == 0))
+        assert (l == 0 and r == 0) or
+            (l in 0..<R.size and r in 1..R.size and l < r)
         result.R = R
         result.l = l
         result.r = r
@@ -154,6 +155,8 @@ when not declared CPLIB_STR_HASHSTRING:
         for i in 1..len(S):
             rolling.prefixs[i] = (mul(rolling.prefixs[i-1],hashstring_base) + uint(int(S[i-1]))).calc_mod()
         rolling.size = (len(S))
+        if S.len == 0:
+            return RollingHash(R: rolling, l: 0, r: 0)
         return rolling[0..<len(S)]
 
 

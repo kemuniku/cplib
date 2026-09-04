@@ -4,6 +4,9 @@ echo "Hello World"
 import options, sequtils
 import cplib/collections/avlset_old
 
+assert initAvlSortedSet[int]().toSeq == @[]
+assert initAvlSortedMultiSet[int]().toSeq == @[]
+
 var s = initAvlSortedSet[int](@[3, 1, 3])
 assert s.toSeq == @[1, 3]
 assert s.len == 2

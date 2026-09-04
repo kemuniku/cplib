@@ -6,6 +6,11 @@ import cplib/graph/graph
 import cplib/str/compressed_trie
 import cplib/str/static_string
 
+let emptyRoot = initCompressedTrie(newSeq[StaticString[char]]())
+assert emptyRoot.get_virtualnode.get_cnt == 0
+assert emptyRoot.get_virtualnode.get_subtree_sum == 0
+assert emptyRoot.toGraph.len == 1
+
 let words = toStaticStrings(@["a", "ab", "ab", "ac", "b"])
 let root = initCompressedTrie(words)
 let vr = root.get_virtualnode

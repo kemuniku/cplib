@@ -5,6 +5,10 @@ import cplib/math/combination
 import cplib/modint/modint
 
 type Mint = modint998244353_barrett
+let c0 = initCombination[Mint](0)
+assert c0.fact.len == 1
+assert c0.ncr(0, 0).val == 1
+
 let c = initCombination[Mint](10)
 assert c.fact[5].val == 120
 assert c.ncr(5, 2).val == 10
