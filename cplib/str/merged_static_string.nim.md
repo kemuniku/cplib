@@ -124,8 +124,8 @@ data:
     \                    result &= $S.base.S[j]\n"
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/merged_static_string.nim

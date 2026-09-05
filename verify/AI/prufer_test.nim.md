@@ -36,8 +36,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/prufer_test.nim
   requiredBy: []

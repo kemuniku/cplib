@@ -65,10 +65,10 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/persistent_unionfind.nim
-  - cplib/collections/persistent_array.nim
   - cplib/collections/persistent_array.nim
   - cplib/collections/persistent_unionfind.nim
+  - cplib/collections/persistent_unionfind.nim
+  - cplib/collections/persistent_array.nim
   isVerificationFile: true
   path: verify/AI/persistent_unionfind_test.nim
   requiredBy: []

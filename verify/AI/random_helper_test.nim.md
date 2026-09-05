@@ -75,15 +75,15 @@ data:
     \ {'x', 'y', 'z'})\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/utils/random_helper.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/tree/prufer.nim
-  - cplib/math/inner_math.nim
+  - cplib/tree/prufer.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
+  - cplib/graph/graph.nim
   - cplib/utils/random_helper.nim
   - cplib/math/isprime.nim
   isVerificationFile: true

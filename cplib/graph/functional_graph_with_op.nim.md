@@ -203,11 +203,11 @@ data:
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
-  - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
