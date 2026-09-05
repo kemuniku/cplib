@@ -232,24 +232,24 @@ data:
     \ right))\n\n        result = solve(0, factors.len)\n        if scalar.val !=\
     \ 1:\n            for coefficient in result.mitems: coefficient *= scalar\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inner_math.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/fps/product_of_polynomial_sequence.nim
   requiredBy:
