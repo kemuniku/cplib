@@ -18,6 +18,12 @@ assert (MintM.init(2).pow(10)).val == 1024
 assert $MintM.init(-1) == "998244352"
 assert (MintM.init(2) / 2).val == 1
 assert MintM.init(3).estimate_rational() == "3/1"
+var rejectedEmptySearch = false
+try:
+    discard MintM.init(3).estimate_rational(0)
+except AssertionDefect:
+    rejectedEmptySearch = true
+assert rejectedEmptySearch
 
 type MintB = modint1000000007_barrett
 assert (MintB.init(1_000_000_008) + MintB.init(2)).val == 3

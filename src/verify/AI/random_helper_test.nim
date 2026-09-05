@@ -24,6 +24,13 @@ let parts = randomseq_from_sum(4, 7)
 assert parts.len == 4
 assert parts.foldl(a + b, 0) == 7
 assert parts.allIt(it >= 0)
+assert randomseq_from_sum(0, 0) == @[]
+var rejectedNonzeroEmptySum = false
+try:
+  discard randomseq_from_sum(0, 1)
+except AssertionDefect:
+  rejectedNonzeroEmptySum = true
+assert rejectedNonzeroEmptySum
 
 let ps = random_parenthesis_sequence(6)
 assert ps.len == 6

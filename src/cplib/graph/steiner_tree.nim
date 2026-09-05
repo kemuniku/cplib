@@ -11,6 +11,8 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
         var n = g.len
 
         var dp = newSeqWith((1 shl k), newSeqWith(n, inf))
+        for u in 0..<n:
+            dp[0][u] = zero
         for i in 0..<k:
             dp[(1 shl i)][terminal[i]] = zero
 
@@ -36,6 +38,8 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
         steiner_tree_dp_impl(g, terminal, zero, inf)
 
     proc steiner_tree_mincost_impl[T](g: StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], zero, inf: T): T =
+        if terminal.len == 0:
+            return zero
         var dp = steiner_tree_dp_impl(g, terminal, zero, inf)
         var k = terminal.len
         return dp[(1 shl k) - 1][terminal[0]]

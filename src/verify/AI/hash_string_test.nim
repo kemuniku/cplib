@@ -3,6 +3,12 @@ echo "Hello World"
 
 import cplib/str/hash_string
 
+let emptyRollingHash = initRollingHash("")
+assert emptyRollingHash.len == 0
+assert $emptyRollingHash == ""
+assert HashString(emptyRollingHash) == get_emptystring_hash()
+assert emptyRollingHash[0..<0].len == 0
+
 let a = "ab".tohash
 let b = 'c'.tohash
 let abc = "abc".tohash

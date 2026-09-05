@@ -36,6 +36,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
         assert sum >= 0
         assert n >= 0
         if n == 0:
+            assert sum == 0
             return @[]
         var tmp = randomseq(n-1,1..(n+sum-1),true).sorted()
         var now = 0

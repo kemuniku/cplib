@@ -41,7 +41,8 @@ when not declared CPLIB_STR_STATIC_STRING:
         result.RSA = newseq[int32](len(result.S))
         for i in 0.int32()..<len(result.S).int32():
             result.RSA[result.SA[i]] = i
-        result.LCP = lcp_array(result.S,result.SA.mapIt(int(it))).mapit(int32(it))
+        if result.S.len > 0:
+            result.LCP = lcp_array(result.S,result.SA.mapIt(int(it))).mapit(int32(it))
         result.RMQ = initRMQ(result.LCP)
 
     proc initStaticStringBase*(S:string,reversible:bool=false):StaticStringBase[char]=
@@ -58,7 +59,8 @@ when not declared CPLIB_STR_STATIC_STRING:
         result.RSA = newseq[int32](len(staticS))
         for i in 0.int32()..<len(staticS).int32():
             result.RSA[result.SA[i]] = i
-        result.LCP = lcp_array(staticS,result.SA.mapIt(int(it))).mapit(int32(it))
+        if staticS.len > 0:
+            result.LCP = lcp_array(staticS,result.SA.mapIt(int(it))).mapit(int32(it))
         result.RMQ = initRMQ(result.LCP)
 
     proc toStaticString*[T](S:openArray[T],reversible:bool=false):StaticString[T]=

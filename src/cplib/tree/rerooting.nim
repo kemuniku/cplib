@@ -12,6 +12,8 @@ when not declared CPLIB_TREE_REROOTING:
         var L = newseq[seq[E]](len(G))
         var R = newseq[seq[E]](len(G))
         var res = newseq[E](len(G))
+        if G.len == 0:
+            return res
         proc dfs1(x,p:int):E=
             var values : seq[E]
             values.add(e)

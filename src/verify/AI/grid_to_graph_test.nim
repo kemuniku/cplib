@@ -5,6 +5,9 @@ import algorithm, sequtils
 import cplib/graph/graph
 import cplib/graph/grid_to_graph
 
+assert newSeq[string]().grid_to_graph().len == 0
+assert newSeq[string]().grid_to_graph('.', true).len == 0
+
 let grid = @["..", "#."]
 let g = grid.grid_to_graph('.')
 assert g.len == 4
