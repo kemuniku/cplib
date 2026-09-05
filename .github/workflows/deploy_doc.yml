@@ -8,7 +8,11 @@ on:
 
 jobs:
   deploy-doc:
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    concurrency:
+      group: cplib-gh-pages
+      cancel-in-progress: false
 
     steps:
       - uses: actions/checkout@v2
