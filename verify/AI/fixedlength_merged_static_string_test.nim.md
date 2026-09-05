@@ -59,12 +59,12 @@ data:
     \ cmp(integerMergedWithEmptyRanges, empty) > 0\nassert cmp(empty, empty) == 0\n\
     assert cmp(integerMergedWithEmptyRanges, integerMergedWithTrailingEmpty) == 0\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
   isVerificationFile: true
   path: verify/AI/fixedlength_merged_static_string_test.nim
   requiredBy: []

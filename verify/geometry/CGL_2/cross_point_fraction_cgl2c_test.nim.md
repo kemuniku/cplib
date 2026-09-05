@@ -57,14 +57,14 @@ data:
   dependsOn:
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   requiredBy: []
