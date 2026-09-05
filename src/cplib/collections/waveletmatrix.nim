@@ -69,20 +69,21 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
                 result += 1 shl h
     
     proc range_lowerbound*(self:WaveletMatrix,l,r,x:int):int=
-        var x = x
+        if x <= 0:
+            return 0
+        if self.H < sizeof(int) * 8 and (x shr self.H) != 0:
+            return r-l
         var l = l
         var r = r
-        var now = 0
         for h in countdown(self.H-1,0,1):
             var (l0,r0,l1,r1) = self.get_child(h,l,r)
-            if (now + 1 shl h) > x:
-                l = l0
-                r = r0
-            else:
+            if x.testBit(h):
                 l = l1
                 r = r1
-                now += 1 shl h
                 result += r0-l0
+            else:
+                l = l0
+                r = r0
     
     proc range_upperbound*(self:WaveletMatrix,l,r,x:int):int=
         var x = x
