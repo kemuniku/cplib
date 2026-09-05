@@ -66,8 +66,12 @@ when not declared CPLIB_STR_ROLLING_HASH:
             rh.base_pow[i+1] = mul(rh.base_pow[i], base).calc_mod
             rh.base_inv_pow[i+1] = mul(rh.base_inv_pow[i], base_inv).calc_mod
 
-    proc initRollingHash*[T](s: T): RollingHash[T] =
-        result = RollingHash[T](s: s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())
+    proc initRollingHash*[T](s: openArray[T]): RollingHash[seq[T]] =
+        result = RollingHash[seq[T]](s: @s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())
+        result.build
+
+    proc initRollingHash*(s: string): RollingHash[string] =
+        result = RollingHash[string](s: s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())
         result.build
 
     proc query*(rh: RollingHash, rng: HSlice[int, int]): uint =

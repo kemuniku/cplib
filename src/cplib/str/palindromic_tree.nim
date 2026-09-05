@@ -9,12 +9,12 @@ when not declared CPLIB_STR_PALINDROMIC_TREE:
     type PalindromicTree* = object
         amax: int
         nodes*: seq[ref PalindromicTreeNode]
-        last_node* : ref PalindromicTreeNode
+        last_node*: ref PalindromicTreeNode
 
     proc len*(node: PalindromicTreeNode): int = node.len
     proc count*(node: PalindromicTreeNode): int = node.count
     proc id*(node: PalindromicTreeNode): int = node.id
-    
+
     proc newPalindromicTreeNode(pt: var PalindromicTree, amax, len: int): ref PalindromicTreeNode =
         result = new PalindromicTreeNode
         result[].link = newSeq[ref PalindromicTreeNode](amax)
@@ -55,8 +55,11 @@ when not declared CPLIB_STR_PALINDROMIC_TREE:
             current_node[].count += 1
         result.last_node = current_node
 
-    proc initPalindromicTree*(s: string, c: char = 'a'): PalindromicTree =
-        return initPalindromicTree(s.mapIt(int(it) - int(c)), 26)
+    proc initPalindromicTree*(s: openArray[char], c: char = 'a'): PalindromicTree =
+        var a = newSeq[int](len(s))
+        for i in 0..<len(s):
+            a[i] = int(s[i]) - int(c)
+        return initPalindromicTree(a, 26)
 
     proc get_palindrome*(pt: PalindromicTree, node: ref PalindromicTreeNode): seq[int] =
         if node == pt.nodes[0] or node == pt.nodes[1]: return newSeq[int](0)
