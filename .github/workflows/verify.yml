@@ -23,6 +23,11 @@ jobs:
           - nim-version: 2.2.4
             nimble-options: --solver:legacy
 
+    # The 1.6.20 job is the only publisher; serialize it with deploy-doc.
+    concurrency:
+      group: ${{ matrix.nim-version == '1.6.20' && 'cplib-gh-pages' || format('verify-{0}-{1}', github.ref, matrix.nim-version) }}
+      cancel-in-progress: false
+
     permissions:
       actions: write
       contents: write
@@ -91,8 +96,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: cd src && oj-verify all -j 4 --tle 10
+        run: |
+          cd src
+          if [ "${{ matrix.nim-version }}" = "1.6.20" ]; then
+            oj-verify run -j 4 --tle 10
+          else
+            # Unset the variable: even an empty GITHUB_TOKEN enables auto-push.
+            env -u GITHUB_TOKEN oj-verify run -j 4 --tle 10
+          fi
 
       - name: Clear Verify Cache
         if: always()
@@ -117,3 +128,10 @@ jobs:
         with:
           path: src/.verify-helper/cache
           key: ${{ runner.os }}-nim-${{ matrix.nim-version }}-verify-cases-${{ github.sha }}
+
+      - name: Publish documents
+        if: matrix.nim-version == '1.6.20' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: cd src && oj-verify docs -j 4
