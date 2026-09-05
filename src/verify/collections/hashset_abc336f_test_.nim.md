@@ -48,9 +48,9 @@ data:
     \     break\necho if ans == 30: -1 else: ans\n"
   dependsOn:
   - cplib/matrix/matops.nim
-  - cplib/collections/hashset.nim
-  - cplib/collections/hashset.nim
   - cplib/matrix/matops.nim
+  - cplib/collections/hashset.nim
+  - cplib/collections/hashset.nim
   isVerificationFile: false
   path: verify/collections/hashset_abc336f_test_.nim
   requiredBy: []

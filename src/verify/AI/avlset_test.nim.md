@@ -91,9 +91,9 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/AI/avlset_test.nim
