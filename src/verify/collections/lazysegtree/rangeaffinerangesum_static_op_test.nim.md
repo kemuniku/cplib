@@ -60,16 +60,16 @@ data:
     \        seg.apply(l..<r, (mint(b), mint(c)))\n    else:\n        let l, r = ii()\n\
     \        echo seg[l..<r][0]\n"
   dependsOn:
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/collections/lazysegtree_static_op.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   requiredBy: []

@@ -87,14 +87,14 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/bellmanford.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/bellmanford.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/AI/bellmanford_test.nim
   requiredBy: []
