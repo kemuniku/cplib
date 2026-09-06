@@ -11,8 +11,13 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
         discard
 
     proc initWordsizeTree*(v:openArray[bool]):WordsizeTree=
-        for i in 0..<len(v):
-            if v[i]: result.A3[i shr 6] = result.A3[i shr 6] or (1u shl (i and(0b111111)))
+        # Pack each word locally to avoid a data-dependent branch per bit.
+        for blockIndex in 0..<((len(v) + 63) shr 6):
+            let start = blockIndex shl 6
+            var bits = 0u
+            for bit in 0..<min(64, len(v) - start):
+                bits = bits or (uint(v[start + bit]) shl bit)
+            result.A3[blockIndex] = bits
         for i in 0..<((len(v)+(63)) shr 6):
             if result.A3[i] != 0:result.A2[i shr 6] = result.A2[i shr 6] or (1u shl (i and(0b111111)))
         for i in 0..<((len(v)+(64*64-1)) shr 12):
