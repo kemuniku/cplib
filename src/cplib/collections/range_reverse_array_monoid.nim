@@ -105,7 +105,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
 
     proc initRangeReverseArrayMonoid*[T](v: openArray[T], op: proc(x, y: T): T, e: T): RangeReverseArrayMonoid[T] =
         ## vで初期化します。
-        ## 区間反転、一点取得、一点更新、区間総積はすべてO(log N)です。
+        ## 区間反転、一点取得、一点更新、区間総積はすべて期待O(log N)です。
         RangeReverseArrayMonoid[T](root: build(v, op, e), length: v.len, op: op, e: e)
 
     proc toRangeReverseArrayMonoid*[T](v: openArray[T], op: proc(x, y: T): T, e: T): RangeReverseArrayMonoid[T] =
@@ -116,6 +116,55 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
 
     proc len*[T](self: RangeReverseArrayMonoid[T]): int =
         self.length
+
+    proc insertNode[T](self: RangeReverseArrayMonoid[T], root, node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T] =
+        if root.isNil: return node
+        if node.priority > root.priority:
+            (node.left, node.right) = split(root, k, self.op, self.e)
+            node.update(self.op, self.e)
+            return node
+        root.push
+        let leftSize = root.left.nodeLen
+        if k <= leftSize:
+            root.left = self.insertNode(root.left, node, k)
+        else:
+            root.right = self.insertNode(root.right, node, k - leftSize - 1)
+        root.update(self.op, self.e)
+        return root
+
+    proc insert*[T](self: RangeReverseArrayMonoid[T], index: int, value: T) =
+        ## index の直前に挿入する。index = len なら末尾。
+        assert 0 <= index and index <= self.len
+        let node = newNode(value, rand(uint64))
+        self.root = self.insertNode(self.root, node, index)
+        inc self.length
+
+    proc eraseNode[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T] =
+        node.push
+        let leftSize = node.left.nodeLen
+        if k == leftSize: return merge(node.left, node.right, self.op, self.e)
+        if k < leftSize:
+            node.left = self.eraseNode(node.left, k)
+        else:
+            node.right = self.eraseNode(node.right, k - leftSize - 1)
+        node.update(self.op, self.e)
+        return node
+
+    proc erase*[T](self: RangeReverseArrayMonoid[T], index: int) =
+        assert 0 <= index and index < self.len
+        self.root = self.eraseNode(self.root, index)
+        dec self.length
+
+    proc erase*[T](self: RangeReverseArrayMonoid[T], l, r: int) =
+        assert 0 <= l and l <= r and r <= self.len
+        if l == r: return
+        let (left, rest) = split(self.root, l, self.op, self.e)
+        let (_, right) = split(rest, r - l, self.op, self.e)
+        self.root = merge(left, right, self.op, self.e)
+        self.length -= r - l
+
+    proc erase*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]) =
+        self.erase(segment.a, segment.b + 1)
 
     proc reverse*[T](self: RangeReverseArrayMonoid[T], l, r: int) =
         ## 半開区間[l, r)を反転します。
@@ -145,13 +194,21 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
                 k -= leftSize + 1
                 node = node.right
 
+    proc getNode[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], l, r: int): T =
+        if l == 0 and r == node.size: return node.prod
+        node.push
+        let mid = node.left.nodeLen
+        if r <= mid: return self.getNode(node.left, l, r)
+        if l > mid: return self.getNode(node.right, l - mid - 1, r - mid - 1)
+        result = node.value
+        if l < mid: result = self.op(self.getNode(node.left, l, mid), result)
+        if r > mid + 1: result = self.op(result, self.getNode(node.right, 0, r - mid - 1))
+
     proc get*[T](self: RangeReverseArrayMonoid[T], l, r: int): T =
-        ## 半開区間[l, r)の総積を返します。
-        assert 0 <= l and l <= r and r <= self.length
-        var (left, middleRight) = split(self.root, l, self.op, self.e)
-        var (middle, right) = split(middleRight, r - l, self.op, self.e)
-        result = middle.nodeProd(self.e)
-        self.root = merge(left, merge(middle, right, self.op, self.e), self.op, self.e)
+        ## 半開区間 [l, r) の総積を返す。
+        assert 0 <= l and l <= r and r <= self.len
+        if l == r: return self.e
+        self.getNode(self.root, l, r)
 
     proc get*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]): T =
         ## 閉区間segmentの総積を返します。
@@ -171,16 +228,72 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
         ## [0,len(self))区間の総積をO(1)で返します。
         self.root.nodeProd(self.e)
 
+    proc updateNode[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], k: int, value: T) =
+        node.push
+        let leftSize = node.left.nodeLen
+        if k == leftSize:
+            node.value = value
+        elif k < leftSize:
+            self.updateNode(node.left, k, value)
+        else:
+            self.updateNode(node.right, k - leftSize - 1, value)
+        node.update(self.op, self.e)
+
     proc update*[T](self: RangeReverseArrayMonoid[T], index: Natural, value: T) =
-        ## index番目の値をvalueに変更します。
-        assert index < self.length
-        var (left, middleRight) = split(self.root, int(index), self.op, self.e)
-        var (middle, right) = split(middleRight, 1, self.op, self.e)
-        middle.value = value
-        middle.prod = value
-        middle.rprod = value
-        middle.update(self.op, self.e)
-        self.root = merge(left, merge(middle, right, self.op, self.e), self.op, self.e)
+        ## index 番目の値を value に変更する。
+        assert index < self.len
+        self.updateNode(self.root, index, value)
+
+    proc searchRight[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], start, l: int, acc: var T, f: proc(x: T): bool): int =
+        let finish = start + node.nodeLen
+        if node.isNil or finish <= l: return finish
+        if l <= start:
+            let next = self.op(acc, node.prod)
+            if f(next):
+                acc = next
+                return finish
+        node.push
+        let mid = start + node.left.nodeLen
+        result = self.searchRight(node.left, start, l, acc, f)
+        if result < mid: return
+        if l <= mid:
+            let next = self.op(acc, node.value)
+            if not f(next): return mid
+            acc = next
+        result = self.searchRight(node.right, mid + 1, l, acc, f)
+
+    proc max_right*[T](self: RangeReverseArrayMonoid[T], l: int, f: proc(x: T): bool): int =
+        ## f(get(l, r)) が真となる最大の r を返す。
+        ## f(e) = true で、区間を伸ばしたとき真から偽への変化が単調であること。
+        assert 0 <= l and l <= self.len
+        assert f(self.e)
+        var acc = self.e
+        self.searchRight(self.root, 0, l, acc, f)
+
+    proc searchLeft[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], start, r: int, acc: var T, f: proc(x: T): bool): int =
+        if node.isNil or r <= start: return start
+        if start + node.size <= r:
+            let next = self.op(node.prod, acc)
+            if f(next):
+                acc = next
+                return start
+        node.push
+        let mid = start + node.left.nodeLen
+        result = self.searchLeft(node.right, mid + 1, r, acc, f)
+        if result > mid + 1: return
+        if mid < r:
+            let next = self.op(node.value, acc)
+            if not f(next): return mid + 1
+            acc = next
+        result = self.searchLeft(node.left, start, r, acc, f)
+
+    proc min_left*[T](self: RangeReverseArrayMonoid[T], r: int, f: proc(x: T): bool): int =
+        ## f(get(l, r)) が真となる最小の l を返す。
+        ## f(e) = true で、区間を伸ばしたとき真から偽への変化が単調であること。
+        assert 0 <= r and r <= self.len
+        assert f(self.e)
+        var acc = self.e
+        self.searchLeft(self.root, 0, r, acc, f)
 
     proc `[]`*[T](self: RangeReverseArrayMonoid[T], index: int): T =
         self.get(index)
