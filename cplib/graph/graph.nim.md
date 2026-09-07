@@ -177,6 +177,12 @@ data:
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tree/tree_hash.nim
+    title: cplib/tree/tree_hash.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/tree_hash.nim
+    title: cplib/tree/tree_hash.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
   - icon: ':heavy_check_mark:'
@@ -514,6 +520,12 @@ data:
     path: verify/AI/topologicalsort_test.nim
     title: verify/AI/topologicalsort_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/tree_hash_test.nim
+    title: verify/AI/tree_hash_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tree_hash_test.nim
+    title: verify/AI/tree_hash_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/tsp_test.nim
     title: verify/AI/tsp_test.nim
   - icon: ':heavy_check_mark:'
@@ -657,6 +669,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rooted_tree_isomorphism_classification_test.nim
+    title: verify/tree/rooted_tree_isomorphism_classification_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rooted_tree_isomorphism_classification_test.nim
+    title: verify/tree/rooted_tree_isomorphism_classification_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -853,6 +871,8 @@ data:
   - cplib/utils/random_helper.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
+  - cplib/tree/tree_hash.nim
+  - cplib/tree/tree_hash.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   - cplib/tree/rerooting.nim
@@ -924,6 +944,8 @@ data:
   - verify/tree/diameter_yosupo_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
+  - verify/tree/rooted_tree_isomorphism_classification_test.nim
+  - verify/tree/rooted_tree_isomorphism_classification_test.nim
   - verify/tree/diameter_static_test.nim
   - verify/tree/diameter_static_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
@@ -988,6 +1010,8 @@ data:
   - verify/AI/graph_debug_test.nim
   - verify/AI/graph_test.nim
   - verify/AI/graph_test.nim
+  - verify/AI/tree_hash_test.nim
+  - verify/AI/tree_hash_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/reverse_edge_test.nim

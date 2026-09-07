@@ -482,6 +482,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/rerooting.nim
       title: cplib/tree/rerooting.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/tree/tree_hash.nim
+      title: cplib/tree/tree_hash.nim
   - name: cplib/utils
     pages:
     - icon: ':heavy_check_mark:'
@@ -1390,6 +1393,9 @@ data:
       path: verify/AI/topologicalsort_test.nim
       title: verify/AI/topologicalsort_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/tree_hash_test.nim
+      title: verify/AI/tree_hash_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/tsp_test.nim
       title: verify/AI/tsp_test.nim
     - icon: ':heavy_check_mark:'
@@ -2022,6 +2028,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/rerooting_test.nim
       title: verify/tree/rerooting_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/rooted_tree_isomorphism_classification_test.nim
+      title: verify/tree/rooted_tree_isomorphism_classification_test.nim
   - name: verify/tree/hld
     pages:
     - icon: ':heavy_check_mark:'

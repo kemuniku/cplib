@@ -57,18 +57,18 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
-  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
