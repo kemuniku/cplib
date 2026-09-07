@@ -37,7 +37,7 @@ data:
   isVerificationFile: true
   path: verify/collections/word_size_tree_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-08 05:12:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/word_size_tree_test.nim

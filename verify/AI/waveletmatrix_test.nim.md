@@ -74,8 +74,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   isVerificationFile: true
