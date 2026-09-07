@@ -36,14 +36,14 @@ data:
     \ (len(tmp) == 1 and tmp[0][1] == 4) or (len(tmp) == 2 and tmp[0][1] == 1 and\
     \ tmp[1][1] == 1):\n        ans.add(i*i)\nvar N = ii()\necho ans.upperbound(N)"
   dependsOn:
-  - cplib/math/osa_k.nim
-  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/osa_k.nim
+  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: verify/math/osa_k_test_.nim
   requiredBy: []
-  timestamp: '2025-03-09 18:51:31+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/math/osa_k_test_.nim

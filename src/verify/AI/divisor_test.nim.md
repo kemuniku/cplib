@@ -72,22 +72,22 @@ data:
 
     '
   dependsOn:
-  - cplib/math/primefactor.nim
-  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/math/divisor.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
   - cplib/math/divisor.nim
-  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
   isVerificationFile: true
   path: verify/AI/divisor_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/divisor_test.nim

@@ -32,7 +32,7 @@ data:
   isVerificationFile: true
   path: verify/str/rolling_hash_aoj_test.nim
   requiredBy: []
-  timestamp: '2024-06-07 22:14:11+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/rolling_hash_aoj_test.nim

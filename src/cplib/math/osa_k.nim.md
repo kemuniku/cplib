@@ -54,7 +54,7 @@ data:
   requiredBy:
   - verify/math/osa_k_test_.nim
   - verify/math/osa_k_test_.nim
-  timestamp: '2024-12-08 16:30:25+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/osa_k_test.nim

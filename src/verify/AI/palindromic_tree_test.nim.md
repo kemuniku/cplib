@@ -60,6 +60,13 @@ data:
     assert intPt.get_palindrome(intLongest) == @[0, 2, 0]
 
 
+    let charPt = initPalindromicTree([''a'', ''b'', ''a''])
+
+    let charLongest = charPt.nodes.filterIt(it[].len == 3)[0]
+
+    assert charPt.get_palindrome(charLongest) == @[0, 1, 0]
+
+
     let emptyPt = initPalindromicTree(newSeq[int]())
 
     assert emptyPt.nodes.mapIt(it[].len) == @[-1, 0]
@@ -71,7 +78,7 @@ data:
   isVerificationFile: true
   path: verify/AI/palindromic_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-03 23:01:44+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/palindromic_tree_test.nim

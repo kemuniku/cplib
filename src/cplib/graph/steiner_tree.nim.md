@@ -98,11 +98,11 @@ data:
     \ inf)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
-  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:

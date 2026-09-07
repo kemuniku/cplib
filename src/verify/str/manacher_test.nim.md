@@ -33,7 +33,7 @@ data:
   isVerificationFile: true
   path: verify/str/manacher_test.nim
   requiredBy: []
-  timestamp: '2026-04-05 17:46:13+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/manacher_test.nim

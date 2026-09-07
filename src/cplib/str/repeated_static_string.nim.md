@@ -98,16 +98,16 @@ data:
     \            for i in 0..<len(S):\n                if i > 0:\n               \
     \     result &= \" \"\n                result &= $S[i]\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
   - cplib/str/static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/repeated_static_string.nim
   requiredBy: []
-  timestamp: '2026-08-28 03:06:46+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/repeated_static_string_test.nim

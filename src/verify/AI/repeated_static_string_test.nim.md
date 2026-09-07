@@ -76,18 +76,18 @@ data:
     \        assert cmp(left, right) == sign(cmp(materializedLeft, materializedRight))\n\
     \        assert cmp(right, left) == sign(cmp(materializedRight, materializedLeft))\n"
   dependsOn:
+  - cplib/str/static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/repeated_static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/repeated_static_string.nim
   isVerificationFile: true
   path: verify/AI/repeated_static_string_test.nim
   requiredBy: []
-  timestamp: '2026-08-28 03:06:46+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/repeated_static_string_test.nim

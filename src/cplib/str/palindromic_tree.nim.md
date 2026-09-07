@@ -30,34 +30,35 @@ data:
     \ = 1\n    import sequtils, algorithm\n    type PalindromicTreeNode* = object\n\
     \        link*: seq[ref PalindromicTreeNode]\n        suffix_link*: ref PalindromicTreeNode\n\
     \        len, count, id: int\n\n    type PalindromicTree* = object\n        amax:\
-    \ int\n        nodes*: seq[ref PalindromicTreeNode]\n        last_node* : ref\
-    \ PalindromicTreeNode\n\n    proc len*(node: PalindromicTreeNode): int = node.len\n\
-    \    proc count*(node: PalindromicTreeNode): int = node.count\n    proc id*(node:\
-    \ PalindromicTreeNode): int = node.id\n    \n    proc newPalindromicTreeNode(pt:\
-    \ var PalindromicTree, amax, len: int): ref PalindromicTreeNode =\n        result\
-    \ = new PalindromicTreeNode\n        result[].link = newSeq[ref PalindromicTreeNode](amax)\n\
-    \        result[].suffix_link = nil\n        result[].len = len\n        result[].count\
-    \ = 0\n        result[].id = pt.nodes.len\n        pt.nodes.add(result)\n\n  \
-    \  proc init(amax: int): PalindromicTree =\n        discard result.newPalindromicTreeNode(amax,\
-    \ -1)\n        discard result.newPalindromicTreeNode(amax, 0)\n        result.amax\
-    \ = amax\n        result.nodes[1][].suffix_link = result.nodes[0]\n\n\n    proc\
-    \ initPalindromicTree*(a: openArray[int], amax: int = -1): PalindromicTree =\n\
-    \        let a = @a\n        var amax = amax\n        if amax < 0:\n         \
-    \   amax = if a.len == 0: 0 else: a.max + 1\n        result = init(amax)\n   \
-    \     proc find_longest(pos: int, node: ref PalindromicTreeNode): ref PalindromicTreeNode\
-    \ =\n            var ln = pos - node[].len - 1\n            if ln >= 0 and a[ln]\
-    \ == a[pos]:\n                return node\n            return find_longest(pos,\
-    \ node[].suffix_link)\n        var current_node = result.nodes[0]\n        for\
-    \ i in 0..<a.len:\n            current_node = find_longest(i, current_node)\n\
-    \            if current_node[].link[a[i]] == nil:\n                current_node[].link[a[i]]\
-    \ = result.newPalindromicTreeNode(amax, current_node[].len + 2)\n            if\
-    \ current_node == result.nodes[0]:\n                current_node[].link[a[i]][].suffix_link\
-    \ = result.nodes[1]\n            else:\n                current_node[].link[a[i]][].suffix_link\
-    \ = find_longest(i, current_node[].suffix_link)[].link[a[i]]\n            current_node\
-    \ = current_node[].link[a[i]]\n            current_node[].count += 1\n       \
-    \ result.last_node = current_node\n\n    proc initPalindromicTree*(s: string,\
-    \ c: char = 'a'): PalindromicTree =\n        return initPalindromicTree(s.mapIt(int(it)\
-    \ - int(c)), 26)\n\n    proc get_palindrome*(pt: PalindromicTree, node: ref PalindromicTreeNode):\
+    \ int\n        nodes*: seq[ref PalindromicTreeNode]\n        last_node*: ref PalindromicTreeNode\n\
+    \n    proc len*(node: PalindromicTreeNode): int = node.len\n    proc count*(node:\
+    \ PalindromicTreeNode): int = node.count\n    proc id*(node: PalindromicTreeNode):\
+    \ int = node.id\n\n    proc newPalindromicTreeNode(pt: var PalindromicTree, amax,\
+    \ len: int): ref PalindromicTreeNode =\n        result = new PalindromicTreeNode\n\
+    \        result[].link = newSeq[ref PalindromicTreeNode](amax)\n        result[].suffix_link\
+    \ = nil\n        result[].len = len\n        result[].count = 0\n        result[].id\
+    \ = pt.nodes.len\n        pt.nodes.add(result)\n\n    proc init(amax: int): PalindromicTree\
+    \ =\n        discard result.newPalindromicTreeNode(amax, -1)\n        discard\
+    \ result.newPalindromicTreeNode(amax, 0)\n        result.amax = amax\n       \
+    \ result.nodes[1][].suffix_link = result.nodes[0]\n\n\n    proc initPalindromicTree*(a:\
+    \ openArray[int], amax: int = -1): PalindromicTree =\n        let a = @a\n   \
+    \     var amax = amax\n        if amax < 0:\n            amax = if a.len == 0:\
+    \ 0 else: a.max + 1\n        result = init(amax)\n        proc find_longest(pos:\
+    \ int, node: ref PalindromicTreeNode): ref PalindromicTreeNode =\n           \
+    \ var ln = pos - node[].len - 1\n            if ln >= 0 and a[ln] == a[pos]:\n\
+    \                return node\n            return find_longest(pos, node[].suffix_link)\n\
+    \        var current_node = result.nodes[0]\n        for i in 0..<a.len:\n   \
+    \         current_node = find_longest(i, current_node)\n            if current_node[].link[a[i]]\
+    \ == nil:\n                current_node[].link[a[i]] = result.newPalindromicTreeNode(amax,\
+    \ current_node[].len + 2)\n            if current_node == result.nodes[0]:\n \
+    \               current_node[].link[a[i]][].suffix_link = result.nodes[1]\n  \
+    \          else:\n                current_node[].link[a[i]][].suffix_link = find_longest(i,\
+    \ current_node[].suffix_link)[].link[a[i]]\n            current_node = current_node[].link[a[i]]\n\
+    \            current_node[].count += 1\n        result.last_node = current_node\n\
+    \n    proc initPalindromicTree*(s: openArray[char], c: char = 'a'): PalindromicTree\
+    \ =\n        var a = newSeq[int](len(s))\n        for i in 0..<len(s):\n     \
+    \       a[i] = int(s[i]) - int(c)\n        return initPalindromicTree(a, 26)\n\
+    \n    proc get_palindrome*(pt: PalindromicTree, node: ref PalindromicTreeNode):\
     \ seq[int] =\n        if node == pt.nodes[0] or node == pt.nodes[1]: return newSeq[int](0)\n\
     \        var ans = newSeq[int](0)\n        proc dfs(x: ref PalindromicTreeNode):\
     \ bool =\n            if x == node: return true\n            for i in 0..<pt.amax:\n\
@@ -72,7 +73,7 @@ data:
   isVerificationFile: false
   path: cplib/str/palindromic_tree.nim
   requiredBy: []
-  timestamp: '2026-09-03 23:01:44+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/palindromic_tree_test.nim

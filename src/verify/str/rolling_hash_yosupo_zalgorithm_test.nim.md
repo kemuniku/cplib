@@ -36,13 +36,13 @@ data:
     \ ans.join(\" \")\n"
   dependsOn:
   - cplib/utils/binary_search.nim
-  - cplib/str/rolling_hash.nim
-  - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
+  - cplib/str/rolling_hash.nim
+  - cplib/str/rolling_hash.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:54:50+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/rolling_hash_yosupo_zalgorithm_test.nim

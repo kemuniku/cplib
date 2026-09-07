@@ -22,61 +22,39 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-
-    echo "Hello World"
-
-
-    import cplib/str/can_reverse_hash_string
-
-
-    let aba = "aba".tohash
-
-    let ab = "ab".tohash
-
-    assert aba.isPalindrome
-
-    assert not ab.isPalindrome
-
-    assert ab.reversed == "ba".tohash
-
-    assert "ab".tohash & "c".tohash == "abc".tohash
-
-    assert "ab".tohash * 3 == "ababab".tohash
-
-    assert get_emptystring_hash() & aba == aba
-
-    assert 65.tohash == ''A''.tohash
-
-
-    let rh = initRollingHash("abacaba")
-
-    assert $rh[0..2] == "aba"
-
-    assert rh[0..2].isPalindrome
-
-    assert rh[0..2].reversed == rh[0..2]
-
-    assert rh[0..2] == rh[4..6]
-
-    assert rh[0] == ''a''
-
-    assert rh[0..6].LCP(rh[4..6]) == 3
-
-    assert cmp(rh[0..2], rh[1..3]) < 0
-
-    let hs: HashString = rh[0..2]
-
-    assert hs == aba
-
-    '
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
+    echo \"Hello World\"\n\nimport cplib/str/can_reverse_hash_string\n\nlet aba =\
+    \ \"aba\".tohash\nlet ab = \"ab\".tohash\nassert aba.isPalindrome\nassert not\
+    \ ab.isPalindrome\nassert ab.reversed == \"ba\".tohash\nassert \"ab\".tohash &\
+    \ \"c\".tohash == \"abc\".tohash\nassert \"ab\".tohash * 3 == \"ababab\".tohash\n\
+    assert get_emptystring_hash() & aba == aba\nassert 65.tohash == 'A'.tohash\nassert\
+    \ ['a', 'b', 'a'].tohash == aba\nassert [65, 66].tohash == \"AB\".tohash\n\nconst\
+    \ hashMod = (1 shl 61) - 1\nlet boundaryValues = [0, 1, hashMod - 1]\nassert newSeq[int]().tohash\
+    \ == get_emptystring_hash()\nvar values: seq[int]\nvar concatenated = get_emptystring_hash()\n\
+    var reverseConcatenated = get_emptystring_hash()\nfor i in 0..<4096:\n    let\
+    \ value = boundaryValues[i mod boundaryValues.len]\n    values.add(value)\n  \
+    \  concatenated = concatenated & value.tohash\n    reverseConcatenated = value.tohash\
+    \ & reverseConcatenated\nassert values.tohash == concatenated\nassert values.tohash.reversed\
+    \ == reverseConcatenated\nassert values.toOpenArray(1, values.high - 1).tohash.reversed\
+    \ ==\n    values[1..^2].tohash.reversed\n\nwhen compileOption(\"assertions\"):\n\
+    \    for value in [int.low, -1, hashMod, hashMod + 1, int.high]:\n        for\
+    \ index in 0..<5:\n            var invalidValues = @[0, 1, 2, 3, 4]\n        \
+    \    invalidValues[index] = value\n            var rejected = false\n        \
+    \    try:\n                discard invalidValues.tohash\n            except AssertionDefect:\n\
+    \                rejected = true\n            doAssert rejected\n\nlet rh = initRollingHash(\"\
+    abacaba\")\nassert $rh[0..2] == \"aba\"\nassert rh[0..2].isPalindrome\nassert\
+    \ rh[0..2].reversed == rh[0..2]\nassert rh[0..2] == rh[4..6]\nassert rh[0] ==\
+    \ 'a'\nassert rh[0..6].LCP(rh[4..6]) == 3\nassert cmp(rh[0..2], rh[1..3]) < 0\n\
+    let hs: HashString = rh[0..2]\nassert hs == aba\nlet arrayRh = initRollingHash(['a',\
+    \ 'b', 'a', 'c', 'a', 'b', 'a'])\nassert arrayRh[0..2] == rh[0..2]\nassert initRollingHash(newSeq[char]()).len\
+    \ == 0\n"
   dependsOn:
   - cplib/str/can_reverse_hash_string.nim
   - cplib/str/can_reverse_hash_string.nim
   isVerificationFile: true
   path: verify/AI/can_reverse_hash_string_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-08 05:32:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/can_reverse_hash_string_test.nim

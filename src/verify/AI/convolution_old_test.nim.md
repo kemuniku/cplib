@@ -85,19 +85,19 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution_old.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution_old.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/ntt.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution_old.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/ntt.nim
   isVerificationFile: true
   path: verify/AI/convolution_old_test.nim
