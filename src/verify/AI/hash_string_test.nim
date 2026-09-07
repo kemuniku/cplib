@@ -15,6 +15,22 @@ assert 65.tohash == 'A'.tohash
 assert ['a', 'b', 'c'].tohash == abc
 assert [65, 66].tohash == "AB".tohash
 
+const hashMod = (1 shl 61) - 1
+let boundaryValues = [int.low, -hashMod, -1, 0, 1, hashMod - 1,
+                      hashMod, hashMod + 1, int.high]
+for value in boundaryValues:
+    assert [value].tohash == value.tohash
+assert newSeq[int]().tohash == get_emptystring_hash()
+var values: seq[int]
+var concatenated = get_emptystring_hash()
+for i in 0..<4096:
+    let value = boundaryValues[i mod boundaryValues.len]
+    values.add(value)
+    concatenated = concatenated & value.tohash
+assert values.tohash == concatenated
+assert values.toOpenArray(1, values.high - 1).tohash ==
+    values[1..^2].tohash
+
 let rh = initRollingHash("banana")
 assert $rh[1..3] == "ana"
 assert rh[1..3] == rh[3..5]

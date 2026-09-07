@@ -55,11 +55,14 @@ when not declared CPLIB_STR_HASHSTRING:
         else:
             return pows[n]
 
+    proc tohash*(S: int): HashString =
+        result = HashString(hash: uint(S) mod RH_MOD, bpow: hashstring_base, size: 1)
+
     proc tohash*[T](S: openArray[T]): HashString =
         var hash = 0u
         var tmp = 1u
         for i in countdown(len(S)-1, 0, 1):
-            hash = (hash+mul(uint(int(S[i])), tmp)).calc_mod
+            hash = (hash+mul(int(S[i]).tohash.hash, tmp)).calc_mod
             tmp = mul(tmp, hashstring_base).calc_mod
         result = HashString(hash: hash, bpow: base_pow(len(S)), size: len(S))
 
@@ -68,9 +71,6 @@ when not declared CPLIB_STR_HASHSTRING:
 
     proc get_emptystring_hash*(): HashString =
         result = HashString(hash: 0u, bpow: 1u, size: 0)
-
-    proc tohash*(S: int): HashString =
-        result = HashString(hash: uint(S) mod RH_MOD, bpow: hashstring_base, size: 1)
 
     proc `&`*(L, R: HashString): HashString =
         result = HashString(hash: (mul(L.hash, R.bpow).calc_mod+R.hash).calc_mod, bpow: mul(L.bpow, R.bpow).calc_mod, size: L.size+R.size)
