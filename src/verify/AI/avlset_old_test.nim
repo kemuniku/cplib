@@ -1,4 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+# Memory manager: refc, configured in avlset_old_test.nim.cfg.
 echo "Hello World"
 
 import options, sequtils
