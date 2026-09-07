@@ -35,7 +35,7 @@ data:
   isVerificationFile: false
   path: verify/collections/static_bitset_test_.nim
   requiredBy: []
-  timestamp: '2026-08-28 03:07:19+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/static_bitset_test_.nim

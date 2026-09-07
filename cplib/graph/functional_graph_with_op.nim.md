@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   - icon: ':heavy_check_mark:'
@@ -13,16 +13,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy: []
@@ -202,17 +202,17 @@ data:
     \           return used\n        return used-1\n"
   dependsOn:
   - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
-  timestamp: '2026-07-17 07:16:29+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim

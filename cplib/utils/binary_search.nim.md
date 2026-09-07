@@ -21,10 +21,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/binary_search_test.nim
     title: verify/AI/binary_search_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - icon: ':heavy_check_mark:'
@@ -51,9 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/binary_search_int_test.nim
     title: verify/utils/binary_search_int_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -81,7 +81,7 @@ data:
   - verify/collections/ppunionfind/stamp_rally_test_.nim
   - verify/collections/ppunionfind/stamp_rally_test_.nim
   timestamp: '2026-07-07 06:54:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/utils/binary_search_float_test.nim
   - verify/utils/binary_search_float_test.nim

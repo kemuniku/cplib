@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/SWAG.nim
     title: cplib/collections/SWAG.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/SWAG.nim
     title: cplib/collections/SWAG.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0439
     links:
@@ -65,19 +65,19 @@ data:
     \                    now = min(now,tmp)\n        dfs2(G.v[0],-1,INF64)\necho ans.join(\"\
     \\n\")\n\n\n\n\n\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/SWAG.nim
-  - cplib/collections/SWAG.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/collections/SWAG.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/SWAG.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/auxiliaryweightedtree_test.nim
   requiredBy: []
-  timestamp: '2026-07-13 00:09:08+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/auxiliaryweightedtree_test.nim
 layout: document

@@ -9,45 +9,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/itertools_test.nim
     title: verify/AI/itertools_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -135,26 +135,26 @@ data:
     \                x[i] = v[idx[i]]\n                    for j in (i + 1)..<r:\n\
     \                        idx[j] = idx[j - 1] + 1\n                        x[j]\
     \ = v[idx[j]]\n                    yield x\n\n    iterator product*[T](v: seq[T],repeat:int):seq[T]=\n\
-    \        if repeat == 0:\n            yield @[]\n        else:\n            var\
-    \ idxs = newseq[int](repeat)\n            var f = true\n            while f:\n\
-    \                yield idxs.mapit(v[it])\n                for i in 0..<repeat:\n\
-    \                    idxs[i] += 1\n                    if idxs[i] == len(v):\n\
-    \                        idxs[i] = 0\n                        if i == repeat-1:\n\
-    \                            f = false\n                        continue\n   \
-    \                 else:\n                        break\n    iterator partitions*(n:\
-    \ int): seq[int] =\n        ## \u5206\u5272\u6570\u5217\u6319\n        if n ==\
-    \ 0:\n            yield @[]\n        else:\n            var a = newSeq[int](n\
-    \ + 1)\n            var k = 1\n            a[1] = n\n            while k != 0:\n\
-    \                var x = a[k - 1] + 1\n                var y = a[k] - 1\n    \
-    \            dec k\n                while x <= y:\n                    a[k] =\
-    \ x\n                    y -= x\n                    inc k\n                a[k]\
-    \ = x + y\n                yield a[0 .. k]\n"
+    \        if repeat == 0:\n            yield @[]\n        elif v.len > 0:\n   \
+    \         var idxs = newseq[int](repeat)\n            var f = true\n         \
+    \   while f:\n                yield idxs.mapit(v[it])\n                for i in\
+    \ 0..<repeat:\n                    idxs[i] += 1\n                    if idxs[i]\
+    \ == len(v):\n                        idxs[i] = 0\n                        if\
+    \ i == repeat-1:\n                            f = false\n                    \
+    \    continue\n                    else:\n                        break\n    iterator\
+    \ partitions*(n: int): seq[int] =\n        ## \u5206\u5272\u6570\u5217\u6319\n\
+    \        if n == 0:\n            yield @[]\n        else:\n            var a =\
+    \ newSeq[int](n + 1)\n            var k = 1\n            a[1] = n\n          \
+    \  while k != 0:\n                var x = a[k - 1] + 1\n                var y\
+    \ = a[k] - 1\n                dec k\n                while x <= y:\n         \
+    \           a[k] = x\n                    y -= x\n                    inc k\n\
+    \                a[k] = x + y\n                yield a[0 .. k]\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulated_test.nim

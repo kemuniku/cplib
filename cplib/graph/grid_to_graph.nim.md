@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -43,17 +43,18 @@ data:
     \ openArray[seq[T]], ok: T, return_static: static[bool] = false): auto =\n   \
     \     var h = a.len\n        if h == 0:\n            when return_static: result\
     \ = initUnWeightedUnDirectedStaticGraph(0)\n            else: result = initUnWeightedUnDirectedGraph(0)\n\
-    \        var w = a[0].len\n        when return_static: result = initUnWeightedUnDirectedStaticGraph(h*w)\n\
-    \        else: result = initUnWeightedUnDirectedGraph(h*w)\n        for i in 0..<h:\n\
-    \            for j in 0..<w:\n                if a[i][j] == ok:\n            \
-    \        for (dx, dy) in [(1, 0), (0, 1)]:\n                        if i+dx in\
-    \ 0..<h and j+dy in 0..<w and a[i+dx][j+dy] == ok:\n                         \
-    \   result.add_edge(i*w+j, (i+dx)*w+j+dy)\n    proc grid_to_graph*(a: openArray[seq[char]],\
-    \ ok: char = '.', return_static: static[bool] = false): auto = grid_to_graph_impl(a,\
-    \ ok, return_static)\n    proc grid_to_graph*[T](a: openArray[seq[T]], ok: T,\
-    \ return_static: static[bool] = false): auto = grid_to_graph_impl(a, ok, return_static)\n\
-    \    proc grid_to_graph*(a: openArray[string], ok: char = '.', return_static:\
-    \ static[bool] = false): auto = grid_to_graph(a.mapIt(it.toSeq), ok, return_static)\n"
+    \            return\n        var w = a[0].len\n        when return_static: result\
+    \ = initUnWeightedUnDirectedStaticGraph(h*w)\n        else: result = initUnWeightedUnDirectedGraph(h*w)\n\
+    \        for i in 0..<h:\n            for j in 0..<w:\n                if a[i][j]\
+    \ == ok:\n                    for (dx, dy) in [(1, 0), (0, 1)]:\n            \
+    \            if i+dx in 0..<h and j+dy in 0..<w and a[i+dx][j+dy] == ok:\n   \
+    \                         result.add_edge(i*w+j, (i+dx)*w+j+dy)\n    proc grid_to_graph*(a:\
+    \ openArray[seq[char]], ok: char = '.', return_static: static[bool] = false):\
+    \ auto = grid_to_graph_impl(a, ok, return_static)\n    proc grid_to_graph*[T](a:\
+    \ openArray[seq[T]], ok: T, return_static: static[bool] = false): auto = grid_to_graph_impl(a,\
+    \ ok, return_static)\n    proc grid_to_graph*(a: openArray[string], ok: char =\
+    \ '.', return_static: static[bool] = false): auto = grid_to_graph(a.mapIt(it.toSeq),\
+    \ ok, return_static)\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
@@ -64,7 +65,7 @@ data:
   - verify/graph/static/grid_to_graph_abc151d_test_.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/grid_to_graph_test.nim

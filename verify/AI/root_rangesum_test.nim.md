@@ -30,6 +30,17 @@ data:
     import cplib/collections/root_rangesum
 
 
+    let empty = initrangesum(newSeq[int]())
+
+    assert empty.len == 0
+
+    assert empty.get(0, 0) == 0
+
+    assert empty.max_right(0, proc(x: int): bool = x == 0) == 0
+
+    assert empty.min_left(0, proc(x: int): bool = x == 0) == 0
+
+
     var rs = initrangesum(@[1, 2, 3, 4, 5], 2, 0)
 
     assert rs.len == 5
@@ -67,7 +78,7 @@ data:
   isVerificationFile: true
   path: verify/AI/root_rangesum_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/root_rangesum_test.nim

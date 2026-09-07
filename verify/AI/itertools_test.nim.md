@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
   _extendedRequiredBy: []
@@ -75,6 +75,8 @@ data:
 
     assert toSeq(product(@[7], 0)) == @[newSeq[int]()]
 
+    assert toSeq(product(newSeq[int](), 2)) == @[]
+
     assert toSeq(partitions(4)) == @[@[1, 1, 1, 1], @[1, 1, 2], @[1, 3], @[2, 2],
     @[4]]
 
@@ -85,7 +87,7 @@ data:
   isVerificationFile: true
   path: verify/AI/itertools_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/itertools_test.nim

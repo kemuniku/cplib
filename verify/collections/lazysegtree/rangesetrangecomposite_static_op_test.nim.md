@@ -7,28 +7,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lazysegtree_static_op.nim
     title: cplib/collections/lazysegtree_static_op.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -63,20 +63,20 @@ data:
     \ (true, mint(c), mint(d)))\n    else:\n        let l, r, x = ii()\n        let\
     \ (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/collections/lazysegtree_static_op.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/collections/lazysegtree_static_op.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   requiredBy: []
-  timestamp: '2026-09-03 23:27:59+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -38,8 +38,8 @@ data:
     \ \")\n"
   dependsOn:
   - cplib/tree/tree_hash.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/rooted_tree_isomorphism_classification_test.nim

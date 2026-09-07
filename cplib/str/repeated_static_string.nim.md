@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/fixedlength_merged_static_string.nim
     title: cplib/str/fixedlength_merged_static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
@@ -99,15 +99,15 @@ data:
     \     result &= \" \"\n                result &= $S[i]\n"
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/fixedlength_merged_static_string.nim
   isVerificationFile: false
   path: cplib/str/repeated_static_string.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-09-08 05:46:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/repeated_static_string_test.nim

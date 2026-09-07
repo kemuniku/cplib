@@ -80,11 +80,12 @@ data:
     \ or y.bits[i]).popcount()\n    \n    proc xorpopcount*[size](x,y:BitSet[size]):int=\n\
     \        for i in 0..<min(len(x.bits),len(y.bits)):\n            result += (x.bits[i]\
     \ xor y.bits[i]).popcount()\n    \n    proc `~`*[size](x:BitSet[size]):BitSet[size]=\n\
-    \        for i in 0..<len(x.bits)-1:\n            result.bits[i] = bitnot(x.bits[i])\n\
-    \        var mod64 = size mod 64\n        if mod64 == 0:\n            result.bits[^1]\
-    \ = bitnot(x.bits[^1])\n        else:\n            result.bits[^1] = x.bits[^1]\
-    \ xor ((1u shl mod64) - 1)\n    proc popcount*[size](x:BitSet[size]):int=\n  \
-    \      for i in 0..<len(x.bits):\n            result += x.bits[i].popcount()\n\
+    \        when size == 0:\n            return\n        else:\n            for i\
+    \ in 0..<len(x.bits)-1:\n                result.bits[i] = bitnot(x.bits[i])\n\
+    \            var mod64 = size mod 64\n            if mod64 == 0:\n           \
+    \     result.bits[^1] = bitnot(x.bits[^1])\n            else:\n              \
+    \  result.bits[^1] = x.bits[^1] xor ((1u shl mod64) - 1)\n    proc popcount*[size](x:BitSet[size]):int=\n\
+    \        for i in 0..<len(x.bits):\n            result += x.bits[i].popcount()\n\
     \n    iterator items*[size](bitset:BitSet[size]):int=\n        for wordIndex in\
     \ 0..<len(bitset.bits):\n            var word = bitset.bits[wordIndex]\n     \
     \       while word != 0:\n                let bitIndex = word.countTrailingZeroBits()\n\
@@ -113,7 +114,7 @@ data:
   - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_test_.nim
-  timestamp: '2026-08-28 03:07:19+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/staticbitset_test.nim

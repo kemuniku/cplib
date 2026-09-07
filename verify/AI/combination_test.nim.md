@@ -1,34 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -58,6 +58,13 @@ data:
 
     type Mint = modint998244353_barrett
 
+    let c0 = initCombination[Mint](0)
+
+    assert c0.fact.len == 1
+
+    assert c0.ncr(0, 0).val == 1
+
+
     let c = initCombination[Mint](10)
 
     assert c.fact[5].val == 120
@@ -74,20 +81,20 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/combination.nim
   - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/combination.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/combination.nim
   isVerificationFile: true
   path: verify/AI/combination_test.nim
   requiredBy: []
-  timestamp: '2026-09-03 22:02:40+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/combination_test.nim

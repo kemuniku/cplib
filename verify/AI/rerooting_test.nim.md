@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
   _extendedRequiredBy: []
@@ -54,6 +54,13 @@ data:
     proc putVertex(x: int, v: int): int = x
 
 
+    let emptyGraph = initUnWeightedUnDirectedGraph(0)
+
+    assert emptyGraph.solve_Rerooting_raw(merge, 0, putEdge, putVertex) == @[]
+
+    assert emptyGraph.solve_Rerooting(merge, 0, putEdge, putVertex) == @[]
+
+
     assert g.solve_Rerooting_raw(merge, 0, putEdge, putVertex) == @[2, 1, 2, 2]
 
     assert g.solve_Rerooting(merge, 0, putEdge, putVertex) == @[2, 1, 2, 2]
@@ -67,7 +74,7 @@ data:
   isVerificationFile: true
   path: verify/AI/rerooting_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/rerooting_test.nim

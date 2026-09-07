@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -33,15 +33,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/namori_graph_test.nim
     title: verify/AI/namori_graph_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -91,19 +91,19 @@ data:
     \        return namori.roots[x]\n\n    proc same_tree*(namori:NamoriGraph,x,y:int):bool=\n\
     \        return namori.roots[x] == namori.roots[y]\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/namori_graph.nim
   requiredBy:
   - verify/graph/namori_graph_test_.nim
   - verify/graph/namori_graph_test_.nim
-  timestamp: '2026-07-13 00:09:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim

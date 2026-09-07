@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []

@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
@@ -36,6 +36,26 @@ data:
     import sequtils
 
     import cplib/str/static_string
+
+
+    let directlyEmpty = toStaticString("")
+
+    assert directlyEmpty.len == 0
+
+    assert $directlyEmpty == ""
+
+    assert directlyEmpty.base.SA == @[]
+
+    assert directlyEmpty.base.LCP == @[]
+
+    assert initSuffixArray(directlyEmpty).len == 0
+
+
+    let directlyEmptyInts = toStaticString(newSeq[int]())
+
+    assert directlyEmptyInts.len == 0
+
+    assert directlyEmptyInts.base.SA == @[]
 
 
     let s = toStaticString("banana")
@@ -156,13 +176,13 @@ data:
     '
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/AI/static_string_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-09-08 05:46:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/static_string_test.nim

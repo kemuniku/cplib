@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
     links:
@@ -38,15 +38,15 @@ data:
     \ S[(i-arg)..<(i+arg)].isPalindrome()\n        L.add meguru_bisect(0,min(i,len(S)-i)+1,is_ok)*2\n\
     \necho L.join(\" \")"
   dependsOn:
-  - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/can_reverse_hash_string.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/binary_search.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:32:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-08 05:46:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
 layout: document

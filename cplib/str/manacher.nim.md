@@ -9,10 +9,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/manacher_test.nim
     title: verify/AI/manacher_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
   - icon: ':heavy_check_mark:'
@@ -21,9 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/manacher_test.nim
     title: verify/str/manacher_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -65,7 +65,7 @@ data:
   path: cplib/str/manacher.nim
   requiredBy: []
   timestamp: '2026-09-04 08:24:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/get_palindromes_test.nim
   - verify/str/get_palindromes_test.nim

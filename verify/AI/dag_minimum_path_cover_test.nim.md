@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -65,11 +65,11 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/graph.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/dag_minimum_path_cover_test.nim

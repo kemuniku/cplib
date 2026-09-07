@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
@@ -43,15 +43,15 @@ data:
     \ = 1\n    type CompressedTrieNode* = ref object\n        parent* : CompressedTrieNode\n\
     \        child* : array['a'..'z',CompressedTrieNode]\n        s* : StaticString[char]\n\
     \        cnt* : int32\n        subtree_sum* : int32\n\n    proc initCompressedTrie*(S:openArray[StaticString[char]],sorted:bool=false):CompressedTrieNode=\n\
-    \        var S = @S\n        if not sorted:\n            S.sort()\n        var\
-    \ root = CompressedTrieNode(s:S[0][0..<0])\n        var stack = @[root]\n    \
-    \    for s in S:\n            while not s.startsWith(stack[^1].s):\n         \
-    \       discard stack.pop()\n            var l = lcp(stack[^1].s,s)\n        \
-    \    if l == len(s):\n                stack[^1].cnt += 1\n                continue\n\
-    \            if stack[^1].child[s[l]].isNil():\n                stack[^1].child[s[l]]\
-    \ = CompressedTrieNode(parent:stack[^1],s:s,cnt:1,subtree_sum:1)\n           \
-    \     stack.add(stack[^1].child[s[l]])\n            else:\n                var\
-    \ x = lcp(s,stack[^1].child[s[l]].s)\n                var tmp = CompressedTrieNode(parent:stack[^1],s:s[0..<x],cnt:0,subtree_sum:0)\n\
+    \        var S = @S\n        if not sorted:\n            S.sort()\n        if\
+    \ S.len == 0:\n            return CompressedTrieNode()\n        var root = CompressedTrieNode(s:S[0][0..<0])\n\
+    \        var stack = @[root]\n        for s in S:\n            while not s.startsWith(stack[^1].s):\n\
+    \                discard stack.pop()\n            var l = lcp(stack[^1].s,s)\n\
+    \            if l == len(s):\n                stack[^1].cnt += 1\n           \
+    \     continue\n            if stack[^1].child[s[l]].isNil():\n              \
+    \  stack[^1].child[s[l]] = CompressedTrieNode(parent:stack[^1],s:s,cnt:1,subtree_sum:1)\n\
+    \                stack.add(stack[^1].child[s[l]])\n            else:\n       \
+    \         var x = lcp(s,stack[^1].child[s[l]].s)\n                var tmp = CompressedTrieNode(parent:stack[^1],s:s[0..<x],cnt:0,subtree_sum:0)\n\
     \                stack[^1].child[s[l]].parent = tmp\n                tmp.child[stack[^1].child[s[l]].s[x]]\
     \ = stack[^1].child[s[l]]\n                tmp.child[s[x]] = CompressedTrieNode(parent:tmp,s:s,cnt:1,subtree_sum:1)\n\
     \                stack[^1].child[s[l]] = tmp\n                stack.add(tmp)\n\
@@ -92,15 +92,15 @@ data:
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-09-08 05:46:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/compressed_trie_test.nim

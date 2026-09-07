@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -48,8 +48,8 @@ data:
     \        return len(G)-MFG.flow(2*len(G),2*len(G)+1)"
   dependsOn:
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dag_minimum_path_cover.nim

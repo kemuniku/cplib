@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -60,36 +60,38 @@ data:
     \ in 1..3)\nlet uniq = randomseq(3, 1..5, true)\nassert uniq.len == 3\nassert\
     \ uniq.deduplicate.len == 3\nassert uniq.allIt(it in 1..5)\n\nlet parts = randomseq_from_sum(4,\
     \ 7)\nassert parts.len == 4\nassert parts.foldl(a + b, 0) == 7\nassert parts.allIt(it\
-    \ >= 0)\n\nlet ps = random_parenthesis_sequence(6)\nassert ps.len == 6\nassert\
-    \ ps.foldl(a + b, 0) == 0\nvar bal = 0\nfor x in ps:\n  bal += x\n  assert bal\
-    \ >= 0\nassert random_parenthesis_string(4).len == 4\n\nlet bt = make_binary_tree_from_sequence(@[1,\
-    \ 1, -1, -1])\nassert bt.len == 2\nassert bt.edgeCount == 1\nassert random_binary_tree(3).len\
-    \ == 3\nassert random_tree(1).len == 1\nassert random_tree(2).edgeCount == 1\n\
-    \nlet p = random_prime(10..20)\nassert p in 10..20\nassert p.isprime\nlet primes\
-    \ = random_prime_sequence(3, 2..13, true)\nassert primes.len == 3\nassert primes.deduplicate.len\
-    \ == 3\nassert primes.allIt(it.isprime)\n\nlet sg = random_simple_graph(4, 3)\n\
-    assert sg.len == 4\nassert sg.edgeCount == 3\nlet cg = random_connected_graph(4,\
-    \ 3)\nassert cg.len == 4\nassert cg.edgeCount == 3\n\nlet bits = random_01sequence(5,\
-    \ 2)\nassert bits.len == 5\nassert bits.foldl(a + b, 0) == 2\nassert random_string(4,\
-    \ 'a'..'c').allIt(it in 'a'..'c')\nassert random_string(4, \"xyz\").allIt(it in\
-    \ {'x', 'y', 'z'})\n"
+    \ >= 0)\nassert randomseq_from_sum(0, 0) == @[]\nvar rejectedNonzeroEmptySum =\
+    \ false\ntry:\n  discard randomseq_from_sum(0, 1)\nexcept AssertionDefect:\n \
+    \ rejectedNonzeroEmptySum = true\nassert rejectedNonzeroEmptySum\n\nlet ps = random_parenthesis_sequence(6)\n\
+    assert ps.len == 6\nassert ps.foldl(a + b, 0) == 0\nvar bal = 0\nfor x in ps:\n\
+    \  bal += x\n  assert bal >= 0\nassert random_parenthesis_string(4).len == 4\n\
+    \nlet bt = make_binary_tree_from_sequence(@[1, 1, -1, -1])\nassert bt.len == 2\n\
+    assert bt.edgeCount == 1\nassert random_binary_tree(3).len == 3\nassert random_tree(1).len\
+    \ == 1\nassert random_tree(2).edgeCount == 1\n\nlet p = random_prime(10..20)\n\
+    assert p in 10..20\nassert p.isprime\nlet primes = random_prime_sequence(3, 2..13,\
+    \ true)\nassert primes.len == 3\nassert primes.deduplicate.len == 3\nassert primes.allIt(it.isprime)\n\
+    \nlet sg = random_simple_graph(4, 3)\nassert sg.len == 4\nassert sg.edgeCount\
+    \ == 3\nlet cg = random_connected_graph(4, 3)\nassert cg.len == 4\nassert cg.edgeCount\
+    \ == 3\n\nlet bits = random_01sequence(5, 2)\nassert bits.len == 5\nassert bits.foldl(a\
+    \ + b, 0) == 2\nassert random_string(4, 'a'..'c').allIt(it in 'a'..'c')\nassert\
+    \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
   - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
   - cplib/math/powmod.nim
-  - cplib/utils/random_helper.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/graph/graph.nim
+  - cplib/math/inner_math.nim
   - cplib/utils/random_helper.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/utils/random_helper.nim
+  - cplib/graph/graph.nim
+  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:56:47+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/random_helper_test.nim

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
     links:
@@ -32,8 +32,8 @@ data:
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_Z_algo_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:32:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-08 05:46:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_Z_algo_test.nim
 layout: document

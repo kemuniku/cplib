@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy: []
@@ -33,9 +33,10 @@ data:
     import cplib/tree/heavylightdecomposition\n\nvar g = initUnWeightedUnDirectedStaticGraph(6)\n\
     g.add_edge(0, 1)\ng.add_edge(0, 2)\ng.add_edge(1, 3)\ng.add_edge(1, 4)\ng.add_edge(2,\
     \ 5)\ng.build()\n\nlet hld = g.initHld(0)\nassert hld.numVertices == 6\nassert\
-    \ hld.parentOf(0) == -1\nassert hld.parentOf(3) == 1\nassert hld.depth(5) == 2\n\
-    for v in 0..<6:\n  assert hld.toVtx(hld.toSeq(v)) == v\n\nassert hld.lca(3, 4)\
-    \ == 1\nassert hld.lca(3, 5) == 0\nassert hld.dist(3, 5) == 4\nassert hld.median(3,\
+    \ hld.initAuxiliaryTree(newSeq[int]()).v == @[]\nassert hld.initAuxiliaryWeightedTree(newSeq[int]()).v\
+    \ == @[]\nassert hld.parentOf(0) == -1\nassert hld.parentOf(3) == 1\nassert hld.depth(5)\
+    \ == 2\nfor v in 0..<6:\n  assert hld.toVtx(hld.toSeq(v)) == v\n\nassert hld.lca(3,\
+    \ 4) == 1\nassert hld.lca(3, 5) == 0\nassert hld.dist(3, 5) == 4\nassert hld.median(3,\
     \ 4, 5) == 1\nassert hld.la(3, 5, 0) == 3\nassert hld.la(3, 5, 1) == 1\nassert\
     \ hld.la(3, 5, 2) == 0\nassert hld.la(3, 5, 4) == 5\nassert hld.la(3, 5, 5) ==\
     \ -1\n\nvar subtree: seq[int]\nfor v in hld.subtreeV(1):\n  subtree.add(v)\nsubtree.sort()\n\
@@ -46,14 +47,14 @@ data:
     \ == @[0, 3, 5]\nvar weightedEdges = waux.graph.edges[0].mapIt((it[0].int, it[1]))\n\
     weightedEdges.sort()\nassert weightedEdges == @[(1, 2), (2, 2)]\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/heavylightdecomposition_test.nim
   requiredBy: []
-  timestamp: '2026-07-13 00:09:08+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/heavylightdecomposition_test.nim

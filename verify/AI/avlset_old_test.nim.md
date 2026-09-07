@@ -30,12 +30,19 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 
+    # Memory manager: refc, configured in avlset_old_test.nim.cfg.
+
     echo "Hello World"
 
 
     import options, sequtils
 
     import cplib/collections/avlset_old
+
+
+    assert initAvlSortedSet[int]().toSeq == @[]
+
+    assert initAvlSortedMultiSet[int]().toSeq == @[]
 
 
     var s = initAvlSortedSet[int](@[3, 1, 3])
@@ -99,14 +106,14 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/avlset_old.nim
-  - cplib/collections/avlset_old.nim
   - cplib/collections/avltreenode_old.nim
   - cplib/collections/avltreenode_old.nim
+  - cplib/collections/avlset_old.nim
+  - cplib/collections/avlset_old.nim
   isVerificationFile: true
   path: verify/AI/avlset_old_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-08 05:41:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/avlset_old_test.nim

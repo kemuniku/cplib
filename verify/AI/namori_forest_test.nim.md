@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,16 +13,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -94,18 +94,18 @@ data:
 
     '
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/graph.nim
   - cplib/graph/namori_forest.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/namori_forest_test.nim
   requiredBy: []
-  timestamp: '2026-07-13 00:09:08+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/namori_forest_test.nim

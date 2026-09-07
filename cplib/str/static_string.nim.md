@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   _extendedRequiredBy:
@@ -75,57 +75,57 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -152,29 +152,30 @@ data:
     \            var revS = @S\n            revS.reverse\n            result.S.add(revS)\n\
     \        result.SA = genericSuffixArray(result.S).mapit(int32(it))\n        result.RSA\
     \ = newseq[int32](len(result.S))\n        for i in 0.int32()..<len(result.S).int32():\n\
-    \            result.RSA[result.SA[i]] = i\n        result.LCP = lcp_array(result.S,\
-    \ result.SA.mapIt(int(it))).mapit(int32(it))\n        result.RMQ = initRMQ(result.LCP)\n\
-    \n    proc initStaticStringBase*(S: string, reversible: bool = false): StaticStringBase[char]\
-    \ =\n        result = StaticStringBase[char]()\n        result.size = len(S).int32()\n\
-    \        result.reversible = reversible\n        var staticS = S\n        if reversible:\n\
-    \            var revS = S\n            revS.reverse\n            staticS &= revS\n\
-    \        result.S = @staticS\n        result.SA = suffix_array(staticS).mapit(int32(it))\n\
-    \        result.RSA = newseq[int32](len(staticS))\n        for i in 0.int32()..<len(staticS).int32():\n\
-    \            result.RSA[result.SA[i]] = i\n        result.LCP = lcp_array(staticS,\
-    \ result.SA.mapIt(int(it))).mapit(int32(it))\n        result.RMQ = initRMQ(result.LCP)\n\
-    \n    proc toStaticString*[T](S: openArray[T], reversible: bool = false): StaticString[T]\
-    \ =\n        var base = initStaticStringBase(S, reversible)\n        return StaticString[T](base:\
-    \ base, l: 0, r: len(S).int32())\n\n    proc toStaticString*(S: string, reversible:\
-    \ bool = false): StaticString[char] =\n        var base = initStaticStringBase(S,\
-    \ reversible)\n        return StaticString[char](base: base, l: 0, r: len(S).int32())\n\
-    \n    proc len*[T](S: StaticString[T]): int {.inline.} = S.r - S.l\n\n    proc\
-    \ `[]`*[T](S: StaticString[T], idx: Natural): T =\n        assert idx < len(S)\n\
-    \        return S.base.S[S.l+idx]\n\n    proc `[]`*[T](S: StaticString[T], slice:\
-    \ HSlice[int, int]): StaticString[T] =\n        assert slice.a <= slice.b+1 and\
-    \ S.l + slice.b < S.r\n        return StaticString[T](base: S.base, l: S.l+slice.a.int32(),\
-    \ r: S.l+slice.b.int32()+1)\n\n\n    proc `$`*[T](S: StaticString[T]): string\
-    \ =\n        when T is char:\n            result = newString(len(S))\n       \
-    \     for i in 0..<len(S):\n                result[i] = S[i]\n        else:\n\
+    \            result.RSA[result.SA[i]] = i\n        if result.S.len > 0:\n    \
+    \        result.LCP = lcp_array(result.S, result.SA.mapIt(int(it))).mapit(int32(it))\n\
+    \        result.RMQ = initRMQ(result.LCP)\n\n    proc initStaticStringBase*(S:\
+    \ string, reversible: bool = false): StaticStringBase[char] =\n        result\
+    \ = StaticStringBase[char]()\n        result.size = len(S).int32()\n        result.reversible\
+    \ = reversible\n        var staticS = S\n        if reversible:\n            var\
+    \ revS = S\n            revS.reverse\n            staticS &= revS\n        result.S\
+    \ = @staticS\n        result.SA = suffix_array(staticS).mapit(int32(it))\n   \
+    \     result.RSA = newseq[int32](len(staticS))\n        for i in 0.int32()..<len(staticS).int32():\n\
+    \            result.RSA[result.SA[i]] = i\n        if staticS.len > 0:\n     \
+    \       result.LCP = lcp_array(staticS, result.SA.mapIt(int(it))).mapit(int32(it))\n\
+    \        result.RMQ = initRMQ(result.LCP)\n\n    proc toStaticString*[T](S: openArray[T],\
+    \ reversible: bool = false): StaticString[T] =\n        var base = initStaticStringBase(S,\
+    \ reversible)\n        return StaticString[T](base: base, l: 0, r: len(S).int32())\n\
+    \n    proc toStaticString*(S: string, reversible: bool = false): StaticString[char]\
+    \ =\n        var base = initStaticStringBase(S, reversible)\n        return StaticString[char](base:\
+    \ base, l: 0, r: len(S).int32())\n\n    proc len*[T](S: StaticString[T]): int\
+    \ {.inline.} = S.r - S.l\n\n    proc `[]`*[T](S: StaticString[T], idx: Natural):\
+    \ T =\n        assert idx < len(S)\n        return S.base.S[S.l+idx]\n\n    proc\
+    \ `[]`*[T](S: StaticString[T], slice: HSlice[int, int]): StaticString[T] =\n \
+    \       assert slice.a <= slice.b+1 and S.l + slice.b < S.r\n        return StaticString[T](base:\
+    \ S.base, l: S.l+slice.a.int32(), r: S.l+slice.b.int32()+1)\n\n\n    proc `$`*[T](S:\
+    \ StaticString[T]): string =\n        when T is char:\n            result = newString(len(S))\n\
+    \            for i in 0..<len(S):\n                result[i] = S[i]\n        else:\n\
     \            for i in 0..<len(S):\n                if i > 0:\n               \
     \     result &= \" \"\n                result &= $S[i]\n\n    proc lcp*[Element](S,\
     \ T: StaticString[Element]): int {.inline.} =\n        assert S.base == T.base\n\
@@ -248,8 +249,8 @@ data:
   - cplib/str/merged_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
-  timestamp: '2026-09-04 08:24:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-08 05:46:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim

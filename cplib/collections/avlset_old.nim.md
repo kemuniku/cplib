@@ -68,11 +68,12 @@ data:
     \       if idx < 0: idx = self.len + idx\n        assert idx < self.root.len\n\
     \        var node = self.root.get(idx)\n        result = node.key\n        self.root\
     \ = self.root.erase(node, node.next)\n    iterator items*[T](self: AVLSets[T]):\
-    \ T =\n        var stack = @[(0, self.root)]\n        while stack.len > 0:\n \
-    \           var (t, node) = stack.pop\n            if t == 0:\n              \
-    \  stack.add((1, node))\n                if node.l != get_avltree_nilnode[T]():\
-    \ stack.add((0, node.l))\n            elif t == 1:\n                yield node.key\n\
-    \                if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))\n\
+    \ T =\n        if self.root != get_avltree_nilnode[T]():\n            var stack\
+    \ = @[(0, self.root)]\n            while stack.len > 0:\n                var (t,\
+    \ node) = stack.pop\n                if t == 0:\n                    stack.add((1,\
+    \ node))\n                    if node.l != get_avltree_nilnode[T](): stack.add((0,\
+    \ node.l))\n                elif t == 1:\n                    yield node.key\n\
+    \                    if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))\n\
     \    proc `$`*[T](self: AVLSets[T]): string = self.toSeq.join(\" \")\n    proc\
     \ initAvlSortedMultiSet*[T](v: openArray[T] = []): AvlSortedMultiSet[T] =\n  \
     \      result = AvlSortedMultiSet[T](root: get_avltree_nilnode[T]())\n       \
@@ -85,7 +86,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/avlset_old.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/avlset_old_test.nim

@@ -9,39 +9,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/hash_string_test.nim
     title: verify/AI/hash_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_LCP_test.nim
     title: verify/str/hash_string/hash_string_LCP_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_LCP_test.nim
     title: verify/str/hash_string/hash_string_LCP_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_LCS_test.nim
     title: verify/str/hash_string/hash_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_LCS_test.nim
     title: verify/str/hash_string/hash_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_Z_algo_test.nim
     title: verify/str/hash_string/hash_string_Z_algo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_Z_algo_test.nim
     title: verify/str/hash_string/hash_string_Z_algo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -105,14 +105,14 @@ data:
     \ =\n        # \u534A\u958B\u533A\u9593\u3068\u3059\u308B\u3002\n        # \u7A7A\
     \u6587\u5B57\u5217\u7528\u306Br=0\u3082\u8A31\u5BB9\u3057\u3066\u3044\u308B\u3053\
     \u3068\u306B\u6CE8\u610F\u3002\n        # \u7A7A\u6587\u5B57\u5217\u306Fl=0,r=0\u306E\
-    \u307F\u8A31\u5BB9\u3057\u3066\u3044\u308B\u3002\n        assert l in 0..<R.size\
-    \ and r in 0..R.size and (l < r or (l == 0 and r == 0))\n        result.R = R\n\
-    \        result.l = l\n        result.r = r\n\n    proc `[]`*(R: RollingHashBase,\
-    \ slice: HSlice[int, int]): RollingHash =\n        assert slice.a >= 0 and slice.b\
-    \ >= 0\n        return R.get_substring(slice.a, slice.b+1)\n\n\n    proc `[]`*(S:\
-    \ RollingHash, slice: HSlice[int, int]): RollingHash =\n        if len(slice)\
-    \ == 0:\n            return S.R.get_substring(0, 0)\n        assert slice.a in\
-    \ 0..<len(S) and slice.b in 0..<len(S)\n        return S.R.get_substring(S.l+slice.a,\
+    \u307F\u8A31\u5BB9\u3057\u3066\u3044\u308B\u3002\n        assert (l == 0 and r\
+    \ == 0) or\n            (l in 0..<R.size and r in 1..R.size and l < r)\n     \
+    \   result.R = R\n        result.l = l\n        result.r = r\n\n    proc `[]`*(R:\
+    \ RollingHashBase, slice: HSlice[int, int]): RollingHash =\n        assert slice.a\
+    \ >= 0 and slice.b >= 0\n        return R.get_substring(slice.a, slice.b+1)\n\n\
+    \n    proc `[]`*(S: RollingHash, slice: HSlice[int, int]): RollingHash =\n   \
+    \     if len(slice) == 0:\n            return S.R.get_substring(0, 0)\n      \
+    \  assert slice.a in 0..<len(S) and slice.b in 0..<len(S)\n        return S.R.get_substring(S.l+slice.a,\
     \ S.l+slice.b+1)\n\n    proc gethash(S: RollingHash, slice: HSlice[int, int]):\
     \ uint =\n        return (S.R.prefixs[(S.l+slice.b+1)] + (RH_MOD - mul(S.R.prefixs[S.l+slice.a],\
     \ base_pow(((S.l+slice.b+1)-(S.l+slice.a)))).calc_mod)).calc_mod\n\n\n    proc\
@@ -146,8 +146,8 @@ data:
   isVerificationFile: false
   path: cplib/str/hash_string.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:32:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-08 05:46:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/hash_string/hash_string_Z_algo_test.nim
   - verify/str/hash_string/hash_string_Z_algo_test.nim
