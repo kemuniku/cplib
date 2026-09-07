@@ -100,13 +100,16 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
             result += (x.bits[i] xor y.bits[i]).popcount()
     
     proc `~`*[size](x:BitSet[size]):BitSet[size]=
-        for i in 0..<len(x.bits)-1:
-            result.bits[i] = bitnot(x.bits[i])
-        var mod64 = size mod 64
-        if mod64 == 0:
-            result.bits[^1] = bitnot(x.bits[^1])
+        when size == 0:
+            return
         else:
-            result.bits[^1] = x.bits[^1] xor ((1u shl mod64) - 1)
+            for i in 0..<len(x.bits)-1:
+                result.bits[i] = bitnot(x.bits[i])
+            var mod64 = size mod 64
+            if mod64 == 0:
+                result.bits[^1] = bitnot(x.bits[^1])
+            else:
+                result.bits[^1] = x.bits[^1] xor ((1u shl mod64) - 1)
     proc popcount*[size](x:BitSet[size]):int=
         for i in 0..<len(x.bits):
             result += x.bits[i].popcount()

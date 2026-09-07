@@ -15,6 +15,8 @@ g.build()
 
 let hld = g.initHld(0)
 assert hld.numVertices == 6
+assert hld.initAuxiliaryTree(newSeq[int]()).v == @[]
+assert hld.initAuxiliaryWeightedTree(newSeq[int]()).v == @[]
 assert hld.parentOf(0) == -1
 assert hld.parentOf(3) == 1
 assert hld.depth(5) == 2

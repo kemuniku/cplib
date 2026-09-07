@@ -3,6 +3,12 @@ echo "Hello World"
 
 import cplib/collections/root_rangesum
 
+let empty = initrangesum(newSeq[int]())
+assert empty.len == 0
+assert empty.get(0, 0) == 0
+assert empty.max_right(0, proc(x: int): bool = x == 0) == 0
+assert empty.min_left(0, proc(x: int): bool = x == 0) == 0
+
 var rs = initrangesum(@[1, 2, 3, 4, 5], 2, 0)
 assert rs.len == 5
 assert rs.get(0, 5) == 15

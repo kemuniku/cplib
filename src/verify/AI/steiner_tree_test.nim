@@ -10,6 +10,10 @@ g.add_edge(0, 1, 1)
 g.add_edge(1, 2, 2)
 g.add_edge(1, 3, 3)
 g.add_edge(0, 3, 10)
+let emptyDp = g.steiner_tree_dp(@[], INF64)
+assert emptyDp.len == 1
+assert emptyDp[0] == @[0, 0, 0, 0]
+assert g.steiner_tree_mincost(newSeq[int]()) == 0
 let dp = g.steiner_tree_dp(@[0, 2, 3], INF64)
 assert dp[(1 shl 3) - 1][0] == 6
 assert g.steiner_tree_mincost(@[0, 2, 3]) == 6

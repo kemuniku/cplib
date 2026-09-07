@@ -7,11 +7,12 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         arr : seq[T]
         blockvalue : seq[T]
         e : T
-    proc initrangesum*[T](v:openArray[T],bsize:int = v.len.float.sqrt.int(),e:T=0):RootRangeSum[T]=
-        var b = newseqwith((len(v)+bsize-1) div bsize,e)
-        result = RootRangeSum[T](blocksize:bsize,length:len(v),arr: @v,blockvalue:b,e:e)
+    proc initrangesum*[T](v:openArray[T],bsize:int = 0,e:T=0):RootRangeSum[T]=
+        let actualBlockSize = if bsize > 0: bsize else: max(v.len.float.sqrt.int(), 1)
+        var b = newseqwith((len(v)+actualBlockSize-1) div actualBlockSize,e)
+        result = RootRangeSum[T](blocksize:actualBlockSize,length:len(v),arr: @v,blockvalue:b,e:e)
         for i in 0..<(len(v)):
-            result.blockvalue[i div bsize] = result.blockvalue[i div bsize] + v[i]
+            result.blockvalue[i div actualBlockSize] = result.blockvalue[i div actualBlockSize] + v[i]
 
     proc update*[T](self: RootRangeSum[T], idx: Natural, val: T) =
         ## idxの要素をvalに変更します。

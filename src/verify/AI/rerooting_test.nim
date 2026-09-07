@@ -13,5 +13,9 @@ proc merge(a, b: int): int = max(a, b)
 proc putEdge(x: int, u, v: int): int = x + 1
 proc putVertex(x: int, v: int): int = x
 
+let emptyGraph = initUnWeightedUnDirectedGraph(0)
+assert emptyGraph.solve_Rerooting_raw(merge, 0, putEdge, putVertex) == @[]
+assert emptyGraph.solve_Rerooting(merge, 0, putEdge, putVertex) == @[]
+
 assert g.solve_Rerooting_raw(merge, 0, putEdge, putVertex) == @[2, 1, 2, 2]
 assert g.solve_Rerooting(merge, 0, putEdge, putVertex) == @[2, 1, 2, 2]
