@@ -1,5 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-# Requires an AVX2 CPU.
+# AVX2対応のCPUが必要です。
 import cplib/collections/wordsizetree_avx2
 import algorithm, random
 for n in [0, 1, 31, 32, 33, 63, 64, 65, 95, 96, 97, 127, 128, 129, 4095, 4096, 4097, 262143, 262144, 262145, 16777216]:
@@ -7,7 +7,7 @@ for n in [0, 1, 31, 32, 33, 63, 64, 65, 95, 96, 97, 127, 128, 129, 4095, 4096, 4
         var v = newSeq[bool](n)
         for i in 0..<n:
             v[i] = pattern == 1 or (pattern == 2 and i mod 67 == 0)
-        var tree = initWordsizeTreeAvx2(v)
+        var tree = initWordsizeTree(v)
         for i in 0..<n:
             doAssert tree[i] == v[i]
         if n > 0:
@@ -20,7 +20,7 @@ for n in [0, 1, 31, 32, 33, 63, 64, 65, 95, 96, 97, 127, 128, 129, 4095, 4096, 4
 for n in 1..256:
     var v = newSeq[bool](n)
     for i in 0..<n: v[i] = (i * 37 + n * 13) mod 101 < 49
-    var tree = initWordsizeTreeAvx2(v)
+    var tree = initWordsizeTree(v)
     for i in 0..<n:
         var lo = -1
         var hi = -1
@@ -31,7 +31,7 @@ for n in 1..256:
         doAssert tree.le(i) == lo
         doAssert tree.ge(i) == hi
 
-var tree = initWordsizeTreeAvx2()
+var tree = initWordsizeTree()
 var reference: seq[int]
 var rng = initRand(12345)
 for step in 0..<30000:

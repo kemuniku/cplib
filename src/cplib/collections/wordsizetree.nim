@@ -1,3 +1,4 @@
+## 計算量ではNを入力配列長、Uを容量2^24とします。木の段数と整数のビット幅は固定です。
 when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
     const CPLIB_COLLECTIONS_WORD_SIZE_TREE* = 1
     import bitops
@@ -8,10 +9,12 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
         A3 : array[64*64*64,uint]
 
     proc initWordsizeTree*():WordsizeTree=
+        ## 空のビット集合木を作成します。時間計算量: O(U/64)、戻り値の空間: O(U/64)（全領域のゼロ初期化を含む）。
         discard
 
     proc initWordsizeTree*(v:openArray[bool]):WordsizeTree=
-        # Pack each word locally to avoid a data-dependent branch per bit.
+        ## 真偽値配列からビット集合木を作成します。時間計算量: O(N + U/64)、戻り値の空間: O(U/64)（全領域のゼロ初期化を含む）。
+        # 各ビットの値による分岐を避け、64ビットずつまとめて格納します。
         for blockIndex in 0..<((len(v) + 63) shr 6):
             let start = blockIndex shl 6
             var bits = 0u
@@ -27,6 +30,7 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
 
 
     proc incl*(self:var WordsizeTree,x:int)=
+        ## 要素xを追加します。 時間計算量: O(1)、追加空間: O(1)。
         var y = x and (0b111111)
         var x = x shr 6
         self.A3[x] = self.A3[x] or (1u shl y)
@@ -41,11 +45,13 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
         self.A0 = self.A0 or (1u shl y)
 
     proc `[]`*(self:var WordsizeTree,x:int):bool=
+        ## 要素xが含まれているかを返します。 時間計算量: O(1)、追加空間: O(1)。
         var y = x and (0b111111)
         var x = x shr 6
         return (self.A3[x] and (1u shl y)) != 0
 
     proc excl*(self:var WordsizeTree,x:int)=
+        ## 要素xを削除します。 時間計算量: O(1)、追加空間: O(1)。
         if self[x]:
             var y = x and (0b111111)
             var x = x shr 6
@@ -65,7 +71,7 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
 
 
     proc ge*(self:var WordsizeTree,x:int):int=
-        ## あるbit位置より上の場所に立ってるbitを調べたい
+        ## x以上の最小の要素を返し、存在しなければ-1を返します。 時間計算量: O(1)、追加空間: O(1)。
         var y = x and (0b111111)
         var x = x shr 6
         var t = self.A3[x] and (bitnot(0u) shl y)
@@ -97,7 +103,7 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE:
         return -1
 
     proc le*(self:var WordsizeTree,x:int):int=
-        ## あるbit位置より上の場所に立ってるbitを調べたい
+        ## x以下の最大の要素を返し、存在しなければ-1を返します。 時間計算量: O(1)、追加空間: O(1)。
         var y = 64-(x and (0b111111))-1
         var x = x shr 6
         var t = self.A3[x] and (bitnot(0u) shr y)

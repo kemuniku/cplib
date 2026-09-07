@@ -1,5 +1,4 @@
-## A three-level, 256-way bitset tree for keys in 0..<2^24.
-## Requires an AVX2 CPU and GCC/Clang on amd64; supports Nim C and C++ backends.
+## 0..<2^24のキーを扱う、3段・256分岐のビット集合木です。
 when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE_AVX2:
     const CPLIB_COLLECTIONS_WORD_SIZE_TREE_AVX2* = 1
     when not (defined(amd64) and (defined(gcc) or defined(clang))):
@@ -15,13 +14,15 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE_AVX2:
 #include <stdint.h>
 #include <stddef.h>
 #define WST_AVX __attribute__((target("avx2")))
-/* Each node contains 256 bits, stored in four consecutive words. */
+/* 各ノードの256ビットを、連続する4個の64ビット整数に格納します。 */
 WST_AVX static inline unsigned wst_lanes(const uint64_t *p) {
+    /* 非零の64ビット整数の位置をビットマスクで返します。 */
     __m256i v = _mm256_loadu_si256((const __m256i *)p);
     return (~(unsigned)_mm256_movemask_pd(_mm256_castsi256_pd(
         _mm256_cmpeq_epi64(v, _mm256_setzero_si256())))) & 15u;
 }
 WST_AVX static inline int wst_next(const uint64_t *p, int bit) {
+    /* ノード内でbit以上の最小の要素を返し、存在しなければ-1を返します。 */
     if (bit >= 256) return -1;
     unsigned lane = (unsigned)bit >> 6;
     uint64_t word = p[lane] & (UINT64_MAX << (bit & 63));
@@ -32,6 +33,7 @@ WST_AVX static inline int wst_next(const uint64_t *p, int bit) {
     return (int)(lane * 64 + __builtin_ctzll(p[lane]));
 }
 WST_AVX static inline int wst_prev(const uint64_t *p, int bit) {
+    /* ノード内でbit以下の最大の要素を返し、存在しなければ-1を返します。 */
     if (bit < 0) return -1;
     unsigned lane = (unsigned)bit >> 6;
     uint64_t word = p[lane] & (UINT64_MAX >> (63 - (bit & 63)));
@@ -43,6 +45,7 @@ WST_AVX static inline int wst_prev(const uint64_t *p, int bit) {
 }
 WST_AVX static void wst_init(const void *input, size_t n,
                             uint64_t *leaf, uint64_t *mid, uint64_t *top) {
+    /* 真偽値配列から、ゼロ初期化された各段のビット集合を構築します。 */
     const unsigned char *v = (const unsigned char *)input;
     size_t i = 0;
     const __m256i zero = _mm256_setzero_si256();
@@ -65,6 +68,7 @@ WST_AVX static void wst_init(const void *input, size_t n,
         top[j >> 6] |= (uint64_t)(wst_lanes(mid + j * 4) != 0) << (j & 63);
 }
 WST_AVX static void wst_incl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsigned x) {
+    /* 要素xを追加し、上位のビット集合を更新します。 */
     leaf[x >> 6] |= UINT64_C(1) << (x & 63);
     x >>= 8;
     mid[x >> 6] |= UINT64_C(1) << (x & 63);
@@ -72,6 +76,7 @@ WST_AVX static void wst_incl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsig
     top[x >> 6] |= UINT64_C(1) << (x & 63);
 }
 WST_AVX static void wst_excl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsigned x) {
+    /* 要素xを削除し、空になったノードを上位のビット集合から除きます。 */
     leaf[x >> 6] &= ~(UINT64_C(1) << (x & 63));
     x >>= 8;
     if (wst_lanes(leaf + x * 4)) return;
@@ -82,6 +87,7 @@ WST_AVX static void wst_excl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsig
 }
 WST_AVX static int wst_ge(const uint64_t *leaf, const uint64_t *mid,
                           const uint64_t *top, unsigned x) {
+    /* x以上の最小の要素を返し、存在しなければ-1を返します。 */
     unsigned node = x >> 8;
     int bit = wst_next(leaf + node * 4, x & 255);
     if (bit >= 0) return (int)(node * 256 + bit);
@@ -98,6 +104,7 @@ WST_AVX static int wst_ge(const uint64_t *leaf, const uint64_t *mid,
 }
 WST_AVX static int wst_le(const uint64_t *leaf, const uint64_t *mid,
                           const uint64_t *top, unsigned x) {
+    /* x以下の最大の要素を返し、存在しなければ-1を返します。 */
     unsigned node = x >> 8;
     int bit = wst_prev(leaf + node * 4, x & 255);
     if (bit >= 0) return (int)(node * 256 + bit);
@@ -125,31 +132,39 @@ WST_AVX static int wst_le(const uint64_t *leaf, const uint64_t *mid,
     proc avxLe(leaf, middle, top: ptr uint64, x: cuint): cint
         {.importc: "wst_le", nodecl.}
 
-    proc initWordsizeTree*(): WordsizeTreeAvx2 = discard
+    proc initWordsizeTree*(): WordsizeTreeAvx2 =
+        ## 空のビット集合木を作成します。
+        discard
 
     proc initWordsizeTree*(v: openArray[bool]): WordsizeTreeAvx2 =
+        ## v[i]が真である位置iを要素とするビット集合木を作成します。
         assert v.len <= WordsizeTreeAvx2Capacity
         if v.len > 0:
             avxInit(unsafeAddr v[0], v.len.csize_t, addr result.leaf[0],
                 addr result.middle[0], addr result.top[0])
 
     proc incl*(self: var WordsizeTreeAvx2, x: int) =
+        ## 要素xを追加します。
         assert x >= 0 and x < WordsizeTreeAvx2Capacity
         avxIncl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)
 
     proc excl*(self: var WordsizeTreeAvx2, x: int) =
+        ## 要素xを削除します。
         assert x >= 0 and x < WordsizeTreeAvx2Capacity
         avxExcl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)
 
     proc `[]`*(self: var WordsizeTreeAvx2, x: int): bool =
+        ## 要素xが含まれているかを返します。
         assert x >= 0 and x < WordsizeTreeAvx2Capacity
         (self.leaf[x shr 6] and (1'u64 shl (x and 63))) != 0
 
     proc ge*(self: var WordsizeTreeAvx2, x: int): int =
+        ## x以上の最小の要素を返し、存在しなければ-1を返します。
         if x >= WordsizeTreeAvx2Capacity: return -1
         avxGe(addr self.leaf[0], addr self.middle[0], addr self.top[0], max(x, 0).cuint).int
 
     proc le*(self: var WordsizeTreeAvx2, x: int): int =
+        ## x以下の最大の要素を返し、存在しなければ-1を返します。
         if x < 0: return -1
         avxLe(addr self.leaf[0], addr self.middle[0], addr self.top[0],
             min(x, WordsizeTreeAvx2Capacity - 1).cuint).int
