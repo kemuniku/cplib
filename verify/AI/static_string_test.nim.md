@@ -72,6 +72,10 @@ data:
 
     assert ss[0].base.suffix_lowerbound("ab") < ss[0].base.suffix_upperbound("ab")
 
+    let arrayStrings = toStaticStrings(["aba", "abc"])
+
+    assert arrayStrings.mapIt($it) == @["aba", "abc"]
+
 
     let plain = toStaticString("foobarbar")
 
@@ -151,14 +155,14 @@ data:
 
     '
   dependsOn:
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/AI/static_string_test.nim
   requiredBy: []
-  timestamp: '2026-07-31 04:48:47+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/static_string_test.nim

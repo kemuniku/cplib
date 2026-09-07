@@ -27,19 +27,20 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_ZALGORITHM:\n    const CPLIB_STR_ZALGORITHM*\
-    \ = 1\n    import sequtils\n    proc zalgorithm*(S:string):seq[int]=\n       \
-    \ var N = len(S)\n        result = newseqwith(N,-1)\n        result[0] = S.len();\n\
-    \        var i = 1\n        var j = 0\n        while (i < S.len()):\n        \
-    \    while (i+j < S.len() and S[j] == S[i+j]):\n                j += 1\n     \
-    \       result[i] = j\n            if j == 0:\n                i += 1\n      \
-    \          continue\n            var k = 1\n            while (i+k < S.len() and\
-    \ k+result[k] < j):\n                result[i+k] = result[k]\n               \
-    \ k += 1\n            i += k\n            j -= k"
+    \ = 1\n    import sequtils\n    proc zalgorithm*[T](S: openArray[T]): seq[int]\
+    \ =\n        var N = len(S)\n        result = newseqwith(N, -1)\n        if N\
+    \ == 0:\n            return\n        result[0] = S.len();\n        var i = 1\n\
+    \        var j = 0\n        while (i < S.len()):\n            while (i+j < S.len()\
+    \ and S[j] == S[i+j]):\n                j += 1\n            result[i] = j\n  \
+    \          if j == 0:\n                i += 1\n                continue\n    \
+    \        var k = 1\n            while (i+k < S.len() and k+result[k] < j):\n \
+    \               result[i+k] = result[k]\n                k += 1\n            i\
+    \ += k\n            j -= k\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/zalgorithm.nim
   requiredBy: []
-  timestamp: '2024-05-29 17:28:48+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/zalgorithm_test.nim

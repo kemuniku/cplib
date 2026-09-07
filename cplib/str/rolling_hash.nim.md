@@ -80,7 +80,10 @@ data:
     \ in 0..<rh.s.len:\n            rh.hash_accum[i+1] = (rh.hash_accum[i] + mul(uint(rh.s[i]),\
     \ rh.base_pow[i])).calc_mod\n            rh.base_pow[i+1] = mul(rh.base_pow[i],\
     \ base).calc_mod\n            rh.base_inv_pow[i+1] = mul(rh.base_inv_pow[i], base_inv).calc_mod\n\
-    \n    proc initRollingHash*[T](s: T): RollingHash[T] =\n        result = RollingHash[T](s:\
+    \n    proc initRollingHash*[T](s: openArray[T]): RollingHash[seq[T]] =\n     \
+    \   result = RollingHash[seq[T]](s: @s, hash_accum: newSeq[uint](), base_pow:\
+    \ newSeq[uint](), base_inv_pow: newSeq[uint]())\n        result.build\n\n    proc\
+    \ initRollingHash*(s: string): RollingHash[string] =\n        result = RollingHash[string](s:\
     \ s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())\n\
     \        result.build\n\n    proc query*(rh: RollingHash, rng: HSlice[int, int]):\
     \ uint =\n        var\n            l = rng.a\n            r = rng.b + 1\n    \
@@ -94,7 +97,7 @@ data:
   - verify/str/rolling_hash_abcbac_test_.nim
   - verify/str/rolling_hash_pun_test_.nim
   - verify/str/rolling_hash_pun_test_.nim
-  timestamp: '2024-06-07 22:14:11+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim

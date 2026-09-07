@@ -56,14 +56,14 @@ data:
 
     '
   dependsOn:
-  - cplib/math/osa_k.nim
-  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/osa_k.nim
+  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: true
   path: verify/AI/osa_k_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/osa_k_test.nim

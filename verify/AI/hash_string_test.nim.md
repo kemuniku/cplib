@@ -22,59 +22,33 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-
-    echo "Hello World"
-
-
-    import cplib/str/hash_string
-
-
-    let a = "ab".tohash
-
-    let b = ''c''.tohash
-
-    let abc = "abc".tohash
-
-    assert len(a) == 2
-
-    assert a & b == abc
-
-    assert get_emptystring_hash() & abc == abc
-
-    assert "xy".tohash * 3 == "xyxyxy".tohash
-
-    assert "abc".tohash.removePrefix("ab".tohash) == "c".tohash
-
-    assert 65.tohash == ''A''.tohash
-
-
-    let rh = initRollingHash("banana")
-
-    assert $rh[1..3] == "ana"
-
-    assert rh[1..3] == rh[3..5]
-
-    assert rh[0] == ''b''
-
-    assert rh[1..5].LCP(rh[3..5]) == 3
-
-    assert cmp(rh[1..3], rh[1..3]) == 0
-
-    assert rh[1..3] < rh[0..2]
-
-    let hs: HashString = rh[1..3]
-
-    assert hs == "ana".tohash
-
-    '
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
+    echo \"Hello World\"\n\nimport cplib/str/hash_string\n\nlet a = \"ab\".tohash\n\
+    let b = 'c'.tohash\nlet abc = \"abc\".tohash\nassert len(a) == 2\nassert a & b\
+    \ == abc\nassert get_emptystring_hash() & abc == abc\nassert \"xy\".tohash * 3\
+    \ == \"xyxyxy\".tohash\nassert \"abc\".tohash.removePrefix(\"ab\".tohash) == \"\
+    c\".tohash\nassert 65.tohash == 'A'.tohash\nassert ['a', 'b', 'c'].tohash == abc\n\
+    assert [65, 66].tohash == \"AB\".tohash\n\nconst hashMod = (1 shl 61) - 1\nlet\
+    \ boundaryValues = [int.low, -hashMod, -1, 0, 1, hashMod - 1,\n              \
+    \        hashMod, hashMod + 1, int.high]\nfor value in boundaryValues:\n    assert\
+    \ [value].tohash == value.tohash\nassert newSeq[int]().tohash == get_emptystring_hash()\n\
+    var values: seq[int]\nvar concatenated = get_emptystring_hash()\nfor i in 0..<4096:\n\
+    \    let value = boundaryValues[i mod boundaryValues.len]\n    values.add(value)\n\
+    \    concatenated = concatenated & value.tohash\nassert values.tohash == concatenated\n\
+    assert values.toOpenArray(1, values.high - 1).tohash ==\n    values[1..^2].tohash\n\
+    \nlet rh = initRollingHash(\"banana\")\nassert $rh[1..3] == \"ana\"\nassert rh[1..3]\
+    \ == rh[3..5]\nassert rh[0] == 'b'\nassert rh[1..5].LCP(rh[3..5]) == 3\nassert\
+    \ cmp(rh[1..3], rh[1..3]) == 0\nassert rh[1..3] < rh[0..2]\nlet hs: HashString\
+    \ = rh[1..3]\nassert hs == \"ana\".tohash\nlet arrayRh = initRollingHash(['b',\
+    \ 'a', 'n', 'a', 'n', 'a'])\nassert arrayRh[1..3] == rh[1..3]\nassert initRollingHash(newSeq[char]()).len\
+    \ == 0\n"
   dependsOn:
   - cplib/str/hash_string.nim
   - cplib/str/hash_string.nim
   isVerificationFile: true
   path: verify/AI/hash_string_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-08 05:32:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/hash_string_test.nim

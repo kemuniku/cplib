@@ -117,12 +117,10 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_RUN_LENGTH_ENCODE_UTILS:\n    const CPLIB_STR_RUN_LENGTH_ENCODE_UTILS*\
-    \ = 1\n    import sequtils\n    proc run_length_encode*[T](a: seq[T]): seq[(T,\
-    \ int)] =\n        for i in 0..<len(a):\n            if result.len == 0:\n   \
-    \             result.add((a[i], 1))\n                continue\n            if\
-    \ result[^1][0] == a[i]: result[^1][1] += 1\n            else: result.add((a[i],\
-    \ 1))\n\n    proc run_length_encode*(s: string): seq[(char, int)] =\n        var\
-    \ a = s.items.toSeq\n        return run_length_encode(a)\n"
+    \ = 1\n    proc run_length_encode*[T](a: openArray[T]): seq[(T, int)] =\n    \
+    \    for i in 0..<len(a):\n            if result.len == 0:\n                result.add((a[i],\
+    \ 1))\n                continue\n            if result[^1][0] == a[i]: result[^1][1]\
+    \ += 1\n            else: result.add((a[i], 1))\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/run_length_encode.nim
@@ -145,7 +143,7 @@ data:
   - cplib/math/primefactor.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
-  timestamp: '2023-11-19 18:26:38+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/factorize_yosupo_test.nim

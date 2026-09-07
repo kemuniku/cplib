@@ -22,28 +22,20 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-
-    echo "Hello World"
-
-
-    import cplib/str/run_length_encode
-
-
-    assert run_length_encode(@[1, 1, 2, 2, 2, 1]) == @[(1, 2), (2, 3), (1, 1)]
-
-    assert run_length_encode("aaabbc") == @[(''a'', 3), (''b'', 2), (''c'', 1)]
-
-    assert run_length_encode(newSeq[int]()) == @[]
-
-    '
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
+    echo \"Hello World\"\n\nimport cplib/str/run_length_encode\n\nassert run_length_encode(@[1,\
+    \ 1, 2, 2, 2, 1]) == @[(1, 2), (2, 3), (1, 1)]\nassert run_length_encode([1, 1,\
+    \ 2, 2, 2, 1]) == @[(1, 2), (2, 3), (1, 1)]\nassert run_length_encode(\"aaabbc\"\
+    ) == @[('a', 3), ('b', 2), ('c', 1)]\nassert run_length_encode(newSeq[int]())\
+    \ == @[]\n\nproc checkOpenArray(s: openArray[int]) =\n    assert run_length_encode(s)\
+    \ == @[(1, 2), (2, 1)]\n\ncheckOpenArray([1, 1, 2])\n"
   dependsOn:
   - cplib/str/run_length_encode.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: true
   path: verify/AI/run_length_encode_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/run_length_encode_test.nim

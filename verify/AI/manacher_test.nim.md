@@ -22,36 +22,22 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-
-    echo "Hello World"
-
-
-    import sequtils
-
-    import cplib/str/manacher
-
-
-    assert manacher("ababa".toSeq)[2] == 3
-
-    assert manacher(@[1, 2, 2, 1])[1] == 1
-
-    let pals = get_palindromes("abba".toSeq, ''$'')
-
-    assert pals[0] == (0, 1)
-
-    assert pals[3] == (0, 4)
-
-    assert pals[5] == (-1, -1)
-
-    '
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
+    echo \"Hello World\"\n\nimport sequtils\nimport cplib/str/manacher\n\nassert manacher(\"\
+    ababa\".toSeq)[2] == 3\nassert manacher(@[1, 2, 2, 1])[1] == 1\nassert manacher([1,\
+    \ 2, 2, 1])[2] == 1\nassert manacher(newSeq[int]()) == @[]\nlet pals = get_palindromes(\"\
+    abba\".toSeq, '$')\nassert pals[0] == (0, 1)\nassert pals[3] == (0, 4)\nassert\
+    \ pals[5] == (-1, -1)\nlet arrayPals = get_palindromes(['a', 'b', 'b', 'a'], '$')\n\
+    assert arrayPals == pals\nassert get_palindromes(newSeq[int](), -1) == @[]\n\n\
+    proc checkOpenArray(s: openArray[int]) =\n    assert manacher(s)[1] == 1\n   \
+    \ assert get_palindromes(s, -1)[3] == (0, 4)\n\ncheckOpenArray([1, 2, 2, 1])\n"
   dependsOn:
   - cplib/str/manacher.nim
   - cplib/str/manacher.nim
   isVerificationFile: true
   path: verify/AI/manacher_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/manacher_test.nim

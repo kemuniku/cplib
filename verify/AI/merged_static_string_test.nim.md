@@ -111,6 +111,11 @@ data:
 
     assert integerMergedFromRanges == integerMerged
 
+    let integerMergedFromArrayRanges = initMergedStaticString(integerStatic, [(0,
+    2), (2, 4)])
+
+    assert integerMergedFromArrayRanges == integerMerged
+
     let integerSubStatic = integerStatic[1..5]
 
     let integerSubMergedFromRanges = initMergedStaticString(integerSubStatic, @[(0,
@@ -152,16 +157,16 @@ data:
 
     '
   dependsOn:
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
   isVerificationFile: true
   path: verify/AI/merged_static_string_test.nim
   requiredBy: []
-  timestamp: '2026-08-01 10:17:58+09:00'
+  timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/merged_static_string_test.nim
