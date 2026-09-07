@@ -26,6 +26,12 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
@@ -69,22 +75,24 @@ data:
     \ sep = \"\\n\"))\ndoAssert compiles(print(\"a\", \"b\"))\ndoAssert compiles(print(*values,\
     \ sep = \"\\n\"))\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
+  - cplib/utils/constants.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/utils/constants.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/modint/modint.nim
-  - cplib/utils/constants.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []
-  timestamp: '2026-09-03 22:19:58+09:00'
+  timestamp: '2026-09-05 05:19:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/sheep_test.nim

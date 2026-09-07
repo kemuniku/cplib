@@ -73,56 +73,123 @@ data:
     \ proc(x, y: T): T, e: T): RangeReverseArrayMonoid[T] =\n        ## v\u3067\u521D\
     \u671F\u5316\u3057\u307E\u3059\u3002\n        ## \u533A\u9593\u53CD\u8EE2\u3001\
     \u4E00\u70B9\u53D6\u5F97\u3001\u4E00\u70B9\u66F4\u65B0\u3001\u533A\u9593\u7DCF\
-    \u7A4D\u306F\u3059\u3079\u3066O(log N)\u3067\u3059\u3002\n        RangeReverseArrayMonoid[T](root:\
-    \ build(v, op, e), length: v.len, op: op, e: e)\n\n    proc toRangeReverseArrayMonoid*[T](v:\
-    \ openArray[T], op: proc(x, y: T): T, e: T): RangeReverseArrayMonoid[T] =\n  \
-    \      initRangeReverseArrayMonoid(v, op, e)\n\n    template newRangeReverseArrayMonoidWith*(V,\
-    \ op, e: untyped): untyped =\n        initRangeReverseArrayMonoid[typeof(e)](V,\
-    \ proc (l{.inject.}, r{.inject.}: typeof(e)): typeof(e) = op, e)\n\n    proc len*[T](self:\
-    \ RangeReverseArrayMonoid[T]): int =\n        self.length\n\n    proc reverse*[T](self:\
-    \ RangeReverseArrayMonoid[T], l, r: int) =\n        ## \u534A\u958B\u533A\u9593\
-    [l, r)\u3092\u53CD\u8EE2\u3057\u307E\u3059\u3002\n        assert 0 <= l and l\
-    \ <= r and r <= self.length\n        var (left, middleRight) = split(self.root,\
-    \ l, self.op, self.e)\n        var (middle, right) = split(middleRight, r - l,\
-    \ self.op, self.e)\n        middle.toggle\n        self.root = merge(left, merge(middle,\
-    \ right, self.op, self.e), self.op, self.e)\n\n    proc reverse*[T](self: RangeReverseArrayMonoid[T],\
-    \ segment: HSlice[int, int]) =\n        ## \u9589\u533A\u9593segment\u3092\u53CD\
-    \u8EE2\u3057\u307E\u3059\u3002\n        self.reverse(segment.a, segment.b + 1)\n\
-    \n    proc get*[T](self: RangeReverseArrayMonoid[T], index: int): T =\n      \
-    \  ## index\u756A\u76EE\u306E\u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\n    \
-    \    assert 0 <= index and index < self.length\n        var node = self.root\n\
-    \        var k = index\n        while true:\n            node.push\n         \
-    \   let leftSize = node.left.nodeLen\n            if k < leftSize:\n         \
-    \       node = node.left\n            elif k == leftSize:\n                return\
-    \ node.value\n            else:\n                k -= leftSize + 1\n         \
-    \       node = node.right\n\n    proc get*[T](self: RangeReverseArrayMonoid[T],\
-    \ l, r: int): T =\n        ## \u534A\u958B\u533A\u9593[l, r)\u306E\u7DCF\u7A4D\
-    \u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert 0 <= l and l <= r and r <=\
-    \ self.length\n        var (left, middleRight) = split(self.root, l, self.op,\
-    \ self.e)\n        var (middle, right) = split(middleRight, r - l, self.op, self.e)\n\
-    \        result = middle.nodeProd(self.e)\n        self.root = merge(left, merge(middle,\
-    \ right, self.op, self.e), self.op, self.e)\n\n    proc get*[T](self: RangeReverseArrayMonoid[T],\
-    \ segment: HSlice[int, int]): T =\n        ## \u9589\u533A\u9593segment\u306E\u7DCF\
-    \u7A4D\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert segment.a <= segment.b\
-    \ + 1 and 0 <= segment.a and segment.b + 1 <= self.length\n        self.get(segment.a,\
-    \ segment.b + 1)\n\n    proc fold*[T](self: RangeReverseArrayMonoid[T], l, r:\
-    \ int): T =\n        self.get(l, r)\n\n    proc fold*[T](self: RangeReverseArrayMonoid[T],\
-    \ segment: HSlice[int, int]): T =\n        self.get(segment)\n\n    proc fold*[T](self:\
+    \u7A4D\u306F\u3059\u3079\u3066\u671F\u5F85O(log N)\u3067\u3059\u3002\n       \
+    \ RangeReverseArrayMonoid[T](root: build(v, op, e), length: v.len, op: op, e:\
+    \ e)\n\n    proc toRangeReverseArrayMonoid*[T](v: openArray[T], op: proc(x, y:\
+    \ T): T, e: T): RangeReverseArrayMonoid[T] =\n        initRangeReverseArrayMonoid(v,\
+    \ op, e)\n\n    template newRangeReverseArrayMonoidWith*(V, op, e: untyped): untyped\
+    \ =\n        initRangeReverseArrayMonoid[typeof(e)](V, proc (l{.inject.}, r{.inject.}:\
+    \ typeof(e)): typeof(e) = op, e)\n\n    proc len*[T](self: RangeReverseArrayMonoid[T]):\
+    \ int =\n        self.length\n\n    proc insertNode[T](self: RangeReverseArrayMonoid[T],\
+    \ root, node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T]\
+    \ =\n        if root.isNil: return node\n        if node.priority > root.priority:\n\
+    \            (node.left, node.right) = split(root, k, self.op, self.e)\n     \
+    \       node.update(self.op, self.e)\n            return node\n        root.push\n\
+    \        let leftSize = root.left.nodeLen\n        if k <= leftSize:\n       \
+    \     root.left = self.insertNode(root.left, node, k)\n        else:\n       \
+    \     root.right = self.insertNode(root.right, node, k - leftSize - 1)\n     \
+    \   root.update(self.op, self.e)\n        return root\n\n    proc insert*[T](self:\
+    \ RangeReverseArrayMonoid[T], index: int, value: T) =\n        ## index \u306E\
+    \u76F4\u524D\u306B\u633F\u5165\u3059\u308B\u3002index = len \u306A\u3089\u672B\
+    \u5C3E\u3002\n        assert 0 <= index and index <= self.len\n        let node\
+    \ = newNode(value, rand(uint64))\n        self.root = self.insertNode(self.root,\
+    \ node, index)\n        inc self.length\n\n    proc eraseNode[T](self: RangeReverseArrayMonoid[T],\
+    \ node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T]\
+    \ =\n        node.push\n        let leftSize = node.left.nodeLen\n        if k\
+    \ == leftSize: return merge(node.left, node.right, self.op, self.e)\n        if\
+    \ k < leftSize:\n            node.left = self.eraseNode(node.left, k)\n      \
+    \  else:\n            node.right = self.eraseNode(node.right, k - leftSize - 1)\n\
+    \        node.update(self.op, self.e)\n        return node\n\n    proc erase*[T](self:\
+    \ RangeReverseArrayMonoid[T], index: int) =\n        assert 0 <= index and index\
+    \ < self.len\n        self.root = self.eraseNode(self.root, index)\n        dec\
+    \ self.length\n\n    proc erase*[T](self: RangeReverseArrayMonoid[T], l, r: int)\
+    \ =\n        assert 0 <= l and l <= r and r <= self.len\n        if l == r: return\n\
+    \        let (left, rest) = split(self.root, l, self.op, self.e)\n        let\
+    \ (_, right) = split(rest, r - l, self.op, self.e)\n        self.root = merge(left,\
+    \ right, self.op, self.e)\n        self.length -= r - l\n\n    proc erase*[T](self:\
+    \ RangeReverseArrayMonoid[T], segment: HSlice[int, int]) =\n        self.erase(segment.a,\
+    \ segment.b + 1)\n\n    proc reverse*[T](self: RangeReverseArrayMonoid[T], l,\
+    \ r: int) =\n        ## \u534A\u958B\u533A\u9593[l, r)\u3092\u53CD\u8EE2\u3057\
+    \u307E\u3059\u3002\n        assert 0 <= l and l <= r and r <= self.length\n  \
+    \      var (left, middleRight) = split(self.root, l, self.op, self.e)\n      \
+    \  var (middle, right) = split(middleRight, r - l, self.op, self.e)\n        middle.toggle\n\
+    \        self.root = merge(left, merge(middle, right, self.op, self.e), self.op,\
+    \ self.e)\n\n    proc reverse*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int,\
+    \ int]) =\n        ## \u9589\u533A\u9593segment\u3092\u53CD\u8EE2\u3057\u307E\u3059\
+    \u3002\n        self.reverse(segment.a, segment.b + 1)\n\n    proc get*[T](self:\
+    \ RangeReverseArrayMonoid[T], index: int): T =\n        ## index\u756A\u76EE\u306E\
+    \u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert 0 <= index and index\
+    \ < self.length\n        var node = self.root\n        var k = index\n       \
+    \ while true:\n            node.push\n            let leftSize = node.left.nodeLen\n\
+    \            if k < leftSize:\n                node = node.left\n            elif\
+    \ k == leftSize:\n                return node.value\n            else:\n     \
+    \           k -= leftSize + 1\n                node = node.right\n\n    proc getNode[T](self:\
+    \ RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], l, r: int):\
+    \ T =\n        if l == 0 and r == node.size: return node.prod\n        node.push\n\
+    \        let mid = node.left.nodeLen\n        if r <= mid: return self.getNode(node.left,\
+    \ l, r)\n        if l > mid: return self.getNode(node.right, l - mid - 1, r -\
+    \ mid - 1)\n        result = node.value\n        if l < mid: result = self.op(self.getNode(node.left,\
+    \ l, mid), result)\n        if r > mid + 1: result = self.op(result, self.getNode(node.right,\
+    \ 0, r - mid - 1))\n\n    proc get*[T](self: RangeReverseArrayMonoid[T], l, r:\
+    \ int): T =\n        ## \u534A\u958B\u533A\u9593 [l, r) \u306E\u7DCF\u7A4D\u3092\
+    \u8FD4\u3059\u3002\n        assert 0 <= l and l <= r and r <= self.len\n     \
+    \   if l == r: return self.e\n        self.getNode(self.root, l, r)\n\n    proc\
+    \ get*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]): T =\n\
+    \        ## \u9589\u533A\u9593segment\u306E\u7DCF\u7A4D\u3092\u8FD4\u3057\u307E\
+    \u3059\u3002\n        assert segment.a <= segment.b + 1 and 0 <= segment.a and\
+    \ segment.b + 1 <= self.length\n        self.get(segment.a, segment.b + 1)\n\n\
+    \    proc fold*[T](self: RangeReverseArrayMonoid[T], l, r: int): T =\n       \
+    \ self.get(l, r)\n\n    proc fold*[T](self: RangeReverseArrayMonoid[T], segment:\
+    \ HSlice[int, int]): T =\n        self.get(segment)\n\n    proc fold*[T](self:\
     \ RangeReverseArrayMonoid[T]): T =\n        self.root.nodeProd(self.e)\n\n   \
     \ proc get_all*[T](self: RangeReverseArrayMonoid[T]): T =\n        ## [0,len(self))\u533A\
     \u9593\u306E\u7DCF\u7A4D\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\n     \
-    \   self.root.nodeProd(self.e)\n\n    proc update*[T](self: RangeReverseArrayMonoid[T],\
-    \ index: Natural, value: T) =\n        ## index\u756A\u76EE\u306E\u5024\u3092\
-    value\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\n        assert index < self.length\n\
-    \        var (left, middleRight) = split(self.root, int(index), self.op, self.e)\n\
-    \        var (middle, right) = split(middleRight, 1, self.op, self.e)\n      \
-    \  middle.value = value\n        middle.prod = value\n        middle.rprod = value\n\
-    \        middle.update(self.op, self.e)\n        self.root = merge(left, merge(middle,\
-    \ right, self.op, self.e), self.op, self.e)\n\n    proc `[]`*[T](self: RangeReverseArrayMonoid[T],\
-    \ index: int): T =\n        self.get(index)\n\n    proc `[]`*[T](self: RangeReverseArrayMonoid[T],\
-    \ index: BackwardsIndex): T =\n        self.get(self.length - int(index))\n\n\
-    \    proc `[]`*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]):\
-    \ T =\n        self.get(segment)\n\n    proc `[]=`*[T](self: RangeReverseArrayMonoid[T],\
+    \   self.root.nodeProd(self.e)\n\n    proc updateNode[T](self: RangeReverseArrayMonoid[T],\
+    \ node: RangeReverseArrayMonoidNode[T], k: int, value: T) =\n        node.push\n\
+    \        let leftSize = node.left.nodeLen\n        if k == leftSize:\n       \
+    \     node.value = value\n        elif k < leftSize:\n            self.updateNode(node.left,\
+    \ k, value)\n        else:\n            self.updateNode(node.right, k - leftSize\
+    \ - 1, value)\n        node.update(self.op, self.e)\n\n    proc update*[T](self:\
+    \ RangeReverseArrayMonoid[T], index: Natural, value: T) =\n        ## index \u756A\
+    \u76EE\u306E\u5024\u3092 value \u306B\u5909\u66F4\u3059\u308B\u3002\n        assert\
+    \ index < self.len\n        self.updateNode(self.root, index, value)\n\n    proc\
+    \ searchRight[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T],\
+    \ start, l: int, acc: var T, f: proc(x: T): bool): int =\n        let finish =\
+    \ start + node.nodeLen\n        if node.isNil or finish <= l: return finish\n\
+    \        if l <= start:\n            let next = self.op(acc, node.prod)\n    \
+    \        if f(next):\n                acc = next\n                return finish\n\
+    \        node.push\n        let mid = start + node.left.nodeLen\n        result\
+    \ = self.searchRight(node.left, start, l, acc, f)\n        if result < mid: return\n\
+    \        if l <= mid:\n            let next = self.op(acc, node.value)\n     \
+    \       if not f(next): return mid\n            acc = next\n        result = self.searchRight(node.right,\
+    \ mid + 1, l, acc, f)\n\n    proc max_right*[T](self: RangeReverseArrayMonoid[T],\
+    \ l: int, f: proc(x: T): bool): int =\n        ## f(get(l, r)) \u304C\u771F\u3068\
+    \u306A\u308B\u6700\u5927\u306E r \u3092\u8FD4\u3059\u3002\n        ## f(e) = true\
+    \ \u3067\u3001\u533A\u9593\u3092\u4F38\u3070\u3057\u305F\u3068\u304D\u771F\u304B\
+    \u3089\u507D\u3078\u306E\u5909\u5316\u304C\u5358\u8ABF\u3067\u3042\u308B\u3053\
+    \u3068\u3002\n        assert 0 <= l and l <= self.len\n        assert f(self.e)\n\
+    \        var acc = self.e\n        self.searchRight(self.root, 0, l, acc, f)\n\
+    \n    proc searchLeft[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T],\
+    \ start, r: int, acc: var T, f: proc(x: T): bool): int =\n        if node.isNil\
+    \ or r <= start: return start\n        if start + node.size <= r:\n          \
+    \  let next = self.op(node.prod, acc)\n            if f(next):\n             \
+    \   acc = next\n                return start\n        node.push\n        let mid\
+    \ = start + node.left.nodeLen\n        result = self.searchLeft(node.right, mid\
+    \ + 1, r, acc, f)\n        if result > mid + 1: return\n        if mid < r:\n\
+    \            let next = self.op(node.value, acc)\n            if not f(next):\
+    \ return mid + 1\n            acc = next\n        result = self.searchLeft(node.left,\
+    \ start, r, acc, f)\n\n    proc min_left*[T](self: RangeReverseArrayMonoid[T],\
+    \ r: int, f: proc(x: T): bool): int =\n        ## f(get(l, r)) \u304C\u771F\u3068\
+    \u306A\u308B\u6700\u5C0F\u306E l \u3092\u8FD4\u3059\u3002\n        ## f(e) = true\
+    \ \u3067\u3001\u533A\u9593\u3092\u4F38\u3070\u3057\u305F\u3068\u304D\u771F\u304B\
+    \u3089\u507D\u3078\u306E\u5909\u5316\u304C\u5358\u8ABF\u3067\u3042\u308B\u3053\
+    \u3068\u3002\n        assert 0 <= r and r <= self.len\n        assert f(self.e)\n\
+    \        var acc = self.e\n        self.searchLeft(self.root, 0, r, acc, f)\n\n\
+    \    proc `[]`*[T](self: RangeReverseArrayMonoid[T], index: int): T =\n      \
+    \  self.get(index)\n\n    proc `[]`*[T](self: RangeReverseArrayMonoid[T], index:\
+    \ BackwardsIndex): T =\n        self.get(self.length - int(index))\n\n    proc\
+    \ `[]`*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]): T =\n\
+    \        self.get(segment)\n\n    proc `[]=`*[T](self: RangeReverseArrayMonoid[T],\
     \ index: Natural, value: T) =\n        self.update(index, value)\n\n    iterator\
     \ items*[T](self: RangeReverseArrayMonoid[T]): T =\n        if not self.root.isNil:\n\
     \            var stack = @[(0, self.root)]\n            while stack.len > 0:\n\
@@ -138,7 +205,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/range_reverse_array_monoid.nim
   requiredBy: []
-  timestamp: '2026-07-06 18:53:13+09:00'
+  timestamp: '2026-09-06 11:23:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_reverse_array_monoid_test.nim

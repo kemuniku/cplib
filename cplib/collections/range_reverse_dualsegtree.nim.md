@@ -102,10 +102,32 @@ data:
     \        node: RangeReverseDualSegmentTreeNode[S, F],\n        k: int\n    ):\
     \ (RangeReverseDualSegmentTreeNode[S, F], RangeReverseDualSegmentTreeNode[S, F])\
     \ =\n        split(node, k, self.mapping, self.composition, self.id)\n\n    proc\
-    \ reverse*[S, F](self: RangeReverseDualSegmentTree[S, F], l, r: int) =\n     \
-    \   assert 0 <= l and l <= r and r <= self.length\n        var (left, middleRight)\
-    \ = self.splitRoot(self.root, l)\n        var (middle, right) = self.splitRoot(middleRight,\
-    \ r - l)\n        middle.toggle\n        self.root = self.mergeRoot(left, self.mergeRoot(middle,\
+    \ insert*[S, F](self: RangeReverseDualSegmentTree[S, F], index: int, value: S)\
+    \ =\n        ## index \u306E\u76F4\u524D\u306B value \u3092\u633F\u5165\u3059\u308B\
+    \u3002\u672B\u5C3E\u306B\u306F index = len \u3092\u6307\u5B9A\u3059\u308B\u3002\
+    \n        ## \u671F\u5F85 O(log N)\u3002\u633F\u5165\u524D\u306E\u533A\u9593\u66F4\
+    \u65B0\u306F\u65B0\u3057\u3044\u8981\u7D20\u306B\u306F\u4F5C\u7528\u3057\u306A\
+    \u3044\u3002\n        assert 0 <= index and index <= self.length\n        var\
+    \ (left, right) = self.splitRoot(self.root, index)\n        let node = newNode(value,\
+    \ rand(uint64), self.id)\n        self.root = self.mergeRoot(left, self.mergeRoot(node,\
+    \ right))\n        inc self.length\n\n    proc erase*[S, F](self: RangeReverseDualSegmentTree[S,\
+    \ F], l, r: int) =\n        ## \u534A\u958B\u533A\u9593 [l, r) \u3092\u524A\u9664\
+    \u3059\u308B\u3002\u6728\u306E\u64CD\u4F5C\u306F\u671F\u5F85 O(log N)\u3002\n\
+    \        ## \u524A\u9664\u3057\u305F K \u500B\u306E\u30CE\u30FC\u30C9\u306E\u89E3\
+    \u653E\u306B\u306F\u5225\u9014 O(K) \u304B\u304B\u308A\u3046\u308B\u3002\n   \
+    \     assert 0 <= l and l <= r and r <= self.length\n        if l == r: return\n\
+    \        var (left, middleRight) = self.splitRoot(self.root, l)\n        var (_,\
+    \ right) = self.splitRoot(middleRight, r - l)\n        self.root = self.mergeRoot(left,\
+    \ right)\n        self.length -= r - l\n\n    proc erase*[S, F](self: RangeReverseDualSegmentTree[S,\
+    \ F], index: int) =\n        ## index \u756A\u76EE\u306E\u8981\u7D20\u3092\u524A\
+    \u9664\u3059\u308B\u3002\u671F\u5F85 O(log N)\u3002\n        assert 0 <= index\
+    \ and index < self.length\n        self.erase(index, index + 1)\n\n    proc erase*[S,\
+    \ F](self: RangeReverseDualSegmentTree[S, F], segment: HSlice[int, int]) =\n \
+    \       self.erase(segment.a, segment.b + 1)\n\n    proc reverse*[S, F](self:\
+    \ RangeReverseDualSegmentTree[S, F], l, r: int) =\n        assert 0 <= l and l\
+    \ <= r and r <= self.length\n        var (left, middleRight) = self.splitRoot(self.root,\
+    \ l)\n        var (middle, right) = self.splitRoot(middleRight, r - l)\n     \
+    \   middle.toggle\n        self.root = self.mergeRoot(left, self.mergeRoot(middle,\
     \ right))\n\n    proc reverse*[S, F](self: RangeReverseDualSegmentTree[S, F],\
     \ segment: HSlice[int, int]) =\n        self.reverse(segment.a, segment.b + 1)\n\
     \n    proc apply*[S, F](self: RangeReverseDualSegmentTree[S, F], l, r: int, f:\
@@ -113,41 +135,43 @@ data:
     \ middleRight) = self.splitRoot(self.root, l)\n        var (middle, right) = self.splitRoot(middleRight,\
     \ r - l)\n        middle.allApply(f, self.mapping, self.composition)\n       \
     \ self.root = self.mergeRoot(left, self.mergeRoot(middle, right))\n\n    proc\
-    \ apply*[S, F](self: RangeReverseDualSegmentTree[S, F], segment: HSlice[int, int],\
-    \ f: F) =\n        self.apply(segment.a, segment.b + 1, f)\n\n    proc get*[S,\
-    \ F](self: RangeReverseDualSegmentTree[S, F], index: int): S =\n        assert\
-    \ 0 <= index and index < self.length\n        var node = self.root\n        var\
-    \ k = index\n        while true:\n            node.push(self.mapping, self.composition,\
-    \ self.id)\n            let leftSize = node.left.nodeLen\n            if k < leftSize:\n\
-    \                node = node.left\n            elif k == leftSize:\n         \
-    \       return node.value\n            else:\n                k -= leftSize +\
-    \ 1\n                node = node.right\n\n    proc update*[S, F](self: RangeReverseDualSegmentTree[S,\
-    \ F], index: Natural, value: S) =\n        assert index < self.length\n      \
-    \  var (left, middleRight) = self.splitRoot(self.root, int(index))\n        var\
-    \ (middle, right) = self.splitRoot(middleRight, 1)\n        middle.value = value\n\
-    \        middle.lazy = self.id\n        middle.rev = false\n        self.root\
-    \ = self.mergeRoot(left, self.mergeRoot(middle, right))\n\n    proc `[]`*[S, F](self:\
-    \ RangeReverseDualSegmentTree[S, F], index: int): S =\n        self.get(index)\n\
-    \n    proc `[]`*[S, F](self: RangeReverseDualSegmentTree[S, F], index: BackwardsIndex):\
-    \ S =\n        self.get(self.length - int(index))\n\n    proc `[]=`*[S, F](self:\
-    \ RangeReverseDualSegmentTree[S, F], index: Natural, value: S) =\n        self.update(index,\
-    \ value)\n\n    iterator items*[S, F](self: RangeReverseDualSegmentTree[S, F]):\
-    \ S =\n        if not self.root.isNil:\n            var stack = @[(0, self.root)]\n\
-    \            while stack.len > 0:\n                var (t, node) = stack.pop()\n\
-    \                node.push(self.mapping, self.composition, self.id)\n        \
-    \        if t == 0:\n                    if not node.right.isNil: stack.add((0,\
-    \ node.right))\n                    stack.add((1, node))\n                   \
-    \ if not node.left.isNil: stack.add((0, node.left))\n                else:\n \
-    \                   yield node.value\n\n    proc toSeq*[S, F](self: RangeReverseDualSegmentTree[S,\
-    \ F]): seq[S] =\n        for x in self:\n            result.add(x)\n\n    proc\
-    \ `$`*[S, F](self: RangeReverseDualSegmentTree[S, F]): string =\n        var s:\
-    \ seq[string]\n        for x in self:\n            s.add($x)\n        return s.join(\"\
-    \ \")\n"
+    \ apply*[S, F](self: RangeReverseDualSegmentTree[S, F], index: int, f: F) =\n\
+    \        assert 0 <= index and index < self.length\n        self.apply(index,\
+    \ index + 1, f)\n\n    proc apply*[S, F](self: RangeReverseDualSegmentTree[S,\
+    \ F], segment: HSlice[int, int], f: F) =\n        self.apply(segment.a, segment.b\
+    \ + 1, f)\n\n    proc get*[S, F](self: RangeReverseDualSegmentTree[S, F], index:\
+    \ int): S =\n        assert 0 <= index and index < self.length\n        var node\
+    \ = self.root\n        var k = index\n        while true:\n            node.push(self.mapping,\
+    \ self.composition, self.id)\n            let leftSize = node.left.nodeLen\n \
+    \           if k < leftSize:\n                node = node.left\n            elif\
+    \ k == leftSize:\n                return node.value\n            else:\n     \
+    \           k -= leftSize + 1\n                node = node.right\n\n    proc update*[S,\
+    \ F](self: RangeReverseDualSegmentTree[S, F], index: Natural, value: S) =\n  \
+    \      assert index < self.length\n        var (left, middleRight) = self.splitRoot(self.root,\
+    \ int(index))\n        var (middle, right) = self.splitRoot(middleRight, 1)\n\
+    \        middle.value = value\n        middle.lazy = self.id\n        middle.rev\
+    \ = false\n        self.root = self.mergeRoot(left, self.mergeRoot(middle, right))\n\
+    \n    proc `[]`*[S, F](self: RangeReverseDualSegmentTree[S, F], index: int): S\
+    \ =\n        self.get(index)\n\n    proc `[]`*[S, F](self: RangeReverseDualSegmentTree[S,\
+    \ F], index: BackwardsIndex): S =\n        self.get(self.length - int(index))\n\
+    \n    proc `[]=`*[S, F](self: RangeReverseDualSegmentTree[S, F], index: Natural,\
+    \ value: S) =\n        self.update(index, value)\n\n    iterator items*[S, F](self:\
+    \ RangeReverseDualSegmentTree[S, F]): S =\n        if not self.root.isNil:\n \
+    \           var stack = @[(0, self.root)]\n            while stack.len > 0:\n\
+    \                var (t, node) = stack.pop()\n                node.push(self.mapping,\
+    \ self.composition, self.id)\n                if t == 0:\n                   \
+    \ if not node.right.isNil: stack.add((0, node.right))\n                    stack.add((1,\
+    \ node))\n                    if not node.left.isNil: stack.add((0, node.left))\n\
+    \                else:\n                    yield node.value\n\n    proc toSeq*[S,\
+    \ F](self: RangeReverseDualSegmentTree[S, F]): seq[S] =\n        for x in self:\n\
+    \            result.add(x)\n\n    proc `$`*[S, F](self: RangeReverseDualSegmentTree[S,\
+    \ F]): string =\n        var s: seq[string]\n        for x in self:\n        \
+    \    s.add($x)\n        return s.join(\" \")\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/range_reverse_dualsegtree.nim
   requiredBy: []
-  timestamp: '2026-07-06 18:53:13+09:00'
+  timestamp: '2026-09-06 11:23:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_reverse_dualsegtree_test.nim

@@ -20,6 +20,12 @@ data:
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
@@ -51,20 +57,22 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/math/powmod.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-09-02 04:31:29+09:00'
+  timestamp: '2026-09-05 05:19:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim

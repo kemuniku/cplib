@@ -20,6 +20,12 @@ data:
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
@@ -55,19 +61,21 @@ data:
     \ path[i], \" \", path[i+1]\n"
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/dijkstra.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_static_test.nim
   requiredBy: []
-  timestamp: '2026-09-02 04:31:29+09:00'
+  timestamp: '2026-09-05 05:19:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/restore_dijkstra_static_test.nim

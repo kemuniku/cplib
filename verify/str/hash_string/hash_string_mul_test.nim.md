@@ -8,6 +8,12 @@ data:
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
@@ -53,16 +59,18 @@ data:
     \        ans.min = (M+1-(N-i)+(N-1))//N + 1\n\n    if ans == INF:\n        echo\
     \ -1\n    else:\n        echo ans"
   dependsOn:
-  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/str/hash_string.nim
-  - cplib/str/hash_string.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/str/hash_string.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []
-  timestamp: '2026-09-02 04:31:29+09:00'
+  timestamp: '2026-09-05 05:19:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_mul_test.nim
