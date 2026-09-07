@@ -38,6 +38,8 @@ assert initializedEmptyIntegerMerged.len == 0
 
 let integerMergedFromRanges = initMergedStaticString(integerStatic, @[(0, 2), (2, 4)])
 assert integerMergedFromRanges == integerMerged
+let integerMergedFromArrayRanges = initMergedStaticString(integerStatic, [(0, 2), (2, 4)])
+assert integerMergedFromArrayRanges == integerMerged
 let integerSubStatic = integerStatic[1..5]
 let integerSubMergedFromRanges = initMergedStaticString(integerSubStatic, @[(0, 2), (3, 5)])
 assert $integerSubMergedFromRanges == "2 3 2 4"

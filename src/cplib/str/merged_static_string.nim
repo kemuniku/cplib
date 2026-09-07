@@ -4,11 +4,11 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
     import cplib/collections/staticRMQ
 
     type MergedStaticString*[T] = object
-        base : StaticStringBase[T]
-        L : seq[int32]
-        R : seq[int32]
+        base: StaticStringBase[T]
+        L: seq[int32]
+        R: seq[int32]
 
-    proc addRange[T](S:var MergedStaticString[T],base:StaticStringBase[T],l,r:int32) {.inline.}=
+    proc addRange[T](S: var MergedStaticString[T], base: StaticStringBase[T], l, r: int32) {.inline.} =
         assert l <= r
         if S.L.len == 0:
             S.base = base
@@ -17,32 +17,32 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         S.L.add(l)
         S.R.add(r)
 
-    proc lcpRange[T](base:StaticStringBase[T],sl,sr,tl,tr:int32):int {.inline.}=
-        result = min(int(sr-sl),int(tr-tl))
+    proc lcpRange[T](base: StaticStringBase[T], sl, sr, tl, tr: int32): int {.inline.} =
+        result = min(int(sr-sl), int(tr-tl))
         if result == 0:
             return
         var l = base.RSA[sl]
         var r = base.RSA[tl]
         if l > r:
-            swap(l,r)
+            swap(l, r)
         elif l == r:
             return
-        result = min(result,base.RMQ.query(l,r))
-    
-    proc `&`*[Element](S,T:StaticString[Element]):MergedStaticString[Element]=
+        result = min(result, base.RMQ.query(l, r))
+
+    proc `&`*[Element](S, T: StaticString[Element]): MergedStaticString[Element] =
         assert S.base == T.base
         result.base = S.base
-        result.L = @[S.l,T.l]
-        result.R = @[S.r,T.r]
-    proc `&=`*[T](S:var MergedStaticString[T],value:StaticString[T])=
-        S.addRange(value.base,value.l,value.r)
-    proc `&`*[T](S:MergedStaticString[T],value:StaticString[T]):MergedStaticString[T]=
+        result.L = @[S.l, T.l]
+        result.R = @[S.r, T.r]
+    proc `&=`*[T](S: var MergedStaticString[T], value: StaticString[T]) =
+        S.addRange(value.base, value.l, value.r)
+    proc `&`*[T](S: MergedStaticString[T], value: StaticString[T]): MergedStaticString[T] =
         result = S
         result &= value
-    
 
 
-    proc initMergedStaticString*[T](S:openArray[StaticString[T]]):MergedStaticString[T]=
+
+    proc initMergedStaticString*[T](S: openArray[StaticString[T]]): MergedStaticString[T] =
         if len(S) > 0:
             result.base = S[0].base
         result.L = newSeq[int32](len(S))
@@ -56,21 +56,21 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
             result.L[i] = S[i].l
             result.R[i] = S[i].r
 
-    proc initMergedStaticString*[T](S:StaticString[T],ranges:seq[(int,int)]):MergedStaticString[T]=
+    proc initMergedStaticString*[T](S: StaticString[T], ranges: openArray[(int, int)]): MergedStaticString[T] =
         result.base = S.base
         result.L = newSeq[int32](len(ranges))
         result.R = newSeq[int32](len(ranges))
-        for i,(l,r) in ranges:
+        for i, (l, r) in ranges:
             assert 0 <= l and l <= r and r <= len(S)
             result.L[i] = S.l+l.int32()
             result.R[i] = S.l+r.int32()
 
-    proc len*[T](S:MergedStaticString[T]):int=
+    proc len*[T](S: MergedStaticString[T]): int =
         ## 計算量が O(結合数) である点に注意！
         for i in 0..<len(S.L):
             result += int(S.R[i]-S.L[i])
 
-    proc `[]`*[T](S:MergedStaticString[T],idx:int):T=
+    proc `[]`*[T](S: MergedStaticString[T], idx: int): T =
         ## 計算量が O(結合数) である点に注意！
         var offset = idx
         for i in 0..<len(S.L):
@@ -80,24 +80,24 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
             offset -= rangeLength
         raise newException(IndexDefect, "index out of bounds")
 
-    proc `[]`*[T](S:MergedStaticString[T],slice:HSlice[int,int]):MergedStaticString[T]=
+    proc `[]`*[T](S: MergedStaticString[T], slice: HSlice[int, int]): MergedStaticString[T] =
         var tmp = 0
         for i in 0..<len(S.L):
             let next = tmp+int(S.R[i]-S.L[i])
             if tmp < slice.a:
                 if slice.b < next:
-                    result.addRange(S.base,S.L[i]+(slice.a-tmp).int32(),S.L[i]+(slice.b-tmp+1).int32())
+                    result.addRange(S.base, S.L[i]+(slice.a-tmp).int32(), S.L[i]+(slice.b-tmp+1).int32())
                 elif slice.a < next:
-                    result.addRange(S.base,S.L[i]+(slice.a-tmp).int32(),S.R[i])
+                    result.addRange(S.base, S.L[i]+(slice.a-tmp).int32(), S.R[i])
             elif next <= slice.b:
-                result.addRange(S.base,S.L[i],S.R[i])
+                result.addRange(S.base, S.L[i], S.R[i])
             elif tmp <= slice.b:
-                result.addRange(S.base,S.L[i],S.L[i]+(slice.b-tmp+1).int32())
+                result.addRange(S.base, S.L[i], S.L[i]+(slice.b-tmp+1).int32())
             tmp = next
 
 
 
-    proc lcp*[Element](S,T:MergedStaticString[Element]):int=
+    proc lcp*[Element](S, T: MergedStaticString[Element]): int =
         if S.L.len == 0 or T.L.len == 0:
             return 0
         assert S.base == T.base
@@ -110,7 +110,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         while true:
             let slen = int(sr-sl)
             let tlen = int(tr-tl)
-            let tmp = lcpRange(S.base,sl,sr,tl,tr)
+            let tmp = lcpRange(S.base, sl, sr, tl, tr)
             if tmp == slen and tmp == tlen:
                 si += 1
                 ti += 1
@@ -140,7 +140,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
             else:
                 return result + tmp
 
-    proc cmp*[Element](S,T:MergedStaticString[Element]):int=
+    proc cmp*[Element](S, T: MergedStaticString[Element]): int =
         var si = 0
         var ti = 0
         var sl = if S.L.len > 0: S.L[0] else: 0'i32
@@ -161,8 +161,8 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
             if ti == T.L.len:
                 return 1
             assert S.base == T.base
-            let limit = min(int(S.R[si]-sl),int(T.R[ti]-tl))
-            let commonPrefix = lcpRange(S.base,sl,S.R[si],tl,T.R[ti])
+            let limit = min(int(S.R[si]-sl), int(T.R[ti]-tl))
+            let commonPrefix = lcpRange(S.base, sl, S.R[si], tl, T.R[ti])
             if commonPrefix < limit:
                 if S.base.S[sl+commonPrefix.int32()] < T.base.S[tl+commonPrefix.int32()]:
                     return -1
@@ -170,22 +170,22 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
             sl += commonPrefix.int32()
             tl += commonPrefix.int32()
 
-    proc `<`*[Element](S,T:MergedStaticString[Element]):bool=
-        return cmp(S,T) < 0
+    proc `<`*[Element](S, T: MergedStaticString[Element]): bool =
+        return cmp(S, T) < 0
 
-    proc `>`*[Element](S,T:MergedStaticString[Element]):bool=
-        return cmp(S,T) > 0
+    proc `>`*[Element](S, T: MergedStaticString[Element]): bool =
+        return cmp(S, T) > 0
 
-    proc `<=`*[Element](S,T:MergedStaticString[Element]):bool=
-        return cmp(S,T) <= 0
+    proc `<=`*[Element](S, T: MergedStaticString[Element]): bool =
+        return cmp(S, T) <= 0
 
-    proc `>=`*[Element](S,T:MergedStaticString[Element]):bool=
-        return cmp(S,T) >= 0
+    proc `>=`*[Element](S, T: MergedStaticString[Element]): bool =
+        return cmp(S, T) >= 0
 
-    proc `==`*[Element](S,T:MergedStaticString[Element]):bool=
-        return len(S) == len(T) and lcp(S,T) == len(S)
+    proc `==`*[Element](S, T: MergedStaticString[Element]): bool =
+        return len(S) == len(T) and lcp(S, T) == len(S)
 
-    proc `$`*[T](S:MergedStaticString[T]):string=
+    proc `$`*[T](S: MergedStaticString[T]): string =
         when T is char:
             for i in 0..<len(S.L):
                 for j in S.L[i]..<S.R[i]:
