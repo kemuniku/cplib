@@ -84,8 +84,8 @@ data:
   - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/rangeset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/rangeset.nim
+  - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/AI/rangeset_test.nim
