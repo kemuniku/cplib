@@ -2,12 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/collections/persistent_array.nim
-    title: cplib/collections/persistent_array.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/collections/persistent_array.nim
-    title: cplib/collections/persistent_array.nim
-  - icon: ':heavy_check_mark:'
     path: cplib/collections/persistent_unionfind.nim
     title: cplib/collections/persistent_unionfind.nim
   - icon: ':heavy_check_mark:'
@@ -37,13 +31,11 @@ data:
     \ UFS[k].issame(u,v):1 else:0\n"
   dependsOn:
   - cplib/collections/persistent_unionfind.nim
-  - cplib/collections/persistent_array.nim
-  - cplib/collections/persistent_array.nim
   - cplib/collections/persistent_unionfind.nim
   isVerificationFile: true
   path: verify/collections/persistent_unionfind_test.nim
   requiredBy: []
-  timestamp: '2026-07-09 02:51:42+09:00'
+  timestamp: '2026-09-06 11:24:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/persistent_unionfind_test.nim

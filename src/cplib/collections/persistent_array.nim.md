@@ -1,13 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: cplib/collections/persistent_unionfind.nim
-    title: cplib/collections/persistent_unionfind.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/collections/persistent_unionfind.nim
-    title: cplib/collections/persistent_unionfind.nim
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/persistent_array_test.nim
@@ -15,18 +9,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/persistent_array_test.nim
     title: verify/AI/persistent_array_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/AI/persistent_unionfind_test.nim
-    title: verify/AI/persistent_unionfind_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/AI/persistent_unionfind_test.nim
-    title: verify/AI/persistent_unionfind_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/persistent_unionfind_test.nim
-    title: verify/collections/persistent_unionfind_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/collections/persistent_unionfind_test.nim
-    title: verify/collections/persistent_unionfind_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -78,16 +60,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/persistent_array.nim
-  requiredBy:
-  - cplib/collections/persistent_unionfind.nim
-  - cplib/collections/persistent_unionfind.nim
+  requiredBy: []
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/persistent_unionfind_test.nim
-  - verify/collections/persistent_unionfind_test.nim
-  - verify/AI/persistent_unionfind_test.nim
-  - verify/AI/persistent_unionfind_test.nim
   - verify/AI/persistent_array_test.nim
   - verify/AI/persistent_array_test.nim
 documentation_of: cplib/collections/persistent_array.nim

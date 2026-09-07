@@ -448,6 +448,9 @@ data:
       path: cplib/tmpl/citrus.nim
       title: cplib/tmpl/citrus.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/tmpl/fastio.nim
+      title: cplib/tmpl/fastio.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/optimize.nim
       title: cplib/tmpl/optimize.nim
     - icon: ':heavy_check_mark:'
@@ -1081,6 +1084,9 @@ data:
       path: verify/AI/ext_gcd_test.nim
       title: verify/AI/ext_gcd_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/fastio_test.nim
+      title: verify/AI/fastio_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/fenwick2d_test.nim
       title: verify/AI/fenwick2d_test.nim
     - icon: ':heavy_check_mark:'
@@ -1257,6 +1263,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_segtree_test.nim
       title: verify/AI/persistent_segtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/persistent_unionfind_random_test.nim
+      title: verify/AI/persistent_unionfind_random_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_unionfind_test.nim
       title: verify/AI/persistent_unionfind_test.nim
@@ -1457,6 +1466,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_reverse_lazysegtree_test.nim
       title: verify/collections/range_reverse_lazysegtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_reverse_segtree_insert_erase_test.nim
+      title: verify/collections/range_reverse_segtree_insert_erase_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/rollbackuf_yosupo_snap_test.nim
       title: verify/collections/rollbackuf_yosupo_snap_test.nim
@@ -1978,6 +1990,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tmpl/citrus_and_qcfium_test.nim
       title: verify/tmpl/citrus_and_qcfium_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tmpl/fastio_global_checksum_test.nim
+      title: verify/tmpl/fastio_global_checksum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tmpl/fastio_many_aplusb_test.nim
+      title: verify/tmpl/fastio_many_aplusb_test.nim
   - name: verify/tree
     pages:
     - icon: ':heavy_check_mark:'
