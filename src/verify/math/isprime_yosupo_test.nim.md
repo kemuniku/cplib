@@ -57,15 +57,15 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim

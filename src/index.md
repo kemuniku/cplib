@@ -147,6 +147,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/wordsizetree.nim
       title: cplib/collections/wordsizetree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/wordsizetree_avx2.nim
+      title: cplib/collections/wordsizetree_avx2.nim
   - name: cplib/convolution
     pages:
     - icon: ':heavy_check_mark:'
@@ -1404,6 +1407,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/weightedunionfind_test.nim
       title: verify/AI/weightedunionfind_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/wordsizetree_avx2_test.nim
+      title: verify/AI/wordsizetree_avx2_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/wordsizetree_test.nim
       title: verify/AI/wordsizetree_test.nim
