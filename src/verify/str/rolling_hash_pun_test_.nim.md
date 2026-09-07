@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/rolling_hash.nim
     title: cplib/str/rolling_hash.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []
@@ -37,9 +37,9 @@ data:
     \            seen[sh] = i\n    return false\nif not is_ok(1):\n    echo 0\n  \
     \  quit()\necho meguru_bisect(1, n div 2 + 1, is_ok)\n"
   dependsOn:
-  - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
+  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
   isVerificationFile: false
   path: verify/str/rolling_hash_pun_test_.nim

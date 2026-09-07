@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/rolling_hash.nim
     title: cplib/str/rolling_hash.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []
@@ -41,9 +41,9 @@ data:
     \ 2))\n        var x = meguru_bisect(0, mx+1, isok)\n        ans[i] = x * 2\n\
     echo ans.join(\" \")\n"
   dependsOn:
-  - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
+  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
   isVerificationFile: true
   path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim

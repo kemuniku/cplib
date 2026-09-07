@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
   _extendedVerifiedWith:
@@ -15,27 +15,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/combination_test.nim
     title: verify/AI/combination_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_npr_test.nim
     title: verify/math/combination_npr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_npr_test.nim
     title: verify/math/combination_npr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_test.nim
     title: verify/math/combination_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_test.nim
     title: verify/math/combination_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -47,10 +47,11 @@ data:
   code: "when not declared CPLIB_MATH_COMBINATION:\n    const CPLIB_MATH_COMBINATION*\
     \ = 1\n    type Combination_Type[ModInt] = object\n        fact*: seq[ModInt]\n\
     \        inv*: seq[ModInt]\n        fact_inv*: seq[ModInt]\n\n    proc initCombination*[ModInt](max_N:\
-    \ int): Combination_Type[ModInt] =\n        var fact = newSeq[ModInt](max_N+1)\n\
-    \        var inv = newSeq[ModInt](max_N+1)\n        var fact_inv = newSeq[ModInt](max_N+1)\n\
-    \        fact[0] = 1\n        fact[1] = 1\n        inv[1] = 1\n        fact_inv[0]\
-    \ = 1\n        fact_inv[1] = 1\n        for i in 2..max_N:\n            fact[i]\
+    \ int): Combination_Type[ModInt] =\n        assert max_N >= 0\n        var fact\
+    \ = newSeq[ModInt](max_N+1)\n        var inv = newSeq[ModInt](max_N+1)\n     \
+    \   var fact_inv = newSeq[ModInt](max_N+1)\n        fact[0] = 1\n        fact_inv[0]\
+    \ = 1\n        if max_N >= 1:\n            fact[1] = 1\n            inv[1] = 1\n\
+    \            fact_inv[1] = 1\n        for i in 2..max_N:\n            fact[i]\
     \ = fact[i-1] * i\n            inv[i] = -inv[int(ModInt.umod()) mod i]*(int(ModInt.umod())\
     \ div i)\n            fact_inv[i] = fact_inv[i-1] * inv[i]\n        result = Combination_Type[ModInt](fact:\
     \ fact, inv: inv, fact_inv: fact_inv)\n\n    proc ncr*[ModInt](c: Combination_Type[ModInt],\
@@ -67,8 +68,8 @@ data:
   requiredBy:
   - cplib/math/combination_prefix_sum.nim
   - cplib/math/combination_prefix_sum.nim
-  timestamp: '2026-07-13 04:32:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/combination_test.nim
   - verify/math/combination_test.nim

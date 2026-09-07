@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -45,8 +45,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/math/nearest_equiv.nim
-  - cplib/graph/graph.nim
   - cplib/math/nearest_equiv.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/math/nearear_equiv_abc342e_test_.nim
   requiredBy: []

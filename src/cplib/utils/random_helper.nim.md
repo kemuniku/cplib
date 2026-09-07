@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -71,7 +71,7 @@ data:
     \u548C\u304Csum\u3067\u3042\u308B\u5404\u8981\u7D20\u304C\u975E\u8CA0\u6574\u6570\
     \u3067\u3042\u308B\u6570\u5217\u3092\u4E00\u69D8\u30E9\u30F3\u30C0\u30E0\u306B\
     \u8FD4\u3059\n        assert sum >= 0\n        assert n >= 0\n        if n ==\
-    \ 0:\n            return @[]\n        var tmp = randomseq(n-1,1..(n+sum-1),true).sorted()\n\
+    \ 0:\n            assert sum == 0\n            return @[]\n        var tmp = randomseq(n-1,1..(n+sum-1),true).sorted()\n\
     \        var now = 0\n        for x in tmp:\n            result.add(x-now-1)\n\
     \            now = x\n        result.add((n+sum-1) - now)\n        assert len(result)\
     \ == n and sum(result) == sum\n\n    proc random_parenthesis_sequence*(n:int):seq[int]=\n\
@@ -165,19 +165,19 @@ data:
     \        result.add(s[rand(0..<len(s))])\n        return result\n"
   dependsOn:
   - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/graph/graph.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:56:47+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/random_helper_test.nim

@@ -23,18 +23,18 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
-    echo \"Hello World\"\n\nimport cplib/str/zalgorithm\n\nassert zalgorithm(\"ababa\"\
-    ) == @[5, 0, 3, 0, 1]\nassert zalgorithm(\"aaaa\") == @[4, 3, 2, 1]\nassert zalgorithm([1,\
-    \ 2, 1, 2, 1]) == @[5, 0, 3, 0, 1]\nassert zalgorithm(newSeq[int]()) == @[]\n\n\
-    proc checkOpenArray(s: openArray[int]) =\n    assert zalgorithm(s) == @[4, 0,\
-    \ 2, 0]\n\ncheckOpenArray([1, 2, 1, 2])\n"
+    echo \"Hello World\"\n\nimport cplib/str/zalgorithm\n\nassert zalgorithm(\"\"\
+    ) == @[]\nassert zalgorithm(\"ababa\") == @[5, 0, 3, 0, 1]\nassert zalgorithm(\"\
+    aaaa\") == @[4, 3, 2, 1]\nassert zalgorithm([1, 2, 1, 2, 1]) == @[5, 0, 3, 0,\
+    \ 1]\nassert zalgorithm(newSeq[int]()) == @[]\n\nproc checkOpenArray(s: openArray[int])\
+    \ =\n    assert zalgorithm(s) == @[4, 0, 2, 0]\n\ncheckOpenArray([1, 2, 1, 2])\n"
   dependsOn:
   - cplib/str/zalgorithm.nim
   - cplib/str/zalgorithm.nim
   isVerificationFile: true
   path: verify/AI/zalgorithm_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-09-08 05:46:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/zalgorithm_test.nim

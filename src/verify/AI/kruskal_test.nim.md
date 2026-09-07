@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -50,14 +50,14 @@ data:
     \ costSum == 6\n\nvar disconnected = initWeightedUnDirectedGraph(3)\ndisconnected.add_edge(0,\
     \ 1, 1)\nassert disconnected.get_MST_cost == INF64\n"
   dependsOn:
-  - cplib/graph/kruskal.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/kruskal.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/kruskal_test.nim
   requiredBy: []

@@ -36,24 +36,25 @@ data:
     \ = 1\n    import algorithm, strutils,sequtils,math\n    type RootRangeSum*[T]\
     \ = ref object\n        blocksize : int\n        length : int\n        arr : seq[T]\n\
     \        blockvalue : seq[T]\n        e : T\n    proc initrangesum*[T](v:openArray[T],bsize:int\
-    \ = v.len.float.sqrt.int(),e:T=0):RootRangeSum[T]=\n        var b = newseqwith((len(v)+bsize-1)\
-    \ div bsize,e)\n        result = RootRangeSum[T](blocksize:bsize,length:len(v),arr:\
+    \ = 0,e:T=0):RootRangeSum[T]=\n        let actualBlockSize = if bsize > 0: bsize\
+    \ else: max(v.len.float.sqrt.int(), 1)\n        var b = newseqwith((len(v)+actualBlockSize-1)\
+    \ div actualBlockSize,e)\n        result = RootRangeSum[T](blocksize:actualBlockSize,length:len(v),arr:\
     \ @v,blockvalue:b,e:e)\n        for i in 0..<(len(v)):\n            result.blockvalue[i\
-    \ div bsize] = result.blockvalue[i div bsize] + v[i]\n\n    proc update*[T](self:\
-    \ RootRangeSum[T], idx: Natural, val: T) =\n        ## idx\u306E\u8981\u7D20\u3092\
-    val\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\n        assert idx < self.length\n\
-    \        self.blockvalue[idx div self.blocksize] = self.blockvalue[idx div self.blocksize]\
-    \ + val - self.arr[idx]\n        self.arr[idx] = val\n    proc get*[T](self: RootRangeSum[T],\
-    \ q_left: Natural, q_right: Natural): T =\n        ## \u534A\u89E3\u533A\u9593\
-    [q_left,q_right)\u306B\u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\
-    \u3057\u307E\u3059\u3002\n        result = self.e\n        let bidx_left = (q_left\
-    \ div self.blocksize)\n        let bidx_right = (q_right div self.blocksize)\n\
-    \        assert q_left <= q_right and 0 <= q_left and q_right <= self.length\n\
-    \        if  bidx_left == bidx_right:\n            for i in q_left..<q_right:\n\
-    \                result = result + self.arr[i]\n            return result\n\n\
-    \        for i in q_left..<(bidx_left+1)*self.blocksize:\n            result =\
-    \ result + self.arr[i]\n        for bidx in (bidx_left+1)..<(bidx_right):\n  \
-    \          result = result + self.blockvalue[bidx]\n        for i in (bidx_right*self.blocksize)..<q_right:\n\
+    \ div actualBlockSize] = result.blockvalue[i div actualBlockSize] + v[i]\n\n \
+    \   proc update*[T](self: RootRangeSum[T], idx: Natural, val: T) =\n        ##\
+    \ idx\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\n \
+    \       assert idx < self.length\n        self.blockvalue[idx div self.blocksize]\
+    \ = self.blockvalue[idx div self.blocksize] + val - self.arr[idx]\n        self.arr[idx]\
+    \ = val\n    proc get*[T](self: RootRangeSum[T], q_left: Natural, q_right: Natural):\
+    \ T =\n        ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\u3064\u3044\u3066\
+    \u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\u3002\n        result\
+    \ = self.e\n        let bidx_left = (q_left div self.blocksize)\n        let bidx_right\
+    \ = (q_right div self.blocksize)\n        assert q_left <= q_right and 0 <= q_left\
+    \ and q_right <= self.length\n        if  bidx_left == bidx_right:\n         \
+    \   for i in q_left..<q_right:\n                result = result + self.arr[i]\n\
+    \            return result\n\n        for i in q_left..<(bidx_left+1)*self.blocksize:\n\
+    \            result = result + self.arr[i]\n        for bidx in (bidx_left+1)..<(bidx_right):\n\
+    \            result = result + self.blockvalue[bidx]\n        for i in (bidx_right*self.blocksize)..<q_right:\n\
     \            result = result + self.arr[i]\n    proc get*[T](self: RootRangeSum[T],\
     \ segment: HSlice[int, int]): T =\n        assert segment.a <= segment.b + 1 and\
     \ 0 <= segment.a and segment.b+1 <= self.length\n        return self.get(segment.a,\
@@ -93,7 +94,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/root_rangesum.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_kth_smallest_test.nim

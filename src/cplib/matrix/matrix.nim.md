@@ -39,16 +39,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/matrix_test.nim
     title: verify/AI/matrix_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,9 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_zoistring_test.nim
     title: verify/matrix/matrix_zoistring_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -148,7 +148,7 @@ data:
   - verify/matrix/matrix_dpr_test_.nim
   - verify/matrix/matrix_dpr_test_.nim
   timestamp: '2026-07-06 04:42:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/AI/matrix_test.nim
   - verify/AI/matrix_test.nim

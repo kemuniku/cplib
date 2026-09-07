@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -38,6 +38,11 @@ data:
     import cplib/graph/graph
 
     import cplib/graph/grid_to_graph
+
+
+    assert newSeq[string]().grid_to_graph().len == 0
+
+    assert newSeq[string]().grid_to_graph(''.'', true).len == 0
 
 
     let grid = @["..", "#."]
@@ -75,7 +80,7 @@ data:
   isVerificationFile: true
   path: verify/AI/grid_to_graph_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/grid_to_graph_test.nim

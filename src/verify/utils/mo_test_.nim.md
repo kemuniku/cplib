@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   _extendedRequiredBy: []

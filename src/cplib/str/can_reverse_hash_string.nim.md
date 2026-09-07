@@ -9,51 +9,51 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/can_reverse_hash_string_test.nim
     title: verify/AI/can_reverse_hash_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -132,10 +132,10 @@ data:
     \u3002\n        # \u7A7A\u6587\u5B57\u5217\u7528\u306Br=0\u3082\u8A31\u5BB9\u3057\
     \u3066\u3044\u308B\u3053\u3068\u306B\u6CE8\u610F\u3002\n        # \u7A7A\u6587\
     \u5B57\u5217\u306Fl=0,r=0\u306E\u307F\u8A31\u5BB9\u3057\u3066\u3044\u308B\u3002\
-    \n        assert l in 0..<R.size and r in 0..R.size and (l < r or (l == 0 and\
-    \ r == 0))\n        result.R = R\n        result.l = l\n        result.r = r\n\
-    \n    proc `[]`*(R: RollingHashBase, slice: HSlice[int, int]): RollingHash =\n\
-    \        assert slice.a >= 0 and slice.b >= 0\n        return R.get_substring(slice.a,\
+    \n        assert (l == 0 and r == 0) or\n            (l in 0..<R.size and r in\
+    \ 1..R.size and l < r)\n        result.R = R\n        result.l = l\n        result.r\
+    \ = r\n\n    proc `[]`*(R: RollingHashBase, slice: HSlice[int, int]): RollingHash\
+    \ =\n        assert slice.a >= 0 and slice.b >= 0\n        return R.get_substring(slice.a,\
     \ slice.b+1)\n\n\n    proc `[]`*(S: RollingHash, slice: HSlice[int, int]): RollingHash\
     \ =\n        if len(slice) == 0:\n            return S.R.get_substring(0, 0)\n\
     \        assert slice.a in 0..<len(S) and slice.b in 0..<len(S)\n        return\
@@ -173,13 +173,13 @@ data:
     \                return 0\n            else:\n                return -1*flg\n\
     \        else:\n            if S[lcp] < T[lcp]:\n                return -1*flg\n\
     \            else:\n                return flg\n\n    proc `<`*(S, T: RollingHash):\
-    \ bool =\n        return cmp(S, T) < 0\n\n\n"
+    \ bool =\n        return cmp(S, T) < 0\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/can_reverse_hash_string.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:32:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-08 05:46:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/get_palindromes_test.nim
   - verify/str/get_palindromes_test.nim

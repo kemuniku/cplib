@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -73,10 +73,10 @@ data:
     '
   dependsOn:
   - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
   - cplib/graph/merge_tree.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/merge_tree_test.nim

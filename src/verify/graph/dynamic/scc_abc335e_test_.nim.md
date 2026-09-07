@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -40,8 +40,8 @@ data:
     \ dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
   - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/dynamic/scc_abc335e_test_.nim

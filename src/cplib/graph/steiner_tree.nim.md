@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -59,22 +59,23 @@ data:
     \u306A\u6700\u5C0F\u306E\u30B3\u30B9\u30C8\u3092\u51FA\u529B\u3059\u308B\u3002\
     \n        ## \u8A08\u7B97\u91CF O(n3^t + (n+m)2^tlogn)\n        var k = terminal.len\n\
     \        var n = g.len\n\n        var dp = newSeqWith((1 shl k), newSeqWith(n,\
-    \ inf))\n        for i in 0..<k:\n            dp[(1 shl i)][terminal[i]] = zero\n\
-    \n        for bit in 1..<(1 shl k):\n            for u in 0..<n:\n           \
-    \     for bn in bitsubset(bit):\n                    dp[bit][u] = min(dp[bit][u],\
-    \ dp[bn][u] + dp[bit xor bn][u])\n            var q = initHeapQueue[(T, int)]()\n\
-    \            for u in 0..<n:\n                q.push((dp[bit][u], u))\n      \
-    \      while q.len > 0:\n                var (d, u) = q.pop\n                if\
-    \ dp[bit][u] != d: continue\n                for (v, cost) in g.to_and_cost(u):\n\
-    \                    if dp[bit][v] > d + cost:\n                        dp[bit][v]\
-    \ = d + cost\n                        q.push((dp[bit][v], v))\n        return\
-    \ dp\n\n    proc steiner_tree_dp*[T](g: StaticGraph[T] or DynamicGraph[T], terminal:\
-    \ seq[int], inf: T): seq[seq[T]] =\n        steiner_tree_dp_impl(g, terminal,\
-    \ T(0), inf)\n    proc steiner_tree_dp*[T](g: StaticGraph[T] or DynamicGraph[T],\
-    \ terminal: seq[int], zero, inf: T): seq[seq[T]] =\n        steiner_tree_dp_impl(g,\
-    \ terminal, zero, inf)\n\n    proc steiner_tree_mincost_impl[T](g: StaticGraph[T]\
-    \ or DynamicGraph[T], terminal: openArray[int], zero, inf: T): T =\n        var\
-    \ dp = steiner_tree_dp_impl(g, terminal, zero, inf)\n        var k = terminal.len\n\
+    \ inf))\n        for u in 0..<n:\n            dp[0][u] = zero\n        for i in\
+    \ 0..<k:\n            dp[(1 shl i)][terminal[i]] = zero\n\n        for bit in\
+    \ 1..<(1 shl k):\n            for u in 0..<n:\n                for bn in bitsubset(bit):\n\
+    \                    dp[bit][u] = min(dp[bit][u], dp[bn][u] + dp[bit xor bn][u])\n\
+    \            var q = initHeapQueue[(T, int)]()\n            for u in 0..<n:\n\
+    \                q.push((dp[bit][u], u))\n            while q.len > 0:\n     \
+    \           var (d, u) = q.pop\n                if dp[bit][u] != d: continue\n\
+    \                for (v, cost) in g.to_and_cost(u):\n                    if dp[bit][v]\
+    \ > d + cost:\n                        dp[bit][v] = d + cost\n               \
+    \         q.push((dp[bit][v], v))\n        return dp\n\n    proc steiner_tree_dp*[T](g:\
+    \ StaticGraph[T] or DynamicGraph[T], terminal: seq[int], inf: T): seq[seq[T]]\
+    \ =\n        steiner_tree_dp_impl(g, terminal, T(0), inf)\n    proc steiner_tree_dp*[T](g:\
+    \ StaticGraph[T] or DynamicGraph[T], terminal: seq[int], zero, inf: T): seq[seq[T]]\
+    \ =\n        steiner_tree_dp_impl(g, terminal, zero, inf)\n\n    proc steiner_tree_mincost_impl[T](g:\
+    \ StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], zero, inf: T):\
+    \ T =\n        if terminal.len == 0:\n            return zero\n        var dp\
+    \ = steiner_tree_dp_impl(g, terminal, zero, inf)\n        var k = terminal.len\n\
     \        return dp[(1 shl k) - 1][terminal[0]]\n\n    proc steiner_tree_mincost*(g:\
     \ StaticGraph[int] or DynamicGraph[int], terminal: openArray[int], inf: int =\
     \ INF64): int = steiner_tree_mincost_impl(g, terminal, 0, inf)\n    proc steiner_tree_mincost*(g:\
@@ -97,18 +98,18 @@ data:
     \ openArray[int], zero, inf: T): T = steiner_tree_mincost_impl(g, terminal, zero,\
     \ inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:
   - verify/graph/steiner_tree_abc364g_test_.nim
   - verify/graph/steiner_tree_abc364g_test_.nim
-  timestamp: '2026-07-09 05:18:54+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/steiner_tree_test.nim

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -31,10 +31,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -63,18 +63,18 @@ data:
     dg.add_edge(0, 1, 10)\ndg.add_edge(0, 1, 4)\ndg.add_edge(1, 2, 8)\nlet mat = dg.to_adjacency_matrix()\n\
     assert mat[0][1] == 4\nassert mat[0][2] == INF64\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/graph/tsp.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/tsp.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/dijkstra.nim
-  - cplib/graph/tsp.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/tsp_test.nim
   requiredBy: []

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/root_rangesum.nim
     title: cplib/collections/root_rangesum.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   _extendedRequiredBy: []
@@ -41,14 +41,14 @@ data:
     \ => (x <= k))\n    ans[idx] = cmp[tmp]\n\nM.run(ad,ad,dl,dl,mem)\n\necho ans.join(\"\
     \\n\")"
   dependsOn:
-  - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
+  - cplib/collections/root_rangesum.nim
   - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-04 10:21:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_kth_smallest_test.nim

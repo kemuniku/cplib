@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -75,11 +75,11 @@ data:
     \       result.add_edge(i,j,c)\n                uf.unite(i,j)\n"
   dependsOn:
   - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/kruskal.nim
   requiredBy: []

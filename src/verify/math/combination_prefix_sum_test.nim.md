@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -53,17 +53,17 @@ data:
     \ == 0\n\ncheck[modint998244353]()\ncheck[modint1000000007]()\n\ntype DynamicModInt\
     \ = modint\nDynamicModInt.setMod(1_000_000_007)\ncheck[DynamicModInt]()\n"
   dependsOn:
+  - cplib/utils/mo.nim
   - cplib/math/combination_prefix_sum.nim
-  - cplib/math/combination.nim
   - cplib/math/combination_prefix_sum.nim
   - cplib/utils/mo.nim
   - cplib/math/combination.nim
-  - cplib/utils/mo.nim
+  - cplib/math/combination.nim
   isVerificationFile: true
   path: verify/math/combination_prefix_sum_test.nim
   requiredBy: []
-  timestamp: '2026-07-16 13:30:07+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/math/combination_prefix_sum_test.nim
 layout: document

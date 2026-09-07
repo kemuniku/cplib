@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   - icon: ':heavy_check_mark:'
@@ -13,28 +13,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/merged_static_string.nim
     title: cplib/str/merged_static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -73,22 +73,22 @@ data:
     \        assert $tmp2 == naive2\n        assert $tmp3 == naive3\n        assert\
     \ cmp(tmp2,tmp2) == 0\n\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/static_string.nim
-  - cplib/tmpl/fastio.nim
   - cplib/str/static_string.nim
   - cplib/utils/constants.nim
   - cplib/str/merged_static_string.nim
+  - cplib/tmpl/sheep.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:41:12+09:00'
+  timestamp: '2026-09-08 05:46:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/merged_static_string.nim

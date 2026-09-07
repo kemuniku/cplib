@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -62,15 +62,15 @@ data:
     \        for (queryIndex, prefixIndex) in queryIndices:\n            result[queryIndex]\
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
-  - cplib/math/combination.nim
+  - cplib/utils/mo.nim
   - cplib/utils/mo.nim
   - cplib/math/combination.nim
-  - cplib/utils/mo.nim
+  - cplib/math/combination.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim
   requiredBy: []
-  timestamp: '2026-07-16 13:30:07+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim

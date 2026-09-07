@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -91,8 +91,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lichaotree.nim
     title: cplib/collections/lichaotree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -59,9 +59,9 @@ data:
     '
   dependsOn:
   - cplib/collections/lichaotree.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/collections/lichaotree.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/lichaotree_test.nim
   requiredBy: []

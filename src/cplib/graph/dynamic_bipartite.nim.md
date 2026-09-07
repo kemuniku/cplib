@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/rootvalue_unionfind.nim
     title: cplib/collections/rootvalue_unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -55,8 +55,8 @@ data:
     \        return self.uf.issame(u,v) or self.uf.issame(u,v+self.N)"
   dependsOn:
   - cplib/collections/rootvalue_unionfind.nim
-  - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/rerooting_test.nim
     title: verify/AI/rerooting_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://trap.jp/post/1702/
@@ -49,8 +49,9 @@ data:
     \u60C5\u5831\u3092\u4ED8\u4E0E\n        ## put_vertex \u9802\u70B9v\u306E\u9802\
     \u70B9\u60C5\u5831\u3092\u4ED8\u4E0E\n        var L = newseq[seq[E]](len(G))\n\
     \        var R = newseq[seq[E]](len(G))\n        var res = newseq[E](len(G))\n\
-    \        proc dfs1(x,p:int):E=\n            var values : seq[E]\n            values.add(e)\n\
-    \            for y in G[x]:\n                if y != p:\n                    values.add(put_edge(put_vertex(dfs1(y,x),y),x,y))\n\
+    \        if G.len == 0:\n            return res\n        proc dfs1(x,p:int):E=\n\
+    \            var values : seq[E]\n            values.add(e)\n            for y\
+    \ in G[x]:\n                if y != p:\n                    values.add(put_edge(put_vertex(dfs1(y,x),y),x,y))\n\
     \            values.add(e)\n            var now = e\n            var l = newseq[E](len(values))\n\
     \            var r = newseq[E](len(values))\n            for i in 0..<(len(values)):\n\
     \                now = merge(now,values[i])\n                l[i] = now\n    \
@@ -80,8 +81,8 @@ data:
   requiredBy:
   - verify/tree/rerooting_big_test_.nim
   - verify/tree/rerooting_big_test_.nim
-  timestamp: '2026-07-07 06:48:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim

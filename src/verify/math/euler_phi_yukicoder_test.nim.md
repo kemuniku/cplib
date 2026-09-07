@@ -13,22 +13,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -66,19 +66,19 @@ data:
     \   continue\n    for p in divisor(euler_phi(n)):\n        if powmod(10, p, n)\
     \ == 1:\n            ans.add(p)\n            break\necho ans.join(\"\\n\")\n"
   dependsOn:
+  - cplib/math/divisor.nim
+  - cplib/math/euler_phi.nim
+  - cplib/math/powmod.nim
+  - cplib/math/divisor.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/euler_phi.nim
-  - cplib/math/divisor.nim
-  - cplib/math/powmod.nim
-  - cplib/math/divisor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/euler_phi.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
   isVerificationFile: true
   path: verify/math/euler_phi_yukicoder_test.nim

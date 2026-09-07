@@ -23,8 +23,9 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
-    echo \"Hello World\"\n\nimport cplib/collections/avltreenode_old\n\nproc newNode(x:\
-    \ int): AvlTreeNode[int] =\n  let nilNode = get_avltree_nilnode[int]()\n  AvlTreeNode[int](p:\
+    # Memory manager: refc, configured in avltreenode_old_test.nim.cfg.\necho \"Hello\
+    \ World\"\n\nimport cplib/collections/avltreenode_old\n\nproc newNode(x: int):\
+    \ AvlTreeNode[int] =\n  let nilNode = get_avltree_nilnode[int]()\n  AvlTreeNode[int](p:\
     \ nilNode, l: nilNode, r: nilNode, h: 1, len: 1, key: x)\n\nlet nilNode = get_avltree_nilnode[int]()\n\
     var root = nilNode\nlet n2 = newNode(2)\nlet n1 = newNode(1)\nlet n3 = newNode(3)\n\
     root = root.insert(n2)\nroot = root.insert(n1)\nroot = root.insert(n3)\n\nassert\
@@ -43,7 +44,7 @@ data:
   isVerificationFile: true
   path: verify/AI/avltreenode_old_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-08 05:41:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/avltreenode_old_test.nim

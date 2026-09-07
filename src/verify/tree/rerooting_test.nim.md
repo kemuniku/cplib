@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
     links:
@@ -48,8 +48,8 @@ data:
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/rerooting_test.nim
 layout: document

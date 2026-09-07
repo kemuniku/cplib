@@ -1,77 +1,77 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
   _extendedVerifiedWith:
@@ -171,15 +171,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -207,35 +207,35 @@ data:
     \ partial[i] = partial[i * 2] * tree.nodes[i * 2 + 1] +\n                partial[i\
     \ * 2 + 1] * tree.nodes[i * 2]\n        partial[1].prefix(xs.len)\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/powmod.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/product_tree.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/product_tree.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inner_math.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/powmod.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/fps/polynomial_interpolation.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-03 22:19:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-04 10:21:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim
