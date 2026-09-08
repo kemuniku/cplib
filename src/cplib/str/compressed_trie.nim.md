@@ -94,8 +94,8 @@ data:
   - cplib/str/static_string.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim

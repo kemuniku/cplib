@@ -149,10 +149,10 @@ data:
     \ untyped) =\n        when defined(debug):\n            block:\n             \
     \   body\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:

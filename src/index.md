@@ -436,6 +436,9 @@ data:
       path: cplib/str/compressed_trie.nim
       title: cplib/str/compressed_trie.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/edit_distance.nim
+      title: cplib/str/edit_distance.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/fixedlength_merged_static_string.nim
       title: cplib/str/fixedlength_merged_static_string.nim
     - icon: ':heavy_check_mark:'
@@ -1118,6 +1121,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/dynamic_bipartite_test.nim
       title: verify/AI/dynamic_bipartite_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/edit_distance_test.nim
+      title: verify/AI/edit_distance_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/euler_phi_test.nim
       title: verify/AI/euler_phi_test.nim
@@ -1997,6 +2003,9 @@ data:
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/edit_distance_test.nim
+      title: verify/str/edit_distance_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/get_palindromes_test.nim
       title: verify/str/get_palindromes_test.nim

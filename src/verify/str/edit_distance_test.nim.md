@@ -2,58 +2,60 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/math/euler_phi.nim
-    title: cplib/math/euler_phi.nim
+    path: cplib/str/edit_distance.nim
+    title: cplib/str/edit_distance.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/math/euler_phi.nim
-    title: cplib/math/euler_phi.nim
+    path: cplib/str/edit_distance.nim
+    title: cplib/str/edit_distance.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/modint/exp_modint.nim
-    title: cplib/modint/exp_modint.nim
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/modint/exp_modint.nim
-    title: cplib/modint/exp_modint.nim
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DPL_1_E
     links:
-    - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+    - https://onlinejudge.u-aizu.ac.jp/problems/DPL_1_E
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-
-    echo "Hello World"
+  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/DPL_1_E
 
 
-    import cplib/modint/exp_modint
+    import cplib/str/edit_distance
 
 
-    assert true
+    let s = stdin.readLine()
+
+    let t = stdin.readLine()
+
+    echo editDistance(s, t, max(s.len, t.len))
 
     '
   dependsOn:
-  - cplib/math/euler_phi.nim
-  - cplib/modint/exp_modint.nim
-  - cplib/modint/exp_modint.nim
-  - cplib/math/euler_phi.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
   isVerificationFile: true
-  path: verify/AI/exp_modint_test.nim
+  path: verify/str/edit_distance_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-08 16:17:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/AI/exp_modint_test.nim
+documentation_of: verify/str/edit_distance_test.nim
 layout: document
 redirect_from:
-- /verify/verify/AI/exp_modint_test.nim
-- /verify/verify/AI/exp_modint_test.nim.html
-title: verify/AI/exp_modint_test.nim
+- /verify/verify/str/edit_distance_test.nim
+- /verify/verify/str/edit_distance_test.nim.html
+title: verify/str/edit_distance_test.nim
 ---

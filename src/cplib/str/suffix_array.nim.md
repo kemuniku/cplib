@@ -1,8 +1,26 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance.nim
+    title: cplib/str/edit_distance.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance.nim
+    title: cplib/str/edit_distance.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_test.nim
+    title: verify/AI/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_test.nim
+    title: verify/AI/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_test.nim
+    title: verify/str/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_test.nim
+    title: verify/str/edit_distance_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
@@ -147,14 +165,20 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/suffix_array.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
   timestamp: '2026-09-08 13:45:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/edit_distance_test.nim
+  - verify/str/edit_distance_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
   - verify/str/suffix_array_test.nim
   - verify/str/suffix_array_test.nim
+  - verify/AI/edit_distance_test.nim
+  - verify/AI/edit_distance_test.nim
 documentation_of: cplib/str/suffix_array.nim
 layout: document
 redirect_from:

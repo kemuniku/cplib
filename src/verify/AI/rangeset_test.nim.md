@@ -83,8 +83,8 @@ data:
   dependsOn:
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/rangeset.nim
   - cplib/collections/avlset.nim
+  - cplib/collections/rangeset.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/rangeset.nim
   isVerificationFile: true

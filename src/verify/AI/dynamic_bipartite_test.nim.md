@@ -71,9 +71,9 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/dynamic_bipartite.nim
   - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/dynamic_bipartite.nim
   - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/dynamic_bipartite.nim
   isVerificationFile: true
