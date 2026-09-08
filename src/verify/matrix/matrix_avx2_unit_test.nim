@@ -247,7 +247,7 @@ proc checkRawAndJoin[T]() =
     for row in 0 ..< a.h:
         var strings: seq[string]
         for column in 0 ..< a.w:
-            strings.add($saved[row * a.w + column])
+            strings.add(system.`$`(saved[row * a.w + column].uint64))
         for separator in ["", " ", " / ", "\0x"]:
             let expected = strutils.join(strings, separator)
             doAssert a[row].join(separator) == expected
