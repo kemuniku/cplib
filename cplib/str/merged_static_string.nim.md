@@ -129,9 +129,9 @@ data:
     \                    first = false\n                    result &= $S.base.S[j]\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/merged_static_string.nim
   requiredBy:

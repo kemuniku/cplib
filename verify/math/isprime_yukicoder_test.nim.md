@@ -58,17 +58,17 @@ data:
     \       echo x, \" \", 0\n"
   dependsOn:
   - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/powmod.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/inner_math.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/utils/constants.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []

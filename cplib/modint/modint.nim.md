@@ -532,11 +532,11 @@ data:
     \ \"/\" & $v[0].d\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
