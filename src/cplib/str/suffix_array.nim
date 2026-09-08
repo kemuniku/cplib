@@ -1,226 +1,169 @@
 when not declared CPLIB_STR_SUFFIX_ARRAY:
     const CPLIB_STR_SUFFIX_ARRAY* = 1
 
-    import algorithm, sequtils
+    import algorithm
 
-    # LMS 部分文字列の比較で、長い等値区間だけを AVX2 で比較します。
-    when defined(cpp) and defined(amd64) and (defined(gcc) or defined(clang)):
-        {.emit: """
-        #ifndef CPLIB_STR_SUFFIX_ARRAY_AVX2_HPP
-        #define CPLIB_STR_SUFFIX_ARRAY_AVX2_HPP
+    # 公開 API で前提条件を確認し、内部のチェックはデバッグビルドで行います。
+    when defined(release):
+        {.push checks: off.}
 
-        #include <immintrin.h>
-        #include <stddef.h>
-        #include <stdint.h>
-
-        #if defined(__GNUC__) || defined(__clang__)
-        #define CPLIB_SA_AVX2 __attribute__((target("avx2")))
-        #else
-        #define CPLIB_SA_AVX2
-        #endif
-
-        static inline bool cplib_sa_avx2_available() {
-        #if defined(__GNUC__) || defined(__clang__)
-            return __builtin_cpu_supports("avx2");
-        #else
-            return false;
-        #endif
-        }
-
-        CPLIB_SA_AVX2 static inline bool cplib_sa_equal_avx2(
-                const void *raw_s, size_t l, size_t r, size_t length) {
-            const int64_t *s = reinterpret_cast<const int64_t *>(raw_s);
-            size_t i = 0;
-            for (; i + 4 <= length; i += 4) {
-                const __m256i left = _mm256_loadu_si256(
-                    reinterpret_cast<const __m256i *>(s + l + i));
-                const __m256i right = _mm256_loadu_si256(
-                    reinterpret_cast<const __m256i *>(s + r + i));
-                const __m256i equal = _mm256_cmpeq_epi64(left, right);
-                if (_mm256_movemask_epi8(equal) != -1) return false;
-            }
-            for (; i < length; ++i) {
-                if (s[l + i] != s[r + i]) return false;
-            }
-            return true;
-        }
-
-        #undef CPLIB_SA_AVX2
-        #endif
-        """.}
-
-        proc saAvx2Available(): bool
-            {.importc: "cplib_sa_avx2_available", nodecl.}
-        proc saEqualAvx2(s: ptr int, l, r, length: csize_t): bool
-            {.importc: "cplib_sa_equal_avx2", nodecl.}
-
-    proc saIs(s: seq[int], upper: int): seq[int] =
+    proc saIsImpl[T; I: SomeSignedInt](s: openArray[T], upper: int): seq[I] =
         ## SA-IS で、値域が 0..upper の整数列の接尾辞配列を作成します。
         let n = s.len
         if n == 0:
             return @[]
         if n == 1:
-            return @[0]
+            return @[I(0)]
         if n == 2:
             if s[0] < s[1]:
-                return @[0, 1]
-            return @[1, 0]
+                return @[I(0), I(1)]
+            return @[I(1), I(0)]
 
-        # isS[i] は i 番目が S-type であることを表します。
+        # isS は L-type を 0、S-type を 1、LMS を 2 で表します。
         var isS = newSeq[uint8](n)
+        var bucket = newSeq[I](upper + 2)
+        inc bucket[s[n - 1].int + 1]
         var i = n - 2
         while i >= 0:
+            let c = s[i].int
             if s[i] == s[i + 1]:
                 isS[i] = isS[i + 1]
             elif s[i] < s[i + 1]:
                 isS[i] = 1
+            inc bucket[c + 1]
             dec i
+        for c in 0..upper:
+            bucket[c + 1] += bucket[c]
 
-        # sumS は各バケットの S-type 側の開始位置、sumL は L-type 側の開始位置です。
-        var sumL = newSeq[int](upper + 1)
-        var sumS = newSeq[int](upper + 1)
-        i = 0
-        while i < n:
-            if isS[i] == 0:
-                inc sumS[s[i]]
-            else:
-                inc sumL[s[i] + 1]
-            inc i
-        i = 0
-        while i <= upper:
-            sumS[i] += sumL[i]
-            if i < upper:
-                sumL[i + 1] += sumS[i]
-            inc i
+        var sa = newSeq[I](n)
+        var buf = newSeq[I](upper + 1)
 
-        var sa = newSeq[int](n)
-        var buf = newSeq[int](upper + 1)
-
-        proc induce(lms: openArray[int]) =
+        template induce(lms: openArray[I]) =
             ## LMS 接尾辞から L-type と S-type の接尾辞を誘導します。
             var j: int
             for j in 0..<n:
                 sa[j] = -1
 
             for j in 0..upper:
-                buf[j] = sumS[j]
-            for d in lms:
-                if d != n:
-                    sa[buf[s[d]]] = d
-                    inc buf[s[d]]
+                buf[j] = bucket[j + 1]
+            j = lms.len - 1
+            while j >= 0:
+                let d = lms[j]
+                let c = s[d].int
+                dec buf[c]
+                sa[buf[c]] = d
+                dec j
 
             for j in 0..upper:
-                buf[j] = sumL[j]
-            sa[buf[s[n - 1]]] = n - 1
-            inc buf[s[n - 1]]
+                buf[j] = bucket[j]
+            sa[buf[s[n - 1].int]] = I(n - 1)
+            inc buf[s[n - 1].int]
             j = 0
             while j < n:
                 let v = sa[j]
-                if v >= 1 and isS[v - 1] == 0:
-                    sa[buf[s[v - 1]]] = v - 1
-                    inc buf[s[v - 1]]
+                # この段階の接尾辞は LMS または L-type なので、隣の文字で判定できます。
+                if v >= 1 and s[v - 1] >= s[v]:
+                    sa[buf[s[v - 1].int]] = v - 1
+                    inc buf[s[v - 1].int]
                 inc j
 
             for j in 0..upper:
-                buf[j] = sumL[j]
+                buf[j] = bucket[j + 1]
             j = n - 1
             while j >= 0:
                 let v = sa[j]
                 if v >= 1 and isS[v - 1] != 0:
-                    dec buf[s[v - 1] + 1]
-                    sa[buf[s[v - 1] + 1]] = v - 1
+                    dec buf[s[v - 1].int]
+                    sa[buf[s[v - 1].int]] = v - 1
                 dec j
 
-        var lmsMap = newSeqWith(n + 1, -1)
-        var m = 0
+        # LMS は隣接しないため、位置表は半分の長さで足ります。
+        var lmsMap = newSeq[I]((n + 1) div 2)
+        var lms = newSeqOfCap[I](n div 2)
         i = 1
         while i < n:
             if isS[i - 1] == 0 and isS[i] != 0:
-                lmsMap[i] = m
-                inc m
+                lmsMap[i shr 1] = I(lms.len)
+                lms.add(I(i))
+                isS[i] = 2
             inc i
-
-        var lms = newSeqOfCap[int](m)
-        i = 1
-        while i < n:
-            if isS[i - 1] == 0 and isS[i] != 0:
-                lms.add(i)
-            inc i
+        let m = lms.len
 
         induce(lms)
 
-        if m != 0:
-            var sortedLms = newSeqOfCap[int](m)
+        if m > 1:
+            var sortedLms = newSeqOfCap[I](m)
             for v in sa:
-                if v >= 0 and lmsMap[v] != -1:
+                if v > 0 and isS[v] == 2:
                     sortedLms.add(v)
 
-            var recS = newSeq[int](m)
+            var recS = newSeq[I](m)
             var recUpper = 0
-            recS[lmsMap[sortedLms[0]]] = 0
-
-            when defined(cpp) and defined(amd64) and (defined(gcc) or defined(clang)):
-                let useAvx2 = saAvx2Available()
+            recS[lmsMap[sortedLms[0] shr 1]] = 0
 
             i = 1
             while i < m:
                 let left = sortedLms[i - 1]
                 let right = sortedLms[i]
-                let endLeft = if lmsMap[left] + 1 < m:
-                    lms[lmsMap[left] + 1]
+                let endLeft = if lmsMap[left shr 1] + 1 < m:
+                    lms[lmsMap[left shr 1] + 1]
                 else:
-                    n
-                let endRight = if lmsMap[right] + 1 < m:
-                    lms[lmsMap[right] + 1]
+                    I(n)
+                let endRight = if lmsMap[right shr 1] + 1 < m:
+                    lms[lmsMap[right shr 1] + 1]
                 else:
-                    n
+                    I(n)
 
-                var same = endLeft - left == endRight - right
+                var same = endLeft < n and endRight < n and
+                    endLeft - left == endRight - right
                 if same:
                     let length = endLeft - left
-                    when defined(cpp) and defined(amd64) and (defined(gcc) or defined(clang)):
-                        if useAvx2:
-                            same = saEqualAvx2(unsafeAddr s[0], left.csize_t,
-                                right.csize_t, length.csize_t)
-                        else:
-                            var d = 0
-                            while d < length:
-                                if s[left + d] != s[right + d]:
-                                    same = false
-                                    break
-                                inc d
-                    else:
-                        var d = 0
-                        while d < length:
-                            if s[left + d] != s[right + d]:
-                                same = false
-                                break
-                            inc d
+                    var d = 0
+                    while d < length:
+                        if s[left + d] != s[right + d]:
+                            same = false
+                            break
+                        inc d
 
                     # 次の LMS の先頭文字まで含めて LMS 部分文字列を比較します。
-                    if same and endLeft < n and s[endLeft] != s[endRight]:
+                    if same and s[endLeft] != s[endRight]:
                         same = false
 
                 if not same:
                     inc recUpper
-                recS[lmsMap[right]] = recUpper
+                recS[lmsMap[right shr 1]] = I(recUpper)
                 inc i
 
-            let recSa = saIs(recS, recUpper)
-            i = 0
-            while i < m:
-                sortedLms[i] = lms[recSa[i]]
-                inc i
+            if recUpper + 1 < m:
+                let recSa = saIsImpl[I, I](recS, recUpper)
+                i = 0
+                while i < m:
+                    sortedLms[i] = lms[recSa[i]]
+                    inc i
             induce(sortedLms)
 
-        return sa
+        return move(sa)
+
+    when defined(release):
+        {.pop.}
+
+    proc saIs[T](s: openArray[T], upper: int): seq[int] =
+        ## 通常の長さでは作業配列を 32-bit にしてメモリ使用量を抑えます。
+        when sizeof(int) > sizeof(int32):
+            if s.len <= int32.high.int:
+                let sa = saIsImpl[T, int32](s, upper)
+                result = newSeq[int](sa.len)
+                for i in 0..<sa.len:
+                    result[i] = sa[i].int
+                return
+        return saIsImpl[T, int](s, upper)
 
     proc suffix_array*(s: openArray[int], upper: int): seq[int] =
         ## 0..upper の整数列の接尾辞配列を O(N + upper) で作成します。
         assert upper >= 0
         for value in s:
             assert 0 <= value and value <= upper
-        return saIs(@s, upper)
+        return saIs(s, upper)
 
     proc suffix_array*[T](s: openArray[T]): seq[int] =
         ## 任意の比較可能な列の接尾辞配列を作成します。
@@ -232,7 +175,8 @@ when not declared CPLIB_STR_SUFFIX_ARRAY:
         var idx = newSeq[int](n)
         for i in 0..<n:
             idx[i] = i
-        idx.sort(proc(l, r: int): int = system.cmp(s[l], s[r]))
+        let values = @s
+        idx.sort(proc(l, r: int): int = system.cmp(values[l], values[r]))
 
         var compressed = newSeq[int](n)
         var upper = 0
@@ -244,7 +188,50 @@ when not declared CPLIB_STR_SUFFIX_ARRAY:
 
     proc suffix_array*(s: string): seq[int] =
         ## 8-bit 文字列の接尾辞配列を SA-IS で O(N + 256) に作成します。
-        var values = newSeq[int](s.len)
-        for i in 0..<s.len:
-            values[i] = ord(s[i])
-        return saIs(values, 255)
+        return saIs(s, 255)
+
+    when defined(release):
+        {.push checks: off.}
+
+    proc lcpArrayImpl[T; I: SomeSignedInt](s: openArray[T], sa: openArray[int]): seq[int] =
+        ## 辞書順の直前の接尾辞を使い、文字列順に LCP を計算します。
+        let n = s.len
+        var phi = newSeq[I](n)
+        phi[sa[0]] = -1
+        for i in 1..<n:
+            phi[sa[i]] = I(sa[i - 1])
+        var h = 0
+        for i in 0..<n:
+            let j = phi[i].int
+            if j < 0:
+                h = 0
+                continue
+            let limit = n - max(i, j)
+            while h < limit and s[i + h] == s[j + h]:
+                inc h
+            phi[i] = I(h)
+            if h > 0:
+                dec h
+        result = newSeq[int](n - 1)
+        for i in 0..<n - 1:
+            result[i] = phi[sa[i + 1]].int
+
+    when defined(release):
+        {.pop.}
+
+    proc lcp_array*[T](s: openArray[T], sa: openArray[int]): seq[int] =
+        ## 接尾辞配列に隣接する接尾辞同士の LCP Array を O(N) で作成します。
+        let n = s.len
+        assert sa.len == n
+        if n <= 1:
+            return @[]
+        for v in sa:
+            assert 0 <= v and v < n
+        when sizeof(int) > sizeof(int32):
+            if n <= int32.high.int:
+                return lcpArrayImpl[T, int32](s, sa)
+        return lcpArrayImpl[T, int](s, sa)
+
+    proc lcp_array*(s: string, sa: openArray[int]): seq[int] =
+        ## 文字列の接尾辞配列に隣接する接尾辞同士の LCP Array を作成します。
+        return lcp_array[char](s, sa)
