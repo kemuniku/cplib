@@ -3,12 +3,14 @@ import sequtils, strutils
 import atcoder/modint
 import cplib/math/combination
 
-var t, m: int
-(t, m) = stdin.readLine.split.map(parseInt)
+let tm = stdin.readLine.split.map(parseInt)
+let t = tm[0]
+let m = tm[1]
 type mint = modint
 mint.setMod(m)
 var c = initCombination[mint](10_000_000)
 for _ in 0..<t:
-    var n, k: int
-    (n, k) = stdin.readLine.split.map(parseInt)
+    let nk = stdin.readLine.split.map(parseInt)
+    let n = nk[0]
+    let k = nk[1]
     echo c.ncr(n, k).val
