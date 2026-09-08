@@ -2,94 +2,100 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
+  - icon: ':x:'
+    path: cplib/math/bigint.nim
+    title: cplib/math/bigint.nim
+  - icon: ':x:'
+    path: cplib/math/bigint.nim
+    title: cplib/math/bigint.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -321,42 +327,54 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
+  - icon: ':x:'
+    path: verify/math/bigint_unit_test.nim
+    title: verify/math/bigint_unit_test.nim
+  - icon: ':x:'
+    path: verify/math/bigint_unit_test.nim
+    title: verify/math/bigint_unit_test.nim
+  - icon: ':x:'
+    path: verify/math/division_of_big_integers_test.nim
+    title: verify/math/division_of_big_integers_test.nim
+  - icon: ':x:'
+    path: verify/math/division_of_big_integers_test.nim
+    title: verify/math/division_of_big_integers_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
@@ -381,9 +399,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -416,6 +434,8 @@ data:
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   - cplib/convolution/relaxed_convolution.nim
@@ -445,7 +465,7 @@ data:
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
   timestamp: '2024-03-16 01:58:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
@@ -455,6 +475,10 @@ data:
   - verify/math/isprime_yosupo_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_old_test.nim

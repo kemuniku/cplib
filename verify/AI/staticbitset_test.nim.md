@@ -34,14 +34,25 @@ data:
     assert a.popcount() == 3\na ^= b\nassert a.popcount() == 0\na[69] = 1\nassert\
     \ a[69]\nassert (a << 1).popcount() == 0\na[69] = 0\na[1] = true\nassert (a <<\
     \ 2)[3]\nassert (a >> 1)[0]\nassert (~initBitSet(5)).popcount() == 5\nassert $initBitSet(@[true,\
-    \ false, true], 3) == \"101\"\n"
+    \ false, true], 3) == \"101\"\n\nproc checkLeftShift[size: static int]() =\n \
+    \   ## \u5404\u4F4D\u7F6E\u306E\u5358\u4E00\u30D3\u30C3\u30C8\u3092\u5168\u30B7\
+    \u30D5\u30C8\u5E45\u3067\u52D5\u304B\u3057\u3001\u6841\u4E0A\u304C\u308A\u3068\
+    \u5207\u308A\u6368\u3066\u3092\u691C\u8A3C\u3057\u307E\u3059\u3002\n    for position\
+    \ in 0..<size:\n        let x = initBitSetFromIndexes([position], size)\n    \
+    \    for shift in 0..size + 1:\n            let shifted = x << shift\n       \
+    \     if position + shift < size:\n                assert shifted.popcount ==\
+    \ 1\n                assert shifted[position + shift]\n            else:\n   \
+    \             assert shifted.popcount == 0\n        assert (x << int.high).popcount\
+    \ == 0\n    assert (initBitSet(size) << 63).popcount == 0\n\ncheckLeftShift[0]()\n\
+    checkLeftShift[1]()\ncheckLeftShift[63]()\ncheckLeftShift[64]()\ncheckLeftShift[65]()\n\
+    checkLeftShift[128]()\ncheckLeftShift[129]()\ncheckLeftShift[257]()\n"
   dependsOn:
   - cplib/collections/staticbitset.nim
   - cplib/collections/staticbitset.nim
   isVerificationFile: true
   path: verify/AI/staticbitset_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-08 11:45:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/staticbitset_test.nim
