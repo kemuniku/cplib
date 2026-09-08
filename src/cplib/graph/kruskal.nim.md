@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/unionfind.nim
     title: cplib/collections/unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -77,9 +77,9 @@ data:
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/kruskal.nim
   requiredBy: []

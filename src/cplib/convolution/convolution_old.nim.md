@@ -113,16 +113,16 @@ data:
   dependsOn:
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/ntt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/ntt.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/convolution_old.nim
   requiredBy: []

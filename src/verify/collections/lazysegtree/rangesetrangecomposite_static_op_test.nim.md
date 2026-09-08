@@ -64,15 +64,15 @@ data:
     \ (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/collections/lazysegtree_static_op.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   requiredBy: []

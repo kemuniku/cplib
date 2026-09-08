@@ -328,48 +328,48 @@ data:
     \  assert sparse.logCoefficient(299).val == logarithm[299].val\n  assert sparse.powCoefficient(31,\
     \ 299).val == power[299].val\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/fps.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/math/inner_math.nim
-  - cplib/convolution/ntt.nim
-  - cplib/fps/composition.nim
-  - cplib/math/powmod.nim
-  - cplib/fps/fps.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/fps/product_tree.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/math/powmod.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/product_tree.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
   - cplib/fps/sparse_formal_power_series.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/fps/composition.nim
   - cplib/fps/bostan_mori.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/ntt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/powmod.nim
   - cplib/fps/sparse_formal_power_series.nim
-  - cplib/math/inner_math.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/bostan_mori.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/fps.nim
   - cplib/fps/composition.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/math/inner_math.nim
+  - cplib/fps/product_tree.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/fps.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/fps_test.nim
   requiredBy: []

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -76,17 +76,17 @@ data:
     \ + b, 0) == 2\nassert random_string(4, 'a'..'c').allIt(it in 'a'..'c')\nassert\
     \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
-  - cplib/utils/random_helper.nim
   - cplib/math/powmod.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/random_helper.nim
   - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/tree/prufer.nim
   - cplib/math/isprime.nim
   - cplib/utils/random_helper.nim
-  - cplib/math/powmod.nim
+  - cplib/graph/graph.nim
   - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
