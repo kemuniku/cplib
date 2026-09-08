@@ -269,16 +269,6 @@ extern "C" NI64 cplib_static_rmq_scan_i64(void* data, NI n) {
             result.suffix_product[last] = V[last]
             for i in countdown(last-1, first):
                 result.suffix_product[i] = min(result.suffix_product[i+1], V[i])
-<<<<<<< Updated upstream
-            result.table[0][b] = result.suffix_product[first]
-        for k in 1..<result.table.len:
-            result.table[k] = newSeq[T](blocks - (1 shl k) + 1)
-            for i in 0..<result.table[k].len:
-                result.table[k][i] = min(result.table[k-1][i], result.table[k-1][i + (1 shl (k-1))])
-    proc query*[T](rmq: StaticRMQ[T], l, r: int): T {.inline.} =
-        ## 半開区間 [l, r) の最小値を返す。
-        assert 0 <= l and l < r and r <= rmq.V.len
-=======
             result.table[0][b] = result.prefix_product[last]
         for k in 1..<levels:
             let distance = 1 shl (k - 1)
@@ -289,21 +279,10 @@ extern "C" NI64 cplib_static_rmq_scan_i64(void* data, NI n) {
     proc query*[T](RMQ: StaticRMQ[T], l, r: int): T {.inline.} =
         ## 半開区間 [l, r) の最小値を返す。
         assert 0 <= l and l < r and r <= RMQ.V.len
->>>>>>> Stashed changes
         let last = r - 1
         let a = l shr staticRMQBlockShift
         let b = last shr staticRMQBlockShift
         if a == b:
-<<<<<<< Updated upstream
-            result = rmq.V[l]
-            for i in l+1..last:
-                result = min(result, rmq.V[i])
-            return
-        result = min(rmq.suffix_product[l], rmq.prefix_product[last])
-        if a + 1 < b:
-            let k = fastLog2(b - a - 1)
-            result = min(result, min(rmq.table[k][a + 1], rmq.table[k][b - (1 shl k)]))
-=======
             when staticRMQCpp and (T is int or T is int32 or T is int64):
                 when nimvm: discard
                 else:
@@ -320,4 +299,3 @@ extern "C" NI64 cplib_static_rmq_scan_i64(void* data, NI n) {
             let k = fastLog2(b - a - 1)
             result = min(result, min(RMQ.table[k][a + 1], RMQ.table[k][b - (1 shl k)]))
     {.pop.}
->>>>>>> Stashed changes
