@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
   _extendedRequiredBy: []
@@ -62,9 +62,9 @@ data:
     \ == 1\n"
   dependsOn:
   - cplib/matrix/matops.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim
   requiredBy: []

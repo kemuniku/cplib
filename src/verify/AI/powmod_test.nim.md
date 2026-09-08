@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   _extendedRequiredBy: []
@@ -44,10 +44,10 @@ data:
 
     '
   dependsOn:
-  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/AI/powmod_test.nim
   requiredBy: []

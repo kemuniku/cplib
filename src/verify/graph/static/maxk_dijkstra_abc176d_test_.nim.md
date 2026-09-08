@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -55,13 +55,13 @@ data:
     \ (i+dx)*w+j+dy, 1i32)\ng.build\nvar d = g.maxk_dijkstra(sx*w+sy, 1i32)\nvar ans\
     \ = d[tx*w+ty]\nif ans == INF32: ans = -1\necho ans\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/maxk_dijkstra.nim
   isVerificationFile: false
   path: verify/graph/static/maxk_dijkstra_abc176d_test_.nim

@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd_avx.nim
     title: cplib/graph/warshall_floyd_avx.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -93,12 +93,12 @@ data:
     var ng = initWeightedDirectedGraph(2)\nng.add_edge(0, 1, -2)\nng.add_edge(1, 0,\
     \ -2)\nassert ng.warshall_floyd().negative_cycle\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_avx.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx_test.nim
   requiredBy: []

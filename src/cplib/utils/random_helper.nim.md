@@ -7,22 +7,22 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -165,15 +165,15 @@ data:
     \        result.add(s[rand(0..<len(s))])\n        return result\n"
   dependsOn:
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/graph/graph.nim
-  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
