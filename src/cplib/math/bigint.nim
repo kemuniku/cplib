@@ -3,15 +3,6 @@ when not declared CPLIB_MATH_BIGINT:
     import hashes
     import cplib/convolution/convolution
 
-    ## 符号付き多倍長整数。初期値は 0 で、整数からの暗黙変換に対応する。
-    ## 10^9 進の桁数を n, m として、加減算は O(max(n, m))。
-    ## 大きな数の乗算は既存の NTT を使い O((n + m) log(n + m))、筆算では O(nm)。
-    ## NTT は amd64 の C++・AVX2 環境で、変換長 2^24 以下の場合に使用する。
-    ## 大きな数の除算は整数の逆数を Newton 法で求め、NTT 利用時に O(n log n)。
-    ## 筆算の除算は n >= m のとき O((n - m + 1)m)、文字列との変換は文字数に比例する。
-    ## 除数や商が小さい場合、NTT の対応範囲外、コンパイル時評価では筆算を使う。
-    ## 高速除算の補助領域は O(n)。
-    ## div は 0 方向に丸め、mod の符号は被除数に合わせる。
     type BigInt* = object
         sign: int
         digits: seq[uint32]
@@ -283,16 +274,13 @@ when not declared CPLIB_MATH_BIGINT:
             if scale > 1:
                 result[position] = uint32(value)
 
-        proc mulNtt[decimalDigits: static[int]](x, y: BigInt): BigInt =
-            ## 係数上限に合わせた 2 素数の NTT と CRT で厳密な積を返す。
+        proc restoreNttProduct[decimalDigits: static[int]](
+                c1, c2: seq[uint32], length, sign: int): BigInt =
+            ## 2 素数の畳み込みを CRT で復元し、繰り上がりを処理する。
             const base = if decimalDigits == 6: 1_000_000'u64 else: 100_000'u64
-            let left = splitNttDigits[decimalDigits](x)
-            let right = splitNttDigits[decimalDigits](y)
-            let c1 = convolutionNttDigits(left, right, BigIntNttMod1.uint32, 11'u32)
-            let c2 = convolutionNttDigits(left, right, BigIntNttMod2.uint32, 3'u32)
-            result.sign = x.sign * y.sign
-            result.digits = newSeq[uint32](x.digits.len + y.digits.len)
-            # 各係数は (base - 1)^2 * min(left.len, right.len) 以下で、2 素数の積未満。
+            result.sign = sign
+            result.digits = newSeq[uint32](length)
+            # 呼び出し側で各係数が 2 素数の積未満であることを保証する。
             var carry = 0'u64
             var value = 0'u64
             var scale = 1'u64
@@ -322,6 +310,15 @@ when not declared CPLIB_MATH_BIGINT:
             if value != 0:
                 result.digits[position] = uint32(value)
             result.normalize()
+
+        proc mulNtt[decimalDigits: static[int]](x, y: BigInt): BigInt =
+            ## 係数上限に合わせた 2 素数の NTT と CRT で厳密な積を返す。
+            let left = splitNttDigits[decimalDigits](x)
+            let right = splitNttDigits[decimalDigits](y)
+            let c1 = convolutionNttDigits(left, right, BigIntNttMod1.uint32, 11'u32)
+            let c2 = convolutionNttDigits(left, right, BigIntNttMod2.uint32, 3'u32)
+            restoreNttProduct[decimalDigits](c1, c2,
+                x.digits.len + y.digits.len, x.sign * y.sign)
 
     proc `*`*(x, y: BigInt): BigInt =
         ## 大きな数は NTT、小さな数や NTT の対応範囲外では筆算で積を返す。
@@ -446,6 +443,62 @@ when not declared CPLIB_MATH_BIGINT:
     when defined(cpp) and defined(amd64):
         const BigIntNewtonThreshold = 256
 
+        proc fixedConvolutionCreate(data: ptr uint32, length, size: csize_t,
+                modulus, root: uint32): pointer {.importc: "cplib_fixed_convolution_create".}
+            ## 固定側の NTT を保持するコンテキストを作る。
+
+        proc fixedConvolutionRun(context: pointer, output, data: ptr uint32,
+                length: csize_t) {.importc: "cplib_fixed_convolution_run".}
+            ## 固定側の NTT を再利用して畳み込みを計算する。
+
+        proc fixedConvolutionDestroy(context: pointer) {.importc: "cplib_fixed_convolution_destroy".}
+            ## 固定側の NTT と変換計画を解放する。
+
+        type FixedBigIntMultiplier = object
+            first, second: pointer
+            length, fixedLength: int
+            c1, c2: seq[uint32]
+
+        proc initFixedMultiplier(y: BigInt, maxLeftLength: int): FixedBigIntMultiplier =
+            ## 係数上限を満たす場合に限り、繰り返し乗算の固定側を準備する。
+            let fixedLength = (y.digits.len * 3 + 1) div 2
+            let leftLength = (maxLeftLength * 3 + 1) div 2
+            if min(fixedLength, leftLength) > BigIntNttLargeBaseMaxDigits or
+                    fixedLength + leftLength - 1 > BigIntNttMaxLength:
+                return
+            result.length = 1
+            while result.length < fixedLength + leftLength - 1:
+                result.length *= 2
+            result.fixedLength = fixedLength
+            let digits = splitNttDigits[6](y)
+            result.first = fixedConvolutionCreate(unsafeAddr digits[0], digits.len.csize_t,
+                result.length.csize_t, BigIntNttMod1.uint32, 11'u32)
+            result.second = fixedConvolutionCreate(unsafeAddr digits[0], digits.len.csize_t,
+                result.length.csize_t, BigIntNttMod2.uint32, 3'u32)
+            result.c1 = newSeq[uint32](result.length)
+            result.c2 = newSeq[uint32](result.length)
+
+        proc close(context: var FixedBigIntMultiplier) =
+            ## 除算が終わった時点で固定側の NTT を解放する。
+            fixedConvolutionDestroy(context.first)
+            fixedConvolutionDestroy(context.second)
+            context.first = nil
+            context.second = nil
+
+        proc mulFixed(x, y: BigInt, context: var FixedBigIntMultiplier): BigInt =
+            ## 固定側の変換と作業領域を再利用して積を返す。
+            if context.first == nil or x.digits.len <= BigIntNttThreshold:
+                return x * y
+            let left = splitNttDigits[6](x)
+            context.c1.setLen(context.length)
+            context.c2.setLen(context.length)
+            fixedConvolutionRun(context.first, addr context.c1[0], unsafeAddr left[0], left.len.csize_t)
+            fixedConvolutionRun(context.second, addr context.c2[0], unsafeAddr left[0], left.len.csize_t)
+            context.c1.setLen(left.len + context.fixedLength - 1)
+            context.c2.setLen(left.len + context.fixedLength - 1)
+            restoreNttProduct[6](context.c1, context.c2,
+                x.digits.len + y.digits.len, x.sign * y.sign)
+
         proc shiftDigitsLeft(x: BigInt, count: int): BigInt =
             ## 基数の count 乗を掛ける。
             if x.isZero:
@@ -493,10 +546,10 @@ when not declared CPLIB_MATH_BIGINT:
             let cut = max(0, divisorLen - 1)
             shiftDigitsRight(shiftDigitsRight(x, cut) * inverse, divisorLen + precision - cut)
 
-        proc correctDivision(x, y, quotient: BigInt): tuple[quotient, remainder: BigInt] =
+        proc correctDivisionProduct(x, y, quotient, product: BigInt): tuple[quotient, remainder: BigInt] =
             ## 正の整数の推定商を下方 1 回・上方 3 回まで補正して商と余りを確定する。
             result.quotient = quotient
-            result.remainder = x - quotient * y
+            result.remainder = x - product
             if result.remainder.sign < 0:
                 result.quotient = result.quotient - initBigInt(1)
                 result.remainder = result.remainder + y
@@ -506,11 +559,22 @@ when not declared CPLIB_MATH_BIGINT:
                 result.quotient = result.quotient + initBigInt(1)
                 result.remainder = result.remainder - y
 
+        proc correctDivision(x, y, quotient: BigInt): tuple[quotient, remainder: BigInt] =
+            ## 推定商と除数の積から商と余りを確定する。
+            correctDivisionProduct(x, y, quotient, quotient * y)
+
         proc divmodBlocks(x, y: BigInt): tuple[quotient, remainder: BigInt] =
             ## 正の整数の被除数を除数と同じ桁数のブロックに分け、逆数を共有して割る。
             let n = x.digits.len
             let m = y.digits.len
             let inverse = reciprocalAbs(y)
+            var inverseMultiplier: FixedBigIntMultiplier
+            defer: inverseMultiplier.close()
+            var divisorMultiplier: FixedBigIntMultiplier
+            defer: divisorMultiplier.close()
+            if n >= 4 * m:
+                inverseMultiplier = initFixedMultiplier(inverse, m + 1)
+                divisorMultiplier = initFixedMultiplier(y, m)
             result.quotient.sign = 1
             result.quotient.digits = newSeq[uint32](n - m + 1)
             for blockIndex in countdown((n - 1) div m, 0):
@@ -527,8 +591,10 @@ when not declared CPLIB_MATH_BIGINT:
                 if cmpAbs(dividend, y) < 0:
                     result.remainder = dividend
                     continue
-                let quotient = quotientFromReciprocal(dividend, inverse, m, m)
-                let division = correctDivision(dividend, y, quotient)
+                let quotient = shiftDigitsRight(mulFixed(
+                    shiftDigitsRight(dividend, m - 1), inverse, inverseMultiplier), m + 1)
+                let division = correctDivisionProduct(dividend, y, quotient,
+                    mulFixed(quotient, y, divisorMultiplier))
                 for i in 0..<division.quotient.digits.len:
                     result.quotient.digits[offset + i] = division.quotient.digits[i]
                 result.remainder = division.remainder

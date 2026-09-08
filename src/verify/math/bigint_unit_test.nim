@@ -220,7 +220,7 @@ block:
     doAssert decimalProduct("99", "99") == "9801"
     doAssert decimalProduct("123456789", "987654321") == "121932631112635269"
     var multiplicationRng = initRand(20260909)
-    for limbs in [255, 256, 257]:
+    for limbs in [63, 64, 65, 255, 256, 257]:
         for missingDigits in [0, 1, 2]:
             let aText = multiplicationRng.randomDecimal(9 * limbs - missingDigits)
             let bText = multiplicationRng.randomDecimal(9 * limbs - 2 + missingDigits)
@@ -349,7 +349,7 @@ block:
     doAssert qr.remainder == 1
 
 block:
-    for length in [9 * 511, 9 * 512, 9 * 513, 9 * 1279, 9 * 1280,
+    for length in [9 * 255, 9 * 256, 9 * 257, 9 * 511, 9 * 512, 9 * 513, 9 * 1279, 9 * 1280,
             9 * 1281, 30000]:
         let divisor = repeat('9', length)
         let powerOfTen = "1" & repeat('0', length)
@@ -363,11 +363,21 @@ block:
         checkLargeDivision(divisor & repeat('0', length), divisor, powerOfTen, "0")
         checkLargeDivision(repeat('9', 2 * length), powerOfTen, divisor, divisor)
 
-    for length in [18, 9 * 1281]:
+    for length in [18, 9 * 257, 9 * 341, 9 * 342, 9 * 1281]:
         let blocks = if length == 18: 4096 else: 8
         let divisor = repeat('9', length)
         let quotient = "1" & repeat(repeat('0', length - 1) & "1", blocks - 1)
         checkLargeDivision(repeat('9', length * blocks), divisor, quotient, "0")
+
+    for limbs in [257, 341, 342, 683]:
+        let length = 9 * limbs
+        for leading in ["1", "999999999"]:
+            let divisor = leading & repeat('0', length - leading.len - 1) & "1"
+            let quotient = "1" & repeat('0', 3 * length - 1) & "1"
+            let product = divisor & repeat('0', 3 * length - divisor.len) & divisor
+            for remainder in ["0", "1", decimalPredecessor(divisor)]:
+                checkLargeDivision(decimalSum(product, remainder), divisor,
+                    quotient, remainder, allSigns = limbs == 257)
 
     let originalText = repeat("987654321001234567", 1800)
     let original = initBigInt(originalText)

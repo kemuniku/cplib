@@ -631,6 +631,55 @@ a[i] = montgomery.to_montgomery(a[i]);
 _mm_free(b);
 }
 
+class FixedConvolution {
+Z size_;
+u32 modulus_, root_;
+u32* fixed_;
+TransformPlan *forward_, *inverse_;
+public:
+FixedConvolution(const u32* data, Z length, Z size, u32 mod, u32 root)
+: size_(size), modulus_(mod), root_(root) {
+// 固定側の変換と正逆変換の計画を一度だけ構築する。
+modulus = modulus_;
+primitive_root = root_;
+forward_ = new TransformPlan(size_);
+inverse_ = new TransformPlan(size_);
+inverse_->prepare_inverse();
+fixed_ = static_cast<u32*>(_mm_malloc(sizeof(u32) * size_, 32));
+const Montgomery& mont = forward_->montgomery();
+const u32 scale = (u32)(u64(mont.radix_squared) *
+power_mod((u32)size_, modulus - 2) % modulus);
+for (Z i = 0; i < length; ++i) fixed_[i] = mont.multiply(data[i], scale);
+std::memset(fixed_ + length, 0, sizeof(u32) * (size_ - length));
+if (length <= size_ / 2) forward_->forward_half_zero(fixed_);
+else forward_->forward(fixed_);
+}
+~FixedConvolution() {
+// 固定側の変換と計画を解放する。
+_mm_free(fixed_);
+delete forward_;
+delete inverse_;
+}
+void run(u32* output, const u32* data, Z length) {
+// 固定側を保持したまま、可変側の変換・点ごとの積・逆変換を行う。
+modulus = modulus_;
+primitive_root = root_;
+std::memcpy(output, data, sizeof(u32) * length);
+const bool half_zero = length <= size_ / 2;
+std::memset(output + length, 0,
+sizeof(u32) * ((half_zero ? size_ / 2 : size_) - length));
+if (half_zero) forward_->forward_half_zero(output);
+else forward_->forward(output);
+const Montgomery& mont = forward_->montgomery();
+for (Z i = 0; i < size_; i += 8) {
+const V a = _mm256_loadu_si256((const V*)(output + i));
+const V b = _mm256_loadu_si256((const V*)(fixed_ + i));
+_mm256_storeu_si256((V*)(output + i), montgomery_multiply(a, b, mont));
+}
+inverse_->inverse(output);
+}
+};
+
 class PolynomialSequenceProduct998 {
 struct Product {
 const u32* data;
@@ -911,6 +960,21 @@ bool montgomery_representation) {
 cplib_avx2_ntt::convolution_ntt_friendly(
 output, left, left_size, right, right_size, transform_size,
 modulus, primitive_root, montgomery_representation);
+}
+extern "C" void* cplib_fixed_convolution_create(
+std::uint32_t* data, std::size_t length, std::size_t size,
+std::uint32_t modulus, std::uint32_t root) {
+// 固定側の畳み込みコンテキストを作成する。
+return new cplib_avx2_ntt::FixedConvolution(data, length, size, modulus, root);
+}
+extern "C" void cplib_fixed_convolution_run(
+void* context, std::uint32_t* output, std::uint32_t* data, std::size_t length) {
+// 作成済みのコンテキストで畳み込みを実行する。
+static_cast<cplib_avx2_ntt::FixedConvolution*>(context)->run(output, data, length);
+}
+extern "C" void cplib_fixed_convolution_destroy(void* context) {
+// 畳み込みコンテキストを解放する。
+delete static_cast<cplib_avx2_ntt::FixedConvolution*>(context);
 }
 extern "C" void cplib_product_polynomial_sequence_998(
 std::uint32_t* output,
