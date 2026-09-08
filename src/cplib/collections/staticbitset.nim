@@ -72,6 +72,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
                 tmp = msk
     
     proc `<<`*[size](bitset:BitSet[size],x:int):BitSet[size]=
+        ## 添字が大きい方向へxビットずらし、範囲外を切り捨てます。
         if x >= size:
             return
         for i in 0..<len(bitset.bits):
@@ -81,7 +82,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
         var mod64 = x mod 64
         if mod64 != 0:
             for i in 0..<len(bitset.bits):
-                var msk = result.bits[i] and bitnot((1u shl mod64) - 1)
+                let msk = result.bits[i]
                 result.bits[i].varshl(mod64)
                 result.bits[i].varor(tmp shr (64-mod64))
                 tmp = msk
