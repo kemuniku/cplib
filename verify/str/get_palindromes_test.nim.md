@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/manacher.nim
     title: cplib/str/manacher.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   - icon: ':heavy_check_mark:'
@@ -54,15 +54,15 @@ data:
     \   assert not HS[(l-1)..<(r+1)].isPalindrome()\n\necho palindromes.mapit(it[1]-it[0]).join(\"\
     \ \")"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/str/manacher.nim
   - cplib/str/manacher.nim
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/str/get_palindromes_test.nim

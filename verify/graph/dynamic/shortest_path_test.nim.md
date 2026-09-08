@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   - icon: ':heavy_check_mark:'
@@ -60,18 +60,18 @@ data:
     \ var path = prev.restore_shortestpath_from_prev(t)\n    echo costs[t], \" \"\
     , len(path)-1\n    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/dynamic/shortest_path_test.nim
   requiredBy: []

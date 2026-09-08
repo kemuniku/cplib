@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   - icon: ':heavy_check_mark:'
@@ -149,10 +149,10 @@ data:
     \ untyped) =\n        when defined(debug):\n            block:\n             \
     \   body\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:
