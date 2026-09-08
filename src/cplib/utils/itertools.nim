@@ -165,7 +165,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator product*[T](v: seq[T],repeat:int):seq[T]=
         if repeat == 0:
             yield @[]
-        else:
+        elif v.len > 0:
             var idxs = newseq[int](repeat)
             var f = true
             while f:

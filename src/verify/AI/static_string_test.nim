@@ -4,6 +4,17 @@ echo "Hello World"
 import sequtils
 import cplib/str/static_string
 
+let directlyEmpty = toStaticString("")
+assert directlyEmpty.len == 0
+assert $directlyEmpty == ""
+assert directlyEmpty.base.SA == @[]
+assert directlyEmpty.base.LCP == @[]
+assert initSuffixArray(directlyEmpty).len == 0
+
+let directlyEmptyInts = toStaticString(newSeq[int]())
+assert directlyEmptyInts.len == 0
+assert directlyEmptyInts.base.SA == @[]
+
 let s = toStaticString("banana")
 assert $s == "banana"
 assert s.len == 6

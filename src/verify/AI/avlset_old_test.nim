@@ -1,8 +1,12 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+# Memory manager: refc, configured in avlset_old_test.nim.cfg.
 echo "Hello World"
 
 import options, sequtils
 import cplib/collections/avlset_old
+
+assert initAvlSortedSet[int]().toSeq == @[]
+assert initAvlSortedMultiSet[int]().toSeq == @[]
 
 var s = initAvlSortedSet[int](@[3, 1, 3])
 assert s.toSeq == @[1, 3]

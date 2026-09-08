@@ -3,6 +3,8 @@ echo "Hello World"
 
 import cplib/collections/staticbitset
 
+assert (~initBitSet(0)).popcount() == 0
+
 var a = initBitSet(@[true, false, true, false, true], 70)
 var b = initBitSetFromIndexes(@[2, 4, 65], 70)
 var bItems: seq[int]

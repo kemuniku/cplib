@@ -1,7 +1,7 @@
 when not declared CPLIB_UTILS_IMPLICIT_DIJKSTRA:
     const CPLIB_UTILS_IMPLICIT_DIJKSTRA* = 1
 
-    import std/[algorithm, heapqueue, tables]
+    import algorithm, heapqueue, tables
     import cplib/utils/constants
 
     type

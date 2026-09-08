@@ -10,6 +10,8 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
     declarStaticMontgomeryModint(mint469762049, 469762049u32)
 
     proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =
+        if f.len == 0 or g.len == 0:
+            return @[]
         var ans = newSeqWith(f.len + g.len - 1, T(0))
         if f.len > g.len:
             for i in 0..<f.len:
@@ -22,6 +24,8 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
         return ans
 
     proc convolution*[T: BarrettModint or MontgomeryModint](f, g: seq[T]): seq[T] =
+        if f.len == 0 or g.len == 0:
+            return @[]
         var f = f
         var g = g
         let m = f.len

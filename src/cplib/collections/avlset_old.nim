@@ -72,15 +72,16 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
         result = node.key
         self.root = self.root.erase(node, node.next)
     iterator items*[T](self: AVLSets[T]): T =
-        var stack = @[(0, self.root)]
-        while stack.len > 0:
-            var (t, node) = stack.pop
-            if t == 0:
-                stack.add((1, node))
-                if node.l != get_avltree_nilnode[T](): stack.add((0, node.l))
-            elif t == 1:
-                yield node.key
-                if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))
+        if self.root != get_avltree_nilnode[T]():
+            var stack = @[(0, self.root)]
+            while stack.len > 0:
+                var (t, node) = stack.pop
+                if t == 0:
+                    stack.add((1, node))
+                    if node.l != get_avltree_nilnode[T](): stack.add((0, node.l))
+                elif t == 1:
+                    yield node.key
+                    if node.r != get_avltree_nilnode[T](): stack.add((0, node.r))
     proc `$`*[T](self: AVLSets[T]): string = self.toSeq.join(" ")
     proc initAvlSortedMultiSet*[T](v: openArray[T] = []): AvlSortedMultiSet[T] =
         result = AvlSortedMultiSet[T](root: get_avltree_nilnode[T]())
