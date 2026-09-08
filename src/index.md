@@ -443,6 +443,9 @@ data:
       path: cplib/str/static_string.nim
       title: cplib/str/static_string.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/suffix_array.nim
+      title: cplib/str/suffix_array.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/zalgorithm.nim
       title: cplib/str/zalgorithm.nim
   - name: cplib/tmpl
@@ -1951,6 +1954,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/run_length_encode_test.nim
       title: verify/str/run_length_encode_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/suffix_array_test.nim
+      title: verify/str/suffix_array_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/zalgorithm_test.nim
       title: verify/str/zalgorithm_test.nim

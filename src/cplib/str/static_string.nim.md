@@ -112,12 +112,6 @@ data:
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/str/static_string/static_string_lcp_test.nim
-    title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/str/static_string/static_string_lcp_test.nim
-    title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
   - icon: ':heavy_check_mark:'
@@ -254,8 +248,6 @@ data:
   verifiedWith:
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim

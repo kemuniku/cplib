@@ -2,17 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: cplib/collections/staticRMQ.nim
-    title: cplib/collections/staticRMQ.nim
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
   - icon: ':heavy_check_mark:'
-    path: cplib/collections/staticRMQ.nim
-    title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/str/static_string.nim
-    title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/str/static_string.nim
-    title: cplib/str/static_string.nim
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -29,19 +23,16 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/number_of_substrings\n\
-    import cplib/str/static_string\n\nimport algorithm\nvar S = stdin.readLine().toStaticString()\n\
-    var tmp : seq[StaticString[char]]\nfor i in 0..<len(S):\n    tmp.add(S[i..<len(S)])\n\
-    tmp.sort()\nvar sm = 0\nfor i in 0..<(len(S)-1):\n    sm += lcp(tmp[i],tmp[i+1])\n\
-    echo len(S)*(len(S)+1) div 2 - sm\n"
+    import cplib/str/suffix_array\n\nlet S = stdin.readLine()\nlet SA = suffix_array(S)\n\
+    let LCP = lcp_array(S, SA)\nvar sm = 0\nfor value in LCP:\n    sm += value\necho\
+    \ len(S) * (len(S) + 1) div 2 - sm\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_lcp_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:46:27+09:00'
+  timestamp: '2026-09-08 13:45:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_lcp_test.nim
