@@ -1,8 +1,8 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import algorithm, random
 import cplib/str/suffix_array
 
 proc naiveSuffixArray(s: openArray[int]): seq[int] =
-    ## 接尾辞を直接比較して正解の SA を作成します。
     let values = @s
     result = newSeq[int](s.len)
     for i in 0..<s.len:
@@ -16,7 +16,6 @@ proc naiveSuffixArray(s: openArray[int]): seq[int] =
         return system.cmp(values.len - l, values.len - r))
 
 proc naiveLcp(s: openArray[int], sa: openArray[int]): seq[int] =
-    ## 隣接する接尾辞を直接比較して正解の LCP を作成します。
     result = newSeq[int](max(sa.len - 1, 0))
     for i in 0..<result.len:
         while result[i] + sa[i] < s.len and result[i] + sa[i + 1] < s.len and
@@ -24,7 +23,6 @@ proc naiveLcp(s: openArray[int], sa: openArray[int]): seq[int] =
             inc result[i]
 
 proc checkAll(s: var seq[int], pos: int) =
-    ## 3 種類の値からなる列を全列挙して検証します。
     if pos == s.len:
         let sa = suffix_array(s, 2)
         doAssert sa == naiveSuffixArray(s)
@@ -59,7 +57,6 @@ for n in [64, 127, 256, 1024]:
     doAssert lcp_array(s, sa) == naiveLcp(s, sa)
 
 proc checkBytes(values: seq[int]) =
-    ## NUL と上位ビットを含む文字列を整数列の素朴解と比較します。
     var text = newString(values.len)
     for i, value in values:
         text[i] = char(value)
@@ -93,3 +90,5 @@ let sparseSa = naiveSuffixArray(sparse)
 doAssert suffix_array(sparse) == sparseSa
 doAssert lcp_array(sparse, sparseSa) == naiveLcp(sparse, sparseSa)
 doAssert suffix_array(@["b", "a", "b", "a"]) == @[3, 1, 2, 0]
+
+echo "Hello World"
