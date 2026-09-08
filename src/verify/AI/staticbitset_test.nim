@@ -38,3 +38,26 @@ assert (a << 2)[3]
 assert (a >> 1)[0]
 assert (~initBitSet(5)).popcount() == 5
 assert $initBitSet(@[true, false, true], 3) == "101"
+
+proc checkLeftShift[size: static int]() =
+    ## 各位置の単一ビットを全シフト幅で動かし、桁上がりと切り捨てを検証します。
+    for position in 0..<size:
+        let x = initBitSetFromIndexes([position], size)
+        for shift in 0..size + 1:
+            let shifted = x << shift
+            if position + shift < size:
+                assert shifted.popcount == 1
+                assert shifted[position + shift]
+            else:
+                assert shifted.popcount == 0
+        assert (x << int.high).popcount == 0
+    assert (initBitSet(size) << 63).popcount == 0
+
+checkLeftShift[0]()
+checkLeftShift[1]()
+checkLeftShift[63]()
+checkLeftShift[64]()
+checkLeftShift[65]()
+checkLeftShift[128]()
+checkLeftShift[129]()
+checkLeftShift[257]()
