@@ -43,13 +43,13 @@ data:
     echo tmp.mapit(it.l).join(" ")'
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:46:27+09:00'
+  timestamp: '2026-09-08 14:58:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim

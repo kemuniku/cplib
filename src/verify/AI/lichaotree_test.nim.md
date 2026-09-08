@@ -58,10 +58,10 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/lichaotree.nim
   - cplib/utils/constants.nim
   - cplib/collections/lichaotree.nim
   - cplib/utils/constants.nim
+  - cplib/collections/lichaotree.nim
   isVerificationFile: true
   path: verify/AI/lichaotree_test.nim
   requiredBy: []

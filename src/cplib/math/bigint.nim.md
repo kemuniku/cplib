@@ -1,77 +1,77 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -525,29 +525,29 @@ data:
     \ hashes.hash(x.sign)\n        for digit in x.digits:\n            result = result\
     \ !& hashes.hash(digit)\n        result = !$result\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/powmod.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy: []
   timestamp: '2026-09-08 11:13:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim

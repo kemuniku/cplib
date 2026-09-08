@@ -1,71 +1,71 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -368,31 +368,31 @@ data:
     )] = 7\n    doAssert counts[initBigInt(\"+12345678901234567890\")] == 7\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/powmod.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/bigint.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/bigint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/bigint.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/bigint_unit_test.nim
   requiredBy: []
   timestamp: '2026-09-08 11:13:22+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/bigint_unit_test.nim
 layout: document
