@@ -21,9 +21,9 @@ data:
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
     links:
@@ -48,17 +48,17 @@ data:
     \ false): a += seg.get(l..<r)\n        for (l, r) in hld.path(l, v, false, false):\
     \ a += seg.get(l..<r)\n        ans.add(a)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
   requiredBy: []
   timestamp: '2026-09-04 10:21:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_vertex_add_path_sum_test.nim
 layout: document

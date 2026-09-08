@@ -91,10 +91,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -147,37 +147,37 @@ data:
     ]\nassertClose(tspPathCostFrom(dist, 0), 3.5)\nassertClose(tspPathCostFromTo(dist,\
     \ 0, 2), 3.5)\nassertClose(tspPathAnyStart(dist), 3.5)\n"
   dependsOn:
-  - cplib/graph/tsp.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/diameter.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/kruskal.nim
-  - cplib/collections/unionfind.nim
-  - cplib/utils/bititers.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/dijkstra.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
+  - cplib/tree/diameter.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/collections/unionfind.nim
+  - cplib/tree/diameter.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/tsp.nim
+  - cplib/utils/bititers.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/AI/graph_weight_type_test.nim

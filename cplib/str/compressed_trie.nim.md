@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   - icon: ':question:'
@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
@@ -91,11 +91,11 @@ data:
     \ get_subtree_sum*(node:VirtualTrieNode):int=\n        if node.now.len() == 0:\n\
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/graph/graph.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim

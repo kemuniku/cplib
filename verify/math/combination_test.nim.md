@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
     links:
@@ -24,18 +24,18 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\n\
     import sequtils, strutils\nimport atcoder/modint\nimport cplib/math/combination\n\
-    \nvar t, m: int\n(t, m) = stdin.readLine.split.map(parseInt)\ntype mint = modint\n\
-    mint.setMod(m)\nvar c = initCombination[mint](10_000_000)\nfor _ in 0..<t:\n \
-    \   var n, k: int\n    (n, k) = stdin.readLine.split.map(parseInt)\n    echo c.ncr(n,\
-    \ k).val\n"
+    \nlet tm = stdin.readLine.split.map(parseInt)\nlet t = tm[0]\nlet m = tm[1]\n\
+    type mint = modint\nmint.setMod(m)\nvar c = initCombination[mint](10_000_000)\n\
+    for _ in 0..<t:\n    let nk = stdin.readLine.split.map(parseInt)\n    let n =\
+    \ nk[0]\n    let k = nk[1]\n    echo c.ncr(n, k).val\n"
   dependsOn:
   - cplib/math/combination.nim
   - cplib/math/combination.nim
   isVerificationFile: true
   path: verify/math/combination_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-09-08 09:01:55+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/combination_test.nim
 layout: document

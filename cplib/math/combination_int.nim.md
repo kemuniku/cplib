@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -39,8 +39,8 @@ data:
     \ 1..rr:\n            res = res*(n-rr+i) div i\n            if res >= limit128:\n\
     \                return limit\n        return res.to_int\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/math/int128.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/math/int128.nim
   isVerificationFile: false

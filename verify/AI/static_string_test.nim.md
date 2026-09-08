@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
@@ -175,10 +175,10 @@ data:
 
     '
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/AI/static_string_test.nim
   requiredBy: []

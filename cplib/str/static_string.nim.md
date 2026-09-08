@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   _extendedRequiredBy:
@@ -75,57 +75,57 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_lcp_test.nim
     title: verify/str/static_string/static_string_lcp_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -250,7 +250,7 @@ data:
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
   timestamp: '2026-09-08 05:46:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim

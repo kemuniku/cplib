@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -27,7 +27,7 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_IMPLICIT_DIJKSTRA:\n    const CPLIB_UTILS_IMPLICIT_DIJKSTRA*\
-    \ = 1\n\n    import std/[algorithm, heapqueue, tables]\n    import cplib/utils/constants\n\
+    \ = 1\n\n    import algorithm, heapqueue, tables\n    import cplib/utils/constants\n\
     \n    type\n        ImplicitDijkstraAdjacent*[T] = proc(v: T): seq[(T, int)] {.closure.}\n\
     \        ImplicitDijkstraFinish*[T] = proc(v: T): bool {.closure.}\n\n    proc\
     \ restore_implicit_dijkstra*[T](start: T, adjacent: ImplicitDijkstraAdjacent[T]):\
@@ -98,7 +98,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/implicit_dijkstra.nim
   requiredBy: []
-  timestamp: '2026-07-20 01:43:13+09:00'
+  timestamp: '2026-09-08 06:52:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/implicit_dijkstra_test.nim

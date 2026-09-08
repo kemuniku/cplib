@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   - icon: ':heavy_check_mark:'
@@ -60,7 +60,7 @@ data:
   isVerificationFile: true
   path: verify/AI/implicit_dijkstra_test.nim
   requiredBy: []
-  timestamp: '2026-07-20 01:43:13+09:00'
+  timestamp: '2026-09-08 06:52:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/implicit_dijkstra_test.nim

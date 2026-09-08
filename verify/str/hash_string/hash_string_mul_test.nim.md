@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://yukicoder.me/problems/no/2858
     links:
@@ -59,19 +59,19 @@ data:
     \        ans.min = (M+1-(N-i)+(N-1))//N + 1\n\n    if ans == INF:\n        echo\
     \ -1\n    else:\n        echo ans"
   dependsOn:
-  - cplib/str/hash_string.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
   - cplib/str/hash_string.nim
   - cplib/tmpl/fastio.nim
+  - cplib/str/hash_string.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []
   timestamp: '2026-09-08 05:46:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_mul_test.nim
 layout: document

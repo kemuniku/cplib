@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -82,14 +82,14 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/steiner_tree.nim
-  - cplib/utils/bititers.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
   isVerificationFile: true
   path: verify/AI/steiner_tree_test.nim
   requiredBy: []

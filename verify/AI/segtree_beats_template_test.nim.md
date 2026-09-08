@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -56,14 +56,14 @@ data:
     \ to_Int128(10))\nseg128.chmin(0..4, to_Int128(10))\nfor i, expected in @[0, 0,\
     \ 5, 10, 10]:\n  assert seg128[i].sum == expected\n"
   dependsOn:
+  - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/math/int128.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
   - cplib/math/int128.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/math/int128.nim
-  - cplib/collections/segtree_beats.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_template_test.nim
   requiredBy: []

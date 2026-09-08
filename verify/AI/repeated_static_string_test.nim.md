@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/repeated_static_string.nim
     title: cplib/str/repeated_static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   _extendedRequiredBy: []
@@ -76,12 +76,12 @@ data:
     \        assert cmp(left, right) == sign(cmp(materializedLeft, materializedRight))\n\
     \        assert cmp(right, left) == sign(cmp(materializedRight, materializedLeft))\n"
   dependsOn:
-  - cplib/str/repeated_static_string.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/str/repeated_static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
   isVerificationFile: true

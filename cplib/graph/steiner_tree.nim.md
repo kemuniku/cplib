@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -98,12 +98,12 @@ data:
     \ openArray[int], zero, inf: T): T = steiner_tree_mincost_impl(g, terminal, zero,\
     \ inf)\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/suffixarray
     links:
@@ -34,7 +34,7 @@ data:
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   requiredBy: []
   timestamp: '2026-09-08 05:46:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
 layout: document

@@ -7,28 +7,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lazysegtree_static_op.nim
     title: cplib/collections/lazysegtree_static_op.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -63,16 +63,16 @@ data:
     \ (true, mint(c), mint(d)))\n    else:\n        let l, r, x = ii()\n        let\
     \ (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\necho ans.join(\"\\n\")\n"
   dependsOn:
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/collections/lazysegtree_static_op.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   requiredBy: []

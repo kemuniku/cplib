@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -55,14 +55,14 @@ data:
     \  var d = g.maxk_dijkstra(sx*w+sy, 1).mapIt(if it == INF64: -1 else: it)\n  \
     \      ans = max(ans, d.max)\necho ans\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/grid_to_graph.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/grid_to_graph.nim
   isVerificationFile: false

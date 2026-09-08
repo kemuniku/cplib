@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
   - icon: ':warning:'
@@ -27,15 +27,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
     title: verify/collections/range_kth_smallest_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -72,7 +72,7 @@ data:
   - cplib/math/combination_prefix_sum.nim
   - cplib/math/combination_prefix_sum.nim
   timestamp: '2024-03-16 18:25:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
   _extendedRequiredBy: []

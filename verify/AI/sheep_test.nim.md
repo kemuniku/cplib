@@ -1,46 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -75,20 +75,20 @@ data:
     \ sep = \"\\n\"))\ndoAssert compiles(print(\"a\", \"b\"))\ndoAssert compiles(print(*values,\
     \ sep = \"\\n\"))\n"
   dependsOn:
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/utils/constants.nim
-  - cplib/modint/modint.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/tmpl/fastio.nim
+  - cplib/math/isqrt.nim
+  - cplib/utils/constants.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []

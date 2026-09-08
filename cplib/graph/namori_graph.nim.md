@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -33,15 +33,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/namori_graph_test.nim
     title: verify/AI/namori_graph_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -91,19 +91,19 @@ data:
     \        return namori.roots[x]\n\n    proc same_tree*(namori:NamoriGraph,x,y:int):bool=\n\
     \        return namori.roots[x] == namori.roots[y]\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/namori_graph.nim
   requiredBy:
   - verify/graph/namori_graph_test_.nim
   - verify/graph/namori_graph_test_.nim
   timestamp: '2026-09-04 10:21:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
