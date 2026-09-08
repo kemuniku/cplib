@@ -99,7 +99,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/rootvalue_unionfind.nim
       title: cplib/collections/rootvalue_unionfind.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
@@ -254,7 +254,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/functional_graph_with_op.nim
       title: cplib/graph/functional_graph_with_op.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'
@@ -473,13 +473,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
     - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/rerooting.nim
       title: cplib/tree/rerooting.nim
     - icon: ':heavy_check_mark:'
@@ -517,7 +517,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: cplib/utils/inversion_number.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/itertools.nim
       title: cplib/utils/itertools.nim
     - icon: ':heavy_check_mark:'
@@ -2025,7 +2025,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_yosupo_test.nim
       title: verify/tree/diameter_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/rerooting_test.nim
       title: verify/tree/rerooting_test.nim
     - icon: ':heavy_check_mark:'
@@ -2042,10 +2042,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - name: verify/utils
@@ -2070,22 +2070,22 @@ data:
       title: verify/utils/restore_lis_aoj_test.nim
   - name: verify/utils/itertools
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulate_test.nim
       title: verify/utils/itertools/accumulate_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulated_2_test.nim
       title: verify/utils/itertools/accumulated_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulated_test.nim
       title: verify/utils/itertools/accumulated_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulatedr_2_test.nim
       title: verify/utils/itertools/accumulatedr_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulatedr_test.nim
       title: verify/utils/itertools/accumulatedr_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulater_test.nim
       title: verify/utils/itertools/accumulater_test.nim
   - name: verify/utils/knapsack

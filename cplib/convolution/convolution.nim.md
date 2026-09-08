@@ -805,21 +805,21 @@ data:
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:

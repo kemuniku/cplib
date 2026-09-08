@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/bipartite_graph.nim
     title: cplib/graph/bipartite_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -54,8 +54,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/bipartite_graph.nim
   isVerificationFile: true

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -36,10 +36,10 @@ data:
     \    G.add_edge(i, A[i]-1)\n    if i == A[i]-1:\n        ans += 1\nvar (_, _,\
     \ group) = G.SCCG()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/dynamic/SCCG_test_.nim
   requiredBy: []

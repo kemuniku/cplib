@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -35,8 +35,8 @@ data:
     \ in 0..<n-1:\n    var a, b, c = ii()\n    g.add_edge(a, b, c)\ng.build\necho\
     \ g.diameter\n"
   dependsOn:
-  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
   isVerificationFile: true

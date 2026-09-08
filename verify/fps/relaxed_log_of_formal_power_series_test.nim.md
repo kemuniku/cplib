@@ -90,28 +90,28 @@ data:
     for i in 0..<n:\n    result[i] = logarithm.add(Mint(ii()))\necho result.join(\"\
     \ \")\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/ntt.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/powmod.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/ntt.nim
-  - cplib/math/inner_math.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/fps/relaxed_log_of_formal_power_series_test.nim
   requiredBy: []

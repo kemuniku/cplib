@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   - icon: ':heavy_check_mark:'
@@ -51,8 +51,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/segtree2d.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/segtree2d.nim
   - cplib/collections/segtree.nim
   - cplib/collections/segtree2d.nim
   isVerificationFile: true

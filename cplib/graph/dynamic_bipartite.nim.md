@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/rootvalue_unionfind.nim
     title: cplib/collections/rootvalue_unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -54,8 +54,8 @@ data:
     \        return self.is_bipartite\n    \n    proc issame*(self:DynamicBipartite,u,v:int):bool=\n\
     \        return self.uf.issame(u,v) or self.uf.issame(u,v+self.N)"
   dependsOn:
-  - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
   isVerificationFile: false

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -164,15 +164,15 @@ data:
     \     assert n >= 0\n        assert s.len >= 1\n        for i in 0..<n:\n    \
     \        result.add(s[rand(0..<len(s))])\n        return result\n"
   dependsOn:
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
   - cplib/math/powmod.nim
-  - cplib/graph/graph.nim
   - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/tree/prufer.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
+  - cplib/graph/graph.nim
   - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
