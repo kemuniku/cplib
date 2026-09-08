@@ -67,11 +67,13 @@ data:
     \                var msk = result.bits[i] and ((1u shl mod64) - 1)\n         \
     \       result.bits[i].varshr(mod64)\n                result.bits[i].varor(tmp\
     \ shl (64-mod64))\n                tmp = msk\n    \n    proc `<<`*[size](bitset:BitSet[size],x:int):BitSet[size]=\n\
-    \        if x >= size:\n            return\n        for i in 0..<len(bitset.bits):\n\
-    \            if i-(x div 64) >= 0:\n                result.bits[i] = bitset.bits[i-(x\
-    \ div 64)]\n        var tmp = 0u\n        var mod64 = x mod 64\n        if mod64\
-    \ != 0:\n            for i in 0..<len(bitset.bits):\n                var msk =\
-    \ result.bits[i] and bitnot((1u shl mod64) - 1)\n                result.bits[i].varshl(mod64)\n\
+    \        ## \u6DFB\u5B57\u304C\u5927\u304D\u3044\u65B9\u5411\u3078x\u30D3\u30C3\
+    \u30C8\u305A\u3089\u3057\u3001\u7BC4\u56F2\u5916\u3092\u5207\u308A\u6368\u3066\
+    \u307E\u3059\u3002\n        if x >= size:\n            return\n        for i in\
+    \ 0..<len(bitset.bits):\n            if i-(x div 64) >= 0:\n                result.bits[i]\
+    \ = bitset.bits[i-(x div 64)]\n        var tmp = 0u\n        var mod64 = x mod\
+    \ 64\n        if mod64 != 0:\n            for i in 0..<len(bitset.bits):\n   \
+    \             let msk = result.bits[i]\n                result.bits[i].varshl(mod64)\n\
     \                result.bits[i].varor(tmp shr (64-mod64))\n                tmp\
     \ = msk\n        result.trim()\n    \n    proc andpopcount*[size](x,y:BitSet[size]):int=\n\
     \        for i in 0..<min(len(x.bits),len(y.bits)):\n            result += (x.bits[i]\
@@ -114,7 +116,7 @@ data:
   - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_test_.nim
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-08 11:45:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/staticbitset_test.nim

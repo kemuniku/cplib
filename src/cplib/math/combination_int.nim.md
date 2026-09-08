@@ -39,10 +39,10 @@ data:
     \ 1..rr:\n            res = res*(n-rr+i) div i\n            if res >= limit128:\n\
     \                return limit\n        return res.to_int\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/math/int128.nim
   - cplib/utils/constants.nim
   - cplib/math/int128.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/math/combination_int.nim
   requiredBy: []

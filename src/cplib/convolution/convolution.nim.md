@@ -1,121 +1,127 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
+  - icon: ':x:'
+    path: cplib/math/bigint.nim
+    title: cplib/math/bigint.nim
+  - icon: ':x:'
+    path: cplib/math/bigint.nim
+    title: cplib/math/bigint.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
@@ -261,45 +267,57 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/math/bigint_unit_test.nim
+    title: verify/math/bigint_unit_test.nim
+  - icon: ':x:'
+    path: verify/math/bigint_unit_test.nim
+    title: verify/math/bigint_unit_test.nim
+  - icon: ':x:'
+    path: verify/math/division_of_big_integers_test.nim
+    title: verify/math/division_of_big_integers_test.nim
+  - icon: ':x:'
+    path: verify/math/division_of_big_integers_test.nim
+    title: verify/math/division_of_big_integers_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -549,35 +567,60 @@ data:
     Z i = 0;\nfor (; i + 8 <= output_size; i += 8) {\nconst V value = _mm256_loadu_si256(\n\
     (const V*)(a + i));\n_mm256_storeu_si256(\n(V*)(a + i),\nmontgomery_multiply(value,\
     \ radix_squared, montgomery));\n}\nfor (; i < output_size; ++i) {\na[i] = montgomery.to_montgomery(a[i]);\n\
-    }\n}\n_mm_free(b);\n}\n\nclass PolynomialSequenceProduct998 {\nstruct Product\
-    \ {\nconst u32* data;\nZ size;\n};\nconst Z* sizes_;\nZ factor_count_;\nZ* degree_prefix_;\n\
-    u32* coefficients_;\nu32* pool_;\nZ current_;\nu32* work_left_;\nu32* work_right_;\n\
-    Z work_size_;\nTransformPlan* forward_plans_[32];\nTransformPlan* inverse_plans_[32];\n\
-    u32 inverse_scales_[32];\nMontgomery montgomery_;\n\ninline u32 multiply_mod(u32\
-    \ a, u32 b) const {\nreturn montgomery_.multiply(a, b);\n}\ninline void add_product(u32&\
-    \ destination, u32 a, u32 b) const {\nconst u32 product = multiply_mod(a, b);\n\
-    destination += product;\nif (destination >= 998244353U) destination -= 998244353U;\n\
-    }\nZ balanced_middle(Z left, Z right) const {\nif (right - left == 2) return left\
-    \ + 1;\nconst Z target = degree_prefix_[left] +\n(degree_prefix_[right] - degree_prefix_[left])\
-    \ / 2;\nZ low = left + 1;\nZ high = right;\nwhile (low < high) {\nconst Z middle\
-    \ = (low + high) / 2;\nif (degree_prefix_[middle] < target) low = middle + 1;\n\
-    else high = middle;\n}\nif (low > left + 1) {\nconst Z left_degree = degree_prefix_[low]\
-    \ - degree_prefix_[left];\nconst Z right_degree = degree_prefix_[right] - degree_prefix_[low];\n\
-    const Z current_difference = left_degree > right_degree\n? left_degree - right_degree\
-    \ : right_degree - left_degree;\nconst Z previous_left = degree_prefix_[low -\
-    \ 1] - degree_prefix_[left];\nconst Z previous_right = degree_prefix_[right] -\
-    \ degree_prefix_[low - 1];\nconst Z previous_difference = previous_left > previous_right\n\
-    ? previous_left - previous_right : previous_right - previous_left;\nif (previous_difference\
-    \ < current_difference) --low;\n}\nreturn low;\n}\nZ required_capacity(Z left,\
-    \ Z right) const {\nif (left + 1 == right) return 0;\nconst Z middle = balanced_middle(left,\
-    \ right);\nconst Z output_size = degree_prefix_[right] - degree_prefix_[left]\
-    \ + 1;\nconst Z left_size = degree_prefix_[middle] - degree_prefix_[left] + 1;\n\
-    const Z left_capacity = required_capacity(left, middle);\nconst Z right_capacity\
-    \ = required_capacity(middle, right);\nconst Z right_offset = middle - left >\
-    \ 1 ? left_size : 0;\nconst Z child_capacity = left_capacity > right_offset +\
-    \ right_capacity\n? left_capacity : right_offset + right_capacity;\nreturn output_size\
-    \ + child_capacity;\n}\nvoid reserve_work(Z size) {\nif (work_size_ >= size) return;\n\
-    _mm_free(work_left_);\n_mm_free(work_right_);\nwork_left_ = static_cast<u32*>(_mm_malloc(sizeof(u32)\
+    }\n}\n_mm_free(b);\n}\n\nclass FixedConvolution {\nZ size_;\nu32 modulus_, root_;\n\
+    u32* fixed_;\nTransformPlan *forward_, *inverse_;\npublic:\nFixedConvolution(const\
+    \ u32* data, Z length, Z size, u32 mod, u32 root)\n: size_(size), modulus_(mod),\
+    \ root_(root) {\n// \u56FA\u5B9A\u5074\u306E\u5909\u63DB\u3068\u6B63\u9006\u5909\
+    \u63DB\u306E\u8A08\u753B\u3092\u4E00\u5EA6\u3060\u3051\u69CB\u7BC9\u3059\u308B\
+    \u3002\nmodulus = modulus_;\nprimitive_root = root_;\nforward_ = new TransformPlan(size_);\n\
+    inverse_ = new TransformPlan(size_);\ninverse_->prepare_inverse();\nfixed_ = static_cast<u32*>(_mm_malloc(sizeof(u32)\
+    \ * size_, 32));\nconst Montgomery& mont = forward_->montgomery();\nconst u32\
+    \ scale = (u32)(u64(mont.radix_squared) *\npower_mod((u32)size_, modulus - 2)\
+    \ % modulus);\nfor (Z i = 0; i < length; ++i) fixed_[i] = mont.multiply(data[i],\
+    \ scale);\nstd::memset(fixed_ + length, 0, sizeof(u32) * (size_ - length));\n\
+    if (length <= size_ / 2) forward_->forward_half_zero(fixed_);\nelse forward_->forward(fixed_);\n\
+    }\n~FixedConvolution() {\n// \u56FA\u5B9A\u5074\u306E\u5909\u63DB\u3068\u8A08\u753B\
+    \u3092\u89E3\u653E\u3059\u308B\u3002\n_mm_free(fixed_);\ndelete forward_;\ndelete\
+    \ inverse_;\n}\nvoid run(u32* output, const u32* data, Z length) {\n// \u56FA\u5B9A\
+    \u5074\u3092\u4FDD\u6301\u3057\u305F\u307E\u307E\u3001\u53EF\u5909\u5074\u306E\
+    \u5909\u63DB\u30FB\u70B9\u3054\u3068\u306E\u7A4D\u30FB\u9006\u5909\u63DB\u3092\
+    \u884C\u3046\u3002\nmodulus = modulus_;\nprimitive_root = root_;\nstd::memcpy(output,\
+    \ data, sizeof(u32) * length);\nconst bool half_zero = length <= size_ / 2;\n\
+    std::memset(output + length, 0,\nsizeof(u32) * ((half_zero ? size_ / 2 : size_)\
+    \ - length));\nif (half_zero) forward_->forward_half_zero(output);\nelse forward_->forward(output);\n\
+    const Montgomery& mont = forward_->montgomery();\nfor (Z i = 0; i < size_; i +=\
+    \ 8) {\nconst V a = _mm256_loadu_si256((const V*)(output + i));\nconst V b = _mm256_loadu_si256((const\
+    \ V*)(fixed_ + i));\n_mm256_storeu_si256((V*)(output + i), montgomery_multiply(a,\
+    \ b, mont));\n}\ninverse_->inverse(output);\n}\n};\n\nclass PolynomialSequenceProduct998\
+    \ {\nstruct Product {\nconst u32* data;\nZ size;\n};\nconst Z* sizes_;\nZ factor_count_;\n\
+    Z* degree_prefix_;\nu32* coefficients_;\nu32* pool_;\nZ current_;\nu32* work_left_;\n\
+    u32* work_right_;\nZ work_size_;\nTransformPlan* forward_plans_[32];\nTransformPlan*\
+    \ inverse_plans_[32];\nu32 inverse_scales_[32];\nMontgomery montgomery_;\n\ninline\
+    \ u32 multiply_mod(u32 a, u32 b) const {\nreturn montgomery_.multiply(a, b);\n\
+    }\ninline void add_product(u32& destination, u32 a, u32 b) const {\nconst u32\
+    \ product = multiply_mod(a, b);\ndestination += product;\nif (destination >= 998244353U)\
+    \ destination -= 998244353U;\n}\nZ balanced_middle(Z left, Z right) const {\n\
+    if (right - left == 2) return left + 1;\nconst Z target = degree_prefix_[left]\
+    \ +\n(degree_prefix_[right] - degree_prefix_[left]) / 2;\nZ low = left + 1;\n\
+    Z high = right;\nwhile (low < high) {\nconst Z middle = (low + high) / 2;\nif\
+    \ (degree_prefix_[middle] < target) low = middle + 1;\nelse high = middle;\n}\n\
+    if (low > left + 1) {\nconst Z left_degree = degree_prefix_[low] - degree_prefix_[left];\n\
+    const Z right_degree = degree_prefix_[right] - degree_prefix_[low];\nconst Z current_difference\
+    \ = left_degree > right_degree\n? left_degree - right_degree : right_degree -\
+    \ left_degree;\nconst Z previous_left = degree_prefix_[low - 1] - degree_prefix_[left];\n\
+    const Z previous_right = degree_prefix_[right] - degree_prefix_[low - 1];\nconst\
+    \ Z previous_difference = previous_left > previous_right\n? previous_left - previous_right\
+    \ : previous_right - previous_left;\nif (previous_difference < current_difference)\
+    \ --low;\n}\nreturn low;\n}\nZ required_capacity(Z left, Z right) const {\nif\
+    \ (left + 1 == right) return 0;\nconst Z middle = balanced_middle(left, right);\n\
+    const Z output_size = degree_prefix_[right] - degree_prefix_[left] + 1;\nconst\
+    \ Z left_size = degree_prefix_[middle] - degree_prefix_[left] + 1;\nconst Z left_capacity\
+    \ = required_capacity(left, middle);\nconst Z right_capacity = required_capacity(middle,\
+    \ right);\nconst Z right_offset = middle - left > 1 ? left_size : 0;\nconst Z\
+    \ child_capacity = left_capacity > right_offset + right_capacity\n? left_capacity\
+    \ : right_offset + right_capacity;\nreturn output_size + child_capacity;\n}\n\
+    void reserve_work(Z size) {\nif (work_size_ >= size) return;\n_mm_free(work_left_);\n\
+    _mm_free(work_right_);\nwork_left_ = static_cast<u32*>(_mm_malloc(sizeof(u32)\
     \ * size, 32));\nwork_right_ = static_cast<u32*>(_mm_malloc(sizeof(u32) * size,\
     \ 32));\nwork_size_ = size;\n}\nTransformPlan& forward_plan(Z size) {\nconst unsigned\
     \ index = (unsigned)__builtin_ctzll(size);\nif (forward_plans_[index] == nullptr)\
@@ -667,7 +710,18 @@ data:
     \ modulus,\nstd::uint32_t primitive_root,\nbool montgomery_representation) {\n\
     cplib_avx2_ntt::convolution_ntt_friendly(\noutput, left, left_size, right, right_size,\
     \ transform_size,\nmodulus, primitive_root, montgomery_representation);\n}\nextern\
-    \ \"C\" void cplib_product_polynomial_sequence_998(\nstd::uint32_t* output,\n\
+    \ \"C\" void* cplib_fixed_convolution_create(\nstd::uint32_t* data, std::size_t\
+    \ length, std::size_t size,\nstd::uint32_t modulus, std::uint32_t root) {\n//\
+    \ \u56FA\u5B9A\u5074\u306E\u7573\u307F\u8FBC\u307F\u30B3\u30F3\u30C6\u30AD\u30B9\
+    \u30C8\u3092\u4F5C\u6210\u3059\u308B\u3002\nreturn new cplib_avx2_ntt::FixedConvolution(data,\
+    \ length, size, modulus, root);\n}\nextern \"C\" void cplib_fixed_convolution_run(\n\
+    void* context, std::uint32_t* output, std::uint32_t* data, std::size_t length)\
+    \ {\n// \u4F5C\u6210\u6E08\u307F\u306E\u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3067\
+    \u7573\u307F\u8FBC\u307F\u3092\u5B9F\u884C\u3059\u308B\u3002\nstatic_cast<cplib_avx2_ntt::FixedConvolution*>(context)->run(output,\
+    \ data, length);\n}\nextern \"C\" void cplib_fixed_convolution_destroy(void* context)\
+    \ {\n// \u7573\u307F\u8FBC\u307F\u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3092\u89E3\
+    \u653E\u3059\u308B\u3002\ndelete static_cast<cplib_avx2_ntt::FixedConvolution*>(context);\n\
+    }\nextern \"C\" void cplib_product_polynomial_sequence_998(\nstd::uint32_t* output,\n\
     std::uint32_t** factors,\nstd::size_t* sizes,\nstd::size_t factor_count) {\ncplib_avx2_ntt::product_polynomial_sequence_998(\n\
     output, factors, sizes, factor_count);\n}\n    \"\"\".}\n\n    proc convolutionNttFriendlyAvx2(\n\
     \        output: ptr uint32,\n        f: ptr uint32,\n        fLen: csize_t,\n\
@@ -804,25 +858,27 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
   - cplib/convolution/relaxed_convolution.nim
   - cplib/convolution/relaxed_convolution.nim
   - cplib/convolution/semi_relaxed_convolution.nim
@@ -845,9 +901,13 @@ data:
   - cplib/fps/bostan_mori.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/polynomial_interpolation.nim
-  timestamp: '2026-09-04 10:21:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-08 11:13:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/math/bigint_unit_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
