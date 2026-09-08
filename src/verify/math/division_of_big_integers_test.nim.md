@@ -89,27 +89,27 @@ data:
     \  print(quotient, remainder)\n"
   dependsOn:
   - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/bigint.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/bigint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/math/bigint.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
   - cplib/tmpl/fastio.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/tmpl/fastio.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/division_of_big_integers_test.nim
   requiredBy: []

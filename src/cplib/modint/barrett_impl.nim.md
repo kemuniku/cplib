@@ -93,6 +93,18 @@ data:
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2.nim
+    title: cplib/matrix/matrix_avx2.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2.nim
+    title: cplib/matrix/matrix_avx2.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_product_avx2.nim
+    title: cplib/matrix/matrix_product_avx2.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_product_avx2.nim
+    title: cplib/matrix/matrix_product_avx2.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
   - icon: ':heavy_check_mark:'
@@ -484,11 +496,41 @@ data:
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_compatibility_test.nim
+    title: verify/matrix/matrix_avx2_compatibility_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_compatibility_test.nim
+    title: verify/matrix/matrix_avx2_compatibility_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_test.nim
+    title: verify/matrix/matrix_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_test.nim
+    title: verify/matrix/matrix_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_unit_test.nim
+    title: verify/matrix/matrix_avx2_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_unit_test.nim
+    title: verify/matrix/matrix_avx2_unit_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_avx2_test.nim
+    title: verify/matrix/matrix_product_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_avx2_test.nim
+    title: verify/matrix/matrix_product_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_avx2_unit_test.nim
+    title: verify/matrix/matrix_product_avx2_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_avx2_unit_test.nim
+    title: verify/matrix/matrix_product_avx2_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
@@ -647,6 +689,10 @@ data:
   - cplib/fps/bostan_mori.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/polynomial_interpolation.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix_product_avx2.nim
+  - cplib/matrix/matrix_product_avx2.nim
   timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -748,6 +794,16 @@ data:
   - verify/AI/ntt_test.nim
   - verify/matrix/matrix_product_test.nim
   - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/matrix/matrix_avx2_unit_test.nim
+  - verify/matrix/matrix_avx2_unit_test.nim
+  - verify/matrix/matrix_avx2_compatibility_test.nim
+  - verify/matrix/matrix_avx2_compatibility_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
   - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_pow_test.nim
 documentation_of: cplib/modint/barrett_impl.nim

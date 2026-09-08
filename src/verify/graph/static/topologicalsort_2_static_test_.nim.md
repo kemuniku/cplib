@@ -35,9 +35,9 @@ data:
     for i in 0..<M:\n    var U, V = ii()-1\n    G.add_edge(V, U)\nG.build()\necho\
     \ N-len(G.topologicalsort())\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   isVerificationFile: false
   path: verify/graph/static/topologicalsort_2_static_test_.nim

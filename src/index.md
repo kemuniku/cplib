@@ -402,6 +402,12 @@ data:
       path: cplib/matrix/matrix.nim
       title: cplib/matrix/matrix.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/matrix/matrix_avx2.nim
+      title: cplib/matrix/matrix_avx2.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/matrix/matrix_product_avx2.nim
+      title: cplib/matrix/matrix_product_avx2.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/rolling_hash_2d.nim
       title: cplib/matrix/rolling_hash_2d.nim
     - icon: ':heavy_check_mark:'
@@ -1927,8 +1933,23 @@ data:
   - name: verify/matrix
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_avx2_compatibility_test.nim
+      title: verify/matrix/matrix_avx2_compatibility_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_avx2_test.nim
+      title: verify/matrix/matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_avx2_unit_test.nim
+      title: verify/matrix/matrix_avx2_unit_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_pow_test.nim
       title: verify/matrix/matrix_pow_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_product_avx2_test.nim
+      title: verify/matrix/matrix_product_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_product_avx2_unit_test.nim
+      title: verify/matrix/matrix_product_avx2_unit_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_product_test.nim
       title: verify/matrix/matrix_product_test.nim

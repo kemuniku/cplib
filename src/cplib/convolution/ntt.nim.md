@@ -319,11 +319,11 @@ data:
     \  for i in 0..<n: f[i] *= ninv\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false

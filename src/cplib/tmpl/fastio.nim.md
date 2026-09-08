@@ -70,6 +70,18 @@ data:
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_test.nim
+    title: verify/matrix/matrix_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_test.nim
+    title: verify/matrix/matrix_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_avx2_test.nim
+    title: verify/matrix/matrix_product_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_product_avx2_test.nim
+    title: verify/matrix/matrix_product_avx2_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - icon: ':heavy_check_mark:'
@@ -732,6 +744,10 @@ data:
   - verify/AI/sheep_test.nim
   - verify/AI/fastio_test.nim
   - verify/AI/fastio_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
 documentation_of: cplib/tmpl/fastio.nim
 layout: document
 redirect_from:

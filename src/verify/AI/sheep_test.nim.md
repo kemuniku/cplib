@@ -76,19 +76,19 @@ data:
     \ sep = \"\\n\"))\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/tmpl/sheep.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []
