@@ -194,3 +194,23 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
             for j in 0..<n:
                 if aug[i, n + j]: inv[i, j] = true
         some(inv)
+
+    import cplib/matrix/field_matrix_ops
+    export LinearSystemSolution
+
+    proc solveLinearSystem*(a: MatrixMod2, b: openArray[bool]): Option[LinearSystemSolution[bool]] =
+        ## GF(2)上でAx=bの特殊解と核の基底を返す。解なしはnone。
+        fieldSolve(matrixRows(a, a.h, a.w), a.w, b)
+
+    proc hafnian*(a: MatrixMod2): bool =
+        ## GF(2)上の対称な偶数次行列のhafnianを求める。O(n^3)。
+        assert a.h == a.w
+        fieldHafnian(matrixRows(a, a.h, a.w))
+
+    proc adjugate*(a: MatrixMod2): MatrixMod2 =
+        ## GF(2)上で特異行列も含めた余因子行列を求める。O(n^3)。
+        assert a.h == a.w
+        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.w), true).get
+        result = initMatrixMod2(a.h, a.w)
+        for i in 0..<a.h:
+            for j in 0..<a.w: result[i, j] = rows[i][j]

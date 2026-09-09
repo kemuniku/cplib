@@ -769,6 +769,8 @@ static void cplib_matrix_write_row(const uint32_t* values,size_t count,uint32_t 
                     values[i] = newSeq[T](k)
                     for j in 0 ..< k:
                         values[i][j] = T.init(flatC[i * k + j].int)
+            elif name == "emptyWidth" and values is int:
+                values = k
             else:
                 {.error: "unsupported matrix representation".}
 
@@ -781,3 +783,44 @@ static void cplib_matrix_write_row(const uint32_t* values,size_t count,uint32_t 
         ## 従来のMatrix型を保ったままAVX2で行列積を計算する。
         mixin `[]`
         matrixProductLegacy(a, b, typeof(a[0, 0]))
+
+    import options
+    import cplib/matrix/field_matrix_ops
+    export LinearSystemSolution
+
+    proc rank*[T](a: Matrix[T]): int =
+        ## 階数を求める。O(h*w*min(h,w))。
+        fieldRank(matrixRows(a, a.h, a.w), a.w)
+
+    proc determinant*[T](a: Matrix[T]): T =
+        ## 行列式を求める。空行列は1。O(n^3)。
+        assert a.h == a.w
+        fieldDeterminant(matrixRows(a, a.h, a.h))
+
+    proc hafnian*[T](a: Matrix[T]): T =
+        ## 対称な偶数次行列のhafnianを求める。O(n^2*2^(n/2))。
+        assert a.h == a.w
+        fieldHafnian(matrixRows(a, a.h, a.h))
+
+    proc solveLinearSystem*[T](a: Matrix[T], b: openArray[T]): Option[LinearSystemSolution[T]] =
+        ## Ax=bの特殊解と核の基底を返す。解なしはnone。消去と後退代入を行う。
+        fieldSolve(matrixRows(a, a.h, a.w), a.w, b)
+
+    proc inverse*[T](a: Matrix[T]): Option[Matrix[T]] =
+        ## 逆行列を返す。特異行列はnone。O(n^3)。
+        assert a.h == a.w
+        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), false)
+        if rows.isNone: return none(Matrix[T])
+        var answer = initMatrix(a.h, a.h, T(0))
+        for i in 0..<a.h:
+            for j in 0..<a.h: answer[i, j] = rows.get[i][j]
+        some(answer)
+
+    proc adjugate*[T](a: Matrix[T]): Matrix[T] =
+        ## 特異行列を含む余因子行列を返す。O(n^3)。
+        assert a.h == a.w
+        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), true)
+        var answer = initMatrix(a.h, a.h, T(0))
+        for i in 0..<a.h:
+            for j in 0..<a.h: answer[i, j] = rows.get[i][j]
+        answer

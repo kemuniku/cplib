@@ -167,3 +167,22 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
                     for k in 0..<left.rows[i].len: left.rows[i][k] = left.rows[i][k] xor left.rows[col][k]
                     for k in 0..<right.rows[i].len: right.rows[i][k] = right.rows[i][k] xor right.rows[col][k]
         some(right)
+
+    import cplib/matrix/field_matrix_ops
+    export LinearSystemSolution
+
+    proc solveLinearSystem*[H: static int, W: static int](a: StaticMatrixMod2[H,W], b: openArray[bool]): Option[LinearSystemSolution[bool]] =
+        ## GF(2)上でAx=bの特殊解と核の基底を返す。解なしはnone。
+        fieldSolve(matrixRows(a, a.h, a.w), a.w, b)
+
+    proc hafnian*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): bool =
+        ## GF(2)上の対称な偶数次行列のhafnianを求める。O(n^3)。
+        assert a.h == a.w
+        fieldHafnian(matrixRows(a, a.h, a.w))
+
+    proc adjugate*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): StaticMatrixMod2[H,W] =
+        ## GF(2)上で特異行列も含めた余因子行列を求める。O(n^3)。
+        assert a.h == a.w
+        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.w), true).get
+        for i in 0..<a.h:
+            for j in 0..<a.w: result[i, j] = rows[i][j]

@@ -50,7 +50,7 @@ proc checkLegacyShapes[T]() =
     for i in 0 ..< b.h:
         for j in 0 ..< b.w:
             doAssert b[i, j].val == 7 + i * 4 + j
-    for shape in [(0, 0, 0), (4, 0, 0), (3, 2, 0)]:
+    for shape in [(0, 0, 0), (4, 0, 0), (3, 2, 0), (0, 3, 4), (2, 0, 5)]:
         let (h, w, k) = shape
         let emptyA = legacy.initMatrix[T](h, w, T.init(0))
         let emptyB = legacy.initMatrix[T](w, k, T.init(0))
