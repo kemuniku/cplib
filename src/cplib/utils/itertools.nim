@@ -200,6 +200,20 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                 a[k] = x + y
                 yield a[0 .. k]
 
+    iterator bounded_sequences*(a: openArray[int]): seq[int] =
+        ## 非負整数列 a に対し、0 <= b[i] <= a[i] を満たす列を辞書順に列挙。
+        ## 空入力では空列を1件返す。1件あたり O(a.len)、追加領域 O(a.len)。
+        for upper in a: assert upper >= 0
+        var b = newSeq[int](a.len)
+        while true:
+            yield b
+            var i = a.len - 1
+            while i >= 0 and b[i] == a[i]:
+                b[i] = 0
+                dec i
+            if i < 0: break
+            inc b[i]
+
     iterator bounded_sum_sequences*(s: int, bounds: openArray[tuple[l, r: int]]): seq[int] =
         ## 総和 s、bounds[i].l <= a[i] < bounds[i].r の数列を辞書順に列挙。
         ## 空の bounds は s == 0 のときだけ空列を返す。空の範囲は解なし。

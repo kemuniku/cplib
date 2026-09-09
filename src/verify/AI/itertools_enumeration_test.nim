@@ -31,6 +31,28 @@ for n in 0..4:
                 doAssert toSeq(nondecreasing_sequences(n, s, l, r)) == weak.filterIt(it.sum == s)
                 doAssert toSeq(strictly_increasing_sequences(n, s, l, r)) == strict.filterIt(it.sum == s)
 
+for n in 0..4:
+    for a in product(@[0, 1, 2], n):
+        var expected: seq[seq[int]]
+        for b in product(@[0, 1, 2], n):
+            var valid = true
+            for i in 0..<n:
+                if b[i] > a[i]: valid = false
+            if valid: expected.add(b)
+        doAssert toSeq(bounded_sequences(a)) == expected.sorted()
+
+doAssert toSeq(bounded_sequences([1, 2])) == @[
+    @[0, 0], @[0, 1], @[0, 2], @[1, 0], @[1, 1], @[1, 2]]
+doAssert toSeq(bounded_sequences(newSeq[int]())) == @[newSeq[int]()]
+doAssert toSeq(bounded_sequences([0, 0])) == @[@[0, 0]]
+block:
+    var count = 0
+    for b in bounded_sequences([high(int), 0]):
+        doAssert b == @[count, 0]
+        inc count
+        if count == 3: break
+    doAssert count == 3
+
 let rangeChoices = @[(l: -2, r: 0), (l: 0, r: 3), (l: -1, r: 2), (l: 1, r: 1), (l: 2, r: 0)]
 for n in 0..3:
     for bounds in product(rangeChoices, n):
