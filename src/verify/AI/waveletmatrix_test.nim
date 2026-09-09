@@ -40,6 +40,10 @@ assert withSum.sum_smallest(0, 8, 4) == 7
 assert withSum.sum_smallest(0, 8, 8) == 31
 assert withSum.sum_smallest(2, 6, 3) == 10
 assert withSum.sum_smallest(3, 3, 0) == 0
+assert withSum.sum_upperbound(0, 8, 4) == 11
+assert withSum.sum_lowerbound(0, 8, 4) == 7
+assert withSum.range_sum(0, 8, 2, 5) == 9
+assert withSum.range_sum(2, 6, 2, 5) == 4
 
 proc checkRange(a: seq[int], wm: WaveletMatrix, l, r: int, withSum: bool) =
     let values = sorted(a[l..<r])
@@ -55,15 +59,18 @@ proc checkRange(a: seq[int], wm: WaveletMatrix, l, r: int, withSum: bool) =
     let thresholds = @[int.low, -1, 0, 1, 2, 3, 7, 8, 15, 16, 63, 64, 127, 128, int.high]
     for x in thresholds:
         var less, lessEqual, equal = 0
+        var sumLess, sumLessEqual = 0
         var prev, next = none(int)
         for v in values:
             if v < x:
                 inc less
+                sumLess += v
                 prev = some(v)
             elif next.isNone:
                 next = some(v)
             if v <= x:
                 inc lessEqual
+                sumLessEqual += v
             if v == x:
                 inc equal
         assert wm.range_lowerbound(l, r, x) == less
@@ -71,12 +78,19 @@ proc checkRange(a: seq[int], wm: WaveletMatrix, l, r: int, withSum: bool) =
         assert wm.count(l, r, x) == equal
         assert wm.prev_value(l, r, x) == prev
         assert wm.next_value(l, r, x) == next
+        if withSum:
+            assert wm.sum_lowerbound(l, r, x) == sumLess
+            assert wm.sum_upperbound(l, r, x) == sumLessEqual
         for high in thresholds:
             var freq = 0
+            var sumRange = 0
             for v in values:
                 if x <= v and v < high:
                     inc freq
+                    sumRange += v
             assert wm.range_freq(l, r, x, high) == freq
+            if withSum:
+                assert wm.range_sum(l, r, x, high) == sumRange
 
 proc checkAll(a: seq[int], h: int = -1) =
     for withSum in [false, true]:

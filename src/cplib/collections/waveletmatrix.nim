@@ -139,7 +139,23 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
 
     proc count*(self:WaveletMatrix,l,r,x:int):int=
         ## [l,r) 内の x の出現回数を O(H) で返す。
-        return self.range_upperbound(l,r,x) - self.range_lowerbound(l,r,x)
+        if x < 0:
+            return 0
+        if self.H < sizeof(int) * 8 and (x shr self.H) != 0:
+            return 0
+        var l = l
+        var r = r
+        for h in countdown(self.H-1,0,1):
+            if l == r:
+                return 0
+            let (l0,r0,l1,r1) = self.get_child(h,l,r)
+            if x.testBit(h):
+                l = l1
+                r = r1
+            else:
+                l = l0
+                r = r0
+        return r-l
 
     proc kth_largest*(self:WaveletMatrix,l,r,k:int):int=
         ## [l,r) 内で大きい順に k 番目の値を O(H) で返す。k は 0-indexed。
@@ -169,3 +185,42 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
                 l = l1
                 r = r1
         result += k * value
+
+    proc sum_upperbound*(self:WaveletMatrix,l,r,x:int):int=
+        ## [l,r) 内の x 以下の要素の総和を 1 回の走査で O(H) で返す。構築時に with_sum=true が必要。
+        assert self.with_sum
+        assert 0 <= l and l <= r and r <= self.N
+        if x < 0:
+            return 0
+        if self.H < sizeof(int) * 8 and (x shr self.H) != 0:
+            return self.sum_smallest(l,r,r-l)
+        var l = l
+        var r = r
+        for h in countdown(self.H-1,0,1):
+            if l == r:
+                return
+            let (l0,r0,l1,r1) = self.get_child(h,l,r)
+            if x.testBit(h):
+                result += self.zero_sum[h][r] - self.zero_sum[h][l]
+                l = l1
+                r = r1
+            else:
+                l = l0
+                r = r0
+        result += (r-l) * x
+
+    proc sum_lowerbound*(self:WaveletMatrix,l,r,x:int):int=
+        ## [l,r) 内の x 未満の要素の総和を 1 回の走査で O(H) で返す。構築時に with_sum=true が必要。
+        assert self.with_sum
+        assert 0 <= l and l <= r and r <= self.N
+        if x <= 0:
+            return 0
+        return self.sum_upperbound(l,r,x-1)
+
+    proc range_sum*(self:WaveletMatrix,l,r,low,high:int):int=
+        ## [l,r) 内で値が [low,high) に入る要素の総和を O(H) で返す。low >= high なら 0。構築時に with_sum=true が必要。
+        assert self.with_sum
+        assert 0 <= l and l <= r and r <= self.N
+        if low >= high:
+            return 0
+        return self.sum_lowerbound(l,r,high) - self.sum_lowerbound(l,r,low)
