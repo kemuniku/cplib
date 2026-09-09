@@ -18,7 +18,7 @@ proc naiveComposition[T: BarrettModint or MontgomeryModint](
     result.setLen(n)
     power = prefix(power * inner, n)
 
-proc naivePowEnumerate[T: BarrettModint or MontgomeryModint](
+proc naivePowerProjection[T: BarrettModint or MontgomeryModint](
     f, g: seq[T], m: int): seq[T] =
   let n = f.len - 1
   result = newSeq[T](m + 1)
@@ -259,21 +259,21 @@ block compositionAndInverse:
   assert compose(longOuter, longInner, longOuter.len).values ==
     oneMinusInner.inv(oneMinusInner.len).values
 
-block powEnumeration:
+block powerProjectionTests:
   for n in [0, 1, 2, 3, 4, 7, 8, 15, 16, 31, 70]:
     var f = newSeq[Mint](n + 1)
     var g = newSeq[Mint](n + 4)
     for i in 0..<f.len: f[i] = Mint(17 * i * i + 31 * i + 3)
     for i in 0..<g.len: g[i] = Mint(23 * i * i + 11 * i + 5)
     for m in [0, 1, 5, n, n + 3]:
-      assert powEnumerate(f, g, m) == naivePowEnumerate(f, g, m)
-    assert powEnumerate(f, g) == naivePowEnumerate(f, g, n)
-    assert powEnumerate(f) ==
-      naivePowEnumerate(f, @[Mint(1)], n)
+      assert powerProjection(f, g, m) == naivePowerProjection(f, g, m)
+    assert powerProjection(f, g) == naivePowerProjection(f, g, n)
+    assert powerProjection(f) ==
+      naivePowerProjection(f, @[Mint(1)], n)
 
   let zeroConstant = @[Mint(0), Mint(2), Mint(3), Mint(5), Mint(7)]
-  assert powEnumerate(zeroConstant, 8) ==
-    naivePowEnumerate(zeroConstant, @[Mint(1)], 8)
+  assert powerProjection(zeroConstant, 8) ==
+    naivePowerProjection(zeroConstant, @[Mint(1)], 8)
 
 proc checkCompositionalInverse[T: BarrettModint or MontgomeryModint](
     M: typedesc[T], n: int) =
@@ -457,8 +457,8 @@ block arbitraryModulus:
   let enumerateF = @[
     OtherMint(2), OtherMint(3), OtherMint(5), OtherMint(7), OtherMint(11)]
   let enumerateG = @[OtherMint(13), OtherMint(17), OtherMint(19)]
-  let enumerated = powEnumerate(enumerateF, enumerateG, 12)
-  let naiveEnumerated = naivePowEnumerate(enumerateF, enumerateG, 12)
+  let enumerated = powerProjection(enumerateF, enumerateG, 12)
+  let naiveEnumerated = naivePowerProjection(enumerateF, enumerateG, 12)
   for i in 0..<enumerated.len:
     assert enumerated[i].val == naiveEnumerated[i].val
 

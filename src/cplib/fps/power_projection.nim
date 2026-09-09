@@ -1,17 +1,18 @@
-when not declared CPLIB_FPS_POW_ENUMERATE:
-    const CPLIB_FPS_POW_ENUMERATE* = 1
+when not declared CPLIB_FPS_POWER_PROJECTION:
+    const CPLIB_FPS_POWER_PROJECTION* = 1
 
     import algorithm
     import cplib/convolution/convolution
     import cplib/fps/formal_power_series
     import cplib/modint/modint
 
-    proc powEnumerate*[T: BarrettModint or MontgomeryModint](
+    proc powerProjection*[T: BarrettModint or MontgomeryModint](
             f, g: seq[T], m: int): seq[T] =
+        ## Power Projection（冪の係数列挙）。
         ## [x^n] f(x)^i g(x) (i = 0, 1, ..., m) を列挙する。
         ## ここで n = f.len - 1 とする。
-        doAssert f.len > 0, "pow列挙では f が空でない必要がある"
-        doAssert m >= 0, "pow列挙では列挙する最大指数が非負である必要がある"
+        doAssert f.len > 0, "Power Projectionでは f が空でない必要がある"
+        doAssert m >= 0, "Power Projectionでは列挙する最大指数が非負である必要がある"
 
         var n = f.len - 1
         var xStride = 1
@@ -74,13 +75,13 @@ when not declared CPLIB_FPS_POW_ENUMERATE:
         denominator.reverse
         prefix(numerator * denominator.inv(m + 1), m + 1)
 
-    proc powEnumerate*[T: BarrettModint or MontgomeryModint](
+    proc powerProjection*[T: BarrettModint or MontgomeryModint](
             f: seq[T], m: int): seq[T] =
-        f.powEnumerate(@[init(T, 1)], m)
+        f.powerProjection(@[init(T, 1)], m)
 
-    proc powEnumerate*[T: BarrettModint or MontgomeryModint](
+    proc powerProjection*[T: BarrettModint or MontgomeryModint](
             f, g: seq[T]): seq[T] =
-        f.powEnumerate(g, f.len - 1)
+        f.powerProjection(g, f.len - 1)
 
-    proc powEnumerate*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] =
-        f.powEnumerate(@[init(T, 1)], f.len - 1)
+    proc powerProjection*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] =
+        f.powerProjection(@[init(T, 1)], f.len - 1)
