@@ -202,22 +202,22 @@ data:
     \                if step < l+i:\n                    now = orderNext[now]\n  \
     \          doAssert product == expected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/functional_graph_with_lazy_op.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
   - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph_with_lazy_op.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph_with_op.nim
   isVerificationFile: true
   path: verify/AI/functional_graph_lazy_op_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-10 03:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/functional_graph_lazy_op_test.nim

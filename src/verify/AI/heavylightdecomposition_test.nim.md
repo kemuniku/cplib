@@ -45,7 +45,29 @@ data:
     \ 4, 5])\nvar auxVertices = aux.v\nauxVertices.sort()\nassert auxVertices == @[0,\
     \ 1, 3, 4, 5]\n\nlet waux = hld.initAuxiliaryWeightedTree(@[3, 5])\nassert waux.v\
     \ == @[0, 3, 5]\nvar weightedEdges = waux.graph.edges[0].mapIt((it[0].int, it[1]))\n\
-    weightedEdges.sort()\nassert weightedEdges == @[(1, 2), (2, 2)]\n"
+    weightedEdges.sort()\nassert weightedEdges == @[(1, 2), (2, 2)]\n\nproc checkPaths(adj:\
+    \ seq[seq[int]], root: int) =\n  let hld = adj.initHld(root)\n  for u in 0..<adj.len:\n\
+    \    var prev = newSeqWith(adj.len, -1)\n    var queue = @[u]\n    prev[u] = u\n\
+    \    var head = 0\n    while head < queue.len:\n      let p = queue[head]\n  \
+    \    inc head\n      for v in adj[p]:\n        if prev[v] == -1:\n          prev[v]\
+    \ = p\n          queue.add(v)\n    for v in 0..<adj.len:\n      var expected =\
+    \ @[v]\n      while expected[^1] != u:\n        expected.add(prev[expected[^1]])\n\
+    \      expected.reverse()\n      var actual: seq[int]\n      for (l, r, upward)\
+    \ in hld.pathWithDirection(u, v):\n        assert 0 <= l and l < r and r <= adj.len\n\
+    \        if upward:\n          for i in l..<r:\n            let idx = adj.len\
+    \ - 1 - i\n            actual.add(hld.toVtx(idx))\n            if i + 1 < r:\n\
+    \              assert hld.parentOf(hld.toVtx(idx)) == hld.toVtx(idx - 1)\n   \
+    \     else:\n          for i in l..<r:\n            actual.add(hld.toVtx(i))\n\
+    \            if i + 1 < r:\n              assert hld.parentOf(hld.toVtx(i + 1))\
+    \ == hld.toVtx(i)\n      assert actual == expected\n      var unordered: seq[int]\n\
+    \      for (l, r) in hld.path(u, v):\n        assert 0 <= l and l < r and r <=\
+    \ adj.len\n        for i in l..<r:\n          unordered.add(hld.toVtx(i))\n  \
+    \    assert unordered.sorted() == expected.sorted()\n\nimport random\nvar rng\
+    \ = initRand(20260910)\nfor n in [1, 2, 7, 30]:\n  for shape in 0..<4:\n    var\
+    \ adj = newSeq[seq[int]](n)\n    for v in 1..<n:\n      let p = case shape\n \
+    \       of 0: v - 1\n        of 1: 0\n        of 2: (v - 1) div 2\n        else:\
+    \ rng.rand(v - 1)\n      adj[p].add(v)\n      adj[v].add(p)\n    for root in 0..<n:\n\
+    \      checkPaths(adj, root)\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
@@ -54,7 +76,7 @@ data:
   isVerificationFile: true
   path: verify/AI/heavylightdecomposition_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-10 03:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/heavylightdecomposition_test.nim

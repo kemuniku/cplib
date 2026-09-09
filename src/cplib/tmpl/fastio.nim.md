@@ -28,6 +28,18 @@ data:
     path: verify/AI/sheep_test.nim
     title: verify/AI/sheep_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/fenwick_tree_avx2_test.nim
+    title: verify/collections/fenwick_tree_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/fenwick_tree_avx2_test.nim
+    title: verify/collections/fenwick_tree_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/fenwick_tree_test.nim
+    title: verify/collections/fenwick_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/fenwick_tree_test.nim
+    title: verify/collections/fenwick_tree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -732,6 +744,10 @@ data:
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/collections/fenwick_tree_test.nim
+  - verify/collections/fenwick_tree_test.nim
+  - verify/collections/fenwick_tree_avx2_test.nim
+  - verify/collections/fenwick_tree_avx2_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim

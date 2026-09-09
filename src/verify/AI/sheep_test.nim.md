@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   - icon: ':heavy_check_mark:'
@@ -75,20 +75,20 @@ data:
     \ sep = \"\\n\"))\ndoAssert compiles(print(\"a\", \"b\"))\ndoAssert compiles(print(*values,\
     \ sep = \"\\n\"))\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/tmpl/fastio.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []

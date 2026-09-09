@@ -43,15 +43,15 @@ data:
     \ + f.depth(i)\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: verify/graph/functional_graph_test_.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-10 03:48:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/functional_graph_test_.nim

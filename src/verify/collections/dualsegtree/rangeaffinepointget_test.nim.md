@@ -7,28 +7,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/dualsegtree.nim
     title: cplib/collections/dualsegtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -59,16 +59,16 @@ data:
     \        st.apply(l, r, (mint(b), mint(c)))\n    else:\n        let i = ii()\n\
     \        echo st[i]\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/collections/dualsegtree.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/collections/dualsegtree.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/collections/dualsegtree.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/collections/dualsegtree.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/collections/dualsegtree/rangeaffinepointget_test.nim
   requiredBy: []

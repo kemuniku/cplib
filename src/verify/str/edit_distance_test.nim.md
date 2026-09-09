@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
@@ -42,10 +42,10 @@ data:
 
     '
   dependsOn:
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/edit_distance.nim
   - cplib/str/edit_distance.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/str/edit_distance_test.nim
   requiredBy: []

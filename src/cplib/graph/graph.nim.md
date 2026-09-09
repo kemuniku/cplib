@@ -183,6 +183,12 @@ data:
     path: cplib/tree/tree_hash.nim
     title: cplib/tree/tree_hash.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/utils/itertools.nim
+    title: cplib/utils/itertools.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/itertools.nim
+    title: cplib/utils/itertools.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
   - icon: ':heavy_check_mark:'
@@ -454,6 +460,18 @@ data:
     path: verify/AI/heavylightdecomposition_test.nim
     title: verify/AI/heavylightdecomposition_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_enumeration_test.nim
+    title: verify/AI/itertools_enumeration_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_enumeration_test.nim
+    title: verify/AI/itertools_enumeration_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_test.nim
+    title: verify/AI/itertools_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_test.nim
+    title: verify/AI/itertools_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/kruskal_test.nim
     title: verify/AI/kruskal_test.nim
   - icon: ':heavy_check_mark:'
@@ -675,6 +693,42 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/rooted_tree_isomorphism_classification_test.nim
     title: verify/tree/rooted_tree_isomorphism_classification_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulate_test.nim
+    title: verify/utils/itertools/accumulate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulate_test.nim
+    title: verify/utils/itertools/accumulate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_2_test.nim
+    title: verify/utils/itertools/accumulated_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_2_test.nim
+    title: verify/utils/itertools/accumulated_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_test.nim
+    title: verify/utils/itertools/accumulated_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_test.nim
+    title: verify/utils/itertools/accumulated_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_2_test.nim
+    title: verify/utils/itertools/accumulatedr_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_2_test.nim
+    title: verify/utils/itertools/accumulatedr_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_test.nim
+    title: verify/utils/itertools/accumulatedr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_test.nim
+    title: verify/utils/itertools/accumulatedr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulater_test.nim
+    title: verify/utils/itertools/accumulater_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulater_test.nim
+    title: verify/utils/itertools/accumulater_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -867,6 +921,8 @@ data:
   - verify/graph/merge_tree_test_.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/math/stern_brocot_tree.nim
+  - cplib/utils/itertools.nim
+  - cplib/utils/itertools.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
   - cplib/str/compressed_trie.nim
@@ -930,6 +986,18 @@ data:
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulater_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_lca_yosupo_test.nim
@@ -990,8 +1058,12 @@ data:
   - verify/AI/namori_graph_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
+  - verify/AI/itertools_enumeration_test.nim
+  - verify/AI/itertools_enumeration_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/steiner_tree_test.nim

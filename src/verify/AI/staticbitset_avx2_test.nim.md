@@ -111,9 +111,9 @@ data:
     \ '0'\n    assert $bits == expected\nstatic:\n    doAssert not compiles(initBitSet(-1))\n\
     \    doAssert not compiles(initBitSet(64) & initBitSet(65))\n"
   dependsOn:
+  - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/staticbitset_avx2.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/staticbitset_avx2.nim
   isVerificationFile: true
   path: verify/AI/staticbitset_avx2_test.nim

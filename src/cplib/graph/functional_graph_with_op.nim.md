@@ -202,17 +202,17 @@ data:
     \           return used\n        return used-1\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
+  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-10 03:48:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim

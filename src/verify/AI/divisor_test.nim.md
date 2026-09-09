@@ -7,22 +7,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -72,18 +72,18 @@ data:
 
     '
   dependsOn:
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/divisor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/divisor.nim
-  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
+  - cplib/math/divisor.nim
   isVerificationFile: true
   path: verify/AI/divisor_test.nim
   requiredBy: []

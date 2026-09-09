@@ -9,6 +9,12 @@ data:
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/utils/itertools.nim
+    title: cplib/utils/itertools.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/itertools.nim
+    title: cplib/utils/itertools.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
   - icon: ':heavy_check_mark:'
@@ -22,6 +28,18 @@ data:
     title: verify/tree/prufer_abc328e_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_enumeration_test.nim
+    title: verify/AI/itertools_enumeration_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_enumeration_test.nim
+    title: verify/AI/itertools_enumeration_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_test.nim
+    title: verify/AI/itertools_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_test.nim
+    title: verify/AI/itertools_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/prufer_test.nim
     title: verify/AI/prufer_test.nim
   - icon: ':heavy_check_mark:'
@@ -33,6 +51,42 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/random_helper_test.nim
     title: verify/AI/random_helper_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulate_test.nim
+    title: verify/utils/itertools/accumulate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulate_test.nim
+    title: verify/utils/itertools/accumulate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_2_test.nim
+    title: verify/utils/itertools/accumulated_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_2_test.nim
+    title: verify/utils/itertools/accumulated_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_test.nim
+    title: verify/utils/itertools/accumulated_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulated_test.nim
+    title: verify/utils/itertools/accumulated_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_2_test.nim
+    title: verify/utils/itertools/accumulatedr_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_2_test.nim
+    title: verify/utils/itertools/accumulatedr_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_test.nim
+    title: verify/utils/itertools/accumulatedr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulatedr_test.nim
+    title: verify/utils/itertools/accumulatedr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulater_test.nim
+    title: verify/utils/itertools/accumulater_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/itertools/accumulater_test.nim
+    title: verify/utils/itertools/accumulater_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -64,13 +118,31 @@ data:
   requiredBy:
   - verify/tree/prufer_abc328e_test_.nim
   - verify/tree/prufer_abc328e_test_.nim
+  - cplib/utils/itertools.nim
+  - cplib/utils/itertools.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
   timestamp: '2026-07-07 06:48:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulater_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_enumeration_test.nim
+  - verify/AI/itertools_enumeration_test.nim
   - verify/AI/prufer_test.nim
   - verify/AI/prufer_test.nim
 documentation_of: cplib/tree/prufer.nim

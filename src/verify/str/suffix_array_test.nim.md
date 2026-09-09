@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []

@@ -2,6 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/prufer.nim
+    title: cplib/tree/prufer.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/prufer.nim
+    title: cplib/tree/prufer.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
   - icon: ':heavy_check_mark:'
@@ -29,11 +41,15 @@ data:
     \nfor i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[r]-a[l]"
   dependsOn:
   - cplib/utils/itertools.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
+  - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/utils/itertools/accumulate_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-09 16:56:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/itertools/accumulate_test.nim

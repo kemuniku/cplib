@@ -147,42 +147,42 @@ data:
     ]\nassertClose(tspPathCostFrom(dist, 0), 3.5)\nassertClose(tspPathCostFromTo(dist,\
     \ 0, 2), 3.5)\nassertClose(tspPathAnyStart(dist), 3.5)\n"
   dependsOn:
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/tsp.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/bellmanford.nim
+  - cplib/graph/dijkstra.nim
   - cplib/tree/diameter.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/tsp.nim
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/dijkstra.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/utils/constants.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/bititers.nim
   - cplib/tree/diameter.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/kruskal.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/graph_weight_type_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-10 03:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/graph_weight_type_test.nim

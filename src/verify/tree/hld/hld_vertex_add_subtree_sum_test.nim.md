@@ -48,15 +48,15 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-10 03:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
