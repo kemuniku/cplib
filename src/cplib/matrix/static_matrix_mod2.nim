@@ -136,6 +136,8 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
     proc `**`*[N: static int](a: StaticMatrixMod2[N, N], exponent: int): StaticMatrixMod2[N, N] = a.pow(exponent)
 
     proc rank*[H: static int, W: static int](a: StaticMatrixMod2[H, W]): int =
+        ## 階数を求める。空行列は作業領域を確保せずO(1)で返す。
+        when H == 0 or W == 0: return 0
         var storage: ref StaticMatrixMod2[H, W]
         new storage
         storage[] = a
@@ -169,11 +171,23 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
         some(right)
 
     import cplib/matrix/field_matrix_ops
+    import cplib/matrix/bit_matrix_ops
     export LinearSystemSolution
 
-    proc solveLinearSystem*[H: static int, W: static int](a: StaticMatrixMod2[H,W], b: openArray[bool]): Option[LinearSystemSolution[bool]] =
-        ## GF(2)上でAx=bの特殊解と核の基底を返す。解なしはnone。
-        fieldSolve(matrixRows(a, a.h, a.w), a.w, b)
+    proc solveLinearSystem*[H: static int, W: static int](a: StaticMatrixMod2[H,W], b: openArray[bool], height: int = H, width: int = W): Option[LinearSystemSolution[bool]] =
+        ## 左上h行w列でAx=bをビット演算で解く。O(h*min(h,w)*(w div 64+1)+w^2)。
+        ## height/widthの省略時はH/W。元の行列は変更せず、解なしはnoneを返す。
+        assert height in 0..H and width in 0..W and b.len == height
+        var rows = initBitLinearSystem(height, width)
+        let stride = (width shr 6) + 1
+        let fullWords = width shr 6
+        let tailBits = width and 63
+        for i in 0..<height:
+            for k in 0..<fullWords: rows[i * stride + k] = a.rows[i][k]
+            if tailBits > 0:
+                rows[i * stride + fullWords] = a.rows[i][fullWords] and ((1'u64 shl tailBits) - 1)
+            if b[i]: rows[i * stride + fullWords] = rows[i * stride + fullWords] or (1'u64 shl tailBits)
+        solveBitLinearSystem(rows, height, width)
 
     proc hafnian*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): bool =
         ## GF(2)上の対称な偶数次行列のhafnianを求める。O(n^3)。

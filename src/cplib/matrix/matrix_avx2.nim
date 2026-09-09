@@ -787,40 +787,105 @@ static void cplib_matrix_write_row(const uint32_t* values,size_t count,uint32_t 
     import options
     import cplib/matrix/field_matrix_ops
     export LinearSystemSolution
+    include cplib/matrix/matrix_avx2_field_impl
+
+    type FieldReduction = object
+        values: seq[uint32]
+        pivots: seq[cint]
+        width, rank: int
+        determinant: uint32
+
+    proc fieldPointer[T](values: openArray[T]): ptr uint32 =
+        ## 空配列を含むmodint内部値の連続領域を参照する。
+        if values.len == 0: nil
+        else: cast[ptr uint32](unsafeAddr values[0])
+
+    proc fieldMatrixPointer[T](a: Matrix[T]): ptr uint32 =
+        ## 空行列を含む行列の内部領域を読み取る。
+        if a.storage.isNil: nil
+        else: fieldPointer(a.storage.values)
+
+    proc fieldPivotPointer(pivots: openArray[cint]): ptr cint =
+        ## 空配列を含むピボット列の領域を参照する。
+        if pivots.len == 0: nil
+        else: cast[ptr cint](unsafeAddr pivots[0])
+
+    proc reduceFieldMatrix[T](a: Matrix[T], extra: int, reduced: bool,
+            rhs: ptr uint32 = nil, identity: bool = false): FieldReduction =
+        ## 入力を保持したまま、拡大行列をAVX2で前進消去・掃き出しする。
+        checkModulus(a)
+        doAssert extra >= 0 and extra <= high(cint).int - a.w, "matrix size overflow"
+        result.width = a.w + extra
+        result.values = newSeq[uint32](matrixSize(a.h, result.width))
+        result.pivots = newSeq[cint](min(a.h, a.w))
+        let modulus = matrixModulus[T]()
+        fieldPrepareKernel(fieldMatrixPointer(a), rhs, fieldPointer(result.values),
+            a.h, a.w, extra, modulus, T is MontgomeryModint, identity)
+        result.rank = fieldEliminateKernel(fieldPointer(result.values), a.h,
+            result.width, a.w, fieldPivotPointer(result.pivots), result.determinant, modulus, reduced)
 
     proc rank*[T](a: Matrix[T]): int =
-        ## 階数を求める。O(h*w*min(h,w))。
-        fieldRank(matrixRows(a, a.h, a.w), a.w)
+        ## AVX2の前進消去で階数を求める。O(h*w*min(h,w))。
+        reduceFieldMatrix(a, 0, false).rank
 
     proc determinant*[T](a: Matrix[T]): T =
-        ## 行列式を求める。空行列は1。O(n^3)。
+        ## AVX2の前進消去で行列式を求める。空行列は1。O(n^3)。
         assert a.h == a.w
-        fieldDeterminant(matrixRows(a, a.h, a.h))
+        let reduced = reduceFieldMatrix(a, 0, false)
+        if reduced.rank != a.h: return T.init(0)
+        T.init(fieldCanonicalKernel(reduced.determinant, matrixModulus[T]()).int)
 
     proc hafnian*[T](a: Matrix[T]): T =
-        ## 対称な偶数次行列のhafnianを求める。O(n^2*2^(n/2))。
-        assert a.h == a.w
-        fieldHafnian(matrixRows(a, a.h, a.h))
+        ## 対称な偶数次行列のhafnianをAVX2の多項式積和で求める。O(n^2*2^(n/2))。
+        checkModulus(a)
+        assert a.h == a.w and a.h mod 2 == 0
+        for i in 0..<a.h:
+            for j in 0..<i: assert a[i,j].val == a[j,i].val, "matrix must be symmetric"
+        T.init(fieldHafnianKernel(fieldMatrixPointer(a), a.h,
+            matrixModulus[T](), T is MontgomeryModint).int)
 
     proc solveLinearSystem*[T](a: Matrix[T], b: openArray[T]): Option[LinearSystemSolution[T]] =
-        ## Ax=bの特殊解と核の基底を返す。解なしはnone。消去と後退代入を行う。
-        fieldSolve(matrixRows(a, a.h, a.w), a.w, b)
+        ## AVX2でAx=bを掃き出し、特殊解と核の基底を返す。O(h*w*min(h,w)+w^2)。
+        assert b.len == a.h
+        var reduced = reduceFieldMatrix(a, 1, true, fieldPointer(b))
+        for i in reduced.rank..<a.h:
+            if reduced.values[i * reduced.width + a.w] != 0:
+                return none(LinearSystemSolution[T])
+        fieldRestoreKernel(fieldPointer(reduced.values), reduced.values.len,
+            matrixModulus[T](), T is MontgomeryModint)
+        var solution: LinearSystemSolution[T]
+        solution.particular = newSeq[T](a.w)
+        var isPivot = newSeq[bool](a.w)
+        for i in 0..<reduced.rank:
+            let col = reduced.pivots[i].int
+            isPivot[col] = true
+            solution.particular[col] = cast[T](reduced.values[i * reduced.width + a.w])
+        let one = T.init(1)
+        for free in 0..<a.w:
+            if isPivot[free]: continue
+            var vector = newSeq[T](a.w)
+            vector[free] = one
+            for i in 0..<reduced.rank:
+                vector[reduced.pivots[i].int] = -cast[T](reduced.values[i * reduced.width + free])
+            solution.basis.add(vector)
+        some(solution)
 
     proc inverse*[T](a: Matrix[T]): Option[Matrix[T]] =
-        ## 逆行列を返す。特異行列はnone。O(n^3)。
+        ## AVX2の掃き出しで逆行列を返す。特異行列はnone。O(n^3)。
         assert a.h == a.w
-        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), false)
-        if rows.isNone: return none(Matrix[T])
-        var answer = initMatrix(a.h, a.h, T(0))
-        for i in 0..<a.h:
-            for j in 0..<a.h: answer[i, j] = rows.get[i][j]
+        let reduced = reduceFieldMatrix(a, a.h, true, identity = true)
+        if reduced.rank != a.h: return none(Matrix[T])
+        var answer = initMatrix[T](a.h, a.h)
+        fieldInverseAdjugateKernel(fieldPointer(reduced.values), fieldMatrixPointer(answer),
+            a.h, reduced.rank, fieldPivotPointer(reduced.pivots), reduced.determinant,
+            matrixModulus[T](), T is MontgomeryModint, false)
         some(answer)
 
     proc adjugate*[T](a: Matrix[T]): Matrix[T] =
-        ## 特異行列を含む余因子行列を返す。O(n^3)。
+        ## AVX2で特異行列を含む余因子行列を返す。O(n^3)。
         assert a.h == a.w
-        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), true)
-        var answer = initMatrix(a.h, a.h, T(0))
-        for i in 0..<a.h:
-            for j in 0..<a.h: answer[i, j] = rows.get[i][j]
-        answer
+        let reduced = reduceFieldMatrix(a, a.h, true, identity = true)
+        result = initMatrix[T](a.h, a.h)
+        fieldInverseAdjugateKernel(fieldPointer(reduced.values), fieldMatrixPointer(result),
+            a.h, reduced.rank, fieldPivotPointer(reduced.pivots), reduced.determinant,
+            matrixModulus[T](), T is MontgomeryModint, true)

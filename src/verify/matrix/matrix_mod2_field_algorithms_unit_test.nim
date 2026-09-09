@@ -98,4 +98,35 @@ check[6](rng)
 let empty = initMatrixMod2(0,5).solveLinearSystem(newSeq[bool]()).get
 doAssert empty.particular.len == 5 and empty.basis.len == 5
 doAssert initMatrixMod2(2,0).solveLinearSystem(@[false,true]).isNone
+import cplib/matrix/field_matrix_ops
+for (h, w) in [(0,0), (0,65), (65,0), (1,64), (64,1), (63,65), (65,63), (64,128), (128,64), (67,129)]:
+    for trial in 0..<8:
+        var a = initMatrixMod2(h,w)
+        var padded: StaticMatrixMod2[131,133]
+        for i in 0..<131:
+            for j in 0..<133: padded[i,j] = true
+        var rows = newSeqWith(h,newSeq[bool](w))
+        var b = newSeq[bool](h)
+        for i in 0..<h:
+            b[i] = rng.rand(1) == 1
+            for j in 0..<w:
+                let value = trial != 0 and rng.rand(1) == 1
+                a[i,j] = value
+                padded[i,j] = value
+                rows[i][j] = value
+        let before = a
+        let savedPadded = padded
+        let expected = fieldSolve(rows,w,b)
+        doAssert a.solveLinearSystem(b) == expected
+        doAssert padded.solveLinearSystem(b,h,w) == expected
+        doAssert a == before and padded == savedPadded
+
+block:
+    var a = initMatrixMod2(2,65)
+    a[0,64] = true
+    a[1,64] = true
+    doAssert a.solveLinearSystem(@[false,true]).isNone
+    let solution = a.solveLinearSystem(@[true,true]).get
+    doAssert solution.particular[64] and solution.basis.len == 64
+
 echo "Hello World"

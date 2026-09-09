@@ -30,8 +30,8 @@ when not declared CPLIB_MATRIX_FIELD_MATRIX_OPS:
         ## 左上のheight行width列を独立した作業領域へコピーする。O(height*width)。
         mixin h, w, `[]`
         assert height in 0..a.h and width in 0..a.w
-        type T = typeof(a[0, 0])
-        var rows = newSeqWith(height, newSeq[T](width))
+        # Nim 1.6でもstatic引数の異なる型を併用できるよう、要素型を直接指定する。
+        var rows = newSeqWith(height, newSeq[typeof(a[0, 0])](width))
         for i in 0..<height:
             for j in 0..<width: rows[i][j] = a[i, j]
         rows

@@ -123,6 +123,7 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     proc inverse*[T](a: Matrix[T]): Option[Matrix[T]] =
         ## 逆行列を返す。特異行列はnone。O(n^3)。
+        bind initMatrix
         assert a.h == a.w
         let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), false)
         if rows.isNone: return none(Matrix[T])
@@ -133,6 +134,7 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     proc adjugate*[T](a: Matrix[T]): Matrix[T] =
         ## 特異行列を含む余因子行列を返す。O(n^3)。
+        bind initMatrix
         assert a.h == a.w
         let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), true)
         var answer = initMatrix(a.h, a.h, T(0))

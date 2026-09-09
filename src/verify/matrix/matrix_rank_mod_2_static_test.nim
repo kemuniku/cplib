@@ -1,7 +1,7 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/matrix_rank_mod_2
 {.checks: off.}
 import cplib/matrix/static_matrix_mod2
-import std/[strutils, sequtils]
+import strutils, sequtils
 
 const
     MaxCellCount = 1 shl 24
@@ -33,4 +33,7 @@ proc selectHeight[H: static int](n, m: int) =
             raise newException(ValueError, "matrix is too large")
 
 let nm = stdin.readLine.split.map(parseInt)
+if nm[0] == 0 or nm[1] == 0:
+    echo 0
+    quit(0)
 selectHeight[1](nm[0], nm[1])

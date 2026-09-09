@@ -43,3 +43,7 @@ wide[64, 1] = true
 assert wide.rank == 65
 assert wide.inverse.isSome
 assert wide * wide.inverse.get == identityStaticMatrixMod2[65]()
+
+assert initStaticMatrixMod2[0, 0]().rank == 0
+assert initStaticMatrixMod2[0, 1 shl 24]().rank == 0
+assert initStaticMatrixMod2[1000, 0]().rank == 0
