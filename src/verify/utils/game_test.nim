@@ -39,4 +39,76 @@ block:
         caught = true
     doAssert caught
 
+block:
+    var calls = 0
+    proc counted(state: int): seq[int] =
+        inc calls
+        subtract(state)
+
+    let solve = init_can_win(counted)
+    for state in 0..20:
+        doAssert solve(state) == (state mod 3 != 0)
+    doAssert calls == 21
+    for state in 0..20:
+        discard solve(state)
+    doAssert calls == 21
+
+    let misere = init_can_win(counted, win_when_no_moves = true)
+    for state in 0..20:
+        doAssert misere(state) == (state mod 3 != 1)
+    doAssert calls == 42
+
+block:
+    var calls = 0
+    proc counted(state: int, is_first: bool): seq[int] =
+        inc calls
+        subtract_by_turn(state, is_first)
+
+    let solve = init_can_win(counted)
+    for state in 0..20:
+        doAssert solve(state) == can_win(state, subtract_by_turn)
+    let previous_calls = calls
+    for state in 0..20:
+        discard solve(state)
+    doAssert calls == previous_calls
+    let misere = init_can_win(counted, win_when_no_moves = true)
+    for state in 0..20:
+        doAssert misere(state) == can_win(state, subtract_by_turn, true)
+
+block:
+    let solve = init_can_win(erase_suffix)
+    doAssert solve("abc")
+    doAssert not solve("abcd")
+
+block:
+    var calls = 0
+    proc failing(state: int): seq[int] =
+        inc calls
+        raise newException(ValueError, "test")
+    proc failing_by_turn(state: int, is_first: bool): seq[int] =
+        failing(state)
+
+    let solve = init_can_win(failing)
+    let solve_by_turn = init_can_win(failing_by_turn)
+    for attempt in 0..1:
+        for f in [solve, solve_by_turn]:
+            var caught = false
+            try:
+                discard f(0)
+            except ValueError as e:
+                caught = true
+                doAssert e.msg == "test"
+            doAssert caught
+    doAssert calls == 4
+
+block:
+    let solve = init_can_win(cyclic)
+    for attempt in 0..1:
+        var caught = false
+        try:
+            discard solve(0)
+        except ValueError:
+            caught = true
+        doAssert caught
+
 echo "Hello World"
