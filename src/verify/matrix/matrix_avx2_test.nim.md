@@ -62,18 +62,18 @@ data:
     \    stderr.writeLine(\"matrix_product_ms=\", (getMonoTime() - start).inNanoseconds.float\
     \ / 1e6)\nfor i in 0 ..< n:\n    c[i].writeRow()\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/tmpl/fastio.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_test.nim
   requiredBy: []

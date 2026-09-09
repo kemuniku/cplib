@@ -202,11 +202,11 @@ data:
     \           return used\n        return used-1\n"
   dependsOn:
   - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
   isVerificationFile: false

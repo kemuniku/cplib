@@ -129,6 +129,12 @@ data:
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/wildcard_matching.nim
+    title: cplib/str/wildcard_matching.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/wildcard_matching.nim
+    title: cplib/str/wildcard_matching.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
   - icon: ':heavy_check_mark:'
@@ -315,6 +321,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/sheep_test.nim
     title: verify/AI/sheep_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/wildcard_matching_test.nim
+    title: verify/AI/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/wildcard_matching_test.nim
+    title: verify/AI/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
     title: verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
@@ -706,6 +718,8 @@ data:
   - cplib/fps/bostan_mori.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/polynomial_interpolation.nim
+  - cplib/str/wildcard_matching.nim
+  - cplib/str/wildcard_matching.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
@@ -797,6 +811,8 @@ data:
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/AI/wildcard_matching_test.nim
+  - verify/AI/wildcard_matching_test.nim
   - verify/AI/combination_test.nim
   - verify/AI/combination_test.nim
   - verify/AI/berlekamp_massey_test.nim

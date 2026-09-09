@@ -106,12 +106,12 @@ data:
   dependsOn:
   - cplib/str/static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/repeated_static_string.nim
   requiredBy: []

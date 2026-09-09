@@ -502,6 +502,9 @@ data:
       path: cplib/str/suffix_array.nim
       title: cplib/str/suffix_array.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/wildcard_matching.nim
+      title: cplib/str/wildcard_matching.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/zalgorithm.nim
       title: cplib/str/zalgorithm.nim
   - name: cplib/tmpl
@@ -1522,6 +1525,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/weightedunionfind_test.nim
       title: verify/AI/weightedunionfind_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/wildcard_matching_test.nim
+      title: verify/AI/wildcard_matching_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/wordsizetree_avx2_test.nim
       title: verify/AI/wordsizetree_avx2_test.nim

@@ -123,6 +123,12 @@ data:
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/wildcard_matching.nim
+    title: cplib/str/wildcard_matching.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/wildcard_matching.nim
+    title: cplib/str/wildcard_matching.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
   - icon: ':heavy_check_mark:'
@@ -213,6 +219,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/random_helper_test.nim
     title: verify/AI/random_helper_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/wildcard_matching_test.nim
+    title: verify/AI/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/wildcard_matching_test.nim
+    title: verify/AI/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
@@ -488,6 +500,8 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
+  - cplib/str/wildcard_matching.nim
+  - cplib/str/wildcard_matching.nim
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -559,6 +573,8 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/AI/wildcard_matching_test.nim
+  - verify/AI/wildcard_matching_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/berlekamp_massey_test.nim

@@ -49,8 +49,8 @@ data:
     '
   dependsOn:
   - cplib/geometry/argsort.nim
-  - cplib/math/int128.nim
   - cplib/geometry/argsort.nim
+  - cplib/math/int128.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/argsort_test.nim

@@ -82,14 +82,14 @@ data:
     \ @[2u32], 1, 1, 1) == @[4u32]\ndoAssert fast.matrixProduct(@[@[2u32]], @[@[2u32]])\
     \ == @[@[4u32]]\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_compatibility_test.nim
   requiredBy: []

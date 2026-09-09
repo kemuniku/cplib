@@ -232,9 +232,9 @@ data:
     \ =\n        assert not base.reversible\n        return base.suffix_upperbound(S)\
     \ - base.suffix_lowerbound(S)\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim

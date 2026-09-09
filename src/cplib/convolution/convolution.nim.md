@@ -134,6 +134,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/wildcard_matching.nim
+    title: cplib/str/wildcard_matching.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/wildcard_matching.nim
+    title: cplib/str/wildcard_matching.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/berlekamp_massey_test.nim
@@ -159,6 +165,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/wildcard_matching_test.nim
+    title: verify/AI/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/wildcard_matching_test.nim
+    title: verify/AI/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
@@ -882,22 +894,22 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inner_math.nim
+  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
@@ -929,6 +941,8 @@ data:
   - cplib/fps/bostan_mori.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/polynomial_interpolation.nim
+  - cplib/str/wildcard_matching.nim
+  - cplib/str/wildcard_matching.nim
   timestamp: '2026-09-08 11:13:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -992,6 +1006,8 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/AI/wildcard_matching_test.nim
+  - verify/AI/wildcard_matching_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/convolution_test.nim

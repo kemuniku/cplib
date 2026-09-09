@@ -41,9 +41,9 @@ data:
     \    else:\n        let v = ii()\n        let p = ii()\n        answers.add($tree.subtreeProd(v,\
     \ p))\necho answers.join(\"\\n\")\n"
   dependsOn:
-  - cplib/tree/link_cut_tree.nim
-  - cplib/tree/link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/tree/link_cut_tree.nim
+  - cplib/tree/link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim

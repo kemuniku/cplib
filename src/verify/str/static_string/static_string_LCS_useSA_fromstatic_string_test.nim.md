@@ -48,10 +48,10 @@ data:
     echo a,\" \",b,\" \",c,\" \",d"
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
