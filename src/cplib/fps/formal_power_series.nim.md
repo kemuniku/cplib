@@ -110,6 +110,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/berlekamp_massey_test.nim
@@ -130,6 +136,12 @@ data:
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/many_factorials_test.nim
+    title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/many_factorials_test.nim
+    title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -220,11 +232,29 @@ data:
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_online_test.nim
+    title: verify/math/many_factorials_online_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_online_test.nim
+    title: verify/math/many_factorials_online_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_test.nim
+    title: verify/math/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_test.nim
+    title: verify/math/many_factorials_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -390,27 +420,29 @@ data:
     \ f.divmod(g).r\n\n    proc eval*[T: BarrettModint or MontgomeryModint](f: seq[T],\
     \ x: T): T =\n        for i in countdown(f.high, 0): result = result * x + f[i]\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/fps/formal_power_series.nim
   requiredBy:
+  - cplib/math/many_factorials.nim
+  - cplib/math/many_factorials.nim
   - cplib/fps/composition.nim
   - cplib/fps/composition.nim
   - cplib/fps/taylor_shift.nim
@@ -432,6 +464,10 @@ data:
   timestamp: '2026-09-09 13:22:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_test.nim
+  - verify/math/many_factorials_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/polynomial_interpolation_test.nim
@@ -460,6 +496,8 @@ data:
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
@@ -468,6 +506,8 @@ data:
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
+  - verify/AI/many_factorials_test.nim
+  - verify/AI/many_factorials_test.nim
   - verify/AI/bmbm_test.nim
   - verify/AI/bmbm_test.nim
 documentation_of: cplib/fps/formal_power_series.nim

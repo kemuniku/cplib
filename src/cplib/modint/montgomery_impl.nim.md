@@ -93,6 +93,12 @@ data:
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/fps/shift_of_sampling_points.nim
+    title: cplib/fps/shift_of_sampling_points.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/shift_of_sampling_points.nim
+    title: cplib/fps/shift_of_sampling_points.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
   - icon: ':heavy_check_mark:'
@@ -110,6 +116,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
@@ -280,6 +292,12 @@ data:
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/many_factorials_test.nim
+    title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/many_factorials_test.nim
+    title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/modint_test.nim
     title: verify/AI/modint_test.nim
   - icon: ':heavy_check_mark:'
@@ -303,6 +321,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/sheep_test.nim
     title: verify/AI/sheep_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/shift_of_sampling_points_test.nim
+    title: verify/AI/shift_of_sampling_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/shift_of_sampling_points_test.nim
+    title: verify/AI/shift_of_sampling_points_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
@@ -526,6 +550,12 @@ data:
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
@@ -543,6 +573,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_online_test.nim
+    title: verify/math/many_factorials_online_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_online_test.nim
+    title: verify/math/many_factorials_online_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_test.nim
+    title: verify/math/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_test.nim
+    title: verify/math/many_factorials_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_compatibility_test.nim
     title: verify/matrix/matrix_avx2_compatibility_test.nim
@@ -716,6 +758,8 @@ data:
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_static_test_.nim
+  - cplib/math/many_factorials.nim
+  - cplib/math/many_factorials.nim
   - cplib/math/bigint.nim
   - cplib/math/bigint.nim
   - cplib/convolution/convolution_old.nim
@@ -750,6 +794,8 @@ data:
   - cplib/fps/bmbm.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/shift_of_sampling_points.nim
   - cplib/fps/bostan_mori.nim
   - cplib/fps/bostan_mori.nim
   - cplib/fps/polynomial_interpolation.nim
@@ -763,6 +809,10 @@ data:
   timestamp: '2026-09-03 22:02:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_test.nim
+  - verify/math/many_factorials_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/division_of_big_integers_test.nim
@@ -827,6 +877,8 @@ data:
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
   - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
@@ -851,6 +903,8 @@ data:
   - verify/AI/combination_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
+  - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/convolution_old_test.nim
@@ -859,6 +913,8 @@ data:
   - verify/AI/convolution_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
+  - verify/AI/many_factorials_test.nim
+  - verify/AI/many_factorials_test.nim
   - verify/AI/modint_test.nim
   - verify/AI/modint_test.nim
   - verify/AI/ntt_test.nim

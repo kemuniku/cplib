@@ -40,12 +40,12 @@ data:
     \ result)\n\nvar N,Q = ii()\nvar a = (@[0]&newseqwith(N,ii()))\na.accumulate(a+b)\n\
     \nfor i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[r]-a[l]"
   dependsOn:
-  - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
   - cplib/graph/graph.nim
-  - cplib/utils/itertools.nim
+  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
+  - cplib/utils/itertools.nim
   isVerificationFile: true
   path: verify/utils/itertools/accumulate_test.nim
   requiredBy: []

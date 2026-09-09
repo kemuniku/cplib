@@ -172,6 +172,12 @@ data:
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
@@ -207,28 +213,28 @@ data:
     \ partial[i] = partial[i * 2] * tree.nodes[i * 2 + 1] +\n                partial[i\
     \ * 2 + 1] * tree.nodes[i * 2]\n        partial[1].prefix(xs.len)\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/product_tree.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/fps/product_tree.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/fps/polynomial_interpolation.nim
   requiredBy:
@@ -265,6 +271,8 @@ data:
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim

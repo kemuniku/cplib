@@ -37,8 +37,8 @@ data:
     \ = hashes.sorted().deduplicate(true)\necho values.len\necho hashes.mapIt(values.lowerBound(it)).join(\"\
     \ \")\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
   isVerificationFile: true

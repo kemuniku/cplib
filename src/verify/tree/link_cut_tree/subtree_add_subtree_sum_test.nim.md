@@ -45,9 +45,9 @@ data:
     \ p).sum)\necho answers.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/lazy_subtree_link_cut_tree.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
-  - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
   requiredBy: []

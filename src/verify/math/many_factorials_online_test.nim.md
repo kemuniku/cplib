@@ -1,0 +1,149 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution.nim
+    title: cplib/convolution/convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/convolution.nim
+    title: cplib/convolution/convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/formal_power_series.nim
+    title: cplib/fps/formal_power_series.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/formal_power_series.nim
+    title: cplib/fps/formal_power_series.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/product_tree.nim
+    title: cplib/fps/product_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/product_tree.nim
+    title: cplib/fps/product_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/shift_of_sampling_points.nim
+    title: cplib/fps/shift_of_sampling_points.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/shift_of_sampling_points.nim
+    title: cplib/fps/shift_of_sampling_points.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/taylor_shift.nim
+    title: cplib/fps/taylor_shift.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/taylor_shift.nim
+    title: cplib/fps/taylor_shift.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inner_math.nim
+    title: cplib/math/inner_math.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inv_gcd.nim
+    title: cplib/math/inv_gcd.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/inv_gcd.nim
+    title: cplib/math/inv_gcd.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isprime.nim
+    title: cplib/math/isprime.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isprime.nim
+    title: cplib/math/isprime.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/powmod.nim
+    title: cplib/math/powmod.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: nim
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    PROBLEM: https://judge.yosupo.jp/problem/many_factorials
+    links:
+    - https://judge.yosupo.jp/problem/many_factorials
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
+  code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/many_factorials\n\
+    \nimport cplib/math/many_factorials\nimport cplib/modint/modint\n\nproc scanf(formatstr:\
+    \ cstring) {.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
+    %lld\\n\", addr result)\n\ntype Mint = modint998244353_barrett\n\nlet q = ii()\n\
+    let table = initLargeFactorial[Mint]()\nfor i in 0..<q:\n    echo table.fact(ii())\n"
+  dependsOn:
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inner_math.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/product_tree.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/math/many_factorials.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/many_factorials.nim
+  isVerificationFile: true
+  path: verify/math/many_factorials_online_test.nim
+  requiredBy: []
+  timestamp: '2026-09-10 05:48:00+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/math/many_factorials_online_test.nim
+layout: document
+redirect_from:
+- /verify/verify/math/many_factorials_online_test.nim
+- /verify/verify/math/many_factorials_online_test.nim.html
+title: verify/math/many_factorials_online_test.nim
+---

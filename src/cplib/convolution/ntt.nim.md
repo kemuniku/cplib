@@ -208,6 +208,12 @@ data:
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
@@ -318,14 +324,14 @@ data:
     \ b)]\n            width = (width shl 2)\n        var ninv = T(n).inv\n      \
     \  for i in 0..<n: f[i] *= ninv\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/convolution/ntt.nim
   requiredBy:
@@ -380,6 +386,8 @@ data:
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
   - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim

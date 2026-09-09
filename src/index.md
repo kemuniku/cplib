@@ -232,6 +232,9 @@ data:
       path: cplib/fps/product_tree.nim
       title: cplib/fps/product_tree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/fps/shift_of_sampling_points.nim
+      title: cplib/fps/shift_of_sampling_points.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/sparse_formal_power_series.nim
       title: cplib/fps/sparse_formal_power_series.nim
     - icon: ':heavy_check_mark:'
@@ -387,6 +390,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/many_factorials.nim
+      title: cplib/math/many_factorials.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/mex_naive.nim
       title: cplib/math/mex_naive.nim
@@ -1307,6 +1313,9 @@ data:
       path: verify/AI/manacher_test.nim
       title: verify/AI/manacher_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/many_factorials_test.nim
+      title: verify/AI/many_factorials_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/matops_test.nim
       title: verify/AI/matops_test.nim
     - icon: ':heavy_check_mark:'
@@ -1465,6 +1474,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/sheep_test.nim
       title: verify/AI/sheep_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/shift_of_sampling_points_test.nim
+      title: verify/AI/shift_of_sampling_points_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/slopetrick_test.nim
       title: verify/AI/slopetrick_test.nim
@@ -1835,6 +1847,9 @@ data:
       path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
       title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+      title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/fps/sqrt_of_formal_power_series_test.nim
       title: verify/fps/sqrt_of_formal_power_series_test.nim
   - name: verify/geometry/CGL_1
@@ -2019,6 +2034,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/isprime_yukicoder_test.nim
       title: verify/math/isprime_yukicoder_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/many_factorials_online_test.nim
+      title: verify/math/many_factorials_online_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/many_factorials_test.nim
+      title: verify/math/many_factorials_test.nim
   - name: verify/matrix
     pages:
     - icon: ':heavy_check_mark:'

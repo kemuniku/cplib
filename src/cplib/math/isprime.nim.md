@@ -87,6 +87,12 @@ data:
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/fps/shift_of_sampling_points.nim
+    title: cplib/fps/shift_of_sampling_points.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/shift_of_sampling_points.nim
+    title: cplib/fps/shift_of_sampling_points.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
   - icon: ':heavy_check_mark:'
@@ -110,6 +116,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/many_factorials.nim
+    title: cplib/math/many_factorials.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
@@ -196,6 +208,12 @@ data:
     path: verify/AI/isprime_test.nim
     title: verify/AI/isprime_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/many_factorials_test.nim
+    title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/many_factorials_test.nim
+    title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/primefactor_test.nim
     title: verify/AI/primefactor_test.nim
   - icon: ':heavy_check_mark:'
@@ -213,6 +231,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/random_helper_test.nim
     title: verify/AI/random_helper_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/shift_of_sampling_points_test.nim
+    title: verify/AI/shift_of_sampling_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/shift_of_sampling_points_test.nim
+    title: verify/AI/shift_of_sampling_points_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
@@ -382,6 +406,12 @@ data:
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+    title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
@@ -423,6 +453,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_online_test.nim
+    title: verify/math/many_factorials_online_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_online_test.nim
+    title: verify/math/many_factorials_online_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_test.nim
+    title: verify/math/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/many_factorials_test.nim
+    title: verify/math/many_factorials_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -447,8 +489,8 @@ data:
     \             if t == N1:\n                        break test\n              \
     \  return false\n        return true\n"
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   isVerificationFile: false
@@ -464,6 +506,8 @@ data:
   - verify/math/divisor_many_atcoder_test_.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
+  - cplib/math/many_factorials.nim
+  - cplib/math/many_factorials.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
   - cplib/math/bigint.nim
@@ -494,6 +538,8 @@ data:
   - cplib/fps/bmbm.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/shift_of_sampling_points.nim
   - cplib/fps/bostan_mori.nim
   - cplib/fps/bostan_mori.nim
   - cplib/fps/polynomial_interpolation.nim
@@ -505,12 +551,16 @@ data:
   timestamp: '2024-11-07 17:54:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_online_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
+  - verify/math/many_factorials_test.nim
+  - verify/math/many_factorials_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/bigint_unit_test.nim
@@ -567,6 +617,8 @@ data:
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
   - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
@@ -581,12 +633,16 @@ data:
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/primefactor_test.nim
   - verify/AI/primefactor_test.nim
+  - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/divisor_test.nim
   - verify/AI/divisor_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
+  - verify/AI/many_factorials_test.nim
+  - verify/AI/many_factorials_test.nim
   - verify/AI/primitive_root_test.nim
   - verify/AI/primitive_root_test.nim
   - verify/AI/isprime_test.nim

@@ -57,13 +57,13 @@ data:
     \ 5, 10, 10]:\n  assert seg128[i].sum == expected\n"
   dependsOn:
   - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
   - cplib/math/int128.nim
   - cplib/math/int128.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_template_test.nim
   requiredBy: []
