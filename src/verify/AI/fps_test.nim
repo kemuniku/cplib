@@ -251,6 +251,7 @@ block bostanMoriAndRecurrence:
   let p = @[Mint(0), Mint(1)]
   let q = @[Mint(1), Mint(-1), Mint(-1)]
   let fib = @[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+  assert bmbm(fib[0..<4].mapIt(Mint(it)), 11).val == fib[11]
   for i in 0..<fib.len: assert bostanMori(p, q, i).val == fib[i]
   for i in 0..<fib.len:
     assert linearRecurrenceKth(@[Mint(0), Mint(1)], @[Mint(1), Mint(1)], i).val == fib[i]

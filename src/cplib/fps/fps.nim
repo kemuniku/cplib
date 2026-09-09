@@ -11,4 +11,6 @@ when not declared CPLIB_FPS_FPS:
     import cplib/fps/taylor_shift
     import cplib/fps/composition
     import cplib/fps/bostan_mori
+    import cplib/fps/berlekamp_massey
+    import cplib/fps/bmbm
     import cplib/fps/sparse_formal_power_series
