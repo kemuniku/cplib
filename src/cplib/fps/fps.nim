@@ -9,6 +9,7 @@ when not declared CPLIB_FPS_FPS:
     import cplib/fps/product_tree
     import cplib/fps/polynomial_interpolation
     import cplib/fps/taylor_shift
+    import cplib/fps/shift_of_sampling_points
     import cplib/fps/composition
     import cplib/fps/power_projection
     import cplib/fps/bostan_mori
