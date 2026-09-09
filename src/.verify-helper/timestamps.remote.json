@@ -159,6 +159,7 @@
 "verify/AI/warshall_floyd_test.nim": "2026-07-07 07:56:57 +0900",
 "verify/AI/waveletmatrix_test.nim": "2026-09-09 17:27:11 +0900",
 "verify/AI/weightedunionfind_test.nim": "2026-07-09 02:51:42 +0900",
+"verify/AI/wildcard_matching_test.nim": "2026-09-10 06:14:46 +0900",
 "verify/AI/wordsizetree_avx2_test.nim": "2026-09-08 05:12:42 +0900",
 "verify/AI/wordsizetree_test.nim": "2026-09-08 05:12:42 +0900",
 "verify/AI/xor_basis_test.nim": "2026-07-07 07:24:29 +0900",
