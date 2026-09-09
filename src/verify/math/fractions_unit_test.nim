@@ -75,6 +75,26 @@ proc assert_cmp() =
             assert cmp(i.toFloat, j.toFloat) == cmp(i, j)
 assert_cmp()
 
+proc assert_bounds[T]() =
+    let a = @[initFraction(T(-1), T(2)), initFraction(T(1), T(3)),
+              initFraction(T(2), T(6)), initFraction(T(1), T(2))]
+    let empty: seq[Fraction[T]] = @[]
+    for key in @[initFraction(T(-1)), initFraction(T(-1), T(2)),
+                 initFraction(T(0)), initFraction(T(1), T(3)),
+                 initFraction(T(1), T(2)), initFraction(T(1))]:
+        var lower, upper = 0
+        for x in a:
+            if x < key: inc lower
+            if x <= key: inc upper
+        assert a.lowerBound(key) == lower
+        assert a.upperBound(key) == upper
+        assert a.lowerBound(key, fractions.cmp[T]) == lower
+        assert a.upperBound(key, fractions.cmp[T]) == upper
+        assert empty.lowerBound(key) == 0
+        assert empty.upperBound(key) == 0
+assert_bounds[int]()
+assert_bounds[int64]()
+
 var st = initHashSet[Fraction[int]](0)
 for _ in 0..1:
     for ri in r:

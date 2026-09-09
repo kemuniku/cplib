@@ -3,6 +3,9 @@ when not declared CPLIB_MATH_FRACTIONS:
     import strformat, std/math, hashes
     type Fraction*[T] = object
         num*, den*: T
+    type FractionScalar = concept type T
+        # algorithm の cmp[Fraction[T]] で分数用 cmp が誤って実体化されるのを防ぐ。
+        T isnot Fraction
     var FRACTION_REDUCE_LIMIT = 1000000000
     proc isNaN*(x: Fraction): bool = x.den == 0 and x.num == 0
     proc reduce*[T](self: var Fraction[T]) =
@@ -67,7 +70,9 @@ when not declared CPLIB_MATH_FRACTIONS:
         if isNaN(x) or isNaN(y): return false
         if x.den == 0 and y.den == 0: return (x.num div abs(x.num)) * (y.num div abs(y.num)) > 0
         x.num * y.den == y.num * x.den
-    proc cmp*[T](x, y: Fraction[T]): int = (if x < y: -1 elif x == y: 0 else: 1)
+    proc cmp*[T: FractionScalar](x, y: Fraction[T]): int =
+        ## 分数同士を比較し、小さい場合は -1、等しい場合は 0、大きい場合は 1 を返す。
+        (if x < y: -1 elif x == y: 0 else: 1)
 
     proc `+=`*[T](x: var Fraction[T], y: T) = (x += initFraction[T](y))
     proc `+`*[T](x, y: Fraction[T]): Fraction[T] = (result = x; result += y)
@@ -95,8 +100,12 @@ when not declared CPLIB_MATH_FRACTIONS:
     proc `>=`*[T](x: T, y: Fraction[T]): bool = not(x < y)
     proc `==`*[T](x: Fraction[T], y: T): bool = x == initFraction[T](y)
     proc `==`*[T](x: T, y: Fraction[T]): bool = initFraction[T](x) == y
-    proc cmp*[T](x: Fraction[T], y: T): int = cmp(x, initFraction[T](y))
-    proc cmp*[T](x: T, y: Fraction[T]): int = cmp(initFraction[T](x), y)
+    proc cmp*[T: FractionScalar](x: Fraction[T], y: T): int =
+        ## 分数と整数を比較し、小さい場合は -1、等しい場合は 0、大きい場合は 1 を返す。
+        cmp(x, initFraction[T](y))
+    proc cmp*[T: FractionScalar](x: T, y: Fraction[T]): int =
+        ## 整数と分数を比較し、小さい場合は -1、等しい場合は 0、大きい場合は 1 を返す。
+        cmp(initFraction[T](x), y)
     proc hash*[T](x: Fraction[T]): Hash =
         var x = x
         x.reduce()
