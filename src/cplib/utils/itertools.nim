@@ -313,7 +313,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                 if i < 0: break
                 inc indices[i]
 
-    iterator set_partitions*(n: int, k: int = -1): seq[int] =
+    iterator set_partitions_id*(n: int, k: int = -1): seq[int] =
         ## 0..<n の集合分割を所属グループ番号の列で返す。k == -1 は個数指定なし。
         ## グループ番号は初出順に 0, 1, ... とし、番号の付け替えによる重複を除く。
         assert n >= 0 and k >= -1
@@ -339,6 +339,47 @@ when not declared CPLIB_UTILS_ITERTOOLS:
                     else:
                         inc depth
                         a[depth] = 0
+
+    iterator set_partitions*(n: int, k: int = -1): seq[seq[int]] =
+        ## 0..<n の集合分割を、各グループの要素の列で返す。k == -1 は個数指定なし。
+        ## 各グループ内は昇順、グループ間は最小要素の昇順。列挙順は set_partitions_id と同じ。
+        ## n == 0 は k == -1 または k == 0 のときだけ空列を1件返す。
+        assert n >= 0 and k >= -1
+        if n == 0:
+            if k == -1 or k == 0: yield newSeq[seq[int]]()
+        elif k != 0 and k <= n:
+            var groups = newSeqOfCap[seq[int]](n)
+            var spare = newSeq[seq[int]](n)
+            var choice = newSeq[int](n)
+            var depth = 0
+            while depth >= 0:
+                var upper = groups.len
+                if k >= 0: upper = min(upper, k - 1)
+                if choice[depth] > upper:
+                    if depth == 0: break
+                    dec depth
+                else:
+                    let count = max(groups.len, choice[depth] + 1)
+                    if k >= 0 and count + n - depth - 1 < k:
+                        inc choice[depth]
+                        continue
+                    if choice[depth] == groups.len:
+                        groups.setLen(groups.len + 1)
+                        swap(groups[^1], spare[depth])
+                    groups[choice[depth]].add(depth)
+                    if depth == n - 1:
+                        yield groups
+                    else:
+                        inc depth
+                        choice[depth] = 0
+                        continue
+                let id = choice[depth]
+                groups[id].setLen(groups[id].len - 1)
+                if groups[id].len == 0:
+                    # 空になったグループの容量も次の探索で再利用する。
+                    spare[depth] = move(groups[id])
+                    groups.setLen(groups.len - 1)
+                inc choice[depth]
 
     iterator pairings*(n: int): seq[tuple[u, v: int]] =
         ## 0..<n をペアに分ける全通り。ペア内・ペア間の順序による重複なし。

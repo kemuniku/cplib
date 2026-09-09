@@ -60,11 +60,44 @@ for n in 0..5:
             if group notin labels: labels.add(group)
             normalized.add(labels.find(group))
         expected.incl(normalized)
-    let actual = toSeq(set_partitions(n))
+    let actual = toSeq(set_partitions_id(n))
     doAssert actual.len == expected.len and actual.toHashSet == expected
     doAssert actual == actual.sorted()
     for k in 0..n + 1:
-        doAssert toSeq(set_partitions(n, k)) == actual.filterIt(it.toHashSet.len == k)
+        doAssert toSeq(set_partitions_id(n, k)) == actual.filterIt(it.toHashSet.len == k)
+    for k in -1..n + 1:
+        let grouped = toSeq(set_partitions(n, k))
+        var restored: seq[seq[int]]
+        for groups in grouped:
+            doAssert groups.concat.sorted() == toSeq(0..<n)
+            var ids = newSeq[int](n)
+            for id, group in groups:
+                doAssert group.len > 0 and group == group.sorted()
+                if id > 0: doAssert groups[id - 1][0] < group[0]
+                for element in group: ids[element] = id
+            restored.add(ids)
+        doAssert restored == toSeq(set_partitions_id(n, k))
+
+doAssert toSeq(set_partitions(3)) == @[
+    @[@[0, 1, 2]], @[@[0, 1], @[2]], @[@[0, 2], @[1]],
+    @[@[0], @[1, 2]], @[@[0], @[1], @[2]]]
+doAssert toSeq(set_partitions(0)) == @[newSeq[seq[int]]()]
+
+block:
+    let expected = toSeq(set_partitions(4))
+    var saved: seq[seq[seq[int]]]
+    for groups in set_partitions(4):
+        saved.add(groups)
+        var copied = groups
+        copied[0][0] = -1
+        doAssert groups == expected[saved.len - 1]
+        var innerCount = 0
+        for inner in set_partitions(3):
+            doAssert inner.concat.sorted() == @[0, 1, 2]
+            inc innerCount
+        doAssert innerCount == 5
+        doAssert groups == expected[saved.len - 1]
+    doAssert saved == expected
 
 # 順列を2個ずつ組にして正規化した結果とペア分けを比較する。
 for n in 0..8:
@@ -228,8 +261,11 @@ block:
     for a in bounded_sum_sequences(100, 100, 0, 101):
         doAssert a.len == 100 and a.sum == 100
         break
-    for a in set_partitions(100):
+    for a in set_partitions_id(100):
         doAssert a == newSeq[int](100)
+        break
+    for groups in set_partitions(100):
+        doAssert groups == @[toSeq(0..<100)]
         break
     for pairs in pairings(100):
         doAssert pairs.len == 50
