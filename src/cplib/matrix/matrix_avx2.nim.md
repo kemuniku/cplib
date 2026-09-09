@@ -594,14 +594,14 @@ data:
     \u308B\u3002\n        mixin `[]`\n        matrixProductLegacy(a, b, typeof(a[0,\
     \ 0]))\n"
   dependsOn:
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2.nim
   requiredBy: []

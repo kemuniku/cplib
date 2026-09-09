@@ -536,6 +536,12 @@ data:
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/tree/lazy_subtree_link_cut_tree.nim
+      title: cplib/tree/lazy_subtree_link_cut_tree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/tree/link_cut_tree.nim
+      title: cplib/tree/link_cut_tree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
     - icon: ':heavy_check_mark:'
@@ -544,6 +550,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/tree_hash.nim
       title: cplib/tree/tree_hash.nim
+  - name: cplib/tree/private
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/tree/private/link_cut_tree_base.nim
+      title: cplib/tree/private/link_cut_tree_base.nim
   - name: cplib/utils
     pages:
     - icon: ':heavy_check_mark:'
@@ -2220,6 +2231,23 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - name: verify/tree/link_cut_tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/link_cut_tree/link_cut_tree_test.nim
+      title: verify/tree/link_cut_tree/link_cut_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
+      title: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
+      title: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
+      title: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
+      title: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - name: verify/utils
     pages:
     - icon: ':heavy_check_mark:'

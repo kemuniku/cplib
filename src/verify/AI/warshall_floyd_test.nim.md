@@ -69,9 +69,9 @@ data:
 
     '
   dependsOn:
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
