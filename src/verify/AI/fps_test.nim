@@ -275,6 +275,55 @@ block powerProjectionTests:
   assert powerProjection(zeroConstant, 8) ==
     naivePowerProjection(zeroConstant, @[Mint(1)], 8)
 
+proc naivePowerProjectionDiagonal[T: BarrettModint or MontgomeryModint](
+    f, g: seq[T], m: int): seq[T] =
+  result = newSeq[T](m + 1)
+  var power = newSeq[T](m + 1)
+  power[0] = 1
+  for i in 0..m:
+    for j in 0..min(i, g.len - 1):
+      result[i] += power[i - j] * g[j]
+    var next = newSeq[T](m + 1)
+    for j in 0..m:
+      for k in 0..min(m - j, f.len - 1):
+        next[j + k] += power[j] * f[k]
+    power = move(next)
+
+proc checkPowerProjectionDiagonal[T: BarrettModint or MontgomeryModint](
+    M: typedesc[T]) =
+  for n in [1, 2, 3, 8, 17, 33, 70]:
+    var f = newSeq[T](n)
+    for i in 0..<n: f[i] = T(17 * i * i + 31 * i + 3)
+    for gLen in [0, 1, n + 3]:
+      var g = newSeq[T](gLen)
+      for i in 0..<gLen: g[i] = T(23 * i * i + 11 * i + 5)
+      for constant in [0, 3]:
+        f[0] = constant
+        for m in [0, 1, n - 1, n + 3]:
+          let actual = powerProjectionDiagonal(f, g, m)
+          let expected = naivePowerProjectionDiagonal(f, g, m)
+          assert actual.mapIt(it.val) == expected.mapIt(it.val),
+            $M & " n=" & $n & " gLen=" & $gLen & " constant=" & $constant &
+            " m=" & $m & " actual=" & $actual & " expected=" & $expected
+        assert powerProjectionDiagonal(f, g).mapIt(it.val) ==
+          naivePowerProjectionDiagonal(f, g, n - 1).mapIt(it.val)
+    assert powerProjectionDiagonal(f, n + 3).mapIt(it.val) ==
+      naivePowerProjectionDiagonal(f, @[T(1)], n + 3).mapIt(it.val)
+    assert powerProjectionDiagonal(f).mapIt(it.val) ==
+      naivePowerProjectionDiagonal(f, @[T(1)], n - 1).mapIt(it.val)
+  let shifted = @[T(0), T(0), T(3)]
+  assert powerProjectionDiagonal(shifted, @[T(7), T(11)], 5).mapIt(it.val) ==
+    @[7, 0, 0, 0, 0, 0]
+
+block powerProjectionDiagonalTests:
+  checkPowerProjectionDiagonal(modint998244353_barrett)
+  checkPowerProjectionDiagonal(modint998244353_montgomery)
+  checkPowerProjectionDiagonal(modint1000000007_barrett)
+  checkPowerProjectionDiagonal(modint1000000007_montgomery)
+  # [x^i] (1 + x)^(i + 1) = i + 1。
+  let linear = @[Mint(1), Mint(1)]
+  assert powerProjectionDiagonal(linear, linear, 5).values == @[1, 2, 3, 4, 5, 6]
+
 proc checkCompositionalInverse[T: BarrettModint or MontgomeryModint](
     M: typedesc[T], n: int) =
   var f = newSeq[T](n)

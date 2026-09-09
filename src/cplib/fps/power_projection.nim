@@ -85,3 +85,45 @@ when not declared CPLIB_FPS_POWER_PROJECTION:
 
     proc powerProjection*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] =
         f.powerProjection(@[init(T, 1)], f.len - 1)
+
+    proc powerProjectionDiagonal*[T: BarrettModint or MontgomeryModint](
+            f, g: seq[T], m: int): seq[T] =
+        ## [x^i] f(x)^i g(x) (i = 0, 1, ..., m) を列挙する。
+        ## f は空でなく、m は非負とする。入力の範囲外の係数は零として扱う。
+        ## f[0] != 0 の場合は FPS の pow と同じく m + 1 が法以下である必要がある。
+        ## NTT を使える場合 O((m + 1) log^2(m + 2)) 時間。
+        ## 参考: https://potato167.hatenablog.com/entry/2026/02/22/180000
+        doAssert f.len > 0, "Power Projectionでは f が空でない必要がある"
+        doAssert m >= 0, "Power Projectionでは列挙する最大指数が非負である必要がある"
+        if f[0].val == 0:
+            # f(x)^i の最低次数は i なので、f[1]^i g[0] だけが寄与する。
+            result = newSeq[T](m + 1)
+            result[0] = g.coefficient(0)
+            let linear = f.coefficient(1)
+            for i in 1..m: result[i] = result[i - 1] * linear
+            return
+
+        let size = m + 1
+        let base = prefix(f, size)
+        let weight = prefix(base.pow(m, size) * prefix(g, size), size)
+        let inverse = base.inv(m)
+        var shiftedInverse = newSeq[T](size)
+        for i in 1..m: shiftedInverse[i] = inverse[i - 1]
+        # k = m - i とおくと [x^i] f^i g = [x^m] (x/f)^k (f^m g)。
+        result = powerProjection(shiftedInverse, weight, m)
+        result.reverse
+
+    proc powerProjectionDiagonal*[T: BarrettModint or MontgomeryModint](
+            f: seq[T], m: int): seq[T] =
+        ## g(x) = 1 として i = 0..m を列挙する。
+        f.powerProjectionDiagonal(@[init(T, 1)], m)
+
+    proc powerProjectionDiagonal*[T: BarrettModint or MontgomeryModint](
+            f, g: seq[T]): seq[T] =
+        ## i = 0..f.len - 1 を列挙する。
+        f.powerProjectionDiagonal(g, f.len - 1)
+
+    proc powerProjectionDiagonal*[T: BarrettModint or MontgomeryModint](
+            f: seq[T]): seq[T] =
+        ## g(x) = 1 として i = 0..f.len - 1 を列挙する。
+        f.powerProjectionDiagonal(@[init(T, 1)], f.len - 1)
