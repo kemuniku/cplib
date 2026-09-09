@@ -95,16 +95,16 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/distance.nim
-  - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/distance.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/AI/distance_test.nim
   requiredBy: []

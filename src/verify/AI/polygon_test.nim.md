@@ -55,18 +55,18 @@ data:
     \ initPoint(1, 1), initPoint(0, 1), initPoint(1, 0)])\nassert hull.len == 4\n\
     assert hull.area.abs == 2\n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/polygon_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-10 07:10:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/polygon_test.nim

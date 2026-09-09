@@ -148,7 +148,10 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_FRACTIONS:\n    const CPLIB_MATH_FRACTIONS*\
     \ = 1\n    import strformat, std/math, hashes\n    type Fraction*[T] = object\n\
-    \        num*, den*: T\n    var FRACTION_REDUCE_LIMIT = 1000000000\n    proc isNaN*(x:\
+    \        num*, den*: T\n    type FractionScalar = concept type T\n        # algorithm\
+    \ \u306E cmp[Fraction[T]] \u3067\u5206\u6570\u7528 cmp \u304C\u8AA4\u3063\u3066\
+    \u5B9F\u4F53\u5316\u3055\u308C\u308B\u306E\u3092\u9632\u3050\u3002\n        T\
+    \ isnot Fraction\n    var FRACTION_REDUCE_LIMIT = 1000000000\n    proc isNaN*(x:\
     \ Fraction): bool = x.den == 0 and x.num == 0\n    proc reduce*[T](self: var Fraction[T])\
     \ =\n        if isNaN(self): return\n        var g = gcd(abs(self.num), abs(self.den))\n\
     \        self.num = self.num div g\n        self.den = self.den div g\n      \
@@ -183,8 +186,11 @@ data:
     \ < y.num\n        x.num * y.den < y.num * x.den\n    proc `==`*[T](x, y: Fraction[T]):\
     \ bool =\n        if isNaN(x) or isNaN(y): return false\n        if x.den == 0\
     \ and y.den == 0: return (x.num div abs(x.num)) * (y.num div abs(y.num)) > 0\n\
-    \        x.num * y.den == y.num * x.den\n    proc cmp*[T](x, y: Fraction[T]):\
-    \ int = (if x < y: -1 elif x == y: 0 else: 1)\n\n    proc `+=`*[T](x: var Fraction[T],\
+    \        x.num * y.den == y.num * x.den\n    proc cmp*[T: FractionScalar](x, y:\
+    \ Fraction[T]): int =\n        ## \u5206\u6570\u540C\u58EB\u3092\u6BD4\u8F03\u3057\
+    \u3001\u5C0F\u3055\u3044\u5834\u5408\u306F -1\u3001\u7B49\u3057\u3044\u5834\u5408\
+    \u306F 0\u3001\u5927\u304D\u3044\u5834\u5408\u306F 1 \u3092\u8FD4\u3059\u3002\n\
+    \        (if x < y: -1 elif x == y: 0 else: 1)\n\n    proc `+=`*[T](x: var Fraction[T],\
     \ y: T) = (x += initFraction[T](y))\n    proc `+`*[T](x, y: Fraction[T]): Fraction[T]\
     \ = (result = x; result += y)\n    proc `+`*[T](x: Fraction[T], y: T): Fraction[T]\
     \ = (result = x; result += y)\n    proc `+`*[T](x: T, y: Fraction[T]): Fraction[T]\
@@ -209,14 +215,20 @@ data:
     \ or T): bool = not (x < y)\n    proc `>=`*[T](x: T, y: Fraction[T]): bool = not(x\
     \ < y)\n    proc `==`*[T](x: Fraction[T], y: T): bool = x == initFraction[T](y)\n\
     \    proc `==`*[T](x: T, y: Fraction[T]): bool = initFraction[T](x) == y\n   \
-    \ proc cmp*[T](x: Fraction[T], y: T): int = cmp(x, initFraction[T](y))\n    proc\
-    \ cmp*[T](x: T, y: Fraction[T]): int = cmp(initFraction[T](x), y)\n    proc hash*[T](x:\
-    \ Fraction[T]): Hash =\n        var x = x\n        x.reduce()\n        result\
-    \ = result !& hash(x.num)\n        result = result !& hash(x.den)\n    proc toFloat*[T](x:\
-    \ Fraction[T]): float =\n        x.num / x.den\n    proc pow*[T](x: Fraction[T],\
-    \ n: int): Fraction[T] =\n        result = initFraction[T](1)\n        var x =\
-    \ x\n        var n = n\n        while n > 0:\n            if (n and 1) == 1: result\
-    \ *= x\n            x *= x\n            n = n shr 1\n"
+    \ proc cmp*[T: FractionScalar](x: Fraction[T], y: T): int =\n        ## \u5206\
+    \u6570\u3068\u6574\u6570\u3092\u6BD4\u8F03\u3057\u3001\u5C0F\u3055\u3044\u5834\
+    \u5408\u306F -1\u3001\u7B49\u3057\u3044\u5834\u5408\u306F 0\u3001\u5927\u304D\u3044\
+    \u5834\u5408\u306F 1 \u3092\u8FD4\u3059\u3002\n        cmp(x, initFraction[T](y))\n\
+    \    proc cmp*[T: FractionScalar](x: T, y: Fraction[T]): int =\n        ## \u6574\
+    \u6570\u3068\u5206\u6570\u3092\u6BD4\u8F03\u3057\u3001\u5C0F\u3055\u3044\u5834\
+    \u5408\u306F -1\u3001\u7B49\u3057\u3044\u5834\u5408\u306F 0\u3001\u5927\u304D\u3044\
+    \u5834\u5408\u306F 1 \u3092\u8FD4\u3059\u3002\n        cmp(initFraction[T](x),\
+    \ y)\n    proc hash*[T](x: Fraction[T]): Hash =\n        var x = x\n        x.reduce()\n\
+    \        result = result !& hash(x.num)\n        result = result !& hash(x.den)\n\
+    \    proc toFloat*[T](x: Fraction[T]): float =\n        x.num / x.den\n    proc\
+    \ pow*[T](x: Fraction[T], n: int): Fraction[T] =\n        result = initFraction[T](1)\n\
+    \        var x = x\n        var n = n\n        while n > 0:\n            if (n\
+    \ and 1) == 1: result *= x\n            x *= x\n            n = n shr 1\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/fractions.nim
@@ -233,7 +245,7 @@ data:
   - cplib/math/stern_brocot_tree.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
-  timestamp: '2025-03-09 17:42:08+09:00'
+  timestamp: '2026-09-10 07:10:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/fractions_unit_test.nim

@@ -101,26 +101,26 @@ data:
     \            if t[j] != wild and s[offset + j] != wild:\n                t[j]\
     \ = s[offset + j]\n        check(s, t, wild)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/str/wildcard_matching.nim
   - cplib/math/powmod.nim
-  - cplib/str/wildcard_matching.nim
-  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/str/wildcard_matching.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/wildcard_matching_test.nim
   requiredBy: []

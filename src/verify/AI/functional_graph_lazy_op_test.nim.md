@@ -202,16 +202,16 @@ data:
     \                if step < l+i:\n                    now = orderNext[now]\n  \
     \          doAssert product == expected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/segtree.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
-  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph_with_op.nim
   isVerificationFile: true

@@ -87,8 +87,8 @@ data:
   dependsOn:
   - cplib/collections/fenwick.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/fenwick_avx2.nim
   - cplib/collections/fenwick.nim
+  - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/AI/fenwick_tree_test.nim
   requiredBy: []

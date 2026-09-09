@@ -39,8 +39,8 @@ data:
   dependsOn:
   - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
-  - cplib/str/rolling_hash.nim
   - cplib/utils/binary_search.nim
+  - cplib/str/rolling_hash.nim
   isVerificationFile: false
   path: verify/str/rolling_hash_pun_test_.nim
   requiredBy: []

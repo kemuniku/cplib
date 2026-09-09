@@ -63,7 +63,18 @@ data:
     \ j.toFloat) == (i == j)\n            assert (not lt(i.toFloat, j.toFloat)) ==\
     \ (i >= j)\n            assert (not gt(i.toFloat, j.toFloat)) == (i <= j)\n  \
     \          assert (not eq(i.toFloat, j.toFloat)) == (i != j)\n            assert\
-    \ cmp(i.toFloat, j.toFloat) == cmp(i, j)\nassert_cmp()\n\nvar st = initHashSet[Fraction[int]](0)\n\
+    \ cmp(i.toFloat, j.toFloat) == cmp(i, j)\nassert_cmp()\n\nproc assert_bounds[T]()\
+    \ =\n    let a = @[initFraction(T(-1), T(2)), initFraction(T(1), T(3)),\n    \
+    \          initFraction(T(2), T(6)), initFraction(T(1), T(2))]\n    let empty:\
+    \ seq[Fraction[T]] = @[]\n    for key in @[initFraction(T(-1)), initFraction(T(-1),\
+    \ T(2)),\n                 initFraction(T(0)), initFraction(T(1), T(3)),\n   \
+    \              initFraction(T(1), T(2)), initFraction(T(1))]:\n        var lower,\
+    \ upper = 0\n        for x in a:\n            if x < key: inc lower\n        \
+    \    if x <= key: inc upper\n        assert a.lowerBound(key) == lower\n     \
+    \   assert a.upperBound(key) == upper\n        assert a.lowerBound(key, fractions.cmp[T])\
+    \ == lower\n        assert a.upperBound(key, fractions.cmp[T]) == upper\n    \
+    \    assert empty.lowerBound(key) == 0\n        assert empty.upperBound(key) ==\
+    \ 0\nassert_bounds[int]()\nassert_bounds[int64]()\n\nvar st = initHashSet[Fraction[int]](0)\n\
     for _ in 0..1:\n    for ri in r:\n        st.incl(ri)\nfor ri in r:\n    assert\
     \ ri.inv == (1 / ri)\n    assert ri.abs == (if ri < 0: -ri else: ri)\nassert st.len\
     \ == r.sorted.deduplicate(true).len\n"
@@ -73,7 +84,7 @@ data:
   isVerificationFile: true
   path: verify/math/fractions_unit_test.nim
   requiredBy: []
-  timestamp: '2025-03-09 17:42:08+09:00'
+  timestamp: '2026-09-10 07:10:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/fractions_unit_test.nim

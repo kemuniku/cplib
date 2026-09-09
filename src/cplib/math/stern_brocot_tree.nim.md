@@ -187,14 +187,14 @@ data:
     \            if len(stack) != 0:\n                result.add_edge(stack[^1],v[i],(v[i].depth)-(stack[^1].depth))\n\
     \            stack.add(v[i])"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []
-  timestamp: '2026-07-09 05:26:00+09:00'
+  timestamp: '2026-09-10 07:10:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/stern_brocot_tree.nim

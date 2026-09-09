@@ -272,26 +272,26 @@ data:
     \ - 1 \u3092\u5217\u6319\u3059\u308B\u3002\n        f.powerProjectionDiagonal(@[init(T,\
     \ 1)], f.len - 1)\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/powmod.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inner_math.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/fps/power_projection.nim
   requiredBy:

@@ -44,16 +44,16 @@ data:
     \ echo \"CLOCKWISE\"\n    elif c == ONLINE_BACK: echo \"ONLINE_BACK\"\n    elif\
     \ c == ONLINE_FRONT: echo \"ONLINE_FRONT\"\n    else: echo \"ON_SEGMENT\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-10 07:10:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim

@@ -158,9 +158,9 @@ data:
     \ checkPath(u, v)\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/tree/lazy_subtree_link_cut_tree.nim
-  - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/link_cut_tree.nim
+  - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: true
