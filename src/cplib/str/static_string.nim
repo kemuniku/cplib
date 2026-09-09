@@ -2,7 +2,7 @@ when not declared CPLIB_STR_STATIC_STRING:
     const CPLIB_STR_STATIC_STRING* = 1
     import sequtils
     import algorithm
-    import atcoder/string
+    import cplib/str/suffix_array
     import cplib/collections/staticRMQ
 
     proc genericSuffixArray[T](S: seq[T]): seq[int] =
