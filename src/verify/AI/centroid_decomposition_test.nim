@@ -53,8 +53,26 @@ proc check(g: UnWeightedUnDirectedGraph, cd: CentroidDecomposition) =
     checkComponent(cd.root, toSeq(0..<n))
     for v in 0..<n: doAssert visited[v]
 
+proc checkTree(treeData: tuple[tree: UnWeightedDirectedGraph, root: int, size, depth: seq[int]],
+               cd: CentroidDecomposition) =
+    let (tree, root, size, depth) = treeData
+    doAssert root == cd.root
+    doAssert tree.len == cd.parent.len
+    doAssert size.len == tree.len
+    doAssert depth == cd.depth
+    if tree.len > 0:
+        doAssert size[root] == tree.len
+    for u in 0..<tree.len:
+        doAssert toSeq(tree[u]) == cd.children[u]
+        var subtreeSize = 1
+        for v in tree[u]:
+            subtreeSize += size[v]
+        doAssert size[u] == subtreeSize
+
 check(initUnWeightedUnDirectedGraph(0),
       initCentroidDecomposition(initUnWeightedUnDirectedGraph(0)))
+checkTree(initCentroidDecompositionTree(initUnWeightedUnDirectedGraph(0)),
+          initCentroidDecomposition(initUnWeightedUnDirectedGraph(0)))
 var rng = initRand(20260908)
 for n in 1..70:
     for trial in 0..<12:
@@ -74,8 +92,15 @@ for n in 1..70:
         let before = g.edges
         let cd = initCentroidDecomposition(g, root)
         check(g, cd)
+        checkTree(initCentroidDecompositionTree(g, root), cd)
         doAssert g.edges == before
         check(g, initCentroidDecomposition(g))
+        checkTree(initCentroidDecompositionTree(g),
+                  initCentroidDecomposition(g))
+        for treeData in [initCentroidDecompositionTree(staticG, root),
+                         initCentroidDecompositionTree(weighted, root),
+                         initCentroidDecompositionTree(weightedStatic, root)]:
+            checkTree(treeData, cd)
         for other in [initCentroidDecomposition(staticG, root),
                       initCentroidDecomposition(weighted, root),
                       initCentroidDecomposition(weightedStatic, root)]:
@@ -100,7 +125,9 @@ block:
         if v != pathCd.root:
             doAssert pathCd.depth[pathCd.parent[v]] + 1 == pathCd.depth[v]
     doAssert maxDepth <= 17
+    checkTree(initCentroidDecompositionTree(path), pathCd)
     let starCd = initCentroidDecomposition(star, n - 1)
+    checkTree(initCentroidDecompositionTree(star, n - 1), starCd)
     doAssert starCd.root == 0
     doAssert starCd.children[0].len == n - 1
     for v in 1..<n:
