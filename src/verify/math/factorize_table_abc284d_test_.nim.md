@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
   - icon: ':heavy_check_mark:'
@@ -53,15 +53,15 @@ data:
     \ = stdin.readLine.parseInt\nfor _ in 0..<t: solve()\n"
   dependsOn:
   - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
   - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: verify/math/factorize_table_abc284d_test_.nim
   requiredBy: []

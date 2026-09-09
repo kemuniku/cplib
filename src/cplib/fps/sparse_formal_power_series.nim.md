@@ -1,83 +1,83 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
   _extendedVerifiedWith:
@@ -177,15 +177,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -195,7 +195,7 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:\n    const CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES*\
-    \ = 1\n\n    import algorithm, options\n    import cplib/convolution/convolution\n\
+    \ = 1\n\n    import algorithm, macros, options\n    import cplib/convolution/convolution\n\
     \    import cplib/fps/bostan_mori\n    import cplib/fps/formal_power_series\n\
     \    import cplib/fps/product_tree\n    import cplib/math/isqrt\n    import cplib/modint/modint\n\
     \n    type\n        SparseTerm*[T] = tuple[degree: int, coefficient: T]\n\n  \
@@ -212,33 +212,85 @@ data:
     \                normalized[^1].coefficient += term.coefficient\n            \
     \    if normalized[^1].coefficient.val == 0: normalized.setLen(normalized.len\
     \ - 1)\n            else:\n                normalized.add(term)\n        result\
-    \ = move(normalized)\n\n    proc isZero*[T](f: SparseFPS[T]): bool = f.len ==\
-    \ 0\n\n    proc degree*[T](f: SparseFPS[T]): int =\n        ## \u96F6FPS\u306B\
-    \u5BFE\u3057\u3066\u306F -1 \u3092\u8FD4\u3059\u3002\n        if f.len == 0: -1\
-    \ else: f[^1].degree\n\n    proc coefficient*[T](f: SparseFPS[T], degree: int):\
-    \ T =\n        ## \u6307\u5B9A\u3057\u305F\u6B21\u6570\u306E\u4FC2\u6570\u3092\
-    \u8FD4\u3059\u3002\u9805\u304C\u5B58\u5728\u3057\u306A\u3051\u308C\u3070\u96F6\
-    \u3092\u8FD4\u3059\u3002\n        if degree < 0: return init(T, 0)\n        var\
-    \ left = 0\n        var right = f.len\n        while left < right:\n         \
-    \   let middle = (left + right) shr 1\n            if f[middle].degree < degree:\
-    \ left = middle + 1\n            else: right = middle\n        if left < f.len\
-    \ and f[left].degree == degree:\n            result = f[left].coefficient\n\n\
-    \    proc constantTerm*[T](f: SparseFPS[T]): T =\n        f.coefficient(0)\n\n\
-    \    proc toDense*[T](f: SparseFPS[T], n: int): seq[T] =\n        ## x^n \u3067\
-    \u6253\u3061\u5207\u3063\u305F\u5BC6\u306A\u4FC2\u6570\u5217\u3078\u5909\u63DB\
-    \u3059\u308B\u3002\n        if n <= 0: return @[]\n        result = newSeq[T](n)\n\
-    \        for (degree, coefficient) in f:\n            if degree >= n: break\n\
-    \            result[degree] = coefficient\n\n    proc truncated[T](f: SparseFPS[T],\
-    \ n: int): SparseFPS[T] =\n        for term in f:\n            if term.degree\
-    \ >= n: break\n            result.add(term)\n\n    proc mulPrefix*[T](f: seq[T],\
-    \ g: SparseFPS[T], n: int): seq[T] =\n        ## \u5BC6\u306AFPS\u3068\u758E\u306A\
-    FPS\u306E\u7A4D\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\
-    \n        if n <= 0: return @[]\n        result = newSeq[T](n)\n        for (degree,\
-    \ coefficient) in g:\n            if degree >= n: break\n            for i in\
-    \ 0..<min(f.len, n - degree):\n                result[i + degree] += f[i] * coefficient\n\
-    \n    proc `*`*[T](f: seq[T], g: SparseFPS[T]): seq[T] =\n        if f.len ==\
-    \ 0 or g.isZero: return @[]\n        f.mulPrefix(g, f.len + g.degree)\n\n    proc\
-    \ `*`*[T](f: SparseFPS[T], g: seq[T]): seq[T] = g * f\n\n    proc divPrefix*[T](f:\
+    \ = move(normalized)\n\n    proc sparseMonomialDegree(node: NimNode): NimNode\
+    \ {.compileTime.} =\n        if node.eqIdent(\"x\"): return newLit(1)\n      \
+    \  if node.kind == nnkInfix and node.len == 3 and\n                node[0].eqIdent(\"\
+    ^\") and node[1].eqIdent(\"x\"):\n            return node[2]\n        nil\n\n\
+    \    proc collectSparseTerms(node: NimNode, sign: int,\n            terms: var\
+    \ seq[tuple[degree, coefficient: NimNode]]) {.compileTime.} =\n        if node.kind\
+    \ == nnkInfix and node.len == 3 and node[0].eqIdent(\"+\"):\n            collectSparseTerms(node[1],\
+    \ sign, terms)\n            collectSparseTerms(node[2], sign, terms)\n       \
+    \     return\n        if node.kind == nnkInfix and node.len == 3 and node[0].eqIdent(\"\
+    -\"):\n            collectSparseTerms(node[1], sign, terms)\n            collectSparseTerms(node[2],\
+    \ -sign, terms)\n            return\n        if node.kind == nnkPrefix and node.len\
+    \ == 2 and node[0].eqIdent(\"-\"):\n            collectSparseTerms(node[1], -sign,\
+    \ terms)\n            return\n\n        var degree = sparseMonomialDegree(node)\n\
+    \        var coefficient = newLit(1)\n        if degree == nil and node.kind ==\
+    \ nnkInfix and node.len == 3 and\n                node[0].eqIdent(\"*\"):\n  \
+    \          degree = sparseMonomialDegree(node[2])\n            if degree != nil:\n\
+    \                coefficient = node[1]\n            else:\n                degree\
+    \ = sparseMonomialDegree(node[1])\n                if degree != nil: coefficient\
+    \ = node[2]\n        if degree == nil:\n            if node.findChild(it.eqIdent(\"\
+    x\")) != nil:\n                error(\"SFPS\u306E\u5404\u9805\u306F coefficient\
+    \ * x^degree \u306E\u5F62\u3067\u6307\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\
+    \", node)\n            degree = newLit(0)\n            coefficient = node\n  \
+    \      if sign < 0: coefficient = newTree(nnkPrefix, ident(\"-\"), coefficient)\n\
+    \        terms.add((degree, coefficient))\n\n    proc buildSparseFPS(coefficientType,\
+    \ expression: NimNode): NimNode {.compileTime.} =\n        var terms: seq[tuple[degree,\
+    \ coefficient: NimNode]]\n        collectSparseTerms(expression, 1, terms)\n \
+    \       var termNodes = newNimNode(nnkBracket)\n        for term in terms:\n \
+    \           let coefficient = newCall(bindSym(\"init\"), coefficientType.copyNimTree,\n\
+    \                term.coefficient)\n            termNodes.add(newTree(nnkTupleConstr,\n\
+    \                newTree(nnkExprColonExpr, ident(\"degree\"), term.degree),\n\
+    \                newTree(nnkExprColonExpr, ident(\"coefficient\"), coefficient)))\n\
+    \        let constructor = newTree(nnkBracketExpr, bindSym(\"initSparseFPS\"),\n\
+    \            coefficientType.copyNimTree)\n        newCall(constructor, termNodes)\n\
+    \n    macro sparseFPSLiteral(coefficientType,\n            expression: untyped):\
+    \ untyped =\n        buildSparseFPS(coefficientType, expression)\n\n    template\
+    \ sfps*[T](expression: untyped): untyped =\n        ## \u591A\u9805\u5F0F\u98A8\
+    \u306E\u5F0F\u304B\u3089\u758E\u306AFPS\u3092\u69CB\u7BC9\u3059\u308B\u3002\n\
+    \        ## \u6307\u6570\u306B\u306F\u975E\u8CA0\u306Eint\u5F0F\u3092\u6307\u5B9A\
+    \u3067\u304D\u308B\u3002\n        ## \u4F8B: sfps[Mint](1 + 2*x - x^3 + x^k)\n\
+    \        sparseFPSLiteral(type(T), expression)\n\n    template SFPS*[T](expression:\
+    \ untyped): untyped =\n        ## sfps\u306E\u5927\u6587\u5B57\u59CB\u307E\u308A\
+    \u306E\u5225\u540D\u3002\n        sparseFPSLiteral(type(T), expression)\n\n  \
+    \  proc `+`*[T](f: SparseFPS[T], c: SomeInteger): SparseFPS[T] =\n        result\
+    \ = f\n        let constant = init(T, c)\n        if constant.val == 0: return\n\
+    \        if result.len == 0 or result[0].degree > 0:\n            result.insert((degree:\
+    \ 0, coefficient: constant), 0)\n        else:\n            result[0].coefficient\
+    \ += constant\n            if result[0].coefficient.val == 0: result.delete(0)\n\
+    \n    proc `+`*[T](c: SomeInteger, f: SparseFPS[T]): SparseFPS[T] = f + c\n\n\
+    \    proc `+=`*[T](f: var SparseFPS[T], c: SomeInteger) =\n        f = f + c\n\
+    \n    proc isZero*[T](f: SparseFPS[T]): bool = f.len == 0\n\n    proc degree*[T](f:\
+    \ SparseFPS[T]): int =\n        ## \u96F6FPS\u306B\u5BFE\u3057\u3066\u306F -1\
+    \ \u3092\u8FD4\u3059\u3002\n        if f.len == 0: -1 else: f[^1].degree\n\n \
+    \   proc coefficient*[T](f: SparseFPS[T], degree: int): T =\n        ## \u6307\
+    \u5B9A\u3057\u305F\u6B21\u6570\u306E\u4FC2\u6570\u3092\u8FD4\u3059\u3002\u9805\
+    \u304C\u5B58\u5728\u3057\u306A\u3051\u308C\u3070\u96F6\u3092\u8FD4\u3059\u3002\
+    \n        if degree < 0: return init(T, 0)\n        var left = 0\n        var\
+    \ right = f.len\n        while left < right:\n            let middle = (left +\
+    \ right) shr 1\n            if f[middle].degree < degree: left = middle + 1\n\
+    \            else: right = middle\n        if left < f.len and f[left].degree\
+    \ == degree:\n            result = f[left].coefficient\n\n    proc constantTerm*[T](f:\
+    \ SparseFPS[T]): T =\n        f.coefficient(0)\n\n    proc toDense*[T](f: SparseFPS[T],\
+    \ n: int): seq[T] =\n        ## x^n \u3067\u6253\u3061\u5207\u3063\u305F\u5BC6\
+    \u306A\u4FC2\u6570\u5217\u3078\u5909\u63DB\u3059\u308B\u3002\n        if n <=\
+    \ 0: return @[]\n        result = newSeq[T](n)\n        for (degree, coefficient)\
+    \ in f:\n            if degree >= n: break\n            result[degree] = coefficient\n\
+    \n    proc truncated[T](f: SparseFPS[T], n: int): SparseFPS[T] =\n        for\
+    \ term in f:\n            if term.degree >= n: break\n            result.add(term)\n\
+    \n    proc mulPrefix*[T](f: seq[T], g: SparseFPS[T], n: int): seq[T] =\n     \
+    \   ## \u5BC6\u306AFPS\u3068\u758E\u306AFPS\u306E\u7A4D\u3092 x^n \u3067\u6253\
+    \u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n        if n <= 0: return @[]\n  \
+    \      result = newSeq[T](n)\n        for (degree, coefficient) in g:\n      \
+    \      if degree >= n: break\n            for i in 0..<min(f.len, n - degree):\n\
+    \                result[i + degree] += f[i] * coefficient\n\n    proc `*`*[T](f:\
+    \ seq[T], g: SparseFPS[T]): seq[T] =\n        if f.len == 0 or g.isZero: return\
+    \ @[]\n        f.mulPrefix(g, f.len + g.degree)\n\n    proc `*`*[T](f: SparseFPS[T],\
+    \ g: seq[T]): seq[T] = g * f\n\n    proc `*=`*[T](f: var seq[T], g: SparseFPS[T])\
+    \ =\n        ## f\u306E\u9577\u3055\u3092\u4FDD\u3061\u3001\u758E\u306AFPS\u3092\
+    \u639B\u3051\u305F\u7D50\u679C\u3067\u7F6E\u304D\u63DB\u3048\u308B\u3002\n   \
+    \     let n = f.len\n        f = f.mulPrefix(g, n)\n\n    proc divPrefix*[T](f:\
     \ seq[T], g: SparseFPS[T], n: int): seq[T] =\n        ## f / g \u3092 x^n \u3067\
     \u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n        if n <= 0: return @[]\n\
     \        let constant = g.constantTerm\n        doAssert constant.val != 0, \"\
@@ -249,11 +301,14 @@ data:
     \     for (degree, coefficient) in g:\n                if degree == 0: continue\n\
     \                if degree > i: break\n                result[i] -= coefficient\
     \ * result[i - degree]\n            result[i] *= constantInverse\n\n    proc `/`*[T](f:\
-    \ seq[T], g: SparseFPS[T]): seq[T] = f.divPrefix(g, f.len)\n\n    proc inv*[T](f:\
-    \ SparseFPS[T], n: int): seq[T] =\n        ## \u758E\u306AFPS\u306E\u4E57\u6CD5\
-    \u9006\u5143\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n\
-    \        @[init(T, 1)].divPrefix(f, n)\n\n    proc exp*[T](f: SparseFPS[T], n:\
-    \ int): seq[T] =\n        ## \u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\
+    \ seq[T], g: SparseFPS[T]): seq[T] = f.divPrefix(g, f.len)\n\n    proc `/=`*[T](f:\
+    \ var seq[T], g: SparseFPS[T]) =\n        ## f\u306E\u9577\u3055\u3092\u4FDD\u3061\
+    \u3001\u758E\u306AFPS\u3067\u5272\u3063\u305F\u7D50\u679C\u3067\u7F6E\u304D\u63DB\
+    \u3048\u308B\u3002\n        let n = f.len\n        f = f.divPrefix(g, n)\n\n \
+    \   proc inv*[T](f: SparseFPS[T], n: int): seq[T] =\n        ## \u758E\u306AFPS\u306E\
+    \u4E57\u6CD5\u9006\u5143\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\
+    \u3002\n        @[init(T, 1)].divPrefix(f, n)\n\n    proc exp*[T](f: SparseFPS[T],\
+    \ n: int): seq[T] =\n        ## \u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\
     \u95A2\u6570\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n\
     \        if n <= 0: return @[]\n        doAssert n <= T.umod.int, \"\u758E\u306A\
     FPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\u95A2\u6570\u3067\u306F n \u304C\u6CD5\
@@ -485,37 +540,37 @@ data:
     \ powTransition[T](unit, exponent, dimension)\n        nthTermPolynomialRecurrence[T](initial,\
     \ recurrence.matrix,\n            recurrence.denominator, shiftedDegree) * scale\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/fps/product_tree.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inner_math.nim
-  - cplib/fps/bostan_mori.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
-  - cplib/fps/product_tree.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inner_math.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/fps/sparse_formal_power_series.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-08 11:13:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-09 13:22:30+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim

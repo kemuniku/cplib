@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/utils/game.nim
     title: cplib/utils/game.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/utils/game.nim
     title: cplib/utils/game.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -36,16 +36,42 @@ data:
     doAssert not can_win(3, subtract_by_turn)\ndoAssert can_win(0, subtract_by_turn,\
     \ win_when_no_moves = true)\n\nproc cyclic(state: int): seq[int] = @[state]\n\n\
     block:\n    var caught = false\n    try:\n        discard can_win(0, cyclic)\n\
-    \    except ValueError:\n        caught = true\n    doAssert caught\n\necho \"\
-    Hello World\"\n"
+    \    except ValueError:\n        caught = true\n    doAssert caught\n\nblock:\n\
+    \    var calls = 0\n    proc counted(state: int): seq[int] =\n        inc calls\n\
+    \        subtract(state)\n\n    let solve = init_can_win(counted)\n    for state\
+    \ in 0..20:\n        doAssert solve(state) == (state mod 3 != 0)\n    doAssert\
+    \ calls == 21\n    for state in 0..20:\n        discard solve(state)\n    doAssert\
+    \ calls == 21\n\n    let misere = init_can_win(counted, win_when_no_moves = true)\n\
+    \    for state in 0..20:\n        doAssert misere(state) == (state mod 3 != 1)\n\
+    \    doAssert calls == 42\n\nblock:\n    var calls = 0\n    proc counted(state:\
+    \ int, is_first: bool): seq[int] =\n        inc calls\n        subtract_by_turn(state,\
+    \ is_first)\n\n    let solve = init_can_win(counted)\n    for state in 0..20:\n\
+    \        doAssert solve(state) == can_win(state, subtract_by_turn)\n    let previous_calls\
+    \ = calls\n    for state in 0..20:\n        discard solve(state)\n    doAssert\
+    \ calls == previous_calls\n    let misere = init_can_win(counted, win_when_no_moves\
+    \ = true)\n    for state in 0..20:\n        doAssert misere(state) == can_win(state,\
+    \ subtract_by_turn, true)\n\nblock:\n    let solve = init_can_win(erase_suffix)\n\
+    \    doAssert solve(\"abc\")\n    doAssert not solve(\"abcd\")\n\nblock:\n   \
+    \ var calls = 0\n    proc failing(state: int): seq[int] =\n        inc calls\n\
+    \        raise newException(ValueError, \"test\")\n    proc failing_by_turn(state:\
+    \ int, is_first: bool): seq[int] =\n        failing(state)\n\n    let solve =\
+    \ init_can_win(failing)\n    let solve_by_turn = init_can_win(failing_by_turn)\n\
+    \    for attempt in 0..1:\n        for f in [solve, solve_by_turn]:\n        \
+    \    var caught = false\n            try:\n                discard f(0)\n    \
+    \        except ValueError as e:\n                caught = true\n            \
+    \    doAssert e.msg == \"test\"\n            doAssert caught\n    doAssert calls\
+    \ == 4\n\nblock:\n    let solve = init_can_win(cyclic)\n    for attempt in 0..1:\n\
+    \        var caught = false\n        try:\n            discard solve(0)\n    \
+    \    except ValueError:\n            caught = true\n        doAssert caught\n\n\
+    echo \"Hello World\"\n"
   dependsOn:
   - cplib/utils/game.nim
   - cplib/utils/game.nim
   isVerificationFile: true
   path: verify/utils/game_test.nim
   requiredBy: []
-  timestamp: '2026-07-27 08:09:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-09 16:56:35+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/utils/game_test.nim
 layout: document

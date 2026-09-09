@@ -1,105 +1,129 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/fps/bmbm.nim
+    title: cplib/fps/bmbm.nim
+  - icon: ':question:'
+    path: cplib/fps/bmbm.nim
+    title: cplib/fps/bmbm.nim
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/fps/power_projection.nim
+    title: cplib/fps/power_projection.nim
+  - icon: ':question:'
+    path: cplib/fps/power_projection.nim
+    title: cplib/fps/power_projection.nim
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/berlekamp_massey_test.nim
+    title: verify/AI/berlekamp_massey_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/berlekamp_massey_test.nim
+    title: verify/AI/berlekamp_massey_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bmbm_test.nim
+    title: verify/AI/bmbm_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bmbm_test.nim
+    title: verify/AI/bmbm_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
@@ -195,15 +219,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -218,30 +242,40 @@ data:
     \ =\n        ## f \u3092 x^n \u3067\u6253\u3061\u5207\u308B\u3002\u8FD4\u308A\u5024\
     \u306E\u9577\u3055\u306F max(n, 0) \u306B\u306A\u308B\u3002\n        if n <= 0:\
     \ return @[]\n        result = newSeq[T](n)\n        for i in 0..<min(f.len, n):\
-    \ result[i] = f[i]\n\n    proc normalized*[T: BarrettModint or MontgomeryModint](f:\
+    \ result[i] = f[i]\n\n    proc coefficient*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], degree: int): T =\n        ## \u6307\u5B9A\u3057\u305F\u6B21\u6570\u306E\
+    \u4FC2\u6570\u3092\u8FD4\u3059\u3002\u7BC4\u56F2\u5916\u306A\u3089\u96F6\u3092\
+    \u8FD4\u3059\u3002\n        if degree < 0 or degree >= f.len: return init(T, 0)\n\
+    \        result = f[degree]\n\n    proc normalized*[T: BarrettModint or MontgomeryModint](f:\
     \ seq[T]): seq[T] =\n        ## \u9AD8\u6B21\u5074\u306E\u4E0D\u8981\u306A\u96F6\
     \u4FC2\u6570\u3092\u53D6\u308A\u9664\u304F\u3002\n        result = f\n       \
     \ while result.len > 0 and result[^1].val == 0: result.setLen(result.len - 1)\n\
     \n    proc `+`*[T: BarrettModint or MontgomeryModint](f, g: seq[T]): seq[T] =\n\
     \        result = newSeq[T](max(f.len, g.len))\n        for i in 0..<f.len: result[i]\
-    \ += f[i]\n        for i in 0..<g.len: result[i] += g[i]\n\n    proc `-`*[T: BarrettModint\
-    \ or MontgomeryModint](f, g: seq[T]): seq[T] =\n        result = newSeq[T](max(f.len,\
-    \ g.len))\n        for i in 0..<f.len: result[i] += f[i]\n        for i in 0..<g.len:\
-    \ result[i] -= g[i]\n\n    proc `-`*[T: BarrettModint or MontgomeryModint](f:\
-    \ seq[T]): seq[T] =\n        result = newSeq[T](f.len)\n        for i in 0..<f.len:\
-    \ result[i] = -f[i]\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](f,\
-    \ g: seq[T]): seq[T] =\n        convolution(f, g)\n\n    proc `*`*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n\
-    \        for i in 0..<f.len: result[i] = f[i] * c\n\n    proc `*`*[T: BarrettModint\
-    \ or MontgomeryModint](c: T, f: seq[T]): seq[T] = f * c\n\n    proc `/`*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n\
-    \        let cinv = c.inv\n        for i in 0..<f.len: result[i] = f[i] * cinv\n\
-    \n    proc `+=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T])\
-    \ =\n        if f.len < g.len: f.setLen(g.len)\n        for i in 0..<g.len: f[i]\
-    \ += g[i]\n\n    proc `-=`*[T: BarrettModint or MontgomeryModint](f: var seq[T],\
-    \ g: seq[T]) =\n        if f.len < g.len: f.setLen(g.len)\n        for i in 0..<g.len:\
-    \ f[i] -= g[i]\n\n    proc `*=`*[T: BarrettModint or MontgomeryModint](f: var\
-    \ seq[T], c: T) =\n        for x in f.mitems: x *= c\n\n    proc `/=`*[T: BarrettModint\
+    \ += f[i]\n        for i in 0..<g.len: result[i] += g[i]\n\n    proc `+`*[T: BarrettModint\
+    \ or MontgomeryModint](f: seq[T], c: SomeInteger): seq[T] =\n        result =\
+    \ f\n        if result.len == 0: result.add(init(T, c))\n        else: result[0]\
+    \ += c\n\n    proc `+`*[T: BarrettModint or MontgomeryModint](c: SomeInteger,\
+    \ f: seq[T]): seq[T] = f + c\n\n    proc `-`*[T: BarrettModint or MontgomeryModint](f,\
+    \ g: seq[T]): seq[T] =\n        result = newSeq[T](max(f.len, g.len))\n      \
+    \  for i in 0..<f.len: result[i] += f[i]\n        for i in 0..<g.len: result[i]\
+    \ -= g[i]\n\n    proc `-`*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T]\
+    \ =\n        result = newSeq[T](f.len)\n        for i in 0..<f.len: result[i]\
+    \ = -f[i]\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](f, g: seq[T]):\
+    \ seq[T] =\n        convolution(f, g)\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n        for i in\
+    \ 0..<f.len: result[i] = f[i] * c\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](c:\
+    \ T, f: seq[T]): seq[T] = f * c\n\n    proc `/`*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n        let cinv\
+    \ = c.inv\n        for i in 0..<f.len: result[i] = f[i] * cinv\n\n    proc `+=`*[T:\
+    \ BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T]) =\n        if f.len\
+    \ < g.len: f.setLen(g.len)\n        for i in 0..<g.len: f[i] += g[i]\n\n    proc\
+    \ `+=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], c: SomeInteger) =\n\
+    \        if f.len == 0: f.add(init(T, c))\n        else: f[0] += c\n\n    proc\
+    \ `-=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T]) =\n  \
+    \      if f.len < g.len: f.setLen(g.len)\n        for i in 0..<g.len: f[i] -=\
+    \ g[i]\n\n    proc `*=`*[T: BarrettModint or MontgomeryModint](f: var seq[T],\
+    \ c: T) =\n        for x in f.mitems: x *= c\n\n    proc `/=`*[T: BarrettModint\
     \ or MontgomeryModint](f: var seq[T], c: T) =\n        let cinv = c.inv\n    \
     \    for x in f.mitems: x *= cinv\n\n    proc derivative*[T: BarrettModint or\
     \ MontgomeryModint](f: seq[T]): seq[T] =\n        if f.len <= 1: return @[]\n\
@@ -264,33 +298,38 @@ data:
     \ error[i] = -product[m + i]\n            let extension = result * error\n   \
     \         result.setLen(next)\n            for i in 0..<m: result[m + i] = extension[i]\n\
     \            m = next\n        result.setLen(n)\n\n    proc inv*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T]): seq[T] = f.inv(f.len)\n\n    proc log*[T: BarrettModint\
+    \ or MontgomeryModint](f: seq[T]): seq[T] = f.inv(f.len)\n\n    proc `/`*[T: BarrettModint\
+    \ or MontgomeryModint](f, g: seq[T]): seq[T] =\n        ## f / g \u306E\u5148\u982D\
+    \ max(f.len, g.len) \u9805\u3092\u6C42\u3081\u308B\u3002\n        let n = max(f.len,\
+    \ g.len)\n        if n == 0: return @[]\n        result = prefix(f * g.inv(n),\
+    \ n)\n\n    proc `/=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g:\
+    \ seq[T]) =\n        f = f / g\n\n    proc log*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], n: int): seq[T] =\n        ## x^n \u3067\u6253\u3061\u5207\u3063\u305F\
+    \u5F62\u5F0F\u7684\u5BFE\u6570\u3092\u6C42\u3081\u308B\u3002f(0) = 1 \u3092\u4EEE\
+    \u5B9A\u3059\u308B\u3002\n        if n <= 0: return @[]\n        doAssert n <=\
+    \ T.umod.int, \"FPS\u306E\u5F62\u5F0F\u7684\u5BFE\u6570\u3067\u306F n \u304C\u6CD5\
+    \u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        doAssert\
+    \ f.len > 0 and f[0].val == 1,\n            \"FPS\u306E\u5F62\u5F0F\u7684\u5BFE\
+    \u6570\u3092\u6C42\u3081\u308B\u306B\u306F\u5B9A\u6570\u9805\u304C1\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        let fPrefix = if f.len <= n: f\
+    \ else: f[0..<n]\n        let product = prefix(derivative(fPrefix) * fPrefix.inv(n),\
+    \ n - 1)\n        result = integral(product)\n\n    proc log*[T: BarrettModint\
+    \ or MontgomeryModint](f: seq[T]): seq[T] = f.log(f.len)\n\n    proc exp*[T: BarrettModint\
     \ or MontgomeryModint](f: seq[T], n: int): seq[T] =\n        ## x^n \u3067\u6253\
-    \u3061\u5207\u3063\u305F\u5F62\u5F0F\u7684\u5BFE\u6570\u3092\u6C42\u3081\u308B\
-    \u3002f(0) = 1 \u3092\u4EEE\u5B9A\u3059\u308B\u3002\n        if n <= 0: return\
-    \ @[]\n        doAssert n <= T.umod.int, \"FPS\u306E\u5F62\u5F0F\u7684\u5BFE\u6570\
-    \u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308B\"\n        doAssert f.len > 0 and f[0].val == 1,\n            \"FPS\u306E\
-    \u5F62\u5F0F\u7684\u5BFE\u6570\u3092\u6C42\u3081\u308B\u306B\u306F\u5B9A\u6570\
-    \u9805\u304C1\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        let fPrefix\
-    \ = if f.len <= n: f else: f[0..<n]\n        let product = prefix(derivative(fPrefix)\
-    \ * fPrefix.inv(n), n - 1)\n        result = integral(product)\n\n    proc log*[T:\
-    \ BarrettModint or MontgomeryModint](f: seq[T]): seq[T] = f.log(f.len)\n\n   \
-    \ proc exp*[T: BarrettModint or MontgomeryModint](f: seq[T], n: int): seq[T] =\n\
-    \        ## x^n \u3067\u6253\u3061\u5207\u3063\u305F\u5F62\u5F0F\u7684\u6307\u6570\
-    \u95A2\u6570\u3092\u6C42\u3081\u308B\u3002f(0) = 0 \u3092\u4EEE\u5B9A\u3059\u308B\
-    \u3002\n        if n <= 0: return @[]\n        doAssert n <= T.umod.int, \"FPS\u306E\
-    \u5F62\u5F0F\u7684\u6307\u6570\u95A2\u6570\u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\
-    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        doAssert f.len ==\
-    \ 0 or f[0].val == 0,\n            \"FPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\u95A2\
-    \u6570\u3092\u6C42\u3081\u308B\u306B\u306F\u5B9A\u6570\u9805\u304C0\u3067\u3042\
-    \u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        result = newSeq[T](1)\n      \
-    \  result[0] = 1\n        var m = 1\n        while m < n:\n            let next\
-    \ = min(m * 2, n)\n            var correction = prefix(f, next) - result.log(next)\n\
-    \            correction.setLen(next)\n            correction[0] += 1\n       \
-    \     result = prefix(result * correction, next)\n            m = next\n\n   \
-    \ proc exp*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] = f.exp(f.len)\n\
-    \n    proc pow*[T: BarrettModint or MontgomeryModint](f: seq[T], k, n: int): seq[T]\
+    \u3061\u5207\u3063\u305F\u5F62\u5F0F\u7684\u6307\u6570\u95A2\u6570\u3092\u6C42\
+    \u3081\u308B\u3002f(0) = 0 \u3092\u4EEE\u5B9A\u3059\u308B\u3002\n        if n\
+    \ <= 0: return @[]\n        doAssert n <= T.umod.int, \"FPS\u306E\u5F62\u5F0F\u7684\
+    \u6307\u6570\u95A2\u6570\u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308B\"\n        doAssert f.len == 0 or f[0].val == 0,\n\
+    \            \"FPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\u95A2\u6570\u3092\u6C42\
+    \u3081\u308B\u306B\u306F\u5B9A\u6570\u9805\u304C0\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308B\"\n        result = newSeq[T](1)\n        result[0] = 1\n \
+    \       var m = 1\n        while m < n:\n            let next = min(m * 2, n)\n\
+    \            var correction = prefix(f, next) - result.log(next)\n           \
+    \ correction.setLen(next)\n            correction[0] += 1\n            result\
+    \ = prefix(result * correction, next)\n            m = next\n\n    proc exp*[T:\
+    \ BarrettModint or MontgomeryModint](f: seq[T]): seq[T] = f.exp(f.len)\n\n   \
+    \ proc pow*[T: BarrettModint or MontgomeryModint](f: seq[T], k, n: int): seq[T]\
     \ =\n        ## x^n \u3067\u6253\u3061\u5207\u3063\u305F\u6574\u6570\u51AA\u3092\
     \u6C42\u3081\u308B\u3002k \u306F\u975E\u8CA0\u3067\u306A\u3051\u308C\u3070\u306A\
     \u3089\u306A\u3044\u3002\n        doAssert k >= 0, \"FPS\u306E\u6574\u6570\u51AA\
@@ -351,24 +390,24 @@ data:
     \ f.divmod(g).r\n\n    proc eval*[T: BarrettModint or MontgomeryModint](f: seq[T],\
     \ x: T): T =\n        for i in countdown(f.high, 0): result = result * x + f[i]\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inner_math.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/inner_math.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/math/powmod.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/fps/formal_power_series.nim
   requiredBy:
@@ -376,18 +415,22 @@ data:
   - cplib/fps/composition.nim
   - cplib/fps/taylor_shift.nim
   - cplib/fps/taylor_shift.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/power_projection.nim
   - cplib/fps/sparse_formal_power_series.nim
   - cplib/fps/sparse_formal_power_series.nim
   - cplib/fps/product_tree.nim
   - cplib/fps/product_tree.nim
+  - cplib/fps/bmbm.nim
+  - cplib/fps/bmbm.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
   - cplib/fps/bostan_mori.nim
   - cplib/fps/bostan_mori.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/polynomial_interpolation.nim
-  timestamp: '2026-09-08 11:13:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-09 13:22:30+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim
@@ -421,8 +464,12 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/AI/berlekamp_massey_test.nim
+  - verify/AI/berlekamp_massey_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
+  - verify/AI/bmbm_test.nim
+  - verify/AI/bmbm_test.nim
 documentation_of: cplib/fps/formal_power_series.nim
 layout: document
 redirect_from:

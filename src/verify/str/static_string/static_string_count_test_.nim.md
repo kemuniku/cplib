@@ -1,18 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
+  - icon: ':question:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
+  - icon: ':question:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -33,14 +39,16 @@ data:
     \ Q = stdin.readLine().parseInt()\nvar SB = initStaticStringBase(S)\nfor i in\
     \ 0..<Q:\n    var T = stdin.readLine()\n    stdout.writeLine(SB.count(T))"
   dependsOn:
-  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   isVerificationFile: false
   path: verify/str/static_string/static_string_count_test_.nim
   requiredBy: []
-  timestamp: '2026-09-08 14:58:59+09:00'
+  timestamp: '2026-09-08 15:30:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_count_test_.nim

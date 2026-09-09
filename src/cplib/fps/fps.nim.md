@@ -1,124 +1,142 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/fps/berlekamp_massey.nim
+    title: cplib/fps/berlekamp_massey.nim
+  - icon: ':question:'
+    path: cplib/fps/berlekamp_massey.nim
+    title: cplib/fps/berlekamp_massey.nim
+  - icon: ':question:'
+    path: cplib/fps/bmbm.nim
+    title: cplib/fps/bmbm.nim
+  - icon: ':question:'
+    path: cplib/fps/bmbm.nim
+    title: cplib/fps/bmbm.nim
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: cplib/fps/power_projection.nim
+    title: cplib/fps/power_projection.nim
+  - icon: ':question:'
+    path: cplib/fps/power_projection.nim
+    title: cplib/fps/power_projection.nim
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -219,15 +237,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -241,54 +259,61 @@ data:
     \    import cplib/convolution/semi_relaxed_convolution\n    import cplib/fps/formal_power_series\n\
     \    import cplib/fps/product_of_polynomial_sequence\n    import cplib/fps/product_tree\n\
     \    import cplib/fps/polynomial_interpolation\n    import cplib/fps/taylor_shift\n\
-    \    import cplib/fps/composition\n    import cplib/fps/bostan_mori\n    import\
-    \ cplib/fps/sparse_formal_power_series\n"
+    \    import cplib/fps/composition\n    import cplib/fps/power_projection\n   \
+    \ import cplib/fps/bostan_mori\n    import cplib/fps/berlekamp_massey\n    import\
+    \ cplib/fps/bmbm\n    import cplib/fps/sparse_formal_power_series\n"
   dependsOn:
   - cplib/convolution/ntt.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/product_tree.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inner_math.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/fps/composition.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/composition.nim
-  - cplib/math/inner_math.nim
   - cplib/fps/polynomial_interpolation.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/fps/power_projection.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/fps/composition.nim
+  - cplib/math/inner_math.nim
+  - cplib/fps/composition.nim
+  - cplib/fps/berlekamp_massey.nim
   - cplib/fps/taylor_shift.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/bostan_mori.nim
   - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/ntt.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/math/inner_math.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/bmbm.nim
+  - cplib/math/powmod.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/fps/bmbm.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/fps/product_tree.nim
   isVerificationFile: false
   path: cplib/fps/fps.nim
   requiredBy: []
-  timestamp: '2026-09-08 11:13:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-09 17:06:01+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim

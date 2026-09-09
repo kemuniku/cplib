@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
   - icon: ':heavy_check_mark:'
@@ -19,12 +19,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/repeated_static_string.nim
     title: cplib/str/repeated_static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
+  - icon: ':question:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
+  - icon: ':question:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -76,18 +82,20 @@ data:
     \        assert cmp(left, right) == sign(cmp(materializedLeft, materializedRight))\n\
     \        assert cmp(right, left) == sign(cmp(materializedRight, materializedLeft))\n"
   dependsOn:
-  - cplib/str/static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/repeated_static_string.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/repeated_static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/AI/repeated_static_string_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 14:58:59+09:00'
+  timestamp: '2026-09-08 15:30:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/repeated_static_string_test.nim

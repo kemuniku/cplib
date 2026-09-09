@@ -1,23 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
+  - icon: ':question:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
+  - icon: ':question:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/longest_common_substring
     links:
@@ -41,15 +47,17 @@ data:
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
     echo a,\" \",b,\" \",c,\" \",d"
   dependsOn:
-  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 14:58:59+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-08 15:30:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
 layout: document

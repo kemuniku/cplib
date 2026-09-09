@@ -67,6 +67,9 @@ data:
       path: cplib/collections/lichaotree.nim
       title: cplib/collections/lichaotree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/parallel_unionfind.nim
+      title: cplib/collections/parallel_unionfind.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/persistent_array.nim
       title: cplib/collections/persistent_array.nim
     - icon: ':heavy_check_mark:'
@@ -81,6 +84,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/range_linear_add_range_min.nim
+      title: cplib/collections/range_linear_add_range_min.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/range_reverse_array.nim
       title: cplib/collections/range_reverse_array.nim
@@ -129,7 +135,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/slopetrick.nim
       title: cplib/collections/slopetrick.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/collections/staticRMQ.nim
       title: cplib/collections/staticRMQ.nim
     - icon: ':heavy_check_mark:'
@@ -169,19 +175,19 @@ data:
       title: cplib/collections/private/bitset_avx2_impl.nim
   - name: cplib/convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/convolution/convolution.nim
       title: cplib/convolution/convolution.nim
     - icon: ':heavy_check_mark:'
       path: cplib/convolution/convolution_old.nim
       title: cplib/convolution/convolution_old.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/convolution/ntt.nim
       title: cplib/convolution/ntt.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/convolution/relaxed_convolution.nim
       title: cplib/convolution/relaxed_convolution.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/convolution/semi_relaxed_convolution.nim
       title: cplib/convolution/semi_relaxed_convolution.nim
     - icon: ':heavy_check_mark:'
@@ -189,31 +195,40 @@ data:
       title: cplib/convolution/xor_convolution.nim
   - name: cplib/fps
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
+      path: cplib/fps/berlekamp_massey.nim
+      title: cplib/fps/berlekamp_massey.nim
+    - icon: ':question:'
+      path: cplib/fps/bmbm.nim
+      title: cplib/fps/bmbm.nim
+    - icon: ':question:'
       path: cplib/fps/bostan_mori.nim
       title: cplib/fps/bostan_mori.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/fps/composition.nim
       title: cplib/fps/composition.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/fps/formal_power_series.nim
       title: cplib/fps/formal_power_series.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/fps/fps.nim
       title: cplib/fps/fps.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/fps/polynomial_interpolation.nim
       title: cplib/fps/polynomial_interpolation.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
+      path: cplib/fps/power_projection.nim
+      title: cplib/fps/power_projection.nim
+    - icon: ':question:'
       path: cplib/fps/product_of_polynomial_sequence.nim
       title: cplib/fps/product_of_polynomial_sequence.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/fps/product_tree.nim
       title: cplib/fps/product_tree.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/fps/sparse_formal_power_series.nim
       title: cplib/fps/sparse_formal_power_series.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/fps/taylor_shift.nim
       title: cplib/fps/taylor_shift.nim
   - name: cplib/geometry
@@ -351,19 +366,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/fractions.nim
       title: cplib/math/fractions.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/inner_math.nim
       title: cplib/math/inner_math.nim
     - icon: ':heavy_check_mark:'
       path: cplib/math/int128.nim
       title: cplib/math/int128.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/inv_gcd.nim
       title: cplib/math/inv_gcd.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
     - icon: ':heavy_check_mark:'
@@ -375,7 +390,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/osa_k.nim
       title: cplib/math/osa_k.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/powmod.nim
       title: cplib/math/powmod.nim
     - icon: ':heavy_check_mark:'
@@ -415,16 +430,16 @@ data:
       title: cplib/matrix/static_matrix.nim
   - name: cplib/modint
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/modint/barrett_impl.nim
       title: cplib/modint/barrett_impl.nim
     - icon: ':heavy_check_mark:'
       path: cplib/modint/exp_modint.nim
       title: cplib/modint/exp_modint.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/modint/modint.nim
       title: cplib/modint/modint.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/modint/montgomery_impl.nim
       title: cplib/modint/montgomery_impl.nim
   - name: cplib/str
@@ -468,10 +483,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/run_length_encode.nim
       title: cplib/str/run_length_encode.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/str/static_string.nim
       title: cplib/str/static_string.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/str/suffix_array.nim
       title: cplib/str/suffix_array.nim
     - icon: ':heavy_check_mark:'
@@ -531,7 +546,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/cumsum2d.nim
       title: cplib/utils/cumsum2d.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: cplib/utils/game.nim
       title: cplib/utils/game.nim
     - icon: ':heavy_check_mark:'
@@ -1041,6 +1056,9 @@ data:
       path: verify/AI/bellmanford_test.nim
       title: verify/AI/bellmanford_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/berlekamp_massey_test.nim
+      title: verify/AI/berlekamp_massey_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/binary_search_test.nim
       title: verify/AI/binary_search_test.nim
     - icon: ':heavy_check_mark:'
@@ -1061,6 +1079,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/bitvector_test.nim
       title: verify/AI/bitvector_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bmbm_test.nim
+      title: verify/AI/bmbm_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/can_reverse_hash_string_test.nim
       title: verify/AI/can_reverse_hash_string_test.nim
@@ -1305,6 +1326,9 @@ data:
       path: verify/AI/palindromic_tree_test.nim
       title: verify/AI/palindromic_tree_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/parallel_unionfind_test.nim
+      title: verify/AI/parallel_unionfind_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_array_test.nim
       title: verify/AI/persistent_array_test.nim
     - icon: ':heavy_check_mark:'
@@ -1346,6 +1370,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/random_helper_test.nim
       title: verify/AI/random_helper_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/range_linear_add_range_min_test.nim
+      title: verify/AI/range_linear_add_range_min_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/rangeset_test.nim
       title: verify/AI/rangeset_test.nim
@@ -1499,6 +1526,9 @@ data:
       path: verify/collections/hashtable_yuki2686_test.nim
       title: verify/collections/hashtable_yuki2686_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/parallel_unionfind_test.nim
+      title: verify/collections/parallel_unionfind_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/persistent_binary_trie_test.nim
       title: verify/collections/persistent_binary_trie_test.nim
     - icon: ':heavy_check_mark:'
@@ -1513,6 +1543,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_kth_smallest_test.nim
       title: verify/collections/range_kth_smallest_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_linear_add_range_min_test.nim
+      title: verify/collections/range_linear_add_range_min_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_reverse_array_monoid_test.nim
       title: verify/collections/range_reverse_array_monoid_test.nim
@@ -1713,6 +1746,9 @@ data:
       path: verify/fps/exp_of_formal_power_series_test.nim
       title: verify/fps/exp_of_formal_power_series_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/fps/find_linear_recurrence_test.nim
+      title: verify/fps/find_linear_recurrence_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/fps/inv_of_formal_power_series_test.nim
       title: verify/fps/inv_of_formal_power_series_test.nim
     - icon: ':heavy_check_mark:'
@@ -1751,7 +1787,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
       title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/fps/sqrt_of_formal_power_series_test.nim
       title: verify/fps/sqrt_of_formal_power_series_test.nim
   - name: verify/geometry/CGL_1
@@ -2055,28 +2091,28 @@ data:
       title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str/static_string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/str/static_string/static_string_LCS_test.nim
       title: verify/str/static_string/static_string_LCS_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
       title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/str/static_string/static_string_LCS_useSA_test.nim
       title: verify/str/static_string/static_string_LCS_useSA_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/str/static_string/static_string_SA_test.nim
       title: verify/str/static_string/static_string_SA_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
       title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/str/static_string/static_string_initSA_test.nim
       title: verify/str/static_string/static_string_initSA_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_lcp_test.nim
       title: verify/str/static_string/static_string_lcp_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/str/static_string/static_string_zalgo_test.nim
       title: verify/str/static_string/static_string_zalgo_test.nim
   - name: verify/tmpl
@@ -2138,9 +2174,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_int_test.nim
       title: verify/utils/binary_search_int_test.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/utils/game_test.nim
       title: verify/utils/game_test.nim
+    - icon: ':x:'
+      path: verify/utils/game_warning_test.nim
+      title: verify/utils/game_warning_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim
