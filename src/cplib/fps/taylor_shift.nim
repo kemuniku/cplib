@@ -12,11 +12,11 @@ when not declared CPLIB_FPS_TAYLOR_SHIFT:
             "Taylor shiftでは使用する階乗がすべて法未満である必要がある"
         var fact = newSeq[T](n)
         var factInv = newSeq[T](n)
-        fact[0] = 1
-        factInv[0] = 1
+        fact[0] = init(T, 1)
         for i in 1..<n:
             fact[i] = fact[i - 1] * i
-            factInv[i] = factInv[i - 1] / i
+        factInv[^1] = fact[^1].inv
+        for i in countdown(n - 1, 1): factInv[i - 1] = factInv[i] * i
         var left = newSeq[T](n)
         var right = newSeq[T](n)
         var cpow = init(T, 1)
