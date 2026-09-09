@@ -2,24 +2,27 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
     const CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND* = 1
     import sequtils,algorithm
     type PartialPersistentUnionFind* = object
-        par_or_siz : seq[int] #0以上のとき、親の頂点番号を表す。0未満のとき、-(集合のサイズ)を表す。
+        par_or_siz : seq[int32] #0以上のとき、親の頂点番号を表す。0未満のとき、-(集合のサイズ)を表す。
         time : seq[int] # 親との辺がつながった時間を表す。-1のとき、rootである。
         size_time : seq[seq[int]]
         size_value : seq[seq[int]] # ある時点での頂点xがrootとなる集合の大きさ
         last : int 
 
     proc initPartialPersistentUnionFind*(N:int): PartialPersistentUnionFind=
-        result.par_or_siz = newSeqWith(N,-1)
+        result.par_or_siz = newSeqWith(N,-1'i32)
         result.time = newseqwith(N,-1)
         result.size_time = newseqwith(N,@[-1])
         result.size_value = newseqwith(N,@[1])
         result.last = -1
 
-    proc root*(self:var PartialPersistentUnionFind,x:int,t:int):int=
+    proc root_i32(self:var PartialPersistentUnionFind,x:int,t:int):int32=
         var now = x
         while self.time[now] != -1 and self.time[now] <= t:
-            now = self.par_or_siz[now]
-        return now
+            now = self.par_or_siz[now].int
+        return now.int32
+
+    proc root*(self:var PartialPersistentUnionFind,x:int,t:int):int=
+        return self.root_i32(x,t).int
 
     proc root*(self:var PartialPersistentUnionFind,x:int):int=
         return self.root(x,self.last)
@@ -27,17 +30,19 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
     proc unite*(self:var PartialPersistentUnionFind,u,v,t:int):bool {.discardable.}=
         assert self.last <= t
         self.last = t
-        var u = self.root(u)
-        var v = self.root(v)
+        var u = self.root_i32(u,self.last)
+        var v = self.root_i32(v,self.last)
         if u == v:
             return false
-        if self.par_or_siz[u] > self.par_or_siz[v]:
+        if self.par_or_siz[u.int] > self.par_or_siz[v.int]:
             swap(u,v)
-        self.par_or_siz[u] += self.par_or_siz[v]
-        self.par_or_siz[v] = u
-        self.size_time[u].add(t)
-        self.size_value[u].add(-self.par_or_siz[u])
-        self.time[v] = t
+        let ui = u.int
+        let vi = v.int
+        self.par_or_siz[ui] += self.par_or_siz[vi]
+        self.par_or_siz[vi] = u
+        self.size_time[ui].add(t)
+        self.size_value[ui].add((-self.par_or_siz[ui]).int)
+        self.time[vi] = t
         return true
 
     proc unite*(self:var PartialPersistentUnionFind,u,v:int):int {.discardable.}=
@@ -45,14 +50,14 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
         return self.last
 
     proc issame*(self:var PartialPersistentUnionFind,u,v,t:int):bool=
-        return self.root(u,t) == self.root(v,t)
+        return self.root_i32(u,t) == self.root_i32(v,t)
 
     proc issame*(self:var PartialPersistentUnionFind,u,v:int):bool=
-        return self.root(u) == self.root(v)
+        return self.root_i32(u,self.last) == self.root_i32(v,self.last)
 
     proc size*(self:var PartialPersistentUnionFind,x,t:int):int=
         assert t >= -1
-        var x = self.root(x,t)
+        var x = self.root_i32(x,t).int
         return self.size_value[x][self.size_time[x].upperBound(t)-1]
 
     proc size*(self:var PartialPersistentUnionFind,x:int):int=
@@ -66,10 +71,10 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
         var tv : seq[int] = @[v]
         var v = v
         while self.par_or_siz[u] >= 0:
-            u = self.par_or_siz[u]
+            u = self.par_or_siz[u].int
             tu.add(u)
         while self.par_or_siz[v] >= 0:
-            v = self.par_or_siz[v]
+            v = self.par_or_siz[v].int
             tv.add(v)
         if u != v:
             return -2
@@ -89,10 +94,9 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
             return -1
         var now = x
         while self.time[now] != -1:
-            now = self.par_or_siz[now]
+            now = self.par_or_siz[now].int
             if self.size_value[now][^1] >= size:
                 return self.size_time[now][self.size_value[now].lowerBound(size)]
-
 
 
 

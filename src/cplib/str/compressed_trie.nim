@@ -6,14 +6,16 @@ when not declared CPLIB_STR_COMPRESSED_TRIE:
     type CompressedTrieNode* = ref object
         parent* : CompressedTrieNode
         child* : array['a'..'z',CompressedTrieNode]
-        s* : StaticString
+        s* : StaticString[char]
         cnt* : int32
         subtree_sum* : int32
 
-    proc initCompressedTrie*(S:openArray[StaticString],sorted:bool=false):CompressedTrieNode=
+    proc initCompressedTrie*(S:openArray[StaticString[char]],sorted:bool=false):CompressedTrieNode=
         var S = @S
         if not sorted:
             S.sort()
+        if S.len == 0:
+            return CompressedTrieNode()
         var root = CompressedTrieNode(s:S[0][0..<0])
         var stack = @[root]
         for s in S:
@@ -59,8 +61,8 @@ when not declared CPLIB_STR_COMPRESSED_TRIE:
                 continue
             debug_dfs(node.child[c],depth+1)
 
-    proc toGraph*(root:CompressedTrieNode):WeightedDirectedGraph[StaticString]=
-        var p = @[(-1,StaticString())]
+    proc toGraph*(root:CompressedTrieNode):WeightedDirectedGraph[StaticString[char]]=
+        var p = @[(-1,StaticString[char]())]
         var cnt = 1
         proc dfs(node:CompressedTrieNode,id:int)=
             for c in 'a'..'z':
@@ -70,13 +72,13 @@ when not declared CPLIB_STR_COMPRESSED_TRIE:
                     p.add((id,node.child[c].s[l..<len(node.child[c].s)]))
                     dfs(node.child[c],cnt-1)
         dfs(root,0)
-        result = initWeightedDirectedGraph(len(p),StaticString)
+        result = initWeightedDirectedGraph(len(p),StaticString[char])
         for i in 1..<len(p):
             result.add_edge(p[i][0],i,p[i][1])
 
     type VirtualTrieNode = ref object
         current_node* : CompressedTrieNode
-        now* : StaticString
+        now* : StaticString[char]
 
     proc get_virtualnode*(node:CompressedTrieNode):VirtualTrieNode=
         return VirtualTrieNode(current_node:node,now:node.s[0..<0])

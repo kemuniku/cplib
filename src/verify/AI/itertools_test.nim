@@ -24,4 +24,5 @@ assert toSeq(combinations_withf(@[2, 3, 5], 2, proc(l, r: int): int = l * r)) ==
 assert toSeq(combinations(@[1, 2, 3], 2)).mapIt(@[it[0], it[1]]) == @[@[1, 2], @[1, 3], @[2, 3]]
 assert toSeq(product(@[0, 1], 2)) == @[@[0, 0], @[1, 0], @[0, 1], @[1, 1]]
 assert toSeq(product(@[7], 0)) == @[newSeq[int]()]
+assert toSeq(product(newSeq[int](), 2)) == @[]
 assert toSeq(partitions(4)) == @[@[1, 1, 1, 1], @[1, 1, 2], @[1, 3], @[2, 2], @[4]]

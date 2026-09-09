@@ -25,9 +25,11 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
             if v[i]:
                 varor(result.bits[i shr 6],1u shl (i and mask))
 
-    proc initBitSet*(v:openArray[int],size:static int):Bitset[size]=
+    proc initBitSetFromIndexes*(indexes:openArray[int],size:static int):Bitset[size]=
         const mask = ((1 shl 6) - 1)
-        for i in v:
+        for i in indexes:
+            if i < 0 or i >= size:
+                raise newException(IndexDefect, "BitSet index out of bounds")
             varor(result.bits[i shr 6],1u shl (i and mask))
     
     proc `&`*[size](x,y:BitSet[size]):BitSet[size]=
@@ -70,6 +72,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
                 tmp = msk
     
     proc `<<`*[size](bitset:BitSet[size],x:int):BitSet[size]=
+        ## 添字が大きい方向へxビットずらし、範囲外を切り捨てます。
         if x >= size:
             return
         for i in 0..<len(bitset.bits):
@@ -79,7 +82,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
         var mod64 = x mod 64
         if mod64 != 0:
             for i in 0..<len(bitset.bits):
-                var msk = result.bits[i] and bitnot((1u shl mod64) - 1)
+                let msk = result.bits[i]
                 result.bits[i].varshl(mod64)
                 result.bits[i].varor(tmp shr (64-mod64))
                 tmp = msk
@@ -98,16 +101,38 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
             result += (x.bits[i] xor y.bits[i]).popcount()
     
     proc `~`*[size](x:BitSet[size]):BitSet[size]=
-        for i in 0..<len(x.bits)-1:
-            result.bits[i] = bitnot(x.bits[i])
-        var mod64 = size mod 64
-        if mod64 == 0:
-            result.bits[^1] = bitnot(x.bits[^1])
+        when size == 0:
+            return
         else:
-            result.bits[^1] = x.bits[^1] xor ((1u shl mod64) - 1)
+            for i in 0..<len(x.bits)-1:
+                result.bits[i] = bitnot(x.bits[i])
+            var mod64 = size mod 64
+            if mod64 == 0:
+                result.bits[^1] = bitnot(x.bits[^1])
+            else:
+                result.bits[^1] = x.bits[^1] xor ((1u shl mod64) - 1)
     proc popcount*[size](x:BitSet[size]):int=
         for i in 0..<len(x.bits):
             result += x.bits[i].popcount()
+
+    iterator items*[size](bitset:BitSet[size]):int=
+        for wordIndex in 0..<len(bitset.bits):
+            var word = bitset.bits[wordIndex]
+            while word != 0:
+                let bitIndex = word.countTrailingZeroBits()
+                let index = wordIndex * 64 + bitIndex
+                if index >= size:
+                    break
+                yield index
+                word = word and (word - 1)
+
+    proc lowestBit*[size](bitset:BitSet[size]):int=
+        for wordIndex in 0..<len(bitset.bits):
+            if bitset.bits[wordIndex] != 0:
+                let index = wordIndex * 64 + bitset.bits[wordIndex].countTrailingZeroBits()
+                if index < size:
+                    return index
+        -1
     
     proc `[]`*[size](bitset:BitSet[size],idx:Natural):bool=
         return bitset.bits[idx shr 6].testBit(idx and 63)

@@ -7,6 +7,7 @@ when not declared CPLIB_GRAPH_GRIDTOGRAPH:
         if h == 0:
             when return_static: result = initUnWeightedUnDirectedStaticGraph(0)
             else: result = initUnWeightedUnDirectedGraph(0)
+            return
         var w = a[0].len
         when return_static: result = initUnWeightedUnDirectedStaticGraph(h*w)
         else: result = initUnWeightedUnDirectedGraph(h*w)

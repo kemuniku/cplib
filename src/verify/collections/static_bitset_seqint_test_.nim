@@ -12,7 +12,7 @@ for i in 0..<(N):
     for j in 0..<(N):
         if S[j] == '1':
             tmp.add(j)
-    A.add(tmp.initBitSet(3000))
+    A.add(tmp.initBitSetFromIndexes(3000))
 
 var ans = 0
 for i in 0..<(N-1):

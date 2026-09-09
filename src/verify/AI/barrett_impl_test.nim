@@ -24,9 +24,16 @@ assert inv(init(Mint, 5)).val == 7
 assert (-init(Mint, 3)).val == 14
 
 type DMint = DynamicBarrettModint[101u32]
+type DMint2 = DynamicBarrettModint[102u32]
 DMint.setMod(19)
+DMint2.setMod(23)
 assert DMint.umod == 19u32
+assert DMint2.umod == 23u32
 var b = init(DMint, -2)
 assert b.val == 17
 b += 5
 assert b.val == 3
+var c = init(DMint2, -2)
+assert c.val == 21
+c += 5
+assert c.val == 3

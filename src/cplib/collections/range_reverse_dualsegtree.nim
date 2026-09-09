@@ -178,6 +178,33 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE:
     ): (RangeReverseDualSegmentTreeNode[S, F], RangeReverseDualSegmentTreeNode[S, F]) =
         split(node, k, self.mapping, self.composition, self.id)
 
+    proc insert*[S, F](self: RangeReverseDualSegmentTree[S, F], index: int, value: S) =
+        ## index の直前に value を挿入する。末尾には index = len を指定する。
+        ## 期待 O(log N)。挿入前の区間更新は新しい要素には作用しない。
+        assert 0 <= index and index <= self.length
+        var (left, right) = self.splitRoot(self.root, index)
+        let node = newNode(value, rand(uint64), self.id)
+        self.root = self.mergeRoot(left, self.mergeRoot(node, right))
+        inc self.length
+
+    proc erase*[S, F](self: RangeReverseDualSegmentTree[S, F], l, r: int) =
+        ## 半開区間 [l, r) を削除する。木の操作は期待 O(log N)。
+        ## 削除した K 個のノードの解放には別途 O(K) かかりうる。
+        assert 0 <= l and l <= r and r <= self.length
+        if l == r: return
+        var (left, middleRight) = self.splitRoot(self.root, l)
+        var (_, right) = self.splitRoot(middleRight, r - l)
+        self.root = self.mergeRoot(left, right)
+        self.length -= r - l
+
+    proc erase*[S, F](self: RangeReverseDualSegmentTree[S, F], index: int) =
+        ## index 番目の要素を削除する。期待 O(log N)。
+        assert 0 <= index and index < self.length
+        self.erase(index, index + 1)
+
+    proc erase*[S, F](self: RangeReverseDualSegmentTree[S, F], segment: HSlice[int, int]) =
+        self.erase(segment.a, segment.b + 1)
+
     proc reverse*[S, F](self: RangeReverseDualSegmentTree[S, F], l, r: int) =
         assert 0 <= l and l <= r and r <= self.length
         var (left, middleRight) = self.splitRoot(self.root, l)
@@ -194,6 +221,10 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE:
         var (middle, right) = self.splitRoot(middleRight, r - l)
         middle.allApply(f, self.mapping, self.composition)
         self.root = self.mergeRoot(left, self.mergeRoot(middle, right))
+
+    proc apply*[S, F](self: RangeReverseDualSegmentTree[S, F], index: int, f: F) =
+        assert 0 <= index and index < self.length
+        self.apply(index, index + 1, f)
 
     proc apply*[S, F](self: RangeReverseDualSegmentTree[S, F], segment: HSlice[int, int], f: F) =
         self.apply(segment.a, segment.b + 1, f)

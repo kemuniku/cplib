@@ -4,7 +4,7 @@ import algorithm,sequtils,strutils
 var S = stdin.readLine()
 var T = stdin.readLine()
 var X = (S & '$' & T).toStaticString
-var tmp : seq[StaticString]
+var tmp : seq[StaticString[char]]
 for i in 0..<len(X):
     tmp.add(X[i..<len(X)])
 tmp.sort()

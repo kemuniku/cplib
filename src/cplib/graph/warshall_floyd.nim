@@ -15,10 +15,11 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                     if d[i][k] != inf and d[k][j] != inf:
                         d[i][j] = min(d[i][j], d[i][k] + d[k][j])
             for i in 0..<g.len:
-                if d[i][i] < 0: return (negative_cycle: true, d: d)
+                if d[i][i] < zero: return (negative_cycle: true, d: d)
         return (negative_cycle: false, d: d)
 
     proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int], zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]] = warshall_floyd_impl(g, zero, inf)
-    proc warshall_floyd*(g: DynamicGraph[int32] or StaticGraph[int32], zero: int32 = 0.int32, inf: int = INF32): tuple[negative_cycle: bool, d: seq[seq[int32]]] = warshall_floyd_impl(g, zero, inf)
-    proc warshall_floyd*(g: DynamicGraph[SomeFloat] or StaticGraph[SomeFloat], zero: SomeFloat = 0.0, inf: SomeFloat = 1e100): tuple[negative_cycle: bool, d: seq[seq[float]]] = warshall_floyd_impl(g, zero, inf)
+    proc warshall_floyd*(g: DynamicGraph[int32] or StaticGraph[int32], zero: int32 = 0.int32, inf: int32 = INF32): tuple[negative_cycle: bool, d: seq[seq[int32]]] = warshall_floyd_impl(g, zero, inf)
+    proc warshall_floyd*(g: DynamicGraph[float] or StaticGraph[float], zero: float = 0.0, inf: float = 1e100): tuple[negative_cycle: bool, d: seq[seq[float]]] = warshall_floyd_impl(g, zero, inf)
+    proc warshall_floyd*(g: DynamicGraph[float32] or StaticGraph[float32], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): tuple[negative_cycle: bool, d: seq[seq[float32]]] = warshall_floyd_impl(g, zero, inf)
     proc warshall_floyd*[T](g: DynamicGraph[T] or StaticGraph[T], zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)

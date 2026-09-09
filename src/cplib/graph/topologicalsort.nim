@@ -13,7 +13,7 @@ when not declared CPLIB_GRAPH_TOPOLOGICALSORT:
         while len(stack) != 0:
             var i = stack.pop()
             result.add(i)
-            for j in G[i]:
+            for (j, _) in G.to_and_cost(i):
                 gin[j] -= 1
                 if gin[j] == 0:
                     stack.add(j)

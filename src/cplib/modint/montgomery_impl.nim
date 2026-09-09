@@ -16,24 +16,28 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         assert (M and 1u32) == 1u32, "invalid mod % 2 == 0"
         assert r * M == 1, "r * mod != 1"
     var montgomeryParamCache {.compileTime.}: Table[uint32, NimNode]
-    var montgomeryCachedParam: tuple[M, r, n2: uint32]
+
+    proc get_montgomery_cached_param[M: static[uint32]](): var tuple[M, r, n2: uint32] =
+        var param {.global.}: tuple[M, r, n2: uint32]
+        return param
     macro get_param*[M: static[uint32]](self: typedesc[StaticMontgomeryModint[M]]): untyped =
         if M notin montgomeryParamCache:
             let value = (M.uint32, get_r(M), get_n2(M))
             montgomeryParamCache[M] = newLit(value)
         return montgomeryParamCache[M]
-    template get_param*(self: typedesc[DynamicMontgomeryModint]): tuple[M, r, n2: uint32] =
+    template get_param*[M: static[uint32]](self: typedesc[DynamicMontgomeryModint[M]]): tuple[M, r, n2: uint32] =
         # FIXME: cast(noSideEffect)を付けないと、set_of_mint.join(" ")とかで死ぬ。
         # もうちょっと筋の良い解決方法があればそうしたい
         {.cast(noSideEffect).}:
-            montgomeryCachedParam
+            let param = get_montgomery_cached_param[M]()
+            param
     template get_M*(T: typedesc[MontgomeryModint]): uint32 =
         when T is StaticMontgomeryModint: T.M
         else: get_param(T).M
     proc setMod*[T: static[uint32]](self: typedesc[DynamicMontgomeryModint[T]], M: SomeInteger or SomeUnsignedInt) =
         var r = get_r(M.uint32)
         var n2 = get_n2(M.uint32)
-        montgomeryCachedParam = (M: M.uint32, r: get_r(M.uint32), n2: n2)
+        get_montgomery_cached_param[T]() = (M: M.uint32, r: r, n2: n2)
         check_params(M.uint32, r)
     template umod*[T: MontgomeryModint](self: typedesc[T] or T): uint32 =
         when self is typedesc:
@@ -48,16 +52,22 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     proc reduce(T: typedesc[DynamicMontgomeryModint], b: uint): uint32 =
         var p = get_param(T)
         return cast[uint32]((b + uint(cast[uint32](b) * (not (p.r - 1u32))) * p.M) shr 32)
+    proc normalize(a: SomeInteger, M: uint32): uint {.inline.} =
+        when a is SomeUnsignedInt:
+            return uint(a.uint64 mod M.uint64)
+        else:
+            let r = a.int64 mod M.int64
+            return uint(if r < 0: r + M.int64 else: r)
     proc init*(T: typedesc[MontgomeryModint], a: T or SomeInteger): auto =
         when a is T: return a
         elif T is StaticMontgomeryModint:
             let (_, r, n2) = get_param(T)
             check_params(T.M, r)
-            var ai = reduce(T, uint(a.int32 mod T.M.int32 + T.M.int32) * n2)
+            var ai = reduce(T, normalize(a, T.M) * n2)
             result = StaticMontgomeryModint[T.M](a: ai)
         elif T is DynamicMontgomeryModint:
             var p = get_param(T)
-            var ai = reduce(T, uint(a.int32 mod p.M.int32 + p.M.int32) * p.n2)
+            var ai = reduce(T, normalize(a, p.M) * p.n2)
             result = DynamicMontgomeryModint[T.M](a: ai)
 
     proc `+=`*[T: MontgomeryModint](a: var T, b: T or SomeInteger) =
@@ -91,9 +101,9 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         let converter_name = ident("to" & $`name`)
         quote do:
             type `name`* = StaticMontgomeryModint[`M`]
-            converter `converter_name`*(a: int): StaticMontgomeryModint[`M`] = init(StaticMontgomeryModint[`M`], a)
+            converter `converter_name`*[I: SomeInteger](a: I): StaticMontgomeryModint[`M`] = init(StaticMontgomeryModint[`M`], a)
     macro declarDynamicMontgomeryModint*(name, id) =
         let converter_name = ident("to" & $`name`)
         quote do:
             type `name`* = DynamicMontgomeryModint[`id`]
-            converter `converter_name`*(a: int): DynamicMontgomeryModint[`id`] = init(DynamicMontgomeryModint[`id`], a)
+            converter `converter_name`*[I: SomeInteger](a: I): DynamicMontgomeryModint[`id`] = init(DynamicMontgomeryModint[`id`], a)

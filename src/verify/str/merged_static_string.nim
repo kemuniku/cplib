@@ -10,7 +10,7 @@ for _ in 0..<1000:
     var rawstr = newseqwith(10,"ab"[rand(0..<2)]).join("")
     var X = rawstr.toStaticString()
 
-    var tmp : seq[StaticString]
+    var tmp : seq[StaticString[char]]
     var naive : string
     for i in range(30):
         var l = rand(0..<len(rawstr))
@@ -30,9 +30,9 @@ for _ in 0..<1000:
         assert naive[i] == A[i]
 
     for i in range(100):
-        var tmp2 : MergedStaticString
+        var tmp2 : MergedStaticString[char]
         var naive2 : string
-        var tmp3 : MergedStaticString
+        var tmp3 : MergedStaticString[char]
         var naive3 : string
 
         for i in range(rand(0..50)):
@@ -50,6 +50,4 @@ for _ in 0..<1000:
         assert $tmp2 == naive2
         assert $tmp3 == naive3
         assert cmp(tmp2,tmp2) == 0
-
-
 
