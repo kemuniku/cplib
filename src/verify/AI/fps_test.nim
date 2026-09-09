@@ -18,12 +18,42 @@ proc naiveComposition[T: BarrettModint or MontgomeryModint](
     result.setLen(n)
     power = prefix(power * inner, n)
 
+proc naivePowerProjection[T: BarrettModint or MontgomeryModint](
+    f, g: seq[T], m: int): seq[T] =
+  let n = f.len - 1
+  result = newSeq[T](m + 1)
+  var power = @[init(T, 1)]
+  for exponent in 0..m:
+    let product = power * g
+    if n < product.len: result[exponent] = product[n]
+    power = prefix(power * f, n + 1)
+
 block basicOperations:
   let f = @[Mint(1), Mint(2), Mint(3)]
   let g = @[Mint(4), Mint(5)]
+  assert f.coefficient(0).val == 1
+  assert f.coefficient(2).val == 3
+  assert f.coefficient(-1).val == 0
+  assert f.coefficient(3).val == 0
   assert (f + g).values == @[5, 7, 3]
+  assert (f + 4).values == @[5, 2, 3]
+  assert (4 + f).values == @[5, 2, 3]
+  var h = f
+  h += -2
+  assert h.values == @[998244352, 2, 3]
+  var empty: seq[Mint]
+  empty += 7
+  assert empty.values == @[7]
   assert (f - g).values == @[998244350, 998244350, 3]
   assert (f * g).values == @[4, 13, 22, 15]
+  assert (f / @[Mint(1), Mint(1)]).values == @[1, 1, 2]
+  assert (@[Mint(1), Mint(2)] / @[Mint(1), Mint(1), Mint(1), Mint(1)]).values ==
+    @[1, 1, 998244351, 0]
+  var quotient = f
+  quotient /= @[Mint(1), Mint(1)]
+  assert quotient.values == @[1, 1, 2]
+  let zero: seq[Mint] = @[]
+  assert (zero / @[Mint(1), Mint(2)]).values == @[0, 0]
   assert f.derivative.values == @[2, 6]
   assert f.derivative.integral.values == @[0, 2, 3]
   assert f.eval(Mint(2)).val == 17
@@ -229,6 +259,71 @@ block compositionAndInverse:
   assert compose(longOuter, longInner, longOuter.len).values ==
     oneMinusInner.inv(oneMinusInner.len).values
 
+block powerProjectionTests:
+  for n in [0, 1, 2, 3, 4, 7, 8, 15, 16, 31, 70]:
+    var f = newSeq[Mint](n + 1)
+    var g = newSeq[Mint](n + 4)
+    for i in 0..<f.len: f[i] = Mint(17 * i * i + 31 * i + 3)
+    for i in 0..<g.len: g[i] = Mint(23 * i * i + 11 * i + 5)
+    for m in [0, 1, 5, n, n + 3]:
+      assert powerProjection(f, g, m) == naivePowerProjection(f, g, m)
+    assert powerProjection(f, g) == naivePowerProjection(f, g, n)
+    assert powerProjection(f) ==
+      naivePowerProjection(f, @[Mint(1)], n)
+
+  let zeroConstant = @[Mint(0), Mint(2), Mint(3), Mint(5), Mint(7)]
+  assert powerProjection(zeroConstant, 8) ==
+    naivePowerProjection(zeroConstant, @[Mint(1)], 8)
+
+proc naivePowerProjectionDiagonal[T: BarrettModint or MontgomeryModint](
+    f, g: seq[T], m: int): seq[T] =
+  result = newSeq[T](m + 1)
+  var power = newSeq[T](m + 1)
+  power[0] = 1
+  for i in 0..m:
+    for j in 0..min(i, g.len - 1):
+      result[i] += power[i - j] * g[j]
+    var next = newSeq[T](m + 1)
+    for j in 0..m:
+      for k in 0..min(m - j, f.len - 1):
+        next[j + k] += power[j] * f[k]
+    power = move(next)
+
+proc checkPowerProjectionDiagonal[T: BarrettModint or MontgomeryModint](
+    M: typedesc[T]) =
+  for n in [1, 2, 3, 8, 17, 33, 70]:
+    var f = newSeq[T](n)
+    for i in 0..<n: f[i] = T(17 * i * i + 31 * i + 3)
+    for gLen in [0, 1, n + 3]:
+      var g = newSeq[T](gLen)
+      for i in 0..<gLen: g[i] = T(23 * i * i + 11 * i + 5)
+      for constant in [0, 3]:
+        f[0] = constant
+        for m in [0, 1, n - 1, n + 3]:
+          let actual = powerProjectionDiagonal(f, g, m)
+          let expected = naivePowerProjectionDiagonal(f, g, m)
+          assert actual.mapIt(it.val) == expected.mapIt(it.val),
+            $M & " n=" & $n & " gLen=" & $gLen & " constant=" & $constant &
+            " m=" & $m & " actual=" & $actual & " expected=" & $expected
+        assert powerProjectionDiagonal(f, g).mapIt(it.val) ==
+          naivePowerProjectionDiagonal(f, g, n - 1).mapIt(it.val)
+    assert powerProjectionDiagonal(f, n + 3).mapIt(it.val) ==
+      naivePowerProjectionDiagonal(f, @[T(1)], n + 3).mapIt(it.val)
+    assert powerProjectionDiagonal(f).mapIt(it.val) ==
+      naivePowerProjectionDiagonal(f, @[T(1)], n - 1).mapIt(it.val)
+  let shifted = @[T(0), T(0), T(3)]
+  assert powerProjectionDiagonal(shifted, @[T(7), T(11)], 5).mapIt(it.val) ==
+    @[7, 0, 0, 0, 0, 0]
+
+block powerProjectionDiagonalTests:
+  checkPowerProjectionDiagonal(modint998244353_barrett)
+  checkPowerProjectionDiagonal(modint998244353_montgomery)
+  checkPowerProjectionDiagonal(modint1000000007_barrett)
+  checkPowerProjectionDiagonal(modint1000000007_montgomery)
+  # [x^i] (1 + x)^(i + 1) = i + 1。
+  let linear = @[Mint(1), Mint(1)]
+  assert powerProjectionDiagonal(linear, linear, 5).values == @[1, 2, 3, 4, 5, 6]
+
 proc checkCompositionalInverse[T: BarrettModint or MontgomeryModint](
     M: typedesc[T], n: int) =
   var f = newSeq[T](n)
@@ -256,6 +351,28 @@ block bostanMoriAndRecurrence:
     assert linearRecurrenceKth(@[Mint(0), Mint(1)], @[Mint(1), Mint(1)], i).val == fib[i]
 
 block sparseOperations:
+  let literal = sfps[Mint](x + x^3 + x^4 + x^6)
+  assert literal == initSparseFPS[Mint](@[
+    (degree: 1, coefficient: Mint(1)),
+    (degree: 3, coefficient: Mint(1)),
+    (degree: 4, coefficient: Mint(1)),
+    (degree: 6, coefficient: Mint(1))
+  ])
+  let runtimeCoefficient = Mint(7)
+  let weightedLiteral = SFPS[Mint](3 - 2*x + runtimeCoefficient*x^2 + x^2 - x^5)
+  assert weightedLiteral == initSparseFPS[Mint](@[
+    (degree: 0, coefficient: Mint(3)),
+    (degree: 1, coefficient: Mint(-2)),
+    (degree: 2, coefficient: Mint(8)),
+    (degree: 5, coefficient: Mint(-1))
+  ])
+  let runtimeDegree = 9
+  assert sfps[Mint](x^runtimeDegree + 4*x^(runtimeDegree + 2)) ==
+    initSparseFPS[Mint](@[
+      (degree: 9, coefficient: Mint(1)),
+      (degree: 11, coefficient: Mint(4))
+    ])
+
   let sparse = initSparseFPS[Mint](@[
     (degree: 3, coefficient: Mint(5)),
     (degree: 0, coefficient: Mint(2)),
@@ -269,6 +386,17 @@ block sparseOperations:
   assert sparse.coefficient(2) == Mint(0)
   assert sparse.toDense(5).values == @[2, 3, 0, 4, 0]
 
+  let withoutConstant = sfps[Mint](2*x + x^3)
+  assert withoutConstant + 5 == sfps[Mint](5 + 2*x + x^3)
+  assert 5 + withoutConstant == sfps[Mint](5 + 2*x + x^3)
+  assert sfps[Mint](5 + 2*x + x^3) + -5 == withoutConstant
+  var addedInPlace = withoutConstant
+  addedInPlace += 7
+  assert addedInPlace == sfps[Mint](7 + 2*x + x^3)
+  var emptySparse = initSparseFPS[Mint]([])
+  emptySparse += 4
+  assert emptySparse == sfps[Mint](4)
+
   let dense = @[Mint(7), Mint(1), Mint(4), Mint(9), Mint(2)]
   let sparseDense = sparse.toDense(sparse.degree + 1)
   assert (dense * sparse).values == (dense * sparseDense).values
@@ -278,6 +406,21 @@ block sparseOperations:
     prefix(dense * sparseDense.inv(dense.len), dense.len).values
   assert dense.divPrefix(sparse, 12).values ==
     prefix(prefix(dense, 12) * sparseDense.inv(12), 12).values
+
+  var inplace = dense
+  let expectedProduct = dense.mulPrefix(sparse, dense.len)
+  inplace *= sparse
+  assert inplace == expectedProduct
+  inplace /= sparse
+  assert inplace == dense
+
+  var quotient = dense
+  quotient /= sparse
+  assert quotient == dense.divPrefix(sparse, dense.len)
+
+  var empty: seq[Mint]
+  empty *= sparse
+  assert empty.len == 0
 
 block sparseElementaryFunctions:
   let unit = initSparseFPS[Mint](@[
@@ -359,6 +502,14 @@ block arbitraryModulus:
   let denominatorInverse = denominator.inv(denominator.len)
   for i in 0..<composed.len:
     assert composed[i].val == denominatorInverse[i].val
+
+  let enumerateF = @[
+    OtherMint(2), OtherMint(3), OtherMint(5), OtherMint(7), OtherMint(11)]
+  let enumerateG = @[OtherMint(13), OtherMint(17), OtherMint(19)]
+  let enumerated = powerProjection(enumerateF, enumerateG, 12)
+  let naiveEnumerated = naivePowerProjection(enumerateF, enumerateG, 12)
+  for i in 0..<enumerated.len:
+    assert enumerated[i].val == naiveEnumerated[i].val
 
   let sparse = initSparseFPS[OtherMint](@[
     (degree: 0, coefficient: OtherMint(1)),
