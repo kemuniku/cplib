@@ -1,4 +1,5 @@
 ## よく使う区間更新・区間取得をstatic_op版の遅延セグ木で提供します。
+## 操作にはcplib/collections/lazysegtree_static_opもimportしてください。
 ## 配列から初期化し、apply(l, r, f)で半開区間[l, r)を更新します。
 ## get(l, r)またはseg[l..<r]で取得でき、スライスでのapplyも使用できます。
 ## Index版の極値は.valueと.index（同値なら最左、0始まり）、和は.sumで取得します。

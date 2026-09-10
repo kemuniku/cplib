@@ -1,6 +1,7 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import random
 import cplib/collections/lazysegtree_template
+import cplib/collections/lazysegtree_static_op
 import cplib/modint/modint
 
 var rng = initRand(20260910)
