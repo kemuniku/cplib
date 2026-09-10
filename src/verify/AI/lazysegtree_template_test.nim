@@ -11,11 +11,11 @@ for n in [0, 1, 2, 5, 16, 23]:
         added.add(value)
     assigned = added
     affine = added
-    var amin = initRangeAddRangeMin(added)
-    var amax = initRangeAddRangeMax(added)
+    var amin = initRangeAddRangeMinIndex(added)
+    var amax = initRangeAddRangeMaxIndex(added)
     var asum = initRangeAddRangeSum(added)
-    var cmin = initRangeAssignRangeMin(assigned)
-    var cmax = initRangeAssignRangeMax(assigned)
+    var cmin = initRangeAssignRangeMinIndex(assigned)
+    var cmax = initRangeAssignRangeMaxIndex(assigned)
     var csum = initRangeAssignRangeSum(assigned)
     var fsum = initRangeAffineRangeSum(affine)
     assert amin.len == n
@@ -62,7 +62,7 @@ for n in [0, 1, 2, 5, 16, 23]:
                 assert cmax.get(ql, qr).value == assigned[icMax]
 
 block:
-    var seg = initRangeAssignRangeMin(@[9, 1, 8, 2, 7])
+    var seg = initRangeAssignRangeMinIndex(@[9, 1, 8, 2, 7])
     seg.apply(0, 5, 0)
     assert seg.get(0, 5).index == 0
     assert seg.get(1, 4).index == 1
@@ -72,7 +72,7 @@ block:
     assert seg.get(0, 5).value == int.high
     assert seg.get(0, 5).index == 0
 block:
-    var seg = initRangeAddRangeMax(@[int.low, int.low])
+    var seg = initRangeAddRangeMaxIndex(@[int.low, int.low])
     seg.apply(0, 2, 1)
     assert seg.get(0, 2).value == int.low + 1
     assert seg.get(0, 2).index == 0
@@ -92,4 +92,76 @@ block:
     var assign = initRangeAssignRangeSum(@[Mint.init(1), Mint.init(2)])
     assign.apply(0, 2, Mint.init(0))
     assert assign.get(0, 2).sum.val == 0
+for n in [0, 1, 2, 5, 16, 23]:
+    var added = newSeq[int](n)
+    var assigned = newSeq[int](n)
+    for i in 0..<n:
+        added[i] = rng.rand(-10..10)
+        assigned[i] = added[i]
+    var amin = initRangeAddRangeMin(added)
+    var amax = initRangeAddRangeMax(added)
+    var cmin = initRangeAssignRangeMin(assigned)
+    var cmax = initRangeAssignRangeMax(assigned)
+    assert amin.len == n
+    static:
+        doAssert typeof(amin.arr[0]) is int
+    for step in 0..<300:
+        let l = rng.rand(n)
+        let r = rng.rand(l..n)
+        let value = rng.rand(-10..10)
+        amin.apply(l, r, value)
+        amax.apply(l..<r, value)
+        cmin.apply(l, r, value)
+        cmax.apply(l..<r, value)
+        for i in l..<r:
+            added[i] += value
+            assigned[i] = value
+        if n > 0 and step mod 3 == 0:
+            let p = rng.rand(n - 1)
+            amin[p] = value
+            amax[p] = value
+            cmin[p] = value
+            cmax[p] = value
+            added[p] = value
+            assigned[p] = value
+            assert amin[p] == value
+        for q in 0..<5:
+            let ql = rng.rand(n)
+            let qr = rng.rand(ql..n)
+            var ma, mc = int.high
+            var xa, xc = int.low
+            for i in ql..<qr:
+                ma = min(ma, added[i])
+                xa = max(xa, added[i])
+                mc = min(mc, assigned[i])
+                xc = max(xc, assigned[i])
+            assert amin.get(ql, qr) == ma
+            assert amax[ql..<qr] == xa
+            assert cmin.get(ql, qr) == mc
+            assert cmax[ql..<qr] == xc
+block:
+    var lo = initRangeAddRangeMin(@[int.high, int.high, int.high])
+    lo.apply(0, 3, -1)
+    assert lo.get(0, 3) == int.high - 1
+    assert lo[2] == int.high - 1
+    var hi = initRangeAddRangeMax(@[int.low, int.low, int.low])
+    hi.apply(0, 3, 1)
+    assert hi.get(0, 3) == int.low + 1
+    assert hi[2] == int.low + 1
+    var cmin = initRangeAssignRangeMin(@[1, 2, 3])
+    var cmax = initRangeAssignRangeMax(@[1, 2, 3])
+    for value in [int.high, int.low, 0]:
+        cmin.apply(0, 3, value)
+        cmax.apply(0, 3, value)
+        assert cmin.get(1, 3) == value
+        assert cmax.get(1, 3) == value
+block:
+    var seg = initRangeAddRangeMin(@[1.0, 2.0, 3.0])
+    seg.apply(0, 3, 0.5)
+    assert seg.get(0, 3) == 1.5
+    assert seg.get(1, 1) == float.high
+    var hi = initRangeAssignRangeMax(@[1.0, 2.0, 3.0])
+    hi.apply(0, 3, -0.5)
+    assert hi.get(1, 3) == -0.5
+    assert hi.get(1, 1) == float.low
 echo "Hello World"
