@@ -40,10 +40,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
         proc staticComposition(f, g: F): F {.gensym, inline.} = composition0(f, g)
         LazySegmentTree[S, F, (staticMerge, staticMapping, staticComposition)]
 
-    when defined(release):
-        {.push checks: off.}
-    else:
-        {.push boundChecks: off, overflowChecks: off, rangeChecks: off.}
+    {.push boundChecks: off, overflowChecks: off, rangeChecks: off.}
 
     proc initLazySegmentTreeImpl[ST: LazySegmentTree](
         self: typedesc[ST], v: seq[ST.S], default: ST.S, id: ST.F
