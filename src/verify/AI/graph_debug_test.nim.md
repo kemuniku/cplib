@@ -78,8 +78,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph_debug.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph_debug.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph_debug.nim
   isVerificationFile: true

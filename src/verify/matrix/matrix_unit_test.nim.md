@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
   - icon: ':heavy_check_mark:'
@@ -61,14 +67,16 @@ data:
     \ m4 = a * c3\n    assert m3.h == 1 and m3.w == 3\n    assert m4.h == 2 and m4.w\
     \ == 1\n"
   dependsOn:
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matops.nim
-  - cplib/matrix/matops.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix.nim
   - cplib/matrix/matrix.nim
+  - cplib/matrix/matops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_unit_test.nim

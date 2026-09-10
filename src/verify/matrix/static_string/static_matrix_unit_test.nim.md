@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
   - icon: ':heavy_check_mark:'
@@ -55,11 +61,13 @@ data:
     \ == 3\n    assert m4.h == 2 and m4.w == 1\n"
   dependsOn:
   - cplib/matrix/static_matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
   isVerificationFile: true
   path: verify/matrix/static_string/static_matrix_unit_test.nim
   requiredBy: []
-  timestamp: '2026-05-26 07:54:36+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/static_string/static_matrix_unit_test.nim

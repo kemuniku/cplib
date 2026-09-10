@@ -8,11 +8,23 @@ data:
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_field_impl.nim
+    title: cplib/matrix/matrix_avx2_field_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_field_impl.nim
+    title: cplib/matrix/matrix_avx2_field_impl.nim
   - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
@@ -261,20 +273,24 @@ data:
     checkApi[modint_barrett]()\ncheckBoundaries[modint998244353_montgomery]()\ncheckBoundaries[modint1000000007_barrett]()\n\
     checkShapes()\ncheckDynamicModulus()\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/matrix/matrix_avx2.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 11:57:55+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_avx2_unit_test.nim

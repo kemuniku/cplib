@@ -43,8 +43,8 @@ data:
   dependsOn:
   - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/collections/root_rangesum.nim
+  - cplib/utils/mo.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []

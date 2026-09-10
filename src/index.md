@@ -423,6 +423,12 @@ data:
   - name: cplib/matrix
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/matrix/bit_matrix_ops.nim
+      title: cplib/matrix/bit_matrix_ops.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/matrix/field_matrix_ops.nim
+      title: cplib/matrix/field_matrix_ops.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matops.nim
       title: cplib/matrix/matops.nim
     - icon: ':heavy_check_mark:'
@@ -431,6 +437,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_avx2.nim
       title: cplib/matrix/matrix_avx2.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/matrix/matrix_avx2_field_impl.nim
+      title: cplib/matrix/matrix_avx2_field_impl.nim
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_mod2.nim
       title: cplib/matrix/matrix_mod2.nim
@@ -895,6 +904,17 @@ data:
     - icon: ':warning:'
       path: verify/math/osa_k_test_.nim
       title: verify/math/osa_k_test_.nim
+  - name: verify/matrix/linear_algebra
+    pages:
+    - icon: ':warning:'
+      path: verify/matrix/linear_algebra/field_algorithms_unit.nim
+      title: verify/matrix/linear_algebra/field_algorithms_unit.nim
+    - icon: ':warning:'
+      path: verify/matrix/linear_algebra/judge_driver.nim
+      title: verify/matrix/linear_algebra/judge_driver.nim
+    - icon: ':warning:'
+      path: verify/matrix/linear_algebra/system_mod2_driver.nim
+      title: verify/matrix/linear_algebra/system_mod2_driver.nim
   - name: verify/matrix
     pages:
     - icon: ':warning:'
@@ -2043,14 +2063,47 @@ data:
   - name: verify/matrix
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/adjugate_matrix_matrix_avx2_test.nim
+      title: verify/matrix/adjugate_matrix_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/adjugate_matrix_matrix_test.nim
+      title: verify/matrix/adjugate_matrix_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/adjugate_matrix_static_matrix_test.nim
+      title: verify/matrix/adjugate_matrix_static_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/hafnian_of_matrix_matrix_avx2_test.nim
+      title: verify/matrix/hafnian_of_matrix_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/hafnian_of_matrix_matrix_test.nim
+      title: verify/matrix/hafnian_of_matrix_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/hafnian_of_matrix_static_matrix_test.nim
+      title: verify/matrix/hafnian_of_matrix_static_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/inverse_matrix_matrix_avx2_test.nim
+      title: verify/matrix/inverse_matrix_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/inverse_matrix_matrix_test.nim
+      title: verify/matrix/inverse_matrix_matrix_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/inverse_matrix_mod_2_static_test.nim
       title: verify/matrix/inverse_matrix_mod_2_static_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/inverse_matrix_mod_2_test.nim
       title: verify/matrix/inverse_matrix_mod_2_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/inverse_matrix_static_matrix_test.nim
+      title: verify/matrix/inverse_matrix_static_matrix_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_compatibility_test.nim
       title: verify/matrix/matrix_avx2_compatibility_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_avx2_field_algorithms_unit_test.nim
+      title: verify/matrix/matrix_avx2_field_algorithms_unit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_avx2_field_differential_test.nim
+      title: verify/matrix/matrix_avx2_field_differential_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_test.nim
       title: verify/matrix/matrix_avx2_test.nim
@@ -2058,11 +2111,26 @@ data:
       path: verify/matrix/matrix_avx2_unit_test.nim
       title: verify/matrix/matrix_avx2_unit_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_det_matrix_avx2_test.nim
+      title: verify/matrix/matrix_det_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_det_matrix_test.nim
+      title: verify/matrix/matrix_det_matrix_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_det_mod_2_static_test.nim
       title: verify/matrix/matrix_det_mod_2_static_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_det_mod_2_test.nim
       title: verify/matrix/matrix_det_mod_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_det_static_matrix_test.nim
+      title: verify/matrix/matrix_det_static_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_field_algorithms_unit_test.nim
+      title: verify/matrix/matrix_field_algorithms_unit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
+      title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_pow_test.nim
       title: verify/matrix/matrix_pow_test.nim
@@ -2082,17 +2150,44 @@ data:
       path: verify/matrix/matrix_product_test.nim
       title: verify/matrix/matrix_product_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_rank_matrix_avx2_test.nim
+      title: verify/matrix/matrix_rank_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_rank_matrix_test.nim
+      title: verify/matrix/matrix_rank_matrix_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_rank_mod_2_static_test.nim
       title: verify/matrix/matrix_rank_mod_2_static_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_rank_mod_2_test.nim
       title: verify/matrix/matrix_rank_mod_2_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_rank_static_matrix_test.nim
+      title: verify/matrix/matrix_rank_static_matrix_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_unit_test.nim
       title: verify/matrix/matrix_unit_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_zoistring_test.nim
       title: verify/matrix/matrix_zoistring_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/static_matrix_field_algorithms_unit_test.nim
+      title: verify/matrix/static_matrix_field_algorithms_unit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/system_of_linear_equations_matrix_avx2_test.nim
+      title: verify/matrix/system_of_linear_equations_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/system_of_linear_equations_matrix_test.nim
+      title: verify/matrix/system_of_linear_equations_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/system_of_linear_equations_mod_2_static_test.nim
+      title: verify/matrix/system_of_linear_equations_mod_2_static_test.nim
+    - icon: ':x:'
+      path: verify/matrix/system_of_linear_equations_mod_2_test.nim
+      title: verify/matrix/system_of_linear_equations_mod_2_test.nim
+    - icon: ':x:'
+      path: verify/matrix/system_of_linear_equations_static_matrix_test.nim
+      title: verify/matrix/system_of_linear_equations_static_matrix_test.nim
   - name: verify/matrix/static_string
     pages:
     - icon: ':heavy_check_mark:'

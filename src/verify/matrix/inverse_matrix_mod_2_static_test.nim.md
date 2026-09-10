@@ -2,6 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   - icon: ':heavy_check_mark:'
@@ -29,12 +41,16 @@ data:
     \    a[i, i] = true\nlet inv = a.inverse\nif inv.isNone:\n    echo -1\nelse:\n\
     \    let b = inv.get\n    for i in 0..<n:\n        echo b.rowBits(i, n)\n"
   dependsOn:
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   isVerificationFile: true
   path: verify/matrix/inverse_matrix_mod_2_static_test.nim
   requiredBy: []
-  timestamp: '2026-07-16 14:14:09+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/inverse_matrix_mod_2_static_test.nim

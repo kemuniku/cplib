@@ -546,30 +546,30 @@ data:
     \ powTransition[T](unit, exponent, dimension)\n        nthTermPolynomialRecurrence[T](initial,\
     \ recurrence.matrix,\n            recurrence.denominator, shiftedDegree) * scale\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
   - cplib/fps/product_tree.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/inner_math.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/fps/product_tree.nim
   - cplib/fps/bostan_mori.nim
   - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
+  - cplib/math/inner_math.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/fps/sparse_formal_power_series.nim
   requiredBy:

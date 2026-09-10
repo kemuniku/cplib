@@ -2,6 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   - icon: ':heavy_check_mark:'
@@ -106,14 +118,25 @@ data:
 
     assert wide * wide.inverse.get == identityStaticMatrixMod2[65]()
 
+
+    assert initStaticMatrixMod2[0, 0]().rank == 0
+
+    assert initStaticMatrixMod2[0, 1 shl 24]().rank == 0
+
+    assert initStaticMatrixMod2[1000, 0]().rank == 0
+
     '
   dependsOn:
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   isVerificationFile: true
   path: verify/AI/static_matrix_mod2_test.nim
   requiredBy: []
-  timestamp: '2026-07-16 14:14:09+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/static_matrix_mod2_test.nim

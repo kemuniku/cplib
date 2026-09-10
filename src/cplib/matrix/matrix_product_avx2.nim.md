@@ -8,6 +8,12 @@ data:
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
   - icon: ':heavy_check_mark:'
@@ -200,37 +206,40 @@ data:
     \ sizeof(uint32))\n\n    proc matrixProduct*[T](a, b: Matrix[T]): Matrix[T] =\n\
     \        ## \u65E2\u5B58\u306Emodint\u884C\u5217\u3092\u516C\u958B\u5024\u3078\
     \u5909\u63DB\u3057\u3001AVX2\u3067\u7A4D\u3092\u6C42\u3081\u308B\u3002\n     \
-    \   when T isnot MontgomeryModint and T isnot BarrettModint:\n            {.error:\
-    \ \"matrixProduct requires MontgomeryModint or BarrettModint\".}\n        let\
-    \ n = a.h\n        let m = a.w\n        let k = b.w\n        doAssert m == b.h,\
-    \ \"matrix size mismatch\"\n        let modulus = T.umod.uint32\n        doAssert\
-    \ modulus > 0 and modulus < (1u32 shl 30) and\n            (modulus and 1u32)\
-    \ == 1, \"modulus must be odd and in [1, 2^30)\"\n        doAssert n == 0 or m\
-    \ <= high(int) div n, \"matrix size overflow\"\n        doAssert m == 0 or k <=\
-    \ high(int) div m, \"matrix size overflow\"\n        var flatA = newSeq[uint32](n\
-    \ * m)\n        var flatB = newSeq[uint32](m * k)\n        for i in 0 ..< n:\n\
-    \            doAssert a[i].len == m, \"ragged matrix\"\n            for j in 0\
-    \ ..< m:\n                flatA[i * m + j] = a[i, j].val.uint32\n        for i\
-    \ in 0 ..< m:\n            doAssert b[i].len == k, \"ragged matrix\"\n       \
-    \     for j in 0 ..< k:\n                flatB[i * k + j] = b[i, j].val.uint32\n\
-    \        let flatC = matrixProduct(flatA, flatB, n, m, k, modulus)\n        result\
-    \ = initMatrix(n, k, T.init(0))\n        for i in 0 ..< n:\n            for j\
-    \ in 0 ..< k:\n                result[i, j] = T.init(flatC[i * k + j].int)\n"
+    \   bind matrixProduct, initMatrix\n        when T isnot MontgomeryModint and\
+    \ T isnot BarrettModint:\n            {.error: \"matrixProduct requires MontgomeryModint\
+    \ or BarrettModint\".}\n        let n = a.h\n        let m = a.w\n        let\
+    \ k = b.w\n        doAssert m == b.h, \"matrix size mismatch\"\n        let modulus\
+    \ = T.umod.uint32\n        doAssert modulus > 0 and modulus < (1u32 shl 30) and\n\
+    \            (modulus and 1u32) == 1, \"modulus must be odd and in [1, 2^30)\"\
+    \n        doAssert n == 0 or m <= high(int) div n, \"matrix size overflow\"\n\
+    \        doAssert m == 0 or k <= high(int) div m, \"matrix size overflow\"\n \
+    \       var flatA = newSeq[uint32](n * m)\n        var flatB = newSeq[uint32](m\
+    \ * k)\n        for i in 0 ..< n:\n            doAssert a[i].len == m, \"ragged\
+    \ matrix\"\n            for j in 0 ..< m:\n                flatA[i * m + j] =\
+    \ a[i, j].val.uint32\n        for i in 0 ..< m:\n            doAssert b[i].len\
+    \ == k, \"ragged matrix\"\n            for j in 0 ..< k:\n                flatB[i\
+    \ * k + j] = b[i, j].val.uint32\n        let flatC = matrixProduct(flatA, flatB,\
+    \ n, m, k, modulus)\n        result = initMatrix(n, k, T.init(0))\n        for\
+    \ i in 0 ..< n:\n            for j in 0 ..< k:\n                result[i, j] =\
+    \ T.init(flatC[i * k + j].int)\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/math/isqrt.nim
   - cplib/matrix/matrix.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/matrix/matrix.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_product_avx2.nim
   requiredBy: []
-  timestamp: '2026-09-08 11:14:25+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_product_avx2_unit_test.nim

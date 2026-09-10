@@ -9,6 +9,18 @@ data:
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':warning:'
+    path: verify/matrix/linear_algebra/judge_driver.nim
+    title: verify/matrix/linear_algebra/judge_driver.nim
+  - icon: ':warning:'
+    path: verify/matrix/linear_algebra/judge_driver.nim
+    title: verify/matrix/linear_algebra/judge_driver.nim
+  - icon: ':warning:'
+    path: verify/matrix/linear_algebra/system_mod2_driver.nim
+    title: verify/matrix/linear_algebra/system_mod2_driver.nim
+  - icon: ':warning:'
+    path: verify/matrix/linear_algebra/system_mod2_driver.nim
+    title: verify/matrix/linear_algebra/system_mod2_driver.nim
+  - icon: ':warning:'
     path: verify/str/merged_static_string.nim
     title: verify/str/merged_static_string.nim
   - icon: ':warning:'
@@ -723,6 +735,10 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
+  - verify/matrix/linear_algebra/system_mod2_driver.nim
+  - verify/matrix/linear_algebra/system_mod2_driver.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   timestamp: '2026-09-05 05:19:50+09:00'

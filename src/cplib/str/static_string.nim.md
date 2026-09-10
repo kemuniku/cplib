@@ -234,8 +234,8 @@ data:
   dependsOn:
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:

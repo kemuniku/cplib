@@ -73,27 +73,27 @@ data:
     \ 0 ..< a.h:\n        for j in 0 ..< a.w:\n            doAssert a[i, j].val ==\
     \ 1 + i * 3 + j\n    for i in 0 ..< b.h:\n        for j in 0 ..< b.w:\n      \
     \      doAssert b[i, j].val == 7 + i * 4 + j\n    for shape in [(0, 0, 0), (4,\
-    \ 0, 0), (3, 2, 0)]:\n        let (h, w, k) = shape\n        let emptyA = legacy.initMatrix[T](h,\
-    \ w, T.init(0))\n        let emptyB = legacy.initMatrix[T](w, k, T.init(0))\n\
-    \        let emptyC = fast.matrixProduct(emptyA, emptyB)\n        doAssert emptyC.h\
-    \ == h and emptyC.w == k\n\ncheckCompatibility[modint998244353_montgomery]()\n\
+    \ 0, 0), (3, 2, 0), (0, 3, 4), (2, 0, 5)]:\n        let (h, w, k) = shape\n  \
+    \      let emptyA = legacy.initMatrix[T](h, w, T.init(0))\n        let emptyB\
+    \ = legacy.initMatrix[T](w, k, T.init(0))\n        let emptyC = fast.matrixProduct(emptyA,\
+    \ emptyB)\n        doAssert emptyC.h == h and emptyC.w == k\n\ncheckCompatibility[modint998244353_montgomery]()\n\
     checkCompatibility[modint1000000007_barrett]()\ncheckLegacyShapes[modint998244353_montgomery]()\n\
     checkLegacyShapes[modint1000000007_barrett]()\ndoAssert fast.matrixProduct(@[2u32],\
     \ @[2u32], 1, 1, 1) == @[4u32]\ndoAssert fast.matrixProduct(@[@[2u32]], @[@[2u32]])\
     \ == @[@[4u32]]\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_compatibility_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 11:14:25+09:00'
+  timestamp: '2026-09-10 06:38:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_avx2_compatibility_test.nim

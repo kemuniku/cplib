@@ -8,6 +8,18 @@ data:
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_field_impl.nim
+    title: cplib/matrix/matrix_avx2_field_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_field_impl.nim
+    title: cplib/matrix/matrix_avx2_field_impl.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
   - icon: ':heavy_check_mark:'
@@ -25,7 +37,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/matrix/linear_algebra/field_algorithms_unit.nim
+    title: verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - icon: ':warning:'
+    path: verify/matrix/linear_algebra/field_algorithms_unit.nim
+    title: verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - icon: ':warning:'
+    path: verify/matrix/linear_algebra/judge_driver.nim
+    title: verify/matrix/linear_algebra/judge_driver.nim
+  - icon: ':warning:'
+    path: verify/matrix/linear_algebra/judge_driver.nim
+    title: verify/matrix/linear_algebra/judge_driver.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
@@ -586,26 +610,106 @@ data:
     \ == \"arr\" and values is seq[seq[T]]:\n                values = newSeq[seq[T]](n)\n\
     \                for i in 0 ..< n:\n                    values[i] = newSeq[T](k)\n\
     \                    for j in 0 ..< k:\n                        values[i][j] =\
-    \ T.init(flatC[i * k + j].int)\n            else:\n                {.error: \"\
-    unsupported matrix representation\".}\n\n    type LegacyMatrix[T] = concept x\n\
-    \        x.h is int\n        x.w is int\n        x[0, 0] is T\n\n    proc matrixProduct*[T](a,\
-    \ b: LegacyMatrix[T]): auto =\n        ## \u5F93\u6765\u306EMatrix\u578B\u3092\
-    \u4FDD\u3063\u305F\u307E\u307EAVX2\u3067\u884C\u5217\u7A4D\u3092\u8A08\u7B97\u3059\
-    \u308B\u3002\n        mixin `[]`\n        matrixProductLegacy(a, b, typeof(a[0,\
-    \ 0]))\n"
+    \ T.init(flatC[i * k + j].int)\n            elif name == \"emptyWidth\" and values\
+    \ is int:\n                values = k\n            else:\n                {.error:\
+    \ \"unsupported matrix representation\".}\n\n    type LegacyMatrix[T] = concept\
+    \ x\n        x.h is int\n        x.w is int\n        x[0, 0] is T\n\n    proc\
+    \ matrixProduct*[T](a, b: LegacyMatrix[T]): auto =\n        ## \u5F93\u6765\u306E\
+    Matrix\u578B\u3092\u4FDD\u3063\u305F\u307E\u307EAVX2\u3067\u884C\u5217\u7A4D\u3092\
+    \u8A08\u7B97\u3059\u308B\u3002\n        mixin `[]`\n        matrixProductLegacy(a,\
+    \ b, typeof(a[0, 0]))\n\n    import options\n    import cplib/matrix/field_matrix_ops\n\
+    \    export LinearSystemSolution\n    include cplib/matrix/matrix_avx2_field_impl\n\
+    \n    type FieldReduction = object\n        values: seq[uint32]\n        pivots:\
+    \ seq[cint]\n        width, rank: int\n        determinant: uint32\n\n    proc\
+    \ fieldPointer[T](values: openArray[T]): ptr uint32 =\n        ## \u7A7A\u914D\
+    \u5217\u3092\u542B\u3080modint\u5185\u90E8\u5024\u306E\u9023\u7D9A\u9818\u57DF\
+    \u3092\u53C2\u7167\u3059\u308B\u3002\n        if values.len == 0: nil\n      \
+    \  else: cast[ptr uint32](unsafeAddr values[0])\n\n    proc fieldMatrixPointer[T](a:\
+    \ Matrix[T]): ptr uint32 =\n        ## \u7A7A\u884C\u5217\u3092\u542B\u3080\u884C\
+    \u5217\u306E\u5185\u90E8\u9818\u57DF\u3092\u8AAD\u307F\u53D6\u308B\u3002\n   \
+    \     if a.storage.isNil: nil\n        else: fieldPointer(a.storage.values)\n\n\
+    \    proc fieldPivotPointer(pivots: openArray[cint]): ptr cint =\n        ## \u7A7A\
+    \u914D\u5217\u3092\u542B\u3080\u30D4\u30DC\u30C3\u30C8\u5217\u306E\u9818\u57DF\
+    \u3092\u53C2\u7167\u3059\u308B\u3002\n        if pivots.len == 0: nil\n      \
+    \  else: cast[ptr cint](unsafeAddr pivots[0])\n\n    proc reduceFieldMatrix[T](a:\
+    \ Matrix[T], extra: int, reduced: bool,\n            rhs: ptr uint32 = nil, identity:\
+    \ bool = false): FieldReduction =\n        ## \u5165\u529B\u3092\u4FDD\u6301\u3057\
+    \u305F\u307E\u307E\u3001\u62E1\u5927\u884C\u5217\u3092AVX2\u3067\u524D\u9032\u6D88\
+    \u53BB\u30FB\u6383\u304D\u51FA\u3057\u3059\u308B\u3002\n        checkModulus(a)\n\
+    \        doAssert extra >= 0 and extra <= high(cint).int - a.w, \"matrix size\
+    \ overflow\"\n        result.width = a.w + extra\n        result.values = newSeq[uint32](matrixSize(a.h,\
+    \ result.width))\n        result.pivots = newSeq[cint](min(a.h, a.w))\n      \
+    \  let modulus = matrixModulus[T]()\n        fieldPrepareKernel(fieldMatrixPointer(a),\
+    \ rhs, fieldPointer(result.values),\n            a.h, a.w, extra, modulus, T is\
+    \ MontgomeryModint, identity)\n        result.rank = fieldEliminateKernel(fieldPointer(result.values),\
+    \ a.h,\n            result.width, a.w, fieldPivotPointer(result.pivots), result.determinant,\
+    \ modulus, reduced)\n\n    proc rank*[T](a: Matrix[T]): int =\n        ## AVX2\u306E\
+    \u524D\u9032\u6D88\u53BB\u3067\u968E\u6570\u3092\u6C42\u3081\u308B\u3002O(h*w*min(h,w))\u3002\
+    \n        reduceFieldMatrix(a, 0, false).rank\n\n    proc determinant*[T](a: Matrix[T]):\
+    \ T =\n        ## AVX2\u306E\u524D\u9032\u6D88\u53BB\u3067\u884C\u5217\u5F0F\u3092\
+    \u6C42\u3081\u308B\u3002\u7A7A\u884C\u5217\u306F1\u3002O(n^3)\u3002\n        assert\
+    \ a.h == a.w\n        let reduced = reduceFieldMatrix(a, 0, false)\n        if\
+    \ reduced.rank != a.h: return T.init(0)\n        T.init(fieldCanonicalKernel(reduced.determinant,\
+    \ matrixModulus[T]()).int)\n\n    proc hafnian*[T](a: Matrix[T]): T =\n      \
+    \  ## \u5BFE\u79F0\u306A\u5076\u6570\u6B21\u884C\u5217\u306Ehafnian\u3092AVX2\u306E\
+    \u591A\u9805\u5F0F\u7A4D\u548C\u3067\u6C42\u3081\u308B\u3002O(n^2*2^(n/2))\u3002\
+    \n        checkModulus(a)\n        assert a.h == a.w and a.h mod 2 == 0\n    \
+    \    for i in 0..<a.h:\n            for j in 0..<i: assert a[i,j].val == a[j,i].val,\
+    \ \"matrix must be symmetric\"\n        T.init(fieldHafnianKernel(fieldMatrixPointer(a),\
+    \ a.h,\n            matrixModulus[T](), T is MontgomeryModint).int)\n\n    proc\
+    \ solveLinearSystem*[T](a: Matrix[T], b: openArray[T]): Option[LinearSystemSolution[T]]\
+    \ =\n        ## AVX2\u3067Ax=b\u3092\u6383\u304D\u51FA\u3057\u3001\u7279\u6B8A\
+    \u89E3\u3068\u6838\u306E\u57FA\u5E95\u3092\u8FD4\u3059\u3002O(h*w*min(h,w)+w^2)\u3002\
+    \n        assert b.len == a.h\n        var reduced = reduceFieldMatrix(a, 1, true,\
+    \ fieldPointer(b))\n        for i in reduced.rank..<a.h:\n            if reduced.values[i\
+    \ * reduced.width + a.w] != 0:\n                return none(LinearSystemSolution[T])\n\
+    \        fieldRestoreKernel(fieldPointer(reduced.values), reduced.values.len,\n\
+    \            matrixModulus[T](), T is MontgomeryModint)\n        var solution:\
+    \ LinearSystemSolution[T]\n        solution.particular = newSeq[T](a.w)\n    \
+    \    var isPivot = newSeq[bool](a.w)\n        for i in 0..<reduced.rank:\n   \
+    \         let col = reduced.pivots[i].int\n            isPivot[col] = true\n \
+    \           solution.particular[col] = cast[T](reduced.values[i * reduced.width\
+    \ + a.w])\n        let one = T.init(1)\n        for free in 0..<a.w:\n       \
+    \     if isPivot[free]: continue\n            var vector = newSeq[T](a.w)\n  \
+    \          vector[free] = one\n            for i in 0..<reduced.rank:\n      \
+    \          vector[reduced.pivots[i].int] = -cast[T](reduced.values[i * reduced.width\
+    \ + free])\n            solution.basis.add(vector)\n        some(solution)\n\n\
+    \    proc inverse*[T](a: Matrix[T]): Option[Matrix[T]] =\n        ## AVX2\u306E\
+    \u6383\u304D\u51FA\u3057\u3067\u9006\u884C\u5217\u3092\u8FD4\u3059\u3002\u7279\
+    \u7570\u884C\u5217\u306Fnone\u3002O(n^3)\u3002\n        assert a.h == a.w\n  \
+    \      let reduced = reduceFieldMatrix(a, a.h, true, identity = true)\n      \
+    \  if reduced.rank != a.h: return none(Matrix[T])\n        var answer = initMatrix[T](a.h,\
+    \ a.h)\n        fieldInverseAdjugateKernel(fieldPointer(reduced.values), fieldMatrixPointer(answer),\n\
+    \            a.h, reduced.rank, fieldPivotPointer(reduced.pivots), reduced.determinant,\n\
+    \            matrixModulus[T](), T is MontgomeryModint, false)\n        some(answer)\n\
+    \n    proc adjugate*[T](a: Matrix[T]): Matrix[T] =\n        ## AVX2\u3067\u7279\
+    \u7570\u884C\u5217\u3092\u542B\u3080\u4F59\u56E0\u5B50\u884C\u5217\u3092\u8FD4\
+    \u3059\u3002O(n^3)\u3002\n        assert a.h == a.w\n        let reduced = reduceFieldMatrix(a,\
+    \ a.h, true, identity = true)\n        result = initMatrix[T](a.h, a.h)\n    \
+    \    fieldInverseAdjugateKernel(fieldPointer(reduced.values), fieldMatrixPointer(result),\n\
+    \            a.h, reduced.rank, fieldPivotPointer(reduced.pivots), reduced.determinant,\n\
+    \            matrixModulus[T](), T is MontgomeryModint, true)\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2.nim
-  requiredBy: []
-  timestamp: '2026-09-08 11:14:25+09:00'
+  requiredBy:
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_avx2_test.nim

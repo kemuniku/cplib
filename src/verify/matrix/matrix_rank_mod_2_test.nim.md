@@ -2,6 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
   - icon: ':heavy_check_mark:'
@@ -23,17 +35,22 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/matrix_rank_mod_2\n\
-    {.checks: off.}\nimport cplib/matrix/matrix_mod2\nimport std/[strutils, sequtils]\n\
-    \nlet nm = stdin.readLine.split.map(parseInt)\nlet (n, m) = (nm[0], nm[1])\nvar\
-    \ a = initMatrixMod2(n, m)\nfor i in 0..<n:\n    let s = stdin.readLine\n    for\
-    \ j in 0..<m: a[i, j] = s[j] == '1'\necho a.rank\n"
+    {.checks: off.}\nimport cplib/matrix/matrix_mod2\nimport strutils, sequtils\n\n\
+    let nm = stdin.readLine.split.map(parseInt)\nlet (n, m) = (nm[0], nm[1])\nif n\
+    \ == 0 or m == 0:\n    echo 0\n    quit(0)\nvar a = initMatrixMod2(n, m)\nfor\
+    \ i in 0..<n:\n    let s = stdin.readLine\n    for j in 0..<m: a[i, j] = s[j]\
+    \ == '1'\necho a.rank\n"
   dependsOn:
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_rank_mod_2_test.nim
   requiredBy: []
-  timestamp: '2026-07-14 07:36:02+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_rank_mod_2_test.nim

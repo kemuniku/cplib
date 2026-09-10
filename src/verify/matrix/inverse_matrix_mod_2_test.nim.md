@@ -2,6 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/bit_matrix_ops.nim
+    title: cplib/matrix/bit_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/field_matrix_ops.nim
+    title: cplib/matrix/field_matrix_ops.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
   - icon: ':heavy_check_mark:'
@@ -30,12 +42,16 @@ data:
     \ i in 0..<n:\n        var s = newString(n)\n        for j in 0..<n: s[j] = if\
     \ b[i, j]: '1' else: '0'\n        echo s\n"
   dependsOn:
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/inverse_matrix_mod_2_test.nim
   requiredBy: []
-  timestamp: '2026-07-14 07:36:02+09:00'
+  timestamp: '2026-09-10 08:33:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/inverse_matrix_mod_2_test.nim
