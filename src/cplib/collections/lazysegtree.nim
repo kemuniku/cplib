@@ -140,3 +140,50 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
             self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])
     proc apply*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int], f: F) =
         self.apply(segment.a, segment.b+1, f)
+
+    proc max_right*[S, F](self: var LazySegmentTree[S, F], l: int, f: proc(l: S): bool): int =
+        ## f(get(l, r))を満たす最大のrをO(log N)で返します。
+        ## fは区間の拡大に対して単調で、単位元に対してtrueを返す必要があります。
+        assert 0 <= l and l <= self.len
+        assert f(self.default)
+        if l == self.len: return self.len
+        var l = l + self.lastnode
+        self.all_push(l)
+        var sm = self.default
+        while true:
+            while l mod 2 == 0: l = (l shr 1)
+            if not f(self.merge(sm, self.arr[l])):
+                while l < self.lastnode:
+                    self.push(l)
+                    l *= 2
+                    if f(self.merge(sm, self.arr[l])):
+                        sm = self.merge(sm, self.arr[l])
+                        l += 1
+                return l - self.lastnode
+            sm = self.merge(sm, self.arr[l])
+            l += 1
+            if (l and -l) == l: break
+        return self.len
+    proc min_left*[S, F](self: var LazySegmentTree[S, F], r: int, f: proc(l: S): bool): int =
+        ## f(get(l, r))を満たす最小のlをO(log N)で返します。
+        ## fは区間の拡大に対して単調で、単位元に対してtrueを返す必要があります。
+        assert 0 <= r and r <= self.len
+        assert f(self.default)
+        if r == 0: return 0
+        var r = r + self.lastnode
+        self.all_push(r - 1)
+        var sm = self.default
+        while true:
+            r -= 1
+            while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)
+            if not f(self.merge(self.arr[r], sm)):
+                while r < self.lastnode:
+                    self.push(r)
+                    r = 2 * r + 1
+                    if f(self.merge(self.arr[r], sm)):
+                        sm = self.merge(self.arr[r], sm)
+                        r -= 1
+                return r + 1 - self.lastnode
+            sm = self.merge(self.arr[r], sm)
+            if (r and -r) == r: break
+        return 0
