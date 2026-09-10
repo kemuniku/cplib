@@ -136,6 +136,8 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
     proc `**`*[N: static int](a: StaticMatrixMod2[N, N], exponent: int): StaticMatrixMod2[N, N] = a.pow(exponent)
 
     proc rank*[H: static int, W: static int](a: StaticMatrixMod2[H, W]): int =
+        ## 階数を求める。空行列は作業領域を確保せずO(1)で返す。
+        when H == 0 or W == 0: return 0
         var storage: ref StaticMatrixMod2[H, W]
         new storage
         storage[] = a
@@ -167,3 +169,34 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
                     for k in 0..<left.rows[i].len: left.rows[i][k] = left.rows[i][k] xor left.rows[col][k]
                     for k in 0..<right.rows[i].len: right.rows[i][k] = right.rows[i][k] xor right.rows[col][k]
         some(right)
+
+    import cplib/matrix/field_matrix_ops
+    import cplib/matrix/bit_matrix_ops
+    export LinearSystemSolution
+
+    proc solveLinearSystem*[H: static int, W: static int](a: StaticMatrixMod2[H,W], b: openArray[bool], height: int = H, width: int = W): Option[LinearSystemSolution[bool]] =
+        ## 左上h行w列でAx=bをビット演算で解く。O(h*min(h,w)*(w div 64+1)+w^2)。
+        ## height/widthの省略時はH/W。元の行列は変更せず、解なしはnoneを返す。
+        assert height in 0..H and width in 0..W and b.len == height
+        var rows = initBitLinearSystem(height, width)
+        let stride = (width shr 6) + 1
+        let fullWords = width shr 6
+        let tailBits = width and 63
+        for i in 0..<height:
+            for k in 0..<fullWords: rows[i * stride + k] = a.rows[i][k]
+            if tailBits > 0:
+                rows[i * stride + fullWords] = a.rows[i][fullWords] and ((1'u64 shl tailBits) - 1)
+            if b[i]: rows[i * stride + fullWords] = rows[i * stride + fullWords] or (1'u64 shl tailBits)
+        solveBitLinearSystem(rows, height, width)
+
+    proc hafnian*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): bool =
+        ## GF(2)上の対称な偶数次行列のhafnianを求める。O(n^3)。
+        assert a.h == a.w
+        fieldHafnian(matrixRows(a, a.h, a.w))
+
+    proc adjugate*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): StaticMatrixMod2[H,W] =
+        ## GF(2)上で特異行列も含めた余因子行列を求める。O(n^3)。
+        assert a.h == a.w
+        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.w), true).get
+        for i in 0..<a.h:
+            for j in 0..<a.w: result[i, j] = rows[i][j]

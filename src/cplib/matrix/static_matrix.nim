@@ -9,7 +9,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
     
     proc initMatrix*[H:static int,W:static int,T](arr: array[H,array[W,T]]): StaticMatrix[H,W,T] =
         assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "all elements in arr must be the same size."
-        assert arr[0].len == W
+        when H > 0: assert arr[0].len == W
         assert arr.len == H
         var idx = 0
         for i in 0..<H:
@@ -125,3 +125,44 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
     proc sum*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): T =
         for i in 0..<H*W:
             result += m.arr[i]
+
+    import options
+    import cplib/matrix/field_matrix_ops
+    export LinearSystemSolution
+
+    proc rank*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], height: int = H, width: int = W): int =
+        ## 左上height行width列の階数を求める。O(h*w*min(h,w))。
+        fieldRank(matrixRows(a, height, width), width)
+
+    proc determinant*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): T =
+        ## 左上n×nの行列式を求める。空行列は1。O(n^3)。
+        assert n in 0..min(H, W)
+        fieldDeterminant(matrixRows(a, n, n))
+
+    proc hafnian*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): T =
+        ## 対称な左上n×n（nは偶数）のhafnianを求める。O(n^2*2^(n/2))。
+        assert n in 0..min(H, W)
+        fieldHafnian(matrixRows(a, n, n))
+
+    proc solveLinearSystem*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], b: openArray[T], height: int = H, width: int = W): Option[LinearSystemSolution[T]] =
+        ## 左上height行width列でAx=bの特殊解と核の基底を返す。解なしはnone。
+        fieldSolve(matrixRows(a, height, width), width, b)
+
+    proc inverse*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): Option[StaticMatrix[H,W,T]] =
+        ## 左上n×nの逆行列を返す。範囲外は零、特異行列はnone。O(n^3)。
+        assert n in 0..min(H, W)
+        let rows = fieldAdjugateInverse(matrixRows(a, n, n), false)
+        if rows.isNone: return none(StaticMatrix[H,W,T])
+        var answer: StaticMatrix[H,W,T]
+        for i in 0..<n:
+            for j in 0..<n: answer[i, j] = rows.get[i][j]
+        some(answer)
+
+    proc adjugate*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): StaticMatrix[H,W,T] =
+        ## 左上n×nの余因子行列を返す。範囲外は零。O(n^3)。
+        assert n in 0..min(H, W)
+        let rows = fieldAdjugateInverse(matrixRows(a, n, n), true)
+        var answer: StaticMatrix[H,W,T]
+        for i in 0..<n:
+            for j in 0..<n: answer[i, j] = rows.get[i][j]
+        answer

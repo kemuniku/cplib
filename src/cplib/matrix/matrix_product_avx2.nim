@@ -214,6 +214,7 @@ static void cplib_matrix_product(const uint32_t*a,const uint32_t*b,uint32_t*c,in
 
     proc matrixProduct*[T](a, b: Matrix[T]): Matrix[T] =
         ## 既存のmodint行列を公開値へ変換し、AVX2で積を求める。
+        bind matrixProduct, initMatrix
         when T isnot MontgomeryModint and T isnot BarrettModint:
             {.error: "matrixProduct requires MontgomeryModint or BarrettModint".}
         let n = a.h
