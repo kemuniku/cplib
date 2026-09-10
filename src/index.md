@@ -70,6 +70,9 @@ data:
       path: cplib/collections/lazysegtree_static_op.nim
       title: cplib/collections/lazysegtree_static_op.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/lazysegtree_template.nim
+      title: cplib/collections/lazysegtree_template.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/lichaotree.nim
       title: cplib/collections/lichaotree.nim
     - icon: ':heavy_check_mark:'
@@ -724,6 +727,11 @@ data:
     - icon: ':warning:'
       path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
       title: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+  - name: verify/collections/lazysegtree
+    pages:
+    - icon: ':warning:'
+      path: verify/collections/lazysegtree/binary_search_checks.nim
+      title: verify/collections/lazysegtree/binary_search_checks.nim
   - name: verify/collections/ppunionfind
     pages:
     - icon: ':warning:'
@@ -1312,6 +1320,9 @@ data:
       path: verify/AI/kth_element_test.nim
       title: verify/AI/kth_element_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/lazysegtree_template_test.nim
+      title: verify/AI/lazysegtree_template_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/lazysegtree_test.nim
       title: verify/AI/lazysegtree_test.nim
     - icon: ':heavy_check_mark:'
@@ -1686,6 +1697,12 @@ data:
       title: verify/collections/dualsegtree/rangeaffinepointget_test.nim
   - name: verify/collections/lazysegtree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/lazysegtree/binary_search_static_op_test.nim
+      title: verify/collections/lazysegtree/binary_search_static_op_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/lazysegtree/binary_search_test.nim
+      title: verify/collections/lazysegtree/binary_search_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
       title: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
@@ -2182,10 +2199,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/system_of_linear_equations_mod_2_static_test.nim
       title: verify/matrix/system_of_linear_equations_mod_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/system_of_linear_equations_mod_2_test.nim
       title: verify/matrix/system_of_linear_equations_mod_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/system_of_linear_equations_static_matrix_test.nim
       title: verify/matrix/system_of_linear_equations_static_matrix_test.nim
   - name: verify/matrix/static_string
@@ -2378,6 +2395,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_int_test.nim
       title: verify/utils/binary_search_int_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/game_grundy_test.nim
+      title: verify/utils/game_grundy_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/game_optimal_play_test.nim
+      title: verify/utils/game_optimal_play_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/game_test.nim
       title: verify/utils/game_test.nim

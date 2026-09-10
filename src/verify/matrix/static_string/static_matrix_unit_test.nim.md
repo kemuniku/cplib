@@ -60,10 +60,10 @@ data:
     \ sq3\n    var m3 = r2 * a\n    var m4 = a * c3\n    assert m3.h == 1 and m3.w\
     \ == 3\n    assert m4.h == 2 and m4.w == 1\n"
   dependsOn:
-  - cplib/matrix/static_matrix.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/static_string/static_matrix_unit_test.nim
   requiredBy: []

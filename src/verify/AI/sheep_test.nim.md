@@ -75,20 +75,20 @@ data:
     \ sep = \"\\n\"))\ndoAssert compiles(print(\"a\", \"b\"))\ndoAssert compiles(print(*values,\
     \ sep = \"\\n\"))\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/constants.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/utils/constants.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/utils/constants.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []

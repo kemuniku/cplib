@@ -83,13 +83,13 @@ data:
   dependsOn:
   - cplib/modint/barrett_impl.nim
   - cplib/math/combination.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/math/combination.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/combination_test.nim

@@ -64,19 +64,19 @@ data:
     \ (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/collections/lazysegtree_static_op.nim
-  - cplib/modint/modint.nim
   - cplib/collections/lazysegtree_static_op.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-11 04:54:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim

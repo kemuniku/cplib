@@ -420,23 +420,23 @@ data:
     \ f.divmod(g).r\n\n    proc eval*[T: BarrettModint or MontgomeryModint](f: seq[T],\
     \ x: T): T =\n        for i in countdown(f.high, 0): result = result * x + f[i]\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/powmod.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inner_math.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/fps/formal_power_series.nim

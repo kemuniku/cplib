@@ -3,9 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/system_of_linear_equations_mod_2
     links:
@@ -26,7 +26,7 @@ data:
   path: verify/matrix/system_of_linear_equations_mod_2_test.nim
   requiredBy: []
   timestamp: '2026-09-10 08:33:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/system_of_linear_equations_mod_2_test.nim
 layout: document

@@ -10,6 +10,12 @@ data:
     path: verify/AI/lazysegtree_test.nim
     title: verify/AI/lazysegtree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/binary_search_test.nim
+    title: verify/collections/lazysegtree/binary_search_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/binary_search_test.nim
+    title: verify/collections/lazysegtree/binary_search_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
     title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - icon: ':heavy_check_mark:'
@@ -113,16 +119,48 @@ data:
     \ = countTrailingZeroBits(q_right) + 1\n        for i in mn..self.log:\n     \
     \       var p = ((q_right - 1) shr i)\n            self.arr[p] = self.merge(self.arr[2*p],\
     \ self.arr[2*p+1])\n    proc apply*[S, F](self: var LazySegmentTree[S, F], segment:\
-    \ HSlice[int, int], f: F) =\n        self.apply(segment.a, segment.b+1, f)\n"
+    \ HSlice[int, int], f: F) =\n        self.apply(segment.a, segment.b+1, f)\n\n\
+    \    proc max_right*[S, F](self: var LazySegmentTree[S, F], l: int, f: proc(l:\
+    \ S): bool): int =\n        ## f(get(l, r))\u3092\u6E80\u305F\u3059\u6700\u5927\
+    \u306Er\u3092O(log N)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        ## f\u306F\u533A\
+    \u9593\u306E\u62E1\u5927\u306B\u5BFE\u3057\u3066\u5358\u8ABF\u3067\u3001\u5358\
+    \u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\u3002\n        assert 0 <= l and l <= self.len\n        assert\
+    \ f(self.default)\n        if l == self.len: return self.len\n        var l =\
+    \ l + self.lastnode\n        self.all_push(l)\n        var sm = self.default\n\
+    \        while true:\n            while l mod 2 == 0: l = (l shr 1)\n        \
+    \    if not f(self.merge(sm, self.arr[l])):\n                while l < self.lastnode:\n\
+    \                    self.push(l)\n                    l *= 2\n              \
+    \      if f(self.merge(sm, self.arr[l])):\n                        sm = self.merge(sm,\
+    \ self.arr[l])\n                        l += 1\n                return l - self.lastnode\n\
+    \            sm = self.merge(sm, self.arr[l])\n            l += 1\n          \
+    \  if (l and -l) == l: break\n        return self.len\n    proc min_left*[S, F](self:\
+    \ var LazySegmentTree[S, F], r: int, f: proc(l: S): bool): int =\n        ## f(get(l,\
+    \ r))\u3092\u6E80\u305F\u3059\u6700\u5C0F\u306El\u3092O(log N)\u3067\u8FD4\u3057\
+    \u307E\u3059\u3002\n        ## f\u306F\u533A\u9593\u306E\u62E1\u5927\u306B\u5BFE\
+    \u3057\u3066\u5358\u8ABF\u3067\u3001\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066\
+    true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n     \
+    \   assert 0 <= r and r <= self.len\n        assert f(self.default)\n        if\
+    \ r == 0: return 0\n        var r = r + self.lastnode\n        self.all_push(r\
+    \ - 1)\n        var sm = self.default\n        while true:\n            r -= 1\n\
+    \            while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)\n            if\
+    \ not f(self.merge(self.arr[r], sm)):\n                while r < self.lastnode:\n\
+    \                    self.push(r)\n                    r = 2 * r + 1\n       \
+    \             if f(self.merge(self.arr[r], sm)):\n                        sm =\
+    \ self.merge(self.arr[r], sm)\n                        r -= 1\n              \
+    \  return r + 1 - self.lastnode\n            sm = self.merge(self.arr[r], sm)\n\
+    \            if (r and -r) == r: break\n        return 0\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/lazysegtree.nim
   requiredBy: []
-  timestamp: '2025-04-27 16:37:14+09:00'
+  timestamp: '2026-09-11 02:59:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/binary_search_test.nim
+  - verify/collections/lazysegtree/binary_search_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/AI/lazysegtree_test.nim

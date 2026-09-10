@@ -68,18 +68,18 @@ data:
   dependsOn:
   - cplib/math/euler_phi.nim
   - cplib/math/divisor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/euler_phi.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/math/divisor.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/euler_phi.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/euler_phi_yukicoder_test.nim
   requiredBy: []

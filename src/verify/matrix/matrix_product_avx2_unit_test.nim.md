@@ -183,18 +183,18 @@ data:
     \ \"Hello World\"\n"
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_product_avx2.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/matrix/matrix_product_avx2.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_product_avx2.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/matrix/matrix.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/matrix/matrix_product_avx2_unit_test.nim

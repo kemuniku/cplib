@@ -79,8 +79,8 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph_debug.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph_debug.nim
   - cplib/graph/graph_debug.nim
   isVerificationFile: true
   path: verify/AI/graph_debug_test.nim

@@ -70,7 +70,7 @@ data:
   isVerificationFile: true
   path: verify/utils/game_test.nim
   requiredBy: []
-  timestamp: '2026-09-09 16:56:35+09:00'
+  timestamp: '2026-09-11 03:00:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/game_test.nim

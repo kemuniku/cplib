@@ -62,8 +62,8 @@ data:
     \ a[i] += 99 * i + 9_999_999\n    apply(seg, a, 1, 128, -1_000_000, -1_000_000_000_000.int)\n\
     \    checkAll(seg, a)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/range_linear_add_range_min.nim
   - cplib/math/int128.nim
+  - cplib/collections/range_linear_add_range_min.nim
   - cplib/math/int128.nim
   - cplib/collections/range_linear_add_range_min.nim
   isVerificationFile: true

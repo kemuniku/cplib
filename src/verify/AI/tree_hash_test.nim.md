@@ -97,8 +97,8 @@ data:
     Hello World\"\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree_hash.nim
   - cplib/tree/tree_hash.nim
   isVerificationFile: true
   path: verify/AI/tree_hash_test.nim

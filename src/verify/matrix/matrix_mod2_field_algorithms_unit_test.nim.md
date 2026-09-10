@@ -105,12 +105,12 @@ data:
     \ and solution.basis.len == 64\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   isVerificationFile: true
   path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim

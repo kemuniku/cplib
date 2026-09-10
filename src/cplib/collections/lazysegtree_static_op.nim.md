@@ -1,8 +1,26 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/lazysegtree_template.nim
+    title: cplib/collections/lazysegtree_template.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/lazysegtree_template.nim
+    title: cplib/collections/lazysegtree_template.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lazysegtree_template_test.nim
+    title: verify/AI/lazysegtree_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lazysegtree_template_test.nim
+    title: verify/AI/lazysegtree_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/binary_search_static_op_test.nim
+    title: verify/collections/lazysegtree/binary_search_static_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/binary_search_static_op_test.nim
+    title: verify/collections/lazysegtree/binary_search_static_op_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
     title: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
@@ -42,12 +60,11 @@ data:
     \  proc staticMerge(x, y: S): S {.gensym, inline.} = op0(x, y)\n        proc staticMapping(f:\
     \ F, x: S): S {.gensym, inline.} = mapping0(f, x)\n        proc staticComposition(f,\
     \ g: F): F {.gensym, inline.} = composition0(f, g)\n        LazySegmentTree[S,\
-    \ F, (staticMerge, staticMapping, staticComposition)]\n\n    when defined(release):\n\
-    \        {.push checks: off.}\n    else:\n        {.push boundChecks: off, overflowChecks:\
-    \ off, rangeChecks: off.}\n\n    proc initLazySegmentTreeImpl[ST: LazySegmentTree](\n\
-    \        self: typedesc[ST], v: seq[ST.S], default: ST.S, id: ST.F\n    ): ST\
-    \ =\n        let n = len(v)\n        var lastnode = 1\n        while lastnode\
-    \ < n:\n            lastnode *= 2\n        let log = countTrailingZeroBits(lastnode)\n\
+    \ F, (staticMerge, staticMapping, staticComposition)]\n\n    {.push boundChecks:\
+    \ off, overflowChecks: off, rangeChecks: off.}\n\n    proc initLazySegmentTreeImpl[ST:\
+    \ LazySegmentTree](\n        self: typedesc[ST], v: seq[ST.S], default: ST.S,\
+    \ id: ST.F\n    ): ST =\n        let n = len(v)\n        var lastnode = 1\n  \
+    \      while lastnode < n:\n            lastnode *= 2\n        let log = countTrailingZeroBits(lastnode)\n\
     \        var arr = newSeq[ST.S](2 * lastnode)\n        var zero: ST.S\n      \
     \  when compiles(default == zero):\n            if default != zero:\n        \
     \        for i in 0..<arr.len:\n                    arr[i] = default\n       \
@@ -162,18 +179,55 @@ data:
     \ shr 1\n                q_right = q_right shr 1\n        self.pullBoundaries(q_left,\
     \ q_right)\n\n    proc apply*[ST: LazySegmentTree](\n        self: var ST, segment:\
     \ HSlice[int, int], f: ST.F\n    ) =\n        self.apply(segment.a, segment.b\
-    \ + 1, f)\n\n    {.pop.}\n"
+    \ + 1, f)\n\n    proc max_right*[ST: LazySegmentTree](\n        self: var ST,\
+    \ l: int, f: proc(value: ST.S): bool\n    ): int =\n        ## f(get(l, r))\u3092\
+    \u6E80\u305F\u3059\u6700\u5927\u306Er\u3092O(log N)\u3067\u8FD4\u3057\u307E\u3059\
+    \u3002\n        ## f\u306F\u533A\u9593\u306E\u62E1\u5927\u306B\u5BFE\u3057\u3066\
+    \u5358\u8ABF\u3067\u3001\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\
+    \u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n        assert 0 <= l\
+    \ and l <= self.len\n        assert f(self.default)\n        if l == self.len:\n\
+    \            return self.len\n        var l = l + self.lastnode\n        self.all_push(l)\n\
+    \        var sm = self.default\n        while true:\n            while l mod 2\
+    \ == 0:\n                l = l shr 1\n            if not f(self.mergeOp(sm, self.arr[l])):\n\
+    \                while l < self.lastnode:\n                    self.push(l)\n\
+    \                    l *= 2\n                    if f(self.mergeOp(sm, self.arr[l])):\n\
+    \                        sm = self.mergeOp(sm, self.arr[l])\n                \
+    \        l += 1\n                return l - self.lastnode\n            sm = self.mergeOp(sm,\
+    \ self.arr[l])\n            l += 1\n            if (l and -l) == l:\n        \
+    \        break\n        return self.len\n\n    proc min_left*[ST: LazySegmentTree](\n\
+    \        self: var ST, r: int, f: proc(value: ST.S): bool\n    ): int =\n    \
+    \    ## f(get(l, r))\u3092\u6E80\u305F\u3059\u6700\u5C0F\u306El\u3092O(log N)\u3067\
+    \u8FD4\u3057\u307E\u3059\u3002\n        ## f\u306F\u533A\u9593\u306E\u62E1\u5927\
+    \u306B\u5BFE\u3057\u3066\u5358\u8ABF\u3067\u3001\u5358\u4F4D\u5143\u306B\u5BFE\
+    \u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\
+    \n        assert 0 <= r and r <= self.len\n        assert f(self.default)\n  \
+    \      if r == 0:\n            return 0\n        var r = r + self.lastnode\n \
+    \       self.all_push(r - 1)\n        var sm = self.default\n        while true:\n\
+    \            r -= 1\n            while r > 1 and r mod 2 != 0:\n             \
+    \   r = r shr 1\n            if not f(self.mergeOp(self.arr[r], sm)):\n      \
+    \          while r < self.lastnode:\n                    self.push(r)\n      \
+    \              r = 2 * r + 1\n                    if f(self.mergeOp(self.arr[r],\
+    \ sm)):\n                        sm = self.mergeOp(self.arr[r], sm)\n        \
+    \                r -= 1\n                return r + 1 - self.lastnode\n      \
+    \      sm = self.mergeOp(self.arr[r], sm)\n            if (r and -r) == r:\n \
+    \               break\n        return 0\n\n    {.pop.}\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/lazysegtree_static_op.nim
-  requiredBy: []
-  timestamp: '2026-09-02 04:31:06+09:00'
+  requiredBy:
+  - cplib/collections/lazysegtree_template.nim
+  - cplib/collections/lazysegtree_template.nim
+  timestamp: '2026-09-11 04:54:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/collections/lazysegtree/binary_search_static_op_test.nim
+  - verify/collections/lazysegtree/binary_search_static_op_test.nim
+  - verify/AI/lazysegtree_template_test.nim
+  - verify/AI/lazysegtree_template_test.nim
 documentation_of: cplib/collections/lazysegtree_static_op.nim
 layout: document
 redirect_from:

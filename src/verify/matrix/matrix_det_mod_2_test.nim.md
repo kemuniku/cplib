@@ -40,11 +40,11 @@ data:
     \   let s = stdin.readLine\n    for j in 0..<n: a[i, j] = s[j] == '1'\necho int(a.determinant)\n"
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_det_mod_2_test.nim
   requiredBy: []

@@ -304,6 +304,12 @@ data:
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/lazysegtree_template_test.nim
+    title: verify/AI/lazysegtree_template_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lazysegtree_template_test.nim
+    title: verify/AI/lazysegtree_template_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
   - icon: ':heavy_check_mark:'
@@ -921,6 +927,8 @@ data:
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/AI/wildcard_matching_test.nim
   - verify/AI/wildcard_matching_test.nim
+  - verify/AI/lazysegtree_template_test.nim
+  - verify/AI/lazysegtree_template_test.nim
   - verify/AI/combination_test.nim
   - verify/AI/combination_test.nim
   - verify/AI/berlekamp_massey_test.nim
