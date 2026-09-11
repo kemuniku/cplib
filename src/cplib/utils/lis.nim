@@ -24,3 +24,19 @@ when not declared CPLIB_UTILS_LIS:
                 result.add(a[i])
                 t -= 1
         result.reverse
+
+    proc restore_lis_index*[T](a: openArray[T]): seq[T] =
+        var p = newSeq[int](a.len)
+        var dp = newSeq[T]()
+        for i in 0..<a.len:
+            var pos = dp.lowerBound(a[i])
+            if pos == dp.len: dp.add(a[i])
+            else: dp[pos] = a[i]
+            p[i] = pos
+        result = newSeq[T]()
+        var t = dp.len - 1
+        for i in countdown(a.len - 1, 0):
+            if p[i] == t:
+                result.add(i)
+                t -= 1
+        result.reverse
