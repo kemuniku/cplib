@@ -33,7 +33,7 @@ when not declared CPLIB_UTILS_LIS:
             if pos == dp.len: dp.add(a[i])
             else: dp[pos] = a[i]
             p[i] = pos
-        result = newSeq[T]()
+        result = newSeq[int]()
         var t = dp.len - 1
         for i in countdown(a.len - 1, 0):
             if p[i] == t:
