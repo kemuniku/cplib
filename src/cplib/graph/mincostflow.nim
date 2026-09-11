@@ -110,6 +110,9 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
                 let u = prevVertex[v]
                 pushed = min(pushed, g.graph[u][prevEdge[v]].cap)
                 v = u
+            var nextCost = totalCost
+            if unitCost != Cost(0):
+                nextCost += Cost(pushed) * unitCost
             v = dst
             while v != src:
                 let u = prevVertex[v]
@@ -119,7 +122,7 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
                 g.graph[v][rev].cap += pushed
                 v = u
             totalFlow += pushed
-            totalCost += Cost(pushed) * unitCost
+            totalCost = nextCost
             if hasPrevious and previousCost == unitCost:
                 result.setLen(result.len - 1)
             result.add((totalFlow, totalCost))

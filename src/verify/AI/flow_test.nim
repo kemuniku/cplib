@@ -29,6 +29,64 @@ block:
     doAssert g.get_edge(1).flow == 2
 
 block:
+    var g = initMinCostFlow[uint64, int64](2)
+    let capacity = high(uint64)
+    g.add_edge(0, 1, capacity, 0)
+    doAssert g.flow(0, 1) == (capacity, 0'i64)
+    doAssert g.get_edge(0).flow == capacity
+    doAssert g.flow(0, 1) == (0'u64, 0'i64)
+
+block:
+    var g = initMinCostFlow[uint64, int32](3)
+    let capacity = uint64(high(int32)) + 1
+    g.add_edge(0, 1, capacity, -1)
+    g.add_edge(1, 2, capacity, 1)
+    doAssert g.flow(0, 2) == (capacity, 0'i32)
+    doAssert g.get_edge(0).flow == capacity
+    doAssert g.get_edge(1).flow == capacity
+
+when compileOption("rangeChecks"):
+    block:
+        var g = initMinCostFlow[uint64, int64](2)
+        g.add_edge(0, 1, uint64(high(int64)) + 1, 1)
+        let before = g.get_edges()
+        var caught = false
+        try:
+            discard g.flow(0, 1)
+        except RangeDefect:
+            caught = true
+        doAssert caught
+        doAssert g.get_edges() == before
+        doAssert g.flow(0, 1, 1) == (1'u64, 1'i64)
+
+when compileOption("overflowChecks"):
+    block:
+        var g = initMinCostFlow[int64, int64](2)
+        g.add_edge(0, 1, high(int64) div 2 + 1, 2)
+        let before = g.get_edges()
+        var caught = false
+        try:
+            discard g.flow(0, 1)
+        except OverflowDefect:
+            caught = true
+        doAssert caught
+        doAssert g.get_edges() == before
+
+    block:
+        var g = initMinCostFlow[int64, int64](2)
+        let capacity = high(int64) div 2
+        g.add_edge(0, 1, capacity, 1)
+        g.add_edge(0, 1, capacity, 2)
+        var caught = false
+        try:
+            discard g.flow(0, 1)
+        except OverflowDefect:
+            caught = true
+        doAssert caught
+        doAssert g.get_edge(0).flow == capacity
+        doAssert g.get_edge(1).flow == 0
+
+block:
     var g = initMinCostFlow[int, int](2)
     g.add_edge(0, 0, 1, -1)
     var caught = false
