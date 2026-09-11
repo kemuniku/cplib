@@ -46,7 +46,7 @@ data:
   isVerificationFile: true
   path: verify/utils/lis_aoj_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 05:41:48+09:00'
+  timestamp: '2026-09-12 08:45:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/lis_aoj_test.nim

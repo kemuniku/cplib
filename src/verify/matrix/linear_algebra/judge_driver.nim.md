@@ -32,11 +32,23 @@ data:
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_kernel.nim
+    title: cplib/matrix/matrix_avx2_kernel.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_kernel.nim
+    title: cplib/matrix/matrix_avx2_kernel.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
   - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
@@ -75,7 +87,8 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "include cplib/tmpl/fastio\nimport cplib/modint/modint\nimport options\nwhen\
-    \ defined(testStaticMatrix):\n    import cplib/matrix/static_matrix\nelif defined(testAvxMatrix):\n\
+    \ defined(testStaticAvxMatrix):\n    import cplib/matrix/static_matrix_avx2\n\
+    elif defined(testStaticMatrix):\n    import cplib/matrix/static_matrix\nelif defined(testAvxMatrix):\n\
     \    import cplib/matrix/matrix_avx2\nelse:\n    import cplib/matrix/matrix\n\n\
     type Mint = modint998244353_montgomery\nlet n = input(int)\nwhen matrixProblem\
     \ in [\"matrix_rank\", \"system_of_linear_equations\"]:\n    let m = input(int)\n\
@@ -121,30 +134,34 @@ data:
     : run[38,38]()\n    else: run[500,500]()\nelse:\n    var a = initMatrix(n,m,Mint(0))\n\
     \    solve(a)\n"
   dependsOn:
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/static_matrix.nim
+  - cplib/tmpl/fastio.nim
   - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/static_matrix.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/judge_driver.nim
   requiredBy: []
-  timestamp: '2026-09-10 08:33:37+09:00'
+  timestamp: '2026-09-11 02:59:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/matrix/linear_algebra/judge_driver.nim

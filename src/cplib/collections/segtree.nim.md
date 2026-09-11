@@ -136,6 +136,12 @@ data:
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - icon: ':heavy_check_mark:'
@@ -307,6 +313,8 @@ data:
   - verify/AI/segtree2d_test.nim
   - verify/AI/inversion_number_test.nim
   - verify/AI/inversion_number_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
 documentation_of: cplib/collections/segtree.nim
 layout: document
 redirect_from:

@@ -26,6 +26,12 @@ data:
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_kernel.nim
+    title: cplib/matrix/matrix_avx2_kernel.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_kernel.nim
+    title: cplib/matrix/matrix_avx2_kernel.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
   - icon: ':heavy_check_mark:'
@@ -116,21 +122,24 @@ data:
     \ @[three, two]\n    doAssert residue(b[0, 0]) == 3 and residue(b[0, 1]) == 2\n\
     \    b[0] = b[1]\n    doAssert toSeq(b[0]).mapIt(residue(it)) == @[3u64, 5u64]\n\
     \n    var owner = a\n    var mutableRow = owner[0]\n    let copiedAfterView =\
-    \ owner\n    mutableRow[0] = T.init(9)\n    for x in mutableRow.mitems: x += one\n\
-    \    doAssert residue(owner[0, 0]) == 10 and residue(owner[0, 1]) == 3\n    doAssert\
-    \ residue(copiedAfterView[0, 0]) == 1\n    var copiedRow = mutableRow\n    copiedRow[1]\
-    \ = T.init(6)\n    doAssert residue(owner[0, 1]) == 6\n    var detached = toSeq(mutableRow)\n\
-    \    detached[0] = zero\n    doAssert residue(owner[0, 0]) == 10\n    owner =\
-    \ initMatrix[T](1, 1, zero)\n    mutableRow[0] = T.init(7)\n    doAssert residue(mutableRow[0])\
-    \ == 7 and residue(owner[0, 0]) == 0\n    let temporaryRow = (a * a)[0]\n    doAssert\
-    \ toSeq(temporaryRow).mapIt(residue(it)) == @[7u64, 10u64]\n    let scopedRow\
-    \ = block:\n        let temporaryOwner = a * a\n        temporaryOwner[1]\n  \
-    \  doAssert toSeq(scopedRow).mapIt(residue(it)) == @[15u64, 22u64]\n\n    checkEntries(a\
-    \ + a, [2u64, 4, 6, 8])\n    checkEntries(a - a, [0u64, 0, 0, 0])\n    checkEntries(a\
-    \ + three, [4u64, 5, 6, 7])\n    checkEntries(three + a, [4u64, 5, 6, 7])\n  \
-    \  checkEntries(a * three, [3u64, 6, 9, 12])\n    checkEntries(three * a, [3u64,\
-    \ 6, 9, 12])\n    checkEntries(5 - a, [4u64, 3, 2, 1])\n    checkEntries(a + 3,\
-    \ [4u64, 5, 6, 7])\n    checkEntries(3 + a, [4u64, 5, 6, 7])\n    checkEntries(3\
+    \ owner.clone()\n    var assignedAfterView = owner\n    let letAfterView = owner\n\
+    \    mutableRow[0] = T.init(9)\n    for x in mutableRow.mitems: x += one\n   \
+    \ doAssert residue(owner[0, 0]) == 10 and residue(owner[0, 1]) == 3\n    doAssert\
+    \ residue(copiedAfterView[0, 0]) == 1\n    doAssert residue(assignedAfterView[0,\
+    \ 0]) == 1\n    when defined(gcDestructors):\n        doAssert residue(letAfterView[0,\
+    \ 0]) == 1\n    else:\n        doAssert residue(letAfterView[0, 0]) == 10\n  \
+    \  var copiedRow = mutableRow\n    copiedRow[1] = T.init(6)\n    doAssert residue(owner[0,\
+    \ 1]) == 6\n    var detached = toSeq(mutableRow)\n    detached[0] = zero\n   \
+    \ doAssert residue(owner[0, 0]) == 10\n    owner = initMatrix[T](1, 1, zero)\n\
+    \    mutableRow[0] = T.init(7)\n    doAssert residue(mutableRow[0]) == 7 and residue(owner[0,\
+    \ 0]) == 0\n    let temporaryRow = (a * a)[0]\n    doAssert toSeq(temporaryRow).mapIt(residue(it))\
+    \ == @[7u64, 10u64]\n    let scopedRow = block:\n        let temporaryOwner =\
+    \ a * a\n        temporaryOwner[1]\n    doAssert toSeq(scopedRow).mapIt(residue(it))\
+    \ == @[15u64, 22u64]\n\n    checkEntries(a + a, [2u64, 4, 6, 8])\n    checkEntries(a\
+    \ - a, [0u64, 0, 0, 0])\n    checkEntries(a + three, [4u64, 5, 6, 7])\n    checkEntries(three\
+    \ + a, [4u64, 5, 6, 7])\n    checkEntries(a * three, [3u64, 6, 9, 12])\n    checkEntries(three\
+    \ * a, [3u64, 6, 9, 12])\n    checkEntries(5 - a, [4u64, 3, 2, 1])\n    checkEntries(a\
+    \ + 3, [4u64, 5, 6, 7])\n    checkEntries(3 + a, [4u64, 5, 6, 7])\n    checkEntries(3\
     \ * a, [3u64, 6, 9, 12])\n    doAssert (a - three) + three == a\n    doAssert\
     \ -(-a) == a\n    b = a\n    b += a\n    doAssert b == a + a\n    b -= a\n   \
     \ doAssert b == a\n    b += three\n    b -= three\n    b *= three\n    doAssert\
@@ -273,24 +282,26 @@ data:
     checkApi[modint_barrett]()\ncheckBoundaries[modint998244353_montgomery]()\ncheckBoundaries[modint1000000007_barrett]()\n\
     checkShapes()\ncheckDynamicModulus()\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/math/isqrt.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/modint/barrett_impl.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-10 08:33:37+09:00'
+  timestamp: '2026-09-11 02:58:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_avx2_unit_test.nim

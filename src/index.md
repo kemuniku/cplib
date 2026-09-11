@@ -444,6 +444,9 @@ data:
       path: cplib/matrix/matrix_avx2_field_impl.nim
       title: cplib/matrix/matrix_avx2_field_impl.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/matrix/matrix_avx2_kernel.nim
+      title: cplib/matrix/matrix_avx2_kernel.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_mod2.nim
       title: cplib/matrix/matrix_mod2.nim
     - icon: ':heavy_check_mark:'
@@ -455,6 +458,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/static_matrix.nim
       title: cplib/matrix/static_matrix.nim
+    - icon: ':warning:'
+      path: cplib/matrix/static_matrix_avx2.nim
+      title: cplib/matrix/static_matrix_avx2.nim
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/static_matrix_mod2.nim
       title: cplib/matrix/static_matrix_mod2.nim
@@ -510,6 +516,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/rolling_hash.nim
       title: cplib/str/rolling_hash.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/str/run_enumerate.nim
+      title: cplib/str/run_enumerate.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/run_length_encode.nim
       title: cplib/str/run_length_encode.nim
@@ -1479,6 +1488,9 @@ data:
       path: verify/AI/rootvalue_unionfind_test.nim
       title: verify/AI/rootvalue_unionfind_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/run_enumerate_test.nim
+      title: verify/AI/run_enumerate_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/run_length_encode_test.nim
       title: verify/AI/run_length_encode_test.nim
     - icon: ':heavy_check_mark:'
@@ -2086,6 +2098,9 @@ data:
       path: verify/matrix/adjugate_matrix_matrix_test.nim
       title: verify/matrix/adjugate_matrix_matrix_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/adjugate_matrix_static_matrix_avx2_test.nim
+      title: verify/matrix/adjugate_matrix_static_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/adjugate_matrix_static_matrix_test.nim
       title: verify/matrix/adjugate_matrix_static_matrix_test.nim
     - icon: ':heavy_check_mark:'
@@ -2094,6 +2109,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/hafnian_of_matrix_matrix_test.nim
       title: verify/matrix/hafnian_of_matrix_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/hafnian_of_matrix_static_matrix_avx2_test.nim
+      title: verify/matrix/hafnian_of_matrix_static_matrix_avx2_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/hafnian_of_matrix_static_matrix_test.nim
       title: verify/matrix/hafnian_of_matrix_static_matrix_test.nim
@@ -2110,6 +2128,9 @@ data:
       path: verify/matrix/inverse_matrix_mod_2_test.nim
       title: verify/matrix/inverse_matrix_mod_2_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/inverse_matrix_static_matrix_avx2_test.nim
+      title: verify/matrix/inverse_matrix_static_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/inverse_matrix_static_matrix_test.nim
       title: verify/matrix/inverse_matrix_static_matrix_test.nim
     - icon: ':heavy_check_mark:'
@@ -2121,6 +2142,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_field_differential_test.nim
       title: verify/matrix/matrix_avx2_field_differential_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_avx2_gc_test.nim
+      title: verify/matrix/matrix_avx2_gc_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_test.nim
       title: verify/matrix/matrix_avx2_test.nim
@@ -2139,6 +2163,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_det_mod_2_test.nim
       title: verify/matrix/matrix_det_mod_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_det_static_matrix_avx2_test.nim
+      title: verify/matrix/matrix_det_static_matrix_avx2_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_det_static_matrix_test.nim
       title: verify/matrix/matrix_det_static_matrix_test.nim
@@ -2179,6 +2206,9 @@ data:
       path: verify/matrix/matrix_rank_mod_2_test.nim
       title: verify/matrix/matrix_rank_mod_2_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_rank_static_matrix_avx2_test.nim
+      title: verify/matrix/matrix_rank_static_matrix_avx2_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_rank_static_matrix_test.nim
       title: verify/matrix/matrix_rank_static_matrix_test.nim
     - icon: ':heavy_check_mark:'
@@ -2187,6 +2217,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_zoistring_test.nim
       title: verify/matrix/matrix_zoistring_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/static_matrix_avx2_unit_test.nim
+      title: verify/matrix/static_matrix_avx2_unit_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/static_matrix_field_algorithms_unit_test.nim
       title: verify/matrix/static_matrix_field_algorithms_unit_test.nim
@@ -2202,6 +2235,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/system_of_linear_equations_mod_2_test.nim
       title: verify/matrix/system_of_linear_equations_mod_2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/matrix/system_of_linear_equations_static_matrix_avx2_test.nim
+      title: verify/matrix/system_of_linear_equations_static_matrix_avx2_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/system_of_linear_equations_static_matrix_test.nim
       title: verify/matrix/system_of_linear_equations_static_matrix_test.nim
@@ -2267,6 +2303,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
       title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/run_enumerate_yosupo_test.nim
+      title: verify/str/run_enumerate_yosupo_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/run_length_encode_test.nim
       title: verify/str/run_length_encode_test.nim

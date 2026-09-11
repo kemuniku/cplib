@@ -41,12 +41,12 @@ data:
     \    a[i, i] = true\nlet inv = a.inverse\nif inv.isNone:\n    echo -1\nelse:\n\
     \    let b = inv.get\n    for i in 0..<n:\n        echo b.rowBits(i, n)\n"
   dependsOn:
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/inverse_matrix_mod_2_static_test.nim
   requiredBy: []

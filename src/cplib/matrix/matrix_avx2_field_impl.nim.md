@@ -8,6 +8,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_kernel.nim
+    title: cplib/matrix/matrix_avx2_kernel.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/matrix/matrix_avx2_kernel.nim
+    title: cplib/matrix/matrix_avx2_kernel.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
   - icon: ':warning:'
     path: verify/matrix/linear_algebra/field_algorithms_unit.nim
     title: verify/matrix/linear_algebra/field_algorithms_unit.nim
@@ -21,6 +33,12 @@ data:
     path: verify/matrix/linear_algebra/judge_driver.nim
     title: verify/matrix/linear_algebra/judge_driver.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
@@ -91,10 +109,11 @@ data:
     \  }\n    for(;i<count;i++){\n      uint32_t y=mul(src[i],factor);\n      if(subtract)dst[i]=dst[i]>=y?dst[i]-y:dst[i]+p-y;\n\
     \      else {uint32_t x=dst[i]+y;dst[i]=x>=p?x-p:x;}\n    }\n  }\n};\nstatic void\
     \ prepare(const uint32_t *src,const uint32_t *rhs,uint32_t *dst,int h,int w,int\
-    \ extra,uint32_t modulus,bool montgomery,bool identity){\n  // \u884C\u5217\u3068\
-    \u53F3\u8FBA\u30FB\u5358\u4F4D\u884C\u5217\u3092\u9023\u7D9A\u3057\u305F\u4F5C\
-    \u696D\u9818\u57DF\u306B\u30B3\u30D4\u30FC\u3059\u308B\u3002\n  const Field f(modulus);size_t\
-    \ stride=size_t(w)+extra;\n  for(int i=0;i<h;i++){\n    if(w)f.read(src+size_t(i)*w,dst+size_t(i)*stride,w,montgomery);\n\
+    \ extra,uint32_t modulus,bool montgomery,bool identity,int sourceStride){\n  //\
+    \ \u884C\u5217\u3068\u53F3\u8FBA\u30FB\u5358\u4F4D\u884C\u5217\u3092\u9023\u7D9A\
+    \u3057\u305F\u4F5C\u696D\u9818\u57DF\u306B\u30B3\u30D4\u30FC\u3059\u308B\u3002\
+    \n  const Field f(modulus);size_t stride=size_t(w)+extra;\n  for(int i=0;i<h;i++){\n\
+    \    if(w)f.read(src+size_t(i)*sourceStride,dst+size_t(i)*stride,w,montgomery);\n\
     \    if(rhs)f.read(rhs+i,dst+size_t(i)*stride+w,1,montgomery);\n    if(identity)dst[size_t(i)*stride+w+i]=f.one();\n\
     \  }\n}\nstatic int eliminate(uint32_t *a,int h,int stride,int columns,int *pivots,uint32_t\
     \ *det,uint32_t modulus,bool reduced){\n  // \u524D\u9032\u6D88\u53BB\u3068\u5FC5\
@@ -118,22 +137,24 @@ data:
     Montgomery\u8868\u73FE\u3092\u516C\u958B\u5024\u3078\u623B\u3059\u3002\n  return\
     \ Field(modulus).red(value);\n}\nstatic void inverseAdjugate(const uint32_t *a,uint32_t\
     \ *out,int n,int rank,const int *pivots,uint32_t det,uint32_t modulus,bool montgomery,bool\
-    \ adjugate){\n  // \u6383\u304D\u51FA\u3057\u305F\u62E1\u5927\u884C\u5217\u304B\
-    \u3089\u9006\u884C\u5217\u30FB\u4F59\u56E0\u5B50\u884C\u5217\u3092AVX2\u3067\u5FA9\
-    \u5143\u3059\u308B\u3002\n  const Field f(modulus);const size_t stride=size_t(n)*2;\n\
-    \  if(rank<n-1)return;\n  if(rank==n){\n    for(int i=0;i<n;i++){\n      const\
-    \ uint32_t *src=a+size_t(i)*stride+n;uint32_t *dst=out+size_t(i)*n;\n      if(adjugate){f.scale(src,dst,n,det);f.write(dst,dst,n,montgomery);}\n\
-    \      else f.write(src,dst,n,montgomery);\n    }\n  }else{\n    int free=0;for(int\
+    \ adjugate,int outputStride){\n  // \u6383\u304D\u51FA\u3057\u305F\u62E1\u5927\
+    \u884C\u5217\u304B\u3089\u9006\u884C\u5217\u30FB\u4F59\u56E0\u5B50\u884C\u5217\
+    \u3092AVX2\u3067\u5FA9\u5143\u3059\u308B\u3002\n  const Field f(modulus);const\
+    \ size_t stride=size_t(n)*2;\n  if(rank<n-1)return;\n  if(rank==n){\n    for(int\
+    \ i=0;i<n;i++){\n      const uint32_t *src=a+size_t(i)*stride+n;uint32_t *dst=out+size_t(i)*outputStride;\n\
+    \      if(adjugate){f.scale(src,dst,n,det);f.write(dst,dst,n,montgomery);}\n \
+    \     else f.write(src,dst,n,montgomery);\n    }\n  }else{\n    int free=0;for(int\
     \ i=0;i<rank;i++)if(pivots[i]==free)free++;\n    uint32_t scale=((n-1-free)&1)?f.neg(det):det;\n\
-    \    uint32_t *freeRow=out+size_t(free)*n;\n    f.scale(a+size_t(n-1)*stride+n,freeRow,n,scale);\n\
-    \    for(int i=0;i<rank;i++)f.scale(freeRow,out+size_t(pivots[i])*n,n,f.neg(a[size_t(i)*stride+free]));\n\
-    \    f.write(out,out,size_t(n)*n,montgomery);\n  }\n}\nstruct Hafnian {\n  Field\
-    \ f;size_t degree,stride;\n  Hafnian(uint32_t modulus,size_t n):f(modulus),degree(n/2),stride(degree+1){\n\
-    \    // \u6700\u5F8C\u306B\u5FC5\u8981\u3068\u306A\u308B\u4FC2\u6570\u306E\u6B21\
-    \u6570\u3092\u4FDD\u6301\u3059\u308B\u3002\n  }\n  void addProduct(uint32_t *dst,const\
-    \ uint32_t *a,const uint32_t *b) const {\n    // x\u500D\u3057\u305F\u591A\u9805\
-    \u5F0F\u7A4D\u3092\u6B21\u6570\u3067\u6253\u3061\u5207\u308A\u3001\u4FC2\u6570\
-    \u3092AVX2\u3067\u52A0\u7B97\u3059\u308B\u3002\n    for(size_t i=0;i<degree;i++)if(a[i])f.addScaled<false>(dst+i+1,b,degree-i,a[i]);\n\
+    \    uint32_t *freeRow=out+size_t(free)*outputStride;\n    f.scale(a+size_t(n-1)*stride+n,freeRow,n,scale);\n\
+    \    for(int i=0;i<rank;i++)f.scale(freeRow,out+size_t(pivots[i])*outputStride,n,f.neg(a[size_t(i)*stride+free]));\n\
+    \    for(int i=0;i<n;i++)f.write(out+size_t(i)*outputStride,out+size_t(i)*outputStride,n,montgomery);\n\
+    \  }\n}\nstruct Hafnian {\n  Field f;size_t degree,stride;\n  Hafnian(uint32_t\
+    \ modulus,size_t n):f(modulus),degree(n/2),stride(degree+1){\n    // \u6700\u5F8C\
+    \u306B\u5FC5\u8981\u3068\u306A\u308B\u4FC2\u6570\u306E\u6B21\u6570\u3092\u4FDD\
+    \u6301\u3059\u308B\u3002\n  }\n  void addProduct(uint32_t *dst,const uint32_t\
+    \ *a,const uint32_t *b) const {\n    // x\u500D\u3057\u305F\u591A\u9805\u5F0F\u7A4D\
+    \u3092\u6B21\u6570\u3067\u6253\u3061\u5207\u308A\u3001\u4FC2\u6570\u3092AVX2\u3067\
+    \u52A0\u7B97\u3059\u308B\u3002\n    for(size_t i=0;i<degree;i++)if(a[i])f.addScaled<false>(dst+i+1,b,degree-i,a[i]);\n\
     \  }\n  std::vector<uint32_t> solve(const std::vector<uint32_t>& a,size_t size)\
     \ const {\n    // \u6700\u5F8C\u306E2\u9802\u70B9\u3092\u4F7F\u3046\u9805\u3092\
     \u5305\u9664\u3057\u3066\u3001\u591A\u9805\u5F0F\u3092\u8FD4\u3059\u3002\n   \
@@ -148,13 +169,13 @@ data:
     \ __m256i*)(without.data()+i))));\n    for(;i<stride;i++)answer[i]=with[i]>=without[i]?with[i]-without[i]:with[i]+f.p-without[i];\n\
     \    addProduct(answer.data(),with.data(),a.data()+v+m*stride);\n    return answer;\n\
     \  }\n};\nstatic uint32_t hafnian(const uint32_t *src,int n,uint32_t modulus,bool\
-    \ montgomery){\n  // \u4E0B\u4E09\u89D2\u6210\u5206\u3092\u591A\u9805\u5F0F\u306B\
-    \u5909\u63DB\u3057\u3001hafnian\u306E\u516C\u958B\u5024\u3092\u8FD4\u3059\u3002\
-    \n  Hafnian h(modulus,n);std::vector<uint32_t> a(size_t(n)*(n?size_t(n)-1:0)/2*h.stride);\n\
-    \  for(int i=0;i<n;i++)for(int j=0;j<i;j++)h.f.read(src+size_t(i)*n+j,a.data()+(size_t(i)*(i-1)/2+j)*h.stride,1,montgomery);\n\
+    \ montgomery,int sourceStride){\n  // \u4E0B\u4E09\u89D2\u6210\u5206\u3092\u591A\
+    \u9805\u5F0F\u306B\u5909\u63DB\u3057\u3001hafnian\u306E\u516C\u958B\u5024\u3092\
+    \u8FD4\u3059\u3002\n  Hafnian h(modulus,n);std::vector<uint32_t> a(size_t(n)*(n?size_t(n)-1:0)/2*h.stride);\n\
+    \  for(int i=0;i<n;i++)for(int j=0;j<i;j++)h.f.read(src+size_t(i)*sourceStride+j,a.data()+(size_t(i)*(i-1)/2+j)*h.stride,1,montgomery);\n\
     \  return h.f.red(h.solve(a,n)[h.degree]);\n}\n}\n#endif\n\"\"\".}\n\n    proc\
     \ fieldPrepareNative(src, rhs, dst: ptr uint32, h, w, extra: cint, modulus: uint32,\
-    \ montgomery, identity: bool) {.importcpp: \"cplib_mat_field_detail::prepare(@)\"\
+    \ montgomery, identity: bool, sourceStride: cint) {.importcpp: \"cplib_mat_field_detail::prepare(@)\"\
     , nodecl.}\n    proc fieldEliminateNative(a: ptr uint32, h, stride, columns: cint,\
     \ pivots: ptr cint, det: ptr uint32, modulus: uint32, reduced: bool): cint {.importcpp:\
     \ \"cplib_mat_field_detail::eliminate(@)\", nodecl.}\n    proc fieldRestoreNative(values:\
@@ -162,33 +183,37 @@ data:
     \ \"cplib_mat_field_detail::restore(@)\", nodecl.}\n    proc fieldCanonicalNative(value,\
     \ modulus: uint32): uint32 {.importcpp: \"cplib_mat_field_detail::canonical(@)\"\
     , nodecl.}\n    proc fieldInverseAdjugateNative(a, output: ptr uint32, n, rank:\
-    \ cint, pivots: ptr cint, det, modulus: uint32, montgomery, adjugate: bool) {.importcpp:\
-    \ \"cplib_mat_field_detail::inverseAdjugate(@)\", nodecl.}\n    proc fieldHafnianNative(a:\
-    \ ptr uint32, n: cint, modulus: uint32, montgomery: bool): uint32 {.importcpp:\
-    \ \"cplib_mat_field_detail::hafnian(@)\", nodecl.}\n\n    proc fieldPrepareKernel(src,\
-    \ rhs, dst: ptr uint32, h, w, extra: int, modulus: uint32, montgomery, identity:\
-    \ bool) =\n        ## \u691C\u8A3C\u6E08\u307F\u306E\u5F62\u72B6\u3068\u5185\u90E8\
-    \u5024\u3092\u4F5C\u696D\u9818\u57DF\u3078\u6E21\u3059\u3002\n        fieldPrepareNative(src,\
-    \ rhs, dst, h.cint, w.cint, extra.cint, modulus, montgomery, identity)\n    proc\
-    \ fieldEliminateKernel(a: ptr uint32, h, stride, columns: int, pivots: ptr cint,\
-    \ det: var uint32, modulus: uint32, reduced: bool): int =\n        ## \u691C\u8A3C\
-    \u6E08\u307F\u306E\u4F5C\u696D\u9818\u57DF\u3092AVX2\u3067\u6D88\u53BB\u3059\u308B\
-    \u3002\n        fieldEliminateNative(a, h.cint, stride.cint, columns.cint, pivots,\
-    \ addr det, modulus, reduced).int\n    proc fieldRestoreKernel(values: ptr uint32,\
-    \ count: int, modulus: uint32, montgomery: bool) =\n        ## \u4F5C\u696D\u9818\
-    \u57DF\u3092modint\u5185\u90E8\u5024\u3078\u4E00\u62EC\u5909\u63DB\u3059\u308B\
-    \u3002\n        fieldRestoreNative(values, count.csize_t, modulus, montgomery)\n\
-    \    proc fieldCanonicalKernel(value, modulus: uint32): uint32 =\n        ## \u30B9\
-    \u30AB\u30E9\u30FC\u306EMontgomery\u8868\u73FE\u3092\u516C\u958B\u5024\u3078\u623B\
-    \u3059\u3002\n        fieldCanonicalNative(value, modulus)\n    proc fieldInverseAdjugateKernel(a,\
-    \ output: ptr uint32, n, rank: int, pivots: ptr cint, det, modulus: uint32, montgomery,\
-    \ adjugate: bool) =\n        ## \u9006\u884C\u5217\u30FB\u4F59\u56E0\u5B50\u884C\
-    \u5217\u306E\u5FA9\u5143\u3092AVX2\u30AB\u30FC\u30CD\u30EB\u306B\u6E21\u3059\u3002\
-    \n        fieldInverseAdjugateNative(a, output, n.cint, rank.cint, pivots, det,\
-    \ modulus, montgomery, adjugate)\n    proc fieldHafnianKernel(a: ptr uint32, n:\
-    \ int, modulus: uint32, montgomery: bool): uint32 =\n        ## \u5BFE\u79F0\u884C\
-    \u5217\u306Ehafnian\u3092AVX2\u30AB\u30FC\u30CD\u30EB\u3067\u6C42\u3081\u308B\u3002\
-    \n        fieldHafnianNative(a, n.cint, modulus, montgomery)\n"
+    \ cint, pivots: ptr cint, det, modulus: uint32, montgomery, adjugate: bool, outputStride:\
+    \ cint) {.importcpp: \"cplib_mat_field_detail::inverseAdjugate(@)\", nodecl.}\n\
+    \    proc fieldHafnianNative(a: ptr uint32, n: cint, modulus: uint32, montgomery:\
+    \ bool, sourceStride: cint): uint32 {.importcpp: \"cplib_mat_field_detail::hafnian(@)\"\
+    , nodecl.}\n\n    proc fieldPrepareKernel*(src, rhs, dst: ptr uint32, h, w, extra:\
+    \ int, modulus: uint32, montgomery, identity: bool, sourceStride: int = -1) =\n\
+    \        ## \u691C\u8A3C\u6E08\u307F\u306E\u5F62\u72B6\u3068\u5185\u90E8\u5024\
+    \u3092\u4F5C\u696D\u9818\u57DF\u3078\u6E21\u3059\u3002\n        fieldPrepareNative(src,\
+    \ rhs, dst, h.cint, w.cint, extra.cint, modulus, montgomery, identity, (if sourceStride\
+    \ < 0: w else: sourceStride).cint)\n    proc fieldEliminateKernel*(a: ptr uint32,\
+    \ h, stride, columns: int, pivots: ptr cint, det: var uint32, modulus: uint32,\
+    \ reduced: bool): int =\n        ## \u691C\u8A3C\u6E08\u307F\u306E\u4F5C\u696D\
+    \u9818\u57DF\u3092AVX2\u3067\u6D88\u53BB\u3059\u308B\u3002\n        fieldEliminateNative(a,\
+    \ h.cint, stride.cint, columns.cint, pivots, addr det, modulus, reduced).int\n\
+    \    proc fieldRestoreKernel*(values: ptr uint32, count: int, modulus: uint32,\
+    \ montgomery: bool) =\n        ## \u4F5C\u696D\u9818\u57DF\u3092modint\u5185\u90E8\
+    \u5024\u3078\u4E00\u62EC\u5909\u63DB\u3059\u308B\u3002\n        fieldRestoreNative(values,\
+    \ count.csize_t, modulus, montgomery)\n    proc fieldCanonicalKernel*(value, modulus:\
+    \ uint32): uint32 =\n        ## \u30B9\u30AB\u30E9\u30FC\u306EMontgomery\u8868\
+    \u73FE\u3092\u516C\u958B\u5024\u3078\u623B\u3059\u3002\n        fieldCanonicalNative(value,\
+    \ modulus)\n    proc fieldInverseAdjugateKernel*(a, output: ptr uint32, n, rank:\
+    \ int, pivots: ptr cint, det, modulus: uint32, montgomery, adjugate: bool, outputStride:\
+    \ int = -1) =\n        ## \u9006\u884C\u5217\u30FB\u4F59\u56E0\u5B50\u884C\u5217\
+    \u306E\u5FA9\u5143\u3092AVX2\u30AB\u30FC\u30CD\u30EB\u306B\u6E21\u3059\u3002\n\
+    \        fieldInverseAdjugateNative(a, output, n.cint, rank.cint, pivots, det,\
+    \ modulus, montgomery, adjugate, (if outputStride < 0: n else: outputStride).cint)\n\
+    \    proc fieldHafnianKernel*(a: ptr uint32, n: int, modulus: uint32, montgomery:\
+    \ bool, sourceStride: int = -1): uint32 =\n        ## \u5BFE\u79F0\u884C\u5217\
+    \u306Ehafnian\u3092AVX2\u30AB\u30FC\u30CD\u30EB\u3067\u6C42\u3081\u308B\u3002\n\
+    \        fieldHafnianNative(a, n.cint, modulus, montgomery, (if sourceStride <\
+    \ 0: n else: sourceStride).cint)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2_field_impl.nim
@@ -197,15 +222,21 @@ data:
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
-  timestamp: '2026-09-10 08:33:37+09:00'
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  timestamp: '2026-09-11 02:58:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
 documentation_of: cplib/matrix/matrix_avx2_field_impl.nim
 layout: document
 redirect_from:

@@ -39,8 +39,8 @@ data:
   dependsOn:
   - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree_hash.nim
   isVerificationFile: true
   path: verify/tree/rooted_tree_isomorphism_classification_test.nim
   requiredBy: []

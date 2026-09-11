@@ -134,6 +134,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_product_avx2.nim
     title: cplib/matrix/matrix_product_avx2.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
   - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
@@ -634,6 +640,12 @@ data:
     path: verify/matrix/matrix_avx2_field_differential_test.nim
     title: verify/matrix/matrix_avx2_field_differential_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
   - icon: ':heavy_check_mark:'
@@ -669,6 +681,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/static_matrix_avx2_unit_test.nim
+    title: verify/matrix/static_matrix_avx2_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/static_matrix_avx2_unit_test.nim
+    title: verify/matrix/static_matrix_avx2_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
@@ -796,6 +814,8 @@ data:
   - cplib/str/wildcard_matching.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   timestamp: '2024-02-07 16:25:18+00:00'
@@ -935,6 +955,10 @@ data:
   - verify/matrix/matrix_product_avx2_test.nim
   - verify/matrix/matrix_avx2_field_differential_test.nim
   - verify/matrix/matrix_avx2_field_differential_test.nim
+  - verify/matrix/static_matrix_avx2_unit_test.nim
+  - verify/matrix/static_matrix_avx2_unit_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_pow_test.nim
 documentation_of: cplib/math/isqrt.nim

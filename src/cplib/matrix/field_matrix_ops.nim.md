@@ -38,6 +38,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
+  - icon: ':warning:'
+    path: cplib/matrix/static_matrix_avx2.nim
+    title: cplib/matrix/static_matrix_avx2.nim
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
@@ -123,6 +129,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/inverse_matrix_mod_2_test.nim
     title: verify/matrix/inverse_matrix_mod_2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_avx2_gc_test.nim
+    title: verify/matrix/matrix_avx2_gc_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
@@ -380,6 +392,8 @@ data:
   - cplib/matrix/static_matrix.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_mod2.nim
@@ -429,6 +443,8 @@ data:
   - verify/matrix/static_string/static_matrix_zoistring_test.nim
   - verify/matrix/matrix_rank_mod_2_test.nim
   - verify/matrix/matrix_rank_mod_2_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   - verify/matrix/matrix_pow_test.nim
