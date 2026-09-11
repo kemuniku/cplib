@@ -1,7 +1,9 @@
 include cplib/tmpl/fastio
 import cplib/modint/modint
 import options
-when defined(testStaticMatrix):
+when defined(testStaticAvxMatrix):
+    import cplib/matrix/static_matrix_avx2
+elif defined(testStaticMatrix):
     import cplib/matrix/static_matrix
 elif defined(testAvxMatrix):
     import cplib/matrix/matrix_avx2

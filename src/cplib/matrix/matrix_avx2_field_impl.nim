@@ -77,11 +77,11 @@ struct Field : cplib_mat_detail::Mod {
     }
   }
 };
-static void prepare(const uint32_t *src,const uint32_t *rhs,uint32_t *dst,int h,int w,int extra,uint32_t modulus,bool montgomery,bool identity){
+static void prepare(const uint32_t *src,const uint32_t *rhs,uint32_t *dst,int h,int w,int extra,uint32_t modulus,bool montgomery,bool identity,int sourceStride){
   // 行列と右辺・単位行列を連続した作業領域にコピーする。
   const Field f(modulus);size_t stride=size_t(w)+extra;
   for(int i=0;i<h;i++){
-    if(w)f.read(src+size_t(i)*w,dst+size_t(i)*stride,w,montgomery);
+    if(w)f.read(src+size_t(i)*sourceStride,dst+size_t(i)*stride,w,montgomery);
     if(rhs)f.read(rhs+i,dst+size_t(i)*stride+w,1,montgomery);
     if(identity)dst[size_t(i)*stride+w+i]=f.one();
   }
@@ -123,23 +123,23 @@ static uint32_t canonical(uint32_t value,uint32_t modulus){
   // スカラーのMontgomery表現を公開値へ戻す。
   return Field(modulus).red(value);
 }
-static void inverseAdjugate(const uint32_t *a,uint32_t *out,int n,int rank,const int *pivots,uint32_t det,uint32_t modulus,bool montgomery,bool adjugate){
+static void inverseAdjugate(const uint32_t *a,uint32_t *out,int n,int rank,const int *pivots,uint32_t det,uint32_t modulus,bool montgomery,bool adjugate,int outputStride){
   // 掃き出した拡大行列から逆行列・余因子行列をAVX2で復元する。
   const Field f(modulus);const size_t stride=size_t(n)*2;
   if(rank<n-1)return;
   if(rank==n){
     for(int i=0;i<n;i++){
-      const uint32_t *src=a+size_t(i)*stride+n;uint32_t *dst=out+size_t(i)*n;
+      const uint32_t *src=a+size_t(i)*stride+n;uint32_t *dst=out+size_t(i)*outputStride;
       if(adjugate){f.scale(src,dst,n,det);f.write(dst,dst,n,montgomery);}
       else f.write(src,dst,n,montgomery);
     }
   }else{
     int free=0;for(int i=0;i<rank;i++)if(pivots[i]==free)free++;
     uint32_t scale=((n-1-free)&1)?f.neg(det):det;
-    uint32_t *freeRow=out+size_t(free)*n;
+    uint32_t *freeRow=out+size_t(free)*outputStride;
     f.scale(a+size_t(n-1)*stride+n,freeRow,n,scale);
-    for(int i=0;i<rank;i++)f.scale(freeRow,out+size_t(pivots[i])*n,n,f.neg(a[size_t(i)*stride+free]));
-    f.write(out,out,size_t(n)*n,montgomery);
+    for(int i=0;i<rank;i++)f.scale(freeRow,out+size_t(pivots[i])*outputStride,n,f.neg(a[size_t(i)*stride+free]));
+    for(int i=0;i<n;i++)f.write(out+size_t(i)*outputStride,out+size_t(i)*outputStride,n,montgomery);
   }
 }
 struct Hafnian {
@@ -173,38 +173,38 @@ struct Hafnian {
     return answer;
   }
 };
-static uint32_t hafnian(const uint32_t *src,int n,uint32_t modulus,bool montgomery){
+static uint32_t hafnian(const uint32_t *src,int n,uint32_t modulus,bool montgomery,int sourceStride){
   // 下三角成分を多項式に変換し、hafnianの公開値を返す。
   Hafnian h(modulus,n);std::vector<uint32_t> a(size_t(n)*(n?size_t(n)-1:0)/2*h.stride);
-  for(int i=0;i<n;i++)for(int j=0;j<i;j++)h.f.read(src+size_t(i)*n+j,a.data()+(size_t(i)*(i-1)/2+j)*h.stride,1,montgomery);
+  for(int i=0;i<n;i++)for(int j=0;j<i;j++)h.f.read(src+size_t(i)*sourceStride+j,a.data()+(size_t(i)*(i-1)/2+j)*h.stride,1,montgomery);
   return h.f.red(h.solve(a,n)[h.degree]);
 }
 }
 #endif
 """.}
 
-    proc fieldPrepareNative(src, rhs, dst: ptr uint32, h, w, extra: cint, modulus: uint32, montgomery, identity: bool) {.importcpp: "cplib_mat_field_detail::prepare(@)", nodecl.}
+    proc fieldPrepareNative(src, rhs, dst: ptr uint32, h, w, extra: cint, modulus: uint32, montgomery, identity: bool, sourceStride: cint) {.importcpp: "cplib_mat_field_detail::prepare(@)", nodecl.}
     proc fieldEliminateNative(a: ptr uint32, h, stride, columns: cint, pivots: ptr cint, det: ptr uint32, modulus: uint32, reduced: bool): cint {.importcpp: "cplib_mat_field_detail::eliminate(@)", nodecl.}
     proc fieldRestoreNative(values: ptr uint32, count: csize_t, modulus: uint32, montgomery: bool) {.importcpp: "cplib_mat_field_detail::restore(@)", nodecl.}
     proc fieldCanonicalNative(value, modulus: uint32): uint32 {.importcpp: "cplib_mat_field_detail::canonical(@)", nodecl.}
-    proc fieldInverseAdjugateNative(a, output: ptr uint32, n, rank: cint, pivots: ptr cint, det, modulus: uint32, montgomery, adjugate: bool) {.importcpp: "cplib_mat_field_detail::inverseAdjugate(@)", nodecl.}
-    proc fieldHafnianNative(a: ptr uint32, n: cint, modulus: uint32, montgomery: bool): uint32 {.importcpp: "cplib_mat_field_detail::hafnian(@)", nodecl.}
+    proc fieldInverseAdjugateNative(a, output: ptr uint32, n, rank: cint, pivots: ptr cint, det, modulus: uint32, montgomery, adjugate: bool, outputStride: cint) {.importcpp: "cplib_mat_field_detail::inverseAdjugate(@)", nodecl.}
+    proc fieldHafnianNative(a: ptr uint32, n: cint, modulus: uint32, montgomery: bool, sourceStride: cint): uint32 {.importcpp: "cplib_mat_field_detail::hafnian(@)", nodecl.}
 
-    proc fieldPrepareKernel(src, rhs, dst: ptr uint32, h, w, extra: int, modulus: uint32, montgomery, identity: bool) =
+    proc fieldPrepareKernel*(src, rhs, dst: ptr uint32, h, w, extra: int, modulus: uint32, montgomery, identity: bool, sourceStride: int = -1) =
         ## 検証済みの形状と内部値を作業領域へ渡す。
-        fieldPrepareNative(src, rhs, dst, h.cint, w.cint, extra.cint, modulus, montgomery, identity)
-    proc fieldEliminateKernel(a: ptr uint32, h, stride, columns: int, pivots: ptr cint, det: var uint32, modulus: uint32, reduced: bool): int =
+        fieldPrepareNative(src, rhs, dst, h.cint, w.cint, extra.cint, modulus, montgomery, identity, (if sourceStride < 0: w else: sourceStride).cint)
+    proc fieldEliminateKernel*(a: ptr uint32, h, stride, columns: int, pivots: ptr cint, det: var uint32, modulus: uint32, reduced: bool): int =
         ## 検証済みの作業領域をAVX2で消去する。
         fieldEliminateNative(a, h.cint, stride.cint, columns.cint, pivots, addr det, modulus, reduced).int
-    proc fieldRestoreKernel(values: ptr uint32, count: int, modulus: uint32, montgomery: bool) =
+    proc fieldRestoreKernel*(values: ptr uint32, count: int, modulus: uint32, montgomery: bool) =
         ## 作業領域をmodint内部値へ一括変換する。
         fieldRestoreNative(values, count.csize_t, modulus, montgomery)
-    proc fieldCanonicalKernel(value, modulus: uint32): uint32 =
+    proc fieldCanonicalKernel*(value, modulus: uint32): uint32 =
         ## スカラーのMontgomery表現を公開値へ戻す。
         fieldCanonicalNative(value, modulus)
-    proc fieldInverseAdjugateKernel(a, output: ptr uint32, n, rank: int, pivots: ptr cint, det, modulus: uint32, montgomery, adjugate: bool) =
+    proc fieldInverseAdjugateKernel*(a, output: ptr uint32, n, rank: int, pivots: ptr cint, det, modulus: uint32, montgomery, adjugate: bool, outputStride: int = -1) =
         ## 逆行列・余因子行列の復元をAVX2カーネルに渡す。
-        fieldInverseAdjugateNative(a, output, n.cint, rank.cint, pivots, det, modulus, montgomery, adjugate)
-    proc fieldHafnianKernel(a: ptr uint32, n: int, modulus: uint32, montgomery: bool): uint32 =
+        fieldInverseAdjugateNative(a, output, n.cint, rank.cint, pivots, det, modulus, montgomery, adjugate, (if outputStride < 0: n else: outputStride).cint)
+    proc fieldHafnianKernel*(a: ptr uint32, n: int, modulus: uint32, montgomery: bool, sourceStride: int = -1): uint32 =
         ## 対称行列のhafnianをAVX2カーネルで求める。
-        fieldHafnianNative(a, n.cint, modulus, montgomery)
+        fieldHafnianNative(a, n.cint, modulus, montgomery, (if sourceStride < 0: n else: sourceStride).cint)

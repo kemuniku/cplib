@@ -107,11 +107,18 @@ proc checkApi[T]() =
 
     var owner = a
     var mutableRow = owner[0]
-    let copiedAfterView = owner
+    let copiedAfterView = owner.clone()
+    var assignedAfterView = owner
+    let letAfterView = owner
     mutableRow[0] = T.init(9)
     for x in mutableRow.mitems: x += one
     doAssert residue(owner[0, 0]) == 10 and residue(owner[0, 1]) == 3
     doAssert residue(copiedAfterView[0, 0]) == 1
+    doAssert residue(assignedAfterView[0, 0]) == 1
+    when defined(gcDestructors):
+        doAssert residue(letAfterView[0, 0]) == 1
+    else:
+        doAssert residue(letAfterView[0, 0]) == 10
     var copiedRow = mutableRow
     copiedRow[1] = T.init(6)
     doAssert residue(owner[0, 1]) == 6
