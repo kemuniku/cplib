@@ -87,8 +87,8 @@ data:
     \ r = l + rng.rand(n-l)\n            checkRange(a, wm, l, r, withSum)\n"
   dependsOn:
   - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/waveletmatrix.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim

@@ -546,26 +546,26 @@ data:
     \n    proc powRelaxed*[T: BarrettModint or MontgomeryModint](\n            f:\
     \ seq[T], k: int): seq[T] =\n        f.powRelaxed(k, f.len)\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/ntt.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/math/powmod.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/convolution/ntt.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/convolution/relaxed_convolution.nim
   requiredBy:

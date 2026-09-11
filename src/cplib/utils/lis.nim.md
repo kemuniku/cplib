@@ -54,7 +54,13 @@ data:
     \ == dp.len: dp.add(a[i])\n            else: dp[pos] = a[i]\n            p[i]\
     \ = pos\n        result = newSeq[T]()\n        var t = dp.len - 1\n        for\
     \ i in countdown(a.len - 1, 0):\n            if p[i] == t:\n                result.add(a[i])\n\
-    \                t -= 1\n        result.reverse\n"
+    \                t -= 1\n        result.reverse\n\n    proc restore_lis_index*[T](a:\
+    \ openArray[T]): seq[T] =\n        var p = newSeq[int](a.len)\n        var dp\
+    \ = newSeq[T]()\n        for i in 0..<a.len:\n            var pos = dp.lowerBound(a[i])\n\
+    \            if pos == dp.len: dp.add(a[i])\n            else: dp[pos] = a[i]\n\
+    \            p[i] = pos\n        result = newSeq[T]()\n        var t = dp.len\
+    \ - 1\n        for i in countdown(a.len - 1, 0):\n            if p[i] == t:\n\
+    \                result.add(i)\n                t -= 1\n        result.reverse\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/lis.nim
@@ -63,7 +69,7 @@ data:
   - verify/utils/lis_arc126b_test_.nim
   - verify/utils/list_procs_test_.nim
   - verify/utils/list_procs_test_.nim
-  timestamp: '2026-07-07 07:12:05+09:00'
+  timestamp: '2026-09-12 05:41:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/lis_aoj_test.nim

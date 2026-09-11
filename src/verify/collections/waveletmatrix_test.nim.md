@@ -36,8 +36,8 @@ data:
     \ WM.kth_smallest(l,r,k)"
   dependsOn:
   - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/waveletmatrix.nim
   isVerificationFile: true
   path: verify/collections/waveletmatrix_test.nim

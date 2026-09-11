@@ -58,10 +58,10 @@ data:
   dependsOn:
   - cplib/math/int128.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/math/int128.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/math/int128.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

@@ -56,9 +56,9 @@ data:
     '
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/matrix/static_matrix.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/static_matrix.nim
   isVerificationFile: true
   path: verify/matrix/static_string/static_matrix_zoistring_test.nim
   requiredBy: []

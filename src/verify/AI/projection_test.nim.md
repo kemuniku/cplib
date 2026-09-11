@@ -46,10 +46,10 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/projection.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/projection.nim
   isVerificationFile: true
   path: verify/AI/projection_test.nim
   requiredBy: []
