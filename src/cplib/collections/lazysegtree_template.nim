@@ -20,7 +20,7 @@
 ##   assert sums.get(0, 3).sum == 15
 when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE:
     const CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE* = 1
-    import cplib/collections/lazysegtree_static_op
+    include cplib/collections/lazysegtree_static_op
 
     type
         RangeExtremum*[T] = tuple[value: T, index: int, left: int]
