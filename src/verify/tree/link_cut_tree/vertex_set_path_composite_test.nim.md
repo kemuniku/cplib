@@ -45,8 +45,8 @@ data:
     \        answers.add($((f.a * x + f.b) mod Mod))\necho answers.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/link_cut_tree.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/link_cut_tree.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim

@@ -132,10 +132,10 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy:

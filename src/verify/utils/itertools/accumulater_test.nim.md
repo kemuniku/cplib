@@ -40,12 +40,12 @@ data:
     \ result)\n\nvar N,Q = ii()\nvar a = (newseqwith(N,ii()) & @[0])\na.accumulater(a+b)\n\
     \nfor i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[l]-a[r]"
   dependsOn:
-  - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
   - cplib/utils/itertools.nim
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/itertools.nim
   isVerificationFile: true
   path: verify/utils/itertools/accumulater_test.nim
   requiredBy: []

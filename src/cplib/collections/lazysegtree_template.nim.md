@@ -58,7 +58,7 @@ data:
     \ 1, 4])\n##   seg.apply(0, 3, 2)\n##   assert seg.get(1, 3).index == 1\n##  \
     \ var sums = initRangeAffineRangeSum(@[1, 2, 3])\n##   sums.apply(0, 3, (2, 1))\n\
     ##   assert sums.get(0, 3).sum == 15\nwhen not declared CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE:\n\
-    \    const CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE* = 1\n    import cplib/collections/lazysegtree_static_op\n\
+    \    const CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE* = 1\n    include cplib/collections/lazysegtree_static_op\n\
     \n    type\n        RangeExtremum*[T] = tuple[value: T, index: int, left: int]\n\
     \        RangeSum*[T] = tuple[sum: T, len: int]\n        RangeAffine*[T] = tuple[a,\
     \ b: T]\n\n    proc initRangeExtremumTreeIndex[T; isMin, isAssign: static[bool]](v:\
@@ -166,7 +166,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree_template.nim
   requiredBy: []
-  timestamp: '2026-09-11 05:37:43+09:00'
+  timestamp: '2026-09-12 06:42:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/lazysegtree_template_test.nim

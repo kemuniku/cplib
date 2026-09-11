@@ -56,14 +56,14 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/str/manacher.nim
   - cplib/tmpl/fastio.nim
-  - cplib/str/manacher.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/str/can_reverse_hash_string.nim
   - cplib/tmpl/fastio.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/constants.nim
+  - cplib/str/manacher.nim
+  - cplib/str/manacher.nim
   isVerificationFile: true
   path: verify/str/get_palindromes_test.nim
   requiredBy: []

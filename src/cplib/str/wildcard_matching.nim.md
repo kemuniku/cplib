@@ -105,24 +105,24 @@ data:
     \ t[0])\n        for i in 0..<result.len:\n            let j = i + T.len - 1\n\
     \            result[i] = a[j] + c[j] - 2 * b[j] == 0\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inner_math.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/str/wildcard_matching.nim
   requiredBy: []

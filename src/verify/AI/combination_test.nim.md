@@ -81,15 +81,15 @@ data:
 
     '
   dependsOn:
-  - cplib/math/combination.nim
-  - cplib/math/combination.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/combination.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/combination.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/combination_test.nim

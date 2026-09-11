@@ -129,9 +129,9 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/tmpl/citrus.nim
-  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
   - cplib/tmpl/citrus.nim
+  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/citrus_test.nim
