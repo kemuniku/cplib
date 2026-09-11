@@ -51,13 +51,13 @@ data:
     for (k, v) in primefactor_tuple(n):\n    if k != 2 and k != 3:\n        echo \"\
     No\"\n        quit()\necho \"Yes\"\n\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/math/powmod.nim

@@ -208,14 +208,14 @@ data:
     \  inc shift\n\n        result = newSeq[T](order)\n        for i in 0..<order:\n\
     \            result[i] = -connection[i + 1]\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/fps/berlekamp_massey.nim
   requiredBy:

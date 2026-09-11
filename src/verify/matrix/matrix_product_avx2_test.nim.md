@@ -74,21 +74,21 @@ data:
     \ i in 0 ..< n:\n    print(*c.toOpenArray(i * k, (i + 1) * k - 1))\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
-  - cplib/matrix/matrix.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_product_avx2.nim
+  - cplib/matrix/matrix_product_avx2.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/tmpl/fastio.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_product_avx2.nim
-  - cplib/matrix/matrix_product_avx2.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: true
   path: verify/matrix/matrix_product_avx2_test.nim
   requiredBy: []

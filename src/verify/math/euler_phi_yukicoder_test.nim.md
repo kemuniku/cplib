@@ -67,17 +67,17 @@ data:
     \ == 1:\n            ans.add(p)\n            break\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/euler_phi.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
-  - cplib/math/divisor.nim
   - cplib/math/powmod.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
+  - cplib/math/divisor.nim
+  - cplib/math/euler_phi.nim
   - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/euler_phi.nim
+  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/divisor.nim
   - cplib/math/powmod.nim
   isVerificationFile: true

@@ -90,20 +90,20 @@ data:
 
     '
   dependsOn:
+  - cplib/convolution/convolution_old.nim
   - cplib/convolution/ntt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/ntt.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution_old.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution_old.nim
-  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/convolution_old_test.nim
   requiredBy: []

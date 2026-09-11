@@ -192,10 +192,10 @@ data:
     \ a.h, a.w), true).get\n        for i in 0..<a.h:\n            for j in 0..<a.w:\
     \ result[i, j] = rows[i][j]\n"
   dependsOn:
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: false
   path: cplib/matrix/static_matrix_mod2.nim
   requiredBy:

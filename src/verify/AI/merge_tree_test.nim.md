@@ -73,11 +73,11 @@ data:
     '
   dependsOn:
   - cplib/graph/merge_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
+  - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/merge_tree_test.nim
   requiredBy: []

@@ -229,26 +229,26 @@ data:
     \       let product = left * right\n        result = newSeq[T](n)\n        for\
     \ i in 0..<n: result[i] = product[n - 1 - i] * factInv[i]\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inner_math.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/powmod.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/fps/taylor_shift.nim
   requiredBy:

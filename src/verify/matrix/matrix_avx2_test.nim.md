@@ -75,21 +75,21 @@ data:
     \ / 1e6)\nfor i in 0 ..< n:\n    c[i].writeRow()\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix_avx2.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
   - cplib/tmpl/fastio.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_test.nim
   requiredBy: []
