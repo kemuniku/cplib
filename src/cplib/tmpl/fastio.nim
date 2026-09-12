@@ -1,8 +1,11 @@
+## {.define: interactive.} でインタラクティブ問題向けの入出力に変更可能
 when not declared CPLIB_TMPL_FASTIO:
     const CPLIB_TMPL_FASTIO* = 1
     {.passC: "-mavx2".}
+    when defined(interactive):
+        {.passC: "-DCPLIB_FASTIO_INTERACTIVE -DCPLIB_FASTIO_NO_MMAP".}
     # mmapは明示指定時のみ使用する。旧来の無効化指定も優先して尊重する。
-    when not defined(fastioMmap) or defined(fastioNoMmap):
+    elif not defined(fastioMmap) or defined(fastioNoMmap):
         {.passC: "-DCPLIB_FASTIO_NO_MMAP".}
     import macros
 
@@ -75,10 +78,23 @@ inline void initialize(InputState& state) {
 }
 
 inline bool refill(InputState& state) {
+#ifdef CPLIB_FASTIO_INTERACTIVE
+  const int value = getc_unlocked(stdin);
+  if (value == EOF) {
+    state.length = 0;
+    state.cursor = 0;
+    return false;
+  }
+  state.buffer[0] = static_cast<char>(value);
+  state.length = 1;
+  state.cursor = 0;
+  return true;
+#else
   state.length =
       fread_unlocked(state.buffer, 1, buffer_size, stdin);
   state.cursor = 0;
   return state.length != 0;
+#endif
 }
 
 inline int get_char() {
@@ -1283,3 +1299,10 @@ inline void print_one(std::FILE* output, Integer value) {
                     `integerCall`
                 else:
                     `fallbackCall`
+        # interactive指定時は各printの後に標準出力をflushする。
+        when defined(interactive):
+            let printCall = result
+            result = quote do:
+                block:
+                    `printCall`
+                    stdout.flushFile()
