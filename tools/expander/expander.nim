@@ -107,7 +107,8 @@ proc read_source(dir, filename, git_url, indent: string, is_main, direct_import:
     if not single_line:
         if not is_main:
             result_lines.insert(indent & &"# source: {git_url}src/{filename}.nim", 0)
-        return result_lines
+        combined.add(result_lines)
+        return newSeq[string]()
     if direct_import and single_line:
         for line in result_lines.mitems:
             line = line.replace("\\", "\\\\")
@@ -121,9 +122,7 @@ proc read_source(dir, filename, git_url, indent: string, is_main, direct_import:
         for line in result_lines: combined.add(line)
         return newSeq[string]()
     return result_lines
-let expanded = read_source("./", filename, "", "", true, false)
-if not single_line:
-    combined = expanded
+discard read_source("./", filename, "", "", true, false)
 var output = combined.join("\n")
 if compress:
     let original = if original_source:
