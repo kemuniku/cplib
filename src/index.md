@@ -600,9 +600,6 @@ data:
   - name: cplib/utils
     pages:
     - icon: ':heavy_check_mark:'
-      path: cplib/utils/area_of_union_of_rectangles.nim
-      title: cplib/utils/area_of_union_of_rectangles.nim
-    - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
     - icon: ':heavy_check_mark:'
@@ -2479,9 +2476,6 @@ data:
       title: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - name: verify/utils
     pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/utils/area_of_union_of_rectangles_test.nim
-      title: verify/utils/area_of_union_of_rectangles_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_float_test.nim
       title: verify/utils/binary_search_float_test.nim

@@ -51,8 +51,8 @@ data:
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: false
   path: verify/matrix/matrix_dpr_test_.nim
   requiredBy: []

@@ -93,9 +93,9 @@ data:
     var ng = initWeightedDirectedGraph(2)\nng.add_edge(0, 1, -2)\nng.add_edge(1, 0,\
     \ -2)\nassert ng.warshall_floyd().negative_cycle\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_avx.nim
   - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_avx.nim
+  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim

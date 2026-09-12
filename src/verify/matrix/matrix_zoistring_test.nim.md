@@ -55,8 +55,8 @@ data:
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: true
   path: verify/matrix/matrix_zoistring_test.nim
   requiredBy: []

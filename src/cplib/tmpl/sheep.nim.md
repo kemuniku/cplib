@@ -81,12 +81,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/area_of_union_of_rectangles_test.nim
-    title: verify/utils/area_of_union_of_rectangles_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/area_of_union_of_rectangles_test.nim
-    title: verify/utils/area_of_union_of_rectangles_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -171,8 +165,6 @@ data:
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim
   - verify/math/isprime_yosupo_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/str/get_palindromes_test.nim
   - verify/str/get_palindromes_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim

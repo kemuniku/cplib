@@ -147,38 +147,38 @@ data:
     ]\nassertClose(tspPathCostFrom(dist, 0), 3.5)\nassertClose(tspPathCostFromTo(dist,\
     \ 0, 2), 3.5)\nassertClose(tspPathAnyStart(dist), 3.5)\n"
   dependsOn:
+  - cplib/graph/dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/tree/diameter.nim
+  - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/bellmanford.nim
   - cplib/utils/constants.nim
   - cplib/graph/dijkstra.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/steiner_tree.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/graph/tsp.nim
   - cplib/tree/diameter.nim
+  - cplib/utils/bititers.nim
   - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/kruskal.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/utils/bititers.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/tsp.nim
   isVerificationFile: true
   path: verify/AI/graph_weight_type_test.nim
   requiredBy: []

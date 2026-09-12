@@ -97,11 +97,11 @@ data:
 
     '
   dependsOn:
+  - cplib/collections/avltreenode.nim
   - cplib/utils/grid_searcher.nim
   - cplib/collections/avltreenode.nim
   - cplib/utils/grid_searcher.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/AI/grid_searcher_test.nim

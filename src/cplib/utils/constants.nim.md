@@ -388,12 +388,6 @@ data:
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/utils/area_of_union_of_rectangles_test.nim
-    title: verify/utils/area_of_union_of_rectangles_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/utils/area_of_union_of_rectangles_test.nim
-    title: verify/utils/area_of_union_of_rectangles_test.nim
-  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
   - icon: ':heavy_check_mark:'
@@ -505,8 +499,6 @@ data:
   - verify/math/isprime_yosupo_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim
   - verify/utils/knapsack/solve_01knapsack_NV_test.nim
