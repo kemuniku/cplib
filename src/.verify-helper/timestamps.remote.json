@@ -432,6 +432,7 @@
 "verify/tree/link_cut_tree/vertex_set_path_composite_test.nim": "2026-09-10 04:41:56 +0900",
 "verify/tree/rerooting_test.nim": "2026-09-04 10:21:15 +0900",
 "verify/tree/rooted_tree_isomorphism_classification_test.nim": "2026-09-06 08:45:23 +0900",
+"verify/utils/area_of_union_of_rectangles_test.nim": "2026-09-12 10:21:16 +0900",
 "verify/utils/binary_search_float_test.nim": "2026-07-07 06:54:50 +0900",
 "verify/utils/binary_search_int_test.nim": "2026-07-07 06:54:50 +0900",
 "verify/utils/game_grundy_test.nim": "2026-09-11 03:00:31 +0900",
