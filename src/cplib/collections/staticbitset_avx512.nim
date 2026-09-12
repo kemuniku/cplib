@@ -513,3 +513,38 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX512:
                 result[finish] = char(ord('0') + int(word and 1))
                 word = word shr 1
                 dec remaining
+
+    proc cmp*[size](x, y: BitSet[size]): int =
+        ## 同じ長さのビット列を添字0からfalse < trueで比較し、-1・0・1を返します。
+        ## 時間O(1 + N / 64)、追加メモリO(1)。最初の相違で終了します。
+        ## 512ビットずつ比較します。AVX512F非対応時はAVX2を使います。
+        when size > 0:
+            result = avxCmp(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t).int
+
+    proc lexLess*[size](x, y: BitSet[size]): bool {.inline.} =
+        ## 添字0からfalse < trueの辞書順で小さいかを返します。時間O(1 + N / 64)、追加メモリO(1)。
+        cmp(x, y) < 0
+
+    proc `<`*[size](x, y: BitSet[size]): bool {.inline.} =
+        ## 添字0からfalse < trueの辞書順で小さいかを返します。時間O(1 + N / 64)、追加メモリO(1)。
+        cmp(x, y) < 0
+
+    proc `<=`*[size](x, y: BitSet[size]): bool {.inline.} =
+        ## 添字0からfalse < trueの辞書順で以下かを返します。時間O(1 + N / 64)、追加メモリO(1)。
+        cmp(x, y) <= 0
+
+    proc all*[size](x: BitSet[size]): bool =
+        ## 有効な全ビットが1かを返します。0を見つけたら終了し、長さ0ではtrueを返します。
+        ## 最悪時間O(1 + N / 64)、追加メモリO(1)。
+        ## 512ビットずつ判定し、AVX512F非対応時はAVX2を使います。
+        when size > 0:
+            result = avxAll(unsafeAddr x.bits[0], size.csize_t) != 0
+        else:
+            result = true
+
+    proc any*[size](x: BitSet[size]): bool =
+        ## 有効なビットに1があるかを返します。1を見つけたら終了し、長さ0ではfalseを返します。
+        ## 最悪時間O(1 + N / 64)、追加メモリO(1)。
+        ## 512ビットずつ判定し、AVX512F非対応時はAVX2を使います。
+        when size > 0:
+            result = avxAny(unsafeAddr x.bits[0], size.csize_t) != 0

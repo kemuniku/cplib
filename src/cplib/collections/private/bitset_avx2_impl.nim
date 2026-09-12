@@ -424,6 +424,66 @@ for (; i + 4 <= end; i += 4)
 for (; i < end; ++i) { x[i] = ~x[i]; }
 }
 
+CPLIB_BS_AVX2 static int cplib_bs_cmp(const uint64_t *x, const uint64_t *y, size_t n) {
+/* 256ビットずつ一致判定し、最初の相違ワードの最下位の相違ビットで比較します。 */
+size_t i = 0;
+for (; i + 4 <= n; i += 4) {
+    __m256i a = _mm256_loadu_si256((const __m256i *)(x + i));
+    __m256i b = _mm256_loadu_si256((const __m256i *)(y + i));
+    unsigned mask = (unsigned)(~_mm256_movemask_pd(_mm256_castsi256_pd(_mm256_cmpeq_epi64(a, b)))) & 15u;
+    if (mask != 0) {
+        size_t j = i + __builtin_ctz(mask);
+        uint64_t diff = x[j] ^ y[j];
+        return ((x[j] >> __builtin_ctzll(diff)) & 1) ? 1 : -1;
+    }
+}
+for (; i < n; ++i) {
+    uint64_t diff = x[i] ^ y[i];
+    if (diff != 0) return ((x[i] >> __builtin_ctzll(diff)) & 1) ? 1 : -1;
+}
+return 0;
+}
+
+
+CPLIB_BS_AVX2 static int cplib_bs_all(const uint64_t *x, size_t bits) {
+/* 256ビットずつ判定し、結果が確定したら終了します。末尾の無効ビットは無視します。 */
+const size_t n = bits >> 6;
+const __m256i ones = _mm256_set1_epi64x(-1);
+size_t i = 0;
+for (; i + 4 <= n; i += 4) {
+    __m256i value = _mm256_loadu_si256((const __m256i *)(x + i));
+    if (!_mm256_testc_si256(value, ones)) return 0;
+}
+for (; i < n; ++i) {
+    if (x[i] != UINT64_MAX) return 0;
+}
+const unsigned remaining = bits & 63;
+if (remaining != 0) {
+    const uint64_t mask = (UINT64_C(1) << remaining) - 1;
+    return (x[n] & mask) == mask;
+}
+return 1;
+}
+
+CPLIB_BS_AVX2 static int cplib_bs_any(const uint64_t *x, size_t bits) {
+/* 256ビットずつ判定し、結果が確定したら終了します。末尾の無効ビットは無視します。 */
+const size_t n = bits >> 6;
+size_t i = 0;
+for (; i + 4 <= n; i += 4) {
+    __m256i value = _mm256_loadu_si256((const __m256i *)(x + i));
+    if (!_mm256_testz_si256(value, value)) return 1;
+}
+for (; i < n; ++i) {
+    if (x[i] != 0) return 1;
+}
+const unsigned remaining = bits & 63;
+if (remaining != 0) {
+    const uint64_t mask = (UINT64_C(1) << remaining) - 1;
+    return (x[n] & mask) != 0;
+}
+return 0;
+}
+
 #undef CPLIB_BS_AVX2
 #endif
 """.}
@@ -474,3 +534,9 @@ proc avxSetRange(x: ptr uint64, l, r: csize_t) {.importc: "cplib_bs_set_range", 
 proc avxClearRange(x: ptr uint64, l, r: csize_t) {.importc: "cplib_bs_clear_range", nodecl.}
 
 proc avxFlipRange(x: ptr uint64, l, r: csize_t) {.importc: "cplib_bs_flip_range", nodecl.}
+
+proc avxCmp(x, y: ptr uint64, n: csize_t): cint {.importc: "cplib_bs_cmp", nodecl.}
+
+proc avxAll(x: ptr uint64, bits: csize_t): cint {.importc: "cplib_bs_all", nodecl.}
+
+proc avxAny(x: ptr uint64, bits: csize_t): cint {.importc: "cplib_bs_any", nodecl.}

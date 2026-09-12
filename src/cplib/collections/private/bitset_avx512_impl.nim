@@ -1049,6 +1049,144 @@ static inline void cplib_bs512_flip_range(uint64_t *x, size_t l, size_t r) {
     else cplib_bs512_flip_range_avx2(x, l, r);
 }
 
+CPLIB_BS_AVX2 static int cplib_bs512_cmp_avx2(const uint64_t *x, const uint64_t *y, size_t n) {
+/* 256ビットずつ一致判定し、最初の相違ワードの最下位の相違ビットで比較します。 */
+size_t i = 0;
+for (; i + 4 <= n; i += 4) {
+    __m256i a = _mm256_loadu_si256((const __m256i *)(x + i));
+    __m256i b = _mm256_loadu_si256((const __m256i *)(y + i));
+    unsigned mask = (unsigned)(~_mm256_movemask_pd(_mm256_castsi256_pd(_mm256_cmpeq_epi64(a, b)))) & 15u;
+    if (mask != 0) {
+        size_t j = i + __builtin_ctz(mask);
+        uint64_t diff = x[j] ^ y[j];
+        return ((x[j] >> __builtin_ctzll(diff)) & 1) ? 1 : -1;
+    }
+}
+for (; i < n; ++i) {
+    uint64_t diff = x[i] ^ y[i];
+    if (diff != 0) return ((x[i] >> __builtin_ctzll(diff)) & 1) ? 1 : -1;
+}
+return 0;
+}
+
+CPLIB_BS_AVX512 static int cplib_bs512_cmp_avx512(const uint64_t *x, const uint64_t *y, size_t n) {
+/* 512ビットずつ一致判定し、最初の相違ワードの最下位の相違ビットで比較します。 */
+size_t i = 0;
+for (; i + 8 <= n; i += 8) {
+    __m512i a = _mm512_loadu_si512((const void *)(x + i));
+    __m512i b = _mm512_loadu_si512((const void *)(y + i));
+    unsigned mask = (unsigned)_mm512_cmpneq_epi64_mask(a, b);
+    if (mask != 0) {
+        size_t j = i + __builtin_ctz(mask);
+        uint64_t diff = x[j] ^ y[j];
+        return ((x[j] >> __builtin_ctzll(diff)) & 1) ? 1 : -1;
+    }
+}
+for (; i < n; ++i) {
+    uint64_t diff = x[i] ^ y[i];
+    if (diff != 0) return ((x[i] >> __builtin_ctzll(diff)) & 1) ? 1 : -1;
+}
+return 0;
+}
+
+static int cplib_bs512_cmp(const uint64_t *x, const uint64_t *y, size_t n) {
+/* 対応CPUでは512ビットずつ比較し、それ以外はAVX2を使います。 */
+if (n >= 8 && __builtin_cpu_supports("avx512f")) return cplib_bs512_cmp_avx512(x, y, n);
+return cplib_bs512_cmp_avx2(x, y, n);
+}
+
+
+CPLIB_BS_AVX2 static int cplib_bs512_all_avx2(const uint64_t *x, size_t bits) {
+/* 256ビットずつ判定し、結果が確定したら終了します。末尾の無効ビットは無視します。 */
+const size_t n = bits >> 6;
+const __m256i ones = _mm256_set1_epi64x(-1);
+size_t i = 0;
+for (; i + 4 <= n; i += 4) {
+    __m256i value = _mm256_loadu_si256((const __m256i *)(x + i));
+    if (!_mm256_testc_si256(value, ones)) return 0;
+}
+for (; i < n; ++i) {
+    if (x[i] != UINT64_MAX) return 0;
+}
+const unsigned remaining = bits & 63;
+if (remaining != 0) {
+    const uint64_t mask = (UINT64_C(1) << remaining) - 1;
+    return (x[n] & mask) == mask;
+}
+return 1;
+}
+
+CPLIB_BS_AVX512 static int cplib_bs512_all_avx512(const uint64_t *x, size_t bits) {
+/* 512ビットずつ判定し、結果が確定したら終了します。末尾の無効ビットは無視します。 */
+const size_t n = bits >> 6;
+const __m512i expected = _mm512_set1_epi64(-1);
+size_t i = 0;
+for (; i + 8 <= n; i += 8) {
+    __m512i value = _mm512_loadu_si512((const void *)(x + i));
+    if (_mm512_cmpneq_epi64_mask(value, expected) != 0) return 0;
+}
+for (; i < n; ++i) {
+    if (x[i] != UINT64_MAX) return 0;
+}
+const unsigned remaining = bits & 63;
+if (remaining != 0) {
+    const uint64_t mask = (UINT64_C(1) << remaining) - 1;
+    return (x[n] & mask) == mask;
+}
+return 1;
+}
+
+static inline int cplib_bs512_all(const uint64_t *x, size_t bits) {
+/* 対応CPUでは512ビットずつ判定し、それ以外はAVX2を使います。 */
+if (bits >= 512 && __builtin_cpu_supports("avx512f")) return cplib_bs512_all_avx512(x, bits);
+return cplib_bs512_all_avx2(x, bits);
+}
+
+CPLIB_BS_AVX2 static int cplib_bs512_any_avx2(const uint64_t *x, size_t bits) {
+/* 256ビットずつ判定し、結果が確定したら終了します。末尾の無効ビットは無視します。 */
+const size_t n = bits >> 6;
+size_t i = 0;
+for (; i + 4 <= n; i += 4) {
+    __m256i value = _mm256_loadu_si256((const __m256i *)(x + i));
+    if (!_mm256_testz_si256(value, value)) return 1;
+}
+for (; i < n; ++i) {
+    if (x[i] != 0) return 1;
+}
+const unsigned remaining = bits & 63;
+if (remaining != 0) {
+    const uint64_t mask = (UINT64_C(1) << remaining) - 1;
+    return (x[n] & mask) != 0;
+}
+return 0;
+}
+
+CPLIB_BS_AVX512 static int cplib_bs512_any_avx512(const uint64_t *x, size_t bits) {
+/* 512ビットずつ判定し、結果が確定したら終了します。末尾の無効ビットは無視します。 */
+const size_t n = bits >> 6;
+const __m512i expected = _mm512_setzero_si512();
+size_t i = 0;
+for (; i + 8 <= n; i += 8) {
+    __m512i value = _mm512_loadu_si512((const void *)(x + i));
+    if (_mm512_cmpneq_epi64_mask(value, expected) != 0) return 1;
+}
+for (; i < n; ++i) {
+    if (x[i] != 0) return 1;
+}
+const unsigned remaining = bits & 63;
+if (remaining != 0) {
+    const uint64_t mask = (UINT64_C(1) << remaining) - 1;
+    return (x[n] & mask) != 0;
+}
+return 0;
+}
+
+static inline int cplib_bs512_any(const uint64_t *x, size_t bits) {
+/* 対応CPUでは512ビットずつ判定し、それ以外はAVX2を使います。 */
+if (bits >= 512 && __builtin_cpu_supports("avx512f")) return cplib_bs512_any_avx512(x, bits);
+return cplib_bs512_any_avx2(x, bits);
+}
+
 #undef CPLIB_BS_AVX512
 #undef CPLIB_BS_AVX2
 #endif
@@ -1118,3 +1256,9 @@ proc avxSetRange(x: ptr uint64, l, r: csize_t) {.importc: "cplib_bs512_set_range
 proc avxClearRange(x: ptr uint64, l, r: csize_t) {.importc: "cplib_bs512_clear_range", nodecl.}
 
 proc avxFlipRange(x: ptr uint64, l, r: csize_t) {.importc: "cplib_bs512_flip_range", nodecl.}
+
+proc avxCmp(x, y: ptr uint64, n: csize_t): cint {.importc: "cplib_bs512_cmp", nodecl.}
+
+proc avxAll(x: ptr uint64, bits: csize_t): cint {.importc: "cplib_bs512_all", nodecl.}
+
+proc avxAny(x: ptr uint64, bits: csize_t): cint {.importc: "cplib_bs512_any", nodecl.}
