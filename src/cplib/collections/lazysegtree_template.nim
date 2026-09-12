@@ -2,6 +2,7 @@
 ## 操作にはcplib/collections/lazysegtree_static_opもimportしてください。
 ## 配列から初期化し、apply(l, r, f)で半開区間[l, r)を更新します。
 ## get(l, r)またはseg[l..<r]で取得でき、スライスでのapplyも使用できます。
+## get_all()で全体の演算結果をO(1)で取得できます。
 ## Index版の極値は.valueと.index（同値なら最左、0始まり）、和は.sumで取得します。
 ## Index版の空区間の極値はindex = -1（valueは未定義扱い）、和はsum = 0, len = 0です。
 ## Index版の極値の.leftは区間左端で、区間変更時の位置復元に使用します。
