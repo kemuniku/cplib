@@ -163,14 +163,14 @@ data:
 
     '
   dependsOn:
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/AI/merged_static_string_test.nim
   requiredBy: []

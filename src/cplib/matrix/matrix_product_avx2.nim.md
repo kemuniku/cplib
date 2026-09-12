@@ -226,16 +226,16 @@ data:
   dependsOn:
   - cplib/math/isqrt.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_product_avx2.nim
   requiredBy: []

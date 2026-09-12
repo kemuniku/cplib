@@ -38,8 +38,8 @@ data:
     \ sep=\"\\n\")\n\nmain()\n"
   dependsOn:
   - cplib/collections/fenwick.nim
-  - cplib/collections/fenwick.nim
   - cplib/tmpl/fastio.nim
+  - cplib/collections/fenwick.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_test.nim

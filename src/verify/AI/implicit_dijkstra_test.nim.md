@@ -53,8 +53,8 @@ data:
     \    start,\n    Vertex(x: 9, y: 9),\n    adjacent,\n)\ndoAssert unreachable.cost\
     \ == INF64\ndoAssert unreachable.path.len == 0\n"
   dependsOn:
-  - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/constants.nim
+  - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

@@ -128,11 +128,11 @@ data:
     '
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/static_matrix_mod2.nim
   isVerificationFile: true
   path: verify/AI/static_matrix_mod2_test.nim
   requiredBy: []
