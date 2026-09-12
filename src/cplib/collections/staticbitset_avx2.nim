@@ -26,7 +26,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc initBitSet*(v: openArray[bool], size: static int): BitSet[size] {.noinit.} =
         ## 真偽値配列から集合を構築し、残りを0で埋めます。
         ## AVX2経路の目安: 入力32個のboolあたり比較＋MOVMSK＋スカラー反転の約3命令。64個への結合と残りのゼロ埋めは別途必要です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if v.len > size:
                 raise newException(ValueError, "initial value is longer than BitSet size")
         static:
@@ -39,7 +39,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         ## s[i] == matchの位置を1にします。添字はバイト単位で、残りは0です。O(s.len + size / 64)。
         ## UTF-8の文字単位の比較や部分文字列検索ではありません。NULを含む文字列も比較できます。
         ## AVX2経路の目安: 32バイトあたり比較＋MOVMSKの2命令。格納用の結合とゼロ埋めは別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if s.len > size:
                 raise newException(ValueError, "source string is longer than BitSet size")
         when size > 0:
@@ -50,7 +50,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         ## 同じ長さの文字列を位置ごとに比較し、s[i] == reference[i]の位置を1にします。添字はバイト単位で、残りは0です。O(s.len + size / 64)。
         ## UTF-8の文字単位の比較や部分文字列検索ではありません。NULを含む文字列も比較できます。
         ## AVX2経路の目安: 32バイトあたり比較＋MOVMSKの2命令。格納用の結合とゼロ埋めは別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if s.len > size:
                 raise newException(ValueError, "source string is longer than BitSet size")
             if s.len != reference.len:
@@ -63,7 +63,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc initBitSetFromIndexes*(indexes: openArray[int], size: static int): BitSet[size] =
         ## 指定した添字のビットを立てた集合を構築します。
         for i in indexes:
-            when compileOption("checks"):
+            when compileOption("boundChecks"):
                 if i < 0 or i >= size:
                     raise newException(IndexDefect, "BitSet index out of bounds")
             result.bits[i shr 6] = result.bits[i shr 6] or (1'u64 shl (i and 63))
@@ -74,7 +74,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
 
     proc checkIndex[size](bitset: BitSet[size], idx: Natural) {.inline.} =
         ## 添字が集合の範囲内であることを確認します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if idx >= size:
                 raise newException(IndexDefect, "BitSet index out of bounds")
 
@@ -214,7 +214,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc `<<`*[size](bitset: BitSet[size], x: int): BitSet[size] =
         ## 添字が大きい方向へxビットずらし、範囲外を切り捨てます。
         ## AVX2経路の目安: 出力256ビットあたりシフト2命令＋OR 1命令。64の倍数のシフトはコピーのみ。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if x < 0:
                 raise newException(ValueError, "shift count must be non-negative")
         when size > 0:
@@ -225,7 +225,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc `>>`*[size](bitset: BitSet[size], x: int): BitSet[size] =
         ## 添字が小さい方向へxビットずらし、範囲外を切り捨てます。
         ## AVX2経路の目安: 出力256ビットあたりシフト2命令＋OR 1命令。64の倍数のシフトはコピーのみ。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if x < 0:
                 raise newException(ValueError, "shift count must be non-negative")
         when size > 0:
@@ -267,7 +267,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         ## xの半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX2経路の目安: 中央の完全な256ビットあたり約7演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         when size > 0:
@@ -278,7 +278,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         ## xとyの共通部分の半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX2経路の目安: 中央の完全な256ビットあたり約8演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         when size > 0:
@@ -289,7 +289,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         ## xとyの和集合の半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX2経路の目安: 中央の完全な256ビットあたり約8演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         when size > 0:
@@ -300,7 +300,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         ## xとyの対称差の半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX2経路の目安: 中央の完全な256ビットあたり約8演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         when size > 0:
@@ -323,7 +323,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc nextSetBit*[size](x: BitSet[size], start: int): int =
         ## start以上で最初の1の添字を返し、なければ-1を返します。0 <= start <= len(x)。最悪O(ビット数 / 64)。
         ## SIMD命令は使わず、64ビットワードを走査して末尾の0の個数から位置を求めます。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if start < 0 or start > size:
                 raise newException(IndexDefect, "BitSet index out of bounds")
         result = -1
@@ -346,7 +346,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc setRange*[size](x: var BitSet[size], l, r: int) =
         ## 半開区間[l, r)のビットを1に更新します。範囲外は維持します。O(1 + (r-l) / 64)。
         ## 中央の完全なブロックは全ビット1のストアで更新し、論理演算は不要です。両端のマスク処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         when size > 0:
@@ -356,7 +356,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc clearRange*[size](x: var BitSet[size], l, r: int) =
         ## 半開区間[l, r)のビットを0に更新します。範囲外は維持します。O(1 + (r-l) / 64)。
         ## 中央の完全なブロックはゼロのストアで更新し、論理演算は不要です。両端のマスク処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         when size > 0:
@@ -366,7 +366,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc flipRange*[size](x: var BitSet[size], l, r: int) =
         ## 半開区間[l, r)のビットを反転更新します。範囲外は維持します。O(1 + (r-l) / 64)。
         ## 256ビットあたり反転1命令が目安です。ロード・ストアと両端のマスク処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         when size > 0:
@@ -403,21 +403,21 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     proc `[]`*[size](bitset: BitSet[size], idx: Natural): bool =
         ## 指定した添字のビットが立っているかを返します。
         ## AVX2命令は使いません。1ワードをスカラー命令で読み出してビットを判定します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             bitset.checkIndex(idx)
         bitset.bits[idx shr 6].testBit(idx and 63)
 
     proc flip*[size](bitset: var BitSet[size], idx: Natural) {.inline.} =
         ## 指定した添字のビットを反転します。O(1)。
         ## AVX2命令は使いません。1ワードをスカラー命令で更新します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             bitset.checkIndex(idx)
         bitset.bits[idx shr 6] = bitset.bits[idx shr 6] xor (1'u64 shl (idx and 63))
 
     proc `[]=`*[size](bitset: var BitSet[size], idx: Natural, x: bool) =
         ## 指定した添字のビットを真偽値で更新します。
         ## AVX2命令は使いません。1ワードをスカラー命令で更新します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             bitset.checkIndex(idx)
         if x:
             bitset.bits[idx shr 6].setBit(idx and 63)

@@ -20,7 +20,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
 
     proc initBitSet*(N: int): BitSetAvx512 =
         ## Nビットの空集合を構築します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if N < 0:
                 raise newException(ValueError, "BitSet size must be non-negative")
         result.size = N
@@ -28,7 +28,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
 
     proc initBitSet*(v: openArray[bool], N: int): BitSetAvx512 =
         ## 真偽値配列からNビットの集合を構築し、残りを0で埋めます。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if v.len > N:
                 raise newException(ValueError, "initial value is longer than BitSet size")
         result = initBitSet(N)
@@ -45,7 +45,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## UTF-8の文字単位の比較や部分文字列検索ではありません。NULを含む文字列も比較できます。
         ## AVX2経路の目安: 32バイトあたり比較＋MOVMSKの2命令。格納用の結合とゼロ埋めは別です。
         ## AVX-512BW経路の目安: 64バイトあたり比較＋マスク転送の2命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if s.len > N:
                 raise newException(ValueError, "source string is longer than BitSet size")
         result = initBitSet(N)
@@ -62,7 +62,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## UTF-8の文字単位の比較や部分文字列検索ではありません。NULを含む文字列も比較できます。
         ## AVX2経路の目安: 32バイトあたり比較＋MOVMSKの2命令。格納用の結合とゼロ埋めは別です。
         ## AVX-512BW経路の目安: 64バイトあたり比較＋マスク転送の2命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if s.len > N:
                 raise newException(ValueError, "source string is longer than BitSet size")
             if s.len != reference.len:
@@ -81,7 +81,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## 指定した添字のビットを立てたNビットの集合を構築します。
         result = initBitSet(N)
         for i in indexes:
-            when compileOption("checks"):
+            when compileOption("boundChecks"):
                 if i < 0 or i >= N:
                     raise newException(IndexDefect, "BitSet index out of bounds")
             result.bits[i shr 6] = result.bits[i shr 6] or (1'u64 shl (i and 63))
@@ -92,13 +92,13 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
 
     proc checkSameSize(x, y: BitSetAvx512) {.inline.} =
         ## 二つの集合のビット数が等しいことを確認します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if x.size != y.size:
                 raise newException(ValueError, "BitSet sizes must match")
 
     proc checkIndex(bitset: BitSetAvx512, idx: Natural) {.inline.} =
         ## 添字が集合の範囲内であることを確認します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if idx >= bitset.size:
                 raise newException(IndexDefect, "BitSet index out of bounds")
 
@@ -112,7 +112,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## 確保済みのdstへx & yを書き込みます。全て同じ長さが必要です。O(ビット数 / 64)。
         ## 領域確保・中間集合は不要で、dstにxやy自身を指定することもできます。
         ## AVX-512経路の目安: 512ビットあたり論理演算1命令。ロード・ストアと末尾のマスクは別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(dst, x)
             checkSameSize(x, y)
         if x.bits.len > 0:
@@ -122,7 +122,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## 確保済みのdstへx | yを書き込みます。全て同じ長さが必要です。O(ビット数 / 64)。
         ## 領域確保・中間集合は不要で、dstにxやy自身を指定することもできます。
         ## AVX-512経路の目安: 512ビットあたり論理演算1命令。ロード・ストアと末尾のマスクは別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(dst, x)
             checkSameSize(x, y)
         if x.bits.len > 0:
@@ -132,7 +132,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## 確保済みのdstへx ^ yを書き込みます。全て同じ長さが必要です。O(ビット数 / 64)。
         ## 領域確保・中間集合は不要で、dstにxやy自身を指定することもできます。
         ## AVX-512経路の目安: 512ビットあたり論理演算1命令。ロード・ストアと末尾のマスクは別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(dst, x)
             checkSameSize(x, y)
         if x.bits.len > 0:
@@ -142,7 +142,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## 確保済みのdstへx & ~yを書き込みます。全て同じ長さが必要です。O(ビット数 / 64)。
         ## 領域確保・中間集合は不要で、dstにxやy自身を指定することもできます。
         ## AVX-512経路の目安: 512ビットあたり論理演算1命令。ロード・ストアと末尾のマスクは別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(dst, x)
             checkSameSize(x, y)
         if x.bits.len > 0:
@@ -152,7 +152,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## 確保済みのdstへ~(x ^ y)を書き込みます。全て同じ長さが必要です。O(ビット数 / 64)。
         ## 領域確保・中間集合は不要で、dstにxやy自身を指定することもできます。
         ## AVX-512経路の目安: 512ビットあたり論理演算1命令。ロード・ストアと末尾のマスクは別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(dst, x)
             checkSameSize(x, y)
         if x.bits.len > 0:
@@ -162,7 +162,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `&`*(x, y: BitSetAvx512): BitSetAvx512 =
         ## 共通部分を返します。
         ## AVX-512経路の目安: 512ビットあたりAND 1命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         result = initBitSet(x.size)
         if x.bits.len > 0:
@@ -171,7 +171,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `&=`*(x: var BitSetAvx512, y: BitSetAvx512) =
         ## 自身を共通部分に更新します。
         ## AVX-512経路の目安: 512ビットあたりAND 1命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             avxAnd(addr x.bits[0], addr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)
@@ -179,7 +179,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc andNotAssign*(x: var BitSetAvx512, y: BitSetAvx512) =
         ## xを差集合x & ~yに更新します。O(ビット数 / 64)。
         ## AVX-512経路の目安: 512ビットあたりANDNOT 1命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             avxAndNot(addr x.bits[0], addr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)
@@ -192,7 +192,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc selectAssign*(x: var BitSetAvx512, y, mask: BitSetAvx512) =
         ## maskが1の位置だけxをyの値に置き換えます。O(ビット数 / 64)。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ 1命令。AVX2経路は256ビットあたり3命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, mask)
         if x.bits.len > 0:
@@ -201,7 +201,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc orAndAssign*(x: var BitSetAvx512, y, z: BitSetAvx512) =
         ## xをx | (y & z)に更新します。O(ビット数 / 64)。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ 1命令。AVX2経路は256ビットあたり2命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, z)
         if x.bits.len > 0:
@@ -210,7 +210,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc andOrAssign*(x: var BitSetAvx512, y, z: BitSetAvx512) =
         ## xをx & (y | z)に更新します。O(ビット数 / 64)。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ 1命令。AVX2経路は256ビットあたり2命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, z)
         if x.bits.len > 0:
@@ -219,7 +219,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc xorAndAssign*(x: var BitSetAvx512, y, z: BitSetAvx512) =
         ## xをx ^ (y & z)に更新します。O(ビット数 / 64)。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ 1命令。AVX2経路は256ビットあたり2命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, z)
         if x.bits.len > 0:
@@ -228,7 +228,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc majority*(x, y, z: BitSetAvx512): BitSetAvx512 =
         ## 3集合のうち2集合以上に含まれる位置の集合を返します。O(ビット数 / 64)。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ 1命令。AVX2経路は256ビットあたり4命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, z)
         result = initBitSet(x.size)
@@ -238,7 +238,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc xnor*(x, y: BitSetAvx512): BitSetAvx512 =
         ## 入力を変更せず~(x ^ y)を返し、範囲外のビットを0にします。O(ビット数 / 64)。中間集合は作りません。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ 1命令。AVX2経路は256ビットあたり2命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         result = initBitSet(x.size)
         if x.bits.len > 0:
@@ -248,7 +248,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc xnorAssign*(x: var BitSetAvx512, y: BitSetAvx512) =
         ## xを~(x ^ y)に更新し、範囲外のビットを0にします。O(ビット数 / 64)。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ 1命令。AVX2経路は256ビットあたり2命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             avxXnorAssign(addr x.bits[0], unsafeAddr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0], x.bits.len.csize_t)
@@ -257,7 +257,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `|`*(x, y: BitSetAvx512): BitSetAvx512 =
         ## 和集合を返します。
         ## AVX-512経路の目安: 512ビットあたりOR 1命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         result = initBitSet(x.size)
         if x.bits.len > 0:
@@ -266,7 +266,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `|=`*(x: var BitSetAvx512, y: BitSetAvx512) =
         ## 自身を和集合に更新します。
         ## AVX-512経路の目安: 512ビットあたりOR 1命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             avxOr(addr x.bits[0], addr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)
@@ -274,7 +274,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `^`*(x, y: BitSetAvx512): BitSetAvx512 =
         ## 対称差を返します。
         ## AVX-512経路の目安: 512ビットあたりXOR 1命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         result = initBitSet(x.size)
         if x.bits.len > 0:
@@ -283,7 +283,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `^=`*(x: var BitSetAvx512, y: BitSetAvx512) =
         ## 自身を対称差に更新します。
         ## AVX-512経路の目安: 512ビットあたりXOR 1命令。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             avxXor(addr x.bits[0], addr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)
@@ -291,7 +291,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `<<`*(bitset: BitSetAvx512, x: int): BitSetAvx512 =
         ## 添字が大きい方向へxビットずらし、範囲外を切り捨てます。
         ## AVX-512経路の目安: 出力512ビットあたりシフト2命令＋OR 1命令。64の倍数のシフトはコピーのみ。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if x < 0:
                 raise newException(ValueError, "shift count must be non-negative")
         result = initBitSet(bitset.size)
@@ -302,7 +302,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `>>`*(bitset: BitSetAvx512, x: int): BitSetAvx512 =
         ## 添字が小さい方向へxビットずらし、範囲外を切り捨てます。
         ## AVX-512経路の目安: 出力512ビットあたりシフト2命令＋OR 1命令。64の倍数のシフトはコピーのみ。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if x < 0:
                 raise newException(ValueError, "shift count must be non-negative")
         result = initBitSet(bitset.size)
@@ -320,7 +320,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc andAssignPopcount*(x: var BitSetAvx512, y: BitSetAvx512): int =
         ## xをx & yに更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.size > 0:
             result = avxAndAssignPopcount(addr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0], x.size.csize_t).int
@@ -328,7 +328,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc orAssignPopcount*(x: var BitSetAvx512, y: BitSetAvx512): int =
         ## xをx | yに更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.size > 0:
             result = avxOrAssignPopcount(addr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0], x.size.csize_t).int
@@ -336,7 +336,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc xorAssignPopcount*(x: var BitSetAvx512, y: BitSetAvx512): int =
         ## xをx ^ yに更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.size > 0:
             result = avxXorAssignPopcount(addr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0], x.size.csize_t).int
@@ -344,7 +344,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc andNotAssignPopcount*(x: var BitSetAvx512, y: BitSetAvx512): int =
         ## xをx & ~yに更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.size > 0:
             result = avxAndNotAssignPopcount(addr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0], x.size.csize_t).int
@@ -352,7 +352,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc selectAssignPopcount*(x: var BitSetAvx512, y, mask: BitSetAvx512): int =
         ## xをmaskが1の位置だけyを採用した集合に更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, mask)
         if x.size > 0:
@@ -361,7 +361,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc orAndAssignPopcount*(x: var BitSetAvx512, y, z: BitSetAvx512): int =
         ## xをx | (y & z)に更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, z)
         if x.size > 0:
@@ -370,7 +370,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc andOrAssignPopcount*(x: var BitSetAvx512, y, z: BitSetAvx512): int =
         ## xをx & (y | z)に更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, z)
         if x.size > 0:
@@ -379,7 +379,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc xorAndAssignPopcount*(x: var BitSetAvx512, y, z: BitSetAvx512): int =
         ## xをx ^ (y & z)に更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             checkSameSize(x, z)
         if x.size > 0:
@@ -388,7 +388,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc xnorAssignPopcount*(x: var BitSetAvx512, y: BitSetAvx512): int =
         ## xを~(x ^ y)に更新し、更新後の要素数を返します。O(ビット数 / 64)、1回の走査です。
         ## AVX-512経路の目安: 512ビットあたりVPTERNLOGQ＋VPOPCNTQ＋累積加算の計3命令。保存・最終集約・端数処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.size > 0:
             result = avxXnorAssignPopcount(addr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0], x.size.csize_t).int
@@ -402,7 +402,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc andpopcount*(x, y: BitSetAvx512): int =
         ## 共通部分の要素数を、一時的な集合を作らずに返します。
         ## AVX-512経路の目安: 512ビットあたりAND＋VPOPCNTQ＋累積加算の計3命令。最後の8レーンの集約は別途必要です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             result = avxAndPopcount(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t).int
@@ -410,7 +410,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc orpopcount*(x, y: BitSetAvx512): int =
         ## 和集合の要素数を、一時的な集合を作らずに返します。
         ## AVX-512経路の目安: 512ビットあたりOR＋VPOPCNTQ＋累積加算の計3命令。最後の8レーンの集約は別途必要です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             result = avxOrPopcount(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t).int
@@ -418,7 +418,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc xorpopcount*(x, y: BitSetAvx512): int =
         ## 対称差の要素数を、一時的な集合を作らずに返します。
         ## AVX-512経路の目安: 512ビットあたりXOR＋VPOPCNTQ＋累積加算の計3命令。最後の8レーンの集約は別途必要です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             result = avxXorPopcount(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t).int
@@ -427,7 +427,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## xの半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX-512経路の目安: 中央の完全な512ビットあたり約2演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > x.size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         if l < r:
@@ -437,7 +437,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## xとyの共通部分の半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX-512経路の目安: 中央の完全な512ビットあたり約3演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             if l < 0 or l > r or r > x.size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
@@ -448,7 +448,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## xとyの和集合の半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX-512経路の目安: 中央の完全な512ビットあたり約3演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             if l < 0 or l > r or r > x.size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
@@ -459,7 +459,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## xとyの対称差の半開区間[l, r)の要素数を返します。0 <= l <= r <= len(x)。O(1 + (r-l) / 64)。
         ## 一時集合は作らず、両端の最大2ワードだけをマスクします。空区間は0です。
         ## AVX-512経路の目安: 中央の完全な512ビットあたり約3演算命令。両端のマスク・個数計算と最終集約は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
             if l < 0 or l > r or r > x.size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
@@ -469,7 +469,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc intersects*(x, y: BitSetAvx512): bool =
         ## 共通要素があるかを判定します。最悪O(ビット数 / 64)。結果が確定すると終了します。
         ## AVX-512経路は512ビットあたりテスト1命令、AVX2経路は256ビットあたりVPTEST 1命令が目安です。条件判定は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         if x.bits.len > 0:
             result = avxIntersects(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t) != 0
@@ -477,7 +477,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc isSubsetOf*(x, y: BitSetAvx512): bool =
         ## xがyの部分集合かを判定します。最悪O(ビット数 / 64)。結果が確定すると終了します。
         ## AVX-512経路は512ビットあたりANDNOT＋テストの2命令、AVX2経路は256ビットあたりVPTEST 1命令が目安です。条件判定は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             checkSameSize(x, y)
         result = true
         if x.bits.len > 0:
@@ -486,7 +486,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc nextSetBit*(x: BitSetAvx512, start: int): int =
         ## start以上で最初の1の添字を返し、なければ-1を返します。0 <= start <= len(x)。最悪O(ビット数 / 64)。
         ## SIMD命令は使わず、64ビットワードを走査して末尾の0の個数から位置を求めます。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if start < 0 or start > x.size:
                 raise newException(IndexDefect, "BitSet index out of bounds")
         result = -1
@@ -508,7 +508,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc setRange*(x: var BitSetAvx512, l, r: int) =
         ## 半開区間[l, r)のビットを1に更新します。範囲外は維持します。O(1 + (r-l) / 64)。
         ## 中央の完全なブロックは全ビット1のストアで更新し、論理演算は不要です。両端のマスク処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > x.size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         if l < r:
@@ -517,7 +517,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc clearRange*(x: var BitSetAvx512, l, r: int) =
         ## 半開区間[l, r)のビットを0に更新します。範囲外は維持します。O(1 + (r-l) / 64)。
         ## 中央の完全なブロックはゼロのストアで更新し、論理演算は不要です。両端のマスク処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > x.size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         if l < r:
@@ -526,7 +526,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc flipRange*(x: var BitSetAvx512, l, r: int) =
         ## 半開区間[l, r)のビットを反転更新します。範囲外は維持します。O(1 + (r-l) / 64)。
         ## 512ビットあたり反転1命令が目安です。ロード・ストアと両端のマスク処理は別です。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             if l < 0 or l > r or r > x.size:
                 raise newException(IndexDefect, "BitSet range out of bounds")
         if l < r:
@@ -562,21 +562,21 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     proc `[]`*(bitset: BitSetAvx512, idx: Natural): bool =
         ## 指定した添字のビットが立っているかを返します。
         ## AVX-512命令は使いません。1ワードをスカラー命令で読み出してビットを判定します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             bitset.checkIndex(idx)
         bitset.bits[idx shr 6].testBit(idx and 63)
 
     proc flip*(bitset: var BitSetAvx512, idx: Natural) {.inline.} =
         ## 指定した添字のビットを反転します。O(1)。
         ## AVX-512命令は使いません。1ワードをスカラー命令で更新します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             bitset.checkIndex(idx)
         bitset.bits[idx shr 6] = bitset.bits[idx shr 6] xor (1'u64 shl (idx and 63))
 
     proc `[]=`*(bitset: var BitSetAvx512, idx: Natural, x: bool) =
         ## 指定した添字のビットを真偽値で更新します。
         ## AVX-512命令は使いません。1ワードをスカラー命令で更新します。
-        when compileOption("checks"):
+        when compileOption("boundChecks"):
             bitset.checkIndex(idx)
         if x:
             bitset.bits[idx shr 6].setBit(idx and 63)
