@@ -76,6 +76,12 @@ data:
     path: verify/AI/factoradic_test.nim
     title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_bitops_unit_test.nim
+    title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_bitops_unit_test.nim
+    title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -137,6 +143,11 @@ data:
     \ last = start\n        result.normalize()\n\n    proc initBigInt*(s: string):\
     \ BigInt =\n        ## \u7B26\u53F7\u4ED8\u304D 10 \u9032\u6587\u5B57\u5217\u304B\
     \u3089\u591A\u500D\u9577\u6574\u6570\u3092\u4F5C\u308B\u3002\n        parseBigInt(s)\n\
+    \n    proc `'bi`*(s: string): BigInt =\n        ## 10 \u9032\u6570\u306E bi \u30EA\
+    \u30C6\u30E9\u30EB\u3092\u591A\u500D\u9577\u6574\u6570\u306B\u5909\u63DB\u3059\
+    \u308B\u3002\u6841\u533A\u5207\u308A\u306E _ \u3082\u4F7F\u7528\u3067\u304D\u308B\
+    \u3002\n        var digits = newStringOfCap(s.len)\n        for c in s:\n    \
+    \        if c != '_':\n                digits.add(c)\n        parseBigInt(digits)\n\
     \n    converter toBigInt*(x: SomeInteger): BigInt =\n        ## \u7D44\u307F\u8FBC\
     \u307F\u6574\u6570\u3092\u591A\u500D\u9577\u6574\u6570\u306B\u6697\u9ED9\u5909\
     \u63DB\u3059\u308B\u3002\n        initBigInt(x)\n\n    proc `$`*(x: BigInt): string\
@@ -205,33 +216,142 @@ data:
     \ elif cmpAbs(x, y) >= 0:\n            result = subAbs(x, y)\n            result.sign\
     \ *= x.sign\n        else:\n            result = subAbs(y, x)\n            result.sign\
     \ *= y.sign\n\n    proc `-`*(x, y: BigInt): BigInt =\n        ## \u5DEE\u3092\u8FD4\
-    \u3059\u3002\n        x + (-y)\n\n    proc mulSchoolbook(x, y: BigInt): BigInt\
-    \ =\n        ## 0 \u3067\u306A\u3044\u6574\u6570\u540C\u58EB\u306E\u7A4D\u3092\
-    \u7B46\u7B97\u3067\u8FD4\u3059\u3002\n        result.sign = x.sign * y.sign\n\
-    \        result.digits = newSeq[uint32](x.digits.len + y.digits.len)\n       \
-    \ for i in 0..<x.digits.len:\n            var carry = 0'u64\n            for j\
-    \ in 0..<y.digits.len:\n                let digit = uint64(result.digits[i + j])\
-    \ +\n                    uint64(x.digits[i]) * uint64(y.digits[j]) + carry\n \
-    \               result.digits[i + j] = uint32(digit mod BigIntBase)\n        \
-    \        carry = digit div BigIntBase\n            result.digits[i + y.digits.len]\
-    \ = uint32(carry)\n        result.normalize()\n\n    when defined(cpp) and defined(amd64):\n\
-    \        const\n            BigIntNttThreshold = 64\n            BigIntNttMaxLength\
-    \ = 1 shl 24\n            BigIntNttMod1 = 754974721'u64\n            BigIntNttMod2\
-    \ = 469762049'u64\n            BigIntNttInvMod1 = 221064492'u64\n            BigIntNttLargeBaseMaxDigits\
-    \ = int(\n                (BigIntNttMod1 * BigIntNttMod2 - 1) div (999999'u64\
-    \ * 999999'u64))\n\n        proc bigIntConvolutionAvx2(\n                output,\
-    \ left: ptr uint32, leftLen: csize_t,\n                right: ptr uint32, rightLen,\
-    \ nttLen: csize_t,\n                modulus, primitiveRoot: uint32, montgomeryRepresentation:\
-    \ bool\n                ) {.importc: \"cplib_convolution_ntt_friendly\".}\n  \
-    \          ## \u65E2\u5B58\u306E AVX2 \u7573\u307F\u8FBC\u307F\u3092\u901A\u5E38\
-    \u8868\u73FE\u306E 32 bit \u914D\u5217\u304B\u3089\u547C\u3073\u51FA\u3059\u3002\
-    \n\n        proc convolutionNttDigits(left, right: seq[uint32],\n            \
-    \    modulus, primitiveRoot: uint32): seq[uint32] =\n            ## \u6307\u5B9A\
-    \u3057\u305F NTT \u7D20\u6570\u3092\u6CD5\u3068\u3059\u308B\u7573\u307F\u8FBC\u307F\
-    \u3092\u8FD4\u3059\u3002\n            let length = left.len + right.len - 1\n\
-    \            var nttLength = 1\n            while nttLength < length:\n      \
-    \          nttLength *= 2\n            result = newSeq[uint32](nttLength)\n  \
-    \          bigIntConvolutionAvx2(addr result[0], unsafeAddr left[0], left.len.csize_t,\n\
+    \u3059\u3002\n        x + (-y)\n\n    proc toBinaryDigits(x: BigInt): seq[uint32]\
+    \ =\n        ## \u7D76\u5BFE\u5024\u3092 2^32 \u9032\u306B\u5909\u63DB\u3059\u308B\
+    \u300210^9 \u9032\u306E\u6841\u6570\u3092 n \u3068\u3057\u3066 O(n^2)\u3002\n\
+    \        for i in countdown(x.digits.len - 1, 0):\n            var carry = uint64(x.digits[i])\n\
+    \            for j in 0..<result.len:\n                let value = uint64(result[j])\
+    \ * BigIntBase + carry\n                result[j] = uint32(value and 0xffffffff'u64)\n\
+    \                carry = value shr 32\n            if carry != 0:\n          \
+    \      result.add(uint32(carry))\n\n    proc fromBinaryDigits(digits: seq[uint32]):\
+    \ BigInt =\n        ## 2^32 \u9032\u306E\u975E\u8CA0\u6574\u6570\u3092\u5FA9\u5143\
+    \u3059\u308B\u3002\u5165\u529B\u306E\u6841\u6570\u3092 n \u3068\u3057\u3066 O(n^2)\u3002\
+    \n        result.sign = 1\n        for i in countdown(digits.len - 1, 0):\n  \
+    \          var carry = uint64(digits[i])\n            for j in 0..<result.digits.len:\n\
+    \                let value = (uint64(result.digits[j]) shl 32) + carry\n     \
+    \           result.digits[j] = uint32(value mod BigIntBase)\n                carry\
+    \ = value div BigIntBase\n            while carry != 0:\n                result.digits.add(uint32(carry\
+    \ mod BigIntBase))\n                carry = carry div BigIntBase\n        result.normalize()\n\
+    \n    proc complementBinaryDigits(digits: var seq[uint32]) =\n        ## \u56FA\
+    \u5B9A\u9577\u306E 2^32 \u9032\u914D\u5217\u3092 2 \u306E\u88DC\u6570\u3067\u7B26\
+    \u53F7\u53CD\u8EE2\u3059\u308B\u3002O(n)\u3002\n        var carry = 1'u64\n  \
+    \      for digit in digits.mitems:\n            let value = uint64(not digit)\
+    \ + carry\n            digit = uint32(value and 0xffffffff'u64)\n            carry\
+    \ = value shr 32\n\n    proc bitwise(x, y: BigInt, operation: static[int]): BigInt\
+    \ =\n        ## \u7B26\u53F7\u62E1\u5F35\u3057\u305F 2 \u306E\u88DC\u6570\u3067\
+    \u4E8C\u9805\u30D3\u30C3\u30C8\u6F14\u7B97\u3092\u884C\u3046\u3002\u6700\u5927\
+    \u6841\u6570\u3092 n \u3068\u3057\u3066 O(n^2)\u3002\n        var left = toBinaryDigits(x)\n\
+    \        var right = toBinaryDigits(y)\n        let size = max(left.len, right.len)\
+    \ + 1\n        left.setLen(size)\n        right.setLen(size)\n        if x.sign\
+    \ < 0:\n            complementBinaryDigits(left)\n        if y.sign < 0:\n   \
+    \         complementBinaryDigits(right)\n        for i in 0..<size:\n        \
+    \    when operation == 0:\n                left[i] = left[i] and right[i]\n  \
+    \          elif operation == 1:\n                left[i] = left[i] or right[i]\n\
+    \            else:\n                left[i] = left[i] xor right[i]\n        let\
+    \ negative = (left[^1] and 0x80000000'u32) != 0\n        if negative:\n      \
+    \      complementBinaryDigits(left)\n        result = fromBinaryDigits(left)\n\
+    \        if negative:\n            result.sign = -result.sign\n\n    proc `and`*(x,\
+    \ y: BigInt): BigInt =\n        ## \u7121\u9650\u9577\u306E 2 \u306E\u88DC\u6570\
+    \u3068\u3057\u3066\u8AD6\u7406\u7A4D\u3092\u8FD4\u3059\u3002\u6700\u5927\u6841\
+    \u6570\u3092 n \u3068\u3057\u3066 O(n^2)\u3002\n        bitwise(x, y, 0)\n\n \
+    \   proc `or`*(x, y: BigInt): BigInt =\n        ## \u7121\u9650\u9577\u306E 2\
+    \ \u306E\u88DC\u6570\u3068\u3057\u3066\u8AD6\u7406\u548C\u3092\u8FD4\u3059\u3002\
+    \u6700\u5927\u6841\u6570\u3092 n \u3068\u3057\u3066 O(n^2)\u3002\n        bitwise(x,\
+    \ y, 1)\n\n    proc `xor`*(x, y: BigInt): BigInt =\n        ## \u7121\u9650\u9577\
+    \u306E 2 \u306E\u88DC\u6570\u3068\u3057\u3066\u6392\u4ED6\u7684\u8AD6\u7406\u548C\
+    \u3092\u8FD4\u3059\u3002\u6700\u5927\u6841\u6570\u3092 n \u3068\u3057\u3066 O(n^2)\u3002\
+    \n        bitwise(x, y, 2)\n\n    proc `not`*(x: BigInt): BigInt =\n        ##\
+    \ \u7121\u9650\u9577\u306E 2 \u306E\u88DC\u6570\u3068\u3057\u3066\u30D3\u30C3\u30C8\
+    \u53CD\u8EE2\u3057\u305F -x-1 \u3092\u8FD4\u3059\u3002\u6841\u6570\u3092 n \u3068\
+    \u3057\u3066 O(n)\u3002\n        -x - initBigInt(1)\n\n    proc `shl`*(x: BigInt,\
+    \ shift: int): BigInt =\n        ## 2^shift \u500D\u3092\u8FD4\u3059\u3002\u8CA0\
+    \u306E\u30B7\u30D5\u30C8\u91CF\u306F ValueError\u3002\u7D50\u679C\u306E\u6841\u6570\
+    \u3092 n \u3068\u3057\u3066 O(n^2)\u3002\n        if shift < 0:\n            raise\
+    \ newException(ValueError, \"\u30B7\u30D5\u30C8\u91CF\u306F\u975E\u8CA0\u6574\u6570\
+    \u3067\u6307\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\")\n        if shift ==\
+    \ 0 or x.sign == 0:\n            return x\n        let digits = toBinaryDigits(x)\n\
+    \        let words = shift div 32\n        let bits = shift mod 32\n        var\
+    \ shifted = newSeq[uint32](digits.len + words + 1)\n        var carry = 0'u64\n\
+    \        for i in 0..<digits.len:\n            let value = (uint64(digits[i])\
+    \ shl bits) or carry\n            shifted[i + words] = uint32(value and 0xffffffff'u64)\n\
+    \            carry = value shr 32\n        shifted[digits.len + words] = uint32(carry)\n\
+    \        result = fromBinaryDigits(shifted)\n        result.sign *= x.sign\n\n\
+    \    proc `shr`*(x: BigInt, shift: int): BigInt =\n        ## \u7B97\u8853\u53F3\
+    \u30B7\u30D5\u30C8\uFF082^shift \u306B\u3088\u308B\u5E8A\u9664\u7B97\uFF09\u3092\
+    \u8FD4\u3059\u3002\u8CA0\u306E\u91CF\u306F ValueError\u3002\u5165\u529B n \u6841\
+    \u3067 O(n^2)\u3002\n        if shift < 0:\n            raise newException(ValueError,\
+    \ \"\u30B7\u30D5\u30C8\u91CF\u306F\u975E\u8CA0\u6574\u6570\u3067\u6307\u5B9A\u3057\
+    \u3066\u304F\u3060\u3055\u3044\")\n        if shift == 0 or x.sign == 0:\n   \
+    \         return x\n        let digits = toBinaryDigits(x)\n        let words\
+    \ = shift div 32\n        let bits = shift mod 32\n        if words >= digits.len:\n\
+    \            return initBigInt(if x.sign < 0: -1 else: 0)\n        var discarded\
+    \ = false\n        for i in 0..<words:\n            discarded = discarded or digits[i]\
+    \ != 0\n        discarded = discarded or\n            (uint64(digits[words]) and\
+    \ ((1'u64 shl bits) - 1)) != 0\n        var shifted = newSeq[uint32](digits.len\
+    \ - words)\n        for i in 0..<shifted.len:\n            var value = uint64(digits[i\
+    \ + words]) shr bits\n            if bits != 0 and i + words + 1 < digits.len:\n\
+    \                value = value or (uint64(digits[i + words + 1]) shl (32 - bits))\n\
+    \            shifted[i] = uint32(value and 0xffffffff'u64)\n        result = fromBinaryDigits(shifted)\n\
+    \        if x.sign < 0:\n            if discarded:\n                result = result\
+    \ + initBigInt(1)\n            result.sign = -result.sign\n\n    proc `and=`*(x:\
+    \ var BigInt, y: BigInt) =\n        ## \u53F3\u8FBA\u3068\u306E\u8AD6\u7406\u7A4D\
+    \u3092\u4EE3\u5165\u3059\u308B\u3002\n        x = x and y\n\n    proc `or=`*(x:\
+    \ var BigInt, y: BigInt) =\n        ## \u53F3\u8FBA\u3068\u306E\u8AD6\u7406\u548C\
+    \u3092\u4EE3\u5165\u3059\u308B\u3002\n        x = x or y\n\n    proc `xor=`*(x:\
+    \ var BigInt, y: BigInt) =\n        ## \u53F3\u8FBA\u3068\u306E\u6392\u4ED6\u7684\
+    \u8AD6\u7406\u548C\u3092\u4EE3\u5165\u3059\u308B\u3002\n        x = x xor y\n\n\
+    \    proc `shl=`*(x: var BigInt, shift: int) =\n        ## \u5DE6\u30B7\u30D5\u30C8\
+    \u3057\u305F\u5024\u3092\u4EE3\u5165\u3059\u308B\u3002\n        x = x shl shift\n\
+    \n    proc `shr=`*(x: var BigInt, shift: int) =\n        ## \u7B97\u8853\u53F3\
+    \u30B7\u30D5\u30C8\u3057\u305F\u5024\u3092\u4EE3\u5165\u3059\u308B\u3002\n   \
+    \     x = x shr shift\n\n    proc `<<`*(x: BigInt, shift: int): BigInt =\n   \
+    \     ## shl \u3068\u540C\u3058\u5DE6\u30B7\u30D5\u30C8\u3092\u8FD4\u3059\u3002\
+    \n        x shl shift\n\n    proc `<<=`*(x: var BigInt, shift: int) =\n      \
+    \  ## \u5DE6\u30B7\u30D5\u30C8\u3057\u305F\u5024\u3092\u4EE3\u5165\u3059\u308B\
+    \u3002\n        x = x shl shift\n\n    proc `>>`*(x: BigInt, shift: int): BigInt\
+    \ =\n        ## shr \u3068\u540C\u3058\u7B97\u8853\u53F3\u30B7\u30D5\u30C8\u3092\
+    \u8FD4\u3059\u3002\n        x shr shift\n\n    proc `>>=`*(x: var BigInt, shift:\
+    \ int) =\n        ## \u7B97\u8853\u53F3\u30B7\u30D5\u30C8\u3057\u305F\u5024\u3092\
+    \u4EE3\u5165\u3059\u308B\u3002\n        x = x shr shift\n\n    proc `&`*(x: BigInt,\
+    \ y: BigInt): BigInt =\n        ## and \u3068\u540C\u3058\u8AD6\u7406\u7A4D\u3092\
+    \u8FD4\u3059\u3002\n        x and y\n\n    proc `&=`*(x: var BigInt, y: BigInt)\
+    \ =\n        ## \u8AD6\u7406\u7A4D\u3057\u305F\u5024\u3092\u4EE3\u5165\u3059\u308B\
+    \u3002\n        x = x and y\n\n    proc `|`*(x: BigInt, y: BigInt): BigInt =\n\
+    \        ## or \u3068\u540C\u3058\u8AD6\u7406\u548C\u3092\u8FD4\u3059\u3002\n\
+    \        x or y\n\n    proc `|=`*(x: var BigInt, y: BigInt) =\n        ## \u8AD6\
+    \u7406\u548C\u3057\u305F\u5024\u3092\u4EE3\u5165\u3059\u308B\u3002\n        x\
+    \ = x or y\n\n    proc `^`*(x: BigInt, y: BigInt): BigInt =\n        ## xor \u3068\
+    \u540C\u3058\u6392\u4ED6\u7684\u8AD6\u7406\u548C\u3092\u8FD4\u3059\u3002\n   \
+    \     x xor y\n\n    proc `^=`*(x: var BigInt, y: BigInt) =\n        ## \u6392\
+    \u4ED6\u7684\u8AD6\u7406\u548C\u3057\u305F\u5024\u3092\u4EE3\u5165\u3059\u308B\
+    \u3002\n        x = x xor y\n\n    proc `~`*(x: BigInt): BigInt =\n        ##\
+    \ not \u3068\u540C\u3058\u30D3\u30C3\u30C8\u53CD\u8EE2\u3092\u8FD4\u3059\u3002\
+    \n        not x\n\n    proc mulSchoolbook(x, y: BigInt): BigInt =\n        ##\
+    \ 0 \u3067\u306A\u3044\u6574\u6570\u540C\u58EB\u306E\u7A4D\u3092\u7B46\u7B97\u3067\
+    \u8FD4\u3059\u3002\n        result.sign = x.sign * y.sign\n        result.digits\
+    \ = newSeq[uint32](x.digits.len + y.digits.len)\n        for i in 0..<x.digits.len:\n\
+    \            var carry = 0'u64\n            for j in 0..<y.digits.len:\n     \
+    \           let digit = uint64(result.digits[i + j]) +\n                    uint64(x.digits[i])\
+    \ * uint64(y.digits[j]) + carry\n                result.digits[i + j] = uint32(digit\
+    \ mod BigIntBase)\n                carry = digit div BigIntBase\n            result.digits[i\
+    \ + y.digits.len] = uint32(carry)\n        result.normalize()\n\n    when defined(cpp)\
+    \ and defined(amd64):\n        const\n            BigIntNttThreshold = 64\n  \
+    \          BigIntNttMaxLength = 1 shl 24\n            BigIntNttMod1 = 754974721'u64\n\
+    \            BigIntNttMod2 = 469762049'u64\n            BigIntNttInvMod1 = 221064492'u64\n\
+    \            BigIntNttLargeBaseMaxDigits = int(\n                (BigIntNttMod1\
+    \ * BigIntNttMod2 - 1) div (999999'u64 * 999999'u64))\n\n        proc bigIntConvolutionAvx2(\n\
+    \                output, left: ptr uint32, leftLen: csize_t,\n               \
+    \ right: ptr uint32, rightLen, nttLen: csize_t,\n                modulus, primitiveRoot:\
+    \ uint32, montgomeryRepresentation: bool\n                ) {.importc: \"cplib_convolution_ntt_friendly\"\
+    .}\n            ## \u65E2\u5B58\u306E AVX2 \u7573\u307F\u8FBC\u307F\u3092\u901A\
+    \u5E38\u8868\u73FE\u306E 32 bit \u914D\u5217\u304B\u3089\u547C\u3073\u51FA\u3059\
+    \u3002\n\n        proc convolutionNttDigits(left, right: seq[uint32],\n      \
+    \          modulus, primitiveRoot: uint32): seq[uint32] =\n            ## \u6307\
+    \u5B9A\u3057\u305F NTT \u7D20\u6570\u3092\u6CD5\u3068\u3059\u308B\u7573\u307F\u8FBC\
+    \u307F\u3092\u8FD4\u3059\u3002\n            let length = left.len + right.len\
+    \ - 1\n            var nttLength = 1\n            while nttLength < length:\n\
+    \                nttLength *= 2\n            result = newSeq[uint32](nttLength)\n\
+    \            bigIntConvolutionAvx2(addr result[0], unsafeAddr left[0], left.len.csize_t,\n\
     \                unsafeAddr right[0], right.len.csize_t, nttLength.csize_t,\n\
     \                modulus, primitiveRoot, false)\n            result.setLen(length)\n\
     \n        proc splitNttDigits[decimalDigits: static[int]](x: BigInt): seq[uint32]\
@@ -555,32 +675,34 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/powmod.nim
   - cplib/modint/modint.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inner_math.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
   - cplib/math/factoradic.nim
   - cplib/math/factoradic.nim
-  timestamp: '2026-09-12 14:57:18+09:00'
+  timestamp: '2026-09-13 02:58:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/division_of_big_integers_test.nim

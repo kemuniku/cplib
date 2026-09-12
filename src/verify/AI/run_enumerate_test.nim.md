@@ -50,8 +50,8 @@ data:
     \ @[(2, 0, 6)]\n"
   dependsOn:
   - cplib/str/zalgorithm.nim
-  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
+  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
   isVerificationFile: true
   path: verify/AI/run_enumerate_test.nim

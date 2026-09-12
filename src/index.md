@@ -30,6 +30,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/bitset_avx2.nim
       title: cplib/collections/bitset_avx2.nim
+    - icon: ':warning:'
+      path: cplib/collections/bitset_avx512.nim
+      title: cplib/collections/bitset_avx512.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/bitset_binary_trie.nim
+      title: cplib/collections/bitset_binary_trie.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/bitvector.nim
       title: cplib/collections/bitvector.nim
@@ -168,6 +174,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/staticbitset_avx2.nim
       title: cplib/collections/staticbitset_avx2.nim
+    - icon: ':warning:'
+      path: cplib/collections/staticbitset_avx512.nim
+      title: cplib/collections/staticbitset_avx512.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/staticrangecount.nim
       title: cplib/collections/staticrangecount.nim
@@ -197,6 +206,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/private/bitset_avx2_impl.nim
       title: cplib/collections/private/bitset_avx2_impl.nim
+    - icon: ':warning:'
+      path: cplib/collections/private/bitset_avx512_impl.nim
+      title: cplib/collections/private/bitset_avx512_impl.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/private/convex_hull_trick_impl.nim
       title: cplib/collections/private/convex_hull_trick_impl.nim
@@ -1185,8 +1197,17 @@ data:
       path: verify/AI/bititers_test.nim
       title: verify/AI/bititers_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_all_any_test.nim
+      title: verify/AI/bitset_all_any_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_avx2_test.nim
       title: verify/AI/bitset_avx2_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_binary_trie_test.nim
+      title: verify/AI/bitset_binary_trie_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_compare_test.nim
+      title: verify/AI/bitset_compare_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_test.nim
       title: verify/AI/bitset_test.nim
@@ -2146,6 +2167,9 @@ data:
       title: verify/judge/hello_world_yukicoder_test.nim
   - name: verify/math
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/math/bigint_bitops_unit_test.nim
+      title: verify/math/bigint_bitops_unit_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/bigint_unit_test.nim
       title: verify/math/bigint_unit_test.nim

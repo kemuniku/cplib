@@ -91,8 +91,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
   isVerificationFile: true

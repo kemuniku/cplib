@@ -38,7 +38,9 @@ data:
     \    proc varor(x:var uint,y:uint) {.importcpp:\"# |= #\".}\n    proc varand(x:var\
     \ uint,y:uint) {.importcpp:\"# &= #\".}\n    proc varxor(x:var uint,y:uint) {.importcpp:\"\
     # ^= #\".}\n    proc varshr(x:var uint,y:int) {.importcpp:\"# >>= #\".}\n    proc\
-    \ varshl(x:var uint,y:int) {.importcpp:\"# <<= #\".}\n\n    proc trim[size](bitset:\
+    \ varshl(x:var uint,y:int) {.importcpp:\"# <<= #\".}\n\n    proc len*[size](bitset:\
+    \ BitSet[size]): int {.inline.} =\n        ## \u30D3\u30C3\u30C8\u6570\u3092\u8FD4\
+    \u3057\u307E\u3059\u3002O(1)\u3002\n        size\n\n    proc trim[size](bitset:\
     \ var BitSet[size]) =\n        const mod64 = size mod 64\n        when mod64 !=\
     \ 0:\n            bitset.bits[^1].varand((1u shl mod64) - 1)\n\n    proc initBitSet*(x:static\
     \ int):BitSet[x]=\n        discard\n\n    proc initBitSet*(v:openArray[bool],size:static\
@@ -107,7 +109,42 @@ data:
     \    \n    proc `$`*[size](bitset:BitSet[size]):string=\n        var tmp : seq[char]\n\
     \        for i in 0..<size:\n            if bitset[i]:\n                tmp.add\
     \ '1'\n            else:\n                tmp.add '0'\n        return tmp.reversed().join(\"\
-    \")\n"
+    \")\n\n    proc cmp*[size](x, y: BitSet[size]): int =\n        ## \u540C\u3058\
+    \u9577\u3055\u306E\u30D3\u30C3\u30C8\u5217\u3092\u6DFB\u5B570\u304B\u3089false\
+    \ < true\u3067\u6BD4\u8F03\u3057\u3001-1\u30FB0\u30FB1\u3092\u8FD4\u3057\u307E\
+    \u3059\u3002\n        ## \u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\
+    \u30EAO(1)\u3002\u6700\u521D\u306E\u76F8\u9055\u3067\u7D42\u4E86\u3057\u307E\u3059\
+    \u3002\n        for i in 0..<x.bits.len:\n            let diff = x.bits[i] xor\
+    \ y.bits[i]\n            if diff != 0:\n                return if x.bits[i].testBit(diff.countTrailingZeroBits()):\
+    \ 1 else: -1\n\n    proc lexLess*[size](x, y: BitSet[size]): bool {.inline.} =\n\
+    \        ## \u6DFB\u5B570\u304B\u3089false < true\u306E\u8F9E\u66F8\u9806\u3067\
+    \u5C0F\u3055\u3044\u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\u6642\u9593O(1 +\
+    \ N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\n        cmp(x, y) < 0\n\
+    \n    proc `<`*[size](x, y: BitSet[size]): bool {.inline.} =\n        ## \u6DFB\
+    \u5B570\u304B\u3089false < true\u306E\u8F9E\u66F8\u9806\u3067\u5C0F\u3055\u3044\
+    \u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\u6642\u9593O(1 + N / 64)\u3001\u8FFD\
+    \u52A0\u30E1\u30E2\u30EAO(1)\u3002\n        cmp(x, y) < 0\n\n    proc `<=`*[size](x,\
+    \ y: BitSet[size]): bool {.inline.} =\n        ## \u6DFB\u5B570\u304B\u3089false\
+    \ < true\u306E\u8F9E\u66F8\u9806\u3067\u4EE5\u4E0B\u304B\u3092\u8FD4\u3057\u307E\
+    \u3059\u3002\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\
+    \n        cmp(x, y) <= 0\n\n    proc all*[size](x: BitSet[size]): bool =\n   \
+    \     ## \u6709\u52B9\u306A\u5168\u30D3\u30C3\u30C8\u304C1\u304B\u3092\u8FD4\u3057\
+    \u307E\u3059\u30020\u3092\u898B\u3064\u3051\u305F\u3089\u7D42\u4E86\u3057\u3001\
+    \u9577\u30550\u3067\u306Ftrue\u3092\u8FD4\u3057\u307E\u3059\u3002\n        ##\
+    \ \u6700\u60AA\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\
+    \n        let fullWords = size shr 6\n        for i in 0..<fullWords:\n      \
+    \      if x.bits[i] != high(uint):\n                return false\n        let\
+    \ remaining = size and 63\n        if remaining != 0:\n            let mask =\
+    \ (1u shl remaining) - 1\n            return (x.bits[fullWords] and mask) == mask\n\
+    \        true\n\n    proc any*[size](x: BitSet[size]): bool =\n        ## \u6709\
+    \u52B9\u306A\u30D3\u30C3\u30C8\u306B1\u304C\u3042\u308B\u304B\u3092\u8FD4\u3057\
+    \u307E\u3059\u30021\u3092\u898B\u3064\u3051\u305F\u3089\u7D42\u4E86\u3057\u3001\
+    \u9577\u30550\u3067\u306Ffalse\u3092\u8FD4\u3057\u307E\u3059\u3002\n        ##\
+    \ \u6700\u60AA\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\
+    \n        let fullWords = size shr 6\n        for i in 0..<fullWords:\n      \
+    \      if x.bits[i] != 0:\n                return true\n        let remaining\
+    \ = size and 63\n        if remaining != 0:\n            let mask = (1u shl remaining)\
+    \ - 1\n            return (x.bits[fullWords] and mask) != 0\n        false\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/staticbitset.nim
@@ -116,7 +153,7 @@ data:
   - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_test_.nim
-  timestamp: '2026-09-08 11:45:42+09:00'
+  timestamp: '2026-09-13 04:30:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/staticbitset_test.nim

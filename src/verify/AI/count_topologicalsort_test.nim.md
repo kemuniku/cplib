@@ -62,11 +62,11 @@ data:
     \ == bruteCount(g)\n\ndoAssert initUnWeightedDirectedGraph(20).count_topologicalsort()\
     \ == 2432902008176640000'i64\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/count_topologicalsort.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/count_topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/count_topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   isVerificationFile: true
   path: verify/AI/count_topologicalsort_test.nim

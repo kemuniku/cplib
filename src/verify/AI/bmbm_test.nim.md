@@ -120,32 +120,32 @@ data:
     modint_barrett.setMod(998244353)\nmodint_montgomery.setMod(998244353)\ncheckBmbm(modint_barrett)\n\
     checkBmbm(modint_montgomery)\n"
   dependsOn:
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/bmbm.nim
   - cplib/modint/modint.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/convolution/convolution.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/math/powmod.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inner_math.nim
   - cplib/fps/berlekamp_massey.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/bmbm.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
   - cplib/math/inner_math.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/fps/bostan_mori.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/fps/bmbm.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/bmbm.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/AI/bmbm_test.nim
   requiredBy: []

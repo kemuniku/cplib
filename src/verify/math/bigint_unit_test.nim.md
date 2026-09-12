@@ -78,97 +78,104 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import hashes, random, sets, strutils, tables\nimport cplib/math/bigint\n\nblock:\n\
-    \    doAssert $(-17'i8) == \"-17\"\n    doAssert $(-17'i16) == \"-17\"\n    doAssert\
-    \ $(-17'i32) == \"-17\"\n    doAssert $(-17'i64) == \"-17\"\n    doAssert $(17'u8)\
-    \ == \"17\"\n    doAssert $(17'u16) == \"17\"\n    doAssert $(17'u32) == \"17\"\
-    \n    doAssert $(17'u64) == \"17\"\n    doAssert cmp(-17'i32, 17'i32) == -1\n\
-    \    doAssert cmp(17'u32, 17'u32) == 0\n    doAssert hash(-17'i32) == hashes.hash(-17'i32)\n\
-    \    doAssert hash(17'u32) == hashes.hash(17'u32)\n    doAssert hash(17) == hashes.hash(17)\n\
-    \nblock:\n    var zero: BigInt\n    doAssert $zero == \"0\"\n    doAssert zero.isZero\n\
-    \    doAssert zero.sgn == 0\n    for s in [\"0\", \"-0\", \"+0\", \"00000\", \"\
-    -00000\", \"+00000\"]:\n        let value = parseBigInt(s)\n        doAssert value\
-    \ == zero\n        doAssert $value == \"0\"\n        doAssert value.hash == zero.hash\n\
-    \    doAssert $parseBigInt(\"+00012345678901234567890\") == \"12345678901234567890\"\
-    \n    doAssert $initBigInt(\"-00012345678901234567890\") == \"-12345678901234567890\"\
-    \n    for s in [\"\", \"+\", \"-\", \" 1\", \"1 \", \"1\\n\", \"--1\", \"+-1\"\
-    , \"1_000\", \"0x10\", \"1.0\", \"a\", \"\uFF11\uFF12\"]:\n        doAssertRaises(ValueError):\n\
-    \            discard parseBigInt(s)\n    for value in [low(int), low(int) + 1,\
-    \ -1, 0, 1, high(int) - 1, high(int)]:\n        doAssert $initBigInt(value) ==\
-    \ $value\n        doAssert initBigInt(value).toInt == value\n        doAssert\
-    \ parseBigInt($value).toInt == value\n    doAssert $initBigInt(low(int8)) == \"\
-    -128\"\n    doAssert $initBigInt(high(uint8)) == \"255\"\n    doAssert $initBigInt(low(int16))\
-    \ == \"-32768\"\n    doAssert $initBigInt(high(uint16)) == \"65535\"\n    doAssert\
-    \ $initBigInt(low(int32)) == \"-2147483648\"\n    doAssert $initBigInt(high(uint32))\
-    \ == \"4294967295\"\n    doAssert $initBigInt(low(int64)) == \"-9223372036854775808\"\
-    \n    doAssert $initBigInt(high(uint64)) == \"18446744073709551615\"\n    let\
-    \ unsignedValue: BigInt = high(uint64)\n    let signedValue: BigInt = low(int64)\n\
-    \    doAssert $unsignedValue == \"18446744073709551615\"\n    doAssert $signedValue\
-    \ == \"-9223372036854775808\"\n    doAssertRaises(OverflowDefect):\n        discard\
-    \ (initBigInt(high(int)) + 1).toInt\n    doAssertRaises(OverflowDefect):\n   \
-    \     discard (initBigInt(low(int)) - 1).toInt\n    doAssertRaises(OverflowDefect):\n\
-    \        discard parseBigInt(\"999999999999999999999999999999999999\").toInt\n\
-    \nstatic:\n    for a in -7..7:\n        for b in -3..3:\n            if b != 0:\n\
-    \                let x = initBigInt(a)\n                let y = initBigInt(b)\n\
-    \                doAssert x div y == initBigInt(a div b)\n                doAssert\
-    \ x mod y == initBigInt(a mod b)\n                var q = a div b\n          \
-    \      var r = a mod b\n                if r != 0 and (a < 0) != (b < 0):\n  \
-    \                  dec q\n                    r += b\n                doAssert\
-    \ x // y == initBigInt(q)\n                doAssert x % y == initBigInt(r)\n \
-    \   doAssert divmod(initBigInt(-7), initBigInt(3)) == (initBigInt(-3), initBigInt(2))\n\
-    \    doAssert divmod(initBigInt(7), initBigInt(-3)) == (initBigInt(-3), initBigInt(-2))\n\
-    \    doAssert divmod(initBigInt(-7), initBigInt(-3)) == (initBigInt(2), initBigInt(-1))\n\
-    \    doAssert divmod(initBigInt(-6), initBigInt(3)) == (initBigInt(-2), initBigInt(0))\n\
-    \nproc checkSmall(a, b: int) =\n    ## \u7D44\u307F\u8FBC\u307F\u6574\u6570\u3068\
-    \u56DB\u5247\u6F14\u7B97\u30FB\u6BD4\u8F03\u30FB\u4EE3\u5165\u6F14\u7B97\u306E\
-    \u7D50\u679C\u3092\u7167\u5408\u3059\u308B\u3002\n    let x = initBigInt(a)\n\
-    \    let y = initBigInt(b)\n    doAssert +x == x\n    doAssert -x == initBigInt(-a)\n\
-    \    doAssert x.abs == initBigInt(abs(a))\n    doAssert x.sgn == (if a < 0: -1\
-    \ elif a > 0: 1 else: 0)\n    doAssert x.isZero == (a == 0)\n    doAssert x +\
-    \ y == initBigInt(a + b)\n    doAssert x - y == initBigInt(a - b)\n    doAssert\
-    \ x * y == initBigInt(a * b)\n    doAssert x + b == initBigInt(a + b)\n    doAssert\
-    \ a + y == initBigInt(a + b)\n    doAssert x - b == initBigInt(a - b)\n    doAssert\
-    \ a - y == initBigInt(a - b)\n    doAssert x * b == initBigInt(a * b)\n    doAssert\
-    \ a * y == initBigInt(a * b)\n    doAssert (x == y) == (a == b)\n    doAssert\
-    \ (x != y) == (a != b)\n    doAssert (x < y) == (a < b)\n    doAssert (x <= y)\
-    \ == (a <= b)\n    doAssert (x > y) == (a > b)\n    doAssert (x >= y) == (a >=\
-    \ b)\n    doAssert cmp(x, y) == cmp(a, b)\n    doAssert (x == b) == (a == b)\n\
-    \    doAssert (a == y) == (a == b)\n    doAssert (x < b) == (a < b)\n    doAssert\
-    \ (a < y) == (a < b)\n    doAssert (x <= b) == (a <= b)\n    doAssert (a <= y)\
-    \ == (a <= b)\n    doAssert (x > b) == (a > b)\n    doAssert (a > y) == (a > b)\n\
-    \    doAssert (x >= b) == (a >= b)\n    doAssert (a >= y) == (a >= b)\n    var\
-    \ assigned = x\n    assigned += y\n    doAssert assigned == x + y\n    assigned\
-    \ = x\n    assigned -= y\n    doAssert assigned == x - y\n    assigned = x\n \
-    \   assigned *= y\n    doAssert assigned == x * y\n    if b != 0:\n        let\
-    \ (quotient, remainder) = divmod(x, y)\n        var expectedQ = a div b\n    \
-    \    var expectedR = a mod b\n        if expectedR != 0 and (a < 0) != (b < 0):\n\
-    \            dec expectedQ\n            expectedR += b\n        doAssert quotient\
-    \ == initBigInt(expectedQ)\n        doAssert remainder == initBigInt(expectedR)\n\
-    \        doAssert x // y == quotient\n        doAssert x % y == remainder\n  \
-    \      doAssert x // b == quotient\n        doAssert a // y == quotient\n    \
-    \    doAssert x % b == remainder\n        doAssert a % y == remainder\n      \
-    \  doAssert x div y == initBigInt(a div b)\n        doAssert x mod y == initBigInt(a\
-    \ mod b)\n        doAssert x div b == initBigInt(a div b)\n        doAssert a\
-    \ div y == initBigInt(a div b)\n        doAssert x mod b == initBigInt(a mod b)\n\
-    \        doAssert a mod y == initBigInt(a mod b)\n        assigned = x\n     \
-    \   `div=`(assigned, y)\n        doAssert assigned == initBigInt(a div b)\n  \
-    \      assigned = x\n        `mod=`(assigned, y)\n        doAssert assigned ==\
-    \ initBigInt(a mod b)\n    doAssert $x == $a\n    doAssert $y == $b\n\nfor a in\
-    \ -12..12:\n    for b in -12..12:\n        checkSmall(a, b)\nvar rng = initRand(20260908)\n\
-    for _ in 0..<2000:\n    checkSmall(rng.rand(-30000..30000), rng.rand(-30000..30000))\n\
-    \nblock:\n    let a = initBigInt(\"123456789012345678901234567890\")\n    let\
-    \ b = initBigInt(\"98765432109876543210\")\n    doAssert $(a + b) == \"123456789111111111011111111100\"\
-    \n    doAssert $(a - b) == \"123456788913580246791358024680\"\n    doAssert $(a\
-    \ * b) == \"12193263113702179522496570642237463801111263526900\"\n    let carry\
-    \ = initBigInt(\"999999999999999999999999999\")\n    doAssert $(carry + 1) ==\
-    \ \"1000000000000000000000000000\"\n    doAssert $(carry + 1 - carry) == \"1\"\
-    \n    doAssert $(-carry - 1) == \"-1000000000000000000000000000\"\n    doAssert\
-    \ $(a - a) == \"0\"\n    doAssert $(a * 0) == \"0\"\n    doAssert (a * 0).sgn\
-    \ == 0\n    doAssert a < a + 1\n    doAssert -a < -b\n    doAssert a > b\n   \
-    \ doAssert initBigInt(low(int)) div -1 == -initBigInt(low(int))\n    doAssert\
-    \ initBigInt(low(int)) mod -1 == 0\n\nproc decimalProduct(a, b: string): string\
-    \ =\n    ## \u975E\u8CA0\u6574\u6570\u306E\u7A4D\u3092\u72EC\u7ACB\u3057\u305F\
-    \ 10 \u9032\u306E\u7B46\u7B97\u3067\u6C42\u3081\u308B\u3002\n    var digits =\
-    \ newSeq[int](a.len + b.len)\n    for i in 0..<a.len:\n        for j in 0..<b.len:\n\
+    \    const large = 1234567890123456789012345678901234567890'bi\n    doAssert large\
+    \ is BigInt\n    doAssert $large == \"1234567890123456789012345678901234567890\"\
+    \n    doAssert 1'bi == initBigInt(1)\n    doAssert 0'bi == initBigInt(0)\n   \
+    \ doAssert (-0'bi).sgn == 0\n    doAssert -123'bi == initBigInt(-123)\n    doAssert\
+    \ 1_000_000_000_000_000_000_000'bi == initBigInt(\"1000000000000000000000\")\n\
+    \    doAssert (1'bi << 100) == initBigInt(2).pow(100)\n    doAssert (7'bi ^ 3'bi)\
+    \ == 4'bi\n    doAssert large + 1'bi == initBigInt(\"1234567890123456789012345678901234567891\"\
+    )\n\nblock:\n    doAssert $(-17'i8) == \"-17\"\n    doAssert $(-17'i16) == \"\
+    -17\"\n    doAssert $(-17'i32) == \"-17\"\n    doAssert $(-17'i64) == \"-17\"\n\
+    \    doAssert $(17'u8) == \"17\"\n    doAssert $(17'u16) == \"17\"\n    doAssert\
+    \ $(17'u32) == \"17\"\n    doAssert $(17'u64) == \"17\"\n    doAssert cmp(-17'i32,\
+    \ 17'i32) == -1\n    doAssert cmp(17'u32, 17'u32) == 0\n    doAssert hash(-17'i32)\
+    \ == hashes.hash(-17'i32)\n    doAssert hash(17'u32) == hashes.hash(17'u32)\n\
+    \    doAssert hash(17) == hashes.hash(17)\n\nblock:\n    var zero: BigInt\n  \
+    \  doAssert $zero == \"0\"\n    doAssert zero.isZero\n    doAssert zero.sgn ==\
+    \ 0\n    for s in [\"0\", \"-0\", \"+0\", \"00000\", \"-00000\", \"+00000\"]:\n\
+    \        let value = parseBigInt(s)\n        doAssert value == zero\n        doAssert\
+    \ $value == \"0\"\n        doAssert value.hash == zero.hash\n    doAssert $parseBigInt(\"\
+    +00012345678901234567890\") == \"12345678901234567890\"\n    doAssert $initBigInt(\"\
+    -00012345678901234567890\") == \"-12345678901234567890\"\n    for s in [\"\",\
+    \ \"+\", \"-\", \" 1\", \"1 \", \"1\\n\", \"--1\", \"+-1\", \"1_000\", \"0x10\"\
+    , \"1.0\", \"a\", \"\uFF11\uFF12\"]:\n        doAssertRaises(ValueError):\n  \
+    \          discard parseBigInt(s)\n    for value in [low(int), low(int) + 1, -1,\
+    \ 0, 1, high(int) - 1, high(int)]:\n        doAssert $initBigInt(value) == $value\n\
+    \        doAssert initBigInt(value).toInt == value\n        doAssert parseBigInt($value).toInt\
+    \ == value\n    doAssert $initBigInt(low(int8)) == \"-128\"\n    doAssert $initBigInt(high(uint8))\
+    \ == \"255\"\n    doAssert $initBigInt(low(int16)) == \"-32768\"\n    doAssert\
+    \ $initBigInt(high(uint16)) == \"65535\"\n    doAssert $initBigInt(low(int32))\
+    \ == \"-2147483648\"\n    doAssert $initBigInt(high(uint32)) == \"4294967295\"\
+    \n    doAssert $initBigInt(low(int64)) == \"-9223372036854775808\"\n    doAssert\
+    \ $initBigInt(high(uint64)) == \"18446744073709551615\"\n    let unsignedValue:\
+    \ BigInt = high(uint64)\n    let signedValue: BigInt = low(int64)\n    doAssert\
+    \ $unsignedValue == \"18446744073709551615\"\n    doAssert $signedValue == \"\
+    -9223372036854775808\"\n    doAssertRaises(OverflowDefect):\n        discard (initBigInt(high(int))\
+    \ + 1).toInt\n    doAssertRaises(OverflowDefect):\n        discard (initBigInt(low(int))\
+    \ - 1).toInt\n    doAssertRaises(OverflowDefect):\n        discard parseBigInt(\"\
+    999999999999999999999999999999999999\").toInt\n\nstatic:\n    for a in -7..7:\n\
+    \        for b in -3..3:\n            if b != 0:\n                let x = initBigInt(a)\n\
+    \                let y = initBigInt(b)\n                doAssert x div y == initBigInt(a\
+    \ div b)\n                doAssert x mod y == initBigInt(a mod b)\n          \
+    \      var q = a div b\n                var r = a mod b\n                if r\
+    \ != 0 and (a < 0) != (b < 0):\n                    dec q\n                  \
+    \  r += b\n                doAssert x // y == initBigInt(q)\n                doAssert\
+    \ x % y == initBigInt(r)\n    doAssert divmod(initBigInt(-7), initBigInt(3)) ==\
+    \ (initBigInt(-3), initBigInt(2))\n    doAssert divmod(initBigInt(7), initBigInt(-3))\
+    \ == (initBigInt(-3), initBigInt(-2))\n    doAssert divmod(initBigInt(-7), initBigInt(-3))\
+    \ == (initBigInt(2), initBigInt(-1))\n    doAssert divmod(initBigInt(-6), initBigInt(3))\
+    \ == (initBigInt(-2), initBigInt(0))\n\nproc checkSmall(a, b: int) =\n    ## \u7D44\
+    \u307F\u8FBC\u307F\u6574\u6570\u3068\u56DB\u5247\u6F14\u7B97\u30FB\u6BD4\u8F03\
+    \u30FB\u4EE3\u5165\u6F14\u7B97\u306E\u7D50\u679C\u3092\u7167\u5408\u3059\u308B\
+    \u3002\n    let x = initBigInt(a)\n    let y = initBigInt(b)\n    doAssert +x\
+    \ == x\n    doAssert -x == initBigInt(-a)\n    doAssert x.abs == initBigInt(abs(a))\n\
+    \    doAssert x.sgn == (if a < 0: -1 elif a > 0: 1 else: 0)\n    doAssert x.isZero\
+    \ == (a == 0)\n    doAssert x + y == initBigInt(a + b)\n    doAssert x - y ==\
+    \ initBigInt(a - b)\n    doAssert x * y == initBigInt(a * b)\n    doAssert x +\
+    \ b == initBigInt(a + b)\n    doAssert a + y == initBigInt(a + b)\n    doAssert\
+    \ x - b == initBigInt(a - b)\n    doAssert a - y == initBigInt(a - b)\n    doAssert\
+    \ x * b == initBigInt(a * b)\n    doAssert a * y == initBigInt(a * b)\n    doAssert\
+    \ (x == y) == (a == b)\n    doAssert (x != y) == (a != b)\n    doAssert (x < y)\
+    \ == (a < b)\n    doAssert (x <= y) == (a <= b)\n    doAssert (x > y) == (a >\
+    \ b)\n    doAssert (x >= y) == (a >= b)\n    doAssert cmp(x, y) == cmp(a, b)\n\
+    \    doAssert (x == b) == (a == b)\n    doAssert (a == y) == (a == b)\n    doAssert\
+    \ (x < b) == (a < b)\n    doAssert (a < y) == (a < b)\n    doAssert (x <= b) ==\
+    \ (a <= b)\n    doAssert (a <= y) == (a <= b)\n    doAssert (x > b) == (a > b)\n\
+    \    doAssert (a > y) == (a > b)\n    doAssert (x >= b) == (a >= b)\n    doAssert\
+    \ (a >= y) == (a >= b)\n    var assigned = x\n    assigned += y\n    doAssert\
+    \ assigned == x + y\n    assigned = x\n    assigned -= y\n    doAssert assigned\
+    \ == x - y\n    assigned = x\n    assigned *= y\n    doAssert assigned == x *\
+    \ y\n    if b != 0:\n        let (quotient, remainder) = divmod(x, y)\n      \
+    \  var expectedQ = a div b\n        var expectedR = a mod b\n        if expectedR\
+    \ != 0 and (a < 0) != (b < 0):\n            dec expectedQ\n            expectedR\
+    \ += b\n        doAssert quotient == initBigInt(expectedQ)\n        doAssert remainder\
+    \ == initBigInt(expectedR)\n        doAssert x // y == quotient\n        doAssert\
+    \ x % y == remainder\n        doAssert x // b == quotient\n        doAssert a\
+    \ // y == quotient\n        doAssert x % b == remainder\n        doAssert a %\
+    \ y == remainder\n        doAssert x div y == initBigInt(a div b)\n        doAssert\
+    \ x mod y == initBigInt(a mod b)\n        doAssert x div b == initBigInt(a div\
+    \ b)\n        doAssert a div y == initBigInt(a div b)\n        doAssert x mod\
+    \ b == initBigInt(a mod b)\n        doAssert a mod y == initBigInt(a mod b)\n\
+    \        assigned = x\n        `div=`(assigned, y)\n        doAssert assigned\
+    \ == initBigInt(a div b)\n        assigned = x\n        `mod=`(assigned, y)\n\
+    \        doAssert assigned == initBigInt(a mod b)\n    doAssert $x == $a\n   \
+    \ doAssert $y == $b\n\nfor a in -12..12:\n    for b in -12..12:\n        checkSmall(a,\
+    \ b)\nvar rng = initRand(20260908)\nfor _ in 0..<2000:\n    checkSmall(rng.rand(-30000..30000),\
+    \ rng.rand(-30000..30000))\n\nblock:\n    let a = initBigInt(\"123456789012345678901234567890\"\
+    )\n    let b = initBigInt(\"98765432109876543210\")\n    doAssert $(a + b) ==\
+    \ \"123456789111111111011111111100\"\n    doAssert $(a - b) == \"123456788913580246791358024680\"\
+    \n    doAssert $(a * b) == \"12193263113702179522496570642237463801111263526900\"\
+    \n    let carry = initBigInt(\"999999999999999999999999999\")\n    doAssert $(carry\
+    \ + 1) == \"1000000000000000000000000000\"\n    doAssert $(carry + 1 - carry)\
+    \ == \"1\"\n    doAssert $(-carry - 1) == \"-1000000000000000000000000000\"\n\
+    \    doAssert $(a - a) == \"0\"\n    doAssert $(a * 0) == \"0\"\n    doAssert\
+    \ (a * 0).sgn == 0\n    doAssert a < a + 1\n    doAssert -a < -b\n    doAssert\
+    \ a > b\n    doAssert initBigInt(low(int)) div -1 == -initBigInt(low(int))\n \
+    \   doAssert initBigInt(low(int)) mod -1 == 0\n\nproc decimalProduct(a, b: string):\
+    \ string =\n    ## \u975E\u8CA0\u6574\u6570\u306E\u7A4D\u3092\u72EC\u7ACB\u3057\
+    \u305F 10 \u9032\u306E\u7B46\u7B97\u3067\u6C42\u3081\u308B\u3002\n    var digits\
+    \ = newSeq[int](a.len + b.len)\n    for i in 0..<a.len:\n        for j in 0..<b.len:\n\
     \            digits[i + j] += (ord(a[a.high - i]) - ord('0')) *\n            \
     \    (ord(b[b.high - j]) - ord('0'))\n    for i in 0..<digits.high:\n        digits[i\
     \ + 1] += digits[i] div 10\n        digits[i] = digits[i] mod 10\n    while digits.len\
@@ -394,30 +401,30 @@ data:
     )] = 7\n    doAssert counts[initBigInt(\"+12345678901234567890\")] == 7\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/powmod.nim
   - cplib/modint/modint.nim
-  - cplib/math/bigint.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inner_math.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   - cplib/math/bigint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/bigint.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/bigint_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 14:57:18+09:00'
+  timestamp: '2026-09-13 02:58:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/bigint_unit_test.nim

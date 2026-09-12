@@ -388,6 +388,12 @@ data:
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_bitops_unit_test.nim
+    title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_bitops_unit_test.nim
+    title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -954,22 +960,22 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/modint/modint.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/powmod.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
@@ -1014,6 +1020,8 @@ data:
   verifiedWith:
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
   - verify/math/many_factorials_test.nim
   - verify/math/many_factorials_test.nim
   - verify/math/bigint_unit_test.nim

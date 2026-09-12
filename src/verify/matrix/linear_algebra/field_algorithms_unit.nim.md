@@ -154,26 +154,26 @@ data:
     \ == 1\nelse:\n    let empty = initMatrix(0,3,Mint(0))\n    doAssert (-empty).w\
     \ == 3\n    doAssert empty != initMatrix(0,2,Mint(0))\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/static_matrix.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/matrix.nim
   - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/field_algorithms_unit.nim
   requiredBy: []

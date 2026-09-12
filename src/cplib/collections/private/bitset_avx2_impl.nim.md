@@ -53,19 +53,26 @@ data:
     \ *)(dst + i), vector(a, b)); \\\n} \\\nfor (; i < n; ++i) dst[i] = x[i] scalar\
     \ y[i]; \\\n}\nCPLIB_BS_BINARY(cplib_bs_and, &, _mm256_and_si256)\nCPLIB_BS_BINARY(cplib_bs_or,\
     \ |, _mm256_or_si256)\nCPLIB_BS_BINARY(cplib_bs_xor, ^, _mm256_xor_si256)\n#undef\
-    \ CPLIB_BS_BINARY\n\nCPLIB_BS_AVX2 static void cplib_bs_not(uint64_t *dst, const\
-    \ uint64_t *x, size_t n) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u53CD\u8EE2\u3057\
-    \u307E\u3059\u3002 */\nconst __m256i ones = _mm256_set1_epi64x(-1);\nsize_t i\
-    \ = 0;\nfor (; i + 4 <= n; i += 4)\n    _mm256_storeu_si256((__m256i *)(dst +\
-    \ i), _mm256_xor_si256(\n        _mm256_loadu_si256((const __m256i *)(x + i)),\
-    \ ones));\nfor (; i < n; ++i) dst[i] = ~x[i];\n}\n\nCPLIB_BS_AVX2 static void\
-    \ cplib_bs_shl(uint64_t *dst, const uint64_t *x,\n                           \
-    \      size_t n, size_t shift) {\n/* \u30BC\u30ED\u521D\u671F\u5316\u6E08\u307F\
-    \u306E\u5225\u9818\u57DF\u3078\u5DE6\u30B7\u30D5\u30C8\u3057\u3001\u96A3\u63A5\
-    \u30EF\u30FC\u30C9\u304B\u3089\u306E\u6841\u4E0A\u304C\u308A\u3082\u51E6\u7406\
-    \u3057\u307E\u3059\u3002 */\nconst size_t offset = shift >> 6;\nconst unsigned\
-    \ bits = shift & 63;\nconst size_t count = n - offset;\nsize_t i = 0;\nif (bits\
-    \ == 0) {\n    for (; i + 4 <= count; i += 4)\n        _mm256_storeu_si256((__m256i\
+    \ CPLIB_BS_BINARY\n\nCPLIB_BS_AVX2 static void cplib_bs_andnot(uint64_t *dst,\
+    \ const uint64_t *x,\n                                       const uint64_t *y,\
+    \ size_t n) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u5DEE\u96C6\u5408\u3092\u6C42\
+    \u3081\u3001\u6B8B\u308A\u309264\u30D3\u30C3\u30C8\u305A\u3064\u51E6\u7406\u3057\
+    \u307E\u3059\u3002 */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i\
+    \ a = _mm256_loadu_si256((const __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const\
+    \ __m256i *)(y + i));\n    _mm256_storeu_si256((__m256i *)(dst + i), _mm256_andnot_si256(b,\
+    \ a));\n}\nfor (; i < n; ++i) dst[i] = x[i] & ~y[i];\n}\n\nCPLIB_BS_AVX2 static\
+    \ void cplib_bs_not(uint64_t *dst, const uint64_t *x, size_t n) {\n/* 256\u30D3\
+    \u30C3\u30C8\u305A\u3064\u53CD\u8EE2\u3057\u307E\u3059\u3002 */\nconst __m256i\
+    \ ones = _mm256_set1_epi64x(-1);\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4)\n\
+    \    _mm256_storeu_si256((__m256i *)(dst + i), _mm256_xor_si256(\n        _mm256_loadu_si256((const\
+    \ __m256i *)(x + i)), ones));\nfor (; i < n; ++i) dst[i] = ~x[i];\n}\n\nCPLIB_BS_AVX2\
+    \ static void cplib_bs_shl(uint64_t *dst, const uint64_t *x,\n               \
+    \                  size_t n, size_t shift) {\n/* \u30BC\u30ED\u521D\u671F\u5316\
+    \u6E08\u307F\u306E\u5225\u9818\u57DF\u3078\u5DE6\u30B7\u30D5\u30C8\u3057\u3001\
+    \u96A3\u63A5\u30EF\u30FC\u30C9\u304B\u3089\u306E\u6841\u4E0A\u304C\u308A\u3082\
+    \u51E6\u7406\u3057\u307E\u3059\u3002 */\nconst size_t offset = shift >> 6;\nconst\
+    \ unsigned bits = shift & 63;\nconst size_t count = n - offset;\nsize_t i = 0;\n\
+    if (bits == 0) {\n    for (; i + 4 <= count; i += 4)\n        _mm256_storeu_si256((__m256i\
     \ *)(dst + offset + i),\n            _mm256_loadu_si256((const __m256i *)(x +\
     \ i)));\n    for (; i < count; ++i) dst[offset + i] = x[i];\n    return;\n}\n\
     const __m128i left = _mm_cvtsi32_si128(bits);\nconst __m128i right = _mm_cvtsi32_si128(64\
@@ -134,20 +141,224 @@ data:
     \ = cplib_bs_bool_mask(src + i);\n            j = 32;\n        }\n        for\
     \ (; j < length - i; ++j)\n            value |= (uint64_t)(src[i + j] != 0) <<\
     \ j;\n        dst[word++] = value;\n    }\n    for (; word < words; ++word) dst[word]\
-    \ = 0;\n}\n#undef CPLIB_BS_AVX2\n#endif\n\"\"\".}\n\nproc avxAnd(dst, x, y: ptr\
-    \ uint64, n: csize_t) {.importc: \"cplib_bs_and\", nodecl.}\nproc avxOr(dst, x,\
-    \ y: ptr uint64, n: csize_t) {.importc: \"cplib_bs_or\", nodecl.}\nproc avxXor(dst,\
-    \ x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs_xor\", nodecl.}\nproc avxNot(dst,\
-    \ x: ptr uint64, n: csize_t) {.importc: \"cplib_bs_not\", nodecl.}\nproc avxShl(dst,\
-    \ x: ptr uint64, n, shift: csize_t) {.importc: \"cplib_bs_shl\", nodecl.}\nproc\
-    \ avxShr(dst, x: ptr uint64, n, shift: csize_t) {.importc: \"cplib_bs_shr\", nodecl.}\n\
-    proc avxPopcount(x, y: ptr uint64, n: csize_t): csize_t {.importc: \"cplib_bs_popcount\"\
-    , nodecl.}\nproc avxAndPopcount(x, y: ptr uint64, n: csize_t): csize_t {.importc:\
-    \ \"cplib_bs_andpopcount\", nodecl.}\nproc avxOrPopcount(x, y: ptr uint64, n:\
-    \ csize_t): csize_t {.importc: \"cplib_bs_orpopcount\", nodecl.}\nproc avxXorPopcount(x,\
-    \ y: ptr uint64, n: csize_t): csize_t {.importc: \"cplib_bs_xorpopcount\", nodecl.}\n\
-    proc avxFromBools(dst: ptr uint64, src: pointer, length, words: csize_t) {.importc:\
-    \ \"cplib_bs_from_bools\", nodecl.}\n"
+    \ = 0;\n}\nCPLIB_BS_AVX2 static void cplib_bs_select(uint64_t *dst, const uint64_t\
+    \ *x,\n        const uint64_t *y, const uint64_t *z, size_t n) {\n/* 256\u30D3\
+    \u30C3\u30C8\u305A\u3064\u8907\u5408\u6F14\u7B97\u3057\u3001\u4E00\u6642\u914D\
+    \u5217\u3092\u4F5C\u3089\u305A\u306B\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\
+    \ */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i a = _mm256_loadu_si256((const\
+    \ __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const __m256i *)(y\
+    \ + i));\n    __m256i c = _mm256_loadu_si256((const __m256i *)(z + i));\n    _mm256_storeu_si256((__m256i\
+    \ *)(dst + i), _mm256_xor_si256(a, _mm256_and_si256(_mm256_xor_si256(a, b), c)));\n\
+    }\nfor (; i < n; ++i) {\n    uint64_t a = x[i], b = y[i], c = z[i];\n    dst[i]\
+    \ = (a & ~c) | (b & c);\n}\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_orand(uint64_t\
+    \ *dst, const uint64_t *x,\n        const uint64_t *y, const uint64_t *z, size_t\
+    \ n) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u8907\u5408\u6F14\u7B97\u3057\u3001\
+    \u4E00\u6642\u914D\u5217\u3092\u4F5C\u3089\u305A\u306B\u66F8\u304D\u8FBC\u307F\
+    \u307E\u3059\u3002 */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i\
+    \ a = _mm256_loadu_si256((const __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const\
+    \ __m256i *)(y + i));\n    __m256i c = _mm256_loadu_si256((const __m256i *)(z\
+    \ + i));\n    _mm256_storeu_si256((__m256i *)(dst + i), _mm256_or_si256(a, _mm256_and_si256(b,\
+    \ c)));\n}\nfor (; i < n; ++i) {\n    uint64_t a = x[i], b = y[i], c = z[i];\n\
+    \    dst[i] = a | (b & c);\n}\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_andor(uint64_t\
+    \ *dst, const uint64_t *x,\n        const uint64_t *y, const uint64_t *z, size_t\
+    \ n) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u8907\u5408\u6F14\u7B97\u3057\u3001\
+    \u4E00\u6642\u914D\u5217\u3092\u4F5C\u3089\u305A\u306B\u66F8\u304D\u8FBC\u307F\
+    \u307E\u3059\u3002 */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i\
+    \ a = _mm256_loadu_si256((const __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const\
+    \ __m256i *)(y + i));\n    __m256i c = _mm256_loadu_si256((const __m256i *)(z\
+    \ + i));\n    _mm256_storeu_si256((__m256i *)(dst + i), _mm256_and_si256(a, _mm256_or_si256(b,\
+    \ c)));\n}\nfor (; i < n; ++i) {\n    uint64_t a = x[i], b = y[i], c = z[i];\n\
+    \    dst[i] = a & (b | c);\n}\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_xorand(uint64_t\
+    \ *dst, const uint64_t *x,\n        const uint64_t *y, const uint64_t *z, size_t\
+    \ n) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u8907\u5408\u6F14\u7B97\u3057\u3001\
+    \u4E00\u6642\u914D\u5217\u3092\u4F5C\u3089\u305A\u306B\u66F8\u304D\u8FBC\u307F\
+    \u307E\u3059\u3002 */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i\
+    \ a = _mm256_loadu_si256((const __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const\
+    \ __m256i *)(y + i));\n    __m256i c = _mm256_loadu_si256((const __m256i *)(z\
+    \ + i));\n    _mm256_storeu_si256((__m256i *)(dst + i), _mm256_xor_si256(a, _mm256_and_si256(b,\
+    \ c)));\n}\nfor (; i < n; ++i) {\n    uint64_t a = x[i], b = y[i], c = z[i];\n\
+    \    dst[i] = a ^ (b & c);\n}\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_majority(uint64_t\
+    \ *dst, const uint64_t *x,\n        const uint64_t *y, const uint64_t *z, size_t\
+    \ n) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u8907\u5408\u6F14\u7B97\u3057\u3001\
+    \u4E00\u6642\u914D\u5217\u3092\u4F5C\u3089\u305A\u306B\u66F8\u304D\u8FBC\u307F\
+    \u307E\u3059\u3002 */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i\
+    \ a = _mm256_loadu_si256((const __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const\
+    \ __m256i *)(y + i));\n    __m256i c = _mm256_loadu_si256((const __m256i *)(z\
+    \ + i));\n    _mm256_storeu_si256((__m256i *)(dst + i), _mm256_or_si256(_mm256_and_si256(a,\
+    \ b), _mm256_and_si256(_mm256_or_si256(a, b), c)));\n}\nfor (; i < n; ++i) {\n\
+    \    uint64_t a = x[i], b = y[i], c = z[i];\n    dst[i] = (a & b) | ((a | b) &\
+    \ c);\n}\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_xnor(uint64_t *dst, const uint64_t\
+    \ *x,\n        const uint64_t *y, const uint64_t *z, size_t n) {\n/* 256\u30D3\
+    \u30C3\u30C8\u305A\u3064\u8907\u5408\u6F14\u7B97\u3057\u3001\u4E00\u6642\u914D\
+    \u5217\u3092\u4F5C\u3089\u305A\u306B\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\
+    \ */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i a = _mm256_loadu_si256((const\
+    \ __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const __m256i *)(y\
+    \ + i));\n    __m256i c = _mm256_loadu_si256((const __m256i *)(z + i));\n    _mm256_storeu_si256((__m256i\
+    \ *)(dst + i), _mm256_xor_si256(_mm256_xor_si256(a, b), _mm256_set1_epi64x(-1)));\n\
+    }\nfor (; i < n; ++i) {\n    uint64_t a = x[i], b = y[i], c = z[i];\n    dst[i]\
+    \ = ~(a ^ b);\n}\n}\n\n\n#define CPLIB_BS_COUNT_RANGE(name, count, value) \\\n\
+    static inline size_t name(const uint64_t *x, const uint64_t *y, size_t l, size_t\
+    \ r) { \\\n/* \u4E21\u7AEF\u306E\u90E8\u5206\u30EF\u30FC\u30C9\u3060\u3051\u3092\
+    \u30DE\u30B9\u30AF\u3057\u3001\u4E2D\u592E\u306E\u5B8C\u5168\u306A\u30EF\u30FC\
+    \u30C9\u306F\u65E2\u5B58\u306ESIMD\u30AB\u30FC\u30CD\u30EB\u3067\u6570\u3048\u307E\
+    \u3059\u3002 */ \\\nif (l == r) return 0; \\\nsize_t first = l >> 6, last = (r\
+    \ - 1) >> 6; \\\nconst uint64_t leftMask = UINT64_MAX << (l & 63); \\\nconst uint64_t\
+    \ rightMask = UINT64_MAX >> (63 - ((r - 1) & 63)); \\\nsize_t i = first; \\\n\
+    if (first == last) return __builtin_popcountll((value) & leftMask & rightMask);\
+    \ \\\nsize_t result = 0, end = last + 1; \\\nif ((l & 63) != 0) { \\\n    result\
+    \ += __builtin_popcountll((value) & leftMask); \\\n    ++first; \\\n} \\\nif ((r\
+    \ & 63) != 0) { \\\n    i = last; \\\n    result += __builtin_popcountll((value)\
+    \ & rightMask); \\\n    --end; \\\n} \\\nif (first < end) result += count(x +\
+    \ first, y + first, end - first); \\\nreturn result; \\\n}\nCPLIB_BS_COUNT_RANGE(cplib_bs_popcount_range,\
+    \ cplib_bs_popcount, x[i])\nCPLIB_BS_COUNT_RANGE(cplib_bs_andpopcount_range, cplib_bs_andpopcount,\
+    \ x[i] & y[i])\nCPLIB_BS_COUNT_RANGE(cplib_bs_orpopcount_range, cplib_bs_orpopcount,\
+    \ x[i] | y[i])\nCPLIB_BS_COUNT_RANGE(cplib_bs_xorpopcount_range, cplib_bs_xorpopcount,\
+    \ x[i] ^ y[i])\n#undef CPLIB_BS_COUNT_RANGE\n\nCPLIB_BS_AVX2 static void cplib_bs_from_string_char(uint64_t\
+    \ *dst, const void *source,\n        const void *reference, unsigned char match,\
+    \ size_t length, size_t words) {\n/* 32\u30D0\u30A4\u30C8\u305A\u3064\u6BD4\u8F03\
+    \u3057\u3001\u6BD4\u8F03\u7D50\u679C\u306E\u30DE\u30B9\u30AF\u3092\u76F4\u63A5\
+    \u30D3\u30C3\u30C8\u96C6\u5408\u3078\u683C\u7D0D\u3057\u307E\u3059\u3002 */\n\
+    const unsigned char *src = (const unsigned char *)source;\nconst unsigned char\
+    \ *ref = (const unsigned char *)reference;\nsize_t i = 0, word = 0;\nwhile (i\
+    \ < length) {\n    uint64_t value = 0;\n    size_t j = 0, limit = length - i <\
+    \ 64 ? length - i : 64;\n    for (; j + 32 <= limit; j += 32) {\n        size_t\
+    \ pos = i + j;\n        __m256i a = _mm256_loadu_si256((const __m256i *)(src +\
+    \ pos));\n        __m256i b = _mm256_set1_epi8((char)match);\n        uint32_t\
+    \ mask = (uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(a, b));\n        value\
+    \ |= (uint64_t)mask << j;\n    }\n    for (; j < limit; ++j) value |= (uint64_t)(src[i\
+    \ + j] == match) << j;\n    dst[word++] = value;\n    i += limit;\n}\nfor (; word\
+    \ < words; ++word) dst[word] = 0;\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_from_string_equal(uint64_t\
+    \ *dst, const void *source,\n        const void *reference, unsigned char match,\
+    \ size_t length, size_t words) {\n/* 32\u30D0\u30A4\u30C8\u305A\u3064\u6BD4\u8F03\
+    \u3057\u3001\u6BD4\u8F03\u7D50\u679C\u306E\u30DE\u30B9\u30AF\u3092\u76F4\u63A5\
+    \u30D3\u30C3\u30C8\u96C6\u5408\u3078\u683C\u7D0D\u3057\u307E\u3059\u3002 */\n\
+    const unsigned char *src = (const unsigned char *)source;\nconst unsigned char\
+    \ *ref = (const unsigned char *)reference;\nsize_t i = 0, word = 0;\nwhile (i\
+    \ < length) {\n    uint64_t value = 0;\n    size_t j = 0, limit = length - i <\
+    \ 64 ? length - i : 64;\n    for (; j + 32 <= limit; j += 32) {\n        size_t\
+    \ pos = i + j;\n        __m256i a = _mm256_loadu_si256((const __m256i *)(src +\
+    \ pos));\n        __m256i b = _mm256_loadu_si256((const __m256i *)(ref + pos));\n\
+    \        uint32_t mask = (uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(a, b));\n\
+    \        value |= (uint64_t)mask << j;\n    }\n    for (; j < limit; ++j) value\
+    \ |= (uint64_t)(src[i + j] == ref[i + j]) << j;\n    dst[word++] = value;\n  \
+    \  i += limit;\n}\nfor (; word < words; ++word) dst[word] = 0;\n}\n\nCPLIB_BS_AVX2\
+    \ static int cplib_bs_intersects(const uint64_t *x, const uint64_t *y, size_t\
+    \ n) {\n/* \u7D50\u679C\u304C\u78BA\u5B9A\u3057\u305F\u30D6\u30ED\u30C3\u30AF\u3067\
+    \u7D42\u4E86\u3057\u3001\u500B\u6570\u306F\u6570\u3048\u307E\u305B\u3093\u3002\
+    \ */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i a = _mm256_loadu_si256((const\
+    \ __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const __m256i *)(y\
+    \ + i));\n    if (!_mm256_testz_si256(a, b)) return 1;\n}\nfor (; i < n; ++i)\
+    \ if ((x[i] & y[i]) != 0) return 1;\nreturn 0;\n}\n\nCPLIB_BS_AVX2 static int\
+    \ cplib_bs_subset(const uint64_t *x, const uint64_t *y, size_t n) {\n/* \u7D50\
+    \u679C\u304C\u78BA\u5B9A\u3057\u305F\u30D6\u30ED\u30C3\u30AF\u3067\u7D42\u4E86\
+    \u3057\u3001\u500B\u6570\u306F\u6570\u3048\u307E\u305B\u3093\u3002 */\nsize_t\
+    \ i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i a = _mm256_loadu_si256((const\
+    \ __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const __m256i *)(y\
+    \ + i));\n    if (!_mm256_testc_si256(b, a)) return 0;\n}\nfor (; i < n; ++i)\
+    \ if ((x[i] & ~y[i]) != 0) return 0;\nreturn 1;\n}\n\nCPLIB_BS_AVX2 static void\
+    \ cplib_bs_set_range(uint64_t *x, size_t l, size_t r) {\n/* \u4E21\u7AEF\u3060\
+    \u3051\u3092\u30DE\u30B9\u30AF\u3057\u3001\u4E2D\u592E\u306E\u5B8C\u5168\u306A\
+    \u30EF\u30FC\u30C9\u3092\u307E\u3068\u3081\u3066\u66F4\u65B0\u3057\u307E\u3059\
+    \u3002 */\nif (l == r) return;\nsize_t first = l >> 6, last = (r - 1) >> 6;\n\
+    uint64_t mask = UINT64_MAX << (l & 63);\nconst uint64_t rightMask = UINT64_MAX\
+    \ >> (63 - ((r - 1) & 63));\nif (first == last) {\n    mask &= rightMask;\n  \
+    \  x[first] |= mask;\n    return;\n}\nsize_t end = last + 1;\nif ((l & 63) !=\
+    \ 0) { x[first] |= mask; ++first; }\nif ((r & 63) != 0) { mask = rightMask; x[last]\
+    \ |= mask; --end; }\nsize_t i = first;\nfor (; i + 4 <= end; i += 4)\n    _mm256_storeu_si256((__m256i\
+    \ *)(x + i), _mm256_set1_epi64x(-1));\nfor (; i < end; ++i) { x[i] = UINT64_MAX;\
+    \ }\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_clear_range(uint64_t *x, size_t l,\
+    \ size_t r) {\n/* \u4E21\u7AEF\u3060\u3051\u3092\u30DE\u30B9\u30AF\u3057\u3001\
+    \u4E2D\u592E\u306E\u5B8C\u5168\u306A\u30EF\u30FC\u30C9\u3092\u307E\u3068\u3081\
+    \u3066\u66F4\u65B0\u3057\u307E\u3059\u3002 */\nif (l == r) return;\nsize_t first\
+    \ = l >> 6, last = (r - 1) >> 6;\nuint64_t mask = UINT64_MAX << (l & 63);\nconst\
+    \ uint64_t rightMask = UINT64_MAX >> (63 - ((r - 1) & 63));\nif (first == last)\
+    \ {\n    mask &= rightMask;\n    x[first] &= ~mask;\n    return;\n}\nsize_t end\
+    \ = last + 1;\nif ((l & 63) != 0) { x[first] &= ~mask; ++first; }\nif ((r & 63)\
+    \ != 0) { mask = rightMask; x[last] &= ~mask; --end; }\nsize_t i = first;\nfor\
+    \ (; i + 4 <= end; i += 4)\n    _mm256_storeu_si256((__m256i *)(x + i), _mm256_setzero_si256());\n\
+    for (; i < end; ++i) { x[i] = 0; }\n}\n\nCPLIB_BS_AVX2 static void cplib_bs_flip_range(uint64_t\
+    \ *x, size_t l, size_t r) {\n/* \u4E21\u7AEF\u3060\u3051\u3092\u30DE\u30B9\u30AF\
+    \u3057\u3001\u4E2D\u592E\u306E\u5B8C\u5168\u306A\u30EF\u30FC\u30C9\u3092\u307E\
+    \u3068\u3081\u3066\u66F4\u65B0\u3057\u307E\u3059\u3002 */\nif (l == r) return;\n\
+    size_t first = l >> 6, last = (r - 1) >> 6;\nuint64_t mask = UINT64_MAX << (l\
+    \ & 63);\nconst uint64_t rightMask = UINT64_MAX >> (63 - ((r - 1) & 63));\nif\
+    \ (first == last) {\n    mask &= rightMask;\n    x[first] ^= mask;\n    return;\n\
+    }\nsize_t end = last + 1;\nif ((l & 63) != 0) { x[first] ^= mask; ++first; }\n\
+    if ((r & 63) != 0) { mask = rightMask; x[last] ^= mask; --end; }\nsize_t i = first;\n\
+    for (; i + 4 <= end; i += 4)\n    _mm256_storeu_si256((__m256i *)(x + i), _mm256_xor_si256(_mm256_loadu_si256((const\
+    \ __m256i *)(x + i)), _mm256_set1_epi64x(-1)));\nfor (; i < end; ++i) { x[i] =\
+    \ ~x[i]; }\n}\n\nCPLIB_BS_AVX2 static int cplib_bs_cmp(const uint64_t *x, const\
+    \ uint64_t *y, size_t n) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u4E00\u81F4\u5224\
+    \u5B9A\u3057\u3001\u6700\u521D\u306E\u76F8\u9055\u30EF\u30FC\u30C9\u306E\u6700\
+    \u4E0B\u4F4D\u306E\u76F8\u9055\u30D3\u30C3\u30C8\u3067\u6BD4\u8F03\u3057\u307E\
+    \u3059\u3002 */\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i a =\
+    \ _mm256_loadu_si256((const __m256i *)(x + i));\n    __m256i b = _mm256_loadu_si256((const\
+    \ __m256i *)(y + i));\n    unsigned mask = (unsigned)(~_mm256_movemask_pd(_mm256_castsi256_pd(_mm256_cmpeq_epi64(a,\
+    \ b)))) & 15u;\n    if (mask != 0) {\n        size_t j = i + __builtin_ctz(mask);\n\
+    \        uint64_t diff = x[j] ^ y[j];\n        return ((x[j] >> __builtin_ctzll(diff))\
+    \ & 1) ? 1 : -1;\n    }\n}\nfor (; i < n; ++i) {\n    uint64_t diff = x[i] ^ y[i];\n\
+    \    if (diff != 0) return ((x[i] >> __builtin_ctzll(diff)) & 1) ? 1 : -1;\n}\n\
+    return 0;\n}\n\n\nCPLIB_BS_AVX2 static int cplib_bs_all(const uint64_t *x, size_t\
+    \ bits) {\n/* 256\u30D3\u30C3\u30C8\u305A\u3064\u5224\u5B9A\u3057\u3001\u7D50\u679C\
+    \u304C\u78BA\u5B9A\u3057\u305F\u3089\u7D42\u4E86\u3057\u307E\u3059\u3002\u672B\
+    \u5C3E\u306E\u7121\u52B9\u30D3\u30C3\u30C8\u306F\u7121\u8996\u3057\u307E\u3059\
+    \u3002 */\nconst size_t n = bits >> 6;\nconst __m256i ones = _mm256_set1_epi64x(-1);\n\
+    size_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i value = _mm256_loadu_si256((const\
+    \ __m256i *)(x + i));\n    if (!_mm256_testc_si256(value, ones)) return 0;\n}\n\
+    for (; i < n; ++i) {\n    if (x[i] != UINT64_MAX) return 0;\n}\nconst unsigned\
+    \ remaining = bits & 63;\nif (remaining != 0) {\n    const uint64_t mask = (UINT64_C(1)\
+    \ << remaining) - 1;\n    return (x[n] & mask) == mask;\n}\nreturn 1;\n}\n\nCPLIB_BS_AVX2\
+    \ static int cplib_bs_any(const uint64_t *x, size_t bits) {\n/* 256\u30D3\u30C3\
+    \u30C8\u305A\u3064\u5224\u5B9A\u3057\u3001\u7D50\u679C\u304C\u78BA\u5B9A\u3057\
+    \u305F\u3089\u7D42\u4E86\u3057\u307E\u3059\u3002\u672B\u5C3E\u306E\u7121\u52B9\
+    \u30D3\u30C3\u30C8\u306F\u7121\u8996\u3057\u307E\u3059\u3002 */\nconst size_t\
+    \ n = bits >> 6;\nsize_t i = 0;\nfor (; i + 4 <= n; i += 4) {\n    __m256i value\
+    \ = _mm256_loadu_si256((const __m256i *)(x + i));\n    if (!_mm256_testz_si256(value,\
+    \ value)) return 1;\n}\nfor (; i < n; ++i) {\n    if (x[i] != 0) return 1;\n}\n\
+    const unsigned remaining = bits & 63;\nif (remaining != 0) {\n    const uint64_t\
+    \ mask = (UINT64_C(1) << remaining) - 1;\n    return (x[n] & mask) != 0;\n}\n\
+    return 0;\n}\n\n#undef CPLIB_BS_AVX2\n#endif\n\"\"\".}\n\nproc avxAnd(dst, x,\
+    \ y: ptr uint64, n: csize_t) {.importc: \"cplib_bs_and\", nodecl.}\nproc avxAndNot(dst,\
+    \ x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs_andnot\", nodecl.}\nproc\
+    \ avxOr(dst, x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs_or\", nodecl.}\n\
+    proc avxXor(dst, x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs_xor\", nodecl.}\n\
+    proc avxNot(dst, x: ptr uint64, n: csize_t) {.importc: \"cplib_bs_not\", nodecl.}\n\
+    proc avxShl(dst, x: ptr uint64, n, shift: csize_t) {.importc: \"cplib_bs_shl\"\
+    , nodecl.}\nproc avxShr(dst, x: ptr uint64, n, shift: csize_t) {.importc: \"cplib_bs_shr\"\
+    , nodecl.}\nproc avxPopcount(x, y: ptr uint64, n: csize_t): csize_t {.importc:\
+    \ \"cplib_bs_popcount\", nodecl.}\nproc avxAndPopcount(x, y: ptr uint64, n: csize_t):\
+    \ csize_t {.importc: \"cplib_bs_andpopcount\", nodecl.}\nproc avxOrPopcount(x,\
+    \ y: ptr uint64, n: csize_t): csize_t {.importc: \"cplib_bs_orpopcount\", nodecl.}\n\
+    proc avxXorPopcount(x, y: ptr uint64, n: csize_t): csize_t {.importc: \"cplib_bs_xorpopcount\"\
+    , nodecl.}\nproc avxFromBools(dst: ptr uint64, src: pointer, length, words: csize_t)\
+    \ {.importc: \"cplib_bs_from_bools\", nodecl.}\n\nproc avxSelectAssign(dst, x,\
+    \ y, z: ptr uint64, n: csize_t) {.importc: \"cplib_bs_select\", nodecl.}\n\nproc\
+    \ avxOrAndAssign(dst, x, y, z: ptr uint64, n: csize_t) {.importc: \"cplib_bs_orand\"\
+    , nodecl.}\n\nproc avxAndOrAssign(dst, x, y, z: ptr uint64, n: csize_t) {.importc:\
+    \ \"cplib_bs_andor\", nodecl.}\n\nproc avxXorAndAssign(dst, x, y, z: ptr uint64,\
+    \ n: csize_t) {.importc: \"cplib_bs_xorand\", nodecl.}\n\nproc avxMajority(dst,\
+    \ x, y, z: ptr uint64, n: csize_t) {.importc: \"cplib_bs_majority\", nodecl.}\n\
+    \nproc avxXnorAssign(dst, x, y, z: ptr uint64, n: csize_t) {.importc: \"cplib_bs_xnor\"\
+    , nodecl.}\n\nproc avxPopcountRange(x, y: ptr uint64, l, r: csize_t): csize_t\
+    \ {.importc: \"cplib_bs_popcount_range\", nodecl.}\n\nproc avxAndpopcountRange(x,\
+    \ y: ptr uint64, l, r: csize_t): csize_t {.importc: \"cplib_bs_andpopcount_range\"\
+    , nodecl.}\n\nproc avxOrpopcountRange(x, y: ptr uint64, l, r: csize_t): csize_t\
+    \ {.importc: \"cplib_bs_orpopcount_range\", nodecl.}\n\nproc avxXorpopcountRange(x,\
+    \ y: ptr uint64, l, r: csize_t): csize_t {.importc: \"cplib_bs_xorpopcount_range\"\
+    , nodecl.}\n\nproc avxFromStringChar(dst: ptr uint64, source, reference: pointer,\
+    \ match: uint8, length, words: csize_t) {.importc: \"cplib_bs_from_string_char\"\
+    , nodecl.}\n\nproc avxFromStringEqual(dst: ptr uint64, source, reference: pointer,\
+    \ match: uint8, length, words: csize_t) {.importc: \"cplib_bs_from_string_equal\"\
+    , nodecl.}\n\nproc avxIntersects(x, y: ptr uint64, n: csize_t): cint {.importc:\
+    \ \"cplib_bs_intersects\", nodecl.}\n\nproc avxSubset(x, y: ptr uint64, n: csize_t):\
+    \ cint {.importc: \"cplib_bs_subset\", nodecl.}\n\nproc avxSetRange(x: ptr uint64,\
+    \ l, r: csize_t) {.importc: \"cplib_bs_set_range\", nodecl.}\n\nproc avxClearRange(x:\
+    \ ptr uint64, l, r: csize_t) {.importc: \"cplib_bs_clear_range\", nodecl.}\n\n\
+    proc avxFlipRange(x: ptr uint64, l, r: csize_t) {.importc: \"cplib_bs_flip_range\"\
+    , nodecl.}\n\nproc avxCmp(x, y: ptr uint64, n: csize_t): cint {.importc: \"cplib_bs_cmp\"\
+    , nodecl.}\n\nproc avxAll(x: ptr uint64, bits: csize_t): cint {.importc: \"cplib_bs_all\"\
+    , nodecl.}\n\nproc avxAny(x: ptr uint64, bits: csize_t): cint {.importc: \"cplib_bs_any\"\
+    , nodecl.}\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx2_impl.nim
@@ -156,7 +367,7 @@ data:
   - cplib/collections/bitset_avx2.nim
   - cplib/collections/staticbitset_avx2.nim
   - cplib/collections/staticbitset_avx2.nim
-  timestamp: '2026-09-08 11:45:42+09:00'
+  timestamp: '2026-09-13 04:30:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/staticbitset_avx2_test.nim

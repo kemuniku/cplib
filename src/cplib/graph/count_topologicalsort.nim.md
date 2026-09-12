@@ -55,8 +55,8 @@ data:
     \ == predecessors[v]:\n                    dp[mask or bit] += dp[mask]\n     \
     \   return dp[^1]\n"
   dependsOn:
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   isVerificationFile: false

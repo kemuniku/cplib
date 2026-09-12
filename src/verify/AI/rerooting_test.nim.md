@@ -68,8 +68,8 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
+  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
   isVerificationFile: true
   path: verify/AI/rerooting_test.nim

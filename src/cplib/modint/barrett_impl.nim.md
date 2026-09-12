@@ -604,6 +604,12 @@ data:
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_bitops_unit_test.nim
+    title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_bitops_unit_test.nim
+    title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -868,6 +874,8 @@ data:
   verifiedWith:
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
   - verify/math/many_factorials_test.nim
   - verify/math/many_factorials_test.nim
   - verify/math/bigint_unit_test.nim
