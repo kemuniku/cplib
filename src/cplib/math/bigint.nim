@@ -68,6 +68,14 @@ when not declared CPLIB_MATH_BIGINT:
         ## 符号付き 10 進文字列から多倍長整数を作る。
         parseBigInt(s)
 
+    proc `'bi`*(s: string): BigInt =
+        ## 10 進数の bi リテラルを多倍長整数に変換する。桁区切りの _ も使用できる。
+        var digits = newStringOfCap(s.len)
+        for c in s:
+            if c != '_':
+                digits.add(c)
+        parseBigInt(digits)
+
     converter toBigInt*(x: SomeInteger): BigInt =
         ## 組み込み整数を多倍長整数に暗黙変換する。
         initBigInt(x)
@@ -211,6 +219,191 @@ when not declared CPLIB_MATH_BIGINT:
     proc `-`*(x, y: BigInt): BigInt =
         ## 差を返す。
         x + (-y)
+
+    proc toBinaryDigits(x: BigInt): seq[uint32] =
+        ## 絶対値を 2^32 進に変換する。10^9 進の桁数を n として O(n^2)。
+        for i in countdown(x.digits.len - 1, 0):
+            var carry = uint64(x.digits[i])
+            for j in 0..<result.len:
+                let value = uint64(result[j]) * BigIntBase + carry
+                result[j] = uint32(value and 0xffffffff'u64)
+                carry = value shr 32
+            if carry != 0:
+                result.add(uint32(carry))
+
+    proc fromBinaryDigits(digits: seq[uint32]): BigInt =
+        ## 2^32 進の非負整数を復元する。入力の桁数を n として O(n^2)。
+        result.sign = 1
+        for i in countdown(digits.len - 1, 0):
+            var carry = uint64(digits[i])
+            for j in 0..<result.digits.len:
+                let value = (uint64(result.digits[j]) shl 32) + carry
+                result.digits[j] = uint32(value mod BigIntBase)
+                carry = value div BigIntBase
+            while carry != 0:
+                result.digits.add(uint32(carry mod BigIntBase))
+                carry = carry div BigIntBase
+        result.normalize()
+
+    proc complementBinaryDigits(digits: var seq[uint32]) =
+        ## 固定長の 2^32 進配列を 2 の補数で符号反転する。O(n)。
+        var carry = 1'u64
+        for digit in digits.mitems:
+            let value = uint64(not digit) + carry
+            digit = uint32(value and 0xffffffff'u64)
+            carry = value shr 32
+
+    proc bitwise(x, y: BigInt, operation: static[int]): BigInt =
+        ## 符号拡張した 2 の補数で二項ビット演算を行う。最大桁数を n として O(n^2)。
+        var left = toBinaryDigits(x)
+        var right = toBinaryDigits(y)
+        let size = max(left.len, right.len) + 1
+        left.setLen(size)
+        right.setLen(size)
+        if x.sign < 0:
+            complementBinaryDigits(left)
+        if y.sign < 0:
+            complementBinaryDigits(right)
+        for i in 0..<size:
+            when operation == 0:
+                left[i] = left[i] and right[i]
+            elif operation == 1:
+                left[i] = left[i] or right[i]
+            else:
+                left[i] = left[i] xor right[i]
+        let negative = (left[^1] and 0x80000000'u32) != 0
+        if negative:
+            complementBinaryDigits(left)
+        result = fromBinaryDigits(left)
+        if negative:
+            result.sign = -result.sign
+
+    proc `and`*(x, y: BigInt): BigInt =
+        ## 無限長の 2 の補数として論理積を返す。最大桁数を n として O(n^2)。
+        bitwise(x, y, 0)
+
+    proc `or`*(x, y: BigInt): BigInt =
+        ## 無限長の 2 の補数として論理和を返す。最大桁数を n として O(n^2)。
+        bitwise(x, y, 1)
+
+    proc `xor`*(x, y: BigInt): BigInt =
+        ## 無限長の 2 の補数として排他的論理和を返す。最大桁数を n として O(n^2)。
+        bitwise(x, y, 2)
+
+    proc `not`*(x: BigInt): BigInt =
+        ## 無限長の 2 の補数としてビット反転した -x-1 を返す。桁数を n として O(n)。
+        -x - initBigInt(1)
+
+    proc `shl`*(x: BigInt, shift: int): BigInt =
+        ## 2^shift 倍を返す。負のシフト量は ValueError。結果の桁数を n として O(n^2)。
+        if shift < 0:
+            raise newException(ValueError, "シフト量は非負整数で指定してください")
+        if shift == 0 or x.sign == 0:
+            return x
+        let digits = toBinaryDigits(x)
+        let words = shift div 32
+        let bits = shift mod 32
+        var shifted = newSeq[uint32](digits.len + words + 1)
+        var carry = 0'u64
+        for i in 0..<digits.len:
+            let value = (uint64(digits[i]) shl bits) or carry
+            shifted[i + words] = uint32(value and 0xffffffff'u64)
+            carry = value shr 32
+        shifted[digits.len + words] = uint32(carry)
+        result = fromBinaryDigits(shifted)
+        result.sign *= x.sign
+
+    proc `shr`*(x: BigInt, shift: int): BigInt =
+        ## 算術右シフト（2^shift による床除算）を返す。負の量は ValueError。入力 n 桁で O(n^2)。
+        if shift < 0:
+            raise newException(ValueError, "シフト量は非負整数で指定してください")
+        if shift == 0 or x.sign == 0:
+            return x
+        let digits = toBinaryDigits(x)
+        let words = shift div 32
+        let bits = shift mod 32
+        if words >= digits.len:
+            return initBigInt(if x.sign < 0: -1 else: 0)
+        var discarded = false
+        for i in 0..<words:
+            discarded = discarded or digits[i] != 0
+        discarded = discarded or
+            (uint64(digits[words]) and ((1'u64 shl bits) - 1)) != 0
+        var shifted = newSeq[uint32](digits.len - words)
+        for i in 0..<shifted.len:
+            var value = uint64(digits[i + words]) shr bits
+            if bits != 0 and i + words + 1 < digits.len:
+                value = value or (uint64(digits[i + words + 1]) shl (32 - bits))
+            shifted[i] = uint32(value and 0xffffffff'u64)
+        result = fromBinaryDigits(shifted)
+        if x.sign < 0:
+            if discarded:
+                result = result + initBigInt(1)
+            result.sign = -result.sign
+
+    proc `and=`*(x: var BigInt, y: BigInt) =
+        ## 右辺との論理積を代入する。
+        x = x and y
+
+    proc `or=`*(x: var BigInt, y: BigInt) =
+        ## 右辺との論理和を代入する。
+        x = x or y
+
+    proc `xor=`*(x: var BigInt, y: BigInt) =
+        ## 右辺との排他的論理和を代入する。
+        x = x xor y
+
+    proc `shl=`*(x: var BigInt, shift: int) =
+        ## 左シフトした値を代入する。
+        x = x shl shift
+
+    proc `shr=`*(x: var BigInt, shift: int) =
+        ## 算術右シフトした値を代入する。
+        x = x shr shift
+
+    proc `<<`*(x: BigInt, shift: int): BigInt =
+        ## shl と同じ左シフトを返す。
+        x shl shift
+
+    proc `<<=`*(x: var BigInt, shift: int) =
+        ## 左シフトした値を代入する。
+        x = x shl shift
+
+    proc `>>`*(x: BigInt, shift: int): BigInt =
+        ## shr と同じ算術右シフトを返す。
+        x shr shift
+
+    proc `>>=`*(x: var BigInt, shift: int) =
+        ## 算術右シフトした値を代入する。
+        x = x shr shift
+
+    proc `&`*(x: BigInt, y: BigInt): BigInt =
+        ## and と同じ論理積を返す。
+        x and y
+
+    proc `&=`*(x: var BigInt, y: BigInt) =
+        ## 論理積した値を代入する。
+        x = x and y
+
+    proc `|`*(x: BigInt, y: BigInt): BigInt =
+        ## or と同じ論理和を返す。
+        x or y
+
+    proc `|=`*(x: var BigInt, y: BigInt) =
+        ## 論理和した値を代入する。
+        x = x or y
+
+    proc `^`*(x: BigInt, y: BigInt): BigInt =
+        ## xor と同じ排他的論理和を返す。
+        x xor y
+
+    proc `^=`*(x: var BigInt, y: BigInt) =
+        ## 排他的論理和した値を代入する。
+        x = x xor y
+
+    proc `~`*(x: BigInt): BigInt =
+        ## not と同じビット反転を返す。
+        not x
 
     proc mulSchoolbook(x, y: BigInt): BigInt =
         ## 0 でない整数同士の積を筆算で返す。
