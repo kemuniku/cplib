@@ -21,3 +21,24 @@ assert abs(-b) == b
 assert cmp(b, parseInt128("10")) == 0
 assert pow(parseInt128("2"), parseInt128("10")).to_int == 1024
 assert pow(parseInt128("2"), parseInt128("10"), parseInt128("1000")).to_int == 24
+
+import hashes, tables
+
+let boundaryStrings = @[
+    "0", "1", "-1", "9999", "10000", "-10000",
+    "18446744073709551616", "-18446744073709551616",
+    "170141183460469231731687303715884105727",
+    "-170141183460469231731687303715884105728"
+]
+var values = initTable[Int128, string]()
+for s in boundaryStrings:
+    let x = parseInt128(s)
+    assert $x == s
+    assert hash(x) == hash(parseInt128(s))
+    values[x] = s
+for s in boundaryStrings:
+    assert values[parseInt128(s)] == s
+assert values.len == boundaryStrings.len
+assert $(parseInt128(boundaryStrings[^1]) + 1) == "-170141183460469231731687303715884105727"
+assert $(parseInt128(boundaryStrings[^2]) - 1) == "170141183460469231731687303715884105726"
+assert $parseInt128("0") == "0"
