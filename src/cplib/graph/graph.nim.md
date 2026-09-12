@@ -21,6 +21,12 @@ data:
     path: cplib/graph/bipartite_graph.nim
     title: cplib/graph/bipartite_graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/count_topologicalsort.nim
+    title: cplib/graph/count_topologicalsort.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/count_topologicalsort.nim
+    title: cplib/graph/count_topologicalsort.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
   - icon: ':heavy_check_mark:'
@@ -393,6 +399,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/compressed_trie_test.nim
     title: verify/AI/compressed_trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/count_topologicalsort_test.nim
+    title: verify/AI/count_topologicalsort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/count_topologicalsort_test.nim
+    title: verify/AI/count_topologicalsort_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/dag_minimum_path_cover_test.nim
     title: verify/AI/dag_minimum_path_cover_test.nim
@@ -945,6 +957,8 @@ data:
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/count_topologicalsort.nim
+  - cplib/graph/count_topologicalsort.nim
   - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
   - cplib/graph/namori_graph.nim
@@ -1084,6 +1098,8 @@ data:
   - verify/AI/graph_test.nim
   - verify/AI/tree_hash_test.nim
   - verify/AI/tree_hash_test.nim
+  - verify/AI/count_topologicalsort_test.nim
+  - verify/AI/count_topologicalsort_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/reverse_edge_test.nim

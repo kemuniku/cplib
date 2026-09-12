@@ -95,9 +95,9 @@ data:
   dependsOn:
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_avx.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx_test.nim

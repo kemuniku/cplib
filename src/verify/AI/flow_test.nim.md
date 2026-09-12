@@ -136,8 +136,8 @@ data:
     \ == 4\n    doAssert g.flow(0, 4) == 1\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/maxflow.nim
-  - cplib/graph/mincostflow.nim
   - cplib/graph/maxflow.nim
+  - cplib/graph/mincostflow.nim
   - cplib/graph/mincostflow.nim
   isVerificationFile: true
   path: verify/AI/flow_test.nim

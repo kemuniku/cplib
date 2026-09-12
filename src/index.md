@@ -55,6 +55,12 @@ data:
       path: cplib/collections/dualsegtree_static_op.nim
       title: cplib/collections/dualsegtree_static_op.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/dynamic_lazysegtree.nim
+      title: cplib/collections/dynamic_lazysegtree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/dynamic_segtree.nim
+      title: cplib/collections/dynamic_segtree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/fenwick.nim
       title: cplib/collections/fenwick.nim
     - icon: ':heavy_check_mark:'
@@ -292,6 +298,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/bipartite_graph.nim
       title: cplib/graph/bipartite_graph.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/count_topologicalsort.nim
+      title: cplib/graph/count_topologicalsort.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dag_minimum_path_cover.nim
       title: cplib/graph/dag_minimum_path_cover.nim
@@ -1215,6 +1224,9 @@ data:
       path: verify/AI/convolution_test.nim
       title: verify/AI/convolution_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/count_topologicalsort_test.nim
+      title: verify/AI/count_topologicalsort_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/cumsum2d_test.nim
       title: verify/AI/cumsum2d_test.nim
     - icon: ':heavy_check_mark:'
@@ -1247,6 +1259,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/dynamic_bipartite_test.nim
       title: verify/AI/dynamic_bipartite_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/dynamic_lazysegtree_test.nim
+      title: verify/AI/dynamic_lazysegtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/dynamic_segtree_test.nim
+      title: verify/AI/dynamic_segtree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/edit_distance_test.nim
       title: verify/AI/edit_distance_test.nim
@@ -1776,6 +1794,9 @@ data:
       path: verify/collections/lazysegtree/binary_search_test.nim
       title: verify/collections/lazysegtree/binary_search_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/lazysegtree/dynamic_rangeaffinerangesum_test.nim
+      title: verify/collections/lazysegtree/dynamic_rangeaffinerangesum_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/lazysegtree/get_all_static_op_test.nim
       title: verify/collections/lazysegtree/get_all_static_op_test.nim
     - icon: ':heavy_check_mark:'
@@ -1800,6 +1821,9 @@ data:
       title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - name: verify/collections/segtree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree/dynamic_segtree_PARS_test.nim
+      title: verify/collections/segtree/dynamic_segtree_PARS_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree/segtree_PARS_test.nim
       title: verify/collections/segtree/segtree_PARS_test.nim

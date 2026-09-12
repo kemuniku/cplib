@@ -59,14 +59,14 @@ data:
     \        st.apply(l, r, (mint(b), mint(c)))\n    else:\n        let i = ii()\n\
     \        echo st[i]\n"
   dependsOn:
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/collections/dualsegtree_static_op.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/collections/dualsegtree_static_op.nim
   isVerificationFile: true

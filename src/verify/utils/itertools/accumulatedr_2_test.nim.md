@@ -42,10 +42,10 @@ data:
   dependsOn:
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/utils/itertools.nim
   - cplib/graph/graph.nim
+  - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
-  - cplib/utils/itertools.nim
-  - cplib/utils/itertools.nim
   isVerificationFile: true
   path: verify/utils/itertools/accumulatedr_2_test.nim
   requiredBy: []
