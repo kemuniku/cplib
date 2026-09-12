@@ -55,6 +55,26 @@ block:
     doAssertRaises(OverflowDefect):
         discard parseBigInt("999999999999999999999999999999999999").toInt
 
+static:
+    for a in -7..7:
+        for b in -3..3:
+            if b != 0:
+                let x = initBigInt(a)
+                let y = initBigInt(b)
+                doAssert x div y == initBigInt(a div b)
+                doAssert x mod y == initBigInt(a mod b)
+                var q = a div b
+                var r = a mod b
+                if r != 0 and (a < 0) != (b < 0):
+                    dec q
+                    r += b
+                doAssert x // y == initBigInt(q)
+                doAssert x % y == initBigInt(r)
+    doAssert divmod(initBigInt(-7), initBigInt(3)) == (initBigInt(-3), initBigInt(2))
+    doAssert divmod(initBigInt(7), initBigInt(-3)) == (initBigInt(-3), initBigInt(-2))
+    doAssert divmod(initBigInt(-7), initBigInt(-3)) == (initBigInt(2), initBigInt(-1))
+    doAssert divmod(initBigInt(-6), initBigInt(3)) == (initBigInt(-2), initBigInt(0))
+
 proc checkSmall(a, b: int) =
     ## 組み込み整数と四則演算・比較・代入演算の結果を照合する。
     let x = initBigInt(a)
@@ -101,20 +121,31 @@ proc checkSmall(a, b: int) =
     doAssert assigned == x * y
     if b != 0:
         let (quotient, remainder) = divmod(x, y)
-        doAssert quotient == initBigInt(a div b)
-        doAssert remainder == initBigInt(a mod b)
-        doAssert x div y == quotient
-        doAssert x mod y == remainder
-        doAssert x div b == quotient
-        doAssert a div y == quotient
-        doAssert x mod b == remainder
-        doAssert a mod y == remainder
+        var expectedQ = a div b
+        var expectedR = a mod b
+        if expectedR != 0 and (a < 0) != (b < 0):
+            dec expectedQ
+            expectedR += b
+        doAssert quotient == initBigInt(expectedQ)
+        doAssert remainder == initBigInt(expectedR)
+        doAssert x // y == quotient
+        doAssert x % y == remainder
+        doAssert x // b == quotient
+        doAssert a // y == quotient
+        doAssert x % b == remainder
+        doAssert a % y == remainder
+        doAssert x div y == initBigInt(a div b)
+        doAssert x mod y == initBigInt(a mod b)
+        doAssert x div b == initBigInt(a div b)
+        doAssert a div y == initBigInt(a div b)
+        doAssert x mod b == initBigInt(a mod b)
+        doAssert a mod y == initBigInt(a mod b)
         assigned = x
         `div=`(assigned, y)
-        doAssert assigned == quotient
+        doAssert assigned == initBigInt(a div b)
         assigned = x
         `mod=`(assigned, y)
-        doAssert assigned == remainder
+        doAssert assigned == initBigInt(a mod b)
     doAssert $x == $a
     doAssert $y == $b
 
@@ -285,13 +316,18 @@ for (aText, bText, qText, rText) in divisionCases:
         for bSign in [-1, 1]:
             let a = initBigInt(aText) * aSign
             let b = initBigInt(bText) * bSign
-            let expectedQ = initBigInt(qText) * (aSign * bSign)
-            let expectedR = initBigInt(rText) * aSign
+            var expectedQ = initBigInt(qText) * (aSign * bSign)
+            var expectedR = initBigInt(rText) * aSign
+            if rText != "0" and aSign != bSign:
+                expectedQ -= 1
+                expectedR += b
             let qr = divmod(a, b)
             doAssert qr.quotient == expectedQ
             doAssert qr.remainder == expectedR
-            doAssert a div b == expectedQ
-            doAssert a mod b == expectedR
+            doAssert a // b == expectedQ
+            doAssert a % b == expectedR
+            doAssert a div b == initBigInt(qText) * (aSign * bSign)
+            doAssert a mod b == initBigInt(rText) * aSign
             doAssert qr.quotient * b + qr.remainder == a
             doAssert qr.remainder.abs < b.abs
 
@@ -301,25 +337,32 @@ proc checkLargeDivision(aText, bText, qText, rText: string, allSigns = false) =
         for bSign in (if allSigns: @[-1, 1] else: @[1]):
             let signedA = (if aSign < 0: "-" else: "") & aText
             let signedB = (if bSign < 0: "-" else: "") & bText
-            let expectedQ =
-                (if aSign != bSign and qText != "0": "-" else: "") & qText
-            let expectedR =
-                (if aSign < 0 and rText != "0": "-" else: "") & rText
             let a = initBigInt(signedA)
             let b = initBigInt(signedB)
+            var expectedQValue = initBigInt(qText) * (aSign * bSign)
+            var expectedRValue = initBigInt(rText) * aSign
+            if rText != "0" and aSign != bSign:
+                expectedQValue -= 1
+                expectedRValue += b
+            let expectedQ = $expectedQValue
+            let expectedR = $expectedRValue
             let qr = divmod(a, b)
             doAssert $qr.quotient == expectedQ
             doAssert $qr.remainder == expectedR
-            doAssert $(a div b) == expectedQ
-            doAssert $(a mod b) == expectedR
+            doAssert $(a // b) == expectedQ
+            doAssert $(a % b) == expectedR
+            let truncQ = initBigInt(qText) * (aSign * bSign)
+            let truncR = initBigInt(rText) * aSign
+            doAssert a div b == truncQ
+            doAssert a mod b == truncR
             doAssert qr.quotient * b + qr.remainder == a
             doAssert qr.remainder.abs < b.abs
             var assigned = a
             `div=`(assigned, b)
-            doAssert $assigned == expectedQ
+            doAssert assigned == truncQ
             assigned = a
             `mod=`(assigned, b)
-            doAssert $assigned == expectedR
+            doAssert assigned == truncR
             doAssert $a == signedA
             doAssert $b == signedB
 
@@ -455,6 +498,10 @@ block:
             discard value div zero
         doAssertRaises(DivByZeroDefect):
             discard value mod zero
+        doAssertRaises(DivByZeroDefect):
+            discard value // zero
+        doAssertRaises(DivByZeroDefect):
+            discard value % zero
         doAssertRaises(DivByZeroDefect):
             discard divmod(value, zero)
         var assigned = value
