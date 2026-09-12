@@ -87,6 +87,10 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
             q_left = q_left shr 1
             q_right = q_right shr 1
         return self.merge(lres, rres)
+    proc get_all*[S, F](self: LazySegmentTree[S, F]): S =
+        ## 全要素についての演算結果をO(1)で返します。空の場合は単位元を返します。
+        return self.arr[1]
+
     proc get*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]): S =
         return self.get(segment.a, segment.b+1)
     proc `[]`*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]): S = self.get(segment)

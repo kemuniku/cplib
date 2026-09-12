@@ -227,6 +227,10 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
             q_right = q_right shr 1
         return self.mergeOp(lres, rres)
 
+    proc get_all*[ST: LazySegmentTree](self: ST): ST.S =
+        ## 全要素についての演算結果をO(1)で返します。空の場合は単位元を返します。
+        return self.arr[1]
+
     proc get*[ST: LazySegmentTree](
         self: var ST, segment: HSlice[int, int]
     ): ST.S =
