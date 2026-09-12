@@ -3,6 +3,19 @@ import hashes, random, sets, strutils, tables
 import cplib/math/bigint
 
 block:
+    const large = 1234567890123456789012345678901234567890'bi
+    doAssert large is BigInt
+    doAssert $large == "1234567890123456789012345678901234567890"
+    doAssert 1'bi == initBigInt(1)
+    doAssert 0'bi == initBigInt(0)
+    doAssert (-0'bi).sgn == 0
+    doAssert -123'bi == initBigInt(-123)
+    doAssert 1_000_000_000_000_000_000_000'bi == initBigInt("1000000000000000000000")
+    doAssert (1'bi << 100) == initBigInt(2).pow(100)
+    doAssert (7'bi ^ 3'bi) == 4'bi
+    doAssert large + 1'bi == initBigInt("1234567890123456789012345678901234567891")
+
+block:
     doAssert $(-17'i8) == "-17"
     doAssert $(-17'i16) == "-17"
     doAssert $(-17'i32) == "-17"
