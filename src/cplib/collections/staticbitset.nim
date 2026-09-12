@@ -11,6 +11,10 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
     proc varshr(x:var uint,y:int) {.importcpp:"# >>= #".}
     proc varshl(x:var uint,y:int) {.importcpp:"# <<= #".}
 
+    proc len*[size](bitset: BitSet[size]): int {.inline.} =
+        ## ビット数を返します。O(1)。
+        size
+
     proc trim[size](bitset: var BitSet[size]) =
         const mod64 = size mod 64
         when mod64 != 0:
@@ -157,3 +161,49 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
             else:
                 tmp.add '0'
         return tmp.reversed().join("")
+
+    proc cmp*[size](x, y: BitSet[size]): int =
+        ## 同じ長さのビット列を添字0からfalse < trueで比較し、-1・0・1を返します。
+        ## 時間O(1 + N / 64)、追加メモリO(1)。最初の相違で終了します。
+        for i in 0..<x.bits.len:
+            let diff = x.bits[i] xor y.bits[i]
+            if diff != 0:
+                return if x.bits[i].testBit(diff.countTrailingZeroBits()): 1 else: -1
+
+    proc lexLess*[size](x, y: BitSet[size]): bool {.inline.} =
+        ## 添字0からfalse < trueの辞書順で小さいかを返します。時間O(1 + N / 64)、追加メモリO(1)。
+        cmp(x, y) < 0
+
+    proc `<`*[size](x, y: BitSet[size]): bool {.inline.} =
+        ## 添字0からfalse < trueの辞書順で小さいかを返します。時間O(1 + N / 64)、追加メモリO(1)。
+        cmp(x, y) < 0
+
+    proc `<=`*[size](x, y: BitSet[size]): bool {.inline.} =
+        ## 添字0からfalse < trueの辞書順で以下かを返します。時間O(1 + N / 64)、追加メモリO(1)。
+        cmp(x, y) <= 0
+
+    proc all*[size](x: BitSet[size]): bool =
+        ## 有効な全ビットが1かを返します。0を見つけたら終了し、長さ0ではtrueを返します。
+        ## 最悪時間O(1 + N / 64)、追加メモリO(1)。
+        let fullWords = size shr 6
+        for i in 0..<fullWords:
+            if x.bits[i] != high(uint):
+                return false
+        let remaining = size and 63
+        if remaining != 0:
+            let mask = (1u shl remaining) - 1
+            return (x.bits[fullWords] and mask) == mask
+        true
+
+    proc any*[size](x: BitSet[size]): bool =
+        ## 有効なビットに1があるかを返します。1を見つけたら終了し、長さ0ではfalseを返します。
+        ## 最悪時間O(1 + N / 64)、追加メモリO(1)。
+        let fullWords = size shr 6
+        for i in 0..<fullWords:
+            if x.bits[i] != 0:
+                return true
+        let remaining = size and 63
+        if remaining != 0:
+            let mask = (1u shl remaining) - 1
+            return (x.bits[fullWords] and mask) != 0
+        false
