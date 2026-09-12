@@ -73,8 +73,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/grid_to_graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/grid_to_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/grid_to_graph.nim
   isVerificationFile: true

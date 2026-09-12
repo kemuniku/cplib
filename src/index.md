@@ -403,6 +403,9 @@ data:
       path: cplib/math/float128.nim
       title: cplib/math/float128.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/floor_sum.nim
+      title: cplib/math/floor_sum.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/fractions.nim
       title: cplib/math/fractions.nim
     - icon: ':heavy_check_mark:'
@@ -1278,6 +1281,9 @@ data:
       path: verify/AI/float128_test.nim
       title: verify/AI/float128_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/floor_sum_test.nim
+      title: verify/AI/floor_sum_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/flow_test.nim
       title: verify/AI/flow_test.nim
     - icon: ':heavy_check_mark:'
@@ -2146,6 +2152,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/factorize_yosupo_test.nim
       title: verify/math/factorize_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/floor_sum_yosupo_test.nim
+      title: verify/math/floor_sum_yosupo_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/fractions_unit_test.nim
       title: verify/math/fractions_unit_test.nim

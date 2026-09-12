@@ -534,25 +534,25 @@ data:
     \ = next\n                width = width shr 1\n            result[i] = value\n\
     \            counts.removeFactoradicValue(value)\n"
   dependsOn:
+  - cplib/math/isqrt.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/bigint.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/bigint.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/math/factoradic.nim

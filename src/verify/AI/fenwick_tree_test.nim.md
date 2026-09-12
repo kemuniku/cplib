@@ -86,8 +86,8 @@ data:
     \ 0)\n    expectAssertion: discard wide.get(1, 0)\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/fenwick.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/fenwick.nim
   - cplib/collections/fenwick.nim
   isVerificationFile: true
   path: verify/AI/fenwick_tree_test.nim

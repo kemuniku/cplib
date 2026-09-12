@@ -88,27 +88,27 @@ data:
     \ initBigInt(input(string))\n    let (quotient, remainder) = divmod(a, b)\n  \
     \  print(quotient, remainder)\n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
+  - cplib/math/isqrt.nim
+  - cplib/tmpl/fastio.nim
   - cplib/math/inner_math.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/bigint.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/math/bigint.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/math/isprime.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/division_of_big_integers_test.nim

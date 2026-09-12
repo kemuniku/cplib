@@ -63,11 +63,11 @@ data:
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: verify/modint/montgomery/abc277g_dynamic_test_.nim
   requiredBy: []

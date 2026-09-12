@@ -65,8 +65,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim

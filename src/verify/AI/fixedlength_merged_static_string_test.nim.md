@@ -66,13 +66,13 @@ data:
     assert cmp(integerMergedWithEmptyRanges, integerMergedWithTrailingEmpty) == 0\n"
   dependsOn:
   - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/AI/fixedlength_merged_static_string_test.nim
   requiredBy: []
