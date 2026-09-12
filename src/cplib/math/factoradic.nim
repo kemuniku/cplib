@@ -1,5 +1,5 @@
 ## 符号付き階乗進数。digits[i] は絶対値の i! の係数で、0 <= digits[i] <= i。
-## div・mod は Python と同じ床除算で、余りは除数と同符号。
+## div・mod は Nim と同じ 0 方向への除算、//・%・divmod は Python と同じ床除算。
 ## 順列は 0..<N の並べ替え、辞書順の順位は 0 始まりで扱う。
 ## 使用例: permutationRank(@[2, 0, 1]).toInt() == 4、
 ## initFactoradic(4).toPermutation(3) == @[2, 0, 1]。
@@ -187,15 +187,8 @@ when not declared CPLIB_MATH_FACTORADIC:
         """.}
         (quotient, remainder)
 
-    proc factoradicSignedRemainder(remainder, modulus: uint64,
-            negativeDividend, negativeDivisor: bool): int =
-        ## 絶対値の余りを Python と同じ除数と同符号の余りに補正する。O(1)。
-        if remainder == 0: return 0
-        let magnitude = if negativeDividend != negativeDivisor: modulus - remainder else: remainder
-        if negativeDivisor: -int(magnitude) else: int(magnitude)
-
     proc `mod`*(self: Factoradic, modulus: int): int =
-        ## Python と同じ余りを int で返す。O(桁数+1) 時間・O(1) 領域。0 除算は DivByZeroDefect。
+        ## Nim と同じ被除数と同符号の余りを int で返す。O(桁数+1) 時間・O(1) 領域。0 除算は DivByZeroDefect。
         if modulus == 0:
             raise newException(DivByZeroDefect, "階乗進数の 0 除算")
         let magnitude = factoradicIntMagnitude(modulus)
@@ -203,7 +196,12 @@ when not declared CPLIB_MATH_FACTORADIC:
         for i in countdown(self.data.high, 1):
             remainder = factoradicMulAddDivmod(remainder, uint64(i + 1),
                 uint64(self.data[i]), magnitude).remainder
-        factoradicSignedRemainder(remainder, magnitude, self.negative, modulus < 0)
+        if self.negative: -int(remainder) else: int(remainder)
+
+    proc `%`*(self: Factoradic, modulus: int): int =
+        ## Python と同じ除数と同符号の余りを int で返す。O(桁数+1) 時間・O(1) 領域。
+        let remainder = self mod modulus
+        if remainder != 0 and self.negative != (modulus < 0): remainder + modulus else: remainder
 
     proc factoradicBlockValue(digits: seq[int], first, last: int): tuple[value, product: BigInt] =
         ## 各区間の値と基数の積を計算し、下位の値 + 基数の積 * 上位の値で結合する。
@@ -396,6 +394,9 @@ when not declared CPLIB_MATH_FACTORADIC:
     proc `*`*(a: Factoradic, b: int): Factoradic
         ## 整数との線形時間の乗算を前方宣言する。
 
+    proc divmodTrunc(a: Factoradic, b: int): tuple[quotient: Factoradic, remainder: int]
+        ## 整数との 0 方向への除算を前方宣言する。
+
     proc divmod*(a: Factoradic, b: int): tuple[quotient: Factoradic, remainder: int]
         ## 整数との線形時間の除算を前方宣言する。
 
@@ -425,6 +426,28 @@ when not declared CPLIB_MATH_FACTORADIC:
         result.remainder = initFactoradic(division.remainder)
 
     proc `div`*(a, b: Factoradic): Factoradic =
+        ## Nim と同じ 0 方向に丸めた商を返す。0 除算は DivByZeroDefect。
+        if b.data.len == 0:
+            raise newException(DivByZeroDefect, "階乗進数の 0 除算")
+        if low(int) <= b and b <= high(int): return divmodTrunc(a, b.toInt()).quotient
+        let order = factoradicCmpAbs(a, b)
+        if order < 0:
+            return
+        if order == 0: return initFactoradic(if a.negative != b.negative: -1 else: 1)
+        initFactoradic(a.toBigInt() div b.toBigInt())
+
+    proc `mod`*(a, b: Factoradic): Factoradic =
+        ## Nim と同じ被除数と同符号の余りを返す。0 除算は DivByZeroDefect。
+        if b.data.len == 0:
+            raise newException(DivByZeroDefect, "階乗進数の 0 除算")
+        if low(int) <= b and b <= high(int): return initFactoradic(a mod b.toInt())
+        let order = factoradicCmpAbs(a, b)
+        if order < 0:
+            return a
+        if order == 0: return
+        initFactoradic(a.toBigInt() mod b.toBigInt())
+
+    proc `//`*(a, b: Factoradic): Factoradic =
         ## Python と同じ床除算の商を返す。0 除算は DivByZeroDefect。
         if b.data.len == 0:
             raise newException(DivByZeroDefect, "階乗進数の 0 除算")
@@ -433,19 +456,19 @@ when not declared CPLIB_MATH_FACTORADIC:
         if order < 0:
             return initFactoradic(if a.data.len > 0 and a.negative != b.negative: -1 else: 0)
         if order == 0: return initFactoradic(if a.negative != b.negative: -1 else: 1)
-        initFactoradic(a.toBigInt() div b.toBigInt())
+        initFactoradic(a.toBigInt() // b.toBigInt())
 
-    proc `mod`*(a, b: Factoradic): Factoradic =
+    proc `%`*(a, b: Factoradic): Factoradic =
         ## Python と同じ除数と同符号の余りを返す。0 除算は DivByZeroDefect。
         if b.data.len == 0:
             raise newException(DivByZeroDefect, "階乗進数の 0 除算")
-        if low(int) <= b and b <= high(int): return initFactoradic(a mod b.toInt())
+        if low(int) <= b and b <= high(int): return initFactoradic(a % b.toInt())
         let order = factoradicCmpAbs(a, b)
         if order < 0:
             if a.data.len > 0 and a.negative != b.negative: return a + b
             return a
         if order == 0: return
-        initFactoradic(a.toBigInt() mod b.toBigInt())
+        initFactoradic(a.toBigInt() % b.toBigInt())
 
     proc `*=`*(a: var Factoradic, b: Factoradic) =
         ## 階乗進数を掛けて代入する。
@@ -479,8 +502,8 @@ when not declared CPLIB_MATH_FACTORADIC:
         ## 符号付き整数に階乗進数を掛ける。O(結果の桁数+1)。
         b * a
 
-    proc divmod*(a: Factoradic, b: int): tuple[quotient: Factoradic, remainder: int] =
-        ## Python と同じ商と int の余りを O(入力の桁数+1) 時間・領域で返す。0 除算は DivByZeroDefect。
+    proc divmodTrunc(a: Factoradic, b: int): tuple[quotient: Factoradic, remainder: int] =
+        ## Nim と同じ商と int の余りを O(入力の桁数+1) 時間・領域で返す。0 除算は DivByZeroDefect。
         if b == 0:
             raise newException(DivByZeroDefect, "階乗進数の 0 除算")
         result.quotient.data = newSeq[int](a.data.len)
@@ -492,23 +515,41 @@ when not declared CPLIB_MATH_FACTORADIC:
             remainder = division.remainder
         result.quotient.normalize()
         if a.negative != (b < 0):
-            if remainder != 0: result.quotient += 1
             result.quotient = -result.quotient
-        result.remainder = factoradicSignedRemainder(remainder, magnitude, a.negative, b < 0)
+        result.remainder = if a.negative: -int(remainder) else: int(remainder)
+
+    proc divmod*(a: Factoradic, b: int): tuple[quotient: Factoradic, remainder: int] =
+        ## Python と同じ商と int の余りを O(入力の桁数+1) 時間・領域で返す。0 除算は DivByZeroDefect。
+        result = divmodTrunc(a, b)
+        if result.remainder != 0 and a.negative != (b < 0):
+            result.quotient -= 1
+            result.remainder += b
 
     proc divmod*(a: int, b: Factoradic): tuple[quotient, remainder: Factoradic] =
         ## 整数を階乗進数で床除算する。異符号の余りの構築には O(b の桁数) が必要。0 除算は DivByZeroDefect。
         divmod(initFactoradic(a), b)
 
     proc `div`*(a: Factoradic, b: int): Factoradic =
-        ## 整数で床除算した商を O(入力の桁数+1) 時間・領域で返す。0 除算は DivByZeroDefect。
-        divmod(a, b).quotient
+        ## 整数で割って 0 方向に丸めた商を O(入力の桁数+1) 時間・領域で返す。0 除算は DivByZeroDefect。
+        divmodTrunc(a, b).quotient
 
     proc `div`*(a: int, b: Factoradic): Factoradic =
-        ## 整数を階乗進数で床除算した商を返す。O(a の階乗進数の桁数+1)。0 除算は DivByZeroDefect。
+        ## 整数を階乗進数で割って 0 方向に丸めた商を返す。O(a の階乗進数の桁数+1)。0 除算は DivByZeroDefect。
         initFactoradic(a) div b
 
     proc `mod`*(a: int, b: Factoradic): Factoradic =
+        ## 整数を階乗進数で割った余りを返す。Nim と同じ被除数と同符号。0 除算は DivByZeroDefect。
+        initFactoradic(a) mod b
+
+    proc `//`*(a: Factoradic, b: int): Factoradic =
+        ## 整数で床除算した商を O(入力の桁数+1) 時間・領域で返す。0 除算は DivByZeroDefect。
+        divmod(a, b).quotient
+
+    proc `//`*(a: int, b: Factoradic): Factoradic =
+        ## 整数を階乗進数で床除算した商を返す。O(a の階乗進数の桁数+1)。0 除算は DivByZeroDefect。
+        initFactoradic(a) // b
+
+    proc `%`*(a: int, b: Factoradic): Factoradic =
         ## 整数を階乗進数で割った余りを返す。異符号の場合は O(b の桁数)。0 除算は DivByZeroDefect。
         divmod(a, b).remainder
 
@@ -517,7 +558,7 @@ when not declared CPLIB_MATH_FACTORADIC:
         a = a * b
 
     proc `div=`*(a: var Factoradic, b: int) =
-        ## 整数で床除算した商を代入する。0 除算は DivByZeroDefect。
+        ## 整数で割って 0 方向に丸めた商を代入する。0 除算は DivByZeroDefect。
         a = a div b
 
     proc `mod=`*(a: var Factoradic, b: int) =

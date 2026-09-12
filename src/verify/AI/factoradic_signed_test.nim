@@ -46,12 +46,18 @@ for a in -50..50:
         if r != 0 and (a < 0) != (b < 0):
             dec q
             r += b
-        doAssert x div y == q
-        doAssert x mod y == r
-        doAssert x div b == q
-        doAssert x mod b == r
-        doAssert a div y == q
-        doAssert a mod y == r
+        doAssert x // y == q
+        doAssert x div y == a div b
+        doAssert x % y == r
+        doAssert x mod y == a mod b
+        doAssert x // b == q
+        doAssert x div b == a div b
+        doAssert x % b == r
+        doAssert x mod b == a mod b
+        doAssert a // y == q
+        doAssert a div y == a div b
+        doAssert a % y == r
+        doAssert a mod y == a mod b
         let division = divmod(x, y)
         doAssert division.quotient == q
         doAssert division.remainder == r
@@ -61,16 +67,16 @@ for a in -50..50:
         doAssert divmod(a, y).remainder == r
         assigned = x
         `div=`(assigned, y)
-        doAssert assigned == q
+        doAssert assigned == a div b
         assigned = x
         `mod=`(assigned, y)
-        doAssert assigned == r
+        doAssert assigned == a mod b
         assigned = x
         `div=`(assigned, b)
-        doAssert assigned == q
+        doAssert assigned == a div b
         assigned = x
         `mod=`(assigned, b)
-        doAssert assigned == r
+        doAssert assigned == a mod b
     var factorial = 1
     for k in 0..8:
         if k > 0: factorial *= k
@@ -106,12 +112,18 @@ for a in [low(int), low(int) + 1, -7, -1, 0, 1, 7, high(int)]:
         let y = initFactoradic(b)
         let expected = divmod(initBigInt(a), initBigInt(b))
         doAssert (x * b).toBigInt() == initBigInt(a) * initBigInt(b)
-        doAssert (x div b).toBigInt() == expected.quotient
-        doAssert initBigInt(x mod b) == expected.remainder
-        doAssert (x div y).toBigInt() == expected.quotient
-        doAssert (x mod y).toBigInt() == expected.remainder
-        doAssert (a div y).toBigInt() == expected.quotient
-        doAssert (a mod y).toBigInt() == expected.remainder
+        doAssert (x // b).toBigInt() == expected.quotient
+        doAssert (x div b).toBigInt() == initBigInt(a) div initBigInt(b)
+        doAssert initBigInt(x % b) == expected.remainder
+        doAssert initBigInt(x mod b) == initBigInt(a) mod initBigInt(b)
+        doAssert (x // y).toBigInt() == expected.quotient
+        doAssert (x div y).toBigInt() == initBigInt(a) div initBigInt(b)
+        doAssert (x % y).toBigInt() == expected.remainder
+        doAssert (x mod y).toBigInt() == initBigInt(a) mod initBigInt(b)
+        doAssert (a // y).toBigInt() == expected.quotient
+        doAssert (a div y).toBigInt() == initBigInt(a) div initBigInt(b)
+        doAssert (a % y).toBigInt() == expected.remainder
+        doAssert (a mod y).toBigInt() == initBigInt(a) mod initBigInt(b)
 
 block:
     let large = factorialFactoradic(2048) + 123
@@ -122,8 +134,18 @@ block:
             doAssert division.quotient * b + division.remainder == a
             doAssert abs(division.remainder) < abs(b)
             doAssert division.remainder == 0 or division.remainder.sgn == b.sgn
-            doAssert a div b == division.quotient
-            doAssert a mod b == division.remainder
+            doAssert a // b == division.quotient
+            doAssert a % b == division.remainder
+            let truncQ = a.toBigInt() div b.toBigInt()
+            let truncR = a.toBigInt() mod b.toBigInt()
+            doAssert (a div b).toBigInt() == truncQ
+            doAssert (a mod b).toBigInt() == truncR
+            var assigned = a
+            `div=`(assigned, b)
+            doAssert assigned.toBigInt() == truncQ
+            assigned = a
+            `mod=`(assigned, b)
+            doAssert assigned.toBigInt() == truncR
             doAssert initFactoradic(a.toBigInt()) == a
             doAssert (a * b).toBigInt() == a.toBigInt() * b.toBigInt()
     doAssert (-large).modFactorial(2048) == factorialFactoradic(2048) - 123
@@ -131,16 +153,20 @@ block:
     for value in [1, 7, high(int), low(int)]:
         let division = divmod(-large, value)
         doAssert division.quotient * value + division.remainder == -large
-        doAssert division.remainder == (-large) mod value
+        doAssert division.remainder == (-large) % value
 
 block:
     let value = factorialFactoradic(100_000) - 1
     doAssert ((-value) * low(int)) div low(int) == -value
     doAssert ((-value) * initFactoradic(low(int))) div initFactoradic(low(int)) == -value
-    doAssert -1 div value == -1
-    doAssert -1 mod value == value - 1
-    doAssert 1 div (-value) == -1
-    doAssert 1 mod (-value) == 1 - value
+    doAssert -1 // value == -1
+    doAssert -1 % value == value - 1
+    doAssert 1 // (-value) == -1
+    doAssert 1 % (-value) == 1 - value
+    doAssert -1 div value == 0
+    doAssert -1 mod value == -1
+    doAssert 1 div (-value) == 0
+    doAssert 1 mod (-value) == 1
     doAssert (-value) mod value == 0
     var copied = -value
     var absolute = abs(copied)
@@ -169,5 +195,11 @@ for value in [-factorialFactoradic(100), initFactoradic(-1), zero]:
     doAssertRaises(DivByZeroDefect): discard divmod(value, zero)
     doAssertRaises(DivByZeroDefect): discard value div zero
     doAssertRaises(DivByZeroDefect): discard value mod zero
+    doAssertRaises(DivByZeroDefect): discard value // 0
+    doAssertRaises(DivByZeroDefect): discard value % 0
+    doAssertRaises(DivByZeroDefect): discard value // zero
+    doAssertRaises(DivByZeroDefect): discard value % zero
+    doAssertRaises(DivByZeroDefect): discard 1 // zero
+    doAssertRaises(DivByZeroDefect): discard 1 % zero
 
 echo "Hello World"

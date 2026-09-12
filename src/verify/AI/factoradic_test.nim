@@ -417,8 +417,10 @@ block:
         doAssert x div -1 == -x
         doAssert divmod(x, -1).quotient == -x
         if x != 0:
-            doAssert -1 div x == -1
-            doAssert -1 mod x == x - 1
+            doAssert -1 // x == -1
+            doAssert -1 % x == x - 1
+            doAssert -1 div x == (if x == 1: -1 else: 0)
+            doAssert -1 mod x == (if x == 1: 0 else: -1)
             doAssert divmod(-1, x).remainder == x - 1
         var value = x
         expectZeroDivision: `div=`(value, 0)
