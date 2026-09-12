@@ -34,6 +34,15 @@ data:
       path: cplib/collections/bitvector.nim
       title: cplib/collections/bitvector.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/convex_hull_trick.nim
+      title: cplib/collections/convex_hull_trick.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/convex_hull_trick_monotone.nim
+      title: cplib/collections/convex_hull_trick_monotone.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/convex_hull_trick_monotone_slope.nim
+      title: cplib/collections/convex_hull_trick_monotone_slope.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/defaultdict.nim
       title: cplib/collections/defaultdict.nim
     - icon: ':heavy_check_mark:'
@@ -182,6 +191,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/private/bitset_avx2_impl.nim
       title: cplib/collections/private/bitset_avx2_impl.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/private/convex_hull_trick_impl.nim
+      title: cplib/collections/private/convex_hull_trick_impl.nim
   - name: cplib/convolution
     pages:
     - icon: ':heavy_check_mark:'
@@ -599,6 +611,9 @@ data:
       title: cplib/tree/private/link_cut_tree_base.nim
   - name: cplib/utils
     pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/area_of_union_of_rectangles.nim
+      title: cplib/utils/area_of_union_of_rectangles.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
@@ -1640,6 +1655,12 @@ data:
       path: verify/collections/binary_trie_test.nim
       title: verify/collections/binary_trie_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/convex_hull_trick_line_add_get_min_test.nim
+      title: verify/collections/convex_hull_trick_line_add_get_min_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/convex_hull_trick_test.nim
+      title: verify/collections/convex_hull_trick_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/fenwick_tree_avx2_test.nim
       title: verify/collections/fenwick_tree_avx2_test.nim
     - icon: ':heavy_check_mark:'
@@ -2476,6 +2497,9 @@ data:
       title: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - name: verify/utils
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/area_of_union_of_rectangles_test.nim
+      title: verify/utils/area_of_union_of_rectangles_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_float_test.nim
       title: verify/utils/binary_search_float_test.nim

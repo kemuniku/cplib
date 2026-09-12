@@ -91,9 +91,9 @@ data:
 
     '
   dependsOn:
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/reverse_edge_test.nim

@@ -54,9 +54,9 @@ data:
     \ = modint\nDynamicModInt.setMod(1_000_000_007)\ncheck[DynamicModInt]()\n"
   dependsOn:
   - cplib/math/combination.nim
+  - cplib/math/combination.nim
   - cplib/math/combination_prefix_sum.nim
   - cplib/utils/mo.nim
-  - cplib/math/combination.nim
   - cplib/math/combination_prefix_sum.nim
   - cplib/utils/mo.nim
   isVerificationFile: true

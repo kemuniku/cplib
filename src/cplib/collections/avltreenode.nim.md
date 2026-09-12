@@ -9,6 +9,12 @@ data:
     path: cplib/collections/avlset.nim
     title: cplib/collections/avlset.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/convex_hull_trick.nim
+    title: cplib/collections/convex_hull_trick.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/convex_hull_trick.nim
+    title: cplib/collections/convex_hull_trick.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rangeset.nim
     title: cplib/collections/rangeset.nim
   - icon: ':heavy_check_mark:'
@@ -171,6 +177,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/avlset/set/ordered_set_test.nim
     title: verify/collections/avlset/set/ordered_set_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/convex_hull_trick_line_add_get_min_test.nim
+    title: verify/collections/convex_hull_trick_line_add_get_min_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/convex_hull_trick_line_add_get_min_test.nim
+    title: verify/collections/convex_hull_trick_line_add_get_min_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/convex_hull_trick_test.nim
+    title: verify/collections/convex_hull_trick_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/convex_hull_trick_test.nim
+    title: verify/collections/convex_hull_trick_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -308,6 +326,8 @@ data:
   - verify/collections/avlset/multiset/index_right_test_.nim
   - cplib/utils/grid_searcher.nim
   - cplib/utils/grid_searcher.nim
+  - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/convex_hull_trick.nim
   - cplib/collections/rangeset.nim
   - cplib/collections/rangeset.nim
   - cplib/collections/avlset.nim
@@ -315,6 +335,10 @@ data:
   timestamp: '2025-04-27 19:08:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
+  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
+  - verify/collections/convex_hull_trick_test.nim
+  - verify/collections/convex_hull_trick_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
   - verify/collections/avlset/avlset_empty_string_test.nim

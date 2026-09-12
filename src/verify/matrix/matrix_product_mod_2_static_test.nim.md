@@ -42,12 +42,12 @@ data:
     \    B.setRowBits(i, stdin.readLine())\n\nvar C = A * B\n\nfor i in 0..<N:\n \
     \   stdout.writeLine C.rowBits(i, K)\n"
   dependsOn:
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_product_mod_2_static_test.nim
   requiredBy: []

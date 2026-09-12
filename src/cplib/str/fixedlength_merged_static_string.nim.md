@@ -142,12 +142,12 @@ data:
     \       result &= \" \"\n                    first = false\n                 \
     \   result &= $S.base.S[j]\n"
   dependsOn:
-  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
   requiredBy:

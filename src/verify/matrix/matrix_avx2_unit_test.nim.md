@@ -283,21 +283,21 @@ data:
     checkShapes()\ncheckDynamicModulus()\necho \"Hello World\"\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/modint.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_unit_test.nim
   requiredBy: []

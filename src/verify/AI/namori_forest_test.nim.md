@@ -94,12 +94,12 @@ data:
 
     '
   dependsOn:
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

@@ -61,15 +61,15 @@ data:
   dependsOn:
   - cplib/graph/dijkstra.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/restore_dijkstra_test.nim

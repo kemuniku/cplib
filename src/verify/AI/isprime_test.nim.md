@@ -54,9 +54,9 @@ data:
 
     '
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim

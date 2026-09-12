@@ -61,14 +61,14 @@ data:
   dependsOn:
   - cplib/modint/barrett_impl.nim
   - cplib/collections/dualsegtree.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/collections/dualsegtree.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/collections/dualsegtree/rangeaffinepointget_test.nim
   requiredBy: []
