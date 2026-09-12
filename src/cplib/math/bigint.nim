@@ -619,7 +619,7 @@ when not declared CPLIB_MATH_BIGINT:
             result.quotient.sign *= x.sign * y.sign
             result.remainder.sign *= x.sign
 
-    proc divmod*(x, y: BigInt): tuple[quotient, remainder: BigInt] =
+    proc divmodTrunc(x, y: BigInt): tuple[quotient, remainder: BigInt] =
         ## 0 方向に丸めた商と被除数と同符号の余りを返し、0 除算には DivByZeroDefect を送出する。
         when nimvm:
             result = divmodSchoolbook(x, y)
@@ -635,12 +635,27 @@ when not declared CPLIB_MATH_BIGINT:
                         return divmodNewton(x, y)
             result = divmodSchoolbook(x, y)
 
+    proc divmod*(x, y: BigInt): tuple[quotient, remainder: BigInt] =
+        ## Python と同じ床除算の商と除数と同符号の余りを返す。0 除算は DivByZeroDefect。
+        result = divmodTrunc(x, y)
+        if not result.remainder.isZero and x.sign != y.sign:
+            result.quotient = result.quotient - initBigInt(1)
+            result.remainder = result.remainder + y
+
     proc `div`*(x, y: BigInt): BigInt =
-        ## 0 方向に丸めた商を返す。
-        divmod(x, y).quotient
+        ## Nim と同じく 0 方向に丸めた商を返す。
+        divmodTrunc(x, y).quotient
 
     proc `mod`*(x, y: BigInt): BigInt =
-        ## 被除数と同符号の余りを返す。
+        ## Nim と同じく被除数と同符号の余りを返す。
+        divmodTrunc(x, y).remainder
+
+    proc `//`*(x, y: BigInt): BigInt =
+        ## Python と同じく負の無限大方向に丸めた商を返す。
+        divmod(x, y).quotient
+
+    proc `%`*(x, y: BigInt): BigInt =
+        ## Python と同じく除数と同符号の余りを返す。
         divmod(x, y).remainder
 
     proc `+=`*(x: var BigInt, y: BigInt) =
