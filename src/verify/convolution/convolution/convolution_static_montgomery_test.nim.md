@@ -98,24 +98,24 @@ data:
 
     '
   dependsOn:
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/inner_math.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: true
   path: verify/convolution/convolution/convolution_static_montgomery_test.nim
   requiredBy: []

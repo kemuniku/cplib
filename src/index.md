@@ -308,8 +308,14 @@ data:
       path: cplib/graph/grid_to_graph.nim
       title: cplib/graph/grid_to_graph.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/hopcroft_karp.nim
+      title: cplib/graph/hopcroft_karp.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/kruskal.nim
       title: cplib/graph/kruskal.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/maxflow.nim
+      title: cplib/graph/maxflow.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/maxk_dijkstra.nim
       title: cplib/graph/maxk_dijkstra.nim
@@ -317,11 +323,17 @@ data:
       path: cplib/graph/merge_tree.nim
       title: cplib/graph/merge_tree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/mincostflow.nim
+      title: cplib/graph/mincostflow.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/namori_forest.nim
       title: cplib/graph/namori_forest.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/namori_graph.nim
       title: cplib/graph/namori_graph.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/push_relabel.nim
+      title: cplib/graph/push_relabel.nim
     - icon: ':warning:'
       path: cplib/graph/range_edge_graph.nim
       title: cplib/graph/range_edge_graph.nim
@@ -1239,6 +1251,9 @@ data:
       path: verify/AI/float128_test.nim
       title: verify/AI/float128_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/flow_test.nim
+      title: verify/AI/flow_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/fps_test.nim
       title: verify/AI/fps_test.nim
     - icon: ':heavy_check_mark:'
@@ -1286,6 +1301,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/heavylightdecomposition_test.nim
       title: verify/AI/heavylightdecomposition_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/hopcroft_karp_test.nim
+      title: verify/AI/hopcroft_karp_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/imos2d_test.nim
       title: verify/AI/imos2d_test.nim
@@ -1448,6 +1466,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/prufer_test.nim
       title: verify/AI/prufer_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/push_relabel_test.nim
+      title: verify/AI/push_relabel_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/qcfium_test.nim
       title: verify/AI/qcfium_test.nim
@@ -1995,8 +2016,26 @@ data:
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/graph/hopcroft_karp_test.nim
+      title: verify/graph/hopcroft_karp_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/maxflow_bipartitematching_test.nim
+      title: verify/graph/maxflow_bipartitematching_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/maxflow_test.nim
+      title: verify/graph/maxflow_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/mincostflow_test.nim
+      title: verify/graph/mincostflow_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/namori_incycle_test.nim
       title: verify/graph/namori_incycle_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/push_relabel_bipartitematching_test.nim
+      title: verify/graph/push_relabel_bipartitematching_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/push_relabel_test.nim
+      title: verify/graph/push_relabel_test.nim
   - name: verify/graph/static
     pages:
     - icon: ':heavy_check_mark:'

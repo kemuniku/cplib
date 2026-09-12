@@ -41,12 +41,12 @@ data:
     \ i in 0..<n:\n    let s = stdin.readLine\n    for j in 0..<m: a[i, j] = s[j]\
     \ == '1'\necho a.rank\n"
   dependsOn:
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/matrix_mod2.nim
+  - cplib/matrix/matrix_mod2.nim
   isVerificationFile: true
   path: verify/matrix/matrix_rank_mod_2_test.nim
   requiredBy: []

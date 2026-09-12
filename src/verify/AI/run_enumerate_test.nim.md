@@ -51,8 +51,8 @@ data:
   dependsOn:
   - cplib/str/run_enumerate.nim
   - cplib/str/zalgorithm.nim
-  - cplib/str/run_enumerate.nim
   - cplib/str/zalgorithm.nim
+  - cplib/str/run_enumerate.nim
   isVerificationFile: true
   path: verify/AI/run_enumerate_test.nim
   requiredBy: []

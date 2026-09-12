@@ -64,6 +64,24 @@ data:
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/hopcroft_karp_test.nim
+    title: verify/graph/hopcroft_karp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/hopcroft_karp_test.nim
+    title: verify/graph/hopcroft_karp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/maxflow_bipartitematching_test.nim
+    title: verify/graph/maxflow_bipartitematching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/maxflow_bipartitematching_test.nim
+    title: verify/graph/maxflow_bipartitematching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/push_relabel_bipartitematching_test.nim
+    title: verify/graph/push_relabel_bipartitematching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/push_relabel_bipartitematching_test.nim
+    title: verify/graph/push_relabel_bipartitematching_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -768,10 +786,16 @@ data:
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/hopcroft_karp_test.nim
+  - verify/graph/hopcroft_karp_test.nim
+  - verify/graph/maxflow_bipartitematching_test.nim
+  - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/push_relabel_bipartitematching_test.nim
+  - verify/graph/push_relabel_bipartitematching_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/fastio_test.nim

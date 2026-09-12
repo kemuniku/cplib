@@ -90,10 +90,10 @@ data:
 
     '
   dependsOn:
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: true
   path: verify/AI/matrix_test.nim
   requiredBy: []
