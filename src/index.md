@@ -397,6 +397,9 @@ data:
       path: cplib/math/ext_gcd.nim
       title: cplib/math/ext_gcd.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/factoradic.nim
+      title: cplib/math/factoradic.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/float128.nim
       title: cplib/math/float128.nim
     - icon: ':heavy_check_mark:'
@@ -1253,6 +1256,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/ext_gcd_test.nim
       title: verify/AI/ext_gcd_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/factoradic_signed_test.nim
+      title: verify/AI/factoradic_signed_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/factoradic_test.nim
+      title: verify/AI/factoradic_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/fastio_test.nim
       title: verify/AI/fastio_test.nim

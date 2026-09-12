@@ -81,18 +81,18 @@ data:
   dependsOn:
   - cplib/str/static_string.nim
   - cplib/tmpl/sheep.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/str/suffix_array.nim
   - cplib/tmpl/sheep.nim
-  - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
+  - cplib/utils/constants.nim
   - cplib/str/merged_static_string.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/str/merged_static_string.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []

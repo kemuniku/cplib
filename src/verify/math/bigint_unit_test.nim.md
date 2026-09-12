@@ -107,6 +107,17 @@ data:
     \ (initBigInt(high(int)) + 1).toInt\n    doAssertRaises(OverflowDefect):\n   \
     \     discard (initBigInt(low(int)) - 1).toInt\n    doAssertRaises(OverflowDefect):\n\
     \        discard parseBigInt(\"999999999999999999999999999999999999\").toInt\n\
+    \nstatic:\n    for a in -7..7:\n        for b in -3..3:\n            if b != 0:\n\
+    \                let x = initBigInt(a)\n                let y = initBigInt(b)\n\
+    \                doAssert x div y == initBigInt(a div b)\n                doAssert\
+    \ x mod y == initBigInt(a mod b)\n                var q = a div b\n          \
+    \      var r = a mod b\n                if r != 0 and (a < 0) != (b < 0):\n  \
+    \                  dec q\n                    r += b\n                doAssert\
+    \ x // y == initBigInt(q)\n                doAssert x % y == initBigInt(r)\n \
+    \   doAssert divmod(initBigInt(-7), initBigInt(3)) == (initBigInt(-3), initBigInt(2))\n\
+    \    doAssert divmod(initBigInt(7), initBigInt(-3)) == (initBigInt(-3), initBigInt(-2))\n\
+    \    doAssert divmod(initBigInt(-7), initBigInt(-3)) == (initBigInt(2), initBigInt(-1))\n\
+    \    doAssert divmod(initBigInt(-6), initBigInt(3)) == (initBigInt(-2), initBigInt(0))\n\
     \nproc checkSmall(a, b: int) =\n    ## \u7D44\u307F\u8FBC\u307F\u6574\u6570\u3068\
     \u56DB\u5247\u6F14\u7B97\u30FB\u6BD4\u8F03\u30FB\u4EE3\u5165\u6F14\u7B97\u306E\
     \u7D50\u679C\u3092\u7167\u5408\u3059\u308B\u3002\n    let x = initBigInt(a)\n\
@@ -128,15 +139,21 @@ data:
     \ assigned = x\n    assigned += y\n    doAssert assigned == x + y\n    assigned\
     \ = x\n    assigned -= y\n    doAssert assigned == x - y\n    assigned = x\n \
     \   assigned *= y\n    doAssert assigned == x * y\n    if b != 0:\n        let\
-    \ (quotient, remainder) = divmod(x, y)\n        doAssert quotient == initBigInt(a\
-    \ div b)\n        doAssert remainder == initBigInt(a mod b)\n        doAssert\
-    \ x div y == quotient\n        doAssert x mod y == remainder\n        doAssert\
-    \ x div b == quotient\n        doAssert a div y == quotient\n        doAssert\
-    \ x mod b == remainder\n        doAssert a mod y == remainder\n        assigned\
-    \ = x\n        `div=`(assigned, y)\n        doAssert assigned == quotient\n  \
+    \ (quotient, remainder) = divmod(x, y)\n        var expectedQ = a div b\n    \
+    \    var expectedR = a mod b\n        if expectedR != 0 and (a < 0) != (b < 0):\n\
+    \            dec expectedQ\n            expectedR += b\n        doAssert quotient\
+    \ == initBigInt(expectedQ)\n        doAssert remainder == initBigInt(expectedR)\n\
+    \        doAssert x // y == quotient\n        doAssert x % y == remainder\n  \
+    \      doAssert x // b == quotient\n        doAssert a // y == quotient\n    \
+    \    doAssert x % b == remainder\n        doAssert a % y == remainder\n      \
+    \  doAssert x div y == initBigInt(a div b)\n        doAssert x mod y == initBigInt(a\
+    \ mod b)\n        doAssert x div b == initBigInt(a div b)\n        doAssert a\
+    \ div y == initBigInt(a div b)\n        doAssert x mod b == initBigInt(a mod b)\n\
+    \        doAssert a mod y == initBigInt(a mod b)\n        assigned = x\n     \
+    \   `div=`(assigned, y)\n        doAssert assigned == initBigInt(a div b)\n  \
     \      assigned = x\n        `mod=`(assigned, y)\n        doAssert assigned ==\
-    \ remainder\n    doAssert $x == $a\n    doAssert $y == $b\n\nfor a in -12..12:\n\
-    \    for b in -12..12:\n        checkSmall(a, b)\nvar rng = initRand(20260908)\n\
+    \ initBigInt(a mod b)\n    doAssert $x == $a\n    doAssert $y == $b\n\nfor a in\
+    \ -12..12:\n    for b in -12..12:\n        checkSmall(a, b)\nvar rng = initRand(20260908)\n\
     for _ in 0..<2000:\n    checkSmall(rng.rand(-30000..30000), rng.rand(-30000..30000))\n\
     \nblock:\n    let a = initBigInt(\"123456789012345678901234567890\")\n    let\
     \ b = initBigInt(\"98765432109876543210\")\n    doAssert $(a + b) == \"123456789111111111011111111100\"\
@@ -259,39 +276,46 @@ data:
     , \"1195684987638574867\")]\n\nfor (aText, bText, qText, rText) in divisionCases:\n\
     \    for aSign in [-1, 1]:\n        for bSign in [-1, 1]:\n            let a =\
     \ initBigInt(aText) * aSign\n            let b = initBigInt(bText) * bSign\n \
-    \           let expectedQ = initBigInt(qText) * (aSign * bSign)\n            let\
-    \ expectedR = initBigInt(rText) * aSign\n            let qr = divmod(a, b)\n \
-    \           doAssert qr.quotient == expectedQ\n            doAssert qr.remainder\
-    \ == expectedR\n            doAssert a div b == expectedQ\n            doAssert\
-    \ a mod b == expectedR\n            doAssert qr.quotient * b + qr.remainder ==\
-    \ a\n            doAssert qr.remainder.abs < b.abs\n\nproc checkLargeDivision(aText,\
-    \ bText, qText, rText: string, allSigns = false) =\n    ## \u65E2\u77E5\u306E\u5546\
-    \u3068\u4F59\u308A\u3092\u4F7F\u3044\u3001\u5927\u6574\u6570\u306E\u9664\u7B97\
-    \u30FB\u5270\u4F59\u30FB\u4EE3\u5165\u6F14\u7B97\u3068\u5165\u529B\u5024\u306E\
-    \u4FDD\u6301\u3092\u78BA\u8A8D\u3059\u308B\u3002\n    for aSign in (if allSigns:\
-    \ @[-1, 1] else: @[1]):\n        for bSign in (if allSigns: @[-1, 1] else: @[1]):\n\
+    \           var expectedQ = initBigInt(qText) * (aSign * bSign)\n            var\
+    \ expectedR = initBigInt(rText) * aSign\n            if rText != \"0\" and aSign\
+    \ != bSign:\n                expectedQ -= 1\n                expectedR += b\n\
+    \            let qr = divmod(a, b)\n            doAssert qr.quotient == expectedQ\n\
+    \            doAssert qr.remainder == expectedR\n            doAssert a // b ==\
+    \ expectedQ\n            doAssert a % b == expectedR\n            doAssert a div\
+    \ b == initBigInt(qText) * (aSign * bSign)\n            doAssert a mod b == initBigInt(rText)\
+    \ * aSign\n            doAssert qr.quotient * b + qr.remainder == a\n        \
+    \    doAssert qr.remainder.abs < b.abs\n\nproc checkLargeDivision(aText, bText,\
+    \ qText, rText: string, allSigns = false) =\n    ## \u65E2\u77E5\u306E\u5546\u3068\
+    \u4F59\u308A\u3092\u4F7F\u3044\u3001\u5927\u6574\u6570\u306E\u9664\u7B97\u30FB\
+    \u5270\u4F59\u30FB\u4EE3\u5165\u6F14\u7B97\u3068\u5165\u529B\u5024\u306E\u4FDD\
+    \u6301\u3092\u78BA\u8A8D\u3059\u308B\u3002\n    for aSign in (if allSigns: @[-1,\
+    \ 1] else: @[1]):\n        for bSign in (if allSigns: @[-1, 1] else: @[1]):\n\
     \            let signedA = (if aSign < 0: \"-\" else: \"\") & aText\n        \
-    \    let signedB = (if bSign < 0: \"-\" else: \"\") & bText\n            let expectedQ\
-    \ =\n                (if aSign != bSign and qText != \"0\": \"-\" else: \"\")\
-    \ & qText\n            let expectedR =\n                (if aSign < 0 and rText\
-    \ != \"0\": \"-\" else: \"\") & rText\n            let a = initBigInt(signedA)\n\
-    \            let b = initBigInt(signedB)\n            let qr = divmod(a, b)\n\
-    \            doAssert $qr.quotient == expectedQ\n            doAssert $qr.remainder\
-    \ == expectedR\n            doAssert $(a div b) == expectedQ\n            doAssert\
-    \ $(a mod b) == expectedR\n            doAssert qr.quotient * b + qr.remainder\
-    \ == a\n            doAssert qr.remainder.abs < b.abs\n            var assigned\
-    \ = a\n            `div=`(assigned, b)\n            doAssert $assigned == expectedQ\n\
-    \            assigned = a\n            `mod=`(assigned, b)\n            doAssert\
-    \ $assigned == expectedR\n            doAssert $a == signedA\n            doAssert\
-    \ $b == signedB\n\nblock:\n    doAssert decimalSum(\"0\", \"0\") == \"0\"\n  \
-    \  doAssert decimalSum(\"999\", \"1\") == \"1000\"\n    doAssert decimalSum(\"\
-    12\", \"345\") == \"357\"\n    doAssert decimalPredecessor(\"1\") == \"0\"\n \
-    \   doAssert decimalPredecessor(\"1000\") == \"999\"\n    doAssert decimalPredecessor(\"\
-    12345\") == \"12344\"\n    var divisionRng = initRand(20260910)\n    for leadingLimb\
-    \ in [\"1\", \"500000000\", \"999999999\"]:\n        let bText = leadingLimb &\
-    \ divisionRng.randomDecimal(9 * 1280)\n        let qText = divisionRng.randomDecimal(9\
-    \ * 1283 - 5)\n        let product = decimalProduct(qText, bText)\n        for\
-    \ rText in [\"0\", \"1\", decimalPredecessor(bText),\n                divisionRng.randomDecimal(bText.len\
+    \    let signedB = (if bSign < 0: \"-\" else: \"\") & bText\n            let a\
+    \ = initBigInt(signedA)\n            let b = initBigInt(signedB)\n           \
+    \ var expectedQValue = initBigInt(qText) * (aSign * bSign)\n            var expectedRValue\
+    \ = initBigInt(rText) * aSign\n            if rText != \"0\" and aSign != bSign:\n\
+    \                expectedQValue -= 1\n                expectedRValue += b\n  \
+    \          let expectedQ = $expectedQValue\n            let expectedR = $expectedRValue\n\
+    \            let qr = divmod(a, b)\n            doAssert $qr.quotient == expectedQ\n\
+    \            doAssert $qr.remainder == expectedR\n            doAssert $(a //\
+    \ b) == expectedQ\n            doAssert $(a % b) == expectedR\n            let\
+    \ truncQ = initBigInt(qText) * (aSign * bSign)\n            let truncR = initBigInt(rText)\
+    \ * aSign\n            doAssert a div b == truncQ\n            doAssert a mod\
+    \ b == truncR\n            doAssert qr.quotient * b + qr.remainder == a\n    \
+    \        doAssert qr.remainder.abs < b.abs\n            var assigned = a\n   \
+    \         `div=`(assigned, b)\n            doAssert assigned == truncQ\n     \
+    \       assigned = a\n            `mod=`(assigned, b)\n            doAssert assigned\
+    \ == truncR\n            doAssert $a == signedA\n            doAssert $b == signedB\n\
+    \nblock:\n    doAssert decimalSum(\"0\", \"0\") == \"0\"\n    doAssert decimalSum(\"\
+    999\", \"1\") == \"1000\"\n    doAssert decimalSum(\"12\", \"345\") == \"357\"\
+    \n    doAssert decimalPredecessor(\"1\") == \"0\"\n    doAssert decimalPredecessor(\"\
+    1000\") == \"999\"\n    doAssert decimalPredecessor(\"12345\") == \"12344\"\n\
+    \    var divisionRng = initRand(20260910)\n    for leadingLimb in [\"1\", \"500000000\"\
+    , \"999999999\"]:\n        let bText = leadingLimb & divisionRng.randomDecimal(9\
+    \ * 1280)\n        let qText = divisionRng.randomDecimal(9 * 1283 - 5)\n     \
+    \   let product = decimalProduct(qText, bText)\n        for rText in [\"0\", \"\
+    1\", decimalPredecessor(bText),\n                divisionRng.randomDecimal(bText.len\
     \ - 1)]:\n            checkLargeDivision(decimalSum(product, rText), bText, qText,\
     \ rText,\n                allSigns = leadingLimb == \"1\")\n\nblock:\n    const\
     \ length = 9 * 1281\n    const dividend = initBigInt(\"1\" & repeat('0', 2 * length))\n\
@@ -356,6 +380,8 @@ data:
     \ initBigInt(\"123456789012345678901234567890\")]:\n        doAssertRaises(DivByZeroDefect):\n\
     \            discard value div zero\n        doAssertRaises(DivByZeroDefect):\n\
     \            discard value mod zero\n        doAssertRaises(DivByZeroDefect):\n\
+    \            discard value // zero\n        doAssertRaises(DivByZeroDefect):\n\
+    \            discard value % zero\n        doAssertRaises(DivByZeroDefect):\n\
     \            discard divmod(value, zero)\n        var assigned = value\n     \
     \   doAssertRaises(DivByZeroDefect):\n            `div=`(assigned, zero)\n   \
     \     doAssert assigned == value\n        doAssertRaises(DivByZeroDefect):\n \
@@ -368,30 +394,30 @@ data:
     )] = 7\n    doAssert counts[initBigInt(\"+12345678901234567890\")] == 7\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
-  - cplib/math/powmod.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/math/bigint.nim
   - cplib/math/inner_math.nim
-  - cplib/math/bigint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/powmod.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/bigint.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/bigint_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 11:13:22+09:00'
+  timestamp: '2026-09-12 14:57:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/bigint_unit_test.nim

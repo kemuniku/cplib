@@ -42,8 +42,8 @@ data:
     \ stdin.readLine)\nlet c = a * b\nfor i in 0..<n:\n    echo c.rowBits(i)\n"
   dependsOn:
   - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim

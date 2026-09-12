@@ -117,6 +117,12 @@ data:
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
   - icon: ':heavy_check_mark:'
@@ -303,6 +309,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
@@ -804,6 +822,8 @@ data:
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
+  - cplib/math/factoradic.nim
+  - cplib/math/factoradic.nim
   - cplib/math/many_factorials.nim
   - cplib/math/many_factorials.nim
   - cplib/math/bigint.nim
@@ -957,6 +977,8 @@ data:
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
   - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_test.nim
@@ -967,6 +989,8 @@ data:
   - verify/AI/many_factorials_test.nim
   - verify/AI/modint_test.nim
   - verify/AI/modint_test.nim
+  - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_signed_test.nim
   - verify/AI/ntt_test.nim
   - verify/AI/ntt_test.nim
   - verify/AI/montgomery_impl_test.nim

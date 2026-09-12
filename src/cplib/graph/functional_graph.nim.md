@@ -185,8 +185,8 @@ data:
     \        return functional_graph.cycle_depth[cid][residue].upperBound(k)\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim

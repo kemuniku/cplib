@@ -117,6 +117,12 @@ data:
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
   - icon: ':heavy_check_mark:'
@@ -195,6 +201,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/divisor_test.nim
     title: verify/AI/divisor_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
@@ -489,10 +507,10 @@ data:
     \             if t == N1:\n                        break test\n              \
     \  return false\n        return true\n"
   dependsOn:
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/isprime.nim
   requiredBy:
@@ -504,6 +522,8 @@ data:
   - verify/math/factorize_tuple_abc324b_test_.nim
   - verify/math/divisor_many_atcoder_test_.nim
   - verify/math/divisor_many_atcoder_test_.nim
+  - cplib/math/factoradic.nim
+  - cplib/math/factoradic.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
   - cplib/math/many_factorials.nim
@@ -635,6 +655,8 @@ data:
   - verify/AI/primefactor_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/divisor_test.nim
@@ -645,6 +667,8 @@ data:
   - verify/AI/many_factorials_test.nim
   - verify/AI/primitive_root_test.nim
   - verify/AI/primitive_root_test.nim
+  - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_signed_test.nim
   - verify/AI/isprime_test.nim
   - verify/AI/isprime_test.nim
   - verify/AI/bmbm_test.nim

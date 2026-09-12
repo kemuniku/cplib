@@ -55,8 +55,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
@@ -466,93 +484,111 @@ data:
     \ cut),\n                    inverse, m - cut, precision)\n                result\
     \ = correctDivision(dividend, divisor, quotient)\n            result.quotient.sign\
     \ *= x.sign * y.sign\n            result.remainder.sign *= x.sign\n\n    proc\
-    \ divmod*(x, y: BigInt): tuple[quotient, remainder: BigInt] =\n        ## 0 \u65B9\
-    \u5411\u306B\u4E38\u3081\u305F\u5546\u3068\u88AB\u9664\u6570\u3068\u540C\u7B26\
-    \u53F7\u306E\u4F59\u308A\u3092\u8FD4\u3057\u30010 \u9664\u7B97\u306B\u306F DivByZeroDefect\
-    \ \u3092\u9001\u51FA\u3059\u308B\u3002\n        when nimvm:\n            result\
-    \ = divmodSchoolbook(x, y)\n        else:\n            when defined(cpp) and defined(amd64):\n\
-    \                let n = x.digits.len\n                let m = y.digits.len\n\
-    \                if min(m, n - m) > BigIntNewtonThreshold:\n                 \
-    \   # \u30D6\u30ED\u30C3\u30AF\u9664\u7B97\u3067\u306F\u3001\u88AB\u9664\u6570\
-    \u306E\u5168\u9577\u306B\u3088\u3089\u305A\u9664\u6570\u306E\u6841\u6570\u3067\
-    \u5909\u63DB\u9577\u3092\u6291\u3048\u3089\u308C\u308B\u3002\n               \
-    \     let productSize = if n > 2 * m: 2 * m + 8\n                        else:\
-    \ max(n + 1, 2 * min(m, n - m + 2) + 8)\n                    if productSize <=\
-    \ (BigIntNttMaxLength * 5) div 9:\n                        return divmodNewton(x,\
-    \ y)\n            result = divmodSchoolbook(x, y)\n\n    proc `div`*(x, y: BigInt):\
-    \ BigInt =\n        ## 0 \u65B9\u5411\u306B\u4E38\u3081\u305F\u5546\u3092\u8FD4\
-    \u3059\u3002\n        divmod(x, y).quotient\n\n    proc `mod`*(x, y: BigInt):\
-    \ BigInt =\n        ## \u88AB\u9664\u6570\u3068\u540C\u7B26\u53F7\u306E\u4F59\u308A\
-    \u3092\u8FD4\u3059\u3002\n        divmod(x, y).remainder\n\n    proc `+=`*(x:\
-    \ var BigInt, y: BigInt) =\n        ## \u53F3\u8FBA\u3092\u52A0\u3048\u308B\u3002\
-    \n        x = x + y\n\n    proc `-=`*(x: var BigInt, y: BigInt) =\n        ##\
-    \ \u53F3\u8FBA\u3092\u5F15\u304F\u3002\n        x = x - y\n\n    proc `*=`*(x:\
-    \ var BigInt, y: BigInt) =\n        ## \u53F3\u8FBA\u3092\u639B\u3051\u308B\u3002\
-    \n        x = x * y\n\n    proc `div=`*(x: var BigInt, y: BigInt) =\n        ##\
-    \ \u53F3\u8FBA\u3067\u5272\u3063\u305F\u5546\u3092\u4EE3\u5165\u3059\u308B\u3002\
-    \n        x = x div y\n\n    proc `mod=`*(x: var BigInt, y: BigInt) =\n      \
-    \  ## \u53F3\u8FBA\u3067\u5272\u3063\u305F\u4F59\u308A\u3092\u4EE3\u5165\u3059\
-    \u308B\u3002\n        x = x mod y\n\n    proc pow*(x: BigInt, exponent: int):\
-    \ BigInt =\n        ## \u975E\u8CA0\u6574\u6570\u4E57\u3092\u7E70\u308A\u8FD4\u3057\
-    \u4E8C\u4E57\u6CD5\u3067\u6C42\u3081\u3001\u8CA0\u306E\u6307\u6570\u306B\u306F\
-    \ ValueError \u3092\u9001\u51FA\u3059\u308B\u30020^0 \u306F 1\u3002\n        if\
-    \ exponent < 0:\n            raise newException(ValueError, \"\u591A\u500D\u9577\
-    \u6574\u6570\u306E\u6307\u6570\u306F\u975E\u8CA0\u6574\u6570\u3067\u6307\u5B9A\
-    \u3057\u3066\u304F\u3060\u3055\u3044\")\n        result = initBigInt(1)\n    \
-    \    var base = x\n        var n = exponent\n        while n > 0:\n          \
-    \  if (n and 1) != 0:\n                result *= base\n            n = n shr 1\n\
-    \            if n > 0:\n                base *= base\n\n    proc gcd*(x, y: BigInt):\
-    \ BigInt =\n        ## \u975E\u8CA0\u306E\u6700\u5927\u516C\u7D04\u6570\u3092\u8FD4\
-    \u3059\u3002gcd(0, 0) \u306F 0\u3002\n        result = abs(x)\n        var y =\
-    \ abs(y)\n        while not y.isZero:\n            let remainder = result mod\
-    \ y\n            result = y\n            y = remainder\n\n    proc lcm*(x, y:\
-    \ BigInt): BigInt =\n        ## \u975E\u8CA0\u306E\u6700\u5C0F\u516C\u500D\u6570\
-    \u3092\u8FD4\u3059\u3002\u3044\u305A\u308C\u304B\u304C 0 \u306A\u3089 0\u3002\n\
-    \        if x.isZero or y.isZero:\n            return\n        abs((x div gcd(x,\
-    \ y)) * y)\n\n    proc toInt*(x: BigInt): int =\n        ## int \u306B\u5909\u63DB\
-    \u3057\u3001\u7BC4\u56F2\u5916\u306A\u3089 OverflowDefect \u3092\u9001\u51FA\u3059\
-    \u308B\u3002\n        let limit = uint64(high(int)) + uint64(ord(x.sign < 0))\n\
-    \        var magnitude = 0'u64\n        for i in countdown(x.digits.len - 1, 0):\n\
-    \            let digit = uint64(x.digits[i])\n            if magnitude > limit\
-    \ div BigIntBase or\n                    (magnitude == limit div BigIntBase and\
-    \ digit > limit mod BigIntBase):\n                raise newException(OverflowDefect,\
-    \ \"\u591A\u500D\u9577\u6574\u6570\u304C int \u306E\u7BC4\u56F2\u5916\u3067\u3059\
-    \")\n            magnitude = magnitude * BigIntBase + digit\n        if x.sign\
-    \ < 0:\n            if magnitude == uint64(high(int)) + 1'u64:\n             \
-    \   return low(int)\n            return -int(magnitude)\n        int(magnitude)\n\
-    \n    proc hash*(x: BigInt): Hash =\n        ## \u591A\u500D\u9577\u6574\u6570\
-    \u306E\u30CF\u30C3\u30B7\u30E5\u5024\u3092\u8FD4\u3059\u3002\n        result =\
-    \ hashes.hash(x.sign)\n        for digit in x.digits:\n            result = result\
-    \ !& hashes.hash(digit)\n        result = !$result\n"
+    \ divmodTrunc(x, y: BigInt): tuple[quotient, remainder: BigInt] =\n        ##\
+    \ 0 \u65B9\u5411\u306B\u4E38\u3081\u305F\u5546\u3068\u88AB\u9664\u6570\u3068\u540C\
+    \u7B26\u53F7\u306E\u4F59\u308A\u3092\u8FD4\u3057\u30010 \u9664\u7B97\u306B\u306F\
+    \ DivByZeroDefect \u3092\u9001\u51FA\u3059\u308B\u3002\n        when nimvm:\n\
+    \            result = divmodSchoolbook(x, y)\n        else:\n            when\
+    \ defined(cpp) and defined(amd64):\n                let n = x.digits.len\n   \
+    \             let m = y.digits.len\n                if min(m, n - m) > BigIntNewtonThreshold:\n\
+    \                    # \u30D6\u30ED\u30C3\u30AF\u9664\u7B97\u3067\u306F\u3001\u88AB\
+    \u9664\u6570\u306E\u5168\u9577\u306B\u3088\u3089\u305A\u9664\u6570\u306E\u6841\
+    \u6570\u3067\u5909\u63DB\u9577\u3092\u6291\u3048\u3089\u308C\u308B\u3002\n   \
+    \                 let productSize = if n > 2 * m: 2 * m + 8\n                \
+    \        else: max(n + 1, 2 * min(m, n - m + 2) + 8)\n                    if productSize\
+    \ <= (BigIntNttMaxLength * 5) div 9:\n                        return divmodNewton(x,\
+    \ y)\n            result = divmodSchoolbook(x, y)\n\n    proc divmod*(x, y: BigInt):\
+    \ tuple[quotient, remainder: BigInt] =\n        ## Python \u3068\u540C\u3058\u5E8A\
+    \u9664\u7B97\u306E\u5546\u3068\u9664\u6570\u3068\u540C\u7B26\u53F7\u306E\u4F59\
+    \u308A\u3092\u8FD4\u3059\u30020 \u9664\u7B97\u306F DivByZeroDefect\u3002\n   \
+    \     result = divmodTrunc(x, y)\n        if not result.remainder.isZero and x.sign\
+    \ != y.sign:\n            result.quotient = result.quotient - initBigInt(1)\n\
+    \            result.remainder = result.remainder + y\n\n    proc `div`*(x, y:\
+    \ BigInt): BigInt =\n        ## Nim \u3068\u540C\u3058\u304F 0 \u65B9\u5411\u306B\
+    \u4E38\u3081\u305F\u5546\u3092\u8FD4\u3059\u3002\n        divmodTrunc(x, y).quotient\n\
+    \n    proc `mod`*(x, y: BigInt): BigInt =\n        ## Nim \u3068\u540C\u3058\u304F\
+    \u88AB\u9664\u6570\u3068\u540C\u7B26\u53F7\u306E\u4F59\u308A\u3092\u8FD4\u3059\
+    \u3002\n        divmodTrunc(x, y).remainder\n\n    proc `//`*(x, y: BigInt): BigInt\
+    \ =\n        ## Python \u3068\u540C\u3058\u304F\u8CA0\u306E\u7121\u9650\u5927\u65B9\
+    \u5411\u306B\u4E38\u3081\u305F\u5546\u3092\u8FD4\u3059\u3002\n        divmod(x,\
+    \ y).quotient\n\n    proc `%`*(x, y: BigInt): BigInt =\n        ## Python \u3068\
+    \u540C\u3058\u304F\u9664\u6570\u3068\u540C\u7B26\u53F7\u306E\u4F59\u308A\u3092\
+    \u8FD4\u3059\u3002\n        divmod(x, y).remainder\n\n    proc `+=`*(x: var BigInt,\
+    \ y: BigInt) =\n        ## \u53F3\u8FBA\u3092\u52A0\u3048\u308B\u3002\n      \
+    \  x = x + y\n\n    proc `-=`*(x: var BigInt, y: BigInt) =\n        ## \u53F3\u8FBA\
+    \u3092\u5F15\u304F\u3002\n        x = x - y\n\n    proc `*=`*(x: var BigInt, y:\
+    \ BigInt) =\n        ## \u53F3\u8FBA\u3092\u639B\u3051\u308B\u3002\n        x\
+    \ = x * y\n\n    proc `div=`*(x: var BigInt, y: BigInt) =\n        ## \u53F3\u8FBA\
+    \u3067\u5272\u3063\u305F\u5546\u3092\u4EE3\u5165\u3059\u308B\u3002\n        x\
+    \ = x div y\n\n    proc `mod=`*(x: var BigInt, y: BigInt) =\n        ## \u53F3\
+    \u8FBA\u3067\u5272\u3063\u305F\u4F59\u308A\u3092\u4EE3\u5165\u3059\u308B\u3002\
+    \n        x = x mod y\n\n    proc pow*(x: BigInt, exponent: int): BigInt =\n \
+    \       ## \u975E\u8CA0\u6574\u6570\u4E57\u3092\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\
+    \u6CD5\u3067\u6C42\u3081\u3001\u8CA0\u306E\u6307\u6570\u306B\u306F ValueError\
+    \ \u3092\u9001\u51FA\u3059\u308B\u30020^0 \u306F 1\u3002\n        if exponent\
+    \ < 0:\n            raise newException(ValueError, \"\u591A\u500D\u9577\u6574\u6570\
+    \u306E\u6307\u6570\u306F\u975E\u8CA0\u6574\u6570\u3067\u6307\u5B9A\u3057\u3066\
+    \u304F\u3060\u3055\u3044\")\n        result = initBigInt(1)\n        var base\
+    \ = x\n        var n = exponent\n        while n > 0:\n            if (n and 1)\
+    \ != 0:\n                result *= base\n            n = n shr 1\n           \
+    \ if n > 0:\n                base *= base\n\n    proc gcd*(x, y: BigInt): BigInt\
+    \ =\n        ## \u975E\u8CA0\u306E\u6700\u5927\u516C\u7D04\u6570\u3092\u8FD4\u3059\
+    \u3002gcd(0, 0) \u306F 0\u3002\n        result = abs(x)\n        var y = abs(y)\n\
+    \        while not y.isZero:\n            let remainder = result mod y\n     \
+    \       result = y\n            y = remainder\n\n    proc lcm*(x, y: BigInt):\
+    \ BigInt =\n        ## \u975E\u8CA0\u306E\u6700\u5C0F\u516C\u500D\u6570\u3092\u8FD4\
+    \u3059\u3002\u3044\u305A\u308C\u304B\u304C 0 \u306A\u3089 0\u3002\n        if\
+    \ x.isZero or y.isZero:\n            return\n        abs((x div gcd(x, y)) * y)\n\
+    \n    proc toInt*(x: BigInt): int =\n        ## int \u306B\u5909\u63DB\u3057\u3001\
+    \u7BC4\u56F2\u5916\u306A\u3089 OverflowDefect \u3092\u9001\u51FA\u3059\u308B\u3002\
+    \n        let limit = uint64(high(int)) + uint64(ord(x.sign < 0))\n        var\
+    \ magnitude = 0'u64\n        for i in countdown(x.digits.len - 1, 0):\n      \
+    \      let digit = uint64(x.digits[i])\n            if magnitude > limit div BigIntBase\
+    \ or\n                    (magnitude == limit div BigIntBase and digit > limit\
+    \ mod BigIntBase):\n                raise newException(OverflowDefect, \"\u591A\
+    \u500D\u9577\u6574\u6570\u304C int \u306E\u7BC4\u56F2\u5916\u3067\u3059\")\n \
+    \           magnitude = magnitude * BigIntBase + digit\n        if x.sign < 0:\n\
+    \            if magnitude == uint64(high(int)) + 1'u64:\n                return\
+    \ low(int)\n            return -int(magnitude)\n        int(magnitude)\n\n   \
+    \ proc hash*(x: BigInt): Hash =\n        ## \u591A\u500D\u9577\u6574\u6570\u306E\
+    \u30CF\u30C3\u30B7\u30E5\u5024\u3092\u8FD4\u3059\u3002\n        result = hashes.hash(x.sign)\n\
+    \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
+    \        result = !$result\n"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
-  - cplib/math/powmod.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/powmod.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
-  requiredBy: []
-  timestamp: '2026-09-08 11:13:22+09:00'
+  requiredBy:
+  - cplib/math/factoradic.nim
+  - cplib/math/factoradic.nim
+  timestamp: '2026-09-12 14:57:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_signed_test.nim
 documentation_of: cplib/math/bigint.nim
 layout: document
 redirect_from:

@@ -440,9 +440,9 @@ data:
     \       if not changed: break\n"
   dependsOn:
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []

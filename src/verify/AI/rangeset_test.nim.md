@@ -81,11 +81,11 @@ data:
 
     '
   dependsOn:
+  - cplib/collections/avlset.nim
+  - cplib/collections/rangeset.nim
+  - cplib/collections/avlset.nim
+  - cplib/collections/rangeset.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/rangeset.nim
-  - cplib/collections/rangeset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/AI/rangeset_test.nim

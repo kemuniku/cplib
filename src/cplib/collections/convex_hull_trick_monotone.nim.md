@@ -62,9 +62,9 @@ data:
     \            return chtAnswer(chtValue(self.hull.lines[^1], x))\n"
   dependsOn:
   - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick_monotone.nim
   requiredBy: []

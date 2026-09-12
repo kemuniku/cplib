@@ -141,6 +141,12 @@ data:
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/factoradic.nim
+    title: cplib/math/factoradic.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
   - icon: ':heavy_check_mark:'
@@ -171,6 +177,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_signed_test.nim
+    title: verify/AI/factoradic_signed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/factoradic_test.nim
+    title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
@@ -936,25 +954,27 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/powmod.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/powmod.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
+  - cplib/math/factoradic.nim
+  - cplib/math/factoradic.nim
   - cplib/math/many_factorials.nim
   - cplib/math/many_factorials.nim
   - cplib/math/bigint.nim
@@ -1064,12 +1084,16 @@ data:
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/many_factorials_test.nim
   - verify/AI/many_factorials_test.nim
+  - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_signed_test.nim
   - verify/AI/bmbm_test.nim
   - verify/AI/bmbm_test.nim
 documentation_of: cplib/convolution/convolution.nim
