@@ -11,8 +11,6 @@ for i in 0..<m:
     let v = ii()
     g.add_edge(u, v)
 let decomposition = initBiconnectedComponents(g)
-echo decomposition.groups.len
+print decomposition.groups.len
 for group in decomposition.groups:
-    stdout.write group.len
-    for v in group: stdout.write " ", v
-    stdout.write "\n"
+    print(group.len, *group)

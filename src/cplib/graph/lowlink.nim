@@ -18,10 +18,8 @@ when not declared CPLIB_GRAPH_LOWLINK:
         result.low = newSeq[int](n)
         result.parent = newSeqWith(n, -1)
         result.is_articulation = newSeq[bool](n)
-        var adj = newSeq[seq[int]](n)
-        for v in 0..<n:
-            for (to, cost) in g.to_and_cost(v):
-                adj[v].add(to)
+        when g is StaticGraphTypes:
+            g.static_graph_initialized_check()
         var next = newSeq[int](n)
         var children = newSeq[int](n)
         var skippedParent = newSeq[bool](n)
@@ -34,8 +32,15 @@ when not declared CPLIB_GRAPH_LOWLINK:
             stack.add(root)
             while stack.len > 0:
                 let v = stack[^1]
-                if next[v] < adj[v].len:
-                    let to = adj[v][next[v]]
+                when g is StaticGraphTypes:
+                    let degree = int(g.start[v+1] - g.start[v])
+                else:
+                    let degree = g.edges[v].len
+                if next[v] < degree:
+                    when g is StaticGraphTypes:
+                        let to = g.elist[int(g.start[v]) + next[v]][0].int
+                    else:
+                        let to = g.edges[v][next[v]][0].int
                     inc next[v]
                     if to == result.parent[v] and not skippedParent[v]:
                         skippedParent[v] = true

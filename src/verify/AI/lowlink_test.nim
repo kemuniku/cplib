@@ -77,7 +77,10 @@ proc check(n: int, edges: seq[Edge]) =
     doAssert forestEdges == 2 * bridges.len
     doAssert te.forest.len - forestEdges div 2 == components
     let bc = initBiconnectedComponents(ll)
-    doAssert bc.groups == initBiconnectedComponents(wg).groups
+    doAssert bc == initBiconnectedComponents(g)
+    doAssert bc == initBiconnectedComponents(sg)
+    doAssert bc == initBiconnectedComponents(wg)
+    doAssert bc == initBiconnectedComponents(swg)
     var valid: seq[int]
     for mask in 1..<(1 shl n):
         if countComponents(labels(n, edges, mask = mask)) != 1: continue
@@ -151,6 +154,7 @@ block:
     doAssert initTwoEdgeConnectedComponents(ll).groups.len == n
     let bc = initBiconnectedComponents(ll)
     doAssert bc.groups.len == n-1
+    doAssert bc == initBiconnectedComponents(g)
     doAssert initBlockCutTree(bc).forest.len == 2*n-3
 
 echo "Hello World"
