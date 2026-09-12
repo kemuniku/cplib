@@ -95,11 +95,11 @@ data:
     '
   dependsOn:
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
   - cplib/graph/graph.nim
-  - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/itertools.nim
   isVerificationFile: true
   path: verify/AI/itertools_test.nim
   requiredBy: []

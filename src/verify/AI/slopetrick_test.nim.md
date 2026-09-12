@@ -74,9 +74,9 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/collections/slopetrick.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/collections/slopetrick.nim
   isVerificationFile: true
   path: verify/AI/slopetrick_test.nim

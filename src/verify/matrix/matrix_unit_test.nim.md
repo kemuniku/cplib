@@ -68,9 +68,9 @@ data:
     \ == 1\n"
   dependsOn:
   - cplib/matrix/matops.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true

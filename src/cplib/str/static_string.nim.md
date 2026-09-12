@@ -233,9 +233,9 @@ data:
     \ - base.suffix_lowerbound(S)\n"
   dependsOn:
   - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:

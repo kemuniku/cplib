@@ -555,24 +555,24 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/powmod.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/powmod.nim
+  - cplib/modint/modint.nim
   - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:

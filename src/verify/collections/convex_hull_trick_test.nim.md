@@ -120,18 +120,18 @@ data:
     \       discard hull.get_min(1)\n        discard hull.get_min(0)\n\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/collections/convex_hull_trick_monotone_slope.nim
-  - cplib/math/int128.nim
-  - cplib/collections/convex_hull_trick_monotone.nim
-  - cplib/collections/convex_hull_trick.nim
-  - cplib/collections/convex_hull_trick.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/convex_hull_trick_monotone.nim
+  - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/convex_hull_trick_monotone_slope.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/avltreenode.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
+  - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
+  - cplib/collections/convex_hull_trick_monotone.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_test.nim
   requiredBy: []

@@ -104,12 +104,12 @@ data:
     \    let solution = a.solveLinearSystem(@[true,true]).get\n    doAssert solution.particular[64]\
     \ and solution.basis.len == 64\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: true

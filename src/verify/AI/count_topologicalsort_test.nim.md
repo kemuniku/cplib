@@ -65,9 +65,9 @@ data:
   - cplib/graph/topologicalsort.nim
   - cplib/graph/count_topologicalsort.nim
   - cplib/graph/graph.nim
+  - cplib/graph/count_topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/count_topologicalsort.nim
   isVerificationFile: true
   path: verify/AI/count_topologicalsort_test.nim
   requiredBy: []

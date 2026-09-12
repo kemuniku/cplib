@@ -58,14 +58,14 @@ data:
     \ solution.basis.len\n    print bits(solution.particular)\n    for vector in solution.basis:\
     \ print bits(vector)\n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/tmpl/fastio.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
-  - cplib/tmpl/fastio.nim
   - cplib/matrix/matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: false
