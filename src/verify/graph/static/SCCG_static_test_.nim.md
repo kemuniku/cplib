@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/static/SCCG_static_test_.nim
   requiredBy: []

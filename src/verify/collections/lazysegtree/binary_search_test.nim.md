@@ -37,7 +37,7 @@ data:
   isVerificationFile: true
   path: verify/collections/lazysegtree/binary_search_test.nim
   requiredBy: []
-  timestamp: '2026-09-11 02:59:49+09:00'
+  timestamp: '2026-09-12 10:02:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/binary_search_test.nim

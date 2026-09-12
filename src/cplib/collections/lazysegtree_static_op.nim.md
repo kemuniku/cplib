@@ -22,6 +22,12 @@ data:
     path: verify/collections/lazysegtree/binary_search_static_op_test.nim
     title: verify/collections/lazysegtree/binary_search_static_op_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/get_all_static_op_test.nim
+    title: verify/collections/lazysegtree/get_all_static_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/get_all_static_op_test.nim
+    title: verify/collections/lazysegtree/get_all_static_op_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
     title: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - icon: ':heavy_check_mark:'
@@ -148,34 +154,38 @@ data:
     \                q_left.inc\n            if (q_right and 1) > 0:\n           \
     \     q_right.dec\n                rres = self.mergeOp(self.arr[q_right], rres)\n\
     \            q_left = q_left shr 1\n            q_right = q_right shr 1\n    \
-    \    return self.mergeOp(lres, rres)\n\n    proc get*[ST: LazySegmentTree](\n\
-    \        self: var ST, segment: HSlice[int, int]\n    ): ST.S =\n        return\
-    \ self.get(segment.a, segment.b + 1)\n\n    proc `[]`*[ST: LazySegmentTree](\n\
-    \        self: var ST, segment: HSlice[int, int]\n    ): ST.S =\n        self.get(segment)\n\
-    \n    proc `[]=`*[ST: LazySegmentTree](self: var ST, p: Natural, val: ST.S) =\n\
-    \        self.update(p, val)\n\n    proc len*[ST: LazySegmentTree](self: var ST):\
-    \ int =\n        return self.length\n\n    proc `$`*[ST: LazySegmentTree](self:\
-    \ var ST): string =\n        return (0..<self.len).toSeq.mapIt(self[it]).join(\"\
-    \ \")\n\n    template newLazySegWith*(\n        v_or_n, merge, default, mapping,\
-    \ composition, id: untyped\n    ): untyped =\n        block:\n            type\
-    \ S = typeof(default)\n            type F = typeof(id)\n            proc staticMerge(\n\
-    \                l {.inject.}, r {.inject.}: S\n            ): S {.gensym, inline.}\
-    \ = merge\n            proc staticMapping(\n                f {.inject.}: F, x\
-    \ {.inject.}: S\n            ): S {.gensym, inline.} = mapping\n            proc\
-    \ staticComposition(\n                f {.inject.}, g {.inject.}: F\n        \
-    \    ): F {.gensym, inline.} = composition\n            LazySegmentTree[S, F,\
-    \ (staticMerge, staticMapping, staticComposition)]\n                .initLazySegmentTreeImpl(v_or_n,\
-    \ default, id)\n\n    proc apply*[ST: LazySegmentTree](\n        self: var ST,\
-    \ q_left, q_right: int, f: ST.F\n    ) =\n        ## \u534A\u958B\u533A\u9593\
-    [q_left,q_right)\u306Bf\u3092\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002\n    \
-    \    assert q_left <= q_right and 0 <= q_left and q_right <= self.length\n   \
-    \     if q_left == q_right:\n            return\n        var q_left = q_left +\
-    \ self.lastnode\n        var q_right = q_right + self.lastnode\n        self.pushBoundaries(q_left,\
-    \ q_right)\n        block:\n            var q_left = q_left\n            var q_right\
-    \ = q_right\n            while q_left < q_right:\n                if (q_left and\
-    \ 1) > 0:\n                    self.all_apply(q_left, f)\n                   \
-    \ q_left.inc\n                if (q_right and 1) > 0:\n                    q_right.dec\n\
-    \                    self.all_apply(q_right, f)\n                q_left = q_left\
+    \    return self.mergeOp(lres, rres)\n\n    proc get_all*[ST: LazySegmentTree](self:\
+    \ ST): ST.S =\n        ## \u5168\u8981\u7D20\u306B\u3064\u3044\u3066\u306E\u6F14\
+    \u7B97\u7D50\u679C\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\u7A7A\u306E\u5834\
+    \u5408\u306F\u5358\u4F4D\u5143\u3092\u8FD4\u3057\u307E\u3059\u3002\n        return\
+    \ self.arr[1]\n\n    proc get*[ST: LazySegmentTree](\n        self: var ST, segment:\
+    \ HSlice[int, int]\n    ): ST.S =\n        return self.get(segment.a, segment.b\
+    \ + 1)\n\n    proc `[]`*[ST: LazySegmentTree](\n        self: var ST, segment:\
+    \ HSlice[int, int]\n    ): ST.S =\n        self.get(segment)\n\n    proc `[]=`*[ST:\
+    \ LazySegmentTree](self: var ST, p: Natural, val: ST.S) =\n        self.update(p,\
+    \ val)\n\n    proc len*[ST: LazySegmentTree](self: var ST): int =\n        return\
+    \ self.length\n\n    proc `$`*[ST: LazySegmentTree](self: var ST): string =\n\
+    \        return (0..<self.len).toSeq.mapIt(self[it]).join(\" \")\n\n    template\
+    \ newLazySegWith*(\n        v_or_n, merge, default, mapping, composition, id:\
+    \ untyped\n    ): untyped =\n        block:\n            type S = typeof(default)\n\
+    \            type F = typeof(id)\n            proc staticMerge(\n            \
+    \    l {.inject.}, r {.inject.}: S\n            ): S {.gensym, inline.} = merge\n\
+    \            proc staticMapping(\n                f {.inject.}: F, x {.inject.}:\
+    \ S\n            ): S {.gensym, inline.} = mapping\n            proc staticComposition(\n\
+    \                f {.inject.}, g {.inject.}: F\n            ): F {.gensym, inline.}\
+    \ = composition\n            LazySegmentTree[S, F, (staticMerge, staticMapping,\
+    \ staticComposition)]\n                .initLazySegmentTreeImpl(v_or_n, default,\
+    \ id)\n\n    proc apply*[ST: LazySegmentTree](\n        self: var ST, q_left,\
+    \ q_right: int, f: ST.F\n    ) =\n        ## \u534A\u958B\u533A\u9593[q_left,q_right)\u306B\
+    f\u3092\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002\n        assert q_left <= q_right\
+    \ and 0 <= q_left and q_right <= self.length\n        if q_left == q_right:\n\
+    \            return\n        var q_left = q_left + self.lastnode\n        var\
+    \ q_right = q_right + self.lastnode\n        self.pushBoundaries(q_left, q_right)\n\
+    \        block:\n            var q_left = q_left\n            var q_right = q_right\n\
+    \            while q_left < q_right:\n                if (q_left and 1) > 0:\n\
+    \                    self.all_apply(q_left, f)\n                    q_left.inc\n\
+    \                if (q_right and 1) > 0:\n                    q_right.dec\n  \
+    \                  self.all_apply(q_right, f)\n                q_left = q_left\
     \ shr 1\n                q_right = q_right shr 1\n        self.pullBoundaries(q_left,\
     \ q_right)\n\n    proc apply*[ST: LazySegmentTree](\n        self: var ST, segment:\
     \ HSlice[int, int], f: ST.F\n    ) =\n        self.apply(segment.a, segment.b\
@@ -217,13 +227,15 @@ data:
   requiredBy:
   - cplib/collections/lazysegtree_template.nim
   - cplib/collections/lazysegtree_template.nim
-  timestamp: '2026-09-11 04:54:48+09:00'
+  timestamp: '2026-09-12 10:02:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/collections/lazysegtree/get_all_static_op_test.nim
+  - verify/collections/lazysegtree/get_all_static_op_test.nim
   - verify/collections/lazysegtree/binary_search_static_op_test.nim
   - verify/collections/lazysegtree/binary_search_static_op_test.nim
   - verify/AI/lazysegtree_template_test.nim

@@ -44,8 +44,8 @@ data:
     \ p, x)\n    else:\n        let v = ii()\n        let p = ii()\n        answers.add($tree.subtreeProd(v,\
     \ p).sum)\necho answers.join(\"\\n\")\n"
   dependsOn:
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
   isVerificationFile: true

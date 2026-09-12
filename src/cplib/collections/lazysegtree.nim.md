@@ -16,6 +16,12 @@ data:
     path: verify/collections/lazysegtree/binary_search_test.nim
     title: verify/collections/lazysegtree/binary_search_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/get_all_test.nim
+    title: verify/collections/lazysegtree/get_all_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/lazysegtree/get_all_test.nim
+    title: verify/collections/lazysegtree/get_all_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
     title: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - icon: ':heavy_check_mark:'
@@ -86,12 +92,16 @@ data:
     \ self.arr[q_left])\n                q_left.inc\n            if (q_right and 1)\
     \ > 0:\n                q_right.dec\n                rres = self.merge(self.arr[q_right],\
     \ rres)\n            q_left = q_left shr 1\n            q_right = q_right shr\
-    \ 1\n        return self.merge(lres, rres)\n    proc get*[S, F](self: var LazySegmentTree[S,\
-    \ F], segment: HSlice[int, int]): S =\n        return self.get(segment.a, segment.b+1)\n\
-    \    proc `[]`*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]):\
-    \ S = self.get(segment)\n    proc `[]=`*[S, F](self: var LazySegmentTree[S, F],\
-    \ p: Natural, val: S) = self.update(p, val)\n    proc len*[S, F](self: var LazySegmentTree[S,\
-    \ F]): int =\n        return self.length\n    proc `$`*[S, F](self: var LazySegmentTree[S,\
+    \ 1\n        return self.merge(lres, rres)\n    proc get_all*[S, F](self: LazySegmentTree[S,\
+    \ F]): S =\n        ## \u5168\u8981\u7D20\u306B\u3064\u3044\u3066\u306E\u6F14\u7B97\
+    \u7D50\u679C\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\u7A7A\u306E\u5834\u5408\
+    \u306F\u5358\u4F4D\u5143\u3092\u8FD4\u3057\u307E\u3059\u3002\n        return self.arr[1]\n\
+    \n    proc get*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]):\
+    \ S =\n        return self.get(segment.a, segment.b+1)\n    proc `[]`*[S, F](self:\
+    \ var LazySegmentTree[S, F], segment: HSlice[int, int]): S = self.get(segment)\n\
+    \    proc `[]=`*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: S) =\
+    \ self.update(p, val)\n    proc len*[S, F](self: var LazySegmentTree[S, F]): int\
+    \ =\n        return self.length\n    proc `$`*[S, F](self: var LazySegmentTree[S,\
     \ F]): string =\n        # var self = self\n        return (0..<self.len).toSeq.mapIt(self[it]).join(\"\
     \ \")\n    template newLazySegWith*(v_or_n, merge, default, mapping, composition,\
     \ id: untyped): untyped =\n        type S = typeof(default)\n        type F =\
@@ -154,9 +164,11 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree.nim
   requiredBy: []
-  timestamp: '2026-09-11 02:59:49+09:00'
+  timestamp: '2026-09-12 10:02:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/lazysegtree/get_all_test.nim
+  - verify/collections/lazysegtree/get_all_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/binary_search_test.nim

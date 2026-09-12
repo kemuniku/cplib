@@ -53,11 +53,11 @@ data:
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/kruskal.nim
-  - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/kruskal.nim
-  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/kruskal_test.nim
   requiredBy: []

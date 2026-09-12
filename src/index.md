@@ -756,6 +756,9 @@ data:
     - icon: ':warning:'
       path: verify/collections/lazysegtree/binary_search_checks.nim
       title: verify/collections/lazysegtree/binary_search_checks.nim
+    - icon: ':warning:'
+      path: verify/collections/lazysegtree/get_all_checks.nim
+      title: verify/collections/lazysegtree/get_all_checks.nim
   - name: verify/collections/ppunionfind
     pages:
     - icon: ':warning:'
@@ -1739,6 +1742,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/lazysegtree/binary_search_test.nim
       title: verify/collections/lazysegtree/binary_search_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/lazysegtree/get_all_static_op_test.nim
+      title: verify/collections/lazysegtree/get_all_static_op_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/lazysegtree/get_all_test.nim
+      title: verify/collections/lazysegtree/get_all_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
       title: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim

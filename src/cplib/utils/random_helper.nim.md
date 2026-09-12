@@ -165,14 +165,14 @@ data:
     \        result.add(s[rand(0..<len(s))])\n        return result\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/tree/prufer.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/graph/graph.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
-  - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim

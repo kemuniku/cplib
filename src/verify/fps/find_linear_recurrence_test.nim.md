@@ -77,15 +77,15 @@ data:
     '
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/fps/berlekamp_massey.nim
   isVerificationFile: true
   path: verify/fps/find_linear_recurrence_test.nim
   requiredBy: []

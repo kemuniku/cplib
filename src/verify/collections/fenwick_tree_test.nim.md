@@ -37,10 +37,10 @@ data:
     \    answers.add(bit.get(l, r))\n    if answers.len > 0:\n        print(*answers,\
     \ sep=\"\\n\")\n\nmain()\n"
   dependsOn:
-  - cplib/collections/fenwick.nim
   - cplib/tmpl/fastio.nim
   - cplib/collections/fenwick.nim
   - cplib/tmpl/fastio.nim
+  - cplib/collections/fenwick.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_test.nim
   requiredBy: []

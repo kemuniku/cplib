@@ -41,9 +41,9 @@ data:
     \        a[d] = i\n        dfs(d+1)\ndfs(0)\necho ans\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   isVerificationFile: false
   path: verify/tree/prufer_abc328e_test_.nim
   requiredBy: []
