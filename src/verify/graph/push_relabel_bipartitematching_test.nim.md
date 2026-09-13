@@ -37,14 +37,14 @@ data:
     \ dst)\nfor i in left + right..<left + right + m:\n    let e = g.get_edge(i)\n\
     \    if e.flow == 1:\n        print(e.src, e.dst - left)\n"
   dependsOn:
-  - cplib/graph/push_relabel.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/push_relabel.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/push_relabel.nim
   isVerificationFile: true
   path: verify/graph/push_relabel_bipartitematching_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 08:37:53+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/push_relabel_bipartitematching_test.nim

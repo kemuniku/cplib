@@ -34,7 +34,7 @@ data:
   isVerificationFile: true
   path: verify/tmpl/fastio_global_checksum_test.nim
   requiredBy: []
-  timestamp: '2026-09-05 05:19:50+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tmpl/fastio_global_checksum_test.nim

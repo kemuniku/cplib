@@ -147,10 +147,10 @@ data:
     \ sizeof(T) >= 4:\n            G.k_shortest_walk(s, t, k, T(INF32))\n        else:\n\
     \            G.k_shortest_walk(s, t, k, high(T))\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/k_shortest_walk.nim
   requiredBy: []

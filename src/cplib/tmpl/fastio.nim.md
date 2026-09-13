@@ -771,16 +771,19 @@ data:
     \ sep)\n\n    # Python\u98A8\u306B print(*X) \u3068\u66F8\u304F\u3068\u3001X\u3092\
     \u7A7A\u767D\u533A\u5207\u308A\u30671\u884C\u306B\u51FA\u529B\u3059\u308B\u3002\
     \n    template `*`*[T](values: openArray[T]): string =\n        fastioJoinImpl(values,\
-    \ \" \")\n\n    # \u6700\u5F8C\u306E\u6587\u5B57\u5217\u5F15\u6570\u3092sep\u3068\
-    \u8AA4\u8A8D\u3057\u306A\u3044\u3088\u3046\u3001\u540D\u524D\u4ED8\u304Dsep\u306F\
-    \u30DE\u30AF\u30ED\u3067\u51E6\u7406\u3059\u308B\u3002\n    macro print*(args:\
-    \ varargs[untyped]): untyped =\n        var sep = newLit(\" \")\n        var hasSep\
-    \ = false\n        var values: seq[NimNode]\n        for arg in args:\n      \
-    \      if arg.kind == nnkExprEqExpr and arg[0].eqIdent(\"sep\"):\n           \
-    \     if hasSep:\n                    error(\"sep can only be specified once\"\
-    , arg)\n                sep = arg[1]\n                hasSep = true\n        \
-    \    else:\n                values.add(arg)\n        var splatValues: NimNode\n\
-    \        if values.len == 1:\n            if values[0].kind == nnkPrefix and values[0][0].eqIdent(\"\
+    \ \" \")\n\n    proc fastioSeparatorString(sep: string | char): string {.inline.}\
+    \ =\n        ## print\u306E\u533A\u5207\u308A\u6587\u5B57\u3092\u6587\u5B57\u5217\
+    \u306B\u7D71\u4E00\u3059\u308B\u3002\n        $sep\n\n    # \u6700\u5F8C\u306E\
+    \u6587\u5B57\u5217\u5F15\u6570\u3092sep\u3068\u8AA4\u8A8D\u3057\u306A\u3044\u3088\
+    \u3046\u3001\u540D\u524D\u4ED8\u304Dsep\u306F\u30DE\u30AF\u30ED\u3067\u51E6\u7406\
+    \u3059\u308B\u3002\n    macro print*(args: varargs[untyped]): untyped =\n    \
+    \    var sep = newLit(\" \")\n        var hasSep = false\n        var values:\
+    \ seq[NimNode]\n        for arg in args:\n            if arg.kind == nnkExprEqExpr\
+    \ and arg[0].eqIdent(\"sep\"):\n                if hasSep:\n                 \
+    \   error(\"sep can only be specified once\", arg)\n                sep = newCall(bindSym\"\
+    fastioSeparatorString\", arg[1])\n                hasSep = true\n            else:\n\
+    \                values.add(arg)\n        var splatValues: NimNode\n        if\
+    \ values.len == 1:\n            if values[0].kind == nnkPrefix and values[0][0].eqIdent(\"\
     *\"):\n                splatValues = values[0][1]\n            elif values[0].kind\
     \ in nnkCallKinds and values[0].len == 3 and\n                    values[0][0].eqIdent(\"\
     fastioJoinImpl\"):\n                # \u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\
@@ -807,7 +810,7 @@ data:
   - verify/matrix/linear_algebra/judge_driver.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
-  timestamp: '2026-09-05 05:19:50+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/isprime_yukicoder_test.nim

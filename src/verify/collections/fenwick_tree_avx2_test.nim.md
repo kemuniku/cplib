@@ -36,14 +36,14 @@ data:
     \     if t == 0:\n            bit.add(l, r)\n        else:\n            answers.add(bit.get(l,\
     \ r))\n    if answers.len > 0:\n        print(*answers, sep=\"\\n\")\n\nmain()\n"
   dependsOn:
-  - cplib/collections/fenwick_avx2.nim
+  - cplib/tmpl/fastio.nim
   - cplib/collections/fenwick_avx2.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-09 17:07:19+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/fenwick_tree_avx2_test.nim

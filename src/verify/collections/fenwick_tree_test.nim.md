@@ -38,13 +38,13 @@ data:
     \ sep=\"\\n\")\n\nmain()\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
+  - cplib/collections/fenwick.nim
+  - cplib/collections/fenwick.nim
   - cplib/tmpl/fastio.nim
-  - cplib/collections/fenwick.nim
-  - cplib/collections/fenwick.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-09 00:04:51+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/fenwick_tree_test.nim

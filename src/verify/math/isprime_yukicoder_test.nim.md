@@ -57,22 +57,22 @@ data:
     \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
     \       echo x, \" \", 0\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/tmpl/fastio.nim
   - cplib/math/powmod.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
   - cplib/math/inner_math.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/inner_math.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2026-09-05 05:19:50+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yukicoder_test.nim

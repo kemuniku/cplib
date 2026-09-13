@@ -134,34 +134,34 @@ data:
     : run[38,38]()\n    else: run[500,500]()\nelse:\n    var a = initMatrix(n,m,Mint(0))\n\
     \    solve(a)\n"
   dependsOn:
-  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/modint/barrett_impl.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/isqrt.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/static_matrix_avx2.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/static_matrix.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/tmpl/fastio.nim
-  - cplib/matrix/static_matrix_avx2.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/judge_driver.nim
   requiredBy: []
-  timestamp: '2026-09-11 02:59:09+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/matrix/linear_algebra/judge_driver.nim

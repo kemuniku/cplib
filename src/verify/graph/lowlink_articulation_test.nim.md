@@ -40,16 +40,16 @@ data:
     \ in 0..<m:\n    let u = ii()\n    let v = ii()\n    g.add_edge(u, v)\nlet ll\
     \ = initLowLink(g)\nfor v in ll.articulation: echo v\n"
   dependsOn:
-  - cplib/graph/lowlink.nim
-  - cplib/graph/lowlink.nim
-  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: true
   path: verify/graph/lowlink_articulation_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:56:49+09:00'
+  timestamp: '2026-09-13 11:06:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/lowlink_articulation_test.nim

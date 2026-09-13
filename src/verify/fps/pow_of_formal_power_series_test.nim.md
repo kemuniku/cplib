@@ -194,56 +194,56 @@ data:
 
     '
   dependsOn:
-  - cplib/fps/product_tree.nim
-  - cplib/fps/bmbm.nim
-  - cplib/fps/bmbm.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
   - cplib/fps/power_projection.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/power_projection.nim
-  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/composition.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/fps/fps.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/powmod.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/bmbm.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/power_projection.nim
+  - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/taylor_shift.nim
   - cplib/fps/berlekamp_massey.nim
-  - cplib/fps/fps.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/composition.nim
-  - cplib/fps/composition.nim
-  - cplib/convolution/ntt.nim
-  - cplib/fps/product_tree.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/math/powmod.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/math/inv_gcd.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/ntt.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inner_math.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/fps/formal_power_series.nim
   - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   - cplib/fps/polynomial_interpolation.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/ntt.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/composition.nim
+  - cplib/fps/fps.nim
+  - cplib/fps/product_tree.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/bmbm.nim
+  - cplib/convolution/ntt.nim
   - cplib/convolution/convolution.nim
   - cplib/fps/shift_of_sampling_points.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/fps.nim
+  - cplib/fps/bostan_mori.nim
   isVerificationFile: true
   path: verify/fps/pow_of_formal_power_series_test.nim
   requiredBy: []

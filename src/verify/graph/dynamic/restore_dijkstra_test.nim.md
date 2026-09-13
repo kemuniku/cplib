@@ -59,22 +59,22 @@ data:
     \ t)\nif len(path) == 1:\n    echo -1\nelse:\n    echo cost, \" \", len(path)-1\n\
     \    for i in 0..<len(path)-1:\n        echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/tmpl/sheep.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/dijkstra.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/dynamic/restore_dijkstra_test.nim
   requiredBy: []
-  timestamp: '2026-09-05 05:19:50+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/restore_dijkstra_test.nim

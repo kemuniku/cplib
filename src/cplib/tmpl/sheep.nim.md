@@ -167,16 +167,16 @@ data:
     \ untyped) =\n        when defined(debug):\n            block:\n             \
     \   body\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-09-05 05:19:50+09:00'
+  timestamp: '2026-09-13 10:19:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/isprime_yukicoder_test.nim
