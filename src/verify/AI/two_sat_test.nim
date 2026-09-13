@@ -113,7 +113,10 @@ for trial in 0..<500:
         clauses.add((i, j, f, g))
         let a = if f: not (not p[i]) else: not p[i]
         let b = if g: not (not p[j]) else: not p[j]
-        p += a or b
+        if (step and 1) == 0:
+            p.add_clause(i, f, j, g)
+        else:
+            p += a or b
         var possible = false
         for mask in 0..<(1 shl n):
             var valid = true
@@ -166,5 +169,29 @@ block:
     doAssert not p.solve()
     doAssert not p.solve()
     doAssert $p[0] == "-"
+
+block:
+    let p = initTwoSat(2)
+    expectValueError: discard p.answer()
+    p += p[0] == true
+    p += p[1] == false
+    doAssert p.satisfiable()
+    doAssert p.answer() == @[true, false]
+    var snapshot = p.answer()
+    snapshot[0] = false
+    doAssert p[0].get()
+    doAssert p.solve() and p.satisfiable()
+    p.add_clause(0, false, 0, false)
+    expectValueError: discard p.answer()
+    doAssert not p.satisfiable()
+    doAssert not p.solve()
+    expectValueError: discard p.answer()
+    doAssert snapshot == @[false, false]
+    let empty = initTwoSat(0)
+    doAssert empty.satisfiable()
+    doAssert empty.answer().len == 0
+    let uninitialized: Problem2sat = nil
+    expectValueError: discard uninitialized.satisfiable()
+    expectValueError: discard uninitialized.answer()
 
 echo "Hello World"

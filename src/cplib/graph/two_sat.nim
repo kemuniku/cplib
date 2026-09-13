@@ -9,7 +9,7 @@ when not declared CPLIB_GRAPH_TWO_SAT:
         Problem2sat* = ref object
             clauses: seq[tuple[a, b: int]]
             evaluated: bool
-            answer: seq[bool]
+            assignment: seq[bool]
             solved: bool
         Literal2sat* = object
             problem: Problem2sat
@@ -23,13 +23,13 @@ when not declared CPLIB_GRAPH_TWO_SAT:
         ## n個の変数を持つ問題を生成する。O(n)。
         if n < 0:
             raise newException(ValueError, "変数の個数は非負である必要があります")
-        Problem2sat(answer: newSeq[bool](n))
+        Problem2sat(assignment: newSeq[bool](n))
 
     proc `[]`*(p: Problem2sat, k: int): Literal2sat =
         ## 0始まりの番号kの変数を取得する。O(1)。
         if p.isNil:
             raise newException(ValueError, "問題が初期化されていません")
-        if k < 0 or k >= p.answer.len:
+        if k < 0 or k >= p.assignment.len:
             raise newException(IndexDefect, "変数番号が範囲外です")
         Literal2sat(problem: p, vertex: 2 * k + 1)
 
@@ -104,6 +104,12 @@ when not declared CPLIB_GRAPH_TWO_SAT:
         p.solved = false
         p.evaluated = false
 
+    proc add_clause*(p: Problem2sat, i: int, f: bool, j: int, g: bool) =
+        ## (変数i == f) or (変数j == g) を追加し、以前の解を無効化する。償却O(1)。
+        let a = if f: p[i] else: not p[i]
+        let b = if g: p[j] else: not p[j]
+        p += a or b
+
     proc solve*(p: Problem2sat): bool =
         ## 全制約を解き、解が存在するか返す。O(n+m)、制約追加なしの再実行はO(1)。
         if p.isNil:
@@ -111,7 +117,7 @@ when not declared CPLIB_GRAPH_TWO_SAT:
         if p.evaluated:
             return p.solved
         p.solved = false
-        let n = p.answer.len * 2
+        let n = p.assignment.len * 2
         var offsets = newSeq[int](n + 1)
         for (a, b) in p.clauses:
             inc offsets[(a xor 1) + 1]
@@ -169,18 +175,30 @@ when not declared CPLIB_GRAPH_TWO_SAT:
                         stack.add(dst)
             inc id
         p.evaluated = true
-        for i in 0..<p.answer.len:
+        for i in 0..<p.assignment.len:
             if component[2 * i] == component[2 * i + 1]:
                 return false
-            p.answer[i] = component[2 * i] < component[2 * i + 1]
+            p.assignment[i] = component[2 * i] < component[2 * i + 1]
         p.solved = true
         return true
+
+    proc satisfiable*(p: Problem2sat): bool =
+        ## solveと同様に全制約を解く。O(n+m)、制約追加なしの再実行はO(1)。
+        p.solve()
+
+    proc answer*(p: Problem2sat): seq[bool] =
+        ## 最後に成功した求解での全変数の値をコピーして返す。O(n)。
+        if p.isNil or not p.solved:
+            raise newException(ValueError, "solveまたはsatisfiableが成功した後に解を取得してください")
+        result = newSeq[bool](p.assignment.len)
+        for i in 0..<p.assignment.len:
+            result[i] = p.assignment[i]
 
     proc get*(a: Literal2sat): bool =
         ## 最後に成功したsolveでのリテラルの値を返す。O(1)。
         if a.problem.isNil or not a.problem.solved:
             raise newException(ValueError, "solveが成功した後に値を取得してください")
-        let value = a.problem.answer[a.vertex div 2]
+        let value = a.problem.assignment[a.vertex div 2]
         if (a.vertex and 1) == 1: value
         else: not value
 
