@@ -55,38 +55,83 @@ when not declared CPLIB_CONVOLUTION_MIN_PLUS_CONVOLUTION:
             let hi = min(k, a.len - 1)
             result[k] = min(a[lo] + b[k - lo], a[hi] + b[k - hi])
 
+    proc concaveSmawk[T](a, b: seq[T], first, step, count, offset, width: int,
+                         columns, indices: var seq[int]) =
+        ## 行を等差数列で表し、共有バッファ内で列を削減する。時間 O(count + width)。
+        let reduced = offset + width
+        var size = 0
+        for p in offset..<reduced:
+            let col = columns[p]
+            while size > 0:
+                let row = first + (size - 1) * step
+                let old = columns[reduced + size - 1]
+                if not (a[row - col] + b[col] < a[row - old] + b[old]): break
+                dec size
+            if size < count:
+                columns[reduced + size] = col
+                inc size
+        if count > 1:
+            concaveSmawk(a, b, first + step, step * 2, count div 2,
+                         reduced, size, columns, indices)
+        var left = 0
+        var i = 0
+        while i < count:
+            let row = first + i * step
+            var right = size - 1
+            if i + 1 < count:
+                right = left
+                while columns[reduced + right] != indices[row + step]: inc right
+            var best = columns[reduced + left]
+            var value = a[row - best] + b[best]
+            for p in left + 1..right:
+                let col = columns[reduced + p]
+                let candidate = a[row - col] + b[col]
+                if candidate < value:
+                    best = col
+                    value = candidate
+            indices[row] = best
+            left = right
+            i += 2
+
+    proc concaveDivide[T](a, b: seq[T], top, bottom, left, right: int,
+                          answer: var seq[T], columns, indices: var seq[int]) =
+        ## 有効領域を長方形に分割し、作業配列を再利用して最小値を更新する。
+        let t = max(top, left)
+        let d = min(bottom, right + a.len - 1)
+        let l = max(left, t - a.len + 1)
+        let r = min(right, d)
+        if t >= d or l >= r: return
+        if d - t <= 1024 div (r - l):
+            for row in t..<d:
+                var value = answer[row]
+                for col in max(l, row - a.len + 1)..<min(r, row + 1):
+                    value = min(value, a[row - col] + b[col])
+                answer[row] = value
+        elif r - 1 <= t and d - 1 < l + a.len:
+            for p in 0..<r - l: columns[p] = r - 1 - p
+            concaveSmawk(a, b, t, 1, d - t, 0, r - l, columns, indices)
+            for row in t..<d:
+                let col = indices[row]
+                answer[row] = min(answer[row], a[row - col] + b[col])
+        elif d - t >= r - l:
+            let mid = (t + d) div 2
+            concaveDivide(a, b, t, mid, l, r, answer, columns, indices)
+            concaveDivide(a, b, mid, d, l, r, answer, columns, indices)
+        else:
+            let mid = (l + r) div 2
+            concaveDivide(a, b, t, d, l, mid, answer, columns, indices)
+            concaveDivide(a, b, t, d, mid, r, answer, columns, indices)
+
     proc minPlusConvolutionConcaveArbitrary*[T](a, b: seq[T]): seq[T] =
         ## 凹な a と任意の b の min-plus 畳み込み。時間 O((N + M) log(N + M))、空間 O(N + M)。
         if a.len == 0 or b.len == 0: return @[]
         let h = a.len + b.len - 1
-        var answer = newSeq[T](h)
+        result = newSeq[T](h)
         for k in 0..<h:
             let j = min(k, b.len - 1)
-            answer[k] = a[k - j] + b[j]
-        proc solve(top, bottom, left, right: int) =
-            ## 有効領域と交わらない部分を除き、長方形を長辺方向に二分する。
-            let t = max(top, left)
-            let d = min(bottom, right + a.len - 1)
-            let l = max(left, t - a.len + 1)
-            let r = min(right, d)
-            if t >= d or l >= r: return
-            if r - 1 <= t and d - 1 < l + a.len:
-                proc better(row, oldCol, newCol: int): bool =
-                    ## 凹の場合は列を逆順にして全単調性を得る。
-                    let x = r - 1 - oldCol
-                    let y = r - 1 - newCol
-                    return a[t + row - y] + b[y] < a[t + row - x] + b[x]
-                let indices = smawk(d - t, r - l, better)
-                for k in t..<d:
-                    let j = r - 1 - indices[k - t]
-                    answer[k] = min(answer[k], a[k - j] + b[j])
-            elif d - t >= r - l:
-                let mid = (t + d) div 2
-                solve(t, mid, l, r)
-                solve(mid, d, l, r)
-            else:
-                let mid = (l + r) div 2
-                solve(t, d, l, mid)
-                solve(t, d, mid, r)
-        solve(0, h, 0, b.len)
-        return answer
+            result[k] = a[k - j] + b[j]
+        if a.len == 1 or b.len == 1: return
+        # 列削減後の長さは行数以下で、再帰ごとに行数が半減する。
+        var columns = newSeq[int](b.len + 2 * h)
+        var indices = newSeq[int](h)
+        concaveDivide(a, b, 0, h, 0, b.len, result, columns, indices)

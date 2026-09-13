@@ -93,4 +93,16 @@ for h in 0..40:
         for r in 0..<h: doAssert s[r] == (if w == 0: -1 else: min(r, w - 1))
         proc tied(row, oldCol, newCol: int): bool = false
         for x in smawk(h, w, tied): doAssert x == (if w == 0: -1 else: 0)
+for n in [31, 32, 33, 63, 64, 65, 127, 128, 129, 255, 256, 257, 513]:
+    for m in [33, 65, 129, 257]:
+        var a = convex(n)
+        for x in a.mitems: x = -x
+        var b = newSeq[int64](m)
+        for x in b.mitems: x = rng.rand(-10000..10000)
+        checkConcave(a, b)
+        for i in 0..<n: a[i] = int64(i) * 3
+        checkConcave(a, b)
+        for x in a.mitems: x = 0
+        for x in b.mitems: x = 0
+        checkConcave(a, b)
 echo "Hello World"
