@@ -48,14 +48,14 @@ data:
 
     '
   dependsOn:
-  - cplib/math/int128.nim
+  - cplib/geometry/argsort.nim
   - cplib/geometry/argsort.nim
   - cplib/math/int128.nim
-  - cplib/geometry/argsort.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/argsort_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/argsort_test.nim

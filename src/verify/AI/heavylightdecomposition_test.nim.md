@@ -71,8 +71,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/heavylightdecomposition_test.nim
   requiredBy: []

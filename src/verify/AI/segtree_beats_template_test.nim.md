@@ -56,18 +56,18 @@ data:
     \ to_Int128(10))\nseg128.chmin(0..4, to_Int128(10))\nfor i, expected in @[0, 0,\
     \ 5, 10, 10]:\n  assert seg128[i].sum == expected\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/utils/constants.nim
-  - cplib/math/int128.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_template_test.nim
   requiredBy: []
-  timestamp: '2026-09-03 23:04:21+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/segtree_beats_template_test.nim

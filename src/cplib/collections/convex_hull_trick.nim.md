@@ -81,16 +81,16 @@ data:
     \         node = node.r\n            else:\n                node = node.l\n  \
     \      chtAnswer(chtValue(best.key, x))\n"
   dependsOn:
-  - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/math/int128.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/avltreenode.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick.nim
   requiredBy: []
-  timestamp: '2026-09-12 10:51:11+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/convex_hull_trick_line_add_get_min_test.nim

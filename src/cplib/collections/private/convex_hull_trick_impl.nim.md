@@ -108,7 +108,7 @@ data:
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
-  timestamp: '2026-09-12 10:51:11+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/convex_hull_trick_line_add_get_min_test.nim

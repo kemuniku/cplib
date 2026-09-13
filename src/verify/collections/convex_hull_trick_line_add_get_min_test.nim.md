@@ -48,18 +48,18 @@ data:
     \    let t = ii()\n    if t == 0:\n        let a = ii()\n        let b = ii()\n\
     \        hull.add_line(a, b)\n    else:\n        echo hull.get_min(ii())\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/collections/convex_hull_trick.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_line_add_get_min_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 10:51:11+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/convex_hull_trick_line_add_get_min_test.nim

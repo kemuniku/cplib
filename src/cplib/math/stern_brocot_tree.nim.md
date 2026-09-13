@@ -189,8 +189,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []

@@ -15,11 +15,23 @@ data:
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/biconnected_components.nim
+    title: cplib/graph/biconnected_components.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/biconnected_components.nim
+    title: cplib/graph/biconnected_components.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bipartite_graph.nim
     title: cplib/graph/bipartite_graph.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/bipartite_graph.nim
     title: cplib/graph/bipartite_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/block_cut_tree.nim
+    title: cplib/graph/block_cut_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/block_cut_tree.nim
+    title: cplib/graph/block_cut_tree.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/count_topologicalsort.nim
     title: cplib/graph/count_topologicalsort.nim
@@ -81,6 +93,12 @@ data:
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/lowlink.nim
+    title: cplib/graph/lowlink.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/lowlink.nim
+    title: cplib/graph/lowlink.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -134,6 +152,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/two_edge_connected_components.nim
+    title: cplib/graph/two_edge_connected_components.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/two_edge_connected_components.nim
+    title: cplib/graph/two_edge_connected_components.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
@@ -490,6 +514,12 @@ data:
     path: verify/AI/kruskal_test.nim
     title: verify/AI/kruskal_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/lowlink_test.nim
+    title: verify/AI/lowlink_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lowlink_test.nim
+    title: verify/AI/lowlink_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/maxk_dijkstra_test.nim
     title: verify/AI/maxk_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -574,6 +604,12 @@ data:
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/biconnected_components_test.nim
+    title: verify/graph/biconnected_components_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/biconnected_components_test.nim
+    title: verify/graph/biconnected_components_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
@@ -603,6 +639,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_articulation_test.nim
+    title: verify/graph/lowlink_articulation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_articulation_test.nim
+    title: verify/graph/lowlink_articulation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_bridges_test.nim
+    title: verify/graph/lowlink_bridges_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_bridges_test.nim
+    title: verify/graph/lowlink_bridges_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
@@ -639,6 +687,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/two_edge_connected_components_test.nim
+    title: verify/graph/two_edge_connected_components_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/two_edge_connected_components_test.nim
+    title: verify/graph/two_edge_connected_components_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
@@ -969,6 +1023,8 @@ data:
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/kruskal.nim
   - cplib/graph/kruskal.nim
   - cplib/graph/dynamic_bipartite.nim
@@ -981,10 +1037,14 @@ data:
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/namori_forest.nim
   - cplib/graph/namori_forest.nim
+  - cplib/graph/two_edge_connected_components.nim
+  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/biconnected_components.nim
+  - cplib/graph/biconnected_components.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/warshall_floyd_avx.nim
@@ -995,6 +1055,8 @@ data:
   - cplib/graph/steiner_tree.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/bellmanford.nim
+  - cplib/graph/block_cut_tree.nim
+  - cplib/graph/block_cut_tree.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
   timestamp: '2026-07-07 06:48:43+09:00'
@@ -1034,6 +1096,10 @@ data:
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/two_edge_connected_components_test.nim
+  - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
@@ -1044,8 +1110,12 @@ data:
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/biconnected_components_test.nim
+  - verify/graph/biconnected_components_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
+  - verify/graph/lowlink_articulation_test.nim
+  - verify/graph/lowlink_articulation_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -1118,6 +1188,8 @@ data:
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/dijkstra_test.nim
   - verify/AI/dijkstra_test.nim
+  - verify/AI/lowlink_test.nim
+  - verify/AI/lowlink_test.nim
   - verify/AI/diameter_test.nim
   - verify/AI/diameter_test.nim
   - verify/AI/bellmanford_test.nim

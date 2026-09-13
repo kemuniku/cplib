@@ -33,14 +33,14 @@ data:
     for _ in 0..<t:\n    let query = stdin.readLine.splitWhitespace\n    echo floor_sum(query[0].parseInt,\
     \ query[1].parseInt,\n                   query[2].parseInt, query[3].parseInt)\n"
   dependsOn:
-  - cplib/math/int128.nim
+  - cplib/math/floor_sum.nim
   - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
-  - cplib/math/floor_sum.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/math/floor_sum_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 14:53:22+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/floor_sum_yosupo_test.nim

@@ -52,6 +52,12 @@ data:
     path: verify/collections/fenwick_tree_test.nim
     title: verify/collections/fenwick_tree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/biconnected_components_test.nim
+    title: verify/graph/biconnected_components_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/biconnected_components_test.nim
+    title: verify/graph/biconnected_components_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -69,6 +75,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/hopcroft_karp_test.nim
     title: verify/graph/hopcroft_karp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_articulation_test.nim
+    title: verify/graph/lowlink_articulation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_articulation_test.nim
+    title: verify/graph/lowlink_articulation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_bridges_test.nim
+    title: verify/graph/lowlink_bridges_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowlink_bridges_test.nim
+    title: verify/graph/lowlink_bridges_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/maxflow_bipartitematching_test.nim
     title: verify/graph/maxflow_bipartitematching_test.nim
@@ -93,6 +111,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/two_edge_connected_components_test.nim
+    title: verify/graph/two_edge_connected_components_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/two_edge_connected_components_test.nim
+    title: verify/graph/two_edge_connected_components_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
@@ -790,14 +814,22 @@ data:
   - verify/collections/fenwick_tree_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/two_edge_connected_components_test.nim
+  - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/biconnected_components_test.nim
+  - verify/graph/biconnected_components_test.nim
   - verify/graph/hopcroft_karp_test.nim
   - verify/graph/hopcroft_karp_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
+  - verify/graph/lowlink_articulation_test.nim
+  - verify/graph/lowlink_articulation_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/shortest_path_test.nim

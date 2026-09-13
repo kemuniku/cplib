@@ -53,7 +53,7 @@ data:
   isVerificationFile: false
   path: cplib/math/floor_sum.nim
   requiredBy: []
-  timestamp: '2026-09-12 14:53:22+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/floor_sum_yosupo_test.nim

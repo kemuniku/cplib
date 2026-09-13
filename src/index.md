@@ -308,8 +308,14 @@ data:
       path: cplib/graph/bellmanford.nim
       title: cplib/graph/bellmanford.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/biconnected_components.nim
+      title: cplib/graph/biconnected_components.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/bipartite_graph.nim
       title: cplib/graph/bipartite_graph.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/block_cut_tree.nim
+      title: cplib/graph/block_cut_tree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/count_topologicalsort.nim
       title: cplib/graph/count_topologicalsort.nim
@@ -346,6 +352,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/kruskal.nim
       title: cplib/graph/kruskal.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/lowlink.nim
+      title: cplib/graph/lowlink.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/maxflow.nim
       title: cplib/graph/maxflow.nim
@@ -385,6 +394,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/tsp.nim
       title: cplib/graph/tsp.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/two_edge_connected_components.nim
+      title: cplib/graph/two_edge_connected_components.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/warshall_floyd.nim
       title: cplib/graph/warshall_floyd.nim
@@ -1440,6 +1452,9 @@ data:
       path: verify/AI/list_procs_test.nim
       title: verify/AI/list_procs_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/lowlink_test.nim
+      title: verify/AI/lowlink_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/manacher_test.nim
       title: verify/AI/manacher_test.nim
     - icon: ':heavy_check_mark:'
@@ -2086,28 +2101,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
       title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - name: verify/graph/dynamic
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/dynamic/bellmanford_grl1b_test.nim
-      title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/dynamic/restore_dijkstra_test.nim
-      title: verify/graph/dynamic/restore_dijkstra_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/dynamic/shortest_path_test.nim
-      title: verify/graph/dynamic/shortest_path_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
-      title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-      title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/graph/biconnected_components_test.nim
+      title: verify/graph/biconnected_components_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/hopcroft_karp_test.nim
       title: verify/graph/hopcroft_karp_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/lowlink_articulation_test.nim
+      title: verify/graph/lowlink_articulation_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/lowlink_bridges_test.nim
+      title: verify/graph/lowlink_bridges_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/maxflow_bipartitematching_test.nim
       title: verify/graph/maxflow_bipartitematching_test.nim
@@ -2126,6 +2133,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/push_relabel_test.nim
       title: verify/graph/push_relabel_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/two_edge_connected_components_test.nim
+      title: verify/graph/two_edge_connected_components_test.nim
+  - name: verify/graph/dynamic
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/bellmanford_grl1b_test.nim
+      title: verify/graph/dynamic/bellmanford_grl1b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/restore_dijkstra_test.nim
+      title: verify/graph/dynamic/restore_dijkstra_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/shortest_path_test.nim
+      title: verify/graph/dynamic/shortest_path_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
+      title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
+      title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - name: verify/graph/static
     pages:
     - icon: ':heavy_check_mark:'

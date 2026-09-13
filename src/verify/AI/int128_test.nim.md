@@ -22,59 +22,36 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-
-    echo "Hello World"
-
-
-    import cplib/math/int128
-
-
-    let a = parseInt128("123456789012345678901234567890")
-
-    let b = parseInt128("10")
-
-    assert $a == "123456789012345678901234567890"
-
-    assert $(a + b) == "123456789012345678901234567900"
-
-    assert $((a + b) - a) == "10"
-
-    assert $(b * b) == "100"
-
-    assert $(parseInt128("100") div b) == "10"
-
-    assert $(parseInt128("103") mod b) == "3"
-
-    assert (parseInt128("5") & parseInt128("3")).to_int == 1
-
-    assert (parseInt128("5") | parseInt128("2")).to_int == 7
-
-    assert (parseInt128("5") ^ parseInt128("1")).to_int == 4
-
-    assert (parseInt128("1") << parseInt128("5")).to_int == 32
-
-    assert (parseInt128("32") >> parseInt128("2")).to_int == 8
-
-    assert -b < b
-
-    assert abs(-b) == b
-
-    assert cmp(b, parseInt128("10")) == 0
-
-    assert pow(parseInt128("2"), parseInt128("10")).to_int == 1024
-
-    assert pow(parseInt128("2"), parseInt128("10"), parseInt128("1000")).to_int ==
-    24
-
-    '
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
+    echo \"Hello World\"\n\nimport cplib/math/int128\n\nlet a = parseInt128(\"123456789012345678901234567890\"\
+    )\nlet b = parseInt128(\"10\")\nassert $a == \"123456789012345678901234567890\"\
+    \nassert $(a + b) == \"123456789012345678901234567900\"\nassert $((a + b) - a)\
+    \ == \"10\"\nassert $(b * b) == \"100\"\nassert $(parseInt128(\"100\") div b)\
+    \ == \"10\"\nassert $(parseInt128(\"103\") mod b) == \"3\"\nassert (parseInt128(\"\
+    5\") & parseInt128(\"3\")).to_int == 1\nassert (parseInt128(\"5\") | parseInt128(\"\
+    2\")).to_int == 7\nassert (parseInt128(\"5\") ^ parseInt128(\"1\")).to_int ==\
+    \ 4\nassert (parseInt128(\"1\") << parseInt128(\"5\")).to_int == 32\nassert (parseInt128(\"\
+    32\") >> parseInt128(\"2\")).to_int == 8\nassert -b < b\nassert abs(-b) == b\n\
+    assert cmp(b, parseInt128(\"10\")) == 0\nassert pow(parseInt128(\"2\"), parseInt128(\"\
+    10\")).to_int == 1024\nassert pow(parseInt128(\"2\"), parseInt128(\"10\"), parseInt128(\"\
+    1000\")).to_int == 24\n\nimport hashes, tables\n\nlet boundaryStrings = @[\n \
+    \   \"0\", \"1\", \"-1\", \"9999\", \"10000\", \"-10000\",\n    \"18446744073709551616\"\
+    , \"-18446744073709551616\",\n    \"170141183460469231731687303715884105727\"\
+    ,\n    \"-170141183460469231731687303715884105728\"\n]\nvar values = initTable[Int128,\
+    \ string]()\nfor s in boundaryStrings:\n    let x = parseInt128(s)\n    assert\
+    \ $x == s\n    assert hash(x) == hash(parseInt128(s))\n    values[x] = s\nfor\
+    \ s in boundaryStrings:\n    assert values[parseInt128(s)] == s\nassert values.len\
+    \ == boundaryStrings.len\nassert $(parseInt128(boundaryStrings[^1]) + 1) == \"\
+    -170141183460469231731687303715884105727\"\nassert $(parseInt128(boundaryStrings[^2])\
+    \ - 1) == \"170141183460469231731687303715884105726\"\nassert $parseInt128(\"\
+    0\") == \"0\"\n"
   dependsOn:
   - cplib/math/int128.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/int128_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-13 04:33:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/int128_test.nim
