@@ -52,7 +52,9 @@ assert auxVertices == @[0, 1, 3, 4, 5]
 
 let waux = hld.initAuxiliaryWeightedTree(@[3, 5])
 assert waux.v == @[0, 3, 5]
-var weightedEdges = waux.graph.edges[0].mapIt((it[0].int, it[1]))
+var weightedEdges: seq[(int, int)]
+for e in waux.graph.to_and_cost(0):
+  weightedEdges.add(e)
 weightedEdges.sort()
 assert weightedEdges == @[(1, 2), (2, 2)]
 

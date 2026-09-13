@@ -7,7 +7,7 @@ when not declared CPLIB_GRAPH_K_SHORTEST_WALK:
     type KShortestWalkHeapNode = object
         vertex, left, right, rank: int
 
-    proc k_shortest_walk*[T: SomeSignedInt](G: DynamicGraph[T] or StaticGraph[T], s, t, k: int, INF: T): seq[T] =
+    proc k_shortest_walk*[T: SomeSignedInt](G: WeightedGraph[T] or UnWeightedGraph, s, t, k: int, INF: T): seq[T] =
         ## 非負整数重みのsからtへのウォーク長を昇順でk個返す。時間O((V+E)logV + k log k)、空間O(E+V logV+k)。
         ## 同長の別ウォークも数え、s == tでは空ウォークを含む。全ての中間計算がTに収まることを要求する。
         ## 不足分はINFで埋める。INFは返されるウォーク長より大きい値を指定する。StaticGraphは事前にbuildする。
@@ -171,3 +171,7 @@ when not declared CPLIB_GRAPH_K_SHORTEST_WALK:
             G.k_shortest_walk(s, t, k, T(INF32))
         else:
             G.k_shortest_walk(s, t, k, high(T))
+
+    proc k_shortest_walk*(G: UnWeightedGraph, s, t, k: int): seq[int] =
+        ## 重み 1 として短い順に k 個の歩道長を求める。
+        G.k_shortest_walk(s, t, k, INF64)
