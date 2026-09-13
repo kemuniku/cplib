@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/xor_convolution.nim
     title: cplib/convolution/xor_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/xor_convolution.nim
     title: cplib/convolution/xor_convolution.nim
   _extendedRequiredBy: []

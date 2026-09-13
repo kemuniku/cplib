@@ -21,10 +21,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/mo_test.nim
     title: verify/AI/mo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
     title: verify/collections/range_kth_smallest_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
     title: verify/collections/range_kth_smallest_test.nim
   - icon: ':x:'

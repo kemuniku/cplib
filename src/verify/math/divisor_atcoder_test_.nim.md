@@ -59,16 +59,16 @@ data:
 
     '
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
   - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
   - cplib/math/divisor.nim
+  - cplib/math/primefactor.nim
   isVerificationFile: false
   path: verify/math/divisor_atcoder_test_.nim
   requiredBy: []

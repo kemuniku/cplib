@@ -86,10 +86,10 @@ data:
 
     '
   dependsOn:
-  - cplib/matrix/static_matrix.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true
   path: verify/AI/static_matrix_test.nim
   requiredBy: []

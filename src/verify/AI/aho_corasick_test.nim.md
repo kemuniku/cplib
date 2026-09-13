@@ -137,8 +137,8 @@ data:
   dependsOn:
   - cplib/str/aho_corasick.nim
   - cplib/graph/graph.nim
-  - cplib/str/aho_corasick.nim
   - cplib/graph/graph.nim
+  - cplib/str/aho_corasick.nim
   isVerificationFile: true
   path: verify/AI/aho_corasick_test.nim
   requiredBy: []

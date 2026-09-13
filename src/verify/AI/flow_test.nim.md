@@ -137,8 +137,8 @@ data:
   dependsOn:
   - cplib/graph/mincostflow.nim
   - cplib/graph/maxflow.nim
-  - cplib/graph/mincostflow.nim
   - cplib/graph/maxflow.nim
+  - cplib/graph/mincostflow.nim
   isVerificationFile: true
   path: verify/AI/flow_test.nim
   requiredBy: []

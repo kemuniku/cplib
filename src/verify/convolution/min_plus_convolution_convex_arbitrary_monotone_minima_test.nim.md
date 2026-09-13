@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/monotone_minima.nim
     title: cplib/utils/monotone_minima.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/monotone_minima.nim
     title: cplib/utils/monotone_minima.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/smawk.nim
     title: cplib/utils/smawk.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/smawk.nim
     title: cplib/utils/smawk.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary
     links:
@@ -56,17 +56,17 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/monotone_minima.nim
-  - cplib/utils/smawk.nim
-  - cplib/utils/smawk.nim
-  - cplib/convolution/min_plus_convolution.nim
   - cplib/convolution/min_plus_convolution.nim
   - cplib/utils/monotone_minima.nim
+  - cplib/utils/smawk.nim
+  - cplib/utils/monotone_minima.nim
+  - cplib/utils/smawk.nim
+  - cplib/convolution/min_plus_convolution.nim
   isVerificationFile: true
   path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
 layout: document

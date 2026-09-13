@@ -45,21 +45,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_old_test.nim
     title: verify/AI/convolution_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -111,23 +111,23 @@ data:
     \ 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n            ans[i]\
     \ = cast[int](x)\n        return ans\n"
   dependsOn:
+  - cplib/convolution/ntt.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/convolution/ntt.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/convolution/convolution_old.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim

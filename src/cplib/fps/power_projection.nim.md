@@ -63,10 +63,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':x:'
@@ -266,22 +266,22 @@ data:
     \ - 1 \u3092\u5217\u6319\u3059\u308B\u3002\n        f.powerProjectionDiagonal(@[init(T,\
     \ 1)], f.len - 1)\n"
   dependsOn:
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/fps/formal_power_series.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: false
   path: cplib/fps/power_projection.nim
   requiredBy:

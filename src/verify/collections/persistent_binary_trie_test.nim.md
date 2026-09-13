@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/persistent_binary_trie.nim
     title: cplib/collections/persistent_binary_trie.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/persistent_binary_trie.nim
     title: cplib/collections/persistent_binary_trie.nim
   _extendedRequiredBy: []

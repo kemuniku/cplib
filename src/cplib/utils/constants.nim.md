@@ -8,10 +8,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lichaotree.nim
     title: cplib/collections/lichaotree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
   - icon: ':heavy_check_mark:'
@@ -309,10 +309,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - icon: ':x:'

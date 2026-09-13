@@ -162,9 +162,9 @@ data:
     \u3081\u308B\u3002\n        G.k_shortest_walk(s, t, k, INF64)\n"
   dependsOn:
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/k_shortest_walk.nim
   requiredBy: []

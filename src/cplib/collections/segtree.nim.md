@@ -75,64 +75,64 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/hashtable_yuki2686_test.nim
     title: verify/collections/hashtable_yuki2686_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PARS_test.nim
     title: verify/collections/segtree/segtree_PARS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PARS_test.nim
     title: verify/collections/segtree/segtree_PARS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PSRC_2_test.nim
     title: verify/collections/segtree/segtree_PSRC_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PSRC_2_test.nim
     title: verify/collections/segtree/segtree_PSRC_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PSRC_test.nim
     title: verify/collections/segtree/segtree_PSRC_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PSRC_test.nim
     title: verify/collections/segtree/segtree_PSRC_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_RMQ_test.nim
     title: verify/collections/segtree/segtree_RMQ_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_RMQ_test.nim
     title: verify/collections/segtree/segtree_RMQ_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_init_with_size_test.nim
     title: verify/collections/segtree/segtree_init_with_size_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_init_with_size_test.nim
     title: verify/collections/segtree/segtree_init_with_size_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_maxright_yuki878_test.nim
     title: verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_maxright_yuki878_test.nim
     title: verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_minleft_yuki878_test.nim
     title: verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_minleft_yuki878_test.nim
     title: verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_newsegwith_test.nim
     title: verify/collections/segtree/segtree_newsegwith_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_newsegwith_test.nim
     title: verify/collections/segtree/segtree_newsegwith_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_ordered_set_test.nim
     title: verify/collections/segtree/segtree_ordered_set_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_ordered_set_test.nim
     title: verify/collections/segtree/segtree_ordered_set_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
   - icon: ':x:'

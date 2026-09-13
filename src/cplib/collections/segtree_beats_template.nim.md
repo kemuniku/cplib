@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
   - icon: ':question:'
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/segtree_beats_template_test.nim
     title: verify/AI/segtree_beats_template_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -102,14 +102,14 @@ data:
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim

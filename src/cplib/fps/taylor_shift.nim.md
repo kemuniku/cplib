@@ -75,10 +75,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':x:'
@@ -217,22 +217,22 @@ data:
     \       let product = left * right\n        result = newSeq[T](n)\n        for\
     \ i in 0..<n: result[i] = product[n - 1 - i] * factInv[i]\n"
   dependsOn:
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: false
   path: cplib/fps/taylor_shift.nim
   requiredBy:

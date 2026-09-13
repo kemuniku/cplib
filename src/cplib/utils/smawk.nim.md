@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
   _extendedVerifiedWith:
@@ -15,33 +15,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/min_plus_convolution_test.nim
     title: verify/AI/min_plus_convolution_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
     title: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
     title: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_convex_convex_test.nim
     title: verify/convolution/min_plus_convolution_convex_convex_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/min_plus_convolution_convex_convex_test.nim
     title: verify/convolution/min_plus_convolution_convex_convex_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -88,7 +88,7 @@ data:
   - cplib/convolution/min_plus_convolution.nim
   - cplib/convolution/min_plus_convolution.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim

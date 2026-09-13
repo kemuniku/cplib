@@ -27,63 +27,63 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/segtree_var_test.nim
     title: verify/AI/segtree_var_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PARS_test.nim
     title: verify/collections/segtree_var/segtree_PARS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PARS_test.nim
     title: verify/collections/segtree_var/segtree_PARS_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PSRC_2_test.nim
     title: verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PSRC_2_test.nim
     title: verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PSRC_test.nim
     title: verify/collections/segtree_var/segtree_PSRC_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PSRC_test.nim
     title: verify/collections/segtree_var/segtree_PSRC_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_RMQ_test.nim
     title: verify/collections/segtree_var/segtree_RMQ_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_RMQ_test.nim
     title: verify/collections/segtree_var/segtree_RMQ_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_init_with_size_test.nim
     title: verify/collections/segtree_var/segtree_init_with_size_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_init_with_size_test.nim
     title: verify/collections/segtree_var/segtree_init_with_size_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
     title: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
     title: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
     title: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
     title: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_newsegwith_test.nim
     title: verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_newsegwith_test.nim
     title: verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_static_test.nim
     title: verify/collections/segtree_var/segtree_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_static_test.nim
     title: verify/collections/segtree_var/segtree_static_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -213,7 +213,7 @@ data:
   - verify/collections/segtree_var/segtree_xor2_test_.nim
   - verify/collections/segtree_var/segtree_xor2_test_.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
   - verify/collections/segtree_var/segtree_init_with_size_test.nim

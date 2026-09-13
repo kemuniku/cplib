@@ -46,13 +46,13 @@ data:
     \       echo x, \" \", 0\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/utils/constants.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []

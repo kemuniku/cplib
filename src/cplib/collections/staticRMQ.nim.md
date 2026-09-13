@@ -81,10 +81,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/staticRMQ_test.nim
     title: verify/collections/staticRMQ_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/staticRMQ_test.nim
     title: verify/collections/staticRMQ_test.nim
   - icon: ':x:'

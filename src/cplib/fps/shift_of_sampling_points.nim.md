@@ -75,10 +75,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/shift_of_sampling_points_test.nim
     title: verify/AI/shift_of_sampling_points_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':x:'
@@ -236,20 +236,20 @@ data:
     \u3058\u500B\u6570\u306E\u8A55\u4FA1\u5024 f(t), ..., f(t+n-1) \u3092 O(M(n))\
     \ \u3067\u6C42\u3081\u308B\u3002\n        shiftOfSamplingPoints(ys, t, ys.len)\n"
   dependsOn:
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/fps/shift_of_sampling_points.nim
   requiredBy:

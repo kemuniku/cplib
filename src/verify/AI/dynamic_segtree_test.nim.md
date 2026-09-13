@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/dynamic_segtree.nim
     title: cplib/collections/dynamic_segtree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/dynamic_segtree.nim
     title: cplib/collections/dynamic_segtree.nim
   _extendedRequiredBy: []

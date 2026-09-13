@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rollback_unionfind.nim
     title: cplib/collections/rollback_unionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/rollback_unionfind.nim
     title: cplib/collections/rollback_unionfind.nim
   - icon: ':question:'
@@ -49,10 +49,10 @@ data:
     \ min(e, s)\n        es[uf.root(a)] = (e-1, s)\n        cur += min(e-1, s)\ndfs(0,\
     \ -1)\necho ans.join(\" \")\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/collections/rollback_unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/rollback_unionfind.nim
-  - cplib/collections/rollback_unionfind.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/collections/rollback_uf_abc302ex_test_.nim
   requiredBy: []

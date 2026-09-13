@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/root_rangesum.nim
     title: cplib/collections/root_rangesum.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/root_rangesum.nim
     title: cplib/collections/root_rangesum.nim
   _extendedRequiredBy: []

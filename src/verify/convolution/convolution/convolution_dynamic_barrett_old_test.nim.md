@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution_old.nim
     title: cplib/convolution/convolution_old.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution_old.nim
     title: cplib/convolution/convolution_old.nim
   - icon: ':question:'
@@ -45,9 +45,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
     links:
@@ -89,24 +89,24 @@ data:
     '
   dependsOn:
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution_old.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution_old.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution_old.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
 layout: document

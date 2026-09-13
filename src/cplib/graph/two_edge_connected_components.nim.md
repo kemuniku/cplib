@@ -59,9 +59,9 @@ data:
     \u307E\u3059\u3002\n        result = initTwoEdgeConnectedComponents(initLowLink(g))\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: false
   path: cplib/graph/two_edge_connected_components.nim
   requiredBy: []

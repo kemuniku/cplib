@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum
     links:
@@ -44,17 +44,17 @@ data:
     \ t == 2:\n        var l, r, b = ii()\n        seg.add(l..<r, b)\n    else:\n\
     \        var l, r = ii()\n        echo seg[l..<r].sum\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats_template.nim
   isVerificationFile: true
   path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_chmin_chmax_add_range_sum_test.nim
 layout: document

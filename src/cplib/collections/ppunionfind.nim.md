@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/ppunionfind_test.nim
     title: verify/AI/ppunionfind_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -104,7 +104,7 @@ data:
   - verify/collections/ppunionfind/past_ppuf_test_.nim
   - verify/collections/ppunionfind/past_ppuf_test_.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim

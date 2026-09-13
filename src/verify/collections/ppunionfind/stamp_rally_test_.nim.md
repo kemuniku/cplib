@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
   - icon: ':question:'
@@ -40,8 +40,8 @@ data:
   dependsOn:
   - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/collections/ppunionfind.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: false
   path: verify/collections/ppunionfind/stamp_rally_test_.nim
   requiredBy: []

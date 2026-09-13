@@ -57,10 +57,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':x:'
@@ -209,13 +209,13 @@ data:
     \            result[i] = -connection[i + 1]\n"
   dependsOn:
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/fps/berlekamp_massey.nim
   requiredBy:

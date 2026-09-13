@@ -255,52 +255,52 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_montgomery_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_static_montgomery_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':x:'

@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/monotone_minima.nim
     title: cplib/utils/monotone_minima.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/monotone_minima.nim
     title: cplib/utils/monotone_minima.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/smawk.nim
     title: cplib/utils/smawk.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/smawk.nim
     title: cplib/utils/smawk.nim
   _extendedRequiredBy: []
@@ -86,12 +86,12 @@ data:
     \        for x in a.mitems: x = 0\n        for x in b.mitems: x = 0\n        checkConcave(a,\
     \ b)\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/convolution/min_plus_convolution.nim
+  - cplib/utils/smawk.nim
   - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
-  - cplib/utils/smawk.nim
+  - cplib/convolution/min_plus_convolution.nim
   - cplib/utils/monotone_minima.nim
-  - cplib/convolution/min_plus_convolution.nim
-  - cplib/convolution/min_plus_convolution.nim
   isVerificationFile: true
   path: verify/AI/min_plus_convolution_test.nim
   requiredBy: []

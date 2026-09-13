@@ -75,10 +75,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':x:'
@@ -536,25 +536,25 @@ data:
     \ powTransition[T](unit, exponent, dimension)\n        nthTermPolynomialRecurrence[T](initial,\
     \ recurrence.matrix,\n            recurrence.denominator, shiftedDegree) * scale\n"
   dependsOn:
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
   - cplib/fps/bostan_mori.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/fps/product_tree.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/fps/sparse_formal_power_series.nim

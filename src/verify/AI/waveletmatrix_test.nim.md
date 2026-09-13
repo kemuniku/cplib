@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix.nim
     title: cplib/collections/waveletmatrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix.nim
     title: cplib/collections/waveletmatrix.nim
   _extendedRequiredBy: []
@@ -88,8 +88,8 @@ data:
   dependsOn:
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim
   requiredBy: []

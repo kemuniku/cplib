@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/fenwick_avx2.nim
     title: cplib/collections/fenwick_avx2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix.nim
     title: cplib/collections/waveletmatrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix.nim
     title: cplib/collections/waveletmatrix.nim
   - icon: ':heavy_check_mark:'
@@ -83,12 +83,12 @@ data:
   dependsOn:
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/fenwick_avx2.nim
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/fenwick_avx2.nim
   - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_fenwick_test.nim
   requiredBy: []
