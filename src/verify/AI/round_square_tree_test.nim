@@ -33,34 +33,32 @@ proc check(n: int, edges: seq[Edge]) =
     swg.build()
     let bc = initBiconnectedComponents(g)
     let tree = initRoundSquareTree(bc)
-    doAssert tree.groups == bc.groups
-    doAssert tree.belong == bc.belong
-    doAssert tree.forest.len == n + bc.groups.len
+    doAssert tree.len == n + bc.groups.len
     for other in [initRoundSquareTree(g), initRoundSquareTree(sg),
                   initRoundSquareTree(wg), initRoundSquareTree(swg)]:
-        doAssert other.groups == tree.groups
-        doAssert other.belong == tree.belong
-        doAssert other.forest.edges == tree.forest.edges
-    for i, group in tree.groups:
-        doAssert toSeq(tree.forest[n+i]).sorted() == group.sorted()
+        doAssert other.len == tree.len
+        doAssert other.edges == tree.edges
+        doAssert other.edge_info == tree.edge_info
+    for i, group in bc.groups:
+        doAssert toSeq(tree[n+i]).sorted() == group.sorted()
     var edgeCount = 0
     for v in 0..<n:
         var expected: seq[int]
-        for i in tree.belong[v]: expected.add(n+i)
-        doAssert toSeq(tree.forest[v]).sorted() == expected.sorted()
+        for i in bc.belong[v]: expected.add(n+i)
+        doAssert toSeq(tree[v]).sorted() == expected.sorted()
         edgeCount += expected.len
     let original = labels(g)
-    let mapped = labels(tree.forest)
+    let mapped = labels(tree)
     var components = 0
     for v, c in mapped:
         if v == c: inc components
-    doAssert edgeCount == tree.forest.len - components
+    doAssert edgeCount == tree.len - components
     for u in 0..<n:
         for v in 0..<n:
             doAssert (original[u] == original[v]) == (mapped[u] == mapped[v])
     for removed in 0..<n:
         let originalAfter = labels(g, removed)
-        let mappedAfter = labels(tree.forest, removed)
+        let mappedAfter = labels(tree, removed)
         for u in 0..<n:
             if u == removed: continue
             for v in 0..<n:
@@ -94,10 +92,11 @@ block:
     var g = initUnWeightedUnDirectedGraph(n)
     for v in 1..<n: g.add_edge(v-1, v)
     let tree = initRoundSquareTree(g)
-    doAssert tree.forest.len == 2*n-1
-    doAssert tree.groups.len == n-1
-    doAssert tree.forest.edge_info.len == 2*(n-1)
+    doAssert tree.len == 2*n-1
+    doAssert tree.edge_info.len == 2*(n-1)
     for v in 0..<n:
-        doAssert tree.belong[v].len == (if v == 0 or v == n-1: 1 else: 2)
+        doAssert tree.edges[v].len == (if v == 0 or v == n-1: 1 else: 2)
+    for v in n..<tree.len:
+        doAssert tree.edges[v].len == 2
 
 echo "Hello World"
