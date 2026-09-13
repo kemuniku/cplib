@@ -6,8 +6,14 @@ when not declared CPLIB_GRAPH_BICONNECTED_COMPONENTS:
 
     type BiconnectedComponents* = object
         groups*: seq[seq[int]]
-        belong*: seq[seq[int]]
+        belong*: seq[seq[int]] # seq[int]：関節点は複数成分に所属
         articulation*: seq[int]
+
+    proc component_count_delta_after_removal*(bc: BiconnectedComponents, v: int): int =
+        ## 頂点vと接続する辺を削除した後の連結成分数から削除前の個数を引いた差分をO(1)で返します。
+        if bc.groups[bc.belong[v][0]].len == 1:
+            return -1
+        result = bc.belong[v].len - 1
 
     proc initBiconnectedComponents*(ll: LowLink): BiconnectedComponents =
         ## 計算済みlowlinkから二重頂点連結成分の頂点集合をO(V)で求めます。
