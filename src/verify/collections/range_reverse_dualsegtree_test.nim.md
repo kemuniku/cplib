@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/collections/range_reverse_dualsegtree.nim
     title: cplib/collections/range_reverse_dualsegtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/collections/range_reverse_dualsegtree.nim
     title: cplib/collections/range_reverse_dualsegtree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -54,8 +54,8 @@ data:
   isVerificationFile: true
   path: verify/collections/range_reverse_dualsegtree_test.nim
   requiredBy: []
-  timestamp: '2026-09-06 11:23:37+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/range_reverse_dualsegtree_test.nim
 layout: document

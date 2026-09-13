@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
   _extendedRequiredBy:
@@ -27,39 +27,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_matrix_mod2_test.nim
     title: verify/AI/static_matrix_mod2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/inverse_matrix_mod_2_static_test.nim
     title: verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/inverse_matrix_mod_2_static_test.nim
     title: verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_det_mod_2_static_test.nim
     title: verify/matrix/matrix_det_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_det_mod_2_static_test.nim
     title: verify/matrix/matrix_det_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_mod_2_static_test.nim
     title: verify/matrix/matrix_product_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_mod_2_static_test.nim
     title: verify/matrix/matrix_product_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_rank_mod_2_static_test.nim
     title: verify/matrix/matrix_rank_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_rank_mod_2_static_test.nim
     title: verify/matrix/matrix_rank_mod_2_static_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -85,36 +85,46 @@ data:
     \    proc h*[H: static int, W: static int](a: StaticMatrixMod2[H, W]): int {.inline.}\
     \ = H\n    proc w*[H: static int, W: static int](a: StaticMatrixMod2[H, W]): int\
     \ {.inline.} = W\n\n    proc `[]`*[H: static int, W: static int](a: StaticMatrixMod2[H,\
-    \ W], i, j: int): bool {.inline.} =\n        assert i in 0..<H and j in 0..<W\n\
-    \        (a.rows[i][j shr 6] and (1'u64 shl (j and 63))) != 0\n\n    proc `[]=`*[H:\
-    \ static int, W: static int](a: var StaticMatrixMod2[H, W], i, j: int, x: bool)\
-    \ {.inline.} =\n        assert i in 0..<H and j in 0..<W\n        let mask = 1'u64\
-    \ shl (j and 63)\n        if x: a.rows[i][j shr 6] = a.rows[i][j shr 6] or mask\n\
-    \        else: a.rows[i][j shr 6] = a.rows[i][j shr 6] and not mask\n\n    proc\
-    \ `[]=`*[H: static int, W: static int, T: SomeInteger](a: var StaticMatrixMod2[H,\
-    \ W], i, j: int, x: T) =\n        a[i, j] = (x and 1) != 0\n\n    proc `==`*[H:\
-    \ static int, W: static int](a, b: StaticMatrixMod2[H, W]): bool = a.rows == b.rows\n\
-    \n    proc `$`*[H: static int, W: static int](a: StaticMatrixMod2[H, W]): string\
-    \ =\n        for i in 0..<H:\n            if i > 0: result.add '\\n'\n       \
-    \     for j in 0..<W:\n                if j > 0: result.add ' '\n            \
-    \    result.add(if a[i, j]: '1' else: '0')\n\n    {.push checks: off.}\n    proc\
-    \ setRowBitsUnchecked[H: static int, W: static int](\n            a: var StaticMatrixMod2[H,\
-    \ W], i: int, values: string) =\n        for k in 0..<a.rows[i].len:\n       \
-    \     a.rows[i][k] = 0\n        for j in 0..<values.len:\n            if values[j]\
-    \ == '1':\n                a.rows[i][j shr 6] = a.rows[i][j shr 6] or (1'u64 shl\
-    \ (j and 63))\n\n    proc rowBitsUnchecked[H: static int, W: static int](\n  \
-    \          a: StaticMatrixMod2[H, W], i, width: int): string =\n        result\
-    \ = newString(width)\n        for j in 0..<width:\n            result[j] = char(ord('0')\
-    \ + int((a.rows[i][j shr 6] shr (j and 63)) and 1))\n    {.pop.}\n\n    proc setRowBits*[H:\
-    \ static int, W: static int](\n            a: var StaticMatrixMod2[H, W], i: int,\
-    \ values: string) =\n        assert i in 0..<H and values.len <= W\n        a.setRowBitsUnchecked(i,\
-    \ values)\n\n    proc rowBits*[H: static int, W: static int](\n            a:\
-    \ StaticMatrixMod2[H, W], i, width: int): string =\n        assert i in 0..<H\
-    \ and width in 0..W\n        a.rowBitsUnchecked(i, width)\n\n    proc rowBits*[H:\
-    \ static int, W: static int](\n            a: StaticMatrixMod2[H, W], i: int):\
-    \ string =\n        a.rowBits(i, W)\n\n    proc identityStaticMatrixMod2*[N: static\
-    \ int](): StaticMatrixMod2[N, N] =\n        for i in 0..<N: result[i, i] = true\n\
-    \n    proc transposed*[H: static int, W: static int](a: StaticMatrixMod2[H, W]):\
+    \ W], i, j: int): bool {.inline.} =\n        assert i in 0..<H and j in 0..<W,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: i in 0 ..< H and j in\
+    \ 0 ..< W\"\n        (a.rows[i][j shr 6] and (1'u64 shl (j and 63))) != 0\n\n\
+    \    proc `[]=`*[H: static int, W: static int](a: var StaticMatrixMod2[H, W],\
+    \ i, j: int, x: bool) {.inline.} =\n        assert i in 0..<H and j in 0..<W,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: i in 0 ..< H and j in\
+    \ 0 ..< W\"\n        let mask = 1'u64 shl (j and 63)\n        if x: a.rows[i][j\
+    \ shr 6] = a.rows[i][j shr 6] or mask\n        else: a.rows[i][j shr 6] = a.rows[i][j\
+    \ shr 6] and not mask\n\n    proc `[]=`*[H: static int, W: static int, T: SomeInteger](a:\
+    \ var StaticMatrixMod2[H, W], i, j: int, x: T) =\n        a[i, j] = (x and 1)\
+    \ != 0\n\n    proc `==`*[H: static int, W: static int](a, b: StaticMatrixMod2[H,\
+    \ W]): bool = a.rows == b.rows\n\n    proc `$`*[H: static int, W: static int](a:\
+    \ StaticMatrixMod2[H, W]): string =\n        for i in 0..<H:\n            if i\
+    \ > 0: result.add '\\n'\n            for j in 0..<W:\n                if j > 0:\
+    \ result.add ' '\n                result.add(if a[i, j]: '1' else: '0')\n\n  \
+    \  {.push checks: off.}\n    proc setRowBitsUnchecked[H: static int, W: static\
+    \ int](\n            a: var StaticMatrixMod2[H, W], i: int, values: string) =\n\
+    \        for k in 0..<a.rows[i].len:\n            a.rows[i][k] = 0\n        for\
+    \ j in 0..<values.len:\n            if values[j] == '1':\n                a.rows[i][j\
+    \ shr 6] = a.rows[i][j shr 6] or (1'u64 shl (j and 63))\n\n    proc rowBitsUnchecked[H:\
+    \ static int, W: static int](\n            a: StaticMatrixMod2[H, W], i, width:\
+    \ int): string =\n        result = newString(width)\n        for j in 0..<width:\n\
+    \            result[j] = char(ord('0') + int((a.rows[i][j shr 6] shr (j and 63))\
+    \ and 1))\n    {.pop.}\n\n    proc setRowBits*[H: static int, W: static int](\n\
+    \            a: var StaticMatrixMod2[H, W], i: int, values: string) =\n      \
+    \  assert i in 0..<H and values.len <= W, \"\u884C\u756A\u53F7\u304C\u7BC4\u56F2\
+    \u5185\u3067\u3001\u6307\u5B9A\u3057\u305F\u884C\u306E\u9577\u3055\u304C\u5217\
+    \u6570\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        a.setRowBitsUnchecked(i, values)\n\n    proc rowBits*[H: static int,\
+    \ W: static int](\n            a: StaticMatrixMod2[H, W], i, width: int): string\
+    \ =\n        assert i in 0..<H and width in 0..W, \"\u884C\u756A\u53F7\u304C\u7BC4\
+    \u56F2\u5185\u3067\u3001\u6307\u5B9A\u3057\u305F\u884C\u306E\u9577\u3055\u304C\
+    \u5217\u6570\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        a.rowBitsUnchecked(i, width)\n\n    proc rowBits*[H: static\
+    \ int, W: static int](\n            a: StaticMatrixMod2[H, W], i: int): string\
+    \ =\n        a.rowBits(i, W)\n\n    proc identityStaticMatrixMod2*[N: static int]():\
+    \ StaticMatrixMod2[N, N] =\n        for i in 0..<N: result[i, i] = true\n\n  \
+    \  proc transposed*[H: static int, W: static int](a: StaticMatrixMod2[H, W]):\
     \ StaticMatrixMod2[W, H] =\n        for i in 0..<H:\n            for j in 0..<W:\n\
     \                if a[i, j]: result[j, i] = true\n\n    {.push checks: off.}\n\
     \    proc `*`*[H: static int, M: static int, W: static int](a: StaticMatrixMod2[H,\
@@ -140,7 +150,8 @@ data:
     \                blockStart += BlockBits\n    {.pop.}\n\n    proc `*=`*[N: static\
     \ int](a: var StaticMatrixMod2[N, N], b: StaticMatrixMod2[N, N]) = a = a * b\n\
     \n    proc pow*[N: static int](a: StaticMatrixMod2[N, N], exponent: int): StaticMatrixMod2[N,\
-    \ N] =\n        assert exponent >= 0\n        result = identityStaticMatrixMod2[N]()\n\
+    \ N] =\n        assert exponent >= 0, \"exponent\u306F\u975E\u8CA0\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = identityStaticMatrixMod2[N]()\n\
     \        var base = a\n        var e = exponent\n        while e > 0:\n      \
     \      if (e and 1) != 0: result *= base\n            e = e shr 1\n          \
     \  if e > 0: base *= base\n\n    proc `**`*[N: static int](a: StaticMatrixMod2[N,\
@@ -174,26 +185,32 @@ data:
     \u3002O(h*min(h,w)*(w div 64+1)+w^2)\u3002\n        ## height/width\u306E\u7701\
     \u7565\u6642\u306FH/W\u3002\u5143\u306E\u884C\u5217\u306F\u5909\u66F4\u305B\u305A\
     \u3001\u89E3\u306A\u3057\u306Fnone\u3092\u8FD4\u3059\u3002\n        assert height\
-    \ in 0..H and width in 0..W and b.len == height\n        var rows = initBitLinearSystem(height,\
-    \ width)\n        let stride = (width shr 6) + 1\n        let fullWords = width\
-    \ shr 6\n        let tailBits = width and 63\n        for i in 0..<height:\n \
-    \           for k in 0..<fullWords: rows[i * stride + k] = a.rows[i][k]\n    \
-    \        if tailBits > 0:\n                rows[i * stride + fullWords] = a.rows[i][fullWords]\
-    \ and ((1'u64 shl tailBits) - 1)\n            if b[i]: rows[i * stride + fullWords]\
-    \ = rows[i * stride + fullWords] or (1'u64 shl tailBits)\n        solveBitLinearSystem(rows,\
-    \ height, width)\n\n    proc hafnian*[H: static int, W: static int](a: StaticMatrixMod2[H,W]):\
-    \ bool =\n        ## GF(2)\u4E0A\u306E\u5BFE\u79F0\u306A\u5076\u6570\u6B21\u884C\
-    \u5217\u306Ehafnian\u3092\u6C42\u3081\u308B\u3002O(n^3)\u3002\n        assert\
-    \ a.h == a.w\n        fieldHafnian(matrixRows(a, a.h, a.w))\n\n    proc adjugate*[H:\
-    \ static int, W: static int](a: StaticMatrixMod2[H,W]): StaticMatrixMod2[H,W]\
-    \ =\n        ## GF(2)\u4E0A\u3067\u7279\u7570\u884C\u5217\u3082\u542B\u3081\u305F\
-    \u4F59\u56E0\u5B50\u884C\u5217\u3092\u6C42\u3081\u308B\u3002O(n^3)\u3002\n   \
-    \     assert a.h == a.w\n        let rows = fieldAdjugateInverse(matrixRows(a,\
-    \ a.h, a.w), true).get\n        for i in 0..<a.h:\n            for j in 0..<a.w:\
-    \ result[i, j] = rows[i][j]\n"
+    \ in 0..H and width in 0..W and b.len == height, \"\u5BFE\u8C61\u306E\u884C\u6570\
+    \u3068\u5217\u6570\u306F\u884C\u5217\u306E\u7BC4\u56F2\u5185\u3067\u3001\u53F3\
+    \u8FBA\u306E\u8981\u7D20\u6570\u306F\u5BFE\u8C61\u306E\u884C\u6570\u3068\u4E00\
+    \u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        var rows\
+    \ = initBitLinearSystem(height, width)\n        let stride = (width shr 6) + 1\n\
+    \        let fullWords = width shr 6\n        let tailBits = width and 63\n  \
+    \      for i in 0..<height:\n            for k in 0..<fullWords: rows[i * stride\
+    \ + k] = a.rows[i][k]\n            if tailBits > 0:\n                rows[i *\
+    \ stride + fullWords] = a.rows[i][fullWords] and ((1'u64 shl tailBits) - 1)\n\
+    \            if b[i]: rows[i * stride + fullWords] = rows[i * stride + fullWords]\
+    \ or (1'u64 shl tailBits)\n        solveBitLinearSystem(rows, height, width)\n\
+    \n    proc hafnian*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): bool\
+    \ =\n        ## GF(2)\u4E0A\u306E\u5BFE\u79F0\u306A\u5076\u6570\u6B21\u884C\u5217\
+    \u306Ehafnian\u3092\u6C42\u3081\u308B\u3002O(n^3)\u3002\n        assert a.h ==\
+    \ a.w, \"\u884C\u5217\u306F\u6B63\u65B9\u884C\u5217\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        fieldHafnian(matrixRows(a, a.h, a.w))\n\
+    \n    proc adjugate*[H: static int, W: static int](a: StaticMatrixMod2[H,W]):\
+    \ StaticMatrixMod2[H,W] =\n        ## GF(2)\u4E0A\u3067\u7279\u7570\u884C\u5217\
+    \u3082\u542B\u3081\u305F\u4F59\u56E0\u5B50\u884C\u5217\u3092\u6C42\u3081\u308B\
+    \u3002O(n^3)\u3002\n        assert a.h == a.w, \"\u884C\u5217\u306F\u6B63\u65B9\
+    \u884C\u5217\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.w), true).get\n \
+    \       for i in 0..<a.h:\n            for j in 0..<a.w: result[i, j] = rows[i][j]\n"
   dependsOn:
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: false
@@ -201,8 +218,8 @@ data:
   requiredBy:
   - verify/matrix/linear_algebra/system_mod2_driver.nim
   - verify/matrix/linear_algebra/system_mod2_driver.nim
-  timestamp: '2026-09-10 08:33:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/AI/static_matrix_mod2_test.nim
   - verify/AI/static_matrix_mod2_test.nim

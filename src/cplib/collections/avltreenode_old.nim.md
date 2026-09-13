@@ -108,7 +108,8 @@ data:
     \            node = node.l\n            while node.r != get_avltree_nilnode[K]():\
     \ node = node.r\n            return node\n        while node.p.l == node: node\
     \ = node.p\n        return node.p\n    proc get*[K](node: AvlTreeNode[K], idx:\
-    \ int): AvlTreeNode[K] =\n        assert idx >= 0\n        if idx >= node.len:\
+    \ int): AvlTreeNode[K] =\n        assert idx >= 0, \"idx\u306F\u975E\u8CA0\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if idx >= node.len:\
     \ return get_avltree_nilnode[K]()\n        result = node\n        var idx = idx\n\
     \        while result.l.len != idx:\n            if result.l.len < idx:\n    \
     \            idx -= result.l.len + 1\n                result = result.r\n    \
@@ -123,7 +124,7 @@ data:
   requiredBy:
   - cplib/collections/avlset_old.nim
   - cplib/collections/avlset_old.nim
-  timestamp: '2025-04-27 18:32:02+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/avltreenode_old_test.nim

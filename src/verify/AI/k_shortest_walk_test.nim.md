@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
   - icon: ':question:'
@@ -83,14 +83,14 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/k_shortest_walk_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/k_shortest_walk_test.nim

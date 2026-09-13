@@ -34,14 +34,14 @@ data:
     \ result)\n\nvar n = ii()\nvar g = initWeightedUnDirectedGraph(n)\nfor i in 0..<n-1:\n\
     \    var a, b, c = ii()\n    g.add_edge(a, b, c)\necho g.diameter"
   dependsOn:
-  - cplib/tree/diameter.nim
-  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_dynamic_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/diameter_dynamic_test.nim

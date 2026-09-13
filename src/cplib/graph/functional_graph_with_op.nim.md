@@ -51,7 +51,9 @@ data:
     \ = ref object\n        F : Functional_Graph\n        op : proc(x,y:T):T\n   \
     \     e : T\n        st_hld : SegmentTree[T]\n        st_cycle : SegmentTree[T]\n\
     \        cum_cyclesize : seq[int]\n\n    proc initFunctionalGraph_with_op[T](F:Functional_Graph,values:seq[T],op:proc(l,r:T):T,e:T):FunctionalGraph_with_op[T]=\n\
-    \        assert len(values) == len(F.cycle_number)\n        result = FunctionalGraph_with_op[T](\n\
+    \        assert len(values) == len(F.cycle_number), \"\u5024\u306E\u914D\u5217\
+    \u306E\u9577\u3055\u306F\u9802\u70B9\u6570\u3068\u4E00\u81F4\u3059\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = FunctionalGraph_with_op[T](\n\
     \            F : F,\n            op : op,\n            e : e\n        )\n    \
     \    result.cum_cyclesize = newSeq[int](len(result.F.cycle))\n        var vec\
     \ = (0..<(len(values)+1)).toseq().mapit(result.F.tree.toVtx(it)).mapit(if it <\
@@ -98,7 +100,8 @@ data:
     \n    proc prod*[T](self:FunctionalGraph_with_op[T],start:int,k:int,include_start:bool=true):T=\n\
     \        ## start\u304B\u3089k\u56DE\u79FB\u52D5\u3059\u308B\u307E\u3067\u306E\
     \u7A4D\u3002include_start=false\u306A\u3089\u59CB\u70B9\u3092\u7A4D\u306B\u542B\
-    \u3081\u306A\u3044\u3002\n        assert k >= 0\n        if not include_start:\n\
+    \u3081\u306A\u3044\u3002\n        assert k >= 0, \"k\u306F\u975E\u8CA0\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if not include_start:\n\
     \            if k == 0:\n                return self.e\n            return self.prod(self.F.movekth(start,1),k-1)\n\
     \        result = self.e\n        var root = self.F.roots[start]\n        var\
     \ tmp = root\n        var flag = false\n        if self.F.depth(start) > k:\n\
@@ -122,11 +125,15 @@ data:
     \                result = self.op(result,self.st_cycle[(self.cum_cyclesize[cid])..<(r-csiz+self.cum_cyclesize[cid])])\n\
     \n    proc prod_range*[T](self:FunctionalGraph_with_op[T],start,l,r:int,include_start:bool=true):seq[T]=\n\
     \        ## @[prod(start,l), ..., prod(start,r-1)]\u3092\u8FD4\u3059\u3002O(log^2\
-    \ N + log l + (r-l))\n        assert 0 <= start and start < len(self.F.cycle_number)\n\
-    \        assert 0 <= l and l <= r\n        result = newSeq[T](r-l)\n        if\
-    \ len(result) == 0:\n            return\n\n        result[0] = self.prod(start,l,include_start)\n\
-    \        if len(result) == 1:\n            return\n\n        var now = self.F.movekth(start,l+1)\n\
-    \        for i in 1..<len(result):\n            let value = self.st_hld[self.F.tree.N-1-self.F.tree.toSeq(now)]\n\
+    \ N + log l + (r-l))\n        assert 0 <= start and start < len(self.F.cycle_number),\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= start and\
+    \ start < len(self.F.cycle_number)\"\n        assert 0 <= l and l <= r, \"\u6307\
+    \u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r\"\n\
+    \        result = newSeq[T](r-l)\n        if len(result) == 0:\n            return\n\
+    \n        result[0] = self.prod(start,l,include_start)\n        if len(result)\
+    \ == 1:\n            return\n\n        var now = self.F.movekth(start,l+1)\n \
+    \       for i in 1..<len(result):\n            let value = self.st_hld[self.F.tree.N-1-self.F.tree.toSeq(now)]\n\
     \            result[i] = self.op(result[i-1],value)\n            if i+1 < len(result):\n\
     \                if self.F.incycle(now):\n                    let cid = self.F.cycle_number[now]\n\
     \                    let next_idx = (self.F.cycle_idx[now]+1) mod len(self.F.cycle[cid])\n\
@@ -134,14 +141,18 @@ data:
     \                    now = self.F.tree.P[now]\n\n    proc prod_range_fold*[T](self:FunctionalGraph_with_op[T],start,l,r:int,f:proc(l,r:T):T,e:T,include_start:bool=true):T=\n\
     \        ## prod(start,l), ..., prod(start,r-1)\u3092\u9806\u306Bf\u3067\u7573\
     \u307F\u8FBC\u3080\u3002O(log^2 N + log l + (r-l))\n        assert 0 <= start\
-    \ and start < len(self.F.cycle_number)\n        assert 0 <= l and l <= r\n   \
-    \     if l == r:\n            return e\n\n        var prefix_prod = self.prod(start,l,include_start)\n\
-    \        result = f(e,prefix_prod)\n        if l+1 == r:\n            return\n\
-    \n        var now = self.F.movekth(start,l+1)\n        for k in (l+1)..<r:\n \
-    \           let value = self.st_hld[self.F.tree.N-1-self.F.tree.toSeq(now)]\n\
-    \            prefix_prod = self.op(prefix_prod,value)\n            result = f(result,prefix_prod)\n\
-    \            if k+1 < r:\n                if self.F.incycle(now):\n          \
-    \          let cid = self.F.cycle_number[now]\n                    let next_idx\
+    \ and start < len(self.F.cycle_number), \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\
+    \u56F2\u5916\u3067\u3059: 0 <= start and start < len(self.F.cycle_number)\"\n\
+    \        assert 0 <= l and l <= r, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: 0 <= l and l <= r\"\n        if l == r:\n            return\
+    \ e\n\n        var prefix_prod = self.prod(start,l,include_start)\n        result\
+    \ = f(e,prefix_prod)\n        if l+1 == r:\n            return\n\n        var\
+    \ now = self.F.movekth(start,l+1)\n        for k in (l+1)..<r:\n            let\
+    \ value = self.st_hld[self.F.tree.N-1-self.F.tree.toSeq(now)]\n            prefix_prod\
+    \ = self.op(prefix_prod,value)\n            result = f(result,prefix_prod)\n \
+    \           if k+1 < r:\n                if self.F.incycle(now):\n           \
+    \         let cid = self.F.cycle_number[now]\n                    let next_idx\
     \ = (self.F.cycle_idx[now]+1) mod len(self.F.cycle[cid])\n                   \
     \ now = self.F.cycle[cid][next_idx]\n                else:\n                 \
     \   now = self.F.tree.P[now]\n    \n    proc move_while*[T](self:FunctionalGraph_with_op[T],f:proc(x:T):bool,x,L:int):int=\n\
@@ -150,9 +161,10 @@ data:
     \u3067\u306E\u79FB\u52D5\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n        # \u305F\
     \u3060\u3057\u3001\u79FB\u52D5\u8DDD\u96E2\u306E\u4E0A\u9650\u306FL\u3068\u3059\
     \u308B\uFF08L\u56DE\u79FB\u52D5\u3057\u3066\u3082true\u306A\u3089L\u3092\u8FD4\
-    \u3059\uFF09\u3002\n        assert L >= 0\n        let limit = L+1 # \u79FB\u52D5\
-    \u8DDD\u96E2L\u306F\u3001\u59CB\u70B9\u3092\u542B\u3081\u3066L+1\u9802\u70B9\n\
-    \        var value = self.e\n        var used = 0\n\n        # x\u304B\u3089\u30B5\
+    \u3059\uFF09\u3002\n        assert L >= 0, \"L\u306F\u975E\u8CA0\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let limit = L+1 # \u79FB\
+    \u52D5\u8DDD\u96E2L\u306F\u3001\u59CB\u70B9\u3092\u542B\u3081\u3066L+1\u9802\u70B9\
+    \n        var value = self.e\n        var used = 0\n\n        # x\u304B\u3089\u30B5\
     \u30A4\u30AF\u30EB\u5165\u53E3\u307E\u3067\u3002st_hld\u306FHLD\u9806\u3092\u53CD\
     \u8EE2\u3057\u3066\u69CB\u7BC9\u3055\u308C\u3066\u3044\u308B\u305F\u3081\u3001\
     \n        # path(...,true)\u306E\u5404\u533A\u9593\u3092\u5DE6\u304B\u3089\u898B\
@@ -201,18 +213,18 @@ data:
     \        rest -= first\n        if rest > 0 and not consume_cycle(0,rest):\n \
     \           return used\n        return used-1\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/functional_graph.nim
-  - cplib/graph/functional_graph.nim
+  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim

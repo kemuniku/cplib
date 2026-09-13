@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
   - icon: ':question:'
@@ -25,29 +25,29 @@ data:
   - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://yukicoder.me/problems/no/1339
     links:
@@ -66,25 +66,25 @@ data:
     \   continue\n    for p in divisor(euler_phi(n)):\n        if powmod(10, p, n)\
     \ == 1:\n            ans.add(p)\n            break\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/math/divisor.nim
+  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/math/euler_phi.nim
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
+  - cplib/math/euler_phi.nim
   - cplib/math/powmod.nim
   - cplib/math/divisor.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/euler_phi.nim
-  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
+  - cplib/math/euler_phi.nim
+  - cplib/math/divisor.nim
   isVerificationFile: true
   path: verify/math/euler_phi_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:35:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/math/euler_phi_yukicoder_test.nim
 layout: document

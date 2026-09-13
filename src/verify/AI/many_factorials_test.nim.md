@@ -146,34 +146,34 @@ data:
     \ == 100\n  expectAssertion: discard second.fact(0)\n\ncheckModulusChange(modint_barrett)\n\
     checkModulusChange(modint_montgomery)\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/modint/modint.nim
-  - cplib/math/many_factorials.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/product_tree.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/taylor_shift.nim
   - cplib/math/many_factorials.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/math/many_factorials.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
+  - cplib/fps/product_tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/many_factorials_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:35:42+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/many_factorials_test.nim

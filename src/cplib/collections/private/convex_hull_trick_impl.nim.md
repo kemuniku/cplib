@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy:
@@ -65,17 +65,19 @@ data:
     \ to_Int128(line.b)\n\n    proc chtAnswer*(value: Int128): int =\n        ## \u6700\
     \u5C0F\u5024\u3092int\u306B\u5909\u63DB\u3057\u307E\u3059\u3002O(1)\u3002\n  \
     \      assert to_Int128(low(int)) <= value and value <= to_Int128(high(int)),\n\
-    \            \"CHT: minimum does not fit in int\"\n        value.to_int\n\n  \
-    \  proc chtStart*(l, r: CHTLine): Int128 =\n        ## \u50BE\u304D\u306E\u5C0F\
-    \u3055\u3044r\u304Cl\u4EE5\u4E0B\u306B\u306A\u308B\u6700\u521D\u306E\u6574\u6570\
-    \u5EA7\u6A19\u3092\u8FD4\u3057\u307E\u3059\u3002O(1)\u3002\n        let numerator\
-    \ = to_Int128(r.b) - to_Int128(l.b)\n        let denominator = to_Int128(l.a)\
-    \ - to_Int128(r.a)\n        assert denominator > 0\n        result = numerator\
-    \ div denominator\n        if numerator mod denominator > 0:\n            result\
-    \ += 1\n\n    proc chtRedundant*(l, m, r: CHTLine): bool =\n        ## \u50BE\u304D\
-    \u304C\u964D\u9806\u306E3\u76F4\u7DDA\u306B\u3064\u3044\u3066\u3001\u4E2D\u592E\
-    \u306E\u76F4\u7DDA\u304C\u4E0D\u8981\u304B\u5224\u5B9A\u3057\u307E\u3059\u3002\
-    O(1)\u3002\n        chtStart(l, m) >= chtStart(m, r)\n\n    proc initCHTMonotoneHull*(slopeIncreasing:\
+    \            \"CHT\u306E\u6700\u5C0F\u5024\u304Cint\u306E\u7BC4\u56F2\u306B\u53CE\
+    \u307E\u308A\u307E\u305B\u3093\"\n        value.to_int\n\n    proc chtStart*(l,\
+    \ r: CHTLine): Int128 =\n        ## \u50BE\u304D\u306E\u5C0F\u3055\u3044r\u304C\
+    l\u4EE5\u4E0B\u306B\u306A\u308B\u6700\u521D\u306E\u6574\u6570\u5EA7\u6A19\u3092\
+    \u8FD4\u3057\u307E\u3059\u3002O(1)\u3002\n        let numerator = to_Int128(r.b)\
+    \ - to_Int128(l.b)\n        let denominator = to_Int128(l.a) - to_Int128(r.a)\n\
+    \        assert denominator > 0, \"denominator\u306F\u6B63\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = numerator div denominator\n\
+    \        if numerator mod denominator > 0:\n            result += 1\n\n    proc\
+    \ chtRedundant*(l, m, r: CHTLine): bool =\n        ## \u50BE\u304D\u304C\u964D\
+    \u9806\u306E3\u76F4\u7DDA\u306B\u3064\u3044\u3066\u3001\u4E2D\u592E\u306E\u76F4\
+    \u7DDA\u304C\u4E0D\u8981\u304B\u5224\u5B9A\u3057\u307E\u3059\u3002O(1)\u3002\n\
+    \        chtStart(l, m) >= chtStart(m, r)\n\n    proc initCHTMonotoneHull*(slopeIncreasing:\
     \ bool = false): CHTMonotoneHull =\n        ## \u50BE\u304D\u304C\u5358\u8ABF\u306A\
     \u6700\u5C0F\u5024CHT\u3092\u521D\u671F\u5316\u3057\u307E\u3059\u3002\u65E2\u5B9A\
     \u306F\u5E83\u7FA9\u5358\u8ABF\u6E1B\u5C11\u3002O(1)\u3002\n        result.lines\
@@ -85,8 +87,10 @@ data:
     \u5411\u304D\u306B\u5358\u8ABF\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
     \u307E\u3059\u3002\u511F\u5374O(1)\u3002\n        if self.hasSlope:\n        \
     \    assert (if self.slopeIncreasing: self.lastSlope <= a else: a <= self.lastSlope),\n\
-    \                \"CHT: slopes must be monotone\"\n        self.hasSlope = true\n\
-    \        self.lastSlope = a\n        let line = CHTLine(a: a, b: b)\n        if\
+    \                \"CHT\u306B\u8FFD\u52A0\u3059\u308B\u76F4\u7DDA\u306E\u50BE\u304D\
+    \u306F\u6307\u5B9A\u3057\u305F\u65B9\u5411\u306B\u5358\u8ABF\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        self.hasSlope = true\n \
+    \       self.lastSlope = a\n        let line = CHTLine(a: a, b: b)\n        if\
     \ self.slopeIncreasing:\n            if self.lines.len > 0 and self.lines[0].a\
     \ == a:\n                if self.lines[0].b <= b: return\n                discard\
     \ self.lines.popFirst()\n            while self.lines.len >= 2 and chtRedundant(line,\
@@ -108,7 +112,7 @@ data:
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
-  timestamp: '2026-09-13 04:33:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/convex_hull_trick_line_add_get_min_test.nim

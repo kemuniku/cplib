@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   - icon: ':question:'
@@ -46,7 +46,7 @@ data:
   isVerificationFile: false
   path: cplib/math/combination_int.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:33:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/combination_int.nim

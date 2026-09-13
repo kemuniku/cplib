@@ -60,7 +60,8 @@ data:
     \u6E80\u305F\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n        ##\
     \ \u8A18\u8F09\u306E\u8A08\u7B97\u91CF\u306Finitial\u3092\u542B\u3080\u5404\u30B3\
     \u30FC\u30EB\u30D0\u30C3\u30AF\u304CO(1)\u306E\u5834\u5408\u3067\u3059\u3002\n\
-    \        assert n >= 0\n        result = DynamicLazySegmentTree[S, F](length:\
+    \        assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        result = DynamicLazySegmentTree[S, F](length:\
     \ n, merge: merge,\n            default: default, mapping: mapping, composition:\
     \ composition,\n            id: id, initial: initial)\n        if n > 0:\n   \
     \         result.root = result.makeNode(0, n, id)\n\n    proc height[S, F](node:\
@@ -142,55 +143,68 @@ data:
     \  ## [l,r)\u3078\u6700\u60AAO(log(K+2))\u3067\u4F5C\u7528\u3055\u305B\u307E\u3059\
     \u3002\u8FFD\u52A0\u30CE\u30FC\u30C9\u306F\u9AD8\u30052\u500B\u3001Q\u56DE\u66F4\
     \u65B0\u5F8C\u306E\u7A7A\u9593\u306FO(Q+1)\u3002\n        assert 0 <= l and l\
-    \ <= r and r <= self.length\n        if l == r: return\n        self.root = self.splitAt(self.root,\
-    \ l)\n        self.root = self.splitAt(self.root, r)\n        self.applyNode(self.root,\
-    \ l, r, f)\n\n    proc getNode[S, F](self: DynamicLazySegmentTree[S, F],\n   \
-    \         node: DynamicLazySegmentTreeNode[S, F], l, r: int): S =\n        ##\
-    \ \u533A\u9593\u3092\u5206\u5272\u305B\u305A\u306B\u533A\u9593\u7A4D\u3092O(log\
-    \ K)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        if node == nil or r <= node.lo\
-    \ or node.hi <= l: return self.default\n        if l <= node.lo and node.hi <=\
-    \ r: return node.product\n        self.push(node)\n        result = self.getNode(node.left,\
-    \ l, r)\n        let a = max(l, node.a)\n        let b = min(r, node.b)\n    \
-    \    if a < b:\n            let value = if a == node.a and b == node.b: node.value\n\
-    \                        else: self.mapping(node.tag, self.initial(a, b))\n  \
-    \          result = self.merge(result, value)\n        result = self.merge(result,\
-    \ self.getNode(node.right, l, r))\n\n    proc get*[S, F](self: DynamicLazySegmentTree[S,\
-    \ F], l, r: int): S =\n        ## \u534A\u958B\u533A\u9593[l,r)\u306E\u7A4D\u3092\
-    \u6700\u60AAO(log(K+2))\u3067\u8FD4\u3057\u307E\u3059\u3002\u53D6\u5F97\u3067\u306F\
-    \u30CE\u30FC\u30C9\u3092\u8FFD\u52A0\u3057\u307E\u305B\u3093\u3002\n        assert\
-    \ 0 <= l and l <= r and r <= self.length\n        if l == r: return self.default\n\
-    \        self.getNode(self.root, l, r)\n\n    proc setNode[S, F](self: DynamicLazySegmentTree[S,\
-    \ F],\n            node: DynamicLazySegmentTreeNode[S, F], p: int, value: S) =\n\
-    \        ## \u9577\u30551\u306B\u5206\u5272\u6E08\u307F\u306E\u533A\u9593\u3092\
-    O(log K)\u3067\u4E0A\u66F8\u304D\u3057\u307E\u3059\u3002\n        self.push(node)\n\
-    \        if p < node.a:\n            self.setNode(node.left, p, value)\n     \
-    \   elif p >= node.b:\n            self.setNode(node.right, p, value)\n      \
-    \  else:\n            node.value = value\n            node.tag = self.id\n   \
-    \     self.pull(node)\n\n    proc update*[S, F](self: DynamicLazySegmentTree[S,\
-    \ F], p: Natural, value: S) =\n        ## 1\u70B9\u3092\u6700\u60AAO(log(K+2))\u3067\
-    \u4E0A\u66F8\u304D\u3057\u307E\u3059\u3002\u8FFD\u52A0\u30CE\u30FC\u30C9\u306F\
-    \u9AD8\u30052\u500B\u3067\u3059\u3002\n        assert p < self.length\n      \
-    \  self.root = self.splitAt(self.root, p)\n        self.root = self.splitAt(self.root,\
-    \ p + 1)\n        self.setNode(self.root, p, value)\n\n    proc get*[S, F](self:\
-    \ DynamicLazySegmentTree[S, F], segment: HSlice[int, int]): S =\n        ## \u30B9\
-    \u30E9\u30A4\u30B9\u306E\u533A\u9593\u7A4D\u3092\u6700\u60AAO(log(K+2))\u3067\u8FD4\
-    \u3057\u307E\u3059\u3002\n        assert segment.b < self.length\n        self.get(segment.a,\
-    \ segment.b + 1)\n\n    proc apply*[S, F](self: DynamicLazySegmentTree[S, F],\
-    \ segment: HSlice[int, int], f: F) =\n        ## \u30B9\u30E9\u30A4\u30B9\u306E\
-    \u533A\u9593\u3078\u6700\u60AAO(log(K+2))\u3067\u4F5C\u7528\u3055\u305B\u307E\u3059\
-    \u3002\n        assert segment.b < self.length\n        self.apply(segment.a,\
-    \ segment.b + 1, f)\n\n    proc `[]`*[S, F](self: DynamicLazySegmentTree[S, F],\
-    \ segment: HSlice[int, int]): S =\n        ## \u30B9\u30E9\u30A4\u30B9\u306E\u533A\
-    \u9593\u7A4D\u3092\u6700\u60AAO(log(K+2))\u3067\u8FD4\u3057\u307E\u3059\u3002\n\
-    \        self.get(segment)\n\n    proc `[]`*[S, F](self: DynamicLazySegmentTree[S,\
-    \ F], p: Natural): S =\n        ## 1\u70B9\u3092\u6700\u60AAO(log(K+2))\u3067\u53D6\
-    \u5F97\u3057\u307E\u3059\u3002\n        assert p < self.length\n        self.get(p,\
-    \ p + 1)\n\n    proc `[]=`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural,\
-    \ value: S) =\n        ## 1\u70B9\u3092\u6700\u60AAO(log(K+2))\u3067\u4E0A\u66F8\
-    \u304D\u3057\u307E\u3059\u3002\n        self.update(p, value)\n\n    proc get_all*[S,\
-    \ F](self: DynamicLazySegmentTree[S, F]): S =\n        ## \u5168\u533A\u9593\u306E\
-    \u7A4D\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        if self.root ==\
-    \ nil: self.default else: self.root.product\n\n    proc len*[S, F](self: DynamicLazySegmentTree[S,\
+    \ <= r and r <= self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: 0 <= l and l <= r and r <= self.length\"\n        if l == r: return\n\
+    \        self.root = self.splitAt(self.root, l)\n        self.root = self.splitAt(self.root,\
+    \ r)\n        self.applyNode(self.root, l, r, f)\n\n    proc getNode[S, F](self:\
+    \ DynamicLazySegmentTree[S, F],\n            node: DynamicLazySegmentTreeNode[S,\
+    \ F], l, r: int): S =\n        ## \u533A\u9593\u3092\u5206\u5272\u305B\u305A\u306B\
+    \u533A\u9593\u7A4D\u3092O(log K)\u3067\u8FD4\u3057\u307E\u3059\u3002\n       \
+    \ if node == nil or r <= node.lo or node.hi <= l: return self.default\n      \
+    \  if l <= node.lo and node.hi <= r: return node.product\n        self.push(node)\n\
+    \        result = self.getNode(node.left, l, r)\n        let a = max(l, node.a)\n\
+    \        let b = min(r, node.b)\n        if a < b:\n            let value = if\
+    \ a == node.a and b == node.b: node.value\n                        else: self.mapping(node.tag,\
+    \ self.initial(a, b))\n            result = self.merge(result, value)\n      \
+    \  result = self.merge(result, self.getNode(node.right, l, r))\n\n    proc get*[S,\
+    \ F](self: DynamicLazySegmentTree[S, F], l, r: int): S =\n        ## \u534A\u958B\
+    \u533A\u9593[l,r)\u306E\u7A4D\u3092\u6700\u60AAO(log(K+2))\u3067\u8FD4\u3057\u307E\
+    \u3059\u3002\u53D6\u5F97\u3067\u306F\u30CE\u30FC\u30C9\u3092\u8FFD\u52A0\u3057\
+    \u307E\u305B\u3093\u3002\n        assert 0 <= l and l <= r and r <= self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <=\
+    \ r and r <= self.length\"\n        if l == r: return self.default\n        self.getNode(self.root,\
+    \ l, r)\n\n    proc setNode[S, F](self: DynamicLazySegmentTree[S, F],\n      \
+    \      node: DynamicLazySegmentTreeNode[S, F], p: int, value: S) =\n        ##\
+    \ \u9577\u30551\u306B\u5206\u5272\u6E08\u307F\u306E\u533A\u9593\u3092O(log K)\u3067\
+    \u4E0A\u66F8\u304D\u3057\u307E\u3059\u3002\n        self.push(node)\n        if\
+    \ p < node.a:\n            self.setNode(node.left, p, value)\n        elif p >=\
+    \ node.b:\n            self.setNode(node.right, p, value)\n        else:\n   \
+    \         node.value = value\n            node.tag = self.id\n        self.pull(node)\n\
+    \n    proc update*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural, value:\
+    \ S) =\n        ## 1\u70B9\u3092\u6700\u60AAO(log(K+2))\u3067\u4E0A\u66F8\u304D\
+    \u3057\u307E\u3059\u3002\u8FFD\u52A0\u30CE\u30FC\u30C9\u306F\u9AD8\u30052\u500B\
+    \u3067\u3059\u3002\n        assert p < self.length, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: p < self.length\"\n        self.root = self.splitAt(self.root,\
+    \ p)\n        self.root = self.splitAt(self.root, p + 1)\n        self.setNode(self.root,\
+    \ p, value)\n\n    proc get*[S, F](self: DynamicLazySegmentTree[S, F], segment:\
+    \ HSlice[int, int]): S =\n        ## \u30B9\u30E9\u30A4\u30B9\u306E\u533A\u9593\
+    \u7A4D\u3092\u6700\u60AAO(log(K+2))\u3067\u8FD4\u3057\u307E\u3059\u3002\n    \
+    \    assert segment.b < self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: segment.b < self.length\"\n        self.get(segment.a, segment.b\
+    \ + 1)\n\n    proc apply*[S, F](self: DynamicLazySegmentTree[S, F], segment: HSlice[int,\
+    \ int], f: F) =\n        ## \u30B9\u30E9\u30A4\u30B9\u306E\u533A\u9593\u3078\u6700\
+    \u60AAO(log(K+2))\u3067\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002\n        assert\
+    \ segment.b < self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\
+    \u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059: segment.b < self.length\"\n        self.apply(segment.a, segment.b + 1,\
+    \ f)\n\n    proc `[]`*[S, F](self: DynamicLazySegmentTree[S, F], segment: HSlice[int,\
+    \ int]): S =\n        ## \u30B9\u30E9\u30A4\u30B9\u306E\u533A\u9593\u7A4D\u3092\
+    \u6700\u60AAO(log(K+2))\u3067\u8FD4\u3057\u307E\u3059\u3002\n        self.get(segment)\n\
+    \n    proc `[]`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural): S =\n\
+    \        ## 1\u70B9\u3092\u6700\u60AAO(log(K+2))\u3067\u53D6\u5F97\u3057\u307E\
+    \u3059\u3002\n        assert p < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\
+    \u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059: p < self.length\"\n        self.get(p, p + 1)\n\n  \
+    \  proc `[]=`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural, value: S)\
+    \ =\n        ## 1\u70B9\u3092\u6700\u60AAO(log(K+2))\u3067\u4E0A\u66F8\u304D\u3057\
+    \u307E\u3059\u3002\n        self.update(p, value)\n\n    proc get_all*[S, F](self:\
+    \ DynamicLazySegmentTree[S, F]): S =\n        ## \u5168\u533A\u9593\u306E\u7A4D\
+    \u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        if self.root == nil: self.default\
+    \ else: self.root.product\n\n    proc len*[S, F](self: DynamicLazySegmentTree[S,\
     \ F]): int =\n        ## \u5EA7\u6A19\u7BC4\u56F2\u306E\u9577\u3055\u3092O(1)\u3067\
     \u8FD4\u3057\u307E\u3059\u3002\n        self.length\n\n    proc node_count*[S,\
     \ F](self: DynamicLazySegmentTree[S, F]): int =\n        ## \u4FDD\u6301\u3059\
@@ -210,7 +224,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/dynamic_lazysegtree.nim
   requiredBy: []
-  timestamp: '2026-09-12 20:28:08+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/lazysegtree/dynamic_rangeaffinerangesum_test.nim

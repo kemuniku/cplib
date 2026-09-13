@@ -88,22 +88,28 @@ data:
     \        let l = tree.mergeRange(items, prefix, left, mid, kind)\n        let\
     \ r = tree.mergeRange(items, prefix, mid, right, kind)\n        let upper = tree.nodes[l].upper\n\
     \        let lower = if kind == sttCompress: tree.nodes[r].lower else: tree.nodes[l].lower\n\
-    \        if kind == sttCompress:\n            assert tree.nodes[l].lower == tree.nodes[r].upper\n\
-    \        else:\n            assert tree.nodes[l].upper == tree.nodes[r].upper\n\
-    \        result = tree.nodes.len\n        tree.nodes.add(StaticTopTreeNode(kind:\
+    \        if kind == sttCompress:\n            assert tree.nodes[l].lower == tree.nodes[r].upper,\
+    \ \"compress\u3059\u308B\u30AF\u30E9\u30B9\u30BF\u306E\u63A5\u7D9A\u9802\u70B9\
+    \u304C\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       else:\n            assert tree.nodes[l].upper == tree.nodes[r].upper,\
+    \ \"rake\u3059\u308B\u30AF\u30E9\u30B9\u30BF\u306E\u4E0A\u7AEF\u306E\u9802\u70B9\
+    \u304C\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       result = tree.nodes.len\n        tree.nodes.add(StaticTopTreeNode(kind:\
     \ kind, parent: -1, left: l, right: r,\n            upper: upper, lower: lower,\
     \ size: weight))\n        tree.nodes[l].parent = result\n        tree.nodes[r].parent\
     \ = result\n\n    proc mergeBalanced(tree: StaticTopTree, items: seq[int], kind:\
     \ StaticTopTreeNodeKind): int =\n        ## \u9802\u70B9\u6570\u3092\u91CD\u307F\
     \u306B\u3057\u305F\u5E73\u8861\u306A\u7D50\u5408\u6728\u3092\u4F5C\u308B\u3002\
-    O(K log K)\n        assert items.len > 0\n        if items.len == 1:\n       \
-    \     return items[0]\n        var prefix = newSeq[int](items.len + 1)\n     \
-    \   for i, node in items:\n            prefix[i + 1] = prefix[i] + tree.nodes[node].size\n\
+    O(K log K)\n        assert items.len > 0, \"items.len\u306F\u6B63\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if items.len == 1:\n   \
+    \         return items[0]\n        var prefix = newSeq[int](items.len + 1)\n \
+    \       for i, node in items:\n            prefix[i + 1] = prefix[i] + tree.nodes[node].size\n\
     \        return tree.mergeRange(items, prefix, 0, items.len, kind)\n\n    proc\
     \ initStaticTopTree*(hld: HeavyLightDecomposition): StaticTopTree =\n        ##\
     \ \u975E\u7A7A\u306E\u6728\u306EHLD\u304B\u3089\u9AD8\u3055O(log N)\u306E\u69CB\
     \u9020\u3092\u4F5C\u308B\u3002O(N log N)\u6642\u9593\u3001O(N)\u7A7A\u9593\n \
-    \       let n = hld.numVertices\n        assert n > 0\n        let tree = StaticTopTree(numVertices:\
+    \       let n = hld.numVertices\n        assert n > 0, \"n\u306F\u6B63\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let tree = StaticTopTree(numVertices:\
     \ n, nodes: newSeqOfCap[StaticTopTreeNode](2 * n - 1))\n        for v in 0..<n:\n\
     \            tree.nodes.add(StaticTopTreeNode(kind: sttLeaf, parent: -1, left:\
     \ -1, right: -1,\n                upper: hld.parentOf(v), lower: v, size: 1))\n\
@@ -117,16 +123,17 @@ data:
     \                path.add(tree.mergeBalanced(branches, sttRake))\n           \
     \     v = heavy\n            pathRoot[head] = tree.mergeBalanced(path, sttCompress)\n\
     \        tree.root = pathRoot[hld.toVtx(0)]\n        assert tree.nodes.len ==\
-    \ 2 * n - 1\n        return tree\n\n    proc initStaticTopTreeFromParent*(parent:\
-    \ openArray[int], root: int = 0): StaticTopTree =\n        ## \u89AA\u914D\u5217\
-    \u304B\u3089\u69CB\u7BC9\u3059\u308B\u3002parent[root]\u306F\u53C2\u7167\u3057\
-    \u306A\u3044\u3002O(N log N)\n        return initStaticTopTree(initHldFromParent(parent,\
-    \ root))\n"
+    \ 2 * n - 1, \"\u69CB\u7BC9\u3057\u305F\u30AF\u30E9\u30B9\u30BF\u306E\u500B\u6570\
+    \u306F2 * n - 1\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\
+    \        return tree\n\n    proc initStaticTopTreeFromParent*(parent: openArray[int],\
+    \ root: int = 0): StaticTopTree =\n        ## \u89AA\u914D\u5217\u304B\u3089\u69CB\
+    \u7BC9\u3059\u308B\u3002parent[root]\u306F\u53C2\u7167\u3057\u306A\u3044\u3002\
+    O(N log N)\n        return initStaticTopTree(initHldFromParent(parent, root))\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree.nim
   requiredBy:
@@ -134,7 +141,7 @@ data:
   - cplib/tree/static_top_tree_dp.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
-  timestamp: '2026-09-13 13:39:58+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/point_set_tree_path_composite_sum_test.nim

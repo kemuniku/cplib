@@ -41,7 +41,7 @@ data:
   isVerificationFile: true
   path: verify/collections/lazysegtree/dynamic_rangeaffinerangesum_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 20:28:08+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/dynamic_rangeaffinerangesum_test.nim

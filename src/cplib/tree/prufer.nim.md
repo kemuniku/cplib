@@ -101,7 +101,9 @@ data:
   code: "when not declared CPLIB_TREE_PRUFER:\n    const CPLIB_TREE_PRUFER* = 1\n\n\
     \    import cplib/graph/graph\n    import sequtils, heapqueue\n    proc prufer_decode*(a:\
     \ openArray[int]): UnWeightedUnDirectedGraph =\n        var n = a.len + 2\n  \
-    \      assert a.allIt(it in 0..<n)\n        result = initUnWeightedUnDirectedGraph(n)\n\
+    \      assert a.allIt(it in 0..<n), \"Pr\xFCfer\u5217\u306E\u5404\u8981\u7D20\u306F\
+    \u6709\u52B9\u306A\u9802\u70B9\u756A\u53F7\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        result = initUnWeightedUnDirectedGraph(n)\n\
     \        var cnt = newSeqWith(n, 1)\n        for ai in a:\n            cnt[ai]\
     \ += 1\n        var q = initHeapQueue[(int, int)]()\n        for i in 0..<n:\n\
     \            q.push((cnt[i], i))\n        for i in 0..<a.len:\n            var\
@@ -122,7 +124,7 @@ data:
   - cplib/utils/itertools.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/utils/itertools/accumulated_test.nim

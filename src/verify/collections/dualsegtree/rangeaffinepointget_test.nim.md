@@ -60,19 +60,19 @@ data:
     \        echo st[i]\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/collections/dualsegtree.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/collections/dualsegtree.nim
-  - cplib/collections/dualsegtree.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/collections/dualsegtree/rangeaffinepointget_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 13:38:06+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/dualsegtree/rangeaffinepointget_test.nim

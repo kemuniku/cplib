@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
@@ -56,14 +56,14 @@ data:
     \ \"z\" & longString, 1) == 1\ndoAssert editDistance(\"z\" & longString, longString,\
     \ 1) == 1\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/str/suffix_array.nim
   - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
   - cplib/str/edit_distance.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/AI/edit_distance_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 16:17:28+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/edit_distance_test.nim

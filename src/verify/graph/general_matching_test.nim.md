@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/general_matching
     links:
@@ -43,15 +43,15 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/general_matching.nim
+  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/general_matching_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/general_matching_test.nim
 layout: document

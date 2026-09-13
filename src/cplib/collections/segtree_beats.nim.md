@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
   _extendedVerifiedWith:
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/segtree_beats_test.nim
     title: verify/AI/segtree_beats_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -75,19 +75,25 @@ data:
     \ self.arr[p].fail:\n                self.push(p)\n                self.arr[p]\
     \ = self.merge(self.arr[2*p], self.arr[2*p+1])\n\n    proc update*[S, F](self:\
     \ var SegmentTreeBeats[S, F], p: Natural, val:S) =\n        ## p\u306E\u8981\u7D20\
-    \u3092val\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\n        assert p < self.length\n\
-    \        var p = p + self.lastnode\n        self.all_push(p)\n        self.arr[p]\
+    \u3092val\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\n        assert p < self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: p < self.length\"\n  \
+    \      var p = p + self.lastnode\n        self.all_push(p)\n        self.arr[p]\
     \ = val\n        for i in 1..self.log:\n            self.arr[p shr i] = self.merge(self.arr[2*(p\
     \ shr i)], self.arr[2*(p shr i)+1])\n\n    proc `[]`*[S, F](self: var SegmentTreeBeats[S,\
-    \ F], p: Natural): S =\n        assert p < self.length\n        self.all_push(p\
-    \ + self.lastnode)\n        return self.arr[p + self.lastnode]\n\n    proc get*[S,\
-    \ F](self: var SegmentTreeBeats[S, F], q_left, q_right: int): S =\n        ##\
-    \ \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\u3064\u3044\u3066\u306E\u6F14\
-    \u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert q_left\
-    \ <= q_right and 0 <= q_left and q_right <= self.length\n        if q_left ==\
-    \ q_right: return self.default\n        var q_left = q_left + self.lastnode\n\
-    \        var q_right = q_right + self.lastnode\n        for i in countdown(self.log,\
-    \ 1):\n            if i <= countTrailingZeroBits(q_left): break\n            self.push(q_left\
+    \ F], p: Natural): S =\n        assert p < self.length, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: p < self.length\"\n        self.all_push(p + self.lastnode)\n\
+    \        return self.arr[p + self.lastnode]\n\n    proc get*[S, F](self: var SegmentTreeBeats[S,\
+    \ F], q_left, q_right: int): S =\n        ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\
+    \u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\
+    \u3002\n        assert q_left <= q_right and 0 <= q_left and q_right <= self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: q_left <= q_right\
+    \ and 0 <= q_left and q_right <= self.length\"\n        if q_left == q_right:\
+    \ return self.default\n        var q_left = q_left + self.lastnode\n        var\
+    \ q_right = q_right + self.lastnode\n        for i in countdown(self.log, 1):\n\
+    \            if i <= countTrailingZeroBits(q_left): break\n            self.push(q_left\
     \ shr i)\n        for i in countdown(self.log, 1):\n            if i <= countTrailingZeroBits(q_right):\
     \ break\n            self.push((q_right - 1) shr i)\n        var\n           \
     \ lres = self.default\n            rres = self.default\n        while q_left <\
@@ -110,11 +116,14 @@ data:
     \  id\n        )\n    proc apply*[S, F](self: var SegmentTreeBeats[S, F], q_left,\
     \ q_right: int, f: F) =\n        ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\
     \u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\
-    \u3002\n        assert q_left <= q_right and 0 <= q_left and q_right <= self.length\n\
-    \        if q_left == q_right: return\n        var q_left = q_left + self.lastnode\n\
-    \        var q_right = q_right + self.lastnode\n        var mx = countTrailingZeroBits(q_left)\
-    \ + 1\n        for i in countdown(self.log, mx):\n            self.push(q_left\
-    \ shr i)\n        mx = countTrailingZeroBits(q_right) + 1\n        for i in countdown(self.log,\
+    \u3002\n        assert q_left <= q_right and 0 <= q_left and q_right <= self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: q_left <= q_right\
+    \ and 0 <= q_left and q_right <= self.length\"\n        if q_left == q_right:\
+    \ return\n        var q_left = q_left + self.lastnode\n        var q_right = q_right\
+    \ + self.lastnode\n        var mx = countTrailingZeroBits(q_left) + 1\n      \
+    \  for i in countdown(self.log, mx):\n            self.push(q_left shr i)\n  \
+    \      mx = countTrailingZeroBits(q_right) + 1\n        for i in countdown(self.log,\
     \ mx):\n            self.push((q_right - 1) shr i)\n        block:\n         \
     \   var q_left = q_left\n            var q_right = q_right\n            while\
     \ q_left < q_right:\n                if (q_left and 1) > 0:\n                \
@@ -134,8 +143,8 @@ data:
   requiredBy:
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats_template.nim
-  timestamp: '2026-09-03 23:04:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim

@@ -42,13 +42,13 @@ data:
     \ \")\n\n"
   dependsOn:
   - cplib/tree/rerooting.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/rerooting_test.nim

@@ -66,18 +66,18 @@ data:
     \ = mint(ii())\n        add[v] = mint(ii())\n    dp.set(v, leaf(v))\n    answers.add(dp.getAll().sum.val)\n\
     echo answers.join(\"\\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree_dp.nim
   - cplib/tree/static_top_tree.nim
   - cplib/tree/static_top_tree_dp.nim
   - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim

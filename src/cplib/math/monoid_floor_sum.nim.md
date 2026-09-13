@@ -49,10 +49,13 @@ data:
     \        if (exponent and 1) != 0:\n                    result = op(result, value)\n\
     \                exponent = exponent shr 1\n                if exponent > 0:\n\
     \                    value = op(value, value)\n\n        assert n >= 0 and m >\
-    \ 0 and a >= 0 and b >= 0\n        assert n == 0 or a <= (high(int) - b) div n\n\
-    \        var\n            n = n\n            m = m\n            a = a\n      \
-    \      b = b\n            x = x\n            y = y\n            prefix = e\n \
-    \           suffix = e\n        while true:\n            prefix = op(prefix, power(y,\
+    \ 0 and a >= 0 and b >= 0, \"n\u3001a\u3001b\u306F\u975E\u8CA0\u3067\u3001m\u306F\
+    \u6B63\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \ assert n == 0 or a <= (high(int) - b) div n, \"a * n + b\u304Cint\u306E\u7BC4\
+    \u56F2\u306B\u53CE\u307E\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       var\n            n = n\n            m = m\n            a = a\n       \
+    \     b = b\n            x = x\n            y = y\n            prefix = e\n  \
+    \          suffix = e\n        while true:\n            prefix = op(prefix, power(y,\
     \ b div m))\n            x = op(x, power(y, a div m))\n            a = a mod m\n\
     \            b = b mod m\n            let height = (a * n + b) div m\n       \
     \     if height == 0:\n                return op(op(prefix, power(x, n)), suffix)\n\
@@ -69,7 +72,7 @@ data:
   requiredBy:
   - cplib/math/generalized_floor_sum.nim
   - cplib/math/generalized_floor_sum.nim
-  timestamp: '2026-09-12 15:14:35+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/math/monoid_floor_sum_test.nim

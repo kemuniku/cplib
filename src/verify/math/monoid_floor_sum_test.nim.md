@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: verify/math/monoid_floor_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 15:14:35+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/math/monoid_floor_sum_test.nim

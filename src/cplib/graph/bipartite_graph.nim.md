@@ -50,7 +50,7 @@ data:
   requiredBy:
   - verify/graph/is_bipartite_graph_test_.nim
   - verify/graph/is_bipartite_graph_test_.nim
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/bipartite_graph_test.nim

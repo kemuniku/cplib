@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/lazy_subtree_link_cut_tree.nim
     title: cplib/tree/lazy_subtree_link_cut_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/lazy_subtree_link_cut_tree.nim
     title: cplib/tree/lazy_subtree_link_cut_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/link_cut_tree.nim
     title: cplib/tree/link_cut_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/link_cut_tree.nim
     title: cplib/tree/link_cut_tree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -157,17 +157,17 @@ data:
     \ lazy.componentProd(x) == expected\n    for u in 0..<n:\n        for v in 0..<n:\
     \ checkPath(u, v)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/link_cut_tree.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/link_cut_tree.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/link_cut_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-10 04:41:56+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/link_cut_tree/link_cut_tree_test.nim
 layout: document

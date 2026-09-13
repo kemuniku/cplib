@@ -72,19 +72,25 @@ data:
     \ = self.id\n\n    template all_push(self, p: untyped) =\n        for i in countdown(self.log,\
     \ 1): self.push(p shr i)\n\n    proc update*[S, F](self: var LazySegmentTree[S,\
     \ F], p: Natural, val: S) =\n        ## p\u306E\u8981\u7D20\u3092val\u306B\u5909\
-    \u66F4\u3057\u307E\u3059\u3002\n        assert p < self.length\n        var p\
-    \ = p + self.lastnode\n        self.all_push(p)\n        self.arr[p] = val\n \
-    \       for i in 1..self.log:\n            self.arr[p shr i] = self.merge(self.arr[2*(p\
+    \u66F4\u3057\u307E\u3059\u3002\n        assert p < self.length, \"\u6307\u5B9A\
+    \u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: p < self.length\"\n        var p =\
+    \ p + self.lastnode\n        self.all_push(p)\n        self.arr[p] = val\n   \
+    \     for i in 1..self.log:\n            self.arr[p shr i] = self.merge(self.arr[2*(p\
     \ shr i)], self.arr[2*(p shr i)+1])\n\n    proc `[]`*[S, F](self: var LazySegmentTree[S,\
-    \ F], p: Natural): S =\n        assert p < self.length\n        self.all_push(p\
-    \ + self.lastnode)\n        return self.arr[p + self.lastnode]\n\n    proc get*[S,\
-    \ F](self: var LazySegmentTree[S, F], q_left, q_right: int): S =\n        ## \u534A\
-    \u89E3\u533A\u9593[q_left,q_right)\u306B\u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\
-    \u679C\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert q_left <= q_right and\
-    \ 0 <= q_left and q_right <= self.length\n        if q_left == q_right: return\
-    \ self.default\n        var q_left = q_left + self.lastnode\n        var q_right\
-    \ = q_right + self.lastnode\n        for i in countdown(self.log, 1):\n      \
-    \      if i <= countTrailingZeroBits(q_left): break\n            self.push(q_left\
+    \ F], p: Natural): S =\n        assert p < self.length, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: p < self.length\"\n        self.all_push(p + self.lastnode)\n\
+    \        return self.arr[p + self.lastnode]\n\n    proc get*[S, F](self: var LazySegmentTree[S,\
+    \ F], q_left, q_right: int): S =\n        ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\
+    \u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\
+    \u3002\n        assert q_left <= q_right and 0 <= q_left and q_right <= self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: q_left <= q_right\
+    \ and 0 <= q_left and q_right <= self.length\"\n        if q_left == q_right:\
+    \ return self.default\n        var q_left = q_left + self.lastnode\n        var\
+    \ q_right = q_right + self.lastnode\n        for i in countdown(self.log, 1):\n\
+    \            if i <= countTrailingZeroBits(q_left): break\n            self.push(q_left\
     \ shr i)\n        for i in countdown(self.log, 1):\n            if i <= countTrailingZeroBits(q_right):\
     \ break\n            self.push((q_right - 1) shr i)\n        var\n           \
     \ lres = self.default\n            rres = self.default\n        while q_left <\
@@ -112,32 +118,38 @@ data:
     \ F](self: var LazySegmentTree[S, F], q_left, q_right: int, f: F) =\n        ##\
     \ \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\u3064\u3044\u3066\u306E\u6F14\
     \u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert q_left\
-    \ <= q_right and 0 <= q_left and q_right <= self.length\n        if q_left ==\
-    \ q_right: return\n        var q_left = q_left + self.lastnode\n        var q_right\
-    \ = q_right + self.lastnode\n        var mx = countTrailingZeroBits(q_left) +\
-    \ 1\n        for i in countdown(self.log, mx):\n            self.push(q_left shr\
-    \ i)\n        mx = countTrailingZeroBits(q_right) + 1\n        for i in countdown(self.log,\
-    \ mx):\n            self.push((q_right - 1) shr i)\n        block:\n         \
-    \   var q_left = q_left\n            var q_right = q_right\n            while\
-    \ q_left < q_right:\n                if (q_left and 1) > 0:\n                \
-    \    self.all_apply(q_left, f)\n                    q_left.inc\n             \
-    \   if (q_right and 1) > 0:\n                    q_right.dec\n               \
-    \     self.all_apply(q_right, f)\n                q_left = q_left shr 1\n    \
-    \            q_right = q_right shr 1\n        var mn = countTrailingZeroBits(q_left)\
-    \ + 1\n        for i in mn..self.log:\n            var p = q_left shr i\n    \
-    \        self.arr[p] = self.merge(self.arr[2*p], self.arr[2*p+1])\n        mn\
-    \ = countTrailingZeroBits(q_right) + 1\n        for i in mn..self.log:\n     \
-    \       var p = ((q_right - 1) shr i)\n            self.arr[p] = self.merge(self.arr[2*p],\
-    \ self.arr[2*p+1])\n    proc apply*[S, F](self: var LazySegmentTree[S, F], segment:\
-    \ HSlice[int, int], f: F) =\n        self.apply(segment.a, segment.b+1, f)\n\n\
-    \    proc max_right*[S, F](self: var LazySegmentTree[S, F], l: int, f: proc(l:\
-    \ S): bool): int =\n        ## f(get(l, r))\u3092\u6E80\u305F\u3059\u6700\u5927\
-    \u306Er\u3092O(log N)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        ## f\u306F\u533A\
-    \u9593\u306E\u62E1\u5927\u306B\u5BFE\u3057\u3066\u5358\u8ABF\u3067\u3001\u5358\
-    \u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\
-    \u308A\u307E\u3059\u3002\n        assert 0 <= l and l <= self.len\n        assert\
-    \ f(self.default)\n        if l == self.len: return self.len\n        var l =\
-    \ l + self.lastnode\n        self.all_push(l)\n        var sm = self.default\n\
+    \ <= q_right and 0 <= q_left and q_right <= self.length, \"\u6307\u5B9A\u3057\u305F\
+    \u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: q_left <= q_right and 0 <= q_left and q_right\
+    \ <= self.length\"\n        if q_left == q_right: return\n        var q_left =\
+    \ q_left + self.lastnode\n        var q_right = q_right + self.lastnode\n    \
+    \    var mx = countTrailingZeroBits(q_left) + 1\n        for i in countdown(self.log,\
+    \ mx):\n            self.push(q_left shr i)\n        mx = countTrailingZeroBits(q_right)\
+    \ + 1\n        for i in countdown(self.log, mx):\n            self.push((q_right\
+    \ - 1) shr i)\n        block:\n            var q_left = q_left\n            var\
+    \ q_right = q_right\n            while q_left < q_right:\n                if (q_left\
+    \ and 1) > 0:\n                    self.all_apply(q_left, f)\n               \
+    \     q_left.inc\n                if (q_right and 1) > 0:\n                  \
+    \  q_right.dec\n                    self.all_apply(q_right, f)\n             \
+    \   q_left = q_left shr 1\n                q_right = q_right shr 1\n        var\
+    \ mn = countTrailingZeroBits(q_left) + 1\n        for i in mn..self.log:\n   \
+    \         var p = q_left shr i\n            self.arr[p] = self.merge(self.arr[2*p],\
+    \ self.arr[2*p+1])\n        mn = countTrailingZeroBits(q_right) + 1\n        for\
+    \ i in mn..self.log:\n            var p = ((q_right - 1) shr i)\n            self.arr[p]\
+    \ = self.merge(self.arr[2*p], self.arr[2*p+1])\n    proc apply*[S, F](self: var\
+    \ LazySegmentTree[S, F], segment: HSlice[int, int], f: F) =\n        self.apply(segment.a,\
+    \ segment.b+1, f)\n\n    proc max_right*[S, F](self: var LazySegmentTree[S, F],\
+    \ l: int, f: proc(l: S): bool): int =\n        ## f(get(l, r))\u3092\u6E80\u305F\
+    \u3059\u6700\u5927\u306Er\u3092O(log N)\u3067\u8FD4\u3057\u307E\u3059\u3002\n\
+    \        ## f\u306F\u533A\u9593\u306E\u62E1\u5927\u306B\u5BFE\u3057\u3066\u5358\
+    \u8ABF\u3067\u3001\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n        assert 0 <= l and l\
+    \ <= self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\
+    \u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and\
+    \ l <= self.len\"\n        assert f(self.default), \"\u5224\u5B9A\u95A2\u6570\u306F\
+    \u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        if l == self.len: return self.len\n      \
+    \  var l = l + self.lastnode\n        self.all_push(l)\n        var sm = self.default\n\
     \        while true:\n            while l mod 2 == 0: l = (l shr 1)\n        \
     \    if not f(self.merge(sm, self.arr[l])):\n                while l < self.lastnode:\n\
     \                    self.push(l)\n                    l *= 2\n              \
@@ -150,21 +162,25 @@ data:
     \u307E\u3059\u3002\n        ## f\u306F\u533A\u9593\u306E\u62E1\u5927\u306B\u5BFE\
     \u3057\u3066\u5358\u8ABF\u3067\u3001\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066\
     true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n     \
-    \   assert 0 <= r and r <= self.len\n        assert f(self.default)\n        if\
-    \ r == 0: return 0\n        var r = r + self.lastnode\n        self.all_push(r\
-    \ - 1)\n        var sm = self.default\n        while true:\n            r -= 1\n\
-    \            while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)\n            if\
-    \ not f(self.merge(self.arr[r], sm)):\n                while r < self.lastnode:\n\
-    \                    self.push(r)\n                    r = 2 * r + 1\n       \
-    \             if f(self.merge(self.arr[r], sm)):\n                        sm =\
-    \ self.merge(self.arr[r], sm)\n                        r -= 1\n              \
-    \  return r + 1 - self.lastnode\n            sm = self.merge(self.arr[r], sm)\n\
-    \            if (r and -r) == r: break\n        return 0\n"
+    \   assert 0 <= r and r <= self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: 0 <= r and r <= self.len\"\n        assert f(self.default), \"\u5224\
+    \u5B9A\u95A2\u6570\u306F\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\
+    \u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if r == 0: return\
+    \ 0\n        var r = r + self.lastnode\n        self.all_push(r - 1)\n       \
+    \ var sm = self.default\n        while true:\n            r -= 1\n           \
+    \ while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)\n            if not f(self.merge(self.arr[r],\
+    \ sm)):\n                while r < self.lastnode:\n                    self.push(r)\n\
+    \                    r = 2 * r + 1\n                    if f(self.merge(self.arr[r],\
+    \ sm)):\n                        sm = self.merge(self.arr[r], sm)\n          \
+    \              r -= 1\n                return r + 1 - self.lastnode\n        \
+    \    sm = self.merge(self.arr[r], sm)\n            if (r and -r) == r: break\n\
+    \        return 0\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/lazysegtree.nim
   requiredBy: []
-  timestamp: '2026-09-12 10:02:20+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/lazysegtree/get_all_test.nim

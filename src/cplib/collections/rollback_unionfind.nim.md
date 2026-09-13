@@ -15,21 +15,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/rollback_unionfind_test.nim
     title: verify/AI/rollback_unionfind_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/rollbackuf_yosupo_snap_test.nim
     title: verify/collections/rollbackuf_yosupo_snap_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/rollbackuf_yosupo_snap_test.nim
     title: verify/collections/rollbackuf_yosupo_snap_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/rollbackuf_yosupo_test.nim
     title: verify/collections/rollbackuf_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/rollbackuf_yosupo_test.nim
     title: verify/collections/rollbackuf_yosupo_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -56,15 +56,17 @@ data:
     \        if x == y: return false\n        if sx > sy: swap(x, y)\n        let\
     \ xi = x.int\n        let yi = y.int\n        self.par_or_siz[xi] += self.par_or_siz[yi]\n\
     \        self.par_or_siz[yi] = x\n        return true\n    proc undo*(self: var\
-    \ RollbackUnionFind) =\n        assert self.history.len > 0, \"Can't undo because\
-    \ Unionfind is already initial state.\"\n        for i in 0..<2:\n           \
-    \ var (x, sx) = self.history.pop\n            self.par_or_siz[x] = sx\n      \
-    \  if self.snap > self.get_state: self.snap = 0\n    proc snapshot*(self: var\
-    \ RollbackUnionFind) = self.snap = self.get_state\n    proc clear_snapshot*(self:\
-    \ var RollbackUnionFind) = self.snap = 0\n    proc rollback*(self: var RollbackUnionFind,\
-    \ state: int = -1) =\n        var state = (if state == -1: self.snap else: state)\
-    \ shl 1\n        assert state <= self.history.len, &\"Rollback state must be the\
-    \ same or smaller than current state. state: {state}, self.history.len: {self.history.len}\"\
+    \ RollbackUnionFind) =\n        assert self.history.len > 0, \"UnionFind\u306F\
+    \u65E2\u306B\u521D\u671F\u72B6\u614B\u306E\u305F\u3081\u64CD\u4F5C\u3092\u53D6\
+    \u308A\u6D88\u305B\u307E\u305B\u3093\"\n        for i in 0..<2:\n            var\
+    \ (x, sx) = self.history.pop\n            self.par_or_siz[x] = sx\n        if\
+    \ self.snap > self.get_state: self.snap = 0\n    proc snapshot*(self: var RollbackUnionFind)\
+    \ = self.snap = self.get_state\n    proc clear_snapshot*(self: var RollbackUnionFind)\
+    \ = self.snap = 0\n    proc rollback*(self: var RollbackUnionFind, state: int\
+    \ = -1) =\n        var state = (if state == -1: self.snap else: state) shl 1\n\
+    \        assert state <= self.history.len, &\"\u5FA9\u5143\u5148\u306E\u72B6\u614B\
+    \u306F\u73FE\u5728\u306E\u72B6\u614B\u4EE5\u524D\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\u3002 state: {state}, self.history.len: {self.history.len}\"\
     \n        while state < self.history.len: self.undo()\n    proc siz*(self: RollbackUnionFind,\
     \ x: int): int =\n        var x = self.root_i32(x)\n        return (-self.par_or_siz[x.int]).int\n"
   dependsOn: []
@@ -73,8 +75,8 @@ data:
   requiredBy:
   - verify/collections/rollback_uf_abc302ex_test_.nim
   - verify/collections/rollback_uf_abc302ex_test_.nim
-  timestamp: '2026-07-09 02:51:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/collections/rollbackuf_yosupo_snap_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim

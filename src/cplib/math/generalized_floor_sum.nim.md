@@ -38,15 +38,18 @@ data:
     \u679C\u3060\u3051\u3067\u306A\u304F\u9014\u4E2D\u306E\u74B0\u6F14\u7B97\u3082\
     \u578B\u306E\u7BC4\u56F2\u5185\u306B\u53CE\u307E\u308B\u5FC5\u8981\u304C\u3042\
     \u308B\u3002\n        assert n >= 0 and m > 0 and a >= 0 and b >= 0 and p >= 0\
-    \ and q >= 0\n        assert n == 0 or a <= (high(int) - b) div n\n\n        proc\
-    \ zeroTable(): seq[seq[T]] =\n            ## (p+1) \u884C (q+1) \u5217\u306E\u96F6\
-    \u884C\u5217\u3092\u4F5C\u308B\u3002\n            result = newSeq[seq[T]](p +\
-    \ 1)\n            for j in 0..p:\n                result[j] = newSeq[T](q + 1)\n\
-    \n        if n == 0:\n            return zeroTable()\n\n        let one: T = 1\n\
-    \        let degree = max(p, q)\n        var binom = newSeq[seq[T]](degree + 1)\n\
-    \        for j in 0..degree:\n            binom[j] = newSeq[T](j + 1)\n      \
-    \      binom[j][0] = one\n            binom[j][j] = one\n            for k in\
-    \ 1..<j:\n                binom[j][k] = binom[j - 1][k - 1] + binom[j - 1][k]\n\
+    \ and q >= 0, \"n\u3001a\u3001b\u3001p\u3001q\u306F\u975E\u8CA0\u3067\u3001m\u306F\
+    \u6B63\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \ assert n == 0 or a <= (high(int) - b) div n, \"a * n + b\u304Cint\u306E\u7BC4\
+    \u56F2\u306B\u53CE\u307E\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n\
+    \        proc zeroTable(): seq[seq[T]] =\n            ## (p+1) \u884C (q+1) \u5217\
+    \u306E\u96F6\u884C\u5217\u3092\u4F5C\u308B\u3002\n            result = newSeq[seq[T]](p\
+    \ + 1)\n            for j in 0..p:\n                result[j] = newSeq[T](q +\
+    \ 1)\n\n        if n == 0:\n            return zeroTable()\n\n        let one:\
+    \ T = 1\n        let degree = max(p, q)\n        var binom = newSeq[seq[T]](degree\
+    \ + 1)\n        for j in 0..degree:\n            binom[j] = newSeq[T](j + 1)\n\
+    \            binom[j][0] = one\n            binom[j][j] = one\n            for\
+    \ k in 1..<j:\n                binom[j][k] = binom[j - 1][k - 1] + binom[j - 1][k]\n\
     \n        type Moment = object\n            dx, dy: T\n            sums: seq[seq[T]]\n\
     \n        proc combine(l, r: Moment): Moment =\n            ## \u53F3\u5074\u306E\
     \u5404\u30E2\u30FC\u30E1\u30F3\u30C8\u3092\u5DE6\u5074\u306E\u7D42\u70B9\u3060\
@@ -77,7 +80,7 @@ data:
   isVerificationFile: false
   path: cplib/math/generalized_floor_sum.nim
   requiredBy: []
-  timestamp: '2026-09-12 15:14:35+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/math/generalized_floor_sum_test.nim

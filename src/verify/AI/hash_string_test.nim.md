@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/hash_string.nim
     title: cplib/str/hash_string.nim
   _extendedRequiredBy: []
@@ -51,7 +51,7 @@ data:
   isVerificationFile: true
   path: verify/AI/hash_string_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:46:27+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/hash_string_test.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/fenwick_avx2.nim
     title: cplib/collections/fenwick_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/waveletmatrix.nim
     title: cplib/collections/waveletmatrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/waveletmatrix.nim
     title: cplib/collections/waveletmatrix.nim
   - icon: ':heavy_check_mark:'
@@ -81,18 +81,18 @@ data:
     \      sum += values[j][1]\n        assert wm.range_sum(l, r, x) == sum\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/fenwick_avx2.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_fenwick_test.nim
   requiredBy: []
-  timestamp: '2026-09-09 18:51:46+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/waveletmatrix_fenwick_test.nim

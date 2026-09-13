@@ -45,24 +45,26 @@ data:
     \u3059\u308B\u3002\n        ## V < sizeof(int) * 8 - 1 \u304B\u3064\u7B54\u3048\
     \u304Cint64\u306B\u53CE\u307E\u308B\u3053\u3068\u304C\u5FC5\u8981\uFF08V <= 20\u306A\
     \u3089\u53CE\u307E\u308B\uFF09\u3002\n        let n = G.len\n        assert n\
-    \ < sizeof(int) * 8 - 1\n        if not G.isDAG():\n            return 0\n   \
-    \     var predecessors = newSeq[int](n)\n        for u in 0..<n:\n           \
-    \ for (v, _) in G.to_and_cost(u):\n                predecessors[v] = predecessors[v]\
-    \ or (1 shl u)\n        let size = 1 shl n\n        var dp = newSeq[int64](size)\n\
-    \        dp[0] = 1\n        for mask in 0..<size:\n            if dp[mask] ==\
-    \ 0:\n                continue\n            for v in 0..<n:\n                let\
-    \ bit = 1 shl v\n                if (mask and bit) == 0 and (mask and predecessors[v])\
-    \ == predecessors[v]:\n                    dp[mask or bit] += dp[mask]\n     \
-    \   return dp[^1]\n"
+    \ < sizeof(int) * 8 - 1, \"\u9802\u70B9\u6570\u306Fint\u306E\u30D3\u30C3\u30C8\
+    \u6570\u304B\u30891\u3092\u5F15\u3044\u305F\u5024\u672A\u6E80\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if not G.isDAG():\n    \
+    \        return 0\n        var predecessors = newSeq[int](n)\n        for u in\
+    \ 0..<n:\n            for (v, _) in G.to_and_cost(u):\n                predecessors[v]\
+    \ = predecessors[v] or (1 shl u)\n        let size = 1 shl n\n        var dp =\
+    \ newSeq[int64](size)\n        dp[0] = 1\n        for mask in 0..<size:\n    \
+    \        if dp[mask] == 0:\n                continue\n            for v in 0..<n:\n\
+    \                let bit = 1 shl v\n                if (mask and bit) == 0 and\
+    \ (mask and predecessors[v]) == predecessors[v]:\n                    dp[mask\
+    \ or bit] += dp[mask]\n        return dp[^1]\n"
   dependsOn:
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/count_topologicalsort.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/count_topologicalsort_test.nim

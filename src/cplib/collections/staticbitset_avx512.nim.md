@@ -47,13 +47,14 @@ data:
     \n    func wordCount(size: int): int {.compileTime.} =\n        ## \u975E\u8CA0\
     \u306E\u30D3\u30C3\u30C8\u6570\u306B\u5FC5\u8981\u306A64\u30D3\u30C3\u30C8\u30EF\
     \u30FC\u30C9\u6570\u3092\u6C42\u3081\u307E\u3059\u3002\n        doAssert size\
-    \ >= 0, \"BitSet size must be non-negative\"\n        (size shr 6) + ord((size\
-    \ and 63) != 0)\n\n    type BitSet*[size: static int] {.byref.} = object\n   \
-    \     bits: array[wordCount(size), uint64]\n\n    proc initBitSet*(size: static\
-    \ int): BitSet[size] =\n        ## \u6307\u5B9A\u3057\u305F\u30D3\u30C3\u30C8\u6570\
-    \u306E\u7A7A\u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        discard\n\
-    \n    proc initBitSet*(v: openArray[bool], size: static int): BitSet[size] {.noinit.}\
-    \ =\n        ## \u771F\u507D\u5024\u914D\u5217\u304B\u3089\u96C6\u5408\u3092\u69CB\
+    \ >= 0, \"BitSet\u306E\u30B5\u30A4\u30BA\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        (size shr 6) + ord((size and 63)\
+    \ != 0)\n\n    type BitSet*[size: static int] {.byref.} = object\n        bits:\
+    \ array[wordCount(size), uint64]\n\n    proc initBitSet*(size: static int): BitSet[size]\
+    \ =\n        ## \u6307\u5B9A\u3057\u305F\u30D3\u30C3\u30C8\u6570\u306E\u7A7A\u96C6\
+    \u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        discard\n\n    proc\
+    \ initBitSet*(v: openArray[bool], size: static int): BitSet[size] {.noinit.} =\n\
+    \        ## \u771F\u507D\u5024\u914D\u5217\u304B\u3089\u96C6\u5408\u3092\u69CB\
     \u7BC9\u3057\u3001\u6B8B\u308A\u30920\u3067\u57CB\u3081\u307E\u3059\u3002\n  \
     \      ## AVX-512BW\u7D4C\u8DEF\u306E\u76EE\u5B89: \u5165\u529B64\u500B\u306E\
     bool\u3042\u305F\u308A\u6BD4\u8F031\u547D\u4EE4\uFF0B\u30DE\u30B9\u30AF\u8EE2\u9001\
@@ -61,65 +62,66 @@ data:
     \u5FC5\u8981\u3067\u3059\u3002\n        when compileOption(\"boundChecks\"):\n\
     \            if v.len > size:\n                raise newException(ValueError,\
     \ \"initial value is longer than BitSet size\")\n        static:\n           \
-    \ doAssert sizeof(bool) == 1\n        when size > 0:\n            let source =\
-    \ if v.len == 0: nil else: cast[pointer](unsafeAddr v[0])\n            avxFromBools(addr\
-    \ result.bits[0], source, v.len.csize_t, result.bits.len.csize_t)\n\n    proc\
-    \ initBitSetFromString*(s: string, match: char, size: static int): BitSet[size]\
-    \ {.noinit.} =\n        ## s[i] == match\u306E\u4F4D\u7F6E\u30921\u306B\u3057\u307E\
-    \u3059\u3002\u6DFB\u5B57\u306F\u30D0\u30A4\u30C8\u5358\u4F4D\u3067\u3001\u6B8B\
-    \u308A\u306F0\u3067\u3059\u3002O(s.len + size / 64)\u3002\n        ## UTF-8\u306E\
-    \u6587\u5B57\u5358\u4F4D\u306E\u6BD4\u8F03\u3084\u90E8\u5206\u6587\u5B57\u5217\
-    \u691C\u7D22\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002NUL\u3092\u542B\u3080\
-    \u6587\u5B57\u5217\u3082\u6BD4\u8F03\u3067\u304D\u307E\u3059\u3002\n        ##\
-    \ AVX2\u7D4C\u8DEF\u306E\u76EE\u5B89: 32\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\
-    \u8F03\uFF0BMOVMSK\u306E2\u547D\u4EE4\u3002\u683C\u7D0D\u7528\u306E\u7D50\u5408\
-    \u3068\u30BC\u30ED\u57CB\u3081\u306F\u5225\u3067\u3059\u3002\n        ## AVX-512BW\u7D4C\
-    \u8DEF\u306E\u76EE\u5B89: 64\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0B\
-    \u30DE\u30B9\u30AF\u8EE2\u9001\u306E2\u547D\u4EE4\u3002\n        when compileOption(\"\
-    boundChecks\"):\n            if s.len > size:\n                raise newException(ValueError,\
-    \ \"source string is longer than BitSet size\")\n        when size > 0:\n    \
-    \        let source = if s.len == 0: nil else: cast[pointer](unsafeAddr s[0])\n\
-    \            avxFromStringChar(addr result.bits[0], source, nil, ord(match).uint8,\
-    \ s.len.csize_t, result.bits.len.csize_t)\n\n    proc initBitSetFromString*(s,\
-    \ reference: string, size: static int): BitSet[size] {.noinit.} =\n        ##\
-    \ \u540C\u3058\u9577\u3055\u306E\u6587\u5B57\u5217\u3092\u4F4D\u7F6E\u3054\u3068\
-    \u306B\u6BD4\u8F03\u3057\u3001s[i] == reference[i]\u306E\u4F4D\u7F6E\u30921\u306B\
-    \u3057\u307E\u3059\u3002\u6DFB\u5B57\u306F\u30D0\u30A4\u30C8\u5358\u4F4D\u3067\
-    \u3001\u6B8B\u308A\u306F0\u3067\u3059\u3002O(s.len + size / 64)\u3002\n      \
-    \  ## UTF-8\u306E\u6587\u5B57\u5358\u4F4D\u306E\u6BD4\u8F03\u3084\u90E8\u5206\u6587\
-    \u5B57\u5217\u691C\u7D22\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002NUL\u3092\
-    \u542B\u3080\u6587\u5B57\u5217\u3082\u6BD4\u8F03\u3067\u304D\u307E\u3059\u3002\
-    \n        ## AVX2\u7D4C\u8DEF\u306E\u76EE\u5B89: 32\u30D0\u30A4\u30C8\u3042\u305F\
-    \u308A\u6BD4\u8F03\uFF0BMOVMSK\u306E2\u547D\u4EE4\u3002\u683C\u7D0D\u7528\u306E\
-    \u7D50\u5408\u3068\u30BC\u30ED\u57CB\u3081\u306F\u5225\u3067\u3059\u3002\n   \
-    \     ## AVX-512BW\u7D4C\u8DEF\u306E\u76EE\u5B89: 64\u30D0\u30A4\u30C8\u3042\u305F\
-    \u308A\u6BD4\u8F03\uFF0B\u30DE\u30B9\u30AF\u8EE2\u9001\u306E2\u547D\u4EE4\u3002\
-    \n        when compileOption(\"boundChecks\"):\n            if s.len > size:\n\
-    \                raise newException(ValueError, \"source string is longer than\
-    \ BitSet size\")\n            if s.len != reference.len:\n                raise\
-    \ newException(ValueError, \"source and reference string lengths must match\"\
-    )\n        when size > 0:\n            let source = if s.len == 0: nil else: cast[pointer](unsafeAddr\
-    \ s[0])\n            let target = if reference.len == 0: nil else: cast[pointer](unsafeAddr\
-    \ reference[0])\n            avxFromStringEqual(addr result.bits[0], source, target,\
-    \ 0.uint8, s.len.csize_t, result.bits.len.csize_t)\n\n    proc initBitSetFromIndexes*(indexes:\
-    \ openArray[int], size: static int): BitSet[size] =\n        ## \u6307\u5B9A\u3057\
-    \u305F\u6DFB\u5B57\u306E\u30D3\u30C3\u30C8\u3092\u7ACB\u3066\u305F\u96C6\u5408\
-    \u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        for i in indexes:\n      \
-    \      when compileOption(\"boundChecks\"):\n                if i < 0 or i >=\
-    \ size:\n                    raise newException(IndexDefect, \"BitSet index out\
-    \ of bounds\")\n            result.bits[i shr 6] = result.bits[i shr 6] or (1'u64\
-    \ shl (i and 63))\n\n    proc len*[size](bitset: BitSet[size]): int {.inline.}\
-    \ =\n        ## \u96C6\u5408\u306E\u30D3\u30C3\u30C8\u6570\u3092\u8FD4\u3057\u307E\
-    \u3059\u3002\n        size\n\n    proc checkIndex[size](bitset: BitSet[size],\
-    \ idx: Natural) {.inline.} =\n        ## \u6DFB\u5B57\u304C\u96C6\u5408\u306E\u7BC4\
-    \u56F2\u5185\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\u307E\u3059\
-    \u3002\n        when compileOption(\"boundChecks\"):\n            if idx >= size:\n\
-    \                raise newException(IndexDefect, \"BitSet index out of bounds\"\
-    )\n\n    proc trim[size](bitset: var BitSet[size]) {.inline.} =\n        ## \u6700\
-    \u5F8C\u306E\u30EF\u30FC\u30C9\u306E\u7BC4\u56F2\u5916\u306E\u30D3\u30C3\u30C8\
-    \u30920\u306B\u3057\u307E\u3059\u3002\n        const remainder = size and 63\n\
-    \        when remainder != 0:\n            bitset.bits[^1] = bitset.bits[^1] and\
-    \ ((1'u64 shl remainder) - 1)\n\n    proc andInto*[size](dst: var BitSet[size],\
+    \ doAssert sizeof(bool) == 1, \"bool\u306E\u30B5\u30A4\u30BA\u306F1\u30D0\u30A4\
+    \u30C8\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \ when size > 0:\n            let source = if v.len == 0: nil else: cast[pointer](unsafeAddr\
+    \ v[0])\n            avxFromBools(addr result.bits[0], source, v.len.csize_t,\
+    \ result.bits.len.csize_t)\n\n    proc initBitSetFromString*(s: string, match:\
+    \ char, size: static int): BitSet[size] {.noinit.} =\n        ## s[i] == match\u306E\
+    \u4F4D\u7F6E\u30921\u306B\u3057\u307E\u3059\u3002\u6DFB\u5B57\u306F\u30D0\u30A4\
+    \u30C8\u5358\u4F4D\u3067\u3001\u6B8B\u308A\u306F0\u3067\u3059\u3002O(s.len + size\
+    \ / 64)\u3002\n        ## UTF-8\u306E\u6587\u5B57\u5358\u4F4D\u306E\u6BD4\u8F03\
+    \u3084\u90E8\u5206\u6587\u5B57\u5217\u691C\u7D22\u3067\u306F\u3042\u308A\u307E\
+    \u305B\u3093\u3002NUL\u3092\u542B\u3080\u6587\u5B57\u5217\u3082\u6BD4\u8F03\u3067\
+    \u304D\u307E\u3059\u3002\n        ## AVX2\u7D4C\u8DEF\u306E\u76EE\u5B89: 32\u30D0\
+    \u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0BMOVMSK\u306E2\u547D\u4EE4\u3002\
+    \u683C\u7D0D\u7528\u306E\u7D50\u5408\u3068\u30BC\u30ED\u57CB\u3081\u306F\u5225\
+    \u3067\u3059\u3002\n        ## AVX-512BW\u7D4C\u8DEF\u306E\u76EE\u5B89: 64\u30D0\
+    \u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0B\u30DE\u30B9\u30AF\u8EE2\u9001\
+    \u306E2\u547D\u4EE4\u3002\n        when compileOption(\"boundChecks\"):\n    \
+    \        if s.len > size:\n                raise newException(ValueError, \"source\
+    \ string is longer than BitSet size\")\n        when size > 0:\n            let\
+    \ source = if s.len == 0: nil else: cast[pointer](unsafeAddr s[0])\n         \
+    \   avxFromStringChar(addr result.bits[0], source, nil, ord(match).uint8, s.len.csize_t,\
+    \ result.bits.len.csize_t)\n\n    proc initBitSetFromString*(s, reference: string,\
+    \ size: static int): BitSet[size] {.noinit.} =\n        ## \u540C\u3058\u9577\u3055\
+    \u306E\u6587\u5B57\u5217\u3092\u4F4D\u7F6E\u3054\u3068\u306B\u6BD4\u8F03\u3057\
+    \u3001s[i] == reference[i]\u306E\u4F4D\u7F6E\u30921\u306B\u3057\u307E\u3059\u3002\
+    \u6DFB\u5B57\u306F\u30D0\u30A4\u30C8\u5358\u4F4D\u3067\u3001\u6B8B\u308A\u306F\
+    0\u3067\u3059\u3002O(s.len + size / 64)\u3002\n        ## UTF-8\u306E\u6587\u5B57\
+    \u5358\u4F4D\u306E\u6BD4\u8F03\u3084\u90E8\u5206\u6587\u5B57\u5217\u691C\u7D22\
+    \u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002NUL\u3092\u542B\u3080\u6587\u5B57\
+    \u5217\u3082\u6BD4\u8F03\u3067\u304D\u307E\u3059\u3002\n        ## AVX2\u7D4C\u8DEF\
+    \u306E\u76EE\u5B89: 32\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0BMOVMSK\u306E\
+    2\u547D\u4EE4\u3002\u683C\u7D0D\u7528\u306E\u7D50\u5408\u3068\u30BC\u30ED\u57CB\
+    \u3081\u306F\u5225\u3067\u3059\u3002\n        ## AVX-512BW\u7D4C\u8DEF\u306E\u76EE\
+    \u5B89: 64\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0B\u30DE\u30B9\u30AF\
+    \u8EE2\u9001\u306E2\u547D\u4EE4\u3002\n        when compileOption(\"boundChecks\"\
+    ):\n            if s.len > size:\n                raise newException(ValueError,\
+    \ \"source string is longer than BitSet size\")\n            if s.len != reference.len:\n\
+    \                raise newException(ValueError, \"source and reference string\
+    \ lengths must match\")\n        when size > 0:\n            let source = if s.len\
+    \ == 0: nil else: cast[pointer](unsafeAddr s[0])\n            let target = if\
+    \ reference.len == 0: nil else: cast[pointer](unsafeAddr reference[0])\n     \
+    \       avxFromStringEqual(addr result.bits[0], source, target, 0.uint8, s.len.csize_t,\
+    \ result.bits.len.csize_t)\n\n    proc initBitSetFromIndexes*(indexes: openArray[int],\
+    \ size: static int): BitSet[size] =\n        ## \u6307\u5B9A\u3057\u305F\u6DFB\
+    \u5B57\u306E\u30D3\u30C3\u30C8\u3092\u7ACB\u3066\u305F\u96C6\u5408\u3092\u69CB\
+    \u7BC9\u3057\u307E\u3059\u3002\n        for i in indexes:\n            when compileOption(\"\
+    boundChecks\"):\n                if i < 0 or i >= size:\n                    raise\
+    \ newException(IndexDefect, \"BitSet index out of bounds\")\n            result.bits[i\
+    \ shr 6] = result.bits[i shr 6] or (1'u64 shl (i and 63))\n\n    proc len*[size](bitset:\
+    \ BitSet[size]): int {.inline.} =\n        ## \u96C6\u5408\u306E\u30D3\u30C3\u30C8\
+    \u6570\u3092\u8FD4\u3057\u307E\u3059\u3002\n        size\n\n    proc checkIndex[size](bitset:\
+    \ BitSet[size], idx: Natural) {.inline.} =\n        ## \u6DFB\u5B57\u304C\u96C6\
+    \u5408\u306E\u7BC4\u56F2\u5185\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
+    \u3057\u307E\u3059\u3002\n        when compileOption(\"boundChecks\"):\n     \
+    \       if idx >= size:\n                raise newException(IndexDefect, \"BitSet\
+    \ index out of bounds\")\n\n    proc trim[size](bitset: var BitSet[size]) {.inline.}\
+    \ =\n        ## \u6700\u5F8C\u306E\u30EF\u30FC\u30C9\u306E\u7BC4\u56F2\u5916\u306E\
+    \u30D3\u30C3\u30C8\u30920\u306B\u3057\u307E\u3059\u3002\n        const remainder\
+    \ = size and 63\n        when remainder != 0:\n            bitset.bits[^1] = bitset.bits[^1]\
+    \ and ((1'u64 shl remainder) - 1)\n\n    proc andInto*[size](dst: var BitSet[size],\
     \ x, y: BitSet[size]) =\n        ## \u78BA\u4FDD\u6E08\u307F\u306Edst\u3078x &\
     \ y\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\u5168\u3066\u540C\u3058\u9577\
     \u3055\u304C\u5FC5\u8981\u3067\u3059\u3002O(\u30D3\u30C3\u30C8\u6570 / 64)\u3002\
@@ -633,7 +635,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticbitset_avx512.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:30:30+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/staticbitset_avx512.nim

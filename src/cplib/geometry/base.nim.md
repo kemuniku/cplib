@@ -2,40 +2,40 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
   - icon: ':warning:'
@@ -93,141 +93,141 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/projection_test.nim
     title: verify/AI/projection_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/projection_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/projection_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/contains_cgl3c_test.nim
     title: verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/contains_cgl3c_test.nim
     title: verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -284,24 +284,31 @@ data:
     \ Point[T]): Hash =\n        result = result !& hash(p.x)\n        result = result\
     \ !& hash(p.y)\n\n    type Line*[T] = object\n        s*, t*: Point[T]\n\n   \
     \ proc initLine*[T](s, t: Point[T]): Line[T] =\n        ##2\u70B9 (s, t) \u3092\
-    \u901A\u308B\u76F4\u7DDA\u306E\u521D\u671F\u5316\n        (assert s != t; return\
-    \ Line[T](s: s, t: t))\n    proc initLine*[T](a, b, c: int): Line[int] = assert\
-    \ false, \"(a,b,c) initialization can't be used for Line[int], please use float\
-    \ or Fraction\"\n    proc initLine*[T](a, b, c: T): Line[T] =\n        ##\u76F4\
+    \u901A\u308B\u76F4\u7DDA\u306E\u521D\u671F\u5316\n        (assert(s != t, \"\u59CB\
+    \u70B9\u3068\u7D42\u70B9\u306F\u7570\u306A\u308B\u70B9\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"); return Line[T](s: s, t: t))\n    proc\
+    \ initLine*[T](a, b, c: int): Line[int] = assert false, \"\u4FC2\u6570(a,b,c)\u304B\
+    \u3089\u306E\u76F4\u7DDA\u306E\u521D\u671F\u5316\u306B\u306Fint\u3067\u306F\u306A\
+    \u304Ffloat\u307E\u305F\u306FFraction\u3092\u4F7F\u7528\u3057\u3066\u304F\u3060\
+    \u3055\u3044\"\n    proc initLine*[T](a, b, c: T): Line[T] =\n        ##\u76F4\
     \u7DDA ax + by + c = 0 \u306E\u521D\u671F\u5316\u3001int \u578B\u306B\u5BFE\u3057\
     \u3066\u306F\u4F7F\u7528\u4E0D\u53EF\n        assert geometry_neq(a, T(0)) or\
-    \ geometry_neq(b, T(0))\n        if geometry_eq(b, T(0)):\n            var s =\
-    \ Point[T](x: -c / a, y: T(0))\n            var t = Point[T](x: -c / a, y: T(1))\n\
-    \            return Line[T](s: s, t: t)\n        else:\n            var s = Point[T](x:\
-    \ T(0), y: -c / b)\n            var t = Point[T](x: T(1), y: (-a-c) / b)\n   \
-    \         return Line[T](s: s, t: t)\n    proc vector*[T](l: Line[T]): Point[T]\
-    \ =\n        ##\u76F4\u7DDA\u306E\u63A5\u30D9\u30AF\u30C8\u30EB\uFF08\u76F4\u7DDA\
-    \u306E\u65B9\u5411\u306E\u30D9\u30AF\u30C8\u30EB\uFF09\n        l.t - l.s\n  \
-    \  proc `$`*[T](l: Line[T]): string = &\"({l.s}, {l.t})\"\n\n\n    type Segment*[T]\
-    \ = object\n        s*, t*: Point[T]\n    proc initSegment*[T](s, t: Point[T]):\
-    \ Segment[T] =\n        ##2\u70B9 (s, t) \u3092\u7D50\u3076\u7DDA\u5206\u306E\u521D\
-    \u671F\u5316\n        (assert s != t; return Segment[T](s: s, t: t))\n    converter\
-    \ toLine*[T](s: Segment[T]): Line[T] = initLine(s.s, s.t)\n"
+    \ geometry_neq(b, T(0)), \"\u76F4\u7DDA\u306E\u4FC2\u6570a\u3068b\u306E\u5C11\u306A\
+    \u304F\u3068\u3082\u4E00\u65B9\u306F\u975E\u96F6\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        if geometry_eq(b, T(0)):\n         \
+    \   var s = Point[T](x: -c / a, y: T(0))\n            var t = Point[T](x: -c /\
+    \ a, y: T(1))\n            return Line[T](s: s, t: t)\n        else:\n       \
+    \     var s = Point[T](x: T(0), y: -c / b)\n            var t = Point[T](x: T(1),\
+    \ y: (-a-c) / b)\n            return Line[T](s: s, t: t)\n    proc vector*[T](l:\
+    \ Line[T]): Point[T] =\n        ##\u76F4\u7DDA\u306E\u63A5\u30D9\u30AF\u30C8\u30EB\
+    \uFF08\u76F4\u7DDA\u306E\u65B9\u5411\u306E\u30D9\u30AF\u30C8\u30EB\uFF09\n   \
+    \     l.t - l.s\n    proc `$`*[T](l: Line[T]): string = &\"({l.s}, {l.t})\"\n\n\
+    \n    type Segment*[T] = object\n        s*, t*: Point[T]\n    proc initSegment*[T](s,\
+    \ t: Point[T]): Segment[T] =\n        ##2\u70B9 (s, t) \u3092\u7D50\u3076\u7DDA\
+    \u5206\u306E\u521D\u671F\u5316\n        (assert(s != t, \"\u59CB\u70B9\u3068\u7D42\
+    \u70B9\u306F\u7570\u306A\u308B\u70B9\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"); return Segment[T](s: s, t: t))\n    converter toLine*[T](s:\
+    \ Segment[T]): Line[T] = initLine(s.s, s.t)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/geometry/base.nim
@@ -322,8 +329,8 @@ data:
   - cplib/geometry/intersect.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
-  timestamp: '2026-07-06 22:23:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim

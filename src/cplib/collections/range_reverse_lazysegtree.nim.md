@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_reverse_lazysegtree_test.nim
     title: verify/collections/range_reverse_lazysegtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_reverse_lazysegtree_test.nim
     title: verify/collections/range_reverse_lazysegtree_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -121,42 +121,57 @@ data:
     \u633F\u5165\u3059\u308B\u3002\u672B\u5C3E\u306B\u306F index = len \u3092\u6307\
     \u5B9A\u3059\u308B\u3002\n        ## \u671F\u5F85 O(log N)\u3002\u633F\u5165\u524D\
     \u306E\u533A\u9593\u66F4\u65B0\u306F\u65B0\u3057\u3044\u8981\u7D20\u306B\u306F\
-    \u4F5C\u7528\u3057\u306A\u3044\u3002\n        assert 0 <= index and index <= self.length\n\
-    \        var (left, right) = self.splitRoot(self.root, index)\n        let node\
-    \ = newNode(value, rand(uint64), self.id)\n        self.root = self.mergeRoot(left,\
-    \ self.mergeRoot(node, right))\n        inc self.length\n\n    proc erase*[S,\
-    \ F](self: RangeReverseLazySegmentTree[S, F], l, r: int) =\n        ## \u534A\u958B\
-    \u533A\u9593 [l, r) \u3092\u524A\u9664\u3059\u308B\u3002\u6728\u306E\u64CD\u4F5C\
-    \u306F\u671F\u5F85 O(log N)\u3002\n        ## \u524A\u9664\u3057\u305F K \u500B\
-    \u306E\u30CE\u30FC\u30C9\u306E\u89E3\u653E\u306B\u306F\u5225\u9014 O(K) \u304B\
-    \u304B\u308A\u3046\u308B\u3002\n        assert 0 <= l and l <= r and r <= self.length\n\
-    \        if l == r: return\n        var (left, middleRight) = self.splitRoot(self.root,\
-    \ l)\n        var (_, right) = self.splitRoot(middleRight, r - l)\n        self.root\
-    \ = self.mergeRoot(left, right)\n        self.length -= r - l\n\n    proc erase*[S,\
-    \ F](self: RangeReverseLazySegmentTree[S, F], index: int) =\n        ## index\
-    \ \u756A\u76EE\u306E\u8981\u7D20\u3092\u524A\u9664\u3059\u308B\u3002\u671F\u5F85\
-    \ O(log N)\u3002\n        assert 0 <= index and index < self.length\n        self.erase(index,\
-    \ index + 1)\n\n    proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F],\
-    \ segment: HSlice[int, int]) =\n        self.erase(segment.a, segment.b + 1)\n\
-    \n    proc reverse*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int)\
-    \ =\n        assert 0 <= l and l <= r and r <= self.length\n        var (left,\
+    \u4F5C\u7528\u3057\u306A\u3044\u3002\n        assert 0 <= index and index <= self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= index and index <=\
+    \ self.length\"\n        var (left, right) = self.splitRoot(self.root, index)\n\
+    \        let node = newNode(value, rand(uint64), self.id)\n        self.root =\
+    \ self.mergeRoot(left, self.mergeRoot(node, right))\n        inc self.length\n\
+    \n    proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int) =\n\
+    \        ## \u534A\u958B\u533A\u9593 [l, r) \u3092\u524A\u9664\u3059\u308B\u3002\
+    \u6728\u306E\u64CD\u4F5C\u306F\u671F\u5F85 O(log N)\u3002\n        ## \u524A\u9664\
+    \u3057\u305F K \u500B\u306E\u30CE\u30FC\u30C9\u306E\u89E3\u653E\u306B\u306F\u5225\
+    \u9014 O(K) \u304B\u304B\u308A\u3046\u308B\u3002\n        assert 0 <= l and l\
+    \ <= r and r <= self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: 0 <= l and l <= r and r <= self.length\"\n        if l == r: return\n\
+    \        var (left, middleRight) = self.splitRoot(self.root, l)\n        var (_,\
+    \ right) = self.splitRoot(middleRight, r - l)\n        self.root = self.mergeRoot(left,\
+    \ right)\n        self.length -= r - l\n\n    proc erase*[S, F](self: RangeReverseLazySegmentTree[S,\
+    \ F], index: int) =\n        ## index \u756A\u76EE\u306E\u8981\u7D20\u3092\u524A\
+    \u9664\u3059\u308B\u3002\u671F\u5F85 O(log N)\u3002\n        assert 0 <= index\
+    \ and index < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : 0 <= index and index < self.length\"\n        self.erase(index, index + 1)\n\
+    \n    proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int,\
+    \ int]) =\n        self.erase(segment.a, segment.b + 1)\n\n    proc reverse*[S,\
+    \ F](self: RangeReverseLazySegmentTree[S, F], l, r: int) =\n        assert 0 <=\
+    \ l and l <= r and r <= self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: 0 <= l and l <= r and r <= self.length\"\n        var (left,\
     \ middleRight) = self.splitRoot(self.root, l)\n        var (middle, right) = self.splitRoot(middleRight,\
     \ r - l)\n        middle.toggle\n        self.root = self.mergeRoot(left, self.mergeRoot(middle,\
     \ right))\n\n    proc reverse*[S, F](self: RangeReverseLazySegmentTree[S, F],\
     \ segment: HSlice[int, int]) =\n        self.reverse(segment.a, segment.b + 1)\n\
     \n    proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int, f:\
-    \ F) =\n        assert 0 <= l and l <= r and r <= self.length\n        var (left,\
-    \ middleRight) = self.splitRoot(self.root, l)\n        var (middle, right) = self.splitRoot(middleRight,\
-    \ r - l)\n        middle.allApply(f, self.mapping, self.composition)\n       \
-    \ self.root = self.mergeRoot(left, self.mergeRoot(middle, right))\n\n    proc\
-    \ apply*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int, f: F) =\n\
-    \        assert 0 <= index and index < self.length\n        self.apply(index,\
-    \ index + 1, f)\n\n    proc apply*[S, F](self: RangeReverseLazySegmentTree[S,\
+    \ F) =\n        assert 0 <= l and l <= r and r <= self.length, \"\u6307\u5B9A\u3057\
+    \u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.length\"\
+    \n        var (left, middleRight) = self.splitRoot(self.root, l)\n        var\
+    \ (middle, right) = self.splitRoot(middleRight, r - l)\n        middle.allApply(f,\
+    \ self.mapping, self.composition)\n        self.root = self.mergeRoot(left, self.mergeRoot(middle,\
+    \ right))\n\n    proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], index:\
+    \ int, f: F) =\n        assert 0 <= index and index < self.length, \"\u6307\u5B9A\
+    \u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= index and index < self.length\"\
+    \n        self.apply(index, index + 1, f)\n\n    proc apply*[S, F](self: RangeReverseLazySegmentTree[S,\
     \ F], segment: HSlice[int, int], f: F) =\n        self.apply(segment.a, segment.b\
     \ + 1, f)\n\n    proc get*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r:\
-    \ int): S =\n        assert 0 <= l and l <= r and r <= self.length\n        var\
-    \ (left, middleRight) = self.splitRoot(self.root, l)\n        var (middle, right)\
-    \ = self.splitRoot(middleRight, r - l)\n        result = middle.nodeProd(self.default)\n\
+    \ int): S =\n        assert 0 <= l and l <= r and r <= self.length, \"\u6307\u5B9A\
+    \u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.length\"\
+    \n        var (left, middleRight) = self.splitRoot(self.root, l)\n        var\
+    \ (middle, right) = self.splitRoot(middleRight, r - l)\n        result = middle.nodeProd(self.default)\n\
     \        self.root = self.mergeRoot(left, self.mergeRoot(middle, right))\n\n \
     \   proc get*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int,\
     \ int]): S =\n        self.get(segment.a, segment.b + 1)\n\n    proc fold*[S,\
@@ -170,10 +185,14 @@ data:
     \u3068\u306A\u308B\u6700\u5927\u306E r\u3002\u671F\u5F85 O(log N)\u3002\n    \
     \    ## f(default) = true \u3067\u3001\u533A\u9593\u3092\u4F38\u3070\u3057\u305F\
     \u3068\u304D\u771F\u304B\u3089\u507D\u3078\u306E\u5909\u5316\u304C\u5358\u8ABF\
-    \u3067\u3042\u308B\u3053\u3068\u3002\n        assert 0 <= l and l <= self.length\n\
-    \        assert f(self.default)\n        var (left, right) = self.splitRoot(self.root,\
-    \ l)\n        var node = right\n        var acc = self.default\n        result\
-    \ = l\n        while not node.isNil:\n            node.push(self.mapping, self.composition,\
+    \u3067\u3042\u308B\u3053\u3068\u3002\n        assert 0 <= l and l <= self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= self.length\"\
+    \n        assert f(self.default), \"\u5224\u5B9A\u95A2\u6570\u306F\u5358\u4F4D\
+    \u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        var (left, right) = self.splitRoot(self.root, l)\n   \
+    \     var node = right\n        var acc = self.default\n        result = l\n \
+    \       while not node.isNil:\n            node.push(self.mapping, self.composition,\
     \ self.id)\n            let next = self.merge(acc, node.left.nodeProd(self.default))\n\
     \            if not f(next):\n                node = node.left\n            else:\n\
     \                acc = next\n                result += node.left.nodeLen\n   \
@@ -185,10 +204,14 @@ data:
     \u306A\u308B\u6700\u5C0F\u306E l\u3002\u671F\u5F85 O(log N)\u3002\n        ##\
     \ f(default) = true \u3067\u3001\u533A\u9593\u3092\u4F38\u3070\u3057\u305F\u3068\
     \u304D\u771F\u304B\u3089\u507D\u3078\u306E\u5909\u5316\u304C\u5358\u8ABF\u3067\
-    \u3042\u308B\u3053\u3068\u3002\n        assert 0 <= r and r <= self.length\n \
-    \       assert f(self.default)\n        var (left, right) = self.splitRoot(self.root,\
-    \ r)\n        var node = left\n        var acc = self.default\n        result\
-    \ = r\n        while not node.isNil:\n            node.push(self.mapping, self.composition,\
+    \u3042\u308B\u3053\u3068\u3002\n        assert 0 <= r and r <= self.length, \"\
+    \u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= r and r <= self.length\"\
+    \n        assert f(self.default), \"\u5224\u5B9A\u95A2\u6570\u306F\u5358\u4F4D\
+    \u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        var (left, right) = self.splitRoot(self.root, r)\n   \
+    \     var node = left\n        var acc = self.default\n        result = r\n  \
+    \      while not node.isNil:\n            node.push(self.mapping, self.composition,\
     \ self.id)\n            let next = self.merge(node.right.nodeProd(self.default),\
     \ acc)\n            if not f(next):\n                node = node.right\n     \
     \       else:\n                acc = next\n                result -= node.right.nodeLen\n\
@@ -196,41 +219,46 @@ data:
     \ if not f(withValue): break\n                acc = withValue\n              \
     \  dec result\n                node = node.left\n        self.root = self.mergeRoot(left,\
     \ right)\n\n    proc get*[S, F](self: RangeReverseLazySegmentTree[S, F], index:\
-    \ int): S =\n        assert 0 <= index and index < self.length\n        var node\
-    \ = self.root\n        var k = index\n        while true:\n            node.push(self.mapping,\
-    \ self.composition, self.id)\n            let leftSize = node.left.nodeLen\n \
-    \           if k < leftSize:\n                node = node.left\n            elif\
-    \ k == leftSize:\n                return node.value\n            else:\n     \
-    \           k -= leftSize + 1\n                node = node.right\n\n    proc update*[S,\
+    \ int): S =\n        assert 0 <= index and index < self.length, \"\u6307\u5B9A\
+    \u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= index and index < self.length\"\
+    \n        var node = self.root\n        var k = index\n        while true:\n \
+    \           node.push(self.mapping, self.composition, self.id)\n            let\
+    \ leftSize = node.left.nodeLen\n            if k < leftSize:\n               \
+    \ node = node.left\n            elif k == leftSize:\n                return node.value\n\
+    \            else:\n                k -= leftSize + 1\n                node =\
+    \ node.right\n\n    proc update*[S, F](self: RangeReverseLazySegmentTree[S, F],\
+    \ index: Natural, value: S) =\n        assert index < self.length, \"\u6307\u5B9A\
+    \u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: index < self.length\"\n        var\
+    \ (left, middleRight) = self.splitRoot(self.root, int(index))\n        var (middle,\
+    \ right) = self.splitRoot(middleRight, 1)\n        middle.value = value\n    \
+    \    middle.prod = value\n        middle.rprod = value\n        middle.lazy =\
+    \ self.id\n        middle.rev = false\n        self.root = self.mergeRoot(left,\
+    \ self.mergeRoot(middle, right))\n\n    proc `[]`*[S, F](self: RangeReverseLazySegmentTree[S,\
+    \ F], index: int): S =\n        self.get(index)\n\n    proc `[]`*[S, F](self:\
+    \ RangeReverseLazySegmentTree[S, F], index: BackwardsIndex): S =\n        self.get(self.length\
+    \ - int(index))\n\n    proc `[]`*[S, F](self: RangeReverseLazySegmentTree[S, F],\
+    \ segment: HSlice[int, int]): S =\n        self.get(segment)\n\n    proc `[]=`*[S,\
     \ F](self: RangeReverseLazySegmentTree[S, F], index: Natural, value: S) =\n  \
-    \      assert index < self.length\n        var (left, middleRight) = self.splitRoot(self.root,\
-    \ int(index))\n        var (middle, right) = self.splitRoot(middleRight, 1)\n\
-    \        middle.value = value\n        middle.prod = value\n        middle.rprod\
-    \ = value\n        middle.lazy = self.id\n        middle.rev = false\n       \
-    \ self.root = self.mergeRoot(left, self.mergeRoot(middle, right))\n\n    proc\
-    \ `[]`*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int): S =\n    \
-    \    self.get(index)\n\n    proc `[]`*[S, F](self: RangeReverseLazySegmentTree[S,\
-    \ F], index: BackwardsIndex): S =\n        self.get(self.length - int(index))\n\
-    \n    proc `[]`*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int,\
-    \ int]): S =\n        self.get(segment)\n\n    proc `[]=`*[S, F](self: RangeReverseLazySegmentTree[S,\
-    \ F], index: Natural, value: S) =\n        self.update(index, value)\n\n    iterator\
-    \ items*[S, F](self: RangeReverseLazySegmentTree[S, F]): S =\n        if not self.root.isNil:\n\
-    \            var stack = @[(0, self.root)]\n            while stack.len > 0:\n\
-    \                var (t, node) = stack.pop()\n                node.push(self.mapping,\
-    \ self.composition, self.id)\n                if t == 0:\n                   \
-    \ if not node.right.isNil: stack.add((0, node.right))\n                    stack.add((1,\
-    \ node))\n                    if not node.left.isNil: stack.add((0, node.left))\n\
-    \                else:\n                    yield node.value\n\n    proc toSeq*[S,\
-    \ F](self: RangeReverseLazySegmentTree[S, F]): seq[S] =\n        for x in self:\n\
-    \            result.add(x)\n\n    proc `$`*[S, F](self: RangeReverseLazySegmentTree[S,\
-    \ F]): string =\n        var s: seq[string]\n        for x in self:\n        \
-    \    s.add($x)\n        return s.join(\" \")\n"
+    \      self.update(index, value)\n\n    iterator items*[S, F](self: RangeReverseLazySegmentTree[S,\
+    \ F]): S =\n        if not self.root.isNil:\n            var stack = @[(0, self.root)]\n\
+    \            while stack.len > 0:\n                var (t, node) = stack.pop()\n\
+    \                node.push(self.mapping, self.composition, self.id)\n        \
+    \        if t == 0:\n                    if not node.right.isNil: stack.add((0,\
+    \ node.right))\n                    stack.add((1, node))\n                   \
+    \ if not node.left.isNil: stack.add((0, node.left))\n                else:\n \
+    \                   yield node.value\n\n    proc toSeq*[S, F](self: RangeReverseLazySegmentTree[S,\
+    \ F]): seq[S] =\n        for x in self:\n            result.add(x)\n\n    proc\
+    \ `$`*[S, F](self: RangeReverseLazySegmentTree[S, F]): string =\n        var s:\
+    \ seq[string]\n        for x in self:\n            s.add($x)\n        return s.join(\"\
+    \ \")\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/range_reverse_lazysegtree.nim
   requiredBy: []
-  timestamp: '2026-09-06 11:23:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/collections/range_reverse_lazysegtree_test.nim
   - verify/collections/range_reverse_lazysegtree_test.nim

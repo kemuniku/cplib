@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_reverse_array_test.nim
     title: verify/collections/range_reverse_array_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_reverse_array_test.nim
     title: verify/collections/range_reverse_array_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -65,38 +65,45 @@ data:
     \n    proc len*[T](self: RangeReverseArray[T]): int =\n        self.length\n\n\
     \    proc reverse*[T](self: RangeReverseArray[T], l, r: int) =\n        ## \u534A\
     \u958B\u533A\u9593[l, r)\u3092\u53CD\u8EE2\u3057\u307E\u3059\u3002\n        assert\
-    \ 0 <= l and l <= r and r <= self.length\n        var (left, middleRight) = split(self.root,\
-    \ l)\n        var (middle, right) = split(middleRight, r - l)\n        middle.toggle\n\
-    \        self.root = merge(left, merge(middle, right))\n\n    proc reverse*[T](self:\
-    \ RangeReverseArray[T], segment: HSlice[int, int]) =\n        ## \u9589\u533A\u9593\
-    segment\u3092\u53CD\u8EE2\u3057\u307E\u3059\u3002\n        self.reverse(segment.a,\
-    \ segment.b + 1)\n\n    proc get*[T](self: RangeReverseArray[T], index: int):\
-    \ T =\n        ## index\u756A\u76EE\u306E\u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\
-    \n        assert 0 <= index and index < self.length\n        var node = self.root\n\
+    \ 0 <= l and l <= r and r <= self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\
+    \u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.length\"\n        var\
+    \ (left, middleRight) = split(self.root, l)\n        var (middle, right) = split(middleRight,\
+    \ r - l)\n        middle.toggle\n        self.root = merge(left, merge(middle,\
+    \ right))\n\n    proc reverse*[T](self: RangeReverseArray[T], segment: HSlice[int,\
+    \ int]) =\n        ## \u9589\u533A\u9593segment\u3092\u53CD\u8EE2\u3057\u307E\u3059\
+    \u3002\n        self.reverse(segment.a, segment.b + 1)\n\n    proc get*[T](self:\
+    \ RangeReverseArray[T], index: int): T =\n        ## index\u756A\u76EE\u306E\u5024\
+    \u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert 0 <= index and index < self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= index and index <\
+    \ self.length\"\n        var node = self.root\n        var k = index\n       \
+    \ while true:\n            node.push\n            let leftSize = node.left.nodeLen\n\
+    \            if k < leftSize:\n                node = node.left\n            elif\
+    \ k == leftSize:\n                return node.value\n            else:\n     \
+    \           k -= leftSize + 1\n                node = node.right\n\n    proc update*[T](self:\
+    \ RangeReverseArray[T], index: int, value: T) =\n        ## index\u756A\u76EE\u306E\
+    \u5024\u3092value\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\n        assert 0\
+    \ <= index and index < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: 0 <= index and index < self.length\"\n        var node = self.root\n\
     \        var k = index\n        while true:\n            node.push\n         \
     \   let leftSize = node.left.nodeLen\n            if k < leftSize:\n         \
-    \       node = node.left\n            elif k == leftSize:\n                return\
-    \ node.value\n            else:\n                k -= leftSize + 1\n         \
-    \       node = node.right\n\n    proc update*[T](self: RangeReverseArray[T], index:\
-    \ int, value: T) =\n        ## index\u756A\u76EE\u306E\u5024\u3092value\u306B\u5909\
-    \u66F4\u3057\u307E\u3059\u3002\n        assert 0 <= index and index < self.length\n\
-    \        var node = self.root\n        var k = index\n        while true:\n  \
-    \          node.push\n            let leftSize = node.left.nodeLen\n         \
-    \   if k < leftSize:\n                node = node.left\n            elif k ==\
-    \ leftSize:\n                node.value = value\n                return\n    \
-    \        else:\n                k -= leftSize + 1\n                node = node.right\n\
-    \n    proc `[]`*[T](self: RangeReverseArray[T], index: int): T =\n        self.get(index)\n\
-    \n    proc `[]`*[T](self: RangeReverseArray[T], index: BackwardsIndex): T =\n\
-    \        self.get(self.length - int(index))\n\n    proc `[]=`*[T](self: RangeReverseArray[T],\
-    \ index: int, value: T) =\n        self.update(index, value)\n\n    proc `[]=`*[T](self:\
-    \ RangeReverseArray[T], index: BackwardsIndex, value: T) =\n        self.update(self.length\
-    \ - int(index), value)\n\n    iterator items*[T](self: RangeReverseArray[T]):\
-    \ T =\n        if not self.root.isNil:\n            var stack = @[(0, self.root)]\n\
-    \            while stack.len > 0:\n                var (t, node) = stack.pop()\n\
-    \                node.push\n                if t == 0:\n                    if\
-    \ not node.right.isNil: stack.add((0, node.right))\n                    stack.add((1,\
-    \ node))\n                    if not node.left.isNil: stack.add((0, node.left))\n\
-    \                else:\n                    yield node.value\n\n    proc toSeq*[T](self:\
+    \       node = node.left\n            elif k == leftSize:\n                node.value\
+    \ = value\n                return\n            else:\n                k -= leftSize\
+    \ + 1\n                node = node.right\n\n    proc `[]`*[T](self: RangeReverseArray[T],\
+    \ index: int): T =\n        self.get(index)\n\n    proc `[]`*[T](self: RangeReverseArray[T],\
+    \ index: BackwardsIndex): T =\n        self.get(self.length - int(index))\n\n\
+    \    proc `[]=`*[T](self: RangeReverseArray[T], index: int, value: T) =\n    \
+    \    self.update(index, value)\n\n    proc `[]=`*[T](self: RangeReverseArray[T],\
+    \ index: BackwardsIndex, value: T) =\n        self.update(self.length - int(index),\
+    \ value)\n\n    iterator items*[T](self: RangeReverseArray[T]): T =\n        if\
+    \ not self.root.isNil:\n            var stack = @[(0, self.root)]\n          \
+    \  while stack.len > 0:\n                var (t, node) = stack.pop()\n       \
+    \         node.push\n                if t == 0:\n                    if not node.right.isNil:\
+    \ stack.add((0, node.right))\n                    stack.add((1, node))\n     \
+    \               if not node.left.isNil: stack.add((0, node.left))\n          \
+    \      else:\n                    yield node.value\n\n    proc toSeq*[T](self:\
     \ RangeReverseArray[T]): seq[T] =\n        for x in self:\n            result.add(x)\n\
     \n    proc `$`*[T](self: RangeReverseArray[T]): string =\n        var s: seq[string]\n\
     \        for x in self:\n            s.add($x)\n        return s.join(\" \")\n"
@@ -104,8 +111,8 @@ data:
   isVerificationFile: false
   path: cplib/collections/range_reverse_array.nim
   requiredBy: []
-  timestamp: '2026-07-06 18:53:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/collections/range_reverse_array_test.nim
   - verify/collections/range_reverse_array_test.nim

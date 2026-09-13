@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
   - icon: ':question:'
@@ -62,10 +62,10 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
   _extendedVerifiedWith:
@@ -75,111 +75,111 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/division_of_polynomials_test.nim
     title: verify/fps/division_of_polynomials_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/division_of_polynomials_test.nim
     title: verify/fps/division_of_polynomials_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/exp_of_formal_power_series_test.nim
     title: verify/fps/exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/exp_of_formal_power_series_test.nim
     title: verify/fps/exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -414,38 +414,40 @@ data:
     \u6B21\u5F0F\u3092\u6210\u5206\u306B\u6301\u3064\u6709\u7406\u884C\u5217\u6F38\
     \u5316\u5F0F\u306E\u7B2Ctarget\u9805\u3092\u5E73\u65B9\u5206\u5272\u3067\u6C42\
     \u3081\u308B\u3002\n        let dimension = initial.len\n        doAssert dimension\
-    \ > 0 and transition.len == dimension * dimension\n        if target < dimension:\
-    \ return initial[target]\n        let transitionCount = target - dimension + 1\n\
-    \        var blockSize = isqrt(transitionCount)\n        if blockSize * blockSize\
-    \ < transitionCount: inc blockSize\n        let blockCount = transitionCount div\
-    \ blockSize\n        var state = initial\n\n        if blockCount > 0:\n     \
-    \       let blockMatrix = blockMatrixProduct[T](transition, dimension, 0, blockSize)\n\
-    \            let blockDenominator = blockScalarProduct[T](denominator, 0, blockSize)\n\
-    \            var points = newSeq[T](blockCount)\n            for i in 0..<blockCount:\
-    \ points[i] = init(T, i * blockSize)\n            let tree = initPolynomialProductTree[T](points)\n\
-    \            var matrixValues = newSeq[seq[T]](dimension * dimension)\n      \
-    \      for i in 0..<blockMatrix.len:\n                if blockMatrix[i].len >\
-    \ 0:\n                    matrixValues[i] = evaluate[T](tree, blockMatrix[i])\n\
-    \                else:\n                    matrixValues[i] = newSeq[T](blockCount)\n\
-    \            let denominatorValues = evaluate[T](tree, blockDenominator)\n   \
-    \         for blockIndex in 0..<blockCount:\n                doAssert denominatorValues[blockIndex].val\
-    \ != 0,\n                    \"\u591A\u9805\u5F0F\u4FC2\u6570\u6F38\u5316\u5F0F\
-    \u306E\u5206\u6BCD\u304C\u8A08\u7B97\u533A\u9593\u5185\u3067\u96F6\u306B\u306A\
-    \u3063\u305F\"\n                var next = newSeq[T](dimension)\n            \
-    \    for row in 0..<dimension:\n                    for column in 0..<dimension:\n\
-    \                        next[row] += matrixValues[row * dimension + column][blockIndex]\
-    \ *\n                            state[column]\n                    next[row]\
-    \ /= denominatorValues[blockIndex]\n                state = move(next)\n\n   \
-    \     for step in blockCount * blockSize..<transitionCount:\n            let denominatorValue\
-    \ = evaluateLinearPolynomial[T](denominator, step)\n            doAssert denominatorValue.val\
-    \ != 0,\n                \"\u591A\u9805\u5F0F\u4FC2\u6570\u6F38\u5316\u5F0F\u306E\
-    \u5206\u6BCD\u304C\u8A08\u7B97\u533A\u9593\u5185\u3067\u96F6\u306B\u306A\u3063\
-    \u305F\"\n            var next = newSeq[T](dimension)\n            for row in\
-    \ 0..<dimension:\n                for column in 0..<dimension:\n             \
-    \       let entry = transition[row * dimension + column]\n                   \
-    \ next[row] += evaluateLinearPolynomial[T](entry, step) * state[column]\n    \
-    \            next[row] /= denominatorValue\n            state = move(next)\n \
-    \       state[^1]\n\n    proc expTransition[T: BarrettModint or MontgomeryModint](f:\
+    \ > 0 and transition.len == dimension * dimension, \"\u9077\u79FB\u884C\u5217\u306E\
+    \u6B21\u5143\u306F\u6B63\u3067\u3001\u8981\u7D20\u6570\u306F\u6B21\u5143\u306E\
+    2\u4E57\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n      \
+    \  if target < dimension: return initial[target]\n        let transitionCount\
+    \ = target - dimension + 1\n        var blockSize = isqrt(transitionCount)\n \
+    \       if blockSize * blockSize < transitionCount: inc blockSize\n        let\
+    \ blockCount = transitionCount div blockSize\n        var state = initial\n\n\
+    \        if blockCount > 0:\n            let blockMatrix = blockMatrixProduct[T](transition,\
+    \ dimension, 0, blockSize)\n            let blockDenominator = blockScalarProduct[T](denominator,\
+    \ 0, blockSize)\n            var points = newSeq[T](blockCount)\n            for\
+    \ i in 0..<blockCount: points[i] = init(T, i * blockSize)\n            let tree\
+    \ = initPolynomialProductTree[T](points)\n            var matrixValues = newSeq[seq[T]](dimension\
+    \ * dimension)\n            for i in 0..<blockMatrix.len:\n                if\
+    \ blockMatrix[i].len > 0:\n                    matrixValues[i] = evaluate[T](tree,\
+    \ blockMatrix[i])\n                else:\n                    matrixValues[i]\
+    \ = newSeq[T](blockCount)\n            let denominatorValues = evaluate[T](tree,\
+    \ blockDenominator)\n            for blockIndex in 0..<blockCount:\n         \
+    \       doAssert denominatorValues[blockIndex].val != 0,\n                   \
+    \ \"\u591A\u9805\u5F0F\u4FC2\u6570\u6F38\u5316\u5F0F\u306E\u5206\u6BCD\u304C\u8A08\
+    \u7B97\u533A\u9593\u5185\u3067\u96F6\u306B\u306A\u3063\u305F\"\n             \
+    \   var next = newSeq[T](dimension)\n                for row in 0..<dimension:\n\
+    \                    for column in 0..<dimension:\n                        next[row]\
+    \ += matrixValues[row * dimension + column][blockIndex] *\n                  \
+    \          state[column]\n                    next[row] /= denominatorValues[blockIndex]\n\
+    \                state = move(next)\n\n        for step in blockCount * blockSize..<transitionCount:\n\
+    \            let denominatorValue = evaluateLinearPolynomial[T](denominator, step)\n\
+    \            doAssert denominatorValue.val != 0,\n                \"\u591A\u9805\
+    \u5F0F\u4FC2\u6570\u6F38\u5316\u5F0F\u306E\u5206\u6BCD\u304C\u8A08\u7B97\u533A\
+    \u9593\u5185\u3067\u96F6\u306B\u306A\u3063\u305F\"\n            var next = newSeq[T](dimension)\n\
+    \            for row in 0..<dimension:\n                for column in 0..<dimension:\n\
+    \                    let entry = transition[row * dimension + column]\n      \
+    \              next[row] += evaluateLinearPolynomial[T](entry, step) * state[column]\n\
+    \                next[row] /= denominatorValue\n            state = move(next)\n\
+    \        state[^1]\n\n    proc expTransition[T: BarrettModint or MontgomeryModint](f:\
     \ SparseFPS[T],\n            dimension: int): tuple[matrix: seq[LinearPolynomial[T]],\n\
     \            denominator: LinearPolynomial[T]] =\n        result.matrix = newSeq[LinearPolynomial[T]](dimension\
     \ * dimension)\n        result.denominator = (init(T, dimension), init(T, 1))\n\
@@ -534,33 +536,33 @@ data:
     \ powTransition[T](unit, exponent, dimension)\n        nthTermPolynomialRecurrence[T](initial,\
     \ recurrence.matrix,\n            recurrence.denominator, shiftedDegree) * scale\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/product_tree.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/bostan_mori.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/product_tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/fps/sparse_formal_power_series.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-13 12:35:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim

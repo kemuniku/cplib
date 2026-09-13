@@ -8,16 +8,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
   - icon: ':heavy_check_mark:'
@@ -44,10 +44,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -74,10 +74,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph_with_op.nim
     title: cplib/graph/functional_graph_with_op.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
   - icon: ':heavy_check_mark:'
@@ -92,10 +92,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/grid_to_graph.nim
     title: cplib/graph/grid_to_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
   - icon: ':heavy_check_mark:'
@@ -104,10 +104,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   - icon: ':heavy_check_mark:'
@@ -128,10 +128,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':heavy_check_mark:'
@@ -164,16 +164,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
   - icon: ':heavy_check_mark:'
@@ -189,11 +189,23 @@ data:
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/aho_corasick.nim
+    title: cplib/str/aho_corasick.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/aho_corasick.nim
+    title: cplib/str/aho_corasick.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
   - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/trie.nim
+    title: cplib/str/trie.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/trie.nim
+    title: cplib/str/trie.nim
   - icon: ':heavy_check_mark:'
     path: cplib/tree/centroid_decomposition.nim
     title: cplib/tree/centroid_decomposition.nim
@@ -442,6 +454,12 @@ data:
     path: verify/AI/SCC_test.nim
     title: verify/AI/SCC_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/aho_corasick_test.nim
+    title: verify/AI/aho_corasick_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/aho_corasick_test.nim
+    title: verify/AI/aho_corasick_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/bellmanford_test.nim
     title: verify/AI/bellmanford_test.nim
   - icon: ':heavy_check_mark:'
@@ -664,6 +682,12 @@ data:
     path: verify/AI/tree_hash_test.nim
     title: verify/AI/tree_hash_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/trie_test.nim
+    title: verify/AI/trie_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/trie_test.nim
+    title: verify/AI/trie_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/tsp_test.nim
     title: verify/AI/tsp_test.nim
   - icon: ':heavy_check_mark:'
@@ -681,112 +705,112 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
     title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
     title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/lowlink_articulation_test.nim
     title: verify/graph/lowlink_articulation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/lowlink_articulation_test.nim
     title: verify/graph/lowlink_articulation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/lowlink_bridges_test.nim
     title: verify/graph/lowlink_bridges_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/lowlink_bridges_test.nim
     title: verify/graph/lowlink_bridges_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
     title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
     title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
   - icon: ':x:'
@@ -1005,21 +1029,26 @@ data:
     \u3059\u308B\u3002O(V + E)\u3002\n        g.build_impl()\n\n    proc static_graph_initialized_check*[T](g:\
     \ StaticGraph[T]) =\n        ## \u9759\u7684\u30B0\u30E9\u30D5\u304C\u69CB\u7BC9\
     \u6E08\u307F\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\u3059\u308B\u3002\
-    O(1)\u3002\n        assert g.start.len > 0, \"Static Graph must be initialized\
-    \ before use.\"\n\n    proc reserve_seq[T](s: var seq[T], capacity: int) =\n \
-    \       ## \u65E2\u5B58\u306E\u8981\u7D20\u3092\u7DAD\u6301\u3057\u3001\u6307\u5B9A\
-    \u8981\u7D20\u6570\u3092\u683C\u7D0D\u3067\u304D\u308B\u914D\u5217\u3092\u78BA\
-    \u4FDD\u3059\u308B\u3002\n        if capacity <= s.len: return\n        var reserved\
-    \ = newSeqOfCap[T](capacity)\n        for e in s: reserved.add(e)\n        s =\
-    \ move(reserved)\n\n    proc reserve*[T](g: DynamicGraph[T], capacity: int, degrees:\
-    \ openArray[int] = []) =\n        ## \u7DCF\u8FBA\u6570\u3068\u5404\u9802\u70B9\
-    \u306E\u96A3\u63A5\u8981\u7D20\u6570\u3092\u4E88\u7D04\u3059\u308B\u3002\u65E2\
-    \u5B58\u8981\u7D20\u306F\u7DAD\u6301\u3057\u3001\u5FC5\u8981\u306A\u914D\u5217\
-    \u3092\u518D\u78BA\u4FDD\u3059\u308B\u3002\n        assert capacity >= 0\n   \
-    \     assert degrees.len == 0 or degrees.len == g.len\n        g.edge_info.reserve_seq(capacity)\n\
-    \        for u, degree in degrees:\n            assert degree >= 0\n         \
-    \   g.edges[u].reserve_seq(degree)\n\n    proc initWeightedDirectedGraph*(N: int,\
-    \ edgetype: typedesc = int, capacity: int = 0): WeightedDirectedGraph[edgetype]\
+    O(1)\u3002\n        assert g.start.len > 0, \"Static Graph\u306F\u4F7F\u7528\u524D\
+    \u306B\u521D\u671F\u5316\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n\n    proc reserve_seq[T](s: var seq[T], capacity: int) =\n        ## \u65E2\
+    \u5B58\u306E\u8981\u7D20\u3092\u7DAD\u6301\u3057\u3001\u6307\u5B9A\u8981\u7D20\
+    \u6570\u3092\u683C\u7D0D\u3067\u304D\u308B\u914D\u5217\u3092\u78BA\u4FDD\u3059\
+    \u308B\u3002\n        if capacity <= s.len: return\n        var reserved = newSeqOfCap[T](capacity)\n\
+    \        for e in s: reserved.add(e)\n        s = move(reserved)\n\n    proc reserve*[T](g:\
+    \ DynamicGraph[T], capacity: int, degrees: openArray[int] = []) =\n        ##\
+    \ \u7DCF\u8FBA\u6570\u3068\u5404\u9802\u70B9\u306E\u96A3\u63A5\u8981\u7D20\u6570\
+    \u3092\u4E88\u7D04\u3059\u308B\u3002\u65E2\u5B58\u8981\u7D20\u306F\u7DAD\u6301\
+    \u3057\u3001\u5FC5\u8981\u306A\u914D\u5217\u3092\u518D\u78BA\u4FDD\u3059\u308B\
+    \u3002\n        assert capacity >= 0, \"capacity\u306F\u975E\u8CA0\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        assert degrees.len\
+    \ == 0 or degrees.len == g.len, \"\u6B21\u6570\u306E\u914D\u5217\u306F\u7A7A\u304B\
+    \u3001\u9802\u70B9\u6570\u3068\u540C\u3058\u9577\u3055\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        g.edge_info.reserve_seq(capacity)\n\
+    \        for u, degree in degrees:\n            assert degree >= 0, \"degree\u306F\
+    \u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \           g.edges[u].reserve_seq(degree)\n\n    proc initWeightedDirectedGraph*(N:\
+    \ int, edgetype: typedesc = int, capacity: int = 0): WeightedDirectedGraph[edgetype]\
     \ =\n        ## \u9802\u70B9\u6570 N \u306E\u30B0\u30E9\u30D5\u3092\u521D\u671F\
     \u5316\u3059\u308B\u3002O(N)\u3002\n        result = WeightedDirectedGraph[edgetype](edge_info:\
     \ newSeqOfCap[EdgeInfo[edgetype]](capacity), edges: newSeq[seq[WeightedAdjacentEdge[edgetype]]](N),\
@@ -1247,6 +1276,10 @@ data:
   - cplib/utils/itertools.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
+  - cplib/str/trie.nim
+  - cplib/str/trie.nim
+  - cplib/str/aho_corasick.nim
+  - cplib/str/aho_corasick.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
   - cplib/tree/tree_hash.nim
@@ -1327,7 +1360,7 @@ data:
   - cplib/graph/block_cut_tree.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/utils/itertools/accumulated_test.nim
@@ -1406,6 +1439,8 @@ data:
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/AI/static_top_tree_test.nim
   - verify/AI/static_top_tree_test.nim
+  - verify/AI/aho_corasick_test.nim
+  - verify/AI/aho_corasick_test.nim
   - verify/AI/dynamic_bipartite_test.nim
   - verify/AI/dynamic_bipartite_test.nim
   - verify/AI/general_matching_test.nim
@@ -1446,6 +1481,8 @@ data:
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/bipartite_graph_test.nim
   - verify/AI/bipartite_graph_test.nim
+  - verify/AI/trie_test.nim
+  - verify/AI/trie_test.nim
   - verify/AI/rerooting_test.nim
   - verify/AI/rerooting_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim

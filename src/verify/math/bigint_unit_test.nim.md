@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':question:'
@@ -51,9 +51,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -390,26 +390,26 @@ data:
     \ \"Hello World\"\n"
   dependsOn:
   - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/bigint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/bigint.nim
   - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/bigint.nim
   isVerificationFile: true
   path: verify/math/bigint_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:59:41+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/math/bigint_unit_test.nim
 layout: document

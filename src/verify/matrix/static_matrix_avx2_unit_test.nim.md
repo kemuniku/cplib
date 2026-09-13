@@ -27,9 +27,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -91,19 +91,19 @@ data:
     \ stale.adjugate\nrejects: discard stale.hafnian\nrejects: discard stale.solveLinearSystem(@[modint_montgomery.init(0),modint_montgomery.init(0)])\n\
     echo \"Hello World\"\n"
   dependsOn:
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/matrix/static_matrix_avx2_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-11 02:58:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/matrix/static_matrix_avx2_unit_test.nim
 layout: document

@@ -39,8 +39,9 @@ data:
     \ root: -1,\n                size: newSeq[int](n), depth: newSeq[int](n))\n  \
     \      else:\n            result = CentroidDecomposition(root: -1,\n         \
     \       parent: newSeq[int](n), depth: newSeq[int](n),\n                children:\
-    \ newSeq[seq[int]](n))\n        if n == 0: return\n        assert root in 0..<n\n\
-    \        var removed = newSeq[bool](n)\n        var parent = newSeq[int](n)\n\
+    \ newSeq[seq[int]](n))\n        if n == 0: return\n        assert root in 0..<n,\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: root in 0 ..<\
+    \ n\"\n        var removed = newSeq[bool](n)\n        var parent = newSeq[int](n)\n\
     \        var size = newSeq[int](n)\n        var largest = newSeq[int](n)\n   \
     \     var seen = newSeq[int](n)\n        var stamp = 0\n        var order: seq[int]\n\
     \        var tasks = @[(root, -1)]\n        while tasks.len > 0:\n           \
@@ -101,7 +102,7 @@ data:
   isVerificationFile: false
   path: cplib/tree/centroid_decomposition.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/centroid_decomposition_test.nim

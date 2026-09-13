@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
   - icon: ':warning:'
@@ -33,27 +33,27 @@ data:
     path: verify/matrix/linear_algebra/judge_driver.nim
     title: verify/matrix/linear_algebra/judge_driver.nim
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_unit_test.nim
     title: verify/matrix/matrix_avx2_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_unit_test.nim
     title: verify/matrix/matrix_avx2_unit_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -246,22 +246,24 @@ data:
     \        ## \u9023\u7D9A\u3057\u305Fmodint\u5185\u90E8\u5024\u3092\u4F59\u5206\
     \u306A\u914D\u5217\u5909\u63DB\u306A\u3057\u3067\u6587\u5B57\u5217\u306B\u3059\
     \u308B\u3002\n        if count == 0: return \"\"\n        doAssert count <= high(int)\
-    \ div 10, \"matrix string size overflow\"\n        doAssert count == 1 or separator.len\
-    \ <= (high(int) - count * 10) div (count - 1),\n            \"matrix string size\
-    \ overflow\"\n        result = newString(count * 10 + (count - 1) * separator.len)\n\
-    \        let written = joinKernel(values, count.csize_t, modulus, montgomery,\n\
-    \            addr result[0], separator.cstring, separator.len.csize_t)\n     \
-    \   result.setLen(written.int)\n\n    proc matrixConvertValues*(values, output:\
-    \ ptr uint32, count: int,\n            modulus: uint32, montgomery: bool) =\n\
-    \        ## \u6B63\u898F\u5316\u6E08\u307F\u516C\u958B\u5024\u3092modint\u306E\
-    \u5185\u90E8\u5F62\u5F0F\u3078\u4E00\u62EC\u5909\u63DB\u3059\u308B\u3002\n   \
-    \     if count > 0:\n            convertKernel(values, output, count.csize_t,\
-    \ modulus, montgomery)\n\n    proc matrixWriteRow*(values: ptr uint32, count:\
-    \ int, modulus: uint32,\n            montgomery: bool, output: File) =\n     \
-    \   ## modint\u5185\u90E8\u5024\u3092\u4E00\u6642\u914D\u5217\u3084\u6587\u5B57\
-    \u5217\u3092\u4F5C\u3089\u305A\u7A7A\u767D\u533A\u5207\u308A\u3067\u51FA\u529B\
-    \u3059\u308B\u3002\n        writeRowKernel(values, count.csize_t, modulus, montgomery,\
-    \ output)\n\n    include cplib/matrix/matrix_avx2_field_impl\n"
+    \ div 10, \"\u884C\u5217\u306E\u6587\u5B57\u5217\u8868\u73FE\u306E\u9577\u3055\
+    \u304Cint\u306E\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n    \
+    \    doAssert count == 1 or separator.len <= (high(int) - count * 10) div (count\
+    \ - 1),\n            \"\u884C\u5217\u306E\u6587\u5B57\u5217\u8868\u73FE\u306E\u9577\
+    \u3055\u304Cint\u306E\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n\
+    \        result = newString(count * 10 + (count - 1) * separator.len)\n      \
+    \  let written = joinKernel(values, count.csize_t, modulus, montgomery,\n    \
+    \        addr result[0], separator.cstring, separator.len.csize_t)\n        result.setLen(written.int)\n\
+    \n    proc matrixConvertValues*(values, output: ptr uint32, count: int,\n    \
+    \        modulus: uint32, montgomery: bool) =\n        ## \u6B63\u898F\u5316\u6E08\
+    \u307F\u516C\u958B\u5024\u3092modint\u306E\u5185\u90E8\u5F62\u5F0F\u3078\u4E00\
+    \u62EC\u5909\u63DB\u3059\u308B\u3002\n        if count > 0:\n            convertKernel(values,\
+    \ output, count.csize_t, modulus, montgomery)\n\n    proc matrixWriteRow*(values:\
+    \ ptr uint32, count: int, modulus: uint32,\n            montgomery: bool, output:\
+    \ File) =\n        ## modint\u5185\u90E8\u5024\u3092\u4E00\u6642\u914D\u5217\u3084\
+    \u6587\u5B57\u5217\u3092\u4F5C\u3089\u305A\u7A7A\u767D\u533A\u5207\u308A\u3067\
+    \u51FA\u529B\u3059\u308B\u3002\n        writeRowKernel(values, count.csize_t,\
+    \ modulus, montgomery, output)\n\n    include cplib/matrix/matrix_avx2_field_impl\n"
   dependsOn:
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
@@ -276,8 +278,8 @@ data:
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
-  timestamp: '2026-09-11 02:58:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim

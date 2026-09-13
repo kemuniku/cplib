@@ -7,28 +7,28 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
   - icon: ':question:'
@@ -57,9 +57,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
     links:
@@ -80,29 +80,29 @@ data:
     \    stderr.writeLine(\"matrix_product_ms=\", (getMonoTime() - start).inNanoseconds.float\
     \ / 1e6)\nfor i in 0 ..< n:\n    c[i].writeRow()\n"
   dependsOn:
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 10:19:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/matrix/matrix_avx2_test.nim
 layout: document

@@ -69,16 +69,18 @@ data:
     \u5408\u3001INF64\u304C\u8FD4\u308A\u307E\u3059\u3002\n        ## x\u306F\u521D\
     \u671F\u5316\u6642\u306B\u4E0E\u3048\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
     \u3059\u3002\n        var now = self.X.binarySearch(x)\n        assert now !=\
-    \ -1\n        now+=self.lastnode\n        result = INF64\n        while now !=\
-    \ 0:\n            result = min(result,self.A[now]*x+self.B[now])\n           \
-    \ now = now shr 1\n"
+    \ -1, \"\u30AF\u30A8\u30EA\u5EA7\u6A19\u306F\u521D\u671F\u5316\u6642\u306B\u767B\
+    \u9332\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        now+=self.lastnode\n        result = INF64\n        while now != 0:\n\
+    \            result = min(result,self.A[now]*x+self.B[now])\n            now =\
+    \ now shr 1\n"
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/collections/lichaotree.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:12:05+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/lichaotree_test.nim

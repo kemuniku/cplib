@@ -69,30 +69,34 @@ data:
     \ values: openArray[Forward],\n            compress, rake: proc(l, r: Forward):\
     \ Forward): StaticTopTreeDP[Forward] =\n        ## \u9802\u70B9\u756A\u53F7\u9806\
     \u306E\u8449\u306E\u5024\u304B\u3089\u56FA\u5B9A\u6839DP\u3092\u69CB\u7BC9\u3059\
-    \u308B\u3002O(N)\u56DE\u306E\u6F14\u7B97\n        assert values.len == tree.numVertices\n\
-    \        result = StaticTopTreeDP[Forward](tree: tree, values: newSeq[Forward](tree.nodes.len),\n\
+    \u308B\u3002O(N)\u56DE\u306E\u6F14\u7B97\n        assert values.len == tree.numVertices,\
+    \ \"\u5024\u306E\u914D\u5217\u306E\u9577\u3055\u306F\u6728\u306E\u9802\u70B9\u6570\
+    \u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       result = StaticTopTreeDP[Forward](tree: tree, values: newSeq[Forward](tree.nodes.len),\n\
     \            compress: compress, rake: rake)\n        for v in 0..<values.len:\n\
     \            result.values[v] = values[v]\n        for node in values.len..<tree.nodes.len:\n\
     \            result.recalculate(node)\n\n    proc set*[Forward](self: StaticTopTreeDP[Forward],\
     \ v: int, value: Forward) =\n        ## \u9802\u70B9v\u3068\u89AA\u8FBA\u3092\u8868\
     \u3059\u8449\u306E\u5024\u3092\u66F4\u65B0\u3059\u308B\u3002O(log N)\u56DE\u306E\
-    \u6F14\u7B97\n        assert 0 <= v and v < self.tree.numVertices\n        self.values[v]\
-    \ = value\n        var node = self.tree.nodes[v].parent\n        while node !=\
-    \ -1:\n            self.recalculate(node)\n            node = self.tree.nodes[node].parent\n\
-    \n    proc getAll*[Forward](self: StaticTopTreeDP[Forward]): Forward =\n     \
-    \   ## \u69CB\u7BC9\u6642\u306E\u6839\u306B\u5BFE\u3059\u308B\u6728\u5168\u4F53\
-    \u306E\u96C6\u7D04\u5024\u3092\u8FD4\u3059\u3002O(1)\n        return self.values[self.tree.root]\n"
+    \u6F14\u7B97\n        assert 0 <= v and v < self.tree.numVertices, \"\u9802\u70B9\
+    \u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= v and v < self.tree.numVertices\"\
+    \n        self.values[v] = value\n        var node = self.tree.nodes[v].parent\n\
+    \        while node != -1:\n            self.recalculate(node)\n            node\
+    \ = self.tree.nodes[node].parent\n\n    proc getAll*[Forward](self: StaticTopTreeDP[Forward]):\
+    \ Forward =\n        ## \u69CB\u7BC9\u6642\u306E\u6839\u306B\u5BFE\u3059\u308B\
+    \u6728\u5168\u4F53\u306E\u96C6\u7D04\u5024\u3092\u8FD4\u3059\u3002O(1)\n     \
+    \   return self.values[self.tree.root]\n"
   dependsOn:
-  - cplib/tree/static_top_tree.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree_dp.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim

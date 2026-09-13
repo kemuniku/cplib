@@ -38,13 +38,13 @@ data:
     \ \")\n"
   dependsOn:
   - cplib/tree/tree_hash.nim
-  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
+  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/rooted_tree_isomorphism_classification_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/rooted_tree_isomorphism_classification_test.nim

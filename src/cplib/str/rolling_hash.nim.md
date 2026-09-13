@@ -21,27 +21,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/rolling_hash_test.nim
     title: verify/AI/rolling_hash_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/rolling_hash_aoj_test.nim
     title: verify/str/rolling_hash_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/rolling_hash_aoj_test.nim
     title: verify/str/rolling_hash_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
     title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
     title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
     title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
     title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -87,8 +87,11 @@ data:
     \ s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())\n\
     \        result.build\n\n    proc query*(rh: RollingHash, rng: HSlice[int, int]):\
     \ uint =\n        var\n            l = rng.a\n            r = rng.b + 1\n    \
-    \    assert l in 0..<rh.hash_accum.len and r in 0..<rh.hash_accum.len\n      \
-    \  return mul(rh.hash_accum[r] + RH_MOD - rh.hash_accum[l], rh.base_inv_pow[l]).calc_mod\n"
+    \    assert l in 0..<rh.hash_accum.len and r in 0..<rh.hash_accum.len, \"\u6307\
+    \u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: l in 0 ..< rh.hash_accum.len\
+    \ and r in 0 ..< rh.hash_accum.len\"\n        return mul(rh.hash_accum[r] + RH_MOD\
+    \ - rh.hash_accum[l], rh.base_inv_pow[l]).calc_mod\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/rolling_hash.nim
@@ -97,8 +100,8 @@ data:
   - verify/str/rolling_hash_abcbac_test_.nim
   - verify/str/rolling_hash_pun_test_.nim
   - verify/str/rolling_hash_pun_test_.nim
-  timestamp: '2026-09-04 08:24:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim

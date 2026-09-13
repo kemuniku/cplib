@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   - icon: ':question:'
@@ -58,20 +58,20 @@ data:
     \ solution.basis.len\n    print bits(solution.particular)\n    for vector in solution.basis:\
     \ print bits(vector)\n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/tmpl/fastio.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/system_mod2_driver.nim
   requiredBy: []
-  timestamp: '2026-09-13 10:19:55+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/matrix/linear_algebra/system_mod2_driver.nim

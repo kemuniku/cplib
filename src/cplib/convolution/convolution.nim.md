@@ -38,34 +38,34 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
   - icon: ':question:'
@@ -74,28 +74,28 @@ data:
   - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/power_projection.nim
     title: cplib/fps/power_projection.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/power_projection.nim
     title: cplib/fps/power_projection.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
   - icon: ':question:'
@@ -110,10 +110,10 @@ data:
   - icon: ':question:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
   - icon: ':question:'
@@ -122,10 +122,10 @@ data:
   - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':heavy_check_mark:'
@@ -201,196 +201,196 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_barrett_test.nim
     title: verify/convolution/convolution/convolution_static_barrett_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_montgomery_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_static_montgomery_test.nim
     title: verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/division_of_polynomials_test.nim
     title: verify/fps/division_of_polynomials_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/division_of_polynomials_test.nim
     title: verify/fps/division_of_polynomials_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/exp_of_formal_power_series_test.nim
     title: verify/fps/exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/exp_of_formal_power_series_test.nim
     title: verify/fps/exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
   - icon: ':x:'
@@ -848,10 +848,13 @@ data:
     \            f, g: seq[T], n: int): seq[T] =\n        ## \u9577\u3055n\u306E\u5DE1\
     \u56DE\u7573\u307F\u8FBC\u307F\u3092\u6C42\u3081\u308B\u3002n\u306F2\u306E\u51AA\
     \u3067\u306A\u3051\u308C\u3070\u306A\u3089\u306A\u3044\u3002\n        doAssert\
-    \ n > 0 and (n and (n - 1)) == 0\n        doAssert f.len <= n and g.len <= n\n\
-    \        result = newSeq[T](n)\n        if f.len == 0 or g.len == 0: return\n\
-    \        if n >= 64 and isNttFriendlyModulus(T.umod, n.uint32):\n            when\
-    \ T is MontgomeryModint:\n                var normalF = newSeq[uint32](f.len)\n\
+    \ n > 0 and (n and (n - 1)) == 0, \"\u5909\u63DB\u9577n\u306F\u6B63\u306E2\u306E\
+    \u51AA\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \ doAssert f.len <= n and g.len <= n, \"\u5165\u529B\u914D\u5217\u306E\u9577\u3055\
+    \u306F\u5909\u63DB\u9577n\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        result = newSeq[T](n)\n        if f.len == 0 or\
+    \ g.len == 0: return\n        if n >= 64 and isNttFriendlyModulus(T.umod, n.uint32):\n\
+    \            when T is MontgomeryModint:\n                var normalF = newSeq[uint32](f.len)\n\
     \                var normalG = newSeq[uint32](g.len)\n                var normalResult\
     \ = newSeq[uint32](n)\n                for i in 0..<f.len: normalF[i] = f[i].val.uint32\n\
     \                for i in 0..<g.len: normalG[i] = g[i].val.uint32\n          \
@@ -866,10 +869,11 @@ data:
     \ product = convolution(f, g)\n        for i in 0..<product.len:\n           \
     \ if i < n: result[i] += product[i]\n            else: result[i - n] += product[i]\n\
     \n    proc convolution*[m: static[int]](f, g: seq[int]): seq[int] =\n        doAssert\
-    \ m > 0 and m < (1 shl 31),\n            \"convolution modulus must be in [1,\
-    \ 2^31)\"\n        if f.len == 0 or g.len == 0: return @[]\n        type Mint\
-    \ = StaticBarrettModint[m.uint32]\n        var fm = newSeq[Mint](f.len)\n    \
-    \    var gm = newSeq[Mint](g.len)\n        for i in 0..<f.len: fm[i] = init(Mint,\
+    \ m > 0 and m < (1 shl 31),\n            \"\u7573\u307F\u8FBC\u307F\u306E\u6CD5\
+    \u306F1\u4EE5\u4E0A2^31\u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        if f.len == 0 or g.len == 0: return @[]\n        type\
+    \ Mint = StaticBarrettModint[m.uint32]\n        var fm = newSeq[Mint](f.len)\n\
+    \        var gm = newSeq[Mint](g.len)\n        for i in 0..<f.len: fm[i] = init(Mint,\
     \ f[i])\n        for i in 0..<g.len: gm[i] = init(Mint, g[i])\n        let product\
     \ = convolution(fm, gm)\n        result = newSeq[int](product.len)\n        for\
     \ i in 0..<product.len: result[i] = product[i].val\n\n    proc convolutionNttFriendlyU32(\n\
@@ -898,13 +902,15 @@ data:
     \u4F59\u304B\u3089\u8981\u6C42\u3055\u308C\u305F\u6CD5\u3067\u9084\u5143\u3059\
     \u308B\u524D\u306E\u5024\u3092\u4E00\u610F\u306B\u7279\u5B9A\u3067\u304D\u308B\
     \u3002\n        let targetMod = T.umod.uint64\n        assert targetMod > 0 and\
-    \ targetMod < (1u64 shl 31),\n            \"arbitrary-mod convolution requires\
-    \ a modulus in [1, 2^31)\"\n        let transformSize = 1 shl (fastLog2(f.len\
+    \ targetMod < (1u64 shl 31),\n            \"\u4EFB\u610Fmod\u7573\u307F\u8FBC\u307F\
+    \u306E\u6CD5\u306F1\u4EE5\u4E0A2^31\u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        let transformSize = 1 shl (fastLog2(f.len\
     \ + g.len - 2) + 1)\n        assert transformSize <= (1 shl 24),\n           \
-    \ \"arbitrary-mod convolution requires an NTT length at most 2^24\"\n\n      \
-    \  var fm = newSeq[uint32](f.len)\n        var gm = newSeq[uint32](g.len)\n  \
-    \      for i in 0..<f.len: fm[i] = (f[i].val.uint64 mod M1).uint32\n        for\
-    \ i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M1).uint32\n        let c1 = convolutionNttFriendlyU32(fm,\
+    \ \"\u4EFB\u610Fmod\u7573\u307F\u8FBC\u307F\u306ENTT\u9577\u306F2^24\u4EE5\u4E0B\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n        var\
+    \ fm = newSeq[uint32](f.len)\n        var gm = newSeq[uint32](g.len)\n       \
+    \ for i in 0..<f.len: fm[i] = (f[i].val.uint64 mod M1).uint32\n        for i in\
+    \ 0..<g.len: gm[i] = (g[i].val.uint64 mod M1).uint32\n        let c1 = convolutionNttFriendlyU32(fm,\
     \ gm, M1.uint32, 11u32)\n\n        for i in 0..<f.len: fm[i] = (f[i].val.uint64\
     \ mod M2).uint32\n        for i in 0..<g.len: gm[i] = (g[i].val.uint64 mod M2).uint32\n\
     \        let c2 = convolutionNttFriendlyU32(fm, gm, M2.uint32, 3u32)\n\n     \
@@ -949,16 +955,16 @@ data:
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
@@ -999,7 +1005,7 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-09-13 12:35:42+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/many_factorials_online_test.nim

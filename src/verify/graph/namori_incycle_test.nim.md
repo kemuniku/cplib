@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2891
     links:
@@ -48,19 +48,19 @@ data:
     var Q = ii()\nfor i in 0..<Q:\n    var a,b = ii()-1\n    if namori.incycle(a)\
     \ and namori.incycle(b):\n        echo 2\n    else:\n        echo 1\n"
   dependsOn:
-  - cplib/graph/namori_graph.nim
   - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/namori_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/graph/namori_incycle_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/namori_incycle_test.nim
 layout: document

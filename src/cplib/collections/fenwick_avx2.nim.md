@@ -92,7 +92,8 @@ data:
     \ self.height, self.size)\n\n    proc initFenwickTreeAvx2*(n: int): FenwickTreeAvx2\
     \ =\n        ## \u9577\u3055n\u306E\u96F6\u914D\u5217\u304B\u3089\u69CB\u7BC9\u3057\
     \u307E\u3059\u3002O(n)\u6642\u9593\u3001\u7D0416n/15\u500B\u306E64bit\u6574\u6570\
-    \u3092\u4F7F\u3044\u307E\u3059\u3002\n        assert n >= 0\n        result.size\
+    \u3092\u4F7F\u3044\u307E\u3059\u3002\n        assert n >= 0, \"n\u306F\u975E\u8CA0\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result.size\
     \ = n\n        var m = n\n        var size = 0\n        while true:\n        \
     \    result.offsets[result.height] = size\n            inc result.height\n   \
     \         size += (m + 16) and not 15\n            m = m shr 4\n            if\
@@ -110,23 +111,29 @@ data:
     \u6570\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        self.size\n\n  \
     \  proc add*(self: var FenwickTreeAvx2, p: int, delta: int) =\n        ## a[p]\u306B\
     delta\u3092\u52A0\u3048\u307E\u3059\u3002O(log_16 n)\u56DE\u306ESIMD\u66F4\u65B0\
-    \u3092\u884C\u3044\u307E\u3059\u3002\n        assert 0 <= p and p < self.size\n\
-    \        fw16Add(addr self.data[0], addr self.offsets[0], self.height, p, delta)\n\
+    \u3092\u884C\u3044\u307E\u3059\u3002\n        assert 0 <= p and p < self.size,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= p and p < self.size\"\
+    \n        fw16Add(addr self.data[0], addr self.offsets[0], self.height, p, delta)\n\
     \n    proc prefix*(self: FenwickTreeAvx2, r: int): int =\n        ## [0, r)\u306E\
     \u548C\u3092int\u3068\u3057\u3066O(log_16 n)\u3067\u8FD4\u3057\u307E\u3059\u3002\
-    \n        assert 0 <= r and r <= self.size\n        if r == 0: return 0\n    \
-    \    fw16Prefix(unsafeAddr self.data[0], unsafeAddr self.offsets[0], r)\n\n  \
-    \  proc get*(self: FenwickTreeAvx2, l, r: int): int =\n        ## [l, r)\u306E\
+    \n        assert 0 <= r and r <= self.size, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: 0 <= r and r <= self.size\"\n        if r == 0: return 0\n\
+    \        fw16Prefix(unsafeAddr self.data[0], unsafeAddr self.offsets[0], r)\n\n\
+    \    proc get*(self: FenwickTreeAvx2, l, r: int): int =\n        ## [l, r)\u306E\
     \u548C\u3092int\u3068\u3057\u3066O(log_16 n)\u3067\u8FD4\u3057\u307E\u3059\u3002\
-    \n        assert 0 <= l and l <= r and r <= self.size\n        if l == r: return\
-    \ 0\n        fw16Get(unsafeAddr self.data[0], unsafeAddr self.offsets[0], l, r)\n\
-    \n    proc `[]`*(self: FenwickTreeAvx2, segment: HSlice[int, int]): int {.inline.}\
-    \ =\n        ## \u30B9\u30E9\u30A4\u30B9\u306E\u548C\u3092O(log_16 n)\u3067\u8FD4\
-    \u3057\u307E\u3059\u3002\n        self.get(segment.a, segment.b + 1)\n\n    proc\
-    \ `[]`*(self: FenwickTreeAvx2, p: int): int {.inline.} =\n        ## a[p]\u3092\
-    O(log_16 n)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        self.get(p, p + 1)\n\n\
-    \    proc `[]=`*(self: var FenwickTreeAvx2, p: int, value: int) {.inline.} =\n\
-    \        ## a[p]\u3092value\u306B\u5909\u66F4\u3057\u307E\u3059\u3002O(log_16\
+    \n        assert 0 <= l and l <= r and r <= self.size, \"\u6307\u5B9A\u3057\u305F\
+    \u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.size\"\n\
+    \        if l == r: return 0\n        fw16Get(unsafeAddr self.data[0], unsafeAddr\
+    \ self.offsets[0], l, r)\n\n    proc `[]`*(self: FenwickTreeAvx2, segment: HSlice[int,\
+    \ int]): int {.inline.} =\n        ## \u30B9\u30E9\u30A4\u30B9\u306E\u548C\u3092\
+    O(log_16 n)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        self.get(segment.a, segment.b\
+    \ + 1)\n\n    proc `[]`*(self: FenwickTreeAvx2, p: int): int {.inline.} =\n  \
+    \      ## a[p]\u3092O(log_16 n)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        self.get(p,\
+    \ p + 1)\n\n    proc `[]=`*(self: var FenwickTreeAvx2, p: int, value: int) {.inline.}\
+    \ =\n        ## a[p]\u3092value\u306B\u5909\u66F4\u3057\u307E\u3059\u3002O(log_16\
     \ n)\u3067\u3059\u3002\n        self.add(p, value -% self.get(p, p + 1))\n"
   dependsOn: []
   isVerificationFile: false
@@ -134,7 +141,7 @@ data:
   requiredBy:
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/waveletmatrix_fenwick.nim
-  timestamp: '2026-09-09 00:25:17+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/fenwick_tree_avx2_test.nim

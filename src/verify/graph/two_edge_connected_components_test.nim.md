@@ -7,16 +7,16 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/two_edge_connected_components
     links:
@@ -48,19 +48,19 @@ data:
     for group in decomposition.groups:\n    stdout.write group.len\n    for v in group:\
     \ stdout.write \" \", v\n    stdout.write \"\\n\"\n"
   dependsOn:
-  - cplib/graph/lowlink.nim
-  - cplib/graph/two_edge_connected_components.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/lowlink.nim
-  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/two_edge_connected_components.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/two_edge_connected_components.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/two_edge_connected_components_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/two_edge_connected_components_test.nim
 layout: document

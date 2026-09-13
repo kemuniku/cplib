@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/link_cut_tree_test.nim
     title: verify/tree/link_cut_tree/link_cut_tree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/link_cut_tree_test.nim
     title: verify/tree/link_cut_tree/link_cut_tree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
     title: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
     title: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
     title: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
     title: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
     title: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
     title: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -71,7 +71,8 @@ data:
     \ S): S, default: S,\n        inverse: proc(x: S): S = nil\n    ): LinkCutTree[S]\
     \ =\n        ## \u5168\u9802\u70B9\u306E\u5024\u304Cdefault\u306E\u3001\u8FBA\u306E\
     \u306A\u3044\u68EE\u3092\u4F5C\u308B\u3002\u6642\u9593\u30FB\u7A7A\u9593O(N)\u3002\
-    \n        assert n >= 0\n        initLinkCutTree(newSeqWith(n, default), merge,\
+    \n        assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        initLinkCutTree(newSeqWith(n, default), merge,\
     \ default, inverse)\n\n    template newLinkCutTreeWith*(vOrN, merge, default:\
     \ untyped): untyped =\n        ## l, r\u3092\u4F7F\u3063\u305F\u5F0F\u304B\u3089\
     \u3001\u30D1\u30B9\u96C6\u7D04\u7528\u306ELinkCutTree\u3092\u4F5C\u308B\u3002\n\
@@ -117,8 +118,8 @@ data:
   isVerificationFile: false
   path: cplib/tree/link_cut_tree.nim
   requiredBy: []
-  timestamp: '2026-09-10 04:41:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim

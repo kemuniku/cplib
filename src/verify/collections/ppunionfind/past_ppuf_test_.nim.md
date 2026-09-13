@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
   _extendedRequiredBy: []
@@ -36,7 +36,7 @@ data:
   isVerificationFile: false
   path: verify/collections/ppunionfind/past_ppuf_test_.nim
   requiredBy: []
-  timestamp: '2026-07-09 02:51:42+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/ppunionfind/past_ppuf_test_.nim

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/convex_hull_trick_impl.nim
     title: cplib/collections/private/convex_hull_trick_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -47,21 +47,22 @@ data:
     \ b)\n\n    proc get_min*(self: ConvexHullTrickMonotoneSlope, x: int): int =\n\
     \        ## \u4EFB\u610F\u306E\u6574\u6570\u5EA7\u6A19x\u3067\u306E\u6700\u5C0F\
     \u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\u7A7A\u306E\u5834\u5408\u306Fassert\u3002\
-    O(log N)\u3002\n        assert self.hull.lines.len > 0, \"CHT: no lines\"\n  \
-    \      var l = 0\n        var r = self.hull.lines.len - 1\n        while l < r:\n\
-    \            let m = l + (r - l) div 2\n            if chtValue(self.hull.lines[m],\
-    \ x) >= chtValue(self.hull.lines[m + 1], x):\n                l = m + 1\n    \
-    \        else:\n                r = m\n        chtAnswer(chtValue(self.hull.lines[l],\
+    O(log N)\u3002\n        assert self.hull.lines.len > 0, \"CHT\u306B\u76F4\u7DDA\
+    \u304C\u767B\u9332\u3055\u308C\u3066\u3044\u307E\u305B\u3093\"\n        var l\
+    \ = 0\n        var r = self.hull.lines.len - 1\n        while l < r:\n       \
+    \     let m = l + (r - l) div 2\n            if chtValue(self.hull.lines[m], x)\
+    \ >= chtValue(self.hull.lines[m + 1], x):\n                l = m + 1\n       \
+    \     else:\n                r = m\n        chtAnswer(chtValue(self.hull.lines[l],\
     \ x))\n"
   dependsOn:
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick_monotone_slope.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:33:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/convex_hull_trick_test.nim

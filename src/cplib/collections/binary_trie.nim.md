@@ -37,12 +37,17 @@ data:
     \            else:\n                if now.one.isNil():\n                    now.one\
     \ = BinaryTrieNode()\n                now = now.one\n            now.value +=\
     \ v\n\n    proc excl*(self:BinaryTrie,x:Natural,v:int=1)=\n        var now = self.root\n\
-    \        now.value -= v\n        assert now.value >= 0\n        for i in countdown(self.h-1,0,1):\n\
-    \            if (x and (1 shl i)) == 0:\n                if now.zero.isNil():\n\
-    \                    now.zero = BinaryTrieNode()\n                now = now.zero\n\
-    \            else:\n                if now.one.isNil():\n                    now.one\
-    \ = BinaryTrieNode()\n                now = now.one\n            now.value -=\
-    \ v\n            assert now.value >= 0\n\n    proc count*(self:BinaryTrie,x:Natural):int=\n\
+    \        now.value -= v\n        assert now.value >= 0, \"\u8981\u7D20\u306E\u500B\
+    \u6570\u304C\u8CA0\u306B\u306A\u3063\u3066\u3044\u307E\u3059\u3002\u5B58\u5728\
+    \u3057\u306A\u3044\u8981\u7D20\u306F\u524A\u9664\u3067\u304D\u307E\u305B\u3093\
+    \"\n        for i in countdown(self.h-1,0,1):\n            if (x and (1 shl i))\
+    \ == 0:\n                if now.zero.isNil():\n                    now.zero =\
+    \ BinaryTrieNode()\n                now = now.zero\n            else:\n      \
+    \          if now.one.isNil():\n                    now.one = BinaryTrieNode()\n\
+    \                now = now.one\n            now.value -= v\n            assert\
+    \ now.value >= 0, \"\u8981\u7D20\u306E\u500B\u6570\u304C\u8CA0\u306B\u306A\u3063\
+    \u3066\u3044\u307E\u3059\u3002\u5B58\u5728\u3057\u306A\u3044\u8981\u7D20\u306F\
+    \u524A\u9664\u3067\u304D\u307E\u305B\u3093\"\n\n    proc count*(self:BinaryTrie,x:Natural):int=\n\
     \        var now = self.root\n        for i in countdown(self.h-1,0,1):\n    \
     \        if (x and (1 shl i)) == 0:\n                if now.zero.isNil():\n  \
     \                  return 0\n                now = now.zero\n            else:\n\
@@ -103,7 +108,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/binary_trie.nim
   requiredBy: []
-  timestamp: '2026-07-07 08:40:14+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/binary_trie_test.nim

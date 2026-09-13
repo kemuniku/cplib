@@ -44,12 +44,16 @@ data:
     \                if not dfs(node.arr[i],(now shl shift) or i,depth+1):\n     \
     \                   return false\n            return true\n        discard dfs(PA.root,0,0)\n\
     \        return v\n\n    proc `[]`*[shift,T](PA:PersistentArray[shift,T],index:Natural):T=\n\
-    \        assert index in 0..<PA.size\n        var idx = index\n        var indexs\
+    \        assert index in 0..<PA.size, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: index in 0 ..< PA.size\"\n        var idx = index\n        var indexs\
     \ = newseq[int](PA.h)\n        for i in countdown(PA.h-1,0,1):\n            indexs[i]\
     \ = idx and ((1 shl shift)-1)\n            idx = idx shr shift\n        var now\
     \ = PA.root\n        for i in 0..<PA.h:\n            now = now.arr[indexs[i]]\n\
     \        return now.value\n\n    proc change_value*[shift,T](PA:PersistentArray[shift,T],index:Natural,value:T):PersistentArray[shift,T]=\n\
-    \        assert index in 0..<PA.size\n        var idx = index\n        var indexs\
+    \        assert index in 0..<PA.size, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: index in 0 ..< PA.size\"\n        var idx = index\n        var indexs\
     \ = newseq[int](PA.h)\n        for i in countdown(PA.h-1,0,1):\n            indexs[i]\
     \ = idx and ((1 shl shift)-1)\n            idx = idx shr shift\n        var now\
     \ = PA.root\n        var stack : seq[PersistentArrayNode[shift,T]]\n        for\
@@ -61,7 +65,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/persistent_array.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/persistent_array_test.nim

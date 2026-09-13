@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph_with_op.nim
     title: cplib/graph/functional_graph_with_op.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
   - icon: ':warning:'
@@ -75,70 +75,70 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/hashtable_yuki2686_test.nim
     title: verify/collections/hashtable_yuki2686_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_PARS_test.nim
     title: verify/collections/segtree/segtree_PARS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_PARS_test.nim
     title: verify/collections/segtree/segtree_PARS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_PSRC_2_test.nim
     title: verify/collections/segtree/segtree_PSRC_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_PSRC_2_test.nim
     title: verify/collections/segtree/segtree_PSRC_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_PSRC_test.nim
     title: verify/collections/segtree/segtree_PSRC_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_PSRC_test.nim
     title: verify/collections/segtree/segtree_PSRC_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_RMQ_test.nim
     title: verify/collections/segtree/segtree_RMQ_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_RMQ_test.nim
     title: verify/collections/segtree/segtree_RMQ_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_init_with_size_test.nim
     title: verify/collections/segtree/segtree_init_with_size_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_init_with_size_test.nim
     title: verify/collections/segtree/segtree_init_with_size_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_maxright_yuki878_test.nim
     title: verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_maxright_yuki878_test.nim
     title: verify/collections/segtree/segtree_maxright_yuki878_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_minleft_yuki878_test.nim
     title: verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_minleft_yuki878_test.nim
     title: verify/collections/segtree/segtree_minleft_yuki878_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_newsegwith_test.nim
     title: verify/collections/segtree/segtree_newsegwith_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_newsegwith_test.nim
     title: verify/collections/segtree/segtree_newsegwith_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_ordered_set_test.nim
     title: verify/collections/segtree/segtree_ordered_set_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_ordered_set_test.nim
     title: verify/collections/segtree/segtree_ordered_set_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
   - icon: ':x:'
@@ -159,10 +159,10 @@ data:
   - icon: ':x:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/inversion_number_test.nim
     title: verify/utils/inversion_number_test.nim
   _isVerificationFailed: true
@@ -205,38 +205,53 @@ data:
     \ 1):\n            self.arr[i] = self.merge(self.arr[2*i], self.arr[2*i+1])\n\
     \        return self\n\n    proc update*[T](self: SegmentTree[T], x: Natural,\
     \ val: T) =\n        ## x\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\u307E\
-    \u3059\u3002\n        assert x < self.length\n        var x = x\n        x +=\
-    \ self.lastnode\n        self.arr[x] = val\n        while x > 1:\n           \
-    \ x = x shr 1\n            self.arr[x] = self.merge(self.arr[2*x], self.arr[2*x+1])\n\
-    \    proc get*[T](self: SegmentTree[T], q_left: Natural, q_right: Natural): T\
-    \ =\n        ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\u3064\u3044\u3066\
-    \u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert\
-    \ q_left <= q_right and 0 <= q_left and q_right <= self.length\n        var q_left\
-    \ = q_left\n        var q_right = q_right\n        q_left += self.lastnode\n \
-    \       q_right += self.lastnode\n        var (lres, rres) = (self.default, self.default)\n\
-    \        while q_left < q_right:\n            if (q_left and 1) > 0:\n       \
-    \         lres = self.merge(lres, self.arr[q_left])\n                q_left +=\
-    \ 1\n            if (q_right and 1) > 0:\n                q_right -= 1\n     \
-    \           rres = self.merge(self.arr[q_right], rres)\n            q_left = q_left\
-    \ shr 1\n            q_right = q_right shr 1\n        return self.merge(lres,\
-    \ rres)\n    proc get*[T](self: SegmentTree[T], segment: HSlice[int, int]): T\
-    \ =\n        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1\
-    \ <= self.length\n        return self.get(segment.a, segment.b+1)\n    proc `[]`*[T](self:\
-    \ SegmentTree[T], segment: HSlice[int, int]): T = self.get(segment)\n    proc\
-    \ `[]`*[T](self: SegmentTree[T], index: Natural): T =\n        assert index <\
-    \ self.length\n        return self.arr[index+self.lastnode]\n    proc `[]=`*[T](self:\
-    \ SegmentTree[T], index: Natural, val: T) =\n        assert index < self.length\n\
-    \        self.update(index, val)\n    proc get_all*[T](self: SegmentTree[T]):\
-    \ T =\n        ## [0,len(self))\u533A\u9593\u306E\u6F14\u7B97\u7D50\u679C\u3092\
-    O(1)\u3067\u8FD4\u3059\n        return self.arr[1]\n    proc len*[T](self: SegmentTree[T]):\
-    \ int =\n        return self.length\n    proc `$`*[T](self: SegmentTree[T]): string\
-    \ =\n        var s = self.arr.len div 2\n        return self.arr[s..<s+self.len].join(\"\
-    \ \")\n    template newSegWith*(V, merge, default: untyped): untyped =\n     \
-    \   initSegmentTree[typeof(default)](V, proc (l{.inject.}, r{.inject.}: typeof(default)):\
-    \ typeof(default) = merge, default)\n    proc max_right*[T](self: SegmentTree[T],\
-    \ l: int, f: proc(l: T): bool): int =\n        assert 0 <= l and l <= self.len\n\
-    \        assert f(self.default)\n        if l == self.len: return self.len\n \
-    \       var l = l + self.lastnode\n        var sm = self.default\n        while\
+    \u3059\u3002\n        assert x < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\
+    \u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059: x < self.length\"\n        var x = x\n        x += self.lastnode\n\
+    \        self.arr[x] = val\n        while x > 1:\n            x = x shr 1\n  \
+    \          self.arr[x] = self.merge(self.arr[2*x], self.arr[2*x+1])\n    proc\
+    \ get*[T](self: SegmentTree[T], q_left: Natural, q_right: Natural): T =\n    \
+    \    ## \u534A\u89E3\u533A\u9593[q_left,q_right)\u306B\u3064\u3044\u3066\u306E\
+    \u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert q_left\
+    \ <= q_right and 0 <= q_left and q_right <= self.length, \"\u6307\u5B9A\u3057\u305F\
+    \u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: q_left <= q_right and 0 <= q_left and q_right\
+    \ <= self.length\"\n        var q_left = q_left\n        var q_right = q_right\n\
+    \        q_left += self.lastnode\n        q_right += self.lastnode\n        var\
+    \ (lres, rres) = (self.default, self.default)\n        while q_left < q_right:\n\
+    \            if (q_left and 1) > 0:\n                lres = self.merge(lres, self.arr[q_left])\n\
+    \                q_left += 1\n            if (q_right and 1) > 0:\n          \
+    \      q_right -= 1\n                rres = self.merge(self.arr[q_right], rres)\n\
+    \            q_left = q_left shr 1\n            q_right = q_right shr 1\n    \
+    \    return self.merge(lres, rres)\n    proc get*[T](self: SegmentTree[T], segment:\
+    \ HSlice[int, int]): T =\n        assert segment.a <= segment.b + 1 and 0 <= segment.a\
+    \ and segment.b+1 <= self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: segment.a <= segment.b + 1 and 0 <= segment.a and segment.b\
+    \ + 1 <= self.length\"\n        return self.get(segment.a, segment.b+1)\n    proc\
+    \ `[]`*[T](self: SegmentTree[T], segment: HSlice[int, int]): T = self.get(segment)\n\
+    \    proc `[]`*[T](self: SegmentTree[T], index: Natural): T =\n        assert\
+    \ index < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : index < self.length\"\n        return self.arr[index+self.lastnode]\n    proc\
+    \ `[]=`*[T](self: SegmentTree[T], index: Natural, val: T) =\n        assert index\
+    \ < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: index\
+    \ < self.length\"\n        self.update(index, val)\n    proc get_all*[T](self:\
+    \ SegmentTree[T]): T =\n        ## [0,len(self))\u533A\u9593\u306E\u6F14\u7B97\
+    \u7D50\u679C\u3092O(1)\u3067\u8FD4\u3059\n        return self.arr[1]\n    proc\
+    \ len*[T](self: SegmentTree[T]): int =\n        return self.length\n    proc `$`*[T](self:\
+    \ SegmentTree[T]): string =\n        var s = self.arr.len div 2\n        return\
+    \ self.arr[s..<s+self.len].join(\" \")\n    template newSegWith*(V, merge, default:\
+    \ untyped): untyped =\n        initSegmentTree[typeof(default)](V, proc (l{.inject.},\
+    \ r{.inject.}: typeof(default)): typeof(default) = merge, default)\n    proc max_right*[T](self:\
+    \ SegmentTree[T], l: int, f: proc(l: T): bool): int =\n        assert 0 <= l and\
+    \ l <= self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <=\
+    \ l and l <= self.len\"\n        assert f(self.default), \"\u5224\u5B9A\u95A2\u6570\
+    \u306F\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        if l == self.len: return self.len\n\
+    \        var l = l + self.lastnode\n        var sm = self.default\n        while\
     \ true:\n            while l mod 2 == 0: l = (l shr 1)\n            if not f(self.merge(sm,\
     \ self.arr[l])):\n                while l < self.lastnode:\n                 \
     \   l *= 2\n                    if f(self.merge(sm, self.arr[l])):\n         \
@@ -244,16 +259,19 @@ data:
     \ 1\n                return l - self.lastnode\n            sm = self.merge(sm,\
     \ self.arr[l])\n            l += 1\n            if (l and -l) == l: break\n  \
     \      return self.len\n    proc min_left*[T](self: SegmentTree[T], r: int, f:\
-    \ proc(l: T): bool): int =\n        assert 0 <= r and r <= self.len\n        assert\
-    \ f(self.default)\n        if r == 0: return 0\n        var r = r + self.lastnode\n\
-    \        var sm = self.default\n        while true:\n            r -= 1\n    \
-    \        while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)\n            if not\
-    \ f(self.merge(self.arr[r], sm)):\n                while r < self.lastnode:\n\
-    \                    r = 2 * r + 1\n                    if f(self.merge(self.arr[r],\
-    \ sm)):\n                        sm = self.merge(self.arr[r], sm)\n          \
-    \              r -= 1\n                return r + 1 - self.lastnode\n        \
-    \    sm = self.merge(self.arr[r], sm)\n            if (r and -r) == r: break\n\
-    \        return 0\n"
+    \ proc(l: T): bool): int =\n        assert 0 <= r and r <= self.len, \"\u6307\u5B9A\
+    \u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= r and r <= self.len\"\n     \
+    \   assert f(self.default), \"\u5224\u5B9A\u95A2\u6570\u306F\u5358\u4F4D\u5143\
+    \u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        if r == 0: return 0\n        var r = r + self.lastnode\n   \
+    \     var sm = self.default\n        while true:\n            r -= 1\n       \
+    \     while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)\n            if not f(self.merge(self.arr[r],\
+    \ sm)):\n                while r < self.lastnode:\n                    r = 2 *\
+    \ r + 1\n                    if f(self.merge(self.arr[r], sm)):\n            \
+    \            sm = self.merge(self.arr[r], sm)\n                        r -= 1\n\
+    \                return r + 1 - self.lastnode\n            sm = self.merge(self.arr[r],\
+    \ sm)\n            if (r and -r) == r: break\n        return 0\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/segtree.nim
@@ -272,7 +290,7 @@ data:
   - cplib/collections/segtree2d.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_op.nim
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/utils/inversion_number_test.nim

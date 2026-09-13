@@ -7,40 +7,40 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
   - icon: ':question:'
@@ -154,30 +154,30 @@ data:
     \ == 1\nelse:\n    let empty = initMatrix(0,3,Mint(0))\n    doAssert (-empty).w\
     \ == 3\n    doAssert empty != initMatrix(0,2,Mint(0))\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/static_matrix.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/field_algorithms_unit.nim
   requiredBy: []
-  timestamp: '2026-09-11 02:58:09+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/matrix/linear_algebra/field_algorithms_unit.nim

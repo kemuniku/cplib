@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/osa_k.nim
     title: cplib/math/osa_k.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
@@ -56,14 +56,14 @@ data:
 
     '
   dependsOn:
+  - cplib/math/osa_k.nim
+  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/osa_k.nim
-  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: true
   path: verify/AI/osa_k_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/osa_k_test.nim

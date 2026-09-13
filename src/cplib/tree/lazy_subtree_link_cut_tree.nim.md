@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/link_cut_tree_test.nim
     title: verify/tree/link_cut_tree/link_cut_tree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/link_cut_tree_test.nim
     title: verify/tree/link_cut_tree/link_cut_tree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
     title: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
     title: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -61,9 +61,11 @@ data:
     \u305F\u3059\u3053\u3068\u3002\n        ## \u5404\u6F14\u7B97\u306E\u8A08\u7B97\
     \u91CF\u306Fmerge\u3001mapping\u7B49\u304CO(1)\u306E\u5834\u5408\u3002\u9802\u70B9\
     \u6570\u304C\u5FC5\u8981\u306A\u3089S\u306B\u542B\u3081\u308B\u3002\n        assert\
-    \ inverse != nil and inverseAction != nil\n        result = LazySubtreeLinkCutTree[S,\
-    \ F](\n            nodes: newSeq[LazySubtreeLinkCutTreeNode[S, F]](v.len + 1),\n\
-    \            merge: merge, default: default, mapping: mapping,\n            composition:\
+    \ inverse != nil and inverseAction != nil, \"\u90E8\u5206\u6728\u306E\u9045\u5EF6\
+    \u66F4\u65B0\u306B\u306Finverse\u3068inverseAction\u306E\u6307\u5B9A\u304C\u5FC5\
+    \u8981\u3067\u3059\"\n        result = LazySubtreeLinkCutTree[S, F](\n       \
+    \     nodes: newSeq[LazySubtreeLinkCutTreeNode[S, F]](v.len + 1),\n          \
+    \  merge: merge, default: default, mapping: mapping,\n            composition:\
     \ composition, id: id, inverse: inverse, inverseAction: inverseAction\n      \
     \  )\n        for i in 0..v.len:\n            let value = if i == 0: default else:\
     \ v[i - 1]\n            result.nodes[i] = LazySubtreeLinkCutTreeNode[S, F](\n\
@@ -75,7 +77,8 @@ data:
     \ F\n    ): LazySubtreeLinkCutTree[S, F] =\n        ## \u5168\u9802\u70B9\u306E\
     \u5024\u304Cdefault\u306E\u68EE\u3092\u4F5C\u308B\u3002\u6642\u9593\u30FB\u7A7A\
     \u9593O(N)\u3002\u9802\u70B9\u6570\u3082default\u306E\u307E\u307E\u306A\u306E\u3067\
-    \u6CE8\u610F\u3002\n        assert n >= 0\n        initLazySubtreeLinkCutTree(newSeqWith(n,\
+    \u6CE8\u610F\u3002\n        assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        initLazySubtreeLinkCutTree(newSeqWith(n,\
     \ default), merge, default, mapping, composition, id, inverse, inverseAction)\n\
     \n    template newLazySubtreeLinkCutTreeWith*(\n        vOrN, merge, default,\
     \ mapping, composition, id, inverse, inverseAction: untyped\n    ): untyped =\n\
@@ -155,15 +158,18 @@ data:
     \u306E\u9802\u70B9\u306B\u306F\u4F5C\u7528\u3057\u306A\u3044\u3002\u90E8\u5206\
     \u6728\u30FB\u6210\u5206\u3078\u306E\u66F4\u65B0\u3068\u6DF7\u5728\u3055\u305B\
     \u3089\u308C\u308B\u3002\n        assert 0 <= u and u < self.len and 0 <= v and\
-    \ v < self.len\n        self.makeRoot(u)\n        self.accessNode(v + 1)\n   \
-    \     self.applyPathNode(v + 1, f)\n\n    proc componentApply*[S, F](self: LazySubtreeLinkCutTree[S,\
-    \ F], v: int, f: F) =\n        ## v\u3092\u542B\u3080\u6728\u5168\u4F53\u3078\
-    f\u3092\u4F5C\u7528\u3055\u305B\u308B\u3002\u511F\u5374O(log N)\u3002\n      \
-    \  assert 0 <= v and v < self.len\n        self.accessNode(v + 1)\n        self.applyAll(v\
-    \ + 1, f)\n\n    proc subtreeApply*[S, F](self: LazySubtreeLinkCutTree[S, F],\
-    \ v, parent: int, f: F) =\n        ## \u5B58\u5728\u3059\u308B\u8FBA(v, parent)\u306E\
-    v\u5074\u3078f\u3092\u4F5C\u7528\u3055\u305B\u308B\u3002\u511F\u5374O(log N)\u3002\
-    \n        ## \u6839\u3092parent\u306B\u5909\u66F4\u3059\u308B\u3002\u4F5C\u7528\
+    \ v < self.len, \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059\
+    : 0 <= u and u < self.len and 0 <= v and v < self.len\"\n        self.makeRoot(u)\n\
+    \        self.accessNode(v + 1)\n        self.applyPathNode(v + 1, f)\n\n    proc\
+    \ componentApply*[S, F](self: LazySubtreeLinkCutTree[S, F], v: int, f: F) =\n\
+    \        ## v\u3092\u542B\u3080\u6728\u5168\u4F53\u3078f\u3092\u4F5C\u7528\u3055\
+    \u305B\u308B\u3002\u511F\u5374O(log N)\u3002\n        assert 0 <= v and v < self.len,\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= v and v\
+    \ < self.len\"\n        self.accessNode(v + 1)\n        self.applyAll(v + 1, f)\n\
+    \n    proc subtreeApply*[S, F](self: LazySubtreeLinkCutTree[S, F], v, parent:\
+    \ int, f: F) =\n        ## \u5B58\u5728\u3059\u308B\u8FBA(v, parent)\u306Ev\u5074\
+    \u3078f\u3092\u4F5C\u7528\u3055\u305B\u308B\u3002\u511F\u5374O(log N)\u3002\n\
+    \        ## \u6839\u3092parent\u306B\u5909\u66F4\u3059\u308B\u3002\u4F5C\u7528\
     \u3055\u305B\u305F\u5F8C\u306B\u63A5\u7D9A\u3057\u305F\u9802\u70B9\u3078\u306F\
     \u3001\u3053\u306E\u4F5C\u7528\u3092\u9069\u7528\u3057\u306A\u3044\u3002\n   \
     \     self.cut(v, parent)\n        self.componentApply(v, f)\n        self.link(v,\
@@ -174,8 +180,8 @@ data:
   isVerificationFile: false
   path: cplib/tree/lazy_subtree_link_cut_tree.nim
   requiredBy: []
-  timestamp: '2026-09-10 04:41:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/tree/link_cut_tree/link_cut_tree_test.nim
   - verify/tree/link_cut_tree/link_cut_tree_test.nim

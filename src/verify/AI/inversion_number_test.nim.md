@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/inversion_number.nim
     title: cplib/utils/inversion_number.nim
   _extendedRequiredBy: []
@@ -44,14 +44,14 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/segtree.nim
+  - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
   - cplib/collections/segtree.nim
-  - cplib/utils/inversion_number.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/AI/inversion_number_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/inversion_number_test.nim

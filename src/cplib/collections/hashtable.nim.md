@@ -75,29 +75,30 @@ data:
     \ == State.active)\n    proc hasKey*[K, V](self: var HashTable[K, V], key: K):\
     \ bool = self.contains(key)\n    proc `[]`*[K, V](self: HashTable[K, V], key:\
     \ K): V =\n        var pos = self.find(key)\n        assert self.values[pos].state\
-    \ == State.active, \"Key \\\"\" & $key & \"\\\" not found\"\n        return self.values[pos].value[1]\n\
-    \    proc `[]`*[K, V](self: var HashTable[K, V], key: K): var V =\n        var\
-    \ pos = self.find(key)\n        assert self.values[pos].state == State.active,\
-    \ \"Key \\\"\" & $key & \"\\\" not found\"\n        return self.values[pos].value[1]\n\
-    \    proc `[]=`*[K, V](self: var HashTable[K, V], key: K, val: V) =\n        var\
-    \ pos = self.find(key)\n        if self.values[pos].state == State.active:\n \
-    \           self.values[pos].value[1] = val\n            return\n        self.values[pos].value\
-    \ = (key, val)\n        self.values[pos].state = State.active\n        self.len\
-    \ += 1\n        self.fill += 1\n        if self.fill.vlen > self.values.len: self.resize\n\
-    \    proc clear*[K, V](self: var HashTable[K, V]) = self = initHashTable[K, V]()\n\
-    \    proc del*[K, V](self: var HashTable[K, V], key: K) =\n        var pos = self.find(key)\n\
-    \        if self.values[pos].state != State.active: return\n        self.len -=\
-    \ 1\n        self.values[pos].state = State.inactive\n    proc excl*[K, V](self:\
-    \ var HashTable[K, V], key: K) = self.del(key)\n    proc hash*[K, V](self: HashTable[K,\
-    \ V]): Hash =\n        for item in self.pairs:\n            result = result !&\
-    \ hash(item)\n"
+    \ == State.active, \"\u30AD\u30FC \\\"\" & $key & \"\\\" \u304C\u898B\u3064\u304B\
+    \u308A\u307E\u305B\u3093\"\n        return self.values[pos].value[1]\n    proc\
+    \ `[]`*[K, V](self: var HashTable[K, V], key: K): var V =\n        var pos = self.find(key)\n\
+    \        assert self.values[pos].state == State.active, \"\u30AD\u30FC \\\"\"\
+    \ & $key & \"\\\" \u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\"\n       \
+    \ return self.values[pos].value[1]\n    proc `[]=`*[K, V](self: var HashTable[K,\
+    \ V], key: K, val: V) =\n        var pos = self.find(key)\n        if self.values[pos].state\
+    \ == State.active:\n            self.values[pos].value[1] = val\n            return\n\
+    \        self.values[pos].value = (key, val)\n        self.values[pos].state =\
+    \ State.active\n        self.len += 1\n        self.fill += 1\n        if self.fill.vlen\
+    \ > self.values.len: self.resize\n    proc clear*[K, V](self: var HashTable[K,\
+    \ V]) = self = initHashTable[K, V]()\n    proc del*[K, V](self: var HashTable[K,\
+    \ V], key: K) =\n        var pos = self.find(key)\n        if self.values[pos].state\
+    \ != State.active: return\n        self.len -= 1\n        self.values[pos].state\
+    \ = State.inactive\n    proc excl*[K, V](self: var HashTable[K, V], key: K) =\
+    \ self.del(key)\n    proc hash*[K, V](self: HashTable[K, V]): Hash =\n       \
+    \ for item in self.pairs:\n            result = result !& hash(item)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/hashtable.nim
   requiredBy:
   - verify/collections/hashtable_abc340c_test_.nim
   - verify/collections/hashtable_abc340c_test_.nim
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/hashtable_yuki2686_test.nim

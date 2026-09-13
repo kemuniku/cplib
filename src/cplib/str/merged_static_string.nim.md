@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
   _extendedRequiredBy:
@@ -48,17 +48,23 @@ data:
     \ = 1\n    import cplib/str/static_string\n    import cplib/collections/staticRMQ\n\
     \n    type MergedStaticString*[T] = object\n        base: StaticStringBase[T]\n\
     \        L: seq[int32]\n        R: seq[int32]\n\n    proc addRange[T](S: var MergedStaticString[T],\
-    \ base: StaticStringBase[T], l, r: int32) {.inline.} =\n        assert l <= r\n\
-    \        if S.L.len == 0:\n            S.base = base\n        else:\n        \
-    \    assert S.base == base\n        S.L.add(l)\n        S.R.add(r)\n\n    proc\
+    \ base: StaticStringBase[T], l, r: int32) {.inline.} =\n        assert l <= r,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: l <= r\"\n     \
+    \   if S.L.len == 0:\n            S.base = base\n        else:\n            assert\
+    \ S.base == base, \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\
+    \u5217\u304B\u3089\u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        S.L.add(l)\n        S.R.add(r)\n\n    proc\
     \ lcpRange[T](base: StaticStringBase[T], sl, sr, tl, tr: int32): int {.inline.}\
     \ =\n        result = min(int(sr-sl), int(tr-tl))\n        if result == 0:\n \
     \           return\n        var l = base.RSA[sl]\n        var r = base.RSA[tl]\n\
     \        if l > r:\n            swap(l, r)\n        elif l == r:\n           \
     \ return\n        result = min(result, base.RMQ.query(l, r))\n\n    proc `&`*[Element](S,\
     \ T: StaticString[Element]): MergedStaticString[Element] =\n        assert S.base\
-    \ == T.base\n        result.base = S.base\n        result.L = @[S.l, T.l]\n  \
-    \      result.R = @[S.r, T.r]\n    proc `&=`*[T](S: var MergedStaticString[T],\
+    \ == T.base, \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\
+    \u304B\u3089\u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        result.base = S.base\n        result.L = @[S.l,\
+    \ T.l]\n        result.R = @[S.r, T.r]\n    proc `&=`*[T](S: var MergedStaticString[T],\
     \ value: StaticString[T]) =\n        S.addRange(value.base, value.l, value.r)\n\
     \    proc `&`*[T](S: MergedStaticString[T], value: StaticString[T]): MergedStaticString[T]\
     \ =\n        result = S\n        result &= value\n\n\n\n    proc initMergedStaticString*[T](S:\
@@ -66,16 +72,21 @@ data:
     \            result.base = S[0].base\n        result.L = newSeq[int32](len(S))\n\
     \        result.R = newSeq[int32](len(S))\n        if len(S) == 0:\n         \
     \   return\n        result.L[0] = S[0].l\n        result.R[0] = S[0].r\n     \
-    \   for i in 1..<len(S):\n            assert result.base == S[i].base\n      \
-    \      result.L[i] = S[i].l\n            result.R[i] = S[i].r\n\n    proc initMergedStaticString*[T](S:\
-    \ StaticString[T], ranges: openArray[(int, int)]): MergedStaticString[T] =\n \
-    \       result.base = S.base\n        result.L = newSeq[int32](len(ranges))\n\
-    \        result.R = newSeq[int32](len(ranges))\n        for i, (l, r) in ranges:\n\
-    \            assert 0 <= l and l <= r and r <= len(S)\n            result.L[i]\
-    \ = S.l+l.int32()\n            result.R[i] = S.l+r.int32()\n\n    proc len*[T](S:\
-    \ MergedStaticString[T]): int =\n        ## \u8A08\u7B97\u91CF\u304C O(\u7D50\u5408\
-    \u6570) \u3067\u3042\u308B\u70B9\u306B\u6CE8\u610F\uFF01\n        for i in 0..<len(S.L):\n\
-    \            result += int(S.R[i]-S.L[i])\n\n    proc `[]`*[T](S: MergedStaticString[T],\
+    \   for i in 1..<len(S):\n            assert result.base == S[i].base, \"\u6587\
+    \u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\u304B\u3089\u4F5C\
+    \u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n            result.L[i] = S[i].l\n            result.R[i] = S[i].r\n\n   \
+    \ proc initMergedStaticString*[T](S: StaticString[T], ranges: openArray[(int,\
+    \ int)]): MergedStaticString[T] =\n        result.base = S.base\n        result.L\
+    \ = newSeq[int32](len(ranges))\n        result.R = newSeq[int32](len(ranges))\n\
+    \        for i, (l, r) in ranges:\n            assert 0 <= l and l <= r and r\
+    \ <= len(S), \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <=\
+    \ l and l <= r and r <= len(S)\"\n            result.L[i] = S.l+l.int32()\n  \
+    \          result.R[i] = S.l+r.int32()\n\n    proc len*[T](S: MergedStaticString[T]):\
+    \ int =\n        ## \u8A08\u7B97\u91CF\u304C O(\u7D50\u5408\u6570) \u3067\u3042\
+    \u308B\u70B9\u306B\u6CE8\u610F\uFF01\n        for i in 0..<len(S.L):\n       \
+    \     result += int(S.R[i]-S.L[i])\n\n    proc `[]`*[T](S: MergedStaticString[T],\
     \ idx: int): T =\n        ## \u8A08\u7B97\u91CF\u304C O(\u7D50\u5408\u6570) \u3067\
     \u3042\u308B\u70B9\u306B\u6CE8\u610F\uFF01\n        var offset = idx\n       \
     \ for i in 0..<len(S.L):\n            let rangeLength = int(S.R[i]-S.L[i])\n \
@@ -91,10 +102,12 @@ data:
     \ S.L[i], S.R[i])\n            elif tmp <= slice.b:\n                result.addRange(S.base,\
     \ S.L[i], S.L[i]+(slice.b-tmp+1).int32())\n            tmp = next\n\n\n\n    proc\
     \ lcp*[Element](S, T: MergedStaticString[Element]): int =\n        if S.L.len\
-    \ == 0 or T.L.len == 0:\n            return 0\n        assert S.base == T.base\n\
-    \        var si = 0\n        var ti = 0\n        var sl = S.L[0]\n        var\
-    \ sr = S.R[0]\n        var tl = T.L[0]\n        var tr = T.R[0]\n        while\
-    \ true:\n            let slen = int(sr-sl)\n            let tlen = int(tr-tl)\n\
+    \ == 0 or T.L.len == 0:\n            return 0\n        assert S.base == T.base,\
+    \ \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\u304B\u3089\
+    \u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        var si = 0\n        var ti = 0\n        var sl = S.L[0]\n  \
+    \      var sr = S.R[0]\n        var tl = T.L[0]\n        var tr = T.R[0]\n   \
+    \     while true:\n            let slen = int(sr-sl)\n            let tlen = int(tr-tl)\n\
     \            let tmp = lcpRange(S.base, sl, sr, tl, tr)\n            if tmp ==\
     \ slen and tmp == tlen:\n                si += 1\n                ti += 1\n  \
     \              result += tmp\n                if si == len(S.L) or ti == len(T.L):\n\
@@ -116,10 +129,12 @@ data:
     \   ti += 1\n                if ti < T.L.len:\n                    tl = T.L[ti]\n\
     \            if si == S.L.len:\n                if ti == T.L.len:\n          \
     \          return 0\n                return -1\n            if ti == T.L.len:\n\
-    \                return 1\n            assert S.base == T.base\n            let\
-    \ limit = min(int(S.R[si]-sl), int(T.R[ti]-tl))\n            let commonPrefix\
-    \ = lcpRange(S.base, sl, S.R[si], tl, T.R[ti])\n            if commonPrefix <\
-    \ limit:\n                if S.base.S[sl+commonPrefix.int32()] < T.base.S[tl+commonPrefix.int32()]:\n\
+    \                return 1\n            assert S.base == T.base, \"\u6587\u5B57\
+    \u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\u304B\u3089\u4F5C\u6210\
+    \u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \           let limit = min(int(S.R[si]-sl), int(T.R[ti]-tl))\n            let\
+    \ commonPrefix = lcpRange(S.base, sl, S.R[si], tl, T.R[ti])\n            if commonPrefix\
+    \ < limit:\n                if S.base.S[sl+commonPrefix.int32()] < T.base.S[tl+commonPrefix.int32()]:\n\
     \                    return -1\n                return 1\n            sl += commonPrefix.int32()\n\
     \            tl += commonPrefix.int32()\n\n    proc `<`*[Element](S, T: MergedStaticString[Element]):\
     \ bool =\n        return cmp(S, T) < 0\n\n    proc `>`*[Element](S, T: MergedStaticString[Element]):\
@@ -134,10 +149,10 @@ data:
     \                    if not first:\n                        result &= \" \"\n\
     \                    first = false\n                    result &= $S.base.S[j]\n"
   dependsOn:
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   isVerificationFile: false
@@ -145,7 +160,7 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-09-08 15:30:15+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/merged_static_string_test.nim

@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/ppunionfind_test.nim
     title: verify/AI/ppunionfind_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/ppunionfind/yosupo_unionfind_test.nim
     title: verify/collections/ppunionfind/yosupo_unionfind_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -57,9 +57,11 @@ data:
     \    proc root*(self:var PartialPersistentUnionFind,x:int,t:int):int=\n      \
     \  return self.root_i32(x,t).int\n\n    proc root*(self:var PartialPersistentUnionFind,x:int):int=\n\
     \        return self.root(x,self.last)\n\n    proc unite*(self:var PartialPersistentUnionFind,u,v,t:int):bool\
-    \ {.discardable.}=\n        assert self.last <= t\n        self.last = t\n   \
-    \     var u = self.root_i32(u,self.last)\n        var v = self.root_i32(v,self.last)\n\
-    \        if u == v:\n            return false\n        if self.par_or_siz[u.int]\
+    \ {.discardable.}=\n        assert self.last <= t, \"\u66F4\u65B0\u6642\u523B\u306F\
+    \u76F4\u524D\u306E\u66F4\u65B0\u6642\u523B\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        self.last = t\n        var u =\
+    \ self.root_i32(u,self.last)\n        var v = self.root_i32(v,self.last)\n   \
+    \     if u == v:\n            return false\n        if self.par_or_siz[u.int]\
     \ > self.par_or_siz[v.int]:\n            swap(u,v)\n        let ui = u.int\n \
     \       let vi = v.int\n        self.par_or_siz[ui] += self.par_or_siz[vi]\n \
     \       self.par_or_siz[vi] = u\n        self.size_time[ui].add(t)\n        self.size_value[ui].add((-self.par_or_siz[ui]).int)\n\
@@ -69,13 +71,14 @@ data:
     \    return self.root_i32(u,t) == self.root_i32(v,t)\n\n    proc issame*(self:var\
     \ PartialPersistentUnionFind,u,v:int):bool=\n        return self.root_i32(u,self.last)\
     \ == self.root_i32(v,self.last)\n\n    proc size*(self:var PartialPersistentUnionFind,x,t:int):int=\n\
-    \        assert t >= -1\n        var x = self.root_i32(x,t).int\n        return\
-    \ self.size_value[x][self.size_time[x].upperBound(t)-1]\n\n    proc size*(self:var\
-    \ PartialPersistentUnionFind,x:int):int=\n        return self.size(x,self.last)\n\
-    \n    proc when_unite*(self:var PartialPersistentUnionFind,u,v:int):int=\n   \
-    \     ## \u9802\u70B9u\u3068v\u304C\u9023\u7D50\u306B\u306A\u3063\u305F\u6642\u9593\
-    \u3092\u8FD4\u3059\u3002\n        ## \u9023\u7D50\u3067\u306F\u306A\u3044\u5834\
-    \u5408\u3001-2\u304C\u8FD4\u308B(\u6700\u60AA\u304B\uFF1F \u6642\u523B-1\u3092\
+    \        assert t >= -1, \"\u6642\u523B\u306F\u521D\u671F\u72B6\u614B\u3092\u8868\
+    \u3059-1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        var x = self.root_i32(x,t).int\n        return self.size_value[x][self.size_time[x].upperBound(t)-1]\n\
+    \n    proc size*(self:var PartialPersistentUnionFind,x:int):int=\n        return\
+    \ self.size(x,self.last)\n\n    proc when_unite*(self:var PartialPersistentUnionFind,u,v:int):int=\n\
+    \        ## \u9802\u70B9u\u3068v\u304C\u9023\u7D50\u306B\u306A\u3063\u305F\u6642\
+    \u9593\u3092\u8FD4\u3059\u3002\n        ## \u9023\u7D50\u3067\u306F\u306A\u3044\
+    \u5834\u5408\u3001-2\u304C\u8FD4\u308B(\u6700\u60AA\u304B\uFF1F \u6642\u523B-1\u3092\
     \u958B\u59CB\u306B\u3057\u3066\u3057\u307E\u3063\u305F\u305F\u3081\u4ED5\u65B9\
     \u306A\u304F...)\n        var tu : seq[int] = @[u]\n        var u = u\n      \
     \  var tv : seq[int] = @[v]\n        var v = v\n        while self.par_or_siz[u]\
@@ -100,8 +103,8 @@ data:
   - verify/collections/ppunionfind/stamp_rally_test_.nim
   - verify/collections/ppunionfind/past_ppuf_test_.nim
   - verify/collections/ppunionfind/past_ppuf_test_.nim
-  timestamp: '2026-07-09 02:51:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim
   - verify/collections/ppunionfind/yosupo_unionfind_test.nim

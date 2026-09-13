@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   - icon: ':warning:'
@@ -33,63 +33,63 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_matrix_mod2_test.nim
     title: verify/AI/static_matrix_mod2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/inverse_matrix_mod_2_static_test.nim
     title: verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/inverse_matrix_mod_2_static_test.nim
     title: verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/inverse_matrix_mod_2_test.nim
     title: verify/matrix/inverse_matrix_mod_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/inverse_matrix_mod_2_test.nim
     title: verify/matrix/inverse_matrix_mod_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_det_mod_2_static_test.nim
     title: verify/matrix/matrix_det_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_det_mod_2_static_test.nim
     title: verify/matrix/matrix_det_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_det_mod_2_test.nim
     title: verify/matrix/matrix_det_mod_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_det_mod_2_test.nim
     title: verify/matrix/matrix_det_mod_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_mod_2_static_test.nim
     title: verify/matrix/matrix_product_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_mod_2_static_test.nim
     title: verify/matrix/matrix_product_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_mod_2_test.nim
     title: verify/matrix/matrix_product_mod_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_mod_2_test.nim
     title: verify/matrix/matrix_product_mod_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_rank_mod_2_static_test.nim
     title: verify/matrix/matrix_rank_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_rank_mod_2_static_test.nim
     title: verify/matrix/matrix_rank_mod_2_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_rank_mod_2_test.nim
     title: verify/matrix/matrix_rank_mod_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_rank_mod_2_test.nim
     title: verify/matrix/matrix_rank_mod_2_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -103,23 +103,31 @@ data:
     \ initBitLinearSystem*(height, width: int): seq[uint64] =\n        ## \u53F3\u8FBA\
     \u3092\u542B\u3080h\u884C(w+1)\u5217\u306E\u4F5C\u696D\u9818\u57DF\u3092\u78BA\
     \u4FDD\u3059\u308B\u3002O(h*(w div 64+1))\u3002\n        assert height >= 0 and\
-    \ width >= 0\n        let stride = (width shr 6) + 1\n        assert height <=\
-    \ high(int) div sizeof(uint64) div stride\n        newSeq[uint64](height * stride)\n\
-    \n    proc solveBitLinearSystem*(rows: var seq[uint64], height, width: int): Option[LinearSystemSolution[bool]]\
-    \ =\n        ## \u62E1\u5927\u884C\u5217\u309264bit\u5358\u4F4D\u3067\u6383\u304D\
-    \u51FA\u3059\u3002r=min(h,w)\u3001L=w div 64+1\u3068\u3057\u3066O(h*r*L+w^2)\u3002\
-    \n        ## \u5404\u884C\u306FL\u30EF\u30FC\u30C9\u3067\u53F3\u8FBA\u306Fwidth\u5217\
-    \u76EE\u3002\u4F5C\u696D\u9818\u57DF\u3092\u5909\u66F4\u3057\u3001\u89E3\u306A\
-    \u3057\u306A\u3089none\u3092\u8FD4\u3059\u3002\n        assert height >= 0 and\
-    \ width >= 0\n        let stride = (width shr 6) + 1\n        assert height <=\
-    \ high(int) div stride and rows.len == height * stride\n        var pivots: seq[int]\n\
-    \        if height > 0:\n            let data = cast[ptr UncheckedArray[uint64]](addr\
-    \ rows[0])\n            for col in 0..<width:\n                let rank = pivots.len\n\
-    \                if rank == height: break\n                let firstWord = col\
-    \ shr 6\n                let mask = 1'u64 shl (col and 63)\n                var\
-    \ pivot = rank\n                while pivot < height and (data[pivot * stride\
-    \ + firstWord] and mask) == 0:\n                    inc pivot\n              \
-    \  if pivot == height: continue\n                let pivotRow = cast[ptr UncheckedArray[uint64]](addr\
+    \ width >= 0, \"\u9AD8\u3055\u3068\u5E45\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        let stride = (width shr 6) + 1\n\
+    \        assert height <= high(int) div sizeof(uint64) div stride, \"\u884C\u5217\
+    \u306E\u8A18\u61B6\u9818\u57DF\u306E\u30B5\u30A4\u30BA\u304Cint\u306E\u7BC4\u56F2\
+    \u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        newSeq[uint64](height *\
+    \ stride)\n\n    proc solveBitLinearSystem*(rows: var seq[uint64], height, width:\
+    \ int): Option[LinearSystemSolution[bool]] =\n        ## \u62E1\u5927\u884C\u5217\
+    \u309264bit\u5358\u4F4D\u3067\u6383\u304D\u51FA\u3059\u3002r=min(h,w)\u3001L=w\
+    \ div 64+1\u3068\u3057\u3066O(h*r*L+w^2)\u3002\n        ## \u5404\u884C\u306F\
+    L\u30EF\u30FC\u30C9\u3067\u53F3\u8FBA\u306Fwidth\u5217\u76EE\u3002\u4F5C\u696D\
+    \u9818\u57DF\u3092\u5909\u66F4\u3057\u3001\u89E3\u306A\u3057\u306A\u3089none\u3092\
+    \u8FD4\u3059\u3002\n        assert height >= 0 and width >= 0, \"\u9AD8\u3055\u3068\
+    \u5E45\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        let stride = (width shr 6) + 1\n        assert height <= high(int)\
+    \ div stride and rows.len == height * stride, \"\u884C\u5217\u306E\u30B5\u30A4\
+    \u30BA\u304Cint\u306E\u7BC4\u56F2\u306B\u53CE\u307E\u308A\u3001\u683C\u7D0D\u914D\
+    \u5217\u306E\u9577\u3055\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        var pivots: seq[int]\n        if height > 0:\n \
+    \           let data = cast[ptr UncheckedArray[uint64]](addr rows[0])\n      \
+    \      for col in 0..<width:\n                let rank = pivots.len\n        \
+    \        if rank == height: break\n                let firstWord = col shr 6\n\
+    \                let mask = 1'u64 shl (col and 63)\n                var pivot\
+    \ = rank\n                while pivot < height and (data[pivot * stride + firstWord]\
+    \ and mask) == 0:\n                    inc pivot\n                if pivot ==\
+    \ height: continue\n                let pivotRow = cast[ptr UncheckedArray[uint64]](addr\
     \ data[rank * stride])\n                # \u30D4\u30DC\u30C3\u30C8\u884C\u306E\
     \u524D\u306E\u5217\u306F\u3059\u3079\u3066\u96F6\u306A\u306E\u3067\u3001\u73FE\
     \u5728\u306E\u30EF\u30FC\u30C9\u4EE5\u964D\u3060\u3051\u64CD\u4F5C\u3059\u308B\
@@ -153,8 +161,8 @@ data:
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
-  timestamp: '2026-09-10 08:33:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/AI/static_matrix_mod2_test.nim
   - verify/AI/static_matrix_mod2_test.nim

@@ -38,7 +38,8 @@ data:
     \u3092\u6291\u3048\u307E\u3059\u3002\n        i + (i shr 10)\n\n    proc initFenwickTree*[T](n:\
     \ int): FenwickTree[T] =\n        ## \u9577\u3055n\u306E\u96F6\u914D\u5217\u304B\
     \u3089\u69CB\u7BC9\u3057\u307E\u3059\u3002O(n)\u6642\u9593\u30FB\u9818\u57DF\u3067\
-    \u3059\u3002\n        assert n >= 0\n        result.size = n\n        result.data\
+    \u3059\u3002\n        assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        result.size = n\n        result.data\
     \ = newSeq[T](fenwickSlot(n) + 1)\n\n    proc initFenwickTree*[T](values: openArray[T]):\
     \ FenwickTree[T] =\n        ## \u914D\u5217\u304B\u3089O(n)\u6642\u9593\u30FB\u9818\
     \u57DF\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        result = initFenwickTree[T](values.len)\n\
@@ -49,19 +50,25 @@ data:
     \ {.inline.} =\n        ## \u8981\u7D20\u6570\u3092O(1)\u3067\u8FD4\u3057\u307E\
     \u3059\u3002\n        self.size\n\n    proc add*[T](self: var FenwickTree[T],\
     \ p: int, delta: T) {.inline.} =\n        ## a[p]\u306Bdelta\u3092\u52A0\u3048\
-    \u307E\u3059\u3002O(log n)\u3067\u3059\u3002\n        assert 0 <= p and p < self.size\n\
-    \        var i = p + 1\n        while i <= self.size:\n            self.data[fenwickSlot(i)]\
+    \u307E\u3059\u3002O(log n)\u3067\u3059\u3002\n        assert 0 <= p and p < self.size,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= p and p < self.size\"\
+    \n        var i = p + 1\n        while i <= self.size:\n            self.data[fenwickSlot(i)]\
     \ += delta\n            i += i and -i\n\n    proc prefix*[T](self: FenwickTree[T],\
     \ r: int): T {.inline.} =\n        ## [0, r)\u306E\u548C\u3092O(log n)\u3067\u8FD4\
-    \u3057\u307E\u3059\u3002\n        assert 0 <= r and r <= self.size\n        var\
-    \ r = r\n        while r > 0:\n            result += self.data[fenwickSlot(r)]\n\
+    \u3057\u307E\u3059\u3002\n        assert 0 <= r and r <= self.size, \"\u6307\u5B9A\
+    \u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= r and r <= self.size\"\n    \
+    \    var r = r\n        while r > 0:\n            result += self.data[fenwickSlot(r)]\n\
     \            r = r and (r - 1)\n\n    proc get*[T](self: FenwickTree[T], l, r:\
     \ int): T {.inline.} =\n        ## [l, r)\u306E\u548C\u3092O(log n)\u3067\u8FD4\
     \u3057\u307E\u3059\u3002\u5171\u901A\u3059\u308B\u7956\u5148\u306F\u8D70\u67FB\
-    \u3057\u307E\u305B\u3093\u3002\n        assert 0 <= l and l <= r and r <= self.size\n\
-    \        var l = l\n        var r = r\n        var left: T\n        while r >\
-    \ l:\n            result += self.data[fenwickSlot(r)]\n            r = r and (r\
-    \ - 1)\n        while l > r:\n            left += self.data[fenwickSlot(l)]\n\
+    \u3057\u307E\u305B\u3093\u3002\n        assert 0 <= l and l <= r and r <= self.size,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <=\
+    \ r and r <= self.size\"\n        var l = l\n        var r = r\n        var left:\
+    \ T\n        while r > l:\n            result += self.data[fenwickSlot(r)]\n \
+    \           r = r and (r - 1)\n        while l > r:\n            left += self.data[fenwickSlot(l)]\n\
     \            l = l and (l - 1)\n        result = result - left\n\n    proc `[]`*[T](self:\
     \ FenwickTree[T], segment: HSlice[int, int]): T {.inline.} =\n        ## \u30B9\
     \u30E9\u30A4\u30B9\u306E\u548C\u3092O(log n)\u3067\u8FD4\u3057\u307E\u3059\u3002\
@@ -75,7 +82,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/fenwick.nim
   requiredBy: []
-  timestamp: '2026-09-09 00:04:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/fenwick_tree_test.nim

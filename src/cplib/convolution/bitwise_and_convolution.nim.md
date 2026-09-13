@@ -26,8 +26,11 @@ data:
     \u52A0\u9818\u57DF\u3067\u6C42\u3081\u308B\u3002\n        ## \u5165\u529B\u306F\
     \u540C\u3058\u9577\u3055\u306E2\u51AA\u306E\u5217\u3068\u3057\u3001\u4E21\u65B9\
     \u304C\u7A7A\u306E\u5834\u5408\u306F\u7A7A\u5217\u3092\u8FD4\u3059\u3002\n   \
-    \     assert a.len == b.len\n        let n = a.len\n        if n == 0:\n     \
-    \       return @[]\n        assert (n and (n - 1)) == 0\n        result = a\n\
+    \     assert a.len == b.len, \"\u7573\u307F\u8FBC\u3080\u914D\u5217\u306E\u9577\
+    \u3055\u306F\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       let n = a.len\n        if n == 0:\n            return @[]\n        assert\
+    \ (n and (n - 1)) == 0, \"\u914D\u5217\u306E\u9577\u3055\u306F2\u306E\u51AA\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = a\n\
     \        var right = b\n        var bit = 1\n        while bit < n:\n        \
     \    for mask in 0..<n:\n                if (mask and bit) == 0:\n           \
     \         result[mask] += result[mask or bit]\n                    right[mask]\
@@ -40,7 +43,7 @@ data:
   isVerificationFile: false
   path: cplib/convolution/bitwise_and_convolution.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:59:23+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/bitwise_and_convolution_test.nim

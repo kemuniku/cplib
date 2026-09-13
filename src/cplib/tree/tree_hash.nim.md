@@ -59,10 +59,11 @@ data:
     \        ## \u90E8\u5206\u6728\u3092\u4E0B\u304B\u3089\u8A08\u7B97\u3057\u3001\
     \u5FC5\u8981\u306A\u3089\u89AA\u5074\u304B\u3089\u306E\u5BC4\u4E0E\u3082\u4F1D\
     \u64AD\u3059\u308B\u3002\n        let n = g.len\n        if n == 0: return\n \
-    \       assert root in 0..<n\n        while treeHashDepth.len < n:\n         \
-    \   treeHashDepth.add(treeHashRandom.rand(0'u64..TREE_HASH_MOD - 1))\n       \
-    \ var parent = newSeq[int](n)\n        for v in 0..<n: parent[v] = -2\n      \
-    \  parent[root] = -1\n        var order = @[root]\n        var children = newSeq[seq[int]](n)\n\
+    \       assert root in 0..<n, \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\
+    \u3067\u3059: root in 0 ..< n\"\n        while treeHashDepth.len < n:\n      \
+    \      treeHashDepth.add(treeHashRandom.rand(0'u64..TREE_HASH_MOD - 1))\n    \
+    \    var parent = newSeq[int](n)\n        for v in 0..<n: parent[v] = -2\n   \
+    \     parent[root] = -1\n        var order = @[root]\n        var children = newSeq[seq[int]](n)\n\
     \        var index = 0\n        while index < order.len:\n            let u =\
     \ order[index]\n            inc index\n            for (v, _) in g.to_and_cost(u):\n\
     \                if v == parent[u]: continue\n                assert parent[v]\
@@ -106,7 +107,7 @@ data:
   isVerificationFile: false
   path: cplib/tree/tree_hash.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/rooted_tree_isomorphism_classification_test.nim

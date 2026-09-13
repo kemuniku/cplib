@@ -45,26 +45,34 @@ data:
     \ il: Natural, ir: Natural,jl: Natural, jr: Natural): T =\n        ## \u9577\u65B9\
     \u5F62\u9818\u57DF i\u2208[il,ir), j\u2208[jl,jr) \u306B\u3064\u3044\u3066\u306E\
     \u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert il\
-    \ <= ir and 0 <= il and ir <= self.H\n        assert jl <= jr and 0 <= jl and\
-    \ jr <= self.W\n        var il = il\n        var ir = ir\n        il += self.lastnode\n\
-    \        ir += self.lastnode\n        var (lres, rres) = (self.default, self.default)\n\
-    \        while il < ir:\n            if (il and 1) > 0:\n                lres\
-    \ = self.merge(lres, self.arr[il].get(jl,jr))\n                il += 1\n     \
-    \       if (ir and 1) > 0:\n                ir -= 1\n                rres = self.merge(self.arr[ir].get(jl,jr),\
-    \ rres)\n            il = il shr 1\n            ir = ir shr 1\n        return\
-    \ self.merge(lres, rres)\n\n    proc update*[T](self: SegmentTree2D[T], i,j: Natural,\
-    \ val: T) =\n        ## (i, j)\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\
-    \u307E\u3059\u3002\n        assert i < self.H\n        assert j < self.W\n   \
-    \     var i = i\n        i += self.lastnode\n        self.arr[i][j] = val\n  \
-    \      while i > 1:\n            i = i shr 1\n            self.arr[i][j] = self.merge(self.arr[2*i][j],\
-    \ self.arr[2*i+1][j])\n"
+    \ <= ir and 0 <= il and ir <= self.H, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: il <= ir and 0 <= il and ir <= self.H\"\n        assert jl\
+    \ <= jr and 0 <= jl and jr <= self.W, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: jl <= jr and 0 <= jl and jr <= self.W\"\n        var il =\
+    \ il\n        var ir = ir\n        il += self.lastnode\n        ir += self.lastnode\n\
+    \        var (lres, rres) = (self.default, self.default)\n        while il < ir:\n\
+    \            if (il and 1) > 0:\n                lres = self.merge(lres, self.arr[il].get(jl,jr))\n\
+    \                il += 1\n            if (ir and 1) > 0:\n                ir -=\
+    \ 1\n                rres = self.merge(self.arr[ir].get(jl,jr), rres)\n      \
+    \      il = il shr 1\n            ir = ir shr 1\n        return self.merge(lres,\
+    \ rres)\n\n    proc update*[T](self: SegmentTree2D[T], i,j: Natural, val: T) =\n\
+    \        ## (i, j)\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\u307E\u3059\
+    \u3002\n        assert i < self.H, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: i < self.H\"\n        assert j < self.W, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: j < self.W\"\n        var i = i\n        i +=\
+    \ self.lastnode\n        self.arr[i][j] = val\n        while i > 1:\n        \
+    \    i = i shr 1\n            self.arr[i][j] = self.merge(self.arr[2*i][j], self.arr[2*i+1][j])\n"
   dependsOn:
   - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   isVerificationFile: false
   path: cplib/collections/segtree2d.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/segtree2d_test.nim

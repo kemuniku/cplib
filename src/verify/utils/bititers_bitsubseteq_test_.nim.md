@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: verify/utils/bititers_bitsubseteq_test_.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/utils/bititers_bitsubseteq_test_.nim

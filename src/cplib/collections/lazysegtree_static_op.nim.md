@@ -137,51 +137,60 @@ data:
     \ =\n        for i in countdown(self.log, 1):\n            self.push(p shr i)\n\
     \n    proc update*[ST: LazySegmentTree](self: var ST, p: Natural, val: ST.S) =\n\
     \        ## p\u306E\u8981\u7D20\u3092val\u306B\u5909\u66F4\u3057\u307E\u3059\u3002\
-    \n        assert p < self.length\n        let p = p + self.lastnode\n        self.all_push(p)\n\
+    \n        assert p < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: p < self.length\"\n        let p = p + self.lastnode\n        self.all_push(p)\n\
     \        self.arr[p] = val\n        for i in 1..self.log:\n            let node\
     \ = p shr i\n            self.arr[node] = self.mergeOp(self.arr[2 * node], self.arr[2\
     \ * node + 1])\n\n    proc `[]`*[ST: LazySegmentTree](self: var ST, p: Natural):\
-    \ ST.S =\n        assert p < self.length\n        self.all_push(p + self.lastnode)\n\
+    \ ST.S =\n        assert p < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: p < self.length\"\n        self.all_push(p + self.lastnode)\n\
     \        return self.arr[p + self.lastnode]\n\n    proc get*[ST: LazySegmentTree](self:\
     \ var ST, q_left, q_right: int): ST.S =\n        ## \u534A\u958B\u533A\u9593[q_left,q_right)\u306B\
     \u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\u679C\u3092\u8FD4\u3057\u307E\u3059\
-    \u3002\n        assert q_left <= q_right and 0 <= q_left and q_right <= self.length\n\
-    \        if q_left == q_right:\n            return self.default\n        var q_left\
-    \ = q_left + self.lastnode\n        var q_right = q_right + self.lastnode\n  \
-    \      self.pushBoundaries(q_left, q_right)\n        var\n            lres = self.default\n\
-    \            rres = self.default\n        while q_left < q_right:\n          \
-    \  if (q_left and 1) > 0:\n                lres = self.mergeOp(lres, self.arr[q_left])\n\
-    \                q_left.inc\n            if (q_right and 1) > 0:\n           \
-    \     q_right.dec\n                rres = self.mergeOp(self.arr[q_right], rres)\n\
-    \            q_left = q_left shr 1\n            q_right = q_right shr 1\n    \
-    \    return self.mergeOp(lres, rres)\n\n    proc get_all*[ST: LazySegmentTree](self:\
-    \ ST): ST.S =\n        ## \u5168\u8981\u7D20\u306B\u3064\u3044\u3066\u306E\u6F14\
-    \u7B97\u7D50\u679C\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\u7A7A\u306E\u5834\
-    \u5408\u306F\u5358\u4F4D\u5143\u3092\u8FD4\u3057\u307E\u3059\u3002\n        return\
-    \ self.arr[1]\n\n    proc get*[ST: LazySegmentTree](\n        self: var ST, segment:\
-    \ HSlice[int, int]\n    ): ST.S =\n        return self.get(segment.a, segment.b\
-    \ + 1)\n\n    proc `[]`*[ST: LazySegmentTree](\n        self: var ST, segment:\
-    \ HSlice[int, int]\n    ): ST.S =\n        self.get(segment)\n\n    proc `[]=`*[ST:\
-    \ LazySegmentTree](self: var ST, p: Natural, val: ST.S) =\n        self.update(p,\
-    \ val)\n\n    proc len*[ST: LazySegmentTree](self: var ST): int =\n        return\
-    \ self.length\n\n    proc `$`*[ST: LazySegmentTree](self: var ST): string =\n\
-    \        return (0..<self.len).toSeq.mapIt(self[it]).join(\" \")\n\n    template\
-    \ newLazySegWith*(\n        v_or_n, merge, default, mapping, composition, id:\
-    \ untyped\n    ): untyped =\n        block:\n            type S = typeof(default)\n\
-    \            type F = typeof(id)\n            proc staticMerge(\n            \
-    \    l {.inject.}, r {.inject.}: S\n            ): S {.gensym, inline.} = merge\n\
-    \            proc staticMapping(\n                f {.inject.}: F, x {.inject.}:\
-    \ S\n            ): S {.gensym, inline.} = mapping\n            proc staticComposition(\n\
-    \                f {.inject.}, g {.inject.}: F\n            ): F {.gensym, inline.}\
-    \ = composition\n            LazySegmentTree[S, F, (staticMerge, staticMapping,\
-    \ staticComposition)]\n                .initLazySegmentTreeImpl(v_or_n, default,\
-    \ id)\n\n    proc apply*[ST: LazySegmentTree](\n        self: var ST, q_left,\
-    \ q_right: int, f: ST.F\n    ) =\n        ## \u534A\u958B\u533A\u9593[q_left,q_right)\u306B\
-    f\u3092\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002\n        assert q_left <= q_right\
-    \ and 0 <= q_left and q_right <= self.length\n        if q_left == q_right:\n\
-    \            return\n        var q_left = q_left + self.lastnode\n        var\
-    \ q_right = q_right + self.lastnode\n        self.pushBoundaries(q_left, q_right)\n\
-    \        block:\n            var q_left = q_left\n            var q_right = q_right\n\
+    \u3002\n        assert q_left <= q_right and 0 <= q_left and q_right <= self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: q_left <= q_right\
+    \ and 0 <= q_left and q_right <= self.length\"\n        if q_left == q_right:\n\
+    \            return self.default\n        var q_left = q_left + self.lastnode\n\
+    \        var q_right = q_right + self.lastnode\n        self.pushBoundaries(q_left,\
+    \ q_right)\n        var\n            lres = self.default\n            rres = self.default\n\
+    \        while q_left < q_right:\n            if (q_left and 1) > 0:\n       \
+    \         lres = self.mergeOp(lres, self.arr[q_left])\n                q_left.inc\n\
+    \            if (q_right and 1) > 0:\n                q_right.dec\n          \
+    \      rres = self.mergeOp(self.arr[q_right], rres)\n            q_left = q_left\
+    \ shr 1\n            q_right = q_right shr 1\n        return self.mergeOp(lres,\
+    \ rres)\n\n    proc get_all*[ST: LazySegmentTree](self: ST): ST.S =\n        ##\
+    \ \u5168\u8981\u7D20\u306B\u3064\u3044\u3066\u306E\u6F14\u7B97\u7D50\u679C\u3092\
+    O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\u7A7A\u306E\u5834\u5408\u306F\u5358\u4F4D\
+    \u5143\u3092\u8FD4\u3057\u307E\u3059\u3002\n        return self.arr[1]\n\n   \
+    \ proc get*[ST: LazySegmentTree](\n        self: var ST, segment: HSlice[int,\
+    \ int]\n    ): ST.S =\n        return self.get(segment.a, segment.b + 1)\n\n \
+    \   proc `[]`*[ST: LazySegmentTree](\n        self: var ST, segment: HSlice[int,\
+    \ int]\n    ): ST.S =\n        self.get(segment)\n\n    proc `[]=`*[ST: LazySegmentTree](self:\
+    \ var ST, p: Natural, val: ST.S) =\n        self.update(p, val)\n\n    proc len*[ST:\
+    \ LazySegmentTree](self: var ST): int =\n        return self.length\n\n    proc\
+    \ `$`*[ST: LazySegmentTree](self: var ST): string =\n        return (0..<self.len).toSeq.mapIt(self[it]).join(\"\
+    \ \")\n\n    template newLazySegWith*(\n        v_or_n, merge, default, mapping,\
+    \ composition, id: untyped\n    ): untyped =\n        block:\n            type\
+    \ S = typeof(default)\n            type F = typeof(id)\n            proc staticMerge(\n\
+    \                l {.inject.}, r {.inject.}: S\n            ): S {.gensym, inline.}\
+    \ = merge\n            proc staticMapping(\n                f {.inject.}: F, x\
+    \ {.inject.}: S\n            ): S {.gensym, inline.} = mapping\n            proc\
+    \ staticComposition(\n                f {.inject.}, g {.inject.}: F\n        \
+    \    ): F {.gensym, inline.} = composition\n            LazySegmentTree[S, F,\
+    \ (staticMerge, staticMapping, staticComposition)]\n                .initLazySegmentTreeImpl(v_or_n,\
+    \ default, id)\n\n    proc apply*[ST: LazySegmentTree](\n        self: var ST,\
+    \ q_left, q_right: int, f: ST.F\n    ) =\n        ## \u534A\u958B\u533A\u9593\
+    [q_left,q_right)\u306Bf\u3092\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002\n    \
+    \    assert q_left <= q_right and 0 <= q_left and q_right <= self.length, \"\u6307\
+    \u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: q_left <= q_right and\
+    \ 0 <= q_left and q_right <= self.length\"\n        if q_left == q_right:\n  \
+    \          return\n        var q_left = q_left + self.lastnode\n        var q_right\
+    \ = q_right + self.lastnode\n        self.pushBoundaries(q_left, q_right)\n  \
+    \      block:\n            var q_left = q_left\n            var q_right = q_right\n\
     \            while q_left < q_right:\n                if (q_left and 1) > 0:\n\
     \                    self.all_apply(q_left, f)\n                    q_left.inc\n\
     \                if (q_right and 1) > 0:\n                    q_right.dec\n  \
@@ -195,10 +204,14 @@ data:
     \u3002\n        ## f\u306F\u533A\u9593\u306E\u62E1\u5927\u306B\u5BFE\u3057\u3066\
     \u5358\u8ABF\u3067\u3001\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\
     \u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n        assert 0 <= l\
-    \ and l <= self.len\n        assert f(self.default)\n        if l == self.len:\n\
-    \            return self.len\n        var l = l + self.lastnode\n        self.all_push(l)\n\
-    \        var sm = self.default\n        while true:\n            while l mod 2\
-    \ == 0:\n                l = l shr 1\n            if not f(self.mergeOp(sm, self.arr[l])):\n\
+    \ and l <= self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <=\
+    \ l and l <= self.len\"\n        assert f(self.default), \"\u5224\u5B9A\u95A2\u6570\
+    \u306F\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        if l == self.len:\n            return\
+    \ self.len\n        var l = l + self.lastnode\n        self.all_push(l)\n    \
+    \    var sm = self.default\n        while true:\n            while l mod 2 ==\
+    \ 0:\n                l = l shr 1\n            if not f(self.mergeOp(sm, self.arr[l])):\n\
     \                while l < self.lastnode:\n                    self.push(l)\n\
     \                    l *= 2\n                    if f(self.mergeOp(sm, self.arr[l])):\n\
     \                        sm = self.mergeOp(sm, self.arr[l])\n                \
@@ -210,24 +223,28 @@ data:
     \u8FD4\u3057\u307E\u3059\u3002\n        ## f\u306F\u533A\u9593\u306E\u62E1\u5927\
     \u306B\u5BFE\u3057\u3066\u5358\u8ABF\u3067\u3001\u5358\u4F4D\u5143\u306B\u5BFE\
     \u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\
-    \n        assert 0 <= r and r <= self.len\n        assert f(self.default)\n  \
-    \      if r == 0:\n            return 0\n        var r = r + self.lastnode\n \
-    \       self.all_push(r - 1)\n        var sm = self.default\n        while true:\n\
-    \            r -= 1\n            while r > 1 and r mod 2 != 0:\n             \
-    \   r = r shr 1\n            if not f(self.mergeOp(self.arr[r], sm)):\n      \
-    \          while r < self.lastnode:\n                    self.push(r)\n      \
-    \              r = 2 * r + 1\n                    if f(self.mergeOp(self.arr[r],\
-    \ sm)):\n                        sm = self.mergeOp(self.arr[r], sm)\n        \
-    \                r -= 1\n                return r + 1 - self.lastnode\n      \
-    \      sm = self.mergeOp(self.arr[r], sm)\n            if (r and -r) == r:\n \
-    \               break\n        return 0\n\n    {.pop.}\n"
+    \n        assert 0 <= r and r <= self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: 0 <= r and r <= self.len\"\n        assert f(self.default),\
+    \ \"\u5224\u5B9A\u95A2\u6570\u306F\u5358\u4F4D\u5143\u306B\u5BFE\u3057\u3066true\u3092\
+    \u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if r == 0:\n\
+    \            return 0\n        var r = r + self.lastnode\n        self.all_push(r\
+    \ - 1)\n        var sm = self.default\n        while true:\n            r -= 1\n\
+    \            while r > 1 and r mod 2 != 0:\n                r = r shr 1\n    \
+    \        if not f(self.mergeOp(self.arr[r], sm)):\n                while r < self.lastnode:\n\
+    \                    self.push(r)\n                    r = 2 * r + 1\n       \
+    \             if f(self.mergeOp(self.arr[r], sm)):\n                        sm\
+    \ = self.mergeOp(self.arr[r], sm)\n                        r -= 1\n          \
+    \      return r + 1 - self.lastnode\n            sm = self.mergeOp(self.arr[r],\
+    \ sm)\n            if (r and -r) == r:\n                break\n        return\
+    \ 0\n\n    {.pop.}\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/lazysegtree_static_op.nim
   requiredBy:
   - cplib/collections/lazysegtree_template.nim
   - cplib/collections/lazysegtree_template.nim
-  timestamp: '2026-09-12 10:02:20+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim

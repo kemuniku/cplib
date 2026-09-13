@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_beats_template.nim
     title: cplib/collections/segtree_beats_template.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   - icon: ':question:'
@@ -57,17 +57,17 @@ data:
     \ 5, 10, 10]:\n  assert seg128[i].sum == expected\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/math/int128.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/math/int128.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_beats_template.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_template_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:33:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/segtree_beats_template_test.nim

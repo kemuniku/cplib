@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/hopcroft_karp.nim
     title: cplib/graph/hopcroft_karp.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/hopcroft_karp.nim
     title: cplib/graph/hopcroft_karp.nim
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/bipartitematching
     links:
@@ -34,15 +34,15 @@ data:
     \ 0..<m:\n    let a = ii()\n    let b = ii()\n    g.add_edge(a, b)\necho g.matching()\n\
     for (a, b) in g.get_matching():\n    echo a, \" \", b\n"
   dependsOn:
-  - cplib/graph/hopcroft_karp.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/hopcroft_karp.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/hopcroft_karp.nim
   isVerificationFile: true
   path: verify/graph/hopcroft_karp_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 10:19:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/hopcroft_karp_test.nim
 layout: document

@@ -41,15 +41,18 @@ data:
     \        discard self.root_i32(x)\n        return self.potential_diff[x]\n   \
     \ proc issame*[T](self: WeightedUnionFind[T], x: int, y: int): bool =\n      \
     \  return self.root_i32(x) == self.root_i32(y)\n    proc diff*[T](self:WeightedUnionFind[T],x,y:int):T=\n\
-    \        assert self.root_i32(x) == self.root_i32(y)\n        return self.potential_diff[y]-self.potential_diff[x]\n\
-    \    proc unite*[T](self: WeightedUnionFind[T], x: int, y: int, w:T):bool=\n \
-    \       ## potential[y]-potential[x] = w\u3068\u306A\u308B\u3088\u3046\u306B\u8FBA\
-    \u3092\u5F35\u308A\u307E\u3059\n        ## \u6B63\u3057\u304F\u8FBA\u304C\u5F35\
-    \u308C\u308B\u306A\u3089\u3070\u3001true,\u305D\u3046\u3067\u306A\u3044\u306A\u3089\
-    \u3070false\u3092\u8FD4\u3057\u307E\u3059\n        var w = w + self.potential(x)\
-    \ - self.potential(y)\n        var x = self.root_i32(x)\n        var y = self.root_i32(y)\n\
-    \        if(x != y):\n            if(self.par_or_siz[x.int] > self.par_or_siz[y.int]):\n\
-    \                swap(x, y)\n                w = -w\n            let xi = x.int\n\
+    \        assert self.root_i32(x) == self.root_i32(y), \"\u91CD\u307F\u306E\u5DEE\
+    \u3092\u53D6\u5F97\u3059\u308B\u9802\u70B9\u306F\u540C\u3058\u9023\u7D50\u6210\
+    \u5206\u306B\u5C5E\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       return self.potential_diff[y]-self.potential_diff[x]\n    proc unite*[T](self:\
+    \ WeightedUnionFind[T], x: int, y: int, w:T):bool=\n        ## potential[y]-potential[x]\
+    \ = w\u3068\u306A\u308B\u3088\u3046\u306B\u8FBA\u3092\u5F35\u308A\u307E\u3059\n\
+    \        ## \u6B63\u3057\u304F\u8FBA\u304C\u5F35\u308C\u308B\u306A\u3089\u3070\
+    \u3001true,\u305D\u3046\u3067\u306A\u3044\u306A\u3089\u3070false\u3092\u8FD4\u3057\
+    \u307E\u3059\n        var w = w + self.potential(x) - self.potential(y)\n    \
+    \    var x = self.root_i32(x)\n        var y = self.root_i32(y)\n        if(x\
+    \ != y):\n            if(self.par_or_siz[x.int] > self.par_or_siz[y.int]):\n \
+    \               swap(x, y)\n                w = -w\n            let xi = x.int\n\
     \            let yi = y.int\n            self.par_or_siz[xi] += self.par_or_siz[yi]\n\
     \            self.par_or_siz[yi] = x\n            self.count -= 1\n          \
     \  self.potential_diff[yi] = w\n            return true\n        else:\n     \
@@ -59,7 +62,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/weightedunionfind.nim
   requiredBy: []
-  timestamp: '2026-07-09 02:51:42+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/WeightedUnionFind_test.nim

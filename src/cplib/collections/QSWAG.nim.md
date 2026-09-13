@@ -51,17 +51,19 @@ data:
     \ \"index \" & $index & \" not in 0 .. \" & $len(self))\n        if index < len(self.top):\n\
     \            return self.top[len(self.top)-1-index]\n        return self.bottom[index-len(self.top)]\n\
     \    proc get_maxrights*[T](v:seq[T],op:proc(l,r:T):T,e:T,f:proc(x:T):bool):seq[int]=\n\
-    \        assert f(e)\n        var swag = initSWAG(op,e)\n        var r = 0\n \
-    \       for l in 0..<(len(v)):\n            if l > r:\n                r = l\n\
-    \            while r != len(v) and swag.fold().f():\n                swag.push(v[r])\n\
-    \                r += 1\n            if swag.fold().f():\n                result.add(len(v))\n\
-    \            else:\n                result.add(r-1)\n            if len(swag)\
-    \ > 0:\n                discard swag.pop()\n"
+    \        assert f(e), \"\u5224\u5B9A\u95A2\u6570\u306F\u5358\u4F4D\u5143\u306B\
+    \u5BFE\u3057\u3066true\u3092\u8FD4\u3059\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        var swag = initSWAG(op,e)\n        var r = 0\n        for l in 0..<(len(v)):\n\
+    \            if l > r:\n                r = l\n            while r != len(v) and\
+    \ swag.fold().f():\n                swag.push(v[r])\n                r += 1\n\
+    \            if swag.fold().f():\n                result.add(len(v))\n       \
+    \     else:\n                result.add(r-1)\n            if len(swag) > 0:\n\
+    \                discard swag.pop()\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/QSWAG.nim
   requiredBy: []
-  timestamp: '2026-07-07 08:02:44+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/QSWAG_test.nim

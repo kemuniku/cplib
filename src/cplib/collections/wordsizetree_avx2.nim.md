@@ -27,29 +27,31 @@ data:
     \       {.error: \"WordsizeTreeAvx2 requires amd64 and GCC/Clang\".}\n    const\
     \ WordsizeTreeAvx2Capacity* = 1 shl 24\n    type WordsizeTreeAvx2* = object\n\
     \        leaf: array[1 shl 18, uint64]\n        middle: array[1 shl 10, uint64]\n\
-    \        top: array[4, uint64]\n    static: doAssert sizeof(bool) == 1\n    {.emit:\
-    \ \"\"\"\n#include <immintrin.h>\n#include <stdint.h>\n#include <stddef.h>\n#define\
-    \ WST_AVX __attribute__((target(\"avx2\")))\n/* \u5404\u30CE\u30FC\u30C9\u306E\
-    256\u30D3\u30C3\u30C8\u3092\u3001\u9023\u7D9A\u3059\u308B4\u500B\u306E64\u30D3\
-    \u30C3\u30C8\u6574\u6570\u306B\u683C\u7D0D\u3057\u307E\u3059\u3002 */\nWST_AVX\
-    \ static inline unsigned wst_lanes(const uint64_t *p) {\n    /* \u975E\u96F6\u306E\
-    64\u30D3\u30C3\u30C8\u6574\u6570\u306E\u4F4D\u7F6E\u3092\u30D3\u30C3\u30C8\u30DE\
-    \u30B9\u30AF\u3067\u8FD4\u3057\u307E\u3059\u3002 */\n    __m256i v = _mm256_loadu_si256((const\
-    \ __m256i *)p);\n    return (~(unsigned)_mm256_movemask_pd(_mm256_castsi256_pd(\n\
-    \        _mm256_cmpeq_epi64(v, _mm256_setzero_si256())))) & 15u;\n}\nWST_AVX static\
-    \ inline int wst_next(const uint64_t *p, int bit) {\n    /* \u30CE\u30FC\u30C9\
-    \u5185\u3067bit\u4EE5\u4E0A\u306E\u6700\u5C0F\u306E\u8981\u7D20\u3092\u8FD4\u3057\
-    \u3001\u5B58\u5728\u3057\u306A\u3051\u308C\u3070-1\u3092\u8FD4\u3057\u307E\u3059\
-    \u3002 */\n    if (bit >= 256) return -1;\n    unsigned lane = (unsigned)bit >>\
-    \ 6;\n    uint64_t word = p[lane] & (UINT64_MAX << (bit & 63));\n    if (word)\
-    \ return (int)(lane * 64 + __builtin_ctzll(word));\n    unsigned mask = wst_lanes(p)\
-    \ & (15u << (lane + 1));\n    if (!mask) return -1;\n    lane = __builtin_ctz(mask);\n\
-    \    return (int)(lane * 64 + __builtin_ctzll(p[lane]));\n}\nWST_AVX static inline\
-    \ int wst_prev(const uint64_t *p, int bit) {\n    /* \u30CE\u30FC\u30C9\u5185\u3067\
-    bit\u4EE5\u4E0B\u306E\u6700\u5927\u306E\u8981\u7D20\u3092\u8FD4\u3057\u3001\u5B58\
-    \u5728\u3057\u306A\u3051\u308C\u3070-1\u3092\u8FD4\u3057\u307E\u3059\u3002 */\n\
-    \    if (bit < 0) return -1;\n    unsigned lane = (unsigned)bit >> 6;\n    uint64_t\
-    \ word = p[lane] & (UINT64_MAX >> (63 - (bit & 63)));\n    if (word) return (int)(lane\
+    \        top: array[4, uint64]\n    static: doAssert sizeof(bool) == 1, \"bool\u306E\
+    \u30B5\u30A4\u30BA\u306F1\u30D0\u30A4\u30C8\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n    {.emit: \"\"\"\n#include <immintrin.h>\n#include\
+    \ <stdint.h>\n#include <stddef.h>\n#define WST_AVX __attribute__((target(\"avx2\"\
+    )))\n/* \u5404\u30CE\u30FC\u30C9\u306E256\u30D3\u30C3\u30C8\u3092\u3001\u9023\u7D9A\
+    \u3059\u308B4\u500B\u306E64\u30D3\u30C3\u30C8\u6574\u6570\u306B\u683C\u7D0D\u3057\
+    \u307E\u3059\u3002 */\nWST_AVX static inline unsigned wst_lanes(const uint64_t\
+    \ *p) {\n    /* \u975E\u96F6\u306E64\u30D3\u30C3\u30C8\u6574\u6570\u306E\u4F4D\
+    \u7F6E\u3092\u30D3\u30C3\u30C8\u30DE\u30B9\u30AF\u3067\u8FD4\u3057\u307E\u3059\
+    \u3002 */\n    __m256i v = _mm256_loadu_si256((const __m256i *)p);\n    return\
+    \ (~(unsigned)_mm256_movemask_pd(_mm256_castsi256_pd(\n        _mm256_cmpeq_epi64(v,\
+    \ _mm256_setzero_si256())))) & 15u;\n}\nWST_AVX static inline int wst_next(const\
+    \ uint64_t *p, int bit) {\n    /* \u30CE\u30FC\u30C9\u5185\u3067bit\u4EE5\u4E0A\
+    \u306E\u6700\u5C0F\u306E\u8981\u7D20\u3092\u8FD4\u3057\u3001\u5B58\u5728\u3057\
+    \u306A\u3051\u308C\u3070-1\u3092\u8FD4\u3057\u307E\u3059\u3002 */\n    if (bit\
+    \ >= 256) return -1;\n    unsigned lane = (unsigned)bit >> 6;\n    uint64_t word\
+    \ = p[lane] & (UINT64_MAX << (bit & 63));\n    if (word) return (int)(lane * 64\
+    \ + __builtin_ctzll(word));\n    unsigned mask = wst_lanes(p) & (15u << (lane\
+    \ + 1));\n    if (!mask) return -1;\n    lane = __builtin_ctz(mask);\n    return\
+    \ (int)(lane * 64 + __builtin_ctzll(p[lane]));\n}\nWST_AVX static inline int wst_prev(const\
+    \ uint64_t *p, int bit) {\n    /* \u30CE\u30FC\u30C9\u5185\u3067bit\u4EE5\u4E0B\
+    \u306E\u6700\u5927\u306E\u8981\u7D20\u3092\u8FD4\u3057\u3001\u5B58\u5728\u3057\
+    \u306A\u3051\u308C\u3070-1\u3092\u8FD4\u3057\u307E\u3059\u3002 */\n    if (bit\
+    \ < 0) return -1;\n    unsigned lane = (unsigned)bit >> 6;\n    uint64_t word\
+    \ = p[lane] & (UINT64_MAX >> (63 - (bit & 63)));\n    if (word) return (int)(lane\
     \ * 64 + 63 - __builtin_clzll(word));\n    unsigned mask = wst_lanes(p) & ((1u\
     \ << lane) - 1);\n    if (!mask) return -1;\n    lane = 31 - __builtin_clz(mask);\n\
     \    return (int)(lane * 64 + 63 - __builtin_clzll(p[lane]));\n}\nWST_AVX static\
@@ -114,20 +116,28 @@ data:
     \u307E\u3059\u3002\n        discard\n\n    proc initWordsizeTree*(v: openArray[bool]):\
     \ WordsizeTreeAvx2 =\n        ## v[i]\u304C\u771F\u3067\u3042\u308B\u4F4D\u7F6E\
     i\u3092\u8981\u7D20\u3068\u3059\u308B\u30D3\u30C3\u30C8\u96C6\u5408\u6728\u3092\
-    \u4F5C\u6210\u3057\u307E\u3059\u3002\n        assert v.len <= WordsizeTreeAvx2Capacity\n\
-    \        if v.len > 0:\n            avxInit(unsafeAddr v[0], v.len.csize_t, addr\
-    \ result.leaf[0],\n                addr result.middle[0], addr result.top[0])\n\
-    \n    proc incl*(self: var WordsizeTreeAvx2, x: int) =\n        ## \u8981\u7D20\
-    x\u3092\u8FFD\u52A0\u3057\u307E\u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity\n\
-    \        avxIncl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)\n\
+    \u4F5C\u6210\u3057\u307E\u3059\u3002\n        assert v.len <= WordsizeTreeAvx2Capacity,\
+    \ \"\u914D\u5217\u306E\u9577\u3055\u304CWordsizeTreeAvx2\u306E\u6700\u5927\u5BB9\
+    \u91CF\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        if v.len > 0:\n  \
+    \          avxInit(unsafeAddr v[0], v.len.csize_t, addr result.leaf[0],\n    \
+    \            addr result.middle[0], addr result.top[0])\n\n    proc incl*(self:\
+    \ var WordsizeTreeAvx2, x: int) =\n        ## \u8981\u7D20x\u3092\u8FFD\u52A0\u3057\
+    \u307E\u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity, \"\
+    \u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: x >= 0 and x < WordsizeTreeAvx2Capacity\"\
+    \n        avxIncl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)\n\
     \n    proc excl*(self: var WordsizeTreeAvx2, x: int) =\n        ## \u8981\u7D20\
-    x\u3092\u524A\u9664\u3057\u307E\u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity\n\
-    \        avxExcl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)\n\
+    x\u3092\u524A\u9664\u3057\u307E\u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: x >= 0 and x < WordsizeTreeAvx2Capacity\"\
+    \n        avxExcl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)\n\
     \n    proc `[]`*(self: var WordsizeTreeAvx2, x: int): bool =\n        ## \u8981\
     \u7D20x\u304C\u542B\u307E\u308C\u3066\u3044\u308B\u304B\u3092\u8FD4\u3057\u307E\
-    \u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity\n       \
-    \ (self.leaf[x shr 6] and (1'u64 shl (x and 63))) != 0\n\n    proc ge*(self: var\
-    \ WordsizeTreeAvx2, x: int): int =\n        ## x\u4EE5\u4E0A\u306E\u6700\u5C0F\
+    \u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity, \"\u6307\
+    \u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: x >= 0 and x < WordsizeTreeAvx2Capacity\"\
+    \n        (self.leaf[x shr 6] and (1'u64 shl (x and 63))) != 0\n\n    proc ge*(self:\
+    \ var WordsizeTreeAvx2, x: int): int =\n        ## x\u4EE5\u4E0A\u306E\u6700\u5C0F\
     \u306E\u8981\u7D20\u3092\u8FD4\u3057\u3001\u5B58\u5728\u3057\u306A\u3051\u308C\
     \u3070-1\u3092\u8FD4\u3057\u307E\u3059\u3002\n        if x >= WordsizeTreeAvx2Capacity:\
     \ return -1\n        avxGe(addr self.leaf[0], addr self.middle[0], addr self.top[0],\
@@ -140,7 +150,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/wordsizetree_avx2.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:12:42+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/wordsizetree_avx2_test.nim

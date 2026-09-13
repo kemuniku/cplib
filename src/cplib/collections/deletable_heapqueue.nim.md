@@ -47,15 +47,16 @@ data:
     \n    proc toDeletableHeapQueue*[T](v:openArray[T]):Deletable_HeapQueue[T]=\n\
     \        Deletable_HeapQueue[T](hq:(@v).toHeapQueue(),dlhq:initHeapQueue[T]())\n\
     \n    proc `[]`*[T](self:var Deletable_HeapQueue[T],i:Natural):T=\n        assert\
-    \ i == 0\n        return self.hq[i]\n\n    proc delete*[T](self:var Deletable_HeapQueue[T],x:T)=\n\
-    \        self.dlhq.push(x)\n        while len(self.dlhq) != 0 and len(self.hq)\
-    \ != 0 and self.dlhq[0] == self.hq[0]:\n            discard self.dlhq.pop()\n\
-    \            discard self.hq.pop()\n\n    proc push*[T](self:var Deletable_HeapQueue[T],x:T)=\n\
-    \        self.hq.push(x)\n\n\n    proc pop*[T](self:var Deletable_HeapQueue[T]):T=\n\
-    \        result = self.hq.pop()\n        while len(self.dlhq) != 0 and len(self.hq)\
-    \ != 0 and self.dlhq[0] == self.hq[0]:\n            discard self.dlhq.pop()\n\
-    \            discard self.hq.pop()\n\n    proc len*[T](self:var Deletable_HeapQueue[T]):int=\n\
-    \        return len(self.hq)-len(self.dlhq)\n"
+    \ i == 0, \"\u53C2\u7167\u3067\u304D\u308B\u306E\u306F\u5148\u982D\u8981\u7D20\
+    \uFF08\u6DFB\u5B570\uFF09\u306E\u307F\u3067\u3059\"\n        return self.hq[i]\n\
+    \n    proc delete*[T](self:var Deletable_HeapQueue[T],x:T)=\n        self.dlhq.push(x)\n\
+    \        while len(self.dlhq) != 0 and len(self.hq) != 0 and self.dlhq[0] == self.hq[0]:\n\
+    \            discard self.dlhq.pop()\n            discard self.hq.pop()\n\n  \
+    \  proc push*[T](self:var Deletable_HeapQueue[T],x:T)=\n        self.hq.push(x)\n\
+    \n\n    proc pop*[T](self:var Deletable_HeapQueue[T]):T=\n        result = self.hq.pop()\n\
+    \        while len(self.dlhq) != 0 and len(self.hq) != 0 and self.dlhq[0] == self.hq[0]:\n\
+    \            discard self.dlhq.pop()\n            discard self.hq.pop()\n\n  \
+    \  proc len*[T](self:var Deletable_HeapQueue[T]):int=\n        return len(self.hq)-len(self.dlhq)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/deletable_heapqueue.nim
@@ -64,7 +65,7 @@ data:
   - verify/collections/deletable_heapqueue_test_.nim
   - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/topk_sum_heapq.nim
-  timestamp: '2026-07-07 07:12:05+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/deletable_heapqueue_test.nim

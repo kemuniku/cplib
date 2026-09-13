@@ -7,22 +7,22 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
   - icon: ':question:'
@@ -70,56 +70,74 @@ data:
     \ =\n        ## AVX2\u3067\u6271\u3048\u308Bmodint\u578B\u3068\u6CD5\u3092\u691C\
     \u67FB\u3059\u308B\u3002\n        when T isnot MontgomeryModint and T isnot BarrettModint:\n\
     \            {.error: \"static_matrix_avx2 requires MontgomeryModint or BarrettModint\"\
-    .}\n        static: doAssert sizeof(T) == sizeof(uint32) and alignof(T) == alignof(uint32)\n\
-    \        result = T.umod\n        doAssert result > 0 and result < (1u32 shl 30)\
-    \ and (result and 1) == 1\n\n    proc checkMatrix[H: static int, W: static int,\
-    \ T](a: StaticMatrix[H,W,T]) =\n        ## \u56FA\u5B9A\u9577\u306E\u5BF8\u6CD5\
-    \u3068\u4F5C\u6210\u6642\u306E\u6CD5\u3092\u691C\u67FB\u3059\u308B\u3002\n   \
-    \     static:\n            doAssert H >= 0 and W >= 0 and H <= high(cint).int\
-    \ and W <= high(cint).int\n            doAssert H == 0 or W <= (high(int) div\
-    \ sizeof(T)) div H\n        let modulus = fieldModulus[T]()\n        doAssert\
-    \ a.modulus == 0 or a.modulus == modulus, \"matrix modulus has changed\"\n\n \
-    \   proc buffer[T](a: openArray[T]): ptr uint32 =\n        ## \u7A7A\u914D\u5217\
-    \u3092\u542B\u3080\u9023\u7D9A\u9818\u57DF\u306E\u5148\u982D\u3092\u8FD4\u3059\
-    \u3002\n        if a.len == 0: nil\n        else: cast[ptr uint32](unsafeAddr\
-    \ a[0])\n\n    proc initMatrix*[H: static int, W: static int, T](value: T = T.init(0)):\
-    \ StaticMatrix[H,W,T] =\n        ## H\u884CW\u5217\u306E\u56FA\u5B9A\u9577\u884C\
-    \u5217\u3092\u6307\u5B9A\u5024\u3067\u521D\u671F\u5316\u3059\u308B\u3002O(H*W)\u3002\
-    \n        checkMatrix(result)\n        result.modulus = fieldModulus[T]()\n  \
-    \      for i in 0..<H*W: result.values[i] = value\n\n    proc toMatrix*[H: static\
-    \ int, W: static int, T](rows: array[H,array[W,T]]): StaticMatrix[H,W,T] =\n \
-    \       ## \u4E8C\u6B21\u5143\u56FA\u5B9A\u9577\u914D\u5217\u3092\u884C\u5217\u306B\
-    \u3059\u308B\u3002O(H*W)\u3002\n        checkMatrix(result)\n        result.modulus\
-    \ = fieldModulus[T]()\n        for i in 0..<H:\n            for j in 0..<W: result.values[i*W+j]\
-    \ = rows[i][j]\n\n    proc h*[H: static int, W: static int, T](a: StaticMatrix[H,W,T]):\
-    \ int =\n        ## \u884C\u6570\u3092\u8FD4\u3059\u3002\n        H\n    proc\
-    \ w*[H: static int, W: static int, T](a: StaticMatrix[H,W,T]): int =\n       \
-    \ ## \u5217\u6570\u3092\u8FD4\u3059\u3002\n        W\n    proc `[]`*[H: static\
-    \ int, W: static int, T](a: StaticMatrix[H,W,T], i,j: int): T =\n        ## \u6307\
-    \u5B9A\u4F4D\u7F6E\u306E\u8981\u7D20\u3092\u8FD4\u3059\u3002\n        assert i\
-    \ in 0..<H and j in 0..<W\n        a.values[i*W+j]\n    proc `[]`*[H: static int,\
-    \ W: static int, T](a: var StaticMatrix[H,W,T], i,j: int): var T =\n        ##\
-    \ \u6307\u5B9A\u4F4D\u7F6E\u306E\u8981\u7D20\u3092\u5909\u66F4\u53EF\u80FD\u306A\
-    \u53C2\u7167\u3067\u8FD4\u3059\u3002\n        assert i in 0..<H and j in 0..<W\n\
-    \        a.values[i*W+j]\n    proc `[]=`*[H: static int, W: static int, T](a:\
-    \ var StaticMatrix[H,W,T], i,j: int, value: T) =\n        ## \u6307\u5B9A\u4F4D\
-    \u7F6E\u306E\u8981\u7D20\u3092\u66F4\u65B0\u3059\u308B\u3002\n        assert i\
-    \ in 0..<H and j in 0..<W\n        a.values[i*W+j] = value\n    proc `[]`*[H:\
-    \ static int, W: static int, T](a: StaticMatrix[H,W,T], i: int): array[W,T] =\n\
-    \        ## \u6307\u5B9A\u884C\u3092\u30B3\u30D4\u30FC\u3059\u308B\u3002O(W)\u3002\
-    \n        assert i in 0..<H\n        for j in 0..<W: result[j] = a.values[i*W+j]\n\
-    \    proc `[]=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T],\
+    .}\n        static: doAssert sizeof(T) == sizeof(uint32) and alignof(T) == alignof(uint32),\
+    \ \"\u8981\u7D20\u578B\u306E\u30B5\u30A4\u30BA\u3068\u30A2\u30E9\u30A4\u30F3\u30E1\
+    \u30F3\u30C8\u306Fuint32\u3068\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        result = T.umod\n        doAssert result > 0 and result\
+    \ < (1u32 shl 30) and (result and 1) == 1, \"\u6CD5\u306F1\u4EE5\u4E0A2^30\u672A\
+    \u6E80\u306E\u5947\u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n\n    proc checkMatrix[H: static int, W: static int, T](a: StaticMatrix[H,W,T])\
+    \ =\n        ## \u56FA\u5B9A\u9577\u306E\u5BF8\u6CD5\u3068\u4F5C\u6210\u6642\u306E\
+    \u6CD5\u3092\u691C\u67FB\u3059\u308B\u3002\n        static:\n            doAssert\
+    \ H >= 0 and W >= 0 and H <= high(cint).int and W <= high(cint).int, \"\u884C\u5217\
+    \u306E\u884C\u6570\u3068\u5217\u6570\u306F0\u4EE5\u4E0Aint32\u306E\u6700\u5927\
+    \u5024\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n            doAssert H == 0 or W <= (high(int) div sizeof(T)) div H, \"\u884C\
+    \u5217\u306E\u8A18\u61B6\u9818\u57DF\u306E\u30B5\u30A4\u30BA\u304Cint\u306E\u7BC4\
+    \u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        let modulus = fieldModulus[T]()\n\
+    \        doAssert a.modulus == 0 or a.modulus == modulus, \"\u884C\u5217\u306E\
+    \u4F5C\u6210\u5F8C\u306B\u6CD5\u3092\u5909\u66F4\u3059\u308B\u3053\u3068\u306F\
+    \u3067\u304D\u307E\u305B\u3093\"\n\n    proc buffer[T](a: openArray[T]): ptr uint32\
+    \ =\n        ## \u7A7A\u914D\u5217\u3092\u542B\u3080\u9023\u7D9A\u9818\u57DF\u306E\
+    \u5148\u982D\u3092\u8FD4\u3059\u3002\n        if a.len == 0: nil\n        else:\
+    \ cast[ptr uint32](unsafeAddr a[0])\n\n    proc initMatrix*[H: static int, W:\
+    \ static int, T](value: T = T.init(0)): StaticMatrix[H,W,T] =\n        ## H\u884C\
+    W\u5217\u306E\u56FA\u5B9A\u9577\u884C\u5217\u3092\u6307\u5B9A\u5024\u3067\u521D\
+    \u671F\u5316\u3059\u308B\u3002O(H*W)\u3002\n        checkMatrix(result)\n    \
+    \    result.modulus = fieldModulus[T]()\n        for i in 0..<H*W: result.values[i]\
+    \ = value\n\n    proc toMatrix*[H: static int, W: static int, T](rows: array[H,array[W,T]]):\
+    \ StaticMatrix[H,W,T] =\n        ## \u4E8C\u6B21\u5143\u56FA\u5B9A\u9577\u914D\
+    \u5217\u3092\u884C\u5217\u306B\u3059\u308B\u3002O(H*W)\u3002\n        checkMatrix(result)\n\
+    \        result.modulus = fieldModulus[T]()\n        for i in 0..<H:\n       \
+    \     for j in 0..<W: result.values[i*W+j] = rows[i][j]\n\n    proc h*[H: static\
+    \ int, W: static int, T](a: StaticMatrix[H,W,T]): int =\n        ## \u884C\u6570\
+    \u3092\u8FD4\u3059\u3002\n        H\n    proc w*[H: static int, W: static int,\
+    \ T](a: StaticMatrix[H,W,T]): int =\n        ## \u5217\u6570\u3092\u8FD4\u3059\
+    \u3002\n        W\n    proc `[]`*[H: static int, W: static int, T](a: StaticMatrix[H,W,T],\
+    \ i,j: int): T =\n        ## \u6307\u5B9A\u4F4D\u7F6E\u306E\u8981\u7D20\u3092\u8FD4\
+    \u3059\u3002\n        assert i in 0..<H and j in 0..<W, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: i in 0 ..< H and j in 0 ..< W\"\n        a.values[i*W+j]\n\
+    \    proc `[]`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], i,j:\
+    \ int): var T =\n        ## \u6307\u5B9A\u4F4D\u7F6E\u306E\u8981\u7D20\u3092\u5909\
+    \u66F4\u53EF\u80FD\u306A\u53C2\u7167\u3067\u8FD4\u3059\u3002\n        assert i\
+    \ in 0..<H and j in 0..<W, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : i in 0 ..< H and j in 0 ..< W\"\n        a.values[i*W+j]\n    proc `[]=`*[H:\
+    \ static int, W: static int, T](a: var StaticMatrix[H,W,T], i,j: int, value: T)\
+    \ =\n        ## \u6307\u5B9A\u4F4D\u7F6E\u306E\u8981\u7D20\u3092\u66F4\u65B0\u3059\
+    \u308B\u3002\n        assert i in 0..<H and j in 0..<W, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: i in 0 ..< H and j in 0 ..< W\"\n        a.values[i*W+j]\
+    \ = value\n    proc `[]`*[H: static int, W: static int, T](a: StaticMatrix[H,W,T],\
+    \ i: int): array[W,T] =\n        ## \u6307\u5B9A\u884C\u3092\u30B3\u30D4\u30FC\
+    \u3059\u308B\u3002O(W)\u3002\n        assert i in 0..<H, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: i in 0 ..< H\"\n        for j in 0..<W: result[j]\
+    \ = a.values[i*W+j]\n    proc `[]=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T],\
     \ i: int, row: array[W,T]) =\n        ## \u6307\u5B9A\u884C\u3092\u7F6E\u304D\u63DB\
-    \u3048\u308B\u3002O(W)\u3002\n        assert i in 0..<H\n        for j in 0..<W:\
-    \ a.values[i*W+j] = row[j]\n    proc `==`*[H: static int, W: static int, T](a,b:\
-    \ StaticMatrix[H,W,T]): bool =\n        ## \u516C\u958B\u5024\u3067\u5168\u8981\
-    \u7D20\u3092\u6BD4\u8F03\u3059\u308B\u3002O(H*W)\u3002\n        checkMatrix(a)\n\
-    \        checkMatrix(b)\n        for i in 0..<H*W:\n            if a.values[i].val\
-    \ != b.values[i].val: return false\n        true\n    proc `$`*[H: static int,\
-    \ W: static int, T](a: StaticMatrix[H,W,T]): string =\n        ## \u884C\u3092\
-    \u6539\u884C\u3067\u533A\u5207\u3063\u305F\u6587\u5B57\u5217\u306B\u3059\u308B\
-    \u3002O(H*W)\u3002\n        checkMatrix(a)\n        for i in 0..<H:\n        \
-    \    if i > 0: result.add('\\n')\n            when W > 0:\n                result.add(matrixJoinValues(cast[ptr\
+    \u3048\u308B\u3002O(W)\u3002\n        assert i in 0..<H, \"\u6307\u5B9A\u3057\u305F\
+    \u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059: i in 0 ..< H\"\n        for j in 0..<W: a.values[i*W+j]\
+    \ = row[j]\n    proc `==`*[H: static int, W: static int, T](a,b: StaticMatrix[H,W,T]):\
+    \ bool =\n        ## \u516C\u958B\u5024\u3067\u5168\u8981\u7D20\u3092\u6BD4\u8F03\
+    \u3059\u308B\u3002O(H*W)\u3002\n        checkMatrix(a)\n        checkMatrix(b)\n\
+    \        for i in 0..<H*W:\n            if a.values[i].val != b.values[i].val:\
+    \ return false\n        true\n    proc `$`*[H: static int, W: static int, T](a:\
+    \ StaticMatrix[H,W,T]): string =\n        ## \u884C\u3092\u6539\u884C\u3067\u533A\
+    \u5207\u3063\u305F\u6587\u5B57\u5217\u306B\u3059\u308B\u3002O(H*W)\u3002\n   \
+    \     checkMatrix(a)\n        for i in 0..<H:\n            if i > 0: result.add('\\\
+    n')\n            when W > 0:\n                result.add(matrixJoinValues(cast[ptr\
     \ uint32](unsafeAddr a.values[i*W]), W, fieldModulus[T](), T is MontgomeryModint,\
     \ \" \"))\n\n    proc `*`*[H: static int, W: static int, K: static int, T](a:\
     \ StaticMatrix[H,W,T], b: StaticMatrix[W,K,T]): StaticMatrix[H,K,T] =\n      \
@@ -173,35 +191,45 @@ data:
     \u7B26\u53F7\u3092\u53CD\u8EE2\u3059\u308B\u3002O(H*W)\u3002\n        a * (-T.init(1))\n\
     \    proc identity_matrix*[H: static int, W: static int, T](n: int = H): StaticMatrix[H,W,T]\
     \ =\n        ## H\xD7H\u5358\u4F4D\u884C\u5217\u3092\u8FD4\u3059\u3002O(H^2)\u3002\
-    \n        bind initMatrix\n        static: doAssert H == W\n        assert n ==\
-    \ H\n        checkMatrix(result)\n        result.modulus = fieldModulus[T]()\n\
+    \n        bind initMatrix\n        static: doAssert H == W, \"\u884C\u5217\u306F\
+    \u6B63\u65B9\u884C\u5217\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        assert n == H, \"\u6307\u5B9A\u3057\u305F\u30B5\u30A4\u30BA\
+    n\u306F\u884C\u6570H\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        checkMatrix(result)\n        result.modulus = fieldModulus[T]()\n\
     \        for i in 0..<H: result.values[i*W+i] = T.init(1)\n    proc pow*[H: static\
     \ int, W: static int, T](a: StaticMatrix[H,W,T], exponent: int): StaticMatrix[H,W,T]\
     \ =\n        ## \u4E8C\u5206\u7D2F\u4E57\u6CD5\u3067\u975E\u8CA0\u6574\u6570\u4E57\
     \u3092\u6C42\u3081\u308B\u3002\n        bind identity_matrix\n        static:\
-    \ doAssert H == W\n        doAssert exponent >= 0\n        checkMatrix(a)\n  \
-    \      result = identity_matrix[H,W,T]()\n        var base = a\n        var e\
-    \ = exponent\n        while e > 0:\n            if (e and 1) != 0: result *= base\n\
-    \            e = e shr 1\n            if e > 0: base *= base\n    proc `**`*[H:\
-    \ static int, W: static int, T](a: StaticMatrix[H,W,T], exponent: int): StaticMatrix[H,W,T]\
-    \ =\n        ## \u975E\u8CA0\u6574\u6570\u4E57\u3092\u6C42\u3081\u308B\u3002\n\
-    \        a.pow(exponent)\n\n    proc sum*[H: static int, W: static int, T](a:\
-    \ StaticMatrix[H,W,T]): T =\n        ## \u5168\u6210\u5206\u306E\u548C\u3092\u8FD4\
-    \u3059\u3002O(H*W)\u3002\n        checkMatrix(a)\n        for i in 0..<H*W: result\
-    \ += a.values[i]\n\n    type Reduction[H: static int, W: static int, E: static\
-    \ int] = object\n        values: array[H*(W+E),uint32]\n        pivots: array[min(H,W),cint]\n\
-    \        width, rank: int\n        determinant: uint32\n\n    proc reduce[H: static\
+    \ doAssert H == W, \"\u884C\u5217\u306F\u6B63\u65B9\u884C\u5217\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert exponent >= 0,\
+    \ \"exponent\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        checkMatrix(a)\n        result = identity_matrix[H,W,T]()\n\
+    \        var base = a\n        var e = exponent\n        while e > 0:\n      \
+    \      if (e and 1) != 0: result *= base\n            e = e shr 1\n          \
+    \  if e > 0: base *= base\n    proc `**`*[H: static int, W: static int, T](a:\
+    \ StaticMatrix[H,W,T], exponent: int): StaticMatrix[H,W,T] =\n        ## \u975E\
+    \u8CA0\u6574\u6570\u4E57\u3092\u6C42\u3081\u308B\u3002\n        a.pow(exponent)\n\
+    \n    proc sum*[H: static int, W: static int, T](a: StaticMatrix[H,W,T]): T =\n\
+    \        ## \u5168\u6210\u5206\u306E\u548C\u3092\u8FD4\u3059\u3002O(H*W)\u3002\
+    \n        checkMatrix(a)\n        for i in 0..<H*W: result += a.values[i]\n\n\
+    \    type Reduction[H: static int, W: static int, E: static int] = object\n  \
+    \      values: array[H*(W+E),uint32]\n        pivots: array[min(H,W),cint]\n \
+    \       width, rank: int\n        determinant: uint32\n\n    proc reduce[H: static\
     \ int, W: static int, T](a: StaticMatrix[H,W,T], height, width: int, extra: static\
     \ int, reduced: bool, rhs: ptr uint32 = nil, identity: bool = false): ref Reduction[H,W,extra]\
     \ =\n        ## \u56FA\u5B9A\u5BB9\u91CF\u306E\u4F5C\u696D\u9818\u57DF\u3092\u30D2\
     \u30FC\u30D7\u306B\u78BA\u4FDD\u3057\u3066AVX2\u3067\u6D88\u53BB\u3059\u308B\u3002\
-    \n        checkMatrix(a)\n        doAssert height in 0..H and width in 0..W\n\
-    \        static: doAssert extra >= 0 and W <= high(cint).int-extra\n        new\
-    \ result\n        let actualExtra = if identity: height else: extra\n        result.width\
-    \ = width + actualExtra\n        fieldPrepareKernel(buffer(a.values), rhs, buffer(result.values),\
-    \ height, width, actualExtra, fieldModulus[T](), T is MontgomeryModint, identity,\
-    \ W)\n        result.rank = fieldEliminateKernel(buffer(result.values), height,\
-    \ result.width, width, cast[ptr cint](buffer(result.pivots)), result.determinant,\
+    \n        checkMatrix(a)\n        doAssert height in 0..H and width in 0..W, \"\
+    \u5BFE\u8C61\u306E\u884C\u6570\u3068\u5217\u6570\u306F\u884C\u5217\u306E\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       static: doAssert extra >= 0 and W <= high(cint).int-extra, \"\u8FFD\u52A0\
+    \u5217\u6570\u306F\u975E\u8CA0\u3067\u3001\u8FFD\u52A0\u5F8C\u306E\u5217\u6570\
+    \u304Cint32\u306E\u7BC4\u56F2\u306B\u53CE\u307E\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        new result\n        let actualExtra = if identity: height\
+    \ else: extra\n        result.width = width + actualExtra\n        fieldPrepareKernel(buffer(a.values),\
+    \ rhs, buffer(result.values), height, width, actualExtra, fieldModulus[T](), T\
+    \ is MontgomeryModint, identity, W)\n        result.rank = fieldEliminateKernel(buffer(result.values),\
+    \ height, result.width, width, cast[ptr cint](buffer(result.pivots)), result.determinant,\
     \ fieldModulus[T](), reduced)\n\n    proc rank*[H: static int, W: static int,\
     \ T](a: StaticMatrix[H,W,T], height: int = H, width: int = W): int =\n       \
     \ ## \u5DE6\u4E0Aheight\xD7width\u306E\u968E\u6570\u3092AVX2\u3067\u6C42\u3081\
@@ -214,14 +242,20 @@ data:
     \   proc hafnian*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n:\
     \ int = H): T =\n        ## \u5BFE\u79F0\u306A\u5DE6\u4E0An\xD7n\u306Ehafnian\u3092\
     AVX2\u3067\u6C42\u3081\u308B\u3002O(n^2*2^(n/2))\u3002\n        checkMatrix(a)\n\
-    \        doAssert n in 0..min(H,W) and n mod 2 == 0\n        for i in 0..<n:\n\
-    \            for j in 0..<i: assert a[i,j].val == a[j,i].val\n        T.init(fieldHafnianKernel(buffer(a.values),n,fieldModulus[T](),T\
+    \        doAssert n in 0..min(H,W) and n mod 2 == 0, \"\u5BFE\u8C61\u306E\u30B5\
+    \u30A4\u30BAn\u306F\u884C\u6570\u3068\u5217\u6570\u306E\u6700\u5C0F\u5024\u4EE5\
+    \u4E0B\u306E\u975E\u8CA0\u306E\u5076\u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        for i in 0..<n:\n            for j in 0..<i:\
+    \ assert a[i,j].val == a[j,i].val, \"\u884C\u5217\u306F\u5BFE\u79F0\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        T.init(fieldHafnianKernel(buffer(a.values),n,fieldModulus[T](),T\
     \ is MontgomeryModint,W).int)\n    proc solveLinearSystem*[H: static int, W: static\
     \ int, T](a: StaticMatrix[H,W,T], b: openArray[T], height: int = H, width: int\
     \ = W): Option[LinearSystemSolution[T]] =\n        ## \u5DE6\u4E0Aheight\xD7width\u3067\
     Ax=b\u306E\u7279\u6B8A\u89E3\u3068\u6838\u306E\u57FA\u5E95\u3092\u6C42\u3081\u308B\
-    \u3002O(H*W+h*w*min(h,w)+w^2)\u3002\n        doAssert b.len == height\n      \
-    \  let r = reduce(a,height,width,1,true,buffer(b))\n        for i in r.rank..<height:\n\
+    \u3002O(H*W+h*w*min(h,w)+w^2)\u3002\n        doAssert b.len == height, \"\u53F3\
+    \u8FBA\u306E\u8981\u7D20\u6570\u306F\u5BFE\u8C61\u306E\u884C\u6570\u3068\u4E00\
+    \u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let r\
+    \ = reduce(a,height,width,1,true,buffer(b))\n        for i in r.rank..<height:\n\
     \            if r.values[i*r.width+width] != 0: return none(LinearSystemSolution[T])\n\
     \        fieldRestoreKernel(buffer(r.values),height*r.width,fieldModulus[T](),T\
     \ is MontgomeryModint)\n        var solution: LinearSystemSolution[T]\n      \
@@ -247,26 +281,26 @@ data:
     \        result.modulus = fieldModulus[T]()\n        fieldInverseAdjugateKernel(buffer(r.values),buffer(result.values),n,r.rank,cast[ptr\
     \ cint](buffer(r.pivots)),r.determinant,fieldModulus[T](),T is MontgomeryModint,true,W)\n"
   dependsOn:
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/matrix/static_matrix_avx2.nim
   requiredBy:
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
-  timestamp: '2026-09-11 02:58:09+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/matrix/static_matrix_avx2.nim

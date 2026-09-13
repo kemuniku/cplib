@@ -57,22 +57,24 @@ data:
     \u3059\u3002\u548C\u306E\u578B\u306FT\u3067\u3001\u30AA\u30FC\u30D0\u30FC\u30D5\
     \u30ED\u30FC\u306B\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n## \u4F7F\
     \u7528\u4F8B:\n##   var seg = initRangeAssignRangeMinIndex(@[3, 1, 4])\n##   seg.apply(0,\
-    \ 3, 2)\n##   assert seg.get(1, 3).index == 1\n##   var sums = initRangeAffineRangeSum(@[1,\
-    \ 2, 3])\n##   sums.apply(0, 3, (2, 1))\n##   assert sums.get(0, 3).sum == 15\n\
-    when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE:\n    const CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE*\
-    \ = 1\n    include cplib/collections/lazysegtree_static_op\n\n    type\n     \
-    \   RangeExtremum*[T] = tuple[value: T, index: int, left: int]\n        RangeSum*[T]\
-    \ = tuple[sum: T, len: int]\n        RangeAffine*[T] = tuple[a, b: T]\n\n    proc\
-    \ initRangeExtremumTreeIndex[T; isMin, isAssign: static[bool]](v: openArray[T]):\
-    \ auto =\n        ## \u6975\u5024\u3068\u6700\u5DE6\u4F4D\u7F6E\u3092\u4FDD\u6301\
-    \u3059\u308B\u9045\u5EF6\u30BB\u30B0\u6728\u3092O(N)\u3067\u69CB\u7BC9\u3057\u307E\
-    \u3059\u3002\n        proc merge(l, r: RangeExtremum[T]): RangeExtremum[T] =\n\
-    \            ## \u7A7A\u533A\u9593\u3092\u9664\u5916\u3057\u3066\u6975\u5024\u3068\
-    \u6700\u5DE6\u4F4D\u7F6E\u3092\u30DE\u30FC\u30B8\u3057\u307E\u3059\u3002O(1)\u3002\
-    \n            if l.index < 0: return r\n            if r.index < 0: return l\n\
-    \            when isMin:\n                result = if r.value < l.value: r else:\
-    \ l\n            else:\n                result = if l.value < r.value: r else:\
-    \ l\n            result.left = l.left\n        proc mapping(f: T, x: RangeExtremum[T]):\
+    \ 3, 2)\n##   assert seg.get(1, 3).index == 1, \"\u6700\u5C0F\u5024\u306E\u4F4D\
+    \u7F6E\u304C\u671F\u5F85\u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093\"\n##\
+    \   var sums = initRangeAffineRangeSum(@[1, 2, 3])\n##   sums.apply(0, 3, (2,\
+    \ 1))\n##   assert sums.get(0, 3).sum == 15, \"\u533A\u9593\u548C\u304C\u671F\u5F85\
+    \u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093\"\nwhen not declared CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE:\n\
+    \    const CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE* = 1\n    include cplib/collections/lazysegtree_static_op\n\
+    \n    type\n        RangeExtremum*[T] = tuple[value: T, index: int, left: int]\n\
+    \        RangeSum*[T] = tuple[sum: T, len: int]\n        RangeAffine*[T] = tuple[a,\
+    \ b: T]\n\n    proc initRangeExtremumTreeIndex[T; isMin, isAssign: static[bool]](v:\
+    \ openArray[T]): auto =\n        ## \u6975\u5024\u3068\u6700\u5DE6\u4F4D\u7F6E\
+    \u3092\u4FDD\u6301\u3059\u308B\u9045\u5EF6\u30BB\u30B0\u6728\u3092O(N)\u3067\u69CB\
+    \u7BC9\u3057\u307E\u3059\u3002\n        proc merge(l, r: RangeExtremum[T]): RangeExtremum[T]\
+    \ =\n            ## \u7A7A\u533A\u9593\u3092\u9664\u5916\u3057\u3066\u6975\u5024\
+    \u3068\u6700\u5DE6\u4F4D\u7F6E\u3092\u30DE\u30FC\u30B8\u3057\u307E\u3059\u3002\
+    O(1)\u3002\n            if l.index < 0: return r\n            if r.index < 0:\
+    \ return l\n            when isMin:\n                result = if r.value < l.value:\
+    \ r else: l\n            else:\n                result = if l.value < r.value:\
+    \ r else: l\n            result.left = l.left\n        proc mapping(f: T, x: RangeExtremum[T]):\
     \ RangeExtremum[T] =\n            ## \u533A\u9593\u52A0\u7B97\u307E\u305F\u306F\
     \u533A\u9593\u5909\u66F4\u3092\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002O(1)\u3002\
     \n            result = x\n            if x.index < 0: return\n            when\
@@ -168,7 +170,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree_template.nim
   requiredBy: []
-  timestamp: '2026-09-12 10:52:44+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/lazysegtree_template_test.nim

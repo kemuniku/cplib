@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/bitvector.nim
     title: cplib/collections/bitvector.nim
   _extendedRequiredBy:
@@ -27,15 +27,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/waveletmatrix_test.nim
     title: verify/AI/waveletmatrix_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/waveletmatrix_test.nim
     title: verify/collections/waveletmatrix_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/waveletmatrix_test.nim
     title: verify/collections/waveletmatrix_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -127,40 +127,62 @@ data:
     \ r-l\n\n    proc kth_largest*(self:WaveletMatrix,l,r,k:int):int=\n        ##\
     \ [l,r) \u5185\u3067\u5927\u304D\u3044\u9806\u306B k \u756A\u76EE\u306E\u5024\u3092\
     \ O(H) \u3067\u8FD4\u3059\u3002k \u306F 0-indexed\u3002\n        assert 0 <= k\
-    \ and k < r-l\n        return self.kth_smallest(l,r,r-l-1-k)\n\n    proc sum_smallest*(self:WaveletMatrix,l,r,k:int):int=\n\
+    \ and k < r-l, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\
+    \u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= k and\
+    \ k < r - l\"\n        return self.kth_smallest(l,r,r-l-1-k)\n\n    proc sum_smallest*(self:WaveletMatrix,l,r,k:int):int=\n\
     \        ## [l,r) \u5185\u306E\u5C0F\u3055\u3044\u65B9\u304B\u3089 k \u500B\u306E\
     \u7DCF\u548C\u3092 O(H) \u3067\u8FD4\u3059\u30020 <= k <= r-l\u3001\u69CB\u7BC9\
-    \u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n        assert self.with_sum\n\
-    \        assert 0 <= l and l <= r and r <= self.N\n        assert 0 <= k and k\
-    \ <= r-l\n        var l = l\n        var r = r\n        var k = k\n        var\
-    \ value = 0\n        for h in countdown(self.H-1,0,1):\n            if k == 0:\n\
-    \                return\n            let (l0,r0,l1,r1) = self.get_child(h,l,r)\n\
-    \            if k < r0-l0:\n                l = l0\n                r = r0\n \
-    \           else:\n                result += self.zero_sum[h][r] - self.zero_sum[h][l]\n\
-    \                k -= r0-l0\n                value += 1 shl h\n              \
-    \  l = l1\n                r = r1\n        result += k * value\n\n    proc sum_upperbound*(self:WaveletMatrix,l,r,x:int):int=\n\
-    \        ## [l,r) \u5185\u306E x \u4EE5\u4E0B\u306E\u8981\u7D20\u306E\u7DCF\u548C\
+    \u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n        assert self.with_sum,\
+    \ \"\u548C\u3092\u53D6\u5F97\u3059\u308B\u306B\u306Fwith_sum\u3092\u6709\u52B9\
+    \u306B\u3057\u3066\u521D\u671F\u5316\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        assert 0 <= l and l <= r and r <= self.N, \"\u6307\u5B9A\
+    \u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.N\"\
+    \n        assert 0 <= k and k <= r-l, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
+    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059: 0 <= k and k <= r - l\"\n        var l = l\n        var r = r\n\
+    \        var k = k\n        var value = 0\n        for h in countdown(self.H-1,0,1):\n\
+    \            if k == 0:\n                return\n            let (l0,r0,l1,r1)\
+    \ = self.get_child(h,l,r)\n            if k < r0-l0:\n                l = l0\n\
+    \                r = r0\n            else:\n                result += self.zero_sum[h][r]\
+    \ - self.zero_sum[h][l]\n                k -= r0-l0\n                value +=\
+    \ 1 shl h\n                l = l1\n                r = r1\n        result += k\
+    \ * value\n\n    proc sum_upperbound*(self:WaveletMatrix,l,r,x:int):int=\n   \
+    \     ## [l,r) \u5185\u306E x \u4EE5\u4E0B\u306E\u8981\u7D20\u306E\u7DCF\u548C\
     \u3092 1 \u56DE\u306E\u8D70\u67FB\u3067 O(H) \u3067\u8FD4\u3059\u3002\u69CB\u7BC9\
-    \u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n        assert self.with_sum\n\
-    \        assert 0 <= l and l <= r and r <= self.N\n        if x < 0:\n       \
-    \     return 0\n        if self.H < sizeof(int) * 8 and (x shr self.H) != 0:\n\
-    \            return self.sum_smallest(l,r,r-l)\n        var l = l\n        var\
-    \ r = r\n        for h in countdown(self.H-1,0,1):\n            if l == r:\n \
-    \               return\n            let (l0,r0,l1,r1) = self.get_child(h,l,r)\n\
-    \            if x.testBit(h):\n                result += self.zero_sum[h][r] -\
-    \ self.zero_sum[h][l]\n                l = l1\n                r = r1\n      \
-    \      else:\n                l = l0\n                r = r0\n        result +=\
-    \ (r-l) * x\n\n    proc sum_lowerbound*(self:WaveletMatrix,l,r,x:int):int=\n \
-    \       ## [l,r) \u5185\u306E x \u672A\u6E80\u306E\u8981\u7D20\u306E\u7DCF\u548C\
+    \u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n        assert self.with_sum,\
+    \ \"\u548C\u3092\u53D6\u5F97\u3059\u308B\u306B\u306Fwith_sum\u3092\u6709\u52B9\
+    \u306B\u3057\u3066\u521D\u671F\u5316\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        assert 0 <= l and l <= r and r <= self.N, \"\u6307\u5B9A\
+    \u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.N\"\
+    \n        if x < 0:\n            return 0\n        if self.H < sizeof(int) * 8\
+    \ and (x shr self.H) != 0:\n            return self.sum_smallest(l,r,r-l)\n  \
+    \      var l = l\n        var r = r\n        for h in countdown(self.H-1,0,1):\n\
+    \            if l == r:\n                return\n            let (l0,r0,l1,r1)\
+    \ = self.get_child(h,l,r)\n            if x.testBit(h):\n                result\
+    \ += self.zero_sum[h][r] - self.zero_sum[h][l]\n                l = l1\n     \
+    \           r = r1\n            else:\n                l = l0\n              \
+    \  r = r0\n        result += (r-l) * x\n\n    proc sum_lowerbound*(self:WaveletMatrix,l,r,x:int):int=\n\
+    \        ## [l,r) \u5185\u306E x \u672A\u6E80\u306E\u8981\u7D20\u306E\u7DCF\u548C\
     \u3092 1 \u56DE\u306E\u8D70\u67FB\u3067 O(H) \u3067\u8FD4\u3059\u3002\u69CB\u7BC9\
-    \u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n        assert self.with_sum\n\
-    \        assert 0 <= l and l <= r and r <= self.N\n        if x <= 0:\n      \
-    \      return 0\n        return self.sum_upperbound(l,r,x-1)\n\n    proc range_sum*(self:WaveletMatrix,l,r,low,high:int):int=\n\
-    \        ## [l,r) \u5185\u3067\u5024\u304C [low,high) \u306B\u5165\u308B\u8981\
-    \u7D20\u306E\u7DCF\u548C\u3092 O(H) \u3067\u8FD4\u3059\u3002low >= high \u306A\
-    \u3089 0\u3002\u69CB\u7BC9\u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n\
-    \        assert self.with_sum\n        assert 0 <= l and l <= r and r <= self.N\n\
-    \        if low >= high:\n            return 0\n        return self.sum_lowerbound(l,r,high)\
+    \u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n        assert self.with_sum,\
+    \ \"\u548C\u3092\u53D6\u5F97\u3059\u308B\u306B\u306Fwith_sum\u3092\u6709\u52B9\
+    \u306B\u3057\u3066\u521D\u671F\u5316\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        assert 0 <= l and l <= r and r <= self.N, \"\u6307\u5B9A\
+    \u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.N\"\
+    \n        if x <= 0:\n            return 0\n        return self.sum_upperbound(l,r,x-1)\n\
+    \n    proc range_sum*(self:WaveletMatrix,l,r,low,high:int):int=\n        ## [l,r)\
+    \ \u5185\u3067\u5024\u304C [low,high) \u306B\u5165\u308B\u8981\u7D20\u306E\u7DCF\
+    \u548C\u3092 O(H) \u3067\u8FD4\u3059\u3002low >= high \u306A\u3089 0\u3002\u69CB\
+    \u7BC9\u6642\u306B with_sum=true \u304C\u5FC5\u8981\u3002\n        assert self.with_sum,\
+    \ \"\u548C\u3092\u53D6\u5F97\u3059\u308B\u306B\u306Fwith_sum\u3092\u6709\u52B9\
+    \u306B\u3057\u3066\u521D\u671F\u5316\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        assert 0 <= l and l <= r and r <= self.N, \"\u6307\u5B9A\
+    \u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r <= self.N\"\
+    \n        if low >= high:\n            return 0\n        return self.sum_lowerbound(l,r,high)\
     \ - self.sum_lowerbound(l,r,low)\n"
   dependsOn:
   - cplib/collections/bitvector.nim
@@ -170,8 +192,8 @@ data:
   requiredBy:
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/waveletmatrix_fenwick.nim
-  timestamp: '2026-09-09 17:27:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim

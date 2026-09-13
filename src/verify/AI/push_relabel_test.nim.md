@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/push_relabel.nim
     title: cplib/graph/push_relabel.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/push_relabel.nim
     title: cplib/graph/push_relabel.nim
   _extendedRequiredBy: []
@@ -88,7 +88,7 @@ data:
   isVerificationFile: true
   path: verify/AI/push_relabel_test.nim
   requiredBy: []
-  timestamp: '2026-09-12 08:37:53+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/push_relabel_test.nim

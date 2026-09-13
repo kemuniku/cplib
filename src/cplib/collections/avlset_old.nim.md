@@ -61,11 +61,15 @@ data:
     \ var AVLSets[T], x: T): bool {.discardable.} =\n        if x notin self: return\
     \ false\n        var (_, node) = self.root.lower_bound_node(x)\n        self.root\
     \ = self.root.erase(node, node.next)\n        return true\n    proc `[]`*[T](self:\
-    \ AVLSets[T], idx: int): T =\n        assert idx < self.root.len\n        return\
+    \ AVLSets[T], idx: int): T =\n        assert idx < self.root.len, \"\u6307\u5B9A\
+    \u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: idx < self.root.len\"\n        return\
     \ self.root.get(idx).key\n    proc `[]`*[T](self: AVLSets[T], idx: BackwardsIndex):\
     \ T =\n        var idx = self.len - int(idx)\n        return self[idx]\n    proc\
     \ pop*[T](self: var AVLSets[T], idx: int = -1): T =\n        var idx = idx\n \
-    \       if idx < 0: idx = self.len + idx\n        assert idx < self.root.len\n\
+    \       if idx < 0: idx = self.len + idx\n        assert idx < self.root.len,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: idx < self.root.len\"\n\
     \        var node = self.root.get(idx)\n        result = node.key\n        self.root\
     \ = self.root.erase(node, node.next)\n    iterator items*[T](self: AVLSets[T]):\
     \ T =\n        if self.root != get_avltree_nilnode[T]():\n            var stack\
@@ -86,7 +90,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/avlset_old.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/avlset_old_test.nim

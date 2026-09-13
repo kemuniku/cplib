@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   - icon: ':warning:'
@@ -51,82 +51,82 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/polygon_test.nim
     title: verify/AI/polygon_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/contains_cgl3c_test.nim
     title: verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/contains_cgl3c_test.nim
     title: verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - icon: ':heavy_check_mark:'
@@ -135,9 +135,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -246,7 +246,7 @@ data:
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
   timestamp: '2026-09-10 07:10:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/fractions_unit_test.nim
   - verify/math/fractions_unit_test.nim

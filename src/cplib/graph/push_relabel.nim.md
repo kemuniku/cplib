@@ -9,21 +9,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/push_relabel_test.nim
     title: verify/AI/push_relabel_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/push_relabel_bipartitematching_test.nim
     title: verify/graph/push_relabel_bipartitematching_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/push_relabel_bipartitematching_test.nim
     title: verify/graph/push_relabel_bipartitematching_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/push_relabel_test.nim
     title: verify/graph/push_relabel_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/push_relabel_test.nim
     title: verify/graph/push_relabel_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -41,37 +41,44 @@ data:
     \ Cap = 0): PushRelabel[Cap] =\n        ## n\u9802\u70B9\u306E\u6700\u5927\u6D41\
     \u30B0\u30E9\u30D5\u3092\u69CB\u7BC9\u3059\u308B\u3002\u5BB9\u91CF\u578B\u306E\
     \u7701\u7565\u6642\u306Fint\u3002capacityZero\u306F\u578B\u63A8\u8AD6\u7528\u3002\
-    O(n)\u3002\n        assert n >= 0\n        result.graph = newSeq[seq[PushRelabelArc[Cap]]](n)\n\
+    O(n)\u3002\n        assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        result.graph = newSeq[seq[PushRelabelArc[Cap]]](n)\n\
     \n    proc add_edge*[Cap](g: var PushRelabel[Cap], src, dst: int, cap: Cap): int\
     \ {.discardable.} =\n        ## \u5BB9\u91CFcap\u306E\u6709\u5411\u8FBA\u3092\u8FFD\
     \u52A0\u3057\u3001\u8FBA\u756A\u53F7\u3092\u8FD4\u3059\u3002\u81EA\u5DF1\u30EB\
     \u30FC\u30D7\u30FB\u591A\u91CD\u8FBA\u3082\u53EF\u3002\u511F\u5374O(1)\u3002\n\
-    \        assert src in 0..<g.graph.len and dst in 0..<g.graph.len\n        assert\
-    \ cap >= Cap(0)\n        result = g.positions.len\n        let index = g.graph[src].len\n\
-    \        let rev = g.graph[dst].len + ord(src == dst)\n        g.positions.add((src,\
-    \ index))\n        g.graph[src].add(PushRelabelArc[Cap](dst: dst, rev: rev, cap:\
-    \ cap))\n        g.graph[dst].add(PushRelabelArc[Cap](dst: src, rev: index, cap:\
-    \ Cap(0)))\n\n    proc get_edge*[Cap](g: PushRelabel[Cap], i: int): PushRelabelEdge[Cap]\
-    \ =\n        ## i\u756A\u76EE\u306E\u8FBA\u306E\u5BB9\u91CF\u3068\u73FE\u5728\u306E\
-    \u6D41\u91CF\u3092\u8FD4\u3059\u3002O(1)\u3002\n        let (src, index) = g.positions[i]\n\
-    \        let e = g.graph[src][index]\n        let flow = g.graph[e.dst][e.rev].cap\n\
-    \        PushRelabelEdge[Cap](src: src, dst: e.dst, cap: e.cap + flow, flow: flow)\n\
-    \n    proc get_edges*[Cap](g: PushRelabel[Cap]): seq[PushRelabelEdge[Cap]] =\n\
-    \        ## \u8FFD\u52A0\u9806\u306B\u5168\u8FBA\u306E\u60C5\u5831\u3092\u8FD4\
-    \u3059\u3002O(E)\u3002\n        result = newSeqOfCap[PushRelabelEdge[Cap]](g.positions.len)\n\
-    \        for i in 0..<g.positions.len:\n            result.add(g.get_edge(i))\n\
-    \n    proc flow*[Cap](g: var PushRelabel[Cap], src, dst: int, limit: Cap = high(Cap)):\
-    \ Cap =\n        ## Highest-label Push\u2013Relabel\u6CD5\u3067limit\u4EE5\u4E0B\
-    \u306E\u8FFD\u52A0\u6D41\u91CF\u3092\u8FD4\u3059\u3002\u518D\u5B9F\u884C\u53EF\
-    \u3002\u5358\u7D14\u30B0\u30E9\u30D5\u3067O(V^2\u221AE)\u3001\u8FFD\u52A0\u9818\
-    \u57DFO(V)\u3002\n        ## \u591A\u91CD\u8FBA\u3092\u542B\u3080\u4E00\u822C\u306E\
-    \u5834\u5408\u306FO(VE+V^2\u221AE)\u3002\u8FBA\u304C\u306A\u3044\u5834\u5408\u306F\
-    O(V)\u3002\n        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and\
-    \ src != dst\n        assert limit >= Cap(0)\n        if limit == Cap(0):\n  \
-    \          return Cap(0)\n\n        # \u4EEE\u60F3\u59CB\u70B9\u304B\u3089limit\u3060\
-    \u3051\u4F9B\u7D66\u3057\u3001\u6D41\u91CF\u5236\u9650\u3068\u4F59\u5270\u6D41\
-    \u306E\u5BB9\u91CF\u578B\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3092\u9632\
-    \u3050\u3002\n        let source = g.graph.len\n        let sourceIndex = g.graph[src].len\n\
+    \        assert src in 0..<g.graph.len and dst in 0..<g.graph.len, \"\u9802\u70B9\
+    \u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059\"\n        assert cap >= Cap(0),\
+    \ \"\u8FBA\u306E\u5BB9\u91CF\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        result = g.positions.len\n        let index\
+    \ = g.graph[src].len\n        let rev = g.graph[dst].len + ord(src == dst)\n \
+    \       g.positions.add((src, index))\n        g.graph[src].add(PushRelabelArc[Cap](dst:\
+    \ dst, rev: rev, cap: cap))\n        g.graph[dst].add(PushRelabelArc[Cap](dst:\
+    \ src, rev: index, cap: Cap(0)))\n\n    proc get_edge*[Cap](g: PushRelabel[Cap],\
+    \ i: int): PushRelabelEdge[Cap] =\n        ## i\u756A\u76EE\u306E\u8FBA\u306E\u5BB9\
+    \u91CF\u3068\u73FE\u5728\u306E\u6D41\u91CF\u3092\u8FD4\u3059\u3002O(1)\u3002\n\
+    \        let (src, index) = g.positions[i]\n        let e = g.graph[src][index]\n\
+    \        let flow = g.graph[e.dst][e.rev].cap\n        PushRelabelEdge[Cap](src:\
+    \ src, dst: e.dst, cap: e.cap + flow, flow: flow)\n\n    proc get_edges*[Cap](g:\
+    \ PushRelabel[Cap]): seq[PushRelabelEdge[Cap]] =\n        ## \u8FFD\u52A0\u9806\
+    \u306B\u5168\u8FBA\u306E\u60C5\u5831\u3092\u8FD4\u3059\u3002O(E)\u3002\n     \
+    \   result = newSeqOfCap[PushRelabelEdge[Cap]](g.positions.len)\n        for i\
+    \ in 0..<g.positions.len:\n            result.add(g.get_edge(i))\n\n    proc flow*[Cap](g:\
+    \ var PushRelabel[Cap], src, dst: int, limit: Cap = high(Cap)): Cap =\n      \
+    \  ## Highest-label Push\u2013Relabel\u6CD5\u3067limit\u4EE5\u4E0B\u306E\u8FFD\
+    \u52A0\u6D41\u91CF\u3092\u8FD4\u3059\u3002\u518D\u5B9F\u884C\u53EF\u3002\u5358\
+    \u7D14\u30B0\u30E9\u30D5\u3067O(V^2\u221AE)\u3001\u8FFD\u52A0\u9818\u57DFO(V)\u3002\
+    \n        ## \u591A\u91CD\u8FBA\u3092\u542B\u3080\u4E00\u822C\u306E\u5834\u5408\
+    \u306FO(VE+V^2\u221AE)\u3002\u8FBA\u304C\u306A\u3044\u5834\u5408\u306FO(V)\u3002\
+    \n        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src !=\
+    \ dst, \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u304B\u3001\u59CB\u70B9\
+    \u3068\u7D42\u70B9\u304C\u540C\u3058\u3067\u3059\"\n        assert limit >= Cap(0),\
+    \ \"\u6D41\u91CF\u306E\u4E0A\u9650\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        if limit == Cap(0):\n            return\
+    \ Cap(0)\n\n        # \u4EEE\u60F3\u59CB\u70B9\u304B\u3089limit\u3060\u3051\u4F9B\
+    \u7D66\u3057\u3001\u6D41\u91CF\u5236\u9650\u3068\u4F59\u5270\u6D41\u306E\u5BB9\
+    \u91CF\u578B\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3092\u9632\u3050\u3002\
+    \n        let source = g.graph.len\n        let sourceIndex = g.graph[src].len\n\
     \        g.graph.add(@[PushRelabelArc[Cap](dst: src, rev: sourceIndex, cap: Cap(0))])\n\
     \        g.graph[src].add(PushRelabelArc[Cap](dst: source, rev: 0, cap: limit))\n\
     \        defer:\n            g.graph[src].setLen(sourceIndex)\n            g.graph.setLen(source)\n\
@@ -184,18 +191,18 @@ data:
     \ =\n        ## \u6B8B\u4F59\u30B0\u30E9\u30D5\u3067src\u304B\u3089\u5230\u9054\
     \u53EF\u80FD\u306A\u9802\u70B9\u3092\u8FD4\u3059\u3002\u6700\u5927\u6D41\u8A08\
     \u7B97\u5F8C\u306F\u6700\u5C0F\u30AB\u30C3\u30C8\u3002O(V+E)\u3002\n        assert\
-    \ src in 0..<g.graph.len\n        result = newSeq[bool](g.graph.len)\n       \
-    \ result[src] = true\n        var queue = @[src]\n        var head = 0\n     \
-    \   while head < queue.len:\n            let v = queue[head]\n            inc\
-    \ head\n            for e in g.graph[v]:\n                if e.cap > Cap(0) and\
-    \ not result[e.dst]:\n                    result[e.dst] = true\n             \
-    \       queue.add(e.dst)\n"
+    \ src in 0..<g.graph.len, \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\
+    \u3059\"\n        result = newSeq[bool](g.graph.len)\n        result[src] = true\n\
+    \        var queue = @[src]\n        var head = 0\n        while head < queue.len:\n\
+    \            let v = queue[head]\n            inc head\n            for e in g.graph[v]:\n\
+    \                if e.cap > Cap(0) and not result[e.dst]:\n                  \
+    \  result[e.dst] = true\n                    queue.add(e.dst)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/graph/push_relabel.nim
   requiredBy: []
-  timestamp: '2026-09-12 08:37:53+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/push_relabel_test.nim
   - verify/graph/push_relabel_test.nim

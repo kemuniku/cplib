@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
   _extendedRequiredBy:
@@ -27,15 +27,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/primitive_root_test.nim
     title: verify/AI/primitive_root_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -46,10 +46,11 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_POWMOD:\n    const CPLIB_MATH_POWMOD* = 1\n\
     \    import cplib/math/inner_math\n    proc powmod*(a, n, m: int): int =\n   \
-    \     assert m != 0\n        if m == 1:\n            return 0\n        var\n \
-    \           rev = 1\n            a = a\n            n = n\n        while n > 0:\n\
-    \            if n mod 2 != 0: rev = mul(rev, a, m)\n            if n > 1: a =\
-    \ mul(a, a, m)\n            n = n shr 1\n        return rev\n"
+    \     assert m != 0, \"\u6CD5m\u306F0\u4EE5\u5916\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        if m == 1:\n            return 0\n \
+    \       var\n            rev = 1\n            a = a\n            n = n\n     \
+    \   while n > 0:\n            if n mod 2 != 0: rev = mul(rev, a, m)\n        \
+    \    if n > 1: a = mul(a, a, m)\n            n = n shr 1\n        return rev\n"
   dependsOn:
   - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
@@ -58,8 +59,8 @@ data:
   requiredBy:
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
-  timestamp: '2024-11-07 17:54:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim

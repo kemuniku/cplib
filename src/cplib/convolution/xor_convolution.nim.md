@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/xor_convolution_test.nim
     title: verify/AI/xor_convolution_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/xor_convolution_test.nim
     title: verify/convolution/xor_convolution_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/xor_convolution_test.nim
     title: verify/convolution/xor_convolution_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -35,16 +35,17 @@ data:
     \        var u = u;var v = v;\n        FastHadamardTransForm(u)\n        FastHadamardTransForm(v)\n\
     \        for i in 0..<len(u):\n            u[i] *= v[i]\n        FastHadamardTransForm(u)\n\
     \        when T is int:\n            var k = (len(u)-1).fastLog2() + 1\n     \
-    \       assert len(u) == (1 shl k)\n            for i in 0..<len(u):\n       \
-    \         u[i] = u[i] shr k\n            return u\n        else:\n           \
-    \ var inv = T(1)/T(len(u))\n            for i in 0..<len(u):\n               \
-    \ u[i] *= inv\n            return u\n"
+    \       assert len(u) == (1 shl k), \"\u914D\u5217\u306E\u9577\u3055\u306F2^k\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n            for i in\
+    \ 0..<len(u):\n                u[i] = u[i] shr k\n            return u\n     \
+    \   else:\n            var inv = T(1)/T(len(u))\n            for i in 0..<len(u):\n\
+    \                u[i] *= inv\n            return u\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/convolution/xor_convolution.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:12:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/convolution/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim

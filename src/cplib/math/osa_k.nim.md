@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy:
@@ -39,9 +39,12 @@ data:
     \        if table[i] == 0:\n                for j in countup(i,maxn,i):\n    \
     \                table[j] = i\n        return PrimeFactorTable(table:table)\n\n\
     \    proc primefactor*(table:PrimeFactorTable,x:int):seq[int]=\n        assert\
-    \ len(table.table) > x\n        assert x >= 1\n        var x = x\n        while\
-    \ x != 1:\n            result.add(table.table[x])\n            x = x div table.table[x]\n\
-    \        result.reverse()\n    \n    proc primefactor_table*(table:PrimeFactorTable,x:int):Table[int,int]=\n\
+    \ len(table.table) > x, \"x\u306F\u7BE9\u306E\u30C6\u30FC\u30D6\u30EB\u306E\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       assert x >= 1, \"x\u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        var x = x\n        while x != 1:\n       \
+    \     result.add(table.table[x])\n            x = x div table.table[x]\n     \
+    \   result.reverse()\n    \n    proc primefactor_table*(table:PrimeFactorTable,x:int):Table[int,int]=\n\
     \        for p in primefactor(table,x):\n            if p in result:\n       \
     \         result[p] += 1\n            else:\n                result[p] = 1\n \
     \   \n    proc primefactor_tuple*(table:PrimeFactorTable,x:int):seq[(int,int)]=\n\
@@ -54,7 +57,7 @@ data:
   requiredBy:
   - verify/math/osa_k_test_.nim
   - verify/math/osa_k_test_.nim
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/osa_k_test.nim

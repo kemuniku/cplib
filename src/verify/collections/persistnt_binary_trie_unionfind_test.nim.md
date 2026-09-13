@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/persistent_binary_trie.nim
     title: cplib/collections/persistent_binary_trie.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/persistent_binary_trie.nim
     title: cplib/collections/persistent_binary_trie.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/persistent_unionfind
     links:
@@ -51,8 +51,8 @@ data:
   isVerificationFile: true
   path: verify/collections/persistnt_binary_trie_unionfind_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:23:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/persistnt_binary_trie_unionfind_test.nim
 layout: document

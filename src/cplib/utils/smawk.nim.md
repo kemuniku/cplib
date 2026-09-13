@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
   _extendedVerifiedWith:
@@ -15,33 +15,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/min_plus_convolution_test.nim
     title: verify/AI/min_plus_convolution_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
     title: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
     title: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
     title: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_convex_convex_test.nim
     title: verify/convolution/min_plus_convolution_convex_convex_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/min_plus_convolution_convex_convex_test.nim
     title: verify/convolution/min_plus_convolution_convex_convex_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -57,36 +57,38 @@ data:
     \ better(row, oldCol, newCol) \u306F\u65B0\u3057\u3044\u5217\u304C\u771F\u306B\
     \u5C0F\u3055\u3044\u3068\u304D true\u3002\n        ## \u540C\u5024\u306A\u3089\
     \u5DE6\u7AEF\u3092\u8FD4\u3059\u3002\u5E45\u304C 0 \u306A\u3089\u5404\u884C\u306B\
-    \ -1 \u3092\u8FD4\u3059\u3002\n        assert height >= 0 and width >= 0\n   \
-    \     var answer = newSeq[int](height)\n        for r in 0..<height: answer[r]\
-    \ = -1\n        if height == 0 or width == 0: return answer\n        proc solve(rows,\
-    \ columns: seq[int]) =\n            ## \u5217\u524A\u6E1B\u3068\u5947\u6570\u884C\
-    \u3078\u306E\u518D\u5E30\u3067\u884C\u6700\u5C0F\u5024\u3092\u6C42\u3081\u308B\
-    \u3002\n            if rows.len == 0: return\n            var reduced = newSeqOfCap[int](min(rows.len,\
-    \ columns.len))\n            for c in columns:\n                while reduced.len\
-    \ > 0 and better(rows[reduced.len - 1], reduced[^1], c):\n                   \
-    \ reduced.setLen(reduced.len - 1)\n                if reduced.len < rows.len:\
-    \ reduced.add(c)\n            var odd = newSeqOfCap[int](rows.len div 2)\n   \
-    \         var i = 1\n            while i < rows.len:\n                odd.add(rows[i])\n\
-    \                i += 2\n            solve(odd, reduced)\n            var left\
-    \ = 0\n            i = 0\n            while i < rows.len:\n                var\
-    \ right = reduced.len - 1\n                if i + 1 < rows.len:\n            \
-    \        right = left\n                    while reduced[right] != answer[rows[i\
-    \ + 1]]: inc right\n                var best = left\n                for j in\
-    \ left + 1..right:\n                    if better(rows[i], reduced[best], reduced[j]):\
-    \ best = j\n                answer[rows[i]] = reduced[best]\n                left\
-    \ = right\n                i += 2\n        var rows = newSeq[int](height)\n  \
-    \      var columns = newSeq[int](width)\n        for i in 0..<height: rows[i]\
-    \ = i\n        for i in 0..<width: columns[i] = i\n        solve(rows, columns)\n\
-    \        return answer\n"
+    \ -1 \u3092\u8FD4\u3059\u3002\n        assert height >= 0 and width >= 0, \"\u9AD8\
+    \u3055\u3068\u5E45\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        var answer = newSeq[int](height)\n        for r\
+    \ in 0..<height: answer[r] = -1\n        if height == 0 or width == 0: return\
+    \ answer\n        proc solve(rows, columns: seq[int]) =\n            ## \u5217\
+    \u524A\u6E1B\u3068\u5947\u6570\u884C\u3078\u306E\u518D\u5E30\u3067\u884C\u6700\
+    \u5C0F\u5024\u3092\u6C42\u3081\u308B\u3002\n            if rows.len == 0: return\n\
+    \            var reduced = newSeqOfCap[int](min(rows.len, columns.len))\n    \
+    \        for c in columns:\n                while reduced.len > 0 and better(rows[reduced.len\
+    \ - 1], reduced[^1], c):\n                    reduced.setLen(reduced.len - 1)\n\
+    \                if reduced.len < rows.len: reduced.add(c)\n            var odd\
+    \ = newSeqOfCap[int](rows.len div 2)\n            var i = 1\n            while\
+    \ i < rows.len:\n                odd.add(rows[i])\n                i += 2\n  \
+    \          solve(odd, reduced)\n            var left = 0\n            i = 0\n\
+    \            while i < rows.len:\n                var right = reduced.len - 1\n\
+    \                if i + 1 < rows.len:\n                    right = left\n    \
+    \                while reduced[right] != answer[rows[i + 1]]: inc right\n    \
+    \            var best = left\n                for j in left + 1..right:\n    \
+    \                if better(rows[i], reduced[best], reduced[j]): best = j\n   \
+    \             answer[rows[i]] = reduced[best]\n                left = right\n\
+    \                i += 2\n        var rows = newSeq[int](height)\n        var columns\
+    \ = newSeq[int](width)\n        for i in 0..<height: rows[i] = i\n        for\
+    \ i in 0..<width: columns[i] = i\n        solve(rows, columns)\n        return\
+    \ answer\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/smawk.nim
   requiredBy:
   - cplib/convolution/min_plus_convolution.nim
   - cplib/convolution/min_plus_convolution.nim
-  timestamp: '2026-09-13 11:47:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim

@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/convex_hull_trick_impl.nim
     title: cplib/collections/private/convex_hull_trick_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -75,22 +75,23 @@ data:
     \u6A19x\u3067\u306E\u6700\u5C0F\u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\u5EA7\
     \u6A19\u306E\u4E8B\u524D\u767B\u9332\u306F\u4E0D\u8981\u3002\u7A7A\u306E\u5834\
     \u5408\u306Fassert\u3002O(log N)\u3002\n        assert not self.root.isNil, \"\
-    CHT: no lines\"\n        var node = self.root\n        var best: AvlTreeNode[CHTLine]\n\
-    \        let coordinate = to_Int128(x)\n        while not node.isNil:\n      \
-    \      if node.key.start <= coordinate:\n                best = node\n       \
-    \         node = node.r\n            else:\n                node = node.l\n  \
-    \      chtAnswer(chtValue(best.key, x))\n"
+    CHT\u306B\u76F4\u7DDA\u304C\u767B\u9332\u3055\u308C\u3066\u3044\u307E\u305B\u3093\
+    \"\n        var node = self.root\n        var best: AvlTreeNode[CHTLine]\n   \
+    \     let coordinate = to_Int128(x)\n        while not node.isNil:\n         \
+    \   if node.key.start <= coordinate:\n                best = node\n          \
+    \      node = node.r\n            else:\n                node = node.l\n     \
+    \   chtAnswer(chtValue(best.key, x))\n"
   dependsOn:
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/avltreenode.nim
   - cplib/math/int128.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:33:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/convex_hull_trick_line_add_get_min_test.nim

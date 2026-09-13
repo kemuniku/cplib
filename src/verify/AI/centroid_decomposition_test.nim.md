@@ -97,13 +97,13 @@ data:
     \ 0\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/tree/centroid_decomposition.nim
-  - cplib/tree/centroid_decomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/centroid_decomposition.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/centroid_decomposition_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/centroid_decomposition_test.nim

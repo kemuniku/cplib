@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/flow_test.nim
     title: verify/AI/flow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/mincostflow_test.nim
     title: verify/graph/mincostflow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/mincostflow_test.nim
     title: verify/graph/mincostflow_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -38,15 +38,19 @@ data:
     \u7528\u6D41\u30B0\u30E9\u30D5\u3092\u69CB\u7BC9\u3059\u308B\u3002\u5BB9\u91CF\
     \u30FB\u8CBB\u7528\u578B\u306E\u7701\u7565\u6642\u306Fint\u3002O(n)\u3002\n  \
     \      ## capacityZero\u3068costZero\u306F\u578B\u63A8\u8AD6\u7528\u3002\n   \
-    \     assert n >= 0\n        result.graph = newSeq[seq[MinCostFlowArc[Cap, Cost]]](n)\n\
-    \n    proc add_edge*[Cap, Cost](g: var MinCostFlow[Cap, Cost], src, dst: int,\
-    \ cap: Cap, cost: Cost): int {.discardable.} =\n        ## \u5BB9\u91CFcap\u3001\
-    \u5358\u4F4D\u8CBB\u7528cost\u306E\u6709\u5411\u8FBA\u3092\u8FFD\u52A0\u3057\u3001\
-    \u8FBA\u756A\u53F7\u3092\u8FD4\u3059\u3002\u511F\u5374O(1)\u3002\n        assert\
-    \ src in 0..<g.graph.len and dst in 0..<g.graph.len\n        assert cap >= Cap(0)\
-    \ and cost != low(Cost)\n        result = g.positions.len\n        let index =\
-    \ g.graph[src].len\n        let rev = g.graph[dst].len + ord(src == dst)\n   \
-    \     g.positions.add((src, index))\n        g.graph[src].add(MinCostFlowArc[Cap,\
+    \     assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        result.graph = newSeq[seq[MinCostFlowArc[Cap,\
+    \ Cost]]](n)\n\n    proc add_edge*[Cap, Cost](g: var MinCostFlow[Cap, Cost], src,\
+    \ dst: int, cap: Cap, cost: Cost): int {.discardable.} =\n        ## \u5BB9\u91CF\
+    cap\u3001\u5358\u4F4D\u8CBB\u7528cost\u306E\u6709\u5411\u8FBA\u3092\u8FFD\u52A0\
+    \u3057\u3001\u8FBA\u756A\u53F7\u3092\u8FD4\u3059\u3002\u511F\u5374O(1)\u3002\n\
+    \        assert src in 0..<g.graph.len and dst in 0..<g.graph.len, \"\u9802\u70B9\
+    \u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059\"\n        assert cap >= Cap(0)\
+    \ and cost != low(Cost), \"\u5BB9\u91CF\u306F\u975E\u8CA0\u3067\u3001\u30B3\u30B9\
+    \u30C8\u306FCost\u578B\u306E\u6700\u5C0F\u5024\u3068\u7570\u306A\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        result = g.positions.len\n        let\
+    \ index = g.graph[src].len\n        let rev = g.graph[dst].len + ord(src == dst)\n\
+    \        g.positions.add((src, index))\n        g.graph[src].add(MinCostFlowArc[Cap,\
     \ Cost](dst: dst, rev: rev, cap: cap, cost: cost))\n        g.graph[dst].add(MinCostFlowArc[Cap,\
     \ Cost](dst: src, rev: index, cap: Cap(0), cost: -cost))\n\n    proc get_edge*[Cap,\
     \ Cost](g: MinCostFlow[Cap, Cost], i: int): MinCostFlowEdge[Cap, Cost] =\n   \
@@ -66,10 +70,13 @@ data:
     \u7528\u8FBA\u306B\u5BFE\u5FDC\u3059\u308B\u304C\u3001\u59CB\u70B9\u304B\u3089\
     \u5230\u9054\u53EF\u80FD\u306A\u8CA0\u9589\u8DEF\u306FValueError\u3002\u8CBB\u7528\
     \u306E\u4E2D\u9593\u5024\u306FCost\u306B\u53CE\u307E\u308B\u3053\u3068\u3002\n\
-    \        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst\n\
-    \        assert limit >= Cap(0)\n        result = @[(Cap(0), Cost(0))]\n     \
-    \   if limit == Cap(0):\n            return\n        let n = g.graph.len\n   \
-    \     var potential = newSeq[Cost](n)\n        var reached = newSeq[bool](n)\n\
+    \        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst,\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u304B\u3001\u59CB\u70B9\u3068\
+    \u7D42\u70B9\u304C\u540C\u3058\u3067\u3059\"\n        assert limit >= Cap(0),\
+    \ \"\u6D41\u91CF\u306E\u4E0A\u9650\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        result = @[(Cap(0), Cost(0))]\n    \
+    \    if limit == Cap(0):\n            return\n        let n = g.graph.len\n  \
+    \      var potential = newSeq[Cost](n)\n        var reached = newSeq[bool](n)\n\
     \        reached[src] = true\n        for phase in 0..<n:\n            var changed\
     \ = false\n            for v in 0..<n:\n                if not reached[v]:\n \
     \                   continue\n                for e in g.graph[v]:\n         \
@@ -117,8 +124,8 @@ data:
   isVerificationFile: false
   path: cplib/graph/mincostflow.nim
   requiredBy: []
-  timestamp: '2026-09-12 08:53:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/mincostflow_test.nim
   - verify/graph/mincostflow_test.nim

@@ -76,7 +76,9 @@ data:
     \            state.next[r] = j - size\n    {.pop.}\n\n    proc initSegmentedEratosthenes*(low,\
     \ high: int): EratosthenesSieve =\n        ## \u9589\u533A\u9593 [low, high] \u3092\
     \u7BE9\u3046\u30020 <= low <= high\u3002\u4FDD\u6301\u9818\u57DF\u306F\u7D04 (high-low)/30\
-    \ byte\u3002\n        doAssert low >= 0 and low <= high\n        result.first\
+    \ byte\u3002\n        doAssert low >= 0 and low <= high, \"\u7BC4\u56F2\u306E\u4E0B\
+    \u9650\u306F\u4E0A\u9650\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\uFF08\u4E0B\u9650\u306F\u975E\u8CA0\uFF09\"\n        result.first\
     \ = low\n        result.last = high\n        result.firstByte = low div 30\n \
     \       let endByte = high div 30\n        when declared(newSeqUninit):\n    \
     \        result.bits = newSeqUninit[uint8](endByte - result.firstByte + 1)\n \
@@ -149,7 +151,7 @@ data:
   isVerificationFile: false
   path: cplib/math/eratosthenes.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:34:02+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/eratosthenes_test.nim

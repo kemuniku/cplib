@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
   _extendedRequiredBy: []
@@ -35,7 +35,7 @@ data:
   isVerificationFile: false
   path: verify/collections/segtree_var/segtree_xor2_test_.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/segtree_var/segtree_xor2_test_.nim

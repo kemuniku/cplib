@@ -27,21 +27,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/k_shortest_walk_test.nim
     title: verify/AI/k_shortest_walk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf
@@ -66,12 +66,17 @@ data:
     INF\u306F\u8FD4\u3055\u308C\u308B\u30A6\u30A9\u30FC\u30AF\u9577\u3088\u308A\u5927\
     \u304D\u3044\u5024\u3092\u6307\u5B9A\u3059\u308B\u3002StaticGraph\u306F\u4E8B\u524D\
     \u306Bbuild\u3059\u308B\u3002\n        ## Eppstein\u6CD5: https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf\n\
-    \        assert 0 <= s and s < G.len and 0 <= t and t < G.len\n        assert\
-    \ k >= 0\n        if k == 0: return @[]\n        result = newSeq[T](k)\n     \
-    \   result.fill(INF)\n        let n = G.len\n        var reverse = newSeq[seq[tuple[vertex:\
-    \ int, cost: T, edge: int]]](n)\n        for u in 0..<n:\n            var edge\
-    \ = 0\n            for (v, cost) in G.to_and_cost(u):\n                assert\
-    \ cost >= T(0)\n                reverse[v].add((u, cost, edge))\n            \
+    \        assert 0 <= s and s < G.len and 0 <= t and t < G.len, \"\u6307\u5B9A\u3057\
+    \u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: 0 <= s and s < G.len and 0 <= t and t <\
+    \ G.len\"\n        assert k >= 0, \"k\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        if k == 0: return @[]\n      \
+    \  result = newSeq[T](k)\n        result.fill(INF)\n        let n = G.len\n  \
+    \      var reverse = newSeq[seq[tuple[vertex: int, cost: T, edge: int]]](n)\n\
+    \        for u in 0..<n:\n            var edge = 0\n            for (v, cost)\
+    \ in G.to_and_cost(u):\n                assert cost >= T(0), \"\u8FBA\u306E\u30B3\
+    \u30B9\u30C8\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n                reverse[v].add((u, cost, edge))\n            \
     \    inc edge\n        var\n            dist = newSeq[T](n)\n            reached\
     \ = newSeq[bool](n)\n            settled = newSeq[bool](n)\n            parent\
     \ = newSeq[int](n)\n            treeEdge = newSeq[int](n)\n            position\
@@ -163,8 +168,8 @@ data:
   isVerificationFile: false
   path: cplib/graph/k_shortest_walk.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim

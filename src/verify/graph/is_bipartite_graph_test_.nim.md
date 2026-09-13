@@ -36,14 +36,14 @@ data:
     \ 0..<(M):\n    G.add_edge(A[i]-1,B[i]-1)\nif G.is_bipartite_graph():\n    echo\
     \ \"Yes\"\nelse:\n    echo \"No\""
   dependsOn:
-  - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/bipartite_graph.nim
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/is_bipartite_graph_test_.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/is_bipartite_graph_test_.nim

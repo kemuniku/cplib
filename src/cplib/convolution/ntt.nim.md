@@ -26,22 +26,22 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution_old.nim
     title: cplib/convolution/convolution_old.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution_old.nim
     title: cplib/convolution/convolution_old.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
   _extendedVerifiedWith:
@@ -69,159 +69,159 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/ntt_test.nim
     title: verify/AI/ntt_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/division_of_polynomials_test.nim
     title: verify/fps/division_of_polynomials_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/division_of_polynomials_test.nim
     title: verify/fps/division_of_polynomials_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/exp_of_formal_power_series_test.nim
     title: verify/fps/exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/exp_of_formal_power_series_test.nim
     title: verify/fps/exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://tayu0110.hatenablog.com/entry/2023/05/06/023244
@@ -278,11 +278,13 @@ data:
     \ dynamic_ntt_config = initNttConfig(self.umod.int)\n        return dynamic_ntt_config\n\
     \n    proc ntt*[T: BarrettModint or MontgomeryModint](f: var seq[T]) =\n     \
     \   let n = f.len\n        if n <= 1: return\n        let ntt_config = get_ntt_config(T)\n\
-    \        assert(n.popcount == 1, \"len(f) must be power of two, please add zeros\"\
-    )\n        var width = n\n        while width > 1:\n            if width == 2:\n\
-    \                let offset = (width shr 1)\n                var root = T(1)\n\
-    \                for top in countup(0, n-1, width):\n                    for i\
-    \ in top..<(top+offset):\n                        let (c0, c1) = (f[i], f[i+offset]\
+    \        assert(n.popcount == 1, \"\u914D\u5217\u306E\u9577\u3055\u306F2\u306E\
+    \u51AA\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\u672B\
+    \u5C3E\u306B0\u3092\u8FFD\u52A0\u3057\u3066\u304F\u3060\u3055\u3044\")\n     \
+    \   var width = n\n        while width > 1:\n            if width == 2:\n    \
+    \            let offset = (width shr 1)\n                var root = T(1)\n   \
+    \             for top in countup(0, n-1, width):\n                    for i in\
+    \ top..<(top+offset):\n                        let (c0, c1) = (f[i], f[i+offset]\
     \ * root)\n                        f[i] = c0 + c1\n                        f[i+offset]\
     \ = c0 - c1\n                    let b = top div width\n                    root\
     \ *= ntt_config.rate2[countTrailingZeroBits(not b)]\n                width = (width\
@@ -301,36 +303,38 @@ data:
     \ b)]\n                width = (width shr 2)\n\n    proc intt*[T: BarrettModint\
     \ or MontgomeryModint](f: var seq[T]) =\n        let n = f.len\n        if n <=\
     \ 1: return\n        let ntt_config = get_ntt_config(T)\n        assert(n.popcount\
-    \ == 1, \"len(f) must be power of two, please add zeros\")\n        var width\
-    \ = (if n.countTrailingZeroBits mod 2 == 1: 2 else: 4)\n        while width <=\
-    \ n:\n            if width == 2:\n                let offset = (width shr 1)\n\
-    \                var root = T(1)\n                for top in countup(0, n-1, width):\n\
-    \                    for i in top..<(top+offset):\n                        let\
-    \ (c0, c1) = (f[i], f[i+offset])\n                        f[i] = c0 + c1\n   \
-    \                     f[i+offset] = (c0 - c1) * root\n                    let\
-    \ b = top div width\n                    root *= ntt_config.irate2[countTrailingZeroBits(not\
-    \ b)]\n            else:\n                let offset = (width shr 2)\n       \
-    \         var root = T(1)\n                for top in countup(0, n-1, width):\n\
-    \                    let root2 = root * root\n                    let root3 =\
-    \ root * root2\n                    for i in top..<(top+offset):\n           \
-    \             let (c0, c1, c2, c3) = (f[i], f[i+offset], f[i+offset*2], f[i+offset*3])\n\
-    \                        let c0c1 = c0 + c1\n                        let c0c1n\
-    \ = c0 - c1\n                        let c2c3 = c2 + c3\n                    \
-    \    let c2c3nim = (c2 - c3) * ntt_config.forth_root_inv\n                   \
-    \     f[i] = c0c1 + c2c3\n                        f[i+offset] = (c0c1n + c2c3nim)\
-    \ * root\n                        f[i+offset*2] = (c0c1 - c2c3) * root2\n    \
-    \                    f[i+offset*3] = (c0c1n - c2c3nim) * root3\n             \
-    \       let b = top div width\n                    root *= ntt_config.irate3[countTrailingZeroBits(not\
+    \ == 1, \"\u914D\u5217\u306E\u9577\u3055\u306F2\u306E\u51AA\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\u3002\u672B\u5C3E\u306B0\u3092\u8FFD\u52A0\
+    \u3057\u3066\u304F\u3060\u3055\u3044\")\n        var width = (if n.countTrailingZeroBits\
+    \ mod 2 == 1: 2 else: 4)\n        while width <= n:\n            if width == 2:\n\
+    \                let offset = (width shr 1)\n                var root = T(1)\n\
+    \                for top in countup(0, n-1, width):\n                    for i\
+    \ in top..<(top+offset):\n                        let (c0, c1) = (f[i], f[i+offset])\n\
+    \                        f[i] = c0 + c1\n                        f[i+offset] =\
+    \ (c0 - c1) * root\n                    let b = top div width\n              \
+    \      root *= ntt_config.irate2[countTrailingZeroBits(not b)]\n            else:\n\
+    \                let offset = (width shr 2)\n                var root = T(1)\n\
+    \                for top in countup(0, n-1, width):\n                    let root2\
+    \ = root * root\n                    let root3 = root * root2\n              \
+    \      for i in top..<(top+offset):\n                        let (c0, c1, c2,\
+    \ c3) = (f[i], f[i+offset], f[i+offset*2], f[i+offset*3])\n                  \
+    \      let c0c1 = c0 + c1\n                        let c0c1n = c0 - c1\n     \
+    \                   let c2c3 = c2 + c3\n                        let c2c3nim =\
+    \ (c2 - c3) * ntt_config.forth_root_inv\n                        f[i] = c0c1 +\
+    \ c2c3\n                        f[i+offset] = (c0c1n + c2c3nim) * root\n     \
+    \                   f[i+offset*2] = (c0c1 - c2c3) * root2\n                  \
+    \      f[i+offset*3] = (c0c1n - c2c3nim) * root3\n                    let b =\
+    \ top div width\n                    root *= ntt_config.irate3[countTrailingZeroBits(not\
     \ b)]\n            width = (width shl 2)\n        var ninv = T(n).inv\n      \
     \  for i in 0..<n: f[i] *= ninv\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/convolution/ntt.nim
@@ -341,8 +345,8 @@ data:
   - cplib/convolution/relaxed_convolution.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-04 10:21:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim

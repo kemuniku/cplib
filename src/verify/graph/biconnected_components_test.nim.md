@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
   - icon: ':question:'
@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/biconnected_components
     links:
@@ -47,19 +47,19 @@ data:
     \ = initBiconnectedComponents(g)\nprint decomposition.groups.len\nfor group in\
     \ decomposition.groups:\n    print(group.len, *group)\n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/lowlink.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/biconnected_components.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/biconnected_components_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/biconnected_components_test.nim
 layout: document

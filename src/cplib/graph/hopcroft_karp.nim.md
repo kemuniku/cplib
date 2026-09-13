@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/hopcroft_karp_test.nim
     title: verify/AI/hopcroft_karp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/hopcroft_karp_test.nim
     title: verify/graph/hopcroft_karp_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/hopcroft_karp_test.nim
     title: verify/graph/hopcroft_karp_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -33,40 +33,43 @@ data:
     \n    proc initHopcroftKarp*(left, right: int): HopcroftKarp =\n        ## \u5DE6\
     \u5074left\u9802\u70B9\u3001\u53F3\u5074right\u9802\u70B9\u306E\u4E8C\u90E8\u30B0\
     \u30E9\u30D5\u3092\u69CB\u7BC9\u3059\u308B\u3002O(left+right)\u3002\n        assert\
-    \ left >= 0 and right >= 0\n        result.leftMatch = newSeq[int](left)\n   \
-    \     result.rightMatch = newSeq[int](right)\n        for i in 0..<left:\n   \
-    \         result.leftMatch[i] = -1\n        for i in 0..<right:\n            result.rightMatch[i]\
-    \ = -1\n\n    proc add_edge*(g: var HopcroftKarp, left, right: int) =\n      \
-    \  ## \u5DE6\u53F3\u305D\u308C\u305E\u308C0\u59CB\u307E\u308A\u306E\u9802\u70B9\
-    \u9593\u306B\u8FBA\u3092\u8FFD\u52A0\u3059\u308B\u3002\u591A\u91CD\u8FBA\u3082\
-    \u53EF\u3002\u511F\u5374O(1)\u3002\n        assert left in 0..<g.leftMatch.len\
-    \ and right in 0..<g.rightMatch.len\n        g.edges.add((left, right))\n    \
-    \    g.built = false\n\n    proc build(g: var HopcroftKarp) =\n        ## \u5DE6\
-    \u53F3\u4E21\u65B9\u5411\u306E\u96A3\u63A5\u8FBA\u3092CSR\u5F62\u5F0F\u306B\u307E\
-    \u3068\u3081\u308B\u3002\u8FBA\u8FFD\u52A0\u5F8C\u306E\u521D\u56DE\u306E\u307F\
-    O(V+E)\u3002\n        if g.built:\n            return\n        let left = g.leftMatch.len\n\
-    \        let right = g.rightMatch.len\n        let m = g.edges.len\n        g.leftOffset\
-    \ = newSeq[int](left + 1)\n        g.rightOffset = newSeq[int](right + 1)\n  \
-    \      for (v, u) in g.edges:\n            inc g.leftOffset[v]\n            inc\
-    \ g.rightOffset[u]\n        for v in 1..<left:\n            g.leftOffset[v] +=\
-    \ g.leftOffset[v - 1]\n        for u in 1..<right:\n            g.rightOffset[u]\
-    \ += g.rightOffset[u - 1]\n        g.leftOffset[left] = m\n        g.rightOffset[right]\
-    \ = m\n        g.leftEdges = newSeq[int](m)\n        g.rightEdges = newSeq[int](m)\n\
-    \        for (v, u) in g.edges:\n            dec g.leftOffset[v]\n           \
-    \ dec g.rightOffset[u]\n            g.leftEdges[g.leftOffset[v]] = u\n       \
-    \     g.rightEdges[g.rightOffset[u]] = v\n        g.built = true\n\n    proc matching*(g:\
-    \ var HopcroftKarp, useRelabel: bool = true): int {.discardable.} =\n        ##\
-    \ \u6700\u5927\u30DE\u30C3\u30C1\u30F3\u30B0\u306E\u7DCF\u30B5\u30A4\u30BA\u3092\
-    \u8FD4\u3059\u3002\u65E2\u5B9A\u3067\u306FGlobal relabel\u524D\u51E6\u7406\u4ED8\
-    \u304D\u3002\u518D\u5B9F\u884C\u53EF\u3002O((V+E)\u221AV)\u3001\u9818\u57DFO(V+E)\u3002\
-    \n        let n = g.leftMatch.len\n        let right = g.rightMatch.len\n    \
-    \    let limit = min(n, right)\n        if g.size == limit:\n            return\
-    \ g.size\n        g.build()\n        var dist = newSeq[int](n)\n        var queue\
-    \ = newSeq[int](n)\n        if useRelabel:\n            var active = newSeq[int](right)\n\
-    \            var head = 0\n            var tail = 0\n            var count = 0\n\
-    \            for u in 0..<right:\n                if g.rightMatch[u] < 0 and g.rightOffset[u]\
-    \ < g.rightOffset[u + 1]:\n                    active[tail] = u\n            \
-    \        inc tail\n                    inc count\n            if tail == right:\n\
+    \ left >= 0 and right >= 0, \"\u5DE6\u53F3\u306E\u9802\u70B9\u6570\u306F\u975E\
+    \u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \ result.leftMatch = newSeq[int](left)\n        result.rightMatch = newSeq[int](right)\n\
+    \        for i in 0..<left:\n            result.leftMatch[i] = -1\n        for\
+    \ i in 0..<right:\n            result.rightMatch[i] = -1\n\n    proc add_edge*(g:\
+    \ var HopcroftKarp, left, right: int) =\n        ## \u5DE6\u53F3\u305D\u308C\u305E\
+    \u308C0\u59CB\u307E\u308A\u306E\u9802\u70B9\u9593\u306B\u8FBA\u3092\u8FFD\u52A0\
+    \u3059\u308B\u3002\u591A\u91CD\u8FBA\u3082\u53EF\u3002\u511F\u5374O(1)\u3002\n\
+    \        assert left in 0..<g.leftMatch.len and right in 0..<g.rightMatch.len,\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059\"\n        g.edges.add((left,\
+    \ right))\n        g.built = false\n\n    proc build(g: var HopcroftKarp) =\n\
+    \        ## \u5DE6\u53F3\u4E21\u65B9\u5411\u306E\u96A3\u63A5\u8FBA\u3092CSR\u5F62\
+    \u5F0F\u306B\u307E\u3068\u3081\u308B\u3002\u8FBA\u8FFD\u52A0\u5F8C\u306E\u521D\
+    \u56DE\u306E\u307FO(V+E)\u3002\n        if g.built:\n            return\n    \
+    \    let left = g.leftMatch.len\n        let right = g.rightMatch.len\n      \
+    \  let m = g.edges.len\n        g.leftOffset = newSeq[int](left + 1)\n       \
+    \ g.rightOffset = newSeq[int](right + 1)\n        for (v, u) in g.edges:\n   \
+    \         inc g.leftOffset[v]\n            inc g.rightOffset[u]\n        for v\
+    \ in 1..<left:\n            g.leftOffset[v] += g.leftOffset[v - 1]\n        for\
+    \ u in 1..<right:\n            g.rightOffset[u] += g.rightOffset[u - 1]\n    \
+    \    g.leftOffset[left] = m\n        g.rightOffset[right] = m\n        g.leftEdges\
+    \ = newSeq[int](m)\n        g.rightEdges = newSeq[int](m)\n        for (v, u)\
+    \ in g.edges:\n            dec g.leftOffset[v]\n            dec g.rightOffset[u]\n\
+    \            g.leftEdges[g.leftOffset[v]] = u\n            g.rightEdges[g.rightOffset[u]]\
+    \ = v\n        g.built = true\n\n    proc matching*(g: var HopcroftKarp, useRelabel:\
+    \ bool = true): int {.discardable.} =\n        ## \u6700\u5927\u30DE\u30C3\u30C1\
+    \u30F3\u30B0\u306E\u7DCF\u30B5\u30A4\u30BA\u3092\u8FD4\u3059\u3002\u65E2\u5B9A\
+    \u3067\u306FGlobal relabel\u524D\u51E6\u7406\u4ED8\u304D\u3002\u518D\u5B9F\u884C\
+    \u53EF\u3002O((V+E)\u221AV)\u3001\u9818\u57DFO(V+E)\u3002\n        let n = g.leftMatch.len\n\
+    \        let right = g.rightMatch.len\n        let limit = min(n, right)\n   \
+    \     if g.size == limit:\n            return g.size\n        g.build()\n    \
+    \    var dist = newSeq[int](n)\n        var queue = newSeq[int](n)\n        if\
+    \ useRelabel:\n            var active = newSeq[int](right)\n            var head\
+    \ = 0\n            var tail = 0\n            var count = 0\n            for u\
+    \ in 0..<right:\n                if g.rightMatch[u] < 0 and g.rightOffset[u] <\
+    \ g.rightOffset[u + 1]:\n                    active[tail] = u\n              \
+    \      inc tail\n                    inc count\n            if tail == right:\n\
     \                tail = 0\n            let period = n + right\n            let\
     \ workLimit = 16 * (n + right + g.edges.len)\n            var work = 0\n     \
     \       var steps = 0\n            while count > 0 and g.size < limit and work\
@@ -161,8 +164,8 @@ data:
   isVerificationFile: false
   path: cplib/graph/hopcroft_karp.nim
   requiredBy: []
-  timestamp: '2026-09-12 08:37:53+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/hopcroft_karp_test.nim
   - verify/graph/hopcroft_karp_test.nim

@@ -7,16 +7,16 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
   - icon: ':question:'
@@ -39,21 +39,21 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_unit_test.nim
     title: verify/matrix/matrix_product_avx2_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_unit_test.nim
     title: verify/matrix/matrix_product_avx2_unit_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -172,75 +172,98 @@ data:
     \u6C42\u3081\u308B\u3002\n        ## \u5165\u529B\u8981\u7D20\u306F 0 \u4EE5\u4E0A\
     \ modulus \u672A\u6E80\u3002AVX2\u5BFE\u5FDCCPU\u3068C++\u30D0\u30C3\u30AF\u30A8\
     \u30F3\u30C9\u304C\u5FC5\u8981\u3002\n        doAssert modulus > 0 and modulus\
-    \ < (1u32 shl 30) and\n            (modulus and 1u32) == 1, \"modulus must be\
-    \ odd and in [1, 2^30)\"\n        doAssert n >= 0 and m >= 0 and k >= 0, \"negative\
-    \ matrix dimension\"\n        doAssert n <= high(cint).int and m <= high(cint).int\
-    \ and\n            k <= high(cint).int, \"matrix dimension exceeds int32\"\n \
-    \       doAssert n == 0 or m <= high(int) div n, \"matrix size overflow\"\n  \
-    \      doAssert m == 0 or k <= high(int) div m, \"matrix size overflow\"\n   \
-    \     doAssert n == 0 or k <= high(int) div n, \"matrix size overflow\"\n    \
-    \    doAssert a.len == n * m and b.len == m * k, \"matrix size mismatch\"\n  \
-    \      for value in a:\n            assert value < modulus, \"matrix entries must\
-    \ be less than modulus\"\n        for value in b:\n            assert value <\
-    \ modulus, \"matrix entries must be less than modulus\"\n        result = newSeq[uint32](n\
-    \ * k)\n        if n == 0 or m == 0 or k == 0 or modulus == 1:\n            return\n\
-    \        matrixProductKernel(unsafeAddr a[0], unsafeAddr b[0], addr result[0],\n\
-    \            n.cint, m.cint, k.cint, modulus)\n\n    proc matrixProduct*(a, b:\
-    \ openArray[seq[uint32]],\n            modulus: uint32 = 998244353u32): seq[seq[uint32]]\
-    \ =\n        ## \u4E8C\u6B21\u5143\u914D\u5217\u306E\u884C\u5217\u7A4D\u3092\u6C42\
-    \u3081\u308B\u3002\u7A7A\u914D\u5217\u306E\u5217\u6570\u306F0\u3068\u307F\u306A\
-    \u3059\u3002\n        let n = a.len\n        let m = if n == 0: 0 else: a[0].len\n\
-    \        let k = if b.len == 0: 0 else: b[0].len\n        doAssert m == b.len,\
-    \ \"matrix size mismatch\"\n        for row in a:\n            doAssert row.len\
-    \ == m, \"ragged matrix\"\n        for row in b:\n            doAssert row.len\
-    \ == k, \"ragged matrix\"\n        doAssert n == 0 or m <= high(int) div n, \"\
-    matrix size overflow\"\n        doAssert m == 0 or k <= high(int) div m, \"matrix\
-    \ size overflow\"\n        var flatA = newSeq[uint32](n * m)\n        var flatB\
-    \ = newSeq[uint32](m * k)\n        for i in 0 ..< n:\n            if m > 0:\n\
-    \                copyMem(addr flatA[i * m], unsafeAddr a[i][0], m * sizeof(uint32))\n\
-    \        for i in 0 ..< m:\n            if k > 0:\n                copyMem(addr\
-    \ flatB[i * k], unsafeAddr b[i][0], k * sizeof(uint32))\n        let flatC = matrixProduct(flatA,\
-    \ flatB, n, m, k, modulus)\n        result = newSeq[seq[uint32]](n)\n        for\
-    \ i in 0 ..< n:\n            result[i] = newSeq[uint32](k)\n            if k >\
-    \ 0:\n                copyMem(addr result[i][0], unsafeAddr flatC[i * k], k *\
-    \ sizeof(uint32))\n\n    proc matrixProduct*[T](a, b: Matrix[T]): Matrix[T] =\n\
-    \        ## \u65E2\u5B58\u306Emodint\u884C\u5217\u3092\u516C\u958B\u5024\u3078\
-    \u5909\u63DB\u3057\u3001AVX2\u3067\u7A4D\u3092\u6C42\u3081\u308B\u3002\n     \
-    \   bind matrixProduct, initMatrix\n        when T isnot MontgomeryModint and\
-    \ T isnot BarrettModint:\n            {.error: \"matrixProduct requires MontgomeryModint\
-    \ or BarrettModint\".}\n        let n = a.h\n        let m = a.w\n        let\
-    \ k = b.w\n        doAssert m == b.h, \"matrix size mismatch\"\n        let modulus\
-    \ = T.umod.uint32\n        doAssert modulus > 0 and modulus < (1u32 shl 30) and\n\
-    \            (modulus and 1u32) == 1, \"modulus must be odd and in [1, 2^30)\"\
-    \n        doAssert n == 0 or m <= high(int) div n, \"matrix size overflow\"\n\
-    \        doAssert m == 0 or k <= high(int) div m, \"matrix size overflow\"\n \
-    \       var flatA = newSeq[uint32](n * m)\n        var flatB = newSeq[uint32](m\
-    \ * k)\n        for i in 0 ..< n:\n            doAssert a[i].len == m, \"ragged\
-    \ matrix\"\n            for j in 0 ..< m:\n                flatA[i * m + j] =\
-    \ a[i, j].val.uint32\n        for i in 0 ..< m:\n            doAssert b[i].len\
-    \ == k, \"ragged matrix\"\n            for j in 0 ..< k:\n                flatB[i\
-    \ * k + j] = b[i, j].val.uint32\n        let flatC = matrixProduct(flatA, flatB,\
-    \ n, m, k, modulus)\n        result = initMatrix(n, k, T.init(0))\n        for\
-    \ i in 0 ..< n:\n            for j in 0 ..< k:\n                result[i, j] =\
-    \ T.init(flatC[i * k + j].int)\n"
+    \ < (1u32 shl 30) and\n            (modulus and 1u32) == 1, \"\u6CD5\u306F1\u4EE5\
+    \u4E0A2^30\u672A\u6E80\u306E\u5947\u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        doAssert n >= 0 and m >= 0 and k >= 0, \"\u884C\u5217\
+    \u306E\u884C\u6570\u3068\u5217\u6570\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert n <= high(cint).int and\
+    \ m <= high(cint).int and\n            k <= high(cint).int, \"\u884C\u5217\u306E\
+    \u884C\u6570\u3068\u5217\u6570\u306Fint32\u306E\u7BC4\u56F2\u306B\u53CE\u307E\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert n == 0 or m <=\
+    \ high(int) div n, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\
+    \u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n       \
+    \ doAssert m == 0 or k <= high(int) div m, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\
+    \u304C\u8868\u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\
+    \u307E\u3059\"\n        doAssert n == 0 or k <= high(int) div n, \"\u884C\u5217\
+    \u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\
+    \u8D85\u3048\u3066\u3044\u307E\u3059\"\n        doAssert a.len == n * m and b.len\
+    \ == m * k, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\
+    \u305B\u3093\"\n        for value in a:\n            assert value < modulus, \"\
+    \u884C\u5217\u306E\u5404\u8981\u7D20\u306F\u6CD5\u672A\u6E80\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        for value in b:\n      \
+    \      assert value < modulus, \"\u884C\u5217\u306E\u5404\u8981\u7D20\u306F\u6CD5\
+    \u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       result = newSeq[uint32](n * k)\n        if n == 0 or m == 0 or k == 0\
+    \ or modulus == 1:\n            return\n        matrixProductKernel(unsafeAddr\
+    \ a[0], unsafeAddr b[0], addr result[0],\n            n.cint, m.cint, k.cint,\
+    \ modulus)\n\n    proc matrixProduct*(a, b: openArray[seq[uint32]],\n        \
+    \    modulus: uint32 = 998244353u32): seq[seq[uint32]] =\n        ## \u4E8C\u6B21\
+    \u5143\u914D\u5217\u306E\u884C\u5217\u7A4D\u3092\u6C42\u3081\u308B\u3002\u7A7A\
+    \u914D\u5217\u306E\u5217\u6570\u306F0\u3068\u307F\u306A\u3059\u3002\n        let\
+    \ n = a.len\n        let m = if n == 0: 0 else: a[0].len\n        let k = if b.len\
+    \ == 0: 0 else: b[0].len\n        doAssert m == b.len, \"\u884C\u5217\u306E\u30B5\
+    \u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\"\n        for row in a:\n\
+    \            doAssert row.len == m, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\
+    \u3055\u306F\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       for row in b:\n            doAssert row.len == k, \"\u884C\u5217\u306E\
+    \u5404\u884C\u306E\u9577\u3055\u306F\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        doAssert n == 0 or m <= high(int) div n, \"\u884C\
+    \u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\
+    \u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        doAssert m == 0 or k <=\
+    \ high(int) div m, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\
+    \u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n       \
+    \ var flatA = newSeq[uint32](n * m)\n        var flatB = newSeq[uint32](m * k)\n\
+    \        for i in 0 ..< n:\n            if m > 0:\n                copyMem(addr\
+    \ flatA[i * m], unsafeAddr a[i][0], m * sizeof(uint32))\n        for i in 0 ..<\
+    \ m:\n            if k > 0:\n                copyMem(addr flatB[i * k], unsafeAddr\
+    \ b[i][0], k * sizeof(uint32))\n        let flatC = matrixProduct(flatA, flatB,\
+    \ n, m, k, modulus)\n        result = newSeq[seq[uint32]](n)\n        for i in\
+    \ 0 ..< n:\n            result[i] = newSeq[uint32](k)\n            if k > 0:\n\
+    \                copyMem(addr result[i][0], unsafeAddr flatC[i * k], k * sizeof(uint32))\n\
+    \n    proc matrixProduct*[T](a, b: Matrix[T]): Matrix[T] =\n        ## \u65E2\u5B58\
+    \u306Emodint\u884C\u5217\u3092\u516C\u958B\u5024\u3078\u5909\u63DB\u3057\u3001\
+    AVX2\u3067\u7A4D\u3092\u6C42\u3081\u308B\u3002\n        bind matrixProduct, initMatrix\n\
+    \        when T isnot MontgomeryModint and T isnot BarrettModint:\n          \
+    \  {.error: \"matrixProduct requires MontgomeryModint or BarrettModint\".}\n \
+    \       let n = a.h\n        let m = a.w\n        let k = b.w\n        doAssert\
+    \ m == b.h, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\
+    \u305B\u3093\"\n        let modulus = T.umod.uint32\n        doAssert modulus\
+    \ > 0 and modulus < (1u32 shl 30) and\n            (modulus and 1u32) == 1, \"\
+    \u6CD5\u306F1\u4EE5\u4E0A2^30\u672A\u6E80\u306E\u5947\u6570\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert n == 0 or m <= high(int)\
+    \ div n, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\
+    \u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        doAssert m ==\
+    \ 0 or k <= high(int) div m, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\
+    \u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\
+    \"\n        var flatA = newSeq[uint32](n * m)\n        var flatB = newSeq[uint32](m\
+    \ * k)\n        for i in 0 ..< n:\n            doAssert a[i].len == m, \"\u884C\
+    \u5217\u306E\u5404\u884C\u306E\u9577\u3055\u306F\u7B49\u3057\u3044\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n            for j in 0 ..< m:\n            \
+    \    flatA[i * m + j] = a[i, j].val.uint32\n        for i in 0 ..< m:\n      \
+    \      doAssert b[i].len == k, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\u3055\
+    \u306F\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \     for j in 0 ..< k:\n                flatB[i * k + j] = b[i, j].val.uint32\n\
+    \        let flatC = matrixProduct(flatA, flatB, n, m, k, modulus)\n        result\
+    \ = initMatrix(n, k, T.init(0))\n        for i in 0 ..< n:\n            for j\
+    \ in 0 ..< k:\n                result[i, j] = T.init(flatC[i * k + j].int)\n"
   dependsOn:
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_product_avx2.nim
   requiredBy: []
-  timestamp: '2026-09-10 08:33:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/matrix/matrix_product_avx2_unit_test.nim
   - verify/matrix/matrix_product_avx2_unit_test.nim

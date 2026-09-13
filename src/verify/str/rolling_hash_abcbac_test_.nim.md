@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/rolling_hash.nim
     title: cplib/str/rolling_hash.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/rolling_hash.nim
     title: cplib/str/rolling_hash.nim
   _extendedRequiredBy: []
@@ -36,7 +36,7 @@ data:
   isVerificationFile: false
   path: verify/str/rolling_hash_abcbac_test_.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/rolling_hash_abcbac_test_.nim

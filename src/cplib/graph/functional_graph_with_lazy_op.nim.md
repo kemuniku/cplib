@@ -49,21 +49,23 @@ data:
     \u3059\u308B\u3002\n        graph : Functional_Graph\n        st_hld : ST\n  \
     \      st_cycle : ST\n        cum_cyclesize : seq[int]\n\n    proc initFunctionalGraph_with_lazy_op_impl[S,ST](\n\
     \        graph:Functional_Graph,\n        values:seq[S],\n        st_type:typedesc[ST]\n\
-    \    ):FunctionalGraph_with_lazy_op[ST]=\n        assert len(values) == len(graph.cycle_number)\n\
-    \        result = FunctionalGraph_with_lazy_op[ST](graph:graph)\n\n        # HLD\u5074\
-    \u3067\u306F\u30B5\u30A4\u30AF\u30EB\u9802\u70B9\u3092\u5358\u4F4D\u5143\u306B\
-    \u3059\u308B\u3002\u30B5\u30A4\u30AF\u30EB\u9802\u70B9\u307E\u3067\u91CD\u8907\
-    \u4FDD\u6301\u3059\u308B\u3068\u3001\n        # \u30B5\u30A4\u30AF\u30EB\u533A\
-    \u9593\u3078\u306E\u9045\u5EF6\u4F5C\u7528\u3092HLD\u5074\u3078\u9AD8\u901F\u306B\
-    \u540C\u671F\u3067\u304D\u306A\u3044\u305F\u3081\u3002\n        var hld_values\
-    \ = newSeqWith(graph.tree.N,ST.calc_e())\n        for v in 0..<len(values):\n\
-    \            if not graph.incycle(v):\n                hld_values[graph.tree.N-1-graph.tree.toSeq(v)]\
-    \ = values[v]\n        result.st_hld = ST.init(hld_values)\n\n        result.cum_cyclesize\
-    \ = newSeq[int](len(graph.cycle))\n        var cycle_values = newSeqOfCap[S](len(values))\n\
-    \        for cid,cycle in graph.cycle:\n            if cid > 0:\n            \
-    \    result.cum_cyclesize[cid] = result.cum_cyclesize[cid-1] + len(graph.cycle[cid-1])\n\
-    \            for v in cycle:\n                cycle_values.add(values[v])\n  \
-    \      result.st_cycle = ST.init(cycle_values)\n\n    proc initFunctionalGraph_with_lazy_op*[S,ST](\n\
+    \    ):FunctionalGraph_with_lazy_op[ST]=\n        assert len(values) == len(graph.cycle_number),\
+    \ \"\u5024\u306E\u914D\u5217\u306E\u9577\u3055\u306F\u9802\u70B9\u6570\u3068\u4E00\
+    \u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result\
+    \ = FunctionalGraph_with_lazy_op[ST](graph:graph)\n\n        # HLD\u5074\u3067\
+    \u306F\u30B5\u30A4\u30AF\u30EB\u9802\u70B9\u3092\u5358\u4F4D\u5143\u306B\u3059\
+    \u308B\u3002\u30B5\u30A4\u30AF\u30EB\u9802\u70B9\u307E\u3067\u91CD\u8907\u4FDD\
+    \u6301\u3059\u308B\u3068\u3001\n        # \u30B5\u30A4\u30AF\u30EB\u533A\u9593\
+    \u3078\u306E\u9045\u5EF6\u4F5C\u7528\u3092HLD\u5074\u3078\u9AD8\u901F\u306B\u540C\
+    \u671F\u3067\u304D\u306A\u3044\u305F\u3081\u3002\n        var hld_values = newSeqWith(graph.tree.N,ST.calc_e())\n\
+    \        for v in 0..<len(values):\n            if not graph.incycle(v):\n   \
+    \             hld_values[graph.tree.N-1-graph.tree.toSeq(v)] = values[v]\n   \
+    \     result.st_hld = ST.init(hld_values)\n\n        result.cum_cyclesize = newSeq[int](len(graph.cycle))\n\
+    \        var cycle_values = newSeqOfCap[S](len(values))\n        for cid,cycle\
+    \ in graph.cycle:\n            if cid > 0:\n                result.cum_cyclesize[cid]\
+    \ = result.cum_cyclesize[cid-1] + len(graph.cycle[cid-1])\n            for v in\
+    \ cycle:\n                cycle_values.add(values[v])\n        result.st_cycle\
+    \ = ST.init(cycle_values)\n\n    proc initFunctionalGraph_with_lazy_op*[S,ST](\n\
     \        source:Functional_Graph,\n        values:seq[S],\n        st_type:typedesc[ST]\n\
     \    ):FunctionalGraph_with_lazy_op[ST]=\n        ## \u660E\u793A\u3057\u305F\
     ACL LazySegTree\u578BST\u3092\u4F7F\u3063\u3066\u69CB\u7BC9\u3059\u308B\u3002\
@@ -101,28 +103,35 @@ data:
     \        return self.cum_cyclesize[self.graph.cycle_number[v]] + self.graph.cycle_idx[v]\n\
     \n    proc get*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int):ST.S=\n     \
     \   ## \u9802\u70B9x\u306E\u73FE\u5728\u5024\u3092\u8FD4\u3059\u3002O(log N)\n\
-    \        assert 0 <= x and x < len(self.graph.cycle_number)\n        if self.graph.incycle(x):\n\
-    \            return self.st_cycle[self.lazyCycleIndex(x)]\n        return self.st_hld[self.lazyHldIndex(x)]\n\
-    \n    proc `[]`*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int):ST.S=\n    \
-    \    return self.get(x)\n\n    proc set*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int,value:ST.S)=\n\
+    \        assert 0 <= x and x < len(self.graph.cycle_number), \"\u9802\u70B9\u756A\
+    \u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= x and x < len(self.graph.cycle_number)\"\
+    \n        if self.graph.incycle(x):\n            return self.st_cycle[self.lazyCycleIndex(x)]\n\
+    \        return self.st_hld[self.lazyHldIndex(x)]\n\n    proc `[]`*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int):ST.S=\n\
+    \        return self.get(x)\n\n    proc set*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int,value:ST.S)=\n\
     \        ## \u9802\u70B9x\u306E\u5024\u3092value\u306B\u5909\u66F4\u3059\u308B\
-    \u3002O(log N)\n        assert 0 <= x and x < len(self.graph.cycle_number)\n \
-    \       if self.graph.incycle(x):\n            self.st_cycle[self.lazyCycleIndex(x)]\
+    \u3002O(log N)\n        assert 0 <= x and x < len(self.graph.cycle_number), \"\
+    \u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= x and x < len(self.graph.cycle_number)\"\
+    \n        if self.graph.incycle(x):\n            self.st_cycle[self.lazyCycleIndex(x)]\
     \ = value\n        else:\n            self.st_hld[self.lazyHldIndex(x)] = value\n\
     \n    proc `[]=`*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int,value:ST.S)=\n\
     \        self.set(x,value)\n\n    proc lazyActionPower[ST](self:FunctionalGraph_with_lazy_op[ST],f:ST.F,n:int):ST.F=\n\
-    \        assert n >= 0\n        result = self.st_hld.calc_id()\n        var base\
-    \ = f\n        var n = n\n        while n > 0:\n            if (n and 1) == 1:\n\
-    \                result = self.st_hld.calc_composition(base,result)\n        \
-    \    n = n shr 1\n            if n > 0:\n                base = self.st_hld.calc_composition(base,base)\n\
+    \        assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        result = self.st_hld.calc_id()\n        var\
+    \ base = f\n        var n = n\n        while n > 0:\n            if (n and 1)\
+    \ == 1:\n                result = self.st_hld.calc_composition(base,result)\n\
+    \            n = n shr 1\n            if n > 0:\n                base = self.st_hld.calc_composition(base,base)\n\
     \n    proc applyCyclePrefix[ST](\n        self:FunctionalGraph_with_lazy_op[ST],\n\
     \        cid,start,count:int,\n        f:ST.F\n    )=\n        ## cycle[cid]\u306E\
     start\u304B\u3089\u9077\u79FB\u9806\u306Bcount\u9802\u70B9\u3078\u4F5C\u7528\u3059\
     \u308B\u3002count\u306F1\u5468\u4EE5\u4E0B\u3002\n        let csiz = len(self.graph.cycle[cid])\n\
-    \        assert 0 <= start and start < csiz\n        assert 0 <= count and count\
-    \ <= csiz\n        if count == 0:\n            return\n        let offset = self.cum_cyclesize[cid]\n\
-    \        let first = min(count,csiz-start)\n        self.st_cycle.apply((offset+start)..<(offset+start+first),f)\n\
-    \        if first < count:\n            self.st_cycle.apply(offset..<(offset+count-first),f)\n\
+    \        assert 0 <= start and start < csiz, \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\
+    \u56F2\u5916\u3067\u3059: 0 <= start and start < csiz\"\n        assert 0 <= count\
+    \ and count <= csiz, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <=\
+    \ count and count <= csiz\"\n        if count == 0:\n            return\n    \
+    \    let offset = self.cum_cyclesize[cid]\n        let first = min(count,csiz-start)\n\
+    \        self.st_cycle.apply((offset+start)..<(offset+start+first),f)\n      \
+    \  if first < count:\n            self.st_cycle.apply(offset..<(offset+count-first),f)\n\
     \n    proc apply*[ST](self:FunctionalGraph_with_lazy_op[ST],start,k:int,f:ST.F,include_start:bool=true)=\n\
     \        ## start\u304B\u3089k\u56DE\u79FB\u52D5\u3059\u308B\u307E\u3067\u306B\
     \u8A2A\u308C\u308B\u5404\u9802\u70B9\u3078f\u3092\u4F5C\u7528\u3055\u305B\u308B\
@@ -130,9 +139,12 @@ data:
     \u305F\u5834\u5408\u306F\u3001\u305D\u306E\u56DE\u6570\u3060\u3051f\u3092\u4F5C\
     \u7528\u3055\u305B\u308B\u3002\n        ## include_start=false\u306A\u3089\u59CB\
     \u70B9\u306B\u306F\u4F5C\u7528\u3055\u305B\u306A\u3044\u3002O(log^2 N + log k)\n\
-    \        assert 0 <= start and start < len(self.graph.cycle_number)\n        assert\
-    \ 0 <= k and k < high(int)\n        if not include_start:\n            if k ==\
-    \ 0:\n                return\n            self.apply(self.graph.movekth(start,1),k-1,f)\n\
+    \        assert 0 <= start and start < len(self.graph.cycle_number), \"\u9802\u70B9\
+    \u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= start and start < len(self.graph.cycle_number)\"\
+    \n        assert 0 <= k and k < high(int), \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: 0 <= k and k < high(int)\"\n        if not include_start:\n\
+    \            if k == 0:\n                return\n            self.apply(self.graph.movekth(start,1),k-1,f)\n\
     \            return\n\n        let d = self.graph.depth(start)\n        if k <\
     \ d:\n            let last = self.graph.movekth(start,k)\n            for (l,r)\
     \ in self.graph.tree.path(last,start,true,true):\n                self.st_hld.apply(l..<r,f)\n\
@@ -165,13 +177,17 @@ data:
     \        ## start\u304B\u3089k\u56DE\u79FB\u52D5\u3059\u308B\u307E\u3067\u306E\
     \u7A4D\u3002include_start=false\u306A\u3089\u59CB\u70B9\u3092\u7A4D\u306B\u542B\
     \u3081\u306A\u3044\u3002\n        ## O(log^2 N + log k)\n        assert 0 <= start\
-    \ and start < len(self.graph.cycle_number)\n        assert 0 <= k and k < high(int)\n\
-    \        if not include_start:\n            if k == 0:\n                return\
-    \ self.st_hld.calc_e()\n            return self.prod(self.graph.movekth(start,1),k-1)\n\
-    \n        result = self.st_hld.calc_e()\n        let root = self.graph.roots[start]\n\
-    \        var tree_root = root\n        var ends_in_tree = false\n        if self.graph.depth(start)\
-    \ > k:\n            tree_root = self.graph.movekth(start,k)\n            ends_in_tree\
-    \ = true\n        for (l,r) in self.graph.tree.path(tree_root,start,ends_in_tree,true):\n\
+    \ and start < len(self.graph.cycle_number), \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\
+    \u56F2\u5916\u3067\u3059: 0 <= start and start < len(self.graph.cycle_number)\"\
+    \n        assert 0 <= k and k < high(int), \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: 0 <= k and k < high(int)\"\n        if not include_start:\n\
+    \            if k == 0:\n                return self.st_hld.calc_e()\n       \
+    \     return self.prod(self.graph.movekth(start,1),k-1)\n\n        result = self.st_hld.calc_e()\n\
+    \        let root = self.graph.roots[start]\n        var tree_root = root\n  \
+    \      var ends_in_tree = false\n        if self.graph.depth(start) > k:\n   \
+    \         tree_root = self.graph.movekth(start,k)\n            ends_in_tree =\
+    \ true\n        for (l,r) in self.graph.tree.path(tree_root,start,ends_in_tree,true):\n\
     \            result = self.st_hld.calc_op(result,self.st_hld.prod(l..<r))\n  \
     \      if ends_in_tree:\n            return\n\n        let cid = self.graph.cycle_number[root]\n\
     \        let csiz = len(self.graph.cycle[cid])\n        let offset = self.cum_cyclesize[cid]\n\
@@ -199,14 +215,20 @@ data:
     \ ST,q_left,q_right:int,values:var seq[ST.S])=\n        ## st[q_left..<q_right]\u306E\
     \u8449\u3092\u5DE6\u304B\u3089values\u3078\u8FFD\u52A0\u3059\u308B\u3002O(log\
     \ N + \u51FA\u529B\u9577)\n        assert 0 <= q_left and q_left <= q_right and\
-    \ q_right <= st.len\n        if q_left < q_right:\n            st.appendLazyRangeDfs(1,0,st.size,q_left,q_right,values)\n\
+    \ q_right <= st.len, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : 0 <= q_left and q_left <= q_right and q_right <= st.len\"\n        if q_left\
+    \ < q_right:\n            st.appendLazyRangeDfs(1,0,st.size,q_left,q_right,values)\n\
     \n    proc walkValues[ST](self:FunctionalGraph_with_lazy_op[ST],start,count:int):seq[ST.S]=\n\
     \        ## start\u304B\u3089\u59CB\u307E\u308B\u8A2A\u554F\u5217\u306E\u5148\u982D\
     count\u9802\u70B9\u5206\u306E\u5024\u3092\u8FD4\u3059\u3002\n        ## O(log^2\
-    \ N + count)\n        assert 0 <= start and start < len(self.graph.cycle_number)\n\
-    \        assert count >= 0\n        result = newSeqOfCap[ST.S](count)\n      \
-    \  if count == 0:\n            return\n\n        let tree_count = min(count,self.graph.depth(start))\n\
-    \        if tree_count > 0:\n            let last = self.graph.movekth(start,tree_count-1)\n\
+    \ N + count)\n        assert 0 <= start and start < len(self.graph.cycle_number),\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= start and\
+    \ start < len(self.graph.cycle_number)\"\n        assert count >= 0, \"count\u306F\
+    \u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       result = newSeqOfCap[ST.S](count)\n        if count == 0:\n          \
+    \  return\n\n        let tree_count = min(count,self.graph.depth(start))\n   \
+    \     if tree_count > 0:\n            let last = self.graph.movekth(start,tree_count-1)\n\
     \            for (l,r) in self.graph.tree.path(last,start,true,true):\n      \
     \          self.st_hld.appendLazyRange(l,r,result)\n\n        let cycle_count\
     \ = count-tree_count\n        if cycle_count == 0:\n            return\n     \
@@ -221,18 +243,26 @@ data:
     \ )\n        for i in 0..<cycle_count:\n            result.add(one_cycle[i mod\
     \ len(one_cycle)])\n\n    proc prod_range*[ST](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,include_start:bool=true):seq[ST.S]=\n\
     \        ## @[prod(start,l), ..., prod(start,r-1)]\u3092\u8FD4\u3059\u3002\n \
-    \       ## O(log^2 N + log l + (r-l))\n        assert 0 <= start and start < len(self.graph.cycle_number)\n\
-    \        assert 0 <= l and l <= r and r < high(int)\n        result = newSeq[ST.S](r-l)\n\
+    \       ## O(log^2 N + log l + (r-l))\n        assert 0 <= start and start < len(self.graph.cycle_number),\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= start and\
+    \ start < len(self.graph.cycle_number)\"\n        assert 0 <= l and l <= r and\
+    \ r < high(int), \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : 0 <= l and l <= r and r < high(int)\"\n        result = newSeq[ST.S](r-l)\n\
     \        if len(result) == 0:\n            return\n\n        result[0] = self.prod(start,l,include_start)\n\
     \        if len(result) == 1:\n            return\n\n        let values = self.walkValues(self.graph.movekth(start,l+1),len(result)-1)\n\
     \        for i,value in values:\n            result[i+1] = self.st_hld.calc_op(result[i],value)\n\
     \n    proc prod_range_fold*[ST,U](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,f:proc(x:U,y:ST.S):U,e:U,include_start:bool=true):U=\n\
     \        ## prod(start,l), ..., prod(start,r-1)\u3092\u9806\u306Bf\u3067\u7573\
     \u307F\u8FBC\u3080\u3002\n        ## O(log^2 N + log l + (r-l))\n        assert\
-    \ 0 <= start and start < len(self.graph.cycle_number)\n        assert 0 <= l and\
-    \ l <= r and r < high(int)\n        if l == r:\n            return e\n\n     \
-    \   var prefix_prod = self.prod(start,l,include_start)\n        result = f(e,prefix_prod)\n\
-    \        if l+1 == r:\n            return\n\n        let values = self.walkValues(self.graph.movekth(start,l+1),r-l-1)\n\
+    \ 0 <= start and start < len(self.graph.cycle_number), \"\u9802\u70B9\u756A\u53F7\
+    \u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= start and start < len(self.graph.cycle_number)\"\
+    \n        assert 0 <= l and l <= r and r < high(int), \"\u6307\u5B9A\u3057\u305F\
+    \u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and r < high(int)\"\n\
+    \        if l == r:\n            return e\n\n        var prefix_prod = self.prod(start,l,include_start)\n\
+    \        result = f(e,prefix_prod)\n        if l+1 == r:\n            return\n\
+    \n        let values = self.walkValues(self.graph.movekth(start,l+1),r-l-1)\n\
     \        for value in values:\n            prefix_prod = self.st_hld.calc_op(prefix_prod,value)\n\
     \            result = f(result,prefix_prod)\n\n    proc move_while*[ST](\n   \
     \     self:FunctionalGraph_with_lazy_op[ST],\n        f:proc(x:ST.S):bool,\n \
@@ -243,20 +273,24 @@ data:
     \u308A\u3001\u4E00\u5EA6false\u306B\u306A\u3063\u305F\u5F8C\u306F\u9802\u70B9\u3092\
     \u8FFD\u52A0\u3057\u3066\u3082false\u306E\u307E\u307E\u3001\n        ## \u3068\
     \u3044\u3046ACL max_right\u3068\u540C\u3058\u5358\u8ABF\u6027\u3092\u4EEE\u5B9A\
-    \u3059\u308B\u3002\n        assert 0 <= x and x < len(self.graph.cycle_number)\n\
-    \        assert 0 <= L and L < high(int)\n        let limit = L+1\n        var\
-    \ value = self.get(x)\n        if not f(value):\n            return 0\n      \
-    \  var used = 1\n        if used == limit:\n            return L\n\n        let\
-    \ root = self.graph.roots[x]\n        # \u30B5\u30A4\u30AF\u30EB\u5165\u53E3\u306F\
-    cycle\u5074\u306E\u6B63\u672C\u3067\u51E6\u7406\u3059\u308B\u305F\u3081\u3001\
-    HLD path\u304B\u3089\u9664\u5916\u3059\u308B\u3002\n        let tree_path = self.graph.tree.path(root,x,false,true)\n\
-    \        var first_segment = true\n        for (l,r) in tree_path:\n         \
-    \   let nl = l+int(first_segment) # x\u306F\u51E6\u7406\u6E08\u307F\n        \
-    \    first_segment = false\n            let nr = nl+min(r-nl,limit-used)\n   \
-    \         if nl < nr:\n                let max_right = self.st_hld.max_right(nl,proc(v:ST.S):bool=\n\
-    \                    f(self.st_hld.calc_op(value,v))\n                )\n    \
-    \            if max_right < nr:\n                    used += max_right-nl\n  \
-    \                  return used\n                value = self.st_hld.calc_op(value,self.st_hld.prod(nl..<nr))\n\
+    \u3059\u308B\u3002\n        assert 0 <= x and x < len(self.graph.cycle_number),\
+    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= x and x\
+    \ < len(self.graph.cycle_number)\"\n        assert 0 <= L and L < high(int), \"\
+    \u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= L and L < high(int)\"\
+    \n        let limit = L+1\n        var value = self.get(x)\n        if not f(value):\n\
+    \            return 0\n        var used = 1\n        if used == limit:\n     \
+    \       return L\n\n        let root = self.graph.roots[x]\n        # \u30B5\u30A4\
+    \u30AF\u30EB\u5165\u53E3\u306Fcycle\u5074\u306E\u6B63\u672C\u3067\u51E6\u7406\u3059\
+    \u308B\u305F\u3081\u3001HLD path\u304B\u3089\u9664\u5916\u3059\u308B\u3002\n \
+    \       let tree_path = self.graph.tree.path(root,x,false,true)\n        var first_segment\
+    \ = true\n        for (l,r) in tree_path:\n            let nl = l+int(first_segment)\
+    \ # x\u306F\u51E6\u7406\u6E08\u307F\n            first_segment = false\n     \
+    \       let nr = nl+min(r-nl,limit-used)\n            if nl < nr:\n          \
+    \      let max_right = self.st_hld.max_right(nl,proc(v:ST.S):bool=\n         \
+    \           f(self.st_hld.calc_op(value,v))\n                )\n             \
+    \   if max_right < nr:\n                    used += max_right-nl\n           \
+    \         return used\n                value = self.st_hld.calc_op(value,self.st_hld.prod(nl..<nr))\n\
     \                used += nr-nl\n            if used == limit:\n              \
     \  return L\n\n        let cid = self.graph.cycle_number[root]\n        let csiz\
     \ = len(self.graph.cycle[cid])\n        let offset = self.cum_cyclesize[cid]\n\
@@ -286,16 +320,16 @@ data:
     \ used\n        rest -= first\n        if rest > 0 and not consumeCycle(0,rest):\n\
     \            return used\n        return used-1\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_lazy_op.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim

@@ -95,14 +95,17 @@ data:
     \                nxt[].r[].p = nxt\n                nxt.update()\n           \
     \     result = nxtp.rebalanceToRoot()\n        x[].l = nil\n        x[].r = nil\n\
     \        x[].p = nil\n        x.update()\n\n    proc getNode[T](node: AvlTreeNode[T],\
-    \ idx: int): AvlTreeNode[T] =\n        assert idx >= 0\n        if idx >= node.length:\
-    \ return nil\n        result = node\n        var idx = idx\n        while result[].l.length\
-    \ != idx:\n            if result[].l.length < idx:\n                idx -= result[].l.length\
-    \ + 1\n                assert not result[].r.isNil\n                result = result[].r\n\
-    \            else:\n                result = result[].l\n\n    proc len*[T](self:\
-    \ AVLSets[T]): int =\n        self.root.length\n\n    proc lowerBound*[T](self:\
-    \ AVLSets[T], x: T): int =\n        let (_, qr) = self.root.lowerBoundNode(x)\n\
-    \        if qr.isNil: return self.len\n        return qr.index\n\n    proc index*[T](self:\
+    \ idx: int): AvlTreeNode[T] =\n        assert idx >= 0, \"idx\u306F\u975E\u8CA0\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if idx\
+    \ >= node.length: return nil\n        result = node\n        var idx = idx\n \
+    \       while result[].l.length != idx:\n            if result[].l.length < idx:\n\
+    \                idx -= result[].l.length + 1\n                assert not result[].r.isNil,\
+    \ \"\u53F3\u306E\u5B50\u30CE\u30FC\u30C9\u304C\u5B58\u5728\u3059\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n                result = result[].r\n      \
+    \      else:\n                result = result[].l\n\n    proc len*[T](self: AVLSets[T]):\
+    \ int =\n        self.root.length\n\n    proc lowerBound*[T](self: AVLSets[T],\
+    \ x: T): int =\n        let (_, qr) = self.root.lowerBoundNode(x)\n        if\
+    \ qr.isNil: return self.len\n        return qr.index\n\n    proc index*[T](self:\
     \ AVLSets[T], x: T): int =\n        self.lowerBound(x)\n\n    proc upperBound*[T](self:\
     \ AVLSets[T], x: T): int =\n        let (_, qr) = self.root.upperBoundNode(x)\n\
     \        if qr.isNil: return self.len\n        return qr.index\n\n    proc index_right*[T](self:\
@@ -128,12 +131,16 @@ data:
     \   let (_, node) = self.root.lowerBoundNode(x)\n        if node.isNil or node[].key\
     \ != x: return false\n        self.root = self.root.eraseNode(node, node.nextNode())\n\
     \        return true\n\n    proc `[]`*[T](self: AVLSets[T], idx: int): T =\n \
-    \       assert idx >= 0 and idx < self.len\n        return self.root.getNode(idx)[].key\n\
+    \       assert idx >= 0 and idx < self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: idx >= 0 and idx < self.len\"\n        return self.root.getNode(idx)[].key\n\
     \n    proc `[]`*[T](self: AVLSets[T], idx: BackwardsIndex): T =\n        self[self.len\
     \ - int(idx)]\n\n    proc pop*[T](self: var AVLSets[T], idx: int = -1): T =\n\
     \        var idx = idx\n        if idx < 0: idx = self.len + idx\n        assert\
-    \ idx >= 0 and idx < self.len\n        let node = self.root.getNode(idx)\n   \
-    \     result = node[].key\n        self.root = self.root.eraseNode(node, node.nextNode())\n\
+    \ idx >= 0 and idx < self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\
+    \u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059: idx >= 0 and idx < self.len\"\n        let node = self.root.getNode(idx)\n\
+    \        result = node[].key\n        self.root = self.root.eraseNode(node, node.nextNode())\n\
     \n    iterator items*[T](self: AVLSets[T]): T =\n        if not self.root.isNil:\n\
     \            var stack = @[(0, self.root)]\n            while stack.len > 0:\n\
     \                let (t, node) = stack.pop()\n                if t == 0:\n   \
@@ -152,7 +159,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/raw_ptr_avlset.nim
   requiredBy: []
-  timestamp: '2026-07-07 20:32:53+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/raw_ptr_avlset.nim

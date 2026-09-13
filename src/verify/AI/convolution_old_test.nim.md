@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution_old.nim
     title: cplib/convolution/convolution_old.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/convolution_old.nim
     title: cplib/convolution/convolution_old.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
   - icon: ':question:'
@@ -91,23 +91,23 @@ data:
     '
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution_old.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/ntt.nim
   - cplib/convolution/convolution_old.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/convolution_old.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/ntt.nim
   isVerificationFile: true
   path: verify/AI/convolution_old_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/convolution_old_test.nim

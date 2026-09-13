@@ -31,10 +31,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/convex_hull_trick_impl.nim
     title: cplib/collections/private/convex_hull_trick_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -120,22 +120,22 @@ data:
     \       discard hull.get_min(1)\n        discard hull.get_min(0)\n\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/convex_hull_trick_monotone_slope.nim
+  - cplib/collections/convex_hull_trick_monotone_slope.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick_monotone.nim
-  - cplib/collections/convex_hull_trick_monotone_slope.nim
   - cplib/collections/avltreenode.nim
   - cplib/math/int128.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/convex_hull_trick_monotone_slope.nim
+  - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick_monotone.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:33:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/convex_hull_trick_test.nim

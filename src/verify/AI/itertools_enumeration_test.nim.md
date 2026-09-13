@@ -194,15 +194,15 @@ data:
     \ order == toSeq(0..<100)\n        break\n"
   dependsOn:
   - cplib/tree/prufer.nim
+  - cplib/utils/itertools.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/itertools.nim
+  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/utils/itertools.nim
-  - cplib/utils/itertools.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/itertools_enumeration_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/itertools_enumeration_test.nim

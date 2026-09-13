@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/convolution/min_plus_convolution.nim
     title: cplib/convolution/min_plus_convolution.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/monotone_minima.nim
     title: cplib/utils/monotone_minima.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/monotone_minima.nim
     title: cplib/utils/monotone_minima.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/smawk.nim
     title: cplib/utils/smawk.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/smawk.nim
     title: cplib/utils/smawk.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/min_plus_convolution_concave_arbitrary
     links:
@@ -57,16 +57,16 @@ data:
     '
   dependsOn:
   - cplib/utils/monotone_minima.nim
-  - cplib/convolution/min_plus_convolution.nim
   - cplib/utils/smawk.nim
+  - cplib/utils/smawk.nim
+  - cplib/convolution/min_plus_convolution.nim
   - cplib/convolution/min_plus_convolution.nim
   - cplib/utils/monotone_minima.nim
-  - cplib/utils/smawk.nim
   isVerificationFile: true
   path: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:02:32+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
 layout: document

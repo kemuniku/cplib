@@ -9,9 +9,9 @@ data:
     title: cplib/collections/segtree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
@@ -37,8 +37,8 @@ data:
   isVerificationFile: true
   path: verify/collections/segtree/segtree_PSRC_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_PSRC_test.nim
 layout: document

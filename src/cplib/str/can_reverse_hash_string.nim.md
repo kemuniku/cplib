@@ -9,51 +9,51 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/can_reverse_hash_string_test.nim
     title: verify/AI/can_reverse_hash_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -90,9 +90,12 @@ data:
     \    else:\n            return pows[n]\n\n    proc base_inv_pow(n: int): uint\
     \ =\n        if n >= len(invpows):\n            return inner_pow(inv_hashstring_base,\
     \ n)\n        else:\n            return invpows[n]\n\n    proc tohash*(S: int):\
-    \ HashString =\n        assert S >= 0\n        assert S < int(RH_MOD)\n      \
-    \  var us = uint(S)\n        result = HashString(hash: us mod RH_MOD, rhash: us\
-    \ mod RH_MOD, bpow: hashstring_base, size: 1)\n\n    proc tohash*[T](S: openArray[T]):\
+    \ HashString =\n        assert S >= 0, \"S\u306F\u975E\u8CA0\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        assert S < int(RH_MOD),\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: S < int(RH_MOD)\"\n  \
+    \      var us = uint(S)\n        result = HashString(hash: us mod RH_MOD, rhash:\
+    \ us mod RH_MOD, bpow: hashstring_base, size: 1)\n\n    proc tohash*[T](S: openArray[T]):\
     \ HashString =\n        var hash = 0u\n        var rhash = 0u\n        var tmp\
     \ = 1u\n        for i in countdown(len(S)-1, 0, 1):\n            hash = (hash+mul(int(S[i]).tohash.hash,\
     \ tmp)).calc_mod\n            rhash = (rhash+mul(int(S[len(S)-1-i]).tohash.hash,\
@@ -133,15 +136,22 @@ data:
     \u3066\u3044\u308B\u3053\u3068\u306B\u6CE8\u610F\u3002\n        # \u7A7A\u6587\
     \u5B57\u5217\u306Fl=0,r=0\u306E\u307F\u8A31\u5BB9\u3057\u3066\u3044\u308B\u3002\
     \n        assert (l == 0 and r == 0) or\n            (l in 0..<R.size and r in\
-    \ 1..R.size and l < r)\n        result.R = R\n        result.l = l\n        result.r\
-    \ = r\n\n    proc `[]`*(R: RollingHashBase, slice: HSlice[int, int]): RollingHash\
-    \ =\n        assert slice.a >= 0 and slice.b >= 0\n        return R.get_substring(slice.a,\
+    \ 1..R.size and l < r), \"\u90E8\u5206\u6587\u5B57\u5217\u306E\u7BC4\u56F2\u306F\
+    0 <= l < r <= R.size\u304B\u3001\u7A7A\u6587\u5B57\u5217\u3092\u8868\u3059l ==\
+    \ r == 0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n     \
+    \   result.R = R\n        result.l = l\n        result.r = r\n\n    proc `[]`*(R:\
+    \ RollingHashBase, slice: HSlice[int, int]): RollingHash =\n        assert slice.a\
+    \ >= 0 and slice.b >= 0, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\
+    \u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059: slice.a >= 0 and slice.b >= 0\"\n        return R.get_substring(slice.a,\
     \ slice.b+1)\n\n\n    proc `[]`*(S: RollingHash, slice: HSlice[int, int]): RollingHash\
     \ =\n        if len(slice) == 0:\n            return S.R.get_substring(0, 0)\n\
-    \        assert slice.a in 0..<len(S) and slice.b in 0..<len(S)\n        return\
-    \ S.R.get_substring(S.l+slice.a, S.l+slice.b+1)\n\n    proc gethash(S: RollingHash,\
-    \ slice: HSlice[int, int]): uint =\n        return (S.R.prefixs[(S.l+slice.b+1)]\
-    \ + (RH_MOD - mul(S.R.prefixs[S.l+slice.a], base_pow(((S.l+slice.b+1)-(S.l+slice.a)))).calc_mod)).calc_mod\n\
+    \        assert slice.a in 0..<len(S) and slice.b in 0..<len(S), \"\u6307\u5B9A\
+    \u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: slice.a in 0 ..< len(S) and\
+    \ slice.b in 0 ..< len(S)\"\n        return S.R.get_substring(S.l+slice.a, S.l+slice.b+1)\n\
+    \n    proc gethash(S: RollingHash, slice: HSlice[int, int]): uint =\n        return\
+    \ (S.R.prefixs[(S.l+slice.b+1)] + (RH_MOD - mul(S.R.prefixs[S.l+slice.a], base_pow(((S.l+slice.b+1)-(S.l+slice.a)))).calc_mod)).calc_mod\n\
     \n\n    proc `[]`*(S: RollingHash, idx: int): char =\n        return S.R.S[idx+int(S.l)]\n\
     \n    proc initRollingHash*(S: openArray[char]): RollingHash =\n        var rolling\
     \ = RollingHashBase()\n        rolling.S = newString(len(S))\n        for i in\
@@ -178,8 +188,8 @@ data:
   isVerificationFile: false
   path: cplib/str/can_reverse_hash_string.nim
   requiredBy: []
-  timestamp: '2026-09-08 05:46:27+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/get_palindromes_test.nim
   - verify/str/get_palindromes_test.nim

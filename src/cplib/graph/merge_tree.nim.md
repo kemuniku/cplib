@@ -70,37 +70,43 @@ data:
     \u308B\n        ## \u5148\u8AAD\u307F\u3067\u4E0E\u3048\u305F\u9806\u756A\u306B\
     unite\u3057\u3066\u304F\u3060\u3055\u3044\n        assert (self.v[self.alr_query][0]\
     \ == u or self.v[self.alr_query][0] == v) and (self.v[self.alr_query][1] == v\
-    \ or self.v[self.alr_query][1] == u)\n        self.uf.unite(u,v)\n        self.now[self.uf.root(u)]\
-    \ = self.N+self.alr_query\n        self.alr_query += 1\n\n    proc get_id*(self:var\
-    \ MergeTree,x:int):int=\n        ## x\u304C\u73FE\u5728\u306E\u72B6\u614B\u3067\
-    \u3069\u3053\u306E\u9802\u70B9\u3067\u8868\u3055\u308C\u308B\u96C6\u5408\u306B\
-    \u5C5E\u3057\u3066\u3044\u308B\u304B\u3092\u8FD4\u3059\n        return self.now[self.uf.root(x)]\n\
-    \n    proc get_range*(self:var MergeTree,x:int):HSlice[int,int]=\n        ## \u3042\
-    \u308B\u96C6\u5408\u306B\u3064\u3044\u3066\u3001\u305D\u308C\u306B\u5C5E\u3057\
-    \u3066\u3044\u308B\u9802\u70B9\u3092\u533A\u9593\u3067\u8FD4\u3059\n        return\
-    \ (self.ein[self.now[self.uf.root(x)]]..<self.eout[self.now[self.uf.root(x)]])\n\
+    \ or self.v[self.alr_query][1] == u), \"\u5148\u8AAD\u307F\u3067\u767B\u9332\u3057\
+    \u305F\u9806\u756A\u3069\u304A\u308A\u306E\u9802\u70B9\u5BFE\u3092\u4F75\u5408\
+    \u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        self.uf.unite(u,v)\n\
+    \        self.now[self.uf.root(u)] = self.N+self.alr_query\n        self.alr_query\
+    \ += 1\n\n    proc get_id*(self:var MergeTree,x:int):int=\n        ## x\u304C\u73FE\
+    \u5728\u306E\u72B6\u614B\u3067\u3069\u3053\u306E\u9802\u70B9\u3067\u8868\u3055\
+    \u308C\u308B\u96C6\u5408\u306B\u5C5E\u3057\u3066\u3044\u308B\u304B\u3092\u8FD4\
+    \u3059\n        return self.now[self.uf.root(x)]\n\n    proc get_range*(self:var\
+    \ MergeTree,x:int):HSlice[int,int]=\n        ## \u3042\u308B\u96C6\u5408\u306B\
+    \u3064\u3044\u3066\u3001\u305D\u308C\u306B\u5C5E\u3057\u3066\u3044\u308B\u9802\
+    \u70B9\u3092\u533A\u9593\u3067\u8FD4\u3059\n        return (self.ein[self.now[self.uf.root(x)]]..<self.eout[self.now[self.uf.root(x)]])\n\
     \n    proc make_seq*[T](self:var MergeTree,v:seq[T]):seq[T]=\n        ## \u30AA\
     \u30A4\u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u306B\u914D\u5217\u3092\u4E26\u3073\
-    \u66FF\u3048\u308B\n        assert len(v) == self.N\n        result = newseq[T](len(v))\n\
-    \        for i in 0..<self.N:\n            result[self.ret[i]] = v[i]\n\n    proc\
+    \u66FF\u3048\u308B\n        assert len(v) == self.N, \"\u5024\u306E\u914D\u5217\
+    \u306E\u9577\u3055\u306F\u9802\u70B9\u6570\u3068\u4E00\u81F4\u3059\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = newseq[T](len(v))\n \
+    \       for i in 0..<self.N:\n            result[self.ret[i]] = v[i]\n\n    proc\
     \ restore_seq*[T](self:var MergeTree,v:seq[T]):seq[T]=\n        ## \u30AA\u30A4\
     \u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u306B\u306A\u3063\u3066\u3044\u308B\u914D\
-    \u5217\u3092\u3082\u3068\u306B\u623B\u3059\n        assert len(v) == self.N\n\
-    \        result = newseq[T](len(v))\n        for i in 0..<self.N:\n          \
-    \  result[self.et[i]] = v[i]\n\n    proc index*(self:var MergeTree,x:int):int=\n\
-    \        ## \u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u3067x\u306F\u4F55\
-    \u756A\u76EE\u304B\u3092\u8FD4\u3059\n        self.ret[x]\n"
+    \u5217\u3092\u3082\u3068\u306B\u623B\u3059\n        assert len(v) == self.N, \"\
+    \u5024\u306E\u914D\u5217\u306E\u9577\u3055\u306F\u9802\u70B9\u6570\u3068\u4E00\
+    \u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result\
+    \ = newseq[T](len(v))\n        for i in 0..<self.N:\n            result[self.et[i]]\
+    \ = v[i]\n\n    proc index*(self:var MergeTree,x:int):int=\n        ## \u30AA\u30A4\
+    \u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u3067x\u306F\u4F55\u756A\u76EE\u304B\u3092\
+    \u8FD4\u3059\n        self.ret[x]\n"
   dependsOn:
   - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy:
   - verify/graph/merge_tree_test_.nim
   - verify/graph/merge_tree_test_.nim
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/merge_tree_test.nim

@@ -32,10 +32,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':question:'
@@ -129,10 +129,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_top_tree_test.nim
     title: verify/AI/static_top_tree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
   - icon: ':x:'
@@ -203,18 +203,22 @@ data:
     \ root: int): HeavyLightDecomposition =\n        ## \u6839\u4ED8\u304D\u6728\u306E\
     \u89AA\u914D\u5217\u304B\u3089HLD\u3092\u69CB\u7BC9\u3059\u308B\u3002parent[root]\u306F\
     \u53C2\u7167\u3057\u306A\u3044\u3002O(N)\n        let n = len(parent)\n      \
-    \  assert 0 <= root and root < n\n        var hld = HeavyLightDecomposition(N:n)\n\
+    \  assert 0 <= root and root < n, \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\
+    \u5916\u3067\u3059: 0 <= root and root < n\"\n        var hld = HeavyLightDecomposition(N:n)\n\
     \        hld.P = @parent\n        hld.P[root] = -1\n\n        # \u89AA\u304B\u3089\
     \u5B50\u3092\u5217\u6319\u3059\u308B\u305F\u3081\u306E\u9023\u7D50\u30EA\u30B9\
     \u30C8\u3002\n        var head = newSeqWith(n,-1)\n        var next = newSeqWith(n,-1)\n\
     \        for v in 0..<n:\n            if v != root:\n                assert 0\
-    \ <= hld.P[v] and hld.P[v] < n\n                next[v] = head[hld.P[v]]\n   \
-    \             head[hld.P[v]] = v\n\n        # \u89AA\u304C\u5FC5\u305A\u5B50\u3088\
-    \u308A\u5148\u306B\u73FE\u308C\u308B\u9806\u5E8F\u3002\n        hld.I = newSeq[int](n)\n\
-    \        hld.I[0] = root\n        var iI = 1\n        for i in 0..<n:\n      \
-    \      var v = head[hld.I[i]]\n            while v != -1:\n                hld.I[iI]\
-    \ = v\n                iI += 1\n                v = next[v]\n        assert iI\
-    \ == n\n\n        var size = newSeqWith(n,1)\n        var heavy = newSeqWith(n,-1)\n\
+    \ <= hld.P[v] and hld.P[v] < n, \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\
+    \u3067\u3059: 0 <= hld.P[v] and hld.P[v] < n\"\n                next[v] = head[hld.P[v]]\n\
+    \                head[hld.P[v]] = v\n\n        # \u89AA\u304C\u5FC5\u305A\u5B50\
+    \u3088\u308A\u5148\u306B\u73FE\u308C\u308B\u9806\u5E8F\u3002\n        hld.I =\
+    \ newSeq[int](n)\n        hld.I[0] = root\n        var iI = 1\n        for i in\
+    \ 0..<n:\n            var v = head[hld.I[i]]\n            while v != -1:\n   \
+    \             hld.I[iI] = v\n                iI += 1\n                v = next[v]\n\
+    \        assert iI == n, \"\u6307\u5B9A\u3057\u305F\u6839\u304B\u3089\u5168\u9802\
+    \u70B9\u306B\u5230\u9054\u3067\u304D\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n\n        var size = newSeqWith(n,1)\n        var heavy = newSeqWith(n,-1)\n\
     \        for i in countdown(n-1,1):\n            let v = hld.I[i]\n          \
     \  let p = hld.P[v]\n            size[p] += size[v]\n            if heavy[p] ==\
     \ -1 or size[heavy[p]] < size[v]:\n                heavy[p] = v\n\n        hld.PP\
@@ -285,7 +289,9 @@ data:
     \u4E26\u3079\u66FF\u3048\u3066\u8FD4\u3059\u3002\u6642\u9593\u30FB\u8FFD\u52A0\
     \u7A7A\u9593O(N)\n        ## values\u306E\u9577\u3055\u306F\u9802\u70B9\u6570\u3068\
     \u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u3001result[hld.toSeq(i)] = values[i]\u3068\
-    \u306A\u308B\u3002\n        assert values.len == hld.N\n        result = newSeq[T](hld.N)\n\
+    \u306A\u308B\u3002\n        assert values.len == hld.N, \"\u5024\u306E\u914D\u5217\
+    \u306E\u9577\u3055\u306F\u6728\u306E\u9802\u70B9\u6570\u3068\u4E00\u81F4\u3059\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = newSeq[T](hld.N)\n\
     \        for i, value in values:\n            result[hld.toSeq(i)] = value\n \
     \   proc toVtx*(hld: HeavyLightDecomposition, seqidx: int): int =\n        ##\
     \ HLD\u9806\u306E\u914D\u5217\u6DFB\u5B57seqidx\u306B\u5BFE\u5FDC\u3059\u308B\u9802\
@@ -449,7 +455,7 @@ data:
   - cplib/graph/namori_forest.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
   - icon: ':question:'
@@ -48,13 +48,13 @@ data:
     \ == 0\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/general_matching.nim
-  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/general_matching_tree_union_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 13:39:58+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/general_matching_tree_union_test.nim

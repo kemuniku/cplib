@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/persistent_binary_trie_test.nim
     title: verify/collections/persistent_binary_trie_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/persistnt_binary_trie_unionfind_test.nim
     title: verify/collections/persistnt_binary_trie_unionfind_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/persistnt_binary_trie_unionfind_test.nim
     title: verify/collections/persistnt_binary_trie_unionfind_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -50,18 +50,26 @@ data:
     \                now = now.one\n\n    proc excl*(self:PersistentBinaryTrie,x:Natural,v:int=1):PersistentBinaryTrie=\n\
     \        var now = PersistentBinaryTrieNode(zero:self.root.zero,one:self.root.one,value:self.root.value-v)\n\
     \        result.root = now\n        result.h = self.h\n        assert now.value\
-    \ >= 0\n        for i in countdown(self.h-1,0,1):\n            if (x and (1 shl\
-    \ i)) == 0:\n                assert not now.zero.isNil()\n                now.zero\
-    \ = PersistentBinaryTrieNode(zero:now.zero.zero,one:now.zero.one,value:now.zero.value-v)\n\
+    \ >= 0, \"\u8981\u7D20\u306E\u500B\u6570\u304C\u8CA0\u306B\u306A\u3063\u3066\u3044\
+    \u307E\u3059\u3002\u5B58\u5728\u3057\u306A\u3044\u8981\u7D20\u306F\u524A\u9664\
+    \u3067\u304D\u307E\u305B\u3093\"\n        for i in countdown(self.h-1,0,1):\n\
+    \            if (x and (1 shl i)) == 0:\n                assert not now.zero.isNil(),\
+    \ \"\u524A\u9664\u5BFE\u8C61\u306E\u5024\u306B\u5BFE\u5FDC\u3059\u308B0\u5074\u306E\
+    \u30CE\u30FC\u30C9\u304C\u5B58\u5728\u3057\u307E\u305B\u3093\"\n             \
+    \   now.zero = PersistentBinaryTrieNode(zero:now.zero.zero,one:now.zero.one,value:now.zero.value-v)\n\
     \                now = now.zero\n            else:\n                assert not\
-    \ now.one.isNil()\n                now.one = PersistentBinaryTrieNode(zero:now.one.zero,one:now.one.one,value:now.one.value-v)\n\
-    \                now = now.one\n            assert now.value >= 0\n    \n    proc\
-    \ count*(self:PersistentBinaryTrie,x:Natural):int=\n        var now = self.root\n\
-    \        for i in countdown(self.h-1,0,1):\n            if (x and (1 shl i)) ==\
-    \ 0:\n                if now.zero.isNil():\n                    return 0\n   \
-    \             now = now.zero\n            else:\n                if now.one.isNil():\n\
-    \                    return 0\n                now = now.one\n        return now.value\n\
-    \n    proc set_value*(self:PersistentBinaryTrie,x:Natural,v:int):PersistentBinaryTrie=\n\
+    \ now.one.isNil(), \"\u524A\u9664\u5BFE\u8C61\u306E\u5024\u306B\u5BFE\u5FDC\u3059\
+    \u308B1\u5074\u306E\u30CE\u30FC\u30C9\u304C\u5B58\u5728\u3057\u307E\u305B\u3093\
+    \"\n                now.one = PersistentBinaryTrieNode(zero:now.one.zero,one:now.one.one,value:now.one.value-v)\n\
+    \                now = now.one\n            assert now.value >= 0, \"\u8981\u7D20\
+    \u306E\u500B\u6570\u304C\u8CA0\u306B\u306A\u3063\u3066\u3044\u307E\u3059\u3002\
+    \u5B58\u5728\u3057\u306A\u3044\u8981\u7D20\u306F\u524A\u9664\u3067\u304D\u307E\
+    \u305B\u3093\"\n    \n    proc count*(self:PersistentBinaryTrie,x:Natural):int=\n\
+    \        var now = self.root\n        for i in countdown(self.h-1,0,1):\n    \
+    \        if (x and (1 shl i)) == 0:\n                if now.zero.isNil():\n  \
+    \                  return 0\n                now = now.zero\n            else:\n\
+    \                if now.one.isNil():\n                    return 0\n         \
+    \       now = now.one\n        return now.value\n\n    proc set_value*(self:PersistentBinaryTrie,x:Natural,v:int):PersistentBinaryTrie=\n\
     \        var cnt = self.count(x)\n        return self.incl(x,v-cnt)\n\n    proc\
     \ contains*(self:PersistentBinaryTrie,x:Natural):bool=\n        return self.count(x)\
     \ != 0\n\n    proc get_kth*(self:PersistentBinaryTrie,k:Natural,xor_value:int=0):int=\n\
@@ -107,8 +115,8 @@ data:
   isVerificationFile: false
   path: cplib/collections/persistent_binary_trie.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:23:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/collections/persistnt_binary_trie_unionfind_test.nim
   - verify/collections/persistnt_binary_trie_unionfind_test.nim

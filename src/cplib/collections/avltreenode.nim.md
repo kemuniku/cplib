@@ -271,17 +271,19 @@ data:
     \ node.l\n            while not node.r.isNil: node = node.r\n            return\
     \ node\n        while not node.p.isNil and node.p.l == node: node = node.p\n \
     \       return node.p\n    proc get*[K](node: AvlTreeNode[K], idx: int): AvlTreeNode[K]\
-    \ =\n        assert idx >= 0\n        if idx >= node.len: return nil\n       \
-    \ result = node\n        var idx = idx\n        while (result.l.isNil and idx\
-    \ != 0) or (not result.l.isNil and result.l.len != idx):\n            if result.l.isNil\
+    \ =\n        assert idx >= 0, \"idx\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        if idx >= node.len: return nil\n   \
+    \     result = node\n        var idx = idx\n        while (result.l.isNil and\
+    \ idx != 0) or (not result.l.isNil and result.l.len != idx):\n            if result.l.isNil\
     \ or result.l.len < idx:\n                idx -= (if result.l.isNil: 1 else: result.l.len\
-    \ + 1)\n                assert(not result.r.isNil)\n                result = result.r\n\
-    \            else:\n                result = result.l\n    proc index*[K](node:\
-    \ AvlTreeNode[K]): int =\n        var node = node\n        if node.isNil: return\
-    \ 0\n        result = (if node.l.isNil: 0 else: node.l.len)\n        while not\
-    \ node.p.isNil:\n            if node.p.r == node:\n                if node.p.l.isNil:\
-    \ result += 1\n                else: result += node.p.l.len + 1\n            node\
-    \ = node.p\n"
+    \ + 1)\n                assert(not result.r.isNil, \"\u53F3\u306E\u5B50\u30CE\u30FC\
+    \u30C9\u304C\u5B58\u5728\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \")\n                result = result.r\n            else:\n                result\
+    \ = result.l\n    proc index*[K](node: AvlTreeNode[K]): int =\n        var node\
+    \ = node\n        if node.isNil: return 0\n        result = (if node.l.isNil:\
+    \ 0 else: node.l.len)\n        while not node.p.isNil:\n            if node.p.r\
+    \ == node:\n                if node.p.l.isNil: result += 1\n                else:\
+    \ result += node.p.l.len + 1\n            node = node.p\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/avltreenode.nim
@@ -332,7 +334,7 @@ data:
   - cplib/collections/rangeset.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
-  timestamp: '2025-04-27 19:08:43+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/convex_hull_trick_line_add_get_min_test.nim

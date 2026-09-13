@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   - icon: ':warning:'
@@ -51,51 +51,51 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/intersect_test.nim
     title: verify/AI/intersect_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -111,21 +111,24 @@ data:
     \ ANGLE_270_360* = -1;\n\n    proc angle*[T](p1, p2: Point[T]): int =\n      \
     \  ##p1, p2\u306E\u306A\u3059\u89D2\u3092\u516B\u65B9\u4F4D\u3067\u8FD4\u3059\n\
     \        proc iszero(p: Point[T]): bool = geometry_eq(p.x, 0) and geometry_eq(p.y,\
-    \ 0)\n        assert (not iszero(p1)) and (not iszero(p2))\n        var d = dot(p1,\
-    \ p2)\n        var c = cross(p1, p2)\n        if geometry_eq(c, 0):\n        \
-    \    if geometry_gt(d, 0): return ANGLE_0\n            else: return ANGLE_180\n\
-    \        if geometry_eq(d, 0):\n            if geometry_gt(c, 0): return ANGLE_90\n\
-    \            else: return ANGLE_270\n        if geometry_gt(d, 0) and geometry_gt(c,\
-    \ 0): return ANGLE_0_90\n        if geometry_lt(d, 0) and geometry_gt(c, 0): return\
-    \ ANGLE_90_180\n        if geometry_lt(d, 0) and geometry_lt(c, 0): return ANGLE_180_270\n\
-    \        if geometry_gt(d, 0) and geometry_lt(c, 0): return ANGLE_270_360\n\n\
-    \    proc angle*[T](l1, l2: Line[T]): int = angle(l1.vector, l2.vector)\n    type\
-    \ PointOrLine = Point or Line\n    proc is_parallel*(p1, p2: PointOrLine): bool\
-    \ =\n        ##p1, p2\u304C\u5E73\u884C\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\
-    \n        var a = angle(p1, p2)\n        return (a == ANGLE_0) or (a == ANGLE_180)\n\
-    \    proc is_orthogonal*(p1, p2: PointOrLine): bool =\n        ##p1, p2\u304C\u76F4\
-    \u89D2\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\n        var a = angle(p1, p2)\n\
-    \        return (a == ANGLE_90) or (a == ANGLE_270)\n"
+    \ 0)\n        assert (not iszero(p1)) and (not iszero(p2)), \"\u89D2\u5EA6\u3092\
+    \u6C42\u3081\u308B\u30D9\u30AF\u30C8\u30EB\u306F\u3069\u3061\u3089\u3082\u96F6\
+    \u30D9\u30AF\u30C8\u30EB\u3067\u306A\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        var d = dot(p1, p2)\n        var c = cross(p1, p2)\n       \
+    \ if geometry_eq(c, 0):\n            if geometry_gt(d, 0): return ANGLE_0\n  \
+    \          else: return ANGLE_180\n        if geometry_eq(d, 0):\n           \
+    \ if geometry_gt(c, 0): return ANGLE_90\n            else: return ANGLE_270\n\
+    \        if geometry_gt(d, 0) and geometry_gt(c, 0): return ANGLE_0_90\n     \
+    \   if geometry_lt(d, 0) and geometry_gt(c, 0): return ANGLE_90_180\n        if\
+    \ geometry_lt(d, 0) and geometry_lt(c, 0): return ANGLE_180_270\n        if geometry_gt(d,\
+    \ 0) and geometry_lt(c, 0): return ANGLE_270_360\n\n    proc angle*[T](l1, l2:\
+    \ Line[T]): int = angle(l1.vector, l2.vector)\n    type PointOrLine = Point or\
+    \ Line\n    proc is_parallel*(p1, p2: PointOrLine): bool =\n        ##p1, p2\u304C\
+    \u5E73\u884C\u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\n        var a = angle(p1,\
+    \ p2)\n        return (a == ANGLE_0) or (a == ANGLE_180)\n    proc is_orthogonal*(p1,\
+    \ p2: PointOrLine): bool =\n        ##p1, p2\u304C\u76F4\u89D2\u304B\u3069\u3046\
+    \u304B\u3092\u5224\u5B9A\n        var a = angle(p1, p2)\n        return (a ==\
+    \ ANGLE_90) or (a == ANGLE_270)\n"
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
@@ -140,8 +143,8 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
-  timestamp: '2026-07-06 22:23:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim

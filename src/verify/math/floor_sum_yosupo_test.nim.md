@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/floor_sum.nim
     title: cplib/math/floor_sum.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/floor_sum.nim
     title: cplib/math/floor_sum.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_floor_of_linear
     links:
@@ -34,14 +34,14 @@ data:
     \ query[1].parseInt,\n                   query[2].parseInt, query[3].parseInt)\n"
   dependsOn:
   - cplib/math/floor_sum.nim
-  - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
+  - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/math/floor_sum_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:33:51+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/math/floor_sum_yosupo_test.nim
 layout: document

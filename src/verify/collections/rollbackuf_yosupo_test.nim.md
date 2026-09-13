@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/rollback_unionfind.nim
     title: cplib/collections/rollback_unionfind.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/rollback_unionfind.nim
     title: cplib/collections/rollback_unionfind.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/persistent_unionfind
     links:
@@ -39,8 +39,8 @@ data:
   isVerificationFile: true
   path: verify/collections/rollbackuf_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-07-09 02:51:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/collections/rollbackuf_yosupo_test.nim
 layout: document

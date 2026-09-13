@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -32,14 +32,16 @@ data:
     \n    proc den*[T](x:SBTNode[T]):T=\n        return x.q+x.s\n    proc num*[T](x:SBTNode[T]):T=\n\
     \        return x.p + x.r\n    \n    converter toFraction(x:SBTNode[int]):Fraction[int]=\n\
     \        return initFraction(x.num,x.den,false)\n\n    proc continued_fraction_expansion*[T](a,b:T):seq[T]=\n\
-    \        assert a >= 1\n        assert b >= 1\n        var a = a\n        var\
-    \ b = b\n        while true:\n            result.add(a div b)\n            if\
-    \ a mod b == 0:\n                break\n            a -= result[^1] * b\n    \
-    \        swap(a,b)\n\n    proc encode_path*[T](a,b:T):seq[(char,T)]=\n       \
-    \ var CFE = continued_fraction_expansion(a,b)\n        CFE[^1] -= 1\n        var\
-    \ start = 0\n        if CFE[0] == 0:\n            start = 1\n        \n      \
-    \  for i in start..<len(CFE):\n            if (i and 1) == 0:\n              \
-    \  result.add(('R',CFE[i]))\n            else:\n                result.add(('L',CFE[i]))\n\
+    \        assert a >= 1, \"a\u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        assert b >= 1, \"b\u306F1\u4EE5\u4E0A\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        var a = a\n\
+    \        var b = b\n        while true:\n            result.add(a div b)\n   \
+    \         if a mod b == 0:\n                break\n            a -= result[^1]\
+    \ * b\n            swap(a,b)\n\n    proc encode_path*[T](a,b:T):seq[(char,T)]=\n\
+    \        var CFE = continued_fraction_expansion(a,b)\n        CFE[^1] -= 1\n \
+    \       var start = 0\n        if CFE[0] == 0:\n            start = 1\n      \
+    \  \n        for i in start..<len(CFE):\n            if (i and 1) == 0:\n    \
+    \            result.add(('R',CFE[i]))\n            else:\n                result.add(('L',CFE[i]))\n\
     \    \n    proc encode_path*[T](now:SBTNode[T]):seq[(char,T)]=\n        return\
     \ encode_path(now.num(),now.den())\n    \n    proc move_left*[T](now:SBTNode[T],d:T):SBTNode[T]=\n\
     \        return (now.p,now.q,d*now.p+now.r,d*now.q+now.s,now.depth+d)\n\n    proc\
@@ -80,9 +82,10 @@ data:
     \n    proc min_greater_with_den_at_most*[T](x:SBTNode[T],m:T):SBTNode[T]=\n  \
     \      ## x\u3088\u308A\u5927\u304D\u304F\u3001\u5206\u5B50\u30FB\u5206\u6BCD\u304C\
     m\u4EE5\u4E0B\u3067\u3042\u308B\u6709\u7406\u6570\u306E\u3046\u3061\u6700\u5C0F\
-    \u306E\u3082\u306E\u3092\u8FD4\u3059\u3002\n        assert m >= 1\n\n        if\
-    \ x.is_inner_node_bounded(m):\n            var now = x.move_right(1)\n       \
-    \     if not now.is_inner_node_bounded(m):\n                return to_endpoint_node(x.r,x.s)\n\
+    \u306E\u3082\u306E\u3092\u8FD4\u3059\u3002\n        assert m >= 1, \"m\u306F1\u4EE5\
+    \u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n     \
+    \   if x.is_inner_node_bounded(m):\n            var now = x.move_right(1)\n  \
+    \          if not now.is_inner_node_bounded(m):\n                return to_endpoint_node(x.r,x.s)\n\
     \            return now.move_left(now.max_inner_move_left_with_bound(m))\n\n \
     \       var now = sbt_root(T)\n\n        for (c,d) in encode_path(x):\n      \
     \      if c == 'L':\n                let lim = min(d,now.max_inner_move_left_with_bound(m))\n\
@@ -95,7 +98,8 @@ data:
     \ max_less_with_den_at_most*[T](x:SBTNode[T],m:T):SBTNode[T]=\n        ## x\u3088\
     \u308A\u5C0F\u3055\u304F\u3001\u5206\u5B50\u30FB\u5206\u6BCD\u304Cm\u4EE5\u4E0B\
     \u3067\u3042\u308B\u6709\u7406\u6570\u306E\u3046\u3061\u6700\u5927\u306E\u3082\
-    \u306E\u3092\u8FD4\u3059\u3002\n        assert m >= 1\n\n        if x.is_inner_node_bounded(m):\n\
+    \u306E\u3092\u8FD4\u3059\u3002\n        assert m >= 1, \"m\u306F1\u4EE5\u4E0A\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n        if x.is_inner_node_bounded(m):\n\
     \            var now = x.move_left(1)\n            if not now.is_inner_node_bounded(m):\n\
     \                return to_endpoint_node(x.p,x.q)\n            return now.move_right(now.max_inner_move_right_with_bound(m))\n\
     \n        var now = sbt_root(T)\n\n        for (c,d) in encode_path(x):\n    \
@@ -141,16 +145,19 @@ data:
     \u8FD1\u4F3C\u3057\u305F\u7D50\u679C\u3092\u8FD4\u3059\u3002(\u305D\u306E\u533A\
     \u9593\u304C\u5F97\u3089\u308C\u308Bnode\u304C\u8FD4\u308B)\n\n        # is_ok\u306B\
     \u306FINF\u30680\u304C\u4E0E\u3048\u3089\u308C\u308B\u70B9\u306B\u6CE8\u610F\u3002\
-    \n        assert n >= 1\n\n        var now = sbt_root(T)\n\n        var result0\
+    \n        assert n >= 1, \"n\u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n\n        var now = sbt_root(T)\n\n        var result0\
     \ = is_ok(sbt_zero(T))\n        var resultinf = is_ok(sbt_inf(T))\n\n        assert\
-    \ result0 != resultinf\n\n        var is_left = false\n\n        var result_now\
-    \ = is_ok(now)\n\n        if result0 != result_now:\n            is_left = true\n\
-    \        \n        while now.is_inner_node_bounded(n):\n            if is_left:\n\
-    \                # \u65B0\u3057\u304F\u3067\u304D\u308B\u53F3\u7AEF\u306E\u5206\
-    \u5B50\u30FB\u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306B\u306A\u308B\u7BC4\u56F2\u3067\
-    \u79FB\u52D5\u53EF\u80FD\n                # \u3069\u3053\u307E\u3067\u6F5C\u3063\
-    \u305F\u3089\u521D\u3081\u3066result_now\u3068\u7D50\u679C\u304C\u5909\u308F\u308B\
-    \u306E\u304B\u3092\u4E8C\u5206\u63A2\u7D22\n                let lim = now.max_endpoint_move_left_with_bound(n)\n\
+    \ result0 != resultinf, \"\u533A\u9593\u306E\u4E21\u7AEF\u306B\u5BFE\u3059\u308B\
+    \u5224\u5B9A\u7D50\u679C\u306F\u7570\u306A\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n\n        var is_left = false\n\n        var result_now = is_ok(now)\n\
+    \n        if result0 != result_now:\n            is_left = true\n        \n  \
+    \      while now.is_inner_node_bounded(n):\n            if is_left:\n        \
+    \        # \u65B0\u3057\u304F\u3067\u304D\u308B\u53F3\u7AEF\u306E\u5206\u5B50\u30FB\
+    \u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306B\u306A\u308B\u7BC4\u56F2\u3067\u79FB\u52D5\
+    \u53EF\u80FD\n                # \u3069\u3053\u307E\u3067\u6F5C\u3063\u305F\u3089\
+    \u521D\u3081\u3066result_now\u3068\u7D50\u679C\u304C\u5909\u308F\u308B\u306E\u304B\
+    \u3092\u4E8C\u5206\u63A2\u7D22\n                let lim = now.max_endpoint_move_left_with_bound(n)\n\
     \                if lim <= 0:\n                    break\n                var\
     \ l:T = 0\n                var r = lim\n                if is_ok(now.move_left(r))\
     \ == result_now:\n                    now = now.move_left(r)\n               \
@@ -179,7 +186,8 @@ data:
     \ -1\n        \n        return cmp(x,y)\n\n\n\n    proc initAuxiliaryWeightedTree*(v:openArray[SBTNode[int]]):WeightedUnDirectedTableGraph[SBTNode[int],int]=\n\
     \        ## \u6839\u304C\u6B32\u3057\u304B\u3063\u305F\u3089G.v[0]\u3092\u4F7F\
     \u3063\u3066\u304F\u3060\u3055\u3044\u3000\u3051\u3080\u306B\u304F\n        assert\
-    \ len(v) > 0\n        var v = v.sorted(cmp_with_ein)\n        for i in 0..<(len(v)-1):\n\
+    \ len(v) > 0, \"\u5217v\u306F\u7A7A\u3067\u306A\u3044\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        var v = v.sorted(cmp_with_ein)\n        for i in 0..<(len(v)-1):\n\
     \            v.add(LCA(v[i],v[i+1]))\n        v = v.sorted(cmp_with_ein).deduplicate(true)\n\
     \        var stack :seq[SBTNode[int]]\n        result = initWeightedUnDirectedTableGraph(v,int)\n\
     \        stack.add(v[0])\n        for i in 1..<len(v):\n            while len(stack)\
@@ -194,7 +202,7 @@ data:
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:46:22+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/stern_brocot_tree.nim

@@ -3,33 +3,33 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_grundy_test.nim
     title: verify/utils/game_grundy_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_grundy_test.nim
     title: verify/utils/game_grundy_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_optimal_play_test.nim
     title: verify/utils/game_optimal_play_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_optimal_play_test.nim
     title: verify/utils/game_optimal_play_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_test.nim
     title: verify/utils/game_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_test.nim
     title: verify/utils/game_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_warning_test.nim
     title: verify/utils/game_warning_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/game_warning_test.nim
     title: verify/utils/game_warning_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -126,9 +126,13 @@ data:
     \     runnableExamples:\n            proc subtract(state: int): seq[int] =\n \
     \               for take in 1..2:\n                    if take <= state:\n   \
     \                     result.add(state - take)\n\n            let solve = init_grundy(subtract)\n\
-    \            assert solve(0) == 0\n            assert solve(2) == 2\n        \
-    \    assert solve(4) == 1\n\n        init_grundy_impl(check_game_next(nxt, \"\
-    init_grundy\"))\n\n    proc grundy*[T](initial_state: T, nxt: NextStates[T]):\
+    \            assert solve(0) == 0, \"\u8A08\u7B97\u7D50\u679C\u304C\u671F\u5F85\
+    \u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093: solve(0) == 0\"\n          \
+    \  assert solve(2) == 2, \"\u8A08\u7B97\u7D50\u679C\u304C\u671F\u5F85\u5024\u3068\
+    \u4E00\u81F4\u3057\u307E\u305B\u3093: solve(2) == 2\"\n            assert solve(4)\
+    \ == 1, \"\u8A08\u7B97\u7D50\u679C\u304C\u671F\u5F85\u5024\u3068\u4E00\u81F4\u3057\
+    \u307E\u305B\u3093: solve(4) == 1\"\n\n        init_grundy_impl(check_game_next(nxt,\
+    \ \"init_grundy\"))\n\n    proc grundy*[T](initial_state: T, nxt: NextStates[T]):\
     \ int =\n        ## \u6307\u5B9A\u72B6\u614B\u306E Grundy \u6570\u3092\u3001\u547C\
     \u3073\u51FA\u3057\u3054\u3068\u306B\u65B0\u3057\u3044\u30E1\u30E2\u3067\u8A08\
     \u7B97\u3057\u307E\u3059\u3002\n        ## \u5BFE\u8C61\u30B2\u30FC\u30E0\u30FB\
@@ -198,9 +202,13 @@ data:
     \            proc subtract(state: int): seq[int] =\n                for take in\
     \ 1..2:\n                    if take <= state:\n                        result.add(state\
     \ - take)\n\n            let solve = init_can_win(subtract)\n            assert\
-    \ solve(3) == false\n            assert solve(4) == true\n            let misere\
-    \ = init_can_win(subtract, win_when_no_moves = true)\n            assert misere(1)\
-    \ == false\n\n        init_can_win_impl(check_game_next(nxt), win_when_no_moves)\n\
+    \ solve(3) == false, \"\u8A08\u7B97\u7D50\u679C\u304C\u671F\u5F85\u5024\u3068\u4E00\
+    \u81F4\u3057\u307E\u305B\u3093: solve(3) == false\"\n            assert solve(4)\
+    \ == true, \"\u8A08\u7B97\u7D50\u679C\u304C\u671F\u5F85\u5024\u3068\u4E00\u81F4\
+    \u3057\u307E\u305B\u3093: solve(4) == true\"\n            let misere = init_can_win(subtract,\
+    \ win_when_no_moves = true)\n            assert misere(1) == false, \"\u8A08\u7B97\
+    \u7D50\u679C\u304C\u671F\u5F85\u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093\
+    : misere(1) == false\"\n\n        init_can_win_impl(check_game_next(nxt), win_when_no_moves)\n\
     \n    template init_can_win*[T](nxt: NextStatesByTurn[T],\n            win_when_no_moves:\
     \ bool = false): untyped =\n        ## \u5148\u624B\u304C\u5FC5\u52DD\u304B\u3069\
     \u3046\u304B\u3092\u5224\u5B9A\u3057\u3001\u547C\u3073\u51FA\u3057\u9593\u3067\
@@ -231,121 +239,127 @@ data:
     \         let max_take = (if is_first: 1 else: 2)\n                for take in\
     \ 1..max_take:\n                    if take <= state:\n                      \
     \  result.add(state - take)\n\n            let solve = init_can_win(subtract_by_turn)\n\
-    \            assert solve(1) == true\n            assert solve(2) == false\n\n\
-    \        init_can_win_impl(check_game_next(nxt), win_when_no_moves)\n\n    proc\
-    \ can_win*[T](initial_state: T, nxt: NextStates[T],\n            win_when_no_moves:\
-    \ bool = false): bool =\n        ## \u6307\u5B9A\u72B6\u614B\u3067\u624B\u756A\
-    \u5074\u304C\u5FC5\u52DD\u304B\u3069\u3046\u304B\u3092\u3001\u547C\u3073\u51FA\
-    \u3057\u3054\u3068\u306B\u65B0\u3057\u3044\u30E1\u30E2\u3067\u5224\u5B9A\u3057\
-    \u307E\u3059\u3002\n        ## \u30B2\u30FC\u30E0\u30B0\u30E9\u30D5\u306F\u6709\
-    \u9650\u304B\u3064\u9589\u8DEF\u306A\u3057\u3067\u3042\u308B\u5FC5\u8981\u304C\
-    \u3042\u308A\u307E\u3059\u3002\n        result = init_can_win_impl(nxt, win_when_no_moves)(initial_state)\n\
-    \n    proc can_win*[T](initial_state: T, nxt: NextStatesByTurn[T],\n         \
-    \   win_when_no_moves: bool = false): bool =\n        ## \u6307\u5B9A\u72B6\u614B\
-    \u304B\u3089\u5148\u624B\u304C\u5FC5\u52DD\u304B\u3069\u3046\u304B\u3092\u3001\
-    \u547C\u3073\u51FA\u3057\u3054\u3068\u306B\u65B0\u3057\u3044\u30E1\u30E2\u3067\
-    \u5224\u5B9A\u3057\u307E\u3059\u3002\n        ## \u30B2\u30FC\u30E0\u30B0\u30E9\
-    \u30D5\u306F\u6709\u9650\u304B\u3064\u9589\u8DEF\u306A\u3057\u3067\u3042\u308B\
-    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n        result = init_can_win_impl(nxt,\
-    \ win_when_no_moves)(initial_state)\n\n    proc init_optimal_play_impl[T](nxt:\
-    \ NextStates[T],\n            win_when_no_moves: bool = false,\n            prefer:\
-    \ proc(a, b: T): bool {.closure.} = nil):\n            proc(state: T): tuple[is_win:\
-    \ bool, states: seq[T]] {.closure.} =\n        ## \u52DD\u6557\u30FB\u7D42\u5C40\
-    \u624B\u6570\u30FB\u9077\u79FB\u5148\u306E\u30E1\u30E2\u3092\u4FDD\u6301\u3059\
-    \u308B\u5FA9\u5143\u95A2\u6570\u3092\u4F5C\u308A\u307E\u3059\u3002\n        type\
-    \ Evaluation = tuple[winning: bool, turns: int, next_state: T]\n        var memo\
-    \ = initTable[T, Evaluation]()\n        var visiting = initHashSet[T]()\n\n  \
-    \      proc solve(state: T): Evaluation =\n            ## \u52DD\u6557\u30FB\u6700\
-    \u9069\u306A\u7D42\u5C40\u624B\u6570\u30FB\u9077\u79FB\u5148\u3092\u30E1\u30E2\
-    \u5316\u3057\u3066\u6C42\u3081\u307E\u3059\u3002\n            if memo.hasKey(state):\n\
-    \                return memo[state]\n            if state in visiting:\n     \
-    \           raise newException(ValueError,\n                    \"optimal_play\
-    \ \u306F\u30B2\u30FC\u30E0\u30B0\u30E9\u30D5\u306E\u9589\u8DEF\u306B\u5BFE\u5FDC\
-    \u3057\u3066\u3044\u307E\u305B\u3093\")\n            visiting.incl(state)\n  \
-    \          defer: visiting.excl(state)\n            let next_states = nxt(state)\n\
-    \            result = (winning: win_when_no_moves, turns: 0, next_state: state)\n\
-    \            for i, next_state in next_states:\n                let child = solve(next_state)\n\
-    \                let winning = not child.winning\n                let turns =\
-    \ child.turns + 1\n                if i == 0 or (winning and not result.winning)\
-    \ or\n                        (winning == result.winning and\n               \
-    \             ((winning and turns < result.turns) or\n                       \
-    \      (not winning and turns > result.turns) or\n                           \
-    \  (turns == result.turns and prefer != nil and\n                            \
-    \  prefer(next_state, result.next_state)))):\n                    result = (winning:\
-    \ winning, turns: turns, next_state: next_state)\n            memo[state] = result\n\
-    \n        result = proc(initial_state: T): tuple[is_win: bool, states: seq[T]]\
-    \ =\n            ## \u521D\u671F\u72B6\u614B\u306E\u52DD\u6557\u3068\u3001\u30E1\
-    \u30E2\u3092\u7528\u3044\u3066\u5FA9\u5143\u3057\u305F\u72B6\u614B\u5217\u3092\
-    \u8FD4\u3057\u307E\u3059\u3002\u5FA9\u5143\u306F O(\u5217\u306E\u9577\u3055) \u3067\
-    \u3059\u3002\n            result.is_win = solve(initial_state).winning\n     \
-    \       var state = initial_state\n            result.states.add(state)\n    \
-    \        while memo[state].turns > 0:\n                state = memo[state].next_state\n\
-    \                result.states.add(state)\n\n    proc init_optimal_play_impl[T](nxt:\
-    \ NextStatesByTurn[T],\n            win_when_no_moves: bool = false,\n       \
-    \     prefer: proc(a, b: T): bool {.closure.} = nil):\n            proc(state:\
-    \ T): tuple[is_win: bool, states: seq[T]] {.closure.} =\n        ## \u72B6\u614B\
-    \u3068\u624B\u756A\u3054\u3068\u306E\u30E1\u30E2\u3092\u4FDD\u6301\u3059\u308B\
-    \u5FA9\u5143\u95A2\u6570\u3092\u4F5C\u308A\u307E\u3059\u3002\n        type TurnState\
-    \ = tuple[state: T, is_first: bool]\n        proc next_by_turn(current: TurnState):\
-    \ seq[TurnState] =\n            ## \u72B6\u614B\u306B\u624B\u756A\u3092\u4ED8\u3051\
-    \u3066\u9077\u79FB\u3092\u5217\u6319\u3057\u307E\u3059\u3002\n            for\
-    \ next_state in nxt(current.state, current.is_first):\n                result.add((state:\
-    \ next_state, is_first: not current.is_first))\n\n        var prefer_by_turn:\
-    \ proc(a, b: TurnState): bool {.closure.}\n        if prefer != nil:\n       \
-    \     prefer_by_turn = proc(a, b: TurnState): bool =\n                ## \u624B\
-    \u756A\u3092\u9664\u3044\u305F\u9077\u79FB\u5148\u306E\u72B6\u614B\u3092\u6BD4\
-    \u8F03\u3057\u307E\u3059\u3002\n                prefer(a.state, b.state)\n   \
-    \     let solve = init_optimal_play_impl(next_by_turn, win_when_no_moves, prefer_by_turn)\n\
-    \        result = proc(initial_state: T): tuple[is_win: bool, states: seq[T]]\
-    \ =\n            ## \u6307\u5B9A\u72B6\u614B\u304B\u3089\u5148\u624B\u304C\u5FC5\
-    \u52DD\u304B\u3069\u3046\u304B\u3068\u72B6\u614B\u5217\u3092\u8FD4\u3057\u307E\
-    \u3059\u3002\n            let play = solve((state: initial_state, is_first: true))\n\
-    \            result.is_win = play.is_win\n            for current in play.states:\n\
-    \                result.states.add(current.state)\n\n    template init_optimal_play*[T](nxt:\
-    \ NextStates[T],\n            win_when_no_moves: bool = false): untyped =\n  \
-    \      ## \u52DD\u6557\u3068\u6700\u9069\u306A\u72B6\u614B\u5217\u3092\u8FD4\u3057\
-    \u3001\u547C\u3073\u51FA\u3057\u9593\u3067\u30E1\u30E2\u3092\u518D\u5229\u7528\
-    \u3059\u308B\u95A2\u6570\u3092\u4F5C\u308A\u307E\u3059\u3002\n        ## \u8FD4\
-    \u308A\u5024\u306F tuple[is_win: bool, states: seq[T]] \u3067\u3001is_win \u306F\
-    \u521D\u671F\u72B6\u614B\u306E\u624B\u756A\u5074\u304C\u5FC5\u52DD\u304B\u3092\
-    \u8868\u3057\u307E\u3059\u3002\n        ## states \u306F\u521D\u671F\u72B6\u614B\
-    \u3068\u7D42\u7AEF\u72B6\u614B\u3092\u542B\u307F\u3001\u521D\u671F\u72B6\u614B\
-    \u304C\u7D42\u7AEF\u306A\u3089\u8981\u7D20\u6570\u306F 1 \u3067\u3059\u3002\n\
-    \        ## \u52DD\u3066\u308B\u5C40\u9762\u3067\u306F\u52DD\u3064\u307E\u3067\
-    \u306E\u624B\u6570\u3092\u6700\u5C0F\u5316\u3057\u3001\u8CA0\u3051\u308B\u5C40\
-    \u9762\u3067\u306F\u8CA0\u3051\u308B\u307E\u3067\u306E\u624B\u6570\u3092\u6700\
-    \u5927\u5316\u3057\u307E\u3059\u3002\n        ## \u52DD\u6557\u3068\u624B\u6570\
-    \u304C\u540C\u3058\u306A\u3089 nxt \u306E\u9806\u3067\u9078\u3073\u307E\u3059\u3002\
-    \n        ## \u5408\u6CD5\u624B\u304C\u306A\u3044\u72B6\u614B\u3067\u306F\u3001\
-    win_when_no_moves \u304C true \u306E\u5834\u5408\u306B\u9650\u308A\u624B\u756A\
-    \u5074\u306E\u52DD\u3061\u3068\u306A\u308A\u307E\u3059\u3002\n        ## \u30B2\
-    \u30FC\u30E0\u30B0\u30E9\u30D5\u306F\u6709\u9650\u304B\u3064\u9589\u8DEF\u306A\
-    \u3057\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n   \
-    \     ## \u8FD4\u3055\u308C\u305F\u95A2\u6570\u3092\u4F7F\u3046\u9593\u3001nxt\
-    \ \u306E\u7D50\u679C\u306F\u540C\u3058\u5F15\u6570\u306B\u5BFE\u3057\u3066\u5909\
-    \u5316\u3057\u306A\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n   \
-    \     ## \u30EB\u30FC\u30EB\u3092\u5909\u66F4\u3059\u308B\u5834\u5408\u306F\u3001\
-    \u3053\u306E\u95A2\u6570\u3067\u65B0\u3057\u304F\u5FA9\u5143\u95A2\u6570\u3092\
-    \u4F5C\u308A\u76F4\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        ## init_can_win\
-    \ \u3068\u540C\u69D8\u3001\u76F4\u63A5\u6E21\u3057\u305F\u95A2\u6570\u30FB\u7121\
-    \u540D\u95A2\u6570\u304C\u76F4\u63A5\u53C2\u7167\u3059\u308B\u5916\u90E8\u306E\
-    \ var \u306B\u8B66\u544A\u3057\u307E\u3059\u3002\n        ## \u5225\u306E\u95A2\
-    \u6570\u306E\u5185\u90E8\u3084\u3001\u5909\u6570\u30FB\u5F15\u6570\u306B\u683C\
-    \u7D0D\u3055\u308C\u305F\u95A2\u6570\u306F\u691C\u67FB\u3057\u307E\u305B\u3093\
-    \u3002\n        ## \u65B0\u305F\u306B\u63A2\u7D22\u3059\u308B\u72B6\u614B\u6570\
-    \ V\u3001\u9077\u79FB\u6570 E\u3001\u8FD4\u3059\u5217\u306E\u9577\u3055 L \u306B\
-    \u5BFE\u3057\u3066\u6642\u9593 O(V + E + L) \u3067\u3059\u3002\n        ## \u30E1\
-    \u30E2\u306F\u7D2F\u8A08\u72B6\u614B\u6570\u306B\u6BD4\u4F8B\u3059\u308B\u7A7A\
-    \u9593\u3092\u4F7F\u3044\u3001\u63A2\u7D22\u4E2D\u306F\u3055\u3089\u306B O(V +\
-    \ E) \u306E\u88DC\u52A9\u7A7A\u9593\u3092\u4F7F\u3044\u307E\u3059\u3002\n    \
-    \    ## \uFF08\u72B6\u614B\u306E\u30CF\u30C3\u30B7\u30E5\u30FB\u6BD4\u8F03\u30FB\
-    \u30B3\u30D4\u30FC\u3092 O(1)\u3001nxt \u3092\u5217\u6319\u6570\u306B\u6BD4\u4F8B\
-    \u3059\u308B\u6642\u9593\u3068\u3057\u305F\u5834\u5408\uFF09\u3002\n        runnableExamples:\n\
-    \            proc subtract(state: int): seq[int] =\n                for take in\
-    \ 1..2:\n                    if take <= state:\n                        result.add(state\
-    \ - take)\n\n            let solve = init_optimal_play(subtract)\n           \
-    \ assert solve(4) == (is_win: true, states: @[4, 3, 2, 0])\n            assert\
-    \ solve(3) == (is_win: false, states: @[3, 2, 0])\n\n        init_optimal_play_impl(check_game_next(nxt,\
+    \            assert solve(1) == true, \"\u8A08\u7B97\u7D50\u679C\u304C\u671F\u5F85\
+    \u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093: solve(1) == true\"\n       \
+    \     assert solve(2) == false, \"\u8A08\u7B97\u7D50\u679C\u304C\u671F\u5F85\u5024\
+    \u3068\u4E00\u81F4\u3057\u307E\u305B\u3093: solve(2) == false\"\n\n        init_can_win_impl(check_game_next(nxt),\
+    \ win_when_no_moves)\n\n    proc can_win*[T](initial_state: T, nxt: NextStates[T],\n\
+    \            win_when_no_moves: bool = false): bool =\n        ## \u6307\u5B9A\
+    \u72B6\u614B\u3067\u624B\u756A\u5074\u304C\u5FC5\u52DD\u304B\u3069\u3046\u304B\
+    \u3092\u3001\u547C\u3073\u51FA\u3057\u3054\u3068\u306B\u65B0\u3057\u3044\u30E1\
+    \u30E2\u3067\u5224\u5B9A\u3057\u307E\u3059\u3002\n        ## \u30B2\u30FC\u30E0\
+    \u30B0\u30E9\u30D5\u306F\u6709\u9650\u304B\u3064\u9589\u8DEF\u306A\u3057\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n        result =\
+    \ init_can_win_impl(nxt, win_when_no_moves)(initial_state)\n\n    proc can_win*[T](initial_state:\
+    \ T, nxt: NextStatesByTurn[T],\n            win_when_no_moves: bool = false):\
+    \ bool =\n        ## \u6307\u5B9A\u72B6\u614B\u304B\u3089\u5148\u624B\u304C\u5FC5\
+    \u52DD\u304B\u3069\u3046\u304B\u3092\u3001\u547C\u3073\u51FA\u3057\u3054\u3068\
+    \u306B\u65B0\u3057\u3044\u30E1\u30E2\u3067\u5224\u5B9A\u3057\u307E\u3059\u3002\
+    \n        ## \u30B2\u30FC\u30E0\u30B0\u30E9\u30D5\u306F\u6709\u9650\u304B\u3064\
+    \u9589\u8DEF\u306A\u3057\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\u3002\n        result = init_can_win_impl(nxt, win_when_no_moves)(initial_state)\n\
+    \n    proc init_optimal_play_impl[T](nxt: NextStates[T],\n            win_when_no_moves:\
+    \ bool = false,\n            prefer: proc(a, b: T): bool {.closure.} = nil):\n\
+    \            proc(state: T): tuple[is_win: bool, states: seq[T]] {.closure.} =\n\
+    \        ## \u52DD\u6557\u30FB\u7D42\u5C40\u624B\u6570\u30FB\u9077\u79FB\u5148\
+    \u306E\u30E1\u30E2\u3092\u4FDD\u6301\u3059\u308B\u5FA9\u5143\u95A2\u6570\u3092\
+    \u4F5C\u308A\u307E\u3059\u3002\n        type Evaluation = tuple[winning: bool,\
+    \ turns: int, next_state: T]\n        var memo = initTable[T, Evaluation]()\n\
+    \        var visiting = initHashSet[T]()\n\n        proc solve(state: T): Evaluation\
+    \ =\n            ## \u52DD\u6557\u30FB\u6700\u9069\u306A\u7D42\u5C40\u624B\u6570\
+    \u30FB\u9077\u79FB\u5148\u3092\u30E1\u30E2\u5316\u3057\u3066\u6C42\u3081\u307E\
+    \u3059\u3002\n            if memo.hasKey(state):\n                return memo[state]\n\
+    \            if state in visiting:\n                raise newException(ValueError,\n\
+    \                    \"optimal_play \u306F\u30B2\u30FC\u30E0\u30B0\u30E9\u30D5\
+    \u306E\u9589\u8DEF\u306B\u5BFE\u5FDC\u3057\u3066\u3044\u307E\u305B\u3093\")\n\
+    \            visiting.incl(state)\n            defer: visiting.excl(state)\n \
+    \           let next_states = nxt(state)\n            result = (winning: win_when_no_moves,\
+    \ turns: 0, next_state: state)\n            for i, next_state in next_states:\n\
+    \                let child = solve(next_state)\n                let winning =\
+    \ not child.winning\n                let turns = child.turns + 1\n           \
+    \     if i == 0 or (winning and not result.winning) or\n                     \
+    \   (winning == result.winning and\n                            ((winning and\
+    \ turns < result.turns) or\n                             (not winning and turns\
+    \ > result.turns) or\n                             (turns == result.turns and\
+    \ prefer != nil and\n                              prefer(next_state, result.next_state)))):\n\
+    \                    result = (winning: winning, turns: turns, next_state: next_state)\n\
+    \            memo[state] = result\n\n        result = proc(initial_state: T):\
+    \ tuple[is_win: bool, states: seq[T]] =\n            ## \u521D\u671F\u72B6\u614B\
+    \u306E\u52DD\u6557\u3068\u3001\u30E1\u30E2\u3092\u7528\u3044\u3066\u5FA9\u5143\
+    \u3057\u305F\u72B6\u614B\u5217\u3092\u8FD4\u3057\u307E\u3059\u3002\u5FA9\u5143\
+    \u306F O(\u5217\u306E\u9577\u3055) \u3067\u3059\u3002\n            result.is_win\
+    \ = solve(initial_state).winning\n            var state = initial_state\n    \
+    \        result.states.add(state)\n            while memo[state].turns > 0:\n\
+    \                state = memo[state].next_state\n                result.states.add(state)\n\
+    \n    proc init_optimal_play_impl[T](nxt: NextStatesByTurn[T],\n            win_when_no_moves:\
+    \ bool = false,\n            prefer: proc(a, b: T): bool {.closure.} = nil):\n\
+    \            proc(state: T): tuple[is_win: bool, states: seq[T]] {.closure.} =\n\
+    \        ## \u72B6\u614B\u3068\u624B\u756A\u3054\u3068\u306E\u30E1\u30E2\u3092\
+    \u4FDD\u6301\u3059\u308B\u5FA9\u5143\u95A2\u6570\u3092\u4F5C\u308A\u307E\u3059\
+    \u3002\n        type TurnState = tuple[state: T, is_first: bool]\n        proc\
+    \ next_by_turn(current: TurnState): seq[TurnState] =\n            ## \u72B6\u614B\
+    \u306B\u624B\u756A\u3092\u4ED8\u3051\u3066\u9077\u79FB\u3092\u5217\u6319\u3057\
+    \u307E\u3059\u3002\n            for next_state in nxt(current.state, current.is_first):\n\
+    \                result.add((state: next_state, is_first: not current.is_first))\n\
+    \n        var prefer_by_turn: proc(a, b: TurnState): bool {.closure.}\n      \
+    \  if prefer != nil:\n            prefer_by_turn = proc(a, b: TurnState): bool\
+    \ =\n                ## \u624B\u756A\u3092\u9664\u3044\u305F\u9077\u79FB\u5148\
+    \u306E\u72B6\u614B\u3092\u6BD4\u8F03\u3057\u307E\u3059\u3002\n               \
+    \ prefer(a.state, b.state)\n        let solve = init_optimal_play_impl(next_by_turn,\
+    \ win_when_no_moves, prefer_by_turn)\n        result = proc(initial_state: T):\
+    \ tuple[is_win: bool, states: seq[T]] =\n            ## \u6307\u5B9A\u72B6\u614B\
+    \u304B\u3089\u5148\u624B\u304C\u5FC5\u52DD\u304B\u3069\u3046\u304B\u3068\u72B6\
+    \u614B\u5217\u3092\u8FD4\u3057\u307E\u3059\u3002\n            let play = solve((state:\
+    \ initial_state, is_first: true))\n            result.is_win = play.is_win\n \
+    \           for current in play.states:\n                result.states.add(current.state)\n\
+    \n    template init_optimal_play*[T](nxt: NextStates[T],\n            win_when_no_moves:\
+    \ bool = false): untyped =\n        ## \u52DD\u6557\u3068\u6700\u9069\u306A\u72B6\
+    \u614B\u5217\u3092\u8FD4\u3057\u3001\u547C\u3073\u51FA\u3057\u9593\u3067\u30E1\
+    \u30E2\u3092\u518D\u5229\u7528\u3059\u308B\u95A2\u6570\u3092\u4F5C\u308A\u307E\
+    \u3059\u3002\n        ## \u8FD4\u308A\u5024\u306F tuple[is_win: bool, states:\
+    \ seq[T]] \u3067\u3001is_win \u306F\u521D\u671F\u72B6\u614B\u306E\u624B\u756A\u5074\
+    \u304C\u5FC5\u52DD\u304B\u3092\u8868\u3057\u307E\u3059\u3002\n        ## states\
+    \ \u306F\u521D\u671F\u72B6\u614B\u3068\u7D42\u7AEF\u72B6\u614B\u3092\u542B\u307F\
+    \u3001\u521D\u671F\u72B6\u614B\u304C\u7D42\u7AEF\u306A\u3089\u8981\u7D20\u6570\
+    \u306F 1 \u3067\u3059\u3002\n        ## \u52DD\u3066\u308B\u5C40\u9762\u3067\u306F\
+    \u52DD\u3064\u307E\u3067\u306E\u624B\u6570\u3092\u6700\u5C0F\u5316\u3057\u3001\
+    \u8CA0\u3051\u308B\u5C40\u9762\u3067\u306F\u8CA0\u3051\u308B\u307E\u3067\u306E\
+    \u624B\u6570\u3092\u6700\u5927\u5316\u3057\u307E\u3059\u3002\n        ## \u52DD\
+    \u6557\u3068\u624B\u6570\u304C\u540C\u3058\u306A\u3089 nxt \u306E\u9806\u3067\u9078\
+    \u3073\u307E\u3059\u3002\n        ## \u5408\u6CD5\u624B\u304C\u306A\u3044\u72B6\
+    \u614B\u3067\u306F\u3001win_when_no_moves \u304C true \u306E\u5834\u5408\u306B\
+    \u9650\u308A\u624B\u756A\u5074\u306E\u52DD\u3061\u3068\u306A\u308A\u307E\u3059\
+    \u3002\n        ## \u30B2\u30FC\u30E0\u30B0\u30E9\u30D5\u306F\u6709\u9650\u304B\
+    \u3064\u9589\u8DEF\u306A\u3057\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\u3002\n        ## \u8FD4\u3055\u308C\u305F\u95A2\u6570\u3092\u4F7F\
+    \u3046\u9593\u3001nxt \u306E\u7D50\u679C\u306F\u540C\u3058\u5F15\u6570\u306B\u5BFE\
+    \u3057\u3066\u5909\u5316\u3057\u306A\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\u3002\n        ## \u30EB\u30FC\u30EB\u3092\u5909\u66F4\u3059\u308B\u5834\
+    \u5408\u306F\u3001\u3053\u306E\u95A2\u6570\u3067\u65B0\u3057\u304F\u5FA9\u5143\
+    \u95A2\u6570\u3092\u4F5C\u308A\u76F4\u3057\u3066\u304F\u3060\u3055\u3044\u3002\
+    \n        ## init_can_win \u3068\u540C\u69D8\u3001\u76F4\u63A5\u6E21\u3057\u305F\
+    \u95A2\u6570\u30FB\u7121\u540D\u95A2\u6570\u304C\u76F4\u63A5\u53C2\u7167\u3059\
+    \u308B\u5916\u90E8\u306E var \u306B\u8B66\u544A\u3057\u307E\u3059\u3002\n    \
+    \    ## \u5225\u306E\u95A2\u6570\u306E\u5185\u90E8\u3084\u3001\u5909\u6570\u30FB\
+    \u5F15\u6570\u306B\u683C\u7D0D\u3055\u308C\u305F\u95A2\u6570\u306F\u691C\u67FB\
+    \u3057\u307E\u305B\u3093\u3002\n        ## \u65B0\u305F\u306B\u63A2\u7D22\u3059\
+    \u308B\u72B6\u614B\u6570 V\u3001\u9077\u79FB\u6570 E\u3001\u8FD4\u3059\u5217\u306E\
+    \u9577\u3055 L \u306B\u5BFE\u3057\u3066\u6642\u9593 O(V + E + L) \u3067\u3059\u3002\
+    \n        ## \u30E1\u30E2\u306F\u7D2F\u8A08\u72B6\u614B\u6570\u306B\u6BD4\u4F8B\
+    \u3059\u308B\u7A7A\u9593\u3092\u4F7F\u3044\u3001\u63A2\u7D22\u4E2D\u306F\u3055\
+    \u3089\u306B O(V + E) \u306E\u88DC\u52A9\u7A7A\u9593\u3092\u4F7F\u3044\u307E\u3059\
+    \u3002\n        ## \uFF08\u72B6\u614B\u306E\u30CF\u30C3\u30B7\u30E5\u30FB\u6BD4\
+    \u8F03\u30FB\u30B3\u30D4\u30FC\u3092 O(1)\u3001nxt \u3092\u5217\u6319\u6570\u306B\
+    \u6BD4\u4F8B\u3059\u308B\u6642\u9593\u3068\u3057\u305F\u5834\u5408\uFF09\u3002\
+    \n        runnableExamples:\n            proc subtract(state: int): seq[int] =\n\
+    \                for take in 1..2:\n                    if take <= state:\n  \
+    \                      result.add(state - take)\n\n            let solve = init_optimal_play(subtract)\n\
+    \            assert solve(4) == (is_win: true, states: @[4, 3, 2, 0]), \"\u8A08\
+    \u7B97\u7D50\u679C\u304C\u671F\u5F85\u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\
+    \u3093: solve(4) == (is_win: true, states: @[4, 3, 2, 0])\"\n            assert\
+    \ solve(3) == (is_win: false, states: @[3, 2, 0]), \"\u8A08\u7B97\u7D50\u679C\u304C\
+    \u671F\u5F85\u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093: solve(3) == (is_win:\
+    \ false, states: @[3, 2, 0])\"\n\n        init_optimal_play_impl(check_game_next(nxt,\
     \ \"init_optimal_play\"), win_when_no_moves)\n\n    template init_optimal_play*[T](nxt:\
     \ NextStatesByTurn[T],\n            win_when_no_moves: bool = false): untyped\
     \ =\n        ## \u624B\u756A\u5225\u306E\u30EB\u30FC\u30EB\u3067\u52DD\u6557\u3068\
@@ -451,8 +465,8 @@ data:
   isVerificationFile: false
   path: cplib/utils/game.nim
   requiredBy: []
-  timestamp: '2026-09-11 03:00:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/utils/game_optimal_play_test.nim
   - verify/utils/game_optimal_play_test.nim

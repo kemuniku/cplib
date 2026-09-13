@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/edit_distance_test.nim
     title: verify/AI/edit_distance_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -75,12 +75,13 @@ data:
     \u3002string \u306E\u5404\u30D0\u30A4\u30C8\u3092 1 \u6587\u5B57\u3068\u3057\u3066\
     \u6271\u3044\u307E\u3059\u3002\n        ## \u6642\u9593 O(|s| + |t| + k^2)\u3001\
     \u7A7A\u9593 O(|s| + |t| + k)\u3002\u30CF\u30C3\u30B7\u30E5\u306F\u4F7F\u3044\u307E\
-    \u305B\u3093\u3002\n        doAssert k >= 0\n        let n = s.len\n        let\
-    \ m = t.len\n        if abs(n - m) > k:\n            return -1\n        if n ==\
-    \ 0 or m == 0:\n            return max(n, m)\n        if k == 0:\n           \
-    \ return (if s == t: 0 else: -1)\n\n        let joined = s & t\n        let sa\
-    \ = suffix_array(joined)\n        var rank = newSeq[int](joined.len)\n       \
-    \ for i, p in sa:\n            rank[p] = i\n        let rmq = initEditDistanceRMQ(lcp_array(joined,\
+    \u305B\u3093\u3002\n        doAssert k >= 0, \"k\u306F\u975E\u8CA0\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let n = s.len\n  \
+    \      let m = t.len\n        if abs(n - m) > k:\n            return -1\n    \
+    \    if n == 0 or m == 0:\n            return max(n, m)\n        if k == 0:\n\
+    \            return (if s == t: 0 else: -1)\n\n        let joined = s & t\n  \
+    \      let sa = suffix_array(joined)\n        var rank = newSeq[int](joined.len)\n\
+    \        for i, p in sa:\n            rank[p] = i\n        let rmq = initEditDistanceRMQ(lcp_array(joined,\
     \ sa))\n\n        template extend(x, y: int): int =\n            ## \u4E21\u6587\
     \u5B57\u5217\u306E\u672B\u5C3E\u3092\u8D8A\u3048\u306A\u3044\u5171\u901A\u63A5\
     \u982D\u8F9E\u9577\u3092 O(1) \u3067\u6C42\u3081\u307E\u3059\u3002\n         \
@@ -111,8 +112,8 @@ data:
   isVerificationFile: false
   path: cplib/str/edit_distance.nim
   requiredBy: []
-  timestamp: '2026-09-08 16:17:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/edit_distance_test.nim
   - verify/str/edit_distance_test.nim

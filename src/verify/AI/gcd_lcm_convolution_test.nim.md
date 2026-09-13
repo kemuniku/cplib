@@ -85,21 +85,21 @@ data:
     Hello World\"\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/lcm_convolution.nim
   - cplib/convolution/gcd_convolution.nim
-  - cplib/convolution/lcm_convolution.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/lcm_convolution.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/lcm_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/gcd_convolution.nim
   isVerificationFile: true
   path: verify/AI/gcd_lcm_convolution_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:59:23+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/gcd_lcm_convolution_test.nim

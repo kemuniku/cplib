@@ -45,7 +45,8 @@ data:
     \ F,\n        id: F\n    ): DualSegmentTree[S, F] =\n        ## initValue\u3067\
     \u521D\u671F\u5316\u3057\u305F\u9577\u3055n\u306E\u53CC\u5BFE\u30BB\u30B0\u30E1\
     \u30F3\u30C8\u6728\u3092\u751F\u6210\u3057\u307E\u3059\u3002\n        assert n\
-    \ >= 0\n        initDualSegmentTree(newSeqWith(n, initValue), mapping, composition,\
+    \ >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        initDualSegmentTree(newSeqWith(n, initValue), mapping, composition,\
     \ id)\n\n    template newDualSegWith*(v, mapping, composition, id: untyped): untyped\
     \ =\n        type S = typeof(v[0])\n        type F = typeof(id)\n        initDualSegmentTree[S,\
     \ F](\n            v,\n            proc (f{.inject.}: F, x{.inject.}: S): S =\
@@ -68,24 +69,31 @@ data:
     \ F](self: DualSegmentTree[S, F], left, right: int, f: F) =\n        ## \u534A\
     \u958B\u533A\u9593[left, right)\u306E\u5404\u8981\u7D20\u306Bf\u3092\u4F5C\u7528\
     \u3055\u305B\u307E\u3059\u3002\n        assert 0 <= left and left <= right and\
-    \ right <= self.length\n        if left == right: return\n        var l = left\
-    \ + self.lastnode\n        var r = right + self.lastnode\n        for i in countdown(self.log,\
-    \ 1):\n            if ((l shr i) shl i) != l:\n                self.push(l shr\
-    \ i)\n            if ((r shr i) shl i) != r:\n                self.push((r - 1)\
-    \ shr i)\n        while l < r:\n            if (l and 1) != 0:\n             \
-    \   self.allApply(l, f)\n                l.inc\n            if (r and 1) != 0:\n\
-    \                r.dec\n                self.allApply(r, f)\n            l = l\
-    \ shr 1\n            r = r shr 1\n\n    proc apply*[S, F](self: DualSegmentTree[S,\
-    \ F], segment: HSlice[int, int], f: F) =\n        ## \u9589\u533A\u9593segment\u306E\
-    \u5404\u8981\u7D20\u306Bf\u3092\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002\n  \
-    \      self.apply(segment.a, segment.b + 1, f)\n\n    proc get*[S, F](self: DualSegmentTree[S,\
-    \ F], index: int): S =\n        ## index\u306E\u73FE\u5728\u5024\u3092\u8FD4\u3057\
-    \u307E\u3059\u3002\n        assert 0 <= index and index < self.length\n      \
-    \  let p = index + self.lastnode\n        for i in countdown(self.log, 1):\n \
-    \           self.push(p shr i)\n        self.data[index]\n\n    proc update*[S,\
+    \ right <= self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : 0 <= left and left <= right and right <= self.length\"\n        if left == right:\
+    \ return\n        var l = left + self.lastnode\n        var r = right + self.lastnode\n\
+    \        for i in countdown(self.log, 1):\n            if ((l shr i) shl i) !=\
+    \ l:\n                self.push(l shr i)\n            if ((r shr i) shl i) !=\
+    \ r:\n                self.push((r - 1) shr i)\n        while l < r:\n       \
+    \     if (l and 1) != 0:\n                self.allApply(l, f)\n              \
+    \  l.inc\n            if (r and 1) != 0:\n                r.dec\n            \
+    \    self.allApply(r, f)\n            l = l shr 1\n            r = r shr 1\n\n\
+    \    proc apply*[S, F](self: DualSegmentTree[S, F], segment: HSlice[int, int],\
+    \ f: F) =\n        ## \u9589\u533A\u9593segment\u306E\u5404\u8981\u7D20\u306B\
+    f\u3092\u4F5C\u7528\u3055\u305B\u307E\u3059\u3002\n        self.apply(segment.a,\
+    \ segment.b + 1, f)\n\n    proc get*[S, F](self: DualSegmentTree[S, F], index:\
+    \ int): S =\n        ## index\u306E\u73FE\u5728\u5024\u3092\u8FD4\u3057\u307E\u3059\
+    \u3002\n        assert 0 <= index and index < self.length, \"\u6307\u5B9A\u3057\
+    \u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: 0 <= index and index < self.length\"\n \
+    \       let p = index + self.lastnode\n        for i in countdown(self.log, 1):\n\
+    \            self.push(p shr i)\n        self.data[index]\n\n    proc update*[S,\
     \ F](self: DualSegmentTree[S, F], index: Natural, value: S) =\n        ## index\u306E\
     \u5024\u3092value\u306B\u7F6E\u304D\u63DB\u3048\u307E\u3059\u3002\n        assert\
-    \ index < self.length\n        let p = int(index) + self.lastnode\n        for\
+    \ index < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : index < self.length\"\n        let p = int(index) + self.lastnode\n        for\
     \ i in countdown(self.log, 1):\n            self.push(p shr i)\n        self.data[index]\
     \ = value\n\n    proc len*[S, F](self: DualSegmentTree[S, F]): int =\n       \
     \ ## \u8981\u7D20\u6570\u3092\u8FD4\u3057\u307E\u3059\u3002\n        self.length\n\
@@ -108,7 +116,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/dualsegtree.nim
   requiredBy: []
-  timestamp: '2026-09-08 11:59:51+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim

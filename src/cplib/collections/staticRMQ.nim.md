@@ -26,10 +26,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/repeated_static_string.nim
     title: cplib/str/repeated_static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   - icon: ':warning:'
@@ -81,57 +81,57 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/staticRMQ_test.nim
     title: verify/collections/staticRMQ_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/staticRMQ_test.nim
     title: verify/collections/staticRMQ_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_LCS_useSA_test.nim
     title: verify/str/static_string/static_string_LCS_useSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_SA_test.nim
     title: verify/str/static_string/static_string_SA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
     title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_initSA_test.nim
     title: verify/str/static_string/static_string_initSA_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/str/static_string/static_string_zalgo_test.nim
     title: verify/str/static_string/static_string_zalgo_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://maspypy.com/library-checker-static-rmq
@@ -331,16 +331,18 @@ data:
     \ = min(result.table[k-1][i], result.table[k-1][i + distance])\n\n    {.push boundChecks:\
     \ off, overflowChecks: off.}\n    proc query*[T](RMQ: StaticRMQ[T], l, r: int):\
     \ T {.inline.} =\n        ## \u534A\u958B\u533A\u9593 [l, r) \u306E\u6700\u5C0F\
-    \u5024\u3092\u8FD4\u3059\u3002\n        assert 0 <= l and l < r and r <= RMQ.V.len\n\
-    \        let last = r - 1\n        let a = l shr staticRMQBlockShift\n       \
-    \ let b = last shr staticRMQBlockShift\n        if a == b:\n            when staticRMQCpp\
-    \ and (T is int or T is int32 or T is int64):\n                when nimvm: discard\n\
-    \                else:\n                    if r - l >= 32 div sizeof(T):\n  \
-    \                      when sizeof(T) == 4:\n                            return\
-    \ T(staticRMQScan32(unsafeAddr RMQ.V[l], r - l))\n                        else:\n\
-    \                            return T(staticRMQScan64(unsafeAddr RMQ.V[l], r -\
-    \ l))\n            result = RMQ.V[l]\n            for i in l+1..last: result =\
-    \ min(result, RMQ.V[i])\n            return\n        result = min(RMQ.suffix_product[l],\
+    \u5024\u3092\u8FD4\u3059\u3002\n        assert 0 <= l and l < r and r <= RMQ.V.len,\
+    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l < r\
+    \ and r <= RMQ.V.len\"\n        let last = r - 1\n        let a = l shr staticRMQBlockShift\n\
+    \        let b = last shr staticRMQBlockShift\n        if a == b:\n          \
+    \  when staticRMQCpp and (T is int or T is int32 or T is int64):\n           \
+    \     when nimvm: discard\n                else:\n                    if r - l\
+    \ >= 32 div sizeof(T):\n                        when sizeof(T) == 4:\n       \
+    \                     return T(staticRMQScan32(unsafeAddr RMQ.V[l], r - l))\n\
+    \                        else:\n                            return T(staticRMQScan64(unsafeAddr\
+    \ RMQ.V[l], r - l))\n            result = RMQ.V[l]\n            for i in l+1..last:\
+    \ result = min(result, RMQ.V[i])\n            return\n        result = min(RMQ.suffix_product[l],\
     \ RMQ.prefix_product[last])\n        if a + 1 < b:\n            let k = fastLog2(b\
     \ - a - 1)\n            result = min(result, min(RMQ.table[k][a + 1], RMQ.table[k][b\
     \ - (1 shl k)]))\n    {.pop.}\n"
@@ -362,8 +364,8 @@ data:
   - cplib/str/merged_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
-  timestamp: '2026-09-08 14:58:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim

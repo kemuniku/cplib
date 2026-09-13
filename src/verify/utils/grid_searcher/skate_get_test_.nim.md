@@ -46,15 +46,15 @@ data:
     \nif (gx,gy) in alr:\n    echo alr[(gx,gy)]\nelse:\n    echo -1"
   dependsOn:
   - cplib/collections/avlset.nim
-  - cplib/utils/grid_searcher.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/utils/grid_searcher.nim
+  - cplib/utils/grid_searcher.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: verify/utils/grid_searcher/skate_get_test_.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/utils/grid_searcher/skate_get_test_.nim

@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
   - icon: ':warning:'
@@ -51,33 +51,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/intersect_test.nim
     title: verify/AI/intersect_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -102,19 +102,21 @@ data:
     \ l2: Line[T]): bool =\n        ## \u76F4\u7DDA l1, l2 \u304C\u4EA4\u308F\u308B\
     \u304B\u3069\u3046\u304B\u3092\u5224\u5B9A\n        if not is_parallel(l1, l2):\
     \ return true\n        return online(l1, l2.s)\n\n    proc cross_point*(l1, l2:\
-    \ Line[int]): Point[int] = assert false, \"cross point can't be called for int\
-    \ type, please use float or Fraction\"\n    proc cross_point*[T](l1, l2: Line[T]):\
+    \ Line[int]): Point[int] = assert false, \"\u4EA4\u70B9\u306E\u8A08\u7B97\u306B\
+    \u306Fint\u3067\u306F\u306A\u304Ffloat\u307E\u305F\u306FFraction\u3092\u4F7F\u7528\
+    \u3057\u3066\u304F\u3060\u3055\u3044\"\n    proc cross_point*[T](l1, l2: Line[T]):\
     \ Point[T] =\n        ## 2\u76F4\u7DDA l1, l2 \u306E\u4EA4\u70B9\n        assert(intersect(l1,\
-    \ l2))\n        if is_parallel(l1, l2): return l1.s\n        var d1 = cross(l1.vector,\
-    \ l2.vector)\n        var d2 = cross(l1.vector, l1.t - l2.s)\n        return l2.s\
-    \ + l2.vector * (d2 / d1)\n"
+    \ l2), \"\u4EA4\u70B9\u3092\u6C42\u3081\u308B2\u76F4\u7DDA\u306F\u4EA4\u308F\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\")\n        if is_parallel(l1, l2):\
+    \ return l1.s\n        var d1 = cross(l1.vector, l2.vector)\n        var d2 =\
+    \ cross(l1.vector, l1.t - l2.s)\n        return l2.s + l2.vector * (d2 / d1)\n"
   dependsOn:
   - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:
@@ -124,8 +126,8 @@ data:
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - cplib/geometry/distance.nim
   - cplib/geometry/distance.nim
-  timestamp: '2026-07-06 22:23:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim

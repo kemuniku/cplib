@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_product_avx2.nim
     title: cplib/matrix/matrix_product_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: cplib/matrix/matrix_product_avx2.nim
     title: cplib/matrix/matrix_product_avx2.nim
   - icon: ':warning:'
@@ -63,45 +63,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/matrix_test.nim
     title: verify/AI/matrix_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_pow_test.nim
     title: verify/matrix/matrix_pow_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_unit_test.nim
     title: verify/matrix/matrix_product_avx2_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_avx2_unit_test.nim
     title: verify/matrix/matrix_product_avx2_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_unit_test.nim
     title: verify/matrix/matrix_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_unit_test.nim
     title: verify/matrix/matrix_unit_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_zoistring_test.nim
     title: verify/matrix/matrix_zoistring_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix/matrix_zoistring_test.nim
     title: verify/matrix/matrix_zoistring_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -114,7 +114,8 @@ data:
     \ 1\n    import sequtils, strutils, hashes, std/math\n    type Matrix*[T] = object\n\
     \        arr: seq[seq[T]]\n        emptyWidth: int\n    proc initMatrix*[T](arr:\
     \ openArray[seq[T]]): Matrix[T] =\n        assert arr.len == 0 or arr.mapIt(it.len).allIt(it\
-    \ == arr[0].len), \"all elements in arr must be the same size.\"\n        Matrix[T](arr:\
+    \ == arr[0].len), \"\u914D\u5217\u306E\u5404\u884C\u306E\u9577\u3055\u306F\u7B49\
+    \u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        Matrix[T](arr:\
     \ @arr)\n    proc toMatrix*[T](arr: openArray[seq[T]]): Matrix[T] = initMatrix(arr)\n\
     \    proc initMatrix*[T](arr: openArray[T], vertical: bool = false): Matrix[T]\
     \ =\n        if vertical: Matrix[T](arr: arr.mapIt(@[it]), emptyWidth: 1)\n  \
@@ -133,7 +134,9 @@ data:
     \  proc `[]=`*[T](m: var Matrix[T], r: int, c: int, val: T) = m.arr[r][c] = val\n\
     \n    proc `-`*[T](m: Matrix[T]): Matrix[T] = Matrix[T](arr: m.arr.mapIt(it.mapIt(-it)),\
     \ emptyWidth: m.emptyWidth)\n    proc `*=`*[T](a: var Matrix[T], b: Matrix[T])\
-    \ =\n        assert a.w == b.h\n        var ans = initMatrix[T](a.h, b.w, 0)\n\
+    \ =\n        assert a.w == b.h, \"\u5DE6\u306E\u884C\u5217\u306E\u5217\u6570\u3068\
+    \u53F3\u306E\u884C\u5217\u306E\u884C\u6570\u306F\u7B49\u3057\u3044\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        var ans = initMatrix[T](a.h, b.w, 0)\n\
     \        for i in 0..<a.h:\n            for j in 0..<b.w:\n                for\
     \ k in 0..<a.w:\n                    ans[i, j] += a[i, k] * b[k, j]\n        swap(ans,\
     \ a)\n    proc `*=`*[T](a: var Matrix[T], x: T) =\n        for i in 0..<a.h:\n\
@@ -142,7 +145,9 @@ data:
     \ x: T): Matrix[T] = (result = a; result *= x)\n    proc `*`*[T](x: T, a: Matrix[T]):\
     \ Matrix[T] = a * x\n    template defineMatrixAssignmentOp(assign, op: untyped)\
     \ =\n        proc assign*[T](a: var Matrix[T], b: Matrix[T]) =\n            assert\
-    \ a.h == b.h and a.w == b.w\n            for i in 0..<a.h:\n                for\
+    \ a.h == b.h and a.w == b.w, \"2\u3064\u306E\u884C\u5217\u306E\u884C\u6570\u3068\
+    \u5217\u6570\u306F\u305D\u308C\u305E\u308C\u7B49\u3057\u3044\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n            for i in 0..<a.h:\n                for\
     \ j in 0..<a.w:\n                    assign(a[i, j], b[i, j])\n        proc assign*[T](a:\
     \ var Matrix[T], x: T) =\n            for i in 0..<a.h:\n                for j\
     \ in 0..<a.w:\n                    assign(a[i, j], x)\n        proc op*[T](a,\
@@ -151,7 +156,9 @@ data:
     \ op*[T](x: T, a: Matrix[T]): Matrix[T] = op(a, x)\n    defineMatrixAssignmentOp(`+=`,\
     \ `+`)\n    defineMatrixAssignmentOp(`-=`, `-`)\n\n    template defineMatrixIntOps(assign,\
     \ op: untyped) =\n        proc assign*(a: var Matrix[int], b: Matrix[int]) =\n\
-    \            assert a.h == b.h and a.w == b.w\n            for i in 0..<a.h:\n\
+    \            assert a.h == b.h and a.w == b.w, \"2\u3064\u306E\u884C\u5217\u306E\
+    \u884C\u6570\u3068\u5217\u6570\u306F\u305D\u308C\u305E\u308C\u7B49\u3057\u3044\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n            for i in 0..<a.h:\n\
     \                for j in 0..<a.w:\n                    a[i, j] = op(a[i, j],\
     \ b[i, j])\n        proc assign*(a: var Matrix[int], x: int) =\n            for\
     \ i in 0..<a.h:\n                for j in 0..<a.w:\n                    a[i, j]\
@@ -175,24 +182,29 @@ data:
     \u308B\u3002O(h*w*min(h,w))\u3002\n        fieldRank(matrixRows(a, a.h, a.w),\
     \ a.w)\n\n    proc determinant*[T](a: Matrix[T]): T =\n        ## \u884C\u5217\
     \u5F0F\u3092\u6C42\u3081\u308B\u3002\u7A7A\u884C\u5217\u306F1\u3002O(n^3)\u3002\
-    \n        assert a.h == a.w\n        fieldDeterminant(matrixRows(a, a.h, a.h))\n\
-    \n    proc hafnian*[T](a: Matrix[T]): T =\n        ## \u5BFE\u79F0\u306A\u5076\
-    \u6570\u6B21\u884C\u5217\u306Ehafnian\u3092\u6C42\u3081\u308B\u3002O(n^2*2^(n/2))\u3002\
-    \n        assert a.h == a.w\n        fieldHafnian(matrixRows(a, a.h, a.h))\n\n\
-    \    proc solveLinearSystem*[T](a: Matrix[T], b: openArray[T]): Option[LinearSystemSolution[T]]\
-    \ =\n        ## Ax=b\u306E\u7279\u6B8A\u89E3\u3068\u6838\u306E\u57FA\u5E95\u3092\
-    \u8FD4\u3059\u3002\u89E3\u306A\u3057\u306Fnone\u3002\u6D88\u53BB\u3068\u5F8C\u9000\
-    \u4EE3\u5165\u3092\u884C\u3046\u3002\n        fieldSolve(matrixRows(a, a.h, a.w),\
-    \ a.w, b)\n\n    proc inverse*[T](a: Matrix[T]): Option[Matrix[T]] =\n       \
-    \ ## \u9006\u884C\u5217\u3092\u8FD4\u3059\u3002\u7279\u7570\u884C\u5217\u306F\
-    none\u3002O(n^3)\u3002\n        bind initMatrix\n        assert a.h == a.w\n \
-    \       let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), false)\n    \
-    \    if rows.isNone: return none(Matrix[T])\n        var answer = initMatrix(a.h,\
+    \n        assert a.h == a.w, \"\u884C\u5217\u306F\u6B63\u65B9\u884C\u5217\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        fieldDeterminant(matrixRows(a,\
+    \ a.h, a.h))\n\n    proc hafnian*[T](a: Matrix[T]): T =\n        ## \u5BFE\u79F0\
+    \u306A\u5076\u6570\u6B21\u884C\u5217\u306Ehafnian\u3092\u6C42\u3081\u308B\u3002\
+    O(n^2*2^(n/2))\u3002\n        assert a.h == a.w, \"\u884C\u5217\u306F\u6B63\u65B9\
+    \u884C\u5217\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       fieldHafnian(matrixRows(a, a.h, a.h))\n\n    proc solveLinearSystem*[T](a:\
+    \ Matrix[T], b: openArray[T]): Option[LinearSystemSolution[T]] =\n        ## Ax=b\u306E\
+    \u7279\u6B8A\u89E3\u3068\u6838\u306E\u57FA\u5E95\u3092\u8FD4\u3059\u3002\u89E3\
+    \u306A\u3057\u306Fnone\u3002\u6D88\u53BB\u3068\u5F8C\u9000\u4EE3\u5165\u3092\u884C\
+    \u3046\u3002\n        fieldSolve(matrixRows(a, a.h, a.w), a.w, b)\n\n    proc\
+    \ inverse*[T](a: Matrix[T]): Option[Matrix[T]] =\n        ## \u9006\u884C\u5217\
+    \u3092\u8FD4\u3059\u3002\u7279\u7570\u884C\u5217\u306Fnone\u3002O(n^3)\u3002\n\
+    \        bind initMatrix\n        assert a.h == a.w, \"\u884C\u5217\u306F\u6B63\
+    \u65B9\u884C\u5217\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), false)\n\
+    \        if rows.isNone: return none(Matrix[T])\n        var answer = initMatrix(a.h,\
     \ a.h, T(0))\n        for i in 0..<a.h:\n            for j in 0..<a.h: answer[i,\
     \ j] = rows.get[i][j]\n        some(answer)\n\n    proc adjugate*[T](a: Matrix[T]):\
     \ Matrix[T] =\n        ## \u7279\u7570\u884C\u5217\u3092\u542B\u3080\u4F59\u56E0\
     \u5B50\u884C\u5217\u3092\u8FD4\u3059\u3002O(n^3)\u3002\n        bind initMatrix\n\
-    \        assert a.h == a.w\n        let rows = fieldAdjugateInverse(matrixRows(a,\
+    \        assert a.h == a.w, \"\u884C\u5217\u306F\u6B63\u65B9\u884C\u5217\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let rows = fieldAdjugateInverse(matrixRows(a,\
     \ a.h, a.h), true)\n        var answer = initMatrix(a.h, a.h, T(0))\n        for\
     \ i in 0..<a.h:\n            for j in 0..<a.h: answer[i, j] = rows.get[i][j]\n\
     \        answer\n"
@@ -218,8 +230,8 @@ data:
   - verify/matrix/linear_algebra/judge_driver.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
-  timestamp: '2026-09-10 08:33:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/AI/matrix_test.nim
   - verify/AI/matrix_test.nim

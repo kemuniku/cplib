@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/range_linear_add_range_min_test.nim
     title: verify/AI/range_linear_add_range_min_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_linear_add_range_min_test.nim
     title: verify/collections/range_linear_add_range_min_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/collections/range_linear_add_range_min_test.nim
     title: verify/collections/range_linear_add_range_min_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -87,25 +87,29 @@ data:
     \u3060\u3055\u3044\u3002\n        ## \u5404\u7BC0\u70B9\u306F\u81EA\u8EAB\u306E\
     \u9045\u5EF6\u52A0\u7B97\u3092\u9664\u3044\u305F\u4E0B\u5074\u51F8\u5305\u306E\
     \u5171\u901A\u63A5\u7DDA\u3092\u4FDD\u6301\u3057\u307E\u3059\u3002\n        static:\
-    \ doAssert sizeof(int) == 8\n        result = RangeLinearAddRangeMin(length: v.len,\
-    \ nodes: newSeq[LinearMinNode](4 * v.len))\n        if v.len > 0:\n          \
-    \  result.build(v, 1, 0, v.len)\n\n    proc push(self: RangeLinearAddRangeMin,\
-    \ k: int) {.inline.} =\n        ## \u4E00\u6B21\u5F0F\u306E\u9045\u5EF6\u52A0\u7B97\
-    \u3092\u5B50\u3078\u4F1D\u3048\u307E\u3059\u3002O(1)\u3002\n        for child\
-    \ in k * 2..k * 2 + 1:\n            self.nodes[child].slope += self.nodes[k].slope\n\
-    \            self.nodes[child].intercept += self.nodes[k].intercept\n        self.nodes[k].slope\
-    \ = 0\n        self.nodes[k].intercept = 0\n\n    proc addImpl(self: RangeLinearAddRangeMin,\
-    \ k, l, r, ql, qr, b, c: int) =\n        ## \u6307\u5B9A\u533A\u9593\u3078\u4E00\
-    \u6B21\u5F0F\u3092\u52A0\u7B97\u3057\u3001\u5883\u754C\u4E0A\u306E\u63A5\u7DDA\
-    \u3092\u66F4\u65B0\u3057\u307E\u3059\u3002O(log^2 N)\u3002\n        if ql <= l\
-    \ and r <= qr:\n            self.nodes[k].slope += b\n            self.nodes[k].intercept\
-    \ += c\n            return\n        self.push(k)\n        let m = (l + r) shr\
-    \ 1\n        if ql < m:\n            self.addImpl(k * 2, l, m, ql, qr, b, c)\n\
-    \        if m < qr:\n            self.addImpl(k * 2 + 1, m, r, ql, qr, b, c)\n\
-    \        self.pull(k, m)\n\n    proc add*(self: RangeLinearAddRangeMin, l, r,\
-    \ b, c: int) =\n        ## \u534A\u958B\u533A\u9593 [l,r) \u306E a[i] \u306B b*i+c\
-    \ \u3092\u52A0\u3048\u307E\u3059\u3002O(log^2 N)\u3002\n        assert 0 <= l\
-    \ and l <= r and r <= self.length\n        if l < r:\n            self.addImpl(1,\
+    \ doAssert sizeof(int) == 8, \"int\u304C64\u30D3\u30C3\u30C8\u306E\u74B0\u5883\
+    \u3067\u4F7F\u7528\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       result = RangeLinearAddRangeMin(length: v.len, nodes: newSeq[LinearMinNode](4\
+    \ * v.len))\n        if v.len > 0:\n            result.build(v, 1, 0, v.len)\n\
+    \n    proc push(self: RangeLinearAddRangeMin, k: int) {.inline.} =\n        ##\
+    \ \u4E00\u6B21\u5F0F\u306E\u9045\u5EF6\u52A0\u7B97\u3092\u5B50\u3078\u4F1D\u3048\
+    \u307E\u3059\u3002O(1)\u3002\n        for child in k * 2..k * 2 + 1:\n       \
+    \     self.nodes[child].slope += self.nodes[k].slope\n            self.nodes[child].intercept\
+    \ += self.nodes[k].intercept\n        self.nodes[k].slope = 0\n        self.nodes[k].intercept\
+    \ = 0\n\n    proc addImpl(self: RangeLinearAddRangeMin, k, l, r, ql, qr, b, c:\
+    \ int) =\n        ## \u6307\u5B9A\u533A\u9593\u3078\u4E00\u6B21\u5F0F\u3092\u52A0\
+    \u7B97\u3057\u3001\u5883\u754C\u4E0A\u306E\u63A5\u7DDA\u3092\u66F4\u65B0\u3057\
+    \u307E\u3059\u3002O(log^2 N)\u3002\n        if ql <= l and r <= qr:\n        \
+    \    self.nodes[k].slope += b\n            self.nodes[k].intercept += c\n    \
+    \        return\n        self.push(k)\n        let m = (l + r) shr 1\n       \
+    \ if ql < m:\n            self.addImpl(k * 2, l, m, ql, qr, b, c)\n        if\
+    \ m < qr:\n            self.addImpl(k * 2 + 1, m, r, ql, qr, b, c)\n        self.pull(k,\
+    \ m)\n\n    proc add*(self: RangeLinearAddRangeMin, l, r, b, c: int) =\n     \
+    \   ## \u534A\u958B\u533A\u9593 [l,r) \u306E a[i] \u306B b*i+c \u3092\u52A0\u3048\
+    \u307E\u3059\u3002O(log^2 N)\u3002\n        assert 0 <= l and l <= r and r <=\
+    \ self.length, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\
+    \u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <=\
+    \ l and l <= r and r <= self.length\"\n        if l < r:\n            self.addImpl(1,\
     \ 0, self.length, l, r, b, c)\n\n    proc add*(self: RangeLinearAddRangeMin, segment:\
     \ HSlice[int, int], b, c: int) =\n        ## \u6307\u5B9A\u533A\u9593\u306E a[i]\
     \ \u306B b*i+c \u3092\u52A0\u3048\u307E\u3059\u3002\u6DFB\u5B57 i \u306F\u914D\
@@ -130,27 +134,32 @@ data:
     \ self.prodImpl(k * 2 + 1, m, r, ql, qr, s, t))\n\n    proc prod*(self: RangeLinearAddRangeMin,\
     \ l, r: int): int =\n        ## \u534A\u958B\u533A\u9593 [l,r) \u306E\u6700\u5C0F\
     \u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\u7A7A\u533A\u9593\u306F high(int)\u3002\
-    O(log^2 N)\u3002\n        assert 0 <= l and l <= r and r <= self.length\n    \
-    \    if l == r: return high(int)\n        self.prodImpl(1, 0, self.length, l,\
-    \ r, 0, 0)\n\n    proc prod*(self: RangeLinearAddRangeMin, segment: HSlice[int,\
-    \ int]): int =\n        ## \u6307\u5B9A\u533A\u9593\u306E\u6700\u5C0F\u5024\u3092\
-    \u8FD4\u3057\u307E\u3059\u3002\u7A7A\u533A\u9593\u306F high(int)\u3002O(log^2\
-    \ N)\u3002\n        self.prod(segment.a, segment.b + 1)\n\n    proc `[]`*(self:\
-    \ RangeLinearAddRangeMin, segment: HSlice[int, int]): int =\n        ## \u6307\
-    \u5B9A\u533A\u9593\u306E\u6700\u5C0F\u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\
-    O(log^2 N)\u3002\n        self.prod(segment)\n\n    proc `[]`*(self: RangeLinearAddRangeMin,\
-    \ i: int): int =\n        ## a[i] \u3092\u8FD4\u3057\u307E\u3059\u3002O(log N)\u3002\
-    \n        assert 0 <= i and i < self.length\n        self.prod(i, i + 1)\n\n \
-    \   proc len*(self: RangeLinearAddRangeMin): int =\n        ## \u914D\u5217\u306E\
-    \u9577\u3055\u3092\u8FD4\u3057\u307E\u3059\u3002O(1)\u3002\n        self.length\n"
+    O(log^2 N)\u3002\n        assert 0 <= l and l <= r and r <= self.length, \"\u6307\
+    \u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= l and l <= r and\
+    \ r <= self.length\"\n        if l == r: return high(int)\n        self.prodImpl(1,\
+    \ 0, self.length, l, r, 0, 0)\n\n    proc prod*(self: RangeLinearAddRangeMin,\
+    \ segment: HSlice[int, int]): int =\n        ## \u6307\u5B9A\u533A\u9593\u306E\
+    \u6700\u5C0F\u5024\u3092\u8FD4\u3057\u307E\u3059\u3002\u7A7A\u533A\u9593\u306F\
+    \ high(int)\u3002O(log^2 N)\u3002\n        self.prod(segment.a, segment.b + 1)\n\
+    \n    proc `[]`*(self: RangeLinearAddRangeMin, segment: HSlice[int, int]): int\
+    \ =\n        ## \u6307\u5B9A\u533A\u9593\u306E\u6700\u5C0F\u5024\u3092\u8FD4\u3057\
+    \u307E\u3059\u3002O(log^2 N)\u3002\n        self.prod(segment)\n\n    proc `[]`*(self:\
+    \ RangeLinearAddRangeMin, i: int): int =\n        ## a[i] \u3092\u8FD4\u3057\u307E\
+    \u3059\u3002O(log N)\u3002\n        assert 0 <= i and i < self.length, \"\u6307\
+    \u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= i and i < self.length\"\
+    \n        self.prod(i, i + 1)\n\n    proc len*(self: RangeLinearAddRangeMin):\
+    \ int =\n        ## \u914D\u5217\u306E\u9577\u3055\u3092\u8FD4\u3057\u307E\u3059\
+    \u3002O(1)\u3002\n        self.length\n"
   dependsOn:
   - cplib/math/int128.nim
   - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/collections/range_linear_add_range_min.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:33:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 17:15:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/collections/range_linear_add_range_min_test.nim
   - verify/collections/range_linear_add_range_min_test.nim
