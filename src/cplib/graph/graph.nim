@@ -22,6 +22,7 @@ when not declared CPLIB_GRAPH_GRAPH:
         else:
             elist*: seq[WeightedAdjacentEdge[T]]
         start*: seq[int32]
+        direction: int # 0: 未追加、1: 有向、2: 無向、3: 混在
         directed: seq[bool]
         len*: int
 
@@ -56,26 +57,42 @@ when not declared CPLIB_GRAPH_GRAPH:
         g.edges[u].add((v.int32, result.int32))
         if not directed: g.edges[v].add((u.int32, result.int32))
 
+    proc record_direction[T](g: StaticGraph[T], directed: bool) =
+        ## 通常は向きを一つだけ保存し、混在時のみ辺ごとの配列を確保する。償却 O(1)。
+        let direction = if directed: 1 else: 2
+        if g.direction == 0:
+            g.direction = direction
+        elif g.direction != direction:
+            if g.direction != 3:
+                g.directed = newSeq[bool](g.edge_info.len - 1)
+                if g.direction == 1:
+                    for i in 0..<g.directed.len: g.directed[i] = true
+                g.direction = 3
+            g.directed.add(directed)
+
     proc add_edge_static_impl*[T](g: StaticGraph[T], u, v: int, cost: T, directed: bool): int {.discardable.} =
         ## 辺を追加し、追加順の辺番号を返す。償却 O(1)。追加後は build が必要。
         result = g.edge_info.len
         g.edge_info.add(EdgeInfo[T](src: u, dst: v, cost: cost))
-        g.directed.add(directed)
+        g.record_direction(directed)
         g.start.setLen(0)
 
     proc add_edge_static_impl*(g: StaticGraph[void], u, v: int, directed: bool): int {.discardable.} =
         ## 辺を追加し、追加順の辺番号を返す。償却 O(1)。追加後は build が必要。
         result = g.edge_info.len
         g.edge_info.add(EdgeInfo[void](src: u, dst: v))
-        g.directed.add(directed)
+        g.record_direction(directed)
         g.start.setLen(0)
 
-    proc build_impl*[T](g: StaticGraph[T]) =
+    proc build_csr[T](g: StaticGraph[T], direction: static int) =
         ## 隣接辺の CSR 配列を構築する。O(V + E)。辺番号と走査順は維持する。
+        template isUndirected(id: int): bool =
+            when direction == 3: not g.directed[id]
+            else: direction == 2
         g.start = newSeq[int32](g.len + 1)
         for id, e in g.edge_info:
             inc g.start[e.src + 1]
-            if not g.directed[id]: inc g.start[e.dst + 1]
+            if isUndirected(id): inc g.start[e.dst + 1]
         for i in 0..<g.len: g.start[i + 1] += g.start[i]
         when T is void:
             g.elist = newSeq[AdjacentEdge](g.start[^1])
@@ -89,12 +106,19 @@ when not declared CPLIB_GRAPH_GRAPH:
             else:
                 g.elist[cursor[e.src]] = (e.dst.int32, id.int32, e.cost)
             inc cursor[e.src]
-            if not g.directed[id]:
+            if isUndirected(id):
                 when T is void:
                     g.elist[cursor[e.dst]] = (e.src.int32, id.int32)
                 else:
                     g.elist[cursor[e.dst]] = (e.src.int32, id.int32, e.cost)
                 inc cursor[e.dst]
+
+    proc build_impl*[T](g: StaticGraph[T]) =
+        ## 有向・無向に特殊化して CSR 配列を構築する。O(V + E)。
+        case g.direction
+        of 2: g.build_csr(2)
+        of 3: g.build_csr(3)
+        else: g.build_csr(1)
 
     proc build*(g: StaticGraphTypes) =
         ## 静的グラフを構築する。O(V + E)。
@@ -104,58 +128,74 @@ when not declared CPLIB_GRAPH_GRAPH:
         ## 静的グラフが構築済みであることを確認する。O(1)。
         assert g.start.len > 0, "Static Graph must be initialized before use."
 
-    proc initWeightedDirectedGraph*(N: int, edgetype: typedesc = int): WeightedDirectedGraph[edgetype] =
+    proc reserve_seq[T](s: var seq[T], capacity: int) =
+        ## 既存の要素を維持し、指定要素数を格納できる配列を確保する。
+        if capacity <= s.len: return
+        var reserved = newSeqOfCap[T](capacity)
+        for e in s: reserved.add(e)
+        s = move(reserved)
+
+    proc reserve*[T](g: DynamicGraph[T], capacity: int, degrees: openArray[int] = []) =
+        ## 総辺数と各頂点の隣接要素数を予約する。既存要素は維持し、必要な配列を再確保する。
+        assert capacity >= 0
+        assert degrees.len == 0 or degrees.len == g.len
+        g.edge_info.reserve_seq(capacity)
+        for u, degree in degrees:
+            assert degree >= 0
+            g.edges[u].reserve_seq(degree)
+
+    proc initWeightedDirectedGraph*(N: int, edgetype: typedesc = int, capacity: int = 0): WeightedDirectedGraph[edgetype] =
         ## 頂点数 N のグラフを初期化する。O(N)。
-        result = WeightedDirectedGraph[edgetype](edges: newSeq[seq[WeightedAdjacentEdge[edgetype]]](N), len: N)
+        result = WeightedDirectedGraph[edgetype](edge_info: newSeqOfCap[EdgeInfo[edgetype]](capacity), edges: newSeq[seq[WeightedAdjacentEdge[edgetype]]](N), len: N)
     proc add_edge*[T](g: var WeightedDirectedGraph[T], u, v: int, cost: T): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_dynamic_impl(u, v, cost, true)
 
-    proc initWeightedUnDirectedGraph*(N: int, edgetype: typedesc = int): WeightedUnDirectedGraph[edgetype] =
+    proc initWeightedUnDirectedGraph*(N: int, edgetype: typedesc = int, capacity: int = 0): WeightedUnDirectedGraph[edgetype] =
         ## 頂点数 N のグラフを初期化する。O(N)。
-        result = WeightedUnDirectedGraph[edgetype](edges: newSeq[seq[WeightedAdjacentEdge[edgetype]]](N), len: N)
+        result = WeightedUnDirectedGraph[edgetype](edge_info: newSeqOfCap[EdgeInfo[edgetype]](capacity), edges: newSeq[seq[WeightedAdjacentEdge[edgetype]]](N), len: N)
     proc add_edge*[T](g: var WeightedUnDirectedGraph[T], u, v: int, cost: T): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_dynamic_impl(u, v, cost, false)
 
-    proc initUnWeightedDirectedGraph*(N: int): UnWeightedDirectedGraph =
+    proc initUnWeightedDirectedGraph*(N: int, capacity: int = 0): UnWeightedDirectedGraph =
         ## 頂点数 N のグラフを初期化する。O(N)。
-        result = UnWeightedDirectedGraph(edges: newSeq[seq[AdjacentEdge]](N), len: N)
+        result = UnWeightedDirectedGraph(edge_info: newSeqOfCap[EdgeInfo[void]](capacity), edges: newSeq[seq[AdjacentEdge]](N), len: N)
     proc add_edge*(g: var UnWeightedDirectedGraph, u, v: int): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_dynamic_impl(u, v, true)
 
-    proc initUnWeightedUnDirectedGraph*(N: int): UnWeightedUnDirectedGraph =
+    proc initUnWeightedUnDirectedGraph*(N: int, capacity: int = 0): UnWeightedUnDirectedGraph =
         ## 頂点数 N のグラフを初期化する。O(N)。
-        result = UnWeightedUnDirectedGraph(edges: newSeq[seq[AdjacentEdge]](N), len: N)
+        result = UnWeightedUnDirectedGraph(edge_info: newSeqOfCap[EdgeInfo[void]](capacity), edges: newSeq[seq[AdjacentEdge]](N), len: N)
     proc add_edge*(g: var UnWeightedUnDirectedGraph, u, v: int): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_dynamic_impl(u, v, false)
 
     proc initWeightedDirectedStaticGraph*(N: int, edgetype: typedesc = int, capacity: int = 0): WeightedDirectedStaticGraph[edgetype] =
         ## 頂点数 N のグラフを初期化し、capacity 辺分の領域を確保する。
-        result = WeightedDirectedStaticGraph[edgetype](edge_info: newSeqOfCap[EdgeInfo[edgetype]](capacity), directed: newSeqOfCap[bool](capacity), len: N)
+        result = WeightedDirectedStaticGraph[edgetype](edge_info: newSeqOfCap[EdgeInfo[edgetype]](capacity), len: N)
     proc add_edge*[T](g: var WeightedDirectedStaticGraph[T], u, v: int, cost: T): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_static_impl(u, v, cost, true)
 
     proc initWeightedUnDirectedStaticGraph*(N: int, edgetype: typedesc = int, capacity: int = 0): WeightedUnDirectedStaticGraph[edgetype] =
         ## 頂点数 N のグラフを初期化し、capacity 辺分の領域を確保する。
-        result = WeightedUnDirectedStaticGraph[edgetype](edge_info: newSeqOfCap[EdgeInfo[edgetype]](capacity), directed: newSeqOfCap[bool](capacity), len: N)
+        result = WeightedUnDirectedStaticGraph[edgetype](edge_info: newSeqOfCap[EdgeInfo[edgetype]](capacity), len: N)
     proc add_edge*[T](g: var WeightedUnDirectedStaticGraph[T], u, v: int, cost: T): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_static_impl(u, v, cost, false)
 
     proc initUnWeightedDirectedStaticGraph*(N: int, capacity: int = 0): UnWeightedDirectedStaticGraph =
         ## 頂点数 N のグラフを初期化し、capacity 辺分の領域を確保する。
-        result = UnWeightedDirectedStaticGraph(edge_info: newSeqOfCap[EdgeInfo[void]](capacity), directed: newSeqOfCap[bool](capacity), len: N)
+        result = UnWeightedDirectedStaticGraph(edge_info: newSeqOfCap[EdgeInfo[void]](capacity), len: N)
     proc add_edge*(g: var UnWeightedDirectedStaticGraph, u, v: int): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_static_impl(u, v, true)
 
     proc initUnWeightedUnDirectedStaticGraph*(N: int, capacity: int = 0): UnWeightedUnDirectedStaticGraph =
         ## 頂点数 N のグラフを初期化し、capacity 辺分の領域を確保する。
-        result = UnWeightedUnDirectedStaticGraph(edge_info: newSeqOfCap[EdgeInfo[void]](capacity), directed: newSeqOfCap[bool](capacity), len: N)
+        result = UnWeightedUnDirectedStaticGraph(edge_info: newSeqOfCap[EdgeInfo[void]](capacity), len: N)
     proc add_edge*(g: var UnWeightedUnDirectedStaticGraph, u, v: int): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_static_impl(u, v, false)
