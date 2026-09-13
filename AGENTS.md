@@ -11,6 +11,7 @@
 - なお、verify用のファイルには説明用のコメントを記述する必要はありません。
 - 標準ライブラリを呼ぶときに import std/[algorithm, tables] のように記述しないでください。import algorithm, tablesと記述してください。
 - expander.nimが対応していないことからexportを使わないでください。
+- doAssertを利用しないでください。ただし、verifyファイルは除きます。
 
 # コードレビュー
 - コードレビューのコメントは日本語で記述してください。
