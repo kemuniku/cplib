@@ -8,6 +8,12 @@ data:
   - icon: ':question:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
   - icon: ':heavy_check_mark:'
     path: cplib/math/osa_k.nim
     title: cplib/math/osa_k.nim
@@ -20,10 +26,10 @@ data:
   - icon: ':question:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':warning:'
@@ -99,6 +105,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/run_length_encode_test.nim
     title: verify/str/run_length_encode_test.nim
@@ -141,11 +153,15 @@ data:
   - cplib/math/osa_k.nim
   - cplib/math/primefactor.nim
   - cplib/math/primefactor.nim
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/euler_phi_yukicoder_test.nim

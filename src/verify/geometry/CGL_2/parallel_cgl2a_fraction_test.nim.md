@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_A
     links:
@@ -43,17 +43,17 @@ data:
     \  if is_parallel(s1, s2): echo 2\n    elif is_orthogonal(s1, s2): echo 1\n  \
     \  else: echo 0\n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
 layout: document

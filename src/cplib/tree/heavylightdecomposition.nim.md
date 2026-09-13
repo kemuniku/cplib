@@ -112,6 +112,12 @@ data:
     path: verify/AI/heavylightdecomposition_test.nim
     title: verify/AI/heavylightdecomposition_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/hld_forest_test.nim
+    title: verify/AI/hld_forest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/hld_forest_test.nim
+    title: verify/AI/hld_forest_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/namori_forest_test.nim
     title: verify/AI/namori_forest_test.nim
   - icon: ':heavy_check_mark:'
@@ -277,36 +283,64 @@ data:
     \       for j in adj[i]:\n                if (i, j) notin seen:\n            \
     \        gn.add_edge(i, j)\n                    seen.incl((i, j))\n          \
     \          seen.incl((j, i))\n        gn.build\n        return initHld(gn, root)\n\
-    \    proc numVertices*(hld: HeavyLightDecomposition): int =\n        ## \u9802\
-    \u70B9\u6570\u3092\u8FD4\u3059\u3002O(1)\n        hld.N\n    proc depth*(hld:\
-    \ HeavyLightDecomposition, p: int): int =\n        ## \u6839\u304B\u3089\u9802\
-    \u70B9p\u307E\u3067\u306E\u8FBA\u6570\u3092\u8FD4\u3059\u3002O(1)\n        hld.D[p]\n\
-    \    proc toSeq*(hld: HeavyLightDecomposition, vtx: int): int =\n        ## \u9802\
-    \u70B9vtx\u3092HLD\u9806\u306E\u914D\u5217\u6DFB\u5B57\uFF080\u59CB\u307E\u308A\
-    \uFF09\u306B\u5909\u63DB\u3059\u308B\u3002O(1)\n        hld.rangeL[vtx]\n    proc\
-    \ toSeq*[T](hld: HeavyLightDecomposition, values: openArray[T]): seq[T] =\n  \
-    \      ## \u9802\u70B9\u756A\u53F7\u9806\u306E\u6570\u5217\u3092HLD\u9806\u306B\
-    \u4E26\u3079\u66FF\u3048\u3066\u8FD4\u3059\u3002\u6642\u9593\u30FB\u8FFD\u52A0\
-    \u7A7A\u9593O(N)\n        ## values\u306E\u9577\u3055\u306F\u9802\u70B9\u6570\u3068\
-    \u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u3001result[hld.toSeq(i)] = values[i]\u3068\
-    \u306A\u308B\u3002\n        assert values.len == hld.N, \"\u5024\u306E\u914D\u5217\
-    \u306E\u9577\u3055\u306F\u6728\u306E\u9802\u70B9\u6570\u3068\u4E00\u81F4\u3059\
-    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = newSeq[T](hld.N)\n\
-    \        for i, value in values:\n            result[hld.toSeq(i)] = value\n \
-    \   proc toVtx*(hld: HeavyLightDecomposition, seqidx: int): int =\n        ##\
-    \ HLD\u9806\u306E\u914D\u5217\u6DFB\u5B57seqidx\u306B\u5BFE\u5FDC\u3059\u308B\u9802\
-    \u70B9\u756A\u53F7\u3092\u8FD4\u3059\u3002O(1)\n        hld.I[seqidx]\n    proc\
-    \ toSeq2In*(hld: HeavyLightDecomposition, vtx: int): int =\n        ## \u5404\u9802\
-    \u70B9\u306E\u5165\u5834\u30FB\u9000\u5834\u3092\u8A18\u9332\u3059\u308BEuler\
-    \ Tour\u3067\u3001vtx\u306E\u5165\u5834\u4F4D\u7F6E\uFF080\u59CB\u307E\u308A\uFF09\
-    \u3092\u8FD4\u3059\u3002O(1)\n        hld.rangeL[vtx] * 2 - hld.D[vtx]\n    proc\
-    \ toSeq2Out*(hld: HeavyLightDecomposition, vtx: int): int =\n        ## \u5404\
-    \u9802\u70B9\u306E\u5165\u5834\u30FB\u9000\u5834\u3092\u8A18\u9332\u3059\u308B\
-    Euler Tour\u3067\u3001vtx\u306E\u9000\u5834\u4F4D\u7F6E\uFF080\u59CB\u307E\u308A\
-    \uFF09\u3092\u8FD4\u3059\u3002O(1)\n        hld.rangeR[vtx] * 2 - hld.D[vtx] -\
-    \ 1\n    proc parentOf*(hld: HeavyLightDecomposition, v: int): int =\n       \
-    \ ## \u9802\u70B9v\u306E\u89AA\u3092\u8FD4\u3059\u3002\u6839\u306E\u5834\u5408\
-    \u306F-1\u3092\u8FD4\u3059\u3002O(1)\n        hld.P[v]\n    proc heavyRootOf*(hld:\
+    \    proc initHldFromForest*(g: UnDirectedGraph): HeavyLightDecomposition =\n\
+    \        ## N\u9802\u70B9\u306E\u68EE\u306B\u6839N\u3092\u8FFD\u52A0\u3057\u3001\
+    \u5404\u6210\u5206\u306E\u6700\u5C0F\u756A\u53F7\u306E\u9802\u70B9\u3068\u7D50\
+    \u3093\u3060HLD\u3092\u69CB\u7BC9\u3059\u308B\u3002\u6642\u9593\u30FB\u8FFD\u52A0\
+    \u7A7A\u9593O(N)\n        let n = g.len\n        var parent = newSeqWith(n + 1,\
+    \ -1)\n        var stack: seq[int]\n        for root in 0..<n:\n            if\
+    \ parent[root] != -1:\n                continue\n            parent[root] = n\n\
+    \            stack.add(root)\n            while stack.len > 0:\n             \
+    \   let v = stack.pop()\n                for (u, _) in g.to_and_cost(v):\n   \
+    \                 if parent[u] == -1:\n                        parent[u] = v\n\
+    \                        stack.add(u)\n        return initHldFromParent(parent,\
+    \ n)\n\n    proc initHldFromForest*(g: DirectedGraph): HeavyLightDecomposition\
+    \ =\n        ## \u5411\u304D\u3092\u7121\u8996\u3059\u308B\u3068\u68EE\u306B\u306A\
+    \u308BN\u9802\u70B9\u306Eg\u306B\u6839N\u3092\u8FFD\u52A0\u3057\u3001\u5404\u6210\
+    \u5206\u306E\u6700\u5C0F\u9802\u70B9\u3068\u7D50\u3076\u3002\u671F\u5F85O(N +\
+    \ M)\n        var gn = initUnWeightedUnDirectedStaticGraph(g.len)\n        var\
+    \ seen = initHashSet[(int, int)]()\n        for v in 0..<g.len:\n            for\
+    \ (u, _) in g.to_and_cost(v):\n                if (v, u) notin seen:\n       \
+    \             gn.add_edge(v, u)\n                    seen.incl((v, u))\n     \
+    \               seen.incl((u, v))\n        gn.build()\n        return initHldFromForest(gn)\n\
+    \n    proc initHldFromForest*(adj: openArray[seq[int]]): HeavyLightDecomposition\
+    \ =\n        ## \u68EE\u306E\u96A3\u63A5\u30EA\u30B9\u30C8\u306E\u5411\u304D\u3092\
+    \u7121\u8996\u3057\u3001\u6839N\u3092\u8FFD\u52A0\u3057\u3066\u5404\u6210\u5206\
+    \u306E\u6700\u5C0F\u9802\u70B9\u3068\u7D50\u3076\u3002\u671F\u5F85O(N + M)\n \
+    \       var gn = initUnWeightedUnDirectedStaticGraph(adj.len)\n        var seen\
+    \ = initHashSet[(int, int)]()\n        for v in 0..<adj.len:\n            for\
+    \ u in adj[v]:\n                if (v, u) notin seen:\n                    gn.add_edge(v,\
+    \ u)\n                    seen.incl((v, u))\n                    seen.incl((u,\
+    \ v))\n        gn.build()\n        return initHldFromForest(gn)\n\n    proc numVertices*(hld:\
+    \ HeavyLightDecomposition): int =\n        ## \u9802\u70B9\u6570\u3092\u8FD4\u3059\
+    \u3002O(1)\n        hld.N\n    proc depth*(hld: HeavyLightDecomposition, p: int):\
+    \ int =\n        ## \u6839\u304B\u3089\u9802\u70B9p\u307E\u3067\u306E\u8FBA\u6570\
+    \u3092\u8FD4\u3059\u3002O(1)\n        hld.D[p]\n    proc toSeq*(hld: HeavyLightDecomposition,\
+    \ vtx: int): int =\n        ## \u9802\u70B9vtx\u3092HLD\u9806\u306E\u914D\u5217\
+    \u6DFB\u5B57\uFF080\u59CB\u307E\u308A\uFF09\u306B\u5909\u63DB\u3059\u308B\u3002\
+    O(1)\n        hld.rangeL[vtx]\n    proc toSeq*[T](hld: HeavyLightDecomposition,\
+    \ values: openArray[T]): seq[T] =\n        ## \u9802\u70B9\u756A\u53F7\u9806\u306E\
+    \u6570\u5217\u3092HLD\u9806\u306B\u4E26\u3079\u66FF\u3048\u3066\u8FD4\u3059\u3002\
+    \u6642\u9593\u30FB\u8FFD\u52A0\u7A7A\u9593O(N)\n        ## values\u306E\u9577\u3055\
+    \u306F\u9802\u70B9\u6570\u3068\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\
+    \u3001result[hld.toSeq(i)] = values[i]\u3068\u306A\u308B\u3002\n        assert\
+    \ values.len == hld.N, \"\u5024\u306E\u914D\u5217\u306E\u9577\u3055\u306F\u6728\
+    \u306E\u9802\u70B9\u6570\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        result = newSeq[T](hld.N)\n        for i, value\
+    \ in values:\n            result[hld.toSeq(i)] = value\n    proc toVtx*(hld: HeavyLightDecomposition,\
+    \ seqidx: int): int =\n        ## HLD\u9806\u306E\u914D\u5217\u6DFB\u5B57seqidx\u306B\
+    \u5BFE\u5FDC\u3059\u308B\u9802\u70B9\u756A\u53F7\u3092\u8FD4\u3059\u3002O(1)\n\
+    \        hld.I[seqidx]\n    proc toSeq2In*(hld: HeavyLightDecomposition, vtx:\
+    \ int): int =\n        ## \u5404\u9802\u70B9\u306E\u5165\u5834\u30FB\u9000\u5834\
+    \u3092\u8A18\u9332\u3059\u308BEuler Tour\u3067\u3001vtx\u306E\u5165\u5834\u4F4D\
+    \u7F6E\uFF080\u59CB\u307E\u308A\uFF09\u3092\u8FD4\u3059\u3002O(1)\n        hld.rangeL[vtx]\
+    \ * 2 - hld.D[vtx]\n    proc toSeq2Out*(hld: HeavyLightDecomposition, vtx: int):\
+    \ int =\n        ## \u5404\u9802\u70B9\u306E\u5165\u5834\u30FB\u9000\u5834\u3092\
+    \u8A18\u9332\u3059\u308BEuler Tour\u3067\u3001vtx\u306E\u9000\u5834\u4F4D\u7F6E\
+    \uFF080\u59CB\u307E\u308A\uFF09\u3092\u8FD4\u3059\u3002O(1)\n        hld.rangeR[vtx]\
+    \ * 2 - hld.D[vtx] - 1\n    proc parentOf*(hld: HeavyLightDecomposition, v: int):\
+    \ int =\n        ## \u9802\u70B9v\u306E\u89AA\u3092\u8FD4\u3059\u3002\u6839\u306E\
+    \u5834\u5408\u306F-1\u3092\u8FD4\u3059\u3002O(1)\n        hld.P[v]\n    proc heavyRootOf*(hld:\
     \ HeavyLightDecomposition, v: int): int =\n        ## \u9802\u70B9v\u304C\u5C5E\
     \u3059\u308Bheavy path\u306E\u6700\u3082\u6D45\u3044\u9802\u70B9\u3092\u8FD4\u3059\
     \u3002O(1)\n        hld.PP[v]\n    proc heavyChildOf*(hld: HeavyLightDecomposition,\
@@ -373,9 +407,8 @@ data:
     \u9802\u70B9\u756A\u53F7\u3092HLD\u9806\u306B\u5217\u6319\u3059\u308B\u3002O(\u90E8\
     \u5206\u6728\u306E\u9802\u70B9\u6570)\n        for i in hld.rangeL[p]..<hld.rangeR[p]:\n\
     \            yield hld.toVtx(i)\n    proc median*(hld: HeavyLightDecomposition,\
-    \ x: int, y: int, z: int): int =\n        ## \u9802\u70B9x\u3001y\u3001z\u306E\
-    \u54042\u9802\u70B9\u3092\u7D50\u30763\u672C\u306E\u30D1\u30B9\u306B\u5171\u901A\
-    \u3059\u308B\u9802\u70B9\u3092\u8FD4\u3059\u3002O(log N)\n        hld.lca(x, y)\
+    \ x: int, y: int, z: int): int =\n        ## \u6839\u3092x\u3068\u3057\u305F\u3068\
+    \u304D\u306B\u3001lca(y,z)\u3092\u6C42\u3081\u308B\u3002\n        hld.lca(x, y)\
     \ xor hld.lca(y, z) xor hld.lca(x, z)\n    proc la*(hld: HeavyLightDecomposition,\
     \ starting: int, goal: int, d: int): int =\n        ## starting\u304B\u3089goal\u3078\
     d\u8FBA\u9032\u3093\u3060\u9802\u70B9\u3092\u8FD4\u3059\u3002d\u304C\u8CA0\u307E\
@@ -455,7 +488,7 @@ data:
   - cplib/graph/namori_forest.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 07:58:37+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
@@ -484,6 +517,8 @@ data:
   - verify/AI/namori_graph_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_test.nim
+  - verify/AI/hld_forest_test.nim
+  - verify/AI/hld_forest_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/namori_forest_test.nim

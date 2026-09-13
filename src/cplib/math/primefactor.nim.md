@@ -26,10 +26,16 @@ data:
   - icon: ':question:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':warning:'
@@ -87,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
   _isVerificationFailed: true
   _pathExtension: nim
   _verificationStatusIcon: ':question:'
@@ -124,11 +136,11 @@ data:
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
@@ -142,11 +154,15 @@ data:
   - verify/math/divisor_many_atcoder_test_.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   timestamp: '2026-09-13 12:35:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/euler_phi_yukicoder_test.nim

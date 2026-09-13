@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
   - icon: ':question:'
@@ -19,10 +19,10 @@ data:
   - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     ERROR: 1e-8
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_C
@@ -55,21 +55,21 @@ data:
     for _ in 0..<q:\n    var l1, l2 = initLine(get(), get())\n    var p = cross_point(l1,\
     \ l2)\n    echo &\"{p.x.toFloat:.10f} {p.y.toFloat:.10f}\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
 layout: document

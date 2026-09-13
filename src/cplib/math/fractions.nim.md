@@ -51,40 +51,40 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/polygon_test.nim
     title: verify/AI/polygon_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - icon: ':x:'

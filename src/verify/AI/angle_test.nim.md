@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
   - icon: ':question:'
@@ -57,8 +57,8 @@ data:
     '
   dependsOn:
   - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/angle_test.nim

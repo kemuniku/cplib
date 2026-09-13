@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
   - icon: ':question:'
@@ -19,16 +19,16 @@ data:
   - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   - icon: ':question:'
@@ -76,20 +76,20 @@ data:
     \ vi.v[^(i+1)])).sqrt\na2 += float(norm(vi.v[^1], vi.v[0])).sqrt\necho min(a1,\
     \ a2)\n"
   dependsOn:
+  - cplib/geometry/angle.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/distance.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/intersect.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/distance.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/intersect.nim
   isVerificationFile: false
   path: verify/geometry/convex_hull_abc286ex_test_.nim
   requiredBy: []

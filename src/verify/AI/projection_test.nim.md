@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
   _extendedRequiredBy: []
@@ -46,9 +46,9 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/projection.nim
-  - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/projection.nim
+  - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/projection_test.nim

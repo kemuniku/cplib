@@ -580,6 +580,12 @@ data:
     path: verify/AI/heavylightdecomposition_test.nim
     title: verify/AI/heavylightdecomposition_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/hld_forest_test.nim
+    title: verify/AI/hld_forest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/hld_forest_test.nim
+    title: verify/AI/hld_forest_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/itertools_enumeration_test.nim
     title: verify/AI/itertools_enumeration_test.nim
   - icon: ':heavy_check_mark:'
@@ -1483,6 +1489,8 @@ data:
   - verify/AI/bipartite_graph_test.nim
   - verify/AI/trie_test.nim
   - verify/AI/trie_test.nim
+  - verify/AI/hld_forest_test.nim
+  - verify/AI/hld_forest_test.nim
   - verify/AI/rerooting_test.nim
   - verify/AI/rerooting_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim

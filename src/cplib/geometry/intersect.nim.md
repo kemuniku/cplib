@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
   - icon: ':question:'
@@ -20,10 +20,10 @@ data:
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
   - icon: ':warning:'
@@ -51,33 +51,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/intersect_test.nim
     title: verify/AI/intersect_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -112,10 +112,10 @@ data:
     \ cross(l1.vector, l1.t - l2.s)\n        return l2.s + l2.vector * (d2 / d1)\n"
   dependsOn:
   - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
@@ -127,7 +127,7 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/distance.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim

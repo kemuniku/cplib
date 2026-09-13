@@ -190,10 +190,10 @@ data:
     \        let residue = (functional_graph.cycle_idx[x]-(k mod csiz)+csiz) mod csiz\n\
     \        return functional_graph.cycle_depth[cid][residue].upperBound(k)\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
   requiredBy:
@@ -203,7 +203,7 @@ data:
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 07:58:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_test.nim

@@ -7,16 +7,16 @@ data:
   - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
   - icon: ':question:'
@@ -57,9 +57,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
     links:
@@ -78,29 +78,29 @@ data:
     for i in 0..<n:\n    result[i] = inverse.add(Mint(ii()))\necho result.join(\"\
     \ \")\n"
   dependsOn:
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/convolution/ntt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps/relaxed_inv_of_formal_power_series_test.nim
 layout: document

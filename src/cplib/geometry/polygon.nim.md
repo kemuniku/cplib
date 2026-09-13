@@ -33,10 +33,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/polygon_test.nim
     title: verify/AI/polygon_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - icon: ':x:'
@@ -150,12 +150,12 @@ data:
     \ discard vi.pop\n            vi.add(s[i])\n        vi.delete(0)\n        return\
     \ Polygon[T](v: vi)\n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy:

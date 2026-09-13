@@ -15,9 +15,9 @@ data:
     title: cplib/geometry/ccw.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
     links:
@@ -46,7 +46,7 @@ data:
   path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/ccw_cgl1c_test.nim
 layout: document

@@ -8,10 +8,16 @@ data:
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   _extendedVerifiedWith:
@@ -33,6 +39,12 @@ data:
   - icon: ':x:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
   _isVerificationFailed: true
   _pathExtension: nim
   _verificationStatusIcon: ':question:'
@@ -57,11 +69,15 @@ data:
   isVerificationFile: false
   path: cplib/math/powmod.nim
   requiredBy:
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/AI/primitive_root_test.nim

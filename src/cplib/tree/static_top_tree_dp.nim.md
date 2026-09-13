@@ -87,16 +87,16 @@ data:
     \u6728\u5168\u4F53\u306E\u96C6\u7D04\u5024\u3092\u8FD4\u3059\u3002O(1)\n     \
     \   return self.values[self.tree.root]\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree_dp.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 07:58:37+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim

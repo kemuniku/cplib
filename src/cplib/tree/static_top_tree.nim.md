@@ -130,10 +130,10 @@ data:
     \u7BC9\u3059\u308B\u3002parent[root]\u306F\u53C2\u7167\u3057\u306A\u3044\u3002\
     O(N log N)\n        return initStaticTopTree(initHldFromParent(parent, root))\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree.nim
   requiredBy:
@@ -141,7 +141,7 @@ data:
   - cplib/tree/static_top_tree_dp.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 07:58:37+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/point_set_tree_path_composite_sum_test.nim

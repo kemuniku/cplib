@@ -27,9 +27,9 @@ data:
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_3_A
     links:
@@ -63,19 +63,19 @@ data:
 
     '
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/polygon.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_3/area_float_cgl3a_test.nim
 layout: document

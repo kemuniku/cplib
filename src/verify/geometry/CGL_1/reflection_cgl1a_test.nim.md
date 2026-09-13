@@ -7,17 +7,17 @@ data:
   - icon: ':question:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     ERROR: 1e-8
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
@@ -37,15 +37,15 @@ data:
     \    var p = get()\n    var ans = reflection(l, p)\n    echo &\"{ans.x:.10f} {ans.y:.10f}\"\
     \n"
   dependsOn:
-  - cplib/geometry/projection.nim
-  - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/projection.nim
+  - cplib/geometry/projection.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_1/reflection_cgl1a_test.nim
 layout: document

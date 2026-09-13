@@ -31,7 +31,13 @@ data:
   - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/primitive_root_test.nim
@@ -39,9 +45,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/primitive_root_test.nim
     title: verify/AI/primitive_root_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -61,22 +73,26 @@ data:
     \     flg = false\n                    break\n            if flg:\n          \
     \      return a"
   dependsOn:
-  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/primitive_root.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
   - verify/AI/primitive_root_test.nim
   - verify/AI/primitive_root_test.nim
 documentation_of: cplib/math/primitive_root.nim

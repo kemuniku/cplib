@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
   - icon: ':question:'
@@ -14,16 +14,16 @@ data:
   - icon: ':question:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   - icon: ':question:'
@@ -32,10 +32,10 @@ data:
   - icon: ':question:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
   - icon: ':warning:'
@@ -93,94 +93,94 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/projection_test.nim
     title: verify/AI/projection_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
     title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/projection_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/projection_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
     title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
     title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/distance_cgl2d_test.nim
     title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
     title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
     title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - icon: ':x:'

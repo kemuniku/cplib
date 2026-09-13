@@ -235,13 +235,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/convolution/min_plus_convolution.nim
       title: cplib/convolution/min_plus_convolution.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/convolution/ntt.nim
       title: cplib/convolution/ntt.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/convolution/relaxed_convolution.nim
       title: cplib/convolution/relaxed_convolution.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/convolution/semi_relaxed_convolution.nim
       title: cplib/convolution/semi_relaxed_convolution.nim
     - icon: ':heavy_check_mark:'
@@ -249,31 +249,31 @@ data:
       title: cplib/convolution/xor_convolution.nim
   - name: cplib/fps
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/berlekamp_massey.nim
       title: cplib/fps/berlekamp_massey.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/bmbm.nim
       title: cplib/fps/bmbm.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/bostan_mori.nim
       title: cplib/fps/bostan_mori.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/composition.nim
       title: cplib/fps/composition.nim
     - icon: ':question:'
       path: cplib/fps/formal_power_series.nim
       title: cplib/fps/formal_power_series.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/fps.nim
       title: cplib/fps/fps.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/polynomial_interpolation.nim
       title: cplib/fps/polynomial_interpolation.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/power_projection.nim
       title: cplib/fps/power_projection.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/product_of_polynomial_sequence.nim
       title: cplib/fps/product_of_polynomial_sequence.nim
     - icon: ':question:'
@@ -282,7 +282,7 @@ data:
     - icon: ':question:'
       path: cplib/fps/shift_of_sampling_points.nim
       title: cplib/fps/shift_of_sampling_points.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/sparse_formal_power_series.nim
       title: cplib/fps/sparse_formal_power_series.nim
     - icon: ':question:'
@@ -290,7 +290,7 @@ data:
       title: cplib/fps/taylor_shift.nim
   - name: cplib/geometry
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/angle.nim
       title: cplib/geometry/angle.nim
     - icon: ':heavy_check_mark:'
@@ -302,16 +302,16 @@ data:
     - icon: ':question:'
       path: cplib/geometry/ccw.nim
       title: cplib/geometry/ccw.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/distance.nim
       title: cplib/geometry/distance.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/intersect.nim
       title: cplib/geometry/intersect.nim
     - icon: ':question:'
       path: cplib/geometry/polygon.nim
       title: cplib/geometry/polygon.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/projection.nim
       title: cplib/geometry/projection.nim
   - name: cplib/graph
@@ -418,6 +418,9 @@ data:
     - icon: ':question:'
       path: cplib/graph/two_edge_connected_components.nim
       title: cplib/graph/two_edge_connected_components.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/two_sat.nim
+      title: cplib/graph/two_sat.nim
     - icon: ':question:'
       path: cplib/graph/warshall_floyd.nim
       title: cplib/graph/warshall_floyd.nim
@@ -490,6 +493,9 @@ data:
       path: cplib/math/mex_naive.nim
       title: cplib/math/mex_naive.nim
     - icon: ':x:'
+      path: cplib/math/modfast.nim
+      title: cplib/math/modfast.nim
+    - icon: ':x:'
       path: cplib/math/monoid_floor_sum.nim
       title: cplib/math/monoid_floor_sum.nim
     - icon: ':heavy_check_mark:'
@@ -504,7 +510,7 @@ data:
     - icon: ':question:'
       path: cplib/math/primefactor.nim
       title: cplib/math/primefactor.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/math/primitive_root.nim
       title: cplib/math/primitive_root.nim
     - icon: ':heavy_check_mark:'
@@ -1467,6 +1473,9 @@ data:
       path: verify/AI/heavylightdecomposition_test.nim
       title: verify/AI/heavylightdecomposition_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/hld_forest_test.nim
+      title: verify/AI/hld_forest_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/hopcroft_karp_test.nim
       title: verify/AI/hopcroft_karp_test.nim
     - icon: ':heavy_check_mark:'
@@ -1766,6 +1775,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/tsp_test.nim
       title: verify/AI/tsp_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/two_sat_test.nim
+      title: verify/AI/two_sat_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/unionfind_test.nim
       title: verify/AI/unionfind_test.nim
@@ -2069,121 +2081,121 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/fps/composition_of_formal_power_series_large_test.nim
       title: verify/fps/composition_of_formal_power_series_large_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/composition_of_formal_power_series_test.nim
       title: verify/fps/composition_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
       title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
       title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/convolution_mod_test.nim
       title: verify/fps/convolution_mod_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/division_of_polynomials_test.nim
       title: verify/fps/division_of_polynomials_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/exp_of_formal_power_series_test.nim
       title: verify/fps/exp_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/find_linear_recurrence_test.nim
       title: verify/fps/find_linear_recurrence_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/inv_of_formal_power_series_test.nim
       title: verify/fps/inv_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
       title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/log_of_formal_power_series_test.nim
       title: verify/fps/log_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/multipoint_evaluation_test.nim
       title: verify/fps/multipoint_evaluation_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/polynomial_interpolation_test.nim
       title: verify/fps/polynomial_interpolation_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/polynomial_taylor_shift_test.nim
       title: verify/fps/polynomial_taylor_shift_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/pow_of_formal_power_series_test.nim
       title: verify/fps/pow_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/product_of_polynomial_sequence_test.nim
       title: verify/fps/product_of_polynomial_sequence_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
       title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
       title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/relaxed_log_of_formal_power_series_test.nim
       title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
       title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
       title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
       title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps/sqrt_of_formal_power_series_test.nim
       title: verify/fps/sqrt_of_formal_power_series_test.nim
   - name: verify/geometry/CGL_1
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_1/ccw_cgl1c_test.nim
       title: verify/geometry/CGL_1/ccw_cgl1c_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
       title: verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
       title: verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_1/projection_cgl1a_test.nim
       title: verify/geometry/CGL_1/projection_cgl1a_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
       title: verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_1/reflection_cgl1a_test.nim
       title: verify/geometry/CGL_1/reflection_cgl1a_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
       title: verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - name: verify/geometry/CGL_2
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
       title: verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
       title: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_2/distance_cgl2d_test.nim
       title: verify/geometry/CGL_2/distance_cgl2d_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
       title: verify/geometry/CGL_2/intersect_cgl2b_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
       title: verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
       title: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_2/parallel_cgl2a_test.nim
       title: verify/geometry/CGL_2/parallel_cgl2a_test.nim
   - name: verify/geometry/CGL_3
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
       title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     - icon: ':x:'
@@ -2371,6 +2383,9 @@ data:
     - icon: ':x:'
       path: verify/math/many_factorials_test.nim
       title: verify/math/many_factorials_test.nim
+    - icon: ':x:'
+      path: verify/math/modfast_test.nim
+      title: verify/math/modfast_test.nim
     - icon: ':x:'
       path: verify/math/monoid_floor_sum_test.nim
       title: verify/math/monoid_floor_sum_test.nim

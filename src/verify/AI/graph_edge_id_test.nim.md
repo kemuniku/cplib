@@ -141,27 +141,27 @@ data:
     tree.add_edge(1, 2)\nassert tree.steiner_tree_mincost(@[0, 2]) == 2\n"
   dependsOn:
   - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/bellmanford.nim
   - cplib/graph/dijkstra.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/bellmanford.nim
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd.nim
-  - cplib/utils/bititers.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/AI/graph_edge_id_test.nim
   requiredBy: []

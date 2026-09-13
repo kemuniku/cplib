@@ -148,41 +148,41 @@ data:
     \ 0, 2), 3.5)\nassertClose(tspPathAnyStart(dist), 3.5)\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/bititers.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/tsp.nim
+  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tree/diameter.nim
   - cplib/graph/kruskal.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/bellmanford.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/kruskal.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/reverse_edge.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/bellmanford.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/utils/bititers.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/tsp.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/tree/diameter.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/steiner_tree.nim
   isVerificationFile: true
   path: verify/AI/graph_weight_type_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 07:58:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/graph_weight_type_test.nim

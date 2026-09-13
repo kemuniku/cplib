@@ -8,6 +8,12 @@ data:
   - icon: ':question:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
+  - icon: ':x:'
+    path: cplib/math/modfast.nim
+    title: cplib/math/modfast.nim
   - icon: ':question:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
@@ -20,10 +26,10 @@ data:
   - icon: ':question:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':warning:'
@@ -93,6 +99,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
+  - icon: ':x:'
+    path: verify/math/modfast_test.nim
+    title: verify/math/modfast_test.nim
   _isVerificationFailed: true
   _pathExtension: nim
   _verificationStatusIcon: ':question:'
@@ -126,11 +138,15 @@ data:
   - cplib/math/primefactor.nim
   - cplib/math/powmod.nim
   - cplib/math/powmod.nim
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   timestamp: '2024-03-16 01:58:47+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/factorize_yosupo_test.nim
   - verify/math/euler_phi_yukicoder_test.nim

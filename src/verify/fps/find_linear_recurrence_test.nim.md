@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/berlekamp_massey.nim
     title: cplib/fps/berlekamp_massey.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/berlekamp_massey.nim
     title: cplib/fps/berlekamp_massey.nim
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
     links:
@@ -77,20 +77,20 @@ data:
     '
   dependsOn:
   - cplib/fps/berlekamp_massey.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/fps/find_linear_recurrence_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps/find_linear_recurrence_test.nim
 layout: document
