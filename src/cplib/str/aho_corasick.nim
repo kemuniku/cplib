@@ -1,3 +1,5 @@
+import cplib/graph/graph
+
 when not declared CPLIB_STR_AHO_CORASICK:
     ## 登録語の集合を固定したAho–Corasick。頂点は登録語のprefix（根は空文字列）を表す。
     ## 頂点IDは入力順に登録語を走査して頂点を作った順の連番。根は0。
@@ -141,6 +143,20 @@ when not declared CPLIB_STR_AHO_CORASICK:
             current = int(self.nodes[current].parent)
         for i in 0..<result.len div 2:
             swap(result[i], result[result.high - i])
+
+    proc toTrieGraph*[chars](self: AhoCorasick[chars]): WeightedDirectedGraph[char] =
+        ## 頂点IDを保ち、Trieの親から子へ文字を重みとする辺を張る。時間・空間 O(N)。
+        doAssert self.nodes.len > 0
+        result = initWeightedDirectedGraph(self.nodes.len, char, self.nodes.len - 1)
+        for node in 1..<self.nodes.len:
+            result.add_edge(int(self.nodes[node].parent), node, self.nodes[node].character)
+
+    proc toFailureGraph*[chars](self: AhoCorasick[chars]): UnWeightedDirectedGraph =
+        ## 頂点IDを保ち、各頂点からfailure先へ辺を張る。根の自己ループは除く。時間・空間 O(N)。
+        doAssert self.nodes.len > 0
+        result = initUnWeightedDirectedGraph(self.nodes.len, self.nodes.len - 1)
+        for node in 1..<self.nodes.len:
+            result.add_edge(node, int(self.nodes[node].failure))
 
     proc initAhoCorasickPointer*[chars](self: var AhoCorasick[chars], node: int = 0): AhoCorasickPointer[chars] =
         ## 指定した頂点を指すポインタを作る。省略時は根。O(1)。

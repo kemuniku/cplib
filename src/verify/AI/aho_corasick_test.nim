@@ -2,6 +2,28 @@
 
 import random, strutils, algorithm
 import cplib/str/aho_corasick
+import cplib/graph/graph
+
+proc verifyGraphs[chars](ac: AhoCorasick[chars]) =
+    let trieGraph = ac.toTrieGraph()
+    let failureGraph = ac.toFailureGraph()
+    assert trieGraph.len == ac.nodeCount
+    assert failureGraph.len == ac.nodeCount
+    assert trieGraph.edge_count == ac.nodeCount - 1
+    assert failureGraph.edge_count == ac.nodeCount - 1
+    var incoming = newSeq[int](ac.nodeCount)
+    for edge in trieGraph.edge_info:
+        inc incoming[edge.dst]
+        assert edge.src == ac.getParent(edge.dst)
+        assert ac.restoreString(edge.src) & edge.cost == ac.restoreString(edge.dst)
+    assert incoming[ac.root] == 0
+    for node in 1..<ac.nodeCount:
+        assert incoming[node] == 1
+        assert failureGraph.edges[node].len == 1
+    assert failureGraph.edges[ac.root].len == 0
+    for edge in failureGraph.edge_info:
+        assert edge.src != ac.root
+        assert edge.dst == ac.failure(edge.src)
 
 let orderedWords = @["bc", "b", "abc", "aa", "", "abc"]
 let ordered = initAhoCorasick(orderedWords, 'a'..'c')
@@ -20,6 +42,7 @@ assert ordered.failure(ordered.patternNode(2)) == ordered.patternNode(0)
 assert ordered.getParent(ordered.root) == -1
 
 var ac = initAhoCorasick(@["he", "she", "hers", "his", "he", ""], 'a'..'z')
+verifyGraphs(ac)
 var p = ac.initAhoCorasickPointer()
 assert p.nodeId == ac.root
 assert p.matchCount == 1
@@ -78,6 +101,7 @@ except AssertionDefect:
     discard
 
 var empty = initAhoCorasick(newSeq[string](), 'a'..'z')
+verifyGraphs(empty)
 assert empty.nodeCount == 1
 assert empty.findNode("") == empty.root
 assert empty.findNode("a") == -1
@@ -90,9 +114,11 @@ assert ep.matchCount == 0
 for node in ep.matches:
     assert false
 var blanks = initAhoCorasick(@["", ""], 'x'..'x')
+verifyGraphs(blanks)
 assert blanks.matchCount(blanks.root) == 2
 assert blanks.next(0, "xxx!") == 0
 var bytes = initAhoCorasick(@["\0\255", "\255", "\0"], '\0'..'\255')
+verifyGraphs(bytes)
 var bp = bytes.initAhoCorasickPointer()
 assert bytes.findNode("\0\255") == bytes.patternNode(0)
 assert bytes.findNode("\255\255") == -1
@@ -112,6 +138,7 @@ for trial in 0..<300:
             word.add(char(ord('a') + rng.rand(0..2)))
         words.add(word)
     var automaton = initAhoCorasick(words, 'a'..'c')
+    verifyGraphs(automaton)
     var prefixes = @[""]
     for word in words:
         for length in 1..word.len:
