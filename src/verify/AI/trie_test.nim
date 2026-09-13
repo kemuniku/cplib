@@ -2,6 +2,7 @@
 
 import random, strutils
 import cplib/str/trie
+import cplib/graph/graph
 
 const alphabet = 'a'..'c'
 var tree = initTrie(@["", "a", "ab", "ab", "ac", "b"], alphabet)
@@ -210,5 +211,34 @@ bytePointer.add('\0')
 bytePointer.add('\255')
 assert $bytePointer == "\0\255"
 assert bytePointer.pop() == '\255'
+
+var graphTree = initTrie(@["", "ab", "ab", "ac", "b"], alphabet)
+graphTree.excl("b")
+discard graphTree.getChild(graphTree.root, 'c')
+let g = graphTree.toGraph()
+assert g.len == graphTree.nodes.len
+assert g.edge_count == g.len - 1
+var visited = newSeq[bool](g.len)
+visited[0] = true
+for u in 0..<g.len:
+    for (v, c) in g[u]:
+        assert not visited[v]
+        visited[v] = true
+        assert graphTree.getParent(v) == u
+        assert graphTree.restoreString(v) == graphTree.restoreString(u) & c
+for seen in visited:
+    assert seen
+assert g.edges[graphTree.findNode("b")].len == 0
+let oldLen = g.len
+graphTree.incl("aaa")
+assert g.len == oldLen
+let emptyGraph = initTrie(alphabet).toGraph()
+assert emptyGraph.len == 1
+assert emptyGraph.edge_count == 0
+var defaultGraphTree: Trie[alphabet]
+assert defaultGraphTree.toGraph().len == 1
+let byteGraph = bytes.toGraph()
+for edge in byteGraph.edge_info:
+    assert bytes.nodes[edge.dst].character == edge.cost
 
 echo "Hello World"

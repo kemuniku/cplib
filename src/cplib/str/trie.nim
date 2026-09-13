@@ -1,4 +1,5 @@
 when not declared CPLIB_STR_TRIE:
+    import cplib/graph/graph
     const CPLIB_STR_TRIE* = 1
 
     type
@@ -145,6 +146,13 @@ when not declared CPLIB_STR_TRIE:
     proc upperBound*[chars](self: Trie[chars], s: string): int =
         ## 辞書順でs以下の文字列の個数を返す。O(σ|s| + 1)。
         return self.lowerBound(s) + self.count(s)
+
+    proc toGraph*[chars](self: Trie[chars]): WeightedDirectedGraph[char] =
+        ## 節点IDを頂点番号とし、親から子へ文字を重みとする辺を張る。全節点を含め O(N + 1)。
+        let n = max(1, self.nodes.len)
+        result = initWeightedDirectedGraph(n, char, n - 1)
+        for node in 1..<self.nodes.len:
+            result.add_edge(int(self.nodes[node].parent), node, self.nodes[node].character)
 
     proc initTriePointer*[chars](self: var Trie[chars], node: int = 0): TriePointer[chars] =
         ## 指定した節点を指すポインタを作る。省略時は根。σ固定で O(1)。
