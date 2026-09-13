@@ -110,8 +110,8 @@ when not declared CPLIB_RANGE_EDGE_GRAPH:
         let fromNode = G.G.len
         let toNode = G.G.len + 1
         G.G.len += 2
-        G.G.edges.add(newSeq[(int32, T)]())
-        G.G.edges.add(newSeq[(int32, T)]())
+        G.G.edges.add(newSeq[WeightedAdjacentEdge[T]]())
+        G.G.edges.add(newSeq[WeightedAdjacentEdge[T]]())
         G.connectRangeToVertex(G.root, from_l, from_r, fromNode, G.zero)
         G.G.add_edge(fromNode, toNode, cost)
         G.connectVertexToRange(toNode, G.root, to_l, to_r, G.zero)

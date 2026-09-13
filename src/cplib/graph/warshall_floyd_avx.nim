@@ -722,7 +722,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             zero, inf: int32
         ): bool {.importc: "cplib_warshall_floyd_int32_avx2".}
 
-    proc warshall_floyd_impl[T](g: DynamicGraph[T] or StaticGraph[T], zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =
+    proc warshall_floyd_impl[T](g: WeightedGraph[T] or UnWeightedGraph, zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =
         var d = newSeqWith(g.len, newSeqWith(g.len, inf))
         for i in 0..<g.len: d[i][i] = zero
         for i in 0..<g.len:
@@ -737,7 +737,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                 if d[i][i] < zero: return (negative_cycle: true, d: d)
         return (negative_cycle: false, d: d)
 
-    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int], zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]] =
+    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int] or UnWeightedGraph, zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]] =
         when defined(cpp) and sizeof(int) == 8:
             var d = newSeqWith(g.len, newSeqWith(g.len, inf))
             for i in 0..<g.len: d[i][i] = zero
@@ -777,4 +777,4 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             return warshall_floyd_impl(g, zero, inf)
     proc warshall_floyd*(g: DynamicGraph[float] or StaticGraph[float], zero: float = 0.0, inf: float = 1e100): tuple[negative_cycle: bool, d: seq[seq[float]]] = warshall_floyd_impl(g, zero, inf)
     proc warshall_floyd*(g: DynamicGraph[float32] or StaticGraph[float32], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): tuple[negative_cycle: bool, d: seq[seq[float32]]] = warshall_floyd_impl(g, zero, inf)
-    proc warshall_floyd*[T](g: DynamicGraph[T] or StaticGraph[T], zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)
+    proc warshall_floyd*[T](g: WeightedGraph[T] or UnWeightedGraph, zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)

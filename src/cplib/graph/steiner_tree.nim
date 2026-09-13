@@ -4,7 +4,7 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
     import cplib/utils/constants
     import cplib/utils/bititers
     import sequtils, heapqueue
-    proc steiner_tree_dp_impl[T](g: StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], zero, inf: T): seq[seq[T]] =
+    proc steiner_tree_dp_impl[T](g: WeightedGraph[T] or UnWeightedGraph, terminal: openArray[int], zero, inf: T): seq[seq[T]] =
         ## terminal に含まれる頂点を全て連結にするために必要な最小のコストを出力する。
         ## 計算量 O(n3^t + (n+m)2^tlogn)
         var k = terminal.len
@@ -32,24 +32,24 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
                         q.push((dp[bit][v], v))
         return dp
 
-    proc steiner_tree_dp*[T](g: StaticGraph[T] or DynamicGraph[T], terminal: seq[int], inf: T): seq[seq[T]] =
+    proc steiner_tree_dp*[T](g: WeightedGraph[T] or UnWeightedGraph, terminal: seq[int], inf: T): seq[seq[T]] =
         steiner_tree_dp_impl(g, terminal, T(0), inf)
-    proc steiner_tree_dp*[T](g: StaticGraph[T] or DynamicGraph[T], terminal: seq[int], zero, inf: T): seq[seq[T]] =
+    proc steiner_tree_dp*[T](g: WeightedGraph[T] or UnWeightedGraph, terminal: seq[int], zero, inf: T): seq[seq[T]] =
         steiner_tree_dp_impl(g, terminal, zero, inf)
 
-    proc steiner_tree_mincost_impl[T](g: StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], zero, inf: T): T =
+    proc steiner_tree_mincost_impl[T](g: WeightedGraph[T] or UnWeightedGraph, terminal: openArray[int], zero, inf: T): T =
         if terminal.len == 0:
             return zero
         var dp = steiner_tree_dp_impl(g, terminal, zero, inf)
         var k = terminal.len
         return dp[(1 shl k) - 1][terminal[0]]
 
-    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int], terminal: openArray[int], inf: int = INF64): int = steiner_tree_mincost_impl(g, terminal, 0, inf)
-    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int], terminal: openArray[int], zero, inf: int): int = steiner_tree_mincost_impl(g, terminal, zero, inf)
+    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int] or UnWeightedGraph, terminal: openArray[int], inf: int = INF64): int = steiner_tree_mincost_impl(g, terminal, 0, inf)
+    proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int] or UnWeightedGraph, terminal: openArray[int], zero, inf: int): int = steiner_tree_mincost_impl(g, terminal, zero, inf)
     proc steiner_tree_mincost*(g: StaticGraph[int32] or DynamicGraph[int32], terminal: openArray[int], inf: int32 = INF32): int32 = steiner_tree_mincost_impl(g, terminal, 0.int32, inf)
     proc steiner_tree_mincost*(g: StaticGraph[int32] or DynamicGraph[int32], terminal: openArray[int], zero, inf: int32): int32 = steiner_tree_mincost_impl(g, terminal, zero, inf)
     proc steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float], terminal: openArray[int], inf: float = 1e100): float = steiner_tree_mincost_impl(g, terminal, 0.0, inf)
     proc steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float], terminal: openArray[int], zero, inf: float): float = steiner_tree_mincost_impl(g, terminal, zero, inf)
     proc steiner_tree_mincost*(g: StaticGraph[float32] or DynamicGraph[float32], terminal: openArray[int], inf: float32 = 1e30'f32): float32 = steiner_tree_mincost_impl(g, terminal, 0.0'f32, inf)
     proc steiner_tree_mincost*(g: StaticGraph[float32] or DynamicGraph[float32], terminal: openArray[int], zero, inf: float32): float32 = steiner_tree_mincost_impl(g, terminal, zero, inf)
-    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], zero, inf: T): T = steiner_tree_mincost_impl(g, terminal, zero, inf)
+    proc steiner_tree_mincost*[T](g: WeightedGraph[T] or UnWeightedGraph, terminal: openArray[int], zero, inf: T): T = steiner_tree_mincost_impl(g, terminal, zero, inf)
