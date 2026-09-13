@@ -41,7 +41,7 @@ when not declared CPLIB_TREE_TREE_HASH:
         ## 部分木を下から計算し、必要なら親側からの寄与も伝播する。
         let n = g.len
         if n == 0: return
-        assert root in 0..<n
+        assert root in 0..<n, "頂点番号が範囲外です: root in 0 ..< n"
         while treeHashDepth.len < n:
             treeHashDepth.add(treeHashRandom.rand(0'u64..TREE_HASH_MOD - 1))
         var parent = newSeq[int](n)

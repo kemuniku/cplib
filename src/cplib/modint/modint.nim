@@ -38,7 +38,7 @@ when not declared CPLIB_MODINT_MODINT:
             n = (n shr 1)
     proc `$`*(a: MontgomeryModint or BarrettModint): string = $(a.val)
     proc estimate_rational*(a: MontgomeryModint or BarrettModint, ub: int = isqrt(typeof(a).mod)): string =
-        assert ub >= 1
+        assert ub >= 1, "有理数を推定する際の分母の上限は1以上である必要があります"
         var v: seq[tuple[s, n, d: int]]
         for d in 1..ub:
             var n = (a * d).val

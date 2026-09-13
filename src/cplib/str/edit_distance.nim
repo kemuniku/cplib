@@ -64,7 +64,7 @@ when not declared CPLIB_STR_EDIT_DISTANCE:
         ## 挿入・削除・置換を各コスト 1 とする編集距離を返します。k を超える場合は -1。
         ## k >= 0 が必要です。string の各バイトを 1 文字として扱います。
         ## 時間 O(|s| + |t| + k^2)、空間 O(|s| + |t| + k)。ハッシュは使いません。
-        doAssert k >= 0
+        doAssert k >= 0, "kは非負である必要があります"
         let n = s.len
         let m = t.len
         if abs(n - m) > k:

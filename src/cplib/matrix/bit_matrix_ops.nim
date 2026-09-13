@@ -5,17 +5,17 @@ when not declared CPLIB_MATRIX_BIT_MATRIX_OPS:
 
     proc initBitLinearSystem*(height, width: int): seq[uint64] =
         ## 右辺を含むh行(w+1)列の作業領域を確保する。O(h*(w div 64+1))。
-        assert height >= 0 and width >= 0
+        assert height >= 0 and width >= 0, "高さと幅は非負である必要があります"
         let stride = (width shr 6) + 1
-        assert height <= high(int) div sizeof(uint64) div stride
+        assert height <= high(int) div sizeof(uint64) div stride, "行列の記憶領域のサイズがintの範囲を超えています"
         newSeq[uint64](height * stride)
 
     proc solveBitLinearSystem*(rows: var seq[uint64], height, width: int): Option[LinearSystemSolution[bool]] =
         ## 拡大行列を64bit単位で掃き出す。r=min(h,w)、L=w div 64+1としてO(h*r*L+w^2)。
         ## 各行はLワードで右辺はwidth列目。作業領域を変更し、解なしならnoneを返す。
-        assert height >= 0 and width >= 0
+        assert height >= 0 and width >= 0, "高さと幅は非負である必要があります"
         let stride = (width shr 6) + 1
-        assert height <= high(int) div stride and rows.len == height * stride
+        assert height <= high(int) div stride and rows.len == height * stride, "行列のサイズがintの範囲に収まり、格納配列の長さと一致する必要があります"
         var pivots: seq[int]
         if height > 0:
             let data = cast[ptr UncheckedArray[uint64]](addr rows[0])

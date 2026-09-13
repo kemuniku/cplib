@@ -102,7 +102,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY:
 
     proc reverse*[T](self: RangeReverseArray[T], l, r: int) =
         ## 半開区間[l, r)を反転します。
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         var (left, middleRight) = split(self.root, l)
         var (middle, right) = split(middleRight, r - l)
         middle.toggle
@@ -114,7 +114,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY:
 
     proc get*[T](self: RangeReverseArray[T], index: int): T =
         ## index番目の値を返します。
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         var node = self.root
         var k = index
         while true:
@@ -130,7 +130,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY:
 
     proc update*[T](self: RangeReverseArray[T], index: int, value: T) =
         ## index番目の値をvalueに変更します。
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         var node = self.root
         var k = index
         while true:

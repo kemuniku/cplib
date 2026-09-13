@@ -25,7 +25,7 @@ when not declared CPLIB_TREE_STATIC_TOP_TREE_DP:
     proc initStaticTopTreeDP*[Forward](tree: StaticTopTree, values: openArray[Forward],
             compress, rake: proc(l, r: Forward): Forward): StaticTopTreeDP[Forward] =
         ## 頂点番号順の葉の値から固定根DPを構築する。O(N)回の演算
-        assert values.len == tree.numVertices
+        assert values.len == tree.numVertices, "値の配列の長さは木の頂点数と一致する必要があります"
         result = StaticTopTreeDP[Forward](tree: tree, values: newSeq[Forward](tree.nodes.len),
             compress: compress, rake: rake)
         for v in 0..<values.len:
@@ -35,7 +35,7 @@ when not declared CPLIB_TREE_STATIC_TOP_TREE_DP:
 
     proc set*[Forward](self: StaticTopTreeDP[Forward], v: int, value: Forward) =
         ## 頂点vと親辺を表す葉の値を更新する。O(log N)回の演算
-        assert 0 <= v and v < self.tree.numVertices
+        assert 0 <= v and v < self.tree.numVertices, "頂点番号が範囲外です: 0 <= v and v < self.tree.numVertices"
         self.values[v] = value
         var node = self.tree.nodes[v].parent
         while node != -1:

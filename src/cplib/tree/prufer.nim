@@ -5,7 +5,7 @@ when not declared CPLIB_TREE_PRUFER:
     import sequtils, heapqueue
     proc prufer_decode*(a: openArray[int]): UnWeightedUnDirectedGraph =
         var n = a.len + 2
-        assert a.allIt(it in 0..<n)
+        assert a.allIt(it in 0..<n), "Prüfer列の各要素は有効な頂点番号である必要があります"
         result = initUnWeightedUnDirectedGraph(n)
         var cnt = newSeqWith(n, 1)
         for ai in a:

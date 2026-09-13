@@ -103,9 +103,9 @@ when not declared CPLIB_UTILS_GAME:
                         result.add(state - take)
 
             let solve = init_grundy(subtract)
-            assert solve(0) == 0
-            assert solve(2) == 2
-            assert solve(4) == 1
+            assert solve(0) == 0, "計算結果が期待値と一致しません: solve(0) == 0"
+            assert solve(2) == 2, "計算結果が期待値と一致しません: solve(2) == 2"
+            assert solve(4) == 1, "計算結果が期待値と一致しません: solve(4) == 1"
 
         init_grundy_impl(check_game_next(nxt, "init_grundy"))
 
@@ -194,10 +194,10 @@ when not declared CPLIB_UTILS_GAME:
                         result.add(state - take)
 
             let solve = init_can_win(subtract)
-            assert solve(3) == false
-            assert solve(4) == true
+            assert solve(3) == false, "計算結果が期待値と一致しません: solve(3) == false"
+            assert solve(4) == true, "計算結果が期待値と一致しません: solve(4) == true"
             let misere = init_can_win(subtract, win_when_no_moves = true)
-            assert misere(1) == false
+            assert misere(1) == false, "計算結果が期待値と一致しません: misere(1) == false"
 
         init_can_win_impl(check_game_next(nxt), win_when_no_moves)
 
@@ -221,8 +221,8 @@ when not declared CPLIB_UTILS_GAME:
                         result.add(state - take)
 
             let solve = init_can_win(subtract_by_turn)
-            assert solve(1) == true
-            assert solve(2) == false
+            assert solve(1) == true, "計算結果が期待値と一致しません: solve(1) == true"
+            assert solve(2) == false, "計算結果が期待値と一致しません: solve(2) == false"
 
         init_can_win_impl(check_game_next(nxt), win_when_no_moves)
 
@@ -327,8 +327,8 @@ when not declared CPLIB_UTILS_GAME:
                         result.add(state - take)
 
             let solve = init_optimal_play(subtract)
-            assert solve(4) == (is_win: true, states: @[4, 3, 2, 0])
-            assert solve(3) == (is_win: false, states: @[3, 2, 0])
+            assert solve(4) == (is_win: true, states: @[4, 3, 2, 0]), "計算結果が期待値と一致しません: solve(4) == (is_win: true, states: @[4, 3, 2, 0])"
+            assert solve(3) == (is_win: false, states: @[3, 2, 0]), "計算結果が期待値と一致しません: solve(3) == (is_win: false, states: @[3, 2, 0])"
 
         init_optimal_play_impl(check_game_next(nxt, "init_optimal_play"), win_when_no_moves)
 

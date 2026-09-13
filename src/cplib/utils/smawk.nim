@@ -5,7 +5,7 @@ when not declared CPLIB_UTILS_SMAWK:
         ## 全単調行列の各行の最小列を O(height + width) 回の比較で求める。
         ## better(row, oldCol, newCol) は新しい列が真に小さいとき true。
         ## 同値なら左端を返す。幅が 0 なら各行に -1 を返す。
-        assert height >= 0 and width >= 0
+        assert height >= 0 and width >= 0, "高さと幅は非負である必要があります"
         var answer = newSeq[int](height)
         for r in 0..<height: answer[r] = -1
         if height == 0 or width == 0: return answer

@@ -14,13 +14,13 @@ when not declared CPLIB_GRAPH_MAXFLOW:
 
     proc initMaxFlow*[Cap: SomeInteger](n: int, capacityZero: Cap = 0): MaxFlow[Cap] =
         ## n頂点の最大流グラフを構築する。容量型の省略時はint。capacityZeroは型推論用。O(n)。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         result.graph = newSeq[seq[MaxFlowArc[Cap]]](n)
 
     proc add_edge*[Cap](g: var MaxFlow[Cap], src, dst: int, cap: Cap): int {.discardable.} =
         ## 容量capの有向辺を追加し、辺番号を返す。償却O(1)。
-        assert src in 0..<g.graph.len and dst in 0..<g.graph.len
-        assert cap >= Cap(0)
+        assert src in 0..<g.graph.len and dst in 0..<g.graph.len, "頂点番号が範囲外です"
+        assert cap >= Cap(0), "辺の容量は非負である必要があります"
         result = g.positions.len
         let index = g.graph[src].len
         let rev = g.graph[dst].len + ord(src == dst)
@@ -42,8 +42,8 @@ when not declared CPLIB_GRAPH_MAXFLOW:
 
     proc flow*[Cap](g: var MaxFlow[Cap], src, dst: int, limit: Cap = high(Cap)): Cap =
         ## Dinic法でlimit以下の流量を追加し、追加流量を返す。O(V^2 E)。
-        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst
-        assert limit >= Cap(0)
+        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst, "頂点番号が範囲外か、始点と終点が同じです"
+        assert limit >= Cap(0), "流量の上限は非負である必要があります"
         let n = g.graph.len
         var level = newSeq[int](n)
         var iter = newSeq[int](n)
@@ -111,7 +111,7 @@ when not declared CPLIB_GRAPH_MAXFLOW:
 
     proc min_cut*[Cap](g: MaxFlow[Cap], src: int): seq[bool] =
         ## 残余グラフでsrcから到達可能な頂点を返す。最大流計算後は最小カット。O(V+E)。
-        assert src in 0..<g.graph.len
+        assert src in 0..<g.graph.len, "頂点番号が範囲外です"
         result = newSeq[bool](g.graph.len)
         result[src] = true
         var queue = @[src]

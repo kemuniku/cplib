@@ -29,7 +29,7 @@ when not declared CPLIB_MATRIX_FIELD_MATRIX_OPS:
     proc matrixRows*[M](a: M, height, width: int): auto =
         ## 左上のheight行width列を独立した作業領域へコピーする。O(height*width)。
         mixin h, w, `[]`
-        assert height in 0..a.h and width in 0..a.w
+        assert height in 0..a.h and width in 0..a.w, "対象の行数と列数は行列の範囲内である必要があります"
         # Nim 1.6でもstatic引数の異なる型を併用できるよう、要素型を直接指定する。
         var rows = newSeqWith(height, newSeq[typeof(a[0, 0])](width))
         for i in 0..<height:
@@ -74,7 +74,7 @@ when not declared CPLIB_MATRIX_FIELD_MATRIX_OPS:
 
     proc fieldSolve*[T](rows: seq[seq[T]], width: int, b: openArray[T]): Option[LinearSystemSolution[T]] =
         ## Ax=bの特殊解と核の基底を返す。解なしはnone。O(h*w*min(h,w)+w^2*min(h,w))。
-        assert b.len == rows.len
+        assert b.len == rows.len, "右辺の要素数は行列の行数と一致する必要があります"
         var a = rows
         for i in 0..<a.len: a[i].add(b[i])
         let pivots = fieldEchelon(a, width).pivots
@@ -140,9 +140,9 @@ when not declared CPLIB_MATRIX_FIELD_MATRIX_OPS:
     proc fieldHafnian*[T](rows: seq[seq[T]]): T =
         ## 対称な偶数次行列のhafnianを包除原理で求める。O(n^2*2^(n/2))時間、O(n^4)空間。
         let n = rows.len
-        assert n mod 2 == 0
+        assert n mod 2 == 0, "nは偶数である必要があります"
         for i in 0..<n:
-            for j in 0..<i: assert fieldEqual(rows[i][j], rows[j][i])
+            for j in 0..<i: assert fieldEqual(rows[i][j], rows[j][i]), "行列は対称である必要があります"
         when T is bool:
             # 標数2では対角を零にした対称行列の行列式と一致する。
             var a = rows

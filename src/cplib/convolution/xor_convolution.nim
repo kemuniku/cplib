@@ -22,7 +22,7 @@ when not declared CPLIB_CONVOLUTION_XOR_CONVOLUTION:
         FastHadamardTransForm(u)
         when T is int:
             var k = (len(u)-1).fastLog2() + 1
-            assert len(u) == (1 shl k)
+            assert len(u) == (1 shl k), "配列の長さは2^kである必要があります"
             for i in 0..<len(u):
                 u[i] = u[i] shr k
             return u

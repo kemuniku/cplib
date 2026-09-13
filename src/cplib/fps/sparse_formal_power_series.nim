@@ -350,7 +350,7 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
             denominator: LinearPolynomial[T], target: int): T =
         ## 一次式を成分に持つ有理行列漸化式の第target項を平方分割で求める。
         let dimension = initial.len
-        doAssert dimension > 0 and transition.len == dimension * dimension
+        doAssert dimension > 0 and transition.len == dimension * dimension, "遷移行列の次元は正で、要素数は次元の2乗である必要があります"
         if target < dimension: return initial[target]
         let transitionCount = target - dimension + 1
         var blockSize = isqrt(transitionCount)

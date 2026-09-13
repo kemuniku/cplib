@@ -19,8 +19,8 @@ when not declared CPLIB_MATH_MONOID_FLOOR_SUM:
                 if exponent > 0:
                     value = op(value, value)
 
-        assert n >= 0 and m > 0 and a >= 0 and b >= 0
-        assert n == 0 or a <= (high(int) - b) div n
+        assert n >= 0 and m > 0 and a >= 0 and b >= 0, "n、a、bは非負で、mは正である必要があります"
+        assert n == 0 or a <= (high(int) - b) div n, "a * n + bがintの範囲に収まる必要があります"
         var
             n = n
             m = m

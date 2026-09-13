@@ -58,7 +58,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
         self.root = self.root.erase(node, node.next)
         return true
     proc `[]`*[T](self: AVLSets[T], idx: int): T =
-        assert idx < self.root.len
+        assert idx < self.root.len, "指定した値が有効な範囲内である必要があります: idx < self.root.len"
         return self.root.get(idx).key
     proc `[]`*[T](self: AVLSets[T], idx: BackwardsIndex): T =
         var idx = self.len - int(idx)
@@ -66,7 +66,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
     proc pop*[T](self: var AVLSets[T], idx: int = -1): T =
         var idx = idx
         if idx < 0: idx = self.len + idx
-        assert idx < self.root.len
+        assert idx < self.root.len, "指定した値が有効な範囲内である必要があります: idx < self.root.len"
         var node = self.root.get(idx)
         result = node.key
         self.root = self.root.erase(node, node.next)

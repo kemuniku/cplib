@@ -5,7 +5,7 @@ when not declared CPLIB_MATRIX_MATRIX:
         arr: seq[seq[T]]
         emptyWidth: int
     proc initMatrix*[T](arr: openArray[seq[T]]): Matrix[T] =
-        assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "all elements in arr must be the same size."
+        assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "配列の各行の長さは等しい必要があります"
         Matrix[T](arr: @arr)
     proc toMatrix*[T](arr: openArray[seq[T]]): Matrix[T] = initMatrix(arr)
     proc initMatrix*[T](arr: openArray[T], vertical: bool = false): Matrix[T] =
@@ -32,7 +32,7 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     proc `-`*[T](m: Matrix[T]): Matrix[T] = Matrix[T](arr: m.arr.mapIt(it.mapIt(-it)), emptyWidth: m.emptyWidth)
     proc `*=`*[T](a: var Matrix[T], b: Matrix[T]) =
-        assert a.w == b.h
+        assert a.w == b.h, "左の行列の列数と右の行列の行数は等しい必要があります"
         var ans = initMatrix[T](a.h, b.w, 0)
         for i in 0..<a.h:
             for j in 0..<b.w:
@@ -48,7 +48,7 @@ when not declared CPLIB_MATRIX_MATRIX:
     proc `*`*[T](x: T, a: Matrix[T]): Matrix[T] = a * x
     template defineMatrixAssignmentOp(assign, op: untyped) =
         proc assign*[T](a: var Matrix[T], b: Matrix[T]) =
-            assert a.h == b.h and a.w == b.w
+            assert a.h == b.h and a.w == b.w, "2つの行列の行数と列数はそれぞれ等しい必要があります"
             for i in 0..<a.h:
                 for j in 0..<a.w:
                     assign(a[i, j], b[i, j])
@@ -64,7 +64,7 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     template defineMatrixIntOps(assign, op: untyped) =
         proc assign*(a: var Matrix[int], b: Matrix[int]) =
-            assert a.h == b.h and a.w == b.w
+            assert a.h == b.h and a.w == b.w, "2つの行列の行数と列数はそれぞれ等しい必要があります"
             for i in 0..<a.h:
                 for j in 0..<a.w:
                     a[i, j] = op(a[i, j], b[i, j])
@@ -109,12 +109,12 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     proc determinant*[T](a: Matrix[T]): T =
         ## 行列式を求める。空行列は1。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         fieldDeterminant(matrixRows(a, a.h, a.h))
 
     proc hafnian*[T](a: Matrix[T]): T =
         ## 対称な偶数次行列のhafnianを求める。O(n^2*2^(n/2))。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         fieldHafnian(matrixRows(a, a.h, a.h))
 
     proc solveLinearSystem*[T](a: Matrix[T], b: openArray[T]): Option[LinearSystemSolution[T]] =
@@ -124,7 +124,7 @@ when not declared CPLIB_MATRIX_MATRIX:
     proc inverse*[T](a: Matrix[T]): Option[Matrix[T]] =
         ## 逆行列を返す。特異行列はnone。O(n^3)。
         bind initMatrix
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), false)
         if rows.isNone: return none(Matrix[T])
         var answer = initMatrix(a.h, a.h, T(0))
@@ -135,7 +135,7 @@ when not declared CPLIB_MATRIX_MATRIX:
     proc adjugate*[T](a: Matrix[T]): Matrix[T] =
         ## 特異行列を含む余因子行列を返す。O(n^3)。
         bind initMatrix
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.h), true)
         var answer = initMatrix(a.h, a.h, T(0))
         for i in 0..<a.h:

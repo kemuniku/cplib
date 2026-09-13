@@ -14,13 +14,13 @@ when not declared CPLIB_GRAPH_PUSH_RELABEL:
 
     proc initPushRelabel*[Cap: SomeInteger](n: int, capacityZero: Cap = 0): PushRelabel[Cap] =
         ## n頂点の最大流グラフを構築する。容量型の省略時はint。capacityZeroは型推論用。O(n)。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         result.graph = newSeq[seq[PushRelabelArc[Cap]]](n)
 
     proc add_edge*[Cap](g: var PushRelabel[Cap], src, dst: int, cap: Cap): int {.discardable.} =
         ## 容量capの有向辺を追加し、辺番号を返す。自己ループ・多重辺も可。償却O(1)。
-        assert src in 0..<g.graph.len and dst in 0..<g.graph.len
-        assert cap >= Cap(0)
+        assert src in 0..<g.graph.len and dst in 0..<g.graph.len, "頂点番号が範囲外です"
+        assert cap >= Cap(0), "辺の容量は非負である必要があります"
         result = g.positions.len
         let index = g.graph[src].len
         let rev = g.graph[dst].len + ord(src == dst)
@@ -44,8 +44,8 @@ when not declared CPLIB_GRAPH_PUSH_RELABEL:
     proc flow*[Cap](g: var PushRelabel[Cap], src, dst: int, limit: Cap = high(Cap)): Cap =
         ## Highest-label Push–Relabel法でlimit以下の追加流量を返す。再実行可。単純グラフでO(V^2√E)、追加領域O(V)。
         ## 多重辺を含む一般の場合はO(VE+V^2√E)。辺がない場合はO(V)。
-        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst
-        assert limit >= Cap(0)
+        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst, "頂点番号が範囲外か、始点と終点が同じです"
+        assert limit >= Cap(0), "流量の上限は非負である必要があります"
         if limit == Cap(0):
             return Cap(0)
 
@@ -240,7 +240,7 @@ when not declared CPLIB_GRAPH_PUSH_RELABEL:
 
     proc min_cut*[Cap](g: PushRelabel[Cap], src: int): seq[bool] =
         ## 残余グラフでsrcから到達可能な頂点を返す。最大流計算後は最小カット。O(V+E)。
-        assert src in 0..<g.graph.len
+        assert src in 0..<g.graph.len, "頂点番号が範囲外です"
         result = newSeq[bool](g.graph.len)
         result[src] = true
         var queue = @[src]

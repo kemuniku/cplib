@@ -160,9 +160,9 @@ when not declared CPLIB_STR_SUFFIX_ARRAY:
 
     proc suffix_array*(s: openArray[int], upper: int): seq[int] =
         ## 0..upper の整数列の接尾辞配列を O(N + upper) で作成します。
-        assert upper >= 0
+        assert upper >= 0, "upperは非負である必要があります"
         for value in s:
-            assert 0 <= value and value <= upper
+            assert 0 <= value and value <= upper, "指定した値が有効な範囲内である必要があります: 0 <= value and value <= upper"
         return saIs(s, upper)
 
     proc suffix_array*[T](s: openArray[T]): seq[int] =
@@ -222,11 +222,11 @@ when not declared CPLIB_STR_SUFFIX_ARRAY:
     proc lcp_array*[T](s: openArray[T], sa: openArray[int]): seq[int] =
         ## 接尾辞配列に隣接する接尾辞同士の LCP Array を O(N) で作成します。
         let n = s.len
-        assert sa.len == n
+        assert sa.len == n, "接尾辞配列の長さは元の列の長さと一致する必要があります"
         if n <= 1:
             return @[]
         for v in sa:
-            assert 0 <= v and v < n
+            assert 0 <= v and v < n, "指定した値が有効な範囲内である必要があります: 0 <= v and v < n"
         when sizeof(int) > sizeof(int32):
             if n <= int32.high.int:
                 return lcpArrayImpl[T, int32](s, sa)

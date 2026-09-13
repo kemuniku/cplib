@@ -14,17 +14,17 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_AVX2:
         ## AVX2で扱えるmodint型と法を検査する。
         when T isnot MontgomeryModint and T isnot BarrettModint:
             {.error: "static_matrix_avx2 requires MontgomeryModint or BarrettModint".}
-        static: doAssert sizeof(T) == sizeof(uint32) and alignof(T) == alignof(uint32)
+        static: doAssert sizeof(T) == sizeof(uint32) and alignof(T) == alignof(uint32), "要素型のサイズとアラインメントはuint32と等しい必要があります"
         result = T.umod
-        doAssert result > 0 and result < (1u32 shl 30) and (result and 1) == 1
+        doAssert result > 0 and result < (1u32 shl 30) and (result and 1) == 1, "法は1以上2^30未満の奇数である必要があります"
 
     proc checkMatrix[H: static int, W: static int, T](a: StaticMatrix[H,W,T]) =
         ## 固定長の寸法と作成時の法を検査する。
         static:
-            doAssert H >= 0 and W >= 0 and H <= high(cint).int and W <= high(cint).int
-            doAssert H == 0 or W <= (high(int) div sizeof(T)) div H
+            doAssert H >= 0 and W >= 0 and H <= high(cint).int and W <= high(cint).int, "行列の行数と列数は0以上int32の最大値以下である必要があります"
+            doAssert H == 0 or W <= (high(int) div sizeof(T)) div H, "行列の記憶領域のサイズがintの範囲を超えています"
         let modulus = fieldModulus[T]()
-        doAssert a.modulus == 0 or a.modulus == modulus, "matrix modulus has changed"
+        doAssert a.modulus == 0 or a.modulus == modulus, "行列の作成後に法を変更することはできません"
 
     proc buffer[T](a: openArray[T]): ptr uint32 =
         ## 空配列を含む連続領域の先頭を返す。
@@ -52,23 +52,23 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_AVX2:
         W
     proc `[]`*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], i,j: int): T =
         ## 指定位置の要素を返す。
-        assert i in 0..<H and j in 0..<W
+        assert i in 0..<H and j in 0..<W, "指定した値が有効な範囲内である必要があります: i in 0 ..< H and j in 0 ..< W"
         a.values[i*W+j]
     proc `[]`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], i,j: int): var T =
         ## 指定位置の要素を変更可能な参照で返す。
-        assert i in 0..<H and j in 0..<W
+        assert i in 0..<H and j in 0..<W, "指定した値が有効な範囲内である必要があります: i in 0 ..< H and j in 0 ..< W"
         a.values[i*W+j]
     proc `[]=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], i,j: int, value: T) =
         ## 指定位置の要素を更新する。
-        assert i in 0..<H and j in 0..<W
+        assert i in 0..<H and j in 0..<W, "指定した値が有効な範囲内である必要があります: i in 0 ..< H and j in 0 ..< W"
         a.values[i*W+j] = value
     proc `[]`*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], i: int): array[W,T] =
         ## 指定行をコピーする。O(W)。
-        assert i in 0..<H
+        assert i in 0..<H, "指定した値が有効な範囲内である必要があります: i in 0 ..< H"
         for j in 0..<W: result[j] = a.values[i*W+j]
     proc `[]=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], i: int, row: array[W,T]) =
         ## 指定行を置き換える。O(W)。
-        assert i in 0..<H
+        assert i in 0..<H, "指定した値が有効な範囲内である必要があります: i in 0 ..< H"
         for j in 0..<W: a.values[i*W+j] = row[j]
     proc `==`*[H: static int, W: static int, T](a,b: StaticMatrix[H,W,T]): bool =
         ## 公開値で全要素を比較する。O(H*W)。
@@ -147,16 +147,16 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_AVX2:
     proc identity_matrix*[H: static int, W: static int, T](n: int = H): StaticMatrix[H,W,T] =
         ## H×H単位行列を返す。O(H^2)。
         bind initMatrix
-        static: doAssert H == W
-        assert n == H
+        static: doAssert H == W, "行列は正方行列である必要があります"
+        assert n == H, "指定したサイズnは行数Hと一致する必要があります"
         checkMatrix(result)
         result.modulus = fieldModulus[T]()
         for i in 0..<H: result.values[i*W+i] = T.init(1)
     proc pow*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], exponent: int): StaticMatrix[H,W,T] =
         ## 二分累乗法で非負整数乗を求める。
         bind identity_matrix
-        static: doAssert H == W
-        doAssert exponent >= 0
+        static: doAssert H == W, "行列は正方行列である必要があります"
+        doAssert exponent >= 0, "exponentは非負である必要があります"
         checkMatrix(a)
         result = identity_matrix[H,W,T]()
         var base = a
@@ -183,8 +183,8 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_AVX2:
     proc reduce[H: static int, W: static int, T](a: StaticMatrix[H,W,T], height, width: int, extra: static int, reduced: bool, rhs: ptr uint32 = nil, identity: bool = false): ref Reduction[H,W,extra] =
         ## 固定容量の作業領域をヒープに確保してAVX2で消去する。
         checkMatrix(a)
-        doAssert height in 0..H and width in 0..W
-        static: doAssert extra >= 0 and W <= high(cint).int-extra
+        doAssert height in 0..H and width in 0..W, "対象の行数と列数は行列の範囲内である必要があります"
+        static: doAssert extra >= 0 and W <= high(cint).int-extra, "追加列数は非負で、追加後の列数がint32の範囲に収まる必要があります"
         new result
         let actualExtra = if identity: height else: extra
         result.width = width + actualExtra
@@ -202,13 +202,13 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_AVX2:
     proc hafnian*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): T =
         ## 対称な左上n×nのhafnianをAVX2で求める。O(n^2*2^(n/2))。
         checkMatrix(a)
-        doAssert n in 0..min(H,W) and n mod 2 == 0
+        doAssert n in 0..min(H,W) and n mod 2 == 0, "対象のサイズnは行数と列数の最小値以下の非負の偶数である必要があります"
         for i in 0..<n:
-            for j in 0..<i: assert a[i,j].val == a[j,i].val
+            for j in 0..<i: assert a[i,j].val == a[j,i].val, "行列は対称である必要があります"
         T.init(fieldHafnianKernel(buffer(a.values),n,fieldModulus[T](),T is MontgomeryModint,W).int)
     proc solveLinearSystem*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], b: openArray[T], height: int = H, width: int = W): Option[LinearSystemSolution[T]] =
         ## 左上height×widthでAx=bの特殊解と核の基底を求める。O(H*W+h*w*min(h,w)+w^2)。
-        doAssert b.len == height
+        doAssert b.len == height, "右辺の要素数は対象の行数と一致する必要があります"
         let r = reduce(a,height,width,1,true,buffer(b))
         for i in r.rank..<height:
             if r.values[i*r.width+width] != 0: return none(LinearSystemSolution[T])

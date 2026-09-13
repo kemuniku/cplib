@@ -22,7 +22,7 @@ when not declared CPLIB_RANGE_EDGE_GRAPH:
 
     proc initWeightedRangeGraph*[T](N: int, zero: T): Range_Edge_Graph[T] =
         # 元頂点を in/out セグ木の葉として共有し、内部ノードだけを追加する。
-        assert N >= 0
+        assert N >= 0, "Nは非負である必要があります"
         let baseLen = if N == 0: 0 else: 3 * N - 2
         result = Range_Edge_Graph[T](
             G: initWeightedDirectedGraph(baseLen, T),
@@ -66,7 +66,7 @@ when not declared CPLIB_RANGE_EDGE_GRAPH:
             return idx
 
         result.root = build(0, N)
-        assert nextId == baseLen
+        assert nextId == baseLen, "内部グラフの頂点数が計算したサイズと一致しません"
 
     proc initWeightedRangeGraph*(N: int): Range_Edge_Graph[int] =
         initWeightedRangeGraph(N, 0)
@@ -76,10 +76,10 @@ when not declared CPLIB_RANGE_EDGE_GRAPH:
         initWeightedRangeGraph(N, zero)
 
     proc validateRange[T](G: Range_Edge_Graph[T], l, r: int) =
-        assert 0 <= l and l <= r and r <= G.n
+        assert 0 <= l and l <= r and r <= G.n, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= G.n"
 
     proc validatePoint[T](G: Range_Edge_Graph[T], v: int) =
-        assert 0 <= v and v < G.n
+        assert 0 <= v and v < G.n, "頂点番号が範囲外です: 0 <= v and v < G.n"
 
     proc connectRangeToVertex[T](G: Range_Edge_Graph[T], idx, l, r, to: int, cost: T) =
         let node = G.nodes[idx]

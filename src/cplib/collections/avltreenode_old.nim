@@ -145,7 +145,7 @@ when not declared CPLIB_COLLECTIONS_AVLTREE:
         while node.p.l == node: node = node.p
         return node.p
     proc get*[K](node: AvlTreeNode[K], idx: int): AvlTreeNode[K] =
-        assert idx >= 0
+        assert idx >= 0, "idxは非負である必要があります"
         if idx >= node.len: return get_avltree_nilnode[K]()
         result = node
         var idx = idx

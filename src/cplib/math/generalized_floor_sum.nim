@@ -8,8 +8,8 @@ when not declared CPLIB_MATH_GENERALIZED_FLOOR_SUM:
         ## T は int から変換できる可換環で、既定値が零の型を指定する。除算は不要。
         ## 時間 O((p+1)(q+1)(p+q+2)log(m+1)log(n+a+b+2))、空間 O((p+q+2)^2)。
         ## 整数型では結果だけでなく途中の環演算も型の範囲内に収まる必要がある。
-        assert n >= 0 and m > 0 and a >= 0 and b >= 0 and p >= 0 and q >= 0
-        assert n == 0 or a <= (high(int) - b) div n
+        assert n >= 0 and m > 0 and a >= 0 and b >= 0 and p >= 0 and q >= 0, "n、a、b、p、qは非負で、mは正である必要があります"
+        assert n == 0 or a <= (high(int) - b) div n, "a * n + bがintの範囲に収まる必要があります"
 
         proc zeroTable(): seq[seq[T]] =
             ## (p+1) 行 (q+1) 列の零行列を作る。

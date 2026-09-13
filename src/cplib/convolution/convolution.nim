@@ -1051,8 +1051,8 @@ output, factors, sizes, factor_count);
     proc convolutionCyclicPowerOfTwo*[T: BarrettModint or MontgomeryModint](
             f, g: seq[T], n: int): seq[T] =
         ## 長さnの巡回畳み込みを求める。nは2の冪でなければならない。
-        doAssert n > 0 and (n and (n - 1)) == 0
-        doAssert f.len <= n and g.len <= n
+        doAssert n > 0 and (n and (n - 1)) == 0, "変換長nは正の2の冪である必要があります"
+        doAssert f.len <= n and g.len <= n, "入力配列の長さは変換長n以下である必要があります"
         result = newSeq[T](n)
         if f.len == 0 or g.len == 0: return
         if n >= 64 and isNttFriendlyModulus(T.umod, n.uint32):
@@ -1081,7 +1081,7 @@ output, factors, sizes, factor_count);
 
     proc convolution*[m: static[int]](f, g: seq[int]): seq[int] =
         doAssert m > 0 and m < (1 shl 31),
-            "convolution modulus must be in [1, 2^31)"
+            "畳み込みの法は1以上2^31未満である必要があります"
         if f.len == 0 or g.len == 0: return @[]
         type Mint = StaticBarrettModint[m.uint32]
         var fm = newSeq[Mint](f.len)
@@ -1131,10 +1131,10 @@ output, factors, sizes, factor_count);
         # そのため、3個の剰余から要求された法で還元する前の値を一意に特定できる。
         let targetMod = T.umod.uint64
         assert targetMod > 0 and targetMod < (1u64 shl 31),
-            "arbitrary-mod convolution requires a modulus in [1, 2^31)"
+            "任意mod畳み込みの法は1以上2^31未満である必要があります"
         let transformSize = 1 shl (fastLog2(f.len + g.len - 2) + 1)
         assert transformSize <= (1 shl 24),
-            "arbitrary-mod convolution requires an NTT length at most 2^24"
+            "任意mod畳み込みのNTT長は2^24以下である必要があります"
 
         var fm = newSeq[uint32](f.len)
         var gm = newSeq[uint32](g.len)

@@ -191,14 +191,14 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
         x.update()
 
     proc getNode[T](node: AvlTreeNode[T], idx: int): AvlTreeNode[T] =
-        assert idx >= 0
+        assert idx >= 0, "idxは非負である必要があります"
         if idx >= node.length: return nil
         result = node
         var idx = idx
         while result[].l.length != idx:
             if result[].l.length < idx:
                 idx -= result[].l.length + 1
-                assert not result[].r.isNil
+                assert not result[].r.isNil, "右の子ノードが存在する必要があります"
                 result = result[].r
             else:
                 result = result[].l
@@ -265,7 +265,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
         return true
 
     proc `[]`*[T](self: AVLSets[T], idx: int): T =
-        assert idx >= 0 and idx < self.len
+        assert idx >= 0 and idx < self.len, "指定した値が有効な範囲内である必要があります: idx >= 0 and idx < self.len"
         return self.root.getNode(idx)[].key
 
     proc `[]`*[T](self: AVLSets[T], idx: BackwardsIndex): T =
@@ -274,7 +274,7 @@ when not declared CPLIB_COLLECTIONS_AVLSET:
     proc pop*[T](self: var AVLSets[T], idx: int = -1): T =
         var idx = idx
         if idx < 0: idx = self.len + idx
-        assert idx >= 0 and idx < self.len
+        assert idx >= 0 and idx < self.len, "指定した値が有効な範囲内である必要があります: idx >= 0 and idx < self.len"
         let node = self.root.getNode(idx)
         result = node[].key
         self.root = self.root.eraseNode(node, node.nextNode())

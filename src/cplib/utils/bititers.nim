@@ -3,7 +3,7 @@ when not declared CPLIB_UTILS_BITITERS:
     import bitops
     iterator bitcomb*(n, r: int): int =
         ##n bit中 r bitが1であるようなbit列を列挙します。
-        assert n >= r
+        assert n >= r, "選ぶ要素数rは全要素数n以下である必要があります"
         var x = (1 shl r)-1
         if r == 0:
             yield x

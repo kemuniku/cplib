@@ -6,7 +6,7 @@ when not declared CPLIB_MATH_COMBINATION:
         fact_inv*: seq[ModInt]
 
     proc initCombination*[ModInt](max_N: int): Combination_Type[ModInt] =
-        assert max_N >= 0
+        assert max_N >= 0, "max_Nは非負である必要があります"
         var fact = newSeq[ModInt](max_N+1)
         var inv = newSeq[ModInt](max_N+1)
         var fact_inv = newSeq[ModInt](max_N+1)

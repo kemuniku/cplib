@@ -8,9 +8,9 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
         idx : int
     
     proc initMatrix*[H:static int,W:static int,T](arr: array[H,array[W,T]]): StaticMatrix[H,W,T] =
-        assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "all elements in arr must be the same size."
-        when H > 0: assert arr[0].len == W
-        assert arr.len == H
+        assert arr.len == 0 or arr.mapIt(it.len).allIt(it == arr[0].len), "配列の各行の長さは等しい必要があります"
+        when H > 0: assert arr[0].len == W, "配列の列数は行列型の列数Wと一致する必要があります"
+        assert arr.len == H, "配列の行数は行列型の行数Hと一致する必要があります"
         var idx = 0
         for i in 0..<H:
             for j in 0..<W:
@@ -47,7 +47,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
         for i in 0..<H*W:
             result.arr[i] = -m.arr[i]
     proc `*=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], b: StaticMatrix[W,W,T]) =
-        assert a.w == b.h
+        assert a.w == b.h, "左の行列の列数と右の行列の行数は等しい必要があります"
         var ans : StaticMatrix[H,W,T]
         for i in 0..<a.h:
             for j in 0..<b.w:
@@ -68,7 +68,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
     proc `*`*[H: static int, W: static int, T](x: T, a: StaticMatrix[H,W,T]): StaticMatrix[H,W,T] = a * x
     template defineMatrixAssignmentOp(assign, op: untyped) =
         proc assign*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], b: StaticMatrix[H,W,T]) =
-            assert a.h == b.h and a.w == b.w
+            assert a.h == b.h and a.w == b.w, "2つの行列の行数と列数はそれぞれ等しい必要があります"
             for i in 0..<a.h:
                 for j in 0..<a.w:
                     assign(a[i, j], b[i, j])
@@ -84,7 +84,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
 
     template defineMatrixIntOps(assign, op: untyped) =
         proc assign*[H: static int, W: static int](a: var StaticMatrix[H,W,int], b: StaticMatrix[H,W,int]) =
-            assert a.h == b.h and a.w == b.w
+            assert a.h == b.h and a.w == b.w, "2つの行列の行数と列数はそれぞれ等しい必要があります"
             for i in 0..<a.h:
                 for j in 0..<a.w:
                     a[i, j] = op(a[i, j], b[i, j])
@@ -105,15 +105,15 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
 
     proc hash*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): Hash = hash(m.arr)
     proc identity_matrix*[H: static int, W: static int, T](n: int, one, zero: T): StaticMatrix[H,W,T] =
-        assert H == W and n == H
+        assert H == W and n == H, "正方行列で、指定したサイズnが行数Hと一致する必要があります"
         for i in 0..<H*W:
             result.arr[i] = zero
         for i in 0..<H: result[i, i] = one
     proc identity_matrix*[H: static int, W: static int, T](n: int): StaticMatrix[H,W,T] =
-        assert H == W and n == H
+        assert H == W and n == H, "正方行列で、指定したサイズnが行数Hと一致する必要があります"
         for i in 0..<H: result[i, i] = T(1)
     proc pow*[H: static int, W: static int, T](m: StaticMatrix[H,W,T], n: int): StaticMatrix[H,W,T] =
-        assert H == W
+        assert H == W, "行列は正方行列である必要があります"
         for i in 0..<H: result[i, i] = T(1)
         var m = m
         var n = n
@@ -136,12 +136,12 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
 
     proc determinant*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): T =
         ## 左上n×nの行列式を求める。空行列は1。O(n^3)。
-        assert n in 0..min(H, W)
+        assert n in 0..min(H, W), "対象のサイズnは行数と列数の最小値以下の非負の整数である必要があります"
         fieldDeterminant(matrixRows(a, n, n))
 
     proc hafnian*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): T =
         ## 対称な左上n×n（nは偶数）のhafnianを求める。O(n^2*2^(n/2))。
-        assert n in 0..min(H, W)
+        assert n in 0..min(H, W), "対象のサイズnは行数と列数の最小値以下の非負の整数である必要があります"
         fieldHafnian(matrixRows(a, n, n))
 
     proc solveLinearSystem*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], b: openArray[T], height: int = H, width: int = W): Option[LinearSystemSolution[T]] =
@@ -150,7 +150,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
 
     proc inverse*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): Option[StaticMatrix[H,W,T]] =
         ## 左上n×nの逆行列を返す。範囲外は零、特異行列はnone。O(n^3)。
-        assert n in 0..min(H, W)
+        assert n in 0..min(H, W), "対象のサイズnは行数と列数の最小値以下の非負の整数である必要があります"
         let rows = fieldAdjugateInverse(matrixRows(a, n, n), false)
         if rows.isNone: return none(StaticMatrix[H,W,T])
         var answer: StaticMatrix[H,W,T]
@@ -160,7 +160,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
 
     proc adjugate*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): StaticMatrix[H,W,T] =
         ## 左上n×nの余因子行列を返す。範囲外は零。O(n^3)。
-        assert n in 0..min(H, W)
+        assert n in 0..min(H, W), "対象のサイズnは行数と列数の最小値以下の非負の整数である必要があります"
         let rows = fieldAdjugateInverse(matrixRows(a, n, n), true)
         var answer: StaticMatrix[H,W,T]
         for i in 0..<n:

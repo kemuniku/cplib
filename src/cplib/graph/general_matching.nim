@@ -134,7 +134,7 @@ when not declared CPLIB_GRAPH_GENERAL_MATCHING:
         for i, v in vertices:
             if (t.ancestors[v] and selected) != 0: right.add(v)
             else: left.add(v)
-        assert left.len > 0 and right.len > 0
+        assert left.len > 0 and right.len > 0, "併合する両方の列は空でない必要があります"
         let nb = t.blocks.len
         t.blocks.add(MatchingMicroTree())
         # 所属先を先に更新し、境界をまたぐ祖先マスクを混ぜない。
@@ -145,7 +145,7 @@ when not declared CPLIB_GRAPH_GENERAL_MATCHING:
 
     proc grow(t: var MatchingTreeUnion, parent, v: int) =
         ## 木に葉を追加する。分割を含めて償却O(1)。
-        assert not t.inserted[v] and t.inserted[parent]
+        assert not t.inserted[v] and t.inserted[parent], "追加する頂点は未登録で、親頂点は登録済みである必要があります"
         t.inserted[v] = true
         t.parent[v] = parent
         t.depth[v] = t.depth[parent] + 1
@@ -160,7 +160,7 @@ when not declared CPLIB_GRAPH_GENERAL_MATCHING:
 
     proc joinParent(t: var MatchingTreeUnion, v: int) =
         ## 頂点の集合を親の集合へ併合する。O(1)。
-        assert v != 0 and t.inserted[v]
+        assert v != 0 and t.inserted[v], "対象の頂点は0以外の登録済み頂点である必要があります"
         t.deleted[v] = true
         let b = t.blockId[v]
         t.blocks[b].live = t.blocks[b].live and not (1'u64 shl t.position[v])
@@ -395,7 +395,7 @@ when not declared CPLIB_GRAPH_GENERAL_MATCHING:
                 if s.augment(v, b):
                     inc result
                     break
-        assert result > 0
+        assert result > 0, "resultは正である必要があります"
 
     proc maximum_matching*(g: UnDirectedGraph): seq[tuple[u, v: int]] =
         ## 無向グラフの最大マッチングの頂点ペア列を返す。O(V+E sqrt V)時間、O(V+E)領域。

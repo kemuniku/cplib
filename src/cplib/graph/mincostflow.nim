@@ -18,13 +18,13 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
     proc initMinCostFlow*[Cap: SomeInteger, Cost: SomeSignedInt](n: int, capacityZero: Cap = 0, costZero: Cost = 0): MinCostFlow[Cap, Cost] =
         ## n頂点の最小費用流グラフを構築する。容量・費用型の省略時はint。O(n)。
         ## capacityZeroとcostZeroは型推論用。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         result.graph = newSeq[seq[MinCostFlowArc[Cap, Cost]]](n)
 
     proc add_edge*[Cap, Cost](g: var MinCostFlow[Cap, Cost], src, dst: int, cap: Cap, cost: Cost): int {.discardable.} =
         ## 容量cap、単位費用costの有向辺を追加し、辺番号を返す。償却O(1)。
-        assert src in 0..<g.graph.len and dst in 0..<g.graph.len
-        assert cap >= Cap(0) and cost != low(Cost)
+        assert src in 0..<g.graph.len and dst in 0..<g.graph.len, "頂点番号が範囲外です"
+        assert cap >= Cap(0) and cost != low(Cost), "容量は非負で、コストはCost型の最小値と異なる必要があります"
         result = g.positions.len
         let index = g.graph[src].len
         let rev = g.graph[dst].len + ord(src == dst)
@@ -47,8 +47,8 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
     proc slope*[Cap, Cost](g: var MinCostFlow[Cap, Cost], src, dst: int, limit: Cap = high(Cap)): seq[tuple[flow: Cap, cost: Cost]] =
         ## 追加流量と最小費用の折れ点を返す。同じ傾きはまとめる。O(VE + A E log V)、Aは増加回数。
         ## 負費用辺に対応するが、始点から到達可能な負閉路はValueError。費用の中間値はCostに収まること。
-        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst
-        assert limit >= Cap(0)
+        assert src in 0..<g.graph.len and dst in 0..<g.graph.len and src != dst, "頂点番号が範囲外か、始点と終点が同じです"
+        assert limit >= Cap(0), "流量の上限は非負である必要があります"
         result = @[(Cap(0), Cost(0))]
         if limit == Cap(0):
             return

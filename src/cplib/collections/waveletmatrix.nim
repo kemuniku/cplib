@@ -159,14 +159,14 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
 
     proc kth_largest*(self:WaveletMatrix,l,r,k:int):int=
         ## [l,r) 内で大きい順に k 番目の値を O(H) で返す。k は 0-indexed。
-        assert 0 <= k and k < r-l
+        assert 0 <= k and k < r-l, "指定した値が有効な範囲内である必要があります: 0 <= k and k < r - l"
         return self.kth_smallest(l,r,r-l-1-k)
 
     proc sum_smallest*(self:WaveletMatrix,l,r,k:int):int=
         ## [l,r) 内の小さい方から k 個の総和を O(H) で返す。0 <= k <= r-l、構築時に with_sum=true が必要。
-        assert self.with_sum
-        assert 0 <= l and l <= r and r <= self.N
-        assert 0 <= k and k <= r-l
+        assert self.with_sum, "和を取得するにはwith_sumを有効にして初期化する必要があります"
+        assert 0 <= l and l <= r and r <= self.N, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.N"
+        assert 0 <= k and k <= r-l, "指定した値が有効な範囲内である必要があります: 0 <= k and k <= r - l"
         var l = l
         var r = r
         var k = k
@@ -188,8 +188,8 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
 
     proc sum_upperbound*(self:WaveletMatrix,l,r,x:int):int=
         ## [l,r) 内の x 以下の要素の総和を 1 回の走査で O(H) で返す。構築時に with_sum=true が必要。
-        assert self.with_sum
-        assert 0 <= l and l <= r and r <= self.N
+        assert self.with_sum, "和を取得するにはwith_sumを有効にして初期化する必要があります"
+        assert 0 <= l and l <= r and r <= self.N, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.N"
         if x < 0:
             return 0
         if self.H < sizeof(int) * 8 and (x shr self.H) != 0:
@@ -211,16 +211,16 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
 
     proc sum_lowerbound*(self:WaveletMatrix,l,r,x:int):int=
         ## [l,r) 内の x 未満の要素の総和を 1 回の走査で O(H) で返す。構築時に with_sum=true が必要。
-        assert self.with_sum
-        assert 0 <= l and l <= r and r <= self.N
+        assert self.with_sum, "和を取得するにはwith_sumを有効にして初期化する必要があります"
+        assert 0 <= l and l <= r and r <= self.N, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.N"
         if x <= 0:
             return 0
         return self.sum_upperbound(l,r,x-1)
 
     proc range_sum*(self:WaveletMatrix,l,r,low,high:int):int=
         ## [l,r) 内で値が [low,high) に入る要素の総和を O(H) で返す。low >= high なら 0。構築時に with_sum=true が必要。
-        assert self.with_sum
-        assert 0 <= l and l <= r and r <= self.N
+        assert self.with_sum, "和を取得するにはwith_sumを有効にして初期化する必要があります"
+        assert 0 <= l and l <= r and r <= self.N, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.N"
         if low >= high:
             return 0
         return self.sum_lowerbound(l,r,high) - self.sum_lowerbound(l,r,low)

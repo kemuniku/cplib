@@ -37,7 +37,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
 
     proc update*[T](self: SegmentTree[T], x: Natural, val: T) =
         ## xの要素をvalに変更します。
-        assert x < self.length
+        assert x < self.length, "指定した値が有効な範囲内である必要があります: x < self.length"
         var x = x
         x += self.lastnode
         self.arr[x] = val
@@ -46,7 +46,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             self.arr[x] = self.merge(self.arr[2*x], self.arr[2*x+1])
     proc get*[T](self: SegmentTree[T], q_left: Natural, q_right: Natural): T =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
-        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and 0 <= q_left and q_right <= self.length"
         var q_left = q_left
         var q_right = q_right
         q_left += self.lastnode
@@ -63,14 +63,14 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             q_right = q_right shr 1
         return self.merge(lres, rres)
     proc get*[T](self: SegmentTree[T], segment: HSlice[int, int]): T =
-        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length
+        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length, "指定した区間が有効な範囲内である必要があります: segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length"
         return self.get(segment.a, segment.b+1)
     proc `[]`*[T](self: SegmentTree[T], segment: HSlice[int, int]): T = self.get(segment)
     proc `[]`*[T](self: SegmentTree[T], index: Natural): T =
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         return self.arr[index+self.lastnode]
     proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T) =
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.update(index, val)
     proc get_all*[T](self: SegmentTree[T]): T =
         ## [0,len(self))区間の演算結果をO(1)で返す
@@ -83,8 +83,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     template newSegWith*(V, merge, default: untyped): untyped =
         initSegmentTree[typeof(default)](V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
     proc max_right*[T](self: SegmentTree[T], l: int, f: proc(l: T): bool): int =
-        assert 0 <= l and l <= self.len
-        assert f(self.default)
+        assert 0 <= l and l <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= l and l <= self.len"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if l == self.len: return self.len
         var l = l + self.lastnode
         var sm = self.default
@@ -102,8 +102,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
             if (l and -l) == l: break
         return self.len
     proc min_left*[T](self: SegmentTree[T], r: int, f: proc(l: T): bool): int =
-        assert 0 <= r and r <= self.len
-        assert f(self.default)
+        assert 0 <= r and r <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.len"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if r == 0: return 0
         var r = r + self.lastnode
         var sm = self.default

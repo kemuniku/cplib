@@ -45,7 +45,7 @@ when not declared CPLIB_COLLECTIONS_CONVEX_HULL_TRICK:
 
     proc get_min*(self: ConvexHullTrick, x: int): int =
         ## 任意の整数座標xでの最小値を返します。座標の事前登録は不要。空の場合はassert。O(log N)。
-        assert not self.root.isNil, "CHT: no lines"
+        assert not self.root.isNil, "CHTに直線が登録されていません"
         var node = self.root
         var best: AvlTreeNode[CHTLine]
         let coordinate = to_Int128(x)

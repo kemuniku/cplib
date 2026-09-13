@@ -28,11 +28,11 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
     proc w*[H: static int, W: static int](a: StaticMatrixMod2[H, W]): int {.inline.} = W
 
     proc `[]`*[H: static int, W: static int](a: StaticMatrixMod2[H, W], i, j: int): bool {.inline.} =
-        assert i in 0..<H and j in 0..<W
+        assert i in 0..<H and j in 0..<W, "指定した値が有効な範囲内である必要があります: i in 0 ..< H and j in 0 ..< W"
         (a.rows[i][j shr 6] and (1'u64 shl (j and 63))) != 0
 
     proc `[]=`*[H: static int, W: static int](a: var StaticMatrixMod2[H, W], i, j: int, x: bool) {.inline.} =
-        assert i in 0..<H and j in 0..<W
+        assert i in 0..<H and j in 0..<W, "指定した値が有効な範囲内である必要があります: i in 0 ..< H and j in 0 ..< W"
         let mask = 1'u64 shl (j and 63)
         if x: a.rows[i][j shr 6] = a.rows[i][j shr 6] or mask
         else: a.rows[i][j shr 6] = a.rows[i][j shr 6] and not mask
@@ -67,12 +67,12 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
 
     proc setRowBits*[H: static int, W: static int](
             a: var StaticMatrixMod2[H, W], i: int, values: string) =
-        assert i in 0..<H and values.len <= W
+        assert i in 0..<H and values.len <= W, "行番号が範囲内で、指定した行の長さが列数以下である必要があります"
         a.setRowBitsUnchecked(i, values)
 
     proc rowBits*[H: static int, W: static int](
             a: StaticMatrixMod2[H, W], i, width: int): string =
-        assert i in 0..<H and width in 0..W
+        assert i in 0..<H and width in 0..W, "行番号が範囲内で、指定した行の長さが列数以下である必要があります"
         a.rowBitsUnchecked(i, width)
 
     proc rowBits*[H: static int, W: static int](
@@ -124,7 +124,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
     proc `*=`*[N: static int](a: var StaticMatrixMod2[N, N], b: StaticMatrixMod2[N, N]) = a = a * b
 
     proc pow*[N: static int](a: StaticMatrixMod2[N, N], exponent: int): StaticMatrixMod2[N, N] =
-        assert exponent >= 0
+        assert exponent >= 0, "exponentは非負である必要があります"
         result = identityStaticMatrixMod2[N]()
         var base = a
         var e = exponent
@@ -177,7 +177,7 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
     proc solveLinearSystem*[H: static int, W: static int](a: StaticMatrixMod2[H,W], b: openArray[bool], height: int = H, width: int = W): Option[LinearSystemSolution[bool]] =
         ## 左上h行w列でAx=bをビット演算で解く。O(h*min(h,w)*(w div 64+1)+w^2)。
         ## height/widthの省略時はH/W。元の行列は変更せず、解なしはnoneを返す。
-        assert height in 0..H and width in 0..W and b.len == height
+        assert height in 0..H and width in 0..W and b.len == height, "対象の行数と列数は行列の範囲内で、右辺の要素数は対象の行数と一致する必要があります"
         var rows = initBitLinearSystem(height, width)
         let stride = (width shr 6) + 1
         let fullWords = width shr 6
@@ -191,12 +191,12 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX_MOD2:
 
     proc hafnian*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): bool =
         ## GF(2)上の対称な偶数次行列のhafnianを求める。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         fieldHafnian(matrixRows(a, a.h, a.w))
 
     proc adjugate*[H: static int, W: static int](a: StaticMatrixMod2[H,W]): StaticMatrixMod2[H,W] =
         ## GF(2)上で特異行列も含めた余因子行列を求める。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.w), true).get
         for i in 0..<a.h:
             for j in 0..<a.w: result[i, j] = rows[i][j]

@@ -147,7 +147,7 @@ when not declared CPLIB_MATH_INT128:
             if n > 1: x *= x
             n >>= 1
     proc pow*(x, n, m: Int128): Int128 =
-        assert m != 0
+        assert m != 0, "法mは0以外である必要があります"
         if m == 1:
             return 0
         result = 1

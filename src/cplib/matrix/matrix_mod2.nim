@@ -10,9 +10,9 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
 
     proc initMatrixMod2*(h, w: int): MatrixMod2 =
         ## h行w列の零行列をO(h*ceil(w/64))時間・空間で作る。行ごとの確保は行わない。
-        assert h >= 0 and w >= 0
+        assert h >= 0 and w >= 0, "行列の行数と列数は非負である必要があります"
         let stride = (w shr 6) + int((w and 63) != 0)
-        assert stride == 0 or h <= high(int) div sizeof(uint64) div stride
+        assert stride == 0 or h <= high(int) div sizeof(uint64) div stride, "行列の記憶領域のサイズがintの範囲を超えています"
         result.height = h
         result.width = w
         result.stride = stride
@@ -30,7 +30,7 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
         let w = if a.len == 0: 0 else: a[0].len
         result = initMatrixMod2(a.len, w)
         for i in 0..<a.len:
-            assert a[i].len == w
+            assert a[i].len == w, "行列の各行の長さは列数と一致する必要があります"
             for j, x in a[i]:
                 if (x and 1) != 0:
                     word(result, i, j shr 6) = word(result, i, j shr 6) or (1'u64 shl (j and 63))
@@ -39,7 +39,7 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
         let w = if a.len == 0: 0 else: a[0].len
         result = initMatrixMod2(a.len, w)
         for i in 0..<a.len:
-            assert a[i].len == w
+            assert a[i].len == w, "行列の各行の長さは列数と一致する必要があります"
             for j, x in a[i]:
                 if x: word(result, i, j shr 6) = word(result, i, j shr 6) or (1'u64 shl (j and 63))
 
@@ -48,11 +48,11 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
     proc w*(a: MatrixMod2): int {.inline.} = a.width
 
     proc `[]`*(a: MatrixMod2, i, j: int): bool {.inline.} =
-        assert i in 0..<a.height and j in 0..<a.width
+        assert i in 0..<a.height and j in 0..<a.width, "指定した値が有効な範囲内である必要があります: i in 0 ..< a.height and j in 0 ..< a.width"
         (word(a, i, j shr 6) and (1'u64 shl (j and 63))) != 0
 
     proc `[]=`*(a: var MatrixMod2, i, j: int, x: bool) {.inline.} =
-        assert i in 0..<a.height and j in 0..<a.width
+        assert i in 0..<a.height and j in 0..<a.width, "指定した値が有効な範囲内である必要があります: i in 0 ..< a.height and j in 0 ..< a.width"
         let mask = 1'u64 shl (j and 63)
         if x: word(a, i, j shr 6) = word(a, i, j shr 6) or mask
         else: word(a, i, j shr 6) = word(a, i, j shr 6) and not mask
@@ -85,11 +85,11 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
     {.pop.}
 
     proc setRowBits*(a: var MatrixMod2, i: int, values: string) =
-        assert i in 0..<a.height and values.len <= a.width
+        assert i in 0..<a.height and values.len <= a.width, "行番号が範囲内で、指定した行の長さが列数以下である必要があります"
         a.setRowBitsUnchecked(i, values)
 
     proc rowBits*(a: MatrixMod2, i, width: int): string =
-        assert i in 0..<a.height and width in 0..a.width
+        assert i in 0..<a.height and width in 0..a.width, "行番号が範囲内で、指定した行の長さが列数以下である必要があります"
         a.rowBitsUnchecked(i, width)
 
     proc rowBits*(a: MatrixMod2, i: int): string =
@@ -149,13 +149,13 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
     {.pop.}
 
     proc `*`*(a, b: MatrixMod2): MatrixMod2 =
-        assert a.width == b.height
+        assert a.width == b.height, "左の行列の列数と右の行列の行数は等しい必要があります"
         multiplyUnchecked(a, b)
 
     proc `*=`*(a: var MatrixMod2, b: MatrixMod2) = a = a * b
 
     proc pow*(a: MatrixMod2, exponent: int): MatrixMod2 =
-        assert a.height == a.width and exponent >= 0
+        assert a.height == a.width and exponent >= 0, "行列は正方行列で、指数は非負である必要があります"
         result = identityMatrixMod2(a.height)
         var base = a
         var e = exponent
@@ -182,19 +182,19 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
             if result == b.height: break
 
     proc determinant*(a: MatrixMod2): bool =
-        assert a.height == a.width
+        assert a.height == a.width, "行列は正方行列である必要があります"
         a.rank == a.height
 
     proc inverse*(a: MatrixMod2): Option[MatrixMod2] =
         ## 64bit単位の掃き出し法で逆行列を求める。O(n^2*ceil(n/64))。特異行列はnone。
         ## 元の行列は変更しない。作業領域はO(n*ceil(n/64))。
-        assert a.height == a.width
+        assert a.height == a.width, "行列は正方行列である必要があります"
         let n = a.height
         if n == 0: return some(initMatrixMod2(0, 0))
         # 右側の単位行列を64bit境界に置き、入出力をワード単位でコピーする。
         let rightStart = a.stride
         let stride = 2 * rightStart
-        assert n <= high(int) div sizeof(uint64) div stride
+        assert n <= high(int) div sizeof(uint64) div stride, "行列の記憶領域のサイズがintの範囲を超えています"
         var storage = newSeq[uint64](n * stride)
         let data = cast[ptr UncheckedArray[uint64]](addr storage[0])
         for i in 0..<n:
@@ -226,7 +226,7 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
     proc solveLinearSystem*(a: MatrixMod2, b: openArray[bool]): Option[LinearSystemSolution[bool]] =
         ## ビット演算でAx=bの特殊解と核の基底を返す。O(h*min(h,w)*(w div 64+1)+w^2)。
         ## 元の行列は変更しない。解なしはnone、基底の個数はw-rank。
-        assert b.len == a.height
+        assert b.len == a.height, "右辺の要素数は行列の行数と一致する必要があります"
         var rows = initBitLinearSystem(a.height, a.width)
         let stride = (a.width shr 6) + 1
         for i in 0..<a.height:
@@ -236,12 +236,12 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
 
     proc hafnian*(a: MatrixMod2): bool =
         ## GF(2)上の対称な偶数次行列のhafnianを求める。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         fieldHafnian(matrixRows(a, a.h, a.w))
 
     proc adjugate*(a: MatrixMod2): MatrixMod2 =
         ## GF(2)上で特異行列も含めた余因子行列を求める。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.w), true).get
         result = initMatrixMod2(a.h, a.w)
         for i in 0..<a.h:

@@ -52,7 +52,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_ARRAY:
         return v
 
     proc `[]`*[shift,T](PA:PersistentArray[shift,T],index:Natural):T=
-        assert index in 0..<PA.size
+        assert index in 0..<PA.size, "指定した値が有効な範囲内である必要があります: index in 0 ..< PA.size"
         var idx = index
         var indexs = newseq[int](PA.h)
         for i in countdown(PA.h-1,0,1):
@@ -64,7 +64,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_ARRAY:
         return now.value
 
     proc change_value*[shift,T](PA:PersistentArray[shift,T],index:Natural,value:T):PersistentArray[shift,T]=
-        assert index in 0..<PA.size
+        assert index in 0..<PA.size, "指定した値が有効な範囲内である必要があります: index in 0 ..< PA.size"
         var idx = index
         var indexs = newseq[int](PA.h)
         for i in countdown(PA.h-1,0,1):

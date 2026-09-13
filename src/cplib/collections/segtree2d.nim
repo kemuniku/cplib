@@ -34,8 +34,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE2D:
 
     proc get*[T](self: SegmentTree2D[T], il: Natural, ir: Natural,jl: Natural, jr: Natural): T =
         ## 長方形領域 i∈[il,ir), j∈[jl,jr) についての演算結果を返します。
-        assert il <= ir and 0 <= il and ir <= self.H
-        assert jl <= jr and 0 <= jl and jr <= self.W
+        assert il <= ir and 0 <= il and ir <= self.H, "指定した区間が有効な範囲内である必要があります: il <= ir and 0 <= il and ir <= self.H"
+        assert jl <= jr and 0 <= jl and jr <= self.W, "指定した区間が有効な範囲内である必要があります: jl <= jr and 0 <= jl and jr <= self.W"
         var il = il
         var ir = ir
         il += self.lastnode
@@ -54,8 +54,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE2D:
 
     proc update*[T](self: SegmentTree2D[T], i,j: Natural, val: T) =
         ## (i, j)の要素をvalに変更します。
-        assert i < self.H
-        assert j < self.W
+        assert i < self.H, "指定した値が有効な範囲内である必要があります: i < self.H"
+        assert j < self.W, "指定した値が有効な範囲内である必要があります: j < self.W"
         var i = i
         i += self.lastnode
         self.arr[i][j] = val

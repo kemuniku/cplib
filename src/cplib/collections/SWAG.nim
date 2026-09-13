@@ -73,7 +73,7 @@ when not declared CPLIB_COLLECTIONS_SWAG:
         return self.bottom[index-len(self.top)]
 
     proc get_maxrights*[T](v:seq[T],op:proc(l,r:T):T,e:T,f:proc(x:T):bool):seq[int]=
-        assert f(e)
+        assert f(e), "判定関数は単位元に対してtrueを返す必要があります"
         var swag = initSWAG(op,e)
         var r = 0
         for l in 0..<(len(v)):

@@ -74,11 +74,11 @@ when not declared CPLIB_STR_STATIC_STRING:
     proc len*[T](S: StaticString[T]): int {.inline.} = S.r - S.l
 
     proc `[]`*[T](S: StaticString[T], idx: Natural): T =
-        assert idx < len(S)
+        assert idx < len(S), "指定した値が有効な範囲内である必要があります: idx < len(S)"
         return S.base.S[S.l+idx]
 
     proc `[]`*[T](S: StaticString[T], slice: HSlice[int, int]): StaticString[T] =
-        assert slice.a <= slice.b+1 and S.l + slice.b < S.r
+        assert slice.a <= slice.b+1 and S.l + slice.b < S.r, "指定した区間が有効な範囲内である必要があります: slice.a <= slice.b + 1 and S.l + slice.b < S.r"
         return StaticString[T](base: S.base, l: S.l+slice.a.int32(), r: S.l+slice.b.int32()+1)
 
 
@@ -94,7 +94,7 @@ when not declared CPLIB_STR_STATIC_STRING:
                 result &= $S[i]
 
     proc lcp*[Element](S, T: StaticString[Element]): int {.inline.} =
-        assert S.base == T.base
+        assert S.base == T.base, "文字列は同じ基底文字列から作成されている必要があります"
         result = min(len(S), len(T))
         if result == 0:
             return
@@ -107,18 +107,18 @@ when not declared CPLIB_STR_STATIC_STRING:
         result = min(result, S.base.RMQ.query(l, r))
 
     proc reversed*[T](S: StaticString[T]): StaticString[T] {.inline.} =
-        assert S.base.reversible
+        assert S.base.reversible, "反転を使うにはreversibleを有効にして初期化する必要があります"
         result.base = S.base
         result.l = 2*S.base.size-S.r
         result.r = 2*S.base.size-S.l
 
     proc isPalindrome*[T](S: StaticString[T]): bool {.inline.} =
-        assert S.base.reversible
+        assert S.base.reversible, "反転を使うにはreversibleを有効にして初期化する必要があります"
         return lcp(S, S.reversed) == len(S)
 
     proc lcs*[Element](S, T: StaticString[Element]): int {.inline.} =
-        assert S.base == T.base
-        assert S.base.reversible
+        assert S.base == T.base, "文字列は同じ基底文字列から作成されている必要があります"
+        assert S.base.reversible, "反転を使うにはreversibleを有効にして初期化する必要があります"
         return lcp(S.reversed, T.reversed)
 
     proc cmp*[Element](S, T: StaticString[Element]): int {.inline.} =
@@ -188,7 +188,7 @@ when not declared CPLIB_STR_STATIC_STRING:
 
 
     proc suffix_lowerbound*[T](base: StaticStringBase[T], S: openArray[T]): int =
-        assert not base.reversible
+        assert not base.reversible, "この操作にはreversibleを無効にした文字列が必要です"
         proc cmp(x: int32, s: openArray[T]): int =
             for i in 0..<len(s):
                 if i+x >= base.size: return -1
@@ -198,7 +198,7 @@ when not declared CPLIB_STR_STATIC_STRING:
         return base.SA.lowerBound(S, cmp)
 
     proc suffix_upperbound*[T](base: StaticStringBase[T], S: openArray[T]): int =
-        assert not base.reversible
+        assert not base.reversible, "この操作にはreversibleを無効にした文字列が必要です"
         proc cmp(x: int32, s: openArray[T]): int =
             for i in 0..<len(s):
                 if i+x >= base.size: return -1
@@ -208,5 +208,5 @@ when not declared CPLIB_STR_STATIC_STRING:
         return base.SA.upperBound(S, cmp)
 
     proc count*[T](base: StaticStringBase[T], S: openArray[T]): int =
-        assert not base.reversible
+        assert not base.reversible, "この操作にはreversibleを無効にした文字列が必要です"
         return base.suffix_upperbound(S) - base.suffix_lowerbound(S)

@@ -14,8 +14,8 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         return initFraction(x.num,x.den,false)
 
     proc continued_fraction_expansion*[T](a,b:T):seq[T]=
-        assert a >= 1
-        assert b >= 1
+        assert a >= 1, "aは1以上である必要があります"
+        assert b >= 1, "bは1以上である必要があります"
         var a = a
         var b = b
         while true:
@@ -120,7 +120,7 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
 
     proc min_greater_with_den_at_most*[T](x:SBTNode[T],m:T):SBTNode[T]=
         ## xより大きく、分子・分母がm以下である有理数のうち最小のものを返す。
-        assert m >= 1
+        assert m >= 1, "mは1以上である必要があります"
 
         if x.is_inner_node_bounded(m):
             var now = x.move_right(1)
@@ -149,7 +149,7 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
 
     proc max_less_with_den_at_most*[T](x:SBTNode[T],m:T):SBTNode[T]=
         ## xより小さく、分子・分母がm以下である有理数のうち最大のものを返す。
-        assert m >= 1
+        assert m >= 1, "mは1以上である必要があります"
 
         if x.is_inner_node_bounded(m):
             var now = x.move_left(1)
@@ -253,14 +253,14 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         # となるような境界aを分子・分母がn以下の有理数になるように近似した結果を返す。(その区間が得られるnodeが返る)
 
         # is_okにはINFと0が与えられる点に注意。
-        assert n >= 1
+        assert n >= 1, "nは1以上である必要があります"
 
         var now = sbt_root(T)
 
         var result0 = is_ok(sbt_zero(T))
         var resultinf = is_ok(sbt_inf(T))
 
-        assert result0 != resultinf
+        assert result0 != resultinf, "区間の両端に対する判定結果は異なる必要があります"
 
         var is_left = false
 
@@ -337,7 +337,7 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
 
     proc initAuxiliaryWeightedTree*(v:openArray[SBTNode[int]]):WeightedUnDirectedTableGraph[SBTNode[int],int]=
         ## 根が欲しかったらG.v[0]を使ってください　けむにく
-        assert len(v) > 0
+        assert len(v) > 0, "列vは空でない必要があります"
         var v = v.sorted(cmp_with_ein)
         for i in 0..<(len(v)-1):
             v.add(LCA(v[i],v[i+1]))
