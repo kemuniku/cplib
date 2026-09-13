@@ -75,6 +75,12 @@ data:
     path: cplib/graph/functional_graph_with_op.nim
     title: cplib/graph/functional_graph_with_op.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/general_matching.nim
+    title: cplib/graph/general_matching.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/general_matching.nim
+    title: cplib/graph/general_matching.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph_debug.nim
     title: cplib/graph/graph_debug.nim
   - icon: ':heavy_check_mark:'
@@ -86,6 +92,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/grid_to_graph.nim
     title: cplib/graph/grid_to_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/k_shortest_walk.nim
+    title: cplib/graph/k_shortest_walk.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/k_shortest_walk.nim
+    title: cplib/graph/k_shortest_walk.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
@@ -466,6 +478,18 @@ data:
     path: verify/AI/functional_graph_test.nim
     title: verify/AI/functional_graph_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/general_matching_test.nim
+    title: verify/AI/general_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_matching_test.nim
+    title: verify/AI/general_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_matching_tree_union_test.nim
+    title: verify/AI/general_matching_tree_union_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_matching_tree_union_test.nim
+    title: verify/AI/general_matching_tree_union_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/graph_debug_test.nim
     title: verify/AI/graph_debug_test.nim
   - icon: ':heavy_check_mark:'
@@ -507,6 +531,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/itertools_test.nim
     title: verify/AI/itertools_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/k_shortest_walk_test.nim
+    title: verify/AI/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/k_shortest_walk_test.nim
+    title: verify/AI/k_shortest_walk_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/kruskal_test.nim
     title: verify/AI/kruskal_test.nim
@@ -616,6 +646,12 @@ data:
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/k_shortest_walk_test.nim
+    title: verify/graph/dynamic/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/k_shortest_walk_test.nim
+    title: verify/graph/dynamic/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -640,6 +676,12 @@ data:
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/general_matching_test.nim
+    title: verify/graph/general_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_matching_test.nim
+    title: verify/graph/general_matching_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/lowlink_articulation_test.nim
     title: verify/graph/lowlink_articulation_test.nim
   - icon: ':heavy_check_mark:'
@@ -663,6 +705,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/k_shortest_walk_static_test.nim
+    title: verify/graph/static/k_shortest_walk_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/k_shortest_walk_static_test.nim
+    title: verify/graph/static/k_shortest_walk_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
@@ -1007,6 +1055,8 @@ data:
   - cplib/graph/dijkstra.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/graph/general_matching.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/maxk_dijkstra.nim
@@ -1019,6 +1069,8 @@ data:
   - cplib/graph/namori_graph.nim
   - cplib/graph/graph_debug.nim
   - cplib/graph/graph_debug.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/reverse_edge.nim
@@ -1108,8 +1160,12 @@ data:
   - verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/general_matching_test.nim
+  - verify/graph/general_matching_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/namori_incycle_test.nim
@@ -1122,12 +1178,16 @@ data:
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/AI/dynamic_bipartite_test.nim
   - verify/AI/dynamic_bipartite_test.nim
+  - verify/AI/general_matching_test.nim
+  - verify/AI/general_matching_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/grid_to_graph_test.nim
@@ -1150,6 +1210,8 @@ data:
   - verify/AI/itertools_enumeration_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_test.nim
+  - verify/AI/k_shortest_walk_test.nim
+  - verify/AI/k_shortest_walk_test.nim
   - verify/AI/steiner_tree_test.nim
   - verify/AI/steiner_tree_test.nim
   - verify/AI/topologicalsort_test.nim
@@ -1192,6 +1254,8 @@ data:
   - verify/AI/lowlink_test.nim
   - verify/AI/diameter_test.nim
   - verify/AI/diameter_test.nim
+  - verify/AI/general_matching_tree_union_test.nim
+  - verify/AI/general_matching_tree_union_test.nim
   - verify/AI/bellmanford_test.nim
   - verify/AI/bellmanford_test.nim
 documentation_of: cplib/graph/graph.nim

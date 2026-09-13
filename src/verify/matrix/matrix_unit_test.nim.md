@@ -70,8 +70,8 @@ data:
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matops.nim
   - cplib/matrix/matrix.nim
-  - cplib/matrix/matops.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matops.nim
   - cplib/matrix/matrix.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim

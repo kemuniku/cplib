@@ -49,12 +49,12 @@ data:
     \        hull.add_line(a, b)\n    else:\n        echo hull.get_min(ii())\n"
   dependsOn:
   - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/collections/convex_hull_trick.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/avltreenode.nim
   - cplib/math/int128.nim
+  - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_line_add_get_min_test.nim

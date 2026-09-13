@@ -338,6 +338,9 @@ data:
       path: cplib/graph/functional_graph_with_op.nim
       title: cplib/graph/functional_graph_with_op.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/general_matching.nim
+      title: cplib/graph/general_matching.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'
@@ -349,6 +352,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/hopcroft_karp.nim
       title: cplib/graph/hopcroft_karp.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/k_shortest_walk.nim
+      title: cplib/graph/k_shortest_walk.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/kruskal.nim
       title: cplib/graph/kruskal.nim
@@ -1350,6 +1356,12 @@ data:
       path: verify/AI/functional_graph_test.nim
       title: verify/AI/functional_graph_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/general_matching_test.nim
+      title: verify/AI/general_matching_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/general_matching_tree_union_test.nim
+      title: verify/AI/general_matching_tree_union_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/geometry_base_test.nim
       title: verify/AI/geometry_base_test.nim
     - icon: ':heavy_check_mark:'
@@ -1421,6 +1433,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/itertools_test.nim
       title: verify/AI/itertools_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/k_shortest_walk_test.nim
+      title: verify/AI/k_shortest_walk_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/knapsack_test.nim
       title: verify/AI/knapsack_test.nim
@@ -2107,6 +2122,9 @@ data:
       path: verify/graph/biconnected_components_test.nim
       title: verify/graph/biconnected_components_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/graph/general_matching_test.nim
+      title: verify/graph/general_matching_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/hopcroft_karp_test.nim
       title: verify/graph/hopcroft_karp_test.nim
     - icon: ':heavy_check_mark:'
@@ -2142,6 +2160,9 @@ data:
       path: verify/graph/dynamic/bellmanford_grl1b_test.nim
       title: verify/graph/dynamic/bellmanford_grl1b_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/k_shortest_walk_test.nim
+      title: verify/graph/dynamic/k_shortest_walk_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/restore_dijkstra_test.nim
       title: verify/graph/dynamic/restore_dijkstra_test.nim
     - icon: ':heavy_check_mark:'
@@ -2158,6 +2179,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/bellmanford_grl1b_test.nim
       title: verify/graph/static/bellmanford_grl1b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/static/k_shortest_walk_static_test.nim
+      title: verify/graph/static/k_shortest_walk_static_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/restore_dijkstra_static_test.nim
       title: verify/graph/static/restore_dijkstra_static_test.nim

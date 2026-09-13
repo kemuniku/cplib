@@ -33,6 +33,12 @@ data:
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/k_shortest_walk.nim
+    title: cplib/graph/k_shortest_walk.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/k_shortest_walk.nim
+    title: cplib/graph/k_shortest_walk.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
   - icon: ':heavy_check_mark:'
@@ -208,6 +214,12 @@ data:
     path: verify/AI/implicit_dijkstra_test.nim
     title: verify/AI/implicit_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/k_shortest_walk_test.nim
+    title: verify/AI/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/k_shortest_walk_test.nim
+    title: verify/AI/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/knapsack_test.nim
     title: verify/AI/knapsack_test.nim
   - icon: ':heavy_check_mark:'
@@ -298,6 +310,12 @@ data:
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/k_shortest_walk_test.nim
+    title: verify/graph/dynamic/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/k_shortest_walk_test.nim
+    title: verify/graph/dynamic/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -327,6 +345,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/k_shortest_walk_static_test.nim
+    title: verify/graph/static/k_shortest_walk_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/k_shortest_walk_static_test.nim
+    title: verify/graph/static/k_shortest_walk_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
@@ -484,6 +508,8 @@ data:
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/kruskal.nim
   - cplib/graph/kruskal.nim
   - cplib/graph/namori_forest.nim
@@ -533,6 +559,8 @@ data:
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/namori_incycle_test.nim
@@ -543,6 +571,8 @@ data:
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/AI/lichaotree_test.nim
@@ -557,6 +587,8 @@ data:
   - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/slopetrick_test.nim
   - verify/AI/slopetrick_test.nim
+  - verify/AI/k_shortest_walk_test.nim
+  - verify/AI/k_shortest_walk_test.nim
   - verify/AI/steiner_tree_test.nim
   - verify/AI/steiner_tree_test.nim
   - verify/AI/sheep_test.nim

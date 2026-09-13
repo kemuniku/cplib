@@ -55,8 +55,8 @@ data:
     '
   dependsOn:
   - cplib/graph/bipartite_graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/bipartite_graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/bipartite_graph_test.nim

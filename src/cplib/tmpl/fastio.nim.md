@@ -58,6 +58,12 @@ data:
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/k_shortest_walk_test.nim
+    title: verify/graph/dynamic/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/k_shortest_walk_test.nim
+    title: verify/graph/dynamic/k_shortest_walk_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -69,6 +75,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_matching_test.nim
+    title: verify/graph/general_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_matching_test.nim
+    title: verify/graph/general_matching_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/hopcroft_karp_test.nim
     title: verify/graph/hopcroft_karp_test.nim
@@ -99,6 +111,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/push_relabel_bipartitematching_test.nim
     title: verify/graph/push_relabel_bipartitematching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/k_shortest_walk_static_test.nim
+    title: verify/graph/static/k_shortest_walk_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/k_shortest_walk_static_test.nim
+    title: verify/graph/static/k_shortest_walk_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
@@ -820,8 +838,12 @@ data:
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/general_matching_test.nim
+  - verify/graph/general_matching_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/hopcroft_karp_test.nim
@@ -832,6 +854,8 @@ data:
   - verify/graph/lowlink_articulation_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/push_relabel_bipartitematching_test.nim

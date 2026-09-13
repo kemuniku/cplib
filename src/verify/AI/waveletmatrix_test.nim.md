@@ -86,10 +86,10 @@ data:
     \        for trial in 0..<20:\n            let l = rng.rand(n)\n            let\
     \ r = l + rng.rand(n-l)\n            checkRange(a, wm, l, r, withSum)\n"
   dependsOn:
-  - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim
   requiredBy: []
