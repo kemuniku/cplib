@@ -1247,6 +1247,10 @@ inline void print_one(std::FILE* output, Integer value) {
     template `*`*[T](values: openArray[T]): string =
         fastioJoinImpl(values, " ")
 
+    proc fastioSeparatorString(sep: string | char): string {.inline.} =
+        ## printの区切り文字を文字列に統一する。
+        $sep
+
     # 最後の文字列引数をsepと誤認しないよう、名前付きsepはマクロで処理する。
     macro print*(args: varargs[untyped]): untyped =
         var sep = newLit(" ")
@@ -1256,7 +1260,7 @@ inline void print_one(std::FILE* output, Integer value) {
             if arg.kind == nnkExprEqExpr and arg[0].eqIdent("sep"):
                 if hasSep:
                     error("sep can only be specified once", arg)
-                sep = arg[1]
+                sep = newCall(bindSym"fastioSeparatorString", arg[1])
                 hasSep = true
             else:
                 values.add(arg)
