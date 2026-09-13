@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
@@ -25,28 +25,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_product_avx2.nim
     title: cplib/matrix/matrix_product_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
@@ -73,21 +73,21 @@ data:
     matrix_product_ms=\", (getMonoTime() - start).inNanoseconds.float / 1e6)\nfor\
     \ i in 0 ..< n:\n    print(*c.toOpenArray(i * k, (i + 1) * k - 1))\n"
   dependsOn:
-  - cplib/matrix/matrix.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/matrix/matrix_product_avx2.nim
+  - cplib/matrix/matrix_product_avx2.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_product_avx2.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/tmpl/fastio.nim
-  - cplib/matrix/matrix_product_avx2.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/matrix/matrix_product_avx2_test.nim

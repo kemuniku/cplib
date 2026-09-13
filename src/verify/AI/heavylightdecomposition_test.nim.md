@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   _extendedRequiredBy: []
@@ -44,14 +44,14 @@ data:
     \  children.add(v)\nchildren.sort()\nassert children == @[3, 4]\n\nlet aux = hld.initAuxiliaryTree(@[3,\
     \ 4, 5])\nvar auxVertices = aux.v\nauxVertices.sort()\nassert auxVertices == @[0,\
     \ 1, 3, 4, 5]\n\nlet waux = hld.initAuxiliaryWeightedTree(@[3, 5])\nassert waux.v\
-    \ == @[0, 3, 5]\nvar weightedEdges = waux.graph.edges[0].mapIt((it[0].int, it[1]))\n\
-    weightedEdges.sort()\nassert weightedEdges == @[(1, 2), (2, 2)]\n\nproc checkPaths(adj:\
-    \ seq[seq[int]], root: int) =\n  let hld = adj.initHld(root)\n  for u in 0..<adj.len:\n\
-    \    var prev = newSeqWith(adj.len, -1)\n    var queue = @[u]\n    prev[u] = u\n\
-    \    var head = 0\n    while head < queue.len:\n      let p = queue[head]\n  \
-    \    inc head\n      for v in adj[p]:\n        if prev[v] == -1:\n          prev[v]\
-    \ = p\n          queue.add(v)\n    for v in 0..<adj.len:\n      var expected =\
-    \ @[v]\n      while expected[^1] != u:\n        expected.add(prev[expected[^1]])\n\
+    \ == @[0, 3, 5]\nvar weightedEdges: seq[(int, int)]\nfor e in waux.graph.to_and_cost(0):\n\
+    \  weightedEdges.add(e)\nweightedEdges.sort()\nassert weightedEdges == @[(1, 2),\
+    \ (2, 2)]\n\nproc checkPaths(adj: seq[seq[int]], root: int) =\n  let hld = adj.initHld(root)\n\
+    \  for u in 0..<adj.len:\n    var prev = newSeqWith(adj.len, -1)\n    var queue\
+    \ = @[u]\n    prev[u] = u\n    var head = 0\n    while head < queue.len:\n   \
+    \   let p = queue[head]\n      inc head\n      for v in adj[p]:\n        if prev[v]\
+    \ == -1:\n          prev[v] = p\n          queue.add(v)\n    for v in 0..<adj.len:\n\
+    \      var expected = @[v]\n      while expected[^1] != u:\n        expected.add(prev[expected[^1]])\n\
     \      expected.reverse()\n      var actual: seq[int]\n      for (l, r, upward)\
     \ in hld.pathWithDirection(u, v):\n        assert 0 <= l and l < r and r <= adj.len\n\
     \        if upward:\n          for i in l..<r:\n            let idx = adj.len\
@@ -69,14 +69,14 @@ data:
     \ rng.rand(v - 1)\n      adj[p].add(v)\n      adj[v].add(p)\n    for root in 0..<n:\n\
     \      checkPaths(adj, root)\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/heavylightdecomposition_test.nim
   requiredBy: []
-  timestamp: '2026-09-10 03:48:30+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/heavylightdecomposition_test.nim

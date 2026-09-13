@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -70,14 +70,14 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/SCC_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/SCC_test.nim

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd_avx.nim
     title: cplib/graph/warshall_floyd_avx.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -93,16 +93,16 @@ data:
     var ng = initWeightedDirectedGraph(2)\nng.add_edge(0, 1, -2)\nng.add_edge(1, 0,\
     \ -2)\nassert ng.warshall_floyd().negative_cycle\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_avx.nim
-  - cplib/graph/warshall_floyd_avx.nim
   - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_avx.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx_test.nim
   requiredBy: []
-  timestamp: '2026-09-03 23:28:44+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/warshall_floyd_avx_test.nim

@@ -1,34 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/powmod.nim
-    title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/powmod.nim
-    title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedRequiredBy: []
@@ -164,20 +152,16 @@ data:
     \     assert n >= 0\n        assert s.len >= 1\n        for i in 0..<n:\n    \
     \        result.add(s[rand(0..<len(s))])\n        return result\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
-  - cplib/math/powmod.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-13 13:39:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/random_helper_test.nim

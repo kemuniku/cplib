@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   _extendedRequiredBy: []
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/lowlink_test.nim
     title: verify/AI/lowlink_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -58,15 +58,15 @@ data:
     \u57DF\u3067\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u306B\u5206\u89E3\u3057\
     \u307E\u3059\u3002\n        result = initTwoEdgeConnectedComponents(initLowLink(g))\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
   isVerificationFile: false
   path: cplib/graph/two_edge_connected_components.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:56:49+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 13:39:58+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/two_edge_connected_components_test.nim

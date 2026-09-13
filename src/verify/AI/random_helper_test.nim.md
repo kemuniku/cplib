@@ -1,34 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/inner_math.nim
-    title: cplib/math/inner_math.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/powmod.nim
-    title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/math/powmod.nim
-    title: cplib/math/powmod.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   - icon: ':heavy_check_mark:'
@@ -76,22 +64,18 @@ data:
     \ + b, 0) == 2\nassert random_string(4, 'a'..'c').allIt(it in 'a'..'c')\nassert\
     \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/tree/prufer.nim
-  - cplib/math/powmod.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
   - cplib/utils/random_helper.nim
+  - cplib/math/isprime.nim
   - cplib/utils/random_helper.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-13 13:39:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/random_helper_test.nim

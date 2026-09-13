@@ -34,9 +34,9 @@ data:
     \ query[1].parseInt,\n                   query[2].parseInt, query[3].parseInt)\n"
   dependsOn:
   - cplib/math/int128.nim
-  - cplib/math/floor_sum.nim
-  - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
+  - cplib/math/floor_sum.nim
+  - cplib/math/floor_sum.nim
   isVerificationFile: true
   path: verify/math/floor_sum_yosupo_test.nim
   requiredBy: []

@@ -1,21 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
@@ -27,21 +33,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -52,7 +58,7 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_WARSHALLFLOYD:\n    const CPLIB_GRAPH_WARSHALLFLOYD*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
-    \ sequtils\n    proc warshall_floyd_impl[T](g: DynamicGraph[T] or StaticGraph[T],\
+    \ sequtils\n    proc warshall_floyd_impl[T](g: WeightedGraph[T] or UnWeightedGraph,\
     \ zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =\n        var d\
     \ = newSeqWith(g.len, newSeqWith(g.len, inf))\n        for i in 0..<g.len: d[i][i]\
     \ = zero\n        for i in 0..<g.len:\n            for (j, cost) in g.to_and_cost(i):\n\
@@ -61,33 +67,36 @@ data:
     \ d[i][k] != inf and d[k][j] != inf:\n                        d[i][j] = min(d[i][j],\
     \ d[i][k] + d[k][j])\n            for i in 0..<g.len:\n                if d[i][i]\
     \ < zero: return (negative_cycle: true, d: d)\n        return (negative_cycle:\
-    \ false, d: d)\n\n    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int],\
-    \ zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]]\
-    \ = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*(g: DynamicGraph[int32]\
-    \ or StaticGraph[int32], zero: int32 = 0.int32, inf: int32 = INF32): tuple[negative_cycle:\
-    \ bool, d: seq[seq[int32]]] = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*(g:\
-    \ DynamicGraph[float] or StaticGraph[float], zero: float = 0.0, inf: float = 1e100):\
-    \ tuple[negative_cycle: bool, d: seq[seq[float]]] = warshall_floyd_impl(g, zero,\
-    \ inf)\n    proc warshall_floyd*(g: DynamicGraph[float32] or StaticGraph[float32],\
-    \ zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): tuple[negative_cycle: bool,\
-    \ d: seq[seq[float32]]] = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*[T](g:\
-    \ DynamicGraph[T] or StaticGraph[T], zero, inf: T): tuple[negative_cycle: bool,\
-    \ d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)\n"
+    \ false, d: d)\n\n    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int]\
+    \ or UnWeightedGraph, zero: int = 0, inf: int = INF64): tuple[negative_cycle:\
+    \ bool, d: seq[seq[int]]] = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*(g:\
+    \ DynamicGraph[int32] or StaticGraph[int32], zero: int32 = 0.int32, inf: int32\
+    \ = INF32): tuple[negative_cycle: bool, d: seq[seq[int32]]] = warshall_floyd_impl(g,\
+    \ zero, inf)\n    proc warshall_floyd*(g: DynamicGraph[float] or StaticGraph[float],\
+    \ zero: float = 0.0, inf: float = 1e100): tuple[negative_cycle: bool, d: seq[seq[float]]]\
+    \ = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*(g: DynamicGraph[float32]\
+    \ or StaticGraph[float32], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32):\
+    \ tuple[negative_cycle: bool, d: seq[seq[float32]]] = warshall_floyd_impl(g, zero,\
+    \ inf)\n    proc warshall_floyd*[T](g: WeightedGraph[T] or UnWeightedGraph, zero,\
+    \ inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g,\
+    \ zero, inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
   - verify/AI/warshall_floyd_test.nim
   - verify/AI/warshall_floyd_test.nim
   - verify/AI/graph_weight_type_test.nim

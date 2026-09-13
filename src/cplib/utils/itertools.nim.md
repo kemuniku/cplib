@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   _extendedRequiredBy: []
@@ -27,45 +27,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/itertools_test.nim
     title: verify/AI/itertools_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -441,13 +441,13 @@ data:
   dependsOn:
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []
-  timestamp: '2026-09-09 16:56:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulated_test.nim

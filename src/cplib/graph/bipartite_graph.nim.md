@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -50,7 +50,7 @@ data:
   requiredBy:
   - verify/graph/is_bipartite_graph_test_.nim
   - verify/graph/is_bipartite_graph_test_.nim
-  timestamp: '2026-07-07 07:12:05+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/bipartite_graph_test.nim

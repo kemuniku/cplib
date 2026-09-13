@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
     links:
@@ -40,17 +40,17 @@ data:
     \ result)\n\nvar N,Q = ii()\nvar a = (@[0]&newseqwith(N,ii()))\na.accumulate(a+b)\n\
     \nfor i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[r]-a[l]"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
+  - cplib/utils/itertools.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
-  - cplib/utils/itertools.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/utils/itertools/accumulate_test.nim
   requiredBy: []
-  timestamp: '2026-09-09 16:56:05+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/utils/itertools/accumulate_test.nim
 layout: document

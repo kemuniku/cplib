@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_11_B
     links:
@@ -38,8 +38,8 @@ data:
   isVerificationFile: true
   path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -82,18 +82,18 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
-  - cplib/utils/bititers.nim
   isVerificationFile: true
   path: verify/AI/steiner_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/steiner_tree_test.nim

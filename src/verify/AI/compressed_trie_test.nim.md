@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -109,20 +109,20 @@ data:
 
     '
   dependsOn:
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/graph/graph.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/compressed_trie.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/compressed_trie.nim
+  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim
   requiredBy: []
-  timestamp: '2026-09-08 15:30:15+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/compressed_trie_test.nim

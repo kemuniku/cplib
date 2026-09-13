@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy:
@@ -32,12 +32,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
+  - icon: ':question:'
+    path: cplib/tree/rerooting_static_top_tree_dp.nim
+    title: cplib/tree/rerooting_static_top_tree_dp.nim
+  - icon: ':question:'
+    path: cplib/tree/rerooting_static_top_tree_dp.nim
+    title: cplib/tree/rerooting_static_top_tree_dp.nim
+  - icon: ':question:'
+    path: cplib/tree/static_top_tree.nim
+    title: cplib/tree/static_top_tree.nim
+  - icon: ':question:'
+    path: cplib/tree/static_top_tree.nim
+    title: cplib/tree/static_top_tree.nim
+  - icon: ':question:'
+    path: cplib/tree/static_top_tree_dp.nim
+    title: cplib/tree/static_top_tree_dp.nim
+  - icon: ':question:'
+    path: cplib/tree/static_top_tree_dp.nim
+    title: cplib/tree/static_top_tree_dp.nim
   - icon: ':warning:'
     path: verify/graph/functional_graph_test_.nim
     title: verify/graph/functional_graph_test_.nim
@@ -106,50 +124,68 @@ data:
     path: verify/AI/namori_graph_test.nim
     title: verify/AI/namori_graph_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/static_top_tree_test.nim
+    title: verify/AI/static_top_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_top_tree_test.nim
+    title: verify/AI/static_top_tree_test.nim
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - icon: ':x:'
+    path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - icon: ':x:'
+    path: verify/tree/point_set_tree_path_composite_sum_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_test.nim
+  - icon: ':x:'
+    path: verify/tree/point_set_tree_path_composite_sum_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc337/submissions/50216964
@@ -397,6 +433,12 @@ data:
   - verify/graph/namori_graph_test_.nim
   - verify/graph/namori_forest_test_.nim
   - verify/graph/namori_forest_test_.nim
+  - cplib/tree/static_top_tree_dp.nim
+  - cplib/tree/static_top_tree_dp.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/functional_graph_with_op.nim
@@ -407,8 +449,8 @@ data:
   - cplib/graph/namori_forest.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
-  timestamp: '2026-09-10 03:48:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim
@@ -420,10 +462,16 @@ data:
   - verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
   - verify/tree/hld/hld_la_yosupo_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
+  - verify/AI/static_top_tree_test.nim
+  - verify/AI/static_top_tree_test.nim
   - verify/AI/heavylightdecomposition_test.nim
   - verify/AI/heavylightdecomposition_test.nim
   - verify/AI/namori_graph_test.nim

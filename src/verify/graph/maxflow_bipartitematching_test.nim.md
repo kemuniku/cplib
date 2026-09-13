@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
@@ -37,9 +37,9 @@ data:
     \ dst)\nfor e in g.get_edges:\n    if e.src < left and e.dst >= left and e.dst\
     \ < src and e.flow == 1:\n        echo e.src, \" \", e.dst - left\n"
   dependsOn:
+  - cplib/graph/maxflow.nim
+  - cplib/graph/maxflow.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/maxflow.nim
-  - cplib/graph/maxflow.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/maxflow_bipartitematching_test.nim

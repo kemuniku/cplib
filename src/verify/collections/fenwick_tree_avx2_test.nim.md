@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/fenwick_avx2.nim
     title: cplib/collections/fenwick_avx2.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
@@ -36,10 +36,10 @@ data:
     \     if t == 0:\n            bit.add(l, r)\n        else:\n            answers.add(bit.get(l,\
     \ r))\n    if answers.len > 0:\n        print(*answers, sep=\"\\n\")\n\nmain()\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
+  - cplib/collections/fenwick_avx2.nim
   - cplib/collections/fenwick_avx2.nim
   - cplib/tmpl/fastio.nim
-  - cplib/collections/fenwick_avx2.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_avx2_test.nim
   requiredBy: []

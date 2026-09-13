@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -28,26 +28,32 @@ data:
     path: verify/AI/bellmanford_test.nim
     title: verify/AI/bellmanford_test.nim
   - icon: ':heavy_check_mark:'
-    path: verify/AI/graph_weight_type_test.nim
-    title: verify/AI/graph_weight_type_test.nim
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_weight_type_test.nim
+    title: verify/AI/graph_weight_type_test.nim
+  - icon: ':x:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -59,13 +65,13 @@ data:
   code: "when not declared CPLIB_GRAPH_BELLMANFORD:\n    const CPLIB_GRAPH_BELLMANFORD*\
     \ = 1\n    import deques, sequtils, macros\n    import cplib/graph/graph\n   \
     \ import cplib/graph/restore_shortest_path_from_prev\n    import cplib/utils/constants\n\
-    \    proc restore_bellmanford_impl[T](G: DynamicGraph[T] or StaticGraph[T], start:\
-    \ int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =\n   \
-    \     let N = len(G)\n        var\n            costs = newSeqWith(N, INF)\n  \
-    \          prev = newSeqWith(N, -1)\n            changed: bool\n        when start\
-    \ is int:\n            costs[start] = ZERO\n        else:\n            for s in\
-    \ start:\n                costs[s] = ZERO\n        for _ in 0..<N:\n         \
-    \   changed = false\n            for i in 0..<N:\n                if costs[i]\
+    \    proc restore_bellmanford_impl[T](G: WeightedGraph[T] or UnWeightedGraph,\
+    \ start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]]\
+    \ =\n        let N = len(G)\n        var\n            costs = newSeqWith(N, INF)\n\
+    \            prev = newSeqWith(N, -1)\n            changed: bool\n        when\
+    \ start is int:\n            costs[start] = ZERO\n        else:\n            for\
+    \ s in start:\n                costs[s] = ZERO\n        for _ in 0..<N:\n    \
+    \        changed = false\n            for i in 0..<N:\n                if costs[i]\
     \ == INF: continue\n                for (j, c) in G.to_and_cost(i):\n        \
     \            var temp = costs[i] + c\n                    if temp < costs[j]:\n\
     \                        prev[j] = i\n                        costs[j] = temp\n\
@@ -76,28 +82,32 @@ data:
     \                       if temp < costs[j]:\n                            costs[j]\
     \ = -INF\n                            prev[j] = -1\n        return (costs, prev)\n\
     \    macro declareBellmanFord(name, t, zero, inf) =\n        let impl_name = ident($`name`\
-    \ & \"_impl\")\n        quote do:\n            proc `name`*(G: DynamicGraph[`t`]\
-    \ or StaticGraph[`t`], start: int or seq[int], ZERO: `t` = `zero`, INF: `t` =\
-    \ `inf`): auto =\n                `impl_name`(G, start, ZERO, INF)\n    declareBellmanFord(restore_bellmanford,\
+    \ & \"_impl\")\n        if $t == \"int\":\n            quote do:\n           \
+    \     proc `name`*(G: DynamicGraph[`t`] or StaticGraph[`t`] or UnWeightedGraph,\
+    \ start: int or seq[int], ZERO: `t` = `zero`, INF: `t` = `inf`): auto =\n    \
+    \                `impl_name`(G, start, ZERO, INF)\n        else:\n           \
+    \ quote do:\n                proc `name`*(G: DynamicGraph[`t`] or StaticGraph[`t`],\
+    \ start: int or seq[int], ZERO: `t` = `zero`, INF: `t` = `inf`): auto =\n    \
+    \                `impl_name`(G, start, ZERO, INF)\n    declareBellmanFord(restore_bellmanford,\
     \ int, 0, INF64)\n    declareBellmanFord(restore_bellmanford, int32, 0i32, INF32)\n\
     \    declareBellmanFord(restore_bellmanford, float, 0.0, 1e100)\n    declareBellmanFord(restore_bellmanford,\
-    \ float32, 0.0'f32, 1e30'f32)\n    proc restore_bellmanford*[T](G: DynamicGraph[T]\
-    \ or StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto =\n        restore_bellmanford_impl(G,\
-    \ start, ZERO, INF)\n    proc bellmanford_impl[T](G: DynamicGraph[T] or StaticGraph[T],\
+    \ float32, 0.0'f32, 1e30'f32)\n    proc restore_bellmanford*[T](G: WeightedGraph[T]\
+    \ or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): auto =\n        restore_bellmanford_impl(G,\
+    \ start, ZERO, INF)\n    proc bellmanford_impl[T](G: WeightedGraph[T] or UnWeightedGraph,\
     \ start: int or seq[int], ZERO, INF: T): auto =\n        var (costs, _) = restore_bellmanford(G,\
     \ start, ZERO, INF)\n        return costs\n    declareBellmanFord(bellmanford,\
     \ int, 0, INF64)\n    declareBellmanFord(bellmanford, int32, 0i32, INF32)\n  \
     \  declareBellmanFord(bellmanford, float, 0.0, 1e100)\n    declareBellmanFord(bellmanford,\
-    \ float32, 0.0'f32, 1e30'f32)\n    proc bellmanford*[T](G: DynamicGraph[T] or\
-    \ StaticGraph[T], start: int or seq[int], ZERO, INF: T): auto =\n        bellmanford_impl(G,\
-    \ start, ZERO, INF)\n    proc shortest_path_bellmanford_impl[T](G: DynamicGraph[T]\
-    \ or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost:\
+    \ float32, 0.0'f32, 1e30'f32)\n    proc bellmanford*[T](G: WeightedGraph[T] or\
+    \ UnWeightedGraph, start: int or seq[int], ZERO, INF: T): auto =\n        bellmanford_impl(G,\
+    \ start, ZERO, INF)\n    proc shortest_path_bellmanford_impl[T](G: WeightedGraph[T]\
+    \ or UnWeightedGraph, start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost:\
     \ T] =\n        var (costs, prev) = restore_bellmanford(G, start, ZERO, INF)\n\
     \        result.path = prev.restore_shortest_path_from_prev(goal)\n        result.cost\
-    \ = costs[goal]\n    proc shortest_path_bellmanford*(G: DynamicGraph[int] or StaticGraph[int],\
-    \ start, goal: int, ZERO: int = 0, INF: int = INF64): tuple[path: seq[int], cost:\
-    \ int] =\n        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)\n\
-    \    proc shortest_path_bellmanford*(G: DynamicGraph[int32] or StaticGraph[int32],\
+    \ = costs[goal]\n    proc shortest_path_bellmanford*(G: DynamicGraph[int] or StaticGraph[int]\
+    \ or UnWeightedGraph, start, goal: int, ZERO: int = 0, INF: int = INF64): tuple[path:\
+    \ seq[int], cost: int] =\n        shortest_path_bellmanford_impl(G, start, goal,\
+    \ ZERO, INF)\n    proc shortest_path_bellmanford*(G: DynamicGraph[int32] or StaticGraph[int32],\
     \ start, goal: int, ZERO: int32 = 0, INF: int32 = INF32): tuple[path: seq[int],\
     \ cost: int32] =\n        shortest_path_bellmanford_impl(G, start, goal, ZERO,\
     \ INF)\n    proc shortest_path_bellmanford*(G: DynamicGraph[float] or StaticGraph[float],\
@@ -106,26 +116,28 @@ data:
     \ INF)\n    proc shortest_path_bellmanford*(G: DynamicGraph[float32] or StaticGraph[float32],\
     \ start, goal: int, ZERO: float32 = 0.0'f32, INF: float32 = 1e30'f32): tuple[path:\
     \ seq[int], cost: float32] =\n        shortest_path_bellmanford_impl(G, start,\
-    \ goal, ZERO, INF)\n    proc shortest_path_bellmanford*[T](G: DynamicGraph[T]\
-    \ or StaticGraph[T], start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost:\
+    \ goal, ZERO, INF)\n    proc shortest_path_bellmanford*[T](G: WeightedGraph[T]\
+    \ or UnWeightedGraph, start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost:\
     \ T] =\n        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/bellmanford_test.nim

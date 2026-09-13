@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
@@ -27,6 +27,12 @@ data:
     path: verify/graph/steiner_tree_abc364g_test_.nim
     title: verify/graph/steiner_tree_abc364g_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
@@ -53,7 +59,7 @@ data:
   code: "when not declared CPLIB_GRAPH_STEINER_TREE:\n    const CPLIB_GRAPH_STEINER_TREE*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
     \ cplib/utils/bititers\n    import sequtils, heapqueue\n    proc steiner_tree_dp_impl[T](g:\
-    \ StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], zero, inf: T):\
+    \ WeightedGraph[T] or UnWeightedGraph, terminal: openArray[int], zero, inf: T):\
     \ seq[seq[T]] =\n        ## terminal \u306B\u542B\u307E\u308C\u308B\u9802\u70B9\
     \u3092\u5168\u3066\u9023\u7D50\u306B\u3059\u308B\u305F\u3081\u306B\u5FC5\u8981\
     \u306A\u6700\u5C0F\u306E\u30B3\u30B9\u30C8\u3092\u51FA\u529B\u3059\u308B\u3002\
@@ -69,51 +75,54 @@ data:
     \                for (v, cost) in g.to_and_cost(u):\n                    if dp[bit][v]\
     \ > d + cost:\n                        dp[bit][v] = d + cost\n               \
     \         q.push((dp[bit][v], v))\n        return dp\n\n    proc steiner_tree_dp*[T](g:\
-    \ StaticGraph[T] or DynamicGraph[T], terminal: seq[int], inf: T): seq[seq[T]]\
+    \ WeightedGraph[T] or UnWeightedGraph, terminal: seq[int], inf: T): seq[seq[T]]\
     \ =\n        steiner_tree_dp_impl(g, terminal, T(0), inf)\n    proc steiner_tree_dp*[T](g:\
-    \ StaticGraph[T] or DynamicGraph[T], terminal: seq[int], zero, inf: T): seq[seq[T]]\
+    \ WeightedGraph[T] or UnWeightedGraph, terminal: seq[int], zero, inf: T): seq[seq[T]]\
     \ =\n        steiner_tree_dp_impl(g, terminal, zero, inf)\n\n    proc steiner_tree_mincost_impl[T](g:\
-    \ StaticGraph[T] or DynamicGraph[T], terminal: openArray[int], zero, inf: T):\
+    \ WeightedGraph[T] or UnWeightedGraph, terminal: openArray[int], zero, inf: T):\
     \ T =\n        if terminal.len == 0:\n            return zero\n        var dp\
     \ = steiner_tree_dp_impl(g, terminal, zero, inf)\n        var k = terminal.len\n\
     \        return dp[(1 shl k) - 1][terminal[0]]\n\n    proc steiner_tree_mincost*(g:\
-    \ StaticGraph[int] or DynamicGraph[int], terminal: openArray[int], inf: int =\
-    \ INF64): int = steiner_tree_mincost_impl(g, terminal, 0, inf)\n    proc steiner_tree_mincost*(g:\
-    \ StaticGraph[int] or DynamicGraph[int], terminal: openArray[int], zero, inf:\
-    \ int): int = steiner_tree_mincost_impl(g, terminal, zero, inf)\n    proc steiner_tree_mincost*(g:\
-    \ StaticGraph[int32] or DynamicGraph[int32], terminal: openArray[int], inf: int32\
-    \ = INF32): int32 = steiner_tree_mincost_impl(g, terminal, 0.int32, inf)\n   \
-    \ proc steiner_tree_mincost*(g: StaticGraph[int32] or DynamicGraph[int32], terminal:\
-    \ openArray[int], zero, inf: int32): int32 = steiner_tree_mincost_impl(g, terminal,\
-    \ zero, inf)\n    proc steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float],\
-    \ terminal: openArray[int], inf: float = 1e100): float = steiner_tree_mincost_impl(g,\
-    \ terminal, 0.0, inf)\n    proc steiner_tree_mincost*(g: StaticGraph[float] or\
-    \ DynamicGraph[float], terminal: openArray[int], zero, inf: float): float = steiner_tree_mincost_impl(g,\
+    \ StaticGraph[int] or DynamicGraph[int] or UnWeightedGraph, terminal: openArray[int],\
+    \ inf: int = INF64): int = steiner_tree_mincost_impl(g, terminal, 0, inf)\n  \
+    \  proc steiner_tree_mincost*(g: StaticGraph[int] or DynamicGraph[int] or UnWeightedGraph,\
+    \ terminal: openArray[int], zero, inf: int): int = steiner_tree_mincost_impl(g,\
+    \ terminal, zero, inf)\n    proc steiner_tree_mincost*(g: StaticGraph[int32] or\
+    \ DynamicGraph[int32], terminal: openArray[int], inf: int32 = INF32): int32 =\
+    \ steiner_tree_mincost_impl(g, terminal, 0.int32, inf)\n    proc steiner_tree_mincost*(g:\
+    \ StaticGraph[int32] or DynamicGraph[int32], terminal: openArray[int], zero, inf:\
+    \ int32): int32 = steiner_tree_mincost_impl(g, terminal, zero, inf)\n    proc\
+    \ steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float], terminal:\
+    \ openArray[int], inf: float = 1e100): float = steiner_tree_mincost_impl(g, terminal,\
+    \ 0.0, inf)\n    proc steiner_tree_mincost*(g: StaticGraph[float] or DynamicGraph[float],\
+    \ terminal: openArray[int], zero, inf: float): float = steiner_tree_mincost_impl(g,\
     \ terminal, zero, inf)\n    proc steiner_tree_mincost*(g: StaticGraph[float32]\
     \ or DynamicGraph[float32], terminal: openArray[int], inf: float32 = 1e30'f32):\
     \ float32 = steiner_tree_mincost_impl(g, terminal, 0.0'f32, inf)\n    proc steiner_tree_mincost*(g:\
     \ StaticGraph[float32] or DynamicGraph[float32], terminal: openArray[int], zero,\
     \ inf: float32): float32 = steiner_tree_mincost_impl(g, terminal, zero, inf)\n\
-    \    proc steiner_tree_mincost*[T](g: StaticGraph[T] or DynamicGraph[T], terminal:\
+    \    proc steiner_tree_mincost*[T](g: WeightedGraph[T] or UnWeightedGraph, terminal:\
     \ openArray[int], zero, inf: T): T = steiner_tree_mincost_impl(g, terminal, zero,\
     \ inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
-  - cplib/utils/bititers.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:
   - verify/graph/steiner_tree_abc364g_test_.nim
   - verify/graph/steiner_tree_abc364g_test_.nim
-  timestamp: '2026-09-04 10:21:15+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/steiner_tree_test.nim
   - verify/AI/steiner_tree_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/steiner_tree.nim

@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -81,16 +81,16 @@ data:
     \    for w in countdown(100_000, 1): g.add_edge(0, 1, w)\n    doAssert g.k_shortest_walk(0,\
     \ 1, 100_001) == toSeq(1..100_000) & @[INF64]\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/k_shortest_walk.nim
   - cplib/utils/constants.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/k_shortest_walk_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 10:19:10+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/k_shortest_walk_test.nim

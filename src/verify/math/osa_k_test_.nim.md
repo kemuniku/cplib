@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/osa_k.nim
     title: cplib/math/osa_k.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
@@ -36,10 +36,10 @@ data:
     \ (len(tmp) == 1 and tmp[0][1] == 4) or (len(tmp) == 2 and tmp[0][1] == 1 and\
     \ tmp[1][1] == 1):\n        ans.add(i*i)\nvar N = ii()\necho ans.upperbound(N)"
   dependsOn:
-  - cplib/str/run_length_encode.nim
+  - cplib/math/osa_k.nim
   - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/osa_k.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: verify/math/osa_k_test_.nim
   requiredBy: []

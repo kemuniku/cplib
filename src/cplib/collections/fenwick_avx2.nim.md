@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/waveletmatrix_fenwick.nim
+    title: cplib/collections/waveletmatrix_fenwick.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/waveletmatrix_fenwick.nim
+    title: cplib/collections/waveletmatrix_fenwick.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fenwick_tree_test.nim
@@ -9,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fenwick_tree_test.nim
     title: verify/AI/fenwick_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_fenwick_test.nim
+    title: verify/AI/waveletmatrix_fenwick_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_fenwick_test.nim
+    title: verify/AI/waveletmatrix_fenwick_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/fenwick_tree_avx2_test.nim
     title: verify/collections/fenwick_tree_avx2_test.nim
@@ -119,12 +131,16 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/fenwick_avx2.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
   timestamp: '2026-09-09 00:25:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/fenwick_tree_test.nim
   - verify/AI/fenwick_tree_test.nim
 documentation_of: cplib/collections/fenwick_avx2.nim

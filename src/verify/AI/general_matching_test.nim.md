@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -86,14 +86,14 @@ data:
     \ v, n + v + 1))\n        n += 2*k\n    check(n, edges & remaining, n div 2)\n\
     check(100000, @[(99998, 99999), (2, 2)], 1)\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/general_matching.nim
   - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/general_matching.nim
   isVerificationFile: true
   path: verify/AI/general_matching_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 10:18:37+09:00'
+  timestamp: '2026-09-13 13:39:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/general_matching_test.nim

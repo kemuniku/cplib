@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
@@ -43,22 +43,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -154,26 +154,26 @@ data:
     \ == 1\nelse:\n    let empty = initMatrix(0,3,Mint(0))\n    doAssert (-empty).w\
     \ == 3\n    doAssert empty != initMatrix(0,2,Mint(0))\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/static_matrix.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/field_algorithms_unit.nim
   requiredBy: []

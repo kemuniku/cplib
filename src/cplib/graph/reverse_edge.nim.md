@@ -1,14 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
@@ -33,31 +39,37 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_REVERSE_EDGE:\n    const CPLIB_GRAPH_REVERSE_EDGE*\
-    \ = 1\n    import cplib/graph/graph, std/math\n    proc reverse_edge*[T](G: WeightedDirectedGraph[T]):\
-    \ WeightedDirectedGraph[T] =\n        result = initWeightedDirectedGraph(G.len,\
-    \ T)\n        for i in 0..<G.len:\n            for (j, c) in G[i]:\n         \
-    \       result.add_edge(j, i, c)\n    proc reverse_edge*(G: UnWeightedDirectedGraph):\
-    \ UnWeightedDirectedGraph =\n        result = UnWeightedDirectedGraph(edges: newSeq[seq[(int32,\
-    \ int)]](G.len), len: G.len)\n        for i in 0..<G.len:\n            for j in\
-    \ G[i]:\n                result.add_edge(j, i)\n\n    #FIXME: optimize for CSR\
-    \ graph\n    proc reverse_edge*[T](G: WeightedDirectedStaticGraph[T]): WeightedDirectedStaticGraph[T]\
-    \ =\n        result = WeightedDirectedStaticGraph[T](\n            src: G.dst,\n\
-    \            dst: G.src,\n            cost: G.cost,\n            elist: newSeq[(int32,\
-    \ T)](0),\n            start: newSeq[int32](0),\n            len: G.len\n    \
-    \    )\n        result.build\n\n    proc reverse_edge*(G: UnWeightedDirectedStaticGraph):\
-    \ UnWeightedDirectedStaticGraph =\n        result = UnWeightedDirectedStaticGraph(\n\
-    \            src: G.dst,\n            dst: G.src,\n            cost: G.cost,\n\
-    \            elist: newSeq[(int32, int)](0),\n            start: newSeq[int32](0),\n\
-    \            len: G.len\n        )\n        result.build\n"
+    \ = 1\n    import cplib/graph/graph\n\n    proc reverse_edge*[T](g: WeightedDirectedGraph[T]):\
+    \ WeightedDirectedGraph[T] =\n        ## \u8FBA\u756A\u53F7\u3092\u7DAD\u6301\u3057\
+    \u3066\u5168\u8FBA\u306E\u5411\u304D\u3092\u53CD\u8EE2\u3059\u308B\u3002O(V +\
+    \ E)\u3002\n        result = initWeightedDirectedGraph(g.len, T)\n        for\
+    \ e in g.edge_info:\n            result.add_edge(e.dst, e.src, e.cost)\n\n   \
+    \ proc reverse_edge*(g: UnWeightedDirectedGraph): UnWeightedDirectedGraph =\n\
+    \        ## \u8FBA\u756A\u53F7\u3092\u7DAD\u6301\u3057\u3066\u5168\u8FBA\u306E\
+    \u5411\u304D\u3092\u53CD\u8EE2\u3059\u308B\u3002O(V + E)\u3002\n        result\
+    \ = initUnWeightedDirectedGraph(g.len)\n        for e in g.edge_info:\n      \
+    \      result.add_edge(e.dst, e.src)\n\n    proc reverse_edge*[T](g: WeightedDirectedStaticGraph[T]):\
+    \ WeightedDirectedStaticGraph[T] =\n        ## \u8FBA\u756A\u53F7\u3092\u7DAD\u6301\
+    \u3057\u3066\u5168\u8FBA\u306E\u5411\u304D\u3092\u53CD\u8EE2\u3059\u308B\u3002\
+    O(V + E)\u3002\n        result = initWeightedDirectedStaticGraph(g.len, T)\n \
+    \       for e in g.edge_info:\n            result.add_edge(e.dst, e.src, e.cost)\n\
+    \        result.build()\n\n    proc reverse_edge*(g: UnWeightedDirectedStaticGraph):\
+    \ UnWeightedDirectedStaticGraph =\n        ## \u8FBA\u756A\u53F7\u3092\u7DAD\u6301\
+    \u3057\u3066\u5168\u8FBA\u306E\u5411\u304D\u3092\u53CD\u8EE2\u3059\u308B\u3002\
+    O(V + E)\u3002\n        result = initUnWeightedDirectedStaticGraph(g.len)\n  \
+    \      for e in g.edge_info:\n            result.add_edge(e.dst, e.src)\n    \
+    \    result.build()\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/reverse_edge.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:56:57+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
   - verify/AI/reverse_edge_test.nim
   - verify/AI/reverse_edge_test.nim
   - verify/AI/graph_weight_type_test.nim

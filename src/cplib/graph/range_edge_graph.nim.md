@@ -1,17 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_storage_test.nim
+    title: verify/AI/graph_storage_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_storage_test.nim
+    title: verify/AI/graph_storage_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -69,8 +75,8 @@ data:
     \ from_r, to_l, to_r: int, cost: T) =\n        G.validateRange(from_l, from_r)\n\
     \        G.validateRange(to_l, to_r)\n        if from_l == from_r or to_l == to_r:\n\
     \            return\n\n        let fromNode = G.G.len\n        let toNode = G.G.len\
-    \ + 1\n        G.G.len += 2\n        G.G.edges.add(newSeq[(int32, T)]())\n   \
-    \     G.G.edges.add(newSeq[(int32, T)]())\n        G.connectRangeToVertex(G.root,\
+    \ + 1\n        G.G.len += 2\n        G.G.edges.add(newSeq[WeightedAdjacentEdge[T]]())\n\
+    \        G.G.edges.add(newSeq[WeightedAdjacentEdge[T]]())\n        G.connectRangeToVertex(G.root,\
     \ from_l, from_r, fromNode, G.zero)\n        G.G.add_edge(fromNode, toNode, cost)\n\
     \        G.connectVertexToRange(toNode, G.root, to_l, to_r, G.zero)\n\n    proc\
     \ add_edge*[T](G: Range_Edge_Graph[T], from_l, from_r, to_l, to_r: int, cost:\
@@ -92,9 +98,11 @@ data:
   isVerificationFile: false
   path: cplib/graph/range_edge_graph.nim
   requiredBy: []
-  timestamp: '2026-07-07 08:18:56+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/graph_storage_test.nim
+  - verify/AI/graph_storage_test.nim
 documentation_of: cplib/graph/range_edge_graph.nim
 layout: document
 redirect_from:

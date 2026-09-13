@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
   - icon: ':heavy_check_mark:'

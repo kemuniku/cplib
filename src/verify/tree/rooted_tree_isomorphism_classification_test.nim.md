@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/tree_hash.nim
     title: cplib/tree/tree_hash.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/tree_hash.nim
     title: cplib/tree/tree_hash.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
     links:
@@ -37,15 +37,15 @@ data:
     \ = hashes.sorted().deduplicate(true)\necho values.len\necho hashes.mapIt(values.lowerBound(it)).join(\"\
     \ \")\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/tree/tree_hash.nim
   - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree_hash.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/rooted_tree_isomorphism_classification_test.nim
   requiredBy: []
-  timestamp: '2026-09-06 08:45:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/tree/rooted_tree_isomorphism_classification_test.nim
 layout: document

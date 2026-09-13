@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   _extendedRequiredBy: []
@@ -39,14 +39,14 @@ data:
     \ i in 0..<newg.len:\n    if dp[i] > 0:\n        for j in newG[i]:\n         \
     \   dp[j] = max(dp[j], dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/graph/static/scc_abc335e_static_test_.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/static/scc_abc335e_static_test_.nim

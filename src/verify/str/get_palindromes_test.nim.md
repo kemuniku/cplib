@@ -13,22 +13,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/manacher.nim
     title: cplib/str/manacher.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -54,16 +54,16 @@ data:
     \   assert not HS[(l-1)..<(r+1)].isPalindrome()\n\necho palindromes.mapit(it[1]-it[0]).join(\"\
     \ \")"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/str/manacher.nim
   - cplib/str/manacher.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/str/can_reverse_hash_string.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/str/get_palindromes_test.nim
   requiredBy: []

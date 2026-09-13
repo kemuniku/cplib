@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix.nim
     title: cplib/collections/waveletmatrix.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/waveletmatrix_fenwick.nim
+    title: cplib/collections/waveletmatrix_fenwick.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/waveletmatrix_fenwick.nim
+    title: cplib/collections/waveletmatrix_fenwick.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitvector_test.nim
@@ -15,6 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitvector_test.nim
     title: verify/AI/bitvector_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_fenwick_test.nim
+    title: verify/AI/waveletmatrix_fenwick_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/waveletmatrix_fenwick_test.nim
+    title: verify/AI/waveletmatrix_fenwick_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/waveletmatrix_test.nim
     title: verify/AI/waveletmatrix_test.nim
@@ -57,11 +69,15 @@ data:
   requiredBy:
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
   timestamp: '2026-05-01 08:04:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/bitvector_test.nim
   - verify/AI/bitvector_test.nim
   - verify/AI/waveletmatrix_test.nim

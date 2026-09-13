@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -97,18 +97,18 @@ data:
     \ get_subtree_sum*(node:VirtualTrieNode):int=\n        if node.now.len() == 0:\n\
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
-  - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []
-  timestamp: '2026-09-08 15:30:15+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/compressed_trie_test.nim

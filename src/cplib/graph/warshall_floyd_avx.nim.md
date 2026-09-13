@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -481,17 +481,17 @@ data:
     \        ): bool {.importc: \"cplib_warshall_floyd_int64_avx2\".}\n\n        proc\
     \ warshallFloydInt32Avx2(\n            rows: pointer,\n            n: csize_t,\n\
     \            zero, inf: int32\n        ): bool {.importc: \"cplib_warshall_floyd_int32_avx2\"\
-    .}\n\n    proc warshall_floyd_impl[T](g: DynamicGraph[T] or StaticGraph[T], zero,\
-    \ inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =\n        var d = newSeqWith(g.len,\
-    \ newSeqWith(g.len, inf))\n        for i in 0..<g.len: d[i][i] = zero\n      \
-    \  for i in 0..<g.len:\n            for (j, cost) in g.to_and_cost(i):\n     \
-    \           d[i][j] = min(d[i][j], cost)\n        for k in 0..<g.len:\n      \
-    \      for i in 0..<g.len:\n                for j in 0..<g.len:\n            \
-    \        if d[i][k] != inf and d[k][j] != inf:\n                        d[i][j]\
+    .}\n\n    proc warshall_floyd_impl[T](g: WeightedGraph[T] or UnWeightedGraph,\
+    \ zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =\n        var d\
+    \ = newSeqWith(g.len, newSeqWith(g.len, inf))\n        for i in 0..<g.len: d[i][i]\
+    \ = zero\n        for i in 0..<g.len:\n            for (j, cost) in g.to_and_cost(i):\n\
+    \                d[i][j] = min(d[i][j], cost)\n        for k in 0..<g.len:\n \
+    \           for i in 0..<g.len:\n                for j in 0..<g.len:\n       \
+    \             if d[i][k] != inf and d[k][j] != inf:\n                        d[i][j]\
     \ = min(d[i][j], d[i][k] + d[k][j])\n            for i in 0..<g.len:\n       \
     \         if d[i][i] < zero: return (negative_cycle: true, d: d)\n        return\
     \ (negative_cycle: false, d: d)\n\n    proc warshall_floyd*(g: DynamicGraph[int]\
-    \ or StaticGraph[int], zero: int = 0, inf: int = INF64): tuple[negative_cycle:\
+    \ or StaticGraph[int] or UnWeightedGraph, zero: int = 0, inf: int = INF64): tuple[negative_cycle:\
     \ bool, d: seq[seq[int]]] =\n        when defined(cpp) and sizeof(int) == 8:\n\
     \            var d = newSeqWith(g.len, newSeqWith(g.len, inf))\n            for\
     \ i in 0..<g.len: d[i][i] = zero\n            for i in 0..<g.len:\n          \
@@ -518,18 +518,18 @@ data:
     \ = warshall_floyd_impl(g, zero, inf)\n    proc warshall_floyd*(g: DynamicGraph[float32]\
     \ or StaticGraph[float32], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32):\
     \ tuple[negative_cycle: bool, d: seq[seq[float32]]] = warshall_floyd_impl(g, zero,\
-    \ inf)\n    proc warshall_floyd*[T](g: DynamicGraph[T] or StaticGraph[T], zero,\
+    \ inf)\n    proc warshall_floyd*[T](g: WeightedGraph[T] or UnWeightedGraph, zero,\
     \ inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g,\
     \ zero, inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd_avx.nim
   requiredBy: []
-  timestamp: '2026-09-03 23:28:44+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/warshall_floyd_avx_test.nim

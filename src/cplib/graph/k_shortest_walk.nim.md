@@ -1,41 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/AI/k_shortest_walk_test.nim
-    title: verify/AI/k_shortest_walk_test.nim
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/graph_edge_id_test.nim
+    title: verify/AI/graph_edge_id_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/k_shortest_walk_test.nim
     title: verify/AI/k_shortest_walk_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/k_shortest_walk_test.nim
+    title: verify/AI/k_shortest_walk_test.nim
+  - icon: ':x:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf
@@ -48,18 +54,18 @@ data:
   code: "when not declared CPLIB_GRAPH_K_SHORTEST_WALK:\n    const CPLIB_GRAPH_K_SHORTEST_WALK*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
     \ heapqueue, algorithm\n\n    type KShortestWalkHeapNode = object\n        vertex,\
-    \ left, right, rank: int\n\n    proc k_shortest_walk*[T: SomeSignedInt](G: DynamicGraph[T]\
-    \ or StaticGraph[T], s, t, k: int, INF: T): seq[T] =\n        ## \u975E\u8CA0\u6574\
-    \u6570\u91CD\u307F\u306Es\u304B\u3089t\u3078\u306E\u30A6\u30A9\u30FC\u30AF\u9577\
-    \u3092\u6607\u9806\u3067k\u500B\u8FD4\u3059\u3002\u6642\u9593O((V+E)logV + k log\
-    \ k)\u3001\u7A7A\u9593O(E+V logV+k)\u3002\n        ## \u540C\u9577\u306E\u5225\
-    \u30A6\u30A9\u30FC\u30AF\u3082\u6570\u3048\u3001s == t\u3067\u306F\u7A7A\u30A6\
-    \u30A9\u30FC\u30AF\u3092\u542B\u3080\u3002\u5168\u3066\u306E\u4E2D\u9593\u8A08\
-    \u7B97\u304CT\u306B\u53CE\u307E\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\
-    \u3002\n        ## \u4E0D\u8DB3\u5206\u306FINF\u3067\u57CB\u3081\u308B\u3002INF\u306F\
-    \u8FD4\u3055\u308C\u308B\u30A6\u30A9\u30FC\u30AF\u9577\u3088\u308A\u5927\u304D\
-    \u3044\u5024\u3092\u6307\u5B9A\u3059\u308B\u3002StaticGraph\u306F\u4E8B\u524D\u306B\
-    build\u3059\u308B\u3002\n        ## Eppstein\u6CD5: https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf\n\
+    \ left, right, rank: int\n\n    proc k_shortest_walk*[T: SomeSignedInt](G: WeightedGraph[T]\
+    \ or UnWeightedGraph, s, t, k: int, INF: T): seq[T] =\n        ## \u975E\u8CA0\
+    \u6574\u6570\u91CD\u307F\u306Es\u304B\u3089t\u3078\u306E\u30A6\u30A9\u30FC\u30AF\
+    \u9577\u3092\u6607\u9806\u3067k\u500B\u8FD4\u3059\u3002\u6642\u9593O((V+E)logV\
+    \ + k log k)\u3001\u7A7A\u9593O(E+V logV+k)\u3002\n        ## \u540C\u9577\u306E\
+    \u5225\u30A6\u30A9\u30FC\u30AF\u3082\u6570\u3048\u3001s == t\u3067\u306F\u7A7A\
+    \u30A6\u30A9\u30FC\u30AF\u3092\u542B\u3080\u3002\u5168\u3066\u306E\u4E2D\u9593\
+    \u8A08\u7B97\u304CT\u306B\u53CE\u307E\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\
+    \u308B\u3002\n        ## \u4E0D\u8DB3\u5206\u306FINF\u3067\u57CB\u3081\u308B\u3002\
+    INF\u306F\u8FD4\u3055\u308C\u308B\u30A6\u30A9\u30FC\u30AF\u9577\u3088\u308A\u5927\
+    \u304D\u3044\u5024\u3092\u6307\u5B9A\u3059\u308B\u3002StaticGraph\u306F\u4E8B\u524D\
+    \u306Bbuild\u3059\u308B\u3002\n        ## Eppstein\u6CD5: https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf\n\
     \        assert 0 <= s and s < G.len and 0 <= t and t < G.len\n        assert\
     \ k >= 0\n        if k == 0: return @[]\n        result = newSeq[T](k)\n     \
     \   result.fill(INF)\n        let n = G.len\n        var reverse = newSeq[seq[tuple[vertex:\
@@ -145,17 +151,20 @@ data:
     \u3055\u3044\u578B\u3067\u306Fhigh(T)\u3067\u57CB\u3081\u308B\u3002\n        when\
     \ sizeof(T) >= 8:\n            G.k_shortest_walk(s, t, k, T(INF64))\n        elif\
     \ sizeof(T) >= 4:\n            G.k_shortest_walk(s, t, k, T(INF32))\n        else:\n\
-    \            G.k_shortest_walk(s, t, k, high(T))\n"
+    \            G.k_shortest_walk(s, t, k, high(T))\n\n    proc k_shortest_walk*(G:\
+    \ UnWeightedGraph, s, t, k: int): seq[int] =\n        ## \u91CD\u307F 1 \u3068\
+    \u3057\u3066\u77ED\u3044\u9806\u306B k \u500B\u306E\u6B69\u9053\u9577\u3092\u6C42\
+    \u3081\u308B\u3002\n        G.k_shortest_walk(s, t, k, INF64)\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/k_shortest_walk.nim
   requiredBy: []
-  timestamp: '2026-09-13 10:19:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-09-13 11:46:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
@@ -163,6 +172,8 @@ data:
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/AI/k_shortest_walk_test.nim
   - verify/AI/k_shortest_walk_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
 documentation_of: cplib/graph/k_shortest_walk.nim
 layout: document
 redirect_from:

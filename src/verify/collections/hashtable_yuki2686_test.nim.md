@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/hashtable.nim
     title: cplib/collections/hashtable.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   _extendedRequiredBy: []
@@ -53,8 +53,8 @@ data:
   dependsOn:
   - cplib/collections/hashtable.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/hashtable.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/hashtable.nim
   isVerificationFile: true
   path: verify/collections/hashtable_yuki2686_test.nim
   requiredBy: []

@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/general_matching
     links:
@@ -41,17 +41,17 @@ data:
     \ = g.maximum_matching()\necho matching.len\nfor (u, v) in matching:\n    echo\
     \ u, \" \", v\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/general_matching.nim
   - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/general_matching.nim
   isVerificationFile: true
   path: verify/graph/general_matching_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:06:45+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 13:39:58+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/general_matching_test.nim
 layout: document

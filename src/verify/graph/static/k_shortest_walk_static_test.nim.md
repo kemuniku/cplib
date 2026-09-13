@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/k_shortest_walk
     links:
@@ -53,21 +53,21 @@ data:
     \ = g.k_shortest_walk(s, t, k)\nfor i in 0..<k:\n    echo (if lengths[i] == INF:\
     \ -1 else: lengths[i])\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/k_shortest_walk.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/k_shortest_walk_static_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 11:06:45+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-09-13 13:39:58+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/static/k_shortest_walk_static_test.nim
 layout: document

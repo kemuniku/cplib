@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/tree_hash.nim
     title: cplib/tree/tree_hash.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/tree/tree_hash.nim
     title: cplib/tree/tree_hash.nim
   _extendedRequiredBy: []
@@ -96,14 +96,14 @@ data:
     \ - 1)\n    for v in 2..<n: doAssert starHashes[v] == starHashes[1]\n\necho \"\
     Hello World\"\n"
   dependsOn:
+  - cplib/tree/tree_hash.nim
+  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree_hash.nim
-  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/tree_hash_test.nim
   requiredBy: []
-  timestamp: '2026-09-06 08:45:23+09:00'
+  timestamp: '2026-09-13 11:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/tree_hash_test.nim
