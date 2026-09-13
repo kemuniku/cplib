@@ -63,6 +63,39 @@ assert bytes.lowerBound("\255") == 1
 assert bytes.upperBound("\255") == 2
 
 var rng = initRand(12345)
+assert sizeof(TrieNode['a'..'z']) == 120
+var navigation = initTrie(alphabet)
+assert navigation.getParent(navigation.root) == -1
+assert navigation.restoreString(navigation.root) == ""
+let a = navigation.getChild(navigation.root, 'a')
+let ab = navigation.getChild(a, 'b')
+assert navigation.getChild(a, 'b') == ab
+assert navigation.nodes.len == 3
+assert navigation.nodes[ab].parent == a
+assert navigation.getParent(ab) == a
+assert navigation.restoreString(ab) == "ab"
+assert navigation.findNode("ab") == ab
+assert navigation.findNode("ac") == -1
+assert navigation.len == 0
+assert navigation.countPrefix("a") == 0
+assert navigation.upperBound("c") == 0
+navigation.incl("ab", 2)
+assert navigation.nodes[ab].terminal == 2
+assert navigation.nodes[a].subtree == 2
+navigation.excl("ab", 2)
+assert navigation.restoreString(ab) == "ab"
+assert navigation.getChild(a, 'b') == ab
+var defaultNavigation: Trie[alphabet]
+let first = defaultNavigation.getChild(defaultNavigation.root, 'c')
+assert defaultNavigation.restoreString(first) == "c"
+assert defaultNavigation.getParent(0) == -1
+let longWord = repeat("abc", 10000)
+navigation.incl(longWord)
+assert navigation.restoreString(navigation.findNode(longWord)) == longWord
+assert navigation.restoreString(ab) == "ab"
+assert bytes.restoreString(bytes.findNode("\0")) == "\0"
+assert bytes.restoreString(bytes.findNode("\255")) == "\255"
+
 var large = initTrie('a'..'z')
 large.incl("a", int(high(int32)) - 1)
 large.incl("ab")
@@ -112,11 +145,70 @@ for step in 0..<3000:
         assert actual.countPrefix(query) == prefix
         assert actual.lowerBound(query) == less
         assert actual.upperBound(query) == lessEqual
+        let node = actual.findNode(query)
+        if node >= 0:
+            assert actual.restoreString(node) == query
+            if query.len > 0:
+                assert actual.restoreString(actual.getParent(node)) == query[0..<query.high]
 
 for s in expected:
     actual.excl(s)
 assert actual.len == 0
 assert actual.countPrefix("") == 0
 assert actual.upperBound("d") == 0
+
+var pointerTree = initTrie(alphabet)
+var p = pointerTree.initTriePointer()
+assert $p == ""
+assert p.nodeId == pointerTree.root
+p &= 'a'
+let q = p & 'b'
+assert $p == "a"
+assert $q == "ab"
+assert q.getParent.nodeId == p.nodeId
+assert q.restoreString == "ab"
+assert pointerTree.initTriePointer(q.nodeId).restoreString == "ab"
+var copied = q
+assert copied.pop() == 'b'
+assert $copied == "a"
+assert $q == "ab"
+assert copied.pop() == 'a'
+assert $copied == ""
+try:
+    discard copied.pop()
+    assert false
+except AssertionDefect:
+    discard
+try:
+    p.add('z')
+    assert false
+except AssertionDefect:
+    discard
+assert $p == "a"
+assert pointerTree.len == 0
+assert q.terminal == 0
+assert q.subtree == 0
+pointerTree.incl("ab", 2)
+assert pointerTree.nodes[q.nodeId].terminal == 2
+assert q.terminal == 2
+assert p.terminal == 0
+assert p.subtree == 2
+pointerTree.incl(longWord)
+assert $q == "ab"
+assert q.terminal == 2
+assert q.subtree == 3
+assert pointerTree.initTriePointer().subtree == pointerTree.len
+pointerTree.excl("ab", 2)
+assert $q == "ab"
+assert q.terminal == 0
+assert q.subtree == 1
+var lazyTree: Trie[alphabet]
+let lazyPointer = lazyTree.initTriePointer()
+assert $(lazyPointer & 'c') == "c"
+var bytePointer = bytes.initTriePointer()
+bytePointer.add('\0')
+bytePointer.add('\255')
+assert $bytePointer == "\0\255"
+assert bytePointer.pop() == '\255'
 
 echo "Hello World"
