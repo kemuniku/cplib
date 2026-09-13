@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
   - icon: ':question:'
@@ -13,23 +13,23 @@ data:
   - icon: ':question:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/factorize
     links:
@@ -46,19 +46,19 @@ data:
     \ stdin.readLine.scanf(\"$i\", a)\n    var ans = primefactor(a)\n    if ans.len\
     \ == 0: echo 0\n    else: echo ans.len, \" \", ans.join(\" \")\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/factorize_yosupo_test.nim
   requiredBy: []
   timestamp: '2026-09-13 12:35:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/factorize_yosupo_test.nim
 layout: document

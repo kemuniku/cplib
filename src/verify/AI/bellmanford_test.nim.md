@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
   - icon: ':question:'
@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':question:'
@@ -87,14 +87,14 @@ data:
 
     '
   dependsOn:
+  - cplib/graph/bellmanford.nim
   - cplib/utils/constants.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/bellmanford_test.nim
   requiredBy: []

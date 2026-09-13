@@ -50,22 +50,22 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
   - icon: ':question:'
@@ -135,58 +135,58 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':x:'
@@ -280,22 +280,22 @@ data:
     \            let lastPoint = min(firstPoint + blockSize, xs.len)\n           \
     \ for i in firstPoint..<lastPoint:\n                result[i] = remainder.eval(xs[i])\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/fps/product_tree.nim
   requiredBy:

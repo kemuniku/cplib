@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/k_shortest_walk
     links:
@@ -52,21 +52,21 @@ data:
     \    let a, b, c = ii()\n    g.add_edge(a, b, c)\nlet lengths = g.k_shortest_walk(s,\
     \ t, k)\nfor i in 0..<k:\n    echo (if lengths[i] == INF: -1 else: lengths[i])\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/dynamic/k_shortest_walk_test.nim
   requiredBy: []
   timestamp: '2026-09-13 13:39:58+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/k_shortest_walk_test.nim
 layout: document

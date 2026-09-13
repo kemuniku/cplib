@@ -26,16 +26,16 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
   _extendedVerifiedWith:
@@ -111,63 +111,63 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -208,14 +208,14 @@ data:
     \  inc shift\n\n        result = newSeq[T](order)\n        for i in 0..<order:\n\
     \            result[i] = -connection[i + 1]\n"
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/fps/berlekamp_massey.nim
   requiredBy:
@@ -224,7 +224,7 @@ data:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
   timestamp: '2026-09-09 14:27:08+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim

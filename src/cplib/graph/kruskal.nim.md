@@ -76,10 +76,10 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
+  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/kruskal.nim
   requiredBy: []

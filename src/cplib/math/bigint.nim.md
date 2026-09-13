@@ -63,27 +63,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/factoradic_test.nim
     title: verify/AI/factoradic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -663,27 +663,27 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
   - cplib/math/factoradic.nim
   - cplib/math/factoradic.nim
   timestamp: '2026-09-13 12:59:41+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/bigint_bitops_unit_test.nim

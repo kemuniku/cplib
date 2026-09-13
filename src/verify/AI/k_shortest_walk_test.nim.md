@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
   - icon: ':question:'
@@ -82,11 +82,11 @@ data:
     \ 1, 100_001) == toSeq(1..100_000) & @[INF64]\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/k_shortest_walk.nim
   - cplib/utils/constants.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/k_shortest_walk_test.nim
   requiredBy: []

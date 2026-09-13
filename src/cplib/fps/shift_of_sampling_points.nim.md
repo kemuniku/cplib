@@ -44,10 +44,10 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
   - icon: ':question:'
@@ -123,58 +123,58 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':x:'
@@ -236,20 +236,20 @@ data:
     \u3058\u500B\u6570\u306E\u8A55\u4FA1\u5024 f(t), ..., f(t+n-1) \u3092 O(M(n))\
     \ \u3067\u6C42\u3081\u308B\u3002\n        shiftOfSamplingPoints(ys, t, ys.len)\n"
   dependsOn:
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/fps/shift_of_sampling_points.nim
   requiredBy:

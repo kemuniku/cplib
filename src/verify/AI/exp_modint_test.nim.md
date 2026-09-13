@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/euler_phi.nim
     title: cplib/math/euler_phi.nim
   - icon: ':heavy_check_mark:'
@@ -40,8 +40,8 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/exp_modint.nim
   - cplib/math/euler_phi.nim
+  - cplib/modint/exp_modint.nim
   - cplib/modint/exp_modint.nim
   - cplib/math/euler_phi.nim
   isVerificationFile: true

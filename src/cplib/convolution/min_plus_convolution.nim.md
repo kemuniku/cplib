@@ -154,8 +154,8 @@ data:
   dependsOn:
   - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
-  - cplib/utils/smawk.nim
   - cplib/utils/monotone_minima.nim
+  - cplib/utils/smawk.nim
   isVerificationFile: false
   path: cplib/convolution/min_plus_convolution.nim
   requiredBy: []

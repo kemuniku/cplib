@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':question:'
@@ -57,9 +57,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/division_of_big_integers
     links:
@@ -76,29 +76,29 @@ data:
     \ initBigInt(input(string))\n    let (quotient, remainder) = divmod(a, b)\n  \
     \  print(quotient, remainder)\n"
   dependsOn:
-  - cplib/math/bigint.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/bigint.nim
   - cplib/tmpl/fastio.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/bigint.nim
   - cplib/tmpl/fastio.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/division_of_big_integers_test.nim
   requiredBy: []
   timestamp: '2026-09-13 12:59:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/division_of_big_integers_test.nim
 layout: document

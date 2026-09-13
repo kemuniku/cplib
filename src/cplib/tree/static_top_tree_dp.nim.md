@@ -84,11 +84,11 @@ data:
     \u306E\u96C6\u7D04\u5024\u3092\u8FD4\u3059\u3002O(1)\n        return self.values[self.tree.root]\n"
   dependsOn:
   - cplib/tree/static_top_tree.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree_dp.nim
   requiredBy: []

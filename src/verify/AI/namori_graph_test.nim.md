@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':question:'
@@ -84,14 +84,14 @@ data:
 
     '
   dependsOn:
+  - cplib/utils/constants.nim
   - cplib/graph/namori_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/namori_graph_test.nim
   requiredBy: []

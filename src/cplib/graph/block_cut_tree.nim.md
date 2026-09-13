@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
   - icon: ':question:'
@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   _extendedRequiredBy: []
@@ -60,12 +60,12 @@ data:
     \u9593\u30FB\u9818\u57DF\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        result\
     \ = initBlockCutTree(initBiconnectedComponents(g))\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/block_cut_tree.nim
   requiredBy: []

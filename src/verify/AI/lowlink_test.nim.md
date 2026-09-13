@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
   - icon: ':heavy_check_mark:'
@@ -19,16 +19,16 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
   _extendedRequiredBy: []
@@ -122,16 +122,16 @@ data:
     \    doAssert initBlockCutTree(bc).forest.len == 2*n-3\n\necho \"Hello World\"\
     \n"
   dependsOn:
+  - cplib/graph/block_cut_tree.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/two_edge_connected_components.nim
-  - cplib/graph/two_edge_connected_components.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/block_cut_tree.nim
   - cplib/graph/biconnected_components.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/block_cut_tree.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/block_cut_tree.nim
+  - cplib/graph/two_edge_connected_components.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/lowlink_test.nim
   requiredBy: []

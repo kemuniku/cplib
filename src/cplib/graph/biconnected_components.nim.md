@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   _extendedRequiredBy:
@@ -27,15 +27,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/lowlink_test.nim
     title: verify/AI/lowlink_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -109,16 +109,16 @@ data:
     \ > 1: result.articulation.add(v)\n"
   dependsOn:
   - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/biconnected_components.nim
   requiredBy:
   - cplib/graph/block_cut_tree.nim
   - cplib/graph/block_cut_tree.nim
   timestamp: '2026-09-13 13:39:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim

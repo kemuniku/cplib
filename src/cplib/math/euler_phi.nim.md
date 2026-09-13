@@ -33,15 +33,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_list_yukicoder_test.nim
     title: verify/math/euler_phi_list_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -67,7 +67,7 @@ data:
   - cplib/modint/exp_modint.nim
   - cplib/modint/exp_modint.nim
   timestamp: '2024-01-07 17:44:35+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/euler_phi_aoj_test.nim
   - verify/math/euler_phi_aoj_test.nim

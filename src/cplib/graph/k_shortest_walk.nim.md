@@ -27,21 +27,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/k_shortest_walk_test.nim
     title: verify/AI/k_shortest_walk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf
@@ -157,14 +157,14 @@ data:
     \u3081\u308B\u3002\n        G.k_shortest_walk(s, t, k, INF64)\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/k_shortest_walk.nim
   requiredBy: []
   timestamp: '2026-09-13 11:46:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim

@@ -8,16 +8,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/SCC.nim
     title: cplib/graph/SCC.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
   - icon: ':heavy_check_mark:'
@@ -44,10 +44,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -74,10 +74,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph_with_op.nim
     title: cplib/graph/functional_graph_with_op.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
   - icon: ':heavy_check_mark:'
@@ -92,10 +92,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/grid_to_graph.nim
     title: cplib/graph/grid_to_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
   - icon: ':heavy_check_mark:'
@@ -104,10 +104,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   - icon: ':heavy_check_mark:'
@@ -128,10 +128,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':heavy_check_mark:'
@@ -164,16 +164,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/tsp.nim
     title: cplib/graph/tsp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
   - icon: ':heavy_check_mark:'
@@ -681,112 +681,112 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
     title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
     title: verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/lowlink_articulation_test.nim
     title: verify/graph/lowlink_articulation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/lowlink_articulation_test.nim
     title: verify/graph/lowlink_articulation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/lowlink_bridges_test.nim
     title: verify/graph/lowlink_bridges_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/lowlink_bridges_test.nim
     title: verify/graph/lowlink_bridges_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
     title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
     title: verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/warshall_floyd_aoj_test.nim
     title: verify/graph/static/warshall_floyd_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
   - icon: ':x:'

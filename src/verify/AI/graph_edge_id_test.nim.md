@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/bellmanford.nim
     title: cplib/graph/bellmanford.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':question:'
@@ -19,10 +19,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
   - icon: ':heavy_check_mark:'
@@ -31,10 +31,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':heavy_check_mark:'
@@ -49,10 +49,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/steiner_tree.nim
     title: cplib/graph/steiner_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
   - icon: ':heavy_check_mark:'
@@ -140,28 +140,28 @@ data:
     \ World\"\n\nvar tree = initUnWeightedUnDirectedGraph(3)\ntree.add_edge(0, 1)\n\
     tree.add_edge(1, 2)\nassert tree.steiner_tree_mincost(@[0, 2]) == 2\n"
   dependsOn:
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/reverse_edge.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/reverse_edge.nim
   - cplib/utils/constants.nim
   - cplib/graph/reverse_edge.nim
   - cplib/graph/steiner_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/dijkstra.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/steiner_tree.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/k_shortest_walk.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/bellmanford.nim
   isVerificationFile: true
   path: verify/AI/graph_edge_id_test.nim
   requiredBy: []

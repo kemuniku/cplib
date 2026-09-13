@@ -102,8 +102,8 @@ data:
   - cplib/collections/fenwick_avx2.nim
   - cplib/collections/fenwick_avx2.nim
   - cplib/collections/bitvector.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
   isVerificationFile: false
   path: cplib/collections/waveletmatrix_fenwick.nim

@@ -7,46 +7,46 @@ data:
   - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/berlekamp_massey.nim
     title: cplib/fps/berlekamp_massey.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/berlekamp_massey.nim
     title: cplib/fps/berlekamp_massey.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
   - icon: ':question:'
@@ -55,22 +55,22 @@ data:
   - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/power_projection.nim
     title: cplib/fps/power_projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/power_projection.nim
     title: cplib/fps/power_projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
   - icon: ':question:'
@@ -85,10 +85,10 @@ data:
   - icon: ':question:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
   - icon: ':question:'
@@ -189,63 +189,63 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -263,55 +263,55 @@ data:
     \    import cplib/fps/power_projection\n    import cplib/fps/bostan_mori\n   \
     \ import cplib/fps/berlekamp_massey\n    import cplib/fps/bmbm\n    import cplib/fps/sparse_formal_power_series\n"
   dependsOn:
-  - cplib/fps/bmbm.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/fps/product_tree.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/fps/product_tree.nim
   - cplib/fps/composition.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
   - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
   - cplib/fps/shift_of_sampling_points.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/bmbm.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/fps/composition.nim
-  - cplib/fps/power_projection.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
+  - cplib/fps/sparse_formal_power_series.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/power_projection.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/fps/bmbm.nim
-  - cplib/fps/bostan_mori.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/ntt.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/relaxed_convolution.nim
   - cplib/fps/taylor_shift.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
   - cplib/fps/berlekamp_massey.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/fps/product_tree.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/bmbm.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/composition.nim
   - cplib/modint/modint.nim
+  - cplib/convolution/ntt.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/fps/product_tree.nim
   isVerificationFile: false
   path: cplib/fps/fps.nim
   requiredBy: []
   timestamp: '2026-09-13 12:35:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim

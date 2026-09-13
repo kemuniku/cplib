@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []

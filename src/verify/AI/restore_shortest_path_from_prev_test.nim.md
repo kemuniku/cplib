@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   _extendedRequiredBy: []

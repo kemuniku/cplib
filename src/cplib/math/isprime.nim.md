@@ -8,34 +8,34 @@ data:
   - icon: ':question:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bmbm.nim
     title: cplib/fps/bmbm.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
   - icon: ':question:'
@@ -44,28 +44,28 @@ data:
   - icon: ':question:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/polynomial_interpolation.nim
     title: cplib/fps/polynomial_interpolation.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/power_projection.nim
     title: cplib/fps/power_projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/power_projection.nim
     title: cplib/fps/power_projection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
   - icon: ':question:'
@@ -80,10 +80,10 @@ data:
   - icon: ':question:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
   - icon: ':question:'
@@ -92,16 +92,16 @@ data:
   - icon: ':question:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
   - icon: ':heavy_check_mark:'
@@ -116,10 +116,10 @@ data:
   - icon: ':question:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
   - icon: ':heavy_check_mark:'
@@ -345,118 +345,118 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/inv_of_formal_power_series_test.nim
     title: verify/fps/inv_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
     title: verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_interpolation_test.nim
     title: verify/fps/polynomial_interpolation_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/polynomial_taylor_shift_test.nim
     title: verify/fps/polynomial_taylor_shift_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/pow_of_formal_power_series_test.nim
     title: verify/fps/pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/product_of_polynomial_sequence_test.nim
     title: verify/fps/product_of_polynomial_sequence_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
     title: verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_inv_of_formal_power_series_test.nim
     title: verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_log_of_formal_power_series_test.nim
     title: verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
     title: verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
     title: verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
     title: verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
   - icon: ':x:'
