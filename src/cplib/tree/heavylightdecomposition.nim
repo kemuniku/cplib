@@ -157,6 +157,50 @@ when not declared CPLIB_TREE_HLD:
                     seen.incl((j, i))
         gn.build
         return initHld(gn, root)
+    proc initHldFromForest*(g: UnDirectedGraph): HeavyLightDecomposition =
+        ## N頂点の森に根Nを追加し、各成分の最小番号の頂点と結んだHLDを構築する。時間・追加空間O(N)
+        let n = g.len
+        var parent = newSeqWith(n + 1, -1)
+        var stack: seq[int]
+        for root in 0..<n:
+            if parent[root] != -1:
+                continue
+            parent[root] = n
+            stack.add(root)
+            while stack.len > 0:
+                let v = stack.pop()
+                for (u, _) in g.to_and_cost(v):
+                    if parent[u] == -1:
+                        parent[u] = v
+                        stack.add(u)
+        return initHldFromParent(parent, n)
+
+    proc initHldFromForest*(g: DirectedGraph): HeavyLightDecomposition =
+        ## 向きを無視すると森になるN頂点のgに根Nを追加し、各成分の最小頂点と結ぶ。期待O(N + M)
+        var gn = initUnWeightedUnDirectedStaticGraph(g.len)
+        var seen = initHashSet[(int, int)]()
+        for v in 0..<g.len:
+            for (u, _) in g.to_and_cost(v):
+                if (v, u) notin seen:
+                    gn.add_edge(v, u)
+                    seen.incl((v, u))
+                    seen.incl((u, v))
+        gn.build()
+        return initHldFromForest(gn)
+
+    proc initHldFromForest*(adj: openArray[seq[int]]): HeavyLightDecomposition =
+        ## 森の隣接リストの向きを無視し、根Nを追加して各成分の最小頂点と結ぶ。期待O(N + M)
+        var gn = initUnWeightedUnDirectedStaticGraph(adj.len)
+        var seen = initHashSet[(int, int)]()
+        for v in 0..<adj.len:
+            for u in adj[v]:
+                if (v, u) notin seen:
+                    gn.add_edge(v, u)
+                    seen.incl((v, u))
+                    seen.incl((u, v))
+        gn.build()
+        return initHldFromForest(gn)
+
     proc numVertices*(hld: HeavyLightDecomposition): int =
         ## 頂点数を返す。O(1)
         hld.N
@@ -264,7 +308,7 @@ when not declared CPLIB_TREE_HLD:
         for i in hld.rangeL[p]..<hld.rangeR[p]:
             yield hld.toVtx(i)
     proc median*(hld: HeavyLightDecomposition, x: int, y: int, z: int): int =
-        ## 頂点x、y、zの各2頂点を結ぶ3本のパスに共通する頂点を返す。O(log N)
+        ## 根をxとしたときに、lca(y,z)を求める。
         hld.lca(x, y) xor hld.lca(y, z) xor hld.lca(x, z)
     proc la*(hld: HeavyLightDecomposition, starting: int, goal: int, d: int): int =
         ## startingからgoalへd辺進んだ頂点を返す。dが負またはパスの辺数を超える場合は-1を返す。O(log N)
