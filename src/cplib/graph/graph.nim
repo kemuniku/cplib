@@ -6,13 +6,21 @@ when not declared CPLIB_GRAPH_GRAPH:
         when T isnot void:
             cost*: T
     type AdjacentEdge* = tuple[dst: int32, id: int32]
+    type WeightedAdjacentEdge*[T] = tuple[dst: int32, id: int32, cost: T]
+    # 重みは走査を高速化するため隣接配列にも保存する。公開配列の重みは直接変更しないこと。
     type DynamicGraph*[T] = ref object of RootObj
-        edges*: seq[seq[AdjacentEdge]]
+        when T is void:
+            edges*: seq[seq[AdjacentEdge]]
+        else:
+            edges*: seq[seq[WeightedAdjacentEdge[T]]]
         edge_info*: seq[EdgeInfo[T]]
         len*: int
     type StaticGraph*[T] = ref object of RootObj
         edge_info*: seq[EdgeInfo[T]]
-        elist*: seq[AdjacentEdge]
+        when T is void:
+            elist*: seq[AdjacentEdge]
+        else:
+            elist*: seq[WeightedAdjacentEdge[T]]
         start*: seq[int32]
         directed: seq[bool]
         len*: int
@@ -38,8 +46,8 @@ when not declared CPLIB_GRAPH_GRAPH:
         ## 辺を追加し、追加順の辺番号を返す。償却 O(1)。
         result = g.edge_info.len
         g.edge_info.add(EdgeInfo[T](src: u, dst: v, cost: cost))
-        g.edges[u].add((v.int32, result.int32))
-        if not directed: g.edges[v].add((u.int32, result.int32))
+        g.edges[u].add((v.int32, result.int32, cost))
+        if not directed: g.edges[v].add((u.int32, result.int32, cost))
 
     proc add_edge_dynamic_impl*(g: DynamicGraph[void], u, v: int, directed: bool): int {.discardable.} =
         ## 辺を追加し、追加順の辺番号を返す。償却 O(1)。
@@ -69,14 +77,23 @@ when not declared CPLIB_GRAPH_GRAPH:
             inc g.start[e.src + 1]
             if not g.directed[id]: inc g.start[e.dst + 1]
         for i in 0..<g.len: g.start[i + 1] += g.start[i]
-        g.elist = newSeq[AdjacentEdge](g.start[^1])
+        when T is void:
+            g.elist = newSeq[AdjacentEdge](g.start[^1])
+        else:
+            g.elist = newSeq[WeightedAdjacentEdge[T]](g.start[^1])
         var cursor = newSeq[int32](g.len)
         for i in 0..<g.len: cursor[i] = g.start[i]
         for id, e in g.edge_info:
-            g.elist[cursor[e.src]] = (e.dst.int32, id.int32)
+            when T is void:
+                g.elist[cursor[e.src]] = (e.dst.int32, id.int32)
+            else:
+                g.elist[cursor[e.src]] = (e.dst.int32, id.int32, e.cost)
             inc cursor[e.src]
             if not g.directed[id]:
-                g.elist[cursor[e.dst]] = (e.src.int32, id.int32)
+                when T is void:
+                    g.elist[cursor[e.dst]] = (e.src.int32, id.int32)
+                else:
+                    g.elist[cursor[e.dst]] = (e.src.int32, id.int32, e.cost)
                 inc cursor[e.dst]
 
     proc build*(g: StaticGraphTypes) =
@@ -89,14 +106,14 @@ when not declared CPLIB_GRAPH_GRAPH:
 
     proc initWeightedDirectedGraph*(N: int, edgetype: typedesc = int): WeightedDirectedGraph[edgetype] =
         ## 頂点数 N のグラフを初期化する。O(N)。
-        result = WeightedDirectedGraph[edgetype](edges: newSeq[seq[AdjacentEdge]](N), len: N)
+        result = WeightedDirectedGraph[edgetype](edges: newSeq[seq[WeightedAdjacentEdge[edgetype]]](N), len: N)
     proc add_edge*[T](g: var WeightedDirectedGraph[T], u, v: int, cost: T): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_dynamic_impl(u, v, cost, true)
 
     proc initWeightedUnDirectedGraph*(N: int, edgetype: typedesc = int): WeightedUnDirectedGraph[edgetype] =
         ## 頂点数 N のグラフを初期化する。O(N)。
-        result = WeightedUnDirectedGraph[edgetype](edges: newSeq[seq[AdjacentEdge]](N), len: N)
+        result = WeightedUnDirectedGraph[edgetype](edges: newSeq[seq[WeightedAdjacentEdge[edgetype]]](N), len: N)
     proc add_edge*[T](g: var WeightedUnDirectedGraph[T], u, v: int, cost: T): int {.discardable.} =
         ## 辺を追加し、0 始まりの辺番号を返す。償却 O(1)。
         g.add_edge_dynamic_impl(u, v, cost, false)
@@ -166,23 +183,53 @@ when not declared CPLIB_GRAPH_GRAPH:
             let e = g.elist[i]
             yield (e.dst.int, e.id.int)
 
-    iterator to_and_cost_and_id*[T](g: DynamicGraph[T] or StaticGraph[T], x: int): auto =
+    iterator to_and_cost_and_id*[T](g: DynamicGraph[T], x: int): auto =
         ## 隣接頂点、重み、辺番号を列挙する。重みなしは重み 1 を返す。O(deg(x))。
-        for (dst, id) in g.to_and_id(x):
-            when T is void: yield (dst, 1, id)
-            else: yield (dst, g.edge_info[id].cost, id)
+        for e in g.edges[x]:
+            when T is void: yield (e.dst.int, 1, e.id.int)
+            else: yield (e.dst.int, e.cost, e.id.int)
 
-    iterator to_and_cost*[T](g: DynamicGraph[T] or StaticGraph[T], x: int): auto =
+    iterator to_and_cost_and_id*[T](g: StaticGraph[T], x: int): auto =
+        ## 隣接頂点、重み、辺番号を列挙する。重みなしは重み 1 を返す。O(deg(x))。
+        g.static_graph_initialized_check()
+        for i in g.start[x]..<g.start[x + 1]:
+            let e = g.elist[i]
+            when T is void: yield (e.dst.int, 1, e.id.int)
+            else: yield (e.dst.int, e.cost, e.id.int)
+
+    iterator to_and_cost*[T](g: DynamicGraph[T], x: int): auto =
         ## 隣接頂点と重みを列挙する。重みなしは重み 1 を返す。O(deg(x))。
-        for (dst, cost, id) in g.to_and_cost_and_id(x): yield (dst, cost)
+        for e in g.edges[x]:
+            when T is void: yield (e.dst.int, 1)
+            else: yield (e.dst.int, e.cost)
 
-    iterator `[]`*[T](g: WeightedGraph[T], x: int): (int, T) =
+    iterator to_and_cost*[T](g: StaticGraph[T], x: int): auto =
+        ## 隣接頂点と重みを列挙する。重みなしは重み 1 を返す。O(deg(x))。
+        g.static_graph_initialized_check()
+        for i in g.start[x]..<g.start[x + 1]:
+            let e = g.elist[i]
+            when T is void: yield (e.dst.int, 1)
+            else: yield (e.dst.int, e.cost)
+
+    iterator `[]`*[T](g: WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T], x: int): (int, T) =
         ## 隣接頂点と重みを追加順に列挙する。O(deg(x))。
-        for e in g.to_and_cost(x): yield e
+        for e in g.edges[x]: yield (e.dst.int, e.cost)
 
-    iterator `[]`*(g: UnWeightedGraph, x: int): int =
+    iterator `[]`*[T](g: WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T], x: int): (int, T) =
+        ## 隣接頂点と重みを追加順に列挙する。O(deg(x))。
+        g.static_graph_initialized_check()
+        for i in g.start[x]..<g.start[x + 1]:
+            let e = g.elist[i]
+            yield (e.dst.int, e.cost)
+
+    iterator `[]`*(g: UnWeightedDirectedGraph or UnWeightedUnDirectedGraph, x: int): int =
         ## 隣接頂点を追加順に列挙する。O(deg(x))。
-        for (dst, id) in g.to_and_id(x): yield dst
+        for e in g.edges[x]: yield e.dst.int
+
+    iterator `[]`*(g: UnWeightedDirectedStaticGraph or UnWeightedUnDirectedStaticGraph, x: int): int =
+        ## 隣接頂点を追加順に列挙する。O(deg(x))。
+        g.static_graph_initialized_check()
+        for i in g.start[x]..<g.start[x + 1]: yield g.elist[i].dst.int
 
     import tables
 

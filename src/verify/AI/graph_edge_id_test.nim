@@ -47,6 +47,14 @@ template checkGraph(init: untyped, weighted, undirected, isStatic: static bool) 
             assert rejected
             g.build()
         assert toSeq(g.to_and_id(0)) == expected
+        for u in 0..<g.len:
+            for (dst, cost, id) in g.to_and_cost_and_id(u):
+                assert (dst, id) in toSeq(g.to_and_id(u))
+                when weighted:
+                    assert cost == g.get_edge(id).cost
+                    assert (dst, cost) in toSeq(g[u])
+                else:
+                    assert cost == 1
         when not undirected:
             let reversed = g.reverse_edge()
             for id in 0..<g.edge_count:
