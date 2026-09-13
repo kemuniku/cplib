@@ -19,6 +19,7 @@ when not declared CPLIB_MATH_INT128:
         return parseuint_raw8b(x);
     }
     __int128_t parse_int128(char* p) {
+        // 符号付き128ビット整数を負の値として累積し、最小値も安全に解析する。
         bool minus = *p == '-' ? (p++, true) : false;
         const __int128_t base[9] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
         __int128_t result = 0;
@@ -28,11 +29,11 @@ when not declared CPLIB_MATH_INT128:
                 if (*(p + sz) == '\0') break;
                 sz++;
             }
-            result = result * base[sz] + parseint_raw8b_wrap(p, sz);
+            result = result * base[sz] - parseint_raw8b_wrap(p, sz);
             p += sz;
             if (*p == '\0') break;
         }
-        return minus ? -result : result;
+        return minus ? result : -result;
     }
     constexpr size_t INT128_DIGIT_STRING_SIZE = 10000;
     constexpr size_t INT128_DIGIT_STRING_LENGHT = 4;
@@ -50,11 +51,15 @@ when not declared CPLIB_MATH_INT128:
             }
         }
     };
-    char int128_string_buffer[40];
+    char int128_string_buffer[41];
     constexpr auto int128_four_digit_strings = Int128FourDigitStrings();
     char* to_string(__int128_t &x) {
-        __int128_t tmp = x < 0 ? -x : x;
-        char* d = std::end(int128_string_buffer);
+        // 絶対値を符号なしで求め、NUL終端付きの十進文字列を返す。
+        __uint128_t tmp = static_cast<__uint128_t>(x);
+        if (x < 0) tmp = -tmp;
+        char* end = std::end(int128_string_buffer) - 1;
+        *end = '\0';
+        char* d = end;
         while (tmp >= INT128_DIGIT_STRING_SIZE) {
             size_t pos = (tmp % INT128_DIGIT_STRING_SIZE) * INT128_DIGIT_STRING_LENGHT;
             d -= INT128_DIGIT_STRING_LENGHT;
@@ -65,46 +70,28 @@ when not declared CPLIB_MATH_INT128:
             *(--d) = "0123456789"[tmp % 10];
             tmp /= 10;
         }
-        if (d == std::end(int128_string_buffer)) *(--d) = '0';
+        if (d == end) *(--d) = '0';
         if (x < 0) *(--d) = '-';
         return d;
     }
     std::ostream &operator<<(std::ostream &dest, __int128_t &x) {
-        std::ostream::sentry s(dest);
-        if (s) {
-            __uint128_t tmp = x < 0 ? -x : x;
-            char* d = std::end(int128_string_buffer);
-            while (tmp >= INT128_DIGIT_STRING_SIZE) {
-                size_t pos = (tmp % INT128_DIGIT_STRING_SIZE) * INT128_DIGIT_STRING_LENGHT;
-                d -= INT128_DIGIT_STRING_LENGHT;
-                std::memcpy(d, int128_four_digit_strings.d+pos, INT128_DIGIT_STRING_LENGHT);
-                tmp /= INT128_DIGIT_STRING_SIZE;
-            }
-            while (tmp > 0) {
-                *(--d) = "0123456789"[tmp % 10];
-                tmp /= 10;
-            }
-            if (d == std::end(int128_string_buffer)) *(--d) = '0';
-            if (x < 0) *(--d) = '-';
-            int len = std::end(int128_string_buffer) - d;
-            if (dest.rdbuf()->sputn(d, len) != len) {
-                dest.setstate(std::ios_base::badbit);
-            }
-        }
-        return dest;
+        // NUL終端付きの文字列をストリームへ出力する。
+        return dest << to_string(x);
     }
     __int128_t read_and_parse_int128(int x) {
-        char buffer[40];
-        size_t offset = 0;
-        while (1) {
-            char c = getchar_unlocked();
-            if (c == ' ' || c == '\n' || c == '\0') {
-                *(buffer + offset++) = '\0';
-                break;
-            }
-            *(buffer + offset++) = c;
+        // 空白を読み飛ばして整数を読む。値のないEOFでは0を返す。計算量O(文字数)。
+        int c = getchar_unlocked();
+        while (c != EOF && std::isspace(static_cast<unsigned char>(c))) {
+            c = getchar_unlocked();
         }
-        return parse_int128(buffer);
+        bool minus = c == '-';
+        if (c == '-' || c == '+') c = getchar_unlocked();
+        __int128_t result = 0;
+        while (c >= '0' && c <= '9') {
+            result = result * 10 - (c - '0');
+            c = getchar_unlocked();
+        }
+        return minus ? result : -result;
     }
     void output_int128(__int128_t &x) { std::cout << x << '\n'; }
     """.}
@@ -141,7 +128,11 @@ when not declared CPLIB_MATH_INT128:
     proc `==`*(x, y: Int128): bool {.importcpp: "((#) == (#))", nodecl.}
     proc abs*(x: Int128): Int128 = (if x >= 0:x else: -x)
     proc cmp*(x, y: Int128): int = (if x < y: -1 elif x == y: 0 else: 1)
-    proc hash*(x: Int128): Hash = hash(x div int(100000000000000000)) !& hash(x mod int(100000000000000000))
+    proc lowBits(x: Int128): uint64 {.importcpp: "((unsigned long long)((__uint128_t)(#)))", nodecl.}
+    proc highBits(x: Int128): uint64 {.importcpp: "((unsigned long long)(((__uint128_t)(#)) >> 64))", nodecl.}
+    proc hash*(x: Int128): Hash =
+        ## 上位・下位64ビットのハッシュを合成する。計算量O(1)。
+        result = !$ (hash(lowBits(x)) !& hash(highBits(x)))
 
     proc parse_Int128_inner(s: cstring): Int128 {.importcpp: "parse_int128((#))", nodecl.}
     proc parseInt128*(s: string): Int128 = parse_Int128_inner(cstring(s))
