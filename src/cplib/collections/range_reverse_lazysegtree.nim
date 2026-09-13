@@ -205,7 +205,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     proc insert*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int, value: S) =
         ## index の直前に value を挿入する。末尾には index = len を指定する。
         ## 期待 O(log N)。挿入前の区間更新は新しい要素には作用しない。
-        assert 0 <= index and index <= self.length
+        assert 0 <= index and index <= self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index <= self.length"
         var (left, right) = self.splitRoot(self.root, index)
         let node = newNode(value, rand(uint64), self.id)
         self.root = self.mergeRoot(left, self.mergeRoot(node, right))
@@ -214,7 +214,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int) =
         ## 半開区間 [l, r) を削除する。木の操作は期待 O(log N)。
         ## 削除した K 個のノードの解放には別途 O(K) かかりうる。
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         if l == r: return
         var (left, middleRight) = self.splitRoot(self.root, l)
         var (_, right) = self.splitRoot(middleRight, r - l)
@@ -223,14 +223,14 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
 
     proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int) =
         ## index 番目の要素を削除する。期待 O(log N)。
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         self.erase(index, index + 1)
 
     proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int, int]) =
         self.erase(segment.a, segment.b + 1)
 
     proc reverse*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int) =
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         var (left, middleRight) = self.splitRoot(self.root, l)
         var (middle, right) = self.splitRoot(middleRight, r - l)
         middle.toggle
@@ -240,21 +240,21 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
         self.reverse(segment.a, segment.b + 1)
 
     proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int, f: F) =
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         var (left, middleRight) = self.splitRoot(self.root, l)
         var (middle, right) = self.splitRoot(middleRight, r - l)
         middle.allApply(f, self.mapping, self.composition)
         self.root = self.mergeRoot(left, self.mergeRoot(middle, right))
 
     proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int, f: F) =
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         self.apply(index, index + 1, f)
 
     proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int, int], f: F) =
         self.apply(segment.a, segment.b + 1, f)
 
     proc get*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int): S =
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         var (left, middleRight) = self.splitRoot(self.root, l)
         var (middle, right) = self.splitRoot(middleRight, r - l)
         result = middle.nodeProd(self.default)
@@ -278,8 +278,8 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     proc max_right*[S, F](self: RangeReverseLazySegmentTree[S, F], l: int, f: proc(x: S): bool): int =
         ## f(get(l, r)) が真となる最大の r。期待 O(log N)。
         ## f(default) = true で、区間を伸ばしたとき真から偽への変化が単調であること。
-        assert 0 <= l and l <= self.length
-        assert f(self.default)
+        assert 0 <= l and l <= self.length, "指定した値が有効な範囲内である必要があります: 0 <= l and l <= self.length"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         var (left, right) = self.splitRoot(self.root, l)
         var node = right
         var acc = self.default
@@ -302,8 +302,8 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     proc min_left*[S, F](self: RangeReverseLazySegmentTree[S, F], r: int, f: proc(x: S): bool): int =
         ## f(get(l, r)) が真となる最小の l。期待 O(log N)。
         ## f(default) = true で、区間を伸ばしたとき真から偽への変化が単調であること。
-        assert 0 <= r and r <= self.length
-        assert f(self.default)
+        assert 0 <= r and r <= self.length, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.length"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         var (left, right) = self.splitRoot(self.root, r)
         var node = left
         var acc = self.default
@@ -324,7 +324,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
         self.root = self.mergeRoot(left, right)
 
     proc get*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int): S =
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         var node = self.root
         var k = index
         while true:
@@ -339,7 +339,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
                 node = node.right
 
     proc update*[S, F](self: RangeReverseLazySegmentTree[S, F], index: Natural, value: S) =
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         var (left, middleRight) = self.splitRoot(self.root, int(index))
         var (middle, right) = self.splitRoot(middleRight, 1)
         middle.value = value

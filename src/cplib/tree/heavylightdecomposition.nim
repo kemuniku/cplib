@@ -11,7 +11,7 @@ when not declared CPLIB_TREE_HLD:
     proc initHldFromParent*(parent: openArray[int], root: int): HeavyLightDecomposition =
         ## 根付き木の親配列からHLDを構築する。parent[root]は参照しない。O(N)
         let n = len(parent)
-        assert 0 <= root and root < n
+        assert 0 <= root and root < n, "頂点番号が範囲外です: 0 <= root and root < n"
         var hld = HeavyLightDecomposition(N:n)
         hld.P = @parent
         hld.P[root] = -1
@@ -21,7 +21,7 @@ when not declared CPLIB_TREE_HLD:
         var next = newSeqWith(n,-1)
         for v in 0..<n:
             if v != root:
-                assert 0 <= hld.P[v] and hld.P[v] < n
+                assert 0 <= hld.P[v] and hld.P[v] < n, "頂点番号が範囲外です: 0 <= hld.P[v] and hld.P[v] < n"
                 next[v] = head[hld.P[v]]
                 head[hld.P[v]] = v
 
@@ -35,7 +35,7 @@ when not declared CPLIB_TREE_HLD:
                 hld.I[iI] = v
                 iI += 1
                 v = next[v]
-        assert iI == n
+        assert iI == n, "指定した根から全頂点に到達できる必要があります"
 
         var size = newSeqWith(n,1)
         var heavy = newSeqWith(n,-1)
@@ -169,7 +169,7 @@ when not declared CPLIB_TREE_HLD:
     proc toSeq*[T](hld: HeavyLightDecomposition, values: openArray[T]): seq[T] =
         ## 頂点番号順の数列をHLD順に並べ替えて返す。時間・追加空間O(N)
         ## valuesの長さは頂点数と等しい必要があり、result[hld.toSeq(i)] = values[i]となる。
-        assert values.len == hld.N
+        assert values.len == hld.N, "値の配列の長さは木の頂点数と一致する必要があります"
         result = newSeq[T](hld.N)
         for i, value in values:
             result[hld.toSeq(i)] = value

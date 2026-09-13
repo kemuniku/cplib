@@ -9,7 +9,7 @@ when not declared CPLIB_GRAPH_COUNT_TOPOLOGICALSORT:
         ## 静的グラフは事前にbuildが必要。頂点数は20程度までを想定する。
         ## V < sizeof(int) * 8 - 1 かつ答えがint64に収まることが必要（V <= 20なら収まる）。
         let n = G.len
-        assert n < sizeof(int) * 8 - 1
+        assert n < sizeof(int) * 8 - 1, "頂点数はintのビット数から1を引いた値未満である必要があります"
         if not G.isDAG():
             return 0
         var predecessors = newSeq[int](n)

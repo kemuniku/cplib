@@ -4,7 +4,7 @@ when not declared CPLIB_UTILS_MONOTONE_MINIMA:
     proc monotoneMinima*[F](height, width: int, better: F): seq[int] =
         ## 左端最小列が広義単調増加する行列を O(height + width * log(height + 1)) 回の比較で探索する。
         ## better(row, oldCol, newCol) は新しい列が真に小さいとき true。幅 0 なら -1。
-        assert height >= 0 and width >= 0
+        assert height >= 0 and width >= 0, "高さと幅は非負である必要があります"
         var answer = newSeq[int](height)
         for r in 0..<height: answer[r] = -1
         if height == 0 or width == 0: return answer

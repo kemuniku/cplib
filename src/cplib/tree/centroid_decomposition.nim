@@ -21,7 +21,7 @@ when not declared CPLIB_TREE_CENTROID_DECOMPOSITION:
                 parent: newSeq[int](n), depth: newSeq[int](n),
                 children: newSeq[seq[int]](n))
         if n == 0: return
-        assert root in 0..<n
+        assert root in 0..<n, "頂点番号が範囲外です: root in 0 ..< n"
         var removed = newSeq[bool](n)
         var parent = newSeq[int](n)
         var size = newSeq[int](n)

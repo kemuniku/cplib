@@ -16,7 +16,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
             coefficientCount: int): RelaxedConvolution[T] =
         ## 先頭からcoefficientCount項を逐次計算する畳み込みを初期化する。
         ## NTTが利用できる場合、全項の計算量はO(N log^2 N)となる。
-        doAssert coefficientCount >= 0
+        doAssert coefficientCount >= 0, "coefficientCountは非負である必要があります"
         result.coefficientCount = coefficientCount
         result.left = newSeq[T](coefficientCount)
         result.right = newSeq[T](coefficientCount)
@@ -26,7 +26,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
 
     proc pendingCoefficient*[T](self: RelaxedConvolution[T]): T =
         ## 次に確定する係数に既に加算済みの寄与を返す。
-        doAssert self.currentIndex < self.coefficientCount
+        doAssert self.currentIndex < self.coefficientCount, "初期化時に指定した個数を超えて係数を追加することはできません"
         self.product[self.currentIndex]
 
     proc coefficients*[T](self: RelaxedConvolution[T]): seq[T] =
@@ -57,7 +57,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc add*[T](
             self: var RelaxedConvolution[T], leftValue, rightValue: T): T =
         ## 次の2係数を追加し、その次数の積の係数を返す。
-        doAssert self.currentIndex < self.coefficientCount
+        doAssert self.currentIndex < self.coefficientCount, "初期化時に指定した個数を超えて係数を追加することはできません"
         let index = self.currentIndex
         self.left[index] = leftValue
         self.right[index] = rightValue
@@ -221,7 +221,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc initRelaxedInv*[T: BarrettModint or MontgomeryModint](
             coefficientCount: int): RelaxedInv[T] =
         ## 乗法逆元の係数を逐次計算する状態を初期化する。
-        doAssert coefficientCount >= 0
+        doAssert coefficientCount >= 0, "coefficientCountは非負である必要があります"
         result.coefficientCount = coefficientCount
         result.convolution = initRelaxedConvolution[T](coefficientCount)
         result.values = newSeqOfCap[T](coefficientCount)
@@ -234,7 +234,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc add*[T](
             self: var RelaxedInv[T], coefficient: T): T =
         ## fの次の係数を追加し、f^(-1)の同じ次数の係数を返す。
-        doAssert self.currentIndex < self.coefficientCount
+        doAssert self.currentIndex < self.coefficientCount, "初期化時に指定した個数を超えて係数を追加することはできません"
         let degree = self.currentIndex
         if degree == 0:
             doAssert coefficient.val != 0,
@@ -260,7 +260,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc initRelaxedExp*[T: BarrettModint or MontgomeryModint](
             coefficientCount: int): RelaxedExp[T] =
         ## 形式的指数関数の係数を逐次計算する状態を初期化する。
-        doAssert coefficientCount >= 0
+        doAssert coefficientCount >= 0, "coefficientCountは非負である必要があります"
         doAssert coefficientCount <= T.umod.int,
             "FPSの形式的指数関数では項数が法以下である必要がある"
         result.coefficientCount = coefficientCount
@@ -276,7 +276,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc add*[T](
             self: var RelaxedExp[T], coefficient: T): T =
         ## fの次の係数を追加し、exp(f)の同じ次数の係数を返す。
-        doAssert self.currentIndex < self.coefficientCount
+        doAssert self.currentIndex < self.coefficientCount, "初期化時に指定した個数を超えて係数を追加することはできません"
         let degree = self.currentIndex
         if degree == 0:
             doAssert coefficient.val == 0,
@@ -299,7 +299,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc initRelaxedLog*[T: BarrettModint or MontgomeryModint](
             coefficientCount: int): RelaxedLog[T] =
         ## 形式的対数の係数を逐次計算する状態を初期化する。
-        doAssert coefficientCount >= 0
+        doAssert coefficientCount >= 0, "coefficientCountは非負である必要があります"
         doAssert coefficientCount <= T.umod.int,
             "FPSの形式的対数では項数が法以下である必要がある"
         result.coefficientCount = coefficientCount
@@ -316,7 +316,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc add*[T](
             self: var RelaxedLog[T], coefficient: T): T =
         ## fの次の係数を追加し、log(f)の同じ次数の係数を返す。
-        doAssert self.currentIndex < self.coefficientCount
+        doAssert self.currentIndex < self.coefficientCount, "初期化時に指定した個数を超えて係数を追加することはできません"
         let degree = self.currentIndex
         if degree == 0:
             doAssert coefficient.val == 1,
@@ -341,7 +341,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc initRelaxedSqrt*[T: BarrettModint or MontgomeryModint](
             coefficientCount: int): RelaxedSqrt[T] =
         ## 非零の定数項を持つFPSの平方根を逐次計算する状態を初期化する。
-        doAssert coefficientCount >= 0
+        doAssert coefficientCount >= 0, "coefficientCountは非負である必要があります"
         result.coefficientCount = coefficientCount
         result.convolution = initRelaxedConvolution[T](coefficientCount)
         result.values = newSeqOfCap[T](coefficientCount)
@@ -356,7 +356,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
             self: var RelaxedSqrt[T], coefficient: T): Option[T] =
         ## fの次の係数を追加し、sqrt(f)の同じ次数の係数を返す。
         ## 定数項が0の場合は出力係数が逐次に定まらないため扱わない。
-        doAssert self.currentIndex < self.coefficientCount
+        doAssert self.currentIndex < self.coefficientCount, "初期化時に指定した個数を超えて係数を追加することはできません"
         let degree = self.currentIndex
         if self.failed:
             inc self.currentIndex
@@ -391,7 +391,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc initRelaxedPow*[T: BarrettModint or MontgomeryModint](
             coefficientCount, exponent: int): RelaxedPow[T] =
         ## 非負整数冪の係数を逐次計算する状態を初期化する。
-        doAssert coefficientCount >= 0
+        doAssert coefficientCount >= 0, "coefficientCountは非負である必要があります"
         doAssert coefficientCount <= T.umod.int,
             "FPSの整数冪では項数が法以下である必要がある"
         doAssert exponent >= 0, "FPSの整数冪では指数が非負である必要がある"
@@ -409,7 +409,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     proc add*[T](
             self: var RelaxedPow[T], coefficient: T): T =
         ## fの次の係数を追加し、f^kの同じ次数の係数を返す。
-        doAssert self.currentIndex < self.coefficientCount
+        doAssert self.currentIndex < self.coefficientCount, "初期化時に指定した個数を超えて係数を追加することはできません"
         let degree = self.currentIndex
         if self.exponent == 0:
             result = if degree == 0: init(T, 1) else: init(T, 0)

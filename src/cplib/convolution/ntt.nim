@@ -86,7 +86,7 @@ when not declared CPLIB_CONVOLUTION_NTT:
         let n = f.len
         if n <= 1: return
         let ntt_config = get_ntt_config(T)
-        assert(n.popcount == 1, "len(f) must be power of two, please add zeros")
+        assert(n.popcount == 1, "配列の長さは2の冪である必要があります。末尾に0を追加してください")
         var width = n
         while width > 1:
             if width == 2:
@@ -124,7 +124,7 @@ when not declared CPLIB_CONVOLUTION_NTT:
         let n = f.len
         if n <= 1: return
         let ntt_config = get_ntt_config(T)
-        assert(n.popcount == 1, "len(f) must be power of two, please add zeros")
+        assert(n.popcount == 1, "配列の長さは2の冪である必要があります。末尾に0を追加してください")
         var width = (if n.countTrailingZeroBits mod 2 == 1: 2 else: 4)
         while width <= n:
             if width == 2:

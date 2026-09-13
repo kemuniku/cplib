@@ -13,7 +13,7 @@ when not declared CPLIB_GEOMETRY_ANGLE:
     proc angle*[T](p1, p2: Point[T]): int =
         ##p1, p2のなす角を八方位で返す
         proc iszero(p: Point[T]): bool = geometry_eq(p.x, 0) and geometry_eq(p.y, 0)
-        assert (not iszero(p1)) and (not iszero(p2))
+        assert (not iszero(p1)) and (not iszero(p2)), "角度を求めるベクトルはどちらも零ベクトルでない必要があります"
         var d = dot(p1, p2)
         var c = cross(p1, p2)
         if geometry_eq(c, 0):

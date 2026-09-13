@@ -145,14 +145,14 @@ when not declared CPLIB_COLLECTIONS_AVLTREE:
         while not node.p.isNil and node.p.l == node: node = node.p
         return node.p
     proc get*[K](node: AvlTreeNode[K], idx: int): AvlTreeNode[K] =
-        assert idx >= 0
+        assert idx >= 0, "idxは非負である必要があります"
         if idx >= node.len: return nil
         result = node
         var idx = idx
         while (result.l.isNil and idx != 0) or (not result.l.isNil and result.l.len != idx):
             if result.l.isNil or result.l.len < idx:
                 idx -= (if result.l.isNil: 1 else: result.l.len + 1)
-                assert(not result.r.isNil)
+                assert(not result.r.isNil, "右の子ノードが存在する必要があります")
                 result = result.r
             else:
                 result = result.l

@@ -19,7 +19,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_UNIONFIND:
             pool: PersistentUFPool
 
     proc initPersistentUnionFind*(N: int): PersistentUnionFind =
-        assert N >= 0 and N.int64 <= int32.high.int64
+        assert N >= 0 and N.int64 <= int32.high.int64, "要素数Nは0以上int32の最大値以下である必要があります"
         result = PersistentUnionFind(count: N, size: N,
             pool: PersistentUFPool(nodes: newSeq[PersistentUFNode](1)))
         if N > 1:
@@ -37,7 +37,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_UNIONFIND:
         return self.pool.nodes[node.int][index and PersistentUFBranchMask]
 
     proc rootAndSize(self: PersistentUnionFind, x: int): tuple[root: int, size: int32] {.inline.} =
-        assert x >= 0 and x < self.size
+        assert x >= 0 and x < self.size, "指定した値が有効な範囲内である必要があります: x >= 0 and x < self.size"
         var x = x
         var value = self.get(x)
         while value >= 0:
@@ -50,7 +50,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_UNIONFIND:
         if node == 0 and shift == 0:
             for value in data.mitems:
                 value = -1
-        assert pool.nodes.len < int32.high.int
+        assert pool.nodes.len < int32.high.int, "ノード数がint32で管理できる上限に達しています"
         result = pool.nodes.len.int32
         pool.nodes.add(data)
 

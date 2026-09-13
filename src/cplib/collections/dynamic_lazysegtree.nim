@@ -36,7 +36,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE:
         ## 区間分割や区間の一部の取得にも使い、保存済みの作用は木が適用するため、更新を反映させないでください。
         ## initial(l,r)=merge(initial(l,m),initial(m,r))、initial(l,l)=defaultを満たす必要があります。
         ## 記載の計算量はinitialを含む各コールバックがO(1)の場合です。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         result = DynamicLazySegmentTree[S, F](length: n, merge: merge,
             default: default, mapping: mapping, composition: composition,
             id: id, initial: initial)
@@ -158,7 +158,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE:
 
     proc apply*[S, F](self: DynamicLazySegmentTree[S, F], l, r: int, f: F) =
         ## [l,r)へ最悪O(log(K+2))で作用させます。追加ノードは高々2個、Q回更新後の空間はO(Q+1)。
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         if l == r: return
         self.root = self.splitAt(self.root, l)
         self.root = self.splitAt(self.root, r)
@@ -181,7 +181,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE:
 
     proc get*[S, F](self: DynamicLazySegmentTree[S, F], l, r: int): S =
         ## 半開区間[l,r)の積を最悪O(log(K+2))で返します。取得ではノードを追加しません。
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         if l == r: return self.default
         self.getNode(self.root, l, r)
 
@@ -200,19 +200,19 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE:
 
     proc update*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural, value: S) =
         ## 1点を最悪O(log(K+2))で上書きします。追加ノードは高々2個です。
-        assert p < self.length
+        assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.root = self.splitAt(self.root, p)
         self.root = self.splitAt(self.root, p + 1)
         self.setNode(self.root, p, value)
 
     proc get*[S, F](self: DynamicLazySegmentTree[S, F], segment: HSlice[int, int]): S =
         ## スライスの区間積を最悪O(log(K+2))で返します。
-        assert segment.b < self.length
+        assert segment.b < self.length, "指定した区間が有効な範囲内である必要があります: segment.b < self.length"
         self.get(segment.a, segment.b + 1)
 
     proc apply*[S, F](self: DynamicLazySegmentTree[S, F], segment: HSlice[int, int], f: F) =
         ## スライスの区間へ最悪O(log(K+2))で作用させます。
-        assert segment.b < self.length
+        assert segment.b < self.length, "指定した区間が有効な範囲内である必要があります: segment.b < self.length"
         self.apply(segment.a, segment.b + 1, f)
 
     proc `[]`*[S, F](self: DynamicLazySegmentTree[S, F], segment: HSlice[int, int]): S =
@@ -221,7 +221,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE:
 
     proc `[]`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural): S =
         ## 1点を最悪O(log(K+2))で取得します。
-        assert p < self.length
+        assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.get(p, p + 1)
 
     proc `[]=`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural, value: S) =

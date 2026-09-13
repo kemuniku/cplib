@@ -12,8 +12,8 @@ when not declared CPLIB_GRAPH_K_SHORTEST_WALK:
         ## 同長の別ウォークも数え、s == tでは空ウォークを含む。全ての中間計算がTに収まることを要求する。
         ## 不足分はINFで埋める。INFは返されるウォーク長より大きい値を指定する。StaticGraphは事前にbuildする。
         ## Eppstein法: https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf
-        assert 0 <= s and s < G.len and 0 <= t and t < G.len
-        assert k >= 0
+        assert 0 <= s and s < G.len and 0 <= t and t < G.len, "指定した値が有効な範囲内である必要があります: 0 <= s and s < G.len and 0 <= t and t < G.len"
+        assert k >= 0, "kは非負である必要があります"
         if k == 0: return @[]
         result = newSeq[T](k)
         result.fill(INF)
@@ -22,7 +22,7 @@ when not declared CPLIB_GRAPH_K_SHORTEST_WALK:
         for u in 0..<n:
             var edge = 0
             for (v, cost) in G.to_and_cost(u):
-                assert cost >= T(0)
+                assert cost >= T(0), "辺のコストは非負である必要があります"
                 reverse[v].add((u, cost, edge))
                 inc edge
         var

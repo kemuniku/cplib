@@ -78,13 +78,13 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
 
         proc makeRoot*[T: TreeType](self: T, v: int) =
             ## vを所属する木の根にする。償却O(log N)。
-            assert 0 <= v and v < self.len
+            assert 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len"
             self.accessNode(v + 1)
             self.toggle(v + 1)
 
         proc findRoot*[T: TreeType](self: T, v: int): int =
             ## vが所属する木の現在の根を返す。償却O(log N)。
-            assert 0 <= v and v < self.len
+            assert 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len"
             var x = v + 1
             self.accessNode(x)
             self.push(x)
@@ -96,13 +96,13 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
 
         proc connected*[T: TreeType](self: T, u, v: int): bool =
             ## uとvが同じ木に属するかを返す。償却O(log N)。
-            assert 0 <= u and u < self.len and 0 <= v and v < self.len
+            assert 0 <= u and u < self.len and 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= u and u < self.len and 0 <= v and v < self.len"
             u == v or self.findRoot(u) == self.findRoot(v)
 
         proc link*[T: TreeType](self: T, u, v: int) =
             ## 異なる木の頂点u, vを辺で結ぶ。償却O(log N)。
             ## 結合後の根は結合前のv側の根になる。
-            assert 0 <= u and u < self.len and 0 <= v and v < self.len
+            assert 0 <= u and u < self.len and 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= u and u < self.len and 0 <= v and v < self.len"
             self.makeRoot(u)
             assert self.findRoot(v) != u, "linkする頂点は異なる木に属する必要があります"
             self.accessNode(v + 1)
@@ -113,7 +113,7 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
         proc cut*[T: TreeType](self: T, u, v: int) =
             ## 存在する辺(u, v)を削除する。償却O(log N)。
             ## 切断後の二つの木の根はそれぞれuとvになる。
-            assert 0 <= u and u < self.len and 0 <= v and v < self.len
+            assert 0 <= u and u < self.len and 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= u and u < self.len and 0 <= v and v < self.len"
             self.makeRoot(u)
             self.accessNode(v + 1)
             self.push(u + 1)
@@ -125,14 +125,14 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
 
         proc update*[T: TreeType](self: T, v: int, value: T.S) =
             ## 頂点vの値をvalueに変更する。償却O(log N)。
-            assert 0 <= v and v < self.len
+            assert 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len"
             self.accessNode(v + 1)
             self.nodes[v + 1].value = value
             self.pull(v + 1)
 
         proc `[]`*[T: TreeType](self: T, v: int): T.S =
             ## 頂点vの値を返す。償却O(log N)。
-            assert 0 <= v and v < self.len
+            assert 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len"
             self.accessNode(v + 1)
             self.nodes[v + 1].value
 
@@ -142,7 +142,7 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
 
         proc pathProd*[T: TreeType](self: T, u, v: int): T.S =
             ## 同じ木のuからvへのパスを両端込みで順に集約する。償却O(log N)。根をuに変更する。
-            assert 0 <= u and u < self.len and 0 <= v and v < self.len
+            assert 0 <= u and u < self.len and 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= u and u < self.len and 0 <= v and v < self.len"
             self.makeRoot(u)
             self.accessNode(v + 1)
             self.nodes[v + 1].prod
@@ -153,14 +153,14 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
 
         proc componentProd*[T: TreeType](self: T, v: int): T.S =
             ## vを含む木全体を集約する。可換群と逆元の指定が必要。償却O(log N)。
-            assert 0 <= v and v < self.len
+            assert 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len"
             assert self.inverse != nil, "部分木・成分の集約にはinverseが必要です"
             self.accessNode(v + 1)
             self.nodes[v + 1].all
 
         proc subtreeProd*[T: TreeType](self: T, v, parent: int): T.S =
             ## 辺(v, parent)のv側を集約する。可換群と逆元の指定が必要。償却O(log N)。根をparentに変更する。
-            assert 0 <= v and v < self.len and 0 <= parent and parent < self.len
+            assert 0 <= v and v < self.len and 0 <= parent and parent < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len and 0 <= parent and parent < self.len"
             assert self.inverse != nil, "部分木・成分の集約にはinverseが必要です"
             self.makeRoot(parent)
             self.accessNode(v + 1)

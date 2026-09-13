@@ -17,7 +17,7 @@ when not declared CPLIB_COLLECTIONS_CONVEX_HULL_TRICK_MONOTONE_SLOPE:
 
     proc get_min*(self: ConvexHullTrickMonotoneSlope, x: int): int =
         ## 任意の整数座標xでの最小値を返します。空の場合はassert。O(log N)。
-        assert self.hull.lines.len > 0, "CHT: no lines"
+        assert self.hull.lines.len > 0, "CHTに直線が登録されていません"
         var l = 0
         var r = self.hull.lines.len - 1
         while l < r:

@@ -28,7 +28,7 @@ when not declared CPLIB_COLLECTIONS_ROLLBACK_UNIONFIND:
         self.par_or_siz[yi] = x
         return true
     proc undo*(self: var RollbackUnionFind) =
-        assert self.history.len > 0, "Can't undo because Unionfind is already initial state."
+        assert self.history.len > 0, "UnionFindは既に初期状態のため操作を取り消せません"
         for i in 0..<2:
             var (x, sx) = self.history.pop
             self.par_or_siz[x] = sx
@@ -37,7 +37,7 @@ when not declared CPLIB_COLLECTIONS_ROLLBACK_UNIONFIND:
     proc clear_snapshot*(self: var RollbackUnionFind) = self.snap = 0
     proc rollback*(self: var RollbackUnionFind, state: int = -1) =
         var state = (if state == -1: self.snap else: state) shl 1
-        assert state <= self.history.len, &"Rollback state must be the same or smaller than current state. state: {state}, self.history.len: {self.history.len}"
+        assert state <= self.history.len, &"復元先の状態は現在の状態以前である必要があります。 state: {state}, self.history.len: {self.history.len}"
         while state < self.history.len: self.undo()
     proc siz*(self: RollbackUnionFind, x: int): int =
         var x = self.root_i32(x)

@@ -10,7 +10,7 @@ when not declared CPLIB_GRAPH_HOPCROFT_KARP:
 
     proc initHopcroftKarp*(left, right: int): HopcroftKarp =
         ## 左側left頂点、右側right頂点の二部グラフを構築する。O(left+right)。
-        assert left >= 0 and right >= 0
+        assert left >= 0 and right >= 0, "左右の頂点数は非負である必要があります"
         result.leftMatch = newSeq[int](left)
         result.rightMatch = newSeq[int](right)
         for i in 0..<left:
@@ -20,7 +20,7 @@ when not declared CPLIB_GRAPH_HOPCROFT_KARP:
 
     proc add_edge*(g: var HopcroftKarp, left, right: int) =
         ## 左右それぞれ0始まりの頂点間に辺を追加する。多重辺も可。償却O(1)。
-        assert left in 0..<g.leftMatch.len and right in 0..<g.rightMatch.len
+        assert left in 0..<g.leftMatch.len and right in 0..<g.rightMatch.len, "頂点番号が範囲外です"
         g.edges.add((left, right))
         g.built = false
 

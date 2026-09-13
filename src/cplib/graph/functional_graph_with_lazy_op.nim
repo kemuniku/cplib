@@ -19,7 +19,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         values:seq[S],
         st_type:typedesc[ST]
     ):FunctionalGraph_with_lazy_op[ST]=
-        assert len(values) == len(graph.cycle_number)
+        assert len(values) == len(graph.cycle_number), "値の配列の長さは頂点数と一致する必要があります"
         result = FunctionalGraph_with_lazy_op[ST](graph:graph)
 
         # HLD側ではサイクル頂点を単位元にする。サイクル頂点まで重複保持すると、
@@ -115,7 +115,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
 
     proc get*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int):ST.S=
         ## 頂点xの現在値を返す。O(log N)
-        assert 0 <= x and x < len(self.graph.cycle_number)
+        assert 0 <= x and x < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= x and x < len(self.graph.cycle_number)"
         if self.graph.incycle(x):
             return self.st_cycle[self.lazyCycleIndex(x)]
         return self.st_hld[self.lazyHldIndex(x)]
@@ -125,7 +125,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
 
     proc set*[ST](self:FunctionalGraph_with_lazy_op[ST],x:int,value:ST.S)=
         ## 頂点xの値をvalueに変更する。O(log N)
-        assert 0 <= x and x < len(self.graph.cycle_number)
+        assert 0 <= x and x < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= x and x < len(self.graph.cycle_number)"
         if self.graph.incycle(x):
             self.st_cycle[self.lazyCycleIndex(x)] = value
         else:
@@ -135,7 +135,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         self.set(x,value)
 
     proc lazyActionPower[ST](self:FunctionalGraph_with_lazy_op[ST],f:ST.F,n:int):ST.F=
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         result = self.st_hld.calc_id()
         var base = f
         var n = n
@@ -153,8 +153,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
     )=
         ## cycle[cid]のstartから遷移順にcount頂点へ作用する。countは1周以下。
         let csiz = len(self.graph.cycle[cid])
-        assert 0 <= start and start < csiz
-        assert 0 <= count and count <= csiz
+        assert 0 <= start and start < csiz, "頂点番号が範囲外です: 0 <= start and start < csiz"
+        assert 0 <= count and count <= csiz, "指定した値が有効な範囲内である必要があります: 0 <= count and count <= csiz"
         if count == 0:
             return
         let offset = self.cum_cyclesize[cid]
@@ -167,8 +167,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         ## startからk回移動するまでに訪れる各頂点へfを作用させる。
         ## 同じ頂点を複数回訪れた場合は、その回数だけfを作用させる。
         ## include_start=falseなら始点には作用させない。O(log^2 N + log k)
-        assert 0 <= start and start < len(self.graph.cycle_number)
-        assert 0 <= k and k < high(int)
+        assert 0 <= start and start < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.graph.cycle_number)"
+        assert 0 <= k and k < high(int), "指定した値が有効な範囲内である必要があります: 0 <= k and k < high(int)"
         if not include_start:
             if k == 0:
                 return
@@ -230,8 +230,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
     proc prod*[ST](self:FunctionalGraph_with_lazy_op[ST],start,k:int,include_start:bool=true):ST.S=
         ## startからk回移動するまでの積。include_start=falseなら始点を積に含めない。
         ## O(log^2 N + log k)
-        assert 0 <= start and start < len(self.graph.cycle_number)
-        assert 0 <= k and k < high(int)
+        assert 0 <= start and start < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.graph.cycle_number)"
+        assert 0 <= k and k < high(int), "指定した値が有効な範囲内である必要があります: 0 <= k and k < high(int)"
         if not include_start:
             if k == 0:
                 return self.st_hld.calc_e()
@@ -300,15 +300,15 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
 
     proc appendLazyRange[ST](st:var ST,q_left,q_right:int,values:var seq[ST.S])=
         ## st[q_left..<q_right]の葉を左からvaluesへ追加する。O(log N + 出力長)
-        assert 0 <= q_left and q_left <= q_right and q_right <= st.len
+        assert 0 <= q_left and q_left <= q_right and q_right <= st.len, "指定した区間が有効な範囲内である必要があります: 0 <= q_left and q_left <= q_right and q_right <= st.len"
         if q_left < q_right:
             st.appendLazyRangeDfs(1,0,st.size,q_left,q_right,values)
 
     proc walkValues[ST](self:FunctionalGraph_with_lazy_op[ST],start,count:int):seq[ST.S]=
         ## startから始まる訪問列の先頭count頂点分の値を返す。
         ## O(log^2 N + count)
-        assert 0 <= start and start < len(self.graph.cycle_number)
-        assert count >= 0
+        assert 0 <= start and start < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.graph.cycle_number)"
+        assert count >= 0, "countは非負である必要があります"
         result = newSeqOfCap[ST.S](count)
         if count == 0:
             return
@@ -346,8 +346,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
     proc prod_range*[ST](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,include_start:bool=true):seq[ST.S]=
         ## @[prod(start,l), ..., prod(start,r-1)]を返す。
         ## O(log^2 N + log l + (r-l))
-        assert 0 <= start and start < len(self.graph.cycle_number)
-        assert 0 <= l and l <= r and r < high(int)
+        assert 0 <= start and start < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.graph.cycle_number)"
+        assert 0 <= l and l <= r and r < high(int), "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r < high(int)"
         result = newSeq[ST.S](r-l)
         if len(result) == 0:
             return
@@ -363,8 +363,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
     proc prod_range_fold*[ST,U](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,f:proc(x:U,y:ST.S):U,e:U,include_start:bool=true):U=
         ## prod(start,l), ..., prod(start,r-1)を順にfで畳み込む。
         ## O(log^2 N + log l + (r-l))
-        assert 0 <= start and start < len(self.graph.cycle_number)
-        assert 0 <= l and l <= r and r < high(int)
+        assert 0 <= start and start < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.graph.cycle_number)"
+        assert 0 <= l and l <= r and r < high(int), "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r < high(int)"
         if l == r:
             return e
 
@@ -387,8 +387,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         ## L回移動してもtrueならLを返す。O(log^2 N + log L)
         ## f(e)=trueであり、一度falseになった後は頂点を追加してもfalseのまま、
         ## というACL max_rightと同じ単調性を仮定する。
-        assert 0 <= x and x < len(self.graph.cycle_number)
-        assert 0 <= L and L < high(int)
+        assert 0 <= x and x < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= x and x < len(self.graph.cycle_number)"
+        assert 0 <= L and L < high(int), "指定した値が有効な範囲内である必要があります: 0 <= L and L < high(int)"
         let limit = L+1
         var value = self.get(x)
         if not f(value):

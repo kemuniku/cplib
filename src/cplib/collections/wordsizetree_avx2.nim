@@ -8,7 +8,7 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE_AVX2:
         leaf: array[1 shl 18, uint64]
         middle: array[1 shl 10, uint64]
         top: array[4, uint64]
-    static: doAssert sizeof(bool) == 1
+    static: doAssert sizeof(bool) == 1, "boolのサイズは1バイトである必要があります"
     {.emit: """
 #include <immintrin.h>
 #include <stdint.h>
@@ -138,24 +138,24 @@ WST_AVX static int wst_le(const uint64_t *leaf, const uint64_t *mid,
 
     proc initWordsizeTree*(v: openArray[bool]): WordsizeTreeAvx2 =
         ## v[i]が真である位置iを要素とするビット集合木を作成します。
-        assert v.len <= WordsizeTreeAvx2Capacity
+        assert v.len <= WordsizeTreeAvx2Capacity, "配列の長さがWordsizeTreeAvx2の最大容量を超えています"
         if v.len > 0:
             avxInit(unsafeAddr v[0], v.len.csize_t, addr result.leaf[0],
                 addr result.middle[0], addr result.top[0])
 
     proc incl*(self: var WordsizeTreeAvx2, x: int) =
         ## 要素xを追加します。
-        assert x >= 0 and x < WordsizeTreeAvx2Capacity
+        assert x >= 0 and x < WordsizeTreeAvx2Capacity, "指定した値が有効な範囲内である必要があります: x >= 0 and x < WordsizeTreeAvx2Capacity"
         avxIncl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)
 
     proc excl*(self: var WordsizeTreeAvx2, x: int) =
         ## 要素xを削除します。
-        assert x >= 0 and x < WordsizeTreeAvx2Capacity
+        assert x >= 0 and x < WordsizeTreeAvx2Capacity, "指定した値が有効な範囲内である必要があります: x >= 0 and x < WordsizeTreeAvx2Capacity"
         avxExcl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)
 
     proc `[]`*(self: var WordsizeTreeAvx2, x: int): bool =
         ## 要素xが含まれているかを返します。
-        assert x >= 0 and x < WordsizeTreeAvx2Capacity
+        assert x >= 0 and x < WordsizeTreeAvx2Capacity, "指定した値が有効な範囲内である必要があります: x >= 0 and x < WordsizeTreeAvx2Capacity"
         (self.leaf[x shr 6] and (1'u64 shl (x and 63))) != 0
 
     proc ge*(self: var WordsizeTreeAvx2, x: int): int =

@@ -13,7 +13,7 @@ when not declared CPLIB_COLLECTIONS_FENWICK:
 
     proc initFenwickTree*[T](n: int): FenwickTree[T] =
         ## 長さnの零配列から構築します。O(n)時間・領域です。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         result.size = n
         result.data = newSeq[T](fenwickSlot(n) + 1)
 
@@ -33,7 +33,7 @@ when not declared CPLIB_COLLECTIONS_FENWICK:
 
     proc add*[T](self: var FenwickTree[T], p: int, delta: T) {.inline.} =
         ## a[p]にdeltaを加えます。O(log n)です。
-        assert 0 <= p and p < self.size
+        assert 0 <= p and p < self.size, "指定した値が有効な範囲内である必要があります: 0 <= p and p < self.size"
         var i = p + 1
         while i <= self.size:
             self.data[fenwickSlot(i)] += delta
@@ -41,7 +41,7 @@ when not declared CPLIB_COLLECTIONS_FENWICK:
 
     proc prefix*[T](self: FenwickTree[T], r: int): T {.inline.} =
         ## [0, r)の和をO(log n)で返します。
-        assert 0 <= r and r <= self.size
+        assert 0 <= r and r <= self.size, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.size"
         var r = r
         while r > 0:
             result += self.data[fenwickSlot(r)]
@@ -49,7 +49,7 @@ when not declared CPLIB_COLLECTIONS_FENWICK:
 
     proc get*[T](self: FenwickTree[T], l, r: int): T {.inline.} =
         ## [l, r)の和をO(log n)で返します。共通する祖先は走査しません。
-        assert 0 <= l and l <= r and r <= self.size
+        assert 0 <= l and l <= r and r <= self.size, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.size"
         var l = l
         var r = r
         var left: T

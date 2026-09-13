@@ -86,7 +86,7 @@ when not declared CPLIB_COLLECTIONS_LICHAOTREE:
         ## 線分が存在しない場合、INF64が返ります。
         ## xは初期化時に与える必要があります。
         var now = self.X.binarySearch(x)
-        assert now != -1
+        assert now != -1, "クエリ座標は初期化時に登録されている必要があります"
         now+=self.lastnode
         result = INF64
         while now != 0:

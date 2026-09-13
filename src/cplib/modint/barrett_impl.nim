@@ -76,7 +76,7 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
     proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) =
         a.a = rem(T, (a.a).uint * (init(T, b).a).uint)
     proc inv*[T: BarrettModint](x: T): T =
-        assert x.val != 0
+        assert x.val != 0, "0の逆元を求めることはできません"
         var x: int32 = int32(x.val)
         var y: int32 = T.mod
         var u = 1i32

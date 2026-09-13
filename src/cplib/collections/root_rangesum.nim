@@ -16,7 +16,7 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
 
     proc update*[T](self: RootRangeSum[T], idx: Natural, val: T) =
         ## idxの要素をvalに変更します。
-        assert idx < self.length
+        assert idx < self.length, "指定した値が有効な範囲内である必要があります: idx < self.length"
         self.blockvalue[idx div self.blocksize] = self.blockvalue[idx div self.blocksize] + val - self.arr[idx]
         self.arr[idx] = val
     proc get*[T](self: RootRangeSum[T], q_left: Natural, q_right: Natural): T =
@@ -24,7 +24,7 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         result = self.e
         let bidx_left = (q_left div self.blocksize)
         let bidx_right = (q_right div self.blocksize)
-        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and 0 <= q_left and q_right <= self.length"
         if  bidx_left == bidx_right:
             for i in q_left..<q_right:
                 result = result + self.arr[i]
@@ -37,14 +37,14 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         for i in (bidx_right*self.blocksize)..<q_right:
             result = result + self.arr[i]
     proc get*[T](self: RootRangeSum[T], segment: HSlice[int, int]): T =
-        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length
+        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length, "指定した区間が有効な範囲内である必要があります: segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length"
         return self.get(segment.a, segment.b+1)
     proc `[]`*[T](self: RootRangeSum[T], segment: HSlice[int, int]): T = self.get(segment)
     proc `[]`*[T](self: RootRangeSum[T], index: Natural): T =
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         return self.arr[index]
     proc `[]=`*[T](self: RootRangeSum[T], index: Natural, val: T) =
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.update(index, val)
     proc len*[T](self: RootRangeSum[T]): int =
         return self.length
@@ -52,8 +52,8 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
         var s = self.arr.len div 2
         return $self.arr
     proc max_right*[T](self: RootRangeSum[T], l: int, f: proc(l: T): bool): int =
-        assert 0 <= l and l <= self.len
-        assert f(self.e)
+        assert 0 <= l and l <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= l and l <= self.len"
+        assert f(self.e), "判定関数は単位元に対してtrueを返す必要があります"
         if l == self.len: return self.len
         var sm = self.e
         let bidx_left = (l div self.blocksize)
@@ -75,8 +75,8 @@ when not declared CPLIB_COLLECTIONS_ROOTRANGESUM:
                 sm = sm + self.blockvalue[bi]
         return len(self.arr)
     proc min_left*[T](self: RootRangeSum[T], r: int, f: proc(l: T): bool): int =
-        assert 0 <= r and r <= self.len
-        assert f(self.e)
+        assert 0 <= r and r <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.len"
+        assert f(self.e), "判定関数は単位元に対してtrueを返す必要があります"
         if r == 0: return 0
         var sm = self.e
         let bidx_right = ((r-1) div self.blocksize)

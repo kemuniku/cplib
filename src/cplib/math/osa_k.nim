@@ -15,8 +15,8 @@ when not declared CPLIB_MATH_OSAK:
         return PrimeFactorTable(table:table)
 
     proc primefactor*(table:PrimeFactorTable,x:int):seq[int]=
-        assert len(table.table) > x
-        assert x >= 1
+        assert len(table.table) > x, "xは篩のテーブルの範囲内である必要があります"
+        assert x >= 1, "xは1以上である必要があります"
         var x = x
         while x != 1:
             result.add(table.table[x])

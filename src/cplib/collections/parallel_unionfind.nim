@@ -9,14 +9,14 @@ when not declared CPLIB_COLLECTIONS_PARALLEL_UNIONFIND:
 
     proc initParallelUnionFind*(N: int): ParallelUnionFind =
         ## N頂点で初期化します。時間・空間 O(N log N)。
-        assert N >= 0
+        assert N >= 0, "Nは非負である必要があります"
         result = ParallelUnionFind(n: N, components: N)
         var total = 0
         var width = 1
         while width <= N:
             result.offsets.add(total)
             let size = N - width + 1
-            assert size <= high(int32).int - total
+            assert size <= high(int32).int - total, "内部配列の要素数がint32の範囲を超えています"
             total += size
             if width > N div 4: break
             width *= 4
@@ -35,7 +35,7 @@ when not declared CPLIB_COLLECTIONS_PARALLEL_UNIONFIND:
 
     proc root*(self: ParallelUnionFind, x: int): int =
         ## xの属する成分の代表を返します。償却 O(α(N))。
-        assert 0 <= x and x < self.n
+        assert 0 <= x and x < self.n, "指定した値が有効な範囲内である必要があります: 0 <= x and x < self.n"
         self.find(x)
 
     proc issame*(self: ParallelUnionFind, x, y: int): bool =
@@ -81,8 +81,8 @@ when not declared CPLIB_COLLECTIONS_PARALLEL_UNIONFIND:
         ## Q回の区間結合の合計 O(N log N α(N) + Q log N)（コールバックの処理を除く）。
         ## onMerge(x, y)は結合直前に呼び、結合後はxが代表になります。
         ## コールバックからこの構造への結合操作は行わないでください。
-        assert 0 <= a and a <= self.n and 0 <= b and b <= self.n
-        assert 0 <= len and len <= self.n - a and len <= self.n - b
+        assert 0 <= a and a <= self.n and 0 <= b and b <= self.n, "指定した値が有効な範囲内である必要があります: 0 <= a and a <= self.n and 0 <= b and b <= self.n"
+        assert 0 <= len and len <= self.n - a and len <= self.n - b, "指定した値が有効な範囲内である必要があります: 0 <= len and len <= self.n - a and len <= self.n - b"
         if a == b or len == 0: return 0
         let la = min(a, b)
         let dis = max(a, b) - la

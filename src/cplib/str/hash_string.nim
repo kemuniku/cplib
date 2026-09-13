@@ -124,20 +124,20 @@ when not declared CPLIB_STR_HASHSTRING:
         # 空文字列用にr=0も許容していることに注意。
         # 空文字列はl=0,r=0のみ許容している。
         assert (l == 0 and r == 0) or
-            (l in 0..<R.size and r in 1..R.size and l < r)
+            (l in 0..<R.size and r in 1..R.size and l < r), "部分文字列の範囲は0 <= l < r <= R.sizeか、空文字列を表すl == r == 0である必要があります"
         result.R = R
         result.l = l
         result.r = r
 
     proc `[]`*(R: RollingHashBase, slice: HSlice[int, int]): RollingHash =
-        assert slice.a >= 0 and slice.b >= 0
+        assert slice.a >= 0 and slice.b >= 0, "指定した区間が有効な範囲内である必要があります: slice.a >= 0 and slice.b >= 0"
         return R.get_substring(slice.a, slice.b+1)
 
 
     proc `[]`*(S: RollingHash, slice: HSlice[int, int]): RollingHash =
         if len(slice) == 0:
             return S.R.get_substring(0, 0)
-        assert slice.a in 0..<len(S) and slice.b in 0..<len(S)
+        assert slice.a in 0..<len(S) and slice.b in 0..<len(S), "指定した区間が有効な範囲内である必要があります: slice.a in 0 ..< len(S) and slice.b in 0 ..< len(S)"
         return S.R.get_substring(S.l+slice.a, S.l+slice.b+1)
 
     proc gethash(S: RollingHash, slice: HSlice[int, int]): uint =

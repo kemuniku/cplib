@@ -93,7 +93,7 @@ when not declared CPLIB_MATH_ERATOSTHENES:
 
     proc initSegmentedEratosthenes*(low, high: int): EratosthenesSieve =
         ## 閉区間 [low, high] を篩う。0 <= low <= high。保持領域は約 (high-low)/30 byte。
-        doAssert low >= 0 and low <= high
+        doAssert low >= 0 and low <= high, "範囲の下限は上限以下である必要があります（下限は非負）"
         result.first = low
         result.last = high
         result.firstByte = low div 30

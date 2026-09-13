@@ -33,7 +33,7 @@ when not declared CPLIB_TREE_LAZY_SUBTREE_LINK_CUT_TREE:
         ## composition(f, g)はgの後にfを作用させる合成。代数的条件は利用者が保証する。
         ## mapping(composition(f, g), x) = mapping(f, mapping(g, x))も満たすこと。
         ## 各演算の計算量はmerge、mapping等がO(1)の場合。頂点数が必要ならSに含める。
-        assert inverse != nil and inverseAction != nil
+        assert inverse != nil and inverseAction != nil, "部分木の遅延更新にはinverseとinverseActionの指定が必要です"
         result = LazySubtreeLinkCutTree[S, F](
             nodes: newSeq[LazySubtreeLinkCutTreeNode[S, F]](v.len + 1),
             merge: merge, default: default, mapping: mapping,
@@ -52,7 +52,7 @@ when not declared CPLIB_TREE_LAZY_SUBTREE_LINK_CUT_TREE:
         inverse: proc(x: S): S, inverseAction: proc(f: F): F
     ): LazySubtreeLinkCutTree[S, F] =
         ## 全頂点の値がdefaultの森を作る。時間・空間O(N)。頂点数もdefaultのままなので注意。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         initLazySubtreeLinkCutTree(newSeqWith(n, default), merge, default, mapping, composition, id, inverse, inverseAction)
 
     template newLazySubtreeLinkCutTreeWith*(
@@ -157,14 +157,14 @@ when not declared CPLIB_TREE_LAZY_SUBTREE_LINK_CUT_TREE:
     proc pathApply*[S, F](self: LazySubtreeLinkCutTree[S, F], u, v: int, f: F) =
         ## 同じ木のuからvへのパスへ両端込みでfを作用させる。償却O(log N)。根をuに変更する。
         ## パス外の頂点には作用しない。部分木・成分への更新と混在させられる。
-        assert 0 <= u and u < self.len and 0 <= v and v < self.len
+        assert 0 <= u and u < self.len and 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= u and u < self.len and 0 <= v and v < self.len"
         self.makeRoot(u)
         self.accessNode(v + 1)
         self.applyPathNode(v + 1, f)
 
     proc componentApply*[S, F](self: LazySubtreeLinkCutTree[S, F], v: int, f: F) =
         ## vを含む木全体へfを作用させる。償却O(log N)。
-        assert 0 <= v and v < self.len
+        assert 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len"
         self.accessNode(v + 1)
         self.applyAll(v + 1, f)
 

@@ -278,7 +278,7 @@ extern "C" NI64 cplib_static_rmq_scan_i64(void* data, NI n) {
     {.push boundChecks: off, overflowChecks: off.}
     proc query*[T](RMQ: StaticRMQ[T], l, r: int): T {.inline.} =
         ## 半開区間 [l, r) の最小値を返す。
-        assert 0 <= l and l < r and r <= RMQ.V.len
+        assert 0 <= l and l < r and r <= RMQ.V.len, "指定した区間が有効な範囲内である必要があります: 0 <= l and l < r and r <= RMQ.V.len"
         let last = r - 1
         let a = l shr staticRMQBlockShift
         let b = last shr staticRMQBlockShift

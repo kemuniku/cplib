@@ -6,7 +6,7 @@ when not declared CPLIB_MATH_FLOOR_SUM:
     proc floor_sum*(n, m, a, b: int): int =
         ## Σ floor((a*i+b)/m) (0 <= i < n) を O(log m) 時間、O(1) 空間で返す。
         ## n, a, b >= 0、m > 0、答えが int に収まることを前提とする。C++ バックエンド用。
-        assert n >= 0 and m > 0 and a >= 0 and b >= 0
+        assert n >= 0 and m > 0 and a >= 0 and b >= 0, "n、a、bは非負で、mは正である必要があります"
         var n = to_Int128(n)
         var m = to_Int128(m)
         var a = to_Int128(a)
@@ -19,7 +19,7 @@ when not declared CPLIB_MATH_FLOOR_SUM:
             if b >= m:
                 answer += n * (b div m)
                 b = b mod m
-            assert answer <= to_Int128(high(int))
+            assert answer <= to_Int128(high(int)), "計算結果がintの最大値を超えています"
             let y = a * n + b
             if y < m:
                 break

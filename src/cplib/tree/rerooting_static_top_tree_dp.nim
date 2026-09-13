@@ -36,7 +36,7 @@ when not declared CPLIB_TREE_REROOTING_STATIC_TOP_TREE_DP:
             rakeAtRoot, rakeAtEnd: proc(l: Backward, r: Forward): Backward
             ): RerootingStaticTopTreeDP[Forward, Backward] =
         ## 頂点番号順の葉の値から両方向のDPを構築する。O(N)回の演算
-        assert forward.len == tree.numVertices and backward.len == tree.numVertices
+        assert forward.len == tree.numVertices and backward.len == tree.numVertices, "順方向と逆方向の値の配列の長さは木の頂点数と一致する必要があります"
         result = RerootingStaticTopTreeDP[Forward, Backward](tree: tree,
             forward: newSeq[Forward](tree.nodes.len), backward: newSeq[Backward](tree.nodes.len),
             compress: compress, rake: rake, compressReverse: compressReverse,
@@ -50,7 +50,7 @@ when not declared CPLIB_TREE_REROOTING_STATIC_TOP_TREE_DP:
     proc set*[Forward, Backward](self: RerootingStaticTopTreeDP[Forward, Backward], v: int,
             forward: Forward, backward: Backward) =
         ## 頂点vと親辺を表す葉の両方向の値を更新する。O(log N)回の演算
-        assert 0 <= v and v < self.tree.numVertices
+        assert 0 <= v and v < self.tree.numVertices, "頂点番号が範囲外です: 0 <= v and v < self.tree.numVertices"
         self.forward[v] = forward
         self.backward[v] = backward
         var node = self.tree.nodes[v].parent
@@ -64,7 +64,7 @@ when not declared CPLIB_TREE_REROOTING_STATIC_TOP_TREE_DP:
 
     proc prod*[Forward, Backward](self: RerootingStaticTopTreeDP[Forward, Backward], v: int): Backward =
         ## 頂点vを根とする木全体の集約値を返す。O(log N)時間・作業空間
-        assert 0 <= v and v < self.tree.numVertices
+        assert 0 <= v and v < self.tree.numVertices, "頂点番号が範囲外です: 0 <= v and v < self.tree.numVertices"
         var path: seq[int]
         var node = v
         while self.tree.nodes[node].parent != -1:
@@ -89,7 +89,7 @@ when not declared CPLIB_TREE_REROOTING_STATIC_TOP_TREE_DP:
                             else: self.backward[x.left]
                     hasUpper = true
             of sttRake:
-                assert hasUpper
+                assert hasUpper, "rakeによる集約には上側の集約値が必要です"
                 if child == x.left:
                     upper = self.rakeAtRoot(upper, self.forward[x.right])
                 else:
@@ -98,7 +98,7 @@ when not declared CPLIB_TREE_REROOTING_STATIC_TOP_TREE_DP:
                     upper = self.rakeAtRoot(upper, rest)
                     hasLower = false
             of sttLeaf:
-                assert false
+                assert false, "子を持つクラスタが葉として登録されています"
         result = self.backward[v]
         if hasUpper:
             result = self.compressReverse(result, upper)

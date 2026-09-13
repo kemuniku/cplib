@@ -14,7 +14,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX512:
 
     func wordCount(size: int): int {.compileTime.} =
         ## 非負のビット数に必要な64ビットワード数を求めます。
-        doAssert size >= 0, "BitSet size must be non-negative"
+        doAssert size >= 0, "BitSetのサイズは非負である必要があります"
         (size shr 6) + ord((size and 63) != 0)
 
     type BitSet*[size: static int] {.byref.} = object
@@ -31,7 +31,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX512:
             if v.len > size:
                 raise newException(ValueError, "initial value is longer than BitSet size")
         static:
-            doAssert sizeof(bool) == 1
+            doAssert sizeof(bool) == 1, "boolのサイズは1バイトである必要があります"
         when size > 0:
             let source = if v.len == 0: nil else: cast[pointer](unsafeAddr v[0])
             avxFromBools(addr result.bits[0], source, v.len.csize_t, result.bits.len.csize_t)

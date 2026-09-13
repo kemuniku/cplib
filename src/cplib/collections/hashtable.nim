@@ -61,11 +61,11 @@ when not declared CPLIB_COLLECTIONS_HASHTABLE:
     proc hasKey*[K, V](self: var HashTable[K, V], key: K): bool = self.contains(key)
     proc `[]`*[K, V](self: HashTable[K, V], key: K): V =
         var pos = self.find(key)
-        assert self.values[pos].state == State.active, "Key \"" & $key & "\" not found"
+        assert self.values[pos].state == State.active, "キー \"" & $key & "\" が見つかりません"
         return self.values[pos].value[1]
     proc `[]`*[K, V](self: var HashTable[K, V], key: K): var V =
         var pos = self.find(key)
-        assert self.values[pos].state == State.active, "Key \"" & $key & "\" not found"
+        assert self.values[pos].state == State.active, "キー \"" & $key & "\" が見つかりません"
         return self.values[pos].value[1]
     proc `[]=`*[K, V](self: var HashTable[K, V], key: K, val: V) =
         var pos = self.find(key)

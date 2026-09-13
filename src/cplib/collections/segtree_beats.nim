@@ -67,7 +67,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
 
     proc update*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val:S) =
         ## pの要素をvalに変更します。
-        assert p < self.length
+        assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         var p = p + self.lastnode
         self.all_push(p)
         self.arr[p] = val
@@ -75,13 +75,13 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
             self.arr[p shr i] = self.merge(self.arr[2*(p shr i)], self.arr[2*(p shr i)+1])
 
     proc `[]`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural): S =
-        assert p < self.length
+        assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.all_push(p + self.lastnode)
         return self.arr[p + self.lastnode]
 
     proc get*[S, F](self: var SegmentTreeBeats[S, F], q_left, q_right: int): S =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
-        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and 0 <= q_left and q_right <= self.length"
         if q_left == q_right: return self.default
         var q_left = q_left + self.lastnode
         var q_right = q_right + self.lastnode
@@ -122,7 +122,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
         )
     proc apply*[S, F](self: var SegmentTreeBeats[S, F], q_left, q_right: int, f: F) =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
-        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and 0 <= q_left and q_right <= self.length"
         if q_left == q_right: return
         var q_left = q_left + self.lastnode
         var q_right = q_right + self.lastnode

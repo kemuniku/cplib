@@ -203,7 +203,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator bounded_sequences*(a: openArray[int]): seq[int] =
         ## 非負整数列 a に対し、0 <= b[i] <= a[i] を満たす列を辞書順に列挙。
         ## 空入力では空列を1件返す。1件あたり O(a.len)、追加領域 O(a.len)。
-        for upper in a: assert upper >= 0
+        for upper in a: assert upper >= 0, "upperは非負である必要があります"
         var b = newSeq[int](a.len)
         while true:
             yield b
@@ -254,12 +254,12 @@ when not declared CPLIB_UTILS_ITERTOOLS:
 
     iterator bounded_sum_sequences*(n, s, l, r: int): seq[int] =
         ## 長さ n、総和 s、各要素が [l, r) の数列を辞書順に列挙。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         for a in bounded_sum_sequences(s, newSeqWith(n, (l: l, r: r))):
             yield a
 
     iterator monotone_sequences_impl(n, l, r, step: int, target: Option[int]): seq[int] =
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         if n == 0:
             if target.isNone or target.get == 0: yield @[]
         elif l < r and (step == 0 or n <= r - l):
@@ -330,7 +330,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator set_partitions_id*(n: int, k: int = -1): seq[int] =
         ## 0..<n の集合分割を所属グループ番号の列で返す。k == -1 は個数指定なし。
         ## グループ番号は初出順に 0, 1, ... とし、番号の付け替えによる重複を除く。
-        assert n >= 0 and k >= -1
+        assert n >= 0 and k >= -1, "nは非負で、kは全列挙を表す-1以上である必要があります"
         if n == 0:
             if k == -1 or k == 0: yield @[]
         elif k != 0 and k <= n:
@@ -358,7 +358,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
         ## 0..<n の集合分割を、各グループの要素の列で返す。k == -1 は個数指定なし。
         ## 各グループ内は昇順、グループ間は最小要素の昇順。列挙順は set_partitions_id と同じ。
         ## n == 0 は k == -1 または k == 0 のときだけ空列を1件返す。
-        assert n >= 0 and k >= -1
+        assert n >= 0 and k >= -1, "nは非負で、kは全列挙を表す-1以上である必要があります"
         if n == 0:
             if k == -1 or k == 0: yield newSeq[seq[int]]()
         elif k != 0 and k <= n:
@@ -398,7 +398,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator pairings*(n: int): seq[tuple[u, v: int]] =
         ## 0..<n をペアに分ける全通り。ペア内・ペア間の順序による重複なし。
         ## n == 0 は空列を1件、奇数なら0件。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         if n == 0:
             yield @[]
         elif n mod 2 == 0:
@@ -428,7 +428,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator contiguous_partitions*(n: int, k: int = -1): seq[int] =
         ## 長さ n の列を k 個の非空連続区間に分ける境界 [0, ..., n] を返す。
         ## 区間 i は [b[i], b[i+1])。k == -1 は区間数指定なし。空列の境界は @[0]。
-        assert n >= 0 and k >= -1
+        assert n >= 0 and k >= -1, "nは非負で、kは全列挙を表す-1以上である必要があります"
         if n == 0:
             if k == -1 or k == 0: yield @[0]
         elif k != 0 and k <= n:
@@ -440,7 +440,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
 
     iterator parenthesis_sequences*(n: int): string =
         ## n 組（長さ 2*n）の正しい括弧列を辞書順に列挙。n == 0 は空文字列。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         if n == 0:
             yield ""
         else:
@@ -467,7 +467,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator labeled_trees*(n: int): UnWeightedUnDirectedGraph =
         ## 頂点番号 0..<n の木を重複なく列挙。n >= 1。
         ## Prüfer 列を使用し、n >= 2 では n^(n-2) 件。
-        assert n >= 1
+        assert n >= 1, "nは1以上である必要があります"
         if n == 1:
             yield initUnWeightedUnDirectedGraph(1)
         else:
@@ -477,7 +477,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator simple_graphs*(n: int, m: int = -1): UnWeightedUnDirectedGraph =
         ## 頂点番号 0..<n、辺数 m の単純無向グラフ。m == -1 は辺数指定なし。
         ## 同型でも頂点番号が異なるグラフは区別する。
-        assert n >= 0 and m >= -1
+        assert n >= 0 and m >= -1, "nは非負で、mは全列挙を表す-1以上である必要があります"
         var edges: seq[tuple[u, v: int]]
         for u in 0..<n:
             for v in u + 1..<n: edges.add((u, v))
@@ -495,7 +495,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
         var indegree = newSeq[int](n)
         for edges in adj:
             for v in edges:
-                assert v >= 0 and v < n
+                assert v >= 0 and v < n, "指定した値が有効な範囲内である必要があります: v >= 0 and v < n"
                 inc indegree[v]
         if n == 0:
             yield @[]
@@ -534,7 +534,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
     iterator integer_vectors_l1*(n, s: int): seq[int] =
         ## 長さ n、sum(abs(a[i])) <= s の整数列を辞書順に列挙。
         ## s < 0 は0件。s < high(int) であること。
-        assert n >= 0 and s < high(int)
+        assert n >= 0 and s < high(int), "nは非負で、sはintの最大値未満である必要があります"
         if s >= 0:
             if n == 0:
                 yield @[]
@@ -578,7 +578,7 @@ when not declared CPLIB_UTILS_ITERTOOLS:
         ## 移動幅は絶対値の半分から1まで半減させて試す。
         ## 変化するたびに先頭から再試行する貪欲法で、最小の反例とは限らない。
         ## fails は決定的で入力を変更しないこと。初期入力でも真であること。
-        assert fails(input)
+        assert fails(input), "指定した入力で失敗を再現できる必要があります"
         result = input
         while true:
             var changed = false
