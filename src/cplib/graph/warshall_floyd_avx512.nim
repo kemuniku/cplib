@@ -568,8 +568,8 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             return negative_cycle;
         }
 
-        template <bool check_negative>
-        static bool cplib_warshall_floyd_int64_avx2_impl(
+        template <bool check_negative = true>
+        static bool cplib_warshall_floyd_int64_avx2(
                 void* raw_rows,
                 std::size_t n,
                 std::int64_t zero,
@@ -620,8 +620,8 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             }
         }
 
-        template <bool check_negative>
-        static bool cplib_warshall_floyd_int32_avx2_impl(
+        template <bool check_negative = true>
+        static bool cplib_warshall_floyd_int32_avx2(
                 void* raw_rows,
                 std::size_t n,
                 std::int32_t zero,
@@ -711,58 +711,200 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
 
         #pragma GCC pop_options
 
-        extern "C" bool cplib_warshall_floyd_int64_avx2(
+        #pragma GCC push_options
+        #pragma GCC target("avx512f")
+        #pragma GCC optimize("O3")
+
+        static inline void cplib_warshall_floyd_relax_avx512(
+                std::int64_t* row_i,
+                const std::int64_t* row_k,
+                std::int64_t dik,
+                std::size_t begin,
+                std::size_t end,
+                std::int64_t inf) {
+            // 到達不能な頂点を除外して8要素ずつ緩和する。O(end - begin)。
+            const __m512i dikv = _mm512_set1_epi64(dik);
+            const __m512i infv = _mm512_set1_epi64(inf);
+            std::size_t j = begin;
+            for (; j + 8 <= end; j += 8) {
+                const __m512i dkj = _mm512_loadu_si512(row_k + j);
+                const __m512i dij = _mm512_loadu_si512(row_i + j);
+                const __m512i candidate = _mm512_add_epi64(dikv, dkj);
+                const __mmask8 take = _mm512_cmpneq_epi64_mask(dkj, infv) &
+                    _mm512_cmplt_epi64_mask(candidate, dij);
+                _mm512_mask_storeu_epi64(row_i + j, take, candidate);
+            }
+            for (; j < end; ++j) {
+                if (row_k[j] != inf) {
+                    const std::int64_t candidate = dik + row_k[j];
+                    if (candidate < row_i[j]) row_i[j] = candidate;
+                }
+            }
+        }
+
+        static inline void cplib_warshall_floyd_relax_avx512(
+                std::int32_t* row_i,
+                const std::int32_t* row_k,
+                std::int32_t dik,
+                std::size_t begin,
+                std::size_t end,
+                std::int32_t inf) {
+            // 到達不能な頂点を除外して16要素ずつ緩和する。O(end - begin)。
+            const __m512i dikv = _mm512_set1_epi32(dik);
+            const __m512i infv = _mm512_set1_epi32(inf);
+            std::size_t j = begin;
+            for (; j + 16 <= end; j += 16) {
+                const __m512i dkj = _mm512_loadu_si512(row_k + j);
+                const __m512i dij = _mm512_loadu_si512(row_i + j);
+                const __m512i candidate = _mm512_add_epi32(dikv, dkj);
+                const __mmask16 take = _mm512_cmpneq_epi32_mask(dkj, infv) &
+                    _mm512_cmplt_epi32_mask(candidate, dij);
+                _mm512_mask_storeu_epi32(row_i + j, take, candidate);
+            }
+            for (; j < end; ++j) {
+                if (row_k[j] != inf) {
+                    const std::int32_t candidate = dik + row_k[j];
+                    if (candidate < row_i[j]) row_i[j] = candidate;
+                }
+            }
+        }
+
+        template <typename T, std::size_t block_size, bool check_negative = true>
+        static bool cplib_warshall_floyd_blocked_avx512(
+                void* raw_rows, std::size_t n, T zero, T inf) {
+            // ブロック分割した全点対最短路を求める。check_negativeで負閉路検査を切り替える。O(n^3)。
+            T** d = static_cast<T**>(raw_rows);
+            for (std::size_t i = 0; i < n; ++i) {
+                if (check_negative && d[i][i] < zero) return true;
+            }
+            for (std::size_t kk = 0; kk < n; kk += block_size) {
+                const std::size_t kend =
+                    kk + block_size < n ? kk + block_size : n;
+                const auto relax_tile = [&](std::size_t ib, std::size_t ie,
+                                            std::size_t jb, std::size_t je,
+                                            bool diagonal) {
+                    // 指定したタイルを更新し、対角タイルでは各段階で負閉路を調べる。
+                    for (std::size_t k = kk; k < kend; ++k) {
+                        for (std::size_t i = ib; i < ie; ++i) {
+                            const T dik = d[i][k];
+                            if (dik != inf) cplib_warshall_floyd_relax_avx512(
+                                d[i], d[k], dik, jb, je, inf);
+                        }
+                        if (check_negative && diagonal) {
+                            for (std::size_t i = ib; i < ie; ++i) {
+                                if (check_negative && d[i][i] < zero) return true;
+                            }
+                        }
+                    }
+                    return false;
+                };
+                if (relax_tile(kk, kend, kk, kend, true)) return true;
+                for (std::size_t jj = 0; jj < n; jj += block_size) {
+                    if (jj == kk) continue;
+                    const std::size_t jend =
+                        jj + block_size < n ? jj + block_size : n;
+                    relax_tile(kk, kend, jj, jend, false);
+                }
+                for (std::size_t ii = 0; ii < n; ii += block_size) {
+                    if (ii == kk) continue;
+                    const std::size_t iend =
+                        ii + block_size < n ? ii + block_size : n;
+                    relax_tile(ii, iend, kk, kend, false);
+                }
+                for (std::size_t ii = 0; ii < n; ii += block_size) {
+                    if (ii == kk) continue;
+                    const std::size_t iend =
+                        ii + block_size < n ? ii + block_size : n;
+                    for (std::size_t jj = 0; jj < n; jj += block_size) {
+                        if (jj == kk) continue;
+                        const std::size_t jend =
+                            jj + block_size < n ? jj + block_size : n;
+                        relax_tile(ii, iend, jj, jend, false);
+                    }
+                }
+                for (std::size_t i = 0; i < n; ++i) {
+                    if (check_negative && d[i][i] < zero) return true;
+                }
+            }
+            return false;
+        }
+
+        #pragma GCC pop_options
+
+        extern "C" bool cplib_warshall_floyd_int64_avx(
                 void* raw_rows, std::size_t n,
                 std::int64_t zero, std::int64_t inf) {
-            // AVX2で全点対最短路を求め、負閉路の有無を返す。O(n^3)。
-            return cplib_warshall_floyd_int64_avx2_impl<true>(raw_rows, n, zero, inf);
+            // CPU・OSがAVX-512に対応していなければAVX2版を使用する。O(n^3)。
+            if (__builtin_cpu_supports("avx512f")) {
+                return cplib_warshall_floyd_blocked_avx512<
+                    std::int64_t, CPLIB_WARSHALL_FLOYD_BLOCK_SIZE>(
+                        raw_rows, n, zero, inf);
+            }
+            return cplib_warshall_floyd_int64_avx2(raw_rows, n, zero, inf);
         }
 
-        extern "C" void cplib_warshall_floyd_nonnegative_int64_avx2(
+        extern "C" bool cplib_warshall_floyd_int32_avx(
+                void* raw_rows, std::size_t n,
+                std::int32_t zero, std::int32_t inf) {
+            // CPU・OSがAVX-512に対応していなければAVX2版を使用する。O(n^3)。
+            if (__builtin_cpu_supports("avx512f")) {
+                return cplib_warshall_floyd_blocked_avx512<
+                    std::int32_t, CPLIB_WARSHALL_FLOYD_INT32_BLOCK_SIZE>(
+                        raw_rows, n, zero, inf);
+            }
+            return cplib_warshall_floyd_int32_avx2(raw_rows, n, zero, inf);
+        }
+
+        extern "C" void cplib_warshall_floyd_nonnegative_int64_avx(
                 void* raw_rows, std::size_t n,
                 std::int64_t zero, std::int64_t inf) {
-            // 負閉路がない場合の全点対最短路をAVX2で求める。負閉路検査なし。O(n^3)。
-            cplib_warshall_floyd_int64_avx2_impl<false>(raw_rows, n, zero, inf);
+            // 非負辺の全点対最短路を負閉路検査なしで求める。AVX-512非対応時はAVX2。O(n^3)。
+            if (__builtin_cpu_supports("avx512f")) {
+                cplib_warshall_floyd_blocked_avx512<
+                    std::int64_t, CPLIB_WARSHALL_FLOYD_BLOCK_SIZE, false>(
+                        raw_rows, n, zero, inf);
+            } else {
+                cplib_warshall_floyd_int64_avx2<false>(raw_rows, n, zero, inf);
+            }
         }
 
-        extern "C" bool cplib_warshall_floyd_int32_avx2(
+        extern "C" void cplib_warshall_floyd_nonnegative_int32_avx(
                 void* raw_rows, std::size_t n,
                 std::int32_t zero, std::int32_t inf) {
-            // AVX2で全点対最短路を求め、負閉路の有無を返す。O(n^3)。
-            return cplib_warshall_floyd_int32_avx2_impl<true>(raw_rows, n, zero, inf);
-        }
-
-        extern "C" void cplib_warshall_floyd_nonnegative_int32_avx2(
-                void* raw_rows, std::size_t n,
-                std::int32_t zero, std::int32_t inf) {
-            // 負閉路がない場合の全点対最短路をAVX2で求める。負閉路検査なし。O(n^3)。
-            cplib_warshall_floyd_int32_avx2_impl<false>(raw_rows, n, zero, inf);
+            // 非負辺の全点対最短路を負閉路検査なしで求める。AVX-512非対応時はAVX2。O(n^3)。
+            if (__builtin_cpu_supports("avx512f")) {
+                cplib_warshall_floyd_blocked_avx512<
+                    std::int32_t, CPLIB_WARSHALL_FLOYD_INT32_BLOCK_SIZE, false>(
+                        raw_rows, n, zero, inf);
+            } else {
+                cplib_warshall_floyd_int32_avx2<false>(raw_rows, n, zero, inf);
+            }
         }
 
         #endif
         """.}
 
-        proc warshallFloydInt64Avx2(
+        proc warshallFloydInt64Avx(
             rows: pointer,
             n: csize_t,
             zero, inf: int
-        ): bool {.importc: "cplib_warshall_floyd_int64_avx2".}
+        ): bool {.importc: "cplib_warshall_floyd_int64_avx".}
 
-        proc warshallFloydInt32Avx2(
+        proc warshallFloydInt32Avx(
             rows: pointer,
             n: csize_t,
             zero, inf: int32
-        ): bool {.importc: "cplib_warshall_floyd_int32_avx2".}
+        ): bool {.importc: "cplib_warshall_floyd_int32_avx".}
 
-        proc warshallFloydNonnegativeInt64Avx2(
+        proc warshallFloydNonnegativeInt64Avx(
             rows: pointer, n: csize_t, zero, inf: int
-        ) {.importc: "cplib_warshall_floyd_nonnegative_int64_avx2".}
-            ## 負閉路がない距離行列をAVX2で更新する。O(V^3)。
+        ) {.importc: "cplib_warshall_floyd_nonnegative_int64_avx".}
+            ## 非負辺の距離行列をSIMDで更新する。O(V^3)。
 
-        proc warshallFloydNonnegativeInt32Avx2(
+        proc warshallFloydNonnegativeInt32Avx(
             rows: pointer, n: csize_t, zero, inf: int32
-        ) {.importc: "cplib_warshall_floyd_nonnegative_int32_avx2".}
-            ## 負閉路がない距離行列をAVX2で更新する。O(V^3)。
+        ) {.importc: "cplib_warshall_floyd_nonnegative_int32_avx".}
+            ## 非負辺の距離行列をSIMDで更新する。O(V^3)。
 
     proc warshall_floyd_impl[T](g: WeightedGraph[T] or UnWeightedGraph, zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =
         var d = newSeqWith(g.len, newSeqWith(g.len, inf))
@@ -780,6 +922,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
         return (negative_cycle: false, d: d)
 
     proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int] or UnWeightedGraph, zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]] =
+        ## 全点対最短路をO(V^3)で求める。C++ではAVX-512F対応時にAVX-512、非対応時にAVX2を使う。
         when defined(cpp) and sizeof(int) == 8:
             var d = newSeqWith(g.len, newSeqWith(g.len, inf))
             for i in 0..<g.len: d[i][i] = zero
@@ -793,12 +936,13 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             var rows = newSeq[ptr int](g.len)
             for i in 0..<g.len:
                 rows[i] = addr d[i][0]
-            let negativeCycle = warshallFloydInt64Avx2(
+            let negativeCycle = warshallFloydInt64Avx(
                 cast[pointer](addr rows[0]), g.len.csize_t, zero, inf)
             return (negative_cycle: negativeCycle, d: d)
         else:
             return warshall_floyd_impl(g, zero, inf)
     proc warshall_floyd*(g: DynamicGraph[int32] or StaticGraph[int32], zero: int32 = 0.int32, inf: int32 = INF32): tuple[negative_cycle: bool, d: seq[seq[int32]]] =
+        ## 全点対最短路をO(V^3)で求める。C++ではAVX-512F対応時にAVX-512、非対応時にAVX2を使う。
         when defined(cpp) and sizeof(int) == 8:
             var d = newSeqWith(g.len, newSeqWith(g.len, inf))
             for i in 0..<g.len: d[i][i] = zero
@@ -812,7 +956,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             var rows = newSeq[ptr int32](g.len)
             for i in 0..<g.len:
                 rows[i] = addr d[i][0]
-            let negativeCycle = warshallFloydInt32Avx2(
+            let negativeCycle = warshallFloydInt32Avx(
                 cast[pointer](addr rows[0]), g.len.csize_t, zero, inf)
             return (negative_cycle: negativeCycle, d: d)
         else:
@@ -838,10 +982,10 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             for i in 0..<n:
                 rows[i] = addr d[i][0]
             when T is int:
-                let negativeCycle = warshallFloydInt64Avx2(
+                let negativeCycle = warshallFloydInt64Avx(
                     cast[pointer](addr rows[0]), n.csize_t, zero, inf)
             else:
-                let negativeCycle = warshallFloydInt32Avx2(
+                let negativeCycle = warshallFloydInt32Avx(
                     cast[pointer](addr rows[0]), n.csize_t, zero, inf)
             return negativeCycle
         else:
@@ -893,10 +1037,10 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             for i in 0..<d.len:
                 rows[i] = addr d[i][0]
             when T is int:
-                warshallFloydNonnegativeInt64Avx2(
+                warshallFloydNonnegativeInt64Avx(
                     cast[pointer](addr rows[0]), d.len.csize_t, zero, inf)
             else:
-                warshallFloydNonnegativeInt32Avx2(
+                warshallFloydNonnegativeInt32Avx(
                     cast[pointer](addr rows[0]), d.len.csize_t, zero, inf)
         else:
             for k in 0..<d.len:
