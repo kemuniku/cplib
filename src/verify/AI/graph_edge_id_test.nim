@@ -83,7 +83,7 @@ template checkAlgorithms(init: untyped, isStatic: static bool) =
         assert g.shortest_path_dijkstra(0, 2).cost == 2
         assert g.shortest_path_bellmanford(0, 2).cost == 2
         assert g.shortest_path_maxk_dijkstra(0, 2, 2).cost == 2
-        assert g.warshall_floyd().d[0][2] == 2
+        assert g.warshall_floyd()[0][2] == 2
         assert g.k_shortest_walk(0, 2, 2) == @[2, INF64]
 
 checkAlgorithms(initUnWeightedDirectedGraph(3), false)

@@ -3,8 +3,19 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
     import cplib/graph/graph
     import cplib/utils/constants
     import sequtils
+    import cplib/graph/warshall_floyd_negative
 
     when defined(cpp) and sizeof(int) == 8:
+        import strutils
+
+        # ホスト用C++コンパイラのnative設定でコンパイル元CPUを調べる。実行時の判定とは独立。
+        const warshallFloydHostCpuMacros = gorgeEx(
+            "c++ -march=native -dM -E -x c++ -", "\n")
+        when warshallFloydHostCpuMacros.exitCode != 0:
+            {.warning: "コンパイル元CPUのAVX-512F対応を判定できませんでした。実行時の自動選択は有効です。".}
+        elif "#define __AVX512F__ 1" notin warshallFloydHostCpuMacros.output:
+            {.warning: "コンパイル元CPUはAVX-512F非対応です。同じ環境で実行するとAVX2版が使われます。実行先が異なる場合は実行先CPUで自動選択します。".}
+
         {.emit: """
         #ifndef CPLIB_GRAPH_WARSHALL_FLOYD_AVX2_HPP
         #define CPLIB_GRAPH_WARSHALL_FLOYD_AVX2_HPP
@@ -14,9 +25,15 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
         #include <cstddef>
         #include <cstdint>
         #include <cstring>
+        #include <vector>
+        #include <memory>
 
         #ifndef CPLIB_WARSHALL_FLOYD_BLOCK_SIZE
         #define CPLIB_WARSHALL_FLOYD_BLOCK_SIZE 216
+        #endif
+
+        #ifndef CPLIB_WARSHALL_FLOYD_AVX512_BLOCK_SIZE
+        #define CPLIB_WARSHALL_FLOYD_AVX512_BLOCK_SIZE 224
         #endif
 
         #ifndef CPLIB_WARSHALL_FLOYD_DENSE_BLOCK_SIZE
@@ -769,11 +786,341 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             }
         }
 
+        template <bool all_reachable>
+        static inline void cplib_warshall_floyd_product_int64_avx512(
+                std::int64_t** out, std::int64_t** left, std::int64_t** top, std::size_t ib, std::size_t ie,
+                std::size_t jb, std::size_t je,
+                std::size_t kb, std::size_t ke, std::int64_t inf) {
+            // 独立なタイルの4行16列をレジスタに保持して更新する。O((ie-ib)(je-jb)(ke-kb))。
+            if (ib >= ie || jb >= je || kb >= ke) return;
+            const __m512i infv = _mm512_set1_epi64(inf);
+            std::size_t i = ib;
+            for (; i + 4 <= ie; i += 4) {
+                std::size_t j = jb;
+                for (; j + 16 <= je; j += 16) {
+                    __m512i v00 = _mm512_loadu_si512(out[i + 0] + j + 0);
+                    __m512i v01 = _mm512_loadu_si512(out[i + 0] + j + 8);
+                    __m512i v10 = _mm512_loadu_si512(out[i + 1] + j + 0);
+                    __m512i v11 = _mm512_loadu_si512(out[i + 1] + j + 8);
+                    __m512i v20 = _mm512_loadu_si512(out[i + 2] + j + 0);
+                    __m512i v21 = _mm512_loadu_si512(out[i + 2] + j + 8);
+                    __m512i v30 = _mm512_loadu_si512(out[i + 3] + j + 0);
+                    __m512i v31 = _mm512_loadu_si512(out[i + 3] + j + 8);
+                    for (std::size_t k = kb; k < ke; ++k) {
+                        const __m512i b0 = _mm512_loadu_si512(top[k] + j + 0);
+                        const __mmask8 m0 = all_reachable ? 0xff : _mm512_cmpneq_epi64_mask(b0, infv);
+                        const __m512i b1 = _mm512_loadu_si512(top[k] + j + 8);
+                        const __mmask8 m1 = all_reachable ? 0xff : _mm512_cmpneq_epi64_mask(b1, infv);
+                        if (all_reachable || left[i + 0][k] != inf) {
+                            const __m512i a = _mm512_set1_epi64(left[i + 0][k]);
+                            const __m512i t0 = _mm512_add_epi64(a, b0);
+                            v00 = all_reachable ? _mm512_min_epi64(v00, t0)
+                                : _mm512_mask_min_epi64(v00, m0, v00, t0);
+                            const __m512i t1 = _mm512_add_epi64(a, b1);
+                            v01 = all_reachable ? _mm512_min_epi64(v01, t1)
+                                : _mm512_mask_min_epi64(v01, m1, v01, t1);
+                        }
+                        if (all_reachable || left[i + 1][k] != inf) {
+                            const __m512i a = _mm512_set1_epi64(left[i + 1][k]);
+                            const __m512i t0 = _mm512_add_epi64(a, b0);
+                            v10 = all_reachable ? _mm512_min_epi64(v10, t0)
+                                : _mm512_mask_min_epi64(v10, m0, v10, t0);
+                            const __m512i t1 = _mm512_add_epi64(a, b1);
+                            v11 = all_reachable ? _mm512_min_epi64(v11, t1)
+                                : _mm512_mask_min_epi64(v11, m1, v11, t1);
+                        }
+                        if (all_reachable || left[i + 2][k] != inf) {
+                            const __m512i a = _mm512_set1_epi64(left[i + 2][k]);
+                            const __m512i t0 = _mm512_add_epi64(a, b0);
+                            v20 = all_reachable ? _mm512_min_epi64(v20, t0)
+                                : _mm512_mask_min_epi64(v20, m0, v20, t0);
+                            const __m512i t1 = _mm512_add_epi64(a, b1);
+                            v21 = all_reachable ? _mm512_min_epi64(v21, t1)
+                                : _mm512_mask_min_epi64(v21, m1, v21, t1);
+                        }
+                        if (all_reachable || left[i + 3][k] != inf) {
+                            const __m512i a = _mm512_set1_epi64(left[i + 3][k]);
+                            const __m512i t0 = _mm512_add_epi64(a, b0);
+                            v30 = all_reachable ? _mm512_min_epi64(v30, t0)
+                                : _mm512_mask_min_epi64(v30, m0, v30, t0);
+                            const __m512i t1 = _mm512_add_epi64(a, b1);
+                            v31 = all_reachable ? _mm512_min_epi64(v31, t1)
+                                : _mm512_mask_min_epi64(v31, m1, v31, t1);
+                        }
+                    }
+                    _mm512_storeu_si512(out[i + 0] + j + 0, v00);
+                    _mm512_storeu_si512(out[i + 0] + j + 8, v01);
+                    _mm512_storeu_si512(out[i + 1] + j + 0, v10);
+                    _mm512_storeu_si512(out[i + 1] + j + 8, v11);
+                    _mm512_storeu_si512(out[i + 2] + j + 0, v20);
+                    _mm512_storeu_si512(out[i + 2] + j + 8, v21);
+                    _mm512_storeu_si512(out[i + 3] + j + 0, v30);
+                    _mm512_storeu_si512(out[i + 3] + j + 8, v31);
+                }
+                for (std::size_t r = 0; r < 4; ++r)
+                    for (std::size_t k = kb; k < ke; ++k)
+                        if (left[i + r][k] != inf)
+                            cplib_warshall_floyd_relax_avx512(
+                                out[i + r], top[k], left[i + r][k], j, je, inf);
+            }
+            for (; i < ie; ++i)
+                for (std::size_t k = kb; k < ke; ++k)
+                    if (left[i][k] != inf)
+                        cplib_warshall_floyd_relax_avx512(out[i], top[k], left[i][k], jb, je, inf);
+        }
+
+        static inline void cplib_warshall_floyd_product_dense_int64_avx512(
+                std::int64_t** out, std::int64_t** left, std::int64_t** top, std::size_t ib, std::size_t ie,
+                std::size_t jb, std::size_t je,
+                std::size_t kb, std::size_t ke, std::int64_t inf) {
+            // 全て有限の独立タイルを4行32列ずつ保持して更新する。O((ie-ib)(je-jb)(ke-kb))。
+            std::size_t i = ib;
+            for (; i + 4 <= ie; i += 4) {
+                std::size_t j = jb;
+                for (; j + 32 <= je; j += 32) {
+                    __m512i v00 = _mm512_loadu_si512(out[i + 0] + j + 0);
+                    __m512i v01 = _mm512_loadu_si512(out[i + 0] + j + 8);
+                    __m512i v02 = _mm512_loadu_si512(out[i + 0] + j + 16);
+                    __m512i v03 = _mm512_loadu_si512(out[i + 0] + j + 24);
+                    __m512i v10 = _mm512_loadu_si512(out[i + 1] + j + 0);
+                    __m512i v11 = _mm512_loadu_si512(out[i + 1] + j + 8);
+                    __m512i v12 = _mm512_loadu_si512(out[i + 1] + j + 16);
+                    __m512i v13 = _mm512_loadu_si512(out[i + 1] + j + 24);
+                    __m512i v20 = _mm512_loadu_si512(out[i + 2] + j + 0);
+                    __m512i v21 = _mm512_loadu_si512(out[i + 2] + j + 8);
+                    __m512i v22 = _mm512_loadu_si512(out[i + 2] + j + 16);
+                    __m512i v23 = _mm512_loadu_si512(out[i + 2] + j + 24);
+                    __m512i v30 = _mm512_loadu_si512(out[i + 3] + j + 0);
+                    __m512i v31 = _mm512_loadu_si512(out[i + 3] + j + 8);
+                    __m512i v32 = _mm512_loadu_si512(out[i + 3] + j + 16);
+                    __m512i v33 = _mm512_loadu_si512(out[i + 3] + j + 24);
+                    for (std::size_t k = kb; k < ke; ++k) {
+                        const __m512i b0 = _mm512_loadu_si512(top[k] + j + 0);
+                        const __m512i b1 = _mm512_loadu_si512(top[k] + j + 8);
+                        const __m512i b2 = _mm512_loadu_si512(top[k] + j + 16);
+                        const __m512i b3 = _mm512_loadu_si512(top[k] + j + 24);
+                        {
+                            const __m512i a = _mm512_set1_epi64(left[i + 0][k]);
+                            v00 = _mm512_min_epi64(v00, _mm512_add_epi64(a, b0));
+                            v01 = _mm512_min_epi64(v01, _mm512_add_epi64(a, b1));
+                            v02 = _mm512_min_epi64(v02, _mm512_add_epi64(a, b2));
+                            v03 = _mm512_min_epi64(v03, _mm512_add_epi64(a, b3));
+                        }
+                        {
+                            const __m512i a = _mm512_set1_epi64(left[i + 1][k]);
+                            v10 = _mm512_min_epi64(v10, _mm512_add_epi64(a, b0));
+                            v11 = _mm512_min_epi64(v11, _mm512_add_epi64(a, b1));
+                            v12 = _mm512_min_epi64(v12, _mm512_add_epi64(a, b2));
+                            v13 = _mm512_min_epi64(v13, _mm512_add_epi64(a, b3));
+                        }
+                        {
+                            const __m512i a = _mm512_set1_epi64(left[i + 2][k]);
+                            v20 = _mm512_min_epi64(v20, _mm512_add_epi64(a, b0));
+                            v21 = _mm512_min_epi64(v21, _mm512_add_epi64(a, b1));
+                            v22 = _mm512_min_epi64(v22, _mm512_add_epi64(a, b2));
+                            v23 = _mm512_min_epi64(v23, _mm512_add_epi64(a, b3));
+                        }
+                        {
+                            const __m512i a = _mm512_set1_epi64(left[i + 3][k]);
+                            v30 = _mm512_min_epi64(v30, _mm512_add_epi64(a, b0));
+                            v31 = _mm512_min_epi64(v31, _mm512_add_epi64(a, b1));
+                            v32 = _mm512_min_epi64(v32, _mm512_add_epi64(a, b2));
+                            v33 = _mm512_min_epi64(v33, _mm512_add_epi64(a, b3));
+                        }
+                    }
+                    _mm512_storeu_si512(out[i + 0] + j + 0, v00);
+                    _mm512_storeu_si512(out[i + 0] + j + 8, v01);
+                    _mm512_storeu_si512(out[i + 0] + j + 16, v02);
+                    _mm512_storeu_si512(out[i + 0] + j + 24, v03);
+                    _mm512_storeu_si512(out[i + 1] + j + 0, v10);
+                    _mm512_storeu_si512(out[i + 1] + j + 8, v11);
+                    _mm512_storeu_si512(out[i + 1] + j + 16, v12);
+                    _mm512_storeu_si512(out[i + 1] + j + 24, v13);
+                    _mm512_storeu_si512(out[i + 2] + j + 0, v20);
+                    _mm512_storeu_si512(out[i + 2] + j + 8, v21);
+                    _mm512_storeu_si512(out[i + 2] + j + 16, v22);
+                    _mm512_storeu_si512(out[i + 2] + j + 24, v23);
+                    _mm512_storeu_si512(out[i + 3] + j + 0, v30);
+                    _mm512_storeu_si512(out[i + 3] + j + 8, v31);
+                    _mm512_storeu_si512(out[i + 3] + j + 16, v32);
+                    _mm512_storeu_si512(out[i + 3] + j + 24, v33);
+                }
+                cplib_warshall_floyd_product_int64_avx512<true>(
+                    out, left, top, i, i + 4, j, je, kb, ke, inf);
+            }
+            cplib_warshall_floyd_product_int64_avx512<true>(
+                out, left, top, i, ie, jb, je, kb, ke, inf);
+        }
+
+        static inline void cplib_warshall_floyd_product_avx512(
+                std::int64_t** out, std::int64_t** left, std::int64_t** top, std::size_t ib, std::size_t ie,
+                std::size_t jb, std::size_t je,
+                std::size_t kb, std::size_t ke, std::int64_t inf,
+                bool all_reachable) {
+            // 共有した到達判定で独立タイルの更新方法を選ぶ。O((ie-ib)(je-jb)(ke-kb))。
+            if (all_reachable)
+                cplib_warshall_floyd_product_dense_int64_avx512(out, left, top, ib, ie, jb, je, kb, ke, inf);
+            else
+                cplib_warshall_floyd_product_int64_avx512<false>(out, left, top, ib, ie, jb, je, kb, ke, inf);
+        }
+
+        static inline void cplib_warshall_floyd_product_avx512(
+                std::int64_t** d, std::size_t ib, std::size_t ie,
+                std::size_t jb, std::size_t je,
+                std::size_t kb, std::size_t ke, std::int64_t inf, bool all_reachable) {
+            // 行配置の行列から独立タイルを更新する。O((ie-ib)(je-jb)(ke-kb))。
+            cplib_warshall_floyd_product_avx512(d, d, d, ib, ie, jb, je, kb, ke, inf, all_reachable);
+        }
+
+        template <bool all_reachable>
+        static inline void cplib_warshall_floyd_product_int32_avx512(
+                std::int32_t** d, std::size_t ib, std::size_t ie,
+                std::size_t jb, std::size_t je,
+                std::size_t kb, std::size_t ke, std::int32_t inf) {
+            // 独立なタイルの4行32列をレジスタに保持して更新する。O((ie-ib)(je-jb)(ke-kb))。
+            const __m512i infv = _mm512_set1_epi32(inf);
+            std::size_t i = ib;
+            for (; i + 4 <= ie; i += 4) {
+                std::size_t j = jb;
+                for (; j + 32 <= je; j += 32) {
+                    __m512i v00 = _mm512_loadu_si512(d[i + 0] + j + 0);
+                    __m512i v01 = _mm512_loadu_si512(d[i + 0] + j + 16);
+                    __m512i v10 = _mm512_loadu_si512(d[i + 1] + j + 0);
+                    __m512i v11 = _mm512_loadu_si512(d[i + 1] + j + 16);
+                    __m512i v20 = _mm512_loadu_si512(d[i + 2] + j + 0);
+                    __m512i v21 = _mm512_loadu_si512(d[i + 2] + j + 16);
+                    __m512i v30 = _mm512_loadu_si512(d[i + 3] + j + 0);
+                    __m512i v31 = _mm512_loadu_si512(d[i + 3] + j + 16);
+                    for (std::size_t k = kb; k < ke; ++k) {
+                        const __m512i b0 = _mm512_loadu_si512(d[k] + j + 0);
+                        const __mmask16 m0 = all_reachable ? 0xffff : _mm512_cmpneq_epi32_mask(b0, infv);
+                        const __m512i b1 = _mm512_loadu_si512(d[k] + j + 16);
+                        const __mmask16 m1 = all_reachable ? 0xffff : _mm512_cmpneq_epi32_mask(b1, infv);
+                        if (all_reachable || d[i + 0][k] != inf) {
+                            const __m512i a = _mm512_set1_epi32(d[i + 0][k]);
+                            const __m512i t0 = _mm512_add_epi32(a, b0);
+                            v00 = all_reachable ? _mm512_min_epi32(v00, t0)
+                                : _mm512_mask_min_epi32(v00, m0, v00, t0);
+                            const __m512i t1 = _mm512_add_epi32(a, b1);
+                            v01 = all_reachable ? _mm512_min_epi32(v01, t1)
+                                : _mm512_mask_min_epi32(v01, m1, v01, t1);
+                        }
+                        if (all_reachable || d[i + 1][k] != inf) {
+                            const __m512i a = _mm512_set1_epi32(d[i + 1][k]);
+                            const __m512i t0 = _mm512_add_epi32(a, b0);
+                            v10 = all_reachable ? _mm512_min_epi32(v10, t0)
+                                : _mm512_mask_min_epi32(v10, m0, v10, t0);
+                            const __m512i t1 = _mm512_add_epi32(a, b1);
+                            v11 = all_reachable ? _mm512_min_epi32(v11, t1)
+                                : _mm512_mask_min_epi32(v11, m1, v11, t1);
+                        }
+                        if (all_reachable || d[i + 2][k] != inf) {
+                            const __m512i a = _mm512_set1_epi32(d[i + 2][k]);
+                            const __m512i t0 = _mm512_add_epi32(a, b0);
+                            v20 = all_reachable ? _mm512_min_epi32(v20, t0)
+                                : _mm512_mask_min_epi32(v20, m0, v20, t0);
+                            const __m512i t1 = _mm512_add_epi32(a, b1);
+                            v21 = all_reachable ? _mm512_min_epi32(v21, t1)
+                                : _mm512_mask_min_epi32(v21, m1, v21, t1);
+                        }
+                        if (all_reachable || d[i + 3][k] != inf) {
+                            const __m512i a = _mm512_set1_epi32(d[i + 3][k]);
+                            const __m512i t0 = _mm512_add_epi32(a, b0);
+                            v30 = all_reachable ? _mm512_min_epi32(v30, t0)
+                                : _mm512_mask_min_epi32(v30, m0, v30, t0);
+                            const __m512i t1 = _mm512_add_epi32(a, b1);
+                            v31 = all_reachable ? _mm512_min_epi32(v31, t1)
+                                : _mm512_mask_min_epi32(v31, m1, v31, t1);
+                        }
+                    }
+                    _mm512_storeu_si512(d[i + 0] + j + 0, v00);
+                    _mm512_storeu_si512(d[i + 0] + j + 16, v01);
+                    _mm512_storeu_si512(d[i + 1] + j + 0, v10);
+                    _mm512_storeu_si512(d[i + 1] + j + 16, v11);
+                    _mm512_storeu_si512(d[i + 2] + j + 0, v20);
+                    _mm512_storeu_si512(d[i + 2] + j + 16, v21);
+                    _mm512_storeu_si512(d[i + 3] + j + 0, v30);
+                    _mm512_storeu_si512(d[i + 3] + j + 16, v31);
+                }
+                for (std::size_t r = 0; r < 4; ++r)
+                    for (std::size_t k = kb; k < ke; ++k)
+                        if (d[i + r][k] != inf)
+                            cplib_warshall_floyd_relax_avx512(
+                                d[i + r], d[k], d[i + r][k], j, je, inf);
+            }
+            for (; i < ie; ++i)
+                for (std::size_t k = kb; k < ke; ++k)
+                    if (d[i][k] != inf)
+                        cplib_warshall_floyd_relax_avx512(d[i], d[k], d[i][k], jb, je, inf);
+        }
+
+        static inline void cplib_warshall_floyd_product_avx512(
+                std::int32_t** d, std::size_t ib, std::size_t ie,
+                std::size_t jb, std::size_t je,
+                std::size_t kb, std::size_t ke, std::int32_t inf, bool) {
+            // 入力タイルが全て到達可能なら、内側の到達判定を省く。O((ie-ib)(je-jb)(ke-kb))。
+            bool reachable = true;
+            const __m512i infv = _mm512_set1_epi32(inf);
+            for (std::size_t i = ib; i < ie && reachable; ++i)
+                for (std::size_t k = kb; k < ke; ++k)
+                    if (d[i][k] == inf) { reachable = false; break; }
+            for (std::size_t k = kb; k < ke && reachable; ++k) {
+                std::size_t j = jb;
+                for (; j + 16 <= je; j += 16)
+                    if (_mm512_cmpneq_epi32_mask(_mm512_loadu_si512(d[k] + j), infv) != 0xffff) {
+                        reachable = false;
+                        break;
+                    }
+                for (; j < je && reachable; ++j)
+                    if (d[k][j] == inf) reachable = false;
+            }
+            if (reachable)
+                cplib_warshall_floyd_product_int32_avx512<true>(d, ib, ie, jb, je, kb, ke, inf);
+            else
+                cplib_warshall_floyd_product_int32_avx512<false>(d, ib, ie, jb, je, kb, ke, inf);
+        }
+
+        static bool cplib_warshall_floyd_finite_tile_avx512(
+                std::int64_t** d, std::size_t ib, std::size_t ie,
+                std::size_t jb, std::size_t je, std::int64_t inf) {
+            // タイル内の全要素が有限か判定する。O((ie-ib)(je-jb))。
+            const __m512i infv = _mm512_set1_epi64(inf);
+            for (std::size_t i = ib; i < ie; ++i) {
+                std::size_t j = jb;
+                for (; j + 8 <= je; j += 8)
+                    if (_mm512_cmpeq_epi64_mask(_mm512_loadu_si512(d[i] + j), infv)) return false;
+                for (; j < je; ++j)
+                    if (d[i][j] == inf) return false;
+            }
+            return true;
+        }
+
+        static inline void cplib_warshall_floyd_prepare_reachable_avx512(
+                std::int64_t** d, std::size_t n, std::size_t kk, std::size_t kend,
+                std::size_t block_size, std::int64_t inf,
+                unsigned char* left, unsigned char* top) {
+            // Phase 2後の入力タイルを調べ、Phase 3で判定を共有する。O(n(kend-kk))。
+            for (std::size_t b = 0; b < n; b += block_size) {
+                if (b == kk) continue;
+                const std::size_t end = b + block_size < n ? b + block_size : n;
+                left[b / block_size] = cplib_warshall_floyd_finite_tile_avx512(d, b, end, kk, kend, inf);
+                top[b / block_size] = cplib_warshall_floyd_finite_tile_avx512(d, kk, kend, b, end, inf);
+            }
+        }
+
+        static inline void cplib_warshall_floyd_prepare_reachable_avx512(
+                std::int32_t**, std::size_t, std::size_t, std::size_t,
+                std::size_t, std::int32_t, unsigned char*, unsigned char*) {
+            // int32では更新先ごとの既存の到達判定を使う。O(1)。
+        }
+
         template <typename T, std::size_t block_size, bool check_negative = true>
         static bool cplib_warshall_floyd_blocked_avx512(
                 void* raw_rows, std::size_t n, T zero, T inf) {
             // ブロック分割した全点対最短路を求める。check_negativeで負閉路検査を切り替える。O(n^3)。
             T** d = static_cast<T**>(raw_rows);
+            const std::size_t cache_size = sizeof(T) == 8 ? (n + block_size - 1) / block_size : 0;
+            std::vector<unsigned char> left_reachable(cache_size), top_reachable(cache_size);
             for (std::size_t i = 0; i < n; ++i) {
                 if (check_negative && d[i][i] < zero) return true;
             }
@@ -811,6 +1158,8 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                         ii + block_size < n ? ii + block_size : n;
                     relax_tile(ii, iend, kk, kend, false);
                 }
+                cplib_warshall_floyd_prepare_reachable_avx512(
+                    d, n, kk, kend, block_size, inf, left_reachable.data(), top_reachable.data());
                 for (std::size_t ii = 0; ii < n; ii += block_size) {
                     if (ii == kk) continue;
                     const std::size_t iend =
@@ -819,7 +1168,9 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                         if (jj == kk) continue;
                         const std::size_t jend =
                             jj + block_size < n ? jj + block_size : n;
-                        relax_tile(ii, iend, jj, jend, false);
+                        cplib_warshall_floyd_product_avx512(
+                            d, ii, iend, jj, jend, kk, kend, inf,
+                            sizeof(T) == 8 && left_reachable[ii / block_size] && top_reachable[jj / block_size]);
                     }
                 }
                 for (std::size_t i = 0; i < n; ++i) {
@@ -829,6 +1180,150 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
             return false;
         }
 
+        template <int B>
+        static inline void cplib_warshall_floyd_product_fixed_avx512(
+                std::int64_t* out, const std::int64_t* left, const std::int64_t* top) {
+            // 全要素が有限の独立したB×Bタイルを4行・4中継点ずつ更新する。O(B^3)。
+            static_assert(B % 8 == 0, "tile width must be a multiple of 8");
+            for (int k = 0; k < B; k += 4) {
+                for (int i = 0; i < B; i += 4) {
+                    const __m512i a00 = _mm512_set1_epi64(left[(i + 0) * B + k + 0]);
+                    const __m512i a01 = _mm512_set1_epi64(left[(i + 0) * B + k + 1]);
+                    const __m512i a02 = _mm512_set1_epi64(left[(i + 0) * B + k + 2]);
+                    const __m512i a03 = _mm512_set1_epi64(left[(i + 0) * B + k + 3]);
+                    const __m512i a10 = _mm512_set1_epi64(left[(i + 1) * B + k + 0]);
+                    const __m512i a11 = _mm512_set1_epi64(left[(i + 1) * B + k + 1]);
+                    const __m512i a12 = _mm512_set1_epi64(left[(i + 1) * B + k + 2]);
+                    const __m512i a13 = _mm512_set1_epi64(left[(i + 1) * B + k + 3]);
+                    const __m512i a20 = _mm512_set1_epi64(left[(i + 2) * B + k + 0]);
+                    const __m512i a21 = _mm512_set1_epi64(left[(i + 2) * B + k + 1]);
+                    const __m512i a22 = _mm512_set1_epi64(left[(i + 2) * B + k + 2]);
+                    const __m512i a23 = _mm512_set1_epi64(left[(i + 2) * B + k + 3]);
+                    const __m512i a30 = _mm512_set1_epi64(left[(i + 3) * B + k + 0]);
+                    const __m512i a31 = _mm512_set1_epi64(left[(i + 3) * B + k + 1]);
+                    const __m512i a32 = _mm512_set1_epi64(left[(i + 3) * B + k + 2]);
+                    const __m512i a33 = _mm512_set1_epi64(left[(i + 3) * B + k + 3]);
+                    for (int j = 0; j < B; j += 8) {
+                        const __m512i b0 = _mm512_load_si512(top + (k + 0) * B + j);
+                        const __m512i b1 = _mm512_load_si512(top + (k + 1) * B + j);
+                        const __m512i b2 = _mm512_load_si512(top + (k + 2) * B + j);
+                        const __m512i b3 = _mm512_load_si512(top + (k + 3) * B + j);
+                        {
+                            const __m512i candidate = _mm512_min_epi64(
+                                _mm512_min_epi64(_mm512_add_epi64(a00, b0), _mm512_add_epi64(a01, b1)),
+                                _mm512_min_epi64(_mm512_add_epi64(a02, b2), _mm512_add_epi64(a03, b3)));
+                            const __m512i old = _mm512_load_si512(out + (i + 0) * B + j);
+                            _mm512_mask_store_epi64(out + (i + 0) * B + j,
+                                _mm512_cmplt_epi64_mask(candidate, old), candidate);
+                        }
+                        {
+                            const __m512i candidate = _mm512_min_epi64(
+                                _mm512_min_epi64(_mm512_add_epi64(a10, b0), _mm512_add_epi64(a11, b1)),
+                                _mm512_min_epi64(_mm512_add_epi64(a12, b2), _mm512_add_epi64(a13, b3)));
+                            const __m512i old = _mm512_load_si512(out + (i + 1) * B + j);
+                            _mm512_mask_store_epi64(out + (i + 1) * B + j,
+                                _mm512_cmplt_epi64_mask(candidate, old), candidate);
+                        }
+                        {
+                            const __m512i candidate = _mm512_min_epi64(
+                                _mm512_min_epi64(_mm512_add_epi64(a20, b0), _mm512_add_epi64(a21, b1)),
+                                _mm512_min_epi64(_mm512_add_epi64(a22, b2), _mm512_add_epi64(a23, b3)));
+                            const __m512i old = _mm512_load_si512(out + (i + 2) * B + j);
+                            _mm512_mask_store_epi64(out + (i + 2) * B + j,
+                                _mm512_cmplt_epi64_mask(candidate, old), candidate);
+                        }
+                        {
+                            const __m512i candidate = _mm512_min_epi64(
+                                _mm512_min_epi64(_mm512_add_epi64(a30, b0), _mm512_add_epi64(a31, b1)),
+                                _mm512_min_epi64(_mm512_add_epi64(a32, b2), _mm512_add_epi64(a33, b3)));
+                            const __m512i old = _mm512_load_si512(out + (i + 3) * B + j);
+                            _mm512_mask_store_epi64(out + (i + 3) * B + j,
+                                _mm512_cmplt_epi64_mask(candidate, old), candidate);
+                        }
+                    }
+                }
+            }
+        }
+
+        template <bool check_negative>
+        static bool cplib_warshall_floyd_packed_int64_avx512(
+                void* raw_rows, std::size_t n, std::int64_t zero, std::int64_t inf) {
+            // 64×64タイルへ詰め、再帰順に全点対最短路を求める。時間O(n^3)、追加領域O(n^2)。
+            constexpr std::size_t B = 64;
+            std::int64_t** d = static_cast<std::int64_t**>(raw_rows);
+            if (n < 512) return cplib_warshall_floyd_blocked_avx512<
+                std::int64_t, CPLIB_WARSHALL_FLOYD_AVX512_BLOCK_SIZE, check_negative>(raw_rows, n, zero, inf);
+            if (check_negative) for (std::size_t i = 0; i < n; ++i) if (d[i][i] < zero) return true;
+            const std::size_t count = (n + B - 1) / B;
+            const std::size_t cells = count * count * B * B;
+            std::unique_ptr<void, decltype(&std::free)> allocation(
+                std::malloc(cells * sizeof(std::int64_t) + 63), &std::free);
+            if (!allocation) return cplib_warshall_floyd_blocked_avx512<
+                std::int64_t, CPLIB_WARSHALL_FLOYD_AVX512_BLOCK_SIZE, check_negative>(raw_rows, n, zero, inf);
+            auto* data = reinterpret_cast<std::int64_t*>(
+                (reinterpret_cast<std::uintptr_t>(allocation.get()) + 63) & ~std::uintptr_t(63));
+            std::fill(data, data + cells, inf);
+            std::vector<std::int64_t*> rows(count * count * B);
+            std::vector<unsigned char> finite(count * count);
+            const auto size = [&](std::size_t b) {
+                // 末尾タイルの有効な行数・列数を返す。O(1)。
+                return n - b * B < B ? n - b * B : B;
+            };
+            const auto tile = [&](std::size_t i, std::size_t j) {
+                // 指定タイルの行ポインタ配列を返す。O(1)。
+                return rows.data() + (i * count + j) * B;
+            };
+            for (std::size_t i = 0; i < count; ++i) for (std::size_t j = 0; j < count; ++j) {
+                auto r = tile(i, j);
+                for (std::size_t k = 0; k < B; ++k) r[k] = data + ((i * count + j) * B + k) * B;
+                for (std::size_t k = 0; k < size(i); ++k)
+                    std::memcpy(r[k], d[i * B + k] + j * B, size(j) * sizeof(std::int64_t));
+                finite[i * count + j] = cplib_warshall_floyd_finite_tile_avx512(r, 0, size(i), 0, size(j), inf);
+            }
+            const auto update = [&](std::size_t i, std::size_t j, std::size_t k) {
+                // 入力と出力の依存に応じてタイルを更新し、対角では負閉路も調べる。O(B^3)。
+                auto out = tile(i, j), left = tile(i, k), top = tile(k, j);
+                const auto is = size(i), js = size(j), ks = size(k);
+                if (i != k && j != k) {
+                    const bool reachable = finite[i * count + k] && finite[k * count + j];
+                    if (reachable && is == B && js == B && ks == B)
+                        cplib_warshall_floyd_product_fixed_avx512<B>(out[0], left[0], top[0]);
+                    else cplib_warshall_floyd_product_avx512(
+                        out, left, top, 0, is, 0, js, 0, ks, inf, reachable);
+                } else {
+                    for (std::size_t z = 0; z < ks; ++z) {
+                        for (std::size_t y = 0; y < is; ++y) if (left[y][z] != inf)
+                            cplib_warshall_floyd_relax_avx512(out[y], top[z], left[y][z], 0, js, inf);
+                        if (check_negative && i == j)
+                            for (std::size_t y = 0; y < is; ++y) if (out[y][y] < zero) return true;
+                    }
+                }
+                if (check_negative && i == j)
+                    for (std::size_t y = 0; y < is; ++y) if (out[y][y] < zero) return true;
+                if (!finite[i * count + j])
+                    finite[i * count + j] = cplib_warshall_floyd_finite_tile_avx512(out, 0, is, 0, js, inf);
+                return false;
+            };
+            const auto visit = [&](auto&& self, std::size_t i, std::size_t j,
+                                   std::size_t k, std::size_t span) -> bool {
+                // 中継点の前半を閉じてから後半を処理する。全体でO(n^3)。
+                if (i >= count || j >= count || k >= count) return false;
+                if (span == 1) return update(i, j, k);
+                const auto h = span / 2;
+                return self(self, i, j, k, h) || self(self, i, j + h, k, h) ||
+                    self(self, i + h, j, k, h) || self(self, i + h, j + h, k, h) ||
+                    self(self, i + h, j + h, k + h, h) || self(self, i + h, j, k + h, h) ||
+                    self(self, i, j + h, k + h, h) || self(self, i, j, k + h, h);
+            };
+            std::size_t span = 1;
+            while (span < count) span *= 2;
+            const bool negative = visit(visit, 0, 0, 0, span);
+            for (std::size_t i = 0; i < count; ++i) for (std::size_t j = 0; j < count; ++j)
+                for (std::size_t k = 0; k < size(i); ++k)
+                    std::memcpy(d[i * B + k] + j * B, tile(i, j)[k], size(j) * sizeof(std::int64_t));
+            return negative;
+        }
+
         #pragma GCC pop_options
 
         extern "C" bool cplib_warshall_floyd_int64_avx(
@@ -836,9 +1331,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                 std::int64_t zero, std::int64_t inf) {
             // CPU・OSがAVX-512に対応していなければAVX2版を使用する。O(n^3)。
             if (__builtin_cpu_supports("avx512f")) {
-                return cplib_warshall_floyd_blocked_avx512<
-                    std::int64_t, CPLIB_WARSHALL_FLOYD_BLOCK_SIZE>(
-                        raw_rows, n, zero, inf);
+                return cplib_warshall_floyd_packed_int64_avx512<true>(raw_rows, n, zero, inf);
             }
             return cplib_warshall_floyd_int64_avx2(raw_rows, n, zero, inf);
         }
@@ -860,9 +1353,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                 std::int64_t zero, std::int64_t inf) {
             // 非負辺の全点対最短路を負閉路検査なしで求める。AVX-512非対応時はAVX2。O(n^3)。
             if (__builtin_cpu_supports("avx512f")) {
-                cplib_warshall_floyd_blocked_avx512<
-                    std::int64_t, CPLIB_WARSHALL_FLOYD_BLOCK_SIZE, false>(
-                        raw_rows, n, zero, inf);
+                cplib_warshall_floyd_packed_int64_avx512<false>(raw_rows, n, zero, inf);
             } else {
                 cplib_warshall_floyd_int64_avx2<false>(raw_rows, n, zero, inf);
             }
@@ -906,66 +1397,7 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
         ) {.importc: "cplib_warshall_floyd_nonnegative_int32_avx".}
             ## 非負辺の距離行列をSIMDで更新する。O(V^3)。
 
-    proc warshall_floyd_impl[T](g: WeightedGraph[T] or UnWeightedGraph, zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =
-        var d = newSeqWith(g.len, newSeqWith(g.len, inf))
-        for i in 0..<g.len: d[i][i] = zero
-        for i in 0..<g.len:
-            for (j, cost) in g.to_and_cost(i):
-                d[i][j] = min(d[i][j], cost)
-        for k in 0..<g.len:
-            for i in 0..<g.len:
-                for j in 0..<g.len:
-                    if d[i][k] != inf and d[k][j] != inf:
-                        d[i][j] = min(d[i][j], d[i][k] + d[k][j])
-            for i in 0..<g.len:
-                if d[i][i] < zero: return (negative_cycle: true, d: d)
-        return (negative_cycle: false, d: d)
-
-    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int] or UnWeightedGraph, zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]] =
-        ## 全点対最短路をO(V^3)で求める。C++ではAVX-512F対応時にAVX-512、非対応時にAVX2を使う。
-        when defined(cpp) and sizeof(int) == 8:
-            var d = newSeqWith(g.len, newSeqWith(g.len, inf))
-            for i in 0..<g.len: d[i][i] = zero
-            for i in 0..<g.len:
-                for (j, cost) in g.to_and_cost(i):
-                    d[i][j] = min(d[i][j], cost)
-
-            if g.len == 0:
-                return (negative_cycle: false, d: d)
-
-            var rows = newSeq[ptr int](g.len)
-            for i in 0..<g.len:
-                rows[i] = addr d[i][0]
-            let negativeCycle = warshallFloydInt64Avx(
-                cast[pointer](addr rows[0]), g.len.csize_t, zero, inf)
-            return (negative_cycle: negativeCycle, d: d)
-        else:
-            return warshall_floyd_impl(g, zero, inf)
-    proc warshall_floyd*(g: DynamicGraph[int32] or StaticGraph[int32], zero: int32 = 0.int32, inf: int32 = INF32): tuple[negative_cycle: bool, d: seq[seq[int32]]] =
-        ## 全点対最短路をO(V^3)で求める。C++ではAVX-512F対応時にAVX-512、非対応時にAVX2を使う。
-        when defined(cpp) and sizeof(int) == 8:
-            var d = newSeqWith(g.len, newSeqWith(g.len, inf))
-            for i in 0..<g.len: d[i][i] = zero
-            for i in 0..<g.len:
-                for (j, cost) in g.to_and_cost(i):
-                    d[i][j] = min(d[i][j], cost)
-
-            if g.len == 0:
-                return (negative_cycle: false, d: d)
-
-            var rows = newSeq[ptr int32](g.len)
-            for i in 0..<g.len:
-                rows[i] = addr d[i][0]
-            let negativeCycle = warshallFloydInt32Avx(
-                cast[pointer](addr rows[0]), g.len.csize_t, zero, inf)
-            return (negative_cycle: negativeCycle, d: d)
-        else:
-            return warshall_floyd_impl(g, zero, inf)
-    proc warshall_floyd*(g: DynamicGraph[float] or StaticGraph[float], zero: float = 0.0, inf: float = 1e100): tuple[negative_cycle: bool, d: seq[seq[float]]] = warshall_floyd_impl(g, zero, inf)
-    proc warshall_floyd*(g: DynamicGraph[float32] or StaticGraph[float32], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): tuple[negative_cycle: bool, d: seq[seq[float32]]] = warshall_floyd_impl(g, zero, inf)
-    proc warshall_floyd*[T](g: WeightedGraph[T] or UnWeightedGraph, zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] = warshall_floyd_impl(g, zero, inf)
-
-    proc warshall_floyd_inplace_impl[T](d: var seq[seq[T]], zero, inf: T): bool =
+    proc warshall_floyd_inplace_run[T](d: var seq[seq[T]], zero, inf: T): bool =
         ## 正方隣接行列を最短距離で上書きし、負閉路の有無を返す。O(V^3)。負閉路検出時は途中の行列を残す。
         let n = d.len
         for i in 0..<n:
@@ -999,34 +1431,68 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
                         return true
             return false
 
-    proc warshall_floyd_matrix_impl[T](a: seq[seq[T]], zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =
+    proc warshall_floyd_inplace_impl[T](d: var seq[seq[T]], zero, inf: T) =
+        ## 距離行列を完成させ、負閉路を経由できる組は-infにする。O(V^3)。
+        if warshall_floyd_inplace_run(d, zero, inf):
+            warshall_floyd_negative_finish(d, zero, inf, warshall_floyd_inplace_run[T])
+
+    proc warshall_floyd_impl[T](g: WeightedGraph[T] or UnWeightedGraph, zero, inf: T): seq[seq[T]] =
+        ## 全点対最短路を返す。到達不能はinf、負閉路を経由できる組は-inf。O(V^3)。
+        result = newSeqWith(g.len, newSeqWith(g.len, inf))
+        for i in 0..<g.len:
+            result[i][i] = zero
+            for (j, cost) in g.to_and_cost(i):
+                result[i][j] = min(result[i][j], cost)
+        warshall_floyd_inplace_impl(result, zero, inf)
+
+    proc warshall_floyd*(g: DynamicGraph[int] or StaticGraph[int] or UnWeightedGraph, zero: int = 0, inf: int = INF64): seq[seq[int]] =
+        ## 全点対最短路を返す。到達不能はinf、負閉路を経由できる組は-inf。O(V^3)。
+        return warshall_floyd_impl(g, zero, inf)
+
+    proc warshall_floyd*(g: DynamicGraph[int32] or StaticGraph[int32], zero: int32 = 0.int32, inf: int32 = INF32): seq[seq[int32]] =
+        ## 全点対最短路を返す。到達不能はinf、負閉路を経由できる組は-inf。O(V^3)。
+        return warshall_floyd_impl(g, zero, inf)
+
+    proc warshall_floyd*(g: DynamicGraph[float] or StaticGraph[float], zero: float = 0.0, inf: float = 1e100): seq[seq[float]] =
+        ## 全点対最短路を返す。到達不能はinf、負閉路を経由できる組は-inf。O(V^3)。
+        return warshall_floyd_impl(g, zero, inf)
+
+    proc warshall_floyd*(g: DynamicGraph[float32] or StaticGraph[float32], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): seq[seq[float32]] =
+        ## 全点対最短路を返す。到達不能はinf、負閉路を経由できる組は-inf。O(V^3)。
+        return warshall_floyd_impl(g, zero, inf)
+
+    proc warshall_floyd*[T](g: WeightedGraph[T] or UnWeightedGraph, zero, inf: T): seq[seq[T]] =
+        ## 全点対最短路を返す。到達不能はinf、負閉路を経由できる組は-inf。O(V^3)。
+        return warshall_floyd_impl(g, zero, inf)
+
+    proc warshall_floyd_matrix_impl[T](a: seq[seq[T]], zero, inf: T): seq[seq[T]] =
         ## 正方隣接行列から全点対最短路を求める。時間O(V^3)、追加領域O(V^2)。入力は変更しない。
         var d = newSeqWith(a.len, newSeqWith(a.len, inf))
         for i in 0..<a.len:
             assert a[i].len == a.len, "隣接行列は正方行列である必要があります"
             for j in 0..<a.len:
                 d[i][j] = a[i][j]
-        let negativeCycle = warshall_floyd_inplace_impl(d, zero, inf)
-        return (negative_cycle: negativeCycle, d: d)
+        warshall_floyd_inplace_impl(d, zero, inf)
+        return d
 
-    proc warshall_floyd*(a: seq[seq[int]], zero: int = 0, inf: int = INF64): tuple[negative_cycle: bool, d: seq[seq[int]]] =
-        ## 隣接行列から全点対最短路をO(V^3)で求める。辺なしはinf、対角はmin(入力値, zero)。入力は変更しない。
+    proc warshall_floyd*(a: seq[seq[int]], zero: int = 0, inf: int = INF64): seq[seq[int]] =
+        ## 隣接行列から全点対最短路をO(V^3)で返す。到達不能はinf、負閉路を経由できる組は-inf。入力は変更しない。
         return warshall_floyd_matrix_impl(a, zero, inf)
 
-    proc warshall_floyd*(a: seq[seq[int32]], zero: int32 = 0.int32, inf: int32 = INF32): tuple[negative_cycle: bool, d: seq[seq[int32]]] =
-        ## 隣接行列から全点対最短路をO(V^3)で求める。辺なしはinf、対角はmin(入力値, zero)。入力は変更しない。
+    proc warshall_floyd*(a: seq[seq[int32]], zero: int32 = 0.int32, inf: int32 = INF32): seq[seq[int32]] =
+        ## 隣接行列から全点対最短路をO(V^3)で返す。到達不能はinf、負閉路を経由できる組は-inf。入力は変更しない。
         return warshall_floyd_matrix_impl(a, zero, inf)
 
-    proc warshall_floyd*(a: seq[seq[float]], zero: float = 0.0, inf: float = 1e100): tuple[negative_cycle: bool, d: seq[seq[float]]] =
-        ## 隣接行列から全点対最短路をO(V^3)で求める。辺なしはinf、対角はmin(入力値, zero)。入力は変更しない。
+    proc warshall_floyd*(a: seq[seq[float]], zero: float = 0.0, inf: float = 1e100): seq[seq[float]] =
+        ## 隣接行列から全点対最短路をO(V^3)で返す。到達不能はinf、負閉路を経由できる組は-inf。入力は変更しない。
         return warshall_floyd_matrix_impl(a, zero, inf)
 
-    proc warshall_floyd*(a: seq[seq[float32]], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): tuple[negative_cycle: bool, d: seq[seq[float32]]] =
-        ## 隣接行列から全点対最短路をO(V^3)で求める。辺なしはinf、対角はmin(入力値, zero)。入力は変更しない。
+    proc warshall_floyd*(a: seq[seq[float32]], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): seq[seq[float32]] =
+        ## 隣接行列から全点対最短路をO(V^3)で返す。到達不能はinf、負閉路を経由できる組は-inf。入力は変更しない。
         return warshall_floyd_matrix_impl(a, zero, inf)
 
-    proc warshall_floyd*[T](a: seq[seq[T]], zero, inf: T): tuple[negative_cycle: bool, d: seq[seq[T]]] =
-        ## 隣接行列から全点対最短路をO(V^3)で求める。辺なしはinf、対角はmin(入力値, zero)。入力は変更しない。
+    proc warshall_floyd*[T](a: seq[seq[T]], zero, inf: T): seq[seq[T]] =
+        ## 隣接行列から全点対最短路をO(V^3)で返す。到達不能はinf、負閉路を経由できる組は-inf。入力は変更しない。
         return warshall_floyd_matrix_impl(a, zero, inf)
 
     proc warshall_floyd_nonnegative_run[T](d: var seq[seq[T]], zero, inf: T) =
@@ -1096,25 +1562,25 @@ when not declared CPLIB_GRAPH_WARSHALLFLOYD:
         ## 非負辺の全点対最短路dをO(V^3)で返す。辺なしはinf、対角はzero。入力は変更しない。
         return warshall_floyd_nonnegative_impl(g, zero, inf)
 
-    proc warshall_floyd_inplace*(d: var seq[seq[int]], zero: int = 0, inf: int = INF64): bool =
-        ## 隣接行列をO(V^3)で最短距離に上書きし、負閉路があればtrueを返す。辺なしはinf、対角はmin(入力値, zero)。
-        return warshall_floyd_inplace_impl(d, zero, inf)
+    proc warshall_floyd_inplace*(d: var seq[seq[int]], zero: int = 0, inf: int = INF64) =
+        ## 隣接行列をO(V^3)で最短距離に上書きする。到達不能はinf、負閉路を経由できる組は-inf。
+        warshall_floyd_inplace_impl(d, zero, inf)
 
-    proc warshall_floyd_inplace*(d: var seq[seq[int32]], zero: int32 = 0.int32, inf: int32 = INF32): bool =
-        ## 隣接行列をO(V^3)で最短距離に上書きし、負閉路があればtrueを返す。辺なしはinf、対角はmin(入力値, zero)。
-        return warshall_floyd_inplace_impl(d, zero, inf)
+    proc warshall_floyd_inplace*(d: var seq[seq[int32]], zero: int32 = 0.int32, inf: int32 = INF32) =
+        ## 隣接行列をO(V^3)で最短距離に上書きする。到達不能はinf、負閉路を経由できる組は-inf。
+        warshall_floyd_inplace_impl(d, zero, inf)
 
-    proc warshall_floyd_inplace*(d: var seq[seq[float]], zero: float = 0.0, inf: float = 1e100): bool =
-        ## 隣接行列をO(V^3)で最短距離に上書きし、負閉路があればtrueを返す。辺なしはinf、対角はmin(入力値, zero)。
-        return warshall_floyd_inplace_impl(d, zero, inf)
+    proc warshall_floyd_inplace*(d: var seq[seq[float]], zero: float = 0.0, inf: float = 1e100) =
+        ## 隣接行列をO(V^3)で最短距離に上書きする。到達不能はinf、負閉路を経由できる組は-inf。
+        warshall_floyd_inplace_impl(d, zero, inf)
 
-    proc warshall_floyd_inplace*(d: var seq[seq[float32]], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32): bool =
-        ## 隣接行列をO(V^3)で最短距離に上書きし、負閉路があればtrueを返す。辺なしはinf、対角はmin(入力値, zero)。
-        return warshall_floyd_inplace_impl(d, zero, inf)
+    proc warshall_floyd_inplace*(d: var seq[seq[float32]], zero: float32 = 0.0'f32, inf: float32 = 1e30'f32) =
+        ## 隣接行列をO(V^3)で最短距離に上書きする。到達不能はinf、負閉路を経由できる組は-inf。
+        warshall_floyd_inplace_impl(d, zero, inf)
 
-    proc warshall_floyd_inplace*[T](d: var seq[seq[T]], zero, inf: T): bool =
-        ## 隣接行列をO(V^3)で最短距離に上書きし、負閉路があればtrueを返す。辺なしはinf、対角はmin(入力値, zero)。
-        return warshall_floyd_inplace_impl(d, zero, inf)
+    proc warshall_floyd_inplace*[T](d: var seq[seq[T]], zero, inf: T) =
+        ## 隣接行列をO(V^3)で最短距離に上書きする。到達不能はinf、負閉路を経由できる組は-inf。
+        warshall_floyd_inplace_impl(d, zero, inf)
 
     proc warshall_floyd_nonnegative_inplace*(d: var seq[seq[int]], zero: int = 0, inf: int = INF64) =
         ## 負閉路がない隣接行列をO(V^3)で最短距離に上書きする。辺なしはinf、対角はzero。負辺も許容する。

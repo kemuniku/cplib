@@ -1,5 +1,11 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+proc hasNegativeCycle[T](a: seq[seq[T]]): bool =
+    for i in 0..<a.len:
+        if a[i][i] < T(0): return true
+
 echo "Hello World"
+
+
 
 import cplib/graph/graph
 import cplib/graph/warshall_floyd
@@ -9,13 +15,13 @@ g.add_edge(0, 1, 2)
 g.add_edge(1, 2, 3)
 g.add_edge(0, 2, 10)
 let wf = g.warshall_floyd()
-assert not wf.negative_cycle
-assert wf.d[0][2] == 5
+assert not wf.hasNegativeCycle()
+assert wf[0][2] == 5
 
 var ng = initWeightedDirectedGraph(2)
 ng.add_edge(0, 1, -2)
 ng.add_edge(1, 0, -2)
-assert ng.warshall_floyd().negative_cycle
+assert ng.warshall_floyd().hasNegativeCycle()
 
 
 block:
@@ -23,25 +29,25 @@ block:
         let a = @[@[inf, T(2), T(10)], @[inf, T(5), T(3)], @[inf, inf, zero]]
         let expected = @[@[zero, T(2), T(5)], @[inf, zero, T(3)], @[inf, inf, zero]]
         let actual = a.warshall_floyd(zero, inf)
-        doAssert not actual.negative_cycle
-        doAssert actual.d == expected
+        doAssert not actual.hasNegativeCycle()
+        doAssert actual == expected
         doAssert a == @[@[inf, T(2), T(10)], @[inf, T(5), T(3)], @[inf, inf, zero]]
-        doAssert not newSeq[seq[T]]().warshall_floyd(zero, inf).negative_cycle
-        doAssert newSeq[seq[T]]().warshall_floyd(zero, inf).d.len == 0
-        doAssert @[@[T(-1)]].warshall_floyd(zero, inf).negative_cycle
-        doAssert @[@[zero, T(-2)], @[T(1), zero]].warshall_floyd(zero, inf).negative_cycle
+        doAssert not newSeq[seq[T]]().warshall_floyd(zero, inf).hasNegativeCycle()
+        doAssert newSeq[seq[T]]().warshall_floyd(zero, inf).len == 0
+        doAssert @[@[T(-1)]].warshall_floyd(zero, inf).hasNegativeCycle()
+        doAssert @[@[zero, T(-2)], @[T(1), zero]].warshall_floyd(zero, inf).hasNegativeCycle()
         let unreachable = @[@[zero, inf, inf], @[inf, zero, T(-2)], @[inf, inf, zero]]
-        doAssert unreachable.warshall_floyd(zero, inf).d == unreachable
+        doAssert unreachable.warshall_floyd(zero, inf) == unreachable
 
     checkMatrix[int](0, 1_000_000)
     checkMatrix[int32](0.int32, 1_000_000.int32)
     checkMatrix[float](0.0, 1e100)
     checkMatrix[float32](0.0'f32, 1e30'f32)
     checkMatrix[int16](0.int16, 10_000.int16)
-    doAssert @[@[0, 2], @[3, 0]].warshall_floyd().d[0][1] == 2
-    doAssert @[@[0.int32]].warshall_floyd().d == @[@[0.int32]]
-    doAssert @[@[0.0]].warshall_floyd().d == @[@[0.0]]
-    doAssert @[@[0.0'f32]].warshall_floyd().d == @[@[0.0'f32]]
+    doAssert @[@[0, 2], @[3, 0]].warshall_floyd()[0][1] == 2
+    doAssert @[@[0.int32]].warshall_floyd() == @[@[0.int32]]
+    doAssert @[@[0.0]].warshall_floyd() == @[@[0.0]]
+    doAssert @[@[0.0'f32]].warshall_floyd() == @[@[0.0'f32]]
 
     for n in [17, 217, 257]:
         var a = newSeq[seq[int]](n)
@@ -57,13 +63,13 @@ block:
                 a32[i][i + 1] = 1.int32
         let actual = a.warshall_floyd(0, 1_000_000)
         let actual32 = a32.warshall_floyd(0.int32, 1_000_000.int32)
-        doAssert not actual.negative_cycle
-        doAssert not actual32.negative_cycle
+        doAssert not actual.hasNegativeCycle()
+        doAssert not actual32.hasNegativeCycle()
         for i in 0..<n:
             for j in 0..<n:
                 let expected = if i <= j: j - i else: 1_000_000
-                doAssert actual.d[i][j] == expected
-                doAssert actual32.d[i][j] == expected.int32
+                doAssert actual[i][j] == expected
+                doAssert actual32[i][j] == expected.int32
         doAssert a[0][n - 1] == 1_000_000
         doAssert a32[0][n - 1] == 1_000_000.int32
 
@@ -83,19 +89,20 @@ block:
                     a[i][j] = cost
                     graph.add_edge(i, j, cost)
         let expected = a.warshall_floyd(zero, inf)
-        doAssert not expected.negative_cycle
+        doAssert not expected.hasNegativeCycle()
         let fromMatrix: seq[seq[T]] = a.warshall_floyd_nonnegative(zero, inf)
         let fromGraph: seq[seq[T]] = graph.warshall_floyd_nonnegative(zero, inf)
-        doAssert fromMatrix == expected.d
-        doAssert fromGraph == expected.d
+        doAssert fromMatrix == expected
+        doAssert fromGraph == expected
         var checkedInplace = a
         var uncheckedInplace = a
         let checkedRow = if n == 0: nil else: addr checkedInplace[0][0]
         let uncheckedRow = if n == 0: nil else: addr uncheckedInplace[0][0]
-        doAssert not checkedInplace.warshall_floyd_inplace(zero, inf)
+        checkedInplace.warshall_floyd_inplace(zero, inf)
+        doAssert not checkedInplace.hasNegativeCycle()
         uncheckedInplace.warshall_floyd_nonnegative_inplace(zero, inf)
-        doAssert checkedInplace == expected.d
-        doAssert uncheckedInplace == expected.d
+        doAssert checkedInplace == expected
+        doAssert uncheckedInplace == expected
         if n > 0:
             doAssert addr(checkedInplace[0][0]) == checkedRow
             doAssert addr(uncheckedInplace[0][0]) == uncheckedRow
@@ -140,15 +147,18 @@ block:
         var d = @[@[inf, T(-2), T(10)], @[inf, T(5), T(3)], @[inf, inf, zero]]
         let expected = @[@[zero, T(-2), T(1)], @[inf, zero, T(3)], @[inf, inf, zero]]
         var unchecked = d
-        doAssert not d.warshall_floyd_inplace(zero, inf)
+        d.warshall_floyd_inplace(zero, inf)
+        doAssert not d.hasNegativeCycle()
         unchecked.warshall_floyd_nonnegative_inplace(zero, inf)
         doAssert d == expected
         doAssert unchecked == expected
         var negativeLoop = @[@[T(-1)]]
-        doAssert negativeLoop.warshall_floyd_inplace(zero, inf)
+        negativeLoop.warshall_floyd_inplace(zero, inf)
+        doAssert negativeLoop.hasNegativeCycle()
         doAssert negativeLoop[0][0] < zero
         var negativeCycle = @[@[zero, T(-2)], @[T(1), zero]]
-        doAssert negativeCycle.warshall_floyd_inplace(zero, inf)
+        negativeCycle.warshall_floyd_inplace(zero, inf)
+        doAssert negativeCycle.hasNegativeCycle()
         doAssert negativeCycle[0][0] < zero or negativeCycle[1][1] < zero
 
     checkInplace[int](0, 1_000_000)
@@ -157,16 +167,20 @@ block:
     checkInplace[float32](0.0'f32, 1e30'f32)
     checkInplace[int16](0.int16, 10_000.int16)
     var d = @[@[10, 2], @[100, 100]]
-    doAssert not d.warshall_floyd_inplace(inf = 100)
+    d.warshall_floyd_inplace(inf = 100)
+    doAssert not d.hasNegativeCycle()
     doAssert d == @[@[0, 2], @[100, 0]]
     d.warshall_floyd_nonnegative_inplace(inf = 100)
     doAssert d == @[@[0, 2], @[100, 0]]
     var d32 = @[@[0.int32]]
     var df = @[@[0.0]]
     var df32 = @[@[0.0'f32]]
-    doAssert not d32.warshall_floyd_inplace()
-    doAssert not df.warshall_floyd_inplace()
-    doAssert not df32.warshall_floyd_inplace()
+    d32.warshall_floyd_inplace()
+    doAssert not d32.hasNegativeCycle()
+    df.warshall_floyd_inplace()
+    doAssert not df.hasNegativeCycle()
+    df32.warshall_floyd_inplace()
+    doAssert not df32.hasNegativeCycle()
     d32.warshall_floyd_nonnegative_inplace()
     df.warshall_floyd_nonnegative_inplace()
     df32.warshall_floyd_nonnegative_inplace()
