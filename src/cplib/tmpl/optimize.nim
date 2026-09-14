@@ -13,11 +13,15 @@ when not declared CPLIB_TMPL_OPTIMIZE:
             let outFile = querySetting(SingleValueSetting.outFile)
             let outDir = querySetting(SingleValueSetting.outDir)
             let outPath = outDir / outFile
+            let projectDir = sourcePath.parentDir
+            let libraryDir = currentSourcePath().parentDir.parentDir.parentDir
             let searchPaths = querySettingSeq(MultipleValueSetting.searchPaths)
-            var cmd = arg & " "
+            var cmd = "cd " & quoteShell(projectDir) & " && " & arg & " "
             # --path は先頭に追加されるため、元の探索順を保つよう逆順で渡す。
             for i in countdown(searchPaths.high, 0):
                 cmd.add("--path:" & quoteShell(searchPaths[i]) & " ")
+            # 再コンパイルでも、インストール済みの別版ではなくこのライブラリを参照する。
+            cmd.add("--path:" & quoteShell(libraryDir) & " ")
             cmd.add("-o:" & quoteShell(outPath) & " " & quoteShell(sourcePath))
 
             echo "--- Self-Recompiling with optimized settings ---"
