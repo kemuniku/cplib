@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/general_matching_tree_union_test.nim
     title: verify/AI/general_matching_tree_union_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://arxiv.org/abs/1703.03998
@@ -315,7 +315,7 @@ data:
   path: cplib/graph/general_matching.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/general_matching_test.nim
   - verify/graph/general_matching_test.nim

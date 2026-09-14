@@ -1,40 +1,40 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
@@ -57,18 +57,18 @@ data:
     \nlet g = primitive_root(17)\nvar seen: seq[int]\nvar cur = 1\nfor _ in 0..<16:\n\
     \  seen.add(cur)\n  cur = (cur * g) mod 17\nassert seen.sorted == (1..16).toSeq\n"
   dependsOn:
+  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
   - cplib/math/primitive_root.nim
   - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/primefactor.nim
   - cplib/math/primitive_root.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/AI/primitive_root_test.nim
   requiredBy: []

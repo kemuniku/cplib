@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/convex_hull_trick_impl.nim
     title: cplib/collections/private/convex_hull_trick_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -55,8 +55,8 @@ data:
     \     else:\n                r = m\n        chtAnswer(chtValue(self.hull.lines[l],\
     \ x))\n"
   dependsOn:
-  - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/math/int128.nim
   - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   isVerificationFile: false

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -38,10 +38,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
   - icon: ':heavy_check_mark:'
@@ -68,16 +68,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
   - icon: ':heavy_check_mark:'
@@ -86,22 +86,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
   - icon: ':heavy_check_mark:'
@@ -110,28 +110,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/factoradic.nim
     title: cplib/math/factoradic.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':heavy_check_mark:'
@@ -435,28 +435,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
@@ -465,39 +465,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_online_test.nim
     title: verify/math/many_factorials_online_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_online_test.nim
     title: verify/math/many_factorials_online_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_test.nim
     title: verify/math/many_factorials_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_test.nim
     title: verify/math/many_factorials_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -607,7 +607,7 @@ data:
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
   timestamp: '2026-09-13 12:35:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim
   - verify/math/modfast_test.nim

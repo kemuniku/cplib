@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/push_relabel.nim
     title: cplib/graph/push_relabel.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/push_relabel.nim
     title: cplib/graph/push_relabel.nim
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/bipartitematching
     links:
@@ -45,7 +45,7 @@ data:
   path: verify/graph/push_relabel_bipartitematching_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/push_relabel_bipartitematching_test.nim
 layout: document

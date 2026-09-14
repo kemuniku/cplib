@@ -20,10 +20,10 @@ data:
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -74,10 +74,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
   - icon: ':heavy_check_mark:'
@@ -104,16 +104,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/product_of_polynomial_sequence.nim
     title: cplib/fps/product_of_polynomial_sequence.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
   - icon: ':heavy_check_mark:'
@@ -122,16 +122,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/sparse_formal_power_series.nim
     title: cplib/fps/sparse_formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':heavy_check_mark:'
@@ -140,16 +140,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/factoradic.nim
     title: cplib/math/factoradic.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
   - icon: ':x:'
@@ -627,46 +627,46 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/generalized_floor_sum_test.nim
     title: verify/math/generalized_floor_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/generalized_floor_sum_test.nim
     title: verify/math/generalized_floor_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_online_test.nim
     title: verify/math/many_factorials_online_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_online_test.nim
     title: verify/math/many_factorials_online_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_test.nim
     title: verify/math/many_factorials_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_test.nim
     title: verify/math/many_factorials_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
   - icon: ':x:'
@@ -791,12 +791,12 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:

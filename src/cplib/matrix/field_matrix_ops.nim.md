@@ -117,10 +117,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_matrix_test.nim
     title: verify/AI/static_matrix_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/inverse_matrix_mod_2_static_test.nim
     title: verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/inverse_matrix_mod_2_static_test.nim
     title: verify/matrix/inverse_matrix_mod_2_static_test.nim
   - icon: ':x:'

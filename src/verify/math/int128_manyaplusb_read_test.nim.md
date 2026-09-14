@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/many_aplusb_128bit
     links:
@@ -34,7 +34,7 @@ data:
   path: verify/math/int128_manyaplusb_read_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/int128_manyaplusb_read_test.nim
 layout: document

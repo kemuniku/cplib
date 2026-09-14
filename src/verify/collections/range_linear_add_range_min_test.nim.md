@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/range_linear_add_range_min.nim
     title: cplib/collections/range_linear_add_range_min.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -36,9 +36,9 @@ data:
     \   let l = ii()\n    let r = ii()\n    if t == 0:\n        let b = ii()\n   \
     \     let c = ii()\n        seg.add(l..<r, b, c)\n    else:\n        echo seg[l..<r]\n"
   dependsOn:
-  - cplib/collections/range_linear_add_range_min.nim
-  - cplib/collections/range_linear_add_range_min.nim
   - cplib/math/int128.nim
+  - cplib/collections/range_linear_add_range_min.nim
+  - cplib/collections/range_linear_add_range_min.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/collections/range_linear_add_range_min_test.nim

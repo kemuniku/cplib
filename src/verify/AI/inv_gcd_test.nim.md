@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
   _extendedRequiredBy: []

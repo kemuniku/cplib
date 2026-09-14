@@ -2,34 +2,34 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/divisor.nim
     title: cplib/math/divisor.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':warning:'
@@ -87,10 +87,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/primitive_root_test.nim
     title: verify/AI/primitive_root_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/euler_phi_yukicoder_test.nim
     title: verify/math/euler_phi_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
@@ -99,15 +99,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/factorize_yosupo_test.nim
     title: verify/math/factorize_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -143,7 +143,7 @@ data:
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   timestamp: '2024-03-16 01:58:47+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim
   - verify/math/modfast_test.nim

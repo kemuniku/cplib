@@ -1,46 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/product_tree.nim
     title: cplib/fps/product_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/shift_of_sampling_points.nim
     title: cplib/fps/shift_of_sampling_points.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/taylor_shift.nim
     title: cplib/fps/taylor_shift.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -49,10 +49,10 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
   - icon: ':question:'
@@ -75,9 +75,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/many_factorials
     links:
@@ -94,35 +94,35 @@ data:
     %lld\\n\", addr result)\n\ntype Mint = modint998244353_barrett\n\nlet q = ii()\n\
     let table = initLargeFactorial[Mint]()\nfor i in 0..<q:\n    echo table.fact(ii())\n"
   dependsOn:
-  - cplib/fps/product_tree.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/many_factorials.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/formal_power_series.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/fps/taylor_shift.nim
   - cplib/math/many_factorials.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/fps/taylor_shift.nim
   - cplib/modint/modint.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/many_factorials.nim
+  - cplib/fps/product_tree.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/many_factorials_online_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/many_factorials_online_test.nim
 layout: document

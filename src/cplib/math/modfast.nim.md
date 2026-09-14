@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -19,22 +19,22 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':question:'
@@ -55,23 +55,23 @@ data:
   - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://maspypy.com/o1-mod-inv-mod-pow
@@ -228,31 +228,31 @@ data:
     \ = uint32(e)\n                value = value * result.generator mod p\n      \
     \  else:\n            let limit = result.buildFractions()\n            result.buildLogarithms(limit)\n"
   dependsOn:
-  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/primefactor.nim
   - cplib/modint/modint.nim
+  - cplib/math/primitive_root.nim
   - cplib/math/isqrt.nim
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/primitive_root.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/primitive_root.nim
-  - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/isqrt.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
+  - cplib/math/primitive_root.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/modfast.nim
   requiredBy: []
   timestamp: '2026-09-14 02:17:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim
   - verify/math/modfast_test.nim

@@ -84,17 +84,17 @@ data:
     \        rejectedLcm = true\n    assert rejectedGcd and rejectedLcm\n\necho \"\
     Hello World\"\n"
   dependsOn:
-  - cplib/convolution/gcd_convolution.nim
-  - cplib/convolution/gcd_convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/convolution/lcm_convolution.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/convolution/gcd_convolution.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/gcd_convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/lcm_convolution.nim
   isVerificationFile: true
   path: verify/AI/gcd_lcm_convolution_test.nim

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/argsort.nim
     title: cplib/geometry/argsort.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -48,9 +48,9 @@ data:
 
     '
   dependsOn:
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/geometry/argsort.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/geometry/argsort.nim
   isVerificationFile: true
   path: verify/AI/argsort_test.nim

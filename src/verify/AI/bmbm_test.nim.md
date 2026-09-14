@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -25,22 +25,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -108,28 +108,28 @@ data:
     modint_barrett.setMod(998244353)\nmodint_montgomery.setMod(998244353)\ncheckBmbm(modint_barrett)\n\
     checkBmbm(modint_montgomery)\n"
   dependsOn:
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/fps/bmbm.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/bmbm.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/berlekamp_massey.nim
   - cplib/fps/formal_power_series.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/fps/bmbm.nim
+  - cplib/math/isprime.nim
   - cplib/fps/bostan_mori.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
   - cplib/fps/berlekamp_massey.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/fps/bmbm.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/bostan_mori.nim
   isVerificationFile: true
   path: verify/AI/bmbm_test.nim
   requiredBy: []

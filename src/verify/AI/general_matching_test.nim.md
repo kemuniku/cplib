@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
   - icon: ':question:'

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/generalized_floor_sum.nim
     title: cplib/math/generalized_floor_sum.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/generalized_floor_sum.nim
     title: cplib/math/generalized_floor_sum.nim
   - icon: ':question:'
@@ -13,10 +13,10 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/monoid_floor_sum.nim
     title: cplib/math/monoid_floor_sum.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/monoid_floor_sum.nim
     title: cplib/math/monoid_floor_sum.nim
   - icon: ':question:'
@@ -39,9 +39,9 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -86,23 +86,23 @@ data:
     check[modint_barrett]()\n\ndoAssert generalizedFloorSum[int](4, 3, 2, 1, 1, 2)\
     \ == 15\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/math/monoid_floor_sum.nim
+  - cplib/math/isqrt.nim
   - cplib/math/generalized_floor_sum.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/monoid_floor_sum.nim
-  - cplib/modint/modint.nim
   - cplib/math/generalized_floor_sum.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/monoid_floor_sum.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/monoid_floor_sum.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/generalized_floor_sum_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/generalized_floor_sum_test.nim
 layout: document

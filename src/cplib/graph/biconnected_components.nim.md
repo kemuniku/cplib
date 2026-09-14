@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   _extendedRequiredBy:
@@ -20,6 +20,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/block_cut_tree.nim
     title: cplib/graph/block_cut_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/round_square_tree.nim
+    title: cplib/graph/round_square_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/round_square_tree.nim
+    title: cplib/graph/round_square_tree.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/lowlink_test.nim
@@ -27,15 +33,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/lowlink_test.nim
     title: verify/AI/lowlink_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/round_square_tree_test.nim
+    title: verify/AI/round_square_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/round_square_tree_test.nim
+    title: verify/AI/round_square_tree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -47,7 +59,14 @@ data:
   code: "when not declared CPLIB_GRAPH_BICONNECTED_COMPONENTS:\n    const CPLIB_GRAPH_BICONNECTED_COMPONENTS*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/graph/lowlink\n    import\
     \ sequtils\n\n    type BiconnectedComponents* = object\n        groups*: seq[seq[int]]\n\
-    \        belong*: seq[seq[int]]\n        articulation*: seq[int]\n\n    proc initBiconnectedComponents*(ll:\
+    \        belong*: seq[seq[int]] # seq[int]\uFF1A\u95A2\u7BC0\u70B9\u306F\u8907\
+    \u6570\u6210\u5206\u306B\u6240\u5C5E\n        articulation*: seq[int]\n\n    proc\
+    \ component_count_delta_after_removal*(bc: BiconnectedComponents, v: int): int\
+    \ =\n        ## \u9802\u70B9v\u3068\u63A5\u7D9A\u3059\u308B\u8FBA\u3092\u524A\u9664\
+    \u3057\u305F\u5F8C\u306E\u9023\u7D50\u6210\u5206\u6570\u304B\u3089\u524A\u9664\
+    \u524D\u306E\u500B\u6570\u3092\u5F15\u3044\u305F\u5DEE\u5206\u3092O(1)\u3067\u8FD4\
+    \u3057\u307E\u3059\u3002\n        if bc.groups[bc.belong[v][0]].len == 1:\n  \
+    \          return -1\n        result = bc.belong[v].len - 1\n\n    proc initBiconnectedComponents*(ll:\
     \ LowLink): BiconnectedComponents =\n        ## \u8A08\u7B97\u6E08\u307Flowlink\u304B\
     \u3089\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u306E\u9802\u70B9\u96C6\
     \u5408\u3092O(V)\u3067\u6C42\u3081\u307E\u3059\u3002\n        ## \u6A4B\u306E\u4E21\
@@ -109,19 +128,23 @@ data:
     \ > 1: result.articulation.add(v)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
   isVerificationFile: false
   path: cplib/graph/biconnected_components.nim
   requiredBy:
+  - cplib/graph/round_square_tree.nim
+  - cplib/graph/round_square_tree.nim
   - cplib/graph/block_cut_tree.nim
   - cplib/graph/block_cut_tree.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2026-09-14 10:23:34+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
+  - verify/AI/round_square_tree_test.nim
+  - verify/AI/round_square_tree_test.nim
   - verify/AI/lowlink_test.nim
   - verify/AI/lowlink_test.nim
 documentation_of: cplib/graph/biconnected_components.nim

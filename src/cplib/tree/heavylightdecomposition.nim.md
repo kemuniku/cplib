@@ -32,10 +32,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_forest.nim
     title: cplib/graph/namori_forest.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':question:'
@@ -135,10 +135,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_top_tree_test.nim
     title: verify/AI/static_top_tree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
   - icon: ':x:'

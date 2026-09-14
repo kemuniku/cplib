@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/convex_hull_trick_impl.nim
     title: cplib/collections/private/convex_hull_trick_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -82,12 +82,12 @@ data:
     \      node = node.r\n            else:\n                node = node.l\n     \
     \   chtAnswer(chtValue(best.key, x))\n"
   dependsOn:
-  - cplib/math/int128.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
   - cplib/collections/avltreenode.nim
+  - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick.nim
   requiredBy: []

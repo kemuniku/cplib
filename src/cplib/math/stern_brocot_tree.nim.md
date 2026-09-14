@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []

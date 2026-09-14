@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
   _extendedRequiredBy:
@@ -20,10 +20,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   - icon: ':warning:'
@@ -111,51 +111,51 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_float_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
     title: verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/contains_cgl3c_test.nim
     title: verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/contains_cgl3c_test.nim
     title: verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -203,7 +203,7 @@ data:
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim

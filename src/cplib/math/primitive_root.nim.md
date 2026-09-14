@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
   _extendedVerifiedWith:
@@ -45,15 +45,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/primitive_root_test.nim
     title: verify/AI/primitive_root_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -73,23 +73,23 @@ data:
     \     flg = false\n                    break\n            if flg:\n          \
     \      return a"
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: cplib/math/primitive_root.nim
   requiredBy:
   - cplib/math/modfast.nim
   - cplib/math/modfast.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim
   - verify/math/modfast_test.nim

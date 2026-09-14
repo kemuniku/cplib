@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/monoid_floor_sum.nim
     title: cplib/math/monoid_floor_sum.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/monoid_floor_sum.nim
     title: cplib/math/monoid_floor_sum.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/generalized_floor_sum_test.nim
     title: verify/math/generalized_floor_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/generalized_floor_sum_test.nim
     title: verify/math/generalized_floor_sum_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -81,7 +81,7 @@ data:
   path: cplib/math/generalized_floor_sum.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/generalized_floor_sum_test.nim
   - verify/math/generalized_floor_sum_test.nim

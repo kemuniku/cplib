@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
   - icon: ':heavy_check_mark:'
@@ -96,14 +96,14 @@ data:
     '
   dependsOn:
   - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/distance.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/distance.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/AI/distance_test.nim

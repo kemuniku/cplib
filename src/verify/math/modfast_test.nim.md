@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -19,28 +19,28 @@ data:
   - icon: ':question:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/powmod.nim
     title: cplib/math/powmod.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
   - icon: ':question:'
@@ -61,17 +61,17 @@ data:
   - icon: ':question:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -128,33 +128,33 @@ data:
     \ old.inv(init(TestMint, 2))\n    except AssertionDefect:\n        rejected =\
     \ true\n    doAssert rejected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/primefactor.nim
   - cplib/modint/modint.nim
+  - cplib/math/primitive_root.nim
   - cplib/math/isqrt.nim
   - cplib/math/primefactor.nim
   - cplib/math/inner_math.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/modfast.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/primitive_root.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/primitive_root.nim
-  - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/isqrt.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
-  - cplib/math/modfast.nim
   - cplib/math/powmod.nim
+  - cplib/math/primitive_root.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
   - cplib/modint/modint.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: true
   path: verify/math/modfast_test.nim
   requiredBy: []
   timestamp: '2026-09-14 02:17:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/modfast_test.nim
 layout: document

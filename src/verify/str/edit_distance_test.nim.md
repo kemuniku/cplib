@@ -43,9 +43,9 @@ data:
     '
   dependsOn:
   - cplib/str/suffix_array.nim
-  - cplib/str/edit_distance.nim
-  - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
   isVerificationFile: true
   path: verify/str/edit_distance_test.nim
   requiredBy: []

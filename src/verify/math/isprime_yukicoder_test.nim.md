@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://yukicoder.me/problems/no/8030
     links:
@@ -45,19 +45,19 @@ data:
     \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
     \       echo x, \" \", 0\n"
   dependsOn:
+  - cplib/math/isprime.nim
   - cplib/utils/constants.nim
+  - cplib/math/isprime.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isprime.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
   timestamp: '2026-09-13 12:59:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yukicoder_test.nim
 layout: document

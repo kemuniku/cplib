@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/floor_sum.nim
     title: cplib/math/floor_sum.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/floor_sum.nim
     title: cplib/math/floor_sum.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -42,8 +42,8 @@ data:
     \necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/floor_sum.nim
-  - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
+  - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/floor_sum_test.nim

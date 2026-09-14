@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/restore_shortest_path_from_prev.nim
     title: cplib/graph/restore_shortest_path_from_prev.nim
   - icon: ':question:'
@@ -76,14 +76,14 @@ data:
 
     '
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/AI/maxk_dijkstra_test.nim
   requiredBy: []

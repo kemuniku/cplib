@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
   - icon: ':question:'
@@ -47,8 +47,8 @@ data:
     \ tree.joinParent(v)\n        for v in 0..<grown:\n            doAssert tree.root(v)\
     \ == 0\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
   isVerificationFile: true

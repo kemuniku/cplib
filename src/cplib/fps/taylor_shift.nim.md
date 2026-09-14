@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -56,10 +56,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/many_factorials.nim
     title: cplib/math/many_factorials.nim
   _extendedVerifiedWith:
@@ -177,21 +177,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_online_test.nim
     title: verify/math/many_factorials_online_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_online_test.nim
     title: verify/math/many_factorials_online_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_test.nim
     title: verify/math/many_factorials_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_test.nim
     title: verify/math/many_factorials_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -217,22 +217,22 @@ data:
     \       let product = left * right\n        result = newSeq[T](n)\n        for\
     \ i in 0..<n: result[i] = product[n - 1 - i] * factInv[i]\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/fps/taylor_shift.nim
   requiredBy:
@@ -241,7 +241,7 @@ data:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim

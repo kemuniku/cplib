@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/formal_power_series.nim
     title: cplib/fps/formal_power_series.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inv_gcd.nim
     title: cplib/math/inv_gcd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -231,22 +231,22 @@ data:
     \ 1\n        for i in 0..<coefficients.len: q[i + 1] = -coefficients[i]\n    \
     \    let p = prefix(initial * q, coefficients.len)\n        bostanMori(p, q, k)\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/fps/bostan_mori.nim
   requiredBy:

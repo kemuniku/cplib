@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
   - icon: ':heavy_check_mark:'
@@ -25,10 +25,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -56,14 +56,14 @@ data:
     \ l2)\n    echo &\"{p.x.toFloat:.10f} {p.y.toFloat:.10f}\"\n"
   dependsOn:
   - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim

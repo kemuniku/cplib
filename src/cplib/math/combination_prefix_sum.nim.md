@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -63,14 +63,14 @@ data:
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
   - cplib/math/combination.nim
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/math/combination.nim
+  - cplib/utils/mo.nim
+  - cplib/utils/mo.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim

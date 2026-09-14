@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/convex_hull_trick_impl.nim
     title: cplib/collections/private/convex_hull_trick_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -48,14 +48,14 @@ data:
     \    let t = ii()\n    if t == 0:\n        let a = ii()\n        let b = ii()\n\
     \        hull.add_line(a, b)\n    else:\n        echo hull.get_min(ii())\n"
   dependsOn:
-  - cplib/collections/convex_hull_trick.nim
-  - cplib/collections/convex_hull_trick.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/math/int128.nim
+  - cplib/collections/convex_hull_trick.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/convex_hull_trick.nim
+  - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_line_add_get_min_test.nim
   requiredBy: []

@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/angle.nim
     title: cplib/geometry/angle.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/base.nim
     title: cplib/geometry/base.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
@@ -44,11 +44,11 @@ data:
     \  else: echo 0\n"
   dependsOn:
   - cplib/geometry/angle.nim
+  - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   requiredBy: []

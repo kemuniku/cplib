@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/inner_math.nim
     title: cplib/math/inner_math.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/primefactor.nim
     title: cplib/math/primefactor.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/run_length_encode.nim
     title: cplib/str/run_length_encode.nim
   _extendedRequiredBy: []
@@ -46,14 +46,14 @@ data:
     \        if v == 2: p = k\n        else: q = k\n    echo p, \" \", q\n\nvar t\
     \ = stdin.readLine.parseInt\nfor _ in 0..<t: solve()\n"
   dependsOn:
+  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   isVerificationFile: false
   path: verify/math/factorize_table_abc284d_test_.nim
   requiredBy: []

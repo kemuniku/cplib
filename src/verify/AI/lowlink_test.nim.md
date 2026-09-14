@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
   - icon: ':heavy_check_mark:'
@@ -19,16 +19,16 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/two_edge_connected_components.nim
     title: cplib/graph/two_edge_connected_components.nim
   _extendedRequiredBy: []
@@ -86,6 +86,8 @@ data:
     \    doAssert te.forest.len - forestEdges div 2 == components\n    let bc = initBiconnectedComponents(ll)\n\
     \    doAssert bc == initBiconnectedComponents(g)\n    doAssert bc == initBiconnectedComponents(sg)\n\
     \    doAssert bc == initBiconnectedComponents(wg)\n    doAssert bc == initBiconnectedComponents(swg)\n\
+    \    for v in 0..<n:\n        doAssert bc.component_count_delta_after_removal(v)\
+    \ ==\n            countComponents(labels(n, edges, removedVertex = v)) - components\n\
     \    var valid: seq[int]\n    for mask in 1..<(1 shl n):\n        if countComponents(labels(n,\
     \ edges, mask = mask)) != 1: continue\n        var ok = true\n        for v in\
     \ 0..<n:\n            if (mask and (1 shl v)) != 0:\n                if countComponents(labels(n,\
@@ -123,19 +125,19 @@ data:
     \n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/biconnected_components.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/biconnected_components.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/graph.nim
   - cplib/graph/block_cut_tree.nim
-  - cplib/graph/biconnected_components.nim
-  - cplib/graph/two_edge_connected_components.nim
-  - cplib/graph/biconnected_components.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/block_cut_tree.nim
+  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/lowlink.nim
   isVerificationFile: true
   path: verify/AI/lowlink_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 10:23:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/lowlink_test.nim

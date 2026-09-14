@@ -21,9 +21,9 @@ data:
     title: cplib/matrix/static_matrix_mod2.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix_mod_2
     links:
@@ -51,7 +51,7 @@ data:
   path: verify/matrix/inverse_matrix_mod_2_static_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/inverse_matrix_mod_2_static_test.nim
 layout: document

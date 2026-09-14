@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -64,11 +64,11 @@ data:
     \ + b, 0) == 2\nassert random_string(4, 'a'..'c').allIt(it in 'a'..'c')\nassert\
     \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
-  - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   - cplib/utils/random_helper.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   - cplib/utils/random_helper.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim

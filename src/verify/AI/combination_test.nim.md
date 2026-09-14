@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
   - icon: ':question:'
@@ -81,16 +81,16 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/combination.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/combination.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/combination.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/combination.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/AI/combination_test.nim
   requiredBy: []

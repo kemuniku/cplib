@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/eratosthenes.nim
     title: cplib/math/eratosthenes.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   _extendedRequiredBy: []
@@ -69,9 +69,9 @@ data:
     \ == expected.len\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/eratosthenes.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/math/eratosthenes.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/AI/eratosthenes_test.nim
   requiredBy: []

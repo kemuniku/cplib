@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':question:'
@@ -193,10 +193,10 @@ data:
     \u308A\u307E\u3059\"\n        for i in 0..<n:\n            result.add(s[rand(0..<len(s))])\n\
     \        return result\n"
   dependsOn:
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   isVerificationFile: false

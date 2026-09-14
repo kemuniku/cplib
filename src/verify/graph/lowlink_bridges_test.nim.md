@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/GRL_3_B
     links:
@@ -43,16 +43,16 @@ data:
     \ echo u, \" \", v\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
-  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/lowlink_bridges_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/lowlink_bridges_test.nim
 layout: document

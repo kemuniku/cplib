@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/range_linear_add_range_min.nim
     title: cplib/collections/range_linear_add_range_min.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   _extendedRequiredBy: []
@@ -62,9 +62,9 @@ data:
     \ a[i] += 99 * i + 9_999_999\n    apply(seg, a, 1, 128, -1_000_000, -1_000_000_000_000.int)\n\
     \    checkAll(seg, a)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/range_linear_add_range_min.nim
-  - cplib/collections/range_linear_add_range_min.nim
   - cplib/math/int128.nim
+  - cplib/collections/range_linear_add_range_min.nim
+  - cplib/collections/range_linear_add_range_min.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/range_linear_add_range_min_test.nim

@@ -27,52 +27,52 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/sheep_test.nim
     title: verify/AI/sheep_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/shortest_path_test.nim
     title: verify/graph/dynamic/shortest_path_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/static/shortest_path_static_test.nim
     title: verify/graph/static/shortest_path_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yosupo_test.nim
     title: verify/math/isprime_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
   - icon: ':x:'
@@ -168,8 +168,8 @@ data:
     \   body\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim

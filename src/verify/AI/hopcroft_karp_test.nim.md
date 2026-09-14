@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/hopcroft_karp.nim
     title: cplib/graph/hopcroft_karp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/hopcroft_karp.nim
     title: cplib/graph/hopcroft_karp.nim
   _extendedRequiredBy: []
