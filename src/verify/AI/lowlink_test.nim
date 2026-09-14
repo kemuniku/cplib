@@ -81,6 +81,9 @@ proc check(n: int, edges: seq[Edge]) =
     doAssert bc == initBiconnectedComponents(sg)
     doAssert bc == initBiconnectedComponents(wg)
     doAssert bc == initBiconnectedComponents(swg)
+    for v in 0..<n:
+        doAssert bc.component_count_delta_after_removal(v) ==
+            countComponents(labels(n, edges, removedVertex = v)) - components
     var valid: seq[int]
     for mask in 1..<(1 shl n):
         if countComponents(labels(n, edges, mask = mask)) != 1: continue
