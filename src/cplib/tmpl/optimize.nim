@@ -1,6 +1,6 @@
 when not declared CPLIB_TMPL_OPTIMIZE:
     const CPLIB_TMPL_OPTIMIZE* = 1
-    import macros,strutils,std/compilesettings
+    import macros, strutils, os, std/compilesettings
     macro optimize*(arg: static string = """nim c -d:danger -d:second_compile -d:useMalloc --gc:arc --panics:on --opt:speed --checks:off --passC:"-flto -m64 -march=native -ffast-math -funroll-loops -fipa-pta" --passL:"-flto" --hints:off """) =
         ## 最適化設定で再コンパイルし、失敗時は呼び出し元のコンパイルも失敗させる。
         let isSecond = defined(second_compile)
@@ -10,11 +10,15 @@ when not declared CPLIB_TMPL_OPTIMIZE:
             if "-d:second_compile" notin arg:
                 error("plz add -d:second_compile")
             let sourcePath = querySetting(SingleValueSetting.projectFull)
-            let projectDir = sourcePath[0..<sourcePath.rfind('/')]
             let outFile = querySetting(SingleValueSetting.outFile)
-            let outFlag = if outFile.len > 0: "-o:" & outFile & " " else: "-o:a.out "
-            var cmd = "cd " & projectDir & " && export PATH=$HOME/.nimble/bin:$PATH && " & arg
-            cmd.add(outFlag & sourcePath)
+            let outDir = querySetting(SingleValueSetting.outDir)
+            let outPath = outDir / outFile
+            let searchPaths = querySettingSeq(MultipleValueSetting.searchPaths)
+            var cmd = arg & " "
+            # --path は先頭に追加されるため、元の探索順を保つよう逆順で渡す。
+            for i in countdown(searchPaths.high, 0):
+                cmd.add("--path:" & quoteShell(searchPaths[i]) & " ")
+            cmd.add("-o:" & quoteShell(outPath) & " " & quoteShell(sourcePath))
 
             echo "--- Self-Recompiling with optimized settings ---"
             echo "Command: ", cmd
