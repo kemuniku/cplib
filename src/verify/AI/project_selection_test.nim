@@ -1,5 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-import cplib/graph/project_selection
+import cplib/utils/project_selection
 import random
 
 block:
@@ -11,7 +11,8 @@ block:
     doAssert ans.feasible and ans.min_cost == -7 and ans.assignment.len == 0
 
 block:
-    var opt = initProjectSelection[int64](3)
+    var opt = initProjectSelection(3, int64)
+    doAssert opt is ProjectSelection[int64]
     opt.add_gain(0, true, 100)
     opt.add_cost(0, true, 30)
     opt.imply(0, 1)
@@ -28,7 +29,7 @@ block:
     doAssert not opt.solve().feasible
 
 block:
-    var opt = initProjectSelection[int32](1)
+    var opt = initProjectSelection(1, int32)
     opt.add_pair_cost(0, 0, -4, low(int32), high(int32), -2)
     opt.imply(0, 0)
     opt.equal(0, 0)
@@ -39,7 +40,7 @@ block:
 var rng = initRand(472193)
 for trial in 0..<1000:
     let n = rng.rand(1..7)
-    var opt = initProjectSelection[int64](n)
+    var opt = initProjectSelection(n, int64)
     var costs = newSeq[int64](1 shl n)
     var allowed = newSeq[bool](1 shl n)
     for mask in 0..<allowed.len: allowed[mask] = true
@@ -48,7 +49,7 @@ for trial in 0..<1000:
         let i = rng.rand(n - 1)
         let j = rng.rand(n - 1)
         let value = rng.rand(1) == 1
-        let w = int64(rng.rand(0..30))
+        let w = int64(rng.rand((if kind in {1, 2}: -30 else: 0)..30))
         var c: array[4, int64]
         var ids: seq[int]
         case kind
@@ -117,43 +118,43 @@ template expectError(errorType: typedesc, body: untyped) =
         doAssert caught
 
 block:
-    expectError(ValueError): discard initProjectSelection[int](-1)
-    var opt = initProjectSelection[int64](2)
+    expectError(ValueError): discard initProjectSelection(-1, int)
+    var opt = initProjectSelection(2, int64)
     expectError(ValueError): opt.add_cost(-1, true, 1)
     expectError(ValueError): opt.force(2, false)
-    expectError(ValueError): opt.add_gain(0, true, -1)
+    expectError(OverflowDefect): opt.add_gain(0, true, low(int64))
     expectError(ValueError): opt.add_cost_if_different(0, 1, -1)
     expectError(ValueError): opt.add_gain_if_all([0, 2], true, 5)
     expectError(ValueError): opt.add_pair_cost(0, 1, 0, 0, 0, 1)
     doAssert opt.solve().min_cost == 0
 
 block:
-    var opt = initProjectSelection[int64](1)
+    var opt = initProjectSelection(1, int64)
     opt.add_unary_cost(0, low(int64), low(int64))
     doAssert opt.solve().min_cost == low(int64)
     opt.add_gain(0, false, 1)
     expectError(OverflowDefect): discard opt.solve()
 
 block:
-    var opt = initProjectSelection[int64](1)
+    var opt = initProjectSelection(1, int64)
     opt.add_unary_cost(0, low(int64), high(int64))
     expectError(OverflowDefect): discard opt.solve()
 
 block:
-    var opt = initProjectSelection[int64](1)
+    var opt = initProjectSelection(1, int64)
     opt.add_cost(0, true, high(int64))
     doAssert opt.solve().min_cost == 0
     opt.force(0, true)
     expectError(OverflowDefect): discard opt.solve()
 
 block:
-    var opt = initProjectSelection[int64](2)
+    var opt = initProjectSelection(2, int64)
     opt.add_cost(0, true, high(int64))
     opt.add_cost(1, true, 1)
     expectError(OverflowDefect): discard opt.solve()
 
 block:
-    var opt = initProjectSelection[int64](1)
+    var opt = initProjectSelection(1, int64)
     opt.add_unary_cost(0, high(int64), high(int64))
     opt.add_cost(0, true, 1)
     opt.force(0, true)

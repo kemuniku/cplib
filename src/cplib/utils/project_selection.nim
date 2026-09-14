@@ -1,5 +1,5 @@
-when not declared CPLIB_GRAPH_PROJECT_SELECTION:
-    const CPLIB_GRAPH_PROJECT_SELECTION* = 1
+when not declared CPLIB_UTILS_PROJECT_SELECTION:
+    const CPLIB_UTILS_PROJECT_SELECTION* = 1
     import cplib/graph/maxflow
 
     type
@@ -31,8 +31,8 @@ when not declared CPLIB_GRAPH_PROJECT_SELECTION:
             raise newException(OverflowDefect, "ProjectSelectionの減算が容量型の範囲を超えます")
         a - b
 
-    proc initProjectSelection*[Cost: SomeSignedInt](n: int, costZero: Cost = 0): ProjectSelection[Cost] =
-        ## n個の二値変数を作る。費用－利益を最小化する。costZeroは型推論用。O(1)。
+    proc initProjectSelection*(n: int, costType: typedesc[SomeSignedInt] = int): ProjectSelection[costType] =
+        ## n個の二値変数を作る。費用－利益を最小化する。costTypeの省略時はint。O(1)。
         if n < 0:
             raise newException(ValueError, "変数の個数は非負である必要があります")
         result.n = n
@@ -53,16 +53,13 @@ when not declared CPLIB_GRAPH_PROJECT_SELECTION:
         opt.terms.add(ProjectSelectionTerm[Cost](kind: psUnary, i: i, costs: [c0, c1, Cost(0), Cost(0)]))
 
     proc add_cost*[Cost](opt: var ProjectSelection[Cost], i: int, value: bool, w: Cost) =
-        ## x[i] == valueのとき非負の費用wを加算する。償却O(1)。
-        psCheckWeight(w)
+        ## x[i] == valueのとき費用wを加算する。負値は利益となる。償却O(1)。
         if value: opt.add_unary_cost(i, Cost(0), w)
         else: opt.add_unary_cost(i, w, Cost(0))
 
     proc add_gain*[Cost](opt: var ProjectSelection[Cost], i: int, value: bool, w: Cost) =
-        ## x[i] == valueのとき非負の利益wを加算する。償却O(1)。
-        psCheckWeight(w)
-        if value: opt.add_unary_cost(i, Cost(0), -w)
-        else: opt.add_unary_cost(i, -w, Cost(0))
+        ## x[i] == valueのとき利益wを加算する。負値は費用となる。償却O(1)。
+        opt.add_cost(i, value, psSub(Cost(0), w))
 
     proc add_pair_cost*[Cost](opt: var ProjectSelection[Cost], i, j: int, c00, c01, c10, c11: Cost) =
         ## (x[i],x[j])の4通りの費用を加算する。劣モジュラ性が必要。償却O(1)。
@@ -103,6 +100,7 @@ when not declared CPLIB_GRAPH_PROJECT_SELECTION:
 
     proc imply*[Cost](opt: var ProjectSelection[Cost], i, j: int) =
         ## x[i]がtrueならx[j]もtrueとなる制約を追加する。償却O(1)。
+        ## x[i]がfalseならx[j]もfalseをやりたいなら、imply(j,i)でok
         opt.psCheckIndex(i)
         opt.psCheckIndex(j)
         opt.terms.add(ProjectSelectionTerm[Cost](kind: psImply, i: i, j: j))
