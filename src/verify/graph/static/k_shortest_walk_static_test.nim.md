@@ -13,16 +13,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -53,16 +53,16 @@ data:
     \ = g.k_shortest_walk(s, t, k)\nfor i in 0..<k:\n    echo (if lengths[i] == INF:\
     \ -1 else: lengths[i])\n"
   dependsOn:
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/k_shortest_walk.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/static/k_shortest_walk_static_test.nim
   requiredBy: []

@@ -25,16 +25,16 @@ data:
   - icon: ':question:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -79,20 +79,20 @@ data:
     \        assert $tmp2 == naive2\n        assert $tmp3 == naive3\n        assert\
     \ cmp(tmp2,tmp2) == 0\n\n"
   dependsOn:
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/merged_static_string.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
   - cplib/utils/constants.nim
-  - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim
-  - cplib/tmpl/sheep.nim
   - cplib/str/static_string.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []

@@ -13,28 +13,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/convolution/lcm_convolution.nim
     title: cplib/convolution/lcm_convolution.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -84,17 +84,17 @@ data:
     \        rejectedLcm = true\n    assert rejectedGcd and rejectedLcm\n\necho \"\
     Hello World\"\n"
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/convolution/gcd_convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/gcd_convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/lcm_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/gcd_convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/gcd_convolution.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/lcm_convolution.nim
   isVerificationFile: true
   path: verify/AI/gcd_lcm_convolution_test.nim

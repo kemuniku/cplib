@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DPL_1_E
     links:
@@ -42,15 +42,15 @@ data:
 
     '
   dependsOn:
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/edit_distance.nim
   - cplib/str/edit_distance.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/str/edit_distance_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/edit_distance_test.nim
 layout: document

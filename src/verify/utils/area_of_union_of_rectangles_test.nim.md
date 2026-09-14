@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
@@ -45,14 +45,14 @@ data:
     \ N = ii()\n\nvar tmp : seq[(int,int,int,int)]\n\nfor _ in range(N):\n    var\
     \ l,d,r,u = ii()\n    tmp.add((l,d,r,u))\n\nprint area_of_union_of_rectangles(tmp)\n"
   dependsOn:
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/area_of_union_of_rectangles.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/utils/area_of_union_of_rectangles.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/area_of_union_of_rectangles.nim
-  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/utils/area_of_union_of_rectangles_test.nim
   requiredBy: []

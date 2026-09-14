@@ -193,9 +193,9 @@ data:
     \    for order in topological_orders(newSeq[seq[int]](100)):\n        doAssert\
     \ order == toSeq(0..<100)\n        break\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/utils/itertools.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/utils/itertools.nim

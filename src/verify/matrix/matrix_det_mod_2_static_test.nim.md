@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/matrix_det_mod_2
     links:
@@ -40,17 +40,17 @@ data:
     \ MaxN]()\nfor i in 0..<n:\n    a.setRowBits(i, stdin.readLine)\nfor i in n..<MaxN:\n\
     \    a[i, i] = true\necho int(a.determinant)\n"
   dependsOn:
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   isVerificationFile: true
   path: verify/matrix/matrix_det_mod_2_static_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_det_mod_2_static_test.nim
 layout: document

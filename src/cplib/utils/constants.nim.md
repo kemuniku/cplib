@@ -98,10 +98,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':warning:'
@@ -393,22 +393,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
   - icon: ':heavy_check_mark:'

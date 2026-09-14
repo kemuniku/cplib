@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
   _extendedRequiredBy: []
@@ -50,8 +50,8 @@ data:
     '
   dependsOn:
   - cplib/matrix/matrix.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: false
   path: verify/matrix/matrix_dpr_test_.nim

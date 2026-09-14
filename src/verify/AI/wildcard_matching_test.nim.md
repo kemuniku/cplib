@@ -19,28 +19,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   - icon: ':heavy_check_mark:'
@@ -89,22 +89,22 @@ data:
     \            if t[j] != wild and s[offset + j] != wild:\n                t[j]\
     \ = s[offset + j]\n        check(s, t, wild)\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/math/isprime.nim
   - cplib/str/wildcard_matching.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/str/wildcard_matching.nim
   - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/str/wildcard_matching.nim
   isVerificationFile: true
   path: verify/AI/wildcard_matching_test.nim
   requiredBy: []

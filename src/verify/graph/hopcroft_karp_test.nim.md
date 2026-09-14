@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/hopcroft_karp.nim
     title: cplib/graph/hopcroft_karp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
@@ -34,10 +34,10 @@ data:
     \ 0..<m:\n    let a = ii()\n    let b = ii()\n    g.add_edge(a, b)\necho g.matching()\n\
     for (a, b) in g.get_matching():\n    echo a, \" \", b\n"
   dependsOn:
-  - cplib/graph/hopcroft_karp.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/hopcroft_karp.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/hopcroft_karp.nim
   isVerificationFile: true
   path: verify/graph/hopcroft_karp_test.nim
   requiredBy: []

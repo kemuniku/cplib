@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
@@ -37,22 +37,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   - icon: ':heavy_check_mark:'
@@ -229,25 +229,25 @@ data:
     \  else:\n            let limit = result.buildFractions()\n            result.buildLogarithms(limit)\n"
   dependsOn:
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/primefactor.nim
-  - cplib/modint/modint.nim
   - cplib/math/primitive_root.nim
   - cplib/math/isqrt.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/primitive_root.nim
+  - cplib/math/primefactor.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/modfast.nim
   requiredBy: []

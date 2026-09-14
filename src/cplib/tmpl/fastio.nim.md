@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':warning:'
@@ -153,34 +153,34 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
   - icon: ':heavy_check_mark:'
@@ -201,9 +201,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/area_of_union_of_rectangles_test.nim
     title: verify/utils/area_of_union_of_rectangles_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -811,7 +811,7 @@ data:
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   timestamp: '2026-09-13 10:19:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim

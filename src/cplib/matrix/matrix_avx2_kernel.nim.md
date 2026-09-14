@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
   - icon: ':warning:'
@@ -33,27 +33,27 @@ data:
     path: verify/matrix/linear_algebra/judge_driver.nim
     title: verify/matrix/linear_algebra/judge_driver.nim
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_unit_test.nim
     title: verify/matrix/matrix_avx2_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_unit_test.nim
     title: verify/matrix/matrix_avx2_unit_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -279,7 +279,7 @@ data:
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim

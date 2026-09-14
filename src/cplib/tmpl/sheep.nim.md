@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   - icon: ':question:'
@@ -75,22 +75,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/get_palindromes_test.nim
     title: verify/str/get_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/hash_string/hash_string_mul_test.nim
     title: verify/str/hash_string/hash_string_mul_test.nim
   - icon: ':heavy_check_mark:'
@@ -99,9 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/area_of_union_of_rectangles_test.nim
     title: verify/utils/area_of_union_of_rectangles_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -167,17 +167,17 @@ data:
     \ untyped) =\n        when defined(debug):\n            block:\n             \
     \   body\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
   timestamp: '2026-09-13 10:19:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim

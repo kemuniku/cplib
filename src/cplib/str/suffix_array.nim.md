@@ -8,10 +8,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
   - icon: ':heavy_check_mark:'
@@ -87,10 +87,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
   - icon: ':x:'

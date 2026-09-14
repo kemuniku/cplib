@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -104,19 +104,19 @@ data:
     \    let solution = a.solveLinearSystem(@[true,true]).get\n    doAssert solution.particular[64]\
     \ and solution.basis.len == 64\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/matrix_mod2.nim
+  - cplib/matrix/matrix_mod2.nim
   isVerificationFile: true
   path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
 layout: document

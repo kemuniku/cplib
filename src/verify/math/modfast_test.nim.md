@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
@@ -43,22 +43,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/primitive_root.nim
     title: cplib/math/primitive_root.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   - icon: ':heavy_check_mark:'
@@ -128,28 +128,28 @@ data:
     \ old.inv(init(TestMint, 2))\n    except AssertionDefect:\n        rejected =\
     \ true\n    doAssert rejected\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/math/primitive_root.nim
   - cplib/math/powmod.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/primefactor.nim
-  - cplib/modint/modint.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/primitive_root.nim
-  - cplib/math/isqrt.nim
   - cplib/math/primefactor.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/powmod.nim
-  - cplib/math/primitive_root.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/modfast.nim
   - cplib/math/isprime.nim
-  - cplib/math/modfast.nim
-  - cplib/math/modfast.nim
   - cplib/modint/modint.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inner_math.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/modfast.nim
   isVerificationFile: true
   path: verify/math/modfast_test.nim
   requiredBy: []

@@ -1,46 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
   - icon: ':warning:'
@@ -49,28 +49,28 @@ data:
   - icon: ':warning:'
     path: cplib/matrix/static_matrix_avx2.nim
     title: cplib/matrix/static_matrix_avx2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
@@ -134,30 +134,30 @@ data:
     : run[38,38]()\n    else: run[500,500]()\nelse:\n    var a = initMatrix(n,m,Mint(0))\n\
     \    solve(a)\n"
   dependsOn:
+  - cplib/matrix/static_matrix_avx2.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/matrix/static_matrix.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/matrix/static_matrix_avx2.nim
-  - cplib/modint/modint.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/tmpl/fastio.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/static_matrix_avx2.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/static_matrix.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/judge_driver.nim
   requiredBy: []

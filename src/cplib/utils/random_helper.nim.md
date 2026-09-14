@@ -193,11 +193,11 @@ data:
     \u308A\u307E\u3059\"\n        for i in 0..<n:\n            result.add(s[rand(0..<len(s))])\n\
     \        return result\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim

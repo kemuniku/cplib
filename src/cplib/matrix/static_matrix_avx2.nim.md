@@ -1,46 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_field_impl.nim
     title: cplib/matrix/matrix_avx2_field_impl.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2_kernel.nim
     title: cplib/matrix/matrix_avx2_kernel.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
@@ -281,20 +281,20 @@ data:
     \        result.modulus = fieldModulus[T]()\n        fieldInverseAdjugateKernel(buffer(r.values),buffer(result.values),n,r.rank,cast[ptr\
     \ cint](buffer(r.pivots)),r.determinant,fieldModulus[T](),T is MontgomeryModint,true,W)\n"
   dependsOn:
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/modint/modint.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
   isVerificationFile: false
   path: cplib/matrix/static_matrix_avx2.nim
   requiredBy:

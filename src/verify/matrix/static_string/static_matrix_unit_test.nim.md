@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix.nim
     title: cplib/matrix/static_matrix.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -60,15 +60,15 @@ data:
     \ sq3\n    var m3 = r2 * a\n    var m4 = a * c3\n    assert m3.h == 1 and m3.w\
     \ == 3\n    assert m4.h == 2 and m4.w == 1\n"
   dependsOn:
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
   isVerificationFile: true
   path: verify/matrix/static_string/static_matrix_unit_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/static_string/static_matrix_unit_test.nim
 layout: document

@@ -1,34 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
@@ -58,16 +58,16 @@ data:
     \ solution.basis.len\n    print bits(solution.particular)\n    for vector in solution.basis:\
     \ print bits(vector)\n"
   dependsOn:
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/tmpl/fastio.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
+  - cplib/tmpl/fastio.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/matrix_mod2.nim
+  - cplib/matrix/matrix_mod2.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/system_mod2_driver.nim
   requiredBy: []

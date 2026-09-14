@@ -25,28 +25,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -522,22 +522,22 @@ data:
     \ = next\n                width = width shr 1\n            result[i] = value\n\
     \            counts.removeFactoradicValue(value)\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/math/bigint.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/bigint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/bigint.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/math/factoradic.nim
   requiredBy: []

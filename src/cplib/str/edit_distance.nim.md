@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/edit_distance_test.nim
     title: verify/AI/edit_distance_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -113,7 +113,7 @@ data:
   path: cplib/str/edit_distance.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/edit_distance_test.nim
   - verify/str/edit_distance_test.nim

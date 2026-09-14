@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/generalized_floor_sum.nim
     title: cplib/math/generalized_floor_sum.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
   - icon: ':heavy_check_mark:'
@@ -19,22 +19,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/monoid_floor_sum.nim
     title: cplib/math/monoid_floor_sum.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -86,18 +86,18 @@ data:
     check[modint_barrett]()\n\ndoAssert generalizedFloorSum[int](4, 3, 2, 1, 1, 2)\
     \ == 15\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/math/generalized_floor_sum.nim
+  - cplib/math/monoid_floor_sum.nim
   - cplib/modint/modint.nim
   - cplib/math/monoid_floor_sum.nim
   - cplib/math/isqrt.nim
-  - cplib/math/generalized_floor_sum.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/generalized_floor_sum.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/monoid_floor_sum.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/generalized_floor_sum.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/generalized_floor_sum_test.nim
   requiredBy: []

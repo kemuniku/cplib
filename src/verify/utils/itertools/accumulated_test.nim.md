@@ -40,9 +40,9 @@ data:
     \ result)\n\nvar N,Q = ii()\nvar a = newseqwith(N,ii()).accumulated(a+b,0)\n\n\
     for i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[r]-a[l]"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/utils/itertools.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/utils/itertools.nim

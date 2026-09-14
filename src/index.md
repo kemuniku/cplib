@@ -376,7 +376,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/lowlink.nim
       title: cplib/graph/lowlink.nim
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: cplib/graph/maxflow.nim
       title: cplib/graph/maxflow.nim
     - icon: ':heavy_check_mark:'
@@ -486,7 +486,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/isprime.nim
       title: cplib/math/isprime.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/isqrt.nim
       title: cplib/math/isqrt.nim
     - icon: ':heavy_check_mark:'
@@ -527,57 +527,57 @@ data:
       title: cplib/math/xor_basis.nim
   - name: cplib/matrix
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/bit_matrix_ops.nim
       title: cplib/matrix/bit_matrix_ops.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/field_matrix_ops.nim
       title: cplib/matrix/field_matrix_ops.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matops.nim
       title: cplib/matrix/matops.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix.nim
       title: cplib/matrix/matrix.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_avx2.nim
       title: cplib/matrix/matrix_avx2.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_avx2_field_impl.nim
       title: cplib/matrix/matrix_avx2_field_impl.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_avx2_kernel.nim
       title: cplib/matrix/matrix_avx2_kernel.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_mod2.nim
       title: cplib/matrix/matrix_mod2.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/matrix_product_avx2.nim
       title: cplib/matrix/matrix_product_avx2.nim
     - icon: ':heavy_check_mark:'
       path: cplib/matrix/rolling_hash_2d.nim
       title: cplib/matrix/rolling_hash_2d.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/static_matrix.nim
       title: cplib/matrix/static_matrix.nim
     - icon: ':warning:'
       path: cplib/matrix/static_matrix_avx2.nim
       title: cplib/matrix/static_matrix_avx2.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/matrix/static_matrix_mod2.nim
       title: cplib/matrix/static_matrix_mod2.nim
   - name: cplib/modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/barrett_impl.nim
       title: cplib/modint/barrett_impl.nim
     - icon: ':heavy_check_mark:'
       path: cplib/modint/exp_modint.nim
       title: cplib/modint/exp_modint.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/modint.nim
       title: cplib/modint/modint.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/modint/montgomery_impl.nim
       title: cplib/modint/montgomery_impl.nim
   - name: cplib/str
@@ -585,19 +585,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/aho_corasick.nim
       title: cplib/str/aho_corasick.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/can_reverse_hash_string.nim
       title: cplib/str/can_reverse_hash_string.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/compressed_trie.nim
       title: cplib/str/compressed_trie.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/edit_distance.nim
       title: cplib/str/edit_distance.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/fixedlength_merged_static_string.nim
       title: cplib/str/fixedlength_merged_static_string.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/hash_string.nim
       title: cplib/str/hash_string.nim
     - icon: ':heavy_check_mark:'
@@ -606,7 +606,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/lcs.nim
       title: cplib/str/lcs.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/manacher.nim
       title: cplib/str/manacher.nim
     - icon: ':heavy_check_mark:'
@@ -647,7 +647,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/citrus.nim
       title: cplib/tmpl/citrus.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/fastio.nim
       title: cplib/tmpl/fastio.nim
     - icon: ':heavy_check_mark:'
@@ -656,7 +656,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
     - icon: ':warning:'
@@ -743,6 +743,9 @@ data:
     - icon: ':question:'
       path: cplib/utils/itertools.nim
       title: cplib/utils/itertools.nim
+    - icon: ':question:'
+      path: cplib/utils/k_project_selection.nim
+      title: cplib/utils/k_project_selection.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/knapsack.nim
       title: cplib/utils/knapsack.nim
@@ -764,6 +767,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/monotone_minima.nim
       title: cplib/utils/monotone_minima.nim
+    - icon: ':question:'
+      path: cplib/utils/project_selection.nim
+      title: cplib/utils/project_selection.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/random_helper.nim
       title: cplib/utils/random_helper.nim
@@ -1515,6 +1521,9 @@ data:
       path: verify/AI/itertools_test.nim
       title: verify/AI/itertools_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/k_project_selection_test.nim
+      title: verify/AI/k_project_selection_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/k_shortest_walk_test.nim
       title: verify/AI/k_shortest_walk_test.nim
     - icon: ':heavy_check_mark:'
@@ -1646,6 +1655,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/primitive_root_test.nim
       title: verify/AI/primitive_root_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/project_selection_test.nim
+      title: verify/AI/project_selection_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/projection_test.nim
       title: verify/AI/projection_test.nim
@@ -2430,7 +2442,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/inverse_matrix_mod_2_static_test.nim
       title: verify/matrix/inverse_matrix_mod_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/inverse_matrix_mod_2_test.nim
       title: verify/matrix/inverse_matrix_mod_2_test.nim
     - icon: ':heavy_check_mark:'
@@ -2439,22 +2451,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/inverse_matrix_static_matrix_test.nim
       title: verify/matrix/inverse_matrix_static_matrix_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_compatibility_test.nim
       title: verify/matrix/matrix_avx2_compatibility_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_field_algorithms_unit_test.nim
       title: verify/matrix/matrix_avx2_field_algorithms_unit_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_field_differential_test.nim
       title: verify/matrix/matrix_avx2_field_differential_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_gc_test.nim
       title: verify/matrix/matrix_avx2_gc_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_test.nim
       title: verify/matrix/matrix_avx2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_avx2_unit_test.nim
       title: verify/matrix/matrix_avx2_unit_test.nim
     - icon: ':heavy_check_mark:'
@@ -2463,10 +2475,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_det_matrix_test.nim
       title: verify/matrix/matrix_det_matrix_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_det_mod_2_static_test.nim
       title: verify/matrix/matrix_det_mod_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_det_mod_2_test.nim
       title: verify/matrix/matrix_det_mod_2_test.nim
     - icon: ':heavy_check_mark:'
@@ -2478,25 +2490,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_field_algorithms_unit_test.nim
       title: verify/matrix/matrix_field_algorithms_unit_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
       title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_pow_test.nim
       title: verify/matrix/matrix_pow_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_product_avx2_test.nim
       title: verify/matrix/matrix_product_avx2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_product_avx2_unit_test.nim
       title: verify/matrix/matrix_product_avx2_unit_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_product_mod_2_static_test.nim
       title: verify/matrix/matrix_product_mod_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_product_mod_2_test.nim
       title: verify/matrix/matrix_product_mod_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_product_test.nim
       title: verify/matrix/matrix_product_test.nim
     - icon: ':heavy_check_mark:'
@@ -2505,10 +2517,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_rank_matrix_test.nim
       title: verify/matrix/matrix_rank_matrix_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_rank_mod_2_static_test.nim
       title: verify/matrix/matrix_rank_mod_2_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_rank_mod_2_test.nim
       title: verify/matrix/matrix_rank_mod_2_test.nim
     - icon: ':heavy_check_mark:'
@@ -2517,13 +2529,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_rank_static_matrix_test.nim
       title: verify/matrix/matrix_rank_static_matrix_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_unit_test.nim
       title: verify/matrix/matrix_unit_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_zoistring_test.nim
       title: verify/matrix/matrix_zoistring_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/static_matrix_avx2_unit_test.nim
       title: verify/matrix/static_matrix_avx2_unit_test.nim
     - icon: ':heavy_check_mark:'
@@ -2549,46 +2561,46 @@ data:
       title: verify/matrix/system_of_linear_equations_static_matrix_test.nim
   - name: verify/matrix/static_string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/static_string/static_matrix_unit_test.nim
       title: verify/matrix/static_string/static_matrix_unit_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/static_string/static_matrix_zoistring_test.nim
       title: verify/matrix/static_string/static_matrix_zoistring_test.nim
   - name: verify/modint
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/check_zerodivision_test.nim
       title: verify/modint/check_zerodivision_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/modint/integer_operation_test.nim
       title: verify/modint/integer_operation_test.nim
   - name: verify/str/can_reverse_hash_string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCP_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_Z_algo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/edit_distance_test.nim
       title: verify/str/edit_distance_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/get_palindromes_test.nim
       title: verify/str/get_palindromes_test.nim
     - icon: ':heavy_check_mark:'
@@ -2623,19 +2635,19 @@ data:
       title: verify/str/zalgorithm_test.nim
   - name: verify/str/hash_string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/hash_string/hash_string_LCP_test.nim
       title: verify/str/hash_string/hash_string_LCP_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/hash_string/hash_string_LCS_test.nim
       title: verify/str/hash_string/hash_string_LCS_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/hash_string/hash_string_Z_algo_test.nim
       title: verify/str/hash_string/hash_string_Z_algo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/hash_string/hash_string_mul_test.nim
       title: verify/str/hash_string/hash_string_mul_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
       title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str/static_string
@@ -2764,6 +2776,9 @@ data:
     - icon: ':x:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim
+    - icon: ':x:'
+      path: verify/utils/k_project_selection_abc326g_test.nim
+      title: verify/utils/k_project_selection_abc326g_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/lis_aoj_test.nim
       title: verify/utils/lis_aoj_test.nim

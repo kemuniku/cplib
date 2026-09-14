@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/manacher.nim
     title: cplib/str/manacher.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/manacher.nim
     title: cplib/str/manacher.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
     links:
@@ -54,21 +54,21 @@ data:
     \   assert not HS[(l-1)..<(r+1)].isPalindrome()\n\necho palindromes.mapit(it[1]-it[0]).join(\"\
     \ \")"
   dependsOn:
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/str/manacher.nim
+  - cplib/tmpl/fastio.nim
   - cplib/str/manacher.nim
   - cplib/utils/constants.nim
   - cplib/str/can_reverse_hash_string.nim
-  - cplib/str/can_reverse_hash_string.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/str/get_palindromes_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/get_palindromes_test.nim
 layout: document

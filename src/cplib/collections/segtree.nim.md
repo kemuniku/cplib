@@ -135,10 +135,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_test.nim
     title: verify/collections/segtree/segtree_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
   - icon: ':x:'

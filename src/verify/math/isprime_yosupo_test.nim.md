@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':question:'
@@ -45,14 +45,14 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/utils/constants.nim
-  - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
+  - cplib/math/isprime.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []

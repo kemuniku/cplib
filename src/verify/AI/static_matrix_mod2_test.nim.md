@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/bit_matrix_ops.nim
     title: cplib/matrix/bit_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   _extendedRequiredBy: []
@@ -127,12 +127,12 @@ data:
 
     '
   dependsOn:
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   isVerificationFile: true
   path: verify/AI/static_matrix_mod2_test.nim
   requiredBy: []

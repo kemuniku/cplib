@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/lowlink.nim
     title: cplib/graph/lowlink.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
@@ -40,12 +40,12 @@ data:
     \ in 0..<m:\n    let u = ii()\n    let v = ii()\n    g.add_edge(u, v)\nlet ll\
     \ = initLowLink(g)\nfor v in ll.articulation: echo v\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/lowlink_articulation_test.nim
   requiredBy: []

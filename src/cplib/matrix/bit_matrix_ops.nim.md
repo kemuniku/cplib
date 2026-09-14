@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_mod2.nim
     title: cplib/matrix/matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/static_matrix_mod2.nim
     title: cplib/matrix/static_matrix_mod2.nim
   - icon: ':warning:'
@@ -39,57 +39,57 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/inverse_matrix_mod_2_static_test.nim
     title: verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/inverse_matrix_mod_2_test.nim
     title: verify/matrix/inverse_matrix_mod_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/inverse_matrix_mod_2_test.nim
     title: verify/matrix/inverse_matrix_mod_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_det_mod_2_static_test.nim
     title: verify/matrix/matrix_det_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_det_mod_2_static_test.nim
     title: verify/matrix/matrix_det_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_det_mod_2_test.nim
     title: verify/matrix/matrix_det_mod_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_det_mod_2_test.nim
     title: verify/matrix/matrix_det_mod_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_mod_2_static_test.nim
     title: verify/matrix/matrix_product_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_mod_2_static_test.nim
     title: verify/matrix/matrix_product_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_mod_2_test.nim
     title: verify/matrix/matrix_product_mod_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_mod_2_test.nim
     title: verify/matrix/matrix_product_mod_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_rank_mod_2_static_test.nim
     title: verify/matrix/matrix_rank_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_rank_mod_2_static_test.nim
     title: verify/matrix/matrix_rank_mod_2_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_rank_mod_2_test.nim
     title: verify/matrix/matrix_rank_mod_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_rank_mod_2_test.nim
     title: verify/matrix/matrix_rank_mod_2_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -162,7 +162,7 @@ data:
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/static_matrix_mod2_test.nim
   - verify/AI/static_matrix_mod2_test.nim

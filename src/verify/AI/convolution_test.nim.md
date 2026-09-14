@@ -37,28 +37,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
@@ -148,26 +148,26 @@ data:
     \ intB) ==\n  convolutionNaiveMod[1_000_000_007](intA, intB)\nassert convolution[998_244_353](intA,\
     \ intB) ==\n  convolutionNaiveMod[998_244_353](intA, intB)\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/ntt.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/math/isprime.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
   - cplib/convolution/ntt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: true
   path: verify/AI/convolution_test.nim
   requiredBy: []

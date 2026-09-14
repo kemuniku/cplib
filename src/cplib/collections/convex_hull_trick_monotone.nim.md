@@ -64,8 +64,8 @@ data:
     \ x) >= chtValue(self.hull.lines[^2], x):\n                discard self.hull.lines.popLast()\n\
     \            return chtAnswer(chtValue(self.hull.lines[^1], x))\n"
   dependsOn:
-  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   isVerificationFile: false

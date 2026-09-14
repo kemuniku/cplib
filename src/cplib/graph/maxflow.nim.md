@@ -1,7 +1,19 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':question:'
+    path: cplib/utils/k_project_selection.nim
+    title: cplib/utils/k_project_selection.nim
+  - icon: ':question:'
+    path: cplib/utils/k_project_selection.nim
+    title: cplib/utils/k_project_selection.nim
+  - icon: ':question:'
+    path: cplib/utils/project_selection.nim
+    title: cplib/utils/project_selection.nim
+  - icon: ':question:'
+    path: cplib/utils/project_selection.nim
+    title: cplib/utils/project_selection.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/flow_test.nim
@@ -10,6 +22,18 @@ data:
     path: verify/AI/flow_test.nim
     title: verify/AI/flow_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/k_project_selection_test.nim
+    title: verify/AI/k_project_selection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/k_project_selection_test.nim
+    title: verify/AI/k_project_selection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/project_selection_test.nim
+    title: verify/AI/project_selection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/project_selection_test.nim
+    title: verify/AI/project_selection_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/maxflow_bipartitematching_test.nim
     title: verify/graph/maxflow_bipartitematching_test.nim
   - icon: ':heavy_check_mark:'
@@ -21,9 +45,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/maxflow_test.nim
     title: verify/graph/maxflow_test.nim
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/utils/k_project_selection_abc326g_test.nim
+    title: verify/utils/k_project_selection_abc326g_test.nim
+  - icon: ':x:'
+    path: verify/utils/k_project_selection_abc326g_test.nim
+    title: verify/utils/k_project_selection_abc326g_test.nim
+  _isVerificationFailed: true
   _pathExtension: nim
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -118,16 +148,26 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/graph/maxflow.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/utils/k_project_selection.nim
+  - cplib/utils/k_project_selection.nim
+  - cplib/utils/project_selection.nim
+  - cplib/utils/project_selection.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/utils/k_project_selection_abc326g_test.nim
+  - verify/utils/k_project_selection_abc326g_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/maxflow_test.nim
   - verify/graph/maxflow_test.nim
+  - verify/AI/k_project_selection_test.nim
+  - verify/AI/k_project_selection_test.nim
   - verify/AI/flow_test.nim
   - verify/AI/flow_test.nim
+  - verify/AI/project_selection_test.nim
+  - verify/AI/project_selection_test.nim
 documentation_of: cplib/graph/maxflow.nim
 layout: document
 redirect_from:

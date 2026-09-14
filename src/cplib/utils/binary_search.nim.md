@@ -21,10 +21,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/binary_search_test.nim
     title: verify/AI/binary_search_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - icon: ':x:'

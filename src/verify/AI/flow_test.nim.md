@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
   - icon: ':heavy_check_mark:'
@@ -135,8 +135,8 @@ data:
     \   g.add_edge(2, 3, 3)\n    g.add_edge(3, 4, 5)\n    doAssert g.flow(0, 4, 4)\
     \ == 4\n    doAssert g.flow(0, 4) == 1\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/mincostflow.nim
   - cplib/graph/maxflow.nim
+  - cplib/graph/mincostflow.nim
   - cplib/graph/maxflow.nim
   - cplib/graph/mincostflow.nim
   isVerificationFile: true

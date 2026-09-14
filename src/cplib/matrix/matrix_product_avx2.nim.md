@@ -1,59 +1,59 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_avx2_test.nim
     title: verify/matrix/matrix_product_avx2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_avx2_unit_test.nim
     title: verify/matrix/matrix_product_avx2_unit_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_avx2_unit_test.nim
     title: verify/matrix/matrix_product_avx2_unit_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -247,23 +247,23 @@ data:
     \ = initMatrix(n, k, T.init(0))\n        for i in 0 ..< n:\n            for j\
     \ in 0 ..< k:\n                result[i, j] = T.init(flatC[i * k + j].int)\n"
   dependsOn:
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/matrix.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_product_avx2.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_product_avx2_unit_test.nim
   - verify/matrix/matrix_product_avx2_unit_test.nim

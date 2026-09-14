@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
   _extendedRequiredBy: []

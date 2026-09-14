@@ -25,28 +25,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isqrt.nim
     title: cplib/math/isqrt.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/barrett_impl.nim
     title: cplib/modint/barrett_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/modint.nim
     title: cplib/modint/modint.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
@@ -557,22 +557,22 @@ data:
     \n    proc powRelaxed*[T: BarrettModint or MontgomeryModint](\n            f:\
     \ seq[T], k: int): seq[T] =\n        f.powRelaxed(k, f.len)\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
+  - cplib/convolution/ntt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/ntt.nim
   isVerificationFile: false
   path: cplib/convolution/relaxed_convolution.nim
   requiredBy:

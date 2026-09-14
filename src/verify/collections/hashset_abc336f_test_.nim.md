@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/hashset.nim
     title: cplib/collections/hashset.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matops.nim
     title: cplib/matrix/matops.nim
   _extendedRequiredBy: []
@@ -47,10 +47,10 @@ data:
     \        if si in tb2[i]:\n                ans = min(ans, i + k)\n           \
     \     break\necho if ans == 30: -1 else: ans\n"
   dependsOn:
-  - cplib/collections/hashset.nim
-  - cplib/collections/hashset.nim
   - cplib/matrix/matops.nim
   - cplib/matrix/matops.nim
+  - cplib/collections/hashset.nim
+  - cplib/collections/hashset.nim
   isVerificationFile: false
   path: verify/collections/hashset_abc336f_test_.nim
   requiredBy: []
