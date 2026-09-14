@@ -4,11 +4,12 @@ when not declared CPLIB_MATH_ISPRIME:
     static inline unsigned long long cplib_isprime_mont_mul(
         unsigned long long a, unsigned long long b,
         unsigned long long n, unsigned long long inverse) {
-        // n < 2^63、a, b < n なので加算も 128 bit に収まる。
+        // 128 bit の加算で桁あふれした場合も、減算後は 64 bit に収まる。
         __uint128_t t = (__uint128_t)a * b;
         unsigned long long q = (unsigned long long)t * inverse;
-        unsigned long long r = (unsigned long long)((t + (__uint128_t)q * n) >> 64);
-        return r >= n ? r - n : r;
+        __uint128_t sum = t + (__uint128_t)q * n;
+        unsigned long long r = (unsigned long long)(sum >> 64);
+        return sum < t || r >= n ? r - n : r;
     }
     static inline unsigned long long cplib_isprime_mont_r2(unsigned long long n) {
         // 符号なし整数の折り返しで 2^128 - n を作る。
@@ -22,7 +23,7 @@ when not declared CPLIB_MATH_ISPRIME:
         {.importcpp: "cplib_isprime_mont_r2(#)", nodecl.}
         ## 2^128 mod n を求める。O(1)。
 
-    proc montPowIsprime(a: uint64, exponent: int, n, inverse, one: uint64): uint64 =
+    proc montPowIsprime(a, exponent, n, inverse, one: uint64): uint64 =
         ## Montgomery 表現の累乗を求める。O(log exponent)。
         var a = a
         var exponent = exponent
@@ -34,20 +35,20 @@ when not declared CPLIB_MATH_ISPRIME:
                 a = montMulIsprime(a, a, n, inverse)
             exponent = exponent shr 1
 
-    proc isprime*(N: int): bool =
-        ## int の範囲の素数判定を行う。64 bit 以下で O(log N)。
-        let bases = [2, 325, 9375, 28178, 450775, 9780504, 1795265022]
+    proc isprime*(N: SomeInteger): bool =
+        ## 64 bit 以下の符号付き・符号なし整数の素数判定を行う。O(log N)。
+        let bases = [2u64, 325, 9375, 28178, 450775, 9780504, 1795265022]
         if N == 2:
             return true
         if N < 2 or (N and 1) == 0:
             return false
-        let N1 = N-1
+        let modulus = N.uint64
+        let N1 = modulus - 1
         var d = N1
         var s = 0
         while (d and 1) == 0:
             d = d shr 1
             s += 1
-        let modulus = N.uint64
         var inverse = modulus
         for _ in 0..<6:
             inverse *= 2u64 - modulus * inverse
@@ -56,9 +57,9 @@ when not declared CPLIB_MATH_ISPRIME:
         let one = montMulIsprime(1, r2, modulus, inverse)
         let minusOne = modulus - one
         for a in bases:
-            if a mod N == 0:
+            if a mod modulus == 0:
                 continue
-            let base = montMulIsprime((a mod N).uint64, r2, modulus, inverse)
+            let base = montMulIsprime((a mod modulus).uint64, r2, modulus, inverse)
             var t = montPowIsprime(base, d, modulus, inverse, one)
             if t == one or t == minusOne:
                 continue
