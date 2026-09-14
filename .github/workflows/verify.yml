@@ -11,6 +11,7 @@ jobs:
   verify:
     name: verify (Nim ${{ matrix.nim-version }})
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     strategy:
       fail-fast: false
@@ -98,11 +99,12 @@ jobs:
           YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         run: |
           cd src
+          # 600秒で未実行テストを残して成功扱いになるのを防ぎ、上限はジョブ側で管理する。
           if [ "${{ matrix.nim-version }}" = "1.6.20" ]; then
-            oj-verify run -j 4 --tle 10
+            oj-verify run -j 4 --tle 10 --timeout inf
           else
             # Unset the variable: even an empty GITHUB_TOKEN enables auto-push.
-            env -u GITHUB_TOKEN oj-verify run -j 4 --tle 10
+            env -u GITHUB_TOKEN oj-verify run -j 4 --tle 10 --timeout inf
           fi
 
       - name: Clear Verify Cache
