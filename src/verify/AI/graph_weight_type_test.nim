@@ -27,7 +27,7 @@ assertClose(g.dijkstra(0)[3], 4.25)
 assertClose(g.bellmanford(0)[3], 4.25)
 assertClose(g.shortest_path_dijkstra(0, 3).cost, 4.25)
 assertClose(g.shortest_path_bellmanford(0, 3).cost, 4.25)
-assertClose(g.warshall_floyd().d[0][3], 4.25)
+assertClose(g.warshall_floyd()[0][3], 4.25)
 
 let rg = g.reverse_edge()
 assertClose(rg.to_adjacency_matrix(1e100)[1][0], 1.5)

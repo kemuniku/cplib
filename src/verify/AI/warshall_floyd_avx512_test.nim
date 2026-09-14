@@ -8,7 +8,8 @@ echo "Hello World"
 
 
 import cplib/graph/graph
-import cplib/graph/warshall_floyd
+import cplib/graph/warshall_floyd_avx512
+import cplib/utils/constants
 
 var g = initWeightedDirectedGraph(3)
 g.add_edge(0, 1, 2)
@@ -18,10 +19,160 @@ let wf = g.warshall_floyd()
 assert not wf.hasNegativeCycle()
 assert wf[0][2] == 5
 
+var parallel = initWeightedDirectedGraph(2)
+parallel.add_edge(0, 1, 3)
+parallel.add_edge(0, 1, 7)
+parallel.add_edge(0, 0, 5)
+let parallelWf = parallel.warshall_floyd()
+assert not parallelWf.hasNegativeCycle()
+assert parallelWf[0][0] == 0
+assert parallelWf[0][1] == 3
+
+# Exercise both the four-lane AVX2 loop and its scalar tail with costs which
+# cannot be represented by int32.
+var wide = initWeightedDirectedGraph(10)
+wide.add_edge(0, 1, int(3_000_000_000))
+wide.add_edge(1, 2, int(4_000_000_000))
+wide.add_edge(2, 9, int(5_000_000_000))
+wide.add_edge(0, 9, int(20_000_000_000))
+let wideWf = wide.warshall_floyd()
+assert not wideWf.hasNegativeCycle()
+assert wideWf[0][2] == int(7_000_000_000)
+assert wideWf[0][9] == int(12_000_000_000)
+assert wideWf[9][0] == INF64
+
+# A complete graph selects the branch-free dense int64 kernel.  Potentials
+# make some edges negative while every cycle remains positive.
+var dense64 = initWeightedDirectedGraph(9)
+for i in 0..<9:
+    for j in 0..<9:
+        if i != j:
+            dense64.add_edge(i, j, 10 + 3 * j - 3 * i)
+let denseWf64 = dense64.warshall_floyd()
+assert not denseWf64.hasNegativeCycle()
+for i in 0..<9:
+    for j in 0..<9:
+        let expected = if i == j: 0 else: 10 + 3 * j - 3 * i
+        assert denseWf64[i][j] == expected
+
+# Cross the dense 256-vertex tile boundary.  Reduced costs are either one on
+# the directed ring or 100 otherwise; vertex potentials also create negative
+# edges without creating a negative cycle.
+const denseBlockedN = 257
+var denseBlocked = initWeightedDirectedGraph(denseBlockedN)
+for i in 0..<denseBlockedN:
+    let pi = 3 * (i mod 17)
+    for j in 0..<denseBlockedN:
+        if i != j:
+            let pj = 3 * (j mod 17)
+            let reduced = if j == (i + 1) mod denseBlockedN: 1 else: 100
+            denseBlocked.add_edge(i, j, reduced + pj - pi)
+let denseBlockedWf = denseBlocked.warshall_floyd()
+assert not denseBlockedWf.hasNegativeCycle()
+for i in 0..<denseBlockedN:
+    for j in 0..<denseBlockedN:
+        let ringDistance = (j - i + denseBlockedN) mod denseBlockedN
+        let reduced = if i == j: 0 else: min(ringDistance, 100)
+        let expected = reduced + 3 * (j mod 17) - 3 * (i mod 17)
+        assert denseBlockedWf[i][j] == expected
+
+let empty = initWeightedDirectedGraph(0).warshall_floyd()
+assert not empty.hasNegativeCycle()
+assert empty.len == 0
+
+# Cross a cache-block boundary in every phase of the blocked algorithm.
+var blocked = initWeightedDirectedGraph(217)
+for i in 0..<216:
+    blocked.add_edge(i, i + 1, 1)
+let blockedWf = blocked.warshall_floyd()
+assert not blockedWf.hasNegativeCycle()
+assert blockedWf[0][216] == 216
+assert blockedWf[216][0] == INF64
+
+# int32 uses eight AVX2 lanes and a separately tuned cache block.
+var g32 = initWeightedDirectedGraph(11, int32)
+g32.add_edge(0, 1, 300_000_000.int32)
+g32.add_edge(1, 2, 400_000_000.int32)
+g32.add_edge(2, 10, 50_000_000.int32)
+g32.add_edge(0, 10, 900_000_000.int32)
+let wf32 = g32.warshall_floyd()
+assert not wf32.hasNegativeCycle()
+assert wf32[0][2] == 700_000_000.int32
+assert wf32[0][10] == 750_000_000.int32
+assert wf32[10][0] == INF32
+
+var parallel32 = initWeightedDirectedGraph(2, int32)
+parallel32.add_edge(0, 1, 3.int32)
+parallel32.add_edge(0, 1, 7.int32)
+parallel32.add_edge(0, 0, 5.int32)
+let parallelWf32 = parallel32.warshall_floyd()
+assert not parallelWf32.hasNegativeCycle()
+assert parallelWf32[0][0] == 0.int32
+assert parallelWf32[0][1] == 3.int32
+
+let empty32 = initWeightedDirectedGraph(0, int32).warshall_floyd()
+assert not empty32.hasNegativeCycle()
+assert empty32.len == 0
+
+var blocked32 = initWeightedDirectedGraph(257, int32)
+for i in 0..<256:
+    blocked32.add_edge(i, i + 1, 1.int32)
+let blockedWf32 = blocked32.warshall_floyd()
+assert not blockedWf32.hasNegativeCycle()
+assert blockedWf32[0][256] == 256.int32
+assert blockedWf32[256][0] == INF32
+
+var static32 = initWeightedDirectedStaticGraph(4, int32)
+static32.add_edge(0, 1, 2.int32)
+static32.add_edge(1, 2, 3.int32)
+static32.add_edge(2, 3, 4.int32)
+static32.add_edge(0, 3, 20.int32)
+static32.build()
+let staticWf32 = static32.warshall_floyd()
+assert not staticWf32.hasNegativeCycle()
+assert staticWf32[0][3] == 9.int32
+
 var ng = initWeightedDirectedGraph(2)
 ng.add_edge(0, 1, -2)
 ng.add_edge(1, 0, -2)
 assert ng.warshall_floyd().hasNegativeCycle()
+
+import random, sequtils
+
+proc checkRandom[T](n: int, dense: bool, inf: T) =
+    var graph = initWeightedDirectedGraph(n, T)
+    var expected = newSeqWith(n, newSeqWith(n, inf))
+    for i in 0..<n:
+        expected[i][i] = T(0)
+        for j in 0..<n:
+            if i != j and (dense or rand(9) == 0):
+                let cost = T(rand(1..100) + 3 * (j mod 17) - 3 * (i mod 17))
+                graph.add_edge(i, j, cost)
+                expected[i][j] = cost
+    for k in 0..<n:
+        for i in 0..<n:
+            for j in 0..<n:
+                if expected[i][k] != inf and expected[k][j] != inf:
+                    expected[i][j] = min(expected[i][j], expected[i][k] + expected[k][j])
+    let actual = graph.warshall_floyd(T(0), inf)
+    doAssert not actual.hasNegativeCycle()
+    doAssert actual == expected
+
+randomize(512)
+for n in [1, 7, 8, 9, 15, 16, 17, 215, 216, 217, 255, 256, 257]:
+    for dense in [false, true]:
+        checkRandom[int](n, dense, INF64)
+        checkRandom[int32](n, dense, INF32)
+
+for n in [17, 257]:
+    var negative32 = initWeightedDirectedGraph(n, int32)
+    var negative64 = initWeightedDirectedGraph(n)
+    for i in 0..<n:
+        let cost = if i == n - 1: -n else: 1
+        negative32.add_edge(i, (i + 1) mod n, cost.int32)
+        negative64.add_edge(i, (i + 1) mod n, cost)
+    doAssert negative32.warshall_floyd().hasNegativeCycle()
+    doAssert negative64.warshall_floyd().hasNegativeCycle()
 
 
 block:
