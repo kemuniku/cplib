@@ -67,7 +67,7 @@ for n in 0..6:
             if isConvex: checkConvex(a, b)
             if isConcave: checkConcave(a, b)
 
-checkConvex(@[low(int64), 0, high(int64)], @[0'i64])
+checkConvex(@[low(int64), -1, high(int64)], @[0'i64])
 checkConcave(@[high(int64), 0, low(int64)], @[0'i64])
 checkConvex(@[1.0, 0.5, 1.0], @[2.5, -1.0, 3.0])
 checkConcave(@[-1.0, -0.5, -1.0], @[2.5, -1.0, 3.0])
@@ -93,6 +93,22 @@ for h in 0..40:
         for r in 0..<h: doAssert s[r] == (if w == 0: -1 else: min(r, w - 1))
         proc tied(row, oldCol, newCol: int): bool = false
         for x in smawk(h, w, tied): doAssert x == (if w == 0: -1 else: 0)
+        var matrix = newSeq[seq[int]](h)
+        for r in 0..<h:
+            matrix[r] = newSeq[int](w)
+            var delta = rng.rand(-10..10)
+            for c in 0..<w:
+                delta -= rng.rand(0..3)
+                matrix[r][c] = if r == 0: rng.rand(-100..100)
+                               else: matrix[r - 1][c] + delta
+        proc mongeBetter(row, oldCol, newCol: int): bool =
+            matrix[row][newCol] < matrix[row][oldCol]
+        let minima = smawk(h, w, mongeBetter)
+        for r in 0..<h:
+            var best = -1
+            for c in 0..<w:
+                if best == -1 or matrix[r][c] < matrix[r][best]: best = c
+            doAssert minima[r] == best
 for n in [31, 32, 33, 63, 64, 65, 127, 128, 129, 255, 256, 257, 513]:
     for m in [33, 65, 129, 257]:
         var a = convex(n)
@@ -105,4 +121,31 @@ for n in [31, 32, 33, 63, 64, 65, 127, 128, 129, 255, 256, 257, 513]:
         for x in a.mitems: x = 0
         for x in b.mitems: x = 0
         checkConcave(a, b)
+
+when defined(debug):
+    template rejects(body: untyped) =
+        block:
+            var rejected = false
+            try:
+                discard body
+            except AssertionDefect:
+                rejected = true
+            doAssert rejected
+
+    rejects(minPlusConvolutionConvexConvex(@[0, 2, 3], @[0]))
+    rejects(minPlusConvolutionConvexConvex(@[0], @[0, 2, 3]))
+    rejects(minPlusConvolutionConvexArbitraryMonotoneMinima(@[0, 2, 3], @[0]))
+    rejects(minPlusConvolutionConvexArbitrarySmawk(@[0, 2, 3], @[0]))
+    rejects(minPlusConvolutionConcaveConcave(@[0, 1, 3], @[0]))
+    rejects(minPlusConvolutionConcaveConcave(@[0], @[0, 1, 3]))
+    rejects(minPlusConvolutionConcaveArbitrary(@[0, 1, 3], @[0]))
+    rejects(minPlusConvolutionConvexArbitrarySmawk(@[low(int64), 0, high(int64)], @[0'i64]))
+    rejects(minPlusConvolutionConcaveArbitrary(@[high(int64), -1, low(int64)], @[0'i64]))
+    rejects(minPlusConvolutionConvexConvex(@[0, 2, 3], newSeq[int]()))
+    rejects(minPlusConvolutionConcaveConcave(newSeq[int](), @[0, 1, 3]))
+    checkConvex(@[0'u64, 0, high(uint64)], @[0'u64])
+    checkConcave(@[high(uint64), high(uint64), 0'u64], @[0'u64])
+    checkConvex(@[low(int8), -1'i8, high(int8)], @[0'i8])
+    checkConcave(@[high(int8), 0'i8, low(int8)], @[0'i8])
+
 echo "Hello World"
