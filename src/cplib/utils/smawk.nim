@@ -7,38 +7,42 @@ when not declared CPLIB_UTILS_SMAWK:
         ## 同値なら左端を返す。幅が 0 なら各行に -1 を返す。
         assert height >= 0 and width >= 0, "高さと幅は非負である必要があります"
         var answer = newSeq[int](height)
-        for r in 0..<height: answer[r] = -1
-        if height == 0 or width == 0: return answer
-        proc solve(rows, columns: seq[int]) =
-            ## 列削減と奇数行への再帰で行最小値を求める。
-            if rows.len == 0: return
-            var reduced = newSeqOfCap[int](min(rows.len, columns.len))
-            for c in columns:
-                while reduced.len > 0 and better(rows[reduced.len - 1], reduced[^1], c):
-                    reduced.setLen(reduced.len - 1)
-                if reduced.len < rows.len: reduced.add(c)
-            var odd = newSeqOfCap[int](rows.len div 2)
-            var i = 1
-            while i < rows.len:
-                odd.add(rows[i])
-                i += 2
-            solve(odd, reduced)
-            var left = 0
-            i = 0
-            while i < rows.len:
-                var right = reduced.len - 1
-                if i + 1 < rows.len:
-                    right = left
-                    while reduced[right] != answer[rows[i + 1]]: inc right
-                var best = left
-                for j in left + 1..right:
-                    if better(rows[i], reduced[best], reduced[j]): best = j
-                answer[rows[i]] = reduced[best]
-                left = right
-                i += 2
-        var rows = newSeq[int](height)
-        var columns = newSeq[int](width)
-        for i in 0..<height: rows[i] = i
+        if width == 0:
+            for r in 0..<height: answer[r] = -1
+            return answer
+        if height == 0: return answer
+        var capacity = width
+        var count = height
+        while count > 0:
+            capacity += min(count, width)
+            count = count div 2
+        var columns = newSeq[int](capacity)
         for i in 0..<width: columns[i] = i
-        solve(rows, columns)
+        proc solve(first, step, count, offset, width: int) =
+            ## 行を等差数列で表し、列削減に共有配列を使う。時間 O(count + width)。
+            let reduced = offset + width
+            var size = 0
+            for p in offset..<reduced:
+                let col = columns[p]
+                while size > 0 and better(first + (size - 1) * step, columns[reduced + size - 1], col):
+                    dec size
+                if size < count:
+                    columns[reduced + size] = col
+                    inc size
+            if count > 1:
+                solve(first + step, step * 2, count div 2, reduced, size)
+            var left = 0
+            var i = 0
+            while i < count:
+                let row = first + i * step
+                let right = if i + 1 < count: answer[row + step]
+                            else: columns[reduced + size - 1]
+                var best = columns[reduced + left]
+                while columns[reduced + left] < right:
+                    inc left
+                    let col = columns[reduced + left]
+                    if better(row, best, col): best = col
+                answer[row] = best
+                i += 2
+        solve(0, 1, height, 0, width)
         return answer
