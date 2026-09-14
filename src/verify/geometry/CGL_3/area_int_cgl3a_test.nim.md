@@ -66,11 +66,11 @@ data:
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
   - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_3/area_int_cgl3a_test.nim
   requiredBy: []

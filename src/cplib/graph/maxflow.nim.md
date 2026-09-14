@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/k_project_selection.nim
     title: cplib/utils/k_project_selection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/k_project_selection.nim
     title: cplib/utils/k_project_selection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/project_selection.nim
     title: cplib/utils/project_selection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/project_selection.nim
     title: cplib/utils/project_selection.nim
   _extendedVerifiedWith:
@@ -45,15 +45,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/maxflow_test.nim
     title: verify/graph/maxflow_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/k_project_selection_abc326g_test.nim
     title: verify/utils/k_project_selection_abc326g_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/k_project_selection_abc326g_test.nim
     title: verify/utils/k_project_selection_abc326g_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -154,7 +154,7 @@ data:
   - cplib/utils/project_selection.nim
   - cplib/utils/project_selection.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/k_project_selection_abc326g_test.nim
   - verify/utils/k_project_selection_abc326g_test.nim

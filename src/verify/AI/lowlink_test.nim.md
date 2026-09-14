@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/block_cut_tree.nim
     title: cplib/graph/block_cut_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -124,16 +124,16 @@ data:
     \    doAssert initBlockCutTree(bc).forest.len == 2*n-3\n\necho \"Hello World\"\
     \n"
   dependsOn:
+  - cplib/graph/biconnected_components.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/block_cut_tree.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
   - cplib/graph/block_cut_tree.nim
-  - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
   - cplib/graph/two_edge_connected_components.nim
-  - cplib/graph/biconnected_components.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/lowlink_test.nim
   requiredBy: []

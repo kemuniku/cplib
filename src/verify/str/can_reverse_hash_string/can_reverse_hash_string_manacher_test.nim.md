@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []
@@ -40,8 +40,8 @@ data:
   dependsOn:
   - cplib/utils/binary_search.nim
   - cplib/str/can_reverse_hash_string.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   requiredBy: []

@@ -3,33 +3,33 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_grundy_test.nim
     title: verify/utils/game_grundy_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_grundy_test.nim
     title: verify/utils/game_grundy_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_optimal_play_test.nim
     title: verify/utils/game_optimal_play_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_optimal_play_test.nim
     title: verify/utils/game_optimal_play_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_test.nim
     title: verify/utils/game_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_test.nim
     title: verify/utils/game_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_warning_test.nim
     title: verify/utils/game_warning_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/game_warning_test.nim
     title: verify/utils/game_warning_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -466,7 +466,7 @@ data:
   path: cplib/utils/game.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/game_optimal_play_test.nim
   - verify/utils/game_optimal_play_test.nim

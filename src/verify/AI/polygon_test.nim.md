@@ -58,11 +58,11 @@ data:
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/AI/polygon_test.nim
   requiredBy: []

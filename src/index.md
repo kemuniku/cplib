@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/QSWAG.nim
       title: cplib/collections/QSWAG.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
     - icon: ':heavy_check_mark:'
@@ -144,7 +144,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/rootvalue_unionfind.nim
       title: cplib/collections/rootvalue_unionfind.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/segtree.nim
       title: cplib/collections/segtree.nim
     - icon: ':heavy_check_mark:'
@@ -165,7 +165,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/slopetrick.nim
       title: cplib/collections/slopetrick.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/staticRMQ.nim
       title: cplib/collections/staticRMQ.nim
     - icon: ':heavy_check_mark:'
@@ -355,7 +355,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/general_matching.nim
       title: cplib/graph/general_matching.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'
@@ -376,7 +376,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/lowlink.nim
       title: cplib/graph/lowlink.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/maxflow.nim
       title: cplib/graph/maxflow.nim
     - icon: ':heavy_check_mark:'
@@ -430,6 +430,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/warshall_floyd_avx.nim
       title: cplib/graph/warshall_floyd_avx.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/warshall_floyd_avx512.nim
+      title: cplib/graph/warshall_floyd_avx512.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/warshall_floyd_negative.nim
+      title: cplib/graph/warshall_floyd_negative.nim
   - name: cplib/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -618,7 +624,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/repeated_static_string.nim
       title: cplib/str/repeated_static_string.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/rolling_hash.nim
       title: cplib/str/rolling_hash.nim
     - icon: ':heavy_check_mark:'
@@ -627,10 +633,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/run_length_encode.nim
       title: cplib/str/run_length_encode.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/static_string.nim
       title: cplib/str/static_string.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/str/suffix_array.nim
       title: cplib/str/suffix_array.nim
     - icon: ':heavy_check_mark:'
@@ -670,39 +676,39 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tree/centroid_decomposition.nim
       title: cplib/tree/centroid_decomposition.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/lazy_subtree_link_cut_tree.nim
       title: cplib/tree/lazy_subtree_link_cut_tree.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/link_cut_tree.nim
       title: cplib/tree/link_cut_tree.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/prufer.nim
       title: cplib/tree/prufer.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/rerooting.nim
       title: cplib/tree/rerooting.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/rerooting_static_top_tree_dp.nim
       title: cplib/tree/rerooting_static_top_tree_dp.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/static_top_tree.nim
       title: cplib/tree/static_top_tree.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/static_top_tree_dp.nim
       title: cplib/tree/static_top_tree_dp.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/tree_hash.nim
       title: cplib/tree/tree_hash.nim
   - name: cplib/tree/private
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/private/link_cut_tree_base.nim
       title: cplib/tree/private/link_cut_tree_base.nim
   - name: cplib/utils
@@ -710,19 +716,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/area_of_union_of_rectangles.nim
       title: cplib/utils/area_of_union_of_rectangles.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/bititers.nim
       title: cplib/utils/bititers.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/constants.nim
       title: cplib/utils/constants.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/cumsum2d.nim
       title: cplib/utils/cumsum2d.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/game.nim
       title: cplib/utils/game.nim
     - icon: ':heavy_check_mark:'
@@ -737,13 +743,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/implicit_dijkstra.nim
       title: cplib/utils/implicit_dijkstra.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/inversion_number.nim
       title: cplib/utils/inversion_number.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/itertools.nim
       title: cplib/utils/itertools.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/k_project_selection.nim
       title: cplib/utils/k_project_selection.nim
     - icon: ':heavy_check_mark:'
@@ -767,7 +773,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/monotone_minima.nim
       title: cplib/utils/monotone_minima.nim
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/project_selection.nim
       title: cplib/utils/project_selection.nim
     - icon: ':heavy_check_mark:'
@@ -782,6 +788,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/smawk.nim
       title: cplib/utils/smawk.nim
+  - name: verify/AI
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_register_cases.nim
+      title: verify/AI/warshall_floyd_avx512_register_cases.nim
   - name: verify/collections/avlset/multiset
     pages:
     - icon: ':warning:'
@@ -1800,8 +1811,35 @@ data:
       path: verify/AI/unionfind_test.nim
       title: verify/AI/unionfind_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+      title: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_register_large_test.nim
+      title: verify/AI/warshall_floyd_avx512_register_large_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+      title: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+      title: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+      title: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_register_test.nim
+      title: verify/AI/warshall_floyd_avx512_register_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx512_test.nim
+      title: verify/AI/warshall_floyd_avx512_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_avx_exact_test.nim
+      title: verify/AI/warshall_floyd_avx_exact_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/warshall_floyd_avx_test.nim
       title: verify/AI/warshall_floyd_avx_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/warshall_floyd_negative_test.nim
+      title: verify/AI/warshall_floyd_negative_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/warshall_floyd_test.nim
       title: verify/AI/warshall_floyd_test.nim
@@ -2612,13 +2650,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/palindromic_tree_test.nim
       title: verify/str/palindromic_tree_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_aoj_test.nim
       title: verify/str/rolling_hash_aoj_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
       title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
       title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
     - icon: ':heavy_check_mark:'
@@ -2627,7 +2665,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/run_length_encode_test.nim
       title: verify/str/run_length_encode_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/suffix_array_test.nim
       title: verify/str/suffix_array_test.nim
     - icon: ':heavy_check_mark:'
@@ -2652,28 +2690,28 @@ data:
       title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str/static_string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_LCS_test.nim
       title: verify/str/static_string/static_string_LCS_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
       title: verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_LCS_useSA_test.nim
       title: verify/str/static_string/static_string_LCS_useSA_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_SA_test.nim
       title: verify/str/static_string/static_string_SA_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
       title: verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_initSA_test.nim
       title: verify/str/static_string/static_string_initSA_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_lcp_test.nim
       title: verify/str/static_string/static_string_lcp_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_zalgo_test.nim
       title: verify/str/static_string/static_string_zalgo_test.nim
   - name: verify/tmpl
@@ -2689,65 +2727,65 @@ data:
       title: verify/tmpl/fastio_many_aplusb_test.nim
   - name: verify/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/auxiliaryweightedtree_test.nim
       title: verify/tree/auxiliaryweightedtree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/tree/cartesiantree_test.nim
       title: verify/tree/cartesiantree_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_dynamic_test.nim
       title: verify/tree/diameter_dynamic_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_static_test.nim
       title: verify/tree/diameter_static_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_yosupo_test.nim
       title: verify/tree/diameter_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
       title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/point_set_tree_path_composite_sum_test.nim
       title: verify/tree/point_set_tree_path_composite_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/rerooting_test.nim
       title: verify/tree/rerooting_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/rooted_tree_isomorphism_classification_test.nim
       title: verify/tree/rooted_tree_isomorphism_classification_test.nim
   - name: verify/tree/hld
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_la_yosupo_test.nim
       title: verify/tree/hld/hld_la_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_lca_yosupo_test.nim
       title: verify/tree/hld/hld_lca_yosupo_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
       title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - name: verify/tree/link_cut_tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/link_cut_tree/link_cut_tree_test.nim
       title: verify/tree/link_cut_tree/link_cut_tree_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
       title: verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
       title: verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
       title: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
       title: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - name: verify/utils
@@ -2761,22 +2799,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_int_test.nim
       title: verify/utils/binary_search_int_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/game_grundy_test.nim
       title: verify/utils/game_grundy_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/game_optimal_play_test.nim
       title: verify/utils/game_optimal_play_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/game_test.nim
       title: verify/utils/game_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/game_warning_test.nim
       title: verify/utils/game_warning_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/k_project_selection_abc326g_test.nim
       title: verify/utils/k_project_selection_abc326g_test.nim
     - icon: ':heavy_check_mark:'
@@ -2787,22 +2825,22 @@ data:
       title: verify/utils/restore_lis_aoj_test.nim
   - name: verify/utils/itertools
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulate_test.nim
       title: verify/utils/itertools/accumulate_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulated_2_test.nim
       title: verify/utils/itertools/accumulated_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulated_test.nim
       title: verify/utils/itertools/accumulated_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulatedr_2_test.nim
       title: verify/utils/itertools/accumulatedr_2_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulatedr_test.nim
       title: verify/utils/itertools/accumulatedr_test.nim
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/utils/itertools/accumulater_test.nim
       title: verify/utils/itertools/accumulater_test.nim
   - name: verify/utils/knapsack

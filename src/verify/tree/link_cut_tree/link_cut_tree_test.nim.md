@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/lazy_subtree_link_cut_tree.nim
     title: cplib/tree/lazy_subtree_link_cut_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/lazy_subtree_link_cut_tree.nim
     title: cplib/tree/lazy_subtree_link_cut_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/link_cut_tree.nim
     title: cplib/tree/link_cut_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/link_cut_tree.nim
     title: cplib/tree/link_cut_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
@@ -157,17 +157,17 @@ data:
     \ lazy.componentProd(x) == expected\n    for u in 0..<n:\n        for v in 0..<n:\
     \ checkPath(u, v)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/link_cut_tree.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/link_cut_tree.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/link_cut_tree_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/link_cut_tree/link_cut_tree_test.nim
 layout: document

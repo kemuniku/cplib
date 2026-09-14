@@ -56,9 +56,9 @@ data:
   - cplib/utils/mo.nim
   - cplib/utils/mo.nim
   - cplib/math/combination.nim
-  - cplib/math/combination_prefix_sum.nim
-  - cplib/math/combination_prefix_sum.nim
   - cplib/math/combination.nim
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/math/combination_prefix_sum.nim
   isVerificationFile: true
   path: verify/math/combination_prefix_sum_test.nim
   requiredBy: []

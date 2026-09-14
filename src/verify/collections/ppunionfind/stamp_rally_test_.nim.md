@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/ppunionfind.nim
     title: cplib/collections/ppunionfind.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/binary_search.nim
     title: cplib/utils/binary_search.nim
   _extendedRequiredBy: []
@@ -38,10 +38,10 @@ data:
     \    else:\n            return UF.size(x,arg)+UF.size(y,arg) >= z\n    echo meguru_bisect(M,0,is_ok)\n\
     \n"
   dependsOn:
-  - cplib/utils/binary_search.nim
   - cplib/collections/ppunionfind.nim
   - cplib/utils/binary_search.nim
   - cplib/collections/ppunionfind.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: false
   path: verify/collections/ppunionfind/stamp_rally_test_.nim
   requiredBy: []

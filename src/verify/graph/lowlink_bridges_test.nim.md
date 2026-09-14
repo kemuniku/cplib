@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -42,11 +42,11 @@ data:
     \ bridges.add((min(u, v), max(u, v)))\nbridges.sort()\nfor (u, v) in bridges:\
     \ echo u, \" \", v\n"
   dependsOn:
+  - cplib/graph/lowlink.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/lowlink_bridges_test.nim

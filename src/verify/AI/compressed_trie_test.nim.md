@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticRMQ.nim
     title: cplib/collections/staticRMQ.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,16 +19,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
   _extendedRequiredBy: []
@@ -109,15 +109,15 @@ data:
 
     '
   dependsOn:
+  - cplib/str/suffix_array.nim
   - cplib/str/compressed_trie.nim
-  - cplib/str/compressed_trie.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/str/suffix_array.nim
   - cplib/graph/graph.nim
   - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim

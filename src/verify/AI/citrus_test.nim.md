@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -128,10 +128,10 @@ data:
     '
   dependsOn:
   - cplib/tmpl/citrus.nim
+  - cplib/math/isqrt.nim
   - cplib/tmpl/citrus.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
+  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/citrus_test.nim

@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/k_project_selection.nim
     title: cplib/utils/k_project_selection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/k_project_selection.nim
     title: cplib/utils/k_project_selection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/project_selection.nim
     title: cplib/utils/project_selection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/project_selection.nim
     title: cplib/utils/project_selection.nim
   _extendedRequiredBy: []
@@ -125,10 +125,10 @@ data:
     \ opt = initKProjectSelection([2], int64)\n    opt.add_cost(0, 1, high(int64))\n\
     \    expectError(OverflowDefect): discard opt.solve()\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/maxflow.nim
+  - cplib/utils/project_selection.nim
+  - cplib/utils/project_selection.nim
   - cplib/utils/k_project_selection.nim
-  - cplib/utils/project_selection.nim
-  - cplib/utils/project_selection.nim
+  - cplib/graph/maxflow.nim
   - cplib/utils/k_project_selection.nim
   - cplib/graph/maxflow.nim
   isVerificationFile: true

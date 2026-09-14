@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -42,10 +42,10 @@ data:
     \ u, \" \", v\n"
   dependsOn:
   - cplib/graph/general_matching.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/general_matching.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/general_matching_test.nim

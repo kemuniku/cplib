@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   - icon: ':heavy_check_mark:'
@@ -54,8 +54,8 @@ data:
     \ == INF64\ndoAssert unreachable.path.len == 0\n"
   dependsOn:
   - cplib/utils/implicit_dijkstra.nim
-  - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/constants.nim
+  - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/implicit_dijkstra_test.nim

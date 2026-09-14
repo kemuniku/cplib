@@ -86,6 +86,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd_avx.nim
     title: cplib/graph/warshall_floyd_avx.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_avx512.nim
+    title: cplib/graph/warshall_floyd_avx512.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_avx512.nim
+    title: cplib/graph/warshall_floyd_avx512.nim
   - icon: ':warning:'
     path: cplib/math/combination_int.nim
     title: cplib/math/combination_int.nim
@@ -122,6 +128,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/knapsack.nim
     title: cplib/utils/knapsack.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_cases.nim
+    title: verify/AI/warshall_floyd_avx512_register_cases.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_cases.nim
+    title: verify/AI/warshall_floyd_avx512_register_cases.nim
   - icon: ':warning:'
     path: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
     title: verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
@@ -298,11 +310,65 @@ data:
     path: verify/AI/tsp_test.nim
     title: verify/AI/tsp_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_test.nim
+    title: verify/AI/warshall_floyd_avx512_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_test.nim
+    title: verify/AI/warshall_floyd_avx512_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx_exact_test.nim
+    title: verify/AI/warshall_floyd_avx_exact_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx_exact_test.nim
+    title: verify/AI/warshall_floyd_avx_exact_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_avx_test.nim
     title: verify/AI/warshall_floyd_avx_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_avx_test.nim
     title: verify/AI/warshall_floyd_avx_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_negative_test.nim
+    title: verify/AI/warshall_floyd_negative_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_negative_test.nim
+    title: verify/AI/warshall_floyd_negative_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
@@ -417,10 +483,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
   - icon: ':heavy_check_mark:'
@@ -459,9 +525,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
     title: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -494,6 +560,8 @@ data:
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/namori_forest_test_.nim
   - verify/graph/namori_forest_test_.nim
+  - verify/AI/warshall_floyd_avx512_register_cases.nim
+  - verify/AI/warshall_floyd_avx512_register_cases.nim
   - cplib/math/combination_int.nim
   - cplib/math/combination_int.nim
   - cplib/tmpl/citrus.nim
@@ -530,12 +598,14 @@ data:
   - cplib/graph/tsp.nim
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd_avx.nim
+  - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/bellmanford.nim
   timestamp: '2025-03-09 17:42:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
@@ -587,6 +657,8 @@ data:
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
   - verify/AI/lichaotree_test.nim
   - verify/AI/lichaotree_test.nim
   - verify/AI/constants_test.nim
@@ -597,6 +669,8 @@ data:
   - verify/AI/namori_graph_test.nim
   - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/implicit_dijkstra_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
   - verify/AI/slopetrick_test.nim
   - verify/AI/slopetrick_test.nim
   - verify/AI/k_shortest_walk_test.nim
@@ -611,14 +685,28 @@ data:
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/knapsack_test.nim
   - verify/AI/knapsack_test.nim
+  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
   - verify/AI/namori_forest_test.nim
   - verify/AI/namori_forest_test.nim
+  - verify/AI/warshall_floyd_avx_exact_test.nim
+  - verify/AI/warshall_floyd_avx_exact_test.nim
+  - verify/AI/warshall_floyd_negative_test.nim
+  - verify/AI/warshall_floyd_negative_test.nim
+  - verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - verify/AI/warshall_floyd_avx512_test.nim
+  - verify/AI/warshall_floyd_avx512_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
   - verify/AI/warshall_floyd_avx_test.nim
   - verify/AI/warshall_floyd_avx_test.nim
   - verify/AI/warshall_floyd_test.nim
   - verify/AI/warshall_floyd_test.nim
+  - verify/AI/warshall_floyd_avx512_register_test.nim
+  - verify/AI/warshall_floyd_avx512_register_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/graph_weight_type_test.nim

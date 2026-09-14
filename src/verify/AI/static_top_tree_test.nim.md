@@ -1,34 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting_static_top_tree_dp.nim
     title: cplib/tree/rerooting_static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting_static_top_tree_dp.nim
     title: cplib/tree/rerooting_static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree.nim
     title: cplib/tree/static_top_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree.nim
     title: cplib/tree/static_top_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree_dp.nim
     title: cplib/tree/static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree_dp.nim
     title: cplib/tree/static_top_tree_dp.nim
   _extendedRequiredBy: []
@@ -141,15 +141,15 @@ data:
     \ size - chain)\n    appendTree(0, largeN)\n    assert parent.len == largeN\n\
     \    checkLarge(parent)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/tree/static_top_tree_dp.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree_dp.nim
   - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree_dp.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
   isVerificationFile: true
   path: verify/AI/static_top_tree_test.nim

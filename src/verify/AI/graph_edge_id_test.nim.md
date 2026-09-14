@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -56,15 +56,21 @@ data:
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_negative.nim
+    title: cplib/graph/warshall_floyd_negative.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_negative.nim
+    title: cplib/graph/warshall_floyd_negative.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -126,7 +132,7 @@ data:
     \        assert g.bellmanford(0) == @[0, 1, 2]\n        assert g.maxk_dijkstra(0,\
     \ 2) == @[0, 1, 2]\n        assert g.shortest_path_dijkstra(0, 2).cost == 2\n\
     \        assert g.shortest_path_bellmanford(0, 2).cost == 2\n        assert g.shortest_path_maxk_dijkstra(0,\
-    \ 2, 2).cost == 2\n        assert g.warshall_floyd().d[0][2] == 2\n        assert\
+    \ 2, 2).cost == 2\n        assert g.warshall_floyd()[0][2] == 2\n        assert\
     \ g.k_shortest_walk(0, 2, 2) == @[2, INF64]\n\ncheckAlgorithms(initUnWeightedDirectedGraph(3),\
     \ false)\ncheckAlgorithms(initUnWeightedDirectedStaticGraph(3), true)\n\nvar empty\
     \ = initUnWeightedUnDirectedStaticGraph(0)\nempty.build()\nempty.build()\nassert\
@@ -140,32 +146,34 @@ data:
     \ World\"\n\nvar tree = initUnWeightedUnDirectedGraph(3)\ntree.add_edge(0, 1)\n\
     tree.add_edge(1, 2)\nassert tree.steiner_tree_mincost(@[0, 2]) == 2\n"
   dependsOn:
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/graph/bellmanford.nim
   - cplib/utils/constants.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/steiner_tree.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/utils/bititers.nim
   - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/AI/graph_edge_id_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 16:47:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/graph_edge_id_test.nim

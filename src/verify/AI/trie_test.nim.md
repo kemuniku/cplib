@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -127,9 +127,9 @@ data:
     \ == edge.cost\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/str/trie.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/str/trie.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/trie_test.nim
   requiredBy: []

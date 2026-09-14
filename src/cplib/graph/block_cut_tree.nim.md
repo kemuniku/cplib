@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -61,10 +61,10 @@ data:
     \ = initBlockCutTree(initBiconnectedComponents(g))\n"
   dependsOn:
   - cplib/graph/biconnected_components.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/block_cut_tree.nim

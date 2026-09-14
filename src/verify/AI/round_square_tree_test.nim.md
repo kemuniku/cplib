@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/biconnected_components.nim
     title: cplib/graph/biconnected_components.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -86,13 +86,13 @@ data:
     \ == 2\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/biconnected_components.nim
-  - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
   - cplib/graph/round_square_tree.nim
-  - cplib/graph/round_square_tree.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/round_square_tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/round_square_tree_test.nim
   requiredBy: []

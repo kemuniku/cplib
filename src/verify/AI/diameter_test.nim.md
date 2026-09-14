@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
   _extendedRequiredBy: []
@@ -81,10 +81,10 @@ data:
 
     '
   dependsOn:
-  - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/AI/diameter_test.nim
   requiredBy: []

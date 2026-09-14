@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxflow.nim
     title: cplib/graph/maxflow.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/project_selection.nim
     title: cplib/utils/project_selection.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/project_selection.nim
     title: cplib/utils/project_selection.nim
   _extendedRequiredBy: []
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/k_project_selection_test.nim
     title: verify/AI/k_project_selection_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/k_project_selection_abc326g_test.nim
     title: verify/utils/k_project_selection_abc326g_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/k_project_selection_abc326g_test.nim
     title: verify/utils/k_project_selection_abc326g_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -179,15 +179,15 @@ data:
     \ = newSeq[int](opt.sizes.len)\n        for i, k in opt.sizes:\n            for\
     \ t in 1..<k:\n                if answer.assignment[opt.kpsGe(i, t)]: inc result.assignment[i]\n"
   dependsOn:
+  - cplib/utils/project_selection.nim
+  - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
-  - cplib/utils/project_selection.nim
-  - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
   isVerificationFile: false
   path: cplib/utils/k_project_selection.nim
   requiredBy: []
   timestamp: '2026-09-14 12:19:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/k_project_selection_abc326g_test.nim
   - verify/utils/k_project_selection_abc326g_test.nim

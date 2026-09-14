@@ -21,27 +21,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/rolling_hash_test.nim
     title: verify/AI/rolling_hash_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_aoj_test.nim
     title: verify/str/rolling_hash_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_aoj_test.nim
     title: verify/str/rolling_hash_aoj_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
     title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
     title: verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
     title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
     title: verify/str/rolling_hash_yosupo_zalgorithm_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -101,7 +101,7 @@ data:
   - verify/str/rolling_hash_pun_test_.nim
   - verify/str/rolling_hash_pun_test_.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim

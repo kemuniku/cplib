@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -73,16 +73,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_negative.nim
+    title: cplib/graph/warshall_floyd_negative.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_negative.nim
+    title: cplib/graph/warshall_floyd_negative.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   - icon: ':heavy_check_mark:'
@@ -91,10 +97,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/bititers.nim
     title: cplib/utils/bititers.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -122,7 +128,7 @@ data:
     \ float)\ng.add_edge(0, 1, 1.5)\ng.add_edge(1, 2, 2.25)\ng.add_edge(0, 2, 10.0)\n\
     g.add_edge(2, 3, 0.5)\nassertClose(g.dijkstra(0)[3], 4.25)\nassertClose(g.bellmanford(0)[3],\
     \ 4.25)\nassertClose(g.shortest_path_dijkstra(0, 3).cost, 4.25)\nassertClose(g.shortest_path_bellmanford(0,\
-    \ 3).cost, 4.25)\nassertClose(g.warshall_floyd().d[0][3], 4.25)\n\nlet rg = g.reverse_edge()\n\
+    \ 3).cost, 4.25)\nassertClose(g.warshall_floyd()[0][3], 4.25)\n\nlet rg = g.reverse_edge()\n\
     assertClose(rg.to_adjacency_matrix(1e100)[1][0], 1.5)\n\nlet contracted = g.toContractionGraph(@[0,\
     \ 2, 3])\nassertClose(contracted.to_adjacency_matrix(1e100)[0][1], 3.75)\n\nvar\
     \ dag = initWeightedDirectedGraph(3, float)\ndag.add_edge(0, 1, 1.0)\ndag.add_edge(1,\
@@ -147,42 +153,44 @@ data:
     ]\nassertClose(tspPathCostFrom(dist, 0), 3.5)\nassertClose(tspPathCostFromTo(dist,\
     \ 0, 2), 3.5)\nassertClose(tspPathAnyStart(dist), 3.5)\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/tree/diameter.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/bellmanford.nim
   - cplib/utils/bititers.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/utils/bititers.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/dijkstra.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/reverse_edge.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/AI/graph_weight_type_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-14 16:47:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/graph_weight_type_test.nim

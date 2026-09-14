@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd.nim
     title: cplib/graph/warshall_floyd.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_negative.nim
+    title: cplib/graph/warshall_floyd_negative.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_negative.nim
+    title: cplib/graph/warshall_floyd_negative.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy: []
@@ -39,21 +45,23 @@ data:
     import cplib/utils/constants\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
     , varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\nvar\
     \ n, m = ii()\nvar g = initWeightedDirectedStaticGraph(n, int)\nfor i in 0..<m:\n\
-    \    var u, v, c = ii()\n    g.add_edge(u, v, c)\ng.build\nvar (negative_cycle,\
-    \ d) = g.warshall_floyd\nif negative_cycle:\n    echo \"NEGATIVE CYCLE\"\n   \
-    \ quit()\nfor i in 0..<n:\n    var d = d[i].mapIt(if it == INF64: \"INF\" else:\
-    \ ($it)).join(\" \")\n    echo d\n"
+    \    var u, v, c = ii()\n    g.add_edge(u, v, c)\ng.build\nlet d = g.warshall_floyd\n\
+    if (0..<n).anyIt(d[it][it] == -INF64):\n    echo \"NEGATIVE CYCLE\"\n    quit()\n\
+    for i in 0..<n:\n    var d = d[i].mapIt(if it == INF64: \"INF\" else: ($it)).join(\"\
+    \ \")\n    echo d\n"
   dependsOn:
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 16:47:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/warshall_floyd_aoj_test.nim

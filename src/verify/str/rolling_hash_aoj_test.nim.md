@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/rolling_hash.nim
     title: cplib/str/rolling_hash.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/str/rolling_hash.nim
     title: cplib/str/rolling_hash.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_14_B
     links:
@@ -33,7 +33,7 @@ data:
   path: verify/str/rolling_hash_aoj_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/rolling_hash_aoj_test.nim
 layout: document

@@ -188,6 +188,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd_avx.nim
     title: cplib/graph/warshall_floyd_avx.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_avx512.nim
+    title: cplib/graph/warshall_floyd_avx512.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/warshall_floyd_avx512.nim
+    title: cplib/graph/warshall_floyd_avx512.nim
   - icon: ':warning:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
@@ -218,58 +224,58 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/centroid_decomposition.nim
     title: cplib/tree/centroid_decomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting.nim
     title: cplib/tree/rerooting.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting_static_top_tree_dp.nim
     title: cplib/tree/rerooting_static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting_static_top_tree_dp.nim
     title: cplib/tree/rerooting_static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree.nim
     title: cplib/tree/static_top_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree.nim
     title: cplib/tree/static_top_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree_dp.nim
     title: cplib/tree/static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree_dp.nim
     title: cplib/tree/static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree_hash.nim
     title: cplib/tree/tree_hash.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/tree_hash.nim
     title: cplib/tree/tree_hash.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
   - icon: ':heavy_check_mark:'
@@ -278,6 +284,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_cases.nim
+    title: verify/AI/warshall_floyd_avx512_register_cases.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_cases.nim
+    title: verify/AI/warshall_floyd_avx512_register_cases.nim
   - icon: ':warning:'
     path: verify/collections/rollback_uf_abc302ex_test_.nim
     title: verify/collections/rollback_uf_abc302ex_test_.nim
@@ -712,11 +724,65 @@ data:
     path: verify/AI/tsp_test.nim
     title: verify/AI/tsp_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_register_test.nim
+    title: verify/AI/warshall_floyd_avx512_register_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_test.nim
+    title: verify/AI/warshall_floyd_avx512_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx512_test.nim
+    title: verify/AI/warshall_floyd_avx512_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx_exact_test.nim
+    title: verify/AI/warshall_floyd_avx_exact_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_avx_exact_test.nim
+    title: verify/AI/warshall_floyd_avx_exact_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_avx_test.nim
     title: verify/AI/warshall_floyd_avx_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_avx_test.nim
     title: verify/AI/warshall_floyd_avx_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_negative_test.nim
+    title: verify/AI/warshall_floyd_negative_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/warshall_floyd_negative_test.nim
+    title: verify/AI/warshall_floyd_negative_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
@@ -831,123 +897,123 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_yosupo_test.nim
     title: verify/tree/diameter_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_la_yosupo_test.nim
     title: verify/tree/hld/hld_la_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_lca_yosupo_test.nim
     title: verify/tree/hld/hld_lca_yosupo_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_path_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
     title: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
     title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
     title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/point_set_tree_path_composite_sum_test.nim
     title: verify/tree/point_set_tree_path_composite_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/point_set_tree_path_composite_sum_test.nim
     title: verify/tree/point_set_tree_path_composite_sum_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/rooted_tree_isomorphism_classification_test.nim
     title: verify/tree/rooted_tree_isomorphism_classification_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/tree/rooted_tree_isomorphism_classification_test.nim
     title: verify/tree/rooted_tree_isomorphism_classification_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulated_2_test.nim
     title: verify/utils/itertools/accumulated_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulated_test.nim
     title: verify/utils/itertools/accumulated_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulatedr_2_test.nim
     title: verify/utils/itertools/accumulatedr_2_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulatedr_test.nim
     title: verify/utils/itertools/accumulatedr_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulater_test.nim
     title: verify/utils/itertools/accumulater_test.nim
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -1288,6 +1354,8 @@ data:
   - verify/graph/namori_forest_test_.nim
   - verify/graph/merge_tree_test_.nim
   - verify/graph/merge_tree_test_.nim
+  - verify/AI/warshall_floyd_avx512_register_cases.nim
+  - verify/AI/warshall_floyd_avx512_register_cases.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/utils/itertools.nim
@@ -1372,6 +1440,8 @@ data:
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/bellmanford.nim
@@ -1381,7 +1451,7 @@ data:
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulated_test.nim
@@ -1459,6 +1529,8 @@ data:
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/AI/static_top_tree_test.nim
   - verify/AI/static_top_tree_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
   - verify/AI/aho_corasick_test.nim
   - verify/AI/aho_corasick_test.nim
   - verify/AI/dynamic_bipartite_test.nim
@@ -1479,6 +1551,8 @@ data:
   - verify/AI/namori_graph_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
   - verify/AI/itertools_test.nim
   - verify/AI/itertools_test.nim
   - verify/AI/compressed_trie_test.nim
@@ -1507,6 +1581,8 @@ data:
   - verify/AI/hld_forest_test.nim
   - verify/AI/rerooting_test.nim
   - verify/AI/rerooting_test.nim
+  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/namori_forest_test.nim
@@ -1515,14 +1591,24 @@ data:
   - verify/AI/graph_debug_test.nim
   - verify/AI/graph_test.nim
   - verify/AI/graph_test.nim
+  - verify/AI/warshall_floyd_avx_exact_test.nim
+  - verify/AI/warshall_floyd_avx_exact_test.nim
   - verify/AI/tree_hash_test.nim
   - verify/AI/tree_hash_test.nim
   - verify/AI/count_topologicalsort_test.nim
   - verify/AI/count_topologicalsort_test.nim
+  - verify/AI/warshall_floyd_negative_test.nim
+  - verify/AI/warshall_floyd_negative_test.nim
+  - verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - verify/AI/warshall_floyd_avx512_test.nim
+  - verify/AI/warshall_floyd_avx512_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/reverse_edge_test.nim
   - verify/AI/reverse_edge_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
   - verify/AI/warshall_floyd_avx_test.nim
   - verify/AI/warshall_floyd_avx_test.nim
   - verify/AI/dag_minimum_path_cover_test.nim
@@ -1531,6 +1617,8 @@ data:
   - verify/AI/prufer_test.nim
   - verify/AI/warshall_floyd_test.nim
   - verify/AI/warshall_floyd_test.nim
+  - verify/AI/warshall_floyd_avx512_register_test.nim
+  - verify/AI/warshall_floyd_avx512_register_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/graph_weight_type_test.nim

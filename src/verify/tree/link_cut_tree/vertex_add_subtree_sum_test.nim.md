@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/link_cut_tree.nim
     title: cplib/tree/link_cut_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/link_cut_tree.nim
     title: cplib/tree/link_cut_tree.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
     links:
@@ -41,15 +41,15 @@ data:
     \    else:\n        let v = ii()\n        let p = ii()\n        answers.add($tree.subtreeProd(v,\
     \ p))\necho answers.join(\"\\n\")\n"
   dependsOn:
-  - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/link_cut_tree.nim
   - cplib/tree/link_cut_tree.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
 layout: document

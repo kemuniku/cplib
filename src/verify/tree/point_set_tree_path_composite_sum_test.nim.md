@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting_static_top_tree_dp.nim
     title: cplib/tree/rerooting_static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting_static_top_tree_dp.nim
     title: cplib/tree/rerooting_static_top_tree_dp.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree.nim
     title: cplib/tree/static_top_tree.nim
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/static_top_tree.nim
     title: cplib/tree/static_top_tree.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_tree_path_composite_sum
     links:
@@ -71,19 +71,19 @@ data:
     \ backward(v))\n    answers.add(dp.prod(ii()).sum.val)\necho answers.join(\"\\\
     n\")\n"
   dependsOn:
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
-  - cplib/tree/static_top_tree.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_test.nim
   requiredBy: []
   timestamp: '2026-09-14 07:58:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/point_set_tree_path_composite_sum_test.nim
 layout: document
