@@ -95,17 +95,17 @@ data:
     \ expected)\n"
   dependsOn:
   - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/graph/warshall_floyd_avx.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/warshall_floyd_avx512.nim
-  - cplib/graph/warshall_floyd_avx.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_avx.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_negative_test.nim
   requiredBy: []

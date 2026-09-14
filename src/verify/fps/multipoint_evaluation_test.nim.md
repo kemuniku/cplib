@@ -184,56 +184,56 @@ data:
 
     '
   dependsOn:
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/convolution/convolution.nim
   - cplib/fps/shift_of_sampling_points.nim
   - cplib/fps/product_tree.nim
   - cplib/fps/polynomial_interpolation.nim
-  - cplib/fps/fps.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/bmbm.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/ntt.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/fps.nim
-  - cplib/fps/bmbm.nim
-  - cplib/fps/composition.nim
   - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/fps/composition.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/fps/fps.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/fps/product_tree.nim
+  - cplib/fps/fps.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/fps/bmbm.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/ntt.nim
   - cplib/fps/berlekamp_massey.nim
   - cplib/fps/shift_of_sampling_points.nim
-  - cplib/fps/power_projection.nim
-  - cplib/convolution/ntt.nim
   - cplib/fps/taylor_shift.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/composition.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/power_projection.nim
+  - cplib/convolution/relaxed_convolution.nim
   - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/fps/power_projection.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/fps/bostan_mori.nim
+  - cplib/fps/bmbm.nim
   - cplib/fps/sparse_formal_power_series.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/fps/multipoint_evaluation_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps/multipoint_evaluation_test.nim

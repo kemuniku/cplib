@@ -66,24 +66,24 @@ data:
     \   continue\n    for p in divisor(euler_phi(n)):\n        if powmod(10, p, n)\
     \ == 1:\n            ans.add(p)\n            break\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/powmod.nim
   - cplib/math/isprime.nim
-  - cplib/math/divisor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
   - cplib/math/euler_phi.nim
   - cplib/math/euler_phi.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/math/powmod.nim
+  - cplib/math/divisor.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/divisor.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/euler_phi_yukicoder_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/euler_phi_yukicoder_test.nim

@@ -135,12 +135,12 @@ data:
     \ result[p] += 1\n            else: result[p] = 1\n\n    proc primefactor_tuple*(n:\
     \ int): seq[(int, int)] = primefactor(n, true).run_length_encode\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
@@ -158,7 +158,7 @@ data:
   - cplib/math/modfast.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
-  timestamp: '2026-09-13 12:35:42+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim

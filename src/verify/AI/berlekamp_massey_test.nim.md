@@ -123,30 +123,30 @@ data:
     checkExhaustive(StaticBarrettModint[2u32], 8)\ncheckExhaustive(StaticMontgomeryModint[3u32],\
     \ 6)\n"
   dependsOn:
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
   - cplib/fps/bostan_mori.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: true
   path: verify/AI/berlekamp_massey_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/berlekamp_massey_test.nim

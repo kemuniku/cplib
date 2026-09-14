@@ -509,43 +509,45 @@ data:
   code: "when not declared CPLIB_MATH_ISPRIME:\n    const CPLIB_MATH_ISPRIME* = 1\n\
     \    {.emit: \"\"\"\n    static inline unsigned long long cplib_isprime_mont_mul(\n\
     \        unsigned long long a, unsigned long long b,\n        unsigned long long\
-    \ n, unsigned long long inverse) {\n        // n < 2^63\u3001a, b < n \u306A\u306E\
-    \u3067\u52A0\u7B97\u3082 128 bit \u306B\u53CE\u307E\u308B\u3002\n        __uint128_t\
-    \ t = (__uint128_t)a * b;\n        unsigned long long q = (unsigned long long)t\
-    \ * inverse;\n        unsigned long long r = (unsigned long long)((t + (__uint128_t)q\
-    \ * n) >> 64);\n        return r >= n ? r - n : r;\n    }\n    static inline unsigned\
-    \ long long cplib_isprime_mont_r2(unsigned long long n) {\n        // \u7B26\u53F7\
-    \u306A\u3057\u6574\u6570\u306E\u6298\u308A\u8FD4\u3057\u3067 2^128 - n \u3092\u4F5C\
-    \u308B\u3002\n        return (unsigned long long)((-(__uint128_t)n) % n);\n  \
-    \  }\n    \"\"\".}\n    proc montMulIsprime(a, b, n, inverse: uint64): uint64\n\
-    \        {.importcpp: \"cplib_isprime_mont_mul(#, #, #, #)\", nodecl.}\n     \
-    \   ## Montgomery \u8868\u73FE\u306E\u7A4D\u3092\u6C42\u3081\u308B\u3002O(1)\u3002\
-    \n    proc montR2Isprime(n: uint64): uint64\n        {.importcpp: \"cplib_isprime_mont_r2(#)\"\
-    , nodecl.}\n        ## 2^128 mod n \u3092\u6C42\u3081\u308B\u3002O(1)\u3002\n\n\
-    \    proc montPowIsprime(a: uint64, exponent: int, n, inverse, one: uint64): uint64\
-    \ =\n        ## Montgomery \u8868\u73FE\u306E\u7D2F\u4E57\u3092\u6C42\u3081\u308B\
-    \u3002O(log exponent)\u3002\n        var a = a\n        var exponent = exponent\n\
-    \        result = one\n        while exponent > 0:\n            if (exponent and\
-    \ 1) != 0:\n                result = montMulIsprime(result, a, n, inverse)\n \
-    \           if exponent > 1:\n                a = montMulIsprime(a, a, n, inverse)\n\
-    \            exponent = exponent shr 1\n\n    proc isprime*(N: int): bool =\n\
-    \        ## int \u306E\u7BC4\u56F2\u306E\u7D20\u6570\u5224\u5B9A\u3092\u884C\u3046\
-    \u300264 bit \u4EE5\u4E0B\u3067 O(log N)\u3002\n        let bases = [2, 325, 9375,\
+    \ n, unsigned long long inverse) {\n        // 128 bit \u306E\u52A0\u7B97\u3067\
+    \u6841\u3042\u3075\u308C\u3057\u305F\u5834\u5408\u3082\u3001\u6E1B\u7B97\u5F8C\
+    \u306F 64 bit \u306B\u53CE\u307E\u308B\u3002\n        __uint128_t t = (__uint128_t)a\
+    \ * b;\n        unsigned long long q = (unsigned long long)t * inverse;\n    \
+    \    __uint128_t sum = t + (__uint128_t)q * n;\n        unsigned long long r =\
+    \ (unsigned long long)(sum >> 64);\n        return sum < t || r >= n ? r - n :\
+    \ r;\n    }\n    static inline unsigned long long cplib_isprime_mont_r2(unsigned\
+    \ long long n) {\n        // \u7B26\u53F7\u306A\u3057\u6574\u6570\u306E\u6298\u308A\
+    \u8FD4\u3057\u3067 2^128 - n \u3092\u4F5C\u308B\u3002\n        return (unsigned\
+    \ long long)((-(__uint128_t)n) % n);\n    }\n    \"\"\".}\n    proc montMulIsprime(a,\
+    \ b, n, inverse: uint64): uint64\n        {.importcpp: \"cplib_isprime_mont_mul(#,\
+    \ #, #, #)\", nodecl.}\n        ## Montgomery \u8868\u73FE\u306E\u7A4D\u3092\u6C42\
+    \u3081\u308B\u3002O(1)\u3002\n    proc montR2Isprime(n: uint64): uint64\n    \
+    \    {.importcpp: \"cplib_isprime_mont_r2(#)\", nodecl.}\n        ## 2^128 mod\
+    \ n \u3092\u6C42\u3081\u308B\u3002O(1)\u3002\n\n    proc montPowIsprime(a, exponent,\
+    \ n, inverse, one: uint64): uint64 =\n        ## Montgomery \u8868\u73FE\u306E\
+    \u7D2F\u4E57\u3092\u6C42\u3081\u308B\u3002O(log exponent)\u3002\n        var a\
+    \ = a\n        var exponent = exponent\n        result = one\n        while exponent\
+    \ > 0:\n            if (exponent and 1) != 0:\n                result = montMulIsprime(result,\
+    \ a, n, inverse)\n            if exponent > 1:\n                a = montMulIsprime(a,\
+    \ a, n, inverse)\n            exponent = exponent shr 1\n\n    proc isprime*(N:\
+    \ SomeInteger): bool =\n        ## 64 bit \u4EE5\u4E0B\u306E\u7B26\u53F7\u4ED8\
+    \u304D\u30FB\u7B26\u53F7\u306A\u3057\u6574\u6570\u306E\u7D20\u6570\u5224\u5B9A\
+    \u3092\u884C\u3046\u3002O(log N)\u3002\n        let bases = [2u64, 325, 9375,\
     \ 28178, 450775, 9780504, 1795265022]\n        if N == 2:\n            return\
     \ true\n        if N < 2 or (N and 1) == 0:\n            return false\n      \
-    \  let N1 = N-1\n        var d = N1\n        var s = 0\n        while (d and 1)\
-    \ == 0:\n            d = d shr 1\n            s += 1\n        let modulus = N.uint64\n\
-    \        var inverse = modulus\n        for _ in 0..<6:\n            inverse *=\
-    \ 2u64 - modulus * inverse\n        inverse = 0u64 - inverse\n        let r2 =\
-    \ montR2Isprime(modulus)\n        let one = montMulIsprime(1, r2, modulus, inverse)\n\
-    \        let minusOne = modulus - one\n        for a in bases:\n            if\
-    \ a mod N == 0:\n                continue\n            let base = montMulIsprime((a\
-    \ mod N).uint64, r2, modulus, inverse)\n            var t = montPowIsprime(base,\
-    \ d, modulus, inverse, one)\n            if t == one or t == minusOne:\n     \
-    \           continue\n            block test:\n                for _ in 0..<(s-1):\n\
-    \                    t = montMulIsprime(t, t, modulus, inverse)\n            \
-    \        if t == minusOne:\n                        break test\n             \
-    \   return false\n        return true\n"
+    \  let modulus = N.uint64\n        let N1 = modulus - 1\n        var d = N1\n\
+    \        var s = 0\n        while (d and 1) == 0:\n            d = d shr 1\n \
+    \           s += 1\n        var inverse = modulus\n        for _ in 0..<6:\n \
+    \           inverse *= 2u64 - modulus * inverse\n        inverse = 0u64 - inverse\n\
+    \        let r2 = montR2Isprime(modulus)\n        let one = montMulIsprime(1,\
+    \ r2, modulus, inverse)\n        let minusOne = modulus - one\n        for a in\
+    \ bases:\n            if a mod modulus == 0:\n                continue\n     \
+    \       let base = montMulIsprime((a mod modulus).uint64, r2, modulus, inverse)\n\
+    \            var t = montPowIsprime(base, d, modulus, inverse, one)\n        \
+    \    if t == one or t == minusOne:\n                continue\n            block\
+    \ test:\n                for _ in 0..<(s-1):\n                    t = montMulIsprime(t,\
+    \ t, modulus, inverse)\n                    if t == minusOne:\n              \
+    \          break test\n                return false\n        return true\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/isprime.nim
@@ -606,7 +608,7 @@ data:
   - cplib/utils/random_helper.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-09-13 12:35:42+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim

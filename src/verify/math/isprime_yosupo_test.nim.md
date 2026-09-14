@@ -45,18 +45,18 @@ data:
     \ 0..<Q:\n    var N = ii()\n    if isprime(N):\n        echo \"Yes\"\n    else:\n\
     \        echo \"No\"\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
   - cplib/utils/constants.nim
+  - cplib/math/isprime.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/math/isprime_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:59:41+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/isprime_yosupo_test.nim

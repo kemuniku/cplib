@@ -557,28 +557,28 @@ data:
     \n    proc powRelaxed*[T: BarrettModint or MontgomeryModint](\n            f:\
     \ seq[T], k: int): seq[T] =\n        f.powRelaxed(k, f.len)\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
   - cplib/convolution/ntt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/relaxed_convolution.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/relaxed_convolution_test.nim

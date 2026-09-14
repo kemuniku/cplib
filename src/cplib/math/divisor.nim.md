@@ -76,14 +76,14 @@ data:
     \ x*mul)\n                if i != factor[d][1]: mul *= factor[d][0]\n        dfs(0,\
     \ 1)\n        if sorted: ans.sort\n        return ans\n"
   dependsOn:
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/divisor.nim
   requiredBy:
@@ -91,7 +91,7 @@ data:
   - verify/math/divisor_atcoder_test_.nim
   - verify/math/divisor_many_atcoder_test_.nim
   - verify/math/divisor_many_atcoder_test_.nim
-  timestamp: '2026-09-13 12:35:42+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/euler_phi_yukicoder_test.nim

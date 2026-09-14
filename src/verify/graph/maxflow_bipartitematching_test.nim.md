@@ -38,9 +38,9 @@ data:
     \ < src and e.flow == 1:\n        echo e.src, \" \", e.dst - left\n"
   dependsOn:
   - cplib/graph/maxflow.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/maxflow.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/maxflow_bipartitematching_test.nim
   requiredBy: []

@@ -66,20 +66,20 @@ data:
 
     '
   dependsOn:
-  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/math/divisor.nim
-  - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/divisor.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/AI/divisor_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 12:35:42+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/divisor_test.nim

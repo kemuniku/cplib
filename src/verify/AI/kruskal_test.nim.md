@@ -51,11 +51,11 @@ data:
     \ 1, 1)\nassert disconnected.get_MST_cost == INF64\n"
   dependsOn:
   - cplib/graph/kruskal.nim
+  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/kruskal.nim
-  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
+  - cplib/graph/kruskal.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: true

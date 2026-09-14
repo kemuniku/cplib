@@ -64,18 +64,18 @@ data:
     \ + b, 0) == 2\nassert random_string(4, 'a'..'c').allIt(it in 'a'..'c')\nassert\
     \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
+  - cplib/math/isprime.nim
   - cplib/utils/random_helper.nim
+  - cplib/graph/graph.nim
   - cplib/math/isprime.nim
   - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
-  - cplib/utils/random_helper.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/random_helper.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/random_helper_test.nim

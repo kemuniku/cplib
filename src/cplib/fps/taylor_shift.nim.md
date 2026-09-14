@@ -217,22 +217,22 @@ data:
     \       let product = left * right\n        result = newSeq[T](n)\n        for\
     \ i in 0..<n: result[i] = product[n - 1 - i] * factInv[i]\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/fps/taylor_shift.nim
   requiredBy:
@@ -240,7 +240,7 @@ data:
   - cplib/math/many_factorials.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/many_factorials_online_test.nim

@@ -94,34 +94,34 @@ data:
     %lld\\n\", addr result)\n\ntype Mint = modint998244353_barrett\n\nlet q = ii()\n\
     let table = initLargeFactorial[Mint]()\nfor i in 0..<q:\n    echo table.fact(ii())\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/product_tree.nim
   - cplib/modint/modint.nim
-  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/modint.nim
   - cplib/fps/product_tree.nim
-  - cplib/math/many_factorials.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/many_factorials.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/inv_gcd.nim
   - cplib/fps/shift_of_sampling_points.nim
+  - cplib/math/many_factorials.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/many_factorials.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/fps/taylor_shift.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/many_factorials_online_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/many_factorials_online_test.nim

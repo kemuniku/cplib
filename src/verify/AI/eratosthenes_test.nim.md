@@ -68,14 +68,14 @@ data:
     \        doAssert get_primes(low, low + 2001) == expected\n        doAssert sieve.count_primes()\
     \ == expected.len\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/eratosthenes.nim
   - cplib/math/isprime.nim
+  - cplib/math/eratosthenes.nim
   - cplib/math/isprime.nim
   - cplib/math/eratosthenes.nim
   isVerificationFile: true
   path: verify/AI/eratosthenes_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/eratosthenes_test.nim
