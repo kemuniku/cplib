@@ -1,6 +1,10 @@
 when not declared CPLIB_COLLECTIONS_BITVECTOR:
     const CPLIB_COLLECTIONS_BITVECTOR* = 1
-    import bitops,sequtils
+    import bitops
+
+    # releaseでもdebug指定時は境界・オーバーフローチェックを残す。
+    when defined(release) and not defined(debug):
+        {.push boundChecks: off, overflowChecks: off.}
 
     type BitVector* = object
         bits : seq[uint64]
@@ -10,20 +14,28 @@ when not declared CPLIB_COLLECTIONS_BITVECTOR:
         result.bits = newSeq[uint64]((length+63) div 64 + 1)
         result.csum = newSeq[int](((length+63) div 64)+1)
 
-    proc set*(self:var BitVector,idx:int)=
+    proc set*(self:var BitVector,idx:int) {.inline.} =
         ## buildする前にだけ呼ぶ
-        self.bits[idx div 64].setBit(idx mod 64)
+        self.bits[idx shr 6].setBit(idx and 63)
+
+    proc setWord*(self:var BitVector,idx:int,value:uint64) {.inline.} =
+        ## idx番目の64bitワードを O(1) で上書きする。長さ外のビットは0にし、設定後にbuildする。
+        self.bits[idx] = value
 
     proc build*(self:var BitVector)=
         for i in 0..<(len(self.bits)-1):
             self.csum[i+1] = self.csum[i] + popcount(self.bits[i])
 
     proc access*(self:var BitVector,idx:int):bool=
-        self.bits[idx div 64].testBit(idx mod 64)
+        self.bits[idx shr 6].testBit(idx and 63)
 
     proc `[]`*(self:var BitVector,idx:int):bool=
-        self.bits[idx div 64].testBit(idx mod 64)
+        self.bits[idx shr 6].testBit(idx and 63)
     
-    proc rank*(self:var BitVector,idx:int):int=
-        return self.csum[idx div 64] + popcount(self.bits[idx div 64] and ((1u shl (idx and 63)) - 1))
+    proc rank*(self:var BitVector,idx:int):int {.inline.} =
+        ## [0,idx) の1の個数を O(1) で返す。build後に呼ぶ。
+        let block_index = idx shr 6
+        return self.csum[block_index] + popcount(self.bits[block_index] and ((1'u64 shl (idx and 63)) - 1))
 
+    when defined(release) and not defined(debug):
+        {.pop.}
