@@ -37,6 +37,24 @@ block:
     opt.add_cost_if_different(0, 0, 100)
     doAssert opt.solve().min_cost == -4
 
+for value in [false, true]:
+    for mask in 0..<4:
+        var opt = initProjectSelection(2, int64)
+        opt.add_gain_if_all([0, 1], value, 7)
+        opt.add_gain_if_all([0], value, 3)
+        opt.add_gain_if_all([1, 1], value, 5)
+        let x0 = (mask and 1) != 0
+        let x1 = (mask and 2) != 0
+        opt.force(0, x0)
+        opt.force(1, x1)
+        var expected = 0'i64
+        if x0 == value and x1 == value: expected -= 7
+        if x0 == value: expected -= 3
+        if x1 == value: expected -= 5
+        let ans = opt.solve()
+        doAssert ans.feasible and ans.min_cost == expected
+        doAssert ans.assignment == @[x0, x1]
+
 var rng = initRand(472193)
 for trial in 0..<1000:
     let n = rng.rand(1..7)

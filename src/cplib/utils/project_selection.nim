@@ -88,10 +88,19 @@ when not declared CPLIB_UTILS_PROJECT_SELECTION:
         opt.add_pair_cost(i, j, Cost(0), w, w, Cost(0))
 
     proc add_gain_if_all*[Cost](opt: var ProjectSelection[Cost], ids: openArray[int], value: bool, w: Cost) =
-        ## 全変数がvalueなら非負の利益wを加算する。空集合なら常に利益を得る。O(|ids|)。
+        ## 全変数がvalueなら非負の利益wを加算する。空集合なら常に利益。2変数以下は補助頂点不要。O(|ids|)。
         psCheckWeight(w)
         for i in ids: opt.psCheckIndex(i)
-        opt.terms.add(ProjectSelectionTerm[Cost](kind: psAllGain, value: value, costs: [w, Cost(0), Cost(0), Cost(0)], ids: @ids))
+        if w == 0: return
+        if ids.len == 1:
+            opt.add_gain(ids[0], value, w)
+        elif ids.len == 2:
+            if value:
+                opt.add_pair_cost(ids[0], ids[1], Cost(0), Cost(0), Cost(0), -w)
+            else:
+                opt.add_pair_cost(ids[0], ids[1], -w, Cost(0), Cost(0), Cost(0))
+        else:
+            opt.terms.add(ProjectSelectionTerm[Cost](kind: psAllGain, value: value, costs: [w, Cost(0), Cost(0), Cost(0)], ids: @ids))
 
     proc force*[Cost](opt: var ProjectSelection[Cost], i: int, value: bool) =
         ## x[i]をvalueに固定する。償却O(1)。
