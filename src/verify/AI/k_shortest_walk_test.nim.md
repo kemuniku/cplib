@@ -82,10 +82,10 @@ data:
     \ 1, 100_001) == toSeq(1..100_000) & @[INF64]\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/k_shortest_walk_test.nim

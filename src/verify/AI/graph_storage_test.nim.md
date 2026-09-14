@@ -92,14 +92,14 @@ data:
     \          doAssert g.graph.get_edge(id) == EdgeInfo[int](src: u, dst: v, cost:\
     \ cost)\n\necho \"Hello World\""
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/range_edge_graph.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/range_edge_graph.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/range_edge_graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

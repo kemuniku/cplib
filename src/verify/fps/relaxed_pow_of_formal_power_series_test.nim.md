@@ -78,23 +78,23 @@ data:
     \ = newSeq[Mint](n)\nfor i in 0..<n:\n    result[i] = power.add(Mint(ii()))\n\
     echo result.join(\" \")\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
   - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/relaxed_convolution.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/ntt.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/fps/relaxed_pow_of_formal_power_series_test.nim

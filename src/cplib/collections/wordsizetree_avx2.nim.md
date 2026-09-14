@@ -55,29 +55,29 @@ data:
     \ * 64 + 63 - __builtin_clzll(word));\n    unsigned mask = wst_lanes(p) & ((1u\
     \ << lane) - 1);\n    if (!mask) return -1;\n    lane = 31 - __builtin_clz(mask);\n\
     \    return (int)(lane * 64 + 63 - __builtin_clzll(p[lane]));\n}\nWST_AVX static\
-    \ void wst_init(const void *input, size_t n,\n                            uint64_t\
-    \ *leaf, uint64_t *mid, uint64_t *top) {\n    /* \u771F\u507D\u5024\u914D\u5217\
-    \u304B\u3089\u3001\u30BC\u30ED\u521D\u671F\u5316\u3055\u308C\u305F\u5404\u6BB5\
-    \u306E\u30D3\u30C3\u30C8\u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\
-    \ */\n    const unsigned char *v = (const unsigned char *)input;\n    size_t i\
-    \ = 0;\n    const __m256i zero = _mm256_setzero_si256();\n    for (; i + 64 <=\
-    \ n; i += 64) {\n        __m256i a = _mm256_loadu_si256((const __m256i *)(v +\
-    \ i));\n        __m256i b = _mm256_loadu_si256((const __m256i *)(v + i + 32));\n\
-    \        uint32_t lo = ~(uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(a, zero));\n\
-    \        uint32_t hi = ~(uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(b, zero));\n\
-    \        leaf[i >> 6] = (uint64_t)lo | ((uint64_t)hi << 32);\n    }\n    if (i\
-    \ < n) {\n        uint64_t word = 0;\n        for (size_t j = 0; i + j < n; ++j)\
-    \ word |= (uint64_t)(v[i+j] != 0) << j;\n        leaf[i >> 6] = word;\n    }\n\
-    \    size_t nodes = (n + 255) >> 8;\n    for (size_t j = 0; j < nodes; ++j)\n\
-    \        mid[j >> 6] |= (uint64_t)(wst_lanes(leaf + j * 4) != 0) << (j & 63);\n\
-    \    for (size_t j = 0; j < ((nodes + 255) >> 8); ++j)\n        top[j >> 6] |=\
-    \ (uint64_t)(wst_lanes(mid + j * 4) != 0) << (j & 63);\n}\nWST_AVX static void\
-    \ wst_incl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsigned x) {\n    /*\
-    \ \u8981\u7D20x\u3092\u8FFD\u52A0\u3057\u3001\u4E0A\u4F4D\u306E\u30D3\u30C3\u30C8\
-    \u96C6\u5408\u3092\u66F4\u65B0\u3057\u307E\u3059\u3002 */\n    leaf[x >> 6] |=\
-    \ UINT64_C(1) << (x & 63);\n    x >>= 8;\n    mid[x >> 6] |= UINT64_C(1) << (x\
-    \ & 63);\n    x >>= 8;\n    top[x >> 6] |= UINT64_C(1) << (x & 63);\n}\nWST_AVX\
-    \ static void wst_excl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsigned\
+    \ void wst_init(const void *input, size_t n, unsigned char one,\n            \
+    \                uint64_t *leaf, uint64_t *mid, uint64_t *top) {\n    /* one\u3068\
+    \u4E00\u81F4\u3059\u308B\u4F4D\u7F6E\u304B\u3089\u3001\u30BC\u30ED\u521D\u671F\
+    \u5316\u3055\u308C\u305F\u5404\u6BB5\u306E\u30D3\u30C3\u30C8\u96C6\u5408\u3092\
+    \u69CB\u7BC9\u3057\u307E\u3059\u3002 */\n    const unsigned char *v = (const unsigned\
+    \ char *)input;\n    size_t i = 0;\n    const __m256i target = _mm256_set1_epi8((char)one);\n\
+    \    for (; i + 64 <= n; i += 64) {\n        __m256i a = _mm256_loadu_si256((const\
+    \ __m256i *)(v + i));\n        __m256i b = _mm256_loadu_si256((const __m256i *)(v\
+    \ + i + 32));\n        uint32_t lo = (uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(a,\
+    \ target));\n        uint32_t hi = (uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(b,\
+    \ target));\n        leaf[i >> 6] = (uint64_t)lo | ((uint64_t)hi << 32);\n   \
+    \ }\n    if (i < n) {\n        uint64_t word = 0;\n        for (size_t j = 0;\
+    \ i + j < n; ++j) word |= (uint64_t)(v[i+j] == one) << j;\n        leaf[i >> 6]\
+    \ = word;\n    }\n    size_t nodes = (n + 255) >> 8;\n    for (size_t j = 0; j\
+    \ < nodes; ++j)\n        mid[j >> 6] |= (uint64_t)(wst_lanes(leaf + j * 4) !=\
+    \ 0) << (j & 63);\n    for (size_t j = 0; j < ((nodes + 255) >> 8); ++j)\n   \
+    \     top[j >> 6] |= (uint64_t)(wst_lanes(mid + j * 4) != 0) << (j & 63);\n}\n\
+    WST_AVX static void wst_incl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsigned\
+    \ x) {\n    /* \u8981\u7D20x\u3092\u8FFD\u52A0\u3057\u3001\u4E0A\u4F4D\u306E\u30D3\
+    \u30C3\u30C8\u96C6\u5408\u3092\u66F4\u65B0\u3057\u307E\u3059\u3002 */\n    leaf[x\
+    \ >> 6] |= UINT64_C(1) << (x & 63);\n    x >>= 8;\n    mid[x >> 6] |= UINT64_C(1)\
+    \ << (x & 63);\n    x >>= 8;\n    top[x >> 6] |= UINT64_C(1) << (x & 63);\n}\n\
+    WST_AVX static void wst_excl(uint64_t *leaf, uint64_t *mid, uint64_t *top, unsigned\
     \ x) {\n    /* \u8981\u7D20x\u3092\u524A\u9664\u3057\u3001\u7A7A\u306B\u306A\u3063\
     \u305F\u30CE\u30FC\u30C9\u3092\u4E0A\u4F4D\u306E\u30D3\u30C3\u30C8\u96C6\u5408\
     \u304B\u3089\u9664\u304D\u307E\u3059\u3002 */\n    leaf[x >> 6] &= ~(UINT64_C(1)\
@@ -105,10 +105,10 @@ data:
     \   parent = (unsigned)upper;\n        bit = wst_prev(mid + parent * 4, 255);\n\
     \    }\n    node = parent * 256 + bit;\n    return (int)(node * 256 + wst_prev(leaf\
     \ + node * 4, 255));\n}\n#undef WST_AVX\n\"\"\".}\n    proc avxInit(input: pointer,\
-    \ n: csize_t, leaf, middle, top: ptr uint64)\n        {.importc: \"wst_init\"\
-    , nodecl.}\n    proc avxIncl(leaf, middle, top: ptr uint64, x: cuint)\n      \
-    \  {.importc: \"wst_incl\", nodecl.}\n    proc avxExcl(leaf, middle, top: ptr\
-    \ uint64, x: cuint)\n        {.importc: \"wst_excl\", nodecl.}\n    proc avxGe(leaf,\
+    \ n: csize_t, one: uint8, leaf, middle, top: ptr uint64)\n        {.importc: \"\
+    wst_init\", nodecl.}\n    proc avxIncl(leaf, middle, top: ptr uint64, x: cuint)\n\
+    \        {.importc: \"wst_incl\", nodecl.}\n    proc avxExcl(leaf, middle, top:\
+    \ ptr uint64, x: cuint)\n        {.importc: \"wst_excl\", nodecl.}\n    proc avxGe(leaf,\
     \ middle, top: ptr uint64, x: cuint): cint\n        {.importc: \"wst_ge\", nodecl.}\n\
     \    proc avxLe(leaf, middle, top: ptr uint64, x: cuint): cint\n        {.importc:\
     \ \"wst_le\", nodecl.}\n\n    proc initWordsizeTree*(): WordsizeTreeAvx2 =\n \
@@ -119,11 +119,18 @@ data:
     \u4F5C\u6210\u3057\u307E\u3059\u3002\n        assert v.len <= WordsizeTreeAvx2Capacity,\
     \ \"\u914D\u5217\u306E\u9577\u3055\u304CWordsizeTreeAvx2\u306E\u6700\u5927\u5BB9\
     \u91CF\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        if v.len > 0:\n  \
-    \          avxInit(unsafeAddr v[0], v.len.csize_t, addr result.leaf[0],\n    \
-    \            addr result.middle[0], addr result.top[0])\n\n    proc incl*(self:\
-    \ var WordsizeTreeAvx2, x: int) =\n        ## \u8981\u7D20x\u3092\u8FFD\u52A0\u3057\
-    \u307E\u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity, \"\
-    \u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \          avxInit(unsafeAddr v[0], v.len.csize_t, 1'u8, addr result.leaf[0],\n\
+    \                addr result.middle[0], addr result.top[0])\n\n    proc initWordsizeTree*(v:\
+    \ string): WordsizeTreeAvx2 =\n        ## v[i]\u304C'1'\u3067\u3042\u308B\u4F4D\
+    \u7F6E\u3092\u8981\u7D20\u3068\u3059\u308B\u30D3\u30C3\u30C8\u96C6\u5408\u6728\
+    \u3092O(v.len)\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        assert v.len\
+    \ <= WordsizeTreeAvx2Capacity, \"\u6587\u5B57\u5217\u306E\u9577\u3055\u304CWordsizeTreeAvx2\u306E\
+    \u6700\u5927\u5BB9\u91CF\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n       \
+    \ if v.len > 0:\n            avxInit(unsafeAddr v[0], v.len.csize_t, uint8(ord('1')),\
+    \ addr result.leaf[0],\n                addr result.middle[0], addr result.top[0])\n\
+    \n    proc incl*(self: var WordsizeTreeAvx2, x: int) =\n        ## \u8981\u7D20\
+    x\u3092\u8FFD\u52A0\u3057\u307E\u3059\u3002\n        assert x >= 0 and x < WordsizeTreeAvx2Capacity,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
     \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: x >= 0 and x < WordsizeTreeAvx2Capacity\"\
     \n        avxIncl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)\n\
     \n    proc excl*(self: var WordsizeTreeAvx2, x: int) =\n        ## \u8981\u7D20\
@@ -150,7 +157,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/wordsizetree_avx2.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 17:46:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/wordsizetree_avx2_test.nim

@@ -57,13 +57,13 @@ data:
   dependsOn:
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: verify/graph/static/grid_to_graph_abc151d_test_.nim

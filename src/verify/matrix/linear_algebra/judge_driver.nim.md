@@ -135,28 +135,28 @@ data:
     \    solve(a)\n"
   dependsOn:
   - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/static_matrix.nim
   - cplib/modint/modint.nim
   - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/matrix.nim
-  - cplib/math/isqrt.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/judge_driver.nim

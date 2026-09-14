@@ -127,9 +127,9 @@ data:
     \                    v = p\n        for v in 0..<n:\n            if result.belong[v].len\
     \ > 1: result.articulation.add(v)\n"
   dependsOn:
-  - cplib/graph/lowlink.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/biconnected_components.nim

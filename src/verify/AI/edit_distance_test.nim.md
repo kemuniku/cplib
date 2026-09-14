@@ -56,10 +56,10 @@ data:
     \ \"z\" & longString, 1) == 1\ndoAssert editDistance(\"z\" & longString, longString,\
     \ 1) == 1\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/str/edit_distance.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/suffix_array.nim
   - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/AI/edit_distance_test.nim
   requiredBy: []

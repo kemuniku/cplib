@@ -194,11 +194,11 @@ data:
     \        return result\n"
   dependsOn:
   - cplib/math/isprime.nim
+  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/math/isprime.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []

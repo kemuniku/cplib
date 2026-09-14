@@ -28,39 +28,43 @@ data:
     \ 127, 128, 129, 4095, 4096, 4097, 262143, 262144, 262145, 16777216]:\n    for\
     \ pattern in 0..2:\n        var v = newSeq[bool](n)\n        for i in 0..<n:\n\
     \            v[i] = pattern == 1 or (pattern == 2 and i mod 67 == 0)\n       \
-    \ var tree = initWordsizeTree(v)\n        for i in 0..<n:\n            doAssert\
-    \ tree[i] == v[i]\n        if n > 0:\n            tree.incl(n - 1)\n         \
-    \   doAssert tree.ge(n - 1) == n - 1\n            doAssert tree.le(n - 1) == n\
-    \ - 1\n            tree.excl(n - 1)\n            doAssert not tree[n - 1]\n\n\
-    for n in 1..256:\n    var v = newSeq[bool](n)\n    for i in 0..<n: v[i] = (i *\
-    \ 37 + n * 13) mod 101 < 49\n    var tree = initWordsizeTree(v)\n    for i in\
-    \ 0..<n:\n        var lo = -1\n        var hi = -1\n        for j in 0..i:\n \
-    \           if v[j]: lo = j\n        for j in countdown(n - 1, i):\n         \
-    \   if v[j]: hi = j\n        doAssert tree.le(i) == lo\n        doAssert tree.ge(i)\
-    \ == hi\n\nvar tree = initWordsizeTree()\nvar reference: seq[int]\nvar rng = initRand(12345)\n\
-    for step in 0..<30000:\n    let x = rng.rand(WordsizeTreeAvx2Capacity - 1)\n \
-    \   let pos = reference.lowerBound(x)\n    case step mod 4\n    of 0:\n      \
-    \  tree.incl(x)\n        tree.incl(x)\n        if pos == reference.len or reference[pos]\
-    \ != x: reference.insert(x, pos)\n    of 1:\n        tree.excl(x)\n        if\
-    \ pos < reference.len and reference[pos] == x: reference.delete(pos)\n       \
-    \ if reference.len > 0:\n            let index = rng.rand(reference.high)\n  \
-    \          tree.excl(reference[index])\n            reference.delete(index)\n\
-    \    else: discard\n    let hi = reference.lowerBound(x)\n    let lo = reference.upperBound(x)\
-    \ - 1\n    doAssert tree.ge(x) == (if hi == reference.len: -1 else: reference[hi])\n\
-    \    doAssert tree.le(x) == (if lo < 0: -1 else: reference[lo])\nfor x in reference:\
-    \ tree.excl(x)\ndoAssert tree.ge(0) == -1\ndoAssert tree.le(WordsizeTreeAvx2Capacity\
-    \ - 1) == -1\nfor x in [0, 63, 64, 255, 256, 65535, 65536, WordsizeTreeAvx2Capacity\
-    \ - 1]:\n    tree.incl(x)\n    doAssert tree.ge(x) == x\n    doAssert tree.le(x)\
-    \ == x\n    tree.excl(x)\n    doAssert tree.ge(0) == -1\ndoAssert tree.le(-1)\
-    \ == -1\ndoAssert tree.ge(WordsizeTreeAvx2Capacity) == -1\necho \"Hello World\"\
-    \n"
+    \ var tree = initWordsizeTree(v)\n        var s = newString(n)\n        for i\
+    \ in 0..<n:\n            s[i] = (if v[i]: '1' else: '0')\n        var stringTree\
+    \ = initWordsizeTree(s)\n        for i in 0..<n:\n            doAssert tree[i]\
+    \ == v[i]\n            doAssert stringTree[i] == v[i]\n        for x in [-1, 0,\
+    \ 63, 64, 255, 256, 65535, 65536, n - 1, n]:\n            doAssert stringTree.ge(x)\
+    \ == tree.ge(x)\n            doAssert stringTree.le(x) == tree.le(x)\n       \
+    \ if n > 0:\n            tree.incl(n - 1)\n            doAssert tree.ge(n - 1)\
+    \ == n - 1\n            doAssert tree.le(n - 1) == n - 1\n            tree.excl(n\
+    \ - 1)\n            doAssert not tree[n - 1]\n\nfor n in 1..256:\n    var v =\
+    \ newSeq[bool](n)\n    for i in 0..<n: v[i] = (i * 37 + n * 13) mod 101 < 49\n\
+    \    var tree = initWordsizeTree(v)\n    for i in 0..<n:\n        var lo = -1\n\
+    \        var hi = -1\n        for j in 0..i:\n            if v[j]: lo = j\n  \
+    \      for j in countdown(n - 1, i):\n            if v[j]: hi = j\n        doAssert\
+    \ tree.le(i) == lo\n        doAssert tree.ge(i) == hi\n\nvar tree = initWordsizeTree()\n\
+    var reference: seq[int]\nvar rng = initRand(12345)\nfor step in 0..<30000:\n \
+    \   let x = rng.rand(WordsizeTreeAvx2Capacity - 1)\n    let pos = reference.lowerBound(x)\n\
+    \    case step mod 4\n    of 0:\n        tree.incl(x)\n        tree.incl(x)\n\
+    \        if pos == reference.len or reference[pos] != x: reference.insert(x, pos)\n\
+    \    of 1:\n        tree.excl(x)\n        if pos < reference.len and reference[pos]\
+    \ == x: reference.delete(pos)\n        if reference.len > 0:\n            let\
+    \ index = rng.rand(reference.high)\n            tree.excl(reference[index])\n\
+    \            reference.delete(index)\n    else: discard\n    let hi = reference.lowerBound(x)\n\
+    \    let lo = reference.upperBound(x) - 1\n    doAssert tree.ge(x) == (if hi ==\
+    \ reference.len: -1 else: reference[hi])\n    doAssert tree.le(x) == (if lo <\
+    \ 0: -1 else: reference[lo])\nfor x in reference: tree.excl(x)\ndoAssert tree.ge(0)\
+    \ == -1\ndoAssert tree.le(WordsizeTreeAvx2Capacity - 1) == -1\nfor x in [0, 63,\
+    \ 64, 255, 256, 65535, 65536, WordsizeTreeAvx2Capacity - 1]:\n    tree.incl(x)\n\
+    \    doAssert tree.ge(x) == x\n    doAssert tree.le(x) == x\n    tree.excl(x)\n\
+    \    doAssert tree.ge(0) == -1\ndoAssert tree.le(-1) == -1\ndoAssert tree.ge(WordsizeTreeAvx2Capacity)\
+    \ == -1\necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/wordsizetree_avx2.nim
   - cplib/collections/wordsizetree_avx2.nim
   isVerificationFile: true
   path: verify/AI/wordsizetree_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 17:46:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/wordsizetree_avx2_test.nim

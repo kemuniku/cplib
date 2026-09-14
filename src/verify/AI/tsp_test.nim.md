@@ -65,15 +65,15 @@ data:
   dependsOn:
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/tsp.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/tsp.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/tsp.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/tsp_test.nim
