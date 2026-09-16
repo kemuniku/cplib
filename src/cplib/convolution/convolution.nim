@@ -641,6 +641,7 @@ FixedConvolution(const u32* data, Z length, Z size, u32 mod, u32 root)
 : size_(size), modulus_(mod), root_(root) {
 // 固定側の変換と正逆変換の計画を一度だけ構築する。
 modulus = modulus_;
+if (root_ == 0) root_ = find_primitive_root(modulus_);
 primitive_root = root_;
 forward_ = new TransformPlan(size_);
 inverse_ = new TransformPlan(size_);

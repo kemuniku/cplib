@@ -1,5 +1,3 @@
-# verification-helper: PROBLEM https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
-
 import options, sequtils, strutils
 include cplib/fps/fps
 import cplib/modint/modint
