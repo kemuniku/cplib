@@ -113,13 +113,55 @@ for n in [255, 256, 257, 65535, 65536, 65537]:
         let v = rng.rand(n - 1)
         doAssert tree.lca(u, v) == naive(parent, depths, u, v)
 
-for badParent in [@[-1, 2, 1], @[-1, -1], @[-1, 2]]:
+for badParent in [@[-1, 2, 1], @[-1, -1], @[-1, 2],
+        @[-1, high(int)], @[-1, low(int)]]:
     var rejected = false
     try:
         discard initLCAFromParent(badParent, 0)
     except AssertionDefect:
         rejected = true
     doAssert rejected
+
+for n in [63, 64, 65, 127, 128, 129, 257]:
+    for shape in 0..<3:
+        var labels = toSeq(0..<n)
+        rng.shuffle(labels)
+        var parent = newSeq[int](n)
+        var depths = newSeq[int](n)
+        parent[labels[0]] = -1
+        for i in 1..<n:
+            let p = (if shape == 0: i - 1
+                elif shape == 1: (i - 1) div 2
+                elif i < n div 2: i - 1 else: i mod (n div 2))
+            parent[labels[i]] = labels[p]
+            depths[labels[i]] = depths[labels[p]] + 1
+        let tree = initLCAFromParent(parent, labels[0])
+        for u in 0..<n:
+            doAssert tree.depth(u) == depths[u]
+            for v in 0..<n:
+                doAssert tree.lca(u, v) == naive(parent, depths, u, v)
+
+block:
+    let n = 601
+    var labels = toSeq(0..<n)
+    rng.shuffle(labels)
+    var edges: seq[(int, int)]
+    for v in 1..<n:
+        let p = (if v in [1, 161, 321]: 0
+            elif v <= 480: v - 1
+            else: 40 + (v - 481) div 4)
+        edges.add((labels[v], labels[p]))
+    check(n, edges, labels[0], false)
+
+for leaves in [32767, 32768, 32769, 65535, 65536, 65537]:
+    var parent = newSeq[int](leaves + 2)
+    parent[0] = -1
+    parent[^1] = 1
+    let tree = initLCAFromParent(parent, 0)
+    for v in 0..<parent.len:
+        doAssert tree.lca(v, v) == v
+        doAssert tree.lca(v, parent.high) == (if v == parent.high: v
+            elif v == 1: 1 else: 0)
 
 let n = 200000
 var parent = newSeq[int](n)

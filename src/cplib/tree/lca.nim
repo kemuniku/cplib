@@ -3,110 +3,218 @@ when not declared CPLIB_TREE_LCA:
     import bitops, sequtils
     import cplib/graph/graph
 
+    template lcaUninit(T: typedesc, n: int): untyped =
+        ## 使用する要素を後から設定する整数配列を確保する。O(N)
+        when declared(newSeqUninit): newSeqUninit[T](n)
+        else: newSeqUninitialized[T](n)
+    # Schieber–Vishkin法。葉のDFS区間から縦パスを作り、祖先の縦パスをビット列で表す。
+    # https://doi.org/10.1007/BFb0040379
     type LowestCommonAncestor* = ref object
-        parent, depths: seq[int]
-        first, order: seq[int32]
-        blockShift: int
-        values, prefix, suffix: seq[int32]
-        masks: seq[uint32]
-        table: seq[seq[int32]]
+        # 以下のポインタは保持するseqの参照。構築後は配列を伸縮しない。
+        dataPtr, prefixPtr, pathPtr: ptr UncheckedArray[uint32]
+        branchPtr: ptr UncheckedArray[uint8]
+        headPtr: ptr UncheckedArray[int32]
+        n: int
+        # 頂点ごとにラベル、祖先マスク、深さを格納する。
+        data, prefixLCA, pathAttach: seq[uint32]
+        prefixBranch: seq[uint8]
+        parents, headParent: seq[int32]
+        ordered: bool
+        # kindは一般の木=0、頂点番号順の鎖=1、スター=2、長い経路を持つ木=3。
+        kind, root: int
 
-    # 入力をassertで検査し、構築中の配列アクセスでは重複した境界検査を省く。
+    when defined(cpp) and (defined(gcc) or defined(clang)):
+        {.emit: """
+#include <cstdint>
+namespace cplib_lca {
+template<bool Ordered>
+static NI build(const std::int32_t* __restrict parent,
+        const NI* __restrict order, NI n, NI root,
+        std::int32_t* __restrict size, std::uint32_t* __restrict data,
+        std::uint8_t* __restrict branches, std::int32_t* __restrict head) {
+    // 葉の区間と縦パスの情報を、配列同士が重ならない条件で構築する。
+    for (NI i = n - 1; i > 0; --i) {
+        if (i > 16) {
+            const NI future = Ordered ? i - 16 : order[i - 16];
+            __builtin_prefetch(size + parent[future], 1, 3);
+        }
+        const NI v = Ordered ? i : order[i];
+        const std::int32_t count = size[v] == 0 ? 1 : size[v];
+        size[v] = count;
+        size[parent[v]] += count;
+    }
+    if (size[root] == 0) size[root] = 1;
+    const std::uint32_t root_label = 1U << (31 - __builtin_clz(static_cast<unsigned>(size[root])));
+    data[3 * root] = data[3 * root + 1] = root_label;
+    data[3 * root + 2] = 0;
+    branches[root] = 0;
+    head[root_label] = -1;
+    NI deepest = root;
+    std::uint32_t max_depth = 0;
+    for (NI i = 1; i < n; ++i) {
+        // 後で参照する親の情報を先にキャッシュへ読み込む。
+        if (i + 16 < n) {
+            const NI future = Ordered ? i + 16 : order[i + 16];
+            const NI p = parent[future];
+            __builtin_prefetch(data + 3 * p, 0, 3);
+            __builtin_prefetch(branches + p, 0, 3);
+            __builtin_prefetch(size + p, 1, 3);
+        }
+        const NI v = Ordered ? i : order[i];
+        const NI p = parent[v];
+        const std::uint32_t end = size[p];
+        const std::uint32_t begin = end - size[v];
+        size[p] = begin;
+        size[v] = end;
+        const unsigned shift = 31 - __builtin_clz(begin ^ end);
+        const std::uint32_t label = end & (~0U << shift);
+        const std::uint32_t bit = label & -label;
+        branches[v] = i < 64 ? i : branches[p];
+        data[3 * v] = label;
+        data[3 * v + 1] = data[3 * p + 1] | bit;
+        const std::uint32_t depth = data[3 * p + 2] + 1;
+        data[3 * v + 2] = depth;
+        if (depth > max_depth) { max_depth = depth; deepest = v; }
+        if (label != data[3 * p]) head[label] = p;
+    }
+    return deepest;
+}
+}
+""".}
+        proc lcaBuildOrdered(parent: ptr int32, order: ptr int, n, root: int,
+                size: ptr int32, data: ptr uint32, branches: ptr uint8, head: ptr int32): int
+            {.importcpp: "cplib_lca::build<true>(@)", nodecl.}
+        proc lcaBuildGeneral(parent: ptr int32, order: ptr int, n, root: int,
+                size: ptr int32, data: ptr uint32, branches: ptr uint8, head: ptr int32): int
+            {.importcpp: "cplib_lca::build<false>(@)", nodecl.}
+
     {.push boundChecks: off, overflowChecks: off.}
     proc initLCAFromParent*(parent: openArray[int], root: int): LowestCommonAncestor =
         ## 根付き木の親配列から構築する。parent[root]は参照しない。N < 2^31。時間・空間O(N)
         let n = parent.len
         assert n <= high(int32).int, "頂点数は2^31未満である必要があります"
         assert 0 <= root and root < n, "根の頂点番号が範囲外です"
-        result = LowestCommonAncestor(parent: @parent, depths: newSeq[int](n),
-            first: newSeq[int32](n), order: newSeq[int32](n), values: newSeq[int32](n))
-        result.parent[root] = -1
-        var ordered = root == 0
-        for v in 0..<n:
-            if v != root:
-                let p = parent[v]
-                assert 0 <= p and p < n, "親の頂点番号が範囲外です"
-                if p >= v: ordered = false
-        if ordered:
-            # 親番号が子番号より小さければ、部分木サイズからDFS番号を順に割り当てる。
-            var size = newSeqWith(n, 1'i32)
-            for v in countdown(n - 1, 1):
-                size[parent[v]] += size[v]
-            # 割り当て済みの頂点では、sizeの領域を子の配置先の右端として再利用する。
-            for v in 1..<n:
-                let p = parent[v]
-                let subtreeSize = size[v]
-                size[p] -= subtreeSize
-                let index = size[p]
-                result.first[v] = index
-                size[v] = index + subtreeSize
-                result.order[index] = v.int32
-                result.values[index] = result.first[p]
-                result.depths[v] = result.depths[p] + 1
-        else:
+        result = LowestCommonAncestor(n: n, root: root, parents: lcaUninit(int32, n))
+        let parentData = cast[ptr UncheckedArray[int32]](addr result.parents[0])
+        var invalid = 0'u32
+        var unordered = uint32(root != 0)
+        var nonPath = uint32(root != 0)
+        var nonStar = 0'u32
+        template copyParent(v: int) =
+            ## 親番号をコピーし、範囲と頂点番号順の条件を集計する。O(1)
+            let p = parent[v]
+            invalid = invalid or uint32(p < 0) or uint32(p >= n)
+            unordered = unordered or uint32(p >= v)
+            nonPath = nonPath or uint32(p != v - 1)
+            nonStar = nonStar or uint32(p != root)
+            parentData[v] = cast[int32](p)
+        for v in 0..<root: copyParent(v)
+        for v in root + 1..<n: copyParent(v)
+        assert invalid == 0, "親の頂点番号が範囲外です"
+        let ordered = unordered == 0
+        result.parents[root] = -1
+        result.ordered = ordered
+        if nonPath == 0:
+            result.kind = 1
+            return
+        if nonStar == 0:
+            result.kind = 2
+            return
+        result.data = lcaUninit(uint32, 3 * n)
+        result.prefixBranch = lcaUninit(uint8, n)
+        result.prefixLCA = lcaUninit(uint32, 64 * 64)
+        var order: seq[int]
+        if not ordered:
             var head = newSeqWith(n, -1)
-            var next = newSeqWith(n, -1)
+            var next = newSeq[int](n)
             for v in 0..<n:
                 if v != root:
-                    let p = parent[v]
-                    next[v] = head[p]
-                    head[p] = v
-            var v = root
-            var count = 0
-            while v != -1:
-                result.first[v] = count.int32
-                result.order[count] = v.int32
-                if v != root:
-                    let p = parent[v]
-                    result.depths[v] = result.depths[p] + 1
-                    result.values[count] = result.first[p]
-                inc count
-                if head[v] != -1:
-                    v = head[v]
-                else:
-                    while v != root and next[v] == -1:
-                        v = parent[v]
-                    if v == root: break
+                    next[v] = head[parent[v]]
+                    head[parent[v]] = v
+            order = newSeqOfCap[int](n)
+            order.add(root)
+            var i = 0
+            while i < order.len:
+                var v = head[order[i]]
+                while v != -1:
+                    order.add(v)
                     v = next[v]
-            assert count == n, "指定した根から全頂点に到達できる必要があります"
-
-        # DFS順でu < vなら、区間(u, v]の親のDFS番号の最小値がLCAのDFS番号になる。
-        # ブロック長を2冪かつΘ(log N)にして、除算をなくし上位表をO(N)に抑える。
-        result.blockShift = fastLog2(max(1, fastLog2(n))) + 1
-        let size = 1 shl result.blockShift
-        let blocks = ((n - 1) shr result.blockShift) + 1
-        result.masks = newSeq[uint32](n)
-        result.prefix = newSeq[int32](n)
-        result.suffix = newSeq[int32](n)
-        result.table = newSeq[seq[int32]](fastLog2(blocks) + 1)
-        result.table[0] = newSeq[int32](blocks)
-        # 単調スタックをビット列で保存する。各要素の追加・削除は高々1回で合計O(N)。
-        for b in 0..<blocks:
-            let start = b shl result.blockShift
-            let stop = min(start + size, n)
-            var mask = 0'u32
-            var best = high(int32)
-            for i in start..<stop:
-                let value = result.values[i]
-                while mask != 0:
-                    let top = fastLog2(mask)
-                    if result.values[start + top] < value: break
-                    mask = mask xor (1'u32 shl top)
-                mask = mask or (1'u32 shl (i - start))
-                result.masks[i] = mask
-                best = min(best, value)
-                result.prefix[i] = best
-            result.table[0][b] = best
-            best = high(int32)
-            for i in countdown(stop - 1, start):
-                best = min(best, result.values[i])
-                result.suffix[i] = best
-        for k in 1..<result.table.len:
-            result.table[k] = newSeq[int32](blocks - (1 shl k) + 1)
-            for i in 0..<result.table[k].len:
-                result.table[k][i] = min(result.table[k - 1][i],
-                    result.table[k - 1][i + (1 shl (k - 1))])
-
+                inc i
+            assert order.len == n, "指定した根から全頂点に到達できる必要があります"
+        template vertex(i: int): int =
+            ## 親が子より先に現れる順序のi番目の頂点を返す。O(1)
+            (if ordered: i else: order[i])
+        var deepest = root
+        var size = newSeq[int32](n)
+        when defined(cpp) and (defined(gcc) or defined(clang)):
+            result.headParent = lcaUninit(int32, n + 1)
+            if ordered:
+                deepest = lcaBuildOrdered(addr result.parents[0], nil, n, root,
+                    addr size[0], addr result.data[0], addr result.prefixBranch[0], addr result.headParent[0])
+            else:
+                deepest = lcaBuildGeneral(addr result.parents[0], addr order[0], n, root,
+                    addr size[0], addr result.data[0], addr result.prefixBranch[0], addr result.headParent[0])
+        else:
+            for i in countdown(n - 1, 1):
+                let v = vertex(i)
+                size[v] = max(1'i32, size[v])
+                size[result.parents[v]] += size[v]
+            size[root] = max(1'i32, size[root])
+            let leaves = size[root].int
+            result.headParent = lcaUninit(int32, leaves + 1)
+            # DFS順の葉の区間から、最下位ビットが最大の番号を縦パスのラベルにする。
+            let rootLabel = 1'u32 shl fastLog2(leaves)
+            result.data[3 * root] = rootLabel
+            result.data[3 * root + 1] = rootLabel
+            result.data[3 * root + 2] = 0
+            result.prefixBranch[root] = 0
+            result.headParent[rootLabel] = -1
+            for i in 1..<n:
+                let v = vertex(i)
+                let p = result.parents[v].int
+                let stop = size[p].int
+                let start = stop - size[v].int
+                size[p] = start.int32
+                size[v] = stop.int32
+                let k = fastLog2(start xor stop)
+                let label = stop.uint32 and (high(uint32) shl k)
+                let bit = label and (0'u32 - label)
+                result.prefixBranch[v] = (if i < 64: i.uint8 else: result.prefixBranch[p])
+                result.data[3 * v] = label
+                result.data[3 * v + 1] = result.data[3 * p + 1] or bit
+                result.data[3 * v + 2] = result.data[3 * p + 2] + 1
+                if result.data[3 * v + 2] > result.data[3 * deepest + 2]: deepest = v
+                if label != result.data[3 * p]:
+                    result.headParent[label] = p.int32
+        # 先頭64頂点は祖先を含むので、その中でのLCAを小さな表へまとめる。
+        result.prefixLCA[0] = root.uint32
+        for i in 1..<min(n, 64):
+            let v = vertex(i)
+            let p = result.prefixBranch[result.parents[v]].int
+            result.prefixLCA[i * 64 + i] = v.uint32
+            for j in 0..<i:
+                let ancestor = result.prefixLCA[p * 64 + j]
+                result.prefixLCA[i * 64 + j] = ancestor
+                result.prefixLCA[j * 64 + i] = ancestor
+        # 根から最深頂点までの縦パスが2本以下なら、追加の表は作らない。
+        if result.data[3 * deepest + 2] >= 64 and countSetBits(result.data[3 * deepest + 1]) > 2:
+            # 最深頂点への経路に接続する祖先を記録し、長い経路上のLCAを直接返す。
+            result.pathAttach = newSeqWith(n, high(uint32))
+            let attach = cast[ptr UncheckedArray[uint32]](addr result.pathAttach[0])
+            var v = deepest
+            while v != -1:
+                attach[v] = cast[uint32](v)
+                v = parentData[v].int
+            for i in 1..<n:
+                let v = vertex(i)
+                if attach[v] == high(uint32):
+                    attach[v] = attach[parentData[v]]
+            result.pathPtr = attach
+            result.kind = 3
+        result.dataPtr = cast[ptr UncheckedArray[uint32]](addr result.data[0])
+        result.prefixPtr = cast[ptr UncheckedArray[uint32]](addr result.prefixLCA[0])
+        result.headPtr = cast[ptr UncheckedArray[int32]](addr result.headParent[0])
+        result.branchPtr = cast[ptr UncheckedArray[uint8]](addr result.prefixBranch[0])
     {.pop.}
 
     proc undirectedAdj(g: UnDirectedGraph or DirectedGraph): seq[seq[int]] =
@@ -181,37 +289,58 @@ when not declared CPLIB_TREE_LCA:
 
     proc numVertices*(tree: LowestCommonAncestor): int =
         ## 頂点数を返す。森の場合は追加した根を含む。O(1)
-        tree.parent.len
+        tree.parents.len
 
     proc parentOf*(tree: LowestCommonAncestor, v: int): int =
         ## 頂点vの親を返す。根の場合は-1を返す。O(1)
-        tree.parent[v]
+        tree.parents[v].int
 
     proc depth*(tree: LowestCommonAncestor, v: int): int =
         ## 根から頂点vまでの辺数を返す。O(1)
-        tree.depths[v]
+        assert 0 <= v and v < tree.n, "頂点番号が範囲外です"
+        if tree.kind == 1: v
+        elif tree.kind == 2: int(v != tree.root)
+        else: tree.data[3 * v + 2].int
 
     {.push boundChecks: off, overflowChecks: off.}
+    proc lcaInsideBranch(tree: LowestCommonAncestor, u, v: int): int {.noinline.} =
+        ## 同じ接点を持つ頂点間のLCAを、縦パスのビット演算で返す。O(1)
+        let a = tree.dataPtr[3 * u]
+        let b = tree.dataPtr[3 * v]
+        var x = u
+        var y = v
+        if a != b:
+            let common = tree.dataPtr[3 * u + 1] and tree.dataPtr[3 * v + 1] and (high(uint32) shl fastLog2(a xor b))
+            let lowA = tree.dataPtr[3 * u + 1] xor common
+            if lowA != 0:
+                let k = fastLog2(lowA)
+                x = tree.headPtr[(a and (high(uint32) shl k)) or (1'u32 shl k)].int
+            let lowB = tree.dataPtr[3 * v + 1] xor common
+            if lowB != 0:
+                let k = fastLog2(lowB)
+                y = tree.headPtr[(b and (high(uint32) shl k)) or (1'u32 shl k)].int
+        if tree.ordered: min(x, y)
+        elif tree.dataPtr[3 * x + 2] <= tree.dataPtr[3 * y + 2]: x
+        else: y
+
     proc lca*(tree: LowestCommonAncestor, u, v: int): int {.inline.} =
         ## 頂点uとvの最小共通祖先を返す。O(1)
-        assert 0 <= u and u < tree.parent.len and 0 <= v and v < tree.parent.len, "頂点番号が範囲外です"
-        if u == v: return u
-        let l = min(tree.first[u], tree.first[v]).int + 1
-        let r = max(tree.first[u], tree.first[v]).int
-        let shift = tree.blockShift
-        let a = l shr shift
-        let b = r shr shift
-        var best: int32
-        if a == b:
-            let start = a shl shift
-            let mask = tree.masks[r] and (high(uint32) shl (l - start))
-            best = tree.values[start + countTrailingZeroBits(mask)]
-        else:
-            best = min(tree.suffix[l], tree.prefix[r])
-            if a + 1 < b:
-                let k = fastLog2(b - a - 1)
-                best = min(best, min(tree.table[k][a + 1], tree.table[k][b - (1 shl k)]))
-        tree.order[best].int
+        assert 0 <= u and u < tree.n and 0 <= v and v < tree.n, "頂点番号が範囲外です"
+        if tree.kind != 0:
+            if tree.kind == 3:
+                let a = tree.pathPtr[u].int
+                let b = tree.pathPtr[v].int
+                if a != b:
+                    if tree.ordered: return min(a, b)
+                    return (if tree.dataPtr[3 * a + 2] <= tree.dataPtr[3 * b + 2]: a else: b)
+            elif tree.kind == 1:
+                return min(u, v)
+            else:
+                return (if u == v: u else: tree.root)
+        let branchA = tree.branchPtr[u].int
+        let branchB = tree.branchPtr[v].int
+        if branchA != branchB: return tree.prefixPtr[branchA * 64 + branchB].int
+        tree.lcaInsideBranch(u, v)
     {.pop.}
 
     proc dist*(tree: LowestCommonAncestor, u, v: int): int =
