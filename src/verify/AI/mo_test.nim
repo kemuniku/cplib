@@ -31,10 +31,10 @@ block:
   mo.insert(2, 2)
   var total = init(Mint, 0)
   var answers = newSeq[int](3)
-  proc add(i: int) = total += i + 1
-  proc del(i: int) = total -= i + 1
-  proc rem(i: int) = answers[i] = total.val
-  mo.run(add, add, del, del, rem = rem)
+  proc addValue(i: int) = total += i + 1
+  proc deleteValue(i: int) = total -= i + 1
+  proc recordAnswer(i: int) = answers[i] = total.val
+  mo.run(addValue, addValue, deleteValue, deleteValue, remember = recordAnswer)
   doAssert answers == @[15, 9, 0]
 
 proc checkClosureCallbacks() =
@@ -44,9 +44,9 @@ proc checkClosureCallbacks() =
   proc makeCallback(sign: int): proc(i: int) {.closure.} =
     inc factories
     result = proc(i: int) = total += sign * (i + 1)
-  proc rem(i: int) = answer = total
+  proc recordAnswer(i: int) = answer = total
   mo.run(makeCallback(1), makeCallback(1),
-         makeCallback(-1), makeCallback(-1), rem)
+         makeCallback(-1), makeCallback(-1), recordAnswer)
   doAssert factories == 4
   doAssert answer == 5
 

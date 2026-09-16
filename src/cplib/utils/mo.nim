@@ -24,19 +24,18 @@ when not declared CPLIB_UTILS_MO:
         self.qli[l div self.width].add((r shl 40) or ((l) shl 20) or self.size)
         self.size += 1
 
-    template run*(self: var Mo, add_left, add_right, delete_left, delete_right, rem: untyped) =
+    template run*(self: var Mo, add_left, add_right, delete_left, delete_right, remember: untyped) =
         ## 登録した区間を処理する。ソートO(Q log Q)、端点移動O(N² / width + Q * width)。
         block:
             {.push checks: off.}
             # ローカルに保持したコールバックを呼び出し側で最適化できるようにする。
             proc executeMo(solver: var Mo) =
                 ## コールバックを一度ずつ評価し、登録順の番号で結果を通知する。
-                # modint.remなどの同名関数と区別できるよう、引数の型を明示する。
-                let callbackAddLeft: proc(i: int) {.closure.} = add_left
-                let callbackAddRight: proc(i: int) {.closure.} = add_right
-                let callbackDeleteLeft: proc(i: int) {.closure.} = delete_left
-                let callbackDeleteRight: proc(i: int) {.closure.} = delete_right
-                let remember: proc(i: int) {.closure.} = rem
+                let callbackAddLeft = add_left
+                let callbackAddRight = add_right
+                let callbackDeleteLeft = delete_left
+                let callbackDeleteRight = delete_right
+                let callbackRemember = remember
                 var nl = 0
                 var nr = 0
                 const mask2 = ((1 shl 20)-1) shl 20
@@ -55,6 +54,6 @@ when not declared CPLIB_UTILS_MO:
                         while nr < ri: callbackAddRight(nr); nr.inc
                         while nl < li: callbackDeleteLeft(nl); nl.inc
                         while nr > ri: nr.dec; callbackDeleteRight(nr)
-                        remember(idx)
+                        callbackRemember(idx)
             executeMo(self)
             {.pop.}
