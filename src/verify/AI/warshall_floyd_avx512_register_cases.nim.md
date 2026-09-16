@@ -102,12 +102,12 @@ data:
     \ == current)\n    for n in [257, 271, 272, 287, 288, 289, 513]:\n        check[int32](n,\
     \ INF32, 10_000, group == 5)\n    echo \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/warshall_floyd_avx512.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

@@ -49,12 +49,12 @@ data:
     \ stdout.write \" \", v\n    stdout.write \"\\n\"\n"
   dependsOn:
   - cplib/graph/lowlink.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/lowlink.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/two_edge_connected_components.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/two_edge_connected_components_test.nim

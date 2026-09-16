@@ -50,8 +50,8 @@ data:
     )\n            # \u518D\u30B3\u30F3\u30D1\u30A4\u30EB\u3067\u3082\u3001\u30A4\u30F3\
     \u30B9\u30C8\u30FC\u30EB\u6E08\u307F\u306E\u5225\u7248\u3067\u306F\u306A\u304F\
     \u3053\u306E\u30E9\u30A4\u30D6\u30E9\u30EA\u3092\u53C2\u7167\u3059\u308B\u3002\
-    \n            cmd.add(\"--path:\" & quoteShell(libraryDir) & \" \")\n        \
-    \    cmd.add(\"-o:\" & quoteShell(outPath) & \" \" & quoteShell(sourcePath))\n\
+    \n            if libraryDir.len > 0:\n                cmd.add(\"--path:\" & quoteShell(libraryDir)\
+    \ & \" \")\n            cmd.add(\"-o:\" & quoteShell(outPath) & \" \" & quoteShell(sourcePath))\n\
     \n            echo \"--- Self-Recompiling with optimized settings ---\"\n    \
     \        echo \"Command: \", cmd\n            echo \"\\n\\n\\n\"\n\n         \
     \   let execution = gorgeEx(cmd)\n            if execution.exitCode != 0:\n  \
@@ -68,7 +68,7 @@ data:
   isVerificationFile: false
   path: cplib/tmpl/optimize.nim
   requiredBy: []
-  timestamp: '2026-09-14 23:47:44+09:00'
+  timestamp: '2026-09-17 01:48:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/optimize_cpp_test.nim

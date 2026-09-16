@@ -63,9 +63,9 @@ data:
     \ == 2432902008176640000'i64\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/count_topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
   - cplib/graph/count_topologicalsort.nim
   - cplib/graph/graph.nim
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

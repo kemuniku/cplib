@@ -54,8 +54,8 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/bipartite_graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/bipartite_graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
