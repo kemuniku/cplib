@@ -119,10 +119,10 @@ data:
   dependsOn:
   - cplib/collections/staticbitset_avx2.nim
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/staticbitset_avx2.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: true
   path: verify/AI/staticbitset_avx2_test.nim
   requiredBy: []

@@ -964,6 +964,12 @@ data:
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+    title: verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+    title: verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/lca/lca_from_parent_yosupo_test.nim
     title: verify/tree/lca/lca_from_parent_yosupo_test.nim
   - icon: ':heavy_check_mark:'
@@ -1515,6 +1521,8 @@ data:
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
+  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim

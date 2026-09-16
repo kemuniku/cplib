@@ -103,12 +103,12 @@ data:
     \ INF32, 10_000, group == 5)\n    echo \"Hello World\"\n"
   dependsOn:
   - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/AI/warshall_floyd_avx512_register_cases.nim

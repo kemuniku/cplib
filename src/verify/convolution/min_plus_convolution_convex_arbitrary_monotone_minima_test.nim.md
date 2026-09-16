@@ -56,9 +56,9 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/smawk.nim
-  - cplib/utils/monotone_minima.nim
   - cplib/convolution/min_plus_convolution.nim
+  - cplib/utils/monotone_minima.nim
+  - cplib/utils/smawk.nim
   - cplib/utils/smawk.nim
   - cplib/utils/monotone_minima.nim
   - cplib/convolution/min_plus_convolution.nim

@@ -125,13 +125,13 @@ data:
     \n"
   dependsOn:
   - cplib/graph/lowlink.nim
-  - cplib/graph/block_cut_tree.nim
   - cplib/graph/two_edge_connected_components.nim
-  - cplib/graph/biconnected_components.nim
   - cplib/graph/block_cut_tree.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/graph.nim
+  - cplib/graph/block_cut_tree.nim
+  - cplib/graph/biconnected_components.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

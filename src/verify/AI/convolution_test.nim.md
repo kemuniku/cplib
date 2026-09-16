@@ -148,30 +148,30 @@ data:
     \ intB) ==\n  convolutionNaiveMod[1_000_000_007](intA, intB)\nassert convolution[998_244_353](intA,\
     \ intB) ==\n  convolutionNaiveMod[998_244_353](intA, intB)\n"
   dependsOn:
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/convolution/ntt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/ntt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/ntt.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
   isVerificationFile: true
   path: verify/AI/convolution_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-16 22:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/convolution_test.nim

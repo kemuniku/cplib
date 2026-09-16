@@ -76,6 +76,12 @@ data:
     title: cplib/math/many_factorials.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
@@ -87,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
@@ -280,22 +292,22 @@ data:
     \            let lastPoint = min(firstPoint + blockSize, xs.len)\n           \
     \ for i in firstPoint..<lastPoint:\n                result[i] = remainder.eval(xs[i])\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/fps/product_tree.nim
   requiredBy:
@@ -307,7 +319,7 @@ data:
   - cplib/fps/fps.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/polynomial_interpolation.nim
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-16 23:15:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/many_factorials_online_test.nim
@@ -348,6 +360,10 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/many_factorials_test.nim

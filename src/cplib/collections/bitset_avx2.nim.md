@@ -586,9 +586,9 @@ data:
     \ > 0:\n            result = avxAny(unsafeAddr x.bits[0], x.size.csize_t) != 0\n"
   dependsOn:
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
   isVerificationFile: false
   path: cplib/collections/bitset_avx2.nim
   requiredBy: []

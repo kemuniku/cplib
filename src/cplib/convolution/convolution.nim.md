@@ -178,6 +178,18 @@ data:
     path: verify/AI/factoradic_test.nim
     title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_elementary_test.nim
+    title: verify/AI/fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_elementary_test.nim
+    title: verify/AI/fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
@@ -195,6 +207,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/shift_of_sampling_points_test.nim
     title: verify/AI/shift_of_sampling_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
@@ -662,8 +680,9 @@ data:
     \ u32* data, Z length, Z size, u32 mod, u32 root)\n: size_(size), modulus_(mod),\
     \ root_(root) {\n// \u56FA\u5B9A\u5074\u306E\u5909\u63DB\u3068\u6B63\u9006\u5909\
     \u63DB\u306E\u8A08\u753B\u3092\u4E00\u5EA6\u3060\u3051\u69CB\u7BC9\u3059\u308B\
-    \u3002\nmodulus = modulus_;\nprimitive_root = root_;\nforward_ = new TransformPlan(size_);\n\
-    inverse_ = new TransformPlan(size_);\ninverse_->prepare_inverse();\nfixed_ = static_cast<u32*>(_mm_malloc(sizeof(u32)\
+    \u3002\nmodulus = modulus_;\nif (root_ == 0) root_ = find_primitive_root(modulus_);\n\
+    primitive_root = root_;\nforward_ = new TransformPlan(size_);\ninverse_ = new\
+    \ TransformPlan(size_);\ninverse_->prepare_inverse();\nfixed_ = static_cast<u32*>(_mm_malloc(sizeof(u32)\
     \ * size_, 32));\nconst Montgomery& mont = forward_->montgomery();\nconst u32\
     \ scale = (u32)(u64(mont.radix_squared) *\npower_mod((u32)size_, modulus - 2)\
     \ % modulus);\nfor (Z i = 0; i < length; ++i) fixed_[i] = mont.multiply(data[i],\
@@ -954,18 +973,18 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
@@ -1005,7 +1024,7 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-16 22:49:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/many_factorials_online_test.nim
@@ -1078,8 +1097,14 @@ data:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/AI/wildcard_matching_test.nim
   - verify/AI/wildcard_matching_test.nim
+  - verify/AI/fps_elementary_test.nim
+  - verify/AI/fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/factoradic_test.nim

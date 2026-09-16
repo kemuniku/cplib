@@ -214,6 +214,18 @@ data:
     path: verify/AI/factoradic_test.nim
     title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_elementary_test.nim
+    title: verify/AI/fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_elementary_test.nim
+    title: verify/AI/fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
@@ -255,6 +267,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/shift_of_sampling_points_test.nim
     title: verify/AI/shift_of_sampling_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
@@ -691,10 +709,16 @@ data:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/AI/wildcard_matching_test.nim
   - verify/AI/wildcard_matching_test.nim
+  - verify/AI/fps_elementary_test.nim
+  - verify/AI/fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/primefactor_test.nim
   - verify/AI/primefactor_test.nim
   - verify/AI/shift_of_sampling_points_test.nim

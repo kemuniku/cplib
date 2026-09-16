@@ -82,11 +82,23 @@ data:
     path: verify/AI/bmbm_test.nim
     title: verify/AI/bmbm_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
@@ -231,22 +243,22 @@ data:
     \ 1\n        for i in 0..<coefficients.len: q[i + 1] = -coefficients[i]\n    \
     \    let p = prefix(initial * q, coefficients.len)\n        bostanMori(p, q, k)\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/fps/bostan_mori.nim
   requiredBy:
@@ -256,7 +268,7 @@ data:
   - cplib/fps/bmbm.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-16 23:15:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
@@ -293,8 +305,12 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/bmbm_test.nim

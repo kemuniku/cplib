@@ -522,26 +522,26 @@ data:
     \ = next\n                width = width shr 1\n            result[i] = value\n\
     \            counts.removeFactoradicValue(value)\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/bigint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/math/bigint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/math/factoradic.nim
   requiredBy: []
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-16 22:49:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/factoradic_test.nim

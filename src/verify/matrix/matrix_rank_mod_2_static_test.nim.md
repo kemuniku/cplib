@@ -49,10 +49,10 @@ data:
     if nm[0] == 0 or nm[1] == 0:\n    echo 0\n    quit(0)\nselectHeight[1](nm[0],\
     \ nm[1])\n"
   dependsOn:
-  - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true

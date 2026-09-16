@@ -251,10 +251,10 @@ data:
     reversible\u3092\u7121\u52B9\u306B\u3057\u305F\u6587\u5B57\u5217\u304C\u5FC5\u8981\
     \u3067\u3059\"\n        return base.suffix_upperbound(S) - base.suffix_lowerbound(S)\n"
   dependsOn:
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:

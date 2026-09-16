@@ -106,9 +106,9 @@ data:
     \ inf)\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

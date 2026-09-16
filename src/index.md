@@ -1451,6 +1451,12 @@ data:
       path: verify/AI/flow_test.nim
       title: verify/AI/flow_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/fps_composite_modulus_test.nim
+      title: verify/AI/fps_composite_modulus_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/fps_elementary_test.nim
+      title: verify/AI/fps_elementary_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/fps_test.nim
       title: verify/AI/fps_test.nim
     - icon: ':heavy_check_mark:'
@@ -1783,6 +1789,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/slopetrick_test.nim
       title: verify/AI/slopetrick_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/sparse_fps_elementary_test.nim
+      title: verify/AI/sparse_fps_elementary_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/sqrt_heuristic_for_floor_sum_test.nim
       title: verify/AI/sqrt_heuristic_for_floor_sum_test.nim
@@ -2800,6 +2809,9 @@ data:
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   - name: verify/tree/lca
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+      title: verify/tree/lca/la_jump_on_tree_yosupo_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/tree/lca/lca_from_parent_yosupo_test.nim
       title: verify/tree/lca/lca_from_parent_yosupo_test.nim

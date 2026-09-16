@@ -72,13 +72,13 @@ data:
     n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_test.nim
   requiredBy: []

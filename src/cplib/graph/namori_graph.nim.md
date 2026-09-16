@@ -95,8 +95,8 @@ data:
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/namori_graph.nim
   requiredBy:

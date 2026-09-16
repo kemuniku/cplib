@@ -70,11 +70,23 @@ data:
     title: cplib/fps/fps.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
@@ -191,24 +203,24 @@ data:
   code: "when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:\n    const CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES*\
     \ = 1\n\n    import algorithm, macros, options\n    import cplib/convolution/convolution\n\
     \    import cplib/fps/bostan_mori\n    import cplib/fps/formal_power_series\n\
-    \    import cplib/fps/product_tree\n    import cplib/math/isqrt\n    import cplib/modint/modint\n\
-    \n    type\n        SparseTerm*[T] = tuple[degree: int, coefficient: T]\n\n  \
-    \      SparseFPS*[T] = seq[SparseTerm[T]]\n\n        LinearPolynomial[T] = tuple[constant,\
-    \ linear: T]\n\n    proc initSparseFPS*[T](terms: openArray[SparseTerm[T]]): SparseFPS[T]\
-    \ =\n        ## \u6B21\u6570\u306E\u91CD\u8907\u3092\u307E\u3068\u3081\u3001\u96F6\
-    \u4FC2\u6570\u3092\u9664\u3044\u305F\u758E\u306AFPS\u3092\u69CB\u7BC9\u3059\u308B\
-    \u3002\n        result = @terms\n        for term in result:\n            doAssert\
-    \ term.degree >= 0, \"\u758E\u306AFPS\u306E\u6B21\u6570\u306F\u975E\u8CA0\u3067\
-    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        result.sort(proc(a, b: SparseTerm[T]):\
-    \ int = cmp(a.degree, b.degree))\n        var normalized: seq[SparseTerm[T]]\n\
-    \        for term in result:\n            if term.coefficient.val == 0: continue\n\
-    \            if normalized.len > 0 and normalized[^1].degree == term.degree:\n\
-    \                normalized[^1].coefficient += term.coefficient\n            \
-    \    if normalized[^1].coefficient.val == 0: normalized.setLen(normalized.len\
-    \ - 1)\n            else:\n                normalized.add(term)\n        result\
-    \ = move(normalized)\n\n    proc sparseMonomialDegree(node: NimNode): NimNode\
-    \ {.compileTime.} =\n        if node.eqIdent(\"x\"): return newLit(1)\n      \
-    \  if node.kind == nnkInfix and node.len == 3 and\n                node[0].eqIdent(\"\
+    \    import cplib/fps/product_tree\n    import cplib/math/isqrt\n    import cplib/math/isprime\n\
+    \    import cplib/modint/modint\n\n    type\n        SparseTerm*[T] = tuple[degree:\
+    \ int, coefficient: T]\n\n        SparseFPS*[T] = seq[SparseTerm[T]]\n\n     \
+    \   LinearPolynomial[T] = tuple[constant, linear: T]\n\n    proc initSparseFPS*[T](terms:\
+    \ openArray[SparseTerm[T]]): SparseFPS[T] =\n        ## \u6B21\u6570\u306E\u91CD\
+    \u8907\u3092\u307E\u3068\u3081\u3001\u96F6\u4FC2\u6570\u3092\u9664\u3044\u305F\
+    \u758E\u306AFPS\u3092\u69CB\u7BC9\u3059\u308B\u3002\n        result = @terms\n\
+    \        for term in result:\n            doAssert term.degree >= 0, \"\u758E\u306A\
+    FPS\u306E\u6B21\u6570\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308B\"\n        result.sort(proc(a, b: SparseTerm[T]): int = cmp(a.degree, b.degree))\n\
+    \        var normalized: seq[SparseTerm[T]]\n        for term in result:\n   \
+    \         if term.coefficient.val == 0: continue\n            if normalized.len\
+    \ > 0 and normalized[^1].degree == term.degree:\n                normalized[^1].coefficient\
+    \ += term.coefficient\n                if normalized[^1].coefficient.val == 0:\
+    \ normalized.setLen(normalized.len - 1)\n            else:\n                normalized.add(term)\n\
+    \        result = move(normalized)\n\n    proc sparseMonomialDegree(node: NimNode):\
+    \ NimNode {.compileTime.} =\n        if node.eqIdent(\"x\"): return newLit(1)\n\
+    \        if node.kind == nnkInfix and node.len == 3 and\n                node[0].eqIdent(\"\
     ^\") and node[1].eqIdent(\"x\"):\n            return node[2]\n        nil\n\n\
     \    proc collectSparseTerms(node: NimNode, sign: int,\n            terms: var\
     \ seq[tuple[degree, coefficient: NimNode]]) {.compileTime.} =\n        if node.kind\
@@ -284,103 +296,132 @@ data:
     \ g: seq[T]): seq[T] = g * f\n\n    proc `*=`*[T](f: var seq[T], g: SparseFPS[T])\
     \ =\n        ## f\u306E\u9577\u3055\u3092\u4FDD\u3061\u3001\u758E\u306AFPS\u3092\
     \u639B\u3051\u305F\u7D50\u679C\u3067\u7F6E\u304D\u63DB\u3048\u308B\u3002\n   \
-    \     let n = f.len\n        f = f.mulPrefix(g, n)\n\n    proc divPrefix*[T](f:\
-    \ seq[T], g: SparseFPS[T], n: int): seq[T] =\n        ## f / g \u3092 x^n \u3067\
-    \u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n        if n <= 0: return @[]\n\
-    \        let constant = g.constantTerm\n        doAssert constant.val != 0, \"\
-    \u758E\u306AFPS\u306B\u3088\u308B\u9664\u7B97\u3067\u306F\u5206\u6BCD\u306E\u5B9A\
-    \u6570\u9805\u304C\u975E\u96F6\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
-    \"\n        let constantInverse = constant.inv\n        result = newSeq[T](n)\n\
-    \        for i in 0..<n:\n            if i < f.len: result[i] = f[i]\n       \
-    \     for (degree, coefficient) in g:\n                if degree == 0: continue\n\
-    \                if degree > i: break\n                result[i] -= coefficient\
-    \ * result[i - degree]\n            result[i] *= constantInverse\n\n    proc `/`*[T](f:\
-    \ seq[T], g: SparseFPS[T]): seq[T] = f.divPrefix(g, f.len)\n\n    proc `/=`*[T](f:\
-    \ var seq[T], g: SparseFPS[T]) =\n        ## f\u306E\u9577\u3055\u3092\u4FDD\u3061\
-    \u3001\u758E\u306AFPS\u3067\u5272\u3063\u305F\u7D50\u679C\u3067\u7F6E\u304D\u63DB\
-    \u3048\u308B\u3002\n        let n = f.len\n        f = f.divPrefix(g, n)\n\n \
-    \   proc inv*[T](f: SparseFPS[T], n: int): seq[T] =\n        ## \u758E\u306AFPS\u306E\
-    \u4E57\u6CD5\u9006\u5143\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\
-    \u3002\n        @[init(T, 1)].divPrefix(f, n)\n\n    proc exp*[T](f: SparseFPS[T],\
-    \ n: int): seq[T] =\n        ## \u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\
-    \u95A2\u6570\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n\
-    \        if n <= 0: return @[]\n        doAssert n <= T.umod.int, \"\u758E\u306A\
-    FPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\u95A2\u6570\u3067\u306F n \u304C\u6CD5\
-    \u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        doAssert\
-    \ f.constantTerm.val == 0,\n            \"\u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\
-    \u6307\u6570\u95A2\u6570\u3067\u306F\u5B9A\u6570\u9805\u304C0\u3067\u3042\u308B\
-    \u5FC5\u8981\u304C\u3042\u308B\"\n        result = newSeq[T](n)\n        result[0]\
-    \ = 1\n        for degree in 1..<n:\n            for term in f:\n            \
-    \    if term.degree == 0: continue\n                if term.degree > degree: break\n\
-    \                result[degree] += init(T, term.degree) * term.coefficient *\n\
-    \                    result[degree - term.degree]\n            result[degree]\
-    \ /= degree\n\n    proc log*[T](f: SparseFPS[T], n: int): seq[T] =\n        ##\
-    \ \u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u5BFE\u6570\u3092 x^n \u3067\u6253\u3061\
-    \u5207\u3063\u3066\u8FD4\u3059\u3002\n        if n <= 0: return @[]\n        doAssert\
-    \ n <= T.umod.int, \"\u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u5BFE\u6570\u3067\
-    \u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
-    \"\n        doAssert f.constantTerm.val == 1,\n            \"\u758E\u306AFPS\u306E\
-    \u5F62\u5F0F\u7684\u5BFE\u6570\u3067\u306F\u5B9A\u6570\u9805\u304C1\u3067\u3042\
-    \u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        result = newSeq[T](n)\n      \
-    \  for degree in 1..<n:\n            result[degree] = init(T, degree) * f.coefficient(degree)\n\
-    \            for term in f:\n                if term.degree == 0: continue\n \
-    \               if term.degree >= degree: break\n                result[degree]\
-    \ -= term.coefficient * init(T, degree - term.degree) *\n                    result[degree\
-    \ - term.degree]\n            result[degree] /= degree\n\n    proc powUnit[T:\
-    \ BarrettModint or MontgomeryModint](f: SparseFPS[T],\n            exponent, constantRoot:\
-    \ T, n: int): seq[T] =\n        ## \u975E\u96F6\u306A\u5B9A\u6570\u9805\u3092\u6301\
-    \u3064FPS\u306B\u3064\u3044\u3066 f^exponent \u3092\u6F38\u5316\u5F0F\u3067\u6C42\
-    \u3081\u308B\u3002\n        if n <= 0: return @[]\n        let constant = f.constantTerm\n\
-    \        doAssert constant.val != 0, \"\u5358\u5143\u306E\u51AA\u3067\u306F\u5B9A\
-    \u6570\u9805\u304C\u975E\u96F6\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
-    \"\n        doAssert n <= T.umod.int, \"\u5358\u5143\u306E\u51AA\u3067\u306F n\
-    \ \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n\
-    \        result = newSeq[T](n)\n        result[0] = constantRoot\n        for\
-    \ degree in 1..<n:\n            for term in f:\n                if term.degree\
-    \ == 0: continue\n                if term.degree > degree: break\n           \
-    \     let weight = (exponent + 1) * term.degree - degree\n                result[degree]\
-    \ += weight * term.coefficient *\n                    result[degree - term.degree]\n\
-    \            result[degree] /= init(T, degree) * constant\n\n    proc pow*[T](f:\
-    \ SparseFPS[T], k, n: int): seq[T] =\n        ## \u758E\u306AFPS\u306E\u975E\u8CA0\
-    \u6574\u6570\u51AA\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\
-    \n        doAssert k >= 0, \"\u758E\u306AFPS\u306E\u6574\u6570\u51AA\u3067\u306F\
-    \u6307\u6570\u304C\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
-    \"\n        if n <= 0: return @[]\n        doAssert n <= T.umod.int, \"\u758E\u306A\
-    FPS\u306E\u6574\u6570\u51AA\u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\
-    \u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        if k == 0:\n            result\
-    \ = newSeq[T](n)\n            result[0] = 1\n            return\n        if f.isZero\
-    \ or f[0].degree > (n - 1) div k: return newSeq[T](n)\n        let order = f[0].degree\n\
-    \        let shift = order * k\n        let leading = f[0].coefficient\n     \
-    \   var unitTerms: seq[SparseTerm[T]]\n        for term in f:\n            if\
-    \ term.degree - order >= n - shift: break\n            unitTerms.add((term.degree\
-    \ - order, term.coefficient / leading))\n        let unit = initSparseFPS[T](unitTerms)\n\
-    \        let exponent = init(T, k mod T.umod.int)\n        let body = powUnit[T](unit,\
-    \ exponent, init(T, 1), n - shift)\n        result = newSeq[T](n)\n        let\
-    \ scale = leading.pow(k)\n        for i in 0..<body.len: result[shift + i] = body[i]\
-    \ * scale\n\n    proc sqrt*[T](f: SparseFPS[T], n: int): Option[seq[T]] =\n  \
-    \      ## \u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u5E73\u65B9\u6839\u3092 x^n\
-    \ \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n        if n <= 0: return\
-    \ some(newSeq[T]())\n        doAssert n <= T.umod.int, \"\u758E\u306AFPS\u306E\
-    \u5F62\u5F0F\u7684\u5E73\u65B9\u6839\u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\
-    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        if f.isZero or f[0].degree\
-    \ >= n: return some(newSeq[T](n))\n        let order = f[0].degree\n        if\
-    \ (order and 1) != 0: return none(seq[T])\n        let shift = order div 2\n \
-    \       let leading = f[0].coefficient\n        let leadingRoot = (@[leading]).sqrt(1)\n\
-    \        if leadingRoot.isNone: return none(seq[T])\n        var unitTerms: seq[SparseTerm[T]]\n\
-    \        for term in f:\n            if term.degree - order >= n - shift: break\n\
-    \            unitTerms.add((term.degree - order, term.coefficient / leading))\n\
-    \        let unit = initSparseFPS[T](unitTerms)\n        let half = init(T, 1)\
-    \ / 2\n        let body = powUnit[T](unit, half, init(T, 1), n - shift)\n    \
-    \    var answer = newSeq[T](n)\n        for i in 0..<body.len: answer[shift +\
-    \ i] = body[i] * leadingRoot.get[0]\n        some(answer)\n\n    proc multiplyPolynomials[T:\
-    \ BarrettModint or MontgomeryModint](a, b: seq[T]): seq[T] =\n        if a.len\
-    \ == 0 or b.len == 0: return @[]\n        convolution(a, b)\n\n    proc addPolynomial[T:\
-    \ BarrettModint or MontgomeryModint](a: var seq[T], b: seq[T]) =\n        if a.len\
-    \ < b.len: a.setLen(b.len)\n        for i in 0..<b.len: a[i] += b[i]\n\n    proc\
-    \ multiplyPolynomialMatrices[T: BarrettModint or MontgomeryModint](\n        \
-    \    a, b: seq[seq[T]], dimension: int): seq[seq[T]] =\n        ## \u591A\u9805\
-    \u5F0F\u884C\u5217\u306E\u7A4D a * b \u3092\u8A08\u7B97\u3059\u308B\u3002\n  \
-    \      result = newSeq[seq[T]](dimension * dimension)\n        for row in 0..<dimension:\n\
+    \     let n = f.len\n        f = f.mulPrefix(g, n)\n\n    proc sparseIndexInverses[T](n:\
+    \ int): seq[T] =\n        ## 1\u4EE5\u4E0An\u672A\u6E80\u306E\u9006\u6570\u8868\
+    \u3092\u4F5C\u308B\u3002\u7D20\u6570\u6CD5\u3067\u306FO(n)\u3001\u5408\u6210\u6570\
+    \u6CD5\u3067\u306F\u5404\u6DFB\u5B57\u306Einv\u3092\u4F7F\u3046\u3002\n      \
+    \  result = newSeq[T](n)\n        if n > 1: result[1] = init(T, 1)\n        if\
+    \ n <= 2: return\n        let p = T.umod.int\n        if not isprime(p):\n   \
+    \         for i in 2..<n: result[i] = init(T, i).inv\n            return\n   \
+    \     for i in 2..<n: result[i] = -result[p mod i] * (p div i)\n\n    proc sparseDivideInPlace[T](f:\
+    \ var seq[T], g: SparseFPS[T], inputLen: int) =\n        ## \u9577\u3055n\u306E\
+    \u5206\u5B50\u3092\u758E\u306A\u5206\u6BCD\u3067\u5272\u308B\u3002inputLen\u4EE5\
+    \u964D\u306F\u96F6\u3068\u3059\u308B\u3002O(nk)\u3002\n        let constant =\
+    \ g.constantTerm\n        assert constant.val != 0, \"\u758E\u306AFPS\u306B\u3088\
+    \u308B\u9664\u7B97\u3067\u306F\u5206\u6BCD\u306E\u5B9A\u6570\u9805\u304C\u975E\
+    \u96F6\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        let constantInverse\
+    \ = constant.inv\n        var terms: SparseFPS[T]\n        for term in g:\n  \
+    \          if term.degree >= f.len: break\n            if term.degree > 0:\n \
+    \               terms.add((term.degree, term.coefficient * constantInverse))\n\
+    \        if constant.val != 1:\n            for i in 0..<min(inputLen, f.len):\
+    \ f[i] *= constantInverse\n        if terms.len == 0: return\n        for i in\
+    \ terms[0].degree..<f.len:\n            var value = f[i]\n            for term\
+    \ in terms:\n                if term.degree > i: break\n                value\
+    \ -= term.coefficient * f[i - term.degree]\n            f[i] = value\n\n    proc\
+    \ divPrefix*[T](f: seq[T], g: SparseFPS[T], n: int): seq[T] =\n        ## f /\
+    \ g\u3092x^n\u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\u5206\u6BCD\
+    \u306E\u975E\u96F6\u9805\u6570\u3092k\u3068\u3057\u3066O(nk)\u3002\n        if\
+    \ n <= 0: return @[]\n        result = prefix(f, n)\n        sparseDivideInPlace(result,\
+    \ g, f.len)\n\n    proc `/`*[T](f: seq[T], g: SparseFPS[T]): seq[T] = f.divPrefix(g,\
+    \ f.len)\n\n    proc `/=`*[T](f: var seq[T], g: SparseFPS[T]) =\n        ## f\u306E\
+    \u9577\u3055\u3092\u4FDD\u3061\u3001\u758E\u306AFPS\u3067\u5272\u3063\u305F\u7D50\
+    \u679C\u3067\u7F6E\u304D\u63DB\u3048\u308B\u3002\n        let n = f.len\n    \
+    \    f = f.divPrefix(g, n)\n\n    proc inv*[T](f: SparseFPS[T], n: int): seq[T]\
+    \ =\n        ## \u758E\u306AFPS\u306E\u4E57\u6CD5\u9006\u5143\u3092 x^n \u3067\
+    \u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\n        @[init(T, 1)].divPrefix(f,\
+    \ n)\n\n    proc exp*[T](f: SparseFPS[T], n: int): seq[T] =\n        ## \u758E\
+    \u306AFPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\u95A2\u6570\u3092x^n\u3067\u6253\
+    \u3061\u5207\u308B\u3002\u7D20\u6570\u6CD5\u3067\u975E\u96F6\u9805\u6570\u3092\
+    k\u3068\u3057\u3066O(nk)\u3002\n        if n <= 0: return @[]\n        assert\
+    \ n <= T.umod.int, \"\u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\u95A2\
+    \u6570\u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308B\"\n        assert f.constantTerm.val == 0,\n            \"\u758E\u306A\
+    FPS\u306E\u5F62\u5F0F\u7684\u6307\u6570\u95A2\u6570\u3067\u306F\u5B9A\u6570\u9805\
+    \u304C0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        result = newSeq[T](n)\n\
+    \        result[0] = 1\n        var terms: SparseFPS[T]\n        for term in f:\n\
+    \            if term.degree >= n: break\n            if term.degree > 0:\n   \
+    \             terms.add((term.degree, term.coefficient * term.degree))\n     \
+    \   if terms.len == 0: return\n        let inverses = sparseIndexInverses[T](n)\n\
+    \        for degree in terms[0].degree..<n:\n            var value = init(T, 0)\n\
+    \            for term in terms:\n                if term.degree > degree: break\n\
+    \                value += term.coefficient * result[degree - term.degree]\n  \
+    \          result[degree] = value * inverses[degree]\n\n    proc log*[T](f: SparseFPS[T],\
+    \ n: int): seq[T] =\n        ## \u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u5BFE\u6570\
+    \u3092x^n\u3067\u6253\u3061\u5207\u308B\u3002\u7D20\u6570\u6CD5\u3067\u975E\u96F6\
+    \u9805\u6570\u3092k\u3068\u3057\u3066O(nk)\u3002\n        if n <= 0: return @[]\n\
+    \        assert n <= T.umod.int, \"\u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u5BFE\
+    \u6570\u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308B\"\n        assert f.constantTerm.val == 1,\n            \"\u758E\u306A\
+    FPS\u306E\u5F62\u5F0F\u7684\u5BFE\u6570\u3067\u306F\u5B9A\u6570\u9805\u304C1\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        result = newSeq[T](n)\n\
+    \        if f.len <= 1 or f[1].degree >= n: return\n        for term in f:\n \
+    \           if term.degree >= n: break\n            result[term.degree] = term.coefficient\
+    \ * term.degree\n        # x f'/f\u306E\u4FC2\u6570\u3092\u4FDD\u6301\u3057\u3001\
+    \u6F38\u5316\u5F0F\u3092\u89E3\u3044\u305F\u5F8C\u3067\u5404\u6B21\u6570\u306E\
+    \u9006\u6570\u3092\u639B\u3051\u308B\u3002\n        sparseDivideInPlace(result,\
+    \ f, n)\n        let inverses = sparseIndexInverses[T](n)\n        for degree\
+    \ in 1..<n: result[degree] *= inverses[degree]\n\n    proc powUnit[T: BarrettModint\
+    \ or MontgomeryModint](f: SparseFPS[T],\n            exponent, constantRoot: T,\
+    \ n: int): seq[T] =\n        ## \u975E\u96F6\u306A\u5B9A\u6570\u9805\u3092\u6301\
+    \u3064FPS\u306E\u51AA\u3092\u6F38\u5316\u5F0F\u3067\u6C42\u3081\u308B\u3002\u7D20\
+    \u6570\u6CD5\u3067\u975E\u96F6\u9805\u6570\u3092k\u3068\u3057\u3066O(nk)\u3002\
+    \n        if n <= 0: return @[]\n        let constant = f.constantTerm\n     \
+    \   assert constant.val != 0, \"\u5358\u5143\u306E\u51AA\u3067\u306F\u5B9A\u6570\
+    \u9805\u304C\u975E\u96F6\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n \
+    \       assert n <= T.umod.int, \"\u5358\u5143\u306E\u51AA\u3067\u306F n \u304C\
+    \u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n       \
+    \ result = newSeq[T](n)\n        result[0] = constantRoot\n        let constantInverse\
+    \ = constant.inv\n        var terms: seq[tuple[degree: int, coefficient, weight:\
+    \ T]]\n        for term in f:\n            if term.degree >= n: break\n      \
+    \      if term.degree == 0: continue\n            let coefficient = term.coefficient\
+    \ * constantInverse\n            terms.add((term.degree, coefficient, exponent\
+    \ * term.degree * coefficient))\n        if terms.len == 0: return\n        let\
+    \ inverses = sparseIndexInverses[T](n)\n        for degree in terms[0].degree..<n:\n\
+    \            var value = init(T, 0)\n            for term in terms.mitems:\n \
+    \               if term.degree > degree: break\n                value += term.weight\
+    \ * result[degree - term.degree]\n                # ((exponent+1)d-degree)f_d/f_0\u3092\
+    \u6B21\u306E\u6B21\u6570\u3078\u66F4\u65B0\u3059\u308B\u3002\n               \
+    \ term.weight -= term.coefficient\n            result[degree] = value * inverses[degree]\n\
+    \n    proc pow*[T](f: SparseFPS[T], k, n: int): seq[T] =\n        ## \u758E\u306A\
+    FPS\u306E\u975E\u8CA0\u6574\u6570\u51AA\u3092 x^n \u3067\u6253\u3061\u5207\u3063\
+    \u3066\u8FD4\u3059\u3002\n        assert k >= 0, \"\u758E\u306AFPS\u306E\u6574\
+    \u6570\u51AA\u3067\u306F\u6307\u6570\u304C\u975E\u8CA0\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308B\"\n        if n <= 0: return @[]\n        assert n <=\
+    \ T.umod.int, \"\u758E\u306AFPS\u306E\u6574\u6570\u51AA\u3067\u306F n \u304C\u6CD5\
+    \u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        if k ==\
+    \ 0:\n            result = newSeq[T](n)\n            result[0] = 1\n         \
+    \   return\n        if k == 1: return f.toDense(n)\n        if f.isZero or f[0].degree\
+    \ > (n - 1) div k: return newSeq[T](n)\n        let order = f[0].degree\n    \
+    \    let shift = order * k\n        let leading = f[0].coefficient\n        var\
+    \ unitTerms: seq[SparseTerm[T]]\n        for term in f:\n            if term.degree\
+    \ - order >= n - shift: break\n            unitTerms.add((term.degree - order,\
+    \ term.coefficient))\n        let exponent = init(T, k mod T.umod.int)\n     \
+    \   let body = powUnit[T](unitTerms, exponent, leading.pow(k), n - shift)\n  \
+    \      if shift == 0: return body\n        result = newSeq[T](n)\n        for\
+    \ i in 0..<body.len: result[shift + i] = body[i]\n\n    proc sqrt*[T](f: SparseFPS[T],\
+    \ n: int): Option[seq[T]] =\n        ## \u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\
+    \u5E73\u65B9\u6839\u3092 x^n \u3067\u6253\u3061\u5207\u3063\u3066\u8FD4\u3059\u3002\
+    \n        if n <= 0: return some(newSeq[T]())\n        assert n <= T.umod.int,\
+    \ \"\u758E\u306AFPS\u306E\u5F62\u5F0F\u7684\u5E73\u65B9\u6839\u3067\u306F n \u304C\
+    \u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n       \
+    \ if f.isZero or f[0].degree >= n: return some(newSeq[T](n))\n        let order\
+    \ = f[0].degree\n        if (order and 1) != 0: return none(seq[T])\n        let\
+    \ shift = order div 2\n        let leading = f[0].coefficient\n        let leadingRoot\
+    \ = (@[leading]).sqrt(1)\n        if leadingRoot.isNone: return none(seq[T])\n\
+    \        var unitTerms: seq[SparseTerm[T]]\n        for term in f:\n         \
+    \   if term.degree - order >= n - shift: break\n            unitTerms.add((term.degree\
+    \ - order, term.coefficient))\n        let half = init(T, 1) / 2\n        let\
+    \ body = powUnit[T](unitTerms, half, leadingRoot.get[0], n - shift)\n        if\
+    \ shift == 0: return some(body)\n        var answer = newSeq[T](n)\n        for\
+    \ i in 0..<body.len: answer[shift + i] = body[i]\n        some(answer)\n\n   \
+    \ proc multiplyPolynomials[T: BarrettModint or MontgomeryModint](a, b: seq[T]):\
+    \ seq[T] =\n        if a.len == 0 or b.len == 0: return @[]\n        convolution(a,\
+    \ b)\n\n    proc addPolynomial[T: BarrettModint or MontgomeryModint](a: var seq[T],\
+    \ b: seq[T]) =\n        if a.len < b.len: a.setLen(b.len)\n        for i in 0..<b.len:\
+    \ a[i] += b[i]\n\n    proc multiplyPolynomialMatrices[T: BarrettModint or MontgomeryModint](\n\
+    \            a, b: seq[seq[T]], dimension: int): seq[seq[T]] =\n        ## \u591A\
+    \u9805\u5F0F\u884C\u5217\u306E\u7A4D a * b \u3092\u8A08\u7B97\u3059\u308B\u3002\
+    \n        result = newSeq[seq[T]](dimension * dimension)\n        for row in 0..<dimension:\n\
     \            for middle in 0..<dimension:\n                let left = a[row *\
     \ dimension + middle]\n                if left.len == 0: continue\n          \
     \      for column in 0..<dimension:\n                    let right = b[middle\
@@ -536,32 +577,32 @@ data:
     \ powTransition[T](unit, exponent, dimension)\n        nthTermPolynomialRecurrence[T](initial,\
     \ recurrence.matrix,\n            recurrence.denominator, shiftedDegree) * scale\n"
   dependsOn:
-  - cplib/fps/bostan_mori.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/product_tree.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/product_tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/bostan_mori.nim
   isVerificationFile: false
   path: cplib/fps/sparse_formal_power_series.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-16 23:15:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/composition_of_formal_power_series_test.nim
@@ -598,6 +639,10 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
 documentation_of: cplib/fps/sparse_formal_power_series.nim

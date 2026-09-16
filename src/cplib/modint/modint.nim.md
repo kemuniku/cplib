@@ -346,6 +346,18 @@ data:
     path: verify/AI/factoradic_test.nim
     title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_composite_modulus_test.nim
+    title: verify/AI/fps_composite_modulus_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_elementary_test.nim
+    title: verify/AI/fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fps_elementary_test.nim
+    title: verify/AI/fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
@@ -393,6 +405,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/shift_of_sampling_points_test.nim
     title: verify/AI/shift_of_sampling_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/sparse_fps_elementary_test.nim
+    title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
@@ -791,12 +809,12 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -995,10 +1013,16 @@ data:
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/combination_test.nim
   - verify/AI/combination_test.nim
+  - verify/AI/fps_elementary_test.nim
+  - verify/AI/fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/gcd_lcm_convolution_test.nim
   - verify/AI/gcd_lcm_convolution_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/sheep_test.nim

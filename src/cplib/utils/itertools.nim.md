@@ -457,8 +457,8 @@ data:
     \ true\n                        break\n                    delta = delta div 2\n\
     \                if changed: break\n            if not changed: break\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

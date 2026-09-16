@@ -81,28 +81,28 @@ data:
     \ = if i < n: a[i] else: Mint(0)\n    let right = if i < m: b[i] else: Mint(0)\n\
     \    result[i] = convolution.add(left, right)\necho result.join(\" \")\n"
   dependsOn:
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/relaxed_convolution.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/ntt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
   - cplib/convolution/ntt.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/relaxed_convolution.nim
   isVerificationFile: true
   path: verify/convolution/relaxed_convolution_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-16 22:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/convolution/relaxed_convolution_test.nim

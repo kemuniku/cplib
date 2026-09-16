@@ -40,10 +40,10 @@ data:
     \ MaxN]()\nfor i in 0..<n:\n    a.setRowBits(i, stdin.readLine)\nfor i in n..<MaxN:\n\
     \    a[i, i] = true\necho int(a.determinant)\n"
   dependsOn:
-  - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true

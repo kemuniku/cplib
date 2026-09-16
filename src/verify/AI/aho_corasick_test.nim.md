@@ -135,8 +135,8 @@ data:
     \ == 2\nlp.add('a')\nassert lp.nodeId == longAc.patternNode(0)\nassert lp.restoreString\
     \ == longWord\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/str/aho_corasick.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/str/aho_corasick.nim
   isVerificationFile: true

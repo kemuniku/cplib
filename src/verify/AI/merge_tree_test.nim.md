@@ -72,9 +72,9 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/merge_tree.nim
-  - cplib/graph/merge_tree.nim
   - cplib/collections/unionfind.nim
+  - cplib/graph/merge_tree.nim
+  - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim

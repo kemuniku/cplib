@@ -64,8 +64,8 @@ data:
   dependsOn:
   - cplib/graph/count_topologicalsort.nim
   - cplib/graph/count_topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
