@@ -82,14 +82,18 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
         for i in 1..<f.len: result[i - 1] = f[i] * i
 
     proc fpsIndexInverses[T: BarrettModint or MontgomeryModint](n: int): seq[T] =
-        ## 1以上n未満の整数の逆数表をO(n)で作る。nは法以下とする。
+        ## 1以上n未満の逆数表を作る。素数法ではO(n)、合成数法では各添字のinvを使う。
         result = newSeq[T](n)
         if n > 1: result[1] = init(T, 1)
+        if n <= 2: return
         let p = T.umod.int
+        if not isprime(p):
+            for i in 2..<n: result[i] = init(T, i).inv
+            return
         for i in 2..<n: result[i] = -result[p mod i] * (p div i)
 
     proc integral*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T] =
-        ## 逆数表を用いて積分する。O(n)。
+        ## 逆数表を用いて積分する。素数法ではO(n)、合成数法ではO(n log mod)。
         assert f.len < T.umod.int,
             "FPSの積分では除数となる添字がすべて法未満である必要がある"
         let inverses = fpsIndexInverses[T](f.len + 1)

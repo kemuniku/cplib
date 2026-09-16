@@ -7,6 +7,7 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
     import cplib/fps/formal_power_series
     import cplib/fps/product_tree
     import cplib/math/isqrt
+    import cplib/math/isprime
     import cplib/modint/modint
 
     type
@@ -169,10 +170,14 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
         f = f.mulPrefix(g, n)
 
     proc sparseIndexInverses[T](n: int): seq[T] =
-        ## 1以上n未満の整数の逆数表をO(n)で作る。nは法以下とする。
+        ## 1以上n未満の逆数表を作る。素数法ではO(n)、合成数法では各添字のinvを使う。
         result = newSeq[T](n)
         if n > 1: result[1] = init(T, 1)
+        if n <= 2: return
         let p = T.umod.int
+        if not isprime(p):
+            for i in 2..<n: result[i] = init(T, i).inv
+            return
         for i in 2..<n: result[i] = -result[p mod i] * (p div i)
 
     proc sparseDivideInPlace[T](f: var seq[T], g: SparseFPS[T], inputLen: int) =
@@ -213,7 +218,7 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
         @[init(T, 1)].divPrefix(f, n)
 
     proc exp*[T](f: SparseFPS[T], n: int): seq[T] =
-        ## 疎なFPSの形式的指数関数をx^nで打ち切る。非零項数をkとしてO(nk)。
+        ## 疎なFPSの形式的指数関数をx^nで打ち切る。素数法で非零項数をkとしてO(nk)。
         if n <= 0: return @[]
         assert n <= T.umod.int, "疎なFPSの形式的指数関数では n が法以下である必要がある"
         assert f.constantTerm.val == 0,
@@ -235,7 +240,7 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
             result[degree] = value * inverses[degree]
 
     proc log*[T](f: SparseFPS[T], n: int): seq[T] =
-        ## 疎なFPSの形式的対数をx^nで打ち切る。非零項数をkとしてO(nk)。
+        ## 疎なFPSの形式的対数をx^nで打ち切る。素数法で非零項数をkとしてO(nk)。
         if n <= 0: return @[]
         assert n <= T.umod.int, "疎なFPSの形式的対数では n が法以下である必要がある"
         assert f.constantTerm.val == 1,
@@ -252,7 +257,7 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
 
     proc powUnit[T: BarrettModint or MontgomeryModint](f: SparseFPS[T],
             exponent, constantRoot: T, n: int): seq[T] =
-        ## 非零な定数項を持つFPSの冪を漸化式で求める。非零項数をkとしてO(nk)。
+        ## 非零な定数項を持つFPSの冪を漸化式で求める。素数法で非零項数をkとしてO(nk)。
         if n <= 0: return @[]
         let constant = f.constantTerm
         assert constant.val != 0, "単元の冪では定数項が非零である必要がある"
