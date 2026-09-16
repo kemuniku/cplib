@@ -62,20 +62,37 @@ proc check(n: int, edges: seq[(int, int)], root: int, forest: bool) =
     let realRoot = if forest: n else: root
     parent[realRoot] = count + 100
     actual.add(initLCAFromParent(parent, realRoot))
+    let disabled = initLCAFromParent(parent, realRoot, no_la = true)
     parent[realRoot] = -1
     for tree in actual:
         doAssert tree.numVertices == count
         for v in 0..<count:
             doAssert tree.parentOf(v) == parent[v]
             doAssert tree.depth(v) == depths[v]
+            doAssert tree.la(v, -1) == -1
+            doAssert tree.la(v, depths[v] + 1) == -1
+            var a = v
+            for k in 0..depths[v]:
+                doAssert tree.la(v, k) == a
+                a = parent[a]
         for trial in 0..<(if count <= 40: count * count else: 2000):
             let u = if count <= 40: trial div count else: rng.rand(count - 1)
             let v = if count <= 40: trial mod count else: rng.rand(count - 1)
             let ancestor = naive(parent, depths, u, v)
             doAssert tree.lca(u, v) == ancestor
+            doAssert disabled.lca(u, v) == ancestor
             doAssert tree.dist(u, v) == depths[u] + depths[v] - 2 * depths[ancestor]
             let x = rng.rand(count - 1)
             doAssert tree.median(x, u, v) == expected.median(x, u, v)
+            let d = rng.rand(tree.dist(u, v) + 1)
+            doAssert tree.la(u, v, d) == expected.la(u, v, d)
+            doAssert tree.la(u, v, -1) == -1
+    var rejected = false
+    try:
+        discard disabled.la(realRoot, 0)
+    except AssertionDefect:
+        rejected = true
+    doAssert rejected
 
 check(0, @[], 0, true)
 check(1, @[], 0, false)
@@ -138,6 +155,10 @@ for n in [63, 64, 65, 127, 128, 129, 257]:
         let tree = initLCAFromParent(parent, labels[0])
         for u in 0..<n:
             doAssert tree.depth(u) == depths[u]
+            var a = u
+            for k in 0..depths[u]:
+                doAssert tree.la(u, k) == a
+                a = parent[a]
             for v in 0..<n:
                 doAssert tree.lca(u, v) == naive(parent, depths, u, v)
 
@@ -176,12 +197,16 @@ for trial in 0..<10000:
     let v = rng.rand(n - 1)
     doAssert path.lca(u, v) == min(u, v)
     doAssert path.dist(u, v) == abs(u - v)
+    let k = rng.rand(u)
+    doAssert path.la(u, k) == u - k
 for v in 0..<n: parent[v] = n - 1
 let star = initLCAFromParent(parent, n - 1)
 for trial in 0..<10000:
     let u = rng.rand(n - 1)
     let v = rng.rand(n - 1)
     doAssert star.lca(u, v) == (if u == v: u else: n - 1)
+    doAssert star.la(u, 0) == u
+    doAssert star.la(u, 1) == (if u == n - 1: -1 else: n - 1)
 parent[0] = -1
 var depths = newSeq[int](n)
 for v in 1..<n:
@@ -192,4 +217,43 @@ for trial in 0..<10000:
     let u = rng.rand(n - 1)
     let v = rng.rand(n - 1)
     doAssert randomTree.lca(u, v) == naive(parent, depths, u, v)
+    let k = rng.rand(depths[u])
+    var a = u
+    for i in 0..<k: a = parent[a]
+    doAssert randomTree.la(u, k) == a
+
+block:
+    var adj = @[@[1], @[0, 2], @[1]]
+    var g = initUnWeightedUnDirectedGraph(3)
+    var dg = initUnWeightedDirectedGraph(3)
+    for i in 0..<2:
+        g.add_edge(i, i + 1)
+        dg.add_edge(i, i + 1)
+    for tree in [adj.initLCA(0, no_la = true), g.initLCA(0, no_la = true),
+            dg.initLCA(0, no_la = true), adj.initLCAFromForest(no_la = true),
+            g.initLCAFromForest(no_la = true), dg.initLCAFromForest(no_la = true)]:
+        doAssert tree.lca(1, 2) == 1
+        doAssert tree.dist(0, 2) == 2
+
+for shape in 0..<3:
+    var labels = toSeq(0..<n)
+    rng.shuffle(labels)
+    var deepParent = newSeq[int](n)
+    var deepDepth = newSeq[int](n)
+    deepParent[labels[0]] = -1
+    for i in 1..<n:
+        let p = (if shape == 0: i - 1
+            elif shape == 1: (if i < n div 2: i - 1 else: i - n div 2)
+            else: (if i mod 1000 == 1: 0 else: i - 1))
+        deepParent[labels[i]] = labels[p]
+        deepDepth[labels[i]] = deepDepth[labels[p]] + 1
+    let tree = initLCAFromParent(deepParent, labels[0])
+    for trial in 0..<1000:
+        let v = rng.rand(n - 1)
+        let k = rng.rand(deepDepth[v])
+        var a = v
+        for i in 0..<k: a = deepParent[a]
+        doAssert tree.la(v, k) == a
+        doAssert tree.la(v, deepDepth[v]) == labels[0]
+        doAssert tree.la(v, deepDepth[v] + 1) == -1
 echo "Hello World"

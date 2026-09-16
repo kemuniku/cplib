@@ -22,6 +22,77 @@ when not declared CPLIB_TREE_LCA:
         ordered: bool
         # kindは一般の木=0、頂点番号順の鎖=1、スター=2、長い経路を持つ木=3。
         kind, root: int
+        laEnabled: bool
+        laIndex: seq[uint32]
+        laJump, laLadder: seq[int32]
+        laBase: seq[int]
+
+    proc buildLA(tree: LowestCommonAncestor, order: seq[int]) =
+        ## Euler tourのジャンプと、最長経路を5倍に延長したladderを構築する。時間・空間O(N)
+        # https://arxiv.org/abs/2005.11188
+        # https://www.lrvideckis.com/blog/2024/02/29/linear_level_ancestors.html
+        let n = tree.n
+        template vertex(i: int): int =
+            ## 親が子より先に現れる順序のi番目の頂点を返す。O(1)
+            (if tree.ordered: i else: order[i])
+        template dep(v: int): int =
+            ## 構築済みの頂点の深さを返す。O(1)
+            tree.data[3 * v + 2].int
+        var leaf = lcaUninit(int32, n)
+        for v in 0..<n: leaf[v] = v.int32
+        for i in countdown(n - 1, 1):
+            let v = vertex(i)
+            let p = tree.parents[v].int
+            if dep(leaf[v].int) > dep(leaf[p].int): leaf[p] = leaf[v]
+        tree.laBase = lcaUninit(int, n)
+        var total = 0
+        for i in 0..<n:
+            let v = vertex(i)
+            if v == tree.root or leaf[v] != leaf[tree.parents[v]]:
+                let bottom = leaf[v].int
+                let length = min(5 * (dep(bottom) - dep(v) + 1), dep(bottom) + 1)
+                tree.laBase[bottom] = total + dep(bottom)
+                total += length
+        tree.laLadder = lcaUninit(int32, total)
+        for i in 0..<n:
+            let v = vertex(i)
+            if v == tree.root or leaf[v] != leaf[tree.parents[v]]:
+                let bottom = leaf[v].int
+                let length = min(5 * (dep(bottom) - dep(v) + 1), dep(bottom) + 1)
+                let start = tree.laBase[bottom] - dep(bottom)
+                var u = bottom
+                for j in 0..<length:
+                    tree.laLadder[start + j] = u.int32
+                    u = tree.parents[u].int
+        for v in 0..<n: tree.laBase[v] = tree.laBase[leaf[v]]
+        var child = newSeqWith(n, -1'i32)
+        var sibling = lcaUninit(int32, n)
+        for v in 0..<n:
+            if v != tree.root:
+                let p = tree.parents[v].int
+                sibling[v] = child[p]
+                child[p] = v.int32
+        tree.laIndex = lcaUninit(uint32, n)
+        tree.laJump = lcaUninit(int32, 2 * n)
+        var stack = newSeqOfCap[int32](dep(leaf[tree.root].int) + 1)
+        stack.add(tree.root.int32)
+        var index = 1
+        tree.laIndex[tree.root] = index.uint32
+        tree.laJump[index] = tree.root.int32
+        while stack.len > 0:
+            let v = stack[^1].int
+            let u = child[v].int
+            if u != -1:
+                child[v] = sibling[u]
+                stack.add(u.int32)
+                inc index
+                tree.laIndex[u] = index.uint32
+            else:
+                discard stack.pop()
+                if stack.len == 0: break
+                inc index
+            let jump = index and -index
+            tree.laJump[index] = stack[max(0, stack.len - 1 - jump)]
 
     when defined(cpp) and (defined(gcc) or defined(clang)):
         {.emit: """
@@ -89,12 +160,13 @@ static NI build(const std::int32_t* __restrict parent,
             {.importcpp: "cplib_lca::build<false>(@)", nodecl.}
 
     {.push boundChecks: off, overflowChecks: off.}
-    proc initLCAFromParent*(parent: openArray[int], root: int): LowestCommonAncestor =
+    proc initLCAFromParent*(parent: openArray[int], root: int, no_la: bool = false): LowestCommonAncestor =
         ## 根付き木の親配列から構築する。parent[root]は参照しない。N < 2^31。時間・空間O(N)
+        ## no_la=trueでLA用の前計算を省略する。
         let n = parent.len
         assert n <= high(int32).int, "頂点数は2^31未満である必要があります"
         assert 0 <= root and root < n, "根の頂点番号が範囲外です"
-        result = LowestCommonAncestor(n: n, root: root, parents: lcaUninit(int32, n))
+        result = LowestCommonAncestor(n: n, root: root, parents: lcaUninit(int32, n), laEnabled: not no_la)
         let parentData = cast[ptr UncheckedArray[int32]](addr result.parents[0])
         var invalid = 0'u32
         var unordered = uint32(root != 0)
@@ -215,6 +287,7 @@ static NI build(const std::int32_t* __restrict parent,
         result.prefixPtr = cast[ptr UncheckedArray[uint32]](addr result.prefixLCA[0])
         result.headPtr = cast[ptr UncheckedArray[int32]](addr result.headParent[0])
         result.branchPtr = cast[ptr UncheckedArray[uint8]](addr result.prefixBranch[0])
+        if not no_la: result.buildLA(order)
     {.pop.}
 
     proc undirectedAdj(g: UnDirectedGraph or DirectedGraph): seq[seq[int]] =
@@ -234,7 +307,7 @@ static NI build(const std::int32_t* __restrict parent,
                 result[v].add(u)
                 result[u].add(v)
 
-    proc fromAdj(adj: seq[seq[int]] or UnDirectedGraph, root: int, forest: bool): LowestCommonAncestor =
+    proc fromAdj(adj: seq[seq[int]] or UnDirectedGraph, root: int, forest, no_la: bool): LowestCommonAncestor =
         ## 隣接リストを親配列へ変換して構築する。O(N + M)
         let n = adj.len
         var parent = newSeqWith(n + int(forest), -2)
@@ -263,29 +336,33 @@ static NI build(const std::int32_t* __restrict parent,
                     for (u, _) in adj.to_and_cost(v): visit(u)
                 else:
                     for u in adj[v]: visit(u)
-        result = initLCAFromParent(parent, if forest: n else: root)
+        result = initLCAFromParent(parent, (if forest: n else: root), no_la)
 
-    proc initLCA*(g: UnDirectedGraph or DirectedGraph, root: int): LowestCommonAncestor =
+    proc initLCA*(g: UnDirectedGraph or DirectedGraph, root: int, no_la: bool = false): LowestCommonAncestor =
         ## 辺の向きと重みを無視すると木になるgから構築する。時間・空間O(N + M)、木ではO(N)
+        ## no_la=trueでLA用の前計算を省略する。
         when g is UnDirectedGraph:
-            fromAdj(g, root, false)
+            fromAdj(g, root, false, no_la)
         else:
-            fromAdj(undirectedAdj(g), root, false)
+            fromAdj(undirectedAdj(g), root, false, no_la)
 
-    proc initLCA*(adj: openArray[seq[int]], root: int): LowestCommonAncestor =
+    proc initLCA*(adj: openArray[seq[int]], root: int, no_la: bool = false): LowestCommonAncestor =
         ## 木の隣接リストから辺の向きを無視して構築する。時間・空間O(N + M)、木ではO(N)
-        fromAdj(undirectedAdj(adj), root, false)
+        ## no_la=trueでLA用の前計算を省略する。
+        fromAdj(undirectedAdj(adj), root, false, no_la)
 
-    proc initLCAFromForest*(g: UnDirectedGraph or DirectedGraph): LowestCommonAncestor =
+    proc initLCAFromForest*(g: UnDirectedGraph or DirectedGraph, no_la: bool = false): LowestCommonAncestor =
         ## 森に根Nを追加し、各成分の最小番号の頂点と結ぶ。辺の向きと重みは無視する。O(N + M)
+        ## no_la=trueでLA用の前計算を省略する。
         when g is UnDirectedGraph:
-            fromAdj(g, g.len, true)
+            fromAdj(g, g.len, true, no_la)
         else:
-            fromAdj(undirectedAdj(g), g.len, true)
+            fromAdj(undirectedAdj(g), g.len, true, no_la)
 
-    proc initLCAFromForest*(adj: openArray[seq[int]]): LowestCommonAncestor =
+    proc initLCAFromForest*(adj: openArray[seq[int]], no_la: bool = false): LowestCommonAncestor =
         ## 森の隣接リストの向きを無視し、根Nを追加して各成分の最小頂点と結ぶ。O(N + M)
-        fromAdj(undirectedAdj(adj), adj.len, true)
+        ## no_la=trueでLA用の前計算を省略する。
+        fromAdj(undirectedAdj(adj), adj.len, true, no_la)
 
     proc numVertices*(tree: LowestCommonAncestor): int =
         ## 頂点数を返す。森の場合は追加した根を含む。O(1)
@@ -301,6 +378,21 @@ static NI build(const std::int32_t* __restrict parent,
         if tree.kind == 1: v
         elif tree.kind == 2: int(v != tree.root)
         else: tree.data[3 * v + 2].int
+
+    proc la*(tree: LowestCommonAncestor, v, k: int): int =
+        ## vからk辺上の祖先を返す。LA有効での構築が必要。kが負または根を超える場合は-1。O(1)
+        assert tree.laEnabled, "LAを使用するにはno_la=falseで構築してください"
+        assert 0 <= v and v < tree.n, "頂点番号が範囲外です"
+        if k < 0: return -1
+        let targetDepth = tree.depth(v) - k
+        if targetDepth < 0: return -1
+        if k == 0: return v
+        if k == 1: return tree.parents[v].int
+        if tree.kind == 1: return v - k
+        let step = 1 shl fastLog2(k shr 1)
+        let index = (tree.laIndex[v].int and -step) or step
+        let jump = tree.laJump[index].int
+        tree.laLadder[tree.laBase[jump] - targetDepth].int
 
     {.push boundChecks: off, overflowChecks: off.}
     proc lcaInsideBranch(tree: LowestCommonAncestor, u, v: int): int {.noinline.} =
@@ -346,6 +438,16 @@ static NI build(const std::int32_t* __restrict parent,
     proc dist*(tree: LowestCommonAncestor, u, v: int): int =
         ## 頂点uとvを結ぶパスの辺数を返す。O(1)
         tree.depth(u) + tree.depth(v) - 2 * tree.depth(tree.lca(u, v))
+
+    proc la*(tree: LowestCommonAncestor, starting, goal, d: int): int =
+        ## startingからgoalへd辺進んだ頂点を返す。dが負またはパスの辺数を超える場合は-1。O(1)
+        assert tree.laEnabled, "LAを使用するにはno_la=falseで構築してください"
+        let ancestor = tree.lca(starting, goal)
+        let up = tree.depth(starting) - tree.depth(ancestor)
+        let length = up + tree.depth(goal) - tree.depth(ancestor)
+        if d < 0 or d > length: return -1
+        if d <= up: tree.la(starting, d)
+        else: tree.la(goal, length - d)
 
     proc median*(tree: LowestCommonAncestor, x, y, z: int): int =
         ## 根をxとしたときのyとzの最小共通祖先を返す。O(1)
