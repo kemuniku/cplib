@@ -2,6 +2,8 @@
 ## amd64のAVX2対応CPUとGCC/Clangが必要です。C/C++バックエンドに対応します。
 ## AVX-512対応環境では対応する演算を自動で切り替えます。個数計算にはVPOPCNTDQが必要です。
 ## import cplib/collections/bitset_avx512 とし、initBitSetで構築します。
+## fuse: 内では x = x or (y and z) のように書くと論理式を一時集合なしで計算します。
+## x = x or (x shl k) と x = x or (x shr k) も一時集合なしで更新します。
 ## -d:releaseでのコンパイルを推奨します。-mavx2の指定は不要です。
 ## 命令数はAVX-512経路の主ループの演算部分の目安で、関数全体の命令数やサイクル数ではありません。
 ## ロード・ストア、アドレス計算、ループ制御、CPU判定、チェック、領域確保・初期化、定数準備、端数処理は含めません。
@@ -10,13 +12,14 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
     const CPLIB_COLLECTIONS_BITSET_AVX512* = 1
     when not (defined(amd64) and (defined(gcc) or defined(clang))):
         {.error: "BitSetAvx512 requires amd64 and GCC/Clang".}
-    import bitops
+    import bitops, macros, strutils
 
     type BitSetAvx512* {.byref.} = object
         bits: seq[uint64]
         size: int
 
     include cplib/collections/private/bitset_avx512_impl
+    include cplib/collections/private/bitset_search_impl
 
     proc initBitSet*(N: int): BitSetAvx512 =
         ## Nビットの空集合を構築します。
@@ -484,21 +487,38 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
             result = avxSubset(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t) != 0
 
     proc nextSetBit*(x: BitSetAvx512, start: int): int =
-        ## start以上で最初の1の添字を返し、なければ-1を返します。0 <= start <= len(x)。最悪O(ビット数 / 64)。
-        ## SIMD命令は使わず、64ビットワードを走査して末尾の0の個数から位置を求めます。
+        ## start以上で最初の1の添字を返し、なければ-1。0 <= start <= len(x)。最悪O(1 + ビット数/64)。
+        ## 最初のワードを調べた後、ゼロ区間をSIMDでまとめて飛ばします。
         when compileOption("boundChecks"):
             if start < 0 or start > x.size:
                 raise newException(IndexDefect, "BitSet index out of bounds")
         result = -1
-        if start < x.size:
-            var wordIndex = start shr 6
-            var word = x.bits[wordIndex] and ((not 0'u64) shl (start and 63))
-            while true:
+        if x.size > 0:
+            if start < x.size:
+                let i = start shr 6
+                let word = x.bits[i] and ((not 0'u64) shl (start and 63))
                 if word != 0:
-                    return wordIndex * 64 + word.countTrailingZeroBits()
-                inc wordIndex
-                if wordIndex >= x.bits.len: break
-                word = x.bits[wordIndex]
+                    return i * 64 + word.countTrailingZeroBits()
+                let j = searchNextWordAvx512(unsafeAddr x.bits[0], (i+1).csize_t, x.bits.len.csize_t).int
+                if j < x.bits.len:
+                    return j * 64 + x.bits[j].countTrailingZeroBits()
+
+    proc prevSetBit*(x: BitSetAvx512, start: int): int =
+        ## start以下で最後の1の添字を返し、なければ-1。-1 <= start < len(x)。最悪O(1 + ビット数/64)。
+        ## start == -1なら-1。最初のワードを調べた後、ゼロ区間をSIMDで逆順に飛ばします。
+        when compileOption("boundChecks"):
+            if start < -1 or start >= x.size:
+                raise newException(IndexDefect, "BitSet index out of bounds")
+        result = -1
+        if x.size > 0:
+            if start >= 0:
+                let i = start shr 6
+                let word = x.bits[i] and ((not 0'u64) shr (63 - (start and 63)))
+                if word != 0:
+                    return i * 64 + 63 - word.countLeadingZeroBits()
+                let j = searchPrevWordAvx512(unsafeAddr x.bits[0], 0, i.csize_t).int
+                if j < i:
+                    return j * 64 + 63 - x.bits[j].countLeadingZeroBits()
 
     proc xnorpopcount*(x, y: BitSetAvx512): int =
         ## ビットが一致する位置の個数を、一時集合を作らずに返します。O(ビット数 / 64)。
@@ -545,19 +565,23 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         x.flipRange(0, x.size)
 
     iterator items*(bitset: BitSetAvx512): int =
-        ## 立っているビットの添字を昇順に列挙します。
-        for wordIndex in 0..<bitset.bits.len:
-            var word = bitset.bits[wordIndex]
-            while word != 0:
-                yield wordIndex * 64 + word.countTrailingZeroBits()
-                word = word and (word - 1)
+        ## 立っているビットを昇順に列挙します。ゼロ区間はSIMDで探索します。O(ワード数 + 要素数)。
+        if bitset.bits.len > 0:
+            var wordIndex = 0
+            while wordIndex < bitset.bits.len:
+                var word = bitset.bits[wordIndex]
+                if word == 0:
+                    wordIndex = searchNextWordAvx512(unsafeAddr bitset.bits[0], (wordIndex+1).csize_t, bitset.bits.len.csize_t).int
+                    if wordIndex >= bitset.bits.len: break
+                    word = bitset.bits[wordIndex]
+                while word != 0:
+                    yield wordIndex * 64 + word.countTrailingZeroBits()
+                    word = word and (word - 1)
+                inc wordIndex
 
     proc lowestBit*(bitset: BitSetAvx512): int =
-        ## 最小の要素を返し、空集合なら-1を返します。
-        for wordIndex in 0..<bitset.bits.len:
-            if bitset.bits[wordIndex] != 0:
-                return wordIndex * 64 + bitset.bits[wordIndex].countTrailingZeroBits()
-        -1
+        ## 最小の要素を返し、空集合なら-1。最悪O(1 + ビット数/64)。ゼロ区間はSIMDで探索します。
+        bitset.nextSetBit(0)
 
     proc `[]`*(bitset: BitSetAvx512, idx: Natural): bool =
         ## 指定した添字のビットが立っているかを返します。
@@ -632,3 +656,5 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         ## 512ビットずつ判定し、AVX512F非対応時はAVX2を使います。
         if x.size > 0:
             result = avxAny(unsafeAddr x.bits[0], x.size.csize_t) != 0
+
+    include cplib/collections/private/bitset_avx512_fuse
