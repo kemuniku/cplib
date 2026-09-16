@@ -18,12 +18,16 @@ when not declared CPLIB_UTILS_MO:
     proc insert*(self: var Mo, l, r: int) =
         ## 半開区間[l, r)を登録する。償却O(1)。
         ## l、r、登録順のクエリ番号（0始まり）は、いずれも20bit以内（0以上2^20未満）であることを要求する。
+        assert 0 <= l and l <= r and r <= self.N
+        assert r < (1 shl 20)
+        assert self.size < (1 shl 20)
         self.qli[l div self.width].add((r shl 40) or ((l) shl 20) or self.size)
         self.size += 1
 
     template run*(self: var Mo, add_left, add_right, delete_left, delete_right, rem: untyped) =
         ## 登録した区間を処理する。ソートO(Q log Q)、端点移動O(N² / width + Q * width)。
         block:
+            {.push checks: off.}
             # ローカルに保持したコールバックを呼び出し側で最適化できるようにする。
             proc executeMo(solver: var Mo) =
                 ## コールバックを一度ずつ評価し、登録順の番号で結果を通知する。
@@ -53,3 +57,4 @@ when not declared CPLIB_UTILS_MO:
                         while nr > ri: nr.dec; callbackDeleteRight(nr)
                         remember(idx)
             executeMo(self)
+            {.pop.}
