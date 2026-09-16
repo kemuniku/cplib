@@ -1,13 +1,39 @@
 when not declared CPLIB_CONVOLUTION_MIN_PLUS_CONVOLUTION:
     ## c[k] = min(a[i] + b[j] | i+j=k) を返す。片方が空なら空列を返す。
-    ## 凸は隣接差分が広義単調増加、凹は広義単調減少。前提の検査は行わない。
+    ## 凸は隣接差分が広義単調増加、凹は広義単調減少。-d:debug 時に前提を検査する。
     ## すべての候補の和が T で表現可能であること。空間計算量は全 API で O(N + M)。
     const CPLIB_CONVOLUTION_MIN_PLUS_CONVOLUTION* = 1
     import cplib/utils/monotone_minima
     import cplib/utils/smawk
 
+    when defined(debug):
+        proc differenceLeq[T](a, b, c, d: T): bool =
+            ## b - a <= d - c を整数のオーバーフローを避けて判定する。
+            when T is SomeInteger:
+                template bits(x: T): uint64 =
+                    when T is SomeUnsignedInt: uint64(x)
+                    else: cast[uint64](int64(x))
+                if b < a:
+                    if d >= c: return true
+                    return bits(a) - bits(b) >= bits(c) - bits(d)
+                if d < c: return false
+                return bits(b) - bits(a) <= bits(d) - bits(c)
+            else:
+                return b - a <= d - c
+
+        proc checkShape[T](a: seq[T], convex: static[bool]) =
+            ## 隣接差分の単調性を O(N) 時間で検査する。
+            for i in 2..<a.len:
+                when convex:
+                    assert differenceLeq(a[i - 2], a[i - 1], a[i - 1], a[i]), "数列は凸である必要があります"
+                else:
+                    assert differenceLeq(a[i - 1], a[i], a[i - 2], a[i - 1]), "数列は凹である必要があります"
+
     proc minPlusConvolutionConvexConvex*[T](a, b: seq[T]): seq[T] =
         ## 凸数列同士の min-plus 畳み込みを O(N + M) 時間で求める。
+        when defined(debug):
+            checkShape(a, true)
+            checkShape(b, true)
         if a.len == 0 or b.len == 0: return @[]
         result = newSeq[T](a.len + b.len - 1)
         var i = 0
@@ -22,7 +48,21 @@ when not declared CPLIB_CONVOLUTION_MIN_PLUS_CONVOLUTION:
 
     proc convexArbitrary[T](a, b: seq[T], useSmawk: static[bool]): seq[T] =
         ## 凸な a と任意の b の畳み込みを指定された行最小値探索で求める。
+        when defined(debug):
+            checkShape(a, true)
         if a.len == 0 or b.len == 0: return @[]
+        when useSmawk:
+            # 小さい入力では探索用の配列確保を省く。
+            if a.len <= 256 div b.len:
+                result = newSeq[T](a.len + b.len - 1)
+                for k in 0..<result.len:
+                    let lo = max(0, k - b.len + 1)
+                    let hi = min(k, a.len - 1)
+                    var value = a[lo] + b[k - lo]
+                    for i in lo + 1..hi:
+                        value = min(value, a[i] + b[k - i])
+                    result[k] = value
+                return
         let h = a.len + b.len - 1
         proc better(row, oldCol, newCol: int): bool =
             ## 無効な列を比較値に変換せず、有効区間に近い列を優先する。
@@ -48,6 +88,9 @@ when not declared CPLIB_CONVOLUTION_MIN_PLUS_CONVOLUTION:
 
     proc minPlusConvolutionConcaveConcave*[T](a, b: seq[T]): seq[T] =
         ## 凹数列同士の min-plus 畳み込みを候補区間の両端から O(N + M) 時間で求める。
+        when defined(debug):
+            checkShape(a, false)
+            checkShape(b, false)
         if a.len == 0 or b.len == 0: return @[]
         result = newSeq[T](a.len + b.len - 1)
         for k in 0..<result.len:
@@ -124,6 +167,8 @@ when not declared CPLIB_CONVOLUTION_MIN_PLUS_CONVOLUTION:
 
     proc minPlusConvolutionConcaveArbitrary*[T](a, b: seq[T]): seq[T] =
         ## 凹な a と任意の b の min-plus 畳み込み。時間 O((N + M) log(N + M))、空間 O(N + M)。
+        when defined(debug):
+            checkShape(a, false)
         if a.len == 0 or b.len == 0: return @[]
         let h = a.len + b.len - 1
         result = newSeq[T](h)
