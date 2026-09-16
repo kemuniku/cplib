@@ -7,6 +7,7 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
     import cplib/fps/formal_power_series
     import cplib/fps/product_tree
     import cplib/math/isqrt
+    import cplib/math/isprime
     import cplib/modint/modint
 
     type
@@ -168,20 +169,42 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
         let n = f.len
         f = f.mulPrefix(g, n)
 
-    proc divPrefix*[T](f: seq[T], g: SparseFPS[T], n: int): seq[T] =
-        ## f / g を x^n で打ち切って返す。
-        if n <= 0: return @[]
-        let constant = g.constantTerm
-        doAssert constant.val != 0, "疎なFPSによる除算では分母の定数項が非零である必要がある"
-        let constantInverse = constant.inv
+    proc sparseIndexInverses[T](n: int): seq[T] =
+        ## 1以上n未満の逆数表を作る。素数法ではO(n)、合成数法では各添字のinvを使う。
         result = newSeq[T](n)
-        for i in 0..<n:
-            if i < f.len: result[i] = f[i]
-            for (degree, coefficient) in g:
-                if degree == 0: continue
-                if degree > i: break
-                result[i] -= coefficient * result[i - degree]
-            result[i] *= constantInverse
+        if n > 1: result[1] = init(T, 1)
+        if n <= 2: return
+        let p = T.umod.int
+        if not isprime(p):
+            for i in 2..<n: result[i] = init(T, i).inv
+            return
+        for i in 2..<n: result[i] = -result[p mod i] * (p div i)
+
+    proc sparseDivideInPlace[T](f: var seq[T], g: SparseFPS[T], inputLen: int) =
+        ## 長さnの分子を疎な分母で割る。inputLen以降は零とする。O(nk)。
+        let constant = g.constantTerm
+        assert constant.val != 0, "疎なFPSによる除算では分母の定数項が非零である必要がある"
+        let constantInverse = constant.inv
+        var terms: SparseFPS[T]
+        for term in g:
+            if term.degree >= f.len: break
+            if term.degree > 0:
+                terms.add((term.degree, term.coefficient * constantInverse))
+        if constant.val != 1:
+            for i in 0..<min(inputLen, f.len): f[i] *= constantInverse
+        if terms.len == 0: return
+        for i in terms[0].degree..<f.len:
+            var value = f[i]
+            for term in terms:
+                if term.degree > i: break
+                value -= term.coefficient * f[i - term.degree]
+            f[i] = value
+
+    proc divPrefix*[T](f: seq[T], g: SparseFPS[T], n: int): seq[T] =
+        ## f / gをx^nで打ち切って返す。分母の非零項数をkとしてO(nk)。
+        if n <= 0: return @[]
+        result = prefix(f, n)
+        sparseDivideInPlace(result, g, f.len)
 
     proc `/`*[T](f: seq[T], g: SparseFPS[T]): seq[T] = f.divPrefix(g, f.len)
 
@@ -195,64 +218,80 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
         @[init(T, 1)].divPrefix(f, n)
 
     proc exp*[T](f: SparseFPS[T], n: int): seq[T] =
-        ## 疎なFPSの形式的指数関数を x^n で打ち切って返す。
+        ## 疎なFPSの形式的指数関数をx^nで打ち切る。素数法で非零項数をkとしてO(nk)。
         if n <= 0: return @[]
-        doAssert n <= T.umod.int, "疎なFPSの形式的指数関数では n が法以下である必要がある"
-        doAssert f.constantTerm.val == 0,
+        assert n <= T.umod.int, "疎なFPSの形式的指数関数では n が法以下である必要がある"
+        assert f.constantTerm.val == 0,
             "疎なFPSの形式的指数関数では定数項が0である必要がある"
         result = newSeq[T](n)
         result[0] = 1
-        for degree in 1..<n:
-            for term in f:
-                if term.degree == 0: continue
+        var terms: SparseFPS[T]
+        for term in f:
+            if term.degree >= n: break
+            if term.degree > 0:
+                terms.add((term.degree, term.coefficient * term.degree))
+        if terms.len == 0: return
+        let inverses = sparseIndexInverses[T](n)
+        for degree in terms[0].degree..<n:
+            var value = init(T, 0)
+            for term in terms:
                 if term.degree > degree: break
-                result[degree] += init(T, term.degree) * term.coefficient *
-                    result[degree - term.degree]
-            result[degree] /= degree
+                value += term.coefficient * result[degree - term.degree]
+            result[degree] = value * inverses[degree]
 
     proc log*[T](f: SparseFPS[T], n: int): seq[T] =
-        ## 疎なFPSの形式的対数を x^n で打ち切って返す。
+        ## 疎なFPSの形式的対数をx^nで打ち切る。素数法で非零項数をkとしてO(nk)。
         if n <= 0: return @[]
-        doAssert n <= T.umod.int, "疎なFPSの形式的対数では n が法以下である必要がある"
-        doAssert f.constantTerm.val == 1,
+        assert n <= T.umod.int, "疎なFPSの形式的対数では n が法以下である必要がある"
+        assert f.constantTerm.val == 1,
             "疎なFPSの形式的対数では定数項が1である必要がある"
         result = newSeq[T](n)
-        for degree in 1..<n:
-            result[degree] = init(T, degree) * f.coefficient(degree)
-            for term in f:
-                if term.degree == 0: continue
-                if term.degree >= degree: break
-                result[degree] -= term.coefficient * init(T, degree - term.degree) *
-                    result[degree - term.degree]
-            result[degree] /= degree
+        if f.len <= 1 or f[1].degree >= n: return
+        for term in f:
+            if term.degree >= n: break
+            result[term.degree] = term.coefficient * term.degree
+        # x f'/fの係数を保持し、漸化式を解いた後で各次数の逆数を掛ける。
+        sparseDivideInPlace(result, f, n)
+        let inverses = sparseIndexInverses[T](n)
+        for degree in 1..<n: result[degree] *= inverses[degree]
 
     proc powUnit[T: BarrettModint or MontgomeryModint](f: SparseFPS[T],
             exponent, constantRoot: T, n: int): seq[T] =
-        ## 非零な定数項を持つFPSについて f^exponent を漸化式で求める。
+        ## 非零な定数項を持つFPSの冪を漸化式で求める。素数法で非零項数をkとしてO(nk)。
         if n <= 0: return @[]
         let constant = f.constantTerm
-        doAssert constant.val != 0, "単元の冪では定数項が非零である必要がある"
-        doAssert n <= T.umod.int, "単元の冪では n が法以下である必要がある"
+        assert constant.val != 0, "単元の冪では定数項が非零である必要がある"
+        assert n <= T.umod.int, "単元の冪では n が法以下である必要がある"
         result = newSeq[T](n)
         result[0] = constantRoot
-        for degree in 1..<n:
-            for term in f:
-                if term.degree == 0: continue
+        let constantInverse = constant.inv
+        var terms: seq[tuple[degree: int, coefficient, weight: T]]
+        for term in f:
+            if term.degree >= n: break
+            if term.degree == 0: continue
+            let coefficient = term.coefficient * constantInverse
+            terms.add((term.degree, coefficient, exponent * term.degree * coefficient))
+        if terms.len == 0: return
+        let inverses = sparseIndexInverses[T](n)
+        for degree in terms[0].degree..<n:
+            var value = init(T, 0)
+            for term in terms.mitems:
                 if term.degree > degree: break
-                let weight = (exponent + 1) * term.degree - degree
-                result[degree] += weight * term.coefficient *
-                    result[degree - term.degree]
-            result[degree] /= init(T, degree) * constant
+                value += term.weight * result[degree - term.degree]
+                # ((exponent+1)d-degree)f_d/f_0を次の次数へ更新する。
+                term.weight -= term.coefficient
+            result[degree] = value * inverses[degree]
 
     proc pow*[T](f: SparseFPS[T], k, n: int): seq[T] =
         ## 疎なFPSの非負整数冪を x^n で打ち切って返す。
-        doAssert k >= 0, "疎なFPSの整数冪では指数が非負である必要がある"
+        assert k >= 0, "疎なFPSの整数冪では指数が非負である必要がある"
         if n <= 0: return @[]
-        doAssert n <= T.umod.int, "疎なFPSの整数冪では n が法以下である必要がある"
+        assert n <= T.umod.int, "疎なFPSの整数冪では n が法以下である必要がある"
         if k == 0:
             result = newSeq[T](n)
             result[0] = 1
             return
+        if k == 1: return f.toDense(n)
         if f.isZero or f[0].degree > (n - 1) div k: return newSeq[T](n)
         let order = f[0].degree
         let shift = order * k
@@ -260,18 +299,17 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
         var unitTerms: seq[SparseTerm[T]]
         for term in f:
             if term.degree - order >= n - shift: break
-            unitTerms.add((term.degree - order, term.coefficient / leading))
-        let unit = initSparseFPS[T](unitTerms)
+            unitTerms.add((term.degree - order, term.coefficient))
         let exponent = init(T, k mod T.umod.int)
-        let body = powUnit[T](unit, exponent, init(T, 1), n - shift)
+        let body = powUnit[T](unitTerms, exponent, leading.pow(k), n - shift)
+        if shift == 0: return body
         result = newSeq[T](n)
-        let scale = leading.pow(k)
-        for i in 0..<body.len: result[shift + i] = body[i] * scale
+        for i in 0..<body.len: result[shift + i] = body[i]
 
     proc sqrt*[T](f: SparseFPS[T], n: int): Option[seq[T]] =
         ## 疎なFPSの形式的平方根を x^n で打ち切って返す。
         if n <= 0: return some(newSeq[T]())
-        doAssert n <= T.umod.int, "疎なFPSの形式的平方根では n が法以下である必要がある"
+        assert n <= T.umod.int, "疎なFPSの形式的平方根では n が法以下である必要がある"
         if f.isZero or f[0].degree >= n: return some(newSeq[T](n))
         let order = f[0].degree
         if (order and 1) != 0: return none(seq[T])
@@ -282,12 +320,12 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
         var unitTerms: seq[SparseTerm[T]]
         for term in f:
             if term.degree - order >= n - shift: break
-            unitTerms.add((term.degree - order, term.coefficient / leading))
-        let unit = initSparseFPS[T](unitTerms)
+            unitTerms.add((term.degree - order, term.coefficient))
         let half = init(T, 1) / 2
-        let body = powUnit[T](unit, half, init(T, 1), n - shift)
+        let body = powUnit[T](unitTerms, half, leadingRoot.get[0], n - shift)
+        if shift == 0: return some(body)
         var answer = newSeq[T](n)
-        for i in 0..<body.len: answer[shift + i] = body[i] * leadingRoot.get[0]
+        for i in 0..<body.len: answer[shift + i] = body[i]
         some(answer)
 
     proc multiplyPolynomials[T: BarrettModint or MontgomeryModint](a, b: seq[T]): seq[T] =
