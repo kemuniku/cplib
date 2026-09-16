@@ -11,7 +11,7 @@ when not declared CPLIB_TREE_HLD:
     proc initHldFromParent*(parent: openArray[int], root: int): HeavyLightDecomposition =
         ## 根付き木の親配列からHLDを構築する。parent[root]は参照しない。O(N)
         let n = len(parent)
-        assert 0 <= root and root < n
+        assert 0 <= root and root < n, "頂点番号が範囲外です: 0 <= root and root < n"
         var hld = HeavyLightDecomposition(N:n)
         hld.P = @parent
         hld.P[root] = -1
@@ -21,7 +21,7 @@ when not declared CPLIB_TREE_HLD:
         var next = newSeqWith(n,-1)
         for v in 0..<n:
             if v != root:
-                assert 0 <= hld.P[v] and hld.P[v] < n
+                assert 0 <= hld.P[v] and hld.P[v] < n, "頂点番号が範囲外です: 0 <= hld.P[v] and hld.P[v] < n"
                 next[v] = head[hld.P[v]]
                 head[hld.P[v]] = v
 
@@ -35,7 +35,7 @@ when not declared CPLIB_TREE_HLD:
                 hld.I[iI] = v
                 iI += 1
                 v = next[v]
-        assert iI == n
+        assert iI == n, "指定した根から全頂点に到達できる必要があります"
 
         var size = newSeqWith(n,1)
         var heavy = newSeqWith(n,-1)
@@ -157,6 +157,50 @@ when not declared CPLIB_TREE_HLD:
                     seen.incl((j, i))
         gn.build
         return initHld(gn, root)
+    proc initHldFromForest*(g: UnDirectedGraph): HeavyLightDecomposition =
+        ## N頂点の森に根Nを追加し、各成分の最小番号の頂点と結んだHLDを構築する。時間・追加空間O(N)
+        let n = g.len
+        var parent = newSeqWith(n + 1, -1)
+        var stack: seq[int]
+        for root in 0..<n:
+            if parent[root] != -1:
+                continue
+            parent[root] = n
+            stack.add(root)
+            while stack.len > 0:
+                let v = stack.pop()
+                for (u, _) in g.to_and_cost(v):
+                    if parent[u] == -1:
+                        parent[u] = v
+                        stack.add(u)
+        return initHldFromParent(parent, n)
+
+    proc initHldFromForest*(g: DirectedGraph): HeavyLightDecomposition =
+        ## 向きを無視すると森になるN頂点のgに根Nを追加し、各成分の最小頂点と結ぶ。期待O(N + M)
+        var gn = initUnWeightedUnDirectedStaticGraph(g.len)
+        var seen = initHashSet[(int, int)]()
+        for v in 0..<g.len:
+            for (u, _) in g.to_and_cost(v):
+                if (v, u) notin seen:
+                    gn.add_edge(v, u)
+                    seen.incl((v, u))
+                    seen.incl((u, v))
+        gn.build()
+        return initHldFromForest(gn)
+
+    proc initHldFromForest*(adj: openArray[seq[int]]): HeavyLightDecomposition =
+        ## 森の隣接リストの向きを無視し、根Nを追加して各成分の最小頂点と結ぶ。期待O(N + M)
+        var gn = initUnWeightedUnDirectedStaticGraph(adj.len)
+        var seen = initHashSet[(int, int)]()
+        for v in 0..<adj.len:
+            for u in adj[v]:
+                if (v, u) notin seen:
+                    gn.add_edge(v, u)
+                    seen.incl((v, u))
+                    seen.incl((u, v))
+        gn.build()
+        return initHldFromForest(gn)
+
     proc numVertices*(hld: HeavyLightDecomposition): int =
         ## 頂点数を返す。O(1)
         hld.N
@@ -169,7 +213,7 @@ when not declared CPLIB_TREE_HLD:
     proc toSeq*[T](hld: HeavyLightDecomposition, values: openArray[T]): seq[T] =
         ## 頂点番号順の数列をHLD順に並べ替えて返す。時間・追加空間O(N)
         ## valuesの長さは頂点数と等しい必要があり、result[hld.toSeq(i)] = values[i]となる。
-        assert values.len == hld.N
+        assert values.len == hld.N, "値の配列の長さは木の頂点数と一致する必要があります"
         result = newSeq[T](hld.N)
         for i, value in values:
             result[hld.toSeq(i)] = value
@@ -264,7 +308,7 @@ when not declared CPLIB_TREE_HLD:
         for i in hld.rangeL[p]..<hld.rangeR[p]:
             yield hld.toVtx(i)
     proc median*(hld: HeavyLightDecomposition, x: int, y: int, z: int): int =
-        ## 頂点x、y、zの各2頂点を結ぶ3本のパスに共通する頂点を返す。O(log N)
+        ## 根をxとしたときに、lca(y,z)を求める。
         hld.lca(x, y) xor hld.lca(y, z) xor hld.lca(x, z)
     proc la*(hld: HeavyLightDecomposition, starting: int, goal: int, d: int): int =
         ## startingからgoalへd辺進んだ頂点を返す。dが負またはパスの辺数を超える場合は-1を返す。O(log N)

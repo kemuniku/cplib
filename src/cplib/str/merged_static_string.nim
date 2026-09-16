@@ -9,11 +9,11 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         R: seq[int32]
 
     proc addRange[T](S: var MergedStaticString[T], base: StaticStringBase[T], l, r: int32) {.inline.} =
-        assert l <= r
+        assert l <= r, "指定した区間が有効な範囲内である必要があります: l <= r"
         if S.L.len == 0:
             S.base = base
         else:
-            assert S.base == base
+            assert S.base == base, "文字列は同じ基底文字列から作成されている必要があります"
         S.L.add(l)
         S.R.add(r)
 
@@ -30,7 +30,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         result = min(result, base.RMQ.query(l, r))
 
     proc `&`*[Element](S, T: StaticString[Element]): MergedStaticString[Element] =
-        assert S.base == T.base
+        assert S.base == T.base, "文字列は同じ基底文字列から作成されている必要があります"
         result.base = S.base
         result.L = @[S.l, T.l]
         result.R = @[S.r, T.r]
@@ -52,7 +52,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         result.L[0] = S[0].l
         result.R[0] = S[0].r
         for i in 1..<len(S):
-            assert result.base == S[i].base
+            assert result.base == S[i].base, "文字列は同じ基底文字列から作成されている必要があります"
             result.L[i] = S[i].l
             result.R[i] = S[i].r
 
@@ -61,7 +61,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         result.L = newSeq[int32](len(ranges))
         result.R = newSeq[int32](len(ranges))
         for i, (l, r) in ranges:
-            assert 0 <= l and l <= r and r <= len(S)
+            assert 0 <= l and l <= r and r <= len(S), "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= len(S)"
             result.L[i] = S.l+l.int32()
             result.R[i] = S.l+r.int32()
 
@@ -100,7 +100,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
     proc lcp*[Element](S, T: MergedStaticString[Element]): int =
         if S.L.len == 0 or T.L.len == 0:
             return 0
-        assert S.base == T.base
+        assert S.base == T.base, "文字列は同じ基底文字列から作成されている必要があります"
         var si = 0
         var ti = 0
         var sl = S.L[0]
@@ -160,7 +160,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
                 return -1
             if ti == T.L.len:
                 return 1
-            assert S.base == T.base
+            assert S.base == T.base, "文字列は同じ基底文字列から作成されている必要があります"
             let limit = min(int(S.R[si]-sl), int(T.R[ti]-tl))
             let commonPrefix = lcpRange(S.base, sl, S.R[si], tl, T.R[ti])
             if commonPrefix < limit:

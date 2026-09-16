@@ -6,7 +6,7 @@ when not declared CPLIB_UTILS_INVERSION_NUMBER:
         ## Calculate the inversion number of sequence a
         runnableExamples:
             var a = @[2, 1, 5, 3, 4]
-            assert inversion_number(a) == 3
+            assert inversion_number(a) == 3, "計算結果が期待値と一致しません: inversion_number(a) == 3"
         let c = a.sorted.deduplicate(true)
         var seg = initSegmentTree(newSeqWith(c.len, 0), proc(l, r: int): int = l+r, 0)
         var ans = 0

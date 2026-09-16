@@ -66,7 +66,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_STATIC_OP:
 
     proc update*[ST: SegmentTree](self: ST, x: Natural, val: ST.T) =
         ## xの要素をvalに変更します。
-        assert x < self.length
+        assert x < self.length, "指定した値が有効な範囲内である必要があります: x < self.length"
         var x = x
         x += self.lastnode
         self.arr[x] = val
@@ -76,7 +76,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_STATIC_OP:
 
     proc get*[ST: SegmentTree](self: ST, q_left: Natural, q_right: Natural): ST.T =
         ## 半開区間[q_left,q_right)についての演算結果を返します。
-        assert q_left <= q_right and q_right <= self.length
+        assert q_left <= q_right and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and q_right <= self.length"
         var q_left = q_left
         var q_right = q_right
         q_left += self.lastnode
@@ -95,18 +95,18 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_STATIC_OP:
 
     proc get*[ST: SegmentTree](self: ST, segment: HSlice[int, int]): ST.T =
         assert segment.a <= segment.b + 1 and
-            0 <= segment.a and segment.b + 1 <= self.length
+            0 <= segment.a and segment.b + 1 <= self.length, "指定した区間が有効な範囲内である必要があります: segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length"
         return self.get(segment.a, segment.b + 1)
 
     proc `[]`*[ST: SegmentTree](self: ST, segment: HSlice[int, int]): ST.T =
         self.get(segment)
 
     proc `[]`*[ST: SegmentTree](self: ST, index: Natural): ST.T =
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         return self.arr[index + self.lastnode]
 
     proc `[]=`*[ST: SegmentTree](self: ST, index: Natural, val: ST.T) =
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.update(index, val)
 
     proc get_all*[ST: SegmentTree](self: ST): ST.T =
@@ -131,8 +131,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_STATIC_OP:
     proc max_right*[ST: SegmentTree](
         self: ST, l: int, f: proc(value: ST.T): bool
     ): int =
-        assert 0 <= l and l <= self.len
-        assert f(self.default)
+        assert 0 <= l and l <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= l and l <= self.len"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if l == self.len:
             return self.len
         var l = l + self.lastnode
@@ -156,8 +156,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_STATIC_OP:
     proc min_left*[ST: SegmentTree](
         self: ST, r: int, f: proc(value: ST.T): bool
     ): int =
-        assert 0 <= r and r <= self.len
-        assert f(self.default)
+        assert 0 <= r and r <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.len"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if r == 0:
             return 0
         var r = r + self.lastnode

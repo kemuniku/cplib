@@ -4,7 +4,7 @@ when not declared CPLIB_CONVOLUTION_GCD_CONVOLUTION:
     proc gcdConvolution*[T](a, b: seq[T]): seq[T] =
         ## c[k] = Σ_{gcd(i, j) = k} a[i] * b[j] をO(N log log N)時間・O(N)追加領域で求める。
         ## 入力は同じ長さとし、返り値も同じ長さ。gcd(0, i) = i、gcd(0, 0) = 0とする。
-        assert a.len == b.len
+        assert a.len == b.len, "畳み込む配列の長さは等しい必要があります"
         let n = a.len
         if n == 0:
             return @[]

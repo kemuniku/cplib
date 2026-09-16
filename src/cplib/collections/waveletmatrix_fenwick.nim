@@ -43,12 +43,12 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX_FENWICK:
 
     proc `[]`*(self: WaveletMatrixFenwick, i: int): int =
         ## 現在のb_iをO(1)で返します。
-        assert 0 <= i and i < self.len
+        assert 0 <= i and i < self.len, "指定した値が有効な範囲内である必要があります: 0 <= i and i < self.len"
         self.weights[i]
 
     proc add*(self: WaveletMatrixFenwick, i, delta: int) =
         ## b_iにdeltaを加えます。O(H log N)です。
-        assert 0 <= i and i < self.len
+        assert 0 <= i and i < self.len, "指定した値が有効な範囲内である必要があります: 0 <= i and i < self.len"
         self.weights[i] += delta
         var p = i
         for h in countdown(self.bits.len - 1, 0):
@@ -62,14 +62,14 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX_FENWICK:
 
     proc range_sum*(self: WaveletMatrixFenwick, l, r: int): int =
         ## l <= i < rを満たすb_iの総和をO(log N)で返します。
-        assert 0 <= l and l <= r and r <= self.len
+        assert 0 <= l and l <= r and r <= self.len, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.len"
         let h = self.bits.len - 1
         let (l0, r0, l1, r1) = self.matrix.get_child(h, l, r)
         self.bits[h].get(l0, r0) + self.bits[h].get(l1, r1)
 
     proc sum_less_rank(self: WaveletMatrixFenwick, l, r, k: int): int =
         ## [l, r)内の圧縮値がk未満の重み和をO(H log N)で返します。
-        assert 0 <= l and l <= r and r <= self.len
+        assert 0 <= l and l <= r and r <= self.len, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.len"
         if k == 0 or l == r:
             return 0
         if k == self.keys.len:
@@ -92,6 +92,6 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX_FENWICK:
 
     proc range_sum*(self: WaveletMatrixFenwick, l, r, lower, upper: int): int =
         ## l <= i < rかつlower <= a_i < upperの重み和をO(H log N)で返します。
-        assert lower <= upper
+        assert lower <= upper, "範囲の下限は上限以下である必要があります"
         self.sum_less_rank(l, r, self.keys.lowerBound(upper)) -
             self.sum_less_rank(l, r, self.keys.lowerBound(lower))

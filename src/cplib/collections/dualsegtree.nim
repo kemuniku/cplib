@@ -41,7 +41,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE:
         id: F
     ): DualSegmentTree[S, F] =
         ## initValueで初期化した長さnの双対セグメント木を生成します。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         initDualSegmentTree(newSeqWith(n, initValue), mapping, composition, id)
 
     template newDualSegWith*(v, mapping, composition, id: untyped): untyped =
@@ -82,7 +82,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE:
 
     proc apply*[S, F](self: DualSegmentTree[S, F], left, right: int, f: F) =
         ## 半開区間[left, right)の各要素にfを作用させます。
-        assert 0 <= left and left <= right and right <= self.length
+        assert 0 <= left and left <= right and right <= self.length, "指定した値が有効な範囲内である必要があります: 0 <= left and left <= right and right <= self.length"
         if left == right: return
         var l = left + self.lastnode
         var r = right + self.lastnode
@@ -107,7 +107,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE:
 
     proc get*[S, F](self: DualSegmentTree[S, F], index: int): S =
         ## indexの現在値を返します。
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         let p = index + self.lastnode
         for i in countdown(self.log, 1):
             self.push(p shr i)
@@ -115,7 +115,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE:
 
     proc update*[S, F](self: DualSegmentTree[S, F], index: Natural, value: S) =
         ## indexの値をvalueに置き換えます。
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         let p = int(index) + self.lastnode
         for i in countdown(self.log, 1):
             self.push(p shr i)

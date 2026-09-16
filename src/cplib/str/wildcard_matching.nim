@@ -15,7 +15,7 @@ when not declared CPLIB_STR_WILDCARD_MATCHING:
             for i in 0..<result.len:
                 result[i] = true
             return
-        doAssert S.len <= (1 shl 24) - T.len + 1
+        doAssert S.len <= (1 shl 24) - T.len + 1, "畳み込みに必要な長さS.len + T.len - 1は2^24以下である必要があります"
 
         var s, t: array[3, seq[int]]
         for k in 0..<3:

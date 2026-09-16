@@ -18,7 +18,7 @@ when not declared CPLIB_FPS_PRODUCT_OF_POLYNOMIAL_SEQUENCE:
 
         when T is BarrettModint:
             if T.umod == 998244353u32:
-                doAssert sizeof(T) == sizeof(uint32)
+                doAssert sizeof(T) == sizeof(uint32), "要素型のサイズはuint32と等しい必要があります"
                 var totalLength = 1
                 var scalar = init(T, 1)
                 var factorPointers = newSeqOfCap[ptr uint32](polynomials.len)

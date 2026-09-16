@@ -50,7 +50,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
 
     proc update*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: S) =
         ## pの要素をvalに変更します。
-        assert p < self.length
+        assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         var p = p + self.lastnode
         self.all_push(p)
         self.arr[p] = val
@@ -58,13 +58,13 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
             self.arr[p shr i] = self.merge(self.arr[2*(p shr i)], self.arr[2*(p shr i)+1])
 
     proc `[]`*[S, F](self: var LazySegmentTree[S, F], p: Natural): S =
-        assert p < self.length
+        assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.all_push(p + self.lastnode)
         return self.arr[p + self.lastnode]
 
     proc get*[S, F](self: var LazySegmentTree[S, F], q_left, q_right: int): S =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
-        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and 0 <= q_left and q_right <= self.length"
         if q_left == q_right: return self.default
         var q_left = q_left + self.lastnode
         var q_right = q_right + self.lastnode
@@ -112,7 +112,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         )
     proc apply*[S, F](self: var LazySegmentTree[S, F], q_left, q_right: int, f: F) =
         ## 半解区間[q_left,q_right)についての演算結果を返します。
-        assert q_left <= q_right and 0 <= q_left and q_right <= self.length
+        assert q_left <= q_right and 0 <= q_left and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and 0 <= q_left and q_right <= self.length"
         if q_left == q_right: return
         var q_left = q_left + self.lastnode
         var q_right = q_right + self.lastnode
@@ -148,8 +148,8 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     proc max_right*[S, F](self: var LazySegmentTree[S, F], l: int, f: proc(l: S): bool): int =
         ## f(get(l, r))を満たす最大のrをO(log N)で返します。
         ## fは区間の拡大に対して単調で、単位元に対してtrueを返す必要があります。
-        assert 0 <= l and l <= self.len
-        assert f(self.default)
+        assert 0 <= l and l <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= l and l <= self.len"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if l == self.len: return self.len
         var l = l + self.lastnode
         self.all_push(l)
@@ -171,8 +171,8 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     proc min_left*[S, F](self: var LazySegmentTree[S, F], r: int, f: proc(l: S): bool): int =
         ## f(get(l, r))を満たす最小のlをO(log N)で返します。
         ## fは区間の拡大に対して単調で、単位元に対してtrueを返す必要があります。
-        assert 0 <= r and r <= self.len
-        assert f(self.default)
+        assert 0 <= r and r <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.len"
+        assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if r == 0: return 0
         var r = r + self.lastnode
         self.all_push(r - 1)

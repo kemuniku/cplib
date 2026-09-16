@@ -43,9 +43,9 @@ when not declared CPLIB_TREE_STATIC_TOP_TREE:
         let upper = tree.nodes[l].upper
         let lower = if kind == sttCompress: tree.nodes[r].lower else: tree.nodes[l].lower
         if kind == sttCompress:
-            assert tree.nodes[l].lower == tree.nodes[r].upper
+            assert tree.nodes[l].lower == tree.nodes[r].upper, "compressするクラスタの接続頂点が一致する必要があります"
         else:
-            assert tree.nodes[l].upper == tree.nodes[r].upper
+            assert tree.nodes[l].upper == tree.nodes[r].upper, "rakeするクラスタの上端の頂点が一致する必要があります"
         result = tree.nodes.len
         tree.nodes.add(StaticTopTreeNode(kind: kind, parent: -1, left: l, right: r,
             upper: upper, lower: lower, size: weight))
@@ -54,7 +54,7 @@ when not declared CPLIB_TREE_STATIC_TOP_TREE:
 
     proc mergeBalanced(tree: StaticTopTree, items: seq[int], kind: StaticTopTreeNodeKind): int =
         ## 頂点数を重みにした平衡な結合木を作る。O(K log K)
-        assert items.len > 0
+        assert items.len > 0, "items.lenは正である必要があります"
         if items.len == 1:
             return items[0]
         var prefix = newSeq[int](items.len + 1)
@@ -65,7 +65,7 @@ when not declared CPLIB_TREE_STATIC_TOP_TREE:
     proc initStaticTopTree*(hld: HeavyLightDecomposition): StaticTopTree =
         ## 非空の木のHLDから高さO(log N)の構造を作る。O(N log N)時間、O(N)空間
         let n = hld.numVertices
-        assert n > 0
+        assert n > 0, "nは正である必要があります"
         let tree = StaticTopTree(numVertices: n, nodes: newSeqOfCap[StaticTopTreeNode](2 * n - 1))
         for v in 0..<n:
             tree.nodes.add(StaticTopTreeNode(kind: sttLeaf, parent: -1, left: -1, right: -1,
@@ -89,7 +89,7 @@ when not declared CPLIB_TREE_STATIC_TOP_TREE:
                 v = heavy
             pathRoot[head] = tree.mergeBalanced(path, sttCompress)
         tree.root = pathRoot[hld.toVtx(0)]
-        assert tree.nodes.len == 2 * n - 1
+        assert tree.nodes.len == 2 * n - 1, "構築したクラスタの個数は2 * n - 1である必要があります"
         return tree
 
     proc initStaticTopTreeFromParent*(parent: openArray[int], root: int = 0): StaticTopTree =

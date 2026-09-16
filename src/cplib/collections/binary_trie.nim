@@ -28,7 +28,7 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
     proc excl*(self:BinaryTrie,x:Natural,v:int=1)=
         var now = self.root
         now.value -= v
-        assert now.value >= 0
+        assert now.value >= 0, "要素の個数が負になっています。存在しない要素は削除できません"
         for i in countdown(self.h-1,0,1):
             if (x and (1 shl i)) == 0:
                 if now.zero.isNil():
@@ -39,7 +39,7 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                     now.one = BinaryTrieNode()
                 now = now.one
             now.value -= v
-            assert now.value >= 0
+            assert now.value >= 0, "要素の個数が負になっています。存在しない要素は削除できません"
 
     proc count*(self:BinaryTrie,x:Natural):int=
         var now = self.root

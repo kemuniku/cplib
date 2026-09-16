@@ -57,7 +57,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP:
         self: typedesc[ST], n: int, initValue: ST.S
     ): ST =
         ## initValueで初期化した長さnの静的な作用関数を持つ双対セグメント木を生成します。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         self.initDualSegmentTreeImpl(newSeqWith(n, initValue))
 
     template initDualSegmentTree*[S, F](
@@ -109,7 +109,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP:
 
     proc apply*[ST: DualSegmentTree](self: ST, left, right: int, f: ST.F) =
         ## 半開区間[left, right)の各要素にfを作用させます。
-        assert 0 <= left and left <= right and right <= self.length
+        assert 0 <= left and left <= right and right <= self.length, "指定した値が有効な範囲内である必要があります: 0 <= left and left <= right and right <= self.length"
         if left == right:
             return
         var l = left + self.lastnode
@@ -137,14 +137,14 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP:
 
     proc get*[ST: DualSegmentTree](self: ST, index: int): ST.S =
         ## indexの現在値を返します。
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         let p = index + self.lastnode
         self.allPush(p)
         self.data[index]
 
     proc update*[ST: DualSegmentTree](self: ST, index: Natural, value: ST.S) =
         ## indexの値をvalueに置き換えます。
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         let p = int(index) + self.lastnode
         self.allPush(p)
         self.data[index] = value

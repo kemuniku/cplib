@@ -10,7 +10,7 @@ when not declared CPLIB_STR_REPEATED_STATIC_STRING:
 
     proc initRepeatedStaticString*[T](S: StaticString[T], k: Natural): RepeatedStaticString[T] {.inline.} =
         ## SSS... の先頭 k 文字を構築する。
-        assert k == 0 or len(S) > 0
+        assert k == 0 or len(S) > 0, "空文字列を0以外の回数繰り返すことはできません"
         result.period = S
         result.size = int(k)
 
@@ -18,27 +18,27 @@ when not declared CPLIB_STR_REPEATED_STATIC_STRING:
         result = S.size
 
     proc `[]`*[T](S: RepeatedStaticString[T], idx: Natural): T {.inline.} =
-        assert idx < len(S)
+        assert idx < len(S), "指定した値が有効な範囲内である必要があります: idx < len(S)"
         result = S.period[idx mod len(S.period)]
 
     proc infiniteLcp[T](S, U: StaticString[T]): int {.inline.} =
         ## 2つの無限列が異なるなら、そのLCPはSTとTSのLCPに等しい。
         ## 2つの無限列が等しい場合は high(int) を返す。
-        assert S.base == U.base
-        assert len(S) > 0 and len(U) > 0
+        assert S.base == U.base, "文字列は同じ基底文字列から作成されている必要があります"
+        assert len(S) > 0 and len(U) > 0, "比較する文字列はどちらも空でない必要があります"
         result = lcp(S & U, U & S)
         if result == len(S)+len(U):
             result = high(int)
 
     proc lcp*[T](S, U: RepeatedStaticString[T]): int {.inline.} =
-        assert S.period.base == U.period.base
+        assert S.period.base == U.period.base, "文字列は同じ基底文字列から作成されている必要があります"
         result = min(len(S), len(U))
         if result == 0:
             return
         result = min(result, infiniteLcp(S.period, U.period))
 
     proc lcp*[T](S: RepeatedStaticString[T], U: StaticString[T]): int {.inline.} =
-        assert S.period.base == U.base
+        assert S.period.base == U.base, "文字列は同じ基底文字列から作成されている必要があります"
         result = min(len(S), len(U))
         if result == 0:
             return

@@ -10,10 +10,10 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
     proc randomseq*(n:int,slice:HSlice[int,int],unique:bool=false):seq[int]=
         ## 長さn,各要素がsliceに含まれる数列を一様ランダムに返す
         ## option: unique = Trueのとき、重複を許さない。
-        assert n >= 0
-        assert slice.len >= 1
+        assert n >= 0, "nは非負である必要があります"
+        assert slice.len >= 1, "生成元の範囲は空でない必要があります"
         if unique:
-            assert n <= slice.len
+            assert n <= slice.len, "重複を許さない場合、要素数は生成元の範囲の長さ以下である必要があります"
             if n >= slice.len div 2:
                 var tmp = slice.toseq()
                 shuffle(tmp)
@@ -28,15 +28,15 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
         else:
             for i in 0..<n:
                 result.add(rand(slice))
-        assert len(result) == n
-        assert result.allit(it in slice)
+        assert len(result) == n, "生成された列の長さが指定した要素数と一致しません"
+        assert result.allit(it in slice), "生成された要素が指定した範囲外です"
 
     proc randomseq_from_sum*(n:int,sum:int):seq[int]=
         ## 長さn,総和がsumである各要素が非負整数である数列を一様ランダムに返す
-        assert sum >= 0
-        assert n >= 0
+        assert sum >= 0, "sumは非負である必要があります"
+        assert n >= 0, "nは非負である必要があります"
         if n == 0:
-            assert sum == 0
+            assert sum == 0, "要素数が0の場合、和も0である必要があります"
             return @[]
         var tmp = randomseq(n-1,1..(n+sum-1),true).sorted()
         var now = 0
@@ -44,12 +44,12 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
             result.add(x-now-1)
             now = x
         result.add((n+sum-1) - now)
-        assert len(result) == n and sum(result) == sum
+        assert len(result) == n and sum(result) == sum, "生成された列の長さまたは和が指定値と一致しません"
 
     proc random_parenthesis_sequence*(n:int):seq[int]=
         ## 長さnの括弧列を返す。
         ##　1: "(" , -1 : ")"
-        assert n mod 2 == 0
+        assert n mod 2 == 0, "nは偶数である必要があります"
 
         var N = n div 2
         var M = n div 2
@@ -64,8 +64,8 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
                 result.add(1)
                 check += 1
                 M -= 1
-            assert check >= 0
-        assert check == 0
+            assert check >= 0, "括弧列の途中で閉じ括弧の数が開き括弧の数を超えています"
+        assert check == 0, "括弧列の開き括弧と閉じ括弧の数が一致しません"
 
     proc random_parenthesis_string*(n:int):string=
         return random_parenthesis_sequence(n).mapit(").("[1+it]).join("")
@@ -98,18 +98,18 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
                 edge_count += 1
                 dfs(to+1,r,now)
         dfs(0,2*n,0)
-        assert edge_count == n-1
+        assert edge_count == n-1, "生成された木の辺数は頂点数から1を引いた値である必要があります"
         return g
 
     proc random_binary_tree*(n:int):UnWeightedUnDirectedGraph=
         ## n頂点の二分木を一様ランダムに返す
-        assert n >= 1
+        assert n >= 1, "nは1以上である必要があります"
         var PS = random_parenthesis_sequence(2*n)
         return make_binary_tree_from_sequence(PS)
 
     proc random_tree*(n:int):UnWeightedUnDirectedGraph=
         ## n頂点の木を一様ランダムに返す
-        assert n >= 1
+        assert n >= 1, "nは1以上である必要があります"
         if n == 1:
             return initUnWeightedUnDirectedGraph(1)
         elif n == 2:
@@ -126,7 +126,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
                 if isprime(x):
                     f = true
                     break
-            assert f #sliceに素数が含まれるかどうか判定
+            assert f, "指定した範囲に素数が存在する必要があります" #sliceに素数が含まれるかどうか判定
         
         while true:
             var x = rand(slice)
@@ -154,7 +154,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
 
     proc random_simple_graph*(n,m:int):UnWeightedUnDirectedGraph=
         ## ランダムな単純グラフを作成。
-        assert m <= n*(n-1) div 2
+        assert m <= n*(n-1) div 2, "辺数は単純無向グラフの最大辺数以下である必要があります"
         result = initUnWeightedUnDirectedGraph(n)
         if n*(n-1) <= 10_000_000:
             var tmp : seq[(int,int)]
@@ -180,7 +180,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
 
     proc random_connected_graph*(n,m:int):UnWeightedUnDirectedGraph=
         ## ランダムな単純連結グラフを生成。ただし、一様ランダムでない。
-        assert m >= n-1
+        assert m >= n-1, "連結グラフの辺数は頂点数から1を引いた値以上である必要があります"
         var g = random_tree(n)
         if n*(n-1) <= 10_000_000:
             var st = initHashSet[(int,int)]()
@@ -192,7 +192,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
                 for j in g[i]:
                     st.excl((i,j))
 
-            assert m-n+1 <= len(st)
+            assert m-n+1 <= len(st), "追加する辺の数が候補の数を超えています"
             var x = st.toseq()
             shuffle(x)
             for i in 0..<(m-n+1):
@@ -204,7 +204,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
             for i in 0..<n:
                 for j in g[i]:
                     st.incl((i,j))
-            assert n*(n-1) - (n-1) >= m
+            assert n*(n-1) - (n-1) >= m, "指定した辺数が生成可能な辺数の上限を超えています"
             for i in 0..<(m-n+1):
                 while true:
                     var u = rand(0..<(n-1))
@@ -217,7 +217,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
 
     proc random_01sequence*(n:int,one:int):seq[int]=
         ## 1の数がoneであるような長さnの01列を一様ランダムに返す
-        assert one in 0..n
+        assert one in 0..n, "指定した値が有効な範囲内である必要があります: one in 0 .. n"
         var tmp = randomseq(one,0..<n,true)
         result = newseqwith(n,0)
         for x in tmp:
@@ -225,16 +225,16 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
     
     proc random_string*(n:int,slice:HSlice[char,char]):string=
         ## sliceに含まれる文字からなる長さnの文字列を一様ランダムに返す
-        assert n >= 0
-        assert slice.len >= 1
+        assert n >= 0, "nは非負である必要があります"
+        assert slice.len >= 1, "生成元の範囲は空でない必要があります"
         for i in 0..<n:
             result.add(rand(slice))
         return result
     
     proc random_string*(n:int,s:string):string=
         ## sに含まれる文字からなる長さnの文字列を一様ランダムに返す
-        assert n >= 0
-        assert s.len >= 1
+        assert n >= 0, "nは非負である必要があります"
+        assert s.len >= 1, "文字の候補は空でない必要があります"
         for i in 0..<n:
             result.add(s[rand(0..<len(s))])
         return result

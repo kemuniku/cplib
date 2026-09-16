@@ -16,7 +16,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
         cum_cyclesize : seq[int]
 
     proc initFunctionalGraph_with_op[T](F:Functional_Graph,values:seq[T],op:proc(l,r:T):T,e:T):FunctionalGraph_with_op[T]=
-        assert len(values) == len(F.cycle_number)
+        assert len(values) == len(F.cycle_number), "値の配列の長さは頂点数と一致する必要があります"
         result = FunctionalGraph_with_op[T](
             F : F,
             op : op,
@@ -101,7 +101,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
 
     proc prod*[T](self:FunctionalGraph_with_op[T],start:int,k:int,include_start:bool=true):T=
         ## startからk回移動するまでの積。include_start=falseなら始点を積に含めない。
-        assert k >= 0
+        assert k >= 0, "kは非負である必要があります"
         if not include_start:
             if k == 0:
                 return self.e
@@ -151,8 +151,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
 
     proc prod_range*[T](self:FunctionalGraph_with_op[T],start,l,r:int,include_start:bool=true):seq[T]=
         ## @[prod(start,l), ..., prod(start,r-1)]を返す。O(log^2 N + log l + (r-l))
-        assert 0 <= start and start < len(self.F.cycle_number)
-        assert 0 <= l and l <= r
+        assert 0 <= start and start < len(self.F.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.F.cycle_number)"
+        assert 0 <= l and l <= r, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r"
         result = newSeq[T](r-l)
         if len(result) == 0:
             return
@@ -175,8 +175,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
 
     proc prod_range_fold*[T](self:FunctionalGraph_with_op[T],start,l,r:int,f:proc(l,r:T):T,e:T,include_start:bool=true):T=
         ## prod(start,l), ..., prod(start,r-1)を順にfで畳み込む。O(log^2 N + log l + (r-l))
-        assert 0 <= start and start < len(self.F.cycle_number)
-        assert 0 <= l and l <= r
+        assert 0 <= start and start < len(self.F.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.F.cycle_number)"
+        assert 0 <= l and l <= r, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r"
         if l == r:
             return e
 
@@ -201,7 +201,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
     proc move_while*[T](self:FunctionalGraph_with_op[T],f:proc(x:T):bool,x,L:int):int=
         # 数列を @[x] からスタートし、f(数列のprod)が初めてfalseになるまでの移動距離を返す。
         # ただし、移動距離の上限はLとする（L回移動してもtrueならLを返す）。
-        assert L >= 0
+        assert L >= 0, "Lは非負である必要があります"
         let limit = L+1 # 移動距離Lは、始点を含めてL+1頂点
         var value = self.e
         var used = 0

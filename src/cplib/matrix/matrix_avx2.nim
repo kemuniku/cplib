@@ -10,18 +10,18 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
             modulus: uint32 = 998244353u32): seq[uint32] =
         ## 行優先の一次元配列の行列積をAVX2で計算する。
         doAssert modulus > 0 and modulus < (1u32 shl 30) and
-            (modulus and 1u32) == 1, "modulus must be odd and in [1, 2^30)"
-        doAssert n >= 0 and m >= 0 and k >= 0, "negative matrix dimension"
+            (modulus and 1u32) == 1, "法は1以上2^30未満の奇数である必要があります"
+        doAssert n >= 0 and m >= 0 and k >= 0, "行列の行数と列数は非負である必要があります"
         doAssert n <= high(cint).int and m <= high(cint).int and
-            k <= high(cint).int, "matrix dimension exceeds int32"
-        doAssert n == 0 or m <= high(int) div n, "matrix size overflow"
-        doAssert m == 0 or k <= high(int) div m, "matrix size overflow"
-        doAssert n == 0 or k <= high(int) div n, "matrix size overflow"
-        doAssert a.len == n * m and b.len == m * k, "matrix size mismatch"
+            k <= high(cint).int, "行列の行数と列数はint32の範囲に収まる必要があります"
+        doAssert n == 0 or m <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert m == 0 or k <= high(int) div m, "行列のサイズが表現可能な範囲を超えています"
+        doAssert n == 0 or k <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert a.len == n * m and b.len == m * k, "行列のサイズが一致しません"
         for value in a:
-            assert value < modulus, "matrix entries must be less than modulus"
+            assert value < modulus, "行列の各要素は法未満である必要があります"
         for value in b:
-            assert value < modulus, "matrix entries must be less than modulus"
+            assert value < modulus, "行列の各要素は法未満である必要があります"
         result = newSeq[uint32](n * k)
         if n == 0 or m == 0 or k == 0 or modulus == 1:
             return
@@ -34,13 +34,13 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
         let n = a.len
         let m = if n == 0: 0 else: a[0].len
         let k = if b.len == 0: 0 else: b[0].len
-        doAssert m == b.len, "matrix size mismatch"
+        doAssert m == b.len, "行列のサイズが一致しません"
         for row in a:
-            doAssert row.len == m, "ragged matrix"
+            doAssert row.len == m, "行列の各行の長さは等しい必要があります"
         for row in b:
-            doAssert row.len == k, "ragged matrix"
-        doAssert n == 0 or m <= high(int) div n, "matrix size overflow"
-        doAssert m == 0 or k <= high(int) div m, "matrix size overflow"
+            doAssert row.len == k, "行列の各行の長さは等しい必要があります"
+        doAssert n == 0 or m <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert m == 0 or k <= high(int) div m, "行列のサイズが表現可能な範囲を超えています"
         var flatA = newSeq[uint32](n * m)
         var flatB = newSeq[uint32](m * k)
         for i in 0 ..< n:
@@ -109,24 +109,24 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
         when T isnot MontgomeryModint and T isnot BarrettModint:
             {.error: "matrix_avx2.Matrix requires MontgomeryModint or BarrettModint".}
         static:
-            doAssert sizeof(T) == sizeof(uint32)
-            doAssert alignof(T) == alignof(uint32)
+            doAssert sizeof(T) == sizeof(uint32), "要素型のサイズはuint32と等しい必要があります"
+            doAssert alignof(T) == alignof(uint32), "要素型のアラインメントはuint32と等しい必要があります"
         result = T.umod.uint32
         doAssert result > 0 and result < (1u32 shl 30) and (result and 1) == 1,
-            "modulus must be odd and in [1, 2^30)"
+            "法は1以上2^30未満の奇数である必要があります"
 
     proc matrixSize(h, w: int): int {.inline.} =
         ## 寸法と連続配列の要素数を検査する。
         doAssert h >= 0 and w >= 0 and h <= high(cint).int and w <= high(cint).int,
-            "invalid matrix dimensions"
+            "行列の行数と列数は0以上int32の最大値以下である必要があります"
         doAssert h == 0 or w <= (high(int) div sizeof(uint32)) div h,
-            "matrix size overflow"
+            "行列のサイズが表現可能な範囲を超えています"
         h * w
 
     proc checkModulus[T](a: Matrix[T]) {.inline.} =
         ## dynamic modintの法が行列作成後に変更されていないことを確認する。
         let modulus = matrixModulus[T]()
-        doAssert a.modulus == 0 or a.modulus == modulus, "matrix modulus has changed"
+        doAssert a.modulus == 0 or a.modulus == modulus, "行列の作成後に法を変更することはできません"
 
     proc scalar[T](value: T or SomeInteger): T {.inline.} =
         ## 整数を正規化してからmodintへ変換する。
@@ -163,16 +163,16 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
     proc initMatrix*[T](h, w: int, values: sink seq[T]): Matrix[T] =
         ## 行優先の配列を行列へ移し、不要な要素コピーを避ける。
         let modulus = matrixModulus[T]()
-        doAssert values.len == matrixSize(h, w), "matrix size mismatch"
+        doAssert values.len == matrixSize(h, w), "行列のサイズが一致しません"
         result = Matrix[T](height: h, width: w, modulus: modulus,
             storage: MatrixStorage[T](values: values))
 
     proc initMatrix*[T](h, w: int, values: openArray[uint32]): Matrix[T] =
         ## 正規化済みの公開値からmodintの連続行列を作る。
         result = initMatrix[T](h, w)
-        doAssert values.len == result.storage.values.len, "matrix size mismatch"
+        doAssert values.len == result.storage.values.len, "行列のサイズが一致しません"
         for value in values:
-            assert value < result.modulus, "matrix entries must be less than modulus"
+            assert value < result.modulus, "行列の各要素は法未満である必要があります"
         if values.len > 0:
             matrixConvertValues(unsafeAddr values[0],
                 cast[ptr uint32](addr result.storage.values[0]), values.len,
@@ -181,9 +181,9 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
     proc initMatrixOwned[T](h, w: int, values: var seq[uint32]): Matrix[T] =
         ## 所有権を持つ公開値配列を消費し、同じ領域をmodint配列として使う。
         let modulus = matrixModulus[T]()
-        doAssert values.len == matrixSize(h, w), "matrix size mismatch"
+        doAssert values.len == matrixSize(h, w), "行列のサイズが一致しません"
         for value in values:
-            assert value < modulus, "matrix entries must be less than modulus"
+            assert value < modulus, "行列の各要素は法未満である必要があります"
         result = Matrix[T](height: h, width: w, modulus: modulus,
             storage: MatrixStorage[T]())
         # 両modintは参照を含まないuint32フィールド1個。型を合わせてからmoveする。
@@ -207,7 +207,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
         let w = if h == 0: 0 else: values[0].len
         result = initMatrix[T](h, w)
         for i, row in values:
-            doAssert row.len == w, "ragged matrix"
+            doAssert row.len == w, "行列の各行の長さは等しい必要があります"
             for j, value in row:
                 result.storage.values[i * w + j] = value
 
@@ -314,13 +314,13 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
     proc `[]=`*[T](a: var Matrix[T], r: int, row: openArray[T]) =
         ## 列数を保ったまま行の全要素を置き換える。
         checkIndex(r, a.height)
-        doAssert row.len == a.width, "matrix row size mismatch"
+        doAssert row.len == a.width, "行の要素数は行列の列数と一致する必要があります"
         for j, value in row:
             a.storage.values[r * a.width + j] = value
     proc `[]=`*[T](a: var Matrix[T], r: int, row: MatrixRow[T] or MutableMatrixRow[T]) =
         ## 別の行ビューの内容を指定した行へコピーする。
         checkIndex(r, a.height)
-        doAssert row.len == a.width, "matrix row size mismatch"
+        doAssert row.len == a.width, "行の要素数は行列の列数と一致する必要があります"
         for j in 0 ..< row.len:
             a.storage.values[r * a.width + j] = row[j]
 
@@ -328,7 +328,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
         ## 連続配置されたmodintを直接AVX2カーネルへ渡して乗算する。
         checkModulus(a)
         checkModulus(b)
-        doAssert a.width == b.height, "matrix size mismatch"
+        doAssert a.width == b.height, "行列のサイズが一致しません"
         result = initMatrix[T](a.height, b.width)
         if a.height == 0 or a.width == 0 or b.width == 0 or result.modulus == 1:
             return
@@ -355,7 +355,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
             ## 同じ形状の行列どうしを成分ごとに演算する。
             checkModulus(a)
             checkModulus(b)
-            doAssert a.h == b.h and a.w == b.w, "matrix size mismatch"
+            doAssert a.h == b.h and a.w == b.w, "行列のサイズが一致しません"
             for i in 0 ..< a.h * a.w:
                 assign(a.storage.values[i], b.storage.values[i])
         proc assign*[T](a: var Matrix[T], value: T or SomeInteger) =
@@ -425,7 +425,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
         ## 非負整数乗を繰り返し二乗法で求める。
         bind identity_matrix
         checkModulus(a)
-        doAssert a.h == a.w and exponent >= 0, "invalid matrix power"
+        doAssert a.h == a.w and exponent >= 0, "行列の冪乗には正方行列と非負の指数が必要です"
         if exponent == 0:
             return identity_matrix[T](a.h)
         if exponent == 1:
@@ -485,20 +485,20 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
         let n = a.h
         let m = a.w
         let k = b.w
-        doAssert m == b.h, "matrix size mismatch"
+        doAssert m == b.h, "行列のサイズが一致しません"
         let modulus = T.umod.uint32
         doAssert modulus > 0 and modulus < (1u32 shl 30) and
-                (modulus and 1u32) == 1, "modulus must be odd and in [1, 2^30)"
-        doAssert n == 0 or m <= high(int) div n, "matrix size overflow"
-        doAssert m == 0 or k <= high(int) div m, "matrix size overflow"
+                (modulus and 1u32) == 1, "法は1以上2^30未満の奇数である必要があります"
+        doAssert n == 0 or m <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert m == 0 or k <= high(int) div m, "行列のサイズが表現可能な範囲を超えています"
         var flatA = newSeq[uint32](n * m)
         var flatB = newSeq[uint32](m * k)
         for i in 0 ..< n:
-            doAssert a[i].len == m, "ragged matrix"
+            doAssert a[i].len == m, "行列の各行の長さは等しい必要があります"
             for j in 0 ..< m:
                 flatA[i * m + j] = a[i, j].val.uint32
         for i in 0 ..< m:
-            doAssert b[i].len == k, "ragged matrix"
+            doAssert b[i].len == k, "行列の各行の長さは等しい必要があります"
             for j in 0 ..< k:
                 flatB[i * k + j] = b[i, j].val.uint32
         let flatC = matrixProduct(flatA, flatB, n, m, k, modulus)
@@ -555,7 +555,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
             rhs: ptr uint32 = nil, identity: bool = false): FieldReduction =
         ## 入力を保持したまま、拡大行列をAVX2で前進消去・掃き出しする。
         checkModulus(a)
-        doAssert extra >= 0 and extra <= high(cint).int - a.w, "matrix size overflow"
+        doAssert extra >= 0 and extra <= high(cint).int - a.w, "行列のサイズが表現可能な範囲を超えています"
         result.width = a.w + extra
         result.values = newSeq[uint32](matrixSize(a.h, result.width))
         result.pivots = newSeq[cint](min(a.h, a.w))
@@ -571,7 +571,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
 
     proc determinant*[T](a: Matrix[T]): T =
         ## AVX2の前進消去で行列式を求める。空行列は1。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         let reduced = reduceFieldMatrix(a, 0, false)
         if reduced.rank != a.h: return T.init(0)
         T.init(fieldCanonicalKernel(reduced.determinant, matrixModulus[T]()).int)
@@ -579,15 +579,15 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
     proc hafnian*[T](a: Matrix[T]): T =
         ## 対称な偶数次行列のhafnianをAVX2の多項式積和で求める。O(n^2*2^(n/2))。
         checkModulus(a)
-        assert a.h == a.w and a.h mod 2 == 0
+        assert a.h == a.w and a.h mod 2 == 0, "行列は偶数次の正方行列である必要があります"
         for i in 0..<a.h:
-            for j in 0..<i: assert a[i,j].val == a[j,i].val, "matrix must be symmetric"
+            for j in 0..<i: assert a[i,j].val == a[j,i].val, "行列は対称である必要があります"
         T.init(fieldHafnianKernel(fieldMatrixPointer(a), a.h,
             matrixModulus[T](), T is MontgomeryModint).int)
 
     proc solveLinearSystem*[T](a: Matrix[T], b: openArray[T]): Option[LinearSystemSolution[T]] =
         ## AVX2でAx=bを掃き出し、特殊解と核の基底を返す。O(h*w*min(h,w)+w^2)。
-        assert b.len == a.h
+        assert b.len == a.h, "右辺の要素数は行列の行数と一致する必要があります"
         var reduced = reduceFieldMatrix(a, 1, true, fieldPointer(b))
         for i in reduced.rank..<a.h:
             if reduced.values[i * reduced.width + a.w] != 0:
@@ -613,7 +613,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
 
     proc inverse*[T](a: Matrix[T]): Option[Matrix[T]] =
         ## AVX2の掃き出しで逆行列を返す。特異行列はnone。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         let reduced = reduceFieldMatrix(a, a.h, true, identity = true)
         if reduced.rank != a.h: return none(Matrix[T])
         var answer = initMatrix[T](a.h, a.h)
@@ -624,7 +624,7 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
 
     proc adjugate*[T](a: Matrix[T]): Matrix[T] =
         ## AVX2で特異行列を含む余因子行列を返す。O(n^3)。
-        assert a.h == a.w
+        assert a.h == a.w, "行列は正方行列である必要があります"
         let reduced = reduceFieldMatrix(a, a.h, true, identity = true)
         result = initMatrix[T](a.h, a.h)
         fieldInverseAdjugateKernel(fieldPointer(reduced.values), fieldMatrixPointer(result),

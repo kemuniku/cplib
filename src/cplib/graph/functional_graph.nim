@@ -23,7 +23,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH:
         var roots = newseqwith(n,0)
         var cycle : seq[seq[int]]
         for i in 0..<n:
-            assert 0 <= v[i] and v[i] < n
+            assert 0 <= v[i] and v[i] < n, "頂点番号が範囲外です: 0 <= v[i] and v[i] < n"
             sizes[v[i]] += 1
         for i in 0..<n:
             if sizes[i] == 0:
@@ -187,8 +187,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH:
     proc walk*(functional_graph:Functional_Graph,x,k:int):seq[int]=
         ## xを始点としてk回移動するまでに訪れる頂点を、始点を含む長さk+1の配列で返す。O(k)
         let n = len(functional_graph.cycle_number)
-        assert 0 <= x and x < n
-        assert 0 <= k and k < high(int)
+        assert 0 <= x and x < n, "頂点番号が範囲外です: 0 <= x and x < n"
+        assert 0 <= k and k < high(int), "指定した値が有効な範囲内である必要があります: 0 <= k and k < high(int)"
         result = newSeq[int](k+1)
         var now = x
         for i in 0..k:
@@ -206,8 +206,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH:
     proc count_kth*(functional_graph:Functional_Graph,x,k:int):int=
         ## 各頂点にコマを1つずつ置いてk回移動したとき、頂点xにあるコマの数
         ## O(log N)
-        assert 0 <= x and x < len(functional_graph.cycle_number)
-        assert k >= 0
+        assert 0 <= x and x < len(functional_graph.cycle_number), "頂点番号が範囲外です: 0 <= x and x < len(functional_graph.cycle_number)"
+        assert k >= 0, "kは非負である必要があります"
         if not functional_graph.incycle(x):
             let d = functional_graph.depth(x)
             if k > functional_graph.depth_tin.high-d:

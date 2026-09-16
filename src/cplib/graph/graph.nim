@@ -126,7 +126,7 @@ when not declared CPLIB_GRAPH_GRAPH:
 
     proc static_graph_initialized_check*[T](g: StaticGraph[T]) =
         ## 静的グラフが構築済みであることを確認する。O(1)。
-        assert g.start.len > 0, "Static Graph must be initialized before use."
+        assert g.start.len > 0, "Static Graphは使用前に初期化する必要があります"
 
     proc reserve_seq[T](s: var seq[T], capacity: int) =
         ## 既存の要素を維持し、指定要素数を格納できる配列を確保する。
@@ -137,11 +137,11 @@ when not declared CPLIB_GRAPH_GRAPH:
 
     proc reserve*[T](g: DynamicGraph[T], capacity: int, degrees: openArray[int] = []) =
         ## 総辺数と各頂点の隣接要素数を予約する。既存要素は維持し、必要な配列を再確保する。
-        assert capacity >= 0
-        assert degrees.len == 0 or degrees.len == g.len
+        assert capacity >= 0, "capacityは非負である必要があります"
+        assert degrees.len == 0 or degrees.len == g.len, "次数の配列は空か、頂点数と同じ長さである必要があります"
         g.edge_info.reserve_seq(capacity)
         for u, degree in degrees:
-            assert degree >= 0
+            assert degree >= 0, "degreeは非負である必要があります"
             g.edges[u].reserve_seq(degree)
 
     proc initWeightedDirectedGraph*(N: int, edgetype: typedesc = int, capacity: int = 0): WeightedDirectedGraph[edgetype] =

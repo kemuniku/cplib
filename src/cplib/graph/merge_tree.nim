@@ -65,7 +65,7 @@ when not declared CPLIB_GRAPH_MERGE_TREE:
     proc unite*(self:var MergeTree,u,v:int)=
         ## 頂点u,vをマージする
         ## 先読みで与えた順番にuniteしてください
-        assert (self.v[self.alr_query][0] == u or self.v[self.alr_query][0] == v) and (self.v[self.alr_query][1] == v or self.v[self.alr_query][1] == u)
+        assert (self.v[self.alr_query][0] == u or self.v[self.alr_query][0] == v) and (self.v[self.alr_query][1] == v or self.v[self.alr_query][1] == u), "先読みで登録した順番どおりの頂点対を併合する必要があります"
         self.uf.unite(u,v)
         self.now[self.uf.root(u)] = self.N+self.alr_query
         self.alr_query += 1
@@ -80,14 +80,14 @@ when not declared CPLIB_GRAPH_MERGE_TREE:
 
     proc make_seq*[T](self:var MergeTree,v:seq[T]):seq[T]=
         ## オイラーツアー順に配列を並び替える
-        assert len(v) == self.N
+        assert len(v) == self.N, "値の配列の長さは頂点数と一致する必要があります"
         result = newseq[T](len(v))
         for i in 0..<self.N:
             result[self.ret[i]] = v[i]
 
     proc restore_seq*[T](self:var MergeTree,v:seq[T]):seq[T]=
         ## オイラーツアー順になっている配列をもとに戻す
-        assert len(v) == self.N
+        assert len(v) == self.N, "値の配列の長さは頂点数と一致する必要があります"
         result = newseq[T](len(v))
         for i in 0..<self.N:
             result[self.et[i]] = v[i]

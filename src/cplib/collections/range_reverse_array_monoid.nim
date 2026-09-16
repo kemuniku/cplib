@@ -134,7 +134,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
 
     proc insert*[T](self: RangeReverseArrayMonoid[T], index: int, value: T) =
         ## index の直前に挿入する。index = len なら末尾。
-        assert 0 <= index and index <= self.len
+        assert 0 <= index and index <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= index and index <= self.len"
         let node = newNode(value, rand(uint64))
         self.root = self.insertNode(self.root, node, index)
         inc self.length
@@ -151,12 +151,12 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
         return node
 
     proc erase*[T](self: RangeReverseArrayMonoid[T], index: int) =
-        assert 0 <= index and index < self.len
+        assert 0 <= index and index < self.len, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.len"
         self.root = self.eraseNode(self.root, index)
         dec self.length
 
     proc erase*[T](self: RangeReverseArrayMonoid[T], l, r: int) =
-        assert 0 <= l and l <= r and r <= self.len
+        assert 0 <= l and l <= r and r <= self.len, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.len"
         if l == r: return
         let (left, rest) = split(self.root, l, self.op, self.e)
         let (_, right) = split(rest, r - l, self.op, self.e)
@@ -168,7 +168,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
 
     proc reverse*[T](self: RangeReverseArrayMonoid[T], l, r: int) =
         ## 半開区間[l, r)を反転します。
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         var (left, middleRight) = split(self.root, l, self.op, self.e)
         var (middle, right) = split(middleRight, r - l, self.op, self.e)
         middle.toggle
@@ -180,7 +180,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
 
     proc get*[T](self: RangeReverseArrayMonoid[T], index: int): T =
         ## index番目の値を返します。
-        assert 0 <= index and index < self.length
+        assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
         var node = self.root
         var k = index
         while true:
@@ -206,13 +206,13 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
 
     proc get*[T](self: RangeReverseArrayMonoid[T], l, r: int): T =
         ## 半開区間 [l, r) の総積を返す。
-        assert 0 <= l and l <= r and r <= self.len
+        assert 0 <= l and l <= r and r <= self.len, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.len"
         if l == r: return self.e
         self.getNode(self.root, l, r)
 
     proc get*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]): T =
         ## 閉区間segmentの総積を返します。
-        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length
+        assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length, "指定した区間が有効な範囲内である必要があります: segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length"
         self.get(segment.a, segment.b + 1)
 
     proc fold*[T](self: RangeReverseArrayMonoid[T], l, r: int): T =
@@ -241,7 +241,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
 
     proc update*[T](self: RangeReverseArrayMonoid[T], index: Natural, value: T) =
         ## index 番目の値を value に変更する。
-        assert index < self.len
+        assert index < self.len, "指定した値が有効な範囲内である必要があります: index < self.len"
         self.updateNode(self.root, index, value)
 
     proc searchRight[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], start, l: int, acc: var T, f: proc(x: T): bool): int =
@@ -265,8 +265,8 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
     proc max_right*[T](self: RangeReverseArrayMonoid[T], l: int, f: proc(x: T): bool): int =
         ## f(get(l, r)) が真となる最大の r を返す。
         ## f(e) = true で、区間を伸ばしたとき真から偽への変化が単調であること。
-        assert 0 <= l and l <= self.len
-        assert f(self.e)
+        assert 0 <= l and l <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= l and l <= self.len"
+        assert f(self.e), "判定関数は単位元に対してtrueを返す必要があります"
         var acc = self.e
         self.searchRight(self.root, 0, l, acc, f)
 
@@ -290,8 +290,8 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
     proc min_left*[T](self: RangeReverseArrayMonoid[T], r: int, f: proc(x: T): bool): int =
         ## f(get(l, r)) が真となる最小の l を返す。
         ## f(e) = true で、区間を伸ばしたとき真から偽への変化が単調であること。
-        assert 0 <= r and r <= self.len
-        assert f(self.e)
+        assert 0 <= r and r <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.len"
+        assert f(self.e), "判定関数は単位元に対してtrueを返す必要があります"
         var acc = self.e
         self.searchLeft(self.root, 0, r, acc, f)
 

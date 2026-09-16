@@ -92,7 +92,7 @@ static NI cplib_fw16_get(const NI *data, const NI *offsets, NI l, NI r) {
 
     proc initFenwickTreeAvx2*(n: int): FenwickTreeAvx2 =
         ## 長さnの零配列から構築します。O(n)時間、約16n/15個の64bit整数を使います。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         result.size = n
         var m = n
         var size = 0
@@ -122,18 +122,18 @@ static NI cplib_fw16_get(const NI *data, const NI *offsets, NI l, NI r) {
 
     proc add*(self: var FenwickTreeAvx2, p: int, delta: int) =
         ## a[p]にdeltaを加えます。O(log_16 n)回のSIMD更新を行います。
-        assert 0 <= p and p < self.size
+        assert 0 <= p and p < self.size, "指定した値が有効な範囲内である必要があります: 0 <= p and p < self.size"
         fw16Add(addr self.data[0], addr self.offsets[0], self.height, p, delta)
 
     proc prefix*(self: FenwickTreeAvx2, r: int): int =
         ## [0, r)の和をintとしてO(log_16 n)で返します。
-        assert 0 <= r and r <= self.size
+        assert 0 <= r and r <= self.size, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.size"
         if r == 0: return 0
         fw16Prefix(unsafeAddr self.data[0], unsafeAddr self.offsets[0], r)
 
     proc get*(self: FenwickTreeAvx2, l, r: int): int =
         ## [l, r)の和をintとしてO(log_16 n)で返します。
-        assert 0 <= l and l <= r and r <= self.size
+        assert 0 <= l and l <= r and r <= self.size, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.size"
         if l == r: return 0
         fw16Get(unsafeAddr self.data[0], unsafeAddr self.offsets[0], l, r)
 

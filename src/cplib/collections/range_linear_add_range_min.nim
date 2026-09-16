@@ -85,7 +85,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
         ## 配列から構築します。時間・空間 O(N)。64bit環境のC++バックエンド専用です。
         ## 値・遅延加算の係数とその適用時の中間値は int に収めてください。
         ## 各節点は自身の遅延加算を除いた下側凸包の共通接線を保持します。
-        static: doAssert sizeof(int) == 8
+        static: doAssert sizeof(int) == 8, "intが64ビットの環境で使用する必要があります"
         result = RangeLinearAddRangeMin(length: v.len, nodes: newSeq[LinearMinNode](4 * v.len))
         if v.len > 0:
             result.build(v, 1, 0, v.len)
@@ -114,7 +114,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
 
     proc add*(self: RangeLinearAddRangeMin, l, r, b, c: int) =
         ## 半開区間 [l,r) の a[i] に b*i+c を加えます。O(log^2 N)。
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         if l < r:
             self.addImpl(1, 0, self.length, l, r, b, c)
 
@@ -154,7 +154,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
 
     proc prod*(self: RangeLinearAddRangeMin, l, r: int): int =
         ## 半開区間 [l,r) の最小値を返します。空区間は high(int)。O(log^2 N)。
-        assert 0 <= l and l <= r and r <= self.length
+        assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
         if l == r: return high(int)
         self.prodImpl(1, 0, self.length, l, r, 0, 0)
 
@@ -168,7 +168,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
 
     proc `[]`*(self: RangeLinearAddRangeMin, i: int): int =
         ## a[i] を返します。O(log N)。
-        assert 0 <= i and i < self.length
+        assert 0 <= i and i < self.length, "指定した値が有効な範囲内である必要があります: 0 <= i and i < self.length"
         self.prod(i, i + 1)
 
     proc len*(self: RangeLinearAddRangeMin): int =

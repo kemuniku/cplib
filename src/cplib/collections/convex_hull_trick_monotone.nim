@@ -22,10 +22,10 @@ when not declared CPLIB_COLLECTIONS_CONVEX_HULL_TRICK_MONOTONE:
 
     proc get_min*(self: var ConvexHullTrickMonotone, x: int): int =
         ## 指定した向きに単調な整数座標xでの最小値を返します。空の場合はassert。償却O(1)。
-        assert self.hull.lines.len > 0, "CHT: no lines"
+        assert self.hull.lines.len > 0, "CHTに直線が登録されていません"
         if self.hasX:
             assert (if self.xIncreasing: self.lastX <= x else: x <= self.lastX),
-                "CHT: query coordinates must be monotone"
+                "CHTのクエリ座標は指定した方向に単調である必要があります"
         self.hasX = true
         self.lastX = x
         if self.xIncreasing:

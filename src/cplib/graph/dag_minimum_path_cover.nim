@@ -7,7 +7,7 @@ when not declared CPLIB_GRAPH_DAGMINIMUMPATHCOVER:
 
     proc dag_minimum_path_cover*(G:UnWeightedDirectedGraph):int=
         when defined(debug):
-            assert G.isDAG()
+            assert G.isDAG(), "入力グラフは有向非巡回グラフである必要があります"
         var MFG = init_mf_graph[int](len(G)*2+2)
         for i in 0..<len(G):
             for j in G[i]:

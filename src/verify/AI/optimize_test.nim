@@ -2,5 +2,6 @@
 echo "Hello World"
 
 import cplib/tmpl/optimize
+optimize()
 
 assert true

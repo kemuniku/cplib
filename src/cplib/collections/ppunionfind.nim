@@ -28,7 +28,7 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
         return self.root(x,self.last)
 
     proc unite*(self:var PartialPersistentUnionFind,u,v,t:int):bool {.discardable.}=
-        assert self.last <= t
+        assert self.last <= t, "更新時刻は直前の更新時刻以上である必要があります"
         self.last = t
         var u = self.root_i32(u,self.last)
         var v = self.root_i32(v,self.last)
@@ -56,7 +56,7 @@ when not declared CPLIB_COLLECTIONS_PARTIALPERSISTENTUNIONFIND:
         return self.root_i32(u,self.last) == self.root_i32(v,self.last)
 
     proc size*(self:var PartialPersistentUnionFind,x,t:int):int=
-        assert t >= -1
+        assert t >= -1, "時刻は初期状態を表す-1以上である必要があります"
         var x = self.root_i32(x,t).int
         return self.size_value[x][self.size_time[x].upperBound(t)-1]
 

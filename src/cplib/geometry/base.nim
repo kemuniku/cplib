@@ -73,11 +73,11 @@ when not declared CPLIB_GEOMETRY_BASE:
 
     proc initLine*[T](s, t: Point[T]): Line[T] =
         ##2点 (s, t) を通る直線の初期化
-        (assert s != t; return Line[T](s: s, t: t))
-    proc initLine*[T](a, b, c: int): Line[int] = assert false, "(a,b,c) initialization can't be used for Line[int], please use float or Fraction"
+        (assert(s != t, "始点と終点は異なる点である必要があります"); return Line[T](s: s, t: t))
+    proc initLine*[T](a, b, c: int): Line[int] = assert false, "係数(a,b,c)からの直線の初期化にはintではなくfloatまたはFractionを使用してください"
     proc initLine*[T](a, b, c: T): Line[T] =
         ##直線 ax + by + c = 0 の初期化、int 型に対しては使用不可
-        assert geometry_neq(a, T(0)) or geometry_neq(b, T(0))
+        assert geometry_neq(a, T(0)) or geometry_neq(b, T(0)), "直線の係数aとbの少なくとも一方は非零である必要があります"
         if geometry_eq(b, T(0)):
             var s = Point[T](x: -c / a, y: T(0))
             var t = Point[T](x: -c / a, y: T(1))
@@ -96,5 +96,5 @@ when not declared CPLIB_GEOMETRY_BASE:
         s*, t*: Point[T]
     proc initSegment*[T](s, t: Point[T]): Segment[T] =
         ##2点 (s, t) を結ぶ線分の初期化
-        (assert s != t; return Segment[T](s: s, t: t))
+        (assert(s != t, "始点と終点は異なる点である必要があります"); return Segment[T](s: s, t: t))
     converter toLine*[T](s: Segment[T]): Line[T] = initLine(s.s, s.t)

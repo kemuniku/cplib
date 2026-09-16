@@ -11,10 +11,11 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX512:
         {.error: "StaticBitSetAvx512 requires amd64 and GCC/Clang".}
     import bitops
     include cplib/collections/private/bitset_avx512_impl
+    include cplib/collections/private/bitset_search_impl
 
     func wordCount(size: int): int {.compileTime.} =
         ## 非負のビット数に必要な64ビットワード数を求めます。
-        doAssert size >= 0, "BitSet size must be non-negative"
+        doAssert size >= 0, "BitSetのサイズは非負である必要があります"
         (size shr 6) + ord((size and 63) != 0)
 
     type BitSet*[size: static int] {.byref.} = object
@@ -31,7 +32,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX512:
             if v.len > size:
                 raise newException(ValueError, "initial value is longer than BitSet size")
         static:
-            doAssert sizeof(bool) == 1
+            doAssert sizeof(bool) == 1, "boolのサイズは1バイトである必要があります"
         when size > 0:
             let source = if v.len == 0: nil else: cast[pointer](unsafeAddr v[0])
             avxFromBools(addr result.bits[0], source, v.len.csize_t, result.bits.len.csize_t)
@@ -378,22 +379,38 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX512:
             result = avxSubset(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t) != 0
 
     proc nextSetBit*[size](x: BitSet[size], start: int): int =
-        ## start以上で最初の1の添字を返し、なければ-1を返します。0 <= start <= len(x)。最悪O(ビット数 / 64)。
-        ## SIMD命令は使わず、64ビットワードを走査して末尾の0の個数から位置を求めます。
+        ## start以上で最初の1の添字を返し、なければ-1。0 <= start <= len(x)。最悪O(1 + ビット数/64)。
+        ## 最初のワードを調べた後、ゼロ区間をSIMDでまとめて飛ばします。
         when compileOption("boundChecks"):
             if start < 0 or start > size:
                 raise newException(IndexDefect, "BitSet index out of bounds")
         result = -1
         when size > 0:
             if start < size:
-                var wordIndex = start shr 6
-                var word = x.bits[wordIndex] and ((not 0'u64) shl (start and 63))
-                while true:
-                    if word != 0:
-                        return wordIndex * 64 + word.countTrailingZeroBits()
-                    inc wordIndex
-                    if wordIndex >= x.bits.len: break
-                    word = x.bits[wordIndex]
+                let i = start shr 6
+                let word = x.bits[i] and ((not 0'u64) shl (start and 63))
+                if word != 0:
+                    return i * 64 + word.countTrailingZeroBits()
+                let j = searchNextWordAvx512(unsafeAddr x.bits[0], (i+1).csize_t, x.bits.len.csize_t).int
+                if j < x.bits.len:
+                    return j * 64 + x.bits[j].countTrailingZeroBits()
+
+    proc prevSetBit*[size](x: BitSet[size], start: int): int =
+        ## start以下で最後の1の添字を返し、なければ-1。-1 <= start < len(x)。最悪O(1 + ビット数/64)。
+        ## start == -1なら-1。最初のワードを調べた後、ゼロ区間をSIMDで逆順に飛ばします。
+        when compileOption("boundChecks"):
+            if start < -1 or start >= size:
+                raise newException(IndexDefect, "BitSet index out of bounds")
+        result = -1
+        when size > 0:
+            if start >= 0:
+                let i = start shr 6
+                let word = x.bits[i] and ((not 0'u64) shr (63 - (start and 63)))
+                if word != 0:
+                    return i * 64 + 63 - word.countLeadingZeroBits()
+                let j = searchPrevWordAvx512(unsafeAddr x.bits[0], 0, i.csize_t).int
+                if j < i:
+                    return j * 64 + 63 - x.bits[j].countLeadingZeroBits()
 
     proc xnorpopcount*[size](x, y: BitSet[size]): int =
         ## ビットが一致する位置の個数を、一時集合を作らずに返します。O(ビット数 / 64)。
@@ -443,19 +460,23 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX512:
         x.flipRange(0, size)
 
     iterator items*[size](bitset: BitSet[size]): int =
-        ## 立っているビットの添字を昇順に列挙します。
-        for wordIndex in 0..<bitset.bits.len:
-            var word = bitset.bits[wordIndex]
-            while word != 0:
-                yield wordIndex * 64 + word.countTrailingZeroBits()
-                word = word and (word - 1)
+        ## 立っているビットを昇順に列挙します。ゼロ区間はSIMDで探索します。O(ワード数 + 要素数)。
+        when size > 0:
+            var wordIndex = 0
+            while wordIndex < bitset.bits.len:
+                var word = bitset.bits[wordIndex]
+                if word == 0:
+                    wordIndex = searchNextWordAvx512(unsafeAddr bitset.bits[0], (wordIndex+1).csize_t, bitset.bits.len.csize_t).int
+                    if wordIndex >= bitset.bits.len: break
+                    word = bitset.bits[wordIndex]
+                while word != 0:
+                    yield wordIndex * 64 + word.countTrailingZeroBits()
+                    word = word and (word - 1)
+                inc wordIndex
 
     proc lowestBit*[size](bitset: BitSet[size]): int =
-        ## 最小の要素を返し、空集合なら-1を返します。
-        for wordIndex in 0..<bitset.bits.len:
-            if bitset.bits[wordIndex] != 0:
-                return wordIndex * 64 + bitset.bits[wordIndex].countTrailingZeroBits()
-        -1
+        ## 最小の要素を返し、空集合なら-1。最悪O(1 + ビット数/64)。ゼロ区間はSIMDで探索します。
+        bitset.nextSetBit(0)
 
     proc `[]`*[size](bitset: BitSet[size], idx: Natural): bool =
         ## 指定した添字のビットが立っているかを返します。

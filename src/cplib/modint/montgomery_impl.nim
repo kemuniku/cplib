@@ -12,9 +12,9 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         for _ in 0..<4: result *= 2u32 - M * result
     proc get_n2*(M: uint32): uint32 = uint32((not uint(M - 1u32)) mod uint(M))
     proc check_params(M, r: uint32) =
-        assert M < (1u32 shl 30), "invalid mod >= 2^30"
-        assert (M and 1u32) == 1u32, "invalid mod % 2 == 0"
-        assert r * M == 1, "r * mod != 1"
+        assert M < (1u32 shl 30), "法は2^30未満である必要があります"
+        assert (M and 1u32) == 1u32, "法は奇数である必要があります"
+        assert r * M == 1, "モンゴメリ演算の定数rはr * mod == 1を満たす必要があります"
     var montgomeryParamCache {.compileTime.}: Table[uint32, NimNode]
 
     proc get_montgomery_cached_param[M: static[uint32]](): var tuple[M, r, n2: uint32] =
@@ -83,7 +83,7 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     proc `-`*[T: MontgomeryModint](a: T): T = (result = init(T, 0); result -= a)
     proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger) = a.a = reduce(T, uint(a.a) * init(T, b).a)
     proc inv*[T: MontgomeryModint](x: T): T =
-        assert x.val != 0
+        assert x.val != 0, "0の逆元を求めることはできません"
         var x: int32 = int32(x.val)
         var y: int32 = T.mod
         var u = 1i32

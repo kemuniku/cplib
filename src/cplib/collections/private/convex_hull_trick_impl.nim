@@ -28,14 +28,14 @@ when not declared CPLIB_COLLECTIONS_PRIVATE_CONVEX_HULL_TRICK_IMPL:
     proc chtAnswer*(value: Int128): int =
         ## 最小値をintに変換します。O(1)。
         assert to_Int128(low(int)) <= value and value <= to_Int128(high(int)),
-            "CHT: minimum does not fit in int"
+            "CHTの最小値がintの範囲に収まりません"
         value.to_int
 
     proc chtStart*(l, r: CHTLine): Int128 =
         ## 傾きの小さいrがl以下になる最初の整数座標を返します。O(1)。
         let numerator = to_Int128(r.b) - to_Int128(l.b)
         let denominator = to_Int128(l.a) - to_Int128(r.a)
-        assert denominator > 0
+        assert denominator > 0, "denominatorは正である必要があります"
         result = numerator div denominator
         if numerator mod denominator > 0:
             result += 1
@@ -53,7 +53,7 @@ when not declared CPLIB_COLLECTIONS_PRIVATE_CONVEX_HULL_TRICK_IMPL:
         ## ax+bを追加します。傾きは指定した向きに単調である必要があります。償却O(1)。
         if self.hasSlope:
             assert (if self.slopeIncreasing: self.lastSlope <= a else: a <= self.lastSlope),
-                "CHT: slopes must be monotone"
+                "CHTに追加する直線の傾きは指定した方向に単調である必要があります"
         self.hasSlope = true
         self.lastSlope = a
         let line = CHTLine(a: a, b: b)

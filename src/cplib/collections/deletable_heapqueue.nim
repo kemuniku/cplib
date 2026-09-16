@@ -13,7 +13,7 @@ when not declared CPLIB_COLLECTIONS_DELETABLE_HEAPQUEUE:
         Deletable_HeapQueue[T](hq:(@v).toHeapQueue(),dlhq:initHeapQueue[T]())
 
     proc `[]`*[T](self:var Deletable_HeapQueue[T],i:Natural):T=
-        assert i == 0
+        assert i == 0, "参照できるのは先頭要素（添字0）のみです"
         return self.hq[i]
 
     proc delete*[T](self:var Deletable_HeapQueue[T],x:T)=

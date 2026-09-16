@@ -78,5 +78,5 @@ when not declared CPLIB_STR_ROLLING_HASH:
         var
             l = rng.a
             r = rng.b + 1
-        assert l in 0..<rh.hash_accum.len and r in 0..<rh.hash_accum.len
+        assert l in 0..<rh.hash_accum.len and r in 0..<rh.hash_accum.len, "指定した値が有効な範囲内である必要があります: l in 0 ..< rh.hash_accum.len and r in 0 ..< rh.hash_accum.len"
         return mul(rh.hash_accum[r] + RH_MOD - rh.hash_accum[l], rh.base_inv_pow[l]).calc_mod

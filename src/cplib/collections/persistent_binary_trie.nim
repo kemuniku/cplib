@@ -34,17 +34,17 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_BINARY_TRIE:
         var now = PersistentBinaryTrieNode(zero:self.root.zero,one:self.root.one,value:self.root.value-v)
         result.root = now
         result.h = self.h
-        assert now.value >= 0
+        assert now.value >= 0, "要素の個数が負になっています。存在しない要素は削除できません"
         for i in countdown(self.h-1,0,1):
             if (x and (1 shl i)) == 0:
-                assert not now.zero.isNil()
+                assert not now.zero.isNil(), "削除対象の値に対応する0側のノードが存在しません"
                 now.zero = PersistentBinaryTrieNode(zero:now.zero.zero,one:now.zero.one,value:now.zero.value-v)
                 now = now.zero
             else:
-                assert not now.one.isNil()
+                assert not now.one.isNil(), "削除対象の値に対応する1側のノードが存在しません"
                 now.one = PersistentBinaryTrieNode(zero:now.one.zero,one:now.one.one,value:now.one.value-v)
                 now = now.one
-            assert now.value >= 0
+            assert now.value >= 0, "要素の個数が負になっています。存在しない要素は削除できません"
     
     proc count*(self:PersistentBinaryTrie,x:Natural):int=
         var now = self.root

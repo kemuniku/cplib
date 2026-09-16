@@ -25,7 +25,7 @@ when not declared CPLIB_COLLECTIONS_WEIGHTED_UNIONFIND:
     proc issame*[T](self: WeightedUnionFind[T], x: int, y: int): bool =
         return self.root_i32(x) == self.root_i32(y)
     proc diff*[T](self:WeightedUnionFind[T],x,y:int):T=
-        assert self.root_i32(x) == self.root_i32(y)
+        assert self.root_i32(x) == self.root_i32(y), "重みの差を取得する頂点は同じ連結成分に属する必要があります"
         return self.potential_diff[y]-self.potential_diff[x]
     proc unite*[T](self: WeightedUnionFind[T], x: int, y: int, w:T):bool=
         ## potential[y]-potential[x] = wとなるように辺を張ります

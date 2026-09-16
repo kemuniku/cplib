@@ -38,7 +38,7 @@ when not declared CPLIB_TREE_LINK_CUT_TREE:
         inverse: proc(x: S): S = nil
     ): LinkCutTree[S] =
         ## 全頂点の値がdefaultの、辺のない森を作る。時間・空間O(N)。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         initLinkCutTree(newSeqWith(n, default), merge, default, inverse)
 
     template newLinkCutTreeWith*(vOrN, merge, default: untyped): untyped =

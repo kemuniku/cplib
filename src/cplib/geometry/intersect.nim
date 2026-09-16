@@ -18,10 +18,10 @@ when not declared CPLIB_GEOMETRY_INTERSECT:
         if not is_parallel(l1, l2): return true
         return online(l1, l2.s)
 
-    proc cross_point*(l1, l2: Line[int]): Point[int] = assert false, "cross point can't be called for int type, please use float or Fraction"
+    proc cross_point*(l1, l2: Line[int]): Point[int] = assert false, "交点の計算にはintではなくfloatまたはFractionを使用してください"
     proc cross_point*[T](l1, l2: Line[T]): Point[T] =
         ## 2直線 l1, l2 の交点
-        assert(intersect(l1, l2))
+        assert(intersect(l1, l2), "交点を求める2直線は交わる必要があります")
         if is_parallel(l1, l2): return l1.s
         var d1 = cross(l1.vector, l2.vector)
         var d2 = cross(l1.vector, l1.t - l2.s)

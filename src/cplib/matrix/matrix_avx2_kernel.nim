@@ -268,9 +268,9 @@ static void cplib_matrix_write_row(const uint32_t* values,size_t count,uint32_t 
             montgomery: bool, separator: string): string =
         ## 連続したmodint内部値を余分な配列変換なしで文字列にする。
         if count == 0: return ""
-        doAssert count <= high(int) div 10, "matrix string size overflow"
+        doAssert count <= high(int) div 10, "行列の文字列表現の長さがintの範囲を超えています"
         doAssert count == 1 or separator.len <= (high(int) - count * 10) div (count - 1),
-            "matrix string size overflow"
+            "行列の文字列表現の長さがintの範囲を超えています"
         result = newString(count * 10 + (count - 1) * separator.len)
         let written = joinKernel(values, count.csize_t, modulus, montgomery,
             addr result[0], separator.cstring, separator.len.csize_t)

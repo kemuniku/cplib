@@ -15,7 +15,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:
     proc initDynamicSegmentTree*[T](n: int, merge: proc(x: T, y: T): T,
                                    default: T): DynamicSegmentTree[T] =
         ## [0,n)を単位元で初期化します。O(1)時間・空間。mergeにはモノイドの演算を渡します。
-        assert n >= 0
+        assert n >= 0, "nは非負である必要があります"
         DynamicSegmentTree[T](length: n, merge: merge, default: default)
 
     proc len*[T](self: DynamicSegmentTree[T]): int =
@@ -58,7 +58,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:
 
     proc update*[T](self: DynamicSegmentTree[T], index: Natural, value: T) =
         ## 1点をO(log N)で上書きします。Q回更新後の空間はO(Q)、同じ座標の再更新では増えません。
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.updateNode(self.root, 0, self.length, index, value)
 
     proc getNode[T](self: DynamicSegmentTree[T], node: DynamicSegmentTreeNode[T],
@@ -76,14 +76,14 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:
 
     proc get*[T](self: DynamicSegmentTree[T], q_left, q_right: Natural): T =
         ## 半開区間[q_left,q_right)の積をO(log N)で返します。ノードは確保しません。
-        assert q_left <= q_right and q_right <= self.length
+        assert q_left <= q_right and q_right <= self.length, "指定した区間が有効な範囲内である必要があります: q_left <= q_right and q_right <= self.length"
         if q_left == q_right:
             return self.default
         self.getNode(self.root, 0, self.length, q_left, q_right)
 
     proc get*[T](self: DynamicSegmentTree[T], segment: HSlice[int, int]): T =
         ## スライスで指定した区間の積をO(log N)で返します。
-        assert 0 <= segment.a and segment.b < self.length
+        assert 0 <= segment.a and segment.b < self.length, "指定した区間が有効な範囲内である必要があります: 0 <= segment.a and segment.b < self.length"
         self.get(segment.a, segment.b + 1)
 
     proc `[]`*[T](self: DynamicSegmentTree[T], segment: HSlice[int, int]): T =
@@ -92,7 +92,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:
 
     proc `[]`*[T](self: DynamicSegmentTree[T], index: Natural): T =
         ## 1点の値をO(log N)で返します。未更新の座標では単位元を返します。
-        assert index < self.length
+        assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         var node = self.root
         while node != nil:
             if node.index == index:

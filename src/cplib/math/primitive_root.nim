@@ -9,7 +9,7 @@ when not declared CPLIB_MATH_PRIMITIVE_ROOT:
     randomize()
     
     proc primitive_root*(p:int):int=
-        assert p.isprime()
+        assert p.isprime(), "法pは素数である必要があります"
         var pf = (p-1).primefactor().deduplicate(true)
         while true:
             var a = rand(1..<p)

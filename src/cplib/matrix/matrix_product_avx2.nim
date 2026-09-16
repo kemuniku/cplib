@@ -166,18 +166,18 @@ static void cplib_matrix_product(const uint32_t*a,const uint32_t*b,uint32_t*c,in
         ## 行優先の n×m 行列と m×k 行列の積を、奇数 modulus < 2^30 で求める。
         ## 入力要素は 0 以上 modulus 未満。AVX2対応CPUとC++バックエンドが必要。
         doAssert modulus > 0 and modulus < (1u32 shl 30) and
-            (modulus and 1u32) == 1, "modulus must be odd and in [1, 2^30)"
-        doAssert n >= 0 and m >= 0 and k >= 0, "negative matrix dimension"
+            (modulus and 1u32) == 1, "法は1以上2^30未満の奇数である必要があります"
+        doAssert n >= 0 and m >= 0 and k >= 0, "行列の行数と列数は非負である必要があります"
         doAssert n <= high(cint).int and m <= high(cint).int and
-            k <= high(cint).int, "matrix dimension exceeds int32"
-        doAssert n == 0 or m <= high(int) div n, "matrix size overflow"
-        doAssert m == 0 or k <= high(int) div m, "matrix size overflow"
-        doAssert n == 0 or k <= high(int) div n, "matrix size overflow"
-        doAssert a.len == n * m and b.len == m * k, "matrix size mismatch"
+            k <= high(cint).int, "行列の行数と列数はint32の範囲に収まる必要があります"
+        doAssert n == 0 or m <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert m == 0 or k <= high(int) div m, "行列のサイズが表現可能な範囲を超えています"
+        doAssert n == 0 or k <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert a.len == n * m and b.len == m * k, "行列のサイズが一致しません"
         for value in a:
-            assert value < modulus, "matrix entries must be less than modulus"
+            assert value < modulus, "行列の各要素は法未満である必要があります"
         for value in b:
-            assert value < modulus, "matrix entries must be less than modulus"
+            assert value < modulus, "行列の各要素は法未満である必要があります"
         result = newSeq[uint32](n * k)
         if n == 0 or m == 0 or k == 0 or modulus == 1:
             return
@@ -190,13 +190,13 @@ static void cplib_matrix_product(const uint32_t*a,const uint32_t*b,uint32_t*c,in
         let n = a.len
         let m = if n == 0: 0 else: a[0].len
         let k = if b.len == 0: 0 else: b[0].len
-        doAssert m == b.len, "matrix size mismatch"
+        doAssert m == b.len, "行列のサイズが一致しません"
         for row in a:
-            doAssert row.len == m, "ragged matrix"
+            doAssert row.len == m, "行列の各行の長さは等しい必要があります"
         for row in b:
-            doAssert row.len == k, "ragged matrix"
-        doAssert n == 0 or m <= high(int) div n, "matrix size overflow"
-        doAssert m == 0 or k <= high(int) div m, "matrix size overflow"
+            doAssert row.len == k, "行列の各行の長さは等しい必要があります"
+        doAssert n == 0 or m <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert m == 0 or k <= high(int) div m, "行列のサイズが表現可能な範囲を超えています"
         var flatA = newSeq[uint32](n * m)
         var flatB = newSeq[uint32](m * k)
         for i in 0 ..< n:
@@ -220,20 +220,20 @@ static void cplib_matrix_product(const uint32_t*a,const uint32_t*b,uint32_t*c,in
         let n = a.h
         let m = a.w
         let k = b.w
-        doAssert m == b.h, "matrix size mismatch"
+        doAssert m == b.h, "行列のサイズが一致しません"
         let modulus = T.umod.uint32
         doAssert modulus > 0 and modulus < (1u32 shl 30) and
-            (modulus and 1u32) == 1, "modulus must be odd and in [1, 2^30)"
-        doAssert n == 0 or m <= high(int) div n, "matrix size overflow"
-        doAssert m == 0 or k <= high(int) div m, "matrix size overflow"
+            (modulus and 1u32) == 1, "法は1以上2^30未満の奇数である必要があります"
+        doAssert n == 0 or m <= high(int) div n, "行列のサイズが表現可能な範囲を超えています"
+        doAssert m == 0 or k <= high(int) div m, "行列のサイズが表現可能な範囲を超えています"
         var flatA = newSeq[uint32](n * m)
         var flatB = newSeq[uint32](m * k)
         for i in 0 ..< n:
-            doAssert a[i].len == m, "ragged matrix"
+            doAssert a[i].len == m, "行列の各行の長さは等しい必要があります"
             for j in 0 ..< m:
                 flatA[i * m + j] = a[i, j].val.uint32
         for i in 0 ..< m:
-            doAssert b[i].len == k, "ragged matrix"
+            doAssert b[i].len == k, "行列の各行の長さは等しい必要があります"
             for j in 0 ..< k:
                 flatB[i * k + j] = b[i, j].val.uint32
         let flatC = matrixProduct(flatA, flatB, n, m, k, modulus)

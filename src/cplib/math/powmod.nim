@@ -2,7 +2,7 @@ when not declared CPLIB_MATH_POWMOD:
     const CPLIB_MATH_POWMOD* = 1
     import cplib/math/inner_math
     proc powmod*(a, n, m: int): int =
-        assert m != 0
+        assert m != 0, "法mは0以外である必要があります"
         if m == 1:
             return 0
         var

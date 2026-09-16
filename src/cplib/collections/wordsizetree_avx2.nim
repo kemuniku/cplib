@@ -8,7 +8,7 @@ when not declared CPLIB_COLLECTIONS_WORD_SIZE_TREE_AVX2:
         leaf: array[1 shl 18, uint64]
         middle: array[1 shl 10, uint64]
         top: array[4, uint64]
-    static: doAssert sizeof(bool) == 1
+    static: doAssert sizeof(bool) == 1, "boolのサイズは1バイトである必要があります"
     {.emit: """
 #include <immintrin.h>
 #include <stdint.h>
@@ -43,22 +43,22 @@ WST_AVX static inline int wst_prev(const uint64_t *p, int bit) {
     lane = 31 - __builtin_clz(mask);
     return (int)(lane * 64 + 63 - __builtin_clzll(p[lane]));
 }
-WST_AVX static void wst_init(const void *input, size_t n,
+WST_AVX static void wst_init(const void *input, size_t n, unsigned char one,
                             uint64_t *leaf, uint64_t *mid, uint64_t *top) {
-    /* 真偽値配列から、ゼロ初期化された各段のビット集合を構築します。 */
+    /* oneと一致する位置から、ゼロ初期化された各段のビット集合を構築します。 */
     const unsigned char *v = (const unsigned char *)input;
     size_t i = 0;
-    const __m256i zero = _mm256_setzero_si256();
+    const __m256i target = _mm256_set1_epi8((char)one);
     for (; i + 64 <= n; i += 64) {
         __m256i a = _mm256_loadu_si256((const __m256i *)(v + i));
         __m256i b = _mm256_loadu_si256((const __m256i *)(v + i + 32));
-        uint32_t lo = ~(uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(a, zero));
-        uint32_t hi = ~(uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(b, zero));
+        uint32_t lo = (uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(a, target));
+        uint32_t hi = (uint32_t)_mm256_movemask_epi8(_mm256_cmpeq_epi8(b, target));
         leaf[i >> 6] = (uint64_t)lo | ((uint64_t)hi << 32);
     }
     if (i < n) {
         uint64_t word = 0;
-        for (size_t j = 0; i + j < n; ++j) word |= (uint64_t)(v[i+j] != 0) << j;
+        for (size_t j = 0; i + j < n; ++j) word |= (uint64_t)(v[i+j] == one) << j;
         leaf[i >> 6] = word;
     }
     size_t nodes = (n + 255) >> 8;
@@ -121,7 +121,7 @@ WST_AVX static int wst_le(const uint64_t *leaf, const uint64_t *mid,
 }
 #undef WST_AVX
 """.}
-    proc avxInit(input: pointer, n: csize_t, leaf, middle, top: ptr uint64)
+    proc avxInit(input: pointer, n: csize_t, one: uint8, leaf, middle, top: ptr uint64)
         {.importc: "wst_init", nodecl.}
     proc avxIncl(leaf, middle, top: ptr uint64, x: cuint)
         {.importc: "wst_incl", nodecl.}
@@ -138,24 +138,31 @@ WST_AVX static int wst_le(const uint64_t *leaf, const uint64_t *mid,
 
     proc initWordsizeTree*(v: openArray[bool]): WordsizeTreeAvx2 =
         ## v[i]が真である位置iを要素とするビット集合木を作成します。
-        assert v.len <= WordsizeTreeAvx2Capacity
+        assert v.len <= WordsizeTreeAvx2Capacity, "配列の長さがWordsizeTreeAvx2の最大容量を超えています"
         if v.len > 0:
-            avxInit(unsafeAddr v[0], v.len.csize_t, addr result.leaf[0],
+            avxInit(unsafeAddr v[0], v.len.csize_t, 1'u8, addr result.leaf[0],
+                addr result.middle[0], addr result.top[0])
+
+    proc initWordsizeTree*(v: string): WordsizeTreeAvx2 =
+        ## v[i]が'1'である位置を要素とするビット集合木をO(v.len)で構築します。
+        assert v.len <= WordsizeTreeAvx2Capacity, "文字列の長さがWordsizeTreeAvx2の最大容量を超えています"
+        if v.len > 0:
+            avxInit(unsafeAddr v[0], v.len.csize_t, uint8(ord('1')), addr result.leaf[0],
                 addr result.middle[0], addr result.top[0])
 
     proc incl*(self: var WordsizeTreeAvx2, x: int) =
         ## 要素xを追加します。
-        assert x >= 0 and x < WordsizeTreeAvx2Capacity
+        assert x >= 0 and x < WordsizeTreeAvx2Capacity, "指定した値が有効な範囲内である必要があります: x >= 0 and x < WordsizeTreeAvx2Capacity"
         avxIncl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)
 
     proc excl*(self: var WordsizeTreeAvx2, x: int) =
         ## 要素xを削除します。
-        assert x >= 0 and x < WordsizeTreeAvx2Capacity
+        assert x >= 0 and x < WordsizeTreeAvx2Capacity, "指定した値が有効な範囲内である必要があります: x >= 0 and x < WordsizeTreeAvx2Capacity"
         avxExcl(addr self.leaf[0], addr self.middle[0], addr self.top[0], x.cuint)
 
     proc `[]`*(self: var WordsizeTreeAvx2, x: int): bool =
         ## 要素xが含まれているかを返します。
-        assert x >= 0 and x < WordsizeTreeAvx2Capacity
+        assert x >= 0 and x < WordsizeTreeAvx2Capacity, "指定した値が有効な範囲内である必要があります: x >= 0 and x < WordsizeTreeAvx2Capacity"
         (self.leaf[x shr 6] and (1'u64 shl (x and 63))) != 0
 
     proc ge*(self: var WordsizeTreeAvx2, x: int): int =

@@ -15,10 +15,10 @@
 ## 使用例:
 ##   var seg = initRangeAssignRangeMinIndex(@[3, 1, 4])
 ##   seg.apply(0, 3, 2)
-##   assert seg.get(1, 3).index == 1
+##   assert seg.get(1, 3).index == 1, "最小値の位置が期待値と一致しません"
 ##   var sums = initRangeAffineRangeSum(@[1, 2, 3])
 ##   sums.apply(0, 3, (2, 1))
-##   assert sums.get(0, 3).sum == 15
+##   assert sums.get(0, 3).sum == 15, "区間和が期待値と一致しません"
 when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE:
     const CPLIB_COLLECTIONS_LAZYSEGTREE_TEMPLATE* = 1
     include cplib/collections/lazysegtree_static_op

@@ -8,8 +8,16 @@ for n in [0, 1, 31, 32, 33, 63, 64, 65, 95, 96, 97, 127, 128, 129, 4095, 4096, 4
         for i in 0..<n:
             v[i] = pattern == 1 or (pattern == 2 and i mod 67 == 0)
         var tree = initWordsizeTree(v)
+        var s = newString(n)
+        for i in 0..<n:
+            s[i] = (if v[i]: '1' else: '0')
+        var stringTree = initWordsizeTree(s)
         for i in 0..<n:
             doAssert tree[i] == v[i]
+            doAssert stringTree[i] == v[i]
+        for x in [-1, 0, 63, 64, 255, 256, 65535, 65536, n - 1, n]:
+            doAssert stringTree.ge(x) == tree.ge(x)
+            doAssert stringTree.le(x) == tree.le(x)
         if n > 0:
             tree.incl(n - 1)
             doAssert tree.ge(n - 1) == n - 1

@@ -142,7 +142,7 @@ when not declared CPLIB_TREE_STATIC_TOP_TREE_DP:
 
     proc update*[Path, Point](self: StaticTopTreeDP[Path, Point], v: int) =
         ## 頂点vのデータ変更を反映する。O(log N)回の演算
-        assert 0 <= v and v < self.tree.numVertices
+        assert 0 <= v and v < self.tree.numVertices, "頂点番号が範囲外です: 0 <= v and v < self.tree.numVertices"
         var node = self.vertexNode[v]
         while node != -1:
             self.recalculate(node)
