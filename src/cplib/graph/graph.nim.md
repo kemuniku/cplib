@@ -237,6 +237,12 @@ data:
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tree/lca.nim
+    title: cplib/tree/lca.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/lca.nim
+    title: cplib/tree/lca.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/prufer.nim
     title: cplib/tree/prufer.nim
   - icon: ':heavy_check_mark:'
@@ -628,6 +634,12 @@ data:
     path: verify/AI/kruskal_test.nim
     title: verify/AI/kruskal_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/lca_test.nim
+    title: verify/AI/lca_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lca_test.nim
+    title: verify/AI/lca_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/lowlink_test.nim
     title: verify/AI/lowlink_test.nim
   - icon: ':heavy_check_mark:'
@@ -951,6 +963,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
     title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/lca_from_parent_yosupo_test.nim
+    title: verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/lca_from_parent_yosupo_test.nim
+    title: verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/lca_yosupo_test.nim
+    title: verify/tree/lca/lca_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/lca_yosupo_test.nim
+    title: verify/tree/lca/lca_yosupo_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
     title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
@@ -1380,6 +1404,8 @@ data:
   - cplib/tree/static_top_tree.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/lca.nim
+  - cplib/tree/lca.nim
   - cplib/tree/diameter.nim
   - cplib/tree/diameter.nim
   - cplib/tree/heavylightdecomposition.nim
@@ -1489,6 +1515,10 @@ data:
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/diameter_dynamic_test.nim
+  - verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - verify/tree/lca/lca_yosupo_test.nim
+  - verify/tree/lca/lca_yosupo_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/graph/lowlink_bridges_test.nim
@@ -1607,6 +1637,8 @@ data:
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/reverse_edge_test.nim
   - verify/AI/reverse_edge_test.nim
+  - verify/AI/lca_test.nim
+  - verify/AI/lca_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
   - verify/AI/warshall_floyd_avx_test.nim

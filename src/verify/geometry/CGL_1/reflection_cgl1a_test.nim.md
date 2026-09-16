@@ -37,9 +37,9 @@ data:
     \    var p = get()\n    var ans = reflection(l, p)\n    echo &\"{ans.x:.10f} {ans.y:.10f}\"\
     \n"
   dependsOn:
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/projection.nim
   isVerificationFile: true
   path: verify/geometry/CGL_1/reflection_cgl1a_test.nim

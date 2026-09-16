@@ -127,8 +127,8 @@ data:
     \ == edge.cost\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/str/trie.nim
-  - cplib/graph/graph.nim
   - cplib/str/trie.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/trie_test.nim

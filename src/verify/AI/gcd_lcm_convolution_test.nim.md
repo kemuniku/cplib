@@ -86,14 +86,14 @@ data:
   dependsOn:
   - cplib/convolution/lcm_convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/gcd_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/convolution/gcd_convolution.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/gcd_convolution.nim
   - cplib/convolution/lcm_convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: true

@@ -695,6 +695,9 @@ data:
       path: cplib/tree/lazy_subtree_link_cut_tree.nim
       title: cplib/tree/lazy_subtree_link_cut_tree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/tree/lca.nim
+      title: cplib/tree/lca.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/link_cut_tree.nim
       title: cplib/tree/link_cut_tree.nim
     - icon: ':heavy_check_mark:'
@@ -1570,6 +1573,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/lazysegtree_test.nim
       title: verify/AI/lazysegtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/lca_test.nim
+      title: verify/AI/lca_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/lcp_naive_test.nim
       title: verify/AI/lcp_naive_test.nim
@@ -2792,6 +2798,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
       title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - name: verify/tree/lca
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/lca/lca_from_parent_yosupo_test.nim
+      title: verify/tree/lca/lca_from_parent_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/lca/lca_yosupo_test.nim
+      title: verify/tree/lca/lca_yosupo_test.nim
   - name: verify/tree/link_cut_tree
     pages:
     - icon: ':heavy_check_mark:'

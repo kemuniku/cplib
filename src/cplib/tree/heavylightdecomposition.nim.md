@@ -118,6 +118,12 @@ data:
     path: verify/AI/hld_forest_test.nim
     title: verify/AI/hld_forest_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/lca_test.nim
+    title: verify/AI/lca_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/lca_test.nim
+    title: verify/AI/lca_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/namori_forest_test.nim
     title: verify/AI/namori_forest_test.nim
   - icon: ':heavy_check_mark:'
@@ -523,6 +529,8 @@ data:
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/namori_forest_test.nim
   - verify/AI/namori_forest_test.nim
+  - verify/AI/lca_test.nim
+  - verify/AI/lca_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/tree/heavylightdecomposition.nim

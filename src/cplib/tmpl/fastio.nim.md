@@ -196,6 +196,12 @@ data:
     path: verify/tmpl/fastio_many_aplusb_test.nim
     title: verify/tmpl/fastio_many_aplusb_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/lca_from_parent_yosupo_test.nim
+    title: verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/lca/lca_from_parent_yosupo_test.nim
+    title: verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/area_of_union_of_rectangles_test.nim
     title: verify/utils/area_of_union_of_rectangles_test.nim
   - icon: ':heavy_check_mark:'
@@ -835,6 +841,8 @@ data:
   - verify/collections/fenwick_tree_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
+  - verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/graph/lowlink_bridges_test.nim
   - verify/graph/lowlink_bridges_test.nim
   - verify/graph/two_edge_connected_components_test.nim

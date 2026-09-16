@@ -88,11 +88,11 @@ data:
     \   return self.values[self.tree.root]\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree_dp.nim
   requiredBy: []

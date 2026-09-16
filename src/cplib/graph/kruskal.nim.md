@@ -76,8 +76,8 @@ data:
   dependsOn:
   - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

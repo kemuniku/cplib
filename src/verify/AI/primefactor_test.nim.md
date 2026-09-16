@@ -68,14 +68,14 @@ data:
 
     '
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/AI/primefactor_test.nim
   requiredBy: []
