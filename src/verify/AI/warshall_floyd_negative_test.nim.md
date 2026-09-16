@@ -94,17 +94,17 @@ data:
     \ n-1]: expected[i][j] = -inf\n    check[int](a, expected)\n    check[int32](a,\
     \ expected)\n"
   dependsOn:
-  - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_avx.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_negative_test.nim

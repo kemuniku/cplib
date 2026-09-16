@@ -59,35 +59,36 @@ data:
     \u5DE6\u7AEF\u3092\u8FD4\u3059\u3002\u5E45\u304C 0 \u306A\u3089\u5404\u884C\u306B\
     \ -1 \u3092\u8FD4\u3059\u3002\n        assert height >= 0 and width >= 0, \"\u9AD8\
     \u3055\u3068\u5E45\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308A\u307E\u3059\"\n        var answer = newSeq[int](height)\n        for r\
-    \ in 0..<height: answer[r] = -1\n        if height == 0 or width == 0: return\
-    \ answer\n        proc solve(rows, columns: seq[int]) =\n            ## \u5217\
-    \u524A\u6E1B\u3068\u5947\u6570\u884C\u3078\u306E\u518D\u5E30\u3067\u884C\u6700\
-    \u5C0F\u5024\u3092\u6C42\u3081\u308B\u3002\n            if rows.len == 0: return\n\
-    \            var reduced = newSeqOfCap[int](min(rows.len, columns.len))\n    \
-    \        for c in columns:\n                while reduced.len > 0 and better(rows[reduced.len\
-    \ - 1], reduced[^1], c):\n                    reduced.setLen(reduced.len - 1)\n\
-    \                if reduced.len < rows.len: reduced.add(c)\n            var odd\
-    \ = newSeqOfCap[int](rows.len div 2)\n            var i = 1\n            while\
-    \ i < rows.len:\n                odd.add(rows[i])\n                i += 2\n  \
-    \          solve(odd, reduced)\n            var left = 0\n            i = 0\n\
-    \            while i < rows.len:\n                var right = reduced.len - 1\n\
-    \                if i + 1 < rows.len:\n                    right = left\n    \
-    \                while reduced[right] != answer[rows[i + 1]]: inc right\n    \
-    \            var best = left\n                for j in left + 1..right:\n    \
-    \                if better(rows[i], reduced[best], reduced[j]): best = j\n   \
-    \             answer[rows[i]] = reduced[best]\n                left = right\n\
-    \                i += 2\n        var rows = newSeq[int](height)\n        var columns\
-    \ = newSeq[int](width)\n        for i in 0..<height: rows[i] = i\n        for\
-    \ i in 0..<width: columns[i] = i\n        solve(rows, columns)\n        return\
-    \ answer\n"
+    \u308A\u307E\u3059\"\n        var answer = newSeq[int](height)\n        if width\
+    \ == 0:\n            for r in 0..<height: answer[r] = -1\n            return answer\n\
+    \        if height == 0: return answer\n        var capacity = width\n       \
+    \ var count = height\n        while count > 0:\n            capacity += min(count,\
+    \ width)\n            count = count div 2\n        var columns = newSeq[int](capacity)\n\
+    \        for i in 0..<width: columns[i] = i\n        proc solve(first, step, count,\
+    \ offset, width: int) =\n            ## \u884C\u3092\u7B49\u5DEE\u6570\u5217\u3067\
+    \u8868\u3057\u3001\u5217\u524A\u6E1B\u306B\u5171\u6709\u914D\u5217\u3092\u4F7F\
+    \u3046\u3002\u6642\u9593 O(count + width)\u3002\n            let reduced = offset\
+    \ + width\n            var size = 0\n            for p in offset..<reduced:\n\
+    \                let col = columns[p]\n                while size > 0 and better(first\
+    \ + (size - 1) * step, columns[reduced + size - 1], col):\n                  \
+    \  dec size\n                if size < count:\n                    columns[reduced\
+    \ + size] = col\n                    inc size\n            if count > 1:\n   \
+    \             solve(first + step, step * 2, count div 2, reduced, size)\n    \
+    \        var left = 0\n            var i = 0\n            while i < count:\n \
+    \               let row = first + i * step\n                let right = if i +\
+    \ 1 < count: answer[row + step]\n                            else: columns[reduced\
+    \ + size - 1]\n                var best = columns[reduced + left]\n          \
+    \      while columns[reduced + left] < right:\n                    inc left\n\
+    \                    let col = columns[reduced + left]\n                    if\
+    \ better(row, best, col): best = col\n                answer[row] = best\n   \
+    \             i += 2\n        solve(0, 1, height, 0, width)\n        return answer\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/smawk.nim
   requiredBy:
   - cplib/convolution/min_plus_convolution.nim
   - cplib/convolution/min_plus_convolution.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 23:21:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim

@@ -35,14 +35,14 @@ data:
     \ initWaveletMatrix(A)\n\nfor _ in 0..<(Q):\n    var l,r,k = ii()\n    stdout.writeLine\
     \ WM.kth_smallest(l,r,k)"
   dependsOn:
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/collections/waveletmatrix_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 23:35:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/waveletmatrix_test.nim

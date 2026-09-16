@@ -77,8 +77,8 @@ data:
     '
   dependsOn:
   - cplib/collections/topk_sum_heapq.nim
-  - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/deletable_heapqueue.nim
+  - cplib/collections/topk_sum_heapq.nim
   - cplib/collections/deletable_heapqueue.nim
   isVerificationFile: true
   path: verify/AI/topk_sum_heapq_test.nim

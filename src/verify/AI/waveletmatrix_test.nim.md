@@ -51,49 +51,76 @@ data:
     \ 8, 4) == 7\nassert withSum.range_sum(0, 8, 2, 5) == 9\nassert withSum.range_sum(2,\
     \ 6, 2, 5) == 4\n\nproc checkRange(a: seq[int], wm: WaveletMatrix, l, r: int,\
     \ withSum: bool) =\n    let values = sorted(a[l..<r])\n    var total = 0\n   \
-    \ if withSum:\n        assert wm.sum_smallest(l, r, 0) == 0\n    for k, x in values:\n\
-    \        assert wm.kth_smallest(l, r, k) == x\n        assert wm.kth_largest(l,\
-    \ r, k) == values[values.len-1-k]\n        total += x\n        if withSum:\n \
-    \           assert wm.sum_smallest(l, r, k+1) == total\n    let thresholds = @[int.low,\
-    \ -1, 0, 1, 2, 3, 7, 8, 15, 16, 63, 64, 127, 128, int.high]\n    for x in thresholds:\n\
-    \        var less, lessEqual, equal = 0\n        var sumLess, sumLessEqual = 0\n\
-    \        var prev, next = none(int)\n        for v in values:\n            if\
-    \ v < x:\n                inc less\n                sumLess += v\n           \
-    \     prev = some(v)\n            elif next.isNone:\n                next = some(v)\n\
-    \            if v <= x:\n                inc lessEqual\n                sumLessEqual\
-    \ += v\n            if v == x:\n                inc equal\n        assert wm.range_lowerbound(l,\
+    \ if withSum:\n        assert wm.sum_smallest(l, r, 0) == 0\n        assert wm.sum_smallest_with_count(l,\
+    \ r, 0) == (sum:0,count:0)\n    for k, x in values:\n        assert wm.kth_smallest(l,\
+    \ r, k) == x\n        assert wm.kth_largest(l, r, k) == values[values.len-1-k]\n\
+    \        total += x\n        if withSum:\n            assert wm.sum_smallest(l,\
+    \ r, k+1) == total\n            assert wm.sum_smallest_with_count(l, r, k+1) ==\
+    \ (sum:total,count:k+1)\n    let thresholds = @[int.low, -1, 0, 1, 2, 3, 7, 8,\
+    \ 15, 16, 63, 64, 127, 128, int.high]\n    for x in thresholds:\n        var less,\
+    \ lessEqual, equal = 0\n        var sumLess, sumLessEqual = 0\n        var prev,\
+    \ next = none(int)\n        for v in values:\n            if v < x:\n        \
+    \        inc less\n                sumLess += v\n                prev = some(v)\n\
+    \            elif next.isNone:\n                next = some(v)\n            if\
+    \ v <= x:\n                inc lessEqual\n                sumLessEqual += v\n\
+    \            if v == x:\n                inc equal\n        assert wm.range_lowerbound(l,\
     \ r, x) == less\n        assert wm.range_upperbound(l, r, x) == lessEqual\n  \
     \      assert wm.count(l, r, x) == equal\n        assert wm.prev_value(l, r, x)\
     \ == prev\n        assert wm.next_value(l, r, x) == next\n        if withSum:\n\
     \            assert wm.sum_lowerbound(l, r, x) == sumLess\n            assert\
-    \ wm.sum_upperbound(l, r, x) == sumLessEqual\n        for high in thresholds:\n\
+    \ wm.sum_lowerbound_with_count(l, r, x) == (sum:sumLess,count:less)\n        \
+    \    assert wm.sum_upperbound(l, r, x) == sumLessEqual\n            assert wm.sum_upperbound_with_count(l,\
+    \ r, x) == (sum:sumLessEqual,count:lessEqual)\n        for high in thresholds:\n\
     \            var freq = 0\n            var sumRange = 0\n            for v in\
     \ values:\n                if x <= v and v < high:\n                    inc freq\n\
     \                    sumRange += v\n            assert wm.range_freq(l, r, x,\
     \ high) == freq\n            if withSum:\n                assert wm.range_sum(l,\
-    \ r, x, high) == sumRange\n\nproc checkAll(a: seq[int], h: int = -1) =\n    for\
-    \ withSum in [false, true]:\n        let wm = initWaveletMatrix(a, H=h, with_sum=withSum)\n\
-    \        for l in 0..a.len:\n            for r in l..a.len:\n                checkRange(a,\
-    \ wm, l, r, withSum)\n\ncheckAll(@[])\ncheckAll(@[], 8)\ncheckAll(@[0])\ncheckAll(@[0,\
-    \ 0, 0, 0])\ncheckAll(@[0, 0, 0, 0], 0)\ncheckAll(@[7, 7, 7, 7])\ncheckAll(@[3,\
-    \ 1, 4, 1, 5, 9, 2, 6])\ncheckAll(@[0, 7, 3, 7], 10)\ncheckAll(@[int.high])\n\
-    checkAll(@[0, int.high-2, 1, 1])\n\nvar rng = initRand(20260909)\nfor trial in\
-    \ 0..<30:\n    var a = newSeq[int](rng.rand(12))\n    for v in a.mitems:\n   \
-    \     v = rng.rand(127)\n    checkAll(a)\n\nfor n in [63, 64, 65, 127, 128, 129]:\n\
-    \    var a = newSeq[int](n)\n    for v in a.mitems:\n        v = rng.rand(127)\n\
-    \    for withSum in [false, true]:\n        let wm = initWaveletMatrix(a, with_sum=withSum)\n\
-    \        checkRange(a, wm, 0, n, withSum)\n        checkRange(a, wm, n, n, withSum)\n\
-    \        for trial in 0..<20:\n            let l = rng.rand(n)\n            let\
-    \ r = l + rng.rand(n-l)\n            checkRange(a, wm, l, r, withSum)\n"
+    \ r, x, high) == sumRange\n                assert wm.range_sum_with_count(l, r,\
+    \ x, high) == (sum:sumRange,count:freq)\n\nproc checkAll(a: seq[int], h: int =\
+    \ -1) =\n    for withSum in [false, true]:\n        let wm = initWaveletMatrix(a,\
+    \ H=h, with_sum=withSum)\n        for l in 0..a.len:\n            for r in l..a.len:\n\
+    \                checkRange(a, wm, l, r, withSum)\n\ncheckAll(@[])\ncheckAll(@[],\
+    \ 8)\ncheckAll(@[0])\ncheckAll(@[0, 0, 0, 0])\ncheckAll(@[0, 0, 0, 0], 0)\ncheckAll(@[7,\
+    \ 7, 7, 7])\ncheckAll(@[3, 1, 4, 1, 5, 9, 2, 6])\ncheckAll(@[0, 7, 3, 7], 10)\n\
+    checkAll(@[int.high])\ncheckAll(@[0, int.high-2, 1, 1])\ncheckAll(@[], sizeof(int)*8)\n\
+    checkAll(@[0, 1, 2, int.high-3], sizeof(int)*8)\n\nfor h in [-2, sizeof(int)*8+1]:\n\
+    \    var rejected = false\n    try:\n        discard initWaveletMatrix(@[0], h)\n\
+    \    except AssertionDefect:\n        rejected = true\n    assert rejected\n\n\
+    var rng = initRand(20260909)\nfor trial in 0..<30:\n    var a = newSeq[int](rng.rand(12))\n\
+    \    for v in a.mitems:\n        v = rng.rand(127)\n    checkAll(a)\n\nfor n in\
+    \ [63, 64, 65, 127, 128, 129]:\n    var a = newSeq[int](n)\n    for v in a.mitems:\n\
+    \        v = rng.rand(127)\n    for withSum in [false, true]:\n        let wm\
+    \ = initWaveletMatrix(a, with_sum=withSum)\n        checkRange(a, wm, 0, n, withSum)\n\
+    \        checkRange(a, wm, n, n, withSum)\n        for trial in 0..<20:\n    \
+    \        let l = rng.rand(n)\n            let r = l + rng.rand(n-l)\n        \
+    \    checkRange(a, wm, l, r, withSum)\n\nfor n in [63, 64, 65, 127, 128, 129,\
+    \ 257, 513]:\n    for skewed in [false, true]:\n        var a = newSeq[int](n)\n\
+    \        for i in 0..<n:\n            a[i] = if skewed and i mod 17 != 0: 127\
+    \ else: rng.rand(65535)\n        for withSum in [false, true]:\n            let\
+    \ wm = initWaveletMatrix(a, with_sum=withSum)\n            for trial in 0..<30:\n\
+    \                let l = rng.rand(n)\n                let r = l + rng.rand(n-l)\n\
+    \                let x = if trial mod 2 == 0: a[rng.rand(n-1)] else: rng.rand(65536)\n\
+    \                var less, lessEqual, equal, sumLess, sumLessEqual = 0\n     \
+    \           for i in l..<r:\n                    if a[i] < x:\n              \
+    \          inc less\n                        sumLess += a[i]\n               \
+    \     if a[i] <= x:\n                        inc lessEqual\n                 \
+    \       sumLessEqual += a[i]\n                    if a[i] == x: inc equal\n  \
+    \              assert wm.range_lowerbound(l,r,x) == less\n                assert\
+    \ wm.range_upperbound(l,r,x) == lessEqual\n                assert wm.count(l,r,x)\
+    \ == equal\n                if withSum:\n                    assert wm.sum_lowerbound(l,r,x)\
+    \ == sumLess\n                    assert wm.sum_lowerbound_with_count(l,r,x) ==\
+    \ (sum:sumLess,count:less)\n                    assert wm.sum_upperbound(l,r,x)\
+    \ == sumLessEqual\n                    assert wm.sum_upperbound_with_count(l,r,x)\
+    \ == (sum:sumLessEqual,count:lessEqual)\n            checkRange(a,wm,0,n,withSum)\n"
   dependsOn:
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 23:35:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/waveletmatrix_test.nim

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitset_avx512.nim
     title: cplib/collections/bitset_avx512.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/bitset_avx512.nim
     title: cplib/collections/bitset_avx512.nim
   - icon: ':warning:'
@@ -14,10 +14,22 @@ data:
   - icon: ':warning:'
     path: cplib/collections/staticbitset_avx512.nim
     title: cplib/collections/staticbitset_avx512.nim
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_test.nim
+    title: verify/AI/bitset_avx512_fuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_test.nim
+    title: verify/AI/bitset_avx512_fuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_prev_set_bit_test.nim
+    title: verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_prev_set_bit_test.nim
+    title: verify/AI/bitset_avx512_prev_set_bit_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -772,8 +784,12 @@ data:
   - cplib/collections/staticbitset_avx512.nim
   - cplib/collections/staticbitset_avx512.nim
   timestamp: '2026-09-13 04:30:30+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
 documentation_of: cplib/collections/private/bitset_avx512_impl.nim
 layout: document
 redirect_from:

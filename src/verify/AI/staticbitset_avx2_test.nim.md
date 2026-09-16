@@ -8,6 +8,12 @@ data:
     path: cplib/collections/private/bitset_avx2_impl.nim
     title: cplib/collections/private/bitset_avx2_impl.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_search_impl.nim
+    title: cplib/collections/private/bitset_search_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_search_impl.nim
+    title: cplib/collections/private/bitset_search_impl.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/staticbitset_avx2.nim
     title: cplib/collections/staticbitset_avx2.nim
   - icon: ':heavy_check_mark:'
@@ -111,14 +117,16 @@ data:
     \ '0'\n    assert $bits == expected\nstatic:\n    doAssert not compiles(initBitSet(-1))\n\
     \    doAssert not compiles(initBitSet(64) & initBitSet(65))\n"
   dependsOn:
-  - cplib/collections/staticbitset_avx2.nim
   - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/staticbitset_avx2.nim
   - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/staticbitset_avx2.nim
+  - cplib/collections/staticbitset_avx2.nim
+  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: true
   path: verify/AI/staticbitset_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 23:18:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/staticbitset_avx2_test.nim

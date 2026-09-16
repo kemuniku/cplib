@@ -39,9 +39,9 @@ data:
     \ = stdin.readLine.parseInt\nvar a = initMatrixMod2(n, n)\nfor i in 0..<n:\n \
     \   let s = stdin.readLine\n    for j in 0..<n: a[i, j] = s[j] == '1'\necho int(a.determinant)\n"
   dependsOn:
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/bit_matrix_ops.nim

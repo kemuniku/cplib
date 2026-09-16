@@ -35,9 +35,9 @@ data:
     \ x = ii()\n    if c == 1:\n        s.incl(x)\n    else:\n        var i = s.index(x)\n\
     \        echo(s[i] - s[i-1])\n"
   dependsOn:
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
   isVerificationFile: false
   path: verify/collections/avlset/set/ABC217_index_test_.nim

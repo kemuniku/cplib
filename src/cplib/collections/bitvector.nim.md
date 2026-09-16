@@ -51,18 +51,28 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_BITVECTOR:\n    const CPLIB_COLLECTIONS_BITVECTOR*\
-    \ = 1\n    import bitops,sequtils\n\n    type BitVector* = object\n        bits\
-    \ : seq[uint64]\n        csum : seq[int]\n\n    proc newBitVector*(length:int):BitVector=\n\
+    \ = 1\n    import bitops\n\n    # release\u3067\u3082debug\u6307\u5B9A\u6642\u306F\
+    \u5883\u754C\u30FB\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u30C1\u30A7\u30C3\
+    \u30AF\u3092\u6B8B\u3059\u3002\n    when defined(release) and not defined(debug):\n\
+    \        {.push boundChecks: off, overflowChecks: off.}\n\n    type BitVector*\
+    \ = object\n        bits : seq[uint64]\n        csum : seq[int]\n\n    proc newBitVector*(length:int):BitVector=\n\
     \        result.bits = newSeq[uint64]((length+63) div 64 + 1)\n        result.csum\
-    \ = newSeq[int](((length+63) div 64)+1)\n\n    proc set*(self:var BitVector,idx:int)=\n\
-    \        ## build\u3059\u308B\u524D\u306B\u3060\u3051\u547C\u3076\n        self.bits[idx\
-    \ div 64].setBit(idx mod 64)\n\n    proc build*(self:var BitVector)=\n       \
-    \ for i in 0..<(len(self.bits)-1):\n            self.csum[i+1] = self.csum[i]\
-    \ + popcount(self.bits[i])\n\n    proc access*(self:var BitVector,idx:int):bool=\n\
-    \        self.bits[idx div 64].testBit(idx mod 64)\n\n    proc `[]`*(self:var\
-    \ BitVector,idx:int):bool=\n        self.bits[idx div 64].testBit(idx mod 64)\n\
-    \    \n    proc rank*(self:var BitVector,idx:int):int=\n        return self.csum[idx\
-    \ div 64] + popcount(self.bits[idx div 64] and ((1u shl (idx and 63)) - 1))\n\n"
+    \ = newSeq[int](((length+63) div 64)+1)\n\n    proc set*(self:var BitVector,idx:int)\
+    \ {.inline.} =\n        ## build\u3059\u308B\u524D\u306B\u3060\u3051\u547C\u3076\
+    \n        self.bits[idx shr 6].setBit(idx and 63)\n\n    proc setWord*(self:var\
+    \ BitVector,idx:int,value:uint64) {.inline.} =\n        ## idx\u756A\u76EE\u306E\
+    64bit\u30EF\u30FC\u30C9\u3092 O(1) \u3067\u4E0A\u66F8\u304D\u3059\u308B\u3002\u9577\
+    \u3055\u5916\u306E\u30D3\u30C3\u30C8\u306F0\u306B\u3057\u3001\u8A2D\u5B9A\u5F8C\
+    \u306Bbuild\u3059\u308B\u3002\n        self.bits[idx] = value\n\n    proc build*(self:var\
+    \ BitVector)=\n        for i in 0..<(len(self.bits)-1):\n            self.csum[i+1]\
+    \ = self.csum[i] + popcount(self.bits[i])\n\n    proc access*(self:var BitVector,idx:int):bool=\n\
+    \        self.bits[idx shr 6].testBit(idx and 63)\n\n    proc `[]`*(self:var BitVector,idx:int):bool=\n\
+    \        self.bits[idx shr 6].testBit(idx and 63)\n    \n    proc rank*(self:var\
+    \ BitVector,idx:int):int {.inline.} =\n        ## [0,idx) \u306E1\u306E\u500B\u6570\
+    \u3092 O(1) \u3067\u8FD4\u3059\u3002build\u5F8C\u306B\u547C\u3076\u3002\n    \
+    \    let block_index = idx shr 6\n        return self.csum[block_index] + popcount(self.bits[block_index]\
+    \ and ((1'u64 shl (idx and 63)) - 1))\n\n    when defined(release) and not defined(debug):\n\
+    \        {.pop.}\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/bitvector.nim
@@ -71,7 +81,7 @@ data:
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/waveletmatrix_fenwick.nim
-  timestamp: '2026-05-01 08:04:33+09:00'
+  timestamp: '2026-09-14 23:35:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/waveletmatrix_test.nim

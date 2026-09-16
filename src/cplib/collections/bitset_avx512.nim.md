@@ -1,17 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse.nim
+    title: cplib/collections/private/bitset_avx512_fuse.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse.nim
+    title: cplib/collections/private/bitset_avx512_fuse.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_shift.nim
+    title: cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_shift.nim
+    title: cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_avx512_impl.nim
     title: cplib/collections/private/bitset_avx512_impl.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_avx512_impl.nim
     title: cplib/collections/private/bitset_avx512_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_search_impl.nim
+    title: cplib/collections/private/bitset_search_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_search_impl.nim
+    title: cplib/collections/private/bitset_search_impl.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_test.nim
+    title: verify/AI/bitset_avx512_fuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_test.nim
+    title: verify/AI/bitset_avx512_fuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_prev_set_bit_test.nim
+    title: verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_prev_set_bit_test.nim
+    title: verify/AI/bitset_avx512_prev_set_bit_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -28,75 +58,81 @@ data:
     \u5FDC\u74B0\u5883\u3067\u306F\u5BFE\u5FDC\u3059\u308B\u6F14\u7B97\u3092\u81EA\
     \u52D5\u3067\u5207\u308A\u66FF\u3048\u307E\u3059\u3002\u500B\u6570\u8A08\u7B97\
     \u306B\u306FVPOPCNTDQ\u304C\u5FC5\u8981\u3067\u3059\u3002\n## import cplib/collections/bitset_avx512\
-    \ \u3068\u3057\u3001initBitSet\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n## -d:release\u3067\
-    \u306E\u30B3\u30F3\u30D1\u30A4\u30EB\u3092\u63A8\u5968\u3057\u307E\u3059\u3002\
-    -mavx2\u306E\u6307\u5B9A\u306F\u4E0D\u8981\u3067\u3059\u3002\n## \u547D\u4EE4\u6570\
-    \u306FAVX-512\u7D4C\u8DEF\u306E\u4E3B\u30EB\u30FC\u30D7\u306E\u6F14\u7B97\u90E8\
-    \u5206\u306E\u76EE\u5B89\u3067\u3001\u95A2\u6570\u5168\u4F53\u306E\u547D\u4EE4\
-    \u6570\u3084\u30B5\u30A4\u30AF\u30EB\u6570\u3067\u306F\u3042\u308A\u307E\u305B\
-    \u3093\u3002\n## \u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\u3001\u30A2\u30C9\u30EC\
-    \u30B9\u8A08\u7B97\u3001\u30EB\u30FC\u30D7\u5236\u5FA1\u3001CPU\u5224\u5B9A\u3001\
-    \u30C1\u30A7\u30C3\u30AF\u3001\u9818\u57DF\u78BA\u4FDD\u30FB\u521D\u671F\u5316\
-    \u3001\u5B9A\u6570\u6E96\u5099\u3001\u7AEF\u6570\u51E6\u7406\u306F\u542B\u3081\
-    \u307E\u305B\u3093\u3002\n## \u30B3\u30F3\u30D1\u30A4\u30E9\u306B\u3088\u308B\u547D\
-    \u4EE4\u306E\u878D\u5408\u30FB\u5C55\u958B\u3067\u5909\u308F\u308A\u307E\u3059\
-    \u3002AVX2\u3078\u306E\u5207\u308A\u66FF\u3048\u6642\u306B\u306F\u5F53\u3066\u306F\
-    \u307E\u308A\u307E\u305B\u3093\u3002\nwhen not declared CPLIB_COLLECTIONS_BITSET_AVX512:\n\
-    \    const CPLIB_COLLECTIONS_BITSET_AVX512* = 1\n    when not (defined(amd64)\
-    \ and (defined(gcc) or defined(clang))):\n        {.error: \"BitSetAvx512 requires\
-    \ amd64 and GCC/Clang\".}\n    import bitops\n\n    type BitSetAvx512* {.byref.}\
-    \ = object\n        bits: seq[uint64]\n        size: int\n\n    include cplib/collections/private/bitset_avx512_impl\n\
-    \n    proc initBitSet*(N: int): BitSetAvx512 =\n        ## N\u30D3\u30C3\u30C8\
-    \u306E\u7A7A\u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        when\
-    \ compileOption(\"boundChecks\"):\n            if N < 0:\n                raise\
-    \ newException(ValueError, \"BitSet size must be non-negative\")\n        result.size\
-    \ = N\n        result.bits = newSeq[uint64]((N shr 6) + ord((N and 63) != 0))\n\
-    \n    proc initBitSet*(v: openArray[bool], N: int): BitSetAvx512 =\n        ##\
-    \ \u771F\u507D\u5024\u914D\u5217\u304B\u3089N\u30D3\u30C3\u30C8\u306E\u96C6\u5408\
-    \u3092\u69CB\u7BC9\u3057\u3001\u6B8B\u308A\u30920\u3067\u57CB\u3081\u307E\u3059\
-    \u3002\n        when compileOption(\"boundChecks\"):\n            if v.len > N:\n\
-    \                raise newException(ValueError, \"initial value is longer than\
-    \ BitSet size\")\n        result = initBitSet(N)\n        for i in 0..<v.len:\n\
-    \            if v[i]:\n                result.bits[i shr 6] = result.bits[i shr\
-    \ 6] or (1'u64 shl (i and 63))\n\n    proc initBitSet*(v: openArray[bool]): BitSetAvx512\
-    \ =\n        ## \u771F\u507D\u5024\u914D\u5217\u3068\u540C\u3058\u9577\u3055\u306E\
-    \u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        initBitSet(v,\
-    \ v.len)\n\n    proc initBitSetFromString*(s: string, match: char, N: int): BitSetAvx512\
-    \ =\n        ## s[i] == match\u306E\u4F4D\u7F6E\u30921\u306B\u3057\u307E\u3059\
-    \u3002\u6DFB\u5B57\u306F\u30D0\u30A4\u30C8\u5358\u4F4D\u3067\u3001\u6B8B\u308A\
-    \u306F0\u3067\u3059\u3002O(s.len + N / 64)\u3002\n        ## UTF-8\u306E\u6587\
-    \u5B57\u5358\u4F4D\u306E\u6BD4\u8F03\u3084\u90E8\u5206\u6587\u5B57\u5217\u691C\
-    \u7D22\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002NUL\u3092\u542B\u3080\u6587\
-    \u5B57\u5217\u3082\u6BD4\u8F03\u3067\u304D\u307E\u3059\u3002\n        ## AVX2\u7D4C\
-    \u8DEF\u306E\u76EE\u5B89: 32\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0B\
-    MOVMSK\u306E2\u547D\u4EE4\u3002\u683C\u7D0D\u7528\u306E\u7D50\u5408\u3068\u30BC\
-    \u30ED\u57CB\u3081\u306F\u5225\u3067\u3059\u3002\n        ## AVX-512BW\u7D4C\u8DEF\
-    \u306E\u76EE\u5B89: 64\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0B\u30DE\
-    \u30B9\u30AF\u8EE2\u9001\u306E2\u547D\u4EE4\u3002\n        when compileOption(\"\
-    boundChecks\"):\n            if s.len > N:\n                raise newException(ValueError,\
-    \ \"source string is longer than BitSet size\")\n        result = initBitSet(N)\n\
-    \        if result.bits.len > 0:\n            let source = if s.len == 0: nil\
-    \ else: cast[pointer](unsafeAddr s[0])\n            avxFromStringChar(addr result.bits[0],\
-    \ source, nil, ord(match).uint8, s.len.csize_t, result.bits.len.csize_t)\n\n \
-    \   proc initBitSetFromString*(s: string, match: char): BitSetAvx512 =\n     \
-    \   ## \u6587\u5B57\u5217\u306E\u30D0\u30A4\u30C8\u6570\u3068\u540C\u3058\u9577\
-    \u3055\u306E\u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002O(s.len)\u3002\
-    \n        initBitSetFromString(s, match, s.len)\n\n    proc initBitSetFromString*(s,\
-    \ reference: string, N: int): BitSetAvx512 =\n        ## \u540C\u3058\u9577\u3055\
-    \u306E\u6587\u5B57\u5217\u3092\u4F4D\u7F6E\u3054\u3068\u306B\u6BD4\u8F03\u3057\
-    \u3001s[i] == reference[i]\u306E\u4F4D\u7F6E\u30921\u306B\u3057\u307E\u3059\u3002\
-    \u6DFB\u5B57\u306F\u30D0\u30A4\u30C8\u5358\u4F4D\u3067\u3001\u6B8B\u308A\u306F\
-    0\u3067\u3059\u3002O(s.len + N / 64)\u3002\n        ## UTF-8\u306E\u6587\u5B57\
-    \u5358\u4F4D\u306E\u6BD4\u8F03\u3084\u90E8\u5206\u6587\u5B57\u5217\u691C\u7D22\
-    \u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002NUL\u3092\u542B\u3080\u6587\u5B57\
-    \u5217\u3082\u6BD4\u8F03\u3067\u304D\u307E\u3059\u3002\n        ## AVX2\u7D4C\u8DEF\
-    \u306E\u76EE\u5B89: 32\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0BMOVMSK\u306E\
-    2\u547D\u4EE4\u3002\u683C\u7D0D\u7528\u306E\u7D50\u5408\u3068\u30BC\u30ED\u57CB\
-    \u3081\u306F\u5225\u3067\u3059\u3002\n        ## AVX-512BW\u7D4C\u8DEF\u306E\u76EE\
-    \u5B89: 64\u30D0\u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0B\u30DE\u30B9\u30AF\
-    \u8EE2\u9001\u306E2\u547D\u4EE4\u3002\n        when compileOption(\"boundChecks\"\
-    ):\n            if s.len > N:\n                raise newException(ValueError,\
-    \ \"source string is longer than BitSet size\")\n            if s.len != reference.len:\n\
+    \ \u3068\u3057\u3001initBitSet\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n## fuse:\
+    \ \u5185\u3067\u306F x = x or (y and z) \u306E\u3088\u3046\u306B\u66F8\u304F\u3068\
+    \u8AD6\u7406\u5F0F\u3092\u4E00\u6642\u96C6\u5408\u306A\u3057\u3067\u8A08\u7B97\
+    \u3057\u307E\u3059\u3002\n## x = x or (x shl k) \u3068 x = x or (x shr k) \u3082\
+    \u4E00\u6642\u96C6\u5408\u306A\u3057\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\
+    \n## -d:release\u3067\u306E\u30B3\u30F3\u30D1\u30A4\u30EB\u3092\u63A8\u5968\u3057\
+    \u307E\u3059\u3002-mavx2\u306E\u6307\u5B9A\u306F\u4E0D\u8981\u3067\u3059\u3002\
+    \n## \u547D\u4EE4\u6570\u306FAVX-512\u7D4C\u8DEF\u306E\u4E3B\u30EB\u30FC\u30D7\
+    \u306E\u6F14\u7B97\u90E8\u5206\u306E\u76EE\u5B89\u3067\u3001\u95A2\u6570\u5168\
+    \u4F53\u306E\u547D\u4EE4\u6570\u3084\u30B5\u30A4\u30AF\u30EB\u6570\u3067\u306F\
+    \u3042\u308A\u307E\u305B\u3093\u3002\n## \u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\
+    \u3001\u30A2\u30C9\u30EC\u30B9\u8A08\u7B97\u3001\u30EB\u30FC\u30D7\u5236\u5FA1\
+    \u3001CPU\u5224\u5B9A\u3001\u30C1\u30A7\u30C3\u30AF\u3001\u9818\u57DF\u78BA\u4FDD\
+    \u30FB\u521D\u671F\u5316\u3001\u5B9A\u6570\u6E96\u5099\u3001\u7AEF\u6570\u51E6\
+    \u7406\u306F\u542B\u3081\u307E\u305B\u3093\u3002\n## \u30B3\u30F3\u30D1\u30A4\u30E9\
+    \u306B\u3088\u308B\u547D\u4EE4\u306E\u878D\u5408\u30FB\u5C55\u958B\u3067\u5909\
+    \u308F\u308A\u307E\u3059\u3002AVX2\u3078\u306E\u5207\u308A\u66FF\u3048\u6642\u306B\
+    \u306F\u5F53\u3066\u306F\u307E\u308A\u307E\u305B\u3093\u3002\nwhen not declared\
+    \ CPLIB_COLLECTIONS_BITSET_AVX512:\n    const CPLIB_COLLECTIONS_BITSET_AVX512*\
+    \ = 1\n    when not (defined(amd64) and (defined(gcc) or defined(clang))):\n \
+    \       {.error: \"BitSetAvx512 requires amd64 and GCC/Clang\".}\n    import bitops,\
+    \ macros, strutils\n\n    type BitSetAvx512* {.byref.} = object\n        bits:\
+    \ seq[uint64]\n        size: int\n\n    include cplib/collections/private/bitset_avx512_impl\n\
+    \    include cplib/collections/private/bitset_search_impl\n\n    proc initBitSet*(N:\
+    \ int): BitSetAvx512 =\n        ## N\u30D3\u30C3\u30C8\u306E\u7A7A\u96C6\u5408\
+    \u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        when compileOption(\"boundChecks\"\
+    ):\n            if N < 0:\n                raise newException(ValueError, \"BitSet\
+    \ size must be non-negative\")\n        result.size = N\n        result.bits =\
+    \ newSeq[uint64]((N shr 6) + ord((N and 63) != 0))\n\n    proc initBitSet*(v:\
+    \ openArray[bool], N: int): BitSetAvx512 =\n        ## \u771F\u507D\u5024\u914D\
+    \u5217\u304B\u3089N\u30D3\u30C3\u30C8\u306E\u96C6\u5408\u3092\u69CB\u7BC9\u3057\
+    \u3001\u6B8B\u308A\u30920\u3067\u57CB\u3081\u307E\u3059\u3002\n        when compileOption(\"\
+    boundChecks\"):\n            if v.len > N:\n                raise newException(ValueError,\
+    \ \"initial value is longer than BitSet size\")\n        result = initBitSet(N)\n\
+    \        for i in 0..<v.len:\n            if v[i]:\n                result.bits[i\
+    \ shr 6] = result.bits[i shr 6] or (1'u64 shl (i and 63))\n\n    proc initBitSet*(v:\
+    \ openArray[bool]): BitSetAvx512 =\n        ## \u771F\u507D\u5024\u914D\u5217\u3068\
+    \u540C\u3058\u9577\u3055\u306E\u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\
+    \u3002\n        initBitSet(v, v.len)\n\n    proc initBitSetFromString*(s: string,\
+    \ match: char, N: int): BitSetAvx512 =\n        ## s[i] == match\u306E\u4F4D\u7F6E\
+    \u30921\u306B\u3057\u307E\u3059\u3002\u6DFB\u5B57\u306F\u30D0\u30A4\u30C8\u5358\
+    \u4F4D\u3067\u3001\u6B8B\u308A\u306F0\u3067\u3059\u3002O(s.len + N / 64)\u3002\
+    \n        ## UTF-8\u306E\u6587\u5B57\u5358\u4F4D\u306E\u6BD4\u8F03\u3084\u90E8\
+    \u5206\u6587\u5B57\u5217\u691C\u7D22\u3067\u306F\u3042\u308A\u307E\u305B\u3093\
+    \u3002NUL\u3092\u542B\u3080\u6587\u5B57\u5217\u3082\u6BD4\u8F03\u3067\u304D\u307E\
+    \u3059\u3002\n        ## AVX2\u7D4C\u8DEF\u306E\u76EE\u5B89: 32\u30D0\u30A4\u30C8\
+    \u3042\u305F\u308A\u6BD4\u8F03\uFF0BMOVMSK\u306E2\u547D\u4EE4\u3002\u683C\u7D0D\
+    \u7528\u306E\u7D50\u5408\u3068\u30BC\u30ED\u57CB\u3081\u306F\u5225\u3067\u3059\
+    \u3002\n        ## AVX-512BW\u7D4C\u8DEF\u306E\u76EE\u5B89: 64\u30D0\u30A4\u30C8\
+    \u3042\u305F\u308A\u6BD4\u8F03\uFF0B\u30DE\u30B9\u30AF\u8EE2\u9001\u306E2\u547D\
+    \u4EE4\u3002\n        when compileOption(\"boundChecks\"):\n            if s.len\
+    \ > N:\n                raise newException(ValueError, \"source string is longer\
+    \ than BitSet size\")\n        result = initBitSet(N)\n        if result.bits.len\
+    \ > 0:\n            let source = if s.len == 0: nil else: cast[pointer](unsafeAddr\
+    \ s[0])\n            avxFromStringChar(addr result.bits[0], source, nil, ord(match).uint8,\
+    \ s.len.csize_t, result.bits.len.csize_t)\n\n    proc initBitSetFromString*(s:\
+    \ string, match: char): BitSetAvx512 =\n        ## \u6587\u5B57\u5217\u306E\u30D0\
+    \u30A4\u30C8\u6570\u3068\u540C\u3058\u9577\u3055\u306E\u96C6\u5408\u3092\u69CB\
+    \u7BC9\u3057\u307E\u3059\u3002O(s.len)\u3002\n        initBitSetFromString(s,\
+    \ match, s.len)\n\n    proc initBitSetFromString*(s, reference: string, N: int):\
+    \ BitSetAvx512 =\n        ## \u540C\u3058\u9577\u3055\u306E\u6587\u5B57\u5217\u3092\
+    \u4F4D\u7F6E\u3054\u3068\u306B\u6BD4\u8F03\u3057\u3001s[i] == reference[i]\u306E\
+    \u4F4D\u7F6E\u30921\u306B\u3057\u307E\u3059\u3002\u6DFB\u5B57\u306F\u30D0\u30A4\
+    \u30C8\u5358\u4F4D\u3067\u3001\u6B8B\u308A\u306F0\u3067\u3059\u3002O(s.len + N\
+    \ / 64)\u3002\n        ## UTF-8\u306E\u6587\u5B57\u5358\u4F4D\u306E\u6BD4\u8F03\
+    \u3084\u90E8\u5206\u6587\u5B57\u5217\u691C\u7D22\u3067\u306F\u3042\u308A\u307E\
+    \u305B\u3093\u3002NUL\u3092\u542B\u3080\u6587\u5B57\u5217\u3082\u6BD4\u8F03\u3067\
+    \u304D\u307E\u3059\u3002\n        ## AVX2\u7D4C\u8DEF\u306E\u76EE\u5B89: 32\u30D0\
+    \u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0BMOVMSK\u306E2\u547D\u4EE4\u3002\
+    \u683C\u7D0D\u7528\u306E\u7D50\u5408\u3068\u30BC\u30ED\u57CB\u3081\u306F\u5225\
+    \u3067\u3059\u3002\n        ## AVX-512BW\u7D4C\u8DEF\u306E\u76EE\u5B89: 64\u30D0\
+    \u30A4\u30C8\u3042\u305F\u308A\u6BD4\u8F03\uFF0B\u30DE\u30B9\u30AF\u8EE2\u9001\
+    \u306E2\u547D\u4EE4\u3002\n        when compileOption(\"boundChecks\"):\n    \
+    \        if s.len > N:\n                raise newException(ValueError, \"source\
+    \ string is longer than BitSet size\")\n            if s.len != reference.len:\n\
     \                raise newException(ValueError, \"source and reference string\
     \ lengths must match\")\n        result = initBitSet(N)\n        if result.bits.len\
     \ > 0:\n            let source = if s.len == 0: nil else: cast[pointer](unsafeAddr\
@@ -528,26 +564,40 @@ data:
     \ = true\n        if x.bits.len > 0:\n            result = avxSubset(unsafeAddr\
     \ x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t) != 0\n\n    proc nextSetBit*(x:\
     \ BitSetAvx512, start: int): int =\n        ## start\u4EE5\u4E0A\u3067\u6700\u521D\
-    \u306E1\u306E\u6DFB\u5B57\u3092\u8FD4\u3057\u3001\u306A\u3051\u308C\u3070-1\u3092\
-    \u8FD4\u3057\u307E\u3059\u30020 <= start <= len(x)\u3002\u6700\u60AAO(\u30D3\u30C3\
-    \u30C8\u6570 / 64)\u3002\n        ## SIMD\u547D\u4EE4\u306F\u4F7F\u308F\u305A\u3001\
-    64\u30D3\u30C3\u30C8\u30EF\u30FC\u30C9\u3092\u8D70\u67FB\u3057\u3066\u672B\u5C3E\
-    \u306E0\u306E\u500B\u6570\u304B\u3089\u4F4D\u7F6E\u3092\u6C42\u3081\u307E\u3059\
-    \u3002\n        when compileOption(\"boundChecks\"):\n            if start < 0\
-    \ or start > x.size:\n                raise newException(IndexDefect, \"BitSet\
-    \ index out of bounds\")\n        result = -1\n        if start < x.size:\n  \
-    \          var wordIndex = start shr 6\n            var word = x.bits[wordIndex]\
-    \ and ((not 0'u64) shl (start and 63))\n            while true:\n            \
-    \    if word != 0:\n                    return wordIndex * 64 + word.countTrailingZeroBits()\n\
-    \                inc wordIndex\n                if wordIndex >= x.bits.len: break\n\
-    \                word = x.bits[wordIndex]\n\n    proc xnorpopcount*(x, y: BitSetAvx512):\
-    \ int =\n        ## \u30D3\u30C3\u30C8\u304C\u4E00\u81F4\u3059\u308B\u4F4D\u7F6E\
-    \u306E\u500B\u6570\u3092\u3001\u4E00\u6642\u96C6\u5408\u3092\u4F5C\u3089\u305A\
-    \u306B\u8FD4\u3057\u307E\u3059\u3002O(\u30D3\u30C3\u30C8\u6570 / 64)\u3002\n \
-    \       ## xorpopcount\u3068\u540C\u3058SIMD\u51E6\u7406\u306B\u3001\u30B9\u30AB\
-    \u30E9\u30FC\u6E1B\u7B971\u547D\u4EE4\u3092\u52A0\u3048\u307E\u3059\u3002\n  \
-    \      x.size - xorpopcount(x, y)\n\n    proc setRange*(x: var BitSetAvx512, l,\
-    \ r: int) =\n        ## \u534A\u958B\u533A\u9593[l, r)\u306E\u30D3\u30C3\u30C8\
+    \u306E1\u306E\u6DFB\u5B57\u3092\u8FD4\u3057\u3001\u306A\u3051\u308C\u3070-1\u3002\
+    0 <= start <= len(x)\u3002\u6700\u60AAO(1 + \u30D3\u30C3\u30C8\u6570/64)\u3002\
+    \n        ## \u6700\u521D\u306E\u30EF\u30FC\u30C9\u3092\u8ABF\u3079\u305F\u5F8C\
+    \u3001\u30BC\u30ED\u533A\u9593\u3092SIMD\u3067\u307E\u3068\u3081\u3066\u98DB\u3070\
+    \u3057\u307E\u3059\u3002\n        when compileOption(\"boundChecks\"):\n     \
+    \       if start < 0 or start > x.size:\n                raise newException(IndexDefect,\
+    \ \"BitSet index out of bounds\")\n        result = -1\n        if x.size > 0:\n\
+    \            if start < x.size:\n                let i = start shr 6\n       \
+    \         let word = x.bits[i] and ((not 0'u64) shl (start and 63))\n        \
+    \        if word != 0:\n                    return i * 64 + word.countTrailingZeroBits()\n\
+    \                let j = searchNextWordAvx512(unsafeAddr x.bits[0], (i+1).csize_t,\
+    \ x.bits.len.csize_t).int\n                if j < x.bits.len:\n              \
+    \      return j * 64 + x.bits[j].countTrailingZeroBits()\n\n    proc prevSetBit*(x:\
+    \ BitSetAvx512, start: int): int =\n        ## start\u4EE5\u4E0B\u3067\u6700\u5F8C\
+    \u306E1\u306E\u6DFB\u5B57\u3092\u8FD4\u3057\u3001\u306A\u3051\u308C\u3070-1\u3002\
+    -1 <= start < len(x)\u3002\u6700\u60AAO(1 + \u30D3\u30C3\u30C8\u6570/64)\u3002\
+    \n        ## start == -1\u306A\u3089-1\u3002\u6700\u521D\u306E\u30EF\u30FC\u30C9\
+    \u3092\u8ABF\u3079\u305F\u5F8C\u3001\u30BC\u30ED\u533A\u9593\u3092SIMD\u3067\u9006\
+    \u9806\u306B\u98DB\u3070\u3057\u307E\u3059\u3002\n        when compileOption(\"\
+    boundChecks\"):\n            if start < -1 or start >= x.size:\n             \
+    \   raise newException(IndexDefect, \"BitSet index out of bounds\")\n        result\
+    \ = -1\n        if x.size > 0:\n            if start >= 0:\n                let\
+    \ i = start shr 6\n                let word = x.bits[i] and ((not 0'u64) shr (63\
+    \ - (start and 63)))\n                if word != 0:\n                    return\
+    \ i * 64 + 63 - word.countLeadingZeroBits()\n                let j = searchPrevWordAvx512(unsafeAddr\
+    \ x.bits[0], 0, i.csize_t).int\n                if j < i:\n                  \
+    \  return j * 64 + 63 - x.bits[j].countLeadingZeroBits()\n\n    proc xnorpopcount*(x,\
+    \ y: BitSetAvx512): int =\n        ## \u30D3\u30C3\u30C8\u304C\u4E00\u81F4\u3059\
+    \u308B\u4F4D\u7F6E\u306E\u500B\u6570\u3092\u3001\u4E00\u6642\u96C6\u5408\u3092\
+    \u4F5C\u3089\u305A\u306B\u8FD4\u3057\u307E\u3059\u3002O(\u30D3\u30C3\u30C8\u6570\
+    \ / 64)\u3002\n        ## xorpopcount\u3068\u540C\u3058SIMD\u51E6\u7406\u306B\u3001\
+    \u30B9\u30AB\u30E9\u30FC\u6E1B\u7B971\u547D\u4EE4\u3092\u52A0\u3048\u307E\u3059\
+    \u3002\n        x.size - xorpopcount(x, y)\n\n    proc setRange*(x: var BitSetAvx512,\
+    \ l, r: int) =\n        ## \u534A\u958B\u533A\u9593[l, r)\u306E\u30D3\u30C3\u30C8\
     \u30921\u306B\u66F4\u65B0\u3057\u307E\u3059\u3002\u7BC4\u56F2\u5916\u306F\u7DAD\
     \u6301\u3057\u307E\u3059\u3002O(1 + (r-l) / 64)\u3002\n        ## \u4E2D\u592E\
     \u306E\u5B8C\u5168\u306A\u30D6\u30ED\u30C3\u30AF\u306F\u5168\u30D3\u30C3\u30C8\
@@ -584,93 +634,109 @@ data:
     \ flipAll*(x: var BitSetAvx512) =\n        ## \u6709\u52B9\u306A\u5168\u30D3\u30C3\
     \u30C8\u3092\u53CD\u8EE2\u3057\u307E\u3059\u3002O(\u30D3\u30C3\u30C8\u6570 / 64)\u3002\
     \n        x.flipRange(0, x.size)\n\n    iterator items*(bitset: BitSetAvx512):\
-    \ int =\n        ## \u7ACB\u3063\u3066\u3044\u308B\u30D3\u30C3\u30C8\u306E\u6DFB\
-    \u5B57\u3092\u6607\u9806\u306B\u5217\u6319\u3057\u307E\u3059\u3002\n        for\
-    \ wordIndex in 0..<bitset.bits.len:\n            var word = bitset.bits[wordIndex]\n\
-    \            while word != 0:\n                yield wordIndex * 64 + word.countTrailingZeroBits()\n\
-    \                word = word and (word - 1)\n\n    proc lowestBit*(bitset: BitSetAvx512):\
-    \ int =\n        ## \u6700\u5C0F\u306E\u8981\u7D20\u3092\u8FD4\u3057\u3001\u7A7A\
-    \u96C6\u5408\u306A\u3089-1\u3092\u8FD4\u3057\u307E\u3059\u3002\n        for wordIndex\
-    \ in 0..<bitset.bits.len:\n            if bitset.bits[wordIndex] != 0:\n     \
-    \           return wordIndex * 64 + bitset.bits[wordIndex].countTrailingZeroBits()\n\
-    \        -1\n\n    proc `[]`*(bitset: BitSetAvx512, idx: Natural): bool =\n  \
-    \      ## \u6307\u5B9A\u3057\u305F\u6DFB\u5B57\u306E\u30D3\u30C3\u30C8\u304C\u7ACB\
-    \u3063\u3066\u3044\u308B\u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\n        ##\
-    \ AVX-512\u547D\u4EE4\u306F\u4F7F\u3044\u307E\u305B\u3093\u30021\u30EF\u30FC\u30C9\
-    \u3092\u30B9\u30AB\u30E9\u30FC\u547D\u4EE4\u3067\u8AAD\u307F\u51FA\u3057\u3066\
-    \u30D3\u30C3\u30C8\u3092\u5224\u5B9A\u3057\u307E\u3059\u3002\n        when compileOption(\"\
-    boundChecks\"):\n            bitset.checkIndex(idx)\n        bitset.bits[idx shr\
-    \ 6].testBit(idx and 63)\n\n    proc flip*(bitset: var BitSetAvx512, idx: Natural)\
-    \ {.inline.} =\n        ## \u6307\u5B9A\u3057\u305F\u6DFB\u5B57\u306E\u30D3\u30C3\
-    \u30C8\u3092\u53CD\u8EE2\u3057\u307E\u3059\u3002O(1)\u3002\n        ## AVX-512\u547D\
-    \u4EE4\u306F\u4F7F\u3044\u307E\u305B\u3093\u30021\u30EF\u30FC\u30C9\u3092\u30B9\
-    \u30AB\u30E9\u30FC\u547D\u4EE4\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\n   \
-    \     when compileOption(\"boundChecks\"):\n            bitset.checkIndex(idx)\n\
-    \        bitset.bits[idx shr 6] = bitset.bits[idx shr 6] xor (1'u64 shl (idx and\
-    \ 63))\n\n    proc `[]=`*(bitset: var BitSetAvx512, idx: Natural, x: bool) =\n\
-    \        ## \u6307\u5B9A\u3057\u305F\u6DFB\u5B57\u306E\u30D3\u30C3\u30C8\u3092\
-    \u771F\u507D\u5024\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\n        ## AVX-512\u547D\
-    \u4EE4\u306F\u4F7F\u3044\u307E\u305B\u3093\u30021\u30EF\u30FC\u30C9\u3092\u30B9\
-    \u30AB\u30E9\u30FC\u547D\u4EE4\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\n   \
-    \     when compileOption(\"boundChecks\"):\n            bitset.checkIndex(idx)\n\
-    \        if x:\n            bitset.bits[idx shr 6].setBit(idx and 63)\n      \
-    \  else:\n            bitset.bits[idx shr 6].clearBit(idx and 63)\n\n    proc\
-    \ `[]=`*(bitset: var BitSetAvx512, idx: Natural, x: int) =\n        ## 0\u306A\
-    \u3089\u30D3\u30C3\u30C8\u3092\u843D\u3068\u3057\u30011\u306A\u3089\u7ACB\u3066\
-    \u307E\u3059\u3002\u305D\u308C\u4EE5\u5916\u306F\u4F55\u3082\u3057\u307E\u305B\
-    \u3093\u3002\n        ## AVX-512\u547D\u4EE4\u306F\u4F7F\u3044\u307E\u305B\u3093\
-    \u30021\u30EF\u30FC\u30C9\u3092\u30B9\u30AB\u30E9\u30FC\u547D\u4EE4\u3067\u66F4\
-    \u65B0\u3057\u307E\u3059\u3002\n        if x == 1:\n            bitset[idx] =\
-    \ true\n        elif x == 0:\n            bitset[idx] = false\n\n    proc `$`*(bitset:\
-    \ BitSetAvx512): string =\n        ## \u6DFB\u5B57\u306E\u5927\u304D\u3044\u9806\
-    \u306B\u30D3\u30C3\u30C8\u3092\u4E26\u3079\u305F\u6587\u5B57\u5217\u3092\u8FD4\
-    \u3057\u307E\u3059\u3002\n        result = newString(bitset.size)\n        for\
-    \ i in 0..<bitset.size:\n            result[bitset.size - i - 1] = if bitset[i]:\
-    \ '1' else: '0'\n\n    proc cmp*(x, y: BitSetAvx512): int =\n        ## \u540C\
-    \u3058\u9577\u3055\u306E\u30D3\u30C3\u30C8\u5217\u3092\u6DFB\u5B570\u304B\u3089\
-    false < true\u3067\u6BD4\u8F03\u3057\u3001-1\u30FB0\u30FB1\u3092\u8FD4\u3057\u307E\
-    \u3059\u3002\n        ## \u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\
-    \u30EAO(1)\u3002\u6700\u521D\u306E\u76F8\u9055\u3067\u7D42\u4E86\u3057\u307E\u3059\
-    \u3002\n        checkSameSize(x, y)\n        ## 512\u30D3\u30C3\u30C8\u305A\u3064\
-    \u6BD4\u8F03\u3057\u307E\u3059\u3002AVX512F\u975E\u5BFE\u5FDC\u6642\u306FAVX2\u3092\
-    \u4F7F\u3044\u307E\u3059\u3002\n        if x.bits.len > 0:\n            result\
-    \ = avxCmp(unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t).int\n\
-    \n    proc lexLess*(x, y: BitSetAvx512): bool {.inline.} =\n        ## \u6DFB\u5B57\
-    0\u304B\u3089false < true\u306E\u8F9E\u66F8\u9806\u3067\u5C0F\u3055\u3044\u304B\
-    \u3092\u8FD4\u3057\u307E\u3059\u3002\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\
-    \u30E1\u30E2\u30EAO(1)\u3002\n        cmp(x, y) < 0\n\n    proc `<`*(x, y: BitSetAvx512):\
-    \ bool {.inline.} =\n        ## \u6DFB\u5B570\u304B\u3089false < true\u306E\u8F9E\
-    \u66F8\u9806\u3067\u5C0F\u3055\u3044\u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\
-    \u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\n    \
-    \    cmp(x, y) < 0\n\n    proc `<=`*(x, y: BitSetAvx512): bool {.inline.} =\n\
-    \        ## \u6DFB\u5B570\u304B\u3089false < true\u306E\u8F9E\u66F8\u9806\u3067\
-    \u4EE5\u4E0B\u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\u6642\u9593O(1 + N / 64)\u3001\
-    \u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\n        cmp(x, y) <= 0\n\n    proc all*(x:\
-    \ BitSetAvx512): bool =\n        ## \u6709\u52B9\u306A\u5168\u30D3\u30C3\u30C8\
-    \u304C1\u304B\u3092\u8FD4\u3057\u307E\u3059\u30020\u3092\u898B\u3064\u3051\u305F\
-    \u3089\u7D42\u4E86\u3057\u3001\u9577\u30550\u3067\u306Ftrue\u3092\u8FD4\u3057\u307E\
+    \ int =\n        ## \u7ACB\u3063\u3066\u3044\u308B\u30D3\u30C3\u30C8\u3092\u6607\
+    \u9806\u306B\u5217\u6319\u3057\u307E\u3059\u3002\u30BC\u30ED\u533A\u9593\u306F\
+    SIMD\u3067\u63A2\u7D22\u3057\u307E\u3059\u3002O(\u30EF\u30FC\u30C9\u6570 + \u8981\
+    \u7D20\u6570)\u3002\n        if bitset.bits.len > 0:\n            var wordIndex\
+    \ = 0\n            while wordIndex < bitset.bits.len:\n                var word\
+    \ = bitset.bits[wordIndex]\n                if word == 0:\n                  \
+    \  wordIndex = searchNextWordAvx512(unsafeAddr bitset.bits[0], (wordIndex+1).csize_t,\
+    \ bitset.bits.len.csize_t).int\n                    if wordIndex >= bitset.bits.len:\
+    \ break\n                    word = bitset.bits[wordIndex]\n                while\
+    \ word != 0:\n                    yield wordIndex * 64 + word.countTrailingZeroBits()\n\
+    \                    word = word and (word - 1)\n                inc wordIndex\n\
+    \n    proc lowestBit*(bitset: BitSetAvx512): int =\n        ## \u6700\u5C0F\u306E\
+    \u8981\u7D20\u3092\u8FD4\u3057\u3001\u7A7A\u96C6\u5408\u306A\u3089-1\u3002\u6700\
+    \u60AAO(1 + \u30D3\u30C3\u30C8\u6570/64)\u3002\u30BC\u30ED\u533A\u9593\u306FSIMD\u3067\
+    \u63A2\u7D22\u3057\u307E\u3059\u3002\n        bitset.nextSetBit(0)\n\n    proc\
+    \ `[]`*(bitset: BitSetAvx512, idx: Natural): bool =\n        ## \u6307\u5B9A\u3057\
+    \u305F\u6DFB\u5B57\u306E\u30D3\u30C3\u30C8\u304C\u7ACB\u3063\u3066\u3044\u308B\
+    \u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\n        ## AVX-512\u547D\u4EE4\u306F\
+    \u4F7F\u3044\u307E\u305B\u3093\u30021\u30EF\u30FC\u30C9\u3092\u30B9\u30AB\u30E9\
+    \u30FC\u547D\u4EE4\u3067\u8AAD\u307F\u51FA\u3057\u3066\u30D3\u30C3\u30C8\u3092\
+    \u5224\u5B9A\u3057\u307E\u3059\u3002\n        when compileOption(\"boundChecks\"\
+    ):\n            bitset.checkIndex(idx)\n        bitset.bits[idx shr 6].testBit(idx\
+    \ and 63)\n\n    proc flip*(bitset: var BitSetAvx512, idx: Natural) {.inline.}\
+    \ =\n        ## \u6307\u5B9A\u3057\u305F\u6DFB\u5B57\u306E\u30D3\u30C3\u30C8\u3092\
+    \u53CD\u8EE2\u3057\u307E\u3059\u3002O(1)\u3002\n        ## AVX-512\u547D\u4EE4\
+    \u306F\u4F7F\u3044\u307E\u305B\u3093\u30021\u30EF\u30FC\u30C9\u3092\u30B9\u30AB\
+    \u30E9\u30FC\u547D\u4EE4\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\n        when\
+    \ compileOption(\"boundChecks\"):\n            bitset.checkIndex(idx)\n      \
+    \  bitset.bits[idx shr 6] = bitset.bits[idx shr 6] xor (1'u64 shl (idx and 63))\n\
+    \n    proc `[]=`*(bitset: var BitSetAvx512, idx: Natural, x: bool) =\n       \
+    \ ## \u6307\u5B9A\u3057\u305F\u6DFB\u5B57\u306E\u30D3\u30C3\u30C8\u3092\u771F\u507D\
+    \u5024\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\n        ## AVX-512\u547D\u4EE4\
+    \u306F\u4F7F\u3044\u307E\u305B\u3093\u30021\u30EF\u30FC\u30C9\u3092\u30B9\u30AB\
+    \u30E9\u30FC\u547D\u4EE4\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\n        when\
+    \ compileOption(\"boundChecks\"):\n            bitset.checkIndex(idx)\n      \
+    \  if x:\n            bitset.bits[idx shr 6].setBit(idx and 63)\n        else:\n\
+    \            bitset.bits[idx shr 6].clearBit(idx and 63)\n\n    proc `[]=`*(bitset:\
+    \ var BitSetAvx512, idx: Natural, x: int) =\n        ## 0\u306A\u3089\u30D3\u30C3\
+    \u30C8\u3092\u843D\u3068\u3057\u30011\u306A\u3089\u7ACB\u3066\u307E\u3059\u3002\
+    \u305D\u308C\u4EE5\u5916\u306F\u4F55\u3082\u3057\u307E\u305B\u3093\u3002\n   \
+    \     ## AVX-512\u547D\u4EE4\u306F\u4F7F\u3044\u307E\u305B\u3093\u30021\u30EF\u30FC\
+    \u30C9\u3092\u30B9\u30AB\u30E9\u30FC\u547D\u4EE4\u3067\u66F4\u65B0\u3057\u307E\
+    \u3059\u3002\n        if x == 1:\n            bitset[idx] = true\n        elif\
+    \ x == 0:\n            bitset[idx] = false\n\n    proc `$`*(bitset: BitSetAvx512):\
+    \ string =\n        ## \u6DFB\u5B57\u306E\u5927\u304D\u3044\u9806\u306B\u30D3\u30C3\
+    \u30C8\u3092\u4E26\u3079\u305F\u6587\u5B57\u5217\u3092\u8FD4\u3057\u307E\u3059\
+    \u3002\n        result = newString(bitset.size)\n        for i in 0..<bitset.size:\n\
+    \            result[bitset.size - i - 1] = if bitset[i]: '1' else: '0'\n\n   \
+    \ proc cmp*(x, y: BitSetAvx512): int =\n        ## \u540C\u3058\u9577\u3055\u306E\
+    \u30D3\u30C3\u30C8\u5217\u3092\u6DFB\u5B570\u304B\u3089false < true\u3067\u6BD4\
+    \u8F03\u3057\u3001-1\u30FB0\u30FB1\u3092\u8FD4\u3057\u307E\u3059\u3002\n     \
+    \   ## \u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\
+    \u6700\u521D\u306E\u76F8\u9055\u3067\u7D42\u4E86\u3057\u307E\u3059\u3002\n   \
+    \     checkSameSize(x, y)\n        ## 512\u30D3\u30C3\u30C8\u305A\u3064\u6BD4\u8F03\
+    \u3057\u307E\u3059\u3002AVX512F\u975E\u5BFE\u5FDC\u6642\u306FAVX2\u3092\u4F7F\u3044\
+    \u307E\u3059\u3002\n        if x.bits.len > 0:\n            result = avxCmp(unsafeAddr\
+    \ x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t).int\n\n    proc lexLess*(x,\
+    \ y: BitSetAvx512): bool {.inline.} =\n        ## \u6DFB\u5B570\u304B\u3089false\
+    \ < true\u306E\u8F9E\u66F8\u9806\u3067\u5C0F\u3055\u3044\u304B\u3092\u8FD4\u3057\
+    \u307E\u3059\u3002\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EA\
+    O(1)\u3002\n        cmp(x, y) < 0\n\n    proc `<`*(x, y: BitSetAvx512): bool {.inline.}\
+    \ =\n        ## \u6DFB\u5B570\u304B\u3089false < true\u306E\u8F9E\u66F8\u9806\u3067\
+    \u5C0F\u3055\u3044\u304B\u3092\u8FD4\u3057\u307E\u3059\u3002\u6642\u9593O(1 +\
+    \ N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\n        cmp(x, y) < 0\n\
+    \n    proc `<=`*(x, y: BitSetAvx512): bool {.inline.} =\n        ## \u6DFB\u5B57\
+    0\u304B\u3089false < true\u306E\u8F9E\u66F8\u9806\u3067\u4EE5\u4E0B\u304B\u3092\
+    \u8FD4\u3057\u307E\u3059\u3002\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\
+    \u30E2\u30EAO(1)\u3002\n        cmp(x, y) <= 0\n\n    proc all*(x: BitSetAvx512):\
+    \ bool =\n        ## \u6709\u52B9\u306A\u5168\u30D3\u30C3\u30C8\u304C1\u304B\u3092\
+    \u8FD4\u3057\u307E\u3059\u30020\u3092\u898B\u3064\u3051\u305F\u3089\u7D42\u4E86\
+    \u3057\u3001\u9577\u30550\u3067\u306Ftrue\u3092\u8FD4\u3057\u307E\u3059\u3002\n\
+    \        ## \u6700\u60AA\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\
+    \u30EAO(1)\u3002\n        ## 512\u30D3\u30C3\u30C8\u305A\u3064\u5224\u5B9A\u3057\
+    \u3001AVX512F\u975E\u5BFE\u5FDC\u6642\u306FAVX2\u3092\u4F7F\u3044\u307E\u3059\u3002\
+    \n        if x.size > 0:\n            result = avxAll(unsafeAddr x.bits[0], x.size.csize_t)\
+    \ != 0\n        else:\n            result = true\n\n    proc any*(x: BitSetAvx512):\
+    \ bool =\n        ## \u6709\u52B9\u306A\u30D3\u30C3\u30C8\u306B1\u304C\u3042\u308B\
+    \u304B\u3092\u8FD4\u3057\u307E\u3059\u30021\u3092\u898B\u3064\u3051\u305F\u3089\
+    \u7D42\u4E86\u3057\u3001\u9577\u30550\u3067\u306Ffalse\u3092\u8FD4\u3057\u307E\
     \u3059\u3002\n        ## \u6700\u60AA\u6642\u9593O(1 + N / 64)\u3001\u8FFD\u52A0\
     \u30E1\u30E2\u30EAO(1)\u3002\n        ## 512\u30D3\u30C3\u30C8\u305A\u3064\u5224\
     \u5B9A\u3057\u3001AVX512F\u975E\u5BFE\u5FDC\u6642\u306FAVX2\u3092\u4F7F\u3044\u307E\
-    \u3059\u3002\n        if x.size > 0:\n            result = avxAll(unsafeAddr x.bits[0],\
-    \ x.size.csize_t) != 0\n        else:\n            result = true\n\n    proc any*(x:\
-    \ BitSetAvx512): bool =\n        ## \u6709\u52B9\u306A\u30D3\u30C3\u30C8\u306B\
-    1\u304C\u3042\u308B\u304B\u3092\u8FD4\u3057\u307E\u3059\u30021\u3092\u898B\u3064\
-    \u3051\u305F\u3089\u7D42\u4E86\u3057\u3001\u9577\u30550\u3067\u306Ffalse\u3092\
-    \u8FD4\u3057\u307E\u3059\u3002\n        ## \u6700\u60AA\u6642\u9593O(1 + N / 64)\u3001\
-    \u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\n        ## 512\u30D3\u30C3\u30C8\u305A\
-    \u3064\u5224\u5B9A\u3057\u3001AVX512F\u975E\u5BFE\u5FDC\u6642\u306FAVX2\u3092\u4F7F\
-    \u3044\u307E\u3059\u3002\n        if x.size > 0:\n            result = avxAny(unsafeAddr\
-    \ x.bits[0], x.size.csize_t) != 0\n"
+    \u3059\u3002\n        if x.size > 0:\n            result = avxAny(unsafeAddr x.bits[0],\
+    \ x.size.csize_t) != 0\n\n    include cplib/collections/private/bitset_avx512_fuse\n"
   dependsOn:
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: false
   path: cplib/collections/bitset_avx512.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:30:30+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-09-14 23:18:26+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
 documentation_of: cplib/collections/bitset_avx512.nim
 layout: document
 redirect_from:

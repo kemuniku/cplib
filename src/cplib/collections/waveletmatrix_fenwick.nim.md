@@ -110,16 +110,16 @@ data:
     \"\n        self.sum_less_rank(l, r, self.keys.lowerBound(upper)) -\n        \
     \    self.sum_less_rank(l, r, self.keys.lowerBound(lower))\n"
   dependsOn:
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: false
   path: cplib/collections/waveletmatrix_fenwick.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-14 23:35:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/waveletmatrix_fenwick_test.nim

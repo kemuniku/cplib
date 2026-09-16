@@ -146,30 +146,30 @@ data:
     \ World\"\n\nvar tree = initUnWeightedUnDirectedGraph(3)\ntree.add_edge(0, 1)\n\
     tree.add_edge(1, 2)\nassert tree.steiner_tree_mincost(@[0, 2]) == 2\n"
   dependsOn:
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/reverse_edge.nim
+  - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/reverse_edge.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/reverse_edge.nim
   isVerificationFile: true
   path: verify/AI/graph_edge_id_test.nim
   requiredBy: []

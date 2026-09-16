@@ -62,11 +62,11 @@ data:
   - cplib/str/hash_string.nim
   - cplib/str/hash_string.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []

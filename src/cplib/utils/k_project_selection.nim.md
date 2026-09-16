@@ -179,9 +179,9 @@ data:
     \ = newSeq[int](opt.sizes.len)\n        for i, k in opt.sizes:\n            for\
     \ t in 1..<k:\n                if answer.assignment[opt.kpsGe(i, t)]: inc result.assignment[i]\n"
   dependsOn:
+  - cplib/graph/maxflow.nim
+  - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
-  - cplib/graph/maxflow.nim
-  - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
   isVerificationFile: false
   path: cplib/utils/k_project_selection.nim

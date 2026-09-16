@@ -128,8 +128,8 @@ data:
     \ > 1: result.articulation.add(v)\n"
   dependsOn:
   - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/biconnected_components.nim

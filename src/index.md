@@ -30,7 +30,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/bitset_avx2.nim
       title: cplib/collections/bitset_avx2.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/bitset_avx512.nim
       title: cplib/collections/bitset_avx512.nim
     - icon: ':heavy_check_mark:'
@@ -209,9 +209,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/private/bitset_avx2_impl.nim
       title: cplib/collections/private/bitset_avx2_impl.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/private/bitset_avx512_fuse.nim
+      title: cplib/collections/private/bitset_avx512_fuse.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/private/bitset_avx512_fuse_shift.nim
+      title: cplib/collections/private/bitset_avx512_fuse_shift.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/private/bitset_avx512_impl.nim
       title: cplib/collections/private/bitset_avx512_impl.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/private/bitset_search_impl.nim
+      title: cplib/collections/private/bitset_search_impl.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/private/convex_hull_trick_impl.nim
       title: cplib/collections/private/convex_hull_trick_impl.nim
@@ -1298,11 +1307,20 @@ data:
       path: verify/AI/bitset_avx2_test.nim
       title: verify/AI/bitset_avx2_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_avx512_fuse_test.nim
+      title: verify/AI/bitset_avx512_fuse_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_avx512_prev_set_bit_test.nim
+      title: verify/AI/bitset_avx512_prev_set_bit_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_binary_trie_test.nim
       title: verify/AI/bitset_binary_trie_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_compare_test.nim
       title: verify/AI/bitset_compare_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_simd_search_test.nim
+      title: verify/AI/bitset_simd_search_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_test.nim
       title: verify/AI/bitset_test.nim
@@ -1624,6 +1642,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/ntt_test.nim
       title: verify/AI/ntt_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/optimize_cpp_test.nim
+      title: verify/AI/optimize_cpp_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/optimize_test.nim
       title: verify/AI/optimize_test.nim

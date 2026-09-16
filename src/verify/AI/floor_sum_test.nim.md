@@ -42,9 +42,9 @@ data:
     \necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/int128.nim
-  - cplib/math/floor_sum.nim
-  - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
+  - cplib/math/floor_sum.nim
+  - cplib/math/floor_sum.nim
   isVerificationFile: true
   path: verify/AI/floor_sum_test.nim
   requiredBy: []
