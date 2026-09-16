@@ -21,7 +21,8 @@ when not declared CPLIB_TMPL_OPTIMIZE:
             for i in countdown(searchPaths.high, 0):
                 cmd.add("--path:" & quoteShell(searchPaths[i]) & " ")
             # 再コンパイルでも、インストール済みの別版ではなくこのライブラリを参照する。
-            cmd.add("--path:" & quoteShell(libraryDir) & " ")
+            if libraryDir.len > 0:
+                cmd.add("--path:" & quoteShell(libraryDir) & " ")
             cmd.add("-o:" & quoteShell(outPath) & " " & quoteShell(sourcePath))
 
             echo "--- Self-Recompiling with optimized settings ---"
