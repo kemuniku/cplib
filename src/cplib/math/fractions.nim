@@ -26,7 +26,12 @@ when not declared CPLIB_MATH_FRACTIONS:
         var x = x
         x.reduce()
         return &"{x.num}/{x.den}"
-    proc inv*[T](x: Fraction[T]): Fraction[T] = Fraction[T](num: x.den, den: x.num)
+    proc inv*[T](x: Fraction[T]): Fraction[T] =
+        ## 分母が非負になるように符号を正規化して逆数を返す。O(1)。
+        if x.num < 0:
+            Fraction[T](num: -x.den, den: -x.num)
+        else:
+            Fraction[T](num: x.den, den: x.num)
     proc abs*[T](x: Fraction[T]): Fraction[T] = (if x.num < 0: Fraction[T](num: -x.num, den: x.den) else: x)
     proc `-`*[T](x: Fraction[T]): Fraction[T] = Fraction[T](num: -x.num, den: x.den)
     proc `+=`*[T](x: var Fraction[T], y: Fraction[T]) =
