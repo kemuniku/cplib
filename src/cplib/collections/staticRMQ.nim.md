@@ -9,6 +9,12 @@ data:
     path: cplib/str/compressed_trie.nim
     title: cplib/str/compressed_trie.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance.nim
+    title: cplib/str/edit_distance.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance.nim
+    title: cplib/str/edit_distance.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/str/fixedlength_merged_static_string.nim
     title: cplib/str/fixedlength_merged_static_string.nim
   - icon: ':heavy_check_mark:'
@@ -52,6 +58,12 @@ data:
     path: verify/AI/compressed_trie_test.nim
     title: verify/AI/compressed_trie_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_test.nim
+    title: verify/AI/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_test.nim
+    title: verify/AI/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fixedlength_merged_static_string_test.nim
     title: verify/AI/fixedlength_merged_static_string_test.nim
   - icon: ':heavy_check_mark:'
@@ -87,6 +99,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/staticRMQ_test.nim
     title: verify/collections/staticRMQ_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_test.nim
+    title: verify/str/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_test.nim
+    title: verify/str/edit_distance_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
@@ -356,6 +374,8 @@ data:
   - verify/str/merged_static_string.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
   - cplib/str/repeated_static_string.nim
   - cplib/str/repeated_static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
@@ -367,6 +387,8 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/edit_distance_test.nim
+  - verify/str/edit_distance_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
@@ -393,6 +415,8 @@ data:
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/staticRMQ_test.nim
   - verify/AI/staticRMQ_test.nim
+  - verify/AI/edit_distance_test.nim
+  - verify/AI/edit_distance_test.nim
   - verify/AI/static_string_test.nim
   - verify/AI/static_string_test.nim
 documentation_of: cplib/collections/staticRMQ.nim

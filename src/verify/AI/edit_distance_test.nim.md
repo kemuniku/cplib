@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/staticRMQ.nim
+    title: cplib/collections/staticRMQ.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/staticRMQ.nim
+    title: cplib/collections/staticRMQ.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/str/edit_distance.nim
     title: cplib/str/edit_distance.nim
   - icon: ':heavy_check_mark:'
@@ -56,14 +62,16 @@ data:
     \ \"z\" & longString, 1) == 1\ndoAssert editDistance(\"z\" & longString, longString,\
     \ 1) == 1\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/edit_distance.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/edit_distance.nim
   isVerificationFile: true
   path: verify/AI/edit_distance_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 19:03:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/edit_distance_test.nim

@@ -110,14 +110,14 @@ data:
     '
   dependsOn:
   - cplib/str/suffix_array.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/graph/graph.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
+  - cplib/graph/graph.nim
   - cplib/str/compressed_trie.nim
+  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/graph/graph.nim
   - cplib/str/compressed_trie.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim

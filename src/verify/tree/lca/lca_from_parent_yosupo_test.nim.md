@@ -41,8 +41,8 @@ data:
   dependsOn:
   - cplib/tree/lca.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true

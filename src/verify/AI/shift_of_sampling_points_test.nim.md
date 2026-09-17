@@ -94,21 +94,21 @@ data:
     \ init(Mint, 0), 1)\n  except AssertionDefect:\n    rejected = true\n  doAssert\
     \ rejected\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/shift_of_sampling_points.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/shift_of_sampling_points_test.nim

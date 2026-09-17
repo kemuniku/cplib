@@ -67,12 +67,12 @@ data:
     echo answers.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/static_top_tree_dp.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree_dp.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim

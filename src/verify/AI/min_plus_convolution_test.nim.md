@@ -110,12 +110,12 @@ data:
     \ @[0'i8])\n    checkConcave(@[high(int8), 0'i8, low(int8)], @[0'i8])\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/convolution/min_plus_convolution.nim
-  - cplib/convolution/min_plus_convolution.nim
-  - cplib/utils/monotone_minima.nim
+  - cplib/utils/smawk.nim
   - cplib/utils/smawk.nim
   - cplib/utils/monotone_minima.nim
-  - cplib/utils/smawk.nim
+  - cplib/utils/monotone_minima.nim
+  - cplib/convolution/min_plus_convolution.nim
+  - cplib/convolution/min_plus_convolution.nim
   isVerificationFile: true
   path: verify/AI/min_plus_convolution_test.nim
   requiredBy: []
