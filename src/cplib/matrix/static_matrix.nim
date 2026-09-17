@@ -78,7 +78,12 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
                     assign(a[i, j], x)
         proc op*[H: static int, W: static int, T](a, b: StaticMatrix[H,W,T]): StaticMatrix[H,W,T] = (result = a; assign(result, b))
         proc op*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], x: T): StaticMatrix[H,W,T] = (result = a; assign(result, x))
-        proc op*[H: static int, W: static int, T](x: T, a: StaticMatrix[H,W,T]): StaticMatrix[H,W,T] = op(a, x)
+        proc op*[H: static int, W: static int, T](x: T, a: StaticMatrix[H,W,T]): StaticMatrix[H,W,T] =
+            ## 各要素に対してスカラーを左辺として演算する。O(HW)。
+            result = a
+            for i in 0..<a.h:
+                for j in 0..<a.w:
+                    result[i, j] = op(x, a[i, j])
     defineMatrixAssignmentOp(`+=`, `+`)
     defineMatrixAssignmentOp(`-=`, `-`)
 
@@ -94,7 +99,12 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
                     a[i, j] = op(a[i, j], x)
         proc op*[H: static int, W: static int](a, b: StaticMatrix[H,W,int]): StaticMatrix[H,W,int] = (result = a; assign(result, b))
         proc op*[H: static int, W: static int](a: StaticMatrix[H,W,int], x: int): StaticMatrix[H,W,int] = (result = a; assign(result, x))
-        proc op*[H: static int, W: static int](x: int, a: StaticMatrix[H,W,int]): StaticMatrix[H,W,int] = op(a, x)
+        proc op*[H: static int, W: static int](x: int, a: StaticMatrix[H,W,int]): StaticMatrix[H,W,int] =
+            ## 各要素に対して整数を左辺として演算する。O(HW)。
+            result = a
+            for i in 0..<a.h:
+                for j in 0..<a.w:
+                    result[i, j] = op(x, a[i, j])
     defineMatrixIntOps(`and=`, `and`)
     defineMatrixIntOps(`or=`, `or`)
     defineMatrixIntOps(`xor=`, `xor`)
