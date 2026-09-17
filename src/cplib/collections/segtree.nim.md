@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/compressed_segtree.nim
+    title: cplib/collections/compressed_segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/compressed_segtree.nim
+    title: cplib/collections/compressed_segtree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree2d.nim
     title: cplib/collections/segtree2d.nim
   - icon: ':heavy_check_mark:'
@@ -45,6 +51,12 @@ data:
     path: verify/tree/hld/hld_past202004o_test_.nim
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_segtree_test.nim
+    title: verify/AI/compressed_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_segtree_test.nim
+    title: verify/AI/compressed_segtree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/functional_graph_lazy_op_test.nim
     title: verify/AI/functional_graph_lazy_op_test.nim
@@ -286,6 +298,8 @@ data:
   - verify/tree/hld/hld_past202004o_test_.nim
   - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
+  - cplib/collections/compressed_segtree.nim
+  - cplib/collections/compressed_segtree.nim
   - cplib/collections/segtree2d.nim
   - cplib/collections/segtree2d.nim
   - cplib/graph/functional_graph_with_op.nim
@@ -329,6 +343,8 @@ data:
   - verify/AI/segtree_test.nim
   - verify/AI/segtree2d_test.nim
   - verify/AI/segtree2d_test.nim
+  - verify/AI/compressed_segtree_test.nim
+  - verify/AI/compressed_segtree_test.nim
   - verify/AI/inversion_number_test.nim
   - verify/AI/inversion_number_test.nim
   - verify/matrix/matrix_avx2_gc_test.nim

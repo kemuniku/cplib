@@ -48,14 +48,14 @@ data:
     for group in decomposition.groups:\n    stdout.write group.len\n    for v in group:\
     \ stdout.write \" \", v\n    stdout.write \"\\n\"\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/lowlink.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/two_edge_connected_components.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/two_edge_connected_components_test.nim
   requiredBy: []

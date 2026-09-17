@@ -54,10 +54,10 @@ data:
     \        return self.is_bipartite\n    \n    proc issame*(self:DynamicBipartite,u,v:int):bool=\n\
     \        return self.uf.issame(u,v) or self.uf.issame(u,v+self.N)"
   dependsOn:
-  - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/rootvalue_unionfind.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim
   requiredBy: []

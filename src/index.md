@@ -40,6 +40,15 @@ data:
       path: cplib/collections/bitvector.nim
       title: cplib/collections/bitvector.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/compressed_coordinates_internal.nim
+      title: cplib/collections/compressed_coordinates_internal.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/compressed_lazysegtree.nim
+      title: cplib/collections/compressed_lazysegtree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/compressed_segtree.nim
+      title: cplib/collections/compressed_segtree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/convex_hull_trick.nim
       title: cplib/collections/convex_hull_trick.nim
     - icon: ':heavy_check_mark:'
@@ -1354,6 +1363,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/combination_test.nim
       title: verify/AI/combination_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/compressed_lazysegtree_test.nim
+      title: verify/AI/compressed_lazysegtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/compressed_segtree_test.nim
+      title: verify/AI/compressed_segtree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/compressed_trie_test.nim
       title: verify/AI/compressed_trie_test.nim

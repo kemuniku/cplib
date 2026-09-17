@@ -39,8 +39,8 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/maxflow.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/maxflow.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/maxflow_bipartitematching_test.nim
   requiredBy: []

@@ -304,23 +304,23 @@ data:
     \ div huge == 1\n    doAssert huge mod huge == 0\n    doAssert divmod(huge, huge).quotient\
     \ == 1\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/bigint.nim
-  - cplib/math/factoradic.nim
   - cplib/math/isprime.nim
+  - cplib/math/factoradic.nim
   - cplib/math/bigint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/factoradic.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/factoradic_test.nim

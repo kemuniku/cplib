@@ -1,8 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/compressed_lazysegtree.nim
+    title: cplib/collections/compressed_lazysegtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/compressed_lazysegtree.nim
+    title: cplib/collections/compressed_lazysegtree.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_lazysegtree_test.nim
+    title: verify/AI/compressed_lazysegtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/compressed_lazysegtree_test.nim
+    title: verify/AI/compressed_lazysegtree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/lazysegtree_test.nim
     title: verify/AI/lazysegtree_test.nim
@@ -179,7 +191,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/lazysegtree.nim
-  requiredBy: []
+  requiredBy:
+  - cplib/collections/compressed_lazysegtree.nim
+  - cplib/collections/compressed_lazysegtree.nim
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -193,6 +207,8 @@ data:
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/AI/lazysegtree_test.nim
   - verify/AI/lazysegtree_test.nim
+  - verify/AI/compressed_lazysegtree_test.nim
+  - verify/AI/compressed_lazysegtree_test.nim
 documentation_of: cplib/collections/lazysegtree.nim
 layout: document
 redirect_from:

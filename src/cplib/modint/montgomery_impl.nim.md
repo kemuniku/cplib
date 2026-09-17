@@ -370,6 +370,12 @@ data:
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/mo_test.nim
+    title: verify/AI/mo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/mo_test.nim
+    title: verify/AI/mo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/modint_test.nim
     title: verify/AI/modint_test.nim
   - icon: ':heavy_check_mark:'
@@ -1065,6 +1071,8 @@ data:
   - verify/AI/bitwise_and_convolution_test.nim
   - verify/AI/modint_test.nim
   - verify/AI/modint_test.nim
+  - verify/AI/mo_test.nim
+  - verify/AI/mo_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/ntt_test.nim

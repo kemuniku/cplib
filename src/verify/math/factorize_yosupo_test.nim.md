@@ -47,11 +47,11 @@ data:
     \ == 0: echo 0\n    else: echo ans.len, \" \", ans.join(\" \")\n"
   dependsOn:
   - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: true
