@@ -88,6 +88,6 @@ block:
     doAssert g.graph.dijkstra(0)[0..<4] == @[0, 3, 7, 7]
     for u in 0..<g.len:
         for (v, cost, id) in g.graph.to_and_cost_and_id(u):
-            doAssert g.graph.get_edge(id) == EdgeInfo[int](src: u, dst: v, cost: cost)
+            doAssert g.graph.get_edge(id) == (u, v, cost)
 
 echo "Hello World"

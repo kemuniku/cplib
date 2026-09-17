@@ -208,9 +208,13 @@ when not declared CPLIB_GRAPH_GRAPH:
         ## 辺数を返す。無向辺も一辺として数える。O(1)。
         g.edge_info.len
 
-    proc get_edge*[T](g: DynamicGraph[T] or StaticGraph[T], id: int): EdgeInfo[T] =
-        ## 辺番号から追加時の向きの辺情報を取得する。O(1)。
-        g.edge_info[id]
+    proc get_edge*[T](g: DynamicGraph[T] or StaticGraph[T], id: int): auto =
+        ## 辺番号から追加時の向きで、重みなしは (src, dst)、重みありは (src, dst, cost) を返す。O(1)。
+        let e = g.edge_info[id]
+        when T is void:
+            (src: e.src, dst: e.dst)
+        else:
+            (src: e.src, dst: e.dst, cost: e.cost)
 
     iterator to_and_id*[T](g: DynamicGraph[T], x: int): tuple[dst: int, id: int] =
         ## 隣接頂点と辺番号を追加順に列挙する。O(deg(x))。

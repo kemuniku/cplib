@@ -25,7 +25,12 @@ template checkGraph(init: untyped, weighted, undirected, isStatic: static bool) 
         assert g.get_edge(0).dst == 0
         when weighted:
             assert g.get_edge(0).cost == 5
+            let (u, v, w) = g.get_edge(0)
+            doAssert (u, v, w) == (2, 0, 5)
         else:
+            let (u, v) = g.get_edge(0)
+            doAssert (u, v) == (2, 0)
+            static: doAssert not compiles(g.get_edge(0).cost)
             static: doAssert not compiles(g.edge_info[0].cost)
             static: doAssert sizeof(EdgeInfo[void]) == 2 * sizeof(int)
         when isStatic: g.build()
