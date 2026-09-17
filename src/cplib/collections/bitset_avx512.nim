@@ -3,6 +3,8 @@
 ## AVX-512対応環境では対応する演算を自動で切り替えます。個数計算にはVPOPCNTDQが必要です。
 ## import cplib/collections/bitset_avx512 とし、initBitSetで構築します。
 ## fuse: 内では x = x or (y and z) のように書くと論理式を一時集合なしで計算します。
+## +による多倍長加算や、変数のシフトを含む式も融合できます。例: x = (y << k) + z。
+## 複数代入と内部のlet/varも融合します。論理演算・加算・定数左シフト・lastBitに対応します。
 ## x = x or (x shl k) と x = x or (x shr k) も一時集合なしで更新します。
 ## -d:releaseでのコンパイルを推奨します。-mavx2の指定は不要です。
 ## 命令数はAVX-512経路の主ループの演算部分の目安で、関数全体の命令数やサイクル数ではありません。
@@ -19,6 +21,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         size: int
 
     include cplib/collections/private/bitset_avx512_impl
+    include cplib/collections/private/bitset_avx512_shift_assign
     include cplib/collections/private/bitset_search_impl
 
     proc initBitSet*(N: int): BitSetAvx512 =
@@ -132,6 +135,17 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         if x.bits.len > 0:
             avxAdd(addr dst.bits[0], unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)
         dst.trim()
+
+    proc `+`*(x, y: BitSetAvx512): BitSetAvx512 =
+        ## 固定長の符号なし整数として加算し、上位の桁あふれを切り捨てます。O(ビット数/64)。
+        checkSameSize(x, y)
+        result = initBitSet(x.size)
+        result.addInto(x, y)
+
+    proc `+=`*(x: var BitSetAvx512, y: BitSetAvx512) =
+        ## 固定長の符号なし整数として加算します。O(ビット数/64)、追加空間O(1)。
+        checkSameSize(x, y)
+        x.addInto(x, y)
 
     proc orInto*(dst: var BitSetAvx512, x, y: BitSetAvx512) =
         ## 確保済みのdstへx | yを書き込みます。全て同じ長さが必要です。O(ビット数 / 64)。
@@ -323,6 +337,33 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         result = initBitSet(bitset.size)
         if x < bitset.size:
             avxShr(addr result.bits[0], unsafeAddr bitset.bits[0], bitset.bits.len.csize_t, x.csize_t)
+
+    proc `<<=`*(bitset: var BitSetAvx512, x: int) =
+        ## 領域を再確保せずAVX-512/AVX2で左シフトします。O(ワード数)、追加空間O(1)。
+        when compileOption("boundChecks"):
+            if x < 0:
+                raise newException(ValueError, "shift count must be non-negative")
+        if x == 0:
+            return
+        if x >= bitset.size:
+            for word in bitset.bits.mitems:
+                word = 0
+            return
+        avxShiftLeftAssign(addr bitset.bits[0], bitset.bits.len.csize_t, x.csize_t)
+        bitset.trim()
+
+    proc `>>=`*(bitset: var BitSetAvx512, x: int) =
+        ## 領域を再確保せずAVX-512/AVX2で右シフトします。O(ワード数)、追加空間O(1)。
+        when compileOption("boundChecks"):
+            if x < 0:
+                raise newException(ValueError, "shift count must be non-negative")
+        if x == 0:
+            return
+        if x >= bitset.size:
+            for word in bitset.bits.mitems:
+                word = 0
+            return
+        avxShiftRightAssign(addr bitset.bits[0], bitset.bits.len.csize_t, x.csize_t)
 
     proc `~`*(x: BitSetAvx512): BitSetAvx512 =
         ## 集合のビット数を保ったまま各ビットを反転します。

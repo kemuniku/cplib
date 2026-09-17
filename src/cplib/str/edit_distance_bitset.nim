@@ -23,10 +23,6 @@ when not declared CPLIB_STR_EDIT_DISTANCE_BITSET:
         var positive = initBitSet(m)
         positive.fill()
         var negative = initBitSet(m)
-        var vertical = initBitSet(m)
-        var horizontal = initBitSet(m)
-        var positiveHorizontal = initBitSet(m)
-        var negativeHorizontal = initBitSet(m)
         result = m
 
         for c in s:
@@ -35,21 +31,16 @@ when not declared CPLIB_STR_EDIT_DISTANCE_BITSET:
             template equal: untyped =
                 ## 現在の文字の一致マスクをコピーせず参照します。
                 matches[ord(c)]
-            vertical.orInto(equal, negative)
-            horizontal.andInto(equal, positive)
-            horizontal.addInto(horizontal, positive)
-            horizontal ^= positive
-            horizontal |= equal
-            positiveHorizontal.orInto(horizontal, positive)
-            positiveHorizontal.flipAll()
-            positiveHorizontal |= negative
-            negativeHorizontal.andInto(positive, horizontal)
-            result += ord(positiveHorizontal[m - 1]) - ord(negativeHorizontal[m - 1])
-
-            positiveHorizontal = positiveHorizontal << 1
-            positiveHorizontal[0] = true
-            negativeHorizontal = negativeHorizontal << 1
-            positive.orInto(vertical, positiveHorizontal)
-            positive.flipAll()
-            positive |= negativeHorizontal
-            negative.andInto(positiveHorizontal, vertical)
+            var positiveLast, negativeLast: bool
+            fuse:
+                let vertical = equal or negative
+                let horizontal = (((equal and positive) + positive) xor positive) or equal
+                let positiveHorizontal = not (horizontal or positive) or negative
+                let negativeHorizontal = positive and horizontal
+                var shiftedPositive = positiveHorizontal shl 1
+                shiftedPositive[0] = true
+                positive = not (vertical or shiftedPositive) or (negativeHorizontal shl 1)
+                negative = shiftedPositive and vertical
+                positiveLast = lastBit(positiveHorizontal)
+                negativeLast = lastBit(negativeHorizontal)
+            result += ord(positiveLast) - ord(negativeLast)
