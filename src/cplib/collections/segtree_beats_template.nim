@@ -82,7 +82,9 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:
 
     proc update*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T) = self.seg.update(p, init_S(val, self.inf))
     proc `[]`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural or HSlice[int, int]): S_rch[T] = self.seg[p]
-    proc `[]=`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T): S_rch[T] = self.update(p, val)
+    proc `[]=`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T) =
+        ## 添字pの要素をvalに置き換える。O(log N)。
+        self.update(p, val)
     proc len*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): int = self.seg.len
     proc `$`*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): string = $(self.seg)
     proc chmin*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf, ub: val, add: self.zero))
