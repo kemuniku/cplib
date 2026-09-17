@@ -86,6 +86,36 @@ when not declared CPLIB_TMPL_SHEEP:
     #converter
 
     #range
+    template mapIt*[T](s: Slice[T], op: untyped): untyped =
+        ## 範囲の各要素を変換したseqを返す。要素数をnとしてO(n)回opを評価する。
+        block:
+            let bounds = s
+            type OutType = typeof((block:
+                var it {.inject.}: T
+                op), typeOfProc)
+            var mapped: seq[OutType] = @[]
+            when OutType is (proc):
+                proc transform(value: T): OutType =
+                    ## 各要素を別々の環境に閉じ込めてクロージャを生成する。
+                    let it {.inject.} = value
+                    op
+                for value in bounds:
+                    mapped.add(transform(value))
+            else:
+                for it {.inject.} in bounds:
+                    mapped.add(op)
+            mapped
+
+    template filterIt*[T](s: Slice[T], pred: untyped): untyped =
+        ## 範囲から条件を満たす要素を順に抽出する。要素数をnとしてO(n)回predを評価する。
+        block:
+            let bounds = s
+            var filtered: seq[T] = @[]
+            for it {.inject.} in bounds:
+                if pred:
+                    filtered.add(it)
+            filtered
+
     iterator range(start: int, ends: int, step: int): int =
         var i = start
         if step < 0:
