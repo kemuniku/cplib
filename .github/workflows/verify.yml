@@ -24,9 +24,9 @@ jobs:
           - nim-version: 2.2.4
             nimble-options: --solver:legacy
 
-    # The 1.6.20 job is the only publisher; serialize it with deploy-doc.
+    # main の Nim 1.6.20 だけが検証結果を公開するため、deploy-doc と排他制御する。
     concurrency:
-      group: ${{ matrix.nim-version == '1.6.20' && 'cplib-gh-pages' || format('verify-{0}-{1}', github.ref, matrix.nim-version) }}
+      group: ${{ github.ref == 'refs/heads/main' && matrix.nim-version == '1.6.20' && 'cplib-gh-pages' || format('verify-{0}-{1}', github.ref, matrix.nim-version) }}
       cancel-in-progress: false
 
     permissions:
@@ -100,10 +100,10 @@ jobs:
         run: |
           cd src
           # 600秒で未実行テストを残して成功扱いになるのを防ぎ、上限はジョブ側で管理する。
-          if [ "${{ matrix.nim-version }}" = "1.6.20" ]; then
+          if [ "${{ github.ref }}" = "refs/heads/main" ] && [ "${{ matrix.nim-version }}" = "1.6.20" ]; then
             oj-verify run -j 4 --tle 10 --timeout inf
           else
-            # Unset the variable: even an empty GITHUB_TOKEN enables auto-push.
+            # 空文字でも自動 push が有効になるため、公開しないジョブでは変数自体を除去する。
             env -u GITHUB_TOKEN oj-verify run -j 4 --tle 10 --timeout inf
           fi
 
