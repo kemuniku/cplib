@@ -52,11 +52,11 @@ data:
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim

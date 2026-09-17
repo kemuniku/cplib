@@ -82,12 +82,12 @@ data:
   dependsOn:
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/edit_distance.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:03:39+09:00'
+  timestamp: '2026-09-17 22:28:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/edit_distance_test.nim

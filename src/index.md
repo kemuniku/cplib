@@ -1868,6 +1868,12 @@ data:
       path: verify/AI/static_matrix_test.nim
       title: verify/AI/static_matrix_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/static_string_sort_test.nim
+      title: verify/AI/static_string_sort_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/static_string_specialization_test.nim
+      title: verify/AI/static_string_specialization_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/static_string_test.nim
       title: verify/AI/static_string_test.nim
     - icon: ':heavy_check_mark:'
@@ -2798,6 +2804,9 @@ data:
       title: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str/static_string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+      title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/static_string/static_string_LCS_test.nim
       title: verify/str/static_string/static_string_LCS_test.nim

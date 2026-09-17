@@ -37,8 +37,8 @@ data:
   dependsOn:
   - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: false
   path: verify/collections/avlset/set/ABC217_gele_test_.nim
   requiredBy: []

@@ -214,25 +214,25 @@ data:
     \ coefficients, k)\n"
   dependsOn:
   - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/fps/berlekamp_massey.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isqrt.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/bostan_mori.nim
   isVerificationFile: false
   path: cplib/fps/bmbm.nim
   requiredBy:

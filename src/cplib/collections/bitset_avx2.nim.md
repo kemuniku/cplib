@@ -585,10 +585,10 @@ data:
     \u30C3\u30C8\u305A\u3064\u5224\u5B9A\u3057\u307E\u3059\u3002\n        if x.size\
     \ > 0:\n            result = avxAny(unsafeAddr x.bits[0], x.size.csize_t) != 0\n"
   dependsOn:
-  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
   isVerificationFile: false
   path: cplib/collections/bitset_avx2.nim
   requiredBy: []

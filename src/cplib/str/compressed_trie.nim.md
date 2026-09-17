@@ -98,17 +98,17 @@ data:
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
   - cplib/str/static_string.nim
-  - cplib/graph/graph.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/graph/graph.nim
+  - cplib/str/static_string.nim
+  - cplib/graph/graph.nim
+  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 19:04:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/compressed_trie_test.nim

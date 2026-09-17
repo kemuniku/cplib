@@ -82,6 +82,18 @@ data:
     path: verify/AI/repeated_static_string_test.nim
     title: verify/AI/repeated_static_string_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_sort_test.nim
+    title: verify/AI/static_string_sort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_sort_test.nim
+    title: verify/AI/static_string_sort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_specialization_test.nim
+    title: verify/AI/static_string_specialization_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_specialization_test.nim
+    title: verify/AI/static_string_specialization_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
   - icon: ':heavy_check_mark:'
@@ -93,6 +105,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+    title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+    title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
@@ -241,34 +259,37 @@ data:
     \ in s:\n            assert 0 <= value and value <= upper, \"\u6307\u5B9A\u3057\
     \u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
     \u8981\u304C\u3042\u308A\u307E\u3059: 0 <= value and value <= upper\"\n      \
-    \  return saIs(s, upper)\n\n    proc suffix_array*[T](s: openArray[T]): seq[int]\
-    \ =\n        ## \u4EFB\u610F\u306E\u6BD4\u8F03\u53EF\u80FD\u306A\u5217\u306E\u63A5\
-    \u5C3E\u8F9E\u914D\u5217\u3092\u4F5C\u6210\u3057\u307E\u3059\u3002\n        ##\
-    \ \u5024\u306E\u5EA7\u6A19\u5727\u7E2E\u306B\u30BD\u30FC\u30C8\u3092\u4F7F\u3046\
-    \u305F\u3081\u3001SA-IS \u90E8\u5206\u3092\u542B\u3081\u305F\u8A08\u7B97\u91CF\
-    \u306F O(N log N) \u3067\u3059\u3002\n        let n = s.len\n        if n == 0:\n\
-    \            return @[]\n\n        var idx = newSeq[int](n)\n        for i in\
-    \ 0..<n:\n            idx[i] = i\n        let values = @s\n        idx.sort(proc(l,\
-    \ r: int): int = system.cmp(values[l], values[r]))\n\n        var compressed =\
-    \ newSeq[int](n)\n        var upper = 0\n        for i in 0..<n:\n           \
-    \ if i > 0 and s[idx[i - 1]] != s[idx[i]]:\n                inc upper\n      \
-    \      compressed[idx[i]] = upper\n        return saIs(compressed, upper)\n\n\
-    \    proc suffix_array*(s: string): seq[int] =\n        ## 8-bit \u6587\u5B57\u5217\
-    \u306E\u63A5\u5C3E\u8F9E\u914D\u5217\u3092 SA-IS \u3067 O(N + 256) \u306B\u4F5C\
-    \u6210\u3057\u307E\u3059\u3002\n        return saIs(s, 255)\n\n    when defined(release):\n\
-    \        {.push checks: off.}\n\n    proc lcpArrayImpl[T; I: SomeSignedInt](s:\
-    \ openArray[T], sa: openArray[int]): seq[int] =\n        ## \u8F9E\u66F8\u9806\
-    \u306E\u76F4\u524D\u306E\u63A5\u5C3E\u8F9E\u3092\u4F7F\u3044\u3001\u6587\u5B57\
-    \u5217\u9806\u306B LCP \u3092\u8A08\u7B97\u3057\u307E\u3059\u3002\n        let\
-    \ n = s.len\n        var phi = newSeq[I](n)\n        phi[sa[0]] = -1\n       \
-    \ for i in 1..<n:\n            phi[sa[i]] = I(sa[i - 1])\n        var h = 0\n\
-    \        for i in 0..<n:\n            let j = phi[i].int\n            if j < 0:\n\
-    \                h = 0\n                continue\n            let limit = n -\
-    \ max(i, j)\n            while h < limit and s[i + h] == s[j + h]:\n         \
-    \       inc h\n            phi[i] = I(h)\n            if h > 0:\n            \
-    \    dec h\n        result = newSeq[int](n - 1)\n        for i in 0..<n - 1:\n\
-    \            result[i] = phi[sa[i + 1]].int\n\n    when defined(release):\n  \
-    \      {.pop.}\n\n    proc lcp_array*[T](s: openArray[T], sa: openArray[int]):\
+    \  return saIs(s, upper)\n\n    proc suffix_array*(s: openArray[char]): seq[int]\
+    \ =\n        ## 8-bit\u6587\u5B57\u5217\u306E\u63A5\u5C3E\u8F9E\u914D\u5217\u3092\
+    \u5EA7\u6A19\u5727\u7E2E\u305B\u305A O(N + 256) \u3067\u4F5C\u6210\u3057\u307E\
+    \u3059\u3002\n        return saIs(s, 255)\n\n    proc suffix_array*[T](s: openArray[T]):\
+    \ seq[int] =\n        ## \u4EFB\u610F\u306E\u6BD4\u8F03\u53EF\u80FD\u306A\u5217\
+    \u306E\u63A5\u5C3E\u8F9E\u914D\u5217\u3092\u4F5C\u6210\u3057\u307E\u3059\u3002\
+    \n        ## \u5024\u306E\u5EA7\u6A19\u5727\u7E2E\u306B\u30BD\u30FC\u30C8\u3092\
+    \u4F7F\u3046\u305F\u3081\u3001SA-IS \u90E8\u5206\u3092\u542B\u3081\u305F\u8A08\
+    \u7B97\u91CF\u306F O(N log N) \u3067\u3059\u3002\n        let n = s.len\n    \
+    \    if n == 0:\n            return @[]\n\n        var idx = newSeq[int](n)\n\
+    \        for i in 0..<n:\n            idx[i] = i\n        let values = @s\n  \
+    \      idx.sort(proc(l, r: int): int = system.cmp(values[l], values[r]))\n\n \
+    \       var compressed = newSeq[int](n)\n        var upper = 0\n        for i\
+    \ in 0..<n:\n            if i > 0 and s[idx[i - 1]] != s[idx[i]]:\n          \
+    \      inc upper\n            compressed[idx[i]] = upper\n        return saIs(compressed,\
+    \ upper)\n\n    proc suffix_array*(s: string): seq[int] =\n        ## 8-bit \u6587\
+    \u5B57\u5217\u306E\u63A5\u5C3E\u8F9E\u914D\u5217\u3092 SA-IS \u3067 O(N + 256)\
+    \ \u306B\u4F5C\u6210\u3057\u307E\u3059\u3002\n        return saIs(s, 255)\n\n\
+    \    when defined(release):\n        {.push checks: off.}\n\n    proc lcpArrayImpl[T;\
+    \ I: SomeSignedInt](s: openArray[T], sa: openArray[int]): seq[int] =\n       \
+    \ ## \u8F9E\u66F8\u9806\u306E\u76F4\u524D\u306E\u63A5\u5C3E\u8F9E\u3092\u4F7F\u3044\
+    \u3001\u6587\u5B57\u5217\u9806\u306B LCP \u3092\u8A08\u7B97\u3057\u307E\u3059\u3002\
+    \n        let n = s.len\n        var phi = newSeq[I](n)\n        phi[sa[0]] =\
+    \ -1\n        for i in 1..<n:\n            phi[sa[i]] = I(sa[i - 1])\n       \
+    \ var h = 0\n        for i in 0..<n:\n            let j = phi[i].int\n       \
+    \     if j < 0:\n                h = 0\n                continue\n           \
+    \ let limit = n - max(i, j)\n            while h < limit and s[i + h] == s[j +\
+    \ h]:\n                inc h\n            phi[i] = I(h)\n            if h > 0:\n\
+    \                dec h\n        result = newSeq[int](n - 1)\n        for i in\
+    \ 0..<n - 1:\n            result[i] = phi[sa[i + 1]].int\n\n    when defined(release):\n\
+    \        {.pop.}\n\n    proc lcp_array*[T](s: openArray[T], sa: openArray[int]):\
     \ seq[int] =\n        ## \u63A5\u5C3E\u8F9E\u914D\u5217\u306B\u96A3\u63A5\u3059\
     \u308B\u63A5\u5C3E\u8F9E\u540C\u58EB\u306E LCP Array \u3092 O(N) \u3067\u4F5C\u6210\
     \u3057\u307E\u3059\u3002\n        let n = s.len\n        assert sa.len == n, \"\
@@ -304,7 +325,7 @@ data:
   - cplib/str/merged_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 19:04:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/edit_distance_test.nim
@@ -313,6 +334,8 @@ data:
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
   - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
@@ -337,8 +360,12 @@ data:
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/edit_distance_test.nim
   - verify/AI/edit_distance_test.nim
+  - verify/AI/static_string_specialization_test.nim
+  - verify/AI/static_string_specialization_test.nim
   - verify/AI/static_string_test.nim
   - verify/AI/static_string_test.nim
+  - verify/AI/static_string_sort_test.nim
+  - verify/AI/static_string_sort_test.nim
 documentation_of: cplib/str/suffix_array.nim
 layout: document
 redirect_from:

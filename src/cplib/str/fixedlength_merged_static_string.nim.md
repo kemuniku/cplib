@@ -170,16 +170,16 @@ data:
   dependsOn:
   - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
   requiredBy:
   - cplib/str/repeated_static_string.nim
   - cplib/str/repeated_static_string.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 19:04:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/fixedlength_merged_static_string_test.nim

@@ -76,11 +76,29 @@ data:
     path: verify/AI/repeated_static_string_test.nim
     title: verify/AI/repeated_static_string_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_sort_test.nim
+    title: verify/AI/static_string_sort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_sort_test.nim
+    title: verify/AI/static_string_sort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_specialization_test.nim
+    title: verify/AI/static_string_specialization_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_specialization_test.nim
+    title: verify/AI/static_string_specialization_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+    title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+    title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
@@ -137,8 +155,11 @@ data:
   code: "when not declared CPLIB_STR_STATIC_STRING:\n    const CPLIB_STR_STATIC_STRING*\
     \ = 1\n    import sequtils\n    import algorithm\n    import cplib/str/suffix_array\n\
     \    import cplib/collections/staticRMQ\n\n    proc genericSuffixArray[T](S: seq[T]):\
-    \ seq[int] =\n        var idx = toSeq(0..<len(S))\n        idx.sort(proc(l, r:\
-    \ int): int = system.cmp[T](S[l], S[r]))\n        var compressed = newSeq[int](len(S))\n\
+    \ seq[int] =\n        ## char\u5217\u306F O(N + 256)\u3001\u305D\u308C\u4EE5\u5916\
+    \u306F\u5EA7\u6A19\u5727\u7E2E\u3092\u542B\u3081 O(N log N) \u3067\u63A5\u5C3E\
+    \u8F9E\u914D\u5217\u3092\u4F5C\u308B\u3002\n        when T is char:\n        \
+    \    return suffix_array(S)\n        var idx = toSeq(0..<len(S))\n        idx.sort(proc(l,\
+    \ r: int): int = system.cmp[T](S[l], S[r]))\n        var compressed = newSeq[int](len(S))\n\
     \        var upper = 0\n        for i in 0..<len(S):\n            if i > 0 and\
     \ S[idx[i-1]] != S[idx[i]]:\n                upper += 1\n            compressed[idx[i]]\
     \ = upper\n        return suffix_array(compressed, upper)\n\n    type StaticStringBase*[T]\
@@ -205,18 +226,52 @@ data:
     \u306Freversible\u3092\u6709\u52B9\u306B\u3057\u3066\u521D\u671F\u5316\u3059\u308B\
     \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        return lcp(S.reversed, T.reversed)\n\
     \n    proc cmp*[Element](S, T: StaticString[Element]): int {.inline.} =\n    \
-    \    var lcp = lcp(S, T)\n        if min(len(S), len(T)) == lcp:\n           \
-    \ if len(S) == len(T):\n                return 0\n            elif len(S) < len(T):\n\
-    \                return -1\n            else:\n                return 1\n    \
-    \    else:\n            if S[lcp] < T[lcp]:\n                return -1\n     \
-    \       else:\n                return 1\n\n    proc `<`*[Element](S, T: StaticString[Element]):\
-    \ bool =\n        return cmp(S, T) < 0\n\n    proc `>`*[Element](S, T: StaticString[Element]):\
-    \ bool =\n        return cmp(S, T) > 0\n\n    proc `<=`*[Element](S, T: StaticString[Element]):\
+    \    ## \u540C\u3058\u57FA\u5E95\u306E\u90E8\u5206\u6587\u5B57\u5217\u3092LCP\u3068\
+    \u63A5\u5C3E\u8F9E\u9806\u4F4D\u3067\u8F9E\u66F8\u9806\u306B\u6BD4\u8F03\u3059\
+    \u308B\u3002O(1)\u3002\n        assert S.base == T.base, \"\u6587\u5B57\u5217\u306F\
+    \u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\u304B\u3089\u4F5C\u6210\u3055\u308C\
+    \u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let n\
+    \ = min(len(S), len(T))\n        if n == 0 or S.l == T.l:\n            return\
+    \ system.cmp(len(S), len(T))\n        let a = S.base.RSA[S.l]\n        let b =\
+    \ S.base.RSA[T.l]\n        if S.base.RMQ.query(min(a, b), max(a, b)) >= n:\n \
+    \           return system.cmp(len(S), len(T))\n        return (if a < b: -1 else:\
+    \ 1)\n\n    proc `<`*[Element](S, T: StaticString[Element]): bool =\n        return\
+    \ cmp(S, T) < 0\n\n    proc `>`*[Element](S, T: StaticString[Element]): bool =\n\
+    \        return cmp(S, T) > 0\n\n    proc `<=`*[Element](S, T: StaticString[Element]):\
     \ bool =\n        return cmp(S, T) <= 0\n\n    proc `>=`*[Element](S, T: StaticString[Element]):\
     \ bool =\n        return cmp(S, T) >= 0\n\n    proc `==`*[Element](S, T: StaticString[Element]):\
     \ bool =\n        return len(S) == len(T) and lcp(S, T) == len(S)\n\n    proc\
-    \ initSuffixArray*[T](base: StaticStringBase[T]): seq[StaticString[T]] =\n   \
-    \     var SA = base.SA\n        if base.reversible:\n            SA = genericSuffixArray(base.S[0..<base.size]).mapit(int32(it))\n\
+    \ sortStaticStrings*[T](strings: var openArray[StaticString[T]]) =\n        ##\
+    \ \u540C\u3058\u57FA\u5E95\u306E\u90E8\u5206\u6587\u5B57\u5217\u3092\u8F9E\u66F8\
+    \u9806\u306B\u5B89\u5B9A\u30BD\u30FC\u30C8\u3059\u308B\u3002\u57FA\u5E95\u9577\
+    M\u3001\u8981\u7D20\u6570N\u306B\u5BFE\u3057O(N log(M+2))\u6642\u9593\u3001\u8FFD\
+    \u52A0O(N)\u7A7A\u9593\u3002\n        if strings.len == 0: return\n        let\
+    \ base = strings[0].base\n        type Key = tuple[rank, length: int32, index:\
+    \ int]\n        var keys = newSeq[Key](strings.len)\n        for i, s in strings:\n\
+    \            assert s.base == base, \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\
+    \u5E95\u6587\u5B57\u5217\u304B\u3089\u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n            var left = 0\n     \
+    \       if s.len > 0:\n                let rank = int(base.RSA[s.l])\n       \
+    \         var right = rank\n                while left < right:\n            \
+    \        let mid = (left + right) shr 1\n                    if base.RMQ.query(mid,\
+    \ rank) >= s.len:\n                        right = mid\n                    else:\n\
+    \                        left = mid + 1\n                inc left\n          \
+    \  keys[i] = (int32(left), int32(s.len), i)\n        var buffer = newSeq[Key](keys.len)\n\
+    \        for field in 0..1:\n            for shift in countup(0, 24, 8):\n   \
+    \             var counts: array[256, int]\n                for key in keys:\n\
+    \                    let value = if field == 0: key.length else: key.rank\n  \
+    \                  inc counts[(int(value) shr shift) and 255]\n              \
+    \  var total = 0\n                for i in 0..<256:\n                    let count\
+    \ = counts[i]\n                    counts[i] = total\n                    total\
+    \ += count\n                for key in keys:\n                    let value =\
+    \ if field == 0: key.length else: key.rank\n                    let digit = (int(value)\
+    \ shr shift) and 255\n                    buffer[counts[digit]] = key\n      \
+    \              inc counts[digit]\n                swap(keys, buffer)\n       \
+    \ var output = newSeq[StaticString[T]](strings.len)\n        for i, key in keys:\n\
+    \            output[i] = strings[key.index]\n        for i in 0..<strings.len:\n\
+    \            strings[i] = output[i]\n\n    proc initSuffixArray*[T](base: StaticStringBase[T]):\
+    \ seq[StaticString[T]] =\n        var SA = base.SA\n        if base.reversible:\n\
+    \            SA = genericSuffixArray(base.S[0..<base.size]).mapit(int32(it))\n\
     \        result = newseq[StaticString[T]](base.size)\n        for i in 0..<base.size:\n\
     \            result[i].base = base\n            result[i].l = SA[i]\n        \
     \    result[i].r = base.size\n\n    proc initSuffixArray*[T](S: StaticString[T]):\
@@ -253,8 +308,8 @@ data:
   dependsOn:
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:
@@ -270,11 +325,13 @@ data:
   - cplib/str/merged_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 19:04:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
@@ -295,8 +352,12 @@ data:
   - verify/AI/compressed_trie_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
+  - verify/AI/static_string_specialization_test.nim
+  - verify/AI/static_string_specialization_test.nim
   - verify/AI/static_string_test.nim
   - verify/AI/static_string_test.nim
+  - verify/AI/static_string_sort_test.nim
+  - verify/AI/static_string_sort_test.nim
 documentation_of: cplib/str/static_string.nim
 layout: document
 redirect_from:

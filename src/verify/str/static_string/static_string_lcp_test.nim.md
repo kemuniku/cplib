@@ -32,7 +32,7 @@ data:
   isVerificationFile: true
   path: verify/str/static_string/static_string_lcp_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 19:04:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/static_string/static_string_lcp_test.nim

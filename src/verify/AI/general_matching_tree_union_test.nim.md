@@ -49,8 +49,8 @@ data:
   dependsOn:
   - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
-  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
+  - cplib/graph/general_matching.nim
   isVerificationFile: true
   path: verify/AI/general_matching_tree_union_test.nim
   requiredBy: []

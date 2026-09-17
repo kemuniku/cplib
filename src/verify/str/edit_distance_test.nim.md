@@ -51,13 +51,13 @@ data:
   - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   - cplib/str/edit_distance.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/edit_distance_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:03:39+09:00'
+  timestamp: '2026-09-17 22:28:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/edit_distance_test.nim

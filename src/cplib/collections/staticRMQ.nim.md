@@ -88,6 +88,18 @@ data:
     path: verify/AI/staticRMQ_test.nim
     title: verify/AI/staticRMQ_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_sort_test.nim
+    title: verify/AI/static_string_sort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_sort_test.nim
+    title: verify/AI/static_string_sort_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_specialization_test.nim
+    title: verify/AI/static_string_specialization_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_specialization_test.nim
+    title: verify/AI/static_string_specialization_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
   - icon: ':heavy_check_mark:'
@@ -105,6 +117,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+    title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+    title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_test.nim
     title: verify/str/static_string/static_string_LCS_test.nim
@@ -391,6 +409,8 @@ data:
   - verify/str/edit_distance_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim
   - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
@@ -417,8 +437,12 @@ data:
   - verify/AI/staticRMQ_test.nim
   - verify/AI/edit_distance_test.nim
   - verify/AI/edit_distance_test.nim
+  - verify/AI/static_string_specialization_test.nim
+  - verify/AI/static_string_specialization_test.nim
   - verify/AI/static_string_test.nim
   - verify/AI/static_string_test.nim
+  - verify/AI/static_string_sort_test.nim
+  - verify/AI/static_string_sort_test.nim
 documentation_of: cplib/collections/staticRMQ.nim
 layout: document
 redirect_from:

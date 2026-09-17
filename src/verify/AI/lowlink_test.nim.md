@@ -124,16 +124,16 @@ data:
     \    doAssert initBlockCutTree(bc).forest.len == 2*n-3\n\necho \"Hello World\"\
     \n"
   dependsOn:
+  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/block_cut_tree.nim
+  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
-  - cplib/graph/biconnected_components.nim
   - cplib/graph/block_cut_tree.nim
-  - cplib/graph/lowlink.nim
+  - cplib/graph/biconnected_components.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/biconnected_components.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/two_edge_connected_components.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: true
   path: verify/AI/lowlink_test.nim
   requiredBy: []

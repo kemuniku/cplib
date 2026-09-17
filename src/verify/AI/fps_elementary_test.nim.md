@@ -116,22 +116,22 @@ data:
     \n\nblock characteristicTwoConstant:\n  type M = StaticBarrettModint[2u32]\n \
     \ doAssert @[init(M, 1)].sqrt(1).get == @[init(M, 1)]\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/fps/formal_power_series.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: true
   path: verify/AI/fps_elementary_test.nim
   requiredBy: []

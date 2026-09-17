@@ -81,10 +81,10 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/diameter_test.nim
   requiredBy: []
