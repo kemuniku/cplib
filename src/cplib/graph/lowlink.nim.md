@@ -136,7 +136,7 @@ data:
   - cplib/graph/round_square_tree.nim
   - cplib/graph/block_cut_tree.nim
   - cplib/graph/block_cut_tree.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/lowlink_bridges_test.nim

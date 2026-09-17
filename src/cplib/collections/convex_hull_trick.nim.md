@@ -84,10 +84,10 @@ data:
   dependsOn:
   - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
-  - cplib/math/int128.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
+  - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick.nim
   requiredBy: []

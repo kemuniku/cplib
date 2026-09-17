@@ -152,12 +152,12 @@ data:
     \    doAssert $st == \"X YZ z\"\n    st.apply(\"m\"..\"z\", 'Q')\n    doAssert\
     \ st.get_all() == \"XQQQ\"\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/collections/compressed_lazysegtree.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/lazysegtree.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/collections/compressed_lazysegtree.nim
-  - cplib/collections/compressed_lazysegtree.nim
   isVerificationFile: true
   path: verify/AI/compressed_lazysegtree_test.nim
   requiredBy: []

@@ -57,14 +57,14 @@ data:
     \ (mask and predecessors[v]) == predecessors[v]:\n                    dp[mask\
     \ or bit] += dp[mask]\n        return dp[^1]\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   isVerificationFile: false
   path: cplib/graph/count_topologicalsort.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/count_topologicalsort_test.nim

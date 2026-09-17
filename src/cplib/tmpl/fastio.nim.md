@@ -64,6 +64,18 @@ data:
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_test.nim
+    title: verify/graph/cycle_detection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_test.nim
+    title: verify/graph/cycle_detection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_undirected_test.nim
+    title: verify/graph/cycle_detection_undirected_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_undirected_test.nim
+    title: verify/graph/cycle_detection_undirected_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
   - icon: ':heavy_check_mark:'
@@ -887,8 +899,12 @@ data:
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/general_matching_test.nim
   - verify/graph/general_matching_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
+  - verify/graph/cycle_detection_test.nim
+  - verify/graph/cycle_detection_test.nim
   - verify/graph/hopcroft_karp_test.nim
   - verify/graph/hopcroft_karp_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim

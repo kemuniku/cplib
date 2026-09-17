@@ -494,7 +494,7 @@ data:
   - cplib/graph/namori_forest.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/hld/hld_vertex_add_path_sum_test.nim

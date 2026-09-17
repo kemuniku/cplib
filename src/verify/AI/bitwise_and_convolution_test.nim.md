@@ -68,15 +68,15 @@ data:
     echo \"Hello World\"\n"
   dependsOn:
   - cplib/convolution/bitwise_and_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/bitwise_and_convolution.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/AI/bitwise_and_convolution_test.nim
   requiredBy: []

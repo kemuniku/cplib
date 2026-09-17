@@ -147,17 +147,17 @@ data:
     \        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy:
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/restore_dijkstra_static_test.nim

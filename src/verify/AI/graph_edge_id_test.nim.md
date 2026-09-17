@@ -99,8 +99,11 @@ data:
     \ assert add(0, 1, 7) == 1\n        assert add(0, 1, 9) == 2\n        assert add(0,\
     \ 0, 11) == 3\n        assert g.edge_count == 4\n        assert g.get_edge(0).src\
     \ == 2\n        assert g.get_edge(0).dst == 0\n        when weighted:\n      \
-    \      assert g.get_edge(0).cost == 5\n        else:\n            static: doAssert\
-    \ not compiles(g.edge_info[0].cost)\n            static: doAssert sizeof(EdgeInfo[void])\
+    \      assert g.get_edge(0).cost == 5\n            let (u, v, w) = g.get_edge(0)\n\
+    \            doAssert (u, v, w) == (2, 0, 5)\n        else:\n            let (u,\
+    \ v) = g.get_edge(0)\n            doAssert (u, v) == (2, 0)\n            static:\
+    \ doAssert not compiles(g.get_edge(0).cost)\n            static: doAssert not\
+    \ compiles(g.edge_info[0].cost)\n            static: doAssert sizeof(EdgeInfo[void])\
     \ == 2 * sizeof(int)\n        when isStatic: g.build()\n        let expected =\
     \ when undirected: @[(2, 0), (1, 1), (1, 2), (0, 3), (0, 3)]\n               \
     \        else: @[(1, 1), (1, 2), (0, 3)]\n        assert toSeq(g.to_and_id(0))\
@@ -146,34 +149,34 @@ data:
     \ World\"\n\nvar tree = initUnWeightedUnDirectedGraph(3)\ntree.add_edge(0, 1)\n\
     tree.add_edge(1, 2)\nassert tree.steiner_tree_mincost(@[0, 2]) == 2\n"
   dependsOn:
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/bititers.nim
   - cplib/graph/bellmanford.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
+  - cplib/utils/bititers.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/bellmanford.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/utils/constants.nim
   - cplib/graph/reverse_edge.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/steiner_tree.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/warshall_floyd_negative.nim
   isVerificationFile: true
   path: verify/AI/graph_edge_id_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 16:47:56+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/graph_edge_id_test.nim

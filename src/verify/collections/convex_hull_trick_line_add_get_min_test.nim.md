@@ -50,12 +50,12 @@ data:
   dependsOn:
   - cplib/collections/avltreenode.nim
   - cplib/collections/convex_hull_trick.nim
+  - cplib/math/int128.nim
   - cplib/collections/avltreenode.nim
-  - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/math/int128.nim
   - cplib/collections/convex_hull_trick.nim
+  - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_line_add_get_min_test.nim
   requiredBy: []

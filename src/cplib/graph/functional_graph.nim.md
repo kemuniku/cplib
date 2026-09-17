@@ -192,8 +192,8 @@ data:
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
   requiredBy:
@@ -203,7 +203,7 @@ data:
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_test.nim

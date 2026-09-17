@@ -47,13 +47,13 @@ data:
   - cplib/graph/topologicalsort.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   isVerificationFile: false
   path: verify/graph/dag_minimum_path_cover_hakata_test_.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/dag_minimum_path_cover_hakata_test_.nim

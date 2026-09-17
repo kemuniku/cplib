@@ -194,15 +194,15 @@ data:
     \        return result\n"
   dependsOn:
   - cplib/math/isprime.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2026-09-14 18:23:55+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/random_helper_test.nim

@@ -94,16 +94,16 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/itertools.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/utils/itertools.nim
+  - cplib/utils/itertools.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/AI/itertools_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/itertools_test.nim

@@ -37,14 +37,14 @@ data:
     \ = hashes.sorted().deduplicate(true)\necho values.len\necho hashes.mapIt(values.lowerBound(it)).join(\"\
     \ \")\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
   isVerificationFile: true
   path: verify/tree/rooted_tree_isomorphism_classification_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/rooted_tree_isomorphism_classification_test.nim

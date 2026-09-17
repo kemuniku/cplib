@@ -174,24 +174,24 @@ data:
     \ discard 1 // zero\n    doAssertRaises(DivByZeroDefect): discard 1 % zero\n\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/factoradic.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/bigint.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/factoradic.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/factoradic.nim
+  - cplib/modint/modint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/factoradic.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/factoradic_signed_test.nim
   requiredBy: []

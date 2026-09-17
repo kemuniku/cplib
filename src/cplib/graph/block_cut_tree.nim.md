@@ -61,15 +61,15 @@ data:
     \ = initBlockCutTree(initBiconnectedComponents(g))\n"
   dependsOn:
   - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
   isVerificationFile: false
   path: cplib/graph/block_cut_tree.nim
   requiredBy: []
-  timestamp: '2026-09-14 10:23:34+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/lowlink_test.nim

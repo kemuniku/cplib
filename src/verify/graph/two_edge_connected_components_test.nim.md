@@ -49,17 +49,17 @@ data:
     \ stdout.write \" \", v\n    stdout.write \"\\n\"\n"
   dependsOn:
   - cplib/graph/two_edge_connected_components.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/lowlink.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/two_edge_connected_components_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:06:55+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/two_edge_connected_components_test.nim

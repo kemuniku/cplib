@@ -153,16 +153,16 @@ data:
     \ k) == a\n        doAssert tree.la(v, deepDepth[v]) == labels[0]\n        doAssert\
     \ tree.la(v, deepDepth[v] + 1) == -1\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/tree/lca.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/lca.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/lca.nim
   isVerificationFile: true
   path: verify/AI/lca_test.nim
   requiredBy: []
-  timestamp: '2026-09-16 23:45:18+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/lca_test.nim

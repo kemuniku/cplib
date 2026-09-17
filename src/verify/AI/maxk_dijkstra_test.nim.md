@@ -76,18 +76,18 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/maxk_dijkstra_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/maxk_dijkstra_test.nim

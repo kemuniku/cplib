@@ -208,18 +208,18 @@ data:
     \ doAssert not df32.hasNegativeCycle()\n    d32.warshall_floyd_nonnegative_inplace()\n\
     \    df.warshall_floyd_nonnegative_inplace()\n    df32.warshall_floyd_nonnegative_inplace()\n"
   dependsOn:
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/warshall_floyd_avx512.nim
-  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/warshall_floyd_avx512.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx512_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 16:47:56+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/warshall_floyd_avx512_test.nim

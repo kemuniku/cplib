@@ -37,13 +37,13 @@ data:
     \    ans[i] = tree.lca(u, v)\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/lca.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/lca/lca_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-09-16 23:45:18+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/lca/lca_yosupo_test.nim

@@ -368,7 +368,7 @@ data:
   isVerificationFile: false
   path: cplib/tree/lca.nim
   requiredBy: []
-  timestamp: '2026-09-16 23:45:18+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/lca/la_jump_on_tree_yosupo_test.nim

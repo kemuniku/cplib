@@ -40,13 +40,13 @@ data:
     \   dp[j] = max(dp[j], dp[i] + 1)\necho dp[itg[n-1]]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/SCC.nim
   isVerificationFile: false
   path: verify/graph/static/scc_abc335e_static_test_.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/static/scc_abc335e_static_test_.nim

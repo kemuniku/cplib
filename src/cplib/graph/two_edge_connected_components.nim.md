@@ -59,13 +59,13 @@ data:
     \u307E\u3059\u3002\n        result = initTwoEdgeConnectedComponents(initLowLink(g))\n"
   dependsOn:
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/two_edge_connected_components.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/two_edge_connected_components_test.nim

@@ -48,9 +48,9 @@ data:
     \ 0..<q:\n    var p = get()\n    if on_edge(poly, p): echo 1\n    elif p in poly:\
     \ echo 2\n    else: echo 0\n"
   dependsOn:
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim

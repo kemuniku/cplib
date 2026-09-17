@@ -56,11 +56,11 @@ data:
 
     '
   dependsOn:
-  - cplib/convolution/min_plus_convolution.nim
-  - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
+  - cplib/utils/monotone_minima.nim
   - cplib/convolution/min_plus_convolution.nim
   - cplib/utils/monotone_minima.nim
+  - cplib/convolution/min_plus_convolution.nim
   - cplib/utils/smawk.nim
   isVerificationFile: true
   path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim

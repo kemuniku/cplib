@@ -57,12 +57,12 @@ data:
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/AI/hld_forest_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/hld_forest_test.nim

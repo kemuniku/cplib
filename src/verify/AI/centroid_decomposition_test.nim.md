@@ -96,14 +96,14 @@ data:
     \    doAssert starCd.depth[v] == 1\n        doAssert starCd.children[v].len ==\
     \ 0\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/centroid_decomposition.nim
   - cplib/tree/centroid_decomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/centroid_decomposition_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/centroid_decomposition_test.nim

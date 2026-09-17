@@ -57,12 +57,12 @@ data:
 
     '
   dependsOn:
+  - cplib/math/isqrt.nim
   - cplib/tmpl/qcfium.nim
   - cplib/tmpl/citrus.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/tmpl/citrus.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/citrus.nim
+  - cplib/math/isqrt.nim
   - cplib/tmpl/qcfium.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

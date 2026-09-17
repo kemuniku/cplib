@@ -180,8 +180,8 @@ data:
     \ t in 1..<k:\n                if answer.assignment[opt.kpsGe(i, t)]: inc result.assignment[i]\n"
   dependsOn:
   - cplib/utils/project_selection.nim
-  - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
+  - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
   isVerificationFile: false
   path: cplib/utils/k_project_selection.nim

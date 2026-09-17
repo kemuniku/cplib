@@ -66,17 +66,17 @@ data:
     \\n\")\n\n\n\n\n\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/SWAG.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/collections/SWAG.nim
-  - cplib/collections/SWAG.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/SWAG.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/tree/auxiliaryweightedtree_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/auxiliaryweightedtree_test.nim

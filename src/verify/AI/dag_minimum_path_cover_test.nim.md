@@ -65,16 +65,16 @@ data:
 
     '
   dependsOn:
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   isVerificationFile: true
   path: verify/AI/dag_minimum_path_cover_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/dag_minimum_path_cover_test.nim

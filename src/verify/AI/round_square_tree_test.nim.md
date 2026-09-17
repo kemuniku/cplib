@@ -86,17 +86,17 @@ data:
     \ == 2\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/lowlink.nim
+  - cplib/graph/biconnected_components.nim
   - cplib/graph/round_square_tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/round_square_tree.nim
-  - cplib/graph/biconnected_components.nim
   - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/round_square_tree.nim
   isVerificationFile: true
   path: verify/AI/round_square_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 10:23:34+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/round_square_tree_test.nim

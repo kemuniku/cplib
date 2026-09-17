@@ -41,14 +41,14 @@ data:
     \    return (b*x[0]+c*x[1],x[1])\n\necho G.solve_Rerooting(merge,(mint(0),0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \ \")\n\n"
   dependsOn:
-  - cplib/tree/rerooting.nim
-  - cplib/tree/rerooting.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/tree/rerooting.nim
+  - cplib/tree/rerooting.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/rerooting_test.nim

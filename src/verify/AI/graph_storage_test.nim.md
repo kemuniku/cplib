@@ -89,23 +89,23 @@ data:
     \    g.add_range_to_range_edge(0, 2, 2, 4, 7)\n    g.add_point_to_point_edge(0,\
     \ 1, 3)\n    doAssert g.graph.dijkstra(0)[0..<4] == @[0, 3, 7, 7]\n    for u in\
     \ 0..<g.len:\n        for (v, cost, id) in g.graph.to_and_cost_and_id(u):\n  \
-    \          doAssert g.graph.get_edge(id) == EdgeInfo[int](src: u, dst: v, cost:\
-    \ cost)\n\necho \"Hello World\""
+    \          doAssert g.graph.get_edge(id) == (u, v, cost)\n\necho \"Hello World\"\
+    \n"
   dependsOn:
-  - cplib/graph/dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/range_edge_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/range_edge_graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/range_edge_graph.nim
   - cplib/graph/dijkstra.nim
-  - cplib/graph/range_edge_graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/graph_storage_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/graph_storage_test.nim

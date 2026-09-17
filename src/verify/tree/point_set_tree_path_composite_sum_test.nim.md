@@ -71,18 +71,18 @@ data:
     \ backward(v))\n    answers.add(dp.prod(ii()).sum.val)\necho answers.join(\"\\\
     n\")\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/point_set_tree_path_composite_sum_test.nim

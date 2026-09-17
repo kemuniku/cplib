@@ -61,22 +61,22 @@ data:
     \    echo costs[t], \" \", len(path)-1\n    for i in 0..<len(path)-1:\n      \
     \  echo path[i], \" \", path[i+1]\n"
   dependsOn:
-  - cplib/graph/dijkstra.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/static/shortest_path_static_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:22:45+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/shortest_path_static_test.nim

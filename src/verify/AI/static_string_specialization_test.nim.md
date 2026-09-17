@@ -66,10 +66,10 @@ data:
   dependsOn:
   - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/AI/static_string_specialization_test.nim
   requiredBy: []

@@ -50,18 +50,18 @@ data:
     \ costSum == 6\n\nvar disconnected = initWeightedUnDirectedGraph(3)\ndisconnected.add_edge(0,\
     \ 1, 1)\nassert disconnected.get_MST_cost == INF64\n"
   dependsOn:
-  - cplib/graph/kruskal.nim
-  - cplib/graph/kruskal.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
+  - cplib/graph/kruskal.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/kruskal.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/AI/kruskal_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/kruskal_test.nim

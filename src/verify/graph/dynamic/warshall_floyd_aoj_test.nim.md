@@ -49,18 +49,18 @@ data:
     \ == -INF64):\n    echo \"NEGATIVE CYCLE\"\n    quit()\nfor i in 0..<n:\n    var\
     \ d = d[i].mapIt(if it == INF64: \"INF\" else: ($it)).join(\" \")\n    echo d\n"
   dependsOn:
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 16:47:56+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/warshall_floyd_aoj_test.nim

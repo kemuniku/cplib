@@ -49,18 +49,18 @@ data:
     \ v, c)\n\nvar terminal = (0..<k-1).toseq\n\nvar dp = steiner_tree_dp(g, terminal,\
     \ INF64)\nfor i in k-1..<n:\n    echo dp[^1][i]\n"
   dependsOn:
-  - cplib/utils/bititers.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/utils/bititers.nim
   - cplib/utils/constants.nim
+  - cplib/utils/bititers.nim
   isVerificationFile: false
   path: verify/graph/steiner_tree_abc364g_test_.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/graph/steiner_tree_abc364g_test_.nim

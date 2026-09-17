@@ -47,14 +47,14 @@ data:
     \ tree.joinParent(v)\n        for v in 0..<grown:\n            doAssert tree.root(v)\
     \ == 0\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
   isVerificationFile: true
   path: verify/AI/general_matching_tree_union_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/general_matching_tree_union_test.nim

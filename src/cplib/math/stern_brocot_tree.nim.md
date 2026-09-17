@@ -202,7 +202,7 @@ data:
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/stern_brocot_tree.nim

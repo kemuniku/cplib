@@ -132,8 +132,8 @@ data:
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree.nim
   requiredBy:
@@ -141,7 +141,7 @@ data:
   - cplib/tree/static_top_tree_dp.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/tree/point_set_tree_path_composite_sum_test.nim

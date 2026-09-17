@@ -69,18 +69,18 @@ data:
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/tree/hld/hld_past202004o_test_.nim
   requiredBy: []
-  timestamp: '2026-09-14 07:58:37+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_past202004o_test_.nim

@@ -75,15 +75,15 @@ data:
     \       result.add_edge(i,j,c)\n                uf.unite(i,j)\n"
   dependsOn:
   - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/kruskal.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/kruskal_test.nim

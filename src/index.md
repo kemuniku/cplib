@@ -362,6 +362,9 @@ data:
       path: cplib/graph/count_topologicalsort.nim
       title: cplib/graph/count_topologicalsort.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/cycle_detection.nim
+      title: cplib/graph/cycle_detection.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dag_minimum_path_cover.nim
       title: cplib/graph/dag_minimum_path_cover.nim
     - icon: ':heavy_check_mark:'
@@ -1421,6 +1424,9 @@ data:
       path: verify/AI/cumsum2d_test.nim
       title: verify/AI/cumsum2d_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/cycle_detection_test.nim
+      title: verify/AI/cycle_detection_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/dag_minimum_path_cover_test.nim
       title: verify/AI/dag_minimum_path_cover_test.nim
     - icon: ':heavy_check_mark:'
@@ -2387,6 +2393,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/biconnected_components_test.nim
       title: verify/graph/biconnected_components_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/cycle_detection_test.nim
+      title: verify/graph/cycle_detection_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/cycle_detection_undirected_test.nim
+      title: verify/graph/cycle_detection_undirected_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/general_matching_test.nim
       title: verify/graph/general_matching_test.nim

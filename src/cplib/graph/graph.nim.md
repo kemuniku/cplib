@@ -39,6 +39,12 @@ data:
     path: cplib/graph/count_topologicalsort.nim
     title: cplib/graph/count_topologicalsort.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/cycle_detection.nim
+    title: cplib/graph/cycle_detection.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/cycle_detection.nim
+    title: cplib/graph/cycle_detection.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dag_minimum_path_cover.nim
     title: cplib/graph/dag_minimum_path_cover.nim
   - icon: ':heavy_check_mark:'
@@ -514,6 +520,12 @@ data:
     path: verify/AI/count_topologicalsort_test.nim
     title: verify/AI/count_topologicalsort_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/cycle_detection_test.nim
+    title: verify/AI/cycle_detection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/cycle_detection_test.nim
+    title: verify/AI/cycle_detection_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/dag_minimum_path_cover_test.nim
     title: verify/AI/dag_minimum_path_cover_test.nim
   - icon: ':heavy_check_mark:'
@@ -807,6 +819,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_test.nim
+    title: verify/graph/cycle_detection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_test.nim
+    title: verify/graph/cycle_detection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_undirected_test.nim
+    title: verify/graph/cycle_detection_undirected_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/cycle_detection_undirected_test.nim
+    title: verify/graph/cycle_detection_undirected_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -1229,48 +1253,51 @@ data:
     O(1)\u3002\n        g.len\n\n    proc edge_count*[T](g: DynamicGraph[T] or StaticGraph[T]):\
     \ int =\n        ## \u8FBA\u6570\u3092\u8FD4\u3059\u3002\u7121\u5411\u8FBA\u3082\
     \u4E00\u8FBA\u3068\u3057\u3066\u6570\u3048\u308B\u3002O(1)\u3002\n        g.edge_info.len\n\
-    \n    proc get_edge*[T](g: DynamicGraph[T] or StaticGraph[T], id: int): EdgeInfo[T]\
-    \ =\n        ## \u8FBA\u756A\u53F7\u304B\u3089\u8FFD\u52A0\u6642\u306E\u5411\u304D\
-    \u306E\u8FBA\u60C5\u5831\u3092\u53D6\u5F97\u3059\u308B\u3002O(1)\u3002\n     \
-    \   g.edge_info[id]\n\n    iterator to_and_id*[T](g: DynamicGraph[T], x: int):\
-    \ tuple[dst: int, id: int] =\n        ## \u96A3\u63A5\u9802\u70B9\u3068\u8FBA\u756A\
-    \u53F7\u3092\u8FFD\u52A0\u9806\u306B\u5217\u6319\u3059\u308B\u3002O(deg(x))\u3002\
-    \n        for e in g.edges[x]: yield (e.dst.int, e.id.int)\n\n    iterator to_and_id*[T](g:\
-    \ StaticGraph[T], x: int): tuple[dst: int, id: int] =\n        ## \u96A3\u63A5\
+    \n    proc get_edge*[T](g: DynamicGraph[T] or StaticGraph[T], id: int): auto =\n\
+    \        ## \u8FBA\u756A\u53F7\u304B\u3089\u8FFD\u52A0\u6642\u306E\u5411\u304D\
+    \u3067\u3001\u91CD\u307F\u306A\u3057\u306F (src, dst)\u3001\u91CD\u307F\u3042\u308A\
+    \u306F (src, dst, cost) \u3092\u8FD4\u3059\u3002O(1)\u3002\n        let e = g.edge_info[id]\n\
+    \        when T is void:\n            (src: e.src, dst: e.dst)\n        else:\n\
+    \            (src: e.src, dst: e.dst, cost: e.cost)\n\n    iterator to_and_id*[T](g:\
+    \ DynamicGraph[T], x: int): tuple[dst: int, id: int] =\n        ## \u96A3\u63A5\
     \u9802\u70B9\u3068\u8FBA\u756A\u53F7\u3092\u8FFD\u52A0\u9806\u306B\u5217\u6319\
-    \u3059\u308B\u3002O(deg(x))\u3002\n        g.static_graph_initialized_check()\n\
+    \u3059\u308B\u3002O(deg(x))\u3002\n        for e in g.edges[x]: yield (e.dst.int,\
+    \ e.id.int)\n\n    iterator to_and_id*[T](g: StaticGraph[T], x: int): tuple[dst:\
+    \ int, id: int] =\n        ## \u96A3\u63A5\u9802\u70B9\u3068\u8FBA\u756A\u53F7\
+    \u3092\u8FFD\u52A0\u9806\u306B\u5217\u6319\u3059\u308B\u3002O(deg(x))\u3002\n\
+    \        g.static_graph_initialized_check()\n        for i in g.start[x]..<g.start[x\
+    \ + 1]:\n            let e = g.elist[i]\n            yield (e.dst.int, e.id.int)\n\
+    \n    iterator to_and_cost_and_id*[T](g: DynamicGraph[T], x: int): auto =\n  \
+    \      ## \u96A3\u63A5\u9802\u70B9\u3001\u91CD\u307F\u3001\u8FBA\u756A\u53F7\u3092\
+    \u5217\u6319\u3059\u308B\u3002\u91CD\u307F\u306A\u3057\u306F\u91CD\u307F 1 \u3092\
+    \u8FD4\u3059\u3002O(deg(x))\u3002\n        for e in g.edges[x]:\n            when\
+    \ T is void: yield (e.dst.int, 1, e.id.int)\n            else: yield (e.dst.int,\
+    \ e.cost, e.id.int)\n\n    iterator to_and_cost_and_id*[T](g: StaticGraph[T],\
+    \ x: int): auto =\n        ## \u96A3\u63A5\u9802\u70B9\u3001\u91CD\u307F\u3001\
+    \u8FBA\u756A\u53F7\u3092\u5217\u6319\u3059\u308B\u3002\u91CD\u307F\u306A\u3057\
+    \u306F\u91CD\u307F 1 \u3092\u8FD4\u3059\u3002O(deg(x))\u3002\n        g.static_graph_initialized_check()\n\
     \        for i in g.start[x]..<g.start[x + 1]:\n            let e = g.elist[i]\n\
-    \            yield (e.dst.int, e.id.int)\n\n    iterator to_and_cost_and_id*[T](g:\
-    \ DynamicGraph[T], x: int): auto =\n        ## \u96A3\u63A5\u9802\u70B9\u3001\u91CD\
-    \u307F\u3001\u8FBA\u756A\u53F7\u3092\u5217\u6319\u3059\u308B\u3002\u91CD\u307F\
-    \u306A\u3057\u306F\u91CD\u307F 1 \u3092\u8FD4\u3059\u3002O(deg(x))\u3002\n   \
-    \     for e in g.edges[x]:\n            when T is void: yield (e.dst.int, 1, e.id.int)\n\
-    \            else: yield (e.dst.int, e.cost, e.id.int)\n\n    iterator to_and_cost_and_id*[T](g:\
-    \ StaticGraph[T], x: int): auto =\n        ## \u96A3\u63A5\u9802\u70B9\u3001\u91CD\
-    \u307F\u3001\u8FBA\u756A\u53F7\u3092\u5217\u6319\u3059\u308B\u3002\u91CD\u307F\
-    \u306A\u3057\u306F\u91CD\u307F 1 \u3092\u8FD4\u3059\u3002O(deg(x))\u3002\n   \
-    \     g.static_graph_initialized_check()\n        for i in g.start[x]..<g.start[x\
+    \            when T is void: yield (e.dst.int, 1, e.id.int)\n            else:\
+    \ yield (e.dst.int, e.cost, e.id.int)\n\n    iterator to_and_cost*[T](g: DynamicGraph[T],\
+    \ x: int): auto =\n        ## \u96A3\u63A5\u9802\u70B9\u3068\u91CD\u307F\u3092\
+    \u5217\u6319\u3059\u308B\u3002\u91CD\u307F\u306A\u3057\u306F\u91CD\u307F 1 \u3092\
+    \u8FD4\u3059\u3002O(deg(x))\u3002\n        for e in g.edges[x]:\n            when\
+    \ T is void: yield (e.dst.int, 1)\n            else: yield (e.dst.int, e.cost)\n\
+    \n    iterator to_and_cost*[T](g: StaticGraph[T], x: int): auto =\n        ##\
+    \ \u96A3\u63A5\u9802\u70B9\u3068\u91CD\u307F\u3092\u5217\u6319\u3059\u308B\u3002\
+    \u91CD\u307F\u306A\u3057\u306F\u91CD\u307F 1 \u3092\u8FD4\u3059\u3002O(deg(x))\u3002\
+    \n        g.static_graph_initialized_check()\n        for i in g.start[x]..<g.start[x\
     \ + 1]:\n            let e = g.elist[i]\n            when T is void: yield (e.dst.int,\
-    \ 1, e.id.int)\n            else: yield (e.dst.int, e.cost, e.id.int)\n\n    iterator\
-    \ to_and_cost*[T](g: DynamicGraph[T], x: int): auto =\n        ## \u96A3\u63A5\
-    \u9802\u70B9\u3068\u91CD\u307F\u3092\u5217\u6319\u3059\u308B\u3002\u91CD\u307F\
-    \u306A\u3057\u306F\u91CD\u307F 1 \u3092\u8FD4\u3059\u3002O(deg(x))\u3002\n   \
-    \     for e in g.edges[x]:\n            when T is void: yield (e.dst.int, 1)\n\
-    \            else: yield (e.dst.int, e.cost)\n\n    iterator to_and_cost*[T](g:\
-    \ StaticGraph[T], x: int): auto =\n        ## \u96A3\u63A5\u9802\u70B9\u3068\u91CD\
-    \u307F\u3092\u5217\u6319\u3059\u308B\u3002\u91CD\u307F\u306A\u3057\u306F\u91CD\
-    \u307F 1 \u3092\u8FD4\u3059\u3002O(deg(x))\u3002\n        g.static_graph_initialized_check()\n\
-    \        for i in g.start[x]..<g.start[x + 1]:\n            let e = g.elist[i]\n\
-    \            when T is void: yield (e.dst.int, 1)\n            else: yield (e.dst.int,\
-    \ e.cost)\n\n    iterator `[]`*[T](g: WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T],\
-    \ x: int): (int, T) =\n        ## \u96A3\u63A5\u9802\u70B9\u3068\u91CD\u307F\u3092\
-    \u8FFD\u52A0\u9806\u306B\u5217\u6319\u3059\u308B\u3002O(deg(x))\u3002\n      \
-    \  for e in g.edges[x]: yield (e.dst.int, e.cost)\n\n    iterator `[]`*[T](g:\
-    \ WeightedDirectedStaticGraph[T] or WeightedUnDirectedStaticGraph[T], x: int):\
-    \ (int, T) =\n        ## \u96A3\u63A5\u9802\u70B9\u3068\u91CD\u307F\u3092\u8FFD\
-    \u52A0\u9806\u306B\u5217\u6319\u3059\u308B\u3002O(deg(x))\u3002\n        g.static_graph_initialized_check()\n\
-    \        for i in g.start[x]..<g.start[x + 1]:\n            let e = g.elist[i]\n\
-    \            yield (e.dst.int, e.cost)\n\n    iterator `[]`*(g: UnWeightedDirectedGraph\
+    \ 1)\n            else: yield (e.dst.int, e.cost)\n\n    iterator `[]`*[T](g:\
+    \ WeightedDirectedGraph[T] or WeightedUnDirectedGraph[T], x: int): (int, T) =\n\
+    \        ## \u96A3\u63A5\u9802\u70B9\u3068\u91CD\u307F\u3092\u8FFD\u52A0\u9806\
+    \u306B\u5217\u6319\u3059\u308B\u3002O(deg(x))\u3002\n        for e in g.edges[x]:\
+    \ yield (e.dst.int, e.cost)\n\n    iterator `[]`*[T](g: WeightedDirectedStaticGraph[T]\
+    \ or WeightedUnDirectedStaticGraph[T], x: int): (int, T) =\n        ## \u96A3\u63A5\
+    \u9802\u70B9\u3068\u91CD\u307F\u3092\u8FFD\u52A0\u9806\u306B\u5217\u6319\u3059\
+    \u308B\u3002O(deg(x))\u3002\n        g.static_graph_initialized_check()\n    \
+    \    for i in g.start[x]..<g.start[x + 1]:\n            let e = g.elist[i]\n \
+    \           yield (e.dst.int, e.cost)\n\n    iterator `[]`*(g: UnWeightedDirectedGraph\
     \ or UnWeightedUnDirectedGraph, x: int): int =\n        ## \u96A3\u63A5\u9802\u70B9\
     \u3092\u8FFD\u52A0\u9806\u306B\u5217\u6319\u3059\u308B\u3002O(deg(x))\u3002\n\
     \        for e in g.edges[x]: yield e.dst.int\n\n    iterator `[]`*(g: UnWeightedDirectedStaticGraph\
@@ -1468,6 +1495,8 @@ data:
   - cplib/graph/round_square_tree.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/cycle_detection.nim
+  - cplib/graph/cycle_detection.nim
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/topologicalsort.nim
@@ -1482,7 +1511,7 @@ data:
   - cplib/graph/block_cut_tree.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/itertools/accumulated_test.nim
@@ -1547,8 +1576,12 @@ data:
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/general_matching_test.nim
   - verify/graph/general_matching_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
+  - verify/graph/cycle_detection_test.nim
+  - verify/graph/cycle_detection_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/lowlink_articulation_test.nim
@@ -1593,6 +1626,8 @@ data:
   - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
   - verify/AI/itertools_test.nim
   - verify/AI/itertools_test.nim
+  - verify/AI/cycle_detection_test.nim
+  - verify/AI/cycle_detection_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/itertools_enumeration_test.nim

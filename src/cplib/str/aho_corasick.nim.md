@@ -215,7 +215,7 @@ data:
   isVerificationFile: false
   path: cplib/str/aho_corasick.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:33:36+09:00'
+  timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/aho_corasick_test.nim
