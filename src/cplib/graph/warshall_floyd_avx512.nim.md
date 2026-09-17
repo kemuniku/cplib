@@ -1284,12 +1284,12 @@ data:
     \u8CA0\u8FBA\u3082\u8A31\u5BB9\u3059\u308B\u3002\n        warshall_floyd_nonnegative_inplace_impl(d,\
     \ zero, inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd_avx512.nim
   requiredBy:

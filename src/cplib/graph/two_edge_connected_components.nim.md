@@ -58,10 +58,10 @@ data:
     \u57DF\u3067\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u306B\u5206\u89E3\u3057\
     \u307E\u3059\u3002\n        result = initTwoEdgeConnectedComponents(initLowLink(g))\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/two_edge_connected_components.nim
   requiredBy: []

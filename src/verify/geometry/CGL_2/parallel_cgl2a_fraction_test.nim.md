@@ -45,8 +45,8 @@ data:
   dependsOn:
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   isVerificationFile: true

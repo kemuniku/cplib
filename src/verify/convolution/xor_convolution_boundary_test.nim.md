@@ -65,14 +65,14 @@ data:
     expectAssertion:\n    var invalid = @[1, 2, 3]\n    FastHadamardTransForm(invalid)\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/xor_convolution.nim
+  - cplib/convolution/xor_convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/xor_convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/xor_convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/convolution/xor_convolution_boundary_test.nim

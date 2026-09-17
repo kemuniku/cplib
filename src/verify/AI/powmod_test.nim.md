@@ -28,21 +28,18 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-
-    echo "Hello World"
-
-
-    import cplib/math/powmod
-
-
-    assert powmod(2, 10, 1000) == 24
-
-    assert powmod(3, 0, 7) == 1
-
-    assert powmod(10, 2, 6) == 4
-
-    '
+  code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
+    echo \"Hello World\"\n\nimport cplib/math/powmod\n\nassert powmod(2, 10, 1000)\
+    \ == 24\nassert powmod(3, 0, 7) == 1\nassert powmod(10, 2, 6) == 4\nassert powmod(-2,\
+    \ 3, 5) == 2\nassert powmod(-2, 2, 5) == 4\nassert powmod(-5, 3, 5) == 0\nassert\
+    \ powmod(-2, 0, 5) == 1\nassert powmod(-2, 3, 1) == 0\nassert powmod(low(int),\
+    \ 1, high(int)) == high(int) - 1\n\nfor m in 1..31:\n    for a in -64..64:\n \
+    \       var expected = 1 mod m\n        let base = ((a mod m) + m) mod m\n   \
+    \     for n in 0..20:\n            assert powmod(a, n, m) == expected\n      \
+    \      expected = expected * base mod m\n\nwhen compileOption(\"assertions\"):\n\
+    \    for m in [-5, 0]:\n        var rejected = false\n        try:\n         \
+    \   discard powmod(2, 3, m)\n        except AssertionDefect:\n            rejected\
+    \ = true\n        assert rejected\n"
   dependsOn:
   - cplib/math/powmod.nim
   - cplib/math/powmod.nim
@@ -51,7 +48,7 @@ data:
   isVerificationFile: true
   path: verify/AI/powmod_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 02:04:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/powmod_test.nim

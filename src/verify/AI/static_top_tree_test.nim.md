@@ -141,16 +141,16 @@ data:
     \ size - chain)\n    appendTree(0, largeN)\n    assert parent.len == largeN\n\
     \    checkLarge(parent)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/static_top_tree_dp.nim
-  - cplib/tree/static_top_tree_dp.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/static_top_tree_dp.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree_dp.nim
   isVerificationFile: true
   path: verify/AI/static_top_tree_test.nim
   requiredBy: []

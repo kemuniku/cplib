@@ -60,13 +60,13 @@ data:
     \ mint(c)))\n    else:\n        var l, r = ii()\n        echo seg[l..<r][0]\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/collections/lazysegtree.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true

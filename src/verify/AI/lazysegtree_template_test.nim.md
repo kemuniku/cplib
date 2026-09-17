@@ -134,16 +134,16 @@ data:
     Hello World\"\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/collections/lazysegtree_template.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/collections/lazysegtree_static_op.nim
   - cplib/collections/lazysegtree_template.nim
-  - cplib/math/isqrt.nim
+  - cplib/collections/lazysegtree_static_op.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/collections/lazysegtree_static_op.nim
-  - cplib/collections/lazysegtree_static_op.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/lazysegtree_template_test.nim

@@ -72,8 +72,8 @@ data:
     \ (e.src, e.dst, e.lower, e.upper) == edges[i]\n    doAssert g.flow(src, dst)\
     \ == expected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/lowerbound_maxflow.nim
   - cplib/graph/maxflow.nim
+  - cplib/graph/lowerbound_maxflow.nim
   - cplib/graph/maxflow.nim
   - cplib/graph/lowerbound_maxflow.nim
   isVerificationFile: true

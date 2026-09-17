@@ -87,8 +87,8 @@ data:
     check(100000, @[(99998, 99999), (2, 2)], 1)\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
+  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
   isVerificationFile: true
   path: verify/AI/general_matching_test.nim

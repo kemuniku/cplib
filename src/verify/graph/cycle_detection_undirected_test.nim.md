@@ -43,9 +43,9 @@ data:
     \ \")\n    echo cycle.join(\" \")\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/cycle_detection.nim
+  - cplib/graph/cycle_detection.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/cycle_detection.nim
-  - cplib/graph/cycle_detection.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true

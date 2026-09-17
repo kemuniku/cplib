@@ -114,30 +114,30 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/modint.nim
+  - cplib/math/many_factorials.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/product_tree.nim
   - cplib/fps/shift_of_sampling_points.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/math/many_factorials.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/product_tree.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/many_factorials.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/shift_of_sampling_points.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/fps/product_tree.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/many_factorials.nim
   isVerificationFile: true
   path: verify/math/many_factorials_test.nim
   requiredBy: []

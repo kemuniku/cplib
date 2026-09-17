@@ -237,19 +237,19 @@ data:
     \ \u3067\u6C42\u3081\u308B\u3002\n        shiftOfSamplingPoints(ys, t, ys.len)\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/fps/shift_of_sampling_points.nim
   requiredBy:

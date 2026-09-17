@@ -80,19 +80,19 @@ data:
     \ cmp(tmp2,tmp2) == 0\n\n"
   dependsOn:
   - cplib/str/merged_static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/utils/constants.nim
   - cplib/str/merged_static_string.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
+  - cplib/utils/constants.nim
   - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/str/static_string.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []
