@@ -2,6 +2,7 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
     const CPLIB_UTILS_RANDOMHELPER* = 1
     import random,sequtils,sets,algorithm,math,strutils
     import cplib/graph/graph
+    import cplib/graph/planar_graph
     import cplib/tree/prufer
     import cplib/math/isprime
     # https://kanpurin.hatenablog.com/entry/2023/02/20/184752
@@ -177,6 +178,30 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
                         result.add_edge(u,v)
                         break
 
+
+    proc random_planar_graph*(n,m:int):UnWeightedUnDirectedGraph=
+        ## n頂点m辺の単純平面グラフを生成する。全ての形が生成可能だが、一様ランダムではない。
+        ## 全頂点対をランダム順に試す。期待 O(n^3 log n) 時間、O(n^2) 空間。連結性は保証しない。
+        assert n >= 0, "nは非負である必要があります"
+        let maximum = if n < 3: n*(n-1) div 2 else: 3*n-6
+        assert m >= 0 and m <= maximum, "辺数は単純平面グラフで実現可能な範囲である必要があります"
+        result = initUnWeightedUnDirectedGraph(n)
+        if m == 0: return
+        var candidates: seq[(int,int)]
+        for u in 0..<n:
+            for v in u+1..<n:
+                candidates.add((u,v))
+        shuffle(candidates)
+        for (u,v) in candidates:
+            result.add_edge(u,v)
+            if result.is_planar_graph():
+                if result.edge_count == m: return
+            else:
+                # 直前に追加した辺だけを、辺情報と両端の隣接配列から取り消す。
+                discard result.edge_info.pop()
+                discard result.edges[u].pop()
+                discard result.edges[v].pop()
+        assert result.edge_count == m, "生成されたグラフの辺数が指定値と一致しません"
 
     proc random_connected_graph*(n,m:int):UnWeightedUnDirectedGraph=
         ## ランダムな単純連結グラフを生成。ただし、一様ランダムでない。
