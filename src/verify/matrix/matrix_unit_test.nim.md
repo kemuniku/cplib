@@ -67,10 +67,10 @@ data:
     \ m4 = a * c3\n    assert m3.h == 1 and m3.w == 3\n    assert m4.h == 2 and m4.w\
     \ == 1\n"
   dependsOn:
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matops.nim
   - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix.nim
   isVerificationFile: true

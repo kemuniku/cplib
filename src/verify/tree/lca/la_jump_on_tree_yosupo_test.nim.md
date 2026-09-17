@@ -37,8 +37,8 @@ data:
     \ ii()\n    let d = ii()\n    ans[i] = tree.la(u, v, d)\necho ans.join(\"\\n\"\
     )\n"
   dependsOn:
-  - cplib/tree/lca.nim
   - cplib/graph/graph.nim
+  - cplib/tree/lca.nim
   - cplib/graph/graph.nim
   - cplib/tree/lca.nim
   isVerificationFile: true

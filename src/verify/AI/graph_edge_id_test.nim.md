@@ -148,28 +148,28 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/graph/reverse_edge.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
-  - cplib/graph/steiner_tree.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/graph_edge_id_test.nim
   requiredBy: []

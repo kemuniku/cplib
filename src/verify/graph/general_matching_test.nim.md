@@ -41,9 +41,9 @@ data:
     \ = g.maximum_matching()\necho matching.len\nfor (u, v) in matching:\n    echo\
     \ u, \" \", v\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/general_matching.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim

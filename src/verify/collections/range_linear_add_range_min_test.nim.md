@@ -36,10 +36,10 @@ data:
     \   let l = ii()\n    let r = ii()\n    if t == 0:\n        let b = ii()\n   \
     \     let c = ii()\n        seg.add(l..<r, b, c)\n    else:\n        echo seg[l..<r]\n"
   dependsOn:
-  - cplib/collections/range_linear_add_range_min.nim
-  - cplib/collections/range_linear_add_range_min.nim
   - cplib/math/int128.nim
   - cplib/math/int128.nim
+  - cplib/collections/range_linear_add_range_min.nim
+  - cplib/collections/range_linear_add_range_min.nim
   isVerificationFile: true
   path: verify/collections/range_linear_add_range_min_test.nim
   requiredBy: []

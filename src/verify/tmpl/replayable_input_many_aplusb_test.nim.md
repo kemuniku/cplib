@@ -35,8 +35,8 @@ data:
     \    for i in 0 ..< q:\n        let a = ii()\n        let b = input(int)\n   \
     \     doAssert a + b == sums[i]\n        print(a + b)\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
   - cplib/tmpl/replayable_input.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/replayable_input.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true

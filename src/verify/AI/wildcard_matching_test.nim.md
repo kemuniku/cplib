@@ -89,22 +89,22 @@ data:
     \            if t[j] != wild and s[offset + j] != wild:\n                t[j]\
     \ = s[offset + j]\n        check(s, t, wild)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/str/wildcard_matching.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/str/wildcard_matching.nim
+  - cplib/str/wildcard_matching.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: true
   path: verify/AI/wildcard_matching_test.nim
   requiredBy: []

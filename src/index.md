@@ -401,6 +401,9 @@ data:
       path: cplib/graph/kruskal.nim
       title: cplib/graph/kruskal.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/lowerbound_maxflow.nim
+      title: cplib/graph/lowerbound_maxflow.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/lowlink.nim
       title: cplib/graph/lowlink.nim
     - icon: ':heavy_check_mark:'
@@ -1651,6 +1654,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/list_procs_test.nim
       title: verify/AI/list_procs_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/lowerbound_maxflow_test.nim
+      title: verify/AI/lowerbound_maxflow_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/lowlink_test.nim
       title: verify/AI/lowlink_test.nim

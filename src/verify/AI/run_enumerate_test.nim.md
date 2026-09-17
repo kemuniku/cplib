@@ -49,8 +49,8 @@ data:
     \ run_enumerate(\"abc\") == @[]\nassert run_enumerate(@[1, 2, 1, 2, 1, 2]) ==\
     \ @[(2, 0, 6)]\n"
   dependsOn:
-  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
+  - cplib/str/zalgorithm.nim
   - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
   isVerificationFile: true

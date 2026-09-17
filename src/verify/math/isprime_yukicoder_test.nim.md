@@ -45,14 +45,14 @@ data:
     \    let x = ii()\n    if isprime(x):\n        echo x, \" \", 1\n    else:\n \
     \       echo x, \" \", 0\n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
-  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []
