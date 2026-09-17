@@ -58,7 +58,12 @@ when not declared CPLIB_MATRIX_MATRIX:
                     assign(a[i, j], x)
         proc op*[T](a, b: Matrix[T]): Matrix[T] = (result = a; assign(result, b))
         proc op*[T](a: Matrix[T], x: T): Matrix[T] = (result = a; assign(result, x))
-        proc op*[T](x: T, a: Matrix[T]): Matrix[T] = op(a, x)
+        proc op*[T](x: T, a: Matrix[T]): Matrix[T] =
+            ## 各要素に対してスカラーを左辺として演算する。O(HW)。
+            result = a
+            for i in 0..<a.h:
+                for j in 0..<a.w:
+                    result[i, j] = op(x, a[i, j])
     defineMatrixAssignmentOp(`+=`, `+`)
     defineMatrixAssignmentOp(`-=`, `-`)
 
@@ -74,7 +79,12 @@ when not declared CPLIB_MATRIX_MATRIX:
                     a[i, j] = op(a[i, j], x)
         proc op*(a, b: Matrix[int]): Matrix[int] = (result = a; assign(result, b))
         proc op*(a: Matrix[int], x: int): Matrix[int] = (result = a; assign(result, x))
-        proc op*(x: int, a: Matrix[int]): Matrix[int] = op(a, x)
+        proc op*(x: int, a: Matrix[int]): Matrix[int] =
+            ## 各要素に対して整数を左辺として演算する。O(HW)。
+            result = a
+            for i in 0..<a.h:
+                for j in 0..<a.w:
+                    result[i, j] = op(x, a[i, j])
     defineMatrixIntOps(`and=`, `and`)
     defineMatrixIntOps(`or=`, `or`)
     defineMatrixIntOps(`xor=`, `xor`)
