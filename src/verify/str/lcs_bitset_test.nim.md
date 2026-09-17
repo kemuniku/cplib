@@ -74,24 +74,24 @@ data:
     \nimport strutils\nimport cplib/str/lcs_bitset\n\nfor _ in 0..<stdin.readLine().parseInt():\n\
     \    let s = stdin.readLine()\n    let t = stdin.readLine()\n    echo LCS(s, t)\n"
   dependsOn:
+  - cplib/str/lcs_bitset.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/bitset_avx512.nim
-  - cplib/collections/bitset_avx512.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/str/lcs_bitset.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/str/lcs_bitset.nim
+  - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_shift_assign.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/str/lcs_bitset.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   isVerificationFile: true
   path: verify/str/lcs_bitset_test.nim
   requiredBy: []

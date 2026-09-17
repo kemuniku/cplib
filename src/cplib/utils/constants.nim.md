@@ -382,6 +382,12 @@ data:
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_beats_assignment_test.nim
+    title: verify/collections/segtree_beats_assignment_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_beats_assignment_test.nim
+    title: verify/collections/segtree_beats_assignment_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
@@ -631,6 +637,8 @@ data:
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/collections/segtree_beats_assignment_test.nim
+  - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

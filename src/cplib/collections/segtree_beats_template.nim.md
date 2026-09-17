@@ -27,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_beats_assignment_test.nim
+    title: verify/collections/segtree_beats_assignment_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_beats_assignment_test.nim
+    title: verify/collections/segtree_beats_assignment_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -91,26 +97,30 @@ data:
     \ p: Natural, val: T) = self.seg.update(p, init_S(val, self.inf))\n    proc `[]`*[T](self:\
     \ var RangeChminChmaxRangeSumMaxMin[T], p: Natural or HSlice[int, int]): S_rch[T]\
     \ = self.seg[p]\n    proc `[]=`*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
-    \ p: Natural, val: T): S_rch[T] = self.update(p, val)\n    proc len*[T](self:\
-    \ var RangeChminChmaxRangeSumMaxMin[T]): int = self.seg.len\n    proc `$`*[T](self:\
-    \ var RangeChminChmaxRangeSumMaxMin[T]): string = $(self.seg)\n    proc chmin*[T](self:\
-    \ var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
-    \ F_rch[T](lb: -self.inf, ub: val, add: self.zero))\n    proc chmax*[T](self:\
-    \ var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
-    \ F_rch[T](lb: val, ub: self.inf, add: self.zero))\n    proc add*[T](self: var\
-    \ RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
-    \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n"
+    \ p: Natural, val: T) =\n        ## \u6DFB\u5B57p\u306E\u8981\u7D20\u3092val\u306B\
+    \u7F6E\u304D\u63DB\u3048\u308B\u3002O(log N)\u3002\n        self.update(p, val)\n\
+    \    proc len*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): int = self.seg.len\n\
+    \    proc `$`*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): string = $(self.seg)\n\
+    \    proc chmin*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int,\
+    \ int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf, ub: val, add:\
+    \ self.zero))\n    proc chmax*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
+    \ segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: val,\
+    \ ub: self.inf, add: self.zero))\n    proc add*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
+    \ segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf,\
+    \ ub: self.inf, add: val))\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/segtree_beats_assignment_test.nim
+  - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/AI/segtree_beats_template_test.nim

@@ -41,9 +41,9 @@ data:
     \ \")\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   isVerificationFile: true

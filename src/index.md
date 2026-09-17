@@ -2071,6 +2071,9 @@ data:
       path: verify/collections/range_reverse_segtree_insert_erase_test.nim
       title: verify/collections/range_reverse_segtree_insert_erase_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/rollback_unionfind_count_test.nim
+      title: verify/collections/rollback_unionfind_count_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/rollbackuf_yosupo_snap_test.nim
       title: verify/collections/rollbackuf_yosupo_snap_test.nim
     - icon: ':heavy_check_mark:'
@@ -2079,6 +2082,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/root_rangesum_test.nim
       title: verify/collections/root_rangesum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_beats_assignment_test.nim
+      title: verify/collections/segtree_beats_assignment_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/staticRMQ_test.nim
       title: verify/collections/staticRMQ_test.nim
@@ -2258,6 +2264,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/convolution/relaxed_convolution_test.nim
       title: verify/convolution/relaxed_convolution_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/xor_convolution_boundary_test.nim
+      title: verify/convolution/xor_convolution_boundary_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/convolution/xor_convolution_test.nim
       title: verify/convolution/xor_convolution_test.nim

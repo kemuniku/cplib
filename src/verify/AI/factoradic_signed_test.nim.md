@@ -175,23 +175,23 @@ data:
     echo \"Hello World\"\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/factoradic.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/factoradic.nim
-  - cplib/modint/modint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/factoradic.nim
   - cplib/math/isqrt.nim
-  - cplib/math/bigint.nim
-  - cplib/math/bigint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/AI/factoradic_signed_test.nim
   requiredBy: []

@@ -307,8 +307,8 @@ data:
     \u3067\u3059\"\n        return base.suffix_upperbound(S) - base.suffix_lowerbound(S)\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim

@@ -655,9 +655,9 @@ data:
     \ x.bits[0], size.csize_t) != 0\n"
   dependsOn:
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: false
   path: cplib/collections/staticbitset_avx512.nim
   requiredBy: []

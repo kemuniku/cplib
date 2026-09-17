@@ -73,14 +73,14 @@ data:
     \     flg = false\n                    break\n            if flg:\n          \
     \      return a"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/powmod.nim
   - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   isVerificationFile: false

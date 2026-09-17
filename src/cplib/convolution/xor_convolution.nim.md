@@ -10,6 +10,12 @@ data:
     path: verify/AI/xor_convolution_test.nim
     title: verify/AI/xor_convolution_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_boundary_test.nim
+    title: verify/convolution/xor_convolution_boundary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_boundary_test.nim
+    title: verify/convolution/xor_convolution_boundary_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/xor_convolution_test.nim
     title: verify/convolution/xor_convolution_test.nim
   - icon: ':heavy_check_mark:'
@@ -28,25 +34,33 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_CONVOLUTION_XOR_CONVOLUTION:\n    const CPLIB_CONVOLUTION_XOR_CONVOLUTION*\
     \ = 1\n    import bitops\n    proc FastHadamardTransForm*[T](u:var seq[T])=\n\
-    \        var n = len(u)\n        var i = 1\n        while i<n:\n            for\
-    \ j in 0..<(n):\n                if (j and i) == 0:\n                    var x\
-    \ = u[j]\n                    var y = u[j+i]\n                    u[j] = x+y\n\
-    \                    u[j+i] = x-y\n            i = i shl 1\n\n    proc xorConvolution*[T](u,v:seq[T]):seq[T]=\n\
-    \        var u = u;var v = v;\n        FastHadamardTransForm(u)\n        FastHadamardTransForm(v)\n\
-    \        for i in 0..<len(u):\n            u[i] *= v[i]\n        FastHadamardTransForm(u)\n\
-    \        when T is int:\n            var k = (len(u)-1).fastLog2() + 1\n     \
-    \       assert len(u) == (1 shl k), \"\u914D\u5217\u306E\u9577\u3055\u306F2^k\u3067\
-    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n            for i in\
-    \ 0..<len(u):\n                u[i] = u[i] shr k\n            return u\n     \
-    \   else:\n            var inv = T(1)/T(len(u))\n            for i in 0..<len(u):\n\
+    \        ## \u9577\u3055\u304C\u6B63\u306E2\u51AA\u306E\u914D\u5217\u3092\u30A2\
+    \u30C0\u30DE\u30FC\u30EB\u5909\u63DB\u3059\u308B\u3002O(N log N)\u3002\n     \
+    \   var n = len(u)\n        assert n > 0 and (n and (n-1)) == 0, \"\u914D\u5217\
+    \u306E\u9577\u3055\u306F\u6B63\u306E2\u51AA\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        var i = 1\n        while i<n:\n          \
+    \  for j in 0..<(n):\n                if (j and i) == 0:\n                   \
+    \ var x = u[j]\n                    var y = u[j+i]\n                    u[j] =\
+    \ x+y\n                    u[j+i] = x-y\n            i = i shl 1\n\n    proc xorConvolution*[T](u,v:seq[T]):seq[T]=\n\
+    \        ## \u540C\u3058\u6B63\u306E2\u51AA\u9577\u306E\u914D\u5217\u306EXOR\u7573\
+    \u307F\u8FBC\u307F\u3092\u8FD4\u3059\u3002O(N log N)\u3002\n        assert u.len\
+    \ == v.len, \"\u914D\u5217\u306E\u9577\u3055\u306F\u4E00\u81F4\u3059\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        var u = u;var v = v;\n       \
+    \ FastHadamardTransForm(u)\n        FastHadamardTransForm(v)\n        for i in\
+    \ 0..<len(u):\n            u[i] *= v[i]\n        FastHadamardTransForm(u)\n  \
+    \      when T is int:\n            let k = len(u).fastLog2()\n            for\
+    \ i in 0..<len(u):\n                u[i] = u[i] shr k\n            return u\n\
+    \        else:\n            var inv = T(1)/T(len(u))\n            for i in 0..<len(u):\n\
     \                u[i] *= inv\n            return u\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/convolution/xor_convolution.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/convolution/xor_convolution_boundary_test.nim
+  - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim
   - verify/AI/xor_convolution_test.nim

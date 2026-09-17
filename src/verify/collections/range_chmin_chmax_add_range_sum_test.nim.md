@@ -44,16 +44,16 @@ data:
     \ t == 2:\n        var l, r, b = ii()\n        seg.add(l..<r, b)\n    else:\n\
     \        var l, r = ii()\n        echo seg[l..<r].sum\n"
   dependsOn:
-  - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_beats_template.nim
   isVerificationFile: true
   path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_chmin_chmax_add_range_sum_test.nim

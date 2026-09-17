@@ -71,15 +71,15 @@ data:
     \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
   - cplib/graph/planar_graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/random_helper.nim
   - cplib/graph/planar_graph.nim
-  - cplib/utils/random_helper.nim
-  - cplib/utils/random_helper.nim
-  - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
+  - cplib/utils/random_helper.nim
   - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
   requiredBy: []

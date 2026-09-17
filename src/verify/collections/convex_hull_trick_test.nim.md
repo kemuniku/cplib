@@ -123,15 +123,15 @@ data:
   - cplib/collections/avltreenode.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/convex_hull_trick_monotone_slope.nim
+  - cplib/collections/convex_hull_trick_monotone.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/math/int128.nim
+  - cplib/collections/convex_hull_trick_monotone.nim
   - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/convex_hull_trick_monotone_slope.nim
+  - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
-  - cplib/collections/convex_hull_trick_monotone.nim
-  - cplib/collections/convex_hull_trick_monotone.nim
-  - cplib/collections/convex_hull_trick_monotone_slope.nim
-  - cplib/collections/convex_hull_trick_monotone_slope.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_test.nim
   requiredBy: []

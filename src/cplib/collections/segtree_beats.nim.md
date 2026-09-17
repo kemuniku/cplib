@@ -27,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_chmin_chmax_add_range_sum_test.nim
     title: verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_beats_assignment_test.nim
+    title: verify/collections/segtree_beats_assignment_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_beats_assignment_test.nim
+    title: verify/collections/segtree_beats_assignment_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -146,6 +152,8 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/segtree_beats_assignment_test.nim
+  - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/AI/segtree_beats_test.nim

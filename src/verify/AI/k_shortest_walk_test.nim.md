@@ -84,8 +84,8 @@ data:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/k_shortest_walk.nim
   isVerificationFile: true
   path: verify/AI/k_shortest_walk_test.nim

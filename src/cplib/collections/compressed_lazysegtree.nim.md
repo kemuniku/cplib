@@ -283,8 +283,8 @@ data:
   dependsOn:
   - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/lazysegtree.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: false
   path: cplib/collections/compressed_lazysegtree.nim
   requiredBy: []

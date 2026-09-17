@@ -508,6 +508,12 @@ data:
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_boundary_test.nim
+    title: verify/convolution/xor_convolution_boundary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_boundary_test.nim
+    title: verify/convolution/xor_convolution_boundary_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -973,6 +979,8 @@ data:
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - verify/convolution/xor_convolution_boundary_test.nim
+  - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/modint/integer_operation_test.nim

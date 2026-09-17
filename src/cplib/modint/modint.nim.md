@@ -514,6 +514,12 @@ data:
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_boundary_test.nim
+    title: verify/convolution/xor_convolution_boundary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_boundary_test.nim
+    title: verify/convolution/xor_convolution_boundary_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -815,12 +821,12 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -949,6 +955,8 @@ data:
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
+  - verify/convolution/xor_convolution_boundary_test.nim
+  - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/modint/integer_operation_test.nim
