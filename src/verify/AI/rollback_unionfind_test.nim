@@ -12,7 +12,7 @@ assert uf.siz(0) == 2
 let state1 = uf.get_state
 uf.snapshot()
 assert uf.unite(2, 3)
-assert uf.count == 4
+assert uf.count == 2
 assert uf.issame(2, 3)
 uf.rollback()
 assert uf.get_state == state1

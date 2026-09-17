@@ -14,6 +14,7 @@ when not declared CPLIB_COLLECTIONS_ROLLBACK_UNIONFIND:
     proc root*(self: RollbackUnionFind, x: int): int = self.root_i32(x).int
     proc issame*(self: RollbackUnionFind, x, y: int): bool = self.root_i32(x) == self.root_i32(y)
     proc unite*(self: var RollbackUnionFind, x, y: int): bool {.discardable.} =
+        ## 2頂点の集合を結合し、結合できたときだけ成分数を減らす。O(log N)。
         var x = self.root_i32(x)
         var y = self.root_i32(y)
         var sx = self.par_or_siz[x.int]
@@ -26,9 +27,13 @@ when not declared CPLIB_COLLECTIONS_ROLLBACK_UNIONFIND:
         let yi = y.int
         self.par_or_siz[xi] += self.par_or_siz[yi]
         self.par_or_siz[yi] = x
+        dec self.count
         return true
     proc undo*(self: var RollbackUnionFind) =
+        ## 直前の結合操作を取り消し、成分数も復元する。O(1)。
         assert self.history.len > 0, "UnionFindは既に初期状態のため操作を取り消せません"
+        if self.history[^1][0] != self.history[^2][0]:
+            inc self.count
         for i in 0..<2:
             var (x, sx) = self.history.pop
             self.par_or_siz[x] = sx
