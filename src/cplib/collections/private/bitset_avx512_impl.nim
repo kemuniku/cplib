@@ -171,6 +171,52 @@ CPLIB_BS_AVX2 static void cplib_bs512_from_bools_avx2(uint64_t *dst, const void 
 }
 #define CPLIB_BS_AVX512 __attribute__((target("avx512f")))
 
+static inline unsigned cplib_bs512_add_carries(unsigned generated, unsigned propagated,
+                                             unsigned carry) {
+/* 発生と伝播は排他的です。下位8ビットが各レーンへの桁上がり、ビット8が次ブロックへの桁上がりです。 */
+return (propagated + (generated << 1) + carry) ^ propagated;
+}
+
+static void cplib_bs512_add_scalar(uint64_t *dst, const uint64_t *x,
+                                 const uint64_t *y, size_t n, uint64_t carry) {
+/* 桁上がりを64ビットずつ伝播し、同じ領域への書き戻しにも対応します。 */
+for (size_t i = 0; i < n; ++i) {
+    const uint64_t a = x[i], b = y[i];
+    const uint64_t sum = a + b;
+    const uint64_t total = sum + carry;
+    carry = (sum < a) | (total < sum);
+    dst[i] = total;
+}
+}
+
+CPLIB_BS_AVX512 static void cplib_bs512_add_avx512(uint64_t *dst, const uint64_t *x,
+                                                const uint64_t *y, size_t n) {
+/* 8レーンを並列加算し、圧縮したマスク上の加算でレーン間の桁上がりを求めます。 */
+const __m512i ones = _mm512_set1_epi64(1);
+const __m512i maximum = _mm512_set1_epi64(-1);
+unsigned carry = 0;
+size_t i = 0;
+for (; i + 8 <= n; i += 8) {
+    const __m512i a = _mm512_loadu_si512((const void *)(x + i));
+    const __m512i b = _mm512_loadu_si512((const void *)(y + i));
+    const __m512i sum = _mm512_add_epi64(a, b);
+    const unsigned generated = _mm512_cmp_epu64_mask(sum, a, _MM_CMPINT_LT);
+    const unsigned propagated = _mm512_cmpeq_epi64_mask(sum, maximum);
+    const unsigned carries = cplib_bs512_add_carries(generated, propagated, carry);
+    const __m512i total = _mm512_mask_add_epi64(sum, (__mmask8)carries, sum, ones);
+    _mm512_storeu_si512((void *)(dst + i), total);
+    carry = carries >> 8;
+}
+cplib_bs512_add_scalar(dst + i, x + i, y + i, n - i, carry);
+}
+
+static inline void cplib_bs512_add(uint64_t *dst, const uint64_t *x,
+                                  const uint64_t *y, size_t n) {
+/* AVX-512F対応CPUでは512ビットずつ加算し、それ以外は64ビットずつ加算します。 */
+if (n >= 8 && __builtin_cpu_supports("avx512f")) cplib_bs512_add_avx512(dst, x, y, n);
+else cplib_bs512_add_scalar(dst, x, y, n, 0);
+}
+
 #define CPLIB_BS_BINARY(name, scalar, vector) \
 CPLIB_BS_AVX512 static void name(uint64_t *dst, const uint64_t *x, \
                            const uint64_t *y, size_t n) { \
@@ -1193,6 +1239,7 @@ return cplib_bs512_any_avx2(x, bits);
 """.}
 
 proc avxAnd(dst, x, y: ptr uint64, n: csize_t) {.importc: "cplib_bs512_and", nodecl.}
+proc avxAdd(dst, x, y: ptr uint64, n: csize_t) {.importc: "cplib_bs512_add", nodecl.}
 proc avxAndNot(dst, x, y: ptr uint64, n: csize_t) {.importc: "cplib_bs512_andnot", nodecl.}
 proc avxOr(dst, x, y: ptr uint64, n: csize_t) {.importc: "cplib_bs512_or", nodecl.}
 proc avxXor(dst, x, y: ptr uint64, n: csize_t) {.importc: "cplib_bs512_xor", nodecl.}
