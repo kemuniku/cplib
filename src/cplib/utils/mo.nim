@@ -16,10 +16,10 @@ when not declared CPLIB_UTILS_MO:
         result.qli = newSeq[seq[int]](qlisize)
 
     proc insert*(self: var Mo, l, r: int) =
-        ## 半開区間[l, r)を登録する。償却O(1)。
-        ## l、r、登録順のクエリ番号（0始まり）は、いずれも20bit以内（0以上2^20未満）であることを要求する。
-        assert 0 <= l and l <= r and r <= self.N
-        assert r < (1 shl 20)
+        ## 座標(l, r)を登録する。l > rや負のrも許容する。償却O(1)。
+        ## lとクエリ番号は非負20bit、rは符号付き24bitで格納する。
+        assert 0 <= l and l <= self.N and l < (1 shl 20)
+        assert -(1 shl 23) <= r and r < (1 shl 23) and r <= self.N
         assert self.size < (1 shl 20)
         self.qli[l div self.width].add((r shl 40) or ((l) shl 20) or self.size)
         self.size += 1

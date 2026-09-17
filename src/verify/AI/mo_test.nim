@@ -51,3 +51,30 @@ proc checkClosureCallbacks() =
   doAssert answer == 5
 
 checkClosureCallbacks()
+
+block:
+  let queries = @[(5, 0), (3, -1), (0, 5), (0, -1), (5, 5), (2, 1)]
+  var solver = initMo(5, queries.len, 2)
+  for (l, r) in queries:
+    solver.insert(l, r)
+  var l = 0
+  var r = 0
+  var visited = newSeq[int](queries.len)
+  solver.run(
+    proc(i: int) =
+      doAssert i == l - 1
+      l = i,
+    proc(i: int) =
+      doAssert i == r
+      r = i + 1,
+    proc(i: int) =
+      doAssert i == l
+      l = i + 1,
+    proc(i: int) =
+      doAssert i == r - 1
+      r = i,
+    proc(idx: int) =
+      doAssert (l, r) == queries[idx]
+      inc visited[idx]
+  )
+  doAssert visited == @[1, 1, 1, 1, 1, 1]
