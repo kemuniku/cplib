@@ -35,7 +35,6 @@ for s in words:
 check("kitten", "sitting")
 check("ab", "ba")
 check("\0\xff$\0", "\xff\0$\0")
-doAssert editDistnce_bitset("kitten", "sitting") == 3
 
 var rng = initRand(20260917)
 for n in [1, 2, 63, 64, 65, 127, 128, 129, 255, 256, 257, 511, 512, 513, 1023, 1024, 1025]:

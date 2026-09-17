@@ -53,7 +53,3 @@ when not declared CPLIB_STR_EDIT_DISTANCE_BITSET:
             positive.flipAll()
             positive |= negativeHorizontal
             negative.andInto(positiveHorizontal, vertical)
-
-    proc editDistnce_bitset*(s, t: string): int {.inline.} =
-        ## editDistance_bitsetの別名として編集距離を返します。
-        editDistance_bitset(s, t)
