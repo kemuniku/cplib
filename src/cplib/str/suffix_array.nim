@@ -165,6 +165,10 @@ when not declared CPLIB_STR_SUFFIX_ARRAY:
             assert 0 <= value and value <= upper, "指定した値が有効な範囲内である必要があります: 0 <= value and value <= upper"
         return saIs(s, upper)
 
+    proc suffix_array*(s: openArray[char]): seq[int] =
+        ## 8-bit文字列の接尾辞配列を座標圧縮せず O(N + 256) で作成します。
+        return saIs(s, 255)
+
     proc suffix_array*[T](s: openArray[T]): seq[int] =
         ## 任意の比較可能な列の接尾辞配列を作成します。
         ## 値の座標圧縮にソートを使うため、SA-IS 部分を含めた計算量は O(N log N) です。

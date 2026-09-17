@@ -6,6 +6,9 @@ when not declared CPLIB_STR_STATIC_STRING:
     import cplib/collections/staticRMQ
 
     proc genericSuffixArray[T](S: seq[T]): seq[int] =
+        ## char列は O(N + 256)、それ以外は座標圧縮を含め O(N log N) で接尾辞配列を作る。
+        when T is char:
+            return suffix_array(S)
         var idx = toSeq(0..<len(S))
         idx.sort(proc(l, r: int): int = system.cmp[T](S[l], S[r]))
         var compressed = newSeq[int](len(S))
@@ -122,19 +125,16 @@ when not declared CPLIB_STR_STATIC_STRING:
         return lcp(S.reversed, T.reversed)
 
     proc cmp*[Element](S, T: StaticString[Element]): int {.inline.} =
-        var lcp = lcp(S, T)
-        if min(len(S), len(T)) == lcp:
-            if len(S) == len(T):
-                return 0
-            elif len(S) < len(T):
-                return -1
-            else:
-                return 1
-        else:
-            if S[lcp] < T[lcp]:
-                return -1
-            else:
-                return 1
+        ## 同じ基底の部分文字列をLCPと接尾辞順位で辞書順に比較する。O(1)。
+        assert S.base == T.base, "文字列は同じ基底文字列から作成されている必要があります"
+        let n = min(len(S), len(T))
+        if n == 0 or S.l == T.l:
+            return system.cmp(len(S), len(T))
+        let a = S.base.RSA[S.l]
+        let b = S.base.RSA[T.l]
+        if S.base.RMQ.query(min(a, b), max(a, b)) >= n:
+            return system.cmp(len(S), len(T))
+        return (if a < b: -1 else: 1)
 
     proc `<`*[Element](S, T: StaticString[Element]): bool =
         return cmp(S, T) < 0
@@ -150,6 +150,50 @@ when not declared CPLIB_STR_STATIC_STRING:
 
     proc `==`*[Element](S, T: StaticString[Element]): bool =
         return len(S) == len(T) and lcp(S, T) == len(S)
+
+    proc sortStaticStrings*[T](strings: var openArray[StaticString[T]]) =
+        ## 同じ基底の部分文字列を辞書順に安定ソートする。基底長M、要素数Nに対しO(N log(M+2))時間、追加O(N)空間。
+        if strings.len == 0: return
+        let base = strings[0].base
+        type Key = tuple[rank, length: int32, index: int]
+        var keys = newSeq[Key](strings.len)
+        for i, s in strings:
+            assert s.base == base, "文字列は同じ基底文字列から作成されている必要があります"
+            var left = 0
+            if s.len > 0:
+                let rank = int(base.RSA[s.l])
+                var right = rank
+                while left < right:
+                    let mid = (left + right) shr 1
+                    if base.RMQ.query(mid, rank) >= s.len:
+                        right = mid
+                    else:
+                        left = mid + 1
+                inc left
+            keys[i] = (int32(left), int32(s.len), i)
+        var buffer = newSeq[Key](keys.len)
+        for field in 0..1:
+            for shift in countup(0, 24, 8):
+                var counts: array[256, int]
+                for key in keys:
+                    let value = if field == 0: key.length else: key.rank
+                    inc counts[(int(value) shr shift) and 255]
+                var total = 0
+                for i in 0..<256:
+                    let count = counts[i]
+                    counts[i] = total
+                    total += count
+                for key in keys:
+                    let value = if field == 0: key.length else: key.rank
+                    let digit = (int(value) shr shift) and 255
+                    buffer[counts[digit]] = key
+                    inc counts[digit]
+                swap(keys, buffer)
+        var output = newSeq[StaticString[T]](strings.len)
+        for i, key in keys:
+            output[i] = strings[key.index]
+        for i in 0..<strings.len:
+            strings[i] = output[i]
 
     proc initSuffixArray*[T](base: StaticStringBase[T]): seq[StaticString[T]] =
         var SA = base.SA
