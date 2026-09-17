@@ -46,12 +46,12 @@ data:
     \ c)\n                swap(b, d)\n            c -= T.l\n            d -= T.l\n\
     \necho a, \" \", b, \" \", c, \" \", d\n"
   dependsOn:
-  - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
   requiredBy: []

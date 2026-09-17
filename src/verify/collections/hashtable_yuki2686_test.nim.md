@@ -53,8 +53,8 @@ data:
   dependsOn:
   - cplib/collections/hashtable.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/hashtable.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/collections/hashtable_yuki2686_test.nim
   requiredBy: []

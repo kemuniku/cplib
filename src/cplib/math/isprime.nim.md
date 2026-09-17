@@ -244,6 +244,12 @@ data:
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/planar_graph_test.nim
+    title: verify/AI/planar_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/planar_graph_test.nim
+    title: verify/AI/planar_graph_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/primefactor_test.nim
     title: verify/AI/primefactor_test.nim
   - icon: ':heavy_check_mark:'
@@ -723,6 +729,8 @@ data:
   - verify/AI/primefactor_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/planar_graph_test.nim
+  - verify/AI/planar_graph_test.nim
   - verify/AI/factoradic_test.nim
   - verify/AI/factoradic_test.nim
   - verify/AI/convolution_test.nim

@@ -82,8 +82,8 @@ data:
   dependsOn:
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: false
   path: cplib/str/edit_distance.nim
   requiredBy: []

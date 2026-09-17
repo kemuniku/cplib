@@ -141,6 +141,12 @@ data:
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/planar_graph.nim
+    title: cplib/graph/planar_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/planar_graph.nim
+    title: cplib/graph/planar_graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/range_edge_graph.nim
     title: cplib/graph/range_edge_graph.nim
   - icon: ':heavy_check_mark:'
@@ -681,6 +687,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/namori_graph_test.nim
     title: verify/AI/namori_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/planar_graph_test.nim
+    title: verify/AI/planar_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/planar_graph_test.nim
+    title: verify/AI/planar_graph_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/prufer_test.nim
     title: verify/AI/prufer_test.nim
@@ -1509,6 +1521,8 @@ data:
   - cplib/graph/bellmanford.nim
   - cplib/graph/block_cut_tree.nim
   - cplib/graph/block_cut_tree.nim
+  - cplib/graph/planar_graph.nim
+  - cplib/graph/planar_graph.nim
   - cplib/graph/SCC.nim
   - cplib/graph/SCC.nim
   timestamp: '2026-09-17 22:59:05+09:00'
@@ -1646,6 +1660,8 @@ data:
   - verify/AI/graph_storage_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
+  - verify/AI/planar_graph_test.nim
+  - verify/AI/planar_graph_test.nim
   - verify/AI/bipartite_graph_test.nim
   - verify/AI/bipartite_graph_test.nim
   - verify/AI/trie_test.nim

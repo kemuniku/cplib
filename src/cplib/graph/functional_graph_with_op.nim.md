@@ -213,12 +213,12 @@ data:
     \        rest -= first\n        if rest > 0 and not consume_cycle(0,rest):\n \
     \           return used\n        return used-1\n"
   dependsOn:
+  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
+  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false

@@ -8,6 +8,12 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/planar_graph.nim
+    title: cplib/graph/planar_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/planar_graph.nim
+    title: cplib/graph/planar_graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':heavy_check_mark:'
@@ -21,6 +27,12 @@ data:
     title: cplib/tree/prufer.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/planar_graph_test.nim
+    title: verify/AI/planar_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/planar_graph_test.nim
+    title: verify/AI/planar_graph_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/random_helper_test.nim
     title: verify/AI/random_helper_test.nim
@@ -41,7 +53,8 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_RANDOMHELPER:\n    const CPLIB_UTILS_RANDOMHELPER*\
     \ = 1\n    import random,sequtils,sets,algorithm,math,strutils\n    import cplib/graph/graph\n\
-    \    import cplib/tree/prufer\n    import cplib/math/isprime\n    # https://kanpurin.hatenablog.com/entry/2023/02/20/184752\n\
+    \    import cplib/graph/planar_graph\n    import cplib/tree/prufer\n    import\
+    \ cplib/math/isprime\n    # https://kanpurin.hatenablog.com/entry/2023/02/20/184752\n\
     \    randomize()\n\n    proc randomseq*(n:int,slice:HSlice[int,int],unique:bool=false):seq[int]=\n\
     \        ## \u9577\u3055n,\u5404\u8981\u7D20\u304Cslice\u306B\u542B\u307E\u308C\
     \u308B\u6570\u5217\u3092\u4E00\u69D8\u30E9\u30F3\u30C0\u30E0\u306B\u8FD4\u3059\
@@ -147,7 +160,30 @@ data:
     \ i in 0..<m:\n                while true:\n                    var u = rand(0..<(n-1))\n\
     \                    var v = rand((u+1)..<n)\n                    if (u,v) notin\
     \ st:\n                        st.incl((u,v))\n                        result.add_edge(u,v)\n\
-    \                        break\n\n\n    proc random_connected_graph*(n,m:int):UnWeightedUnDirectedGraph=\n\
+    \                        break\n\n\n    proc random_planar_graph*(n,m:int):UnWeightedUnDirectedGraph=\n\
+    \        ## n\u9802\u70B9m\u8FBA\u306E\u5358\u7D14\u5E73\u9762\u30B0\u30E9\u30D5\
+    \u3092\u751F\u6210\u3059\u308B\u3002\u5168\u3066\u306E\u5F62\u304C\u751F\u6210\
+    \u53EF\u80FD\u3060\u304C\u3001\u4E00\u69D8\u30E9\u30F3\u30C0\u30E0\u3067\u306F\
+    \u306A\u3044\u3002\n        ## \u5168\u9802\u70B9\u5BFE\u3092\u30E9\u30F3\u30C0\
+    \u30E0\u9806\u306B\u8A66\u3059\u3002\u671F\u5F85 O(n^3 log n) \u6642\u9593\u3001\
+    O(n^2) \u7A7A\u9593\u3002\u9023\u7D50\u6027\u306F\u4FDD\u8A3C\u3057\u306A\u3044\
+    \u3002\n        assert n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        let maximum = if n < 3: n*(n-1) div\
+    \ 2 else: 3*n-6\n        assert m >= 0 and m <= maximum, \"\u8FBA\u6570\u306F\u5358\
+    \u7D14\u5E73\u9762\u30B0\u30E9\u30D5\u3067\u5B9F\u73FE\u53EF\u80FD\u306A\u7BC4\
+    \u56F2\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \ result = initUnWeightedUnDirectedGraph(n)\n        if m == 0: return\n     \
+    \   var candidates: seq[(int,int)]\n        for u in 0..<n:\n            for v\
+    \ in u+1..<n:\n                candidates.add((u,v))\n        shuffle(candidates)\n\
+    \        for (u,v) in candidates:\n            result.add_edge(u,v)\n        \
+    \    if result.is_planar_graph():\n                if result.edge_count == m:\
+    \ return\n            else:\n                # \u76F4\u524D\u306B\u8FFD\u52A0\u3057\
+    \u305F\u8FBA\u3060\u3051\u3092\u3001\u8FBA\u60C5\u5831\u3068\u4E21\u7AEF\u306E\
+    \u96A3\u63A5\u914D\u5217\u304B\u3089\u53D6\u308A\u6D88\u3059\u3002\n         \
+    \       discard result.edge_info.pop()\n                discard result.edges[u].pop()\n\
+    \                discard result.edges[v].pop()\n        assert result.edge_count\
+    \ == m, \"\u751F\u6210\u3055\u308C\u305F\u30B0\u30E9\u30D5\u306E\u8FBA\u6570\u304C\
+    \u6307\u5B9A\u5024\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093\"\n\n    proc random_connected_graph*(n,m:int):UnWeightedUnDirectedGraph=\n\
     \        ## \u30E9\u30F3\u30C0\u30E0\u306A\u5358\u7D14\u9023\u7D50\u30B0\u30E9\
     \u30D5\u3092\u751F\u6210\u3002\u305F\u3060\u3057\u3001\u4E00\u69D8\u30E9\u30F3\
     \u30C0\u30E0\u3067\u306A\u3044\u3002\n        assert m >= n-1, \"\u9023\u7D50\u30B0\
@@ -194,19 +230,23 @@ data:
     \        return result\n"
   dependsOn:
   - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/graph/planar_graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/planar_graph.nim
   - cplib/math/isprime.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-18 00:20:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
+  - verify/AI/planar_graph_test.nim
+  - verify/AI/planar_graph_test.nim
 documentation_of: cplib/utils/random_helper.nim
 layout: document
 redirect_from:

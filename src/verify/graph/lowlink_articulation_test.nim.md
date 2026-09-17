@@ -41,11 +41,11 @@ data:
     \ = initLowLink(g)\nfor v in ll.articulation: echo v\n"
   dependsOn:
   - cplib/graph/lowlink.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/lowlink_articulation_test.nim
   requiredBy: []

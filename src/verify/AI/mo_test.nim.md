@@ -73,16 +73,16 @@ data:
     \ int) =\n      doAssert (l, r) == queries[idx]\n      inc visited[idx]\n  )\n\
     \  doAssert visited == @[1, 1, 1, 1, 1, 1]\n"
   dependsOn:
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/utils/mo.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/utils/mo.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/utils/mo.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/mo_test.nim
   requiredBy: []

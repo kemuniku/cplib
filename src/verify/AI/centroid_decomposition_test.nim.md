@@ -97,9 +97,9 @@ data:
     \ 0\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/tree/centroid_decomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/centroid_decomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/centroid_decomposition_test.nim
   requiredBy: []

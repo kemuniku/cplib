@@ -54,14 +54,14 @@ data:
     \ -1 else: lengths[i])\n"
   dependsOn:
   - cplib/graph/k_shortest_walk.nim
-  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/graph/k_shortest_walk.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/static/k_shortest_walk_static_test.nim

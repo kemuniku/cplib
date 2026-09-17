@@ -114,9 +114,9 @@ data:
     \ == (sum:sumLessEqual,count:lessEqual)\n            checkRange(a,wm,0,n,withSum)\n"
   dependsOn:
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim
   requiredBy: []

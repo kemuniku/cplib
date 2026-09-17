@@ -428,6 +428,9 @@ data:
       path: cplib/graph/namori_graph.nim
       title: cplib/graph/namori_graph.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/planar_graph.nim
+      title: cplib/graph/planar_graph.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/push_relabel.nim
       title: cplib/graph/push_relabel.nim
     - icon: ':heavy_check_mark:'
@@ -1750,6 +1753,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_unionfind_test.nim
       title: verify/AI/persistent_unionfind_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/planar_graph_test.nim
+      title: verify/AI/planar_graph_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/polygon_test.nim
       title: verify/AI/polygon_test.nim

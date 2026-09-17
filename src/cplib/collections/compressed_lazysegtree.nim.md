@@ -281,8 +281,8 @@ data:
     \ default, mapping, composition, id,\n            (proc(x: typeof(coords[0])):\
     \ typeof(default))(nil))\n"
   dependsOn:
-  - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/lazysegtree.nim
   isVerificationFile: false

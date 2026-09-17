@@ -193,8 +193,8 @@ data:
   dependsOn:
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: false
   path: cplib/collections/compressed_segtree.nim
   requiredBy: []

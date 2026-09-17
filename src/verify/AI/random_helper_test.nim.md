@@ -8,6 +8,12 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/planar_graph.nim
+    title: cplib/graph/planar_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/planar_graph.nim
+    title: cplib/graph/planar_graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/isprime.nim
     title: cplib/math/isprime.nim
   - icon: ':heavy_check_mark:'
@@ -65,17 +71,19 @@ data:
     \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
   - cplib/math/isprime.nim
-  - cplib/utils/random_helper.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/utils/random_helper.nim
   - cplib/graph/graph.nim
+  - cplib/graph/planar_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/random_helper.nim
+  - cplib/graph/planar_graph.nim
   - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/AI/random_helper_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-18 00:20:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/random_helper_test.nim
