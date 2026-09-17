@@ -1,6 +1,6 @@
 when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     const CPLIB_MODINT_MODINT_MONTGOMERY* = 1
-    import std/macros, std/tables
+    import macros, tables, hashes
     type StaticMontgomeryModint*[M: static[uint32]] = object
         a: uint32
     type DynamicMontgomeryModint*[M: static[uint32]] = object
@@ -79,6 +79,19 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     proc val*[T: MontgomeryModint](a: T): int =
         result = reduce(T, a.a).int
         if result.uint32 >= T.get_M: result -= T.get_M.int
+
+    template defineMontgomeryEquality(ModInt: untyped) =
+        proc `==`*[M: static[uint32]](a, b: ModInt[M]): bool {.inline.} =
+            ## 冗長な内部表現を正規化して剰余の等値を判定する。O(1)。
+            let modulus = ModInt[M].get_M
+            let left = if a.a >= modulus: a.a - modulus else: a.a
+            let right = if b.a >= modulus: b.a - modulus else: b.a
+            left == right
+        proc hash*[M: static[uint32]](a: ModInt[M]): Hash =
+            ## 同じ剰余が同じハッシュ値になるように計算する。O(1)。
+            hash(a.val)
+    defineMontgomeryEquality(StaticMontgomeryModint)
+    defineMontgomeryEquality(DynamicMontgomeryModint)
 
     proc `-`*[T: MontgomeryModint](a: T): T = (result = init(T, 0); result -= a)
     proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger) = a.a = reduce(T, uint(a.a) * init(T, b).a)
