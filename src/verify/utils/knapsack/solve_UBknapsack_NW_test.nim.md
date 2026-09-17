@@ -41,7 +41,7 @@ data:
   isVerificationFile: true
   path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/knapsack/solve_UBknapsack_NW_test.nim

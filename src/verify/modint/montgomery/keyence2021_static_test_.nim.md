@@ -56,18 +56,18 @@ data:
     \    if i+1 in 0..<h: dp[i+1][j] += dp[i][j] * mul\n            if j+1 in 0..<w:\
     \ dp[i][j+1] += dp[i][j] * mul\necho dp[h-1][w-1].val\n"
   dependsOn:
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   isVerificationFile: false
   path: verify/modint/montgomery/keyence2021_static_test_.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/modint/montgomery/keyence2021_static_test_.nim

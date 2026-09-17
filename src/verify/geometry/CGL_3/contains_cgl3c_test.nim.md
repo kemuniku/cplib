@@ -49,17 +49,17 @@ data:
     \ echo 2\n    else: echo 0\n"
   dependsOn:
   - cplib/geometry/polygon.nim
+  - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_3/contains_cgl3c_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_3/contains_cgl3c_test.nim

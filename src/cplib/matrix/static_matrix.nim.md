@@ -112,86 +112,92 @@ data:
     \ = (result = a; assign(result, b))\n        proc op*[H: static int, W: static\
     \ int, T](a: StaticMatrix[H,W,T], x: T): StaticMatrix[H,W,T] = (result = a; assign(result,\
     \ x))\n        proc op*[H: static int, W: static int, T](x: T, a: StaticMatrix[H,W,T]):\
-    \ StaticMatrix[H,W,T] = op(a, x)\n    defineMatrixAssignmentOp(`+=`, `+`)\n  \
-    \  defineMatrixAssignmentOp(`-=`, `-`)\n\n    template defineMatrixIntOps(assign,\
-    \ op: untyped) =\n        proc assign*[H: static int, W: static int](a: var StaticMatrix[H,W,int],\
-    \ b: StaticMatrix[H,W,int]) =\n            assert a.h == b.h and a.w == b.w, \"\
-    2\u3064\u306E\u884C\u5217\u306E\u884C\u6570\u3068\u5217\u6570\u306F\u305D\u308C\
-    \u305E\u308C\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
-    \           for i in 0..<a.h:\n                for j in 0..<a.w:\n           \
-    \         a[i, j] = op(a[i, j], b[i, j])\n        proc assign*[H: static int,\
-    \ W: static int](a: var StaticMatrix[H,W,int], x: int) =\n            for i in\
-    \ 0..<a.h:\n                for j in 0..<a.w:\n                    a[i, j] = op(a[i,\
-    \ j], x)\n        proc op*[H: static int, W: static int](a, b: StaticMatrix[H,W,int]):\
-    \ StaticMatrix[H,W,int] = (result = a; assign(result, b))\n        proc op*[H:\
-    \ static int, W: static int](a: StaticMatrix[H,W,int], x: int): StaticMatrix[H,W,int]\
-    \ = (result = a; assign(result, x))\n        proc op*[H: static int, W: static\
-    \ int](x: int, a: StaticMatrix[H,W,int]): StaticMatrix[H,W,int] = op(a, x)\n \
-    \   defineMatrixIntOps(`and=`, `and`)\n    defineMatrixIntOps(`or=`, `or`)\n \
-    \   defineMatrixIntOps(`xor=`, `xor`)\n    defineMatrixIntOps(`shl=`, `shl`)\n\
-    \    defineMatrixIntOps(`shr=`, `shr`)\n    defineMatrixIntOps(`div=`, `div`)\n\
-    \    defineMatrixIntOps(`mod=`, `mod`)\n\n    proc hash*[H: static int, W: static\
-    \ int, T](m: StaticMatrix[H,W,T]): Hash = hash(m.arr)\n    proc identity_matrix*[H:\
-    \ static int, W: static int, T](n: int, one, zero: T): StaticMatrix[H,W,T] =\n\
-    \        assert H == W and n == H, \"\u6B63\u65B9\u884C\u5217\u3067\u3001\u6307\
-    \u5B9A\u3057\u305F\u30B5\u30A4\u30BAn\u304C\u884C\u6570H\u3068\u4E00\u81F4\u3059\
-    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        for i in 0..<H*W:\n\
-    \            result.arr[i] = zero\n        for i in 0..<H: result[i, i] = one\n\
-    \    proc identity_matrix*[H: static int, W: static int, T](n: int): StaticMatrix[H,W,T]\
-    \ =\n        assert H == W and n == H, \"\u6B63\u65B9\u884C\u5217\u3067\u3001\u6307\
-    \u5B9A\u3057\u305F\u30B5\u30A4\u30BAn\u304C\u884C\u6570H\u3068\u4E00\u81F4\u3059\
-    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        for i in 0..<H: result[i,\
-    \ i] = T(1)\n    proc pow*[H: static int, W: static int, T](m: StaticMatrix[H,W,T],\
-    \ n: int): StaticMatrix[H,W,T] =\n        assert H == W, \"\u884C\u5217\u306F\u6B63\
-    \u65B9\u884C\u5217\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
-    \"\n        for i in 0..<H: result[i, i] = T(1)\n        var m = m\n        var\
-    \ n = n\n        while n > 0:\n            if (n and 1) == 1: result *= m\n  \
-    \          m *= m\n            n = n shr 1\n    proc `**`*[H: static int, W: static\
-    \ int, T](m: StaticMatrix[H,W,T], n: int): StaticMatrix[H,W,T] = m.pow(n)\n  \
-    \  proc sum*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): T =\n \
-    \       for i in 0..<H*W:\n            result += m.arr[i]\n\n    import options\n\
-    \    import cplib/matrix/field_matrix_ops\n    export LinearSystemSolution\n\n\
-    \    proc rank*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], height:\
-    \ int = H, width: int = W): int =\n        ## \u5DE6\u4E0Aheight\u884Cwidth\u5217\
-    \u306E\u968E\u6570\u3092\u6C42\u3081\u308B\u3002O(h*w*min(h,w))\u3002\n      \
-    \  fieldRank(matrixRows(a, height, width), width)\n\n    proc determinant*[H:\
-    \ static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): T =\n   \
-    \     ## \u5DE6\u4E0An\xD7n\u306E\u884C\u5217\u5F0F\u3092\u6C42\u3081\u308B\u3002\
-    \u7A7A\u884C\u5217\u306F1\u3002O(n^3)\u3002\n        assert n in 0..min(H, W),\
+    \ StaticMatrix[H,W,T] =\n            ## \u5404\u8981\u7D20\u306B\u5BFE\u3057\u3066\
+    \u30B9\u30AB\u30E9\u30FC\u3092\u5DE6\u8FBA\u3068\u3057\u3066\u6F14\u7B97\u3059\
+    \u308B\u3002O(HW)\u3002\n            result = a\n            for i in 0..<a.h:\n\
+    \                for j in 0..<a.w:\n                    result[i, j] = op(x, a[i,\
+    \ j])\n    defineMatrixAssignmentOp(`+=`, `+`)\n    defineMatrixAssignmentOp(`-=`,\
+    \ `-`)\n\n    template defineMatrixIntOps(assign, op: untyped) =\n        proc\
+    \ assign*[H: static int, W: static int](a: var StaticMatrix[H,W,int], b: StaticMatrix[H,W,int])\
+    \ =\n            assert a.h == b.h and a.w == b.w, \"2\u3064\u306E\u884C\u5217\
+    \u306E\u884C\u6570\u3068\u5217\u6570\u306F\u305D\u308C\u305E\u308C\u7B49\u3057\
+    \u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n            for i in 0..<a.h:\n\
+    \                for j in 0..<a.w:\n                    a[i, j] = op(a[i, j],\
+    \ b[i, j])\n        proc assign*[H: static int, W: static int](a: var StaticMatrix[H,W,int],\
+    \ x: int) =\n            for i in 0..<a.h:\n                for j in 0..<a.w:\n\
+    \                    a[i, j] = op(a[i, j], x)\n        proc op*[H: static int,\
+    \ W: static int](a, b: StaticMatrix[H,W,int]): StaticMatrix[H,W,int] = (result\
+    \ = a; assign(result, b))\n        proc op*[H: static int, W: static int](a: StaticMatrix[H,W,int],\
+    \ x: int): StaticMatrix[H,W,int] = (result = a; assign(result, x))\n        proc\
+    \ op*[H: static int, W: static int](x: int, a: StaticMatrix[H,W,int]): StaticMatrix[H,W,int]\
+    \ =\n            ## \u5404\u8981\u7D20\u306B\u5BFE\u3057\u3066\u6574\u6570\u3092\
+    \u5DE6\u8FBA\u3068\u3057\u3066\u6F14\u7B97\u3059\u308B\u3002O(HW)\u3002\n    \
+    \        result = a\n            for i in 0..<a.h:\n                for j in 0..<a.w:\n\
+    \                    result[i, j] = op(x, a[i, j])\n    defineMatrixIntOps(`and=`,\
+    \ `and`)\n    defineMatrixIntOps(`or=`, `or`)\n    defineMatrixIntOps(`xor=`,\
+    \ `xor`)\n    defineMatrixIntOps(`shl=`, `shl`)\n    defineMatrixIntOps(`shr=`,\
+    \ `shr`)\n    defineMatrixIntOps(`div=`, `div`)\n    defineMatrixIntOps(`mod=`,\
+    \ `mod`)\n\n    proc hash*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]):\
+    \ Hash = hash(m.arr)\n    proc identity_matrix*[H: static int, W: static int,\
+    \ T](n: int, one, zero: T): StaticMatrix[H,W,T] =\n        assert H == W and n\
+    \ == H, \"\u6B63\u65B9\u884C\u5217\u3067\u3001\u6307\u5B9A\u3057\u305F\u30B5\u30A4\
+    \u30BAn\u304C\u884C\u6570H\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        for i in 0..<H*W:\n            result.arr[i] = zero\n\
+    \        for i in 0..<H: result[i, i] = one\n    proc identity_matrix*[H: static\
+    \ int, W: static int, T](n: int): StaticMatrix[H,W,T] =\n        assert H == W\
+    \ and n == H, \"\u6B63\u65B9\u884C\u5217\u3067\u3001\u6307\u5B9A\u3057\u305F\u30B5\
+    \u30A4\u30BAn\u304C\u884C\u6570H\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        for i in 0..<H: result[i, i] = T(1)\n    proc\
+    \ pow*[H: static int, W: static int, T](m: StaticMatrix[H,W,T], n: int): StaticMatrix[H,W,T]\
+    \ =\n        assert H == W, \"\u884C\u5217\u306F\u6B63\u65B9\u884C\u5217\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        for i in 0..<H:\
+    \ result[i, i] = T(1)\n        var m = m\n        var n = n\n        while n >\
+    \ 0:\n            if (n and 1) == 1: result *= m\n            m *= m\n       \
+    \     n = n shr 1\n    proc `**`*[H: static int, W: static int, T](m: StaticMatrix[H,W,T],\
+    \ n: int): StaticMatrix[H,W,T] = m.pow(n)\n    proc sum*[H: static int, W: static\
+    \ int, T](m: StaticMatrix[H,W,T]): T =\n        for i in 0..<H*W:\n          \
+    \  result += m.arr[i]\n\n    import options\n    import cplib/matrix/field_matrix_ops\n\
+    \    export LinearSystemSolution\n\n    proc rank*[H: static int, W: static int,\
+    \ T](a: StaticMatrix[H,W,T], height: int = H, width: int = W): int =\n       \
+    \ ## \u5DE6\u4E0Aheight\u884Cwidth\u5217\u306E\u968E\u6570\u3092\u6C42\u3081\u308B\
+    \u3002O(h*w*min(h,w))\u3002\n        fieldRank(matrixRows(a, height, width), width)\n\
+    \n    proc determinant*[H: static int, W: static int, T](a: StaticMatrix[H,W,T],\
+    \ n: int = H): T =\n        ## \u5DE6\u4E0An\xD7n\u306E\u884C\u5217\u5F0F\u3092\
+    \u6C42\u3081\u308B\u3002\u7A7A\u884C\u5217\u306F1\u3002O(n^3)\u3002\n        assert\
+    \ n in 0..min(H, W), \"\u5BFE\u8C61\u306E\u30B5\u30A4\u30BAn\u306F\u884C\u6570\
+    \u3068\u5217\u6570\u306E\u6700\u5C0F\u5024\u4EE5\u4E0B\u306E\u975E\u8CA0\u306E\
+    \u6574\u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \       fieldDeterminant(matrixRows(a, n, n))\n\n    proc hafnian*[H: static int,\
+    \ W: static int, T](a: StaticMatrix[H,W,T], n: int = H): T =\n        ## \u5BFE\
+    \u79F0\u306A\u5DE6\u4E0An\xD7n\uFF08n\u306F\u5076\u6570\uFF09\u306Ehafnian\u3092\
+    \u6C42\u3081\u308B\u3002O(n^2*2^(n/2))\u3002\n        assert n in 0..min(H, W),\
     \ \"\u5BFE\u8C61\u306E\u30B5\u30A4\u30BAn\u306F\u884C\u6570\u3068\u5217\u6570\u306E\
     \u6700\u5C0F\u5024\u4EE5\u4E0B\u306E\u975E\u8CA0\u306E\u6574\u6570\u3067\u3042\
-    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        fieldDeterminant(matrixRows(a,\
-    \ n, n))\n\n    proc hafnian*[H: static int, W: static int, T](a: StaticMatrix[H,W,T],\
-    \ n: int = H): T =\n        ## \u5BFE\u79F0\u306A\u5DE6\u4E0An\xD7n\uFF08n\u306F\
-    \u5076\u6570\uFF09\u306Ehafnian\u3092\u6C42\u3081\u308B\u3002O(n^2*2^(n/2))\u3002\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        fieldHafnian(matrixRows(a,\
+    \ n, n))\n\n    proc solveLinearSystem*[H: static int, W: static int, T](a: StaticMatrix[H,W,T],\
+    \ b: openArray[T], height: int = H, width: int = W): Option[LinearSystemSolution[T]]\
+    \ =\n        ## \u5DE6\u4E0Aheight\u884Cwidth\u5217\u3067Ax=b\u306E\u7279\u6B8A\
+    \u89E3\u3068\u6838\u306E\u57FA\u5E95\u3092\u8FD4\u3059\u3002\u89E3\u306A\u3057\
+    \u306Fnone\u3002\n        fieldSolve(matrixRows(a, height, width), width, b)\n\
+    \n    proc inverse*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n:\
+    \ int = H): Option[StaticMatrix[H,W,T]] =\n        ## \u5DE6\u4E0An\xD7n\u306E\
+    \u9006\u884C\u5217\u3092\u8FD4\u3059\u3002\u7BC4\u56F2\u5916\u306F\u96F6\u3001\
+    \u7279\u7570\u884C\u5217\u306Fnone\u3002O(n^3)\u3002\n        assert n in 0..min(H,\
+    \ W), \"\u5BFE\u8C61\u306E\u30B5\u30A4\u30BAn\u306F\u884C\u6570\u3068\u5217\u6570\
+    \u306E\u6700\u5C0F\u5024\u4EE5\u4E0B\u306E\u975E\u8CA0\u306E\u6574\u6570\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let rows = fieldAdjugateInverse(matrixRows(a,\
+    \ n, n), false)\n        if rows.isNone: return none(StaticMatrix[H,W,T])\n  \
+    \      var answer: StaticMatrix[H,W,T]\n        for i in 0..<n:\n            for\
+    \ j in 0..<n: answer[i, j] = rows.get[i][j]\n        some(answer)\n\n    proc\
+    \ adjugate*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], n: int =\
+    \ H): StaticMatrix[H,W,T] =\n        ## \u5DE6\u4E0An\xD7n\u306E\u4F59\u56E0\u5B50\
+    \u884C\u5217\u3092\u8FD4\u3059\u3002\u7BC4\u56F2\u5916\u306F\u96F6\u3002O(n^3)\u3002\
     \n        assert n in 0..min(H, W), \"\u5BFE\u8C61\u306E\u30B5\u30A4\u30BAn\u306F\
     \u884C\u6570\u3068\u5217\u6570\u306E\u6700\u5C0F\u5024\u4EE5\u4E0B\u306E\u975E\
     \u8CA0\u306E\u6574\u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
-    \u3059\"\n        fieldHafnian(matrixRows(a, n, n))\n\n    proc solveLinearSystem*[H:\
-    \ static int, W: static int, T](a: StaticMatrix[H,W,T], b: openArray[T], height:\
-    \ int = H, width: int = W): Option[LinearSystemSolution[T]] =\n        ## \u5DE6\
-    \u4E0Aheight\u884Cwidth\u5217\u3067Ax=b\u306E\u7279\u6B8A\u89E3\u3068\u6838\u306E\
-    \u57FA\u5E95\u3092\u8FD4\u3059\u3002\u89E3\u306A\u3057\u306Fnone\u3002\n     \
-    \   fieldSolve(matrixRows(a, height, width), width, b)\n\n    proc inverse*[H:\
-    \ static int, W: static int, T](a: StaticMatrix[H,W,T], n: int = H): Option[StaticMatrix[H,W,T]]\
-    \ =\n        ## \u5DE6\u4E0An\xD7n\u306E\u9006\u884C\u5217\u3092\u8FD4\u3059\u3002\
-    \u7BC4\u56F2\u5916\u306F\u96F6\u3001\u7279\u7570\u884C\u5217\u306Fnone\u3002O(n^3)\u3002\
-    \n        assert n in 0..min(H, W), \"\u5BFE\u8C61\u306E\u30B5\u30A4\u30BAn\u306F\
-    \u884C\u6570\u3068\u5217\u6570\u306E\u6700\u5C0F\u5024\u4EE5\u4E0B\u306E\u975E\
-    \u8CA0\u306E\u6574\u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
-    \u3059\"\n        let rows = fieldAdjugateInverse(matrixRows(a, n, n), false)\n\
-    \        if rows.isNone: return none(StaticMatrix[H,W,T])\n        var answer:\
-    \ StaticMatrix[H,W,T]\n        for i in 0..<n:\n            for j in 0..<n: answer[i,\
-    \ j] = rows.get[i][j]\n        some(answer)\n\n    proc adjugate*[H: static int,\
-    \ W: static int, T](a: StaticMatrix[H,W,T], n: int = H): StaticMatrix[H,W,T] =\n\
-    \        ## \u5DE6\u4E0An\xD7n\u306E\u4F59\u56E0\u5B50\u884C\u5217\u3092\u8FD4\
-    \u3059\u3002\u7BC4\u56F2\u5916\u306F\u96F6\u3002O(n^3)\u3002\n        assert n\
-    \ in 0..min(H, W), \"\u5BFE\u8C61\u306E\u30B5\u30A4\u30BAn\u306F\u884C\u6570\u3068\
-    \u5217\u6570\u306E\u6700\u5C0F\u5024\u4EE5\u4E0B\u306E\u975E\u8CA0\u306E\u6574\
-    \u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
-    \ let rows = fieldAdjugateInverse(matrixRows(a, n, n), true)\n        var answer:\
-    \ StaticMatrix[H,W,T]\n        for i in 0..<n:\n            for j in 0..<n: answer[i,\
-    \ j] = rows.get[i][j]\n        answer\n"
+    \u3059\"\n        let rows = fieldAdjugateInverse(matrixRows(a, n, n), true)\n\
+    \        var answer: StaticMatrix[H,W,T]\n        for i in 0..<n:\n          \
+    \  for j in 0..<n: answer[i, j] = rows.get[i][j]\n        answer\n"
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
@@ -202,7 +208,7 @@ data:
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/static_matrix_test.nim

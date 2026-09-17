@@ -43,8 +43,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
   - cplib/graph/general_matching.nim
   isVerificationFile: true

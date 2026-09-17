@@ -153,32 +153,39 @@ data:
     \ in 0..<a.w:\n                    assign(a[i, j], x)\n        proc op*[T](a,\
     \ b: Matrix[T]): Matrix[T] = (result = a; assign(result, b))\n        proc op*[T](a:\
     \ Matrix[T], x: T): Matrix[T] = (result = a; assign(result, x))\n        proc\
-    \ op*[T](x: T, a: Matrix[T]): Matrix[T] = op(a, x)\n    defineMatrixAssignmentOp(`+=`,\
-    \ `+`)\n    defineMatrixAssignmentOp(`-=`, `-`)\n\n    template defineMatrixIntOps(assign,\
-    \ op: untyped) =\n        proc assign*(a: var Matrix[int], b: Matrix[int]) =\n\
-    \            assert a.h == b.h and a.w == b.w, \"2\u3064\u306E\u884C\u5217\u306E\
-    \u884C\u6570\u3068\u5217\u6570\u306F\u305D\u308C\u305E\u308C\u7B49\u3057\u3044\
-    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n            for i in 0..<a.h:\n\
-    \                for j in 0..<a.w:\n                    a[i, j] = op(a[i, j],\
-    \ b[i, j])\n        proc assign*(a: var Matrix[int], x: int) =\n            for\
-    \ i in 0..<a.h:\n                for j in 0..<a.w:\n                    a[i, j]\
-    \ = op(a[i, j], x)\n        proc op*(a, b: Matrix[int]): Matrix[int] = (result\
-    \ = a; assign(result, b))\n        proc op*(a: Matrix[int], x: int): Matrix[int]\
-    \ = (result = a; assign(result, x))\n        proc op*(x: int, a: Matrix[int]):\
-    \ Matrix[int] = op(a, x)\n    defineMatrixIntOps(`and=`, `and`)\n    defineMatrixIntOps(`or=`,\
-    \ `or`)\n    defineMatrixIntOps(`xor=`, `xor`)\n    defineMatrixIntOps(`shl=`,\
-    \ `shl`)\n    defineMatrixIntOps(`shr=`, `shr`)\n    defineMatrixIntOps(`div=`,\
-    \ `div`)\n    defineMatrixIntOps(`mod=`, `mod`)\n\n    proc hash*[T](m: Matrix[T]):\
-    \ Hash = hash(m.arr)\n    proc identity_matrix*[T](n: int, one, zero: T): Matrix[T]\
-    \ =\n        result = initMatrix[T](n, n, zero)\n        for i in 0..<n: result[i][i]\
-    \ = one\n    proc identity_matrix*[T](n: int): Matrix[T] = identity_matrix[T](n,\
-    \ 1, 0)\n    proc pow*[T](m: Matrix[T], n: int): Matrix[T] =\n        result =\
-    \ identity_matrix[T](m.h)\n        var m = m\n        var n = n\n        while\
-    \ n > 0:\n            if (n and 1) == 1: result *= m\n            m *= m\n   \
-    \         n = n shr 1\n    proc `**`*[T](m: Matrix[T], n: int): Matrix[T] = m.pow(n)\n\
-    \    proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum\n\n    import options\n\
-    \    import cplib/matrix/field_matrix_ops\n    export LinearSystemSolution\n\n\
-    \    proc rank*[T](a: Matrix[T]): int =\n        ## \u968E\u6570\u3092\u6C42\u3081\
+    \ op*[T](x: T, a: Matrix[T]): Matrix[T] =\n            ## \u5404\u8981\u7D20\u306B\
+    \u5BFE\u3057\u3066\u30B9\u30AB\u30E9\u30FC\u3092\u5DE6\u8FBA\u3068\u3057\u3066\
+    \u6F14\u7B97\u3059\u308B\u3002O(HW)\u3002\n            result = a\n          \
+    \  for i in 0..<a.h:\n                for j in 0..<a.w:\n                    result[i,\
+    \ j] = op(x, a[i, j])\n    defineMatrixAssignmentOp(`+=`, `+`)\n    defineMatrixAssignmentOp(`-=`,\
+    \ `-`)\n\n    template defineMatrixIntOps(assign, op: untyped) =\n        proc\
+    \ assign*(a: var Matrix[int], b: Matrix[int]) =\n            assert a.h == b.h\
+    \ and a.w == b.w, \"2\u3064\u306E\u884C\u5217\u306E\u884C\u6570\u3068\u5217\u6570\
+    \u306F\u305D\u308C\u305E\u308C\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n            for i in 0..<a.h:\n                for j in 0..<a.w:\n\
+    \                    a[i, j] = op(a[i, j], b[i, j])\n        proc assign*(a: var\
+    \ Matrix[int], x: int) =\n            for i in 0..<a.h:\n                for j\
+    \ in 0..<a.w:\n                    a[i, j] = op(a[i, j], x)\n        proc op*(a,\
+    \ b: Matrix[int]): Matrix[int] = (result = a; assign(result, b))\n        proc\
+    \ op*(a: Matrix[int], x: int): Matrix[int] = (result = a; assign(result, x))\n\
+    \        proc op*(x: int, a: Matrix[int]): Matrix[int] =\n            ## \u5404\
+    \u8981\u7D20\u306B\u5BFE\u3057\u3066\u6574\u6570\u3092\u5DE6\u8FBA\u3068\u3057\
+    \u3066\u6F14\u7B97\u3059\u308B\u3002O(HW)\u3002\n            result = a\n    \
+    \        for i in 0..<a.h:\n                for j in 0..<a.w:\n              \
+    \      result[i, j] = op(x, a[i, j])\n    defineMatrixIntOps(`and=`, `and`)\n\
+    \    defineMatrixIntOps(`or=`, `or`)\n    defineMatrixIntOps(`xor=`, `xor`)\n\
+    \    defineMatrixIntOps(`shl=`, `shl`)\n    defineMatrixIntOps(`shr=`, `shr`)\n\
+    \    defineMatrixIntOps(`div=`, `div`)\n    defineMatrixIntOps(`mod=`, `mod`)\n\
+    \n    proc hash*[T](m: Matrix[T]): Hash = hash(m.arr)\n    proc identity_matrix*[T](n:\
+    \ int, one, zero: T): Matrix[T] =\n        result = initMatrix[T](n, n, zero)\n\
+    \        for i in 0..<n: result[i][i] = one\n    proc identity_matrix*[T](n: int):\
+    \ Matrix[T] = identity_matrix[T](n, 1, 0)\n    proc pow*[T](m: Matrix[T], n: int):\
+    \ Matrix[T] =\n        result = identity_matrix[T](m.h)\n        var m = m\n \
+    \       var n = n\n        while n > 0:\n            if (n and 1) == 1: result\
+    \ *= m\n            m *= m\n            n = n shr 1\n    proc `**`*[T](m: Matrix[T],\
+    \ n: int): Matrix[T] = m.pow(n)\n    proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum\n\
+    \n    import options\n    import cplib/matrix/field_matrix_ops\n    export LinearSystemSolution\n\
+    \n    proc rank*[T](a: Matrix[T]): int =\n        ## \u968E\u6570\u3092\u6C42\u3081\
     \u308B\u3002O(h*w*min(h,w))\u3002\n        fieldRank(matrixRows(a, a.h, a.w),\
     \ a.w)\n\n    proc determinant*[T](a: Matrix[T]): T =\n        ## \u884C\u5217\
     \u5F0F\u3092\u6C42\u3081\u308B\u3002\u7A7A\u884C\u5217\u306F1\u3002O(n^3)\u3002\
@@ -230,7 +237,7 @@ data:
   - verify/matrix/linear_algebra/judge_driver.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/matrix_test.nim

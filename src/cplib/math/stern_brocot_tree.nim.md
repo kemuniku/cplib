@@ -197,12 +197,12 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/math/stern_brocot_tree.nim

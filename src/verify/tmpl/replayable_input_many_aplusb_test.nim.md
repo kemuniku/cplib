@@ -37,8 +37,8 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/replayable_input.nim
-  - cplib/tmpl/replayable_input.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/replayable_input.nim
   isVerificationFile: true
   path: verify/tmpl/replayable_input_many_aplusb_test.nim
   requiredBy: []

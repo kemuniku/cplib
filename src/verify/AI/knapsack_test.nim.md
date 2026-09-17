@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: verify/AI/knapsack_test.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/knapsack_test.nim

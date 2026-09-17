@@ -86,22 +86,22 @@ data:
     check[modint_barrett]()\n\ndoAssert generalizedFloorSum[int](4, 3, 2, 1, 1, 2)\
     \ == 15\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/generalized_floor_sum.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/generalized_floor_sum.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/monoid_floor_sum.nim
   - cplib/modint/modint.nim
+  - cplib/math/generalized_floor_sum.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/generalized_floor_sum.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/monoid_floor_sum.nim
   - cplib/modint/modint.nim
+  - cplib/math/monoid_floor_sum.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/generalized_floor_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/generalized_floor_sum_test.nim

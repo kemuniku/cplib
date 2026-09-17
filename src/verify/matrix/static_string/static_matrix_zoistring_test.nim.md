@@ -56,13 +56,13 @@ data:
     '
   dependsOn:
   - cplib/matrix/static_matrix.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/static_string/static_matrix_zoistring_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/static_string/static_matrix_zoistring_test.nim

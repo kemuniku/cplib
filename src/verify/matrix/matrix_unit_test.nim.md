@@ -67,16 +67,16 @@ data:
     \ m4 = a * c3\n    assert m3.h == 1 and m3.w == 3\n    assert m4.h == 2 and m4.w\
     \ == 1\n"
   dependsOn:
-  - cplib/matrix/matops.nim
-  - cplib/matrix/matrix.nim
   - cplib/matrix/matrix.nim
   - cplib/matrix/matops.nim
+  - cplib/matrix/matops.nim
+  - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_unit_test.nim

@@ -80,28 +80,28 @@ data:
     \    stderr.writeLine(\"matrix_product_ms=\", (getMonoTime() - start).inNanoseconds.float\
     \ / 1e6)\nfor i in 0 ..< n:\n    c[i].writeRow()\n"
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/tmpl/fastio.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:06:55+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_avx2_test.nim

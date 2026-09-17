@@ -16,6 +16,12 @@ data:
     path: verify/AI/knapsack_test.nim
     title: verify/AI/knapsack_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/bounded_zero_count_test.nim
+    title: verify/utils/knapsack/bounded_zero_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/knapsack/bounded_zero_count_test.nim
+    title: verify/utils/knapsack/bounded_zero_count_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
     title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
   - icon: ':heavy_check_mark:'
@@ -90,13 +96,16 @@ data:
     \       for i in 0..<len(items):\n            var (v,w) = items[i]\n         \
     \   for j in 0..(W-w):\n                DP[j+w] = max(DP[j+w],DP[j]+v)\n     \
     \   return DP.max()\n    \n    proc solve_BoundedKnapsack*(items:openArray[tuple[v:int,w:int,m:int]],\
-    \ W:int):int =\n        var dp = newSeq[int](W + 1)\n        for (v, w, m0) in\
-    \ items:\n            if w > W:\n                continue\n            if w ==\
-    \ 0:\n                for i in 0..W:\n                    dp[i] += v*m0\n    \
-    \            continue\n            let m = min(m0, W div w)\n            var buf\
-    \ = dp\n            var s = 0\n            while s * w <= W:\n               \
-    \ let l = s * w\n                let r = min(W + 1, (s + m) * w)\n           \
-    \     for i in l ..< r - w:\n                    dp[i + w] = max(dp[i + w], dp[i]\
+    \ W:int):int =\n        ## \u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\u30D7\
+    \u30B5\u30C3\u30AF\u306E\u6700\u5927\u4FA1\u5024\u3092\u8FD4\u3059\u3002\u500B\
+    \u65700\u306E\u54C1\u7269\u306F\u7121\u8996\u3059\u308B\u3002O(NW)\u3002\n   \
+    \     var dp = newSeq[int](W + 1)\n        for (v, w, m0) in items:\n        \
+    \    if m0 == 0 or w > W:\n                continue\n            if w == 0:\n\
+    \                for i in 0..W:\n                    dp[i] += v*m0\n         \
+    \       continue\n            let m = min(m0, W div w)\n            var buf =\
+    \ dp\n            var s = 0\n            while s * w <= W:\n                let\
+    \ l = s * w\n                let r = min(W + 1, (s + m) * w)\n               \
+    \ for i in l ..< r - w:\n                    dp[i + w] = max(dp[i + w], dp[i]\
     \ + v)\n                for i in countdown(r - w - 1, l):\n                  \
     \  buf[i] = max(buf[i], buf[i + w] - v)\n                s += m\n            for\
     \ i in w * m .. W:\n                dp[i] = max(dp[i], buf[i - w * m] + v * m)\n\
@@ -107,7 +116,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/knapsack.nim
   requiredBy: []
-  timestamp: '2026-07-06 04:42:52+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/knapsack/solve_Bknapsack_test.nim
@@ -120,6 +129,8 @@ data:
   - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - verify/utils/knapsack/bounded_zero_count_test.nim
+  - verify/utils/knapsack/bounded_zero_count_test.nim
   - verify/AI/knapsack_test.nim
   - verify/AI/knapsack_test.nim
 documentation_of: cplib/utils/knapsack.nim

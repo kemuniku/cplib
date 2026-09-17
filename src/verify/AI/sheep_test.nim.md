@@ -94,24 +94,24 @@ data:
     \ 2 == 0) == 3\n    doAssert (0..<5).allIt(it >= 0)\n    doAssert (0..<5).anyIt(it\
     \ == 3)\n"
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/tmpl/fastio.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/modint/modint.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:22:45+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/sheep_test.nim

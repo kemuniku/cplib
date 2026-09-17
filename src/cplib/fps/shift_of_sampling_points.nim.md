@@ -236,20 +236,20 @@ data:
     \u3058\u500B\u6570\u306E\u8A55\u4FA1\u5024 f(t), ..., f(t+n-1) \u3092 O(M(n))\
     \ \u3067\u6C42\u3081\u308B\u3002\n        shiftOfSamplingPoints(ys, t, ys.len)\n"
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/fps/shift_of_sampling_points.nim
   requiredBy:
@@ -257,7 +257,7 @@ data:
   - cplib/math/many_factorials.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-09-16 22:49:15+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/many_factorials_online_test.nim

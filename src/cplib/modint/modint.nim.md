@@ -771,6 +771,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery_equality_test.nim
+    title: verify/modint/montgomery_equality_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery_equality_test.nim
+    title: verify/modint/montgomery_equality_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -822,11 +828,11 @@ data:
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -922,7 +928,7 @@ data:
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim
@@ -961,6 +967,8 @@ data:
   - verify/convolution/relaxed_convolution_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/integer_operation_test.nim
+  - verify/modint/montgomery_equality_test.nim
+  - verify/modint/montgomery_equality_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim

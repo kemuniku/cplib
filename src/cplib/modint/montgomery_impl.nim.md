@@ -765,6 +765,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery_equality_test.nim
+    title: verify/modint/montgomery_equality_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery_equality_test.nim
+    title: verify/modint/montgomery_equality_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -777,7 +783,7 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MODINT_MODINT_MONTGOMERY:\n    const CPLIB_MODINT_MODINT_MONTGOMERY*\
-    \ = 1\n    import std/macros, std/tables\n    type StaticMontgomeryModint*[M:\
+    \ = 1\n    import macros, tables, hashes\n    type StaticMontgomeryModint*[M:\
     \ static[uint32]] = object\n        a: uint32\n    type DynamicMontgomeryModint*[M:\
     \ static[uint32]] = object\n        a: uint32\n    type MontgomeryModint* = StaticMontgomeryModint\
     \ or DynamicMontgomeryModint\n\n    proc get_r*(M: uint32): uint32 =\n       \
@@ -831,23 +837,34 @@ data:
     \ SomeInteger) =\n        a.a -= init(T, b).a\n        if cast[int32](a.a) < 0i32:\
     \ a.a += T.get_M * 2u32\n    proc val*[T: MontgomeryModint](a: T): int =\n   \
     \     result = reduce(T, a.a).int\n        if result.uint32 >= T.get_M: result\
-    \ -= T.get_M.int\n\n    proc `-`*[T: MontgomeryModint](a: T): T = (result = init(T,\
-    \ 0); result -= a)\n    proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger)\
-    \ = a.a = reduce(T, uint(a.a) * init(T, b).a)\n    proc inv*[T: MontgomeryModint](x:\
-    \ T): T =\n        assert x.val != 0, \"0\u306E\u9006\u5143\u3092\u6C42\u3081\u308B\
-    \u3053\u3068\u306F\u3067\u304D\u307E\u305B\u3093\"\n        var x: int32 = int32(x.val)\n\
-    \        var y: int32 = T.mod\n        var u = 1i32\n        var v, t = 0i32\n\
-    \        while y > 0:\n            t = x div y\n            x -= t * y\n     \
-    \       u -= t * v\n            swap(x, y)\n            swap(u, v)\n        return\
-    \ init(T, u)\n    proc `/=`*[T: MontgomeryModint](a: var T, b: T or SomeInteger)\
-    \ = a *= init(T, b).inv\n\n    macro declarStaticMontgomeryModint*(name, M) =\n\
-    \        let converter_name = ident(\"to\" & $`name`)\n        quote do:\n   \
-    \         type `name`* = StaticMontgomeryModint[`M`]\n            converter `converter_name`*[I:\
-    \ SomeInteger](a: I): StaticMontgomeryModint[`M`] = init(StaticMontgomeryModint[`M`],\
-    \ a)\n    macro declarDynamicMontgomeryModint*(name, id) =\n        let converter_name\
-    \ = ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = DynamicMontgomeryModint[`id`]\n\
-    \            converter `converter_name`*[I: SomeInteger](a: I): DynamicMontgomeryModint[`id`]\
-    \ = init(DynamicMontgomeryModint[`id`], a)\n"
+    \ -= T.get_M.int\n\n    template defineMontgomeryEquality(ModInt: untyped) =\n\
+    \        proc `==`*[M: static[uint32]](a, b: ModInt[M]): bool {.inline.} =\n \
+    \           ## \u5197\u9577\u306A\u5185\u90E8\u8868\u73FE\u3092\u6B63\u898F\u5316\
+    \u3057\u3066\u5270\u4F59\u306E\u7B49\u5024\u3092\u5224\u5B9A\u3059\u308B\u3002\
+    O(1)\u3002\n            let modulus = ModInt[M].get_M\n            let left =\
+    \ if a.a >= modulus: a.a - modulus else: a.a\n            let right = if b.a >=\
+    \ modulus: b.a - modulus else: b.a\n            left == right\n        proc hash*[M:\
+    \ static[uint32]](a: ModInt[M]): Hash =\n            ## \u540C\u3058\u5270\u4F59\
+    \u304C\u540C\u3058\u30CF\u30C3\u30B7\u30E5\u5024\u306B\u306A\u308B\u3088\u3046\
+    \u306B\u8A08\u7B97\u3059\u308B\u3002O(1)\u3002\n            hash(a.val)\n    defineMontgomeryEquality(StaticMontgomeryModint)\n\
+    \    defineMontgomeryEquality(DynamicMontgomeryModint)\n\n    proc `-`*[T: MontgomeryModint](a:\
+    \ T): T = (result = init(T, 0); result -= a)\n    proc `*=`*[T: MontgomeryModint]\
+    \ (a: var T, b: T or SomeInteger) = a.a = reduce(T, uint(a.a) * init(T, b).a)\n\
+    \    proc inv*[T: MontgomeryModint](x: T): T =\n        assert x.val != 0, \"\
+    0\u306E\u9006\u5143\u3092\u6C42\u3081\u308B\u3053\u3068\u306F\u3067\u304D\u307E\
+    \u305B\u3093\"\n        var x: int32 = int32(x.val)\n        var y: int32 = T.mod\n\
+    \        var u = 1i32\n        var v, t = 0i32\n        while y > 0:\n       \
+    \     t = x div y\n            x -= t * y\n            u -= t * v\n          \
+    \  swap(x, y)\n            swap(u, v)\n        return init(T, u)\n    proc `/=`*[T:\
+    \ MontgomeryModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv\n\n \
+    \   macro declarStaticMontgomeryModint*(name, M) =\n        let converter_name\
+    \ = ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = StaticMontgomeryModint[`M`]\n\
+    \            converter `converter_name`*[I: SomeInteger](a: I): StaticMontgomeryModint[`M`]\
+    \ = init(StaticMontgomeryModint[`M`], a)\n    macro declarDynamicMontgomeryModint*(name,\
+    \ id) =\n        let converter_name = ident(\"to\" & $`name`)\n        quote do:\n\
+    \            type `name`* = DynamicMontgomeryModint[`id`]\n            converter\
+    \ `converter_name`*[I: SomeInteger](a: I): DynamicMontgomeryModint[`id`] = init(DynamicMontgomeryModint[`id`],\
+    \ a)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/modint/montgomery_impl.nim
@@ -946,7 +963,7 @@ data:
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim
@@ -985,6 +1002,8 @@ data:
   - verify/convolution/relaxed_convolution_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/integer_operation_test.nim
+  - verify/modint/montgomery_equality_test.nim
+  - verify/modint/montgomery_equality_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/fps/composition_of_formal_power_series_test.nim

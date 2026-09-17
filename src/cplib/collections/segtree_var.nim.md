@@ -28,6 +28,12 @@ data:
     path: verify/AI/segtree_var_test.nim
     title: verify/AI/segtree_var_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_var/copy_test.nim
+    title: verify/collections/segtree_var/copy_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/segtree_var/copy_test.nim
+    title: verify/collections/segtree_var/copy_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_var/segtree_PARS_test.nim
     title: verify/collections/segtree_var/segtree_PARS_test.nim
   - icon: ':heavy_check_mark:'
@@ -123,9 +129,12 @@ data:
     \ segment.b+1)\n    proc `[]`*[T](self: var SegmentTree[T, SegmentTreeElem[T]],\
     \ segment: HSlice[int, int]): T = self.get(segment)\n    proc `[]`*[T](self: var\
     \ SegmentTree[T, SegmentTreeElem[T]], index: Natural): var SegmentTreeElem[T]\
-    \ =\n        assert index < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
-    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308A\u307E\u3059: index < self.length\"\n        return self.arr[index+self.lastnode]\n\
+    \ =\n        ## \u8981\u7D20\u3078\u306E\u53C2\u7167\u3092\u8FD4\u3057\u3001\u8907\
+    \u5408\u4EE3\u5165\u306E\u66F4\u65B0\u5148\u3092\u73FE\u5728\u306E\u6728\u306B\
+    \u8A2D\u5B9A\u3059\u308B\u3002O(1)\u3002\n        assert index < self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: index < self.length\"\n\
+    \        self.arr[index+self.lastnode].st = self.addr\n        return self.arr[index+self.lastnode]\n\
     \    proc propagete_update[T](self: var SegmentTree[T, SegmentTreeElem[T]], x:\
     \ Natural) =\n        var x = x\n        while x > 1:\n            x = x shr 1\n\
     \            self.arr[x].v = self.merge(self.arr[2*x].v, self.arr[2*x+1].v)\n\
@@ -212,7 +221,7 @@ data:
   - verify/collections/segtree_var/segtree_xor1_test_.nim
   - verify/collections/segtree_var/segtree_xor2_test_.nim
   - verify/collections/segtree_var/segtree_xor2_test_.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/segtree_var/segtree_init_with_size_test.nim
@@ -227,6 +236,8 @@ data:
   - verify/collections/segtree_var/segtree_RMQ_test.nim
   - verify/collections/segtree_var/segtree_newsegwith_test.nim
   - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/copy_test.nim
+  - verify/collections/segtree_var/copy_test.nim
   - verify/collections/segtree_var/segtree_PARS_test.nim
   - verify/collections/segtree_var/segtree_PARS_test.nim
   - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim

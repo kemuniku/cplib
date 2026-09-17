@@ -784,6 +784,12 @@ data:
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery_equality_test.nim
+    title: verify/modint/montgomery_equality_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/montgomery_equality_test.nim
+    title: verify/modint/montgomery_equality_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tmpl/citrus_and_qcfium_test.nim
     title: verify/tmpl/citrus_and_qcfium_test.nim
   - icon: ':heavy_check_mark:'
@@ -945,6 +951,8 @@ data:
   - verify/convolution/relaxed_convolution_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/integer_operation_test.nim
+  - verify/modint/montgomery_equality_test.nim
+  - verify/modint/montgomery_equality_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim

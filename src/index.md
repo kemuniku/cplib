@@ -2195,6 +2195,9 @@ data:
   - name: verify/collections/segtree_var
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/collections/segtree_var/copy_test.nim
+      title: verify/collections/segtree_var/copy_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_PARS_test.nim
       title: verify/collections/segtree_var/segtree_PARS_test.nim
     - icon: ':heavy_check_mark:'
@@ -2560,6 +2563,9 @@ data:
       path: verify/math/floor_sum_yosupo_test.nim
       title: verify/math/floor_sum_yosupo_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/math/fraction_inverse_sign_test.nim
+      title: verify/math/fraction_inverse_sign_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/math/fractions_unit_test.nim
       title: verify/math/fractions_unit_test.nim
     - icon: ':heavy_check_mark:'
@@ -2718,6 +2724,9 @@ data:
       path: verify/matrix/matrix_zoistring_test.nim
       title: verify/matrix/matrix_zoistring_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/scalar_left_operations_test.nim
+      title: verify/matrix/scalar_left_operations_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/static_matrix_avx2_unit_test.nim
       title: verify/matrix/static_matrix_avx2_unit_test.nim
     - icon: ':heavy_check_mark:'
@@ -2757,6 +2766,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/integer_operation_test.nim
       title: verify/modint/integer_operation_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/modint/montgomery_equality_test.nim
+      title: verify/modint/montgomery_equality_test.nim
   - name: verify/str/can_reverse_hash_string
     pages:
     - icon: ':heavy_check_mark:'
@@ -3015,6 +3027,9 @@ data:
       title: verify/utils/itertools/accumulater_test.nim
   - name: verify/utils/knapsack
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/knapsack/bounded_zero_count_test.nim
+      title: verify/utils/knapsack/bounded_zero_count_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
       title: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
