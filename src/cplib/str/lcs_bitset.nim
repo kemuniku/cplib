@@ -9,17 +9,15 @@ when not declared CPLIB_STR_LCS_BITSET:
         let m = B.len
         let words = (m shr 6) + ord((m and 63) != 0)
         var state = initBitSet(m)
-        var combined = initBitSet(m)
-        var difference = initBitSet(m)
         var matched = initBitSet(m)
 
         template advance(mask: BitSetAvx512) =
             ## DPの隣接差分を更新します。x - ((state << 1) | 1) = x + ~(state << 1)を使います。
-            combined.orInto(state, mask)
-            difference = state << 1
-            difference.flipAll()
-            difference.addInto(combined, difference)
-            state.andNotInto(combined, difference)
+            template equal: untyped = mask
+            fuse:
+                let combined = state or equal
+                let difference = combined + not (state shl 1)
+                state = combined and not difference
 
         template aValue(i: int): untyped =
             ## 走査方向に応じたAの要素を参照します。
