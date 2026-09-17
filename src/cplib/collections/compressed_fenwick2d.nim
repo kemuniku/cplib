@@ -7,15 +7,13 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_FENWICK2D:
     type CompressedFenwick2D*[K, T] = ref object
         xs, ys, pointYs: seq[K]
         offsets, pointOffsets: seq[int]
-        data: seq[T]
+        data, pointValues: seq[T]
 
-    proc initCompressedFenwick2D*[K, T](points: openArray[(K, K)]): CompressedFenwick2D[K, T] =
-        ## 更新点を事前登録し、全点を零で初期化します。時間・空間O(N log N)。
-        ## 和の型Tを省略するとintになります。座標の型Kは引数から推論します。
-        ## 重複点は一つにまとめます。Kには一貫した < と == が必要です。
-        ## 内側の座標数の総和をMとすると、座標M個・値M個と登録点の索引用O(N)領域を保持します。
+    proc initCompressedFenwick2DImpl[K, T, P](points: openArray[P]): CompressedFenwick2D[K, T] =
+        ## 座標の圧縮と必要に応じた初期値の一括構築をO(N log N)で行います。
+        mixin `+=`
         var ps = @points
-        ps.sort(proc(a, b: (K, K)): int =
+        ps.sort(proc(a, b: P): int =
             if a[0] < b[0]: -1
             elif b[0] < a[0]: 1
             elif a[1] < b[1]: -1
@@ -23,17 +21,20 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_FENWICK2D:
             else: 0)
         var count = 0
         for i in 0..<ps.len:
-            if count == 0 or ps[count - 1] != ps[i]:
+            if count == 0 or ps[count - 1][0] != ps[i][0] or ps[count - 1][1] != ps[i][1]:
                 ps[count] = ps[i]
                 inc count
+            else:
+                when compiles(ps[i][2]): ps[count - 1][2] += ps[i][2]
         ps.setLen(count)
-        result = CompressedFenwick2D[K, T](pointYs: newSeq[K](count))
+        result = CompressedFenwick2D[K, T](pointYs: newSeq[K](count), pointValues: newSeq[T](count))
         var ranked = newSeq[tuple[y: K, x: int]](count)
         for i, p in ps:
             if result.xs.len == 0 or result.xs[^1] != p[0]:
                 result.xs.add(p[0])
                 result.pointOffsets.add(i)
             result.pointYs[i] = p[1]
+            when compiles(p[2]): result.pointValues[i] = p[2]
             ranked[i] = (p[1], result.xs.len)
         result.pointOffsets.add(count)
         let n = result.xs.len
@@ -56,14 +57,38 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_FENWICK2D:
         result.ys = newSeq[K](result.offsets[n + 1])
         result.data = newSeq[T](result.ys.len)
         cursor.fill(0)
+        when compiles(ps[0][2]):
+            var pointCursor = newSeq[int](n)
         for p in ranked:
             var node = p.x
+            when compiles(ps[0][2]):
+                let xi = p.x - 1
+                let value = result.pointValues[result.pointOffsets[xi] + pointCursor[xi]]
+                inc pointCursor[xi]
             while node <= n:
                 let start = result.offsets[node]
-                if cursor[node] > 0 and result.ys[start + cursor[node] - 1] == p.y: break
-                result.ys[start + cursor[node]] = p.y
-                inc cursor[node]
+                if cursor[node] > 0 and result.ys[start + cursor[node] - 1] == p.y:
+                    when compiles(ps[0][2]): result.data[start + cursor[node] - 1] += value
+                    else: break
+                else:
+                    let index = start + cursor[node]
+                    result.ys[index] = p.y
+                    when compiles(ps[0][2]): result.data[index] += value
+                    inc cursor[node]
                 node += node and -node
+        when compiles(ps[0][2]):
+            for node in 1..n:
+                let start = result.offsets[node]
+                let size = result.offsets[node + 1] - start
+                for i in 0..<size:
+                    let parent = i or (i + 1)
+                    if parent < size: result.data[start + parent] += result.data[start + i]
+
+    proc initCompressedFenwick2D*[K, T](points: openArray[(K, K)]): CompressedFenwick2D[K, T] =
+        ## 更新点を事前登録し、全点を零で初期化します。時間・空間O(N log N)。
+        ## 重複点は一つにまとめます。Kには一貫した < と == が必要です。
+        ## 内側の座標数の総和をMとすると、座標・値を各M個と、登録点の索引・値をO(N)個保持します。
+        initCompressedFenwick2DImpl[K, T, (K, K)](points)
 
     proc initCompressedFenwick2D*[K](points: seq[(K, K)]): CompressedFenwick2D[K, int] =
         ## seqから座標型を推論し、和をintで保持する木を時間・空間O(N log N)で構築します。
@@ -76,32 +101,7 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_FENWICK2D:
     proc initCompressedFenwick2D*[K, T](points: openArray[(K, K, T)]): CompressedFenwick2D[K, T] =
         ## (x,y,w)の列から時間・空間O(N log N)で一括構築します。同じ座標の重みは加算します。
         ## 座標型Kと和の型Tは引数から推論します。重みが零の点も登録します。
-        mixin `+=`
-        var coords = newSeq[(K, K)](points.len)
-        for i, p in points: coords[i] = (p[0], p[1])
-        result = initCompressedFenwick2D[K, T](coords.toOpenArray(0, coords.len - 1))
-        var ps = @points
-        ps.sort(proc(a, b: (K, K, T)): int =
-            if a[1] < b[1]: -1
-            elif b[1] < a[1]: 1
-            else: 0)
-        let n = result.xs.len
-        var cursor = newSeq[int](n + 1)
-        # y順に走査して各ノードの素の配列に加算し、二分探索を省きます。
-        for p in ps:
-            var node = result.xs.lowerBound(p[0]) + 1
-            while node <= n:
-                let start = result.offsets[node]
-                while result.ys[start + cursor[node]] < p[1]: inc cursor[node]
-                result.data[start + cursor[node]] += p[2]
-                node += node and -node
-        # 各内側配列を線形時間でFenwick treeに変換します。
-        for node in 1..n:
-            let start = result.offsets[node]
-            let size = result.offsets[node + 1] - start
-            for i in 0..<size:
-                let parent = i or (i + 1)
-                if parent < size: result.data[start + parent] += result.data[start + i]
+        initCompressedFenwick2DImpl[K, T, (K, K, T)](points)
 
     proc lowerIndex[K](coords: seq[K], start, finish: int, y: K): int {.inline.} =
         ## 座標列の指定区間でlowerBoundを求め、区間内の添字をO(log N)で返します。
@@ -117,29 +117,36 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_FENWICK2D:
         ## ノード内のyのlowerBoundをO(log N)で返します。
         lowerIndex(self.ys, self.offsets[node], self.offsets[node + 1], y)
 
-    proc registered[K, T](self: CompressedFenwick2D[K, T], xi: int, y: K): bool {.inline.} =
-        ## xの添字とyに対応する登録点の有無をO(log N)で判定します。
+    proc pointIndex[K, T](self: CompressedFenwick2D[K, T], xi: int, y: K): int {.inline.} =
+        ## xの添字とyに対応する登録点の添字をO(log N)で返します。未登録なら-1です。
         let start = self.pointOffsets[xi]
         let finish = self.pointOffsets[xi + 1]
         let i = start + lowerIndex(self.pointYs, start, finish, y)
-        i < finish and self.pointYs[i] == y
+        if i < finish and self.pointYs[i] == y: i
+        else: -1
+
+    proc addImpl[K, T](self: CompressedFenwick2D[K, T], xi: int, y: K, delta: T) =
+        ## xの添字が既知の登録点をO(log² N)で加算します。
+        mixin `+=`
+        var node = xi + 1
+        while node <= self.xs.len:
+            let start = self.offsets[node]
+            let size = self.offsets[node + 1] - start
+            var i = self.yIndex(node, y)
+            while i < size:
+                self.data[start + i] += delta
+                i = i or (i + 1)
+            node += node and -node
 
     proc add*[K, T](self: CompressedFenwick2D[K, T], x, y: K, delta: T) =
         ## 登録点(x,y)にdeltaをO(log² N)で加算します。未登録点は更新できません。
         mixin `+=`
         let xi = self.xs.lowerBound(x)
         assert xi < self.xs.len and self.xs[xi] == x, "更新する座標は事前登録してください"
-        assert self.registered(xi, y), "更新する座標は事前登録してください"
-        var node = xi + 1
-        while node <= self.xs.len:
-            let start = self.offsets[node]
-            let size = self.offsets[node + 1] - start
-            var i = self.yIndex(node, y)
-            # 内側を0始まりにして、ノードごとの未使用要素を省きます。
-            while i < size:
-                self.data[start + i] += delta
-                i = i or (i + 1)
-            node += node and -node
+        let pi = self.pointIndex(xi, y)
+        assert pi >= 0, "更新する座標は事前登録してください"
+        self.pointValues[pi] += delta
+        self.addImpl(xi, y, delta)
 
     proc innerSum[K, T](self: CompressedFenwick2D[K, T], node, l, r: int): T {.inline.} =
         ## 内側の添字区間[l,r)の和をO(log N)で返します。共通の祖先は走査しません。
@@ -197,29 +204,22 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_FENWICK2D:
         result = result - left
 
     proc `[]`*[K, T](self: CompressedFenwick2D[K, T], x, y: K): T =
-        ## 点の値をO(log² N)で返します。未登録なら零です。
-        mixin `+=`, `-`
+        ## 点の値をO(log N)で返します。未登録なら零です。
         let xi = self.xs.lowerBound(x)
-        if xi == self.xs.len or self.xs[xi] != x or not self.registered(xi, y): return
-        var l = xi
-        var r = xi + 1
-        var left: T
-        while r > l:
-            let yi = self.yIndex(r, y)
-            if yi < self.offsets[r + 1] - self.offsets[r] and self.ys[self.offsets[r] + yi] == y:
-                result += self.innerSum(r, yi, yi + 1)
-            r = r and (r - 1)
-        while l > r:
-            let yi = self.yIndex(l, y)
-            if yi < self.offsets[l + 1] - self.offsets[l] and self.ys[self.offsets[l] + yi] == y:
-                left += self.innerSum(l, yi, yi + 1)
-            l = l and (l - 1)
-        result = result - left
+        if xi == self.xs.len or self.xs[xi] != x: return
+        let pi = self.pointIndex(xi, y)
+        if pi >= 0: result = self.pointValues[pi]
 
     proc `[]=`*[K, T](self: CompressedFenwick2D[K, T], x, y: K, value: T) =
         ## 登録点(x,y)をO(log² N)で上書きします。
         mixin `-`
-        self.add(x, y, value - self[x, y])
+        let xi = self.xs.lowerBound(x)
+        assert xi < self.xs.len and self.xs[xi] == x, "更新する座標は事前登録してください"
+        let pi = self.pointIndex(xi, y)
+        assert pi >= 0, "更新する座標は事前登録してください"
+        let delta = value - self.pointValues[pi]
+        self.pointValues[pi] = value
+        self.addImpl(xi, y, delta)
 
     proc get_all*[K, T](self: CompressedFenwick2D[K, T]): T =
         ## 全登録点の和をO(log² N)で返します。

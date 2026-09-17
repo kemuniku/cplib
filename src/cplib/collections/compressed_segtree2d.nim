@@ -12,15 +12,11 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_SEGTREE2D:
         updateImpl: proc(self: CompressedSegmentTree2D[K, T], x, y: K, value: T)
         rangeImpl: proc(self: CompressedSegmentTree2D[K, T], xl, xr, yl, yr: K): T
 
-    proc initCompressedSegmentTree2D*[K, T](points: openArray[(K, K)],
+    proc initCompressedSegmentTree2DImpl[K, T, P](points: openArray[P],
             merge: proc(x, y: T): T, default: T): CompressedSegmentTree2D[K, T] =
-        ## 更新座標を事前登録し、全点を単位元で初期化します。時間・空間O(N log N)。
-        ## mergeには可換モノイドの演算、defaultには単位元を指定してください。
-        ## 重複点は一つにまとめます。構築後の座標追加はできません。
-        ## Kには一貫した < と == が必要です。内側の木は葉数を2冪に丸めません。
-        ## 各ノードのy座標数の総和をMとすると、座標M個・集約値2M個とO(N)の管理領域を保持します。
+        ## 登録座標の圧縮と必要に応じた初期値の一括構築をO(N log N)で行います。
         var ps = @points
-        ps.sort(proc(a, b: (K, K)): int =
+        ps.sort(proc(a, b: P): int =
             if a[0] < b[0]: -1
             elif b[0] < a[0]: 1
             elif a[1] < b[1]: -1
@@ -28,9 +24,11 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_SEGTREE2D:
             else: 0)
         var n = 0
         for i in 0..<ps.len:
-            if n == 0 or ps[n - 1] != ps[i]:
+            if n == 0 or ps[n - 1][0] != ps[i][0] or ps[n - 1][1] != ps[i][1]:
                 ps[n] = ps[i]
                 inc n
+            else:
+                when compiles(ps[i][2]): ps[n - 1][2] = merge(ps[n - 1][2], ps[i][2])
         ps.setLen(n)
         result = CompressedSegmentTree2D[K, T](default: default, merge: merge, count: n, base: 1)
         var ranked = newSeq[tuple[y: K, x: int]](n)
@@ -67,6 +65,57 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_SEGTREE2D:
                 result.ys[start + cursor[node]] = p.y
                 inc cursor[node]
                 node = node shr 1
+
+        when compiles(ps[0][2]):
+            var xi = 0
+            var yi = 0
+            for p in ps:
+                while result.xs[xi] < p[0]:
+                    inc xi
+                    yi = 0
+                let node = result.base + xi
+                let start = result.offsets[node]
+                let size = result.offsets[node + 1] - start
+                result.data[2 * start + size + yi] = p[2]
+                inc yi
+            for node in countdown(result.base * 2 - 1, 1):
+                let start = result.offsets[node]
+                let size = result.offsets[node + 1] - start
+                if node < result.base:
+                    let ls = result.offsets[node * 2]
+                    let rs = result.offsets[node * 2 + 1]
+                    let ln = rs - ls
+                    let rn = result.offsets[node * 2 + 2] - rs
+                    var li = 0
+                    var ri = 0
+                    for i in 0..<size:
+                        while li < ln and result.ys[ls + li] < result.ys[start + i]: inc li
+                        while ri < rn and result.ys[rs + ri] < result.ys[start + i]: inc ri
+                        var lv = default
+                        var rv = default
+                        if li < ln and result.ys[ls + li] == result.ys[start + i]:
+                            lv = result.data[2 * ls + ln + li]
+                        if ri < rn and result.ys[rs + ri] == result.ys[start + i]:
+                            rv = result.data[2 * rs + rn + ri]
+                        result.data[2 * start + size + i] = merge(lv, rv)
+                for i in countdown(size - 1, 1):
+                    result.data[2 * start + i] = merge(result.data[2 * start + 2 * i],
+                        result.data[2 * start + 2 * i + 1])
+
+    proc initCompressedSegmentTree2D*[K, T](points: openArray[(K, K)],
+            merge: proc(x, y: T): T, default: T): CompressedSegmentTree2D[K, T] =
+        ## 更新座標を事前登録し、全点を単位元で初期化します。時間・空間O(N log N)。
+        ## mergeには可換モノイドの演算、defaultには単位元を指定してください。
+        ## 重複点は一つにまとめます。構築後の座標追加はできません。
+        ## Kには一貫した < と == が必要です。内側の木は葉数を2冪に丸めません。
+        ## 各ノードのy座標数の総和をMとすると、座標M個・集約値2M個とO(N)の管理領域を保持します。
+        initCompressedSegmentTree2DImpl[K, T, (K, K)](points, merge, default)
+
+    proc initCompressedSegmentTree2D*[K, T](points: openArray[(K, K, T)],
+            merge: proc(x, y: T): T, default: T): CompressedSegmentTree2D[K, T] =
+        ## 初期値付き登録点からO(N log N)で構築します。同じ座標の値はマージします。
+        ## mergeには可換モノイドの演算、defaultには単位元を指定してください。
+        initCompressedSegmentTree2DImpl[K, T, (K, K, T)](points, merge, default)
 
     proc yIndex[K, T](self: CompressedSegmentTree2D[K, T], node: int, y: K): int {.inline.} =
         ## ノード内のyのlowerBoundをO(log N)で返します。

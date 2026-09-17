@@ -100,4 +100,54 @@ block:
     doAssert a.get_all() == 1 and b.get_all() == 4
     doAssert a.get(0, 2, 0, 1) == 4 and b.get(0, 2, 0, 1) == 0
 
+block:
+    let points = @[(3, 4, 10), (1, 2, 7), (3, 4, -3), (1, 4, 5), (9, 9, 0)]
+    let original = points
+    let st = newCompressedSeg2DWith(points, l + r, 0)
+    doAssert points == original and st.len == 4
+    doAssert st[3, 4] == 7 and st.get_all() == 19
+    st[9, 9] = 6
+    st[3, 4] = 20
+    doAssert st.get_all() == 38
+    let empty = newCompressedSeg2DWith(newSeq[(int, int, int)](), l + r, 0)
+    doAssert empty.len == 0 and empty.get_all() == 0
+    let minimum = newCompressedSeg2DWith(@[(0, 0, 3), (0, 0, 5), (1, 0, -2)], min(l, r), high(int))
+    doAssert minimum[0, 0] == 3 and minimum.get_all() == -2
+    minimum[1, 0] = 9
+    doAssert minimum.get_all() == 3
+    let generic = newCompressedSeg2DWith(@[("a", "b", 4), ("c", "b", 7)], l + r, 0)
+    doAssert generic.get("a", "c", "a", "z") == 4
+
+block:
+    var rng = initRand(20260920)
+    for n in 0..80:
+        var points: seq[(int, int, int64)]
+        var coords: seq[(int, int)]
+        for i in 0..<n:
+            let x = rng.rand(-8..8)
+            let y = rng.rand(-8..8)
+            points.add((x, y, int64(rng.rand(-100..100))))
+            coords.add((x, y))
+        let bulk = newCompressedSeg2DWith(points, l + r, 0'i64)
+        let ordinary = initCompressedSegmentTree2D(points, sum, 0'i64)
+        let incremental = newCompressedSeg2DWith(coords, l + r, 0'i64)
+        for p in points: incremental[p[0], p[1]] = incremental[p[0], p[1]] + p[2]
+        for st in [bulk, ordinary]:
+            doAssert st.len == incremental.len and st.get_all() == incremental.get_all()
+            for p in points: doAssert st[p[0], p[1]] == incremental[p[0], p[1]]
+        for step in 0..<200:
+            if n > 0:
+                let p = points[rng.rand(n - 1)]
+                let value = int64(rng.rand(-100..100))
+                for st in [bulk, ordinary, incremental]: st[p[0], p[1]] = value
+            var xl = rng.rand(-10..10)
+            var xr = rng.rand(-10..10)
+            var yl = rng.rand(-10..10)
+            var yr = rng.rand(-10..10)
+            if xr < xl: swap(xl, xr)
+            if yr < yl: swap(yl, yr)
+            for st in [bulk, ordinary]:
+                doAssert st.get(xl, xr, yl, yr) == incremental.get(xl, xr, yl, yr)
+                doAssert st.get_all() == incremental.get_all()
+
 echo "Hello World"
