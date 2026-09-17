@@ -151,17 +151,36 @@ data:
     \   proc `[]`(x: int, n: int): bool = (x and (1 shl n)) != 0\n    #\u4FBF\u5229\
     \u306A\u5909\u63DB\n    proc `!`(x: char, a = '0'): int = int(x)-int(a)\n    #\u5B9A\
     \u6570\n    include cplib/utils/constants\n    const INF = INF64\n    #converter\n\
-    \n    #range\n    iterator range(start: int, ends: int, step: int): int =\n  \
-    \      var i = start\n        if step < 0:\n            while i > ends:\n    \
-    \            yield i\n                i += step\n        elif step > 0:\n    \
-    \        while i < ends:\n                yield i\n                i += step\n\
-    \    iterator range(ends: int): int = (for i in 0..<ends: yield i)\n    iterator\
-    \ range(start: int, ends: int): int = (for i in\n            start..<ends: yield\
-    \ i)\n\n    proc dump[T](arr:seq[seq[T]])=\n        for i in 0..<len(arr):\n \
-    \           echo arr[i]\n\n    proc sum(slice:HSlice[int,int]):int=\n        return\
-    \ (slice.a+slice.b)*len(slice)//2\n    \n    proc `<`[T](l,r:seq[T]):bool=\n \
-    \       for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n      \
-    \          return false\n            elif l[i] < r[i]:\n                return\
+    \n    #range\n    template mapIt*[T](s: Slice[T], op: untyped): untyped =\n  \
+    \      ## \u7BC4\u56F2\u306E\u5404\u8981\u7D20\u3092\u5909\u63DB\u3057\u305Fseq\u3092\
+    \u8FD4\u3059\u3002\u8981\u7D20\u6570\u3092n\u3068\u3057\u3066O(n)\u56DEop\u3092\
+    \u8A55\u4FA1\u3059\u308B\u3002\n        block:\n            let bounds = s\n \
+    \           type OutType = typeof((block:\n                var it {.inject.}:\
+    \ T\n                op), typeOfProc)\n            var mapped: seq[OutType] =\
+    \ @[]\n            when OutType is (proc):\n                proc transform(value:\
+    \ T): OutType =\n                    ## \u5404\u8981\u7D20\u3092\u5225\u3005\u306E\
+    \u74B0\u5883\u306B\u9589\u3058\u8FBC\u3081\u3066\u30AF\u30ED\u30FC\u30B8\u30E3\
+    \u3092\u751F\u6210\u3059\u308B\u3002\n                    let it {.inject.} =\
+    \ value\n                    op\n                for value in bounds:\n      \
+    \              mapped.add(transform(value))\n            else:\n             \
+    \   for it {.inject.} in bounds:\n                    mapped.add(op)\n       \
+    \     mapped\n\n    template filterIt*[T](s: Slice[T], pred: untyped): untyped\
+    \ =\n        ## \u7BC4\u56F2\u304B\u3089\u6761\u4EF6\u3092\u6E80\u305F\u3059\u8981\
+    \u7D20\u3092\u9806\u306B\u62BD\u51FA\u3059\u308B\u3002\u8981\u7D20\u6570\u3092\
+    n\u3068\u3057\u3066O(n)\u56DEpred\u3092\u8A55\u4FA1\u3059\u308B\u3002\n      \
+    \  block:\n            let bounds = s\n            var filtered: seq[T] = @[]\n\
+    \            for it {.inject.} in bounds:\n                if pred:\n        \
+    \            filtered.add(it)\n            filtered\n\n    iterator range(start:\
+    \ int, ends: int, step: int): int =\n        var i = start\n        if step <\
+    \ 0:\n            while i > ends:\n                yield i\n                i\
+    \ += step\n        elif step > 0:\n            while i < ends:\n             \
+    \   yield i\n                i += step\n    iterator range(ends: int): int = (for\
+    \ i in 0..<ends: yield i)\n    iterator range(start: int, ends: int): int = (for\
+    \ i in\n            start..<ends: yield i)\n\n    proc dump[T](arr:seq[seq[T]])=\n\
+    \        for i in 0..<len(arr):\n            echo arr[i]\n\n    proc sum(slice:HSlice[int,int]):int=\n\
+    \        return (slice.a+slice.b)*len(slice)//2\n    \n    proc `<`[T](l,r:seq[T]):bool=\n\
+    \        for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n     \
+    \           return false\n            elif l[i] < r[i]:\n                return\
     \ true\n        return len(l) < len(r)\n    \n    # Yes/No\n    proc yes*(b: bool\
     \ = true): void = print(if b: \"Yes\" else: \"No\")\n\n    template dblock(body:\
     \ untyped) =\n        when defined(debug):\n            block:\n             \
@@ -176,7 +195,7 @@ data:
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-09-13 10:19:55+09:00'
+  timestamp: '2026-09-17 21:22:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/isprime_yukicoder_test.nim

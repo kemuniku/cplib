@@ -59,19 +59,19 @@ data:
     \ print bits(vector)\n"
   dependsOn:
   - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
   - cplib/tmpl/fastio.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/field_matrix_ops.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/system_mod2_driver.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 21:06:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/matrix/linear_algebra/system_mod2_driver.nim

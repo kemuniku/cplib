@@ -14,8 +14,38 @@ data:
   - icon: ':warning:'
     path: cplib/collections/staticbitset_avx512.nim
     title: cplib/collections/staticbitset_avx512.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance_bitset.nim
+    title: cplib/str/edit_distance_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance_bitset.nim
+    title: cplib/str/edit_distance_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/lcs_bitset.nim
+    title: cplib/str/lcs_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/lcs_bitset.nim
+    title: cplib/str/lcs_bitset.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_add_test.nim
+    title: verify/AI/bitset_avx512_add_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_add_test.nim
+    title: verify/AI/bitset_avx512_add_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+    title: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+    title: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_block_test.nim
+    title: verify/AI/bitset_avx512_fuse_block_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_block_test.nim
+    title: verify/AI/bitset_avx512_fuse_block_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/bitset_avx512_fuse_test.nim
     title: verify/AI/bitset_avx512_fuse_test.nim
   - icon: ':heavy_check_mark:'
@@ -27,6 +57,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitset_avx512_prev_set_bit_test.nim
     title: verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_shift_assign_test.nim
+    title: verify/AI/bitset_avx512_shift_assign_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_shift_assign_test.nim
+    title: verify/AI/bitset_avx512_shift_assign_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_bitset_test.nim
+    title: verify/AI/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_bitset_test.nim
+    title: verify/AI/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_bitset_test.nim
+    title: verify/str/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_bitset_test.nim
+    title: verify/str/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_bitset_test.nim
+    title: verify/str/lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_bitset_test.nim
+    title: verify/str/lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/restore_lcs_bitset_test.nim
+    title: verify/str/restore_lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/restore_lcs_bitset_test.nim
+    title: verify/str/restore_lcs_bitset_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -143,15 +203,49 @@ data:
     \  j = 32;\n        }\n        for (; j < length - i; ++j)\n            value\
     \ |= (uint64_t)(src[i + j] != 0) << j;\n        dst[word++] = value;\n    }\n\
     \    for (; word < words; ++word) dst[word] = 0;\n}\n#define CPLIB_BS_AVX512 __attribute__((target(\"\
-    avx512f\")))\n\n#define CPLIB_BS_BINARY(name, scalar, vector) \\\nCPLIB_BS_AVX512\
-    \ static void name(uint64_t *dst, const uint64_t *x, \\\n                    \
-    \       const uint64_t *y, size_t n) { \\\n/* 512\u30D3\u30C3\u30C8\u305A\u3064\
-    \u8AD6\u7406\u6F14\u7B97\u3057\u3001\u6B8B\u308A\u309264\u30D3\u30C3\u30C8\u305A\
-    \u3064\u51E6\u7406\u3057\u307E\u3059\u3002 */ \\\nsize_t i = 0; \\\nfor (; i +\
-    \ 8 <= n; i += 8) { \\\n    __m512i a = _mm512_loadu_si512((const __m512i *)(x\
-    \ + i)); \\\n    __m512i b = _mm512_loadu_si512((const __m512i *)(y + i)); \\\n\
-    \    _mm512_storeu_si512((__m512i *)(dst + i), vector(a, b)); \\\n} \\\nfor (;\
-    \ i < n; ++i) dst[i] = x[i] scalar y[i]; \\\n}\nCPLIB_BS_BINARY(cplib_bs512_and_avx512,\
+    avx512f\")))\n\nstatic inline unsigned cplib_bs512_add_carries(unsigned generated,\
+    \ unsigned propagated,\n                                             unsigned\
+    \ carry) {\n/* \u767A\u751F\u3068\u4F1D\u64AD\u306F\u6392\u4ED6\u7684\u3067\u3059\
+    \u3002\u4E0B\u4F4D8\u30D3\u30C3\u30C8\u304C\u5404\u30EC\u30FC\u30F3\u3078\u306E\
+    \u6841\u4E0A\u304C\u308A\u3001\u30D3\u30C3\u30C88\u304C\u6B21\u30D6\u30ED\u30C3\
+    \u30AF\u3078\u306E\u6841\u4E0A\u304C\u308A\u3067\u3059\u3002 */\nreturn (propagated\
+    \ + (generated << 1) + carry) ^ propagated;\n}\n\nstatic void cplib_bs512_add_scalar(uint64_t\
+    \ *dst, const uint64_t *x,\n                                 const uint64_t *y,\
+    \ size_t n, uint64_t carry) {\n/* \u6841\u4E0A\u304C\u308A\u309264\u30D3\u30C3\
+    \u30C8\u305A\u3064\u4F1D\u64AD\u3057\u3001\u540C\u3058\u9818\u57DF\u3078\u306E\
+    \u66F8\u304D\u623B\u3057\u306B\u3082\u5BFE\u5FDC\u3057\u307E\u3059\u3002 */\n\
+    for (size_t i = 0; i < n; ++i) {\n    const uint64_t a = x[i], b = y[i];\n   \
+    \ const uint64_t sum = a + b;\n    const uint64_t total = sum + carry;\n    carry\
+    \ = (sum < a) | (total < sum);\n    dst[i] = total;\n}\n}\n\nCPLIB_BS_AVX512 static\
+    \ void cplib_bs512_add_avx512(uint64_t *dst, const uint64_t *x,\n            \
+    \                                    const uint64_t *y, size_t n) {\n/* 8\u30EC\
+    \u30FC\u30F3\u3092\u4E26\u5217\u52A0\u7B97\u3057\u3001\u5727\u7E2E\u3057\u305F\
+    \u30DE\u30B9\u30AF\u4E0A\u306E\u52A0\u7B97\u3067\u30EC\u30FC\u30F3\u9593\u306E\
+    \u6841\u4E0A\u304C\u308A\u3092\u6C42\u3081\u307E\u3059\u3002 */\nconst __m512i\
+    \ ones = _mm512_set1_epi64(1);\nconst __m512i maximum = _mm512_set1_epi64(-1);\n\
+    unsigned carry = 0;\nsize_t i = 0;\nfor (; i + 8 <= n; i += 8) {\n    const __m512i\
+    \ a = _mm512_loadu_si512((const void *)(x + i));\n    const __m512i b = _mm512_loadu_si512((const\
+    \ void *)(y + i));\n    const __m512i sum = _mm512_add_epi64(a, b);\n    const\
+    \ unsigned generated = _mm512_cmp_epu64_mask(sum, a, _MM_CMPINT_LT);\n    const\
+    \ unsigned propagated = _mm512_cmpeq_epi64_mask(sum, maximum);\n    const unsigned\
+    \ carries = cplib_bs512_add_carries(generated, propagated, carry);\n    const\
+    \ __m512i total = _mm512_mask_add_epi64(sum, (__mmask8)carries, sum, ones);\n\
+    \    _mm512_storeu_si512((void *)(dst + i), total);\n    carry = carries >> 8;\n\
+    }\ncplib_bs512_add_scalar(dst + i, x + i, y + i, n - i, carry);\n}\n\nstatic inline\
+    \ void cplib_bs512_add(uint64_t *dst, const uint64_t *x,\n                   \
+    \               const uint64_t *y, size_t n) {\n/* AVX-512F\u5BFE\u5FDCCPU\u3067\
+    \u306F512\u30D3\u30C3\u30C8\u305A\u3064\u52A0\u7B97\u3057\u3001\u305D\u308C\u4EE5\
+    \u5916\u306F64\u30D3\u30C3\u30C8\u305A\u3064\u52A0\u7B97\u3057\u307E\u3059\u3002\
+    \ */\nif (n >= 8 && __builtin_cpu_supports(\"avx512f\")) cplib_bs512_add_avx512(dst,\
+    \ x, y, n);\nelse cplib_bs512_add_scalar(dst, x, y, n, 0);\n}\n\n#define CPLIB_BS_BINARY(name,\
+    \ scalar, vector) \\\nCPLIB_BS_AVX512 static void name(uint64_t *dst, const uint64_t\
+    \ *x, \\\n                           const uint64_t *y, size_t n) { \\\n/* 512\u30D3\
+    \u30C3\u30C8\u305A\u3064\u8AD6\u7406\u6F14\u7B97\u3057\u3001\u6B8B\u308A\u3092\
+    64\u30D3\u30C3\u30C8\u305A\u3064\u51E6\u7406\u3057\u307E\u3059\u3002 */ \\\nsize_t\
+    \ i = 0; \\\nfor (; i + 8 <= n; i += 8) { \\\n    __m512i a = _mm512_loadu_si512((const\
+    \ __m512i *)(x + i)); \\\n    __m512i b = _mm512_loadu_si512((const __m512i *)(y\
+    \ + i)); \\\n    _mm512_storeu_si512((__m512i *)(dst + i), vector(a, b)); \\\n\
+    } \\\nfor (; i < n; ++i) dst[i] = x[i] scalar y[i]; \\\n}\nCPLIB_BS_BINARY(cplib_bs512_and_avx512,\
     \ &, _mm512_and_si512)\nCPLIB_BS_BINARY(cplib_bs512_or_avx512, |, _mm512_or_si512)\n\
     CPLIB_BS_BINARY(cplib_bs512_xor_avx512, ^, _mm512_xor_si512)\n#undef CPLIB_BS_BINARY\n\
     \nCPLIB_BS_AVX512 static void cplib_bs512_andnot_avx512(uint64_t *dst, const uint64_t\
@@ -721,12 +815,13 @@ data:
     \ >= 512 && __builtin_cpu_supports(\"avx512f\")) return cplib_bs512_any_avx512(x,\
     \ bits);\nreturn cplib_bs512_any_avx2(x, bits);\n}\n\n#undef CPLIB_BS_AVX512\n\
     #undef CPLIB_BS_AVX2\n#endif\n\"\"\".}\n\nproc avxAnd(dst, x, y: ptr uint64, n:\
-    \ csize_t) {.importc: \"cplib_bs512_and\", nodecl.}\nproc avxAndNot(dst, x, y:\
-    \ ptr uint64, n: csize_t) {.importc: \"cplib_bs512_andnot\", nodecl.}\nproc avxOr(dst,\
-    \ x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs512_or\", nodecl.}\nproc\
-    \ avxXor(dst, x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs512_xor\", nodecl.}\n\
-    proc avxNot(dst, x: ptr uint64, n: csize_t) {.importc: \"cplib_bs512_not\", nodecl.}\n\
-    proc avxShl(dst, x: ptr uint64, n, shift: csize_t) {.importc: \"cplib_bs512_shl\"\
+    \ csize_t) {.importc: \"cplib_bs512_and\", nodecl.}\nproc avxAdd(dst, x, y: ptr\
+    \ uint64, n: csize_t) {.importc: \"cplib_bs512_add\", nodecl.}\nproc avxAndNot(dst,\
+    \ x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs512_andnot\", nodecl.}\n\
+    proc avxOr(dst, x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs512_or\", nodecl.}\n\
+    proc avxXor(dst, x, y: ptr uint64, n: csize_t) {.importc: \"cplib_bs512_xor\"\
+    , nodecl.}\nproc avxNot(dst, x: ptr uint64, n: csize_t) {.importc: \"cplib_bs512_not\"\
+    , nodecl.}\nproc avxShl(dst, x: ptr uint64, n, shift: csize_t) {.importc: \"cplib_bs512_shl\"\
     , nodecl.}\nproc avxShr(dst, x: ptr uint64, n, shift: csize_t) {.importc: \"cplib_bs512_shr\"\
     , nodecl.}\nproc avxPopcount(x, y: ptr uint64, n: csize_t): csize_t {.importc:\
     \ \"cplib_bs512_popcount\", nodecl.}\nproc avxAndPopcount(x, y: ptr uint64, n:\
@@ -779,17 +874,37 @@ data:
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx512_impl.nim
   requiredBy:
+  - cplib/str/edit_distance_bitset.nim
+  - cplib/str/edit_distance_bitset.nim
+  - cplib/str/lcs_bitset.nim
+  - cplib/str/lcs_bitset.nim
   - cplib/collections/bitset_avx512.nim
   - cplib/collections/bitset_avx512.nim
   - cplib/collections/staticbitset_avx512.nim
   - cplib/collections/staticbitset_avx512.nim
-  timestamp: '2026-09-13 04:30:30+09:00'
+  timestamp: '2026-09-17 19:03:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
   - verify/AI/bitset_avx512_fuse_test.nim
   - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
 documentation_of: cplib/collections/private/bitset_avx512_impl.nim
 layout: document
 redirect_from:

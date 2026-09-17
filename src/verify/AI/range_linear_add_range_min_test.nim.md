@@ -63,9 +63,9 @@ data:
     \    checkAll(seg, a)\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/range_linear_add_range_min.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/collections/range_linear_add_range_min.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/range_linear_add_range_min_test.nim
   requiredBy: []

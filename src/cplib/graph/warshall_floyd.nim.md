@@ -267,9 +267,9 @@ data:
     \ zero, inf)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_negative.nim
   isVerificationFile: false

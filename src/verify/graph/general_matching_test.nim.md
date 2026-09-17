@@ -41,16 +41,16 @@ data:
     \ = g.maximum_matching()\necho matching.len\nfor (u, v) in matching:\n    echo\
     \ u, \" \", v\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/general_matching.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/general_matching_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 21:06:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/general_matching_test.nim

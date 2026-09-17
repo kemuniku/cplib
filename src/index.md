@@ -222,11 +222,20 @@ data:
       path: cplib/collections/private/bitset_avx512_fuse.nim
       title: cplib/collections/private/bitset_avx512_fuse.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+      title: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/private/bitset_avx512_fuse_block.nim
+      title: cplib/collections/private/bitset_avx512_fuse_block.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/private/bitset_avx512_fuse_shift.nim
       title: cplib/collections/private/bitset_avx512_fuse_shift.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/private/bitset_avx512_impl.nim
       title: cplib/collections/private/bitset_avx512_impl.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/private/bitset_avx512_shift_assign.nim
+      title: cplib/collections/private/bitset_avx512_shift_assign.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/private/bitset_search_impl.nim
       title: cplib/collections/private/bitset_search_impl.nim
@@ -619,6 +628,9 @@ data:
       path: cplib/str/edit_distance.nim
       title: cplib/str/edit_distance.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/edit_distance_bitset.nim
+      title: cplib/str/edit_distance_bitset.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/fixedlength_merged_static_string.nim
       title: cplib/str/fixedlength_merged_static_string.nim
     - icon: ':heavy_check_mark:'
@@ -630,6 +642,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/lcs.nim
       title: cplib/str/lcs.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/str/lcs_bitset.nim
+      title: cplib/str/lcs_bitset.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/manacher.nim
       title: cplib/str/manacher.nim
@@ -680,6 +695,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/qcfium.nim
       title: cplib/tmpl/qcfium.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/tmpl/replayable_input.nim
+      title: cplib/tmpl/replayable_input.nim
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
@@ -1319,11 +1337,23 @@ data:
       path: verify/AI/bitset_avx2_test.nim
       title: verify/AI/bitset_avx2_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_avx512_add_test.nim
+      title: verify/AI/bitset_avx512_add_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+      title: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_avx512_fuse_block_test.nim
+      title: verify/AI/bitset_avx512_fuse_block_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_avx512_fuse_test.nim
       title: verify/AI/bitset_avx512_fuse_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_avx512_prev_set_bit_test.nim
       title: verify/AI/bitset_avx512_prev_set_bit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bitset_avx512_shift_assign_test.nim
+      title: verify/AI/bitset_avx512_shift_assign_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/bitset_binary_trie_test.nim
       title: verify/AI/bitset_binary_trie_test.nim
@@ -1424,6 +1454,9 @@ data:
       path: verify/AI/dynamic_segtree_test.nim
       title: verify/AI/dynamic_segtree_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/edit_distance_bitset_test.nim
+      title: verify/AI/edit_distance_bitset_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/edit_distance_test.nim
       title: verify/AI/edit_distance_test.nim
     - icon: ':heavy_check_mark:'
@@ -1444,6 +1477,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/factoradic_test.nim
       title: verify/AI/factoradic_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/fastio_io_test.nim
+      title: verify/AI/fastio_io_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/fastio_test.nim
       title: verify/AI/fastio_test.nim
@@ -1601,6 +1637,9 @@ data:
       path: verify/AI/lcp_naive_test.nim
       title: verify/AI/lcp_naive_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/lcs_bitset_test.nim
+      title: verify/AI/lcs_bitset_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/lcs_test.nim
       title: verify/AI/lcs_test.nim
     - icon: ':heavy_check_mark:'
@@ -1741,6 +1780,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/repeated_static_string_test.nim
       title: verify/AI/repeated_static_string_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/replayable_input_test.nim
+      title: verify/AI/replayable_input_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/rerooting_test.nim
       title: verify/AI/rerooting_test.nim
@@ -2687,11 +2729,17 @@ data:
   - name: verify/str
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/str/edit_distance_bitset_test.nim
+      title: verify/str/edit_distance_bitset_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/str/edit_distance_test.nim
       title: verify/str/edit_distance_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/get_palindromes_test.nim
       title: verify/str/get_palindromes_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/lcs_bitset_test.nim
+      title: verify/str/lcs_bitset_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/lcs_test.nim
       title: verify/str/lcs_test.nim
@@ -2701,6 +2749,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/palindromic_tree_test.nim
       title: verify/str/palindromic_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/restore_lcs_bitset_test.nim
+      title: verify/str/restore_lcs_bitset_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/rolling_hash_aoj_test.nim
       title: verify/str/rolling_hash_aoj_test.nim
@@ -2776,6 +2827,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tmpl/fastio_many_aplusb_test.nim
       title: verify/tmpl/fastio_many_aplusb_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tmpl/replayable_input_many_aplusb_test.nim
+      title: verify/tmpl/replayable_input_many_aplusb_test.nim
   - name: verify/tree
     pages:
     - icon: ':heavy_check_mark:'

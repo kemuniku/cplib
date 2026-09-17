@@ -183,8 +183,8 @@ data:
     \ 0, b.len, result, columns, indices)\n"
   dependsOn:
   - cplib/utils/monotone_minima.nim
-  - cplib/utils/smawk.nim
   - cplib/utils/monotone_minima.nim
+  - cplib/utils/smawk.nim
   - cplib/utils/smawk.nim
   isVerificationFile: false
   path: cplib/convolution/min_plus_convolution.nim

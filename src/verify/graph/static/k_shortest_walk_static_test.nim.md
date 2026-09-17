@@ -53,20 +53,20 @@ data:
     \ = g.k_shortest_walk(s, t, k)\nfor i in 0..<k:\n    echo (if lengths[i] == INF:\
     \ -1 else: lengths[i])\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
   - cplib/graph/k_shortest_walk.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/k_shortest_walk.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/k_shortest_walk_static_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 21:22:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/k_shortest_walk_static_test.nim

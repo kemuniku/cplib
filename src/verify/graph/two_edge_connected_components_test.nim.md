@@ -50,16 +50,16 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/lowlink.nim
+  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: true
   path: verify/graph/two_edge_connected_components_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-17 21:06:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/two_edge_connected_components_test.nim

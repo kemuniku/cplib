@@ -8,6 +8,18 @@ data:
     path: cplib/collections/private/bitset_avx512_fuse.nim
     title: cplib/collections/private/bitset_avx512_fuse.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+    title: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+    title: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_block.nim
+    title: cplib/collections/private/bitset_avx512_fuse_block.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_block.nim
+    title: cplib/collections/private/bitset_avx512_fuse_block.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_avx512_fuse_shift.nim
     title: cplib/collections/private/bitset_avx512_fuse_shift.nim
   - icon: ':heavy_check_mark:'
@@ -20,14 +32,50 @@ data:
     path: cplib/collections/private/bitset_avx512_impl.nim
     title: cplib/collections/private/bitset_avx512_impl.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_shift_assign.nim
+    title: cplib/collections/private/bitset_avx512_shift_assign.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_shift_assign.nim
+    title: cplib/collections/private/bitset_avx512_shift_assign.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_search_impl.nim
     title: cplib/collections/private/bitset_search_impl.nim
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_search_impl.nim
     title: cplib/collections/private/bitset_search_impl.nim
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance_bitset.nim
+    title: cplib/str/edit_distance_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance_bitset.nim
+    title: cplib/str/edit_distance_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/lcs_bitset.nim
+    title: cplib/str/lcs_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/lcs_bitset.nim
+    title: cplib/str/lcs_bitset.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_add_test.nim
+    title: verify/AI/bitset_avx512_add_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_add_test.nim
+    title: verify/AI/bitset_avx512_add_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+    title: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+    title: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_block_test.nim
+    title: verify/AI/bitset_avx512_fuse_block_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_block_test.nim
+    title: verify/AI/bitset_avx512_fuse_block_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/bitset_avx512_fuse_test.nim
     title: verify/AI/bitset_avx512_fuse_test.nim
   - icon: ':heavy_check_mark:'
@@ -39,6 +87,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitset_avx512_prev_set_bit_test.nim
     title: verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_shift_assign_test.nim
+    title: verify/AI/bitset_avx512_shift_assign_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_shift_assign_test.nim
+    title: verify/AI/bitset_avx512_shift_assign_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_bitset_test.nim
+    title: verify/AI/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_bitset_test.nim
+    title: verify/AI/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_bitset_test.nim
+    title: verify/str/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_bitset_test.nim
+    title: verify/str/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_bitset_test.nim
+    title: verify/str/lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_bitset_test.nim
+    title: verify/str/lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/restore_lcs_bitset_test.nim
+    title: verify/str/restore_lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/restore_lcs_bitset_test.nim
+    title: verify/str/restore_lcs_bitset_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -61,26 +139,32 @@ data:
     \ \u3068\u3057\u3001initBitSet\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n## fuse:\
     \ \u5185\u3067\u306F x = x or (y and z) \u306E\u3088\u3046\u306B\u66F8\u304F\u3068\
     \u8AD6\u7406\u5F0F\u3092\u4E00\u6642\u96C6\u5408\u306A\u3057\u3067\u8A08\u7B97\
-    \u3057\u307E\u3059\u3002\n## x = x or (x shl k) \u3068 x = x or (x shr k) \u3082\
-    \u4E00\u6642\u96C6\u5408\u306A\u3057\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\
-    \n## -d:release\u3067\u306E\u30B3\u30F3\u30D1\u30A4\u30EB\u3092\u63A8\u5968\u3057\
-    \u307E\u3059\u3002-mavx2\u306E\u6307\u5B9A\u306F\u4E0D\u8981\u3067\u3059\u3002\
-    \n## \u547D\u4EE4\u6570\u306FAVX-512\u7D4C\u8DEF\u306E\u4E3B\u30EB\u30FC\u30D7\
-    \u306E\u6F14\u7B97\u90E8\u5206\u306E\u76EE\u5B89\u3067\u3001\u95A2\u6570\u5168\
-    \u4F53\u306E\u547D\u4EE4\u6570\u3084\u30B5\u30A4\u30AF\u30EB\u6570\u3067\u306F\
-    \u3042\u308A\u307E\u305B\u3093\u3002\n## \u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\
-    \u3001\u30A2\u30C9\u30EC\u30B9\u8A08\u7B97\u3001\u30EB\u30FC\u30D7\u5236\u5FA1\
-    \u3001CPU\u5224\u5B9A\u3001\u30C1\u30A7\u30C3\u30AF\u3001\u9818\u57DF\u78BA\u4FDD\
-    \u30FB\u521D\u671F\u5316\u3001\u5B9A\u6570\u6E96\u5099\u3001\u7AEF\u6570\u51E6\
-    \u7406\u306F\u542B\u3081\u307E\u305B\u3093\u3002\n## \u30B3\u30F3\u30D1\u30A4\u30E9\
-    \u306B\u3088\u308B\u547D\u4EE4\u306E\u878D\u5408\u30FB\u5C55\u958B\u3067\u5909\
-    \u308F\u308A\u307E\u3059\u3002AVX2\u3078\u306E\u5207\u308A\u66FF\u3048\u6642\u306B\
-    \u306F\u5F53\u3066\u306F\u307E\u308A\u307E\u305B\u3093\u3002\nwhen not declared\
-    \ CPLIB_COLLECTIONS_BITSET_AVX512:\n    const CPLIB_COLLECTIONS_BITSET_AVX512*\
-    \ = 1\n    when not (defined(amd64) and (defined(gcc) or defined(clang))):\n \
-    \       {.error: \"BitSetAvx512 requires amd64 and GCC/Clang\".}\n    import bitops,\
-    \ macros, strutils\n\n    type BitSetAvx512* {.byref.} = object\n        bits:\
-    \ seq[uint64]\n        size: int\n\n    include cplib/collections/private/bitset_avx512_impl\n\
+    \u3057\u307E\u3059\u3002\n## +\u306B\u3088\u308B\u591A\u500D\u9577\u52A0\u7B97\
+    \u3084\u3001\u5909\u6570\u306E\u30B7\u30D5\u30C8\u3092\u542B\u3080\u5F0F\u3082\
+    \u878D\u5408\u3067\u304D\u307E\u3059\u3002\u4F8B: x = (y << k) + z\u3002\n## \u8907\
+    \u6570\u4EE3\u5165\u3068\u5185\u90E8\u306Elet/var\u3082\u878D\u5408\u3057\u307E\
+    \u3059\u3002\u8AD6\u7406\u6F14\u7B97\u30FB\u52A0\u7B97\u30FB\u5B9A\u6570\u5DE6\
+    \u30B7\u30D5\u30C8\u30FBlastBit\u306B\u5BFE\u5FDC\u3057\u307E\u3059\u3002\n##\
+    \ x = x or (x shl k) \u3068 x = x or (x shr k) \u3082\u4E00\u6642\u96C6\u5408\u306A\
+    \u3057\u3067\u66F4\u65B0\u3057\u307E\u3059\u3002\n## -d:release\u3067\u306E\u30B3\
+    \u30F3\u30D1\u30A4\u30EB\u3092\u63A8\u5968\u3057\u307E\u3059\u3002-mavx2\u306E\
+    \u6307\u5B9A\u306F\u4E0D\u8981\u3067\u3059\u3002\n## \u547D\u4EE4\u6570\u306F\
+    AVX-512\u7D4C\u8DEF\u306E\u4E3B\u30EB\u30FC\u30D7\u306E\u6F14\u7B97\u90E8\u5206\
+    \u306E\u76EE\u5B89\u3067\u3001\u95A2\u6570\u5168\u4F53\u306E\u547D\u4EE4\u6570\
+    \u3084\u30B5\u30A4\u30AF\u30EB\u6570\u3067\u306F\u3042\u308A\u307E\u305B\u3093\
+    \u3002\n## \u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\u3001\u30A2\u30C9\u30EC\u30B9\
+    \u8A08\u7B97\u3001\u30EB\u30FC\u30D7\u5236\u5FA1\u3001CPU\u5224\u5B9A\u3001\u30C1\
+    \u30A7\u30C3\u30AF\u3001\u9818\u57DF\u78BA\u4FDD\u30FB\u521D\u671F\u5316\u3001\
+    \u5B9A\u6570\u6E96\u5099\u3001\u7AEF\u6570\u51E6\u7406\u306F\u542B\u3081\u307E\
+    \u305B\u3093\u3002\n## \u30B3\u30F3\u30D1\u30A4\u30E9\u306B\u3088\u308B\u547D\u4EE4\
+    \u306E\u878D\u5408\u30FB\u5C55\u958B\u3067\u5909\u308F\u308A\u307E\u3059\u3002\
+    AVX2\u3078\u306E\u5207\u308A\u66FF\u3048\u6642\u306B\u306F\u5F53\u3066\u306F\u307E\
+    \u308A\u307E\u305B\u3093\u3002\nwhen not declared CPLIB_COLLECTIONS_BITSET_AVX512:\n\
+    \    const CPLIB_COLLECTIONS_BITSET_AVX512* = 1\n    when not (defined(amd64)\
+    \ and (defined(gcc) or defined(clang))):\n        {.error: \"BitSetAvx512 requires\
+    \ amd64 and GCC/Clang\".}\n    import bitops, macros, strutils\n\n    type BitSetAvx512*\
+    \ {.byref.} = object\n        bits: seq[uint64]\n        size: int\n\n    include\
+    \ cplib/collections/private/bitset_avx512_impl\n    include cplib/collections/private/bitset_avx512_shift_assign\n\
     \    include cplib/collections/private/bitset_search_impl\n\n    proc initBitSet*(N:\
     \ int): BitSetAvx512 =\n        ## N\u30D3\u30C3\u30C8\u306E\u7A7A\u96C6\u5408\
     \u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        when compileOption(\"boundChecks\"\
@@ -176,52 +260,78 @@ data:
     \u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"\
     boundChecks\"):\n            checkSameSize(dst, x)\n            checkSameSize(x,\
     \ y)\n        if x.bits.len > 0:\n            avxAnd(addr dst.bits[0], unsafeAddr\
-    \ x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\n    proc orInto*(dst:\
-    \ var BitSetAvx512, x, y: BitSetAvx512) =\n        ## \u78BA\u4FDD\u6E08\u307F\
-    \u306Edst\u3078x | y\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\u5168\u3066\
-    \u540C\u3058\u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\u3002O(\u30D3\u30C3\u30C8\
-    \u6570 / 64)\u3002\n        ## \u9818\u57DF\u78BA\u4FDD\u30FB\u4E2D\u9593\u96C6\
-    \u5408\u306F\u4E0D\u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\u8EAB\u3092\u6307\u5B9A\
-    \u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002\n        ## AVX-512\u7D4C\
-    \u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\u308A\u8AD6\u7406\u6F14\
-    \u7B971\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\u3068\u672B\
-    \u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"\
-    boundChecks\"):\n            checkSameSize(dst, x)\n            checkSameSize(x,\
-    \ y)\n        if x.bits.len > 0:\n            avxOr(addr dst.bits[0], unsafeAddr\
-    \ x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\n    proc xorInto*(dst:\
-    \ var BitSetAvx512, x, y: BitSetAvx512) =\n        ## \u78BA\u4FDD\u6E08\u307F\
-    \u306Edst\u3078x ^ y\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\u5168\u3066\
-    \u540C\u3058\u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\u3002O(\u30D3\u30C3\u30C8\
-    \u6570 / 64)\u3002\n        ## \u9818\u57DF\u78BA\u4FDD\u30FB\u4E2D\u9593\u96C6\
-    \u5408\u306F\u4E0D\u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\u8EAB\u3092\u6307\u5B9A\
-    \u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002\n        ## AVX-512\u7D4C\
-    \u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\u308A\u8AD6\u7406\u6F14\
-    \u7B971\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\u3068\u672B\
-    \u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"\
-    boundChecks\"):\n            checkSameSize(dst, x)\n            checkSameSize(x,\
-    \ y)\n        if x.bits.len > 0:\n            avxXor(addr dst.bits[0], unsafeAddr\
-    \ x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\n    proc andNotInto*(dst:\
-    \ var BitSetAvx512, x, y: BitSetAvx512) =\n        ## \u78BA\u4FDD\u6E08\u307F\
-    \u306Edst\u3078x & ~y\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\u5168\u3066\
-    \u540C\u3058\u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\u3002O(\u30D3\u30C3\u30C8\
-    \u6570 / 64)\u3002\n        ## \u9818\u57DF\u78BA\u4FDD\u30FB\u4E2D\u9593\u96C6\
-    \u5408\u306F\u4E0D\u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\u8EAB\u3092\u6307\u5B9A\
-    \u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002\n        ## AVX-512\u7D4C\
-    \u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\u308A\u8AD6\u7406\u6F14\
-    \u7B971\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\u3068\u672B\
-    \u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"\
-    boundChecks\"):\n            checkSameSize(dst, x)\n            checkSameSize(x,\
-    \ y)\n        if x.bits.len > 0:\n            avxAndNot(addr dst.bits[0], unsafeAddr\
-    \ x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\n    proc xnorInto*(dst:\
-    \ var BitSetAvx512, x, y: BitSetAvx512) =\n        ## \u78BA\u4FDD\u6E08\u307F\
-    \u306Edst\u3078~(x ^ y)\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\u5168\u3066\
-    \u540C\u3058\u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\u3002O(\u30D3\u30C3\u30C8\
-    \u6570 / 64)\u3002\n        ## \u9818\u57DF\u78BA\u4FDD\u30FB\u4E2D\u9593\u96C6\
-    \u5408\u306F\u4E0D\u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\u8EAB\u3092\u6307\u5B9A\
-    \u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002\n        ## AVX-512\u7D4C\
-    \u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\u308A\u8AD6\u7406\u6F14\
-    \u7B971\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\u3068\u672B\
-    \u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"\
+    \ x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\n    proc addInto*(dst:\
+    \ var BitSetAvx512, x, y: BitSetAvx512) =\n        ## \u6DFB\u5B570\u3092\u6700\
+    \u4E0B\u4F4D\u30D3\u30C3\u30C8\u3068\u3059\u308B\u7B26\u53F7\u306A\u3057\u6574\
+    \u6570\u306E\u548C\u3092dst\u3078\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002O(\u30D3\
+    \u30C3\u30C8\u6570 / 64)\u3002\n        ## \u5168\u3066\u540C\u3058\u9577\u3055\
+    \u304C\u5FC5\u8981\u3067\u3059\u3002\u4E0A\u4F4D\u306E\u6841\u3042\u3075\u308C\
+    \u3092\u5207\u308A\u6368\u3066\u3001dst\u306Bx\u3084y\u81EA\u8EAB\u3082\u6307\u5B9A\
+    \u3067\u304D\u307E\u3059\u3002\n        ## AVX-512F\u5BFE\u5FDC\u6642\u306F512\u30D3\
+    \u30C3\u30C8\u305A\u3064\u4E26\u5217\u52A0\u7B97\u3057\u3001\u30EC\u30FC\u30F3\
+    \u9593\u306E\u6841\u4E0A\u304C\u308A\u3092\u30DE\u30B9\u30AF\u4E0A\u3067\u4E00\
+    \u62EC\u8A08\u7B97\u3057\u307E\u3059\u3002\n        ## \u975E\u5BFE\u5FDC\u6642\
+    \u3068\u672B\u5C3E\u306E\u7AEF\u6570\u306F64\u30D3\u30C3\u30C8\u305A\u3064\u51E6\
+    \u7406\u3057\u307E\u3059\u3002512\u30D3\u30C3\u30C8\u5168\u4F53\u3092\u52A0\u7B97\
+    \u3059\u308B\u5358\u4E00\u547D\u4EE4\u3067\u306F\u3042\u308A\u307E\u305B\u3093\
+    \u3002\n        when compileOption(\"boundChecks\"):\n            checkSameSize(dst,\
+    \ x)\n            checkSameSize(x, y)\n        if x.bits.len > 0:\n          \
+    \  avxAdd(addr dst.bits[0], unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\
+    \        dst.trim()\n\n    proc `+`*(x, y: BitSetAvx512): BitSetAvx512 =\n   \
+    \     ## \u56FA\u5B9A\u9577\u306E\u7B26\u53F7\u306A\u3057\u6574\u6570\u3068\u3057\
+    \u3066\u52A0\u7B97\u3057\u3001\u4E0A\u4F4D\u306E\u6841\u3042\u3075\u308C\u3092\
+    \u5207\u308A\u6368\u3066\u307E\u3059\u3002O(\u30D3\u30C3\u30C8\u6570/64)\u3002\
+    \n        checkSameSize(x, y)\n        result = initBitSet(x.size)\n        result.addInto(x,\
+    \ y)\n\n    proc `+=`*(x: var BitSetAvx512, y: BitSetAvx512) =\n        ## \u56FA\
+    \u5B9A\u9577\u306E\u7B26\u53F7\u306A\u3057\u6574\u6570\u3068\u3057\u3066\u52A0\
+    \u7B97\u3057\u307E\u3059\u3002O(\u30D3\u30C3\u30C8\u6570/64)\u3001\u8FFD\u52A0\
+    \u7A7A\u9593O(1)\u3002\n        checkSameSize(x, y)\n        x.addInto(x, y)\n\
+    \n    proc orInto*(dst: var BitSetAvx512, x, y: BitSetAvx512) =\n        ## \u78BA\
+    \u4FDD\u6E08\u307F\u306Edst\u3078x | y\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\
+    \u3002\u5168\u3066\u540C\u3058\u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\u3002\
+    O(\u30D3\u30C3\u30C8\u6570 / 64)\u3002\n        ## \u9818\u57DF\u78BA\u4FDD\u30FB\
+    \u4E2D\u9593\u96C6\u5408\u306F\u4E0D\u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\u8EAB\
+    \u3092\u6307\u5B9A\u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002\
+    \n        ## AVX-512\u7D4C\u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\
+    \u305F\u308A\u8AD6\u7406\u6F14\u7B971\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\u30FB\
+    \u30B9\u30C8\u30A2\u3068\u672B\u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\
+    \u3059\u3002\n        when compileOption(\"boundChecks\"):\n            checkSameSize(dst,\
+    \ x)\n            checkSameSize(x, y)\n        if x.bits.len > 0:\n          \
+    \  avxOr(addr dst.bits[0], unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\
+    \n    proc xorInto*(dst: var BitSetAvx512, x, y: BitSetAvx512) =\n        ## \u78BA\
+    \u4FDD\u6E08\u307F\u306Edst\u3078x ^ y\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\
+    \u3002\u5168\u3066\u540C\u3058\u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\u3002\
+    O(\u30D3\u30C3\u30C8\u6570 / 64)\u3002\n        ## \u9818\u57DF\u78BA\u4FDD\u30FB\
+    \u4E2D\u9593\u96C6\u5408\u306F\u4E0D\u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\u8EAB\
+    \u3092\u6307\u5B9A\u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002\
+    \n        ## AVX-512\u7D4C\u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\
+    \u305F\u308A\u8AD6\u7406\u6F14\u7B971\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\u30FB\
+    \u30B9\u30C8\u30A2\u3068\u672B\u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\
+    \u3059\u3002\n        when compileOption(\"boundChecks\"):\n            checkSameSize(dst,\
+    \ x)\n            checkSameSize(x, y)\n        if x.bits.len > 0:\n          \
+    \  avxXor(addr dst.bits[0], unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)\n\
+    \n    proc andNotInto*(dst: var BitSetAvx512, x, y: BitSetAvx512) =\n        ##\
+    \ \u78BA\u4FDD\u6E08\u307F\u306Edst\u3078x & ~y\u3092\u66F8\u304D\u8FBC\u307F\u307E\
+    \u3059\u3002\u5168\u3066\u540C\u3058\u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\
+    \u3002O(\u30D3\u30C3\u30C8\u6570 / 64)\u3002\n        ## \u9818\u57DF\u78BA\u4FDD\
+    \u30FB\u4E2D\u9593\u96C6\u5408\u306F\u4E0D\u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\
+    \u8EAB\u3092\u6307\u5B9A\u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\
+    \u3002\n        ## AVX-512\u7D4C\u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\
+    \u3042\u305F\u308A\u8AD6\u7406\u6F14\u7B971\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\
+    \u30FB\u30B9\u30C8\u30A2\u3068\u672B\u5C3E\u306E\u30DE\u30B9\u30AF\u306F\u5225\
+    \u3067\u3059\u3002\n        when compileOption(\"boundChecks\"):\n           \
+    \ checkSameSize(dst, x)\n            checkSameSize(x, y)\n        if x.bits.len\
+    \ > 0:\n            avxAndNot(addr dst.bits[0], unsafeAddr x.bits[0], unsafeAddr\
+    \ y.bits[0], x.bits.len.csize_t)\n\n    proc xnorInto*(dst: var BitSetAvx512,\
+    \ x, y: BitSetAvx512) =\n        ## \u78BA\u4FDD\u6E08\u307F\u306Edst\u3078~(x\
+    \ ^ y)\u3092\u66F8\u304D\u8FBC\u307F\u307E\u3059\u3002\u5168\u3066\u540C\u3058\
+    \u9577\u3055\u304C\u5FC5\u8981\u3067\u3059\u3002O(\u30D3\u30C3\u30C8\u6570 / 64)\u3002\
+    \n        ## \u9818\u57DF\u78BA\u4FDD\u30FB\u4E2D\u9593\u96C6\u5408\u306F\u4E0D\
+    \u8981\u3067\u3001dst\u306Bx\u3084y\u81EA\u8EAB\u3092\u6307\u5B9A\u3059\u308B\u3053\
+    \u3068\u3082\u3067\u304D\u307E\u3059\u3002\n        ## AVX-512\u7D4C\u8DEF\u306E\
+    \u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\u308A\u8AD6\u7406\u6F14\u7B97\
+    1\u547D\u4EE4\u3002\u30ED\u30FC\u30C9\u30FB\u30B9\u30C8\u30A2\u3068\u672B\u5C3E\
+    \u306E\u30DE\u30B9\u30AF\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"\
     boundChecks\"):\n            checkSameSize(dst, x)\n            checkSameSize(x,\
     \ y)\n        if x.bits.len > 0:\n            avxXnorAssign(addr dst.bits[0],\
     \ unsafeAddr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0], x.bits.len.csize_t)\n\
@@ -355,21 +465,38 @@ data:
     \                raise newException(ValueError, \"shift count must be non-negative\"\
     )\n        result = initBitSet(bitset.size)\n        if x < bitset.size:\n   \
     \         avxShr(addr result.bits[0], unsafeAddr bitset.bits[0], bitset.bits.len.csize_t,\
-    \ x.csize_t)\n\n    proc `~`*(x: BitSetAvx512): BitSetAvx512 =\n        ## \u96C6\
-    \u5408\u306E\u30D3\u30C3\u30C8\u6570\u3092\u4FDD\u3063\u305F\u307E\u307E\u5404\
-    \u30D3\u30C3\u30C8\u3092\u53CD\u8EE2\u3057\u307E\u3059\u3002\n        ## AVX-512\u7D4C\
-    \u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\u308A\u53CD\u8EE2\
-    \ 1\u547D\u4EE4\uFF08\u5168\u30D3\u30C3\u30C81\u3068\u306EXOR\u306A\u3069\uFF09\
-    \u3002\n        result = initBitSet(x.size)\n        if x.bits.len > 0:\n    \
-    \        avxNot(addr result.bits[0], unsafeAddr x.bits[0], x.bits.len.csize_t)\n\
-    \            result.trim()\n\n    proc andAssignPopcount*(x: var BitSetAvx512,\
-    \ y: BitSetAvx512): int =\n        ## x\u3092x & y\u306B\u66F4\u65B0\u3057\u3001\
-    \u66F4\u65B0\u5F8C\u306E\u8981\u7D20\u6570\u3092\u8FD4\u3057\u307E\u3059\u3002\
-    O(\u30D3\u30C3\u30C8\u6570 / 64)\u30011\u56DE\u306E\u8D70\u67FB\u3067\u3059\u3002\
-    \n        ## AVX-512\u7D4C\u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\
-    \u305F\u308AVPTERNLOGQ\uFF0BVPOPCNTQ\uFF0B\u7D2F\u7A4D\u52A0\u7B97\u306E\u8A08\
-    3\u547D\u4EE4\u3002\u4FDD\u5B58\u30FB\u6700\u7D42\u96C6\u7D04\u30FB\u7AEF\u6570\
-    \u51E6\u7406\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"boundChecks\"\
+    \ x.csize_t)\n\n    proc `<<=`*(bitset: var BitSetAvx512, x: int) =\n        ##\
+    \ \u9818\u57DF\u3092\u518D\u78BA\u4FDD\u305B\u305AAVX-512/AVX2\u3067\u5DE6\u30B7\
+    \u30D5\u30C8\u3057\u307E\u3059\u3002O(\u30EF\u30FC\u30C9\u6570)\u3001\u8FFD\u52A0\
+    \u7A7A\u9593O(1)\u3002\n        when compileOption(\"boundChecks\"):\n       \
+    \     if x < 0:\n                raise newException(ValueError, \"shift count\
+    \ must be non-negative\")\n        if x == 0:\n            return\n        if\
+    \ x >= bitset.size:\n            for word in bitset.bits.mitems:\n           \
+    \     word = 0\n            return\n        avxShiftLeftAssign(addr bitset.bits[0],\
+    \ bitset.bits.len.csize_t, x.csize_t)\n        bitset.trim()\n\n    proc `>>=`*(bitset:\
+    \ var BitSetAvx512, x: int) =\n        ## \u9818\u57DF\u3092\u518D\u78BA\u4FDD\
+    \u305B\u305AAVX-512/AVX2\u3067\u53F3\u30B7\u30D5\u30C8\u3057\u307E\u3059\u3002\
+    O(\u30EF\u30FC\u30C9\u6570)\u3001\u8FFD\u52A0\u7A7A\u9593O(1)\u3002\n        when\
+    \ compileOption(\"boundChecks\"):\n            if x < 0:\n                raise\
+    \ newException(ValueError, \"shift count must be non-negative\")\n        if x\
+    \ == 0:\n            return\n        if x >= bitset.size:\n            for word\
+    \ in bitset.bits.mitems:\n                word = 0\n            return\n     \
+    \   avxShiftRightAssign(addr bitset.bits[0], bitset.bits.len.csize_t, x.csize_t)\n\
+    \n    proc `~`*(x: BitSetAvx512): BitSetAvx512 =\n        ## \u96C6\u5408\u306E\
+    \u30D3\u30C3\u30C8\u6570\u3092\u4FDD\u3063\u305F\u307E\u307E\u5404\u30D3\u30C3\
+    \u30C8\u3092\u53CD\u8EE2\u3057\u307E\u3059\u3002\n        ## AVX-512\u7D4C\u8DEF\
+    \u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\u308A\u53CD\u8EE2 1\u547D\
+    \u4EE4\uFF08\u5168\u30D3\u30C3\u30C81\u3068\u306EXOR\u306A\u3069\uFF09\u3002\n\
+    \        result = initBitSet(x.size)\n        if x.bits.len > 0:\n           \
+    \ avxNot(addr result.bits[0], unsafeAddr x.bits[0], x.bits.len.csize_t)\n    \
+    \        result.trim()\n\n    proc andAssignPopcount*(x: var BitSetAvx512, y:\
+    \ BitSetAvx512): int =\n        ## x\u3092x & y\u306B\u66F4\u65B0\u3057\u3001\u66F4\
+    \u65B0\u5F8C\u306E\u8981\u7D20\u6570\u3092\u8FD4\u3057\u307E\u3059\u3002O(\u30D3\
+    \u30C3\u30C8\u6570 / 64)\u30011\u56DE\u306E\u8D70\u67FB\u3067\u3059\u3002\n  \
+    \      ## AVX-512\u7D4C\u8DEF\u306E\u76EE\u5B89: 512\u30D3\u30C3\u30C8\u3042\u305F\
+    \u308AVPTERNLOGQ\uFF0BVPOPCNTQ\uFF0B\u7D2F\u7A4D\u52A0\u7B97\u306E\u8A083\u547D\
+    \u4EE4\u3002\u4FDD\u5B58\u30FB\u6700\u7D42\u96C6\u7D04\u30FB\u7AEF\u6570\u51E6\
+    \u7406\u306F\u5225\u3067\u3059\u3002\n        when compileOption(\"boundChecks\"\
     ):\n            checkSameSize(x, y)\n        if x.size > 0:\n            result\
     \ = avxAndAssignPopcount(addr x.bits[0], unsafeAddr y.bits[0], unsafeAddr x.bits[0],\
     \ x.size.csize_t).int\n\n    proc orAssignPopcount*(x: var BitSetAvx512, y: BitSetAvx512):\
@@ -719,24 +846,50 @@ data:
     \u3059\u3002\n        if x.size > 0:\n            result = avxAny(unsafeAddr x.bits[0],\
     \ x.size.csize_t) != 0\n\n    include cplib/collections/private/bitset_avx512_fuse\n"
   dependsOn:
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
   isVerificationFile: false
   path: cplib/collections/bitset_avx512.nim
-  requiredBy: []
-  timestamp: '2026-09-14 23:18:26+09:00'
+  requiredBy:
+  - cplib/str/edit_distance_bitset.nim
+  - cplib/str/edit_distance_bitset.nim
+  - cplib/str/lcs_bitset.nim
+  - cplib/str/lcs_bitset.nim
+  timestamp: '2026-09-17 21:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
   - verify/AI/bitset_avx512_fuse_test.nim
   - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
 documentation_of: cplib/collections/bitset_avx512.nim
 layout: document
 redirect_from:

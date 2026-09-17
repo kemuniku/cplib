@@ -14,8 +14,38 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_avx512_fuse.nim
     title: cplib/collections/private/bitset_avx512_fuse.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance_bitset.nim
+    title: cplib/str/edit_distance_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/edit_distance_bitset.nim
+    title: cplib/str/edit_distance_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/lcs_bitset.nim
+    title: cplib/str/lcs_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/lcs_bitset.nim
+    title: cplib/str/lcs_bitset.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_add_test.nim
+    title: verify/AI/bitset_avx512_add_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_add_test.nim
+    title: verify/AI/bitset_avx512_add_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+    title: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+    title: verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_block_test.nim
+    title: verify/AI/bitset_avx512_fuse_block_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_fuse_block_test.nim
+    title: verify/AI/bitset_avx512_fuse_block_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/bitset_avx512_fuse_test.nim
     title: verify/AI/bitset_avx512_fuse_test.nim
   - icon: ':heavy_check_mark:'
@@ -27,6 +57,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitset_avx512_prev_set_bit_test.nim
     title: verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_shift_assign_test.nim
+    title: verify/AI/bitset_avx512_shift_assign_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bitset_avx512_shift_assign_test.nim
+    title: verify/AI/bitset_avx512_shift_assign_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_bitset_test.nim
+    title: verify/AI/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/edit_distance_bitset_test.nim
+    title: verify/AI/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_bitset_test.nim
+    title: verify/str/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/edit_distance_bitset_test.nim
+    title: verify/str/edit_distance_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_bitset_test.nim
+    title: verify/str/lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/lcs_bitset_test.nim
+    title: verify/str/lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/restore_lcs_bitset_test.nim
+    title: verify/str/restore_lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/restore_lcs_bitset_test.nim
+    title: verify/str/restore_lcs_bitset_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,6 +144,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx512_fuse_shift.nim
   requiredBy:
+  - cplib/str/edit_distance_bitset.nim
+  - cplib/str/edit_distance_bitset.nim
+  - cplib/str/lcs_bitset.nim
+  - cplib/str/lcs_bitset.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/bitset_avx512.nim
@@ -91,10 +155,26 @@ data:
   timestamp: '2026-09-14 23:18:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
   - verify/AI/bitset_avx512_fuse_test.nim
   - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
 documentation_of: cplib/collections/private/bitset_avx512_fuse_shift.nim
 layout: document
 redirect_from:

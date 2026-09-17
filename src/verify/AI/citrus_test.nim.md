@@ -128,9 +128,9 @@ data:
     '
   dependsOn:
   - cplib/tmpl/citrus.nim
+  - cplib/tmpl/citrus.nim
   - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
-  - cplib/tmpl/citrus.nim
   - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true

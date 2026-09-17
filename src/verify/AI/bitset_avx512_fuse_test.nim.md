@@ -14,6 +14,18 @@ data:
     path: cplib/collections/private/bitset_avx512_fuse.nim
     title: cplib/collections/private/bitset_avx512_fuse.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+    title: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+    title: cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_block.nim
+    title: cplib/collections/private/bitset_avx512_fuse_block.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_fuse_block.nim
+    title: cplib/collections/private/bitset_avx512_fuse_block.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_avx512_fuse_shift.nim
     title: cplib/collections/private/bitset_avx512_fuse_shift.nim
   - icon: ':heavy_check_mark:'
@@ -25,6 +37,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_avx512_impl.nim
     title: cplib/collections/private/bitset_avx512_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_shift_assign.nim
+    title: cplib/collections/private/bitset_avx512_shift_assign.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/private/bitset_avx512_shift_assign.nim
+    title: cplib/collections/private/bitset_avx512_shift_assign.nim
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_search_impl.nim
     title: cplib/collections/private/bitset_search_impl.nim
@@ -112,20 +130,26 @@ data:
     \    0\n    fuse:\n        xs[index()] |= y and y\n    doAssert calls == 1 and\
     \ xs[0][64]\n"
   dependsOn:
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/bitset_avx512.nim
   - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
   isVerificationFile: true
   path: verify/AI/bitset_avx512_fuse_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 23:18:26+09:00'
+  timestamp: '2026-09-17 21:00:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/bitset_avx512_fuse_test.nim

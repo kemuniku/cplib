@@ -75,9 +75,9 @@ data:
     \       result.add_edge(i,j,c)\n                uf.unite(i,j)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
   isVerificationFile: false

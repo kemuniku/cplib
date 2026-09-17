@@ -45,8 +45,8 @@ data:
     '
   dependsOn:
   - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/AI/powmod_test.nim

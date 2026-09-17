@@ -654,14 +654,14 @@ data:
     \u3044\u307E\u3059\u3002\n        when size > 0:\n            result = avxAny(unsafeAddr\
     \ x.bits[0], size.csize_t) != 0\n"
   dependsOn:
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx512_impl.nim
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: false
   path: cplib/collections/staticbitset_avx512.nim
   requiredBy: []
-  timestamp: '2026-09-14 23:18:56+09:00'
+  timestamp: '2026-09-17 19:03:02+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/collections/staticbitset_avx512.nim
