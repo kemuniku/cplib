@@ -64,9 +64,10 @@ when not declared CPLIB_UTILS_KNAPSACK:
         return DP.max()
     
     proc solve_BoundedKnapsack*(items:openArray[tuple[v:int,w:int,m:int]], W:int):int =
+        ## 個数制限付きナップサックの最大価値を返す。個数0の品物は無視する。O(NW)。
         var dp = newSeq[int](W + 1)
         for (v, w, m0) in items:
-            if w > W:
+            if m0 == 0 or w > W:
                 continue
             if w == 0:
                 for i in 0..W:
