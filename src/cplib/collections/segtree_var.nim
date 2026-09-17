@@ -37,7 +37,9 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
         return self.get(segment.a, segment.b+1)
     proc `[]`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], segment: HSlice[int, int]): T = self.get(segment)
     proc `[]`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], index: Natural): var SegmentTreeElem[T] =
+        ## 要素への参照を返し、複合代入の更新先を現在の木に設定する。O(1)。
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
+        self.arr[index+self.lastnode].st = self.addr
         return self.arr[index+self.lastnode]
     proc propagete_update[T](self: var SegmentTree[T, SegmentTreeElem[T]], x: Natural) =
         var x = x
