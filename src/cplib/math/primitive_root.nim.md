@@ -74,14 +74,14 @@ data:
     \      return a"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
   - cplib/math/powmod.nim
-  - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
   - cplib/math/inner_math.nim
   - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/primitive_root.nim

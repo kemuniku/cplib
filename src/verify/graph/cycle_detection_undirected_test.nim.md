@@ -42,8 +42,8 @@ data:
     \ vertices = g.restore_cycle_vertices(cycle)\n    echo cycle.len\n    echo vertices.join(\"\
     \ \")\n    echo cycle.join(\" \")\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
   - cplib/graph/cycle_detection.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/cycle_detection.nim
   - cplib/graph/graph.nim

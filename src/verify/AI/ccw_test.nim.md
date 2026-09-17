@@ -52,8 +52,8 @@ data:
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/ccw_test.nim
   requiredBy: []

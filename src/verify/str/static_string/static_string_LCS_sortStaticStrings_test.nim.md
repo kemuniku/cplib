@@ -46,9 +46,9 @@ data:
     \ c)\n                swap(b, d)\n            c -= T.l\n            d -= T.l\n\
     \necho a, \" \", b, \" \", c, \" \", d\n"
   dependsOn:
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim

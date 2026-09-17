@@ -43,10 +43,10 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
-  - cplib/graph/general_matching.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/general_matching_test.nim
   requiredBy: []

@@ -51,10 +51,10 @@ data:
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/biconnected_components.nim
-  - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/biconnected_components.nim
+  - cplib/graph/biconnected_components.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/biconnected_components_test.nim
   requiredBy: []

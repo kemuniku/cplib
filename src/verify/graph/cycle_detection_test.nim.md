@@ -41,8 +41,8 @@ data:
     \ = g.cycle_detection()\nif cycle.len == 0:\n    echo -1\nelse:\n    echo cycle.len\n\
     \    for id in cycle: echo id\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
   - cplib/graph/cycle_detection.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/cycle_detection.nim
   - cplib/graph/graph.nim

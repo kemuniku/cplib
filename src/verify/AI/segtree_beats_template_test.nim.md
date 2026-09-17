@@ -58,11 +58,11 @@ data:
   dependsOn:
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
-  - cplib/math/int128.nim
-  - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/math/int128.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_template_test.nim

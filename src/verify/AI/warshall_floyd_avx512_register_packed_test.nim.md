@@ -55,16 +55,16 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/constants.nim
   - verify/AI/warshall_floyd_avx512_register_cases.nim
-  - cplib/graph/warshall_floyd_avx512.nim
   - cplib/utils/constants.nim
-  - cplib/graph/warshall_floyd_avx512.nim
-  - verify/AI/warshall_floyd_avx512_register_cases.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd_avx512.nim
+  - verify/AI/warshall_floyd_avx512_register_cases.nim
+  - cplib/graph/warshall_floyd_avx512.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx512_register_packed_test.nim
   requiredBy: []
