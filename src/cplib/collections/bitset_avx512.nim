@@ -121,6 +121,18 @@ when not declared CPLIB_COLLECTIONS_BITSET_AVX512:
         if x.bits.len > 0:
             avxAnd(addr dst.bits[0], unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)
 
+    proc addInto*(dst: var BitSetAvx512, x, y: BitSetAvx512) =
+        ## 添字0を最下位ビットとする符号なし整数の和をdstへ書き込みます。O(ビット数 / 64)。
+        ## 全て同じ長さが必要です。上位の桁あふれを切り捨て、dstにxやy自身も指定できます。
+        ## AVX-512F対応時は512ビットずつ並列加算し、レーン間の桁上がりをマスク上で一括計算します。
+        ## 非対応時と末尾の端数は64ビットずつ処理します。512ビット全体を加算する単一命令ではありません。
+        when compileOption("boundChecks"):
+            checkSameSize(dst, x)
+            checkSameSize(x, y)
+        if x.bits.len > 0:
+            avxAdd(addr dst.bits[0], unsafeAddr x.bits[0], unsafeAddr y.bits[0], x.bits.len.csize_t)
+        dst.trim()
+
     proc orInto*(dst: var BitSetAvx512, x, y: BitSetAvx512) =
         ## 確保済みのdstへx | yを書き込みます。全て同じ長さが必要です。O(ビット数 / 64)。
         ## 領域確保・中間集合は不要で、dstにxやy自身を指定することもできます。
