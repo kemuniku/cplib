@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP:
     const CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP* = 1
+    import cplib/utils/backwards_index
     import bitops, sequtils, strutils
 
     type DualSegmentTree*[S, F; p: static[tuple]] = ref object
@@ -161,7 +162,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP:
         ## 後ろから数えたindexの現在値を返します。
         self.get(self.length - int(index))
 
-    proc `[]=`*[ST: DualSegmentTree](self: ST, index: Natural, value: ST.S) =
+    proc `[]=`*[ST: DualSegmentTree](self: ST, index: Natural, value: ST.S) {.backwardsIndex.} =
         ## indexの値をvalueに置き換えます。
         self.update(index, value)
 

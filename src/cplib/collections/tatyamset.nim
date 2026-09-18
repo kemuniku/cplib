@@ -3,6 +3,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
     import algorithm, math, sequtils, sugar
     import options
     const CPLIB_COLLECTIONS_TATYAMSET* = 1
+    import cplib/utils/backwards_index
 
     const BUCKET_RATIO = 8
     const SPLIT_RATIO = 12
@@ -94,7 +95,7 @@ when not declared CPLIB_COLLECTIONS_TATYAMSET:
                 return some(self.arr[i][lowerBound(self.arr[i], x)])
         return none(T)
 
-    proc `[]`*[T](self: SortedMultiSet[T], i: int): T =
+    proc `[]`*[T](self: SortedMultiSet[T], i: int): T {.backwardsIndex.} =
         var i = i
         #"Return the i-th element."
         if i < 0:

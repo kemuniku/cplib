@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     const CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE* = 1
+    import cplib/utils/backwards_index
     import random, sequtils, strutils
 
     randomize()
@@ -358,7 +359,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     proc `[]`*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int, int]): S =
         self.get(segment)
 
-    proc `[]=`*[S, F](self: RangeReverseLazySegmentTree[S, F], index: Natural, value: S) =
+    proc `[]=`*[S, F](self: RangeReverseLazySegmentTree[S, F], index: Natural, value: S) {.backwardsIndex.} =
         self.update(index, value)
 
     iterator items*[S, F](self: RangeReverseLazySegmentTree[S, F]): S =

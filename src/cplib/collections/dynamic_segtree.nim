@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:
     const CPLIB_COLLECTIONS_DYNAMIC_SEGTREE* = 1
+    import cplib/utils/backwards_index
 
     type
         DynamicSegmentTreeNode[T] = ref object
@@ -90,7 +91,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:
         ## スライスで指定した区間の積をO(log N)で返します。
         self.get(segment)
 
-    proc `[]`*[T](self: DynamicSegmentTree[T], index: Natural): T =
+    proc `[]`*[T](self: DynamicSegmentTree[T], index: Natural): T {.backwardsIndex.} =
         ## 1点の値をO(log N)で返します。未更新の座標では単位元を返します。
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         var node = self.root
@@ -103,7 +104,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:
                 node = node.right
         self.default
 
-    proc `[]=`*[T](self: DynamicSegmentTree[T], index: Natural, value: T) =
+    proc `[]=`*[T](self: DynamicSegmentTree[T], index: Natural, value: T) {.backwardsIndex.} =
         ## 1点をO(log N)で上書きします。
         self.update(index, value)
 

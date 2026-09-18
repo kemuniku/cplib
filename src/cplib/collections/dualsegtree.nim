@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_DUALSEGTREE:
     const CPLIB_COLLECTIONS_DUALSEGTREE* = 1
+    import cplib/utils/backwards_index
     import bitops, sequtils, strutils
 
     type DualSegmentTree*[S, F] = ref object
@@ -133,7 +134,7 @@ when not declared CPLIB_COLLECTIONS_DUALSEGTREE:
         ## 後ろから数えたindexの現在値を返します。
         self.get(self.length - int(index))
 
-    proc `[]=`*[S, F](self: DualSegmentTree[S, F], index: Natural, value: S) =
+    proc `[]=`*[S, F](self: DualSegmentTree[S, F], index: Natural, value: S) {.backwardsIndex.} =
         ## indexの値をvalueに置き換えます。
         self.update(index, value)
 

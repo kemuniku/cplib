@@ -1,5 +1,6 @@
 when not declared CPLIB_STR_HASHSTRING:
     const CPLIB_STR_HASHSTRING* = 1
+    import cplib/utils/backwards_index
     import random
     type HashString* = object
         hash*: uint
@@ -144,7 +145,7 @@ when not declared CPLIB_STR_HASHSTRING:
         return (S.R.prefixs[(S.l+slice.b+1)] + (RH_MOD - mul(S.R.prefixs[S.l+slice.a], base_pow(((S.l+slice.b+1)-(S.l+slice.a)))).calc_mod)).calc_mod
 
 
-    proc `[]`*(S: RollingHash, idx: int): char =
+    proc `[]`*(S: RollingHash, idx: int): char {.backwardsIndex.} =
         return S.R.S[idx+int(S.l)]
 
     proc initRollingHash*(S: openArray[char]): RollingHash =

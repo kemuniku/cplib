@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE:
     const CPLIB_COLLECTIONS_SEGTREE* = 1
+    import cplib/utils/backwards_index
     import algorithm, strutils
     type SegmentTree*[T] = ref object
         default: T
@@ -66,17 +67,17 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length, "指定した区間が有効な範囲内である必要があります: segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length"
         return self.get(segment.a, segment.b+1)
     proc `[]`*[T](self: SegmentTree[T], segment: HSlice[int, int]): T = self.get(segment)
-    proc `[]`*[T](self: SegmentTree[T], index: Natural): T =
+    proc len*[T](self: SegmentTree[T]): int =
+        return self.length
+    proc `[]`*[T](self: SegmentTree[T], index: Natural): T {.backwardsIndex.} =
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         return self.arr[index+self.lastnode]
-    proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T) =
+    proc `[]=`*[T](self: SegmentTree[T], index: Natural, val: T) {.backwardsIndex.} =
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.update(index, val)
     proc get_all*[T](self: SegmentTree[T]): T =
         ## [0,len(self))区間の演算結果をO(1)で返す
         return self.arr[1]
-    proc len*[T](self: SegmentTree[T]): int =
-        return self.length
     proc `$`*[T](self: SegmentTree[T]): string =
         var s = self.arr.len div 2
         return self.arr[s..<s+self.len].join(" ")

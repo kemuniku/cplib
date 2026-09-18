@@ -1,5 +1,6 @@
 when not declared CPLIB_STR_FIXEDLENGTH_MERGED_STATIC_STRING:
     const CPLIB_STR_FIXEDLENGTH_MERGED_STATIC_STRING* = 1
+    import cplib/utils/backwards_index
     import cplib/str/static_string
     import cplib/collections/staticRMQ
 
@@ -87,7 +88,7 @@ when not declared CPLIB_STR_FIXEDLENGTH_MERGED_STATIC_STRING:
         for i in 0..<N:
             result += int(S.R[i]-S.L[i])
 
-    proc `[]`*[T;N:static[int]](S:FixedLengthMergedStaticString[T,N],idx:int):T=
+    proc `[]`*[T;N:static[int]](S:FixedLengthMergedStaticString[T,N],idx:int):T {.backwardsIndex.} =
         assert idx in 0..<len(S), "指定した値が有効な範囲内である必要があります: idx in 0 ..< len(S)"
         var relativeIndex = idx
         for i in 0..<N:

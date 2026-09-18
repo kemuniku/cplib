@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_BITSET:
     const CPLIB_COLLECTIONS_BITSET* = 1
+    import cplib/utils/backwards_index
     import bitops
 
     const WordBits = 64
@@ -153,18 +154,18 @@ when not declared CPLIB_COLLECTIONS_BITSET:
                 return wordIndex * WordBits + bitset.bits[wordIndex].countTrailingZeroBits()
         -1
 
-    proc `[]`*(bitset: BitSet, idx: Natural): bool =
+    proc `[]`*(bitset: BitSet, idx: Natural): bool {.backwardsIndex.} =
         bitset.checkIndex(idx)
         bitset.bits[idx shr 6].testBit(idx and 63)
 
-    proc `[]=`*(bitset: var BitSet, idx: Natural, x: bool) =
+    proc `[]=`*(bitset: var BitSet, idx: Natural, x: bool) {.backwardsIndex.} =
         bitset.checkIndex(idx)
         if x:
             bitset.bits[idx shr 6].setBit(idx and 63)
         else:
             bitset.bits[idx shr 6].clearBit(idx and 63)
 
-    proc `[]=`*(bitset: var BitSet, idx: Natural, x: int) =
+    proc `[]=`*(bitset: var BitSet, idx: Natural, x: int) {.backwardsIndex.} =
         if x == 1:
             bitset[idx] = true
         elif x == 0:

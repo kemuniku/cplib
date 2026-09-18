@@ -1,5 +1,6 @@
 when not declared CPLIB_STR_MERGED_STATIC_STRING:
     const CPLIB_STR_MERGED_STATIC_STRING* = 1
+    import cplib/utils/backwards_index
     import cplib/str/static_string
     import cplib/collections/staticRMQ
 
@@ -70,7 +71,7 @@ when not declared CPLIB_STR_MERGED_STATIC_STRING:
         for i in 0..<len(S.L):
             result += int(S.R[i]-S.L[i])
 
-    proc `[]`*[T](S: MergedStaticString[T], idx: int): T =
+    proc `[]`*[T](S: MergedStaticString[T], idx: int): T {.backwardsIndex.} =
         ## 計算量が O(結合数) である点に注意！
         var offset = idx
         for i in 0..<len(S.L):

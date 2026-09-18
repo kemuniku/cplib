@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
     const CPLIB_COLLECTIONS_SEGTREE_VAR* = 1
+    import cplib/utils/backwards_index
     import algorithm, strutils, sequtils, macros
     type SegmentTree*[T, Elem] = object
         default: T
@@ -36,7 +37,9 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
         assert segment.a <= segment.b + 1 and 0 <= segment.a and segment.b+1 <= self.length, "指定した区間が有効な範囲内である必要があります: segment.a <= segment.b + 1 and 0 <= segment.a and segment.b + 1 <= self.length"
         return self.get(segment.a, segment.b+1)
     proc `[]`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], segment: HSlice[int, int]): T = self.get(segment)
-    proc `[]`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], index: Natural): var SegmentTreeElem[T] =
+    proc len*[T](self: SegmentTree[T, SegmentTreeElem[T]]): int =
+        return self.length
+    proc `[]`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], index: Natural): var SegmentTreeElem[T] {.backwardsIndex.} =
         ## 要素への参照を返し、複合代入の更新先を現在の木に設定する。O(1)。
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.arr[index+self.lastnode].st = self.addr
@@ -51,12 +54,10 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_VAR:
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.arr[self.lastnode+index].v = val
         self.propagete_update(index + self.lastnode)
-    proc `[]=`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], index: Natural, val: T) = self.update(index, val)
+    proc `[]=`*[T](self: var SegmentTree[T, SegmentTreeElem[T]], index: Natural, val: T) {.backwardsIndex.} = self.update(index, val)
     proc get_all*[T](self: SegmentTree[T, SegmentTreeElem[T]]): T =
         ## [0,len(self))区間の演算結果をO(1)で返す
         return self.arr[1].v
-    proc len*[T](self: SegmentTree[T, SegmentTreeElem[T]]): int =
-        return self.length
     proc `$`*[T](self: SegmentTree[T, SegmentTreeElem[T]]): string =
         var s = self.arr.len div 2
         return self.arr[s..<s+self.len].mapIt(it.v).join(" ")

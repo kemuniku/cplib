@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     const CPLIB_COLLECTIONS_LAZYSEGTREE* = 1
+    import cplib/utils/backwards_index
     import algorithm, sequtils, bitops, strutils
     type LazySegmentTree*[S, F] = ref object
         default: S
@@ -57,7 +58,9 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         for i in 1..self.log:
             self.arr[p shr i] = self.merge(self.arr[2*(p shr i)], self.arr[2*(p shr i)+1])
 
-    proc `[]`*[S, F](self: var LazySegmentTree[S, F], p: Natural): S =
+    proc len*[S, F](self: var LazySegmentTree[S, F]): int =
+        return self.length
+    proc `[]`*[S, F](self: var LazySegmentTree[S, F], p: Natural): S {.backwardsIndex.} =
         assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.all_push(p + self.lastnode)
         return self.arr[p + self.lastnode]
@@ -94,9 +97,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
     proc get*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]): S =
         return self.get(segment.a, segment.b+1)
     proc `[]`*[S, F](self: var LazySegmentTree[S, F], segment: HSlice[int, int]): S = self.get(segment)
-    proc `[]=`*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: S) = self.update(p, val)
-    proc len*[S, F](self: var LazySegmentTree[S, F]): int =
-        return self.length
+    proc `[]=`*[S, F](self: var LazySegmentTree[S, F], p: Natural, val: S) {.backwardsIndex.} = self.update(p, val)
     proc `$`*[S, F](self: var LazySegmentTree[S, F]): string =
         # var self = self
         return (0..<self.len).toSeq.mapIt(self[it]).join(" ")

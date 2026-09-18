@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_FENWICK_AVX2:
     const CPLIB_COLLECTIONS_FENWICK_AVX2* = 1
+    import cplib/utils/backwards_index
     when not (defined(amd64) and (defined(gcc) or defined(clang))):
         {.error: "FenwickTreeAvx2 requires amd64 and GCC/Clang".}
 
@@ -141,10 +142,10 @@ static NI cplib_fw16_get(const NI *data, const NI *offsets, NI l, NI r) {
         ## スライスの和をO(log_16 n)で返します。
         self.get(segment.a, segment.b + 1)
 
-    proc `[]`*(self: FenwickTreeAvx2, p: int): int {.inline.} =
+    proc `[]`*(self: FenwickTreeAvx2, p: int): int {.backwardsIndex, inline.} =
         ## a[p]をO(log_16 n)で返します。
         self.get(p, p + 1)
 
-    proc `[]=`*(self: var FenwickTreeAvx2, p: int, value: int) {.inline.} =
+    proc `[]=`*(self: var FenwickTreeAvx2, p: int, value: int) {.backwardsIndex, inline.} =
         ## a[p]をvalueに変更します。O(log_16 n)です。
         self.add(p, value -% self.get(p, p + 1))

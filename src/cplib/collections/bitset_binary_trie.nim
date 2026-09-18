@@ -15,6 +15,7 @@
 ##   doAssert trie.count(key) == 1
 when not declared CPLIB_COLLECTIONS_BITSET_BINARY_TRIE:
     const CPLIB_COLLECTIONS_BITSET_BINARY_TRIE* = 1
+    import cplib/utils/backwards_index
 
     type
         BitSetTrieNode[T] = object
@@ -151,7 +152,7 @@ when not declared CPLIB_COLLECTIONS_BITSET_BINARY_TRIE:
         self.checkKey(xor_value)
         self.kth(k, unsafeAddr xor_value)
 
-    proc `[]`*[T](self: BitSetBinaryTrie[T], k: Natural): T =
+    proc `[]`*[T](self: BitSetBinaryTrie[T], k: Natural): T {.backwardsIndex.} =
         ## 辞書順で0始まりk番目のキーを返します。範囲外はIndexDefectです。O(1 + N)。
         self.get_kth(k)
 

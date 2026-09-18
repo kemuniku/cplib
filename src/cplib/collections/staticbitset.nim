@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
     const CPLIB_COLLECTIONS_STATIC_BITSET* = 1
+    import cplib/utils/backwards_index
     import math,bitops,algorithm,strutils
     
     type BitSet*[size:static int] {.byref.}= object
@@ -138,16 +139,16 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET:
                     return index
         -1
     
-    proc `[]`*[size](bitset:BitSet[size],idx:Natural):bool=
+    proc `[]`*[size](bitset:BitSet[size],idx:Natural):bool {.backwardsIndex.} =
         return bitset.bits[idx shr 6].testBit(idx and 63)
 
-    proc `[]=`*[size](bitset:var BitSet[size],idx:Natural,x:bool)=
+    proc `[]=`*[size](bitset:var BitSet[size],idx:Natural,x:bool) {.backwardsIndex.} =
         if x:
             bitset.bits[idx shr 6].setBit((idx and 63))
         else:
             bitset.bits[idx shr 6].clearBit((idx and 63))
     
-    proc `[]=`*[size](bitset:var BitSet[size],idx:Natural,x:int)=
+    proc `[]=`*[size](bitset:var BitSet[size],idx:Natural,x:int) {.backwardsIndex.} =
         if x == 1:
             bitset.bits[idx shr 6].setBit((idx and 63))
         elif x == 0:

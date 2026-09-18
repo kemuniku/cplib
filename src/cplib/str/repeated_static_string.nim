@@ -1,5 +1,6 @@
 when not declared CPLIB_STR_REPEATED_STATIC_STRING:
     const CPLIB_STR_REPEATED_STATIC_STRING* = 1
+    import cplib/utils/backwards_index
     import cplib/str/static_string
     import cplib/str/fixedlength_merged_static_string
 
@@ -17,7 +18,7 @@ when not declared CPLIB_STR_REPEATED_STATIC_STRING:
     proc len*[T](S: RepeatedStaticString[T]): int {.inline.} =
         result = S.size
 
-    proc `[]`*[T](S: RepeatedStaticString[T], idx: Natural): T {.inline.} =
+    proc `[]`*[T](S: RepeatedStaticString[T], idx: Natural): T {.backwardsIndex, inline.} =
         assert idx < len(S), "指定した値が有効な範囲内である必要があります: idx < len(S)"
         result = S.period[idx mod len(S.period)]
 

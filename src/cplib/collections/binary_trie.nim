@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
     const CPLIB_COLLECTIONS_BINARY_TRIE* = 1
+    import cplib/utils/backwards_index
     type BinaryTrieNode {.acyclic.} = ref object
         zero:BinaryTrieNode
         one:BinaryTrieNode
@@ -143,7 +144,10 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                     if now.zero.isNil():
                         return result
                     now = now.zero
-    proc `[]`*(self:BinaryTrie,idx:Natural):int=
+    proc len*(self:BinaryTrie):int=
+        return self.root.value
+
+    proc `[]`*(self:BinaryTrie,idx:Natural):int {.backwardsIndex.} =
         return self.get_kth(idx)
 
     proc `$`*(self:BinaryTrie):string=
@@ -158,6 +162,3 @@ when not declared CPLIB_COLLECTIONS_BINARY_TRIE:
                     S.add((now,self.value))
         dfs_node(self.root,0)
         return $S
-    
-    proc len*(self:BinaryTrie):int=
-        return self.root.value

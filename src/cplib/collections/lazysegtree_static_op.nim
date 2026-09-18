@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
     const CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP* = 1
+    import cplib/utils/backwards_index
     import algorithm, sequtils, bitops, strutils
 
     type LazySegmentTree*[S, F; p: static[tuple]] = ref object
@@ -200,7 +201,10 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
             let node = p shr i
             self.arr[node] = self.mergeOp(self.arr[2 * node], self.arr[2 * node + 1])
 
-    proc `[]`*[ST: LazySegmentTree](self: var ST, p: Natural): ST.S =
+    proc len*[ST: LazySegmentTree](self: var ST): int =
+        return self.length
+
+    proc `[]`*[ST: LazySegmentTree](self: var ST, p: Natural): ST.S {.backwardsIndex.} =
         assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.all_push(p + self.lastnode)
         return self.arr[p + self.lastnode]
@@ -241,11 +245,8 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
     ): ST.S =
         self.get(segment)
 
-    proc `[]=`*[ST: LazySegmentTree](self: var ST, p: Natural, val: ST.S) =
+    proc `[]=`*[ST: LazySegmentTree](self: var ST, p: Natural, val: ST.S) {.backwardsIndex.} =
         self.update(p, val)
-
-    proc len*[ST: LazySegmentTree](self: var ST): int =
-        return self.length
 
     proc `$`*[ST: LazySegmentTree](self: var ST): string =
         return (0..<self.len).toSeq.mapIt(self[it]).join(" ")

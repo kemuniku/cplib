@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
     const CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID* = 1
+    import cplib/utils/backwards_index
     import random, strutils
 
     randomize()
@@ -304,7 +305,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
     proc `[]`*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]): T =
         self.get(segment)
 
-    proc `[]=`*[T](self: RangeReverseArrayMonoid[T], index: Natural, value: T) =
+    proc `[]=`*[T](self: RangeReverseArrayMonoid[T], index: Natural, value: T) {.backwardsIndex.} =
         self.update(index, value)
 
     iterator items*[T](self: RangeReverseArrayMonoid[T]): T =

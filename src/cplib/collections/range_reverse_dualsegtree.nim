@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE:
     const CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE* = 1
+    import cplib/utils/backwards_index
     import random, sequtils, strutils
 
     randomize()
@@ -259,7 +260,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE:
     proc `[]`*[S, F](self: RangeReverseDualSegmentTree[S, F], index: BackwardsIndex): S =
         self.get(self.length - int(index))
 
-    proc `[]=`*[S, F](self: RangeReverseDualSegmentTree[S, F], index: Natural, value: S) =
+    proc `[]=`*[S, F](self: RangeReverseDualSegmentTree[S, F], index: Natural, value: S) {.backwardsIndex.} =
         self.update(index, value)
 
     iterator items*[S, F](self: RangeReverseDualSegmentTree[S, F]): S =
