@@ -3,6 +3,7 @@
 ## H = ceil(log2(max(2, 異なる値の数)))として、更新・区間和はO(H log N)です。
 when not declared CPLIB_COLLECTIONS_WAVELETMATRIX_FENWICK:
     const CPLIB_COLLECTIONS_WAVELETMATRIX_FENWICK* = 1
+    import cplib/utils/backwards_index
     import algorithm, bitops, sequtils
     import cplib/collections/waveletmatrix
     import cplib/collections/fenwick_avx2
@@ -41,7 +42,7 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX_FENWICK:
         ## 要素数をO(1)で返します。
         self.weights.len
 
-    proc `[]`*(self: WaveletMatrixFenwick, i: int): int =
+    proc `[]`*(self: WaveletMatrixFenwick, i: int): int {.backwardsIndex.} =
         ## 現在のb_iをO(1)で返します。
         assert 0 <= i and i < self.len, "指定した値が有効な範囲内である必要があります: 0 <= i and i < self.len"
         self.weights[i]
@@ -56,7 +57,7 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX_FENWICK:
             p = if l0 < r0: l0 else: l1
             self.bits[h].add(p, delta)
 
-    proc `[]=`*(self: WaveletMatrixFenwick, i, value: int) =
+    proc `[]=`*(self: WaveletMatrixFenwick, i: int, value: int) {.backwardsIndex.} =
         ## b_iをvalueに変更します。O(H log N)です。
         self.add(i, value - self[i])
 

@@ -2,6 +2,7 @@
 ## Tの初期値を加法単位元とし、加算は可換である必要があります。
 when not declared CPLIB_COLLECTIONS_FENWICK:
     const CPLIB_COLLECTIONS_FENWICK* = 1
+    import cplib/utils/backwards_index
 
     type FenwickTree*[T] = object
         size: int
@@ -65,10 +66,10 @@ when not declared CPLIB_COLLECTIONS_FENWICK:
         ## スライスの和をO(log n)で返します。
         self.get(segment.a, segment.b + 1)
 
-    proc `[]`*[T](self: FenwickTree[T], p: int): T {.inline.} =
+    proc `[]`*[T](self: FenwickTree[T], p: int): T {.backwardsIndex, inline.} =
         ## a[p]をO(log n)で返します。
         self.get(p, p + 1)
 
-    proc `[]=`*[T](self: var FenwickTree[T], p: int, value: T) {.inline.} =
+    proc `[]=`*[T](self: var FenwickTree[T], p: int, value: T) {.backwardsIndex, inline.} =
         ## a[p]をvalueに変更します。O(log n)です。
         self.add(p, value - self[p])

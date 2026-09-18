@@ -3,6 +3,7 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
 
     template declareLinkCutTreeOperations*(TreeType: untyped) {.dirty.} =
         ## 集約・遅延情報の更新を各型に任せ、共通のLCT操作を定義する。
+        import cplib/utils/backwards_index
         proc isAuxRoot[T: TreeType](self: T, v: int): bool {.inline.} =
             ## vが補助splay木の根かを返す。O(1)。
             let p = self.nodes[v].parent
@@ -130,13 +131,13 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
             self.nodes[v + 1].value = value
             self.pull(v + 1)
 
-        proc `[]`*[T: TreeType](self: T, v: int): T.S =
+        proc `[]`*[T: TreeType](self: T, v: int): T.S {.backwardsIndex.} =
             ## 頂点vの値を返す。償却O(log N)。
             assert 0 <= v and v < self.len, "頂点番号が範囲外です: 0 <= v and v < self.len"
             self.accessNode(v + 1)
             self.nodes[v + 1].value
 
-        proc `[]=`*[T: TreeType](self: T, v: int, value: T.S) =
+        proc `[]=`*[T: TreeType](self: T, v: int, value: T.S) {.backwardsIndex.} =
             ## 頂点vの値をvalueに変更する。償却O(log N)。
             self.update(v, value)
 

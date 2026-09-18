@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
     const CPLIB_COLLECTIONS_SEGTREE_BEATS* = 1
+    import cplib/utils/backwards_index
     import algorithm, sequtils, bitops, strutils
     type SegmentTreeBeats*[S, F] = object
         default: S
@@ -74,7 +75,8 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
         for i in 1..self.log:
             self.arr[p shr i] = self.merge(self.arr[2*(p shr i)], self.arr[2*(p shr i)+1])
 
-    proc `[]`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural): S =
+    proc len*[S, F](self: var SegmentTreeBeats[S, F]): int = self.length
+    proc `[]`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural): S {.backwardsIndex.} =
         assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.all_push(p + self.lastnode)
         return self.arr[p + self.lastnode]
@@ -107,8 +109,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:
     proc get*[S, F](self: var SegmentTreeBeats[S, F], segment: HSlice[int, int]): S =
         return self.get(segment.a, segment.b+1)
     proc `[]`*[S, F](self: var SegmentTreeBeats[S, F], segment: HSlice[int, int]): S = self.get(segment)
-    proc `[]=`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val: S) = self.update(p, val)
-    proc len*[S, F](self: var SegmentTreeBeats[S, F]): int = self.length
+    proc `[]=`*[S, F](self: var SegmentTreeBeats[S, F], p: Natural, val: S) {.backwardsIndex.} = self.update(p, val)
     proc `$`*[S, F](self: var SegmentTreeBeats[S, F]): string = (0..<self.len).toSeq.mapIt(self[it]).join(" ")
     template newLazySegWith*(v_or_n, merge, default, mapping, composition, id: untyped): untyped =
         type S = typeof(default)

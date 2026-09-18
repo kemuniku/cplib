@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:
     const CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE* = 1
+    import cplib/utils/backwards_index
     import sequtils
     import cplib/collections/segtree_beats
     import cplib/utils/constants
@@ -81,11 +82,16 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:
     proc initRangeChminChmaxRangeSumMaxMin*(v: openArray[float]): RangeChminChmaxRangeSumMaxMin[float] = initRangeChminChmaxRangeSumMaxMin(v, 1e100, 0.0)
 
     proc update*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T) = self.seg.update(p, init_S(val, self.inf))
-    proc `[]`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural or HSlice[int, int]): S_rch[T] = self.seg[p]
-    proc `[]=`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T) =
+    proc len*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): int = self.seg.len
+    proc `[]`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural): S_rch[T] {.backwardsIndex.} =
+        ## p 番目の要素を取得する。O(log N)。
+        self.seg[p]
+    proc `[]`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: HSlice[int, int]): S_rch[T] =
+        ## 閉区間 p の集約値を取得する。
+        self.seg[p]
+    proc `[]=`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T) {.backwardsIndex.} =
         ## 添字pの要素をvalに置き換える。O(log N)。
         self.update(p, val)
-    proc len*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): int = self.seg.len
     proc `$`*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): string = $(self.seg)
     proc chmin*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf, ub: val, add: self.zero))
     proc chmax*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: val, ub: self.inf, add: self.zero))

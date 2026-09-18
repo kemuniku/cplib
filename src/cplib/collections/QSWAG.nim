@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_QSWAG:
     const CPLIB_COLLECTIONS_QSWAG* = 1
+    import cplib/utils/backwards_index
 
     import algorithm
     type QSWAG*[T] = ref object
@@ -40,7 +41,7 @@ when not declared CPLIB_COLLECTIONS_QSWAG:
         return $reversed(self.top) & $self.bottom
     proc len*[T](self: QSWAG[T]): int =
         return len(self.bottom)+len(self.top)
-    proc `[]`*[T](self: QSWAG[T], index: int): T =
+    proc `[]`*[T](self: QSWAG[T], index: int): T {.backwardsIndex.} =
         if index >= len(self):
             raise newException(IndexDefect, "index " & $index & " not in 0 .. " & $len(self))
         if index < len(self.top):

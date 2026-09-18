@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SWAG:
     const CPLIB_COLLECTIONS_SWAG* = 1
+    import cplib/utils/backwards_index
 
     import algorithm
     type SWAG*[T] = ref object
@@ -65,7 +66,7 @@ when not declared CPLIB_COLLECTIONS_SWAG:
         return "swag" & $(reversed(self.top)&self.bottom)
     proc len*[T](self: SWAG[T]): int =
         return len(self.bottom)+len(self.top)
-    proc `[]`*[T](self: SWAG[T], index: int): T =
+    proc `[]`*[T](self: SWAG[T], index: int): T {.backwardsIndex.} =
         if index >= len(self):
             raise newException(IndexDefect, "index " & $index & " not in 0 .. " & $(len(self)-1))
         if index < len(self.top):

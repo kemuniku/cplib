@@ -6,6 +6,7 @@
 ## コンパイラによる命令の融合・展開で変わります。
 when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
     const CPLIB_COLLECTIONS_STATIC_BITSET_AVX2* = 1
+    import cplib/utils/backwards_index
     when not (defined(amd64) and (defined(gcc) or defined(clang))):
         {.error: "StaticBitSetAvx2 requires amd64 and GCC/Clang".}
     import bitops
@@ -421,7 +422,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         ## 最小の要素を返し、空集合なら-1。最悪O(1 + ビット数/64)。ゼロ区間はSIMDで探索します。
         bitset.nextSetBit(0)
 
-    proc `[]`*[size](bitset: BitSet[size], idx: Natural): bool =
+    proc `[]`*[size](bitset: BitSet[size], idx: Natural): bool {.backwardsIndex.} =
         ## 指定した添字のビットが立っているかを返します。
         ## AVX2命令は使いません。1ワードをスカラー命令で読み出してビットを判定します。
         when compileOption("boundChecks"):
@@ -435,7 +436,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
             bitset.checkIndex(idx)
         bitset.bits[idx shr 6] = bitset.bits[idx shr 6] xor (1'u64 shl (idx and 63))
 
-    proc `[]=`*[size](bitset: var BitSet[size], idx: Natural, x: bool) =
+    proc `[]=`*[size](bitset: var BitSet[size], idx: Natural, x: bool) {.backwardsIndex.} =
         ## 指定した添字のビットを真偽値で更新します。
         ## AVX2命令は使いません。1ワードをスカラー命令で更新します。
         when compileOption("boundChecks"):
@@ -445,7 +446,7 @@ when not declared CPLIB_COLLECTIONS_STATIC_BITSET_AVX2:
         else:
             bitset.bits[idx shr 6].clearBit(idx and 63)
 
-    proc `[]=`*[size](bitset: var BitSet[size], idx: Natural, x: int) =
+    proc `[]=`*[size](bitset: var BitSet[size], idx: Natural, x: int) {.backwardsIndex.} =
         ## 0ならビットを落とし、1なら立てます。それ以外は何もしません。
         ## AVX2命令は使いません。1ワードをスカラー命令で更新します。
         if x == 1:

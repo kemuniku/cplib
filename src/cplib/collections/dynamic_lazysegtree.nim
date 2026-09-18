@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE:
     const CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE* = 1
+    import cplib/utils/backwards_index
 
     type
         DynamicLazySegmentTreeNode[S, F] = ref object
@@ -219,22 +220,22 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_LAZYSEGTREE:
         ## スライスの区間積を最悪O(log(K+2))で返します。
         self.get(segment)
 
-    proc `[]`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural): S =
+    proc len*[S, F](self: DynamicLazySegmentTree[S, F]): int =
+        ## 座標範囲の長さをO(1)で返します。
+        self.length
+
+    proc `[]`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural): S {.backwardsIndex.} =
         ## 1点を最悪O(log(K+2))で取得します。
         assert p < self.length, "指定した値が有効な範囲内である必要があります: p < self.length"
         self.get(p, p + 1)
 
-    proc `[]=`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural, value: S) =
+    proc `[]=`*[S, F](self: DynamicLazySegmentTree[S, F], p: Natural, value: S) {.backwardsIndex.} =
         ## 1点を最悪O(log(K+2))で上書きします。
         self.update(p, value)
 
     proc get_all*[S, F](self: DynamicLazySegmentTree[S, F]): S =
         ## 全区間の積をO(1)で返します。
         if self.root == nil: self.default else: self.root.product
-
-    proc len*[S, F](self: DynamicLazySegmentTree[S, F]): int =
-        ## 座標範囲の長さをO(1)で返します。
-        self.length
 
     proc node_count*[S, F](self: DynamicLazySegmentTree[S, F]): int =
         ## 保持する区間数K（確保したノード数）をO(1)で返します。

@@ -3,6 +3,7 @@ import cplib/modint/modint
 
 when not declared CPLIB_MATRIX_MATRIX_AVX2:
     const CPLIB_MATRIX_MATRIX_AVX2* = 1
+    import cplib/utils/backwards_index
     import cplib/matrix/matrix_avx2_kernel
     export matrixProductKernel, matrixProductMontgomeryKernel, matrixJoinValues, matrixConvertValues, matrixWriteRow
 
@@ -267,21 +268,21 @@ when not declared CPLIB_MATRIX_MATRIX_AVX2:
         ## 元の行列を書き換えられる行ビューを返す。
         checkIndex(r, a.height)
         MutableMatrixRow[T](storage: rowStorage(a), offset: r * a.width, length: a.width)
-    proc `[]`*[T](row: MatrixRow[T], column: int): T {.inline.} =
-        ## 行ビューの要素を読み取る。
-        checkIndex(column, row.length)
-        row.storage.values[row.offset + column]
-    proc `[]`*[T](row: MutableMatrixRow[T], column: int): var T {.inline.} =
-        ## 行ビューから元の要素への参照を返す。
-        checkIndex(column, row.length)
-        row.storage.values[row.offset + column]
-    proc `[]=`*[T](row: MutableMatrixRow[T], column: int, value: T or SomeInteger) {.inline.} =
-        ## 行ビューを通して元の行列へ代入する。
-        checkIndex(column, row.length)
-        row.storage.values[row.offset + column] = scalar[T](value)
     proc len*[T](row: MatrixRow[T] or MutableMatrixRow[T]): int {.inline.} =
         ## 行ビューの列数を返す。
         row.length
+    proc `[]`*[T](row: MatrixRow[T], column: int): T {.inline, backwardsIndex.} =
+        ## 行ビューの要素を読み取る。
+        checkIndex(column, row.length)
+        row.storage.values[row.offset + column]
+    proc `[]`*[T](row: MutableMatrixRow[T], column: int): var T {.inline, backwardsIndex.} =
+        ## 行ビューから元の要素への参照を返す。
+        checkIndex(column, row.length)
+        row.storage.values[row.offset + column]
+    proc `[]=`*[T](row: MutableMatrixRow[T], column: int, value: T or SomeInteger) {.inline, backwardsIndex.} =
+        ## 行ビューを通して元の行列へ代入する。
+        checkIndex(column, row.length)
+        row.storage.values[row.offset + column] = scalar[T](value)
     iterator items*[T](row: MatrixRow[T] or MutableMatrixRow[T]): T =
         ## 行の要素を左から順に列挙する。
         for i in 0 ..< row.length:

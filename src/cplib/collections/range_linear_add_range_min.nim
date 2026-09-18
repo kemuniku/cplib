@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
     const CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN* = 1
+    import cplib/utils/backwards_index
     import cplib/math/int128
 
     type
@@ -166,11 +167,10 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
         ## 指定区間の最小値を返します。O(log^2 N)。
         self.prod(segment)
 
-    proc `[]`*(self: RangeLinearAddRangeMin, i: int): int =
-        ## a[i] を返します。O(log N)。
-        assert 0 <= i and i < self.length, "指定した値が有効な範囲内である必要があります: 0 <= i and i < self.length"
-        self.prod(i, i + 1)
-
     proc len*(self: RangeLinearAddRangeMin): int =
         ## 配列の長さを返します。O(1)。
         self.length
+    proc `[]`*(self: RangeLinearAddRangeMin, i: int): int {.backwardsIndex.} =
+        ## a[i] を返します。O(log N)。
+        assert 0 <= i and i < self.length, "指定した値が有効な範囲内である必要があります: 0 <= i and i < self.length"
+        self.prod(i, i + 1)

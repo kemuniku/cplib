@@ -1,5 +1,6 @@
 when not declared CPLIB_STR_STATIC_STRING:
     const CPLIB_STR_STATIC_STRING* = 1
+    import cplib/utils/backwards_index
     import sequtils
     import algorithm
     import cplib/str/suffix_array
@@ -76,7 +77,7 @@ when not declared CPLIB_STR_STATIC_STRING:
 
     proc len*[T](S: StaticString[T]): int {.inline.} = S.r - S.l
 
-    proc `[]`*[T](S: StaticString[T], idx: Natural): T =
+    proc `[]`*[T](S: StaticString[T], idx: Natural): T {.backwardsIndex.} =
         assert idx < len(S), "指定した値が有効な範囲内である必要があります: idx < len(S)"
         return S.base.S[S.l+idx]
 

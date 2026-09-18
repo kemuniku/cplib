@@ -1,5 +1,6 @@
 when not declared CPLIB_COLLECTIONS_SEGTREE_STATIC_OP:
     const CPLIB_COLLECTIONS_SEGTREE_STATIC_OP* = 1
+    import cplib/utils/backwards_index
     import algorithm, strutils
 
     type SegmentTree*[T; p: static[tuple]] = ref object
@@ -101,20 +102,20 @@ when not declared CPLIB_COLLECTIONS_SEGTREE_STATIC_OP:
     proc `[]`*[ST: SegmentTree](self: ST, segment: HSlice[int, int]): ST.T =
         self.get(segment)
 
-    proc `[]`*[ST: SegmentTree](self: ST, index: Natural): ST.T =
+    proc len*[ST: SegmentTree](self: ST): int =
+        return self.length
+
+    proc `[]`*[ST: SegmentTree](self: ST, index: Natural): ST.T {.backwardsIndex.} =
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         return self.arr[index + self.lastnode]
 
-    proc `[]=`*[ST: SegmentTree](self: ST, index: Natural, val: ST.T) =
+    proc `[]=`*[ST: SegmentTree](self: ST, index: Natural, val: ST.T) {.backwardsIndex.} =
         assert index < self.length, "指定した値が有効な範囲内である必要があります: index < self.length"
         self.update(index, val)
 
     proc get_all*[ST: SegmentTree](self: ST): ST.T =
         ## [0,len(self))区間の演算結果をO(1)で返す
         return self.arr[1]
-
-    proc len*[ST: SegmentTree](self: ST): int =
-        return self.length
 
     proc `$`*[ST: SegmentTree](self: ST): string =
         let s = self.arr.len div 2
