@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -42,15 +48,15 @@ data:
     ##   var trie = initBitSetBinaryTrie[BitSet](128)\n##   var key = initBitSet(128)\n\
     ##   key[0] = true\n##   trie.incl(key, 2)\n##   trie.excl(key)\n##   doAssert\
     \ trie.count(key) == 1\nwhen not declared CPLIB_COLLECTIONS_BITSET_BINARY_TRIE:\n\
-    \    const CPLIB_COLLECTIONS_BITSET_BINARY_TRIE* = 1\n\n    type\n        BitSetTrieNode[T]\
-    \ = object\n            children: array[2, int]\n            count: int\n    \
-    \        key: ref T\n        BitSetBinaryTrie*[T] = object\n            nodes:\
-    \ seq[BitSetTrieNode[T]]\n            freeNodes: seq[int]\n            h: int\n\
-    \n    proc initBitSetBinaryTrie*[T](h: int): BitSetBinaryTrie[T] =\n        ##\
-    \ h\u30D3\u30C3\u30C8\u306E\u30AD\u30FC\u3092\u6271\u3046\u7A7A\u306E\u591A\u91CD\
-    \u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002O(1)\u3002\n        if h\
-    \ < 0:\n            raise newException(ValueError, \"BitSet length must be non-negative\"\
-    )\n        result.h = h\n        result.nodes = @[BitSetTrieNode[T](children:\
+    \    const CPLIB_COLLECTIONS_BITSET_BINARY_TRIE* = 1\n    import cplib/utils/backwards_index\n\
+    \n    type\n        BitSetTrieNode[T] = object\n            children: array[2,\
+    \ int]\n            count: int\n            key: ref T\n        BitSetBinaryTrie*[T]\
+    \ = object\n            nodes: seq[BitSetTrieNode[T]]\n            freeNodes:\
+    \ seq[int]\n            h: int\n\n    proc initBitSetBinaryTrie*[T](h: int): BitSetBinaryTrie[T]\
+    \ =\n        ## h\u30D3\u30C3\u30C8\u306E\u30AD\u30FC\u3092\u6271\u3046\u7A7A\u306E\
+    \u591A\u91CD\u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002O(1)\u3002\n\
+    \        if h < 0:\n            raise newException(ValueError, \"BitSet length\
+    \ must be non-negative\")\n        result.h = h\n        result.nodes = @[BitSetTrieNode[T](children:\
     \ [-1, -1])]\n\n    proc initBitSetBinaryTrie*[T](sample: T): BitSetBinaryTrie[T]\
     \ =\n        ## sample\u3068\u540C\u3058\u578B\u30FB\u9577\u3055\u306E\u30AD\u30FC\
     \u3092\u6271\u3046\u7A7A\u96C6\u5408\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002\
@@ -124,9 +130,9 @@ data:
     \u8F9E\u66F8\u9806\u3067k\u756A\u76EE\u306E\u5143\u306E\u30AD\u30FC\u3092\u8FD4\
     \u3057\u307E\u3059\u3002\u7BC4\u56F2\u5916\u306FIndexDefect\u3067\u3059\u3002\
     O(1 + N)\u3002\n        self.checkKey(xor_value)\n        self.kth(k, unsafeAddr\
-    \ xor_value)\n\n    proc `[]`*[T](self: BitSetBinaryTrie[T], k: Natural): T =\n\
-    \        ## \u8F9E\u66F8\u9806\u30670\u59CB\u307E\u308Ak\u756A\u76EE\u306E\u30AD\
-    \u30FC\u3092\u8FD4\u3057\u307E\u3059\u3002\u7BC4\u56F2\u5916\u306FIndexDefect\u3067\
+    \ xor_value)\n\n    proc `[]`*[T](self: BitSetBinaryTrie[T], k: Natural): T {.backwardsIndex.}\
+    \ =\n        ## \u8F9E\u66F8\u9806\u30670\u59CB\u307E\u308Ak\u756A\u76EE\u306E\
+    \u30AD\u30FC\u3092\u8FD4\u3057\u307E\u3059\u3002\u7BC4\u56F2\u5916\u306FIndexDefect\u3067\
     \u3059\u3002O(1 + N)\u3002\n        self.get_kth(k)\n\n    proc bound[T](self:\
     \ BitSetBinaryTrie[T], x: T, mask: ptr T, inclusive: bool): int =\n        ##\
     \ XOR\u5F8C\u306E\u30AD\u30FC\u304Cx\u672A\u6E80\uFF08inclusive\u306A\u3089\u4EE5\
@@ -153,11 +159,13 @@ data:
     \u4E0B\u306E\u8981\u7D20\u6570\u3092\u8FD4\u3057\u307E\u3059\u3002O(1 + N)\u3002\
     \n        self.checkKey(xor_value)\n        self.bound(x, unsafeAddr xor_value,\
     \ true)\n"
-  dependsOn: []
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/bitset_binary_trie.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:30:30+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/bitset_binary_trie_test.nim

@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -63,12 +69,14 @@ data:
 
     '
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
   - cplib/collections/segtree_var.nim
   isVerificationFile: true
   path: verify/AI/segtree_var_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/segtree_var_test.nim

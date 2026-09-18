@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -41,11 +47,13 @@ data:
     \        else:\n            stdout.writeLine C[tmp]"
   dependsOn:
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/collections/segtree/segtree_ordered_set_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_ordered_set_test.nim

@@ -55,6 +55,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -91,28 +97,30 @@ data:
     var empty: Mat\ndoAssert empty.clone().h == 0 and empty.clone().w == 0\necho \"\
     Hello World\"\n"
   dependsOn:
+  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/collections/segtree.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_gc_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_avx2_gc_test.nim

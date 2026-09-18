@@ -502,6 +502,12 @@ data:
     path: verify/utils/area_of_union_of_rectangles_test.nim
     title: verify/utils/area_of_union_of_rectangles_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/bounded_zero_count_test.nim
     title: verify/utils/knapsack/bounded_zero_count_test.nim
   - icon: ':heavy_check_mark:'
@@ -625,6 +631,8 @@ data:
   - verify/math/isprime_yosupo_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim

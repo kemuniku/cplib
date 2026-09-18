@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -51,48 +57,48 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_HASHSTRING:\n    const CPLIB_STR_HASHSTRING*\
-    \ = 1\n    import random\n    type HashString* = object\n        hash*: uint\n\
-    \        bpow: uint\n        size: int\n    const MASK30 = (1u shl 30) - 1\n \
-    \   const MASK31 = (1u shl 31) - 1\n    const RH_MOD = (1u shl 61) - 1\n    const\
-    \ POW_CALC = 500000\n\n    randomize()\n\n    proc calc_mod(x: uint): uint =\n\
-    \        result = (x shr 61) + (x and RH_MOD)\n        if result >= RH_MOD:\n\
-    \            result -= RH_MOD\n\n    proc mul(a, b: uint): uint =\n        let\n\
-    \            a_upper = a shr 31\n            a_lower = a and MASK31\n        \
-    \    b_upper = b shr 31\n            b_lower = b and MASK31\n            mid =\
-    \ a_lower * b_upper + a_upper * b_lower\n            mid_upper = mid shr 30\n\
-    \            mid_lower = mid and MASK30\n        result = a_upper * b_upper *\
-    \ 2 + mid_upper + (mid_lower shl 31) + a_lower * b_lower\n\n\n    proc inner_pow(a:\
-    \ uint, n: int): uint =\n        var a = a\n        var n = n\n        result\
-    \ = 1\n        while n > 0:\n            if (n and 1) != 0:\n                result\
-    \ = mul(result, a).calc_mod\n            a = mul(a, a).calc_mod\n            n\
-    \ = n shr 1\n\n    let hashstring_base: uint = rand(129u..(1u shl 30))\n    let\
-    \ inv_hashstring_base: uint = inner_pow(hashstring_base, int(RH_MOD)-2)\n    var\
-    \ pows: seq[uint] = newseq[uint](POW_CALC+1)\n    var invpows: seq[uint] = newseq[uint](POW_CALC+1)\n\
-    \    pows[0] = 1\n    invpows[0] = 1\n    for i in 1..POW_CALC:\n        pows[i]\
-    \ = (mul(pows[i-1], hashstring_base).calc_mod)\n        invpows[i] = (mul(invpows[i-1],\
-    \ inv_hashstring_base).calc_mod)\n\n    proc base_pow(n: int): uint =\n      \
-    \  if n >= len(pows):\n            return inner_pow(hashstring_base, n)\n    \
-    \    else:\n            return pows[n]\n\n    proc tohash*(S: int): HashString\
-    \ =\n        result = HashString(hash: uint(S) mod RH_MOD, bpow: hashstring_base,\
-    \ size: 1)\n\n    proc tohash*[T](S: openArray[T]): HashString =\n        var\
-    \ hash = 0u\n        var tmp = 1u\n        for i in countdown(len(S)-1, 0, 1):\n\
-    \            hash = (hash+mul(int(S[i]).tohash.hash, tmp)).calc_mod\n        \
-    \    tmp = mul(tmp, hashstring_base).calc_mod\n        result = HashString(hash:\
-    \ hash, bpow: base_pow(len(S)), size: len(S))\n\n    proc tohash*(S: char): HashString\
-    \ =\n        result = HashString(hash: uint(int(S)), bpow: hashstring_base, size:\
-    \ 1)\n\n    proc get_emptystring_hash*(): HashString =\n        result = HashString(hash:\
-    \ 0u, bpow: 1u, size: 0)\n\n    proc `&`*(L, R: HashString): HashString =\n  \
-    \      result = HashString(hash: (mul(L.hash, R.bpow).calc_mod+R.hash).calc_mod,\
-    \ bpow: mul(L.bpow, R.bpow).calc_mod, size: L.size+R.size)\n\n    proc `==`*(L,\
-    \ R: HashString): bool =\n        return (L.size == R.size) and (L.hash == R.hash)\n\
-    \n    proc len*(H: HashString): int = int(H.size)\n\n    proc `*`*(H: HashString,\
-    \ x: int): HashString =\n        var\n            size = H.size * x\n        \
-    \    bpow = uint(1)\n            tmp_hash = H.hash\n            tmp_b = H.bpow\n\
-    \            hash = uint(0)\n            x = x\n        while x > 0:\n       \
-    \     if x mod 2 != 0:\n                hash = (mul(hash, tmp_b).calc_mod+tmp_hash).calc_mod\n\
-    \                bpow = mul(bpow, tmp_b).calc_mod\n            if x > 1:\n   \
-    \             tmp_hash = (mul(tmp_hash, tmp_b).calc_mod+tmp_hash).calc_mod\n \
-    \               tmp_b = mul(tmp_b, tmp_b).calc_mod\n            x = x shr 1\n\
+    \ = 1\n    import cplib/utils/backwards_index\n    import random\n    type HashString*\
+    \ = object\n        hash*: uint\n        bpow: uint\n        size: int\n    const\
+    \ MASK30 = (1u shl 30) - 1\n    const MASK31 = (1u shl 31) - 1\n    const RH_MOD\
+    \ = (1u shl 61) - 1\n    const POW_CALC = 500000\n\n    randomize()\n\n    proc\
+    \ calc_mod(x: uint): uint =\n        result = (x shr 61) + (x and RH_MOD)\n  \
+    \      if result >= RH_MOD:\n            result -= RH_MOD\n\n    proc mul(a, b:\
+    \ uint): uint =\n        let\n            a_upper = a shr 31\n            a_lower\
+    \ = a and MASK31\n            b_upper = b shr 31\n            b_lower = b and\
+    \ MASK31\n            mid = a_lower * b_upper + a_upper * b_lower\n          \
+    \  mid_upper = mid shr 30\n            mid_lower = mid and MASK30\n        result\
+    \ = a_upper * b_upper * 2 + mid_upper + (mid_lower shl 31) + a_lower * b_lower\n\
+    \n\n    proc inner_pow(a: uint, n: int): uint =\n        var a = a\n        var\
+    \ n = n\n        result = 1\n        while n > 0:\n            if (n and 1) !=\
+    \ 0:\n                result = mul(result, a).calc_mod\n            a = mul(a,\
+    \ a).calc_mod\n            n = n shr 1\n\n    let hashstring_base: uint = rand(129u..(1u\
+    \ shl 30))\n    let inv_hashstring_base: uint = inner_pow(hashstring_base, int(RH_MOD)-2)\n\
+    \    var pows: seq[uint] = newseq[uint](POW_CALC+1)\n    var invpows: seq[uint]\
+    \ = newseq[uint](POW_CALC+1)\n    pows[0] = 1\n    invpows[0] = 1\n    for i in\
+    \ 1..POW_CALC:\n        pows[i] = (mul(pows[i-1], hashstring_base).calc_mod)\n\
+    \        invpows[i] = (mul(invpows[i-1], inv_hashstring_base).calc_mod)\n\n  \
+    \  proc base_pow(n: int): uint =\n        if n >= len(pows):\n            return\
+    \ inner_pow(hashstring_base, n)\n        else:\n            return pows[n]\n\n\
+    \    proc tohash*(S: int): HashString =\n        result = HashString(hash: uint(S)\
+    \ mod RH_MOD, bpow: hashstring_base, size: 1)\n\n    proc tohash*[T](S: openArray[T]):\
+    \ HashString =\n        var hash = 0u\n        var tmp = 1u\n        for i in\
+    \ countdown(len(S)-1, 0, 1):\n            hash = (hash+mul(int(S[i]).tohash.hash,\
+    \ tmp)).calc_mod\n            tmp = mul(tmp, hashstring_base).calc_mod\n     \
+    \   result = HashString(hash: hash, bpow: base_pow(len(S)), size: len(S))\n\n\
+    \    proc tohash*(S: char): HashString =\n        result = HashString(hash: uint(int(S)),\
+    \ bpow: hashstring_base, size: 1)\n\n    proc get_emptystring_hash*(): HashString\
+    \ =\n        result = HashString(hash: 0u, bpow: 1u, size: 0)\n\n    proc `&`*(L,\
+    \ R: HashString): HashString =\n        result = HashString(hash: (mul(L.hash,\
+    \ R.bpow).calc_mod+R.hash).calc_mod, bpow: mul(L.bpow, R.bpow).calc_mod, size:\
+    \ L.size+R.size)\n\n    proc `==`*(L, R: HashString): bool =\n        return (L.size\
+    \ == R.size) and (L.hash == R.hash)\n\n    proc len*(H: HashString): int = int(H.size)\n\
+    \n    proc `*`*(H: HashString, x: int): HashString =\n        var\n          \
+    \  size = H.size * x\n            bpow = uint(1)\n            tmp_hash = H.hash\n\
+    \            tmp_b = H.bpow\n            hash = uint(0)\n            x = x\n \
+    \       while x > 0:\n            if x mod 2 != 0:\n                hash = (mul(hash,\
+    \ tmp_b).calc_mod+tmp_hash).calc_mod\n                bpow = mul(bpow, tmp_b).calc_mod\n\
+    \            if x > 1:\n                tmp_hash = (mul(tmp_hash, tmp_b).calc_mod+tmp_hash).calc_mod\n\
+    \                tmp_b = mul(tmp_b, tmp_b).calc_mod\n            x = x shr 1\n\
     \        return HashString(hash: hash, bpow: bpow, size: size)\n\n    proc removePrefix*(H,\
     \ prefix: HashString): HashString =\n        var hash = (H.hash + (RH_MOD - mul(prefix.hash,\
     \ base_pow(len(H)-len(prefix))).calc_mod)).calc_mod\n        var l = len(H)-len(prefix)\n\
@@ -123,37 +129,40 @@ data:
     \n        return S.R.get_substring(S.l+slice.a, S.l+slice.b+1)\n\n    proc gethash(S:\
     \ RollingHash, slice: HSlice[int, int]): uint =\n        return (S.R.prefixs[(S.l+slice.b+1)]\
     \ + (RH_MOD - mul(S.R.prefixs[S.l+slice.a], base_pow(((S.l+slice.b+1)-(S.l+slice.a)))).calc_mod)).calc_mod\n\
-    \n\n    proc `[]`*(S: RollingHash, idx: int): char =\n        return S.R.S[idx+int(S.l)]\n\
-    \n    proc initRollingHash*(S: openArray[char]): RollingHash =\n        var rolling\
-    \ = RollingHashBase()\n        rolling.S = newString(len(S))\n        for i in\
-    \ 0..<len(S):\n            rolling.S[i] = S[i]\n        rolling.prefixs = newSeq[uint](len(S)+1)\n\
-    \        rolling.prefixs[0] = 0\n        for i in 1..len(S):\n            rolling.prefixs[i]\
-    \ = (mul(rolling.prefixs[i-1], hashstring_base) + uint(int(S[i-1]))).calc_mod()\n\
-    \        rolling.size = (len(S))\n        if len(S) == 0:\n            return\
-    \ RollingHash(R: rolling, l: 0, r: 0)\n        return rolling[0..<len(S)]\n\n\n\
-    \n    converter toHashString*(self: RollingHash): HashString =\n        return\
-    \ HashString(hash: (self.R.prefixs[self.r] + (RH_MOD - mul(self.R.prefixs[self.l],\
-    \ base_pow(self.r-self.l)).calc_mod)).calc_mod, bpow: base_pow(self.r-self.l),\
-    \ size: self.r-self.l)\n\n    proc `$`*(S: RollingHash): string =\n        return\
-    \ S.R.S[S.l..<S.r]\n\n    proc `==`*(S, T: RollingHash): bool =\n        return\
-    \ len(S) == len(T) and (S.R.prefixs[S.r] + (RH_MOD - mul(S.R.prefixs[S.l], base_pow(S.r-S.l)).calc_mod)).calc_mod\
-    \ ==\n            (T.R.prefixs[T.r] + (RH_MOD - mul(T.R.prefixs[T.l], base_pow(T.r-T.l)).calc_mod)).calc_mod\n\
-    \n    proc LCP*(S, T: RollingHash): int =\n        var ok = 0\n        var ng\
-    \ = min(len(S), len(T))+1\n        while ng-ok > 1:\n            var mid = (ok\
-    \ + ng) div 2\n            if S.gethash(0..<mid) == T.gethash(0..<mid): ok = mid\n\
-    \            else: ng = mid\n        return ok\n\n    proc cmp*(S, T: RollingHash):\
-    \ int =\n        var S = S\n        var T = T\n        var flg = 1\n        if\
-    \ len(S) > len(T):\n            swap(S, T)\n            flg *= -1\n        var\
-    \ lcp = LCP(S, T)\n        if len(S) == lcp:\n            if len(S) == len(T):\n\
-    \                return 0\n            else:\n                return -1*flg\n\
-    \        else:\n            if S[lcp] < T[lcp]:\n                return -1*flg\n\
-    \            else:\n                return flg\n\n    proc `<`*(S, T: RollingHash):\
-    \ bool =\n        return cmp(S, T) < 0\n"
-  dependsOn: []
+    \n\n    proc `[]`*(S: RollingHash, idx: int): char {.backwardsIndex.} =\n    \
+    \    return S.R.S[idx+int(S.l)]\n\n    proc initRollingHash*(S: openArray[char]):\
+    \ RollingHash =\n        var rolling = RollingHashBase()\n        rolling.S =\
+    \ newString(len(S))\n        for i in 0..<len(S):\n            rolling.S[i] =\
+    \ S[i]\n        rolling.prefixs = newSeq[uint](len(S)+1)\n        rolling.prefixs[0]\
+    \ = 0\n        for i in 1..len(S):\n            rolling.prefixs[i] = (mul(rolling.prefixs[i-1],\
+    \ hashstring_base) + uint(int(S[i-1]))).calc_mod()\n        rolling.size = (len(S))\n\
+    \        if len(S) == 0:\n            return RollingHash(R: rolling, l: 0, r:\
+    \ 0)\n        return rolling[0..<len(S)]\n\n\n\n    converter toHashString*(self:\
+    \ RollingHash): HashString =\n        return HashString(hash: (self.R.prefixs[self.r]\
+    \ + (RH_MOD - mul(self.R.prefixs[self.l], base_pow(self.r-self.l)).calc_mod)).calc_mod,\
+    \ bpow: base_pow(self.r-self.l), size: self.r-self.l)\n\n    proc `$`*(S: RollingHash):\
+    \ string =\n        return S.R.S[S.l..<S.r]\n\n    proc `==`*(S, T: RollingHash):\
+    \ bool =\n        return len(S) == len(T) and (S.R.prefixs[S.r] + (RH_MOD - mul(S.R.prefixs[S.l],\
+    \ base_pow(S.r-S.l)).calc_mod)).calc_mod ==\n            (T.R.prefixs[T.r] + (RH_MOD\
+    \ - mul(T.R.prefixs[T.l], base_pow(T.r-T.l)).calc_mod)).calc_mod\n\n    proc LCP*(S,\
+    \ T: RollingHash): int =\n        var ok = 0\n        var ng = min(len(S), len(T))+1\n\
+    \        while ng-ok > 1:\n            var mid = (ok + ng) div 2\n           \
+    \ if S.gethash(0..<mid) == T.gethash(0..<mid): ok = mid\n            else: ng\
+    \ = mid\n        return ok\n\n    proc cmp*(S, T: RollingHash): int =\n      \
+    \  var S = S\n        var T = T\n        var flg = 1\n        if len(S) > len(T):\n\
+    \            swap(S, T)\n            flg *= -1\n        var lcp = LCP(S, T)\n\
+    \        if len(S) == lcp:\n            if len(S) == len(T):\n               \
+    \ return 0\n            else:\n                return -1*flg\n        else:\n\
+    \            if S[lcp] < T[lcp]:\n                return -1*flg\n            else:\n\
+    \                return flg\n\n    proc `<`*(S, T: RollingHash): bool =\n    \
+    \    return cmp(S, T) < 0\n"
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/str/hash_string.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/str/hash_string/hash_string_Z_algo_test.nim

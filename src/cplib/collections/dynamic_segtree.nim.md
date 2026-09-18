@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -15,6 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/dynamic_segtree_PARS_test.nim
     title: verify/collections/segtree/dynamic_segtree_PARS_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -27,20 +39,21 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_DYNAMIC_SEGTREE:\n    const CPLIB_COLLECTIONS_DYNAMIC_SEGTREE*\
-    \ = 1\n\n    type\n        DynamicSegmentTreeNode[T] = ref object\n          \
-    \  index: int\n            value, product: T\n            left, right: DynamicSegmentTreeNode[T]\n\
-    \        DynamicSegmentTree*[T] = ref object\n            root: DynamicSegmentTreeNode[T]\n\
-    \            length, nodes: int\n            merge: proc(x: T, y: T): T\n    \
-    \        default: T\n\n    proc initDynamicSegmentTree*[T](n: int, merge: proc(x:\
-    \ T, y: T): T,\n                                   default: T): DynamicSegmentTree[T]\
-    \ =\n        ## [0,n)\u3092\u5358\u4F4D\u5143\u3067\u521D\u671F\u5316\u3057\u307E\
-    \u3059\u3002O(1)\u6642\u9593\u30FB\u7A7A\u9593\u3002merge\u306B\u306F\u30E2\u30CE\
-    \u30A4\u30C9\u306E\u6F14\u7B97\u3092\u6E21\u3057\u307E\u3059\u3002\n        assert\
-    \ n >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
-    \u307E\u3059\"\n        DynamicSegmentTree[T](length: n, merge: merge, default:\
-    \ default)\n\n    proc len*[T](self: DynamicSegmentTree[T]): int =\n        ##\
-    \ \u5EA7\u6A19\u7BC4\u56F2\u306E\u9577\u3055\u3092O(1)\u3067\u8FD4\u3057\u307E\
-    \u3059\u3002\n        self.length\n\n    proc node_count*[T](self: DynamicSegmentTree[T]):\
+    \ = 1\n    import cplib/utils/backwards_index\n\n    type\n        DynamicSegmentTreeNode[T]\
+    \ = ref object\n            index: int\n            value, product: T\n      \
+    \      left, right: DynamicSegmentTreeNode[T]\n        DynamicSegmentTree*[T]\
+    \ = ref object\n            root: DynamicSegmentTreeNode[T]\n            length,\
+    \ nodes: int\n            merge: proc(x: T, y: T): T\n            default: T\n\
+    \n    proc initDynamicSegmentTree*[T](n: int, merge: proc(x: T, y: T): T,\n  \
+    \                                 default: T): DynamicSegmentTree[T] =\n     \
+    \   ## [0,n)\u3092\u5358\u4F4D\u5143\u3067\u521D\u671F\u5316\u3057\u307E\u3059\
+    \u3002O(1)\u6642\u9593\u30FB\u7A7A\u9593\u3002merge\u306B\u306F\u30E2\u30CE\u30A4\
+    \u30C9\u306E\u6F14\u7B97\u3092\u6E21\u3057\u307E\u3059\u3002\n        assert n\
+    \ >= 0, \"n\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        DynamicSegmentTree[T](length: n, merge: merge, default: default)\n\
+    \n    proc len*[T](self: DynamicSegmentTree[T]): int =\n        ## \u5EA7\u6A19\
+    \u7BC4\u56F2\u306E\u9577\u3055\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\n\
+    \        self.length\n\n    proc node_count*[T](self: DynamicSegmentTree[T]):\
     \ int =\n        ## \u4E00\u5EA6\u3067\u3082\u66F4\u65B0\u3057\u305F\u7570\u306A\
     \u308B\u5EA7\u6A19\u306E\u6570\uFF08\u78BA\u4FDD\u3057\u305F\u30CE\u30FC\u30C9\
     \u6570\uFF09\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        self.nodes\n\
@@ -99,32 +112,36 @@ data:
     \ segment: HSlice[int, int]): T =\n        ## \u30B9\u30E9\u30A4\u30B9\u3067\u6307\
     \u5B9A\u3057\u305F\u533A\u9593\u306E\u7A4D\u3092O(log N)\u3067\u8FD4\u3057\u307E\
     \u3059\u3002\n        self.get(segment)\n\n    proc `[]`*[T](self: DynamicSegmentTree[T],\
-    \ index: Natural): T =\n        ## 1\u70B9\u306E\u5024\u3092O(log N)\u3067\u8FD4\
-    \u3057\u307E\u3059\u3002\u672A\u66F4\u65B0\u306E\u5EA7\u6A19\u3067\u306F\u5358\
-    \u4F4D\u5143\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert index < self.length,\
-    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
-    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: index < self.length\"\n\
-    \        var node = self.root\n        while node != nil:\n            if node.index\
-    \ == index:\n                return node.value\n            if index < node.index:\n\
-    \                node = node.left\n            else:\n                node = node.right\n\
-    \        self.default\n\n    proc `[]=`*[T](self: DynamicSegmentTree[T], index:\
-    \ Natural, value: T) =\n        ## 1\u70B9\u3092O(log N)\u3067\u4E0A\u66F8\u304D\
-    \u3057\u307E\u3059\u3002\n        self.update(index, value)\n\n    proc get_all*[T](self:\
-    \ DynamicSegmentTree[T]): T =\n        ## \u5168\u533A\u9593\u306E\u7A4D\u3092\
-    O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002\n        self.product(self.root)\n\n\
-    \    template newDynamicSegWith*(n, merge, default: untyped): untyped =\n    \
-    \    ## l\u3068r\u3092\u4F7F\u3063\u305F\u5F0F\u3092\u6F14\u7B97\u3068\u3057\u3066\
-    \u3001\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\u3092O(1)\u3067\u751F\u6210\
-    \u3057\u307E\u3059\u3002\n        initDynamicSegmentTree[typeof(default)](n,\n\
-    \            proc(l {.inject.}, r {.inject.}: typeof(default)): typeof(default)\
-    \ = merge,\n            default)\n"
-  dependsOn: []
+    \ index: Natural): T {.backwardsIndex.} =\n        ## 1\u70B9\u306E\u5024\u3092\
+    O(log N)\u3067\u8FD4\u3057\u307E\u3059\u3002\u672A\u66F4\u65B0\u306E\u5EA7\u6A19\
+    \u3067\u306F\u5358\u4F4D\u5143\u3092\u8FD4\u3057\u307E\u3059\u3002\n        assert\
+    \ index < self.length, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : index < self.length\"\n        var node = self.root\n        while node != nil:\n\
+    \            if node.index == index:\n                return node.value\n    \
+    \        if index < node.index:\n                node = node.left\n          \
+    \  else:\n                node = node.right\n        self.default\n\n    proc\
+    \ `[]=`*[T](self: DynamicSegmentTree[T], index: Natural, value: T) {.backwardsIndex.}\
+    \ =\n        ## 1\u70B9\u3092O(log N)\u3067\u4E0A\u66F8\u304D\u3057\u307E\u3059\
+    \u3002\n        self.update(index, value)\n\n    proc get_all*[T](self: DynamicSegmentTree[T]):\
+    \ T =\n        ## \u5168\u533A\u9593\u306E\u7A4D\u3092O(1)\u3067\u8FD4\u3057\u307E\
+    \u3059\u3002\n        self.product(self.root)\n\n    template newDynamicSegWith*(n,\
+    \ merge, default: untyped): untyped =\n        ## l\u3068r\u3092\u4F7F\u3063\u305F\
+    \u5F0F\u3092\u6F14\u7B97\u3068\u3057\u3066\u3001\u52D5\u7684\u30BB\u30B0\u30E1\
+    \u30F3\u30C8\u6728\u3092O(1)\u3067\u751F\u6210\u3057\u307E\u3059\u3002\n     \
+    \   initDynamicSegmentTree[typeof(default)](n,\n            proc(l {.inject.},\
+    \ r {.inject.}: typeof(default)): typeof(default) = merge,\n            default)\n"
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/dynamic_segtree.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
   - verify/collections/segtree/dynamic_segtree_PARS_test.nim
   - verify/collections/segtree/dynamic_segtree_PARS_test.nim
   - verify/AI/dynamic_segtree_test.nim

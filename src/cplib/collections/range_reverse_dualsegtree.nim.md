@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -21,9 +27,9 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE:\n    const\
-    \ CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE* = 1\n    import random, sequtils,\
-    \ strutils\n\n    randomize()\n\n    type RangeReverseDualSegmentTreeNode[S, F]\
-    \ {.acyclic.} = ref object\n        left, right: RangeReverseDualSegmentTreeNode[S,\
+    \ CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE* = 1\n    import cplib/utils/backwards_index\n\
+    \    import random, sequtils, strutils\n\n    randomize()\n\n    type RangeReverseDualSegmentTreeNode[S,\
+    \ F] {.acyclic.} = ref object\n        left, right: RangeReverseDualSegmentTreeNode[S,\
     \ F]\n        priority: uint64\n        size: int\n        rev: bool\n       \
     \ value: S\n        lazy: F\n\n    type RangeReverseDualSegmentTree*[S, F] = ref\
     \ object\n        root: RangeReverseDualSegmentTreeNode[S, F]\n        length:\
@@ -172,23 +178,26 @@ data:
     \ F], index: int): S =\n        self.get(index)\n\n    proc `[]`*[S, F](self:\
     \ RangeReverseDualSegmentTree[S, F], index: BackwardsIndex): S =\n        self.get(self.length\
     \ - int(index))\n\n    proc `[]=`*[S, F](self: RangeReverseDualSegmentTree[S,\
-    \ F], index: Natural, value: S) =\n        self.update(index, value)\n\n    iterator\
-    \ items*[S, F](self: RangeReverseDualSegmentTree[S, F]): S =\n        if not self.root.isNil:\n\
-    \            var stack = @[(0, self.root)]\n            while stack.len > 0:\n\
-    \                var (t, node) = stack.pop()\n                node.push(self.mapping,\
-    \ self.composition, self.id)\n                if t == 0:\n                   \
-    \ if not node.right.isNil: stack.add((0, node.right))\n                    stack.add((1,\
-    \ node))\n                    if not node.left.isNil: stack.add((0, node.left))\n\
-    \                else:\n                    yield node.value\n\n    proc toSeq*[S,\
-    \ F](self: RangeReverseDualSegmentTree[S, F]): seq[S] =\n        for x in self:\n\
-    \            result.add(x)\n\n    proc `$`*[S, F](self: RangeReverseDualSegmentTree[S,\
-    \ F]): string =\n        var s: seq[string]\n        for x in self:\n        \
-    \    s.add($x)\n        return s.join(\" \")\n"
-  dependsOn: []
+    \ F], index: Natural, value: S) {.backwardsIndex.} =\n        self.update(index,\
+    \ value)\n\n    iterator items*[S, F](self: RangeReverseDualSegmentTree[S, F]):\
+    \ S =\n        if not self.root.isNil:\n            var stack = @[(0, self.root)]\n\
+    \            while stack.len > 0:\n                var (t, node) = stack.pop()\n\
+    \                node.push(self.mapping, self.composition, self.id)\n        \
+    \        if t == 0:\n                    if not node.right.isNil: stack.add((0,\
+    \ node.right))\n                    stack.add((1, node))\n                   \
+    \ if not node.left.isNil: stack.add((0, node.left))\n                else:\n \
+    \                   yield node.value\n\n    proc toSeq*[S, F](self: RangeReverseDualSegmentTree[S,\
+    \ F]): seq[S] =\n        for x in self:\n            result.add(x)\n\n    proc\
+    \ `$`*[S, F](self: RangeReverseDualSegmentTree[S, F]): string =\n        var s:\
+    \ seq[string]\n        for x in self:\n            s.add($x)\n        return s.join(\"\
+    \ \")\n"
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/range_reverse_dualsegtree.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_reverse_dualsegtree_test.nim

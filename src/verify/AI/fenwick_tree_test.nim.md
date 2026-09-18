@@ -13,6 +13,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/fenwick_avx2.nim
     title: cplib/collections/fenwick_avx2.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -85,14 +91,16 @@ data:
     \    expectAssertion: discard wide.prefix(3)\n    expectAssertion: discard bit.get(1,\
     \ 0)\n    expectAssertion: discard wide.get(1, 0)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/fenwick_avx2.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/fenwick.nim
   - cplib/collections/fenwick.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/fenwick.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/AI/fenwick_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/fenwick_tree_test.nim

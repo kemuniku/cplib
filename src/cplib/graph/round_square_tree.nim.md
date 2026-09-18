@@ -56,12 +56,12 @@ data:
     \u307E\u3059\u3002\u6210\u5206\u5206\u89E3\u306F\u975E\u518D\u5E30\u3067\u3059\
     \u3002\n        result = initRoundSquareTree(initBiconnectedComponents(g))\n"
   dependsOn:
-  - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/graph.nim
-  - cplib/graph/biconnected_components.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/biconnected_components.nim
   isVerificationFile: false
   path: cplib/graph/round_square_tree.nim
   requiredBy: []

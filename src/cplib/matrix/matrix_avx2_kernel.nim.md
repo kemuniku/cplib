@@ -51,6 +51,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_unit_test.nim
     title: verify/matrix/matrix_avx2_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -281,6 +287,8 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim

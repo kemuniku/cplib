@@ -99,6 +99,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/restore_lcs_bitset_test.nim
     title: verify/str/restore_lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -351,11 +357,11 @@ data:
     \u3002\n    result = fuseBlock(body)\n    if result == nil:\n        result =\
     \ newBlockStmt(newCall(bindSym\"fuseSingleStatements\", body))\n"
   dependsOn:
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx512_fuse.nim
@@ -369,6 +375,8 @@ data:
   timestamp: '2026-09-17 21:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/str/restore_lcs_bitset_test.nim
   - verify/str/restore_lcs_bitset_test.nim
   - verify/str/edit_distance_bitset_test.nim

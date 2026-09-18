@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -29,12 +35,14 @@ data:
     \ = initSegmentTree(A, (a, b: int)=>min(a, b), int(1e18))\nfor i in 0..<Q:\n \
     \   var L, R = ii()\n    echo st.get(L, R)\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/collections/segtree/segtree_RMQ_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/segtree_RMQ_test.nim

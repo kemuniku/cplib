@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/private/link_cut_tree_base.nim
     title: cplib/tree/private/link_cut_tree_base.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -33,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
     title: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -115,12 +127,16 @@ data:
   dependsOn:
   - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/tree/link_cut_tree.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim

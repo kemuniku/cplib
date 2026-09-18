@@ -31,6 +31,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -111,18 +117,20 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/compressed_trie.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/graph.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/graph/graph.nim
   - cplib/str/compressed_trie.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 23:59:12+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/compressed_trie_test.nim

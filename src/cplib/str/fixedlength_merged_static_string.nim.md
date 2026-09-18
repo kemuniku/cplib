@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: cplib/str/repeated_static_string.nim
@@ -39,6 +45,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/repeated_static_string_test.nim
     title: verify/AI/repeated_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -51,11 +63,12 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_FIXEDLENGTH_MERGED_STATIC_STRING:\n    const\
-    \ CPLIB_STR_FIXEDLENGTH_MERGED_STATIC_STRING* = 1\n    import cplib/str/static_string\n\
-    \    import cplib/collections/staticRMQ\n\n    type FixedLengthMergedStaticString*[T;N:static[int]]\
-    \ = object\n        ## N is the number of concatenated ranges.\n        base :\
-    \ StaticStringBase[T]\n        L : array[N,int32]\n        R : array[N,int32]\n\
-    \n    proc setRange[T;N:static[int]](S:var FixedLengthMergedStaticString[T,N],i:int,base:StaticStringBase[T],l,r:int32)\
+    \ CPLIB_STR_FIXEDLENGTH_MERGED_STATIC_STRING* = 1\n    import cplib/utils/backwards_index\n\
+    \    import cplib/str/static_string\n    import cplib/collections/staticRMQ\n\n\
+    \    type FixedLengthMergedStaticString*[T;N:static[int]] = object\n        ##\
+    \ N is the number of concatenated ranges.\n        base : StaticStringBase[T]\n\
+    \        L : array[N,int32]\n        R : array[N,int32]\n\n    proc setRange[T;N:static[int]](S:var\
+    \ FixedLengthMergedStaticString[T,N],i:int,base:StaticStringBase[T],l,r:int32)\
     \ {.inline.}=\n        assert l <= r, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\
     \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
     \u308A\u307E\u3059: l <= r\"\n        assert i in 0..<N, \"\u6307\u5B9A\u3057\u305F\
@@ -100,12 +113,12 @@ data:
     \ = right.base\n            for i in 0..<M:\n                merged.L[N+i] = right.L[i]\n\
     \                merged.R[N+i] = right.R[i]\n            merged\n\n    proc len*[T;N:static[int]](S:FixedLengthMergedStaticString[T,N]):int=\n\
     \        ## O(N), where N is the number of concatenated ranges.\n        for i\
-    \ in 0..<N:\n            result += int(S.R[i]-S.L[i])\n\n    proc `[]`*[T;N:static[int]](S:FixedLengthMergedStaticString[T,N],idx:int):T=\n\
-    \        assert idx in 0..<len(S), \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\
-    \u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
-    \u307E\u3059: idx in 0 ..< len(S)\"\n        var relativeIndex = idx\n       \
-    \ for i in 0..<N:\n            let chunkLength = int(S.R[i]-S.L[i])\n        \
-    \    if relativeIndex < chunkLength:\n                return S.base.S[S.L[i]+relativeIndex]\n\
+    \ in 0..<N:\n            result += int(S.R[i]-S.L[i])\n\n    proc `[]`*[T;N:static[int]](S:FixedLengthMergedStaticString[T,N],idx:int):T\
+    \ {.backwardsIndex.} =\n        assert idx in 0..<len(S), \"\u6307\u5B9A\u3057\
+    \u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: idx in 0 ..< len(S)\"\n        var relativeIndex\
+    \ = idx\n        for i in 0..<N:\n            let chunkLength = int(S.R[i]-S.L[i])\n\
+    \            if relativeIndex < chunkLength:\n                return S.base.S[S.L[i]+relativeIndex]\n\
     \            relativeIndex -= chunkLength\n        assert false, \"\u6307\u5B9A\
     \u3057\u305F\u6DFB\u5B57\u306B\u5BFE\u5FDC\u3059\u308B\u90E8\u5206\u6587\u5B57\
     \u5217\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\"\n        return default(T)\n\
@@ -169,19 +182,23 @@ data:
     \   result &= $S.base.S[j]\n"
   dependsOn:
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
   requiredBy:
   - cplib/str/repeated_static_string.nim
   - cplib/str/repeated_static_string.nim
-  timestamp: '2026-09-17 19:04:23+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
   - verify/AI/fixedlength_merged_static_string_test.nim
   - verify/AI/fixedlength_merged_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim

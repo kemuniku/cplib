@@ -103,28 +103,28 @@ data:
     \  modint_montgomery.setMod(modulus)\n  check[modint_barrett]()\n  check[modint_montgomery]()\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/fps/bostan_mori.nim
   - cplib/math/inv_gcd.nim
-  - cplib/fps/product_tree.nim
-  - cplib/fps/product_tree.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/product_tree.nim
   - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/modint.nim
+  - cplib/fps/bostan_mori.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/sparse_formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
   - cplib/fps/sparse_formal_power_series.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/product_tree.nim
   isVerificationFile: true
   path: verify/AI/fps_composite_modulus_test.nim
   requiredBy: []

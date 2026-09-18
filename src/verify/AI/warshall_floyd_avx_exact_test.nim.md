@@ -83,14 +83,14 @@ data:
     \   a[1][2] = 70\n    a[2][3] = -80\n    for i in 4..<n:\n        for j in 4..<n:\n\
     \            a[i][j] = 0\n    check(a, 100)\n\necho \"Hello World\"\n\n\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_avx.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx_exact_test.nim
   requiredBy: []

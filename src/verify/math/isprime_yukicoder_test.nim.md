@@ -48,10 +48,10 @@ data:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim

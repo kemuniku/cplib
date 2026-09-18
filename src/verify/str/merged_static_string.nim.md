@@ -38,6 +38,12 @@ data:
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   - icon: ':heavy_check_mark:'
@@ -80,23 +86,25 @@ data:
     \ cmp(tmp2,tmp2) == 0\n\n"
   dependsOn:
   - cplib/str/merged_static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/str/static_string.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/static_string.nim
   - cplib/str/merged_static_string.nim
-  - cplib/utils/constants.nim
-  - cplib/str/suffix_array.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/static_string.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:28:31+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/merged_static_string.nim

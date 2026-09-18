@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy:
   - icon: ':warning:'
     path: verify/str/merged_static_string.nim
@@ -33,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/merged_static_string_test.nim
     title: verify/AI/merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -45,38 +57,38 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_MERGED_STATIC_STRING:\n    const CPLIB_STR_MERGED_STATIC_STRING*\
-    \ = 1\n    import cplib/str/static_string\n    import cplib/collections/staticRMQ\n\
-    \n    type MergedStaticString*[T] = object\n        base: StaticStringBase[T]\n\
-    \        L: seq[int32]\n        R: seq[int32]\n\n    proc addRange[T](S: var MergedStaticString[T],\
-    \ base: StaticStringBase[T], l, r: int32) {.inline.} =\n        assert l <= r,\
-    \ \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\
-    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: l <= r\"\n     \
-    \   if S.L.len == 0:\n            S.base = base\n        else:\n            assert\
-    \ S.base == base, \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\
-    \u5217\u304B\u3089\u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\
-    \u3042\u308A\u307E\u3059\"\n        S.L.add(l)\n        S.R.add(r)\n\n    proc\
-    \ lcpRange[T](base: StaticStringBase[T], sl, sr, tl, tr: int32): int {.inline.}\
-    \ =\n        result = min(int(sr-sl), int(tr-tl))\n        if result == 0:\n \
-    \           return\n        var l = base.RSA[sl]\n        var r = base.RSA[tl]\n\
-    \        if l > r:\n            swap(l, r)\n        elif l == r:\n           \
-    \ return\n        result = min(result, base.RMQ.query(l, r))\n\n    proc `&`*[Element](S,\
-    \ T: StaticString[Element]): MergedStaticString[Element] =\n        assert S.base\
-    \ == T.base, \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\
-    \u304B\u3089\u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\
-    \u308A\u307E\u3059\"\n        result.base = S.base\n        result.L = @[S.l,\
-    \ T.l]\n        result.R = @[S.r, T.r]\n    proc `&=`*[T](S: var MergedStaticString[T],\
-    \ value: StaticString[T]) =\n        S.addRange(value.base, value.l, value.r)\n\
-    \    proc `&`*[T](S: MergedStaticString[T], value: StaticString[T]): MergedStaticString[T]\
-    \ =\n        result = S\n        result &= value\n\n\n\n    proc initMergedStaticString*[T](S:\
-    \ openArray[StaticString[T]]): MergedStaticString[T] =\n        if len(S) > 0:\n\
-    \            result.base = S[0].base\n        result.L = newSeq[int32](len(S))\n\
-    \        result.R = newSeq[int32](len(S))\n        if len(S) == 0:\n         \
-    \   return\n        result.L[0] = S[0].l\n        result.R[0] = S[0].r\n     \
-    \   for i in 1..<len(S):\n            assert result.base == S[i].base, \"\u6587\
+    \ = 1\n    import cplib/utils/backwards_index\n    import cplib/str/static_string\n\
+    \    import cplib/collections/staticRMQ\n\n    type MergedStaticString*[T] = object\n\
+    \        base: StaticStringBase[T]\n        L: seq[int32]\n        R: seq[int32]\n\
+    \n    proc addRange[T](S: var MergedStaticString[T], base: StaticStringBase[T],\
+    \ l, r: int32) {.inline.} =\n        assert l <= r, \"\u6307\u5B9A\u3057\u305F\
+    \u533A\u9593\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: l <= r\"\n        if S.L.len == 0:\n   \
+    \         S.base = base\n        else:\n            assert S.base == base, \"\u6587\
     \u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\u304B\u3089\u4F5C\
     \u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
-    \"\n            result.L[i] = S[i].l\n            result.R[i] = S[i].r\n\n   \
-    \ proc initMergedStaticString*[T](S: StaticString[T], ranges: openArray[(int,\
+    \"\n        S.L.add(l)\n        S.R.add(r)\n\n    proc lcpRange[T](base: StaticStringBase[T],\
+    \ sl, sr, tl, tr: int32): int {.inline.} =\n        result = min(int(sr-sl), int(tr-tl))\n\
+    \        if result == 0:\n            return\n        var l = base.RSA[sl]\n \
+    \       var r = base.RSA[tl]\n        if l > r:\n            swap(l, r)\n    \
+    \    elif l == r:\n            return\n        result = min(result, base.RMQ.query(l,\
+    \ r))\n\n    proc `&`*[Element](S, T: StaticString[Element]): MergedStaticString[Element]\
+    \ =\n        assert S.base == T.base, \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\
+    \u5E95\u6587\u5B57\u5217\u304B\u3089\u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result.base = S.base\n \
+    \       result.L = @[S.l, T.l]\n        result.R = @[S.r, T.r]\n    proc `&=`*[T](S:\
+    \ var MergedStaticString[T], value: StaticString[T]) =\n        S.addRange(value.base,\
+    \ value.l, value.r)\n    proc `&`*[T](S: MergedStaticString[T], value: StaticString[T]):\
+    \ MergedStaticString[T] =\n        result = S\n        result &= value\n\n\n\n\
+    \    proc initMergedStaticString*[T](S: openArray[StaticString[T]]): MergedStaticString[T]\
+    \ =\n        if len(S) > 0:\n            result.base = S[0].base\n        result.L\
+    \ = newSeq[int32](len(S))\n        result.R = newSeq[int32](len(S))\n        if\
+    \ len(S) == 0:\n            return\n        result.L[0] = S[0].l\n        result.R[0]\
+    \ = S[0].r\n        for i in 1..<len(S):\n            assert result.base == S[i].base,\
+    \ \"\u6587\u5B57\u5217\u306F\u540C\u3058\u57FA\u5E95\u6587\u5B57\u5217\u304B\u3089\
+    \u4F5C\u6210\u3055\u308C\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n            result.L[i] = S[i].l\n            result.R[i] = S[i].r\n\
+    \n    proc initMergedStaticString*[T](S: StaticString[T], ranges: openArray[(int,\
     \ int)]): MergedStaticString[T] =\n        result.base = S.base\n        result.L\
     \ = newSeq[int32](len(ranges))\n        result.R = newSeq[int32](len(ranges))\n\
     \        for i, (l, r) in ranges:\n            assert 0 <= l and l <= r and r\
@@ -87,10 +99,10 @@ data:
     \ int =\n        ## \u8A08\u7B97\u91CF\u304C O(\u7D50\u5408\u6570) \u3067\u3042\
     \u308B\u70B9\u306B\u6CE8\u610F\uFF01\n        for i in 0..<len(S.L):\n       \
     \     result += int(S.R[i]-S.L[i])\n\n    proc `[]`*[T](S: MergedStaticString[T],\
-    \ idx: int): T =\n        ## \u8A08\u7B97\u91CF\u304C O(\u7D50\u5408\u6570) \u3067\
-    \u3042\u308B\u70B9\u306B\u6CE8\u610F\uFF01\n        var offset = idx\n       \
-    \ for i in 0..<len(S.L):\n            let rangeLength = int(S.R[i]-S.L[i])\n \
-    \           if offset < rangeLength:\n                return S.base.S[S.L[i]+offset.int32()]\n\
+    \ idx: int): T {.backwardsIndex.} =\n        ## \u8A08\u7B97\u91CF\u304C O(\u7D50\
+    \u5408\u6570) \u3067\u3042\u308B\u70B9\u306B\u6CE8\u610F\uFF01\n        var offset\
+    \ = idx\n        for i in 0..<len(S.L):\n            let rangeLength = int(S.R[i]-S.L[i])\n\
+    \            if offset < rangeLength:\n                return S.base.S[S.L[i]+offset.int32()]\n\
     \            offset -= rangeLength\n        raise newException(IndexDefect, \"\
     index out of bounds\")\n\n    proc `[]`*[T](S: MergedStaticString[T], slice: HSlice[int,\
     \ int]): MergedStaticString[T] =\n        var tmp = 0\n        for i in 0..<len(S.L):\n\
@@ -150,19 +162,23 @@ data:
     \                    first = false\n                    result &= $S.base.S[j]\n"
   dependsOn:
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/merged_static_string.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-09-17 19:04:23+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
   - verify/AI/merged_static_string_test.nim
   - verify/AI/merged_static_string_test.nim
 documentation_of: cplib/str/merged_static_string.nim

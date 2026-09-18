@@ -37,6 +37,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -203,21 +209,23 @@ data:
     \          doAssert product == expected\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/functional_graph_with_lazy_op.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph_with_op.nim
   isVerificationFile: true
   path: verify/AI/functional_graph_lazy_op_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/functional_graph_lazy_op_test.nim

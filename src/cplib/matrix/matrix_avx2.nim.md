@@ -43,6 +43,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy:
   - icon: ':warning:'
     path: verify/matrix/linear_algebra/field_algorithms_unit.nim
@@ -75,6 +81,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_unit_test.nim
     title: verify/matrix/matrix_avx2_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -87,184 +99,185 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "import hashes\nimport cplib/modint/modint\n\nwhen not declared CPLIB_MATRIX_MATRIX_AVX2:\n\
-    \    const CPLIB_MATRIX_MATRIX_AVX2* = 1\n    import cplib/matrix/matrix_avx2_kernel\n\
-    \    export matrixProductKernel, matrixProductMontgomeryKernel, matrixJoinValues,\
-    \ matrixConvertValues, matrixWriteRow\n\n    proc matrixProduct*(a, b: openArray[uint32],\
-    \ n, m, k: int,\n            modulus: uint32 = 998244353u32): seq[uint32] =\n\
-    \        ## \u884C\u512A\u5148\u306E\u4E00\u6B21\u5143\u914D\u5217\u306E\u884C\
-    \u5217\u7A4D\u3092AVX2\u3067\u8A08\u7B97\u3059\u308B\u3002\n        doAssert modulus\
-    \ > 0 and modulus < (1u32 shl 30) and\n            (modulus and 1u32) == 1, \"\
-    \u6CD5\u306F1\u4EE5\u4E0A2^30\u672A\u6E80\u306E\u5947\u6570\u3067\u3042\u308B\u5FC5\
-    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert n >= 0 and m >= 0 and\
-    \ k >= 0, \"\u884C\u5217\u306E\u884C\u6570\u3068\u5217\u6570\u306F\u975E\u8CA0\
+    \    const CPLIB_MATRIX_MATRIX_AVX2* = 1\n    import cplib/utils/backwards_index\n\
+    \    import cplib/matrix/matrix_avx2_kernel\n    export matrixProductKernel, matrixProductMontgomeryKernel,\
+    \ matrixJoinValues, matrixConvertValues, matrixWriteRow\n\n    proc matrixProduct*(a,\
+    \ b: openArray[uint32], n, m, k: int,\n            modulus: uint32 = 998244353u32):\
+    \ seq[uint32] =\n        ## \u884C\u512A\u5148\u306E\u4E00\u6B21\u5143\u914D\u5217\
+    \u306E\u884C\u5217\u7A4D\u3092AVX2\u3067\u8A08\u7B97\u3059\u308B\u3002\n     \
+    \   doAssert modulus > 0 and modulus < (1u32 shl 30) and\n            (modulus\
+    \ and 1u32) == 1, \"\u6CD5\u306F1\u4EE5\u4E0A2^30\u672A\u6E80\u306E\u5947\u6570\
     \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert\
-    \ n <= high(cint).int and m <= high(cint).int and\n            k <= high(cint).int,\
-    \ \"\u884C\u5217\u306E\u884C\u6570\u3068\u5217\u6570\u306Fint32\u306E\u7BC4\u56F2\
-    \u306B\u53CE\u307E\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \ n >= 0 and m >= 0 and k >= 0, \"\u884C\u5217\u306E\u884C\u6570\u3068\u5217\u6570\
+    \u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        doAssert n <= high(cint).int and m <= high(cint).int and\n       \
+    \     k <= high(cint).int, \"\u884C\u5217\u306E\u884C\u6570\u3068\u5217\u6570\u306F\
+    int32\u306E\u7BC4\u56F2\u306B\u53CE\u307E\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        doAssert n == 0 or m <= high(int) div n, \"\u884C\u5217\u306E\
+    \u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\
+    \u3048\u3066\u3044\u307E\u3059\"\n        doAssert m == 0 or k <= high(int) div\
+    \ m, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\
+    \u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        doAssert n ==\
+    \ 0 or k <= high(int) div n, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\
+    \u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\
+    \"\n        doAssert a.len == n * m and b.len == m * k, \"\u884C\u5217\u306E\u30B5\
+    \u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\"\n        for value in\
+    \ a:\n            assert value < modulus, \"\u884C\u5217\u306E\u5404\u8981\u7D20\
+    \u306F\u6CD5\u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        for value in b:\n            assert value < modulus, \"\u884C\
+    \u5217\u306E\u5404\u8981\u7D20\u306F\u6CD5\u672A\u6E80\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = newSeq[uint32](n * k)\n\
+    \        if n == 0 or m == 0 or k == 0 or modulus == 1:\n            return\n\
+    \        matrixProductKernel(unsafeAddr a[0], unsafeAddr b[0], addr result[0],\n\
+    \            n.cint, m.cint, k.cint, modulus)\n\n    proc matrixProduct*(a, b:\
+    \ openArray[seq[uint32]],\n            modulus: uint32 = 998244353u32): seq[seq[uint32]]\
+    \ =\n        ## \u4E8C\u6B21\u5143\u914D\u5217\u306E\u884C\u5217\u7A4D\u3092AVX2\u3067\
+    \u8A08\u7B97\u3059\u308B\u3002\n        let n = a.len\n        let m = if n ==\
+    \ 0: 0 else: a[0].len\n        let k = if b.len == 0: 0 else: b[0].len\n     \
+    \   doAssert m == b.len, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\
+    \u3057\u307E\u305B\u3093\"\n        for row in a:\n            doAssert row.len\
+    \ == m, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\u3055\u306F\u7B49\u3057\u3044\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        for row in b:\n        \
+    \    doAssert row.len == k, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\u3055\
+    \u306F\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
     \ doAssert n == 0 or m <= high(int) div n, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\
     \u304C\u8868\u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\
     \u307E\u3059\"\n        doAssert m == 0 or k <= high(int) div m, \"\u884C\u5217\
     \u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\
-    \u8D85\u3048\u3066\u3044\u307E\u3059\"\n        doAssert n == 0 or k <= high(int)\
-    \ div n, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\
-    \u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        doAssert a.len\
-    \ == n * m and b.len == m * k, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\
-    \u81F4\u3057\u307E\u305B\u3093\"\n        for value in a:\n            assert\
-    \ value < modulus, \"\u884C\u5217\u306E\u5404\u8981\u7D20\u306F\u6CD5\u672A\u6E80\
-    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        for value\
-    \ in b:\n            assert value < modulus, \"\u884C\u5217\u306E\u5404\u8981\u7D20\
-    \u306F\u6CD5\u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
-    \u3059\"\n        result = newSeq[uint32](n * k)\n        if n == 0 or m == 0\
-    \ or k == 0 or modulus == 1:\n            return\n        matrixProductKernel(unsafeAddr\
-    \ a[0], unsafeAddr b[0], addr result[0],\n            n.cint, m.cint, k.cint,\
-    \ modulus)\n\n    proc matrixProduct*(a, b: openArray[seq[uint32]],\n        \
-    \    modulus: uint32 = 998244353u32): seq[seq[uint32]] =\n        ## \u4E8C\u6B21\
-    \u5143\u914D\u5217\u306E\u884C\u5217\u7A4D\u3092AVX2\u3067\u8A08\u7B97\u3059\u308B\
-    \u3002\n        let n = a.len\n        let m = if n == 0: 0 else: a[0].len\n \
-    \       let k = if b.len == 0: 0 else: b[0].len\n        doAssert m == b.len,\
-    \ \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\
-    \"\n        for row in a:\n            doAssert row.len == m, \"\u884C\u5217\u306E\
-    \u5404\u884C\u306E\u9577\u3055\u306F\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\
-    \u308A\u307E\u3059\"\n        for row in b:\n            doAssert row.len == k,\
-    \ \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\u3055\u306F\u7B49\u3057\u3044\u5FC5\
-    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert n == 0 or m <= high(int)\
-    \ div n, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\
-    \u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        doAssert m ==\
-    \ 0 or k <= high(int) div m, \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\
-    \u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\
-    \"\n        var flatA = newSeq[uint32](n * m)\n        var flatB = newSeq[uint32](m\
-    \ * k)\n        for i in 0 ..< n:\n            if m > 0:\n                copyMem(addr\
-    \ flatA[i * m], unsafeAddr a[i][0], m * sizeof(uint32))\n        for i in 0 ..<\
-    \ m:\n            if k > 0:\n                copyMem(addr flatB[i * k], unsafeAddr\
-    \ b[i][0], k * sizeof(uint32))\n        let flatC = matrixProduct(flatA, flatB,\
-    \ n, m, k, modulus)\n        result = newSeq[seq[uint32]](n)\n        for i in\
-    \ 0 ..< n:\n            result[i] = newSeq[uint32](k)\n            if k > 0:\n\
-    \                copyMem(addr result[i][0], unsafeAddr flatC[i * k], k * sizeof(uint32))\n\
-    \n\n    type MatrixRowStorage[T] = ref object\n        values: seq[T]\n\n    when\
-    \ defined(gcDestructors):\n        type MatrixStorage[T] = MatrixRowStorage[T]\n\
-    \    else:\n        # refc\u3067\u306F\u6A19\u6E96\u306Eseq\u30B3\u30D4\u30FC\u3092\
-    \u4F7F\u3044\u3001\u72EC\u81EA=copy\u306B\u3088\u308BGC\u30EB\u30FC\u30C8\u767B\
-    \u9332\u6B20\u843D\u3092\u907F\u3051\u308B\u3002\n        type MatrixStorage[T]\
-    \ = object\n            values: seq[T]\n\n    type\n        Matrix*[T] = object\n\
-    \            ## refc\u306E\u4EE3\u5165\u306F\u6A19\u6E96seq\u3068\u540C\u3058\u3002\
-    \u884C\u30D3\u30E5\u30FC\u304B\u3089\u3082\u72EC\u7ACB\u3055\u305B\u308B\u5834\
-    \u5408\u306Fclone\u3092\u4F7F\u3046\u3002\n            storage: MatrixStorage[T]\n\
-    \            height, width: int\n            modulus: uint32\n        MatrixRow*[T]\
+    \u8D85\u3048\u3066\u3044\u307E\u3059\"\n        var flatA = newSeq[uint32](n *\
+    \ m)\n        var flatB = newSeq[uint32](m * k)\n        for i in 0 ..< n:\n \
+    \           if m > 0:\n                copyMem(addr flatA[i * m], unsafeAddr a[i][0],\
+    \ m * sizeof(uint32))\n        for i in 0 ..< m:\n            if k > 0:\n    \
+    \            copyMem(addr flatB[i * k], unsafeAddr b[i][0], k * sizeof(uint32))\n\
+    \        let flatC = matrixProduct(flatA, flatB, n, m, k, modulus)\n        result\
+    \ = newSeq[seq[uint32]](n)\n        for i in 0 ..< n:\n            result[i] =\
+    \ newSeq[uint32](k)\n            if k > 0:\n                copyMem(addr result[i][0],\
+    \ unsafeAddr flatC[i * k], k * sizeof(uint32))\n\n\n    type MatrixRowStorage[T]\
+    \ = ref object\n        values: seq[T]\n\n    when defined(gcDestructors):\n \
+    \       type MatrixStorage[T] = MatrixRowStorage[T]\n    else:\n        # refc\u3067\
+    \u306F\u6A19\u6E96\u306Eseq\u30B3\u30D4\u30FC\u3092\u4F7F\u3044\u3001\u72EC\u81EA\
+    =copy\u306B\u3088\u308BGC\u30EB\u30FC\u30C8\u767B\u9332\u6B20\u843D\u3092\u907F\
+    \u3051\u308B\u3002\n        type MatrixStorage[T] = object\n            values:\
+    \ seq[T]\n\n    type\n        Matrix*[T] = object\n            ## refc\u306E\u4EE3\
+    \u5165\u306F\u6A19\u6E96seq\u3068\u540C\u3058\u3002\u884C\u30D3\u30E5\u30FC\u304B\
+    \u3089\u3082\u72EC\u7ACB\u3055\u305B\u308B\u5834\u5408\u306Fclone\u3092\u4F7F\u3046\
+    \u3002\n            storage: MatrixStorage[T]\n            height, width: int\n\
+    \            modulus: uint32\n        MatrixRow*[T] = object\n            storage:\
+    \ MatrixRowStorage[T]\n            offset, length: int\n        MutableMatrixRow*[T]\
     \ = object\n            storage: MatrixRowStorage[T]\n            offset, length:\
-    \ int\n        MutableMatrixRow*[T] = object\n            storage: MatrixRowStorage[T]\n\
-    \            offset, length: int\n\n    when defined(gcDestructors):\n       \
-    \ proc `=copy`[T](destination: var Matrix[T], source: Matrix[T]) =\n         \
-    \   ## \u884C\u30D3\u30E5\u30FC\u306F\u8A18\u61B6\u57DF\u3092\u5171\u6709\u3057\
-    \u3001\u884C\u5217\u305D\u306E\u3082\u306E\u306E\u4EE3\u5165\u306F\u5024\u3092\
-    \u30B3\u30D4\u30FC\u3059\u308B\u3002\n            destination.height = source.height\n\
-    \            destination.width = source.width\n            destination.modulus\
-    \ = source.modulus\n            if destination.storage == source.storage:\n  \
-    \              return\n            if source.storage.isNil:\n                destination.storage\
-    \ = nil\n            else:\n                var storage = MatrixStorage[T](values:\
-    \ newSeq[T](source.storage.values.len))\n                for i, value in source.storage.values:\n\
-    \                    storage.values[i] = value\n                destination.storage\
-    \ = storage\n\n    proc rowStorage[T](a: Matrix[T]): MatrixRowStorage[T] {.inline.}\
-    \ =\n        ## \u884C\u30D3\u30E5\u30FC\u306E\u5BFF\u547D\u4E2D\u3001\u5143\u306E\
-    \u9023\u7D9A\u914D\u5217\u3092\u5171\u6709\u3057\u3066\u4FDD\u6301\u3059\u308B\
-    \u3002O(1)\u3002\n        when defined(gcDestructors):\n            result = a.storage\n\
-    \        else:\n            new(result)\n            shallowCopy(result.values,\
-    \ a.storage.values)\n\n    proc matrixModulus[T](): uint32 {.inline.} =\n    \
-    \    ## \u5229\u7528\u53EF\u80FD\u306Amodint\u578B\u3068\u6CD5\u3092\u691C\u67FB\
-    \u3059\u308B\u3002\n        when T isnot MontgomeryModint and T isnot BarrettModint:\n\
-    \            {.error: \"matrix_avx2.Matrix requires MontgomeryModint or BarrettModint\"\
-    .}\n        static:\n            doAssert sizeof(T) == sizeof(uint32), \"\u8981\
-    \u7D20\u578B\u306E\u30B5\u30A4\u30BA\u306Fuint32\u3068\u7B49\u3057\u3044\u5FC5\
-    \u8981\u304C\u3042\u308A\u307E\u3059\"\n            doAssert alignof(T) == alignof(uint32),\
-    \ \"\u8981\u7D20\u578B\u306E\u30A2\u30E9\u30A4\u30F3\u30E1\u30F3\u30C8\u306Fuint32\u3068\
-    \u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result\
-    \ = T.umod.uint32\n        doAssert result > 0 and result < (1u32 shl 30) and\
-    \ (result and 1) == 1,\n            \"\u6CD5\u306F1\u4EE5\u4E0A2^30\u672A\u6E80\
-    \u306E\u5947\u6570\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
-    \"\n\n    proc matrixSize(h, w: int): int {.inline.} =\n        ## \u5BF8\u6CD5\
-    \u3068\u9023\u7D9A\u914D\u5217\u306E\u8981\u7D20\u6570\u3092\u691C\u67FB\u3059\
-    \u308B\u3002\n        doAssert h >= 0 and w >= 0 and h <= high(cint).int and w\
-    \ <= high(cint).int,\n            \"\u884C\u5217\u306E\u884C\u6570\u3068\u5217\
-    \u6570\u306F0\u4EE5\u4E0Aint32\u306E\u6700\u5927\u5024\u4EE5\u4E0B\u3067\u3042\
-    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        doAssert h == 0 or\
-    \ w <= (high(int) div sizeof(uint32)) div h,\n            \"\u884C\u5217\u306E\
-    \u30B5\u30A4\u30BA\u304C\u8868\u73FE\u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\
-    \u3048\u3066\u3044\u307E\u3059\"\n        h * w\n\n    proc checkModulus[T](a:\
-    \ Matrix[T]) {.inline.} =\n        ## dynamic modint\u306E\u6CD5\u304C\u884C\u5217\
-    \u4F5C\u6210\u5F8C\u306B\u5909\u66F4\u3055\u308C\u3066\u3044\u306A\u3044\u3053\
-    \u3068\u3092\u78BA\u8A8D\u3059\u308B\u3002\n        let modulus = matrixModulus[T]()\n\
-    \        doAssert a.modulus == 0 or a.modulus == modulus, \"\u884C\u5217\u306E\
-    \u4F5C\u6210\u5F8C\u306B\u6CD5\u3092\u5909\u66F4\u3059\u308B\u3053\u3068\u306F\
-    \u3067\u304D\u307E\u305B\u3093\"\n\n    proc scalar[T](value: T or SomeInteger):\
-    \ T {.inline.} =\n        ## \u6574\u6570\u3092\u6B63\u898F\u5316\u3057\u3066\u304B\
-    \u3089modint\u3078\u5909\u63DB\u3059\u308B\u3002\n        when value is T:\n \
-    \           value\n        elif value is SomeUnsignedInt:\n            T.init((value.uint64\
-    \ mod T.umod.uint64).int)\n        else:\n            T.init((value.int64 mod\
-    \ T.umod.int64).int)\n\n    proc initMatrix*[T](h, w: int, value: T): Matrix[T]\
-    \ =\n        ## h\u884Cw\u5217\u306E\u9023\u7D9A\u914D\u5217\u3092\u78BA\u4FDD\
-    \u3057\u3001\u5168\u8981\u7D20\u3092\u6307\u5B9A\u3057\u305F\u5024\u3067\u521D\
-    \u671F\u5316\u3059\u308B\u3002\n        let modulus = matrixModulus[T]()\n   \
-    \     let size = matrixSize(h, w)\n        result = Matrix[T](height: h, width:\
-    \ w, modulus: modulus,\n            storage: MatrixStorage[T](values: newSeq[T](size)))\n\
-    \        let v = scalar[T](value)\n        for x in result.storage.values.mitems:\n\
-    \            x = v\n\n    proc initMatrix*[T](h, w: int, value: SomeInteger):\
-    \ Matrix[T] =\n        ## \u6574\u6570\u3092\u6CD5\u3067\u6B63\u898F\u5316\u3057\
-    \u3066\u5168\u8981\u7D20\u3092\u521D\u671F\u5316\u3059\u308B\u3002\n        bind\
-    \ initMatrix\n        discard matrixModulus[T]()\n        initMatrix[T](h, w,\
-    \ scalar[T](value))\n\n    proc initMatrix*[T](h, w: int): Matrix[T] =\n     \
-    \   ## h\u884Cw\u5217\u306E\u96F6\u884C\u5217\u3092\u4F5C\u308B\u3002\n      \
-    \  let modulus = matrixModulus[T]()\n        let size = matrixSize(h, w)\n   \
-    \     Matrix[T](height: h, width: w, modulus: modulus,\n            storage: MatrixStorage[T](values:\
-    \ newSeq[T](size)))\n\n    proc initMatrix*[T](h, w: int, values: sink seq[T]):\
-    \ Matrix[T] =\n        ## \u884C\u512A\u5148\u306E\u914D\u5217\u3092\u884C\u5217\
-    \u3078\u79FB\u3057\u3001\u4E0D\u8981\u306A\u8981\u7D20\u30B3\u30D4\u30FC\u3092\
-    \u907F\u3051\u308B\u3002\n        let modulus = matrixModulus[T]()\n        doAssert\
-    \ values.len == matrixSize(h, w), \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\
-    \u4E00\u81F4\u3057\u307E\u305B\u3093\"\n        result = Matrix[T](height: h,\
-    \ width: w, modulus: modulus,\n            storage: MatrixStorage[T](values: values))\n\
-    \n    proc initMatrix*[T](h, w: int, values: openArray[uint32]): Matrix[T] =\n\
-    \        ## \u6B63\u898F\u5316\u6E08\u307F\u306E\u516C\u958B\u5024\u304B\u3089\
-    modint\u306E\u9023\u7D9A\u884C\u5217\u3092\u4F5C\u308B\u3002\n        result =\
-    \ initMatrix[T](h, w)\n        doAssert values.len == result.storage.values.len,\
-    \ \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\
-    \"\n        for value in values:\n            assert value < result.modulus, \"\
-    \u884C\u5217\u306E\u5404\u8981\u7D20\u306F\u6CD5\u672A\u6E80\u3067\u3042\u308B\
-    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        if values.len > 0:\n   \
-    \         matrixConvertValues(unsafeAddr values[0],\n                cast[ptr\
-    \ uint32](addr result.storage.values[0]), values.len,\n                result.modulus,\
-    \ T is MontgomeryModint)\n\n    proc initMatrixOwned[T](h, w: int, values: var\
-    \ seq[uint32]): Matrix[T] =\n        ## \u6240\u6709\u6A29\u3092\u6301\u3064\u516C\
-    \u958B\u5024\u914D\u5217\u3092\u6D88\u8CBB\u3057\u3001\u540C\u3058\u9818\u57DF\
-    \u3092modint\u914D\u5217\u3068\u3057\u3066\u4F7F\u3046\u3002\n        let modulus\
-    \ = matrixModulus[T]()\n        doAssert values.len == matrixSize(h, w), \"\u884C\
-    \u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\"\n \
-    \       for value in values:\n            assert value < modulus, \"\u884C\u5217\
+    \ int\n\n    when defined(gcDestructors):\n        proc `=copy`[T](destination:\
+    \ var Matrix[T], source: Matrix[T]) =\n            ## \u884C\u30D3\u30E5\u30FC\
+    \u306F\u8A18\u61B6\u57DF\u3092\u5171\u6709\u3057\u3001\u884C\u5217\u305D\u306E\
+    \u3082\u306E\u306E\u4EE3\u5165\u306F\u5024\u3092\u30B3\u30D4\u30FC\u3059\u308B\
+    \u3002\n            destination.height = source.height\n            destination.width\
+    \ = source.width\n            destination.modulus = source.modulus\n         \
+    \   if destination.storage == source.storage:\n                return\n      \
+    \      if source.storage.isNil:\n                destination.storage = nil\n \
+    \           else:\n                var storage = MatrixStorage[T](values: newSeq[T](source.storage.values.len))\n\
+    \                for i, value in source.storage.values:\n                    storage.values[i]\
+    \ = value\n                destination.storage = storage\n\n    proc rowStorage[T](a:\
+    \ Matrix[T]): MatrixRowStorage[T] {.inline.} =\n        ## \u884C\u30D3\u30E5\u30FC\
+    \u306E\u5BFF\u547D\u4E2D\u3001\u5143\u306E\u9023\u7D9A\u914D\u5217\u3092\u5171\
+    \u6709\u3057\u3066\u4FDD\u6301\u3059\u308B\u3002O(1)\u3002\n        when defined(gcDestructors):\n\
+    \            result = a.storage\n        else:\n            new(result)\n    \
+    \        shallowCopy(result.values, a.storage.values)\n\n    proc matrixModulus[T]():\
+    \ uint32 {.inline.} =\n        ## \u5229\u7528\u53EF\u80FD\u306Amodint\u578B\u3068\
+    \u6CD5\u3092\u691C\u67FB\u3059\u308B\u3002\n        when T isnot MontgomeryModint\
+    \ and T isnot BarrettModint:\n            {.error: \"matrix_avx2.Matrix requires\
+    \ MontgomeryModint or BarrettModint\".}\n        static:\n            doAssert\
+    \ sizeof(T) == sizeof(uint32), \"\u8981\u7D20\u578B\u306E\u30B5\u30A4\u30BA\u306F\
+    uint32\u3068\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n \
+    \           doAssert alignof(T) == alignof(uint32), \"\u8981\u7D20\u578B\u306E\
+    \u30A2\u30E9\u30A4\u30F3\u30E1\u30F3\u30C8\u306Fuint32\u3068\u7B49\u3057\u3044\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result = T.umod.uint32\n\
+    \        doAssert result > 0 and result < (1u32 shl 30) and (result and 1) ==\
+    \ 1,\n            \"\u6CD5\u306F1\u4EE5\u4E0A2^30\u672A\u6E80\u306E\u5947\u6570\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n    proc matrixSize(h,\
+    \ w: int): int {.inline.} =\n        ## \u5BF8\u6CD5\u3068\u9023\u7D9A\u914D\u5217\
+    \u306E\u8981\u7D20\u6570\u3092\u691C\u67FB\u3059\u308B\u3002\n        doAssert\
+    \ h >= 0 and w >= 0 and h <= high(cint).int and w <= high(cint).int,\n       \
+    \     \"\u884C\u5217\u306E\u884C\u6570\u3068\u5217\u6570\u306F0\u4EE5\u4E0Aint32\u306E\
+    \u6700\u5927\u5024\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        doAssert h == 0 or w <= (high(int) div sizeof(uint32))\
+    \ div h,\n            \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u8868\u73FE\
+    \u53EF\u80FD\u306A\u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n \
+    \       h * w\n\n    proc checkModulus[T](a: Matrix[T]) {.inline.} =\n       \
+    \ ## dynamic modint\u306E\u6CD5\u304C\u884C\u5217\u4F5C\u6210\u5F8C\u306B\u5909\
+    \u66F4\u3055\u308C\u3066\u3044\u306A\u3044\u3053\u3068\u3092\u78BA\u8A8D\u3059\
+    \u308B\u3002\n        let modulus = matrixModulus[T]()\n        doAssert a.modulus\
+    \ == 0 or a.modulus == modulus, \"\u884C\u5217\u306E\u4F5C\u6210\u5F8C\u306B\u6CD5\
+    \u3092\u5909\u66F4\u3059\u308B\u3053\u3068\u306F\u3067\u304D\u307E\u305B\u3093\
+    \"\n\n    proc scalar[T](value: T or SomeInteger): T {.inline.} =\n        ##\
+    \ \u6574\u6570\u3092\u6B63\u898F\u5316\u3057\u3066\u304B\u3089modint\u3078\u5909\
+    \u63DB\u3059\u308B\u3002\n        when value is T:\n            value\n      \
+    \  elif value is SomeUnsignedInt:\n            T.init((value.uint64 mod T.umod.uint64).int)\n\
+    \        else:\n            T.init((value.int64 mod T.umod.int64).int)\n\n   \
+    \ proc initMatrix*[T](h, w: int, value: T): Matrix[T] =\n        ## h\u884Cw\u5217\
+    \u306E\u9023\u7D9A\u914D\u5217\u3092\u78BA\u4FDD\u3057\u3001\u5168\u8981\u7D20\
+    \u3092\u6307\u5B9A\u3057\u305F\u5024\u3067\u521D\u671F\u5316\u3059\u308B\u3002\
+    \n        let modulus = matrixModulus[T]()\n        let size = matrixSize(h, w)\n\
+    \        result = Matrix[T](height: h, width: w, modulus: modulus,\n         \
+    \   storage: MatrixStorage[T](values: newSeq[T](size)))\n        let v = scalar[T](value)\n\
+    \        for x in result.storage.values.mitems:\n            x = v\n\n    proc\
+    \ initMatrix*[T](h, w: int, value: SomeInteger): Matrix[T] =\n        ## \u6574\
+    \u6570\u3092\u6CD5\u3067\u6B63\u898F\u5316\u3057\u3066\u5168\u8981\u7D20\u3092\
+    \u521D\u671F\u5316\u3059\u308B\u3002\n        bind initMatrix\n        discard\
+    \ matrixModulus[T]()\n        initMatrix[T](h, w, scalar[T](value))\n\n    proc\
+    \ initMatrix*[T](h, w: int): Matrix[T] =\n        ## h\u884Cw\u5217\u306E\u96F6\
+    \u884C\u5217\u3092\u4F5C\u308B\u3002\n        let modulus = matrixModulus[T]()\n\
+    \        let size = matrixSize(h, w)\n        Matrix[T](height: h, width: w, modulus:\
+    \ modulus,\n            storage: MatrixStorage[T](values: newSeq[T](size)))\n\n\
+    \    proc initMatrix*[T](h, w: int, values: sink seq[T]): Matrix[T] =\n      \
+    \  ## \u884C\u512A\u5148\u306E\u914D\u5217\u3092\u884C\u5217\u3078\u79FB\u3057\
+    \u3001\u4E0D\u8981\u306A\u8981\u7D20\u30B3\u30D4\u30FC\u3092\u907F\u3051\u308B\
+    \u3002\n        let modulus = matrixModulus[T]()\n        doAssert values.len\
+    \ == matrixSize(h, w), \"\u884C\u5217\u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\
+    \u3057\u307E\u305B\u3093\"\n        result = Matrix[T](height: h, width: w, modulus:\
+    \ modulus,\n            storage: MatrixStorage[T](values: values))\n\n    proc\
+    \ initMatrix*[T](h, w: int, values: openArray[uint32]): Matrix[T] =\n        ##\
+    \ \u6B63\u898F\u5316\u6E08\u307F\u306E\u516C\u958B\u5024\u304B\u3089modint\u306E\
+    \u9023\u7D9A\u884C\u5217\u3092\u4F5C\u308B\u3002\n        result = initMatrix[T](h,\
+    \ w)\n        doAssert values.len == result.storage.values.len, \"\u884C\u5217\
+    \u306E\u30B5\u30A4\u30BA\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\"\n       \
+    \ for value in values:\n            assert value < result.modulus, \"\u884C\u5217\
     \u306E\u5404\u8981\u7D20\u306F\u6CD5\u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\
-    \u304C\u3042\u308A\u307E\u3059\"\n        result = Matrix[T](height: h, width:\
-    \ w, modulus: modulus,\n            storage: MatrixStorage[T]())\n        # \u4E21\
-    modint\u306F\u53C2\u7167\u3092\u542B\u307E\u306A\u3044uint32\u30D5\u30A3\u30FC\
-    \u30EB\u30C91\u500B\u3002\u578B\u3092\u5408\u308F\u305B\u3066\u304B\u3089move\u3059\
-    \u308B\u3002\n        result.storage.values = move(cast[ptr seq[T]](addr values)[])\n\
-    \        when T is MontgomeryModint:\n            if result.storage.values.len\
-    \ > 0:\n                let data = cast[ptr uint32](addr result.storage.values[0])\n\
-    \                matrixConvertValues(data, data, result.storage.values.len, modulus,\
-    \ true)\n\n    template initMatrix*[T](h, w: int, values: seq[uint32]): untyped\
-    \ =\n        ## \u4E00\u6642\u914D\u5217\u306F\u30B3\u30D4\u30FC\u305B\u305A\u53D6\
-    \u308A\u8FBC\u307F\u3001\u518D\u5229\u7528\u3059\u308B\u914D\u5217\u306F\u901A\
-    \u5E38\u306E\u5024\u30B3\u30D4\u30FC\u3067\u4FDD\u8B77\u3059\u308B\u3002\n   \
-    \     block:\n            let rows = h\n            let columns = w\n        \
-    \    var owned: seq[uint32] = values\n            initMatrixOwned[T](rows, columns,\
-    \ owned)\n\n    proc initMatrix*[T](values: openArray[seq[T]]): Matrix[T] =\n\
-    \        ## \u4E8C\u6B21\u5143\u914D\u5217\u3092\u9023\u7D9A\u914D\u7F6E\u306E\
-    \u884C\u5217\u3078\u30B3\u30D4\u30FC\u3059\u308B\u3002\n        let h = values.len\n\
-    \        let w = if h == 0: 0 else: values[0].len\n        result = initMatrix[T](h,\
-    \ w)\n        for i, row in values:\n            doAssert row.len == w, \"\u884C\
-    \u5217\u306E\u5404\u884C\u306E\u9577\u3055\u306F\u7B49\u3057\u3044\u5FC5\u8981\
-    \u304C\u3042\u308A\u307E\u3059\"\n            for j, value in row:\n         \
-    \       result.storage.values[i * w + j] = value\n\n    proc clone*[T](a: Matrix[T]):\
-    \ Matrix[T] =\n        ## \u884C\u30D3\u30E5\u30FC\u3084let\u4EE3\u5165\u306E\u5171\
-    \u6709\u306B\u3088\u3089\u306A\u3044\u72EC\u7ACB\u3057\u305F\u884C\u5217\u3092\
-    \u4F5C\u308B\u3002O(h*w)\u3002\n        checkModulus(a)\n        result = initMatrix[T](a.height,\
-    \ a.width)\n        for i in 0 ..< a.height * a.width:\n            result.storage.values[i]\
+    \u304C\u3042\u308A\u307E\u3059\"\n        if values.len > 0:\n            matrixConvertValues(unsafeAddr\
+    \ values[0],\n                cast[ptr uint32](addr result.storage.values[0]),\
+    \ values.len,\n                result.modulus, T is MontgomeryModint)\n\n    proc\
+    \ initMatrixOwned[T](h, w: int, values: var seq[uint32]): Matrix[T] =\n      \
+    \  ## \u6240\u6709\u6A29\u3092\u6301\u3064\u516C\u958B\u5024\u914D\u5217\u3092\
+    \u6D88\u8CBB\u3057\u3001\u540C\u3058\u9818\u57DF\u3092modint\u914D\u5217\u3068\
+    \u3057\u3066\u4F7F\u3046\u3002\n        let modulus = matrixModulus[T]()\n   \
+    \     doAssert values.len == matrixSize(h, w), \"\u884C\u5217\u306E\u30B5\u30A4\
+    \u30BA\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\"\n        for value in values:\n\
+    \            assert value < modulus, \"\u884C\u5217\u306E\u5404\u8981\u7D20\u306F\
+    \u6CD5\u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        result = Matrix[T](height: h, width: w, modulus: modulus,\n      \
+    \      storage: MatrixStorage[T]())\n        # \u4E21modint\u306F\u53C2\u7167\u3092\
+    \u542B\u307E\u306A\u3044uint32\u30D5\u30A3\u30FC\u30EB\u30C91\u500B\u3002\u578B\
+    \u3092\u5408\u308F\u305B\u3066\u304B\u3089move\u3059\u308B\u3002\n        result.storage.values\
+    \ = move(cast[ptr seq[T]](addr values)[])\n        when T is MontgomeryModint:\n\
+    \            if result.storage.values.len > 0:\n                let data = cast[ptr\
+    \ uint32](addr result.storage.values[0])\n                matrixConvertValues(data,\
+    \ data, result.storage.values.len, modulus, true)\n\n    template initMatrix*[T](h,\
+    \ w: int, values: seq[uint32]): untyped =\n        ## \u4E00\u6642\u914D\u5217\
+    \u306F\u30B3\u30D4\u30FC\u305B\u305A\u53D6\u308A\u8FBC\u307F\u3001\u518D\u5229\
+    \u7528\u3059\u308B\u914D\u5217\u306F\u901A\u5E38\u306E\u5024\u30B3\u30D4\u30FC\
+    \u3067\u4FDD\u8B77\u3059\u308B\u3002\n        block:\n            let rows = h\n\
+    \            let columns = w\n            var owned: seq[uint32] = values\n  \
+    \          initMatrixOwned[T](rows, columns, owned)\n\n    proc initMatrix*[T](values:\
+    \ openArray[seq[T]]): Matrix[T] =\n        ## \u4E8C\u6B21\u5143\u914D\u5217\u3092\
+    \u9023\u7D9A\u914D\u7F6E\u306E\u884C\u5217\u3078\u30B3\u30D4\u30FC\u3059\u308B\
+    \u3002\n        let h = values.len\n        let w = if h == 0: 0 else: values[0].len\n\
+    \        result = initMatrix[T](h, w)\n        for i, row in values:\n       \
+    \     doAssert row.len == w, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\u3055\
+    \u306F\u7B49\u3057\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n       \
+    \     for j, value in row:\n                result.storage.values[i * w + j] =\
+    \ value\n\n    proc clone*[T](a: Matrix[T]): Matrix[T] =\n        ## \u884C\u30D3\
+    \u30E5\u30FC\u3084let\u4EE3\u5165\u306E\u5171\u6709\u306B\u3088\u3089\u306A\u3044\
+    \u72EC\u7ACB\u3057\u305F\u884C\u5217\u3092\u4F5C\u308B\u3002O(h*w)\u3002\n   \
+    \     checkModulus(a)\n        result = initMatrix[T](a.height, a.width)\n   \
+    \     for i in 0 ..< a.height * a.width:\n            result.storage.values[i]\
     \ = a.storage.values[i]\n\n    proc toMatrix*[T](values: openArray[seq[T]]): Matrix[T]\
     \ =\n        ## \u4E8C\u6B21\u5143\u914D\u5217\u3092\u884C\u5217\u3078\u5909\u63DB\
     \u3059\u308B\u3002\n        bind initMatrix\n        initMatrix(values)\n\n  \
@@ -300,32 +313,33 @@ data:
     \ {.inline.} =\n        ## \u5143\u306E\u884C\u5217\u3092\u66F8\u304D\u63DB\u3048\
     \u3089\u308C\u308B\u884C\u30D3\u30E5\u30FC\u3092\u8FD4\u3059\u3002\n        checkIndex(r,\
     \ a.height)\n        MutableMatrixRow[T](storage: rowStorage(a), offset: r * a.width,\
-    \ length: a.width)\n    proc `[]`*[T](row: MatrixRow[T], column: int): T {.inline.}\
-    \ =\n        ## \u884C\u30D3\u30E5\u30FC\u306E\u8981\u7D20\u3092\u8AAD\u307F\u53D6\
-    \u308B\u3002\n        checkIndex(column, row.length)\n        row.storage.values[row.offset\
-    \ + column]\n    proc `[]`*[T](row: MutableMatrixRow[T], column: int): var T {.inline.}\
-    \ =\n        ## \u884C\u30D3\u30E5\u30FC\u304B\u3089\u5143\u306E\u8981\u7D20\u3078\
-    \u306E\u53C2\u7167\u3092\u8FD4\u3059\u3002\n        checkIndex(column, row.length)\n\
-    \        row.storage.values[row.offset + column]\n    proc `[]=`*[T](row: MutableMatrixRow[T],\
-    \ column: int, value: T or SomeInteger) {.inline.} =\n        ## \u884C\u30D3\u30E5\
+    \ length: a.width)\n    proc len*[T](row: MatrixRow[T] or MutableMatrixRow[T]):\
+    \ int {.inline.} =\n        ## \u884C\u30D3\u30E5\u30FC\u306E\u5217\u6570\u3092\
+    \u8FD4\u3059\u3002\n        row.length\n    proc `[]`*[T](row: MatrixRow[T], column:\
+    \ int): T {.inline, backwardsIndex.} =\n        ## \u884C\u30D3\u30E5\u30FC\u306E\
+    \u8981\u7D20\u3092\u8AAD\u307F\u53D6\u308B\u3002\n        checkIndex(column, row.length)\n\
+    \        row.storage.values[row.offset + column]\n    proc `[]`*[T](row: MutableMatrixRow[T],\
+    \ column: int): var T {.inline, backwardsIndex.} =\n        ## \u884C\u30D3\u30E5\
+    \u30FC\u304B\u3089\u5143\u306E\u8981\u7D20\u3078\u306E\u53C2\u7167\u3092\u8FD4\
+    \u3059\u3002\n        checkIndex(column, row.length)\n        row.storage.values[row.offset\
+    \ + column]\n    proc `[]=`*[T](row: MutableMatrixRow[T], column: int, value:\
+    \ T or SomeInteger) {.inline, backwardsIndex.} =\n        ## \u884C\u30D3\u30E5\
     \u30FC\u3092\u901A\u3057\u3066\u5143\u306E\u884C\u5217\u3078\u4EE3\u5165\u3059\
     \u308B\u3002\n        checkIndex(column, row.length)\n        row.storage.values[row.offset\
-    \ + column] = scalar[T](value)\n    proc len*[T](row: MatrixRow[T] or MutableMatrixRow[T]):\
-    \ int {.inline.} =\n        ## \u884C\u30D3\u30E5\u30FC\u306E\u5217\u6570\u3092\
-    \u8FD4\u3059\u3002\n        row.length\n    iterator items*[T](row: MatrixRow[T]\
-    \ or MutableMatrixRow[T]): T =\n        ## \u884C\u306E\u8981\u7D20\u3092\u5DE6\
-    \u304B\u3089\u9806\u306B\u5217\u6319\u3059\u308B\u3002\n        for i in 0 ..<\
-    \ row.length:\n            yield row.storage.values[row.offset + i]\n    iterator\
-    \ pairs*[T](row: MatrixRow[T] or MutableMatrixRow[T]): (int, T) =\n        ##\
-    \ \u884C\u306E\u5217\u756A\u53F7\u3068\u8981\u7D20\u3092\u5217\u6319\u3059\u308B\
-    \u3002\n        for i in 0 ..< row.length:\n            yield (i, row.storage.values[row.offset\
-    \ + i])\n    iterator mitems*[T](row: MutableMatrixRow[T]): var T =\n        ##\
-    \ \u884C\u306E\u5404\u8981\u7D20\u3092\u5909\u66F4\u53EF\u80FD\u306A\u53C2\u7167\
-    \u3068\u3057\u3066\u5217\u6319\u3059\u308B\u3002\n        for i in 0 ..< row.length:\n\
-    \            yield row.storage.values[row.offset + i]\n    proc toSeq*[T](row:\
-    \ MatrixRow[T] or MutableMatrixRow[T]): seq[T] =\n        ## \u884C\u30D3\u30E5\
-    \u30FC\u3092\u72EC\u7ACB\u3057\u305F\u914D\u5217\u3078\u30B3\u30D4\u30FC\u3059\
-    \u308B\u3002\n        result = newSeq[T](row.length)\n        for i in 0 ..< row.length:\n\
+    \ + column] = scalar[T](value)\n    iterator items*[T](row: MatrixRow[T] or MutableMatrixRow[T]):\
+    \ T =\n        ## \u884C\u306E\u8981\u7D20\u3092\u5DE6\u304B\u3089\u9806\u306B\
+    \u5217\u6319\u3059\u308B\u3002\n        for i in 0 ..< row.length:\n         \
+    \   yield row.storage.values[row.offset + i]\n    iterator pairs*[T](row: MatrixRow[T]\
+    \ or MutableMatrixRow[T]): (int, T) =\n        ## \u884C\u306E\u5217\u756A\u53F7\
+    \u3068\u8981\u7D20\u3092\u5217\u6319\u3059\u308B\u3002\n        for i in 0 ..<\
+    \ row.length:\n            yield (i, row.storage.values[row.offset + i])\n   \
+    \ iterator mitems*[T](row: MutableMatrixRow[T]): var T =\n        ## \u884C\u306E\
+    \u5404\u8981\u7D20\u3092\u5909\u66F4\u53EF\u80FD\u306A\u53C2\u7167\u3068\u3057\
+    \u3066\u5217\u6319\u3059\u308B\u3002\n        for i in 0 ..< row.length:\n   \
+    \         yield row.storage.values[row.offset + i]\n    proc toSeq*[T](row: MatrixRow[T]\
+    \ or MutableMatrixRow[T]): seq[T] =\n        ## \u884C\u30D3\u30E5\u30FC\u3092\
+    \u72EC\u7ACB\u3057\u305F\u914D\u5217\u3078\u30B3\u30D4\u30FC\u3059\u308B\u3002\
+    \n        result = newSeq[T](row.length)\n        for i in 0 ..< row.length:\n\
     \            result[i] = row.storage.values[row.offset + i]\n    proc join*[T](row:\
     \ MatrixRow[T] or MutableMatrixRow[T], sep: string = \"\"): string =\n       \
     \ ## \u884C\u306E\u5024\u3092\u6307\u5B9A\u3057\u305F\u533A\u5207\u308A\u6587\u5B57\
@@ -576,20 +590,22 @@ data:
     \ reduced.determinant,\n            matrixModulus[T](), T is MontgomeryModint,\
     \ true)\n"
   dependsOn:
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/utils/backwards_index.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2.nim
   requiredBy:
@@ -597,9 +613,11 @@ data:
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim

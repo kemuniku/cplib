@@ -13,6 +13,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/fastio.nim
     title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -36,14 +42,16 @@ data:
     \     if t == 0:\n            bit.add(l, r)\n        else:\n            answers.add(bit.get(l,\
     \ r))\n    if answers.len > 0:\n        print(*answers, sep=\"\\n\")\n\nmain()\n"
   dependsOn:
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/fenwick_avx2.nim
+  - cplib/utils/backwards_index.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
+  - cplib/collections/fenwick_avx2.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:06:55+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/fenwick_tree_avx2_test.nim

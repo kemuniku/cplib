@@ -189,7 +189,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/staticbitset_avx2.nim
       title: cplib/collections/staticbitset_avx2.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/staticbitset_avx512.nim
       title: cplib/collections/staticbitset_avx512.nim
     - icon: ':heavy_check_mark:'
@@ -379,6 +379,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dynamic_bipartite.nim
       title: cplib/graph/dynamic_bipartite.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/euler_tour.nim
+      title: cplib/graph/euler_tour.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/functional_graph.nim
       title: cplib/graph/functional_graph.nim
@@ -770,6 +773,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/area_of_union_of_rectangles.nim
       title: cplib/utils/area_of_union_of_rectangles.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/backwards_index.nim
+      title: cplib/utils/backwards_index.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/binary_search.nim
       title: cplib/utils/binary_search.nim
@@ -1489,6 +1495,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/euler_phi_test.nim
       title: verify/AI/euler_phi_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/euler_tour_test.nim
+      title: verify/AI/euler_tour_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/exp_modint_test.nim
       title: verify/AI/exp_modint_test.nim
@@ -2975,6 +2984,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/area_of_union_of_rectangles_test.nim
       title: verify/utils/area_of_union_of_rectangles_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/backwards_index_collections_test.nim
+      title: verify/utils/backwards_index_collections_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/backwards_index_simd_test.nim
+      title: verify/utils/backwards_index_simd_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/backwards_index_test.nim
+      title: verify/utils/backwards_index_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/binary_search_float_test.nim
       title: verify/utils/binary_search_float_test.nim

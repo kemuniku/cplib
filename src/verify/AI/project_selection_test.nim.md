@@ -113,10 +113,10 @@ data:
     \ high(int64), high(int64))\n    opt.add_cost(0, true, 1)\n    opt.force(0, true)\n\
     \    expectError(OverflowDefect): discard opt.solve()\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/maxflow.nim
-  - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
   - cplib/utils/project_selection.nim
+  - cplib/graph/maxflow.nim
+  - cplib/graph/maxflow.nim
   isVerificationFile: true
   path: verify/AI/project_selection_test.nim
   requiredBy: []

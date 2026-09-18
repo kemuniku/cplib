@@ -42,8 +42,8 @@ data:
     \ = true\n        assert rejected\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
+  - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/AI/powmod_test.nim

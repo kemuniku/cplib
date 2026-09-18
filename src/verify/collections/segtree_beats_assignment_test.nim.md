@@ -20,6 +20,12 @@ data:
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   - icon: ':heavy_check_mark:'
@@ -62,17 +68,19 @@ data:
     \ == max(a)\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/math/int128.nim
-  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
   - cplib/math/int128.nim
+  - cplib/math/int128.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_beats_template.nim
   isVerificationFile: true
   path: verify/collections/segtree_beats_assignment_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree_beats_assignment_test.nim

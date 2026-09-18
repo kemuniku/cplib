@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -40,12 +46,14 @@ data:
     \ fail: false),\n  f + g,\n  0\n)\nseg2.apply(0, 2, 5)\nassert seg2.get(0, 2).sum\
     \ == 15\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/segtree_beats_test.nim

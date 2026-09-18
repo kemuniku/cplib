@@ -79,23 +79,23 @@ data:
     \ \")\n"
   dependsOn:
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/ntt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/fps/relaxed_exp_of_formal_power_series_test.nim
   requiredBy: []

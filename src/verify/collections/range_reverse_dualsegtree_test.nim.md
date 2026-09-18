@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/range_reverse_dualsegtree.nim
     title: cplib/collections/range_reverse_dualsegtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -49,12 +55,14 @@ data:
     \ * g.a, b: f.a * g.b + f.b),\n    (a: 1, b: 0)\n)\ninitializedBySizeTemplate.apply(0,\
     \ 3, (a: 4, b: 2))\nassert initializedBySizeTemplate.toSeq == @[6, 6, 6]\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_dualsegtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_dualsegtree.nim
   isVerificationFile: true
   path: verify/collections/range_reverse_dualsegtree_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_reverse_dualsegtree_test.nim

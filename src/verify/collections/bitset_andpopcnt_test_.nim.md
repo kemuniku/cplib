@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/bitset.nim
     title: cplib/collections/bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -29,12 +35,14 @@ data:
     var ans = 0\nfor i in 0..<(N-1):\n    for j in (i+1)..<N:\n        if A[i][j]:\n\
     \            ans += andpopcount(A[i],A[j])\necho (ans div 3)"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/bitset.nim
   - cplib/collections/bitset.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/bitset_andpopcnt_test_.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:30:30+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/bitset_andpopcnt_test_.nim

@@ -47,12 +47,12 @@ data:
     \ = stdin.readLine.parseInt\nfor _ in 0..<t: solve()\n"
   dependsOn:
   - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/primefactor.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
-  - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
   isVerificationFile: false
   path: verify/math/factorize_table_abc284d_test_.nim

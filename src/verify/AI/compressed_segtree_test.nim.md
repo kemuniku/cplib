@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -130,16 +136,18 @@ data:
     \    let st = newCompressedSegWith(coords, l + r, 0)\n    doAssert st[9474] ==\
     \ 0\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/compressed_segtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/collections/compressed_segtree.nim
-  - cplib/collections/compressed_segtree.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: true
   path: verify/AI/compressed_segtree_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:00:20+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/compressed_segtree_test.nim

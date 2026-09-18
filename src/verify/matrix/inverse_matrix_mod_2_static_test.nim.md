@@ -43,10 +43,10 @@ data:
   dependsOn:
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/inverse_matrix_mod_2_static_test.nim
   requiredBy: []

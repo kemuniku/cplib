@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lazysegtree.nim
     title: cplib/collections/lazysegtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -152,16 +158,18 @@ data:
     \    doAssert $st == \"X YZ z\"\n    st.apply(\"m\"..\"z\", 'Q')\n    doAssert\
     \ st.get_all() == \"XQQQ\"\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/compressed_lazysegtree.nim
-  - cplib/collections/compressed_lazysegtree.nim
-  - cplib/collections/lazysegtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/compressed_lazysegtree.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/collections/compressed_lazysegtree.nim
   isVerificationFile: true
   path: verify/AI/compressed_lazysegtree_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:00:20+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/compressed_lazysegtree_test.nim

@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -30,12 +36,14 @@ data:
     \ b: int)=>a xor b, 0)\nfor i in 0..<Q:\n    var T, X, Y = ii()\n    if T == 1:\n\
     \        st[X-1] ^= Y\n    else:\n        echo st.get(X-1, Y)\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
   - cplib/collections/segtree_var.nim
   isVerificationFile: false
   path: verify/collections/segtree_var/segtree_xor1_test_.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/segtree_var/segtree_xor1_test_.nim

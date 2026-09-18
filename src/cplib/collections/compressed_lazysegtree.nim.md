@@ -13,6 +13,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lazysegtree.nim
     title: cplib/collections/lazysegtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -281,14 +287,16 @@ data:
     \ default, mapping, composition, id,\n            (proc(x: typeof(coords[0])):\
     \ typeof(default))(nil))\n"
   dependsOn:
-  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree.nim
-  - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree.nim
   isVerificationFile: false
   path: cplib/collections/compressed_lazysegtree.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:00:20+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/compressed_lazysegtree_test.nim

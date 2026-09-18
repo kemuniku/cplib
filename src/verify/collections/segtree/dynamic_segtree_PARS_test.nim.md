@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/dynamic_segtree.nim
     title: cplib/collections/dynamic_segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -30,12 +36,14 @@ data:
     \    let b = ii()\n    if t == 0:\n        st[a] = st[a] + b\n    else:\n    \
     \    echo st.get(a, b)\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
   isVerificationFile: true
   path: verify/collections/segtree/dynamic_segtree_PARS_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree/dynamic_segtree_PARS_test.nim

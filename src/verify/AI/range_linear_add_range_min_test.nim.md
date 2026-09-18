@@ -13,6 +13,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -62,14 +68,16 @@ data:
     \ a[i] += 99 * i + 9_999_999\n    apply(seg, a, 1, 128, -1_000_000, -1_000_000_000_000.int)\n\
     \    checkAll(seg, a)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/range_linear_add_range_min.nim
+  - cplib/math/int128.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/int128.nim
   - cplib/collections/range_linear_add_range_min.nim
   isVerificationFile: true
   path: verify/AI/range_linear_add_range_min_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/range_linear_add_range_min_test.nim

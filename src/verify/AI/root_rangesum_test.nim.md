@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/root_rangesum.nim
     title: cplib/collections/root_rangesum.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -73,12 +79,14 @@ data:
 
     '
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/root_rangesum.nim
   - cplib/collections/root_rangesum.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/root_rangesum_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/root_rangesum_test.nim

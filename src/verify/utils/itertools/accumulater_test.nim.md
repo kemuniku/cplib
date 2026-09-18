@@ -41,9 +41,9 @@ data:
     \nfor i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[l]-a[r]"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/utils/itertools.nim
   - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
   isVerificationFile: true

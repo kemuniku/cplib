@@ -39,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/waveletmatrix_test.nim
     title: verify/collections/waveletmatrix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,6 +90,8 @@ data:
   timestamp: '2026-09-14 23:35:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/AI/waveletmatrix_fenwick_test.nim

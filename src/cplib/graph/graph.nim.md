@@ -63,6 +63,12 @@ data:
     path: cplib/graph/dynamic_bipartite.nim
     title: cplib/graph/dynamic_bipartite.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/euler_tour.nim
+    title: cplib/graph/euler_tour.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/euler_tour.nim
+    title: cplib/graph/euler_tour.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
   - icon: ':heavy_check_mark:'
@@ -555,6 +561,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/dynamic_bipartite_test.nim
     title: verify/AI/dynamic_bipartite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/euler_tour_test.nim
+    title: verify/AI/euler_tour_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/euler_tour_test.nim
+    title: verify/AI/euler_tour_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/functional_graph_lazy_op_test.nim
     title: verify/AI/functional_graph_lazy_op_test.nim
@@ -1461,6 +1473,8 @@ data:
   - cplib/graph/dijkstra.nim
   - cplib/graph/warshall_floyd.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/graph/euler_tour.nim
+  - cplib/graph/euler_tour.nim
   - cplib/graph/general_matching.nim
   - cplib/graph/general_matching.nim
   - cplib/graph/bipartite_graph.nim
@@ -1616,6 +1630,8 @@ data:
   - verify/AI/static_top_tree_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - verify/AI/euler_tour_test.nim
+  - verify/AI/euler_tour_test.nim
   - verify/AI/aho_corasick_test.nim
   - verify/AI/aho_corasick_test.nim
   - verify/AI/dynamic_bipartite_test.nim

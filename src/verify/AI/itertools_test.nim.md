@@ -95,9 +95,9 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/utils/itertools.nim
   - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
   isVerificationFile: true

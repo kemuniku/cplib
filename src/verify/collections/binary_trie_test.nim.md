@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/binary_trie.nim
     title: cplib/collections/binary_trie.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -30,12 +36,14 @@ data:
     \   elif t == 1:\n        if x in S:\n            S.excl(x)\n    else:\n     \
     \   stdout.writeLine S.get_kth(0,x) xor x\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
   isVerificationFile: true
   path: verify/collections/binary_trie_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/binary_trie_test.nim

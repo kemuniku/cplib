@@ -25,6 +25,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -213,18 +219,20 @@ data:
     \        rest -= first\n        if rest > 0 and not consume_cycle(0,rest):\n \
     \           return used\n        return used-1\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim

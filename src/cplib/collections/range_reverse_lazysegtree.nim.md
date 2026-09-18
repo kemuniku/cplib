@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -21,9 +27,9 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:\n    const\
-    \ CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE* = 1\n    import random, sequtils,\
-    \ strutils\n\n    randomize()\n\n    type RangeReverseLazySegmentTreeNode[S, F]\
-    \ {.acyclic.} = ref object\n        left, right: RangeReverseLazySegmentTreeNode[S,\
+    \ CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE* = 1\n    import cplib/utils/backwards_index\n\
+    \    import random, sequtils, strutils\n\n    randomize()\n\n    type RangeReverseLazySegmentTreeNode[S,\
+    \ F] {.acyclic.} = ref object\n        left, right: RangeReverseLazySegmentTreeNode[S,\
     \ F]\n        priority: uint64\n        size: int\n        rev: bool\n       \
     \ value, prod, rprod: S\n        lazy: F\n\n    type RangeReverseLazySegmentTree*[S,\
     \ F] = ref object\n        root: RangeReverseLazySegmentTreeNode[S, F]\n     \
@@ -240,8 +246,8 @@ data:
     \ RangeReverseLazySegmentTree[S, F], index: BackwardsIndex): S =\n        self.get(self.length\
     \ - int(index))\n\n    proc `[]`*[S, F](self: RangeReverseLazySegmentTree[S, F],\
     \ segment: HSlice[int, int]): S =\n        self.get(segment)\n\n    proc `[]=`*[S,\
-    \ F](self: RangeReverseLazySegmentTree[S, F], index: Natural, value: S) =\n  \
-    \      self.update(index, value)\n\n    iterator items*[S, F](self: RangeReverseLazySegmentTree[S,\
+    \ F](self: RangeReverseLazySegmentTree[S, F], index: Natural, value: S) {.backwardsIndex.}\
+    \ =\n        self.update(index, value)\n\n    iterator items*[S, F](self: RangeReverseLazySegmentTree[S,\
     \ F]): S =\n        if not self.root.isNil:\n            var stack = @[(0, self.root)]\n\
     \            while stack.len > 0:\n                var (t, node) = stack.pop()\n\
     \                node.push(self.mapping, self.composition, self.id)\n        \
@@ -253,11 +259,13 @@ data:
     \ `$`*[S, F](self: RangeReverseLazySegmentTree[S, F]): string =\n        var s:\
     \ seq[string]\n        for x in self:\n            s.add($x)\n        return s.join(\"\
     \ \")\n"
-  dependsOn: []
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/range_reverse_lazysegtree.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_reverse_lazysegtree_test.nim

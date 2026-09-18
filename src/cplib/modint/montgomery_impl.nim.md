@@ -771,6 +771,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery_equality_test.nim
     title: verify/modint/montgomery_equality_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -1052,6 +1058,8 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim

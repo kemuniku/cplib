@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lazysegtree_static_op.nim
     title: cplib/collections/lazysegtree_static_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -33,11 +39,13 @@ data:
     '
   dependsOn:
   - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/binary_search_static_op_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/binary_search_static_op_test.nim

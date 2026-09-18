@@ -25,6 +25,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/suffix_array.nim
     title: cplib/str/suffix_array.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -66,17 +72,19 @@ data:
     assert cmp(integerMergedWithEmptyRanges, integerMergedWithTrailingEmpty) == 0\n"
   dependsOn:
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/AI/fixedlength_merged_static_string_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:04:23+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/fixedlength_merged_static_string_test.nim

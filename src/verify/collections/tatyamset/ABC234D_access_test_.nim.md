@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/tatyamset.nim
     title: cplib/collections/tatyamset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -29,12 +35,14 @@ data:
     K -= 1\nvar s = initSortedMultiSet(P[0..<K])\nvar ans: seq[int]\nfor i in K..<N:\n\
     \    s.incl(P[i])\n    ans.add(s[-K-1])\necho ans.join(\"\\n\")\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC234D_access_test_.nim
   requiredBy: []
-  timestamp: '2026-07-07 06:48:43+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/tatyamset/ABC234D_access_test_.nim

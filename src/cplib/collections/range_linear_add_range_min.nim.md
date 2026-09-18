@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/int128.nim
     title: cplib/math/int128.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -33,17 +39,17 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:\n    const\
-    \ CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN* = 1\n    import cplib/math/int128\n\
-    \n    type\n        LinearMinPoint = tuple[x, y: int]\n        LinearMinNode =\
-    \ object\n            left, right: LinearMinPoint\n            slope, intercept:\
-    \ int\n        RangeLinearAddRangeMin* = ref object\n            length: int\n\
-    \            nodes: seq[LinearMinNode]\n\n    proc shifted(p: LinearMinPoint,\
-    \ slope, intercept: int): LinearMinPoint {.inline.} =\n        ## \u70B9\u306E\
-    \u9AD8\u3055\u306B slope * x + intercept \u3092\u52A0\u3048\u307E\u3059\u3002\
-    O(1)\u3002\n        (p.x, p.y + slope * p.x + intercept)\n\n    proc cross(a,\
-    \ b, c, d: LinearMinPoint): Int128 {.inline.} =\n        ## \u30D9\u30AF\u30C8\
-    \u30EB b-a \u3068 d-c \u306E\u5916\u7A4D\u3092128bit\u6574\u6570\u3067\u6C42\u3081\
-    \u307E\u3059\u3002O(1)\u3002\n        (to_Int128(b.x) - a.x) * (to_Int128(d.y)\
+    \ CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN* = 1\n    import cplib/utils/backwards_index\n\
+    \    import cplib/math/int128\n\n    type\n        LinearMinPoint = tuple[x, y:\
+    \ int]\n        LinearMinNode = object\n            left, right: LinearMinPoint\n\
+    \            slope, intercept: int\n        RangeLinearAddRangeMin* = ref object\n\
+    \            length: int\n            nodes: seq[LinearMinNode]\n\n    proc shifted(p:\
+    \ LinearMinPoint, slope, intercept: int): LinearMinPoint {.inline.} =\n      \
+    \  ## \u70B9\u306E\u9AD8\u3055\u306B slope * x + intercept \u3092\u52A0\u3048\u307E\
+    \u3059\u3002O(1)\u3002\n        (p.x, p.y + slope * p.x + intercept)\n\n    proc\
+    \ cross(a, b, c, d: LinearMinPoint): Int128 {.inline.} =\n        ## \u30D9\u30AF\
+    \u30C8\u30EB b-a \u3068 d-c \u306E\u5916\u7A4D\u3092128bit\u6574\u6570\u3067\u6C42\
+    \u3081\u307E\u3059\u3002O(1)\u3002\n        (to_Int128(b.x) - a.x) * (to_Int128(d.y)\
     \ - c.y) -\n            (to_Int128(b.y) - a.y) * (to_Int128(d.x) - c.x)\n\n  \
     \  proc pull(self: RangeLinearAddRangeMin, k, border: int) =\n        ## \u5DE6\
     \u53F3\u306E\u4E0B\u5074\u51F8\u5305\u306E\u5171\u901A\u63A5\u7DDA\u3092\u6C42\
@@ -144,21 +150,23 @@ data:
     \ high(int)\u3002O(log^2 N)\u3002\n        self.prod(segment.a, segment.b + 1)\n\
     \n    proc `[]`*(self: RangeLinearAddRangeMin, segment: HSlice[int, int]): int\
     \ =\n        ## \u6307\u5B9A\u533A\u9593\u306E\u6700\u5C0F\u5024\u3092\u8FD4\u3057\
-    \u307E\u3059\u3002O(log^2 N)\u3002\n        self.prod(segment)\n\n    proc `[]`*(self:\
-    \ RangeLinearAddRangeMin, i: int): int =\n        ## a[i] \u3092\u8FD4\u3057\u307E\
-    \u3059\u3002O(log N)\u3002\n        assert 0 <= i and i < self.length, \"\u6307\
-    \u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\
-    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= i and i < self.length\"\
-    \n        self.prod(i, i + 1)\n\n    proc len*(self: RangeLinearAddRangeMin):\
-    \ int =\n        ## \u914D\u5217\u306E\u9577\u3055\u3092\u8FD4\u3057\u307E\u3059\
-    \u3002O(1)\u3002\n        self.length\n"
+    \u307E\u3059\u3002O(log^2 N)\u3002\n        self.prod(segment)\n\n    proc len*(self:\
+    \ RangeLinearAddRangeMin): int =\n        ## \u914D\u5217\u306E\u9577\u3055\u3092\
+    \u8FD4\u3057\u307E\u3059\u3002O(1)\u3002\n        self.length\n    proc `[]`*(self:\
+    \ RangeLinearAddRangeMin, i: int): int {.backwardsIndex.} =\n        ## a[i] \u3092\
+    \u8FD4\u3057\u307E\u3059\u3002O(log N)\u3002\n        assert 0 <= i and i < self.length,\
+    \ \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= i and i < self.length\"\
+    \n        self.prod(i, i + 1)\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/math/int128.nim
   - cplib/math/int128.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/range_linear_add_range_min.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_linear_add_range_min_test.nim

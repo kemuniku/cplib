@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/private/bitset_search_impl.nim
     title: cplib/collections/private/bitset_search_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -127,16 +133,18 @@ data:
     expectError(ValueError):\n    discard small.orpopcount(large)\nexpectError(ValueError):\n\
     \    discard small.xorpopcount(large)\n"
   dependsOn:
-  - cplib/collections/bitset_avx2.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/bitset_avx2.nim
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset_avx2.nim
   isVerificationFile: true
   path: verify/AI/bitset_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 23:18:26+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/bitset_avx2_test.nim

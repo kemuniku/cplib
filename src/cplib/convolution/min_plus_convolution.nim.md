@@ -182,8 +182,8 @@ data:
     \ h)\n        var indices = newSeq[int](h)\n        concaveDivide(a, b, 0, h,\
     \ 0, b.len, result, columns, indices)\n"
   dependsOn:
-  - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
+  - cplib/utils/monotone_minima.nim
   - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
   isVerificationFile: false

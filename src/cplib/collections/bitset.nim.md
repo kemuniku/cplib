@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy:
   - icon: ':warning:'
     path: verify/collections/bitset_andpopcnt_test_.nim
@@ -21,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitset_test.nim
     title: verify/AI/bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -33,19 +45,19 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_BITSET:\n    const CPLIB_COLLECTIONS_BITSET*\
-    \ = 1\n    import bitops\n\n    const WordBits = 64\n\n    type BitSet* {.byref.}\
-    \ = object\n        bits: seq[uint]\n        size: int\n\n    proc varor(x: var\
-    \ uint, y: uint) {.importcpp: \"# |= #\".}\n    proc varand(x: var uint, y: uint)\
-    \ {.importcpp: \"# &= #\".}\n    proc varxor(x: var uint, y: uint) {.importcpp:\
-    \ \"# ^= #\".}\n\n    proc initBitSet*(N: int): BitSet =\n        if N < 0:\n\
-    \            raise newException(ValueError, \"BitSet size must be non-negative\"\
-    )\n        result.size = N\n        result.bits = newSeq[uint]((N + WordBits -\
-    \ 1) div WordBits)\n\n    proc initBitSet*(v: openArray[bool], N: int): BitSet\
-    \ =\n        if len(v) > N:\n            raise newException(ValueError, \"initial\
-    \ value is longer than BitSet size\")\n        result = initBitSet(N)\n      \
-    \  for i in 0..<len(v):\n            if v[i]:\n                result.bits[i shr\
-    \ 6].varor(1u shl (i and 63))\n\n    proc initBitSet*(v: openArray[bool]): BitSet\
-    \ =\n        result = initBitSet(v, len(v))\n\n    proc initBitSetFromIndexes*(indexes:\
+    \ = 1\n    import cplib/utils/backwards_index\n    import bitops\n\n    const\
+    \ WordBits = 64\n\n    type BitSet* {.byref.} = object\n        bits: seq[uint]\n\
+    \        size: int\n\n    proc varor(x: var uint, y: uint) {.importcpp: \"# |=\
+    \ #\".}\n    proc varand(x: var uint, y: uint) {.importcpp: \"# &= #\".}\n   \
+    \ proc varxor(x: var uint, y: uint) {.importcpp: \"# ^= #\".}\n\n    proc initBitSet*(N:\
+    \ int): BitSet =\n        if N < 0:\n            raise newException(ValueError,\
+    \ \"BitSet size must be non-negative\")\n        result.size = N\n        result.bits\
+    \ = newSeq[uint]((N + WordBits - 1) div WordBits)\n\n    proc initBitSet*(v: openArray[bool],\
+    \ N: int): BitSet =\n        if len(v) > N:\n            raise newException(ValueError,\
+    \ \"initial value is longer than BitSet size\")\n        result = initBitSet(N)\n\
+    \        for i in 0..<len(v):\n            if v[i]:\n                result.bits[i\
+    \ shr 6].varor(1u shl (i and 63))\n\n    proc initBitSet*(v: openArray[bool]):\
+    \ BitSet =\n        result = initBitSet(v, len(v))\n\n    proc initBitSetFromIndexes*(indexes:\
     \ openArray[int], N: int): BitSet =\n        result = initBitSet(N)\n        for\
     \ i in indexes:\n            if i < 0 or i >= N:\n                raise newException(IndexDefect,\
     \ \"BitSet index out of bounds\")\n            result.bits[i shr 6].varor(1u shl\
@@ -102,18 +114,19 @@ data:
     \ BitSet): int =\n        for wordIndex in 0..<len(bitset.bits):\n           \
     \ if bitset.bits[wordIndex] != 0:\n                return wordIndex * WordBits\
     \ + bitset.bits[wordIndex].countTrailingZeroBits()\n        -1\n\n    proc `[]`*(bitset:\
-    \ BitSet, idx: Natural): bool =\n        bitset.checkIndex(idx)\n        bitset.bits[idx\
-    \ shr 6].testBit(idx and 63)\n\n    proc `[]=`*(bitset: var BitSet, idx: Natural,\
-    \ x: bool) =\n        bitset.checkIndex(idx)\n        if x:\n            bitset.bits[idx\
-    \ shr 6].setBit(idx and 63)\n        else:\n            bitset.bits[idx shr 6].clearBit(idx\
-    \ and 63)\n\n    proc `[]=`*(bitset: var BitSet, idx: Natural, x: int) =\n   \
-    \     if x == 1:\n            bitset[idx] = true\n        elif x == 0:\n     \
-    \       bitset[idx] = false\n\n    proc `$`*(bitset: BitSet): string =\n     \
-    \   result = newString(bitset.size)\n        for i in 0..<bitset.size:\n     \
-    \       result[bitset.size - i - 1] = if bitset[i]: '1' else: '0'\n\n    proc\
-    \ cmp*(x, y: BitSet): int =\n        ## \u540C\u3058\u9577\u3055\u306E\u30D3\u30C3\
-    \u30C8\u5217\u3092\u6DFB\u5B570\u304B\u3089false < true\u3067\u6BD4\u8F03\u3057\
-    \u3001-1\u30FB0\u30FB1\u3092\u8FD4\u3057\u307E\u3059\u3002\n        ## \u6642\u9593\
+    \ BitSet, idx: Natural): bool {.backwardsIndex.} =\n        bitset.checkIndex(idx)\n\
+    \        bitset.bits[idx shr 6].testBit(idx and 63)\n\n    proc `[]=`*(bitset:\
+    \ var BitSet, idx: Natural, x: bool) {.backwardsIndex.} =\n        bitset.checkIndex(idx)\n\
+    \        if x:\n            bitset.bits[idx shr 6].setBit(idx and 63)\n      \
+    \  else:\n            bitset.bits[idx shr 6].clearBit(idx and 63)\n\n    proc\
+    \ `[]=`*(bitset: var BitSet, idx: Natural, x: int) {.backwardsIndex.} =\n    \
+    \    if x == 1:\n            bitset[idx] = true\n        elif x == 0:\n      \
+    \      bitset[idx] = false\n\n    proc `$`*(bitset: BitSet): string =\n      \
+    \  result = newString(bitset.size)\n        for i in 0..<bitset.size:\n      \
+    \      result[bitset.size - i - 1] = if bitset[i]: '1' else: '0'\n\n    proc cmp*(x,\
+    \ y: BitSet): int =\n        ## \u540C\u3058\u9577\u3055\u306E\u30D3\u30C3\u30C8\
+    \u5217\u3092\u6DFB\u5B570\u304B\u3089false < true\u3067\u6BD4\u8F03\u3057\u3001\
+    -1\u30FB0\u30FB1\u3092\u8FD4\u3057\u307E\u3059\u3002\n        ## \u6642\u9593\
     O(1 + N / 64)\u3001\u8FFD\u52A0\u30E1\u30E2\u30EAO(1)\u3002\u6700\u521D\u306E\u76F8\
     \u9055\u3067\u7D42\u4E86\u3057\u307E\u3059\u3002\n        checkSameSize(x, y)\n\
     \        for i in 0..<x.bits.len:\n            let diff = x.bits[i] xor y.bits[i]\n\
@@ -147,7 +160,9 @@ data:
     \ = x.size and 63\n        if remaining != 0:\n            let mask = (1u shl\
     \ remaining) - 1\n            return (x.bits[fullWords] and mask) != 0\n     \
     \   false\n"
-  dependsOn: []
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/bitset.nim
   requiredBy:
@@ -155,9 +170,11 @@ data:
   - verify/collections/bitset_andpopcnt_test_.nim
   - verify/collections/bitset_test_.nim
   - verify/collections/bitset_test_.nim
-  timestamp: '2026-09-13 04:30:30+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
   - verify/AI/bitset_test.nim
   - verify/AI/bitset_test.nim
 documentation_of: cplib/collections/bitset.nim

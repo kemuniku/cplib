@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -27,12 +33,12 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP:\n    const CPLIB_COLLECTIONS_DUALSEGTREE_STATIC_OP*\
-    \ = 1\n    import bitops, sequtils, strutils\n\n    type DualSegmentTree*[S, F;\
-    \ p: static[tuple]] = ref object\n        data: seq[S]\n        lazy: seq[F]\n\
-    \        hasLazy: seq[bool]\n        lastnode: int\n        log: int\n       \
-    \ length: int\n\n    template mappingOp[ST: DualSegmentTree](\n        self: ST\
-    \ or typedesc[ST], f: ST.F, x: ST.S\n    ): auto =\n        block:\n         \
-    \   let value = ST.p[0](f, x)\n            value\n\n    template compositionOp[ST:\
+    \ = 1\n    import cplib/utils/backwards_index\n    import bitops, sequtils, strutils\n\
+    \n    type DualSegmentTree*[S, F; p: static[tuple]] = ref object\n        data:\
+    \ seq[S]\n        lazy: seq[F]\n        hasLazy: seq[bool]\n        lastnode:\
+    \ int\n        log: int\n        length: int\n\n    template mappingOp[ST: DualSegmentTree](\n\
+    \        self: ST or typedesc[ST], f: ST.F, x: ST.S\n    ): auto =\n        block:\n\
+    \            let value = ST.p[0](f, x)\n            value\n\n    template compositionOp[ST:\
     \ DualSegmentTree](\n        self: ST or typedesc[ST], f, g: ST.F\n    ): auto\
     \ =\n        block:\n            let value = ST.p[1](f, g)\n            value\n\
     \n    template DualSegmentTreeType[S, F](\n        mapping0, composition0: untyped\n\
@@ -121,34 +127,36 @@ data:
     \        ## \u5F8C\u308D\u304B\u3089\u6570\u3048\u305Findex\u306E\u73FE\u5728\u5024\
     \u3092\u8FD4\u3057\u307E\u3059\u3002\n        self.get(self.length - int(index))\n\
     \n    proc `[]=`*[ST: DualSegmentTree](self: ST, index: Natural, value: ST.S)\
-    \ =\n        ## index\u306E\u5024\u3092value\u306B\u7F6E\u304D\u63DB\u3048\u307E\
-    \u3059\u3002\n        self.update(index, value)\n\n    iterator items*[ST: DualSegmentTree](self:\
-    \ ST): ST.S =\n        for i in 0..<self.length:\n            yield self.get(i)\n\
-    \n    proc toSeq*[ST: DualSegmentTree](self: ST): seq[ST.S] =\n        ## \u5168\
-    \u8981\u7D20\u3092seq\u3068\u3057\u3066\u8FD4\u3057\u307E\u3059\u3002\n      \
-    \  for x in self:\n            result.add(x)\n\n    proc `$`*[ST: DualSegmentTree](self:\
-    \ ST): string =\n        ## \u5168\u8981\u7D20\u3092\u7A7A\u767D\u533A\u5207\u308A\
-    \u306E\u6587\u5B57\u5217\u3068\u3057\u3066\u8FD4\u3057\u307E\u3059\u3002\n   \
-    \     self.toSeq.join(\" \")\n\n    template newDualSegWith*(v, mapping, composition,\
-    \ id: untyped): untyped =\n        block:\n            type S = typeof(v[0])\n\
-    \            type F = typeof(id)\n            proc staticMapping(\n          \
-    \      f {.inject.}: F, x {.inject.}: S\n            ): S {.gensym, inline.} =\
-    \ mapping\n            proc staticComposition(\n                f {.inject.},\
-    \ g {.inject.}: F\n            ): F {.gensym, inline.} = composition\n       \
-    \     DualSegmentTree[S, F, (staticMapping, staticComposition)]\n            \
-    \    .initDualSegmentTreeImpl(v)\n\n    template newDualSegWith*(n, initValue,\
-    \ mapping, composition, id: untyped): untyped =\n        block:\n            type\
-    \ S = typeof(initValue)\n            type F = typeof(id)\n            proc staticMapping(\n\
-    \                f {.inject.}: F, x {.inject.}: S\n            ): S {.gensym,\
-    \ inline.} = mapping\n            proc staticComposition(\n                f {.inject.},\
-    \ g {.inject.}: F\n            ): F {.gensym, inline.} = composition\n       \
-    \     DualSegmentTree[S, F, (staticMapping, staticComposition)]\n            \
-    \    .initDualSegmentTreeImpl(n, initValue)\n\n    {.pop.}\n"
-  dependsOn: []
+    \ {.backwardsIndex.} =\n        ## index\u306E\u5024\u3092value\u306B\u7F6E\u304D\
+    \u63DB\u3048\u307E\u3059\u3002\n        self.update(index, value)\n\n    iterator\
+    \ items*[ST: DualSegmentTree](self: ST): ST.S =\n        for i in 0..<self.length:\n\
+    \            yield self.get(i)\n\n    proc toSeq*[ST: DualSegmentTree](self: ST):\
+    \ seq[ST.S] =\n        ## \u5168\u8981\u7D20\u3092seq\u3068\u3057\u3066\u8FD4\u3057\
+    \u307E\u3059\u3002\n        for x in self:\n            result.add(x)\n\n    proc\
+    \ `$`*[ST: DualSegmentTree](self: ST): string =\n        ## \u5168\u8981\u7D20\
+    \u3092\u7A7A\u767D\u533A\u5207\u308A\u306E\u6587\u5B57\u5217\u3068\u3057\u3066\
+    \u8FD4\u3057\u307E\u3059\u3002\n        self.toSeq.join(\" \")\n\n    template\
+    \ newDualSegWith*(v, mapping, composition, id: untyped): untyped =\n        block:\n\
+    \            type S = typeof(v[0])\n            type F = typeof(id)\n        \
+    \    proc staticMapping(\n                f {.inject.}: F, x {.inject.}: S\n \
+    \           ): S {.gensym, inline.} = mapping\n            proc staticComposition(\n\
+    \                f {.inject.}, g {.inject.}: F\n            ): F {.gensym, inline.}\
+    \ = composition\n            DualSegmentTree[S, F, (staticMapping, staticComposition)]\n\
+    \                .initDualSegmentTreeImpl(v)\n\n    template newDualSegWith*(n,\
+    \ initValue, mapping, composition, id: untyped): untyped =\n        block:\n \
+    \           type S = typeof(initValue)\n            type F = typeof(id)\n    \
+    \        proc staticMapping(\n                f {.inject.}: F, x {.inject.}: S\n\
+    \            ): S {.gensym, inline.} = mapping\n            proc staticComposition(\n\
+    \                f {.inject.}, g {.inject.}: F\n            ): F {.gensym, inline.}\
+    \ = composition\n            DualSegmentTree[S, F, (staticMapping, staticComposition)]\n\
+    \                .initDualSegmentTreeImpl(n, initValue)\n\n    {.pop.}\n"
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/dualsegtree_static_op.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim

@@ -87,6 +87,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/restore_lcs_bitset_test.nim
     title: verify/str/restore_lcs_bitset_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -313,6 +319,8 @@ data:
   timestamp: '2026-09-17 21:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/str/restore_lcs_bitset_test.nim
   - verify/str/restore_lcs_bitset_test.nim
   - verify/str/edit_distance_bitset_test.nim

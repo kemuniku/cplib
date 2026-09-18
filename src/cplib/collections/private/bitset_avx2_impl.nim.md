@@ -27,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/staticbitset_avx2_test.nim
     title: verify/AI/staticbitset_avx2_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_simd_test.nim
+    title: verify/utils/backwards_index_simd_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -370,6 +376,8 @@ data:
   timestamp: '2026-09-13 04:30:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/AI/staticbitset_avx2_test.nim
   - verify/AI/staticbitset_avx2_test.nim
   - verify/AI/bitset_avx2_test.nim

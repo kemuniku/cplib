@@ -25,6 +25,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix_fenwick.nim
     title: cplib/collections/waveletmatrix_fenwick.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -82,17 +88,19 @@ data:
     \ \"Hello World\"\n"
   dependsOn:
   - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/fenwick_avx2.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_fenwick_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 23:35:39+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/waveletmatrix_fenwick_test.nim

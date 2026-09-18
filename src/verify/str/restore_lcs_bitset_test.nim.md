@@ -55,6 +55,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/lcs_bitset.nim
     title: cplib/str/lcs_bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -75,28 +81,30 @@ data:
     \    let s = stdin.readLine()\n    let t = stdin.readLine()\n    echo restoreLCS(s,\
     \ t).len\n"
   dependsOn:
+  - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/str/lcs_bitset.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset_avx512.nim
+  - cplib/str/lcs_bitset.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/str/lcs_bitset.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
   - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/bitset_avx512.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
   isVerificationFile: true
   path: verify/str/restore_lcs_bitset_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:14:22+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/restore_lcs_bitset_test.nim

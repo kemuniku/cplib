@@ -13,6 +13,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -191,14 +197,16 @@ data:
     \ b, false, compressedMerge)\n            setCompressedOperations(compressedTree,\
     \ updateOp, rangeOp)\n            compressedTree\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: false
   path: cplib/collections/compressed_segtree.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:00:20+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/compressed_segtree_test.nim

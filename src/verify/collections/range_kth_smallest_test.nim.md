@@ -8,6 +8,12 @@ data:
     path: cplib/collections/root_rangesum.nim
     title: cplib/collections/root_rangesum.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   - icon: ':heavy_check_mark:'
@@ -41,14 +47,16 @@ data:
     \ => (x <= k))\n    ans[idx] = cmp[tmp]\n\nM.run(ad,ad,dl,dl,mem)\n\necho ans.join(\"\
     \\n\")"
   dependsOn:
+  - cplib/collections/root_rangesum.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/mo.nim
   - cplib/utils/mo.nim
   - cplib/collections/root_rangesum.nim
-  - cplib/collections/root_rangesum.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:40:34+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_kth_smallest_test.nim

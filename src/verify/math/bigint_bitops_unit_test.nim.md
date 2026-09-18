@@ -110,22 +110,22 @@ data:
     )\n    doAssert (x xor -1) == -x - 1\n    doAssert (not x) == -x - 1\n\necho \"\
     Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/bigint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/math/bigint.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/bigint_bitops_unit_test.nim
   requiredBy: []

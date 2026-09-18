@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree_var.nim
     title: cplib/collections/segtree_var.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -35,12 +41,14 @@ data:
     \    while li <= l:\n        for x in ad[li]:\n            seg_add[x] = seg_add[x]\
     \ + 1\n        li += 1\n    ans[id] = seg_add[l..<r]\necho ans.join(\"\\n\")\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
   - cplib/collections/segtree_var.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/segtree_var/segtree_minleft_yuki878_test.nim

@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -21,20 +27,21 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:\n    const\
-    \ CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID* = 1\n    import random, strutils\n\
-    \n    randomize()\n\n    type RangeReverseArrayMonoidNode[T] {.acyclic.} = ref\
-    \ object\n        left, right: RangeReverseArrayMonoidNode[T]\n        priority:\
-    \ uint64\n        size: int\n        rev: bool\n        value, prod, rprod: T\n\
-    \n    type RangeReverseArrayMonoid*[T] = ref object\n        root: RangeReverseArrayMonoidNode[T]\n\
-    \        length: int\n        op: proc(x, y: T): T\n        e: T\n\n    proc nodeLen[T](node:\
-    \ RangeReverseArrayMonoidNode[T]): int {.inline.} =\n        if node.isNil: 0\
-    \ else: node.size\n\n    proc nodeProd[T](node: RangeReverseArrayMonoidNode[T],\
-    \ e: T): T {.inline.} =\n        if node.isNil: e else: node.prod\n\n    proc\
-    \ nodeRProd[T](node: RangeReverseArrayMonoidNode[T], e: T): T {.inline.} =\n \
-    \       if node.isNil: e else: node.rprod\n\n    proc update[T](node: RangeReverseArrayMonoidNode[T],\
-    \ op: proc(x, y: T): T, e: T) =\n        if node.isNil: return\n        node.size\
-    \ = 1 + node.left.nodeLen + node.right.nodeLen\n        node.prod = op(op(node.left.nodeProd(e),\
-    \ node.value), node.right.nodeProd(e))\n        node.rprod = op(op(node.right.nodeRProd(e),\
+    \ CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID* = 1\n    import cplib/utils/backwards_index\n\
+    \    import random, strutils\n\n    randomize()\n\n    type RangeReverseArrayMonoidNode[T]\
+    \ {.acyclic.} = ref object\n        left, right: RangeReverseArrayMonoidNode[T]\n\
+    \        priority: uint64\n        size: int\n        rev: bool\n        value,\
+    \ prod, rprod: T\n\n    type RangeReverseArrayMonoid*[T] = ref object\n      \
+    \  root: RangeReverseArrayMonoidNode[T]\n        length: int\n        op: proc(x,\
+    \ y: T): T\n        e: T\n\n    proc nodeLen[T](node: RangeReverseArrayMonoidNode[T]):\
+    \ int {.inline.} =\n        if node.isNil: 0 else: node.size\n\n    proc nodeProd[T](node:\
+    \ RangeReverseArrayMonoidNode[T], e: T): T {.inline.} =\n        if node.isNil:\
+    \ e else: node.prod\n\n    proc nodeRProd[T](node: RangeReverseArrayMonoidNode[T],\
+    \ e: T): T {.inline.} =\n        if node.isNil: e else: node.rprod\n\n    proc\
+    \ update[T](node: RangeReverseArrayMonoidNode[T], op: proc(x, y: T): T, e: T)\
+    \ =\n        if node.isNil: return\n        node.size = 1 + node.left.nodeLen\
+    \ + node.right.nodeLen\n        node.prod = op(op(node.left.nodeProd(e), node.value),\
+    \ node.right.nodeProd(e))\n        node.rprod = op(op(node.right.nodeRProd(e),\
     \ node.value), node.left.nodeRProd(e))\n\n    proc toggle[T](node: RangeReverseArrayMonoidNode[T])\
     \ =\n        if not node.isNil:\n            node.rev = not node.rev\n       \
     \     let tmp = node.prod\n            node.prod = node.rprod\n            node.rprod\
@@ -215,22 +222,25 @@ data:
     \ index: BackwardsIndex): T =\n        self.get(self.length - int(index))\n\n\
     \    proc `[]`*[T](self: RangeReverseArrayMonoid[T], segment: HSlice[int, int]):\
     \ T =\n        self.get(segment)\n\n    proc `[]=`*[T](self: RangeReverseArrayMonoid[T],\
-    \ index: Natural, value: T) =\n        self.update(index, value)\n\n    iterator\
-    \ items*[T](self: RangeReverseArrayMonoid[T]): T =\n        if not self.root.isNil:\n\
-    \            var stack = @[(0, self.root)]\n            while stack.len > 0:\n\
-    \                var (t, node) = stack.pop()\n                node.push\n    \
-    \            if t == 0:\n                    if not node.right.isNil: stack.add((0,\
-    \ node.right))\n                    stack.add((1, node))\n                   \
-    \ if not node.left.isNil: stack.add((0, node.left))\n                else:\n \
-    \                   yield node.value\n\n    proc toSeq*[T](self: RangeReverseArrayMonoid[T]):\
-    \ seq[T] =\n        for x in self:\n            result.add(x)\n\n    proc `$`*[T](self:\
-    \ RangeReverseArrayMonoid[T]): string =\n        var s: seq[string]\n        for\
-    \ x in self:\n            s.add($x)\n        return s.join(\" \")\n"
-  dependsOn: []
+    \ index: Natural, value: T) {.backwardsIndex.} =\n        self.update(index, value)\n\
+    \n    iterator items*[T](self: RangeReverseArrayMonoid[T]): T =\n        if not\
+    \ self.root.isNil:\n            var stack = @[(0, self.root)]\n            while\
+    \ stack.len > 0:\n                var (t, node) = stack.pop()\n              \
+    \  node.push\n                if t == 0:\n                    if not node.right.isNil:\
+    \ stack.add((0, node.right))\n                    stack.add((1, node))\n     \
+    \               if not node.left.isNil: stack.add((0, node.left))\n          \
+    \      else:\n                    yield node.value\n\n    proc toSeq*[T](self:\
+    \ RangeReverseArrayMonoid[T]): seq[T] =\n        for x in self:\n            result.add(x)\n\
+    \n    proc `$`*[T](self: RangeReverseArrayMonoid[T]): string =\n        var s:\
+    \ seq[string]\n        for x in self:\n            s.add($x)\n        return s.join(\"\
+    \ \")\n"
+  dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/range_reverse_array_monoid.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_reverse_array_monoid_test.nim

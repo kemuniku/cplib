@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/bitset.nim
     title: cplib/collections/bitset.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -55,12 +61,14 @@ data:
     \ n\n        for i in 0..<n:\n            assert left[i] == (i >= shift and x[i\
     \ - shift])\n            assert right[i] == (i + shift < n and x[i + shift])\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/bitset.nim
   - cplib/collections/bitset.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/bitset_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 04:30:30+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/bitset_test.nim

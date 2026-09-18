@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/dynamic_segtree.nim
     title: cplib/collections/dynamic_segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -56,12 +62,14 @@ data:
     \ == 0\n        st[p] = 0\n        assert st.node_count == 4096\n    assert st.get_all()\
     \ == 0\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
   isVerificationFile: true
   path: verify/AI/dynamic_segtree_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/dynamic_segtree_test.nim

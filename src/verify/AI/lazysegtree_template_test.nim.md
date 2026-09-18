@@ -37,6 +37,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -133,22 +139,24 @@ data:
     \    assert hi.get(1, 3) == -0.5\n    assert hi.get(1, 1) == float.low\necho \"\
     Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/collections/lazysegtree_template.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/collections/lazysegtree_static_op.nim
-  - cplib/collections/lazysegtree_template.nim
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree_template.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/collections/lazysegtree_template.nim
+  - cplib/math/isqrt.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/AI/lazysegtree_template_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/lazysegtree_template_test.nim

@@ -99,15 +99,15 @@ data:
     assert path.is_planar_graph()\nassert random_planar_graph(100,294).is_planar_graph()\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/random_helper.nim
-  - cplib/utils/random_helper.nim
   - cplib/graph/graph.nim
-  - cplib/graph/planar_graph.nim
   - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/random_helper.nim
   - cplib/math/isprime.nim
+  - cplib/utils/random_helper.nim
   - cplib/graph/planar_graph.nim
   - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/planar_graph.nim
   - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/AI/planar_graph_test.nim

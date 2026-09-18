@@ -8,6 +8,12 @@ data:
     path: cplib/collections/segtree_beats.nim
     title: cplib/collections/segtree_beats.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   - icon: ':heavy_check_mark:'
@@ -33,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree_beats_assignment_test.nim
     title: verify/collections/segtree_beats_assignment_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/backwards_index_collections_test.nim
+    title: verify/utils/backwards_index_collections_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -45,26 +57,27 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE:\n    const CPLIB_COLLECTIONS_SEGTREE_BEATS_TEMPLATE*\
-    \ = 1\n    import sequtils\n    import cplib/collections/segtree_beats\n    import\
-    \ cplib/utils/constants\n\n    type S_rch*[T] = object\n        max*: T\n    \
-    \    max2*: T\n        min*: T\n        min2*: T\n        sum*: T\n        sz*:\
-    \ int\n        n_min*: int\n        n_max*: int\n        fail*: bool\n    type\
-    \ F_rch*[T] = object\n        lb*: T\n        ub*: T\n        add*: T\n\n    type\
-    \ RangeChminChmaxRangeSumMaxMin*[T] = object\n        seg*: SegmentTreeBeats[S_rch[T],\
-    \ F_rch[T]]\n        inf*, zero*: T\n    proc init_S[T](val: T, inf: T, sz: int\
-    \ = 1): S_rch[T] = S_rch[T](max: val, max2: -inf, min: val, min2: inf, sum: val\
-    \ * T(sz), sz: sz, n_min: sz, n_max: sz, fail: false)\n\n    proc initRangeChminChmaxRangeSumMaxMin*[T](v:\
-    \ openArray[T], inf: T, zero: T): RangeChminChmaxRangeSumMaxMin[T] =\n       \
-    \ proc op(l, r: S_rch[T]): S_rch[T] =\n            proc second_lowest(a, b, c,\
-    \ d: T): T {.inline.} =\n                if a == c: return min(b, d)\n       \
-    \         if b <= c: return b\n                if d <= a: return d\n         \
-    \       return max(a, c)\n            proc second_highest(a, b, c, d: T): T {.inline.}\
-    \ = -second_lowest(-a, -b, -c, -d)\n            result.min = min(l.min, r.min)\n\
-    \            result.max = max(l.max, r.max)\n            result.min2 = second_lowest(l.min,\
-    \ l.min2, r.min, r.min2)\n            result.max2 = second_highest(l.max, l.max2,\
-    \ r.max, r.max2)\n            result.sum = l.sum + r.sum\n            result.sz\
-    \ = l.sz + r.sz\n            result.n_min = l.n_min * int(l.min <= r.min) + r.n_min\
-    \ * int(r.min <= l.min)\n            result.n_max = l.n_max * int(l.max >= r.max)\
+    \ = 1\n    import cplib/utils/backwards_index\n    import sequtils\n    import\
+    \ cplib/collections/segtree_beats\n    import cplib/utils/constants\n\n    type\
+    \ S_rch*[T] = object\n        max*: T\n        max2*: T\n        min*: T\n   \
+    \     min2*: T\n        sum*: T\n        sz*: int\n        n_min*: int\n     \
+    \   n_max*: int\n        fail*: bool\n    type F_rch*[T] = object\n        lb*:\
+    \ T\n        ub*: T\n        add*: T\n\n    type RangeChminChmaxRangeSumMaxMin*[T]\
+    \ = object\n        seg*: SegmentTreeBeats[S_rch[T], F_rch[T]]\n        inf*,\
+    \ zero*: T\n    proc init_S[T](val: T, inf: T, sz: int = 1): S_rch[T] = S_rch[T](max:\
+    \ val, max2: -inf, min: val, min2: inf, sum: val * T(sz), sz: sz, n_min: sz, n_max:\
+    \ sz, fail: false)\n\n    proc initRangeChminChmaxRangeSumMaxMin*[T](v: openArray[T],\
+    \ inf: T, zero: T): RangeChminChmaxRangeSumMaxMin[T] =\n        proc op(l, r:\
+    \ S_rch[T]): S_rch[T] =\n            proc second_lowest(a, b, c, d: T): T {.inline.}\
+    \ =\n                if a == c: return min(b, d)\n                if b <= c: return\
+    \ b\n                if d <= a: return d\n                return max(a, c)\n \
+    \           proc second_highest(a, b, c, d: T): T {.inline.} = -second_lowest(-a,\
+    \ -b, -c, -d)\n            result.min = min(l.min, r.min)\n            result.max\
+    \ = max(l.max, r.max)\n            result.min2 = second_lowest(l.min, l.min2,\
+    \ r.min, r.min2)\n            result.max2 = second_highest(l.max, l.max2, r.max,\
+    \ r.max2)\n            result.sum = l.sum + r.sum\n            result.sz = l.sz\
+    \ + r.sz\n            result.n_min = l.n_min * int(l.min <= r.min) + r.n_min *\
+    \ int(r.min <= l.min)\n            result.n_max = l.n_max * int(l.max >= r.max)\
     \ + r.n_max * int(r.max >= l.max)\n            result.fail = true\n        proc\
     \ e(): S_rch[T] = S_rch[T](max: -inf, max2: -inf, min: inf, min2: inf, sum: zero,\
     \ sz: 0, n_min: 0, n_max: 0, fail: false)\n        proc composition(f, g: F_rch[T]):\
@@ -94,31 +107,38 @@ data:
     \ INF32, 0.int32)\n    proc initRangeChminChmaxRangeSumMaxMin*(v: openArray[float]):\
     \ RangeChminChmaxRangeSumMaxMin[float] = initRangeChminChmaxRangeSumMaxMin(v,\
     \ 1e100, 0.0)\n\n    proc update*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
-    \ p: Natural, val: T) = self.seg.update(p, init_S(val, self.inf))\n    proc `[]`*[T](self:\
-    \ var RangeChminChmaxRangeSumMaxMin[T], p: Natural or HSlice[int, int]): S_rch[T]\
-    \ = self.seg[p]\n    proc `[]=`*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
-    \ p: Natural, val: T) =\n        ## \u6DFB\u5B57p\u306E\u8981\u7D20\u3092val\u306B\
-    \u7F6E\u304D\u63DB\u3048\u308B\u3002O(log N)\u3002\n        self.update(p, val)\n\
-    \    proc len*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): int = self.seg.len\n\
-    \    proc `$`*[T](self: var RangeChminChmaxRangeSumMaxMin[T]): string = $(self.seg)\n\
-    \    proc chmin*[T](self: var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int,\
-    \ int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf, ub: val, add:\
-    \ self.zero))\n    proc chmax*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
-    \ segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: val,\
-    \ ub: self.inf, add: self.zero))\n    proc add*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
-    \ segment: HSlice[int, int], val: T) = self.seg.apply(segment, F_rch[T](lb: -self.inf,\
-    \ ub: self.inf, add: val))\n"
+    \ p: Natural, val: T) = self.seg.update(p, init_S(val, self.inf))\n    proc len*[T](self:\
+    \ var RangeChminChmaxRangeSumMaxMin[T]): int = self.seg.len\n    proc `[]`*[T](self:\
+    \ var RangeChminChmaxRangeSumMaxMin[T], p: Natural): S_rch[T] {.backwardsIndex.}\
+    \ =\n        ## p \u756A\u76EE\u306E\u8981\u7D20\u3092\u53D6\u5F97\u3059\u308B\
+    \u3002O(log N)\u3002\n        self.seg[p]\n    proc `[]`*[T](self: var RangeChminChmaxRangeSumMaxMin[T],\
+    \ p: HSlice[int, int]): S_rch[T] =\n        ## \u9589\u533A\u9593 p \u306E\u96C6\
+    \u7D04\u5024\u3092\u53D6\u5F97\u3059\u308B\u3002\n        self.seg[p]\n    proc\
+    \ `[]=`*[T](self: var RangeChminChmaxRangeSumMaxMin[T], p: Natural, val: T) {.backwardsIndex.}\
+    \ =\n        ## \u6DFB\u5B57p\u306E\u8981\u7D20\u3092val\u306B\u7F6E\u304D\u63DB\
+    \u3048\u308B\u3002O(log N)\u3002\n        self.update(p, val)\n    proc `$`*[T](self:\
+    \ var RangeChminChmaxRangeSumMaxMin[T]): string = $(self.seg)\n    proc chmin*[T](self:\
+    \ var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
+    \ F_rch[T](lb: -self.inf, ub: val, add: self.zero))\n    proc chmax*[T](self:\
+    \ var RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
+    \ F_rch[T](lb: val, ub: self.inf, add: self.zero))\n    proc add*[T](self: var\
+    \ RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
+    \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
   - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim

@@ -44,9 +44,9 @@ data:
     \  else: echo 0\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   isVerificationFile: true

@@ -31,6 +31,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/modint/montgomery_impl.nim
     title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -59,20 +65,22 @@ data:
     \        st.apply(l, r, (mint(b), mint(c)))\n    else:\n        let i = ii()\n\
     \        echo st[i]\n"
   dependsOn:
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/collections/dualsegtree.nim
-  - cplib/collections/dualsegtree.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/utils/backwards_index.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/collections/dualsegtree.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/collections/dualsegtree.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/collections/dualsegtree/rangeaffinepointget_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/dualsegtree/rangeaffinepointget_test.nim
