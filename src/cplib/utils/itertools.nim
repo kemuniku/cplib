@@ -474,6 +474,66 @@ when not declared CPLIB_UTILS_ITERTOOLS:
             for code in product(toSeq(0..<n), n - 2):
                 yield prufer_decode(code)
 
+    iterator rooted_tree_levels_impl(n: int): seq[int] =
+        ## 同型を除く根付き木の深さ優先順の深さ列を列挙。1件あたり O(n)、追加領域 O(n)。
+        ## 各頂点の子部分木は、その深さ列の辞書順降順に並べる。
+        assert n >= 1, "nは1以上である必要があります"
+        var levels = toSeq(0..<n)
+        while true:
+            yield levels
+            var p = n - 1
+            while p > 0 and levels[p] == 1: dec p
+            if p == 0: break
+            var q = p - 1
+            while levels[q] != levels[p] - 1: dec q
+            # 直前の部分木の接頭辞を繰り返し、次の正規化された深さ列を作る。
+            let period = p - q
+            for i in p..<n: levels[i] = levels[i - period]
+
+    proc tree_from_levels_impl(levels: seq[int]): UnWeightedUnDirectedGraph =
+        ## 深さ優先順の深さ列を、同じ順に頂点番号を付けた木に変換。O(n)。
+        result = initUnWeightedUnDirectedGraph(levels.len)
+        var path = newSeq[int](levels.len)
+        for v in 1..<levels.len:
+            result.add_edge(path[levels[v] - 1], v)
+            path[levels[v]] = v
+
+    iterator rooted_trees*(n: int): UnWeightedUnDirectedGraph =
+        ## n 頂点の根付き木を、根を保つ同型を除いて列挙。n >= 1、根は頂点 0。
+        ## 子の順序は区別せず、頂点番号は深さ優先順。1件あたり O(n)、追加領域 O(n)。
+        for levels in rooted_tree_levels_impl(n):
+            yield tree_from_levels_impl(levels)
+
+    proc is_unrooted_representative_impl(levels: seq[int]): bool =
+        ## 根が重心で、重心が2個なら片方の根付き表現だけを採用する。O(n)。
+        let n = levels.len
+        var halfStart = -1
+        var first = 1
+        while first < n:
+            var last = first + 1
+            while last < n and levels[last] > 1: inc last
+            let size = last - first
+            if size > n div 2: return false
+            if n mod 2 == 0 and size == n div 2: halfStart = first
+            first = last
+        if halfStart >= 0:
+            # 重心間の辺で分けた2成分の正規化された深さ列を比較する。
+            let half = n div 2
+            for i in 0..<half:
+                let index = if i < halfStart: i else: i + half
+                let left = levels[index]
+                let right = levels[halfStart + i] - 1
+                if left != right: return left > right
+        return true
+
+    iterator unlabeled_trees*(n: int): UnWeightedUnDirectedGraph =
+        ## n 頂点の根なし木を同型を除いて列挙。n >= 1、頂点番号は 0..<n。
+        ## rooted_trees と同じ根付き木列挙から重心で代表を選ぶ。ハッシュ衝突なし。
+        ## 根付き木の同型類数を R(n) として全体 O(n * R(n))、追加領域 O(n)。
+        for levels in rooted_tree_levels_impl(n):
+            if is_unrooted_representative_impl(levels):
+                yield tree_from_levels_impl(levels)
+
     iterator simple_graphs*(n: int, m: int = -1): UnWeightedUnDirectedGraph =
         ## 頂点番号 0..<n、辺数 m の単純無向グラフ。m == -1 は辺数指定なし。
         ## 同型でも頂点番号が異なるグラフは区別する。
