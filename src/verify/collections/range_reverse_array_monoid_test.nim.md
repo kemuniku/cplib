@@ -108,8 +108,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_array_monoid.nim
-  - cplib/collections/range_reverse_array_monoid.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/range_reverse_array_monoid.nim
   isVerificationFile: true
   path: verify/collections/range_reverse_array_monoid_test.nim
   requiredBy: []

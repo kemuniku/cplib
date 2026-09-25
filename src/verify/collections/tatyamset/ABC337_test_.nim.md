@@ -34,9 +34,9 @@ data:
     Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
+  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/tatyamset.nim
-  - cplib/collections/tatyamset.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC337_test_.nim
   requiredBy: []

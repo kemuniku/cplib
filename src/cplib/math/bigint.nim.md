@@ -664,19 +664,19 @@ data:
     \        result = !$result\n"
   dependsOn:
   - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
@@ -685,16 +685,16 @@ data:
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/AI/factoradic_test.nim
-  - verify/AI/factoradic_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/bigint_unit_test.nim
 documentation_of: cplib/math/bigint.nim
 layout: document
 redirect_from:

@@ -211,8 +211,8 @@ data:
   dependsOn:
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: false
   path: cplib/matrix/static_matrix_mod2.nim
   requiredBy:
@@ -223,14 +223,14 @@ data:
   verifiedWith:
   - verify/AI/static_matrix_mod2_test.nim
   - verify/AI/static_matrix_mod2_test.nim
-  - verify/matrix/matrix_rank_mod_2_static_test.nim
-  - verify/matrix/matrix_rank_mod_2_static_test.nim
-  - verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - verify/matrix/inverse_matrix_mod_2_static_test.nim
   - verify/matrix/matrix_det_mod_2_static_test.nim
   - verify/matrix/matrix_det_mod_2_static_test.nim
+  - verify/matrix/matrix_rank_mod_2_static_test.nim
+  - verify/matrix/matrix_rank_mod_2_static_test.nim
   - verify/matrix/matrix_product_mod_2_static_test.nim
   - verify/matrix/matrix_product_mod_2_static_test.nim
+  - verify/matrix/inverse_matrix_mod_2_static_test.nim
+  - verify/matrix/inverse_matrix_mod_2_static_test.nim
   - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
 documentation_of: cplib/matrix/static_matrix_mod2.nim

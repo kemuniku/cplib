@@ -59,10 +59,10 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/floor_sum_yosupo_test.nim
-  - verify/math/floor_sum_yosupo_test.nim
   - verify/AI/floor_sum_test.nim
   - verify/AI/floor_sum_test.nim
+  - verify/math/floor_sum_yosupo_test.nim
+  - verify/math/floor_sum_yosupo_test.nim
 documentation_of: cplib/math/floor_sum.nim
 layout: document
 redirect_from:

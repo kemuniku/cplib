@@ -468,71 +468,71 @@ data:
   isVerificationFile: false
   path: cplib/tree/heavylightdecomposition.nim
   requiredBy:
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/tree/auxiliarytree_test_.nim
-  - verify/tree/auxiliarytree_test_.nim
-  - verify/graph/functional_graph_test_.nim
-  - verify/graph/functional_graph_test_.nim
   - verify/graph/namori_graph_test_.nim
   - verify/graph/namori_graph_test_.nim
   - verify/graph/namori_forest_test_.nim
   - verify/graph/namori_forest_test_.nim
-  - cplib/tree/static_top_tree_dp.nim
-  - cplib/tree/static_top_tree_dp.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/graph/namori_graph.nim
-  - cplib/graph/namori_graph.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/namori_forest.nim
-  - cplib/graph/namori_forest.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/graph/functional_graph_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/auxiliarytree_test_.nim
+  - verify/tree/auxiliarytree_test_.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/namori_forest.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/namori_graph.nim
+  - cplib/graph/namori_graph.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/tree/static_top_tree_dp.nim
+  - cplib/tree/static_top_tree_dp.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
-  - verify/tree/hld/hld_lca_yosupo_test.nim
-  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
-  - verify/tree/hld/hld_la_yosupo_test.nim
-  - verify/tree/hld/hld_la_yosupo_test.nim
-  - verify/tree/point_set_tree_path_composite_sum_test.nim
-  - verify/tree/point_set_tree_path_composite_sum_test.nim
-  - verify/tree/auxiliaryweightedtree_test.nim
-  - verify/tree/auxiliaryweightedtree_test.nim
-  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
-  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
-  - verify/AI/static_top_tree_test.nim
-  - verify/AI/static_top_tree_test.nim
-  - verify/AI/heavylightdecomposition_test.nim
-  - verify/AI/heavylightdecomposition_test.nim
   - verify/AI/namori_graph_test.nim
   - verify/AI/namori_graph_test.nim
-  - verify/AI/functional_graph_test.nim
-  - verify/AI/functional_graph_test.nim
   - verify/AI/hld_forest_test.nim
   - verify/AI/hld_forest_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
-  - verify/AI/namori_forest_test.nim
-  - verify/AI/namori_forest_test.nim
-  - verify/AI/lca_test.nim
-  - verify/AI/lca_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/static_top_tree_test.nim
+  - verify/AI/static_top_tree_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/heavylightdecomposition_test.nim
+  - verify/AI/heavylightdecomposition_test.nim
+  - verify/AI/lca_test.nim
+  - verify/AI/lca_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/AI/namori_forest_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
+  - verify/tree/hld/hld_lca_yosupo_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_vertex_add_path_sum_test.nim
+  - verify/tree/hld/hld_la_yosupo_test.nim
+  - verify/tree/hld/hld_la_yosupo_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
 documentation_of: cplib/tree/heavylightdecomposition.nim
 layout: document
 redirect_from:

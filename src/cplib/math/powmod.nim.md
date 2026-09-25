@@ -79,14 +79,14 @@ data:
   timestamp: '2026-09-18 02:04:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/powmod_test.nim
+  - verify/AI/powmod_test.nim
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primitive_root_test.nim
   - verify/math/modfast_test.nim
   - verify/math/modfast_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
-  - verify/AI/primitive_root_test.nim
-  - verify/AI/primitive_root_test.nim
-  - verify/AI/powmod_test.nim
-  - verify/AI/powmod_test.nim
 documentation_of: cplib/math/powmod.nim
 layout: document
 redirect_from:

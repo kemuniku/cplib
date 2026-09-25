@@ -371,14 +371,14 @@ data:
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
-  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+  - verify/AI/lca_test.nim
+  - verify/AI/lca_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim
-  - verify/AI/lca_test.nim
-  - verify/AI/lca_test.nim
+  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
 documentation_of: cplib/tree/lca.nim
 layout: document
 redirect_from:

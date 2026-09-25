@@ -126,35 +126,35 @@ data:
   requiredBy:
   - verify/tree/prufer_abc328e_test_.nim
   - verify/tree/prufer_abc328e_test_.nim
-  - cplib/utils/itertools.nim
-  - cplib/utils/itertools.nim
   - cplib/utils/random_helper.nim
   - cplib/utils/random_helper.nim
+  - cplib/utils/itertools.nim
+  - cplib/utils/itertools.nim
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulater_test.nim
   - verify/utils/itertools/accumulatedr_test.nim
   - verify/utils/itertools/accumulatedr_test.nim
   - verify/utils/itertools/accumulatedr_2_test.nim
   - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulate_test.nim
   - verify/utils/itertools/accumulate_test.nim
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/AI/random_helper_test.nim
-  - verify/AI/random_helper_test.nim
-  - verify/AI/itertools_test.nim
-  - verify/AI/itertools_test.nim
-  - verify/AI/itertools_enumeration_test.nim
-  - verify/AI/itertools_enumeration_test.nim
-  - verify/AI/planar_graph_test.nim
-  - verify/AI/planar_graph_test.nim
   - verify/AI/prufer_test.nim
   - verify/AI/prufer_test.nim
+  - verify/AI/itertools_enumeration_test.nim
+  - verify/AI/itertools_enumeration_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/planar_graph_test.nim
+  - verify/AI/planar_graph_test.nim
+  - verify/AI/random_helper_test.nim
+  - verify/AI/random_helper_test.nim
 documentation_of: cplib/tree/prufer.nim
 layout: document
 redirect_from:

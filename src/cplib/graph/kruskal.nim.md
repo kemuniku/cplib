@@ -74,10 +74,10 @@ data:
     \        for (c,i,j) in edges:\n            if not uf.issame(i,j):\n         \
     \       result.add_edge(i,j,c)\n                uf.unite(i,j)\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: false
@@ -86,10 +86,10 @@ data:
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/kruskal_test.nim
-  - verify/AI/kruskal_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/kruskal_test.nim
+  - verify/AI/kruskal_test.nim
 documentation_of: cplib/graph/kruskal.nim
 layout: document
 redirect_from:

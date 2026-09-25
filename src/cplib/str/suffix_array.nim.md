@@ -315,65 +315,65 @@ data:
   isVerificationFile: false
   path: cplib/str/suffix_array.nim
   requiredBy:
-  - verify/str/static_string/static_string_count_test_.nim
-  - verify/str/static_string/static_string_count_test_.nim
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
+  - verify/str/static_string/static_string_count_test_.nim
+  - verify/str/static_string/static_string_count_test_.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
-  - cplib/str/edit_distance.nim
-  - cplib/str/edit_distance.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/str/merged_static_string.nim
   - cplib/str/repeated_static_string.nim
   - cplib/str/repeated_static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/str/merged_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
   timestamp: '2026-09-17 19:04:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
-  - verify/str/edit_distance_test.nim
-  - verify/str/edit_distance_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
-  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/suffix_array_test.nim
-  - verify/str/suffix_array_test.nim
-  - verify/AI/merged_static_string_test.nim
-  - verify/AI/merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
-  - verify/AI/compressed_trie_test.nim
-  - verify/AI/compressed_trie_test.nim
+  - verify/AI/static_string_sort_test.nim
+  - verify/AI/static_string_sort_test.nim
+  - verify/AI/static_string_specialization_test.nim
+  - verify/AI/static_string_specialization_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/edit_distance_test.nim
   - verify/AI/edit_distance_test.nim
-  - verify/AI/static_string_specialization_test.nim
-  - verify/AI/static_string_specialization_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/compressed_trie_test.nim
+  - verify/AI/compressed_trie_test.nim
   - verify/AI/static_string_test.nim
   - verify/AI/static_string_test.nim
-  - verify/AI/static_string_sort_test.nim
-  - verify/AI/static_string_sort_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/str/edit_distance_test.nim
+  - verify/str/edit_distance_test.nim
+  - verify/str/suffix_array_test.nim
+  - verify/str/suffix_array_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
 documentation_of: cplib/str/suffix_array.nim
 layout: document
 redirect_from:

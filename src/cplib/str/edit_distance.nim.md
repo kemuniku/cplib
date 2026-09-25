@@ -80,20 +80,20 @@ data:
     \ n and x == n:\n                    return edits\n            swap(previous,\
     \ current)\n        return -1\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/edit_distance.nim
   requiredBy: []
   timestamp: '2026-09-17 22:28:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/edit_distance_test.nim
-  - verify/str/edit_distance_test.nim
   - verify/AI/edit_distance_test.nim
   - verify/AI/edit_distance_test.nim
+  - verify/str/edit_distance_test.nim
+  - verify/str/edit_distance_test.nim
 documentation_of: cplib/str/edit_distance.nim
 layout: document
 redirect_from:

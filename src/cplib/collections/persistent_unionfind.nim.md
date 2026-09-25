@@ -109,10 +109,10 @@ data:
   verifiedWith:
   - verify/collections/persistent_unionfind_test.nim
   - verify/collections/persistent_unionfind_test.nim
-  - verify/AI/persistent_unionfind_test.nim
-  - verify/AI/persistent_unionfind_test.nim
   - verify/AI/persistent_unionfind_random_test.nim
   - verify/AI/persistent_unionfind_random_test.nim
+  - verify/AI/persistent_unionfind_test.nim
+  - verify/AI/persistent_unionfind_test.nim
 documentation_of: cplib/collections/persistent_unionfind.nim
 layout: document
 redirect_from:

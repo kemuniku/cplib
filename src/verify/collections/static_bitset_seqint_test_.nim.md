@@ -37,9 +37,9 @@ data:
     \nvar ans = 0\nfor i in 0..<(N-1):\n    for j in (i+1)..<N:\n        if A[i][j]:\n\
     \            ans += (A[i]&A[j]).popcount()\necho (ans div 3)\n"
   dependsOn:
-  - cplib/collections/staticbitset.nim
-  - cplib/collections/staticbitset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/staticbitset.nim
+  - cplib/collections/staticbitset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/static_bitset_seqint_test_.nim

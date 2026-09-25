@@ -80,12 +80,12 @@ data:
   verifiedWith:
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
   - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
   - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
   - verify/convolution/min_plus_convolution_convex_convex_test.nim
   - verify/convolution/min_plus_convolution_convex_convex_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
   - verify/AI/min_plus_convolution_test.nim
   - verify/AI/min_plus_convolution_test.nim
 documentation_of: cplib/utils/monotone_minima.nim

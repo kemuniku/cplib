@@ -141,10 +141,10 @@ data:
   timestamp: '2026-09-17 19:05:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tmpl/replayable_input_many_aplusb_test.nim
-  - verify/tmpl/replayable_input_many_aplusb_test.nim
   - verify/AI/replayable_input_test.nim
   - verify/AI/replayable_input_test.nim
+  - verify/tmpl/replayable_input_many_aplusb_test.nim
+  - verify/tmpl/replayable_input_many_aplusb_test.nim
 documentation_of: cplib/tmpl/replayable_input.nim
 layout: document
 redirect_from:

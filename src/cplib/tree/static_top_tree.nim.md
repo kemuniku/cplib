@@ -131,9 +131,9 @@ data:
     O(N log N)\n        return initStaticTopTree(initHldFromParent(parent, root))\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree.nim
   requiredBy:
@@ -144,12 +144,12 @@ data:
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/static_top_tree_test.nim
+  - verify/AI/static_top_tree_test.nim
   - verify/tree/point_set_tree_path_composite_sum_test.nim
   - verify/tree/point_set_tree_path_composite_sum_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
-  - verify/AI/static_top_tree_test.nim
-  - verify/AI/static_top_tree_test.nim
 documentation_of: cplib/tree/static_top_tree.nim
 layout: document
 redirect_from:

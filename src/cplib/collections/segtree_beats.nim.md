@@ -174,10 +174,10 @@ data:
   - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  - verify/AI/segtree_beats_test.nim
-  - verify/AI/segtree_beats_test.nim
   - verify/AI/segtree_beats_template_test.nim
   - verify/AI/segtree_beats_template_test.nim
+  - verify/AI/segtree_beats_test.nim
+  - verify/AI/segtree_beats_test.nim
 documentation_of: cplib/collections/segtree_beats.nim
 layout: document
 redirect_from:

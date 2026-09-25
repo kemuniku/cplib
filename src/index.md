@@ -833,6 +833,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/monotone_minima.nim
       title: cplib/utils/monotone_minima.nim
+    - icon: ':warning:'
+      path: cplib/utils/oeis.nim
+      title: cplib/utils/oeis.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/project_selection.nim
       title: cplib/utils/project_selection.nim

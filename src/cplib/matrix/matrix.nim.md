@@ -242,18 +242,18 @@ data:
   verifiedWith:
   - verify/AI/matrix_test.nim
   - verify/AI/matrix_test.nim
-  - verify/matrix/matrix_unit_test.nim
-  - verify/matrix/matrix_unit_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_avx2_unit_test.nim
-  - verify/matrix/matrix_product_avx2_unit_test.nim
   - verify/matrix/matrix_zoistring_test.nim
   - verify/matrix/matrix_zoistring_test.nim
-  - verify/matrix/matrix_product_avx2_test.nim
-  - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
   - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_unit_test.nim
+  - verify/matrix/matrix_unit_test.nim
 documentation_of: cplib/matrix/matrix.nim
 layout: document
 redirect_from:

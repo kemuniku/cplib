@@ -36,9 +36,9 @@ data:
     \    s.incl(P[i])\n    ans.add(s[-K-1])\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
+  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/tatyamset.nim
-  - cplib/collections/tatyamset.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC234D_access_test_.nim
   requiredBy: []

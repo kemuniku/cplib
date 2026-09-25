@@ -590,22 +590,22 @@ data:
     \ reduced.determinant,\n            matrixModulus[T](), T is MontgomeryModint,\
     \ true)\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
+  - cplib/utils/backwards_index.nim
   - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/utils/backwards_index.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/math/isqrt.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2.nim
   requiredBy:
@@ -618,12 +618,12 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
-  - verify/matrix/matrix_avx2_gc_test.nim
-  - verify/matrix/matrix_avx2_gc_test.nim
 documentation_of: cplib/matrix/matrix_avx2.nim
 layout: document
 redirect_from:

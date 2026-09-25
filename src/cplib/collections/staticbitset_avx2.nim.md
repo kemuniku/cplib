@@ -577,12 +577,12 @@ data:
     \    when size > 0:\n            result = avxAny(unsafeAddr x.bits[0], size.csize_t)\
     \ != 0\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/staticbitset_avx2.nim
   requiredBy: []

@@ -181,56 +181,56 @@ data:
     \ 3)\nm[0][^1] = 42\nm[0][^1] += 1\ndoAssert m[0][2].val == 43\nlet frozen = m\n\
     let row = frozen[0]\ndoAssert row[^1].val == 43\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/collections/bitset_avx512.nim
-  - cplib/collections/staticbitset_avx512.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/bitset_avx2.nim
   - cplib/modint/modint.nim
-  - cplib/collections/staticbitset_avx512.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/staticbitset_avx2.nim
-  - cplib/collections/staticbitset_avx2.nim
-  - cplib/collections/bitset_avx512.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/bitset_avx2.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/modint/modint.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/collections/bitset_avx512.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/bitset_avx512.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/math/isqrt.nim
+  - cplib/collections/staticbitset_avx512.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/collections/bitset_avx2.nim
+  - cplib/collections/staticbitset_avx2.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/staticbitset_avx512.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/staticbitset_avx2.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/utils/backwards_index_simd_test.nim
   requiredBy: []

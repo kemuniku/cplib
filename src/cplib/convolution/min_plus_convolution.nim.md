@@ -183,9 +183,9 @@ data:
     \ 0, b.len, result, columns, indices)\n"
   dependsOn:
   - cplib/utils/smawk.nim
-  - cplib/utils/monotone_minima.nim
-  - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
+  - cplib/utils/monotone_minima.nim
+  - cplib/utils/monotone_minima.nim
   isVerificationFile: false
   path: cplib/convolution/min_plus_convolution.nim
   requiredBy: []
@@ -194,12 +194,12 @@ data:
   verifiedWith:
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
   - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
   - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
   - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
   - verify/convolution/min_plus_convolution_convex_convex_test.nim
   - verify/convolution/min_plus_convolution_convex_convex_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
   - verify/AI/min_plus_convolution_test.nim
   - verify/AI/min_plus_convolution_test.nim
 documentation_of: cplib/convolution/min_plus_convolution.nim

@@ -468,14 +468,14 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/game_test.nim
+  - verify/utils/game_test.nim
   - verify/utils/game_optimal_play_test.nim
   - verify/utils/game_optimal_play_test.nim
   - verify/utils/game_warning_test.nim
   - verify/utils/game_warning_test.nim
   - verify/utils/game_grundy_test.nim
   - verify/utils/game_grundy_test.nim
-  - verify/utils/game_test.nim
-  - verify/utils/game_test.nim
 documentation_of: cplib/utils/game.nim
 layout: document
 redirect_from:

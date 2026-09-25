@@ -75,10 +75,10 @@ data:
   timestamp: '2026-07-09 09:03:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/run_enumerate_yosupo_test.nim
-  - verify/str/run_enumerate_yosupo_test.nim
   - verify/AI/run_enumerate_test.nim
   - verify/AI/run_enumerate_test.nim
+  - verify/str/run_enumerate_yosupo_test.nim
+  - verify/str/run_enumerate_yosupo_test.nim
 documentation_of: cplib/str/run_enumerate.nim
 layout: document
 redirect_from:

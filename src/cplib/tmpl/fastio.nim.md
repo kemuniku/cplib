@@ -850,85 +850,85 @@ data:
   isVerificationFile: false
   path: cplib/tmpl/fastio.nim
   requiredBy:
-  - verify/str/merged_static_string.nim
-  - verify/str/merged_static_string.nim
   - verify/matrix/linear_algebra/system_mod2_driver.nim
   - verify/matrix/linear_algebra/system_mod2_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/str/merged_static_string.nim
+  - verify/str/merged_static_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
   timestamp: '2026-09-17 21:06:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/tmpl/fastio_many_aplusb_test.nim
-  - verify/tmpl/fastio_many_aplusb_test.nim
-  - verify/tmpl/fastio_global_checksum_test.nim
-  - verify/tmpl/fastio_global_checksum_test.nim
-  - verify/tmpl/replayable_input_many_aplusb_test.nim
-  - verify/tmpl/replayable_input_many_aplusb_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/collections/fenwick_tree_test.nim
-  - verify/collections/fenwick_tree_test.nim
-  - verify/collections/fenwick_tree_avx2_test.nim
-  - verify/collections/fenwick_tree_avx2_test.nim
-  - verify/tree/lca/lca_from_parent_yosupo_test.nim
-  - verify/tree/lca/lca_from_parent_yosupo_test.nim
-  - verify/graph/lowlink_bridges_test.nim
-  - verify/graph/lowlink_bridges_test.nim
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/two_edge_connected_components_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/general_matching_test.nim
-  - verify/graph/general_matching_test.nim
-  - verify/graph/cycle_detection_undirected_test.nim
-  - verify/graph/cycle_detection_undirected_test.nim
-  - verify/graph/biconnected_components_test.nim
-  - verify/graph/biconnected_components_test.nim
   - verify/graph/cycle_detection_test.nim
   - verify/graph/cycle_detection_test.nim
   - verify/graph/hopcroft_karp_test.nim
   - verify/graph/hopcroft_karp_test.nim
-  - verify/graph/maxflow_bipartitematching_test.nim
-  - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/lowlink_articulation_test.nim
   - verify/graph/lowlink_articulation_test.nim
+  - verify/graph/biconnected_components_test.nim
+  - verify/graph/biconnected_components_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/maxflow_bipartitematching_test.nim
+  - verify/graph/maxflow_bipartitematching_test.nim
+  - verify/graph/push_relabel_bipartitematching_test.nim
+  - verify/graph/push_relabel_bipartitematching_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/push_relabel_bipartitematching_test.nim
-  - verify/graph/push_relabel_bipartitematching_test.nim
+  - verify/graph/general_matching_test.nim
+  - verify/graph/general_matching_test.nim
+  - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/collections/fenwick_tree_avx2_test.nim
+  - verify/collections/fenwick_tree_avx2_test.nim
+  - verify/collections/fenwick_tree_test.nim
+  - verify/collections/fenwick_tree_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/fastio_test.nim
   - verify/AI/fastio_test.nim
   - verify/AI/fastio_io_test.nim
   - verify/AI/fastio_io_test.nim
-  - verify/matrix/matrix_avx2_test.nim
-  - verify/matrix/matrix_avx2_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/tmpl/fastio_global_checksum_test.nim
+  - verify/tmpl/fastio_global_checksum_test.nim
+  - verify/tmpl/replayable_input_many_aplusb_test.nim
+  - verify/tmpl/replayable_input_many_aplusb_test.nim
+  - verify/tmpl/fastio_many_aplusb_test.nim
+  - verify/tmpl/fastio_many_aplusb_test.nim
   - verify/matrix/matrix_product_avx2_test.nim
   - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/tree/lca/lca_from_parent_yosupo_test.nim
+  - verify/tree/lca/lca_from_parent_yosupo_test.nim
 documentation_of: cplib/tmpl/fastio.nim
 layout: document
 redirect_from:

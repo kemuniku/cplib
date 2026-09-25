@@ -70,14 +70,14 @@ data:
     \ = false\ntry:\n    discard cmp(one[0..<0], another[0..<0])\nexcept AssertionDefect:\n\
     \    rejected = true\ndoAssert rejected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
   - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/AI/static_string_specialization_test.nim
   requiredBy: []

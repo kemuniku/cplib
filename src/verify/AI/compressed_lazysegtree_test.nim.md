@@ -159,11 +159,11 @@ data:
     \ st.get_all() == \"XQQQ\"\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/compressed_lazysegtree.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_lazysegtree.nim
   isVerificationFile: true

@@ -38,9 +38,9 @@ data:
     if G.isDAG():\n    echo \"Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/topologicalsort.nim
   isVerificationFile: false
   path: verify/graph/dynamic/topologicalsort_1_test_.nim
   requiredBy: []

@@ -187,8 +187,8 @@ data:
     \   body\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
@@ -198,18 +198,6 @@ data:
   timestamp: '2026-09-17 21:22:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/get_palindromes_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/hash_string/hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
@@ -222,8 +210,20 @@ data:
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
+  - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/hash_string/hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/get_palindromes_test.nim
+  - verify/str/get_palindromes_test.nim
 documentation_of: cplib/tmpl/sheep.nim
 layout: document
 redirect_from:

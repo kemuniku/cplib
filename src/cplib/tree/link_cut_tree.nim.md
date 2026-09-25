@@ -125,10 +125,10 @@ data:
     \ != nil and child != 0:\n            self.nodes[v].virtual = self.merge(self.nodes[v].virtual,\
     \ self.inverse(self.nodes[child].all))\n\n    declareLinkCutTreeOperations(LinkCutTree)\n"
   dependsOn:
-  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/utils/backwards_index.nim
   - cplib/tree/private/link_cut_tree_base.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: false
   path: cplib/tree/link_cut_tree.nim
   requiredBy: []
@@ -139,12 +139,12 @@ data:
   - verify/utils/backwards_index_collections_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
-  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
   - verify/tree/link_cut_tree/link_cut_tree_test.nim
   - verify/tree/link_cut_tree/link_cut_tree_test.nim
   - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
   - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
 documentation_of: cplib/tree/link_cut_tree.nim
 layout: document
 redirect_from:

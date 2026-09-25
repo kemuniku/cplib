@@ -105,12 +105,12 @@ data:
     \ openArray[int], zero, inf: T): T = steiner_tree_mincost_impl(g, terminal, zero,\
     \ inf)\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/utils/bititers.nim
+  - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:
@@ -119,12 +119,12 @@ data:
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/steiner_tree_test.nim
-  - verify/AI/steiner_tree_test.nim
-  - verify/AI/graph_edge_id_test.nim
-  - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/steiner_tree_test.nim
+  - verify/AI/steiner_tree_test.nim
 documentation_of: cplib/graph/steiner_tree.nim
 layout: document
 redirect_from:

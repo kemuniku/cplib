@@ -124,12 +124,12 @@ data:
     \ -\n            self.sum_less_rank(l, r, self.keys.lowerBound(lower))\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/fenwick_avx2.nim
   isVerificationFile: false
   path: cplib/collections/waveletmatrix_fenwick.nim

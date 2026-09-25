@@ -57,9 +57,9 @@ data:
     '
   dependsOn:
   - cplib/geometry/base.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/AI/angle_test.nim
   requiredBy: []

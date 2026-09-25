@@ -42,9 +42,9 @@ data:
     \            seg_add[x] = seg_add[x] + 1\n        li += 1\n    ans[id] = seg_add[l..<r]\n\
     echo ans.join(\"\\n\")\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/collections/segtree/segtree_maxright_yuki878_test.nim

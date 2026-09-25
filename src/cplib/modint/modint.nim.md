@@ -833,272 +833,272 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
-  - verify/modint/barrett/dpr_dynamic_test_.nim
-  - verify/modint/barrett/dpr_dynamic_test_.nim
-  - verify/modint/barrett/abc277g_static_test_.nim
-  - verify/modint/barrett/abc277g_static_test_.nim
   - verify/modint/barrett/keyence2021_dynamic_test_.nim
   - verify/modint/barrett/keyence2021_dynamic_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
-  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/dpr_dynamic_test_.nim
+  - verify/modint/barrett/dpr_dynamic_test_.nim
   - verify/modint/barrett/abc277g_dynamic_test_.nim
   - verify/modint/barrett/abc277g_dynamic_test_.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
-  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
   - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
   - verify/modint/barrett/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
+  - verify/modint/barrett/keyence2021_static_staticinv_test_.nim
+  - verify/modint/barrett/abc277g_static_test_.nim
+  - verify/modint/barrett/abc277g_static_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
+  - verify/modint/barrett/dpr_static_test_.nim
   - verify/modint/barrett/keyence2021_static_test_.nim
   - verify/modint/barrett/keyence2021_static_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/montgomery/dpr_dynamic_test_.nim
-  - verify/modint/montgomery/abc277g_static_test_.nim
-  - verify/modint/montgomery/abc277g_static_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_test_.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
-  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/modint/montgomery/dpr_dynamic_test_.nim
   - verify/modint/montgomery/abc277g_dynamic_test_.nim
   - verify/modint/montgomery/abc277g_dynamic_test_.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
-  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
   - verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
+  - verify/modint/montgomery/keyence2021_static_staticinv_test_.nim
+  - verify/modint/montgomery/abc277g_static_test_.nim
+  - verify/modint/montgomery/abc277g_static_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
+  - verify/modint/montgomery/dpr_static_test_.nim
   - verify/modint/montgomery/keyence2021_static_test_.nim
   - verify/modint/montgomery/keyence2021_static_test_.nim
-  - verify/tree/diameter_path_dynamic_test_.nim
-  - verify/tree/diameter_path_dynamic_test_.nim
-  - verify/tree/diameter_path_static_test_.nim
-  - verify/tree/diameter_path_static_test_.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
-  - cplib/math/factoradic.nim
-  - cplib/math/factoradic.nim
-  - cplib/math/many_factorials.nim
-  - cplib/math/many_factorials.nim
-  - cplib/math/modfast.nim
-  - cplib/math/modfast.nim
-  - cplib/math/bigint.nim
-  - cplib/math/bigint.nim
-  - cplib/convolution/convolution_old.nim
-  - cplib/convolution/convolution_old.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
+  - verify/tree/diameter_path_dynamic_test_.nim
+  - verify/tree/diameter_path_dynamic_test_.nim
+  - verify/tree/diameter_path_static_test_.nim
+  - verify/tree/diameter_path_static_test_.nim
   - cplib/fps/composition.nim
   - cplib/fps/composition.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
   - cplib/fps/berlekamp_massey.nim
   - cplib/fps/berlekamp_massey.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/fps/power_projection.nim
-  - cplib/fps/power_projection.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/fps.nim
+  - cplib/fps/fps.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
   - cplib/fps/product_tree.nim
   - cplib/fps/bmbm.nim
   - cplib/fps/bmbm.nim
-  - cplib/fps/fps.nim
-  - cplib/fps/fps.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
   - cplib/fps/bostan_mori.nim
   - cplib/fps/bostan_mori.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/power_projection.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/polynomial_interpolation.nim
-  - cplib/str/wildcard_matching.nim
-  - cplib/str/wildcard_matching.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution_old.nim
+  - cplib/convolution/convolution_old.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/ntt.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/many_factorials.nim
+  - cplib/math/many_factorials.nim
+  - cplib/math/factoradic.nim
+  - cplib/math/factoradic.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/static_matrix_avx2.nim
-  - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/str/wildcard_matching.nim
+  - cplib/str/wildcard_matching.nim
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/modfast_test.nim
-  - verify/math/modfast_test.nim
-  - verify/math/many_factorials_online_test.nim
-  - verify/math/many_factorials_online_test.nim
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/many_factorials_test.nim
-  - verify/math/many_factorials_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/generalized_floor_sum_test.nim
-  - verify/math/generalized_floor_sum_test.nim
+  - verify/fps/relaxed_exp_of_formal_power_series_test.nim
+  - verify/fps/relaxed_exp_of_formal_power_series_test.nim
+  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/fps/composition_of_formal_power_series_large_test.nim
+  - verify/fps/composition_of_formal_power_series_large_test.nim
+  - verify/fps/relaxed_log_of_formal_power_series_test.nim
+  - verify/fps/relaxed_log_of_formal_power_series_test.nim
+  - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/inv_of_formal_power_series_test.nim
+  - verify/fps/inv_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
+  - verify/fps/exp_of_formal_power_series_test.nim
+  - verify/fps/exp_of_formal_power_series_test.nim
+  - verify/fps/relaxed_inv_of_formal_power_series_test.nim
+  - verify/fps/relaxed_inv_of_formal_power_series_test.nim
+  - verify/fps/pow_of_formal_power_series_test.nim
+  - verify/fps/pow_of_formal_power_series_test.nim
+  - verify/fps/polynomial_taylor_shift_test.nim
+  - verify/fps/polynomial_taylor_shift_test.nim
+  - verify/fps/product_of_polynomial_sequence_test.nim
+  - verify/fps/product_of_polynomial_sequence_test.nim
+  - verify/fps/composition_of_formal_power_series_test.nim
+  - verify/fps/composition_of_formal_power_series_test.nim
+  - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
+  - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
+  - verify/fps/convolution_mod_test.nim
+  - verify/fps/convolution_mod_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/division_of_polynomials_test.nim
+  - verify/fps/division_of_polynomials_test.nim
+  - verify/fps/polynomial_interpolation_test.nim
+  - verify/fps/polynomial_interpolation_test.nim
+  - verify/fps/find_linear_recurrence_test.nim
+  - verify/fps/find_linear_recurrence_test.nim
+  - verify/fps/relaxed_pow_of_formal_power_series_test.nim
+  - verify/fps/relaxed_pow_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/sqrt_of_formal_power_series_test.nim
+  - verify/fps/sqrt_of_formal_power_series_test.nim
+  - verify/fps/multipoint_evaluation_test.nim
+  - verify/fps/multipoint_evaluation_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
-  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
-  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
+  - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
+  - verify/modint/check_zerodivision_test.nim
+  - verify/modint/check_zerodivision_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/integer_operation_test.nim
   - verify/modint/montgomery_equality_test.nim
   - verify/modint/montgomery_equality_test.nim
-  - verify/modint/check_zerodivision_test.nim
-  - verify/modint/check_zerodivision_test.nim
-  - verify/fps/composition_of_formal_power_series_test.nim
-  - verify/fps/composition_of_formal_power_series_test.nim
-  - verify/fps/polynomial_interpolation_test.nim
-  - verify/fps/polynomial_interpolation_test.nim
-  - verify/fps/polynomial_taylor_shift_test.nim
-  - verify/fps/polynomial_taylor_shift_test.nim
-  - verify/fps/pow_of_formal_power_series_test.nim
-  - verify/fps/pow_of_formal_power_series_test.nim
-  - verify/fps/exp_of_formal_power_series_test.nim
-  - verify/fps/exp_of_formal_power_series_test.nim
-  - verify/fps/convolution_mod_test.nim
-  - verify/fps/convolution_mod_test.nim
-  - verify/fps/division_of_polynomials_test.nim
-  - verify/fps/division_of_polynomials_test.nim
-  - verify/fps/multipoint_evaluation_test.nim
-  - verify/fps/multipoint_evaluation_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - verify/fps/inv_of_formal_power_series_test.nim
-  - verify/fps/inv_of_formal_power_series_test.nim
-  - verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - verify/fps/relaxed_exp_of_formal_power_series_test.nim
-  - verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - verify/fps/relaxed_log_of_formal_power_series_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - verify/fps/relaxed_inv_of_formal_power_series_test.nim
-  - verify/fps/product_of_polynomial_sequence_test.nim
-  - verify/fps/product_of_polynomial_sequence_test.nim
-  - verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - verify/fps/relaxed_pow_of_formal_power_series_test.nim
-  - verify/fps/find_linear_recurrence_test.nim
-  - verify/fps/find_linear_recurrence_test.nim
-  - verify/fps/sqrt_of_formal_power_series_test.nim
-  - verify/fps/sqrt_of_formal_power_series_test.nim
-  - verify/fps/log_of_formal_power_series_test.nim
-  - verify/fps/log_of_formal_power_series_test.nim
-  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - verify/fps/relaxed_sqrt_of_formal_power_series_test.nim
-  - verify/fps/composition_of_formal_power_series_large_test.nim
-  - verify/fps/composition_of_formal_power_series_large_test.nim
-  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/AI/wildcard_matching_test.nim
-  - verify/AI/wildcard_matching_test.nim
-  - verify/AI/lazysegtree_template_test.nim
-  - verify/AI/lazysegtree_template_test.nim
-  - verify/AI/combination_test.nim
-  - verify/AI/combination_test.nim
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_elementary_test.nim
-  - verify/AI/sparse_fps_elementary_test.nim
-  - verify/AI/sparse_fps_elementary_test.nim
-  - verify/AI/berlekamp_massey_test.nim
-  - verify/AI/berlekamp_massey_test.nim
   - verify/AI/gcd_lcm_convolution_test.nim
   - verify/AI/gcd_lcm_convolution_test.nim
   - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_composite_modulus_test.nim
-  - verify/AI/shift_of_sampling_points_test.nim
-  - verify/AI/shift_of_sampling_points_test.nim
-  - verify/AI/sheep_test.nim
-  - verify/AI/sheep_test.nim
-  - verify/AI/factoradic_test.nim
-  - verify/AI/factoradic_test.nim
   - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_old_test.nim
-  - verify/AI/convolution_test.nim
-  - verify/AI/convolution_test.nim
-  - verify/AI/fps_test.nim
-  - verify/AI/fps_test.nim
-  - verify/AI/many_factorials_test.nim
-  - verify/AI/many_factorials_test.nim
-  - verify/AI/bitwise_and_convolution_test.nim
-  - verify/AI/bitwise_and_convolution_test.nim
-  - verify/AI/modint_test.nim
-  - verify/AI/modint_test.nim
-  - verify/AI/mo_test.nim
-  - verify/AI/mo_test.nim
+  - verify/AI/berlekamp_massey_test.nim
+  - verify/AI/berlekamp_massey_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
+  - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/factoradic_signed_test.nim
-  - verify/AI/ntt_test.nim
-  - verify/AI/ntt_test.nim
+  - verify/AI/sheep_test.nim
+  - verify/AI/sheep_test.nim
+  - verify/AI/wildcard_matching_test.nim
+  - verify/AI/wildcard_matching_test.nim
+  - verify/AI/fps_test.nim
+  - verify/AI/fps_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/modint_test.nim
+  - verify/AI/modint_test.nim
   - verify/AI/bmbm_test.nim
   - verify/AI/bmbm_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_test.nim
-  - verify/matrix/matrix_product_avx2_unit_test.nim
-  - verify/matrix/matrix_product_avx2_unit_test.nim
-  - verify/matrix/matrix_avx2_test.nim
-  - verify/matrix/matrix_avx2_test.nim
-  - verify/matrix/matrix_avx2_unit_test.nim
-  - verify/matrix/matrix_avx2_unit_test.nim
+  - verify/AI/many_factorials_test.nim
+  - verify/AI/many_factorials_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/ntt_test.nim
+  - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/bitwise_and_convolution_test.nim
+  - verify/AI/bitwise_and_convolution_test.nim
+  - verify/AI/mo_test.nim
+  - verify/AI/mo_test.nim
+  - verify/AI/lazysegtree_template_test.nim
+  - verify/AI/lazysegtree_template_test.nim
+  - verify/AI/combination_test.nim
+  - verify/AI/combination_test.nim
+  - verify/AI/convolution_test.nim
+  - verify/AI/convolution_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_test.nim
+  - verify/math/many_factorials_test.nim
+  - verify/math/generalized_floor_sum_test.nim
+  - verify/math/generalized_floor_sum_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_compatibility_test.nim
   - verify/matrix/matrix_avx2_compatibility_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
+  - verify/matrix/matrix_pow_test.nim
+  - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_product_avx2_test.nim
   - verify/matrix/matrix_product_avx2_test.nim
   - verify/matrix/matrix_avx2_field_differential_test.nim
   - verify/matrix/matrix_avx2_field_differential_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/matrix/matrix_avx2_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_product_test.nim
+  - verify/matrix/matrix_avx2_unit_test.nim
+  - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/static_matrix_avx2_unit_test.nim
   - verify/matrix/static_matrix_avx2_unit_test.nim
-  - verify/matrix/matrix_avx2_gc_test.nim
-  - verify/matrix/matrix_avx2_gc_test.nim
-  - verify/matrix/matrix_pow_test.nim
-  - verify/matrix/matrix_pow_test.nim
 documentation_of: cplib/modint/modint.nim
 layout: document
 redirect_from:

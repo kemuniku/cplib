@@ -76,10 +76,10 @@ data:
   timestamp: '2026-09-04 08:24:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/palindromic_tree_test.nim
-  - verify/str/palindromic_tree_test.nim
   - verify/AI/palindromic_tree_test.nim
   - verify/AI/palindromic_tree_test.nim
+  - verify/str/palindromic_tree_test.nim
+  - verify/str/palindromic_tree_test.nim
 documentation_of: cplib/str/palindromic_tree.nim
 layout: document
 redirect_from:

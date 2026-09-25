@@ -319,10 +319,10 @@ data:
   verifiedWith:
   - verify/graph/general_matching_test.nim
   - verify/graph/general_matching_test.nim
-  - verify/AI/general_matching_test.nim
-  - verify/AI/general_matching_test.nim
   - verify/AI/general_matching_tree_union_test.nim
   - verify/AI/general_matching_tree_union_test.nim
+  - verify/AI/general_matching_test.nim
+  - verify/AI/general_matching_test.nim
 documentation_of: cplib/graph/general_matching.nim
 layout: document
 redirect_from:

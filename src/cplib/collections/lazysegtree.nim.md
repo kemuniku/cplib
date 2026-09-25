@@ -215,18 +215,18 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
-  - verify/collections/lazysegtree/get_all_test.nim
-  - verify/collections/lazysegtree/get_all_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/binary_search_test.nim
   - verify/collections/lazysegtree/binary_search_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/AI/lazysegtree_test.nim
-  - verify/AI/lazysegtree_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/get_all_test.nim
+  - verify/collections/lazysegtree/get_all_test.nim
   - verify/AI/compressed_lazysegtree_test.nim
   - verify/AI/compressed_lazysegtree_test.nim
+  - verify/AI/lazysegtree_test.nim
+  - verify/AI/lazysegtree_test.nim
 documentation_of: cplib/collections/lazysegtree.nim
 layout: document
 redirect_from:

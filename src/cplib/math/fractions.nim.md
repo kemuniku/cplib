@@ -15,6 +15,12 @@ data:
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
   - icon: ':warning:'
+    path: cplib/utils/oeis.nim
+    title: cplib/utils/oeis.nim
+  - icon: ':warning:'
+    path: cplib/utils/oeis.nim
+    title: cplib/utils/oeis.nim
+  - icon: ':warning:'
     path: verify/geometry/convex_hull_abc286ex_test_.nim
     title: verify/geometry/convex_hull_abc286ex_test_.nim
   - icon: ':warning:'
@@ -243,55 +249,57 @@ data:
   isVerificationFile: false
   path: cplib/math/fractions.nim
   requiredBy:
-  - verify/math/fractions_abc225e_test_.nim
-  - verify/math/fractions_abc225e_test_.nim
-  - verify/math/fractions_abc308c_test_.nim
-  - verify/math/fractions_abc308c_test_.nim
-  - verify/math/fractions_abc226d_test_.nim
-  - verify/math/fractions_abc226d_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/math/stern_brocot_tree.nim
+  - verify/math/fractions_abc308c_test_.nim
+  - verify/math/fractions_abc308c_test_.nim
+  - verify/math/fractions_abc225e_test_.nim
+  - verify/math/fractions_abc225e_test_.nim
+  - verify/math/fractions_abc226d_test_.nim
+  - verify/math/fractions_abc226d_test_.nim
+  - cplib/utils/oeis.nim
+  - cplib/utils/oeis.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/stern_brocot_tree.nim
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/fraction_inverse_sign_test.nim
-  - verify/math/fraction_inverse_sign_test.nim
-  - verify/math/fractions_unit_test.nim
-  - verify/math/fractions_unit_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/fractions_test.nim
   - verify/AI/fractions_test.nim
+  - verify/math/fractions_unit_test.nim
+  - verify/math/fractions_unit_test.nim
+  - verify/math/fraction_inverse_sign_test.nim
+  - verify/math/fraction_inverse_sign_test.nim
 documentation_of: cplib/math/fractions.nim
 layout: document
 redirect_from:

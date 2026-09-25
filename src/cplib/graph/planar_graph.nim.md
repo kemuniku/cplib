@@ -156,10 +156,10 @@ data:
   timestamp: '2026-09-18 00:20:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/random_helper_test.nim
-  - verify/AI/random_helper_test.nim
   - verify/AI/planar_graph_test.nim
   - verify/AI/planar_graph_test.nim
+  - verify/AI/random_helper_test.nim
+  - verify/AI/random_helper_test.nim
 documentation_of: cplib/graph/planar_graph.nim
 layout: document
 redirect_from:

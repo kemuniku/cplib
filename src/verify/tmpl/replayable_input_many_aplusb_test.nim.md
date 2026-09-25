@@ -36,9 +36,9 @@ data:
     \     doAssert a + b == sums[i]\n        print(a + b)\n"
   dependsOn:
   - cplib/tmpl/replayable_input.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/tmpl/replayable_input.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/tmpl/replayable_input_many_aplusb_test.nim
   requiredBy: []

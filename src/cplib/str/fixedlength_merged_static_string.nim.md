@@ -181,14 +181,14 @@ data:
     \       result &= \" \"\n                    first = false\n                 \
     \   result &= $S.base.S[j]\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
   requiredBy:
@@ -199,10 +199,10 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
 documentation_of: cplib/str/fixedlength_merged_static_string.nim
 layout: document
 redirect_from:

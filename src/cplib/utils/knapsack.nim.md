@@ -119,18 +119,18 @@ data:
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/knapsack/solve_Bknapsack_test.nim
-  - verify/utils/knapsack/solve_Bknapsack_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
-  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
-  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/bounded_zero_count_test.nim
   - verify/utils/knapsack/bounded_zero_count_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - verify/utils/knapsack/solve_Bknapsack_test.nim
+  - verify/utils/knapsack/solve_Bknapsack_test.nim
+  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NV_test.nim
   - verify/AI/knapsack_test.nim
   - verify/AI/knapsack_test.nim
 documentation_of: cplib/utils/knapsack.nim

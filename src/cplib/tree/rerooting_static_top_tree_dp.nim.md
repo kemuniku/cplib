@@ -136,22 +136,22 @@ data:
     \      if hasUpper:\n            result = self.compressReverse(result, upper)\n\
     \        if hasLower:\n            result = self.rakeAtRoot(result, lower)\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/tree/static_top_tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/tree/rerooting_static_top_tree_dp.nim
   requiredBy: []
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/point_set_tree_path_composite_sum_test.nim
-  - verify/tree/point_set_tree_path_composite_sum_test.nim
   - verify/AI/static_top_tree_test.nim
   - verify/AI/static_top_tree_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
 documentation_of: cplib/tree/rerooting_static_top_tree_dp.nim
 layout: document
 redirect_from:

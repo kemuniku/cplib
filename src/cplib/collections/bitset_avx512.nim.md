@@ -859,54 +859,54 @@ data:
     \u3044\u307E\u3059\u3002\n        if x.size > 0:\n            result = avxAny(unsafeAddr\
     \ x.bits[0], x.size.csize_t) != 0\n\n    include cplib/collections/private/bitset_avx512_fuse\n"
   dependsOn:
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   isVerificationFile: false
   path: cplib/collections/bitset_avx512.nim
   requiredBy:
-  - cplib/str/edit_distance_bitset.nim
-  - cplib/str/edit_distance_bitset.nim
   - cplib/str/lcs_bitset.nim
   - cplib/str/lcs_bitset.nim
+  - cplib/str/edit_distance_bitset.nim
+  - cplib/str/edit_distance_bitset.nim
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
-  - verify/str/restore_lcs_bitset_test.nim
-  - verify/str/restore_lcs_bitset_test.nim
-  - verify/str/edit_distance_bitset_test.nim
-  - verify/str/edit_distance_bitset_test.nim
-  - verify/str/lcs_bitset_test.nim
-  - verify/str/lcs_bitset_test.nim
-  - verify/AI/bitset_avx512_fuse_test.nim
-  - verify/AI/bitset_avx512_fuse_test.nim
-  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
-  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
-  - verify/AI/edit_distance_bitset_test.nim
-  - verify/AI/edit_distance_bitset_test.nim
-  - verify/AI/bitset_avx512_fuse_block_test.nim
-  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
+  - verify/AI/bitset_avx512_add_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
   - verify/AI/bitset_avx512_shift_assign_test.nim
   - verify/AI/bitset_avx512_shift_assign_test.nim
-  - verify/AI/bitset_avx512_add_test.nim
-  - verify/AI/bitset_avx512_add_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/edit_distance_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
+  - verify/str/lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
 documentation_of: cplib/collections/bitset_avx512.nim
 layout: document
 redirect_from:

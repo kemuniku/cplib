@@ -36,9 +36,9 @@ data:
     \ else:\n        var l = st.lt(x)\n        var r = st.gt(x)\n        echo r.get()-l.get()\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
+  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/tatyamset.nim
-  - cplib/collections/tatyamset.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC217_gtlt_test_.nim
   requiredBy: []

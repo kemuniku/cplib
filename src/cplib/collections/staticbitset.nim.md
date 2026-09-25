@@ -165,10 +165,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/staticbitset.nim
   requiredBy:
-  - verify/collections/static_bitset_seqint_test_.nim
-  - verify/collections/static_bitset_seqint_test_.nim
   - verify/collections/static_bitset_test_.nim
   - verify/collections/static_bitset_test_.nim
+  - verify/collections/static_bitset_seqint_test_.nim
+  - verify/collections/static_bitset_seqint_test_.nim
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

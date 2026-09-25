@@ -110,10 +110,10 @@ data:
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/rooted_tree_isomorphism_classification_test.nim
-  - verify/tree/rooted_tree_isomorphism_classification_test.nim
   - verify/AI/tree_hash_test.nim
   - verify/AI/tree_hash_test.nim
+  - verify/tree/rooted_tree_isomorphism_classification_test.nim
+  - verify/tree/rooted_tree_isomorphism_classification_test.nim
 documentation_of: cplib/tree/tree_hash.nim
 layout: document
 redirect_from:

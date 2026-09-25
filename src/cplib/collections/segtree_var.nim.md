@@ -229,10 +229,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/segtree_var.nim
   requiredBy:
-  - verify/collections/segtree_var/segtree_get1item_test_.nim
-  - verify/collections/segtree_var/segtree_get1item_test_.nim
   - verify/collections/segtree_var/segtree_xor1_test_.nim
   - verify/collections/segtree_var/segtree_xor1_test_.nim
+  - verify/collections/segtree_var/segtree_get1item_test_.nim
+  - verify/collections/segtree_var/segtree_get1item_test_.nim
   - verify/collections/segtree_var/segtree_xor2_test_.nim
   - verify/collections/segtree_var/segtree_xor2_test_.nim
   timestamp: '2026-09-18 12:10:16+09:00'
@@ -240,26 +240,26 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
-  - verify/collections/segtree_var/segtree_init_with_size_test.nim
-  - verify/collections/segtree_var/segtree_init_with_size_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
-  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_RMQ_test.nim
-  - verify/collections/segtree_var/segtree_RMQ_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/segtree_newsegwith_test.nim
-  - verify/collections/segtree_var/copy_test.nim
-  - verify/collections/segtree_var/copy_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
-  - verify/collections/segtree_var/segtree_PARS_test.nim
-  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
-  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
   - verify/collections/segtree_var/segtree_static_test.nim
   - verify/collections/segtree_var/segtree_static_test.nim
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_minleft_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_init_with_size_test.nim
+  - verify/collections/segtree_var/segtree_init_with_size_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/segtree_newsegwith_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_test.nim
+  - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_RMQ_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_PARS_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/segtree_PSRC_2_test.nim
+  - verify/collections/segtree_var/copy_test.nim
+  - verify/collections/segtree_var/copy_test.nim
   - verify/AI/segtree_var_test.nim
   - verify/AI/segtree_var_test.nim
 documentation_of: cplib/collections/segtree_var.nim

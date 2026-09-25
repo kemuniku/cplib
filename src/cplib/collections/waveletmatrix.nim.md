@@ -289,10 +289,10 @@ data:
   - verify/utils/backwards_index_simd_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/waveletmatrix_test.nim
   - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
 documentation_of: cplib/collections/waveletmatrix.nim
 layout: document
 redirect_from:

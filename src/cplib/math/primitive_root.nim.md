@@ -73,16 +73,16 @@ data:
     \     flg = false\n                    break\n            if flg:\n          \
     \      return a"
   dependsOn:
-  - cplib/math/powmod.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   - cplib/math/inner_math.nim
   - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
   - cplib/math/isprime.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
   isVerificationFile: false
   path: cplib/math/primitive_root.nim
   requiredBy:
@@ -91,10 +91,10 @@ data:
   timestamp: '2026-09-18 02:04:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/modfast_test.nim
-  - verify/math/modfast_test.nim
   - verify/AI/primitive_root_test.nim
   - verify/AI/primitive_root_test.nim
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
 documentation_of: cplib/math/primitive_root.nim
 layout: document
 redirect_from:

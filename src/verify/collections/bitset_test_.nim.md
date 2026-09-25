@@ -37,8 +37,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/collections/bitset.nim
-  - cplib/collections/bitset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset.nim
   isVerificationFile: false
   path: verify/collections/bitset_test_.nim
   requiredBy: []

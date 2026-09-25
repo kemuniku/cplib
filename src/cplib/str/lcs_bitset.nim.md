@@ -171,34 +171,34 @@ data:
     \u30E5\u30FB\u6BD4\u8F03\u306FO(1)\u3068\u3057\u307E\u3059\u3002\u7A7A\u5165\u529B\
     \u306FO(1)\u3067\u3059\u3002\n        restoreLCSInto(A, B, result)\n"
   dependsOn:
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/bitset_avx512.nim
   - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/bitset_avx512.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   isVerificationFile: false
   path: cplib/str/lcs_bitset.nim
   requiredBy: []
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/str/restore_lcs_bitset_test.nim
-  - verify/str/restore_lcs_bitset_test.nim
   - verify/str/lcs_bitset_test.nim
   - verify/str/lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
 documentation_of: cplib/str/lcs_bitset.nim
 layout: document
 redirect_from:

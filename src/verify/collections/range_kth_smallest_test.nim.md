@@ -47,12 +47,12 @@ data:
     \ => (x <= k))\n    ans[idx] = cmp[tmp]\n\nM.run(ad,ad,dl,dl,mem)\n\necho ans.join(\"\
     \\n\")"
   dependsOn:
-  - cplib/collections/root_rangesum.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/utils/mo.nim
+  - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
   - cplib/collections/root_rangesum.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []

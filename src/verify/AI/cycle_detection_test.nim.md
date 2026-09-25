@@ -73,10 +73,10 @@ data:
     checkDeep(initUnWeightedUnDirectedGraph(200000))\ncheckDeep(initUnWeightedDirectedStaticGraph(200000))\n\
     checkDeep(initUnWeightedUnDirectedStaticGraph(200000))\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/cycle_detection.nim
   - cplib/graph/cycle_detection.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/cycle_detection_test.nim
   requiredBy: []

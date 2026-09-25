@@ -229,24 +229,24 @@ data:
     \u308A\u307E\u3059\"\n        for i in 0..<n:\n            result.add(s[rand(0..<len(s))])\n\
     \        return result\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
+  - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/planar_graph.nim
   - cplib/graph/graph.nim
   - cplib/math/isprime.nim
+  - cplib/graph/graph.nim
   - cplib/graph/planar_graph.nim
-  - cplib/math/isprime.nim
-  - cplib/graph/planar_graph.nim
-  - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []
   timestamp: '2026-09-18 00:20:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/random_helper_test.nim
-  - verify/AI/random_helper_test.nim
   - verify/AI/planar_graph_test.nim
   - verify/AI/planar_graph_test.nim
+  - verify/AI/random_helper_test.nim
+  - verify/AI/random_helper_test.nim
 documentation_of: cplib/utils/random_helper.nim
 layout: document
 redirect_from:

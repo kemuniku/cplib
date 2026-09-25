@@ -289,12 +289,12 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
-  - verify/matrix/matrix_avx2_gc_test.nim
-  - verify/matrix/matrix_avx2_gc_test.nim
 documentation_of: cplib/matrix/matrix_avx2_kernel.nim
 layout: document
 redirect_from:

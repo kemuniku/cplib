@@ -95,17 +95,17 @@ data:
   isVerificationFile: false
   path: cplib/collections/compressed_coordinates_internal.nim
   requiredBy:
-  - cplib/collections/compressed_lazysegtree.nim
-  - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_segtree.nim
   - cplib/collections/compressed_segtree.nim
+  - cplib/collections/compressed_lazysegtree.nim
+  - cplib/collections/compressed_lazysegtree.nim
   timestamp: '2026-09-17 19:00:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/compressed_segtree_test.nim
-  - verify/AI/compressed_segtree_test.nim
   - verify/AI/compressed_lazysegtree_test.nim
   - verify/AI/compressed_lazysegtree_test.nim
+  - verify/AI/compressed_segtree_test.nim
+  - verify/AI/compressed_segtree_test.nim
 documentation_of: cplib/collections/compressed_coordinates_internal.nim
 layout: document
 redirect_from:

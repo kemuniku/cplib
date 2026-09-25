@@ -263,90 +263,90 @@ data:
     \    import cplib/fps/power_projection\n    import cplib/fps/bostan_mori\n   \
     \ import cplib/fps/berlekamp_massey\n    import cplib/fps/bmbm\n    import cplib/fps/sparse_formal_power_series\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
   - cplib/fps/shift_of_sampling_points.nim
-  - cplib/fps/polynomial_interpolation.nim
   - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/ntt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/product_tree.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/bmbm.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/power_projection.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/fps/bmbm.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/fps/berlekamp_massey.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/power_projection.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/product_of_polynomial_sequence.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/composition.nim
-  - cplib/fps/bostan_mori.nim
   - cplib/fps/composition.nim
   - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
   - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/product_tree.nim
+  - cplib/convolution/ntt.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/bmbm.nim
+  - cplib/fps/bmbm.nim
+  - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/composition.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/sparse_formal_power_series.nim
   - cplib/fps/polynomial_interpolation.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/fps/product_of_polynomial_sequence.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/ntt.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/fps/fps.nim
   requiredBy: []
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/fps/composition_of_formal_power_series_test.nim
-  - verify/fps/composition_of_formal_power_series_test.nim
-  - verify/fps/polynomial_interpolation_test.nim
-  - verify/fps/polynomial_interpolation_test.nim
-  - verify/fps/polynomial_taylor_shift_test.nim
-  - verify/fps/polynomial_taylor_shift_test.nim
-  - verify/fps/pow_of_formal_power_series_test.nim
-  - verify/fps/pow_of_formal_power_series_test.nim
-  - verify/fps/exp_of_formal_power_series_test.nim
-  - verify/fps/exp_of_formal_power_series_test.nim
-  - verify/fps/convolution_mod_test.nim
-  - verify/fps/convolution_mod_test.nim
-  - verify/fps/division_of_polynomials_test.nim
-  - verify/fps/division_of_polynomials_test.nim
-  - verify/fps/multipoint_evaluation_test.nim
-  - verify/fps/multipoint_evaluation_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - verify/fps/inv_of_formal_power_series_test.nim
-  - verify/fps/inv_of_formal_power_series_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
-  - verify/fps/product_of_polynomial_sequence_test.nim
-  - verify/fps/product_of_polynomial_sequence_test.nim
-  - verify/fps/sqrt_of_formal_power_series_test.nim
-  - verify/fps/sqrt_of_formal_power_series_test.nim
-  - verify/fps/log_of_formal_power_series_test.nim
-  - verify/fps/log_of_formal_power_series_test.nim
-  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - verify/fps/composition_of_formal_power_series_large_test.nim
-  - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/fps/composition_of_formal_power_series_large_test.nim
+  - verify/fps/composition_of_formal_power_series_large_test.nim
+  - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/inv_of_formal_power_series_test.nim
+  - verify/fps/inv_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
+  - verify/fps/exp_of_formal_power_series_test.nim
+  - verify/fps/exp_of_formal_power_series_test.nim
+  - verify/fps/pow_of_formal_power_series_test.nim
+  - verify/fps/pow_of_formal_power_series_test.nim
+  - verify/fps/polynomial_taylor_shift_test.nim
+  - verify/fps/polynomial_taylor_shift_test.nim
+  - verify/fps/product_of_polynomial_sequence_test.nim
+  - verify/fps/product_of_polynomial_sequence_test.nim
+  - verify/fps/composition_of_formal_power_series_test.nim
+  - verify/fps/composition_of_formal_power_series_test.nim
+  - verify/fps/convolution_mod_test.nim
+  - verify/fps/convolution_mod_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/division_of_polynomials_test.nim
+  - verify/fps/division_of_polynomials_test.nim
+  - verify/fps/polynomial_interpolation_test.nim
+  - verify/fps/polynomial_interpolation_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/sqrt_of_formal_power_series_test.nim
+  - verify/fps/sqrt_of_formal_power_series_test.nim
+  - verify/fps/multipoint_evaluation_test.nim
+  - verify/fps/multipoint_evaluation_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
 documentation_of: cplib/fps/fps.nim
