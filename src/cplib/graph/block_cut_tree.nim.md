@@ -60,12 +60,12 @@ data:
     \u9593\u30FB\u9818\u57DF\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n        result\
     \ = initBlockCutTree(initBiconnectedComponents(g))\n"
   dependsOn:
-  - cplib/graph/lowlink.nim
-  - cplib/graph/biconnected_components.nim
-  - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/biconnected_components.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: false
   path: cplib/graph/block_cut_tree.nim
   requiredBy: []

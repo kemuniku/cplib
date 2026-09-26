@@ -47,6 +47,7 @@ data:
     \    var s1, s2 = initSegment(get(), get())\n    echo int(intersect(s1, s2))\n\
     \n"
   dependsOn:
+  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/ccw.nim
@@ -54,7 +55,6 @@ data:
   - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/intersect_cgl2b_test.nim
   requiredBy: []

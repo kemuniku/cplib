@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
   - icon: ':heavy_check_mark:'
@@ -53,16 +59,18 @@ data:
     \ == 0\n\ncheck[modint998244353]()\ncheck[modint1000000007]()\n\ntype DynamicModInt\
     \ = modint\nDynamicModInt.setMod(1_000_000_007)\ncheck[DynamicModInt]()\n"
   dependsOn:
-  - cplib/math/combination.nim
-  - cplib/math/combination_prefix_sum.nim
-  - cplib/utils/mo.nim
-  - cplib/math/combination.nim
   - cplib/utils/mo.nim
   - cplib/math/combination_prefix_sum.nim
+  - cplib/graph/graph.nim
+  - cplib/math/combination.nim
+  - cplib/utils/mo.nim
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/graph/graph.nim
+  - cplib/math/combination.nim
   isVerificationFile: true
   path: verify/math/combination_prefix_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:40:34+09:00'
+  timestamp: '2026-09-27 00:37:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/combination_prefix_sum_test.nim

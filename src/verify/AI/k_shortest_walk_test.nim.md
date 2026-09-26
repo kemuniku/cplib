@@ -81,11 +81,11 @@ data:
     \    for w in countdown(100_000, 1): g.add_edge(0, 1, w)\n    doAssert g.k_shortest_walk(0,\
     \ 1, 100_001) == toSeq(1..100_000) & @[INF64]\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/k_shortest_walk_test.nim

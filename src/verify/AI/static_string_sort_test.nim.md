@@ -66,13 +66,13 @@ data:
     \ single[0].r == s.r\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/AI/static_string_sort_test.nim
   requiredBy: []

@@ -182,13 +182,13 @@ data:
     \   result &= $S.base.S[j]\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
   requiredBy:

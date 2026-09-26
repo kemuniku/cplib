@@ -100,6 +100,9 @@ data:
       path: cplib/collections/hashtable.nim
       title: cplib/collections/hashtable.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/intset.nim
+      title: cplib/collections/intset.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/lazysegtree.nim
       title: cplib/collections/lazysegtree.nim
     - icon: ':heavy_check_mark:'
@@ -1628,6 +1631,9 @@ data:
       path: verify/AI/intersect_test.nim
       title: verify/AI/intersect_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/intset_test.nim
+      title: verify/AI/intset_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/inv_gcd_test.nim
       title: verify/AI/inv_gcd_test.nim
     - icon: ':heavy_check_mark:'
@@ -1939,6 +1945,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/tree_hash_test.nim
       title: verify/AI/tree_hash_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/tree_mo_test.nim
+      title: verify/AI/tree_mo_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/trie_test.nim
       title: verify/AI/trie_test.nim

@@ -36,8 +36,8 @@ data:
     \ = ii()\n    echo st.get(L..<R)\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_static_op.nim
   isVerificationFile: true
   path: verify/collections/segtree/segtree_static_op_test.nim

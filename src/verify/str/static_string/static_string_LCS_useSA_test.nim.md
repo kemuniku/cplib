@@ -54,13 +54,13 @@ data:
     echo a,\" \",b,\" \",c,\" \",d"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: true
   path: verify/str/static_string/static_string_LCS_useSA_test.nim
   requiredBy: []

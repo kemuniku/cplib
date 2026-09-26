@@ -88,14 +88,14 @@ data:
     \ \"Hello World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_fenwick_test.nim

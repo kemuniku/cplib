@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
   - icon: ':heavy_check_mark:'
@@ -62,14 +68,16 @@ data:
     \        for (queryIndex, prefixIndex) in queryIndices:\n            result[queryIndex]\
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
+  - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/math/combination.nim
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/math/combination.nim
-  - cplib/utils/mo.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:40:34+09:00'
+  timestamp: '2026-09-27 00:37:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/combination_prefix_sum_test.nim

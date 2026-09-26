@@ -8,6 +8,12 @@ data:
     path: cplib/collections/root_rangesum.nim
     title: cplib/collections/root_rangesum.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/backwards_index.nim
     title: cplib/utils/backwards_index.nim
   - icon: ':heavy_check_mark:'
@@ -48,15 +54,17 @@ data:
     \\n\")"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/utils/mo.nim
+  - cplib/collections/root_rangesum.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/mo.nim
   - cplib/collections/root_rangesum.nim
-  - cplib/utils/mo.nim
-  - cplib/collections/root_rangesum.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-09-27 00:48:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_kth_smallest_test.nim

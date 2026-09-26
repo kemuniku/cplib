@@ -134,12 +134,12 @@ data:
     \    discard small.xorpopcount(large)\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/bitset_avx2.nim
   - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/collections/bitset_avx2.nim
+  - cplib/collections/bitset_avx2.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/bitset_avx2.nim
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: true
   path: verify/AI/bitset_avx2_test.nim

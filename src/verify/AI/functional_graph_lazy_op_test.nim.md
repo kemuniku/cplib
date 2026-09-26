@@ -209,17 +209,17 @@ data:
     \          doAssert product == expected\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/functional_graph_with_op.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
   isVerificationFile: true

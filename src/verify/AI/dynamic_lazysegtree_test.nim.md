@@ -92,9 +92,9 @@ data:
     \ checkTree(st.root) == 5001\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/dynamic_lazysegtree.nim
+  - cplib/collections/dynamic_lazysegtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/dynamic_lazysegtree.nim
-  - cplib/collections/dynamic_lazysegtree.nim
   isVerificationFile: true
   path: verify/AI/dynamic_lazysegtree_test.nim
   requiredBy: []

@@ -165,12 +165,12 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
-  - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/link_cut_tree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/tree/link_cut_tree.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/link_cut_tree.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/link_cut_tree_test.nim
   requiredBy: []

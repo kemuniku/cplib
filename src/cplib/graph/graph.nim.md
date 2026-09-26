@@ -212,6 +212,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/warshall_floyd_avx512.nim
     title: cplib/graph/warshall_floyd_avx512.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/combination_prefix_sum.nim
+    title: cplib/math/combination_prefix_sum.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/combination_prefix_sum.nim
+    title: cplib/math/combination_prefix_sum.nim
   - icon: ':warning:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
@@ -302,6 +308,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/utils/itertools.nim
     title: cplib/utils/itertools.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/mo.nim
+    title: cplib/utils/mo.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/mo.nim
+    title: cplib/utils/mo.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/random_helper.nim
     title: cplib/utils/random_helper.nim
@@ -488,6 +500,12 @@ data:
   - icon: ':warning:'
     path: verify/tree/rerooting_big_test_.nim
     title: verify/tree/rerooting_big_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/mo_test_.nim
+    title: verify/utils/mo_test_.nim
+  - icon: ':warning:'
+    path: verify/utils/mo_test_.nim
+    title: verify/utils/mo_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/SCC_test.nim
@@ -688,6 +706,12 @@ data:
     path: verify/AI/merge_tree_test.nim
     title: verify/AI/merge_tree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/mo_test.nim
+    title: verify/AI/mo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/mo_test.nim
+    title: verify/AI/mo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/namori_forest_test.nim
     title: verify/AI/namori_forest_test.nim
   - icon: ':heavy_check_mark:'
@@ -759,6 +783,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/tree_hash_test.nim
     title: verify/AI/tree_hash_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tree_mo_test.nim
+    title: verify/AI/tree_mo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/tree_mo_test.nim
+    title: verify/AI/tree_mo_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/trie_test.nim
     title: verify/AI/trie_test.nim
@@ -837,6 +867,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_kth_smallest_test.nim
+    title: verify/collections/range_kth_smallest_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_kth_smallest_test.nim
+    title: verify/collections/range_kth_smallest_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
@@ -957,6 +993,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
@@ -1419,6 +1461,8 @@ data:
   - verify/graph/dynamic/SCCG_test_.nim
   - verify/graph/dynamic/scc_abc335e_test_.nim
   - verify/graph/dynamic/scc_abc335e_test_.nim
+  - verify/utils/mo_test_.nim
+  - verify/utils/mo_test_.nim
   - verify/collections/rollback_uf_abc302ex_test_.nim
   - verify/collections/rollback_uf_abc302ex_test_.nim
   - verify/AI/warshall_floyd_avx512_register_cases.nim
@@ -1511,6 +1555,10 @@ data:
   - cplib/utils/random_helper.nim
   - cplib/utils/itertools.nim
   - cplib/utils/itertools.nim
+  - cplib/utils/mo.nim
+  - cplib/utils/mo.nim
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/math/combination_prefix_sum.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/str/aho_corasick.nim
@@ -1594,6 +1642,8 @@ data:
   - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulate_test.nim
   - verify/utils/itertools/accumulate_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
   - verify/AI/warshall_floyd_avx512_register_int32_test.nim
   - verify/AI/warshall_floyd_avx512_register_int32_test.nim
   - verify/AI/tree_hash_test.nim
@@ -1614,6 +1664,8 @@ data:
   - verify/AI/functional_graph_test.nim
   - verify/AI/prufer_test.nim
   - verify/AI/prufer_test.nim
+  - verify/AI/tree_mo_test.nim
+  - verify/AI/tree_mo_test.nim
   - verify/AI/itertools_enumeration_test.nim
   - verify/AI/itertools_enumeration_test.nim
   - verify/AI/static_top_tree_test.nim
@@ -1680,6 +1732,8 @@ data:
   - verify/AI/warshall_floyd_avx512_register_packed_test.nim
   - verify/AI/dag_minimum_path_cover_test.nim
   - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/mo_test.nim
+  - verify/AI/mo_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
@@ -1710,6 +1764,8 @@ data:
   - verify/AI/steiner_tree_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/math/combination_prefix_sum_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

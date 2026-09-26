@@ -136,24 +136,24 @@ data:
     \    0\n    fuse:\n        xs[index()] |= y and y\n    doAssert calls == 1 and\
     \ xs[0][64]\n"
   dependsOn:
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/bitset_avx512.nim
-  - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/bitset_avx512.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/bitset_avx512.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: true
   path: verify/AI/bitset_avx512_fuse_test.nim
   requiredBy: []

@@ -63,13 +63,13 @@ data:
     \ 5, 10, 10]:\n  assert seg128[i].sum == expected\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/math/int128.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/math/int128.nim
   - cplib/collections/segtree_beats_template.nim
   - cplib/utils/backwards_index.nim
   - cplib/math/int128.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

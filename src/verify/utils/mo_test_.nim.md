@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/graph.nim
+    title: cplib/graph/graph.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   - icon: ':heavy_check_mark:'
@@ -34,11 +40,13 @@ data:
     \ = now\n\nm.run(addq, addq, delq, delq, rem)\n\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/utils/mo_test_.nim
   requiredBy: []
-  timestamp: '2026-09-17 19:40:34+09:00'
+  timestamp: '2026-09-27 00:37:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/utils/mo_test_.nim
