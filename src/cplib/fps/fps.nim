@@ -5,6 +5,7 @@ when not declared CPLIB_FPS_FPS:
     import cplib/convolution/relaxed_convolution
     import cplib/convolution/semi_relaxed_convolution
     import cplib/fps/formal_power_series
+    import cplib/fps/bivariate_formal_power_series
     import cplib/fps/product_of_polynomial_sequence
     import cplib/fps/product_tree
     import cplib/fps/polynomial_interpolation
