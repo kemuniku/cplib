@@ -247,6 +247,7 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
 
 
     proc get_bounds*[T](is_ok:proc(x:SBTNode[T]):bool,n:T):SBTNode[T]=
+        ## 分子・分母がn以下の有理数で判定の境界を挟む。判定回数はO(log n)。
         # 単調性のある関数is_okを考える。
         # x <= a : true
         # x > a : false
@@ -272,17 +273,19 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         while now.is_inner_node_bounded(n):
             if is_left:
                 # 新しくできる右端の分子・分母がn以下になる範囲で移動可能
-                # どこまで潜ったら初めてresult_nowと結果が変わるのかを二分探索
+                # 指数探索で判定が変わる区間を絞ってから二分探索
                 let lim = now.max_endpoint_move_left_with_bound(n)
                 if lim <= 0:
                     break
                 var l:T = 0
-                var r = lim
-                if is_ok(now.move_left(r)) == result_now:
-                    now = now.move_left(r)
-                    break
+                var r = T(1)
+                while is_ok(now.move_left(r)) == result_now:
+                    if r == lim:
+                        return now.move_left(r)
+                    l = r
+                    r += min(r,lim-r)
                 while r-l > 1:
-                    var mid = (r+l) div 2
+                    var mid = l + (r-l) div 2
                     if is_ok(now.move_left(mid)) == result_now:
                         l = mid
                     else:
@@ -290,17 +293,19 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
                 now = now.move_left(r)
             else:
                 # 新しくできる左端の分子・分母がn以下になる範囲で移動可能
-                # 二分探索
+                # 指数探索で判定が変わる区間を絞ってから二分探索
                 let lim = now.max_endpoint_move_right_with_bound(n)
                 if lim <= 0:
                     break
                 var l:T = 0
-                var r = lim
-                if is_ok(now.move_right(r)) == result_now:
-                    now = now.move_right(r)
-                    break
+                var r = T(1)
+                while is_ok(now.move_right(r)) == result_now:
+                    if r == lim:
+                        return now.move_right(r)
+                    l = r
+                    r += min(r,lim-r)
                 while r-l > 1:
-                    var mid = (r+l) div 2
+                    var mid = l + (r-l) div 2
                     if is_ok(now.move_right(mid)) == result_now:
                         l = mid
                     else:
@@ -308,7 +313,6 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
                 now = now.move_right(r)
             result_now = not result_now
             is_left = not is_left
-            #echo "now!",now.toFraction()
         return now
 
     
