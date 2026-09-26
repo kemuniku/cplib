@@ -15,6 +15,12 @@ data:
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/dijkstra_radix.nim
+    title: cplib/graph/dijkstra_radix.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dijkstra_radix.nim
+    title: cplib/graph/dijkstra_radix.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/maxk_dijkstra.nim
     title: cplib/graph/maxk_dijkstra.nim
   - icon: ':heavy_check_mark:'
@@ -58,6 +64,12 @@ data:
     path: verify/AI/bellmanford_test.nim
     title: verify/AI/bellmanford_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_radix_test.nim
+    title: verify/AI/dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_radix_test.nim
+    title: verify/AI/dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -106,6 +118,12 @@ data:
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -123,6 +141,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/bellmanford_grl1b_test.nim
     title: verify/graph/static/bellmanford_grl1b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
@@ -165,6 +189,8 @@ data:
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/graph/dijkstra_radix.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/graph/bellmanford.nim
@@ -174,6 +200,8 @@ data:
   timestamp: '2024-06-25 04:43:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
@@ -182,6 +210,8 @@ data:
   - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
@@ -200,6 +230,8 @@ data:
   - verify/AI/restore_shortest_path_from_prev_test.nim
   - verify/AI/bellmanford_test.nim
   - verify/AI/bellmanford_test.nim
+  - verify/AI/dijkstra_radix_test.nim
+  - verify/AI/dijkstra_radix_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
 documentation_of: cplib/graph/restore_shortest_path_from_prev.nim

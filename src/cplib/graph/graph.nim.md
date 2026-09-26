@@ -57,6 +57,12 @@ data:
     path: cplib/graph/dijkstra.nim
     title: cplib/graph/dijkstra.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/dijkstra_radix.nim
+    title: cplib/graph/dijkstra_radix.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dijkstra_radix.nim
+    title: cplib/graph/dijkstra_radix.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dynamic_bipartite.nim
     title: cplib/graph/dynamic_bipartite.nim
   - icon: ':heavy_check_mark:'
@@ -568,6 +574,12 @@ data:
     path: verify/AI/diameter_test.nim
     title: verify/AI/diameter_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_radix_test.nim
+    title: verify/AI/dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_radix_test.nim
+    title: verify/AI/dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -669,6 +681,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/itertools_test.nim
     title: verify/AI/itertools_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_trees_test.nim
+    title: verify/AI/itertools_trees_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_trees_test.nim
+    title: verify/AI/itertools_trees_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/k_shortest_walk_test.nim
     title: verify/AI/k_shortest_walk_test.nim
@@ -904,6 +922,12 @@ data:
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -963,6 +987,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
@@ -1491,6 +1521,8 @@ data:
   - cplib/graph/round_square_tree.nim
   - cplib/graph/k_shortest_walk.nim
   - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/graph/dijkstra_radix.nim
   - cplib/graph/cycle_detection.nim
   - cplib/graph/cycle_detection.nim
   - cplib/graph/block_cut_tree.nim
@@ -1594,6 +1626,8 @@ data:
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
@@ -1622,6 +1656,8 @@ data:
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
   - verify/graph/dynamic/unweighted_directed_graph_aoj_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/bellmanford_grl1b_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
@@ -1724,6 +1760,10 @@ data:
   - verify/AI/warshall_floyd_avx_test.nim
   - verify/AI/SCC_test.nim
   - verify/AI/SCC_test.nim
+  - verify/AI/itertools_trees_test.nim
+  - verify/AI/itertools_trees_test.nim
+  - verify/AI/dijkstra_radix_test.nim
+  - verify/AI/dijkstra_radix_test.nim
   - verify/AI/count_topologicalsort_test.nim
   - verify/AI/count_topologicalsort_test.nim
   - verify/AI/random_helper_test.nim

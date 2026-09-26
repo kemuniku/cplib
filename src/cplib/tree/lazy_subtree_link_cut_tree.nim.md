@@ -181,8 +181,8 @@ data:
     \     self.cut(v, parent)\n        self.componentApply(v, f)\n        self.link(v,\
     \ parent)\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: false

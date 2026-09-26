@@ -357,12 +357,12 @@ data:
     \u3002\n    result = fuseBlock(body)\n    if result == nil:\n        result =\
     \ newBlockStmt(newCall(bindSym\"fuseSingleStatements\", body))\n"
   dependsOn:
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx512_fuse.nim
   requiredBy:

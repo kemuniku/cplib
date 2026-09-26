@@ -211,8 +211,8 @@ data:
   dependsOn:
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: false
   path: cplib/matrix/static_matrix_mod2.nim
   requiredBy:

@@ -153,40 +153,40 @@ data:
     ]\nassertClose(tspPathCostFrom(dist, 0), 3.5)\nassertClose(tspPathCostFromTo(dist,\
     \ 0, 2), 3.5)\nassertClose(tspPathAnyStart(dist), 3.5)\n"
   dependsOn:
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/kruskal.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/warshall_floyd.nim
   - cplib/collections/unionfind.nim
   - cplib/utils/bititers.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/warshall_floyd.nim
   - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/graph/kruskal.nim
   - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/reverse_edge.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tree/diameter.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/collections/unionfind.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/tree/diameter.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/AI/graph_weight_type_test.nim
   requiredBy: []

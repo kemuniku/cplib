@@ -42,10 +42,10 @@ data:
     \    for x in ad[li]:\n            seg_add[x] = seg_add[x] + 1\n        li +=\
     \ 1\n    ans[id] = seg_add[l..<r]\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
   - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_var.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
   requiredBy: []

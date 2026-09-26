@@ -28,6 +28,12 @@ data:
     title: cplib/graph/tsp.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_radix_test.nim
+    title: verify/AI/dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dijkstra_radix_test.nim
+    title: verify/AI/dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -146,12 +152,12 @@ data:
     \ start: int, goal: int, ZERO: T, INF: T): tuple[path: seq[int], cost: T] =\n\
     \        shortest_path_dijkstra_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy:
@@ -178,6 +184,8 @@ data:
   - verify/AI/tsp_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
+  - verify/AI/dijkstra_radix_test.nim
+  - verify/AI/dijkstra_radix_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

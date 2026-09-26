@@ -273,6 +273,12 @@ data:
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/lazy_subtree_link_cut_tree.nim
     title: cplib/tree/lazy_subtree_link_cut_tree.nim
   - icon: ':heavy_check_mark:'
@@ -448,6 +454,12 @@ data:
     path: verify/AI/SWAG_test.nim
     title: verify/AI/SWAG_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_values_test.nim
+    title: verify/AI/auto_rollback_values_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_values_test.nim
+    title: verify/AI/auto_rollback_values_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/binary_trie_test.nim
     title: verify/AI/binary_trie_test.nim
   - icon: ':heavy_check_mark:'
@@ -657,6 +669,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/segtree_var_test.nim
     title: verify/AI/segtree_var_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_sort_test.nim
     title: verify/AI/static_string_sort_test.nim
@@ -1397,6 +1415,8 @@ data:
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string_search.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
@@ -1564,6 +1584,8 @@ data:
   - verify/AI/binary_trie_test.nim
   - verify/AI/inversion_number_test.nim
   - verify/AI/inversion_number_test.nim
+  - verify/AI/static_string_search_test.nim
+  - verify/AI/static_string_search_test.nim
   - verify/AI/segtree2d_test.nim
   - verify/AI/segtree2d_test.nim
   - verify/AI/segtree_beats_template_test.nim
@@ -1596,6 +1618,8 @@ data:
   - verify/AI/staticbitset_test.nim
   - verify/AI/segtree_var_test.nim
   - verify/AI/segtree_var_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/auto_rollback_values_test.nim
   - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_test.nim

@@ -80,8 +80,8 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

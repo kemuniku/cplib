@@ -57,12 +57,12 @@ data:
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
   - cplib/geometry/distance.nim
+  - cplib/geometry/angle.nim
   isVerificationFile: true
   path: verify/geometry/CGL_2/distance_cgl2d_test.nim
   requiredBy: []

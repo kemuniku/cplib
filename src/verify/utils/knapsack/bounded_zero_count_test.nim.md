@@ -47,8 +47,8 @@ data:
   dependsOn:
   - cplib/utils/knapsack.nim
   - cplib/utils/constants.nim
-  - cplib/utils/knapsack.nim
   - cplib/utils/constants.nim
+  - cplib/utils/knapsack.nim
   isVerificationFile: true
   path: verify/utils/knapsack/bounded_zero_count_test.nim
   requiredBy: []

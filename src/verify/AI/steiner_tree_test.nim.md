@@ -82,12 +82,12 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/steiner_tree.nim
   - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

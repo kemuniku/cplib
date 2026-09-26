@@ -91,8 +91,8 @@ data:
     \    assert st.get_all() == 5000\n    assert st.node_count == 5001\n    assert\
     \ checkTree(st.root) == 5001\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_lazysegtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_lazysegtree.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

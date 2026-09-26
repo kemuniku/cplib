@@ -77,23 +77,23 @@ data:
     \  print(quotient, remainder)\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/bigint.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/bigint.nim
-  - cplib/math/bigint.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/bigint.nim
   isVerificationFile: true
   path: verify/math/division_of_big_integers_test.nim
   requiredBy: []

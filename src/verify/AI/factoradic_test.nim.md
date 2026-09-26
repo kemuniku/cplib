@@ -305,23 +305,23 @@ data:
     \ == 1\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/factoradic.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/factoradic.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/bigint.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/factoradic.nim
-  - cplib/math/bigint.nim
-  - cplib/math/bigint.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/bigint.nim
   isVerificationFile: true
   path: verify/AI/factoradic_test.nim
   requiredBy: []

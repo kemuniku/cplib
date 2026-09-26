@@ -80,9 +80,9 @@ data:
   dependsOn:
   - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
+  - cplib/utils/k_project_selection.nim
   - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
-  - cplib/utils/k_project_selection.nim
   - cplib/utils/k_project_selection.nim
   isVerificationFile: true
   path: verify/utils/k_project_selection_abc326g_test.nim

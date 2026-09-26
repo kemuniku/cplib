@@ -84,13 +84,13 @@ data:
     \            a[i][j] = 0\n    check(a, 100)\n\necho \"Hello World\"\n\n\n"
   dependsOn:
   - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_avx.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_avx.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_avx.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx_exact_test.nim
   requiredBy: []

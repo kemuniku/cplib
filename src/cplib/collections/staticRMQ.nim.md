@@ -38,6 +38,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/static_string.nim
     title: cplib/str/static_string.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
   - icon: ':warning:'
     path: verify/str/merged_static_string.nim
     title: verify/str/merged_static_string.nim
@@ -87,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/staticRMQ_test.nim
     title: verify/AI/staticRMQ_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_sort_test.nim
     title: verify/AI/static_string_sort_test.nim
@@ -408,6 +420,8 @@ data:
   - cplib/str/compressed_trie.nim
   - cplib/str/edit_distance.nim
   - cplib/str/edit_distance.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string_search.nim
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -425,6 +439,8 @@ data:
   - verify/AI/edit_distance_test.nim
   - verify/AI/merged_static_string_test.nim
   - verify/AI/merged_static_string_test.nim
+  - verify/AI/static_string_search_test.nim
+  - verify/AI/static_string_search_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/static_string_test.nim

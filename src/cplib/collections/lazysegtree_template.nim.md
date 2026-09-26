@@ -171,10 +171,10 @@ data:
     \u53D6\u5F97\u7528\u3002\u69CB\u7BC9O(N)\u3001\u64CD\u4F5CO(log N)\u3002\n   \
     \     initRangeSumTree[T, 2](v)\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree_static_op.nim
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/lazysegtree_template.nim
   requiredBy: []

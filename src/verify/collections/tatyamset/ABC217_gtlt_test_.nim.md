@@ -35,10 +35,10 @@ data:
     for i in 0..<Q:\n    var c, x = ii()\n    if c == 1:\n        st.incl(x)\n   \
     \ else:\n        var l = st.lt(x)\n        var r = st.gt(x)\n        echo r.get()-l.get()\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/tatyamset.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC217_gtlt_test_.nim
   requiredBy: []

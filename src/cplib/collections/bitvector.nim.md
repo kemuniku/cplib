@@ -14,6 +14,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix_fenwick.nim
     title: cplib/collections/waveletmatrix_fenwick.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitvector_test.nim
@@ -21,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitvector_test.nim
     title: verify/AI/bitvector_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/waveletmatrix_fenwick_test.nim
     title: verify/AI/waveletmatrix_fenwick_test.nim
@@ -57,9 +69,12 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_BITVECTOR:\n    const CPLIB_COLLECTIONS_BITVECTOR*\
-    \ = 1\n    import bitops\n\n    # release\u3067\u3082debug\u6307\u5B9A\u6642\u306F\
-    \u5883\u754C\u30FB\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u30C1\u30A7\u30C3\
-    \u30AF\u3092\u6B8B\u3059\u3002\n    when defined(release) and not defined(debug):\n\
+    \ = 1\n    import bitops\n\n    when (defined(amd64) or defined(i386)) and (defined(gcc)\
+    \ or defined(clang)):\n        # x86\u3067\u306FPOPCNT\u5BFE\u5FDCCPU\u3092\u524D\
+    \u63D0\u306B\u3001popcount\u3092CPU\u547D\u4EE4\u306B\u3059\u308B\u3002\n    \
+    \    {.passC: \"-mpopcnt\".}\n\n    # release\u3067\u3082debug\u6307\u5B9A\u6642\
+    \u306F\u5883\u754C\u30FB\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u30C1\u30A7\
+    \u30C3\u30AF\u3092\u6B8B\u3059\u3002\n    when defined(release) and not defined(debug):\n\
     \        {.push boundChecks: off, overflowChecks: off.}\n\n    type BitVector*\
     \ = object\n        bits : seq[uint64]\n        csum : seq[int]\n\n    proc newBitVector*(length:int):BitVector=\n\
     \        result.bits = newSeq[uint64]((length+63) div 64 + 1)\n        result.csum\
@@ -87,7 +102,9 @@ data:
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/waveletmatrix_fenwick.nim
-  timestamp: '2026-09-14 23:35:39+09:00'
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string_search.nim
+  timestamp: '2026-09-27 01:00:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_simd_test.nim
@@ -100,6 +117,8 @@ data:
   - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/bitvector_test.nim
   - verify/AI/bitvector_test.nim
+  - verify/AI/static_string_search_test.nim
+  - verify/AI/static_string_search_test.nim
 documentation_of: cplib/collections/bitvector.nim
 layout: document
 redirect_from:

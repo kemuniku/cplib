@@ -35,10 +35,10 @@ data:
     \nfor _ in 0..<Q:\n    let T = ii()\n    if T == 1:\n        st2.incl(st1.pop(0))\n\
     \    elif T == 2:\n        st2.excl(ii())\n    else:\n        echo st2[0]\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/tatyamset.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC294_test_.nim
   requiredBy: []

@@ -133,6 +133,9 @@ data:
       path: cplib/collections/ppunionfind.nim
       title: cplib/collections/ppunionfind.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/radix_heap.nim
+      title: cplib/collections/radix_heap.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/range_linear_add_range_min.nim
       title: cplib/collections/range_linear_add_range_min.nim
     - icon: ':heavy_check_mark:'
@@ -379,6 +382,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra.nim
       title: cplib/graph/dijkstra.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/dijkstra_radix.nim
+      title: cplib/graph/dijkstra_radix.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dynamic_bipartite.nim
       title: cplib/graph/dynamic_bipartite.nim
@@ -691,6 +697,9 @@ data:
       path: cplib/str/static_string.nim
       title: cplib/str/static_string.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/static_string_search.nim
+      title: cplib/str/static_string_search.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/suffix_array.nim
       title: cplib/str/suffix_array.nim
     - icon: ':heavy_check_mark:'
@@ -777,6 +786,12 @@ data:
       path: cplib/utils/area_of_union_of_rectangles.nim
       title: cplib/utils/area_of_union_of_rectangles.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/auto_rollback.nim
+      title: cplib/utils/auto_rollback.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/avx512utils.nim
+      title: cplib/utils/avx512utils.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/backwards_index.nim
       title: cplib/utils/backwards_index.nim
     - icon: ':heavy_check_mark:'
@@ -840,11 +855,17 @@ data:
       path: cplib/utils/oeis.nim
       title: cplib/utils/oeis.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/offline_dynamic_queries.nim
+      title: cplib/utils/offline_dynamic_queries.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/project_selection.nim
       title: cplib/utils/project_selection.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/random_helper.nim
       title: cplib/utils/random_helper.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/rollback_mo.nim
+      title: cplib/utils/rollback_mo.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/seqidx.nim
       title: cplib/utils/seqidx.nim
@@ -854,6 +875,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/smawk.nim
       title: cplib/utils/smawk.nim
+  - name: cplib/utils/private
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/private/auto_rollback.nim
+      title: cplib/utils/private/auto_rollback.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/private/temporary_rollback_log.nim
+      title: cplib/utils/private/temporary_rollback_log.nim
   - name: verify/AI
     pages:
     - icon: ':heavy_check_mark:'
@@ -1322,6 +1351,15 @@ data:
       path: verify/AI/argsort_test.nim
       title: verify/AI/argsort_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/auto_rollback_scope_test.nim
+      title: verify/AI/auto_rollback_scope_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/auto_rollback_test.nim
+      title: verify/AI/auto_rollback_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/auto_rollback_values_test.nim
+      title: verify/AI/auto_rollback_values_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/avlset_old_test.nim
       title: verify/AI/avlset_old_test.nim
     - icon: ':heavy_check_mark:'
@@ -1333,6 +1371,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/avltreenode_test.nim
       title: verify/AI/avltreenode_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/avx512utils_test.nim
+      title: verify/AI/avx512utils_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/barrett_impl_test.nim
       title: verify/AI/barrett_impl_test.nim
@@ -1465,6 +1506,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/diameter_test.nim
       title: verify/AI/diameter_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/dijkstra_radix_test.nim
+      title: verify/AI/dijkstra_radix_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/dijkstra_test.nim
       title: verify/AI/dijkstra_test.nim
@@ -1652,6 +1696,9 @@ data:
       path: verify/AI/itertools_test.nim
       title: verify/AI/itertools_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/itertools_trees_test.nim
+      title: verify/AI/itertools_trees_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/k_project_selection_test.nim
       title: verify/AI/k_project_selection_test.nim
     - icon: ':heavy_check_mark:'
@@ -1754,6 +1801,9 @@ data:
       path: verify/AI/ntt_test.nim
       title: verify/AI/ntt_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/offline_dynamic_queries_test.nim
+      title: verify/AI/offline_dynamic_queries_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/optimize_cpp_test.nim
       title: verify/AI/optimize_cpp_test.nim
     - icon: ':heavy_check_mark:'
@@ -1817,6 +1867,9 @@ data:
       path: verify/AI/qcfium_test.nim
       title: verify/AI/qcfium_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/radix_heap_test.nim
+      title: verify/AI/radix_heap_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/random_helper_test.nim
       title: verify/AI/random_helper_test.nim
     - icon: ':heavy_check_mark:'
@@ -1840,6 +1893,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/reverse_edge_test.nim
       title: verify/AI/reverse_edge_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/rollback_mo_test.nim
+      title: verify/AI/rollback_mo_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/rollback_unionfind_test.nim
       title: verify/AI/rollback_unionfind_test.nim
@@ -1910,6 +1966,9 @@ data:
       path: verify/AI/static_matrix_test.nim
       title: verify/AI/static_matrix_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/static_string_search_test.nim
+      title: verify/AI/static_string_search_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/static_string_sort_test.nim
       title: verify/AI/static_string_sort_test.nim
     - icon: ':heavy_check_mark:'
@@ -1936,6 +1995,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/tatyamset_test.nim
       title: verify/AI/tatyamset_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/temporary_index_cache_test.nim
+      title: verify/AI/temporary_index_cache_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/temporary_rollback_log_test.nim
+      title: verify/AI/temporary_rollback_log_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/topk_sum_heapq_test.nim
       title: verify/AI/topk_sum_heapq_test.nim
@@ -2492,6 +2557,9 @@ data:
       path: verify/graph/dynamic/k_shortest_walk_test.nim
       title: verify/graph/dynamic/k_shortest_walk_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+      title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dynamic/restore_dijkstra_test.nim
       title: verify/graph/dynamic/restore_dijkstra_test.nim
     - icon: ':heavy_check_mark:'
@@ -2511,6 +2579,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/k_shortest_walk_static_test.nim
       title: verify/graph/static/k_shortest_walk_static_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+      title: verify/graph/static/restore_dijkstra_radix_static_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/static/restore_dijkstra_static_test.nim
       title: verify/graph/static/restore_dijkstra_static_test.nim

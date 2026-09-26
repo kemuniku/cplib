@@ -124,25 +124,25 @@ data:
     \ 6)\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/bostan_mori.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/fps/bostan_mori.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
   - cplib/math/isqrt.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/berlekamp_massey.nim
-  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/berlekamp_massey_test.nim
   requiredBy: []

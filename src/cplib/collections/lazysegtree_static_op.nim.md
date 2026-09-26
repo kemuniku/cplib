@@ -16,6 +16,12 @@ data:
     title: cplib/collections/lazysegtree_template.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_values_test.nim
+    title: verify/AI/auto_rollback_values_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_values_test.nim
+    title: verify/AI/auto_rollback_values_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/lazysegtree_template_test.nim
     title: verify/AI/lazysegtree_template_test.nim
   - icon: ':heavy_check_mark:'
@@ -274,6 +280,8 @@ data:
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/lazysegtree_template_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/auto_rollback_values_test.nim
 documentation_of: cplib/collections/lazysegtree_static_op.nim
 layout: document
 redirect_from:

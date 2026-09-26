@@ -111,16 +111,39 @@ data:
     \ == sumLess\n                    assert wm.sum_lowerbound_with_count(l,r,x) ==\
     \ (sum:sumLess,count:less)\n                    assert wm.sum_upperbound(l,r,x)\
     \ == sumLessEqual\n                    assert wm.sum_upperbound_with_count(l,r,x)\
-    \ == (sum:sumLessEqual,count:lessEqual)\n            checkRange(a,wm,0,n,withSum)\n"
+    \ == (sum:sumLessEqual,count:lessEqual)\n            checkRange(a,wm,0,n,withSum)\n\
+    \nfor n in [0, 1, 63, 64, 65, 513]:\n    for skewed in [false, true]:\n      \
+    \  var a = newSeq[int](n)\n        for i in 0..<n:\n            a[i] = if skewed\
+    \ and i mod 17 != 0: 12345 else: rng.rand(65535)\n        for h in [-1, 32, sizeof(int)*8]:\n\
+    \            for withSum in [false, true]:\n                let wm = initWaveletMatrix(a,\
+    \ H=h, with_sum=withSum)\n                for trial in 0..<200:\n            \
+    \        let l = rng.rand(n)\n                    let r = l + rng.rand(n-l)\n\
+    \                    var low = rng.rand(65536)\n                    var high =\
+    \ low + (1 shl (trial mod 17))\n                    if trial mod 7 == 0:\n   \
+    \                     low = 32768 - rng.rand(64)\n                        high\
+    \ = 32768 + rng.rand(64)\n                    elif trial mod 7 == 1:\n       \
+    \                 high = rng.rand(65536)\n                    elif trial mod 7\
+    \ == 2 and n > 0:\n                        low = a[rng.rand(n-1)]\n          \
+    \              high = low+1\n                    elif trial mod 7 == 3:\n    \
+    \                    low = int.low\n                    elif trial mod 7 == 4:\n\
+    \                        high = int.high\n                    elif trial mod 7\
+    \ == 5:\n                        low = 12288\n                        high = low\
+    \ + (1 shl (8 + trial mod 5))\n                    var expected: tuple[sum,count:int]\n\
+    \                    for i in l..<r:\n                        if low <= a[i] and\
+    \ a[i] < high:\n                            expected.sum += a[i]\n           \
+    \                 inc expected.count\n                    assert wm.range_freq(l,r,low,high)\
+    \ == expected.count\n                    if withSum:\n                       \
+    \ assert wm.range_sum(l,r,low,high) == expected.sum\n                        assert\
+    \ wm.range_sum_with_count(l,r,low,high) == expected\n"
   dependsOn:
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 23:35:39+09:00'
+  timestamp: '2026-09-27 01:00:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/waveletmatrix_test.nim

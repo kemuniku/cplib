@@ -40,6 +40,12 @@ data:
     path: verify/AI/itertools_test.nim
     title: verify/AI/itertools_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_trees_test.nim
+    title: verify/AI/itertools_trees_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_trees_test.nim
+    title: verify/AI/itertools_trees_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/planar_graph_test.nim
     title: verify/AI/planar_graph_test.nim
   - icon: ':heavy_check_mark:'
@@ -153,6 +159,8 @@ data:
   - verify/AI/itertools_test.nim
   - verify/AI/planar_graph_test.nim
   - verify/AI/planar_graph_test.nim
+  - verify/AI/itertools_trees_test.nim
+  - verify/AI/itertools_trees_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
 documentation_of: cplib/tree/prufer.nim

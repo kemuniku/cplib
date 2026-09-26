@@ -46,10 +46,10 @@ data:
     \ fail: false),\n  f + g,\n  0\n)\nseg2.apply(0, 2, 5)\nassert seg2.get(0, 2).sum\
     \ == 15\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_test.nim
   requiredBy: []

@@ -35,10 +35,10 @@ data:
     var ans = 0\nfor i in 0..<(N-1):\n    for j in (i+1)..<N:\n        if A[i][j]:\n\
     \            ans += andpopcount(A[i],A[j])\necho (ans div 3)"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset.nim
   - cplib/collections/bitset.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/bitset.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/bitset_andpopcnt_test_.nim
   requiredBy: []

@@ -82,6 +82,12 @@ data:
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -135,6 +141,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
@@ -865,6 +877,8 @@ data:
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
@@ -889,6 +903,8 @@ data:
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/general_matching_test.nim

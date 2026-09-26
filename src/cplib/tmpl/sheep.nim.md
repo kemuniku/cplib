@@ -34,6 +34,12 @@ data:
     path: verify/graph/dynamic/k_shortest_walk_test.nim
     title: verify/graph/dynamic/k_shortest_walk_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+    title: verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/restore_dijkstra_test.nim
     title: verify/graph/dynamic/restore_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -51,6 +57,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/k_shortest_walk_static_test.nim
     title: verify/graph/static/k_shortest_walk_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/static/restore_dijkstra_radix_static_test.nim
+    title: verify/graph/static/restore_dijkstra_radix_static_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/static/restore_dijkstra_static_test.nim
     title: verify/graph/static/restore_dijkstra_static_test.nim
@@ -186,10 +198,10 @@ data:
     \ untyped) =\n        when defined(debug):\n            block:\n             \
     \   body\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:
@@ -198,6 +210,8 @@ data:
   timestamp: '2026-09-17 21:22:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
@@ -208,6 +222,8 @@ data:
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim

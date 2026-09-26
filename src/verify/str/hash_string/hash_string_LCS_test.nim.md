@@ -43,8 +43,8 @@ data:
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
     echo a,\" \",b,\" \",c,\" \",d"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

@@ -36,13 +36,13 @@ data:
     \ WM.kth_smallest(l,r,k)"
   dependsOn:
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/collections/waveletmatrix_test.nim
   requiredBy: []
-  timestamp: '2026-09-14 23:35:39+09:00'
+  timestamp: '2026-09-27 01:00:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/waveletmatrix_test.nim

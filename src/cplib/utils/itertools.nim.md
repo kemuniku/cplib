@@ -28,6 +28,12 @@ data:
     path: verify/AI/itertools_test.nim
     title: verify/AI/itertools_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_trees_test.nim
+    title: verify/AI/itertools_trees_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/itertools_trees_test.nim
+    title: verify/AI/itertools_trees_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
   - icon: ':heavy_check_mark:'
@@ -361,46 +367,97 @@ data:
     n\u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
     \"\n        if n == 1:\n            yield initUnWeightedUnDirectedGraph(1)\n \
     \       else:\n            for code in product(toSeq(0..<n), n - 2):\n       \
-    \         yield prufer_decode(code)\n\n    iterator simple_graphs*(n: int, m:\
-    \ int = -1): UnWeightedUnDirectedGraph =\n        ## \u9802\u70B9\u756A\u53F7\
-    \ 0..<n\u3001\u8FBA\u6570 m \u306E\u5358\u7D14\u7121\u5411\u30B0\u30E9\u30D5\u3002\
-    m == -1 \u306F\u8FBA\u6570\u6307\u5B9A\u306A\u3057\u3002\n        ## \u540C\u578B\
-    \u3067\u3082\u9802\u70B9\u756A\u53F7\u304C\u7570\u306A\u308B\u30B0\u30E9\u30D5\
-    \u306F\u533A\u5225\u3059\u308B\u3002\n        assert n >= 0 and m >= -1, \"n\u306F\
-    \u975E\u8CA0\u3067\u3001m\u306F\u5168\u5217\u6319\u3092\u8868\u3059-1\u4EE5\u4E0A\
-    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        var edges:\
-    \ seq[tuple[u, v: int]]\n        for u in 0..<n:\n            for v in u + 1..<n:\
-    \ edges.add((u, v))\n        let first = if m == -1: 0 else: m\n        let last\
-    \ = if m == -1: edges.len else: min(m, edges.len)\n        for count in first..last:\n\
-    \            for selected in combinations(edges, count):\n                var\
-    \ g = initUnWeightedUnDirectedGraph(n)\n                for (u, v) in selected:\
-    \ g.add_edge(u, v)\n                yield g\n\n    iterator topological_orders*(adj:\
-    \ seq[seq[int]]): seq[int] =\n        ## \u96A3\u63A5\u30EA\u30B9\u30C8\u306E\u30C8\
-    \u30DD\u30ED\u30B8\u30AB\u30EB\u9806\u5E8F\u3092\u8F9E\u66F8\u9806\u306B\u5217\
-    \u6319\u3002\u6709\u5411\u9589\u8DEF\u304C\u3042\u308B\u5834\u5408\u306F0\u4EF6\
-    \u3002\n        let n = adj.len\n        var indegree = newSeq[int](n)\n     \
-    \   for edges in adj:\n            for v in edges:\n                assert v >=\
-    \ 0 and v < n, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\
-    \u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: v >= 0 and\
-    \ v < n\"\n                inc indegree[v]\n        if n == 0:\n            yield\
-    \ @[]\n        else:\n            var used = newSeq[bool](n)\n            var\
-    \ order = newSeq[int](n)\n            var next = newSeq[int](n)\n            var\
-    \ depth = 0\n            while depth >= 0:\n                var u = next[depth]\n\
-    \                while u < n and (used[u] or indegree[u] != 0): inc u\n      \
-    \          if u == n:\n                    dec depth\n                    if depth\
-    \ >= 0:\n                        let previous = order[depth]\n               \
-    \         used[previous] = false\n                        for v in adj[previous]:\
-    \ inc indegree[v]\n                else:\n                    next[depth] = u\
-    \ + 1\n                    order[depth] = u\n                    if depth == n\
-    \ - 1:\n                        yield order\n                    else:\n     \
-    \                   used[u] = true\n                        for v in adj[u]: dec\
-    \ indegree[v]\n                        inc depth\n                        next[depth]\
-    \ = 0\n\n    iterator topological_orders*(g: DirectedGraph): seq[int] =\n    \
-    \    ## cplib \u306E\u6709\u5411\u30B0\u30E9\u30D5\u7248\u3002\u91CD\u307F\u306F\
-    \u7121\u8996\u3002\u9759\u7684\u30B0\u30E9\u30D5\u306F build \u6E08\u307F\u3067\
-    \u3042\u308B\u3053\u3068\u3002\n        var adj = newSeq[seq[int]](g.len)\n  \
-    \      for u in 0..<g.len:\n            for (v, _) in g.to_and_cost(u): adj[u].add(v)\n\
-    \        for order in topological_orders(adj): yield order\n\n    iterator integer_vectors_l1*(n,\
+    \         yield prufer_decode(code)\n\n    iterator rooted_tree_levels_impl(n:\
+    \ int): seq[int] =\n        ## \u540C\u578B\u3092\u9664\u304F\u6839\u4ED8\u304D\
+    \u6728\u306E\u6DF1\u3055\u512A\u5148\u9806\u306E\u6DF1\u3055\u5217\u3092\u5217\
+    \u6319\u30021\u4EF6\u3042\u305F\u308A O(n)\u3001\u8FFD\u52A0\u9818\u57DF O(n)\u3002\
+    \n        ## \u5404\u9802\u70B9\u306E\u5B50\u90E8\u5206\u6728\u306F\u3001\u305D\
+    \u306E\u6DF1\u3055\u5217\u306E\u8F9E\u66F8\u9806\u964D\u9806\u306B\u4E26\u3079\
+    \u308B\u3002\n        assert n >= 1, \"n\u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        var levels = toSeq(0..<n)\n  \
+    \      while true:\n            yield levels\n            var p = n - 1\n    \
+    \        while p > 0 and levels[p] == 1: dec p\n            if p == 0: break\n\
+    \            var q = p - 1\n            while levels[q] != levels[p] - 1: dec\
+    \ q\n            # \u76F4\u524D\u306E\u90E8\u5206\u6728\u306E\u63A5\u982D\u8F9E\
+    \u3092\u7E70\u308A\u8FD4\u3057\u3001\u6B21\u306E\u6B63\u898F\u5316\u3055\u308C\
+    \u305F\u6DF1\u3055\u5217\u3092\u4F5C\u308B\u3002\n            let period = p -\
+    \ q\n            for i in p..<n: levels[i] = levels[i - period]\n\n    proc tree_from_levels_impl(levels:\
+    \ seq[int]): UnWeightedUnDirectedGraph =\n        ## \u6DF1\u3055\u512A\u5148\u9806\
+    \u306E\u6DF1\u3055\u5217\u3092\u3001\u540C\u3058\u9806\u306B\u9802\u70B9\u756A\
+    \u53F7\u3092\u4ED8\u3051\u305F\u6728\u306B\u5909\u63DB\u3002O(n)\u3002\n     \
+    \   result = initUnWeightedUnDirectedGraph(levels.len)\n        var path = newSeq[int](levels.len)\n\
+    \        for v in 1..<levels.len:\n            result.add_edge(path[levels[v]\
+    \ - 1], v)\n            path[levels[v]] = v\n\n    iterator rooted_trees*(n: int):\
+    \ UnWeightedUnDirectedGraph =\n        ## n \u9802\u70B9\u306E\u6839\u4ED8\u304D\
+    \u6728\u3092\u3001\u6839\u3092\u4FDD\u3064\u540C\u578B\u3092\u9664\u3044\u3066\
+    \u5217\u6319\u3002n >= 1\u3001\u6839\u306F\u9802\u70B9 0\u3002\n        ## \u5B50\
+    \u306E\u9806\u5E8F\u306F\u533A\u5225\u305B\u305A\u3001\u9802\u70B9\u756A\u53F7\
+    \u306F\u6DF1\u3055\u512A\u5148\u9806\u30021\u4EF6\u3042\u305F\u308A O(n)\u3001\
+    \u8FFD\u52A0\u9818\u57DF O(n)\u3002\n        for levels in rooted_tree_levels_impl(n):\n\
+    \            yield tree_from_levels_impl(levels)\n\n    proc is_unrooted_representative_impl(levels:\
+    \ seq[int]): bool =\n        ## \u6839\u304C\u91CD\u5FC3\u3067\u3001\u91CD\u5FC3\
+    \u304C2\u500B\u306A\u3089\u7247\u65B9\u306E\u6839\u4ED8\u304D\u8868\u73FE\u3060\
+    \u3051\u3092\u63A1\u7528\u3059\u308B\u3002O(n)\u3002\n        let n = levels.len\n\
+    \        var halfStart = -1\n        var first = 1\n        while first < n:\n\
+    \            var last = first + 1\n            while last < n and levels[last]\
+    \ > 1: inc last\n            let size = last - first\n            if size > n\
+    \ div 2: return false\n            if n mod 2 == 0 and size == n div 2: halfStart\
+    \ = first\n            first = last\n        if halfStart >= 0:\n            #\
+    \ \u91CD\u5FC3\u9593\u306E\u8FBA\u3067\u5206\u3051\u305F2\u6210\u5206\u306E\u6B63\
+    \u898F\u5316\u3055\u308C\u305F\u6DF1\u3055\u5217\u3092\u6BD4\u8F03\u3059\u308B\
+    \u3002\n            let half = n div 2\n            for i in 0..<half:\n     \
+    \           let index = if i < halfStart: i else: i + half\n                let\
+    \ left = levels[index]\n                let right = levels[halfStart + i] - 1\n\
+    \                if left != right: return left > right\n        return true\n\n\
+    \    iterator unlabeled_trees*(n: int): UnWeightedUnDirectedGraph =\n        ##\
+    \ n \u9802\u70B9\u306E\u6839\u306A\u3057\u6728\u3092\u540C\u578B\u3092\u9664\u3044\
+    \u3066\u5217\u6319\u3002n >= 1\u3001\u9802\u70B9\u756A\u53F7\u306F 0..<n\u3002\
+    \n        ## rooted_trees \u3068\u540C\u3058\u6839\u4ED8\u304D\u6728\u5217\u6319\
+    \u304B\u3089\u91CD\u5FC3\u3067\u4EE3\u8868\u3092\u9078\u3076\u3002\u30CF\u30C3\
+    \u30B7\u30E5\u885D\u7A81\u306A\u3057\u3002\n        ## \u6839\u4ED8\u304D\u6728\
+    \u306E\u540C\u578B\u985E\u6570\u3092 R(n) \u3068\u3057\u3066\u5168\u4F53 O(n *\
+    \ R(n))\u3001\u8FFD\u52A0\u9818\u57DF O(n)\u3002\n        for levels in rooted_tree_levels_impl(n):\n\
+    \            if is_unrooted_representative_impl(levels):\n                yield\
+    \ tree_from_levels_impl(levels)\n\n    iterator simple_graphs*(n: int, m: int\
+    \ = -1): UnWeightedUnDirectedGraph =\n        ## \u9802\u70B9\u756A\u53F7 0..<n\u3001\
+    \u8FBA\u6570 m \u306E\u5358\u7D14\u7121\u5411\u30B0\u30E9\u30D5\u3002m == -1 \u306F\
+    \u8FBA\u6570\u6307\u5B9A\u306A\u3057\u3002\n        ## \u540C\u578B\u3067\u3082\
+    \u9802\u70B9\u756A\u53F7\u304C\u7570\u306A\u308B\u30B0\u30E9\u30D5\u306F\u533A\
+    \u5225\u3059\u308B\u3002\n        assert n >= 0 and m >= -1, \"n\u306F\u975E\u8CA0\
+    \u3067\u3001m\u306F\u5168\u5217\u6319\u3092\u8868\u3059-1\u4EE5\u4E0A\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        var edges: seq[tuple[u,\
+    \ v: int]]\n        for u in 0..<n:\n            for v in u + 1..<n: edges.add((u,\
+    \ v))\n        let first = if m == -1: 0 else: m\n        let last = if m == -1:\
+    \ edges.len else: min(m, edges.len)\n        for count in first..last:\n     \
+    \       for selected in combinations(edges, count):\n                var g = initUnWeightedUnDirectedGraph(n)\n\
+    \                for (u, v) in selected: g.add_edge(u, v)\n                yield\
+    \ g\n\n    iterator topological_orders*(adj: seq[seq[int]]): seq[int] =\n    \
+    \    ## \u96A3\u63A5\u30EA\u30B9\u30C8\u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\
+    \u9806\u5E8F\u3092\u8F9E\u66F8\u9806\u306B\u5217\u6319\u3002\u6709\u5411\u9589\
+    \u8DEF\u304C\u3042\u308B\u5834\u5408\u306F0\u4EF6\u3002\n        let n = adj.len\n\
+    \        var indegree = newSeq[int](n)\n        for edges in adj:\n          \
+    \  for v in edges:\n                assert v >= 0 and v < n, \"\u6307\u5B9A\u3057\
+    \u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: v >= 0 and v < n\"\n                inc\
+    \ indegree[v]\n        if n == 0:\n            yield @[]\n        else:\n    \
+    \        var used = newSeq[bool](n)\n            var order = newSeq[int](n)\n\
+    \            var next = newSeq[int](n)\n            var depth = 0\n          \
+    \  while depth >= 0:\n                var u = next[depth]\n                while\
+    \ u < n and (used[u] or indegree[u] != 0): inc u\n                if u == n:\n\
+    \                    dec depth\n                    if depth >= 0:\n         \
+    \               let previous = order[depth]\n                        used[previous]\
+    \ = false\n                        for v in adj[previous]: inc indegree[v]\n \
+    \               else:\n                    next[depth] = u + 1\n             \
+    \       order[depth] = u\n                    if depth == n - 1:\n           \
+    \             yield order\n                    else:\n                       \
+    \ used[u] = true\n                        for v in adj[u]: dec indegree[v]\n \
+    \                       inc depth\n                        next[depth] = 0\n\n\
+    \    iterator topological_orders*(g: DirectedGraph): seq[int] =\n        ## cplib\
+    \ \u306E\u6709\u5411\u30B0\u30E9\u30D5\u7248\u3002\u91CD\u307F\u306F\u7121\u8996\
+    \u3002\u9759\u7684\u30B0\u30E9\u30D5\u306F build \u6E08\u307F\u3067\u3042\u308B\
+    \u3053\u3068\u3002\n        var adj = newSeq[seq[int]](g.len)\n        for u in\
+    \ 0..<g.len:\n            for (v, _) in g.to_and_cost(u): adj[u].add(v)\n    \
+    \    for order in topological_orders(adj): yield order\n\n    iterator integer_vectors_l1*(n,\
     \ s: int): seq[int] =\n        ## \u9577\u3055 n\u3001sum(abs(a[i])) <= s \u306E\
     \u6574\u6570\u5217\u3092\u8F9E\u66F8\u9806\u306B\u5217\u6319\u3002\n        ##\
     \ s < 0 \u306F0\u4EF6\u3002s < high(int) \u3067\u3042\u308B\u3053\u3068\u3002\n\
@@ -458,13 +515,13 @@ data:
     \                if changed: break\n            if not changed: break\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-22 15:33:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/itertools/accumulater_test.nim
@@ -483,6 +540,8 @@ data:
   - verify/AI/itertools_enumeration_test.nim
   - verify/AI/itertools_test.nim
   - verify/AI/itertools_test.nim
+  - verify/AI/itertools_trees_test.nim
+  - verify/AI/itertools_trees_test.nim
 documentation_of: cplib/utils/itertools.nim
 layout: document
 redirect_from:

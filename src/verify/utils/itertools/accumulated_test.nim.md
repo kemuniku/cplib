@@ -40,16 +40,16 @@ data:
     \ result)\n\nvar N,Q = ii()\nvar a = newseqwith(N,ii()).accumulated(a+b,0)\n\n\
     for i in 0..<Q:\n    var l = ii()\n    var r = ii()\n    echo a[r]-a[l]"
   dependsOn:
-  - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/prufer.nim
   - cplib/utils/itertools.nim
   - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/utils/itertools/accumulated_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-22 15:33:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/itertools/accumulated_test.nim

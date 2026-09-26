@@ -34,6 +34,18 @@ data:
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_scope_test.nim
+    title: verify/AI/auto_rollback_scope_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_scope_test.nim
+    title: verify/AI/auto_rollback_scope_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_test.nim
+    title: verify/AI/auto_rollback_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/auto_rollback_test.nim
+    title: verify/AI/auto_rollback_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
@@ -51,6 +63,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/merge_tree_test.nim
     title: verify/AI/merge_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_mo_test.nim
+    title: verify/AI/rollback_mo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_mo_test.nim
+    title: verify/AI/rollback_mo_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/unionfind_test.nim
     title: verify/AI/unionfind_test.nim
@@ -116,8 +134,14 @@ data:
   verifiedWith:
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
+  - verify/AI/auto_rollback_scope_test.nim
+  - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/rollback_mo_test.nim
+  - verify/AI/rollback_mo_test.nim
+  - verify/AI/auto_rollback_test.nim
+  - verify/AI/auto_rollback_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/merge_tree_test.nim

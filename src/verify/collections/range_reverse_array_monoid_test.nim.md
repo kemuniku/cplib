@@ -106,8 +106,8 @@ data:
     \ == b\n        doAssert seg.min_left(b, proc(x: string): bool = target.endsWith(x))\
     \ == a\n    doAssert seg.toSeq == values\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_array_monoid.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_array_monoid.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

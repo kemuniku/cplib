@@ -44,6 +44,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/repeated_static_string.nim
     title: cplib/str/repeated_static_string.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/static_string_search.nim
+    title: cplib/str/static_string_search.nim
   - icon: ':warning:'
     path: verify/str/merged_static_string.nim
     title: verify/str/merged_static_string.nim
@@ -81,6 +87,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/repeated_static_string_test.nim
     title: verify/AI/repeated_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_string_search_test.nim
+    title: verify/AI/static_string_search_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_sort_test.nim
     title: verify/AI/static_string_sort_test.nim
@@ -319,11 +331,11 @@ data:
     reversible\u3092\u7121\u52B9\u306B\u3057\u305F\u6587\u5B57\u5217\u304C\u5FC5\u8981\
     \u3067\u3059\"\n        return base.suffix_upperbound(S) - base.suffix_lowerbound(S)\n"
   dependsOn:
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim
@@ -340,6 +352,8 @@ data:
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string_search.nim
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -353,6 +367,8 @@ data:
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/merged_static_string_test.nim
   - verify/AI/merged_static_string_test.nim
+  - verify/AI/static_string_search_test.nim
+  - verify/AI/static_string_search_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/static_string_test.nim
