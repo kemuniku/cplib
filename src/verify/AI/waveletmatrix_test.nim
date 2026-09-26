@@ -174,3 +174,41 @@ for n in [63, 64, 65, 127, 128, 129, 257, 513]:
                     assert wm.sum_upperbound(l,r,x) == sumLessEqual
                     assert wm.sum_upperbound_with_count(l,r,x) == (sum:sumLessEqual,count:lessEqual)
             checkRange(a,wm,0,n,withSum)
+
+for n in [0, 1, 63, 64, 65, 513]:
+    for skewed in [false, true]:
+        var a = newSeq[int](n)
+        for i in 0..<n:
+            a[i] = if skewed and i mod 17 != 0: 12345 else: rng.rand(65535)
+        for h in [-1, 32, sizeof(int)*8]:
+            for withSum in [false, true]:
+                let wm = initWaveletMatrix(a, H=h, with_sum=withSum)
+                for trial in 0..<200:
+                    let l = rng.rand(n)
+                    let r = l + rng.rand(n-l)
+                    var low = rng.rand(65536)
+                    var high = low + (1 shl (trial mod 17))
+                    if trial mod 7 == 0:
+                        low = 32768 - rng.rand(64)
+                        high = 32768 + rng.rand(64)
+                    elif trial mod 7 == 1:
+                        high = rng.rand(65536)
+                    elif trial mod 7 == 2 and n > 0:
+                        low = a[rng.rand(n-1)]
+                        high = low+1
+                    elif trial mod 7 == 3:
+                        low = int.low
+                    elif trial mod 7 == 4:
+                        high = int.high
+                    elif trial mod 7 == 5:
+                        low = 12288
+                        high = low + (1 shl (8 + trial mod 5))
+                    var expected: tuple[sum,count:int]
+                    for i in l..<r:
+                        if low <= a[i] and a[i] < high:
+                            expected.sum += a[i]
+                            inc expected.count
+                    assert wm.range_freq(l,r,low,high) == expected.count
+                    if withSum:
+                        assert wm.range_sum(l,r,low,high) == expected.sum
+                        assert wm.range_sum_with_count(l,r,low,high) == expected

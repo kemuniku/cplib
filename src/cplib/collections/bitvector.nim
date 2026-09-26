@@ -2,6 +2,10 @@ when not declared CPLIB_COLLECTIONS_BITVECTOR:
     const CPLIB_COLLECTIONS_BITVECTOR* = 1
     import bitops
 
+    when (defined(amd64) or defined(i386)) and (defined(gcc) or defined(clang)):
+        # x86ではPOPCNT対応CPUを前提に、popcountをCPU命令にする。
+        {.passC: "-mpopcnt".}
+
     # releaseでもdebug指定時は境界・オーバーフローチェックを残す。
     when defined(release) and not defined(debug):
         {.push boundChecks: off, overflowChecks: off.}
