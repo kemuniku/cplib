@@ -185,10 +185,87 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
             return none(int)
         return some(self.kth_smallest(l,r,c))
 
+    proc bound_from[withSum,withCount,inclusive:static bool](self:WaveletMatrix,l,r,x,start_h:int):tuple[sum,count:int]=
+        ## 共通する上位ビットを処理済みの区間で、x 未満（inclusive=true なら以下）を O(start_h+1) で集計する。
+        var l = l
+        var r = r
+        for h in countdown(start_h,0,1):
+            if l == r:
+                return
+            if h == self.scan_h and r-l <= scanLimit:
+                for i in l..<r:
+                    let value = self.scan_values[i]
+                    let take = when inclusive: value <= x else: value < x
+                    if take:
+                        when withSum: result.sum += value
+                        when withCount: inc result.count
+                return
+            let (l0,r0,l1,r1) = self.get_child(h,l,r)
+            if ((x shr h) and 1) != 0:
+                when withSum:
+                    result.sum += self.dat[h].zero_sum[r0] - self.dat[h].zero_sum[l0]
+                when withCount:
+                    result.count += r0-l0
+                l = l1
+                r = r1
+            else:
+                l = l0
+                r = r0
+        when inclusive:
+            when withSum: result.sum += (r-l) * x
+            when withCount: result.count += r-l
+
+    proc share_range_path(self:WaveletMatrix,low,high:int):bool {.inline.} =
+        ## low < high のとき、正の値域で上位 min(H,4) ビットが共通するか O(1) で判定する。
+        return low > 0 and ((low xor (high-1)) shr max(self.H-4,0)) == 0
+
+    proc range_query[withSum,withCount:static bool](self:WaveletMatrix,l,r,low,high:int):tuple[sum,count:int]=
+        ## [low,high) の上下限で共通する探索をまとめ、必要な総和・個数を O(H) で集計する。
+        if low >= high or high <= 0 or l == r:
+            return
+        let lower = max(low,0)
+        var upper = high-1
+        if self.H < sizeof(int)*8-1:
+            upper = min(upper,(1 shl self.H)-1)
+        if lower > upper:
+            return
+        let split_h = if lower == upper: -1 else: fastLog2(lower xor upper)
+        var l = l
+        var r = r
+        for h in countdown(self.H-1,0,1):
+            if l == r:
+                return
+            if h == self.scan_h and r-l <= scanLimit:
+                for i in l..<r:
+                    let value = self.scan_values[i]
+                    if lower <= value and value <= upper:
+                        when withSum: result.sum += value
+                        when withCount: inc result.count
+                return
+            let (l0,r0,l1,r1) = self.get_child(h,l,r)
+            if h == split_h:
+                let lower_part = bound_from[withSum,withCount,false](self,l0,r0,lower,h-1)
+                let upper_part = bound_from[withSum,withCount,true](self,l1,r1,upper,h-1)
+                when withSum:
+                    result.sum = self.dat[h].zero_sum[r0] - self.dat[h].zero_sum[l0] - lower_part.sum + upper_part.sum
+                when withCount:
+                    result.count = r0-l0 - lower_part.count + upper_part.count
+                return
+            if ((lower shr h) and 1) != 0:
+                l = l1
+                r = r1
+            else:
+                l = l0
+                r = r0
+        when withSum: result.sum = (r-l) * lower
+        when withCount: result.count = r-l
+
     proc range_freq*(self:WaveletMatrix,l,r,low,high:int):int=
         ## [l,r) 内で値が [low,high) に入る要素数を O(H) で返す。low >= high なら 0。
         if low >= high:
             return 0
+        if self.share_range_path(low,high):
+            return range_query[false,true](self,l,r,low,high).count
         return self.range_lowerbound(l,r,high) - self.range_lowerbound(l,r,low)
 
     proc count*(self:WaveletMatrix,l,r,x:int):int=
@@ -287,6 +364,8 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
         assert 0 <= l and l <= r and r <= self.N, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.N"
         if low >= high:
             return 0
+        if self.share_range_path(low,high):
+            return range_query[true,false](self,l,r,low,high).sum
         return self.sum_lowerbound(l,r,high) - self.sum_lowerbound(l,r,low)
 
     proc sum_smallest_with_count*(self:WaveletMatrix,l,r,k:int):tuple[sum,count:int]=
@@ -339,6 +418,8 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
         assert 0 <= l and l <= r and r <= self.N, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.N"
         if low >= high:
             return
+        if self.share_range_path(low,high):
+            return range_query[true,true](self,l,r,low,high)
         let upper = self.sum_lowerbound_with_count(l,r,high)
         let lower = self.sum_lowerbound_with_count(l,r,low)
         return (sum:upper.sum-lower.sum,count:upper.count-lower.count)
