@@ -37,9 +37,9 @@ data:
     \        st[X-1] ^= Y\n    else:\n        echo st.get(X-1, Y)\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
+  - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_var.nim
-  - cplib/collections/segtree_var.nim
   isVerificationFile: false
   path: verify/collections/segtree_var/segtree_xor1_test_.nim
   requiredBy: []

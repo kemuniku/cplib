@@ -34,8 +34,8 @@ data:
     for s in S:\n    if s in st:\n        echo \"Yes\"\n    else:\n        echo \"\
     No\"\n"
   dependsOn:
-  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false

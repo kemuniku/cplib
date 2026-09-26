@@ -58,8 +58,8 @@ data:
     \ or bit] += dp[mask]\n        return dp[^1]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
   - cplib/graph/topologicalsort.nim
   isVerificationFile: false
   path: cplib/graph/count_topologicalsort.nim

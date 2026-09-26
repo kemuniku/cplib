@@ -39,8 +39,8 @@ data:
     \    elif q == 3:\n        discard swag.popLast()\n    else:\n        var x =\
     \ ii()\n        var (a, b) = swag.fold()\n        echo (a*x mod MOD + b) mod MOD\n"
   dependsOn:
-  - cplib/collections/SWAG.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/SWAG.nim
   - cplib/collections/SWAG.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

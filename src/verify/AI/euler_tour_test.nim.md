@@ -77,8 +77,8 @@ data:
     \ g.euler_tour().len == 0\n    g.add_edge(n - 1, 0)\n    doAssert g.euler_tour().len\
     \ == n\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/euler_tour.nim
   - cplib/graph/graph.nim
+  - cplib/graph/euler_tour.nim
   - cplib/graph/graph.nim
   - cplib/graph/euler_tour.nim
   isVerificationFile: true

@@ -35,8 +35,8 @@ data:
     K -= 1\nvar s = initSortedMultiSet(P[0..<K])\nvar ans: seq[int]\nfor i in K..<N:\n\
     \    s.incl(P[i])\n    ans.add(s[-K-1])\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false

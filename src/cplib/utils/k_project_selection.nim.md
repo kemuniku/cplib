@@ -181,8 +181,8 @@ data:
   dependsOn:
   - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
-  - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
+  - cplib/utils/project_selection.nim
   isVerificationFile: false
   path: cplib/utils/k_project_selection.nim
   requiredBy: []

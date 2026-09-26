@@ -186,10 +186,10 @@ data:
     \u308B\u3002\u578B\u4ED8\u304DrunAutoRollback\u3068\u540C\u3058\u6761\u4EF6\u30FB\
     \u8A08\u7B97\u91CF\u3002\n        runAutoRollbackImpl(solver, apply, answer, runAutoRollbackWithoutValue)\n"
   dependsOn:
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   isVerificationFile: false
   path: cplib/utils/offline_dynamic_queries.nim
   requiredBy: []

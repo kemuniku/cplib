@@ -54,10 +54,10 @@ data:
     \ f)\nf.close()\nassert readFile(path).strip == \"3 2\\n10 11 5\\n11 12 7\"\n\
     removeFile(path)\n"
   dependsOn:
-  - cplib/graph/graph_debug.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph_debug.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/graph_debug.nim
   isVerificationFile: true
   path: verify/AI/graph_debug_test.nim
   requiredBy: []

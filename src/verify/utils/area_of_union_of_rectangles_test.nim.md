@@ -46,13 +46,13 @@ data:
     \ l,d,r,u = ii()\n    tmp.add((l,d,r,u))\n\nprint area_of_union_of_rectangles(tmp)\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
+  - cplib/utils/area_of_union_of_rectangles.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/area_of_union_of_rectangles.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
-  - cplib/utils/area_of_union_of_rectangles.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/utils/area_of_union_of_rectangles_test.nim
   requiredBy: []

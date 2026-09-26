@@ -123,13 +123,13 @@ data:
     \u308A\u307E\u3059\"\n        self.sum_less_rank(l, r, self.keys.lowerBound(upper))\
     \ -\n            self.sum_less_rank(l, r, self.keys.lowerBound(lower))\n"
   dependsOn:
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/waveletmatrix_fenwick.nim

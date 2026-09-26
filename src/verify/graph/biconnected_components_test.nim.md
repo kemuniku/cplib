@@ -47,13 +47,13 @@ data:
     \ = initBiconnectedComponents(g)\nprint decomposition.groups.len\nfor group in\
     \ decomposition.groups:\n    print(group.len, *group)\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   isVerificationFile: true
   path: verify/graph/biconnected_components_test.nim

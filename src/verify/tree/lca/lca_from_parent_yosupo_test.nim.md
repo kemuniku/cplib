@@ -39,11 +39,11 @@ data:
     \ parent = @[-1] & lii(n - 1)\nlet tree = initLCAFromParent(parent, 0)\nfor _\
     \ in 0..<q:\n    let u = ii()\n    let v = ii()\n    print(tree.lca(u, v))\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tree/lca.nim
   isVerificationFile: true
   path: verify/tree/lca/lca_from_parent_yosupo_test.nim

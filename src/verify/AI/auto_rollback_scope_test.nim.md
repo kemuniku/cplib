@@ -110,14 +110,14 @@ data:
     \        proc update() = inc value\n        withAutoRollback(update):\n      \
     \      update()\n        discard snapshot()\n    )\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/auto_rollback.nim
   - cplib/collections/unionfind.nim
   - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/collections/unionfind.nim
   - cplib/utils/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/auto_rollback.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/AI/auto_rollback_scope_test.nim
   requiredBy: []

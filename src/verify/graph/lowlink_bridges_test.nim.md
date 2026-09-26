@@ -42,12 +42,12 @@ data:
     \ bridges.add((min(u, v), max(u, v)))\nbridges.sort()\nfor (u, v) in bridges:\
     \ echo u, \" \", v\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/lowlink_bridges_test.nim
   requiredBy: []

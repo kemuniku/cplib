@@ -94,8 +94,8 @@ data:
   - cplib/collections/fenwick_avx2.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick.nim
   isVerificationFile: true
   path: verify/AI/fenwick_tree_test.nim

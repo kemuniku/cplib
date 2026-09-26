@@ -62,8 +62,8 @@ data:
     \ == 0\n        st[p] = 0\n        assert st.node_count == 4096\n    assert st.get_all()\
     \ == 0\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/dynamic_segtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/dynamic_segtree.nim
   - cplib/collections/dynamic_segtree.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

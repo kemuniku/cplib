@@ -108,8 +108,8 @@ data:
     \u4F8B\u3059\u308B\u6642\u9593\u30FB\u9818\u57DF\u304C\u52A0\u308F\u308B\u3002\
     \n        runAutoRollbackImpl(self, add, answer, run)\n"
   dependsOn:
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false

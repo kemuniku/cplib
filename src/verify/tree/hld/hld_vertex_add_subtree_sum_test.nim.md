@@ -53,14 +53,14 @@ data:
     \ = hld.subtree(u)\n        var a = seg.get(l..<r)\n        ans.add(a)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   requiredBy: []

@@ -236,20 +236,20 @@ data:
     \u3058\u500B\u6570\u306E\u8A55\u4FA1\u5024 f(t), ..., f(t+n-1) \u3092 O(M(n))\
     \ \u3067\u6C42\u3081\u308B\u3002\n        shiftOfSamplingPoints(ys, t, ys.len)\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/fps/shift_of_sampling_points.nim
   requiredBy:

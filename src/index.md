@@ -504,6 +504,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/combination.nim
       title: cplib/math/combination.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/math/combination_arbitrary_mod.nim
+      title: cplib/math/combination_arbitrary_mod.nim
     - icon: ':warning:'
       path: cplib/math/combination_int.nim
       title: cplib/math/combination_int.nim
@@ -1461,6 +1464,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/citrus_test.nim
       title: verify/AI/citrus_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/combination_arbitrary_mod_test.nim
+      title: verify/AI/combination_arbitrary_mod_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/combination_test.nim
       title: verify/AI/combination_test.nim
@@ -2630,6 +2636,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/bigint_unit_test.nim
       title: verify/math/bigint_unit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/combination_arbitrary_mod_test.nim
+      title: verify/math/combination_arbitrary_mod_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/combination_npr_test.nim
       title: verify/math/combination_npr_test.nim

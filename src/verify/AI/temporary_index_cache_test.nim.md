@@ -91,11 +91,11 @@ data:
     \            values[0]\n        doAssert answer == 31 and values == @[1, 2]\n\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/auto_rollback.nim
   isVerificationFile: true
   path: verify/AI/temporary_index_cache_test.nim

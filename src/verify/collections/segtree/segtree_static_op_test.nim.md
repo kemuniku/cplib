@@ -35,8 +35,8 @@ data:
     \ = initSegmentTree(A, (a, b: int) => a + b, 0)\nfor _ in 0..<Q:\n    var L, R\
     \ = ii()\n    echo st.get(L..<R)\n"
   dependsOn:
-  - cplib/collections/segtree_static_op.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_static_op.nim
   - cplib/collections/segtree_static_op.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

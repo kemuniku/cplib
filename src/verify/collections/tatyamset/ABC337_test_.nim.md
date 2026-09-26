@@ -33,8 +33,8 @@ data:
     var st = initSortedMultiset(S.toseq())\nif st.toseq().join() == S:\n    echo \"\
     Yes\"\nelse:\n    echo \"No\"\n"
   dependsOn:
-  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false

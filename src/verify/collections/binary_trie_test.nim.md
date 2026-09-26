@@ -36,8 +36,8 @@ data:
     \   elif t == 1:\n        if x in S:\n            S.excl(x)\n    else:\n     \
     \   stdout.writeLine S.get_kth(0,x) xor x\n"
   dependsOn:
-  - cplib/collections/binary_trie.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/binary_trie.nim
   - cplib/collections/binary_trie.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

@@ -53,10 +53,10 @@ data:
     checkLeftShift[1]()\ncheckLeftShift[63]()\ncheckLeftShift[64]()\ncheckLeftShift[65]()\n\
     checkLeftShift[128]()\ncheckLeftShift[129]()\ncheckLeftShift[257]()\n"
   dependsOn:
-  - cplib/collections/staticbitset.nim
-  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/staticbitset.nim
+  - cplib/collections/staticbitset.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/staticbitset_test.nim
   requiredBy: []

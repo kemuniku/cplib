@@ -93,8 +93,8 @@ data:
   dependsOn:
   - cplib/collections/dynamic_lazysegtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_lazysegtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/dynamic_lazysegtree_test.nim
   requiredBy: []
