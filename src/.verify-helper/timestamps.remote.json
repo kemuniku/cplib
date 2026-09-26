@@ -275,6 +275,7 @@
 "verify/collections/lazysegtree/rangeaffinerangesum_test.nim": "2026-09-18 12:10:16 +0900",
 "verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim": "2026-09-18 12:10:16 +0900",
 "verify/collections/lazysegtree/rangesetrangecomposite_test.nim": "2026-09-18 12:10:16 +0900",
+"verify/collections/max_heapqueue_test.nim": "2026-09-27 01:42:57 +0900",
 "verify/collections/parallel_unionfind_test.nim": "2026-09-13 17:15:27 +0900",
 "verify/collections/persistent_binary_trie_test.nim": "2026-09-13 17:15:27 +0900",
 "verify/collections/persistent_unionfind_test.nim": "2026-09-13 17:15:27 +0900",
