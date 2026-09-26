@@ -85,21 +85,21 @@ data:
     \        assert $tmp2 == naive2\n        assert $tmp3 == naive3\n        assert\
     \ cmp(tmp2,tmp2) == 0\n\n"
   dependsOn:
+  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/str/merged_static_string.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/utils/constants.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/constants.nim
   - cplib/str/static_string.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
   - cplib/str/static_string.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/str/merged_static_string.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim

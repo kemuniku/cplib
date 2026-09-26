@@ -136,10 +136,10 @@ data:
     \      if hasUpper:\n            result = self.compressReverse(result, upper)\n\
     \        if hasLower:\n            result = self.rakeAtRoot(result, lower)\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false

@@ -43,10 +43,10 @@ data:
     \ y))\n\nfor i in 0..<n-1:\n    if dp[i] == -inf: echo \"Unreachable\"\n    else:\
     \ echo dp[i]\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/math/nearest_equiv.nim
   - cplib/graph/graph.nim
   - cplib/math/nearest_equiv.nim
-  - cplib/math/nearest_equiv.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/math/nearear_equiv_abc342e_test_.nim
   requiredBy: []

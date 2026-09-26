@@ -36,8 +36,8 @@ data:
     \            ans += (A[i]&A[j]).popcount()\necho (ans div 3)"
   dependsOn:
   - cplib/collections/bitset.nim
-  - cplib/collections/bitset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/bitset_test_.nim

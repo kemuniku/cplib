@@ -177,13 +177,13 @@ data:
     \ = discard\n        solver.runAutoRollback(apply, answer)\n    )\n\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/utils/offline_dynamic_queries.nim
-  - cplib/utils/offline_dynamic_queries.nim
-  - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
   - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/collections/unionfind.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: true
   path: verify/AI/auto_rollback_test.nim

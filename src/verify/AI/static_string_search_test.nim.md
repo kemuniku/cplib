@@ -146,20 +146,20 @@ data:
     \    discard oneSearch[another]\nexpectAssertion:\n    discard oneSearch[another[0..<0]]\n\
     \nclearStaticStringSearchCache()\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string_search.nim
-  - cplib/str/static_string_search.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/static_string_search.nim
   isVerificationFile: true
   path: verify/AI/static_string_search_test.nim
   requiredBy: []

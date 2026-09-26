@@ -115,18 +115,18 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/staticRMQ.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/str/compressed_trie.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/compressed_trie.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/static_string.nim
+  - cplib/graph/graph.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim
   requiredBy: []

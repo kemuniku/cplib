@@ -115,6 +115,9 @@ data:
       path: cplib/collections/lichaotree.nim
       title: cplib/collections/lichaotree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/max_heapqueue.nim
+      title: cplib/collections/max_heapqueue.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/parallel_unionfind.nim
       title: cplib/collections/parallel_unionfind.nim
     - icon: ':heavy_check_mark:'
@@ -2120,6 +2123,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/hashtable_yuki2686_test.nim
       title: verify/collections/hashtable_yuki2686_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/max_heapqueue_test.nim
+      title: verify/collections/max_heapqueue_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/parallel_unionfind_test.nim
       title: verify/collections/parallel_unionfind_test.nim

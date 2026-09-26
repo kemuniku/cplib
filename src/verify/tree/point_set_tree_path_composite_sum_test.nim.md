@@ -71,12 +71,12 @@ data:
     \ backward(v))\n    answers.add(dp.prod(ii()).sum.val)\necho answers.join(\"\\\
     n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true

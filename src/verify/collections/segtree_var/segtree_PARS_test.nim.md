@@ -36,10 +36,10 @@ data:
     \ T = ii()\n    if T == 0:\n        var p, x = ii()\n        st[p] += x\n    else:\n\
     \        var l, r = ii()\n        echo st[l..<r]\n"
   dependsOn:
-  - cplib/collections/segtree_var.nim
-  - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
+  - cplib/collections/segtree_var.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_PARS_test.nim
   requiredBy: []

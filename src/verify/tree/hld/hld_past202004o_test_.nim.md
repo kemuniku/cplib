@@ -73,16 +73,16 @@ data:
     \ false): mx = max(mx, seg.get(l..<r))\n    ans[i] = ai - mx + c\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
+  - cplib/utils/constants.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
   - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false

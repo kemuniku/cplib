@@ -67,16 +67,16 @@ data:
     \ == total\n    assert seg[0..<a.len].min == min(a)\n    assert seg[0..<a.len].max\
     \ == max(a)\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/math/int128.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_beats.nim
   isVerificationFile: true
   path: verify/collections/segtree_beats_assignment_test.nim
   requiredBy: []

@@ -80,10 +80,10 @@ data:
     \ n and x == n:\n                    return edits\n            swap(previous,\
     \ current)\n        return -1\n"
   dependsOn:
-  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/edit_distance.nim
   requiredBy: []

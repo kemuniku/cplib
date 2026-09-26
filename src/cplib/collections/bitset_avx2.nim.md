@@ -601,9 +601,9 @@ data:
   - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: false
   path: cplib/collections/bitset_avx2.nim
   requiredBy: []

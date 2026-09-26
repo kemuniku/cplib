@@ -360,8 +360,8 @@ data:
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx512_fuse.nim

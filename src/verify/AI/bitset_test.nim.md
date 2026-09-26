@@ -62,8 +62,8 @@ data:
     \ - shift])\n            assert right[i] == (i + shift < n and x[i + shift])\n"
   dependsOn:
   - cplib/collections/bitset.nim
-  - cplib/collections/bitset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/bitset_test.nim

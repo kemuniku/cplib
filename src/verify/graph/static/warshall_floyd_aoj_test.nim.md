@@ -51,12 +51,12 @@ data:
     \ \")\n    echo d\n"
   dependsOn:
   - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/warshall_floyd_negative.nim
   - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/warshall_floyd.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/warshall_floyd_aoj_test.nim

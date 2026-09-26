@@ -64,16 +64,16 @@ data:
     \ 6])\nexpectAssertion:\n    discard xorConvolution(newSeq[int](), newSeq[int]())\n\
     expectAssertion:\n    var invalid = @[1, 2, 3]\n    FastHadamardTransForm(invalid)\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/convolution/xor_convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/xor_convolution.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/xor_convolution.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/convolution/xor_convolution_boundary_test.nim
   requiredBy: []

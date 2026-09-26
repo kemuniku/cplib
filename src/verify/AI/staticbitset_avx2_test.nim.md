@@ -125,12 +125,12 @@ data:
   dependsOn:
   - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_avx2_impl.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/staticbitset_avx2.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/staticbitset_avx2.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
   isVerificationFile: true
   path: verify/AI/staticbitset_avx2_test.nim
   requiredBy: []

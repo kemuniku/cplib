@@ -36,10 +36,10 @@ data:
     \ Y = ii()\n    if T == 1:\n        st.update(X-1, st.get(X-1, X) xor Y)\n   \
     \ else:\n        echo st.get(X-1, Y)\n"
   dependsOn:
-  - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
   isVerificationFile: false
   path: verify/collections/segtree/segtree_xor1_test_.nim
   requiredBy: []

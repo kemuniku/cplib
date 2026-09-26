@@ -121,17 +121,17 @@ data:
     \    except AssertionDefect:\n        rejected = true\n    doAssert rejected\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/dijkstra_radix.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/dijkstra.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/graph/dijkstra_radix.nim
-  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/graph/dijkstra_radix.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/AI/dijkstra_radix_test.nim

@@ -55,9 +55,9 @@ data:
     removeFile(path)\n"
   dependsOn:
   - cplib/graph/graph_debug.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph_debug.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/graph_debug_test.nim
   requiredBy: []

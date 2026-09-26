@@ -109,8 +109,8 @@ data:
     \n        runAutoRollbackImpl(self, add, answer, run)\n"
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false
   path: cplib/utils/rollback_mo.nim

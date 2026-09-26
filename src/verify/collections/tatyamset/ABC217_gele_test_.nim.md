@@ -36,8 +36,8 @@ data:
     \ else:\n        var l = st.le(x)\n        var r = st.ge(x)\n        echo r.get()-l.get()\n"
   dependsOn:
   - cplib/collections/tatyamset.nim
-  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC217_gele_test_.nim
