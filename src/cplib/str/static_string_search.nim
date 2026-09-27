@@ -5,9 +5,17 @@ when not declared CPLIB_STR_STATIC_STRING_SEARCH:
     import cplib/collections/staticRMQ
     import cplib/collections/waveletmatrix
 
+    type StaticStringCountCacheEntry = object
+        first, last, l, r, length, count: int32
+
+    type StaticStringSearchIndex = ref object
+        wm: WaveletMatrix
+        countCache: seq[StaticStringCountCacheEntry]
+        cacheShift: int
+
     type StaticStringSearch*[T] = object
         base: StaticStringBase[T]
-        wm: WaveletMatrix
+        index: StaticStringSearchIndex
 
     type StaticStringSearchView*[T] = object
         search: StaticStringSearch[T]
@@ -18,63 +26,79 @@ when not declared CPLIB_STR_STATIC_STRING_SEARCH:
 
     # 索引が基底を保持するため、登録中に同じアドレスが別の基底へ再利用されることはない。
     var staticStringSearchCache: Table[pointer, RootRef]
+    var staticStringSearchLastKey: pointer
+    var staticStringSearchLastEntry: RootRef
 
     proc clearStaticStringSearchCache*[T](base: StaticStringBase[T]) =
         ## 指定した基底の索引をキャッシュから除く。保持済みの検索オブジェクトは引き続き使える。
-        staticStringSearchCache.del(cast[pointer](base))
+        let key = cast[pointer](base)
+        if staticStringSearchLastKey == key:
+            staticStringSearchLastKey = nil
+            staticStringSearchLastEntry = nil
+        staticStringSearchCache.del(key)
 
     proc clearStaticStringSearchCache*() =
         ## 全ての型・基底の索引とキャッシュの領域を手放す。保持済みの検索オブジェクトは引き続き使える。
+        staticStringSearchLastKey = nil
+        staticStringSearchLastEntry = nil
         staticStringSearchCache = default(Table[pointer, RootRef])
 
     proc initStaticStringSearch*[T](base: StaticStringBase[T]): StaticStringSearch[T] =
         ## 基底ごとの索引を取得する。初回 O(N log(N+2)) 時間、再取得は期待 O(1) 時間。N は base.S.len。
+        ## 同じ基底の連続取得はテーブル検索を省き O(1) 時間。
         ## キャッシュは clearStaticStringSearchCache を呼ぶまで索引と基底を保持する。
         let key = cast[pointer](base)
+        if staticStringSearchLastKey == key and staticStringSearchLastEntry != nil:
+            return StaticStringSearchCacheEntry[T](staticStringSearchLastEntry).search
         let existing = staticStringSearchCache.getOrDefault(key)
         if existing != nil:
+            staticStringSearchLastKey = key
+            staticStringSearchLastEntry = existing
             return StaticStringSearchCacheEntry[T](existing).search
         result.base = base
         var positions = newSeq[int](base.SA.len)
         for i, position in base.SA:
             positions[i] = int(position)
-        result.wm = initWaveletMatrix(positions)
-        staticStringSearchCache[key] = StaticStringSearchCacheEntry[T](search: result)
+        result.index = StaticStringSearchIndex(wm: initWaveletMatrix(positions))
+        # 近い接尾辞順位を同じ枠にまとめ、一致区間の広いパターンを再利用しやすくする。
+        var slots = base.SA.len
+        while slots > 4096:
+            slots = (slots + 1) shr 1
+            inc result.index.cacheShift
+        result.index.countCache = newSeq[StaticStringCountCacheEntry](slots)
+        let entry = StaticStringSearchCacheEntry[T](search: result)
+        staticStringSearchCache[key] = entry
+        staticStringSearchLastKey = key
+        staticStringSearchLastEntry = entry
 
     proc suffixRange[T](search: StaticStringSearch[T], pattern: StaticString[T]): tuple[first, last: int] =
         ## 空でない pattern を接頭辞に持つ接尾辞の SA 上の半開区間を O(log(N+2)) 時間で求める。
         let m = len(pattern)
         let rank = int(search.base.RSA[pattern.l])
-        var left = 0
-        var right = rank
-        while left < right:
-            let mid = (left + right) shr 1
-            if search.base.RMQ.query(mid, rank) >= m:
-                right = mid
-            else:
-                left = mid + 1
-        result.first = left
-
-        left = rank
-        right = search.base.SA.len - 1
-        while left < right:
-            let mid = (left + right + 1) shr 1
-            if search.base.RMQ.query(rank, mid) >= m:
-                left = mid
-            else:
-                right = mid - 1
-        result.last = left + 1
+        result.first = search.base.RMQ.minLeft(rank, int32(m))
+        result.last = search.base.RMQ.maxRight(rank, int32(m)) + 1
 
     proc count*[Element](search: StaticStringSearch[Element], S, T: StaticString[Element]): int =
         ## 同じ基底の S 内で重複を許した T の出現回数を O(log(N+2)) 時間で返す。空の T は len(S)+1 回。
+        ## 最大4096件の結果を保持し、同じ対象・内容のキャッシュに当たれば O(1) 時間。
         assert S.base == search.base and T.base == search.base, "文字列は検索用索引と同じ基底文字列から作成されている必要があります"
         let m = len(T)
         if m == 0:
             return len(S) + 1
         if m > len(S):
             return 0
+        let rank = search.base.RSA[T.l]
+        let slot = int(rank) shr search.index.cacheShift
+        let cached = search.index.countCache[slot]
+        # 同じ長さで接尾辞順位が保存済みの区間内なら、パターンの内容も同じ。
+        if cached.length == m and cached.l == S.l and cached.r == S.r and
+                cached.first <= rank and rank < cached.last:
+            return int(cached.count)
         let (first, last) = search.suffixRange(T)
-        return search.wm.range_freq(first, last, int(S.l), int(S.r) - m + 1)
+        result = search.index.wm.range_freq(first, last, int(S.l), int(S.r) - m + 1)
+        search.index.countCache[slot] = StaticStringCountCacheEntry(
+            first: int32(first), last: int32(last), l: S.l, r: S.r,
+            length: int32(m), count: int32(result))
 
     proc contains*[Element](search: StaticStringSearch[Element], S, T: StaticString[Element]): bool =
         ## 同じ基底の S に T が含まれるか O(log(N+2)) 時間で判定する。空の T は常に含まれる。
@@ -90,10 +114,10 @@ when not declared CPLIB_STR_STATIC_STRING_SEARCH:
                 yield position
         elif m <= len(S):
             let (first, last) = search.suffixRange(T)
-            let begin = search.wm.range_lowerbound(first, last, int(S.l))
-            let finish = search.wm.range_lowerbound(first, last, int(S.r) - m + 1)
+            let begin = search.index.wm.range_lowerbound(first, last, int(S.l))
+            let finish = search.index.wm.range_lowerbound(first, last, int(S.r) - m + 1)
             for k in begin..<finish:
-                yield search.wm.kth_smallest(first, last, k) - int(S.l)
+                yield search.index.wm.kth_smallest(first, last, k) - int(S.l)
 
     proc count*[Element](S, T: StaticString[Element]): int =
         ## 同じ基底の S 内で重複を許した T の出現回数を返す。空の T は len(S)+1 回。

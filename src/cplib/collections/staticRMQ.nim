@@ -298,4 +298,42 @@ extern "C" NI64 cplib_static_rmq_scan_i64(void* data, NI n) {
         if a + 1 < b:
             let k = fastLog2(b - a - 1)
             result = min(result, min(RMQ.table[k][a + 1], RMQ.table[k][b - (1 shl k)]))
+
+    proc minLeft*[T](RMQ: StaticRMQ[T], r: int, lower: T): int {.inline.} =
+        ## [l,r) の全要素が lower 以上となる最小の l を O(log(N+2)) 時間で返す。
+        assert 0 <= r and r <= RMQ.V.len, "右端は 0..N の範囲である必要があります"
+        if r == 0: return 0
+        result = r - 1
+        if RMQ.prefix_product[result] < lower:
+            while RMQ.V[result] >= lower: dec result
+            return result + 1
+        var finish = result shr staticRMQBlockShift
+        if finish == 0: return 0
+        for k in countdown(fastLog2(finish), 0):
+            let width = 1 shl k
+            if width <= finish and RMQ.table[k][finish-width] >= lower:
+                finish -= width
+        if finish == 0: return 0
+        result = (finish shl staticRMQBlockShift) - 1
+        while RMQ.V[result] >= lower: dec result
+        inc result
+
+    proc maxRight*[T](RMQ: StaticRMQ[T], l: int, lower: T): int {.inline.} =
+        ## [l,r) の全要素が lower 以上となる最大の r を O(log(N+2)) 時間で返す。
+        assert 0 <= l and l <= RMQ.V.len, "左端は 0..N の範囲である必要があります"
+        if l == RMQ.V.len: return l
+        result = l
+        if RMQ.suffix_product[l] < lower:
+            while RMQ.V[result] >= lower: inc result
+            return
+        var first = (l shr staticRMQBlockShift) + 1
+        let blocks = RMQ.table[0].len
+        if first == blocks: return RMQ.V.len
+        for k in countdown(fastLog2(blocks-first), 0):
+            let width = 1 shl k
+            if first + width <= blocks and RMQ.table[k][first] >= lower:
+                first += width
+        if first == blocks: return RMQ.V.len
+        result = first shl staticRMQBlockShift
+        while RMQ.V[result] >= lower: inc result
     {.pop.}

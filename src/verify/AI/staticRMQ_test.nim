@@ -11,6 +11,23 @@ proc checkAllRanges[T](values: openArray[T]) =
             expected = min(expected, values[r-1])
             doAssert rmq.query(l, r) == expected
 
+proc checkBoundaries[T](values, thresholds: openArray[T]) =
+    let rmq = initRMQ(values)
+    for lower in thresholds:
+        for edge in 0..values.len:
+            var left = edge
+            while left > 0 and values[left-1] >= lower: dec left
+            doAssert rmq.minLeft(edge, lower) == left
+            var right = edge
+            while right < values.len and values[right] >= lower: inc right
+            doAssert rmq.maxRight(edge, lower) == right
+
+checkBoundaries(newSeq[int](), [0])
+checkBoundaries([5], [4, 5, 6])
+checkBoundaries([high(int), low(int), 0], [low(int), -1, 0, 1, high(int)])
+checkBoundaries([3.5, -1.25, 0.0, -1.25, 8.0], [-2.0, -1.25, 0.0, 1.0, 8.0, 9.0])
+checkBoundaries(["banana", "apple", "pear", "apple", "orange"], ["", "apple", "banana", "z"])
+
 checkAllRanges(newSeq[int]())
 checkAllRanges([42])
 checkAllRanges([5, 2, 7, 1, 4, 3, 6, 0, 9, 8, 11, 10, 12, 13, 14, 15, -1])
@@ -86,12 +103,43 @@ block:
         for i in l+1..<r: expected = min(expected, values[i])
         doAssert rmq.query(l, r) == expected
 
+for n in [0, 1, 63, 64, 65, 127, 128, 129, 511, 512, 513, 4097]:
+    var values = newSeq[int32](n)
+    for value in values.mitems: value = int32(rng.rand(-2..2))
+    checkBoundaries(values, [-3'i32, -2, -1, 0, 1, 2, 3])
+    for value in values.mitems: value = 2
+    checkBoundaries(values, [1'i32, 2, 3])
+    if n > 0:
+        values[n div 2] = -1
+        checkBoundaries(values, [-1'i32, 0, 2, 3])
+
+static:
+    let rmq = initRMQ([3, 1, 4])
+    doAssert rmq.minLeft(3, 2) == 2
+    doAssert rmq.maxRight(0, 2) == 1
+    doAssert rmq.minLeft(3, 1) == 0
+    doAssert rmq.maxRight(0, 1) == 3
+
 when compileOption("assertions"):
     let rmq = initRMQ([3, 1, 4])
     for (l, r) in [(-1, 1), (0, 0), (1, 1), (0, 4), (2, 1)]:
         var rejected = false
         try:
             discard rmq.query(l, r)
+        except AssertionDefect:
+            rejected = true
+        doAssert rejected
+
+    for edge in [-1, 4]:
+        var rejected = false
+        try:
+            discard rmq.minLeft(edge, 1)
+        except AssertionDefect:
+            rejected = true
+        doAssert rejected
+        rejected = false
+        try:
+            discard rmq.maxRight(edge, 1)
         except AssertionDefect:
             rejected = true
         doAssert rejected
