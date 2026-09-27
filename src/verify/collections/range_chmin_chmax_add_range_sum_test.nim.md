@@ -51,12 +51,12 @@ data:
     \        var l, r = ii()\n        echo seg[l..<r].sum\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats_template.nim
   isVerificationFile: true
   path: verify/collections/range_chmin_chmax_add_range_sum_test.nim

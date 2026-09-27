@@ -52,8 +52,8 @@ data:
   dependsOn:
   - cplib/tree/lazy_subtree_link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/utils/backwards_index.nim
   - cplib/tree/lazy_subtree_link_cut_tree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: true

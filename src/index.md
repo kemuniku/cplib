@@ -2961,6 +2961,9 @@ data:
       path: verify/modint/integer_operation_test.nim
       title: verify/modint/integer_operation_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/modint/modint_arithmetic_test.nim
+      title: verify/modint/modint_arithmetic_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery_equality_test.nim
       title: verify/modint/montgomery_equality_test.nim
   - name: verify/str/can_reverse_hash_string

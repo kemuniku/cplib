@@ -98,8 +98,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/tree_hash_test.nim
   requiredBy: []

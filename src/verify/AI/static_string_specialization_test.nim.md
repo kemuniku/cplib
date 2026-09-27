@@ -71,12 +71,12 @@ data:
     \    rejected = true\ndoAssert rejected\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/AI/static_string_specialization_test.nim

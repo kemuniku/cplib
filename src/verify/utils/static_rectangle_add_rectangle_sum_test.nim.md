@@ -63,22 +63,22 @@ data:
     \ = (l, d, r, u)\nfor answer in static_rectangle_add_rectangle_sum(rectangles,\
     \ queries):\n    print answer.val\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/utils/static_rectangle_add_rectangle_sum.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/utils/static_rectangle_add_rectangle_sum.nim
   isVerificationFile: true
   path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 22:49:59+09:00'
+  timestamp: '2026-09-28 04:13:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/static_rectangle_add_rectangle_sum_test.nim

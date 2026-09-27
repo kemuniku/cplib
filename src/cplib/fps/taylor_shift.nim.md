@@ -217,22 +217,22 @@ data:
     \       let product = left * right\n        result = newSeq[T](n)\n        for\
     \ i in 0..<n: result[i] = product[n - 1 - i] * factInv[i]\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: false
   path: cplib/fps/taylor_shift.nim
   requiredBy:
@@ -240,7 +240,7 @@ data:
   - cplib/fps/fps.nim
   - cplib/math/many_factorials.nim
   - cplib/math/many_factorials.nim
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-27 01:47:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim

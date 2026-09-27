@@ -59,18 +59,18 @@ data:
     let a: modint998244353_montgomery = 1\nlet z = a + 998244352\nassert z == 0\n\
     assert 0 == z\nassert z != 1\n"
   dependsOn:
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/modint/montgomery_equality_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-27 01:47:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/montgomery_equality_test.nim

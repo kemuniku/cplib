@@ -108,32 +108,32 @@ data:
     modint_barrett.setMod(998244353)\nmodint_montgomery.setMod(998244353)\ncheckBmbm(modint_barrett)\n\
     checkBmbm(modint_montgomery)\n"
   dependsOn:
-  - cplib/fps/berlekamp_massey.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/fps/bmbm.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/bmbm.nim
   - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/fps/berlekamp_massey.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: true
   path: verify/AI/bmbm_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-27 01:47:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/bmbm_test.nim

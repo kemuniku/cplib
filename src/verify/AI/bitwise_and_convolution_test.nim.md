@@ -67,20 +67,20 @@ data:
     \    except AssertionDefect:\n        rejected = true\n    assert rejected\n\n\
     echo \"Hello World\"\n"
   dependsOn:
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/bitwise_and_convolution.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/bitwise_and_convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/bitwise_and_convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/bitwise_and_convolution.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/AI/bitwise_and_convolution_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-27 01:47:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/bitwise_and_convolution_test.nim

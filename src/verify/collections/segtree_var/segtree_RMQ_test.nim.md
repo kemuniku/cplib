@@ -37,8 +37,8 @@ data:
   dependsOn:
   - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_RMQ_test.nim
   requiredBy: []

@@ -790,6 +790,12 @@ data:
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/modint_arithmetic_test.nim
+    title: verify/modint/modint_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/modint_arithmetic_test.nim
+    title: verify/modint/modint_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery_equality_test.nim
     title: verify/modint/montgomery_equality_test.nim
   - icon: ':heavy_check_mark:'
@@ -999,6 +1005,8 @@ data:
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
+  - verify/modint/modint_arithmetic_test.nim
+  - verify/modint/modint_arithmetic_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/integer_operation_test.nim

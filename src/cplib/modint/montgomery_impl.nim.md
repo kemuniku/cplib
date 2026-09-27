@@ -772,6 +772,12 @@ data:
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/modint_arithmetic_test.nim
+    title: verify/modint/modint_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/modint_arithmetic_test.nim
+    title: verify/modint/modint_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery_equality_test.nim
     title: verify/modint/montgomery_equality_test.nim
   - icon: ':heavy_check_mark:'
@@ -840,9 +846,14 @@ data:
     \ typedesc[DynamicMontgomeryModint], b: uint): uint32 =\n        var p = get_param(T)\n\
     \        return cast[uint32]((b + uint(cast[uint32](b) * (not (p.r - 1u32))) *\
     \ p.M) shr 32)\n    proc normalize(a: SomeInteger, M: uint32): uint {.inline.}\
-    \ =\n        when a is SomeUnsignedInt:\n            return uint(a.uint64 mod\
-    \ M.uint64)\n        else:\n            let r = a.int64 mod M.int64\n        \
-    \    return uint(if r < 0: r + M.int64 else: r)\n    proc init*(T: typedesc[MontgomeryModint],\
+    \ =\n        ## \u6574\u6570\u3092[0, M)\u306B\u6B63\u898F\u5316\u3059\u308B\u3002\
+    \u7BC4\u56F2\u5185\u306A\u3089\u5270\u4F59\u8A08\u7B97\u3092\u7701\u304F\u3002\
+    O(1)\u3002\n        when a is SomeUnsignedInt:\n            if a.uint64 < M.uint64:\
+    \ return a.uint\n            return uint(a.uint64 mod M.uint64)\n        else:\n\
+    \            # \u8CA0\u6570\u3082\u7BC4\u56F2\u5916\u3068\u3057\u3066\u4E00\u5EA6\
+    \u306E\u6BD4\u8F03\u3067\u5224\u5B9A\u3059\u308B\u3002\n            if cast[uint64](a.int64)\
+    \ < M.uint64: return a.uint\n            let r = a.int64 mod M.int64\n       \
+    \     return uint(if r < 0: r + M.int64 else: r)\n    proc init*(T: typedesc[MontgomeryModint],\
     \ a: T or SomeInteger): auto =\n        when a is T: return a\n        elif T\
     \ is StaticMontgomeryModint:\n            let (_, r, n2) = get_param(T)\n    \
     \        check_params(T.M, r)\n            var ai = reduce(T, normalize(a, T.M)\
@@ -874,15 +885,19 @@ data:
     \        var u = 1i32\n        var v, t = 0i32\n        while y > 0:\n       \
     \     t = x div y\n            x -= t * y\n            u -= t * v\n          \
     \  swap(x, y)\n            swap(u, v)\n        return init(T, u)\n    proc `/=`*[T:\
-    \ MontgomeryModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv\n\n \
-    \   macro declarStaticMontgomeryModint*(name, M) =\n        let converter_name\
-    \ = ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = StaticMontgomeryModint[`M`]\n\
-    \            converter `converter_name`*[I: SomeInteger](a: I): StaticMontgomeryModint[`M`]\
-    \ = init(StaticMontgomeryModint[`M`], a)\n    macro declarDynamicMontgomeryModint*(name,\
-    \ id) =\n        let converter_name = ident(\"to\" & $`name`)\n        quote do:\n\
-    \            type `name`* = DynamicMontgomeryModint[`id`]\n            converter\
-    \ `converter_name`*[I: SomeInteger](a: I): DynamicMontgomeryModint[`id`] = init(DynamicMontgomeryModint[`id`],\
-    \ a)\n"
+    \ MontgomeryModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv\n   \
+    \ proc `/=`*[T: StaticMontgomeryModint](a: var T, b: static int) {.inline.} =\n\
+    \        ## \u5B9A\u6570\u3067\u5272\u308B\u3068\u304D\u306F\u9006\u5143\u3092\
+    \u30B3\u30F3\u30D1\u30A4\u30EB\u6642\u306B\u8A08\u7B97\u3057\u3066\u4E57\u7B97\
+    \u3059\u308B\u3002O(1)\u3002\n        const inverse = init(T, b).inv\n       \
+    \ a *= inverse\n\n    macro declarStaticMontgomeryModint*(name, M) =\n       \
+    \ let converter_name = ident(\"to\" & $`name`)\n        quote do:\n          \
+    \  type `name`* = StaticMontgomeryModint[`M`]\n            converter `converter_name`*[I:\
+    \ SomeInteger](a: I): StaticMontgomeryModint[`M`] = init(StaticMontgomeryModint[`M`],\
+    \ a)\n    macro declarDynamicMontgomeryModint*(name, id) =\n        let converter_name\
+    \ = ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = DynamicMontgomeryModint[`id`]\n\
+    \            converter `converter_name`*[I: SomeInteger](a: I): DynamicMontgomeryModint[`id`]\
+    \ = init(DynamicMontgomeryModint[`id`], a)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/modint/montgomery_impl.nim
@@ -981,7 +996,7 @@ data:
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-09-27 01:47:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
@@ -1050,6 +1065,8 @@ data:
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
+  - verify/modint/modint_arithmetic_test.nim
+  - verify/modint/modint_arithmetic_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/integer_operation_test.nim

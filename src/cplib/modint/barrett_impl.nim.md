@@ -772,6 +772,12 @@ data:
     path: verify/modint/integer_operation_test.nim
     title: verify/modint/integer_operation_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/modint/modint_arithmetic_test.nim
+    title: verify/modint/modint_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/modint/modint_arithmetic_test.nim
+    title: verify/modint/modint_arithmetic_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery_equality_test.nim
     title: verify/modint/montgomery_equality_test.nim
   - icon: ':heavy_check_mark:'
@@ -826,36 +832,40 @@ data:
     \ unsigned long long &a, const unsigned long long &b) {\n        return (unsigned\
     \ long long)(((__uint128_t)(a) * b) >> 64);\n    }\n    \"\"\".}\n    proc calc_mul*(a,\
     \ b: culonglong): culonglong {.importcpp: \"calc_mul(#, #)\", nodecl, inline.}\n\
-    \    proc rem*(T: typedesc[BarrettModint], a: uint): uint32 =\n        when T\
-    \ is StaticBarrettModint:\n            const im = get_im(T.M)\n            const\
-    \ M = get_M(T)\n            var x = (calc_mul(cast[culonglong](a), cast[culonglong](im))).uint\n\
-    \            var r = a - x * M\n            if M <= r: r += M\n            return\
-    \ cast[uint32](r)\n        else:\n            var p = get_param(T)\n         \
-    \   var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint\n   \
-    \         var r = a - x * p.M\n            if p.M <= r: r += p.M\n           \
-    \ return cast[uint32](r)\n    proc init*(T: typedesc[BarrettModint], a: T or SomeInteger):\
-    \ auto =\n        when a is T: return a\n        else:\n            if a in 0..<T.mod.int:\
-    \ return T(a: a.uint32)\n            var a = a mod T.mod.int\n            if a\
-    \ < 0: a += T.mod.int\n            return T(a: a.uint32)\n\n    proc `-`*[T: BarrettModint](a:\
-    \ T): T =\n        if a.a == 0u32: return a\n        return T(a: T.umod - a.a)\n\
-    \    proc `+=`*[T: BarrettModint](a: var T, b: T or SomeInteger) =\n        a.a\
-    \ += init(T, b).a\n        if a.a >= T.umod: a.a -= T.umod\n    proc `-=`*[T:\
-    \ BarrettModint](a: var T, b: T or SomeInteger) =\n        a.a -= init(T, b).a\n\
-    \        if a.a >= T.umod: a.a += T.umod\n    proc `*=`*[T: BarrettModint] (a:\
-    \ var T, b: T or SomeInteger) =\n        a.a = rem(T, (a.a).uint * (init(T, b).a).uint)\n\
-    \    proc inv*[T: BarrettModint](x: T): T =\n        assert x.val != 0, \"0\u306E\
-    \u9006\u5143\u3092\u6C42\u3081\u308B\u3053\u3068\u306F\u3067\u304D\u307E\u305B\
-    \u3093\"\n        var x: int32 = int32(x.val)\n        var y: int32 = T.mod\n\
-    \        var u = 1i32\n        var v, t = 0i32\n        while y > 0:\n       \
-    \     t = x div y\n            x -= t * y\n            u -= t * v\n          \
-    \  swap(x, y)\n            swap(u, v)\n        return init(T, u)\n    proc `/=`*[T:\
-    \ BarrettModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv\n    proc\
-    \ val*(a: BarrettModint): int = a.a.int\n    macro declarStaticBarrettModint*(name,\
-    \ M) =\n        let converter_name = ident(\"to\" & $`name`)\n        quote do:\n\
-    \            type `name`* = StaticBarrettModint[`M`]\n            converter `converter_name`*(a:\
-    \ int): StaticBarrettModint[`M`] = init(StaticBarrettModint[`M`], a)\n    macro\
-    \ declarDynamicBarrettModint*(name, id) =\n        let converter_name = ident(\"\
-    to\" & $`name`)\n        quote do:\n            type `name`* = DynamicBarrettModint[`id`]\n\
+    \    proc rem*(T: typedesc[BarrettModint], a: uint): uint32 =\n        ## a\u3092\
+    \u6CD5\u3067\u5272\u3063\u305F\u4F59\u308A\u3092\u6C42\u3081\u308B\u3002\u9759\
+    \u7684\u306A\u6CD5\u306E\u5270\u4F59\u306F\u30B3\u30F3\u30D1\u30A4\u30E9\u3067\
+    \u6700\u9069\u5316\u3059\u308B\u3002O(1)\u3002\n        when T is StaticBarrettModint:\n\
+    \            return uint32(a mod T.M.uint)\n        else:\n            var p =\
+    \ get_param(T)\n            var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint\n\
+    \            var r = a - x * p.M\n            if p.M <= r: r += p.M\n        \
+    \    return cast[uint32](r)\n    proc init*(T: typedesc[BarrettModint], a: T or\
+    \ SomeInteger): auto =\n        when a is T: return a\n        else:\n       \
+    \     if a in 0..<T.mod.int: return T(a: a.uint32)\n            var a = a mod\
+    \ T.mod.int\n            if a < 0: a += T.mod.int\n            return T(a: a.uint32)\n\
+    \n    proc `-`*[T: BarrettModint](a: T): T =\n        if a.a == 0u32: return a\n\
+    \        return T(a: T.umod - a.a)\n    proc `+=`*[T: BarrettModint](a: var T,\
+    \ b: T or SomeInteger) =\n        a.a += init(T, b).a\n        if a.a >= T.umod:\
+    \ a.a -= T.umod\n    proc `-=`*[T: BarrettModint](a: var T, b: T or SomeInteger)\
+    \ =\n        a.a -= init(T, b).a\n        if a.a >= T.umod: a.a += T.umod\n  \
+    \  proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) =\n        a.a\
+    \ = rem(T, (a.a).uint * (init(T, b).a).uint)\n    proc inv*[T: BarrettModint](x:\
+    \ T): T =\n        assert x.val != 0, \"0\u306E\u9006\u5143\u3092\u6C42\u3081\u308B\
+    \u3053\u3068\u306F\u3067\u304D\u307E\u305B\u3093\"\n        var x: int32 = int32(x.val)\n\
+    \        var y: int32 = T.mod\n        var u = 1i32\n        var v, t = 0i32\n\
+    \        while y > 0:\n            t = x div y\n            x -= t * y\n     \
+    \       u -= t * v\n            swap(x, y)\n            swap(u, v)\n        return\
+    \ init(T, u)\n    proc `/=`*[T: BarrettModint](a: var T, b: T or SomeInteger)\
+    \ = a *= init(T, b).inv\n    proc `/=`*[T: StaticBarrettModint](a: var T, b: static\
+    \ int) {.inline.} =\n        ## \u5B9A\u6570\u3067\u5272\u308B\u3068\u304D\u306F\
+    \u9006\u5143\u3092\u30B3\u30F3\u30D1\u30A4\u30EB\u6642\u306B\u8A08\u7B97\u3057\
+    \u3066\u4E57\u7B97\u3059\u308B\u3002O(1)\u3002\n        const inverse = init(T,\
+    \ b).inv\n        a *= inverse\n    proc val*(a: BarrettModint): int = a.a.int\n\
+    \    macro declarStaticBarrettModint*(name, M) =\n        let converter_name =\
+    \ ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = StaticBarrettModint[`M`]\n\
+    \            converter `converter_name`*(a: int): StaticBarrettModint[`M`] = init(StaticBarrettModint[`M`],\
+    \ a)\n    macro declarDynamicBarrettModint*(name, id) =\n        let converter_name\
+    \ = ident(\"to\" & $`name`)\n        quote do:\n            type `name`* = DynamicBarrettModint[`id`]\n\
     \            converter `converter_name`*(a: int): DynamicBarrettModint[`id`] =\
     \ init(DynamicBarrettModint[`id`], a)\n"
   dependsOn: []
@@ -956,7 +966,7 @@ data:
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-27 01:47:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
@@ -1025,6 +1035,8 @@ data:
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
+  - verify/modint/modint_arithmetic_test.nim
+  - verify/modint/modint_arithmetic_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/check_zerodivision_test.nim
   - verify/modint/integer_operation_test.nim
