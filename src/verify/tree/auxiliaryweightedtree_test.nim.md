@@ -73,13 +73,13 @@ data:
   dependsOn:
   - cplib/collections/SWAG.nim
   - cplib/graph/graph.nim
-  - cplib/collections/SWAG.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/collections/SWAG.nim
+  - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/tree/auxiliaryweightedtree_test.nim

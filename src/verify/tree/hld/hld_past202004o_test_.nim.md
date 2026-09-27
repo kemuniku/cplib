@@ -74,16 +74,16 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/collections/segtree.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/unionfind.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: verify/tree/hld/hld_past202004o_test_.nim

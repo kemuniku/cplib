@@ -91,9 +91,9 @@ data:
     \    expectAssertion: discard wide.prefix(3)\n    expectAssertion: discard bit.get(1,\
     \ 0)\n    expectAssertion: discard wide.get(1, 0)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/fenwick.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/collections/fenwick.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick_avx2.nim
   - cplib/collections/fenwick.nim

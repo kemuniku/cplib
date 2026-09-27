@@ -410,6 +410,9 @@ data:
       path: cplib/graph/dijkstra_radix.nim
       title: cplib/graph/dijkstra_radix.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/dominator_tree.nim
+      title: cplib/graph/dominator_tree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/dynamic_bipartite.nim
       title: cplib/graph/dynamic_bipartite.nim
     - icon: ':heavy_check_mark:'
@@ -1558,6 +1561,9 @@ data:
       path: verify/AI/divisor_test.nim
       title: verify/AI/divisor_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/dominator_tree_test.nim
+      title: verify/AI/dominator_tree_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/dualsegtree_static_op_test.nim
       title: verify/AI/dualsegtree_static_op_test.nim
     - icon: ':heavy_check_mark:'
@@ -2587,6 +2593,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/cycle_detection_undirected_test.nim
       title: verify/graph/cycle_detection_undirected_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dominator_tree_test.nim
+      title: verify/graph/dominator_tree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/general_matching_test.nim
       title: verify/graph/general_matching_test.nim

@@ -122,16 +122,16 @@ data:
     \necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/radix_heap.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra_radix.nim
   - cplib/collections/radix_heap.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/dijkstra_radix.nim
   - cplib/graph/graph.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/dijkstra_radix_test.nim

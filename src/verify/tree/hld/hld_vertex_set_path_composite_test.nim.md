@@ -61,13 +61,13 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   requiredBy: []

@@ -132,10 +132,10 @@ data:
     \ 1)\n    rejects: discard pq.popIndex(-1)\n    rejects: discard pq.pushIndex(0)\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/retroactive_priority_queue.nim
   - cplib/collections/indexed_retroactive_priority_queue.nim
   - cplib/collections/indexed_retroactive_priority_queue.nim
+  - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/retroactive_priority_queue.nim
   isVerificationFile: true
   path: verify/collections/indexed_retroactive_priority_queue_test.nim
   requiredBy: []

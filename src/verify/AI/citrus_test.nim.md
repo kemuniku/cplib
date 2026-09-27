@@ -128,8 +128,8 @@ data:
     '
   dependsOn:
   - cplib/tmpl/citrus.nim
-  - cplib/tmpl/citrus.nim
   - cplib/math/isqrt.nim
+  - cplib/tmpl/citrus.nim
   - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim

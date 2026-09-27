@@ -86,8 +86,8 @@ data:
 
     '
   dependsOn:
-  - cplib/matrix/static_matrix.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/static_matrix.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
   isVerificationFile: true

@@ -63,6 +63,12 @@ data:
     path: cplib/graph/dijkstra_radix.nim
     title: cplib/graph/dijkstra_radix.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/dominator_tree.nim
+    title: cplib/graph/dominator_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/dominator_tree.nim
+    title: cplib/graph/dominator_tree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dynamic_bipartite.nim
     title: cplib/graph/dynamic_bipartite.nim
   - icon: ':heavy_check_mark:'
@@ -586,6 +592,12 @@ data:
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/dominator_tree_test.nim
+    title: verify/AI/dominator_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dominator_tree_test.nim
+    title: verify/AI/dominator_tree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/dynamic_bipartite_test.nim
     title: verify/AI/dynamic_bipartite_test.nim
   - icon: ':heavy_check_mark:'
@@ -909,6 +921,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/cycle_detection_undirected_test.nim
     title: verify/graph/cycle_detection_undirected_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dominator_tree_test.nim
+    title: verify/graph/dominator_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dominator_tree_test.nim
+    title: verify/graph/dominator_tree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dynamic/bellmanford_grl1b_test.nim
     title: verify/graph/dynamic/bellmanford_grl1b_test.nim
@@ -1531,6 +1549,8 @@ data:
   - cplib/graph/topologicalsort.nim
   - cplib/graph/euler_tour.nim
   - cplib/graph/euler_tour.nim
+  - cplib/graph/dominator_tree.nim
+  - cplib/graph/dominator_tree.nim
   - cplib/graph/count_topologicalsort.nim
   - cplib/graph/count_topologicalsort.nim
   - cplib/graph/SCC.nim
@@ -1626,6 +1646,8 @@ data:
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/dominator_tree_test.nim
+  - verify/graph/dominator_tree_test.nim
   - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
@@ -1700,6 +1722,8 @@ data:
   - verify/AI/functional_graph_test.nim
   - verify/AI/prufer_test.nim
   - verify/AI/prufer_test.nim
+  - verify/AI/dominator_tree_test.nim
+  - verify/AI/dominator_tree_test.nim
   - verify/AI/tree_mo_test.nim
   - verify/AI/tree_mo_test.nim
   - verify/AI/itertools_enumeration_test.nim

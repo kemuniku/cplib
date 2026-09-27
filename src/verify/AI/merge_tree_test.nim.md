@@ -72,10 +72,10 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
   - cplib/graph/merge_tree.nim
   - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

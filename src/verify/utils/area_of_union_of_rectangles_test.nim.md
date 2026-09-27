@@ -47,11 +47,11 @@ data:
   dependsOn:
   - cplib/utils/area_of_union_of_rectangles.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/area_of_union_of_rectangles.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
+  - cplib/utils/area_of_union_of_rectangles.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/utils/area_of_union_of_rectangles_test.nim
