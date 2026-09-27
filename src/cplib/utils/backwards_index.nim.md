@@ -135,6 +135,18 @@ data:
     path: cplib/collections/range_reverse_lazysegtree.nim
     title: cplib/collections/range_reverse_lazysegtree.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/range_sort_array.nim
+    title: cplib/collections/range_sort_array.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/range_sort_array.nim
+    title: cplib/collections/range_sort_array.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/range_sort_segtree.nim
+    title: cplib/collections/range_sort_segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/range_sort_segtree.nim
+    title: cplib/collections/range_sort_segtree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/root_rangesum.nim
     title: cplib/collections/root_rangesum.nim
   - icon: ':heavy_check_mark:'
@@ -628,6 +640,18 @@ data:
     path: verify/AI/range_linear_add_range_min_test.nim
     title: verify/AI/range_linear_add_range_min_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_array_test.nim
+    title: verify/AI/range_sort_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_array_test.nim
+    title: verify/AI/range_sort_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_segtree_test.nim
+    title: verify/AI/range_sort_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_segtree_test.nim
+    title: verify/AI/range_sort_segtree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/repeated_static_string_test.nim
     title: verify/AI/repeated_static_string_test.nim
   - icon: ':heavy_check_mark:'
@@ -855,6 +879,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/range_reverse_lazysegtree_test.nim
     title: verify/collections/range_reverse_lazysegtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_sort_segtree_test.nim
+    title: verify/collections/range_sort_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_sort_segtree_test.nim
+    title: verify/collections/range_sort_segtree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/root_rangesum_test.nim
     title: verify/collections/root_rangesum_test.nim
@@ -1353,6 +1383,8 @@ data:
   - cplib/collections/staticbitset_avx512.nim
   - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_lazysegtree.nim
+  - cplib/collections/range_sort_segtree.nim
+  - cplib/collections/range_sort_segtree.nim
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/dynamic_segtree.nim
@@ -1371,6 +1403,8 @@ data:
   - cplib/collections/fenwick_avx2.nim
   - cplib/collections/range_linear_add_range_min.nim
   - cplib/collections/range_linear_add_range_min.nim
+  - cplib/collections/range_sort_array.nim
+  - cplib/collections/range_sort_array.nim
   - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_beats.nim
   - cplib/collections/tatyamset.nim
@@ -1434,6 +1468,8 @@ data:
   - verify/utils/inversion_number_test.nim
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
+  - verify/collections/range_sort_segtree_test.nim
+  - verify/collections/range_sort_segtree_test.nim
   - verify/collections/range_linear_add_range_min_test.nim
   - verify/collections/range_linear_add_range_min_test.nim
   - verify/collections/segtree_beats_assignment_test.nim
@@ -1528,6 +1564,8 @@ data:
   - verify/collections/QSWAG_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
+  - verify/AI/range_sort_segtree_test.nim
+  - verify/AI/range_sort_segtree_test.nim
   - verify/AI/can_reverse_hash_string_test.nim
   - verify/AI/can_reverse_hash_string_test.nim
   - verify/AI/range_linear_add_range_min_test.nim
@@ -1542,6 +1580,8 @@ data:
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
   - verify/AI/bitset_test.nim
   - verify/AI/bitset_test.nim
+  - verify/AI/range_sort_array_test.nim
+  - verify/AI/range_sort_array_test.nim
   - verify/AI/static_string_sort_test.nim
   - verify/AI/static_string_sort_test.nim
   - verify/AI/SWAG_test.nim

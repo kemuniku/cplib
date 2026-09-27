@@ -39,8 +39,8 @@ data:
     \ (\"No\")\n        quit()\necho (\"Yes\")\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
   isVerificationFile: false
   path: verify/collections/segtree_var/segtree_get1item_test_.nim

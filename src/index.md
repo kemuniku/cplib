@@ -166,6 +166,12 @@ data:
       path: cplib/collections/range_reverse_lazysegtree.nim
       title: cplib/collections/range_reverse_lazysegtree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/range_sort_array.nim
+      title: cplib/collections/range_sort_array.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/range_sort_segtree.nim
+      title: cplib/collections/range_sort_segtree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/rangeset.nim
       title: cplib/collections/rangeset.nim
     - icon: ':warning:'
@@ -1909,6 +1915,12 @@ data:
       path: verify/AI/range_linear_add_range_min_test.nim
       title: verify/AI/range_linear_add_range_min_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/range_sort_array_test.nim
+      title: verify/AI/range_sort_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/range_sort_segtree_test.nim
+      title: verify/AI/range_sort_segtree_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/rangeset_test.nim
       title: verify/AI/rangeset_test.nim
     - icon: ':heavy_check_mark:'
@@ -2204,6 +2216,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_reverse_segtree_insert_erase_test.nim
       title: verify/collections/range_reverse_segtree_insert_erase_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_sort_segtree_test.nim
+      title: verify/collections/range_sort_segtree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/retroactive_priority_queue_debug_test.nim
       title: verify/collections/retroactive_priority_queue_debug_test.nim

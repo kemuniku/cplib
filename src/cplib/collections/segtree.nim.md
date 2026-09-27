@@ -15,6 +15,12 @@ data:
     path: cplib/collections/compressed_segtree.nim
     title: cplib/collections/compressed_segtree.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/range_sort_segtree.nim
+    title: cplib/collections/range_sort_segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/range_sort_segtree.nim
+    title: cplib/collections/range_sort_segtree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree2d.nim
     title: cplib/collections/segtree2d.nim
   - icon: ':heavy_check_mark:'
@@ -76,6 +82,18 @@ data:
     path: verify/AI/inversion_number_test.nim
     title: verify/AI/inversion_number_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_array_test.nim
+    title: verify/AI/range_sort_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_array_test.nim
+    title: verify/AI/range_sort_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_segtree_test.nim
+    title: verify/AI/range_sort_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/range_sort_segtree_test.nim
+    title: verify/AI/range_sort_segtree_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/segtree2d_test.nim
     title: verify/AI/segtree2d_test.nim
   - icon: ':heavy_check_mark:'
@@ -93,6 +111,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/hashtable_yuki2686_test.nim
     title: verify/collections/hashtable_yuki2686_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_sort_segtree_test.nim
+    title: verify/collections/range_sort_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/range_sort_segtree_test.nim
+    title: verify/collections/range_sort_segtree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_PARS_test.nim
     title: verify/collections/segtree/segtree_PARS_test.nim
@@ -319,6 +343,8 @@ data:
   - cplib/collections/compressed_segtree.nim
   - cplib/collections/segtree2d.nim
   - cplib/collections/segtree2d.nim
+  - cplib/collections/range_sort_segtree.nim
+  - cplib/collections/range_sort_segtree.nim
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -326,6 +352,8 @@ data:
   - verify/utils/inversion_number_test.nim
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
+  - verify/collections/range_sort_segtree_test.nim
+  - verify/collections/range_sort_segtree_test.nim
   - verify/collections/segtree/segtree_static_test.nim
   - verify/collections/segtree/segtree_static_test.nim
   - verify/collections/segtree/segtree_minleft_yuki878_test.nim
@@ -348,8 +376,12 @@ data:
   - verify/collections/segtree/segtree_PSRC_2_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
   - verify/collections/hashtable_yuki2686_test.nim
+  - verify/AI/range_sort_segtree_test.nim
+  - verify/AI/range_sort_segtree_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/range_sort_array_test.nim
+  - verify/AI/range_sort_array_test.nim
   - verify/AI/segtree_test.nim
   - verify/AI/segtree_test.nim
   - verify/AI/inversion_number_test.nim

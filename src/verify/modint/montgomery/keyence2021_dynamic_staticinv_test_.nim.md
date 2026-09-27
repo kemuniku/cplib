@@ -58,11 +58,11 @@ data:
   dependsOn:
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: verify/modint/montgomery/keyence2021_dynamic_staticinv_test_.nim

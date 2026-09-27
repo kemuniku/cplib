@@ -37,8 +37,8 @@ data:
     \ tmp[1][1] == 1):\n        ans.add(i*i)\nvar N = ii()\necho ans.upperbound(N)"
   dependsOn:
   - cplib/math/osa_k.nim
-  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
+  - cplib/math/osa_k.nim
   - cplib/str/run_length_encode.nim
   isVerificationFile: false
   path: verify/math/osa_k_test_.nim

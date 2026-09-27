@@ -80,11 +80,11 @@ data:
     \    doAssert queue.poppedSum == 0\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
   isVerificationFile: true

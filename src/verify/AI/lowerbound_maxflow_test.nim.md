@@ -73,8 +73,8 @@ data:
     \ == expected\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/maxflow.nim
-  - cplib/graph/maxflow.nim
   - cplib/graph/lowerbound_maxflow.nim
+  - cplib/graph/maxflow.nim
   - cplib/graph/lowerbound_maxflow.nim
   isVerificationFile: true
   path: verify/AI/lowerbound_maxflow_test.nim

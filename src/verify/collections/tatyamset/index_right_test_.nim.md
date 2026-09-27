@@ -36,8 +36,8 @@ data:
     \    st.incl(now)\necho ans\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/index_right_test_.nim

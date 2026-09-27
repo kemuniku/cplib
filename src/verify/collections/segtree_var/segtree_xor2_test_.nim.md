@@ -37,8 +37,8 @@ data:
     \   echo st.get((X-1)..(Y-1))\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
   isVerificationFile: false
   path: verify/collections/segtree_var/segtree_xor2_test_.nim

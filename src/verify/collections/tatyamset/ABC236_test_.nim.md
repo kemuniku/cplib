@@ -35,8 +35,8 @@ data:
     No\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC236_test_.nim
