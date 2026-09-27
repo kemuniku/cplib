@@ -96,65 +96,66 @@ block:
     seg.checkStrings(items)
 
 var rng = initRand(20260926)
-for n in [1, 2, 3, 7, 16, 31, 64]:
-    let limit = n * 4 + 7
-    var keys = newSeq[int](n)
-    var values = newSeq[Affine](n)
-    var items = newSeq[Item[Affine]](n)
-    for i in 0..<n:
-        keys[i] = 2 * i + 1
-    rng.shuffle(keys)
-    for i in 0..<n:
-        values[i] = (rng.rand(MOD - 1), rng.rand(MOD - 1))
-        items[i] = (keys[i], values[i])
-    let seg = initRangeSortSegmentTree(keys, values, limit, compose, (1, 0))
-    for step in 0..<1500:
-        var l = rng.rand(n)
-        var r = rng.rand(n)
-        if l > r: swap(l, r)
-        let index = rng.rand(n - 1)
-        let value: Affine = (rng.rand(MOD - 1), rng.rand(MOD - 1))
-        case rng.rand(5)
-        of 0, 1:
-            let order = if step mod 2 == 0: Ascending else: Descending
-            if step mod 3 == 0:
-                l = 0
-                r = n
-            if step mod 2 == 0: seg.sort(l, r, order)
-            else: seg.sort(l..<r, order)
-            items.sortRange(l, r, order)
-        of 2:
-            var key = rng.rand(limit - 1)
-            while true:
-                var occupied = false
-                for i, item in items:
-                    if i != index and item.key == key: occupied = true
-                if not occupied: break
-                key = rng.rand(limit - 1)
-            seg.update(index, key, value)
-            items[index] = (key, value)
-        of 3:
-            seg[index] = value
-            items[index].value = value
-        of 4:
-            seg.update(index, value)
-            items[index].value = value
-        else:
-            discard
-        var all: Affine = (1, 0)
-        for i, item in items:
-            doAssert seg.key(i) == item.key
-            doAssert seg[i] == item.value
-            all = compose(all, item.value)
-        doAssert seg.get_all() == all
-        let x = rng.rand(MOD - 1)
-        var expected = x
-        for i in l..<r:
-            expected = (items[i].value.a * expected + items[i].value.b) mod MOD
-        let f = seg.get(l, r)
-        doAssert (f.a * x + f.b) mod MOD == expected
-        doAssert seg[l..<r] == f
-        doAssert seg.get_all() == all
+for wideKeys in [false, true]:
+    for n in [1, 2, 3, 7, 16, 31, 64]:
+        let limit = if wideKeys: int.high else: n * 4 + 7
+        var keys = newSeq[int](n)
+        var values = newSeq[Affine](n)
+        var items = newSeq[Item[Affine]](n)
+        for i in 0..<n:
+            keys[i] = (2 * i + 1) * (if wideKeys: int.high div (n * 4 + 7) else: 1)
+        rng.shuffle(keys)
+        for i in 0..<n:
+            values[i] = (rng.rand(MOD - 1), rng.rand(MOD - 1))
+            items[i] = (keys[i], values[i])
+        let seg = initRangeSortSegmentTree(keys, values, limit, compose, (1, 0))
+        for step in 0..<1500:
+            var l = rng.rand(n)
+            var r = rng.rand(n)
+            if l > r: swap(l, r)
+            let index = rng.rand(n - 1)
+            let value: Affine = (rng.rand(MOD - 1), rng.rand(MOD - 1))
+            case rng.rand(5)
+            of 0, 1:
+                let order = if step mod 2 == 0: Ascending else: Descending
+                if step mod 3 == 0:
+                    l = 0
+                    r = n
+                if step mod 2 == 0: seg.sort(l, r, order)
+                else: seg.sort(l..<r, order)
+                items.sortRange(l, r, order)
+            of 2:
+                var key = rng.rand(limit - 1)
+                while true:
+                    var occupied = false
+                    for i, item in items:
+                        if i != index and item.key == key: occupied = true
+                    if not occupied: break
+                    key = rng.rand(limit - 1)
+                seg.update(index, key, value)
+                items[index] = (key, value)
+            of 3:
+                seg[index] = value
+                items[index].value = value
+            of 4:
+                seg.update(index, value)
+                items[index].value = value
+            else:
+                discard
+            var all: Affine = (1, 0)
+            for i, item in items:
+                doAssert seg.key(i) == item.key
+                doAssert seg[i] == item.value
+                all = compose(all, item.value)
+            doAssert seg.get_all() == all
+            let x = rng.rand(MOD - 1)
+            var expected = x
+            for i in l..<r:
+                expected = (items[i].value.a * expected + items[i].value.b) mod MOD
+            let f = seg.get(l, r)
+            doAssert (f.a * x + f.b) mod MOD == expected
+            doAssert seg[l..<r] == f
+            doAssert seg.get_all() == all
 
 block:
     let seg = initRangeSortSegmentTree([4, 1, 3, 0, 2], [4, 1, 3, 0, 2], 5, add, 0)
