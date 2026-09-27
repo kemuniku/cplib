@@ -108,7 +108,19 @@ for n in [0, 1, 2, 3, 7, 16, 31, 64]:
         var expected = newSeq[int](n)
         for i in 0..<n: expected[i] = states[parent][i]
         var next = versions[parent]
-        if n > 0 and step mod 4 == 0:
+        if step mod 3 == 0:
+            let source = rng.rand(versions.high)
+            var l = rng.rand(n)
+            var r = rng.rand(n)
+            if l > r: swap(l, r)
+            if step mod 5 == 0:
+                l = 0
+                r = n
+            for i in l..<r: expected[i] = states[source][i]
+            if step mod 2 == 0: next = next.copy_range(versions[source], l, r)
+            else: next = next.copy_range(versions[source], l..<r)
+            check(versions[source], states[source], rng)
+        elif n > 0 and step mod 4 == 0:
             let p = rng.rand(n - 1)
             let value = rng.rand(20)
             expected[p] = value
@@ -180,6 +192,11 @@ block:
     calls = 0
     let changed = added.update(2000, Value(sum: 0, size: 1))
     doAssert calls < 500
+    let source = tree.apply(0, 4097, (2, 1))
+    calls = 0
+    let copied = changed.copy_range(source, 17, 4096)
+    doAssert calls < 500
+    doAssert copied.get_all().sum == 18 * 4 + (4096 - 17) * 3
     calls = 0
     doAssert changed.get(17, 4096).sum == (4096 - 17 - 1) * 4
     doAssert calls < 500
@@ -189,5 +206,69 @@ block:
     calls = 0
     doAssert changed.min_left(4096, proc(x: Value): bool = x.sum <= 400) == 3996
     doAssert calls < 500
+
+block:
+    # 独立に構築した木のコピーと、元の木を破棄した後の領域の寿命を検証する。
+    proc copiedTree(): PersistentLazySegmentTree[Value, Affine] =
+        let dest = makeTree([1, 2, 3, 4, 5]).apply(0, 5, (2, 1))
+        let source = makeTree([10, 20, 30, 40, 50]).apply(0, 5, (3, 2))
+        result = dest.copy_range(source, 1, 4)
+        result = result.copy_range(makeTree([7, 8, 9, 10, 11]), 2, 3)
+    let saved = copiedTree()
+    GC_fullCollect()
+    check(saved, @[3, 62, 9, 122, 11], rng)
+    let next = saved.apply(0, 5, (0, 7)).update(2, Value(sum: 100, size: 1))
+    GC_fullCollect()
+    check(next, @[7, 7, 100, 7, 7], rng)
+    check(saved, @[3, 62, 9, 122, 11], rng)
+    let full = makeTree([0, 0, 0, 0, 0]).copy_range(copiedTree(), 0, 5)
+    GC_fullCollect()
+    check(full, @[3, 62, 9, 122, 11], rng)
+
+block:
+    # ノード領域の追加をまたぎ、参照を含む値と異なる所有領域を検証する。
+    proc stringTree(c: char): PersistentLazySegmentTree[string, char] =
+        newPersistentLazySegWith([repeat(c, 1), repeat(c, 1), repeat(c, 1)], l & r, "",
+            (if f == '\0': x else: repeat(f, x.len)), (if f == '\0': g else: f), '\0')
+    var tree = stringTree('a')
+    let old = tree
+    for i in 0..<3000:
+        tree = tree.apply(0, 3, char(ord('a') + i mod 26))
+        if i mod 100 == 0:
+            tree = tree.copy_range(stringTree('X'), 1, 2)
+            GC_fullCollect()
+            doAssert tree[1] == "X"
+    doAssert tree.get_all() == repeat(char(ord('a') + 2999 mod 26), 3)
+    doAssert old.get_all() == "aaa"
+
+block:
+    # 独立した木からの反復コピー後に、所有関係を深い再帰なしで解放できること。
+    proc repeatedCopy() =
+        var dest = makeTree([1, 2])
+        let source = makeTree([3, 4])
+        for i in 0..<200000:
+            dest = dest.copy_range(source, 0, 1)
+        doAssert dest.get_all().sum == 5
+    repeatedCopy()
+    GC_fullCollect()
+
+block:
+    # 複数の独立した木を双方向にコピーして所有領域を統合する。
+    var trees: seq[PersistentLazySegmentTree[Value, Affine]]
+    var states: seq[seq[int]]
+    for i in 0..<16:
+        states.add(@[i, i + 1, i + 2, i + 3, i + 4])
+        trees.add(makeTree(states[^1]))
+    for i in 0..<256:
+        let d = rng.rand(15)
+        let s = rng.rand(15)
+        let l = rng.rand(4)
+        let r = rng.rand(l..5)
+        trees[d] = trees[d].copy_range(trees[s], l, r)
+        for j in l..<r: states[d][j] = states[s][j]
+        if i mod 16 == 0: GC_fullCollect()
+        check(trees[d], states[d], rng)
+    GC_fullCollect()
+    for i in 0..<16: check(trees[i], states[i], rng)
 
 echo "Hello World"
