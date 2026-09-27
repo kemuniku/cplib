@@ -74,8 +74,8 @@ data:
   dependsOn:
   - cplib/graph/lowerbound_maxflow.nim
   - cplib/graph/maxflow.nim
-  - cplib/graph/maxflow.nim
   - cplib/graph/lowerbound_maxflow.nim
+  - cplib/graph/maxflow.nim
   isVerificationFile: true
   path: verify/AI/lowerbound_maxflow_test.nim
   requiredBy: []

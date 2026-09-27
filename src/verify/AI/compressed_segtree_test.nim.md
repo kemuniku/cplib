@@ -136,13 +136,13 @@ data:
     \    let st = newCompressedSegWith(coords, l + r, 0)\n    doAssert st[9474] ==\
     \ 0\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/compressed_segtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/compressed_segtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: true
   path: verify/AI/compressed_segtree_test.nim

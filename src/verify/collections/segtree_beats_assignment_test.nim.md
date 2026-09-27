@@ -68,15 +68,15 @@ data:
     \ == max(a)\n"
   dependsOn:
   - cplib/math/int128.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/utils/backwards_index.nim
   - cplib/utils/constants.nim
   - cplib/math/int128.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats_template.nim
   isVerificationFile: true
   path: verify/collections/segtree_beats_assignment_test.nim
   requiredBy: []

@@ -139,6 +139,9 @@ data:
       path: cplib/collections/persistent_binary_trie.nim
       title: cplib/collections/persistent_binary_trie.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/persistent_lazysegtree.nim
+      title: cplib/collections/persistent_lazysegtree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/persistent_segtree.nim
       title: cplib/collections/persistent_segtree.nim
     - icon: ':heavy_check_mark:'
@@ -1869,6 +1872,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_binary_trie_test.nim
       title: verify/AI/persistent_binary_trie_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/persistent_lazysegtree_test.nim
+      title: verify/AI/persistent_lazysegtree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_segtree_test.nim
       title: verify/AI/persistent_segtree_test.nim

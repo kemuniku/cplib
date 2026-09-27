@@ -111,6 +111,12 @@ data:
     path: cplib/collections/lazysegtree_template.nim
     title: cplib/collections/lazysegtree_template.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/persistent_lazysegtree.nim
+    title: cplib/collections/persistent_lazysegtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/persistent_lazysegtree.nim
+    title: cplib/collections/persistent_lazysegtree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/range_linear_add_range_min.nim
     title: cplib/collections/range_linear_add_range_min.nim
   - icon: ':heavy_check_mark:'
@@ -633,6 +639,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/merged_static_string_test.nim
     title: verify/AI/merged_static_string_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_lazysegtree_test.nim
+    title: verify/AI/persistent_lazysegtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_lazysegtree_test.nim
+    title: verify/AI/persistent_lazysegtree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/range_linear_add_range_min_test.nim
     title: verify/AI/range_linear_add_range_min_test.nim
@@ -1405,6 +1417,8 @@ data:
   - cplib/collections/range_linear_add_range_min.nim
   - cplib/collections/range_sort_array.nim
   - cplib/collections/range_sort_array.nim
+  - cplib/collections/persistent_lazysegtree.nim
+  - cplib/collections/persistent_lazysegtree.nim
   - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_beats.nim
   - cplib/collections/tatyamset.nim
@@ -1606,6 +1620,8 @@ data:
   - verify/AI/edit_distance_bitset_test.nim
   - verify/AI/root_rangesum_test.nim
   - verify/AI/root_rangesum_test.nim
+  - verify/AI/persistent_lazysegtree_test.nim
+  - verify/AI/persistent_lazysegtree_test.nim
   - verify/AI/fenwick_tree_test.nim
   - verify/AI/fenwick_tree_test.nim
   - verify/AI/dualsegtree_test.nim

@@ -43,9 +43,9 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/cycle_detection.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/cycle_detection.nim
   - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/cycle_detection_test.nim
