@@ -126,8 +126,8 @@ data:
     \ self.inverse(self.nodes[child].all))\n\n    declareLinkCutTreeOperations(LinkCutTree)\n"
   dependsOn:
   - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/utils/backwards_index.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/tree/link_cut_tree.nim

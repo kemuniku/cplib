@@ -117,6 +117,12 @@ data:
     path: cplib/collections/persistent_lazysegtree.nim
     title: cplib/collections/persistent_lazysegtree.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/persistent_segtree.nim
+    title: cplib/collections/persistent_segtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/persistent_segtree.nim
+    title: cplib/collections/persistent_segtree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/range_linear_add_range_min.nim
     title: cplib/collections/range_linear_add_range_min.nim
   - icon: ':heavy_check_mark:'
@@ -645,6 +651,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/persistent_lazysegtree_test.nim
     title: verify/AI/persistent_lazysegtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_segtree_test.nim
+    title: verify/AI/persistent_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_segtree_test.nim
+    title: verify/AI/persistent_segtree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/range_linear_add_range_min_test.nim
     title: verify/AI/range_linear_add_range_min_test.nim
@@ -1429,6 +1441,8 @@ data:
   - cplib/collections/bitset.nim
   - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/persistent_segtree.nim
+  - cplib/collections/persistent_segtree.nim
   - cplib/collections/bitset_avx2.nim
   - cplib/collections/bitset_avx2.nim
   - cplib/collections/QSWAG.nim
@@ -1602,6 +1616,8 @@ data:
   - verify/AI/SWAG_test.nim
   - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/persistent_segtree_test.nim
+  - verify/AI/persistent_segtree_test.nim
   - verify/AI/static_string_specialization_test.nim
   - verify/AI/static_string_specialization_test.nim
   - verify/AI/dynamic_lazysegtree_test.nim

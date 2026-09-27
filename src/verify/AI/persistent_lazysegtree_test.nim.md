@@ -183,8 +183,8 @@ data:
   dependsOn:
   - cplib/collections/persistent_lazysegtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/persistent_lazysegtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/persistent_lazysegtree_test.nim
   requiredBy: []

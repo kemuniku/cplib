@@ -43,8 +43,8 @@ data:
   dependsOn:
   - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/math/floor_sum.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/floor_sum_test.nim
   requiredBy: []

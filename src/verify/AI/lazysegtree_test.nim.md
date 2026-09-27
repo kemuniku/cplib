@@ -77,8 +77,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/lazysegtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree.nim
   isVerificationFile: true

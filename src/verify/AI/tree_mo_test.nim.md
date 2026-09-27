@@ -118,9 +118,9 @@ data:
     \ \"Hello World\"\n"
   dependsOn:
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/tree_mo_test.nim
   requiredBy: []

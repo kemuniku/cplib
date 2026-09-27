@@ -42,8 +42,8 @@ data:
     \ MOD\n"
   dependsOn:
   - cplib/collections/segtree_var.nim
-  - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_PSRC_2_test.nim

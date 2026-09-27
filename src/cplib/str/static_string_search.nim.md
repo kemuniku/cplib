@@ -210,17 +210,17 @@ data:
     \ pattern):\n            yield position\n"
   dependsOn:
   - cplib/collections/bitvector.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/bitvector.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/str/static_string_search.nim
   requiredBy: []
