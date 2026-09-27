@@ -1,3 +1,6 @@
+## デバッグ: debugOperations()は操作一覧、debugTimeline()は再実行したpop結果付き一覧を返します。
+## 一覧は時刻順です。echo pq または echo pq.debugDump() でpop元の時刻も含めて表示できます。
+## デバッグ結果の型QueueDebugEntryと列挙値qdkNone/qdkPush/qdkPopはretroactive_priority_queueで定義します。
 ## 任意の比較可能な時刻を事前登録して使うRetroactivePriorityQueueです。
 ## 時刻は昇順に並べて重複除去します。未登録時刻への更新はassertで拒否します。
 ## 操作の上書き、空へのpop、同値の優先順位は固定長版と同じです。
@@ -85,3 +88,31 @@ when not declared CPLIB_COLLECTIONS_COMPRESSED_RETROACTIVE_PRIORITY_QUEUE:
         ## 時刻tのpushが最後に残るかを返します。未登録時刻はfalseです。O(log N)。
         let i = findCompressedCoordinate(self.coords, self.indexSlots, t)
         i >= 0 and self.queue.isRemaining(i)
+
+    proc debugOperations*[K, T](self: CompressedRetroactivePriorityQueue[K, T]): seq[QueueDebugEntry[K, T]] =
+        ## 事前登録した全時刻の操作を昇順で返します。空操作も含み、pop結果は未計算です。O(N)。
+        for entry in self.queue.debugOperations():
+            result.add(QueueDebugEntry[K, T](time: self.coords[entry.time],
+                kind: entry.kind, value: entry.value))
+
+    proc debugTimeline*[K, T](self: CompressedRetroactivePriorityQueue[K, T]): seq[QueueDebugEntry[K, T]] =
+        ## 全操作と実際のpop結果を元の時刻で返します。O(N log(N+2))時間・O(N)空間。
+        for entry in self.queue.debugTimeline():
+            var converted = QueueDebugEntry[K, T](time: self.coords[entry.time],
+                kind: entry.kind, value: entry.value)
+            if entry.popped.isSome:
+                let popped = entry.popped.get
+                converted.popped = some((time: self.coords[popped.time], value: popped.value))
+            result.add(converted)
+
+    proc debugDump*[K, T](self: CompressedRetroactivePriorityQueue[K, T]): string =
+        ## 操作と実際のpop結果を表示用文字列で返します。O(N log(N+2)+出力文字数)。
+        formatQueueDebug(self.debugTimeline())
+
+    proc `$`*[K, T](self: CompressedRetroactivePriorityQueue[K, T]): string =
+        ## debugDumpと同じ操作・pop結果を返します。O(N log(N+2)+出力文字数)。
+        self.debugDump()
+
+    proc poppedSum*[K; T: SomeNumber](self: CompressedRetroactivePriorityQueue[K, T]): T =
+        ## 現在の操作列でpopされる値の総和を返します。空へのpopは0として扱います。O(1)。
+        self.queue.poppedSum

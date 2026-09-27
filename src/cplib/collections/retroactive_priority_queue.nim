@@ -1,3 +1,7 @@
+## poppedSumは現在の操作列でpopされた値の総和をO(1)で返します。sumは残存値の総和です。
+## デバッグ: debugOperations()は操作一覧、debugTimeline()は再実行したpop結果付き一覧を返します。
+## 一覧は時刻順です。echo pq または echo pq.debugDump() でpop元の時刻も含めて表示できます。
+## デバッグ結果の型QueueDebugEntryと列挙値qdkNone/qdkPush/qdkPopはretroactive_priority_queueで定義します。
 ## 過去のpush/popを編集し、全操作の実行後のキューを管理します。
 ## 各更新は最悪O(log N)、len・sum・peek・isRemainingはO(1)、構築と空間はO(N)です。
 ## sumはSomeNumberに対応し、値と同じ型で加減算するため、十分な幅の型を指定してください。
@@ -21,6 +25,19 @@ when not declared CPLIB_COLLECTIONS_RETROACTIVE_PRIORITY_QUEUE:
     import algorithm, options
 
     type
+        QueueDebugKind* = enum
+            qdkNone, qdkPush, qdkPop
+        QueueDebugEntry*[K, T] = object
+            ## valueはpushの値、poppedはpopされた要素の元のpush時刻と値です。
+            ## 空へのpopのpoppedはnoneです。debugOperationsではpoppedは常にnoneです。
+            time*: K
+            kind*: QueueDebugKind
+            value*: Option[T]
+            popped*: Option[tuple[time: K, value: T]]
+        QueueDebugHeapItem[T] = object
+            index: int
+            value: T
+            order: SortOrder
         QueueDelta*[K, T] = object
             ## 最終状態の差分です。removedを削除してからaddedを追加してください。
             ## 同じ時刻の値の上書きでは、変更前と変更後の値をそれぞれ含みます。
@@ -40,7 +57,7 @@ when not declared CPLIB_COLLECTIONS_RETROACTIVE_PRIORITY_QUEUE:
             remaining: seq[bool]
             tree: seq[RetroactiveNode]
             when T is SomeNumber:
-                total: T
+                total, pushTotal: T
 
     proc before[T](self: RetroactivePriorityQueue[T], a, b: int): bool {.inline.} =
         ## 要素aがbより先に取り出されるかを返します。O(1)。
@@ -181,6 +198,8 @@ when not declared CPLIB_COLLECTIONS_RETROACTIVE_PRIORITY_QUEUE:
         of rqNone:
             return
         of rqPush:
+            when T is SomeSignedInt: self.pushTotal = self.pushTotal -% self.values[t]
+            elif T is SomeNumber: self.pushTotal -= self.values[t]
             if self.remaining[t]:
                 self.changeRemaining(t, false, delta)
             else:
@@ -210,6 +229,8 @@ when not declared CPLIB_COLLECTIONS_RETROACTIVE_PRIORITY_QUEUE:
         let x = self.candidate(bridge, self.capacity + 1, false)
         self.operations[i] = rqPush
         self.values[i] = value
+        when T is SomeSignedInt: self.pushTotal = self.pushTotal +% value
+        elif T is SomeNumber: self.pushTotal += value
         if x < 0 or self.before(x, i):
             self.changeRemaining(i, true, result)
         else:
@@ -247,3 +268,88 @@ when not declared CPLIB_COLLECTIONS_RETROACTIVE_PRIORITY_QUEUE:
         ## 時刻tでpushした要素が最後に残るかを返します。push以外はfalseです。O(1)。
         assert 0 <= t and t < self.capacity, "時刻が範囲外です"
         self.operations[t + 1] == rqPush and self.remaining[t + 1]
+
+    proc debugHeapBefore[T](a, b: QueueDebugHeapItem[T]): bool =
+        ## デバッグ再実行用の優先度を比較します。同値なら早いpushを優先します。O(1)。
+        mixin `<`
+        if a.value < b.value: return a.order == Ascending
+        if b.value < a.value: return a.order == Descending
+        a.index < b.index
+
+    proc replayQueueDebug*[K, T](entries: var seq[QueueDebugEntry[K, T]], order: SortOrder) =
+        ## 時刻順の操作列を再実行し、poppedを埋めます。O(N log(N+2))時間・O(N)追加空間。
+        ## 各版のdebugTimelineで共用します。元のキューは変更しません。
+        var heap: seq[QueueDebugHeapItem[T]]
+        for i in 0..<entries.len:
+            entries[i].popped = none(tuple[time: K, value: T])
+            case entries[i].kind
+            of qdkNone: discard
+            of qdkPush:
+                heap.add(QueueDebugHeapItem[T](index: i, value: entries[i].value.get, order: order))
+                var child = heap.high
+                while child > 0:
+                    let parent = (child - 1) div 2
+                    if not debugHeapBefore(heap[child], heap[parent]): break
+                    swap(heap[child], heap[parent])
+                    child = parent
+            of qdkPop:
+                if heap.len > 0:
+                    let item = heap[0]
+                    let last = heap.pop()
+                    if heap.len > 0:
+                        heap[0] = last
+                        var parent = 0
+                        while parent * 2 + 1 < heap.len:
+                            var child = parent * 2 + 1
+                            if child + 1 < heap.len and debugHeapBefore(heap[child + 1], heap[child]): inc child
+                            if not debugHeapBefore(heap[child], heap[parent]): break
+                            swap(heap[child], heap[parent])
+                            parent = child
+                    entries[i].popped = some((time: entries[item.index].time, value: item.value))
+
+    proc debugOperations*[T](self: RetroactivePriorityQueue[T]): seq[QueueDebugEntry[int, T]] =
+        ## 全スロットの操作を時刻順で返します。空操作も含み、pop結果は未計算です。O(N)。
+        for t in 0..<self.capacity:
+            var entry = QueueDebugEntry[int, T](time: t)
+            case self.operations[t + 1]
+            of rqNone: entry.kind = qdkNone
+            of rqPush:
+                entry.kind = qdkPush
+                entry.value = some(self.values[t + 1])
+            of rqPop: entry.kind = qdkPop
+            result.add(entry)
+
+    proc debugTimeline*[T](self: RetroactivePriorityQueue[T]): seq[QueueDebugEntry[int, T]] =
+        ## 全操作と実際のpop結果を時刻順で返します。O(N log(N+2))時間・O(N)空間。
+        result = self.debugOperations()
+        replayQueueDebug(result, self.order)
+
+    proc formatQueueDebug*[K, T](entries: openArray[QueueDebugEntry[K, T]]): string =
+        ## デバッグ一覧を一操作一行に整形します。時間・空間は出力文字数に比例します。
+        mixin `$`
+        for i, entry in entries:
+            if i > 0: result.add("\n")
+            result.add($entry.time & ": ")
+            case entry.kind
+            of qdkNone: result.add("noop")
+            of qdkPush: result.add("push(" & $entry.value.get & ")")
+            of qdkPop:
+                if entry.popped.isNone: result.add("pop -> empty")
+                else:
+                    let popped = entry.popped.get
+                    result.add("pop -> " & $popped.value & " (push at " & $popped.time & ")")
+
+    proc debugDump*[T](self: RetroactivePriorityQueue[T]): string =
+        ## 操作と実際のpop結果を表示用文字列で返します。O(N log(N+2)+出力文字数)。
+        formatQueueDebug(self.debugTimeline())
+
+    proc `$`*[T](self: RetroactivePriorityQueue[T]): string =
+        ## debugDumpと同じ操作・pop結果を返します。O(N log(N+2)+出力文字数)。
+        self.debugDump()
+
+    proc poppedSum*[T: SomeNumber](self: RetroactivePriorityQueue[T]): T =
+        ## 現在の操作列でpopされる値の総和を返します。空へのpopは0として扱います。O(1)。
+        ## 整数は結果が型に収まる必要があります。内部の全push総和は桁あふれを許容します。
+        ## 浮動小数点は全push総和から残存総和を引くため、桁落ちが生じる場合があります。
+        when T is SomeSignedInt: self.pushTotal -% self.total
+        else: self.pushTotal - self.total
