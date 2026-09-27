@@ -53,9 +53,13 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         var p = get_param(T)
         return cast[uint32]((b + uint(cast[uint32](b) * (not (p.r - 1u32))) * p.M) shr 32)
     proc normalize(a: SomeInteger, M: uint32): uint {.inline.} =
+        ## 整数を[0, M)に正規化する。範囲内なら剰余計算を省く。O(1)。
         when a is SomeUnsignedInt:
+            if a.uint64 < M.uint64: return a.uint
             return uint(a.uint64 mod M.uint64)
         else:
+            # 負数も範囲外として一度の比較で判定する。
+            if cast[uint64](a.int64) < M.uint64: return a.uint
             let r = a.int64 mod M.int64
             return uint(if r < 0: r + M.int64 else: r)
     proc init*(T: typedesc[MontgomeryModint], a: T or SomeInteger): auto =
@@ -109,6 +113,10 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
             swap(u, v)
         return init(T, u)
     proc `/=`*[T: MontgomeryModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv
+    proc `/=`*[T: StaticMontgomeryModint](a: var T, b: static int) {.inline.} =
+        ## 定数で割るときは逆元をコンパイル時に計算して乗算する。O(1)。
+        const inverse = init(T, b).inv
+        a *= inverse
 
     macro declarStaticMontgomeryModint*(name, M) =
         let converter_name = ident("to" & $`name`)

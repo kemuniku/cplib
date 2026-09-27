@@ -43,13 +43,9 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
     """.}
     proc calc_mul*(a, b: culonglong): culonglong {.importcpp: "calc_mul(#, #)", nodecl, inline.}
     proc rem*(T: typedesc[BarrettModint], a: uint): uint32 =
+        ## aを法で割った余りを求める。静的な法の剰余はコンパイラで最適化する。O(1)。
         when T is StaticBarrettModint:
-            const im = get_im(T.M)
-            const M = get_M(T)
-            var x = (calc_mul(cast[culonglong](a), cast[culonglong](im))).uint
-            var r = a - x * M
-            if M <= r: r += M
-            return cast[uint32](r)
+            return uint32(a mod T.M.uint)
         else:
             var p = get_param(T)
             var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint
@@ -89,6 +85,10 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             swap(u, v)
         return init(T, u)
     proc `/=`*[T: BarrettModint](a: var T, b: T or SomeInteger) = a *= init(T, b).inv
+    proc `/=`*[T: StaticBarrettModint](a: var T, b: static int) {.inline.} =
+        ## 定数で割るときは逆元をコンパイル時に計算して乗算する。O(1)。
+        const inverse = init(T, b).inv
+        a *= inverse
     proc val*(a: BarrettModint): int = a.a.int
     macro declarStaticBarrettModint*(name, M) =
         let converter_name = ident("to" & $`name`)
