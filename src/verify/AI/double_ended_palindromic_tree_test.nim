@@ -81,8 +81,9 @@ proc exhaust(tree: var DoubleEndedPalindromicTree, values: seq[int], remaining: 
     tree.check(values)
 
 block:
-    var tree = initDoubleEndedPalindromicTree(2)
-    exhaust(tree, @[], 7)
+    for capacity in [0, 1, 16]:
+        var tree = initDoubleEndedPalindromicTree(2, capacity = capacity)
+        exhaust(tree, @[], 7)
 
 var rng = initRand(20260926)
 for sigma in [1, 2, 3, 26, 256]:

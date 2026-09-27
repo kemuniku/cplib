@@ -1,6 +1,7 @@
 when not declared CPLIB_STR_DOUBLE_ENDED_PALINDROMIC_TREE:
     ## 両端への追加・削除に対応する回文木。空の回文は個数に含めない。
-    ## 文字種数をσ、これまでの最大長をNとして、追加は償却 O(σ)、削除・取得は O(1)、空間は O(σ(N + 1))。
+    ## 文字種数をσ、事前確保容量とこれまでの最大長の大きい方をNとして、追加は償却 O(σ)、削除・取得は O(1)、空間は O(σ(N + 1))。
+    ## ノード番号は32bit整数で保持する。
     ## surface の管理は https://arxiv.org/abs/2210.02292 の手法に基づく。
     const CPLIB_STR_DOUBLE_ENDED_PALINDROMIC_TREE* = 1
     import deques
@@ -16,22 +17,27 @@ when not declared CPLIB_STR_DOUBLE_ENDED_PALINDROMIC_TREE:
             alphabetSize: int
             charOffset: char
             nodes: seq[DoubleEndedPalindromicTreeNode]
-            children, direct: seq[int]
+            children, direct: seq[int32]
             # 空きノードではparentを次の空きノードへのリンクとして使う。
             freeHead, freeCount: int
             data: Deque[DoubleEndedPalindromicTreeEntry]
             total: int64
 
-    proc initDoubleEndedPalindromicTree*(amax: int = 26, c: char = 'a'): DoubleEndedPalindromicTree =
-        ## 空の回文木を O(amax) で作る。整数は 0..<amax、文字は ord(ch)-ord(c) として扱う。
-        assert amax > 0
+    proc initDoubleEndedPalindromicTree*(amax: int = 26, c: char = 'a', capacity: int = 0): DoubleEndedPalindromicTree =
+        ## 空の回文木を作り、capacity文字分を事前確保する。O(amax * (capacity + 1))。
+        ## 整数は 0..<amax、文字は ord(ch)-ord(c) として扱う。capacityを超えても追加可能。
+        assert amax > 0 and capacity >= 0 and capacity <= int32.high.int - 2
         result.alphabetSize = amax
         result.charOffset = c
         # ノード0は長さ-1の根（未接続の遷移も0）、ノード1は空文字列の根。
-        result.nodes = @[DoubleEndedPalindromicTreeNode(length: -1), DoubleEndedPalindromicTreeNode()]
-        result.children = newSeq[int](2 * amax)
-        result.direct = newSeq[int](2 * amax)
-        result.data = initDeque[DoubleEndedPalindromicTreeEntry]()
+        result.nodes = newSeqOfCap[DoubleEndedPalindromicTreeNode](capacity + 2)
+        result.nodes.add(DoubleEndedPalindromicTreeNode(length: -1))
+        result.nodes.add(DoubleEndedPalindromicTreeNode())
+        result.children = newSeqOfCap[int32]((capacity + 2) * amax)
+        result.direct = newSeqOfCap[int32]((capacity + 2) * amax)
+        result.children.setLen(2 * amax)
+        result.direct.setLen(2 * amax)
+        result.data = initDeque[DoubleEndedPalindromicTreeEntry](max(4, capacity))
 
     proc len*(self: DoubleEndedPalindromicTree): int =
         ## 現在の文字列の長さを O(1) で返す。
@@ -68,17 +74,18 @@ when not declared CPLIB_STR_DOUBLE_ENDED_PALINDROMIC_TREE:
             dec self.freeCount
         else:
             result = self.nodes.len
+            assert result <= int32.high.int
             self.nodes.add(DoubleEndedPalindromicTreeNode())
             self.children.setLen(self.nodes.len * sigma)
             self.direct.setLen(self.nodes.len * sigma)
         self.nodes[result] = DoubleEndedPalindromicTreeNode(
             length: self.nodes[parent].length + 2, parent: parent,
             suffix: suffix, depth: self.nodes[suffix].depth + 1)
-        for c in 0..<sigma:
-            self.children[result * sigma + c] = 0
-            self.direct[result * sigma + c] = self.direct[suffix * sigma + c]
-        self.direct[result * sigma + preceding] = suffix
-        self.children[parent * sigma + value] = result
+        # ノード番号だけを32bitで保持し、連続した遷移表をまとめてコピーする。
+        zeroMem(addr self.children[result * sigma], sigma * sizeof(int32))
+        copyMem(addr self.direct[result * sigma], addr self.direct[suffix * sigma], sigma * sizeof(int32))
+        self.direct[result * sigma + preceding] = int32(suffix)
+        self.children[parent * sigma + value] = int32(result)
         inc self.nodes[suffix].suffixChildren
 
     proc push(self: var DoubleEndedPalindromicTree, value: int, front: static[bool]) =
@@ -101,11 +108,11 @@ when not declared CPLIB_STR_DOUBLE_ENDED_PALINDROMIC_TREE:
         let sigma = self.alphabetSize
         let opposite = self.nodes[parent].length + 1
         if opposite >= self.data.len or entry(opposite).value != value:
-            parent = self.direct[parent * sigma + value]
-        var node = self.children[parent * sigma + value]
+            parent = self.direct[parent * sigma + value].int
+        var node = self.children[parent * sigma + value].int
         if node == 0:
             let suffix = if parent == 0: 1
-                else: self.children[self.direct[parent * sigma + value] * sigma + value]
+                else: self.children[self.direct[parent * sigma + value].int * sigma + value].int
             node = self.addNode(parent, suffix, value, entry(self.nodes[suffix].length).value)
 
         let length = self.nodes[node].length
@@ -184,12 +191,12 @@ when not declared CPLIB_STR_DOUBLE_ENDED_PALINDROMIC_TREE:
             for value in a:
                 assert value >= 0 and value < int.high
                 sigma = max(sigma, value + 1)
-        result = initDoubleEndedPalindromicTree(sigma)
+        result = initDoubleEndedPalindromicTree(sigma, capacity = a.len)
         for value in a:
             result.push_back(value)
 
     proc initDoubleEndedPalindromicTree*(s: openArray[char], c: char = 'a', amax: int = 26): DoubleEndedPalindromicTree =
         ## 文字列から O(amax(|s| + 1)) で構築する。既定の文字範囲は 'a'..'z'。
-        result = initDoubleEndedPalindromicTree(amax, c)
+        result = initDoubleEndedPalindromicTree(amax, c, capacity = s.len)
         for value in s:
             result.push_back(value)
