@@ -35,8 +35,8 @@ data:
   dependsOn:
   - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
-  - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
+  - cplib/math/floor_sum.nim
   isVerificationFile: true
   path: verify/math/floor_sum_yosupo_test.nim
   requiredBy: []

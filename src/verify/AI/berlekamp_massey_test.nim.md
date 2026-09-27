@@ -123,26 +123,26 @@ data:
     checkExhaustive(StaticBarrettModint[2u32], 8)\ncheckExhaustive(StaticMontgomeryModint[3u32],\
     \ 6)\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/berlekamp_massey.nim
   - cplib/convolution/convolution.nim
-  - cplib/fps/berlekamp_massey.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/fps/berlekamp_massey.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/bostan_mori.nim
   isVerificationFile: true
   path: verify/AI/berlekamp_massey_test.nim
   requiredBy: []

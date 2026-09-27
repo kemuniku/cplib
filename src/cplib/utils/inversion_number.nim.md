@@ -51,8 +51,8 @@ data:
     \ seg.get(pos+1..<c.len)\n            seg[pos] = seg[pos] + 1\n        return\
     \ ans\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: false

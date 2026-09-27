@@ -49,6 +49,9 @@ data:
       path: cplib/collections/compressed_lazysegtree.nim
       title: cplib/collections/compressed_lazysegtree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/compressed_retroactive_priority_queue.nim
+      title: cplib/collections/compressed_retroactive_priority_queue.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/compressed_segtree.nim
       title: cplib/collections/compressed_segtree.nim
     - icon: ':heavy_check_mark:'
@@ -79,6 +82,12 @@ data:
       path: cplib/collections/dynamic_lazysegtree.nim
       title: cplib/collections/dynamic_lazysegtree.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/dynamic_retroactive_priority_queue.nim
+      title: cplib/collections/dynamic_retroactive_priority_queue.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
+      title: cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/dynamic_segtree.nim
       title: cplib/collections/dynamic_segtree.nim
     - icon: ':heavy_check_mark:'
@@ -99,6 +108,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/hashtable.nim
       title: cplib/collections/hashtable.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/indexed_retroactive_priority_queue.nim
+      title: cplib/collections/indexed_retroactive_priority_queue.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/intset.nim
       title: cplib/collections/intset.nim
@@ -159,6 +171,9 @@ data:
     - icon: ':warning:'
       path: cplib/collections/raw_ptr_avlset.nim
       title: cplib/collections/raw_ptr_avlset.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/retroactive_priority_queue.nim
+      title: cplib/collections/retroactive_priority_queue.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/rollback_unionfind.nim
       title: cplib/collections/rollback_unionfind.nim
@@ -955,6 +970,9 @@ data:
       path: verify/collections/deletable_heapqueue_test_.nim
       title: verify/collections/deletable_heapqueue_test_.nim
     - icon: ':warning:'
+      path: verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
+      title: verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
+    - icon: ':warning:'
       path: verify/collections/hashset_abc336f_test_.nim
       title: verify/collections/hashset_abc336f_test_.nim
     - icon: ':warning:'
@@ -963,6 +981,9 @@ data:
     - icon: ':warning:'
       path: verify/collections/rangeset_test_.nim
       title: verify/collections/rangeset_test_.nim
+    - icon: ':warning:'
+      path: verify/collections/retroactive_priority_queue_abc363g_test_.nim
+      title: verify/collections/retroactive_priority_queue_abc363g_test_.nim
     - icon: ':warning:'
       path: verify/collections/rollback_uf_abc302ex_test_.nim
       title: verify/collections/rollback_uf_abc302ex_test_.nim
@@ -2124,6 +2145,12 @@ data:
       path: verify/collections/convex_hull_trick_test.nim
       title: verify/collections/convex_hull_trick_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
+      title: verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/dynamic_retroactive_priority_queue_test.nim
+      title: verify/collections/dynamic_retroactive_priority_queue_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/fenwick_tree_avx2_test.nim
       title: verify/collections/fenwick_tree_avx2_test.nim
     - icon: ':heavy_check_mark:'
@@ -2135,6 +2162,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/hashtable_yuki2686_test.nim
       title: verify/collections/hashtable_yuki2686_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/indexed_retroactive_priority_queue_test.nim
+      title: verify/collections/indexed_retroactive_priority_queue_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/max_heapqueue_test.nim
       title: verify/collections/max_heapqueue_test.nim
@@ -2174,6 +2204,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_reverse_segtree_insert_erase_test.nim
       title: verify/collections/range_reverse_segtree_insert_erase_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/retroactive_priority_queue_debug_test.nim
+      title: verify/collections/retroactive_priority_queue_debug_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/retroactive_priority_queue_popped_sum_test.nim
+      title: verify/collections/retroactive_priority_queue_popped_sum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/retroactive_priority_queue_test.nim
+      title: verify/collections/retroactive_priority_queue_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/rollback_unionfind_count_test.nim
       title: verify/collections/rollback_unionfind_count_test.nim

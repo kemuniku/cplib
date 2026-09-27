@@ -109,9 +109,9 @@ data:
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   requiredBy: []

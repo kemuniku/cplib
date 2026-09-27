@@ -9,11 +9,23 @@ data:
     path: cplib/collections/compressed_lazysegtree.nim
     title: cplib/collections/compressed_lazysegtree.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/compressed_retroactive_priority_queue.nim
+    title: cplib/collections/compressed_retroactive_priority_queue.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/compressed_retroactive_priority_queue.nim
+    title: cplib/collections/compressed_retroactive_priority_queue.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/compressed_segtree.nim
     title: cplib/collections/compressed_segtree.nim
   - icon: ':heavy_check_mark:'
     path: cplib/collections/compressed_segtree.nim
     title: cplib/collections/compressed_segtree.nim
+  - icon: ':warning:'
+    path: verify/collections/retroactive_priority_queue_abc363g_test_.nim
+    title: verify/collections/retroactive_priority_queue_abc363g_test_.nim
+  - icon: ':warning:'
+    path: verify/collections/retroactive_priority_queue_abc363g_test_.nim
+    title: verify/collections/retroactive_priority_queue_abc363g_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/compressed_lazysegtree_test.nim
@@ -27,6 +39,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/compressed_segtree_test.nim
     title: verify/AI/compressed_segtree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/retroactive_priority_queue_debug_test.nim
+    title: verify/collections/retroactive_priority_queue_debug_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/retroactive_priority_queue_debug_test.nim
+    title: verify/collections/retroactive_priority_queue_debug_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/retroactive_priority_queue_popped_sum_test.nim
+    title: verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/retroactive_priority_queue_popped_sum_test.nim
+    title: verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/retroactive_priority_queue_test.nim
+    title: verify/collections/retroactive_priority_queue_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/retroactive_priority_queue_test.nim
+    title: verify/collections/retroactive_priority_queue_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -95,13 +125,23 @@ data:
   isVerificationFile: false
   path: cplib/collections/compressed_coordinates_internal.nim
   requiredBy:
+  - verify/collections/retroactive_priority_queue_abc363g_test_.nim
+  - verify/collections/retroactive_priority_queue_abc363g_test_.nim
   - cplib/collections/compressed_segtree.nim
   - cplib/collections/compressed_segtree.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_lazysegtree.nim
   timestamp: '2026-09-17 19:00:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/retroactive_priority_queue_test.nim
+  - verify/collections/retroactive_priority_queue_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - verify/collections/retroactive_priority_queue_debug_test.nim
+  - verify/collections/retroactive_priority_queue_debug_test.nim
   - verify/AI/compressed_lazysegtree_test.nim
   - verify/AI/compressed_lazysegtree_test.nim
   - verify/AI/compressed_segtree_test.nim
