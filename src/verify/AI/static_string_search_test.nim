@@ -66,6 +66,29 @@ block:
     clearStaticStringSearchCache()
 
 block:
+    let s = toStaticString("banana")
+    let numbers = toStaticString([1, 2, 1, 2])
+    let first = initStaticStringSearch(s.base)
+    clearStaticStringSearchCache(s.base)
+    let rebuilt = initStaticStringSearch(s.base)
+    doAssert first != rebuilt
+    checkSearch(first, s, s[1..<4])
+    checkSearch(rebuilt, s, s[1..<4])
+    let numeric = initStaticStringSearch(numbers.base)
+    doAssert rebuilt == initStaticStringSearch(s.base)
+    clearStaticStringSearchCache(numbers.base)
+    doAssert rebuilt == initStaticStringSearch(s.base)
+    clearStaticStringSearchCache(s.base)
+    doAssert rebuilt != initStaticStringSearch(s.base)
+    checkSearch(numeric, numbers, numbers[0..<2])
+    doAssert numeric != initStaticStringSearch(numbers.base)
+    let latest = initStaticStringSearch(numbers.base)
+    clearStaticStringSearchCache()
+    doAssert latest != initStaticStringSearch(numbers.base)
+    checkSearch(latest, numbers, numbers[0..<2])
+    clearStaticStringSearchCache()
+
+block:
     let a = toStaticString("banana")
     let b = toStaticString("banana")
     let numbers = toStaticString([1, 2, 1, 2])
@@ -147,6 +170,25 @@ for n in [63, 64, 65, 127, 128, 129, 511]:
         if rng.rand(1) == 1: b = b.reversed
         checkSearch(search, a, b)
     clearStaticStringSearchCache(s.base)
+
+block:
+    var text = newString(10001)
+    for c in text.mitems:
+        c = char(ord('a') + rng.rand(2))
+    let parts = toStaticStrings([text, text, "abcabcabcabc"])
+    let indexed = initStaticStringSearch(parts[0].base)
+    for trial in 0..<1000:
+        let length = rng.rand(1..6)
+        let start = rng.rand(text.len-length)
+        let pattern = parts[1][start..<start+length]
+        let begin = rng.rand(text.len)
+        let finish = min(text.len, begin + rng.rand(200))
+        checkSearch(indexed, parts[0][begin..<finish], pattern)
+        if trial mod 10 == 0:
+            checkSearch(indexed, parts[0], pattern)
+            checkSearch(indexed, parts[0], parts[0][start..<start+length])
+        checkSearch(indexed, parts[2], pattern)
+    clearStaticStringSearchCache()
 
 template expectAssertion(body: untyped) =
     block:
