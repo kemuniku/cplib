@@ -335,8 +335,8 @@ data:
   - cplib/utils/backwards_index.nim
   - cplib/str/suffix_array.nim
   - cplib/str/suffix_array.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/str/static_string.nim
   requiredBy:
@@ -354,7 +354,7 @@ data:
   - cplib/str/compressed_trie.nim
   - cplib/str/static_string_search.nim
   - cplib/str/static_string_search.nim
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-09-27 23:03:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim

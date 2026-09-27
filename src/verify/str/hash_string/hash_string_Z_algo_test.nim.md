@@ -33,8 +33,8 @@ data:
     var S = stdin.readLine().initRollingHash()\nvar ans : seq[int]\nfor i in 0..<len(S):\n\
     \    ans.add(LCP(S,S[i..<len(S)]))\n\necho ans.join(\" \")"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

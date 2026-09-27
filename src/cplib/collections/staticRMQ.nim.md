@@ -399,7 +399,32 @@ data:
     \ result = min(result, RMQ.V[i])\n            return\n        result = min(RMQ.suffix_product[l],\
     \ RMQ.prefix_product[last])\n        if a + 1 < b:\n            let k = fastLog2(b\
     \ - a - 1)\n            result = min(result, min(RMQ.table[k][a + 1], RMQ.table[k][b\
-    \ - (1 shl k)]))\n    {.pop.}\n"
+    \ - (1 shl k)]))\n\n    proc minLeft*[T](RMQ: StaticRMQ[T], r: int, lower: T):\
+    \ int {.inline.} =\n        ## [l,r) \u306E\u5168\u8981\u7D20\u304C lower \u4EE5\
+    \u4E0A\u3068\u306A\u308B\u6700\u5C0F\u306E l \u3092 O(log(N+2)) \u6642\u9593\u3067\
+    \u8FD4\u3059\u3002\n        assert 0 <= r and r <= RMQ.V.len, \"\u53F3\u7AEF\u306F\
+    \ 0..N \u306E\u7BC4\u56F2\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
+    \u3059\"\n        if r == 0: return 0\n        result = r - 1\n        if RMQ.prefix_product[result]\
+    \ < lower:\n            while RMQ.V[result] >= lower: dec result\n           \
+    \ return result + 1\n        var finish = result shr staticRMQBlockShift\n   \
+    \     if finish == 0: return 0\n        for k in countdown(fastLog2(finish), 0):\n\
+    \            let width = 1 shl k\n            if width <= finish and RMQ.table[k][finish-width]\
+    \ >= lower:\n                finish -= width\n        if finish == 0: return 0\n\
+    \        result = (finish shl staticRMQBlockShift) - 1\n        while RMQ.V[result]\
+    \ >= lower: dec result\n        inc result\n\n    proc maxRight*[T](RMQ: StaticRMQ[T],\
+    \ l: int, lower: T): int {.inline.} =\n        ## [l,r) \u306E\u5168\u8981\u7D20\
+    \u304C lower \u4EE5\u4E0A\u3068\u306A\u308B\u6700\u5927\u306E r \u3092 O(log(N+2))\
+    \ \u6642\u9593\u3067\u8FD4\u3059\u3002\n        assert 0 <= l and l <= RMQ.V.len,\
+    \ \"\u5DE6\u7AEF\u306F 0..N \u306E\u7BC4\u56F2\u3067\u3042\u308B\u5FC5\u8981\u304C\
+    \u3042\u308A\u307E\u3059\"\n        if l == RMQ.V.len: return l\n        result\
+    \ = l\n        if RMQ.suffix_product[l] < lower:\n            while RMQ.V[result]\
+    \ >= lower: inc result\n            return\n        var first = (l shr staticRMQBlockShift)\
+    \ + 1\n        let blocks = RMQ.table[0].len\n        if first == blocks: return\
+    \ RMQ.V.len\n        for k in countdown(fastLog2(blocks-first), 0):\n        \
+    \    let width = 1 shl k\n            if first + width <= blocks and RMQ.table[k][first]\
+    \ >= lower:\n                first += width\n        if first == blocks: return\
+    \ RMQ.V.len\n        result = first shl staticRMQBlockShift\n        while RMQ.V[result]\
+    \ >= lower: inc result\n    {.pop.}\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/collections/staticRMQ.nim
@@ -422,7 +447,7 @@ data:
   - cplib/str/edit_distance.nim
   - cplib/str/static_string_search.nim
   - cplib/str/static_string_search.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-27 22:50:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim

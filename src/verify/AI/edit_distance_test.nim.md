@@ -63,15 +63,15 @@ data:
     \ 1) == 1\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
-  - cplib/str/edit_distance.nim
-  - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
+  - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/edit_distance.nim
   isVerificationFile: true
   path: verify/AI/edit_distance_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:28:31+09:00'
+  timestamp: '2026-09-27 22:50:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/edit_distance_test.nim

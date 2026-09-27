@@ -220,14 +220,14 @@ data:
     \           return used\n        return used-1\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/functional_graph.nim
-  - cplib/graph/functional_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim

@@ -243,6 +243,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/area_of_union_of_rectangles_test.nim
     title: verify/utils/area_of_union_of_rectangles_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
+    title: verify/utils/static_rectangle_add_rectangle_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
+    title: verify/utils/static_rectangle_add_rectangle_sum_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -909,6 +915,8 @@ data:
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/general_matching_test.nim
   - verify/graph/general_matching_test.nim
+  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
+  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim

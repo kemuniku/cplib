@@ -156,8 +156,8 @@ data:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/lca.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/lca.nim
   isVerificationFile: true
   path: verify/AI/lca_test.nim

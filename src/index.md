@@ -881,6 +881,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/smawk.nim
       title: cplib/utils/smawk.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/static_rectangle_add_rectangle_sum.nim
+      title: cplib/utils/static_rectangle_add_rectangle_sum.nim
   - name: cplib/utils/private
     pages:
     - icon: ':heavy_check_mark:'
@@ -1974,6 +1977,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/static_matrix_test.nim
       title: verify/AI/static_matrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/static_rectangle_add_rectangle_sum_test.nim
+      title: verify/AI/static_rectangle_add_rectangle_sum_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/static_string_search_test.nim
       title: verify/AI/static_string_search_test.nim
@@ -3121,6 +3127,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/restore_lis_aoj_test.nim
       title: verify/utils/restore_lis_aoj_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
+      title: verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - name: verify/utils/itertools
     pages:
     - icon: ':heavy_check_mark:'

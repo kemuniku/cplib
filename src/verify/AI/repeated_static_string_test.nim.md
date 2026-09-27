@@ -90,20 +90,20 @@ data:
   dependsOn:
   - cplib/collections/staticRMQ.nim
   - cplib/str/repeated_static_string.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/repeated_static_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/repeated_static_string.nim
   isVerificationFile: true
   path: verify/AI/repeated_static_string_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-09-27 23:03:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/repeated_static_string_test.nim

@@ -418,6 +418,12 @@ data:
     path: verify/AI/sparse_fps_elementary_test.nim
     title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/static_rectangle_add_rectangle_sum_test.nim
+    title: verify/AI/static_rectangle_add_rectangle_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_rectangle_add_rectangle_sum_test.nim
+    title: verify/AI/static_rectangle_add_rectangle_sum_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
@@ -783,6 +789,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/backwards_index_simd_test.nim
     title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
+    title: verify/utils/static_rectangle_add_rectangle_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
+    title: verify/utils/static_rectangle_add_rectangle_sum_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -833,11 +845,11 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
@@ -1009,6 +1021,8 @@ data:
   - verify/modint/integer_operation_test.nim
   - verify/modint/montgomery_equality_test.nim
   - verify/modint/montgomery_equality_test.nim
+  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
+  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
@@ -1029,6 +1043,8 @@ data:
   - verify/AI/gcd_lcm_convolution_test.nim
   - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/static_rectangle_add_rectangle_sum_test.nim
+  - verify/AI/static_rectangle_add_rectangle_sum_test.nim
   - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_old_test.nim
   - verify/AI/berlekamp_massey_test.nim

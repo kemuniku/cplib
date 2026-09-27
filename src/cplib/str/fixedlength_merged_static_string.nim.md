@@ -182,19 +182,19 @@ data:
     \   result &= $S.base.S[j]\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/static_string.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/suffix_array.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/str/fixedlength_merged_static_string.nim
   requiredBy:
   - cplib/str/repeated_static_string.nim
   - cplib/str/repeated_static_string.nim
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-09-27 23:03:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim

@@ -89,8 +89,20 @@ data:
     \   clearStaticStringSearchCache()\n        positions.add(position)\n    doAssert\
     \ positions == @[1, 3]\n    doAssert cached != initStaticStringSearch(parts[0].base)\n\
     \    doAssert cached.contains(parts[0], parts[1])\n    clearStaticStringSearchCache()\n\
-    \nblock:\n    let a = toStaticString(\"banana\")\n    let b = toStaticString(\"\
-    banana\")\n    let numbers = toStaticString([1, 2, 1, 2])\n    let first = initStaticStringSearch(a.base)\n\
+    \nblock:\n    let s = toStaticString(\"banana\")\n    let numbers = toStaticString([1,\
+    \ 2, 1, 2])\n    let first = initStaticStringSearch(s.base)\n    clearStaticStringSearchCache(s.base)\n\
+    \    let rebuilt = initStaticStringSearch(s.base)\n    doAssert first != rebuilt\n\
+    \    checkSearch(first, s, s[1..<4])\n    checkSearch(rebuilt, s, s[1..<4])\n\
+    \    let numeric = initStaticStringSearch(numbers.base)\n    doAssert rebuilt\
+    \ == initStaticStringSearch(s.base)\n    clearStaticStringSearchCache(numbers.base)\n\
+    \    doAssert rebuilt == initStaticStringSearch(s.base)\n    clearStaticStringSearchCache(s.base)\n\
+    \    doAssert rebuilt != initStaticStringSearch(s.base)\n    checkSearch(numeric,\
+    \ numbers, numbers[0..<2])\n    doAssert numeric != initStaticStringSearch(numbers.base)\n\
+    \    let latest = initStaticStringSearch(numbers.base)\n    clearStaticStringSearchCache()\n\
+    \    doAssert latest != initStaticStringSearch(numbers.base)\n    checkSearch(latest,\
+    \ numbers, numbers[0..<2])\n    clearStaticStringSearchCache()\n\nblock:\n   \
+    \ let a = toStaticString(\"banana\")\n    let b = toStaticString(\"banana\")\n\
+    \    let numbers = toStaticString([1, 2, 1, 2])\n    let first = initStaticStringSearch(a.base)\n\
     \    let second = initStaticStringSearch(b.base)\n    let numeric = initStaticStringSearch(numbers.base)\n\
     \    doAssert first != second\n    doAssert a[1..<4] in a\n    doAssert b[1..<4]\
     \ in b\n    doAssert numbers[0..<2] in numbers\n    doAssert first == initStaticStringSearch(a.base)\n\
@@ -126,44 +138,54 @@ data:
     \        let pl = rng.rand(n)\n        let pr = rng.rand(pl..min(n, pl + 12))\n\
     \        var a = s[l..<r]\n        var b = s[pl..<pr]\n        if rng.rand(1)\
     \ == 1: a = a.reversed\n        if rng.rand(1) == 1: b = b.reversed\n        checkSearch(search,\
-    \ a, b)\n    clearStaticStringSearchCache(s.base)\n\ntemplate expectAssertion(body:\
-    \ untyped) =\n    block:\n        var rejected = false\n        try:\n       \
-    \     body\n        except AssertionDefect:\n            rejected = true\n   \
-    \     doAssert rejected\n\nlet one = toStaticString(\"a\")\nlet another = toStaticString(\"\
-    a\")\nlet oneSearch = initStaticStringSearch(one.base)\nfor s in [one, one[0..<0],\
-    \ another, another[0..<0]]:\n    for pattern in [one, one[0..<0], another, another[0..<0]]:\n\
-    \        if s.base == one.base and pattern.base == one.base:\n            continue\n\
-    \        expectAssertion:\n            discard oneSearch.contains(s, pattern)\n\
-    \        expectAssertion:\n            discard oneSearch.count(s, pattern)\n \
-    \       expectAssertion:\n            discard pattern in oneSearch[s]\n      \
-    \  expectAssertion:\n            discard pattern notin oneSearch[s]\n        expectAssertion:\n\
-    \            for position in oneSearch.findAll(s, pattern):\n                discard\
-    \ position\n        if s.base != pattern.base:\n            expectAssertion:\n\
-    \                discard pattern in s\n            expectAssertion:\n        \
-    \        discard pattern notin s\n            expectAssertion:\n             \
-    \   discard s.count(pattern)\n            expectAssertion:\n                for\
-    \ position in s.findAll(pattern):\n                    discard position\n\nexpectAssertion:\n\
-    \    discard oneSearch[another]\nexpectAssertion:\n    discard oneSearch[another[0..<0]]\n\
-    \nclearStaticStringSearchCache()\necho \"Hello World\"\n"
+    \ a, b)\n    clearStaticStringSearchCache(s.base)\n\nblock:\n    var text = newString(10001)\n\
+    \    for c in text.mitems:\n        c = char(ord('a') + rng.rand(2))\n    let\
+    \ parts = toStaticStrings([text, text, \"abcabcabcabc\"])\n    let indexed = initStaticStringSearch(parts[0].base)\n\
+    \    for trial in 0..<1000:\n        let length = rng.rand(1..6)\n        let\
+    \ start = rng.rand(text.len-length)\n        let pattern = parts[1][start..<start+length]\n\
+    \        let begin = rng.rand(text.len)\n        let finish = min(text.len, begin\
+    \ + rng.rand(200))\n        checkSearch(indexed, parts[0][begin..<finish], pattern)\n\
+    \        if trial mod 10 == 0:\n            checkSearch(indexed, parts[0], pattern)\n\
+    \            checkSearch(indexed, parts[0], parts[0][start..<start+length])\n\
+    \        checkSearch(indexed, parts[2], pattern)\n    clearStaticStringSearchCache()\n\
+    \ntemplate expectAssertion(body: untyped) =\n    block:\n        var rejected\
+    \ = false\n        try:\n            body\n        except AssertionDefect:\n \
+    \           rejected = true\n        doAssert rejected\n\nlet one = toStaticString(\"\
+    a\")\nlet another = toStaticString(\"a\")\nlet oneSearch = initStaticStringSearch(one.base)\n\
+    for s in [one, one[0..<0], another, another[0..<0]]:\n    for pattern in [one,\
+    \ one[0..<0], another, another[0..<0]]:\n        if s.base == one.base and pattern.base\
+    \ == one.base:\n            continue\n        expectAssertion:\n            discard\
+    \ oneSearch.contains(s, pattern)\n        expectAssertion:\n            discard\
+    \ oneSearch.count(s, pattern)\n        expectAssertion:\n            discard pattern\
+    \ in oneSearch[s]\n        expectAssertion:\n            discard pattern notin\
+    \ oneSearch[s]\n        expectAssertion:\n            for position in oneSearch.findAll(s,\
+    \ pattern):\n                discard position\n        if s.base != pattern.base:\n\
+    \            expectAssertion:\n                discard pattern in s\n        \
+    \    expectAssertion:\n                discard pattern notin s\n            expectAssertion:\n\
+    \                discard s.count(pattern)\n            expectAssertion:\n    \
+    \            for position in s.findAll(pattern):\n                    discard\
+    \ position\n\nexpectAssertion:\n    discard oneSearch[another]\nexpectAssertion:\n\
+    \    discard oneSearch[another[0..<0]]\n\nclearStaticStringSearchCache()\necho\
+    \ \"Hello World\"\n"
   dependsOn:
+  - cplib/collections/bitvector.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
-  - cplib/str/static_string_search.nim
-  - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/bitvector.nim
   - cplib/str/static_string_search.nim
   - cplib/str/suffix_array.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/staticRMQ.nim
+  - cplib/collections/bitvector.nim
+  - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/static_string_search_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:42:42+09:00'
+  timestamp: '2026-09-27 23:03:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/static_string_search_test.nim

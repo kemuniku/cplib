@@ -166,15 +166,15 @@ data:
   - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/str/static_string.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/str/merged_static_string.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-09-27 23:03:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim

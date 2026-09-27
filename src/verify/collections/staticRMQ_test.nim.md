@@ -33,7 +33,7 @@ data:
   isVerificationFile: true
   path: verify/collections/staticRMQ_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-27 22:50:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/staticRMQ_test.nim
