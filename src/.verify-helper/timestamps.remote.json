@@ -165,6 +165,7 @@
 "verify/AI/parallel_unionfind_test.nim": "2026-09-13 17:15:27 +0900",
 "verify/AI/persistent_array_test.nim": "2026-09-13 17:15:27 +0900",
 "verify/AI/persistent_binary_trie_test.nim": "2026-09-13 17:15:27 +0900",
+"verify/AI/persistent_lazysegtree_test.nim": "2026-09-28 03:54:08 +0900",
 "verify/AI/persistent_segtree_test.nim": "2026-07-07 07:12:05 +0900",
 "verify/AI/persistent_unionfind_random_test.nim": "2026-09-13 17:15:27 +0900",
 "verify/AI/persistent_unionfind_test.nim": "2026-09-13 17:15:27 +0900",
