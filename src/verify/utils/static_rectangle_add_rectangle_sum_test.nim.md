@@ -64,16 +64,16 @@ data:
     \ queries):\n    print answer.val\n"
   dependsOn:
   - cplib/modint/modint.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/static_rectangle_add_rectangle_sum.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/utils/static_rectangle_add_rectangle_sum.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tmpl/fastio.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isqrt.nim
   - cplib/utils/static_rectangle_add_rectangle_sum.nim
   isVerificationFile: true
   path: verify/utils/static_rectangle_add_rectangle_sum_test.nim

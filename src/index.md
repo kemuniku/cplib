@@ -612,7 +612,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/math/sqrt_heuristic_for_floor_sum.nim
       title: cplib/math/sqrt_heuristic_for_floor_sum.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/math/stern_brocot_tree.nim
       title: cplib/math/stern_brocot_tree.nim
     - icon: ':heavy_check_mark:'
@@ -842,6 +842,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/game.nim
       title: cplib/utils/game.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/golden_section_search.nim
+      title: cplib/utils/golden_section_search.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/grid_searcher.nim
       title: cplib/utils/grid_searcher.nim
@@ -1662,6 +1665,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/geometry_base_test.nim
       title: verify/AI/geometry_base_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/golden_section_search_test.nim
+      title: verify/AI/golden_section_search_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/graph_debug_test.nim
       title: verify/AI/graph_debug_test.nim
@@ -2777,6 +2783,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/monoid_floor_sum_test.nim
       title: verify/math/monoid_floor_sum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/stern_brocot_tree_bounds_test.nim
+      title: verify/math/stern_brocot_tree_bounds_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+      title: verify/math/stern_brocot_tree_rational_approximation_test.nim
   - name: verify/matrix
     pages:
     - icon: ':heavy_check_mark:'

@@ -66,17 +66,17 @@ data:
     \ mint(c)))\n    else:\n        var l, r = ii()\n        echo seg[l..<r][0]\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/isqrt.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/modint/modint.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/collections/lazysegtree.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/lazysegtree.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   requiredBy: []

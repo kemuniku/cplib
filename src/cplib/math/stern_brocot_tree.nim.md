@@ -14,10 +14,22 @@ data:
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_bounds_test.nim
+    title: verify/math/stern_brocot_tree_bounds_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_bounds_test.nim
+    title: verify/math/stern_brocot_tree_bounds_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -138,49 +150,53 @@ data:
     \        return (initFraction(node.p,node.q,false),initFraction(node.r,node.s,false))\n\
     \    \n    proc get_range*[T](a,b:T):(T,T,T,T)=\n        return get_range(to_SBTNode(a,b))\n\
     \n\n    proc get_bounds*[T](is_ok:proc(x:SBTNode[T]):bool,n:T):SBTNode[T]=\n \
-    \       # \u5358\u8ABF\u6027\u306E\u3042\u308B\u95A2\u6570is_ok\u3092\u8003\u3048\
-    \u308B\u3002\n        # x <= a : true\n        # x > a : false\n        # \u3068\
-    \u306A\u308B\u3088\u3046\u306A\u5883\u754Ca\u3092\u5206\u5B50\u30FB\u5206\u6BCD\
-    \u304Cn\u4EE5\u4E0B\u306E\u6709\u7406\u6570\u306B\u306A\u308B\u3088\u3046\u306B\
-    \u8FD1\u4F3C\u3057\u305F\u7D50\u679C\u3092\u8FD4\u3059\u3002(\u305D\u306E\u533A\
-    \u9593\u304C\u5F97\u3089\u308C\u308Bnode\u304C\u8FD4\u308B)\n\n        # is_ok\u306B\
-    \u306FINF\u30680\u304C\u4E0E\u3048\u3089\u308C\u308B\u70B9\u306B\u6CE8\u610F\u3002\
-    \n        assert n >= 1, \"n\u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\
-    \u3042\u308A\u307E\u3059\"\n\n        var now = sbt_root(T)\n\n        var result0\
-    \ = is_ok(sbt_zero(T))\n        var resultinf = is_ok(sbt_inf(T))\n\n        assert\
-    \ result0 != resultinf, \"\u533A\u9593\u306E\u4E21\u7AEF\u306B\u5BFE\u3059\u308B\
-    \u5224\u5B9A\u7D50\u679C\u306F\u7570\u306A\u308B\u5FC5\u8981\u304C\u3042\u308A\
-    \u307E\u3059\"\n\n        var is_left = false\n\n        var result_now = is_ok(now)\n\
-    \n        if result0 != result_now:\n            is_left = true\n        \n  \
-    \      while now.is_inner_node_bounded(n):\n            if is_left:\n        \
-    \        # \u65B0\u3057\u304F\u3067\u304D\u308B\u53F3\u7AEF\u306E\u5206\u5B50\u30FB\
-    \u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306B\u306A\u308B\u7BC4\u56F2\u3067\u79FB\u52D5\
-    \u53EF\u80FD\n                # \u3069\u3053\u307E\u3067\u6F5C\u3063\u305F\u3089\
-    \u521D\u3081\u3066result_now\u3068\u7D50\u679C\u304C\u5909\u308F\u308B\u306E\u304B\
-    \u3092\u4E8C\u5206\u63A2\u7D22\n                let lim = now.max_endpoint_move_left_with_bound(n)\n\
+    \       ## \u5206\u5B50\u30FB\u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306E\u6709\u7406\
+    \u6570\u3067\u5224\u5B9A\u306E\u5883\u754C\u3092\u631F\u3080\u3002\u5224\u5B9A\
+    \u56DE\u6570\u306FO(log n)\u3002\n        # \u5358\u8ABF\u6027\u306E\u3042\u308B\
+    \u95A2\u6570is_ok\u3092\u8003\u3048\u308B\u3002\n        # x <= a : true\n   \
+    \     # x > a : false\n        # \u3068\u306A\u308B\u3088\u3046\u306A\u5883\u754C\
+    a\u3092\u5206\u5B50\u30FB\u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306E\u6709\u7406\u6570\
+    \u306B\u306A\u308B\u3088\u3046\u306B\u8FD1\u4F3C\u3057\u305F\u7D50\u679C\u3092\
+    \u8FD4\u3059\u3002(\u305D\u306E\u533A\u9593\u304C\u5F97\u3089\u308C\u308Bnode\u304C\
+    \u8FD4\u308B)\n\n        # is_ok\u306B\u306FINF\u30680\u304C\u4E0E\u3048\u3089\
+    \u308C\u308B\u70B9\u306B\u6CE8\u610F\u3002\n        assert n >= 1, \"n\u306F1\u4EE5\
+    \u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n     \
+    \   var now = sbt_root(T)\n\n        var result0 = is_ok(sbt_zero(T))\n      \
+    \  var resultinf = is_ok(sbt_inf(T))\n\n        assert result0 != resultinf, \"\
+    \u533A\u9593\u306E\u4E21\u7AEF\u306B\u5BFE\u3059\u308B\u5224\u5B9A\u7D50\u679C\
+    \u306F\u7570\u306A\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n     \
+    \   var is_left = false\n\n        var result_now = is_ok(now)\n\n        if result0\
+    \ != result_now:\n            is_left = true\n        \n        while now.is_inner_node_bounded(n):\n\
+    \            if is_left:\n                # \u65B0\u3057\u304F\u3067\u304D\u308B\
+    \u53F3\u7AEF\u306E\u5206\u5B50\u30FB\u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306B\u306A\
+    \u308B\u7BC4\u56F2\u3067\u79FB\u52D5\u53EF\u80FD\n                # \u6307\u6570\
+    \u63A2\u7D22\u3067\u5224\u5B9A\u304C\u5909\u308F\u308B\u533A\u9593\u3092\u7D5E\
+    \u3063\u3066\u304B\u3089\u4E8C\u5206\u63A2\u7D22\n                let lim = now.max_endpoint_move_left_with_bound(n)\n\
     \                if lim <= 0:\n                    break\n                var\
-    \ l:T = 0\n                var r = lim\n                if is_ok(now.move_left(r))\
-    \ == result_now:\n                    now = now.move_left(r)\n               \
-    \     break\n                while r-l > 1:\n                    var mid = (r+l)\
-    \ div 2\n                    if is_ok(now.move_left(mid)) == result_now:\n   \
-    \                     l = mid\n                    else:\n                   \
-    \     r = mid\n                now = now.move_left(r)\n            else:\n   \
-    \             # \u65B0\u3057\u304F\u3067\u304D\u308B\u5DE6\u7AEF\u306E\u5206\u5B50\
-    \u30FB\u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306B\u306A\u308B\u7BC4\u56F2\u3067\u79FB\
-    \u52D5\u53EF\u80FD\n                # \u4E8C\u5206\u63A2\u7D22\n             \
-    \   let lim = now.max_endpoint_move_right_with_bound(n)\n                if lim\
-    \ <= 0:\n                    break\n                var l:T = 0\n            \
-    \    var r = lim\n                if is_ok(now.move_right(r)) == result_now:\n\
-    \                    now = now.move_right(r)\n                    break\n    \
-    \            while r-l > 1:\n                    var mid = (r+l) div 2\n     \
-    \               if is_ok(now.move_right(mid)) == result_now:\n               \
-    \         l = mid\n                    else:\n                        r = mid\n\
-    \                now = now.move_right(r)\n            result_now = not result_now\n\
-    \            is_left = not is_left\n            #echo \"now!\",now.toFraction()\n\
-    \        return now\n\n    \n    proc cmp_with_ein(a,b:SBTNode[int]):int=\n  \
-    \      # -1 : <\n        # +1 : >\n        # 0 : =\n        if a == b:\n     \
-    \       return 0\n        \n        var (la,ra) = a.get_range_fraction()\n   \
-    \     var (lb,rb) = b.get_range_fraction()\n\n        var x = a.toFraction()\n\
+    \ l:T = 0\n                var r = T(1)\n                while is_ok(now.move_left(r))\
+    \ == result_now:\n                    if r == lim:\n                        return\
+    \ now.move_left(r)\n                    l = r\n                    r += min(r,lim-r)\n\
+    \                while r-l > 1:\n                    var mid = l + (r-l) div 2\n\
+    \                    if is_ok(now.move_left(mid)) == result_now:\n           \
+    \             l = mid\n                    else:\n                        r =\
+    \ mid\n                now = now.move_left(r)\n            else:\n           \
+    \     # \u65B0\u3057\u304F\u3067\u304D\u308B\u5DE6\u7AEF\u306E\u5206\u5B50\u30FB\
+    \u5206\u6BCD\u304Cn\u4EE5\u4E0B\u306B\u306A\u308B\u7BC4\u56F2\u3067\u79FB\u52D5\
+    \u53EF\u80FD\n                # \u6307\u6570\u63A2\u7D22\u3067\u5224\u5B9A\u304C\
+    \u5909\u308F\u308B\u533A\u9593\u3092\u7D5E\u3063\u3066\u304B\u3089\u4E8C\u5206\
+    \u63A2\u7D22\n                let lim = now.max_endpoint_move_right_with_bound(n)\n\
+    \                if lim <= 0:\n                    break\n                var\
+    \ l:T = 0\n                var r = T(1)\n                while is_ok(now.move_right(r))\
+    \ == result_now:\n                    if r == lim:\n                        return\
+    \ now.move_right(r)\n                    l = r\n                    r += min(r,lim-r)\n\
+    \                while r-l > 1:\n                    var mid = l + (r-l) div 2\n\
+    \                    if is_ok(now.move_right(mid)) == result_now:\n          \
+    \              l = mid\n                    else:\n                        r =\
+    \ mid\n                now = now.move_right(r)\n            result_now = not result_now\n\
+    \            is_left = not is_left\n        return now\n\n    \n    proc cmp_with_ein(a,b:SBTNode[int]):int=\n\
+    \        # -1 : <\n        # +1 : >\n        # 0 : =\n        if a == b:\n   \
+    \         return 0\n        \n        var (la,ra) = a.get_range_fraction()\n \
+    \       var (lb,rb) = b.get_range_fraction()\n\n        var x = a.toFraction()\n\
     \        var y = b.toFraction()\n        \n        if lb < x and x < rb:\n   \
     \         return 1\n        \n        if la < y and y < ra:\n            return\
     \ -1\n        \n        return cmp(x,y)\n\n\n\n    proc initAuxiliaryWeightedTree*(v:openArray[SBTNode[int]]):WeightedUnDirectedTableGraph[SBTNode[int],int]=\n\
@@ -195,16 +211,20 @@ data:
     \            if len(stack) != 0:\n                result.add_edge(stack[^1],v[i],(v[i].depth)-(stack[^1].depth))\n\
     \            stack.add(v[i])"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-09-27 01:47:05+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
 documentation_of: cplib/math/stern_brocot_tree.nim
 layout: document
 redirect_from:

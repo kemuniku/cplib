@@ -41,9 +41,9 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
   - cplib/tree/lca.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tree/lca.nim
   isVerificationFile: true
   path: verify/tree/lca/lca_from_parent_yosupo_test.nim

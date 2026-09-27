@@ -68,14 +68,14 @@ data:
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/collections/dualsegtree.nim
-  - cplib/modint/modint.nim
   - cplib/collections/dualsegtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/dualsegtree/rangeaffinepointget_test.nim

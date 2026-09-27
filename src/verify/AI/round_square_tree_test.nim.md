@@ -86,10 +86,10 @@ data:
     \ == 2\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/biconnected_components.nim
-  - cplib/graph/round_square_tree.nim
-  - cplib/graph/round_square_tree.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/round_square_tree.nim
+  - cplib/graph/round_square_tree.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim

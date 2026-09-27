@@ -50,8 +50,8 @@ data:
   dependsOn:
   - cplib/graph/two_edge_connected_components.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim

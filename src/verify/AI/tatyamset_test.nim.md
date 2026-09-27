@@ -78,9 +78,9 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/tatyamset.nim
-  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
+  - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/tatyamset_test.nim

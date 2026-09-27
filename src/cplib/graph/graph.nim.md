@@ -230,10 +230,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
   - icon: ':heavy_check_mark:'
@@ -1048,6 +1048,18 @@ data:
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_bounds_test.nim
+    title: verify/math/stern_brocot_tree_bounds_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_bounds_test.nim
+    title: verify/math/stern_brocot_tree_bounds_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/auxiliaryweightedtree_test.nim
     title: verify/tree/auxiliaryweightedtree_test.nim
   - icon: ':heavy_check_mark:'
@@ -1828,8 +1840,12 @@ data:
   - verify/AI/steiner_tree_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

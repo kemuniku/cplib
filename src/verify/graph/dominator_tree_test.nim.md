@@ -43,9 +43,9 @@ data:
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
   - cplib/graph/dominator_tree.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
   - cplib/graph/dominator_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/dominator_tree_test.nim
   requiredBy: []

@@ -38,8 +38,8 @@ data:
     \    else:\n        var x = ii()\n        var (a, b) = swag.fold()\n        echo\
     \ (a*x mod MOD + b) mod MOD\n"
   dependsOn:
-  - cplib/collections/QSWAG.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/QSWAG.nim
   - cplib/collections/QSWAG.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

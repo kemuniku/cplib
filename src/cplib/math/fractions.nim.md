@@ -8,10 +8,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
   - icon: ':warning:'
@@ -147,6 +147,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/fractions_unit_test.nim
     title: verify/math/fractions_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_bounds_test.nim
+    title: verify/math/stern_brocot_tree_bounds_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_bounds_test.nim
+    title: verify/math/stern_brocot_tree_bounds_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -298,8 +310,12 @@ data:
   - verify/AI/fractions_test.nim
   - verify/math/fractions_unit_test.nim
   - verify/math/fractions_unit_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/fraction_inverse_sign_test.nim
   - verify/math/fraction_inverse_sign_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
 documentation_of: cplib/math/fractions.nim
 layout: document
 redirect_from:
