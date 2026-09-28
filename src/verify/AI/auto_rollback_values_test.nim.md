@@ -111,13 +111,13 @@ data:
     \          (update, choose())[0]()\n    )\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/auto_rollback.nim
-  - cplib/utils/private/auto_rollback.nim
   - cplib/collections/lazysegtree_static_op.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/backwards_index.nim
   - cplib/utils/private/auto_rollback.nim
   isVerificationFile: true

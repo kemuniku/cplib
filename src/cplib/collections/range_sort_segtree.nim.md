@@ -296,8 +296,8 @@ data:
     \u3067\u3059\"\n        self.sort(segment.a, segment.b + 1, order)\n"
   dependsOn:
   - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/range_sort_segtree.nim

@@ -130,6 +130,18 @@ data:
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_sparse_test.nim
+    title: verify/graph/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_sparse_test.nim
+    title: verify/graph/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_test.nim
+    title: verify/graph/general_weighted_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_test.nim
+    title: verify/graph/general_weighted_matching_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/hopcroft_karp_test.nim
     title: verify/graph/hopcroft_karp_test.nim
   - icon: ':heavy_check_mark:'
@@ -927,6 +939,8 @@ data:
   - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/general_weighted_matching_sparse_test.nim
+  - verify/graph/general_weighted_matching_sparse_test.nim
   - verify/graph/cycle_detection_test.nim
   - verify/graph/cycle_detection_test.nim
   - verify/graph/hopcroft_karp_test.nim
@@ -937,6 +951,8 @@ data:
   - verify/graph/biconnected_components_test.nim
   - verify/graph/lowlink_bridges_test.nim
   - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/general_weighted_matching_test.nim
+  - verify/graph/general_weighted_matching_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/push_relabel_bipartitematching_test.nim

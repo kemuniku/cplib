@@ -105,6 +105,18 @@ data:
     path: cplib/graph/general_matching.nim
     title: cplib/graph/general_matching.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/general_weighted_matching.nim
+    title: cplib/graph/general_weighted_matching.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/general_weighted_matching.nim
+    title: cplib/graph/general_weighted_matching.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/general_weighted_matching_sparse.nim
+    title: cplib/graph/general_weighted_matching_sparse.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/general_weighted_matching_sparse.nim
+    title: cplib/graph/general_weighted_matching_sparse.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/graph_debug.nim
     title: cplib/graph/graph_debug.nim
   - icon: ':heavy_check_mark:'
@@ -116,6 +128,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/graph/grid_to_graph.nim
     title: cplib/graph/grid_to_graph.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/internal/weighted_matching_engine.nim
+    title: cplib/graph/internal/weighted_matching_engine.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/internal/weighted_matching_engine.nim
+    title: cplib/graph/internal/weighted_matching_engine.nim
   - icon: ':heavy_check_mark:'
     path: cplib/graph/k_shortest_walk.nim
     title: cplib/graph/k_shortest_walk.nim
@@ -634,6 +652,18 @@ data:
     path: verify/AI/general_matching_tree_union_test.nim
     title: verify/AI/general_matching_tree_union_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_sparse_test.nim
+    title: verify/AI/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_sparse_test.nim
+    title: verify/AI/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_test.nim
+    title: verify/AI/general_weighted_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_test.nim
+    title: verify/AI/general_weighted_matching_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/graph_debug_test.nim
     title: verify/AI/graph_debug_test.nim
   - icon: ':heavy_check_mark:'
@@ -898,6 +928,12 @@ data:
     path: verify/AI/warshall_floyd_test.nim
     title: verify/AI/warshall_floyd_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/weighted_matching_structure_test.nim
+    title: verify/AI/weighted_matching_structure_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/weighted_matching_structure_test.nim
+    title: verify/AI/weighted_matching_structure_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/range_kth_smallest_test.nim
     title: verify/collections/range_kth_smallest_test.nim
   - icon: ':heavy_check_mark:'
@@ -975,6 +1011,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_sparse_test.nim
+    title: verify/graph/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_sparse_test.nim
+    title: verify/graph/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_test.nim
+    title: verify/graph/general_weighted_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/general_weighted_matching_test.nim
+    title: verify/graph/general_weighted_matching_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/lowlink_articulation_test.nim
     title: verify/graph/lowlink_articulation_test.nim
@@ -1577,6 +1625,8 @@ data:
   - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/grid_to_graph.nim
+  - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/general_weighted_matching.nim
   - cplib/graph/range_edge_graph.nim
   - cplib/graph/range_edge_graph.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
@@ -1599,6 +1649,8 @@ data:
   - cplib/graph/general_matching.nim
   - cplib/graph/steiner_tree.nim
   - cplib/graph/steiner_tree.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
   - cplib/graph/dynamic_bipartite.nim
   - cplib/graph/dynamic_bipartite.nim
   - cplib/graph/bellmanford.nim
@@ -1609,6 +1661,8 @@ data:
   - cplib/graph/graph_debug.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/namori_graph.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/maxk_dijkstra.nim
   - cplib/graph/functional_graph.nim
@@ -1674,6 +1728,8 @@ data:
   - verify/graph/static/unweighted_directed_graph_aoj_static_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/general_weighted_matching_sparse_test.nim
+  - verify/graph/general_weighted_matching_sparse_test.nim
   - verify/graph/cycle_detection_test.nim
   - verify/graph/cycle_detection_test.nim
   - verify/graph/lowlink_articulation_test.nim
@@ -1684,6 +1740,8 @@ data:
   - verify/graph/biconnected_components_test.nim
   - verify/graph/lowlink_bridges_test.nim
   - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/general_weighted_matching_test.nim
+  - verify/graph/general_weighted_matching_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
@@ -1750,6 +1808,8 @@ data:
   - verify/AI/warshall_floyd_negative_test.nim
   - verify/AI/round_square_tree_test.nim
   - verify/AI/round_square_tree_test.nim
+  - verify/AI/general_weighted_matching_sparse_test.nim
+  - verify/AI/general_weighted_matching_sparse_test.nim
   - verify/AI/graph_storage_test.nim
   - verify/AI/graph_storage_test.nim
   - verify/AI/cycle_detection_test.nim
@@ -1812,6 +1872,8 @@ data:
   - verify/AI/mo_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
+  - verify/AI/general_weighted_matching_test.nim
+  - verify/AI/general_weighted_matching_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
   - verify/AI/general_matching_tree_union_test.nim
@@ -1838,6 +1900,8 @@ data:
   - verify/AI/reverse_edge_test.nim
   - verify/AI/steiner_tree_test.nim
   - verify/AI/steiner_tree_test.nim
+  - verify/AI/weighted_matching_structure_test.nim
+  - verify/AI/weighted_matching_structure_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/math/stern_brocot_tree_rational_approximation_test.nim

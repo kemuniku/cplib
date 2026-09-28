@@ -70,8 +70,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/math/combination.nim
-  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
   - cplib/math/combination.nim
   - cplib/utils/mo.nim
   isVerificationFile: false

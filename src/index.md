@@ -437,6 +437,12 @@ data:
       path: cplib/graph/general_matching.nim
       title: cplib/graph/general_matching.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/general_weighted_matching.nim
+      title: cplib/graph/general_weighted_matching.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/general_weighted_matching_sparse.nim
+      title: cplib/graph/general_weighted_matching_sparse.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/graph.nim
       title: cplib/graph/graph.nim
     - icon: ':heavy_check_mark:'
@@ -523,6 +529,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/warshall_floyd_negative.nim
       title: cplib/graph/warshall_floyd_negative.nim
+  - name: cplib/graph/internal
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/internal/weighted_matching_engine.nim
+      title: cplib/graph/internal/weighted_matching_engine.nim
   - name: cplib/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -1675,6 +1686,12 @@ data:
       path: verify/AI/general_matching_tree_union_test.nim
       title: verify/AI/general_matching_tree_union_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/general_weighted_matching_sparse_test.nim
+      title: verify/AI/general_weighted_matching_sparse_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/general_weighted_matching_test.nim
+      title: verify/AI/general_weighted_matching_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/geometry_base_test.nim
       title: verify/AI/geometry_base_test.nim
     - icon: ':heavy_check_mark:'
@@ -2142,6 +2159,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/waveletmatrix_test.nim
       title: verify/AI/waveletmatrix_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/weighted_matching_structure_test.nim
+      title: verify/AI/weighted_matching_structure_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/weightedunionfind_test.nim
       title: verify/AI/weightedunionfind_test.nim
@@ -2628,6 +2648,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/general_matching_test.nim
       title: verify/graph/general_matching_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/general_weighted_matching_sparse_test.nim
+      title: verify/graph/general_weighted_matching_sparse_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/general_weighted_matching_test.nim
+      title: verify/graph/general_weighted_matching_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/hopcroft_karp_test.nim
       title: verify/graph/hopcroft_karp_test.nim

@@ -52,10 +52,10 @@ data:
   dependsOn:
   - cplib/tree/link_cut_tree.nim
   - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/link_cut_tree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/link_cut_tree.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   requiredBy: []

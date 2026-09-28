@@ -22,6 +22,18 @@ data:
     path: verify/AI/general_matching_tree_union_test.nim
     title: verify/AI/general_matching_tree_union_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_sparse_test.nim
+    title: verify/AI/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_sparse_test.nim
+    title: verify/AI/general_weighted_matching_sparse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_test.nim
+    title: verify/AI/general_weighted_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/general_weighted_matching_test.nim
+    title: verify/AI/general_weighted_matching_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
   - icon: ':heavy_check_mark:'
@@ -319,6 +331,10 @@ data:
   verifiedWith:
   - verify/graph/general_matching_test.nim
   - verify/graph/general_matching_test.nim
+  - verify/AI/general_weighted_matching_sparse_test.nim
+  - verify/AI/general_weighted_matching_sparse_test.nim
+  - verify/AI/general_weighted_matching_test.nim
+  - verify/AI/general_weighted_matching_test.nim
   - verify/AI/general_matching_tree_union_test.nim
   - verify/AI/general_matching_tree_union_test.nim
   - verify/AI/general_matching_test.nim

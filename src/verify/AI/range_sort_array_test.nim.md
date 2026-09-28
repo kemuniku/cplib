@@ -90,10 +90,10 @@ data:
     \ 1, 0])\n        a[1] = 1\n        a[1] = 3\n        a.check(@[2, 3, 0])\n\n\
     echo \"Hello World\"\n"
   dependsOn:
+  - cplib/collections/segtree.nim
   - cplib/collections/range_sort_segtree.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/range_sort_segtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_sort_array.nim
