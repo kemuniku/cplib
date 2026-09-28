@@ -36,10 +36,10 @@ data:
     \  print(tree.count_distinct_palindromes,\n        tree.longest_prefix_palindrome,\
     \ tree.longest_suffix_palindrome)\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
+  - cplib/str/double_ended_palindromic_tree.nim
   - cplib/str/double_ended_palindromic_tree.nim
   - cplib/tmpl/fastio.nim
-  - cplib/str/double_ended_palindromic_tree.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/str/double_ended_palindromic_tree_test.nim
   requiredBy: []

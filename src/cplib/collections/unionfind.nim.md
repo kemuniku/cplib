@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/euclidean_mst.nim
+    title: cplib/geometry/euclidean_mst.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/euclidean_mst.nim
+    title: cplib/geometry/euclidean_mst.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
   - icon: ':heavy_check_mark:'
@@ -46,6 +52,12 @@ data:
     path: verify/AI/auto_rollback_test.nim
     title: verify/AI/auto_rollback_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/euclidean_mst_test.nim
+    title: verify/AI/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/euclidean_mst_test.nim
+    title: verify/AI/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
@@ -81,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/collections/unionfind_test.nim
     title: verify/collections/unionfind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/euclidean_mst_test.nim
+    title: verify/geometry/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/euclidean_mst_test.nim
+    title: verify/geometry/euclidean_mst_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -129,9 +147,13 @@ data:
   - cplib/graph/merge_tree.nim
   - cplib/graph/kruskal.nim
   - cplib/graph/kruskal.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/geometry/euclidean_mst.nim
   timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
   - verify/AI/auto_rollback_scope_test.nim
@@ -142,6 +164,8 @@ data:
   - verify/AI/rollback_mo_test.nim
   - verify/AI/auto_rollback_test.nim
   - verify/AI/auto_rollback_test.nim
+  - verify/AI/euclidean_mst_test.nim
+  - verify/AI/euclidean_mst_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/merge_tree_test.nim

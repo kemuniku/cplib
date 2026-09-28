@@ -160,8 +160,8 @@ data:
     \n        self.prod(i, i + 1)\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/math/int128.nim
+  - cplib/utils/backwards_index.nim
   - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/collections/range_linear_add_range_min.nim

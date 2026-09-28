@@ -21,6 +21,12 @@ data:
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/euclidean_mst.nim
+    title: cplib/geometry/euclidean_mst.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/euclidean_mst.nim
+    title: cplib/geometry/euclidean_mst.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   - icon: ':heavy_check_mark:'
@@ -70,6 +76,12 @@ data:
     path: verify/AI/distance_test.nim
     title: verify/AI/distance_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/euclidean_mst_test.nim
+    title: verify/AI/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/euclidean_mst_test.nim
+    title: verify/AI/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/geometry_base_test.nim
     title: verify/AI/geometry_base_test.nim
   - icon: ':heavy_check_mark:'
@@ -225,6 +237,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/euclidean_mst_test.nim
+    title: verify/geometry/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/euclidean_mst_test.nim
+    title: verify/geometry/euclidean_mst_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -323,6 +341,8 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/ccw.nim
@@ -334,6 +354,8 @@ data:
   verifiedWith:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
@@ -386,6 +408,8 @@ data:
   - verify/AI/polygon_test.nim
   - verify/AI/ccw_test.nim
   - verify/AI/ccw_test.nim
+  - verify/AI/euclidean_mst_test.nim
+  - verify/AI/euclidean_mst_test.nim
   - verify/AI/projection_test.nim
   - verify/AI/projection_test.nim
   - verify/AI/angle_test.nim

@@ -37,9 +37,9 @@ data:
     \ = hashes.sorted().deduplicate(true)\necho values.len\necho hashes.mapIt(values.lowerBound(it)).join(\"\
     \ \")\n"
   dependsOn:
+  - cplib/tree/tree_hash.nim
+  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
-  - cplib/tree/tree_hash.nim
-  - cplib/tree/tree_hash.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/rooted_tree_isomorphism_classification_test.nim

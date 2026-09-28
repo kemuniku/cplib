@@ -70,6 +70,12 @@ data:
     path: verify/collections/fenwick_tree_test.nim
     title: verify/collections/fenwick_tree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/euclidean_mst_test.nim
+    title: verify/geometry/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/euclidean_mst_test.nim
+    title: verify/geometry/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
   - icon: ':heavy_check_mark:'
@@ -949,6 +955,8 @@ data:
   - verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_test.nim

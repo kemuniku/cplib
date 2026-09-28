@@ -77,11 +77,11 @@ data:
     \        for tree in unlabeled_trees(n): discard tree\n    except AssertionDefect:\n\
     \        rejected = true\n    doAssert rejected\n"
   dependsOn:
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
-  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
   isVerificationFile: true
   path: verify/AI/itertools_trees_test.nim

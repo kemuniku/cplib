@@ -37,8 +37,8 @@ data:
     \ ii()\n        echo st[l..<r]\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/root_rangesum.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/root_rangesum.nim
   isVerificationFile: true
   path: verify/collections/root_rangesum_test.nim

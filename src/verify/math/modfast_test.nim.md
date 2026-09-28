@@ -129,27 +129,27 @@ data:
     \ true\n    doAssert rejected\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/powmod.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/modfast.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/modint.nim
   - cplib/math/primefactor.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/modfast.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/modfast.nim
+  - cplib/math/primitive_root.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/primitive_root.nim
-  - cplib/math/primitive_root.nim
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/modfast.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/primefactor.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/math/modfast_test.nim
   requiredBy: []

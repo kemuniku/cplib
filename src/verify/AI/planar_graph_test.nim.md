@@ -100,15 +100,15 @@ data:
     echo \"Hello World\"\n"
   dependsOn:
   - cplib/graph/planar_graph.nim
-  - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
   - cplib/graph/planar_graph.nim
   - cplib/utils/random_helper.nim
-  - cplib/tree/prufer.nim
-  - cplib/utils/random_helper.nim
-  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
+  - cplib/utils/random_helper.nim
   isVerificationFile: true
   path: verify/AI/planar_graph_test.nim
   requiredBy: []

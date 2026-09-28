@@ -86,8 +86,8 @@ data:
     \ v, n + v + 1))\n        n += 2*k\n    check(n, edges & remaining, n div 2)\n\
     check(100000, @[(99998, 99999), (2, 2)], 1)\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
+  - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   isVerificationFile: true

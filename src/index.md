@@ -372,6 +372,9 @@ data:
       path: cplib/geometry/distance.nim
       title: cplib/geometry/distance.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/geometry/euclidean_mst.nim
+      title: cplib/geometry/euclidean_mst.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/intersect.nim
       title: cplib/geometry/intersect.nim
     - icon: ':heavy_check_mark:'
@@ -1600,6 +1603,9 @@ data:
       path: verify/AI/eratosthenes_test.nim
       title: verify/AI/eratosthenes_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/euclidean_mst_test.nim
+      title: verify/AI/euclidean_mst_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/euler_phi_test.nim
       title: verify/AI/euler_phi_test.nim
     - icon: ':heavy_check_mark:'
@@ -2600,6 +2606,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
       title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - name: verify/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/euclidean_mst_test.nim
+      title: verify/geometry/euclidean_mst_test.nim
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'

@@ -72,16 +72,16 @@ data:
   dependsOn:
   - cplib/modint/barrett_impl.nim
   - cplib/tree/diameter.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/tree/diameter.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/modint.nim
   isVerificationFile: false
   path: verify/tree/diameter_path_dynamic_test_.nim
   requiredBy: []

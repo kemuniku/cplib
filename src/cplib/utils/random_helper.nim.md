@@ -230,12 +230,12 @@ data:
     \        return result\n"
   dependsOn:
   - cplib/graph/planar_graph.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   - cplib/graph/graph.nim
-  - cplib/math/isprime.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/planar_graph.nim
-  - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim

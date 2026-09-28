@@ -44,11 +44,11 @@ data:
     \        echo bounds.p, \" \", bounds.q, \" \", bounds.r, \" \", bounds.s\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/math/stern_brocot_tree.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_rational_approximation_test.nim
   requiredBy: []

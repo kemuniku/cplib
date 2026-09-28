@@ -78,9 +78,9 @@ data:
     \ == n\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/euler_tour.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/euler_tour.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/euler_tour_test.nim
   requiredBy: []
