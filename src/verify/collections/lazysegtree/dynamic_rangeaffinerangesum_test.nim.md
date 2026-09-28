@@ -42,9 +42,9 @@ data:
     \ ii()\n        let b = ii()\n        st.apply(l, r, (a, b))\n    else:\n    \
     \    echo st.get(l, r).sum\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_lazysegtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_lazysegtree.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/dynamic_rangeaffinerangesum_test.nim

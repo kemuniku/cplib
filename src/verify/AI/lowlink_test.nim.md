@@ -126,11 +126,11 @@ data:
   dependsOn:
   - cplib/graph/biconnected_components.nim
   - cplib/graph/block_cut_tree.nim
-  - cplib/graph/block_cut_tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/two_edge_connected_components.nim
-  - cplib/graph/two_edge_connected_components.nim
+  - cplib/graph/block_cut_tree.nim
   - cplib/graph/biconnected_components.nim
+  - cplib/graph/two_edge_connected_components.nim
+  - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim

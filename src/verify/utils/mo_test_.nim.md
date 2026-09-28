@@ -39,8 +39,8 @@ data:
     \ == 1:\n        now -= 1\n    count[c[id]] -= 1\n\nproc rem(id: int) =\n    ans[id]\
     \ = now\n\nm.run(addq, addq, delq, delq, rem)\n\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

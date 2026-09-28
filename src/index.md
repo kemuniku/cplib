@@ -685,6 +685,9 @@ data:
       path: cplib/str/compressed_trie.nim
       title: cplib/str/compressed_trie.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/double_ended_palindromic_tree.nim
+      title: cplib/str/double_ended_palindromic_tree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/edit_distance.nim
       title: cplib/str/edit_distance.nim
     - icon: ':heavy_check_mark:'
@@ -1569,6 +1572,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/dominator_tree_test.nim
       title: verify/AI/dominator_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/double_ended_palindromic_tree_test.nim
+      title: verify/AI/double_ended_palindromic_tree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/dualsegtree_static_op_test.nim
       title: verify/AI/dualsegtree_static_op_test.nim
@@ -2988,6 +2994,9 @@ data:
       title: verify/str/can_reverse_hash_string/can_reverse_hash_string_rolling_hash_yosupo_suffix_array_test.nim
   - name: verify/str
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/str/double_ended_palindromic_tree_test.nim
+      title: verify/str/double_ended_palindromic_tree_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/edit_distance_bitset_test.nim
       title: verify/str/edit_distance_bitset_test.nim

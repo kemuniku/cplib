@@ -228,26 +228,26 @@ data:
     \ = uint32(e)\n                value = value * result.generator mod p\n      \
     \  else:\n            let limit = result.buildFractions()\n            result.buildLogarithms(limit)\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/str/run_length_encode.nim
+  - cplib/math/powmod.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/math/primefactor.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/inner_math.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/primefactor.nim
   - cplib/math/isqrt.nim
-  - cplib/math/inner_math.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/powmod.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   - cplib/math/powmod.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/str/run_length_encode.nim
-  - cplib/math/primefactor.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/math/modfast.nim
   requiredBy: []

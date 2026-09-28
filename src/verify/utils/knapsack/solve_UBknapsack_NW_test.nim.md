@@ -35,9 +35,9 @@ data:
     \    tmp.add((v,w))\n\necho solve_UBknapsack_NW(tmp,W)"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/knapsack.nim
-  - cplib/utils/knapsack.nim
   - cplib/utils/constants.nim
+  - cplib/utils/knapsack.nim
+  - cplib/utils/knapsack.nim
   isVerificationFile: true
   path: verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   requiredBy: []

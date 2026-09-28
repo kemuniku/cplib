@@ -126,10 +126,10 @@ data:
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/utils/constants.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim

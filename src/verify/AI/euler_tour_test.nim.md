@@ -79,8 +79,8 @@ data:
   dependsOn:
   - cplib/graph/euler_tour.nim
   - cplib/graph/graph.nim
-  - cplib/graph/euler_tour.nim
   - cplib/graph/graph.nim
+  - cplib/graph/euler_tour.nim
   isVerificationFile: true
   path: verify/AI/euler_tour_test.nim
   requiredBy: []

@@ -38,9 +38,9 @@ data:
 
     '
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree_static_op.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree_static_op.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/get_all_static_op_test.nim

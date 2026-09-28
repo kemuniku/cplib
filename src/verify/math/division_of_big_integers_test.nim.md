@@ -76,23 +76,23 @@ data:
     \ initBigInt(input(string))\n    let (quotient, remainder) = divmod(a, b)\n  \
     \  print(quotient, remainder)\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
   - cplib/math/bigint.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/tmpl/fastio.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   - cplib/math/bigint.nim
   isVerificationFile: true
   path: verify/math/division_of_big_integers_test.nim
