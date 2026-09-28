@@ -44,8 +44,8 @@ data:
   dependsOn:
   - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
   requiredBy: []

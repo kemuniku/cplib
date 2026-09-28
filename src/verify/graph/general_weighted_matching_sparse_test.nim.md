@@ -48,13 +48,13 @@ data:
     echo matching.len, \" \", weight\nfor (u, v) in matching:\n    echo u, \" \",\
     \ v\n"
   dependsOn:
+  - cplib/graph/general_weighted_matching_sparse.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/graph/general_weighted_matching_sparse.nim
-  - cplib/graph/general_weighted_matching_sparse.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/general_weighted_matching_sparse_test.nim

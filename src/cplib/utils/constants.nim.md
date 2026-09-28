@@ -490,6 +490,12 @@ data:
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/sum_of_multiplicative_function_test.nim
+    title: verify/math/sum_of_multiplicative_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/sum_of_multiplicative_function_test.nim
+    title: verify/math/sum_of_multiplicative_function_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
     title: verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - icon: ':heavy_check_mark:'
@@ -761,6 +767,8 @@ data:
   - verify/AI/steiner_tree_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim

@@ -87,16 +87,16 @@ data:
     \      sum += values[j][1]\n        assert wm.range_sum(l, r, x) == sum\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/fenwick_avx2.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/bitvector.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_fenwick_test.nim
   requiredBy: []

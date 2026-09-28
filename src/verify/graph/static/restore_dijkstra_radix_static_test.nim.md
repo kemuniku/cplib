@@ -66,19 +66,19 @@ data:
     else:\n    echo cost, \" \", path.len - 1\n    for i in 0..<path.len - 1:\n  \
     \      echo path[i], \" \", path[i + 1]\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/graph/dijkstra_radix.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/dijkstra_radix.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_radix_static_test.nim

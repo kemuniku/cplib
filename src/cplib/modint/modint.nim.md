@@ -153,6 +153,12 @@ data:
     path: cplib/math/modfast.nim
     title: cplib/math/modfast.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/multiplicative_prefix_sum.nim
+    title: cplib/math/multiplicative_prefix_sum.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/multiplicative_prefix_sum.nim
+    title: cplib/math/multiplicative_prefix_sum.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix_avx2.nim
     title: cplib/matrix/matrix_avx2.nim
   - icon: ':heavy_check_mark:'
@@ -394,6 +400,18 @@ data:
     path: verify/AI/modint_test.nim
     title: verify/AI/modint_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/multiplicative_prefix_sum_limit_test.nim
+    title: verify/AI/multiplicative_prefix_sum_limit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/multiplicative_prefix_sum_limit_test.nim
+    title: verify/AI/multiplicative_prefix_sum_limit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/multiplicative_prefix_sum_test.nim
+    title: verify/AI/multiplicative_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/multiplicative_prefix_sum_test.nim
+    title: verify/AI/multiplicative_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/ntt_test.nim
     title: verify/AI/ntt_test.nim
   - icon: ':heavy_check_mark:'
@@ -705,6 +723,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/sum_of_multiplicative_function_test.nim
+    title: verify/math/sum_of_multiplicative_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/sum_of_multiplicative_function_test.nim
+    title: verify/math/sum_of_multiplicative_function_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_compatibility_test.nim
     title: verify/matrix/matrix_avx2_compatibility_test.nim
@@ -851,11 +875,11 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
@@ -936,6 +960,8 @@ data:
   - cplib/convolution/ntt.nim
   - cplib/convolution/semi_relaxed_convolution.nim
   - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/math/multiplicative_prefix_sum.nim
+  - cplib/math/multiplicative_prefix_sum.nim
   - cplib/math/modfast.nim
   - cplib/math/modfast.nim
   - cplib/math/bigint.nim
@@ -1055,6 +1081,8 @@ data:
   - verify/AI/static_rectangle_add_rectangle_sum_test.nim
   - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_old_test.nim
+  - verify/AI/multiplicative_prefix_sum_limit_test.nim
+  - verify/AI/multiplicative_prefix_sum_limit_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
@@ -1083,6 +1111,8 @@ data:
   - verify/AI/bitwise_and_convolution_test.nim
   - verify/AI/mo_test.nim
   - verify/AI/mo_test.nim
+  - verify/AI/multiplicative_prefix_sum_test.nim
+  - verify/AI/multiplicative_prefix_sum_test.nim
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/combination_test.nim
@@ -1095,6 +1125,8 @@ data:
   - verify/math/modfast_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_test.nim

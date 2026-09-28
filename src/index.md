@@ -609,6 +609,9 @@ data:
       path: cplib/math/monoid_floor_sum.nim
       title: cplib/math/monoid_floor_sum.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/multiplicative_prefix_sum.nim
+      title: cplib/math/multiplicative_prefix_sum.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/nearest_equiv.nim
       title: cplib/math/nearest_equiv.nim
     - icon: ':heavy_check_mark:'
@@ -1872,6 +1875,12 @@ data:
       path: verify/AI/montgomery_impl_test.nim
       title: verify/AI/montgomery_impl_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/multiplicative_prefix_sum_limit_test.nim
+      title: verify/AI/multiplicative_prefix_sum_limit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/multiplicative_prefix_sum_test.nim
+      title: verify/AI/multiplicative_prefix_sum_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/namori_forest_test.nim
       title: verify/AI/namori_forest_test.nim
     - icon: ':heavy_check_mark:'
@@ -2832,6 +2841,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/stern_brocot_tree_rational_approximation_test.nim
       title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/sum_of_multiplicative_function_test.nim
+      title: verify/math/sum_of_multiplicative_function_test.nim
   - name: verify/matrix
     pages:
     - icon: ':heavy_check_mark:'

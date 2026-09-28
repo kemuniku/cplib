@@ -46,8 +46,8 @@ data:
     \ p[c]\n    d[c] = x\n    p[c] = y\n    echo total - pq.sum\n"
   dependsOn:
   - cplib/collections/dynamic_retroactive_priority_queue.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim

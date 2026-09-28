@@ -68,11 +68,11 @@ data:
     \        for (queryIndex, prefixIndex) in queryIndices:\n            result[queryIndex]\
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/math/combination.nim
-  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/math/combination.nim
+  - cplib/math/combination.nim
+  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim

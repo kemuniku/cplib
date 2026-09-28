@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/collections/dynamic_segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/dynamic_segtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/dynamic_segtree.nim
   isVerificationFile: true
   path: verify/collections/segtree/dynamic_segtree_PARS_test.nim
   requiredBy: []

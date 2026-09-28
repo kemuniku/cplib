@@ -220,6 +220,12 @@ data:
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/sum_of_multiplicative_function_test.nim
+    title: verify/math/sum_of_multiplicative_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/sum_of_multiplicative_function_test.nim
+    title: verify/math/sum_of_multiplicative_function_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_test.nim
     title: verify/matrix/matrix_avx2_test.nim
   - icon: ':heavy_check_mark:'
@@ -985,6 +991,8 @@ data:
   - verify/AI/fastio_io_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim
