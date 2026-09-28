@@ -178,7 +178,7 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
         let parts = s.split(l, s.leaves[l].count - 1)
         s.join(parts.left, parts.right, r)
 
-    proc top[fast: static bool](s: MatchingMachine[fast], vertex: int): int =
+    proc top[fast: static bool](s: MatchingMachine[fast], vertex: int): int {.inline.} =
         ## 頂点を含む最上位の花を返す。密版O(1)、疎版O(log V)。
         when fast:
             var root = vertex
@@ -186,7 +186,7 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
             s.leaves[root].owner
         else: s.owner[vertex]
 
-    proc potential[fast: static bool](s: MatchingMachine[fast], vertex: int): int64 =
+    proc potential[fast: static bool](s: MatchingMachine[fast], vertex: int): int64 {.inline.} =
         ## 時刻の項を除いた頂点の双対値を返す。密版O(1)、疎版O(log V)。
         result = s.leaves[vertex].potential
         when fast:
@@ -273,7 +273,7 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
             if candidate.vertex != 0:
                 s.schedule((candidate.value, 0, b, s.components[b].version, s.leaves[candidate.vertex].edge))
 
-    proc offer[fast: static bool](s: var MatchingMachine[fast], vertex, edge: int, value: int64) =
+    proc offer[fast: static bool](s: var MatchingMachine[fast], vertex, edge: int, value: int64) {.inline.} =
         ## 外側頂点からの候補を更新する。密版O(1)、疎版O(log V)。
         if s.leaves[vertex].edge >= 0 and value >= s.leaves[vertex].offer: return
         let b = s.top(vertex)
@@ -293,7 +293,7 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
                 s.components[b].bestVertex = vertex
         s.scheduleOffer(b)
 
-    proc edgeTime[fast: static bool](s: MatchingMachine[fast], edge: int): int64 =
+    proc edgeTime[fast: static bool](s: MatchingMachine[fast], edge: int): int64 {.inline.} =
         ## 二つの外側頂点を結ぶ辺がタイトになる時刻を返す。
         let e = s.arcs[edge]
         (s.potential(e.src) + s.potential(e.dst) - 2 * e.weight) div 2
@@ -323,8 +323,11 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
         s.components[b].color = color
         s.invalidate(b)
         if color == mcEven and old != mcEven:
+            when not fast:
+                # 外側同士の候補は、登録した頂点の走査中にまとめて更新する。
+                s.components[b].cross = MatchingInfinity
+                s.components[b].crossEdge = -1
             for v in s.vertices(b): s.queue.add(v)
-            s.activateCross(b)
         elif color == mcIdle:
             s.scheduleOffer(b)
         elif color == mcOdd and b > s.n:
@@ -396,6 +399,7 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
             s.leaves[flower.root].owner = id
         else:
             for other in 1..<s.components.len:
+                if not s.components[other].live: continue
                 var chosen = -1
                 var value = MatchingInfinity
                 for child in flower.children:
@@ -565,6 +569,15 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
                         if time < result.time: result = (time, 2, b, 0, -1)
                 of mcHidden: discard
 
+    iterator outgoing[fast: static bool](s: MatchingMachine[fast], u: int): int =
+        ## 頂点から出る辺番号を列挙する。密版では連続配置を利用する。
+        when fast:
+            for id in s.adjacency[u]: yield id
+        else:
+            if s.adjacency[u].len > 0:
+                let first = s.adjacency[u][0]
+                for id in first..<first + s.adjacency[u].len: yield id
+
     proc scan[fast: static bool](s: var MatchingMachine[fast]): bool =
         ## 新しく外側になった頂点を走査し、時刻を進めずに使える辺を直ちに処理する。
         while s.queueHead < s.queue.len:
@@ -572,12 +585,12 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
             inc s.queueHead
             var source = s.top(u)
             let p = s.potential(u)
-            for id in s.adjacency[u]:
+            for id in s.outgoing(u):
                 let edge = s.arcs[id]
                 let dest = s.top(edge.dst)
                 if source == dest: continue
                 if s.components[dest].color == mcEven:
-                    let time = s.edgeTime(id)
+                    let time = (p + s.potential(edge.dst) - 2 * edge.weight) div 2
                     if time == s.time:
                         let common = s.ancestor(source, dest)
                         if common == 0:
@@ -587,6 +600,13 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
                         source = s.top(u)
                     else:
                         when fast: s.schedule((time, 1, 0, 0, id))
+                        else:
+                            if time < s.components[source].cross:
+                                s.components[source].cross = time
+                                s.components[source].crossEdge = id
+                            if time < s.components[dest].cross:
+                                s.components[dest].cross = time
+                                s.components[dest].crossEdge = id
                 else:
                     s.offer(edge.dst, id, p - 2 * edge.weight)
                     if s.components[dest].color == mcIdle:
@@ -725,6 +745,18 @@ when not declared CPLIB_GRAPH_INTERNAL_WEIGHTED_MATCHING_ENGINE:
                         s.arcs.add((u, v, int64(edge.cost)))
                     else:
                         s.arcs[id].weight = max(s.arcs[id].weight, int64(edge.cost))
+        when not fast:
+            # 同じ頂点から出る辺を行先順に連続配置し、走査時の局所性を高める。
+            var ordered = newSeqOfCap[MatchingEdge](s.arcs.len)
+            for u in 1..n:
+                s.adjacency[u].setLen(0)
+                for v in 1..n:
+                    let id = s.between[u][v]
+                    if id < 0: continue
+                    s.between[u][v] = ordered.len
+                    s.adjacency[u].add(ordered.len)
+                    ordered.add(s.arcs[id])
+            s.arcs = move(ordered)
         # 最大重みの辺だけで作る初期マッチングは、その辺数に対して既に最適。
         for edge in s.arcs:
             if edge.weight == largest and s.mate[edge.src] == 0 and s.mate[edge.dst] == 0:
