@@ -1,5 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-import random
+import random, strutils
 import cplib/modint/modint
 import cplib/math/multiplicative_prefix_sum
 
@@ -73,14 +73,40 @@ proc standard[T](thorough: bool) =
 
 standard[modint998244353_montgomery](true)
 standard[modint1000000007_barrett](false)
+standard[StaticMontgomeryModint[469762049'u32]](false)
 
 type Dynamic = modint_barrett
-for modulus in [998244353, 1_000_000_007]:
+for modulus in [998244353, 1_000_000_007, 469762049]:
     Dynamic.setMod(modulus)
     check(@[init(Dynamic, -1), init(Dynamic, 1), init(Dynamic, 0)], proc(p, e: int): Dynamic =
         init(Dynamic, p).pow(e - 1) * (p - 1), false)
 
+for modulus in [2, 3, 7, 17]:
+    Dynamic.setMod(modulus)
+    check(@[init(Dynamic, 2)], proc(p, e: int): Dynamic = init(Dynamic, e + 1), false)
+
 type Mint = modint998244353_montgomery
+when compileOption("assertions"):
+    for invalid in [-1, (1 shl 40) + 1]:
+        var rejected = false
+        try:
+            discard multiplicativePrefixSum(invalid, @[init(Mint, 1)],
+                proc(p, e: int): Mint = init(Mint, 1))
+        except AssertionDefect as error:
+            doAssert (if invalid < 0: "n は非負である必要があります"
+                      else: "n は 2^40 以下である必要があります") in error.msg
+            rejected = true
+        doAssert rejected
+
+var rng = initRand(923748)
+for _ in 0..<12:
+    var coefficients = newSeq[Mint](rng.rand(0..6))
+    for x in coefficients.mitems:
+        x = init(Mint, rng.rand(-10..10))
+    let u = init(Mint, rng.rand(-10..10))
+    let v = init(Mint, rng.rand(-10..10))
+    check(coefficients, proc(p, e: int): Mint = u * p + v * e * e, false)
+
 let n = 1_000_000
 let constant = multiplicativePrefixSum(n, @[init(Mint, 1)], proc(p, e: int): Mint = init(Mint, 1))
 doAssert constant == init(Mint, n)
