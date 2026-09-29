@@ -209,18 +209,18 @@ data:
     \u3001\u8FFD\u52A0\u7A7A\u9593\u306F O(1)\u3002\n        for position in target.search.findAll(target.target,\
     \ pattern):\n            yield position\n"
   dependsOn:
-  - cplib/collections/bitvector.nim
-  - cplib/str/static_string.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/utils/backwards_index.nim
   - cplib/str/suffix_array.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: false
   path: cplib/str/static_string_search.nim
   requiredBy: []

@@ -207,56 +207,56 @@ data:
     \ 3)\n    doAssert repeated[^1] == 'd'\n    doAssert repeated[^repeated.len] ==\
     \ 'b'\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/SWAG.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/dynamic_segtree.nim
-  - cplib/collections/fenwick.nim
-  - cplib/collections/root_rangesum.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/collections/segtree_var.nim
-  - cplib/collections/staticbitset.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/collections/segtree_static_op.nim
-  - cplib/collections/QSWAG.nim
   - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/QSWAG.nim
-  - cplib/str/repeated_static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/bitset.nim
-  - cplib/collections/bitset.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_var.nim
-  - cplib/collections/dynamic_segtree.nim
   - cplib/collections/lazysegtree_static_op.nim
-  - cplib/collections/tatyamset.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/collections/bitset.nim
   - cplib/collections/fenwick.nim
-  - cplib/utils/constants.nim
-  - cplib/str/repeated_static_string.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/collections/segtree_static_op.nim
+  - cplib/str/suffix_array.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/collections/segtree_beats.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/fixedlength_merged_static_string.nim
   - cplib/collections/root_rangesum.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/collections/segtree_static_op.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticbitset.nim
+  - cplib/collections/segtree.nim
+  - cplib/tree/link_cut_tree.nim
+  - cplib/collections/segtree_var.nim
+  - cplib/collections/QSWAG.nim
+  - cplib/str/merged_static_string.nim
   - cplib/collections/tatyamset.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/SWAG.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_beats.nim
   - cplib/str/suffix_array.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/collections/SWAG.nim
+  - cplib/str/static_string.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/tree/link_cut_tree.nim
+  - cplib/collections/QSWAG.nim
+  - cplib/collections/root_rangesum.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/dynamic_segtree.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/fenwick.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/bitset.nim
+  - cplib/collections/segtree_static_op.nim
+  - cplib/collections/dynamic_segtree.nim
+  - cplib/collections/SWAG.nim
+  - cplib/collections/tatyamset.nim
+  - cplib/collections/segtree_var.nim
+  - cplib/utils/constants.nim
   - cplib/tree/private/link_cut_tree_base.nim
   - cplib/collections/staticbitset.nim
-  - cplib/tree/link_cut_tree.nim
-  - cplib/tree/link_cut_tree.nim
-  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/utils/backwards_index_collections_test.nim
   requiredBy: []

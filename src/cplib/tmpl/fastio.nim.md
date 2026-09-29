@@ -58,6 +58,12 @@ data:
     path: verify/AI/sheep_test.nim
     title: verify/AI/sheep_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/double_ended_priority_queue_test.nim
+    title: verify/collections/double_ended_priority_queue_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/double_ended_priority_queue_test.nim
+    title: verify/collections/double_ended_priority_queue_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/fenwick_tree_avx2_test.nim
     title: verify/collections/fenwick_tree_avx2_test.nim
   - icon: ':heavy_check_mark:'
@@ -981,6 +987,8 @@ data:
   - verify/geometry/euclidean_mst_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
+  - verify/collections/double_ended_priority_queue_test.nim
+  - verify/collections/double_ended_priority_queue_test.nim
   - verify/collections/fenwick_tree_test.nim
   - verify/collections/fenwick_tree_test.nim
   - verify/AI/sheep_test.nim

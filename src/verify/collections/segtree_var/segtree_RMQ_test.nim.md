@@ -35,10 +35,10 @@ data:
     \ = initSegmentTree(A, (a, b: int)=>min(a, b), int(1e18))\nfor i in 0..<Q:\n \
     \   var L, R = ii()\n    echo st.get(L, R)\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
   - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_var.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_RMQ_test.nim
   requiredBy: []

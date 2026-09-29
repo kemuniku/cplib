@@ -73,6 +73,9 @@ data:
       path: cplib/collections/deletable_heapqueue.nim
       title: cplib/collections/deletable_heapqueue.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/double_ended_priority_queue.nim
+      title: cplib/collections/double_ended_priority_queue.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/dualsegtree.nim
       title: cplib/collections/dualsegtree.nim
     - icon: ':heavy_check_mark:'
@@ -2230,6 +2233,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/convex_hull_trick_test.nim
       title: verify/collections/convex_hull_trick_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/double_ended_priority_queue_random_test.nim
+      title: verify/collections/double_ended_priority_queue_random_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/double_ended_priority_queue_test.nim
+      title: verify/collections/double_ended_priority_queue_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
       title: verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim

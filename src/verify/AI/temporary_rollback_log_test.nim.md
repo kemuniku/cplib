@@ -97,9 +97,9 @@ data:
   - cplib/utils/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: true
   path: verify/AI/temporary_rollback_log_test.nim
   requiredBy: []

@@ -161,12 +161,12 @@ data:
     \ add, answer)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/graph/graph.nim
-  - cplib/utils/private/auto_rollback.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/tree/dsu_on_tree.nim

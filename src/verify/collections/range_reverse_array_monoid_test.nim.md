@@ -107,8 +107,8 @@ data:
     \ == a\n    doAssert seg.toSeq == values\n"
   dependsOn:
   - cplib/collections/range_reverse_array_monoid.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_array_monoid.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/range_reverse_array_monoid_test.nim

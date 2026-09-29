@@ -48,9 +48,9 @@ data:
     assert empty.toSeq == newSeq[int]()\n"
   dependsOn:
   - cplib/collections/dualsegtree_static_op.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/dualsegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/dualsegtree_static_op_test.nim
   requiredBy: []
