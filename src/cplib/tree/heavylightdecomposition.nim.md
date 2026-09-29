@@ -39,6 +39,12 @@ data:
     path: cplib/graph/namori_graph.nim
     title: cplib/graph/namori_graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/rerooting_static_top_tree_dp.nim
     title: cplib/tree/rerooting_static_top_tree_dp.nim
   - icon: ':heavy_check_mark:'
@@ -87,6 +93,12 @@ data:
     path: verify/tree/hld/hld_past202004o_test_.nim
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/functional_graph_lazy_op_test.nim
     title: verify/AI/functional_graph_lazy_op_test.nim
@@ -488,6 +500,8 @@ data:
   - cplib/graph/namori_graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
+  - cplib/tree/dsu_on_tree.nim
+  - cplib/tree/dsu_on_tree.nim
   - cplib/tree/static_top_tree.nim
   - cplib/tree/static_top_tree.nim
   - cplib/tree/static_top_tree_dp.nim
@@ -499,6 +513,8 @@ data:
   verifiedWith:
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
+  - verify/AI/dsu_on_tree_test.nim
+  - verify/AI/dsu_on_tree_test.nim
   - verify/AI/namori_graph_test.nim
   - verify/AI/namori_graph_test.nim
   - verify/AI/hld_forest_test.nim

@@ -120,19 +120,19 @@ data:
     \    )\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/rollback_mo.nim
-  - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/offline_dynamic_queries.nim
-  - cplib/utils/private/auto_rollback.nim
-  - cplib/collections/unionfind.nim
-  - cplib/utils/offline_dynamic_queries.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/collections/unionfind.nim
   - cplib/utils/rollback_mo.nim
+  - cplib/utils/offline_dynamic_queries.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/collections/unionfind.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/offline_dynamic_queries.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/AI/rollback_mo_test.nim
   requiredBy: []
-  timestamp: '2026-09-23 01:31:00+09:00'
+  timestamp: '2026-09-30 05:10:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/rollback_mo_test.nim

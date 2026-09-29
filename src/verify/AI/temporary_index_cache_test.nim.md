@@ -89,18 +89,25 @@ data:
     \            doAssert values == @[1, 2]\n        let answer = Temporary:\n   \
     \         change(values[0])\n            values[0] = 30\n            change(values[0])\n\
     \            values[0]\n        doAssert answer == 31 and values == @[1, 2]\n\n\
-    echo \"Hello World\"\n"
+    block:\n    var first = 4\n    var second = 9\n    proc increase(value: var int)\
+    \ = inc value\n    for iteration in 0..<100:\n        let result = Temporary:\n\
+    \            increase(first)\n            increase(second)\n            increase(first)\n\
+    \            let nested = Temporary:\n                increase(second)\n     \
+    \           increase(first)\n                (first, second)\n            doAssert\
+    \ nested == (7, 11)\n            doAssert first == 6 and second == 10\n      \
+    \      (first, second)\n        doAssert result == (6, 10)\n        doAssert first\
+    \ == 4 and second == 9\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/utils/auto_rollback.nim
   isVerificationFile: true
   path: verify/AI/temporary_index_cache_test.nim
   requiredBy: []
-  timestamp: '2026-09-23 01:31:00+09:00'
+  timestamp: '2026-09-30 05:10:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/temporary_index_cache_test.nim

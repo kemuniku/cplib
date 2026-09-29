@@ -77,24 +77,24 @@ data:
     \    let answer = multiplicativePrefixSum(n, @[a, b],\n        proc(p, e: int):\
     \ Mint = a * e + b * p)\n    print answer\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/modint/modint.nim
-  - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/utils/constants.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/math/multiplicative_prefix_sum.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
+  - cplib/math/isprime.nim
+  - cplib/math/multiplicative_prefix_sum.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/sum_of_multiplicative_function_test.nim
   requiredBy: []

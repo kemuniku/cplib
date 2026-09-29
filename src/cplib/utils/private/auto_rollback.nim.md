@@ -9,6 +9,12 @@ data:
     title: cplib/utils/private/temporary_rollback_log.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/auto_rollback.nim
     title: cplib/utils/auto_rollback.nim
   - icon: ':heavy_check_mark:'
@@ -45,6 +51,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/auto_rollback_values_test.nim
     title: verify/AI/auto_rollback_values_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/offline_dynamic_queries_test.nim
     title: verify/AI/offline_dynamic_queries_test.nim
@@ -137,30 +149,34 @@ data:
     ), prepareTemporary(body[1])))\n        result = body.copyNimNode\n        for\
     \ child in body: result.add(prepareTemporary(child))\n\n    type AutoRollbackCode*\
     \ = tuple[declarations, transformed: NimNode]\n\n    proc buildAutoRollback*(target,\
-    \ history: NimNode, diagnosticName: string,\n            blockMode: bool = false):\
-    \ AutoRollbackCode {.compileTime.} =\n        ## \u66F4\u65B0\u95A2\u6570\u307E\
-    \u305F\u306F\u30D6\u30ED\u30C3\u30AF\u3092\u5909\u63DB\u3057\u3001\u5FC5\u8981\
-    \u306A\u95A2\u6570\u5B9A\u7FA9\u3068\u5909\u63DB\u7D50\u679C\u3092\u8FD4\u3059\
-    \u3002\n        type Replacement = tuple[source, target: NimNode]\n        type\
-    \ FunctionVersion = tuple[source, target: NimNode, readOnly, localArgs: seq[bool]]\n\
-    \        var functions: seq[FunctionVersion]\n        var callPath: seq[tuple[symbol,\
-    \ origin: NimNode]]\n        var forwards = newStmtList()\n        var definitions\
-    \ = newStmtList()\n        var indexDeclarations = newStmtList()\n        var\
-    \ indexCaches: seq[tuple[container, name: NimNode, selector: string]]\n      \
-    \  let historyType = if blockMode: bindSym\"TemporaryRollbackLog\" else: bindSym\"\
-    AutoRollbackLog\"\n\n        proc sourcePosition(n: NimNode): string =\n     \
-    \       ## \u5143\u306E\u30BD\u30FC\u30B9\u4F4D\u7F6E\u3092\u30D5\u30A1\u30A4\u30EB\
-    \u540D\u30681\u59CB\u307E\u308A\u306E\u884C\u30FB\u5217\u3067\u8868\u3059\u3002\
-    \n            let position = n.lineInfoObj\n            position.filename & \"\
-    :\" & $position.line & \":\" & $(position.column + 1)\n\n        proc unsupported(n:\
-    \ NimNode, detail: string) =\n            ## \u539F\u56E0\u30FB\u5BFE\u8C61\u306E\
-    \u5F0F\u30FB\u5B9A\u7FA9\u4F4D\u7F6E\u30FB\u547C\u3073\u51FA\u3057\u7D4C\u8DEF\
-    \u3092\u307E\u3068\u3081\u3066\u5831\u544A\u3059\u308B\u3002\n            var\
-    \ message = diagnosticName & \": \" & detail\n            message.add(\"\\n  \u5BFE\
-    \u8C61: \" & n.repr)\n            message.add(\"\\n  \u5BFE\u8C61\u306E\u4F4D\u7F6E\
-    : \" & sourcePosition(n))\n            if callPath.len > 0:\n                message.add(\"\
-    \\n  \u5909\u63DB\u4E2D\u306E\u95A2\u6570: \" & callPath[^1].symbol.strVal)\n\
-    \                message.add(\"\\n  \u95A2\u6570\u306E\u5B9A\u7FA9: \" & sourcePosition(callPath[^1].symbol.getImpl))\n\
+    \ history: NimNode, diagnosticName: string,\n            blockMode: bool = false,\
+    \ temporaryMode: bool = false, flatMode: bool = false): AutoRollbackCode {.compileTime.}\
+    \ =\n        ## \u66F4\u65B0\u95A2\u6570\u307E\u305F\u306F\u30D6\u30ED\u30C3\u30AF\
+    \u3092\u5909\u63DB\u3057\u3001\u5FC5\u8981\u306A\u95A2\u6570\u5B9A\u7FA9\u3068\
+    \u5909\u63DB\u7D50\u679C\u3092\u8FD4\u3059\u3002\n        type Replacement = tuple[source,\
+    \ target: NimNode]\n        type FunctionVersion = tuple[source, target: NimNode,\
+    \ readOnly, localArgs: seq[bool]]\n        var functions: seq[FunctionVersion]\n\
+    \        var callPath: seq[tuple[symbol, origin: NimNode]]\n        var forwards\
+    \ = newStmtList()\n        var definitions = newStmtList()\n        var indexDeclarations\
+    \ = newStmtList()\n        var boundDeclarations = newStmtList()\n        var\
+    \ boundCaches: seq[tuple[source, name: NimNode, indexed: bool]]\n        var indexCaches:\
+    \ seq[tuple[container, name: NimNode, selector: string]]\n        let useTemporary\
+    \ = blockMode or temporaryMode or flatMode\n        let historyType = if flatMode:\
+    \ bindSym\"FlatTemporaryRollbackLog\"\n            elif useTemporary: bindSym\"\
+    TemporaryRollbackLog\"\n            else: bindSym\"AutoRollbackLog\"\n\n     \
+    \   proc sourcePosition(n: NimNode): string =\n            ## \u5143\u306E\u30BD\
+    \u30FC\u30B9\u4F4D\u7F6E\u3092\u30D5\u30A1\u30A4\u30EB\u540D\u30681\u59CB\u307E\
+    \u308A\u306E\u884C\u30FB\u5217\u3067\u8868\u3059\u3002\n            let position\
+    \ = n.lineInfoObj\n            position.filename & \":\" & $position.line & \"\
+    :\" & $(position.column + 1)\n\n        proc unsupported(n: NimNode, detail: string)\
+    \ =\n            ## \u539F\u56E0\u30FB\u5BFE\u8C61\u306E\u5F0F\u30FB\u5B9A\u7FA9\
+    \u4F4D\u7F6E\u30FB\u547C\u3073\u51FA\u3057\u7D4C\u8DEF\u3092\u307E\u3068\u3081\
+    \u3066\u5831\u544A\u3059\u308B\u3002\n            var message = diagnosticName\
+    \ & \": \" & detail\n            message.add(\"\\n  \u5BFE\u8C61: \" & n.repr)\n\
+    \            message.add(\"\\n  \u5BFE\u8C61\u306E\u4F4D\u7F6E: \" & sourcePosition(n))\n\
+    \            if callPath.len > 0:\n                message.add(\"\\n  \u5909\u63DB\
+    \u4E2D\u306E\u95A2\u6570: \" & callPath[^1].symbol.strVal)\n                message.add(\"\
+    \\n  \u95A2\u6570\u306E\u5B9A\u7FA9: \" & sourcePosition(callPath[^1].symbol.getImpl))\n\
     \                message.add(\"\\n  \u547C\u3073\u51FA\u3057\u7D4C\u8DEF:\")\n\
     \                for i, frame in callPath:\n                    if i == 0:\n \
     \                       message.add(\"\\n    \" & frame.symbol.strVal & \" (\"\
@@ -369,38 +385,59 @@ data:
     \                of nnkSym: true\n                of nnkDotExpr, nnkHiddenDeref,\
     \ nnkHiddenAddr: stableContainer(n[0])\n                else: false\n\n      \
     \      proc recordChange(location, address: NimNode): NimNode =\n            \
-    \    ## \u9759\u7684\u306B\u8B58\u5225\u3067\u304D\u308B\u914D\u5217\u8981\u7D20\
-    \u306B\u306F\u3001\u547C\u3073\u51FA\u3057\u9593\u3067\u518D\u5229\u7528\u3059\
-    \u308B\u6DFB\u5B57\u5224\u5B9A\u9818\u57DF\u3092\u7528\u610F\u3059\u308B\u3002\
-    \n                var target = location\n                while target.kind in\
-    \ {nnkHiddenAddr, nnkHiddenDeref}: target = target[0]\n                if not\
-    \ blockMode or target.kind != nnkBracketExpr or target.len != 2 or\n         \
-    \               concreteKind(target[0].getTypeInst) notin {ntyArray, ntySequence}\
-    \ or\n                        not stableContainer(target[0]):\n              \
-    \      return newCall(bindSym\"remember\", logParam, address)\n              \
-    \  var source = target[0]\n                while source.kind in {nnkHiddenAddr,\
-    \ nnkHiddenDeref}: source = source[0]\n                let selector = if source.kind\
-    \ == nnkDotExpr: \".\" & source[1].strVal\n                    elif source.kind\
-    \ == nnkSym and source.symKind != nskParam: source.repr\n                    else:\
-    \ \"\"\n                var cache: NimNode\n                for item in indexCaches:\n\
-    \                    if sameType(item.container, target[0]) and item.selector\
-    \ == selector:\n                        cache = item.name\n                  \
-    \      break\n                if cache.isNil:\n                    cache = genSym(nskProc,\
-    \ \"temporaryIndexCache\")\n                    let storage = genSym(nskVar, \"\
-    indexCacheStorage\")\n                    indexCaches.add((target[0], cache, selector))\n\
-    \                    # \u30E2\u30B8\u30E5\u30FC\u30EB\u76F4\u4E0B\u306E\u30EB\u30FC\
-    \u30D7\u5185\u3067\u3082\u518D\u521D\u671F\u5316\u3055\u308C\u306A\u3044\u3088\
-    \u3046\u3001\u4FDD\u6301\u9818\u57DF\u3092\u95A2\u6570\u5185\u306B\u7F6E\u304F\
-    \u3002\n                    indexDeclarations.add quote do:\n                \
-    \        proc `cache`(): ptr TemporaryIndexCache {.inline.} =\n              \
-    \              var `storage` {.global, threadvar.}: TemporaryIndexCache\n    \
-    \                        addr `storage`\n                let container = rewrite(target[0])\n\
-    \                let count = genSym(nskLet, \"temporaryArrayLength\")\n      \
-    \          let cacheValue = newTree(nnkDerefExpr, newCall(cache))\n          \
-    \      result = quote do:\n                    block:\n                      \
-    \  let `count` = len(`container`)\n                        if `count` > 0:\n \
-    \                           rememberIndexed(`logParam`, `address`,\n         \
-    \                       unsafeAddr `container`[low(`container`)], `count`, `cacheValue`)\n\
+    \    ## \u914D\u5217\u8981\u7D20\u306B\u306F\u6DFB\u5B57\u5224\u5B9A\u3001\u5358\
+    \u72EC\u306E\u5909\u66F4\u5148\u306B\u306F1\u8981\u7D20\u306E\u5224\u5B9A\u9818\
+    \u57DF\u3092\u7528\u610F\u3059\u308B\u3002\n                var target = location\n\
+    \                while target.kind in {nnkHiddenAddr, nnkHiddenDeref}: target\
+    \ = target[0]\n                if not useTemporary:\n                    return\
+    \ newCall(bindSym\"remember\", logParam, address)\n                let indexed\
+    \ = target.kind == nnkBracketExpr and target.len == 2 and\n                  \
+    \  concreteKind(target[0].getTypeInst) in {ntyArray, ntySequence} and\n      \
+    \              stableContainer(target[0])\n                if not indexed and\
+    \ not stableContainer(target):\n                    return newCall(bindSym\"remember\"\
+    , logParam, address)\n                let cacheTarget = if indexed: target[0]\
+    \ else: target\n                var source = cacheTarget\n                while\
+    \ source.kind in {nnkHiddenAddr, nnkHiddenDeref}: source = source[0]\n       \
+    \         let selector = if source.kind == nnkDotExpr: \".\" & source[1].strVal\n\
+    \                    elif source.kind == nnkSym and source.symKind != nskParam:\
+    \ source.repr\n                    else: \"\"\n                var cache: NimNode\n\
+    \                for item in indexCaches:\n                    if sameType(item.container,\
+    \ cacheTarget) and item.selector == selector:\n                        cache =\
+    \ item.name\n                        break\n                if cache.isNil:\n\
+    \                    cache = genSym(nskProc, \"temporaryIndexCache\")\n      \
+    \              let storage = genSym(nskVar, \"indexCacheStorage\")\n         \
+    \           indexCaches.add((cacheTarget, cache, selector))\n                \
+    \    # \u30E2\u30B8\u30E5\u30FC\u30EB\u76F4\u4E0B\u306E\u30EB\u30FC\u30D7\u5185\
+    \u3067\u3082\u518D\u521D\u671F\u5316\u3055\u308C\u306A\u3044\u3088\u3046\u3001\
+    \u4FDD\u6301\u9818\u57DF\u3092\u95A2\u6570\u5185\u306B\u7F6E\u304F\u3002\n   \
+    \                 indexDeclarations.add quote do:\n                        proc\
+    \ `cache`(): ptr TemporaryIndexCache {.inline.} =\n                          \
+    \  var `storage` {.global, threadvar.}: TemporaryIndexCache\n                \
+    \            addr `storage`\n                let cacheValue = newTree(nnkDerefExpr,\
+    \ newCall(cache))\n                if flatMode and source.kind == nnkSym and source.symKind\
+    \ in {nskVar, nskLet}:\n                    var bound: NimNode\n             \
+    \       for item in boundCaches:\n                        if item.source == source\
+    \ and item.indexed == indexed: bound = item.name\n                    if bound.isNil:\n\
+    \                        bound = genSym(nskLet, \"boundIndexCache\")\n       \
+    \                 boundCaches.add((source, bound, indexed))\n                \
+    \        if indexed:\n                            boundDeclarations.add quote\
+    \ do:\n                                let `bound` = block:\n                \
+    \                    if len(`source`) > 0:\n                                 \
+    \       bindFlatIndexCache(`history`, unsafeAddr `source`[low(`source`)],\n  \
+    \                                          len(`source`), `cacheValue`)\n    \
+    \                                else:\n                                     \
+    \   cast[ptr TemporaryIndexCache](nil)\n                        else:\n      \
+    \                      boundDeclarations.add quote do:\n                     \
+    \           let `bound` = bindFlatIndexCache(`history`, addr `source`, 1, `cacheValue`)\n\
+    \                    return newCall(bindSym\"rememberBound\", logParam, address,\
+    \ bound)\n                if not indexed:\n                    return newCall(bindSym\"\
+    rememberIndexed\", logParam, address, address,\n                        newLit(1),\
+    \ cacheValue)\n                let container = rewrite(target[0])\n          \
+    \      let count = genSym(nskLet, \"temporaryArrayLength\")\n                result\
+    \ = quote do:\n                    block:\n                        let `count`\
+    \ = len(`container`)\n                        if `count` > 0:\n              \
+    \              rememberIndexed(`logParam`, `address`,\n                      \
+    \          unsafeAddr `container`[low(`container`)], `count`, `cacheValue`)\n\
     \                        else:\n                            remember(`logParam`,\
     \ `address`)\n\n            proc mutate(n: NimNode, positions: seq[int]): NimNode\
     \ =\n                ## \u5909\u66F4\u5148\u3092\u4E00\u5EA6\u3060\u3051\u8A55\
@@ -563,12 +600,12 @@ data:
     \ @[], @[], false)\n        else:\n            let signature = target.getTypeInst[0]\n\
     \            result.transformed = convertFunction(target, newSeq[bool](signature.len\
     \ - 1), target)\n        result.declarations = newStmtList(indexDeclarations,\
-    \ forwards, definitions)\n\n    macro runAutoRollbackImpl*(solver, apply, answer:\
-    \ typed, runner: untyped): untyped =\n        ## \u5171\u901A\u306E\u81EA\u52D5\
-    \u5909\u63DB\u3092\u7528\u3044\u3001\u5404apply\u30921\u56DE\u305A\u3064\u53D6\
-    \u308A\u6D88\u305B\u308B\u5B9F\u884C\u51E6\u7406\u3092\u751F\u6210\u3059\u308B\
-    \u3002\n        let history = genSym(nskVar, \"history\")\n        let checkpoints\
-    \ = genSym(nskVar, \"checkpoints\")\n        let code = buildAutoRollback(apply,\
+    \ boundDeclarations, forwards, definitions)\n\n    macro runAutoRollbackImpl*(solver,\
+    \ apply, answer: typed, runner: untyped): untyped =\n        ## \u5171\u901A\u306E\
+    \u81EA\u52D5\u5909\u63DB\u3092\u7528\u3044\u3001\u5404apply\u30921\u56DE\u305A\
+    \u3064\u53D6\u308A\u6D88\u305B\u308B\u5B9F\u884C\u51E6\u7406\u3092\u751F\u6210\
+    \u3059\u308B\u3002\n        let history = genSym(nskVar, \"history\")\n      \
+    \  let checkpoints = genSym(nskVar, \"checkpoints\")\n        let code = buildAutoRollback(apply,\
     \ history, \"runAutoRollback\")\n        let declarations = code.declarations\n\
     \        let signature = apply.getTypeInst[0]\n        let transformed = code.transformed\n\
     \        var wrapper = newProc(genSym(nskProc, \"applyWithRollback\"), [newEmptyNode()])\n\
@@ -583,11 +620,32 @@ data:
     \                `wrapper`\n                proc `undo`() =\n                \
     \    restore(`history`, `checkpoints`.pop())\n                try:\n         \
     \           `execute`\n                finally:\n                    restore(`history`,\
-    \ 0)\n\n    macro withAutoRollbackImpl*(update: typed, body: untyped): untyped\
-    \ =\n        ## \u66F4\u65B0\u95A2\u6570\u3092\u540C\u540D\u3067\u5229\u7528\u3067\
-    \u304D\u308B\u30B9\u30B3\u30FC\u30D7\u3068snapshot\u30FBrollback\u3092\u751F\u6210\
-    \u3059\u308B\u3002\n        let original = originalUpdate(update)\n        let\
-    \ history = genSym(nskVar, \"history\")\n        let code = buildAutoRollback(original,\
+    \ 0)\n\n    macro runAutoClearImpl*(solver, apply, answer: typed, runner: untyped):\
+    \ untyped =\n        ## apply\u306E\u5909\u66F4\u3092\u914D\u5217\u3054\u3068\u306B\
+    \u8A18\u9332\u3057\u3001runner\u306B\u4E00\u62EC\u5FA9\u5143\u7528\u306Eclear\u3092\
+    \u6E21\u3059\u3002\n        let history = genSym(nskVar, \"history\")\n      \
+    \  let code = buildAutoRollback(apply, history, \"dsuOnTree\", flatMode = true)\n\
+    \        let declarations = code.declarations\n        let signature = apply.getTypeInst[0]\n\
+    \        var wrapper = newProc(genSym(nskProc, \"applyWithTemporary\"), [newEmptyNode()])\n\
+    \        var call = newCall(code.transformed, history)\n        for i in 1..<signature.len:\n\
+    \            let argument = genSym(nskParam, \"argument\" & $i)\n            wrapper[3].add(newIdentDefs(argument,\
+    \ signature[i][^2]))\n            call.add(argument)\n        wrapper[6] = newStmtList(call)\n\
+    \        let callback = wrapper[0]\n        let clear = genSym(nskProc, \"clearTemporary\"\
+    )\n        let solverValue = genSym(nskLet, \"solver\")\n        let answerValue\
+    \ = genSym(nskLet, \"answer\")\n        let execute = newCall(runner, solverValue,\
+    \ callback, answerValue, clear)\n        result = quote do:\n            block:\n\
+    \                var `history`: FlatTemporaryRollbackLog\n                let\
+    \ `solverValue` = `solver`\n                let `answerValue` = `answer`\n   \
+    \             try:\n                    `declarations`\n                    `wrapper`\n\
+    \                    proc `clear`() =\n                        ## \u96C6\u8A08\
+    \u958B\u59CB\u6642\u306E\u5024\u3078\u623B\u3057\u3001\u8A18\u9332\u9818\u57DF\
+    \u3092\u518D\u5229\u7528\u3059\u308B\u3002\n                        clearFlat(`history`)\n\
+    \                    `execute`\n                finally:\n                   \
+    \ restore(`history`, 0)\n\n    macro withAutoRollbackImpl*(update: typed, body:\
+    \ untyped): untyped =\n        ## \u66F4\u65B0\u95A2\u6570\u3092\u540C\u540D\u3067\
+    \u5229\u7528\u3067\u304D\u308B\u30B9\u30B3\u30FC\u30D7\u3068snapshot\u30FBrollback\u3092\
+    \u751F\u6210\u3059\u308B\u3002\n        let original = originalUpdate(update)\n\
+    \        let history = genSym(nskVar, \"history\")\n        let code = buildAutoRollback(original,\
     \ history, \"withAutoRollback\")\n        let declarations = code.declarations\n\
     \        let signature = original.getTypeInst[0]\n        let name = ident(original.strVal)\n\
     \        var wrapper = newProc(name, [signature[0].copyNimTree])\n        var\
@@ -638,9 +696,13 @@ data:
   - cplib/utils/rollback_mo.nim
   - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/offline_dynamic_queries.nim
-  timestamp: '2026-09-23 01:31:00+09:00'
+  - cplib/tree/dsu_on_tree.nim
+  - cplib/tree/dsu_on_tree.nim
+  timestamp: '2026-09-30 05:10:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/dsu_on_tree_test.nim
+  - verify/AI/dsu_on_tree_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/temporary_rollback_log_test.nim

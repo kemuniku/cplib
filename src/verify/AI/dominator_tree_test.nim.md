@@ -80,8 +80,8 @@ data:
   dependsOn:
   - cplib/graph/dominator_tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/dominator_tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/dominator_tree_test.nim
   requiredBy: []

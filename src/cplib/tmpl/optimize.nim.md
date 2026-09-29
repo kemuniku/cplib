@@ -34,13 +34,17 @@ data:
     \ ## \u6700\u9069\u5316\u8A2D\u5B9A\u3067\u518D\u30B3\u30F3\u30D1\u30A4\u30EB\u3057\
     \u3001\u5931\u6557\u6642\u306F\u547C\u3073\u51FA\u3057\u5143\u306E\u30B3\u30F3\
     \u30D1\u30A4\u30EB\u3082\u5931\u6557\u3055\u305B\u308B\u3002\n        let isSecond\
-    \ = defined(second_compile)\n        let isDebug = defined(debug)\n\n        if\
-    \ (not isSecond) and (not isDebug):\n            if \"-d:second_compile\" notin\
-    \ arg:\n                error(\"plz add -d:second_compile\")\n            let\
-    \ sourcePath = querySetting(SingleValueSetting.projectFull)\n            let outFile\
-    \ = querySetting(SingleValueSetting.outFile)\n            let outDir = querySetting(SingleValueSetting.outDir)\n\
-    \            let outPath = outDir / outFile\n            let projectDir = sourcePath.parentDir\n\
-    \            let libraryDir = currentSourcePath().parentDir.parentDir.parentDir\n\
+    \ = defined(second_compile)\n        let isDebug = defined(debug)\n\n        #\
+    \ IDE\u89E3\u6790\u3068\u30A8\u30E9\u30FC\u30C1\u30A7\u30C3\u30AF\u3067\u306F\u518D\
+    \u30B3\u30F3\u30D1\u30A4\u30EB\u3084\u7D42\u4E86\u51E6\u7406\u3092\u884C\u308F\
+    \u306A\u3044\u3002\n        let isAnalysis = defined(nimsuggest) or defined(nimcheck)\n\
+    \n        if (not isSecond) and (not isDebug) and (not isAnalysis):\n        \
+    \    if \"-d:second_compile\" notin arg:\n                error(\"plz add -d:second_compile\"\
+    )\n            let sourcePath = querySetting(SingleValueSetting.projectFull)\n\
+    \            let outFile = querySetting(SingleValueSetting.outFile)\n        \
+    \    let outDir = querySetting(SingleValueSetting.outDir)\n            let outPath\
+    \ = outDir / outFile\n            let projectDir = sourcePath.parentDir\n    \
+    \        let libraryDir = currentSourcePath().parentDir.parentDir.parentDir\n\
     \            let searchPaths = querySettingSeq(MultipleValueSetting.searchPaths)\n\
     \            var cmd = \"cd \" & quoteShell(projectDir) & \" && \" & arg & \"\
     \ \"\n            # --path \u306F\u5148\u982D\u306B\u8FFD\u52A0\u3055\u308C\u308B\
@@ -68,7 +72,7 @@ data:
   isVerificationFile: false
   path: cplib/tmpl/optimize.nim
   requiredBy: []
-  timestamp: '2026-09-17 01:48:32+09:00'
+  timestamp: '2026-09-30 05:26:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/optimize_cpp_test.nim

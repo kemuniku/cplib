@@ -799,6 +799,9 @@ data:
       path: cplib/tree/diameter.nim
       title: cplib/tree/diameter.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/tree/dsu_on_tree.nim
+      title: cplib/tree/dsu_on_tree.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/tree/heavylightdecomposition.nim
       title: cplib/tree/heavylightdecomposition.nim
     - icon: ':heavy_check_mark:'
@@ -913,6 +916,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/offline_dynamic_queries.nim
       title: cplib/utils/offline_dynamic_queries.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/parallel_binary_search.nim
+      title: cplib/utils/parallel_binary_search.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/project_selection.nim
       title: cplib/utils/project_selection.nim
@@ -1593,6 +1599,9 @@ data:
       path: verify/AI/double_ended_palindromic_tree_test.nim
       title: verify/AI/double_ended_palindromic_tree_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/dsu_on_tree_test.nim
+      title: verify/AI/dsu_on_tree_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/dualsegtree_static_op_test.nim
       title: verify/AI/dualsegtree_static_op_test.nim
     - icon: ':heavy_check_mark:'
@@ -1652,6 +1661,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/fixedlength_merged_static_string_test.nim
       title: verify/AI/fixedlength_merged_static_string_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/flat_temporary_rollback_log_test.nim
+      title: verify/AI/flat_temporary_rollback_log_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/float128_test.nim
       title: verify/AI/float128_test.nim
@@ -1907,6 +1919,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/palindromic_tree_test.nim
       title: verify/AI/palindromic_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/parallel_binary_search_test.nim
+      title: verify/AI/parallel_binary_search_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/parallel_unionfind_test.nim
       title: verify/AI/parallel_unionfind_test.nim

@@ -76,6 +76,12 @@ data:
     path: verify/AI/merge_tree_test.nim
     title: verify/AI/merge_tree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/parallel_binary_search_test.nim
+    title: verify/AI/parallel_binary_search_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/parallel_binary_search_test.nim
+    title: verify/AI/parallel_binary_search_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/rollback_mo_test.nim
     title: verify/AI/rollback_mo_test.nim
   - icon: ':heavy_check_mark:'
@@ -166,6 +172,8 @@ data:
   - verify/AI/auto_rollback_test.nim
   - verify/AI/euclidean_mst_test.nim
   - verify/AI/euclidean_mst_test.nim
+  - verify/AI/parallel_binary_search_test.nim
+  - verify/AI/parallel_binary_search_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/kruskal_test.nim
   - verify/AI/merge_tree_test.nim

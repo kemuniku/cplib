@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/auto_rollback.nim
     title: cplib/utils/auto_rollback.nim
   - icon: ':heavy_check_mark:'
@@ -46,6 +52,18 @@ data:
     path: verify/AI/auto_rollback_values_test.nim
     title: verify/AI/auto_rollback_values_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/flat_temporary_rollback_log_test.nim
+    title: verify/AI/flat_temporary_rollback_log_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/flat_temporary_rollback_log_test.nim
+    title: verify/AI/flat_temporary_rollback_log_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/offline_dynamic_queries_test.nim
     title: verify/AI/offline_dynamic_queries_test.nim
   - icon: ':heavy_check_mark:'
@@ -85,44 +103,50 @@ data:
     \n    type\n        TemporaryLocation = tuple[address: pointer, size: int]\n \
     \       TemporaryIndexCache* = object\n            stamps: seq[int]\n        \
     \    owner: pointer\n            base: pointer\n            size, length: int\n\
-    \        TemporaryEntry = object\n            location: TemporaryLocation\n  \
-    \          previous: int\n            offset: int\n            stamp: ptr int\n\
-    \        TemporaryRollbackLog* = object\n            entries: seq[TemporaryEntry]\n\
-    \            latest: Table[TemporaryLocation, int]\n            scopeStart: int\n\
-    \            saved: seq[byte]\n            used: int\n            caches: seq[ptr\
-    \ TemporaryIndexCache]\n        TemporaryCheckpoint* = tuple[position, parentStart:\
-    \ int]\n\n    proc len*(history: TemporaryRollbackLog): int =\n        ## \u73FE\
-    \u5728\u4FDD\u5B58\u3057\u3066\u3044\u308B\u5FA9\u5143\u51E6\u7406\u306E\u6570\
-    \u3092\u8FD4\u3059\u3002O(1)\u3002\n        history.entries.len\n\n    proc indexCapacity*(cache:\
-    \ TemporaryIndexCache): int =\n        ## \u518D\u5229\u7528\u3059\u308B\u6DFB\
-    \u5B57\u5224\u5B9A\u9818\u57DF\u306E\u9577\u3055\u3092\u8FD4\u3059\u3002O(1)\u3002\
-    \n        cache.stamps.len\n\n    proc saveValue[T](history: var TemporaryRollbackLog,\
-    \ location: ptr T,\n            previous: int, stamp: ptr int = nil) =\n     \
-    \   ## \u521D\u56DE\u306E\u5024\u3092\u9023\u7D9A\u30D0\u30C3\u30D5\u30A1\u3078\
-    \u4FDD\u5B58\u3059\u308B\u3002\u6642\u9593\u30FB\u9818\u57DF\u306F\u5024\u306E\
-    \u30B5\u30A4\u30BA\u306B\u6BD4\u4F8B\u3059\u308B\u3002\n        when not supportsCopyMem(T):\n\
-    \            {.error: \"Temporary\u306E\u5C65\u6B74\u306B\u306F\u53C2\u7167\u7BA1\
-    \u7406\u3084\u72EC\u81EA\u306E\u30B3\u30D4\u30FC\u30FB\u7834\u68C4\u51E6\u7406\
-    \u3092\u5FC5\u8981\u3068\u3057\u306A\u3044\u578B\u3060\u3051\u4FDD\u5B58\u3067\
-    \u304D\u307E\u3059\".}\n        let key: TemporaryLocation = (cast[pointer](location),\
-    \ sizeof(T))\n        let offset = history.used\n        let required = offset\
-    \ + sizeof(T)\n        when sizeof(T) > 0:\n            if required > history.saved.len:\n\
+    \            initial, flatId: int\n            saved: seq[byte]\n        TemporaryEntry\
+    \ = object\n            location: TemporaryLocation\n            previous: int\n\
+    \            offset: int # \u5C0F\u3055\u3044\u5024\u306F\u305D\u306E\u5024\u3001\
+    \u5927\u304D\u3044\u5024\u306Fsaved\u5185\u306E\u4F4D\u7F6E\u3002\n          \
+    \  stamp: ptr int\n        TemporaryRollbackLog* = object\n            entries:\
+    \ seq[TemporaryEntry]\n            latest: Table[TemporaryLocation, int]\n   \
+    \         scopeStart: int\n            saved: seq[byte]\n            used: int\n\
+    \            caches: seq[ptr TemporaryIndexCache]\n        TemporaryCheckpoint*\
+    \ = tuple[position, parentStart: int]\n\n    proc len*(history: TemporaryRollbackLog):\
+    \ int =\n        ## \u73FE\u5728\u4FDD\u5B58\u3057\u3066\u3044\u308B\u5FA9\u5143\
+    \u51E6\u7406\u306E\u6570\u3092\u8FD4\u3059\u3002O(1)\u3002\n        history.entries.len\n\
+    \n    proc indexCapacity*(cache: TemporaryIndexCache): int =\n        ## \u518D\
+    \u5229\u7528\u3059\u308B\u6DFB\u5B57\u5224\u5B9A\u9818\u57DF\u306E\u9577\u3055\
+    \u3092\u8FD4\u3059\u3002O(1)\u3002\n        cache.stamps.len\n\n    proc saveValue[T](history:\
+    \ var TemporaryRollbackLog, location: ptr T,\n            previous: int, stamp:\
+    \ ptr int = nil) =\n        ## \u521D\u56DE\u306E\u5024\u3092\u4FDD\u5B58\u3059\
+    \u308B\u3002int\u4EE5\u4E0B\u306F\u5C65\u6B74\u8981\u7D20\u5185\u3001\u305D\u308C\
+    \u4EE5\u5916\u306F\u9023\u7D9A\u30D0\u30C3\u30D5\u30A1\u3078\u4FDD\u5B58\u3059\
+    \u308B\u3002O(sizeof(T))\u3002\n        when not supportsCopyMem(T):\n       \
+    \     {.error: \"Temporary\u306E\u5C65\u6B74\u306B\u306F\u53C2\u7167\u7BA1\u7406\
+    \u3084\u72EC\u81EA\u306E\u30B3\u30D4\u30FC\u30FB\u7834\u68C4\u51E6\u7406\u3092\
+    \u5FC5\u8981\u3068\u3057\u306A\u3044\u578B\u3060\u3051\u4FDD\u5B58\u3067\u304D\
+    \u307E\u3059\".}\n        let key: TemporaryLocation = (cast[pointer](location),\
+    \ sizeof(T))\n        var offset = 0\n        when sizeof(T) <= sizeof(int):\n\
+    \            # \u5C0F\u3055\u3044\u5024\u306F\u5C65\u6B74\u8981\u7D20\u306B\u76F4\
+    \u63A5\u4FDD\u5B58\u3057\u3001\u5225\u30D0\u30C3\u30D5\u30A1\u306E\u64CD\u4F5C\
+    \u3092\u7701\u304F\u3002\n            when sizeof(T) > 0:\n                copyMem(addr\
+    \ offset, location, sizeof(T))\n        else:\n            offset = history.used\n\
+    \            let required = offset + sizeof(T)\n            if required > history.saved.len:\n\
     \                let capacity = max(required, max(64, history.saved.len * 2))\n\
     \                when declared(newSeqUninit):\n                    var grown =\
     \ newSeqUninit[byte](capacity)\n                else:\n                    var\
     \ grown = newSeqUninitialized[byte](capacity)\n                if offset > 0:\n\
     \                    copyMem(addr grown[0], addr history.saved[0], offset)\n \
     \               history.saved = move(grown)\n            copyMem(addr history.saved[offset],\
-    \ location, sizeof(T))\n        history.entries.add(TemporaryEntry(location: key,\
-    \ previous: previous, offset: offset, stamp: stamp))\n        history.used = required\n\
-    \n    proc remember*[T](history: var TemporaryRollbackLog, location: ptr T) =\n\
-    \        ## \u540C\u3058\u30B9\u30B3\u30FC\u30D7\u3067\u306F\u540C\u3058\u30A2\
-    \u30C9\u30EC\u30B9\u30FB\u30B5\u30A4\u30BA\u306E\u6700\u521D\u306E\u5024\u3060\
-    \u3051\u3092\u4FDD\u5B58\u3059\u308B\u3002\u91CD\u8907\u5224\u5B9A\u306F\u671F\
-    \u5F85O(1)\u3002\n        let key: TemporaryLocation = (cast[pointer](location),\
-    \ sizeof(T))\n        let latest = addr history.latest.mgetOrPut(key, -1)\n  \
-    \      let previous = latest[]\n        if previous >= history.scopeStart: return\n\
-    \        let index = history.entries.len\n        history.saveValue(location,\
+    \ location, sizeof(T))\n            history.used = required\n        history.entries.add(TemporaryEntry(location:\
+    \ key, previous: previous, offset: offset, stamp: stamp))\n\n    proc remember*[T](history:\
+    \ var TemporaryRollbackLog, location: ptr T) =\n        ## \u540C\u3058\u30B9\u30B3\
+    \u30FC\u30D7\u3067\u306F\u540C\u3058\u30A2\u30C9\u30EC\u30B9\u30FB\u30B5\u30A4\
+    \u30BA\u306E\u6700\u521D\u306E\u5024\u3060\u3051\u3092\u4FDD\u5B58\u3059\u308B\
+    \u3002\u91CD\u8907\u5224\u5B9A\u306F\u671F\u5F85O(1)\u3002\n        let key: TemporaryLocation\
+    \ = (cast[pointer](location), sizeof(T))\n        let latest = addr history.latest.mgetOrPut(key,\
+    \ -1)\n        let previous = latest[]\n        if previous >= history.scopeStart:\
+    \ return\n        let index = history.entries.len\n        history.saveValue(location,\
     \ previous)\n        latest[] = index\n\n    proc rememberIndexed*[T](history:\
     \ var TemporaryRollbackLog, location, base: ptr T,\n            length: int, cache:\
     \ var TemporaryIndexCache) =\n        ## \u914D\u5217\u8981\u7D20\u3092\u6DFB\u5B57\
@@ -153,25 +177,129 @@ data:
     \u3058\u5C65\u6B74\u3067\u6B21\u306B\u4FDD\u5B58\u3059\u308B\u969B\u306B\u518D\
     \u5229\u7528\u3059\u308B\u3002\n        while history.entries.len > position:\n\
     \            let entry = history.entries.pop()\n            if entry.location.size\
-    \ > 0:\n                copyMem(entry.location.address, addr history.saved[entry.offset],\
-    \ entry.location.size)\n            history.used = entry.offset\n            if\
-    \ entry.stamp != nil:\n                # \u8A2A\u554F\u3057\u305F\u6DFB\u5B57\u3060\
-    \u3051\u3092\u623B\u3059\u305F\u3081\u3001\u7E70\u308A\u8FD4\u3057\u5B9F\u884C\
-    \u6642\u306E\u5168\u521D\u671F\u5316\u306F\u4E0D\u8981\u3002\n               \
-    \ entry.stamp[] = entry.previous + 1\n            elif entry.previous < 0:\n \
-    \               history.latest.del(entry.location)\n            else:\n      \
-    \          history.latest[entry.location] = entry.previous\n        if history.entries.len\
-    \ == 0:\n            for cache in history.caches: cache.owner = nil\n        \
-    \    history.caches.setLen(0)\n\n    proc beginTemporary*(history: var TemporaryRollbackLog):\
-    \ TemporaryCheckpoint =\n        ## \u5165\u308C\u5B50\u306E\u958B\u59CB\u4F4D\
-    \u7F6E\u3092\u4FDD\u5B58\u3057\u3001\u65B0\u3057\u3044\u30B9\u30B3\u30FC\u30D7\
-    \u3067\u91CD\u8907\u3092\u5224\u5B9A\u3059\u308B\u3002O(1)\u3002\n        result\
-    \ = (history.entries.len, history.scopeStart)\n        history.scopeStart = history.entries.len\n\
-    \n    proc endTemporary*(history: var TemporaryRollbackLog, checkpoint: TemporaryCheckpoint)\
+    \ > sizeof(int):\n                copyMem(entry.location.address, addr history.saved[entry.offset],\
+    \ entry.location.size)\n                history.used = entry.offset\n        \
+    \    elif entry.location.size > 0:\n                copyMem(entry.location.address,\
+    \ unsafeAddr entry.offset, entry.location.size)\n            if entry.stamp !=\
+    \ nil:\n                # \u8A2A\u554F\u3057\u305F\u6DFB\u5B57\u3060\u3051\u3092\
+    \u623B\u3059\u305F\u3081\u3001\u7E70\u308A\u8FD4\u3057\u5B9F\u884C\u6642\u306E\
+    \u5168\u521D\u671F\u5316\u306F\u4E0D\u8981\u3002\n                entry.stamp[]\
+    \ = entry.previous + 1\n            elif entry.previous < 0:\n               \
+    \ history.latest.del(entry.location)\n            else:\n                history.latest[entry.location]\
+    \ = entry.previous\n        if history.entries.len == 0:\n            for cache\
+    \ in history.caches: cache.owner = nil\n            history.caches.setLen(0)\n\
+    \n    proc beginTemporary*(history: var TemporaryRollbackLog): TemporaryCheckpoint\
+    \ =\n        ## \u5165\u308C\u5B50\u306E\u958B\u59CB\u4F4D\u7F6E\u3092\u4FDD\u5B58\
+    \u3057\u3001\u65B0\u3057\u3044\u30B9\u30B3\u30FC\u30D7\u3067\u91CD\u8907\u3092\
+    \u5224\u5B9A\u3059\u308B\u3002O(1)\u3002\n        result = (history.entries.len,\
+    \ history.scopeStart)\n        history.scopeStart = history.entries.len\n\n  \
+    \  proc endTemporary*(history: var TemporaryRollbackLog, checkpoint: TemporaryCheckpoint)\
     \ =\n        ## \u5165\u308C\u5B50\u306E\u5909\u66F4\u3092\u5FA9\u5143\u3057\u3001\
     \u89AA\u30B9\u30B3\u30FC\u30D7\u306E\u91CD\u8907\u5224\u5B9A\u306B\u623B\u3059\
     \u3002\n        history.restore(checkpoint.position)\n        history.scopeStart\
-    \ = checkpoint.parentStart\n"
+    \ = checkpoint.parentStart\n\n    type\n        FlatTemporaryRollbackLog* = object\n\
+    \            entries: seq[uint64]\n            raw: TemporaryRollbackLog\n\n \
+    \   proc len*(history: FlatTemporaryRollbackLog): int =\n        ## \u4E00\u62EC\
+    \u5FA9\u5143\u307E\u3067\u306B\u4FDD\u5B58\u3057\u305F\u5C65\u6B74\u6570\u3092\
+    \u8FD4\u3059\u3002O(1)\u3002\n        history.entries.len\n\n    proc remember*[T](history:\
+    \ var FlatTemporaryRollbackLog, location: ptr T) =\n        ## \u9818\u57DF\u3092\
+    \u7279\u5B9A\u3067\u304D\u306A\u3044\u66F4\u65B0\u306F\u91CD\u8907\u5224\u5B9A\
+    \u305B\u305A\u4FDD\u5B58\u3059\u308B\u3002\u6642\u9593\u30FB\u9818\u57DF\u306F\
+    \u5024\u306E\u30B5\u30A4\u30BA\u306B\u6BD4\u4F8B\u3059\u308B\u3002\n        history.raw.saveValue(location,\
+    \ 0)\n        history.entries.add(0)\n\n    proc bindFlatIndexCache*[T](history:\
+    \ var FlatTemporaryRollbackLog, base: ptr T,\n            length: int, cache:\
+    \ var TemporaryIndexCache): ptr TemporaryIndexCache =\n        ## \u914D\u5217\
+    \u3068\u4FDD\u5B58\u9818\u57DF\u3092\u5BFE\u5FDC\u4ED8\u3051\u308B\u3002\u65E2\
+    \u306B\u5225\u9818\u57DF\u30FB\u5B9F\u884C\u304C\u4F7F\u7528\u4E2D\u306A\u3089\
+    nil\u3092\u8FD4\u3059\u3002\u62E1\u5F35\u306F\u511F\u5374O(\u5897\u52A0\u5206\
+    )\u3002\n        when sizeof(T) == 0:\n            return nil\n        else:\n\
+    \            if length <= 0 or uint64(length) > 0x100000000'u64 or\n         \
+    \           history.raw.caches.len >= high(int32).int:\n                return\
+    \ nil\n            let owner = cast[pointer](addr history)\n            if cache.owner\
+    \ == nil:\n                let words = (length - 1) div (sizeof(int) * 8) + 1\n\
+    \                if words > cache.stamps.len: cache.stamps.setLen(words)\n   \
+    \             cache.owner = owner\n                cache.base = cast[pointer](base)\n\
+    \                cache.size = sizeof(T)\n                cache.length = length\n\
+    \                cache.initial = 0\n                when sizeof(T) <= sizeof(int):\n\
+    \                    copyMem(addr cache.initial, base, sizeof(T))\n          \
+    \      cache.flatId = history.raw.caches.len\n                history.raw.caches.add(addr\
+    \ cache)\n            if cache.owner == owner and cache.base == cast[pointer](base)\
+    \ and\n                    cache.size == sizeof(T) and cache.length == length:\n\
+    \                return addr cache\n            return nil\n\n    proc recordFlatIndex[T](history:\
+    \ var FlatTemporaryRollbackLog, location: ptr T,\n            index: int, cache:\
+    \ var TemporaryIndexCache) {.inline.} =\n        ## \u5BFE\u5FDC\u4ED8\u3051\u6E08\
+    \u307F\u306E\u914D\u5217\u306E\u521D\u56DE\u5909\u66F4\u3092\u4FDD\u5B58\u3059\
+    \u308B\u3002\u5224\u5B9AO(1)\u3001\u4FDD\u5B58O(sizeof(T))\u3002\n        let\
+    \ word = index div (sizeof(int) * 8)\n        let mask = 1 shl (index mod (sizeof(int)\
+    \ * 8))\n        if (cache.stamps[word] and mask) != 0: return\n        var savedSeparately\
+    \ = true\n        when sizeof(T) <= sizeof(int):\n            var previous = 0\n\
+    \            copyMem(addr previous, location, sizeof(T))\n            if previous\
+    \ == cache.initial: savedSeparately = false\n        if savedSeparately:\n   \
+    \         let required = cache.length * sizeof(T)\n            if cache.saved.len\
+    \ < required:\n                # \u5404\u6DFB\u5B57\u306F\u521D\u56DE\u306E\u4FDD\
+    \u5B58\u5F8C\u306B\u3060\u3051\u8AAD\u3080\u305F\u3081\u3001\u62E1\u5F35\u5206\
+    \u306E\u521D\u671F\u5316\u306F\u4E0D\u8981\u3002\n                let capacity\
+    \ = max(required, max(64, cache.saved.len * 2))\n                when declared(newSeqUninit):\n\
+    \                    cache.saved = newSeqUninit[byte](capacity)\n            \
+    \    else:\n                    cache.saved = newSeqUninitialized[byte](capacity)\n\
+    \            copyMem(addr cache.saved[index * sizeof(T)], location, sizeof(T))\n\
+    \        # \u914D\u5217\u756A\u53F7\u30FB\u6DFB\u5B57\u30FB\u4FDD\u5B58\u5148\u306E\
+    \u7A2E\u5225\u30928\u30D0\u30A4\u30C8\u306B\u307E\u3068\u3081\u308B\u3002\n  \
+    \      let encoded = (uint64(cache.flatId + 1) shl 32) or uint64(index) or\n \
+    \           (if savedSeparately: 1'u64 shl 63 else: 0'u64)\n        history.entries.add(encoded)\n\
+    \        cache.stamps[word] = cache.stamps[word] or mask\n\n    proc rememberBound*[T](history:\
+    \ var FlatTemporaryRollbackLog, location: ptr T,\n            cache: ptr TemporaryIndexCache)\
+    \ {.inline.} =\n        ## \u5B9F\u884C\u524D\u306B\u5BFE\u5FDC\u4ED8\u3051\u305F\
+    \u914D\u5217\u306E\u5909\u66F4\u3092\u4FDD\u5B58\u3059\u308B\u3002\u5909\u66F4\
+    \u5148\u306F\u305D\u306E\u914D\u5217\u5185\u3067\u3042\u308B\u3053\u3068\u3002\
+    \n        when sizeof(T) == 0:\n            history.remember(location)\n     \
+    \   else:\n            if cache == nil:\n                history.remember(location)\n\
+    \                return\n            let offset = cast[uint](location) - cast[uint](cache.base)\n\
+    \            let index = offset div uint(sizeof(T))\n            assert index\
+    \ < uint(cache.length) and offset mod uint(sizeof(T)) == 0\n            history.recordFlatIndex(location,\
+    \ int(index), cache[])\n\n    proc rememberIndexed*[T](history: var FlatTemporaryRollbackLog,\
+    \ location, base: ptr T,\n            length: int, cache: var TemporaryIndexCache)\
+    \ {.inline.} =\n        ## \u5B9F\u884C\u6642\u306B\u914D\u5217\u3092\u78BA\u8A8D\
+    \u3057\u3066\u5909\u66F4\u3092\u4FDD\u5B58\u3059\u308B\u3002\u5224\u5B9AO(1)\u3001\
+    \u4FDD\u5B58O(sizeof(T))\u3001\u62E1\u5F35\u306F\u511F\u5374O(\u5897\u52A0\u5206\
+    )\u3002\n        when sizeof(T) == 0:\n            history.remember(location)\n\
+    \        else:\n            let bound = history.bindFlatIndexCache(base, length,\
+    \ cache)\n            let offset = cast[uint](location) - cast[uint](base)\n \
+    \           let index = offset div uint(sizeof(T))\n            if bound == nil\
+    \ or index >= uint(length) or offset mod uint(sizeof(T)) != 0:\n             \
+    \   history.remember(location)\n            else:\n                history.recordFlatIndex(location,\
+    \ int(index), bound[])\n\n    proc clearFlat*(history: var FlatTemporaryRollbackLog)\
+    \ =\n        ## \u914D\u5217\u5225\u306E\u4FDD\u5B58\u5024\u3068\u901A\u5E38\u306E\
+    \u4FDD\u5B58\u5024\u3092\u9006\u9806\u306B\u4E00\u62EC\u5FA9\u5143\u3059\u308B\
+    \u3002\u8A2A\u554F\u3057\u305F\u6DFB\u5B57\u3060\u3051\u5224\u5B9A\u3092\u623B\
+    \u3059\u3002\n        ## \u6642\u9593\u306F\u4FDD\u5B58\u3057\u305F\u5024\u306E\
+    \u30B5\u30A4\u30BA\u306E\u5408\u8A08\u306B\u6BD4\u4F8B\u3057\u3001\u5FA9\u5143\
+    \u5F8C\u3082\u914D\u5217\u3054\u3068\u306E\u78BA\u4FDD\u9818\u57DF\u3092\u518D\
+    \u5229\u7528\u3059\u308B\u3002\n        while history.entries.len > 0:\n     \
+    \       let entry = history.entries.pop()\n            if entry == 0:\n      \
+    \          let raw = history.raw.entries.pop()\n                if raw.location.size\
+    \ > sizeof(int):\n                    copyMem(raw.location.address, addr history.raw.saved[raw.offset],\
+    \ raw.location.size)\n                    history.raw.used = raw.offset\n    \
+    \            elif raw.location.size > 0:\n                    copyMem(raw.location.address,\
+    \ unsafeAddr raw.offset, raw.location.size)\n            else:\n             \
+    \   let cacheId = int((entry shr 32) and 0x7FFFFFFF'u64) - 1\n               \
+    \ let cache = history.raw.caches[cacheId]\n                let index = int(entry\
+    \ and 0xFFFFFFFF'u64)\n                let location = cast[pointer](cast[uint](cache.base)\
+    \ + uint(index * cache.size))\n                let source = if (entry shr 63)\
+    \ == 0: cast[pointer](addr cache.initial)\n                    else: cast[pointer](addr\
+    \ cache.saved[index * cache.size])\n                case cache.size\n        \
+    \        of 1: copyMem(location, source, 1)\n                of 2: copyMem(location,\
+    \ source, 2)\n                of 4: copyMem(location, source, 4)\n           \
+    \     of 8: copyMem(location, source, 8)\n                else: copyMem(location,\
+    \ source, cache.size)\n                let word = index div (sizeof(int) * 8)\n\
+    \                let mask = 1 shl (index mod (sizeof(int) * 8))\n            \
+    \    cache.stamps[word] = cache.stamps[word] and not mask\n\n    proc restore*(history:\
+    \ var FlatTemporaryRollbackLog, position: int) =\n        ## \u4E00\u62EC\u5FA9\
+    \u5143\u3057\u3066\u914D\u5217\u306E\u5224\u5B9A\u9818\u57DF\u3092\u89E3\u653E\
+    \u3059\u308B\u3002\u6642\u9593\u306F\u5C65\u6B74\u91CF\u3068\u5229\u7528\u914D\
+    \u5217\u6570\u306B\u6BD4\u4F8B\u3059\u308B\u3002\n        assert position == 0,\
+    \ \"\u4E00\u62EC\u5FA9\u5143\u5C02\u7528\u3067\u3059\"\n        history.clearFlat()\n\
+    \        for cache in history.raw.caches: cache.owner = nil\n        history.raw.caches.setLen(0)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/utils/private/temporary_rollback_log.nim
@@ -184,9 +312,13 @@ data:
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/offline_dynamic_queries.nim
-  timestamp: '2026-09-23 01:31:00+09:00'
+  - cplib/tree/dsu_on_tree.nim
+  - cplib/tree/dsu_on_tree.nim
+  timestamp: '2026-09-30 05:10:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/dsu_on_tree_test.nim
+  - verify/AI/dsu_on_tree_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/temporary_rollback_log_test.nim
@@ -199,6 +331,8 @@ data:
   - verify/AI/rollback_mo_test.nim
   - verify/AI/auto_rollback_test.nim
   - verify/AI/auto_rollback_test.nim
+  - verify/AI/flat_temporary_rollback_log_test.nim
+  - verify/AI/flat_temporary_rollback_log_test.nim
   - verify/AI/auto_rollback_values_test.nim
   - verify/AI/auto_rollback_values_test.nim
 documentation_of: cplib/utils/private/temporary_rollback_log.nim

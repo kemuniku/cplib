@@ -285,6 +285,12 @@ data:
     path: cplib/tree/diameter.nim
     title: cplib/tree/diameter.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tree/dsu_on_tree.nim
+    title: cplib/tree/dsu_on_tree.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   - icon: ':heavy_check_mark:'
@@ -615,6 +621,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/dominator_tree_test.nim
     title: verify/AI/dominator_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/dsu_on_tree_test.nim
+    title: verify/AI/dsu_on_tree_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/dynamic_bipartite_test.nim
     title: verify/AI/dynamic_bipartite_test.nim
@@ -1689,6 +1701,8 @@ data:
   - cplib/tree/lca.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/dsu_on_tree.nim
+  - cplib/tree/dsu_on_tree.nim
   - cplib/tree/rerooting.nim
   - cplib/tree/rerooting.nim
   - cplib/tree/centroid_decomposition.nim
@@ -1772,6 +1786,8 @@ data:
   - verify/utils/itertools/accumulate_test.nim
   - verify/collections/range_kth_smallest_test.nim
   - verify/collections/range_kth_smallest_test.nim
+  - verify/AI/dsu_on_tree_test.nim
+  - verify/AI/dsu_on_tree_test.nim
   - verify/AI/warshall_floyd_avx512_register_int32_test.nim
   - verify/AI/warshall_floyd_avx512_register_int32_test.nim
   - verify/AI/tree_hash_test.nim

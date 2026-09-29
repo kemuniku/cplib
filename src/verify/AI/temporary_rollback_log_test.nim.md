@@ -94,16 +94,16 @@ data:
     \       var value = (1, \"text\")\n        history.remember(addr value)\n    )\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/utils/auto_rollback.nim
   isVerificationFile: true
   path: verify/AI/temporary_rollback_log_test.nim
   requiredBy: []
-  timestamp: '2026-09-23 01:31:00+09:00'
+  timestamp: '2026-09-30 05:10:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/temporary_rollback_log_test.nim

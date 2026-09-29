@@ -32,9 +32,9 @@ data:
     \nimport cplib/str/run_enumerate\n\nlet s = stdin.readLine\nlet ans = run_enumerate(s)\n\
     echo ans.len\nfor (p, l, r) in ans:\n    echo p, \" \", l, \" \", r\n"
   dependsOn:
+  - cplib/str/zalgorithm.nim
+  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
-  - cplib/str/zalgorithm.nim
-  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
   isVerificationFile: true
   path: verify/str/run_enumerate_yosupo_test.nim
