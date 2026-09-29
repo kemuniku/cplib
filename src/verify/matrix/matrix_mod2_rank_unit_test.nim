@@ -5,7 +5,8 @@ import random, sequtils, strutils
 
 var rng = initRand(712053)
 for (h, w) in [(0,0), (0,129), (256,0), (255,65), (256,7), (256,8), (257,9),
-        (256,63), (257,64), (256,65), (257,129), (320,257), (511,33)]:
+        (256,63), (257,64), (256,65), (257,129), (320,257), (511,33), (1024,1), (1024,7), (1024,8), (1024,65),
+        (1024,129), (1024,256), (1024,257), (8,256), (65,257)]:
     for trial in 0..<5:
         var rows = newSeqWith(h, newSeq[bool](w))
         var a = initMatrixMod2(h,w)
@@ -50,5 +51,27 @@ for width in [0,1,7,8,63,64,65,129,193,257]:
         for j in 0..<width:
             doAssert a[0,j] == (j < length and text[j] == '1')
             doAssert a[1,j]
+
+# 独立な行が探索範囲の後方にしかない場合も、未確定の階数で終了しない。
+for width in [1,7,8,63,64,65,129,256,257]:
+    let height = 4096
+    var a = initMatrixMod2(height,width)
+    for j in 0..<width:
+        a[height-1-j,j] = true
+    let before = a
+    doAssert a.rank == width
+    doAssert a == before
+    a[height-width,width-1] = false
+    doAssert a.rank == width-1
+
+# ピボットの列番号が行順に並んでいなくても、64bit境界を越えて正しく消去する。
+block:
+    var a = initMatrixMod2(4096,129)
+    for i in 0..<129:
+        a[i,128-i] = true
+        for j in 129-i..<129: a[i,j] = true
+    let before = a
+    doAssert a.rank == 129
+    doAssert a == before
 
 echo "Hello World"

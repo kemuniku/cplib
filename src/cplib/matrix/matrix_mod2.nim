@@ -176,6 +176,7 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
             var pivot = result
             while pivot < b.height and (data[pivot * b.stride + firstWord] and mask) == 0: inc pivot
             if pivot == b.height: continue
+            if result + 1 == min(b.height, b.width): return result + 1
             let pivotRow = cast[ptr UncheckedArray[uint64]](addr data[result * b.stride])
             # 未処理の行は現在の列より前がすべて零なので、現在のワード以降だけ操作する。
             if pivot != result:
@@ -225,6 +226,7 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
                 inc count
                 if count == bits: break
             result += count
+            if result == b.width: return
             if count > 0 and result < b.height:
                 # 列のビットパターンから、対応するピボット行のXORを引けるようにする。
                 var offsets, combined: array[256, int]
@@ -245,9 +247,52 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
                     for k in firstWord..<stride: row[k] = row[k] xor tableData[offset + k]
             col += bits
 
+    {.push checks: off.}
+    proc rankTall(a: MatrixMod2, limit: int): int =
+        ## 先頭limit行の基底で階数を調べ、未確定なら-1を返す。O(limit*w*ceil(w/64))時間、O(w*ceil(w/64))追加空間。
+        if a.width >= 256:
+            var sample = initMatrixMod2(limit, a.width)
+            copyMem(addr sample.words[0], unsafeAddr a.words[0], limit * a.stride * sizeof(uint64))
+            result = rankBlocked(sample)
+            if result < a.width and limit < a.height: result = -1
+            return
+        let stride = a.stride
+        let source = cast[ptr UncheckedArray[uint64]](unsafeAddr a.words[0])
+        var basis = newSeq[uint64](a.width * stride)
+        var pivots = newSeq[int](a.width)
+        var buffer = newSeq[uint64](stride)
+        let basisData = cast[ptr UncheckedArray[uint64]](addr basis[0])
+        let row = cast[ptr UncheckedArray[uint64]](addr buffer[0])
+        for i in 0..<limit:
+            let input = cast[ptr UncheckedArray[uint64]](unsafeAddr source[i * stride])
+            var firstWord = 0
+            while firstWord < stride and input[firstWord] == 0: inc firstWord
+            if firstWord == stride: continue
+            copyMem(addr row[firstWord], unsafeAddr input[firstWord], (stride - firstWord) * sizeof(uint64))
+            block insertRow:
+                for k in firstWord..<stride:
+                    while row[k] != 0:
+                        let col = (k shl 6) + countTrailingZeroBits(row[k])
+                        let index = pivots[col]
+                        if index == 0:
+                            copyMem(addr basisData[result * stride + k], addr row[k], (stride - k) * sizeof(uint64))
+                            inc result
+                            pivots[col] = result
+                            if result == a.width: return
+                            break insertRow
+                        let pivot = cast[ptr UncheckedArray[uint64]](addr basisData[(index - 1) * stride])
+                        for j in k..<stride: row[j] = row[j] xor pivot[j]
+        if limit < a.height: result = -1
+    {.pop.}
+
     proc rank*(a: MatrixMod2): int =
         ## 階数をO(h*w+h*min(h,w)*ceil(w/64))で求める。元の行列は変更しない。
-        ## 256行以上かつ8列以上なら8列ずつ消去する。空行列はO(1)で返す。
+        ## 縦長行列は先頭の行で最大階数を確認できれば終了し、未確定なら通常の消去法を使う。空行列はO(1)。
+        if a.height == 0 or a.width == 0: return 0
+        if a.height div 2 >= a.width:
+            let limit = if a.width < 8: a.height else: a.width + min(32, a.height - a.width)
+            let candidate = rankTall(a, limit)
+            if candidate >= 0: return candidate
         if a.height < 256 or a.width < 8: rankSimple(a)
         else: rankBlocked(a)
 
