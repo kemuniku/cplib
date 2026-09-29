@@ -72,7 +72,7 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
     type AutoRollbackCode* = tuple[declarations, transformed: NimNode]
 
     proc buildAutoRollback*(target, history: NimNode, diagnosticName: string,
-            blockMode: bool = false): AutoRollbackCode {.compileTime.} =
+            blockMode: bool = false, temporaryMode: bool = false, flatMode: bool = false): AutoRollbackCode {.compileTime.} =
         ## 更新関数またはブロックを変換し、必要な関数定義と変換結果を返す。
         type Replacement = tuple[source, target: NimNode]
         type FunctionVersion = tuple[source, target: NimNode, readOnly, localArgs: seq[bool]]
@@ -81,8 +81,13 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
         var forwards = newStmtList()
         var definitions = newStmtList()
         var indexDeclarations = newStmtList()
+        var boundDeclarations = newStmtList()
+        var boundCaches: seq[tuple[source, name: NimNode, indexed: bool]]
         var indexCaches: seq[tuple[container, name: NimNode, selector: string]]
-        let historyType = if blockMode: bindSym"TemporaryRollbackLog" else: bindSym"AutoRollbackLog"
+        let useTemporary = blockMode or temporaryMode or flatMode
+        let historyType = if flatMode: bindSym"FlatTemporaryRollbackLog"
+            elif useTemporary: bindSym"TemporaryRollbackLog"
+            else: bindSym"AutoRollbackLog"
 
         proc sourcePosition(n: NimNode): string =
             ## 元のソース位置をファイル名と1始まりの行・列で表す。
@@ -345,35 +350,61 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
                 else: false
 
             proc recordChange(location, address: NimNode): NimNode =
-                ## 静的に識別できる配列要素には、呼び出し間で再利用する添字判定領域を用意する。
+                ## 配列要素には添字判定、単独の変更先には1要素の判定領域を用意する。
                 var target = location
                 while target.kind in {nnkHiddenAddr, nnkHiddenDeref}: target = target[0]
-                if not blockMode or target.kind != nnkBracketExpr or target.len != 2 or
-                        concreteKind(target[0].getTypeInst) notin {ntyArray, ntySequence} or
-                        not stableContainer(target[0]):
+                if not useTemporary:
                     return newCall(bindSym"remember", logParam, address)
-                var source = target[0]
+                let indexed = target.kind == nnkBracketExpr and target.len == 2 and
+                    concreteKind(target[0].getTypeInst) in {ntyArray, ntySequence} and
+                    stableContainer(target[0])
+                if not indexed and not stableContainer(target):
+                    return newCall(bindSym"remember", logParam, address)
+                let cacheTarget = if indexed: target[0] else: target
+                var source = cacheTarget
                 while source.kind in {nnkHiddenAddr, nnkHiddenDeref}: source = source[0]
                 let selector = if source.kind == nnkDotExpr: "." & source[1].strVal
                     elif source.kind == nnkSym and source.symKind != nskParam: source.repr
                     else: ""
                 var cache: NimNode
                 for item in indexCaches:
-                    if sameType(item.container, target[0]) and item.selector == selector:
+                    if sameType(item.container, cacheTarget) and item.selector == selector:
                         cache = item.name
                         break
                 if cache.isNil:
                     cache = genSym(nskProc, "temporaryIndexCache")
                     let storage = genSym(nskVar, "indexCacheStorage")
-                    indexCaches.add((target[0], cache, selector))
+                    indexCaches.add((cacheTarget, cache, selector))
                     # モジュール直下のループ内でも再初期化されないよう、保持領域を関数内に置く。
                     indexDeclarations.add quote do:
                         proc `cache`(): ptr TemporaryIndexCache {.inline.} =
                             var `storage` {.global, threadvar.}: TemporaryIndexCache
                             addr `storage`
+                let cacheValue = newTree(nnkDerefExpr, newCall(cache))
+                if flatMode and source.kind == nnkSym and source.symKind in {nskVar, nskLet}:
+                    var bound: NimNode
+                    for item in boundCaches:
+                        if item.source == source and item.indexed == indexed: bound = item.name
+                    if bound.isNil:
+                        bound = genSym(nskLet, "boundIndexCache")
+                        boundCaches.add((source, bound, indexed))
+                        if indexed:
+                            boundDeclarations.add quote do:
+                                let `bound` = block:
+                                    if len(`source`) > 0:
+                                        bindFlatIndexCache(`history`, unsafeAddr `source`[low(`source`)],
+                                            len(`source`), `cacheValue`)
+                                    else:
+                                        cast[ptr TemporaryIndexCache](nil)
+                        else:
+                            boundDeclarations.add quote do:
+                                let `bound` = bindFlatIndexCache(`history`, addr `source`, 1, `cacheValue`)
+                    return newCall(bindSym"rememberBound", logParam, address, bound)
+                if not indexed:
+                    return newCall(bindSym"rememberIndexed", logParam, address, address,
+                        newLit(1), cacheValue)
                 let container = rewrite(target[0])
                 let count = genSym(nskLet, "temporaryArrayLength")
-                let cacheValue = newTree(nnkDerefExpr, newCall(cache))
                 result = quote do:
                     block:
                         let `count` = len(`container`)
@@ -571,7 +602,7 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
         else:
             let signature = target.getTypeInst[0]
             result.transformed = convertFunction(target, newSeq[bool](signature.len - 1), target)
-        result.declarations = newStmtList(indexDeclarations, forwards, definitions)
+        result.declarations = newStmtList(indexDeclarations, boundDeclarations, forwards, definitions)
 
     macro runAutoRollbackImpl*(solver, apply, answer: typed, runner: untyped): untyped =
         ## 共通の自動変換を用い、各applyを1回ずつ取り消せる実行処理を生成する。
@@ -602,6 +633,39 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
                 proc `undo`() =
                     restore(`history`, `checkpoints`.pop())
                 try:
+                    `execute`
+                finally:
+                    restore(`history`, 0)
+
+    macro runAutoClearImpl*(solver, apply, answer: typed, runner: untyped): untyped =
+        ## applyの変更を配列ごとに記録し、runnerに一括復元用のclearを渡す。
+        let history = genSym(nskVar, "history")
+        let code = buildAutoRollback(apply, history, "dsuOnTree", flatMode = true)
+        let declarations = code.declarations
+        let signature = apply.getTypeInst[0]
+        var wrapper = newProc(genSym(nskProc, "applyWithTemporary"), [newEmptyNode()])
+        var call = newCall(code.transformed, history)
+        for i in 1..<signature.len:
+            let argument = genSym(nskParam, "argument" & $i)
+            wrapper[3].add(newIdentDefs(argument, signature[i][^2]))
+            call.add(argument)
+        wrapper[6] = newStmtList(call)
+        let callback = wrapper[0]
+        let clear = genSym(nskProc, "clearTemporary")
+        let solverValue = genSym(nskLet, "solver")
+        let answerValue = genSym(nskLet, "answer")
+        let execute = newCall(runner, solverValue, callback, answerValue, clear)
+        result = quote do:
+            block:
+                var `history`: FlatTemporaryRollbackLog
+                let `solverValue` = `solver`
+                let `answerValue` = `answer`
+                try:
+                    `declarations`
+                    `wrapper`
+                    proc `clear`() =
+                        ## 集計開始時の値へ戻し、記録領域を再利用する。
+                        clearFlat(`history`)
                     `execute`
                 finally:
                     restore(`history`, 0)
