@@ -6,7 +6,10 @@ when not declared CPLIB_TMPL_OPTIMIZE:
         let isSecond = defined(second_compile)
         let isDebug = defined(debug)
 
-        if (not isSecond) and (not isDebug):
+        # IDE解析とエラーチェックでは再コンパイルや終了処理を行わない。
+        let isAnalysis = defined(nimsuggest) or defined(nimcheck)
+
+        if (not isSecond) and (not isDebug) and (not isAnalysis):
             if "-d:second_compile" notin arg:
                 error("plz add -d:second_compile")
             let sourcePath = querySetting(SingleValueSetting.projectFull)
