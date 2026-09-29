@@ -8,8 +8,14 @@ let (n, m) = (nm[0], nm[1])
 if n == 0 or m == 0:
     echo 0
     quit(0)
-var a = initMatrixMod2(n, m)
+let data = stdin.readAll
+var a = initMatrixMod2(min(n, m), max(n, m))
+var position = 0
 for i in 0..<n:
-    let s = stdin.readLine
-    for j in 0..<m: a[i, j] = s[j] == '1'
+    while data[position] <= ' ': inc position
+    if n <= m:
+        a.setRowBits(i, data[position..<position+m])
+    else:
+        for j in 0..<m: a[j, i] = data[position+j] == '1'
+    position += m
 echo a.rank

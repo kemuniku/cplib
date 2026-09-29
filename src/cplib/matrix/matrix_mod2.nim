@@ -67,11 +67,15 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
 
     {.push checks: off.}
     proc setRowBitsUnchecked(a: var MatrixMod2, i: int, values: string) =
+        ## 文字列を64bitずつまとめて格納し、残りの列を零にする。
+        var j = 0
         for k in 0..<a.stride:
-            word(a, i, k) = 0
-        for j in 0..<values.len:
-            if values[j] == '1':
-                word(a, i, j shr 6) = word(a, i, j shr 6) or (1'u64 shl (j and 63))
+            var value = 0'u64
+            let limit = min(64, values.len - j)
+            for bit in 0..<limit:
+                value = value or (uint64(values[j + bit] == '1') shl bit)
+            word(a, i, k) = value
+            j += limit
 
     proc rowBitsUnchecked(a: MatrixMod2, i, width: int): string =
         result = newString(width)
@@ -161,7 +165,7 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
 
     proc `**`*(a: MatrixMod2, exponent: int): MatrixMod2 = a.pow(exponent)
 
-    proc rank*(a: MatrixMod2): int =
+    proc rankSimple(a: MatrixMod2): int =
         ## 階数をO(h*w+h*min(h,w)*ceil(w/64))で求める。元の行列は変更せず、空行列はO(1)で返す。
         if a.height == 0 or a.width == 0: return 0
         var b = a
@@ -182,6 +186,70 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
                     for k in firstWord..<b.stride: row[k] = row[k] xor pivotRow[k]
             inc result
             if result == b.height: break
+
+    proc rankBlocked(a: MatrixMod2): int =
+        ## 256行以上の行列を8列ずつ消去する。組合せ表の領域は行列のコピー以下。
+        if a.height == 0 or a.width == 0: return 0
+        var b = a
+        let stride = b.stride
+        let data = cast[ptr UncheckedArray[uint64]](addr b.words[0])
+        var table = newSeq[uint64](256 * stride)
+        let tableData = cast[ptr UncheckedArray[uint64]](addr table[0])
+        var col = 0
+        while col < b.width and result < b.height:
+            let firstWord = col shr 6
+            let shift = col and 63
+            let bits = min(8, b.width - col)
+            let mask = (1'u64 shl bits) - 1
+            let base = result
+            var count = 0
+            var patterns, pivotMasks: array[8, int]
+            # この8列で独立な行を選び、既に選んだ行だけでピボット行を消去する。
+            for i in base..<b.height:
+                var pattern = int((data[i * stride + firstWord] shr shift) and mask)
+                var combination = 0
+                for j in 0..<count:
+                    if (pattern and pivotMasks[j]) != 0:
+                        pattern = pattern xor patterns[j]
+                        combination = combination or (1 shl j)
+                if pattern == 0: continue
+                let row = cast[ptr UncheckedArray[uint64]](addr data[(base + count) * stride])
+                if i != base + count:
+                    for k in firstWord..<stride: swap(row[k], data[i * stride + k])
+                for j in 0..<count:
+                    if (combination and (1 shl j)) != 0:
+                        let pivot = cast[ptr UncheckedArray[uint64]](addr data[(base + j) * stride])
+                        for k in firstWord..<stride: row[k] = row[k] xor pivot[k]
+                patterns[count] = pattern
+                pivotMasks[count] = pattern and -pattern
+                inc count
+                if count == bits: break
+            result += count
+            if count > 0 and result < b.height:
+                # 列のビットパターンから、対応するピボット行のXORを引けるようにする。
+                var offsets, combined: array[256, int]
+                for index in 1..<(1 shl count):
+                    let previous = index and (index - 1)
+                    let bit = countTrailingZeroBits(index)
+                    combined[index] = combined[previous] xor patterns[bit]
+                    let offset = index * stride
+                    offsets[combined[index]] = offset
+                    let pivot = cast[ptr UncheckedArray[uint64]](addr data[(base + bit) * stride])
+                    for k in firstWord..<stride:
+                        tableData[offset + k] = tableData[previous * stride + k] xor pivot[k]
+                for i in result..<b.height:
+                    let row = cast[ptr UncheckedArray[uint64]](addr data[i * stride])
+                    let pattern = int((row[firstWord] shr shift) and mask)
+                    if pattern == 0: continue
+                    let offset = offsets[pattern]
+                    for k in firstWord..<stride: row[k] = row[k] xor tableData[offset + k]
+            col += bits
+
+    proc rank*(a: MatrixMod2): int =
+        ## 階数をO(h*w+h*min(h,w)*ceil(w/64))で求める。元の行列は変更しない。
+        ## 256行以上かつ8列以上なら8列ずつ消去する。空行列はO(1)で返す。
+        if a.height < 256 or a.width < 8: rankSimple(a)
+        else: rankBlocked(a)
 
     proc determinant*(a: MatrixMod2): bool =
         assert a.height == a.width, "行列は正方行列である必要があります"
