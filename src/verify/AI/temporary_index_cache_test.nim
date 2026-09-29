@@ -136,4 +136,23 @@ block:
             values[0]
         doAssert answer == 31 and values == @[1, 2]
 
+block:
+    var first = 4
+    var second = 9
+    proc increase(value: var int) = inc value
+    for iteration in 0..<100:
+        let result = Temporary:
+            increase(first)
+            increase(second)
+            increase(first)
+            let nested = Temporary:
+                increase(second)
+                increase(first)
+                (first, second)
+            doAssert nested == (7, 11)
+            doAssert first == 6 and second == 10
+            (first, second)
+        doAssert result == (6, 10)
+        doAssert first == 4 and second == 9
+
 echo "Hello World"
