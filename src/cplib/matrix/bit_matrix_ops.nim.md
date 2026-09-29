@@ -64,6 +64,12 @@ data:
     path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_mod2_rank_unit_test.nim
+    title: verify/matrix/matrix_mod2_rank_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_mod2_rank_unit_test.nim
+    title: verify/matrix/matrix_mod2_rank_unit_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_product_mod_2_static_test.nim
     title: verify/matrix/matrix_product_mod_2_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -172,6 +178,8 @@ data:
   - verify/matrix/matrix_rank_mod_2_static_test.nim
   - verify/matrix/inverse_matrix_mod_2_test.nim
   - verify/matrix/inverse_matrix_mod_2_test.nim
+  - verify/matrix/matrix_mod2_rank_unit_test.nim
+  - verify/matrix/matrix_mod2_rank_unit_test.nim
   - verify/matrix/matrix_product_mod_2_static_test.nim
   - verify/matrix/matrix_product_mod_2_static_test.nim
   - verify/matrix/inverse_matrix_mod_2_static_test.nim

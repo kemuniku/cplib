@@ -2955,6 +2955,9 @@ data:
       path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
       title: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/matrix/matrix_mod2_rank_unit_test.nim
+      title: verify/matrix/matrix_mod2_rank_unit_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/matrix/matrix_pow_test.nim
       title: verify/matrix/matrix_pow_test.nim
     - icon: ':heavy_check_mark:'
@@ -3186,6 +3189,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_dynamic_test.nim
       title: verify/tree/diameter_dynamic_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/diameter_random_test.nim
+      title: verify/tree/diameter_random_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/tree/diameter_static_test.nim
       title: verify/tree/diameter_static_test.nim

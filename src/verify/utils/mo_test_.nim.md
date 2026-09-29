@@ -40,9 +40,9 @@ data:
     \ = now\n\nm.run(addq, addq, delq, delq, rem)\n\necho ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/utils/mo.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/utils/mo_test_.nim
   requiredBy: []

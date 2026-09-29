@@ -106,8 +106,8 @@ data:
     Hello World\"\n"
   dependsOn:
   - cplib/collections/bitset_binary_trie.nim
-  - cplib/collections/bitset_binary_trie.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset_binary_trie.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/bitset_binary_trie_test.nim

@@ -77,8 +77,8 @@ data:
   dependsOn:
   - cplib/utils/parallel_binary_search.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/parallel_binary_search.nim
   - cplib/collections/unionfind.nim
+  - cplib/utils/parallel_binary_search.nim
   isVerificationFile: true
   path: verify/AI/parallel_binary_search_test.nim
   requiredBy: []

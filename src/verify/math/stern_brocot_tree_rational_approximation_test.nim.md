@@ -43,10 +43,10 @@ data:
     \ echo bounds.p, \" \", bounds.q, \" \", bounds.p, \" \", bounds.q\n    else:\n\
     \        echo bounds.p, \" \", bounds.q, \" \", bounds.r, \" \", bounds.s\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
   isVerificationFile: true

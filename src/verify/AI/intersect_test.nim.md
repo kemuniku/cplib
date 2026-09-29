@@ -83,11 +83,11 @@ data:
   dependsOn:
   - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/AI/intersect_test.nim

@@ -81,14 +81,14 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
+  - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/diameter_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-09-30 06:49:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/diameter_test.nim

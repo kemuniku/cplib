@@ -127,8 +127,8 @@ data:
     \u3092\u8FD4\u3057\u307E\u3059\u3002O(M log(M+2)+\u51FA\u529B\u6587\u5B57\u6570\
     )\u3002\n        self.debugDump()\n"
   dependsOn:
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
   isVerificationFile: false

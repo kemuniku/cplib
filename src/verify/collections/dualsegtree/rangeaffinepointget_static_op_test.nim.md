@@ -65,18 +65,18 @@ data:
     \        st.apply(l, r, (mint(b), mint(c)))\n    else:\n        let i = ii()\n\
     \        echo st[i]\n"
   dependsOn:
-  - cplib/collections/dualsegtree_static_op.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/utils/backwards_index.nim
   - cplib/math/isqrt.nim
   - cplib/collections/dualsegtree_static_op.nim
+  - cplib/collections/dualsegtree_static_op.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/utils/backwards_index.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
   requiredBy: []

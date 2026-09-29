@@ -98,8 +98,8 @@ data:
   dependsOn:
   - cplib/tree/centroid_decomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/centroid_decomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/centroid_decomposition.nim
   isVerificationFile: true
   path: verify/AI/centroid_decomposition_test.nim
   requiredBy: []

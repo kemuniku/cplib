@@ -1132,6 +1132,12 @@ data:
     path: verify/tree/diameter_dynamic_test.nim
     title: verify/tree/diameter_dynamic_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/tree/diameter_random_test.nim
+    title: verify/tree/diameter_random_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/diameter_random_test.nim
+    title: verify/tree/diameter_random_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/diameter_static_test.nim
     title: verify/tree/diameter_static_test.nim
   - icon: ':heavy_check_mark:'
@@ -1930,6 +1936,8 @@ data:
   - verify/tree/rerooting_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/tree/diameter_random_test.nim
+  - verify/tree/diameter_random_test.nim
   - verify/tree/diameter_yosupo_test.nim
   - verify/tree/diameter_yosupo_test.nim
   - verify/tree/point_set_tree_path_composite_sum_test.nim

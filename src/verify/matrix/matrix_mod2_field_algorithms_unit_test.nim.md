@@ -109,18 +109,18 @@ data:
     \    let solution = a.solveLinearSystem(@[true,true]).get\n    doAssert solution.particular[64]\
     \ and solution.basis.len == 64\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/static_matrix_mod2.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/static_matrix_mod2.nim
-  - cplib/matrix/static_matrix_mod2.nim
+  - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 06:05:33+09:00'
+  timestamp: '2026-09-30 06:48:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
