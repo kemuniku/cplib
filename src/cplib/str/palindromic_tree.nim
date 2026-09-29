@@ -4,7 +4,8 @@ when not declared CPLIB_STR_PALINDROMIC_TREE:
     type PalindromicTreeNode* = object
         link*: seq[ref PalindromicTreeNode]
         suffix_link*: ref PalindromicTreeNode
-        len, count, id: int
+        series_link*: ref PalindromicTreeNode # 長さの差分が異なる最長の接尾回文へのリンク
+        len, count, id, diff: int
 
     type PalindromicTree* = object
         amax: int
@@ -14,6 +15,10 @@ when not declared CPLIB_STR_PALINDROMIC_TREE:
     proc len*(node: PalindromicTreeNode): int = node.len
     proc count*(node: PalindromicTreeNode): int = node.count
     proc id*(node: PalindromicTreeNode): int = node.id
+
+    proc diff*(node: PalindromicTreeNode): int =
+        ## suffix_link先との長さの差をO(1)で返す。根では0を返す。
+        node.diff
 
     proc newPalindromicTreeNode(pt: var PalindromicTree, amax, len: int): ref PalindromicTreeNode =
         result = new PalindromicTreeNode
@@ -29,9 +34,11 @@ when not declared CPLIB_STR_PALINDROMIC_TREE:
         discard result.newPalindromicTreeNode(amax, 0)
         result.amax = amax
         result.nodes[1][].suffix_link = result.nodes[0]
+        result.nodes[1][].series_link = result.nodes[0]
 
 
     proc initPalindromicTree*(a: openArray[int], amax: int = -1): PalindromicTree =
+        ## 整数列から回文木を構築し、各ノードのSeries linkをO(1)で計算する。
         let a = @a
         var amax = amax
         if amax < 0:
@@ -47,10 +54,14 @@ when not declared CPLIB_STR_PALINDROMIC_TREE:
             current_node = find_longest(i, current_node)
             if current_node[].link[a[i]] == nil:
                 current_node[].link[a[i]] = result.newPalindromicTreeNode(amax, current_node[].len + 2)
-            if current_node == result.nodes[0]:
-                current_node[].link[a[i]][].suffix_link = result.nodes[1]
-            else:
-                current_node[].link[a[i]][].suffix_link = find_longest(i, current_node[].suffix_link)[].link[a[i]]
+                let node = current_node[].link[a[i]]
+                if current_node == result.nodes[0]:
+                    node[].suffix_link = result.nodes[1]
+                else:
+                    node[].suffix_link = find_longest(i, current_node[].suffix_link)[].link[a[i]]
+                let suffix = node[].suffix_link
+                node[].diff = node[].len - suffix[].len
+                node[].series_link = if node[].diff == suffix[].diff: suffix[].series_link else: suffix
             current_node = current_node[].link[a[i]]
             current_node[].count += 1
         result.last_node = current_node
