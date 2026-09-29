@@ -99,7 +99,7 @@ let empty = initMatrixMod2(0,5).solveLinearSystem(newSeq[bool]()).get
 doAssert empty.particular.len == 5 and empty.basis.len == 5
 doAssert initMatrixMod2(2,0).solveLinearSystem(@[false,true]).isNone
 import cplib/matrix/field_matrix_ops
-for (h, w) in [(0,0), (0,65), (65,0), (1,64), (64,1), (63,65), (65,63), (64,128), (128,64), (67,129)]:
+for (h, w) in [(0,0), (0,65), (65,0), (1,64), (64,1), (63,65), (65,63), (64,128), (128,64), (67,129), (129,129)]:
     for trial in 0..<8:
         var a = initMatrixMod2(h,w)
         var padded: StaticMatrixMod2[131,133]
@@ -116,10 +116,24 @@ for (h, w) in [(0,0), (0,65), (65,0), (1,64), (64,1), (63,65), (65,63), (64,128)
                 rows[i][j] = value
         let before = a
         let savedPadded = padded
+        let expectedRank = fieldRank(rows,w)
+        doAssert a.rank == expectedRank
+        if h == w: doAssert a.determinant == (expectedRank == h)
         let expected = fieldSolve(rows,w,b)
         doAssert a.solveLinearSystem(b) == expected
         doAssert padded.solveLinearSystem(b,h,w) == expected
         doAssert a == before and padded == savedPadded
+
+block:
+    var a = initMatrixMod2(4,193)
+    a[0,192] = true
+    a[1,128] = true
+    a[2,64] = true
+    a[3,64] = true
+    a[3,128] = true
+    let before = a
+    doAssert a.rank == 3
+    doAssert a == before
 
 block:
     var a = initMatrixMod2(2,65)

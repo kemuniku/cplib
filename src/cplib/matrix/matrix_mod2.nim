@@ -21,11 +21,6 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
     template word(a: MatrixMod2, i, k: int): untyped =
         a.words[i * a.stride + k]
 
-    proc swapRows(a: var MatrixMod2, i, j: int) =
-        ## 指定した2行をO(ceil(w/64))で交換する。
-        if i == j: return
-        for k in 0..<a.stride: swap(word(a, i, k), word(a, j, k))
-
     proc initMatrixMod2*[T: SomeInteger](a: openArray[seq[T]]): MatrixMod2 =
         let w = if a.len == 0: 0 else: a[0].len
         result = initMatrixMod2(a.len, w)
@@ -167,17 +162,24 @@ when not declared CPLIB_MATRIX_MATRIX_MOD2:
     proc `**`*(a: MatrixMod2, exponent: int): MatrixMod2 = a.pow(exponent)
 
     proc rank*(a: MatrixMod2): int =
-        ## 階数を求める。空行列はコピーや列走査をせずO(1)で返す。
+        ## 階数をO(h*w+h*min(h,w)*ceil(w/64))で求める。元の行列は変更せず、空行列はO(1)で返す。
         if a.height == 0 or a.width == 0: return 0
         var b = a
+        let data = cast[ptr UncheckedArray[uint64]](addr b.words[0])
         for col in 0..<b.width:
+            let firstWord = col shr 6
+            let mask = 1'u64 shl (col and 63)
             var pivot = result
-            while pivot < b.height and not b[pivot, col]: inc pivot
+            while pivot < b.height and (data[pivot * b.stride + firstWord] and mask) == 0: inc pivot
             if pivot == b.height: continue
-            swapRows(b, result, pivot)
+            let pivotRow = cast[ptr UncheckedArray[uint64]](addr data[result * b.stride])
+            # 未処理の行は現在の列より前がすべて零なので、現在のワード以降だけ操作する。
+            if pivot != result:
+                for k in firstWord..<b.stride: swap(pivotRow[k], data[pivot * b.stride + k])
             for i in result + 1..<b.height:
-                if b[i, col]:
-                    for k in 0..<b.stride: word(b, i, k) = word(b, i, k) xor word(b, result, k)
+                let row = cast[ptr UncheckedArray[uint64]](addr data[i * b.stride])
+                if (row[firstWord] and mask) != 0:
+                    for k in firstWord..<b.stride: row[k] = row[k] xor pivotRow[k]
             inc result
             if result == b.height: break
 
