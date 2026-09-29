@@ -67,18 +67,18 @@ data:
     \      echo path[i], \" \", path[i + 1]\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/graph/dijkstra_radix.nim
-  - cplib/graph/dijkstra_radix.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/collections/radix_heap.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/graph/static/restore_dijkstra_radix_static_test.nim

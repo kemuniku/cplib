@@ -49,12 +49,12 @@ data:
     \ v\n"
   dependsOn:
   - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
-  - cplib/graph/general_weighted_matching_sparse.nim
-  - cplib/graph/general_weighted_matching_sparse.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/general_weighted_matching_sparse_test.nim

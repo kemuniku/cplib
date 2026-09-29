@@ -91,13 +91,13 @@ data:
     \ World\"\n"
   dependsOn:
   - cplib/geometry/euclidean_mst.nim
+  - cplib/collections/unionfind.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/collections/unionfind.nim
   - cplib/geometry/euclidean_mst.nim
-  - cplib/math/int128.nim
-  - cplib/collections/unionfind.nim
-  - cplib/math/int128.nim
-  - cplib/geometry/base.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/AI/euclidean_mst_test.nim
   requiredBy: []

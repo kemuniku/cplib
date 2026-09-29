@@ -49,10 +49,10 @@ data:
     \ v\n"
   dependsOn:
   - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/general_weighted_matching.nim
   - cplib/graph/graph.nim
+  - cplib/graph/general_weighted_matching.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/graph.nim
   - cplib/graph/general_weighted_matching.nim

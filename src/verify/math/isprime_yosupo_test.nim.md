@@ -46,11 +46,11 @@ data:
     \        echo \"No\"\n"
   dependsOn:
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   - cplib/math/isprime.nim
   isVerificationFile: true

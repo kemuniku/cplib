@@ -44,9 +44,9 @@ data:
     \ sep=\"\\n\")\n\nmain()\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/collections/fenwick.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick.nim
   isVerificationFile: true

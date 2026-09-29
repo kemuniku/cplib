@@ -33,8 +33,8 @@ data:
     echo ans.len\nfor (p, l, r) in ans:\n    echo p, \" \", l, \" \", r\n"
   dependsOn:
   - cplib/str/zalgorithm.nim
-  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
+  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
   isVerificationFile: true
   path: verify/str/run_enumerate_yosupo_test.nim

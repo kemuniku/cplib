@@ -127,10 +127,10 @@ data:
 
     '
   dependsOn:
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/tmpl/citrus.nim
-  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
-  - cplib/math/isqrt.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/citrus.nim
   isVerificationFile: true

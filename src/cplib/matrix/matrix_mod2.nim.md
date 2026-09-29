@@ -78,69 +78,67 @@ data:
     \u7BC4\u56F2\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\"\n        result.height\
     \ = h\n        result.width = w\n        result.stride = stride\n        result.words\
     \ = newSeq[uint64](h * stride)\n\n    template word(a: MatrixMod2, i, k: int):\
-    \ untyped =\n        a.words[i * a.stride + k]\n\n    proc swapRows(a: var MatrixMod2,\
-    \ i, j: int) =\n        ## \u6307\u5B9A\u3057\u305F2\u884C\u3092O(ceil(w/64))\u3067\
-    \u4EA4\u63DB\u3059\u308B\u3002\n        if i == j: return\n        for k in 0..<a.stride:\
-    \ swap(word(a, i, k), word(a, j, k))\n\n    proc initMatrixMod2*[T: SomeInteger](a:\
-    \ openArray[seq[T]]): MatrixMod2 =\n        let w = if a.len == 0: 0 else: a[0].len\n\
-    \        result = initMatrixMod2(a.len, w)\n        for i in 0..<a.len:\n    \
-    \        assert a[i].len == w, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\u3055\
-    \u306F\u5217\u6570\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\
-    \u307E\u3059\"\n            for j, x in a[i]:\n                if (x and 1) !=\
-    \ 0:\n                    word(result, i, j shr 6) = word(result, i, j shr 6)\
-    \ or (1'u64 shl (j and 63))\n\n    proc initMatrixMod2*(a: openArray[seq[bool]]):\
-    \ MatrixMod2 =\n        let w = if a.len == 0: 0 else: a[0].len\n        result\
-    \ = initMatrixMod2(a.len, w)\n        for i in 0..<a.len:\n            assert\
-    \ a[i].len == w, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\u3055\u306F\u5217\
-    \u6570\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
-    \"\n            for j, x in a[i]:\n                if x: word(result, i, j shr\
-    \ 6) = word(result, i, j shr 6) or (1'u64 shl (j and 63))\n\n    proc toMatrixMod2*[T](a:\
-    \ openArray[seq[T]]): MatrixMod2 = initMatrixMod2(a)\n    proc h*(a: MatrixMod2):\
-    \ int {.inline.} = a.height\n    proc w*(a: MatrixMod2): int {.inline.} = a.width\n\
-    \n    proc `[]`*(a: MatrixMod2, i, j: int): bool {.inline.} =\n        assert\
-    \ i in 0..<a.height and j in 0..<a.width, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
-    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308A\u307E\u3059: i in 0 ..< a.height and j in 0 ..< a.width\"\n        (word(a,\
-    \ i, j shr 6) and (1'u64 shl (j and 63))) != 0\n\n    proc `[]=`*(a: var MatrixMod2,\
-    \ i, j: int, x: bool) {.inline.} =\n        assert i in 0..<a.height and j in\
-    \ 0..<a.width, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\
-    \u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: i in 0 ..<\
-    \ a.height and j in 0 ..< a.width\"\n        let mask = 1'u64 shl (j and 63)\n\
-    \        if x: word(a, i, j shr 6) = word(a, i, j shr 6) or mask\n        else:\
-    \ word(a, i, j shr 6) = word(a, i, j shr 6) and not mask\n\n    proc `[]=`*[T:\
-    \ SomeInteger](a: var MatrixMod2, i, j: int, x: T) {.inline.} =\n        a[i,\
-    \ j] = (x and 1) != 0\n\n    proc `==`*(a, b: MatrixMod2): bool =\n        a.height\
-    \ == b.height and a.width == b.width and a.words == b.words\n\n    proc `$`*(a:\
-    \ MatrixMod2): string =\n        for i in 0..<a.height:\n            if i > 0:\
-    \ result.add '\\n'\n            for j in 0..<a.width:\n                if j >\
-    \ 0: result.add ' '\n                result.add(if a[i, j]: '1' else: '0')\n\n\
-    \    {.push checks: off.}\n    proc setRowBitsUnchecked(a: var MatrixMod2, i:\
-    \ int, values: string) =\n        for k in 0..<a.stride:\n            word(a,\
-    \ i, k) = 0\n        for j in 0..<values.len:\n            if values[j] == '1':\n\
-    \                word(a, i, j shr 6) = word(a, i, j shr 6) or (1'u64 shl (j and\
-    \ 63))\n\n    proc rowBitsUnchecked(a: MatrixMod2, i, width: int): string =\n\
-    \        result = newString(width)\n        for j in 0..<width:\n            result[j]\
-    \ = char(ord('0') + int((word(a, i, j shr 6) shr (j and 63)) and 1))\n    {.pop.}\n\
-    \n    proc setRowBits*(a: var MatrixMod2, i: int, values: string) =\n        assert\
-    \ i in 0..<a.height and values.len <= a.width, \"\u884C\u756A\u53F7\u304C\u7BC4\
-    \u56F2\u5185\u3067\u3001\u6307\u5B9A\u3057\u305F\u884C\u306E\u9577\u3055\u304C\
-    \u5217\u6570\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\
-    \u3059\"\n        a.setRowBitsUnchecked(i, values)\n\n    proc rowBits*(a: MatrixMod2,\
-    \ i, width: int): string =\n        assert i in 0..<a.height and width in 0..a.width,\
-    \ \"\u884C\u756A\u53F7\u304C\u7BC4\u56F2\u5185\u3067\u3001\u6307\u5B9A\u3057\u305F\
-    \u884C\u306E\u9577\u3055\u304C\u5217\u6570\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\
-    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        a.rowBitsUnchecked(i, width)\n\
-    \n    proc rowBits*(a: MatrixMod2, i: int): string =\n        a.rowBits(i, a.width)\n\
-    \n    proc identityMatrixMod2*(n: int): MatrixMod2 =\n        result = initMatrixMod2(n,\
-    \ n)\n        for i in 0..<n: result[i, i] = true\n\n    proc transposed*(a: MatrixMod2):\
-    \ MatrixMod2 =\n        result = initMatrixMod2(a.width, a.height)\n        for\
-    \ i in 0..<a.height:\n            for j in 0..<a.width:\n                if a[i,\
-    \ j]: result[j, i] = true\n\n    {.push checks: off.}\n    proc multiplyUnchecked(a,\
-    \ b: MatrixMod2): MatrixMod2 =\n        result = initMatrixMod2(a.height, b.width)\n\
-    \        if a.height < 40 or a.width < 64:\n            let bt = b.transposed()\n\
-    \            for i in 0..<a.height:\n                for j in 0..<b.width:\n \
-    \                   var parity = 0\n                    for k in 0..<a.stride:\n\
-    \                        parity = parity xor ((word(a, i, k) and word(bt, j, k)).countSetBits\
+    \ untyped =\n        a.words[i * a.stride + k]\n\n    proc initMatrixMod2*[T:\
+    \ SomeInteger](a: openArray[seq[T]]): MatrixMod2 =\n        let w = if a.len ==\
+    \ 0: 0 else: a[0].len\n        result = initMatrixMod2(a.len, w)\n        for\
+    \ i in 0..<a.len:\n            assert a[i].len == w, \"\u884C\u5217\u306E\u5404\
+    \u884C\u306E\u9577\u3055\u306F\u5217\u6570\u3068\u4E00\u81F4\u3059\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059\"\n            for j, x in a[i]:\n      \
+    \          if (x and 1) != 0:\n                    word(result, i, j shr 6) =\
+    \ word(result, i, j shr 6) or (1'u64 shl (j and 63))\n\n    proc initMatrixMod2*(a:\
+    \ openArray[seq[bool]]): MatrixMod2 =\n        let w = if a.len == 0: 0 else:\
+    \ a[0].len\n        result = initMatrixMod2(a.len, w)\n        for i in 0..<a.len:\n\
+    \            assert a[i].len == w, \"\u884C\u5217\u306E\u5404\u884C\u306E\u9577\
+    \u3055\u306F\u5217\u6570\u3068\u4E00\u81F4\u3059\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n            for j, x in a[i]:\n                if x: word(result,\
+    \ i, j shr 6) = word(result, i, j shr 6) or (1'u64 shl (j and 63))\n\n    proc\
+    \ toMatrixMod2*[T](a: openArray[seq[T]]): MatrixMod2 = initMatrixMod2(a)\n   \
+    \ proc h*(a: MatrixMod2): int {.inline.} = a.height\n    proc w*(a: MatrixMod2):\
+    \ int {.inline.} = a.width\n\n    proc `[]`*(a: MatrixMod2, i, j: int): bool {.inline.}\
+    \ =\n        assert i in 0..<a.height and j in 0..<a.width, \"\u6307\u5B9A\u3057\
+    \u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
+    \u8981\u304C\u3042\u308A\u307E\u3059: i in 0 ..< a.height and j in 0 ..< a.width\"\
+    \n        (word(a, i, j shr 6) and (1'u64 shl (j and 63))) != 0\n\n    proc `[]=`*(a:\
+    \ var MatrixMod2, i, j: int, x: bool) {.inline.} =\n        assert i in 0..<a.height\
+    \ and j in 0..<a.width, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\
+    \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    : i in 0 ..< a.height and j in 0 ..< a.width\"\n        let mask = 1'u64 shl (j\
+    \ and 63)\n        if x: word(a, i, j shr 6) = word(a, i, j shr 6) or mask\n \
+    \       else: word(a, i, j shr 6) = word(a, i, j shr 6) and not mask\n\n    proc\
+    \ `[]=`*[T: SomeInteger](a: var MatrixMod2, i, j: int, x: T) {.inline.} =\n  \
+    \      a[i, j] = (x and 1) != 0\n\n    proc `==`*(a, b: MatrixMod2): bool =\n\
+    \        a.height == b.height and a.width == b.width and a.words == b.words\n\n\
+    \    proc `$`*(a: MatrixMod2): string =\n        for i in 0..<a.height:\n    \
+    \        if i > 0: result.add '\\n'\n            for j in 0..<a.width:\n     \
+    \           if j > 0: result.add ' '\n                result.add(if a[i, j]: '1'\
+    \ else: '0')\n\n    {.push checks: off.}\n    proc setRowBitsUnchecked(a: var\
+    \ MatrixMod2, i: int, values: string) =\n        for k in 0..<a.stride:\n    \
+    \        word(a, i, k) = 0\n        for j in 0..<values.len:\n            if values[j]\
+    \ == '1':\n                word(a, i, j shr 6) = word(a, i, j shr 6) or (1'u64\
+    \ shl (j and 63))\n\n    proc rowBitsUnchecked(a: MatrixMod2, i, width: int):\
+    \ string =\n        result = newString(width)\n        for j in 0..<width:\n \
+    \           result[j] = char(ord('0') + int((word(a, i, j shr 6) shr (j and 63))\
+    \ and 1))\n    {.pop.}\n\n    proc setRowBits*(a: var MatrixMod2, i: int, values:\
+    \ string) =\n        assert i in 0..<a.height and values.len <= a.width, \"\u884C\
+    \u756A\u53F7\u304C\u7BC4\u56F2\u5185\u3067\u3001\u6307\u5B9A\u3057\u305F\u884C\
+    \u306E\u9577\u3055\u304C\u5217\u6570\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n        a.setRowBitsUnchecked(i, values)\n\n\
+    \    proc rowBits*(a: MatrixMod2, i, width: int): string =\n        assert i in\
+    \ 0..<a.height and width in 0..a.width, \"\u884C\u756A\u53F7\u304C\u7BC4\u56F2\
+    \u5185\u3067\u3001\u6307\u5B9A\u3057\u305F\u884C\u306E\u9577\u3055\u304C\u5217\
+    \u6570\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        a.rowBitsUnchecked(i, width)\n\n    proc rowBits*(a: MatrixMod2, i:\
+    \ int): string =\n        a.rowBits(i, a.width)\n\n    proc identityMatrixMod2*(n:\
+    \ int): MatrixMod2 =\n        result = initMatrixMod2(n, n)\n        for i in\
+    \ 0..<n: result[i, i] = true\n\n    proc transposed*(a: MatrixMod2): MatrixMod2\
+    \ =\n        result = initMatrixMod2(a.width, a.height)\n        for i in 0..<a.height:\n\
+    \            for j in 0..<a.width:\n                if a[i, j]: result[j, i] =\
+    \ true\n\n    {.push checks: off.}\n    proc multiplyUnchecked(a, b: MatrixMod2):\
+    \ MatrixMod2 =\n        result = initMatrixMod2(a.height, b.width)\n        if\
+    \ a.height < 40 or a.width < 64:\n            let bt = b.transposed()\n      \
+    \      for i in 0..<a.height:\n                for j in 0..<b.width:\n       \
+    \             var parity = 0\n                    for k in 0..<a.stride:\n   \
+    \                     parity = parity xor ((word(a, i, k) and word(bt, j, k)).countSetBits\
     \ and 1)\n                    if parity != 0: result[i, j] = true\n        else:\n\
     \            # Method of Four Russians: process eight columns of a at once and\n\
     \            # look up the corresponding xor of rows of b.\n            const\
@@ -175,15 +173,24 @@ data:
     \ base = a\n        var e = exponent\n        while e > 0:\n            if (e\
     \ and 1) != 0: result *= base\n            e = e shr 1\n            if e > 0:\
     \ base *= base\n\n    proc `**`*(a: MatrixMod2, exponent: int): MatrixMod2 = a.pow(exponent)\n\
-    \n    proc rank*(a: MatrixMod2): int =\n        ## \u968E\u6570\u3092\u6C42\u3081\
-    \u308B\u3002\u7A7A\u884C\u5217\u306F\u30B3\u30D4\u30FC\u3084\u5217\u8D70\u67FB\
-    \u3092\u305B\u305AO(1)\u3067\u8FD4\u3059\u3002\n        if a.height == 0 or a.width\
-    \ == 0: return 0\n        var b = a\n        for col in 0..<b.width:\n       \
-    \     var pivot = result\n            while pivot < b.height and not b[pivot,\
-    \ col]: inc pivot\n            if pivot == b.height: continue\n            swapRows(b,\
-    \ result, pivot)\n            for i in result + 1..<b.height:\n              \
-    \  if b[i, col]:\n                    for k in 0..<b.stride: word(b, i, k) = word(b,\
-    \ i, k) xor word(b, result, k)\n            inc result\n            if result\
+    \n    proc rank*(a: MatrixMod2): int =\n        ## \u968E\u6570\u3092O(h*w+h*min(h,w)*ceil(w/64))\u3067\
+    \u6C42\u3081\u308B\u3002\u5143\u306E\u884C\u5217\u306F\u5909\u66F4\u305B\u305A\
+    \u3001\u7A7A\u884C\u5217\u306FO(1)\u3067\u8FD4\u3059\u3002\n        if a.height\
+    \ == 0 or a.width == 0: return 0\n        var b = a\n        let data = cast[ptr\
+    \ UncheckedArray[uint64]](addr b.words[0])\n        for col in 0..<b.width:\n\
+    \            let firstWord = col shr 6\n            let mask = 1'u64 shl (col\
+    \ and 63)\n            var pivot = result\n            while pivot < b.height\
+    \ and (data[pivot * b.stride + firstWord] and mask) == 0: inc pivot\n        \
+    \    if pivot == b.height: continue\n            let pivotRow = cast[ptr UncheckedArray[uint64]](addr\
+    \ data[result * b.stride])\n            # \u672A\u51E6\u7406\u306E\u884C\u306F\
+    \u73FE\u5728\u306E\u5217\u3088\u308A\u524D\u304C\u3059\u3079\u3066\u96F6\u306A\
+    \u306E\u3067\u3001\u73FE\u5728\u306E\u30EF\u30FC\u30C9\u4EE5\u964D\u3060\u3051\
+    \u64CD\u4F5C\u3059\u308B\u3002\n            if pivot != result:\n            \
+    \    for k in firstWord..<b.stride: swap(pivotRow[k], data[pivot * b.stride +\
+    \ k])\n            for i in result + 1..<b.height:\n                let row =\
+    \ cast[ptr UncheckedArray[uint64]](addr data[i * b.stride])\n                if\
+    \ (row[firstWord] and mask) != 0:\n                    for k in firstWord..<b.stride:\
+    \ row[k] = row[k] xor pivotRow[k]\n            inc result\n            if result\
     \ == b.height: break\n\n    proc determinant*(a: MatrixMod2): bool =\n       \
     \ assert a.height == a.width, \"\u884C\u5217\u306F\u6B63\u65B9\u884C\u5217\u3067\
     \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        a.rank == a.height\n\
@@ -252,7 +259,7 @@ data:
   requiredBy:
   - verify/matrix/linear_algebra/system_mod2_driver.nim
   - verify/matrix/linear_algebra/system_mod2_driver.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-30 06:05:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/inverse_matrix_mod_2_test.nim

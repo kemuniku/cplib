@@ -80,16 +80,16 @@ data:
     \  doAssert visited == @[1, 1, 1, 1, 1, 1]\n"
   dependsOn:
   - cplib/modint/modint.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/mo.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/mo.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/mo_test.nim

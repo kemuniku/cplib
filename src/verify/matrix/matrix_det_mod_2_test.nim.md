@@ -39,16 +39,16 @@ data:
     \ = stdin.readLine.parseInt\nvar a = initMatrixMod2(n, n)\nfor i in 0..<n:\n \
     \   let s = stdin.readLine\n    for j in 0..<n: a[i, j] = s[j] == '1'\necho int(a.determinant)\n"
   dependsOn:
+  - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: true
   path: verify/matrix/matrix_det_mod_2_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-09-30 06:05:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_det_mod_2_test.nim

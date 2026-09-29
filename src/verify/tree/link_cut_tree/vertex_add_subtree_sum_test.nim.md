@@ -49,9 +49,9 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/tree/link_cut_tree.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/utils/backwards_index.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/tree/link_cut_tree.nim
   - cplib/tree/link_cut_tree.nim
   isVerificationFile: true
   path: verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
