@@ -113,9 +113,9 @@ data:
   - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
   - cplib/convolution/min_plus_convolution.nim
-  - cplib/utils/monotone_minima.nim
-  - cplib/convolution/min_plus_convolution.nim
   - cplib/utils/smawk.nim
+  - cplib/convolution/min_plus_convolution.nim
+  - cplib/utils/monotone_minima.nim
   isVerificationFile: true
   path: verify/AI/min_plus_convolution_test.nim
   requiredBy: []

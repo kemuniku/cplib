@@ -78,8 +78,8 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

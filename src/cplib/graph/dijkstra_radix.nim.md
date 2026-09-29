@@ -120,12 +120,12 @@ data:
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/collections/radix_heap.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra_radix.nim
   requiredBy: []

@@ -50,12 +50,12 @@ data:
     \        seg.sort(l, r)\n    of 3:\n        let l = ii()\n        let r = ii()\n\
     \        seg.sort(l, r, Descending)\n    else:\n        discard\n"
   dependsOn:
+  - cplib/collections/range_sort_segtree.nim
+  - cplib/collections/range_sort_segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/range_sort_segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/range_sort_segtree.nim
   isVerificationFile: true
   path: verify/collections/range_sort_segtree_test.nim
   requiredBy: []

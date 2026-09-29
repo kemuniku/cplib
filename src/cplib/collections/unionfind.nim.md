@@ -9,6 +9,12 @@ data:
     path: cplib/geometry/euclidean_mst.nim
     title: cplib/geometry/euclidean_mst.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/manhattan_mst.nim
+    title: cplib/geometry/manhattan_mst.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/manhattan_mst.nim
+    title: cplib/geometry/manhattan_mst.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/kruskal.nim
     title: cplib/graph/kruskal.nim
   - icon: ':heavy_check_mark:'
@@ -105,6 +111,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/euclidean_mst_test.nim
     title: verify/geometry/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_random_test.nim
+    title: verify/geometry/manhattan_mst_random_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_random_test.nim
+    title: verify/geometry/manhattan_mst_random_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_test.nim
+    title: verify/geometry/manhattan_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_test.nim
+    title: verify/geometry/manhattan_mst_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -153,6 +171,8 @@ data:
   - cplib/graph/merge_tree.nim
   - cplib/graph/kruskal.nim
   - cplib/graph/kruskal.nim
+  - cplib/geometry/manhattan_mst.nim
+  - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/euclidean_mst.nim
   timestamp: '2026-07-09 02:51:42+09:00'
@@ -160,6 +180,10 @@ data:
   verifiedWith:
   - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_random_test.nim
+  - verify/geometry/manhattan_mst_random_test.nim
   - verify/collections/unionfind_test.nim
   - verify/collections/unionfind_test.nim
   - verify/AI/auto_rollback_scope_test.nim

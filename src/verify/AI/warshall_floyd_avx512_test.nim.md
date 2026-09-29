@@ -209,13 +209,13 @@ data:
     \    df.warshall_floyd_nonnegative_inplace()\n    df32.warshall_floyd_nonnegative_inplace()\n"
   dependsOn:
   - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/warshall_floyd_avx512.nim
+  - cplib/graph/warshall_floyd_avx512.nim
   - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/warshall_floyd_avx512.nim
-  - cplib/graph/warshall_floyd_avx512.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx512_test.nim
   requiredBy: []

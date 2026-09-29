@@ -128,9 +128,9 @@ data:
   - cplib/utils/project_selection.nim
   - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
-  - cplib/utils/k_project_selection.nim
-  - cplib/utils/k_project_selection.nim
   - cplib/graph/maxflow.nim
+  - cplib/utils/k_project_selection.nim
+  - cplib/utils/k_project_selection.nim
   isVerificationFile: true
   path: verify/AI/k_project_selection_test.nim
   requiredBy: []

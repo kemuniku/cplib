@@ -82,6 +82,12 @@ data:
     path: verify/geometry/euclidean_mst_test.nim
     title: verify/geometry/euclidean_mst_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_test.nim
+    title: verify/geometry/manhattan_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_test.nim
+    title: verify/geometry/manhattan_mst_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/biconnected_components_test.nim
     title: verify/graph/biconnected_components_test.nim
   - icon: ':heavy_check_mark:'
@@ -985,6 +991,8 @@ data:
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/double_ended_priority_queue_test.nim

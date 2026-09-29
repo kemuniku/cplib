@@ -62,9 +62,9 @@ data:
     \ \"z\" & longString, 1) == 1\ndoAssert editDistance(\"z\" & longString, longString,\
     \ 1) == 1\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/collections/staticRMQ.nim
   - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim

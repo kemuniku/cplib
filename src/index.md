@@ -381,6 +381,9 @@ data:
       path: cplib/geometry/intersect.nim
       title: cplib/geometry/intersect.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/geometry/manhattan_mst.nim
+      title: cplib/geometry/manhattan_mst.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/polygon.nim
       title: cplib/geometry/polygon.nim
     - icon: ':heavy_check_mark:'
@@ -2664,6 +2667,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/euclidean_mst_test.nim
       title: verify/geometry/euclidean_mst_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/manhattan_mst_random_test.nim
+      title: verify/geometry/manhattan_mst_random_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/manhattan_mst_test.nim
+      title: verify/geometry/manhattan_mst_test.nim
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'

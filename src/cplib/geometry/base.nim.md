@@ -33,6 +33,12 @@ data:
     path: cplib/geometry/intersect.nim
     title: cplib/geometry/intersect.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/manhattan_mst.nim
+    title: cplib/geometry/manhattan_mst.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/manhattan_mst.nim
+    title: cplib/geometry/manhattan_mst.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   - icon: ':heavy_check_mark:'
@@ -243,6 +249,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/euclidean_mst_test.nim
     title: verify/geometry/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_random_test.nim
+    title: verify/geometry/manhattan_mst_random_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_random_test.nim
+    title: verify/geometry/manhattan_mst_random_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_test.nim
+    title: verify/geometry/manhattan_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/manhattan_mst_test.nim
+    title: verify/geometry/manhattan_mst_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -341,6 +359,8 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/manhattan_mst.nim
+  - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/projection.nim
@@ -356,6 +376,10 @@ data:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_random_test.nim
+  - verify/geometry/manhattan_mst_random_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim

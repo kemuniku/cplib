@@ -48,9 +48,9 @@ data:
 
     '
   dependsOn:
+  - cplib/collections/staticRMQ.nim
   - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim

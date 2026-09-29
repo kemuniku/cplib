@@ -129,8 +129,8 @@ data:
   dependsOn:
   - cplib/collections/retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
   isVerificationFile: false
   path: cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
   requiredBy: []
