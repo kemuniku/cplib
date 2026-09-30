@@ -58,7 +58,7 @@ when not declared CPLIB_GRAPH_TSP:
         var start = newSeqWith(len(dist), inf)
         start[start_v] = zero
         var res = solveTSP(dist, start, inf)
-        result = inf
+        result = res[goal_v][^1]
         for i in 0..<len(dist):
             result = min(result,res[i][^1] + dist[i][goal_v])
         return result
