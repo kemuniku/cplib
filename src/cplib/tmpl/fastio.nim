@@ -729,6 +729,15 @@ CPLIB_FASTIO_READ_ARRAY(cplib_fio_read_u64_array, uint64_t, cplib_fio_read_uint_
         if length != 0:
             fastioCopyToken(addr result[0], source, length)
 
+    proc input(valueType: typedesc[char]): char {.inline.} =
+        ## 空白を読み飛ばして1文字読む。文字列を確保せず、EOFでは'\0'を返す。
+        var c = fastioGetChar()
+        while c >= 0 and c <= ord(' '):
+            c = fastioGetChar()
+        if c < 0:
+            return '\0'
+        return char(c)
+
     proc input(valueType: typedesc[string]): string {.inline.} =
         si()
 

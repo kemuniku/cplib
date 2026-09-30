@@ -15,6 +15,7 @@ static:
 doAssert compiles(ii())
 doAssert compiles(lii(3))
 doAssert compiles(si())
+doAssert typeof(input(char)) is char
 doAssert typeof(input(string)) is string
 doAssert typeof(input(3, string)) is seq[string]
 doAssert not compiles(input(seq[char]))

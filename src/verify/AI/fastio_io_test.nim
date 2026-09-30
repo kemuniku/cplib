@@ -48,6 +48,10 @@ for token in splitValues:
         let padding = (blockSize - offset - (inputFile.getFilePos().int mod blockSize) + blockSize) mod blockSize
         inputFile.write(repeat(' ', padding))
         inputFile.write(token & "\n")
+for offset in [0, 1]:
+    let padding = (blockSize - offset - (inputFile.getFilePos().int mod blockSize)) mod blockSize
+    inputFile.write(repeat(' ', padding))
+    inputFile.write("LR \t\r\n42 word \xff\n")
 let longToken = repeat("abcdefghij", blockSize div 3)
 let tokens = @["hello", "\xff\xfeabc", longToken, "tail"]
 for i, token in tokens:
@@ -76,7 +80,14 @@ for token in splitValues:
         elif token == $high(int64): doAssert input(int64) == high(int64)
         elif token == $high(uint64): doAssert input(uint64) == high(uint64)
         else: doAssert input(uint32) == 42
+for offset in [0, 1]:
+    doAssert input(char) == 'L'
+    doAssert input(char) == 'R'
+    doAssert input(int) == 42
+    doAssert input(string) == "word"
+    doAssert input(char) == '\xff'
 for token in tokens: doAssert si() == token
+for _ in 0..<2: doAssert input(char) == '\0'
 doAssert si() == ""
 doAssert input(int64) == 0
 doAssert input(uint64) == 0
