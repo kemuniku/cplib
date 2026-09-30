@@ -65,11 +65,11 @@ when not declared CPLIB_MATH_FRACTIONS:
         x.check_and_reduce()
     proc `>`*[T](x, y: Fraction[T]): bool =
         if isNaN(x) or isNaN(y): return false
-        if x.den == 0 and y.den == 0: return x.num > y.num
+        if x.den == 0 and y.den == 0: return x.num > 0 and y.num < 0
         x.num * y.den > y.num * x.den
     proc `<`*[T](x, y: Fraction[T]): bool =
         if isNaN(x) or isNaN(y): return false
-        if x.den == 0 and y.den == 0: return x.num < y.num
+        if x.den == 0 and y.den == 0: return x.num < 0 and y.num > 0
         x.num * y.den < y.num * x.den
     proc `==`*[T](x, y: Fraction[T]): bool =
         if isNaN(x) or isNaN(y): return false
