@@ -118,10 +118,10 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
         if not flag:
             var cid = self.F.cycle_number[root]
             var csiz = self.F.cyclesize(start)
-            var k = k - self.F.depth(start) + 1
+            let cycle_visits = uint(k - self.F.depth(start)) + 1'u
             
             # csizごと進む処理
-            var x = k div csiz
+            var x = cycle_visits div uint(csiz)
             var v : T
             var root_idx = self.F.cycle_idx[root]
             if root_idx == 0:
@@ -141,7 +141,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
 
             # 余りを処理
             var l = self.F.cycle_idx[root]
-            var m = k mod csiz
+            var m = int(cycle_visits mod uint(csiz))
             var r = l + m
             if r <= csiz:
                 result = self.op(result,self.st_cycle[(l+self.cum_cyclesize[cid])..<(r+self.cum_cyclesize[cid])])
