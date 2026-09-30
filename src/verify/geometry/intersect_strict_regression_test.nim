@@ -39,6 +39,19 @@ checkSymmetries(
     initSegment(initPoint(1.0 - GEOMETRY_EPS / 4, 0.0), initPoint(2.0, 0.0)),
     false, true)
 
+checkSymmetries(
+    initSegment(initPoint(0.0, 0.0), initPoint(0.1, 0.0)),
+    initSegment(initPoint(0.0, 5e-10), initPoint(100.0, 5e-10)),
+    false, false)
+checkSymmetries(
+    initSegment(initPoint(0.0, 0.0), initPoint(0.0, 0.1)),
+    initSegment(initPoint(5e-10, 0.0), initPoint(5e-10, 100.0)),
+    false, false)
+checkSymmetries(
+    initSegment(initPoint(0.0, 0.0), initPoint(0.1, 0.0)),
+    initSegment(initPoint(0.0, 0.0), initPoint(100.0, 0.0)),
+    true, true)
+
 proc orientation(a, b, c: Point[int]): int =
     let value = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
     if value < 0: -1
