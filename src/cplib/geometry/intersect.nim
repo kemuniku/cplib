@@ -6,10 +6,8 @@ when not declared CPLIB_GEOMETRY_INTERSECT:
     proc intersect*[T](s1, s2: Segment[T], strict: bool = false): bool =
         ##線分 s1, s2 が交わるかどうかを判定、端点のみで交わる場合を含まない場合は strict = true を設定
         if strict:
-            if ccw(s1, s2.s, true) == ON_SEGMENT: return online(s1, s2.t)
-            if ccw(s1, s2.t, true) == ON_SEGMENT: return online(s1, s2.s)
-            if ccw(s2, s2.s, true) == ON_SEGMENT: return online(s2, s2.t)
-            if ccw(s2, s2.t, true) == ON_SEGMENT: return online(s2, s2.s)
+            if online(s1, s2.s) and online(s1, s2.t):
+                return max(min(s1.s, s1.t), min(s2.s, s2.t)) < min(max(s1.s, s1.t), max(s2.s, s2.t))
             return (ccw(s1, s2.s) * ccw(s1, s2.t) < 0) and (ccw(s2, s1.s) * ccw(s2, s1.t) < 0)
         return (ccw(s1, s2.s) * ccw(s1, s2.t) <= 0) and (ccw(s2, s1.s) * ccw(s2, s1.t) <= 0)
 
