@@ -49,7 +49,8 @@ when not declared CPLIB_MATH_XOR_BASIS:
     proc kth_smallest*(self:XorBasis,k:int):int=
         ## 作成可能な値の中でk番目に小さいものを求めます。
         ## 存在しない場合は、-1を返します。
-        if k >= (1 shl len(self.basis)):
+        if k < 0 or (len(self.basis) < sizeof(int) * 8 - 1 and
+                k >= (1 shl len(self.basis))):
             return -1
         for i in 0..<len(self.basis):
             if (k and (1 shl i)) != 0:
@@ -90,7 +91,8 @@ when not declared CPLIB_MATH_XOR_BASIS:
     proc xor_kth*(self:XorBasis,x:int,k:int):int=
         ## 作成可能な値の中でxとxorを取ったときにk番目に小さくなるもの
         ## 存在しないならば-1を返す。
-        if k >= (1 shl len(self.basis)):
+        if k < 0 or (len(self.basis) < sizeof(int) * 8 - 1 and
+                k >= (1 shl len(self.basis))):
             return -1
         
         var v = self.xor_min(x) xor x
