@@ -9,6 +9,7 @@ when not declared CPLIB_COLLECTIONS_LICHAOTREE:
         A : seq[int]
         B : seq[int]
         lastnode : int
+        coordinate_count : int
 
     proc initLiChaoTree*(X:openArray[int]):LiChaoTree=
         ## LiChaoTreeを初期化します
@@ -18,7 +19,8 @@ when not declared CPLIB_COLLECTIONS_LICHAOTREE:
         while lastnode < len(X):
             lastnode *= 2
         result = LiChaoTree()
-        result.X = newseqwith(lastnode+1,int(INF32))
+        result.coordinate_count = X.len
+        result.X = newseqwith(lastnode,if X.len > 0: X[^1] else: 0)
         for i in 0..<len(X):
             result.X[i] = X[i]
         result.A = newseqwith(2*lastnode,0)
@@ -85,8 +87,8 @@ when not declared CPLIB_COLLECTIONS_LICHAOTREE:
         ## xは32bit整数に収まるようにしてください。
         ## 線分が存在しない場合、INF64が返ります。
         ## xは初期化時に与える必要があります。
-        var now = self.X.binarySearch(x)
-        assert now != -1, "クエリ座標は初期化時に登録されている必要があります"
+        var now = self.X.lowerBound(x)
+        assert now < self.coordinate_count and self.X[now] == x, "クエリ座標は初期化時に登録されている必要があります"
         now+=self.lastnode
         result = INF64
         while now != 0:
