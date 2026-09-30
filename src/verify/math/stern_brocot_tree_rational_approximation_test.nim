@@ -1,17 +1,14 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/rational_approximation
 import cplib/math/stern_brocot_tree
-import strutils
+include cplib/tmpl/fastio
 
-let t = stdin.readLine.parseInt
+let t = input(int)
 for _ in 0..<t:
-    let query = stdin.readLine.splitWhitespace
-    let n = query[0].parseInt
-    let x = query[1].parseInt
-    let y = query[2].parseInt
-    let bounds = get_bounds(proc(v: SBTNode[int]): bool =
-        v.den() != 0 and v.num() * y <= x * v.den()
-    , n)
+    let n = input(int)
+    let x = input(int)
+    let y = input(int)
+    let bounds = get_bounds(x, y, n)
     if bounds.p * y == bounds.q * x:
-        echo bounds.p, " ", bounds.q, " ", bounds.p, " ", bounds.q
+        print(bounds.p, bounds.q, bounds.p, bounds.q)
     else:
-        echo bounds.p, " ", bounds.q, " ", bounds.r, " ", bounds.s
+        print(bounds.p, bounds.q, bounds.r, bounds.s)
