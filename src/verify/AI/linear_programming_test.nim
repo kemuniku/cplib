@@ -186,4 +186,27 @@ block:
                 b.add(4)
         checkExact(a, b, c)
 
+block:
+    for scale in [1.0, 1e3, 1e5, 1e6]:
+        for objective in [-1.0, 0.0, 1.0]:
+            let a = @[@[scale], @[-scale]]
+            let b = @[100.0 * scale, -100.0 * scale]
+            checkOptimal(a, b, @[objective], 100.0 * objective)
+            doAssert abs(linear_programming(a, b, @[objective]).x[0] - 100.0) <= 1e-10
+            checkOptimal(@[a[1], a[0]], @[b[1], b[0]], @[objective], 100.0 * objective)
+        checkStatus(@[@[scale], @[-scale]], @[99.0 * scale, -100.0 * scale],
+            @[0.0], lpInfeasible)
+        checkStatus(@[@[-scale]], @[-100.0 * scale], @[1.0], lpUnbounded)
+    checkOptimal(@[@[1e5], @[-1e5], @[1e5]], @[1e7, -1e7, 1e7], @[0.0], 0.0)
+
+block:
+    for largeScale in [0.25, 1.0, 4.0, 16.0]:
+        for smallScale in [0.5, 1.0, 2.0]:
+            let a = @[@[-1e9 * largeScale], @[4.0 * smallScale]]
+            let b = @[-1.9e9 * largeScale, 7.0 * smallScale]
+            checkStatus(a, b, @[0.0], lpInfeasible)
+            checkStatus(@[a[1], a[0]], @[b[1], b[0]], @[0.0], lpInfeasible)
+    checkStatus(@[@[-1e9], @[4.0], @[8.0]], @[-1.9e9, 7.0, 14.0],
+        @[0.0], lpInfeasible)
+
 echo "Hello World"
