@@ -76,6 +76,17 @@ block:
         @[4e6, 2e6, 3e6], @[3.0, 2.0], 10.0)
     checkOptimal(@[@[1e-10]], @[1e-10], @[1.0], 1.0, eps = 1e-12)
 
+block:
+    for eps in [1e-12, 1e-9, 1e-6]:
+        for scale in [1.0, 1e6, 1e12]:
+            let a = @[@[1.0], @[scale]]
+            let b = @[eps * 0.5, 0.0]
+            checkOptimal(a, b, @[1e12], 0.0, eps)
+            doAssert linear_programming(a, b, @[1e12], eps).x == @[0.0]
+            checkOptimal(@[a[1], a[0]], @[b[1], b[0]], @[1e12], 0.0, eps)
+    checkOptimal(@[@[1.0], @[1e12], @[2e12]], @[5e-10, 0.0, 0.0], @[1e12], 0.0)
+    checkOptimal(@[@[1.0], @[2.0], @[3.0]], @[1.0, 2.0, 3.0], @[1.0], 1.0)
+
 proc determinant(a: seq[seq[int64]]): int64 =
     let n = a.len
     if n == 0: return 1
