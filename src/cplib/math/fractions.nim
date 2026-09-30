@@ -119,10 +119,11 @@ when not declared CPLIB_MATH_FRACTIONS:
     proc toFloat*[T](x: Fraction[T]): float =
         x.num / x.den
     proc pow*[T](x: Fraction[T], n: int): Fraction[T] =
+        ## 分数の非負整数乗を求める。O(log(n + 1))。
         result = initFraction[T](1)
         var x = x
         var n = n
         while n > 0:
             if (n and 1) == 1: result *= x
-            x *= x
+            if n > 1: x *= x
             n = n shr 1
