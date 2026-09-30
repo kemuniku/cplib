@@ -103,8 +103,9 @@ data:
     \ get_subtree_sum*(node:VirtualTrieNode):int=\n        if node.now.len() == 0:\n\
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
   - cplib/graph/graph.nim
@@ -112,7 +113,6 @@ data:
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   - cplib/graph/graph.nim
-  - cplib/collections/staticRMQ.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []

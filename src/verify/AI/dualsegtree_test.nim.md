@@ -44,9 +44,9 @@ data:
     \ == 0\nassert empty.toSeq == newSeq[int]()\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/dualsegtree.nim
+  - cplib/collections/dualsegtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/dualsegtree.nim
-  - cplib/collections/dualsegtree.nim
   isVerificationFile: true
   path: verify/AI/dualsegtree_test.nim
   requiredBy: []

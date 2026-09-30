@@ -2339,6 +2339,9 @@ data:
       path: verify/collections/waveletmatrix_test.nim
       title: verify/collections/waveletmatrix_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/weightedunionfind_assertions_off_test.nim
+      title: verify/collections/weightedunionfind_assertions_off_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/word_size_tree_test.nim
       title: verify/collections/word_size_tree_test.nim
   - name: verify/collections/avlset

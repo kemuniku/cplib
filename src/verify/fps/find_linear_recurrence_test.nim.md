@@ -76,14 +76,14 @@ data:
 
     '
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
   - cplib/fps/berlekamp_massey.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/fps/berlekamp_massey.nim
   isVerificationFile: true
