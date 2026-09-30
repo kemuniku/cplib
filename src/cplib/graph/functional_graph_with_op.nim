@@ -202,9 +202,9 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
         # 数列を @[x] からスタートし、f(数列のprod)が初めてfalseになるまでの移動距離を返す。
         # ただし、移動距離の上限はLとする（L回移動してもtrueならLを返す）。
         assert L >= 0, "Lは非負である必要があります"
-        let limit = L+1 # 移動距離Lは、始点を含めてL+1頂点
+        let limit = uint(L)+1'u # 移動距離Lは、始点を含めてL+1頂点
         var value = self.e
-        var used = 0
+        var used = 0'u
 
         # xからサイクル入口まで。st_hldはHLD順を反転して構築されているため、
         # path(...,true)の各区間を左から見るとfunctional graph上の移動順になる。
@@ -215,7 +215,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
         value = self.st_hld[tree_path[0][0]]
         if not f(value):
             return 0
-        used = 1
+        used = 1'u
         if used == limit:
             return L
 
@@ -223,16 +223,16 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
         for (l,r) in tree_path:
             let nl = l+int(first_segment) # 始点は処理済み
             first_segment = false
-            let nr = min(r,nl+limit-used)
+            let nr = nl+int(min(uint(r-nl),limit-used))
             if nl < nr:
                 let max_right = self.st_hld.max_right(nl,proc(v:T):bool=
                     f(self.op(value,v))
                 )
                 if max_right < nr:
-                    used += max_right-nl
-                    return used
+                    used += uint(max_right-nl)
+                    return int(used)
                 value = self.op(value,self.st_hld.get(nl,nr))
-                used += nr-nl
+                used += uint(nr-nl)
             if used == limit:
                 return L
 
@@ -251,7 +251,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
         )
 
         # 入れられる完全な周回数を、周回積のダブリングで求める。
-        let max_cycles = (limit-used) div csiz
+        let max_cycles = int((limit-used) div uint(csiz))
         if max_cycles > 0:
             var powers = @[one_cycle]
             var block_size = 1
@@ -267,12 +267,12 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
                     if f(next_value):
                         value = next_value
                         accepted += cnt
-            used += accepted*csiz
+            used += uint(accepted*csiz)
             if used == limit:
                 return L
 
         # 最大周回数の次の1周内で止まる。高々2区間をmax_rightすればよい。
-        var rest = min(limit-used,csiz)
+        var rest = int(min(limit-used,uint(csiz)))
         proc consume_cycle(l,r:int):bool=
             if l == r:
                 return true
@@ -280,16 +280,16 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
                 f(self.op(value,v))
             )
             if nr < offset+r:
-                used += nr-(offset+l)
+                used += uint(nr-(offset+l))
                 return false
             value = self.op(value,cycle_prod(l,r))
-            used += r-l
+            used += uint(r-l)
             return true
 
         let first = min(rest,csiz-cycle_start)
         if not consume_cycle(cycle_start,cycle_start+first):
-            return used
+            return int(used)
         rest -= first
         if rest > 0 and not consume_cycle(0,rest):
-            return used
-        return used-1
+            return int(used)
+        return int(used-1'u)
