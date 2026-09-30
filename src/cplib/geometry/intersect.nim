@@ -23,8 +23,8 @@ when not declared CPLIB_GEOMETRY_INTERSECT:
                 ## 最大成分で正規化してユークリッド長を求める
                 let scale = max(abs(v.x), abs(v.y))
                 if scale == 0: return T(0)
-                let w = v / scale
-                scale * sqrt(w.norm)
+                let w = initPoint(v.x / scale, v.y / scale)
+                scale * T(sqrt(w.norm))
             proc pointDistance(p: Point[T], s: Segment[T], unit: Point[T]): T =
                 ## 点と線分の距離を射影位置に応じて求める
                 let offset = p - s.s
@@ -51,10 +51,12 @@ when not declared CPLIB_GEOMETRY_INTERSECT:
             let scale1 = max(abs(d1.x), abs(d1.y))
             let scale2 = max(abs(d2.x), abs(d2.y))
             if scale1 == 0 or scale2 == 0: return false
-            let v1 = d1 / scale1
-            let v2 = d2 / scale2
-            let u1 = v1 / sqrt(v1.norm)
-            let u2 = v2 / sqrt(v2.norm)
+            let v1 = initPoint(d1.x / scale1, d1.y / scale1)
+            let v2 = initPoint(d2.x / scale2, d2.y / scale2)
+            let norm1 = T(sqrt(v1.norm))
+            let norm2 = T(sqrt(v2.norm))
+            let u1 = initPoint(v1.x / norm1, v1.y / norm1)
+            let u2 = initPoint(v2.x / norm2, v2.y / norm2)
             let r1 = cross(u1, b.s - a.s)
             let r2 = cross(u1, b.t - a.s)
             let r3 = cross(u2, a.s - b.s)

@@ -214,7 +214,8 @@ for scale in [1e-3'f32, 1.0'f32]:
     let x = initPoint(scale, 0.0'f32)
     let y = initPoint(0.0'f32, scale)
     checkSymmetries(initSegment(-x, x), initSegment(-y, y), true, true)
-    checkSymmetries(initSegment(origin, x), initSegment(x, x * 2), false, true)
+    checkSymmetries(initSegment(origin, x),
+        initSegment(x, initPoint(scale + scale, 0.0'f32)), false, true)
     checkSymmetries(initSegment(origin, x), initSegment(y, y + x), false, false)
 
 
