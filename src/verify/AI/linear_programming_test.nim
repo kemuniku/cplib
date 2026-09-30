@@ -199,4 +199,14 @@ block:
         checkStatus(@[@[-scale]], @[-100.0 * scale], @[1.0], lpUnbounded)
     checkOptimal(@[@[1e5], @[-1e5], @[1e5]], @[1e7, -1e7, 1e7], @[0.0], 0.0)
 
+block:
+    for largeScale in [0.25, 1.0, 4.0, 16.0]:
+        for smallScale in [0.5, 1.0, 2.0]:
+            let a = @[@[-1e9 * largeScale], @[4.0 * smallScale]]
+            let b = @[-1.9e9 * largeScale, 7.0 * smallScale]
+            checkStatus(a, b, @[0.0], lpInfeasible)
+            checkStatus(@[a[1], a[0]], @[b[1], b[0]], @[0.0], lpInfeasible)
+    checkStatus(@[@[-1e9], @[4.0], @[8.0]], @[-1.9e9, 7.0, 14.0],
+        @[0.0], lpInfeasible)
+
 echo "Hello World"

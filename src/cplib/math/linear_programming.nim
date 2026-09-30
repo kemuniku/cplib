@@ -53,6 +53,31 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
             if row == -1: return false
             t.lpPivot(row, col)
 
+    proc lpCheckFeasible(t: LinearProgrammingTableau, a: openArray[seq[float64]],
+            b: openArray[float64]): bool =
+        ## 基底から復元した解を元の制約で再確認する。O(mn) 時間。
+        var x = newSeq[float64](t.n)
+        for i in 0..<t.m:
+            if 0 <= t.basic[i] and t.basic[i] < t.n:
+                let value = t.data[i][t.n + 1]
+                if not (value > -Inf and value < Inf): return false
+                if value < -t.eps: return false
+                x[t.basic[i]] = max(0.0, value)
+        for i in 0..<t.m:
+            var left = 0.0
+            var scale = abs(b[i])
+            for j in 0..<t.n:
+                let term = a[i][j] * x[j]
+                left += term
+                scale += abs(term)
+            if not (left > -Inf and left < Inf and scale < Inf): return false
+            # eps は絶対誤差のまま、内積と基底復元の丸めに機械精度の余裕を加える。
+            let roundoff = (8.0 * (float64(t.n) + 1.0) * 2.220446049250313e-16) * scale
+            let tolerance = t.eps + roundoff
+            if not (tolerance < Inf): return false
+            if left - b[i] > tolerance: return false
+        return true
+
     proc linear_programming*(a: openArray[seq[float64]], b, c: openArray[float64],
             eps: float64 = 1e-9): LinearProgrammingResult =
         ## Ax <= b, x >= 0 のもとで c^T x を最大化する。空間 O((m + 1)(n + 1))、時間は反復回数倍。
@@ -91,8 +116,10 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
         if row != -1 and t.data[row][n + 1] < -eps:
             t.lpPivot(row, n)
             # 補助目的は非負の人工変数の符号を反転した値なので、正の丸め誤差では棄却しない。
-            if not t.lpSimplex(true) or t.data[m + 1][n + 1] < -eps:
+            if not t.lpSimplex(true) or t.data[m + 1][n + 1] < -eps or
+                    t.data[m + 1][n + 1] == Inf:
                 return LinearProgrammingResult(status: lpInfeasible, value: -Inf)
+            let checkFeasible = t.data[m + 1][n + 1] > eps
             for i in 0..<m:
                 if t.basic[i] != -1: continue
                 var col = -1
@@ -102,6 +129,9 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
                             col = j
                 if col != -1:
                     t.lpPivot(i, col)
+            # 正の残差だけでは実行可能とも断定できないので、元の制約も確認する。
+            if checkFeasible and not t.lpCheckFeasible(a, b):
+                return LinearProgrammingResult(status: lpInfeasible, value: -Inf)
 
         if not t.lpSimplex(false):
             return LinearProgrammingResult(status: lpUnbounded, value: Inf)
