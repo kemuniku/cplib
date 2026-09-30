@@ -90,7 +90,8 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
                 row = i
         if row != -1 and t.data[row][n + 1] < -eps:
             t.lpPivot(row, n)
-            if not t.lpSimplex(true) or abs(t.data[m + 1][n + 1]) > eps:
+            # 補助目的は非負の人工変数の符号を反転した値なので、正の丸め誤差では棄却しない。
+            if not t.lpSimplex(true) or t.data[m + 1][n + 1] < -eps:
                 return LinearProgrammingResult(status: lpInfeasible, value: -Inf)
             for i in 0..<m:
                 if t.basic[i] != -1: continue
