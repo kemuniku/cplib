@@ -19,10 +19,12 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
         for bit in 1..<(1 shl k):
             for u in 0..<n:
                 for bn in bitsubset(bit):
-                    dp[bit][u] = min(dp[bit][u], dp[bn][u] + dp[bit xor bn][u])
+                    if dp[bn][u] != inf and dp[bit xor bn][u] != inf:
+                        dp[bit][u] = min(dp[bit][u], dp[bn][u] + dp[bit xor bn][u])
             var q = initHeapQueue[(T, int)]()
             for u in 0..<n:
-                q.push((dp[bit][u], u))
+                if dp[bit][u] != inf:
+                    q.push((dp[bit][u], u))
             while q.len > 0:
                 var (d, u) = q.pop
                 if dp[bit][u] != d: continue
