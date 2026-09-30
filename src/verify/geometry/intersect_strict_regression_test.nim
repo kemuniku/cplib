@@ -1,4 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+import cplib/math/fractions
 import cplib/geometry/base
 import cplib/geometry/intersect
 
@@ -51,6 +52,38 @@ checkSymmetries(
     initSegment(initPoint(0.0, 0.0), initPoint(0.1, 0.0)),
     initSegment(initPoint(0.0, 0.0), initPoint(100.0, 0.0)),
     true, true)
+
+checkSymmetries(
+    initSegment(initPoint(0.0, 10.0), initPoint(5e-11, 0.0)),
+    initSegment(initPoint(-1.5e-10, 40.0), initPoint(5e-11, 0.0)),
+    true, true)
+
+proc checkProjectedIntervals[T](direction: Point[T]) =
+    let p0 = direction * 0
+    let p1 = direction * 1
+    let p2 = direction * 2
+    let p3 = direction * 3
+    let p4 = direction * 4
+    checkSymmetries(initSegment(p1, p2), initSegment(p0, p4), true, true)
+    checkSymmetries(initSegment(p1, p3), initSegment(p2, p4), true, true)
+    checkSymmetries(initSegment(p0, p2), initSegment(p2, p4), false, true)
+    checkSymmetries(initSegment(p0, p1), initSegment(p2, p3), false, false)
+
+for scale in [1.0 / 1024.0, 1.0, 1024.0]:
+    for aspect in [0.0, 1.0 / 1099511627776.0, 1.0 / 4294967296.0, 1.0]:
+        for sx in [-1.0, 1.0]:
+            for sy in [-1.0, 1.0]:
+                let dx = sx * scale * aspect
+                let dy = sy * scale
+                checkProjectedIntervals(initPoint(dx, dy))
+                checkProjectedIntervals(initPoint(dy, dx))
+
+for dx in [-1000, -1, 0, 1, 1000]:
+    checkProjectedIntervals(initPoint(dx, 1))
+    checkProjectedIntervals(initPoint(1, dx))
+checkProjectedIntervals(initPoint(initFraction(1, 10), initFraction(-2)))
+checkProjectedIntervals(initPoint(initFraction(-2), initFraction(1, 10)))
+checkProjectedIntervals(initPoint(initFraction(0), initFraction(1, 3)))
 
 proc orientation(a, b, c: Point[int]): int =
     let value = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)

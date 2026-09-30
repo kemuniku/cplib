@@ -8,7 +8,15 @@ when not declared CPLIB_GEOMETRY_INTERSECT:
         if strict:
             if online(s1, s2.s) and online(s1, s2.t) and
                     online(s2, s1.s) and online(s2, s1.t):
-                return max(min(s1.s, s1.t), min(s2.s, s2.t)) < min(max(s1.s, s1.t), max(s2.s, s2.t))
+                let x1 = (min(s1.s.x, s1.t.x), max(s1.s.x, s1.t.x))
+                let x2 = (min(s2.s.x, s2.t.x), max(s2.s.x, s2.t.x))
+                let y1 = (min(s1.s.y, s1.t.y), max(s1.s.y, s1.t.y))
+                let y2 = (min(s2.s.y, s2.t.y), max(s2.s.y, s2.t.y))
+                # 両線分で共通の座標軸に射影し、EPS付き辞書順による端点順の逆転を避ける
+                if max(x1[1], x2[1]) - min(x1[0], x2[0]) >
+                        max(y1[1], y2[1]) - min(y1[0], y2[0]):
+                    return geometry_lt(max(x1[0], x2[0]), min(x1[1], x2[1]))
+                return geometry_lt(max(y1[0], y2[0]), min(y1[1], y2[1]))
             return (ccw(s1, s2.s) * ccw(s1, s2.t) < 0) and (ccw(s2, s1.s) * ccw(s2, s1.t) < 0)
         return (ccw(s1, s2.s) * ccw(s1, s2.t) <= 0) and (ccw(s2, s1.s) * ccw(s2, s1.t) <= 0)
 
