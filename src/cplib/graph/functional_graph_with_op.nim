@@ -135,8 +135,9 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:
             while x > 0:
                 if (x and 1) == 1:
                     result = self.op(result,v)
-                v = self.op(v,v)
                 x = x shr 1
+                if x > 0:
+                    v = self.op(v,v)
             
 
             # 余りを処理
