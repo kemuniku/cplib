@@ -67,19 +67,19 @@ data:
   - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/multiplicative_prefix_sum.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/AI/multiplicative_prefix_sum_limit_test.nim
   requiredBy: []
-  timestamp: '2026-09-29 03:52:13+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/multiplicative_prefix_sum_limit_test.nim

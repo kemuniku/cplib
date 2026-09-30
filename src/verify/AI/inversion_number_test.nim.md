@@ -50,9 +50,9 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/inversion_number.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/inversion_number.nim
   - cplib/utils/inversion_number.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim

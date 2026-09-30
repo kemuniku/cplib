@@ -22,6 +22,12 @@ data:
     path: verify/AI/rerooting_test.nim
     title: verify/AI/rerooting_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_distinct_types_test.nim
+    title: verify/tree/rerooting_distinct_types_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_distinct_types_test.nim
+    title: verify/tree/rerooting_distinct_types_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
   - icon: ':heavy_check_mark:'
@@ -71,8 +77,9 @@ data:
     \u30CE\u30A4\u30C9\u540C\u58EB\u306E\u30DE\u30FC\u30B8\n        ## e:\u5358\u4F4D\
     \u5143\n        ## put_edge \u8FBAu,v\u9593\u306E\u8FBA\u60C5\u5831\u3092\u4ED8\
     \u4E0E\n        ## put_vertex \u9802\u70B9v\u306E\u9802\u70B9\u60C5\u5831\u3092\
-    \u4ED8\u4E0E\n        result = solve_Rerooting_raw(G,merge,e,put_edge,put_vertex)\n\
-    \        for i in 0..<len(result):\n            result[i] = put_vertex(result[i],i)\n"
+    \u4ED8\u4E0E\n        let raw = solve_Rerooting_raw(G,merge,e,put_edge,put_vertex)\n\
+    \        result = newSeq[V](raw.len)\n        for i in 0..<raw.len:\n        \
+    \    result[i] = put_vertex(raw[i],i)\n"
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
@@ -81,13 +88,15 @@ data:
   requiredBy:
   - verify/tree/rerooting_big_test_.nim
   - verify/tree/rerooting_big_test_.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-01 00:31:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/rerooting_test.nim
   - verify/AI/rerooting_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
+  - verify/tree/rerooting_distinct_types_test.nim
+  - verify/tree/rerooting_distinct_types_test.nim
 documentation_of: cplib/tree/rerooting.nim
 layout: document
 redirect_from:

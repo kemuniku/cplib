@@ -9,6 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/persistent_array_test.nim
     title: verify/AI/persistent_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/persistent_array_empty_test.nim
+    title: verify/collections/persistent_array_empty_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/persistent_array_empty_test.nim
+    title: verify/collections/persistent_array_empty_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -26,8 +32,8 @@ data:
     \       value: T\n\n    type PersistentArray*[shift:static int,T] = ref object\n\
     \        size : int\n        root : PersistentArrayNode[shift,T]\n        h:int\n\
     \n    proc initPersistentArray*[T](v:openArray[T],shift:static int = 5):PersistentArray[shift,T]\
-    \ =\n        let v = @v\n        var bitsize = fastLog2(len(v))+1\n        var\
-    \ h = (bitsize+shift-1) div shift\n        result = PersistentArray[shift,T]()\n\
+    \ =\n        let v = @v\n        var bitsize = if len(v) == 0: 0 else: fastLog2(len(v))+1\n\
+    \        var h = (bitsize+shift-1) div shift\n        result = PersistentArray[shift,T]()\n\
     \        result.size = len(v)\n        result.root = PersistentArrayNode[shift,T]()\n\
     \        result.h = h\n        proc dfs[shift,T](node:PersistentArrayNode[shift,T],now:int,depth:int):bool=\n\
     \            if depth == h:\n                if now < len(v):\n              \
@@ -65,9 +71,11 @@ data:
   isVerificationFile: false
   path: cplib/collections/persistent_array.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-01 01:56:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/collections/persistent_array_empty_test.nim
+  - verify/collections/persistent_array_empty_test.nim
   - verify/AI/persistent_array_test.nim
   - verify/AI/persistent_array_test.nim
 documentation_of: cplib/collections/persistent_array.nim

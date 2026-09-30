@@ -45,9 +45,9 @@ data:
   - cplib/tmpl/fastio.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/utils/backwards_index.nim
   - cplib/tmpl/fastio.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_avx2_test.nim
   requiredBy: []

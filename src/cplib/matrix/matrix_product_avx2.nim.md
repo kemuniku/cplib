@@ -248,21 +248,21 @@ data:
     \ in 0 ..< k:\n                result[i, j] = T.init(flatC[i * k + j].int)\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_product_avx2.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:19+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix/matrix_product_avx2_unit_test.nim

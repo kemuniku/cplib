@@ -46,6 +46,18 @@ data:
     title: verify/math/fractions_abc308c_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fractions_infinity_order_test.nim
+    title: verify/AI/fractions_infinity_order_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fractions_infinity_order_test.nim
+    title: verify/AI/fractions_infinity_order_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fractions_pow_overflow_test.nim
+    title: verify/AI/fractions_pow_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fractions_pow_overflow_test.nim
+    title: verify/AI/fractions_pow_overflow_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fractions_test.nim
     title: verify/AI/fractions_test.nim
   - icon: ':heavy_check_mark:'
@@ -207,22 +219,22 @@ data:
     \ =\n        if isNaN(x) or isNaN(y):\n            x = initFraction(T(0), T(0))\n\
     \            return\n        x.den *= y.num\n        x.num *= y.den\n        x.check_and_reduce()\n\
     \    proc `>`*[T](x, y: Fraction[T]): bool =\n        if isNaN(x) or isNaN(y):\
-    \ return false\n        if x.den == 0 and y.den == 0: return x.num > y.num\n \
-    \       x.num * y.den > y.num * x.den\n    proc `<`*[T](x, y: Fraction[T]): bool\
-    \ =\n        if isNaN(x) or isNaN(y): return false\n        if x.den == 0 and\
-    \ y.den == 0: return x.num < y.num\n        x.num * y.den < y.num * x.den\n  \
-    \  proc `==`*[T](x, y: Fraction[T]): bool =\n        if isNaN(x) or isNaN(y):\
-    \ return false\n        if x.den == 0 and y.den == 0: return (x.num div abs(x.num))\
-    \ * (y.num div abs(y.num)) > 0\n        x.num * y.den == y.num * x.den\n    proc\
-    \ cmp*[T: FractionScalar](x, y: Fraction[T]): int =\n        ## \u5206\u6570\u540C\
-    \u58EB\u3092\u6BD4\u8F03\u3057\u3001\u5C0F\u3055\u3044\u5834\u5408\u306F -1\u3001\
-    \u7B49\u3057\u3044\u5834\u5408\u306F 0\u3001\u5927\u304D\u3044\u5834\u5408\u306F\
-    \ 1 \u3092\u8FD4\u3059\u3002\n        (if x < y: -1 elif x == y: 0 else: 1)\n\n\
-    \    proc `+=`*[T](x: var Fraction[T], y: T) = (x += initFraction[T](y))\n   \
-    \ proc `+`*[T](x, y: Fraction[T]): Fraction[T] = (result = x; result += y)\n \
-    \   proc `+`*[T](x: Fraction[T], y: T): Fraction[T] = (result = x; result += y)\n\
-    \    proc `+`*[T](x: T, y: Fraction[T]): Fraction[T] = (result = y; result +=\
-    \ x)\n    proc `-=`*[T](x: var Fraction[T], y: T) = (x -= initFraction[T](y))\n\
+    \ return false\n        if x.den == 0 and y.den == 0: return x.num > 0 and y.num\
+    \ < 0\n        x.num * y.den > y.num * x.den\n    proc `<`*[T](x, y: Fraction[T]):\
+    \ bool =\n        if isNaN(x) or isNaN(y): return false\n        if x.den == 0\
+    \ and y.den == 0: return x.num < 0 and y.num > 0\n        x.num * y.den < y.num\
+    \ * x.den\n    proc `==`*[T](x, y: Fraction[T]): bool =\n        if isNaN(x) or\
+    \ isNaN(y): return false\n        if x.den == 0 and y.den == 0: return (x.num\
+    \ div abs(x.num)) * (y.num div abs(y.num)) > 0\n        x.num * y.den == y.num\
+    \ * x.den\n    proc cmp*[T: FractionScalar](x, y: Fraction[T]): int =\n      \
+    \  ## \u5206\u6570\u540C\u58EB\u3092\u6BD4\u8F03\u3057\u3001\u5C0F\u3055\u3044\
+    \u5834\u5408\u306F -1\u3001\u7B49\u3057\u3044\u5834\u5408\u306F 0\u3001\u5927\u304D\
+    \u3044\u5834\u5408\u306F 1 \u3092\u8FD4\u3059\u3002\n        (if x < y: -1 elif\
+    \ x == y: 0 else: 1)\n\n    proc `+=`*[T](x: var Fraction[T], y: T) = (x += initFraction[T](y))\n\
+    \    proc `+`*[T](x, y: Fraction[T]): Fraction[T] = (result = x; result += y)\n\
+    \    proc `+`*[T](x: Fraction[T], y: T): Fraction[T] = (result = x; result +=\
+    \ y)\n    proc `+`*[T](x: T, y: Fraction[T]): Fraction[T] = (result = y; result\
+    \ += x)\n    proc `-=`*[T](x: var Fraction[T], y: T) = (x -= initFraction[T](y))\n\
     \    proc `-`*[T](x, y: Fraction[T]): Fraction[T] = (result = x; result -= y)\n\
     \    proc `-`*[T](x: Fraction[T], y: T): Fraction[T] = (result = x; result -=\
     \ y)\n    proc `-`*[T](x: T, y: Fraction[T]): Fraction[T] = (result = -y; result\
@@ -254,9 +266,11 @@ data:
     \ y)\n    proc hash*[T](x: Fraction[T]): Hash =\n        var x = x\n        x.reduce()\n\
     \        result = result !& hash(x.num)\n        result = result !& hash(x.den)\n\
     \    proc toFloat*[T](x: Fraction[T]): float =\n        x.num / x.den\n    proc\
-    \ pow*[T](x: Fraction[T], n: int): Fraction[T] =\n        result = initFraction[T](1)\n\
-    \        var x = x\n        var n = n\n        while n > 0:\n            if (n\
-    \ and 1) == 1: result *= x\n            x *= x\n            n = n shr 1\n"
+    \ pow*[T](x: Fraction[T], n: int): Fraction[T] =\n        ## \u5206\u6570\u306E\
+    \u975E\u8CA0\u6574\u6570\u4E57\u3092\u6C42\u3081\u308B\u3002O(log(n + 1))\u3002\
+    \n        result = initFraction[T](1)\n        var x = x\n        var n = n\n\
+    \        while n > 0:\n            if (n and 1) == 1: result *= x\n          \
+    \  if n > 1: x *= x\n            n = n shr 1\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/fractions.nim
@@ -275,7 +289,7 @@ data:
   - cplib/geometry/polygon.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/math/stern_brocot_tree.nim
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
@@ -304,8 +318,12 @@ data:
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/AI/fractions_infinity_order_test.nim
+  - verify/AI/fractions_infinity_order_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/polygon_test.nim
+  - verify/AI/fractions_pow_overflow_test.nim
+  - verify/AI/fractions_pow_overflow_test.nim
   - verify/AI/fractions_test.nim
   - verify/AI/fractions_test.nim
   - verify/math/fractions_unit_test.nim

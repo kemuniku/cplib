@@ -43,16 +43,16 @@ data:
     \ echo bounds.p, \" \", bounds.q, \" \", bounds.p, \" \", bounds.q\n    else:\n\
     \        echo bounds.p, \" \", bounds.q, \" \", bounds.r, \" \", bounds.s\n"
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_rational_approximation_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:05+09:00'
+  timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/stern_brocot_tree_rational_approximation_test.nim

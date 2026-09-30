@@ -64,16 +64,16 @@ data:
     \ 1, 1000000000)\n    checkLarge(n, 1000000000, 1)\n    checkLarge(n, 1, 2)\n\
     \    checkLarge(n, 2, 1)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_bounds_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:05+09:00'
+  timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/stern_brocot_tree_bounds_test.nim

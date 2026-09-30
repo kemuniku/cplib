@@ -45,6 +45,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/functional_graph_test.nim
     title: verify/AI/functional_graph_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_movekth_overflow_test.nim
+    title: verify/graph/functional_graph_movekth_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_movekth_overflow_test.nim
+    title: verify/graph/functional_graph_movekth_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -106,15 +124,17 @@ data:
     \           for j in graph[i]:\n                v[i] = j\n        return initFunctionalGraph(v)\n\
     \n    proc incycle*(namori:Functional_Graph,x:int):bool=\n        return namori.cycle_number[x]\
     \ != -1\n\n    proc movekth*(functional_graph:Functional_Graph,x,cnt:int):int=\n\
-    \        #x\u304B\u3089cnt\u56DE\u52D5\u3044\u305F\u3089\u3069\u3053\u306B\u884C\
-    \u304F\u304B\n        if functional_graph.tree.depth(x)-1 >= cnt:\n          \
-    \  return functional_graph.tree.la(x,len(functional_graph.cycle_number),cnt)\n\
-    \        else:\n            var root = functional_graph.roots[x]\n           \
-    \ var cnt = cnt-(functional_graph.tree.depth(x)-1)\n            return functional_graph.cycle[functional_graph.cycle_number[root]][(functional_graph.cycle_idx[root]+cnt)\
-    \ mod len(functional_graph.cycle[functional_graph.cycle_number[root]])]\n\n  \
-    \  proc cyclesize*(functional_graph:Functional_Graph,x:int):int=\n        ## x\u304B\
-    \u3089\u5230\u9054\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u30B5\u30A4\
-    \u30AF\u30EB\u306E\u30B5\u30A4\u30BA\n        var root = functional_graph.roots[x]\n\
+    \        ## x\u304B\u3089cnt\u56DE\u79FB\u52D5\u3057\u305F\u5148\u306E\u9802\u70B9\
+    \u3092\u8FD4\u3059\u3002O(log N)\u3002\n        if functional_graph.tree.depth(x)-1\
+    \ >= cnt:\n            return functional_graph.tree.la(x,len(functional_graph.cycle_number),cnt)\n\
+    \        else:\n            let root = functional_graph.roots[x]\n           \
+    \ let cid = functional_graph.cycle_number[root]\n            let size = functional_graph.cycle[cid].len\n\
+    \            let remaining = (cnt-(functional_graph.tree.depth(x)-1)) mod size\n\
+    \            let start = functional_graph.cycle_idx[root]\n            let index\
+    \ = if remaining >= size-start: remaining-(size-start) else: start+remaining\n\
+    \            return functional_graph.cycle[cid][index]\n\n    proc cyclesize*(functional_graph:Functional_Graph,x:int):int=\n\
+    \        ## x\u304B\u3089\u5230\u9054\u3059\u308B\u3053\u3068\u304C\u3067\u304D\
+    \u308B\u30B5\u30A4\u30AF\u30EB\u306E\u30B5\u30A4\u30BA\n        var root = functional_graph.roots[x]\n\
     \        return functional_graph.cycle[functional_graph.cycle_number[root]].len()\n\
     \n    proc canmove_size*(functional_graph:Functional_Graph,x:int):int=\n     \
     \   ## x\u304B\u3089\u5230\u9054\u3059\u308B\u3053\u3068\u306E\u3067\u304D\u308B\
@@ -190,9 +210,9 @@ data:
     \        let residue = (functional_graph.cycle_idx[x]-(k mod csiz)+csiz) mod csiz\n\
     \        return functional_graph.cycle_depth[cid][residue].upperBound(k)\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
@@ -203,9 +223,15 @@ data:
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_op.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-01 00:36:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_movekth_overflow_test.nim
+  - verify/graph/functional_graph_movekth_overflow_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim

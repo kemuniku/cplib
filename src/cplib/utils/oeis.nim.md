@@ -118,7 +118,7 @@ data:
   isVerificationFile: false
   path: cplib/utils/oeis.nim
   requiredBy: []
-  timestamp: '2026-09-25 14:10:32+09:00'
+  timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/utils/oeis.nim

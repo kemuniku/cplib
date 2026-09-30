@@ -87,21 +87,21 @@ data:
     \ == 15\necho \"Hello World\"\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/math/generalized_floor_sum.nim
+  - cplib/math/monoid_floor_sum.nim
+  - cplib/math/monoid_floor_sum.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/generalized_floor_sum.nim
-  - cplib/math/monoid_floor_sum.nim
-  - cplib/math/monoid_floor_sum.nim
   isVerificationFile: true
   path: verify/math/generalized_floor_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:19+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/generalized_floor_sum_test.nim

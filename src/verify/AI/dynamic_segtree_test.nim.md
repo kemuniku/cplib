@@ -64,8 +64,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/dynamic_segtree_test.nim
   requiredBy: []

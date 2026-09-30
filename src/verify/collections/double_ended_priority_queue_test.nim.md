@@ -36,8 +36,8 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/collections/double_ended_priority_queue.nim
-  - cplib/collections/double_ended_priority_queue.nim
   - cplib/tmpl/fastio.nim
+  - cplib/collections/double_ended_priority_queue.nim
   isVerificationFile: true
   path: verify/collections/double_ended_priority_queue_test.nim
   requiredBy: []

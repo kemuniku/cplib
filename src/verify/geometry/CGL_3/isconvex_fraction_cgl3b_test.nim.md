@@ -63,18 +63,18 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/polygon.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim

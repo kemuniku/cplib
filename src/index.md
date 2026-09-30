@@ -1473,6 +1473,9 @@ data:
       path: verify/AI/bipartite_graph_test.nim
       title: verify/AI/bipartite_graph_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/bititers_empty_subset_test.nim
+      title: verify/AI/bititers_empty_subset_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/bititers_test.nim
       title: verify/AI/bititers_test.nim
     - icon: ':heavy_check_mark:'
@@ -1688,6 +1691,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/fps_test.nim
       title: verify/AI/fps_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/fractions_infinity_order_test.nim
+      title: verify/AI/fractions_infinity_order_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/fractions_pow_overflow_test.nim
+      title: verify/AI/fractions_pow_overflow_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/fractions_test.nim
       title: verify/AI/fractions_test.nim
@@ -2270,6 +2279,9 @@ data:
       path: verify/collections/parallel_unionfind_test.nim
       title: verify/collections/parallel_unionfind_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/persistent_array_empty_test.nim
+      title: verify/collections/persistent_array_empty_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/persistent_binary_trie_test.nim
       title: verify/collections/persistent_binary_trie_test.nim
     - icon: ':heavy_check_mark:'
@@ -2690,6 +2702,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dominator_tree_test.nim
       title: verify/graph/dominator_tree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/functional_graph_move_while_limits_test.nim
+      title: verify/graph/functional_graph_move_while_limits_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/functional_graph_movekth_overflow_test.nim
+      title: verify/graph/functional_graph_movekth_overflow_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/functional_graph_prod_max_count_test.nim
+      title: verify/graph/functional_graph_prod_max_count_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/general_matching_test.nim
       title: verify/graph/general_matching_test.nim
@@ -3216,6 +3237,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tree/point_set_tree_path_composite_sum_test.nim
       title: verify/tree/point_set_tree_path_composite_sum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/tree/rerooting_distinct_types_test.nim
+      title: verify/tree/rerooting_distinct_types_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/tree/rerooting_test.nim
       title: verify/tree/rerooting_test.nim

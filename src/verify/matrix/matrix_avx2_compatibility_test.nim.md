@@ -83,17 +83,17 @@ data:
     \ == @[@[4u32]]\necho \"Hello World\"\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_compatibility_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:19+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_avx2_compatibility_test.nim

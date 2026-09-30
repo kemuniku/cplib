@@ -1054,6 +1054,18 @@ data:
     path: verify/collections/segtree_var/segtree_static_test.nim
     title: verify/collections/segtree_var/segtree_static_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
   - icon: ':heavy_check_mark:'
@@ -1488,6 +1500,10 @@ data:
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_test.nim

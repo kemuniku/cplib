@@ -70,21 +70,21 @@ data:
     echo ans.join(\"\\n\")\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/modint/modint.nim
   - cplib/utils/backwards_index.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/collections/lazysegtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:19+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/rangesetrangecomposite_test.nim

@@ -154,6 +154,24 @@ data:
     path: verify/AI/static_top_tree_test.nim
     title: verify/AI/static_top_tree_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_movekth_overflow_test.nim
+    title: verify/graph/functional_graph_movekth_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_movekth_overflow_test.nim
+    title: verify/graph/functional_graph_movekth_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
   - icon: ':heavy_check_mark:'
@@ -511,6 +529,12 @@ data:
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_movekth_overflow_test.nim
+  - verify/graph/functional_graph_movekth_overflow_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/AI/dsu_on_tree_test.nim

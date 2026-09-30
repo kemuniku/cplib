@@ -150,18 +150,18 @@ data:
     \ discard vi.pop\n            vi.add(s[i])\n        vi.delete(0)\n        return\
     \ Polygon[T](v: vi)\n"
   dependsOn:
+  - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy:
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim

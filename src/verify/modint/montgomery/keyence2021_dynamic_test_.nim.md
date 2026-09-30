@@ -57,17 +57,17 @@ data:
     \ dp[i][j+1] += dp[i][j] * mul\necho dp[h-1][w-1].val\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: verify/modint/montgomery/keyence2021_dynamic_test_.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:19+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/modint/montgomery/keyence2021_dynamic_test_.nim

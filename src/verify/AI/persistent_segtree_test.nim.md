@@ -151,8 +151,8 @@ data:
     \ calls == 0\n    doAssert dest.get_all() == 0\n    doAssert source.get_all()\
     \ == 4097\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/persistent_segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/persistent_segtree.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

@@ -82,10 +82,10 @@ data:
     \ n - 1)\n    for x in 1..<n: g.add_edge(x - 1, x)\n    checkChain(g, n - 1)\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/tree/diameter.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/diameter.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/diameter.nim
   isVerificationFile: true
   path: verify/tree/diameter_random_test.nim
   requiredBy: []

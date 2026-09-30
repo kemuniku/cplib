@@ -591,21 +591,21 @@ data:
     \ true)\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/utils/backwards_index.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2.nim
   requiredBy:
@@ -613,7 +613,7 @@ data:
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
-  timestamp: '2026-09-27 01:47:19+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_simd_test.nim

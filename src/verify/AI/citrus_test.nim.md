@@ -127,16 +127,16 @@ data:
 
     '
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/tmpl/citrus.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/citrus.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/citrus.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/citrus_test.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/citrus_test.nim

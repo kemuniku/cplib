@@ -36,8 +36,8 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/hopcroft_karp.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/hopcroft_karp.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/hopcroft_karp_test.nim
   requiredBy: []

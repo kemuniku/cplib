@@ -39,6 +39,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/functional_graph_lazy_op_test.nim
     title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -114,19 +126,19 @@ data:
     \            tmp = self.F.movekth(start,k)\n            flag = true\n        for\
     \ (l,r) in self.F.tree.path(tmp,start,flag,true):\n            result = self.op(result,self.st_hld.get(l,r))\n\
     \        if not flag:\n            var cid = self.F.cycle_number[root]\n     \
-    \       var csiz = self.F.cyclesize(start)\n            var k = k - self.F.depth(start)\
-    \ + 1\n            \n            # csiz\u3054\u3068\u9032\u3080\u51E6\u7406\n\
-    \            var x = k div csiz\n            var v : T\n            var root_idx\
-    \ = self.F.cycle_idx[root]\n            if root_idx == 0:\n                v =\
-    \ self.st_cycle[self.cum_cyclesize[cid]..<(csiz+self.cum_cyclesize[cid])]\n  \
-    \          else:\n                v = self.op(self.st_cycle[(root_idx + self.cum_cyclesize[cid])..<(csiz+self.cum_cyclesize[cid])],\n\
+    \       var csiz = self.F.cyclesize(start)\n            let cycle_visits = uint(k\
+    \ - self.F.depth(start)) + 1'u\n            \n            # csiz\u3054\u3068\u9032\
+    \u3080\u51E6\u7406\n            var x = cycle_visits div uint(csiz)\n        \
+    \    var v : T\n            var root_idx = self.F.cycle_idx[root]\n          \
+    \  if root_idx == 0:\n                v = self.st_cycle[self.cum_cyclesize[cid]..<(csiz+self.cum_cyclesize[cid])]\n\
+    \            else:\n                v = self.op(self.st_cycle[(root_idx + self.cum_cyclesize[cid])..<(csiz+self.cum_cyclesize[cid])],\n\
     \                            self.st_cycle[self.cum_cyclesize[cid]..<(root_idx+self.cum_cyclesize[cid])]\n\
     \                )\n            \n            \n            while x > 0:\n   \
     \             if (x and 1) == 1:\n                    result = self.op(result,v)\n\
     \                v = self.op(v,v)\n                x = x shr 1\n            \n\
     \n            # \u4F59\u308A\u3092\u51E6\u7406\n            var l = self.F.cycle_idx[root]\n\
-    \            var m = k mod csiz\n            var r = l + m\n            if r <=\
-    \ csiz:\n                result = self.op(result,self.st_cycle[(l+self.cum_cyclesize[cid])..<(r+self.cum_cyclesize[cid])])\n\
+    \            var m = int(cycle_visits mod uint(csiz))\n            var r = l +\
+    \ m\n            if r <= csiz:\n                result = self.op(result,self.st_cycle[(l+self.cum_cyclesize[cid])..<(r+self.cum_cyclesize[cid])])\n\
     \            else:\n                result = self.op(result,self.st_cycle[(l+self.cum_cyclesize[cid])..<(csiz+self.cum_cyclesize[cid])])\n\
     \                result = self.op(result,self.st_cycle[(self.cum_cyclesize[cid])..<(r-csiz+self.cum_cyclesize[cid])])\n\
     \n    proc prod_range*[T](self:FunctionalGraph_with_op[T],start,l,r:int,include_start:bool=true):seq[T]=\n\
@@ -168,73 +180,79 @@ data:
     \u3060\u3057\u3001\u79FB\u52D5\u8DDD\u96E2\u306E\u4E0A\u9650\u306FL\u3068\u3059\
     \u308B\uFF08L\u56DE\u79FB\u52D5\u3057\u3066\u3082true\u306A\u3089L\u3092\u8FD4\
     \u3059\uFF09\u3002\n        assert L >= 0, \"L\u306F\u975E\u8CA0\u3067\u3042\u308B\
-    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let limit = L+1 # \u79FB\
-    \u52D5\u8DDD\u96E2L\u306F\u3001\u59CB\u70B9\u3092\u542B\u3081\u3066L+1\u9802\u70B9\
-    \n        var value = self.e\n        var used = 0\n\n        # x\u304B\u3089\u30B5\
-    \u30A4\u30AF\u30EB\u5165\u53E3\u307E\u3067\u3002st_hld\u306FHLD\u9806\u3092\u53CD\
-    \u8EE2\u3057\u3066\u69CB\u7BC9\u3055\u308C\u3066\u3044\u308B\u305F\u3081\u3001\
-    \n        # path(...,true)\u306E\u5404\u533A\u9593\u3092\u5DE6\u304B\u3089\u898B\
-    \u308B\u3068functional graph\u4E0A\u306E\u79FB\u52D5\u9806\u306B\u306A\u308B\u3002\
-    \n        let root = self.F.roots[x]\n        let tree_path = self.F.tree.path(root,x,true,true)\n\
-    \n        # max_right\u306B\u306Ff(\u5358\u4F4D\u5143)=true\u304C\u5FC5\u8981\u306A\
-    \u306E\u3067\u3001\u59CB\u70B9\u3060\u3051\u5148\u306B\u51E6\u7406\u3059\u308B\
-    \u3002\n        value = self.st_hld[tree_path[0][0]]\n        if not f(value):\n\
-    \            return 0\n        used = 1\n        if used == limit:\n         \
-    \   return L\n\n        var first_segment = true\n        for (l,r) in tree_path:\n\
-    \            let nl = l+int(first_segment) # \u59CB\u70B9\u306F\u51E6\u7406\u6E08\
-    \u307F\n            first_segment = false\n            let nr = min(r,nl+limit-used)\n\
-    \            if nl < nr:\n                let max_right = self.st_hld.max_right(nl,proc(v:T):bool=\n\
-    \                    f(self.op(value,v))\n                )\n                if\
-    \ max_right < nr:\n                    used += max_right-nl\n                \
-    \    return used\n                value = self.op(value,self.st_hld.get(nl,nr))\n\
-    \                used += nr-nl\n            if used == limit:\n              \
-    \  return L\n\n        let cid = self.F.cycle_number[root]\n        let csiz =\
-    \ self.F.cyclesize(x)\n        let offset = self.cum_cyclesize[cid]\n        let\
-    \ cycle_start = (self.F.cycle_idx[root]+1) mod csiz\n\n        proc cycle_prod(l,r:int):T=\n\
-    \            return self.st_cycle.get(offset+l,offset+r)\n\n        # cycle_start\u304B\
-    \u3089\u3061\u3087\u3046\u30691\u5468\u3059\u308B\u7A4D\u3002\u975E\u53EF\u63DB\
-    \u306Aop\u3067\u3082\u9806\u5E8F\u3092\u4FDD\u3064\u3002\n        let one_cycle\
-    \ = self.op(\n            cycle_prod(cycle_start,csiz),\n            cycle_prod(0,cycle_start)\n\
-    \        )\n\n        # \u5165\u308C\u3089\u308C\u308B\u5B8C\u5168\u306A\u5468\
-    \u56DE\u6570\u3092\u3001\u5468\u56DE\u7A4D\u306E\u30C0\u30D6\u30EA\u30F3\u30B0\
-    \u3067\u6C42\u3081\u308B\u3002\n        let max_cycles = (limit-used) div csiz\n\
-    \        if max_cycles > 0:\n            var powers = @[one_cycle]\n         \
-    \   var block_size = 1\n            while block_size <= max_cycles div 2:\n  \
-    \              powers.add(self.op(powers[^1],powers[^1]))\n                block_size\
-    \ *= 2\n\n            var accepted = 0\n            for i in countdown(powers.high,0):\n\
-    \                let cnt = 1 shl i\n                if cnt <= max_cycles-accepted:\n\
-    \                    let next_value = self.op(value,powers[i])\n             \
-    \       if f(next_value):\n                        value = next_value\n      \
-    \                  accepted += cnt\n            used += accepted*csiz\n      \
-    \      if used == limit:\n                return L\n\n        # \u6700\u5927\u5468\
-    \u56DE\u6570\u306E\u6B21\u306E1\u5468\u5185\u3067\u6B62\u307E\u308B\u3002\u9AD8\
-    \u30052\u533A\u9593\u3092max_right\u3059\u308C\u3070\u3088\u3044\u3002\n     \
-    \   var rest = min(limit-used,csiz)\n        proc consume_cycle(l,r:int):bool=\n\
-    \            if l == r:\n                return true\n            let nr = self.st_cycle.max_right(offset+l,proc(v:T):bool=\n\
+    \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        let limit = uint(L)+1'u\
+    \ # \u79FB\u52D5\u8DDD\u96E2L\u306F\u3001\u59CB\u70B9\u3092\u542B\u3081\u3066\
+    L+1\u9802\u70B9\n        var value = self.e\n        var used = 0'u\n\n      \
+    \  # x\u304B\u3089\u30B5\u30A4\u30AF\u30EB\u5165\u53E3\u307E\u3067\u3002st_hld\u306F\
+    HLD\u9806\u3092\u53CD\u8EE2\u3057\u3066\u69CB\u7BC9\u3055\u308C\u3066\u3044\u308B\
+    \u305F\u3081\u3001\n        # path(...,true)\u306E\u5404\u533A\u9593\u3092\u5DE6\
+    \u304B\u3089\u898B\u308B\u3068functional graph\u4E0A\u306E\u79FB\u52D5\u9806\u306B\
+    \u306A\u308B\u3002\n        let root = self.F.roots[x]\n        let tree_path\
+    \ = self.F.tree.path(root,x,true,true)\n\n        # max_right\u306B\u306Ff(\u5358\
+    \u4F4D\u5143)=true\u304C\u5FC5\u8981\u306A\u306E\u3067\u3001\u59CB\u70B9\u3060\
+    \u3051\u5148\u306B\u51E6\u7406\u3059\u308B\u3002\n        value = self.st_hld[tree_path[0][0]]\n\
+    \        if not f(value):\n            return 0\n        used = 1'u\n        if\
+    \ used == limit:\n            return L\n\n        var first_segment = true\n \
+    \       for (l,r) in tree_path:\n            let nl = l+int(first_segment) # \u59CB\
+    \u70B9\u306F\u51E6\u7406\u6E08\u307F\n            first_segment = false\n    \
+    \        let nr = nl+int(min(uint(r-nl),limit-used))\n            if nl < nr:\n\
+    \                let max_right = self.st_hld.max_right(nl,proc(v:T):bool=\n  \
+    \                  f(self.op(value,v))\n                )\n                if\
+    \ max_right < nr:\n                    used += uint(max_right-nl)\n          \
+    \          return int(used)\n                value = self.op(value,self.st_hld.get(nl,nr))\n\
+    \                used += uint(nr-nl)\n            if used == limit:\n        \
+    \        return L\n\n        let cid = self.F.cycle_number[root]\n        let\
+    \ csiz = self.F.cyclesize(x)\n        let offset = self.cum_cyclesize[cid]\n \
+    \       let cycle_start = (self.F.cycle_idx[root]+1) mod csiz\n\n        proc\
+    \ cycle_prod(l,r:int):T=\n            return self.st_cycle.get(offset+l,offset+r)\n\
+    \n        # cycle_start\u304B\u3089\u3061\u3087\u3046\u30691\u5468\u3059\u308B\
+    \u7A4D\u3002\u975E\u53EF\u63DB\u306Aop\u3067\u3082\u9806\u5E8F\u3092\u4FDD\u3064\
+    \u3002\n        let one_cycle = self.op(\n            cycle_prod(cycle_start,csiz),\n\
+    \            cycle_prod(0,cycle_start)\n        )\n\n        # \u5165\u308C\u3089\
+    \u308C\u308B\u5B8C\u5168\u306A\u5468\u56DE\u6570\u3092\u3001\u5468\u56DE\u7A4D\
+    \u306E\u30C0\u30D6\u30EA\u30F3\u30B0\u3067\u6C42\u3081\u308B\u3002\n        let\
+    \ max_cycles = int((limit-used) div uint(csiz))\n        if max_cycles > 0:\n\
+    \            var powers = @[one_cycle]\n            var block_size = 1\n     \
+    \       while block_size <= max_cycles div 2:\n                powers.add(self.op(powers[^1],powers[^1]))\n\
+    \                block_size *= 2\n\n            var accepted = 0\n           \
+    \ for i in countdown(powers.high,0):\n                let cnt = 1 shl i\n    \
+    \            if cnt <= max_cycles-accepted:\n                    let next_value\
+    \ = self.op(value,powers[i])\n                    if f(next_value):\n        \
+    \                value = next_value\n                        accepted += cnt\n\
+    \            used += uint(accepted*csiz)\n            if used == limit:\n    \
+    \            return L\n\n        # \u6700\u5927\u5468\u56DE\u6570\u306E\u6B21\u306E\
+    1\u5468\u5185\u3067\u6B62\u307E\u308B\u3002\u9AD8\u30052\u533A\u9593\u3092max_right\u3059\
+    \u308C\u3070\u3088\u3044\u3002\n        var rest = int(min(limit-used,uint(csiz)))\n\
+    \        proc consume_cycle(l,r:int):bool=\n            if l == r:\n         \
+    \       return true\n            let nr = self.st_cycle.max_right(offset+l,proc(v:T):bool=\n\
     \                f(self.op(value,v))\n            )\n            if nr < offset+r:\n\
-    \                used += nr-(offset+l)\n                return false\n       \
-    \     value = self.op(value,cycle_prod(l,r))\n            used += r-l\n      \
-    \      return true\n\n        let first = min(rest,csiz-cycle_start)\n       \
-    \ if not consume_cycle(cycle_start,cycle_start+first):\n            return used\n\
-    \        rest -= first\n        if rest > 0 and not consume_cycle(0,rest):\n \
-    \           return used\n        return used-1\n"
+    \                used += uint(nr-(offset+l))\n                return false\n \
+    \           value = self.op(value,cycle_prod(l,r))\n            used += uint(r-l)\n\
+    \            return true\n\n        let first = min(rest,csiz-cycle_start)\n \
+    \       if not consume_cycle(cycle_start,cycle_start+first):\n            return\
+    \ int(used)\n        rest -= first\n        if rest > 0 and not consume_cycle(0,rest):\n\
+    \            return int(used)\n        return int(used-1'u)\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
+  - cplib/graph/graph.nim
   - cplib/utils/backwards_index.nim
   - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
   - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-01 02:40:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
 documentation_of: cplib/graph/functional_graph_with_op.nim

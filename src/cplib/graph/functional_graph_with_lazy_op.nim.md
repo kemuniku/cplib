@@ -320,16 +320,16 @@ data:
     \ used\n        rest -= first\n        if rest > 0 and not consumeCycle(0,rest):\n\
     \            return used\n        return used-1\n"
   dependsOn:
-  - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_lazy_op.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-01 00:36:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim

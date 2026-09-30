@@ -43,9 +43,10 @@ data:
     \        ## \u4F5C\u6210\u53EF\u80FD\u306A\u5024\u306E\u4E2D\u3067k\u756A\u76EE\
     \u306B\u5C0F\u3055\u3044\u3082\u306E\u3092\u6C42\u3081\u307E\u3059\u3002\n   \
     \     ## \u5B58\u5728\u3057\u306A\u3044\u5834\u5408\u306F\u3001-1\u3092\u8FD4\u3057\
-    \u307E\u3059\u3002\n        if k >= (1 shl len(self.basis)):\n            return\
-    \ -1\n        for i in 0..<len(self.basis):\n            if (k and (1 shl i))\
-    \ != 0:\n                result = result xor self.basis[i]\n\n    proc lt*(self:XorBasis,x:int):int=\n\
+    \u307E\u3059\u3002\n        if k < 0 or (len(self.basis) < sizeof(int) * 8 - 1\
+    \ and\n                k >= (1 shl len(self.basis))):\n            return -1\n\
+    \        for i in 0..<len(self.basis):\n            if (k and (1 shl i)) != 0:\n\
+    \                result = result xor self.basis[i]\n\n    proc lt*(self:XorBasis,x:int):int=\n\
     \        ## \u4F5C\u6210\u53EF\u80FD\u306A\u5024\u306E\u4E2D\u3067x\u672A\u6E80\
     \u306E\u5185\u6700\u5927\u306E\u3082\u306E\n        ## \u5B58\u5728\u3057\u306A\
     \u3044\u5834\u5408\u306F-1\n        if x == 0:\n            return -1\n      \
@@ -70,16 +71,16 @@ data:
     \        ## \u4F5C\u6210\u53EF\u80FD\u306A\u5024\u306E\u4E2D\u3067x\u3068xor\u3092\
     \u53D6\u3063\u305F\u3068\u304D\u306Bk\u756A\u76EE\u306B\u5C0F\u3055\u304F\u306A\
     \u308B\u3082\u306E\n        ## \u5B58\u5728\u3057\u306A\u3044\u306A\u3089\u3070\
-    -1\u3092\u8FD4\u3059\u3002\n        if k >= (1 shl len(self.basis)):\n       \
-    \     return -1\n        \n        var v = self.xor_min(x) xor x\n        for\
-    \ i in countdown(len(self.basis)-1,0,1):\n            if (v xor self.basis[i])\
-    \ < v:\n                v = v xor self.basis[i]\n        return (v xor self.kth_smallest(k))\
-    \ xor x\n"
+    -1\u3092\u8FD4\u3059\u3002\n        if k < 0 or (len(self.basis) < sizeof(int)\
+    \ * 8 - 1 and\n                k >= (1 shl len(self.basis))):\n            return\
+    \ -1\n        \n        var v = self.xor_min(x) xor x\n        for i in countdown(len(self.basis)-1,0,1):\n\
+    \            if (v xor self.basis[i]) < v:\n                v = v xor self.basis[i]\n\
+    \        return (v xor self.kth_smallest(k)) xor x\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/xor_basis.nim
   requiredBy: []
-  timestamp: '2026-07-07 07:24:29+09:00'
+  timestamp: '2026-09-30 20:34:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/xor_basis_test.nim

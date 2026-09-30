@@ -96,24 +96,24 @@ data:
   dependsOn:
   - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/shift_of_sampling_points.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/shift_of_sampling_points.nim
   - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/shift_of_sampling_points_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 01:47:19+09:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/shift_of_sampling_points_test.nim

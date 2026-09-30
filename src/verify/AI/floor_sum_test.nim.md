@@ -41,10 +41,10 @@ data:
     doAssert floor_sum(large, large, large - 1, large - 1) == 7_999_999_998_000_000_000\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/math/floor_sum.nim
   - cplib/math/floor_sum.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/floor_sum_test.nim
   requiredBy: []

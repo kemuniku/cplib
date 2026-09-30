@@ -1018,6 +1018,24 @@ data:
     path: verify/graph/dynamic/warshall_floyd_aoj_test.nim
     title: verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_move_while_limits_test.nim
+    title: verify/graph/functional_graph_move_while_limits_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_movekth_overflow_test.nim
+    title: verify/graph/functional_graph_movekth_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_movekth_overflow_test.nim
+    title: verify/graph/functional_graph_movekth_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_max_count_test.nim
+    title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
   - icon: ':heavy_check_mark:'
@@ -1209,6 +1227,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/tree/point_set_tree_path_composite_sum_test.nim
     title: verify/tree/point_set_tree_path_composite_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_distinct_types_test.nim
+    title: verify/tree/rerooting_distinct_types_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_distinct_types_test.nim
+    title: verify/tree/rerooting_distinct_types_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/tree/rerooting_test.nim
     title: verify/tree/rerooting_test.nim
@@ -1728,6 +1752,8 @@ data:
   timestamp: '2026-09-17 22:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/two_edge_connected_components_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
@@ -1752,8 +1778,12 @@ data:
   - verify/graph/general_weighted_matching_sparse_test.nim
   - verify/graph/cycle_detection_test.nim
   - verify/graph/cycle_detection_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/graph/lowlink_articulation_test.nim
   - verify/graph/lowlink_articulation_test.nim
+  - verify/graph/functional_graph_movekth_overflow_test.nim
+  - verify/graph/functional_graph_movekth_overflow_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/biconnected_components_test.nim
@@ -1960,6 +1990,8 @@ data:
   - verify/tree/diameter_dynamic_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - verify/tree/rerooting_distinct_types_test.nim
+  - verify/tree/rerooting_distinct_types_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim

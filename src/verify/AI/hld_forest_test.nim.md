@@ -55,9 +55,9 @@ data:
     \      edges.add((labels[v], labels[rng.rand(v - 1)]))\n    checkForest(n, edges)\n\
     echo \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/AI/hld_forest_test.nim

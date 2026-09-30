@@ -855,9 +855,10 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_ISQRT:\n    const CPLIB_MATH_ISQRT* = 1\n  \
-    \  proc isqrt*(n: int): int =\n        var x = n\n        var y = (x + 1) shr\
-    \ 1\n        while y < x:\n            x = y\n            y = (x + n div x) shr\
-    \ 1\n        return x\n"
+    \  proc isqrt*(n: int): int =\n        ## \u975E\u8CA0\u6574\u6570n\u306E\u5E73\
+    \u65B9\u6839\u306E\u5E8A\u3092\u8FD4\u3059\u3002\n        var x = n\n        var\
+    \ y = (x shr 1) + (x and 1)\n        while y < x:\n            x = y\n       \
+    \     y = (x + n div x) shr 1\n        return x\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/math/isqrt.nim
@@ -962,7 +963,7 @@ data:
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2024-02-07 16:25:18+00:00'
+  timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
