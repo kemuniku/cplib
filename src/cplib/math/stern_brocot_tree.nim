@@ -5,9 +5,11 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
     const CPLIB_MATH_STERN_BROCOT_TREE* = 1
     type SBTNode*[T] = tuple[p:T,q:T,r:T,s:T,depth:T]
 
-    proc den*[T](x:SBTNode[T]):T=
+    proc den*[T](x:SBTNode[T]):T {.inline.}=
+        ## ノードの分母を返す。O(1)。
         return x.q+x.s
-    proc num*[T](x:SBTNode[T]):T=
+    proc num*[T](x:SBTNode[T]):T {.inline.}=
+        ## ノードの分子を返す。O(1)。
         return x.p + x.r
     
     converter toFraction(x:SBTNode[int]):Fraction[int]=
@@ -25,26 +27,36 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
             a -= result[^1] * b
             swap(a,b)
 
-    proc encode_path*[T](a,b:T):seq[(char,T)]=
-        var CFE = continued_fraction_expansion(a,b)
-        CFE[^1] -= 1
-        var start = 0
-        if CFE[0] == 0:
-            start = 1
-        
-        for i in start..<len(CFE):
-            if (i and 1) == 0:
-                result.add(('R',CFE[i]))
+    iterator path_runs[T](a,b:T):(char,T)=
+        ## 根からの経路を同じ方向ごとに列挙する。O(log(min(a,b)))時間、追加領域O(1)。
+        assert a >= 1, "aは1以上である必要があります"
+        assert b >= 1, "bは1以上である必要があります"
+        var a = a
+        var b = b
+        while a != b:
+            if a > b:
+                let d = (a-T(1)) div b
+                yield ('R',d)
+                a -= d*b
             else:
-                result.add(('L',CFE[i]))
-    
+                let d = (b-T(1)) div a
+                yield ('L',d)
+                b -= d*a
+
+    proc encode_path*[T](a,b:T):seq[(char,T)]=
+        ## 根からa/bまでの経路をランレングス圧縮する。O(log(min(a,b)))。
+        for run in path_runs(a,b):
+            result.add(run)
+
     proc encode_path*[T](now:SBTNode[T]):seq[(char,T)]=
         return encode_path(now.num(),now.den())
     
-    proc move_left*[T](now:SBTNode[T],d:T):SBTNode[T]=
+    proc move_left*[T](now:SBTNode[T],d:T):SBTNode[T] {.inline.}=
+        ## 左の子へd段移動する。O(1)。
         return (now.p,now.q,d*now.p+now.r,d*now.q+now.s,now.depth+d)
 
-    proc move_right*[T](now:SBTNode[T],d:T):SBTNode[T]=
+    proc move_right*[T](now:SBTNode[T],d:T):SBTNode[T] {.inline.}=
+        ## 右の子へd段移動する。O(1)。
         return (now.p+d*now.r,now.q+d*now.s,now.r,now.s,now.depth+d)
     
     proc sbt_root*[T](typ:typedesc[T]):SBTNode[T]=
@@ -71,19 +83,13 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         return (x.p + x.r,x.q+x.s)
 
     proc to_SBTNode*[T](a,b:T):SBTNode[T]=
-        var CFE = continued_fraction_expansion(a,b)
-        CFE[^1] -= 1
-        var start = 0
-        if CFE[0] == 0:
-            start = 1
-        var now = sbt_root(T)
-        
-        for i in start..<len(CFE):
-            if (i and 1) == 0:
-                now = move_right(now,CFE[i])
+        ## a/bのノードを作る。O(log(min(a,b)))時間、追加領域O(1)。
+        result = sbt_root(T)
+        for (c,d) in path_runs(a,b):
+            if c == 'R':
+                result = result.move_right(d)
             else:
-                now = move_left(now,CFE[i])
-        return now
+                result = result.move_left(d)
 
     proc to_endpoint_node[T](a,b:T):SBTNode[T]=
         if b == 0:
@@ -130,7 +136,7 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
 
         var now = sbt_root(T)
 
-        for (c,d) in encode_path(x):
+        for (c,d) in path_runs(x.num(),x.den()):
             if c == 'L':
                 let lim = min(d,now.max_inner_move_left_with_bound(m))
                 now = now.move_left(lim)
@@ -159,7 +165,7 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
 
         var now = sbt_root(T)
 
-        for (c,d) in encode_path(x):
+        for (c,d) in path_runs(x.num(),x.den()):
             if c == 'L':
                 let lim = min(d,now.max_inner_move_left_with_bound(m))
                 now = now.move_left(lim)
@@ -188,53 +194,64 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         return now
     
     proc LCA*[T](a,b,c,d:T):SBTNode[T]=
-        var CFE1 = continued_fraction_expansion(a,b)
-        var CFE2 = continued_fraction_expansion(c,d)
-        CFE1[^1] -= 1
-        CFE2[^1] -= 1
-        var now = sbt_root(T)
+        ## a/bとc/dの最小共通祖先を返す。O(log(min(a,b,c,d)))時間、追加領域O(1)。
+        assert a >= 1 and c >= 1, "分子は1以上である必要があります"
+        assert b >= 1 and d >= 1, "分母は1以上である必要があります"
+        var a = a
+        var b = b
+        var c = c
+        var d = d
+        result = sbt_root(T)
+        while a != b and c != d:
+            if a > b and c > d:
+                let x = (a-T(1)) div b
+                let y = (c-T(1)) div d
+                result = result.move_right(min(x,y))
+                if x != y:
+                    return
+                a -= x*b
+                c -= y*d
+            elif a < b and c < d:
+                let x = (b-T(1)) div a
+                let y = (d-T(1)) div c
+                result = result.move_left(min(x,y))
+                if x != y:
+                    return
+                b -= x*a
+                d -= y*c
+            else:
+                return
 
-        for i in 0..<min(len(CFE1),len(CFE2)):
-            if (i and 1) == 0:
-                now = move_right(now,min(CFE1[i],CFE2[i]))
-            else:
-                now = move_left(now,min(CFE1[i],CFE2[i]))
-            if CFE1[i] != CFE2[i]:
-                return now
-        return now
-    
     proc LCA*[T](a,b:SBTNode[T]):SBTNode[T]=
+        ## 2ノードの最小共通祖先を返す。O(log(min(a.num(),a.den(),b.num(),b.den())))。
         LCA(a.num(),a.den(),b.num(),b.den())
-    
+
     proc ancestor*[T](a,b,k:T):Option[SBTNode[T]]=
-        var CFE = continued_fraction_expansion(a,b)
-        CFE[^1] -= 1
+        ## a/bの深さkの祖先を返す。存在しなければnone。O(log(min(a,b)))、追加領域O(1)。
+        assert a >= 1, "aは1以上である必要があります"
+        assert b >= 1, "bは1以上である必要があります"
+        if k < 0:
+            return none(SBTNode[T])
         var now = sbt_root(T)
-        var cnt:T = 0
-        for i in 0..<len(CFE):
-            if (i and 1) == 0:
-                now = move_right(now,min(k-cnt,CFE[i]))
+        if k == 0:
+            return some(now)
+        for (c,d) in path_runs(a,b):
+            let steps = min(k-now.depth,d)
+            if c == 'R':
+                now = now.move_right(steps)
             else:
-                now = move_left(now,min(k-cnt,CFE[i]))
-            cnt += CFE[i]
-            if cnt >= k:
+                now = now.move_left(steps)
+            if now.depth == k:
                 return some(now)
         return none(SBTNode[T])
-    
+
     proc ancestor*[T](now:SBTNode[T],k:T):Option[SBTNode[T]]=
-        var CFE = continued_fraction_expansion(now.num(),now.den())
-        CFE[^1] -= 1
-        var now = sbt_root(T)
-        var cnt:T = 0
-        for i in 0..<len(CFE):
-            if (i and 1) == 0:
-                now = move_right(now,min(k-cnt,CFE[i]))
-            else:
-                now = move_left(now,min(k-cnt,CFE[i]))
-            cnt += CFE[i]
-            if cnt >= k:
-                return some(now)
-        return none(SBTNode[T])
+        ## ノードの深さkの祖先を返す。存在しなければnone。O(log(min(now.num(),now.den())))。
+        if k < 0 or k > now.depth:
+            return none(SBTNode[T])
+        if k == now.depth:
+            return some(now)
+        return ancestor(now.num(),now.den(),k)
 
     proc get_range*[T](node:SBTNode[T]):(T,T,T,T)=
         return (node.p,node.q,node.r,node.s)
@@ -246,7 +263,33 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         return get_range(to_SBTNode(a,b))
 
 
-    proc get_bounds*[T](is_ok:proc(x:SBTNode[T]):bool,n:T):SBTNode[T]=
+    proc get_bounds*[T](a,b,n:T):SBTNode[T]=
+        ## a/b以下とa/bより大きい有理数で境界を挟む。分子・分母はn以下。O(log(n+1))時間、追加領域O(1)。
+        assert a >= 0, "aは0以上である必要があります"
+        assert b >= 1, "bは1以上である必要があります"
+        assert n >= 1, "nは1以上である必要があります"
+        # 根からの最初の移動以降は、分子・分母のうち大きい側だけで上限を判定できる。
+        let boundNumerator = a >= b
+        var a = a
+        var b = b
+        result = sbt_root(T)
+        while result.p <= n-result.r and result.q <= n-result.s:
+            if a >= b:
+                let lim = if boundNumerator: (n-result.p) div result.r
+                          else: (n-result.q) div result.s
+                let steps = min(a div b,lim)
+                result = result.move_right(steps)
+                a -= steps*b
+            else:
+                let lim = if boundNumerator: (n-result.r) div result.p
+                          else: (n-result.s) div result.q
+                if a == 0:
+                    return result.move_left(lim)
+                let steps = min((b-T(1)) div a,lim)
+                result = result.move_left(steps)
+                b -= steps*a
+
+    proc get_bounds*[T](is_ok:proc(x:SBTNode[T]):bool,n:T):SBTNode[T] {.inline.}=
         ## 分子・分母がn以下の有理数で判定の境界を挟む。判定回数はO(log n)。
         # 単調性のある関数is_okを考える。
         # x <= a : true
@@ -272,45 +315,50 @@ when not declared CPLIB_MATH_STERN_BROCOT_TREE:
         
         while now.is_inner_node_bounded(n):
             if is_left:
-                # 新しくできる右端の分子・分母がn以下になる範囲で移動可能
-                # 指数探索で判定が変わる区間を絞ってから二分探索
-                let lim = now.max_endpoint_move_left_with_bound(n)
-                if lim <= 0:
-                    break
-                var l:T = 0
-                var r = T(1)
-                while is_ok(now.move_left(r)) == result_now:
-                    if r == lim:
-                        return now.move_left(r)
-                    l = r
-                    r += min(r,lim-r)
-                while r-l > 1:
-                    var mid = l + (r-l) div 2
-                    if is_ok(now.move_left(mid)) == result_now:
-                        l = mid
-                    else:
-                        r = mid
-                now = now.move_left(r)
+                # 1段で判定が変わる場合は、上限計算の除算を省く。
+                let next = now.move_left(T(1))
+                if is_ok(next) != result_now:
+                    now = next
+                else:
+                    let lim = now.max_endpoint_move_left_with_bound(n)
+                    if lim == 1:
+                        return next
+                    var l = T(1)
+                    var r = T(2)
+                    while is_ok(now.move_left(r)) == result_now:
+                        if r == lim:
+                            return now.move_left(r)
+                        l = r
+                        r += min(r,lim-r)
+                    while r-l > 1:
+                        let mid = l + (r-l) div 2
+                        if is_ok(now.move_left(mid)) == result_now:
+                            l = mid
+                        else:
+                            r = mid
+                    now = now.move_left(r)
             else:
-                # 新しくできる左端の分子・分母がn以下になる範囲で移動可能
-                # 指数探索で判定が変わる区間を絞ってから二分探索
-                let lim = now.max_endpoint_move_right_with_bound(n)
-                if lim <= 0:
-                    break
-                var l:T = 0
-                var r = T(1)
-                while is_ok(now.move_right(r)) == result_now:
-                    if r == lim:
-                        return now.move_right(r)
-                    l = r
-                    r += min(r,lim-r)
-                while r-l > 1:
-                    var mid = l + (r-l) div 2
-                    if is_ok(now.move_right(mid)) == result_now:
-                        l = mid
-                    else:
-                        r = mid
-                now = now.move_right(r)
+                let next = now.move_right(T(1))
+                if is_ok(next) != result_now:
+                    now = next
+                else:
+                    let lim = now.max_endpoint_move_right_with_bound(n)
+                    if lim == 1:
+                        return next
+                    var l = T(1)
+                    var r = T(2)
+                    while is_ok(now.move_right(r)) == result_now:
+                        if r == lim:
+                            return now.move_right(r)
+                        l = r
+                        r += min(r,lim-r)
+                    while r-l > 1:
+                        let mid = l + (r-l) div 2
+                        if is_ok(now.move_right(mid)) == result_now:
+                            l = mid
+                        else:
+                            r = mid
+                    now = now.move_right(r)
             result_now = not result_now
             is_left = not is_left
         return now

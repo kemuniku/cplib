@@ -1,5 +1,6 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import cplib/math/stern_brocot_tree
+import random
 
 proc checkSmall[T](n, x, y: T, strict, inverted: bool) =
     proc isBelow(a, b: T): bool =
@@ -12,6 +13,8 @@ proc checkSmall[T](n, x, y: T, strict, inverted: bool) =
     let bounds = get_bounds(proc(v: SBTNode[T]): bool =
         isBelow(v.num(), v.den()) xor inverted
     , n)
+    if not strict:
+        doAssert get_bounds(x, y, n) == bounds
     var p = T(0)
     var q = T(1)
     var r = T(1)
@@ -52,6 +55,7 @@ proc checkLarge(n, x, y: int) =
         inc calls
         v.den() != 0 and v.num() * y <= x * v.den()
     , n)
+    doAssert get_bounds(x, y, n) == bounds
     doAssert bounds.p * y <= x * bounds.q
     doAssert bounds.r * y > x * bounds.s
     doAssert bounds.q * bounds.r - bounds.p * bounds.s == 1
@@ -68,4 +72,24 @@ for n in [500000000, 1000000000]:
     checkLarge(n, 1, 2)
     checkLarge(n, 2, 1)
 
+proc checkRandom[T]() =
+    var rng = initRand(20260930)
+    for trial in 0..<10000:
+        let n = T(rng.rand(999999999)+1)
+        let x = T(rng.rand(1000000000))
+        let y = T(rng.rand(999999999)+1)
+        let expected = get_bounds(proc(v: SBTNode[T]): bool =
+            v.den() != 0 and int64(v.num()) * int64(y) <= int64(x) * int64(v.den())
+        , n)
+        doAssert get_bounds(x, y, n) == expected
+    let limit = T.high
+    doAssert get_bounds(T(0), T(1), limit) == sbt_root(T).move_left(limit)
+    doAssert get_bounds(T(1), T(1), limit) == sbt_root(T).move_right(T(1)).move_left(limit-1)
+    doAssert get_bounds(limit, T(1), limit) == sbt_root(T).move_right(limit)
+    doAssert get_bounds(T(1), limit, limit) == sbt_root(T).move_left(limit-1).move_right(T(1))
+    doAssert get_bounds(limit, limit, T(1)) == sbt_root(T).move_right(T(1))
+
+checkRandom[int]()
+checkRandom[int32]()
+checkRandom[int64]()
 echo "Hello World"
