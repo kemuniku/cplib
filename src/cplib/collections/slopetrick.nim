@@ -19,10 +19,10 @@ when not declared CPLIB_COLLECTIONS_SLOPETRICK:
         f.R.push(x-f.r_add)
 
     proc L0(f:SlopeTrick):int=
-        return -f.L[0]+f.l_add
+        return (if f.L.len == 0: -INF64 else: -f.L[0]+f.l_add)
 
     proc R0(f:SlopeTrick):int=
-        return f.R[0]+f.r_add
+        return (if f.R.len == 0: INF64 else: f.R[0]+f.r_add)
 
     proc popL(f:SlopeTrick):int=
         return -f.L.pop()+f.l_add
@@ -37,12 +37,12 @@ when not declared CPLIB_COLLECTIONS_SLOPETRICK:
         return f.R.pushpop(x-f.r_add)+f.r_add
 
     proc clearL*(f:SlopeTrick)=
+        ## f(x)をmin_{y>=x} f(y)に置き換える。
         f.L.clear()
-        f.pushL(-INF64)
 
     proc clearR*(f:SlopeTrick)=
+        ## f(x)をmin_{y<=x} f(y)に置き換える。
         f.R.clear()
-        f.pushR(INF64)
 
     proc min*(f:SlopeTrick):int=
         return f.min_f
@@ -53,7 +53,8 @@ when not declared CPLIB_COLLECTIONS_SLOPETRICK:
     proc add_x_minus_a*(f:SlopeTrick, a:int)=
         ## f(x)にmax(x-a,0)を加算
         ## ＿／
-        f.min_f += max(f.L0-a,0)
+        if f.L.len > 0:
+            f.min_f += max(f.L0-a,0)
         var x = f.pushpopL(a)
         f.pushR(x)
 
@@ -61,7 +62,8 @@ when not declared CPLIB_COLLECTIONS_SLOPETRICK:
     proc add_a_minus_x*(f:SlopeTrick, a:int)=
         ## f(x)にmax(a-x,0)を加算
         ## ＼＿
-        f.min_f += max(a-f.R0,0)
+        if f.R.len > 0:
+            f.min_f += max(a-f.R0,0)
         var x = f.pushpopR(a)
         f.pushL(x)
 
@@ -90,8 +92,7 @@ when not declared CPLIB_COLLECTIONS_SLOPETRICK:
             
 
     proc initSlopeTrick*(a:int):SlopeTrick=
+        ## 定数関数f(x)=aで初期化する。
         result = SlopeTrick(L: initHeapQueue[int](), R: initHeapQueue[int](), min_f: a, l_add: 0, r_add: 0)
-        result.pushL(-INF64)
-        result.pushR(INF64)
 
 
