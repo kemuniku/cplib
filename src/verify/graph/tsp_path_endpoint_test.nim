@@ -58,4 +58,29 @@ for floydwarshall in [false, true]:
         let dist = @[@[1000'i64, 1'i64], @[1000'i64, 1000'i64]]
         doAssert tspPathCostFromTo(dist, 0, 1, 0'i64, 1000'i64, floydwarshall) == 1'i64
 
+proc checkNegativeEdges[T](zero, one, inf: T) =
+    for floydwarshall in [false, true]:
+        block:
+            let dist = @[@[inf, -one, inf], @[inf, inf, inf], @[inf, inf, inf]]
+            doAssert tspPathCostFromTo(dist, 0, 2, zero, inf, floydwarshall) == inf
+            doAssert tspPathCostFrom(dist, 0, zero, inf, floydwarshall) == inf
+            doAssert tspPathAnyStart(dist, zero, inf, floydwarshall) == inf
+
+        block:
+            let dist = @[@[inf, -one - one, inf], @[inf, inf, one], @[inf, inf, inf]]
+            doAssert tspPathCostFromTo(dist, 0, 2, zero, inf, floydwarshall) == -one
+            doAssert tspPathCostFromTo(dist, 0, 0, zero, inf, floydwarshall) == inf
+            doAssert tspPathCostFrom(dist, 0, zero, inf, floydwarshall) == -one
+            doAssert tspPathAnyStart(dist, zero, inf, floydwarshall) == -one
+
+        block:
+            let dist = @[@[inf, inf, inf], @[inf, inf, inf], @[inf, -one, inf]]
+            doAssert tspPathCostFromTo(dist, 0, 1, zero, inf, floydwarshall) == inf
+
+checkNegativeEdges(0, 1, INF64)
+checkNegativeEdges(0'i32, 1'i32, INF32)
+checkNegativeEdges(0'i64, 1'i64, 1000'i64)
+checkNegativeEdges(0.0, 1.0, 1000.0)
+checkNegativeEdges(0.0'f32, 1.0'f32, 1000.0'f32)
+
 echo "Hello World"

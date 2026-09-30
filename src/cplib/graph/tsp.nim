@@ -17,6 +17,7 @@ when not declared CPLIB_GRAPH_TSP:
                     if DP[i][bit] == inf: continue
                     for j in 0..<N:
                         if (bit and (1 shl j)) == 0:
+                            if dist[i][j] == inf: continue
                             DP[j][bit or (1 shl j)] = min(DP[j][bit or (1 shl j)],DP[i][bit] + dist[i][j])
         return DP
 
@@ -26,7 +27,9 @@ when not declared CPLIB_GRAPH_TSP:
         if floydwarshall:
             for k in 0..<len(dist):
                 for i in 0..<len(dist):
+                    if dist[i][k] == inf: continue
                     for j in 0..<len(dist):
+                        if dist[k][j] == inf: continue
                         dist[i][j] = min(dist[i][j],dist[i][k] + dist[k][j])
         var start = newSeqWith(len(dist), inf)
         start[start_v] = zero
@@ -53,13 +56,16 @@ when not declared CPLIB_GRAPH_TSP:
         if floydwarshall:
             for k in 0..<len(dist):
                 for i in 0..<len(dist):
+                    if dist[i][k] == inf: continue
                     for j in 0..<len(dist):
+                        if dist[k][j] == inf: continue
                         dist[i][j] = min(dist[i][j],dist[i][k] + dist[k][j])
         var start = newSeqWith(len(dist), inf)
         start[start_v] = zero
         var res = solveTSP(dist, start, inf)
         result = res[goal_v][^1]
         for i in 0..<len(dist):
+            if res[i][^1] == inf or dist[i][goal_v] == inf: continue
             result = min(result,res[i][^1] + dist[i][goal_v])
         return result
 
@@ -80,7 +86,9 @@ when not declared CPLIB_GRAPH_TSP:
         if floydwarshall:
             for k in 0..<len(dist):
                 for i in 0..<len(dist):
+                    if dist[i][k] == inf: continue
                     for j in 0..<len(dist):
+                        if dist[k][j] == inf: continue
                         dist[i][j] = min(dist[i][j],dist[i][k] + dist[k][j])
         var start = newSeqWith(len(dist), zero)
         var res = solveTSP(dist, start, inf)
