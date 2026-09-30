@@ -57,6 +57,7 @@ when not declared CPLIB_TREE_REROOTING:
         ## e:単位元
         ## put_edge 辺u,v間の辺情報を付与
         ## put_vertex 頂点vの頂点情報を付与
-        result = solve_Rerooting_raw(G,merge,e,put_edge,put_vertex)
-        for i in 0..<len(result):
-            result[i] = put_vertex(result[i],i)
+        let raw = solve_Rerooting_raw(G,merge,e,put_edge,put_vertex)
+        result = newSeq[V](raw.len)
+        for i in 0..<raw.len:
+            result[i] = put_vertex(raw[i],i)
