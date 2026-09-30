@@ -79,7 +79,9 @@ proc read_source(dir, filename, git_url, indent: string, is_main, direct_import:
         if is_example and not line.isEmptyOrWhitespace and indent.len <= example_indent_width:
             is_example = false
         proc process_multi_import_include_line(prefix: string): bool =
-            if line.startsWith(prefix):
+            if line.startsWith(prefix) and
+                    (line.len == prefix.len or
+                     line[prefix.len] notin {'a'..'z', 'A'..'Z', '0'..'9', '_', '\x80'..'\xFF'}):
                 line.removePrefix(prefix)
                 var libs = line.split(",").mapIt(strip(it))
                 proc get_lib_content(lib: string): seq[string] =
