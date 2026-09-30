@@ -102,13 +102,17 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH:
         return namori.cycle_number[x] != -1
 
     proc movekth*(functional_graph:Functional_Graph,x,cnt:int):int=
-        #xからcnt回動いたらどこに行くか
+        ## xからcnt回移動した先の頂点を返す。O(log N)。
         if functional_graph.tree.depth(x)-1 >= cnt:
             return functional_graph.tree.la(x,len(functional_graph.cycle_number),cnt)
         else:
-            var root = functional_graph.roots[x]
-            var cnt = cnt-(functional_graph.tree.depth(x)-1)
-            return functional_graph.cycle[functional_graph.cycle_number[root]][(functional_graph.cycle_idx[root]+cnt) mod len(functional_graph.cycle[functional_graph.cycle_number[root]])]
+            let root = functional_graph.roots[x]
+            let cid = functional_graph.cycle_number[root]
+            let size = functional_graph.cycle[cid].len
+            let remaining = (cnt-(functional_graph.tree.depth(x)-1)) mod size
+            let start = functional_graph.cycle_idx[root]
+            let index = if remaining >= size-start: remaining-(size-start) else: start+remaining
+            return functional_graph.cycle[cid][index]
 
     proc cyclesize*(functional_graph:Functional_Graph,x:int):int=
         ## xから到達することができるサイクルのサイズ
