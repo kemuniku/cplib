@@ -77,27 +77,27 @@ data:
     \  print(quotient, remainder)\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/bigint.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/bigint.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: true
   path: verify/math/division_of_big_integers_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-01 06:31:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/division_of_big_integers_test.nim

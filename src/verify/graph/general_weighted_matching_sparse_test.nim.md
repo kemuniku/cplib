@@ -50,16 +50,16 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
   - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/general_weighted_matching_sparse.nim
-  - cplib/graph/general_weighted_matching_sparse.nim
   isVerificationFile: true
   path: verify/graph/general_weighted_matching_sparse_test.nim
   requiredBy: []
-  timestamp: '2026-09-29 03:00:17+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/general_weighted_matching_sparse_test.nim

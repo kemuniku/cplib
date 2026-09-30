@@ -36,12 +36,12 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/hopcroft_karp.nim
-  - cplib/graph/hopcroft_karp.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/hopcroft_karp.nim
   isVerificationFile: true
   path: verify/graph/hopcroft_karp_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:06:55+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/hopcroft_karp_test.nim

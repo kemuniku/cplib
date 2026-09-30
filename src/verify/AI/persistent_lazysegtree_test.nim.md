@@ -182,9 +182,9 @@ data:
     \    for i in 0..<16: check(trees[i], states[i], rng)\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/persistent_lazysegtree.nim
-  - cplib/collections/persistent_lazysegtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/persistent_lazysegtree.nim
+  - cplib/collections/persistent_lazysegtree.nim
   isVerificationFile: true
   path: verify/AI/persistent_lazysegtree_test.nim
   requiredBy: []

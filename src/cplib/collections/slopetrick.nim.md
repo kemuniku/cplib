@@ -33,37 +33,41 @@ data:
     \        min_f : int\n        l_add : int\n        r_add : int\n\n    proc pushL(f:SlopeTrick,\
     \ x:int)=\n        f.L.push(-x+f.l_add)\n\n    proc pushR(f:SlopeTrick, x:int)=\n\
     \        f.R.push(x-f.r_add)\n\n    proc L0(f:SlopeTrick):int=\n        return\
-    \ -f.L[0]+f.l_add\n\n    proc R0(f:SlopeTrick):int=\n        return f.R[0]+f.r_add\n\
-    \n    proc popL(f:SlopeTrick):int=\n        return -f.L.pop()+f.l_add\n\n    proc\
-    \ popR(f:SlopeTrick):int=\n        return f.R.pop()+f.r_add\n\n    proc pushpopL(f:SlopeTrick,\
-    \ x:int):int=\n        return -f.L.pushpop(-x+f.l_add)+f.l_add\n\n    proc pushpopR(f:SlopeTrick,\
+    \ (if f.L.len == 0: -INF64 else: -f.L[0]+f.l_add)\n\n    proc R0(f:SlopeTrick):int=\n\
+    \        return (if f.R.len == 0: INF64 else: f.R[0]+f.r_add)\n\n    proc popL(f:SlopeTrick):int=\n\
+    \        return -f.L.pop()+f.l_add\n\n    proc popR(f:SlopeTrick):int=\n     \
+    \   return f.R.pop()+f.r_add\n\n    proc pushpopL(f:SlopeTrick, x:int):int=\n\
+    \        return -f.L.pushpop(-x+f.l_add)+f.l_add\n\n    proc pushpopR(f:SlopeTrick,\
     \ x:int):int=\n        return f.R.pushpop(x-f.r_add)+f.r_add\n\n    proc clearL*(f:SlopeTrick)=\n\
-    \        f.L.clear()\n        f.pushL(-INF64)\n\n    proc clearR*(f:SlopeTrick)=\n\
-    \        f.R.clear()\n        f.pushR(INF64)\n\n    proc min*(f:SlopeTrick):int=\n\
-    \        return f.min_f\n\n    proc add_all*(f:SlopeTrick, a:int)=\n        f.min_f\
-    \ += a\n\n    proc add_x_minus_a*(f:SlopeTrick, a:int)=\n        ## f(x)\u306B\
-    max(x-a,0)\u3092\u52A0\u7B97\n        ## \uFF3F\uFF0F\n        f.min_f += max(f.L0-a,0)\n\
-    \        var x = f.pushpopL(a)\n        f.pushR(x)\n\n\n    proc add_a_minus_x*(f:SlopeTrick,\
+    \        ## f(x)\u3092min_{y>=x} f(y)\u306B\u7F6E\u304D\u63DB\u3048\u308B\u3002\
+    \n        f.L.clear()\n\n    proc clearR*(f:SlopeTrick)=\n        ## f(x)\u3092\
+    min_{y<=x} f(y)\u306B\u7F6E\u304D\u63DB\u3048\u308B\u3002\n        f.R.clear()\n\
+    \n    proc min*(f:SlopeTrick):int=\n        return f.min_f\n\n    proc add_all*(f:SlopeTrick,\
+    \ a:int)=\n        f.min_f += a\n\n    proc add_x_minus_a*(f:SlopeTrick, a:int)=\n\
+    \        ## f(x)\u306Bmax(x-a,0)\u3092\u52A0\u7B97\n        ## \uFF3F\uFF0F\n\
+    \        if f.L.len > 0:\n            f.min_f += max(f.L0-a,0)\n        var x\
+    \ = f.pushpopL(a)\n        f.pushR(x)\n\n\n    proc add_a_minus_x*(f:SlopeTrick,\
     \ a:int)=\n        ## f(x)\u306Bmax(a-x,0)\u3092\u52A0\u7B97\n        ## \uFF3C\
-    \uFF3F\n        f.min_f += max(a-f.R0,0)\n        var x = f.pushpopR(a)\n    \
-    \    f.pushL(x)\n\n    proc add_abs*(f:SlopeTrick, a:int)=\n        add_x_minus_a(f,a)\n\
-    \        add_a_minus_x(f,a)\n\n    proc min_index*(f:SlopeTrick):int=\n      \
-    \  return f.L0\n\n    proc shift*(f:SlopeTrick, a:int)=\n        f.l_add += a\n\
-    \        f.r_add += a\n    \n    proc shift*(f:SlopeTrick, a,b:int)=\n       \
-    \ f.l_add += a\n        f.r_add += b\n    \n    proc get_value*(f:SlopeTrick,x:int):int=\n\
+    \uFF3F\n        if f.R.len > 0:\n            f.min_f += max(a-f.R0,0)\n      \
+    \  var x = f.pushpopR(a)\n        f.pushL(x)\n\n    proc add_abs*(f:SlopeTrick,\
+    \ a:int)=\n        add_x_minus_a(f,a)\n        add_a_minus_x(f,a)\n\n    proc\
+    \ min_index*(f:SlopeTrick):int=\n        return f.L0\n\n    proc shift*(f:SlopeTrick,\
+    \ a:int)=\n        f.l_add += a\n        f.r_add += a\n    \n    proc shift*(f:SlopeTrick,\
+    \ a,b:int)=\n        f.l_add += a\n        f.r_add += b\n    \n    proc get_value*(f:SlopeTrick,x:int):int=\n\
     \        ## O(N)\u304B\u304B\u308B\u306E\u3067\u6CE8\u610F\u3002\n        result\
     \ = f.min_f\n        for i in 0..<len(f.L):\n            result += max(0,(-f.L[i]+f.l_add)-x)\n\
     \        for i in 0..<len(f.R):\n            result += max(0,x-(f.R[i]+f.r_add))\n\
-    \            \n\n    proc initSlopeTrick*(a:int):SlopeTrick=\n        result =\
-    \ SlopeTrick(L: initHeapQueue[int](), R: initHeapQueue[int](), min_f: a, l_add:\
-    \ 0, r_add: 0)\n        result.pushL(-INF64)\n        result.pushR(INF64)\n\n\n"
+    \            \n\n    proc initSlopeTrick*(a:int):SlopeTrick=\n        ## \u5B9A\
+    \u6570\u95A2\u6570f(x)=a\u3067\u521D\u671F\u5316\u3059\u308B\u3002\n        result\
+    \ = SlopeTrick(L: initHeapQueue[int](), R: initHeapQueue[int](), min_f: a, l_add:\
+    \ 0, r_add: 0)\n\n\n"
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/collections/slopetrick.nim
   requiredBy: []
-  timestamp: '2026-03-12 21:21:42+09:00'
+  timestamp: '2026-10-01 02:34:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/slopetrick_test.nim

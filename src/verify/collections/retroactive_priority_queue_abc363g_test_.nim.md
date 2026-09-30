@@ -54,18 +54,18 @@ data:
     \ x, y) in queries:\n    pq.erase((n - d[c], c))\n    pq.setPush((n - x, c), y)\n\
     \    total += y - p[c]\n    d[c] = x\n    p[c] = y\n    echo total - pq.sum\n"
   dependsOn:
-  - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/tmpl/fastio.nim
   - cplib/collections/retroactive_priority_queue.nim
   - cplib/tmpl/fastio.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: false
   path: verify/collections/retroactive_priority_queue_abc363g_test_.nim
   requiredBy: []
-  timestamp: '2026-09-28 01:13:11+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/retroactive_priority_queue_abc363g_test_.nim

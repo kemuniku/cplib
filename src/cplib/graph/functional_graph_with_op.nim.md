@@ -51,6 +51,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/functional_graph_prod_max_count_test.nim
     title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -135,10 +141,11 @@ data:
     \                            self.st_cycle[self.cum_cyclesize[cid]..<(root_idx+self.cum_cyclesize[cid])]\n\
     \                )\n            \n            \n            while x > 0:\n   \
     \             if (x and 1) == 1:\n                    result = self.op(result,v)\n\
-    \                v = self.op(v,v)\n                x = x shr 1\n            \n\
-    \n            # \u4F59\u308A\u3092\u51E6\u7406\n            var l = self.F.cycle_idx[root]\n\
-    \            var m = int(cycle_visits mod uint(csiz))\n            var r = l +\
-    \ m\n            if r <= csiz:\n                result = self.op(result,self.st_cycle[(l+self.cum_cyclesize[cid])..<(r+self.cum_cyclesize[cid])])\n\
+    \                x = x shr 1\n                if x > 0:\n                    v\
+    \ = self.op(v,v)\n            \n\n            # \u4F59\u308A\u3092\u51E6\u7406\
+    \n            var l = self.F.cycle_idx[root]\n            var m = int(cycle_visits\
+    \ mod uint(csiz))\n            var r = l + m\n            if r <= csiz:\n    \
+    \            result = self.op(result,self.st_cycle[(l+self.cum_cyclesize[cid])..<(r+self.cum_cyclesize[cid])])\n\
     \            else:\n                result = self.op(result,self.st_cycle[(l+self.cum_cyclesize[cid])..<(csiz+self.cum_cyclesize[cid])])\n\
     \                result = self.op(result,self.st_cycle[(self.cum_cyclesize[cid])..<(r-csiz+self.cum_cyclesize[cid])])\n\
     \n    proc prod_range*[T](self:FunctionalGraph_with_op[T],start,l,r:int,include_start:bool=true):seq[T]=\n\
@@ -234,25 +241,27 @@ data:
     \            return int(used)\n        return int(used-1'u)\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
-  timestamp: '2026-10-01 02:40:37+09:00'
+  timestamp: '2026-10-01 06:33:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/functional_graph_prod_max_count_test.nim
   - verify/graph/functional_graph_prod_max_count_test.nim
   - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
 documentation_of: cplib/graph/functional_graph_with_op.nim

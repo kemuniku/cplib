@@ -205,15 +205,15 @@ data:
     \   body\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-09-17 21:22:45+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/restore_dijkstra_radix_static_test.nim

@@ -46,8 +46,8 @@ data:
     \ == naive(items, capacity)\n"
   dependsOn:
   - cplib/utils/knapsack.nim
-  - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
+  - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/utils/knapsack/bounded_zero_count_test.nim

@@ -119,13 +119,13 @@ data:
     \ = prev.restore_shortest_path_from_prev(goal)\n        result.cost = costs[goal]\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/collections/radix_heap.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra_radix.nim
   requiredBy: []

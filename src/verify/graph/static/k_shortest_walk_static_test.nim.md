@@ -54,19 +54,19 @@ data:
     \ -1 else: lengths[i])\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/static/k_shortest_walk_static_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/static/k_shortest_walk_static_test.nim

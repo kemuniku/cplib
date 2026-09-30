@@ -65,20 +65,20 @@ data:
     \        ans.min = (M+1-(N-i)+(N-1))//N + 1\n\n    if ans == INF:\n        echo\
     \ -1\n    else:\n        echo ans"
   dependsOn:
+  - cplib/str/hash_string.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/str/hash_string.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/hash_string.nim
-  - cplib/str/hash_string.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/backwards_index.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/hash_string/hash_string_mul_test.nim

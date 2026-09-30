@@ -72,15 +72,15 @@ data:
     \\n\")\n\n\n\n\n\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/SWAG.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/SWAG.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/SWAG.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/SWAG.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/tree/auxiliaryweightedtree_test.nim
   requiredBy: []

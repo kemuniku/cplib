@@ -166,6 +166,12 @@ data:
     path: verify/math/stern_brocot_tree_bounds_test.nim
     title: verify/math/stern_brocot_tree_bounds_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_random_test.nim
+    title: verify/math/stern_brocot_tree_random_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_random_test.nim
+    title: verify/math/stern_brocot_tree_random_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/stern_brocot_tree_rational_approximation_test.nim
     title: verify/math/stern_brocot_tree_rational_approximation_test.nim
   - icon: ':heavy_check_mark:'
@@ -332,6 +338,8 @@ data:
   - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/fraction_inverse_sign_test.nim
   - verify/math/fraction_inverse_sign_test.nim
+  - verify/math/stern_brocot_tree_random_test.nim
+  - verify/math/stern_brocot_tree_random_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
 documentation_of: cplib/math/fractions.nim

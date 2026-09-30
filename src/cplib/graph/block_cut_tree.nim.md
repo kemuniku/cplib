@@ -61,9 +61,9 @@ data:
     \ = initBlockCutTree(initBiconnectedComponents(g))\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/biconnected_components.nim
   isVerificationFile: false

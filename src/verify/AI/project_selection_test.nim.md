@@ -114,9 +114,9 @@ data:
     \    expectError(OverflowDefect): discard opt.solve()\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/project_selection.nim
+  - cplib/graph/maxflow.nim
+  - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
-  - cplib/graph/maxflow.nim
-  - cplib/graph/maxflow.nim
   isVerificationFile: true
   path: verify/AI/project_selection_test.nim
   requiredBy: []

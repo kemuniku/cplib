@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/fastio.nim
+    title: cplib/tmpl/fastio.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -35,24 +41,24 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/rational_approximation\n\
-    import cplib/math/stern_brocot_tree\nimport strutils\n\nlet t = stdin.readLine.parseInt\n\
-    for _ in 0..<t:\n    let query = stdin.readLine.splitWhitespace\n    let n = query[0].parseInt\n\
-    \    let x = query[1].parseInt\n    let y = query[2].parseInt\n    let bounds\
-    \ = get_bounds(proc(v: SBTNode[int]): bool =\n        v.den() != 0 and v.num()\
-    \ * y <= x * v.den()\n    , n)\n    if bounds.p * y == bounds.q * x:\n       \
-    \ echo bounds.p, \" \", bounds.q, \" \", bounds.p, \" \", bounds.q\n    else:\n\
-    \        echo bounds.p, \" \", bounds.q, \" \", bounds.r, \" \", bounds.s\n"
+    import cplib/math/stern_brocot_tree\ninclude cplib/tmpl/fastio\n\nlet t = input(int)\n\
+    for _ in 0..<t:\n    let n = input(int)\n    let x = input(int)\n    let y = input(int)\n\
+    \    let bounds = get_bounds(x, y, n)\n    if bounds.p * y == bounds.q * x:\n\
+    \        print(bounds.p, bounds.q, bounds.p, bounds.q)\n    else:\n        print(bounds.p,\
+    \ bounds.q, bounds.r, bounds.s)\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/fractions.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/fractions.nim
   - cplib/graph/graph.nim
-  - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_rational_approximation_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 02:25:40+09:00'
+  timestamp: '2026-10-01 06:31:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/stern_brocot_tree_rational_approximation_test.nim

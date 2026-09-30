@@ -2712,6 +2712,9 @@ data:
       path: verify/graph/functional_graph_prod_max_count_test.nim
       title: verify/graph/functional_graph_prod_max_count_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/graph/functional_graph_prod_overflow_test.nim
+      title: verify/graph/functional_graph_prod_overflow_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/general_matching_test.nim
       title: verify/graph/general_matching_test.nim
     - icon: ':heavy_check_mark:'
@@ -2895,6 +2898,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/stern_brocot_tree_bounds_test.nim
       title: verify/math/stern_brocot_tree_bounds_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/stern_brocot_tree_random_test.nim
+      title: verify/math/stern_brocot_tree_random_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/stern_brocot_tree_rational_approximation_test.nim
       title: verify/math/stern_brocot_tree_rational_approximation_test.nim

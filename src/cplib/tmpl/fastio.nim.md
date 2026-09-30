@@ -232,6 +232,12 @@ data:
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_rational_approximation_test.nim
+    title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/sum_of_multiplicative_function_test.nim
     title: verify/math/sum_of_multiplicative_function_test.nim
   - icon: ':heavy_check_mark:'
@@ -693,54 +699,59 @@ data:
     \    proc si(): string {.inline.} =\n        var length: csize_t\n        let\
     \ source = fastioReadToken(addr length)\n        result = fastioNewStringUninit(length.int)\n\
     \        if length != 0:\n            fastioCopyToken(addr result[0], source,\
-    \ length)\n\n    proc input(valueType: typedesc[string]): string {.inline.} =\n\
-    \        si()\n\n    proc input(N: int, valueType: typedesc[string]): seq[string]\
-    \ {.inline.} =\n        result = newSeq[string](N)\n        for i in 0 ..< N:\n\
-    \            result[i] = input(string)\n\n    # \u51FA\u529B\u7CFB\n    {.emit:\
-    \ \"\"\"\n#include <stdio.h>\n#include <stddef.h>\n#include <stdint.h>\n#include\
-    \ <string.h>\n#include <stdbool.h>\n\n// stdio\u306E\u30D0\u30C3\u30D5\u30A1\u3092\
-    \u5171\u6709\u3057\u3001echo/write/flushFile\u3068\u306E\u51FA\u529B\u9806\u3092\
-    \u4FDD\u3061\u307E\u3059\u3002\nstatic char cplib_fio_stdout_buffer[1U << 16]\
-    \ __attribute__((aligned(64)));\nstatic void __attribute__((constructor)) cplib_fio_init_stdout(void)\
-    \ {\n  // \u6A19\u6E96\u51FA\u529B\u306E\u30D0\u30C3\u30D5\u30A1\u3092\u521D\u671F\
-    \u5316\u3057\u307E\u3059\u3002O(1)\u3002\n  setvbuf(stdout, cplib_fio_stdout_buffer,\
-    \ _IOFBF, sizeof(cplib_fio_stdout_buffer));\n}\n\ntypedef struct { char data[10000][4];\
-    \ } cplib_fio_FourDigits;\n// 4\u6841\u30C6\u30FC\u30D6\u30EB\u3092C/C++\u5171\
-    \u901A\u306E\u5B9A\u6570\u5F0F\u3067\u69CB\u7BC9\u3057\u307E\u3059\u3002\n#define\
-    \ CPLIB_FASTIO_D4(a,b,c,d) {'0'+a, '0'+b, '0'+c, '0'+d}\n#define CPLIB_FASTIO_D3(a,b,c)\
-    \ CPLIB_FASTIO_D4(a,b,c,0), CPLIB_FASTIO_D4(a,b,c,1), CPLIB_FASTIO_D4(a,b,c,2),\
-    \ CPLIB_FASTIO_D4(a,b,c,3), CPLIB_FASTIO_D4(a,b,c,4), CPLIB_FASTIO_D4(a,b,c,5),\
-    \ CPLIB_FASTIO_D4(a,b,c,6), CPLIB_FASTIO_D4(a,b,c,7), CPLIB_FASTIO_D4(a,b,c,8),\
-    \ CPLIB_FASTIO_D4(a,b,c,9)\n#define CPLIB_FASTIO_D2(a,b) CPLIB_FASTIO_D3(a,b,0),\
-    \ CPLIB_FASTIO_D3(a,b,1), CPLIB_FASTIO_D3(a,b,2), CPLIB_FASTIO_D3(a,b,3), CPLIB_FASTIO_D3(a,b,4),\
-    \ CPLIB_FASTIO_D3(a,b,5), CPLIB_FASTIO_D3(a,b,6), CPLIB_FASTIO_D3(a,b,7), CPLIB_FASTIO_D3(a,b,8),\
-    \ CPLIB_FASTIO_D3(a,b,9)\n#define CPLIB_FASTIO_D1(a) CPLIB_FASTIO_D2(a,0), CPLIB_FASTIO_D2(a,1),\
-    \ CPLIB_FASTIO_D2(a,2), CPLIB_FASTIO_D2(a,3), CPLIB_FASTIO_D2(a,4), CPLIB_FASTIO_D2(a,5),\
-    \ CPLIB_FASTIO_D2(a,6), CPLIB_FASTIO_D2(a,7), CPLIB_FASTIO_D2(a,8), CPLIB_FASTIO_D2(a,9)\n\
-    static const cplib_fio_FourDigits cplib_fio_four_digit_table = {{\n  CPLIB_FASTIO_D1(0),\
-    \ CPLIB_FASTIO_D1(1), CPLIB_FASTIO_D1(2), CPLIB_FASTIO_D1(3), CPLIB_FASTIO_D1(4),\
-    \ CPLIB_FASTIO_D1(5), CPLIB_FASTIO_D1(6), CPLIB_FASTIO_D1(7), CPLIB_FASTIO_D1(8),\
-    \ CPLIB_FASTIO_D1(9)\n}};\n#undef CPLIB_FASTIO_D1\n#undef CPLIB_FASTIO_D2\n#undef\
-    \ CPLIB_FASTIO_D3\n#undef CPLIB_FASTIO_D4\n\nstatic inline char* cplib_fio_reserve_bytes(FILE*\
-    \ output, size_t size) {\n#if defined(__GLIBC__)\n  // stdio\u81EA\u8EAB\u306E\
-    \u30D0\u30C3\u30D5\u30A1\u3092\u4F7F\u3044\u3001echo/write/flushFile\u3068\u306E\
-    \u51FA\u529B\u9806\u3092\u4FDD\u3064\u3002\n  if (output->_IO_write_ptr != NULL\
-    \ &&\n      output->_IO_write_end != NULL &&\n      (size_t)(output->_IO_write_end\
-    \ -\n                               output->_IO_write_ptr) >= size) {\n    return\
-    \ output->_IO_write_ptr;\n  }\n#endif\n  return NULL;\n}\n\nstatic inline void\
-    \ cplib_fio_commit_bytes(FILE* output, char* end) {\n#if defined(__GLIBC__)\n\
-    \  output->_IO_write_ptr = end;\n#else\n  (void)output;\n  (void)end;\n#endif\n\
-    }\n\nstatic inline char* cplib_fio_write_small(char* output, unsigned value,\n\
-    \                         const cplib_fio_FourDigits* table) {\n  if (value >=\
-    \ 1000) {\n    memcpy(output, table->data[value], 4);\n    return output + 4;\n\
-    \  }\n  if (value >= 100) {\n    memcpy(output, table->data[value] + 1, 3);\n\
-    \    return output + 3;\n  }\n  if (value >= 10) {\n    memcpy(output, table->data[value]\
-    \ + 2, 2);\n    return output + 2;\n  }\n  *output++ = ((char)('0' + value));\n\
-    \  return output;\n}\n\nstatic inline char* cplib_fio_write_four(char* output,\
-    \ unsigned value,\n                        const cplib_fio_FourDigits* table)\
-    \ {\n  memcpy(output, table->data[value], 4);\n  return output + 4;\n}\n\nstatic\
-    \ inline char* cplib_fio_write_unsigned_32(char* output, uint32_t value,\n   \
-    \                            const cplib_fio_FourDigits* table) {\n  if (value\
+    \ length)\n\n    proc input(valueType: typedesc[char]): char {.inline.} =\n  \
+    \      ## \u7A7A\u767D\u3092\u8AAD\u307F\u98DB\u3070\u3057\u30661\u6587\u5B57\u8AAD\
+    \u3080\u3002\u6587\u5B57\u5217\u3092\u78BA\u4FDD\u305B\u305A\u3001EOF\u3067\u306F\
+    '\\0'\u3092\u8FD4\u3059\u3002\n        var c = fastioGetChar()\n        while\
+    \ c >= 0 and c <= ord(' '):\n            c = fastioGetChar()\n        if c < 0:\n\
+    \            return '\\0'\n        return char(c)\n\n    proc input(valueType:\
+    \ typedesc[string]): string {.inline.} =\n        si()\n\n    proc input(N: int,\
+    \ valueType: typedesc[string]): seq[string] {.inline.} =\n        result = newSeq[string](N)\n\
+    \        for i in 0 ..< N:\n            result[i] = input(string)\n\n    # \u51FA\
+    \u529B\u7CFB\n    {.emit: \"\"\"\n#include <stdio.h>\n#include <stddef.h>\n#include\
+    \ <stdint.h>\n#include <string.h>\n#include <stdbool.h>\n\n// stdio\u306E\u30D0\
+    \u30C3\u30D5\u30A1\u3092\u5171\u6709\u3057\u3001echo/write/flushFile\u3068\u306E\
+    \u51FA\u529B\u9806\u3092\u4FDD\u3061\u307E\u3059\u3002\nstatic char cplib_fio_stdout_buffer[1U\
+    \ << 16] __attribute__((aligned(64)));\nstatic void __attribute__((constructor))\
+    \ cplib_fio_init_stdout(void) {\n  // \u6A19\u6E96\u51FA\u529B\u306E\u30D0\u30C3\
+    \u30D5\u30A1\u3092\u521D\u671F\u5316\u3057\u307E\u3059\u3002O(1)\u3002\n  setvbuf(stdout,\
+    \ cplib_fio_stdout_buffer, _IOFBF, sizeof(cplib_fio_stdout_buffer));\n}\n\ntypedef\
+    \ struct { char data[10000][4]; } cplib_fio_FourDigits;\n// 4\u6841\u30C6\u30FC\
+    \u30D6\u30EB\u3092C/C++\u5171\u901A\u306E\u5B9A\u6570\u5F0F\u3067\u69CB\u7BC9\u3057\
+    \u307E\u3059\u3002\n#define CPLIB_FASTIO_D4(a,b,c,d) {'0'+a, '0'+b, '0'+c, '0'+d}\n\
+    #define CPLIB_FASTIO_D3(a,b,c) CPLIB_FASTIO_D4(a,b,c,0), CPLIB_FASTIO_D4(a,b,c,1),\
+    \ CPLIB_FASTIO_D4(a,b,c,2), CPLIB_FASTIO_D4(a,b,c,3), CPLIB_FASTIO_D4(a,b,c,4),\
+    \ CPLIB_FASTIO_D4(a,b,c,5), CPLIB_FASTIO_D4(a,b,c,6), CPLIB_FASTIO_D4(a,b,c,7),\
+    \ CPLIB_FASTIO_D4(a,b,c,8), CPLIB_FASTIO_D4(a,b,c,9)\n#define CPLIB_FASTIO_D2(a,b)\
+    \ CPLIB_FASTIO_D3(a,b,0), CPLIB_FASTIO_D3(a,b,1), CPLIB_FASTIO_D3(a,b,2), CPLIB_FASTIO_D3(a,b,3),\
+    \ CPLIB_FASTIO_D3(a,b,4), CPLIB_FASTIO_D3(a,b,5), CPLIB_FASTIO_D3(a,b,6), CPLIB_FASTIO_D3(a,b,7),\
+    \ CPLIB_FASTIO_D3(a,b,8), CPLIB_FASTIO_D3(a,b,9)\n#define CPLIB_FASTIO_D1(a) CPLIB_FASTIO_D2(a,0),\
+    \ CPLIB_FASTIO_D2(a,1), CPLIB_FASTIO_D2(a,2), CPLIB_FASTIO_D2(a,3), CPLIB_FASTIO_D2(a,4),\
+    \ CPLIB_FASTIO_D2(a,5), CPLIB_FASTIO_D2(a,6), CPLIB_FASTIO_D2(a,7), CPLIB_FASTIO_D2(a,8),\
+    \ CPLIB_FASTIO_D2(a,9)\nstatic const cplib_fio_FourDigits cplib_fio_four_digit_table\
+    \ = {{\n  CPLIB_FASTIO_D1(0), CPLIB_FASTIO_D1(1), CPLIB_FASTIO_D1(2), CPLIB_FASTIO_D1(3),\
+    \ CPLIB_FASTIO_D1(4), CPLIB_FASTIO_D1(5), CPLIB_FASTIO_D1(6), CPLIB_FASTIO_D1(7),\
+    \ CPLIB_FASTIO_D1(8), CPLIB_FASTIO_D1(9)\n}};\n#undef CPLIB_FASTIO_D1\n#undef\
+    \ CPLIB_FASTIO_D2\n#undef CPLIB_FASTIO_D3\n#undef CPLIB_FASTIO_D4\n\nstatic inline\
+    \ char* cplib_fio_reserve_bytes(FILE* output, size_t size) {\n#if defined(__GLIBC__)\n\
+    \  // stdio\u81EA\u8EAB\u306E\u30D0\u30C3\u30D5\u30A1\u3092\u4F7F\u3044\u3001\
+    echo/write/flushFile\u3068\u306E\u51FA\u529B\u9806\u3092\u4FDD\u3064\u3002\n \
+    \ if (output->_IO_write_ptr != NULL &&\n      output->_IO_write_end != NULL &&\n\
+    \      (size_t)(output->_IO_write_end -\n                               output->_IO_write_ptr)\
+    \ >= size) {\n    return output->_IO_write_ptr;\n  }\n#endif\n  return NULL;\n\
+    }\n\nstatic inline void cplib_fio_commit_bytes(FILE* output, char* end) {\n#if\
+    \ defined(__GLIBC__)\n  output->_IO_write_ptr = end;\n#else\n  (void)output;\n\
+    \  (void)end;\n#endif\n}\n\nstatic inline char* cplib_fio_write_small(char* output,\
+    \ unsigned value,\n                         const cplib_fio_FourDigits* table)\
+    \ {\n  if (value >= 1000) {\n    memcpy(output, table->data[value], 4);\n    return\
+    \ output + 4;\n  }\n  if (value >= 100) {\n    memcpy(output, table->data[value]\
+    \ + 1, 3);\n    return output + 3;\n  }\n  if (value >= 10) {\n    memcpy(output,\
+    \ table->data[value] + 2, 2);\n    return output + 2;\n  }\n  *output++ = ((char)('0'\
+    \ + value));\n  return output;\n}\n\nstatic inline char* cplib_fio_write_four(char*\
+    \ output, unsigned value,\n                        const cplib_fio_FourDigits*\
+    \ table) {\n  memcpy(output, table->data[value], 4);\n  return output + 4;\n}\n\
+    \nstatic inline char* cplib_fio_write_unsigned_32(char* output, uint32_t value,\n\
+    \                               const cplib_fio_FourDigits* table) {\n  if (value\
     \ < 10000U) return cplib_fio_write_small(output, value, table);\n  const uint32_t\
     \ quotient = value / 10000U;\n  const unsigned low = (unsigned)(value - quotient\
     \ * 10000U);\n  if (quotient < 10000U) {\n    output = cplib_fio_write_small(output,\
@@ -940,7 +951,7 @@ data:
   - verify/str/merged_static_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
-  timestamp: '2026-09-17 21:06:55+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/two_edge_connected_components_test.nim
@@ -1005,6 +1016,8 @@ data:
   - verify/AI/fastio_test.nim
   - verify/AI/fastio_io_test.nim
   - verify/AI/fastio_io_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim

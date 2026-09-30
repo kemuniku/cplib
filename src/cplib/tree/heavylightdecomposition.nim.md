@@ -172,6 +172,12 @@ data:
     path: verify/graph/functional_graph_prod_max_count_test.nim
     title: verify/graph/functional_graph_prod_max_count_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/namori_incycle_test.nim
     title: verify/graph/namori_incycle_test.nim
   - icon: ':heavy_check_mark:'
@@ -537,6 +543,8 @@ data:
   - verify/graph/functional_graph_movekth_overflow_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
   - verify/AI/dsu_on_tree_test.nim
   - verify/AI/dsu_on_tree_test.nim
   - verify/AI/namori_graph_test.nim

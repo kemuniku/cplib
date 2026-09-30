@@ -190,6 +190,12 @@ data:
     path: verify/graph/functional_graph_prod_max_count_test.nim
     title: verify/graph/functional_graph_prod_max_count_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/matrix_avx2_gc_test.nim
     title: verify/matrix/matrix_avx2_gc_test.nim
   - icon: ':heavy_check_mark:'
@@ -364,6 +370,8 @@ data:
   - verify/graph/functional_graph_prod_max_count_test.nim
   - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
   - verify/utils/inversion_number_test.nim
   - verify/utils/inversion_number_test.nim
   - verify/utils/backwards_index_collections_test.nim

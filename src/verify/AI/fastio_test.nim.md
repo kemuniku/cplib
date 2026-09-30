@@ -29,20 +29,20 @@ data:
     \ compileTimeJoined == \"1,2,3\"\n    doAssert compileTimeSignedBounds ==\n  \
     \      \"-9223372036854775808,9223372036854775807\"\n    doAssert compileTimeUnsignedBound\
     \ == \"18446744073709551615\"\n\ndoAssert compiles(ii())\ndoAssert compiles(lii(3))\n\
-    doAssert compiles(si())\ndoAssert typeof(input(string)) is string\ndoAssert typeof(input(3,\
-    \ string)) is seq[string]\ndoAssert not compiles(input(seq[char]))\ntype FastioTestRange\
-    \ = range[0 .. 10]\ndoAssert not compiles(input(FastioTestRange))\ndoAssert not\
-    \ compiles(input(3, FastioTestRange))\ndoAssert typeof(input(int)) is int\ndoAssert\
-    \ typeof(input(int8)) is int8\ndoAssert typeof(input(int16)) is int16\ndoAssert\
-    \ typeof(input(int32)) is int32\ndoAssert typeof(input(int64)) is int64\ndoAssert\
-    \ typeof(input(uint8)) is uint8\ndoAssert typeof(input(uint16)) is uint16\ndoAssert\
-    \ typeof(input(uint32)) is uint32\ndoAssert typeof(input(uint)) is uint\ndoAssert\
-    \ typeof(input(uint64)) is uint64\ndoAssert typeof(input(3, int)) is seq[int]\n\
-    doAssert typeof(input(3, int8)) is seq[int8]\ndoAssert typeof(input(3, int16))\
-    \ is seq[int16]\ndoAssert typeof(input(3, int32)) is seq[int32]\ndoAssert typeof(input(3,\
-    \ int64)) is seq[int64]\ndoAssert typeof(input(3, uint8)) is seq[uint8]\ndoAssert\
-    \ typeof(input(3, uint16)) is seq[uint16]\ndoAssert typeof(input(3, uint32)) is\
-    \ seq[uint32]\ndoAssert typeof(input(3, uint)) is seq[uint]\ndoAssert typeof(input(3,\
+    doAssert compiles(si())\ndoAssert typeof(input(char)) is char\ndoAssert typeof(input(string))\
+    \ is string\ndoAssert typeof(input(3, string)) is seq[string]\ndoAssert not compiles(input(seq[char]))\n\
+    type FastioTestRange = range[0 .. 10]\ndoAssert not compiles(input(FastioTestRange))\n\
+    doAssert not compiles(input(3, FastioTestRange))\ndoAssert typeof(input(int))\
+    \ is int\ndoAssert typeof(input(int8)) is int8\ndoAssert typeof(input(int16))\
+    \ is int16\ndoAssert typeof(input(int32)) is int32\ndoAssert typeof(input(int64))\
+    \ is int64\ndoAssert typeof(input(uint8)) is uint8\ndoAssert typeof(input(uint16))\
+    \ is uint16\ndoAssert typeof(input(uint32)) is uint32\ndoAssert typeof(input(uint))\
+    \ is uint\ndoAssert typeof(input(uint64)) is uint64\ndoAssert typeof(input(3,\
+    \ int)) is seq[int]\ndoAssert typeof(input(3, int8)) is seq[int8]\ndoAssert typeof(input(3,\
+    \ int16)) is seq[int16]\ndoAssert typeof(input(3, int32)) is seq[int32]\ndoAssert\
+    \ typeof(input(3, int64)) is seq[int64]\ndoAssert typeof(input(3, uint8)) is seq[uint8]\n\
+    doAssert typeof(input(3, uint16)) is seq[uint16]\ndoAssert typeof(input(3, uint32))\
+    \ is seq[uint32]\ndoAssert typeof(input(3, uint)) is seq[uint]\ndoAssert typeof(input(3,\
     \ uint64)) is seq[uint64]\n\nassert @[low(int), -1, 0, high(int)].join(\",\")\
     \ ==\n    \"-9223372036854775808,-1,0,9223372036854775807\"\nassert @[0u32, high(uint32)].join(\"\
     \ \") == \"0 4294967295\"\nassert @[0u64, high(uint64)].join(\" \") == \"0 18446744073709551615\"\
@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: verify/AI/fastio_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:06:55+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/fastio_test.nim

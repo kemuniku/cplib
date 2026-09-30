@@ -63,6 +63,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/functional_graph_prod_max_count_test.nim
     title: verify/graph/functional_graph_prod_max_count_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -211,9 +217,9 @@ data:
     \        return functional_graph.cycle_depth[cid][residue].upperBound(k)\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph.nim
   requiredBy:
@@ -232,6 +238,8 @@ data:
   - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/graph/functional_graph_movekth_overflow_test.nim
   - verify/graph/functional_graph_movekth_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim

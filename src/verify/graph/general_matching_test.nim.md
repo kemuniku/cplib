@@ -42,15 +42,15 @@ data:
     \ u, \" \", v\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/general_matching.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/general_matching.nim
-  - cplib/graph/general_matching.nim
-  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/general_matching_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/general_matching_test.nim

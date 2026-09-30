@@ -85,12 +85,12 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_avx.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_avx.nim
-  - cplib/graph/warshall_floyd_negative.nim
   - cplib/utils/constants.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/warshall_floyd_avx_exact_test.nim
   requiredBy: []

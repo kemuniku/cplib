@@ -1036,6 +1036,12 @@ data:
     path: verify/graph/functional_graph_prod_max_count_test.nim
     title: verify/graph/functional_graph_prod_max_count_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/functional_graph_prod_overflow_test.nim
+    title: verify/graph/functional_graph_prod_overflow_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/general_matching_test.nim
     title: verify/graph/general_matching_test.nim
   - icon: ':heavy_check_mark:'
@@ -1131,6 +1137,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/stern_brocot_tree_bounds_test.nim
     title: verify/math/stern_brocot_tree_bounds_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_random_test.nim
+    title: verify/math/stern_brocot_tree_random_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/stern_brocot_tree_random_test.nim
+    title: verify/math/stern_brocot_tree_random_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/stern_brocot_tree_rational_approximation_test.nim
     title: verify/math/stern_brocot_tree_rational_approximation_test.nim
@@ -1788,6 +1800,8 @@ data:
   - verify/graph/namori_incycle_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
   - verify/graph/lowlink_bridges_test.nim
   - verify/graph/lowlink_bridges_test.nim
   - verify/graph/general_weighted_matching_test.nim
@@ -1960,6 +1974,8 @@ data:
   - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
+  - verify/math/stern_brocot_tree_random_test.nim
+  - verify/math/stern_brocot_tree_random_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/tree/rerooting_test.nim

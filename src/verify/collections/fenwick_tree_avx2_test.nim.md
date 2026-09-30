@@ -43,15 +43,15 @@ data:
     \ r))\n    if answers.len > 0:\n        print(*answers, sep=\"\\n\")\n\nmain()\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/tmpl/fastio.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/fenwick_tree_avx2_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/fenwick_tree_avx2_test.nim

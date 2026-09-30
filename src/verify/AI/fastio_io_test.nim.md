@@ -43,26 +43,32 @@ data:
     ]\nfor token in splitValues:\n    for offset in [1, 7, 15, 31]:\n        let padding\
     \ = (blockSize - offset - (inputFile.getFilePos().int mod blockSize) + blockSize)\
     \ mod blockSize\n        inputFile.write(repeat(' ', padding))\n        inputFile.write(token\
-    \ & \"\\n\")\nlet longToken = repeat(\"abcdefghij\", blockSize div 3)\nlet tokens\
-    \ = @[\"hello\", \"\\xff\\xfeabc\", longToken, \"tail\"]\nfor i, token in tokens:\n\
-    \    inputFile.write(token)\n    if i != tokens.high: inputFile.write(\"\\n\"\
-    )\ninputFile.flushFile()\ninputFile.setFilePos(0)\ndoAssert posix.dup2(inputFile.getFileHandle(),\
-    \ 0) == 0\n\nproc checkValues[T: SomeInteger]() =\n    let expected = values[T]()\n\
-    \    for x in expected: doAssert input(T) == x\n    doAssert input(expected.len,\
-    \ T) == expected\n    doAssert input(0, T).len == 0\n    var text = \"\"\n   \
-    \ for i,x in expected:\n        if i != 0: text.add(\"|\")\n        text.add($x)\n\
-    \    doAssert expected.join(\"|\") == text\nallTypes(checkValues)\ndoAssert input(nineDigits.len,\
-    \ uint32) == nineDigits\ndoAssert input(signedRandom.len, int64) == signedRandom\n\
-    for token in splitValues:\n    for offset in [1, 7, 15, 31]:\n        if token\
-    \ == $low(int64): doAssert input(int64) == low(int64)\n        elif token == $high(int64):\
-    \ doAssert input(int64) == high(int64)\n        elif token == $high(uint64): doAssert\
-    \ input(uint64) == high(uint64)\n        else: doAssert input(uint32) == 42\n\
-    for token in tokens: doAssert si() == token\ndoAssert si() == \"\"\ndoAssert input(int64)\
-    \ == 0\ndoAssert input(uint64) == 0\ndoAssert fastioGetChar() == -1\n\nlet outputFile\
-    \ = temporaryFile()\ndoAssert outputFile != nil\nstdout.flushFile()\nlet savedStdout\
-    \ = posix.dup(1)\ndoAssert savedStdout >= 0\ndoAssert posix.dup2(outputFile.getFileHandle(),\
-    \ 1) == 1\nvar expectedOutput = \"\"\nproc checkOutput[T: SomeInteger]() =\n \
-    \   let a = values[T]()\n    for x in a:\n        print(x)\n        expectedOutput.add($x\
+    \ & \"\\n\")\nfor offset in [0, 1]:\n    let padding = (blockSize - offset - (inputFile.getFilePos().int\
+    \ mod blockSize)) mod blockSize\n    inputFile.write(repeat(' ', padding))\n \
+    \   inputFile.write(\"LR \\t\\r\\n42 word \\xff\\n\")\nlet longToken = repeat(\"\
+    abcdefghij\", blockSize div 3)\nlet tokens = @[\"hello\", \"\\xff\\xfeabc\", longToken,\
+    \ \"tail\"]\nfor i, token in tokens:\n    inputFile.write(token)\n    if i !=\
+    \ tokens.high: inputFile.write(\"\\n\")\ninputFile.flushFile()\ninputFile.setFilePos(0)\n\
+    doAssert posix.dup2(inputFile.getFileHandle(), 0) == 0\n\nproc checkValues[T:\
+    \ SomeInteger]() =\n    let expected = values[T]()\n    for x in expected: doAssert\
+    \ input(T) == x\n    doAssert input(expected.len, T) == expected\n    doAssert\
+    \ input(0, T).len == 0\n    var text = \"\"\n    for i,x in expected:\n      \
+    \  if i != 0: text.add(\"|\")\n        text.add($x)\n    doAssert expected.join(\"\
+    |\") == text\nallTypes(checkValues)\ndoAssert input(nineDigits.len, uint32) ==\
+    \ nineDigits\ndoAssert input(signedRandom.len, int64) == signedRandom\nfor token\
+    \ in splitValues:\n    for offset in [1, 7, 15, 31]:\n        if token == $low(int64):\
+    \ doAssert input(int64) == low(int64)\n        elif token == $high(int64): doAssert\
+    \ input(int64) == high(int64)\n        elif token == $high(uint64): doAssert input(uint64)\
+    \ == high(uint64)\n        else: doAssert input(uint32) == 42\nfor offset in [0,\
+    \ 1]:\n    doAssert input(char) == 'L'\n    doAssert input(char) == 'R'\n    doAssert\
+    \ input(int) == 42\n    doAssert input(string) == \"word\"\n    doAssert input(char)\
+    \ == '\\xff'\nfor token in tokens: doAssert si() == token\nfor _ in 0..<2: doAssert\
+    \ input(char) == '\\0'\ndoAssert si() == \"\"\ndoAssert input(int64) == 0\ndoAssert\
+    \ input(uint64) == 0\ndoAssert fastioGetChar() == -1\n\nlet outputFile = temporaryFile()\n\
+    doAssert outputFile != nil\nstdout.flushFile()\nlet savedStdout = posix.dup(1)\n\
+    doAssert savedStdout >= 0\ndoAssert posix.dup2(outputFile.getFileHandle(), 1)\
+    \ == 1\nvar expectedOutput = \"\"\nproc checkOutput[T: SomeInteger]() =\n    let\
+    \ a = values[T]()\n    for x in a:\n        print(x)\n        expectedOutput.add($x\
     \ & \"\\n\")\n    print(*a, sep = \"|\")\n    for i,x in a:\n        if i != 0:\
     \ expectedOutput.add('|')\n        expectedOutput.add($x)\n    expectedOutput.add('\\\
     n')\nallTypes(checkOutput)\nprint(*nineDigits, sep = \"\\n\")\nfor x in nineDigits:\
@@ -79,7 +85,7 @@ data:
   isVerificationFile: true
   path: verify/AI/fastio_io_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 21:22:45+09:00'
+  timestamp: '2026-10-01 03:10:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/fastio_io_test.nim

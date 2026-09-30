@@ -49,16 +49,16 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/collections/unionfind.nim
-  - cplib/geometry/manhattan_mst.nim
-  - cplib/geometry/manhattan_mst.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/collections/unionfind.nim
+  - cplib/geometry/manhattan_mst.nim
   - cplib/tmpl/fastio.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/manhattan_mst.nim
   isVerificationFile: true
   path: verify/geometry/manhattan_mst_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 07:06:44+09:00'
+  timestamp: '2026-10-01 06:31:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/manhattan_mst_test.nim
