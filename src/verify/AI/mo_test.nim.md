@@ -81,15 +81,15 @@ data:
   dependsOn:
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/graph/graph.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/utils/mo.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/mo.nim
   - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/AI/mo_test.nim

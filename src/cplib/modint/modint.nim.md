@@ -877,9 +877,9 @@ data:
   dependsOn:
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim

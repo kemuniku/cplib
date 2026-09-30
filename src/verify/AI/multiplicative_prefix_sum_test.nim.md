@@ -123,16 +123,16 @@ data:
   dependsOn:
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/multiplicative_prefix_sum.nim
+  - cplib/math/multiplicative_prefix_sum.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/math/multiplicative_prefix_sum.nim
   isVerificationFile: true
   path: verify/AI/multiplicative_prefix_sum_test.nim
   requiredBy: []

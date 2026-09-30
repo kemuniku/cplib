@@ -48,13 +48,13 @@ data:
     \ - points[v][1])\necho total\nfor (u, v) in edges:\n    echo u, \" \", v\n"
   dependsOn:
   - cplib/geometry/manhattan_mst.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/geometry/base.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/collections/unionfind.nim
   - cplib/geometry/manhattan_mst.nim
   - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/geometry/base.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/geometry/manhattan_mst_test.nim
   requiredBy: []

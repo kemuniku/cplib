@@ -136,10 +136,10 @@ data:
     \ assert wm.range_sum(l,r,low,high) == expected.sum\n                        assert\
     \ wm.range_sum_with_count(l,r,low,high) == expected\n"
   dependsOn:
-  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: true
   path: verify/AI/waveletmatrix_test.nim
   requiredBy: []

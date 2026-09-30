@@ -321,8 +321,8 @@ data:
     \            return used\n        return used-1\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim

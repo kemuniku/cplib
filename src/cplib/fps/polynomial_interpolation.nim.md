@@ -202,23 +202,23 @@ data:
     \ * 2 + 1] * tree.nodes[i * 2]\n        partial[1].prefix(xs.len)\n"
   dependsOn:
   - cplib/modint/barrett_impl.nim
-  - cplib/fps/product_tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/fps/formal_power_series.nim
   - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
+  - cplib/fps/product_tree.nim
   isVerificationFile: false
   path: cplib/fps/polynomial_interpolation.nim
   requiredBy:
