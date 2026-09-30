@@ -19,7 +19,7 @@ for n in 0..100_000:
     doAssert isqrt(n) == referenceIsqrt(n)
 
 when sizeof(int) == 8:
-    const maxRoot = 3_037_000_499
+    const maxRoot = 3_037_000_499.int
     doAssert isqrt(1_000_000_000_000.int) == 1_000_000
 else:
     const maxRoot = 46_340
