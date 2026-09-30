@@ -26,11 +26,9 @@ when not declared CPLIB_UTILS_BITITERS:
     iterator bitsubset*(bits: int): int =
         ##与えられた集合の部分集合を昇順で列挙します。与えられた集合は含みません。
         var i = 0
-        while true:
+        while i != bits:
             yield i
             i = (i-bits) and bits
-            if bits == i:
-                break
     iterator bitsubseteq_descending*(bits: int): int =
         ##与えられた集合の部分集合を降順で列挙します。与えられた集合も含みます。
         var i = bits
@@ -42,11 +40,9 @@ when not declared CPLIB_UTILS_BITITERS:
     iterator bitsubset_descending*(bits: int): int =
         ##与えられた集合の部分集合を降順で列挙します。与えられた集合は含みません。
         var i = bits
-        while true:
+        while i != 0:
             i = (i-1) and bits
             yield i
-            if i == 0:
-                break
 
 
     iterator bitsuperseteq*(bits, n: int): int =
