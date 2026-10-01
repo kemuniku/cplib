@@ -631,6 +631,118 @@ a[i] = montgomery.to_montgomery(a[i]);
 _mm_free(b);
 }
 
+// Bostan--Mori の変換結果を半分ずつ再利用する。
+inline u32 bostan_mori_998(const u32* p0, Z plen, const u32* q0, Z qlen, u64 k, bool input_montgomery) {
+modulus = 998244353U;
+primitive_root = 3U;
+Z half = 64;
+while (half < std::max(plen, qlen)-1) half <<= 1;
+const Z n = half * 2;
+TransformPlan full(n), forward(half), inverse(half);
+inverse.prepare_inverse();
+const Montgomery& mont = full.montgomery();
+u32* storage = static_cast<u32*>(_mm_malloc(sizeof(u32) * n * 4, 32));
+u32* p = storage;
+u32* q = p + n;
+u32* a = q + n;
+u32* b = a + half;
+u32* twist = b + half;
+u32* inverse_z = twist + half;
+std::memset(p, 0, n * 2 * sizeof(u32));
+for (Z i = 0; i < plen; ++i) p[i] = input_montgomery ? p0[i] : mont.to_montgomery(p0[i]);
+for (Z i = 0; i < qlen; ++i) q[i] = input_montgomery ? q0[i] : mont.to_montgomery(q0[i]);
+const u32 invhalf = mont.to_montgomery(power_mod(half, modulus-2));
+const u32 half_mont = mont.to_montgomery(half);
+u32 plead = plen > half ? p[half] : 0;
+u32 qlead = qlen > half ? q[half] : 0;
+const u32 root = mont.to_montgomery(power_mod(3, (modulus-1)/n));
+const u32 iroot = mont.to_montgomery(power_mod(3, modulus-1-(modulus-1)/n));
+u32 w = mont.radix;
+Z rev = 0;
+for (Z i=0; i<half; ++i) {
+twist[i] = mont.multiply(w, invhalf);
+w = mont.multiply(w, root);
+}
+w = mont.radix;
+for (Z i=0; i<half; ++i) {
+inverse_z[rev] = w;
+w = mont.multiply(w, iroot);
+Z bit = half >> 1;
+while (bit && (rev & bit)) { rev ^= bit; bit >>= 1; }
+rev ^= bit;
+}
+if (plen > half) full.forward(p); else full.forward_half_zero(p);
+if (qlen > half) full.forward(q); else full.forward_half_zero(q);
+while (k > 0) {
+const V evens = _mm256_setr_epi32(0,2,4,6,0,2,4,6);
+for (Z i=0; i<half; i+=8) {
+V pp[2], qq[2];
+for (int t=0; t<2; ++t) {
+const V pv = _mm256_loadu_si256((const V*)(p+2*i+8*t));
+const V qv = _mm256_loadu_si256((const V*)(q+2*i+8*t));
+const V qs = _mm256_shuffle_epi32(qv,0xB1);
+const V uv = montgomery_multiply(pv,qs,mont);
+const V vu = _mm256_shuffle_epi32(uv,0xB1);
+pp[t] = _mm256_permutevar8x32_epi32((k&1) ? subtract_mod(uv,vu) : add_mod(uv,vu),evens);
+const V product = montgomery_multiply(qv,qs,mont);
+qq[t] = _mm256_permutevar8x32_epi32(add_mod(product,product),evens);
+}
+V resultp = _mm256_permute2x128_si256(pp[0],pp[1],0x20);
+if (k&1) resultp = montgomery_multiply(resultp,_mm256_loadu_si256((const V*)(inverse_z+i)),mont);
+_mm256_storeu_si256((V*)(a+i),resultp);
+_mm256_storeu_si256((V*)(b+i),_mm256_permute2x128_si256(qq[0],qq[1],0x20));
+}
+plead = (k & 1) ? 0 : mont.multiply(plead,qlead);
+plead = add_mod(plead,plead);
+qlead = mont.multiply(qlead,qlead);
+qlead = add_mod(qlead,qlead);
+k >>= 1;
+std::memcpy(p, a, half*sizeof(u32));
+std::memcpy(q, b, half*sizeof(u32));
+inverse.inverse(a);
+inverse.inverse(b);
+const u32 pcorrection = mont.multiply(plead,half_mont);
+const u32 qcorrection = mont.multiply(qlead,half_mont);
+a[0] = subtract_mod(a[0],pcorrection);
+b[0] = subtract_mod(b[0],qcorrection);
+if (k < 32) {
+const Z upto = Z(k);
+for (Z i=0; i<=upto; ++i) {
+a[i] = mont.multiply(a[i], invhalf);
+b[i] = mont.multiply(b[i], invhalf);
+}
+const u32 invq0 = mont.to_montgomery(power_mod(mont.multiply(b[0],1),modulus-2));
+for (Z i=0; i<=upto; ++i) {
+for (Z j=1; j<=i; ++j) a[i] = subtract_mod(a[i],mont.multiply(b[j],a[i-j]));
+a[i] = mont.multiply(a[i],invq0);
+}
+const u32 answer = mont.multiply(a[upto],1);
+_mm_free(storage);
+return answer;
+}
+if (k < half / 2) {
+for (Z i=0; i<=Z(k); ++i) {
+a[i] = mont.multiply(a[i], invhalf);
+b[i] = mont.multiply(b[i], invhalf);
+}
+const u32 answer = bostan_mori_998(a, Z(k)+1, b, Z(k)+1, k, true);
+_mm_free(storage);
+return answer;
+}
+a[0] = subtract_mod(a[0],pcorrection);
+b[0] = subtract_mod(b[0],qcorrection);
+for (Z i=0; i<half; i+=8) {
+const V weight = _mm256_loadu_si256((const V*)(twist+i));
+_mm256_storeu_si256((V*)(p+half+i), montgomery_multiply(shrink(shrink_twice_modulus(_mm256_loadu_si256((const V*)(a+i)))),weight,mont));
+_mm256_storeu_si256((V*)(q+half+i), montgomery_multiply(shrink(shrink_twice_modulus(_mm256_loadu_si256((const V*)(b+i)))),weight,mont));
+}
+forward.forward(p+half);
+forward.forward(q+half);
+}
+_mm_free(storage);
+return 0;
+}
+
 class FixedConvolution {
 Z size_;
 u32 modulus_, root_;
@@ -948,6 +1060,9 @@ context.run(output);
 }
 }
 #endif
+extern "C" std::uint32_t cplib_bostan_mori_998(std::uint32_t* p, std::size_t plen, std::uint32_t* q, std::size_t qlen, std::uint64_t k, bool mont) {
+return cplib_avx2_ntt::bostan_mori_998(p, plen, q, qlen, k, mont);
+}
 extern "C" void cplib_convolution_ntt_friendly(
 std::uint32_t* output,
 std::uint32_t* left,
@@ -986,6 +1101,11 @@ cplib_avx2_ntt::product_polynomial_sequence_998(
 output, factors, sizes, factor_count);
 }
     """.}
+
+    proc bostanMori998Kernel*(p: ptr uint32, plen: csize_t, q: ptr uint32,
+            qlen: csize_t, k: uint64, inputMontgomery: bool): uint32
+            {.importc: "cplib_bostan_mori_998".}
+        ## 法998244353のBostan--Mori内部カーネル（入力は変更しない）。
 
     proc convolutionNttFriendlyAvx2(
         output: ptr uint32,
