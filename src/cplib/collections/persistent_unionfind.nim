@@ -2,7 +2,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_UNIONFIND:
     const CPLIB_COLLECTIONS_PERSISTENT_UNIONFIND* = 1
     import bitops
 
-    const PersistentUFBranchBits = 4
+    const PersistentUFBranchBits = 3
     const PersistentUFBranchSize = 1 shl PersistentUFBranchBits
     const PersistentUFBranchMask = PersistentUFBranchSize - 1
     type
