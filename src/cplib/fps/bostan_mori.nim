@@ -22,6 +22,9 @@ when not declared CPLIB_FPS_BOSTAN_MORI:
         var q = denominator.normalized
         var index = k
         while index > 0:
+            # x^index以下には、それより高次の係数は寄与しない。
+            if index < p.len - 1: p.setLen(index + 1)
+            if index < q.len - 1: q.setLen(index + 1)
             var qNegative = q
             for i in countup(1, qNegative.high, 2): qNegative[i] = -qNegative[i]
             p = parityTerms(p * qNegative, index and 1)
