@@ -1,7 +1,7 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/CGL_4_B
 include cplib/geometry/convex_polygon
 import math, strformat
-proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
+proc scanf(formatstr: cstring): cint {.header: "<stdio.h>", varargs.}
 proc ii(): int = discard scanf("%lld", addr result)
 let n = ii()
 var vertices = newSeq[Point[int]](n)

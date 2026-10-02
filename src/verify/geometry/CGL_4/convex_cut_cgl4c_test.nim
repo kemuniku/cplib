@@ -1,7 +1,7 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/CGL_4_C
 include cplib/geometry/convex_polygon
 import strformat
-proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
+proc scanf(formatstr: cstring): cint {.header: "<stdio.h>", varargs.}
 proc ii(): int = discard scanf("%lld", addr result)
 proc ff(): float = discard scanf("%lf", addr result)
 proc point(): Point[float] = initPoint(ff(),ff())
