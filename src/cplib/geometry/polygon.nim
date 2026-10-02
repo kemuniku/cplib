@@ -56,23 +56,38 @@ when not declared CPLIB_GEOMETRY_POLYGON:
                 result = not result
 
     proc convex_hull*[T](v: openArray[Point[T]], strict: bool = true): Polygon[T] =
-        ## 点群 v の凸包
-        var n = v.len
-        if n < 3: return Polygon[T](v: @v)
-        var s = v.sorted
-        var vi = s[0..1]
-        for i in 2..<n:
-            if strict:
-                while vi.len >= 2 and ccw(vi[^2], vi[^1], s[i]) != COUNTER_CLOCKWISE: discard vi.pop
-            else:
-                while vi.len >= 2 and ccw(vi[^2], vi[^1], s[i]) == CLOCKWISE: discard vi.pop
-            vi.add(s[i])
-        var lower_size = vi.len
-        for i in countdown(n-2, 0):
-            if strict:
-                while vi.len > lower_size and ccw(vi[^2], vi[^1], s[i]) != COUNTER_CLOCKWISE: discard vi.pop
-            else:
-                while vi.len > lower_size and ccw(vi[^2], vi[^1], s[i]) == CLOCKWISE: discard vi.pop
-            vi.add(s[i])
-        vi.delete(0)
-        return Polygon[T](v: vi)
+        ## 凸包を辞書順最小点から反時計回りに返す。重複点を除き、O(N log N)時間・O(N)領域。
+        ## strict=falseなら辺上の点も残す。全点共線ならstrict時は両端、それ以外は辞書順に各点を一度返す。
+        ## 比較・向きの判定にEPSは使わない。浮動小数点は有限座標を使うこと。
+        let sortedPoints = v.sorted(proc(a, b: Point[T]): int = cmp(a, b))
+        var s: seq[Point[T]]
+        for p in sortedPoints:
+            if s.len == 0 or not exact_equal(s[^1], p): s.add(p)
+        if s.len <= 2: return Polygon[T](v: s)
+        let zero = s[0].x - s[0].x
+        var collinear = true
+        for i in 1..<s.len-1:
+            if cross(s[^1] - s[0], s[i] - s[0]) != zero:
+                collinear = false
+                break
+        if collinear:
+            if strict: return Polygon[T](v: @[s[0], s[^1]])
+            return Polygon[T](v: s)
+
+        var lower, upper: seq[Point[T]]
+        for p in s:
+            while lower.len >= 2:
+                let turn = cross(lower[^1] - lower[^2], p - lower[^2])
+                if (if strict: turn > zero else: turn >= zero): break
+                discard lower.pop()
+            lower.add(p)
+        for i in countdown(s.high, 0):
+            let p = s[i]
+            while upper.len >= 2:
+                let turn = cross(upper[^1] - upper[^2], p - upper[^2])
+                if (if strict: turn > zero else: turn >= zero): break
+                discard upper.pop()
+            upper.add(p)
+        lower.setLen(lower.len - 1)
+        upper.setLen(upper.len - 1)
+        Polygon[T](v: lower & upper)

@@ -34,7 +34,12 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc `$`*[T](p: Point[T]): string = &"({p.x}, {p.y})"
 
     proc geometry_eq*[T, S](x: T, y: S): bool = x == y
-    proc geometry_eq*(x, y: SomeFloat): bool = (abs(x - y) < GEOMETRY_EPS * x) or (abs(x - y) < GEOMETRY_EPS)
+    proc geometry_eq*(x, y: SomeFloat): bool =
+        ## 絶対・相対誤差で近似一致を判定する。GEOMETRY_EPSは非負を指定する。
+        if x == y: return true
+        if abs(x) == Inf or abs(y) == Inf: return false
+        let delta = abs(x - y)
+        delta < GEOMETRY_EPS or delta < GEOMETRY_EPS * max(abs(x), abs(y))
     proc geometry_eq*(x: int, y: SomeFloat): bool = geometry_eq(float(x), y)
     proc geometry_eq*(x: SomeFloat, y: int): bool = geometry_eq(x, float(y))
     proc geometry_neq*[T, S](x: T, y: S): bool = not geometry_eq(x, y)
@@ -47,13 +52,24 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc geometry_gt*[T, S](x: T, y: S): bool = not geometry_le(x, y)
     proc geometry_lt*[T, S](x: T, y: S): bool = not geometry_ge(x, y)
     proc `<`*[T](p, q: Point[T]): bool =
-        if geometry_eq(p.x, q.x): return geometry_lt(p.y, q.y)
-        return geometry_lt(p.x, q.x)
+        ## EPSを使わない辞書順比較。浮動小数点の座標にNaNを含めないこと。
+        if p.x == q.x: return p.y < q.y
+        return p.x < q.x
     proc `>`*[T](p, q: Point[T]): bool =
-        if geometry_eq(p.x, q.x): return geometry_gt(p.y, q.y)
-        return geometry_gt(p.x, q.x)
-    proc `==`*[T](p, q: Point[T]): bool = geometry_eq(p.x, q.x) and geometry_eq(p.y, q.y)
-    proc cmp*[T](p, q: Point[T]): int = (if p < q: -1 elif p == q: 0 else: 1)
+        ## EPSを使わない辞書順比較。
+        q < p
+    proc exact_equal*[T](p, q: Point[T]): bool =
+        ## EPSを使わず各座標の一致を判定する。
+        p.x == q.x and p.y == q.y
+    proc almost_equal*[T](p, q: Point[T]): bool =
+        ## 各座標をgeometry_eqで比較する。ソートやハッシュの等値関係には使用しない。
+        geometry_eq(p.x, q.x) and geometry_eq(p.y, q.y)
+    proc `==`*[T](p, q: Point[T]): bool =
+        ## 各座標の近似一致。厳密一致にはexact_equalを使用する。
+        almost_equal(p, q)
+    proc cmp*[T](p, q: Point[T]): int =
+        ## EPSを使わない辞書順比較。近似一致の==とは独立して順序を決める。
+        (if p < q: -1 elif q < p: 1 else: 0)
 
 
     proc `+`*[T](p: Point[T], q: Point[T]): Point[T] = (result = p; result += q)
@@ -64,9 +80,30 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc `<=`*[T](p, q: Point[T]): bool = not (p > q)
     proc `>=`*[T](p, q: Point[T]): bool = not (p < q)
 
+    type PointKey*[T] = object
+        x*, y*: T
+
+    proc toPointKey*[T](p: Point[T]): PointKey[T] =
+        ## 点を厳密比較するハッシュ用キーに変換する。座標値をコピーし、EPSに依存しない。
+        PointKey[T](x: p.x, y: p.y)
+    proc `==`*[T](p, q: PointKey[T]): bool =
+        ## ハッシュ用キーの各座標を厳密に比較する。
+        p.x == q.x and p.y == q.y
+    proc hash*[T](p: PointKey[T]): Hash =
+        ## 厳密一致に対応するハッシュ。浮動小数点の正負のゼロは同じ値にする。
+        when T is SomeFloat:
+            result = result !& hash(if p.x == T(0): T(0) else: p.x)
+            result = result !& hash(if p.y == T(0): T(0) else: p.y)
+        else:
+            result = result !& hash(p.x)
+            result = result !& hash(p.y)
+        result = !$result
     proc hash*[T](p: Point[T]): Hash =
-        result = result !& hash(p.x)
-        result = result !& hash(p.y)
+        ## 厳密一致する座標型の点をハッシュ化する。浮動小数点にはtoPointKeyを使用する。
+        when T is SomeFloat:
+            {.error: "Point[float]の==は近似一致です。ハッシュ用にはtoPointKeyを使用してください".}
+        else:
+            hash(p.toPointKey)
 
     type Line*[T] = object
         s*, t*: Point[T]
