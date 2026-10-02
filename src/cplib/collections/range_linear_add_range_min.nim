@@ -18,8 +18,26 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
 
     proc cross(a, b, c, d: LinearMinPoint): Int128 {.inline.} =
         ## ベクトル b-a と d-c の外積を128bit整数で求めます。O(1)。
-        (to_Int128(b.x) - a.x) * (to_Int128(d.y) - c.y) -
-            (to_Int128(b.y) - a.y) * (to_Int128(d.x) - c.x)
+        result = to_Int128(b.x)
+        result -= a.x
+        var dy = to_Int128(d.y)
+        dy -= c.y
+        result *= dy
+        var other = to_Int128(b.y)
+        other -= a.y
+        var dx = to_Int128(d.x)
+        dx -= c.x
+        other *= dx
+        result -= other
+
+    proc leftOfBorder(c, d: LinearMinPoint, border: int, c1, c2: Int128): bool {.inline.} =
+        ## 接線候補の交点が境界の左側にあるかを128bit整数で判定します。O(1)。
+        var side = c1
+        side *= c.x - border
+        var term = c2
+        term *= d.x - c.x
+        side += term
+        side < 0
 
     proc pull(self: RangeLinearAddRangeMin, k, border: int) =
         ## 左右の下側凸包の共通接線を求めます。O(log N)。
@@ -30,12 +48,12 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
             lc = self.nodes[l].intercept
             rs = self.nodes[r].slope
             rc = self.nodes[r].intercept
+            a = shifted(self.nodes[l].left, ls, lc)
+            b = shifted(self.nodes[l].right, ls, lc)
+            c = shifted(self.nodes[r].left, rs, rc)
+            d = shifted(self.nodes[r].right, rs, rc)
         while true:
             let
-                a = shifted(self.nodes[l].left, ls, lc)
-                b = shifted(self.nodes[l].right, ls, lc)
-                c = shifted(self.nodes[r].left, rs, rc)
-                d = shifted(self.nodes[r].right, rs, rc)
                 lLeaf = a.x == b.x
                 rLeaf = c.x == d.x
             if lLeaf and rLeaf:
@@ -60,16 +78,20 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
                     c2 = cross(a, b, c, b)
                 # 接線候補の交点が左右の境界のどちら側にあるかを判定します。
                 descendLeft = if c1 == 0 and c2 == 0: c.x < border
-                    else: to_Int128(c.x - border) * c1 + to_Int128(d.x - c.x) * c2 < 0
+                    else: leftOfBorder(c, d, border, c1, c2)
                 child = if descendLeft: l * 2 + 1 else: r * 2
             if descendLeft:
                 l = child
                 ls += self.nodes[l].slope
                 lc += self.nodes[l].intercept
+                a = shifted(self.nodes[l].left, ls, lc)
+                b = shifted(self.nodes[l].right, ls, lc)
             else:
                 r = child
                 rs += self.nodes[r].slope
                 rc += self.nodes[r].intercept
+                c = shifted(self.nodes[r].left, rs, rc)
+                d = shifted(self.nodes[r].right, rs, rc)
 
     proc build(self: RangeLinearAddRangeMin, v: openArray[int], k, l, r: int) =
         ## 区間の凸包を再帰的に構築します。O(r-l)。
@@ -87,12 +109,18 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
         ## 値・遅延加算の係数とその適用時の中間値は int に収めてください。
         ## 各節点は自身の遅延加算を除いた下側凸包の共通接線を保持します。
         static: doAssert sizeof(int) == 8, "intが64ビットの環境で使用する必要があります"
-        result = RangeLinearAddRangeMin(length: v.len, nodes: newSeq[LinearMinNode](4 * v.len))
+        var capacity = 1
+        while capacity < v.len:
+            capacity = capacity shl 1
+        result = RangeLinearAddRangeMin(length: v.len,
+            nodes: newSeq[LinearMinNode](if v.len == 0: 0 else: 2 * capacity))
         if v.len > 0:
             result.build(v, 1, 0, v.len)
 
     proc push(self: RangeLinearAddRangeMin, k: int) {.inline.} =
         ## 一次式の遅延加算を子へ伝えます。O(1)。
+        if self.nodes[k].slope == 0 and self.nodes[k].intercept == 0:
+            return
         for child in k * 2..k * 2 + 1:
             self.nodes[child].slope += self.nodes[k].slope
             self.nodes[child].intercept += self.nodes[k].intercept
@@ -116,7 +144,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
     proc add*(self: RangeLinearAddRangeMin, l, r, b, c: int) =
         ## 半開区間 [l,r) の a[i] に b*i+c を加えます。O(log^2 N)。
         assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
-        if l < r:
+        if l < r and (b != 0 or c != 0):
             self.addImpl(1, 0, self.length, l, r, b, c)
 
     proc add*(self: RangeLinearAddRangeMin, segment: HSlice[int, int], b, c: int) =
