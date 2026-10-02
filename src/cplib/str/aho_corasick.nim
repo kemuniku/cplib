@@ -31,9 +31,8 @@ when not declared CPLIB_STR_AHO_CORASICK:
     proc initAhoCorasick*(words: openArray[string], chars: static[HSlice[char, char]]): AhoCorasick[chars] =
         ## 登録語から構築する。文字種数σ、頂点数Nとして時間 O(Σ|s| + words.len + σN)、空間 O(σN + words.len)。
         static: doAssert chars.a <= chars.b
-        var capacity = 1
-        for word in words: capacity = max(capacity, word.len + 1)
-        result.nodes = newSeqOfCap[AhoCorasickNode[chars]](capacity)
+        if words.len == 1:
+            result.nodes = newSeqOfCap[AhoCorasickNode[chars]](words[0].len + 1)
         result.patterns = newSeqOfCap[int32](words.len)
         result.nodes.setLen(1)
         result.nodes[0].parent = -1
