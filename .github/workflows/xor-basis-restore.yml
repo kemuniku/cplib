@@ -1,0 +1,37 @@
+name: XOR basis restore regression
+on:
+  pull_request:
+    paths:
+      - src/cplib/math/xor_basis.nim
+      - src/verify/AI/xor_basis*test.nim
+      - .github/workflows/xor-basis-restore.yml
+  workflow_dispatch:
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        nim-version: [1.6.20, 2.2.4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: ${{ matrix.nim-version }}
+      - name: Run debug and release regressions
+        run: |
+          for test in xor_basis_test xor_basis_restore_test; do
+            nim cpp -r --hints:off --path:src --nimcache:/tmp/$test-debug --out:/tmp/$test-debug-bin src/verify/AI/$test.nim
+            nim cpp -r --hints:off -d:release --path:src --nimcache:/tmp/$test-release --out:/tmp/$test-release-bin src/verify/AI/$test.nim
+          done
+      - name: Run UBSan
+        if: matrix.nim-version == '2.2.4'
+        run: nim cpp -r --hints:off -d:release --passC:-fsanitize=undefined --passC:-fno-sanitize-recover=all --passL:-fsanitize=undefined --path:src --nimcache:/tmp/xor-ubsan --out:/tmp/xor-ubsan-bin src/verify/AI/xor_basis_restore_test.nim
+      - name: Run expander regressions
+        run: python3 tools/expander/test_expander.py
+      - name: Run expanded restore regression
+        run: |
+          nim cpp --hints:off -d:release --out:/tmp/xor-expander tools/expander/expander.nim
+          /tmp/xor-expander --quiet --lib:. --output-file:/tmp/xor_restore_expanded.nim src/verify/AI/xor_basis_restore_test.nim
+          nim cpp -r --hints:off -d:release --nimcache:/tmp/xor-expanded-cache --out:/tmp/xor-expanded-bin /tmp/xor_restore_expanded.nim
