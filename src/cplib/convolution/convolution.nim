@@ -1165,6 +1165,54 @@ std::memcpy(output, current.data(), sizeof(u32) * size_);
 }
 };
 
+inline void wildcard_matching_ntt(
+unsigned char* output, const unsigned char* s, Z n,
+const unsigned char* t, Z m, unsigned char wild,
+u32 origin, u32 prime) {
+// 中央係数だけを使う巡回畳み込みで、非負の不一致スコアを求める。
+modulus = prime;
+primitive_root = 3U;
+Z size = 1;
+while (size < n) size <<= 1;
+u32* a = static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));
+u32* b = static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));
+u32* score = static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));
+std::memset(score, 0, sizeof(u32) * size);
+TransformPlan plan(size);
+const Montgomery& montgomery = plan.montgomery();
+const u32 scale = (u32)(u64(montgomery.radix_squared) *
+    power_mod((u32)size, prime - 2) % prime);
+for (unsigned k = 0; k < 3; ++k) {
+for (Z i = 0; i < n; ++i) {
+const u32 x = s[i] == wild ? 0 : (u32)s[i] - origin;
+a[i] = s[i] == wild ? 0 : k == 0 ? 1 : k == 1 ? x : x * x;
+}
+for (Z i = 0; i < m; ++i) {
+const u32 x = t[i] == wild ? 0 : (u32)t[i] - origin;
+const u32 value = t[i] == wild ? 0 : k == 2 ? 1 : k == 1 ? x : x * x;
+b[m - 1 - i] = montgomery.multiply(value, scale);
+}
+const bool left_half_zero = n <= (size >> 1);
+const bool right_half_zero = m <= (size >> 1);
+std::memset(a + n, 0, sizeof(u32) * ((left_half_zero ? size >> 1 : size) - n));
+std::memset(b + m, 0, sizeof(u32) * ((right_half_zero ? size >> 1 : size) - m));
+if (left_half_zero) plan.forward_half_zero(a); else plan.forward(a);
+if (right_half_zero) plan.forward_half_zero(b, a); else plan.forward(b, a);
+for (Z i = 0; i < size; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(a + i));
+const V current = _mm256_loadu_si256((const V*)(score + i));
+_mm256_storeu_si256((V*)(score + i), k == 1
+    ? subtract_mod(current, add_mod(value, value)) : add_mod(current, value));
+}
+}
+plan.prepare_inverse();
+plan.inverse(score);
+for (Z i = 0; i <= n - m; ++i) output[i] &= score[i + m - 1] == 0;
+_mm_free(score);
+_mm_free(b);
+_mm_free(a);
+}
+
 class FixedConvolution {
 Z size_;
 u32 modulus_, root_;
@@ -1520,6 +1568,13 @@ extern "C" void cplib_multipoint_tree_destroy(void* context) {
 delete static_cast<cplib_avx2_ntt::MultipointProductTree*>(context);
 }
 
+extern "C" void cplib_wildcard_matching_ntt(
+unsigned char* output, unsigned char* s, std::size_t n,
+unsigned char* t, std::size_t m, unsigned char wild,
+std::uint32_t origin, std::uint32_t prime) {
+cplib_avx2_ntt::wildcard_matching_ntt(output, s, n, t, m, wild, origin, prime);
+}
+
 extern "C" void* cplib_fixed_convolution_create(
 std::uint32_t* data, std::size_t length, std::size_t size,
 std::uint32_t modulus, std::uint32_t root) {
@@ -1549,6 +1604,11 @@ output, factors, sizes, factor_count);
             qlen: csize_t, k: uint64, inputMontgomery: bool): uint32
             {.importc: "cplib_bostan_mori_998".}
         ## 法998244353のBostan--Mori内部カーネル（入力は変更しない）。
+
+    proc wildcardMatchingNttKernel*(output, s: ptr uint8, n: csize_t,
+        t: ptr uint8, m: csize_t, wild: uint8, origin, prime: uint32
+    ) {.importc: "cplib_wildcard_matching_ntt".}
+        ## wildcard_match専用。61 <= m <= n、n <= 2^24、primeは469762049または167772161、originは非wildバイトの下限とする。outputのn-m+1バイトは0か1で初期化し、スコアが非零の位置を0にする。
 
     proc convolutionNttFriendlyAvx2(
         output: ptr uint32,
