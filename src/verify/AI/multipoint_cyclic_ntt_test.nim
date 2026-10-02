@@ -7,6 +7,21 @@ import cplib/modint/modint
 declarStaticBarrettModint(Mint257, 257u32)
 declarStaticMontgomeryModint(MintNearLimit, 1073692673u32)
 
+for modulus in [998244353u32, 257u32, 17u32]:
+    for size in -2..513:
+        let expected = size >= 64 and (size and (size - 1)) == 0 and
+            (modulus.int - 1) mod size == 0
+        doAssert canUseMultipointTreeNtt(modulus, size) == expected
+doAssert not canUseMultipointTreeNtt(998244353u32, 119)
+doAssert canUseMultipointTreeNtt(998244353u32, 1 shl 23)
+doAssert not canUseMultipointTreeNtt(998244353u32, 1 shl 24)
+doAssert not canUseMultipointTreeNtt(129u32, 64)
+for modulus in [0u32, 1u32, 1u32 shl 30, high(uint32)]:
+    doAssert not canUseMultipointTreeNtt(modulus, 64)
+when sizeof(int) > 4:
+    for size in [1 shl 32, 1 shl 40, 1 shl 62, high(int)]:
+        doAssert not canUseMultipointTreeNtt(998244353u32, size)
+
 proc check[T: BarrettModint or MontgomeryModint](
     M: typedesc[T], n, m, mode: int, primitive: int) =
     var size = 1
