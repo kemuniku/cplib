@@ -59,10 +59,10 @@ when not declared CPLIB_GEOMETRY_POLYGON:
         ## 凸包を辞書順最小点から反時計回りに返す。重複点を除き、O(N log N)時間・O(N)領域。
         ## strict=falseなら辺上の点も残す。全点共線ならstrict時は両端、それ以外は辞書順に各点を一度返す。
         ## 比較・向きの判定にEPSは使わない。浮動小数点は有限座標を使うこと。
-        let sortedPoints = v.sorted
+        let sortedPoints = v.sorted(proc(a, b: Point[T]): int = cmp(a, b))
         var s: seq[Point[T]]
         for p in sortedPoints:
-            if s.len == 0 or s[^1] != p: s.add(p)
+            if s.len == 0 or not exact_equal(s[^1], p): s.add(p)
         if s.len <= 2: return Polygon[T](v: s)
         let zero = s[0].x - s[0].x
         var collinear = true

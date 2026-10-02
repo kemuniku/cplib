@@ -48,7 +48,7 @@ proc check(points: seq[Point[int]]) =
             let floats = points.mapIt(initPoint(float(it.x), float(if reflected: -it.y else: it.y)))
             let transformed = points.mapIt(initPoint(it.x, if reflected: -it.y else: it.y))
             let floatExpected = oracle(transformed, strict).mapIt(initPoint(float(it.x), float(it.y)))
-            doAssert convex_hull(floats, strict).v == floatExpected
+            doAssert convex_hull(floats, strict).v.mapIt(it.toPointKey) == floatExpected.mapIt(it.toPointKey)
         let fractions = points.mapIt(initPoint(initFraction(it.x), initFraction(it.y)))
         let fractionExpected = expected.mapIt(initPoint(initFraction(it.x), initFraction(it.y)))
         doAssert convex_hull(fractions, strict).v == fractionExpected
@@ -82,20 +82,27 @@ for trial in 0..<500:
 block:
     let points = @[initPoint(0.0, 0.0), initPoint(1e-12, 0.0),
         initPoint(1.0, 0.0), initPoint(1.0, 1.0), initPoint(0.0, 1.0)]
-    doAssert convex_hull(points, false).v == points
-    doAssert convex_hull(points).v == @[points[0], points[2], points[3], points[4]]
+    doAssert convex_hull(points, false).v.mapIt(it.toPointKey) == points.mapIt(it.toPointKey)
+    doAssert convex_hull(points).v.mapIt(it.toPointKey) == @[points[0], points[2], points[3], points[4]].mapIt(it.toPointKey)
     let small = points.mapIt(initPoint(float32(it.x), float32(it.y)))
-    doAssert convex_hull(small, false).v == small
+    doAssert convex_hull(small, false).v.mapIt(it.toPointKey) == small.mapIt(it.toPointKey)
     let fraction32 = @[initPoint(initFraction(0'i32), initFraction(0'i32)),
         initPoint(initFraction(1'i32), initFraction(0'i32)),
         initPoint(initFraction(0'i32), initFraction(1'i32))]
     doAssert convex_hull(fraction32).v == fraction32
     let oldEps = GEOMETRY_EPS
     GEOMETRY_EPS = 1
-    doAssert convex_hull(points, false).v == points
+    doAssert convex_hull(points, false).v.mapIt(it.toPointKey) == points.mapIt(it.toPointKey)
     GEOMETRY_EPS = oldEps
     let tiny = @[initPoint(0.0, 0.0), initPoint(1e-12, 0.0), initPoint(0.0, 1e-12)]
-    doAssert convex_hull(tiny).v == tiny
+    doAssert convex_hull(tiny).v.mapIt(it.toPointKey) == tiny.mapIt(it.toPointKey)
+    var shuffledTiny = tiny
+    for repeat in 0..<20:
+        rng.shuffle(shuffledTiny)
+        doAssert convex_hull(shuffledTiny).v.mapIt(it.toPointKey) == tiny.mapIt(it.toPointKey)
+    let near = @[initPoint(0.0, 0.0), initPoint(1e-12, 0.0)]
+    doAssert near[0] == near[1]
+    doAssert convex_hull(near.reversed).v.mapIt(it.toPointKey) == near.mapIt(it.toPointKey)
 
 block:
     const n = 10000

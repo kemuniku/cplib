@@ -1,5 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-import algorithm, hashes, sets, tables, random
+import algorithm, hashes, sets, tables, random, sequtils
 import cplib/geometry/base
 import cplib/math/fractions
 
@@ -40,31 +40,67 @@ proc checkFloatPoints[T: SomeFloat]() =
     let delta = (when T is float32: T(1e-6) else: T(1e-12))
     let q = initPoint(T(1) + delta, T(2))
     GEOMETRY_EPS = 1e-5
-    doAssert p != q and p.almost_equal(q)
+    doAssert p == q and p.almost_equal(q) and not p.exact_equal(q)
     doAssert p < q and cmp(p, q) == -1 and cmp(q, p) == 1
-    var seen = initHashSet[Point[T]]()
-    var table = initTable[Point[T], int]()
-    seen.incl(p)
-    seen.incl(q)
-    table[p] = 1
-    table[q] = 2
-    doAssert seen.len == 2 and p in seen and q in seen
-    doAssert table[p] == 1 and table[q] == 2
+    let pk = p.toPointKey
+    let qk = q.toPointKey
+    doAssert pk != qk
+    var seen = initHashSet[PointKey[T]]()
+    var table = initTable[PointKey[T], int]()
+    seen.incl(pk)
+    seen.incl(qk)
+    table[pk] = 1
+    table[qk] = 2
+    doAssert seen.len == 2 and pk in seen and qk in seen
+    doAssert table[pk] == 1 and table[qk] == 2
     let zero = initPoint(T(0), T(0))
     let negativeZero = initPoint(-T(0), -T(0))
-    doAssert zero == negativeZero and hash(zero) == hash(negativeZero)
-    seen.incl(zero)
-    doAssert negativeZero in seen
+    doAssert zero == negativeZero and zero.exact_equal(negativeZero)
+    doAssert hash(zero.toPointKey) == hash(negativeZero.toPointKey)
+    seen.incl(zero.toPointKey)
+    doAssert negativeZero.toPointKey in seen
     let tiny = initPoint(T(1e-12), T(0))
-    doAssert zero != tiny and zero.almost_equal(tiny)
-    doAssert initLine(zero, tiny).t == tiny
-    doAssert initSegment(zero, tiny).t == tiny
+    doAssert zero == tiny and not zero.exact_equal(tiny)
+    when compileOption("assertions"):
+        var lineRejected, segmentRejected = false
+        try:
+            discard initLine(zero, tiny)
+        except AssertionDefect:
+            lineRejected = true
+        try:
+            discard initSegment(zero, tiny)
+        except AssertionDefect:
+            segmentRejected = true
+        doAssert lineRejected and segmentRejected
+    doAssert initLine(zero, p).t.exact_equal(p)
+    doAssert initSegment(zero, p).t.exact_equal(p)
     GEOMETRY_EPS = 1
-    doAssert table[p] == 1 and table[q] == 2 and seen.len == 3
+    doAssert table[p.toPointKey] == 1 and table[q.toPointKey] == 2 and seen.len == 3
+    GEOMETRY_EPS = 0
+    doAssert p != q and table[pk] == 1 and table[qk] == 2
     GEOMETRY_EPS = originalEps
+
+static:
+    doAssert not compiles(hash(initPoint(0.0, 0.0)))
+    doAssert not compiles(hash(initPoint(0.0'f32, 0.0'f32)))
+    doAssert not compiles(block:
+        var seen = initHashSet[Point[float]]()
+        seen.incl(initPoint(1.0, 2.0)))
+    doAssert not compiles(block:
+        var table = initTable[Point[float], int]()
+        table[initPoint(1.0, 2.0)] = 1)
 
 checkFloatPoints[float32]()
 checkFloatPoints[float64]()
+
+block:
+    let a = initPoint(0.0, 0.0)
+    let b = initPoint(0.75e-10, 0.0)
+    let c = initPoint(1.5e-10, 0.0)
+    doAssert a == b and b == c and a != c
+    doAssert a < b and b < c and a < c
+    doAssert cmp(a, b) == -1 and cmp(b, a) == 1
+    doAssert a.toPointKey != b.toPointKey and b.toPointKey != c.toPointKey
 
 block:
     let a = initPoint(0.0, 2.0)
@@ -79,9 +115,9 @@ block:
     for p in points:
         doAssert not (p < p)
         for q in points:
-            doAssert (cmp(p, q) == 0) == (p == q)
+            doAssert (cmp(p, q) == 0) == exact_equal(p, q)
             doAssert cmp(p, q) == -cmp(q, p)
-            doAssert (p <= q) == (p < q or p == q)
+            doAssert (p <= q) == (p < q or exact_equal(p, q))
             doAssert (p >= q) == (q <= p)
             for r in points:
                 if p < q and q < r: doAssert p < r
@@ -89,7 +125,10 @@ block:
         cmp((p.x, p.y), (q.x, q.y)))
     for i in 0..<20:
         rng.shuffle(points)
-        doAssert points.sorted == expected
+        let actual = points.sorted(proc(p, q: Point[float]): int = cmp(p, q))
+        doAssert actual.mapIt(it.toPointKey) == expected.mapIt(it.toPointKey)
+        points.sort(proc(p, q: Point[float]): int = cmp(p, q), Descending)
+        doAssert points.mapIt(it.toPointKey) == expected.reversed.mapIt(it.toPointKey)
 
 block:
     let p = initPoint(initFraction(1, 2), initFraction(3, 4))
