@@ -39,7 +39,9 @@ proc check(points: seq[Point[float]], expected: float, seed: int64 = 0, error = 
     doAssert res.isSome
     let circle = res.get
     doAssert abs(circle.radius - expected) <= error
-    for p in points: doAssert circle.contains(p, 0)
+    for p in points:
+        doAssert circle.contains(p, 0)
+        doAssert hypot(p.x - circle.center.x, p.y - circle.center.y) <= circle.radius + error
     let repeated = minimum_enclosing_circle(points, seed).get
     doAssert repeated.center.x == circle.center.x and repeated.center.y == circle.center.y
     doAssert repeated.radius == circle.radius
