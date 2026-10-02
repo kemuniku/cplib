@@ -1,4 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/CGL_4_C
+# verification-helper: ERROR 1e-8
 include cplib/geometry/convex_polygon
 import strformat
 proc scanf(formatstr: cstring): cint {.header: "<stdio.h>", varargs.}
