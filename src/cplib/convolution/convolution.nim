@@ -145,6 +145,7 @@ return shrink(montgomery_multiply_lazy(a, b, montgomery));
 }
 class TransformPlan {
 Z size_;
+bool lazy_bottom_;
 Montgomery montgomery_;
 u32* twiddles_;
 void fill_stage(u32* destination, Z count, u32 ratio) {
@@ -360,7 +361,7 @@ other_transform, value, montgomery_));
 }
 }
 void inverse_single(
-u32* data, Z length, bool canonicalize = false) const {
+u32* data, Z length, bool canonicalize = false, bool upper_only = false) const {
 const Z half = length >> 1;
 const u32* twiddle = twiddles_ + size_ - length;
 for (Z block = 0; block < size_; block += length) {
@@ -373,6 +374,12 @@ shrink_twice_modulus(_mm256_loadu_si256(
 _mm256_loadu_si256((const V*)(
 twiddle + j)),
 montgomery_);
+if (upper_only) {
+V difference = subtract_lazy(left, right);
+if (canonicalize) difference = shrink(shrink_twice_modulus(difference));
+_mm256_storeu_si256((V*)(data + block + half + j), difference);
+continue;
+}
 V sum = add_lazy(left, right);
 V difference = subtract_lazy(left, right);
 if (canonicalize) {
@@ -387,7 +394,7 @@ difference);
 }
 }
 }
-void inverse_pair(u32* data, Z length) const {
+void inverse_pair(u32* data, Z length, bool upper_only = false) const {
 const Z quarter = length >> 2;
 const u32* outer = twiddles_ + size_ - length;
 const u32* inner = twiddles_ + size_ - (length >> 1);
@@ -417,6 +424,17 @@ const V cd_sum_weighted = montgomery_multiply_lazy(
 cd_sum, outer0, montgomery_);
 const V cd_difference_weighted = montgomery_multiply_lazy(
 cd_difference, outer1, montgomery_);
+if (upper_only) {
+V output2 = subtract_lazy(ab_sum, cd_sum_weighted);
+V output3 = subtract_lazy(ab_difference, cd_difference_weighted);
+if (length == size_) {
+output2 = shrink(shrink_twice_modulus(output2));
+output3 = shrink(shrink_twice_modulus(output3));
+}
+_mm256_storeu_si256((V*)(data + block + 2 * quarter + j), output2);
+_mm256_storeu_si256((V*)(data + block + 3 * quarter + j), output3);
+continue;
+}
 V output0 = add_lazy(ab_sum, cd_sum_weighted);
 V output1 = add_lazy(
 ab_difference, cd_difference_weighted);
@@ -476,9 +494,89 @@ _mm256_storeu_si256(
 (V*)(data + block), value);
 }
 }
+void forward_bottom8_lazy(u32* data, u32* product = nullptr) const {
+const u32* twiddle8 = twiddles_ + size_ - 8;
+const u32* twiddle4 = twiddles_ + size_ - 4;
+const __m128i w8_low = _mm_loadu_si128(
+reinterpret_cast<const __m128i*>(twiddle8));
+const V w8 = _mm256_broadcastsi128_si256(w8_low);
+const V w4 = _mm256_setr_epi32(
+twiddle4[0], twiddle4[1], twiddle4[0], twiddle4[1],
+twiddle4[0], twiddle4[1], twiddle4[0], twiddle4[1]);
+for (Z block = 0; block < size_; block += 8) {
+V value = shrink_twice_modulus(_mm256_loadu_si256(
+(const V*)(data + block)));
+V other = _mm256_permute2x128_si256(value, value, 1);
+V sum = add_lazy(value, other);
+V difference = montgomery_multiply_lazy(
+subtract_lazy(value, other), w8, montgomery_);
+value = _mm256_blend_epi32(
+sum, _mm256_permute2x128_si256(difference, difference, 1), 0xF0);
+value = shrink_twice_modulus(value);
+other = _mm256_shuffle_epi32(value, 0x4E);
+sum = add_lazy(value, other);
+difference = montgomery_multiply_lazy(
+subtract_lazy(value, other), w4, montgomery_);
+value = _mm256_blend_epi32(
+sum, _mm256_shuffle_epi32(difference, 0x4E), 0xCC);
+value = shrink_twice_modulus(value);
+other = _mm256_shuffle_epi32(value, 0xB1);
+sum = add_lazy(value, other);
+difference = subtract_lazy(value, other);
+value = _mm256_blend_epi32(
+sum, _mm256_shuffle_epi32(difference, 0xB1), 0xAA);
+value = shrink(shrink_twice_modulus(value));
+if (product == nullptr) {
+_mm256_storeu_si256(
+(V*)(data + block), value);
+} else {
+const V other_transform = _mm256_loadu_si256(
+(const V*)(product + block));
+_mm256_storeu_si256(
+(V*)(product + block),
+montgomery_multiply(
+other_transform, value, montgomery_));
+}
+}
+}
+void inverse_bottom8_lazy(u32* data) const {
+const u32* twiddle4 = twiddles_ + size_ - 4;
+const u32* twiddle8 = twiddles_ + size_ - 8;
+const V w4 = _mm256_setr_epi32(
+twiddle4[0], twiddle4[1], twiddle4[0], twiddle4[1],
+twiddle4[0], twiddle4[1], twiddle4[0], twiddle4[1]);
+const __m128i w8_low = _mm_loadu_si128(
+reinterpret_cast<const __m128i*>(twiddle8));
+const V w8 = _mm256_broadcastsi128_si256(w8_low);
+for (Z block = 0; block < size_; block += 8) {
+V value = _mm256_loadu_si256(
+(const V*)(data + block));
+V other = _mm256_shuffle_epi32(value, 0xB1);
+V sum = add_lazy(value, other);
+V difference = subtract_lazy(value, other);
+value = _mm256_blend_epi32(
+sum, _mm256_shuffle_epi32(difference, 0xB1), 0xAA);
+value = shrink_twice_modulus(value);
+other = _mm256_shuffle_epi32(value, 0x4E);
+other = montgomery_multiply_lazy(other, w4, montgomery_);
+sum = add_lazy(value, other);
+difference = subtract_lazy(value, other);
+value = _mm256_blend_epi32(
+sum, _mm256_shuffle_epi32(difference, 0x4E), 0xCC);
+value = shrink_twice_modulus(value);
+other = _mm256_permute2x128_si256(value, value, 1);
+other = montgomery_multiply_lazy(other, w8, montgomery_);
+sum = add_lazy(value, other);
+difference = subtract_lazy(value, other);
+value = _mm256_blend_epi32(
+sum, _mm256_permute2x128_si256(difference, difference, 1), 0xF0);
+_mm256_storeu_si256(
+(V*)(data + block), value);
+}
+}
 public:
-explicit TransformPlan(Z size)
-: size_(size),
+explicit TransformPlan(Z size, bool lazy_bottom = false)
+: size_(size), lazy_bottom_(lazy_bottom),
 twiddles_(static_cast<u32*>(
 _mm_malloc(sizeof(u32) * size, 32))) {
 build_twiddles();
@@ -516,7 +614,8 @@ forward_pair(data, length);
 length >>= 2;
 }
 forward_single(data, 16);
-forward_bottom8(data, product);
+if (lazy_bottom_) forward_bottom8_lazy(data, product);
+else forward_bottom8(data, product);
 }
 void forward_half_zero(u32* data, u32* product = nullptr) const {
 Z length;
@@ -532,10 +631,12 @@ forward_pair(data, length);
 length >>= 2;
 }
 forward_single(data, 16);
-forward_bottom8(data, product);
+if (lazy_bottom_) forward_bottom8_lazy(data, product);
+else forward_bottom8(data, product);
 }
 void inverse(u32* data) const {
-inverse_bottom8(data);
+if (lazy_bottom_) inverse_bottom8_lazy(data);
+else inverse_bottom8(data);
 inverse_single(data, 16);
 const bool has_unpaired_top = (__builtin_ctzll(size_) & 1) != 0;
 const Z paired_limit = has_unpaired_top ? size_ >> 1 : size_;
@@ -543,6 +644,16 @@ for (Z length = 64; length <= paired_limit; length <<= 2) {
 inverse_pair(data, length);
 }
 if (has_unpaired_top) inverse_single(data, size_, true);
+}void inverse_high(u32* data) const {
+if (lazy_bottom_) inverse_bottom8_lazy(data);
+else inverse_bottom8(data);
+inverse_single(data, 16);
+const bool has_unpaired_top = (__builtin_ctzll(size_) & 1) != 0;
+const Z paired_limit = has_unpaired_top ? size_ >> 1 : size_;
+for (Z length = 64; length <= paired_limit; length <<= 2) {
+inverse_pair(data, length, length == size_);
+}
+if (has_unpaired_top) inverse_single(data, size_, true, true);
 }
 };
 inline void convolution_ntt_friendly(
@@ -771,13 +882,46 @@ for (; i < a.size(); ++i) a[i] = multiply(a[i], factor);
 void build() {
 // 積のスペクトルを倍長化し、係数表現への往復を各段で半分の長さに抑える。
 const Z block = 16;
-TransformPlan leaf_plan(32);
-for (Z index = 0; index < count_; ++index) {
+TransformPlan leaf_plan(32, true);
+// 独立した8個の葉をSIMDの各レーンへ置き、積の係数を並行して構築する。
+Z index = 0;
+for (; index + 8 <= count_; index += 8) {
+V coefficients[17]; coefficients[0] = _mm256_set1_epi32((int)mont_.radix);
+for (Z k = 1; k <= block; ++k) coefficients[k] = _mm256_setzero_si256();
+for (Z j = 0; j < block; ++j) {
+u32 points[8];
+for (Z lane = 0; lane < 8; ++lane) {
+const Z position = (index + lane) * block + j;
+points[lane] = position < points_ && corrections_[position] != 0 ? x_[position] : 0;
+}
+const V point = _mm256_loadu_si256((const V*)points);
+for (Z k = j + 1; k > 0; --k)
+coefficients[k] = subtract_mod(coefficients[k], montgomery_multiply(point, coefficients[k - 1], mont_));
+}
+u32 packed[17][8];
+for (Z k = 0; k <= block; ++k) _mm256_storeu_si256((V*)packed[k], coefficients[k]);
+for (Z lane = 0; lane < 8; ++lane) {
+Poly polynomial(32, 0);
+for (Z k = 0; k <= block; ++k) polynomial[k] = packed[k][lane];
+std::memcpy(leaves_.data() + (index + lane) * 17, polynomial.data(), sizeof(u32) * 17);
+leading_[count_ + index + lane] = polynomial[block];
+leaf_plan.forward(polynomial.data());
+spectra_[count_ + index + lane] = std::move(polynomial);
+}
+}
+for (; index < count_; ++index) {
 Poly coefficients(32, 0); coefficients[0] = mont_.radix;
 for (Z j = 0; j < block; ++j) {
 const Z position = index * block + j;
 const u32 point = position < points_ && corrections_[position] != 0 ? x_[position] : 0;
-for (Z k = j + 1; k > 0; --k)
+Z k = j + 1;
+const V x = _mm256_set1_epi32((int)point);
+for (; k >= 8; k -= 8) {
+const V old = _mm256_loadu_si256((const V*)(coefficients.data() + k - 7));
+const V previous = _mm256_loadu_si256((const V*)(coefficients.data() + k - 8));
+_mm256_storeu_si256((V*)(coefficients.data() + k - 7), subtract_mod(old, montgomery_multiply(x, previous, mont_)));
+}
+for (; k > 0; --k)
 coefficients[k] = subtract_mod(coefficients[k], multiply(point, coefficients[k - 1]));
 }
 std::memcpy(leaves_.data() + index * 17, coefficients.data(), sizeof(u32) * 17);
@@ -787,13 +931,21 @@ spectra_[count_ + index] = std::move(coefficients);
 }
 for (Z width = 32, first = count_ / 2; first; width *= 2, first /= 2) {
 std::unique_ptr<TransformPlan> forward, backward;
-if (first != 1) { forward.reset(new TransformPlan(width)); backward.reset(new TransformPlan(width)); backward->prepare_inverse(); }
+if (first != 1) { forward.reset(new TransformPlan(width, true)); backward.reset(new TransformPlan(width, true)); backward->prepare_inverse(); }
 const u32 inv_width = mont_.to_montgomery(power_mod((u32)width, mod_ - 2));
 Poly twists;
 if (first != 1) {
 const u32 twist = mont_.to_montgomery(power_mod(root_, (mod_ - 1) / (2 * width)));
-twists.resize(width); twists[0] = mont_.radix;
-for (Z i = 1; i < width; ++i) twists[i] = multiply(twists[i - 1], twist);
+twists.resize(width);
+u32 first_powers[8]; first_powers[0] = mont_.radix;
+for (Z i = 1; i < 8; ++i) first_powers[i] = multiply(first_powers[i - 1], twist);
+V powers = _mm256_loadu_si256((const V*)first_powers);
+const V step = _mm256_set1_epi32((int)multiply(first_powers[7], twist));
+const V normalizer = _mm256_set1_epi32((int)inv_width);
+for (Z i = 0; i < width; i += 8) {
+_mm256_storeu_si256((V*)(twists.data() + i), montgomery_multiply(powers, normalizer, mont_));
+powers = montgomery_multiply(powers, step, mont_);
+}
 }
 for (Z node = first; node < first * 2; ++node) {
 auto& left = spectra_[2 * node]; auto& right = spectra_[2 * node + 1];
@@ -807,8 +959,8 @@ leading_[node] = multiply(leading_[2 * node], leading_[2 * node + 1]);
 scale(left, inv_width); scale(right, inv_width);
 if (first == 1) { spectra_[node] = std::move(product); continue; }
 Poly odd = product;
-backward->inverse(odd.data()); scale(odd, inv_width);
-odd[0] = subtract_mod(odd[0], add_mod(leading_[node], leading_[node]));
+backward->inverse(odd.data());
+odd[0] = subtract_mod(odd[0], multiply(add_mod(leading_[node], leading_[node]), mont_.to_montgomery((u32)width)));
 for (Z i = 0; i < width; i += 8) {
 const V value = _mm256_loadu_si256((const V*)(odd.data() + i));
 const V weight = _mm256_loadu_si256((const V*)(twists.data() + i));
@@ -824,7 +976,7 @@ Poly initial(const u32* f, Z length) {
 // 巡回環で根の積を一括逆元により除算し、例外点は最初のNTTから回収する。
 Poly transformed(size_, 0);
 for (Z i = 0; i < length; ++i) transformed[size_ - 1 - i] = mont_.to_montgomery(f[i]);
-TransformPlan forward(size_);
+TransformPlan forward(size_, true);
 forward.forward(transformed.data());
 if (!exceptional_.empty()) {
 const u32 root = mont_.to_montgomery(power_mod(root_, (mod_ - 1) / size_));
@@ -840,13 +992,27 @@ reversed ^= bit;
 }
 }
 const auto& denominator = spectra_[1];
-Poly prefix(size_ + 1); prefix[0] = mont_.radix;
-for (Z i = 0; i < size_; ++i) prefix[i + 1] = multiply(prefix[i], denominator[i]);
-u32 suffix = inverse(prefix[size_]);
-
-for (Z i = size_; i-- > 0;) {
-transformed[i] = multiply(transformed[i], multiply(prefix[i], suffix));
-suffix = multiply(suffix, denominator[i]);
+// 8本の独立した積列を同時に走査し、最後の8個だけスカラーで一括反転する。
+Poly prefix(size_);
+V product = _mm256_set1_epi32((int)mont_.radix);
+for (Z i = 0; i < size_; i += 8) {
+_mm256_storeu_si256((V*)(prefix.data() + i), product);
+product = montgomery_multiply(product, _mm256_loadu_si256((const V*)(denominator.data() + i)), mont_);
+}
+u32 totals[8], cumulative[9], reciprocals[8];
+_mm256_storeu_si256((V*)totals, product); cumulative[0] = mont_.radix;
+for (Z i = 0; i < 8; ++i) cumulative[i + 1] = multiply(cumulative[i], totals[i]);
+u32 suffix = inverse(cumulative[8]);
+for (Z i = 8; i-- > 0;) {
+reciprocals[i] = multiply(cumulative[i], suffix);
+suffix = multiply(suffix, totals[i]);
+}
+V inverse_product = _mm256_loadu_si256((const V*)reciprocals);
+for (Z i = size_; i != 0;) {
+i -= 8;
+const V reciprocal = montgomery_multiply(_mm256_loadu_si256((const V*)(prefix.data() + i)), inverse_product, mont_);
+_mm256_storeu_si256((V*)(transformed.data() + i), montgomery_multiply(_mm256_loadu_si256((const V*)(transformed.data() + i)), reciprocal, mont_));
+inverse_product = montgomery_multiply(inverse_product, _mm256_loadu_si256((const V*)(denominator.data() + i)), mont_);
 }
 return transformed;
 }
@@ -855,8 +1021,8 @@ Poly descend(Poly current) const {
 Poly next(size_), parent(size_), left(size_), right(size_);
 for (Z width = size_, first = 1; first < count_; width /= 2, first *= 2) {
 std::unique_ptr<TransformPlan> forward;
-if (first != 1) forward.reset(new TransformPlan(width));
-TransformPlan backward(width); backward.prepare_inverse();
+if (first != 1) forward.reset(new TransformPlan(width, true));
+TransformPlan backward(width, true); backward.prepare_inverse();
 for (Z index = 0; index < first; ++index) {
 const Z node = first + index;
 std::memcpy(parent.data(), current.data() + index * width, sizeof(u32) * width);
@@ -868,7 +1034,7 @@ _mm256_loadu_si256((const V*)(spectra_[2 * node + 1].data() + i)), mont_));
 _mm256_storeu_si256((V*)(right.data() + i), montgomery_multiply(value,
 _mm256_loadu_si256((const V*)(spectra_[2 * node].data() + i)), mont_));
 }
-backward.inverse(left.data()); backward.inverse(right.data());
+backward.inverse_high(left.data()); backward.inverse_high(right.data());
 std::memcpy(next.data() + index * width, left.data() + width / 2, sizeof(u32) * (width / 2));
 std::memcpy(next.data() + index * width + width / 2, right.data() + width / 2, sizeof(u32) * (width / 2));
 }
