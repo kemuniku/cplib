@@ -33,5 +33,5 @@ jobs:
       - name: Run expanded restore regression
         run: |
           nim cpp --hints:off -d:release --out:/tmp/xor-expander tools/expander/expander.nim
-          /tmp/xor-expander --quiet --lib:. --output-file:/tmp/xor-restore-expanded.nim src/verify/AI/xor_basis_restore_test.nim
-          nim cpp -r --hints:off -d:release --nimcache:/tmp/xor-expanded-cache --out:/tmp/xor-expanded-bin /tmp/xor-restore-expanded.nim
+          /tmp/xor-expander --quiet --lib:. --output-file:/tmp/xor_restore_expanded.nim src/verify/AI/xor_basis_restore_test.nim
+          nim cpp -r --hints:off -d:release --nimcache:/tmp/xor-expanded-cache --out:/tmp/xor-expanded-bin /tmp/xor_restore_expanded.nim

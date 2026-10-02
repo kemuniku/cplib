@@ -108,6 +108,22 @@ block:
         checkWitness(basis, inputs, target, true)
 
 block:
+    var basis = initXorBasisWithRestore()
+    var inputs: seq[int]
+    for i in 0..<100:
+        inputs.add(3)
+        basis.incl(3)
+    inputs.add(5)
+    basis.incl(5)
+    inputs.add(6)
+    basis.incl(6)
+    doAssert basis.len == 102 and basis.len_basis == 2
+    for target in 0..7:
+        checkWitness(basis, inputs, target, target in [0, 3, 5, 6])
+    doAssert basis.restore(5).get == @[100]
+    doAssert basis.restore(6).get == @[0, 100]
+
+block:
     var a = initXorBasisWithRestore([0, 3, 3])
     var b = a
     b.incl(4)
