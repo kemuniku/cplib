@@ -121,4 +121,16 @@ block:
     seg.add(n - 1, n, 0, 0)
     doAssert seg.prod(0, 0) == high(int)
 
+block:
+    let half = high(int) div 2
+    let seg = initRangeLinearAddRangeMin([0, 0])
+    seg.add(0, 2, -half, 0)
+    seg.add(0, 1, 1, 0)
+    seg.add(0, 2, high(int), 0)
+    doAssert seg.prod(0, 2) == 0
+    seg.add(0, 1, 0, 0)
+    seg.add(0, 2, 1, 0)
+    doAssert seg[0] == 0
+    doAssert seg[1] == high(int) - half + 1
+
 echo "Hello World"

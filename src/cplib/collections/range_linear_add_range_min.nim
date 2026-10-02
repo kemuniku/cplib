@@ -144,7 +144,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
     proc add*(self: RangeLinearAddRangeMin, l, r, b, c: int) =
         ## 半開区間 [l,r) の a[i] に b*i+c を加えます。O(log^2 N)。
         assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
-        if l < r and (b != 0 or c != 0):
+        if l < r:
             self.addImpl(1, 0, self.length, l, r, b, c)
 
     proc add*(self: RangeLinearAddRangeMin, segment: HSlice[int, int], b, c: int) =
