@@ -1,5 +1,6 @@
 when not declared CPLIB_GRAPH_HOPCROFT_KARP:
     const CPLIB_GRAPH_HOPCROFT_KARP* = 1
+    import cplib/graph/graph
 
     type HopcroftKarp* = object
         edges: seq[tuple[left, right: int]]
@@ -232,3 +233,157 @@ when not declared CPLIB_GRAPH_HOPCROFT_KARP:
         for left, right in g.leftMatch:
             if right >= 0:
                 result.add((left, right))
+
+    proc minimum_vertex_cover*(g: var HopcroftKarp): int =
+        ## 最大マッチングを計算し、最小点被覆の大きさを返す。O((V+E)√V)。
+        g.matching()
+
+    proc maximum_independent_set*(g: var HopcroftKarp): int =
+        ## 最大マッチングを計算し、最大安定集合の大きさを返す。O((V+E)√V)。
+        g.leftMatch.len + g.rightMatch.len - g.matching()
+
+    proc alternatingReachable(g: var HopcroftKarp): tuple[left, right: seq[bool]] =
+        ## 最大化後、未マッチの左頂点から交互道で到達できる頂点を求める。最大化の計算量に加えてO(V+E)。
+        g.matching()
+        g.build()
+        result.left = newSeq[bool](g.leftMatch.len)
+        result.right = newSeq[bool](g.rightMatch.len)
+        var queue = newSeqOfCap[int](g.leftMatch.len)
+        for v in 0..<g.leftMatch.len:
+            if g.leftMatch[v] < 0:
+                result.left[v] = true
+                queue.add(v)
+        var head = 0
+        while head < queue.len:
+            let v = queue[head]
+            inc head
+            for i in g.leftOffset[v]..<g.leftOffset[v + 1]:
+                let u = g.leftEdges[i]
+                if u == g.leftMatch[v] or result.right[u]:
+                    continue
+                result.right[u] = true
+                let w = g.rightMatch[u]
+                if w >= 0 and not result.left[w]:
+                    result.left[w] = true
+                    queue.add(w)
+
+    proc get_minimum_vertex_cover*(g: var HopcroftKarp): tuple[left, right: seq[int]] =
+        ## 最小点被覆を左右それぞれの頂点番号で昇順に返す。matchingの事前呼び出し不要。O((V+E)√V)。
+        let reachable = g.alternatingReachable()
+        for v in 0..<g.leftMatch.len:
+            if not reachable.left[v]: result.left.add(v)
+        for u in 0..<g.rightMatch.len:
+            if reachable.right[u]: result.right.add(u)
+
+    proc get_maximum_independent_set*(g: var HopcroftKarp): tuple[left, right: seq[int]] =
+        ## 最大安定集合を左右それぞれの頂点番号で昇順に返す。matchingの事前呼び出し不要。O((V+E)√V)。
+        let reachable = g.alternatingReachable()
+        for v in 0..<g.leftMatch.len:
+            if reachable.left[v]: result.left.add(v)
+        for u in 0..<g.rightMatch.len:
+            if not reachable.right[u]: result.right.add(u)
+
+    proc minimum_edge_cover*(g: var HopcroftKarp): int =
+        ## 最小辺被覆の大きさを返す。孤立点があれば-1、空グラフは0。O((V+E)√V)。
+        g.build()
+        for v in 0..<g.leftMatch.len:
+            if g.leftOffset[v] == g.leftOffset[v + 1]: return -1
+        for u in 0..<g.rightMatch.len:
+            if g.rightOffset[u] == g.rightOffset[u + 1]: return -1
+        g.leftMatch.len + g.rightMatch.len - g.matching()
+
+    proc get_minimum_edge_cover*(g: var HopcroftKarp): seq[tuple[left, right: int]] =
+        ## 最小辺被覆を構築する。孤立点があればValueError。matchingの事前呼び出し不要。O((V+E)√V)。
+        let size = g.minimum_edge_cover()
+        if size < 0:
+            raise newException(ValueError, "孤立点があるため辺被覆は存在しません")
+        result = g.get_matching()
+        for v in 0..<g.leftMatch.len:
+            if g.leftMatch[v] < 0:
+                result.add((v, g.leftEdges[g.leftOffset[v]]))
+        for u in 0..<g.rightMatch.len:
+            if g.rightMatch[u] < 0:
+                result.add((g.rightEdges[g.rightOffset[u]], u))
+
+    proc prepareHopcroftKarp(g: UnDirectedGraph): tuple[matcher: HopcroftKarp, left, right: seq[int]] =
+        ## 無向グラフを二部に分け、対応表とマッチング用グラフを構築する。非二部ならValueError。O(V+E)。
+        when g is StaticGraphTypes:
+            g.static_graph_initialized_check()
+        var color = newSeq[int](g.len)
+        var index = newSeq[int](g.len)
+        var queue = newSeqOfCap[int](g.len)
+        for root in 0..<g.len:
+            if color[root] != 0: continue
+            color[root] = 1
+            queue.setLen(0)
+            queue.add(root)
+            var head = 0
+            while head < queue.len:
+                let v = queue[head]
+                inc head
+                for (u, _) in g.to_and_id(v):
+                    if color[u] == 0:
+                        color[u] = -color[v]
+                        queue.add(u)
+                    elif color[u] == color[v]:
+                        raise newException(ValueError, "入力グラフは二部グラフである必要があります")
+        for v in 0..<g.len:
+            if color[v] == 1:
+                index[v] = result.left.len
+                result.left.add(v)
+            else:
+                index[v] = result.right.len
+                result.right.add(v)
+        result.matcher = initHopcroftKarp(result.left.len, result.right.len)
+        for e in g.edge_info:
+            if color[e.src] == 1:
+                result.matcher.add_edge(index[e.src], index[e.dst])
+            else:
+                result.matcher.add_edge(index[e.dst], index[e.src])
+
+    # グラフ型版は無向二部グラフ専用。重みは無視し、StaticGraphは事前にbuildする。
+    # 各呼び出しで二部判定と最大化を行い、非二部グラフにはValueErrorを送出する。
+    proc matching*(g: UnDirectedGraph, useRelabel: bool = true): int =
+        ## 無向二部グラフの最大マッチングの大きさを返す。O((V+E)√V)。
+        var prepared = g.prepareHopcroftKarp()
+        prepared.matcher.matching(useRelabel)
+
+    proc get_matching*(g: UnDirectedGraph, useRelabel: bool = true): seq[tuple[left, right: int]] =
+        ## 最大マッチングを構築し、元の頂点番号の辺で返す。matchingの事前呼び出し不要。O((V+E)√V)。
+        var prepared = g.prepareHopcroftKarp()
+        prepared.matcher.matching(useRelabel)
+        for (v, u) in prepared.matcher.get_matching():
+            result.add((prepared.left[v], prepared.right[u]))
+
+    proc minimum_vertex_cover*(g: UnDirectedGraph): int =
+        ## 無向二部グラフの最小点被覆の大きさを返す。O((V+E)√V)。
+        g.matching()
+
+    proc maximum_independent_set*(g: UnDirectedGraph): int =
+        ## 無向二部グラフの最大安定集合の大きさを返す。O((V+E)√V)。
+        g.len - g.matching()
+
+    proc get_minimum_vertex_cover*(g: UnDirectedGraph): seq[int] =
+        ## 最小点被覆を構築し、元の頂点番号の列で返す。O((V+E)√V)。
+        var prepared = g.prepareHopcroftKarp()
+        let cover = prepared.matcher.get_minimum_vertex_cover()
+        for v in cover.left: result.add(prepared.left[v])
+        for u in cover.right: result.add(prepared.right[u])
+
+    proc get_maximum_independent_set*(g: UnDirectedGraph): seq[int] =
+        ## 最大安定集合を構築し、元の頂点番号の列で返す。O((V+E)√V)。
+        var prepared = g.prepareHopcroftKarp()
+        let independent = prepared.matcher.get_maximum_independent_set()
+        for v in independent.left: result.add(prepared.left[v])
+        for u in independent.right: result.add(prepared.right[u])
+
+    proc minimum_edge_cover*(g: UnDirectedGraph): int =
+        ## 無向二部グラフの最小辺被覆の大きさを返す。孤立点があれば-1、空グラフは0。O((V+E)√V)。
+        var prepared = g.prepareHopcroftKarp()
+        prepared.matcher.minimum_edge_cover()
+
+    proc get_minimum_edge_cover*(g: UnDirectedGraph): seq[tuple[left, right: int]] =
+        ## 最小辺被覆を元の頂点番号の辺で返す。孤立点があればValueError。O((V+E)√V)。
+        var prepared = g.prepareHopcroftKarp()
+        for (v, u) in prepared.matcher.get_minimum_edge_cover():
+            result.add((prepared.left[v], prepared.right[u]))
