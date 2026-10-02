@@ -1914,6 +1914,9 @@ data:
       path: verify/AI/multiplicative_prefix_sum_test.nim
       title: verify/AI/multiplicative_prefix_sum_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/multipoint_cyclic_ntt_test.nim
+      title: verify/AI/multipoint_cyclic_ntt_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/namori_forest_test.nim
       title: verify/AI/namori_forest_test.nim
     - icon: ':heavy_check_mark:'
@@ -2833,8 +2836,14 @@ data:
   - name: verify/math
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/math/addition_of_big_integers_test.nim
+      title: verify/math/addition_of_big_integers_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/math/bigint_bitops_unit_test.nim
       title: verify/math/bigint_bitops_unit_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/bigint_parse_unit_test.nim
+      title: verify/math/bigint_parse_unit_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/bigint_unit_test.nim
       title: verify/math/bigint_unit_test.nim

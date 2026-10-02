@@ -121,14 +121,14 @@ data:
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/offline_dynamic_queries.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/rollback_mo.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/rollback_mo.nim
+  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/offline_dynamic_queries.nim
+  - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: true
   path: verify/AI/rollback_mo_test.nim
   requiredBy: []

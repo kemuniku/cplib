@@ -123,8 +123,8 @@ data:
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false
   path: cplib/utils/auto_rollback.nim
   requiredBy: []

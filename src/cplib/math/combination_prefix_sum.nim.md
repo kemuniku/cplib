@@ -69,10 +69,10 @@ data:
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
   - cplib/math/combination.nim
-  - cplib/graph/graph.nim
   - cplib/math/combination.nim
   - cplib/utils/mo.nim
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim

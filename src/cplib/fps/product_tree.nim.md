@@ -94,6 +94,12 @@ data:
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/multipoint_cyclic_ntt_test.nim
+    title: verify/AI/multipoint_cyclic_ntt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/multipoint_cyclic_ntt_test.nim
+    title: verify/AI/multipoint_cyclic_ntt_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/sparse_fps_elementary_test.nim
     title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
@@ -258,7 +264,15 @@ data:
     \u4E2D\u9593\u7A4D\u3092\u7528\u3044\u3066f\u3092\u3059\u3079\u3066\u306E\u70B9\
     \u3067\u8A55\u4FA1\u3059\u308B\u3002\n        if xs.len == 0: return @[]\n\n \
     \       const multipointDirectEvaluationSize = 16\n        var leafCount = 1\n\
-    \        while leafCount < xs.len: leafCount *= 2\n        let blockSize = min(multipointDirectEvaluationSize,\
+    \        while leafCount < xs.len: leafCount *= 2\n        if f.len <= leafCount\
+    \ and canUseMultipointTreeNtt(T.umod, leafCount):\n            var normalF = newSeq[uint32](max(1,\
+    \ f.len))\n            var normalXs = newSeq[uint32](xs.len)\n            var\
+    \ values = newSeq[uint32](xs.len)\n            for i in 0..<f.len: normalF[i]\
+    \ = f[i].val.uint32\n            for i in 0..<xs.len: normalXs[i] = xs[i].val.uint32\n\
+    \            multipointCyclicNtt(addr values[0], addr normalF[0], f.len.csize_t,\n\
+    \                addr normalXs[0], xs.len.csize_t, leafCount.csize_t, T.umod)\n\
+    \            result = newSeq[T](xs.len)\n            for i in 0..<xs.len: result[i]\
+    \ = init(T, values[i].int)\n            return\n        let blockSize = min(multipointDirectEvaluationSize,\
     \ leafCount)\n        let blockCount = leafCount div blockSize\n\n        var\
     \ reversedProducts = newSeq[seq[T]](blockCount * 2)\n        for blockIndex in\
     \ 0..<blockCount:\n            var product = @[init(T, 1)]\n            for offset\
@@ -267,21 +281,39 @@ data:
     \ init(T, 0)\n                product.add(init(T, 0))\n                for i in\
     \ countdown(product.high, 1):\n                    product[i] -= x * product[i\
     \ - 1]\n            reversedProducts[blockCount + blockIndex] = product\n    \
-    \    for node in countdown(blockCount - 1, 1):\n            reversedProducts[node]\
-    \ = reversedProducts[node * 2] *\n                reversedProducts[node * 2 +\
-    \ 1]\n\n        var polynomial = f\n        if polynomial.len > leafCount:\n \
-    \           var root = reversedProducts[1]\n            root.reverse\n       \
-    \     polynomial = polynomial mod root\n\n        var reversedPolynomial = newSeq[T](leafCount)\n\
-    \        for i in 0..<polynomial.len:\n            reversedPolynomial[leafCount\
-    \ - 1 - i] = polynomial[i]\n        var transformed = newSeq[seq[T]](blockCount\
-    \ * 2)\n        transformed[1] = prefix(\n            reversedPolynomial * reversedProducts[1].inv(leafCount),\
-    \ leafCount)\n\n        for node in 1..<blockCount:\n            let childSize\
-    \ = transformed[node].len div 2\n            let leftProduct = convolutionCyclicPowerOfTwo(\n\
+    \    let useNttTree = canUseMultipointTreeNtt(T.umod, leafCount)\n        var\
+    \ context: pointer\n        if useNttTree:\n            var leaves = newSeq[uint32](blockCount\
+    \ * (blockSize + 1))\n            for node in 0..<blockCount:\n              \
+    \  for i in 0..blockSize:\n                    leaves[node * (blockSize + 1) +\
+    \ i] = reversedProducts[blockCount + node][i].val.uint32\n            context\
+    \ = multipointTreeCreate(addr leaves[0], leafCount.csize_t,\n                blockSize.csize_t,\
+    \ T.umod)\n            var root = newSeq[uint32](leafCount + 1)\n            multipointTreeRoot(context,\
+    \ addr root[0])\n            reversedProducts[1] = newSeq[T](leafCount + 1)\n\
+    \            for i in 0..leafCount: reversedProducts[1][i] = init(T, root[i].int)\n\
+    \        else:\n            for node in countdown(blockCount - 1, 1):\n      \
+    \          reversedProducts[node] = reversedProducts[node * 2] *\n           \
+    \         reversedProducts[node * 2 + 1]\n        defer:\n            if context\
+    \ != nil: multipointTreeDestroy(context)\n\n        var polynomial = f\n     \
+    \   if polynomial.len > leafCount:\n            var root = reversedProducts[1]\n\
+    \            root.reverse\n            polynomial = polynomial mod root\n\n  \
+    \      var reversedPolynomial = newSeq[T](leafCount)\n        for i in 0..<polynomial.len:\n\
+    \            reversedPolynomial[leafCount - 1 - i] = polynomial[i]\n        var\
+    \ transformed = newSeq[seq[T]](blockCount * 2)\n        transformed[1] = prefix(\n\
+    \            reversedPolynomial * reversedProducts[1].inv(leafCount), leafCount)\n\
+    \n        if useNttTree:\n            var initial = newSeq[uint32](leafCount)\n\
+    \            var final = newSeq[uint32](leafCount)\n            for i in 0..<leafCount:\
+    \ initial[i] = transformed[1][i].val.uint32\n            multipointTreeDescend(context,\
+    \ addr final[0], addr initial[0])\n            for node in 0..<blockCount:\n \
+    \               transformed[blockCount + node] = newSeq[T](blockSize)\n      \
+    \          for i in 0..<blockSize:\n                    transformed[blockCount\
+    \ + node][i] = init(T, final[node * blockSize + i].int)\n        else:\n     \
+    \       for node in 1..<blockCount:\n                let childSize = transformed[node].len\
+    \ div 2\n                let leftProduct = convolutionCyclicPowerOfTwo(\n    \
     \                transformed[node], reversedProducts[node * 2 + 1],\n        \
-    \        transformed[node].len)\n            let rightProduct = convolutionCyclicPowerOfTwo(\n\
-    \                transformed[node], reversedProducts[node * 2],\n            \
-    \    transformed[node].len)\n            transformed[node * 2] = leftProduct[childSize..<childSize\
-    \ * 2]\n            transformed[node * 2 + 1] = rightProduct[childSize..<childSize\
+    \            transformed[node].len)\n                let rightProduct = convolutionCyclicPowerOfTwo(\n\
+    \                    transformed[node], reversedProducts[node * 2],\n        \
+    \            transformed[node].len)\n                transformed[node * 2] = leftProduct[childSize..<childSize\
+    \ * 2]\n                transformed[node * 2 + 1] = rightProduct[childSize..<childSize\
     \ * 2]\n\n        result = newSeq[T](xs.len)\n        for blockIndex in 0..<blockCount:\n\
     \            let transformedBlock = transformed[blockCount + blockIndex]\n   \
     \         let reversedBlock = reversedProducts[blockCount + blockIndex]\n    \
@@ -292,22 +324,22 @@ data:
     \            let lastPoint = min(firstPoint + blockSize, xs.len)\n           \
     \ for i in firstPoint..<lastPoint:\n                result[i] = remainder.eval(xs[i])\n"
   dependsOn:
-  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/formal_power_series.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/formal_power_series.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/fps/product_tree.nim
   requiredBy:
@@ -319,7 +351,7 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/math/many_factorials.nim
   - cplib/math/many_factorials.nim
-  timestamp: '2026-10-02 07:38:44+09:00'
+  timestamp: '2026-10-02 22:16:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
@@ -364,6 +396,8 @@ data:
   - verify/AI/fps_test.nim
   - verify/AI/many_factorials_test.nim
   - verify/AI/many_factorials_test.nim
+  - verify/AI/multipoint_cyclic_ntt_test.nim
+  - verify/AI/multipoint_cyclic_ntt_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_test.nim

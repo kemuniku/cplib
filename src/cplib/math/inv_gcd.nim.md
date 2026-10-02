@@ -202,6 +202,12 @@ data:
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/multipoint_cyclic_ntt_test.nim
+    title: verify/AI/multipoint_cyclic_ntt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/multipoint_cyclic_ntt_test.nim
+    title: verify/AI/multipoint_cyclic_ntt_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/shift_of_sampling_points_test.nim
     title: verify/AI/shift_of_sampling_points_test.nim
   - icon: ':heavy_check_mark:'
@@ -406,11 +412,23 @@ data:
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_parse_unit_test.nim
+    title: verify/math/bigint_parse_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_parse_unit_test.nim
+    title: verify/math/bigint_parse_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
@@ -595,16 +613,22 @@ data:
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/AI/bostan_mori_frequency_reuse_test.nim
+  - verify/AI/multipoint_cyclic_ntt_test.nim
+  - verify/AI/multipoint_cyclic_ntt_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/bigint_parse_unit_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_test.nim
   - verify/math/many_factorials_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/addition_of_big_integers_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
 documentation_of: cplib/math/inv_gcd.nim

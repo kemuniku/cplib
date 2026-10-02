@@ -135,14 +135,14 @@ data:
     \  g.add_edge(b, 0, 1)\n    doAssert g.maximum_weight_matching_sparse().weight\
     \ == int64(count)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/general_matching.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/graph.nim
-  - cplib/graph/general_weighted_matching_sparse.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/general_weighted_matching.nim
-  - cplib/graph/general_matching.nim
-  - cplib/graph/general_matching.nim
+  - cplib/graph/general_weighted_matching_sparse.nim
   - cplib/graph/graph.nim
   - cplib/graph/general_weighted_matching_sparse.nim
   isVerificationFile: true

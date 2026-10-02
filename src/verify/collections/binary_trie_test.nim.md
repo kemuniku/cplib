@@ -37,9 +37,9 @@ data:
     \   stdout.writeLine S.get_kth(0,x) xor x\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/collections/binary_trie.nim
+  - cplib/collections/binary_trie.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/binary_trie.nim
-  - cplib/collections/binary_trie.nim
   isVerificationFile: true
   path: verify/collections/binary_trie_test.nim
   requiredBy: []

@@ -54,8 +54,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/AI/hash_string_test.nim
   requiredBy: []

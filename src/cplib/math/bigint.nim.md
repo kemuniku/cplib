@@ -64,11 +64,23 @@ data:
     path: verify/AI/factoradic_test.nim
     title: verify/AI/factoradic_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_parse_unit_test.nim
+    title: verify/math/bigint_parse_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_parse_unit_test.nim
+    title: verify/math/bigint_parse_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
@@ -110,41 +122,66 @@ data:
     \ 1\n                elif magnitude < BigIntBase * BigIntBase: 2 else: 3\n   \
     \         result.digits = newSeq[uint32](size)\n            for i in 0..<size:\n\
     \                result.digits[i] = uint32(magnitude mod BigIntBase)\n       \
-    \         magnitude = magnitude div BigIntBase\n\n    proc parseBigInt*(s: string):\
-    \ BigInt =\n        ## \u7B26\u53F7\u4ED8\u304D 10 \u9032\u6587\u5B57\u5217\u3092\
-    \u5909\u63DB\u3057\u3001\u7A7A\u6587\u5B57\u5217\u3084\u4E0D\u6B63\u306A\u6587\
-    \u5B57\u306B\u306F ValueError \u3092\u9001\u51FA\u3059\u308B\u3002\n        if\
-    \ s.len == 0:\n            raise newException(ValueError, \"\u591A\u500D\u9577\
-    \u6574\u6570\u306E\u6587\u5B57\u5217\u304C\u7A7A\u3067\u3059\")\n        var first\
-    \ = 0\n        result.sign = 1\n        if s[0] == '+' or s[0] == '-':\n     \
-    \       if s[0] == '-':\n                result.sign = -1\n            first =\
-    \ 1\n        if first == s.len:\n            raise newException(ValueError, \"\
-    \u591A\u500D\u9577\u6574\u6570\u306E\u6570\u5B57\u304C\u3042\u308A\u307E\u305B\
+    \         magnitude = magnitude div BigIntBase\n\n    proc parseBigIntChunk9(s:\
+    \ string, start: int): uint32 {.inline.} =\n        ## \u691C\u8A3C\u6E08\u307F\
+    \u306E\u7BC4\u56F2\u304B\u3089 9 \u6841\u3092\u5909\u63DB\u3059\u308B\u3002O(1)\u3002\
+    \n        when nimvm:\n            for i in start..<start + 9:\n             \
+    \   if s[i] < '0' or s[i] > '9':\n                    raise newException(ValueError,\
+    \ \"\u591A\u500D\u9577\u6574\u6570\u306B\u4E0D\u6B63\u306A\u6587\u5B57\u304C\u542B\
+    \u307E\u308C\u3066\u3044\u307E\u3059\")\n                result = result * 10\
+    \ + uint32(ord(s[i]) - ord('0'))\n        else:\n            when cpuEndian ==\
+    \ littleEndian:\n                var bytes: uint64\n                copyMem(addr\
+    \ bytes, unsafeAddr s[start], 8)\n                if (((bytes + 0x4646464646464646'u64)\
+    \ or\n                    (bytes - 0x3030303030303030'u64)) and\n            \
+    \        0x8080808080808080'u64) != 0 or\n                    s[start + 8] < '0'\
+    \ or s[start + 8] > '9':\n                    raise newException(ValueError, \"\
+    \u591A\u500D\u9577\u6574\u6570\u306B\u4E0D\u6B63\u306A\u6587\u5B57\u304C\u542B\
+    \u307E\u308C\u3066\u3044\u307E\u3059\")\n                var digits = bytes xor\
+    \ 0x3030303030303030'u64\n                digits = ((digits * ((10'u64 shl 8)\
+    \ + 1)) shr 8) and\n                    0x00ff00ff00ff00ff'u64\n             \
+    \   digits = ((digits * ((100'u64 shl 16) + 1)) shr 16) and\n                \
+    \    0x0000ffff0000ffff'u64\n                result = uint32((digits * ((10000'u64\
+    \ shl 32) + 1)) shr 32) * 10 +\n                    uint32(ord(s[start + 8]) -\
+    \ ord('0'))\n            else:\n                for i in start..<start + 9:\n\
+    \                    if s[i] < '0' or s[i] > '9':\n                        raise\
+    \ newException(ValueError, \"\u591A\u500D\u9577\u6574\u6570\u306B\u4E0D\u6B63\u306A\
+    \u6587\u5B57\u304C\u542B\u307E\u308C\u3066\u3044\u307E\u3059\")\n            \
+    \        result = result * 10 + uint32(ord(s[i]) - ord('0'))\n\n    proc parseBigInt*(s:\
+    \ string): BigInt =\n        ## \u7B26\u53F7\u4ED8\u304D 10 \u9032\u6587\u5B57\
+    \u5217\u3092\u5909\u63DB\u3057\u3001\u7A7A\u6587\u5B57\u5217\u3084\u4E0D\u6B63\
+    \u306A\u6587\u5B57\u306B\u306F ValueError \u3092\u9001\u51FA\u3059\u308B\u3002\
+    \n        if s.len == 0:\n            raise newException(ValueError, \"\u591A\u500D\
+    \u9577\u6574\u6570\u306E\u6587\u5B57\u5217\u304C\u7A7A\u3067\u3059\")\n      \
+    \  var first = 0\n        result.sign = 1\n        if s[0] == '+' or s[0] == '-':\n\
+    \            if s[0] == '-':\n                result.sign = -1\n            first\
+    \ = 1\n        if first == s.len:\n            raise newException(ValueError,\
+    \ \"\u591A\u500D\u9577\u6574\u6570\u306E\u6570\u5B57\u304C\u3042\u308A\u307E\u305B\
     \u3093\")\n        result.digits = newSeq[uint32]((s.len - first + 8) div 9)\n\
     \        var last = s.len\n        var index = 0\n        while last > first:\n\
     \            let start = max(first, last - 9)\n            var digit = 0'u32\n\
-    \            for i in start..<last:\n                if s[i] < '0' or s[i] > '9':\n\
-    \                    raise newException(ValueError, \"\u591A\u500D\u9577\u6574\
-    \u6570\u306B\u4E0D\u6B63\u306A\u6587\u5B57\u304C\u542B\u307E\u308C\u3066\u3044\
-    \u307E\u3059\")\n                digit = digit * 10 + uint32(ord(s[i]) - ord('0'))\n\
-    \            result.digits[index] = digit\n            inc index\n           \
-    \ last = start\n        result.normalize()\n\n    proc initBigInt*(s: string):\
-    \ BigInt =\n        ## \u7B26\u53F7\u4ED8\u304D 10 \u9032\u6587\u5B57\u5217\u304B\
-    \u3089\u591A\u500D\u9577\u6574\u6570\u3092\u4F5C\u308B\u3002\n        parseBigInt(s)\n\
-    \n    proc `'bi`*(s: string): BigInt =\n        ## 10 \u9032\u6570\u306E bi \u30EA\
-    \u30C6\u30E9\u30EB\u3092\u591A\u500D\u9577\u6574\u6570\u306B\u5909\u63DB\u3059\
-    \u308B\u3002\u6841\u533A\u5207\u308A\u306E _ \u3082\u4F7F\u7528\u3067\u304D\u308B\
-    \u3002\n        var digits = newStringOfCap(s.len)\n        for c in s:\n    \
-    \        if c != '_':\n                digits.add(c)\n        parseBigInt(digits)\n\
-    \n    converter toBigInt*(x: SomeInteger): BigInt =\n        ## \u7D44\u307F\u8FBC\
-    \u307F\u6574\u6570\u3092\u591A\u500D\u9577\u6574\u6570\u306B\u6697\u9ED9\u5909\
-    \u63DB\u3059\u308B\u3002\n        initBigInt(x)\n\n    proc `$`*(x: BigInt): string\
-    \ =\n        ## \u7B26\u53F7\u4ED8\u304D 10 \u9032\u6587\u5B57\u5217\u3092\u8FD4\
-    \u3059\u3002\n        if x.sign == 0:\n            return \"0\"\n        if x.digits.len\
-    \ <= 2:\n            var value = uint64(x.digits[0])\n            if x.digits.len\
-    \ == 2:\n                value += uint64(x.digits[1]) * BigIntBase\n         \
-    \   if x.sign < 0:\n                return system.`$`(-int64(value))\n       \
-    \     return system.`$`(value)\n        const pairs = \"00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899\"\
+    \            if last - start == 9:\n                digit = parseBigIntChunk9(s,\
+    \ start)\n            else:\n                for i in start..<last:\n        \
+    \            if s[i] < '0' or s[i] > '9':\n                        raise newException(ValueError,\
+    \ \"\u591A\u500D\u9577\u6574\u6570\u306B\u4E0D\u6B63\u306A\u6587\u5B57\u304C\u542B\
+    \u307E\u308C\u3066\u3044\u307E\u3059\")\n                    digit = digit * 10\
+    \ + uint32(ord(s[i]) - ord('0'))\n            result.digits[index] = digit\n \
+    \           inc index\n            last = start\n        result.normalize()\n\n\
+    \    proc initBigInt*(s: string): BigInt =\n        ## \u7B26\u53F7\u4ED8\u304D\
+    \ 10 \u9032\u6587\u5B57\u5217\u304B\u3089\u591A\u500D\u9577\u6574\u6570\u3092\u4F5C\
+    \u308B\u3002\n        parseBigInt(s)\n\n    proc `'bi`*(s: string): BigInt =\n\
+    \        ## 10 \u9032\u6570\u306E bi \u30EA\u30C6\u30E9\u30EB\u3092\u591A\u500D\
+    \u9577\u6574\u6570\u306B\u5909\u63DB\u3059\u308B\u3002\u6841\u533A\u5207\u308A\
+    \u306E _ \u3082\u4F7F\u7528\u3067\u304D\u308B\u3002\n        var digits = newStringOfCap(s.len)\n\
+    \        for c in s:\n            if c != '_':\n                digits.add(c)\n\
+    \        parseBigInt(digits)\n\n    converter toBigInt*(x: SomeInteger): BigInt\
+    \ =\n        ## \u7D44\u307F\u8FBC\u307F\u6574\u6570\u3092\u591A\u500D\u9577\u6574\
+    \u6570\u306B\u6697\u9ED9\u5909\u63DB\u3059\u308B\u3002\n        initBigInt(x)\n\
+    \n    proc `$`*(x: BigInt): string =\n        ## \u7B26\u53F7\u4ED8\u304D 10 \u9032\
+    \u6587\u5B57\u5217\u3092\u8FD4\u3059\u3002\n        if x.sign == 0:\n        \
+    \    return \"0\"\n        if x.digits.len <= 2:\n            var value = uint64(x.digits[0])\n\
+    \            if x.digits.len == 2:\n                value += uint64(x.digits[1])\
+    \ * BigIntBase\n            if x.sign < 0:\n                return system.`$`(-int64(value))\n\
+    \            return system.`$`(value)\n        const pairs = \"00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899\"\
     \n        let top = system.`$`(uint64(x.digits[^1]))\n        let signLen = ord(x.sign\
     \ < 0)\n        result = newString((x.digits.len - 1) * 9 + top.len + signLen)\n\
     \        if x.sign < 0:\n            result[0] = '-'\n        for i in 0..<top.len:\n\
@@ -663,26 +700,26 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
   - cplib/math/factoradic.nim
   - cplib/math/factoradic.nim
-  timestamp: '2026-10-02 07:38:44+09:00'
+  timestamp: '2026-10-02 22:49:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/factoradic_signed_test.nim
@@ -693,6 +730,10 @@ data:
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/addition_of_big_integers_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
 documentation_of: cplib/math/bigint.nim

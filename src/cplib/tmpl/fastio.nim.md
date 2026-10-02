@@ -214,6 +214,12 @@ data:
     path: verify/graph/two_edge_connected_components_test.nim
     title: verify/graph/two_edge_connected_components_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
   - icon: ':heavy_check_mark:'
@@ -1022,6 +1028,8 @@ data:
   - verify/math/division_of_big_integers_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/addition_of_big_integers_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim
   - verify/math/isprime_yosupo_test.nim

@@ -54,13 +54,13 @@ data:
     \\n\")"
   dependsOn:
   - cplib/utils/backwards_index.nim
+  - cplib/utils/mo.nim
+  - cplib/collections/root_rangesum.nim
+  - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/root_rangesum.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/root_rangesum.nim
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []

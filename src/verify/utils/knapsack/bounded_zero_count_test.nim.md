@@ -45,8 +45,8 @@ data:
     \ capacity = rng.rand(0..25)\n    assert solve_BoundedKnapsack(items, capacity)\
     \ == naive(items, capacity)\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
+  - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

@@ -117,28 +117,28 @@ data:
     for m in [998244353,15,998244353]:\n  modint_montgomery.setMod(m)\n  suite[modint_montgomery](\"\
     dynamic Montgomery \" & $m)\ndoAssert checks == 5800\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/fps/bostan_mori.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: true
   path: verify/AI/bostan_mori_frequency_reuse_test.nim
   requiredBy: []
-  timestamp: '2026-10-02 07:38:44+09:00'
+  timestamp: '2026-10-02 22:16:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/bostan_mori_frequency_reuse_test.nim

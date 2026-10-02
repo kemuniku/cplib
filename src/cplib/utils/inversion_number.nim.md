@@ -53,8 +53,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/utils/inversion_number.nim
   requiredBy: []

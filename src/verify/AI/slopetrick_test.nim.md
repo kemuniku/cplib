@@ -49,8 +49,8 @@ data:
     \  doAssert cleared.min == 0\n  doAssert cleared.min_index == 2\n  doAssert cleared.get_value(0)\
     \ == 2\n  doAssert cleared.get_value(4) == 2\n"
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/collections/slopetrick.nim
+  - cplib/utils/constants.nim
   - cplib/collections/slopetrick.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

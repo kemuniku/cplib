@@ -68,16 +68,16 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree_static_op.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/collections/lazysegtree_static_op.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   requiredBy: []

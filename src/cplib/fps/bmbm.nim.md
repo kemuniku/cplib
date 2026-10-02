@@ -213,32 +213,32 @@ data:
     \        if coefficients.len == 0: return init(T, 0)\n        linearRecurrenceKth(a[0..<coefficients.len],\
     \ coefficients, k)\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
   - cplib/fps/berlekamp_massey.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/bostan_mori.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/fps/berlekamp_massey.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/fps/bmbm.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-10-02 07:38:44+09:00'
+  timestamp: '2026-10-02 22:16:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim

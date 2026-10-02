@@ -42,8 +42,8 @@ data:
     \ 1)\ng.add_edge(1, 2)\ndoAssert solve_Rerooting(g, merge, 0, sameEdge, sameVertex)\
     \ == @[3, 3, 3]\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
   isVerificationFile: true

@@ -274,6 +274,12 @@ data:
     path: verify/AI/multiplicative_prefix_sum_test.nim
     title: verify/AI/multiplicative_prefix_sum_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/multipoint_cyclic_ntt_test.nim
+    title: verify/AI/multipoint_cyclic_ntt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/multipoint_cyclic_ntt_test.nim
+    title: verify/AI/multipoint_cyclic_ntt_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/planar_graph_test.nim
     title: verify/AI/planar_graph_test.nim
   - icon: ':heavy_check_mark:'
@@ -490,11 +496,23 @@ data:
     path: verify/fps/sqrt_of_formal_power_series_test.nim
     title: verify/fps/sqrt_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/addition_of_big_integers_test.nim
+    title: verify/math/addition_of_big_integers_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_parse_unit_test.nim
+    title: verify/math/bigint_parse_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/bigint_parse_unit_test.nim
+    title: verify/math/bigint_parse_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
@@ -773,6 +791,8 @@ data:
   - verify/AI/primefactor_test.nim
   - verify/AI/primitive_root_test.nim
   - verify/AI/primitive_root_test.nim
+  - verify/AI/multipoint_cyclic_ntt_test.nim
+  - verify/AI/multipoint_cyclic_ntt_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/eratosthenes_test.nim
@@ -783,12 +803,16 @@ data:
   - verify/math/modfast_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/bigint_parse_unit_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_test.nim
   - verify/math/many_factorials_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/addition_of_big_integers_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/euler_phi_yukicoder_test.nim
   - verify/math/isprime_yukicoder_test.nim

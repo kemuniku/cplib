@@ -49,8 +49,8 @@ data:
     echo \"Hello World\"\n"
   dependsOn:
   - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/weighted_matching_structure_test.nim
