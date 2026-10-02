@@ -166,6 +166,38 @@ for n in 0..6:
         modint_montgomery.setMod(998244353)
         check(a.mapIt(init(modint_montgomery, it)), b.mapIt(init(modint_montgomery, it)), n)
 
+proc checkUnitConstants[T](coefficients: seq[int], constants: seq[int]) =
+    for c in constants:
+        var a = coefficients.mapIt(init(T, it))
+        a[0] = init(T, c)
+        let original = a
+        doAssert setInv(a) == naiveInv(a)
+        doAssert setPow(a, -3) == naivePow(naiveInv(a), 3)
+        doAssert setPow(a, low(int)) == naiveBinaryPower(naiveInv(a), uint(high(int)) + 1u)
+        for scalarRoot in [init(T, c), init(T, -c)]:
+            var root = coefficients.mapIt(init(T, it))
+            root[0] = scalarRoot
+            let squared = naive(root, root)
+            doAssert setSqrt(squared, scalarRoot) == root
+            var other = a
+            other[0] = scalarRoot * scalarRoot
+            doAssert setSqrt(other, scalarRoot) == naiveSqrt(other, scalarRoot)
+        doAssert a == original
+
+for n in 0..4:
+    for trial in 0..<4:
+        let coefficients = newSeqWith(1 shl n, rng.rand(-20..20))
+        checkUnitConstants[modint998244353_barrett](coefficients, @[2, 3, -2])
+        checkUnitConstants[modint998244353_montgomery](coefficients, @[2, 3, -2])
+        modint_barrett.setMod(998244353)
+        checkUnitConstants[modint_barrett](coefficients, @[2, 3, -2])
+        modint_montgomery.setMod(998244353)
+        checkUnitConstants[modint_montgomery](coefficients, @[2, 3, -2])
+        modint_barrett.setMod(9)
+        checkUnitConstants[modint_barrett](coefficients, @[2, 4, 5, 7, 8])
+        modint_montgomery.setMod(9)
+        checkUnitConstants[modint_montgomery](coefficients, @[2, 4, 5, 7, 8])
+
 for modulus in [2, 3, 5, 9]:
     modint_barrett.setMod(modulus)
     for code in 0..<81:
@@ -249,6 +281,13 @@ rejects:
     discard setInv(@[init(modint_barrett, 3)])
 rejects:
     discard setExp(@[init(modint_barrett, 0)])
+for c in [3, 6]:
+    rejects:
+        discard setPow(@[init(modint_barrett, c), init(modint_barrett, 1)], -1)
+    rejects:
+        discard setSqrt(@[init(modint_barrett, 0), init(modint_barrett, 1)], init(modint_barrett, c))
+rejects:
+    discard setSqrt(@[init(mint, 2)], init(mint, 1))
 modint_barrett.setMod(2)
 rejects:
     discard setExp(newSeq[modint_barrett](4))
