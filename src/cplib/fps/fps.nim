@@ -7,6 +7,7 @@ when not declared CPLIB_FPS_FPS:
     import cplib/fps/formal_power_series
     import cplib/fps/product_of_polynomial_sequence
     import cplib/fps/product_tree
+    import cplib/fps/chirp_z
     import cplib/fps/polynomial_interpolation
     import cplib/fps/taylor_shift
     import cplib/fps/shift_of_sampling_points
