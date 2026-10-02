@@ -1583,12 +1583,17 @@ output, factors, sizes, factor_count);
     proc multipointCyclicNtt*(output, f: ptr uint32, length: csize_t,
         points: ptr uint32, pointCount, size: csize_t, modulus: uint32
     ) {.importc: "cplib_multipoint_cyclic".}
+        ## 通常剰余のfをpointsで評価しoutputに書く。配列長は順にpointCount、length、pointCountで、lengthとpointCountはcanUseMultipointTreeNtt(modulus, size)を満たす2冪size以下とする。
 
     proc multipointTreeCreate*(leaves: ptr uint32, size, blockSize: csize_t,
         modulus: uint32): pointer {.importc: "cplib_multipoint_tree_create".}
+        ## 通常剰余の各blockSize+1係数の反転葉積size div blockSize個から積木を作る。sizeはcanUseMultipointTreeNtt(modulus, size)を満たす2冪、blockSizeはsizeを割る16以上の2冪とする。
     proc multipointTreeRoot*(context: pointer, output: ptr uint32) {.importc: "cplib_multipoint_tree_root".}
+        ## 作成済みcontextの根の反転積を通常剰余でoutputに書く。出力領域は作成時のsize+1係数を確保する。
     proc multipointTreeDescend*(context: pointer, output, input: ptr uint32) {.importc: "cplib_multipoint_tree_descend".}
+        ## 作成済みcontextで中間積を葉まで降下させる。inputとoutputは作成時のsize係数の通常剰余とする。
     proc multipointTreeDestroy*(context: pointer) {.importc: "cplib_multipoint_tree_destroy".}
+        ## multipointTreeCreateで作ったcontextを解放する。解放後のcontextは再利用しない。
 
     proc canUseMultipointTreeNtt*(modulus: uint32, size: int): bool =
         ## 積木の全段でNTTを使える場合に限り高速経路を選ぶ。
