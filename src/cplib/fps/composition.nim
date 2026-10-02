@@ -3,6 +3,8 @@ when not declared CPLIB_FPS_COMPOSITION:
 
     import cplib/fps/formal_power_series
     import cplib/modint/modint
+    import cplib/fps/power_projection
+    import cplib/math/isprime
 
     proc compositionRec[T: BarrettModint or MontgomeryModint](
             outer: seq[T], denominator: seq[seq[T]], n, yDegree: int): seq[seq[T]] =
@@ -80,11 +82,32 @@ when not declared CPLIB_FPS_COMPOSITION:
 
     proc compositionalInverse*[T: BarrettModint or MontgomeryModint](
             f: seq[T], n: int): seq[T] =
-        ## Newton法により f(g(x)) = x (mod x^n) を満たすgを求める。
+        ## f(g(x)) = x (mod x^n) を満たすgをO(n log^2 n)で求める。
         if n <= 0: return @[]
         doAssert f.len >= 2 and f[0].val == 0 and f[1].val != 0,
             "合成逆関数を求めるには f(0)=0 かつ1次の係数が非零である必要がある"
         if n == 1: return newSeq[T](1)
+        if n >= 64 and n <= T.umod.int and isprime(T.umod.int):
+            # N[x^N]f^i = i[x^(N-i)](g/x)^(-N) を用いる。
+            let degree = n - 1
+            let linearInverse = f[1].inv
+            let normalized = prefix(f, n) * linearInverse
+            let projected = normalized.powerProjection(degree)
+            var inverses = newSeq[T](n)
+            inverses[1] = init(T, 1)
+            let modulus = T.umod.int
+            for i in 2..<n:
+                inverses[i] = -inverses[modulus mod i] * (modulus div i)
+            var powers = newSeq[T](degree)
+            for j in 0..<degree:
+                powers[j] = projected[degree - j] * degree * inverses[degree - j]
+            let body = (powers.log(degree) * -inverses[degree]).exp(degree)
+            result = newSeq[T](n)
+            var scale = linearInverse
+            for i in 1..<n:
+                result[i] = body[i - 1] * scale
+                scale *= linearInverse
+            return
         result = @[init(T, 0), f[1].inv]
         var m = 2
         while m < n:
