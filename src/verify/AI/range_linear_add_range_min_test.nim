@@ -75,4 +75,62 @@ block:
     apply(seg, a, 1, 128, -1_000_000, -1_000_000_000_000.int)
     checkAll(seg, a)
 
+block:
+    var rng = initRand(68391)
+    for trial in 0..<400:
+        let n = rng.rand(1..257)
+        var a = newSeq[int](n)
+        for i in 0..<n:
+            a[i] = if trial mod 3 == 0:
+                (if i mod 2 == 0: high(int) - 1_000_000_000 else: low(int) + 1_000_000_000)
+                else: rng.rand(-1_000_000_000..1_000_000_000)
+        let seg = initRangeLinearAddRangeMin(a)
+        for step in 0..<300:
+            var l = rng.rand(0..n)
+            var r = rng.rand(0..n)
+            if l > r: swap(l, r)
+            case step mod 7
+            of 0: l = 0; r = n
+            of 1: r = min(l + 1, n)
+            of 2: l = min(1, n); r = max(l, n - 1)
+            else: discard
+            let b = if step mod 5 == 0: 0 else: rng.rand(-99..99)
+            let c = rng.rand(-9999..9999)
+            if step mod 2 == 0: seg.add(l..<r, b, c)
+            else: seg.add(l, r, b, c)
+            for i in l..<r: a[i] += b * i + c
+            var expected = high(int)
+            for i in l..<r: expected = min(expected, a[i])
+            doAssert seg.prod(l, r) == expected
+            let x = rng.rand(0..<n)
+            let y = rng.rand(x + 1..n)
+            expected = high(int)
+            for i in x..<y: expected = min(expected, a[i])
+            doAssert seg.prod(x, y) == expected
+            doAssert seg[^1] == a[^1]
+        if n < 20: checkAll(seg, a)
+
+block:
+    let n = 100_000
+    let seg = initRangeLinearAddRangeMin(newSeq[int](n))
+    for step in 0..<100_000: seg.add(0, n, -99, -9_999_999)
+    doAssert seg.prod(0, n) == 100_000 * (-99 * (n - 1) - 9_999_999)
+    seg.add(1, n - 1, 99, 9_999_999)
+    doAssert seg[1] == 99_999 * (-99 - 9_999_999)
+    doAssert seg[^1] == 100_000 * (-99 * (n - 1) - 9_999_999)
+    seg.add(n - 1, n, 0, 0)
+    doAssert seg.prod(0, 0) == high(int)
+
+block:
+    let half = high(int) div 2
+    let seg = initRangeLinearAddRangeMin([0, 0])
+    seg.add(0, 2, -half, 0)
+    seg.add(0, 1, 1, 0)
+    seg.add(0, 2, high(int), 0)
+    doAssert seg.prod(0, 2) == 0
+    seg.add(0, 1, 0, 0)
+    seg.add(0, 2, 1, 0)
+    doAssert seg[0] == 0
+    doAssert seg[1] == high(int) - half + 1
+
 echo "Hello World"
