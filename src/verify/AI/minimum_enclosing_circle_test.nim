@@ -72,6 +72,16 @@ for scale in [1e-150, 1.0, 1e150]:
     check(@[initPoint(0.0, 0.0), initPoint(scale, 0.0)], scale / 2, error = scale * 1e-8)
 check(@[initPoint(1e12 - 3, -1e12), initPoint(1e12 + 3, -1e12), initPoint(1e12, -1e12 + 4)], 3.125, error = 0.001)
 
+let sampleOne = @[initPoint(0.0, 0.0), initPoint(1.0, 0.0)]
+check(sampleOne, 0.5)
+let sampleTwo = @[initPoint(0.0, 0.0), initPoint(0.0, 1.0), initPoint(1.0, 0.0)]
+check(sampleTwo, 0.707106781186497524)
+let sampleThree = @[
+    initPoint(10.0, 9.0), initPoint(5.0, 9.0), initPoint(2.0, 0.0),
+    initPoint(0.0, 0.0), initPoint(2.0, 7.0), initPoint(3.0, 3.0),
+    initPoint(2.0, 5.0), initPoint(10.0, 0.0), initPoint(3.0, 7.0), initPoint(1.0, 9.0)]
+check(sampleThree, 6.726812023536805158)
+
 var rng = initRand(409301)
 for trial in 0..<2200:
     var points: seq[Point[float]]
