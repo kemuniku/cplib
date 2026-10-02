@@ -37,6 +37,35 @@ when not declared CPLIB_MATH_BIGINT:
                 result.digits[i] = uint32(magnitude mod BigIntBase)
                 magnitude = magnitude div BigIntBase
 
+    proc parseBigIntChunk9(s: string, start: int): uint32 {.inline.} =
+        ## 検証済みの範囲から 9 桁を変換する。O(1)。
+        when nimvm:
+            for i in start..<start + 9:
+                if s[i] < '0' or s[i] > '9':
+                    raise newException(ValueError, "多倍長整数に不正な文字が含まれています")
+                result = result * 10 + uint32(ord(s[i]) - ord('0'))
+        else:
+            when cpuEndian == littleEndian:
+                var bytes: uint64
+                copyMem(addr bytes, unsafeAddr s[start], 8)
+                if (((bytes + 0x4646464646464646'u64) or
+                    (bytes - 0x3030303030303030'u64)) and
+                    0x8080808080808080'u64) != 0 or
+                    s[start + 8] < '0' or s[start + 8] > '9':
+                    raise newException(ValueError, "多倍長整数に不正な文字が含まれています")
+                var digits = bytes xor 0x3030303030303030'u64
+                digits = ((digits * ((10'u64 shl 8) + 1)) shr 8) and
+                    0x00ff00ff00ff00ff'u64
+                digits = ((digits * ((100'u64 shl 16) + 1)) shr 16) and
+                    0x0000ffff0000ffff'u64
+                result = uint32((digits * ((10000'u64 shl 32) + 1)) shr 32) * 10 +
+                    uint32(ord(s[start + 8]) - ord('0'))
+            else:
+                for i in start..<start + 9:
+                    if s[i] < '0' or s[i] > '9':
+                        raise newException(ValueError, "多倍長整数に不正な文字が含まれています")
+                    result = result * 10 + uint32(ord(s[i]) - ord('0'))
+
     proc parseBigInt*(s: string): BigInt =
         ## 符号付き 10 進文字列を変換し、空文字列や不正な文字には ValueError を送出する。
         if s.len == 0:
@@ -55,10 +84,13 @@ when not declared CPLIB_MATH_BIGINT:
         while last > first:
             let start = max(first, last - 9)
             var digit = 0'u32
-            for i in start..<last:
-                if s[i] < '0' or s[i] > '9':
-                    raise newException(ValueError, "多倍長整数に不正な文字が含まれています")
-                digit = digit * 10 + uint32(ord(s[i]) - ord('0'))
+            if last - start == 9:
+                digit = parseBigIntChunk9(s, start)
+            else:
+                for i in start..<last:
+                    if s[i] < '0' or s[i] > '9':
+                        raise newException(ValueError, "多倍長整数に不正な文字が含まれています")
+                    digit = digit * 10 + uint32(ord(s[i]) - ord('0'))
             result.digits[index] = digit
             inc index
             last = start
