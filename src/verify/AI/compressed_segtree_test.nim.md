@@ -138,11 +138,11 @@ data:
   dependsOn:
   - cplib/collections/compressed_segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/collections/compressed_segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: true
   path: verify/AI/compressed_segtree_test.nim

@@ -79,8 +79,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/root_rangesum.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/root_rangesum.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/root_rangesum.nim
   isVerificationFile: true

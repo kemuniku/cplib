@@ -322,6 +322,18 @@ data:
     path: verify/AI/bmbm_test.nim
     title: verify/AI/bmbm_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/combination_test.nim
     title: verify/AI/combination_test.nim
   - icon: ':heavy_check_mark:'
@@ -875,12 +887,12 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -1083,6 +1095,8 @@ data:
   - verify/AI/convolution_old_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
@@ -1111,6 +1125,8 @@ data:
   - verify/AI/bitwise_and_convolution_test.nim
   - verify/AI/mo_test.nim
   - verify/AI/mo_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
   - verify/AI/lazysegtree_template_test.nim

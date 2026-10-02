@@ -68,8 +68,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/static_top_tree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/tree/static_top_tree.nim
   - cplib/tree/static_top_tree_dp.nim
   - cplib/tree/static_top_tree_dp.nim

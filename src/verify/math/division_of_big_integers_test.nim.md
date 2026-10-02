@@ -76,28 +76,28 @@ data:
     \ initBigInt(input(string))\n    let (quotient, remainder) = divmod(a, b)\n  \
     \  print(quotient, remainder)\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/tmpl/fastio.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/bigint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/math/bigint.nim
-  - cplib/modint/modint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/math/division_of_big_integers_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 06:31:44+09:00'
+  timestamp: '2026-10-02 07:38:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/division_of_big_integers_test.nim

@@ -198,10 +198,10 @@ data:
     \ updateOp, rangeOp)\n            compressedTree\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: false
   path: cplib/collections/compressed_segtree.nim

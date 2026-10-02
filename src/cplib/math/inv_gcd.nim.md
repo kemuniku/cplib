@@ -136,6 +136,18 @@ data:
     path: verify/AI/bmbm_test.nim
     title: verify/AI/bmbm_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_old_test.nim
     title: verify/AI/convolution_old_test.nim
   - icon: ':heavy_check_mark:'
@@ -561,6 +573,8 @@ data:
   - verify/AI/inv_gcd_test.nim
   - verify/AI/convolution_old_test.nim
   - verify/AI/convolution_old_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
@@ -579,6 +593,8 @@ data:
   - verify/AI/many_factorials_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
   - verify/math/bigint_bitops_unit_test.nim

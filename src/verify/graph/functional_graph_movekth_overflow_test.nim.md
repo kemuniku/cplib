@@ -48,12 +48,12 @@ data:
     \ high(int)]:\n            doAssert graph.movekth(start, count) == expected(next,\
     \ start, count)\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_movekth_overflow_test.nim
   requiredBy: []

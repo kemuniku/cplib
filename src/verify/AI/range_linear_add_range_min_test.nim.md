@@ -70,10 +70,10 @@ data:
   dependsOn:
   - cplib/math/int128.nim
   - cplib/utils/backwards_index.nim
-  - cplib/math/int128.nim
+  - cplib/collections/range_linear_add_range_min.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_linear_add_range_min.nim
-  - cplib/collections/range_linear_add_range_min.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/range_linear_add_range_min_test.nim
   requiredBy: []

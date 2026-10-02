@@ -1524,6 +1524,12 @@ data:
       path: verify/AI/bmbm_test.nim
       title: verify/AI/bmbm_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/bostan_mori_frequency_reuse_test.nim
+      title: verify/AI/bostan_mori_frequency_reuse_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/bostan_mori_prefix_test.nim
+      title: verify/AI/bostan_mori_prefix_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/can_reverse_hash_string_test.nim
       title: verify/AI/can_reverse_hash_string_test.nim
     - icon: ':heavy_check_mark:'
@@ -1952,6 +1958,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_segtree_test.nim
       title: verify/AI/persistent_segtree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/persistent_unionfind_branch_boundary_test.nim
+      title: verify/AI/persistent_unionfind_branch_boundary_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/persistent_unionfind_random_test.nim
       title: verify/AI/persistent_unionfind_random_test.nim

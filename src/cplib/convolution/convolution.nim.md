@@ -160,6 +160,18 @@ data:
     path: verify/AI/bmbm_test.nim
     title: verify/AI/bmbm_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
   - icon: ':heavy_check_mark:'
@@ -675,12 +687,60 @@ data:
     Z i = 0;\nfor (; i + 8 <= output_size; i += 8) {\nconst V value = _mm256_loadu_si256(\n\
     (const V*)(a + i));\n_mm256_storeu_si256(\n(V*)(a + i),\nmontgomery_multiply(value,\
     \ radix_squared, montgomery));\n}\nfor (; i < output_size; ++i) {\na[i] = montgomery.to_montgomery(a[i]);\n\
-    }\n}\n_mm_free(b);\n}\n\nclass FixedConvolution {\nZ size_;\nu32 modulus_, root_;\n\
-    u32* fixed_;\nTransformPlan *forward_, *inverse_;\npublic:\nFixedConvolution(const\
-    \ u32* data, Z length, Z size, u32 mod, u32 root)\n: size_(size), modulus_(mod),\
-    \ root_(root) {\n// \u56FA\u5B9A\u5074\u306E\u5909\u63DB\u3068\u6B63\u9006\u5909\
-    \u63DB\u306E\u8A08\u753B\u3092\u4E00\u5EA6\u3060\u3051\u69CB\u7BC9\u3059\u308B\
-    \u3002\nmodulus = modulus_;\nif (root_ == 0) root_ = find_primitive_root(modulus_);\n\
+    }\n}\n_mm_free(b);\n}\n\n// Bostan--Mori \u306E\u5909\u63DB\u7D50\u679C\u3092\u534A\
+    \u5206\u305A\u3064\u518D\u5229\u7528\u3059\u308B\u3002\ninline u32 bostan_mori_998(const\
+    \ u32* p0, Z plen, const u32* q0, Z qlen, u64 k, bool input_montgomery) {\nmodulus\
+    \ = 998244353U;\nprimitive_root = 3U;\nZ half = 64;\nwhile (half < std::max(plen,\
+    \ qlen)-1) half <<= 1;\nconst Z n = half * 2;\nTransformPlan full(n), forward(half),\
+    \ inverse(half);\ninverse.prepare_inverse();\nconst Montgomery& mont = full.montgomery();\n\
+    u32* storage = static_cast<u32*>(_mm_malloc(sizeof(u32) * n * 4, 32));\nu32* p\
+    \ = storage;\nu32* q = p + n;\nu32* a = q + n;\nu32* b = a + half;\nu32* twist\
+    \ = b + half;\nu32* inverse_z = twist + half;\nstd::memset(p, 0, n * 2 * sizeof(u32));\n\
+    for (Z i = 0; i < plen; ++i) p[i] = input_montgomery ? p0[i] : mont.to_montgomery(p0[i]);\n\
+    for (Z i = 0; i < qlen; ++i) q[i] = input_montgomery ? q0[i] : mont.to_montgomery(q0[i]);\n\
+    const u32 invhalf = mont.to_montgomery(power_mod(half, modulus-2));\nconst u32\
+    \ half_mont = mont.to_montgomery(half);\nu32 plead = plen > half ? p[half] : 0;\n\
+    u32 qlead = qlen > half ? q[half] : 0;\nconst u32 root = mont.to_montgomery(power_mod(3,\
+    \ (modulus-1)/n));\nconst u32 iroot = mont.to_montgomery(power_mod(3, modulus-1-(modulus-1)/n));\n\
+    u32 w = mont.radix;\nZ rev = 0;\nfor (Z i=0; i<half; ++i) {\ntwist[i] = mont.multiply(w,\
+    \ invhalf);\nw = mont.multiply(w, root);\n}\nw = mont.radix;\nfor (Z i=0; i<half;\
+    \ ++i) {\ninverse_z[rev] = w;\nw = mont.multiply(w, iroot);\nZ bit = half >> 1;\n\
+    while (bit && (rev & bit)) { rev ^= bit; bit >>= 1; }\nrev ^= bit;\n}\nif (plen\
+    \ > half) full.forward(p); else full.forward_half_zero(p);\nif (qlen > half) full.forward(q);\
+    \ else full.forward_half_zero(q);\nwhile (k > 0) {\nconst V evens = _mm256_setr_epi32(0,2,4,6,0,2,4,6);\n\
+    for (Z i=0; i<half; i+=8) {\nV pp[2], qq[2];\nfor (int t=0; t<2; ++t) {\nconst\
+    \ V pv = _mm256_loadu_si256((const V*)(p+2*i+8*t));\nconst V qv = _mm256_loadu_si256((const\
+    \ V*)(q+2*i+8*t));\nconst V qs = _mm256_shuffle_epi32(qv,0xB1);\nconst V uv =\
+    \ montgomery_multiply(pv,qs,mont);\nconst V vu = _mm256_shuffle_epi32(uv,0xB1);\n\
+    pp[t] = _mm256_permutevar8x32_epi32((k&1) ? subtract_mod(uv,vu) : add_mod(uv,vu),evens);\n\
+    const V product = montgomery_multiply(qv,qs,mont);\nqq[t] = _mm256_permutevar8x32_epi32(add_mod(product,product),evens);\n\
+    }\nV resultp = _mm256_permute2x128_si256(pp[0],pp[1],0x20);\nif (k&1) resultp\
+    \ = montgomery_multiply(resultp,_mm256_loadu_si256((const V*)(inverse_z+i)),mont);\n\
+    _mm256_storeu_si256((V*)(a+i),resultp);\n_mm256_storeu_si256((V*)(b+i),_mm256_permute2x128_si256(qq[0],qq[1],0x20));\n\
+    }\nplead = (k & 1) ? 0 : mont.multiply(plead,qlead);\nplead = add_mod(plead,plead);\n\
+    qlead = mont.multiply(qlead,qlead);\nqlead = add_mod(qlead,qlead);\nk >>= 1;\n\
+    std::memcpy(p, a, half*sizeof(u32));\nstd::memcpy(q, b, half*sizeof(u32));\ninverse.inverse(a);\n\
+    inverse.inverse(b);\nconst u32 pcorrection = mont.multiply(plead,half_mont);\n\
+    const u32 qcorrection = mont.multiply(qlead,half_mont);\na[0] = subtract_mod(a[0],pcorrection);\n\
+    b[0] = subtract_mod(b[0],qcorrection);\nif (k < 32) {\nconst Z upto = Z(k);\n\
+    for (Z i=0; i<=upto; ++i) {\na[i] = mont.multiply(a[i], invhalf);\nb[i] = mont.multiply(b[i],\
+    \ invhalf);\n}\nconst u32 invq0 = mont.to_montgomery(power_mod(mont.multiply(b[0],1),modulus-2));\n\
+    for (Z i=0; i<=upto; ++i) {\nfor (Z j=1; j<=i; ++j) a[i] = subtract_mod(a[i],mont.multiply(b[j],a[i-j]));\n\
+    a[i] = mont.multiply(a[i],invq0);\n}\nconst u32 answer = mont.multiply(a[upto],1);\n\
+    _mm_free(storage);\nreturn answer;\n}\nif (k < half / 2) {\nfor (Z i=0; i<=Z(k);\
+    \ ++i) {\na[i] = mont.multiply(a[i], invhalf);\nb[i] = mont.multiply(b[i], invhalf);\n\
+    }\nconst u32 answer = bostan_mori_998(a, Z(k)+1, b, Z(k)+1, k, true);\n_mm_free(storage);\n\
+    return answer;\n}\na[0] = subtract_mod(a[0],pcorrection);\nb[0] = subtract_mod(b[0],qcorrection);\n\
+    for (Z i=0; i<half; i+=8) {\nconst V weight = _mm256_loadu_si256((const V*)(twist+i));\n\
+    _mm256_storeu_si256((V*)(p+half+i), montgomery_multiply(shrink(shrink_twice_modulus(_mm256_loadu_si256((const\
+    \ V*)(a+i)))),weight,mont));\n_mm256_storeu_si256((V*)(q+half+i), montgomery_multiply(shrink(shrink_twice_modulus(_mm256_loadu_si256((const\
+    \ V*)(b+i)))),weight,mont));\n}\nforward.forward(p+half);\nforward.forward(q+half);\n\
+    }\n_mm_free(storage);\nreturn 0;\n}\n\nclass FixedConvolution {\nZ size_;\nu32\
+    \ modulus_, root_;\nu32* fixed_;\nTransformPlan *forward_, *inverse_;\npublic:\n\
+    FixedConvolution(const u32* data, Z length, Z size, u32 mod, u32 root)\n: size_(size),\
+    \ modulus_(mod), root_(root) {\n// \u56FA\u5B9A\u5074\u306E\u5909\u63DB\u3068\u6B63\
+    \u9006\u5909\u63DB\u306E\u8A08\u753B\u3092\u4E00\u5EA6\u3060\u3051\u69CB\u7BC9\
+    \u3059\u308B\u3002\nmodulus = modulus_;\nif (root_ == 0) root_ = find_primitive_root(modulus_);\n\
     primitive_root = root_;\nforward_ = new TransformPlan(size_);\ninverse_ = new\
     \ TransformPlan(size_);\ninverse_->prepare_inverse();\nfixed_ = static_cast<u32*>(_mm_malloc(sizeof(u32)\
     \ * size_, 32));\nconst Montgomery& mont = forward_->montgomery();\nconst u32\
@@ -813,56 +873,64 @@ data:
     \ 1);\n}\n}\n};\n\ninline void product_polynomial_sequence_998(\nu32* output,\
     \ const u32* const* factors,\nconst Z* sizes, Z factor_count) {\nmodulus = 998244353U;\n\
     primitive_root = 3U;\nPolynomialSequenceProduct998 context(factors, sizes, factor_count);\n\
-    context.run(output);\n}\n}\n#endif\nextern \"C\" void cplib_convolution_ntt_friendly(\n\
-    std::uint32_t* output,\nstd::uint32_t* left,\nstd::size_t left_size,\nstd::uint32_t*\
-    \ right,\nstd::size_t right_size,\nstd::size_t transform_size,\nstd::uint32_t\
-    \ modulus,\nstd::uint32_t primitive_root,\nbool montgomery_representation) {\n\
-    cplib_avx2_ntt::convolution_ntt_friendly(\noutput, left, left_size, right, right_size,\
-    \ transform_size,\nmodulus, primitive_root, montgomery_representation);\n}\nextern\
-    \ \"C\" void* cplib_fixed_convolution_create(\nstd::uint32_t* data, std::size_t\
-    \ length, std::size_t size,\nstd::uint32_t modulus, std::uint32_t root) {\n//\
-    \ \u56FA\u5B9A\u5074\u306E\u7573\u307F\u8FBC\u307F\u30B3\u30F3\u30C6\u30AD\u30B9\
-    \u30C8\u3092\u4F5C\u6210\u3059\u308B\u3002\nreturn new cplib_avx2_ntt::FixedConvolution(data,\
-    \ length, size, modulus, root);\n}\nextern \"C\" void cplib_fixed_convolution_run(\n\
-    void* context, std::uint32_t* output, std::uint32_t* data, std::size_t length)\
-    \ {\n// \u4F5C\u6210\u6E08\u307F\u306E\u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3067\
-    \u7573\u307F\u8FBC\u307F\u3092\u5B9F\u884C\u3059\u308B\u3002\nstatic_cast<cplib_avx2_ntt::FixedConvolution*>(context)->run(output,\
+    context.run(output);\n}\n}\n#endif\nextern \"C\" std::uint32_t cplib_bostan_mori_998(std::uint32_t*\
+    \ p, std::size_t plen, std::uint32_t* q, std::size_t qlen, std::uint64_t k, bool\
+    \ mont) {\nreturn cplib_avx2_ntt::bostan_mori_998(p, plen, q, qlen, k, mont);\n\
+    }\nextern \"C\" void cplib_convolution_ntt_friendly(\nstd::uint32_t* output,\n\
+    std::uint32_t* left,\nstd::size_t left_size,\nstd::uint32_t* right,\nstd::size_t\
+    \ right_size,\nstd::size_t transform_size,\nstd::uint32_t modulus,\nstd::uint32_t\
+    \ primitive_root,\nbool montgomery_representation) {\ncplib_avx2_ntt::convolution_ntt_friendly(\n\
+    output, left, left_size, right, right_size, transform_size,\nmodulus, primitive_root,\
+    \ montgomery_representation);\n}\nextern \"C\" void* cplib_fixed_convolution_create(\n\
+    std::uint32_t* data, std::size_t length, std::size_t size,\nstd::uint32_t modulus,\
+    \ std::uint32_t root) {\n// \u56FA\u5B9A\u5074\u306E\u7573\u307F\u8FBC\u307F\u30B3\
+    \u30F3\u30C6\u30AD\u30B9\u30C8\u3092\u4F5C\u6210\u3059\u308B\u3002\nreturn new\
+    \ cplib_avx2_ntt::FixedConvolution(data, length, size, modulus, root);\n}\nextern\
+    \ \"C\" void cplib_fixed_convolution_run(\nvoid* context, std::uint32_t* output,\
+    \ std::uint32_t* data, std::size_t length) {\n// \u4F5C\u6210\u6E08\u307F\u306E\
+    \u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3067\u7573\u307F\u8FBC\u307F\u3092\u5B9F\
+    \u884C\u3059\u308B\u3002\nstatic_cast<cplib_avx2_ntt::FixedConvolution*>(context)->run(output,\
     \ data, length);\n}\nextern \"C\" void cplib_fixed_convolution_destroy(void* context)\
     \ {\n// \u7573\u307F\u8FBC\u307F\u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3092\u89E3\
     \u653E\u3059\u308B\u3002\ndelete static_cast<cplib_avx2_ntt::FixedConvolution*>(context);\n\
     }\nextern \"C\" void cplib_product_polynomial_sequence_998(\nstd::uint32_t* output,\n\
     std::uint32_t** factors,\nstd::size_t* sizes,\nstd::size_t factor_count) {\ncplib_avx2_ntt::product_polynomial_sequence_998(\n\
-    output, factors, sizes, factor_count);\n}\n    \"\"\".}\n\n    proc convolutionNttFriendlyAvx2(\n\
-    \        output: ptr uint32,\n        f: ptr uint32,\n        fLen: csize_t,\n\
-    \        g: ptr uint32,\n        gLen: csize_t,\n        nttLen: csize_t,\n  \
-    \      modulus: uint32,\n        primitiveRoot: uint32,\n        montgomeryRepresentation:\
-    \ bool\n    ) {.importc: \"cplib_convolution_ntt_friendly\".}\n\n    proc convolutionNttFriendlyU32(\n\
-    \        f, g: seq[uint32], modulus, primitiveRoot: uint32\n    ): seq[uint32]\n\
-    \n    proc convolutionArbitraryMod[T: BarrettModint or MontgomeryModint](\n  \
-    \      f, g: seq[T]\n    ): seq[T]\n\n    var nttPrimalityCache: tuple[modulus:\
-    \ uint32, isPrime: bool]\n\n    proc isNttFriendlyModulus(modulus, transformSize:\
-    \ uint32): bool =\n        ## \u6307\u5B9A\u3057\u305F\u9577\u3055\u306ENTT\u304C\
-    \u6CD5\u306E\u4E0B\u3067\u6210\u7ACB\u3059\u308B\u304B\u5224\u5B9A\u3059\u308B\
-    \u3002\n        if modulus <= 1u32 or modulus >= (1u32 shl 30): return false\n\
-    \        if (modulus - 1u32) mod transformSize != 0u32: return false\n       \
-    \ if nttPrimalityCache.modulus != modulus:\n            nttPrimalityCache = (modulus,\
-    \ isprime(modulus.int))\n        return nttPrimalityCache.isPrime\n\n    proc\
-    \ convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]):\
-    \ seq[T] =\n        if f.len == 0 or g.len == 0: return @[]\n        var ans =\
-    \ newSeq[T](f.len + g.len - 1)\n        if f.len > g.len:\n            for i in\
-    \ 0..<f.len:\n                for j in 0..<g.len:\n                    ans[i+j]\
-    \ += f[i] * g[j]\n        else:\n            for j in 0..<g.len:\n           \
-    \     for i in 0..<f.len:\n                    ans[i+j] += f[i] * g[j]\n     \
-    \   return ans\n\n    proc convolution*[T: BarrettModint or MontgomeryModint](f,\
-    \ g: seq[T]): seq[T] =\n        let m = f.len\n        let n = g.len\n       \
-    \ if m == 0 or n == 0: return @[]\n        let deg = m + n - 1\n        if min(n,\
-    \ m) <= 60: return convolution_naive(f, g)\n        var l = (if deg == 1: 1 else:\
-    \ (1 shl (fastLog2(deg - 1) + 1)))\n        if isNttFriendlyModulus(T.umod, l.uint32):\n\
-    \            result = newSeq[T](l)\n            convolutionNttFriendlyAvx2(\n\
-    \                cast[ptr uint32](addr result[0]),\n                cast[ptr uint32](unsafeAddr\
-    \ f[0]), m.csize_t,\n                cast[ptr uint32](unsafeAddr g[0]), n.csize_t,\n\
-    \                l.csize_t, T.umod, 0u32,\n                T is MontgomeryModint)\n\
-    \            result.setLen(deg)\n            return\n        return convolutionArbitraryMod(f,\
+    output, factors, sizes, factor_count);\n}\n    \"\"\".}\n\n    proc bostanMori998Kernel*(p:\
+    \ ptr uint32, plen: csize_t, q: ptr uint32,\n            qlen: csize_t, k: uint64,\
+    \ inputMontgomery: bool): uint32\n            {.importc: \"cplib_bostan_mori_998\"\
+    .}\n        ## \u6CD5998244353\u306EBostan--Mori\u5185\u90E8\u30AB\u30FC\u30CD\
+    \u30EB\uFF08\u5165\u529B\u306F\u5909\u66F4\u3057\u306A\u3044\uFF09\u3002\n\n \
+    \   proc convolutionNttFriendlyAvx2(\n        output: ptr uint32,\n        f:\
+    \ ptr uint32,\n        fLen: csize_t,\n        g: ptr uint32,\n        gLen: csize_t,\n\
+    \        nttLen: csize_t,\n        modulus: uint32,\n        primitiveRoot: uint32,\n\
+    \        montgomeryRepresentation: bool\n    ) {.importc: \"cplib_convolution_ntt_friendly\"\
+    .}\n\n    proc convolutionNttFriendlyU32(\n        f, g: seq[uint32], modulus,\
+    \ primitiveRoot: uint32\n    ): seq[uint32]\n\n    proc convolutionArbitraryMod[T:\
+    \ BarrettModint or MontgomeryModint](\n        f, g: seq[T]\n    ): seq[T]\n\n\
+    \    var nttPrimalityCache: tuple[modulus: uint32, isPrime: bool]\n\n    proc\
+    \ isNttFriendlyModulus(modulus, transformSize: uint32): bool =\n        ## \u6307\
+    \u5B9A\u3057\u305F\u9577\u3055\u306ENTT\u304C\u6CD5\u306E\u4E0B\u3067\u6210\u7ACB\
+    \u3059\u308B\u304B\u5224\u5B9A\u3059\u308B\u3002\n        if modulus <= 1u32 or\
+    \ modulus >= (1u32 shl 30): return false\n        if (modulus - 1u32) mod transformSize\
+    \ != 0u32: return false\n        if nttPrimalityCache.modulus != modulus:\n  \
+    \          nttPrimalityCache = (modulus, isprime(modulus.int))\n        return\
+    \ nttPrimalityCache.isPrime\n\n    proc convolution_naive*[T: BarrettModint or\
+    \ MontgomeryModint or int](f, g: seq[T]): seq[T] =\n        if f.len == 0 or g.len\
+    \ == 0: return @[]\n        var ans = newSeq[T](f.len + g.len - 1)\n        if\
+    \ f.len > g.len:\n            for i in 0..<f.len:\n                for j in 0..<g.len:\n\
+    \                    ans[i+j] += f[i] * g[j]\n        else:\n            for j\
+    \ in 0..<g.len:\n                for i in 0..<f.len:\n                    ans[i+j]\
+    \ += f[i] * g[j]\n        return ans\n\n    proc convolution*[T: BarrettModint\
+    \ or MontgomeryModint](f, g: seq[T]): seq[T] =\n        let m = f.len\n      \
+    \  let n = g.len\n        if m == 0 or n == 0: return @[]\n        let deg = m\
+    \ + n - 1\n        if min(n, m) <= 60: return convolution_naive(f, g)\n      \
+    \  var l = (if deg == 1: 1 else: (1 shl (fastLog2(deg - 1) + 1)))\n        if\
+    \ isNttFriendlyModulus(T.umod, l.uint32):\n            result = newSeq[T](l)\n\
+    \            convolutionNttFriendlyAvx2(\n                cast[ptr uint32](addr\
+    \ result[0]),\n                cast[ptr uint32](unsafeAddr f[0]), m.csize_t,\n\
+    \                cast[ptr uint32](unsafeAddr g[0]), n.csize_t,\n             \
+    \   l.csize_t, T.umod, 0u32,\n                T is MontgomeryModint)\n       \
+    \     result.setLen(deg)\n            return\n        return convolutionArbitraryMod(f,\
     \ g)\n\n    proc convolutionCyclicPowerOfTwo*[T: BarrettModint or MontgomeryModint](\n\
     \            f, g: seq[T], n: int): seq[T] =\n        ## \u9577\u3055n\u306E\u5DE1\
     \u56DE\u7573\u307F\u8FBC\u307F\u3092\u6C42\u3081\u308B\u3002n\u306F2\u306E\u51AA\
@@ -973,18 +1041,18 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
@@ -1024,7 +1092,7 @@ data:
   - cplib/math/factoradic.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-02 07:38:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
@@ -1089,6 +1157,8 @@ data:
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
@@ -1107,6 +1177,8 @@ data:
   - verify/AI/many_factorials_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/AI/convolution_test.nim
   - verify/AI/convolution_test.nim
   - verify/math/bigint_bitops_unit_test.nim

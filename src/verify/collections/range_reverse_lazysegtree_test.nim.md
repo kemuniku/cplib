@@ -57,8 +57,8 @@ data:
     E\", \"B\", \"C\", \"D\", \"a\"]\ns[2] = \"x\"\nassert s.get_all == \"EBxDa\"\n\
     assert $s == \"E B x D a\"\n"
   dependsOn:
-  - cplib/collections/range_reverse_lazysegtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/range_reverse_lazysegtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_lazysegtree.nim
   isVerificationFile: true

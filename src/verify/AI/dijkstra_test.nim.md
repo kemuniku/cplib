@@ -78,10 +78,10 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim

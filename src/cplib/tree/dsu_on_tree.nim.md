@@ -160,12 +160,12 @@ data:
     \            let decomposition = initHld(tree, treeRoot)\n            dsuOnTree(decomposition,\
     \ add, answer)\n"
   dependsOn:
+  - cplib/utils/private/auto_rollback.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/graph/graph.nim
   - cplib/utils/private/auto_rollback.nim
   isVerificationFile: false

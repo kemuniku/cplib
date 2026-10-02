@@ -82,6 +82,18 @@ data:
     path: verify/AI/bmbm_test.nim
     title: verify/AI/bmbm_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_composite_modulus_test.nim
     title: verify/AI/fps_composite_modulus_test.nim
   - icon: ':heavy_check_mark:'
@@ -214,51 +226,64 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_FPS_BOSTAN_MORI:\n    const CPLIB_FPS_BOSTAN_MORI*\
     \ = 1\n\n    import cplib/fps/formal_power_series\n    import cplib/modint/modint\n\
-    \n    proc parityTerms[T](f: seq[T], parity: int): seq[T] =\n        if f.len\
-    \ <= parity: return @[]\n        result = newSeq[T]((f.len - parity + 1) div 2)\n\
-    \        var j = 0\n        for i in countup(parity, f.high, 2):\n           \
-    \ result[j] = f[i]\n            inc j\n\n    proc bostanMori*[T: BarrettModint\
-    \ or MontgomeryModint](\n            numerator, denominator: seq[T], k: int):\
-    \ T =\n        ## numerator(x) / denominator(x) \u306Ex^k\u306E\u4FC2\u6570\u3092\
-    \u8FD4\u3059\u3002\n        doAssert k >= 0, \"Bostan--Mori\u6CD5\u3067\u306F\u6DFB\
-    \u5B57\u304C\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n \
-    \       doAssert denominator.len > 0 and denominator[0].val != 0,\n          \
-    \  \"Bostan--Mori\u6CD5\u3067\u306F\u5206\u6BCD\u306E\u5B9A\u6570\u9805\u304C\u975E\
-    \u96F6\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        var p = numerator.normalized\n\
-    \        var q = denominator.normalized\n        var index = k\n        while\
-    \ index > 0:\n            var qNegative = q\n            for i in countup(1, qNegative.high,\
-    \ 2): qNegative[i] = -qNegative[i]\n            p = parityTerms(p * qNegative,\
-    \ index and 1)\n            q = parityTerms(q * qNegative, 0)\n            index\
-    \ = index shr 1\n        if p.len == 0: return init(T, 0)\n        p[0] / q[0]\n\
-    \n    proc linearRecurrenceKth*[T: BarrettModint or MontgomeryModint](\n     \
-    \       initial, coefficients: seq[T], k: int): T =\n        ## a[n] = sum(coefficients[i]\
-    \ * a[n-i-1], i=0..<d) \u306E\u7B2Ck\u9805\u3092\u6C42\u3081\u308B\u3002\n   \
-    \     doAssert initial.len == coefficients.len and initial.len > 0,\n        \
-    \    \"\u7DDA\u5F62\u6F38\u5316\u5F0F\u3067\u306F\u521D\u671F\u5024\u3068\u4FC2\
-    \u6570\u306E\u500B\u6570\u304C\u4E00\u81F4\u3057\u3001\u304B\u30641\u500B\u4EE5\
-    \u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        doAssert k >=\
-    \ 0, \"\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u6DFB\u5B57\u306F\u975E\u8CA0\u3067\
-    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        if k < initial.len: return\
-    \ initial[k]\n        var q = newSeq[T](coefficients.len + 1)\n        q[0] =\
-    \ 1\n        for i in 0..<coefficients.len: q[i + 1] = -coefficients[i]\n    \
-    \    let p = prefix(initial * q, coefficients.len)\n        bostanMori(p, q, k)\n"
+    \    import cplib/convolution/convolution\n\n    proc parityTerms[T](f: seq[T],\
+    \ parity: int): seq[T] =\n        if f.len <= parity: return @[]\n        result\
+    \ = newSeq[T]((f.len - parity + 1) div 2)\n        var j = 0\n        for i in\
+    \ countup(parity, f.high, 2):\n            result[j] = f[i]\n            inc j\n\
+    \n    proc bostanMori*[T: BarrettModint or MontgomeryModint](\n            numerator,\
+    \ denominator: seq[T], k: int): T =\n        ## numerator(x) / denominator(x)\
+    \ \u306Ex^k\u306E\u4FC2\u6570\u3092\u8FD4\u3059\u3002\n        ## \u6CD5998244353\u3067\
+    \u306FNTT\u306E\u5468\u6CE2\u6570\u9818\u57DF\u3092\u518D\u5229\u7528\u3057\u3001\
+    \u305D\u308C\u4EE5\u5916\u306F\u6C4E\u7528\u7573\u307F\u8FBC\u307F\u3092\u4F7F\
+    \u3046\u3002\n        doAssert k >= 0, \"Bostan--Mori\u6CD5\u3067\u306F\u6DFB\u5B57\
+    \u304C\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n       \
+    \ doAssert denominator.len > 0 and denominator[0].val != 0,\n            \"Bostan--Mori\u6CD5\
+    \u3067\u306F\u5206\u6BCD\u306E\u5B9A\u6570\u9805\u304C\u975E\u96F6\u3067\u3042\
+    \u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        var p = numerator.normalized\n\
+    \        var q = denominator.normalized\n        if p.len == 0: return init(T,\
+    \ 0)\n        if k == 0: return p[0] / q[0]\n        if k < p.len - 1: p.setLen(k\
+    \ + 1)\n        if k < q.len - 1: q.setLen(k + 1)\n        if T.umod == 998244353u32\
+    \ and max(p.len, q.len) >= 64 and\n                max(p.len, q.len) <= (1 shl\
+    \ 22):\n            return init(T, bostanMori998Kernel(\n                cast[ptr\
+    \ uint32](addr p[0]), p.len.csize_t,\n                cast[ptr uint32](addr q[0]),\
+    \ q.len.csize_t,\n                k.uint64, T is MontgomeryModint).int)\n    \
+    \    var index = k\n        while index > 0:\n            # x^index\u4EE5\u4E0B\
+    \u306B\u306F\u3001\u305D\u308C\u3088\u308A\u9AD8\u6B21\u306E\u4FC2\u6570\u306F\
+    \u5BC4\u4E0E\u3057\u306A\u3044\u3002\n            if index < p.len - 1: p.setLen(index\
+    \ + 1)\n            if index < q.len - 1: q.setLen(index + 1)\n            var\
+    \ qNegative = q\n            for i in countup(1, qNegative.high, 2): qNegative[i]\
+    \ = -qNegative[i]\n            p = parityTerms(p * qNegative, index and 1)\n \
+    \           q = parityTerms(q * qNegative, 0)\n            index = index shr 1\n\
+    \        if p.len == 0: return init(T, 0)\n        p[0] / q[0]\n\n    proc linearRecurrenceKth*[T:\
+    \ BarrettModint or MontgomeryModint](\n            initial, coefficients: seq[T],\
+    \ k: int): T =\n        ## a[n] = sum(coefficients[i] * a[n-i-1], i=0..<d) \u306E\
+    \u7B2Ck\u9805\u3092\u6C42\u3081\u308B\u3002\n        doAssert initial.len == coefficients.len\
+    \ and initial.len > 0,\n            \"\u7DDA\u5F62\u6F38\u5316\u5F0F\u3067\u306F\
+    \u521D\u671F\u5024\u3068\u4FC2\u6570\u306E\u500B\u6570\u304C\u4E00\u81F4\u3057\
+    \u3001\u304B\u30641\u500B\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308B\"\n        doAssert k >= 0, \"\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u6DFB\
+    \u5B57\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n \
+    \       if k < initial.len: return initial[k]\n        var q = newSeq[T](coefficients.len\
+    \ + 1)\n        q[0] = 1\n        for i in 0..<coefficients.len: q[i + 1] = -coefficients[i]\n\
+    \        let p = prefix(initial * q, coefficients.len)\n        bostanMori(p,\
+    \ q, k)\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/fps/bostan_mori.nim
   requiredBy:
@@ -268,7 +293,7 @@ data:
   - cplib/fps/bmbm.nim
   - cplib/fps/sparse_formal_power_series.nim
   - cplib/fps/sparse_formal_power_series.nim
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-02 07:38:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
@@ -307,6 +332,8 @@ data:
   - verify/fps/multipoint_evaluation_test.nim
   - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
@@ -315,6 +342,8 @@ data:
   - verify/AI/fps_test.nim
   - verify/AI/bmbm_test.nim
   - verify/AI/bmbm_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
 documentation_of: cplib/fps/bostan_mori.nim
 layout: document
 redirect_from:

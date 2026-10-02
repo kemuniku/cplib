@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_unionfind_branch_boundary_test.nim
+    title: verify/AI/persistent_unionfind_branch_boundary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/persistent_unionfind_branch_boundary_test.nim
+    title: verify/AI/persistent_unionfind_branch_boundary_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/persistent_unionfind_random_test.nim
     title: verify/AI/persistent_unionfind_random_test.nim
   - icon: ':heavy_check_mark:'
@@ -33,7 +39,7 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_PERSISTENT_UNIONFIND:\n    const CPLIB_COLLECTIONS_PERSISTENT_UNIONFIND*\
-    \ = 1\n    import bitops\n\n    const PersistentUFBranchBits = 4\n    const PersistentUFBranchSize\
+    \ = 1\n    import bitops\n\n    const PersistentUFBranchBits = 3\n    const PersistentUFBranchSize\
     \ = 1 shl PersistentUFBranchBits\n    const PersistentUFBranchMask = PersistentUFBranchSize\
     \ - 1\n    type\n        PersistentUFNode = array[PersistentUFBranchSize, int32]\n\
     \        PersistentUFPool = ref object\n            # \u540C\u3058\u521D\u671F\
@@ -104,7 +110,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/persistent_unionfind.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-01 21:57:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/persistent_unionfind_test.nim
@@ -113,6 +119,8 @@ data:
   - verify/AI/persistent_unionfind_random_test.nim
   - verify/AI/persistent_unionfind_test.nim
   - verify/AI/persistent_unionfind_test.nim
+  - verify/AI/persistent_unionfind_branch_boundary_test.nim
+  - verify/AI/persistent_unionfind_branch_boundary_test.nim
 documentation_of: cplib/collections/persistent_unionfind.nim
 layout: document
 redirect_from:

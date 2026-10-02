@@ -118,6 +118,18 @@ data:
     path: verify/AI/bmbm_test.nim
     title: verify/AI/bmbm_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fps_composite_modulus_test.nim
     title: verify/AI/fps_composite_modulus_test.nim
   - icon: ':heavy_check_mark:'
@@ -482,20 +494,20 @@ data:
     \ seq[T], x: T): T =\n        for i in countdown(f.high, 0): result = result *\
     \ x + f[i]\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/fps/formal_power_series.nim
   requiredBy:
@@ -519,7 +531,7 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/math/many_factorials.nim
   - cplib/math/many_factorials.nim
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-02 07:38:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
@@ -560,6 +572,8 @@ data:
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_composite_modulus_test.nim
   - verify/AI/fps_composite_modulus_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
@@ -570,6 +584,8 @@ data:
   - verify/AI/bmbm_test.nim
   - verify/AI/many_factorials_test.nim
   - verify/AI/many_factorials_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_test.nim

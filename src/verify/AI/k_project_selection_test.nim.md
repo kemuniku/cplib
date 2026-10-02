@@ -125,10 +125,10 @@ data:
     \ opt = initKProjectSelection([2], int64)\n    opt.add_cost(0, 1, high(int64))\n\
     \    expectError(OverflowDefect): discard opt.solve()\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/project_selection.nim
-  - cplib/graph/maxflow.nim
   - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
+  - cplib/utils/project_selection.nim
+  - cplib/graph/maxflow.nim
   - cplib/utils/k_project_selection.nim
   - cplib/utils/k_project_selection.nim
   isVerificationFile: true

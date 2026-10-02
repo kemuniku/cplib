@@ -67,18 +67,18 @@ data:
     \       doAssert textGraph.prod(start, k, false) == expectedWithout\n        vertex\
     \ = next[vertex]\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/functional_graph.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_op.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
+  - cplib/graph/functional_graph.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_prod_overflow_test.nim
   requiredBy: []

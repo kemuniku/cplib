@@ -53,11 +53,11 @@ data:
   - cplib/collections/staticrangecount.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/merge_tree.nim
   - cplib/graph/merge_tree.nim
   - cplib/collections/staticrangecount.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/graph/merge_tree_test_.nim
   requiredBy: []

@@ -70,14 +70,14 @@ data:
     \ + b, 0) == 2\nassert random_string(4, 'a'..'c').allIt(it in 'a'..'c')\nassert\
     \ random_string(4, \"xyz\").allIt(it in {'x', 'y', 'z'})\n"
   dependsOn:
+  - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
   - cplib/graph/graph.nim
   - cplib/utils/random_helper.nim
-  - cplib/tree/prufer.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/planar_graph.nim
-  - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
-  - cplib/math/isprime.nim
   - cplib/graph/planar_graph.nim
   - cplib/utils/random_helper.nim
   isVerificationFile: true

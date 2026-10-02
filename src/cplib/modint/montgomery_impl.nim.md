@@ -310,6 +310,18 @@ data:
     path: verify/AI/bmbm_test.nim
     title: verify/AI/bmbm_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_frequency_reuse_test.nim
+    title: verify/AI/bostan_mori_frequency_reuse_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/bostan_mori_prefix_test.nim
+    title: verify/AI/bostan_mori_prefix_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/combination_test.nim
     title: verify/AI/combination_test.nim
   - icon: ':heavy_check_mark:'
@@ -1127,6 +1139,8 @@ data:
   - verify/AI/convolution_old_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
+  - verify/AI/bostan_mori_prefix_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/berlekamp_massey_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
@@ -1157,6 +1171,8 @@ data:
   - verify/AI/mo_test.nim
   - verify/AI/montgomery_impl_test.nim
   - verify/AI/montgomery_impl_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
+  - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
   - verify/AI/lazysegtree_template_test.nim

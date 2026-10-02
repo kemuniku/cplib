@@ -78,10 +78,10 @@ data:
     \  doAssert solveText(encode(expensive, cheap, highest)) == 0\n    doAssert solveText(encode(expensive,\
     \ expensive, lowest)) == 50000000\n    echo \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/project_selection.nim
-  - cplib/graph/maxflow.nim
   - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
+  - cplib/utils/project_selection.nim
+  - cplib/graph/maxflow.nim
   - cplib/utils/k_project_selection.nim
   - cplib/utils/k_project_selection.nim
   isVerificationFile: true

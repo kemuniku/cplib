@@ -149,10 +149,10 @@ data:
     \ int](@[1, 2]).erase(3)\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: true
   path: verify/collections/retroactive_priority_queue_test.nim

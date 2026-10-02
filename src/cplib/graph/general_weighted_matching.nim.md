@@ -66,10 +66,10 @@ data:
     \u5909\u66F4\u3057\u306A\u3044\u3002\u9759\u7684\u30B0\u30E9\u30D5\u306Fbuild()\u304C\
     \u5FC5\u8981\u3002\n        g.independentWeightedMatching(false)\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/general_weighted_matching.nim
   requiredBy: []

@@ -41,8 +41,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/utils/mo.nim
-  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: verify/utils/mo_test_.nim
   requiredBy: []
