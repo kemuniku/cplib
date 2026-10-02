@@ -60,6 +60,17 @@ when not declared CPLIB_FPS_PRODUCT_TREE:
         const multipointDirectEvaluationSize = 16
         var leafCount = 1
         while leafCount < xs.len: leafCount *= 2
+        if f.len <= leafCount and canUseMultipointTreeNtt(T.umod, leafCount):
+            var normalF = newSeq[uint32](max(1, f.len))
+            var normalXs = newSeq[uint32](xs.len)
+            var values = newSeq[uint32](xs.len)
+            for i in 0..<f.len: normalF[i] = f[i].val.uint32
+            for i in 0..<xs.len: normalXs[i] = xs[i].val.uint32
+            multipointCyclicNtt(addr values[0], addr normalF[0], f.len.csize_t,
+                addr normalXs[0], xs.len.csize_t, leafCount.csize_t, T.umod)
+            result = newSeq[T](xs.len)
+            for i in 0..<xs.len: result[i] = init(T, values[i].int)
+            return
         let blockSize = min(multipointDirectEvaluationSize, leafCount)
         let blockCount = leafCount div blockSize
 
@@ -73,9 +84,25 @@ when not declared CPLIB_FPS_PRODUCT_TREE:
                 for i in countdown(product.high, 1):
                     product[i] -= x * product[i - 1]
             reversedProducts[blockCount + blockIndex] = product
-        for node in countdown(blockCount - 1, 1):
-            reversedProducts[node] = reversedProducts[node * 2] *
-                reversedProducts[node * 2 + 1]
+        let useNttTree = canUseMultipointTreeNtt(T.umod, leafCount)
+        var context: pointer
+        if useNttTree:
+            var leaves = newSeq[uint32](blockCount * (blockSize + 1))
+            for node in 0..<blockCount:
+                for i in 0..blockSize:
+                    leaves[node * (blockSize + 1) + i] = reversedProducts[blockCount + node][i].val.uint32
+            context = multipointTreeCreate(addr leaves[0], leafCount.csize_t,
+                blockSize.csize_t, T.umod)
+            var root = newSeq[uint32](leafCount + 1)
+            multipointTreeRoot(context, addr root[0])
+            reversedProducts[1] = newSeq[T](leafCount + 1)
+            for i in 0..leafCount: reversedProducts[1][i] = init(T, root[i].int)
+        else:
+            for node in countdown(blockCount - 1, 1):
+                reversedProducts[node] = reversedProducts[node * 2] *
+                    reversedProducts[node * 2 + 1]
+        defer:
+            if context != nil: multipointTreeDestroy(context)
 
         var polynomial = f
         if polynomial.len > leafCount:
@@ -90,16 +117,26 @@ when not declared CPLIB_FPS_PRODUCT_TREE:
         transformed[1] = prefix(
             reversedPolynomial * reversedProducts[1].inv(leafCount), leafCount)
 
-        for node in 1..<blockCount:
-            let childSize = transformed[node].len div 2
-            let leftProduct = convolutionCyclicPowerOfTwo(
-                transformed[node], reversedProducts[node * 2 + 1],
-                transformed[node].len)
-            let rightProduct = convolutionCyclicPowerOfTwo(
-                transformed[node], reversedProducts[node * 2],
-                transformed[node].len)
-            transformed[node * 2] = leftProduct[childSize..<childSize * 2]
-            transformed[node * 2 + 1] = rightProduct[childSize..<childSize * 2]
+        if useNttTree:
+            var initial = newSeq[uint32](leafCount)
+            var final = newSeq[uint32](leafCount)
+            for i in 0..<leafCount: initial[i] = transformed[1][i].val.uint32
+            multipointTreeDescend(context, addr final[0], addr initial[0])
+            for node in 0..<blockCount:
+                transformed[blockCount + node] = newSeq[T](blockSize)
+                for i in 0..<blockSize:
+                    transformed[blockCount + node][i] = init(T, final[node * blockSize + i].int)
+        else:
+            for node in 1..<blockCount:
+                let childSize = transformed[node].len div 2
+                let leftProduct = convolutionCyclicPowerOfTwo(
+                    transformed[node], reversedProducts[node * 2 + 1],
+                    transformed[node].len)
+                let rightProduct = convolutionCyclicPowerOfTwo(
+                    transformed[node], reversedProducts[node * 2],
+                    transformed[node].len)
+                transformed[node * 2] = leftProduct[childSize..<childSize * 2]
+                transformed[node * 2 + 1] = rightProduct[childSize..<childSize * 2]
 
         result = newSeq[T](xs.len)
         for blockIndex in 0..<blockCount:

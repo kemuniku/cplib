@@ -13,6 +13,9 @@ when not declared CPLIB_CONVOLUTION_CONVOLUTION:
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
+#include <vector>
+#include <unordered_map>
+#include <memory>
 #pragma GCC target("avx2,bmi2")
 #pragma GCC optimize("O3")
 namespace cplib_avx2_ntt {
@@ -743,6 +746,259 @@ _mm_free(storage);
 return 0;
 }
 
+
+class MultipointCyclicEvaluator {
+using Poly = std::vector<u32>;
+Z size_, count_, points_;
+u32 mod_, root_;
+Montgomery mont_;
+std::vector<Poly> spectra_;
+Poly leading_, corrections_, x_, leaves_;
+std::unordered_map<u32, u32> exceptional_;
+u32 multiply(u32 a, u32 b) const { return mont_.multiply(a, b); }
+u32 inverse(u32 a) const {
+return mont_.to_montgomery(power_mod(multiply(a, 1), mod_ - 2));
+}
+void scale(Poly& a, u32 factor) const {
+const V multiplier = _mm256_set1_epi32((int)factor);
+Z i = 0;
+for (; i + 8 <= a.size(); i += 8) {
+const V value = _mm256_loadu_si256((const V*)(a.data() + i));
+_mm256_storeu_si256((V*)(a.data() + i), montgomery_multiply(value, multiplier, mont_));
+}
+for (; i < a.size(); ++i) a[i] = multiply(a[i], factor);
+}
+void build() {
+// 積のスペクトルを倍長化し、係数表現への往復を各段で半分の長さに抑える。
+const Z block = 16;
+TransformPlan leaf_plan(32);
+for (Z index = 0; index < count_; ++index) {
+Poly coefficients(32, 0); coefficients[0] = mont_.radix;
+for (Z j = 0; j < block; ++j) {
+const Z position = index * block + j;
+const u32 point = position < points_ && corrections_[position] != 0 ? x_[position] : 0;
+for (Z k = j + 1; k > 0; --k)
+coefficients[k] = subtract_mod(coefficients[k], multiply(point, coefficients[k - 1]));
+}
+std::memcpy(leaves_.data() + index * 17, coefficients.data(), sizeof(u32) * 17);
+leading_[count_ + index] = coefficients[block];
+leaf_plan.forward(coefficients.data());
+spectra_[count_ + index] = std::move(coefficients);
+}
+for (Z width = 32, first = count_ / 2; first; width *= 2, first /= 2) {
+std::unique_ptr<TransformPlan> forward, backward;
+if (first != 1) { forward.reset(new TransformPlan(width)); backward.reset(new TransformPlan(width)); backward->prepare_inverse(); }
+const u32 inv_width = mont_.to_montgomery(power_mod((u32)width, mod_ - 2));
+Poly twists;
+if (first != 1) {
+const u32 twist = mont_.to_montgomery(power_mod(root_, (mod_ - 1) / (2 * width)));
+twists.resize(width); twists[0] = mont_.radix;
+for (Z i = 1; i < width; ++i) twists[i] = multiply(twists[i - 1], twist);
+}
+for (Z node = first; node < first * 2; ++node) {
+auto& left = spectra_[2 * node]; auto& right = spectra_[2 * node + 1];
+Poly product(width);
+for (Z i = 0; i < width; i += 8) {
+const V a = _mm256_loadu_si256((const V*)(left.data() + i));
+const V b = _mm256_loadu_si256((const V*)(right.data() + i));
+_mm256_storeu_si256((V*)(product.data() + i), montgomery_multiply(a, b, mont_));
+}
+leading_[node] = multiply(leading_[2 * node], leading_[2 * node + 1]);
+scale(left, inv_width); scale(right, inv_width);
+if (first == 1) { spectra_[node] = std::move(product); continue; }
+Poly odd = product;
+backward->inverse(odd.data()); scale(odd, inv_width);
+odd[0] = subtract_mod(odd[0], add_mod(leading_[node], leading_[node]));
+for (Z i = 0; i < width; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(odd.data() + i));
+const V weight = _mm256_loadu_si256((const V*)(twists.data() + i));
+_mm256_storeu_si256((V*)(odd.data() + i), montgomery_multiply(value, weight, mont_));
+}
+forward->forward(odd.data());
+product.insert(product.end(), odd.begin(), odd.end());
+spectra_[node] = std::move(product);
+}
+}
+}
+Poly initial(const u32* f, Z length) {
+// 巡回環で根の積を一括逆元により除算し、例外点は最初のNTTから回収する。
+Poly transformed(size_, 0);
+for (Z i = 0; i < length; ++i) transformed[size_ - 1 - i] = mont_.to_montgomery(f[i]);
+TransformPlan forward(size_);
+forward.forward(transformed.data());
+if (!exceptional_.empty()) {
+const u32 root = mont_.to_montgomery(power_mod(root_, (mod_ - 1) / size_));
+const u32 root_inverse = inverse(root);
+u32 t = mont_.radix, p = mont_.radix; Z reversed = 0;
+for (Z index = 0; index < size_; ++index) {
+auto found = exceptional_.find(p);
+if (found != exceptional_.end()) found->second = multiply(multiply(transformed[reversed], t), 1);
+t = multiply(t, root); p = multiply(p, root_inverse);
+Z bit = size_ >> 1;
+while (bit && (reversed & bit)) { reversed ^= bit; bit >>= 1; }
+reversed ^= bit;
+}
+}
+const auto& denominator = spectra_[1];
+Poly prefix(size_ + 1); prefix[0] = mont_.radix;
+for (Z i = 0; i < size_; ++i) prefix[i + 1] = multiply(prefix[i], denominator[i]);
+u32 suffix = inverse(prefix[size_]);
+
+for (Z i = size_; i-- > 0;) {
+transformed[i] = multiply(transformed[i], multiply(prefix[i], suffix));
+suffix = multiply(suffix, denominator[i]);
+}
+return transformed;
+}
+Poly descend(Poly current) const {
+// 一つの親NTTから二つの中間積を作り、上半分だけ次段へ渡す。
+Poly next(size_), parent(size_), left(size_), right(size_);
+for (Z width = size_, first = 1; first < count_; width /= 2, first *= 2) {
+std::unique_ptr<TransformPlan> forward;
+if (first != 1) forward.reset(new TransformPlan(width));
+TransformPlan backward(width); backward.prepare_inverse();
+for (Z index = 0; index < first; ++index) {
+const Z node = first + index;
+std::memcpy(parent.data(), current.data() + index * width, sizeof(u32) * width);
+if (first != 1) forward->forward(parent.data());
+for (Z i = 0; i < width; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(parent.data() + i));
+_mm256_storeu_si256((V*)(left.data() + i), montgomery_multiply(value,
+_mm256_loadu_si256((const V*)(spectra_[2 * node + 1].data() + i)), mont_));
+_mm256_storeu_si256((V*)(right.data() + i), montgomery_multiply(value,
+_mm256_loadu_si256((const V*)(spectra_[2 * node].data() + i)), mont_));
+}
+backward.inverse(left.data()); backward.inverse(right.data());
+std::memcpy(next.data() + index * width, left.data() + width / 2, sizeof(u32) * (width / 2));
+std::memcpy(next.data() + index * width + width / 2, right.data() + width / 2, sizeof(u32) * (width / 2));
+}
+current.swap(next);
+}
+return current;
+}
+public:
+MultipointCyclicEvaluator(const u32* points, Z point_count, Z size)
+: size_(size), count_(size / 16), points_(point_count), mod_(modulus), root_(primitive_root),
+  spectra_(2 * count_), leading_(2 * count_), corrections_(point_count), x_(point_count), leaves_(count_ * 17) {
+// p^L=1の点だけ別処理し、残りの因子を巡回環の単元にする。
+const V radix_squared = _mm256_set1_epi32((int)mont_.radix_squared);
+const V one = _mm256_set1_epi32((int)mont_.radix);
+Z i = 0;
+for (; i + 8 <= points_; i += 8) {
+V value = montgomery_multiply(_mm256_loadu_si256((const V*)(points + i)), radix_squared, mont_);
+_mm256_storeu_si256((V*)(x_.data() + i), value);
+for (Z length = 1; length < size_; length *= 2) value = montgomery_multiply(value, value, mont_);
+_mm256_storeu_si256((V*)(corrections_.data() + i), subtract_mod(one, value));
+}
+for (; i < points_; ++i) {
+x_[i] = mont_.to_montgomery(points[i]);
+u32 power = x_[i];
+for (Z length = 1; length < size_; length *= 2) power = multiply(power, power);
+corrections_[i] = subtract_mod(mont_.radix, power);
+}
+for (i = 0; i < points_; ++i) if (corrections_[i] == 0) exceptional_.emplace(x_[i], 0);
+}
+void run(u32* output, const u32* f, Z length) {
+// ブロックの剰余を復元し、1-p^Lの補正を加えて全点で評価する。
+build(); Poly current = descend(initial(f, length));
+for (Z index = 0; index < count_; ++index) {
+const Z first = index * 16, last = std::min(first + 16, points_);
+if (first >= points_) break;
+const u32* product = leaves_.data() + index * 17;
+u32 reversed[16] = {};
+for (Z i = 0; i < 16; ++i)
+for (Z j = 0; j <= i; ++j) reversed[i] = add_mod(reversed[i], multiply(current[first + j], product[i - j]));
+Z i = first;
+const V one = _mm256_set1_epi32(1);
+for (; i + 8 <= last; i += 8) {
+const V point = _mm256_loadu_si256((const V*)(x_.data() + i));
+V value = _mm256_setzero_si256();
+for (Z j = 0; j < 16; ++j) value = add_mod(montgomery_multiply(value, point, mont_), _mm256_set1_epi32((int)reversed[j]));
+value = montgomery_multiply(value, _mm256_loadu_si256((const V*)(corrections_.data() + i)), mont_);
+_mm256_storeu_si256((V*)(output + i), montgomery_multiply(value, one, mont_));
+}
+for (; i < last; ++i) {
+u32 value = 0;
+for (Z j = 0; j < 16; ++j) value = add_mod(multiply(value, x_[i]), reversed[j]);
+output[i] = multiply(multiply(value, corrections_[i]), 1);
+}
+for (i = first; i < last; ++i)
+if (corrections_[i] == 0) output[i] = exceptional_.find(x_[i])->second;
+}
+}
+};
+
+class MultipointProductTree {
+Z size_, block_, count_;
+u32 modulus_, root_;
+std::vector<std::vector<u32>> products_, spectra_;
+public:
+MultipointProductTree(const u32* leaves, Z size, Z block, u32 mod)
+: size_(size), block_(block), count_(size / block), modulus_(mod),
+  root_(0), products_(2 * count_), spectra_(2 * count_) {
+// 子の変換を積木の構築と中間積の下降で共有する。
+modulus = modulus_; root_ = find_primitive_root(modulus_); primitive_root = root_;
+for (Z i = 0; i < count_; ++i)
+products_[count_ + i].assign(leaves + i * (block_ + 1), leaves + (i + 1) * (block_ + 1));
+for (Z width = block_ * 2, first = count_ / 2; first; width *= 2, first /= 2) {
+TransformPlan forward(width), inverse(width); inverse.prepare_inverse();
+const Montgomery& mont = forward.montgomery();
+const u32 scale = (u32)(u64(mont.radix_squared) * power_mod((u32)width, modulus - 2) % modulus);
+for (Z node = first; node < first * 2; ++node) {
+auto& left = spectra_[node * 2]; auto& right = spectra_[node * 2 + 1];
+left = products_[node * 2]; right = products_[node * 2 + 1];
+const u32 top = (u32)(u64(left.back()) * right.back() % modulus);
+left.resize(width); right.resize(width);
+forward.forward(left.data()); forward.forward(right.data());
+auto& product = products_[node]; product.resize(width + 1);
+const V conversion = _mm256_set1_epi32((int)scale);
+for (Z i = 0; i < width; i += 8) {
+const V a = _mm256_loadu_si256((const V*)(left.data() + i));
+const V b = montgomery_multiply(_mm256_loadu_si256((const V*)(right.data() + i)), conversion, mont);
+_mm256_storeu_si256((V*)(product.data() + i), montgomery_multiply(a, b, mont));
+_mm256_storeu_si256((V*)(left.data() + i), montgomery_multiply(a, conversion, mont));
+_mm256_storeu_si256((V*)(right.data() + i), b);
+}
+inverse.inverse(product.data());
+product[0] = subtract_mod(product[0], top); product[width] = top;
+std::vector<u32>().swap(products_[node * 2]);
+std::vector<u32>().swap(products_[node * 2 + 1]);
+}
+}
+}
+void root(u32* output) const {
+// 根の反転多項式を返す。
+std::memcpy(output, products_[1].data(), sizeof(u32) * (size_ + 1));
+}
+void descend(u32* output, const u32* input) const {
+// 各親の変換を一度だけ行い、保存した兄弟の変換と乗算する。
+modulus = modulus_; primitive_root = root_;
+std::vector<u32> current(input, input + size_), next(size_);
+std::vector<u32> parent(size_), left(size_), right(size_);
+for (Z width = size_, first = 1; first < count_; width /= 2, first *= 2) {
+TransformPlan forward(width), inverse(width); inverse.prepare_inverse();
+const Montgomery& mont = forward.montgomery();
+for (Z index = 0; index < first; ++index) {
+const Z node = first + index;
+std::memcpy(parent.data(), current.data() + index * width, sizeof(u32) * width);
+forward.forward(parent.data());
+for (Z i = 0; i < width; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(parent.data() + i));
+_mm256_storeu_si256((V*)(left.data() + i), montgomery_multiply(value,
+_mm256_loadu_si256((const V*)(spectra_[node * 2 + 1].data() + i)), mont));
+_mm256_storeu_si256((V*)(right.data() + i), montgomery_multiply(value,
+_mm256_loadu_si256((const V*)(spectra_[node * 2].data() + i)), mont));
+}
+inverse.inverse(left.data()); inverse.inverse(right.data());
+std::memcpy(next.data() + index * width, left.data() + width / 2, sizeof(u32) * (width / 2));
+std::memcpy(next.data() + index * width + width / 2, right.data() + width / 2, sizeof(u32) * (width / 2));
+}
+current.swap(next);
+}
+std::memcpy(output, current.data(), sizeof(u32) * size_);
+}
+};
+
 class FixedConvolution {
 Z size_;
 u32 modulus_, root_;
@@ -1077,6 +1333,27 @@ cplib_avx2_ntt::convolution_ntt_friendly(
 output, left, left_size, right, right_size, transform_size,
 modulus, primitive_root, montgomery_representation);
 }
+
+extern "C" void cplib_multipoint_cyclic(std::uint32_t* output, std::uint32_t* f, std::size_t length, std::uint32_t* points, std::size_t point_count, std::size_t size, std::uint32_t mod) {
+cplib_avx2_ntt::modulus = mod;
+cplib_avx2_ntt::primitive_root = cplib_avx2_ntt::find_primitive_root(mod);
+cplib_avx2_ntt::MultipointCyclicEvaluator context(points, point_count, size);
+context.run(output, f, length);
+}
+
+extern "C" void* cplib_multipoint_tree_create(std::uint32_t* leaves, std::size_t size, std::size_t block, std::uint32_t modulus) {
+return new cplib_avx2_ntt::MultipointProductTree(leaves, size, block, modulus);
+}
+extern "C" void cplib_multipoint_tree_root(void* context, std::uint32_t* output) {
+static_cast<cplib_avx2_ntt::MultipointProductTree*>(context)->root(output);
+}
+extern "C" void cplib_multipoint_tree_descend(void* context, std::uint32_t* output, std::uint32_t* input) {
+static_cast<cplib_avx2_ntt::MultipointProductTree*>(context)->descend(output, input);
+}
+extern "C" void cplib_multipoint_tree_destroy(void* context) {
+delete static_cast<cplib_avx2_ntt::MultipointProductTree*>(context);
+}
+
 extern "C" void* cplib_fixed_convolution_create(
 std::uint32_t* data, std::size_t length, std::size_t size,
 std::uint32_t modulus, std::uint32_t root) {
@@ -1136,6 +1413,20 @@ output, factors, sizes, factor_count);
         if nttPrimalityCache.modulus != modulus:
             nttPrimalityCache = (modulus, isprime(modulus.int))
         return nttPrimalityCache.isPrime
+
+    proc multipointCyclicNtt*(output, f: ptr uint32, length: csize_t,
+        points: ptr uint32, pointCount, size: csize_t, modulus: uint32
+    ) {.importc: "cplib_multipoint_cyclic".}
+
+    proc multipointTreeCreate*(leaves: ptr uint32, size, blockSize: csize_t,
+        modulus: uint32): pointer {.importc: "cplib_multipoint_tree_create".}
+    proc multipointTreeRoot*(context: pointer, output: ptr uint32) {.importc: "cplib_multipoint_tree_root".}
+    proc multipointTreeDescend*(context: pointer, output, input: ptr uint32) {.importc: "cplib_multipoint_tree_descend".}
+    proc multipointTreeDestroy*(context: pointer) {.importc: "cplib_multipoint_tree_destroy".}
+
+    proc canUseMultipointTreeNtt*(modulus: uint32, size: int): bool =
+        ## 積木の全段でNTTを使える場合に限り高速経路を選ぶ。
+        size >= 64 and isNttFriendlyModulus(modulus, size.uint32)
 
     proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =
         if f.len == 0 or g.len == 0: return @[]
