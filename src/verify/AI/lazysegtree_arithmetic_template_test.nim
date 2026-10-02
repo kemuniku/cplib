@@ -41,8 +41,8 @@ proc checkType[T]() =
         for i in 0..<n:
             values[i] = int64(rng.rand(-20..20))
             initial[i] = coefficient[T](values[i])
-        var seg = initRangeArithmeticAddRangeSum(initial)
         let saved = initial
+        var seg = initRangeArithmeticAddRangeSum(initial)
         checkAll(seg, values)
         for step in 0..<120:
             let l = rng.rand(n)
