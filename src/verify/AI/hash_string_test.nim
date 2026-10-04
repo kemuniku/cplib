@@ -49,3 +49,8 @@ assert hs == "ana".tohash
 let arrayRh = initRollingHash(['b', 'a', 'n', 'a', 'n', 'a'])
 assert arrayRh[1..3] == rh[1..3]
 assert initRollingHash(newSeq[char]()).len == 0
+
+when not defined(cplibHashStringDebug):
+    static:
+        doAssert sizeof(HashString) == 3 * sizeof(int)
+        doAssert not compiles(get_emptystring_hash().debugString())
