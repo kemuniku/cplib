@@ -42,6 +42,7 @@ for n in 0..3:
                     if sub == 0: break
                     sub = (sub - 1) and mask
             doAssert subsetConvolution(a, b) == expected
+            check[modint998244353_barrett](a, b)
 
 var rng = initRand(937)
 modint_barrett.setMod(998244353)
@@ -91,6 +92,26 @@ for repeat in 0..<30:
         for j in 0..<a.len:
             if (i and j) == 0: expected[i or j] += a[i] * b[j]
     doAssert subsetConvolution(a, b) == expected
+
+proc checkStatic[T]() =
+    check[T](@[], @[])
+    for n in 0..8:
+        var a, b = newSeq[int](1 shl n)
+        for i in 0..<a.len:
+            a[i] = rng.rand(T.umod.int - 1)
+            b[i] = rng.rand(T.umod.int - 1)
+        check[T](a, b)
+        for i in 0..<a.len:
+            a[i] = T.umod.int - 1
+            b[i] = T.umod.int - 1
+        check[T](a, b)
+checkStatic[StaticBarrettModint[1u32]]()
+checkStatic[StaticBarrettModint[2u32]]()
+checkStatic[StaticBarrettModint[9u32]]()
+checkStatic[modint1000000007_barrett]()
+checkStatic[StaticBarrettModint[1073741824u32]]()
+checkStatic[StaticBarrettModint[1073741825u32]]()
+
 var overflowed = false
 try: discard subsetConvolution(@[high(int)], @[2])
 except OverflowDefect: overflowed = true
