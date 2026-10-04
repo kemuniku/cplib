@@ -72,11 +72,11 @@ data:
     n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/tree/static_top_tree.nim
   isVerificationFile: true

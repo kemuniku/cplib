@@ -67,11 +67,11 @@ data:
     echo answers.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree_dp.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree_dp.nim
   - cplib/tree/static_top_tree.nim
   isVerificationFile: true

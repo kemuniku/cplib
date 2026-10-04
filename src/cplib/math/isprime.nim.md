@@ -33,6 +33,12 @@ data:
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/fps/chirp_z.nim
+    title: cplib/fps/chirp_z.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/chirp_z.nim
+    title: cplib/fps/chirp_z.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
   - icon: ':heavy_check_mark:'
@@ -202,6 +208,12 @@ data:
     path: verify/AI/bostan_mori_prefix_test.nim
     title: verify/AI/bostan_mori_prefix_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/chirp_z_test.nim
+    title: verify/AI/chirp_z_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/chirp_z_test.nim
+    title: verify/AI/chirp_z_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
   - icon: ':heavy_check_mark:'
@@ -424,6 +436,12 @@ data:
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+    title: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+    title: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
   - icon: ':heavy_check_mark:'
@@ -573,6 +591,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/sum_of_multiplicative_function_test.nim
     title: verify/math/sum_of_multiplicative_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -644,6 +668,8 @@ data:
   - cplib/fps/shift_of_sampling_points.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
+  - cplib/fps/chirp_z.nim
+  - cplib/fps/chirp_z.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
@@ -731,6 +757,8 @@ data:
   - verify/fps/relaxed_pow_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/multipoint_evaluation_test.nim
@@ -749,6 +777,8 @@ data:
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
+  - verify/AI/chirp_z_test.nim
+  - verify/AI/chirp_z_test.nim
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_composite_modulus_test.nim
@@ -823,6 +853,8 @@ data:
   - verify/math/factorize_yosupo_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
+  - verify/str/wildcard_matching_test.nim
+  - verify/str/wildcard_matching_test.nim
 documentation_of: cplib/math/isprime.nim
 layout: document
 redirect_from:

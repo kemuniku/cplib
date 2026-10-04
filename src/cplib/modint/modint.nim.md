@@ -69,6 +69,12 @@ data:
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/fps/chirp_z.nim
+    title: cplib/fps/chirp_z.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/chirp_z.nim
+    title: cplib/fps/chirp_z.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
   - icon: ':heavy_check_mark:'
@@ -334,6 +340,12 @@ data:
     path: verify/AI/bostan_mori_prefix_test.nim
     title: verify/AI/bostan_mori_prefix_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/chirp_z_test.nim
+    title: verify/AI/chirp_z_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/chirp_z_test.nim
+    title: verify/AI/chirp_z_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/combination_test.nim
     title: verify/AI/combination_test.nim
   - icon: ':heavy_check_mark:'
@@ -628,6 +640,12 @@ data:
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+    title: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+    title: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
   - icon: ':heavy_check_mark:'
@@ -843,6 +861,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/modint/montgomery_equality_test.nim
     title: verify/modint/montgomery_equality_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/backwards_index_simd_test.nim
     title: verify/utils/backwards_index_simd_test.nim
@@ -905,12 +929,12 @@ data:
     \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
     \ $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -962,6 +986,8 @@ data:
   - cplib/fps/shift_of_sampling_points.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
+  - cplib/fps/chirp_z.nim
+  - cplib/fps/chirp_z.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
@@ -1053,6 +1079,8 @@ data:
   - verify/fps/relaxed_pow_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/multipoint_evaluation_test.nim
@@ -1101,6 +1129,8 @@ data:
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/AI/chirp_z_test.nim
+  - verify/AI/chirp_z_test.nim
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_elementary_test.nim
   - verify/AI/gcd_lcm_convolution_test.nim
@@ -1195,6 +1225,8 @@ data:
   - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/static_matrix_avx2_unit_test.nim
   - verify/matrix/static_matrix_avx2_unit_test.nim
+  - verify/str/wildcard_matching_test.nim
+  - verify/str/wildcard_matching_test.nim
 documentation_of: cplib/modint/modint.nim
 layout: document
 redirect_from:

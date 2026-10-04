@@ -111,9 +111,9 @@ data:
     \    for i in countdown(n - 1, 0): pq.erase(i)\n    doAssert pq.len == 0\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
   isVerificationFile: true
   path: verify/collections/dynamic_retroactive_priority_queue_test.nim

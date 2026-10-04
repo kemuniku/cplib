@@ -107,10 +107,10 @@ data:
   dependsOn:
   - cplib/utils/bititers.nim
   - cplib/utils/bititers.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/steiner_tree.nim
   requiredBy:

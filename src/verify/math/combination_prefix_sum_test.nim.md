@@ -60,13 +60,13 @@ data:
     \ = modint\nDynamicModInt.setMod(1_000_000_007)\ncheck[DynamicModInt]()\n"
   dependsOn:
   - cplib/math/combination.nim
+  - cplib/utils/mo.nim
+  - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/graph/graph.nim
   - cplib/math/combination_prefix_sum.nim
   - cplib/math/combination.nim
-  - cplib/utils/mo.nim
-  - cplib/math/combination_prefix_sum.nim
-  - cplib/utils/mo.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/math/combination_prefix_sum_test.nim
   requiredBy: []

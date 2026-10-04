@@ -268,22 +268,22 @@ data:
     \        let p = prefix(initial * q, coefficients.len)\n        bostanMori(p,\
     \ q, k)\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/fps/bostan_mori.nim
   requiredBy:
@@ -293,7 +293,7 @@ data:
   - cplib/fps/bmbm.nim
   - cplib/fps/sparse_formal_power_series.nim
   - cplib/fps/sparse_formal_power_series.nim
-  timestamp: '2026-10-02 22:16:44+09:00'
+  timestamp: '2026-10-02 14:56:06+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim

@@ -328,6 +328,9 @@ data:
       path: cplib/fps/bostan_mori.nim
       title: cplib/fps/bostan_mori.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/fps/chirp_z.nim
+      title: cplib/fps/chirp_z.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/fps/composition.nim
       title: cplib/fps/composition.nim
     - icon: ':heavy_check_mark:'
@@ -481,6 +484,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/merge_tree.nim
       title: cplib/graph/merge_tree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/min_cost_b_flow.nim
+      title: cplib/graph/min_cost_b_flow.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/mincostflow.nim
       title: cplib/graph/mincostflow.nim
@@ -1542,6 +1548,9 @@ data:
       path: verify/AI/centroid_decomposition_test.nim
       title: verify/AI/centroid_decomposition_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/chirp_z_test.nim
+      title: verify/AI/chirp_z_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/citrus_test.nim
       title: verify/AI/citrus_test.nim
     - icon: ':heavy_check_mark:'
@@ -1895,6 +1904,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/mex_naive_test.nim
       title: verify/AI/mex_naive_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/min_cost_b_flow_test.nim
+      title: verify/AI/min_cost_b_flow_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/min_plus_convolution_test.nim
       title: verify/AI/min_plus_convolution_test.nim
@@ -2580,6 +2592,9 @@ data:
       path: verify/fps/log_of_formal_power_series_test.nim
       title: verify/fps/log_of_formal_power_series_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+      title: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/fps/multipoint_evaluation_test.nim
       title: verify/fps/multipoint_evaluation_test.nim
     - icon: ':heavy_check_mark:'
@@ -2750,6 +2765,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/maxflow_test.nim
       title: verify/graph/maxflow_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/min_cost_b_flow_test.nim
+      title: verify/graph/min_cost_b_flow_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/mincostflow_test.nim
       title: verify/graph/mincostflow_test.nim
@@ -3172,6 +3190,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/suffix_array_test.nim
       title: verify/str/suffix_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/wildcard_matching_test.nim
+      title: verify/str/wildcard_matching_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/zalgorithm_test.nim
       title: verify/str/zalgorithm_test.nim

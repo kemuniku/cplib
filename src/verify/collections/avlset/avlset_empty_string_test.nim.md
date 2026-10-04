@@ -91,10 +91,10 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avlset.nim
   isVerificationFile: true
   path: verify/collections/avlset/avlset_empty_string_test.nim
   requiredBy: []

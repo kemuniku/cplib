@@ -63,6 +63,12 @@ data:
     path: cplib/fps/bostan_mori.nim
     title: cplib/fps/bostan_mori.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/fps/chirp_z.nim
+    title: cplib/fps/chirp_z.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/chirp_z.nim
+    title: cplib/fps/chirp_z.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/composition.nim
     title: cplib/fps/composition.nim
   - icon: ':heavy_check_mark:'
@@ -172,6 +178,12 @@ data:
     path: verify/AI/bostan_mori_prefix_test.nim
     title: verify/AI/bostan_mori_prefix_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/chirp_z_test.nim
+    title: verify/AI/chirp_z_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/chirp_z_test.nim
+    title: verify/AI/chirp_z_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
   - icon: ':heavy_check_mark:'
@@ -340,6 +352,12 @@ data:
     path: verify/fps/log_of_formal_power_series_test.nim
     title: verify/fps/log_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+    title: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+    title: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/multipoint_evaluation_test.nim
     title: verify/fps/multipoint_evaluation_test.nim
   - icon: ':heavy_check_mark:'
@@ -453,6 +471,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/many_factorials_test.nim
     title: verify/math/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -997,8 +1021,34 @@ data:
     std::memcpy(next.data() + index * width, left.data() + width / 2, sizeof(u32)\
     \ * (width / 2));\nstd::memcpy(next.data() + index * width + width / 2, right.data()\
     \ + width / 2, sizeof(u32) * (width / 2));\n}\ncurrent.swap(next);\n}\nstd::memcpy(output,\
-    \ current.data(), sizeof(u32) * size_);\n}\n};\n\nclass FixedConvolution {\nZ\
-    \ size_;\nu32 modulus_, root_;\nu32* fixed_;\nTransformPlan *forward_, *inverse_;\n\
+    \ current.data(), sizeof(u32) * size_);\n}\n};\n\ninline void wildcard_matching_ntt(\n\
+    unsigned char* output, const unsigned char* s, Z n,\nconst unsigned char* t, Z\
+    \ m, unsigned char wild,\nu32 origin, u32 prime) {\n// \u4E2D\u592E\u4FC2\u6570\
+    \u3060\u3051\u3092\u4F7F\u3046\u5DE1\u56DE\u7573\u307F\u8FBC\u307F\u3067\u3001\
+    \u975E\u8CA0\u306E\u4E0D\u4E00\u81F4\u30B9\u30B3\u30A2\u3092\u6C42\u3081\u308B\
+    \u3002\nmodulus = prime;\nprimitive_root = 3U;\nZ size = 1;\nwhile (size < n)\
+    \ size <<= 1;\nu32* a = static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));\n\
+    u32* b = static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));\nu32* score =\
+    \ static_cast<u32*>(_mm_malloc(sizeof(u32) * size, 32));\nstd::memset(score, 0,\
+    \ sizeof(u32) * size);\nTransformPlan plan(size);\nconst Montgomery& montgomery\
+    \ = plan.montgomery();\nconst u32 scale = (u32)(u64(montgomery.radix_squared)\
+    \ *\n    power_mod((u32)size, prime - 2) % prime);\nfor (unsigned k = 0; k < 3;\
+    \ ++k) {\nfor (Z i = 0; i < n; ++i) {\nconst u32 x = s[i] == wild ? 0 : (u32)s[i]\
+    \ - origin;\na[i] = s[i] == wild ? 0 : k == 0 ? 1 : k == 1 ? x : x * x;\n}\nfor\
+    \ (Z i = 0; i < m; ++i) {\nconst u32 x = t[i] == wild ? 0 : (u32)t[i] - origin;\n\
+    const u32 value = t[i] == wild ? 0 : k == 2 ? 1 : k == 1 ? x : x * x;\nb[m - 1\
+    \ - i] = montgomery.multiply(value, scale);\n}\nconst bool left_half_zero = n\
+    \ <= (size >> 1);\nconst bool right_half_zero = m <= (size >> 1);\nstd::memset(a\
+    \ + n, 0, sizeof(u32) * ((left_half_zero ? size >> 1 : size) - n));\nstd::memset(b\
+    \ + m, 0, sizeof(u32) * ((right_half_zero ? size >> 1 : size) - m));\nif (left_half_zero)\
+    \ plan.forward_half_zero(a); else plan.forward(a);\nif (right_half_zero) plan.forward_half_zero(b,\
+    \ a); else plan.forward(b, a);\nfor (Z i = 0; i < size; i += 8) {\nconst V value\
+    \ = _mm256_loadu_si256((const V*)(a + i));\nconst V current = _mm256_loadu_si256((const\
+    \ V*)(score + i));\n_mm256_storeu_si256((V*)(score + i), k == 1\n    ? subtract_mod(current,\
+    \ add_mod(value, value)) : add_mod(current, value));\n}\n}\nplan.prepare_inverse();\n\
+    plan.inverse(score);\nfor (Z i = 0; i <= n - m; ++i) output[i] &= score[i + m\
+    \ - 1] == 0;\n_mm_free(score);\n_mm_free(b);\n_mm_free(a);\n}\n\nclass FixedConvolution\
+    \ {\nZ size_;\nu32 modulus_, root_;\nu32* fixed_;\nTransformPlan *forward_, *inverse_;\n\
     public:\nFixedConvolution(const u32* data, Z length, Z size, u32 mod, u32 root)\n\
     : size_(size), modulus_(mod), root_(root) {\n// \u56FA\u5B9A\u5074\u306E\u5909\
     \u63DB\u3068\u6B63\u9006\u5909\u63DB\u306E\u8A08\u753B\u3092\u4E00\u5EA6\u3060\
@@ -1157,14 +1207,18 @@ data:
     \ output, std::uint32_t* input) {\nstatic_cast<cplib_avx2_ntt::MultipointProductTree*>(context)->descend(output,\
     \ input);\n}\nextern \"C\" void cplib_multipoint_tree_destroy(void* context) {\n\
     delete static_cast<cplib_avx2_ntt::MultipointProductTree*>(context);\n}\n\nextern\
-    \ \"C\" void* cplib_fixed_convolution_create(\nstd::uint32_t* data, std::size_t\
-    \ length, std::size_t size,\nstd::uint32_t modulus, std::uint32_t root) {\n//\
-    \ \u56FA\u5B9A\u5074\u306E\u7573\u307F\u8FBC\u307F\u30B3\u30F3\u30C6\u30AD\u30B9\
-    \u30C8\u3092\u4F5C\u6210\u3059\u308B\u3002\nreturn new cplib_avx2_ntt::FixedConvolution(data,\
-    \ length, size, modulus, root);\n}\nextern \"C\" void cplib_fixed_convolution_run(\n\
-    void* context, std::uint32_t* output, std::uint32_t* data, std::size_t length)\
-    \ {\n// \u4F5C\u6210\u6E08\u307F\u306E\u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3067\
-    \u7573\u307F\u8FBC\u307F\u3092\u5B9F\u884C\u3059\u308B\u3002\nstatic_cast<cplib_avx2_ntt::FixedConvolution*>(context)->run(output,\
+    \ \"C\" void cplib_wildcard_matching_ntt(\nunsigned char* output, unsigned char*\
+    \ s, std::size_t n,\nunsigned char* t, std::size_t m, unsigned char wild,\nstd::uint32_t\
+    \ origin, std::uint32_t prime) {\ncplib_avx2_ntt::wildcard_matching_ntt(output,\
+    \ s, n, t, m, wild, origin, prime);\n}\n\nextern \"C\" void* cplib_fixed_convolution_create(\n\
+    std::uint32_t* data, std::size_t length, std::size_t size,\nstd::uint32_t modulus,\
+    \ std::uint32_t root) {\n// \u56FA\u5B9A\u5074\u306E\u7573\u307F\u8FBC\u307F\u30B3\
+    \u30F3\u30C6\u30AD\u30B9\u30C8\u3092\u4F5C\u6210\u3059\u308B\u3002\nreturn new\
+    \ cplib_avx2_ntt::FixedConvolution(data, length, size, modulus, root);\n}\nextern\
+    \ \"C\" void cplib_fixed_convolution_run(\nvoid* context, std::uint32_t* output,\
+    \ std::uint32_t* data, std::size_t length) {\n// \u4F5C\u6210\u6E08\u307F\u306E\
+    \u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3067\u7573\u307F\u8FBC\u307F\u3092\u5B9F\
+    \u884C\u3059\u308B\u3002\nstatic_cast<cplib_avx2_ntt::FixedConvolution*>(context)->run(output,\
     \ data, length);\n}\nextern \"C\" void cplib_fixed_convolution_destroy(void* context)\
     \ {\n// \u7573\u307F\u8FBC\u307F\u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3092\u89E3\
     \u653E\u3059\u308B\u3002\ndelete static_cast<cplib_avx2_ntt::FixedConvolution*>(context);\n\
@@ -1175,54 +1229,62 @@ data:
     \ inputMontgomery: bool): uint32\n            {.importc: \"cplib_bostan_mori_998\"\
     .}\n        ## \u6CD5998244353\u306EBostan--Mori\u5185\u90E8\u30AB\u30FC\u30CD\
     \u30EB\uFF08\u5165\u529B\u306F\u5909\u66F4\u3057\u306A\u3044\uFF09\u3002\n\n \
-    \   proc convolutionNttFriendlyAvx2(\n        output: ptr uint32,\n        f:\
-    \ ptr uint32,\n        fLen: csize_t,\n        g: ptr uint32,\n        gLen: csize_t,\n\
-    \        nttLen: csize_t,\n        modulus: uint32,\n        primitiveRoot: uint32,\n\
-    \        montgomeryRepresentation: bool\n    ) {.importc: \"cplib_convolution_ntt_friendly\"\
-    .}\n\n    proc convolutionNttFriendlyU32(\n        f, g: seq[uint32], modulus,\
-    \ primitiveRoot: uint32\n    ): seq[uint32]\n\n    proc convolutionArbitraryMod[T:\
-    \ BarrettModint or MontgomeryModint](\n        f, g: seq[T]\n    ): seq[T]\n\n\
-    \    var nttPrimalityCache: tuple[modulus: uint32, isPrime: bool]\n\n    proc\
-    \ isNttFriendlyModulus(modulus, transformSize: uint32): bool =\n        ## \u6307\
-    \u5B9A\u3057\u305F\u9577\u3055\u306ENTT\u304C\u6CD5\u306E\u4E0B\u3067\u6210\u7ACB\
-    \u3059\u308B\u304B\u5224\u5B9A\u3059\u308B\u3002\n        if modulus <= 1u32 or\
-    \ modulus >= (1u32 shl 30): return false\n        if (modulus - 1u32) mod transformSize\
-    \ != 0u32: return false\n        if nttPrimalityCache.modulus != modulus:\n  \
-    \          nttPrimalityCache = (modulus, isprime(modulus.int))\n        return\
-    \ nttPrimalityCache.isPrime\n\n    proc multipointCyclicNtt*(output, f: ptr uint32,\
-    \ length: csize_t,\n        points: ptr uint32, pointCount, size: csize_t, modulus:\
-    \ uint32\n    ) {.importc: \"cplib_multipoint_cyclic\".}\n        ## \u901A\u5E38\
-    \u5270\u4F59\u306Ef\u3092points\u3067\u8A55\u4FA1\u3057output\u306B\u66F8\u304F\
-    \u3002\u914D\u5217\u9577\u306F\u9806\u306BpointCount\u3001length\u3001pointCount\u3067\
-    \u3001length\u3068pointCount\u306FcanUseMultipointTreeNtt(modulus, size)\u3092\
-    \u6E80\u305F\u30592\u51AAsize\u4EE5\u4E0B\u3068\u3059\u308B\u3002\n\n    proc\
-    \ multipointTreeCreate*(leaves: ptr uint32, size, blockSize: csize_t,\n      \
-    \  modulus: uint32): pointer {.importc: \"cplib_multipoint_tree_create\".}\n \
-    \       ## \u901A\u5E38\u5270\u4F59\u306E\u5404blockSize+1\u4FC2\u6570\u306E\u53CD\
-    \u8EE2\u8449\u7A4Dsize div blockSize\u500B\u304B\u3089\u7A4D\u6728\u3092\u4F5C\
-    \u308B\u3002size\u306FcanUseMultipointTreeNtt(modulus, size)\u3092\u6E80\u305F\
-    \u30592\u51AA\u3001blockSize\u306Fsize\u3092\u5272\u308B16\u4EE5\u4E0A\u306E2\u51AA\
-    \u3068\u3059\u308B\u3002\n    proc multipointTreeRoot*(context: pointer, output:\
-    \ ptr uint32) {.importc: \"cplib_multipoint_tree_root\".}\n        ## \u4F5C\u6210\
-    \u6E08\u307Fcontext\u306E\u6839\u306E\u53CD\u8EE2\u7A4D\u3092\u901A\u5E38\u5270\
-    \u4F59\u3067output\u306B\u66F8\u304F\u3002\u51FA\u529B\u9818\u57DF\u306F\u4F5C\
-    \u6210\u6642\u306Esize+1\u4FC2\u6570\u3092\u78BA\u4FDD\u3059\u308B\u3002\n   \
-    \ proc multipointTreeDescend*(context: pointer, output, input: ptr uint32) {.importc:\
-    \ \"cplib_multipoint_tree_descend\".}\n        ## \u4F5C\u6210\u6E08\u307Fcontext\u3067\
-    \u4E2D\u9593\u7A4D\u3092\u8449\u307E\u3067\u964D\u4E0B\u3055\u305B\u308B\u3002\
-    input\u3068output\u306F\u4F5C\u6210\u6642\u306Esize\u4FC2\u6570\u306E\u901A\u5E38\
-    \u5270\u4F59\u3068\u3059\u308B\u3002\n    proc multipointTreeDestroy*(context:\
-    \ pointer) {.importc: \"cplib_multipoint_tree_destroy\".}\n        ## multipointTreeCreate\u3067\
-    \u4F5C\u3063\u305Fcontext\u3092\u89E3\u653E\u3059\u308B\u3002\u89E3\u653E\u5F8C\
-    \u306Econtext\u306F\u518D\u5229\u7528\u3057\u306A\u3044\u3002\n\n    proc canUseMultipointTreeNtt*(modulus:\
-    \ uint32, size: int): bool =\n        ## \u7A4D\u6728\u306E\u5168\u6BB5\u3067\
-    NTT\u3092\u4F7F\u3048\u308B\u5834\u5408\u306B\u9650\u308A\u9AD8\u901F\u7D4C\u8DEF\
-    \u3092\u9078\u3076\u3002\n        size >= 64 and isNttFriendlyModulus(modulus,\
-    \ size.uint32)\n\n    proc convolution_naive*[T: BarrettModint or MontgomeryModint\
-    \ or int](f, g: seq[T]): seq[T] =\n        if f.len == 0 or g.len == 0: return\
-    \ @[]\n        var ans = newSeq[T](f.len + g.len - 1)\n        if f.len > g.len:\n\
-    \            for i in 0..<f.len:\n                for j in 0..<g.len:\n      \
-    \              ans[i+j] += f[i] * g[j]\n        else:\n            for j in 0..<g.len:\n\
+    \   proc wildcardMatchingNttKernel*(output, s: ptr uint8, n: csize_t,\n      \
+    \  t: ptr uint8, m: csize_t, wild: uint8, origin, prime: uint32\n    ) {.importc:\
+    \ \"cplib_wildcard_matching_ntt\".}\n        ## wildcard_match\u5C02\u7528\u3002\
+    61 <= m <= n\u3001n <= 2^24\u3001prime\u306F469762049\u307E\u305F\u306F167772161\u3001\
+    origin\u306F\u975Ewild\u30D0\u30A4\u30C8\u306E\u4E0B\u9650\u3068\u3059\u308B\u3002\
+    output\u306En-m+1\u30D0\u30A4\u30C8\u306F0\u304B1\u3067\u521D\u671F\u5316\u3057\
+    \u3001\u30B9\u30B3\u30A2\u304C\u975E\u96F6\u306E\u4F4D\u7F6E\u30920\u306B\u3059\
+    \u308B\u3002\n\n    proc convolutionNttFriendlyAvx2(\n        output: ptr uint32,\n\
+    \        f: ptr uint32,\n        fLen: csize_t,\n        g: ptr uint32,\n    \
+    \    gLen: csize_t,\n        nttLen: csize_t,\n        modulus: uint32,\n    \
+    \    primitiveRoot: uint32,\n        montgomeryRepresentation: bool\n    ) {.importc:\
+    \ \"cplib_convolution_ntt_friendly\".}\n\n    proc convolutionNttFriendlyU32(\n\
+    \        f, g: seq[uint32], modulus, primitiveRoot: uint32\n    ): seq[uint32]\n\
+    \n    proc convolutionArbitraryMod[T: BarrettModint or MontgomeryModint](\n  \
+    \      f, g: seq[T]\n    ): seq[T]\n\n    var nttPrimalityCache: tuple[modulus:\
+    \ uint32, isPrime: bool]\n\n    proc isNttFriendlyModulus(modulus, transformSize:\
+    \ uint32): bool =\n        ## \u6307\u5B9A\u3057\u305F\u9577\u3055\u306ENTT\u304C\
+    \u6CD5\u306E\u4E0B\u3067\u6210\u7ACB\u3059\u308B\u304B\u5224\u5B9A\u3059\u308B\
+    \u3002\n        if modulus <= 1u32 or modulus >= (1u32 shl 30): return false\n\
+    \        if (modulus - 1u32) mod transformSize != 0u32: return false\n       \
+    \ if nttPrimalityCache.modulus != modulus:\n            nttPrimalityCache = (modulus,\
+    \ isprime(modulus.int))\n        return nttPrimalityCache.isPrime\n\n    proc\
+    \ multipointCyclicNtt*(output, f: ptr uint32, length: csize_t,\n        points:\
+    \ ptr uint32, pointCount, size: csize_t, modulus: uint32\n    ) {.importc: \"\
+    cplib_multipoint_cyclic\".}\n        ## \u901A\u5E38\u5270\u4F59\u306Ef\u3092\
+    points\u3067\u8A55\u4FA1\u3057output\u306B\u66F8\u304F\u3002\u914D\u5217\u9577\
+    \u306F\u9806\u306BpointCount\u3001length\u3001pointCount\u3067\u3001length\u3068\
+    pointCount\u306FcanUseMultipointTreeNtt(modulus, size)\u3092\u6E80\u305F\u3059\
+    2\u51AAsize\u4EE5\u4E0B\u3068\u3059\u308B\u3002\n\n    proc multipointTreeCreate*(leaves:\
+    \ ptr uint32, size, blockSize: csize_t,\n        modulus: uint32): pointer {.importc:\
+    \ \"cplib_multipoint_tree_create\".}\n        ## \u901A\u5E38\u5270\u4F59\u306E\
+    \u5404blockSize+1\u4FC2\u6570\u306E\u53CD\u8EE2\u8449\u7A4Dsize div blockSize\u500B\
+    \u304B\u3089\u7A4D\u6728\u3092\u4F5C\u308B\u3002size\u306FcanUseMultipointTreeNtt(modulus,\
+    \ size)\u3092\u6E80\u305F\u30592\u51AA\u3001blockSize\u306Fsize\u3092\u5272\u308B\
+    16\u4EE5\u4E0A\u306E2\u51AA\u3068\u3059\u308B\u3002\n    proc multipointTreeRoot*(context:\
+    \ pointer, output: ptr uint32) {.importc: \"cplib_multipoint_tree_root\".}\n \
+    \       ## \u4F5C\u6210\u6E08\u307Fcontext\u306E\u6839\u306E\u53CD\u8EE2\u7A4D\
+    \u3092\u901A\u5E38\u5270\u4F59\u3067output\u306B\u66F8\u304F\u3002\u51FA\u529B\
+    \u9818\u57DF\u306F\u4F5C\u6210\u6642\u306Esize+1\u4FC2\u6570\u3092\u78BA\u4FDD\
+    \u3059\u308B\u3002\n    proc multipointTreeDescend*(context: pointer, output,\
+    \ input: ptr uint32) {.importc: \"cplib_multipoint_tree_descend\".}\n        ##\
+    \ \u4F5C\u6210\u6E08\u307Fcontext\u3067\u4E2D\u9593\u7A4D\u3092\u8449\u307E\u3067\
+    \u964D\u4E0B\u3055\u305B\u308B\u3002input\u3068output\u306F\u4F5C\u6210\u6642\u306E\
+    size\u4FC2\u6570\u306E\u901A\u5E38\u5270\u4F59\u3068\u3059\u308B\u3002\n    proc\
+    \ multipointTreeDestroy*(context: pointer) {.importc: \"cplib_multipoint_tree_destroy\"\
+    .}\n        ## multipointTreeCreate\u3067\u4F5C\u3063\u305Fcontext\u3092\u89E3\
+    \u653E\u3059\u308B\u3002\u89E3\u653E\u5F8C\u306Econtext\u306F\u518D\u5229\u7528\
+    \u3057\u306A\u3044\u3002\n\n    proc canUseMultipointTreeNtt*(modulus: uint32,\
+    \ size: int): bool =\n        ## \u7A4D\u6728\u306E\u5168\u6BB5\u3067NTT\u3092\
+    \u4F7F\u3048\u308B\u5834\u5408\u306B\u9650\u308A\u9AD8\u901F\u7D4C\u8DEF\u3092\
+    \u9078\u3076\u3002\n        size >= 64 and isNttFriendlyModulus(modulus, size.uint32)\n\
+    \n    proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f,\
+    \ g: seq[T]): seq[T] =\n        if f.len == 0 or g.len == 0: return @[]\n    \
+    \    var ans = newSeq[T](f.len + g.len - 1)\n        if f.len > g.len:\n     \
+    \       for i in 0..<f.len:\n                for j in 0..<g.len:\n           \
+    \         ans[i+j] += f[i] * g[j]\n        else:\n            for j in 0..<g.len:\n\
     \                for i in 0..<f.len:\n                    ans[i+j] += f[i] * g[j]\n\
     \        return ans\n\n    proc convolution*[T: BarrettModint or MontgomeryModint](f,\
     \ g: seq[T]): seq[T] =\n        let m = f.len\n        let n = g.len\n       \
@@ -1344,18 +1406,18 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
@@ -1365,6 +1427,8 @@ data:
   - cplib/fps/shift_of_sampling_points.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
+  - cplib/fps/chirp_z.nim
+  - cplib/fps/chirp_z.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
@@ -1395,7 +1459,7 @@ data:
   - cplib/math/factoradic.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-10-02 22:16:44+09:00'
+  timestamp: '2026-10-02 14:56:06+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
@@ -1438,6 +1502,8 @@ data:
   - verify/fps/relaxed_pow_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
+  - verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/multipoint_evaluation_test.nim
@@ -1456,6 +1522,8 @@ data:
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
+  - verify/AI/chirp_z_test.nim
+  - verify/AI/chirp_z_test.nim
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_elementary_test.nim
   - verify/AI/fps_composite_modulus_test.nim
@@ -1500,6 +1568,8 @@ data:
   - verify/math/addition_of_big_integers_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
+  - verify/str/wildcard_matching_test.nim
+  - verify/str/wildcard_matching_test.nim
 documentation_of: cplib/convolution/convolution.nim
 layout: document
 redirect_from:

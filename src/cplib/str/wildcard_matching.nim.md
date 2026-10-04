@@ -51,6 +51,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/wildcard_matching_test.nim
+    title: verify/str/wildcard_matching_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -76,48 +82,59 @@ data:
     \u5FC5\u8981\u3067\u3059\u3002\n        if T.len > S.len:\n            return\
     \ @[]\n        result = newSeq[bool](S.len - T.len + 1)\n        if T.len == 0:\n\
     \            for i in 0..<result.len:\n                result[i] = true\n    \
-    \        return\n        doAssert S.len <= (1 shl 24) - T.len + 1, \"\u7573\u307F\
-    \u8FBC\u307F\u306B\u5FC5\u8981\u306A\u9577\u3055S.len + T.len - 1\u306F2^24\u4EE5\
-    \u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n\n     \
-    \   var s, t: array[3, seq[int]]\n        for k in 0..<3:\n            s[k] =\
-    \ newSeq[int](S.len)\n            t[k] = newSeq[int](T.len)\n        for i, c\
-    \ in S:\n            if c != wild:\n                let x = ord(c) + 1\n     \
-    \           s[0][i] = x\n                s[1][i] = x * x\n                s[2][i]\
-    \ = x * x * x\n        for i, c in T:\n            if c != wild:\n           \
-    \     let x = ord(c) + 1\n                let j = T.len - 1 - i\n            \
-    \    t[0][j] = x\n                t[1][j] = x * x\n                t[2][j] = x\
-    \ * x * x\n\n        # \u03A3 xy(x-y)^2 \u306F\u3001\u4E00\u81F4\u3059\u308B\u3068\
-    \u304D\u3060\u3051 0 \u306B\u306A\u308A\u307E\u3059\u3002\n        # \u6574\u6570\
-    \u7573\u307F\u8FBC\u307F\u3067\u5270\u4F59\u306E\u885D\u7A81\u3092\u907F\u3051\
-    \u307E\u3059\u3002\u4E0A\u306E\u9577\u3055\u5236\u9650\u3067\u306F\u4E2D\u9593\
-    \u5024\u3082 int64 \u306B\u53CE\u307E\u308A\u307E\u3059\u3002\n        let a =\
-    \ convolution_ll(s[0], t[2])\n        let b = convolution_ll(s[1], t[1])\n   \
-    \     let c = convolution_ll(s[2], t[0])\n        for i in 0..<result.len:\n \
-    \           let j = i + T.len - 1\n            result[i] = a[j] + c[j] - 2 * b[j]\
-    \ == 0\n"
+    \        return\n        {.push assertions: on.}\n        assert S.len <= (1 shl\
+    \ 24) - T.len + 1, \"\u7573\u307F\u8FBC\u307F\u306B\u5FC5\u8981\u306A\u9577\u3055\
+    S.len + T.len - 1\u306F2^24\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059\"\n        {.pop.}\n        for i in 0..<result.len:\n    \
+    \        result[i] = true\n        if T.len <= 60:\n            for i in 0..<result.len:\n\
+    \                for j in 0..<T.len:\n                    if S[i + j] != wild\
+    \ and T[j] != wild and S[i + j] != T[j]:\n                        result[i] =\
+    \ false\n                        break\n            return\n\n        var lo =\
+    \ 255\n        var hi = 0\n        var fixedS, fixedT = 0\n        for c in S:\n\
+    \            if c != wild:\n                lo = min(lo, ord(c))\n           \
+    \     hi = max(hi, ord(c))\n                inc fixedS\n        for c in T:\n\
+    \            if c != wild:\n                lo = min(lo, ord(c))\n           \
+    \     hi = max(hi, ord(c))\n                inc fixedT\n        if fixedS == 0\
+    \ or fixedT == 0 or lo == hi:\n            return\n\n        # \u03A3 maskS maskT\
+    \ (x-y)^2 \u306F\u975E\u8CA0\u3067\u3001\u4E00\u81F4\u3059\u308B\u3068\u304D\u3060\
+    \u30510\u306B\u306A\u308B\u3002\n        # \u5404\u30B9\u30B3\u30A2\u306F fixedT*(hi-lo)^2\
+    \ \u4EE5\u4E0B\u30021\u7D20\u6570\u3067\u8DB3\u308A\u306A\u3051\u308C\u30702\u7D20\
+    \u6570\u3067\u96F6\u5224\u5B9A\u3059\u308B\u3002\n        # \u4E0A\u9650\u306F\
+    2^23*255^2 < 469762049*167772161\u306A\u306E\u3067\u3001\u5270\u4F59\u306E\u885D\
+    \u7A81\u306F\u306A\u3044\u3002\n        # \u5DE1\u56DE\u9577L >= |S|\u3067\u306F\
+    \u6298\u308A\u8FD4\u3059\u9AD8\u6B21\u9805\u306F|T|-2\u4EE5\u4E0B\u306B\u3057\u304B\
+    \u5C4A\u304B\u306A\u3044\u3002\n        let bound = fixedT.uint64 * (hi - lo).uint64\
+    \ * (hi - lo).uint64\n        let output = cast[ptr uint8](addr result[0])\n \
+    \       let s = cast[ptr uint8](unsafeAddr S[0])\n        let t = cast[ptr uint8](unsafeAddr\
+    \ T[0])\n        wildcardMatchingNttKernel(output, s, S.len.csize_t, t, T.len.csize_t,\n\
+    \            ord(wild).uint8, lo.uint32, 469762049u32)\n        if bound >= 469762049u64:\n\
+    \            wildcardMatchingNttKernel(output, s, S.len.csize_t, t, T.len.csize_t,\n\
+    \                ord(wild).uint8, lo.uint32, 167772161u32)\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/str/wildcard_matching.nim
   requiredBy: []
-  timestamp: '2026-10-02 22:16:44+09:00'
+  timestamp: '2026-10-02 14:56:06+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/wildcard_matching_test.nim
   - verify/AI/wildcard_matching_test.nim
+  - verify/str/wildcard_matching_test.nim
+  - verify/str/wildcard_matching_test.nim
 documentation_of: cplib/str/wildcard_matching.nim
 layout: document
 redirect_from:

@@ -37,9 +37,9 @@ data:
     \ tree.longest_suffix_palindrome)\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
+  - cplib/str/double_ended_palindromic_tree.nim
+  - cplib/str/double_ended_palindromic_tree.nim
   - cplib/tmpl/fastio.nim
-  - cplib/str/double_ended_palindromic_tree.nim
-  - cplib/str/double_ended_palindromic_tree.nim
   isVerificationFile: true
   path: verify/str/double_ended_palindromic_tree_test.nim
   requiredBy: []

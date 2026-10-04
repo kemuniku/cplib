@@ -110,26 +110,26 @@ data:
     )\n    doAssert (x xor -1) == -x - 1\n    doAssert (not x) == -x - 1\n\necho \"\
     Hello World\"\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/bigint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/bigint.nim
   - cplib/math/isprime.nim
   - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/bigint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/bigint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/bigint_bitops_unit_test.nim
   requiredBy: []
-  timestamp: '2026-10-02 22:49:05+09:00'
+  timestamp: '2026-10-02 14:56:06+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/bigint_bitops_unit_test.nim

@@ -113,13 +113,13 @@ data:
     echo \"Hello World\"\n"
   dependsOn:
   - cplib/graph/general_matching.nim
-  - cplib/graph/general_weighted_matching.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/graph.nim
-  - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/graph.nim
   - cplib/graph/general_matching.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/general_weighted_matching.nim
   isVerificationFile: true
   path: verify/AI/general_weighted_matching_test.nim
   requiredBy: []

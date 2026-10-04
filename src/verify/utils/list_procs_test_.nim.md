@@ -39,8 +39,8 @@ data:
     \ \")"
   dependsOn:
   - cplib/utils/lis.nim
-  - cplib/utils/list_procs.nim
   - cplib/utils/lis.nim
+  - cplib/utils/list_procs.nim
   - cplib/utils/list_procs.nim
   isVerificationFile: false
   path: verify/utils/list_procs_test_.nim

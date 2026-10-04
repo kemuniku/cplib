@@ -93,15 +93,15 @@ data:
     \n"
   dependsOn:
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
+  - cplib/graph/range_edge_graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/range_edge_graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/range_edge_graph.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/graph_storage_test.nim
   requiredBy: []

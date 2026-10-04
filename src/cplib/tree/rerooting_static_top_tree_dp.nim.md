@@ -137,9 +137,9 @@ data:
     \        if hasLower:\n            result = self.rakeAtRoot(result, lower)\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/static_top_tree.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
   isVerificationFile: false
