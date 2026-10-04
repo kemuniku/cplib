@@ -117,26 +117,26 @@ data:
     \ 3), init(modint_barrett, 2), 5)\ndoAssert checks == 16134\necho \"Hello World\"\
     \n"
   dependsOn:
-  - cplib/fps/product_tree.nim
-  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/chirp_z.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/chirp_z.nim
   - cplib/fps/product_tree.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/fps/chirp_z.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
+  - cplib/fps/product_tree.nim
   - cplib/math/isqrt.nim
-  - cplib/fps/chirp_z.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: true
   path: verify/AI/chirp_z_test.nim
   requiredBy: []

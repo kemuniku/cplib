@@ -88,11 +88,11 @@ data:
   dependsOn:
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/distance.nim

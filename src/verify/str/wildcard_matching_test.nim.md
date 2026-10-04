@@ -69,22 +69,22 @@ data:
     let matches = wildcard_match(s, t, '*')\nvar output = newString(matches.len)\n\
     for i, matches in matches:\n    output[i] = if matches: '1' else: '0'\necho output\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/str/wildcard_matching.nim
-  - cplib/str/wildcard_matching.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/str/wildcard_matching.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/str/wildcard_matching.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: true
   path: verify/str/wildcard_matching_test.nim
   requiredBy: []

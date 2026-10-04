@@ -2571,6 +2571,9 @@ data:
       path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
       title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/fps/compositional_inverse_projection_regression_test.nim
+      title: verify/fps/compositional_inverse_projection_regression_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/fps/convolution_mod_test.nim
       title: verify/fps/convolution_mod_test.nim
     - icon: ':heavy_check_mark:'

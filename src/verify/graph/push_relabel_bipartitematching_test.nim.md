@@ -39,8 +39,8 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/push_relabel.nim
-  - cplib/graph/push_relabel.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/push_relabel.nim
   isVerificationFile: true
   path: verify/graph/push_relabel_bipartitematching_test.nim
   requiredBy: []

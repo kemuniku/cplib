@@ -316,6 +316,12 @@ data:
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/compositional_inverse_projection_regression_test.nim
+    title: verify/fps/compositional_inverse_projection_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/compositional_inverse_projection_regression_test.nim
+    title: verify/fps/compositional_inverse_projection_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
   - icon: ':heavy_check_mark:'
@@ -1406,18 +1412,18 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
@@ -1470,6 +1476,8 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/relaxed_log_of_formal_power_series_test.nim
   - verify/fps/relaxed_log_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_projection_regression_test.nim
+  - verify/fps/compositional_inverse_projection_regression_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/inv_of_formal_power_series_test.nim

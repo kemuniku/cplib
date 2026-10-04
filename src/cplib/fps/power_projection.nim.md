@@ -51,6 +51,12 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/fps/composition.nim
+    title: cplib/fps/composition.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/fps/composition.nim
+    title: cplib/fps/composition.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/fps/fps.nim
     title: cplib/fps/fps.nim
   - icon: ':heavy_check_mark:'
@@ -87,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/compositional_inverse_projection_regression_test.nim
+    title: verify/fps/compositional_inverse_projection_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/compositional_inverse_projection_regression_test.nim
+    title: verify/fps/compositional_inverse_projection_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
@@ -223,11 +235,15 @@ data:
     y\u306B\u3064\u3044\u3066\u306E\u6709\u7406\u5F0F\u3060\u3051\u304C\u6B8B\u308B\
     \u3002\n        # y\u306E\u9AD8\u6B21\u5074\u304B\u3089\u53CD\u8EE2\u3057\u3001\
     \u5B9A\u6570\u9805\u304C1\u306EFPS\u9664\u7B97\u3068\u3057\u3066\u5148\u982Dm+1\u9805\
-    \u3092\u5F97\u308B\u3002\n        var numerator = p[0..<yDegree]\n        var\
-    \ denominator = q[0..<yDegree]\n        denominator.add(init(T, 1))\n        numerator.reverse\n\
-    \        denominator.reverse\n        prefix(numerator * denominator.inv(m + 1),\
-    \ m + 1)\n\n    proc powerProjection*[T: BarrettModint or MontgomeryModint](\n\
-    \            f: seq[T], m: int): seq[T] =\n        f.powerProjection(@[init(T,\
+    \u3092\u5F97\u308B\u3002\n        if f[0].val == 0:\n            # \u5206\u6BCD\
+    \u306Fy^yDegree\u306A\u306E\u3067\u53CD\u8EE2\u5F8C\u306F1\u306B\u306A\u308A\u3001\
+    FPS\u9664\u7B97\u306F\u4E0D\u8981\u3002\n            result = newSeq[T](m + 1)\n\
+    \            for i in 0..<min(m + 1, yDegree):\n                result[i] = p[yDegree\
+    \ - 1 - i]\n            return\n        var numerator = p[0..<yDegree]\n     \
+    \   var denominator = q[0..<yDegree]\n        denominator.add(init(T, 1))\n  \
+    \      numerator.reverse\n        denominator.reverse\n        prefix(numerator\
+    \ * denominator.inv(m + 1), m + 1)\n\n    proc powerProjection*[T: BarrettModint\
+    \ or MontgomeryModint](\n            f: seq[T], m: int): seq[T] =\n        f.powerProjection(@[init(T,\
     \ 1)], m)\n\n    proc powerProjection*[T: BarrettModint or MontgomeryModint](\n\
     \            f, g: seq[T]): seq[T] =\n        f.powerProjection(g, f.len - 1)\n\
     \n    proc powerProjection*[T: BarrettModint or MontgomeryModint](f: seq[T]):\
@@ -266,34 +282,38 @@ data:
     \ - 1 \u3092\u5217\u6319\u3059\u308B\u3002\n        f.powerProjectionDiagonal(@[init(T,\
     \ 1)], f.len - 1)\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/convolution/convolution.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/fps/power_projection.nim
   requiredBy:
+  - cplib/fps/composition.nim
+  - cplib/fps/composition.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-05 00:47:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
+  - verify/fps/compositional_inverse_projection_regression_test.nim
+  - verify/fps/compositional_inverse_projection_regression_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/inv_of_formal_power_series_test.nim

@@ -47,14 +47,14 @@ data:
     \ v) in edges:\n    total += abs(points[u][0] - points[v][0]) + abs(points[u][1]\
     \ - points[v][1])\necho total\nfor (u, v) in edges:\n    echo u, \" \", v\n"
   dependsOn:
+  - cplib/geometry/manhattan_mst.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/geometry/base.nim
   - cplib/tmpl/fastio.nim
   - cplib/collections/unionfind.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/geometry/manhattan_mst.nim
-  - cplib/geometry/base.nim
   - cplib/collections/unionfind.nim
-  - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/manhattan_mst.nim
   isVerificationFile: true
   path: verify/geometry/manhattan_mst_test.nim
   requiredBy: []

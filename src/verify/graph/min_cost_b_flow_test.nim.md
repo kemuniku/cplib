@@ -38,10 +38,10 @@ data:
     \    for p in g.get_potential():\n        echo p\n    for e in g.get_edges():\n\
     \        echo e.flow\n"
   dependsOn:
-  - cplib/graph/min_cost_b_flow.nim
-  - cplib/math/int128.nim
   - cplib/math/int128.nim
   - cplib/graph/min_cost_b_flow.nim
+  - cplib/graph/min_cost_b_flow.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/graph/min_cost_b_flow_test.nim
   requiredBy: []

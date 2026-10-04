@@ -75,9 +75,9 @@ data:
     \ n)\n    doAssert parallelBinarySearch(m, n * n, reset, apply, check) == expected\n\
     \necho \"Hello World\"\n"
   dependsOn:
+  - cplib/utils/parallel_binary_search.nim
+  - cplib/utils/parallel_binary_search.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/parallel_binary_search.nim
-  - cplib/utils/parallel_binary_search.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/AI/parallel_binary_search_test.nim

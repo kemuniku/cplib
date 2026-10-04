@@ -47,10 +47,10 @@ data:
     \    (a: 1, b: 0)\n)\nempty.apply(0, 0, (a: 2, b: 3))\nassert empty.len == 0\n\
     assert empty.toSeq == newSeq[int]()\n"
   dependsOn:
-  - cplib/collections/dualsegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dualsegtree_static_op.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/dualsegtree_static_op.nim
   isVerificationFile: true
   path: verify/AI/dualsegtree_static_op_test.nim
   requiredBy: []

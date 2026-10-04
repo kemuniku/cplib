@@ -85,11 +85,11 @@ data:
     \ not uf.issame(u, v)\n        uf.unite(u, v)\n    doAssert uf.count == 1\n\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
   - cplib/geometry/manhattan_mst.nim
+  - cplib/geometry/manhattan_mst.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
-  - cplib/collections/unionfind.nim
-  - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/manhattan_mst_random_test.nim

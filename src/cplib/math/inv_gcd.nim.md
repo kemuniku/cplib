@@ -316,6 +316,12 @@ data:
     path: verify/fps/compositional_inverse_of_formal_power_series_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/compositional_inverse_projection_regression_test.nim
+    title: verify/fps/compositional_inverse_projection_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/compositional_inverse_projection_regression_test.nim
+    title: verify/fps/compositional_inverse_projection_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/convolution_mod_test.nim
     title: verify/fps/convolution_mod_test.nim
   - icon: ':heavy_check_mark:'
@@ -555,6 +561,8 @@ data:
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/relaxed_log_of_formal_power_series_test.nim
   - verify/fps/relaxed_log_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_projection_regression_test.nim
+  - verify/fps/compositional_inverse_projection_regression_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/inv_of_formal_power_series_test.nim
