@@ -68,6 +68,12 @@ when not declared CPLIB_FPS_POWER_PROJECTION:
 
         # x次数が0になればyについての有理式だけが残る。
         # yの高次側から反転し、定数項が1のFPS除算として先頭m+1項を得る。
+        if f[0].val == 0:
+            # 分母はy^yDegreeなので反転後は1になり、FPS除算は不要。
+            result = newSeq[T](m + 1)
+            for i in 0..<min(m + 1, yDegree):
+                result[i] = p[yDegree - 1 - i]
+            return
         var numerator = p[0..<yDegree]
         var denominator = q[0..<yDegree]
         denominator.add(init(T, 1))

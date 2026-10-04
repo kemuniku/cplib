@@ -133,4 +133,27 @@ block:
     doAssert seg[0] == 0
     doAssert seg[1] == high(int) - half + 1
 
+
+block:
+    var a = newSeq[int](513)
+    for i in 0..<a.len: a[i] = i * i
+    let seg = initRangeLinearAddRangeMin(a)
+    for step in 0..<300:
+        let b = if step mod 2 == 0: -512 else: 511
+        apply(seg, a, 0, a.len, b, 0)
+        for l in [0, 1, 127, 255, 256, 257, 511]:
+            for r in [l, min(l + 1, a.len), min(l + 17, a.len), a.len]:
+                var expected = high(int)
+                for i in l..<r: expected = min(expected, a[i])
+                doAssert seg.prod(l, r) == expected
+
+block:
+    let half = high(int) div 2
+    let slope = high(int) div 9
+    var a = newSeq[int](8)
+    for i in 0..<a.len: a[i] = half + 100 * i * (7 - i)
+    let seg = initRangeLinearAddRangeMin(a)
+    seg.add(0, 8, slope, -half)
+    doAssert seg.prod(3, 5) == 3 * slope + 1200
+
 echo "Hello World"
