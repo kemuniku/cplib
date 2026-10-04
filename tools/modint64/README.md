@@ -77,20 +77,28 @@ Nim 1.6.20/2.2.4のみです。Windows/MSVC、Clang、32bit、JSには新規保�
 [GCC unsigned __int128](https://gcc.gnu.org/onlinedocs/gcc/_005f_005fint128.html)、
 [64bit Miller–Rabin基底表](https://miller-rabin.appspot.com/)。Nimの仕様はローカルの両バージョンのmanualでも確認しました。
 
-## 再現
+## verify
+
+回帰は `src/verify/modint` のverifyファイルだけに置いています。
+すべて既存 `verification-helper: PROBLEM` のHello World問題に対応し、
+既存の `verify.yml` が実行する `oj-verify run` で検出されます。専用CIや外部runnerはありません。
+
+- `modint64_test.nim`: 整数型・例外・hash/set/table・generic combination・サイズ/alignment。
+- `modint64_oracle_test.nim`: Python多倍長整数で事前に求めた1,617ケースを埋め込み、
+  10素数の全境界ペアと各32乱数ペアで加減乗除・pow・inv・入出力を検査します。
+  実行時にPythonや外部入力・期待値ファイルを使いません。
+- `modint64_compiletime_test.nim`: コンパイル時演算471比較と素数判定2,115値をVM/nativeで確認。
+  不正法のコンパイル拒否も `compiles` でverify内から確認します。
+- `modint64_existing_test.nim`: 既存Montgomery/Barrettの2法と各10,000乱数ペアを比較し、
+  max_N=200のbinomialも照合します。既存型がC++専用なのでこのverifyもC++向けです。
+
+ローカルで個別に確認する場合も、同じverifyファイルをコンパイル・実行します。
 
 ```sh
-python3 tools/modint64/validate.py --nim-root /workspace/cplib-env --output /workspace/modint64-results
-python3 tools/modint64/check_compiletime.py --nim-root /workspace/cplib-env --output /workspace/modint64-results
+nim cpp -r -d:release --path:src src/verify/modint/modint64_test.nim
+nim cpp -r -d:release --path:src src/verify/modint/modint64_oracle_test.nim
+nim cpp -r -d:release --path:src src/verify/modint/modint64_compiletime_test.nim
+nim cpp -r -d:release --path:src src/verify/modint/modint64_existing_test.nim
 ```
 
-Python 3.12の多倍長整数（剰余、`pow(a,e,p)`、`pow(a,-1,p)`）を独立oracleにしています。
-10素数それぞれの全境界ペアと乱数1500ペア、入力値はuint64全域、指数はuint64全域、
-signed入力は最小・最大を含み、decimalは最大1024bitを符号付き・先頭ゼロ付きで生成します。
-原本入力・期待値、ビルド/runログ、生成C/C++、不正法のコンパイルログ、benchmarkの7回の標本を指定出力先に保存します。
-`check_compiletime.py` はPython期待値を埋め込んだ471件のコンパイル時演算、
-試し割り（0〜2000）・既知の素数・積として生成した合成数等2,115件の素数判定をNim VMとnativeで確認します。
-直接定義した型での不正法の拒否も確認します。
-`results.json`、`compiletime-results.json` と `VALIDATION.md` に今回の結果と性能を記録します。
-
-検証スクリプトはcommit、push、PR作成、judge送信を行いません。
+確認済み環境と以前の性能測定値は `VALIDATION.md` に記録しています。

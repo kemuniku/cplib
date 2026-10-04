@@ -9,6 +9,10 @@ declarStaticModint64(MintTwo64, 2u64)
 
 proc checkIntegers[T: Modint64]() =
     const p = T.umod
+    doAssert sizeof(T) == 8
+    doAssert alignof(T) == alignof(uint64)
+    var defaultValue: T
+    doAssert defaultValue.val == 0
     template signedCases(I: typedesc) =
         for x in [low(I), high(I), I(-1), I(0), I(1)]:
             let a = T.init(x)

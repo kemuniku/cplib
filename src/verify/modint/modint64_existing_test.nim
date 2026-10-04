@@ -1,3 +1,4 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import cplib/modint/modint64
 import cplib/modint/modint
 import cplib/math/combination
@@ -36,4 +37,4 @@ compare[Mint64Compare, modint998244353_montgomery]()
 compare[Mint64Compare, modint998244353_barrett]()
 compare[Mint64Other, modint1000000007_montgomery]()
 compare[Mint64Other, modint1000000007_barrett]()
-echo "existing comparison passed"
+echo "Hello World"
