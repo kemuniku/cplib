@@ -91,6 +91,8 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
     proc split[T](node: RangeReverseArrayMonoidNode[T], k: int, op: proc(x, y: T): T, e: T): (RangeReverseArrayMonoidNode[T], RangeReverseArrayMonoidNode[T]) =
         if node.isNil:
             return (nil, nil)
+        if k <= 0: return (nil, node)
+        if k >= node.size: return (node, nil)
         node.push
         let leftSize = node.left.nodeLen
         if k <= leftSize:
@@ -170,6 +172,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
     proc reverse*[T](self: RangeReverseArrayMonoid[T], l, r: int) =
         ## 半開区間[l, r)を反転します。
         assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
+        if r - l <= 1: return
         var (left, middleRight) = split(self.root, l, self.op, self.e)
         var (middle, right) = split(middleRight, r - l, self.op, self.e)
         middle.toggle

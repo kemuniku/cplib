@@ -208,13 +208,28 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     ): (RangeReverseLazySegmentTreeNode[S, F], RangeReverseLazySegmentTreeNode[S, F]) =
         split(node, k, self.merge, self.default, self.mapping, self.composition, self.id)
 
+    proc insertNode[S, F](self: RangeReverseLazySegmentTree[S, F], root, node: RangeReverseLazySegmentTreeNode[S, F], k: int): RangeReverseLazySegmentTreeNode[S, F] =
+        ## 優先度が上回る位置へ直接挿入する。期待 O(log N)。
+        if root.isNil: return node
+        root.push(self.mapping, self.composition, self.id)
+        let leftSize = root.left.nodeLen
+        if node.priority > root.priority or (node.priority == root.priority and k > leftSize):
+            let (left, right) = self.splitRoot(root, k)
+            node.left = left
+            node.right = right
+            node.update(self.merge, self.default)
+            return node
+        if k <= leftSize: root.left = self.insertNode(root.left, node, k)
+        else: root.right = self.insertNode(root.right, node, k - leftSize - 1)
+        root.update(self.merge, self.default)
+        root
+
     proc insert*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int, value: S) =
         ## index の直前に value を挿入する。末尾には index = len を指定する。
         ## 期待 O(log N)。挿入前の区間更新は新しい要素には作用しない。
         assert 0 <= index and index <= self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index <= self.length"
-        var (left, right) = self.splitRoot(self.root, index)
         let node = newNode(value, rand(uint64), self.id)
-        self.root = self.mergeRoot(left, self.mergeRoot(node, right))
+        self.root = self.insertNode(self.root, node, index)
         inc self.length
 
     proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int) =
@@ -227,10 +242,21 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
         self.root = self.mergeRoot(left, right)
         self.length -= r - l
 
+    proc eraseNode[S, F](self: RangeReverseLazySegmentTree[S, F], root: RangeReverseLazySegmentTreeNode[S, F], k: int): RangeReverseLazySegmentTreeNode[S, F] =
+        ## 対象位置へ直接降りて削除する。期待 O(log N)。
+        root.push(self.mapping, self.composition, self.id)
+        let leftSize = root.left.nodeLen
+        if k == leftSize: return self.mergeRoot(root.left, root.right)
+        if k < leftSize: root.left = self.eraseNode(root.left, k)
+        else: root.right = self.eraseNode(root.right, k - leftSize - 1)
+        root.update(self.merge, self.default)
+        root
+
     proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int) =
         ## index 番目の要素を削除する。期待 O(log N)。
         assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
-        self.erase(index, index + 1)
+        self.root = self.eraseNode(self.root, index)
+        dec self.length
 
     proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int, int]) =
         self.erase(segment.a, segment.b + 1)
