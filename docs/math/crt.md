@@ -27,21 +27,22 @@ assert crt([0, 1], [2, 4]) == (0, 0)
 assert crt([-1, -1], [3, 5]) == (14, 15)
 ```
 
-自己完結回帰は次のコマンドで実行できます。
+自己完結回帰は `src/verify/math/crt_test.nim` に集約しています。
+既存の `verify.yml` が Nim 1.6.20 / 2.2.4 で実行します。
 
 ```sh
-nim cpp --path:src -r src/verify/math/crt_test.nim
-nim cpp --path:src -d:release --assertions:off -r src/verify/math/crt_test.nim
-python3 tools/crt/test_crt.py nim
-python3 tools/crt/test_crt.py nim --passC:-fsanitize=undefined --passC:-fno-sanitize-recover=undefined --passL:-fsanitize=undefined
+nim cpp --path:src --nimcache:/tmp/crt-debug-cache -o:/tmp/crt-debug -r src/verify/math/crt_test.nim
+nim cpp --path:src -d:release --assertions:off --nimcache:/tmp/crt-release-cache -o:/tmp/crt-release -r src/verify/math/crt_test.nim
+nim cpp --path:src -d:release --passC:-fsanitize=undefined --passC:-fno-sanitize-recover=undefined --passL:-fsanitize=undefined --nimcache:/tmp/crt-ubsan-cache -o:/tmp/crt-ubsan -r src/verify/math/crt_test.nim
 ```
 
 小法の全探索・周期内の解の一意性、順序入替・同値剰余・冗長合同式、
 不正入力、符号付き整数上下限、巨大な共有因子、最小公倍数のオーバーフローを検証します。
-Pythonの多倍長整数と組込み逆元をoracleに使い、解の存在条件は各法のgcdによる
-pairwise conditionで別途検査します。[ABC193E](https://atcoder.jp/contests/abc193/tasks/abc193_e)
-の利用例は、小さな周期の時刻全探索と公式サンプルに照合します。judgeへの提出は行いません。
-専用CIはNim 1.6.20と2.2.4でdebug / release、UBSan、既存inv_gcd / ext_gcd / int128回帰を実行します。
+64ビットの境界・固定seed乱数ケースは既存の `BigInt` による多倍長算術と照合し、
+各prefixの解の存在条件を各法のgcdから独立に検査します。
+[ABC193E](https://atcoder.jp/contests/abc193/tasks/abc193_e) の利用例は、
+小さな周期の時刻全探索と公式サンプルに照合します。
+関連する数論回帰は `src/verify/AI/{inv_gcd,ext_gcd,int128}_test.nim` です。
 
 返却値の規約は[AtCoder LibraryのCRT](https://atcoder.github.io/ac-library/production/document_ja/math.html)
 を参照しました。AtCoder Libraryは[CC0](https://github.com/atcoder/ac-library/blob/master/LICENSE)です。
