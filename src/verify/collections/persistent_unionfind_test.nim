@@ -2,7 +2,8 @@
 
 import cplib/collections/persistent_unionfind
 
-include cplib/tmpl/fastio
+proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
+proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import tables
 var N,Q = ii()
 var UFS : Table[int,PersistentUnionFind]
@@ -12,4 +13,4 @@ for i in 0..<Q:
     if t == 0:
         UFS[i] = UFS[k].unite(u,v)
     else:
-        print(if UFS[k].issame(u,v):1 else:0)
+        echo if UFS[k].issame(u,v):1 else:0
