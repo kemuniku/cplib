@@ -122,10 +122,10 @@ data:
     \ == 1\n        doAssert seg.get_all() == 3\n        seg.update(1, 1, 9)\n   \
     \     doAssert seg[1] == 9\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/range_sort_segtree.nim
   - cplib/collections/segtree.nim
   - cplib/collections/range_sort_segtree.nim
-  - cplib/collections/range_sort_segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true

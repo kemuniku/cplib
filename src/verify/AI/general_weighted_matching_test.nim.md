@@ -112,14 +112,14 @@ data:
     \ncheck(100000, @[(99999, 99998, 27'i64), (4, 5, -1'i64), (0, 0, 100'i64)], 27)\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/general_weighted_matching.nim
-  - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/graph/general_weighted_matching.nim
-  - cplib/graph/general_matching.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/general_matching.nim
+  - cplib/graph/general_matching.nim
+  - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/general_weighted_matching.nim
   isVerificationFile: true
   path: verify/AI/general_weighted_matching_test.nim
   requiredBy: []

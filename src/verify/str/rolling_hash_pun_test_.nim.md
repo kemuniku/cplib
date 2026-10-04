@@ -38,9 +38,9 @@ data:
     \  quit()\necho meguru_bisect(1, n div 2 + 1, is_ok)\n"
   dependsOn:
   - cplib/str/rolling_hash.nim
-  - cplib/utils/binary_search.nim
-  - cplib/utils/binary_search.nim
   - cplib/str/rolling_hash.nim
+  - cplib/utils/binary_search.nim
+  - cplib/utils/binary_search.nim
   isVerificationFile: false
   path: verify/str/rolling_hash_pun_test_.nim
   requiredBy: []

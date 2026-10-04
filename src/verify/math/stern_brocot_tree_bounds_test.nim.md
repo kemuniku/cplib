@@ -78,11 +78,11 @@ data:
     checkRandom[int32]()\ncheckRandom[int64]()\necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/math/stern_brocot_tree.nim
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/stern_brocot_tree.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_bounds_test.nim
   requiredBy: []

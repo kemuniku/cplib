@@ -43,9 +43,9 @@ data:
     \ data[position..<position+m])\n    else:\n        for j in 0..<m: a[j, i] = data[position+j]\
     \ == '1'\n    position += m\necho a.rank\n"
   dependsOn:
-  - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim
   - cplib/matrix/bit_matrix_ops.nim

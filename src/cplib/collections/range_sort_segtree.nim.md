@@ -295,8 +295,8 @@ data:
     \ 1 <= segment.b and segment.b < self.len, \"\u533A\u9593\u304C\u7BC4\u56F2\u5916\
     \u3067\u3059\"\n        self.sort(segment.a, segment.b + 1, order)\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: false

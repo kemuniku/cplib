@@ -66,15 +66,15 @@ data:
     \ -1\n    else:\n        echo ans"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/str/hash_string.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
   - cplib/str/hash_string.nim
+  - cplib/str/hash_string.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_mul_test.nim
   requiredBy: []

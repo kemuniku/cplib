@@ -80,9 +80,9 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
   isVerificationFile: true
   path: verify/AI/binary_trie_test.nim

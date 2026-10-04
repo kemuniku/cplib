@@ -40,11 +40,11 @@ data:
     \ capacity = m)\nfor i in 0..<m:\n    let u = ii()\n    let v = ii()\n    g.add_edge(u,\
     \ v)\ng.build()\necho g.dominator_tree(root).join(\" \")\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   - cplib/graph/dominator_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/dominator_tree.nim
   isVerificationFile: true
   path: verify/graph/dominator_tree_test.nim

@@ -63,6 +63,12 @@ data:
     path: cplib/graph/dijkstra_radix.nim
     title: cplib/graph/dijkstra_radix.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/directed_mst.nim
+    title: cplib/graph/directed_mst.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/directed_mst.nim
+    title: cplib/graph/directed_mst.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/dominator_tree.nim
     title: cplib/graph/dominator_tree.nim
   - icon: ':heavy_check_mark:'
@@ -616,6 +622,12 @@ data:
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/directed_mst_test.nim
+    title: verify/AI/directed_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/directed_mst_test.nim
+    title: verify/AI/directed_mst_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/dominator_tree_test.nim
     title: verify/AI/dominator_tree_test.nim
   - icon: ':heavy_check_mark:'
@@ -969,6 +981,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/cycle_detection_undirected_test.nim
     title: verify/graph/cycle_detection_undirected_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/directed_mst_test.nim
+    title: verify/graph/directed_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/directed_mst_test.nim
+    title: verify/graph/directed_mst_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/graph/dominator_tree_test.nim
     title: verify/graph/dominator_tree_test.nim
@@ -1681,6 +1699,8 @@ data:
   - cplib/graph/grid_to_graph.nim
   - cplib/graph/general_weighted_matching.nim
   - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/directed_mst.nim
+  - cplib/graph/directed_mst.nim
   - cplib/graph/range_edge_graph.nim
   - cplib/graph/range_edge_graph.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
@@ -1796,6 +1816,8 @@ data:
   - verify/graph/lowlink_articulation_test.nim
   - verify/graph/functional_graph_movekth_overflow_test.nim
   - verify/graph/functional_graph_movekth_overflow_test.nim
+  - verify/graph/directed_mst_test.nim
+  - verify/graph/directed_mst_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/namori_incycle_test.nim
   - verify/graph/biconnected_components_test.nim
@@ -1894,6 +1916,8 @@ data:
   - verify/AI/trie_test.nim
   - verify/AI/itertools_test.nim
   - verify/AI/itertools_test.nim
+  - verify/AI/directed_mst_test.nim
+  - verify/AI/directed_mst_test.nim
   - verify/AI/graph_test.nim
   - verify/AI/graph_test.nim
   - verify/AI/dijkstra_test.nim

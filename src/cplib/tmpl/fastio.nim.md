@@ -106,6 +106,12 @@ data:
     path: verify/graph/cycle_detection_undirected_test.nim
     title: verify/graph/cycle_detection_undirected_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/directed_mst_test.nim
+    title: verify/graph/directed_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/directed_mst_test.nim
+    title: verify/graph/directed_mst_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dominator_tree_test.nim
     title: verify/graph/dominator_tree_test.nim
   - icon: ':heavy_check_mark:'
@@ -982,6 +988,8 @@ data:
   - verify/graph/hopcroft_karp_test.nim
   - verify/graph/lowlink_articulation_test.nim
   - verify/graph/lowlink_articulation_test.nim
+  - verify/graph/directed_mst_test.nim
+  - verify/graph/directed_mst_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/lowlink_bridges_test.nim

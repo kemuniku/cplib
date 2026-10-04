@@ -46,8 +46,8 @@ data:
     \ => (y == 0))\n        if tmp == len(st):\n            stdout.writeLine -1\n\
     \        else:\n            stdout.writeLine C[tmp]"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true

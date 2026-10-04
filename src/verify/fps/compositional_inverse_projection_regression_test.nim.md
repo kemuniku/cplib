@@ -133,26 +133,26 @@ data:
     \ next[i+j] += power[i] * f[j]\n                    power = move(next)\nprojectionSuite[modint998244353_barrett]()\n\
     projectionSuite[modint998244353_montgomery]()\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/power_projection.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/power_projection.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/fps/composition.nim
-  - cplib/fps/power_projection.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
   - cplib/fps/composition.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/power_projection.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: true
   path: verify/fps/compositional_inverse_projection_regression_test.nim
   requiredBy: []

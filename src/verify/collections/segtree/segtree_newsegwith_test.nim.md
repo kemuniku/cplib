@@ -35,8 +35,8 @@ data:
     \ = newSegWith(A, min(l, r), int(1e18))\nfor i in 0..<Q:\n    var L, R = ii()\n\
     \    echo st.get(L, R)\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true

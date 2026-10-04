@@ -35,10 +35,10 @@ data:
     \ c, x = ii()\n    if c == 1:\n        s.incl(x)\n    else:\n        var i = s.index(x)\n\
     \        echo(s[i] - s[i-1])\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/tatyamset.nim
   - cplib/collections/tatyamset.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/tatyamset.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC217_index_test_.nim
   requiredBy: []

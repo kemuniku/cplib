@@ -85,9 +85,9 @@ data:
     '
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/namori_graph.nim

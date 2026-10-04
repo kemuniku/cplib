@@ -38,8 +38,8 @@ data:
     \ = ii()\n        st.update(p, (c, d))\n    else:\n        var l, r, x = ii()\n\
     \        var (a, b) = st.get(l, r)\n        echo (a*x mod MOD + b) mod MOD\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
   isVerificationFile: true

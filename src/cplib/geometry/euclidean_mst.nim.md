@@ -182,10 +182,10 @@ data:
     \     for i, p in points:\n            converted[i] = initPoint(p)\n        euclidean_mst(converted)\n"
   dependsOn:
   - cplib/math/int128.nim
+  - cplib/geometry/base.nim
   - cplib/collections/unionfind.nim
   - cplib/math/int128.nim
   - cplib/collections/unionfind.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/euclidean_mst.nim

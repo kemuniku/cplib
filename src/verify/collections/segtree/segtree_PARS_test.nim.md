@@ -36,8 +36,8 @@ data:
     \ T = ii()\n    if T == 0:\n        var p, x = ii()\n        st[p] = st[p] + x\n\
     \    else:\n        var l, r = ii()\n        echo st[l..<r]\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true

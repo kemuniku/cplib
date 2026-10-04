@@ -50,10 +50,10 @@ data:
     \        seg.sort(l, r)\n    of 3:\n        let l = ii()\n        let r = ii()\n\
     \        seg.sort(l, r, Descending)\n    else:\n        discard\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/range_sort_segtree.nim
   - cplib/collections/segtree.nim
   - cplib/collections/range_sort_segtree.nim
-  - cplib/collections/range_sort_segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true

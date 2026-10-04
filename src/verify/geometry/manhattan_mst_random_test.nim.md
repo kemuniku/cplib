@@ -86,10 +86,10 @@ data:
     echo \"Hello World\"\n"
   dependsOn:
   - cplib/geometry/manhattan_mst.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/manhattan_mst.nim
   - cplib/collections/unionfind.nim
   - cplib/collections/unionfind.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/manhattan_mst_random_test.nim

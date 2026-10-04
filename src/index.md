@@ -118,6 +118,9 @@ data:
       path: cplib/collections/intset.nim
       title: cplib/collections/intset.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/lazy_leftist_heap.nim
+      title: cplib/collections/lazy_leftist_heap.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/lazysegtree.nim
       title: cplib/collections/lazysegtree.nim
     - icon: ':heavy_check_mark:'
@@ -424,6 +427,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dijkstra_radix.nim
       title: cplib/graph/dijkstra_radix.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/directed_mst.nim
+      title: cplib/graph/directed_mst.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/dominator_tree.nim
       title: cplib/graph/dominator_tree.nim
@@ -1611,6 +1617,9 @@ data:
       path: verify/AI/dijkstra_test.nim
       title: verify/AI/dijkstra_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/directed_mst_test.nim
+      title: verify/AI/directed_mst_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/distance_test.nim
       title: verify/AI/distance_test.nim
     - icon: ':heavy_check_mark:'
@@ -1841,6 +1850,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/kth_element_test.nim
       title: verify/AI/kth_element_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/lazy_leftist_heap_int128_test.nim
+      title: verify/AI/lazy_leftist_heap_int128_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/lazy_leftist_heap_test.nim
+      title: verify/AI/lazy_leftist_heap_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/lazysegtree_template_test.nim
       title: verify/AI/lazysegtree_template_test.nim
@@ -2729,6 +2744,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/cycle_detection_undirected_test.nim
       title: verify/graph/cycle_detection_undirected_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/directed_mst_test.nim
+      title: verify/graph/directed_mst_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/dominator_tree_test.nim
       title: verify/graph/dominator_tree_test.nim
