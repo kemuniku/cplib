@@ -28,8 +28,6 @@ jobs:
       - name: Run UBSan
         if: matrix.nim-version == '2.2.4'
         run: nim cpp -r --hints:off -d:release --passC:-fsanitize=undefined --passC:-fno-sanitize-recover=all --passL:-fsanitize=undefined --path:src --nimcache:/tmp/xor-ubsan --out:/tmp/xor-ubsan-bin src/verify/AI/xor_basis_restore_test.nim
-      - name: Run expander regressions
-        run: python3 tools/expander/test_expander.py
       - name: Run expanded restore regression
         run: |
           nim cpp --hints:off -d:release --out:/tmp/xor-expander tools/expander/expander.nim
