@@ -46,10 +46,10 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
         else: T.umod
     template `mod`*[T: MontgomeryModint](self: typedesc[T] or T): int32 = (T.umod).int32
 
-    proc reduce(T: typedesc[StaticMontgomeryModint], b: uint): uint32 =
+    proc reduce(T: typedesc[StaticMontgomeryModint], b: uint): uint32 {.inline.} =
         let (_, r, _) = get_param(T)
         return cast[uint32]((b + uint(cast[uint32](b) * (not (r - 1u32))) * T.M) shr 32)
-    proc reduce(T: typedesc[DynamicMontgomeryModint], b: uint): uint32 =
+    proc reduce(T: typedesc[DynamicMontgomeryModint], b: uint): uint32 {.inline.} =
         var p = get_param(T)
         return cast[uint32]((b + uint(cast[uint32](b) * (not (p.r - 1u32))) * p.M) shr 32)
     proc normalize(a: SomeInteger, M: uint32): uint {.inline.} =
@@ -62,7 +62,7 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
             if cast[uint64](a.int64) < M.uint64: return a.uint
             let r = a.int64 mod M.int64
             return uint(if r < 0: r + M.int64 else: r)
-    proc init*(T: typedesc[MontgomeryModint], a: T or SomeInteger): auto =
+    proc init*(T: typedesc[MontgomeryModint], a: T or SomeInteger): auto {.inline.} =
         when a is T: return a
         elif T is StaticMontgomeryModint:
             let (_, r, n2) = get_param(T)
@@ -74,10 +74,10 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
             var ai = reduce(T, normalize(a, p.M) * p.n2)
             result = DynamicMontgomeryModint[T.M](a: ai)
 
-    proc `+=`*[T: MontgomeryModint](a: var T, b: T or SomeInteger) =
+    proc `+=`*[T: MontgomeryModint](a: var T, b: T or SomeInteger) {.inline.} =
         a.a += init(T, b).a - T.get_M * 2u32
         if cast[int32](a.a) < 0i32: a.a += T.get_M * 2u32
-    proc `-=`*[T: MontgomeryModint](a: var T, b: T or SomeInteger) =
+    proc `-=`*[T: MontgomeryModint](a: var T, b: T or SomeInteger) {.inline.} =
         a.a -= init(T, b).a
         if cast[int32](a.a) < 0i32: a.a += T.get_M * 2u32
     proc val*[T: MontgomeryModint](a: T): int =
@@ -97,8 +97,8 @@ when not declared CPLIB_MODINT_MODINT_MONTGOMERY:
     defineMontgomeryEquality(StaticMontgomeryModint)
     defineMontgomeryEquality(DynamicMontgomeryModint)
 
-    proc `-`*[T: MontgomeryModint](a: T): T = (result = init(T, 0); result -= a)
-    proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger) = a.a = reduce(T, uint(a.a) * init(T, b).a)
+    proc `-`*[T: MontgomeryModint](a: T): T {.inline.} = (result = init(T, 0); result -= a)
+    proc `*=`*[T: MontgomeryModint] (a: var T, b: T or SomeInteger) {.inline.} = a.a = reduce(T, uint(a.a) * init(T, b).a)
     proc inv*[T: MontgomeryModint](x: T): T =
         assert x.val != 0, "0の逆元を求めることはできません"
         var x: int32 = int32(x.val)

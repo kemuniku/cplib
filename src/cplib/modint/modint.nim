@@ -10,17 +10,17 @@ when not declared CPLIB_MODINT_MODINT:
     declarStaticBarrettModint(modint998244353_barrett, 998244353u32)
     declarStaticBarrettModint(modint1000000007_barrett, 1000000007u32)
     declarDynamicBarrettModint(modint_barrett, 1u32)
-    proc `+`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result += b)
-    proc `-`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result -= b)
-    proc `*`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result *= b)
+    proc `+`*(a, b: MontgomeryModint or BarrettModint): auto {.inline.} = (result = a; result += b)
+    proc `-`*(a, b: MontgomeryModint or BarrettModint): auto {.inline.} = (result = a; result -= b)
+    proc `*`*(a, b: MontgomeryModint or BarrettModint): auto {.inline.} = (result = a; result *= b)
     proc `/`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result /= b)
-    proc `+`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result += b)
-    proc `-`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result -= b)
-    proc `*`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result *= b)
+    proc `+`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto {.inline.} = (result = a; result += b)
+    proc `-`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto {.inline.} = (result = a; result -= b)
+    proc `*`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto {.inline.} = (result = a; result *= b)
     proc `/`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result = a; result /= b)
-    proc `+`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) + b
-    proc `-`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) - b
-    proc `*`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) * b
+    proc `+`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto {.inline.} = init(Modint, a) + b
+    proc `-`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto {.inline.} = init(Modint, a) - b
+    proc `*`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto {.inline.} = init(Modint, a) * b
     proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) / b
     proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt, b: static int): auto =
         when ModInt is StaticMontgomeryModint or ModInt is StaticBarrettModint:

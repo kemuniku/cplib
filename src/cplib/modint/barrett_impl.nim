@@ -42,17 +42,17 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
     }
     """.}
     proc calc_mul*(a, b: culonglong): culonglong {.importcpp: "calc_mul(#, #)", nodecl, inline.}
-    proc rem*(T: typedesc[BarrettModint], a: uint): uint32 =
-        ## aを法で割った余りを求める。静的な法の剰余はコンパイラで最適化する。O(1)。
-        when T is StaticBarrettModint:
-            return uint32(a mod T.M.uint)
-        else:
-            var p = get_param(T)
-            var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint
-            var r = a - x * p.M
-            if p.M <= r: r += p.M
-            return cast[uint32](r)
-    proc init*(T: typedesc[BarrettModint], a: T or SomeInteger): auto =
+    proc rem*(T: typedesc[StaticBarrettModint], a: uint): uint32 {.inline.} =
+        ## aを静的な法で割った余りを求める。O(1)。
+        uint32(a mod T.M.uint)
+    proc rem*(T: typedesc[DynamicBarrettModint], a: uint): uint32 =
+        ## aを動的な法で割った余りを求める。O(1)。
+        var p = get_param(T)
+        var x = (calc_mul(cast[culonglong](a), cast[culonglong](p.im))).uint
+        var r = a - x * p.M
+        if p.M <= r: r += p.M
+        return cast[uint32](r)
+    proc init*(T: typedesc[BarrettModint], a: T or SomeInteger): auto {.inline.} =
         when a is T: return a
         else:
             if a in 0..<T.mod.int: return T(a: a.uint32)
@@ -60,16 +60,16 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             if a < 0: a += T.mod.int
             return T(a: a.uint32)
 
-    proc `-`*[T: BarrettModint](a: T): T =
+    proc `-`*[T: BarrettModint](a: T): T {.inline.} =
         if a.a == 0u32: return a
         return T(a: T.umod - a.a)
-    proc `+=`*[T: BarrettModint](a: var T, b: T or SomeInteger) =
+    proc `+=`*[T: BarrettModint](a: var T, b: T or SomeInteger) {.inline.} =
         a.a += init(T, b).a
         if a.a >= T.umod: a.a -= T.umod
-    proc `-=`*[T: BarrettModint](a: var T, b: T or SomeInteger) =
+    proc `-=`*[T: BarrettModint](a: var T, b: T or SomeInteger) {.inline.} =
         a.a -= init(T, b).a
         if a.a >= T.umod: a.a += T.umod
-    proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) =
+    proc `*=`*[T: BarrettModint] (a: var T, b: T or SomeInteger) {.inline.} =
         a.a = rem(T, (a.a).uint * (init(T, b).a).uint)
     proc inv*[T: BarrettModint](x: T): T =
         assert x.val != 0, "0の逆元を求めることはできません"
