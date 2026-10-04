@@ -1,5 +1,5 @@
 when not declared CPLIB_GRAPH_DIRECTED_REACHABLE:
-    const CPLIB_GRAPH_DIRECTED_REACHABLE * = 1
+    const CPLIB_GRAPH_DIRECTED_REACHABLE* = 1
     import cplib/graph/graph
     import cplib/graph/SCC
     import cplib/graph/dag_reachable
