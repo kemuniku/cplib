@@ -114,9 +114,9 @@ data:
     \        for i, p in points:\n            converted[i] = initPoint(p)\n      \
     \  manhattan_mst(converted)\n"
   dependsOn:
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/manhattan_mst.nim

@@ -134,8 +134,8 @@ data:
   dependsOn:
   - cplib/collections/indexed_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/retroactive_priority_queue.nim
   - cplib/collections/indexed_retroactive_priority_queue.nim
+  - cplib/collections/retroactive_priority_queue.nim
   isVerificationFile: true
   path: verify/collections/indexed_retroactive_priority_queue_test.nim
   requiredBy: []

@@ -112,6 +112,18 @@ data:
     path: verify/AI/static_string_test.nim
     title: verify/AI/static_string_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/suffix_automaton_array_test.nim
+    title: verify/AI/suffix_automaton_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/suffix_automaton_array_test.nim
+    title: verify/AI/suffix_automaton_array_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/suffix_automaton_table_test.nim
+    title: verify/AI/suffix_automaton_table_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/suffix_automaton_table_test.nim
+    title: verify/AI/suffix_automaton_table_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
   - icon: ':heavy_check_mark:'
@@ -366,8 +378,12 @@ data:
   - verify/AI/compressed_trie_test.nim
   - verify/AI/static_string_test.nim
   - verify/AI/static_string_test.nim
+  - verify/AI/suffix_automaton_array_test.nim
+  - verify/AI/suffix_automaton_array_test.nim
   - verify/AI/fixedlength_merged_static_string_test.nim
   - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/AI/suffix_automaton_table_test.nim
+  - verify/AI/suffix_automaton_table_test.nim
   - verify/str/edit_distance_test.nim
   - verify/str/edit_distance_test.nim
   - verify/str/suffix_array_test.nim

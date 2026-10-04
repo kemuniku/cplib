@@ -98,25 +98,25 @@ data:
     Hello World\"\n"
   dependsOn:
   - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/collections/segtree.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/collections/segtree.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/math/isqrt.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/collections/segtree.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/matrix/matrix_avx2.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/collections/segtree.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/matrix/matrix_avx2_gc_test.nim
   requiredBy: []

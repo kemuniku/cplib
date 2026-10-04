@@ -77,18 +77,18 @@ data:
     \     vertex = next[vertex]\n    doAssert tailGraph.prod(start, high(int)) ==\
     \ expected\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph.nim
   - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/functional_graph_with_op.nim
+  - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_prod_max_count_test.nim
   requiredBy: []

@@ -41,9 +41,9 @@ data:
     \   discard powmod(2, 3, m)\n        except AssertionDefect:\n            rejected\
     \ = true\n        assert rejected\n"
   dependsOn:
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/inner_math.nim
   - cplib/math/powmod.nim
   isVerificationFile: true
   path: verify/AI/powmod_test.nim

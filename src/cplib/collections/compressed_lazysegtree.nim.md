@@ -288,11 +288,11 @@ data:
     \ typeof(default))(nil))\n"
   dependsOn:
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/compressed_lazysegtree.nim
   requiredBy: []

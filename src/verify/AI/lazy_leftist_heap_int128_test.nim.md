@@ -56,9 +56,9 @@ data:
     \        oracle[i].delete(at)\ncheck()\nstderr.writeLine(\"Int128 lazy leftist\
     \ heap regression: 10000 oracle operations passed\")\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/collections/lazy_leftist_heap.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/collections/lazy_leftist_heap.nim
   isVerificationFile: true
   path: verify/AI/lazy_leftist_heap_int128_test.nim

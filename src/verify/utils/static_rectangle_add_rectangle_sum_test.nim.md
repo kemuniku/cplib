@@ -64,17 +64,17 @@ data:
     \ queries):\n    print answer.val\n"
   dependsOn:
   - cplib/utils/static_rectangle_add_rectangle_sum.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/utils/static_rectangle_add_rectangle_sum.nim
   - cplib/modint/barrett_impl.nim
   - cplib/tmpl/fastio.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/tmpl/fastio.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
   requiredBy: []

@@ -774,6 +774,12 @@ data:
       path: cplib/str/suffix_array.nim
       title: cplib/str/suffix_array.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/suffix_automaton_array.nim
+      title: cplib/str/suffix_automaton_array.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/str/suffix_automaton_table.nim
+      title: cplib/str/suffix_automaton_table.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/trie.nim
       title: cplib/str/trie.nim
     - icon: ':heavy_check_mark:'
@@ -2166,6 +2172,12 @@ data:
       path: verify/AI/steiner_tree_test.nim
       title: verify/AI/steiner_tree_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/suffix_automaton_array_test.nim
+      title: verify/AI/suffix_automaton_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/suffix_automaton_table_test.nim
+      title: verify/AI/suffix_automaton_table_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/tatyamset_test.nim
       title: verify/AI/tatyamset_test.nim
     - icon: ':heavy_check_mark:'
@@ -3211,6 +3223,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/suffix_array_test.nim
       title: verify/str/suffix_array_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/suffix_automaton_array_number_of_substrings_test.nim
+      title: verify/str/suffix_automaton_array_number_of_substrings_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/suffix_automaton_table_number_of_substrings_test.nim
+      title: verify/str/suffix_automaton_table_number_of_substrings_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/wildcard_matching_test.nim
       title: verify/str/wildcard_matching_test.nim

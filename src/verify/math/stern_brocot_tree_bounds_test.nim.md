@@ -81,8 +81,8 @@ data:
   - cplib/math/stern_brocot_tree.nim
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
+  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_bounds_test.nim
   requiredBy: []

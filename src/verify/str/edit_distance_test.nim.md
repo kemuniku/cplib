@@ -48,10 +48,10 @@ data:
 
     '
   dependsOn:
-  - cplib/str/edit_distance.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/edit_distance.nim
   - cplib/str/suffix_array.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   isVerificationFile: true

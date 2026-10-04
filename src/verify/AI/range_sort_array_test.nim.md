@@ -92,12 +92,12 @@ data:
   dependsOn:
   - cplib/collections/range_sort_array.nim
   - cplib/collections/range_sort_array.nim
+  - cplib/collections/range_sort_segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/collections/range_sort_segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/range_sort_segtree.nim
   isVerificationFile: true
   path: verify/AI/range_sort_array_test.nim
   requiredBy: []

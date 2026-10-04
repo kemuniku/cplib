@@ -169,19 +169,19 @@ data:
     \ \"Hello World\"\n"
   dependsOn:
   - cplib/collections/staticRMQ.nim
+  - cplib/str/suffix_array.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string.nim
   - cplib/collections/bitvector.nim
   - cplib/utils/backwards_index.nim
-  - cplib/str/static_string_search.nim
-  - cplib/str/static_string_search.nim
-  - cplib/collections/waveletmatrix.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/bitvector.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/str/static_string.nim
   isVerificationFile: true
   path: verify/AI/static_string_search_test.nim
   requiredBy: []
