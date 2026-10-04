@@ -1,11 +1,13 @@
 when not declared CPLIB_MATH_COMBINATION:
     const CPLIB_MATH_COMBINATION* = 1
     type Combination_Type[ModInt] = object
+        modulus: uint64
         fact*: seq[ModInt]
         inv*: seq[ModInt]
         fact_inv*: seq[ModInt]
 
     proc initCombination*[ModInt](max_N: int): Combination_Type[ModInt] =
+        ## 前計算表を従来の漸化式で作り、構築時の法を記録する。O(max_N)。
         assert max_N >= 0, "max_Nは非負である必要があります"
         var fact = newSeq[ModInt](max_N+1)
         var inv = newSeq[ModInt](max_N+1)
@@ -20,12 +22,23 @@ when not declared CPLIB_MATH_COMBINATION:
             fact[i] = fact[i-1] * i
             inv[i] = -inv[int(ModInt.umod()) mod i]*(int(ModInt.umod()) div i)
             fact_inv[i] = fact_inv[i-1] * inv[i]
-        result = Combination_Type[ModInt](fact: fact, inv: inv, fact_inv: fact_inv)
+        result = Combination_Type[ModInt](modulus: ModInt.umod().uint64, fact: fact, inv: inv, fact_inv: fact_inv)
 
     proc ncr*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =
         if n < 0 or r < 0 or n < r:
             return 0
         return c.fact[n]*c.fact_inv[n-r]*c.fact_inv[r]
+
+    proc ncr_inv*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =
+        ## C(n,r) の逆元を O(1) で返す。素数法・構築時と同じ法・0 <= r <= n < 法・前計算済みの n が必要。
+        ## 階乗と逆階乗は初期化時の値を保つこと。範囲外・法変更・階乗が可逆でない場合は ValueError。
+        if n < 0 or r < 0 or r > n or n >= c.fact.len or n >= c.fact_inv.len:
+            raise newException(ValueError, "二項係数の逆元には前計算済みの 0 <= r <= n が必要です")
+        if c.modulus < 2 or c.modulus != ModInt.umod().uint64 or n.uint64 >= c.modulus:
+            raise newException(ValueError, "構築時と同じ素数法で n < 法が必要です")
+        if c.fact[n] * c.fact_inv[n] != 1:
+            raise newException(ValueError, "階乗の逆元が存在しないか前計算表が不正です")
+        return c.fact_inv[n] * c.fact[r] * c.fact[n-r]
 
     proc npr*[ModInt](c: Combination_Type[ModInt], n, r: int): ModInt =
         if n < 0 or r < 0 or n < r:
