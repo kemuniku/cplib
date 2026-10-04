@@ -29,7 +29,7 @@ nim cpp --path:src example.nim
 
 型は `{.importc: "long double", nodecl, bycopy.} = object` です。Nim が通常の浮動小数点数として演算・定数畳み込みすることを避け、実際の生成 C/C++ 型にサイズ、アラインメント、配列ストライド、引数と返値の ABI を委ねます。演算の C/C++ 式も `long double` 同士です。バイト配列による偽装、固定の `size` pragma、`float64` による中間計算はありません。
 
-Nim 1.6.20 と 2.2.4 の `clongdouble` は `BiggestFloat` の別名です。この環境では `sizeof(clongdouble)` が Nim 側で8となる一方、生成された `long double` 引数は16バイトで、加算結果は `NF` (double) となりました。`src/verify/local/clongdouble_codegen.nim` で再現できます。したがってこのモジュールの型に `clongdouble` は使いません。
+Nim 1.6.20 と 2.2.4 の `clongdouble` は `BiggestFloat` の別名です。この環境では `sizeof(clongdouble)` が Nim 側で8となる一方、生成された `long double` 引数は16バイトで、加算結果は `NF` (double) となりました。したがってこのモジュールの型に `clongdouble` は使いません。
 
 `longDoubleInfo()` の値は実行時に C/C++ の `sizeof(long double)` と `<float.h>` から取得します。
 
@@ -89,9 +89,17 @@ locale は libc の現在の `LC_NUMERIC` に従い、このモジュールか�
 
 ## 検証と一次資料
 
-[検証結果](longdouble-validation.md) と `src/verify/local/test_longdouble.py` を参照してください。C と C++ の native 参照は同じソースをそれぞれの言語として独立コンパイルし、FFI 宣言をヘッダーで照合しています。オンライン judge へは提出していません。
+回帰は `src/verify/AI/longdouble_test.nim` と
+`src/verify/AI/longdouble_contract_test.nim` に集約しています。
+contract verifyはNimラッパーを使わないnativeの演算・変換・ABI参照を
+ファイル内のemitで定義し、精度、整数境界、丸めモード、入出力を照合します。
+既存のverify CIがNim 1.6.20 / 2.2.4のC++ backendで実行します。
 
-- [Nim 1.6.20 の system.nim](https://github.com/nim-lang/Nim/blob/v1.6.20/lib/system.nim): `clongdouble` の定義。
-- [Nim 2.2.4 の ctypes.nim](https://github.com/nim-lang/Nim/blob/v2.2.4/lib/system/ctypes.nim): `clongdouble` の定義。
-- [Nim 2.2.4 manual](https://github.com/nim-lang/Nim/blob/v2.2.4/doc/manual.md): importc / nodecl / bycopy / emit と FFI。
-- [ISO C11 committee draft N1570](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf): 5.2.4.2.2（環境の精度）、6.3.1.4（整数変換）、7.12（数学関数）、7.21.6.1（`L` format）、7.22.1.3（strtold）。
+```sh
+nim cpp --path:src --nimcache:/tmp/longdouble-debug-cache -o:/tmp/longdouble-debug -r src/verify/AI/longdouble_contract_test.nim
+nim cpp --path:src -d:release --nimcache:/tmp/longdouble-release-cache -o:/tmp/longdouble-release -r src/verify/AI/longdouble_contract_test.nim
+```
+
+C backendを確認する場合は `cpp` を `c` に置き換えて実行できます。
+異なるOS・コンパイラ・long double ABIでの対応範囲は、実環境の
+`longDoubleInfo()` と上記verifyで確認してください。
