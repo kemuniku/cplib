@@ -1,0 +1,38 @@
+name: CRT regression
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crt:
+    name: CRT (Nim ${{ matrix.nim }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        nim: [1.6.20, 2.2.4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: ${{ matrix.nim }}
+      - name: Exhaustive and number theory regressions
+        run: |
+          for mode in debug release; do
+            flags=""
+            if [ "$mode" = release ]; then flags="-d:release --assertions:off"; fi
+            for test in src/verify/math/crt_test.nim src/verify/AI/inv_gcd_test.nim src/verify/AI/ext_gcd_test.nim src/verify/AI/int128_test.nim; do
+              nim cpp --hints:off --path:src $flags --nimcache:/tmp/nimcache-$(basename "$test")-$mode -o:/tmp/crt-regression -r "$test"
+            done
+          done
+      - name: Python arbitrary precision oracle and ABC193E
+        run: python3 tools/crt/test_crt.py nim
+      - name: Undefined behavior sanitizer
+        run: python3 tools/crt/test_crt.py nim --passC:-fsanitize=undefined --passC:-fno-sanitize-recover=undefined --passL:-fsanitize=undefined
