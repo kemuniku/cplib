@@ -95,14 +95,27 @@ jobs:
         if: always()
         id: clear-verify-cache
         run: |
+          set -o pipefail
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           cacheKeys=$(gh actions-cache list -R $REPO --key ${{ runner.os }}-nim-${{ matrix.nim-version }}-verify-cases | cut -f 1 )
-          set +e
           for cacheKey in $cacheKeys
           do
             echo "Deleting caches... $cacheKey"
-            gh actions-cache delete $cacheKey -R $REPO --confirm
+            if deleteOutput=$(gh actions-cache delete "$cacheKey" -R "$REPO" --confirm 2>&1); then
+              printf '%s\n' "$deleteOutput"
+            else
+              deleteStatus=$?
+              printf '%s\n' "$deleteOutput" >&2
+              if [ "$deleteOutput" != "Error: Cache with input key '$cacheKey' does not exist" ]; then
+                exit "$deleteStatus"
+              fi
+              # 404 は権限不足でも返るため、一覧取得の成功と対象の消失を確認する。
+              remainingCaches=$(gh actions-cache list -R "$REPO" --key "$cacheKey")
+              if [ -n "$remainingCaches" ]; then
+                exit "$deleteStatus"
+              fi
+            fi
           done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
