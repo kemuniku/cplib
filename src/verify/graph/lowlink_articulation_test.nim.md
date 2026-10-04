@@ -41,8 +41,8 @@ data:
     \ = initLowLink(g)\nfor v in ll.articulation: echo v\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/lowlink.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim

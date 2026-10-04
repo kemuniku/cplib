@@ -90,13 +90,13 @@ data:
     doAssert euclidean_mst([(0'i8, 0'i8), (1'i8, 0'i8)]) == @[(0, 1)]\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/math/int128.nim
-  - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/base.nim
   - cplib/collections/unionfind.nim
   - cplib/math/int128.nim
   - cplib/collections/unionfind.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/math/int128.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/euclidean_mst_test.nim

@@ -43,8 +43,8 @@ data:
     \ echo u, \" \", v\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   - cplib/graph/lowlink.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim

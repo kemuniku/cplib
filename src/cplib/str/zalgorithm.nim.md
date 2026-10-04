@@ -1,32 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: cplib/str/run_enumerate.nim
-    title: cplib/str/run_enumerate.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/str/run_enumerate.nim
-    title: cplib/str/run_enumerate.nim
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/AI/run_enumerate_test.nim
-    title: verify/AI/run_enumerate_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/AI/run_enumerate_test.nim
-    title: verify/AI/run_enumerate_test.nim
-  - icon: ':heavy_check_mark:'
     path: verify/AI/zalgorithm_test.nim
     title: verify/AI/zalgorithm_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/zalgorithm_test.nim
     title: verify/AI/zalgorithm_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/str/run_enumerate_yosupo_test.nim
-    title: verify/str/run_enumerate_yosupo_test.nim
-  - icon: ':heavy_check_mark:'
-    path: verify/str/run_enumerate_yosupo_test.nim
-    title: verify/str/run_enumerate_yosupo_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/zalgorithm_test.nim
     title: verify/str/zalgorithm_test.nim
@@ -56,20 +38,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: cplib/str/zalgorithm.nim
-  requiredBy:
-  - cplib/str/run_enumerate.nim
-  - cplib/str/run_enumerate.nim
+  requiredBy: []
   timestamp: '2026-07-09 09:03:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/zalgorithm_test.nim
   - verify/AI/zalgorithm_test.nim
-  - verify/AI/run_enumerate_test.nim
-  - verify/AI/run_enumerate_test.nim
   - verify/str/zalgorithm_test.nim
   - verify/str/zalgorithm_test.nim
-  - verify/str/run_enumerate_yosupo_test.nim
-  - verify/str/run_enumerate_yosupo_test.nim
 documentation_of: cplib/str/zalgorithm.nim
 layout: document
 redirect_from:

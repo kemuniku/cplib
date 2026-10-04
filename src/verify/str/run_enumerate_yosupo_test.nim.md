@@ -7,12 +7,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/run_enumerate.nim
     title: cplib/str/run_enumerate.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/str/zalgorithm.nim
-    title: cplib/str/zalgorithm.nim
-  - icon: ':heavy_check_mark:'
-    path: cplib/str/zalgorithm.nim
-    title: cplib/str/zalgorithm.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -32,14 +26,12 @@ data:
     \nimport cplib/str/run_enumerate\n\nlet s = stdin.readLine\nlet ans = run_enumerate(s)\n\
     echo ans.len\nfor (p, l, r) in ans:\n    echo p, \" \", l, \" \", r\n"
   dependsOn:
-  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
-  - cplib/str/zalgorithm.nim
   - cplib/str/run_enumerate.nim
   isVerificationFile: true
   path: verify/str/run_enumerate_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-07-09 09:03:36+09:00'
+  timestamp: '2026-10-02 14:49:24+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/run_enumerate_yosupo_test.nim

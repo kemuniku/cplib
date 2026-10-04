@@ -99,10 +99,10 @@ data:
     \ == 4 and second == 9\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/auto_rollback.nim
   - cplib/utils/auto_rollback.nim
   isVerificationFile: true
   path: verify/AI/temporary_index_cache_test.nim

@@ -46,11 +46,11 @@ data:
     \       echo x, \" \", 0\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/math/isprime.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
   - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true

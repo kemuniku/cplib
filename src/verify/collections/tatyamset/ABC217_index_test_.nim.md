@@ -36,9 +36,9 @@ data:
     \        echo(s[i] - s[i-1])\n"
   dependsOn:
   - cplib/collections/tatyamset.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/tatyamset.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/collections/tatyamset/ABC217_index_test_.nim
   requiredBy: []

@@ -77,11 +77,11 @@ data:
     \ get_bounds(limit, limit, T(1)) == sbt_root(T).move_right(T(1))\n\ncheckRandom[int]()\n\
     checkRandom[int32]()\ncheckRandom[int64]()\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
-  - cplib/math/fractions.nim
   - cplib/graph/graph.nim
   - cplib/math/stern_brocot_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_bounds_test.nim

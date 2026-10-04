@@ -93,22 +93,22 @@ data:
     \ assigned == value + value\n        doAssert parseBigInt(nines) + parseBigInt(\"\
     -\" & nines) == 0\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/bigint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/bigint.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
   isVerificationFile: true
   path: verify/math/bigint_parse_unit_test.nim
   requiredBy: []

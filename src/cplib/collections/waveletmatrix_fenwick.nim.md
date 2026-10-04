@@ -125,12 +125,12 @@ data:
   dependsOn:
   - cplib/collections/fenwick_avx2.nim
   - cplib/collections/bitvector.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/bitvector.nim
   isVerificationFile: false
   path: cplib/collections/waveletmatrix_fenwick.nim
   requiredBy: []

@@ -48,9 +48,9 @@ data:
     \            doAssert s.rank(v) == i\n            doAssert s.potential(v) == expected[v]\n\
     echo \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
   isVerificationFile: true
   path: verify/AI/weighted_matching_structure_test.nim
