@@ -2,23 +2,18 @@ when not declared CPLIB_TREE_CARTESIAN_TREE:
     const CPLIB_TREE_CARTESIAN_TREE* = 1
     import sequtils
 
-    proc cartesian_tree_tuple*(A:seq[int]):seq[tuple[p:int,l:int,r:int]]=
-        result = newseqwith(len(A),(-1,-1,-1))
-        var stack : seq[int]
-
-        for i in 0..<(len(A)):
-            var s = -1
-            while len(stack) > 0 and A[stack[^1]] > A[i]:
-                s = stack.pop()
-            if s != -1:
-                if result[i].l != -1:
-                    swap(result[i].l , result[s].l)
-                else:
-                    result[i].l = s
-                result[s].p = i
-            if len(stack) > 0:
-                result[i].p = stack[^1]
-                result[stack[^1]].r = i
-            stack.add(i)
-
-            #echo stack.mapit(A[it])
+    proc cartesian_tree_tuple*(A: seq[int]): seq[tuple[p: int, l: int, r: int]] =
+        ## 最小値Cartesian treeの親と左右の子をO(N)で返す。同値は左側を優先する。
+        result = newSeqWith(A.len, (-1, -1, -1))
+        var root = -1
+        for i in 0..<A.len:
+            var p = i - 1
+            # 親リンクが単調スタックの次要素を表す。各リンクは高々一度だけ外れる。
+            while p != -1 and A[p] > A[i]:
+                p = result[p].p
+            let left = if p == -1: root else: result[p].r
+            result[i].p = p
+            result[i].l = left
+            if left != -1: result[left].p = i
+            if p == -1: root = i
+            else: result[p].r = i
