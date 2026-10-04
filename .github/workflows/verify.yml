@@ -80,6 +80,9 @@ jobs:
       - name: Run expander regression tests
         run: python3 tools/expander/test_expander.py
 
+      - name: Run Delaunay exact-oracle tests (debug/release)
+        run: python3 tools/geometry/test_delaunay.py
+
       - name: Run tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
