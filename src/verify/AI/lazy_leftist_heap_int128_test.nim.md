@@ -58,8 +58,8 @@ data:
   dependsOn:
   - cplib/collections/lazy_leftist_heap.nim
   - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/collections/lazy_leftist_heap.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/lazy_leftist_heap_int128_test.nim
   requiredBy: []

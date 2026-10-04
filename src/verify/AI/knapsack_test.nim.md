@@ -51,8 +51,8 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/knapsack.nim
   - cplib/utils/constants.nim
+  - cplib/utils/knapsack.nim
   - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
   isVerificationFile: true

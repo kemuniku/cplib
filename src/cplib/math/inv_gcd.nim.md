@@ -111,6 +111,12 @@ data:
     path: cplib/math/bigint.nim
     title: cplib/math/bigint.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/crt.nim
+    title: cplib/math/crt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/crt.nim
+    title: cplib/math/crt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/math/factoradic.nim
     title: cplib/math/factoradic.nim
   - icon: ':heavy_check_mark:'
@@ -460,6 +466,12 @@ data:
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/crt_test.nim
+    title: verify/math/crt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/crt_test.nim
+    title: verify/math/crt_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
   - icon: ':heavy_check_mark:'
@@ -542,6 +554,8 @@ data:
   - cplib/convolution/convolution_old.nim
   - cplib/convolution/semi_relaxed_convolution.nim
   - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/math/crt.nim
+  - cplib/math/crt.nim
   - cplib/math/bigint.nim
   - cplib/math/bigint.nim
   - cplib/math/many_factorials.nim
@@ -657,6 +671,8 @@ data:
   - verify/AI/convolution_test.nim
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/crt_test.nim
+  - verify/math/crt_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/bigint_parse_unit_test.nim

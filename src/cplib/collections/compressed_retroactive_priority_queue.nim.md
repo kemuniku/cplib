@@ -158,8 +158,8 @@ data:
     \u306Epop\u306F0\u3068\u3057\u3066\u6271\u3044\u307E\u3059\u3002O(1)\u3002\n \
     \       self.queue.poppedSum\n"
   dependsOn:
-  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/retroactive_priority_queue.nim
   isVerificationFile: false

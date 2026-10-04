@@ -154,11 +154,11 @@ data:
     \ tree.la(v, deepDepth[v] + 1) == -1\necho \"Hello World\"\n"
   dependsOn:
   - cplib/tree/lca.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/lca.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: true
   path: verify/AI/lca_test.nim
   requiredBy: []

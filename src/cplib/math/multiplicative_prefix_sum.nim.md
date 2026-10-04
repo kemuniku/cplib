@@ -164,16 +164,16 @@ data:
     \ i + 1, value)\n                    power *= p\n                    inc e\n \
     \               inc i\n        visit(n, 0, init(T, 1))\n        result = answer\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/math/multiplicative_prefix_sum.nim
   requiredBy: []

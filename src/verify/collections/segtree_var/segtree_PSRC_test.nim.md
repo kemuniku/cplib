@@ -39,9 +39,9 @@ data:
     \        var (a, b) = st.get(l, r)\n        echo (a*x mod MOD + b) mod MOD\n"
   dependsOn:
   - cplib/collections/segtree_var.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_var.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_PSRC_test.nim
   requiredBy: []

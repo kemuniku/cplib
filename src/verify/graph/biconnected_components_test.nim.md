@@ -49,9 +49,9 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
+  - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/biconnected_components.nim

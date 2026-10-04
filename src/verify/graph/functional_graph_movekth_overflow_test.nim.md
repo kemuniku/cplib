@@ -49,11 +49,11 @@ data:
     \ start, count)\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_movekth_overflow_test.nim
   requiredBy: []

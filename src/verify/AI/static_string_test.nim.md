@@ -187,13 +187,13 @@ data:
 
     '
   dependsOn:
+  - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/static_string.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/AI/static_string_test.nim

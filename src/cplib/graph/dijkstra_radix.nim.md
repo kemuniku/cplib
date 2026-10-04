@@ -118,13 +118,13 @@ data:
     \ = dijkstraRadixImpl(G, start, ZERO, INF, true, true, goal)\n        result.path\
     \ = prev.restore_shortest_path_from_prev(goal)\n        result.cost = costs[goal]\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/collections/radix_heap.nim
   - cplib/graph/graph.nim
   - cplib/collections/radix_heap.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra_radix.nim

@@ -120,14 +120,14 @@ data:
     \ \", checked, \" small graphs and boundary/nested cases passed\")\necho \"Hello\
     \ World\"\n"
   dependsOn:
+  - cplib/graph/directed_mst.nim
   - cplib/collections/lazy_leftist_heap.nim
   - cplib/graph/directed_mst.nim
-  - cplib/graph/directed_mst.nim
-  - cplib/math/int128.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/math/int128.nim
   - cplib/collections/lazy_leftist_heap.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/directed_mst_test.nim
   requiredBy: []

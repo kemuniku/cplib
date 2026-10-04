@@ -36,9 +36,9 @@ data:
     \    let b = ii()\n    if t == 0:\n        st[a] = st[a] + b\n    else:\n    \
     \    echo st.get(a, b)\n"
   dependsOn:
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/dynamic_segtree.nim
   isVerificationFile: true
   path: verify/collections/segtree/dynamic_segtree_PARS_test.nim

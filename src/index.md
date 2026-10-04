@@ -573,6 +573,9 @@ data:
       path: cplib/math/combination_prefix_sum.nim
       title: cplib/math/combination_prefix_sum.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/crt.nim
+      title: cplib/math/crt.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/divisor.nim
       title: cplib/math/divisor.nim
     - icon: ':heavy_check_mark:'
@@ -2910,6 +2913,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/combination_test.nim
       title: verify/math/combination_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/crt_test.nim
+      title: verify/math/crt_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/math/division_of_big_integers_test.nim
       title: verify/math/division_of_big_integers_test.nim

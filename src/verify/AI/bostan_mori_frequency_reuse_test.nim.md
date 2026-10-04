@@ -117,24 +117,24 @@ data:
     for m in [998244353,15,998244353]:\n  modint_montgomery.setMod(m)\n  suite[modint_montgomery](\"\
     dynamic Montgomery \" & $m)\ndoAssert checks == 5800\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/fps/bostan_mori.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/fps/bostan_mori.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/bostan_mori_frequency_reuse_test.nim
   requiredBy: []

@@ -83,8 +83,8 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
   - cplib/graph/k_shortest_walk.nim
   - cplib/utils/constants.nim
   isVerificationFile: true

@@ -68,9 +68,9 @@ data:
     \        for (queryIndex, prefixIndex) in queryIndices:\n            result[queryIndex]\
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/math/combination.nim
   - cplib/math/combination.nim
   - cplib/utils/mo.nim

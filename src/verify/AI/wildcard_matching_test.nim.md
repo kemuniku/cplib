@@ -119,22 +119,22 @@ data:
     \ \"aa\")\nexcept AssertionDefect:\n    rejected = true\ndoAssert rejected\n\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/str/wildcard_matching.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/str/wildcard_matching.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/str/wildcard_matching.nim
   isVerificationFile: true
   path: verify/AI/wildcard_matching_test.nim
   requiredBy: []

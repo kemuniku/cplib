@@ -118,11 +118,11 @@ data:
     \u3044\u307E\u3059\")\n        answer.cost = int64(total.to_int())\n        some(answer)\n"
   dependsOn:
   - cplib/collections/lazy_leftist_heap.nim
-  - cplib/math/int128.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/math/int128.nim
   - cplib/collections/lazy_leftist_heap.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/graph/directed_mst.nim
   requiredBy: []
