@@ -34,7 +34,9 @@ proc check[T, Tree](a: seq[T], tree: Tree, l, r: int, x, low, high: T, k = -1) =
     doAssert tree.range_lowerbound(l, r, x) == less
     doAssert tree.range_upperbound(l, r, x) == lessEqual
     doAssert tree.count(l, r, x) == equal
-    doAssert tree.range_freq(l, r, low, high) == freq, "range=" & $l & ":" & $r & " bounds=" & $low & ":" & $high & " expected=" & $freq & " actual=" & $tree.range_freq(l, r, low, high)
+    doAssert tree.range_freq(l, r, low, high) == freq, "range=" & $l & ":" &
+            $r & " bounds=" & $low & ":" & $high & " expected=" & $freq &
+            " actual=" & $tree.range_freq(l, r, low, high)
     doAssert tree.prev_value(l, r, x) == prev
     doAssert tree.next_value(l, r, x) == next
     if k >= 0:
@@ -81,7 +83,8 @@ checkAll(@[Key(text: "b", number: 1), Key(text: "a", number: 2),
 block:
     let a = @[LessOnly(word: "long"), LessOnly(word: "z"), LessOnly(word: "bb")]
     let st = initMergeSortTree(a)
-    check(a, st, 0, 3, LessOnly(word: "bb"), LessOnly(word: ""), LessOnly(word: "long"), 1)
+    check(a, st, 0, 3, LessOnly(word: "bb"), LessOnly(word: ""), LessOnly(
+            word: "long"), 1)
 
 block:
     var input = @[3, 1, 3, 2]
@@ -95,7 +98,8 @@ block:
         oracle[0] = value
         for l in 0..oracle.len:
             for r in l..oracle.len:
-                check(oracle, dt, l, r, 3, -1000, 1000001, (if l < r: 0 else: -1))
+                check(oracle, dt, l, r, 3, -1000, 1000001, (if l <
+                        r: 0 else: -1))
     doAssert st.count(0, 4, 3) == 2
     doAssert input == @[99, 1, 3, 2]
 
@@ -170,7 +174,8 @@ block:
                   (if l < r: rng.rand(r-l-1) else: -1))
         for step in 0..<600:
             if n > 0 and rng.rand(2) != 0:
-                let i = if step mod 3 == 0: 0 elif step mod 3 == 1: n-1 else: rng.rand(n-1)
+                let i = if step mod 3 == 0: 0 elif step mod 3 ==
+                        1: n-1 else: rng.rand(n-1)
                 let value = if step mod 5 == 0: a[i] else: rng.rand(-10000..10000)
                 if step mod 2 == 0: dt[i] = value
                 else: dt.update(i, value)
@@ -179,7 +184,8 @@ block:
             let l = rng.rand(n)
             let r = rng.rand(l..n)
             let x = rng.rand(-10001..10001)
-            check(a, dt, l, r, x, rng.rand(-10001..10001), rng.rand(-10001..10001),
+            check(a, dt, l, r, x, rng.rand(-10001..10001), rng.rand(
+                    -10001..10001),
                   (if l < r: rng.rand(r-l-1) else: -1))
 
 block:
@@ -200,10 +206,45 @@ block:
         let r = rng.rand(l..n)
         let x = rng.rand(-20..20)
         if step < 20:
-            check(initial, st, l, r, x, -11, 11, (if l < r: rng.rand(r-l-1) else: -1))
+            check(initial, st, l, r, x, -11, 11, (if l < r: rng.rand(
+                    r-l-1) else: -1))
         let i = rng.rand(n-1)
         a[i] = rng.rand(-100000..100000)
         dt[i] = a[i]
         check(a, dt, l, r, x, -11, 11, (if l < r: rng.rand(r-l-1) else: -1))
+
+block:
+    const sizes = [0, 1, 2, 7, 65, 257]
+    for seed in 0..<24:
+        var rng = initRand(20261004 + seed)
+        let n = sizes[seed mod sizes.len]
+        var initial = newSeq[int](n)
+        for i in 0..<n: initial[i] = rng.rand(-4..4)
+        var current = @initial
+        let st = initMergeSortTree(initial)
+        let dt = initDynamicMergeSortTree(current)
+        for step in 0..<2000:
+            if n > 0 and rng.rand(2) == 0:
+                let i = if step mod 3 == 0: 0
+                        elif step mod 3 == 1: n - 1
+                        else: rng.rand(n - 1)
+                let value = if step mod 7 == 0: current[i]
+                            else: rng.rand(-int(min(1000000000000'i64, int64(
+                                    high(int))))..int(min(1000000000000'i64,
+                                    int64(high(int)))))
+                dt[i] = value
+                current[i] = value
+                doAssert dt.get(i) == value
+            else:
+                let l = rng.rand(n)
+                let r = rng.rand(l..n)
+                let choices = [low(int), high(int), rng.rand(-6..6),
+                               (if l < r: current[rng.rand(l..r-1)] else: 0)]
+                let x = choices[rng.rand(choices.high)]
+                let lo = rng.rand(-6..6)
+                let hi = rng.rand(-6..6)
+                let k = if l < r: rng.rand(r-l-1) else: -1
+                check(initial, st, l, r, x, lo, hi, k)
+                check(current, dt, l, r, x, lo, hi, k)
 
 echo "Hello World"

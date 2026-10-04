@@ -89,12 +89,20 @@ k番目は根の全要素を候補にして**順位の整数添字**を二分探
 nim cpp -r --hints:off --path:src src/verify/collections/mergesorttree_test.nim
 nim cpp -r --hints:off -d:release --path:src src/verify/collections/mergesorttree_test.nim
 nim cpp -r --hints:off -d:release -d:mergeSortTreeStress --path:src src/verify/collections/mergesorttree_test.nim
-python3 tools/mergesorttree/test_mergesorttree.py --nim /path/to/nim
-python3 tools/mergesorttree/test_mergesorttree.py --nim /path/to/nim --expand
 ```
 
 Nimテストは愚直な走査・独立ソートと比較します。空列、単点、重複、負値、全同値、最小・最大整数、存在しない境界、全端区間、同値・繰り返し更新、文字列・int64・float・独自型を含みます。
 48 seedsの小規模ランダムテストとN=4,097の大きめのケースを常時実行し、`mergeSortTreeStress` ではN=65,537・2,000回の更新検索を使います。
-Pythonテストは24 seeds × 2,000操作で、静的列と更新後の動的列を別々のoracleで比較します。
-`--expand` はNim版expanderの通常・single-line・compress・compress+original-sourceの4形式を展開し、cplibの検索パスなしでコンパイルして同じPython oracleと比較します。さらに独自型を含むNimの回帰テストも展開後に実行します。
+24 seeds × 2,000操作では大きな更新値・整数上下限の検索境界も使い、
+静的列と更新後の動的列を別々のoracleで比較します。
+既存verify CIでこのNim回帰を実行します。
 `mergesorttree_kth_smallest_test.nim` はLibrary Checkerの `range_kth_smallest` 用driverです。
+
+展開後の回帰は既存Nim expanderを使って実行できます。
+`--single-line`、`--compress`、`--compress --original-source` も同様に指定できます。
+
+```sh
+nim cpp --nimcache:/tmp/mst-expander-cache -o:/tmp/mst-expander tools/expander/expander.nim
+/tmp/mst-expander --quiet --lib:. --output-file:/tmp/mst-expanded.nim src/verify/collections/mergesorttree_test.nim
+nim cpp -r -d:release --nimcache:/tmp/mst-expanded-cache -o:/tmp/mst-expanded /tmp/mst-expanded.nim
+```
