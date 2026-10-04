@@ -1,5 +1,7 @@
 when not declared CPLIB_MATH_COMBINATION:
     const CPLIB_MATH_COMBINATION* = 1
+    import cplib/math/isprime
+
     type Combination_Type[ModInt] = object
         modulus: uint64
         fact*: seq[ModInt]
@@ -7,13 +9,22 @@ when not declared CPLIB_MATH_COMBINATION:
         fact_inv*: seq[ModInt]
 
     proc initCombination*[ModInt](max_N: int): Combination_Type[ModInt] =
-        ## 前計算表を従来の漸化式で作り、構築時の法を記録する。O(max_N)。
+        ## 階乗・逆階乗・整数の逆元の表を作る。素数法では逆元計算を一回にまとめる。
         assert max_N >= 0, "max_Nは非負である必要があります"
         var fact = newSeq[ModInt](max_N+1)
         var inv = newSeq[ModInt](max_N+1)
         var fact_inv = newSeq[ModInt](max_N+1)
         fact[0] = 1
         fact_inv[0] = 1
+        when compiles(fact[0].inv):
+            if isprime(ModInt.umod()):
+                let limit = min(max_N, int(ModInt.umod()) - 1)
+                for i in 1..limit: fact[i] = fact[i-1] * i
+                fact_inv[limit] = fact[limit].inv
+                for i in countdown(limit, 1):
+                    fact_inv[i-1] = fact_inv[i] * i
+                    inv[i] = fact_inv[i] * fact[i-1]
+                return Combination_Type[ModInt](modulus: ModInt.umod().uint64, fact: fact, inv: inv, fact_inv: fact_inv)
         if max_N >= 1:
             fact[1] = 1
             inv[1] = 1

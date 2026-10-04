@@ -1,16 +1,16 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
-import sequtils, strutils
+include cplib/tmpl/fastio
 import atcoder/modint
 import cplib/math/combination
-
-let tm = stdin.readLine.split.map(parseInt)
-let t = tm[0]
-let m = tm[1]
-type mint = modint
-mint.setMod(m)
-var c = initCombination[mint](10_000_000)
+let t = ii()
+let m = ii()
+type Mint = modint
+Mint.setMod(m)
+let c = initCombination[Mint](10_000_000)
+var output = newStringOfCap(t * 11)
 for _ in 0..<t:
-    let nk = stdin.readLine.split.map(parseInt)
-    let n = nk[0]
-    let k = nk[1]
-    echo c.ncr(n, k).val
+    let n = ii()
+    let k = ii()
+    output.add($c.ncr(n, k).val)
+    output.add('\n')
+stdout.write(output)
