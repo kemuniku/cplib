@@ -44,3 +44,7 @@ oj t
 # How to Contribute
 
 ライブラリに関するバグ報告や提案などは、Issue, Pull Request を立ててください。
+
+# 数値型
+
+- [long double ラッパー](docs/math/longdouble.md): C/C++ の精度を保った演算・文字列変換と環境情報。
