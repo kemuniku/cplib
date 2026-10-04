@@ -478,6 +478,7 @@
 "verify/math/combination_npr_test.nim": "2026-09-13 17:15:27 +0900",
 "verify/math/combination_prefix_sum_test.nim": "2026-09-27 00:37:04 +0900",
 "verify/math/combination_test.nim": "2026-09-13 17:15:27 +0900",
+"verify/math/crt_test.nim": "2026-10-02 19:57:44 +0000",
 "verify/math/division_of_big_integers_test.nim": "2026-10-02 14:56:06 +0000",
 "verify/math/euler_phi_aoj_test.nim": "2024-01-07 17:44:35 +0900",
 "verify/math/euler_phi_list_yukicoder_test.nim": "2024-01-07 17:44:35 +0900",
