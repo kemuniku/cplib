@@ -1,12 +1,12 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import tables, sets, random, hashes
-import cplib/str/suffix_automaton
+import cplib/str/suffix_automaton_table
 import cplib/str/suffix_array
 
 var checkedPrefixes = 0
 var sawClone = false
 
-proc check[T](sam: SuffixAutomaton[T], s: seq[T]) =
+proc check[T](sam: SuffixAutomatonTable[T], s: seq[T]) =
     inc checkedPrefixes
     doAssert sam.root == 0
     doAssert sam.nodes[0].len == 0 and sam.nodes[0].link == -1
@@ -64,7 +64,7 @@ proc check[T](sam: SuffixAutomaton[T], s: seq[T]) =
         doAssert (sam.findNode(word) in suffixStates) == (positions[^1] == s.high)
 
 proc checkPrefixes[T](s: seq[T]) =
-    var sam = initSuffixAutomaton(T)
+    var sam = initSuffixAutomatonTable(T)
     check(sam, newSeq[T]())
     for i, c in s:
         let before = sam.nodeCount
@@ -73,7 +73,7 @@ proc checkPrefixes[T](s: seq[T]) =
         if sam.nodeCount > before + 1:
             sawClone = true
         check(sam, s[0..i])
-    let built = initSuffixAutomaton(s)
+    let built = initSuffixAutomatonTable(s)
     doAssert sam.nodes == built.nodes and sam.last == built.last
 
 proc exhaustive(s: var seq[int], i, alphabet: int) =
@@ -112,7 +112,7 @@ for trial in 0..<300:
 var allBytes = newString(256)
 for i in 0..255:
     allBytes[i] = char(i)
-let bytesSam = initSuffixAutomaton(allBytes & allBytes)
+let bytesSam = initSuffixAutomatonTable(allBytes & allBytes)
 for i in 0..255:
     doAssert bytesSam.contains($char(i))
     doAssert bytesSam.contains($char(i) & $char((i + 1) mod 256))
@@ -122,13 +122,13 @@ for n in [1, 2, 31, 32, 33, 255, 256, 257, 4096, 10000]:
         var text = newString(n)
         for c in text.mitems:
             c = char(rng.rand(alphabet - 1))
-        let sam = initSuffixAutomaton(text)
+        let sam = initSuffixAutomatonTable(text)
         var expected = int64(n) * int64(n + 1) div 2
         for lcp in lcp_array(text, suffix_array(text)):
             expected -= int64(lcp)
         doAssert sam.countDistinctSubstrings == expected
 
-var sam = initSuffixAutomaton("banana")
+var sam = initSuffixAutomatonTable("banana")
 let saved = sam
 let savedNodeCount = sam.nodeCount
 for trial in 0..<100:
@@ -140,10 +140,10 @@ var other = sam
 discard other.extend('z')
 doAssert not sam.contains("z") and sam.nodes == saved.nodes
 check(other, @"bananaz")
-sam = initSuffixAutomaton(char)
+sam = initSuffixAutomatonTable(char)
 discard sam.extend('x')
 check(sam, @"x")
-var defaultSam: SuffixAutomaton[int]
+var defaultSam: SuffixAutomatonTable[int]
 discard defaultSam.extend(5)
 check(defaultSam, @[5])
 doAssert sawClone and checkedPrefixes > 10000
