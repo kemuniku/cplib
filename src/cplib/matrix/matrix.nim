@@ -1,6 +1,7 @@
 when not declared CPLIB_MATRIX_MATRIX:
     const CPLIB_MATRIX_MATRIX* = 1
     import sequtils, strutils, hashes, std/math
+    import cplib/matrix/semiring_matrix_ops
     type Matrix*[T] = object
         arr: seq[seq[T]]
         emptyWidth: int
@@ -12,6 +13,10 @@ when not declared CPLIB_MATRIX_MATRIX:
         if vertical: Matrix[T](arr: arr.mapIt(@[it]), emptyWidth: 1)
         else: Matrix[T](arr: @[@arr])
     proc initMatrix*[T](h, w: int, val: T): Matrix[T] = Matrix[T](arr: newSeqWith(h, newSeqWith(w, val)), emptyWidth: w)
+    proc initMatrix*[T](h, w: int): Matrix[T] =
+        ## 要素型の加法単位元で初期化する。O(HW)。
+        bind initMatrix
+        initMatrix[T](h, w, matrixZero(T))
 
     proc h*[T](m: Matrix[T]): int = m.arr.len
     proc w*[T](m: Matrix[T]): int =
@@ -32,8 +37,10 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     proc `-`*[T](m: Matrix[T]): Matrix[T] = Matrix[T](arr: m.arr.mapIt(it.mapIt(-it)), emptyWidth: m.emptyWidth)
     proc `*=`*[T](a: var Matrix[T], b: Matrix[T]) =
+        ## 半環の行列積で更新する。O(HW(K+1))、追加領域O(HW)。
+        bind initMatrix
         assert a.w == b.h, "左の行列の列数と右の行列の行数は等しい必要があります"
-        var ans = initMatrix[T](a.h, b.w, 0)
+        var ans = initMatrix[T](a.h, b.w, matrixZero(T))
         for i in 0..<a.h:
             for j in 0..<b.w:
                 for k in 0..<a.w:
@@ -95,19 +102,35 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     proc hash*[T](m: Matrix[T]): Hash = hash(m.arr)
     proc identity_matrix*[T](n: int, one, zero: T): Matrix[T] =
+        bind initMatrix
         result = initMatrix[T](n, n, zero)
         for i in 0..<n: result[i][i] = one
-    proc identity_matrix*[T](n: int): Matrix[T] = identity_matrix[T](n, 1, 0)
+    proc identity_matrix*[T](n: int): Matrix[T] =
+        ## 要素型の単位元から単位行列を作る。O(n^2)。
+        bind identity_matrix
+        identity_matrix[T](n, matrixOne(T), matrixZero(T))
     proc pow*[T](m: Matrix[T], n: int): Matrix[T] =
-        result = identity_matrix[T](m.h)
-        var m = m
-        var n = n
-        while n > 0:
-            if (n and 1) == 1: result *= m
-            m *= m
-            n = n shr 1
+        ## zero/oneを持つ半環は非負整数乗。O(H^2+H^3 log(n+1))、追加領域O(H^2)。
+        bind identity_matrix
+        when hasMatrixIdentities(T):
+            return semiringMatrixPow(m, n, identity_matrix[T](m.h))
+        else:
+            result = identity_matrix[T](m.h)
+            var m = m
+            var n = n
+            while n > 0:
+                if (n and 1) == 1: result *= m
+                m *= m
+                n = n shr 1
     proc `**`*[T](m: Matrix[T], n: int): Matrix[T] = m.pow(n)
-    proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum
+    proc sum*[T](m: Matrix[T]): T =
+        ## 要素を半環の加法で集約する。空行列は加法単位元。O(HW)。
+        when hasMatrixIdentities(T):
+            result = matrixZero(T)
+            for i in 0..<m.h:
+                for j in 0..<m.w: result += m[i, j]
+        else:
+            result = m.arr.mapit(it.sum).sum
 
     import options
     import cplib/matrix/field_matrix_ops
