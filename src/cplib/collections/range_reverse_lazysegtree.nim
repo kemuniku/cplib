@@ -9,7 +9,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
         left, right: RangeReverseLazySegmentTreeNode[S, F]
         priority: uint64
         size: int
-        rev: bool
+        rev, hasLazy: bool
         value, prod, rprod: S
         lazy: F
 
@@ -48,6 +48,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
         node.prod = mapping(f, node.prod)
         node.rprod = mapping(f, node.rprod)
         node.lazy = composition(f, node.lazy)
+        node.hasLazy = true
 
     proc toggle[S, F](node: RangeReverseLazySegmentTreeNode[S, F]) =
         if not node.isNil:
@@ -70,9 +71,11 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
             node.left.toggle
             node.right.toggle
             node.rev = false
-        node.left.allApply(node.lazy, mapping, composition)
-        node.right.allApply(node.lazy, mapping, composition)
-        node.lazy = id
+        if node.hasLazy:
+            node.left.allApply(node.lazy, mapping, composition)
+            node.right.allApply(node.lazy, mapping, composition)
+            node.lazy = id
+            node.hasLazy = false
 
     proc newNode[S, F](value: S, priority: uint64, id: F): RangeReverseLazySegmentTreeNode[S, F] =
         RangeReverseLazySegmentTreeNode[S, F](priority: priority, size: 1, value: value, prod: value, rprod: value, lazy: id)
@@ -135,6 +138,8 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     ): (RangeReverseLazySegmentTreeNode[S, F], RangeReverseLazySegmentTreeNode[S, F]) =
         if node.isNil:
             return (nil, nil)
+        if k <= 0: return (nil, node)
+        if k >= node.size: return (node, nil)
         node.push(mapping, composition, id)
         let leftSize = node.left.nodeLen
         if k <= leftSize:
@@ -240,12 +245,32 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     proc reverse*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int, int]) =
         self.reverse(segment.a, segment.b + 1)
 
+    proc applyRange[S, F](
+        self: RangeReverseLazySegmentTree[S, F],
+        node: RangeReverseLazySegmentTreeNode[S, F],
+        l, r: int,
+        f: F
+    ) =
+        ## 部分木の半開区間 [l, r) に作用を適用する。期待 O(log N)。
+        if l >= r: return
+        if l == 0 and r == node.size:
+            node.allApply(f, self.mapping, self.composition)
+            return
+        node.push(self.mapping, self.composition, self.id)
+        let leftSize = node.left.nodeLen
+        if l < leftSize:
+            self.applyRange(node.left, l, min(r, leftSize), f)
+        if l <= leftSize and leftSize < r:
+            node.value = self.mapping(f, node.value)
+        if r > leftSize + 1:
+            self.applyRange(node.right, max(0, l - leftSize - 1), r - leftSize - 1, f)
+        node.update(self.merge, self.default)
+
     proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int, f: F) =
+        ## 半開区間 [l, r) に作用を適用する。期待 O(log N)。
         assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
-        var (left, middleRight) = self.splitRoot(self.root, l)
-        var (middle, right) = self.splitRoot(middleRight, r - l)
-        middle.allApply(f, self.mapping, self.composition)
-        self.root = self.mergeRoot(left, self.mergeRoot(middle, right))
+        if l == r: return
+        self.applyRange(self.root, l, r, f)
 
     proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int, f: F) =
         assert 0 <= index and index < self.length, "指定した値が有効な範囲内である必要があります: 0 <= index and index < self.length"
@@ -254,12 +279,30 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     proc apply*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int, int], f: F) =
         self.apply(segment.a, segment.b + 1, f)
 
+    proc getRange[S, F](
+        self: RangeReverseLazySegmentTree[S, F],
+        node: RangeReverseLazySegmentTreeNode[S, F],
+        l, r: int
+    ): S =
+        ## 部分木の半開区間 [l, r) を順序を保って集約する。期待 O(log N)。
+        if l == 0 and r == node.size: return node.prod
+        node.push(self.mapping, self.composition, self.id)
+        let leftSize = node.left.nodeLen
+        if r <= leftSize:
+            return self.getRange(node.left, l, r)
+        if l > leftSize:
+            return self.getRange(node.right, l - leftSize - 1, r - leftSize - 1)
+        result = node.value
+        if l < leftSize:
+            result = self.merge(self.getRange(node.left, l, leftSize), result)
+        if r > leftSize + 1:
+            result = self.merge(result, self.getRange(node.right, 0, r - leftSize - 1))
+
     proc get*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int): S =
+        ## 半開区間 [l, r) を集約する。期待 O(log N)。
         assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
-        var (left, middleRight) = self.splitRoot(self.root, l)
-        var (middle, right) = self.splitRoot(middleRight, r - l)
-        result = middle.nodeProd(self.default)
-        self.root = self.mergeRoot(left, self.mergeRoot(middle, right))
+        if l == r: return self.default
+        self.getRange(self.root, l, r)
 
     proc get*[S, F](self: RangeReverseLazySegmentTree[S, F], segment: HSlice[int, int]): S =
         self.get(segment.a, segment.b + 1)
@@ -347,6 +390,7 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
         middle.prod = value
         middle.rprod = value
         middle.lazy = self.id
+        middle.hasLazy = false
         middle.rev = false
         self.root = self.mergeRoot(left, self.mergeRoot(middle, right))
 
