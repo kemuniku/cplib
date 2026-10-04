@@ -67,3 +67,14 @@ for modulus in [8, 25]:
             doAssert c.fact[i].val.int == fact[i]
             doAssert c.inv[i].val.int == invs[i]
             doAssert c.fact_inv[i].val.int == factInv[i]
+
+
+type FlagMod = object
+    val: int
+    inv: bool
+converter toFlagMod(x: int): FlagMod = FlagMod(val: (x mod 101 + 101) mod 101)
+proc umod(M: typedesc[FlagMod]): uint32 = 101
+proc `*`(a, b: FlagMod): FlagMod = toFlagMod(a.val * b.val)
+proc `*`(a: FlagMod, b: int): FlagMod = toFlagMod(a.val * b)
+proc `-`(a: FlagMod): FlagMod = toFlagMod(-a.val)
+check[FlagMod](101, 110)

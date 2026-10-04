@@ -16,7 +16,9 @@ when not declared CPLIB_MATH_COMBINATION:
         var fact_inv = newSeq[ModInt](max_N+1)
         fact[0] = 1
         fact_inv[0] = 1
-        when compiles(fact[0].inv):
+        when compiles(block:
+            var inverse: ModInt = fact[0].inv
+            discard inverse):
             if isprime(ModInt.umod()):
                 let limit = min(max_N, int(ModInt.umod()) - 1)
                 for i in 1..limit: fact[i] = fact[i-1] * i
