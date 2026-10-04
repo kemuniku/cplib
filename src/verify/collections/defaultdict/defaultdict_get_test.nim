@@ -23,7 +23,7 @@ proc check() =
         let i = find(id)
         let key = CollisionKey(id: id)
         let expected = if i < 0: 17 else: model[i][1]
-        doAssert d.getOrDefault(key) == expected
+        doAssert d.get(key) == expected
         doAssert d.hasKey(key) == (i >= 0)
     doAssert d.len == beforeLen
     doAssert d.hash == beforeHash
@@ -58,27 +58,27 @@ for step in 0..<500:
         if i >= 0: model[i][1] = value
         else: model.add((id, value))
     else:
-        discard d.getOrDefault(key)
+        discard d.get(key)
     check()
 
 let immutable = [("present", 0)].toDefaultDict(-3)
-doAssert immutable.getOrDefault("present") == 0
-doAssert immutable.getOrDefault("missing") == -3
+doAssert immutable.get("present") == 0
+doAssert immutable.get("missing") == -3
 doAssert immutable.len == 1 and not immutable.hasKey("missing")
 let converted = {"present": 5}.toTable.toDefaultDict(-9)
-doAssert converted.getOrDefault("present") == 5
-doAssert converted.getOrDefault("missing") == -9
+doAssert converted.get("present") == 5
+doAssert converted.get("missing") == -9
 doAssert converted.len == 1
 
 var sequenceDict = initDefaultDict[int, seq[int]](@[10])
-doAssert sequenceDict.getOrDefault(1) == @[10]
+doAssert sequenceDict.get(1) == @[10]
 doAssert sequenceDict.len == 0
-var copied = sequenceDict.getOrDefault(1)
+var copied = sequenceDict.get(1)
 copied.add(99)
-doAssert sequenceDict.getOrDefault(2) == @[10] and sequenceDict.len == 0
+doAssert sequenceDict.get(2) == @[10] and sequenceDict.len == 0
 sequenceDict[1].add(20)
-doAssert sequenceDict.getOrDefault(1) == @[10, 20]
-doAssert sequenceDict.getOrDefault(2) == @[10]
+doAssert sequenceDict.get(1) == @[10, 20]
+doAssert sequenceDict.get(2) == @[10]
 doAssert sequenceDict.len == 1 and not sequenceDict.hasKey(2)
 
 type Payload = object
@@ -88,22 +88,22 @@ proc update(value: var Payload) =
     inc value.number
     value.text.add("!")
 var objects = initDefaultDict[int, Payload](Payload(number: 7, text: "default"))
-doAssert objects.getOrDefault(1).number == 7
+doAssert objects.get(1).number == 7
 doAssert objects.len == 0
 objects[1].update()
-doAssert objects.getOrDefault(1) == Payload(number: 8, text: "default!")
-doAssert objects.getOrDefault(2) == Payload(number: 7, text: "default")
+doAssert objects.get(1) == Payload(number: 8, text: "default!")
+doAssert objects.get(2) == Payload(number: 7, text: "default")
 doAssert objects.len == 1
 
 type Reference = ref object
     number: int
 let fallback = Reference(number: 7)
 var references = initDefaultDict[int, Reference](fallback)
-doAssert references.getOrDefault(1) == fallback
+doAssert references.get(1) == fallback
 doAssert references.len == 0
-references.getOrDefault(1).number = 9
+references.get(1).number = 9
 doAssert fallback.number == 9 and not references.hasKey(1)
 var nilDefaults = initDefaultDict[int, Reference](nil)
-doAssert nilDefaults.getOrDefault(0).isNil and nilDefaults.len == 0
+doAssert nilDefaults.get(0).isNil and nilDefaults.len == 0
 
 echo "Hello World"
