@@ -43,8 +43,6 @@ oj t
 
 # How to Contribute
 
-Nim版expanderのバイナリ埋め込みモードと実行条件は [expanderの説明](docs/tools/expander.md) を参照してください。
-
 ライブラリに関するバグ報告や提案などは、Issue, Pull Request を立ててください。
 
 回帰テストは `src/verify` のNim verifyファイル（`*_test.nim`）に追加してください。
