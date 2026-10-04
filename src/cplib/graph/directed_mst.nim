@@ -2,6 +2,7 @@ when not declared CPLIB_GRAPH_DIRECTED_MST:
     const CPLIB_GRAPH_DIRECTED_MST* = 1
     import cplib/graph/graph
     import cplib/math/int128
+    import cplib/collections/lazy_leftist_heap
     import options
 
     when sizeof(int) != 8:
@@ -11,40 +12,18 @@ when not declared CPLIB_GRAPH_DIRECTED_MST:
         cost*: int64
         inEdge*: seq[int]
 
-    type DirectedMSTHeapNode = object
-        key, lazy: Int128
-        left, right, rank, edge: int
+    # Int128 の演算をこのモジュールで解決し、呼び出し元の追加 import を不要にする。
+    proc meldHeap(pool: var LazyLeftistHeapPool[Int128, int], a, b: int): int {.inline.} =
+        ## 入辺ヒープを併合する。O(log E)。
+        pool.meld(a, b)
 
-    proc directedMSTHeapAdd(nodes: var seq[DirectedMSTHeapNode], h: int, delta: Int128) =
-        ## ヒープ全体へ重み差を加える。O(1)。
-        if h >= 0:
-            nodes[h].key += delta
-            nodes[h].lazy += delta
+    proc popHeap(pool: var LazyLeftistHeapPool[Int128, int], root: int): int {.inline.} =
+        ## 最小入辺を削除した根を返す。O(log E)。
+        pool.pop(root)
 
-    proc directedMSTHeapMeld(nodes: var seq[DirectedMSTHeapNode], a, b: int): int =
-        ## 遅延加算付き左偏ヒープを併合する。O(log E)。
-        if a < 0: return b
-        if b < 0: return a
-        var a = a
-        var b = b
-        if nodes[a].key > nodes[b].key or
-                (nodes[a].key == nodes[b].key and nodes[a].edge > nodes[b].edge):
-            swap(a, b)
-        directedMSTHeapAdd(nodes, nodes[a].left, nodes[a].lazy)
-        directedMSTHeapAdd(nodes, nodes[a].right, nodes[a].lazy)
-        nodes[a].lazy = 0
-        nodes[a].right = directedMSTHeapMeld(nodes, nodes[a].right, b)
-        let lrank = if nodes[a].left < 0: 0 else: nodes[nodes[a].left].rank
-        let rrank = if nodes[a].right < 0: 0 else: nodes[nodes[a].right].rank
-        if lrank < rrank: swap(nodes[a].left, nodes[a].right)
-        nodes[a].rank = (if nodes[a].right < 0: 0 else: nodes[nodes[a].right].rank) + 1
-        return a
-
-    proc directedMSTHeapPop(nodes: var seq[DirectedMSTHeapNode], h: int): int =
-        ## 最小要素を除去する。O(log E)。
-        directedMSTHeapAdd(nodes, nodes[h].left, nodes[h].lazy)
-        directedMSTHeapAdd(nodes, nodes[h].right, nodes[h].lazy)
-        directedMSTHeapMeld(nodes, nodes[h].left, nodes[h].right)
+    proc addHeap(pool: var LazyLeftistHeapPool[Int128, int], root: int, delta: Int128) {.inline.} =
+        ## 入辺ヒープ全体へ重み差を加える。O(1)。
+        pool.addAll(root, delta)
 
     proc directedMSTFind(parent: var seq[int], v: int): int =
         ## 縮約後の代表を反復的に求め、経路圧縮する。
@@ -64,7 +43,7 @@ when not declared CPLIB_GRAPH_DIRECTED_MST:
             raise newException(ValueError, "非空グラフと有効な根が必要です")
         if n > high(int32).int div 2:
             raise newException(ValueError, "頂点数が対応範囲を超えています")
-        var nodes = newSeqOfCap[DirectedMSTHeapNode](g.edge_info.len)
+        var pool = initLazyLeftistHeapPool[Int128, int](g.edge_info.len, zero = to_Int128(0))
         var heap: seq[int] = newSeq[int](2 * n)
         var parent = newSeq[int](2 * n)
         var contractionParent = newSeq[int](2 * n)
@@ -79,10 +58,8 @@ when not declared CPLIB_GRAPH_DIRECTED_MST:
             if e.src < 0 or e.src >= n or e.dst < 0 or e.dst >= n:
                 raise newException(ValueError, "辺の端点が範囲外です")
             if e.dst == root or e.src == e.dst: continue
-            let h = nodes.len
-            nodes.add(DirectedMSTHeapNode(key: to_Int128(e.cost), lazy: to_Int128(0),
-                left: -1, right: -1, rank: 1, edge: id))
-            heap[e.dst] = directedMSTHeapMeld(nodes, heap[e.dst], h)
+            let h = pool.singleton(to_Int128(e.cost), id)
+            heap[e.dst] = pool.meldHeap(heap[e.dst], h)
         seen[root] = -1
         var count = n
         for start in 0..<n:
@@ -99,21 +76,22 @@ when not declared CPLIB_GRAPH_DIRECTED_MST:
                     let contracted = count
                     inc count
                     for u in cycle:
-                        heap[contracted] = directedMSTHeapMeld(nodes, heap[contracted], heap[u])
+                        heap[contracted] = pool.meldHeap(heap[contracted], heap[u])
                         parent[u] = contracted
                         contractionParent[u] = contracted
                     v = contracted
                 seen[v] = stamp
                 while heap[v] != -1:
-                    let id = nodes[heap[v]].edge
+                    let id = pool.top(heap[v]).value
                     if directedMSTFind(parent, g.edge_info[id].src) != v: break
-                    heap[v] = directedMSTHeapPop(nodes, heap[v])
+                    heap[v] = pool.popHeap(heap[v])
                 if heap[v] == -1: return none(DirectedMSTResult)
                 let h = heap[v]
-                chosen[v] = nodes[h].edge
-                let weight = nodes[h].key
-                heap[v] = directedMSTHeapPop(nodes, h)
-                directedMSTHeapAdd(nodes, heap[v], -weight)
+                let minimum = pool.top(h)
+                chosen[v] = minimum.value
+                let weight = minimum.key
+                heap[v] = pool.popHeap(h)
+                pool.addHeap(heap[v], -weight)
                 v = directedMSTFind(parent, g.edge_info[chosen[v]].src)
         var answer = DirectedMSTResult(inEdge: newSeq[int](n))
         for v in 0..<n: answer.inEdge[v] = -1
