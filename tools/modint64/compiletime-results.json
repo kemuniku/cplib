@@ -1,0 +1,35 @@
+{
+  "constant_oracle_checks": 471,
+  "primality_checks_each_vm_and_native": 2115,
+  "seed": 640001,
+  "direct_invalid_moduli": [
+    0,
+    1,
+    4,
+    3825123056546413051,
+    18446744073709551615
+  ],
+  "matrix": [
+    {
+      "nim": "1.6.20",
+      "backend": "c",
+      "result": "pass"
+    },
+    {
+      "nim": "1.6.20",
+      "backend": "cpp",
+      "result": "pass"
+    },
+    {
+      "nim": "2.2.4",
+      "backend": "c",
+      "result": "pass"
+    },
+    {
+      "nim": "2.2.4",
+      "backend": "cpp",
+      "result": "pass"
+    }
+  ],
+  "status": "all passed"
+}
