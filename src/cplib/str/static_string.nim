@@ -133,6 +133,8 @@ when not declared CPLIB_STR_STATIC_STRING:
             return system.cmp(len(S), len(T))
         let a = S.base.RSA[S.l]
         let b = S.base.RSA[T.l]
+        if S.r == S.base.S.len and T.r == S.r:
+            return (if a < b: -1 else: 1)
         if S.base.RMQ.query(min(a, b), max(a, b)) >= n:
             return system.cmp(len(S), len(T))
         return (if a < b: -1 else: 1)

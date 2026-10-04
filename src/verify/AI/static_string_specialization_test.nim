@@ -14,7 +14,8 @@ proc checkComparisons[T](s: StaticString[T]) =
     for l in 0..s.len:
         for r in l..s.len:
             parts.add(s[l..<r])
-            parts.add(s[l..<r].reversed)
+            if s.base.reversible:
+                parts.add(s[l..<r].reversed)
     for a in parts:
         for b in parts:
             doAssert cmp(a, b) == literalCmp(a, b)
@@ -37,10 +38,15 @@ for text in ["", "a", "aaaaa", "banana", "abababa", "\x00\xFF\x80\x00\xFF"]:
         doAssert a.SA == b.SA
         doAssert a.LCP == b.LCP
         doAssert initSuffixArray(a).mapIt($it) == initSuffixArray(b).mapIt($it)
+    checkComparisons(toStaticString(values, false))
     checkComparisons(toStaticString(values, true))
 
 checkComparisons(toStaticString(newSeq[int](), true))
+checkComparisons(toStaticString(@[-5, 3, -5, 3, -5, 8], false))
 checkComparisons(toStaticString(@[-5, 3, -5, 3, -5, 8], true))
+let truncated = toStaticString("aaba")
+doAssert cmp(truncated[0..<2], truncated[1..<2]) > 0
+doAssert cmp(truncated[0..<4], truncated[1..<4]) < 0
 
 var rng = initRand(20260917)
 for trial in 0..<30:
