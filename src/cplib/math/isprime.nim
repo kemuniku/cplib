@@ -43,6 +43,8 @@ when not declared CPLIB_MATH_ISPRIME:
         if N < 2 or (N and 1) == 0:
             return false
         let modulus = N.uint64
+        for p in [3u64, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]:
+            if modulus mod p == 0: return modulus == p
         let N1 = modulus - 1
         var d = N1
         var s = 0
