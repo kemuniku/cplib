@@ -17,3 +17,14 @@ when not declared CPLIB_TREE_CARTESIAN_TREE:
             if left != -1: result[left].p = i
             if p == -1: root = i
             else: result[p].r = i
+
+    proc cartesian_tree_subtree_ranges*(A: seq[int]): seq[tuple[l: int, r: int]] =
+        ## 各頂点iの部分木が占める元配列の半開区間[l,r)を時間・空間O(N)で返す。
+        ## 同値は左側優先、空入力は空列。入力を変更せず、再帰を使わない。
+        let tree = A.cartesian_tree_tuple()
+        result = newSeq[tuple[l: int, r: int]](A.len)
+        # 左の子は小さい添字、右の子は大きい添字なので各端点を順に確定できる。
+        for i in 0..<A.len:
+            result[i].l = if tree[i].l == -1: i else: result[tree[i].l].l
+        for i in countdown(A.len - 1, 0):
+            result[i].r = if tree[i].r == -1: i + 1 else: result[tree[i].r].r
