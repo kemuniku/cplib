@@ -18,8 +18,26 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
 
     proc cross(a, b, c, d: LinearMinPoint): Int128 {.inline.} =
         ## ベクトル b-a と d-c の外積を128bit整数で求めます。O(1)。
-        (to_Int128(b.x) - a.x) * (to_Int128(d.y) - c.y) -
-            (to_Int128(b.y) - a.y) * (to_Int128(d.x) - c.x)
+        result = to_Int128(b.x)
+        result -= a.x
+        var dy = to_Int128(d.y)
+        dy -= c.y
+        result *= dy
+        var other = to_Int128(b.y)
+        other -= a.y
+        var dx = to_Int128(d.x)
+        dx -= c.x
+        other *= dx
+        result -= other
+
+    proc leftOfBorder(c, d: LinearMinPoint, border: int, c1, c2: Int128): bool {.inline.} =
+        ## 接線候補の交点が境界の左側にあるかを128bit整数で判定します。O(1)。
+        var side = c1
+        side *= c.x - border
+        var term = c2
+        term *= d.x - c.x
+        side += term
+        side < 0
 
     proc pull(self: RangeLinearAddRangeMin, k, border: int) =
         ## 左右の下側凸包の共通接線を求めます。O(log N)。
@@ -30,12 +48,12 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
             lc = self.nodes[l].intercept
             rs = self.nodes[r].slope
             rc = self.nodes[r].intercept
+            a = shifted(self.nodes[l].left, ls, lc)
+            b = shifted(self.nodes[l].right, ls, lc)
+            c = shifted(self.nodes[r].left, rs, rc)
+            d = shifted(self.nodes[r].right, rs, rc)
         while true:
             let
-                a = shifted(self.nodes[l].left, ls, lc)
-                b = shifted(self.nodes[l].right, ls, lc)
-                c = shifted(self.nodes[r].left, rs, rc)
-                d = shifted(self.nodes[r].right, rs, rc)
                 lLeaf = a.x == b.x
                 rLeaf = c.x == d.x
             if lLeaf and rLeaf:
@@ -60,16 +78,20 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
                     c2 = cross(a, b, c, b)
                 # 接線候補の交点が左右の境界のどちら側にあるかを判定します。
                 descendLeft = if c1 == 0 and c2 == 0: c.x < border
-                    else: to_Int128(c.x - border) * c1 + to_Int128(d.x - c.x) * c2 < 0
+                    else: leftOfBorder(c, d, border, c1, c2)
                 child = if descendLeft: l * 2 + 1 else: r * 2
             if descendLeft:
                 l = child
                 ls += self.nodes[l].slope
                 lc += self.nodes[l].intercept
+                a = shifted(self.nodes[l].left, ls, lc)
+                b = shifted(self.nodes[l].right, ls, lc)
             else:
                 r = child
                 rs += self.nodes[r].slope
                 rc += self.nodes[r].intercept
+                c = shifted(self.nodes[r].left, rs, rc)
+                d = shifted(self.nodes[r].right, rs, rc)
 
     proc build(self: RangeLinearAddRangeMin, v: openArray[int], k, l, r: int) =
         ## 区間の凸包を再帰的に構築します。O(r-l)。
@@ -86,13 +108,20 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
         ## 配列から構築します。時間・空間 O(N)。64bit環境のC++バックエンド専用です。
         ## 値・遅延加算の係数とその適用時の中間値は int に収めてください。
         ## 各節点は自身の遅延加算を除いた下側凸包の共通接線を保持します。
-        static: doAssert sizeof(int) == 8, "intが64ビットの環境で使用する必要があります"
-        result = RangeLinearAddRangeMin(length: v.len, nodes: newSeq[LinearMinNode](4 * v.len))
+        when sizeof(int) != 8:
+            {.error: "intが64ビットの環境で使用する必要があります".}
+        var capacity = 1
+        while capacity < v.len:
+            capacity = capacity shl 1
+        result = RangeLinearAddRangeMin(length: v.len,
+            nodes: newSeq[LinearMinNode](if v.len == 0: 0 else: 2 * capacity))
         if v.len > 0:
             result.build(v, 1, 0, v.len)
 
     proc push(self: RangeLinearAddRangeMin, k: int) {.inline.} =
         ## 一次式の遅延加算を子へ伝えます。O(1)。
+        if self.nodes[k].slope == 0 and self.nodes[k].intercept == 0:
+            return
         for child in k * 2..k * 2 + 1:
             self.nodes[child].slope += self.nodes[k].slope
             self.nodes[child].intercept += self.nodes[k].intercept
@@ -133,25 +162,49 @@ when not declared CPLIB_COLLECTIONS_RANGE_LINEAR_ADD_RANGE_MIN:
             s += self.nodes[k].slope
             t += self.nodes[k].intercept
             let
-                a = shifted(self.nodes[k].left, s, t)
-                b = shifted(self.nodes[k].right, s, t)
+                a = self.nodes[k].left
+                b = self.nodes[k].right
+                ay = a.y + s * a.x
             if a.x == b.x:
-                return a.y
-            k = if a.y < b.y: k * 2 else: k * 2 + 1
+                return ay + t
+            k = if ay < b.y + s * b.x: k * 2 else: k * 2 + 1
 
-    proc prodImpl(self: RangeLinearAddRangeMin, k, l, r, ql, qr, slope, intercept: int): int =
-        ## 区間を部分木へ分割して最小値を求めます。O(log^2 N)。
-        if ql <= l and r <= qr:
-            return self.subtreeMin(k, slope, intercept)
-        let
-            m = (l + r) shr 1
-            s = slope + self.nodes[k].slope
-            t = intercept + self.nodes[k].intercept
-        result = high(int)
-        if ql < m:
-            result = self.prodImpl(k * 2, l, m, ql, qr, s, t)
-        if m < qr:
-            result = min(result, self.prodImpl(k * 2 + 1, m, r, ql, qr, s, t))
+    proc prodImpl(self: RangeLinearAddRangeMin, root, lo, hi, ql, qr, slope, intercept: int): int =
+        ## 接線の端点が照会内なら反対側を省略します。最悪 O(log^2 N)。
+        var
+            k = root
+            l = lo
+            r = hi
+            s = slope
+            t = intercept
+        while true:
+            if ql <= l and r <= qr:
+                return self.subtreeMin(k, s, t)
+            let m = (l + r) shr 1
+            s += self.nodes[k].slope
+            t += self.nodes[k].intercept
+            var goLeft = qr <= m
+            if not goLeft and ql < m:
+                let
+                    a = self.nodes[k].left
+                    b = self.nodes[k].right
+                var delta = to_Int128(a.y)
+                delta -= b.y
+                var tilt = to_Int128(s)
+                tilt *= a.x - b.x
+                delta += tilt
+                # 範囲外の端点も比較するため、値の差と傾きの積は128bitで求めます。
+                if delta < 0 and ql <= a.x:
+                    goLeft = true
+                elif not (delta >= 0 and b.x < qr):
+                    return min(self.prodImpl(k * 2, l, m, ql, qr, s, t),
+                        self.prodImpl(k * 2 + 1, m, r, ql, qr, s, t))
+            if goLeft:
+                k = k * 2
+                r = m
+            else:
+                k = k * 2 + 1
+                l = m
 
     proc prod*(self: RangeLinearAddRangeMin, l, r: int): int =
         ## 半開区間 [l,r) の最小値を返します。空区間は high(int)。O(log^2 N)。
