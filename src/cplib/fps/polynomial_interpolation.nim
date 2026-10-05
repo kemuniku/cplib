@@ -4,6 +4,7 @@ when not declared CPLIB_FPS_POLYNOMIAL_INTERPOLATION:
     import cplib/fps/formal_power_series
     import cplib/fps/product_tree
     import cplib/modint/modint
+    import cplib/math/isprime
 
     proc polynomialInterpolation*[T: BarrettModint or MontgomeryModint](
             xs, ys: seq[T]): seq[T] =
@@ -13,12 +14,28 @@ when not declared CPLIB_FPS_POLYNOMIAL_INTERPOLATION:
         let tree: PolynomialProductTree[T] = initPolynomialProductTree[T](xs)
         let denominators = multipointEvaluation[T](tree.nodes[1].derivative, xs)
         var partial = newSeq[seq[T]](tree.nodes.len)
-        for i in 0..<tree.leafCount:
-            if i < xs.len:
-                doAssert denominators[i].val != 0, "補間に使う点のx座標は互いに異なる必要がある"
-                partial[tree.leafCount + i] = @[ys[i] / denominators[i]]
-            else:
-                partial[tree.leafCount + i] = @[]
+        template checkDenominator(i: int) =
+            ## 分母が零でないことを両経路で同じように確認する。
+            doAssert denominators[i].val != 0, "補間に使う点のx座標は互いに異なる必要がある"
+        # 小さい入力では素数判定の固定費を避ける。
+        if xs.len >= 64 and isprime(T.umod):
+            var prefixes = newSeq[T](xs.len)
+            var product = init(T, 1)
+            for i in 0..<xs.len:
+                checkDenominator(i)
+                prefixes[i] = product
+                product *= denominators[i]
+            var inverse = product.inv
+            for i in countdown(xs.len - 1, 0):
+                partial[tree.leafCount + i] = @[ys[i] * prefixes[i] * inverse]
+                inverse *= denominators[i]
+        else:
+            for i in 0..<tree.leafCount:
+                if i < xs.len:
+                    checkDenominator(i)
+                    partial[tree.leafCount + i] = @[ys[i] / denominators[i]]
+                else:
+                    partial[tree.leafCount + i] = @[]
         for i in countdown(tree.leafCount - 1, 1):
             partial[i] = partial[i * 2] * tree.nodes[i * 2 + 1] +
                 partial[i * 2 + 1] * tree.nodes[i * 2]
