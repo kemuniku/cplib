@@ -4,7 +4,28 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
     import cplib/graph/graph
     import cplib/graph/restore_shortest_path_from_prev
     import cplib/utils/constants
+    proc propagate_negative_bellmanford[T](G: WeightedGraph[T] or UnWeightedGraph, costs: var seq[T], prev: var seq[int], INF: T) {.noinline.} =
+        ## 緩和可能な辺から到達できる負閉路の影響範囲を求める。O(V + E)。
+        let N = len(G)
+        var affected = newSeq[bool](N)
+        var queue = initDeque[int]()
+        for i in 0..<N:
+            if costs[i] == INF: continue
+            for (j, c) in G.to_and_cost(i):
+                if costs[i] + c < costs[j] and not affected[j]:
+                    affected[j] = true
+                    queue.addLast(j)
+        while queue.len > 0:
+            let i = queue.popFirst()
+            costs[i] = -INF
+            prev[i] = -1
+            for (j, _) in G.to_and_cost(i):
+                if not affected[j]:
+                    affected[j] = true
+                    queue.addLast(j)
+
     proc restore_bellmanford_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =
+        ## 最短距離と直前頂点を返し、数値型の負閉路の影響を BFS で伝播する。O(V(V + E))。
         let N = len(G)
         var
             costs = newSeqWith(N, INF)
@@ -27,14 +48,17 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
                         changed = true
             if not changed: break
         if changed:
-            for _ in 0..<N:
-                for i in 0..<N:
-                    if costs[i] == INF: continue
-                    for (j, c) in G.to_and_cost(i):
-                        var temp = costs[i] + c
-                        if temp < costs[j]:
-                            costs[j] = -INF
-                            prev[j] = -1
+            when T is SomeNumber:
+                propagate_negative_bellmanford(G, costs, prev, INF)
+            else:
+                for _ in 0..<N:
+                    for i in 0..<N:
+                        if costs[i] == INF: continue
+                        for (j, c) in G.to_and_cost(i):
+                            var temp = costs[i] + c
+                            if temp < costs[j]:
+                                costs[j] = -INF
+                                prev[j] = -1
         return (costs, prev)
     macro declareBellmanFord(name, t, zero, inf) =
         let impl_name = ident($`name` & "_impl")
