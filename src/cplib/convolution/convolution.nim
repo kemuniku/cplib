@@ -656,6 +656,47 @@ inverse_pair(data, length, length == size_);
 if (has_unpaired_top) inverse_single(data, size_, true, true);
 }
 };
+inline void convolution_square_ntt_friendly(
+u32* output, const u32* input, Z input_size, Z transform_size,
+bool montgomery_representation) {
+// 同じ入力の平方は順変換を一度だけ行い、逆変換後の係数で長さを正規化する。
+std::memcpy(output, input, sizeof(u32) * input_size);
+TransformPlan plan(transform_size);
+const Montgomery& montgomery = plan.montgomery();
+if (montgomery_representation) {
+Z i = 0;
+for (; i + 8 <= input_size; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(output + i));
+_mm256_storeu_si256((V*)(output + i), shrink(value));
+}
+for (; i < input_size; ++i) {
+if (output[i] >= modulus) output[i] -= modulus;
+}
+}
+const Z half = transform_size >> 1;
+const bool half_zero = input_size <= half;
+std::memset(output + input_size, 0, sizeof(u32) *
+((half_zero ? half : transform_size) - input_size));
+if (half_zero) plan.forward_half_zero(output); else plan.forward(output);
+for (Z i = 0; i < transform_size; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(output + i));
+_mm256_storeu_si256((V*)(output + i),
+montgomery_multiply(value, value, montgomery));
+}
+plan.prepare_inverse();
+plan.inverse(output);
+const u32 inverse_size = power_mod(
+(u32)(transform_size % modulus), modulus - 2);
+// 通常表現の平方はR^-1を含むためR^2/N、Montgomery表現にはR/Nを掛ける。
+const u32 scale = (u32)(u64(inverse_size) *
+(montgomery_representation ? montgomery.radix : montgomery.radix_squared) % modulus);
+const V conversion = _mm256_set1_epi32((int)scale);
+for (Z i = 0; i < transform_size; i += 8) {
+const V value = _mm256_loadu_si256((const V*)(output + i));
+_mm256_storeu_si256((V*)(output + i),
+montgomery_multiply(value, conversion, montgomery));
+}
+}
 inline void convolution_ntt_friendly(
 u32* output,
 const u32* left,
@@ -669,6 +710,11 @@ bool montgomery_representation) {
 modulus = modulus_value;
 primitive_root = primitive_root_value != 0
 ? primitive_root_value : find_primitive_root(modulus_value);
+if (left == right && left_size == right_size) {
+convolution_square_ntt_friendly(output, left, left_size, transform_size,
+montgomery_representation);
+return;
+}
 u32* a = output;
 u32* b = static_cast<u32*>(
 _mm_malloc(sizeof(u32) * transform_size, 32));
