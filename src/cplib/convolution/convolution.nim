@@ -745,6 +745,58 @@ a[i] = montgomery.to_montgomery(a[i]);
 _mm_free(b);
 }
 
+// FPSなどの一連の畳み込みで、変換表と周波数配列を明示的に共有する。
+class AlgorithmNtt {
+Z size_;
+u32 modulus_, root_;
+TransformPlan forward_, inverse_;
+Montgomery mont_;
+u32 inverse_size_;
+void activate() const {
+// 他の法の処理を挟んだ場合も元の法に戻す。
+modulus = modulus_; primitive_root = root_;
+}
+public:
+explicit AlgorithmNtt(Z size) : size_(size), modulus_(modulus), root_(primitive_root),
+forward_(size), inverse_(size), inverse_size_(mont_.to_montgomery(power_mod(size, modulus-2))) {
+// 同じ長さの正逆変換表を一度だけ作る。
+inverse_.prepare_inverse();
+}
+void forward(u32* out, const u32* input, Z length, bool montgomery) const {
+// 入力を変更せず、Montgomery表現のスペクトルを返す。
+activate();
+Z i = 0;
+const V prime = _mm256_set1_epi32(modulus), radix = _mm256_set1_epi32(mont_.radix_squared);
+for (; i+8<=length; i+=8) {
+const V value = _mm256_loadu_si256((const V*)(input+i));
+_mm256_storeu_si256((V*)(out+i), montgomery ?
+_mm256_min_epu32(value, _mm256_sub_epi32(value, prime)) : montgomery_multiply(value, radix, mont_));
+}
+for (; i<length; ++i) out[i] = montgomery ? (input[i] >= modulus ? input[i]-modulus : input[i]) : mont_.to_montgomery(input[i]);
+const bool half = length <= size_/2;
+std::fill(out+length, out+(half ? size_/2 : size_), 0);
+if (half) forward_.forward_half_zero(out); else forward_.forward(out);
+}
+void inverse(u32* out, u32* spectrum, Z start, Z count, bool montgomery) const {
+// スペクトルを消費して必要な係数だけ返す。上半分だけなら最終段を省く。
+activate();
+if (start >= size_/2) inverse_.inverse_high(spectrum); else inverse_.inverse(spectrum);
+const u32 factor = montgomery ? inverse_size_ : mont_.multiply(inverse_size_,1);
+const V scale = _mm256_set1_epi32(factor);
+Z i=0;
+for (; i+8<=count; i+=8) _mm256_storeu_si256((V*)(out+i),montgomery_multiply(_mm256_loadu_si256((const V*)(spectrum+start+i)),scale,mont_));
+for (; i<count; ++i) out[i] = mont_.multiply(spectrum[start+i],factor);
+}
+void add_product(u32* out, const u32* left, const u32* right) const {
+// 点ごとの積を加算し、複数の積の逆変換を一回にまとめる。
+activate();
+for (Z i=0; i<size_; i+=8) {
+const V p=montgomery_multiply(_mm256_loadu_si256((const V*)(left+i)),_mm256_loadu_si256((const V*)(right+i)),mont_);
+_mm256_storeu_si256((V*)(out+i),add_mod(_mm256_loadu_si256((const V*)(out+i)),p));
+}
+}
+};
+
 // 合成用の部分NTT。分母の周波数表現を保ってx方向の射影とy方向の倍化を行う。
 // 参考: https://judge.yosupo.jp/submission/408152
 template<u32 fixed_prime = 0> class CompositionTransform {
@@ -1547,7 +1599,7 @@ _mm256_loadu_si256((const V*)(spectra_[node * 2 + 1].data() + i)), mont));
 _mm256_storeu_si256((V*)(right.data() + i), montgomery_multiply(value,
 _mm256_loadu_si256((const V*)(spectra_[node * 2].data() + i)), mont));
 }
-inverse.inverse(left.data()); inverse.inverse(right.data());
+inverse.inverse_high(left.data()); inverse.inverse_high(right.data());
 std::memcpy(next.data() + index * width, left.data() + width / 2, sizeof(u32) * (width / 2));
 std::memcpy(next.data() + index * width + width / 2, right.data() + width / 2, sizeof(u32) * (width / 2));
 }
@@ -1922,6 +1974,29 @@ context.run(output);
 }
 }
 #endif
+extern "C" void* cplib_algorithm_ntt_create(std::size_t size, std::uint32_t prime) {
+// 指定したNTT素数と長さの作業コンテキストを作る。
+cplib_avx2_ntt::modulus=prime;
+cplib_avx2_ntt::primitive_root=cplib_avx2_ntt::find_primitive_root(prime);
+return new cplib_avx2_ntt::AlgorithmNtt(size);
+}
+extern "C" void cplib_algorithm_ntt_destroy(void* ctx) {
+// 作業コンテキストを解放する。
+delete static_cast<cplib_avx2_ntt::AlgorithmNtt*>(ctx);
+}
+extern "C" void cplib_algorithm_ntt_forward(void* ctx, std::uint32_t* out, std::uint32_t* input, std::size_t length, bool mont) {
+// 入力をスペクトルに変換する。
+static_cast<cplib_avx2_ntt::AlgorithmNtt*>(ctx)->forward(out,input,length,mont);
+}
+extern "C" void cplib_algorithm_ntt_inverse(void* ctx, std::uint32_t* out, std::uint32_t* spectrum, std::size_t start, std::size_t count, bool mont) {
+// 必要な係数区間だけ復元する。
+static_cast<cplib_avx2_ntt::AlgorithmNtt*>(ctx)->inverse(out,spectrum,start,count,mont);
+}
+extern "C" void cplib_algorithm_ntt_add_product(void* ctx, std::uint32_t* out, std::uint32_t* left, std::uint32_t* right) {
+// スペクトルの積を加算する。
+static_cast<cplib_avx2_ntt::AlgorithmNtt*>(ctx)->add_product(out,left,right);
+}
+
 extern "C" void cplib_composition_ntt(
 std::uint32_t* output, std::uint32_t* outer, std::size_t outer_size,
 std::uint32_t* inner, std::size_t inner_size, std::size_t length,

@@ -1,6 +1,7 @@
 when not declared CPLIB_FPS_PRODUCT_TREE:
     const CPLIB_FPS_PRODUCT_TREE* = 1
 
+    import cplib/convolution/algorithm_ntt
     import algorithm
     import cplib/convolution/convolution
     import cplib/fps/formal_power_series
@@ -13,6 +14,7 @@ when not declared CPLIB_FPS_PRODUCT_TREE:
 
     proc initPolynomialProductTree*[T: BarrettModint or MontgomeryModint](
             xs: seq[T]): PolynomialProductTree[T] =
+        ## (x-xs[i])の積木を構築する。同じ段のNTT計画を共有する。
         result.pointCount = xs.len
         result.leafCount = 1
         while result.leafCount < xs.len: result.leafCount *= 2
@@ -20,8 +22,27 @@ when not declared CPLIB_FPS_PRODUCT_TREE:
         for i in 0..<result.leafCount:
             if i < xs.len: result.nodes[result.leafCount + i] = @[-xs[i], init(T, 1)]
             else: result.nodes[result.leafCount + i] = @[init(T, 1)]
-        for i in countdown(result.leafCount - 1, 1):
-            result.nodes[i] = result.nodes[i * 2] * result.nodes[i * 2 + 1]
+        var first = result.leafCount div 2
+        var size = 2
+        while first > 0:
+            if size >= 128 and canUseMultipointTreeNtt(T.umod, size):
+                var context = initAlgorithmNtt(T.umod, size)
+                defer: context.close()
+                for i in first..<2 * first:
+                    let left = result.nodes[2 * i]
+                    let right = result.nodes[2 * i + 1]
+                    var product = context.spectrumProduct(context.spectrum(left), context.spectrum(right))
+                    let length = left.len + right.len - 1
+                    result.nodes[i] = context.coefficients(product, 0, min(length, size), T)
+                    if length > size:
+                        let leading = left[^1] * right[^1]
+                        result.nodes[i][0] -= leading
+                        result.nodes[i].add(leading)
+            else:
+                for i in first..<2 * first:
+                    result.nodes[i] = result.nodes[i * 2] * result.nodes[i * 2 + 1]
+            first = first div 2
+            size *= 2
 
     proc evaluate*[T: BarrettModint or MontgomeryModint](
             tree: PolynomialProductTree[T], f: seq[T]): seq[T] =
