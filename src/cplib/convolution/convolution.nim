@@ -1657,7 +1657,8 @@ output, factors, sizes, factor_count);
 
     proc canUseMultipointTreeNtt*(modulus: uint32, size: int): bool =
         ## 積木の全段でNTTを使える場合に限り高速経路を選ぶ。
-        size >= 64 and isNttFriendlyModulus(modulus, size.uint32)
+        size >= 64 and (size and (size - 1)) == 0 and size <= modulus.int and
+            isNttFriendlyModulus(modulus, size.uint32)
 
     proc convolution_naive*[T: BarrettModint or MontgomeryModint or int](f, g: seq[T]): seq[T] =
         if f.len == 0 or g.len == 0: return @[]
