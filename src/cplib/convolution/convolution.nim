@@ -745,6 +745,398 @@ a[i] = montgomery.to_montgomery(a[i]);
 _mm_free(b);
 }
 
+// 合成用の部分NTT。分母の周波数表現を保ってx方向の射影とy方向の倍化を行う。
+// 参考: https://judge.yosupo.jp/submission/408152
+template<u32 fixed_prime = 0> class CompositionTransform {
+static __attribute__((always_inline)) u32 prime() {
+// 頻用法はコンパイル時定数にし、その他のNTT素数は実行時に選ぶ。
+return fixed_prime ? fixed_prime : modulus;
+}
+Z size_;
+Montgomery mont_;
+std::vector<u32> roots_, inverse_roots_, quotients_, inverse_quotients_;
+std::vector<u32> twists_, inverse_twists_;
+static V load(const u32* p) {
+// 非整列の8係数を読み込む。
+return _mm256_loadu_si256((const V*)p);
+}
+static void store(u32* p, V x) {
+// 非整列の8係数を書き込む。
+_mm256_storeu_si256((V*)p, x);
+}
+static V add(V a, V b) {
+// [0,2p)の冗長表現で加算する。
+const V value = _mm256_add_epi32(a, b);
+return _mm256_min_epu32(value, _mm256_sub_epi32(value, _mm256_set1_epi32(2 * prime())));
+}
+static V sub(V a, V b) {
+// [0,2p)の冗長表現で減算する。
+const V value = _mm256_sub_epi32(a, b);
+return _mm256_min_epu32(value, _mm256_add_epi32(value, _mm256_set1_epi32(2 * prime())));
+}
+static V raw_sub(V a, V b) {
+// Shoup乗算直前は[0,4p)まで許し、不要な正規化を省く。
+return _mm256_sub_epi32(_mm256_add_epi32(a, _mm256_set1_epi32(2 * prime())), b);
+}
+static __attribute__((always_inline)) u32 quotient(u32 r) {
+// Shoup乗算用の商を求める。
+return (u64(r) << 32) / prime();
+}
+static V fixed_even(V a, V r, V q) {
+// 偶数レーンだけを乗算し、64bitレーンの下半分に結果を置く。
+const V estimate = _mm256_srli_epi64(_mm256_mul_epu32(a, q), 32);
+return _mm256_sub_epi64(_mm256_mul_epu32(a, r),
+_mm256_mul_epu32(estimate, _mm256_set1_epi32(prime())));
+}
+static V fixed_multiply(V a, V r, V q) {
+// 固定乗数の積を[0,2p)で求め、Montgomery表現を保つ。
+const V even = fixed_even(a, r, q);
+const V odd = fixed_even(_mm256_srli_epi64(a, 32), _mm256_srli_epi64(r, 32), _mm256_srli_epi64(q, 32));
+return _mm256_blend_epi32(even, _mm256_slli_epi64(odd, 32), 0xAA);
+}
+static constexpr u32 negative_inverse(u32 p) {
+// Montgomery還元用の-p^(-1) mod 2^32を求める。
+u32 r = 1;
+for (int i = 0; i < 5; ++i) r *= 2U + r * p;
+return r;
+}
+V multiply(V a, V b) const {
+// 8個のMontgomery積を冗長表現のまま求める。
+const V inv = _mm256_set1_epi32(fixed_prime ? negative_inverse(fixed_prime) : mont_.negative_inverse);
+const V mod = _mm256_set1_epi32(prime());
+V even = _mm256_mul_epu32(a, b);
+V odd = _mm256_mul_epu32(_mm256_srli_epi64(a, 32), _mm256_srli_epi64(b, 32));
+even = _mm256_add_epi64(even, _mm256_mul_epu32(_mm256_mul_epu32(even, inv), mod));
+odd = _mm256_add_epi64(odd, _mm256_mul_epu32(_mm256_mul_epu32(odd, inv), mod));
+return _mm256_blend_epi32(_mm256_srli_epi64(even, 32), odd, 0xAA);
+}
+template<int stride, bool inverse, int row_width = 8> __attribute__((always_inline)) V small(V value, Z block) const {
+// 蝶演算の左右を64bitレーンに組み、4組を重複なく乗算する。
+// 8係数ごとの関数呼び出しとレジスタ退避を避けるため必ずインライン展開する。
+if (stride == 4 && block == 0) {
+const V left = _mm256_permute2x128_si256(value, value, 0x00);
+const V right = _mm256_permute2x128_si256(value, value, 0x11);
+return _mm256_blend_epi32(add(left, right), sub(left, right), 0xF0);
+}
+const auto& roots = inverse ? inverse_roots_ : roots_;
+const auto& quotients = inverse ? inverse_quotients_ : quotients_;
+V root, quot;
+if (stride == 1) {
+if (!inverse) value = _mm256_shuffle_epi32(value, 0xB1);
+const Z k = 4 * block;
+__m128i r, q;
+if (row_width == 4) {
+r = _mm_shuffle_epi32(_mm_loadl_epi64((const __m128i*)roots.data()), 0x44);
+q = _mm_shuffle_epi32(_mm_loadl_epi64((const __m128i*)quotients.data()), 0x44);
+} else {
+r = _mm_loadu_si128((const __m128i*)(roots.data() + k));
+q = _mm_loadu_si128((const __m128i*)(quotients.data() + k));
+}
+root = _mm256_cvtepu32_epi64(r);
+quot = _mm256_cvtepu32_epi64(q);
+} else if (stride == 2) {
+value = _mm256_shuffle_epi32(value, inverse ? 0xD8 : 0x72);
+const Z k = 2 * block;
+root = _mm256_cvtepu32_epi64(_mm_shuffle_epi32(_mm_loadl_epi64((const __m128i*)(roots.data() + k)), 0x50));
+quot = _mm256_cvtepu32_epi64(_mm_shuffle_epi32(_mm_loadl_epi64((const __m128i*)(quotients.data() + k)), 0x50));
+} else {
+value = _mm256_permutevar8x32_epi32(value, inverse ?
+_mm256_setr_epi32(0,4,1,5,2,6,3,7) : _mm256_setr_epi32(4,0,5,1,6,2,7,3));
+root = _mm256_set1_epi32(roots[block]);
+quot = _mm256_set1_epi32(quotients[block]);
+}
+if (inverse) {
+const V right = _mm256_srli_epi64(value, 32);
+const V difference = fixed_even(raw_sub(value, right), root, quot);
+value = _mm256_blend_epi32(add(value, right), _mm256_slli_epi64(difference, 32), 0xAA);
+} else {
+const V weighted = fixed_even(value, root, quot);
+const V left = _mm256_blend_epi32(_mm256_srli_epi64(value, 32), value, 0xAA);
+const V signed_weight = _mm256_blend_epi32(weighted,
+_mm256_sub_epi32(_mm256_set1_epi32(2 * prime()), _mm256_slli_epi64(weighted, 32)), 0xAA);
+value = add(left, signed_weight);
+}
+if (stride == 2) value = _mm256_shuffle_epi32(value, 0xD8);
+if (stride == 4) value = _mm256_permutevar8x32_epi32(value, _mm256_setr_epi32(0,2,4,6,1,3,5,7));
+return value;
+}
+template<bool inverse> void stage(u32* a, Z length, Z stride) const {
+// 各ブロックに対応する根を用いて部分NTTの1段を計算する。
+if (stride < 8) {
+for (Z i = 0; i < length; i += 8) {
+V v = load(a + i);
+if (stride == 1) v = small<1, inverse>(v, i / 8);
+else if (stride == 2) v = small<2, inverse>(v, i / 8);
+else v = small<4, inverse>(v, i / 8);
+store(a + i, v);
+}
+return;
+}
+const auto& roots = inverse ? inverse_roots_ : roots_;
+const auto& quotients = inverse ? inverse_quotients_ : quotients_;
+for (Z top = 0, k = 0; top < length; top += 2 * stride, ++k) {
+const V root = _mm256_set1_epi32(roots[k]);
+const V quot = _mm256_set1_epi32(quotients[k]);
+for (Z i = top; i < top + stride; i += 8) {
+const V left = load(a + i);
+V right = load(a + i + stride);
+if (!inverse && k) right = fixed_multiply(right, root, quot);
+V difference = inverse && k ? raw_sub(left, right) : sub(left, right);
+store(a + i, add(left, right));
+if (inverse && k) difference = fixed_multiply(difference, root, quot);
+store(a + i + stride, difference);
+}
+}
+}
+template<bool inverse> void stage_pair(u32* a, Z length, Z stride) const {
+// 隣接する2段を融合し、3組の根でレジスタの退避を抑える。
+const auto& roots = inverse ? inverse_roots_ : roots_;
+const auto& quotients = inverse ? inverse_quotients_ : quotients_;
+for (Z top = 0, k = 0; top < length; top += 4 * stride, ++k) {
+const V r0 = _mm256_set1_epi32(roots[k]), q0 = _mm256_set1_epi32(quotients[k]);
+const V r1 = _mm256_set1_epi32(roots[2*k]), q1 = _mm256_set1_epi32(quotients[2*k]);
+const V r2 = _mm256_set1_epi32(roots[2*k+1]), q2 = _mm256_set1_epi32(quotients[2*k+1]);
+for (Z i = top; i < top + stride; i += 8) {
+V x0 = load(a + i), x1 = load(a + i + stride);
+V x2 = load(a + i + 2*stride), x3 = load(a + i + 3*stride);
+if (inverse) {
+const V s01 = add(x0, x1), s23 = add(x2, x3);
+x1 = k ? raw_sub(x0, x1) : sub(x0, x1);
+if (k) x1 = fixed_multiply(x1, r1, q1);
+x3 = fixed_multiply(raw_sub(x2, x3), r2, q2);
+x0 = add(s01, s23); x2 = k ? raw_sub(s01, s23) : sub(s01, s23);
+const V difference = k ? raw_sub(x1, x3) : sub(x1, x3);
+x1 = add(x1, x3); x3 = difference;
+if (k) {
+x2 = fixed_multiply(x2, r0, q0);
+x3 = fixed_multiply(x3, r0, q0);
+}
+} else {
+if (k) {
+x2 = fixed_multiply(x2, r0, q0);
+x3 = fixed_multiply(x3, r0, q0);
+}
+const V s02 = add(x0, x2), d02 = sub(x0, x2);
+const V s13 = k ? _mm256_add_epi32(x1, x3) : add(x1, x3);
+const V d13 = raw_sub(x1, x3);
+x1 = k ? fixed_multiply(s13, r1, q1) : s13;
+x3 = fixed_multiply(d13, r2, q2);
+x0 = add(s02, x1); x1 = sub(s02, x1);
+x2 = add(d02, x3); x3 = sub(d02, x3);
+}
+store(a+i, x0); store(a+i+stride, x1);
+store(a+i+2*stride, x2); store(a+i+3*stride, x3);
+}
+}
+}
+template<bool inverse> void transform(u32* a, Z length, Z limit) const {
+// 下位limit方向だけ変換する。逆変換の倍率はここでは補正しない。
+if (!inverse) {
+Z h = limit / 2;
+for (; h >= 16; h /= 4) stage_pair<false>(a, length, h / 2);
+if (h == 8) stage<false>(a, length, h);
+}
+for (Z i = 0; i < length; i += 8) {
+V value = load(a + i);
+if (inverse) {
+value = small<1, true>(value, i / 8);
+value = small<2, true>(value, i / 8);
+value = small<4, true>(value, i / 8);
+} else {
+value = small<4, false>(value, i / 8);
+value = small<2, false>(value, i / 8);
+value = small<1, false>(value, i / 8);
+}
+store(a + i, value);
+}
+if (inverse) {
+Z h = 8;
+for (; 2*h < limit; h *= 4) stage_pair<true>(a, length, h);
+if (h < limit) stage<true>(a, length, h);
+}
+}
+void project(u32* a, Z rows, Z columns) const {
+// x方向だけ逆変換し、上半分を捨てて再変換する。倍率2*columnsは別管理する。
+if (columns <= 4) {
+for (Z i = 0; i < 2 * size_; i += 8) {
+V v = load(a + i);
+if (columns == 1) {
+v = add(v, _mm256_shuffle_epi32(v, 0xB1));
+} else if (columns == 2) {
+v = small<1, true, 4>(v, 0);
+v = add(v, _mm256_shuffle_epi32(v, 0x4E));
+v = small<1, false, 4>(v, 0);
+} else {
+v = small<1, true>(v, 0);
+v = small<2, true>(v, 0);
+v = add(v, _mm256_permute2x128_si256(v, v, 1));
+v = small<2, false>(v, 0);
+v = small<1, false>(v, 0);
+}
+store(a + i, v);
+}
+return;
+}
+for (Z y = 0; y < rows; ++y) {
+u32* row = a + 2 * columns * y;
+if (columns == 8) {
+transform<true>(row, 2 * columns, columns);
+const V sum = add(load(row), load(row + columns));
+store(row, sum); store(row + columns, sum);
+transform<false>(row, 2 * columns, columns);
+} else {
+const Z half = columns / 2;
+// 中央の逆変換・折り返し・順変換を融合し、配列の往復を省く。
+transform<true>(row, 2 * columns, half);
+const V r = _mm256_set1_epi32(roots_[1]), rq = _mm256_set1_epi32(quotients_[1]);
+const V ir = _mm256_set1_epi32(inverse_roots_[1]), irq = _mm256_set1_epi32(inverse_quotients_[1]);
+for (Z x = 0; x < half; x += 8) {
+const V a = load(row+x), b = load(row+x+half);
+const V c = load(row+x+columns), d = load(row+x+columns+half);
+const V sum = add(add(a,b), add(c,d));
+const V difference = add(sub(a,b), fixed_multiply(raw_sub(c,d), ir, irq));
+store(row+x, add(sum,difference));
+store(row+x+half, sub(sum,difference));
+const V twisted = fixed_multiply(difference,r,rq);
+store(row+x+columns, add(sum,twisted));
+store(row+x+columns+half, sub(sum,twisted));
+}
+transform<false>(row, 2 * columns, half);
+}
+}
+}
+void extend_y(u32* a, Z rows, Z columns, bool inverse) const {
+// y方向だけ逆変換し、根の半周期シフトとその正規化を適用する。
+Z h = 2 * columns;
+if (h < 8) { stage<true>(a, 2 * size_, h); h *= 2; }
+for (; 2*h <= size_; h *= 4) stage_pair<true>(a, 2 * size_, h);
+if (h <= size_) stage<true>(a, 2 * size_, h);
+const auto& twists = inverse ? inverse_twists_ : twists_;
+if (columns == 2) {
+for (Z y = 0; y < rows; y += 2) {
+const u32 r = twists[rows+y], s = twists[rows+y+1];
+const u32 qr = quotient(r), qs = quotient(s);
+const V root = _mm256_setr_epi32(r,r,r,r,s,s,s,s);
+const V quot = _mm256_setr_epi32(qr,qr,qr,qr,qs,qs,qs,qs);
+store(a + 4*y, fixed_multiply(load(a + 4*y), root, quot));
+}
+return;
+}
+for (Z y = 0; y < rows; ++y) {
+const u32 r = twists[rows + y];
+const V root = _mm256_set1_epi32(r), quot = _mm256_set1_epi32(quotient(r));
+u32* row = a + 2 * columns * y;
+for (Z x = 0; x < 2 * columns; x += 8) store(row + x, fixed_multiply(load(row + x), root, quot));
+}
+}
+void descend(u32* p, const u32* q, Z rows, Z columns, u32& p_scale, u32 q_scale) const {
+// 再帰間で周波数表現を保ち、正規化に必要な倍率だけを別途伝える。
+if (columns == 1) {
+transform<false>(p, size_, size_);
+for (Z i = size_; i-- > 0;) p[2*i] = p[2*i+1] = p[i];
+return;
+}
+std::unique_ptr<u32[]> spectrum(new u32[4 * size_]);
+u32* a = spectrum.get();
+u32* b = a + 2 * size_;
+if (rows == 1) {
+std::fill_n(a + size_, size_, 0);
+for (Z i = 0; i < size_; ++i) a[i] = subtract_mod(0, q[i]);
+transform<false>(a, 2 * size_, 2 * size_);
+const V one = _mm256_set1_epi32(mont_.radix);
+for (Z i = 0; i < 2 * size_; i += 8) {
+const V v = load(a + i);
+store(a + i, add(v, one));
+store(b + i, sub(v, one));
+}
+} else {
+const V order = _mm256_setr_epi32(0, 2, 4, 6, 1, 3, 5, 7);
+for (Z i = 0; i < 2 * size_; i += 8) {
+const V x = _mm256_permutevar8x32_epi32(load(q + 2*i), order);
+const V y = _mm256_permutevar8x32_epi32(load(q + 2*i + 8), order);
+store(a + i, multiply(_mm256_permute2x128_si256(x, y, 0x20), _mm256_permute2x128_si256(x, y, 0x31)));
+}
+q_scale = mont_.multiply(q_scale, q_scale);
+project(a, rows, columns);
+std::copy_n(a, 2 * size_, b);
+extend_y(b, rows, columns, false);
+q_scale = mont_.multiply(q_scale, mont_.to_montgomery(2 * columns));
+const V correction = _mm256_set1_epi32(add_mod(q_scale, q_scale));
+if (columns == 2) {
+store(b, _mm256_blend_epi32(sub(load(b), correction), load(b), 0xF0));
+} else {
+for (Z i = 0; i < 2 * columns; i += 8) store(b + i, sub(load(b + i), correction));
+}
+Z h = size_;
+for (; h / 2 > columns && h >= 16; h /= 4) stage_pair<false>(b, 2 * size_, h / 2);
+for (; h > columns; h /= 2) stage<false>(b, 2 * size_, h);
+}
+descend(p, a, 2 * rows, columns / 2, p_scale, q_scale);
+const V duplicate = _mm256_setr_epi32(0, 0, 1, 1, 2, 2, 3, 3);
+for (Z i = 0; i < 2 * size_; i += 8) {
+const V v = load(p + i);
+const V low = _mm256_permutevar8x32_epi32(v, duplicate);
+const V high = _mm256_permutevar8x32_epi32(_mm256_permute2x128_si256(v, v, 1), duplicate);
+store(a + 2*i, multiply(low, _mm256_shuffle_epi32(load(a + 2*i), 0xB1)));
+store(a + 2*i + 8, multiply(high, _mm256_shuffle_epi32(load(a + 2*i + 8), 0xB1)));
+}
+p_scale = mont_.multiply(p_scale, q_scale);
+if (rows == 1) {
+transform<true>(a, 2 * size_, 2 * size_);
+transform<true>(b, 2 * size_, 2 * size_);
+const u32 scale = mont_.multiply(p_scale, 4 * size_);
+const u32 factor = mont_.to_montgomery(power_mod(scale, prime() - 2));
+for (Z i = 0; i < size_; ++i) p[i] = mont_.multiply(subtract_mod(a[i] >= prime() ? a[i] - prime() : a[i], b[i] >= prime() ? b[i] - prime() : b[i]), factor);
+} else {
+extend_y(b, rows, columns, true);
+Z h = size_;
+for (; h / 2 > columns && h >= 16; h /= 4) stage_pair<false>(b, 2 * size_, h / 2);
+for (; h > columns; h /= 2) stage<false>(b, 2 * size_, h);
+for (Z i = 0; i < 2 * size_; i += 8) store(p + i, sub(load(a + i), load(b + i)));
+project(p, rows, columns);
+p_scale = mont_.multiply(p_scale, mont_.to_montgomery(4 * columns));
+}
+}
+public:
+explicit CompositionTransform(Z size) : size_(size), roots_(size, 1), inverse_roots_(size, 1),
+quotients_(size), inverse_quotients_(size), twists_(size), inverse_twists_(size) {
+// 各部分変換の根とShoup乗算用の商をO(size)で前計算する。
+for (Z h = 1; h < size; h *= 2) {
+const u32 r = power_mod(primitive_root, (prime() - 1) / (4 * h));
+const u32 ir = power_mod(r, prime() - 2);
+const u32 t = u64(r) * r % prime(), it = u64(ir) * ir % prime();
+const u32 rm = mont_.to_montgomery(r), irm = mont_.to_montgomery(ir);
+const u32 tm = mont_.to_montgomery(t), itm = mont_.to_montgomery(it);
+u32 a = power_mod(h, prime() - 2), b = a;
+for (Z i = 0; i < h; ++i) {
+roots_[h+i] = mont_.multiply(roots_[i], rm);
+inverse_roots_[h+i] = mont_.multiply(inverse_roots_[i], irm);
+twists_[h+i] = a;
+inverse_twists_[h+i] = b;
+a = mont_.multiply(a, tm);
+b = mont_.multiply(b, itm);
+}
+}
+for (Z i = 0; i < size; ++i) {
+quotients_[i] = quotient(roots_[i]);
+inverse_quotients_[i] = quotient(inverse_roots_[i]);
+}
+
+}
+void run(u32* output, const u32* outer, Z outer_size, const u32* inner,
+Z inner_size, Z length, bool input_montgomery) const {
+// 境界でのみ表現を変換し、内部ではMontgomery表現で計算する。
+std::vector<u32> p(2 * size_), q(size_);
+for (Z i = 0; i < outer_size; ++i)
+p[i] = input_montgomery ? (outer[i] >= prime() ? outer[i] - prime() : outer[i]) : mont_.to_montgomery(outer[i]);
+for (Z i = 0; i < inner_size; ++i)
+q[i] = input_montgomery ? (inner[i] >= prime() ? inner[i] - prime() : inner[i]) : mont_.to_montgomery(inner[i]);
+u32 scale = mont_.radix;
+descend(p.data(), q.data(), 1, size_, scale, mont_.radix);
+for (Z i = 0; i < length; ++i) output[i] = input_montgomery ? p[i] : mont_.multiply(p[i], 1);
+}
+};
+
 // Bostan--Mori の変換結果を半分ずつ再利用する。
 inline u32 bostan_mori_998(const u32* p0, Z plen, const u32* q0, Z qlen, u64 k, bool input_montgomery) {
 modulus = 998244353U;
@@ -1530,6 +1922,22 @@ context.run(output);
 }
 }
 #endif
+extern "C" void cplib_composition_ntt(
+std::uint32_t* output, std::uint32_t* outer, std::size_t outer_size,
+std::uint32_t* inner, std::size_t inner_size, std::size_t length,
+std::size_t size, std::uint32_t prime, bool montgomery) {
+// 指定したNTT素数上で合成する。
+cplib_avx2_ntt::modulus = prime;
+cplib_avx2_ntt::primitive_root = cplib_avx2_ntt::find_primitive_root(prime);
+if (prime == 998244353U) {
+cplib_avx2_ntt::CompositionTransform<998244353U> transform(size);
+transform.run(output, outer, outer_size, inner, inner_size, length, montgomery);
+} else {
+cplib_avx2_ntt::CompositionTransform<> transform(size);
+transform.run(output, outer, outer_size, inner, inner_size, length, montgomery);
+}
+}
+
 extern "C" std::uint32_t cplib_bostan_mori_998(std::uint32_t* p, std::size_t plen, std::uint32_t* q, std::size_t qlen, std::uint64_t k, bool mont) {
 return cplib_avx2_ntt::bostan_mori_998(p, plen, q, qlen, k, mont);
 }
@@ -1600,6 +2008,12 @@ output, factors, sizes, factor_count);
 }
     """.}
 
+    proc compositionNttKernel*(output, outer: ptr uint32, outerSize: csize_t,
+            inner: ptr uint32, innerSize, length, size: csize_t,
+            modulus: uint32, montgomery: bool) {.importc: "cplib_composition_ntt".}
+        ## 合成の内部カーネル。sizeは32以上の2冪で2*size長のNTTが可能な法とする。
+        ## 入力長とlengthはsize以下、inner[0]=0とし、入力は変更しない。
+
     proc bostanMori998Kernel*(p: ptr uint32, plen: csize_t, q: ptr uint32,
             qlen: csize_t, k: uint64, inputMontgomery: bool): uint32
             {.importc: "cplib_bostan_mori_998".}
@@ -1654,6 +2068,11 @@ output, factors, sizes, factor_count);
         ## 作成済みcontextで中間積を葉まで降下させる。inputとoutputは作成時のsize係数の通常剰余とする。
     proc multipointTreeDestroy*(context: pointer) {.importc: "cplib_multipoint_tree_destroy".}
         ## multipointTreeCreateで作ったcontextを解放する。解放後のcontextは再利用しない。
+
+    proc canUseCompositionNtt*(modulus: uint32, size: int): bool =
+        ## sizeは2冪とし、合成用の2*size長のNTTが可能か判定する。
+        size >= 32 and size <= (1 shl 28) and
+            isNttFriendlyModulus(modulus, (2 * size).uint32)
 
     proc canUseMultipointTreeNtt*(modulus: uint32, size: int): bool =
         ## 積木の全段でNTTを使える場合に限り高速経路を選ぶ。

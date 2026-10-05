@@ -72,11 +72,49 @@ when not declared CPLIB_FPS_COMPOSITION:
         ## outer(inner(x)) mod x^n を O(n log^2 n) で求める。
         ## innerの定数項が0であることを仮定する。
         if n <= 0: return @[]
-        doAssert inner.len == 0 or inner[0].val == 0,
+        assert inner.len == 0 or inner[0].val == 0,
             "FPSの合成では内側のFPSの定数項が0である必要がある"
         if n == 1:
             result = newSeq[T](1)
             if outer.len > 0: result[0] = outer[0]
+            return
+
+        var outerLength = min(outer.len, n)
+        var innerLength = min(inner.len, n)
+        while outerLength > 0 and outer[outerLength - 1].val == 0: dec outerLength
+        while innerLength > 0 and inner[innerLength - 1].val == 0: dec innerLength
+        if outerLength <= 1 or innerLength <= 1:
+            result = newSeq[T](n)
+            if outerLength > 0: result[0] = outer[0]
+            return
+
+        var first = 1
+        while inner[first].val == 0: inc first
+        outerLength = min(outerLength, (n - 1) div first + 1)
+        if first == innerLength - 1:
+            result = newSeq[T](n)
+            var power = init(T, 1)
+            for i in 0..<outerLength:
+                result[i * first] = outer[i] * power
+                power *= inner[first]
+            return
+        if n <= 32 or outerLength <= 8:
+            let truncatedInner = inner[0..<innerLength]
+            result = @[outer[outerLength - 1]]
+            for i in countdown(outerLength - 2, 0):
+                result = prefix(result * truncatedInner, n)
+                result[0] += outer[i]
+            result.setLen(n)
+            return
+
+        var size = 1
+        while size < n: size *= 2
+        if n >= 32 and canUseCompositionNtt(T.umod, size):
+            result = newSeq[T](n)
+            compositionNttKernel(cast[ptr uint32](addr result[0]),
+                cast[ptr uint32](unsafeAddr outer[0]), outerLength.csize_t,
+                cast[ptr uint32](unsafeAddr inner[0]), innerLength.csize_t,
+                n.csize_t, size.csize_t, T.umod, T is MontgomeryModint)
             return
 
         # outer(y^-1) / (1 - y inner(x)) のy^0係数が
@@ -89,13 +127,15 @@ when not declared CPLIB_FPS_COMPOSITION:
         result = compositionRec(prefix(outer, n), denominator, n - 1, 1, denominatorDegree)
 
     proc compose*[T: BarrettModint or MontgomeryModint](
-            outer, inner: seq[T]): seq[T] = outer.compose(inner, outer.len)
+            outer, inner: seq[T]): seq[T] =
+        ## outer(inner(x))をouter.len項求める。
+        outer.compose(inner, outer.len)
 
     proc compositionalInverse*[T: BarrettModint or MontgomeryModint](
             f: seq[T], n: int): seq[T] =
         ## f(g(x)) = x (mod x^n) を満たすgをO(n log^2 n)で求める。
         if n <= 0: return @[]
-        doAssert f.len >= 2 and f[0].val == 0 and f[1].val != 0,
+        assert f.len >= 2 and f[0].val == 0 and f[1].val != 0,
             "合成逆関数を求めるには f(0)=0 かつ1次の係数が非零である必要がある"
         if n == 1: return newSeq[T](1)
         if n >= 64 and n <= T.umod.int and isprime(T.umod.int):
