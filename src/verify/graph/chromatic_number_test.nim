@@ -94,6 +94,13 @@ checkGraph(5, @[(0, 1), (4, 4), (4, 4)], -1, true)
 checkGraph(1, @[], 1, true)
 checkGraph(0, @[], 0, true)
 checkGraph(18, @[], 1, true)
+checkGraph(18, @[(0, 1), (1, 2), (2, 0)], 3, true)
+
+for cliqueSize in 2..18:
+    var edges: seq[TestEdge]
+    for u in 0..<cliqueSize:
+        for v in u + 1..<cliqueSize: edges.add((u, v))
+    checkGraph(18, edges, cliqueSize)
 
 block:
     var clique: seq[TestEdge]
