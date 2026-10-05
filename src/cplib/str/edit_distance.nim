@@ -8,6 +8,7 @@ when not declared CPLIB_STR_EDIT_DISTANCE:
         ## 挿入・削除・置換を各コスト 1 とする編集距離を返します。k を超える場合は -1。
         ## k >= 0 が必要です。string の各バイトを 1 文字として扱います。
         ## N = |s| + |t| として、時間 O(N log N + k^2)、空間 O(N log N + k)。ハッシュは使いません。
+        ## 一致する入力は時間O(N)、追加領域O(1)で処理します。
         assert k >= 0, "kは非負である必要があります"
         let n = s.len
         let m = t.len
@@ -17,6 +18,8 @@ when not declared CPLIB_STR_EDIT_DISTANCE:
             return max(n, m)
         if k == 0:
             return (if s == t: 0 else: -1)
+        if s == t:
+            return 0
 
         let joined = s & t
         let sa = suffix_array(joined)
