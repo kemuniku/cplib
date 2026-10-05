@@ -1,5 +1,6 @@
 when not declared CPLIB_MATH_PRIMEFACTOR:
     const CPLIB_MATH_PRIMEFACTOR* = 1
+    import cplib/math/inner_math
     import cplib/math/isprime
     import cplib/str/run_length_encode
     import random, std/math, algorithm, tables
