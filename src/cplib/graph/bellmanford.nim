@@ -4,7 +4,7 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
     import cplib/graph/graph
     import cplib/graph/restore_shortest_path_from_prev
     import cplib/utils/constants
-    proc propagate_negative_bellmanford[T](G: WeightedGraph[T] or UnWeightedGraph, costs: var seq[T], prev: var seq[int], INF: T) {.noinline.} =
+    template propagate_negative_bellmanford_body(G, costs, prev, INF: untyped) =
         ## 緩和可能な辺から到達できる負閉路の影響範囲を求める。O(V + E)。
         let N = len(G)
         var affected = newSeq[bool](N)
@@ -23,6 +23,14 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
                 if not affected[j]:
                     affected[j] = true
                     queue.addLast(j)
+
+    proc propagate_negative_bellmanford[T](G: WeightedGraph[T] or UnWeightedGraph, costs: var seq[T], prev: var seq[int], INF: T) {.noinline.} =
+        ## 数値型の負閉路の影響を BFS で伝播する。O(V + E)。
+        propagate_negative_bellmanford_body(G, costs, prev, INF)
+
+    proc propagate_negative_bellmanford_openarray[T](G: WeightedGraph[T] or UnWeightedGraph, costs: var openArray[T], prev: var openArray[int], INF: T) {.noinline.} =
+        ## 数値型の負閉路の影響を BFS で伝播する。O(V + E)。
+        propagate_negative_bellmanford_body(G, costs, prev, INF)
 
     proc restore_bellmanford_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =
         ## 最短距離と直前頂点を返し、数値型の負閉路の影響を BFS で伝播する。O(V(V + E))。
@@ -49,7 +57,10 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
             if not changed: break
         if changed:
             when T is SomeNumber:
-                propagate_negative_bellmanford(G, costs, prev, INF)
+                when G is StaticGraphTypes:
+                    propagate_negative_bellmanford_openarray(G, costs, prev, INF)
+                else:
+                    propagate_negative_bellmanford(G, costs, prev, INF)
             else:
                 for _ in 0..<N:
                     for i in 0..<N:
