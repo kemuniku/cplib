@@ -28,7 +28,7 @@ when not declared CPLIB_COLLECTIONS_HASHSET:
         var pos = self.find(val)
         if self.values[pos].state == State.active: return
         self.len += 1
-        self.fill += 1
+        self.fill += ord(self.values[pos].state == State.empty)
         self.values[pos].value = val
         self.values[pos].state = State.active
     proc resize[T](self: var HashSet[T]) =

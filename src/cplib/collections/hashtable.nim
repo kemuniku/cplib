@@ -39,7 +39,7 @@ when not declared CPLIB_COLLECTIONS_HASHTABLE:
             self.values[pos].value[1] = val
             return
         self.len += 1
-        self.fill += 1
+        self.fill += ord(self.values[pos].state == State.empty)
         self.values[pos].value = (key, val)
         self.values[pos].state = State.active
     proc resize[K, V](self: var HashTable[K, V]) =
@@ -72,10 +72,10 @@ when not declared CPLIB_COLLECTIONS_HASHTABLE:
         if self.values[pos].state == State.active:
             self.values[pos].value[1] = val
             return
+        self.fill += ord(self.values[pos].state == State.empty)
         self.values[pos].value = (key, val)
         self.values[pos].state = State.active
         self.len += 1
-        self.fill += 1
         if self.fill.vlen > self.values.len: self.resize
     proc clear*[K, V](self: var HashTable[K, V]) = self = initHashTable[K, V]()
     proc del*[K, V](self: var HashTable[K, V], key: K) =
