@@ -28,21 +28,26 @@ when not declared CPLIB_COLLECTIONS_HASHTABLE:
     iterator values*[K, V](self: HashTable[K, V]): V =
         for item in self.values:
             if item.state == State.active: yield item.value[1]
-    proc find[K, V](self: HashTable[K, V], x: K): int =
+    proc find[K, V](self: HashTable[K, V], x: K): int {.inline.} =
+        ## キーに対応する探索位置を返します。
         var sh: int = hash(x) and self.mask
         while self.values[sh].state != State.empty and self.values[sh].value[0] != x:
             sh = (sh + 1) and self.mask
         return sh
-    proc add_item[K, V](self: var HashTable[K, V], key: K, val: V) =
+    proc add_item[K, V](self: var HashTable[K, V], key: K, val: V): bool =
+        ## 要素を追加し、墓石を再利用した場合にtrueを返します。
         var pos = self.find(key)
         if self.values[pos].state == State.active:
             self.values[pos].value[1] = val
-            return
+            return false
+        let unused = self.values[pos].state == State.empty
         self.len += 1
-        self.fill += ord(self.values[pos].state == State.empty)
+        self.fill += ord(unused)
         self.values[pos].value = (key, val)
         self.values[pos].state = State.active
+        return not unused
     proc resize[K, V](self: var HashTable[K, V]) =
+        ## 生存要素数に合わせて容量を調整し、墓石を取り除きます。
         var vlen = self.len.vlen
         var vi = newSeq[Node[K, V]](vlen)
         self.mask = vlen - 1
@@ -52,31 +57,41 @@ when not declared CPLIB_COLLECTIONS_HASHTABLE:
         for item in vi:
             if item.state != State.active: continue
             var (key, val) = item.value
-            self.add_item(key, val)
+            discard self.add_item(key, val)
     proc incl*[K, V](self: var HashTable[K, V], val: (K, V)) =
-        self.add_item(val[0], val[1])
-        if self.fill.vlen > self.values.len: self.resize
+        ## 要素を追加し、必要に応じて容量調整と墓石の整理を行います。
+        # 墓石が生存要素以上になった場合は既存の再構築で整理する。
+        let reused = self.add_item(val[0], val[1])
+        if self.fill >= self.values.len div 2 or (reused and self.fill >= self.len * 2): self.resize
         # if self.fill > self.values.len div HASHSET_INCL_RESIZE_RATIO: self.resize
-    proc contains*[K, V](self: var HashTable[K, V], key: K): bool = (self.values[self.find(key)].state == State.active)
-    proc hasKey*[K, V](self: var HashTable[K, V], key: K): bool = self.contains(key)
-    proc `[]`*[K, V](self: HashTable[K, V], key: K): V =
+    proc contains*[K, V](self: var HashTable[K, V], key: K): bool {.inline.} =
+        ## キーに対応する生存要素が存在するか返します。
+        (self.values[self.find(key)].state == State.active)
+    proc hasKey*[K, V](self: var HashTable[K, V], key: K): bool {.inline.} =
+        ## キーが存在するか返します。
+        self.contains(key)
+    proc `[]`*[K, V](self: HashTable[K, V], key: K): V {.inline.} =
+        ## キーに対応する値を返します。
         var pos = self.find(key)
         assert self.values[pos].state == State.active, "キー \"" & $key & "\" が見つかりません"
         return self.values[pos].value[1]
-    proc `[]`*[K, V](self: var HashTable[K, V], key: K): var V =
+    proc `[]`*[K, V](self: var HashTable[K, V], key: K): var V {.inline.} =
+        ## キーに対応する値を返します。
         var pos = self.find(key)
         assert self.values[pos].state == State.active, "キー \"" & $key & "\" が見つかりません"
         return self.values[pos].value[1]
     proc `[]=`*[K, V](self: var HashTable[K, V], key: K, val: V) =
+        ## キーに対応する値を設定します。
         var pos = self.find(key)
         if self.values[pos].state == State.active:
             self.values[pos].value[1] = val
             return
-        self.fill += ord(self.values[pos].state == State.empty)
+        let unused = self.values[pos].state == State.empty
+        self.fill += ord(unused)
         self.values[pos].value = (key, val)
         self.values[pos].state = State.active
         self.len += 1
-        if self.fill.vlen > self.values.len: self.resize
+        if self.fill >= self.values.len div 2 or (not unused and self.fill >= self.len * 2): self.resize
     proc clear*[K, V](self: var HashTable[K, V]) = self = initHashTable[K, V]()
     proc del*[K, V](self: var HashTable[K, V], key: K) =
         var pos = self.find(key)

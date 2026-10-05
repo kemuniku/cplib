@@ -1,5 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-import random, hashes
+import random, hashes, sequtils
 import cplib/collections/hashtable
 
 type
@@ -89,4 +89,26 @@ block:
         doAssert refs[box] == i
         refs.del(box)
         doAssert not refs.contains(box)
+block:
+    var table = initHashTable[int, Box](64)
+    let objects = (0..<32).toSeq.mapIt(Box(value: it))
+    for i in 0..<32: table[i] = objects[i]
+    let preserved = table.values
+    let snapshot = repr(preserved)
+    for i in 1..<32: table.del(i)
+    table.del(0)
+    table[0] = objects[0]
+    doAssert table.len == 1 and table.values.len == 4
+    doAssert table[0] == objects[0]
+    doAssert repr(preserved) == snapshot
+block:
+    var table = initHashTable[int, int]()
+    table[0] = 1
+    let lookup = hasKey[int, int]
+    proc access(self: HashTable[int, int], key: int): int = self[key]
+    let getValue = access
+    doAssert lookup(table, 0)
+    doAssert getValue(table, 0) == 1
+    table[0] += 4
+    doAssert table[0] == 5
 echo "Hello World"
