@@ -84,6 +84,7 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
     template newSegWith*(V, merge, default: untyped): untyped =
         initSegmentTree[typeof(default)](V, proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
     proc max_right*[T](self: SegmentTree[T], l: int, f: proc(l: T): bool): int =
+        ## f(get(l, r))を満たす最大のrをO(log N)で返します。
         assert 0 <= l and l <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= l and l <= self.len"
         assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if l == self.len: return self.len
@@ -91,18 +92,23 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         var sm = self.default
         while true:
             while l mod 2 == 0: l = (l shr 1)
-            if not f(self.merge(sm, self.arr[l])):
+            var merged = self.merge(sm, self.arr[l])
+            if not f(merged):
+                # 失敗した一時値を降下前に解放する。
+                reset(merged)
                 while l < self.lastnode:
                     l *= 2
-                    if f(self.merge(sm, self.arr[l])):
-                        sm = self.merge(sm, self.arr[l])
+                    let merged = self.merge(sm, self.arr[l])
+                    if f(merged):
+                        sm = merged
                         l += 1
                 return l - self.lastnode
-            sm = self.merge(sm, self.arr[l])
+            sm = merged
             l += 1
             if (l and -l) == l: break
         return self.len
     proc min_left*[T](self: SegmentTree[T], r: int, f: proc(l: T): bool): int =
+        ## f(get(l, r))を満たす最小のlをO(log N)で返します。
         assert 0 <= r and r <= self.len, "指定した値が有効な範囲内である必要があります: 0 <= r and r <= self.len"
         assert f(self.default), "判定関数は単位元に対してtrueを返す必要があります"
         if r == 0: return 0
@@ -111,13 +117,17 @@ when not declared CPLIB_COLLECTIONS_SEGTREE:
         while true:
             r -= 1
             while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)
-            if not f(self.merge(self.arr[r], sm)):
+            var merged = self.merge(self.arr[r], sm)
+            if not f(merged):
+                # 失敗した一時値を降下前に解放する。
+                reset(merged)
                 while r < self.lastnode:
                     r = 2 * r + 1
-                    if f(self.merge(self.arr[r], sm)):
-                        sm = self.merge(self.arr[r], sm)
+                    let merged = self.merge(self.arr[r], sm)
+                    if f(merged):
+                        sm = merged
                         r -= 1
                 return r + 1 - self.lastnode
-            sm = self.merge(self.arr[r], sm)
+            sm = merged
             if (r and -r) == r: break
         return 0

@@ -157,15 +157,19 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         var sm = self.default
         while true:
             while l mod 2 == 0: l = (l shr 1)
-            if not f(self.merge(sm, self.arr[l])):
+            var merged = self.merge(sm, self.arr[l])
+            if not f(merged):
+                # 失敗した一時値を降下前に解放する。
+                reset(merged)
                 while l < self.lastnode:
                     self.push(l)
                     l *= 2
-                    if f(self.merge(sm, self.arr[l])):
-                        sm = self.merge(sm, self.arr[l])
+                    let merged = self.merge(sm, self.arr[l])
+                    if f(merged):
+                        sm = merged
                         l += 1
                 return l - self.lastnode
-            sm = self.merge(sm, self.arr[l])
+            sm = merged
             l += 1
             if (l and -l) == l: break
         return self.len
@@ -181,14 +185,18 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:
         while true:
             r -= 1
             while ((r > 1) and (r mod 2 != 0)): r = (r shr 1)
-            if not f(self.merge(self.arr[r], sm)):
+            var merged = self.merge(self.arr[r], sm)
+            if not f(merged):
+                # 失敗した一時値を降下前に解放する。
+                reset(merged)
                 while r < self.lastnode:
                     self.push(r)
                     r = 2 * r + 1
-                    if f(self.merge(self.arr[r], sm)):
-                        sm = self.merge(self.arr[r], sm)
+                    let merged = self.merge(self.arr[r], sm)
+                    if f(merged):
+                        sm = merged
                         r -= 1
                 return r + 1 - self.lastnode
-            sm = self.merge(self.arr[r], sm)
+            sm = merged
             if (r and -r) == r: break
         return 0
