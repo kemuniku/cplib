@@ -5,58 +5,67 @@ when not declared CPLIB_FPS_COMPOSITION:
     import cplib/modint/modint
     import cplib/fps/power_projection
     import cplib/math/isprime
+    import cplib/convolution/convolution
 
     proc compositionRec[T: BarrettModint or MontgomeryModint](
-            outer: seq[T], denominator: seq[seq[T]], n, yDegree: int): seq[seq[T]] =
-        ## outer(y^-1) / denominator(x, y) のうち必要なy方向のLaurent係数を求める。
+            outer, denominator: seq[T], n, yDegree, denominatorDegree: int): seq[T] =
+        ## outer(y^-1) / denominator(x, y) の必要なLaurent係数を平坦な配列で求める。
         ## Kinoshita--Li法（転置した冪射影）の再帰部分に当たる。
         if n == 0:
-            result = newSeq[seq[T]](yDegree)
-            for i in 0..<yDegree: result[i] = newSeq[T](1)
+            result = newSeq[T](yDegree)
             for i in 0..<min(outer.len, yDegree):
-                result[yDegree - 1 - i][0] = outer[i]
+                result[yDegree - 1 - i] = outer[i]
             return
 
-        # V(x^2, y) = Q(x, y) Q(-x, y) を計算する。
-        # 復元時のx次数より広い間隔で平坦化すれば、二変数積を1回の畳み込みにできる。
-        var denominatorDegree = 0
-        for polynomial in denominator:
-            denominatorDegree = max(denominatorDegree,
-                min(polynomial.len, n + 1) - 1)
+        let width = denominatorDegree + 1
         let stride = n + denominatorDegree + 1
-        let encodedLength = yDegree * stride + denominatorDegree + 1
-        var positive = newSeq[T](encodedLength)
+        let encodedLength = yDegree * stride + width
         var negative = newSeq[T](encodedLength)
         for y in 0..yDegree:
-            for x in 0..<min(denominator[y].len, n + 1):
-                positive[y * stride + x] = denominator[y][x]
+            for x in 0..<width:
+                let value = denominator[y * width + x]
                 negative[y * stride + x] =
-                    (if (x and 1) == 0: denominator[y][x] else: -denominator[y][x])
-        let product = positive * negative
+                    (if (x and 1) == 0: value else: -value)
         let half = n div 2
-        var nextDenominator = newSeq[seq[T]](2 * yDegree + 1)
-        for y in 0..2 * yDegree:
-            nextDenominator[y] = newSeq[T](half + 1)
-            for x in 0..half:
-                let index = y * stride + 2 * x
-                if index < product.len: nextDenominator[y][x] = product[index]
+        let projected = block:
+            var nextDenominator: seq[T]
+            if half > 0:
+                # V(x^2, y) = Q(x, y) Q(-x, y) を計算する。
+                var positive = newSeq[T](encodedLength)
+                for y in 0..yDegree:
+                    for x in 0..<width:
+                        positive[y * stride + x] = denominator[y * width + x]
+                let product = positive * negative
+                nextDenominator = newSeq[T]((2 * yDegree + 1) * (half + 1))
+                for y in 0..2 * yDegree:
+                    for x in 0..half:
+                        let index = y * stride + 2 * x
+                        if index < product.len:
+                            nextDenominator[y * (half + 1) + x] = product[index]
+            compositionRec(outer, nextDenominator, half, 2 * yDegree, half)
 
-        let projected = compositionRec(outer, nextDenominator, half, 2 * yDegree)
-
-        # x^2 を x に戻してQ(-x, y)を掛け、yの指数が -yDegree+1 .. 0 の項だけ残す。
+        # x^2をxに戻してQ(-x, y)を掛け、yの指数が-yDegree+1..0の項だけ残す。
         let liftedLength = (2 * yDegree - 1) * stride + 2 * half + 1
         var lifted = newSeq[T](liftedLength)
         for y in 0..<2 * yDegree:
-            for x in 0..<projected[y].len:
-                lifted[y * stride + 2 * x] = projected[y][x]
-        let recovered = lifted * negative
-        result = newSeq[seq[T]](yDegree)
+            for x in 0..half:
+                lifted[y * stride + 2 * x] = projected[y * (half + 1) + x]
+        # 積の長さは3*yDegree*stride以下なので、2*yDegree*stride以上で巡回すれば
+        # 回り込みは保存範囲[yDegree*stride, 2*yDegree*stride)より手前にしか届かない。
+        var cycleLength = 1
+        while cycleLength < 2 * yDegree * stride: cycleLength *= 2
+        let modulus = T.umod
+        let useCyclic = min(lifted.len, negative.len) > 60 and
+            cycleLength >= 64 and modulus < (1u32 shl 30) and
+            (modulus - 1) mod cycleLength.uint32 == 0 and isprime(modulus.int)
+        let recovered = (if useCyclic:
+            convolutionCyclicPowerOfTwo(lifted, negative, cycleLength)
+        else: lifted * negative)
+        result = newSeq[T](yDegree * (n + 1))
         for y in 0..<yDegree:
-            result[y] = newSeq[T](n + 1)
-            let encodedY = yDegree + y
             for x in 0..n:
-                let index = encodedY * stride + x
-                if index < recovered.len: result[y][x] = recovered[index]
+                let index = (yDegree + y) * stride + x
+                if index < recovered.len: result[y * (n + 1) + x] = recovered[index]
 
     proc compose*[T: BarrettModint or MontgomeryModint](
             outer, inner: seq[T], n: int): seq[T] =
@@ -72,10 +81,12 @@ when not declared CPLIB_FPS_COMPOSITION:
 
         # outer(y^-1) / (1 - y inner(x)) のy^0係数が
         # sum_i outer[i] inner(x)^i に一致することを利用する。
-        var denominator = newSeq[seq[T]](2)
-        denominator[0] = @[init(T, 1)]
-        denominator[1] = -prefix(inner, n)
-        result = prefix(compositionRec(prefix(outer, n), denominator, n - 1, 1)[0], n)
+        let denominatorDegree = max(0, min(inner.len, n) - 1)
+        let width = denominatorDegree + 1
+        var denominator = newSeq[T](2 * width)
+        denominator[0] = init(T, 1)
+        for i in 0..<min(inner.len, n): denominator[width + i] = -inner[i]
+        result = compositionRec(prefix(outer, n), denominator, n - 1, 1, denominatorDegree)
 
     proc compose*[T: BarrettModint or MontgomeryModint](
             outer, inner: seq[T]): seq[T] = outer.compose(inner, outer.len)

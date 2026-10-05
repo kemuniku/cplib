@@ -727,7 +727,7 @@ plan.forward(b, a);
 plan.prepare_inverse();
 plan.inverse(a);
 if (montgomery_representation) {
-const Z output_size = left_size + right_size - 1;
+const Z output_size = std::min(transform_size, left_size + right_size - 1);
 const V radix_squared = _mm256_set1_epi32(
 (int)(montgomery.radix_squared));
 Z i = 0;
@@ -1699,23 +1699,11 @@ output, factors, sizes, factor_count);
         result = newSeq[T](n)
         if f.len == 0 or g.len == 0: return
         if n >= 64 and isNttFriendlyModulus(T.umod, n.uint32):
-            when T is MontgomeryModint:
-                var normalF = newSeq[uint32](f.len)
-                var normalG = newSeq[uint32](g.len)
-                var normalResult = newSeq[uint32](n)
-                for i in 0..<f.len: normalF[i] = f[i].val.uint32
-                for i in 0..<g.len: normalG[i] = g[i].val.uint32
-                convolutionNttFriendlyAvx2(
-                    addr normalResult[0], addr normalF[0], f.len.csize_t,
-                    addr normalG[0], g.len.csize_t, n.csize_t,
-                    T.umod, 0u32, false)
-                for i in 0..<n: result[i] = init(T, normalResult[i])
-            else:
-                convolutionNttFriendlyAvx2(
-                    cast[ptr uint32](addr result[0]),
-                    cast[ptr uint32](unsafeAddr f[0]), f.len.csize_t,
-                    cast[ptr uint32](unsafeAddr g[0]), g.len.csize_t,
-                    n.csize_t, T.umod, 0u32, false)
+            convolutionNttFriendlyAvx2(
+                cast[ptr uint32](addr result[0]),
+                cast[ptr uint32](unsafeAddr f[0]), f.len.csize_t,
+                cast[ptr uint32](unsafeAddr g[0]), g.len.csize_t,
+                n.csize_t, T.umod, 0u32, T is MontgomeryModint)
             return
         let product = convolution(f, g)
         for i in 0..<product.len:
