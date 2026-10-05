@@ -14,6 +14,7 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
         MinCostFlow*[Cap, Cost] = object
             graph: seq[seq[MinCostFlowArc[Cap, Cost]]]
             positions: seq[tuple[src, index: int]]
+            negativeResidualArcs: int
 
     proc initMinCostFlow*[Cap: SomeInteger, Cost: SomeSignedInt](n: int, capacityZero: Cap = 0, costZero: Cost = 0): MinCostFlow[Cap, Cost] =
         ## n頂点の最小費用流グラフを構築する。容量・費用型の省略時はint。O(n)。
@@ -31,6 +32,8 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
         g.positions.add((src, index))
         g.graph[src].add(MinCostFlowArc[Cap, Cost](dst: dst, rev: rev, cap: cap, cost: cost))
         g.graph[dst].add(MinCostFlowArc[Cap, Cost](dst: src, rev: index, cap: Cap(0), cost: -cost))
+        if cap > Cap(0) and cost < Cost(0):
+            inc g.negativeResidualArcs
 
     proc get_edge*[Cap, Cost](g: MinCostFlow[Cap, Cost], i: int): MinCostFlowEdge[Cap, Cost] =
         ## i番目の辺の容量、現在の流量、単位費用を返す。O(1)。
@@ -55,21 +58,23 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
         let n = g.graph.len
         var potential = newSeq[Cost](n)
         var reached = newSeq[bool](n)
-        reached[src] = true
-        for phase in 0..<n:
-            var changed = false
-            for v in 0..<n:
-                if not reached[v]:
-                    continue
-                for e in g.graph[v]:
-                    if e.cap > Cap(0) and (not reached[e.dst] or potential[e.dst] > potential[v] + e.cost):
-                        potential[e.dst] = potential[v] + e.cost
-                        reached[e.dst] = true
-                        changed = true
-            if not changed:
-                break
-            if phase == n - 1:
-                raise newException(ValueError, "始点から到達可能な負閉路があります")
+        # 非負の残余辺だけなら、ゼロのポテンシャルから開始できる。
+        if g.negativeResidualArcs > 0:
+            reached[src] = true
+            for phase in 0..<n:
+                var changed = false
+                for v in 0..<n:
+                    if not reached[v]:
+                        continue
+                    for e in g.graph[v]:
+                        if e.cap > Cap(0) and (not reached[e.dst] or potential[e.dst] > potential[v] + e.cost):
+                            potential[e.dst] = potential[v] + e.cost
+                            reached[e.dst] = true
+                            changed = true
+                if not changed:
+                    break
+                if phase == n - 1:
+                    raise newException(ValueError, "始点から到達可能な負閉路があります")
         var totalFlow = Cap(0)
         var totalCost = Cost(0)
         var previousCost = Cost(0)
@@ -118,6 +123,10 @@ when not declared CPLIB_GRAPH_MINCOSTFLOW:
                 let u = prevVertex[v]
                 let i = prevEdge[v]
                 let rev = g.graph[u][i].rev
+                if g.graph[u][i].cost < Cost(0) and g.graph[u][i].cap == pushed:
+                    dec g.negativeResidualArcs
+                if g.graph[u][i].cost > Cost(0) and g.graph[v][rev].cap == Cap(0):
+                    inc g.negativeResidualArcs
                 g.graph[u][i].cap -= pushed
                 g.graph[v][rev].cap += pushed
                 v = u
