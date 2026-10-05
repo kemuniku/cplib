@@ -48,7 +48,7 @@ when not declared CPLIB_MATH_PRIMEFACTOR:
         while true:
             var x, ys, q = one
             var r, g = 1
-            let randomValue = (rand(0..n-3) + 2).uint64
+            let randomValue = add(rand(0..n-3), 2, n).uint64
             let rnd = product(randomValue, r2)
             var y = product((rand(0..n-3) + 2).uint64, r2)
             proc f(x: uint64): uint64 =
