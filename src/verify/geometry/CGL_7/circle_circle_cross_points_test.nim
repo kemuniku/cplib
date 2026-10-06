@@ -18,6 +18,6 @@ proc output(points: seq[Point[float]]) =
     stdout.write("\n")
 let a = initCircle(point(), number())
 let b = initCircle(point(), number())
-var points = cross_points(a, b).points
-if points.len == 1: points.add(points[0])
-output(points)
+var outputPoints = cross_points(a, b).points
+if outputPoints.len == 1: outputPoints.add(outputPoints[0])
+output(outputPoints)

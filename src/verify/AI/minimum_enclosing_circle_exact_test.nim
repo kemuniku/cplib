@@ -1,8 +1,8 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import options, random, algorithm, strutils
 import cplib/geometry/base
-import cplib/geometry/exact_circle
-import cplib/geometry/minimum_enclosing_circle_exact
+import cplib/geometry/circle
+import cplib/geometry/minimum_enclosing_circle
 import cplib/math/bigint
 import cplib/math/int128
 import cplib/math/fractions
@@ -14,22 +14,22 @@ proc check[T](input: seq[Point[T]], expected: string) =
     for p in input: original.add(p)
     var reversed = input
     reversed.reverse()
-    var first = none(ExactCircle[T])
+    var first = none(Circle[T])
     for seed in [0'i64, 1, -1, 63355030]:
         for points in [input, reversed]:
-            let circle = minimum_enclosing_circle_exact(points, seed)
+            let circle = minimum_enclosing_circle(points, seed)
             doAssert $circle.radius_squared_exact == expected
-            static: doAssert typeof(circle) is ExactCircle[T]
+            static: doAssert typeof(circle) is Circle[T]
             for p in circle.points_exact: doAssert circle.on_circle(p)
             for p in input: doAssert circle.contains(p)
             if first.isSome: doAssert first.get == circle
             else: first = some(circle)
     for i, p in input: doAssert p == original[i]
-    doAssert minimum_enclosing_circle_exact(input, 42).points == minimum_enclosing_circle_exact(input, 42).points
+    doAssert minimum_enclosing_circle(input, 42).points == minimum_enclosing_circle(input, 42).points
 
 proc checkType[T](zero, one, two, four: T) =
     var rejected = false
-    try: discard minimum_enclosing_circle_exact(newSeq[Point[T]]())
+    try: discard minimum_enclosing_circle(newSeq[Point[T]]())
     except ValueError: rejected = true
     doAssert rejected
     check(@[initPoint(zero, zero)], "0/1")
@@ -49,9 +49,9 @@ checkType(initFraction(0), initFraction(1), initFraction(2), initFraction(4))
 checkType(initFraction(parseInt128("0")), initFraction(parseInt128("1")), initFraction(parseInt128("2")), initFraction(parseInt128("4")))
 checkType(rat(0, 1), rat(1, 1), rat(2, 1), rat(4, 1))
 
-let half = minimum_enclosing_circle_exact(@[initPoint(0, 0), initPoint(1, 0)])
+let half = minimum_enclosing_circle(@[initPoint(0, 0), initPoint(1, 0)])
 static:
-    doAssert typeof(half) is ExactCircle[int]
+    doAssert typeof(half) is Circle[int]
     doAssert typeof(half.center_exact) is Point[Fraction[int]]
     doAssert typeof(half.radius_squared_exact) is Fraction[int]
 doAssert half.center_exact == initPoint(initFraction(1, 2), initFraction(0))
@@ -70,17 +70,17 @@ check(@[initPoint(zero128, zero128), initPoint(tiny128, zero128)], "1/4000000000
 let raw = Fraction[int](num: -6, den: -6)
 check(@[initPoint(raw, raw), initPoint(initFraction(2), raw)], "1/4")
 var rejected = false
-try: discard minimum_enclosing_circle_exact(@[initPoint(Fraction[int](num: 1, den: 0), initFraction(0))])
+try: discard minimum_enclosing_circle(@[initPoint(Fraction[int](num: 1, den: 0), initFraction(0))])
 except ValueError: rejected = true
 doAssert rejected
 randomize(422)
 let before = rand(high(int))
-discard minimum_enclosing_circle_exact(@[initPoint(0, 0), initPoint(1, 0)], 7)
+discard minimum_enclosing_circle(@[initPoint(0, 0), initPoint(1, 0)], 7)
 let after = rand(high(int))
 randomize(422)
 doAssert before == rand(high(int)) and after == rand(high(int))
 var large: seq[Point[int]]
 for i in 0..<10000: large.add(initPoint(i mod 3, (i * 17) mod 3))
-let circle = minimum_enclosing_circle_exact(large)
-for p in large: doAssert circle.contains(p)
+let enclosing = minimum_enclosing_circle(large)
+for p in large: doAssert enclosing.contains(p)
 echo "Hello World"

@@ -1,8 +1,7 @@
 import strutils
 import cplib/geometry/base
 import cplib/geometry/circle
-import cplib/geometry/exact_circle
-import cplib/geometry/minimum_enclosing_circle_exact
+import cplib/geometry/minimum_enclosing_circle
 import cplib/math/bigint
 import cplib/math/int128
 import cplib/math/fractions
@@ -36,19 +35,19 @@ proc run[T]() =
     let centerB = point[T]()
     let ra = parseInt(read())
     let rb = parseInt(read())
-    proc check[S](circle: ExactCircle[S]) =
+    proc check[S](circle: Circle[S]) =
         let center = circle.center_exact
         let radiusSquared = circle.radius_squared_exact
-        let other = initExactCircle(centerB, rb)
+        let other = initCircle(centerB, rb)
         echo $center.x & " " & $center.y & " " & $radiusSquared & " " &
             $ord(circle.classify(query)) & " " & $intersection_count(circle, line) & " " &
             $intersection_count(circle, segment) & " " & $intersection_count(circle, other) & " " &
             $tangent_count(circle, query) & " " & $common_tangent_count(circle, other)
     try:
         case methodId
-        of 0: check(initExactCircle(a, b, c))
-        of 1: check(initExactCircle(a, ra))
-        else: check(initExactCircle(a, b))
+        of 0: check(initCircle(a, b, c))
+        of 1: check(initCircle(a, ra))
+        else: check(initCircle(a, b))
     except ValueError:
         echo "INVALID"
 proc runMec[T]() =
@@ -58,12 +57,12 @@ proc runMec[T]() =
     for _ in 0..<n: points.add(point[T]())
     if n == 0:
         try:
-            discard minimum_enclosing_circle_exact(points, seed)
+            discard minimum_enclosing_circle(points, seed)
             quit("empty MEC was accepted")
         except ValueError:
             echo "EMPTY"
             return
-    let circle = minimum_enclosing_circle_exact(points, seed)
+    let circle = minimum_enclosing_circle(points, seed)
     for p in points:
         if not circle.contains(p): quit("MEC does not contain input")
     let center = circle.center_exact

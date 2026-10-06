@@ -1,29 +1,9 @@
-when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
-    const CPLIB_GEOMETRY_EXACT_CIRCLE* = 1
-    import math, strutils
-    import cplib/geometry/base
-    import cplib/geometry/circle
+when not declared CPLIB_GEOMETRY_CIRCLE_INTEGER_IMPL:
+    const CPLIB_GEOMETRY_CIRCLE_INTEGER_IMPL = 1
+    import strutils
     import cplib/math/fractions
-
-    ## 指定型Tの3点と正の共通尺度を保持する。実際の3点はpoints / point_scale。
-    ## 通常の構築は尺度1、2点直径円は尺度2。支持2点へ表現を切り替えない。
-    ## 符号付き整数、Int128、BigInt、それらを基底とする有限Fractionに対応する。
-    ## 自動昇格は行わない。固定幅型では差・積・符号反転・分数の中間値も型に収まることが前提。
-    ## 中心＋通過点・2円関係は同じ座標型を用いる。符号なし整数の暗黙昇格も行わない。
-    ## 中心と半径二乗は整数TならFraction[T]、Fraction[U]ならFraction[U]。
-    ## *_approxのみfloat64を使う。整数・分数の判定中にはfloatを使わない。
-    ## default(ExactCircle[T])は未初期化。全点一致は点円、その他の共線3点はValueError。
-    type
-        ExactCircle*[T] = object
-            definingPoints: array[3, Point[T]]
-            commonScale: T
-            initialized: bool
-        ExactCircleFraction*[T] = Fraction[T]
-        CircleExactScalar[T] = object
-            num, den: T
-        CirclePointLocation* = enum
-            circleOutside, circleBoundary, circleInside
-
+    type CircleExactScalar[T] = object
+        num, den: T
     proc circleValueLike[T, S](witness: T, x: S): T =
         ## 演算対象の型へ値を合わせる。多倍長化はせず、表現可能性は呼び出し側の前提。
         mixin toBigInt, to_Int128
@@ -166,23 +146,25 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         when T is Fraction:
             result = T(num: x.num, den: x.den)
         else:
+            if circleSign((x.den - circleConst(x.den, 1))) != 0:
+                raise newException(ValueError, "整数座標の3点として表現できない値です")
             result = circleValueLike(witness, x.num)
 
     proc toExactPoint*[T](p: Point[T]): auto =
         ## 整数TならFraction[T]、Fraction[U]ならFraction[U]の点を返す。
         circleStoredPoint(circleExactPoint(p))
 
-    proc points*[T](c: ExactCircle[T]): array[3, Point[T]] =
+    proc points*[T](c: Circle[T]): array[3, Point[T]] =
         ## 保持する3点の分子座標を返す。実際の点はpoint_scaleで割る。通常構築は尺度1。
         if not c.initialized: raise newException(ValueError, "厳密円は初期化されていません")
         c.definingPoints
 
-    proc point_scale*[T](c: ExactCircle[T]): T =
+    proc point_scale*[T](c: Circle[T]): T =
         ## 保持3点の共通尺度を返す。直径円は2、その他の構築は1。
         discard c.points
         c.commonScale
 
-    proc points_exact*[T](c: ExactCircle[T]): auto =
+    proc points_exact*[T](c: Circle[T]): auto =
         ## 共通尺度で割った実際の3点を同じ基底型のFractionで返す。
         let stored = c.points
         let scale = circleFraction(c.commonScale)
@@ -191,7 +173,7 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         for i, p in stored: output[i] = circleStoredPoint(circleExactPoint(p) * (circleLike(scale, 1) / scale))
         output
 
-    proc initExactCircle*[T](a, b, c: Point[T]): ExactCircle[T] =
+    proc initCircleInteger[T](a, b, c: Point[T]): Circle[T] =
         ## 元の3点を尺度1で保持する。全点一致以外の共線3点はValueError。
         mixin `-`, `*`, `==`
         let sample = circleFraction(a.x)
@@ -206,29 +188,30 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
             if circleSign(determinant) == 0 and not (a.x == b.x and a.y == b.y and a.x == c.x and a.y == c.y):
                 raise newException(ValueError, "円の3点は非共線または全点一致である必要があります")
         let one = circleStoredLike(a.x, circleLike(sample, 1))
-        ExactCircle[T](definingPoints: [a, b, c], commonScale: one, initialized: true)
+        Circle[T](definingPoints: [a, b, c], commonScale: one, initialized: true)
 
-    proc initExactCircle*[T, R](center: Point[T], radius: R): ExactCircle[T] =
+    proc initCircleInteger[T, R](center: Point[T], radius: R): Circle[T] =
         ## 中心と非負整数半径から同じ型Tの3点を生成する。尺度は1、自動昇格なし。
         let p = circleExactPoint(center)
-        let r = circleFraction(circleValueLike(p.x.num, radius))
+        let supplied = circleFraction(radius)
+        let r = circleRational(circleValueLike(p.x.num, supplied.num), circleValueLike(p.x.num, supplied.den))
         if circleSign(r.num) < 0: raise newException(ValueError, "円の半径は非負である必要があります")
         let a = initPoint(circleStoredLike(center.x, p.x + r), center.y)
         let b = initPoint(center.x, circleStoredLike(center.y, p.y + r))
         let c = initPoint(circleStoredLike(center.x, p.x - r), center.y)
-        initExactCircle(a, b, c)
+        initCircleInteger(a, b, c)
 
-    proc initExactCircle*[T](center, through: Point[T]): ExactCircle[T] =
+    proc initCircleInteger[T](center, through: Point[T]): Circle[T] =
         ## 中心と通過点から同じ型Tの3点を生成する。一致時は点円、尺度は1。
         let p = circleExactPoint(center)
         let q = circleExactPoint(through)
         let v = q - p
         let b = p + initPoint(-v.y, v.x)
         let c = p - v
-        initExactCircle(through, initPoint(circleStoredLike(center.x, b.x), circleStoredLike(center.y, b.y)),
+        initCircleInteger(through, initPoint(circleStoredLike(center.x, b.x), circleStoredLike(center.y, b.y)),
                         initPoint(circleStoredLike(center.x, c.x), circleStoredLike(center.y, c.y)))
 
-    proc initExactDiameterCircle*[T](a, b: Point[T]): ExactCircle[T] =
+    proc initDiameterCircleInteger[T](a, b: Point[T]): Circle[T] =
         ## 2点直径円を同じ型Tの3点と共通尺度2で保持する。一致時は点円。
         let p = circleExactPoint(a)
         let q = circleExactPoint(b)
@@ -238,12 +221,12 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         let twice = circleLike(p.x, 2)
         let first = p * twice
         let last = q * twice
-        result = initExactCircle(initPoint(circleStoredLike(a.x, first.x), circleStoredLike(a.y, first.y)),
+        result = initCircleInteger(initPoint(circleStoredLike(a.x, first.x), circleStoredLike(a.y, first.y)),
                                  initPoint(circleStoredLike(a.x, middle.x), circleStoredLike(a.y, middle.y)),
                                  initPoint(circleStoredLike(a.x, last.x), circleStoredLike(a.y, last.y)))
         result.commonScale = circleStoredLike(a.x, twice)
 
-    proc circleExactData[T](c: ExactCircle[T]): auto =
+    proc circleExactData[T](c: Circle[T]): auto =
         ## 保持3点と共通尺度から同じ基底型で中心・半径二乗を求める。
         let stored = c.points
         let a = circleExactPoint(stored[0])
@@ -268,16 +251,16 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         ## 近似ベクトルを90度回転する。
         initPoint(-p.y, p.x)
 
-    proc center_exact*[T](c: ExactCircle[T]): auto =
+    proc center_exact*[T](c: Circle[T]): auto =
         ## 有理数の中心を厳密に返す。
         circleStoredPoint(circleExactData(c).center)
 
-    proc radius_squared_exact*[T](c: ExactCircle[T]): auto =
+    proc radius_squared_exact*[T](c: Circle[T]): auto =
         ## 有理数の半径二乗を厳密に返す。半径自体は無理数となりうる。
         let r = circleExactData(c).radiusSquared
         Fraction[typeof(r.num)](num: r.num, den: r.den)
 
-    proc classify*[T, S](c: ExactCircle[T], p: Point[S]): CirclePointLocation =
+    proc circleIntegerClassify[T, S](c: Circle[T], p: Point[S]): CirclePointLocation =
         ## 円盤の外・境界・内部を指定型で厳密分類する。整数は共通尺度付きincircle行列式。
         mixin `-`, `*`, `+`, `==`
         when T isnot Fraction and S isnot Fraction:
@@ -305,21 +288,24 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
             elif circleSign(difference.num) < 0: circleInside
             else: circleBoundary
 
-    proc contains*[T, S](c: ExactCircle[T], p: Point[S]): bool =
+    proc circleIntegerContains[T, S](c: Circle[T], p: Point[S]): bool =
         ## 境界を含む円盤の点包含を厳密に判定する。
-        c.classify(p) != circleOutside
+        circleIntegerClassify(c, p) != circleOutside
 
-    proc on_circle*[T, S](c: ExactCircle[T], p: Point[S]): bool =
+    proc circleIntegerOnCircle[T, S](c: Circle[T], p: Point[S]): bool =
         ## 円周上かを厳密に判定する。
-        c.classify(p) == circleBoundary
+        circleIntegerClassify(c, p) == circleBoundary
 
-    proc `==`*[T](a, b: ExactCircle[T]): bool =
+    proc `==`*[T](a, b: Circle[T]): bool =
         ## 同じ座標型の2円を点の順序によらず同じ円かを厳密に判定する。
-        let x = circleExactData(a)
-        let y = circleExactData(b)
-        x.center == y.center and x.radiusSquared == y.radiusSquared
+        when T is SomeFloat:
+            a.centerValue.x == b.centerValue.x and a.centerValue.y == b.centerValue.y and a.radiusValue == b.radiusValue
+        else:
+            let x = circleExactData(a)
+            let y = circleExactData(b)
+            x.center == y.center and x.radiusSquared == y.radiusSquared
 
-    proc circleLineData[T, S](c: ExactCircle[T], l: Line[S]): auto =
+    proc circleLineData[T, S](c: Circle[T], l: Line[S]): auto =
         ## 直線パラメータの二次方程式を円の基底型で求める。退化直線はValueError。
         let data = circleExactData(c)
         let s = circlePointLike(data.center, l.s)
@@ -330,7 +316,7 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         let b = dot(w, v) * 2
         (s: s, v: v, a: a, b: b, discriminant: b * b - a * (norm(w) - data.radiusSquared) * 4)
 
-    proc intersection_count*[T, S](c: ExactCircle[T], l: Line[S]): int =
+    proc circleIntegerIntersectionCount[T, S](c: Circle[T], l: Line[S]): int =
         ## 円周と直線の交点数0〜2を厳密に返す。
         let sign = circleSign(circleLineData(c, l).discriminant.num)
         if sign < 0: 0 elif sign == 0: 1 else: 2
@@ -343,11 +329,11 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         let comparison = circleSign((x * x - radicand).num)
         if comparison == 0: 0 elif comparison > 0: xs else: sign
 
-    proc intersection_count*[T, S](c: ExactCircle[T], s: Segment[S]): int =
+    proc circleIntegerIntersectionCount[T, S](c: Circle[T], s: Segment[S]): int =
         ## 円周と閉線分の交点数を厳密に返す。退化線分も許す。
         let a = circleExactPoint(s.s)
         let b = circleExactPoint(s.t)
-        if a == b: return ord(c.on_circle(s.s))
+        if a == b: return ord(c.circleIntegerOnCircle(s.s))
         let data = circleLineData(c, Line[S](s: s.s, t: s.t))
         if circleSign(data.discriminant.num) < 0: return 0
         for sign in [-1, 1]:
@@ -356,7 +342,7 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
                     circleRadicalSign(-data.b - data.a * 2, sign, data.discriminant) <= 0:
                 inc result
 
-    proc circlePairData[T](a, b: ExactCircle[T]): auto =
+    proc circlePairData[T](a, b: Circle[T]): auto =
         ## 同じ座標型の2円の共通弦を厳密に求める。
         let x = circleExactData(a)
         let y = circleExactData(b)
@@ -369,7 +355,7 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
             heightSquared = x.radiusSquared - distanceSquared * factor * factor
         (center: x.center, v: v, distanceSquared: distanceSquared, factor: factor, heightSquared: heightSquared)
 
-    proc intersection_count*[T](a, b: ExactCircle[T]): int =
+    proc circleIntegerIntersectionCount[T](a, b: Circle[T]): int =
         ## 2円周の交点数を厳密に返す。同一正半径円は-1（無限個）、同一点円は1。
         let data = circlePairData(a, b)
         if (circleSign(data.distanceSquared.num) == 0):
@@ -378,9 +364,9 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         let sign = circleSign(data.heightSquared.num)
         if sign < 0: 0 elif sign == 0: 1 else: 2
 
-    proc tangent_count*[T, S](c: ExactCircle[T], p: Point[S]): int =
+    proc circleIntegerTangentCount[T, S](c: Circle[T], p: Point[S]): int =
         ## 点からの接線数を厳密に返す。点円自身は-1（無限個）、他点からは1。
-        let location = c.classify(p)
+        let location = circleIntegerClassify(c, p)
         if (circleSign(c.radius_squared_exact.num) == 0):
             return if location == circleBoundary: -1 else: 1
         case location
@@ -388,7 +374,7 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         of circleBoundary: 1
         of circleInside: 0
 
-    proc common_tangent_count*[T](a, b: ExactCircle[T]): int =
+    proc circleIntegerCommonTangentCount[T](a, b: Circle[T]): int =
         ## 共通接線数0〜4を厳密に返す。同一円は-1（無限個）。点円も扱う。
         let x = circleExactData(a)
         let y = circleExactData(b)
@@ -406,8 +392,9 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
 
     proc circleDecimalHead[T](x: T): tuple[value: float, exponent: int] =
         ## 指定された整数の先頭17桁と10進指数を近似出力のために求める。O(桁数)。
-        mixin `$`, `-`
-        let s = $(if circleSign(x) < 0: -x else: x)
+        mixin `$`
+        let text = $x
+        let s = if text[0] == '-': text[1..^1] else: text
         let length = min(s.len, 17)
         (parseFloat(s[0..<length]) / pow(10.0, float(length - 1)), s.len - 1)
 
@@ -445,24 +432,26 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         ## 厳密座標を最後にfloat64へ近似する。
         initPoint(circleFractionApprox(p.x), circleFractionApprox(p.y))
 
-    proc center_approx*[T](c: ExactCircle[T]): Point[float] =
+    proc center_approx*[T](c: Circle[T]): Point[float] =
         ## 中心をfloat64で近似する。厳密な中心はcenter_exactで取得する。
-        circlePointApprox(circleExactData(c).center)
+        when T is SomeFloat: c.centerValue
+        else: circlePointApprox(circleExactData(c).center)
 
-    proc radius_approx*[T](c: ExactCircle[T]): float =
+    proc radius_approx*[T](c: Circle[T]): float =
         ## 半径をfloat64で近似する。平方根を取る前の厳密値はradius_squared_exact。
-        circleFractionApprox(circleExactData(c).radiusSquared, true)
+        when T is SomeFloat: c.radiusValue
+        else: circleFractionApprox(circleExactData(c).radiusSquared, true)
 
-    proc toFloatCircle*[T](c: ExactCircle[T]): Circle =
+    proc toFloatCircle*[T](c: Circle[T]): Circle[float] =
         ## 明示的に既存float円へ近似変換する。変換後の述語は厳密ではない。
-        initCircle(c.center_approx, c.radius_approx)
+        circleFloatInit(c.center_approx, c.radius_approx)
 
     proc circleOffsetApprox[T](v: Point[CircleExactScalar[T]], squaredFactor: CircleExactScalar[T]): Point[float] =
         ## v * sqrt(squaredFactor)を各成分の平方から近似し、中間float積を避ける。
         initPoint(float(circleSign(v.x.num)) * circleFractionApprox(v.x * v.x * squaredFactor, true),
                   float(circleSign(v.y.num)) * circleFractionApprox(v.y * v.y * squaredFactor, true))
 
-    proc cross_points_approx*[T, S](c: ExactCircle[T], l: Line[S]): CircleIntersections =
+    proc circleIntegerCrossPoints[T, S](c: Circle[T], l: Line[S]): CircleIntersections =
         ## 円周と直線の交点を近似出力する。交点数はfloat化前に厳密判定する。
         let data = circleLineData(c, l)
         if circleSign(data.discriminant.num) < 0: return
@@ -473,9 +462,9 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
             result.points = @[foot - offset, foot + offset]
         for p in result.points: exactCircleCheckPoint(p)
 
-    proc cross_points_approx*[T](a, b: ExactCircle[T]): CircleIntersections =
+    proc circleIntegerCrossPoints[T](a, b: Circle[T]): CircleIntersections =
         ## 2円周の交点を近似出力する。点円・同一円の分類も厳密に行う。
-        let count = intersection_count(a, b)
+        let count = circleIntegerIntersectionCount(a, b)
         if count == -1:
             result.kind = circleInfinite
             return
@@ -491,9 +480,9 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
             result.points = @[foot - offset, foot + offset]
         for p in result.points: exactCircleCheckPoint(p)
 
-    proc tangent_lines_approx*[T, S](c: ExactCircle[T], p: Point[S]): CircleTangents =
+    proc circleIntegerTangentLines[T, S](c: Circle[T], p: Point[S]): CircleTangents =
         ## 点から円への接線を近似出力する。接線数はfloat化前に厳密判定する。
-        let count = tangent_count(c, p)
+        let count = circleIntegerTangentCount(c, p)
         if count == -1:
             result.kind = circleInfinite
             return
@@ -518,18 +507,228 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
             exactCircleCheckPoint(contact)
             result.tangents.add(CircleTangent(first: contact, second: circlePointApprox(q), direction: exactCirclePerpendicular(normal)))
 
-    proc cross_points_approx*[T, S](c: ExactCircle[T], s: Segment[S]): CircleIntersections =
+    proc circleIntegerCrossPoints[T, S](c: Circle[T], s: Segment[S]): CircleIntersections =
         ## 円周と閉線分の交点を近似出力する。端点の採否は平方根を取らず厳密判定する。
         if circleExactPoint(s.s) == circleExactPoint(s.t):
-            if c.on_circle(s.s): result.points = @[circlePointApprox(circleExactPoint(s.s))]
+            if c.circleIntegerOnCircle(s.s): result.points = @[circlePointApprox(circleExactPoint(s.s))]
             return
         let data = circleLineData(c, Line[S](s: s.s, t: s.t))
         if circleSign(data.discriminant.num) < 0: return
-        let intersections = cross_points_approx(c, Line[S](s: s.s, t: s.t))
+        var accepted: seq[int]
         var index = 0
         for sign in [-1, 1]:
-            if sign == 1 and (circleSign(data.discriminant.num) == 0): continue
+            if sign == 1 and circleSign(data.discriminant.num) == 0: continue
             if circleRadicalSign(-data.b, sign, data.discriminant) >= 0 and
                     circleRadicalSign(-data.b - data.a * 2, sign, data.discriminant) <= 0:
-                result.points.add(intersections.points[index])
+                accepted.add(index)
             inc index
+        if accepted.len == 0: return
+        let intersections = circleIntegerCrossPoints(c, Line[S](s: s.s, t: s.t))
+        for index in accepted: result.points.add(intersections.points[index])
+
+    proc circleIntegerCommonTangents[T](a, b: Circle[T]): CircleTangents =
+        ## 共通接線を近似出力する。各接線族の存在と重複はfloat化前に厳密判定する。
+        let x = circleExactData(a)
+        let y = circleExactData(b)
+        let v = y.center - x.center
+        let d = norm(v)
+        if circleSign(d.num) == 0:
+            if a == b: result.kind = circleInfinite
+            return
+        let firstZero = circleSign(x.radiusSquared.num) == 0
+        let secondZero = circleSign(y.radiusSquared.num) == 0
+        var families: seq[tuple[side, existence, contactSign: int]]
+        if not (firstZero and secondZero):
+            let difference = d - x.radiusSquared - y.radiusSquared
+            let radicand = x.radiusSquared * y.radiusSquared * 4
+            for side in [1, -1]:
+                if side < 0 and (firstZero or secondZero): continue
+                let existence = circleRadicalSign(difference, side, radicand)
+                if existence < 0: continue
+                let contactSign = if side > 0 and circleSign((x.radiusSquared - y.radiusSquared).num) < 0: -1 else: 1
+                families.add((side, existence, contactSign))
+            if families.len == 0: return
+        let unit = circleOffsetApprox(v, circleLike(d, 1) / d)
+        let firstCenter = circlePointApprox(x.center)
+        let secondCenter = circlePointApprox(y.center)
+        if firstZero and secondZero:
+            result.tangents = @[CircleTangent(first: firstCenter, second: secondCenter, direction: unit)]
+            return
+        let firstRadius = circleFractionApprox(x.radiusSquared, true)
+        let secondRadius = circleFractionApprox(y.radiusSquared, true)
+        for family in families:
+            let ratio = circleFractionApprox(x.radiusSquared / d, true) - float(family.side) * circleFractionApprox(y.radiusSquared / d, true)
+            let cosine = if family.existence == 0: float(family.contactSign) else: max(-1.0, min(1.0, ratio))
+            let sine = if family.existence == 0: 0.0 else: sqrt(max(0.0, (1 - cosine) * (1 + cosine)))
+            for sign in [-1.0, 1.0]:
+                if sign > 0 and family.existence == 0: continue
+                let normal = unit * cosine + exactCirclePerpendicular(unit) * (sine * sign)
+                let first = firstCenter + normal * firstRadius
+                let second = secondCenter + normal * (float(family.side) * secondRadius)
+                let direction = exactCirclePerpendicular(normal)
+                exactCircleCheckPoint(first)
+                exactCircleCheckPoint(second)
+                exactCircleCheckPoint(direction)
+                result.tangents.add(CircleTangent(first: first, second: second, direction: direction))
+
+    proc circleFloatCoordinate[T](x: T): float =
+        ## 明示float構築の座標をfloat64へ変換する。
+        mixin `$`
+        when T is SomeNumber: float(x)
+        elif T is Fraction:
+            if circleSign(x.den) == 0: raise newException(ValueError, "float円の分数座標は有限である必要があります")
+            circleFractionApprox(CircleExactScalar[typeof(x.num)](num: x.num, den: x.den)) * float(circleSign(x.den))
+        else: circleFractionApprox(circleFraction(x))
+
+    proc circleFloatPoint[T](p: Point[T]): Point[float] =
+        ## 明示float構築の点をfloat64へ変換する。
+        initPoint(circleFloatCoordinate(p.x), circleFloatCoordinate(p.y))
+
+    proc initCircle*[T, R](center: Point[T], radius: R): auto =
+        ## 中心と非負半径で構築する。明示floatがあればfloat64、それ以外は入力座標型を保持する。
+        when T is SomeFloat or R is SomeFloat:
+            circleFloatInit(circleFloatPoint(center), circleFloatCoordinate(radius))
+        else: initCircleInteger(center, radius)
+
+    proc initCircle*[T, S](center: Point[T], through: Point[S]): auto =
+        ## 中心と通過点で構築する。明示floatはfloat64、整数・Fractionは同じ座標型を使う。
+        when T is SomeFloat or S is SomeFloat:
+            let p = circleFloatPoint(center)
+            let q = circleFloatPoint(through)
+            circleFloatInit(p, circleLength(q - p))
+        else:
+            when T isnot S: {.error: "整数・Fractionの中心と通過点は同じ座標型にしてください".}
+            initCircleInteger(center, through)
+
+    proc initCircle*[T, S, U](a: Point[T], b: Point[S], c: Point[U]): auto =
+        ## 3点で構築する。整数・Fractionは元の3点を保持し、floatは尺度を正規化して外接円を求める。
+        when T is SomeFloat or S is SomeFloat or U is SomeFloat:
+            let p = circleFloatPoint(a)
+            let q = circleFloatPoint(b)
+            let r = circleFloatPoint(c)
+            for point in [p, q, r]: circleCheckPoint(point)
+            let u = q - p
+            let v = r - p
+            let scale = max(max(abs(u.x), abs(u.y)), max(abs(v.x), abs(v.y)))
+            if scale == 0: return circleFloatInit(p, 0.0)
+            let un = u / scale
+            let vn = v / scale
+            let determinant = 2 * cross(un, vn)
+            if determinant == 0: raise newException(ValueError, "円の3点は非共線または全点一致である必要があります")
+            let offset = initPoint((vn.y * norm(un) - un.y * norm(vn)) / determinant * scale,
+                                  (un.x * norm(vn) - vn.x * norm(un)) / determinant * scale)
+            let center = p + offset
+            circleFloatInit(center, max(circleLength(p - center), max(circleLength(q - center), circleLength(r - center))))
+        else:
+            when T isnot S or T isnot U: {.error: "整数・Fractionの3点は同じ座標型にしてください".}
+            initCircleInteger(a, b, c)
+
+    proc initDiameterCircle*[T](a, b: Point[T]): auto =
+        ## 2点直径円。整数・Fractionは同じ型の3点と尺度2、floatはfloat64の中心・半径で保持する。
+        when T is SomeFloat:
+            let p = circleFloatPoint(a)
+            let q = circleFloatPoint(b)
+            let center = p + (q - p) * 0.5
+            circleFloatInit(center, max(circleLength(p - center), circleLength(q - center)))
+        else: initDiameterCircleInteger(a, b)
+
+    proc center*[T](c: Circle[T]): auto =
+        ## 中心を返す。整数TはPoint[Fraction[T]]、Fraction[U]はPoint[Fraction[U]]、floatはPoint[float]。
+        when T is SomeFloat: c.centerValue
+        else: c.center_exact
+
+    proc radius*[T](c: Circle[T]): float =
+        ## 半径をfloat64で返す。整数・Fractionの厳密値はradius_squared_exactで取得する。
+        c.radius_approx
+
+    proc contains*[T, S](c: Circle[T], p: Point[S], tolerance: float = 1e-10): bool =
+        ## 境界を含む円盤の包含。floatは相対許容誤差、それ以外は指定型の厳密判定。
+        when T is SomeFloat: circleFloatContains(toFloatCircle(c), circleFloatPoint(p), tolerance)
+        else: circleIntegerContains(c, p)
+
+    proc classify*[T, S](c: Circle[T], p: Point[S], tolerance: float = 1e-10): CirclePointLocation =
+        ## 内外・境界を分類する。floatの境界は相対許容誤差、それ以外は厳密。
+        when T is SomeFloat:
+            circleCheckTolerance(tolerance)
+            let distance = circleLength(circleFloatPoint(p) - c.centerValue)
+            if abs(distance - c.radiusValue) <= tolerance * max(distance, c.radiusValue): circleBoundary
+            elif distance < c.radiusValue: circleInside
+            else: circleOutside
+        else: circleIntegerClassify(c, p)
+
+    proc cross_points*[T, S](c: Circle[T], l: Line[S], tolerance: float = 1e-10): CircleIntersections =
+        ## 交点座標はfloat64の近似値。整数・Fractionでは採否を先に厳密判定する。
+        when T is SomeFloat: circleFloatCrossPoints(toFloatCircle(c), Line[float](s: circleFloatPoint(l.s), t: circleFloatPoint(l.t)), tolerance)
+        else: circleIntegerCrossPoints(c, l)
+
+    proc cross_points*[T, S](c: Circle[T], s: Segment[S], tolerance: float = 1e-10): CircleIntersections =
+        ## 閉線分との交点座標はfloat64の近似値。整数・Fractionでは端点の採否も厳密。
+        when T is SomeFloat: circleFloatCrossPoints(toFloatCircle(c), Segment[float](s: circleFloatPoint(s.s), t: circleFloatPoint(s.t)), tolerance)
+        else: circleIntegerCrossPoints(c, s)
+
+    proc cross_points*[T](a, b: Circle[T], tolerance: float = 1e-10): CircleIntersections =
+        ## 2円の交点を近似出力する。整数・Fractionの交点数は厳密。
+        when T is SomeFloat: circleFloatCrossPoints(toFloatCircle(a), toFloatCircle(b), tolerance)
+        else: circleIntegerCrossPoints(a, b)
+
+    proc common_tangents*[T](a, b: Circle[T], tolerance: float = 1e-10): CircleTangents =
+        ## 共通接線を近似出力する。floatは許容誤差、整数・Fractionは存在・本数を先に厳密判定する。
+        when T is SomeFloat: circleFloatCommonTangents(toFloatCircle(a), toFloatCircle(b), tolerance)
+        else: circleIntegerCommonTangents(a, b)
+
+    proc tangent_lines*[T, S](c: Circle[T], p: Point[S], tolerance: float = 1e-10): CircleTangents =
+        ## 点からの接線を近似出力する。整数・Fractionでは本数を先に厳密判定する。
+        when T is SomeFloat: circleFloatTangentLines(toFloatCircle(c), circleFloatPoint(p), tolerance)
+        else: circleIntegerTangentLines(c, p)
+
+    proc on_circle*[T, S](c: Circle[T], p: Point[S], tolerance: float = 1e-10): bool =
+        ## 円周上かを判定する。floatは許容誤差、それ以外は厳密。
+        when T is SomeFloat: c.classify(p, tolerance) == circleBoundary
+        else: circleIntegerOnCircle(c, p)
+
+    proc intersection_count*[T, S](c: Circle[T], l: Line[S], tolerance: float = 1e-10): int =
+        ## 直線との交点数。floatは許容誤差、それ以外は厳密。
+        when T is SomeFloat: cross_points(c, l, tolerance).points.len
+        else: circleIntegerIntersectionCount(c, l)
+
+    proc intersection_count*[T, S](c: Circle[T], s: Segment[S], tolerance: float = 1e-10): int =
+        ## 閉線分との交点数。floatは許容誤差、それ以外は厳密。
+        when T is SomeFloat: cross_points(c, s, tolerance).points.len
+        else: circleIntegerIntersectionCount(c, s)
+
+    proc intersection_count*[T](a, b: Circle[T], tolerance: float = 1e-10): int =
+        ## 2円の交点数。無限個は-1、floatは許容誤差、それ以外は厳密。
+        when T is SomeFloat:
+            let points = cross_points(a, b, tolerance)
+            if points.kind == circleInfinite: -1 else: points.points.len
+        else: circleIntegerIntersectionCount(a, b)
+
+    proc tangent_count*[T, S](c: Circle[T], p: Point[S], tolerance: float = 1e-10): int =
+        ## 点からの接線数。無限個は-1、floatは許容誤差、それ以外は厳密。
+        when T is SomeFloat:
+            let lines = tangent_lines(c, p, tolerance)
+            if lines.kind == circleInfinite: -1 else: lines.tangents.len
+        else: circleIntegerTangentCount(c, p)
+
+    proc common_tangent_count*[T](a, b: Circle[T], tolerance: float = 1e-10): int =
+        ## 共通接線数。無限個は-1、floatは許容誤差、それ以外は厳密。
+        when T is SomeFloat:
+            let lines = common_tangents(a, b, tolerance)
+            if lines.kind == circleInfinite: -1 else: lines.tangents.len
+        else: circleIntegerCommonTangentCount(a, b)
+
+    proc cross_points_approx*[T, S](c: Circle[T], l: Line[S]): CircleIntersections =
+        ## 直線との交点をfloat64で近似出力する。整数・Fractionの交点数は厳密。
+        cross_points(c, l)
+
+    proc cross_points_approx*[T, S](c: Circle[T], s: Segment[S]): CircleIntersections =
+        ## 閉線分との交点をfloat64で近似出力する。整数・Fractionの端点採否は厳密。
+        cross_points(c, s)
+
+    proc cross_points_approx*[T](a, b: Circle[T]): CircleIntersections =
+        ## 2円の交点をfloat64で近似出力する。整数・Fractionの交点数は厳密。
+        cross_points(a, b)
+
+    proc tangent_lines_approx*[T, S](c: Circle[T], p: Point[S]): CircleTangents =
+        ## 点からの接線をfloat64で近似出力する。整数・Fractionの本数は厳密。
+        tangent_lines(c, p)

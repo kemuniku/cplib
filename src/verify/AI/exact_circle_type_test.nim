@@ -1,20 +1,20 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import cplib/geometry/base
-import cplib/geometry/exact_circle
-import cplib/geometry/minimum_enclosing_circle_exact
+import cplib/geometry/circle
+import cplib/geometry/minimum_enclosing_circle
 import cplib/math/int128
 import cplib/math/fractions
 
 proc check[T](zero, one: T) =
     let o = initPoint(zero, zero)
     let p = initPoint(one, zero)
-    let c = initExactCircle(o, p)
-    let d = initExactDiameterCircle(o, p)
-    let m = minimum_enclosing_circle_exact(@[o, p])
+    let c = initCircle(o, p)
+    let d = initDiameterCircle(o, p)
+    let m = minimum_enclosing_circle(@[o, p])
     static:
-        doAssert typeof(c) is ExactCircle[T]
-        doAssert typeof(d) is ExactCircle[T]
-        doAssert typeof(m) is ExactCircle[T]
+        doAssert typeof(c) is Circle[T]
+        doAssert typeof(d) is Circle[T]
+        doAssert typeof(m) is Circle[T]
         doAssert typeof(c.points[0].x) is T
         doAssert typeof(d.point_scale) is T
         when T is Fraction:
@@ -41,5 +41,5 @@ check(initFraction(0), initFraction(1))
 check(initFraction(parseInt128("0")), initFraction(parseInt128("1")))
 static:
     doAssert not declared(CPLIB_MATH_BIGINT)
-    doAssert not compiles(initExactCircle(initPoint(0'u64, 0'u64), 1))
+    doAssert not compiles(initCircle(initPoint(0'u64, 0'u64), 1))
 echo "Hello World"

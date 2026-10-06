@@ -1,9 +1,9 @@
 import times, strformat
 import cplib/geometry/base
-import cplib/geometry/exact_circle
+import cplib/geometry/circle
 import cplib/math/fractions
-let integer = initExactCircle(initPoint(0, 0), initPoint(100, 0), initPoint(0, 100))
-let rational = initExactCircle(initPoint(initFraction(1, 3), initFraction(2, 7)), 100)
+let integer = initCircle(initPoint(0, 0), initPoint(100, 0), initPoint(0, 100))
+let rational = initCircle(initPoint(initFraction(1, 3), initFraction(2, 7)), 100)
 var sum = 0
 var start = cpuTime()
 for i in 0..<100000:
