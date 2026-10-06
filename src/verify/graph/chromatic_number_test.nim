@@ -158,7 +158,7 @@ when compileOption("assertions"):
 block:
     var g = initWeightedUnDirectedGraph(3, float)
     g.add_edge(0, 1, -0.5)
-    g.add_edge(1, 2, Inf)
+    g.add_edge(1, 2, system.Inf)
     g.add_edge(2, 0, 1.5)
     check(g, @[(0, 1), (1, 2), (2, 0)], 3)
 
