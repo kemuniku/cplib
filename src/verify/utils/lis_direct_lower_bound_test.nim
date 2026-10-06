@@ -62,7 +62,7 @@ check([0'u64, high(uint64), 1'u64, 2'u64])
 check(["aaa", "ccc", "bbb", "ddd", "bbb"])
 check("\0\xff\x80\0\x01")
 check([0.0, -1.0, 0.5, 3.0, 3.0])
-let special = [0.0, NaN, 1.0, NegInf, Inf]
+let special = [0.0, NaN, 1.0, NegInf, system.Inf]
 doAssert restore_lis_index(special) == legacyIndices(special)
 doAssert lis(special) == legacyIndices(special).len
 let a = [4, 1, 3, 2, 5]
