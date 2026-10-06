@@ -2,6 +2,7 @@ import strutils
 import cplib/geometry/base
 import cplib/geometry/circle
 import cplib/geometry/exact_circle
+import cplib/geometry/minimum_enclosing_circle_exact
 import cplib/math/bigint
 import cplib/math/int128
 import cplib/math/fractions
@@ -51,10 +52,39 @@ proc run[T]() =
         else: check(initExactCircle(a, b))
     except ValueError:
         echo "INVALID"
+proc runMec[T]() =
+    let seed = parseBiggestInt(read())
+    let n = parseInt(read())
+    var points: seq[Point[T]]
+    for _ in 0..<n: points.add(point[T]())
+    if n == 0:
+        try:
+            discard minimum_enclosing_circle_exact(points, seed)
+            quit("empty MEC was accepted")
+        except ValueError:
+            echo "EMPTY"
+            return
+    let circle = minimum_enclosing_circle_exact(points, seed)
+    for p in points:
+        if not circle.contains(p): quit("MEC does not contain input")
+    let center = circle.center_exact
+    echo $center.x & " " & $center.y & " " & $circle.radius_squared_exact
+
 var line: string
 while stdin.readLine(line):
     tokens = line.splitWhitespace()
     index = 1
+    if tokens[0].startsWith("mec-"):
+        case tokens[0][4..^1]
+        of "int": runMec[int]()
+        of "uint": runMec[uint64]()
+        of "int128": runMec[Int128]()
+        of "bigint": runMec[BigInt]()
+        of "fraction-int": runMec[Fraction[int]]()
+        of "fraction-int128": runMec[Fraction[Int128]]()
+        of "fraction-bigint": runMec[Fraction[BigInt]]()
+        else: quit("unknown MEC type")
+        continue
     case tokens[0]
     of "int": run[int]()
     of "uint": run[uint64]()

@@ -151,6 +151,10 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
         ## 座標を拡張してから点を構築する。
         initPoint(circleFraction(p.x), circleFraction(p.y))
 
+    proc toExactPoint*[T](p: Point[T]): Point[ExactCircleFraction] =
+        ## 整数・有限分数の点を演算前に正規化済みFraction[BigInt]へ拡張する。
+        circleStoredPoint(circleExactPoint(p))
+
     proc points*[T](c: ExactCircle[T]): array[3, Point[T]] =
         ## 円を定義する元の3点を入力順で返す。
         if not c.initialized:
@@ -190,6 +194,14 @@ when not declared CPLIB_GEOMETRY_EXACT_CIRCLE:
             initExactCircle(circleStoredPoint(q), circleStoredPoint(b), circleStoredPoint(c))
         else:
             initExactCircle(initPoint(q.x.num, q.y.num), initPoint(b.x.num, b.y.num), initPoint(c.x.num, c.y.num))
+
+    proc initExactDiameterCircle*[T, S](a: Point[T], b: Point[S]): ExactCircle[ExactCircleFraction] =
+        ## 2点を直径の両端とする円を3点で保持する。一致時は点円、半整数の中心も厳密に扱う。
+        let p = circleExactPoint(a)
+        let q = circleExactPoint(b)
+        let half = circleRational(initBigInt(1), initBigInt(2))
+        let center = circleStoredPoint((p + q) * half)
+        initExactCircle(center, circleStoredPoint(p))
 
     proc circleExactData[T](c: ExactCircle[T]): tuple[center: Point[CircleExactScalar], radiusSquared: CircleExactScalar] =
         ## 3点から厳密な中心と半径の二乗を求める。
