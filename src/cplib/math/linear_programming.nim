@@ -61,7 +61,7 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
         ## 係数は有限値、eps は有限の正数とする。eps は比較の絶対許容誤差で、解の誤差保証ではない。
         ## 最適時のみ x を返す。実行不能なら value = -Inf、非有界なら value = Inf、x は空。
         assert a.len == b.len, "A の行数と b の長さを一致させてください"
-        assert eps > 0.0 and eps < Inf, "eps は有限の正数にしてください"
+        assert eps > 0.0 and eps < system.Inf, "eps は有限の正数にしてください"
         let m = b.len
         let n = c.len
         var t = LinearProgrammingTableau(m: m, n: n, eps: eps,
@@ -71,15 +71,15 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
             t.data[i] = newSeq[float64](n + 2)
         for i in 0..<m:
             assert a[i].len == n, "A の各行の長さと c の長さを一致させてください"
-            assert b[i] > -Inf and b[i] < Inf, "b の要素は有限値にしてください"
+            assert b[i] > -system.Inf and b[i] < system.Inf, "b の要素は有限値にしてください"
             for j in 0..<n:
-                assert a[i][j] > -Inf and a[i][j] < Inf, "A の要素は有限値にしてください"
+                assert a[i][j] > -system.Inf and a[i][j] < system.Inf, "A の要素は有限値にしてください"
                 t.data[i][j] = a[i][j]
             t.basic[i] = n + i
             t.data[i][n] = -1.0
             t.data[i][n + 1] = b[i]
         for j in 0..<n:
-            assert c[j] > -Inf and c[j] < Inf, "c の要素は有限値にしてください"
+            assert c[j] > -system.Inf and c[j] < system.Inf, "c の要素は有限値にしてください"
             t.nonbasic[j] = j
             t.data[m][j] = -c[j]
         t.nonbasic[n] = -1
@@ -92,7 +92,7 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
         if row != -1 and t.data[row][n + 1] < -eps:
             t.lpPivot(row, n)
             if not t.lpSimplex(true) or abs(t.data[m + 1][n + 1]) > eps:
-                return LinearProgrammingResult(status: lpInfeasible, value: -Inf)
+                return LinearProgrammingResult(status: lpInfeasible, value: -system.Inf)
             for i in 0..<m:
                 if t.basic[i] != -1: continue
                 var col = -1
@@ -104,7 +104,7 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
                     t.lpPivot(i, col)
 
         if not t.lpSimplex(false):
-            return LinearProgrammingResult(status: lpUnbounded, value: Inf)
+            return LinearProgrammingResult(status: lpUnbounded, value: system.Inf)
         result = LinearProgrammingResult(status: lpOptimal, x: newSeq[float64](n))
         for i in 0..<m:
             if 0 <= t.basic[i] and t.basic[i] < n:
