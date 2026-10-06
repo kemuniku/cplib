@@ -22,7 +22,7 @@ when not declared CPLIB_GEOMETRY_TRIANGLE_CENTERS:
 
     proc triangleCenterFinite(x: float64): bool =
         ## 有限の float64 かを判定する。
-        x == x and abs(x) != Inf
+        x == x and abs(x) != system.Inf
 
     proc triangleCenterPoint[T: SomeInteger or SomeFloat](p: Point[T]): Point[float64] =
         ## 座標を変換し、非有限入力を拒否する。

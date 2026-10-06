@@ -6,7 +6,7 @@ import cplib/geometry/triangle_centers
 type P = Point[float64]
 
 proc close(x, y: float64, tolerance = 2e-9) =
-    doAssert x == x and abs(x) != Inf
+    doAssert x == x and abs(x) != system.Inf
     doAssert abs(x-y) <= tolerance * max(1.0, max(abs(x), abs(y))), $x &
             " != " & $y
 
@@ -198,7 +198,7 @@ block:
     doAssert incenter(tiny, b, c).isSome
     doAssert is_degenerate_triangle(tiny, initPoint(1e300, 0.0), initPoint(0.0, 1e-300))
 
-for bad in [NaN, Inf, -Inf]:
+for bad in [NaN, system.Inf, -system.Inf]:
     let a = initPoint(bad, 0.0)
     let b = initPoint(1.0, 0.0)
     let c = initPoint(0.0, 1.0)
@@ -214,7 +214,7 @@ for bad in [NaN, Inf, -Inf]:
             else: discard excenters(a, b, c)
         except ValueError: raised = true
         doAssert raised
-for tolerance in [-1.0, 1.01, NaN, Inf, -Inf]:
+for tolerance in [-1.0, 1.01, NaN, system.Inf, -system.Inf]:
     for operation in 0..4:
         var raised = false
         try:
