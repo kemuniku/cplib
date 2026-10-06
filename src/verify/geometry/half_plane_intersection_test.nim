@@ -287,7 +287,7 @@ doAssert nearParallel.vertices.len == 1 and nearParallel.vertices[0].x > 1e11
 for bad in @[
     Line[float](s: Point[float](x: 0,y: 0), t: Point[float](x: 0,y: 0)),
     Line[float](s: Point[float](x: NaN,y: 0), t: Point[float](x: 1,y: 1)),
-    Line[float](s: Point[float](x: 0,y: 0), t: Point[float](x: Inf,y: 1)),
+    Line[float](s: Point[float](x: 0,y: 0), t: Point[float](x: system.Inf,y: 1)),
     Line[float](s: Point[float](x: -1e308,y: 0), t: Point[float](x: 1e308,y: 1)),
     Line[float](s: Point[float](x: 0,y: 0), t: Point[float](x: 1e-308,y: 1e308))]:
     var raised = false
