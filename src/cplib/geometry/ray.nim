@@ -63,12 +63,12 @@ when not declared CPLIB_GEOMETRY_RAY:
 
     proc rayPrimitive(r: Ray): RayPrimitive =
         ## 半直線を非負パラメータの区間にする。
-        RayPrimitive(origin: rayPoint(r.originValue), direction: rayDirection(r.directionValue), lower: 0, upper: Inf)
+        RayPrimitive(origin: rayPoint(r.originValue), direction: rayDirection(r.directionValue), lower: 0, upper: system.Inf)
 
     proc rayPrimitive[T: SomeNumber](l: Line[T]): RayPrimitive =
         ## 直線を両方向無限のパラメータ区間にする。
         let a = rayPoint(l.s)
-        RayPrimitive(origin: a, direction: rayDirection(rayDifference(rayPoint(l.t), a)), lower: -Inf, upper: Inf)
+        RayPrimitive(origin: a, direction: rayDirection(rayDifference(rayPoint(l.t), a)), lower: -system.Inf, upper: system.Inf)
 
     proc rayPrimitive[T: SomeNumber](s: Segment[T]): RayPrimitive =
         ## 閉線分を有限区間にする。同一点の両端も許す。
@@ -103,8 +103,8 @@ when not declared CPLIB_GEOMETRY_RAY:
         let ratio = if abs(a.direction.x) >= abs(a.direction.y): b.direction.x / a.direction.x else: b.direction.y / a.direction.y
         # 無限端点と零長線分の積を避け、向きに応じて区間端を写す。
         proc mapped(t: float64): float64 =
-            if t == Inf: (if ratio > 0: Inf else: -Inf)
-            elif t == -Inf: (if ratio > 0: -Inf else: Inf)
+            if t == system.Inf: (if ratio > 0: system.Inf else: -system.Inf)
+            elif t == -system.Inf: (if ratio > 0: -system.Inf else: system.Inf)
             else: rayFinite(start + rayFinite(ratio * t))
         let first = mapped(b.lower)
         let last = mapped(b.upper)
@@ -112,7 +112,7 @@ when not declared CPLIB_GEOMETRY_RAY:
         let hi = min(a.upper, max(first, last))
         if lo > hi: return RayIntersection(kind: rikEmpty)
         if lo == hi: return RayIntersection(kind: rikPoint, point: rayAt(a, lo))
-        if hi == Inf:
+        if hi == system.Inf:
             return RayIntersection(kind: rikRay, ray: initRay(rayAt(a, lo), a.direction))
         return RayIntersection(kind: rikSegment, segment: Segment[float64](s: rayAt(a, lo), t: rayAt(a, hi)))
 
