@@ -12,20 +12,24 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
                     left, right: PersistentSequencePlainNode[T, F]
                 else:
                     left, right: PersistentSequenceNode[T, F]
-                size: int
-                value, forward, backward: T
-                lazy: F
-                height: uint8
+                when F is PersistentSequenceNoAction:
+                    size: int
+                    value, forward, backward: T
+                    lazy: F
+                    height: uint8
+                else:
+                    height, size: int
+                    value, forward, backward: T
+                    lazy: F
                 pending, reversed: bool
                 leftReversed, rightReversed: bool
             PersistentSequencePlainNode[T, F] {.acyclic.} = ref object of PersistentSequenceNode[T, F]
     else:
         type PersistentSequenceNode[T, F] = ref object
             left, right: PersistentSequenceNode[T, F]
-            size: int
+            height, size: int
             value, forward, backward: T
             lazy: F
-            height: uint8
             pending, reversed: bool
             leftReversed, rightReversed: bool
 
@@ -63,10 +67,15 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         ## 部分木の要素数をO(1)で返します。
         if n == nil: 0 else: n.size
 
+    template nodeHeightType(F: typedesc): typedesc =
+        ## ORCのNoActionだけ高さを圧縮し、refcと遅延作用付きは従来の配置を保ちます。
+        when defined(gcOrc) and (F is PersistentSequenceNoAction): uint8
+        else: int
+
     proc nodeHeight[T, F](n: PersistentSequenceNode[T, F]): int =
         ## 部分木の高さをO(1)で返します。
         ## AVLの最小要素数は高さ2ごとに倍増するため、int長さの木では高さは128未満です。
-        ## 内部の高さだけをuint8で保持し、演算はintへ戻して行います。
+        ## ORCのNoActionだけ内部の高さをuint8で保持し、演算はintへ戻して行います。
         if n == nil: 0 else: n.height.int
 
     proc checked[T, F](s: PersistentSequence[T, F]) =
@@ -97,7 +106,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         if ls == high(int) or rs > high(int) - ls - 1:
             raise newException(ValueError, "永続列の長さがintに収まりません")
         result = nodeType(T, F)(left: childNode(T, F, left), right: childNode(T, F, right), value: value,
-            height: uint8(max(left.nodeHeight, right.nodeHeight) + 1), size: ls + 1 + rs, lazy: c.id,
+            height: nodeHeightType(F)(max(left.nodeHeight, right.nodeHeight) + 1), size: ls + 1 + rs, lazy: c.id,
             leftReversed: leftReversed, rightReversed: rightReversed)
         if c.monoid:
             result.forward = c.op(c.op(c.aggregateView(left, leftReversed), value), c.aggregateView(right, rightReversed))
@@ -116,7 +125,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         if ls == high(int) or rs > high(int) - ls - 1:
             raise newException(ValueError, "永続列の長さがintに収まりません")
         n.size = ls + 1 + rs
-        n.height = uint8(max(n.left.nodeHeight, n.right.nodeHeight) + 1)
+        n.height = nodeHeightType(F)(max(n.left.nodeHeight, n.right.nodeHeight) + 1)
         if c.monoid:
             n.forward = c.op(c.op(c.aggregateView(n.left, n.leftReversed), n.value), c.aggregateView(n.right, n.rightReversed))
             n.backward = c.op(c.op(c.aggregateView(n.right, not n.rightReversed), n.value), c.aggregateView(n.left, not n.leftReversed))
