@@ -37,7 +37,7 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc geometry_eq*(x, y: SomeFloat): bool =
         ## 絶対・相対誤差で近似一致を判定する。GEOMETRY_EPSは非負を指定する。
         if x == y: return true
-        if abs(x) == Inf or abs(y) == Inf: return false
+        if abs(x) == system.Inf or abs(y) == system.Inf: return false
         let delta = abs(x - y)
         delta < GEOMETRY_EPS or delta < GEOMETRY_EPS * max(abs(x), abs(y))
     proc geometry_eq*(x: int, y: SomeFloat): bool = geometry_eq(float(x), y)
