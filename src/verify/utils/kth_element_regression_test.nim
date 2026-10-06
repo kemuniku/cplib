@@ -12,7 +12,7 @@ proc check[T](a: openArray[T]) =
 
 check([low(int), high(int), 0, low(int), high(int)])
 check([0u, high(uint), 1u, high(uint)])
-check([1.0, -1.0, Inf, NegInf, 0.0, 1.0])
+check([1.0, -1.0, system.Inf, NegInf, 0.0, 1.0])
 check(["", "a", "\0", "\xff", "aaa", "a"])
 check(['a', '\0', '\xff', 'a'])
 check([(2,"z"), (1,"a"), (1,"z"), (2,"a")])
