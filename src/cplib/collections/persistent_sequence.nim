@@ -16,6 +16,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
                 value, forward, backward: T
                 lazy: F
                 pending, reversed: bool
+                leftReversed, rightReversed: bool
             PersistentSequencePlainNode[T, F] {.acyclic.} = ref object of PersistentSequenceNode[T, F]
     else:
         type PersistentSequenceNode[T, F] = ref object
@@ -24,6 +25,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
             value, forward, backward: T
             lazy: F
             pending, reversed: bool
+            leftReversed, rightReversed: bool
 
     type
         PersistentSequenceContext[T, F] = ref object
@@ -77,29 +79,34 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         if l < 0 or r < l or r > s.len:
             raise newException(ValueError, "永続列の区間が範囲外です")
 
+    proc aggregateView[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F], flip: bool): T {.inline.} =
+        ## 子の反転を節点の複製なしに集約値へ反映します。O(1)。
+        if n == nil: c.e
+        elif flip: n.backward
+        else: n.forward
+
     proc makeNode[T, F](c: PersistentSequenceContext[T, F], left: PersistentSequenceNode[T, F],
-                       value: T, right: PersistentSequenceNode[T, F]): PersistentSequenceNode[T, F] =
+                       value: T, right: PersistentSequenceNode[T, F], leftReversed = false, rightReversed = false): PersistentSequenceNode[T, F] =
         ## 新しい節点を集約値とともに構築します。時間・追加領域O(1)。
         let ls = left.nodeSize
         let rs = right.nodeSize
         if ls == high(int) or rs > high(int) - ls - 1:
             raise newException(ValueError, "永続列の長さがintに収まりません")
         result = nodeType(T, F)(left: childNode(T, F, left), right: childNode(T, F, right), value: value,
-            height: max(left.nodeHeight, right.nodeHeight) + 1, size: ls + 1 + rs, lazy: c.id)
+            height: max(left.nodeHeight, right.nodeHeight) + 1, size: ls + 1 + rs, lazy: c.id,
+            leftReversed: leftReversed, rightReversed: rightReversed)
         if c.monoid:
-            result.forward = c.op(c.op((if left == nil: c.e else: left.forward), value),
-                (if right == nil: c.e else: right.forward))
-            result.backward = c.op(c.op((if right == nil: c.e else: right.backward), value),
-                (if left == nil: c.e else: left.backward))
+            result.forward = c.op(c.op(c.aggregateView(left, leftReversed), value), c.aggregateView(right, rightReversed))
+            result.backward = c.op(c.op(c.aggregateView(right, not rightReversed), value), c.aggregateView(left, not leftReversed))
 
     proc cloneNode[T, F](n: PersistentSequenceNode[T, F]): PersistentSequenceNode[T, F] =
         ## 節点のみをO(1)で複製し、子は共有します。
         nodeType(T, F)(left: childNode(T, F, n.left), right: childNode(T, F, n.right), height: n.height, size: n.size,
             value: n.value, forward: n.forward, backward: n.backward, lazy: n.lazy,
-            pending: n.pending, reversed: n.reversed)
+            pending: n.pending, reversed: n.reversed, leftReversed: n.leftReversed, rightReversed: n.rightReversed)
 
     proc refresh[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F]) =
-        ## 未公開の複製節点の要素数・高さ・集約値をO(1)で再計算します。
+        ## 伝播済みの未公開根の要素数・高さ・集約値をO(1)で再計算します。
         let ls = n.left.nodeSize
         let rs = n.right.nodeSize
         if ls == high(int) or rs > high(int) - ls - 1:
@@ -107,10 +114,8 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         n.size = ls + 1 + rs
         n.height = max(n.left.nodeHeight, n.right.nodeHeight) + 1
         if c.monoid:
-            n.forward = c.op(c.op((if n.left == nil: c.e else: n.left.forward), n.value),
-                (if n.right == nil: c.e else: n.right.forward))
-            n.backward = c.op(c.op((if n.right == nil: c.e else: n.right.backward), n.value),
-                (if n.left == nil: c.e else: n.left.backward))
+            n.forward = c.op(c.op(c.aggregateView(n.left, n.leftReversed), n.value), c.aggregateView(n.right, n.rightReversed))
+            n.backward = c.op(c.op(c.aggregateView(n.right, not n.rightReversed), n.value), c.aggregateView(n.left, not n.leftReversed))
 
     proc tagged[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F],
                       f: F, pending, flip: bool): PersistentSequenceNode[T, F] =
@@ -131,6 +136,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
                 result.pending = true
         if flip:
             swap(result.left, result.right)
+            swap(result.leftReversed, result.rightReversed)
             swap(result.forward, result.backward)
             result.reversed = not result.reversed
 
@@ -143,53 +149,75 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         if n == nil: return nil
         result = cloneNode(n)
         swap(result.left, result.right)
+        swap(result.leftReversed, result.rightReversed)
         swap(result.forward, result.backward)
         result.reversed = not result.reversed
 
-    proc copyPushed[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F]): PersistentSequenceNode[T, F] =
-        ## 節点を必ず複製し、子の作用・反転を一回の複製で伝播します。時間・追加領域O(1)。
+    proc copyPushed[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F], flip = false): PersistentSequenceNode[T, F] =
+        ## 根を複製し、子の反転は辺のboolに伝播して共有子を変更しません。時間・追加領域O(1)。
+        ## 辺の反転は参照先の論理順に対する反転です。集約値にもこの向きを反映します。
         result = cloneNode(n)
-        if n.pending or n.reversed:
-            result.left = childNode(T, F, c.tagged(n.left, n.lazy, n.pending, n.reversed))
-            result.right = childNode(T, F, c.tagged(n.right, n.lazy, n.pending, n.reversed))
+        if flip:
+            swap(result.left, result.right)
+            swap(result.leftReversed, result.rightReversed)
+            swap(result.forward, result.backward)
+            result.reversed = not result.reversed
+        if result.pending:
+            result.left = childNode(T, F, c.tagged(result.left, result.lazy, true, false))
+            result.right = childNode(T, F, c.tagged(result.right, result.lazy, true, false))
             result.pending = false
-            result.reversed = false
             result.lazy = c.id
+        if result.reversed:
+            result.leftReversed = not result.leftReversed
+            result.rightReversed = not result.rightReversed
+            result.reversed = false
 
     proc balanceOwned[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F], leftOwned = false, rightOwned = false): PersistentSequenceNode[T, F] =
         ## 未公開の複製根だけを回転します。時間・追加領域O(1)。
         ## Owned=trueは今回の再帰で生成し、遅延を伝播済みの未公開根に限ります。
         ## 共有する子・孫は回転で変更する前に必ず複製します。
         if n.left.nodeHeight > n.right.nodeHeight + 1:
-            let a = if leftOwned: n.left else: c.copyPushed(n.left)
+            let a = if leftOwned: n.left else: c.copyPushed(n.left, n.leftReversed)
             if a.left.nodeHeight >= a.right.nodeHeight:
                 n.left = childNode(T, F, a.right)
+                n.leftReversed = a.rightReversed
                 a.right = childNode(T, F, n)
+                a.rightReversed = false
                 c.refresh(n)
                 c.refresh(a)
                 return a
-            let b = c.copyPushed(a.right)
+            let b = c.copyPushed(a.right, a.rightReversed)
             a.right = childNode(T, F, b.left)
+            a.rightReversed = b.leftReversed
             n.left = childNode(T, F, b.right)
+            n.leftReversed = b.rightReversed
             b.left = childNode(T, F, a)
+            b.leftReversed = false
             b.right = childNode(T, F, n)
+            b.rightReversed = false
             c.refresh(a)
             c.refresh(n)
             c.refresh(b)
             return b
         if n.right.nodeHeight > n.left.nodeHeight + 1:
-            let a = if rightOwned: n.right else: c.copyPushed(n.right)
+            let a = if rightOwned: n.right else: c.copyPushed(n.right, n.rightReversed)
             if a.right.nodeHeight >= a.left.nodeHeight:
                 n.right = childNode(T, F, a.left)
+                n.rightReversed = a.leftReversed
                 a.left = childNode(T, F, n)
+                a.leftReversed = false
                 c.refresh(n)
                 c.refresh(a)
                 return a
-            let b = c.copyPushed(a.left)
+            let b = c.copyPushed(a.left, a.leftReversed)
             n.right = childNode(T, F, b.left)
+            n.rightReversed = b.leftReversed
             a.left = childNode(T, F, b.right)
+            a.leftReversed = b.rightReversed
             b.left = childNode(T, F, n)
+            b.leftReversed = false
             b.right = childNode(T, F, a)
+            b.rightReversed = false
             c.refresh(n)
             c.refresh(a)
             c.refresh(b)
@@ -207,23 +235,27 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
             let r = if leftFlip: left.left else: left.right
             let next = if left.pending: (if leftPending: c.composition(leftCarry, left.lazy) else: left.lazy) else: leftCarry
             let pending = leftPending or left.pending
-            let flip = leftFlip xor left.reversed
+            let lf = leftFlip xor left.reversed xor (if leftFlip: left.rightReversed else: left.leftReversed)
+            let rf = leftFlip xor left.reversed xor (if leftFlip: left.leftReversed else: left.rightReversed)
             let value = if leftPending: c.mapping(leftCarry, left.value) else: left.value
-            let combined = c.joinView(r, next, pending, flip, bridge, right, rightCarry, rightPending, rightFlip)
-            let a = nodeType(T, F)(left: childNode(T, F, c.tagged(l, next, pending, flip)), right: childNode(T, F, combined), value: value, lazy: c.id)
+            let combined = c.joinView(r, next, pending, rf, bridge, right, rightCarry, rightPending, rightFlip)
+            let a = nodeType(T, F)(left: childNode(T, F, c.tagged(l, next, pending, false)), right: childNode(T, F, combined), value: value, lazy: c.id, leftReversed: lf)
             return c.balanceOwned(a, rightOwned = true)
         if right.nodeHeight > left.nodeHeight + 1:
             let l = if rightFlip: right.right else: right.left
             let r = if rightFlip: right.left else: right.right
             let next = if right.pending: (if rightPending: c.composition(rightCarry, right.lazy) else: right.lazy) else: rightCarry
             let pending = rightPending or right.pending
-            let flip = rightFlip xor right.reversed
+            let lf = rightFlip xor right.reversed xor (if rightFlip: right.rightReversed else: right.leftReversed)
+            let rf = rightFlip xor right.reversed xor (if rightFlip: right.leftReversed else: right.rightReversed)
             let value = if rightPending: c.mapping(rightCarry, right.value) else: right.value
-            let combined = c.joinView(left, leftCarry, leftPending, leftFlip, bridge, l, next, pending, flip)
-            let a = nodeType(T, F)(left: childNode(T, F, combined), right: childNode(T, F, c.tagged(r, next, pending, flip)), value: value, lazy: c.id)
+            let combined = c.joinView(left, leftCarry, leftPending, leftFlip, bridge, l, next, pending, lf)
+            let a = nodeType(T, F)(left: childNode(T, F, combined), right: childNode(T, F, c.tagged(r, next, pending, false)), value: value, lazy: c.id, rightReversed: rf)
             return c.balanceOwned(a, leftOwned = true)
-        bridge.left = childNode(T, F, c.tagged(left, leftCarry, leftPending, leftFlip))
-        bridge.right = childNode(T, F, c.tagged(right, rightCarry, rightPending, rightFlip))
+        bridge.left = childNode(T, F, c.tagged(left, leftCarry, leftPending, false))
+        bridge.right = childNode(T, F, c.tagged(right, rightCarry, rightPending, false))
+        bridge.leftReversed = leftFlip
+        bridge.rightReversed = rightFlip
         c.refresh(bridge)
         bridge
 
@@ -242,14 +274,15 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         let ls = left.nodeSize
         let next = if n.pending: (if pending: c.composition(carry, n.lazy) else: n.lazy) else: carry
         let nextPending = pending or n.pending
-        let nextFlip = flip xor n.reversed
+        let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+        let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
         let value = if pending: c.mapping(carry, n.value) else: n.value
         let bridge = nodeType(T, F)(value: value, lazy: c.id)
         if k <= ls:
-            let parts = c.splitView(left, k, next, nextPending, nextFlip)
-            return (parts.left, c.joinView(parts.right, c.id, false, false, bridge, right, next, nextPending, nextFlip))
-        let parts = c.splitView(right, k - ls - 1, next, nextPending, nextFlip)
-        (c.joinView(left, next, nextPending, nextFlip, bridge, parts.left, c.id, false, false), parts.right)
+            let parts = c.splitView(left, k, next, nextPending, lf)
+            return (parts.left, c.joinView(parts.right, c.id, false, false, bridge, right, next, nextPending, rf))
+        let parts = c.splitView(right, k - ls - 1, next, nextPending, rf)
+        (c.joinView(left, next, nextPending, lf, bridge, parts.left, c.id, false, false), parts.right)
 
     proc splitNode[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F],
                         k: int): tuple[left, right: PersistentSequenceNode[T, F]] =
@@ -264,16 +297,17 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         let ls = left.nodeSize
         let next = if n.pending: (if pending: c.composition(carry, n.lazy) else: n.lazy) else: carry
         let nextPending = pending or n.pending
-        let nextFlip = flip xor n.reversed
+        let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+        let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
         let value = if pending: c.mapping(carry, n.value) else: n.value
         let bridge = nodeType(T, F)(value: value, lazy: c.id)
         if k == ls:
-            return (c.tagged(left, next, nextPending, nextFlip), bridge, c.tagged(right, next, nextPending, nextFlip))
+            return (c.tagged(left, next, nextPending, lf), bridge, c.tagged(right, next, nextPending, rf))
         if k < ls:
-            let p = c.takeView(left, k, next, nextPending, nextFlip)
-            return (p.left, p.bridge, c.joinView(p.right, c.id, false, false, bridge, right, next, nextPending, nextFlip))
-        let p = c.takeView(right, k - ls - 1, next, nextPending, nextFlip)
-        (c.joinView(left, next, nextPending, nextFlip, bridge, p.left, c.id, false, false), p.bridge, p.right)
+            let p = c.takeView(left, k, next, nextPending, lf)
+            return (p.left, p.bridge, c.joinView(p.right, c.id, false, false, bridge, right, next, nextPending, rf))
+        let p = c.takeView(right, k - ls - 1, next, nextPending, rf)
+        (c.joinView(left, next, nextPending, lf, bridge, p.left, c.id, false, false), p.bridge, p.right)
 
     proc cutEnds[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F],
                        a, b: int, carry: F, pending, flip: bool): tuple[left, first, middle, last, right: PersistentSequenceNode[T, F]] =
@@ -283,45 +317,48 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         let ls = left.nodeSize
         let next = if n.pending: (if pending: c.composition(carry, n.lazy) else: n.lazy) else: carry
         let nextPending = pending or n.pending
-        let nextFlip = flip xor n.reversed
+        let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+        let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
         let value = if pending: c.mapping(carry, n.value) else: n.value
         let bridge = nodeType(T, F)(value: value, lazy: c.id)
         if b <= ls:
-            let p = c.cutEnds(left, a, b, next, nextPending, nextFlip)
-            return (p.left, p.first, p.middle, p.last, c.joinView(p.right, c.id, false, false, bridge, right, next, nextPending, nextFlip))
+            let p = c.cutEnds(left, a, b, next, nextPending, lf)
+            return (p.left, p.first, p.middle, p.last, c.joinView(p.right, c.id, false, false, bridge, right, next, nextPending, rf))
         if a > ls:
-            let p = c.cutEnds(right, a - ls - 1, b - ls - 1, next, nextPending, nextFlip)
-            return (c.joinView(left, next, nextPending, nextFlip, bridge, p.left, c.id, false, false), p.first, p.middle, p.last, p.right)
+            let p = c.cutEnds(right, a - ls - 1, b - ls - 1, next, nextPending, rf)
+            return (c.joinView(left, next, nextPending, lf, bridge, p.left, c.id, false, false), p.first, p.middle, p.last, p.right)
         if a == ls:
-            let p = c.takeView(right, b - ls - 2, next, nextPending, nextFlip)
-            return (c.tagged(left, next, nextPending, nextFlip), bridge, p.left, p.bridge, p.right)
+            let p = c.takeView(right, b - ls - 2, next, nextPending, rf)
+            return (c.tagged(left, next, nextPending, lf), bridge, p.left, p.bridge, p.right)
         if b == ls + 1:
-            let p = c.takeView(left, a, next, nextPending, nextFlip)
-            return (p.left, p.bridge, p.right, bridge, c.tagged(right, next, nextPending, nextFlip))
-        let l = c.takeView(left, a, next, nextPending, nextFlip)
-        let r = c.takeView(right, b - ls - 2, next, nextPending, nextFlip)
+            let p = c.takeView(left, a, next, nextPending, lf)
+            return (p.left, p.bridge, p.right, bridge, c.tagged(right, next, nextPending, rf))
+        let l = c.takeView(left, a, next, nextPending, lf)
+        let r = c.takeView(right, b - ls - 2, next, nextPending, rf)
         (l.left, l.bridge, c.joinOwned(l.right, bridge, r.left), r.bridge, r.right)
 
-    proc removeFirst[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F]): tuple[bridge, rest: PersistentSequenceNode[T, F]] =
+    proc removeFirst[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F], flip = false): tuple[bridge, rest: PersistentSequenceNode[T, F]] =
         ## 最初の節点の複製と残りを返します。時間・追加領域O(log(N+1))。
-        let a = c.copyPushed(n)
+        let a = c.copyPushed(n, flip)
         if a.left == nil:
-            let rest = a.right
+            let rest = c.tagged(a.right, c.id, false, a.rightReversed)
             a.right = childNode(T, F, nil)
             return (a, rest)
-        let p = c.removeFirst(a.left)
+        let p = c.removeFirst(a.left, a.leftReversed)
         a.left = childNode(T, F, p.rest)
+        a.leftReversed = false
         (p.bridge, c.balanceOwned(a))
 
-    proc removeLast[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F]): tuple[bridge, rest: PersistentSequenceNode[T, F]] =
+    proc removeLast[T, F](c: PersistentSequenceContext[T, F], n: PersistentSequenceNode[T, F], flip = false): tuple[bridge, rest: PersistentSequenceNode[T, F]] =
         ## 最後の節点の複製と残りを返します。時間・追加領域O(log(N+1))。
-        let a = c.copyPushed(n)
+        let a = c.copyPushed(n, flip)
         if a.right == nil:
-            let rest = a.left
+            let rest = c.tagged(a.left, c.id, false, a.leftReversed)
             a.left = childNode(T, F, nil)
             return (a, rest)
-        let p = c.removeLast(a.right)
+        let p = c.removeLast(a.right, a.rightReversed)
         a.right = childNode(T, F, p.rest)
+        a.rightReversed = false
         (p.bridge, c.balanceOwned(a))
 
     proc concatNode[T, F](c: PersistentSequenceContext[T, F], a, b: PersistentSequenceNode[T, F]): PersistentSequenceNode[T, F] =
@@ -393,15 +430,17 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         ## kの直前に値を挿入した版を返します。時間・追加領域O(log(N+1))。
         s.checkRange(k, k)
         if s.len == high(int): raise newException(ValueError, "永続列の長さがintに収まりません")
-        proc visit(n: PersistentSequenceNode[T, F], p: int): PersistentSequenceNode[T, F] =
+        proc visit(n: PersistentSequenceNode[T, F], p: int, flip = false): PersistentSequenceNode[T, F] =
             ## 挿入経路だけを複製して平衡化します。全体O(log(N+1))。
             if n == nil: return s.context.makeNode(nil, value, nil)
-            let a = s.context.copyPushed(n)
+            let a = s.context.copyPushed(n, flip)
             let ls = a.left.nodeSize
             if p <= ls:
-                a.left = childNode(T, F, visit(a.left, p))
+                a.left = childNode(T, F, visit(a.left, p, a.leftReversed))
+                a.leftReversed = false
                 return s.context.balanceOwned(a, leftOwned = true)
-            a.right = childNode(T, F, visit(a.right, p - ls - 1))
+            a.right = childNode(T, F, visit(a.right, p - ls - 1, a.rightReversed))
+            a.rightReversed = false
             s.context.balanceOwned(a, rightOwned = true)
         s.withRoot(visit(s.root, k))
 
@@ -416,16 +455,23 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
     proc erase*[T, F](s: PersistentSequence[T, F], k: int): PersistentSequence[T, F] =
         ## k番目の値を削除した版を返します。時間・追加領域O(log(N+1))。
         if k < 0 or k >= s.len: raise newException(ValueError, "添字が範囲外です")
-        proc visit(n: PersistentSequenceNode[T, F], p: int): PersistentSequenceNode[T, F] =
-            ## 削除経路のみ複製し、削除節点の左右を連結します。全体O(log(N+1))。
-            let ls = n.left.nodeSize
+        proc visit(n: PersistentSequenceNode[T, F], p: int, flip = false): PersistentSequenceNode[T, F] =
+            ## 削除経路のみ複製します。全体O(log(N+1))。
+            let left = if flip: n.right else: n.left
+            let right = if flip: n.left else: n.right
+            let ls = left.nodeSize
             if p == ls:
-                let left = s.context.tagged(n.left, n.lazy, n.pending, n.reversed)
-                let right = s.context.tagged(n.right, n.lazy, n.pending, n.reversed)
-                return s.context.concatNode(left, right)
-            let a = s.context.copyPushed(n)
-            if p < ls: a.left = childNode(T, F, visit(a.left, p))
-            else: a.right = childNode(T, F, visit(a.right, p - ls - 1))
+                let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+                let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
+                return s.context.concatNode(s.context.tagged(left, n.lazy, n.pending, lf),
+                    s.context.tagged(right, n.lazy, n.pending, rf))
+            let a = s.context.copyPushed(n, flip)
+            if p < ls:
+                a.left = childNode(T, F, visit(a.left, p, a.leftReversed))
+                a.leftReversed = false
+            else:
+                a.right = childNode(T, F, visit(a.right, p - ls - 1, a.rightReversed))
+                a.rightReversed = false
             s.context.balanceOwned(a)
         s.withRoot(visit(s.root, k))
 
@@ -450,14 +496,15 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
             let ls = left.nodeSize
             let next = if n.pending: (if pending: s.context.composition(carry, n.lazy) else: n.lazy) else: carry
             let nextPending = pending or n.pending
-            let nextFlip = flip xor n.reversed
+            let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+            let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
             var value = if pending: s.context.mapping(carry, n.value) else: n.value
             if a <= ls and ls < b: value = s.context.mapping(f, value)
-            let l = if a < ls: visit(left, a, min(b, ls), next, nextPending, nextFlip)
-                    else: s.context.tagged(left, next, nextPending, nextFlip)
-            let r = if b > ls + 1: visit(right, max(0, a - ls - 1), b - ls - 1, next, nextPending, nextFlip)
-                    else: s.context.tagged(right, next, nextPending, nextFlip)
-            s.context.makeNode(l, value, r)
+            let l = if a < ls: visit(left, a, min(b, ls), next, nextPending, lf)
+                    else: s.context.tagged(left, next, nextPending, false)
+            let r = if b > ls + 1: visit(right, max(0, a - ls - 1), b - ls - 1, next, nextPending, rf)
+                    else: s.context.tagged(right, next, nextPending, false)
+            s.context.makeNode(l, value, r, (if a < ls: false else: lf), (if b > ls + 1: false else: rf))
         s.withRoot(visit(s.root, l, r, s.context.id, false, false))
 
     proc reverse*[T, F](s: PersistentSequence[T, F], l, r: int): PersistentSequence[T, F] =
@@ -466,7 +513,7 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
         if r - l < 2: return s
         if l == 0 and r == s.len: return s.withRoot(flipped(s.root))
         let p = s.context.cutEnds(s.root, l, r, s.context.id, false, false)
-        let a = s.context.joinOwned(p.left, p.last, flipped(p.middle))
+        let a = s.context.joinView(p.left, s.context.id, false, false, p.last, p.middle, s.context.id, false, true)
         s.withRoot(s.context.joinOwned(a, p.first, p.right))
 
     proc mapped[T, F](c: PersistentSequenceContext[T, F], f: F, value: T): T {.inline.} =
@@ -498,11 +545,15 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
             let ls = left.nodeSize
             if p == ls: return s.context.mapped(carry, n.value)
             carry = s.context.childCarry(n, carry)
-            flip = flip xor n.reversed
-            if p < ls: n = left
+            let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+            let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
+            if p < ls:
+                n = left
+                flip = lf
             else:
                 p -= ls + 1
                 n = right
+                flip = rf
 
     proc `[]`*[T, F](s: PersistentSequence[T, F], k: int): T =
         ## k番目の値をO(log(N+1))で返します。
@@ -511,13 +562,17 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
     proc update*[T, F](s: PersistentSequence[T, F], k: int, value: T): PersistentSequence[T, F] =
         ## k番目を置き換えた版を返します。時間・追加領域O(log(N+1))。
         if k < 0 or k >= s.len: raise newException(ValueError, "添字が範囲外です")
-        proc visit(n: PersistentSequenceNode[T, F], p: int): PersistentSequenceNode[T, F] =
+        proc visit(n: PersistentSequenceNode[T, F], p: int, flip = false): PersistentSequenceNode[T, F] =
             ## 更新経路だけを複製します。全体O(log(N+1))。
-            let a = s.context.copyPushed(n)
+            let a = s.context.copyPushed(n, flip)
             let ls = a.left.nodeSize
-            if p < ls: a.left = childNode(T, F, visit(a.left, p))
+            if p < ls:
+                a.left = childNode(T, F, visit(a.left, p, a.leftReversed))
+                a.leftReversed = false
             elif p == ls: a.value = value
-            else: a.right = childNode(T, F, visit(a.right, p - ls - 1))
+            else:
+                a.right = childNode(T, F, visit(a.right, p - ls - 1, a.rightReversed))
+                a.rightReversed = false
             s.context.refresh(a)
             a
         s.withRoot(visit(s.root, k))
@@ -539,11 +594,12 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
             let right = if flip: n.left else: n.right
             let ls = left.nodeSize
             let next = s.context.childCarry(n, carry)
-            let reversed = flip xor n.reversed
+            let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+            let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
             result = s.context.e
-            if a < ls: result = visit(left, a, min(b, ls), next, reversed)
+            if a < ls: result = visit(left, a, min(b, ls), next, lf)
             if a <= ls and ls < b: result = s.context.op(result, s.context.mapped(carry, n.value))
-            if b > ls + 1: result = s.context.op(result, visit(right, max(0, a - ls - 1), b - ls - 1, next, reversed))
+            if b > ls + 1: result = s.context.op(result, visit(right, max(0, a - ls - 1), b - ls - 1, next, rf))
         if l == r: return s.context.e
         visit(s.root, l, r, s.context.id, false)
 
@@ -561,10 +617,11 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
             ## 祖先の作用と反転だけを渡し、共有節点を読み取ります。
             if n == nil: return
             let next = s.context.childCarry(n, carry)
-            let reversed = flip xor n.reversed
-            visit((if flip: n.right else: n.left), next, reversed, output)
+            let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+            let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
+            visit((if flip: n.right else: n.left), next, lf, output)
             output.add(s.context.mapped(carry, n.value))
-            visit((if flip: n.left else: n.right), next, reversed, output)
+            visit((if flip: n.left else: n.right), next, rf, output)
         visit(s.root, s.context.id, false, result)
 
     proc partition_point*[T, F](s: PersistentSequence[T, F], predicate: proc(x: T): bool): int =
@@ -579,8 +636,12 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_SEQUENCE:
             let right = if flip: n.left else: n.right
             let take = predicate(s.context.mapped(carry, n.value))
             carry = s.context.childCarry(n, carry)
-            flip = flip xor n.reversed
+            let lf = flip xor n.reversed xor (if flip: n.rightReversed else: n.leftReversed)
+            let rf = flip xor n.reversed xor (if flip: n.leftReversed else: n.rightReversed)
             if take:
                 result += left.nodeSize + 1
                 n = right
-            else: n = left
+                flip = rf
+            else:
+                n = left
+                flip = lf

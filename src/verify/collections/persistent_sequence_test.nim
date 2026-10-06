@@ -366,4 +366,26 @@ block:
     doAssert managed.insert(1, ManagedValue(values: @[3])).reverse(0, 2)[1].values == @[1, 2]
     doAssert managed[0].values == @[1, 2]
 
+block:
+    let original = initPersistentSequence(@["ab", "cd", "e"], proc(a, b: string): string = a & b, "")
+    let shared = original.concat(original)
+    let immutableOriginal = original.snapshot
+    let immutableShared = shared.snapshot
+    let changed = shared.reverse(0, original.len)
+    doAssert changed.to_seq == @["e", "cd", "ab", "ab", "cd", "e"]
+    doAssert changed.prod(0, 3) == "ecdab"
+    doAssert changed.prod(3, 6) == "abcde"
+    doAssert original.to_seq == @["ab", "cd", "e"]
+    doAssert shared.prod(0, 6) == "abcdeabcde"
+    immutableOriginal()
+    immutableShared()
+
+block:
+    let chunks = initPersistentSequence(@[2, 1, 0, 5, 4, 3])
+    let sorted = chunks.reverse(0, 3).reverse(3, 6)
+    doAssert sorted.to_seq == @[0, 1, 2, 3, 4, 5]
+    for boundary in 0..6:
+        doAssert sorted.partition_point(proc(x: int): bool = x < boundary) == boundary
+    doAssert chunks.to_seq == @[2, 1, 0, 5, 4, 3]
+
 echo "Hello World"
