@@ -46,8 +46,9 @@ when not declared CPLIB_MATH_LINEAR_PROGRAMMING:
             for i in 0..<t.m:
                 if t.data[i][col] <= t.eps: continue
                 let ratio = t.data[i][t.n + 1] / t.data[i][col]
-                if row == -1 or ratio < bestRatio - t.eps or
-                        (abs(ratio - bestRatio) <= t.eps and t.basic[i] < t.basic[row]):
+                # 異なる比率を同率扱いすると、より厳しい制約を超えてしまう。
+                if row == -1 or ratio < bestRatio or
+                        (ratio == bestRatio and t.basic[i] < t.basic[row]):
                     row = i
                     bestRatio = ratio
             if row == -1: return false
