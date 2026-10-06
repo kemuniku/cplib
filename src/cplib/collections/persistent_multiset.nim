@@ -8,10 +8,15 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_MULTISET:
         compare: proc(a, b: T): int
 
     proc initPersistentMultiset*[T](values: openArray[T], compare: proc(a, b: T): int): PersistentMultiset[T] =
-        ## 重複を保持する永続multisetをO(N log(N+1))で構築します。compareは純粋な厳密弱順序とします。
+        ## 重複を保持する永続multisetをO(N log(N+1))、整列済みならO(N)で構築します。compareは純粋な厳密弱順序とします。
         if compare == nil: raise newException(ValueError, "比較関数が未指定です")
         var sorted = @values
-        sorted.sort(compare)
+        var ordered = true
+        for i in 1..<sorted.len:
+            if compare(sorted[i - 1], sorted[i]) > 0:
+                ordered = false
+                break
+        if not ordered: sorted.sort(compare)
         result.values = initPersistentSequence(sorted)
         result.compare = compare
 
@@ -37,7 +42,8 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_MULTISET:
 
     proc contains*[T](s: PersistentMultiset[T], value: T): bool =
         ## 比較で同値な要素が存在するかO(log(N+1))で返します。
-        s.count(value) != 0
+        let rank = s.lower_bound(value)
+        rank < s.len and s.compare(s.values[rank], value) == 0
 
     proc kth*[T](s: PersistentMultiset[T], k: int): T =
         ## 比較順で0始まりのk番目をO(log(N+1))で返します。
