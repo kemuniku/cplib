@@ -7,6 +7,9 @@ when not declared CPLIB_COLLECTIONS_DEFAULTDICT:
     proc initDefaultDict*[K, V](default: V): DefaultDict[K, V] = DefaultDict[K, V](table: initTable[K, V](), default: default)
     proc `==`*[K, V](src, dst: DefaultDict[K, V]): bool = src.table == dst.table
     proc `[]=`*[K, V](d: var DefaultDict[K, V], key: K, val: V) = d.table[key] = val
+    proc get*[K, V](d: DefaultDict[K, V], key: K): V =
+        ## キーを挿入せず、登録値または初期化時の既定値を返す。平均 O(1)、最悪 O(n)（ハッシュ・値コピーの費用を除く）。
+        d.table.getOrDefault(key, d.default)
     proc `[]`*[K, V](d: DefaultDict[K, V], key: K): V =
         if key notin d.table: return d.default
         return d.table[key]
