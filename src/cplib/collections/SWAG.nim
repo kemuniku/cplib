@@ -12,6 +12,10 @@ when not declared CPLIB_COLLECTIONS_SWAG:
         bottomfold: seq[T]
     proc initSWAG*[T](op: proc(x, y: T): T, e: T): SWAG[T] =
         result = SWAG[T](op: op, e: e, top: @[], bottom: @[], topfold: @[e], bottomfold: @[e])
+    template newSwagWith*(merge, default: untyped): untyped =
+        ## 演算式（左がl、右がr）と単位元から空のSWAGをO(1)で生成します。型は単位元から推論します。
+        ## 例: var swag = newSwagWith(l + r, 0)
+        initSWAG[typeof(default)](proc (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)
     proc pushbottom[T](self: SWAG[T], x: T) =
         self.bottom.add(x)
         self.bottomfold.add(self.op(self.bottomfold[^1], x))
