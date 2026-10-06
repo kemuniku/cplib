@@ -15,7 +15,7 @@ proc validate[T, F](s: PersistentSequence[T, F]) =
         if n == nil or cast[pointer](n) in seen: return
         seen.incl(cast[pointer](n))
         doAssert abs(n.left.nodeHeight - n.right.nodeHeight) <= 1
-        doAssert n.height == max(n.left.nodeHeight, n.right.nodeHeight) + 1
+        doAssert n.height.int == max(n.left.nodeHeight, n.right.nodeHeight) + 1
         doAssert n.size == n.left.nodeSize + 1 + n.right.nodeSize
         visit(n.left)
         visit(n.right)

@@ -10,14 +10,17 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_MULTISET:
     proc initPersistentMultiset*[T](values: openArray[T], compare: proc(a, b: T): int): PersistentMultiset[T] =
         ## 重複を保持する永続multisetをO(N log(N+1))、整列済みならO(N)で構築します。compareは純粋な厳密弱順序とします。
         if compare == nil: raise newException(ValueError, "比較関数が未指定です")
-        var sorted = @values
         var ordered = true
-        for i in 1..<sorted.len:
-            if compare(sorted[i - 1], sorted[i]) > 0:
+        for i in 1..<values.len:
+            if compare(values[i - 1], values[i]) > 0:
                 ordered = false
                 break
-        if not ordered: sorted.sort(compare)
-        result.values = initPersistentSequence(sorted)
+        if ordered:
+            result.values = initPersistentSequence(values)
+        else:
+            var sorted = @values
+            sorted.sort(compare)
+            result.values = initPersistentSequence(sorted)
         result.compare = compare
 
     proc initPersistentMultiset*[T](values: openArray[T]): PersistentMultiset[T] =
