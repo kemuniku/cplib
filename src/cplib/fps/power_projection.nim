@@ -1,6 +1,7 @@
 when not declared CPLIB_FPS_POWER_PROJECTION:
     const CPLIB_FPS_POWER_PROJECTION* = 1
 
+    import cplib/convolution/algorithm_ntt
     import algorithm
     import cplib/convolution/convolution
     import cplib/fps/formal_power_series
@@ -11,8 +12,8 @@ when not declared CPLIB_FPS_POWER_PROJECTION:
         ## Power Projection（冪の係数列挙）。
         ## [x^n] f(x)^i g(x) (i = 0, 1, ..., m) を列挙する。
         ## ここで n = f.len - 1 とする。
-        doAssert f.len > 0, "Power Projectionでは f が空でない必要がある"
-        doAssert m >= 0, "Power Projectionでは列挙する最大指数が非負である必要がある"
+        assert f.len > 0, "Power Projectionでは f が空でない必要がある"
+        assert m >= 0, "Power Projectionでは列挙する最大指数が非負である必要がある"
 
         var n = f.len - 1
         var xStride = 1
@@ -27,44 +28,78 @@ when not declared CPLIB_FPS_POWER_PROJECTION:
             if i < g.len: p[i] = g[i]
             q[i] = -f[i]
 
-        while n > 0:
-            # x方向の積で隣のyブロックへ繰り上がらないよう、間隔を倍にする。
-            let wideStride = 2 * xStride
-            var expandedP = newSeq[T](yDegree * wideStride)
-            var expandedQ = newSeq[T]((yDegree + 1) * wideStride)
-            for y in 0..<yDegree:
-                for x in 0..n:
-                    expandedP[y * wideStride + x] = p[y * xStride + x]
-                    expandedQ[y * wideStride + x] = q[y * xStride + x]
-            expandedQ[yDegree * wideStride] = init(T, 1)
+        if xStride >= 32 and n > 0 and canUseMultipointTreeNtt(T.umod, 4 * xStride):
+            let size = xStride
+            var context = initAlgorithmNtt(T.umod, 4 * size)
+            var halfContext = initAlgorithmNtt(T.umod, 2 * size)
+            defer: context.close()
+            defer: halfContext.close()
+            while n > 0:
+                let wideStride = 2 * xStride
+                var expandedP = newSeq[T](2 * size)
+                var expandedQ = newSeq[T](2 * size + 1)
+                for y in 0..<yDegree:
+                    for x in 0..n:
+                        expandedP[y * wideStride + x] = p[y * xStride + x]
+                        expandedQ[y * wideStride + x] = q[y * xStride + x]
+                expandedQ[2 * size] = init(T, 1)
+                let qSpectrum = context.spectrum(expandedQ)
+                var negative = newSeq[uint32](4 * size)
+                for i in 0..<negative.len: negative[i] = qSpectrum[i xor 1]
+                var numerator = context.spectrumProduct(context.spectrum(expandedP), negative)
+                let denominator = context.spectrumProduct(qSpectrum, negative)
+                var evenSpectrum = newSeq[uint32](2 * size)
+                for i in 0..<evenSpectrum.len: evenSpectrum[i] = denominator[2 * i]
+                let productP = context.coefficients(numerator, 0, 4 * size, T)
+                var productQ = halfContext.coefficients(evenSpectrum, 0, 2 * size, T)
+                productQ[0] -= init(T, 1)
+                let nextStride = xStride div 2
+                for y in 0..<2 * yDegree:
+                    for x in 0..n div 2:
+                        p[y * nextStride + x] = productP[y * wideStride + 2 * x + (n and 1)]
+                        q[y * nextStride + x] = productQ[y * xStride + x]
+                n = n div 2
+                xStride = nextStride
+                yDegree *= 2
+        else:
+            while n > 0:
+                # x方向の積で隣のyブロックへ繰り上がらないよう、間隔を倍にする。
+                let wideStride = 2 * xStride
+                var expandedP = newSeq[T](yDegree * wideStride)
+                var expandedQ = newSeq[T]((yDegree + 1) * wideStride)
+                for y in 0..<yDegree:
+                    for x in 0..n:
+                        expandedP[y * wideStride + x] = p[y * xStride + x]
+                        expandedQ[y * wideStride + x] = q[y * xStride + x]
+                expandedQ[yDegree * wideStride] = init(T, 1)
 
-            var negativeQ = expandedQ
-            for y in 0..yDegree:
-                for x in countup(1, wideStride - 1, 2):
-                    negativeQ[y * wideStride + x] =
-                        -negativeQ[y * wideStride + x]
+                var negativeQ = expandedQ
+                for y in 0..yDegree:
+                    for x in countup(1, wideStride - 1, 2):
+                        negativeQ[y * wideStride + x] =
+                            -negativeQ[y * wideStride + x]
 
-            let cycleLength = 2 * yDegree * wideStride
-            let productP = convolutionCyclicPowerOfTwo(
-                expandedP, negativeQ, cycleLength)
-            var productQ = convolutionCyclicPowerOfTwo(
-                expandedQ, negativeQ, cycleLength)
-            # y^(2*yDegree) の項は巡回畳み込みにより定数項へ回り込む。
-            productQ[0] -= init(T, 1)
-            let nextStride = xStride div 2
-            var nextP = newSeq[T](2 * yDegree * nextStride)
-            var nextQ = newSeq[T](2 * yDegree * nextStride)
-            for y in 0..<2 * yDegree:
-                for x in 0..n div 2:
-                    let base = y * wideStride + 2 * x
-                    nextP[y * nextStride + x] = productP[base + (n and 1)]
-                    nextQ[y * nextStride + x] = productQ[base]
+                let cycleLength = 2 * yDegree * wideStride
+                let productP = convolutionCyclicPowerOfTwo(
+                    expandedP, negativeQ, cycleLength)
+                var productQ = convolutionCyclicPowerOfTwo(
+                    expandedQ, negativeQ, cycleLength)
+                # y^(2*yDegree) の項は巡回畳み込みにより定数項へ回り込む。
+                productQ[0] -= init(T, 1)
+                let nextStride = xStride div 2
+                var nextP = newSeq[T](2 * yDegree * nextStride)
+                var nextQ = newSeq[T](2 * yDegree * nextStride)
+                for y in 0..<2 * yDegree:
+                    for x in 0..n div 2:
+                        let base = y * wideStride + 2 * x
+                        nextP[y * nextStride + x] = productP[base + (n and 1)]
+                        nextQ[y * nextStride + x] = productQ[base]
 
-            p = move(nextP)
-            q = move(nextQ)
-            n = n div 2
-            xStride = nextStride
-            yDegree *= 2
+                p = move(nextP)
+                q = move(nextQ)
+                n = n div 2
+                xStride = nextStride
+                yDegree *= 2
 
         # x次数が0になればyについての有理式だけが残る。
         # yの高次側から反転し、定数項が1のFPS除算として先頭m+1項を得る。
@@ -99,8 +134,8 @@ when not declared CPLIB_FPS_POWER_PROJECTION:
         ## f[0] != 0 の場合は FPS の pow と同じく m + 1 が法以下である必要がある。
         ## NTT を使える場合 O((m + 1) log^2(m + 2)) 時間。
         ## 参考: https://potato167.hatenablog.com/entry/2026/02/22/180000
-        doAssert f.len > 0, "Power Projectionでは f が空でない必要がある"
-        doAssert m >= 0, "Power Projectionでは列挙する最大指数が非負である必要がある"
+        assert f.len > 0, "Power Projectionでは f が空でない必要がある"
+        assert m >= 0, "Power Projectionでは列挙する最大指数が非負である必要がある"
         if f[0].val == 0:
             # f(x)^i の最低次数は i なので、f[1]^i g[0] だけが寄与する。
             result = newSeq[T](m + 1)

@@ -2,6 +2,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     const CPLIB_CONVOLUTION_RELAXED_CONVOLUTION* = 1
 
     import options
+    import cplib/convolution/algorithm_ntt
     import cplib/convolution/convolution
     import cplib/convolution/ntt
     import cplib/modint/modint
@@ -11,6 +12,7 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
         currentIndex: int
         left, right, product: seq[T]
         leftPrefixTransforms, rightPrefixTransforms: seq[seq[T]]
+        leftAvxTransforms, rightAvxTransforms: seq[seq[uint32]]
 
     proc initRelaxedConvolution*[T: BarrettModint or MontgomeryModint](
             coefficientCount: int): RelaxedConvolution[T] =
@@ -94,6 +96,25 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
                                         self.right[j] +
                                     self.right[self.currentIndex - blockSize + i] *
                                         self.left[j]
+                elif canUseMultipointTreeNtt(T.umod, transformSize):
+                    var context = initAlgorithmNtt(T.umod, transformSize)
+                    defer: context.close()
+                    let left = context.spectrum(self.left.toOpenArray(self.currentIndex - blockSize, self.currentIndex - 1))
+                    let right = context.spectrum(self.right.toOpenArray(self.currentIndex - blockSize, self.currentIndex - 1))
+                    var product: seq[uint32]
+                    if self.currentIndex == blockSize:
+                        product = context.spectrumProduct(left, right)
+                    else:
+                        if self.leftAvxTransforms.len <= level:
+                            self.leftAvxTransforms.setLen(level + 1)
+                            self.rightAvxTransforms.setLen(level + 1)
+                        if self.leftAvxTransforms[level].len == 0:
+                            self.leftAvxTransforms[level] = context.spectrum(self.left.toOpenArray(0, transformSize - 1))
+                            self.rightAvxTransforms[level] = context.spectrum(self.right.toOpenArray(0, transformSize - 1))
+                        product = context.spectrumProduct(left, self.rightAvxTransforms[level])
+                        context.addSpectrumProduct(product, right, self.leftAvxTransforms[level])
+                    let values = context.coefficients(product, blockSize, updateCount, T)
+                    addProduct[T](self, self.currentIndex, values, 0, updateCount)
                 elif nttAvailable:
                     var transformedLeft = newSeq[T](transformSize)
                     var transformedRight = newSeq[T](transformSize)

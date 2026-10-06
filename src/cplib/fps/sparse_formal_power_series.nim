@@ -2,6 +2,7 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
     const CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES* = 1
 
     import algorithm, macros, options
+    import cplib/convolution/algorithm_ntt
     import cplib/convolution/convolution
     import cplib/fps/bostan_mori
     import cplib/fps/formal_power_series
@@ -340,6 +341,31 @@ when not declared CPLIB_FPS_SPARSE_FORMAL_POWER_SERIES:
             a, b: seq[seq[T]], dimension: int): seq[seq[T]] =
         ## 多項式行列の積 a * b を計算する。
         result = newSeq[seq[T]](dimension * dimension)
+        var leftLength, rightLength: int
+        for f in a: leftLength = max(leftLength, f.len)
+        for f in b: rightLength = max(rightLength, f.len)
+        var size = 1
+        while size < leftLength + rightLength - 1: size *= 2
+        if dimension >= 2 and min(leftLength, rightLength) > 60 and
+                canUseMultipointTreeNtt(T.umod, size):
+            var context = initAlgorithmNtt(T.umod, size)
+            defer: context.close()
+            var left, right = newSeq[seq[uint32]](dimension * dimension)
+            for i in 0..<left.len:
+                if a[i].len > 0: left[i] = context.spectrum(a[i])
+                if b[i].len > 0: right[i] = context.spectrum(b[i])
+            for row in 0..<dimension:
+                for column in 0..<dimension:
+                    var product = newSeq[uint32](size)
+                    var length = 0
+                    for middle in 0..<dimension:
+                        let i = row * dimension + middle
+                        let j = middle * dimension + column
+                        if left[i].len == 0 or right[j].len == 0: continue
+                        context.addSpectrumProduct(product, left[i], right[j])
+                        length = max(length, a[i].len + b[j].len - 1)
+                    result[row * dimension + column] = context.coefficients(product, 0, length, T)
+            return
         for row in 0..<dimension:
             for middle in 0..<dimension:
                 let left = a[row * dimension + middle]

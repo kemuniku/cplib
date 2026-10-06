@@ -2,6 +2,7 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
     const CPLIB_FPS_FORMAL_POWER_SERIES* = 1
 
     import algorithm, options
+    import cplib/convolution/algorithm_ntt
     import cplib/convolution/convolution
     import cplib/modint/modint
     import cplib/math/isprime
@@ -200,6 +201,23 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
             if inverse.len < m: fpsInvExtend(result, inverse, m)
             # g' - f'gは次数m-1未満が零。巡回畳み込みの折り返しはそこまでに収まる。
             let dfPrefix = if df.len < next: df else: df[0..<next - 1]
+            if m >= 16384 and canUseMultipointTreeNtt(T.umod, m * 2):
+                var context = initAlgorithmNtt(T.umod, m * 2)
+                defer: context.close()
+                let fixed = context.spectrum(result)
+                var product = context.spectrumProduct(context.spectrum(dfPrefix), fixed)
+                var error = context.coefficients(product, m - 1, next - m, T)
+                for x in error.mitems: x = -x
+                product = context.spectrumProduct(context.spectrum(error),
+                    context.spectrum(inverse.toOpenArray(0, error.len - 1)))
+                error = context.coefficients(product, 0, error.len, T)
+                for i in 0..<error.len: error[i] *= -inverses[m + i]
+                product = context.spectrumProduct(context.spectrum(error), fixed)
+                let extension = context.coefficients(product, 0, error.len, T)
+                result.setLen(next)
+                for i in 0..<extension.len: result[m + i] = extension[i]
+                m = next
+                continue
             let product = convolutionCyclicPowerOfTwo(dfPrefix, result, m * 2)
             var error = newSeq[T](next - m)
             for i in 0..<error.len: error[i] = -product[m - 1 + i]
@@ -290,6 +308,21 @@ when not declared CPLIB_FPS_FORMAL_POWER_SERIES:
         while m < size:
             let next = min(m * 2, size)
             if inverse.len < m: fpsInvExtend(root, inverse, m)
+            if m >= 16384 and canUseMultipointTreeNtt(T.umod, m * 2):
+                var context = initAlgorithmNtt(T.umod, m * 2)
+                defer: context.close()
+                let transformed = context.spectrum(root)
+                var product = context.spectrumProduct(transformed, transformed)
+                var error = context.coefficients(product, m, next - m, T)
+                for i in 0..<error.len:
+                    error[i] = (unit.coefficient(m + i) - error[i]) * half
+                product = context.spectrumProduct(context.spectrum(error),
+                    context.spectrum(inverse.toOpenArray(0, error.len - 1)))
+                let extension = context.coefficients(product, 0, error.len, T)
+                root.setLen(next)
+                for i in 0..<extension.len: root[m + i] = extension[i]
+                m = next
+                continue
             let square = root * root
             var error = newSeq[T](next - m)
             for i in 0..<error.len:
