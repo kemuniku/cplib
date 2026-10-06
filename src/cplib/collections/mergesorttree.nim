@@ -1,6 +1,6 @@
 when not declared CPLIB_COLLECTIONS_MERGESORTTREE:
     const CPLIB_COLLECTIONS_MERGESORTTREE* = 1
-    import algorithm, options
+    import options
     import cplib/collections/private/mergesorttree_queries
 
     type MergeSortTree*[T] = ref object
@@ -11,6 +11,7 @@ when not declared CPLIB_COLLECTIONS_MERGESORTTREE:
     proc initMergeSortTree*[T](v: openArray[T]): MergeSortTree[T] =
         ## 静的な列から時間・空間O(N log(N+1)+1)で構築します。空列にも対応します。
         ## 各区間にソート列を保持します。Tの比較は一貫した全順序にしてください。
+        ## 静的版は<だけを使い、同じ順位の値を同値として数えます。
         result = MergeSortTree[T](values: @v, base: 1)
         while result.base < v.len: result.base *= 2
         result.data = newSeq[seq[T]](result.base * 2)
@@ -34,27 +35,54 @@ when not declared CPLIB_COLLECTIONS_MERGESORTTREE:
         ## ノード内のi番目の値をO(1)で取得します。
         self.data[node][i]
 
-    proc valueCount[T](values: openArray[T], x: T): int =
-        ## ノード内の出現回数をO(log N)で数え、不在なら上限の探索を省略します。
-        let i = values.lowerBound(x)
-        if i < values.len and not (x < values[i]):
-            result = values.toOpenArray(i, values.high).upperBound(x)
+    proc lowerIndex[T](values: openArray[T], x: T, first = 0,
+            pastLast = -1): int {.inline.} =
+        ## 比較関数を経由せず、<だけで下限を探します。
+        result = first
+        var high = if pastLast < 0: values.len else: pastLast
+        while result < high:
+            let mid = result + (high - result) div 2
+            if values[mid] < x: result = mid + 1
+            else: high = mid
 
-    proc nodeLower[T](self: MergeSortTree[T], node: int, x: T): int =
+    proc upperIndex[T](values: openArray[T], x: T, first = 0,
+            pastLast = -1): int {.inline.} =
+        ## 既知の下限から<だけで上限を探します。
+        result = first
+        var high = if pastLast < 0: values.len else: pastLast
+        while result < high:
+            let mid = result + (high - result) div 2
+            if x < values[mid]: high = mid
+            else: result = mid + 1
+
+    proc valueCount[T](values: openArray[T], x: T): int {.inline.} =
+        ## 上下限の共通探索を共有し、出現回数をO(log N)で数えます。
+        var low = 0
+        var high = values.len
+        while low < high:
+            let mid = low + (high - low) div 2
+            if values[mid] < x: low = mid + 1
+            elif x < values[mid]: high = mid
+            else:
+                return upperIndex(values, x, mid + 1, high) -
+                        lowerIndex(values, x, low, mid)
+
+    proc nodeLower[T](self: MergeSortTree[T], node: int, x: T): int {.inline.} =
         ## ノード内のx未満の個数をO(log N)で返します。
-        self.data[node].lowerBound(x)
+        lowerIndex(self.data[node], x)
 
-    proc nodeUpper[T](self: MergeSortTree[T], node: int, x: T): int =
+    proc nodeUpper[T](self: MergeSortTree[T], node: int, x: T, first = 0,
+            pastLast = -1): int {.inline.} =
         ## ノード内のx以下の個数をO(log N)で返します。
-        self.data[node].upperBound(x)
+        upperIndex(self.data[node], x, first, pastLast)
 
     proc nodeLen[T](self: MergeSortTree[T], node: int): int =
         ## ノードの要素数をO(1)で返します。
         self.data[node].len
 
-    proc nodeCount[T](self: MergeSortTree[T], node: int, x: T): int =
+    proc nodeCount[T](self: MergeSortTree[T], node: int, x: T): int {.inline.} =
         ## ノード内の出現回数をO(log N)で返します。
         valueCount(self.data[node], x)
 
     defineMergeSortTreeQueries(MergeSortTree, nodeValue, nodeCount,
-            nodeLower, nodeUpper, nodeLen)
+            nodeLower, nodeUpper, nodeLen, true)

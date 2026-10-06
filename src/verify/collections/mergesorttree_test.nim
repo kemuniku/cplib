@@ -10,6 +10,12 @@ type Key = object
 type LessOnly = object
     word: string
 
+type StrictOrderKey = object
+    rank: int
+
+proc `<`(a, b: StrictOrderKey): bool = a.rank < b.rank
+proc `==`(a, b: StrictOrderKey): bool {.error: "静的版の比較に==は不要です".}
+
 proc `<`(a, b: Key): bool =
     a.text < b.text or (a.text == b.text and a.number < b.number)
 proc `<=`(a, b: Key): bool = not (b < a)
@@ -79,6 +85,36 @@ checkAll(@[Key(text: "b", number: 1), Key(text: "a", number: 2),
            Key(text: "a", number: 2), Key(text: "a", number: -1)],
          @[Key(text: "", number: 0), Key(text: "a", number: 0),
            Key(text: "a", number: 2), Key(text: "z", number: 10)])
+
+block:
+    let a = @[StrictOrderKey(rank: 3), StrictOrderKey(rank: -1),
+            StrictOrderKey(rank: 3), StrictOrderKey(rank: 0),
+            StrictOrderKey(rank: -1)]
+    let st = initMergeSortTree(a)
+    for l in 0..a.len:
+        for r in l..a.len:
+            var ranks: seq[int]
+            for i in l..<r: ranks.add(a[i].rank)
+            ranks.sort()
+            for x in -2..4:
+                var less, equal, lessEqual: int
+                for rank in ranks:
+                    if rank < x: inc less
+                    if rank == x: inc equal
+                    if rank <= x: inc lessEqual
+                let key = StrictOrderKey(rank: x)
+                doAssert st.range_lowerbound(l, r, key) == less
+                doAssert st.range_upperbound(l, r, key) == lessEqual
+                doAssert st.count(l, r, key) == equal
+                let prev = st.prev_value(l, r, key)
+                let next = st.next_value(l, r, key)
+                doAssert prev.isSome == (less > 0)
+                doAssert next.isSome == (less < ranks.len)
+                if prev.isSome: doAssert prev.get.rank == ranks[less - 1]
+                if next.isSome: doAssert next.get.rank == ranks[less]
+            for k in 0..<r-l:
+                doAssert st.kth_smallest(l, r, k).rank == ranks[k]
+                doAssert st.kth_largest(l, r, k).rank == ranks[ranks.len - 1 - k]
 
 block:
     let a = @[LessOnly(word: "long"), LessOnly(word: "z"), LessOnly(word: "bb")]
