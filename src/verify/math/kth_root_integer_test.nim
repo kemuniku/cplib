@@ -72,7 +72,7 @@ for a in [4'u64, 27'u64, 65535'u64, 1'u64 shl 63, high(uint64)]:
         let expected = referenceRoot(a, k)
         for estimate in [0.0, 1.0, float64(upper - 1), float64(upper),
                          float64(expected) - 0.5, float64(expected) + 1.5,
-                         -Inf, Inf, NaN]:
+                         -system.Inf, system.Inf, NaN]:
             doAssert kthRootCorrect(a, k, estimate, upper) == expected
 
 for k in [65, 1000, high(int)]:
