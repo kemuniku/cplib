@@ -1,6 +1,6 @@
 when not declared CPLIB_MATH_XOR_BASIS:
     const CPLIB_MATH_XOR_BASIS* = 1
-    import algorithm
+    import algorithm, options
 
     type XorBasis* = ref object
         basis* : seq[int]
@@ -100,3 +100,72 @@ when not declared CPLIB_MATH_XOR_BASIS:
             if (v xor self.basis[i]) < v:
                 v = v xor self.basis[i]
         return (v xor self.kth_smallest(k)) xor x
+
+    type XorBasisWithRestore* = object
+        pivots: array[sizeof(int) * 8, uint]
+        witnesses: array[sizeof(int) * 8, uint]
+        originalIds: array[sizeof(int) * 8, int]
+        rank, insertionCount: int
+
+    proc initXorBasisWithRestore*(): XorBasisWithRestore =
+        ## 元要素の挿入順の添字を復元できる空の基底を作ります。
+        discard
+
+    proc incl*(self: var XorBasisWithRestore, x: int) =
+        ## xを追加します。0・従属要素も添字を消費します。O(sizeof(int)*8)時間。
+        if self.insertionCount == high(int):
+            raise newException(OverflowDefect, "XOR basis insertion count overflow")
+        let id = self.insertionCount
+        inc self.insertionCount
+        var value = cast[uint](x)
+        var witness = 0'u
+        for bit in countdown(sizeof(int) * 8 - 1, 0):
+            if (value and (1'u shl bit)) == 0:
+                continue
+            if self.pivots[bit] != 0:
+                value = value xor self.pivots[bit]
+                witness = witness xor self.witnesses[bit]
+            else:
+                self.originalIds[self.rank] = id
+                witness = witness xor (1'u shl self.rank)
+                self.pivots[bit] = value
+                self.witnesses[bit] = witness
+                inc self.rank
+                return
+
+    proc initXorBasisWithRestore*(a: openArray[int]): XorBasisWithRestore =
+        ## aの添字を復元できる基底を作ります。O(a.len*sizeof(int)*8)時間。
+        for value in a:
+            result.incl(value)
+
+    proc len_basis*(self: XorBasisWithRestore): int =
+        ## 独立な基底の本数を返します。O(1)時間。
+        self.rank
+
+    proc len*(self: XorBasisWithRestore): int =
+        ## 0・従属要素も含む挿入回数を返します。O(1)時間。
+        self.insertionCount
+
+    proc can_make*(self: XorBasisWithRestore, x: int): bool =
+        ## xが作成可能かを符号を含むintの全ビットで判定します。O(sizeof(int)*8)時間。
+        var value = cast[uint](x)
+        for bit in countdown(sizeof(int) * 8 - 1, 0):
+            if (value and (1'u shl bit)) != 0:
+                value = value xor self.pivots[bit]
+        value == 0
+
+    proc restore*(self: XorBasisWithRestore, x: int): Option[seq[int]] =
+        ## XORがxになる元要素の添字集合を返します。作れない場合はnone。O(sizeof(int)*8)時間。
+        var value = cast[uint](x)
+        var witness = 0'u
+        for bit in countdown(sizeof(int) * 8 - 1, 0):
+            if (value and (1'u shl bit)) != 0:
+                if self.pivots[bit] == 0:
+                    return none(seq[int])
+                value = value xor self.pivots[bit]
+                witness = witness xor self.witnesses[bit]
+        var ids: seq[int]
+        for i in 0..<self.rank:
+            if (witness and (1'u shl i)) != 0:
+                ids.add(self.originalIds[i])
+        some(ids)
