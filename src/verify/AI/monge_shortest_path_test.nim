@@ -139,10 +139,10 @@ block:
 
 block:
     proc cost(i, j: int): float64 = float64((j - i) * (j - i)) - 0.5
-    let paths = mongeShortestPaths(5, cost, 0.0, Inf)
+    let paths = mongeShortestPaths(5, cost, 0.0, system.Inf)
     doAssert paths.costs[4] == 2.0
     doAssert paths.pathTo(4) == @[0, 1, 2, 3, 4]
-    doAssert mongeShortestPathsExactEdges(5, 2, cost, 0.0, Inf)[4] == 7.0
+    doAssert mongeShortestPathsExactEdges(5, 2, cost, 0.0, system.Inf)[4] == 7.0
     proc smallCost(i, j: int): int32 = int32((j - i) * (j - i))
     doAssert mongeShortestPaths(5, smallCost, 0'i32, high(int32)).costs[4] == 4'i32
 
