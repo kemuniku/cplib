@@ -10,7 +10,7 @@ when not declared CPLIB_GEOMETRY_APOLLONIUS:
         ApolloniusLocus* = object
             case kind*: ApolloniusLocusKind
             of apolloniusCircle:
-                circle*: Circle
+                circle*: typeof(initCircle(initPoint(0.0, 0.0), 0.0))
             of apolloniusLine:
                 linePoint*, lineDirection*: Point[float]
             of apolloniusPlane:
