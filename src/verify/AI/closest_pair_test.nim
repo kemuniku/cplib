@@ -155,7 +155,7 @@ proc rejects[T](points: seq[Point[T]]) =
 rejects(@[initPoint(low(int64), 0'i64), initPoint(high(int64), 0'i64)])
 rejects(@[initPoint(0'i64, 0'i64), initPoint(2_000_000_001'i64, 0'i64)])
 rejects(@[initPoint(0'i64, 0'i64), initPoint(0'i64, 2_000_000_001'i64)])
-rejects(@[initPoint(0.0, 0.0), initPoint(Inf, 0.0)])
+rejects(@[initPoint(0.0, 0.0), initPoint(system.Inf, 0.0)])
 rejects(@[initPoint(0.0, NegInf)])
 rejects(@[initPoint(NaN, 0.0)])
 rejects(@[initPoint(-1e308, 0.0), initPoint(1e308, 0.0)])
