@@ -30,8 +30,31 @@ when not declared CPLIB_COLLECTIONS_MERGESORTTREE:
                     inc b
             result.data[node] = move(merged)
 
-    proc nodeValue[T](values: seq[T], i: int): T =
+    proc nodeValue[T](self: MergeSortTree[T], node, i: int): T =
         ## ノード内のi番目の値をO(1)で取得します。
-        values[i]
+        self.data[node][i]
 
-    defineMergeSortTreeQueries(MergeSortTree, nodeValue)
+    proc valueCount[T](values: openArray[T], x: T): int =
+        ## ノード内の出現回数をO(log N)で数え、不在なら上限の探索を省略します。
+        let i = values.lowerBound(x)
+        if i < values.len and not (x < values[i]):
+            result = values.toOpenArray(i, values.high).upperBound(x)
+
+    proc nodeLower[T](self: MergeSortTree[T], node: int, x: T): int =
+        ## ノード内のx未満の個数をO(log N)で返します。
+        self.data[node].lowerBound(x)
+
+    proc nodeUpper[T](self: MergeSortTree[T], node: int, x: T): int =
+        ## ノード内のx以下の個数をO(log N)で返します。
+        self.data[node].upperBound(x)
+
+    proc nodeLen[T](self: MergeSortTree[T], node: int): int =
+        ## ノードの要素数をO(1)で返します。
+        self.data[node].len
+
+    proc nodeCount[T](self: MergeSortTree[T], node: int, x: T): int =
+        ## ノード内の出現回数をO(log N)で返します。
+        valueCount(self.data[node], x)
+
+    defineMergeSortTreeQueries(MergeSortTree, nodeValue, nodeCount,
+            nodeLower, nodeUpper, nodeLen)

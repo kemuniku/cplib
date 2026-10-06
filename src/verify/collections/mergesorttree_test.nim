@@ -1,7 +1,7 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import cplib/collections/mergesorttree
 import cplib/collections/dynamic_mergesorttree
-import algorithm, options, random
+import algorithm, options, random, strutils
 
 type Key = object
     text: string
@@ -85,6 +85,12 @@ block:
     let st = initMergeSortTree(a)
     check(a, st, 0, 3, LessOnly(word: "bb"), LessOnly(word: ""), LessOnly(
             word: "long"), 1)
+    var current = @a
+    let dt = initDynamicMergeSortTree(current)
+    current[1] = LessOnly(word: "unregistered")
+    dt[1] = current[1]
+    check(current, dt, 0, 3, LessOnly(word: "bb"), LessOnly(word: ""),
+            LessOnly(word: "unregistered"), 1)
 
 block:
     var input = @[3, 1, 3, 2]
@@ -116,6 +122,23 @@ block:
     generic[0] = fresh
     keys[0] = fresh
     check(keys, generic, 0, 2, fresh, Key(text: "", number: 0), fresh, 1)
+
+block:
+    var a = newSeq[string](33)
+    for i in 0..<a.len: a[i] = repeat($(i mod 5), 16)
+    let initial = @a
+    let st = initMergeSortTree(a)
+    let dt = initDynamicMergeSortTree(a)
+    for step in 0..<2000:
+        let i = (step * 17) mod a.len
+        let value = if step mod 7 == 0: a[i] else: repeat($(step mod 29), 16)
+        dt[i] = value
+        a[i] = value
+        if step mod 37 == 0: GC_fullCollect()
+        let l = step mod a.len
+        let r = min(a.len, l + 1 + step mod 9)
+        check(a, dt, l, r, value, "", "zz", (r-l) div 2)
+        check(initial, st, l, r, value, "", "zz", 0)
 
 template rejects(body: untyped) =
     block:
