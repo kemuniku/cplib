@@ -25,7 +25,7 @@ proc checkStatus(a: seq[seq[float64]], b, c: seq[float64],
     let answer = linear_programming(a, b, c)
     doAssert answer.status == status
     doAssert answer.x.len == 0
-    doAssert answer.value == (if status == lpInfeasible: -Inf else: Inf)
+    doAssert answer.value == (if status == lpInfeasible: -system.Inf else: system.Inf)
 
 block:
     let a = @[@[1.0, 1.0], @[1.0, 0.0], @[0.0, 1.0]]
