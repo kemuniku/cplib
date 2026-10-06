@@ -23,7 +23,6 @@ proc scalar[T](): T =
         Fraction[BigInt](num: parseBigInt(n), den: parseBigInt(d))
     elif T is Int128: parseInt128(n)
     elif T is BigInt: parseBigInt(n)
-    elif T is uint64: uint64(parseBiggestUInt(n))
     else: parseInt(n)
 proc point[T](): Point[T] = initPoint(scalar[T](), scalar[T]())
 proc run[T]() =
@@ -77,7 +76,6 @@ while stdin.readLine(line):
     if tokens[0].startsWith("mec-"):
         case tokens[0][4..^1]
         of "int": runMec[int]()
-        of "uint": runMec[uint64]()
         of "int128": runMec[Int128]()
         of "bigint": runMec[BigInt]()
         of "fraction-int": runMec[Fraction[int]]()
@@ -87,7 +85,6 @@ while stdin.readLine(line):
         continue
     case tokens[0]
     of "int": run[int]()
-    of "uint": run[uint64]()
     of "int128": run[Int128]()
     of "bigint": run[BigInt]()
     of "fraction-int": run[Fraction[int]]()

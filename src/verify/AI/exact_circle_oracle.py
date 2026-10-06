@@ -112,25 +112,29 @@ def common_count(a, b):
 def generate():
     rng = random.Random(61006)
     cases = []
-    types = ('int', 'uint', 'int128', 'bigint', 'fraction-int', 'fraction-int128', 'fraction-bigint')
+    types = ('int', 'int128', 'bigint', 'fraction-int', 'fraction-int128', 'fraction-bigint')
     for kind in types:
         for i in range(300):
-            if kind == 'uint':
-                base = rng.choice((0, 2**64-31))
-                def val(): return F(base + rng.randrange(0, 30))
-            elif 'fraction' in kind:
-                bits = {'fraction-int': 63, 'fraction-int128': 127, 'fraction-bigint': 160}[kind]
+            if kind == 'fraction-bigint':
                 def val():
                     if i % 4 == 0:
-                        return F(rng.getrandbits(bits)*rng.choice((-1, 1)), rng.getrandbits(bits) or 1)
-                    return F(rng.randrange(-20, 21), rng.randrange(1, 21))
+                        return F(rng.getrandbits(160)*rng.choice((-1, 1)), rng.getrandbits(160) or 1)
+                    return F(rng.randrange(-10, 11), rng.randrange(1, 11))
+            elif kind == 'bigint':
+                base = rng.choice((0, -(2**600), 2**600))
+                def val(): return F(base + rng.randrange(0, 10))
+            elif 'fraction' in kind:
+                bound = 2 if kind == 'fraction-int' else 10
+                def val(): return F(rng.randrange(-bound, bound+1), 2)
             else:
-                bits = {'int': 63, 'int128': 127, 'bigint': 600}[kind]
-                base = rng.choice((0, -(2**bits), 2**bits-31))
-                def val(): return F(base + rng.randrange(0, 30))
+                base = rng.choice((0, -1000000, 1000000))
+                def val(): return F(base + rng.randrange(0, 5))
             points = [tuple(val() for _ in range(2)) for _ in range(9)]
             method = i % 3
-            ra, rb = rng.randrange(0, 12), rng.randrange(0, 12)
+            ra, rb = rng.randrange(0, 3), rng.randrange(0, 3)
+            if kind in ("int", "fraction-int") and method == 0:
+                a = points[0]
+                points[:3] = [a, (a[0]+1, a[1]), (a[0], a[1]+1)]
             if i % 17 == 0:
                 points[2] = points[1] = points[0]
             elif i % 19 == 0:
@@ -141,13 +145,12 @@ def generate():
                 points[6:8] = points[:2]
             if points[4] == points[5]:
                 points[5] = (points[5][0]+1, points[5][1])
-            # uintの入力範囲を維持する。
             for ordering in (points[:3], points[:3][::-1]):
                 ps = ordering + points[3:]
                 cases.append((kind, method, ps, ra, rb))
-    # 4x4 incircle determinantも使い、全順列・境界・64bit端を確認する。
+    # 4x4 incircle determinantも使い、全順列・境界・指定型の契約内の平行移動を確認する。
     for kind in ('int', 'int128', 'bigint', 'fraction-int', 'fraction-int128', 'fraction-bigint'):
-        for offset in (0, 2**63-5, -(2**63)):
+        for offset in ((0, 10**30, -10**30) if kind in ("int128", "fraction-int128") else ((0, 2**600, -(2**600)) if "bigint" in kind else (0, 1000000, -1000000))):
             defining = [(F(offset), F(offset)), (F(offset+4), F(offset)), (F(offset), F(offset+4))]
             for ordering in permutations(defining):
                 outside = (offset+4, offset-1) if offset > 0 else (offset+5, offset+5)

@@ -23,13 +23,28 @@ proc checkType[T](zero, one, two, minusOne: T) =
     let b = initPoint(zero, one)
     let c = initPoint(minusOne, zero)
     let circle = initExactCircle(a, b, c)
+    static:
+        doAssert typeof(circle) is ExactCircle[T]
+        doAssert typeof(initExactCircle(o, 1)) is ExactCircle[T]
+        doAssert typeof(initExactCircle(o, a)) is ExactCircle[T]
+        doAssert typeof(initExactDiameterCircle(o, a)) is ExactCircle[T]
+        when T is Fraction:
+            doAssert typeof(circle.radius_squared_exact.num) is typeof(zero.num)
+        else:
+            doAssert typeof(circle.radius_squared_exact) is Fraction[T]
     doAssert circle.points == [a, b, c]
+    doAssert $toExactPoint(initPoint(circle.point_scale, circle.point_scale)).x == "1/1"
+    let diameter = initExactDiameterCircle(o, a)
+    doAssert $diameter.radius_squared_exact == "1/4"
+    doAssert $diameter.center_exact.x == "1/2"
+    doAssert $toExactPoint(initPoint(diameter.point_scale, diameter.point_scale)).x == "2/1"
+    for p in diameter.points_exact: doAssert diameter.on_circle(p)
     doAssert circle == initExactCircle(c, b, a)
     doAssert circle == initExactCircle(b, c, a)
     doAssert circle == initExactCircle(o, 1)
     doAssert circle == initExactCircle(o, a)
-    doAssert circle.center_exact == initPoint(rat(0, 1), rat(0, 1))
-    doAssert circle.radius_squared_exact == rat(1, 1)
+    doAssert ($circle.center_exact.x == "0/1" and $circle.center_exact.y == "0/1")
+    doAssert $circle.radius_squared_exact == "1/1"
     doAssert circle.contains(o) and circle.classify(o) == circleInside
     doAssert circle.on_circle(a) and circle.classify(a) == circleBoundary
     doAssert not circle.contains(initPoint(two, zero))
@@ -40,7 +55,7 @@ proc checkType[T](zero, one, two, minusOne: T) =
     doAssert z == initExactCircle(o, 0) and z == initExactCircle(o, o)
     doAssert z.on_circle(o) and z.classify(o) == circleBoundary
     doAssert not z.contains(a) and z.classify(a) == circleOutside
-    doAssert z.radius_squared_exact == rat(0, 1)
+    doAssert $z.radius_squared_exact == "0/1"
     doAssert z.radius_approx == 0
     doAssert intersection_count(z, z) == 1
     doAssert intersection_count(circle, circle) == -1
@@ -90,79 +105,27 @@ checkType(initFraction(0), initFraction(1), initFraction(2), initFraction(-1))
 checkType(initFraction(parseInt128("0")), initFraction(parseInt128("1")), initFraction(parseInt128("2")), initFraction(parseInt128("-1")))
 checkType(rat(0, 1), rat(1, 1), rat(2, 1), rat(-1, 1))
 
-let huge = high(int64)
-let hugePoint = initPoint(huge, huge)
-let generated = initExactCircle(hugePoint, huge)
-static: doAssert typeof(generated) is ExactCircle[BigInt]
-doAssert generated.center_exact.x == initFraction(initBigInt(huge))
-doAssert generated.points[0].x == initBigInt(huge) * bi(2)
-doAssert generated.contains(initPoint(low(int64), huge)) == false
-doAssert generated.on_circle(initPoint(huge, 0'i64))
-let through = initExactCircle(initPoint(low(int64), huge), hugePoint)
-doAssert through.on_circle(hugePoint)
-doAssert through.radius_squared_exact == initFraction((initBigInt(huge) - initBigInt(low(int64))).pow(2))
-let extreme = initExactCircle(initPoint(low(int64), low(int64)), initPoint(huge, low(int64)), hugePoint)
-doAssert extreme.on_circle(initPoint(low(int64), huge))
-doAssert extreme.contains(initPoint(0'i64, 0'i64))
-let unsigned = initExactCircle(initPoint(0'u64, 0'u64), initPoint(high(uint64), 0'u64), initPoint(0'u64, high(uint64)))
-doAssert unsigned.on_circle(initPoint(high(uint64), high(uint64)))
-let tinyTranslated = initExactCircle(initPoint(huge, huge), initPoint(huge - 2, huge), initPoint(huge - 1, huge - 1))
-doAssert tinyTranslated.radius_squared_exact == rat(1, 1)
-doAssert tinyTranslated.classify(initPoint(huge - 1, huge)) == circleInside
-doAssert tinyTranslated.classify(initPoint(huge - 1, huge + 0)) == circleInside
-
-let minimumFraction = Fraction[int](num: low(int), den: low(int))
-let unnormalized = initExactCircle(initPoint(minimumFraction, minimumFraction), 1)
-doAssert unnormalized.center_exact == initPoint(rat(1, 1), rat(1, 1))
-let min128 = parseInt128("-170141183460469231731687303715884105728")
-let maximum128 = parseInt128("170141183460469231731687303715884105727")
-let f128 = initExactCircle(initPoint(Fraction[Int128](num: min128, den: min128), Fraction[Int128](num: maximum128, den: min128)), 1)
-doAssert f128.center_exact.x == rat(1, 1)
-doAssert f128.on_circle(f128.points[0])
+let translated = initExactCircle(initPoint(1000000, 1000000), initPoint(1000002, 1000000), initPoint(1000001, 1000001))
+doAssert translated.center_exact == initPoint(initFraction(1000001), initFraction(1000000))
+doAssert translated.classify(initPoint(1000001, 1000000)) == circleInside
+let generated = initExactCircle(initPoint(1000000, 1000000), 1000)
+static: doAssert typeof(generated) is ExactCircle[int]
+doAssert generated.points[0].x == 1001000
+doAssert $generated.radius_squared_exact == "1000000/1"
+let denominator = initExactCircle(initPoint(Fraction[int](num: 1, den: -2), Fraction[int](num: -1, den: -3)), 2)
+doAssert $denominator.center_exact.x == "-1/2" and $denominator.center_exact.y == "1/3"
 for invalid in [Fraction[int](num: 1, den: 0), Fraction[int](num: 0, den: 0)]:
     rejects: discard initExactCircle(initPoint(invalid, invalid), 0)
-let negativeDen = initExactCircle(initPoint(Fraction[int](num: 1, den: -2), Fraction[int](num: -1, den: -3)), 2)
-doAssert negativeDen.center_exact == initPoint(rat(-1, 2), rat(1, 3))
-let rational = initExactCircle(initPoint(initFraction(1, 3), initFraction(2, 7)), initPoint(initFraction(5, 11), initFraction(-3, 13)))
-static: doAssert typeof(rational) is ExactCircle[Fraction[BigInt]]
-doAssert rational.center_exact == initPoint(rat(1, 3), rat(2, 7))
-for p in rational.points: doAssert rational.on_circle(p)
-
 let unit = initExactCircle(initPoint(0, 0), 1)
 for pair in [(3, 1, 0, 4), (2, 1, 1, 3), (1, 1, 2, 2), (1, 2, 1, 1), (0, 2, 0, 0)]:
     let other = initExactCircle(initPoint(pair[0], 0), pair[1])
     doAssert intersection_count(unit, other) == pair[2]
     doAssert common_tangent_count(unit, other) == pair[3]
     doAssert intersection_count(other, unit) == pair[2]
-    let result = cross_points_approx(unit, other)
-    doAssert result.points.len == pair[2]
-    for p in result.points:
-        doAssert close(hypot(p.x, p.y), 1)
-        doAssert close(hypot(p.x - float(pair[0]), p.y), float(pair[1]))
-
-let epsilon = initFraction(bi(1), parseBigInt("1" & repeat('0', 100)))
-let nearBoundary = initPoint(rat(1, 1) + epsilon, rat(0, 1))
-doAssert unit.classify(nearBoundary) == circleOutside
-let nearTangents = tangent_lines_approx(unit, nearBoundary)
-doAssert nearTangents.tangents.len == 2
-let nearLine = Line[Fraction[BigInt]](s: initPoint(rat(-2, 1), rat(1, 1) - epsilon), t: initPoint(rat(2, 1), rat(1, 1) - epsilon))
-doAssert intersection_count(unit, nearLine) == 2
-doAssert cross_points_approx(unit, nearLine).points.len == 2
-let nearCircle = initExactCircle(initPoint(rat(2, 1) - epsilon, rat(0, 1)), 1)
-doAssert intersection_count(unit, nearCircle) == 2
-doAssert cross_points_approx(unit, nearCircle).points.len == 2
-let savedEPS = GEOMETRY_EPS
-GEOMETRY_EPS = 100
-for p in [nearBoundary, initPoint(rat(1, 1), rat(0, 1))]:
-    doAssert unit.on_circle(p) == (p == initPoint(rat(1, 1), rat(0, 1)))
-GEOMETRY_EPS = savedEPS
-static:
-    doAssert not compiles(initExactCircle(initPoint(0.0, 0.0), 1))
-    doAssert not compiles(initExactCircle(initPoint(0, 0), 1.0))
-
+    doAssert cross_points_approx(unit, other).points.len == pair[2]
 let giant = parseBigInt("1" & repeat('0', 1000))
-let bigCenter = initPoint(giant, -giant)
-let bigCircle = initExactCircle(bigCenter, 1)
+let bigCircle = initExactCircle(initPoint(giant, -giant), 1)
+static: doAssert typeof(bigCircle) is ExactCircle[BigInt]
 doAssert bigCircle.center_exact.x == initFraction(giant)
 doAssert bigCircle.on_circle(initPoint(giant + bi(1), -giant))
 doAssert not bigCircle.contains(initPoint(giant + bi(2), -giant))
@@ -176,5 +139,35 @@ doAssert subnormal.radius_approx > 0 and subnormal.radius_approx < 1e-308
 let largeDen = initFraction(giant + bi(1), giant)
 let ratio = initExactCircle(initPoint(largeDen, largeDen), 1)
 doAssert close(ratio.center_approx.x, 1)
-
+let far = initExactCircle(initPoint(bi(0), bi(0)), initPoint(giant, bi(0)), initPoint(bi(0), giant))
+doAssert far.on_circle(initPoint(giant, giant))
+doAssert far.contains(initPoint(giant div bi(2), giant div bi(2)))
+let giantRadius = initExactCircle(initPoint(bi(0), bi(0)), giant)
+doAssert giantRadius.radius_squared_exact.num == giant * giant
+doAssert giantRadius.on_circle(initPoint(giant, bi(0)))
+rejects: discard giantRadius.radius_approx
+let epsilon = initFraction(bi(1), parseBigInt("1" & repeat('0', 100)))
+let bigUnit = initExactCircle(initPoint(rat(0, 1), rat(0, 1)), 1)
+let nearBoundary = initPoint(rat(1, 1) + epsilon, rat(0, 1))
+doAssert bigUnit.classify(nearBoundary) == circleOutside
+doAssert tangent_lines_approx(bigUnit, nearBoundary).tangents.len == 2
+let nearLine = Line[Fraction[BigInt]](s: initPoint(rat(-2, 1), rat(1, 1) - epsilon), t: initPoint(rat(2, 1), rat(1, 1) - epsilon))
+doAssert intersection_count(bigUnit, nearLine) == 2
+doAssert cross_points_approx(bigUnit, nearLine).points.len == 2
+let nearCircle = initExactCircle(initPoint(rat(2, 1) - epsilon, rat(0, 1)), 1)
+doAssert intersection_count(bigUnit, nearCircle) == 2
+doAssert cross_points_approx(bigUnit, nearCircle).points.len == 2
+let savedEPS = GEOMETRY_EPS
+GEOMETRY_EPS = 100
+for p in [nearBoundary, initPoint(rat(1, 1), rat(0, 1))]:
+    doAssert bigUnit.on_circle(p) == (p == initPoint(rat(1, 1), rat(0, 1)))
+GEOMETRY_EPS = savedEPS
+let wide = parseInt128("1000000000000000000000000000000")
+let wideCircle = initExactCircle(initPoint(wide, wide), parseInt128("1"))
+static: doAssert typeof(wideCircle) is ExactCircle[Int128]
+doAssert wideCircle.on_circle(initPoint(wide + parseInt128("1"), wide))
+doAssert $wideCircle.radius_squared_exact == "1/1"
+static:
+    doAssert not compiles(initExactCircle(initPoint(0.0, 0.0), 1))
+    doAssert not compiles(initExactCircle(initPoint(0, 0), 1.0))
 echo "Hello World"

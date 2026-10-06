@@ -17,4 +17,13 @@ doAssert c.center_approx.x == 0 and c.radius_approx == 1
 let mec = minimum_enclosing_circle_exact(@[initPoint(0, 0), initPoint(1, 0)])
 doAssert mec.contains(initPoint(0, 0)) and mec.contains(initPoint(1, 0))
 doAssert mec.center_approx.x == 0.5 and mec.radius_approx == 0.5
+static:
+    doAssert typeof(c) is ExactCircle[int]
+    doAssert typeof(c.radius_squared_exact.num) is int
+    doAssert typeof(c.center_exact.x.num) is int
+    doAssert typeof(c.points[0].x) is int
+    doAssert typeof(mec) is ExactCircle[int]
+    doAssert typeof(mec.point_scale) is int
+    doAssert not declared(CPLIB_MATH_BIGINT)
+    doAssert not declared(CPLIB_MATH_INT128)
 echo "Hello World"

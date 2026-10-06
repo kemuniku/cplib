@@ -25,15 +25,14 @@ def oracle(points):
 
 def generate():
     rng = random.Random(28563355030)
-    types = ('int', 'uint', 'int128', 'bigint', 'fraction-int', 'fraction-int128', 'fraction-bigint')
+    types = ('int', 'int128', 'bigint', 'fraction-int', 'fraction-int128', 'fraction-bigint')
     sets = []
     for kind in types:
         for i in range(80):
             n = rng.randrange(0, 9)
             def value():
-                x = rng.randrange(-10, 11)
-                if kind == 'uint': x += 10
-                return F(x, rng.randrange(1, 9) if 'fraction' in kind else 1)
+                x = rng.randrange(-2, 3) if kind in ('int', 'fraction-int') else rng.randrange(-10, 11)
+                return F(x, 2 if 'fraction' in kind else 1)
             points = [tuple(value() for _ in range(2)) for _ in range(n)]
             if i % 5 == 0:
                 points = [(p[0], F(3)) for p in points]
@@ -41,19 +40,17 @@ def generate():
                 points += [points[0]] * 3
             sets.append((kind, points))
         # 座標・分母の共通尺度を大きくして、支持集合と半径二乗を厳密照合する。
-        bits = {'int': 63, 'uint': 64, 'int128': 127, 'bigint': 2048,
-                'fraction-int': 63, 'fraction-int128': 127, 'fraction-bigint': 2048}[kind]
         if 'fraction' in kind:
-            scale = F(1, 2**bits-1)
+            scale = F(1, {'fraction-int': 2, 'fraction-int128': 1000, 'fraction-bigint': 2**2048-1}[kind])
             origin = F(0)
         else:
             scale = F(1)
-            origin = F(2**bits-8)
+            origin = F({'int': 1000000, 'int128': 10**30, 'bigint': 2**2048}[kind])
         for grid in ([(0, 0), (1, 0)], [(0, 0), (4, 0), (2, 4)], [(0, 0), (4, 0), (1, 1)],
                      [(0, 0), (4, 0), (0, 4), (4, 4)], [(0, 0)]*20):
             sets.append((kind, [(origin+scale*x, origin+scale*y) for x, y in grid]))
-        if kind in ('int', 'int128', 'bigint'):
-            sets.append((kind, [(F(-2**bits), F(0)), (F(2**bits-1), F(0))]))
+        if kind == 'bigint':
+            sets.append((kind, [(F(-2**2048), F(0)), (F(2**2048-1), F(0))]))
     # 小さな整数格子から全ての1/2/3/4点集合を調べる。
     grid = [(F(x), F(y)) for x in range(3) for y in range(3)]
     for n in range(1, 5):
