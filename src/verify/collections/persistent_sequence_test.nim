@@ -337,4 +337,33 @@ block:
     when declared(GC_fullCollect): GC_fullCollect()
     check(survivor, @[9'i64, 7, 9, 7])
 
+block:
+    type
+        ManagedValue = object
+            values: seq[int]
+        ManagedAction = ref object
+            factor: int64
+    let plain = initPersistentSequence(@[1, 2, 3])
+    let managed = initPersistentSequence(@[ManagedValue(values: @[1, 2])])
+    let withAction = initPersistentLazySequence(@[1'i64, 2, 3],
+        proc(a, b: int64): int64 = a + b, 0'i64,
+        proc(f: ManagedAction, x: int64): int64 = f.factor * x,
+        proc(f: ManagedAction, x: int64, length: int): int64 = f.factor * x,
+        proc(f, g: ManagedAction): ManagedAction = ManagedAction(factor: f.factor * g.factor),
+        ManagedAction(factor: 1))
+    when defined(gcOrc):
+        doAssert plain.root of PersistentSequencePlainNode[int, PersistentSequenceNoAction]
+        doAssert not (managed.root of PersistentSequencePlainNode[ManagedValue, PersistentSequenceNoAction])
+        doAssert not (withAction.root of PersistentSequencePlainNode[int64, ManagedAction])
+        static:
+            doAssert typeof(plain.root.left) is PersistentSequencePlainNode[int, PersistentSequenceNoAction]
+            doAssert not (typeof(managed.root.left) is PersistentSequencePlainNode[ManagedValue, PersistentSequenceNoAction])
+            doAssert not (typeof(withAction.root.left) is PersistentSequencePlainNode[int64, ManagedAction])
+    let changed = withAction.apply(0, 3, ManagedAction(factor: -1)).reverse(0, 3)
+    when declared(GC_fullCollect): GC_fullCollect()
+    doAssert changed.to_seq == @[-3'i64, -2, -1]
+    doAssert withAction.to_seq == @[1'i64, 2, 3]
+    doAssert managed.insert(1, ManagedValue(values: @[3])).reverse(0, 2)[1].values == @[1, 2]
+    doAssert managed[0].values == @[1, 2]
+
 echo "Hello World"
