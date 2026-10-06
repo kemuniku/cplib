@@ -107,12 +107,12 @@ let ints = apollonius_locus(initPoint(low(int64), 0'i64), initPoint(high(int64),
 doAssert ints.circle.radius > 0
 let mixed = apollonius_locus(initPoint(0, 0), initPoint(3'f32, 0'f32), 0.5'f32)
 doAssert same(mixed.circle.center, initPoint(-1.0, 0.0)) and mixed.circle.radius == 2
-for r in [-1.0, Inf, -Inf, NaN]:
+for r in [-1.0, system.Inf, -system.Inf, NaN]:
     var rejected = false
     try: discard apollonius_locus(origin, origin, r)
     except ValueError: rejected = true
     doAssert rejected
-for p in [initPoint(Inf, 0.0), initPoint(0.0, NaN)]:
+for p in [initPoint(system.Inf, 0.0), initPoint(0.0, NaN)]:
     for r in [0.0, 1.0, 2.0]:
         var rejected = false
         try: discard apollonius_locus(origin, p, r)

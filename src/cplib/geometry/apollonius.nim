@@ -18,7 +18,7 @@ when not declared CPLIB_GEOMETRY_APOLLONIUS:
 
     proc apolloniusCheck(p: Point[float]) =
         ##座標と中間値が有限であることを検査する。O(1)。
-        if p.x != p.x or p.y != p.y or abs(p.x) == Inf or abs(p.y) == Inf:
+        if p.x != p.x or p.y != p.y or abs(p.x) == system.Inf or abs(p.y) == system.Inf:
             raise newException(ValueError, "軌跡の座標と中間値は有限である必要があります")
 
     proc apollonius_locus*[T, U, R: SomeNumber](a: Point[T], b: Point[U], ratio: R): ApolloniusLocus =
@@ -32,7 +32,7 @@ when not declared CPLIB_GEOMETRY_APOLLONIUS:
         let r = float(ratio)
         apolloniusCheck(p)
         apolloniusCheck(q)
-        if r != r or abs(r) == Inf or r < 0:
+        if r != r or abs(r) == system.Inf or r < 0:
             raise newException(ValueError, "距離比は非負かつ有限である必要があります")
         if p.x == q.x and p.y == q.y:
             if r == 1: return ApolloniusLocus(kind: apolloniusPlane)
@@ -50,7 +50,7 @@ when not declared CPLIB_GEOMETRY_APOLLONIUS:
             return ApolloniusLocus(kind: apolloniusLine, linePoint: midpoint,
                 lineDirection: initPoint(-scaled.y / unitLength, scaled.x / unitLength))
         let distance = scale * unitLength
-        if distance == Inf:
+        if distance == system.Inf:
             raise newException(ValueError, "距離はfloat64で表現可能である必要があります")
         var c: Point[float]
         var radius: float
