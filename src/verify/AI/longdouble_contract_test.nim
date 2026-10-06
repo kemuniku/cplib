@@ -303,10 +303,10 @@ same(parseLongDouble($ld_ref_bound(3)), ld_ref_bound(3))
 valueError(formatLongDouble(a, -1))
 valueError(formatLongDouble(a, int(high(cint))+1))
 valueError(cmp(parseLongDouble("nan"), a))
-doAssert isInf(to_longdouble(Inf))
+doAssert isInf(to_longdouble(system.Inf))
 doAssert isNaN(to_longdouble(NaN))
 doAssert signbit(to_longdouble(-0.0))
-doAssert maxLongDouble().to_float == Inf
+doAssert maxLongDouble().to_float == system.Inf
 
 for mode in 0..3:
     doAssert ld_ref_rounding(cint(mode)) == 0

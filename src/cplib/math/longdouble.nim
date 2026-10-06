@@ -214,8 +214,8 @@ when not declared CPLIB_MATH_LONGDOUBLE:
 
     proc to_float*(x: LongDouble): float =
         ## doubleへ明示的に丸める。範囲外は符号付きInf。計算量O(1)。
-        if x > ldDoubleMax: return Inf
-        if x < -ldDoubleMax: return -Inf
+        if x > ldDoubleMax: return system.Inf
+        if x < -ldDoubleMax: return -system.Inf
         {.emit: "`result` = (double)(`x`);".}
 
     proc to_integer*[T: SomeInteger](x: LongDouble, target: typedesc[T]): T =
