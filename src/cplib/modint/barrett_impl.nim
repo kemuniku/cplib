@@ -54,6 +54,8 @@ when not declared CPLIB_MODINT_MODINT_BARRETT:
             return cast[uint32](r)
     proc init*(T: typedesc[BarrettModint], a: T or SomeInteger): auto =
         when a is T: return a
+        elif a is SomeUnsignedInt:
+            return T(a: uint32(a.uint64 mod T.umod.uint64))
         else:
             if a in 0..<T.mod.int: return T(a: a.uint32)
             var a = a mod T.mod.int
