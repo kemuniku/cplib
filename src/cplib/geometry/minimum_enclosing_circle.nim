@@ -14,12 +14,12 @@ when not declared CPLIB_GEOMETRY_MINIMUM_ENCLOSING_CIRCLE:
 
     proc mecLength(p: Point[float]): float =
         ##平方のオーバーフローを避けてベクトル長を計算する。O(1)。
-        if p.x != p.x or p.y != p.y or abs(p.x) == Inf or abs(p.y) == Inf:
+        if p.x != p.x or p.y != p.y or abs(p.x) == system.Inf or abs(p.y) == system.Inf:
             raise newException(ValueError, "最小包含円の座標と中間値は有限である必要があります")
         let scale = max(abs(p.x), abs(p.y))
         if scale == 0: return 0
         result = scale * sqrt((p.x / scale) * (p.x / scale) + (p.y / scale) * (p.y / scale))
-        if result == Inf: raise newException(ValueError, "最小包含円の距離は有限である必要があります")
+        if result == system.Inf: raise newException(ValueError, "最小包含円の距離は有限である必要があります")
 
     proc mecDiameter(a, b: Point[float]): Circle =
         ##2点を直径の両端とする円を返す。O(1)。

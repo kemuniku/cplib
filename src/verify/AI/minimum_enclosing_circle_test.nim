@@ -23,7 +23,7 @@ proc oracle(points: seq[Point[float]]): float =
                 let x = (aa * (b.y - c.y) + bb * (c.y - a.y) + cc * (a.y - b.y)) / det
                 let y = (aa * (c.x - b.x) + bb * (a.x - c.x) + cc * (b.x - a.x)) / det
                 candidates.add((x, y, hypot(x - a.x, y - a.y)))
-    result = Inf
+    result = system.Inf
     for candidate in candidates:
         var feasible = true
         for p in points:
@@ -55,12 +55,12 @@ check(@[initPoint(0.0, 0.0), initPoint(4.0, 0.0), initPoint(1.0, 1.0)], 2)
 check(@[initPoint(0.0, 0.0), initPoint(2.0, 0.0), initPoint(1.0, sqrt(3.0))], 2 / sqrt(3.0))
 for seed in 0'i64..50'i64:
     check(@[initPoint(0.0, 0.0), initPoint(1.0, 1e-13), initPoint(2.0, 0.0), initPoint(3.0, -1e-13)], 1.5, seed)
-for invalid in [-1.0, 1.0, Inf, NaN]:
+for invalid in [-1.0, 1.0, system.Inf, NaN]:
     var rejected = false
     try: discard minimum_enclosing_circle(empty, tolerance = invalid)
     except ValueError: rejected = true
     doAssert rejected
-for invalid in [Inf, NaN]:
+for invalid in [system.Inf, NaN]:
     var rejected = false
     try: discard minimum_enclosing_circle(@[initPoint(invalid, 0.0)])
     except ValueError: rejected = true

@@ -31,7 +31,7 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
 
     proc circleFiniteValue(x: float): bool =
         ##有限の浮動小数点数かを判定する。O(1)。
-        x == x and abs(x) != Inf
+        x == x and abs(x) != system.Inf
 
     proc circleCheckPoint(p: Point[float]) =
         ##有限座標であることを検査する。O(1)。
