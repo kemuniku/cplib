@@ -12,7 +12,7 @@ proc oracleRange[K: static[int]; T: SomeNumber](points: openArray[array[K, T]], 
 
 proc oracleNearest[K: static[int]; T: SomeNumber](points: openArray[array[K, T]], query: array[K, T]): int =
     result = -1
-    var best = Inf
+    var best = system.Inf
     for i in 0..<points.len:
         var distance = 0.0
         for axis in 0..<K:
@@ -145,7 +145,7 @@ block:
 block:
     let empty = initKDTree(newSeq[array[2, float64]]())
     let tree = initKDTree(@[[0.0, 0.0]])
-    for bad in [NaN, Inf, NegInf]:
+    for bad in [NaN, system.Inf, NegInf]:
         var rejected = false
         try: discard initKDTree(@[[bad, 0.0]])
         except ValueError: rejected = true
@@ -165,7 +165,7 @@ block:
             doAssert rejected
 
 block:
-    for bad in [float32(NaN), float32(Inf), float32(NegInf)]:
+    for bad in [float32(NaN), float32(system.Inf), float32(NegInf)]:
         var rejected = false
         try: discard initKDTree(@[[bad]])
         except ValueError: rejected = true
