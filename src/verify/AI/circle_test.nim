@@ -32,7 +32,7 @@ let unit = initCircle(point(0, 0), 1)
 doAssert unit.center.x == 0 and unit.radius == 1
 doAssert unit.contains(point(1, 0)) and not unit.contains(point(2, 0))
 doAssert initCircle(initPoint(0'i64, 0'i64), 2).radius == 2
-for invalid in [-1.0, Inf, NaN]:
+for invalid in [-1.0, system.Inf, NaN]:
     var rejected = false
     try: discard initCircle(point(0, 0), invalid)
     except ValueError: rejected = true
