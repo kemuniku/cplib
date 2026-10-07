@@ -142,6 +142,72 @@ block:
     doAssert tree.subtreeProd(1, 7).sum == 5050
     doAssert tree.componentProd(1).sum == 5050 * 8 + 70000
 
+block:
+    type Permutation = array[3, int]
+    proc composePermutation(l, r: Permutation): Permutation =
+        for i in 0..<3: result[i] = r[l[i]]
+    proc inversePermutation(x: Permutation): Permutation =
+        for i in 0..<3: result[x[i]] = i
+    let choices: seq[Permutation] = @[
+        [0, 1, 2], [1, 0, 2], [0, 2, 1], [1, 2, 0], [2, 0, 1], [2, 1, 0]
+    ]
+    var rng = initRand(20261004)
+    var values = newSeq[Permutation](64)
+    for i in 0..<values.len: values[i] = choices[rng.rand(choices.high)]
+    let tree = initLinkCutTree(values, composePermutation, [0, 1, 2], inversePermutation)
+    var adj = newSeq[seq[int]](values.len)
+    for v in 1..<values.len:
+        let u = v - 1
+        tree.link(u, v)
+        adj[u].add(v)
+        adj[v].add(u)
+    for repeat in 0..<2000:
+        let u = rng.rand(values.high)
+        let v = rng.rand(values.high)
+        var expected: Permutation = [0, 1, 2]
+        for x in path(adj, u, v): expected = composePermutation(expected, values[x])
+        doAssert tree.pathProd(u, v) == expected
+        doAssert tree[u] == values[u]
+        doAssert tree[u] == values[u]
+        if repeat mod 7 == 0:
+            values[v] = choices[rng.rand(choices.high)]
+            tree[v] = values[v]
+
+block:
+    proc modularTree(modulus: int64): LinkCutTree[int64] =
+        initLinkCutTree([1'i64, 2, 3],
+            proc(l, r: int64): int64 = (l + r) mod modulus, 0'i64,
+            proc(x: int64): int64 = (modulus - x) mod modulus)
+    let tree = modularTree(101)
+    tree.link(0, 1)
+    tree.link(1, 2)
+    tree[0] = 98'i64
+    doAssert tree.pathProd(0, 2) == 2
+    doAssert tree.pathProd(2, 0) == 2
+    doAssert tree.subtreeProd(1, 0) == 5
+
+block:
+    let tree = newLazySubtreeLinkCutTreeWith(
+        @[(sum: 1'i64, count: 1), (sum: 2'i64, count: 1), (sum: 3'i64, count: 1)],
+        (sum: l.sum + r.sum, count: l.count + r.count), (sum: 0'i64, count: 0),
+        (sum: x.sum + f * int64(x.count), count: x.count), f + g, 0'i64,
+        (sum: -x.sum, count: -x.count), -f
+    )
+    tree.link(0, 1)
+    tree.link(1, 2)
+    tree.pathApply(0, 2, 10)
+    for i in 0..<100: doAssert tree[2] == (sum: 13'i64, count: 1)
+    doAssert tree[0] == (sum: 11'i64, count: 1)
+    doAssert tree[1] == (sum: 12'i64, count: 1)
+    tree.componentApply(2, 7)
+    for i in 0..<100: doAssert tree[2] == (sum: 20'i64, count: 1)
+    tree.subtreeApply(1, 0, 5)
+    tree.pathApply(0, 2, -3)
+    for i in 0..<100: doAssert tree[2] == (sum: 22'i64, count: 1)
+    tree[2] = (sum: 100'i64, count: 1)
+    doAssert tree.subtreeProd(1, 0) == (sum: 121'i64, count: 2)
+    doAssert tree.pathProd(0, 2) == (sum: 136'i64, count: 3)
+
 var rng = initRand(840173)
 for trial in 0..<24:
     let n = if trial == 0: 1 else: rng.rand(2..32)
