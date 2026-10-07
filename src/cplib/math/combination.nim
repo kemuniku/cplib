@@ -18,7 +18,10 @@ when not declared CPLIB_MATH_COMBINATION:
             fact_inv[1] = 1
         for i in 2..max_N:
             fact[i] = fact[i-1] * i
-            inv[i] = -inv[int(ModInt.umod()) mod i]*(int(ModInt.umod()) div i)
+            when typeof(ModInt.umod()) is uint64:
+                inv[i] = -inv[int(ModInt.umod() mod i.uint64)]*(ModInt.umod() div i.uint64)
+            else:
+                inv[i] = -inv[int(ModInt.umod()) mod i]*(int(ModInt.umod()) div i)
             fact_inv[i] = fact_inv[i-1] * inv[i]
         result = Combination_Type[ModInt](fact: fact, inv: inv, fact_inv: fact_inv)
 
