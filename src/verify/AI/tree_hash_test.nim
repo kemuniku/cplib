@@ -118,9 +118,13 @@ block:
     for v in 1..<n:
         path.add_edge(v - 1, v)
         star.add_edge(0, v)
-    let pathHashes = path.all_roots_hash()
+    let pathResult = path.tree_hash()
+    doAssert path.subtree_hash() == pathResult.subtree
+    let pathHashes = pathResult.all_roots
     for v in 0..<n: doAssert pathHashes[v] == pathHashes[n - 1 - v]
-    let starHashes = star.all_roots_hash(n - 1)
+    let starResult = star.tree_hash(n - 1)
+    doAssert star.subtree_hash(n - 1) == starResult.subtree
+    let starHashes = starResult.all_roots
     for v in 2..<n: doAssert starHashes[v] == starHashes[1]
 
 echo "Hello World"
