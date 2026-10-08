@@ -44,3 +44,24 @@ expectAssertion:
 expectAssertion:
     var invalid = @[1, 2, 3]
     FastHadamardTransForm(invalid)
+
+proc checkModular[T: BarrettModint or MontgomeryModint](M: typedesc[T]) =
+    for power in 0..5:
+        let n = 1 shl power
+        let a = newSeqWith(n, M.init(rng.rand(-100..100)))
+        let b = newSeqWith(n, M.init(rng.rand(-100..100)))
+        let beforeA = a.mapIt(it.val)
+        let beforeB = b.mapIt(it.val)
+        var expected = newSeq[T](n)
+        for i in 0..<n:
+            for j in 0..<n: expected[i xor j] += a[i] * b[j]
+        assert xorConvolution(a, b).mapIt(it.val) == expected.mapIt(it.val)
+        assert a.mapIt(it.val) == beforeA and b.mapIt(it.val) == beforeB
+
+checkModular(modint998244353_barrett)
+checkModular(modint998244353_montgomery)
+modint_barrett.setMod(101)
+modint_montgomery.setMod(101)
+checkModular(modint_barrett)
+checkModular(modint_montgomery)
+assert xorConvolution(@[1.25, -2.5], @[-0.5, 1.0]) == @[-3.125, 2.5]
