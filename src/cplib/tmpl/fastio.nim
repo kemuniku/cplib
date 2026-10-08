@@ -681,16 +681,17 @@ CPLIB_FASTIO_READ_ARRAY(cplib_fio_read_u64_array, uint64_t, cplib_fio_read_uint_
     type FastioInteger = int | int8 | int16 | int32 | int64 |
         uint | uint8 | uint16 | uint32 | uint64
 
-    when NimMajor >= 2:
+    when declared(newSeqUninit):
         template fastioNewSeqUninit(T: typedesc, length: int): untyped =
             newSeqUninit[T](length)
-
-        template fastioNewStringUninit(length: int): untyped =
-            newStringUninit(length)
     else:
         template fastioNewSeqUninit(T: typedesc, length: int): untyped =
             newSeqUninitialized[T](length)
 
+    when declared(newStringUninit):
+        template fastioNewStringUninit(length: int): untyped =
+            newStringUninit(length)
+    else:
         template fastioNewStringUninit(length: int): untyped =
             newString(length)
 
