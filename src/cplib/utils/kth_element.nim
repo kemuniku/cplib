@@ -1,24 +1,27 @@
 when not declared CPLIB_UTILS_KTH_ELEMENT:
     const CPLIB_UTILS_KTH_ELEMENT* = 1
-    import random,sequtils
+    import random
     randomize()
     proc kth_element*[T](X:openArray[T],K:int):T=
+        ## 列XのK番目（0始まり）の要素を期待O(N)時間、O(N)領域で返す。
         var now = 0
         var r = len(X)
-        var C = newseqwith(r,0)
+        var C = newSeq[int8](r)
         var X = @X
         while true:
             var L = 0
             var S = 1
             swap(X[rand(0..<r)],X[r-1])
-            C[r-1] = 0
             for i in 0..<(r-1):
                 var tmp = cmp(X[i],X[r-1])
                 if tmp < 0:
                     L += 1
+                    C[i] = -1
                 elif tmp == 0:
                     S += 1
-                C[i] = tmp
+                    C[i] = 0
+                else:
+                    C[i] = 1
             if now+L > K:
                 var idx = 0
                 for i in 0..<(r-1):
