@@ -1,8 +1,11 @@
 when not declared CPLIB_TMPL_FASTIO:
     const CPLIB_TMPL_FASTIO* = 1
     {.passC: "-mavx2".}
-    # mmapは明示指定時のみ使用する。旧来の無効化指定も優先して尊重する。
-    when not defined(fastioMmap) or defined(fastioNoMmap):
+    # 対話モードは先頭の {.define: fastioInteractive.} または -d:fastioInteractive で有効化する。
+    when defined(fastioInteractive):
+        {.passC: "-DCPLIB_FASTIO_INTERACTIVE".}
+    # mmapは明示指定時のみ使用し、対話モードと旧来の無効化指定を優先する。
+    when not defined(fastioMmap) or defined(fastioNoMmap) or defined(fastioInteractive):
         {.passC: "-DCPLIB_FASTIO_NO_MMAP".}
     import macros
 
@@ -88,8 +91,15 @@ static inline void cplib_fio_initialize(cplib_fio_InputState* state) {
 }
 
 static inline bool cplib_fio_refill(cplib_fio_InputState* state) {
+  // 対話モードでは1文字だけ要求し、相手の次の応答を先読みして待たない。
+#ifdef CPLIB_FASTIO_INTERACTIVE
+  const int value = getchar_unlocked();
+  state->length = value == EOF ? 0 : 1;
+  if (value != EOF) state->buffer[0] = (char)value;
+#else
   state->length =
       fread_unlocked(state->buffer, 1, cplib_fio_buffer_size, stdin);
+#endif
   state->cursor = 0;
   return state->length != 0;
 }
@@ -1104,6 +1114,7 @@ CPLIB_FASTIO_OUTPUT(u64, uint64_t, uint64_t, false, cplib_fio_write_unsigned_64)
 
     # 最後の文字列引数をsepと誤認しないよう、名前付きsepはマクロで処理する。
     macro print*(args: varargs[untyped]): untyped =
+        ## 空白区切りで1行出力する。対話モードでは出力後にflushする。
         var sep = newLit(" ")
         var hasSep = false
         var values: seq[NimNode]
@@ -1138,3 +1149,8 @@ CPLIB_FASTIO_OUTPUT(u64, uint64_t, uint64_t, false, cplib_fio_write_unsigned_64)
                     `integerCall`
                 else:
                     `fallbackCall`
+        when defined(fastioInteractive):
+            let output = result
+            result = quote do:
+                `output`
+                flushFile(stdout)
