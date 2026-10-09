@@ -1,6 +1,7 @@
 import os, parseopt, sequtils, strutils, strformat, logging, sets, deques
 import declare_commandline_option
 import compression
+import binary
 
 var filename = ""
 var lib_dirs = @[""]
@@ -8,6 +9,10 @@ var git_urls = @[""]
 var single_line = false
 var compress = false
 var original_source = false
+var binary_mode = false
+var nim_compiler = "nim"
+var nim_options = newSeq[string]()
+var compiler_selected = false
 var quiet = false
 var logger = newConsoleLogger(fmtStr="$time - [$levelname]: "); addHandler(logger)
 var loaded_file = initHashset[string]()
@@ -17,6 +22,9 @@ declareCommandlineOption("help", "h", "Show help text", false)
 declareCommandlineOption("single-line", "s", "Single line import", false)
 declareCommandlineOption("compress", "c", "Compress expanded code and restore it at compile time", false)
 declareCommandlineOption("original-source", "r", "Attach original source in an unused template (requires --compress)", false)
+declareCommandlineOption("binary", "b", "Compile and embed a Linux ELF executable in Nim source", false)
+declareCommandlineOption("nim-compiler", "n", "Nim compiler executable (requires --binary)", true)
+declareCommandlineOption("nim-option", "f", "Additional compiler option; repeatable (requires --binary)", true)
 declareCommandlineOption("lib", "l", "Path to libarary, any number can be passed", true)
 declareCommandlineOption("git-url", "g", "GitHub URL of the library, any number can be passed, must be the same as --lib argument number", true)
 declareCommandlineOption("quiet", "q", "Expander run without output logs", false)
@@ -32,6 +40,11 @@ for kind, key, val in opt.getopt:
     elif is_single_line(kind, key, val): single_line = true
     elif is_compress(kind, key, val): compress = true
     elif is_original_source(kind, key, val): original_source = true
+    elif is_binary(kind, key, val): binary_mode = true
+    elif is_nim_compiler(kind, key, val):
+        nim_compiler = val
+        compiler_selected = true
+    elif is_nim_option(kind, key, val): nim_options.add(val)
     elif is_lib(kind, key, val): lib_dirs.add((if val.endsWith("/"): val else: val & "/") & "src/")
     elif is_git_url(kind, key, val): git_urls.add(if val.endsWith("/"): val else: val & "/")
     elif is_quiet(kind, key, val): quiet = true
@@ -40,6 +53,10 @@ for kind, key, val in opt.getopt:
         var cmd = (if kind == cmdLongOption: "--" else: "-") & key & (if val != "": ": " else: "") & val
         raise newException(ValueError, &"unknown option: {cmd}")
 assert filename != "", "filename must not be empty"
+if binary_mode and (compress or single_line or original_source):
+    raise newException(ValueError, "--binary cannot be combined with --compress, --single-line or --original-source")
+if not binary_mode and (compiler_selected or nim_options.len != 0):
+    raise newException(ValueError, "--nim-compiler and --nim-option require --binary")
 if compress and single_line:
     raise newException(ValueError, "--compress and --single-line cannot be used together")
 if original_source and not compress:
@@ -127,6 +144,9 @@ let expanded = read_source("./", filename, "", "", true, false)
 if not single_line:
     combined = expanded
 var output = combined.join("\n")
+if binary_mode:
+    output = compileBinaryProgram(output, nim_compiler,
+        absolutePath(filename).parentDir, nim_options)
 if compress:
     let original = if original_source:
         readFile(filename & (if filename.endsWith(".nim"): "" else: ".nim"))
