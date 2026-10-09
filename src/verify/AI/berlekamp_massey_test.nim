@@ -41,7 +41,9 @@ proc checkExamples[T: BarrettModint or MontgomeryModint](M: typedesc[T]) =
       for n in d..<a.len:
         for i in 0..<d:
           a[n] += original[i] * a[n - i - 1]
+      let before = a.mapIt(it.val)
       let inferred = berlekampMassey(a[0..<2 * d])
+      doAssert a.mapIt(it.val) == before
       doAssert inferred.len <= d
       # 推定に使用していない後続項でも漸化式が成り立つことを確認する。
       checkRecurrence(a, inferred)
