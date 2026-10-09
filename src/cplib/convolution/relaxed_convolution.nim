@@ -7,6 +7,16 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
     import cplib/convolution/ntt
     import cplib/modint/modint
 
+    proc relaxedPrimeModulus(modulus: uint32): bool =
+        ## 静的な法が素数かをコンパイル時に判定する。O(sqrt(modulus))。
+        if modulus < 2: return false
+        if modulus mod 2 == 0: return modulus == 2
+        var divisor = 3u32
+        while divisor.uint64 * divisor.uint64 <= modulus.uint64:
+            if modulus mod divisor == 0: return false
+            divisor += 2
+        true
+
     type RelaxedConvolution*[T] = object
         coefficientCount: int
         currentIndex: int
@@ -278,6 +288,45 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
             self: var RelaxedInv[T], coefficient: T): T =
         self.add(coefficient)
 
+    proc relaxedSmallIndexInverses(modulus: uint32): array[64, uint32] =
+        ## 短い列用の整数逆元をコンパイル時に計算する。O(min(64, modulus))。
+        result[1] = 1
+        for i in 2..<min(64, modulus.int):
+            result[i] = uint32(modulus.uint64 -
+                (modulus.uint64 div i.uint64) *
+                result[modulus.int mod i].uint64 mod modulus.uint64)
+
+    proc relaxedIndexInverse[T: BarrettModint or MontgomeryModint](
+            convolution: var RelaxedConvolution[T], degree: int): T {.inline.} =
+        ## 静的Barrett modintの素数法では整数の逆元を逐次保存する。償却O(1)。
+        const smallInverses = relaxedSmallIndexInverses(T.umod)
+        if degree < smallInverses.len:
+            result = init(T, smallInverses[degree].int)
+        else:
+            # NTTはlevel >= 5のみを使うため、未使用の0番目を逆元表に再利用する。
+            if convolution.leftPrefixTransforms.len == 0:
+                convolution.leftPrefixTransforms.setLen(1)
+            template inverses: untyped = convolution.leftPrefixTransforms[0]
+            if inverses.len == 0:
+                inverses = newSeq[T](smallInverses.len)
+                for i in 0..<smallInverses.len:
+                    inverses[i] = init(T, smallInverses[i].int)
+            if degree >= inverses.len:
+                inverses.add(-inverses[T.umod.int mod degree] *
+                    (T.umod.int div degree))
+            result = inverses[degree]
+
+    template relaxedDivideByIndex[T](convolution: var RelaxedConvolution[T], value: T,
+            degree: int): T =
+        ## 静的Barrett modintの素数法だけで逆元を保存し、他は通常の除算を保つ。
+        when T is StaticBarrettModint:
+            when relaxedPrimeModulus(T.umod):
+                value * relaxedIndexInverse[T](convolution, degree)
+            else:
+                value / degree
+        else:
+            value / degree
+
     proc initRelaxedExp*[T: BarrettModint or MontgomeryModint](
             coefficientCount: int): RelaxedExp[T] =
         ## 形式的指数関数の係数を逐次計算する状態を初期化する。
@@ -304,8 +353,9 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
                 "FPSの形式的指数関数を求めるには定数項が0である必要がある"
             result = init(T, 1)
         else:
-            result = self.convolution.add(self.values[degree - 1],
-                coefficient * degree) / degree
+            result = relaxedDivideByIndex(self.convolution,
+                self.convolution.add(self.values[degree - 1],
+                    coefficient * degree), degree)
         self.values.add(result)
         inc self.currentIndex
 
@@ -346,8 +396,9 @@ when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:
             result = init(T, 0)
         else:
             discard self.inverse.add(coefficient)
-            result = self.convolution.add(coefficient * degree,
-                self.inverse.values[degree - 1]) / degree
+            result = relaxedDivideByIndex(self.convolution,
+                self.convolution.add(coefficient * degree,
+                    self.inverse.values[degree - 1]), degree)
         self.values.add(result)
         inc self.currentIndex
 
