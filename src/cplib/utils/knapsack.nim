@@ -1,6 +1,6 @@
 when not declared CPLIB_UTILS_KNAPSACK:
     const CPLIB_UTILS_KNAPSACK* = 1
-    import sequtils,math,bitops,algorithm
+    import sequtils,math,algorithm
     import cplib/utils/constants
     proc solve_01knapsack_NW*(items:openArray[tuple[v:int,w:int]],W:int):int=
         ## sum(w_i) <= Wとなるようなitemの取り方で、vが最大のものを選ぶ
@@ -31,17 +31,23 @@ when not declared CPLIB_UTILS_KNAPSACK:
         ## sum(w_i) <= Wとなるようなitemの取り方で、vが最大のものを選ぶ
         ## O(N 2^{N/2})
         
-        let items = @items
-        proc naive_knapsack(items:seq[tuple[v:int,w:int]]):seq[tuple[v:int,w:int]]=
+        proc naive_knapsack(items:openArray[tuple[v:int,w:int]],reversed:static[bool]=false):seq[tuple[v:int,w:int]]=
+            ## 部分集合の価値と重さを列挙し、reversed時は重さと価値の順にする。
             var X = len(items)
-            result = newseqwith(1 shl X,(0,0))
-            for bit in 1..<(1 shl X):
-                var i = fastLog2(bit)
-                var (v,w) = result[bit xor (1 shl i)]
-                result[bit] = (v+items[i].v,w+items[i].w)
+            result = newSeq[tuple[v:int,w:int]](1 shl X)
+            for i in 0..<X:
+                let start = 1 shl i
+                for bit in 0..<start:
+                    let (v,w) = result[bit]
+                    when reversed:
+                        result[start+bit] = (v+items[i].w,w+items[i].v)
+                    else:
+                        result[start+bit] = (v+items[i].v,w+items[i].w)
         
-        var A = naive_knapsack(items[0..<(len(items) div 2)])
-        var B = naive_knapsack(items[(len(items) div 2)..<(len(items))]).mapit((it[1],it[0])).sorted()
+        let middle = len(items) div 2
+        var A = naive_knapsack(items.toOpenArray(0,middle-1))
+        var B = naive_knapsack(items.toOpenArray(middle,len(items)-1),true)
+        B.sort()
         for i in 1..<len(B):
             B[i][1] = max(B[i][1],B[i-1][1])
         var ans = -INF64
