@@ -3,9 +3,9 @@ import strutils, sequtils
 import cplib/graph/hungarian
 
 let n = stdin.readLine.parseInt
-var cost = newSeq[seq[int64]](n)
+var cost = newSeq[seq[int32]](n)
 for row in 0..<n:
-    cost[row] = stdin.readLine.splitWhitespace.mapIt(int64(parseBiggestInt(it)))
+    cost[row] = stdin.readLine.splitWhitespace.mapIt(int32(parseBiggestInt(it)))
 let answer = min_cost_assignment(cost)
 doAssert answer.feasible
 echo answer.cost
