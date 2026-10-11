@@ -20,6 +20,9 @@ for m in [65538,65539]:
             for backend in [assignmentScalar,assignmentSimd]:
                 for stable in [false,true]:
                     for vector in [assignmentVectorSse,assignmentVectorAvx2,assignmentVectorAvx512,assignmentVectorAuto]:
+                        if backend == assignmentSimd:
+                            if vector == assignmentVectorAvx512 and not assignment_int32_avx512_available(): continue
+                            if vector in [assignmentVectorAvx2,assignmentVectorAuto] and not assignment_int32_avx2_available(): continue
                         let answer = min_cost_assignment_int32_fast(c,mask,backend,
                             if stable: assignmentStable else: assignmentPreferFree, vector=vector)
                         doAssert answer == expected
@@ -28,11 +31,12 @@ for m in [65538,65539]:
 block:
     let c = @[@[0'i32,0,0],@[0'i32,1,1],@[1'i32,0,0]]
     let old = min_cost_assignment_wide(c)
-    let fast = min_cost_assignment_int32_avx512(c)
+    let fast = min_cost_assignment_int32_fast(c,backend=assignmentScalar)
+    if assignment_int32_avx2_available(): doAssert min_cost_assignment(c) == fast
     doAssert old.cost == 0 and fast.cost == 0
     doAssert old.columnOfRow == @[1,0,2]
     doAssert fast.columnOfRow == @[2,0,1]
-    doAssert min_cost_assignment_int32_fast(c,tieBreak=assignmentStable) == old
+    doAssert min_cost_assignment_int32_fast(c,backend=assignmentScalar,tieBreak=assignmentStable) == old
     stderr.writeLine("tie example: old=",old.columnOfRow," fast=",fast.columnOfRow)
 echo "Hello World"
 stderr.writeLine("wide-column/offset cases=",cases)
