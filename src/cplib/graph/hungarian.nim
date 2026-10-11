@@ -1,16 +1,18 @@
 when not declared CPLIB_GRAPH_HUNGARIAN:
     const CPLIB_GRAPH_HUNGARIAN* = 1
+    when sizeof(int) != 8:
+        {.error: "Hungarian assignment requires a 64-bit Nim int".}
 
     type
         MinCostAssignmentResult* = object
             feasible*: bool
-            cost*: int64
+            cost*: int
             columnOfRow*: seq[int]
         AssignmentWide = object
             hi, lo: uint64
 
-    proc assignmentWide(x: int64): AssignmentWide {.inline.} =
-        ## 符号付き64ビット整数を2の補数の128ビット表現へ拡張する。
+    proc assignmentWide(x: int): AssignmentWide {.inline.} =
+        ## 64bitのintを2の補数の128ビット表現へ拡張する。
         AssignmentWide(hi: (if x < 0: high(uint64) else: 0'u64), lo: cast[uint64](x))
 
     proc `+`(a, b: AssignmentWide): AssignmentWide {.inline.} =
@@ -25,24 +27,24 @@ when not declared CPLIB_GRAPH_HUNGARIAN:
 
     proc `<`(a, b: AssignmentWide): bool {.inline.} =
         ## 上位桁を符号付き、下位桁を符号なしとして比較する。
-        if a.hi != b.hi: cast[int64](a.hi) < cast[int64](b.hi)
+        if a.hi != b.hi: cast[int](a.hi) < cast[int](b.hi)
         else: a.lo < b.lo
 
-    proc assignmentInt64(x: AssignmentWide): int64 =
+    proc assignmentInt(x: AssignmentWide): int =
         ## 最終費用の範囲を検査する。release/dangerでも範囲外はOverflowDefect。
-        if not ((x.hi == 0 and x.lo <= uint64(high(int64))) or
+        if not ((x.hi == 0 and x.lo <= uint64(high(int))) or
                 (x.hi == high(uint64) and x.lo >= (1'u64 shl 63))):
-            raise newException(OverflowDefect, "assignment cost does not fit int64")
-        cast[int64](x.lo)
+            raise newException(OverflowDefect, "assignment cost does not fit int")
+        cast[int](x.lo)
 
     proc min_cost_assignment_wide*[T: SomeSignedInt](cost: openArray[seq[T]], allowed: openArray[seq[bool]] = []): MinCostAssignmentResult =
         ## 整数矩形N×M行列の最小費用完全行割当をHungarian法で求める。時間O(N²M)、追加領域O(N+M)。
-        ## 全行を相異なる列へ割り当て、0始まりのcolumnOfRowとint64のcostを返す。負費用・同費用可。
+        ## 全行を相異なる列へ割り当て、0始まりのcolumnOfRowとintのcostを返す。負費用・同費用可。
         ## allowedを省略すると全辺を許可する。指定時は同じ形でtrueの辺だけを使う。INF値は使わない。
         ## N>Mや許可辺に完全割当がない場合はfeasible=false、cost=0、columnOfRowは空。
         ## 空行列は費用0の実行可能解。不揃いな行列・許可行列はValueError。入力は変更しない。
-        ## Tは符号付き64ビット以下、N≤2³¹−1、N,M<high(int)。最適費用がint64に収まらなければOverflowDefect。
-        ## 中間演算は2個のuint64による符号付き128ビットで、費用差・ポテンシャル・総和のint64溢れを避ける。
+        ## Tは符号付き64ビット以下、N≤2³¹−1、N,M<high(int)。最適費用がintに収まらなければOverflowDefect。
+        ## 中間演算は2個のuint64による符号付き128ビットで、費用差・ポテンシャル・総和のint溢れを避ける。
         ## 交互道は高々N行を通る。各増加の距離はO(N·2⁶³)、N回の更新を含めても中間値はO(N²·2⁶³)。
         ## 上記Nの制約で128ビットに収まり、総和はN·2⁶³以下。符号なし桁の加減算は桁上がり/借りを処理する。
         ## 各増加で未訪問列への最短路の余裕を更新し、最小余裕だけ双対変数を動かす。等号辺で増加するため最適。
@@ -86,7 +88,7 @@ when not declared CPLIB_GRAPH_HUNGARIAN:
                 for j in 1..m:
                     if used[j]: continue
                     if allowed.len == 0 or allowed[i0 - 1][j - 1]:
-                        let reduced = assignmentWide(int64(cost[i0 - 1][j - 1])) - u[i0] - v[j]
+                        let reduced = assignmentWide(int(cost[i0 - 1][j - 1])) - u[i0] - v[j]
                         if not reached[j] or reduced < slack[j]:
                             reached[j] = true
                             slack[j] = reduced
@@ -114,8 +116,8 @@ when not declared CPLIB_GRAPH_HUNGARIAN:
         for j in 1..m:
             if p[j] != 0:
                 result.columnOfRow[p[j] - 1] = j - 1
-                total = total + assignmentWide(int64(cost[p[j] - 1][j - 1]))
-        result.cost = assignmentInt64(total)
+                total = total + assignmentWide(int(cost[p[j] - 1][j - 1]))
+        result.cost = assignmentInt(total)
         result.feasible = true
 
     type AssignmentInt32Backend* = enum
@@ -139,6 +141,8 @@ when not declared CPLIB_GRAPH_HUNGARIAN:
         {.passC: "-DCPLIB_FAST_STATS".}
     {.emit: """#include <stdint.h>
 #include <limits.h>
+/* Nim intのFFI配列と固定幅SIMDレーンの幅を一致させる。 */
+typedef char cplib_assignment_int_must_be_64[(sizeof(NI) == sizeof(int64_t)) ? 1 : -1];
 #if (defined(__x86_64__) || defined(__i386__)) && (defined(__GNUC__) || defined(__clang__)) && !defined(CPLIB_ASSIGN_FORCE_SCALAR)
 #include <immintrin.h>
 #include <cpuid.h>
@@ -574,8 +578,8 @@ static int cplib_fast_solve(const void *costData, const void *allowedData,
     return 1;
 }
 """.}
-    proc solveFast(cost, allowed: pointer, n, m: int64, simd, preferFree, fused, greedy: cint,
-                   u, v, p, way, dist, used, visited, matched, stats: ptr int64): cint
+    proc solveFast(cost, allowed: pointer, n, m: int, simd, preferFree, fused, greedy: cint,
+                   u, v, p, way, dist, used, visited, matched, stats: ptr int): cint
                    {.importc: "cplib_fast_solve", nodecl.}
 
     proc probeSse(): cint {.importc: "cplib_fast_has_sse", nodecl.}
@@ -620,7 +624,7 @@ static int cplib_fast_solve(const void *costData, const void *allowedData,
             vector: AssignmentInt32Vector = assignmentVectorAuto): MinCostAssignmentResult =
         ## int32費用の最小割当。遅延双対更新で時間O(N²M)、追加領域O(N+M)。
         ## 既定はAVX-512、AVX2の順に自動選択。両方非対応ならValueError。
-        ## N<=32767。内部は全てint64。禁則辺・不能・形状検査は既存int32版と同じ。
+        ## N<=32767。内部の符号付き整数は64bitのint。禁則辺・不能・形状検査は既存int32版と同じ。
         ## 同距離では未割当列を優先するため、同じ最適費用でも割当列は既存版と異なりうる。
         ## 密行列では行最小値で双対と貪欲マッチングを初期化する。
         ## assignmentStableは貪欲初期化を無効化し、最小列番号の同値規則を維持する。
@@ -648,22 +652,22 @@ static int cplib_fast_solve(const void *costData, const void *allowedData,
         for i in 0..<n:
             rows[i] = unsafeAddr cost[i][0]
             if masks.len != 0: masks[i] = cast[pointer](unsafeAddr allowed[i][0])
-        var u = newSeq[int64](n+1)
-        var v = newSeq[int64](m+1)
-        var p = newSeq[int64](m+1)
-        var way = newSeq[int64](m+1)
-        var dist = newSeq[int64](m+1)
-        var used = newSeq[int64](m+1)
-        var visited = newSeq[int64](n)
-        var matched = newSeq[int64](n+1)
-        var stats: array[5, int64]
+        var u = newSeq[int](n+1)
+        var v = newSeq[int](m+1)
+        var p = newSeq[int](m+1)
+        var way = newSeq[int](m+1)
+        var dist = newSeq[int](m+1)
+        var used = newSeq[int](m+1)
+        var visited = newSeq[int](n)
+        var matched = newSeq[int](n+1)
+        var stats: array[5, int]
         let simd = if backend == assignmentScalar: 0
                    elif selected == assignmentVectorAvx512: 2
                    elif selected == assignmentVectorAvx2: 3
                    elif assignment_int32_simd_available(): 1
                    else: 0
         let feasible = solveFast(addr rows[0], (if masks.len == 0: nil else: addr masks[0]),
-            int64(n), int64(m), cint(simd), cint(tieBreak == assignmentPreferFree), cint(fuseInitialization), cint(greedyDense and tieBreak == assignmentPreferFree),
+            n, m, cint(simd), cint(tieBreak == assignmentPreferFree), cint(fuseInitialization), cint(greedyDense and tieBreak == assignmentPreferFree),
             addr u[0], addr v[0], addr p[0], addr way[0], addr dist[0], addr used[0],
             addr visited[0], addr matched[0], addr stats[0])
         when defined(hungarianFastStats):
@@ -672,8 +676,8 @@ static int cplib_fast_solve(const void *costData, const void *allowedData,
         result.columnOfRow = newSeq[int](n)
         for j in 1..m:
             if p[j] != 0:
-                result.columnOfRow[int(p[j])-1] = j-1
-                result.cost += int64(cost[int(p[j])-1][j-1])
+                result.columnOfRow[p[j]-1] = j-1
+                result.cost += int(cost[p[j]-1][j-1])
         result.feasible = true
 
     proc min_cost_assignment_int32_avx512*(cost: openArray[seq[int32]],

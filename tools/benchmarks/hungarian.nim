@@ -8,7 +8,7 @@ const seed = 20261011
 let plan = if paramCount() == 0: "interleaved0" else: paramStr(1)
 let modes = if plan == "avx2": @[0] elif plan == "avx512": @[1] else: @[0,1]
 let rotation = if plan == "interleaved1": 1 else: 0
-var checksum = 0'i64
+var checksum = 0
 proc solve(c: seq[seq[int32]], a: seq[seq[bool]], mode: int): MinCostAssignmentResult =
     ## 同じアルゴリズムのAVX2とAVX-512を明示選択する。
     min_cost_assignment_int32_fast(c,a,vector=(if mode == 0: assignmentVectorAvx2 else: assignmentVectorAvx512))
@@ -46,12 +46,12 @@ proc run(n,m: int, kind: string) =
         ensure r.feasible == expected.feasible and r.cost == expected.cost
         ensure r.columnOfRow.len == expected.columnOfRow.len
         var seen = newSeq[bool](m)
-        var total = 0'i64
+        var total = 0
         for i,j in r.columnOfRow:
             ensure j in 0..<m and not seen[j]
             ensure a.len == 0 or a[i][j]
             seen[j] = true
-            total += int64(c[i][j])
+            total += int(c[i][j])
         ensure total == r.cost
         if k == 0: first = r
         else: ensure r == first
@@ -68,7 +68,7 @@ proc run(n,m: int, kind: string) =
             let start = getMonoTime()
             for rep in 0..<batches[mode]:
                 let r = solve(c,a,mode)
-                checksum = checksum xor r.cost xor int64(r.columnOfRow.len)
+                checksum = checksum xor r.cost xor int(r.columnOfRow.len)
             let ms = float((getMonoTime()-start).inNanoseconds)/1e6/float(batches[mode])
             echo n,",",m,",",kind,",",["avx2","avx512"][mode],",",sample,",",batches[mode],",",formatFloat(ms,ffDecimal,6)
 ensure assignment_int32_avx512_available()

@@ -7,19 +7,24 @@ let answer = min_cost_assignment(@[@[4'i32, 1, 3], @[2'i32, 0, 5]])
 ```
 
 N×Mの矩形行列で、全行を相異なる列へ割り当てる。返り値は
-`MinCostAssignmentResult(feasible: bool, cost: int64, columnOfRow: seq[int])`。
+`MinCostAssignmentResult(feasible: bool, cost: int, columnOfRow: seq[int])`。
 負費用と同費用に対応し、列番号は0始まり。`allowed`を省略すれば全辺を許可し、
 同形のbool行列を渡すとtrueの辺だけを使う。費用値をINFとして予約しない。
 N>Mまたは完全割当がなければfalse/0/空列、空行列はtrue/0/空列。
 形状違反はValueError、入力は変更しない。
 
+このモジュールは **64bitのNim intが必要**。`sizeof(int) != 8` はコンパイル時エラーにする。
+返り値・ポテンシャル・距離・列IDなどのNim側の符号付き整数はint。
+C intrinsics側のint64_tと、汎用128bit表現のuint64は固定幅を維持する。
+Nim/C境界も幅をコンパイル時に検査し、32bit配列を64bitポインタとして渡さない。
+
 ## 入力型と実行経路
 
 - `min_cost_assignment` の **int32入力** は高速版を使う。CPU/OSが対応すればAVX-512、
   それ以外はAVX2。AVX2も利用できなければValueError（空行列でも同じ）。
-  入力はint32全域、内部はint64。N≤32767、N,M<high(int)と利用可能メモリが必要。
+  入力はint32全域、内部は64bitのint。N≤32767、N,M<high(int)と利用可能メモリが必要。
 - **int/int8/int16/int64入力** は従来の汎用128bit経路を維持する。
-  int64全域の費用、N≤2³¹−1、N,M<high(int)に対応し、最終費用がint64範囲外なら
+  int64全域の費用、N≤2³¹−1、N,M<high(int)に対応し、最終費用がint範囲外なら
   release/dangerでもOverflowDefect。int32への暗黙の切り詰めは行わない。
 - `min_cost_assignment_wide` は入力型に関係なく汎用128bit版を明示選択する。
   int32をAVX2未対応機で使う場合や、従来の同値規則が必要な場合にも利用できる。
@@ -62,7 +67,7 @@ AVX512Fを要求する。DQ/BW/VLは不要。検出はモジュール初期化�
 
 ポテンシャル・距離・way・列ID・総費用は64bitを維持する。AVX2は4列、AVX512は8列を
 緩和し、残りをスカラー処理する。行最小値は入力そのものの比較だけなのでint32を使う。
-費用をint64へ拡張して2³¹を足した上限をQ=2³²−1とする。成功する増加距離D≤NQ、
+費用を64bitへ符号拡張して2³¹を足した上限をQ=2³²−1とする。成功する増加距離D≤NQ、
 成功済みDの和T≤N²Q、−v≤T、u≤Q+T。不能探索の確定距離もNQ+T以下なので、
 距離候補は(2N²+N+1)Q以下。N=32767で9,222,949,830,832,259,070 < INT64_MAX。
 途中のoffset演算もこの範囲内で、INF=INT64_MAXを加減算しない。

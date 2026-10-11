@@ -16,7 +16,7 @@ for m in [65538,65539]:
         for masked in [false,true]:
             let mask = if masked: a else: newSeq[seq[bool]]()
             let expected = min_cost_assignment_wide(c,mask)
-            doAssert expected.cost == 3*int64(base)
+            doAssert expected.cost == 3*int(base)
             for backend in [assignmentScalar,assignmentSimd]:
                 for stable in [false,true]:
                     for vector in [assignmentVectorSse,assignmentVectorAvx2,assignmentVectorAvx512,assignmentVectorAuto]:

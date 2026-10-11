@@ -24,20 +24,20 @@ proc check(c: seq[seq[int32]], a: seq[seq[bool]] = @[], brute = true) =
             for answer in [stable,unfused,fused,fast]:
                 doAssert answer.feasible == reference.feasible and answer.cost == reference.cost
                 doAssert answer.columnOfRow.len == reference.columnOfRow.len
-                var total = 0'i64
+                var total = 0
                 var cols: seq[int]
                 for i,j in answer.columnOfRow:
                     doAssert j >= 0 and j < c[i].len and j notin cols
                     doAssert a.len == 0 or a[i][j]
                     cols.add(j)
-                    total += int64(c[i][j])
+                    total += int(c[i][j])
                 doAssert total == answer.cost
     if brute:
         var found = false
-        var best = high(int64)
+        var best = high(int)
         let m = if c.len == 0: 0 else: c[0].len
         var used = newSeq[bool](m)
-        proc visit(i: int, total: int64) =
+        proc visit(i: int, total: int) =
             if i == c.len:
                 found = true
                 best = min(best, total)
@@ -45,7 +45,7 @@ proc check(c: seq[seq[int32]], a: seq[seq[bool]] = @[], brute = true) =
             for j in 0..<m:
                 if not used[j] and (a.len == 0 or a[i][j]):
                     used[j] = true
-                    visit(i+1, total + int64(c[i][j]))
+                    visit(i+1, total + int(c[i][j]))
                     used[j] = false
         visit(0, 0)
         doAssert found == reference.feasible
@@ -146,7 +146,7 @@ for trial in 0..<200:
         c[i] = newSeq[int32](m)
         a[i] = newSeq[bool](m)
         for j in 0..<m:
-            c[i][j] = if trial mod 3 == 0: extremes[rng.rand(extremes.high)] else: int32(rng.rand(int64(low(int32))..int64(high(int32))))
+            c[i][j] = if trial mod 3 == 0: extremes[rng.rand(extremes.high)] else: int32(rng.rand(int(low(int32))..int(high(int32))))
             a[i][j] = rng.rand(100) < trial mod 101
     check(c, if trial mod 2 == 0: a else: @[], brute=false)
 for kind in 0..1:
