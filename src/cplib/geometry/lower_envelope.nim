@@ -48,44 +48,10 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
         result = f.y + f.slope * (x - f.x)
         envelopeFinite(result)
 
-    proc envelopeBuild[T: EnvelopeNumber](curves: openArray[EnvelopeCurve[T]],
-            upper: static[bool]): Envelope[T] =
-        ## 平衡分割統治と線形マージで上下どちらかの包絡図を構築する。
-        let n = curves.len
-        var functions = newSeq[EnvelopeFunction[T]](n)
-        var domains = newSeq[tuple[left, right: T, leftInfinite, rightInfinite: bool]](n)
-        for i, c in curves:
-            for v in [c.s.x, c.s.y, c.t.x, c.t.y]:
-                envelopeFinite(v)
-            if c.s.x == c.t.x:
-                var y = c.s.y
-                if c.ray:
-                    if c.s.y == c.t.y:
-                        raise newException(ValueError, "半直線の方向を指定してください")
-                    when upper:
-                        if c.t.y > c.s.y:
-                            raise newException(ValueError, "上向きの垂直半直線には最大値が存在しません")
-                    else:
-                        if c.t.y < c.s.y:
-                            raise newException(ValueError, "下向きの垂直半直線には最小値が存在しません")
-                else:
-                    when upper: y = max(c.s.y, c.t.y)
-                    else: y = min(c.s.y, c.t.y)
-                functions[i] = EnvelopeFunction[T](x: c.s.x, y: y, slope: y - y)
-                domains[i] = (c.s.x, c.s.x, false, false)
-            else:
-                let dx = c.t.x - c.s.x
-                let dy = c.t.y - c.s.y
-                envelopeFinite(dx)
-                envelopeFinite(dy)
-                let slope = dy / dx
-                envelopeFinite(slope)
-                functions[i] = EnvelopeFunction[T](x: c.s.x, y: c.s.y, slope: slope)
-                if c.ray:
-                    domains[i] = (c.s.x, c.s.x, c.t.x < c.s.x, c.t.x > c.s.x)
-                else:
-                    domains[i] = (min(c.s.x, c.t.x), max(c.s.x, c.t.x), false, false)
-
+    proc envelopeMergeDiagrams[T: EnvelopeNumber](a, b: EnvelopeDiagram[T],
+            functions: seq[EnvelopeFunction[T]], bOffset: int,
+            upper: static[bool]): EnvelopeDiagram[T] =
+        ## 2つの包絡図を入力番号のオフセットを考慮して線形時間で合成する。
         proc winner(a, b: int, x: T): int =
             ## 有限の境界点で比較する。同率なら小さい入力番号を返す。
             if a < 0: return b
@@ -122,7 +88,8 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
                 elif j < b.xs.len:
                     right = b.xs[j]
                 let u = a.interval_sources[i]
-                let v = b.interval_sources[j]
+                let bv = b.interval_sources[j]
+                let v = if bv < 0: -1 else: bv + bOffset
                 var first, second: int
                 var split = false
                 var crossing: T
@@ -165,11 +132,51 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
                     atA = a.point_sources[i]
                     inc i
                 if j < b.xs.len and b.xs[j] == right:
-                    atB = b.point_sources[j]
+                    atB = if b.point_sources[j] < 0: -1 else: b.point_sources[j] + bOffset
                     inc j
                 point = winner(atA, atB, right)
                 left = right
                 hasLeft = true
+
+        result = merge(a, b)
+
+    proc envelopeBuild[T: EnvelopeNumber](curves: openArray[EnvelopeCurve[T]],
+            upper: static[bool]): Envelope[T] =
+        ## 平衡分割統治と線形マージで上下どちらかの包絡図を構築する。
+        let n = curves.len
+        var functions = newSeq[EnvelopeFunction[T]](n)
+        var domains = newSeq[tuple[left, right: T, leftInfinite, rightInfinite: bool]](n)
+        for i, c in curves:
+            for v in [c.s.x, c.s.y, c.t.x, c.t.y]:
+                envelopeFinite(v)
+            if c.s.x == c.t.x:
+                var y = c.s.y
+                if c.ray:
+                    if c.s.y == c.t.y:
+                        raise newException(ValueError, "半直線の方向を指定してください")
+                    when upper:
+                        if c.t.y > c.s.y:
+                            raise newException(ValueError, "上向きの垂直半直線には最大値が存在しません")
+                    else:
+                        if c.t.y < c.s.y:
+                            raise newException(ValueError, "下向きの垂直半直線には最小値が存在しません")
+                else:
+                    when upper: y = max(c.s.y, c.t.y)
+                    else: y = min(c.s.y, c.t.y)
+                functions[i] = EnvelopeFunction[T](x: c.s.x, y: y, slope: y - y)
+                domains[i] = (c.s.x, c.s.x, false, false)
+            else:
+                let dx = c.t.x - c.s.x
+                let dy = c.t.y - c.s.y
+                envelopeFinite(dx)
+                envelopeFinite(dy)
+                let slope = dy / dx
+                envelopeFinite(slope)
+                functions[i] = EnvelopeFunction[T](x: c.s.x, y: c.s.y, slope: slope)
+                if c.ray:
+                    domains[i] = (c.s.x, c.s.x, c.t.x < c.s.x, c.t.x > c.s.x)
+                else:
+                    domains[i] = (min(c.s.x, c.t.x), max(c.s.x, c.t.x), false, false)
 
         proc solve(first, last: int): EnvelopeDiagram[T] =
             ## 入力番号の区間を半分ずつ再帰する。中間包絡図も線形サイズとは仮定しない。
@@ -195,10 +202,27 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
                     result.interval_sources = @[-1, first, -1]
             else:
                 let middle = first + (last - first) div 2
-                result = merge(solve(first, middle), solve(middle, last))
+                result = envelopeMergeDiagrams(solve(first, middle),
+                    solve(middle, last), functions, 0, upper)
 
         result.diagram = solve(0, n)
         result.functions = move(functions)
+
+    proc envelopeCombine[T: EnvelopeNumber](a, b: Envelope[T],
+            upper: static[bool]): Envelope[T] =
+        ## 2つの包絡線の各xでの極値を、元の支持直線を保ったまま合成する。
+        result.functions = a.functions & b.functions
+        result.diagram = envelopeMergeDiagrams(a.diagram, b.diagram,
+            result.functions, a.functions.len, upper)
+
+    proc lower_envelope*[T: EnvelopeNumber](a, b: Envelope[T]): Envelope[T] =
+        ## 2つの包絡線の各xでの最小値。入力番号はaの後にbを連結した順。O(F+K)。
+        ## Fは保持する支持直線数、Kは両包絡図の境界数の合計。
+        envelopeCombine(a, b, false)
+
+    proc upper_envelope*[T: EnvelopeNumber](a, b: Envelope[T]): Envelope[T] =
+        ## 2つの包絡線の各xでの最大値。入力番号・計算量はlower_envelopeと同じ。
+        envelopeCombine(a, b, true)
 
     proc lower_envelope*[T: EnvelopeNumber](curves: openArray[EnvelopeCurve[T]]): Envelope[T] =
         ## 各xで最小のyを残す。最悪O(N α(N) log N)時間、O(N α(N))領域（算術演算をO(1)とする）。

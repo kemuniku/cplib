@@ -237,6 +237,40 @@ block:
     doAssert lower_envelope([s]).value_at(1'f32).get == 2'f32
     doAssert upper_envelope([s]).value_at(1'f32).get == 2'f32
 
+block:
+    let left = lower_envelope([
+        initEnvelopeRay(initPoint(q(0), q(0)), initPoint(q(-1), q(1))),
+        initEnvelopeRay(initPoint(q(0), q(0)), initPoint(q(1), q(1)))])
+    let right = upper_envelope([
+        initEnvelopeSegment(initPoint(q(-2), q(1)), initPoint(q(2), q(1))),
+        initEnvelopeSegment(initPoint(q(0), q(3)), initPoint(q(0), q(3)))])
+    for upper in [false, true]:
+        let combined = if upper: upper_envelope(left, right) else: lower_envelope(left, right)
+        var xs: seq[Q]
+        xs.add(combined.diagram.xs)
+        for i in -8..8: xs.add(initFraction(int64(i), 2'i64))
+        for x in xs:
+            let lv = left.value_at(x)
+            let rv = right.value_at(x)
+            let li = left.source_at(x)
+            let ri = right.source_at(x)
+            var expected = li
+            if li < 0 or (ri >= 0 and
+                    (if upper: rv.get > lv.get else: rv.get < lv.get)):
+                expected = if ri < 0: -1 else: ri + 2
+            doAssert combined.source_at(x) == expected
+            let actual = combined.value_at(x)
+            if expected < 0:
+                doAssert actual.isNone
+            elif expected < 2:
+                doAssert actual.get == lv.get
+            else:
+                doAssert actual.get == rv.get
+        let nested = upper_envelope(combined, left)
+        for x in xs:
+            let expected = if upper: combined.value_at(x) else: left.value_at(x)
+            doAssert nested.value_at(x) == expected
+
 static:
     doAssert not compiles(initEnvelopeSegment(initPoint(0, 0), initPoint(1, 1)))
 
