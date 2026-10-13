@@ -11,6 +11,7 @@ proc ii(): int = scanf("%lld", addr result)
 
 type
     mint = modint998244353
+    Point = tuple[count, sum: mint]
     Data = object
         mul, add, count, sum: mint
 
@@ -18,8 +19,11 @@ proc compress(l, r: Data): Data =
     Data(mul: l.mul * r.mul, add: l.mul * r.add + l.add,
         count: l.count + r.count, sum: l.sum + l.mul * r.sum + l.add * r.count)
 
-proc rake(l, r: Data): Data =
-    Data(mul: l.mul, add: l.add, count: l.count + r.count, sum: l.sum + r.sum)
+proc rake(l, r: Point): Point =
+    (l.count + r.count, l.sum + r.sum)
+
+proc addEdge(t: Data): Point =
+    (t.count, t.sum)
 
 let n = ii()
 let q = ii()
@@ -50,7 +54,12 @@ for e, edge in edges:
 proc leaf(v: int): Data =
     Data(mul: mul[v], add: add[v], count: mint(1), sum: mul[v] * a[v] + add[v])
 
-let dp = initStaticTopTreeDP(tree, (0..<n).toSeq.mapIt(leaf(it)), compress, rake)
+proc addVertex(t: Point, v: int): Data =
+    result = leaf(v)
+    result.count += t.count
+    result.sum += mul[v] * t.sum + add[v] * t.count
+
+let dp = initStaticTopTreeDP(tree, leaf, compress, addVertex, rake, addEdge)
 var answers = newSeqOfCap[int](q)
 for query in 0..<q:
     let kind = ii()
@@ -62,6 +71,6 @@ for query in 0..<q:
         v = edgeChild[ii()]
         mul[v] = mint(ii())
         add[v] = mint(ii())
-    dp.set(v, leaf(v))
+    dp.update(v)
     answers.add(dp.getAll().sum.val)
 echo answers.join("\n")

@@ -8,6 +8,9 @@ const modulus = 101
 type
     Forward = object
         first, last, mul, add, count, sum: int
+    HashPath = object
+        a, b: int
+    Point = tuple[count, sum: int]
     Backward = object
         value: Forward
 
@@ -104,18 +107,54 @@ proc checkSmall(parent: seq[int], root: int) =
                 result.sum += downMul[v] * sub.sum + downAdd[v] * sub.count
             result.sum = result.sum mod modulus
 
-    let fixed = initStaticTopTreeDP(tree, (0..<n).toSeq.mapIt(forward(it)), compress, rake)
+    proc pointRake(l, r: Point): Point =
+        (l.count + r.count, (l.sum + r.sum) mod modulus)
+
+    proc addEdge(t: Forward): Point =
+        (t.count, t.sum)
+
+    proc addVertex(t: Point, v: int): Forward =
+        result = forward(v)
+        result.count += t.count
+        result.sum = (result.sum + upMul[v] * t.sum + upAdd[v] * t.count) mod modulus
+
+    let fixed = initStaticTopTreeDP(tree, forward, compress, addVertex, pointRake, addEdge)
     let reroot = initRerootingStaticTopTreeDP(tree,
         (0..<n).toSeq.mapIt(forward(it)), (0..<n).toSeq.mapIt(backward(it)),
         compress, rake, compressReverse, rakeAtRoot, rakeAtEnd)
+    var hasChild = newSeq[bool](n)
+    for v in 0..<n:
+        if v != root:
+            hasChild[parent[v]] = true
+
+    proc hashVertex(v: int): HashPath =
+        HashPath(a: (if hasChild[v]: 1 else: 0), b: a[v])
+    proc hashCompress(p, c: HashPath): HashPath =
+        HashPath(a: p.a * c.a mod modulus, b: (p.a * c.b + p.b) mod modulus)
+    proc hashAddVertex(t, v: int): HashPath =
+        HashPath(a: t, b: a[v])
+    proc hashRake(x, y: int): int =
+        x * y mod modulus
+    proc hashAddEdge(t: HashPath): int =
+        t.b
+    proc naiveHash(v: int): int =
+        var product = 1
+        for c in adj[v]:
+            if parent[c] == v and c != root:
+                product = product * naiveHash(c) mod modulus
+        (a[v] + (if hasChild[v]: product else: 0)) mod modulus
+
+    let hashDP = initStaticTopTreeDP(tree, hashVertex, hashCompress,
+        hashAddVertex, hashRake, hashAddEdge)
     for step in 0..<20:
+        assert hashDP.getAll().b == naiveHash(root)
         for v in 0..<n:
             let answer = reroot.prod(v).value
             assert answer.first == v and answer.last == -1
             assert (answer.count, answer.sum) == naive(v, -1)
         assert fixed.getAll().count == n
         assert fixed.getAll().sum == naive(root, -1).sum
-        assert fixed.getAll() == reroot.getAll()
+        assert fixed.getAll().sum == reroot.getAll().sum
         let v = rng.rand(n - 1)
         if step mod 2 == 0 or v == root:
             a[v] = rng.rand(modulus - 1)
@@ -127,7 +166,9 @@ proc checkSmall(parent: seq[int], root: int) =
             if step mod 4 == 1:
                 upMul[v] = 0
                 downMul[v] = 0
-        fixed.set(v, forward(v))
+        fixed.update(v)
+        hashDP.update(v)
+        assert hashDP.getAll().b == naiveHash(root)
         reroot.set(v, forward(v), backward(v))
 
 checkSmall(@[-1], 0)
@@ -163,13 +204,24 @@ proc checkLarge(parent: seq[int]) =
     proc merge(l, r: int): int =
         inc calls
         l + r
-    let fixed = initStaticTopTreeDP(tree, newSeqWith(n, 1), merge, merge)
+    var values = newSeqWith(n, 1)
+    proc vertex(v: int): int =
+        inc calls
+        values[v]
+    proc addVertex(t, v: int): int =
+        inc calls
+        t + values[v]
+    proc addEdge(t: int): int =
+        inc calls
+        t
+    let fixed = initStaticTopTreeDP(tree, vertex, merge, addVertex, merge, addEdge)
     let reroot = initRerootingStaticTopTreeDP(tree, newSeqWith(n, 1), newSeqWith(n, 1),
         merge, merge, merge, merge, merge)
     for v in [0, n div 3, n div 2, n - 1]:
         calls = 0
-        fixed.set(v, 2)
-        assert calls <= height
+        values[v] = 2
+        fixed.update(v)
+        assert calls <= 4 * height + 2
         assert fixed.getAll() == n + 1
         calls = 0
         reroot.set(v, 2, 2)
@@ -178,7 +230,8 @@ proc checkLarge(parent: seq[int]) =
             calls = 0
             assert reroot.prod(r) == n + 1
             assert calls <= 2 * height + 2
-        fixed.set(v, 1)
+        values[v] = 1
+        fixed.update(v)
         reroot.set(v, 1, 1)
 
 const largeN = 200000
