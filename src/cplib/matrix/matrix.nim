@@ -99,13 +99,14 @@ when not declared CPLIB_MATRIX_MATRIX:
         for i in 0..<n: result[i][i] = one
     proc identity_matrix*[T](n: int): Matrix[T] = identity_matrix[T](n, 1, 0)
     proc pow*[T](m: Matrix[T], n: int): Matrix[T] =
+        ## 非負整数乗を繰り返し二乗法で求める。O(H^3 log(n+1))。
         result = identity_matrix[T](m.h)
         var m = m
         var n = n
         while n > 0:
             if (n and 1) == 1: result *= m
-            m *= m
             n = n shr 1
+            if n > 0: m *= m
     proc `**`*[T](m: Matrix[T], n: int): Matrix[T] = m.pow(n)
     proc sum*[T](m: Matrix[T]): T = m.arr.mapit(it.sum).sum
 
