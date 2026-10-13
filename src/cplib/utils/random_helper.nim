@@ -39,6 +39,8 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
         if n == 0:
             assert sum == 0, "要素数が0の場合、和も0である必要があります"
             return @[]
+        if n == 1:
+            return @[sum]
         var tmp = randomseq(n-1,1..(n+sum-1),true).sorted()
         var now = 0
         for x in tmp:
@@ -243,6 +245,8 @@ when not declared CPLIB_UTILS_RANDOMHELPER:
     proc random_01sequence*(n:int,one:int):seq[int]=
         ## 1の数がoneであるような長さnの01列を一様ランダムに返す
         assert one in 0..n, "指定した値が有効な範囲内である必要があります: one in 0 .. n"
+        if n == 0:
+            return @[]
         var tmp = randomseq(one,0..<n,true)
         result = newseqwith(n,0)
         for x in tmp:
