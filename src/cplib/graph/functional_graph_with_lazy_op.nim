@@ -360,38 +360,48 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         for i,value in values:
             result[i+1] = self.st_hld.calc_op(result[i],value)
 
-    proc prod_range_fold*[ST,U](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,f:proc(x:U,y:ST.S):U,e:U,include_start:bool=true):U=
+    proc prodRangeFoldImpl[ST,U,S](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,f:proc(x:U,y:S):U,e:U,include_start:bool=true):U=
         ## prod(start,l), ..., prod(start,r-1)を順にfで畳み込む。
         ## O(log^2 N + log l + (r-l))
+        let fold:proc(x:U,y:ST.S):U = f
         assert 0 <= start and start < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= start and start < len(self.graph.cycle_number)"
         assert 0 <= l and l <= r and r < high(int), "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r < high(int)"
         if l == r:
             return e
 
         var prefix_prod = self.prod(start,l,include_start)
-        result = f(e,prefix_prod)
+        result = fold(e,prefix_prod)
         if l+1 == r:
             return
 
         let values = self.walkValues(self.graph.movekth(start,l+1),r-l-1)
         for value in values:
             prefix_prod = self.st_hld.calc_op(prefix_prod,value)
-            result = f(result,prefix_prod)
+            result = fold(result,prefix_prod)
 
-    proc move_while*[ST](
+    proc prod_range_fold*[ST,U](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,f:proc(x:U,y:ST.S):U,e:U,include_start:bool=true):U=
+        ## 型が確定したコールバックで累積積を畳み込む。
+        prodRangeFoldImpl(self,start,l,r,f,e,include_start)
+
+    template prod_range_fold*[ST](self:FunctionalGraph_with_lazy_op[ST],start,l,r:int,f:untyped,e:untyped,include_start:bool=true):untyped=
+        ## prod(start,l), ..., prod(start,r-1)をfで畳み込む。O(log^2 N + log l + (r-l))。
+        prodRangeFoldImpl(self,start,l,r,f,e,include_start)
+
+    proc moveWhileImpl[ST](
         self:FunctionalGraph_with_lazy_op[ST],
-        f:proc(x:ST.S):bool,
+        f:auto,
         x,L:int
     ):int=
         ## @[x]から始め、prefixのprodに対するfが初めてfalseになる移動距離。
         ## L回移動してもtrueならLを返す。O(log^2 N + log L)
         ## f(e)=trueであり、一度falseになった後は頂点を追加してもfalseのまま、
         ## というACL max_rightと同じ単調性を仮定する。
+        let predicate:proc(x:ST.S):bool = f
         assert 0 <= x and x < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= x and x < len(self.graph.cycle_number)"
         assert 0 <= L and L < high(int), "指定した値が有効な範囲内である必要があります: 0 <= L and L < high(int)"
         let limit = L+1
         var value = self.get(x)
-        if not f(value):
+        if not predicate(value):
             return 0
         var used = 1
         if used == limit:
@@ -406,8 +416,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
             first_segment = false
             let nr = nl+min(r-nl,limit-used)
             if nl < nr:
-                let max_right = self.st_hld.max_right(nl,proc(v:ST.S):bool=
-                    f(self.st_hld.calc_op(value,v))
+                let max_right = max_right[ST,int](self.st_hld,nl,proc(v:ST.S):bool=
+                    predicate(self.st_hld.calc_op(value,v))
                 )
                 if max_right < nr:
                     used += max_right-nl
@@ -446,7 +456,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
                 let count = 1 shl i
                 if count <= max_cycles-accepted:
                     let next_value = self.st_hld.calc_op(value,powers[i])
-                    if f(next_value):
+                    if predicate(next_value):
                         value = next_value
                         accepted += count
             used += accepted*csiz
@@ -457,8 +467,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         proc consumeCycle(l,r:int):bool=
             if l == r:
                 return true
-            let max_right = self.st_cycle.max_right(offset+l,proc(v:ST.S):bool=
-                f(self.st_hld.calc_op(value,v))
+            let max_right = max_right[ST,int](self.st_cycle,offset+l,proc(v:ST.S):bool=
+                predicate(self.st_hld.calc_op(value,v))
             )
             if max_right < offset+r:
                 used += max_right-(offset+l)
@@ -474,3 +484,11 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         if rest > 0 and not consumeCycle(0,rest):
             return used
         return used-1
+
+    proc move_while*[ST](self:FunctionalGraph_with_lazy_op[ST],f:proc(x:ST.S):bool,x,L:int):int=
+        ## 型が確定した述語で条件を満たす移動距離を求める。
+        moveWhileImpl(self,f,x,L)
+
+    template move_while*[ST](self:FunctionalGraph_with_lazy_op[ST],f:untyped,x,L:int):untyped=
+        ## 条件を満たす移動距離を求める。O(log^2 N + log L)。
+        moveWhileImpl(self,f,x,L)
