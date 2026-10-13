@@ -1,6 +1,7 @@
 when not declared CPLIB_GEOMETRY_BASE:
     const CPLIB_GEOMETRY_BASE* = 1
     import hashes, strformat
+    import cplib/math/fractions
     type Point*[T] = object
         x*, y*: T
     var GEOMETRY_EPS* = 1e-10
@@ -77,14 +78,20 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc initLine*[T](a, b, c: int): Line[int] = assert false, "係数(a,b,c)からの直線の初期化にはintではなくfloatまたはFractionを使用してください"
     proc initLine*[T](a, b, c: T): Line[T] =
         ##直線 ax + by + c = 0 の初期化、int 型に対しては使用不可
-        assert geometry_neq(a, T(0)) or geometry_neq(b, T(0)), "直線の係数aとbの少なくとも一方は非零である必要があります"
-        if geometry_eq(b, T(0)):
-            var s = Point[T](x: -c / a, y: T(0))
-            var t = Point[T](x: -c / a, y: T(1))
+        when T is Fraction:
+            let zero = initFraction(typeof(a.num)(0))
+            let one = initFraction(typeof(a.num)(1))
+        else:
+            let zero = T(0)
+            let one = T(1)
+        assert geometry_neq(a, zero) or geometry_neq(b, zero), "直線の係数aとbの少なくとも一方は非零である必要があります"
+        if geometry_eq(b, zero):
+            var s = Point[T](x: -c / a, y: zero)
+            var t = Point[T](x: -c / a, y: one)
             return Line[T](s: s, t: t)
         else:
-            var s = Point[T](x: T(0), y: -c / b)
-            var t = Point[T](x: T(1), y: (-a-c) / b)
+            var s = Point[T](x: zero, y: -c / b)
+            var t = Point[T](x: one, y: (-a-c) / b)
             return Line[T](s: s, t: t)
     proc vector*[T](l: Line[T]): Point[T] =
         ##直線の接ベクトル（直線の方向のベクトル）
