@@ -175,3 +175,27 @@ block:
         doAssert seg.max_right(a, proc(x: string): bool = target.startsWith(x)) == b
         doAssert seg.min_left(b, proc(x: string): bool = target.endsWith(x)) == a
     doAssert seg.toSeq == values
+
+block:
+    var values = @["a", "bc", "d", "ef", "g"]
+    let seg = initRangeReverseArrayMonoid(values, proc(a, b: string): string = a & b, "")
+    seg.reverse(0, seg.len)
+    values.reverse()
+    for i in 0..seg.len:
+        seg.reverse(i, i)
+        if i < seg.len: seg.reverse(i, i + 1)
+    seg.insert(0, "left")
+    values.insert("left", 0)
+    seg.insert(seg.len, "right")
+    values.add("right")
+    seg.reverse(0, seg.len)
+    values.reverse()
+    seg.erase(0)
+    values.delete(0)
+    seg.erase(seg.len - 1)
+    values.setLen(values.len - 1)
+    doAssert seg.fold == values.join("")
+    doAssert seg.toSeq == values
+    seg.erase(0, seg.len)
+    seg.reverse(0, 0)
+    doAssert seg.len == 0 and seg.fold == ""
