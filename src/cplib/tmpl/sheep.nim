@@ -18,8 +18,11 @@ when not declared CPLIB_TMPL_SHEEP:
     import std/lenientops
     import options
     include cplib/tmpl/fastio
-    macro getSymbolName(x: typed): string = x.toStrLit
+    macro getSymbolName(x: untyped): string =
+        ## 型検査やテンプレート展開前の式を文字列にする。
+        x.toStrLit
     macro debug*(args: varargs[untyped]): untyped =
+        ## デバッグ有効時に、展開前の式名とその値を標準エラー出力に表示する。
         when defined(debug):
             result = newNimNode(nnkStmtList, args)
             template prop(e: string = ""): untyped = (f: stderr, sepc: "", endc: e, flush: true)
