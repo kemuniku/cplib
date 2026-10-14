@@ -1,5 +1,8 @@
 when not declared CPLIB_UTILS_OEIS:
     const CPLIB_UTILS_OEIS* = 1
+    # HTTPS通信のため、httpclientの読み込み前にSSLを有効にする。
+    # net/httpclientを先に読み込む場合は、メインファイル先頭でも指定する。
+    {.define: ssl.}
     import httpclient, json, strutils
     import cplib/math/fractions
 
@@ -104,6 +107,23 @@ when not declared CPLIB_UTILS_OEIS:
         defer: client.close()
         result.addResults(searchQuery(client, makeQuery(rowMajor), oeisMatrixRowMajor))
         result.addResults(searchQuery(client, makeQuery(antidiagonal), oeisMatrixAntidiagonal))
+
+    proc searchOEIS*[T: SomeInteger](f: proc(x, y: int): T {.closure.},
+                                    xRange: Slice[int] = 0 .. 9,
+                                    yRange: Slice[int] = 0 .. 9): seq[OEISResult] =
+        ## f(x, y)から2次元整数配列を作り、行方向と反対角線方向で検索する。
+        ## searchOEIS(f)は各軸0..9を使い、searchOEIS(f, 1..5, 2..6)で範囲を指定できる。
+        ## xは行、yは列で、各範囲の両端を含む。範囲が空なら関数評価・通信を行わない。
+        ## 関数評価は各要素につき1回。生成にO(HW)、追加領域にO(HW)を要する。
+        if xRange.a > xRange.b or yRange.a > yRange.b:
+            return
+        var matrix: seq[seq[T]]
+        for x in xRange:
+            var row: seq[T]
+            for y in yRange:
+                row.add(f(x, y))
+            matrix.add(row)
+        result = searchOEIS(matrix)
 
     proc searchOEIS*[T: SomeInteger](values: openArray[Fraction[T]]): seq[OEISResult] =
         ## 有理数列を既約分数に直し、分子列と分母列を別々に検索する。処理時間はO(n)。
