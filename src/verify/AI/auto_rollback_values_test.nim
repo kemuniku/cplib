@@ -146,5 +146,12 @@ static:
         Temporary:
             (update, choose())[0]()
     )
+    doAssert not compiles(block:
+        var state = 0
+        proc update() = inc state
+        proc choose(): proc() = update
+        Temporary:
+            (op: update, other: choose()).op()
+    )
 
 echo "Hello World"
