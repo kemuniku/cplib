@@ -29,6 +29,22 @@ cd cplib
 nimble install -y
 ```
 
+`./sub` と `./subc` は `tools/expander.o` を使います。リポジトリのルートで
+次を実行してコンパイルしてください。ソースを更新した後も同じコマンドで再コンパイルできます。
+
+```bash
+make -C tools -B expander.o
+```
+
+`build_nimdoc.o`、`run_formatter.o`、`ignore_atcoder_verify.o` も含めて
+すべてのツールをコンパイルする場合は、次を実行してください。
+
+```bash
+make -C tools -B
+```
+
+生成された実行ファイルは `tools/` に置かれます。
+
 問題を解くときは、クローンしたディレクトリ内に `Main.nim` を作成し、解答コードを書きます。
 公開されているテストケースに対して実行し結果を確かめるには以下のようにします。
 

@@ -1,6 +1,6 @@
 #/usr/bin/bash
 ./tools/expander.o Main.nim \
-  -l:./ -g:https://github.com/kemuniku/cplib \
-  -l:/home/kemuniku/atcoder/Nim-ACL/ -g:https://github.com/zer0-star/Nim-ACL
+  -l:./ --git-url:https://github.com/kemuniku/cplib \
+  -l:/home/kemuniku/atcoder/Nim-ACL/ --git-url:https://github.com/zer0-star/Nim-ACL
 cat combined.nim | xsel --clipboard --input
 nim cpp -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off --hints:off -o:a.out combined.nim && oj t 
