@@ -36,14 +36,16 @@ static:
             " -o:" & quoteShell(directory / "program") & " --path:. "
         if compileOriginal:
             discard runCommand(compiler & flags & "main.nim", directory)
-        for options in ["", "--single-line", "--compress",
+        for options in ["", "--original-source", "--single-line", "--compress",
                 "--compress --original-source"]:
-            if not compileOriginal and options ==
-                    "--compress --original-source": continue
+            if not compileOriginal and "--original-source" in options: continue
             discard runCommand(quoteShell(expander) & " --quiet " & options &
                     " main.nim", directory)
-            if options == "":
-                let expanded = readFile(directory / "combined.nim")
+            let expanded = readFile(directory / "combined.nim")
+            if "--original-source" in options:
+                doAssert expanded.startsWith("template originalSource() =\n " &
+                    source.splitLines()[0])
+            if options == "" or options == "--original-source":
                 for fragment in fragments: doAssert fragment in expanded
             discard runCommand(compiler & flags & "combined.nim", directory)
     checkSource("import#[comment]# \"strutils\"\ninclude \"quoted\"\ndoAssert \"foo\".toUpperAscii == \"FOO\"\ndoAssert quoted == 7\n",
@@ -65,6 +67,28 @@ static:
         @[("first.nim", "const firstValue* = 1\n"), ("second.nim",
                 "const secondValue = 2\n")],
         @["const firstValue* = 1", "const secondValue = 2"], false)
+    discard runCommand("mkdir -p src", directory)
+    writeFile(directory / "src" / "demo.nim", "const answer = 7\n")
+    writeFile(directory / "main.nim", "include demo\ndoAssert answer == 7\n")
+    discard runCommand("git init -q", directory)
+    discard runCommand("git add src/demo.nim", directory)
+    discard runCommand("git -c user.name=verify -c user.email=verify@example.com commit -qm initial", directory)
+    let commit = runCommand("git rev-parse HEAD", directory).strip
+    let permalink = "https://github.com/example/library/blob/" & commit & "/src/demo.nim"
+    for repositoryUrl in ["https://github.com/example/library.git",
+            "https://github.com/example/library/blob/main",
+            "https://github.com/example/library/tree/main"]:
+        let expandWithUrl = quoteShell(expander) &
+            " --quiet -l:. -g:" & quoteShell(repositoryUrl) & " main.nim"
+        discard runCommand(expandWithUrl, directory)
+        doAssert "# source: " & permalink in readFile(directory / "combined.nim")
+    writeFile(directory / "src" / "demo.nim", "const answer = 8\n")
+    writeFile(directory / "main.nim", "include demo\ndoAssert answer == 8\n")
+    discard runCommand(quoteShell(expander) &
+        " --quiet -l:. -g:https://github.com/example/library/blob/main main.nim", directory)
+    let modified = readFile(directory / "combined.nim")
+    doAssert "# source: " & permalink in modified
+    doAssert "const answer = 8" in modified
     let removed = gorgeEx("rm -rf -- " & quoteShell(directory))
     doAssert removed.exitCode == 0
 
