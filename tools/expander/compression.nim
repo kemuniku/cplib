@@ -43,13 +43,17 @@ proc compressSource*(source: string): string =
             pos += consumed
         result[flagPos] = char(flags)
 
+proc originalSourceTemplate*(original: string): string =
+    ## 元コードを未使用のテンプレートに収め、後続のコードとの間を3行空ける。
+    result.add("template originalSource() =\n")
+    for line in original.splitLines():
+        result.add(" " & line & "\n")
+    result.add(repeat('\n', 3))
+
 proc compressedProgram*(source, original: string, attachOriginal: bool): string =
-    ## 復元マクロを生成し、指定時は元コードを未使用のテンプレート内に添付して3行空ける。
+    ## 復元マクロを生成し、指定時は元コードを先頭に添付する。
     if attachOriginal:
-        result.add("template originalSource() =\n")
-        for line in original.splitLines():
-            result.add(" " & line & "\n")
-        result.add(repeat('\n', 3))
+        result.add(originalSourceTemplate(original))
     let restoreProgram = """import base64
 macro cplibUnpackSource(): untyped =
     # コンパイル時に展開済みコードを復元する。

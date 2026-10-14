@@ -1,4 +1,4 @@
-import os, parseopt, sequtils, strutils, strformat, logging, sets, deques
+import os, osproc, parseopt, sequtils, strutils, strformat, logging, sets, deques
 import declare_commandline_option
 import compression
 
@@ -16,9 +16,9 @@ var outfile = "combined.nim"
 declareCommandlineOption("help", "h", "Show help text", false)
 declareCommandlineOption("single-line", "s", "Single line import", false)
 declareCommandlineOption("compress", "c", "Compress expanded code and restore it at compile time", false)
-declareCommandlineOption("original-source", "r", "Attach original source in an unused template (requires --compress)", false)
+declareCommandlineOption("original-source", "r", "Attach original source in an unused template", false)
 declareCommandlineOption("lib", "l", "Path to libarary, any number can be passed", true)
-declareCommandlineOption("git-url", "g", "GitHub URL of the library, any number can be passed, must be the same as --lib argument number", true)
+declareCommandlineOption("git-url", "g", "Repository URL for each --lib; link to its local HEAD commit", true)
 declareCommandlineOption("quiet", "q", "Expander run without output logs", false)
 declareCommandlineOption("output-file", "o", "Output file path", false)
 usage_text &= " source\n\n"
@@ -33,7 +33,7 @@ for kind, key, val in opt.getopt:
     elif is_compress(kind, key, val): compress = true
     elif is_original_source(kind, key, val): original_source = true
     elif is_lib(kind, key, val): lib_dirs.add((if val.endsWith("/"): val else: val & "/") & "src/")
-    elif is_git_url(kind, key, val): git_urls.add(if val.endsWith("/"): val else: val & "/")
+    elif is_git_url(kind, key, val): git_urls.add(val)
     elif is_quiet(kind, key, val): quiet = true
     elif is_output_file(kind, key, val): outfile = val
     else:
@@ -42,16 +42,49 @@ for kind, key, val in opt.getopt:
 assert filename != "", "filename must not be empty"
 if compress and single_line:
     raise newException(ValueError, "--compress and --single-line cannot be used together")
-if original_source and not compress:
-    raise newException(ValueError, "--original-source requires --compress")
+if git_urls.len > lib_dirs.len:
+    raise newException(ValueError, "more --git-url values than --lib values")
+
+proc gitValue(dir, args: string): string =
+    ## 指定したライブラリのGit情報を取得する。
+    let command = "git -C " & quoteShell(dir) & " " & args
+    let executed = execCmdEx(command)
+    if executed.exitCode != 0:
+        raise newException(ValueError, command & ": " & executed.output.strip)
+    result = executed.output.strip
+
+proc permalinkPrefix(dir, repositoryUrl: string): string =
+    ## ライブラリのHEADが指すコミットへの固定URLを作る。
+    var url = repositoryUrl.strip(chars = {'/'}, leading = false)
+    let parts = url.split('/')
+    if parts.len >= 6 and parts[0] in ["https:", "http:"] and
+            parts[1] == "" and parts[5] in ["blob", "tree"]:
+        url = parts[0..4].join("/")
+    if url.endsWith(".git"):
+        url.setLen(url.len - 4)
+    let root = gitValue(dir, "rev-parse --show-toplevel")
+    let commit = gitValue(dir, "rev-parse HEAD")
+    let relativeDir = relativePath(absolutePath(dir), root).replace('\\', '/')
+    result = url & "/blob/" & commit & "/"
+    if relativeDir != ".":
+        result.add(relativeDir & "/")
+
 for i in 1..<lib_dirs.len:
-    if i >= git_urls.len: git_urls.add("")
+    if i >= git_urls.len:
+        git_urls.add("")
+    elif git_urls[i] != "":
+        git_urls[i] = permalinkPrefix(lib_dirs[i], git_urls[i])
     if not quiet: info(&"Library Directory: {lib_dirs[i]}, git_url: {git_urls[i]}")
 
 
 var combined = newSeq[string]()
 if single_line:
     combined.add("import macros;macro ImportExpand(s:untyped):untyped = parseStmt($s[2])")
+proc sourceUrl(gitUrl, filename: string): string =
+    ## 指定された固定URLがあれば使い、なければ相対パスを返す。
+    let prefix = if gitUrl == "": "src/" else: gitUrl
+    result = prefix & filename & ".nim"
+
 proc read_source(dir, filename, git_url, indent: string, is_main, direct_import: bool): seq[string] =
     ## ローカルのimport/includeを再帰的に展開する。
     var fullfilename = dir & filename & (if filename.endsWith(".nim"): "" else: ".nim")
@@ -108,14 +141,14 @@ proc read_source(dir, filename, git_url, indent: string, is_main, direct_import:
         result_lines.add(indent & line)
     if not single_line:
         if not is_main:
-            result_lines.insert(indent & &"# source: {git_url}src/{filename}.nim", 0)
+            result_lines.insert(indent & &"# source: {sourceUrl(git_url, filename)}", 0)
         return result_lines
     if direct_import and single_line:
         for line in result_lines.mitems:
             line = line.replace("\\", "\\\\")
             line = line.replace("\"", "\\\"")
         var s0 = result_lines.join("\\n")
-        combined.add(&"# source: {git_url}src/{filename}.nim")
+        combined.add(&"# source: {sourceUrl(git_url, filename)}")
         combined.add(&"ImportExpand \"{filename}\" <=== \"{s0}\"")
         return newSeq[string]()
     if is_main:
@@ -127,11 +160,13 @@ let expanded = read_source("./", filename, "", "", true, false)
 if not single_line:
     combined = expanded
 var output = combined.join("\n")
+let original = if original_source:
+    readFile(filename & (if filename.endsWith(".nim"): "" else: ".nim"))
+else: ""
 if compress:
-    let original = if original_source:
-        readFile(filename & (if filename.endsWith(".nim"): "" else: ".nim"))
-    else: ""
     output = compressedProgram(output, original, original_source)
+elif original_source:
+    output = originalSourceTemplate(original) & output
 block:
     var file = open(outfile, fmWrite)
     defer: close(file)
