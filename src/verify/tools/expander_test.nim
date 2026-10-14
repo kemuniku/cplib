@@ -1,12 +1,6 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import os, strutils
 
-# verify-helperの依存追跡用。実際のexpanderは別プロセスでコンパイルする。
-when false:
-    import "../tools/expander/expander.nim"
-    import "../tools/expander/compression.nim"
-    import "../tools/expander/declare_commandline_option.nim"
-
 const repoRoot = currentSourcePath().parentDir.parentDir.parentDir.parentDir
 
 proc runCommand(command, directory: string): string {.compileTime.} =
