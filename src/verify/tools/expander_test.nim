@@ -5,6 +5,7 @@ import os, strutils
 when false:
     import "../tools/expander/expander.nim"
     import "../tools/expander/compression.nim"
+    import "../tools/expander/binary.nim"
     import "../tools/expander/declare_commandline_option.nim"
 
 const repoRoot = currentSourcePath().parentDir.parentDir.parentDir.parentDir
