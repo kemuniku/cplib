@@ -34,14 +34,14 @@ data:
     \ 0..<m:\n    let a = ii()\n    let b = ii()\n    g.add_edge(a, b)\necho g.matching()\n\
     for (a, b) in g.get_matching():\n    echo a, \" \", b\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/hopcroft_karp.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/hopcroft_karp.nim
   isVerificationFile: true
   path: verify/graph/hopcroft_karp_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 03:10:25+09:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/hopcroft_karp_test.nim

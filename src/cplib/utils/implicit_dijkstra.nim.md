@@ -15,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/implicit_dijkstra_test.nim
     title: verify/AI/implicit_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -27,80 +33,155 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_IMPLICIT_DIJKSTRA:\n    const CPLIB_UTILS_IMPLICIT_DIJKSTRA*\
-    \ = 1\n\n    import algorithm, heapqueue, tables\n    import cplib/utils/constants\n\
-    \n    type\n        ImplicitDijkstraAdjacent*[T] = proc(v: T): seq[(T, int)] {.closure.}\n\
-    \        ImplicitDijkstraFinish*[T] = proc(v: T): bool {.closure.}\n\n    proc\
-    \ restore_implicit_dijkstra*[T](start: T, adjacent: ImplicitDijkstraAdjacent[T]):\
-    \ tuple[costs: Table[T, int], prev: Table[T, T]] =\n        ## `adjacent(v)` \u3067\
-    \u8FBA\u3092\u5217\u6319\u3059\u308B\u3001\u9802\u70B9\u96C6\u5408\u3092\u660E\
-    \u793A\u3057\u306A\u3044\u30B0\u30E9\u30D5\u4E0A\u306E\n        ## Dijkstra \u6CD5\
-    \u3002\u975E\u8CA0\u8FBA\u3092\u4EEE\u5B9A\u3057\u3001\u5230\u9054\u53EF\u80FD\
-    \u306A\u9802\u70B9\u3092\u3059\u3079\u3066\u63A2\u7D22\u3059\u308B\u3002\n   \
-    \     var\n            queue = initHeapQueue[(int, int)]()\n            vertices\
-    \ = @[start]\n            vertexIds = initTable[T, int]()\n        result.costs\
-    \ = initTable[T, int]()\n        result.prev = initTable[T, T]()\n        vertexIds[start]\
-    \ = 0\n        result.costs[start] = 0\n        queue.push((0, 0))\n\n       \
-    \ while queue.len > 0:\n            let (cost, vertexId) = queue.pop()\n     \
-    \       let vertex = vertices[vertexId]\n            if cost != result.costs[vertex]:\n\
-    \                continue\n            for (next, edgeCost) in adjacent(vertex):\n\
-    \                let nextCost = cost + edgeCost\n                if not result.costs.hasKey(next)\
-    \ or nextCost < result.costs[next]:\n                    if not vertexIds.hasKey(next):\n\
-    \                        vertexIds[next] = vertices.len\n                    \
-    \    vertices.add(next)\n                    result.costs[next] = nextCost\n \
-    \                   result.prev[next] = vertex\n                    queue.push((nextCost,\
-    \ vertexIds[next]))\n\n    proc implicit_dijkstra*[T](start: T, adjacent: ImplicitDijkstraAdjacent[T]):\
-    \ Table[T, int] =\n        ## \u59CB\u70B9\u304B\u3089\u5230\u9054\u53EF\u80FD\
-    \u306A\u5404\u9802\u70B9\u307E\u3067\u306E\u6700\u77ED\u8DDD\u96E2\u3092\u8FD4\
-    \u3059\u3002\n        ## \u5230\u9054\u4E0D\u80FD\u306A\u9802\u70B9\u306F\u8FD4\
-    \u308A\u5024\u306E Table \u306B\u542B\u307E\u308C\u306A\u3044\u3002\n        restore_implicit_dijkstra(start,\
-    \ adjacent).costs\n\n    proc implicit_dijkstra_until*[T](start: T, adjacent:\
-    \ ImplicitDijkstraAdjacent[T], finish: ImplicitDijkstraFinish[T], INF: int = INF64):\
-    \ int =\n        ## \u975E\u8CA0\u8FBA\u3092\u4EEE\u5B9A\u3057\u3001\u6700\u77ED\
-    \u8DDD\u96E2\u304C\u78BA\u5B9A\u3057\u305F\u9802\u70B9\u304C\u521D\u3081\u3066\
-    \ `finish` \u3092\n        ## \u6E80\u305F\u3057\u305F\u3068\u304D\u3001\u305D\
-    \u306E\u9802\u70B9\u307E\u3067\u306E\u30B3\u30B9\u30C8\u3092\u8FD4\u3059\u3002\
-    \n        var\n            queue = initHeapQueue[(int, int)]()\n            vertices\
-    \ = @[start]\n            vertexIds = initTable[T, int]()\n            costs =\
-    \ initTable[T, int]()\n        vertexIds[start] = 0\n        costs[start] = 0\n\
-    \        queue.push((0, 0))\n\n        while queue.len > 0:\n            let (cost,\
-    \ vertexId) = queue.pop()\n            let vertex = vertices[vertexId]\n     \
-    \       if cost != costs[vertex]:\n                continue\n            if finish(vertex):\n\
-    \                return cost\n            for (next, edgeCost) in adjacent(vertex):\n\
-    \                let nextCost = cost + edgeCost\n                if not costs.hasKey(next)\
-    \ or nextCost < costs[next]:\n                    if not vertexIds.hasKey(next):\n\
-    \                        vertexIds[next] = vertices.len\n                    \
-    \    vertices.add(next)\n                    costs[next] = nextCost\n        \
-    \            queue.push((nextCost, vertexIds[next]))\n\n        return INF\n\n\
-    \    proc shortest_path_implicit_dijkstra*[T](start, goal: T, adjacent: ImplicitDijkstraAdjacent[T],\
-    \ INF: int = INF64): tuple[path: seq[T], cost: int] =\n        ## \u975E\u8CA0\
-    \u8FBA\u3092\u4EEE\u5B9A\u3057\u3001`goal` \u306E\u6700\u77ED\u8DDD\u96E2\u304C\
-    \u78BA\u5B9A\u3057\u305F\u6642\u70B9\u3067\u63A2\u7D22\u3092\u7D42\u4E86\u3059\
-    \u308B\u3002\n        var\n            queue = initHeapQueue[(int, int)]()\n \
-    \           vertices = @[start]\n            vertexIds = initTable[T, int]()\n\
-    \            costs = initTable[T, int]()\n            prev = initTable[T, T]()\n\
-    \        vertexIds[start] = 0\n        costs[start] = 0\n        queue.push((0,\
-    \ 0))\n\n        while queue.len > 0:\n            let (cost, vertexId) = queue.pop()\n\
-    \            let vertex = vertices[vertexId]\n            if cost != costs[vertex]:\n\
-    \                continue\n            if vertex == goal:\n                result.cost\
-    \ = cost\n                var current = goal\n                result.path.add(current)\n\
-    \                while current != start:\n                    current = prev[current]\n\
-    \                    result.path.add(current)\n                result.path.reverse()\n\
+    \ = 1\n\n    import algorithm, heapqueue, tables, sets\n    import cplib/utils/constants\n\
+    \n    # \u72B6\u614B\u306F hash \u3068 == \u304C\u5229\u7528\u3067\u304D\u3001\
+    \u63A2\u7D22\u4E2D\u306B\u5024\u304C\u5909\u5316\u3057\u306A\u3044\u3053\u3068\
+    \u3092\u4EEE\u5B9A\u3059\u308B\u3002\n    # \u8FBA\u306E\u91CD\u307F\u306F\u975E\
+    \u8CA0\u3001\u52A0\u7B97\u3059\u308B\u8DDD\u96E2\u306F int \u306E\u7BC4\u56F2\u5185\
+    \u3067\u3042\u308B\u3053\u3068\u3092\u4EEE\u5B9A\u3059\u308B\u3002\n    # \u5168\
+    \u63A2\u7D22\u3067\u306F\u5230\u9054\u7BC4\u56F2\u304C\u6709\u9650\u3001\u9014\
+    \u4E2D\u7D42\u4E86\u3067\u306F\u7D42\u4E86\u307E\u3067\u306E\u63A2\u7D22\u304C\
+    \u6709\u9650\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\u3002\n    # V \u306F\
+    \u63A2\u7D22\u9802\u70B9\u6570\u3001E \u306F\u5217\u6319\u8FBA\u6570\u3001S \u306F\
+    \u59CB\u70B9\u5217\u306E\u9577\u3055\u3068\u3059\u308B\u3002\n    # hash/\u6BD4\
+    \u8F03/\u5404\u8FBA\u306E\u751F\u6210\u304C\u5B9A\u6570\u6642\u9593\u306A\u3089\
+    \u671F\u5F85\u6642\u9593 O(S + (V + E) log(V + E + 2))\u3001\u7A7A\u9593 O(V +\
+    \ E)\u3002\n\n    type\n        ImplicitDijkstraAdjacent*[T] = proc(v: T): seq[(T,\
+    \ int)] {.closure.}\n        ImplicitDijkstraFinish*[T] = proc(v: T): bool {.closure.}\n\
+    \n    proc restore_implicit_dijkstra*[T](start: openArray[T], adjacent: ImplicitDijkstraAdjacent[T]):\
+    \ tuple[costs: Table[T, int], prev: Table[T, T]] =\n        ## \u5404\u59CB\u70B9\
+    \u306E\u8DDD\u96E2\u3092 0 \u3068\u3057\u3066 Dijkstra \u6CD5\u3067\u5230\u9054\
+    \u7BC4\u56F2\u3092\u63A2\u7D22\u3057\u3001\u8DDD\u96E2\u3068\u89AA\u3092\u8FD4\
+    \u3059\u3002\n        ## \u91CD\u8907\u59CB\u70B9\u306F\u7121\u8996\u3057\u3001\
+    \u59CB\u70B9\u306F prev \u306B\u542B\u3081\u306A\u3044\u3002\u7A7A\u59CB\u70B9\
+    \u306A\u3089\u4E21 Table \u306F\u7A7A\u3002\n        var\n            queue =\
+    \ initHeapQueue[(int, int)]()\n            vertices: seq[T]\n            vertexIds\
+    \ = initTable[T, int]()\n        result.costs = initTable[T, int]()\n        result.prev\
+    \ = initTable[T, T]()\n        for s in start:\n            if result.costs.hasKey(s):\n\
+    \                continue\n            vertexIds[s] = vertices.len\n         \
+    \   vertices.add(s)\n            result.costs[s] = 0\n            queue.push((0,\
+    \ vertexIds[s]))\n\n        while queue.len > 0:\n            let (cost, vertexId)\
+    \ = queue.pop()\n            let vertex = vertices[vertexId]\n            if cost\
+    \ != result.costs[vertex]:\n                continue\n            for (next, edgeCost)\
+    \ in adjacent(vertex):\n                let nextCost = cost + edgeCost\n     \
+    \           if not result.costs.hasKey(next) or nextCost < result.costs[next]:\n\
+    \                    if not vertexIds.hasKey(next):\n                        vertexIds[next]\
+    \ = vertices.len\n                        vertices.add(next)\n               \
+    \     result.costs[next] = nextCost\n                    result.prev[next] = vertex\n\
+    \                    queue.push((nextCost, vertexIds[next]))\n\n    proc implicit_dijkstra*[T](start:\
+    \ openArray[T], adjacent: ImplicitDijkstraAdjacent[T]): Table[T, int] =\n    \
+    \    ## \u5404\u59CB\u70B9\u304B\u3089\u5230\u9054\u53EF\u80FD\u306A\u5404\u9802\
+    \u70B9\u307E\u3067\u306E\u6700\u77ED\u8DDD\u96E2\u306E\u6700\u5C0F\u5024\u3092\
+    \u8FD4\u3059\u3002\n        ## \u5230\u9054\u4E0D\u80FD\u306A\u9802\u70B9\u306F\
+    \u8FD4\u308A\u5024\u306E Table \u306B\u542B\u307E\u308C\u306A\u3044\u3002\n  \
+    \      restore_implicit_dijkstra(start, adjacent).costs\n\n    proc implicit_dijkstra_until*[T](start:\
+    \ openArray[T], adjacent: ImplicitDijkstraAdjacent[T], finish: ImplicitDijkstraFinish[T],\
+    \ INF: int = INF64): int =\n        ## \u6700\u77ED\u8DDD\u96E2\u304C\u78BA\u5B9A\
+    \u3057\u305F\u9802\u70B9\u304C\u521D\u3081\u3066 finish \u3092\u6E80\u305F\u3057\
+    \u305F\u3068\u304D\u3001\u305D\u306E\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n   \
+    \     ## \u59CB\u70B9\u3082\u5224\u5B9A\u3057\u3001\u8A72\u5F53\u9802\u70B9\u304C\
+    \u306A\u3044\u5834\u5408\uFF08\u7A7A\u59CB\u70B9\u3092\u542B\u3080\uFF09\u306F\
+    \ INF \u3092\u8FD4\u3059\u3002\n        var\n            queue = initHeapQueue[(int,\
+    \ int)]()\n            vertices: seq[T]\n            vertexIds = initTable[T,\
+    \ int]()\n            costs = initTable[T, int]()\n        for s in start:\n \
+    \           if costs.hasKey(s):\n                continue\n            vertexIds[s]\
+    \ = vertices.len\n            vertices.add(s)\n            costs[s] = 0\n    \
+    \        queue.push((0, vertexIds[s]))\n\n        while queue.len > 0:\n     \
+    \       let (cost, vertexId) = queue.pop()\n            let vertex = vertices[vertexId]\n\
+    \            if cost != costs[vertex]:\n                continue\n           \
+    \ if finish(vertex):\n                return cost\n            for (next, edgeCost)\
+    \ in adjacent(vertex):\n                let nextCost = cost + edgeCost\n     \
+    \           if not costs.hasKey(next) or nextCost < costs[next]:\n           \
+    \         if not vertexIds.hasKey(next):\n                        vertexIds[next]\
+    \ = vertices.len\n                        vertices.add(next)\n               \
+    \     costs[next] = nextCost\n                    queue.push((nextCost, vertexIds[next]))\n\
+    \n        return INF\n\n    proc shortest_path_implicit_dijkstra*[T](start: openArray[T],\
+    \ goal: openArray[T], adjacent: ImplicitDijkstraAdjacent[T], INF: int = INF64):\
+    \ tuple[path: seq[T], cost: int] =\n        ## \u3044\u305A\u308C\u304B\u306E\
+    \ goal \u306B\u6700\u3082\u8FD1\u3044\u59CB\u70B9\u304B\u3089\u306E\u7D4C\u8DEF\
+    \u3068\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n        ## \u6700\u77ED\u8DDD\u96E2\
+    \u78BA\u5B9A\u6642\u306B\u7D42\u4E86\u3059\u308B\u3002\u5230\u9054\u4E0D\u80FD\
+    \u306F (\u7A7A\u7D4C\u8DEF, INF)\u3001\u7A7A\u7D42\u70B9\u306A\u3089\u63A2\u7D22\
+    \u3057\u306A\u3044\u3002\n        ## \u7D42\u70B9\u6570 G \u306E\u96C6\u5408\u5316\
+    \u306B\u671F\u5F85\u6642\u9593\u30FB\u7A7A\u9593 O(G)\u3001\u7D42\u70B9\u5224\u5B9A\
+    \u306B\u671F\u5F85 O(1) \u3092\u8FFD\u52A0\u3059\u308B\u3002\n        ## \u91CD\
+    \u8907\u7D42\u70B9\u306F\u7121\u8996\u3057\u3001\u540C\u8DDD\u96E2\u306E\u7D42\
+    \u70B9\u30FB\u7D4C\u8DEF\u306E\u9078\u629E\u306F\u4FDD\u8A3C\u3057\u306A\u3044\
+    \u3002\n        if goal.len == 0:\n            return (@[], INF)\n        var\
+    \ goals = initHashSet[T]()\n        for g in goal:\n            goals.incl(g)\n\
+    \        var\n            queue = initHeapQueue[(int, int)]()\n            vertices:\
+    \ seq[T]\n            vertexIds = initTable[T, int]()\n            costs = initTable[T,\
+    \ int]()\n            prev = initTable[T, T]()\n        for s in start:\n    \
+    \        if costs.hasKey(s):\n                continue\n            vertexIds[s]\
+    \ = vertices.len\n            vertices.add(s)\n            costs[s] = 0\n    \
+    \        queue.push((0, vertexIds[s]))\n\n        while queue.len > 0:\n     \
+    \       let (cost, vertexId) = queue.pop()\n            let vertex = vertices[vertexId]\n\
+    \            if cost != costs[vertex]:\n                continue\n           \
+    \ if vertex in goals:\n                result.cost = cost\n                var\
+    \ current = vertex\n                result.path.add(current)\n               \
+    \ while prev.hasKey(current):\n                    current = prev[current]\n \
+    \                   result.path.add(current)\n                result.path.reverse()\n\
     \                return\n            for (next, edgeCost) in adjacent(vertex):\n\
     \                let nextCost = cost + edgeCost\n                if not costs.hasKey(next)\
     \ or nextCost < costs[next]:\n                    if not vertexIds.hasKey(next):\n\
     \                        vertexIds[next] = vertices.len\n                    \
     \    vertices.add(next)\n                    costs[next] = nextCost\n        \
     \            prev[next] = vertex\n                    queue.push((nextCost, vertexIds[next]))\n\
-    \n        result.cost = INF\n        result.path = @[]\n"
+    \n        result.cost = INF\n        result.path = @[]\n\n    proc shortest_path_implicit_dijkstra*[T](start:\
+    \ openArray[T], goal: T, adjacent: ImplicitDijkstraAdjacent[T], INF: int = INF64):\
+    \ tuple[path: seq[T], cost: int] =\n        ## \u591A\u59CB\u70B9\u30FB\u5358\u4E00\
+    \u7D42\u70B9\u7248\u3002\u6700\u3082\u8FD1\u3044\u59CB\u70B9\u304B\u3089\u306E\
+    \u7D4C\u8DEF\u3068\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n        shortest_path_implicit_dijkstra(start,\
+    \ [goal], adjacent, INF)\n\n    proc shortest_path_implicit_dijkstra*[T](start:\
+    \ T, goal: openArray[T], adjacent: ImplicitDijkstraAdjacent[T], INF: int = INF64):\
+    \ tuple[path: seq[T], cost: int] =\n        ## \u5358\u4E00\u59CB\u70B9\u30FB\u591A\
+    \u7D42\u70B9\u7248\u3002\u6700\u3082\u8FD1\u3044\u7D42\u70B9\u307E\u3067\u306E\
+    \u7D4C\u8DEF\u3068\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n        shortest_path_implicit_dijkstra([start],\
+    \ goal, adjacent, INF)\n\n    proc restore_implicit_dijkstra*[T](start: T, adjacent:\
+    \ ImplicitDijkstraAdjacent[T]): tuple[costs: Table[T, int], prev: Table[T, T]]\
+    \ =\n        ## \u5358\u4E00\u59CB\u70B9\u7248\u3002\u8DDD\u96E2\u30FB\u5FA9\u5143\
+    \u30FB\u7D42\u4E86\u6761\u4EF6\u306F\u591A\u59CB\u70B9\u7248\u3068\u540C\u3058\
+    \u3002\n        restore_implicit_dijkstra([start], adjacent)\n\n    proc implicit_dijkstra*[T](start:\
+    \ T, adjacent: ImplicitDijkstraAdjacent[T]): Table[T, int] =\n        ## \u5358\
+    \u4E00\u59CB\u70B9\u7248\u3002\u8DDD\u96E2\u30FB\u5FA9\u5143\u30FB\u7D42\u4E86\
+    \u6761\u4EF6\u306F\u591A\u59CB\u70B9\u7248\u3068\u540C\u3058\u3002\n        implicit_dijkstra([start],\
+    \ adjacent)\n\n    proc implicit_dijkstra_until*[T](start: T, adjacent: ImplicitDijkstraAdjacent[T],\
+    \ finish: ImplicitDijkstraFinish[T], INF: int = INF64): int =\n        ## \u5358\
+    \u4E00\u59CB\u70B9\u7248\u3002\u8DDD\u96E2\u30FB\u5FA9\u5143\u30FB\u7D42\u4E86\
+    \u6761\u4EF6\u306F\u591A\u59CB\u70B9\u7248\u3068\u540C\u3058\u3002\n        implicit_dijkstra_until([start],\
+    \ adjacent, finish, INF)\n\n    proc shortest_path_implicit_dijkstra*[T](start,\
+    \ goal: T, adjacent: ImplicitDijkstraAdjacent[T], INF: int = INF64): tuple[path:\
+    \ seq[T], cost: int] =\n        ## \u5358\u4E00\u59CB\u70B9\u7248\u3002\u8DDD\u96E2\
+    \u30FB\u5FA9\u5143\u30FB\u7D42\u4E86\u6761\u4EF6\u306F\u591A\u59CB\u70B9\u7248\
+    \u3068\u540C\u3058\u3002\n        shortest_path_implicit_dijkstra([start], goal,\
+    \ adjacent, INF)\n\n    proc implicit_dijkstra_until*[T](start: openArray[T],\
+    \ adjacent: ImplicitDijkstraAdjacent[T], finish: openArray[T], INF: int = INF64):\
+    \ int =\n        ## \u3044\u305A\u308C\u304B\u306E\u7D42\u70B9 finish \u3078\u306E\
+    \u6700\u77ED\u8DDD\u96E2\u304C\u78BA\u5B9A\u3057\u305F\u6642\u70B9\u3067\u7D42\
+    \u4E86\u3057\u3001\u305D\u306E\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n        ##\
+    \ \u7D42\u70B9\u6570 G \u306E\u96C6\u5408\u5316\u306B\u671F\u5F85\u6642\u9593\u30FB\
+    \u7A7A\u9593 O(G)\u3001\u5224\u5B9A\u306B\u671F\u5F85 O(1) \u3092\u8FFD\u52A0\u3059\
+    \u308B\u3002\n        ## \u91CD\u8907\u7D42\u70B9\u306F\u7121\u8996\u3057\u3001\
+    \u7A7A\u7D42\u70B9\u306A\u3089\u63A2\u7D22\u305B\u305A INF \u3092\u8FD4\u3059\u3002\
+    \n        if finish.len == 0:\n            return INF\n        var goals = initHashSet[T]()\n\
+    \        for g in finish:\n            goals.incl(g)\n        let predicate: ImplicitDijkstraFinish[T]\
+    \ = proc(v: T): bool = v in goals\n        implicit_dijkstra_until(start, adjacent,\
+    \ predicate, INF)\n\n    proc implicit_dijkstra_until*[T](start: T, adjacent:\
+    \ ImplicitDijkstraAdjacent[T], finish: openArray[T], INF: int = INF64): int =\n\
+    \        ## \u5358\u4E00\u59CB\u70B9\u30FB\u591A\u7D42\u70B9\u7248\u3002\u6700\
+    \u3082\u8FD1\u3044\u7D42\u70B9\u3078\u306E\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\
+    \n        implicit_dijkstra_until([start], adjacent, finish, INF)\n"
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/utils/implicit_dijkstra.nim
   requiredBy: []
-  timestamp: '2026-09-08 06:52:02+09:00'
+  timestamp: '2026-10-05 12:14:47+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
   - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/implicit_dijkstra_test.nim
 documentation_of: cplib/utils/implicit_dijkstra.nim

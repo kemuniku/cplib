@@ -736,6 +736,18 @@ data:
     path: verify/AI/hld_forest_test.nim
     title: verify/AI/hld_forest_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_bfs_test.nim
+    title: verify/AI/implicit_bfs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_bfs_test.nim
+    title: verify/AI/implicit_bfs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_dijkstra_test.nim
+    title: verify/AI/implicit_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_dijkstra_test.nim
+    title: verify/AI/implicit_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/itertools_enumeration_test.nim
     title: verify/AI/itertools_enumeration_test.nim
   - icon: ':heavy_check_mark:'
@@ -1932,6 +1944,10 @@ data:
   - verify/AI/graph_debug_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
+  - verify/AI/implicit_bfs_test.nim
+  - verify/AI/implicit_bfs_test.nim
+  - verify/AI/implicit_dijkstra_test.nim
+  - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/aho_corasick_test.nim
   - verify/AI/aho_corasick_test.nim
   - verify/AI/warshall_floyd_avx512_test.nim

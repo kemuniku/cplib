@@ -76,20 +76,20 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/berlekamp_massey.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/berlekamp_massey.nim
   isVerificationFile: true
   path: verify/fps/find_linear_recurrence_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps/find_linear_recurrence_test.nim

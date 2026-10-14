@@ -116,12 +116,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep_interactive.nim
+    title: cplib/tmpl/sheep_interactive.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep_interactive.nim
+    title: cplib/tmpl/sheep_interactive.nim
   - icon: ':warning:'
     path: cplib/tmpl/sheep_old.nim
     title: cplib/tmpl/sheep_old.nim
   - icon: ':warning:'
     path: cplib/tmpl/sheep_old.nim
     title: cplib/tmpl/sheep_old.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/implicit_bfs.nim
+    title: cplib/utils/implicit_bfs.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/implicit_bfs.nim
+    title: cplib/utils/implicit_bfs.nim
   - icon: ':heavy_check_mark:'
     path: cplib/utils/implicit_dijkstra.nim
     title: cplib/utils/implicit_dijkstra.nim
@@ -226,6 +238,12 @@ data:
     path: verify/AI/dijkstra_test.nim
     title: verify/AI/dijkstra_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fastio_interactive_test.nim
+    title: verify/AI/fastio_interactive_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fastio_interactive_test.nim
+    title: verify/AI/fastio_interactive_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/graph_edge_id_test.nim
     title: verify/AI/graph_edge_id_test.nim
   - icon: ':heavy_check_mark:'
@@ -243,6 +261,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_bfs_test.nim
+    title: verify/AI/implicit_bfs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_bfs_test.nim
+    title: verify/AI/implicit_bfs_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/implicit_dijkstra_test.nim
     title: verify/AI/implicit_dijkstra_test.nim
@@ -537,6 +561,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/backwards_index_collections_test.nim
     title: verify/utils/backwards_index_collections_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_bfs_tree_diameter_test.nim
+    title: verify/utils/implicit_bfs_tree_diameter_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_bfs_tree_diameter_test.nim
+    title: verify/utils/implicit_bfs_tree_diameter_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/knapsack/bounded_zero_count_test.nim
     title: verify/utils/knapsack/bounded_zero_count_test.nim
@@ -638,6 +674,8 @@ data:
   - cplib/graph/maxk_dijkstra.nim
   - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/implicit_dijkstra.nim
+  - cplib/utils/implicit_bfs.nim
+  - cplib/utils/implicit_bfs.nim
   - cplib/utils/knapsack.nim
   - cplib/utils/knapsack.nim
   - cplib/collections/segtree_beats_template.nim
@@ -652,6 +690,8 @@ data:
   - cplib/tmpl/citrus.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep_interactive.nim
+  - cplib/tmpl/sheep_interactive.nim
   - cplib/tmpl/sheep_old.nim
   - cplib/tmpl/sheep_old.nim
   timestamp: '2025-03-09 17:42:58+09:00'
@@ -683,8 +723,12 @@ data:
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
   - verify/utils/knapsack/bounded_zero_count_test.nim
   - verify/utils/knapsack/bounded_zero_count_test.nim
   - verify/utils/knapsack/solve_01knapsack_NW_test.nim
@@ -729,10 +773,14 @@ data:
   - verify/AI/dijkstra_test.nim
   - verify/AI/tsp_test.nim
   - verify/AI/tsp_test.nim
+  - verify/AI/fastio_interactive_test.nim
+  - verify/AI/fastio_interactive_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/constants_test.nim
   - verify/AI/constants_test.nim
+  - verify/AI/implicit_bfs_test.nim
+  - verify/AI/implicit_bfs_test.nim
   - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/warshall_floyd_avx512_test.nim

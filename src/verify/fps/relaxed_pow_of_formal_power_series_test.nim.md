@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -78,28 +84,30 @@ data:
     \ = newSeq[Mint](n)\nfor i in 0..<n:\n    result[i] = power.add(Mint(ii()))\n\
     echo result.join(\" \")\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/ntt.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/fps/relaxed_pow_of_formal_power_series_test.nim
   requiredBy: []
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps/relaxed_pow_of_formal_power_series_test.nim

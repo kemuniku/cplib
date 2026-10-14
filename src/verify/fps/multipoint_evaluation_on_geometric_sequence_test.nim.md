@@ -95,26 +95,26 @@ data:
 
     '
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
+  - cplib/fps/chirp_z.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/chirp_z.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/fps/chirp_z.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/chirp_z.nim
   isVerificationFile: true
   path: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim
   requiredBy: []
-  timestamp: '2026-10-05 00:27:38+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps/multipoint_evaluation_on_geometric_sequence_test.nim

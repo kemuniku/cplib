@@ -48,17 +48,17 @@ data:
     \ bounds.q, bounds.r, bounds.s)\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/graph/graph.nim
   - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/math/fractions.nim
+  - cplib/math/stern_brocot_tree.nim
   - cplib/tmpl/fastio.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/math/fractions.nim
-  - cplib/math/stern_brocot_tree.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_rational_approximation_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 06:31:44+09:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/stern_brocot_tree_rational_approximation_test.nim

@@ -472,6 +472,12 @@ data:
     path: verify/AI/QSWAG_test.nim
     title: verify/AI/QSWAG_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/SWAG_newswagwith_test.nim
+    title: verify/AI/SWAG_newswagwith_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/SWAG_newswagwith_test.nim
+    title: verify/AI/SWAG_newswagwith_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/SWAG_test.nim
     title: verify/AI/SWAG_test.nim
   - icon: ':heavy_check_mark:'
@@ -1632,6 +1638,8 @@ data:
   - verify/AI/bitset_avx512_prev_set_bit_test.nim
   - verify/AI/bitset_test.nim
   - verify/AI/bitset_test.nim
+  - verify/AI/SWAG_newswagwith_test.nim
+  - verify/AI/SWAG_newswagwith_test.nim
   - verify/AI/range_sort_array_test.nim
   - verify/AI/range_sort_array_test.nim
   - verify/AI/static_string_sort_test.nim

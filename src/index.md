@@ -290,8 +290,14 @@ data:
   - name: cplib/convolution
     pages:
     - icon: ':heavy_check_mark:'
+      path: cplib/convolution/algorithm_ntt.nim
+      title: cplib/convolution/algorithm_ntt.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/convolution/bitwise_and_convolution.nim
       title: cplib/convolution/bitwise_and_convolution.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/convolution/bitwise_or_convolution.nim
+      title: cplib/convolution/bitwise_or_convolution.nim
     - icon: ':heavy_check_mark:'
       path: cplib/convolution/convolution.nim
       title: cplib/convolution/convolution.nim
@@ -317,8 +323,19 @@ data:
       path: cplib/convolution/semi_relaxed_convolution.nim
       title: cplib/convolution/semi_relaxed_convolution.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/convolution/set_transform.nim
+      title: cplib/convolution/set_transform.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/convolution/subset_convolution.nim
+      title: cplib/convolution/subset_convolution.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/convolution/xor_convolution.nim
       title: cplib/convolution/xor_convolution.nim
+  - name: cplib/convolution/private
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/convolution/private/subset_convolution_barrett.nim
+      title: cplib/convolution/private/subset_convolution_barrett.nim
   - name: cplib/fps
     pages:
     - icon: ':heavy_check_mark:'
@@ -711,6 +728,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/modint/montgomery_impl.nim
       title: cplib/modint/montgomery_impl.nim
+  - name: cplib/set_power_series
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: cplib/set_power_series/set_power_series.nim
+      title: cplib/set_power_series/set_power_series.nim
   - name: cplib/str
     pages:
     - icon: ':heavy_check_mark:'
@@ -811,6 +833,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/tmpl/sheep.nim
       title: cplib/tmpl/sheep.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/tmpl/sheep_interactive.nim
+      title: cplib/tmpl/sheep_interactive.nim
     - icon: ':warning:'
       path: cplib/tmpl/sheep_old.nim
       title: cplib/tmpl/sheep_old.nim
@@ -887,8 +912,14 @@ data:
       path: cplib/utils/constants.nim
       title: cplib/utils/constants.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/utils/count_subarrays_with_sum.nim
+      title: cplib/utils/count_subarrays_with_sum.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/cumsum2d.nim
       title: cplib/utils/cumsum2d.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/digit_dp.nim
+      title: cplib/utils/digit_dp.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/game.nim
       title: cplib/utils/game.nim
@@ -904,6 +935,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/imos2d.nim
       title: cplib/utils/imos2d.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/utils/implicit_bfs.nim
+      title: cplib/utils/implicit_bfs.nim
     - icon: ':heavy_check_mark:'
       path: cplib/utils/implicit_dijkstra.nim
       title: cplib/utils/implicit_dijkstra.nim
@@ -1405,6 +1439,12 @@ data:
       path: verify/utils/bititers_bitsuperset_test_.nim
       title: verify/utils/bititers_bitsuperset_test_.nim
     - icon: ':warning:'
+      path: verify/utils/count_subarrays_with_sum_test_.nim
+      title: verify/utils/count_subarrays_with_sum_test_.nim
+    - icon: ':warning:'
+      path: verify/utils/count_subarrays_with_sum_zero_test_.nim
+      title: verify/utils/count_subarrays_with_sum_zero_test_.nim
+    - icon: ':warning:'
       path: verify/utils/lis_arc126b_test_.nim
       title: verify/utils/lis_arc126b_test_.nim
     - icon: ':warning:'
@@ -1436,6 +1476,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/SCC_test.nim
       title: verify/AI/SCC_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/SWAG_newswagwith_test.nim
+      title: verify/AI/SWAG_newswagwith_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/SWAG_test.nim
       title: verify/AI/SWAG_test.nim
@@ -1599,6 +1642,9 @@ data:
       path: verify/AI/convolution_test.nim
       title: verify/AI/convolution_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/count_subarrays_with_sum_test.nim
+      title: verify/AI/count_subarrays_with_sum_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/count_topologicalsort_test.nim
       title: verify/AI/count_topologicalsort_test.nim
     - icon: ':heavy_check_mark:'
@@ -1688,6 +1734,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/factoradic_test.nim
       title: verify/AI/factoradic_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/fastio_interactive_test.nim
+      title: verify/AI/fastio_interactive_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/fastio_io_test.nim
       title: verify/AI/fastio_io_test.nim
@@ -1808,6 +1857,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/imos2d_test.nim
       title: verify/AI/imos2d_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/implicit_bfs_test.nim
+      title: verify/AI/implicit_bfs_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/implicit_dijkstra_test.nim
       title: verify/AI/implicit_dijkstra_test.nim
@@ -2423,6 +2475,9 @@ data:
   - name: verify/collections/defaultdict
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/collections/defaultdict/defaultdict_get_test.nim
+      title: verify/collections/defaultdict/defaultdict_get_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/defaultdict/defaultdict_unit_test.nim
       title: verify/collections/defaultdict/defaultdict_unit_test.nim
   - name: verify/collections/dualsegtree
@@ -2537,8 +2592,37 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/segtree_var/segtree_static_test.nim
       title: verify/collections/segtree_var/segtree_static_test.nim
+  - name: verify/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/bitwise_or_convolution_test.nim
+      title: verify/convolution/bitwise_or_convolution_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
+      title: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
+      title: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
+      title: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/min_plus_convolution_convex_convex_test.nim
+      title: verify/convolution/min_plus_convolution_convex_convex_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/relaxed_convolution_test.nim
+      title: verify/convolution/relaxed_convolution_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/xor_convolution_boundary_test.nim
+      title: verify/convolution/xor_convolution_boundary_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/xor_convolution_test.nim
+      title: verify/convolution/xor_convolution_test.nim
   - name: verify/convolution/convolution
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+      title: verify/convolution/convolution/convolution_cyclic_regression_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
       title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
@@ -2563,37 +2647,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/convolution/convolution/convolution_static_montgomery_test.nim
       title: verify/convolution/convolution/convolution_static_montgomery_test.nim
-  - name: verify/convolution
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-      title: verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-      title: verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-      title: verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/convolution/min_plus_convolution_convex_convex_test.nim
-      title: verify/convolution/min_plus_convolution_convex_convex_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/convolution/relaxed_convolution_test.nim
-      title: verify/convolution/relaxed_convolution_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/convolution/xor_convolution_boundary_test.nim
-      title: verify/convolution/xor_convolution_boundary_test.nim
-    - icon: ':heavy_check_mark:'
-      path: verify/convolution/xor_convolution_test.nim
-      title: verify/convolution/xor_convolution_test.nim
   - name: verify/fps
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/fps/algorithm_ntt_regression_test.nim
+      title: verify/fps/algorithm_ntt_regression_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/fps/composition_of_formal_power_series_large_test.nim
       title: verify/fps/composition_of_formal_power_series_large_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/fps/composition_of_formal_power_series_test.nim
       title: verify/fps/composition_of_formal_power_series_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/fps/composition_regression_test.nim
+      title: verify/fps/composition_regression_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
       title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
@@ -2893,6 +2960,9 @@ data:
       path: verify/math/addition_of_big_integers_test.nim
       title: verify/math/addition_of_big_integers_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/math/barrett_unsigned_test.nim
+      title: verify/math/barrett_unsigned_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/math/bigint_bitops_unit_test.nim
       title: verify/math/bigint_bitops_unit_test.nim
     - icon: ':heavy_check_mark:'
@@ -3162,6 +3232,29 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/modint/montgomery_equality_test.nim
       title: verify/modint/montgomery_equality_test.nim
+  - name: verify/set_power_series
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/set_power_series/exp_of_set_power_series_test.nim
+      title: verify/set_power_series/exp_of_set_power_series_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/set_power_series/log_of_set_power_series_test.nim
+      title: verify/set_power_series/log_of_set_power_series_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/set_power_series/polynomial_composite_set_power_series_test.nim
+      title: verify/set_power_series/polynomial_composite_set_power_series_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/set_power_series/power_projection_of_set_power_series_test.nim
+      title: verify/set_power_series/power_projection_of_set_power_series_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/set_power_series/set_power_series_regression_test.nim
+      title: verify/set_power_series/set_power_series_regression_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/set_power_series/subset_convolution_regression_test.nim
+      title: verify/set_power_series/subset_convolution_regression_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/set_power_series/subset_convolution_test.nim
+      title: verify/set_power_series/subset_convolution_test.nim
   - name: verify/str/can_reverse_hash_string
     pages:
     - icon: ':heavy_check_mark:'
@@ -3301,6 +3394,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/tmpl/replayable_input_many_aplusb_test.nim
       title: verify/tmpl/replayable_input_many_aplusb_test.nim
+  - name: verify/tools
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/tools/expander_test.nim
+      title: verify/tools/expander_test.nim
   - name: verify/tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -3402,6 +3500,15 @@ data:
       path: verify/utils/binary_search_int_test.nim
       title: verify/utils/binary_search_int_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/utils/digit_dp_callbacks_test.nim
+      title: verify/utils/digit_dp_callbacks_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/digit_dp_initial_state_test.nim
+      title: verify/utils/digit_dp_initial_state_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/digit_dp_test.nim
+      title: verify/utils/digit_dp_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/utils/game_grundy_test.nim
       title: verify/utils/game_grundy_test.nim
     - icon: ':heavy_check_mark:'
@@ -3413,6 +3520,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/game_warning_test.nim
       title: verify/utils/game_warning_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/implicit_bfs_tree_diameter_test.nim
+      title: verify/utils/implicit_bfs_tree_diameter_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+      title: verify/utils/implicit_dijkstra_shortest_path_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/inversion_number_test.nim
       title: verify/utils/inversion_number_test.nim

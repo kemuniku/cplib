@@ -33,7 +33,7 @@ data:
   isVerificationFile: false
   path: verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   requiredBy: []
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-10-04 21:25:36+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/defaultdict/defaultdict_abc348c_test_.nim

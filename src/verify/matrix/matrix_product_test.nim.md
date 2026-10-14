@@ -60,22 +60,22 @@ data:
     var B = newSeqWith(M,newSeqWith(K,mint(ii()))).toMatrix()\nvar C = A*B\nfor i\
     \ in 0..<N:\n    echo C[i].join(\" \")"
   dependsOn:
-  - cplib/matrix/matrix.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/matrix/matrix.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/matrix/matrix_product_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix/matrix_product_test.nim

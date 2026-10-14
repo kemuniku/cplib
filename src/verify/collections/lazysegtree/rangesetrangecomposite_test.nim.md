@@ -69,22 +69,22 @@ data:
     \ r, x = ii()\n        var (a, b, _) = seg[l..<r]\n        ans.add(a * x + b)\n\
     echo ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/utils/backwards_index.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/collections/lazysegtree.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/rangesetrangecomposite_test.nim

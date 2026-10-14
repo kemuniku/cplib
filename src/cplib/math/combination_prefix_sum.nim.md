@@ -70,9 +70,9 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/math/combination.nim
+  - cplib/math/combination.nim
   - cplib/utils/mo.nim
-  - cplib/math/combination.nim
-  - cplib/math/combination.nim
   - cplib/utils/mo.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim

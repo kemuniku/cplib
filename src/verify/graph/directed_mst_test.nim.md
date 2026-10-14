@@ -56,19 +56,19 @@ data:
     \ parents.join(\" \")\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/graph/directed_mst.nim
   - cplib/collections/lazy_leftist_heap.nim
+  - cplib/graph/graph.nim
+  - cplib/math/int128.nim
+  - cplib/collections/lazy_leftist_heap.nim
   - cplib/graph/directed_mst.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/math/int128.nim
   - cplib/tmpl/fastio.nim
-  - cplib/collections/lazy_leftist_heap.nim
-  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/graph/directed_mst_test.nim
   requiredBy: []
-  timestamp: '2026-10-04 00:13:01+00:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/directed_mst_test.nim

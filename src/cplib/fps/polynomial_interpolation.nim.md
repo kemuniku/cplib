@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -69,6 +75,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
@@ -183,7 +195,8 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_FPS_POLYNOMIAL_INTERPOLATION:\n    const CPLIB_FPS_POLYNOMIAL_INTERPOLATION*\
-    \ = 1\n\n    import cplib/fps/formal_power_series\n    import cplib/fps/product_tree\n\
+    \ = 1\n\n    import cplib/convolution/algorithm_ntt\n    import cplib/convolution/convolution\n\
+    \    import cplib/fps/formal_power_series\n    import cplib/fps/product_tree\n\
     \    import cplib/modint/modint\n\n    proc polynomialInterpolation*[T: BarrettModint\
     \ or MontgomeryModint](\n            xs, ys: seq[T]): seq[T] =\n        ## \u3059\
     \u3079\u3066\u306E\u70B9 (xs[i], ys[i]) \u3092\u901A\u308B\u3001\u6B21\u6570\u304C\
@@ -197,36 +210,50 @@ data:
     \ != 0, \"\u88DC\u9593\u306B\u4F7F\u3046\u70B9\u306Ex\u5EA7\u6A19\u306F\u4E92\u3044\
     \u306B\u7570\u306A\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n                partial[tree.leafCount\
     \ + i] = @[ys[i] / denominators[i]]\n            else:\n                partial[tree.leafCount\
-    \ + i] = @[]\n        for i in countdown(tree.leafCount - 1, 1):\n           \
-    \ partial[i] = partial[i * 2] * tree.nodes[i * 2 + 1] +\n                partial[i\
-    \ * 2 + 1] * tree.nodes[i * 2]\n        partial[1].prefix(xs.len)\n"
+    \ + i] = @[]\n        var first = tree.leafCount div 2\n        var size = 2\n\
+    \        while first > 0:\n            if size >= 128 and canUseMultipointTreeNtt(T.umod,\
+    \ size):\n                var context = initAlgorithmNtt(T.umod, size)\n     \
+    \           defer: context.close()\n                for i in first..<2 * first:\n\
+    \                    let left = context.spectrum(partial[2 * i])\n           \
+    \         let right = context.spectrum(partial[2 * i + 1])\n                 \
+    \   var product = context.spectrumProduct(left, context.spectrum(tree.nodes[2\
+    \ * i + 1]))\n                    context.addSpectrumProduct(product, right, context.spectrum(tree.nodes[2\
+    \ * i]))\n                    partial[i] = context.coefficients(product, 0, size,\
+    \ T)\n            else:\n                for i in first..<2 * first:\n       \
+    \             partial[i] = partial[i * 2] * tree.nodes[i * 2 + 1] +\n        \
+    \                partial[i * 2 + 1] * tree.nodes[i * 2]\n            first = first\
+    \ div 2\n            size *= 2\n        partial[1].prefix(xs.len)\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   - cplib/fps/product_tree.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/fps/product_tree.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: false
   path: cplib/fps/polynomial_interpolation.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim

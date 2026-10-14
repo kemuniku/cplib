@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tmpl/sheep.nim
     title: cplib/tmpl/sheep.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep_interactive.nim
+    title: cplib/tmpl/sheep_interactive.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep_interactive.nim
+    title: cplib/tmpl/sheep_interactive.nim
   - icon: ':warning:'
     path: verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
     title: verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
@@ -40,6 +46,12 @@ data:
     title: verify/str/merged_static_string.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fastio_interactive_test.nim
+    title: verify/AI/fastio_interactive_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fastio_interactive_test.nim
+    title: verify/AI/fastio_interactive_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fastio_io_test.nim
     title: verify/AI/fastio_io_test.nim
   - icon: ':heavy_check_mark:'
@@ -321,6 +333,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/area_of_union_of_rectangles_test.nim
     title: verify/utils/area_of_union_of_rectangles_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_bfs_tree_diameter_test.nim
+    title: verify/utils/implicit_bfs_tree_diameter_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_bfs_tree_diameter_test.nim
+    title: verify/utils/implicit_bfs_tree_diameter_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
     title: verify/utils/static_rectangle_add_rectangle_sum_test.nim
@@ -339,10 +363,14 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TMPL_FASTIO:\n    const CPLIB_TMPL_FASTIO* = 1\n\
-    \    {.passC: \"-mavx2\".}\n    # mmap\u306F\u660E\u793A\u6307\u5B9A\u6642\u306E\
-    \u307F\u4F7F\u7528\u3059\u308B\u3002\u65E7\u6765\u306E\u7121\u52B9\u5316\u6307\
-    \u5B9A\u3082\u512A\u5148\u3057\u3066\u5C0A\u91CD\u3059\u308B\u3002\n    when not\
-    \ defined(fastioMmap) or defined(fastioNoMmap):\n        {.passC: \"-DCPLIB_FASTIO_NO_MMAP\"\
+    \    {.passC: \"-mavx2\".}\n    # \u5BFE\u8A71\u30E2\u30FC\u30C9\u306F\u5148\u982D\
+    \u306E {.define: fastioInteractive.} \u307E\u305F\u306F -d:fastioInteractive \u3067\
+    \u6709\u52B9\u5316\u3059\u308B\u3002\n    when defined(fastioInteractive):\n \
+    \       {.passC: \"-DCPLIB_FASTIO_INTERACTIVE\".}\n    # mmap\u306F\u660E\u793A\
+    \u6307\u5B9A\u6642\u306E\u307F\u4F7F\u7528\u3057\u3001\u5BFE\u8A71\u30E2\u30FC\
+    \u30C9\u3068\u65E7\u6765\u306E\u7121\u52B9\u5316\u6307\u5B9A\u3092\u512A\u5148\
+    \u3059\u308B\u3002\n    when not defined(fastioMmap) or defined(fastioNoMmap)\
+    \ or defined(fastioInteractive):\n        {.passC: \"-DCPLIB_FASTIO_NO_MMAP\"\
     .}\n    import macros\n\n    # \u5165\u529B\u7CFB\uFF08C/C++\u5171\u901A\u3002\
     GCC/Clang\u3068AVX2\u5BFE\u5FDCCPU\u5411\u3051\uFF09\n    {.emit: \"\"\"\n#include\
     \ <stdio.h>\n#include <stddef.h>\n#include <stdint.h>\n#include <string.h>\n#include\
@@ -379,10 +407,15 @@ data:
     \ fd, 0);\n    if (p != MAP_FAILED) {\n      state->mapped = (const char*)p;\n\
     \      state->length = (size_t)(st.st_size);\n      madvise((char*)(state->mapped),\
     \ state->length,\n              MADV_SEQUENTIAL);\n    }\n  }\n#endif\n}\n\nstatic\
-    \ inline bool cplib_fio_refill(cplib_fio_InputState* state) {\n  state->length\
-    \ =\n      fread_unlocked(state->buffer, 1, cplib_fio_buffer_size, stdin);\n \
-    \ state->cursor = 0;\n  return state->length != 0;\n}\n\nstatic inline int cplib_fio_get_char(void)\
-    \ {\n  cplib_fio_InputState* state = cplib_fio_input_state();\n  if (CPLIB_FASTIO_UNLIKELY(!state->initialized))\
+    \ inline bool cplib_fio_refill(cplib_fio_InputState* state) {\n  // \u5BFE\u8A71\
+    \u30E2\u30FC\u30C9\u3067\u306F1\u6587\u5B57\u3060\u3051\u8981\u6C42\u3057\u3001\
+    \u76F8\u624B\u306E\u6B21\u306E\u5FDC\u7B54\u3092\u5148\u8AAD\u307F\u3057\u3066\
+    \u5F85\u305F\u306A\u3044\u3002\n#ifdef CPLIB_FASTIO_INTERACTIVE\n  const int value\
+    \ = getchar_unlocked();\n  state->length = value == EOF ? 0 : 1;\n  if (value\
+    \ != EOF) state->buffer[0] = (char)value;\n#else\n  state->length =\n      fread_unlocked(state->buffer,\
+    \ 1, cplib_fio_buffer_size, stdin);\n#endif\n  state->cursor = 0;\n  return state->length\
+    \ != 0;\n}\n\nstatic inline int cplib_fio_get_char(void) {\n  cplib_fio_InputState*\
+    \ state = cplib_fio_input_state();\n  if (CPLIB_FASTIO_UNLIKELY(!state->initialized))\
     \ cplib_fio_initialize(state);\n  if (state->mapped != NULL) {\n    if (state->cursor\
     \ == state->length) return -1;\n    return (unsigned char)(state->mapped[state->cursor++]);\n\
     \  }\n  if (state->cursor == state->length && !cplib_fio_refill(state)) return\
@@ -687,12 +720,13 @@ data:
     \ uint64](values), count)\n            elif sizeof(T) == 4: fastioReadArray(cast[ptr\
     \ uint32](values), count)\n            else: fastioReadArray(values, count)\n\n\
     \    type FastioInteger = int | int8 | int16 | int32 | int64 |\n        uint |\
-    \ uint8 | uint16 | uint32 | uint64\n\n    when NimMajor >= 2:\n        template\
-    \ fastioNewSeqUninit(T: typedesc, length: int): untyped =\n            newSeqUninit[T](length)\n\
-    \n        template fastioNewStringUninit(length: int): untyped =\n           \
-    \ newStringUninit(length)\n    else:\n        template fastioNewSeqUninit(T: typedesc,\
-    \ length: int): untyped =\n            newSeqUninitialized[T](length)\n\n    \
-    \    template fastioNewStringUninit(length: int): untyped =\n            newString(length)\n\
+    \ uint8 | uint16 | uint32 | uint64\n\n    when declared(newSeqUninit):\n     \
+    \   template fastioNewSeqUninit(T: typedesc, length: int): untyped =\n       \
+    \     newSeqUninit[T](length)\n    else:\n        template fastioNewSeqUninit(T:\
+    \ typedesc, length: int): untyped =\n            newSeqUninitialized[T](length)\n\
+    \n    when declared(newStringUninit):\n        template fastioNewStringUninit(length:\
+    \ int): untyped =\n            newStringUninit(length)\n    else:\n        template\
+    \ fastioNewStringUninit(length: int): untyped =\n            newString(length)\n\
     \n    proc ii(): int {.inline,\n            codegenDecl: \"CPLIB_FASTIO_NIM_ALWAYS_INLINE\
     \ $# $#$#\".} =\n        fastioReadInt().int\n    proc lii(N: int): seq[int] {.inline.}\
     \ =\n        result = fastioNewSeqUninit(int, N)\n        if N > 0:\n        \
@@ -926,8 +960,10 @@ data:
     \u6587\u5B57\u5217\u5F15\u6570\u3092sep\u3068\u8AA4\u8A8D\u3057\u306A\u3044\u3088\
     \u3046\u3001\u540D\u524D\u4ED8\u304Dsep\u306F\u30DE\u30AF\u30ED\u3067\u51E6\u7406\
     \u3059\u308B\u3002\n    macro print*(args: varargs[untyped]): untyped =\n    \
-    \    var sep = newLit(\" \")\n        var hasSep = false\n        var values:\
-    \ seq[NimNode]\n        for arg in args:\n            if arg.kind == nnkExprEqExpr\
+    \    ## \u7A7A\u767D\u533A\u5207\u308A\u30671\u884C\u51FA\u529B\u3059\u308B\u3002\
+    \u5BFE\u8A71\u30E2\u30FC\u30C9\u3067\u306F\u51FA\u529B\u5F8C\u306Bflush\u3059\u308B\
+    \u3002\n        var sep = newLit(\" \")\n        var hasSep = false\n        var\
+    \ values: seq[NimNode]\n        for arg in args:\n            if arg.kind == nnkExprEqExpr\
     \ and arg[0].eqIdent(\"sep\"):\n                if hasSep:\n                 \
     \   error(\"sep can only be specified once\", arg)\n                sep = newCall(bindSym\"\
     fastioSeparatorString\", arg[1])\n                hasSep = true\n            else:\n\
@@ -946,7 +982,9 @@ data:
     \ values:\n                integerCall.add(value)\n                fallbackCall.add(value)\n\
     \            result = quote do:\n                when compiles(`integerCall`):\n\
     \                    `integerCall`\n                else:\n                  \
-    \  `fallbackCall`\n"
+    \  `fallbackCall`\n        when defined(fastioInteractive):\n            let output\
+    \ = result\n            result = quote do:\n                `output`\n       \
+    \         flushFile(stdout)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/tmpl/fastio.nim
@@ -963,7 +1001,9 @@ data:
   - verify/str/merged_static_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep.nim
-  timestamp: '2026-10-01 03:10:25+09:00'
+  - cplib/tmpl/sheep_interactive.nim
+  - cplib/tmpl/sheep_interactive.nim
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/two_edge_connected_components_test.nim
@@ -1012,8 +1052,12 @@ data:
   - verify/graph/general_matching_test.nim
   - verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - verify/utils/static_rectangle_add_rectangle_sum_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
   - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/manhattan_mst_test.nim
@@ -1026,6 +1070,8 @@ data:
   - verify/collections/fenwick_tree_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
+  - verify/AI/fastio_interactive_test.nim
+  - verify/AI/fastio_interactive_test.nim
   - verify/AI/fastio_test.nim
   - verify/AI/fastio_test.nim
   - verify/AI/fastio_io_test.nim

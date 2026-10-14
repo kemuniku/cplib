@@ -21,6 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/convolution/xor_convolution_test.nim
     title: verify/convolution/xor_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/set_power_series_regression_test.nim
+    title: verify/set_power_series/set_power_series_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/set_power_series_regression_test.nim
+    title: verify/set_power_series/set_power_series_regression_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -63,6 +69,8 @@ data:
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
   - verify/AI/xor_convolution_test.nim
   - verify/AI/xor_convolution_test.nim
 documentation_of: cplib/convolution/xor_convolution.nim

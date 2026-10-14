@@ -64,6 +64,12 @@ data:
     title: verify/tree/hld/hld_past202004o_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/SWAG_newswagwith_test.nim
+    title: verify/AI/SWAG_newswagwith_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/SWAG_newswagwith_test.nim
+    title: verify/AI/SWAG_newswagwith_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/compressed_segtree_test.nim
     title: verify/AI/compressed_segtree_test.nim
   - icon: ':heavy_check_mark:'
@@ -404,6 +410,8 @@ data:
   - verify/AI/range_sort_segtree_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/SWAG_newswagwith_test.nim
+  - verify/AI/SWAG_newswagwith_test.nim
   - verify/AI/range_sort_array_test.nim
   - verify/AI/range_sort_array_test.nim
   - verify/AI/segtree_test.nim

@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -75,6 +81,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
@@ -219,40 +231,41 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_CONVOLUTION_RELAXED_CONVOLUTION:\n    const CPLIB_CONVOLUTION_RELAXED_CONVOLUTION*\
-    \ = 1\n\n    import options\n    import cplib/convolution/convolution\n    import\
-    \ cplib/convolution/ntt\n    import cplib/modint/modint\n\n    type RelaxedConvolution*[T]\
-    \ = object\n        coefficientCount: int\n        currentIndex: int\n       \
-    \ left, right, product: seq[T]\n        leftPrefixTransforms, rightPrefixTransforms:\
-    \ seq[seq[T]]\n\n    proc initRelaxedConvolution*[T: BarrettModint or MontgomeryModint](\n\
-    \            coefficientCount: int): RelaxedConvolution[T] =\n        ## \u5148\
-    \u982D\u304B\u3089coefficientCount\u9805\u3092\u9010\u6B21\u8A08\u7B97\u3059\u308B\
-    \u7573\u307F\u8FBC\u307F\u3092\u521D\u671F\u5316\u3059\u308B\u3002\n        ##\
-    \ NTT\u304C\u5229\u7528\u3067\u304D\u308B\u5834\u5408\u3001\u5168\u9805\u306E\u8A08\
-    \u7B97\u91CF\u306FO(N log^2 N)\u3068\u306A\u308B\u3002\n        doAssert coefficientCount\
-    \ >= 0, \"coefficientCount\u306F\u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\
-    \u3042\u308A\u307E\u3059\"\n        result.coefficientCount = coefficientCount\n\
-    \        result.left = newSeq[T](coefficientCount)\n        result.right = newSeq[T](coefficientCount)\n\
-    \        result.product = newSeq[T](coefficientCount)\n\n    proc len*[T](self:\
-    \ RelaxedConvolution[T]): int = self.currentIndex\n\n    proc pendingCoefficient*[T](self:\
-    \ RelaxedConvolution[T]): T =\n        ## \u6B21\u306B\u78BA\u5B9A\u3059\u308B\
-    \u4FC2\u6570\u306B\u65E2\u306B\u52A0\u7B97\u6E08\u307F\u306E\u5BC4\u4E0E\u3092\
-    \u8FD4\u3059\u3002\n        doAssert self.currentIndex < self.coefficientCount,\
-    \ \"\u521D\u671F\u5316\u6642\u306B\u6307\u5B9A\u3057\u305F\u500B\u6570\u3092\u8D85\
-    \u3048\u3066\u4FC2\u6570\u3092\u8FFD\u52A0\u3059\u308B\u3053\u3068\u306F\u3067\
-    \u304D\u307E\u305B\u3093\"\n        self.product[self.currentIndex]\n\n    proc\
-    \ coefficients*[T](self: RelaxedConvolution[T]): seq[T] =\n        ## \u73FE\u5728\
-    \u307E\u3067\u306B\u78BA\u5B9A\u3057\u305F\u7A4D\u306E\u4FC2\u6570\u3092\u8FD4\
-    \u3059\u3002\n        self.product[0..<self.currentIndex]\n\n    proc addProduct[T](self:\
-    \ var RelaxedConvolution[T], first: int,\n            values: seq[T], offset,\
-    \ count: int) =\n        if offset >= values.len: return\n        for i in 0..<min(count,\
-    \ values.len - offset):\n            self.product[first + i] += values[offset\
-    \ + i]\n\n    proc ensurePrefixTransforms[T](\n            self: var RelaxedConvolution[T],\
-    \ level, blockSize: int) =\n        if self.leftPrefixTransforms.len <= level:\n\
-    \            self.leftPrefixTransforms.setLen(level + 1)\n            self.rightPrefixTransforms.setLen(level\
-    \ + 1)\n        if self.leftPrefixTransforms[level].len > 0: return\n        let\
-    \ transformSize = blockSize * 2\n        self.leftPrefixTransforms[level] = newSeq[T](transformSize)\n\
-    \        self.rightPrefixTransforms[level] = newSeq[T](transformSize)\n      \
-    \  for i in 0..<transformSize:\n            self.leftPrefixTransforms[level][i]\
+    \ = 1\n\n    import options\n    import cplib/convolution/algorithm_ntt\n    import\
+    \ cplib/convolution/convolution\n    import cplib/convolution/ntt\n    import\
+    \ cplib/modint/modint\n\n    type RelaxedConvolution*[T] = object\n        coefficientCount:\
+    \ int\n        currentIndex: int\n        left, right, product: seq[T]\n     \
+    \   leftPrefixTransforms, rightPrefixTransforms: seq[seq[T]]\n        leftAvxTransforms,\
+    \ rightAvxTransforms: seq[seq[uint32]]\n\n    proc initRelaxedConvolution*[T:\
+    \ BarrettModint or MontgomeryModint](\n            coefficientCount: int): RelaxedConvolution[T]\
+    \ =\n        ## \u5148\u982D\u304B\u3089coefficientCount\u9805\u3092\u9010\u6B21\
+    \u8A08\u7B97\u3059\u308B\u7573\u307F\u8FBC\u307F\u3092\u521D\u671F\u5316\u3059\
+    \u308B\u3002\n        ## NTT\u304C\u5229\u7528\u3067\u304D\u308B\u5834\u5408\u3001\
+    \u5168\u9805\u306E\u8A08\u7B97\u91CF\u306FO(N log^2 N)\u3068\u306A\u308B\u3002\
+    \n        doAssert coefficientCount >= 0, \"coefficientCount\u306F\u975E\u8CA0\
+    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        result.coefficientCount\
+    \ = coefficientCount\n        result.left = newSeq[T](coefficientCount)\n    \
+    \    result.right = newSeq[T](coefficientCount)\n        result.product = newSeq[T](coefficientCount)\n\
+    \n    proc len*[T](self: RelaxedConvolution[T]): int = self.currentIndex\n\n \
+    \   proc pendingCoefficient*[T](self: RelaxedConvolution[T]): T =\n        ##\
+    \ \u6B21\u306B\u78BA\u5B9A\u3059\u308B\u4FC2\u6570\u306B\u65E2\u306B\u52A0\u7B97\
+    \u6E08\u307F\u306E\u5BC4\u4E0E\u3092\u8FD4\u3059\u3002\n        doAssert self.currentIndex\
+    \ < self.coefficientCount, \"\u521D\u671F\u5316\u6642\u306B\u6307\u5B9A\u3057\u305F\
+    \u500B\u6570\u3092\u8D85\u3048\u3066\u4FC2\u6570\u3092\u8FFD\u52A0\u3059\u308B\
+    \u3053\u3068\u306F\u3067\u304D\u307E\u305B\u3093\"\n        self.product[self.currentIndex]\n\
+    \n    proc coefficients*[T](self: RelaxedConvolution[T]): seq[T] =\n        ##\
+    \ \u73FE\u5728\u307E\u3067\u306B\u78BA\u5B9A\u3057\u305F\u7A4D\u306E\u4FC2\u6570\
+    \u3092\u8FD4\u3059\u3002\n        self.product[0..<self.currentIndex]\n\n    proc\
+    \ addProduct[T](self: var RelaxedConvolution[T], first: int,\n            values:\
+    \ seq[T], offset, count: int) =\n        if offset >= values.len: return\n   \
+    \     for i in 0..<min(count, values.len - offset):\n            self.product[first\
+    \ + i] += values[offset + i]\n\n    proc ensurePrefixTransforms[T](\n        \
+    \    self: var RelaxedConvolution[T], level, blockSize: int) =\n        if self.leftPrefixTransforms.len\
+    \ <= level:\n            self.leftPrefixTransforms.setLen(level + 1)\n       \
+    \     self.rightPrefixTransforms.setLen(level + 1)\n        if self.leftPrefixTransforms[level].len\
+    \ > 0: return\n        let transformSize = blockSize * 2\n        self.leftPrefixTransforms[level]\
+    \ = newSeq[T](transformSize)\n        self.rightPrefixTransforms[level] = newSeq[T](transformSize)\n\
+    \        for i in 0..<transformSize:\n            self.leftPrefixTransforms[level][i]\
     \ = self.left[i]\n            self.rightPrefixTransforms[level][i] = self.right[i]\n\
     \        self.leftPrefixTransforms[level].ntt\n        self.rightPrefixTransforms[level].ntt\n\
     \n    proc add*[T](\n            self: var RelaxedConvolution[T], leftValue, rightValue:\
@@ -284,12 +297,30 @@ data:
     \                  self.left[self.currentIndex - blockSize + i] *\n          \
     \                              self.right[j] +\n                             \
     \       self.right[self.currentIndex - blockSize + i] *\n                    \
-    \                    self.left[j]\n                elif nttAvailable:\n      \
-    \              var transformedLeft = newSeq[T](transformSize)\n              \
-    \      var transformedRight = newSeq[T](transformSize)\n                    if\
-    \ self.currentIndex == blockSize:\n                        for i in 0..<blockSize:\n\
-    \                            transformedLeft[i] = self.left[i]\n             \
-    \               transformedRight[i] = self.right[i]\n                        transformedLeft.ntt\n\
+    \                    self.left[j]\n                elif canUseMultipointTreeNtt(T.umod,\
+    \ transformSize):\n                    var context = initAlgorithmNtt(T.umod,\
+    \ transformSize)\n                    defer: context.close()\n               \
+    \     let left = context.spectrum(self.left.toOpenArray(self.currentIndex - blockSize,\
+    \ self.currentIndex - 1))\n                    let right = context.spectrum(self.right.toOpenArray(self.currentIndex\
+    \ - blockSize, self.currentIndex - 1))\n                    var product: seq[uint32]\n\
+    \                    if self.currentIndex == blockSize:\n                    \
+    \    product = context.spectrumProduct(left, right)\n                    else:\n\
+    \                        if self.leftAvxTransforms.len <= level:\n           \
+    \                 self.leftAvxTransforms.setLen(level + 1)\n                 \
+    \           self.rightAvxTransforms.setLen(level + 1)\n                      \
+    \  if self.leftAvxTransforms[level].len == 0:\n                            self.leftAvxTransforms[level]\
+    \ = context.spectrum(self.left.toOpenArray(0, transformSize - 1))\n          \
+    \                  self.rightAvxTransforms[level] = context.spectrum(self.right.toOpenArray(0,\
+    \ transformSize - 1))\n                        product = context.spectrumProduct(left,\
+    \ self.rightAvxTransforms[level])\n                        context.addSpectrumProduct(product,\
+    \ right, self.leftAvxTransforms[level])\n                    let values = context.coefficients(product,\
+    \ blockSize, updateCount, T)\n                    addProduct[T](self, self.currentIndex,\
+    \ values, 0, updateCount)\n                elif nttAvailable:\n              \
+    \      var transformedLeft = newSeq[T](transformSize)\n                    var\
+    \ transformedRight = newSeq[T](transformSize)\n                    if self.currentIndex\
+    \ == blockSize:\n                        for i in 0..<blockSize:\n           \
+    \                 transformedLeft[i] = self.left[i]\n                        \
+    \    transformedRight[i] = self.right[i]\n                        transformedLeft.ntt\n\
     \                        transformedRight.ntt\n                        for i in\
     \ 0..<transformSize:\n                            transformedLeft[i] *= transformedRight[i]\n\
     \                    else:\n                        ensurePrefixTransforms[T](self,\
@@ -557,30 +588,34 @@ data:
     \n    proc powRelaxed*[T: BarrettModint or MontgomeryModint](\n            f:\
     \ seq[T], k: int): seq[T] =\n        f.powRelaxed(k, f.len)\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/ntt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/ntt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/ntt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/relaxed_convolution.nim
   requiredBy:
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim

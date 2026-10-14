@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -70,6 +76,12 @@ data:
     path: verify/AI/fps_test.nim
     title: verify/AI/fps_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -81,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
@@ -190,48 +208,75 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_FPS_POWER_PROJECTION:\n    const CPLIB_FPS_POWER_PROJECTION*\
-    \ = 1\n\n    import algorithm\n    import cplib/convolution/convolution\n    import\
-    \ cplib/fps/formal_power_series\n    import cplib/modint/modint\n\n    proc powerProjection*[T:\
-    \ BarrettModint or MontgomeryModint](\n            f, g: seq[T], m: int): seq[T]\
-    \ =\n        ## Power Projection\uFF08\u51AA\u306E\u4FC2\u6570\u5217\u6319\uFF09\
-    \u3002\n        ## [x^n] f(x)^i g(x) (i = 0, 1, ..., m) \u3092\u5217\u6319\u3059\
-    \u308B\u3002\n        ## \u3053\u3053\u3067 n = f.len - 1 \u3068\u3059\u308B\u3002\
-    \n        doAssert f.len > 0, \"Power Projection\u3067\u306F f \u304C\u7A7A\u3067\
-    \u306A\u3044\u5FC5\u8981\u304C\u3042\u308B\"\n        doAssert m >= 0, \"Power\
-    \ Projection\u3067\u306F\u5217\u6319\u3059\u308B\u6700\u5927\u6307\u6570\u304C\
-    \u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n\n        var\
-    \ n = f.len - 1\n        var xStride = 1\n        while xStride < n + 1: xStride\
-    \ *= 2\n        var yDegree = 1\n\n        # P / (y^yDegree + Q) \u306E x^n \u4FC2\
-    \u6570\u3092\u4FDD\u3063\u305F\u307E\u307E\u3001x\u65B9\u5411\u306B\n        #\
-    \ Bostan--Mori\u6CD5\u3092\u9069\u7528\u3059\u308B\u3002\u5404y\u4FC2\u6570\u3092\
-    \u9577\u3055xStride\u306E\u30D6\u30ED\u30C3\u30AF\u306B\u7F6E\u304F\u3002\n  \
-    \      var p = newSeq[T](xStride)\n        var q = newSeq[T](xStride)\n      \
-    \  for i in 0..n:\n            if i < g.len: p[i] = g[i]\n            q[i] = -f[i]\n\
-    \n        while n > 0:\n            # x\u65B9\u5411\u306E\u7A4D\u3067\u96A3\u306E\
-    y\u30D6\u30ED\u30C3\u30AF\u3078\u7E70\u308A\u4E0A\u304C\u3089\u306A\u3044\u3088\
-    \u3046\u3001\u9593\u9694\u3092\u500D\u306B\u3059\u308B\u3002\n            let\
-    \ wideStride = 2 * xStride\n            var expandedP = newSeq[T](yDegree * wideStride)\n\
-    \            var expandedQ = newSeq[T]((yDegree + 1) * wideStride)\n         \
-    \   for y in 0..<yDegree:\n                for x in 0..n:\n                  \
-    \  expandedP[y * wideStride + x] = p[y * xStride + x]\n                    expandedQ[y\
-    \ * wideStride + x] = q[y * xStride + x]\n            expandedQ[yDegree * wideStride]\
-    \ = init(T, 1)\n\n            var negativeQ = expandedQ\n            for y in\
-    \ 0..yDegree:\n                for x in countup(1, wideStride - 1, 2):\n     \
-    \               negativeQ[y * wideStride + x] =\n                        -negativeQ[y\
-    \ * wideStride + x]\n\n            let cycleLength = 2 * yDegree * wideStride\n\
-    \            let productP = convolutionCyclicPowerOfTwo(\n                expandedP,\
-    \ negativeQ, cycleLength)\n            var productQ = convolutionCyclicPowerOfTwo(\n\
-    \                expandedQ, negativeQ, cycleLength)\n            # y^(2*yDegree)\
+    \ = 1\n\n    import cplib/convolution/algorithm_ntt\n    import algorithm\n  \
+    \  import cplib/convolution/convolution\n    import cplib/fps/formal_power_series\n\
+    \    import cplib/modint/modint\n\n    proc powerProjection*[T: BarrettModint\
+    \ or MontgomeryModint](\n            f, g: seq[T], m: int): seq[T] =\n       \
+    \ ## Power Projection\uFF08\u51AA\u306E\u4FC2\u6570\u5217\u6319\uFF09\u3002\n\
+    \        ## [x^n] f(x)^i g(x) (i = 0, 1, ..., m) \u3092\u5217\u6319\u3059\u308B\
+    \u3002\n        ## \u3053\u3053\u3067 n = f.len - 1 \u3068\u3059\u308B\u3002\n\
+    \        assert f.len > 0, \"Power Projection\u3067\u306F f \u304C\u7A7A\u3067\
+    \u306A\u3044\u5FC5\u8981\u304C\u3042\u308B\"\n        assert m >= 0, \"Power Projection\u3067\
+    \u306F\u5217\u6319\u3059\u308B\u6700\u5927\u6307\u6570\u304C\u975E\u8CA0\u3067\
+    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n\n        var n = f.len - 1\n  \
+    \      var xStride = 1\n        while xStride < n + 1: xStride *= 2\n        var\
+    \ yDegree = 1\n\n        # P / (y^yDegree + Q) \u306E x^n \u4FC2\u6570\u3092\u4FDD\
+    \u3063\u305F\u307E\u307E\u3001x\u65B9\u5411\u306B\n        # Bostan--Mori\u6CD5\
+    \u3092\u9069\u7528\u3059\u308B\u3002\u5404y\u4FC2\u6570\u3092\u9577\u3055xStride\u306E\
+    \u30D6\u30ED\u30C3\u30AF\u306B\u7F6E\u304F\u3002\n        var p = newSeq[T](xStride)\n\
+    \        var q = newSeq[T](xStride)\n        for i in 0..n:\n            if i\
+    \ < g.len: p[i] = g[i]\n            q[i] = -f[i]\n\n        if xStride >= 32 and\
+    \ n > 0 and canUseMultipointTreeNtt(T.umod, 4 * xStride):\n            let size\
+    \ = xStride\n            var context = initAlgorithmNtt(T.umod, 4 * size)\n  \
+    \          var halfContext = initAlgorithmNtt(T.umod, 2 * size)\n            defer:\
+    \ context.close()\n            defer: halfContext.close()\n            while n\
+    \ > 0:\n                let wideStride = 2 * xStride\n                var expandedP\
+    \ = newSeq[T](2 * size)\n                var expandedQ = newSeq[T](2 * size +\
+    \ 1)\n                for y in 0..<yDegree:\n                    for x in 0..n:\n\
+    \                        expandedP[y * wideStride + x] = p[y * xStride + x]\n\
+    \                        expandedQ[y * wideStride + x] = q[y * xStride + x]\n\
+    \                expandedQ[2 * size] = init(T, 1)\n                let qSpectrum\
+    \ = context.spectrum(expandedQ)\n                var negative = newSeq[uint32](4\
+    \ * size)\n                for i in 0..<negative.len: negative[i] = qSpectrum[i\
+    \ xor 1]\n                var numerator = context.spectrumProduct(context.spectrum(expandedP),\
+    \ negative)\n                let denominator = context.spectrumProduct(qSpectrum,\
+    \ negative)\n                var evenSpectrum = newSeq[uint32](2 * size)\n   \
+    \             for i in 0..<evenSpectrum.len: evenSpectrum[i] = denominator[2 *\
+    \ i]\n                let productP = context.coefficients(numerator, 0, 4 * size,\
+    \ T)\n                var productQ = halfContext.coefficients(evenSpectrum, 0,\
+    \ 2 * size, T)\n                productQ[0] -= init(T, 1)\n                let\
+    \ nextStride = xStride div 2\n                for y in 0..<2 * yDegree:\n    \
+    \                for x in 0..n div 2:\n                        p[y * nextStride\
+    \ + x] = productP[y * wideStride + 2 * x + (n and 1)]\n                      \
+    \  q[y * nextStride + x] = productQ[y * xStride + x]\n                n = n div\
+    \ 2\n                xStride = nextStride\n                yDegree *= 2\n    \
+    \    else:\n            while n > 0:\n                # x\u65B9\u5411\u306E\u7A4D\
+    \u3067\u96A3\u306Ey\u30D6\u30ED\u30C3\u30AF\u3078\u7E70\u308A\u4E0A\u304C\u3089\
+    \u306A\u3044\u3088\u3046\u3001\u9593\u9694\u3092\u500D\u306B\u3059\u308B\u3002\
+    \n                let wideStride = 2 * xStride\n                var expandedP\
+    \ = newSeq[T](yDegree * wideStride)\n                var expandedQ = newSeq[T]((yDegree\
+    \ + 1) * wideStride)\n                for y in 0..<yDegree:\n                \
+    \    for x in 0..n:\n                        expandedP[y * wideStride + x] = p[y\
+    \ * xStride + x]\n                        expandedQ[y * wideStride + x] = q[y\
+    \ * xStride + x]\n                expandedQ[yDegree * wideStride] = init(T, 1)\n\
+    \n                var negativeQ = expandedQ\n                for y in 0..yDegree:\n\
+    \                    for x in countup(1, wideStride - 1, 2):\n               \
+    \         negativeQ[y * wideStride + x] =\n                            -negativeQ[y\
+    \ * wideStride + x]\n\n                let cycleLength = 2 * yDegree * wideStride\n\
+    \                let productP = convolutionCyclicPowerOfTwo(\n               \
+    \     expandedP, negativeQ, cycleLength)\n                var productQ = convolutionCyclicPowerOfTwo(\n\
+    \                    expandedQ, negativeQ, cycleLength)\n                # y^(2*yDegree)\
     \ \u306E\u9805\u306F\u5DE1\u56DE\u7573\u307F\u8FBC\u307F\u306B\u3088\u308A\u5B9A\
-    \u6570\u9805\u3078\u56DE\u308A\u8FBC\u3080\u3002\n            productQ[0] -= init(T,\
-    \ 1)\n            let nextStride = xStride div 2\n            var nextP = newSeq[T](2\
-    \ * yDegree * nextStride)\n            var nextQ = newSeq[T](2 * yDegree * nextStride)\n\
-    \            for y in 0..<2 * yDegree:\n                for x in 0..n div 2:\n\
-    \                    let base = y * wideStride + 2 * x\n                    nextP[y\
-    \ * nextStride + x] = productP[base + (n and 1)]\n                    nextQ[y\
-    \ * nextStride + x] = productQ[base]\n\n            p = move(nextP)\n        \
-    \    q = move(nextQ)\n            n = n div 2\n            xStride = nextStride\n\
-    \            yDegree *= 2\n\n        # x\u6B21\u6570\u304C0\u306B\u306A\u308C\u3070\
+    \u6570\u9805\u3078\u56DE\u308A\u8FBC\u3080\u3002\n                productQ[0]\
+    \ -= init(T, 1)\n                let nextStride = xStride div 2\n            \
+    \    var nextP = newSeq[T](2 * yDegree * nextStride)\n                var nextQ\
+    \ = newSeq[T](2 * yDegree * nextStride)\n                for y in 0..<2 * yDegree:\n\
+    \                    for x in 0..n div 2:\n                        let base =\
+    \ y * wideStride + 2 * x\n                        nextP[y * nextStride + x] =\
+    \ productP[base + (n and 1)]\n                        nextQ[y * nextStride + x]\
+    \ = productQ[base]\n\n                p = move(nextP)\n                q = move(nextQ)\n\
+    \                n = n div 2\n                xStride = nextStride\n         \
+    \       yDegree *= 2\n\n        # x\u6B21\u6570\u304C0\u306B\u306A\u308C\u3070\
     y\u306B\u3064\u3044\u3066\u306E\u6709\u7406\u5F0F\u3060\u3051\u304C\u6B8B\u308B\
     \u3002\n        # y\u306E\u9AD8\u6B21\u5074\u304B\u3089\u53CD\u8EE2\u3057\u3001\
     \u5B9A\u6570\u9805\u304C1\u306EFPS\u9664\u7B97\u3068\u3057\u3066\u5148\u982Dm+1\u9805\
@@ -256,9 +301,9 @@ data:
     \u306F FPS \u306E pow \u3068\u540C\u3058\u304F m + 1 \u304C\u6CD5\u4EE5\u4E0B\u3067\
     \u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\u3002\n        ## NTT \u3092\u4F7F\u3048\
     \u308B\u5834\u5408 O((m + 1) log^2(m + 2)) \u6642\u9593\u3002\n        ## \u53C2\
-    \u8003: https://potato167.hatenablog.com/entry/2026/02/22/180000\n        doAssert\
+    \u8003: https://potato167.hatenablog.com/entry/2026/02/22/180000\n        assert\
     \ f.len > 0, \"Power Projection\u3067\u306F f \u304C\u7A7A\u3067\u306A\u3044\u5FC5\
-    \u8981\u304C\u3042\u308B\"\n        doAssert m >= 0, \"Power Projection\u3067\u306F\
+    \u8981\u304C\u3042\u308B\"\n        assert m >= 0, \"Power Projection\u3067\u306F\
     \u5217\u6319\u3059\u308B\u6700\u5927\u6307\u6570\u304C\u975E\u8CA0\u3067\u3042\
     \u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        if f[0].val == 0:\n          \
     \  # f(x)^i \u306E\u6700\u4F4E\u6B21\u6570\u306F i \u306A\u306E\u3067\u3001f[1]^i\
@@ -282,22 +327,24 @@ data:
     \ - 1 \u3092\u5217\u6319\u3059\u308B\u3002\n        f.powerProjectionDiagonal(@[init(T,\
     \ 1)], f.len - 1)\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: false
   path: cplib/fps/power_projection.nim
   requiredBy:
@@ -305,15 +352,19 @@ data:
   - cplib/fps/composition.nim
   - cplib/fps/fps.nim
   - cplib/fps/fps.nim
-  timestamp: '2026-10-05 00:47:58+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
+  - verify/fps/composition_regression_test.nim
+  - verify/fps/composition_regression_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/inv_of_formal_power_series_test.nim

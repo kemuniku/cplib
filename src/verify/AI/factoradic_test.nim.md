@@ -304,28 +304,28 @@ data:
     \ div huge == 1\n    doAssert huge mod huge == 0\n    doAssert divmod(huge, huge).quotient\
     \ == 1\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/bigint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/factoradic.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/factoradic.nim
-  - cplib/math/bigint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/factoradic.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
   isVerificationFile: true
   path: verify/AI/factoradic_test.nim
   requiredBy: []
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/factoradic_test.nim

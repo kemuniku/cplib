@@ -389,26 +389,26 @@ data:
     )] = 7\n    doAssert counts[initBigInt(\"+12345678901234567890\")] == 7\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
+  - cplib/math/bigint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/bigint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/bigint.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/math/bigint_unit_test.nim
   requiredBy: []
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/bigint_unit_test.nim

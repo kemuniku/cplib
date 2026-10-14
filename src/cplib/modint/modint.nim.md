@@ -21,6 +21,12 @@ data:
     title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -39,6 +45,12 @@ data:
     path: cplib/convolution/ntt.nim
     title: cplib/convolution/ntt.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/private/subset_convolution_barrett.nim
+    title: cplib/convolution/private/subset_convolution_barrett.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/private/subset_convolution_barrett.nim
+    title: cplib/convolution/private/subset_convolution_barrett.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/relaxed_convolution.nim
     title: cplib/convolution/relaxed_convolution.nim
   - icon: ':heavy_check_mark:'
@@ -50,6 +62,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/convolution/semi_relaxed_convolution.nim
     title: cplib/convolution/semi_relaxed_convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/subset_convolution.nim
+    title: cplib/convolution/subset_convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/subset_convolution.nim
+    title: cplib/convolution/subset_convolution.nim
   - icon: ':heavy_check_mark:'
     path: cplib/fps/berlekamp_massey.nim
     title: cplib/fps/berlekamp_massey.nim
@@ -182,6 +200,12 @@ data:
   - icon: ':warning:'
     path: cplib/matrix/static_matrix_avx2.nim
     title: cplib/matrix/static_matrix_avx2.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/set_power_series/set_power_series.nim
+    title: cplib/set_power_series/set_power_series.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/set_power_series/set_power_series.nim
+    title: cplib/set_power_series/set_power_series.nim
   - icon: ':heavy_check_mark:'
     path: cplib/str/wildcard_matching.nim
     title: cplib/str/wildcard_matching.nim
@@ -514,6 +538,18 @@ data:
     path: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
     title: verify/collections/lazysegtree/rangesetrangecomposite_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/bitwise_or_convolution_test.nim
+    title: verify/convolution/bitwise_or_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/bitwise_or_convolution_test.nim
+    title: verify/convolution/bitwise_or_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+    title: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+    title: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   - icon: ':heavy_check_mark:'
@@ -574,6 +610,12 @@ data:
     path: verify/convolution/xor_convolution_boundary_test.nim
     title: verify/convolution/xor_convolution_boundary_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -585,6 +627,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
@@ -730,6 +778,12 @@ data:
     path: verify/math/addition_of_big_integers_test.nim
     title: verify/math/addition_of_big_integers_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/barrett_unsigned_test.nim
+    title: verify/math/barrett_unsigned_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/barrett_unsigned_test.nim
+    title: verify/math/barrett_unsigned_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/bigint_bitops_unit_test.nim
     title: verify/math/bigint_bitops_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -747,6 +801,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/crt_test.nim
+    title: verify/math/crt_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/crt_test.nim
+    title: verify/math/crt_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/division_of_big_integers_test.nim
     title: verify/math/division_of_big_integers_test.nim
@@ -868,6 +928,48 @@ data:
     path: verify/modint/montgomery_equality_test.nim
     title: verify/modint/montgomery_equality_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/exp_of_set_power_series_test.nim
+    title: verify/set_power_series/exp_of_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/exp_of_set_power_series_test.nim
+    title: verify/set_power_series/exp_of_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/log_of_set_power_series_test.nim
+    title: verify/set_power_series/log_of_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/log_of_set_power_series_test.nim
+    title: verify/set_power_series/log_of_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/polynomial_composite_set_power_series_test.nim
+    title: verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/polynomial_composite_set_power_series_test.nim
+    title: verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/power_projection_of_set_power_series_test.nim
+    title: verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/power_projection_of_set_power_series_test.nim
+    title: verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/set_power_series_regression_test.nim
+    title: verify/set_power_series/set_power_series_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/set_power_series_regression_test.nim
+    title: verify/set_power_series/set_power_series_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/subset_convolution_regression_test.nim
+    title: verify/set_power_series/subset_convolution_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/subset_convolution_regression_test.nim
+    title: verify/set_power_series/subset_convolution_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/subset_convolution_test.nim
+    title: verify/set_power_series/subset_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/subset_convolution_test.nim
+    title: verify/set_power_series/subset_convolution_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/wildcard_matching_test.nim
     title: verify/str/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
@@ -879,6 +981,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/backwards_index_simd_test.nim
     title: verify/utils/backwards_index_simd_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/digit_dp_callbacks_test.nim
+    title: verify/utils/digit_dp_callbacks_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/digit_dp_callbacks_test.nim
+    title: verify/utils/digit_dp_callbacks_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/digit_dp_initial_state_test.nim
+    title: verify/utils/digit_dp_initial_state_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/digit_dp_initial_state_test.nim
+    title: verify/utils/digit_dp_initial_state_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/digit_dp_test.nim
+    title: verify/utils/digit_dp_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/digit_dp_test.nim
+    title: verify/utils/digit_dp_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/static_rectangle_add_rectangle_sum_test.nim
     title: verify/utils/static_rectangle_add_rectangle_sum_test.nim
@@ -902,44 +1022,55 @@ data:
     \ 998244353u32)\n    declarStaticMontgomeryModint(modint1000000007_montgomery,\
     \ 1000000007u32)\n    declarDynamicMontgomeryModint(modint_montgomery, 1u32)\n\
     \    declarStaticBarrettModint(modint998244353_barrett, 998244353u32)\n    declarStaticBarrettModint(modint1000000007_barrett,\
-    \ 1000000007u32)\n    declarDynamicBarrettModint(modint_barrett, 1u32)\n    proc\
-    \ `+`*(a, b: MontgomeryModint or BarrettModint): auto = (result = a; result +=\
-    \ b)\n    proc `-`*(a, b: MontgomeryModint or BarrettModint): auto = (result =\
-    \ a; result -= b)\n    proc `*`*(a, b: MontgomeryModint or BarrettModint): auto\
-    \ = (result = a; result *= b)\n    proc `/`*(a, b: MontgomeryModint or BarrettModint):\
-    \ auto = (result = a; result /= b)\n    proc `+`*(a: MontgomeryModint or BarrettModint,\
-    \ b: SomeInteger): auto = (result = a; result += b)\n    proc `-`*(a: MontgomeryModint\
-    \ or BarrettModint, b: SomeInteger): auto = (result = a; result -= b)\n    proc\
-    \ `*`*(a: MontgomeryModint or BarrettModint, b: SomeInteger): auto = (result =\
-    \ a; result *= b)\n    proc `/`*(a: MontgomeryModint or BarrettModint, b: SomeInteger):\
-    \ auto = (result = a; result /= b)\n    proc `+`*[ModInt: MontgomeryModint or\
-    \ BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) + b\n    proc\
-    \ `-`*[ModInt: MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint):\
-    \ auto = init(Modint, a) - b\n    proc `*`*[ModInt: MontgomeryModint or BarrettModint](a:\
-    \ SomeInteger, b: Modint): auto = init(Modint, a) * b\n    proc `/`*[ModInt: MontgomeryModint\
-    \ or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint, a) / b\n \
-    \   proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt, b: static\
-    \ int): auto =\n        when ModInt is StaticMontgomeryModint or ModInt is StaticBarrettModint:\n\
-    \            const tmp = init(Modint, b).inv\n            return a * tmp\n   \
-    \     else:\n            return a * init(Modint, b).inv\n    proc pow*(a: MontgomeryModint\
-    \ or BarrettModint, n: int): auto =\n        result = init(typeof(a), 1)\n   \
-    \     var a = a\n        var n = n\n        while n > 0:\n            if (n and\
-    \ 1) == 1: result *= a\n            a *= a\n            n = (n shr 1)\n    proc\
-    \ `$`*(a: MontgomeryModint or BarrettModint): string = $(a.val)\n    proc estimate_rational*(a:\
-    \ MontgomeryModint or BarrettModint, ub: int = isqrt(typeof(a).mod)): string =\n\
-    \        assert ub >= 1, \"\u6709\u7406\u6570\u3092\u63A8\u5B9A\u3059\u308B\u969B\
-    \u306E\u5206\u6BCD\u306E\u4E0A\u9650\u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\
-    \u8981\u304C\u3042\u308A\u307E\u3059\"\n        var v: seq[tuple[s, n, d: int]]\n\
-    \        for d in 1..ub:\n            var n = (a * d).val\n            if n *\
-    \ 2 > a.mod:\n                n = - (a.mod - n)\n            if gcd(n, d) > 1:\
-    \ continue\n            v.add((n.abs + d, n, d))\n        v.sort\n        return\
-    \ $v[0].n & \"/\" & $v[0].d\n"
+    \ 1000000007u32)\n    declarDynamicBarrettModint(modint_barrett, 1u32)\n    #\
+    \ Montgomery\u7CFB\u306Finline\u6307\u5B9A\u3067\u884C\u5217\u7A4D\u304C\u9045\
+    \u304F\u306A\u308B\u305F\u3081\u3001Barrett\u7CFB\u3060\u3051\u306B\u6307\u5B9A\
+    \u3059\u308B\u3002\n    proc `+`*(a, b: MontgomeryModint): auto = (result = a;\
+    \ result += b)\n    proc `+`*(a, b: BarrettModint): auto {.inline.} = (result\
+    \ = a; result += b)\n    proc `-`*(a, b: MontgomeryModint): auto = (result = a;\
+    \ result -= b)\n    proc `-`*(a, b: BarrettModint): auto {.inline.} = (result\
+    \ = a; result -= b)\n    proc `*`*(a, b: MontgomeryModint): auto = (result = a;\
+    \ result *= b)\n    proc `*`*(a, b: BarrettModint): auto {.inline.} = (result\
+    \ = a; result *= b)\n    proc `/`*(a, b: MontgomeryModint or BarrettModint): auto\
+    \ = (result = a; result /= b)\n    proc `+`*(a: MontgomeryModint, b: SomeInteger):\
+    \ auto = (result = a; result += b)\n    proc `+`*(a: BarrettModint, b: SomeInteger):\
+    \ auto {.inline.} = (result = a; result += b)\n    proc `-`*(a: MontgomeryModint,\
+    \ b: SomeInteger): auto = (result = a; result -= b)\n    proc `-`*(a: BarrettModint,\
+    \ b: SomeInteger): auto {.inline.} = (result = a; result -= b)\n    proc `*`*(a:\
+    \ MontgomeryModint, b: SomeInteger): auto = (result = a; result *= b)\n    proc\
+    \ `*`*(a: BarrettModint, b: SomeInteger): auto {.inline.} = (result = a; result\
+    \ *= b)\n    proc `/`*(a: MontgomeryModint or BarrettModint, b: SomeInteger):\
+    \ auto = (result = a; result /= b)\n    proc `+`*[ModInt: MontgomeryModint](a:\
+    \ SomeInteger, b: Modint): auto = init(Modint, a) + b\n    proc `+`*[ModInt: BarrettModint](a:\
+    \ SomeInteger, b: Modint): auto {.inline.} = init(Modint, a) + b\n    proc `-`*[ModInt:\
+    \ MontgomeryModint](a: SomeInteger, b: Modint): auto = init(Modint, a) - b\n \
+    \   proc `-`*[ModInt: BarrettModint](a: SomeInteger, b: Modint): auto {.inline.}\
+    \ = init(Modint, a) - b\n    proc `*`*[ModInt: MontgomeryModint](a: SomeInteger,\
+    \ b: Modint): auto = init(Modint, a) * b\n    proc `*`*[ModInt: BarrettModint](a:\
+    \ SomeInteger, b: Modint): auto {.inline.} = init(Modint, a) * b\n    proc `/`*[ModInt:\
+    \ MontgomeryModint or BarrettModint](a: SomeInteger, b: Modint): auto = init(Modint,\
+    \ a) / b\n    proc `/`*[ModInt: MontgomeryModint or BarrettModint](a: ModInt,\
+    \ b: static int): auto =\n        when ModInt is StaticMontgomeryModint or ModInt\
+    \ is StaticBarrettModint:\n            const tmp = init(Modint, b).inv\n     \
+    \       return a * tmp\n        else:\n            return a * init(Modint, b).inv\n\
+    \    proc pow*(a: MontgomeryModint or BarrettModint, n: int): auto =\n       \
+    \ result = init(typeof(a), 1)\n        var a = a\n        var n = n\n        while\
+    \ n > 0:\n            if (n and 1) == 1: result *= a\n            a *= a\n   \
+    \         n = (n shr 1)\n    proc `$`*(a: MontgomeryModint or BarrettModint):\
+    \ string = $(a.val)\n    proc estimate_rational*(a: MontgomeryModint or BarrettModint,\
+    \ ub: int = isqrt(typeof(a).mod)): string =\n        assert ub >= 1, \"\u6709\u7406\
+    \u6570\u3092\u63A8\u5B9A\u3059\u308B\u969B\u306E\u5206\u6BCD\u306E\u4E0A\u9650\
+    \u306F1\u4EE5\u4E0A\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n        var v: seq[tuple[s, n, d: int]]\n        for d in 1..ub:\n       \
+    \     var n = (a * d).val\n            if n * 2 > a.mod:\n                n =\
+    \ - (a.mod - n)\n            if gcd(n, d) > 1: continue\n            v.add((n.abs\
+    \ + d, n, d))\n        v.sort\n        return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
@@ -1014,14 +1145,22 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/convolution/relaxed_convolution.nim
   - cplib/convolution/relaxed_convolution.nim
+  - cplib/convolution/subset_convolution.nim
+  - cplib/convolution/subset_convolution.nim
   - cplib/convolution/convolution.nim
   - cplib/convolution/convolution.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
   - cplib/convolution/convolution_old.nim
   - cplib/convolution/convolution_old.nim
   - cplib/convolution/ntt.nim
   - cplib/convolution/ntt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/algorithm_ntt.nim
   - cplib/convolution/semi_relaxed_convolution.nim
   - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/set_power_series/set_power_series.nim
+  - cplib/set_power_series/set_power_series.nim
   - cplib/math/multiplicative_prefix_sum.nim
   - cplib/math/multiplicative_prefix_sum.nim
   - cplib/math/modfast.nim
@@ -1040,9 +1179,11 @@ data:
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
@@ -1053,6 +1194,8 @@ data:
   - verify/fps/relaxed_log_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
+  - verify/fps/composition_regression_test.nim
+  - verify/fps/composition_regression_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/inv_of_formal_power_series_test.nim
@@ -1103,6 +1246,8 @@ data:
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_cyclic_regression_test.nim
+  - verify/convolution/convolution/convolution_cyclic_regression_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim
@@ -1111,6 +1256,8 @@ data:
   - verify/convolution/convolution/convolution_static_barrett_old_test.nim
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/xor_convolution_boundary_test.nim
+  - verify/convolution/bitwise_or_convolution_test.nim
+  - verify/convolution/bitwise_or_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/modint/modint_arithmetic_test.nim
@@ -1121,10 +1268,16 @@ data:
   - verify/modint/integer_operation_test.nim
   - verify/modint/montgomery_equality_test.nim
   - verify/modint/montgomery_equality_test.nim
+  - verify/utils/digit_dp_initial_state_test.nim
+  - verify/utils/digit_dp_initial_state_test.nim
   - verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/digit_dp_callbacks_test.nim
+  - verify/utils/digit_dp_callbacks_test.nim
+  - verify/utils/digit_dp_test.nim
+  - verify/utils/digit_dp_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
@@ -1137,6 +1290,20 @@ data:
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - verify/set_power_series/log_of_set_power_series_test.nim
+  - verify/set_power_series/log_of_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - verify/set_power_series/subset_convolution_regression_test.nim
+  - verify/set_power_series/subset_convolution_regression_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/exp_of_set_power_series_test.nim
+  - verify/set_power_series/exp_of_set_power_series_test.nim
+  - verify/set_power_series/subset_convolution_test.nim
+  - verify/set_power_series/subset_convolution_test.nim
   - verify/AI/chirp_z_test.nim
   - verify/AI/chirp_z_test.nim
   - verify/AI/fps_elementary_test.nim
@@ -1195,6 +1362,10 @@ data:
   - verify/AI/convolution_test.nim
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/barrett_unsigned_test.nim
+  - verify/math/barrett_unsigned_test.nim
+  - verify/math/crt_test.nim
+  - verify/math/crt_test.nim
   - verify/math/modfast_test.nim
   - verify/math/modfast_test.nim
   - verify/math/division_of_big_integers_test.nim

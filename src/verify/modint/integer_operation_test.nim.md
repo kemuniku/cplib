@@ -63,18 +63,18 @@ data:
     \ (x + mint(y)).val == (mint(x) + mint(y)).val\n            assert (mint(x) +\
     \ y).val == (mint(x) + mint(y)).val\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/modint/integer_operation_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/modint/integer_operation_test.nim

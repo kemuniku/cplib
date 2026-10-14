@@ -228,30 +228,30 @@ data:
     \ = uint32(e)\n                value = value * result.generator mod p\n      \
     \  else:\n            let limit = result.buildFractions()\n            result.buildLogarithms(limit)\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
   - cplib/modint/modint.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/powmod.nim
   - cplib/math/isqrt.nim
-  - cplib/math/primitive_root.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/primitive_root.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/modint/modint.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: false
   path: cplib/math/modfast.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/modfast_test.nim

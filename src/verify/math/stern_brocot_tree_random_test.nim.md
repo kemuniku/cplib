@@ -95,10 +95,10 @@ data:
     testSmall[int64]()\ntestLarge[int]()\ntestLarge[int32]()\ntestLarge[int64]()\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/math/stern_brocot_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/math/fractions.nim
   - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
   isVerificationFile: true

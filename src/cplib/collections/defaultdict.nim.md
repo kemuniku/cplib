@@ -34,6 +34,12 @@ data:
     path: verify/AI/defaultdict_test.nim
     title: verify/AI/defaultdict_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/defaultdict/defaultdict_get_test.nim
+    title: verify/collections/defaultdict/defaultdict_get_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/defaultdict/defaultdict_get_test.nim
+    title: verify/collections/defaultdict/defaultdict_get_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/defaultdict/defaultdict_unit_test.nim
     title: verify/collections/defaultdict/defaultdict_unit_test.nim
   - icon: ':heavy_check_mark:'
@@ -56,12 +62,17 @@ data:
     \ V): DefaultDict[K, V] = DefaultDict[K, V](table: initTable[K, V](), default:\
     \ default)\n    proc `==`*[K, V](src, dst: DefaultDict[K, V]): bool = src.table\
     \ == dst.table\n    proc `[]=`*[K, V](d: var DefaultDict[K, V], key: K, val: V)\
-    \ = d.table[key] = val\n    proc `[]`*[K, V](d: DefaultDict[K, V], key: K): V\
-    \ =\n        if key notin d.table: return d.default\n        return d.table[key]\n\
-    \    proc `[]`*[K, V](d: var DefaultDict[K, V], key: K): var V =\n        if key\
-    \ notin d.table: d.table[key] = d.default\n        return d.table[key]\n    proc\
-    \ clear*[K, V](d: var DefaultDict[K, V]) = d.table = initTable[K, V](0)\n    proc\
-    \ contains*[K, V](d: var DefaultDict[K, V], key: K): bool = d.table.contains(key)\n\
+    \ = d.table[key] = val\n    proc get*[K, V](d: DefaultDict[K, V], key: K): V =\n\
+    \        ## \u30AD\u30FC\u3092\u633F\u5165\u305B\u305A\u3001\u767B\u9332\u5024\
+    \u307E\u305F\u306F\u521D\u671F\u5316\u6642\u306E\u65E2\u5B9A\u5024\u3092\u8FD4\
+    \u3059\u3002\u5E73\u5747 O(1)\u3001\u6700\u60AA O(n)\uFF08\u30CF\u30C3\u30B7\u30E5\
+    \u30FB\u5024\u30B3\u30D4\u30FC\u306E\u8CBB\u7528\u3092\u9664\u304F\uFF09\u3002\
+    \n        d.table.getOrDefault(key, d.default)\n    proc `[]`*[K, V](d: DefaultDict[K,\
+    \ V], key: K): V =\n        if key notin d.table: return d.default\n        return\
+    \ d.table[key]\n    proc `[]`*[K, V](d: var DefaultDict[K, V], key: K): var V\
+    \ =\n        if key notin d.table: d.table[key] = d.default\n        return d.table[key]\n\
+    \    proc clear*[K, V](d: var DefaultDict[K, V]) = d.table = initTable[K, V](0)\n\
+    \    proc contains*[K, V](d: var DefaultDict[K, V], key: K): bool = d.table.contains(key)\n\
     \    proc del*[K, V](d: var DefaultDict[K, V], key: K) = d.table.del(key)\n  \
     \  proc hash*[K, V](d: DefaultDict[K, V]): Hash = d.table.hash\n    proc hasKey*[K,\
     \ V](d: DefaultDict[K, V], key: K): bool = d.table.hasKey(key)\n    proc len*[K,\
@@ -90,11 +101,13 @@ data:
   - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
-  timestamp: '2026-07-06 22:23:54+09:00'
+  timestamp: '2026-10-04 21:25:36+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/defaultdict/defaultdict_unit_test.nim
   - verify/collections/defaultdict/defaultdict_unit_test.nim
+  - verify/collections/defaultdict/defaultdict_get_test.nim
+  - verify/collections/defaultdict/defaultdict_get_test.nim
   - verify/AI/defaultdict_test.nim
   - verify/AI/defaultdict_test.nim
 documentation_of: cplib/collections/defaultdict.nim

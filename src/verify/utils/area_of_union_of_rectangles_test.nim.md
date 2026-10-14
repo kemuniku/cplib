@@ -45,18 +45,18 @@ data:
     \ N = ii()\n\nvar tmp : seq[(int,int,int,int)]\n\nfor _ in range(N):\n    var\
     \ l,d,r,u = ii()\n    tmp.add((l,d,r,u))\n\nprint area_of_union_of_rectangles(tmp)\n"
   dependsOn:
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/area_of_union_of_rectangles.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/area_of_union_of_rectangles.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/utils/area_of_union_of_rectangles.nim
-  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/utils/area_of_union_of_rectangles_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 03:10:25+09:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/area_of_union_of_rectangles_test.nim

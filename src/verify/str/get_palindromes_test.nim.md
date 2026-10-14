@@ -60,22 +60,22 @@ data:
     \   assert not HS[(l-1)..<(r+1)].isPalindrome()\n\necho palindromes.mapit(it[1]-it[0]).join(\"\
     \ \")"
   dependsOn:
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
-  - cplib/str/manacher.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/backwards_index.nim
-  - cplib/str/can_reverse_hash_string.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/str/manacher.nim
   - cplib/utils/backwards_index.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/str/manacher.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/str/get_palindromes_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 03:10:25+09:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/get_palindromes_test.nim

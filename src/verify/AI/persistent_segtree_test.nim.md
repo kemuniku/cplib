@@ -152,8 +152,8 @@ data:
     \ == 4097\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/persistent_segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/persistent_segtree.nim
   isVerificationFile: true
   path: verify/AI/persistent_segtree_test.nim

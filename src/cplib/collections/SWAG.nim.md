@@ -10,6 +10,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/SWAG_newswagwith_test.nim
+    title: verify/AI/SWAG_newswagwith_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/SWAG_newswagwith_test.nim
+    title: verify/AI/SWAG_newswagwith_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/SWAG_test.nim
     title: verify/AI/SWAG_test.nim
   - icon: ':heavy_check_mark:'
@@ -50,8 +56,14 @@ data:
     \ seq[T]\n        bottom: seq[T]\n        topfold: seq[T]\n        bottomfold:\
     \ seq[T]\n    proc initSWAG*[T](op: proc(x, y: T): T, e: T): SWAG[T] =\n     \
     \   result = SWAG[T](op: op, e: e, top: @[], bottom: @[], topfold: @[e], bottomfold:\
-    \ @[e])\n    proc pushbottom[T](self: SWAG[T], x: T) =\n        self.bottom.add(x)\n\
-    \        self.bottomfold.add(self.op(self.bottomfold[^1], x))\n    proc popbottom[T](self:\
+    \ @[e])\n    template newSwagWith*(merge, default: untyped): untyped =\n     \
+    \   ## \u6F14\u7B97\u5F0F\uFF08\u5DE6\u304Cl\u3001\u53F3\u304Cr\uFF09\u3068\u5358\
+    \u4F4D\u5143\u304B\u3089\u7A7A\u306ESWAG\u3092O(1)\u3067\u751F\u6210\u3057\u307E\
+    \u3059\u3002\u578B\u306F\u5358\u4F4D\u5143\u304B\u3089\u63A8\u8AD6\u3057\u307E\
+    \u3059\u3002\n        ## \u4F8B: var swag = newSwagWith(l + r, 0)\n        initSWAG[typeof(default)](proc\
+    \ (l{.inject.}, r{.inject.}: typeof(default)): typeof(default) = merge, default)\n\
+    \    proc pushbottom[T](self: SWAG[T], x: T) =\n        self.bottom.add(x)\n \
+    \       self.bottomfold.add(self.op(self.bottomfold[^1], x))\n    proc popbottom[T](self:\
     \ SWAG[T]): T =\n        discard self.bottomfold.pop()\n        self.bottom.pop()\n\
     \    proc pushtop[T](self: SWAG[T], x: T) =\n        self.top.add(x)\n       \
     \ self.topfold.add(self.op(x, self.topfold[^1]))\n    proc poptop[T](self: SWAG[T]):\
@@ -96,13 +108,15 @@ data:
   isVerificationFile: false
   path: cplib/collections/SWAG.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-06 00:15:45+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
   - verify/collections/SWAG_test.nim
   - verify/collections/SWAG_test.nim
+  - verify/AI/SWAG_newswagwith_test.nim
+  - verify/AI/SWAG_newswagwith_test.nim
   - verify/AI/SWAG_test.nim
   - verify/AI/SWAG_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

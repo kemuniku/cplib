@@ -56,16 +56,16 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/tmpl/fastio.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: verify/collections/retroactive_priority_queue_abc363g_test_.nim
   requiredBy: []
-  timestamp: '2026-10-01 03:10:25+09:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/retroactive_priority_queue_abc363g_test_.nim

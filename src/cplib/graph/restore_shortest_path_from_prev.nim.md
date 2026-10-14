@@ -94,6 +94,18 @@ data:
     path: verify/AI/graph_weight_type_test.nim
     title: verify/AI/graph_weight_type_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_bfs_test.nim
+    title: verify/AI/implicit_bfs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_bfs_test.nim
+    title: verify/AI/implicit_bfs_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_dijkstra_test.nim
+    title: verify/AI/implicit_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/implicit_dijkstra_test.nim
+    title: verify/AI/implicit_dijkstra_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/maxk_dijkstra_test.nim
     title: verify/AI/maxk_dijkstra_test.nim
   - icon: ':heavy_check_mark:'
@@ -228,6 +240,10 @@ data:
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/restore_shortest_path_from_prev_test.nim
   - verify/AI/restore_shortest_path_from_prev_test.nim
+  - verify/AI/implicit_bfs_test.nim
+  - verify/AI/implicit_bfs_test.nim
+  - verify/AI/implicit_dijkstra_test.nim
+  - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/bellmanford_test.nim
   - verify/AI/bellmanford_test.nim
   - verify/AI/dijkstra_radix_test.nim

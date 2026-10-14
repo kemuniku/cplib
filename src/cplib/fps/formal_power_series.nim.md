@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -172,6 +178,12 @@ data:
     path: verify/AI/sparse_fps_elementary_test.nim
     title: verify/AI/sparse_fps_elementary_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -183,6 +195,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
@@ -303,45 +321,46 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_FPS_FORMAL_POWER_SERIES:\n    const CPLIB_FPS_FORMAL_POWER_SERIES*\
-    \ = 1\n\n    import algorithm, options\n    import cplib/convolution/convolution\n\
-    \    import cplib/modint/modint\n    import cplib/math/isprime\n\n    proc prefix*[T](f:\
-    \ seq[T], n: int): seq[T] =\n        ## f \u3092 x^n \u3067\u6253\u3061\u5207\u308B\
-    \u3002\u8FD4\u308A\u5024\u306E\u9577\u3055\u306F max(n, 0) \u306B\u306A\u308B\u3002\
-    \n        if n <= 0: return @[]\n        result = newSeq[T](n)\n        for i\
-    \ in 0..<min(f.len, n): result[i] = f[i]\n\n    proc coefficient*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T], degree: int): T =\n        ## \u6307\u5B9A\u3057\
-    \u305F\u6B21\u6570\u306E\u4FC2\u6570\u3092\u8FD4\u3059\u3002\u7BC4\u56F2\u5916\
-    \u306A\u3089\u96F6\u3092\u8FD4\u3059\u3002\n        if degree < 0 or degree >=\
-    \ f.len: return init(T, 0)\n        result = f[degree]\n\n    proc normalized*[T:\
-    \ BarrettModint or MontgomeryModint](f: seq[T]): seq[T] =\n        ## \u9AD8\u6B21\
-    \u5074\u306E\u4E0D\u8981\u306A\u96F6\u4FC2\u6570\u3092\u53D6\u308A\u9664\u304F\
-    \u3002\n        result = f\n        while result.len > 0 and result[^1].val ==\
-    \ 0: result.setLen(result.len - 1)\n\n    proc `+`*[T: BarrettModint or MontgomeryModint](f,\
+    \ = 1\n\n    import algorithm, options\n    import cplib/convolution/algorithm_ntt\n\
+    \    import cplib/convolution/convolution\n    import cplib/modint/modint\n  \
+    \  import cplib/math/isprime\n\n    proc prefix*[T](f: seq[T], n: int): seq[T]\
+    \ =\n        ## f \u3092 x^n \u3067\u6253\u3061\u5207\u308B\u3002\u8FD4\u308A\u5024\
+    \u306E\u9577\u3055\u306F max(n, 0) \u306B\u306A\u308B\u3002\n        if n <= 0:\
+    \ return @[]\n        result = newSeq[T](n)\n        for i in 0..<min(f.len, n):\
+    \ result[i] = f[i]\n\n    proc coefficient*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], degree: int): T =\n        ## \u6307\u5B9A\u3057\u305F\u6B21\u6570\u306E\
+    \u4FC2\u6570\u3092\u8FD4\u3059\u3002\u7BC4\u56F2\u5916\u306A\u3089\u96F6\u3092\
+    \u8FD4\u3059\u3002\n        if degree < 0 or degree >= f.len: return init(T, 0)\n\
+    \        result = f[degree]\n\n    proc normalized*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T]): seq[T] =\n        ## \u9AD8\u6B21\u5074\u306E\u4E0D\u8981\u306A\u96F6\
+    \u4FC2\u6570\u3092\u53D6\u308A\u9664\u304F\u3002\n        result = f\n       \
+    \ while result.len > 0 and result[^1].val == 0: result.setLen(result.len - 1)\n\
+    \n    proc `+`*[T: BarrettModint or MontgomeryModint](f, g: seq[T]): seq[T] =\n\
+    \        result = newSeq[T](max(f.len, g.len))\n        for i in 0..<f.len: result[i]\
+    \ += f[i]\n        for i in 0..<g.len: result[i] += g[i]\n\n    proc `+`*[T: BarrettModint\
+    \ or MontgomeryModint](f: seq[T], c: SomeInteger): seq[T] =\n        result =\
+    \ f\n        if result.len == 0: result.add(init(T, c))\n        else: result[0]\
+    \ += c\n\n    proc `+`*[T: BarrettModint or MontgomeryModint](c: SomeInteger,\
+    \ f: seq[T]): seq[T] = f + c\n\n    proc `-`*[T: BarrettModint or MontgomeryModint](f,\
     \ g: seq[T]): seq[T] =\n        result = newSeq[T](max(f.len, g.len))\n      \
     \  for i in 0..<f.len: result[i] += f[i]\n        for i in 0..<g.len: result[i]\
-    \ += g[i]\n\n    proc `+`*[T: BarrettModint or MontgomeryModint](f: seq[T], c:\
-    \ SomeInteger): seq[T] =\n        result = f\n        if result.len == 0: result.add(init(T,\
-    \ c))\n        else: result[0] += c\n\n    proc `+`*[T: BarrettModint or MontgomeryModint](c:\
-    \ SomeInteger, f: seq[T]): seq[T] = f + c\n\n    proc `-`*[T: BarrettModint or\
-    \ MontgomeryModint](f, g: seq[T]): seq[T] =\n        result = newSeq[T](max(f.len,\
-    \ g.len))\n        for i in 0..<f.len: result[i] += f[i]\n        for i in 0..<g.len:\
-    \ result[i] -= g[i]\n\n    proc `-`*[T: BarrettModint or MontgomeryModint](f:\
-    \ seq[T]): seq[T] =\n        result = newSeq[T](f.len)\n        for i in 0..<f.len:\
-    \ result[i] = -f[i]\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](f,\
-    \ g: seq[T]): seq[T] =\n        convolution(f, g)\n\n    proc `*`*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n\
-    \        for i in 0..<f.len: result[i] = f[i] * c\n\n    proc `*`*[T: BarrettModint\
-    \ or MontgomeryModint](c: T, f: seq[T]): seq[T] = f * c\n\n    proc `/`*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n\
-    \        let cinv = c.inv\n        for i in 0..<f.len: result[i] = f[i] * cinv\n\
-    \n    proc `+=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T])\
-    \ =\n        if f.len < g.len: f.setLen(g.len)\n        for i in 0..<g.len: f[i]\
-    \ += g[i]\n\n    proc `+=`*[T: BarrettModint or MontgomeryModint](f: var seq[T],\
-    \ c: SomeInteger) =\n        if f.len == 0: f.add(init(T, c))\n        else: f[0]\
-    \ += c\n\n    proc `-=`*[T: BarrettModint or MontgomeryModint](f: var seq[T],\
-    \ g: seq[T]) =\n        if f.len < g.len: f.setLen(g.len)\n        for i in 0..<g.len:\
-    \ f[i] -= g[i]\n\n    proc `*=`*[T: BarrettModint or MontgomeryModint](f: var\
-    \ seq[T], c: T) =\n        for x in f.mitems: x *= c\n\n    proc `/=`*[T: BarrettModint\
+    \ -= g[i]\n\n    proc `-`*[T: BarrettModint or MontgomeryModint](f: seq[T]): seq[T]\
+    \ =\n        result = newSeq[T](f.len)\n        for i in 0..<f.len: result[i]\
+    \ = -f[i]\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](f, g: seq[T]):\
+    \ seq[T] =\n        convolution(f, g)\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n        for i in\
+    \ 0..<f.len: result[i] = f[i] * c\n\n    proc `*`*[T: BarrettModint or MontgomeryModint](c:\
+    \ T, f: seq[T]): seq[T] = f * c\n\n    proc `/`*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], c: T): seq[T] =\n        result = newSeq[T](f.len)\n        let cinv\
+    \ = c.inv\n        for i in 0..<f.len: result[i] = f[i] * cinv\n\n    proc `+=`*[T:\
+    \ BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T]) =\n        if f.len\
+    \ < g.len: f.setLen(g.len)\n        for i in 0..<g.len: f[i] += g[i]\n\n    proc\
+    \ `+=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], c: SomeInteger) =\n\
+    \        if f.len == 0: f.add(init(T, c))\n        else: f[0] += c\n\n    proc\
+    \ `-=`*[T: BarrettModint or MontgomeryModint](f: var seq[T], g: seq[T]) =\n  \
+    \      if f.len < g.len: f.setLen(g.len)\n        for i in 0..<g.len: f[i] -=\
+    \ g[i]\n\n    proc `*=`*[T: BarrettModint or MontgomeryModint](f: var seq[T],\
+    \ c: T) =\n        for x in f.mitems: x *= c\n\n    proc `/=`*[T: BarrettModint\
     \ or MontgomeryModint](f: var seq[T], c: T) =\n        let cinv = c.inv\n    \
     \    for x in f.mitems: x *= cinv\n\n    proc derivative*[T: BarrettModint or\
     \ MontgomeryModint](f: seq[T]): seq[T] =\n        if f.len <= 1: return @[]\n\
@@ -437,59 +456,83 @@ data:
     \ - f'g\u306F\u6B21\u6570m-1\u672A\u6E80\u304C\u96F6\u3002\u5DE1\u56DE\u7573\u307F\
     \u8FBC\u307F\u306E\u6298\u308A\u8FD4\u3057\u306F\u305D\u3053\u307E\u3067\u306B\
     \u53CE\u307E\u308B\u3002\n            let dfPrefix = if df.len < next: df else:\
-    \ df[0..<next - 1]\n            let product = convolutionCyclicPowerOfTwo(dfPrefix,\
-    \ result, m * 2)\n            var error = newSeq[T](next - m)\n            for\
-    \ i in 0..<error.len: error[i] = -product[m - 1 + i]\n            let quotient\
-    \ = error * prefix(inverse, error.len)\n            for i in 0..<error.len: error[i]\
-    \ = -quotient[i] * inverses[m + i]\n            let extension = result * error\n\
-    \            result.setLen(next)\n            for i in 0..<error.len: result[m\
-    \ + i] = extension[i]\n            m = next\n\n    proc exp*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T]): seq[T] = f.exp(f.len)\n\n    proc pow*[T: BarrettModint\
-    \ or MontgomeryModint](f: seq[T], k, n: int): seq[T] =\n        ## x^n \u3067\u6253\
-    \u3061\u5207\u3063\u305F\u6574\u6570\u51AA\u3092\u6C42\u3081\u308B\u3002k \u306F\
-    \u975E\u8CA0\u3067\u306A\u3051\u308C\u3070\u306A\u3089\u306A\u3044\u3002\n   \
-    \     assert k >= 0, \"FPS\u306E\u6574\u6570\u51AA\u3067\u306F\u6307\u6570\u304C\
-    \u975E\u8CA0\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        if n <=\
-    \ 0: return @[]\n        assert n <= T.umod.int, \"FPS\u306E\u6574\u6570\u51AA\
-    \u3067\u306F n \u304C\u6CD5\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308B\"\n        if k == 0:\n            result = newSeq[T](n)\n            result[0]\
-    \ = 1\n            return\n        if k == 1: return prefix(f, n)\n        var\
-    \ ord = 0\n        while ord < f.len and f[ord].val == 0: inc ord\n        if\
-    \ ord == f.len or ord > (n - 1) div k: return newSeq[T](n)\n        let shift\
-    \ = ord * k\n        let c = f[ord]\n        let size = n - shift\n        var\
-    \ unit = newSeq[T](min(f.len - ord, size))\n        let cinv = c.inv\n       \
-    \ for i in 0..<unit.len: unit[i] = f[ord + i] * cinv\n        var body = (unit.log(size)\
-    \ * init(T, k)).exp(size)\n        body *= c.pow(k)\n        result = newSeq[T](n)\n\
-    \        for i in 0..<body.len: result[shift + i] = body[i]\n\n    proc pow*[T:\
-    \ BarrettModint or MontgomeryModint](f: seq[T], k: int): seq[T] = f.pow(k, f.len)\n\
-    \n    proc modSqrt[T: BarrettModint or MontgomeryModint](a: T): Option[T] =\n\
-    \        ## Tonelli--Shanks\u6CD5\u3002\u6CD5\u304C\u7D20\u6570\u3067\u3042\u308B\
-    \u3053\u3068\u3092\u4EEE\u5B9A\u3059\u308B\u3002\n        let p = T.umod.int\n\
-    \        if a.val == 0: return some(init(T, 0))\n        if p == 2: return some(a)\n\
-    \        if a.pow((p - 1) div 2).val != 1: return none(T)\n        if p mod 4\
-    \ == 3: return some(a.pow((p + 1) div 4))\n        var q = p - 1\n        var\
-    \ s = 0\n        while (q and 1) == 0:\n            q = q shr 1\n            inc\
-    \ s\n        var z = init(T, 2)\n        while z.pow((p - 1) div 2).val != p -\
-    \ 1: z += 1\n        var c = z.pow(q)\n        var x = a.pow((q + 1) div 2)\n\
-    \        var t = a.pow(q)\n        var m = s\n        while t.val != 1:\n    \
-    \        var i = 1\n            var tt = t * t\n            while i < m and tt.val\
-    \ != 1:\n                tt *= tt\n                inc i\n            if i ==\
-    \ m: return none(T)\n            let b = c.pow(1 shl (m - i - 1))\n          \
-    \  x *= b\n            c = b * b\n            t *= c\n            m = i\n    \
-    \    some(x)\n\n    proc sqrt*[T: BarrettModint or MontgomeryModint](f: seq[T],\
-    \ n: int): Option[seq[T]] =\n        ## x^n \u3092\u6CD5\u3068\u3057\u305F\u5F62\
-    \u5F0F\u7684\u5E73\u65B9\u6839\u3092\u6C42\u3081\u308B\u3002\u5B58\u5728\u3057\
-    \u306A\u3044\u5834\u5408\u306Fnone\u3092\u8FD4\u3059\u3002\n        if n <= 0:\
-    \ return some(newSeq[T]())\n        var ord = 0\n        while ord < min(f.len,\
-    \ n) and f[ord].val == 0: inc ord\n        if ord == min(f.len, n): return some(newSeq[T](n))\n\
-    \        if (ord and 1) != 0: return none(seq[T])\n        let shift = ord div\
-    \ 2\n        let root0 = modSqrt(f[ord])\n        if root0.isNone: return none(seq[T])\n\
-    \        let size = n - shift\n        var unit = newSeq[T](min(f.len - ord, size))\n\
-    \        for i in 0..<unit.len: unit[i] = f[ord + i]\n        var root = @[root0.get]\n\
-    \        var inverse = @[root0.get.inv]\n        let half = if size > 1: init(T,\
-    \ 2).inv else: init(T, 0)\n        var m = 1\n        while m < size:\n      \
-    \      let next = min(m * 2, size)\n            if inverse.len < m: fpsInvExtend(root,\
-    \ inverse, m)\n            let square = root * root\n            var error = newSeq[T](next\
+    \ df[0..<next - 1]\n            if m >= 16384 and canUseMultipointTreeNtt(T.umod,\
+    \ m * 2):\n                var context = initAlgorithmNtt(T.umod, m * 2)\n   \
+    \             defer: context.close()\n                let fixed = context.spectrum(result)\n\
+    \                var product = context.spectrumProduct(context.spectrum(dfPrefix),\
+    \ fixed)\n                var error = context.coefficients(product, m - 1, next\
+    \ - m, T)\n                for x in error.mitems: x = -x\n                product\
+    \ = context.spectrumProduct(context.spectrum(error),\n                    context.spectrum(inverse.toOpenArray(0,\
+    \ error.len - 1)))\n                error = context.coefficients(product, 0, error.len,\
+    \ T)\n                for i in 0..<error.len: error[i] *= -inverses[m + i]\n \
+    \               product = context.spectrumProduct(context.spectrum(error), fixed)\n\
+    \                let extension = context.coefficients(product, 0, error.len, T)\n\
+    \                result.setLen(next)\n                for i in 0..<extension.len:\
+    \ result[m + i] = extension[i]\n                m = next\n                continue\n\
+    \            let product = convolutionCyclicPowerOfTwo(dfPrefix, result, m * 2)\n\
+    \            var error = newSeq[T](next - m)\n            for i in 0..<error.len:\
+    \ error[i] = -product[m - 1 + i]\n            let quotient = error * prefix(inverse,\
+    \ error.len)\n            for i in 0..<error.len: error[i] = -quotient[i] * inverses[m\
+    \ + i]\n            let extension = result * error\n            result.setLen(next)\n\
+    \            for i in 0..<error.len: result[m + i] = extension[i]\n          \
+    \  m = next\n\n    proc exp*[T: BarrettModint or MontgomeryModint](f: seq[T]):\
+    \ seq[T] = f.exp(f.len)\n\n    proc pow*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], k, n: int): seq[T] =\n        ## x^n \u3067\u6253\u3061\u5207\u3063\u305F\
+    \u6574\u6570\u51AA\u3092\u6C42\u3081\u308B\u3002k \u306F\u975E\u8CA0\u3067\u306A\
+    \u3051\u308C\u3070\u306A\u3089\u306A\u3044\u3002\n        assert k >= 0, \"FPS\u306E\
+    \u6574\u6570\u51AA\u3067\u306F\u6307\u6570\u304C\u975E\u8CA0\u3067\u3042\u308B\
+    \u5FC5\u8981\u304C\u3042\u308B\"\n        if n <= 0: return @[]\n        assert\
+    \ n <= T.umod.int, \"FPS\u306E\u6574\u6570\u51AA\u3067\u306F n \u304C\u6CD5\u4EE5\
+    \u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\"\n        if k == 0:\n\
+    \            result = newSeq[T](n)\n            result[0] = 1\n            return\n\
+    \        if k == 1: return prefix(f, n)\n        var ord = 0\n        while ord\
+    \ < f.len and f[ord].val == 0: inc ord\n        if ord == f.len or ord > (n -\
+    \ 1) div k: return newSeq[T](n)\n        let shift = ord * k\n        let c =\
+    \ f[ord]\n        let size = n - shift\n        var unit = newSeq[T](min(f.len\
+    \ - ord, size))\n        let cinv = c.inv\n        for i in 0..<unit.len: unit[i]\
+    \ = f[ord + i] * cinv\n        var body = (unit.log(size) * init(T, k)).exp(size)\n\
+    \        body *= c.pow(k)\n        result = newSeq[T](n)\n        for i in 0..<body.len:\
+    \ result[shift + i] = body[i]\n\n    proc pow*[T: BarrettModint or MontgomeryModint](f:\
+    \ seq[T], k: int): seq[T] = f.pow(k, f.len)\n\n    proc modSqrt[T: BarrettModint\
+    \ or MontgomeryModint](a: T): Option[T] =\n        ## Tonelli--Shanks\u6CD5\u3002\
+    \u6CD5\u304C\u7D20\u6570\u3067\u3042\u308B\u3053\u3068\u3092\u4EEE\u5B9A\u3059\
+    \u308B\u3002\n        let p = T.umod.int\n        if a.val == 0: return some(init(T,\
+    \ 0))\n        if p == 2: return some(a)\n        if a.pow((p - 1) div 2).val\
+    \ != 1: return none(T)\n        if p mod 4 == 3: return some(a.pow((p + 1) div\
+    \ 4))\n        var q = p - 1\n        var s = 0\n        while (q and 1) == 0:\n\
+    \            q = q shr 1\n            inc s\n        var z = init(T, 2)\n    \
+    \    while z.pow((p - 1) div 2).val != p - 1: z += 1\n        var c = z.pow(q)\n\
+    \        var x = a.pow((q + 1) div 2)\n        var t = a.pow(q)\n        var m\
+    \ = s\n        while t.val != 1:\n            var i = 1\n            var tt =\
+    \ t * t\n            while i < m and tt.val != 1:\n                tt *= tt\n\
+    \                inc i\n            if i == m: return none(T)\n            let\
+    \ b = c.pow(1 shl (m - i - 1))\n            x *= b\n            c = b * b\n  \
+    \          t *= c\n            m = i\n        some(x)\n\n    proc sqrt*[T: BarrettModint\
+    \ or MontgomeryModint](f: seq[T], n: int): Option[seq[T]] =\n        ## x^n \u3092\
+    \u6CD5\u3068\u3057\u305F\u5F62\u5F0F\u7684\u5E73\u65B9\u6839\u3092\u6C42\u3081\
+    \u308B\u3002\u5B58\u5728\u3057\u306A\u3044\u5834\u5408\u306Fnone\u3092\u8FD4\u3059\
+    \u3002\n        if n <= 0: return some(newSeq[T]())\n        var ord = 0\n   \
+    \     while ord < min(f.len, n) and f[ord].val == 0: inc ord\n        if ord ==\
+    \ min(f.len, n): return some(newSeq[T](n))\n        if (ord and 1) != 0: return\
+    \ none(seq[T])\n        let shift = ord div 2\n        let root0 = modSqrt(f[ord])\n\
+    \        if root0.isNone: return none(seq[T])\n        let size = n - shift\n\
+    \        var unit = newSeq[T](min(f.len - ord, size))\n        for i in 0..<unit.len:\
+    \ unit[i] = f[ord + i]\n        var root = @[root0.get]\n        var inverse =\
+    \ @[root0.get.inv]\n        let half = if size > 1: init(T, 2).inv else: init(T,\
+    \ 0)\n        var m = 1\n        while m < size:\n            let next = min(m\
+    \ * 2, size)\n            if inverse.len < m: fpsInvExtend(root, inverse, m)\n\
+    \            if m >= 16384 and canUseMultipointTreeNtt(T.umod, m * 2):\n     \
+    \           var context = initAlgorithmNtt(T.umod, m * 2)\n                defer:\
+    \ context.close()\n                let transformed = context.spectrum(root)\n\
+    \                var product = context.spectrumProduct(transformed, transformed)\n\
+    \                var error = context.coefficients(product, m, next - m, T)\n \
+    \               for i in 0..<error.len:\n                    error[i] = (unit.coefficient(m\
+    \ + i) - error[i]) * half\n                product = context.spectrumProduct(context.spectrum(error),\n\
+    \                    context.spectrum(inverse.toOpenArray(0, error.len - 1)))\n\
+    \                let extension = context.coefficients(product, 0, error.len, T)\n\
+    \                root.setLen(next)\n                for i in 0..<extension.len:\
+    \ root[m + i] = extension[i]\n                m = next\n                continue\n\
+    \            let square = root * root\n            var error = newSeq[T](next\
     \ - m)\n            for i in 0..<error.len:\n                error[i] = (unit.coefficient(m\
     \ + i) - square.coefficient(m + i)) * half\n            let extension = error\
     \ * prefix(inverse, error.len)\n            root.setLen(next)\n            for\
@@ -512,20 +555,22 @@ data:
     \ seq[T], x: T): T =\n        for i in countdown(f.high, 0): result = result *\
     \ x + f[i]\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/fps/formal_power_series.nim
   requiredBy:
@@ -549,15 +594,19 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/math/many_factorials.nim
   - cplib/math/many_factorials.nim
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
+  - verify/fps/composition_regression_test.nim
+  - verify/fps/composition_regression_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/inv_of_formal_power_series_test.nim

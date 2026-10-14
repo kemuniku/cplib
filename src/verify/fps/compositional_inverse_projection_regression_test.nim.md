@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -133,30 +139,32 @@ data:
     \ next[i+j] += power[i] * f[j]\n                    power = move(next)\nprojectionSuite[modint998244353_barrett]()\n\
     projectionSuite[modint998244353_montgomery]()\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/composition.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/composition.nim
+  - cplib/fps/power_projection.nim
   - cplib/convolution/convolution.nim
-  - cplib/fps/power_projection.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/power_projection.nim
+  - cplib/fps/composition.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/composition.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/fps/power_projection.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: true
   path: verify/fps/compositional_inverse_projection_regression_test.nim
   requiredBy: []
-  timestamp: '2026-10-05 00:47:58+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps/compositional_inverse_projection_regression_test.nim

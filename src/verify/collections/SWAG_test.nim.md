@@ -39,14 +39,14 @@ data:
     \    elif q == 3:\n        discard swag.popLast()\n    else:\n        var x =\
     \ ii()\n        var (a, b) = swag.fold()\n        echo (a*x mod MOD + b) mod MOD\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/SWAG.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/SWAG.nim
   isVerificationFile: true
   path: verify/collections/SWAG_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-06 00:15:45+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/SWAG_test.nim

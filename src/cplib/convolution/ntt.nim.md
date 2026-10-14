@@ -88,6 +88,12 @@ data:
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -328,14 +334,14 @@ data:
     \ b)]\n            width = (width shl 2)\n        var ninv = T(n).inv\n      \
     \  for i in 0..<n: f[i] *= ninv\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/ntt.nim
   requiredBy:
@@ -345,9 +351,11 @@ data:
   - cplib/convolution/relaxed_convolution.nim
   - cplib/convolution/convolution_old.nim
   - cplib/convolution/convolution_old.nim
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim

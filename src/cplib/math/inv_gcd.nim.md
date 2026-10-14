@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -244,6 +250,12 @@ data:
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+    title: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+    title: verify/convolution/convolution/convolution_cyclic_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
     title: verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   - icon: ':heavy_check_mark:'
@@ -298,6 +310,12 @@ data:
     path: verify/convolution/relaxed_convolution_test.nim
     title: verify/convolution/relaxed_convolution_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
   - icon: ':heavy_check_mark:'
@@ -309,6 +327,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_test.nim
     title: verify/fps/composition_of_formal_power_series_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/composition_regression_test.nim
+    title: verify/fps/composition_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
     title: verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
@@ -552,6 +576,8 @@ data:
   - cplib/convolution/convolution.nim
   - cplib/convolution/convolution_old.nim
   - cplib/convolution/convolution_old.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/algorithm_ntt.nim
   - cplib/convolution/semi_relaxed_convolution.nim
   - cplib/convolution/semi_relaxed_convolution.nim
   - cplib/math/crt.nim
@@ -567,6 +593,8 @@ data:
   timestamp: '2026-03-18 01:19:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/relaxed_exp_of_formal_power_series_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
@@ -577,6 +605,8 @@ data:
   - verify/fps/relaxed_log_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
   - verify/fps/compositional_inverse_projection_regression_test.nim
+  - verify/fps/composition_regression_test.nim
+  - verify/fps/composition_regression_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/log_of_formal_power_series_test.nim
   - verify/fps/inv_of_formal_power_series_test.nim
@@ -625,6 +655,8 @@ data:
   - verify/convolution/convolution/convolution_static_barrett_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_test.nim
+  - verify/convolution/convolution/convolution_cyclic_regression_test.nim
+  - verify/convolution/convolution/convolution_cyclic_regression_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_static_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_test.nim

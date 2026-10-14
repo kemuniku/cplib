@@ -67,10 +67,10 @@ data:
     \ step += to_Int128(factor)\n            result.r += result.m * step.to_int()\n\
     \            result.m *= factor\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
   - cplib/math/int128.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/int128.nim
+  - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/math/crt.nim
   requiredBy: []

@@ -9,6 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/bitwise_and_convolution_test.nim
     title: verify/AI/bitwise_and_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/set_power_series_regression_test.nim
+    title: verify/set_power_series/set_power_series_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/set_power_series/set_power_series_regression_test.nim
+    title: verify/set_power_series/set_power_series_regression_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -46,6 +52,8 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
   - verify/AI/bitwise_and_convolution_test.nim
   - verify/AI/bitwise_and_convolution_test.nim
 documentation_of: cplib/convolution/bitwise_and_convolution.nim

@@ -51,20 +51,20 @@ data:
     var points = newSeq[(int, int)](n)\nfor i in 0..<n:\n    points[i] = (ii(), ii())\n\
     for (u, v) in euclidean_mst(points):\n    echo u, \" \", v\n"
   dependsOn:
+  - cplib/geometry/euclidean_mst.nim
   - cplib/tmpl/fastio.nim
+  - cplib/collections/unionfind.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/collections/unionfind.nim
+  - cplib/math/int128.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/math/int128.nim
   - cplib/tmpl/fastio.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/collections/unionfind.nim
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/math/int128.nim
-  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/geometry/euclidean_mst_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 03:10:25+09:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/euclidean_mst_test.nim

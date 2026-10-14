@@ -43,8 +43,8 @@ data:
     \ b[i, j]: '1' else: '0'\n        echo s\n"
   dependsOn:
   - cplib/matrix/matrix_mod2.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/matrix_mod2.nim

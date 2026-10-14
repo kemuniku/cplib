@@ -128,32 +128,32 @@ data:
     \ old.inv(init(TestMint, 2))\n    except AssertionDefect:\n        rejected =\
     \ true\n    doAssert rejected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/inner_math.nim
-  - cplib/math/powmod.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/isprime.nim
-  - cplib/str/run_length_encode.nim
   - cplib/modint/modint.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/modfast.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/powmod.nim
-  - cplib/math/modfast.nim
   - cplib/math/isqrt.nim
-  - cplib/math/primitive_root.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/inner_math.nim
+  - cplib/math/modfast.nim
+  - cplib/math/isprime.nim
+  - cplib/math/modfast.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/primitive_root.nim
+  - cplib/str/run_length_encode.nim
+  - cplib/modint/modint.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
+  - cplib/math/powmod.nim
+  - cplib/math/inner_math.nim
   isVerificationFile: true
   path: verify/math/modfast_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/modfast_test.nim

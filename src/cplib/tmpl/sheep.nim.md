@@ -14,6 +14,12 @@ data:
     path: cplib/utils/constants.nim
     title: cplib/utils/constants.nim
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep_interactive.nim
+    title: cplib/tmpl/sheep_interactive.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/tmpl/sheep_interactive.nim
+    title: cplib/tmpl/sheep_interactive.nim
   - icon: ':warning:'
     path: verify/str/merged_static_string.nim
     title: verify/str/merged_static_string.nim
@@ -22,6 +28,12 @@ data:
     title: verify/str/merged_static_string.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/fastio_interactive_test.nim
+    title: verify/AI/fastio_interactive_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/fastio_interactive_test.nim
+    title: verify/AI/fastio_interactive_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/sheep_test.nim
     title: verify/AI/sheep_test.nim
   - icon: ':heavy_check_mark:'
@@ -117,6 +129,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/utils/area_of_union_of_rectangles_test.nim
     title: verify/utils/area_of_union_of_rectangles_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_bfs_tree_diameter_test.nim
+    title: verify/utils/implicit_bfs_tree_diameter_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_bfs_tree_diameter_test.nim
+    title: verify/utils/implicit_bfs_tree_diameter_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/implicit_dijkstra_shortest_path_test.nim
+    title: verify/utils/implicit_dijkstra_shortest_path_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -206,14 +230,16 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  timestamp: '2026-10-01 03:10:25+09:00'
+  - cplib/tmpl/sheep_interactive.nim
+  - cplib/tmpl/sheep_interactive.nim
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/restore_dijkstra_radix_static_test.nim
@@ -232,10 +258,16 @@ data:
   - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
   - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
+  - verify/AI/fastio_interactive_test.nim
+  - verify/AI/fastio_interactive_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/isprime_yukicoder_test.nim

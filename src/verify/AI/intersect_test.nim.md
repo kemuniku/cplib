@@ -81,12 +81,12 @@ data:
 
     '
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
-  - cplib/geometry/intersect.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
   isVerificationFile: true

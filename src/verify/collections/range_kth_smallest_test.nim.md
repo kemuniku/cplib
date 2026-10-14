@@ -54,11 +54,11 @@ data:
     \\n\")"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
-  - cplib/collections/root_rangesum.nim
-  - cplib/collections/root_rangesum.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/root_rangesum.nim
+  - cplib/collections/root_rangesum.nim
   - cplib/utils/mo.nim
   - cplib/utils/mo.nim
   isVerificationFile: true

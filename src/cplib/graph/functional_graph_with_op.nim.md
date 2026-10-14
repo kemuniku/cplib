@@ -241,15 +241,15 @@ data:
     \            return int(used)\n        return int(used-1'u)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/backwards_index.nim
   - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []

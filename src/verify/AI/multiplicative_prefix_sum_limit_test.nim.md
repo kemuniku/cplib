@@ -64,22 +64,22 @@ data:
     \ * e))\n        doAssert square == x * (x + 1) * (2 * x + 1) / 6\n\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/multiplicative_prefix_sum.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/multiplicative_prefix_sum.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/AI/multiplicative_prefix_sum_limit_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:31:36+09:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/multiplicative_prefix_sum_limit_test.nim

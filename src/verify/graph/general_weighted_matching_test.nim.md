@@ -51,15 +51,15 @@ data:
   - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/general_weighted_matching.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/graph/general_weighted_matching.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
   isVerificationFile: true
   path: verify/graph/general_weighted_matching_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 03:10:25+09:00'
+  timestamp: '2026-10-08 16:48:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/general_weighted_matching_test.nim

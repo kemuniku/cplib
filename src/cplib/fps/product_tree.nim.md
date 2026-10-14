@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/convolution/algorithm_ntt.nim
+    title: cplib/convolution/algorithm_ntt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/convolution/convolution.nim
     title: cplib/convolution/convolution.nim
   - icon: ':heavy_check_mark:'
@@ -111,6 +117,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/sparse_fps_elementary_test.nim
     title: verify/AI/sparse_fps_elementary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/fps/algorithm_ntt_regression_test.nim
+    title: verify/fps/algorithm_ntt_regression_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/composition_of_formal_power_series_large_test.nim
     title: verify/fps/composition_of_formal_power_series_large_test.nim
@@ -237,63 +249,78 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_FPS_PRODUCT_TREE:\n    const CPLIB_FPS_PRODUCT_TREE*\
-    \ = 1\n\n    import algorithm\n    import cplib/convolution/convolution\n    import\
-    \ cplib/fps/formal_power_series\n    import cplib/modint/modint\n\n    type PolynomialProductTree*[T]\
-    \ = object\n        pointCount*: int\n        leafCount*: int\n        nodes*:\
-    \ seq[seq[T]]\n\n    proc initPolynomialProductTree*[T: BarrettModint or MontgomeryModint](\n\
-    \            xs: seq[T]): PolynomialProductTree[T] =\n        result.pointCount\
-    \ = xs.len\n        result.leafCount = 1\n        while result.leafCount < xs.len:\
-    \ result.leafCount *= 2\n        result.nodes = newSeq[seq[T]](result.leafCount\
-    \ * 2)\n        for i in 0..<result.leafCount:\n            if i < xs.len: result.nodes[result.leafCount\
+    \ = 1\n\n    import cplib/convolution/algorithm_ntt\n    import algorithm\n  \
+    \  import cplib/convolution/convolution\n    import cplib/fps/formal_power_series\n\
+    \    import cplib/modint/modint\n\n    type PolynomialProductTree*[T] = object\n\
+    \        pointCount*: int\n        leafCount*: int\n        nodes*: seq[seq[T]]\n\
+    \n    proc initPolynomialProductTree*[T: BarrettModint or MontgomeryModint](\n\
+    \            xs: seq[T]): PolynomialProductTree[T] =\n        ## (x-xs[i])\u306E\
+    \u7A4D\u6728\u3092\u69CB\u7BC9\u3059\u308B\u3002\u540C\u3058\u6BB5\u306ENTT\u8A08\
+    \u753B\u3092\u5171\u6709\u3059\u308B\u3002\n        result.pointCount = xs.len\n\
+    \        result.leafCount = 1\n        while result.leafCount < xs.len: result.leafCount\
+    \ *= 2\n        result.nodes = newSeq[seq[T]](result.leafCount * 2)\n        for\
+    \ i in 0..<result.leafCount:\n            if i < xs.len: result.nodes[result.leafCount\
     \ + i] = @[-xs[i], init(T, 1)]\n            else: result.nodes[result.leafCount\
-    \ + i] = @[init(T, 1)]\n        for i in countdown(result.leafCount - 1, 1):\n\
-    \            result.nodes[i] = result.nodes[i * 2] * result.nodes[i * 2 + 1]\n\
-    \n    proc evaluate*[T: BarrettModint or MontgomeryModint](\n            tree:\
-    \ PolynomialProductTree[T], f: seq[T]): seq[T] =\n        ## \u6728\u306E\u69CB\
-    \u7BC9\u306B\u4F7F\u3063\u305F\u3059\u3079\u3066\u306E\u70B9\u3067f\u3092\u8A55\
-    \u4FA1\u3059\u308B\u3002\n        result = newSeq[T](tree.pointCount)\n      \
-    \  if tree.pointCount == 0: return\n\n        const directEvaluationSize = 64\n\
-    \        var directLevel = tree.leafCount\n        var pointsPerNode = 1\n   \
-    \     while pointsPerNode < directEvaluationSize and directLevel > 1:\n      \
-    \      directLevel = directLevel div 2\n            pointsPerNode *= 2\n\n   \
-    \     var remainders = newSeq[seq[T]](tree.nodes.len)\n        if f.len < tree.nodes[1].len:\n\
-    \            remainders[1] = f\n        else:\n            remainders[1] = f mod\
-    \ tree.nodes[1]\n        for i in 1..<directLevel:\n            remainders[i *\
-    \ 2] = remainders[i] mod tree.nodes[i * 2]\n            remainders[i * 2 + 1]\
-    \ = remainders[i] mod tree.nodes[i * 2 + 1]\n        for node in directLevel..<(directLevel\
-    \ * 2):\n            let firstPoint = (node - directLevel) * pointsPerNode\n \
-    \           let lastPoint = min(firstPoint + pointsPerNode, tree.pointCount)\n\
-    \            let remainder = remainders[node]\n            for i in firstPoint..<lastPoint:\n\
-    \                let x = -tree.nodes[tree.leafCount + i][0]\n                result[i]\
-    \ = remainder.eval(x)\n\n    proc multipointEvaluation*[T: BarrettModint or MontgomeryModint](\n\
-    \            f, xs: seq[T]): seq[T] =\n        ## \u53CD\u8EE2\u7A4D\u6728\u3068\
-    \u4E2D\u9593\u7A4D\u3092\u7528\u3044\u3066f\u3092\u3059\u3079\u3066\u306E\u70B9\
-    \u3067\u8A55\u4FA1\u3059\u308B\u3002\n        if xs.len == 0: return @[]\n\n \
-    \       const multipointDirectEvaluationSize = 16\n        var leafCount = 1\n\
-    \        while leafCount < xs.len: leafCount *= 2\n        if f.len <= leafCount\
-    \ and canUseMultipointTreeNtt(T.umod, leafCount):\n            var normalF = newSeq[uint32](max(1,\
-    \ f.len))\n            var normalXs = newSeq[uint32](xs.len)\n            var\
-    \ values = newSeq[uint32](xs.len)\n            for i in 0..<f.len: normalF[i]\
-    \ = f[i].val.uint32\n            for i in 0..<xs.len: normalXs[i] = xs[i].val.uint32\n\
-    \            multipointCyclicNtt(addr values[0], addr normalF[0], f.len.csize_t,\n\
-    \                addr normalXs[0], xs.len.csize_t, leafCount.csize_t, T.umod)\n\
-    \            result = newSeq[T](xs.len)\n            for i in 0..<xs.len: result[i]\
-    \ = init(T, values[i].int)\n            return\n        let blockSize = min(multipointDirectEvaluationSize,\
-    \ leafCount)\n        let blockCount = leafCount div blockSize\n\n        var\
-    \ reversedProducts = newSeq[seq[T]](blockCount * 2)\n        for blockIndex in\
-    \ 0..<blockCount:\n            var product = @[init(T, 1)]\n            for offset\
-    \ in 0..<blockSize:\n                let pointIndex = blockIndex * blockSize +\
-    \ offset\n                let x = if pointIndex < xs.len: xs[pointIndex] else:\
-    \ init(T, 0)\n                product.add(init(T, 0))\n                for i in\
-    \ countdown(product.high, 1):\n                    product[i] -= x * product[i\
-    \ - 1]\n            reversedProducts[blockCount + blockIndex] = product\n    \
-    \    let useNttTree = canUseMultipointTreeNtt(T.umod, leafCount)\n        var\
-    \ context: pointer\n        if useNttTree:\n            var leaves = newSeq[uint32](blockCount\
-    \ * (blockSize + 1))\n            for node in 0..<blockCount:\n              \
-    \  for i in 0..blockSize:\n                    leaves[node * (blockSize + 1) +\
-    \ i] = reversedProducts[blockCount + node][i].val.uint32\n            context\
-    \ = multipointTreeCreate(addr leaves[0], leafCount.csize_t,\n                blockSize.csize_t,\
-    \ T.umod)\n            var root = newSeq[uint32](leafCount + 1)\n            multipointTreeRoot(context,\
+    \ + i] = @[init(T, 1)]\n        var first = result.leafCount div 2\n        var\
+    \ size = 2\n        while first > 0:\n            if size >= 128 and canUseMultipointTreeNtt(T.umod,\
+    \ size):\n                var context = initAlgorithmNtt(T.umod, size)\n     \
+    \           defer: context.close()\n                for i in first..<2 * first:\n\
+    \                    let left = result.nodes[2 * i]\n                    let right\
+    \ = result.nodes[2 * i + 1]\n                    var product = context.spectrumProduct(context.spectrum(left),\
+    \ context.spectrum(right))\n                    let length = left.len + right.len\
+    \ - 1\n                    result.nodes[i] = context.coefficients(product, 0,\
+    \ min(length, size), T)\n                    if length > size:\n             \
+    \           let leading = left[^1] * right[^1]\n                        result.nodes[i][0]\
+    \ -= leading\n                        result.nodes[i].add(leading)\n         \
+    \   else:\n                for i in first..<2 * first:\n                    result.nodes[i]\
+    \ = result.nodes[i * 2] * result.nodes[i * 2 + 1]\n            first = first div\
+    \ 2\n            size *= 2\n\n    proc evaluate*[T: BarrettModint or MontgomeryModint](\n\
+    \            tree: PolynomialProductTree[T], f: seq[T]): seq[T] =\n        ##\
+    \ \u6728\u306E\u69CB\u7BC9\u306B\u4F7F\u3063\u305F\u3059\u3079\u3066\u306E\u70B9\
+    \u3067f\u3092\u8A55\u4FA1\u3059\u308B\u3002\n        result = newSeq[T](tree.pointCount)\n\
+    \        if tree.pointCount == 0: return\n\n        const directEvaluationSize\
+    \ = 64\n        var directLevel = tree.leafCount\n        var pointsPerNode =\
+    \ 1\n        while pointsPerNode < directEvaluationSize and directLevel > 1:\n\
+    \            directLevel = directLevel div 2\n            pointsPerNode *= 2\n\
+    \n        var remainders = newSeq[seq[T]](tree.nodes.len)\n        if f.len <\
+    \ tree.nodes[1].len:\n            remainders[1] = f\n        else:\n         \
+    \   remainders[1] = f mod tree.nodes[1]\n        for i in 1..<directLevel:\n \
+    \           remainders[i * 2] = remainders[i] mod tree.nodes[i * 2]\n        \
+    \    remainders[i * 2 + 1] = remainders[i] mod tree.nodes[i * 2 + 1]\n       \
+    \ for node in directLevel..<(directLevel * 2):\n            let firstPoint = (node\
+    \ - directLevel) * pointsPerNode\n            let lastPoint = min(firstPoint +\
+    \ pointsPerNode, tree.pointCount)\n            let remainder = remainders[node]\n\
+    \            for i in firstPoint..<lastPoint:\n                let x = -tree.nodes[tree.leafCount\
+    \ + i][0]\n                result[i] = remainder.eval(x)\n\n    proc multipointEvaluation*[T:\
+    \ BarrettModint or MontgomeryModint](\n            f, xs: seq[T]): seq[T] =\n\
+    \        ## \u53CD\u8EE2\u7A4D\u6728\u3068\u4E2D\u9593\u7A4D\u3092\u7528\u3044\
+    \u3066f\u3092\u3059\u3079\u3066\u306E\u70B9\u3067\u8A55\u4FA1\u3059\u308B\u3002\
+    \n        if xs.len == 0: return @[]\n\n        const multipointDirectEvaluationSize\
+    \ = 16\n        var leafCount = 1\n        while leafCount < xs.len: leafCount\
+    \ *= 2\n        if f.len <= leafCount and canUseMultipointTreeNtt(T.umod, leafCount):\n\
+    \            var normalF = newSeq[uint32](max(1, f.len))\n            var normalXs\
+    \ = newSeq[uint32](xs.len)\n            var values = newSeq[uint32](xs.len)\n\
+    \            for i in 0..<f.len: normalF[i] = f[i].val.uint32\n            for\
+    \ i in 0..<xs.len: normalXs[i] = xs[i].val.uint32\n            multipointCyclicNtt(addr\
+    \ values[0], addr normalF[0], f.len.csize_t,\n                addr normalXs[0],\
+    \ xs.len.csize_t, leafCount.csize_t, T.umod)\n            result = newSeq[T](xs.len)\n\
+    \            for i in 0..<xs.len: result[i] = init(T, values[i].int)\n       \
+    \     return\n        let blockSize = min(multipointDirectEvaluationSize, leafCount)\n\
+    \        let blockCount = leafCount div blockSize\n\n        var reversedProducts\
+    \ = newSeq[seq[T]](blockCount * 2)\n        for blockIndex in 0..<blockCount:\n\
+    \            var product = @[init(T, 1)]\n            for offset in 0..<blockSize:\n\
+    \                let pointIndex = blockIndex * blockSize + offset\n          \
+    \      let x = if pointIndex < xs.len: xs[pointIndex] else: init(T, 0)\n     \
+    \           product.add(init(T, 0))\n                for i in countdown(product.high,\
+    \ 1):\n                    product[i] -= x * product[i - 1]\n            reversedProducts[blockCount\
+    \ + blockIndex] = product\n        let useNttTree = canUseMultipointTreeNtt(T.umod,\
+    \ leafCount)\n        var context: pointer\n        if useNttTree:\n         \
+    \   var leaves = newSeq[uint32](blockCount * (blockSize + 1))\n            for\
+    \ node in 0..<blockCount:\n                for i in 0..blockSize:\n          \
+    \          leaves[node * (blockSize + 1) + i] = reversedProducts[blockCount +\
+    \ node][i].val.uint32\n            context = multipointTreeCreate(addr leaves[0],\
+    \ leafCount.csize_t,\n                blockSize.csize_t, T.umod)\n           \
+    \ var root = newSeq[uint32](leafCount + 1)\n            multipointTreeRoot(context,\
     \ addr root[0])\n            reversedProducts[1] = newSeq[T](leafCount + 1)\n\
     \            for i in 0..leafCount: reversedProducts[1][i] = init(T, root[i].int)\n\
     \        else:\n            for node in countdown(blockCount - 1, 1):\n      \
@@ -330,22 +357,24 @@ data:
     \            let lastPoint = min(firstPoint + blockSize, xs.len)\n           \
     \ for i in firstPoint..<lastPoint:\n                result[i] = remainder.eval(xs[i])\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: false
   path: cplib/fps/product_tree.nim
   requiredBy:
@@ -357,9 +386,11 @@ data:
   - cplib/fps/polynomial_interpolation.nim
   - cplib/math/many_factorials.nim
   - cplib/math/many_factorials.nim
-  timestamp: '2026-10-02 14:56:06+00:00'
+  timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps/algorithm_ntt_regression_test.nim
+  - verify/fps/algorithm_ntt_regression_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
   - verify/fps/composition_of_formal_power_series_large_test.nim
