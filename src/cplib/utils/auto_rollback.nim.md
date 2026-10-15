@@ -122,13 +122,13 @@ data:
     temporaryImpl\", prepareTemporary(body))\n"
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false
   path: cplib/utils/auto_rollback.nim
   requiredBy: []
-  timestamp: '2026-09-30 05:10:11+09:00'
+  timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/auto_rollback_scope_test.nim

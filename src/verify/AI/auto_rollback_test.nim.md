@@ -178,17 +178,17 @@ data:
     \ World\"\n"
   dependsOn:
   - cplib/utils/offline_dynamic_queries.nim
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/collections/unionfind.nim
   - cplib/utils/offline_dynamic_queries.nim
+  - cplib/collections/unionfind.nim
+  - cplib/utils/private/auto_rollback.nim
   isVerificationFile: true
   path: verify/AI/auto_rollback_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 05:10:11+09:00'
+  timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/auto_rollback_test.nim

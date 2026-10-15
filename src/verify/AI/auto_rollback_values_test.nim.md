@@ -108,22 +108,25 @@ data:
     \ = inc box.value\n        Temporary:\n            update(Box(value: 1))\n   \
     \ )\n    doAssert not compiles(block:\n        var state = 0\n        proc update()\
     \ = inc state\n        proc choose(): proc() = update\n        Temporary:\n  \
-    \          (update, choose())[0]()\n    )\n\necho \"Hello World\"\n"
+    \          (update, choose())[0]()\n    )\n    doAssert not compiles(block:\n\
+    \        var state = 0\n        proc update() = inc state\n        proc choose():\
+    \ proc() = update\n        Temporary:\n            (op: update, other: choose()).op()\n\
+    \    )\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/lazysegtree_static_op.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/backwards_index.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/private/auto_rollback.nim
   isVerificationFile: true
   path: verify/AI/auto_rollback_values_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 05:10:11+09:00'
+  timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/auto_rollback_values_test.nim

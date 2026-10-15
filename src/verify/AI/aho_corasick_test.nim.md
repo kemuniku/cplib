@@ -136,9 +136,9 @@ data:
     \ == longWord\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/str/aho_corasick.nim
+  - cplib/str/aho_corasick.nim
   - cplib/graph/graph.nim
-  - cplib/str/aho_corasick.nim
-  - cplib/str/aho_corasick.nim
   isVerificationFile: true
   path: verify/AI/aho_corasick_test.nim
   requiredBy: []

@@ -35,9 +35,9 @@ data:
     \ var v,w = ii()\n    tmp.add((v,w))\n\necho solve_01knapsack_meet_in_middle(tmp,W)"
   dependsOn:
   - cplib/utils/knapsack.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/utils/knapsack/solve_01knapsack_MIM_test.nim
   requiredBy: []

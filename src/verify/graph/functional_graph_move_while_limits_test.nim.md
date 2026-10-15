@@ -77,17 +77,17 @@ data:
     \ testGraph.move_while(predicate, start, high(int)) == expected\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/functional_graph_with_op.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/utils/backwards_index.nim
   - cplib/graph/functional_graph.nim
-  - cplib/utils/backwards_index.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
+  - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph_with_op.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_move_while_limits_test.nim

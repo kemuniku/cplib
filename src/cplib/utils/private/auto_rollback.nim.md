@@ -187,77 +187,85 @@ data:
     \ 1: callPath[1].origin else: n\n            error(message, origin)\n\n      \
     \  proc isScalar(t: NimNode): bool =\n            ## \u5C65\u6B74\u306B\u5B89\u5168\
     \u306B\u5024\u3092\u4FDD\u6301\u3067\u304D\u308B\u7D44\u307F\u8FBC\u307F\u306E\
-    \u578B\u304B\u5224\u5B9A\u3059\u308B\u3002\n            t.typeKind in {ntyBool,\
-    \ ntyChar, ntyEnum, ntyInt, ntyInt8, ntyInt16,\n                ntyInt32, ntyInt64,\
-    \ ntyUInt, ntyUInt8, ntyUInt16, ntyUInt32,\n                ntyUInt64, ntyFloat,\
-    \ ntyFloat32, ntyFloat64, ntyRange}\n\n        proc concreteKind(t: NimNode):\
-    \ NimTypeKind =\n            ## \u30B8\u30A7\u30CD\u30EA\u30C3\u30AF\u578B\u3082\
-    \u5B9F\u4F53\u306E\u578B\u7A2E\u5225\u3067\u5224\u5B9A\u3059\u308B\u3002\n   \
-    \         if t.typeKind != ntyGenericInst: return t.typeKind\n            let\
-    \ impl = t.getTypeImpl\n            case impl.kind\n            of nnkObjectTy:\
-    \ ntyObject\n            of nnkRefTy: ntyRef\n            of nnkTupleTy, nnkTupleConstr:\
-    \ ntyTuple\n            else: impl.typeKind\n\n        proc isValue(t: NimNode):\
-    \ bool =\n            ## \u53C2\u7167\u3092\u542B\u307E\u306A\u3044\u30BF\u30D7\
-    \u30EB\u30FB\u56FA\u5B9A\u9577\u914D\u5217\u306F\u8981\u7D20\u3082\u5024\u578B\
-    \u306A\u3089\u4FDD\u5B58\u3067\u304D\u308B\u3002\n            if isScalar(t):\
-    \ return true\n            let impl = t.getTypeImpl\n            case impl.kind\n\
-    \            of nnkTupleTy:\n                for field in impl:\n            \
-    \        if field.kind != nnkIdentDefs or not isValue(field[^2]): return false\n\
-    \                return true\n            of nnkTupleConstr:\n               \
-    \ for field in impl:\n                    if not isValue(field): return false\n\
-    \                return true\n            of nnkBracketExpr:\n               \
-    \ return impl[0].eqIdent(\"array\") and isValue(impl[^1])\n            else:\n\
-    \                return false\n\n        proc lookup(n: NimNode, replacements:\
-    \ seq[Replacement]): NimNode =\n            ## \u5143\u306E\u30B7\u30F3\u30DC\u30EB\
-    \u306B\u5BFE\u5FDC\u3059\u308B\u65B0\u3057\u3044\u30B7\u30F3\u30DC\u30EB\u3092\
-    \u8FD4\u3059\u3002\n            for item in replacements:\n                if\
-    \ n == item.source: return item.target\n            n\n\n        proc magicOf(symbol:\
-    \ NimNode): string =\n            ## \u30B3\u30F3\u30D1\u30A4\u30E9\u7D44\u307F\
-    \u8FBC\u307F\u64CD\u4F5C\u306E\u8B58\u5225\u540D\u3092\u53D6\u5F97\u3059\u308B\
-    \u3002\n            let impl = symbol.getImpl\n            if impl.kind notin\
-    \ {nnkProcDef, nnkFuncDef}: return \"\"\n            for pragma in impl[4]:\n\
-    \                if pragma.kind == nnkExprColonExpr and pragma[0].eqIdent(\"magic\"\
-    ):\n                    return pragma[1].strVal\n\n        proc staticCallee(n:\
-    \ NimNode): NimNode =\n            ## \u95A2\u6570\u306E\u30BF\u30D7\u30EB\u30EA\
-    \u30C6\u30E9\u30EB\u3092\u5B9A\u6570\u6DFB\u5B57\u3067\u9078\u3076\u547C\u3073\
-    \u51FA\u3057\u3092\u9759\u7684\u306B\u89E3\u6C7A\u3059\u308B\u3002\n         \
-    \   if n.kind == nnkBracketExpr and n.len == 2 and n[1].kind in {nnkIntLit..nnkUInt64Lit}:\n\
-    \                let values = staticCallee(n[0])\n                let index =\
-    \ n[1].intVal\n                if values.kind in {nnkTupleConstr, nnkPar, nnkBracket}\
-    \ and\n                        index >= 0 and index < values.len:\n          \
-    \          for value in values:\n                        if value.kind != nnkSym\
-    \ or value.symKind notin {nskProc, nskFunc}: return n\n                    return\
-    \ staticCallee(values[index.int])\n            n\n\n        proc containsVariant(n:\
-    \ NimNode): bool =\n            ## \u30D5\u30A3\u30FC\u30EB\u30C9\u306E\u751F\u5B58\
-    \u671F\u9593\u304C\u5207\u308A\u66FF\u308F\u308Bvariant object\u304B\u5224\u5B9A\
-    \u3059\u308B\u3002\n            if n.kind == nnkRecCase: return true\n       \
-    \     if n.kind == nnkIdentDefs: return false\n            if n.kind == nnkBracketExpr\
-    \ and n.typeKind == ntyGenericInst:\n                return containsVariant(n.getTypeImpl)\n\
-    \            if n.kind in {nnkSym, nnkRefTy, nnkVarTy}:\n                let t\
-    \ = if n.kind == nnkSym: n.getTypeImpl else: n[0].getTypeImpl\n              \
-    \  if t == n: return false\n                return containsVariant(t)\n      \
-    \      for child in n:\n                if containsVariant(child): return true\n\
-    \n        proc convertFunction(symbol: NimNode, readOnly: seq[bool], origin: NimNode,\n\
-    \            localArgs: seq[bool] = @[]): NimNode\n        proc rewriteBody(input:\
-    \ NimNode, logParam: NimNode,\n                initialReplacements: seq[Replacement],\
-    \ initialLocals, readOnlyParams: seq[NimNode],\n                functionBody:\
-    \ bool): NimNode\n\n        proc convertFunction(symbol: NimNode, readOnly: seq[bool],\
-    \ origin: NimNode,\n            localArgs: seq[bool] = @[]): NimNode =\n     \
-    \       ## \u95A2\u6570\u3068\u547C\u3073\u51FA\u3057\u5148\u3092\u5C65\u6B74\u5F15\
-    \u6570\u4ED8\u304D\u306E\u95A2\u6570\u306B\u8907\u88FD\u3059\u308B\u3002\u518D\
-    \u5E30\u547C\u3073\u51FA\u3057\u306B\u3082\u5BFE\u5FDC\u3059\u308B\u3002\n   \
-    \         let symbol = originalUpdate(symbol)\n            if symbol.kind != nnkSym\
-    \ or symbol.symKind notin {nskProc, nskFunc}:\n                unsupported(symbol,\
-    \ \"\u9759\u7684\u306B\u7279\u5B9A\u3067\u304D\u308Bproc\u307E\u305F\u306Ffunc\u304C\
-    \u5FC5\u8981\u3067\u3059\")\n            for item in functions:\n            \
-    \    if item.source == symbol and item.readOnly == readOnly and\n            \
-    \            item.localArgs == localArgs: return item.target\n            callPath.add((symbol,\
-    \ origin))\n            let impl = symbol.getImpl\n            if impl.kind notin\
-    \ {nnkProcDef, nnkFuncDef} or impl[6].kind == nnkEmpty:\n                unsupported(symbol,\
-    \ \"\u672C\u4F53\u3092\u53D6\u5F97\u3067\u304D\u306A\u3044\u95A2\u6570\u306F\u5909\
-    \u63DB\u3067\u304D\u307E\u305B\u3093\")\n            for pragma in impl[4]:\n\
-    \                if not pragma.eqIdent(\"inline\") and not pragma.eqIdent(\"noinline\"\
-    ) and not pragma.eqIdent(\"discardable\") and\n                        not pragma.eqIdent(\"\
+    \u578B\u304B\u5224\u5B9A\u3059\u308B\u3002\n            if t.typeKind == ntyAlias:\
+    \ return isScalar(t.getTypeImpl)\n            t.typeKind in {ntyBool, ntyChar,\
+    \ ntyEnum, ntyInt, ntyInt8, ntyInt16,\n                ntyInt32, ntyInt64, ntyUInt,\
+    \ ntyUInt8, ntyUInt16, ntyUInt32,\n                ntyUInt64, ntyFloat, ntyFloat32,\
+    \ ntyFloat64, ntyRange}\n\n        proc concreteKind(t: NimNode): NimTypeKind\
+    \ =\n            ## \u30B8\u30A7\u30CD\u30EA\u30C3\u30AF\u578B\u3082\u5B9F\u4F53\
+    \u306E\u578B\u7A2E\u5225\u3067\u5224\u5B9A\u3059\u308B\u3002\n            if t.typeKind\
+    \ == ntyAlias: return concreteKind(t.getTypeImpl)\n            if t.typeKind !=\
+    \ ntyGenericInst: return t.typeKind\n            let impl = t.getTypeImpl\n  \
+    \          case impl.kind\n            of nnkObjectTy: ntyObject\n           \
+    \ of nnkRefTy: ntyRef\n            of nnkTupleTy, nnkTupleConstr: ntyTuple\n \
+    \           else: impl.typeKind\n\n        proc isValue(t: NimNode): bool =\n\
+    \            ## \u53C2\u7167\u3092\u542B\u307E\u306A\u3044\u30BF\u30D7\u30EB\u30FB\
+    \u56FA\u5B9A\u9577\u914D\u5217\u306F\u8981\u7D20\u3082\u5024\u578B\u306A\u3089\
+    \u4FDD\u5B58\u3067\u304D\u308B\u3002\n            if isScalar(t): return true\n\
+    \            let impl = t.getTypeImpl\n            case impl.kind\n          \
+    \  of nnkTupleTy:\n                for field in impl:\n                    if\
+    \ field.kind != nnkIdentDefs or not isValue(field[^2]): return false\n       \
+    \         return true\n            of nnkTupleConstr:\n                for field\
+    \ in impl:\n                    if not isValue(field): return false\n        \
+    \        return true\n            of nnkBracketExpr:\n                return impl[0].eqIdent(\"\
+    array\") and isValue(impl[^1])\n            else:\n                return false\n\
+    \n        proc lookup(n: NimNode, replacements: seq[Replacement]): NimNode =\n\
+    \            ## \u5143\u306E\u30B7\u30F3\u30DC\u30EB\u306B\u5BFE\u5FDC\u3059\u308B\
+    \u65B0\u3057\u3044\u30B7\u30F3\u30DC\u30EB\u3092\u8FD4\u3059\u3002\n         \
+    \   for item in replacements:\n                if n == item.source: return item.target\n\
+    \            n\n\n        proc magicOf(symbol: NimNode): string =\n          \
+    \  ## \u30B3\u30F3\u30D1\u30A4\u30E9\u7D44\u307F\u8FBC\u307F\u64CD\u4F5C\u306E\
+    \u8B58\u5225\u540D\u3092\u53D6\u5F97\u3059\u308B\u3002\n            let impl =\
+    \ symbol.getImpl\n            if impl.kind notin {nnkProcDef, nnkFuncDef}: return\
+    \ \"\"\n            for pragma in impl[4]:\n                if pragma.kind ==\
+    \ nnkExprColonExpr and pragma[0].eqIdent(\"magic\"):\n                    return\
+    \ pragma[1].strVal\n\n        proc staticCallee(n: NimNode): NimNode =\n     \
+    \       ## \u95A2\u6570\u306E\u30BF\u30D7\u30EB\u30EA\u30C6\u30E9\u30EB\u3092\u5B9A\
+    \u6570\u6DFB\u5B57\u30FB\u30D5\u30A3\u30FC\u30EB\u30C9\u540D\u3067\u9078\u3076\
+    \u547C\u3073\u51FA\u3057\u3092\u9759\u7684\u306B\u89E3\u6C7A\u3059\u308B\u3002\
+    \n            if n.len == 2 and (n.kind == nnkDotExpr or\n                   \
+    \ (n.kind == nnkBracketExpr and n[1].kind in {nnkIntLit..nnkUInt64Lit})):\n  \
+    \              let values = staticCallee(n[0])\n                if values.kind\
+    \ in {nnkTupleConstr, nnkPar, nnkBracket}:\n                    var index = if\
+    \ n.kind == nnkBracketExpr: n[1].intVal else: -1\n                    for i, field\
+    \ in values:\n                        let value = if field.kind == nnkExprColonExpr:\
+    \ field[1] else: field\n                        if value.kind != nnkSym or value.symKind\
+    \ notin {nskProc, nskFunc}: return n\n                        if n.kind == nnkDotExpr\
+    \ and field.kind == nnkExprColonExpr and\n                                field[0].eqIdent(n[1].strVal):\
+    \ index = i\n                    if index >= 0 and index < values.len:\n     \
+    \                   let field = values[index.int]\n                        return\
+    \ staticCallee(if field.kind == nnkExprColonExpr: field[1] else: field)\n    \
+    \        n\n\n        proc containsVariant(n: NimNode): bool =\n            ##\
+    \ \u30D5\u30A3\u30FC\u30EB\u30C9\u306E\u751F\u5B58\u671F\u9593\u304C\u5207\u308A\
+    \u66FF\u308F\u308Bvariant object\u304B\u5224\u5B9A\u3059\u308B\u3002\n       \
+    \     if n.kind == nnkRecCase: return true\n            if n.kind == nnkIdentDefs:\
+    \ return false\n            if n.kind == nnkBracketExpr and n.typeKind == ntyGenericInst:\n\
+    \                return containsVariant(n.getTypeImpl)\n            if n.kind\
+    \ in {nnkSym, nnkRefTy, nnkVarTy}:\n                let t = if n.kind == nnkSym:\
+    \ n.getTypeImpl else: n[0].getTypeImpl\n                if t == n: return false\n\
+    \                return containsVariant(t)\n            for child in n:\n    \
+    \            if containsVariant(child): return true\n\n        proc convertFunction(symbol:\
+    \ NimNode, readOnly: seq[bool], origin: NimNode,\n            localArgs: seq[bool]\
+    \ = @[]): NimNode\n        proc rewriteBody(input: NimNode, logParam: NimNode,\n\
+    \                initialReplacements: seq[Replacement], initialLocals, readOnlyParams:\
+    \ seq[NimNode],\n                functionBody: bool): NimNode\n\n        proc\
+    \ convertFunction(symbol: NimNode, readOnly: seq[bool], origin: NimNode,\n   \
+    \         localArgs: seq[bool] = @[]): NimNode =\n            ## \u95A2\u6570\u3068\
+    \u547C\u3073\u51FA\u3057\u5148\u3092\u5C65\u6B74\u5F15\u6570\u4ED8\u304D\u306E\
+    \u95A2\u6570\u306B\u8907\u88FD\u3059\u308B\u3002\u518D\u5E30\u547C\u3073\u51FA\
+    \u3057\u306B\u3082\u5BFE\u5FDC\u3059\u308B\u3002\n            let symbol = originalUpdate(symbol)\n\
+    \            if symbol.kind != nnkSym or symbol.symKind notin {nskProc, nskFunc}:\n\
+    \                unsupported(symbol, \"\u9759\u7684\u306B\u7279\u5B9A\u3067\u304D\
+    \u308Bproc\u307E\u305F\u306Ffunc\u304C\u5FC5\u8981\u3067\u3059\")\n          \
+    \  for item in functions:\n                if item.source == symbol and item.readOnly\
+    \ == readOnly and\n                        item.localArgs == localArgs: return\
+    \ item.target\n            callPath.add((symbol, origin))\n            let impl\
+    \ = symbol.getImpl\n            if impl.kind notin {nnkProcDef, nnkFuncDef} or\
+    \ impl[6].kind == nnkEmpty:\n                unsupported(symbol, \"\u672C\u4F53\
+    \u3092\u53D6\u5F97\u3067\u304D\u306A\u3044\u95A2\u6570\u306F\u5909\u63DB\u3067\
+    \u304D\u307E\u305B\u3093\")\n            for pragma in impl[4]:\n            \
+    \    if not pragma.eqIdent(\"inline\") and not pragma.eqIdent(\"noinline\") and\
+    \ not pragma.eqIdent(\"discardable\") and\n                        not pragma.eqIdent(\"\
     noSideEffect\") and not pragma.eqIdent(\"gensym\") and\n                     \
     \   not pragma.eqIdent(\"systemRaisesDefect\"):\n                    unsupported(pragma,\
     \ \"\u672A\u5BFE\u5FDC\u306E\u95A2\u6570pragma\u3067\u3059\")\n            let\
@@ -274,19 +282,20 @@ data:
     \ seq[NimNode]\n            var params = newTree(nnkFormalParams, signature[0].copyNimTree)\n\
     \            params.add(newIdentDefs(logParam, newTree(nnkVarTy, historyType)))\n\
     \            var originalParams: seq[NimNode]\n            for i in 1..<impl[3].len:\n\
-    \                for j in 0..<impl[3][i].len - 2: originalParams.add(impl[3][i][j])\n\
-    \            var parameterIndex = 0\n            for i in 1..<signature.len:\n\
-    \                let formal = signature[i]\n                let parameterType\
-    \ = formal[^2]\n                if parameterType.kind != nnkVarTy and not isScalar(parameterType)\
-    \ and\n                        concreteKind(parameterType) notin {ntyRef, ntySequence,\
-    \ ntyString,\n                            ntyObject, ntyTuple, ntyArray}:\n  \
-    \                  let parameter = originalParams[parameterIndex]\n          \
-    \          unsupported(parameter, \"\u95A2\u6570\u300C\" & symbol.strVal & \"\u300D\
-    \u306E\u7B2C\" &\n                        $(parameterIndex + 1) & \"\u5F15\u6570\
-    \u300C\" & parameter.strVal & \"\u300D\u306E\u578B\u300C\" &\n               \
-    \         parameterType.repr & \"\u300D\u306F\u672A\u5BFE\u5FDC\u3067\u3059\"\
-    )\n                for j in 0..<formal.len - 2:\n                    let old =\
-    \ originalParams[parameterIndex]\n                    if readOnly[parameterIndex]\
+    \                for j in 0..<impl[3][i].len - 2:\n                    let parameter\
+    \ = impl[3][i][j]\n                    originalParams.add(if parameter.kind ==\
+    \ nnkPragmaExpr: parameter[0] else: parameter)\n            var parameterIndex\
+    \ = 0\n            for i in 1..<signature.len:\n                let formal = signature[i]\n\
+    \                let parameterType = formal[^2]\n                if parameterType.kind\
+    \ != nnkVarTy and not isScalar(parameterType) and\n                        concreteKind(parameterType)\
+    \ notin {ntyRef, ntySequence, ntyString,\n                            ntyObject,\
+    \ ntyTuple, ntyArray}:\n                    let parameter = originalParams[parameterIndex]\n\
+    \                    unsupported(parameter, \"\u95A2\u6570\u300C\" & symbol.strVal\
+    \ & \"\u300D\u306E\u7B2C\" &\n                        $(parameterIndex + 1) &\
+    \ \"\u5F15\u6570\u300C\" & parameter.strVal & \"\u300D\u306E\u578B\u300C\" &\n\
+    \                        parameterType.repr & \"\u300D\u306F\u672A\u5BFE\u5FDC\
+    \u3067\u3059\")\n                for j in 0..<formal.len - 2:\n              \
+    \      let old = originalParams[parameterIndex]\n                    if readOnly[parameterIndex]\
     \ or (parameterType.kind != nnkVarTy and\n                            concreteKind(parameterType)\
     \ in {ntyObject, ntyTuple, ntyArray}):\n                        readOnlyParams.add(old)\n\
     \                        readOnlyParams.add(formal[j])\n                    let\
@@ -698,7 +707,7 @@ data:
   - cplib/utils/offline_dynamic_queries.nim
   - cplib/tree/dsu_on_tree.nim
   - cplib/tree/dsu_on_tree.nim
-  timestamp: '2026-09-30 05:10:11+09:00'
+  timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/dsu_on_tree_test.nim

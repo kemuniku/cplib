@@ -187,13 +187,13 @@ data:
     \u8A08\u7B97\u91CF\u3002\n        runAutoRollbackImpl(solver, apply, answer, runAutoRollbackWithoutValue)\n"
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false
   path: cplib/utils/offline_dynamic_queries.nim
   requiredBy: []
-  timestamp: '2026-09-30 05:10:11+09:00'
+  timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/offline_dynamic_queries_test.nim

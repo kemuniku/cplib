@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/stern_brocot_tree.nim
     title: cplib/math/stern_brocot_tree.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/oeis.nim
     title: cplib/utils/oeis.nim
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/oeis.nim
     title: cplib/utils/oeis.nim
   - icon: ':warning:'
@@ -177,6 +177,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/stern_brocot_tree_rational_approximation_test.nim
     title: verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_function_test.nim
+    title: verify/utils/oeis_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_function_test.nim
+    title: verify/utils/oeis_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_ssl_test.nim
+    title: verify/utils/oeis_ssl_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_ssl_test.nim
+    title: verify/utils/oeis_ssl_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -298,6 +310,10 @@ data:
   timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/oeis_function_test.nim
+  - verify/utils/oeis_function_test.nim
+  - verify/utils/oeis_ssl_test.nim
+  - verify/utils/oeis_ssl_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim

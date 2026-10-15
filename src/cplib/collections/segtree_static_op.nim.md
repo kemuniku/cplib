@@ -10,6 +10,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_mo_test.nim
+    title: verify/AI/rollback_mo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_mo_test.nim
+    title: verify/AI/rollback_mo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/segtree/segtree_static_op_test.nim
     title: verify/collections/segtree/segtree_static_op_test.nim
   - icon: ':heavy_check_mark:'
@@ -153,6 +159,8 @@ data:
   - verify/utils/backwards_index_collections_test.nim
   - verify/collections/segtree/segtree_static_op_test.nim
   - verify/collections/segtree/segtree_static_op_test.nim
+  - verify/AI/rollback_mo_test.nim
+  - verify/AI/rollback_mo_test.nim
 documentation_of: cplib/collections/segtree_static_op.nim
 layout: document
 redirect_from:

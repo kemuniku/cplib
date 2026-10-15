@@ -108,17 +108,17 @@ data:
     \n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/subset_convolution.nim
-  - cplib/convolution/subset_convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
   - cplib/convolution/private/subset_convolution_barrett.nim
   - cplib/modint/modint.nim
+  - cplib/convolution/subset_convolution.nim
+  - cplib/convolution/subset_convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/set_power_series/subset_convolution_regression_test.nim
   requiredBy: []

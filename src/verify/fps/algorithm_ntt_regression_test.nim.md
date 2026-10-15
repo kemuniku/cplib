@@ -161,38 +161,38 @@ data:
     \    let unit = f + 1\n    doAssert unit.powCoefficient(123456, degree) == unit.pow(123456,\
     \ degree + 1)[degree]\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/fps/product_tree.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/power_projection.nim
-  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/math/inv_gcd.nim
+  - cplib/fps/polynomial_interpolation.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/ntt.nim
-  - cplib/math/isprime.nim
+  - cplib/fps/polynomial_interpolation.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/fps/product_tree.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/ntt.nim
+  - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/fps/power_projection.nim
   - cplib/convolution/relaxed_convolution.nim
   - cplib/convolution/ntt.nim
-  - cplib/fps/power_projection.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
   - cplib/fps/sparse_formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/product_tree.nim
+  - cplib/fps/power_projection.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/fps/polynomial_interpolation.nim
+  - cplib/fps/sparse_formal_power_series.nim
   isVerificationFile: true
   path: verify/fps/algorithm_ntt_regression_test.nim
   requiredBy: []

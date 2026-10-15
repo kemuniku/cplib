@@ -688,6 +688,12 @@ data:
     path: verify/AI/repeated_static_string_test.nim
     title: verify/AI/repeated_static_string_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_mo_test.nim
+    title: verify/AI/rollback_mo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/rollback_mo_test.nim
+    title: verify/AI/rollback_mo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/root_rangesum_test.nim
     title: verify/AI/root_rangesum_test.nim
   - icon: ':heavy_check_mark:'
@@ -1656,6 +1662,8 @@ data:
   - verify/AI/dynamic_lazysegtree_test.nim
   - verify/AI/bitset_avx512_shift_assign_test.nim
   - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/rollback_mo_test.nim
+  - verify/AI/rollback_mo_test.nim
   - verify/AI/segtree_test.nim
   - verify/AI/segtree_test.nim
   - verify/AI/repeated_static_string_test.nim

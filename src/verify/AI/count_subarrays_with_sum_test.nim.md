@@ -85,9 +85,9 @@ data:
     echo \"Hello World\"\n"
   dependsOn:
   - cplib/utils/count_subarrays_with_sum.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/utils/count_subarrays_with_sum.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/count_subarrays_with_sum_test.nim
   requiredBy: []

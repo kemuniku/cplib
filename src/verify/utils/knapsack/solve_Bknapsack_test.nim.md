@@ -35,9 +35,9 @@ data:
     \ ii()\n    tmp.add((v,w,m))\n\necho solve_Boundedknapsack(tmp,W)"
   dependsOn:
   - cplib/utils/knapsack.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/utils/knapsack.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/utils/knapsack/solve_Bknapsack_test.nim
   requiredBy: []

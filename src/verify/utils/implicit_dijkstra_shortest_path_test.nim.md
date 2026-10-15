@@ -54,18 +54,18 @@ data:
     \    if path[^1] != t:\n        path.add(t)\n    echo cost, \" \", path.len -\
     \ 1\n    for i in 1..<path.len:\n        echo path[i - 1], \" \", path[i]\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/implicit_dijkstra.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/implicit_dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/implicit_dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/utils/implicit_dijkstra_shortest_path_test.nim
   requiredBy: []
-  timestamp: '2026-10-08 16:48:30+09:00'
+  timestamp: '2026-10-14 21:33:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/implicit_dijkstra_shortest_path_test.nim

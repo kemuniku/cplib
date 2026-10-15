@@ -8,10 +8,22 @@ data:
     path: cplib/math/fractions.nim
     title: cplib/math/fractions.nim
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_function_test.nim
+    title: verify/utils/oeis_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_function_test.nim
+    title: verify/utils/oeis_function_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_ssl_test.nim
+    title: verify/utils/oeis_ssl_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/utils/oeis_ssl_test.nim
+    title: verify/utils/oeis_ssl_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://oeis.org/
@@ -23,13 +35,17 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_OEIS:\n    const CPLIB_UTILS_OEIS* = 1\n  \
-    \  import httpclient, json, strutils\n    import cplib/math/fractions\n\n    type\n\
-    \        OEISResultKind* = enum\n            oeisSequence,\n            oeisMatrixRowMajor,\n\
-    \            oeisMatrixAntidiagonal,\n            oeisNumerator,\n           \
-    \ oeisDenominator\n\n        OEISResult* = object\n            id*: string\n \
-    \           name*: string\n            data*: string\n            query*: string\n\
-    \            url*: string\n            kind*: OEISResultKind\n\n    const OEISSearchUrl\
-    \ = \"https://oeis.org/search\"\n\n    proc makeQuery[T: SomeInteger](values:\
+    \  # HTTPS\u901A\u4FE1\u306E\u305F\u3081\u3001httpclient\u306E\u8AAD\u307F\u8FBC\
+    \u307F\u524D\u306BSSL\u3092\u6709\u52B9\u306B\u3059\u308B\u3002\n    # net/httpclient\u3092\
+    \u5148\u306B\u8AAD\u307F\u8FBC\u3080\u5834\u5408\u306F\u3001\u30E1\u30A4\u30F3\
+    \u30D5\u30A1\u30A4\u30EB\u5148\u982D\u3067\u3082\u6307\u5B9A\u3059\u308B\u3002\
+    \n    {.define: ssl.}\n    import httpclient, json, strutils\n    import cplib/math/fractions\n\
+    \n    type\n        OEISResultKind* = enum\n            oeisSequence,\n      \
+    \      oeisMatrixRowMajor,\n            oeisMatrixAntidiagonal,\n            oeisNumerator,\n\
+    \            oeisDenominator\n\n        OEISResult* = object\n            id*:\
+    \ string\n            name*: string\n            data*: string\n            query*:\
+    \ string\n            url*: string\n            kind*: OEISResultKind\n\n    const\
+    \ OEISSearchUrl = \"https://oeis.org/search\"\n\n    proc makeQuery[T: SomeInteger](values:\
     \ openArray[T]): string =\n        for i, value in values:\n            if i >\
     \ 0:\n                result.add(',')\n            result.add($value)\n\n    proc\
     \ searchQuery(client: HttpClient, query: string, kind: OEISResultKind): seq[OEISResult]\
@@ -73,12 +89,28 @@ data:
     \n        let client = newHttpClient()\n        defer: client.close()\n      \
     \  result.addResults(searchQuery(client, makeQuery(rowMajor), oeisMatrixRowMajor))\n\
     \        result.addResults(searchQuery(client, makeQuery(antidiagonal), oeisMatrixAntidiagonal))\n\
-    \n    proc searchOEIS*[T: SomeInteger](values: openArray[Fraction[T]]): seq[OEISResult]\
-    \ =\n        ## \u6709\u7406\u6570\u5217\u3092\u65E2\u7D04\u5206\u6570\u306B\u76F4\
-    \u3057\u3001\u5206\u5B50\u5217\u3068\u5206\u6BCD\u5217\u3092\u5225\u3005\u306B\
-    \u691C\u7D22\u3059\u308B\u3002\u51E6\u7406\u6642\u9593\u306FO(n)\u3002\n     \
-    \   var numerators, denominators: seq[T]\n        for value in values:\n     \
-    \       if value.den == T(0):\n                raise newException(ValueError,\
+    \n    proc searchOEIS*[T: SomeInteger](f: proc(x, y: int): T {.closure.},\n  \
+    \                                  xRange: Slice[int] = 0 .. 9,\n            \
+    \                        yRange: Slice[int] = 0 .. 9): seq[OEISResult] =\n   \
+    \     ## f(x, y)\u304B\u30892\u6B21\u5143\u6574\u6570\u914D\u5217\u3092\u4F5C\u308A\
+    \u3001\u884C\u65B9\u5411\u3068\u53CD\u5BFE\u89D2\u7DDA\u65B9\u5411\u3067\u691C\
+    \u7D22\u3059\u308B\u3002\n        ## searchOEIS(f)\u306F\u5404\u8EF80..9\u3092\
+    \u4F7F\u3044\u3001searchOEIS(f, 1..5, 2..6)\u3067\u7BC4\u56F2\u3092\u6307\u5B9A\
+    \u3067\u304D\u308B\u3002\n        ## x\u306F\u884C\u3001y\u306F\u5217\u3067\u3001\
+    \u5404\u7BC4\u56F2\u306E\u4E21\u7AEF\u3092\u542B\u3080\u3002\u7BC4\u56F2\u304C\
+    \u7A7A\u306A\u3089\u95A2\u6570\u8A55\u4FA1\u30FB\u901A\u4FE1\u3092\u884C\u308F\
+    \u306A\u3044\u3002\n        ## \u95A2\u6570\u8A55\u4FA1\u306F\u5404\u8981\u7D20\
+    \u306B\u3064\u304D1\u56DE\u3002\u751F\u6210\u306BO(HW)\u3001\u8FFD\u52A0\u9818\
+    \u57DF\u306BO(HW)\u3092\u8981\u3059\u308B\u3002\n        if xRange.a > xRange.b\
+    \ or yRange.a > yRange.b:\n            return\n        var matrix: seq[seq[T]]\n\
+    \        for x in xRange:\n            var row: seq[T]\n            for y in yRange:\n\
+    \                row.add(f(x, y))\n            matrix.add(row)\n        result\
+    \ = searchOEIS(matrix)\n\n    proc searchOEIS*[T: SomeInteger](values: openArray[Fraction[T]]):\
+    \ seq[OEISResult] =\n        ## \u6709\u7406\u6570\u5217\u3092\u65E2\u7D04\u5206\
+    \u6570\u306B\u76F4\u3057\u3001\u5206\u5B50\u5217\u3068\u5206\u6BCD\u5217\u3092\
+    \u5225\u3005\u306B\u691C\u7D22\u3059\u308B\u3002\u51E6\u7406\u6642\u9593\u306F\
+    O(n)\u3002\n        var numerators, denominators: seq[T]\n        for value in\
+    \ values:\n            if value.den == T(0):\n                raise newException(ValueError,\
     \ \"OEIS rational search requires nonzero denominators\")\n            var reduced\
     \ = value\n            reduced.reduce()\n            numerators.add(reduced.num)\n\
     \            denominators.add(reduced.den)\n\n        if values.len == 0:\n  \
@@ -118,9 +150,13 @@ data:
   isVerificationFile: false
   path: cplib/utils/oeis.nim
   requiredBy: []
-  timestamp: '2026-10-01 02:25:40+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-10-14 21:36:14+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/utils/oeis_function_test.nim
+  - verify/utils/oeis_function_test.nim
+  - verify/utils/oeis_ssl_test.nim
+  - verify/utils/oeis_ssl_test.nim
 documentation_of: cplib/utils/oeis.nim
 layout: document
 redirect_from:

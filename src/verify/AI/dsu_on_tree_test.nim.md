@@ -185,20 +185,20 @@ data:
     \    doAssert prepared == 1 and answerCreated == 1 and seen == 3\n    doAssert\
     \ values == @[0, 0, 0]\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/tree/dsu_on_tree.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/tree/dsu_on_tree.nim
   - cplib/graph/graph.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/dsu_on_tree.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/dsu_on_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 05:10:11+09:00'
+  timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/dsu_on_tree_test.nim

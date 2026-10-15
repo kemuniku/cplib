@@ -53,14 +53,14 @@ data:
   dependsOn:
   - cplib/geometry/euclidean_mst.nim
   - cplib/tmpl/fastio.nim
+  - cplib/geometry/base.nim
+  - cplib/math/int128.nim
   - cplib/collections/unionfind.nim
+  - cplib/tmpl/fastio.nim
   - cplib/geometry/euclidean_mst.nim
   - cplib/collections/unionfind.nim
   - cplib/math/int128.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/math/int128.nim
-  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/geometry/euclidean_mst_test.nim
   requiredBy: []

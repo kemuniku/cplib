@@ -48,20 +48,25 @@ data:
     \ args)\n\n    proc print*(args: varargs[string, `$`]) =\n        # \u3053\u3061\
     \u3089\u3082\u5185\u90E8\u7528\u306E proc \u3092\u547C\u3076\n        print_internal((f:\
     \ stdout, sepc: \" \", endc: \"\\n\", flush: false), args)\n    macro getSymbolName(x:\
-    \ typed): string = x.toStrLit\n    macro debug*(args: varargs[untyped]): untyped\
-    \ =\n        when defined(debug):\n            result = newNimNode(nnkStmtList,\
-    \ args)\n            template prop(e: string = \"\"): untyped = (f: stderr, sepc:\
-    \ \"\", endc: e, flush: true)\n            for i, arg in args:\n             \
-    \   if arg.kind == nnkStrLit:\n                    result.add(quote do: print(prop(),\
-    \ \"\\\"\", `arg`, \"\\\"\"))\n                else:\n                    result.add(quote\
-    \ do: print(prop(\": \"), getSymbolName(`arg`)))\n                    result.add(quote\
-    \ do: print(prop(), `arg`))\n                if i != args.len - 1: result.add(quote\
-    \ do: print(prop(), \", \"))\n                else: result.add(quote do: print(prop(),\
-    \ \"\\n\"))\n        else:\n            return (quote do: discard)\n    #chmin,chmax\n\
-    \    template `max=`(x, y) =\n        let yVal = y # y\u304C\u8A08\u7B97\u5F0F\
-    \u306E\u5834\u5408\u306B\u8A55\u4FA1\u30921\u56DE\u306B\u3059\u308B\u305F\u3081\
-    \n        if x < yVal:\n            x = yVal\n\n    template `min=`(x, y) =\n\
-    \        let yVal = y\n        if x > yVal:\n            x = yVal\n    proc chmin[T](x:\
+    \ untyped): string =\n        ## \u578B\u691C\u67FB\u3084\u30C6\u30F3\u30D7\u30EC\
+    \u30FC\u30C8\u5C55\u958B\u524D\u306E\u5F0F\u3092\u6587\u5B57\u5217\u306B\u3059\
+    \u308B\u3002\n        x.toStrLit\n    macro debug*(args: varargs[untyped]): untyped\
+    \ =\n        ## \u30C7\u30D0\u30C3\u30B0\u6709\u52B9\u6642\u306B\u3001\u5C55\u958B\
+    \u524D\u306E\u5F0F\u540D\u3068\u305D\u306E\u5024\u3092\u6A19\u6E96\u30A8\u30E9\
+    \u30FC\u51FA\u529B\u306B\u8868\u793A\u3059\u308B\u3002\n        when defined(debug):\n\
+    \            result = newNimNode(nnkStmtList, args)\n            template prop(e:\
+    \ string = \"\"): untyped = (f: stderr, sepc: \"\", endc: e, flush: true)\n  \
+    \          for i, arg in args:\n                if arg.kind == nnkStrLit:\n  \
+    \                  result.add(quote do: print(prop(), \"\\\"\", `arg`, \"\\\"\"\
+    ))\n                else:\n                    result.add(quote do: print(prop(\"\
+    : \"), getSymbolName(`arg`)))\n                    result.add(quote do: print(prop(),\
+    \ `arg`))\n                if i != args.len - 1: result.add(quote do: print(prop(),\
+    \ \", \"))\n                else: result.add(quote do: print(prop(), \"\\n\"))\n\
+    \        else:\n            return (quote do: discard)\n    #chmin,chmax\n   \
+    \ template `max=`(x, y) =\n        let yVal = y # y\u304C\u8A08\u7B97\u5F0F\u306E\
+    \u5834\u5408\u306B\u8A55\u4FA1\u30921\u56DE\u306B\u3059\u308B\u305F\u3081\n  \
+    \      if x < yVal:\n            x = yVal\n\n    template `min=`(x, y) =\n   \
+    \     let yVal = y\n        if x > yVal:\n            x = yVal\n    proc chmin[T](x:\
     \ var T, y: T):bool=\n        if x > y:\n            x = y\n            return\
     \ true\n        return false\n    proc chmax[T](x: var T, y: T):bool=\n      \
     \  if x < y:\n            x = y\n            return true\n        return false\n\
@@ -107,7 +112,7 @@ data:
   isVerificationFile: false
   path: cplib/tmpl/sheep_old.nim
   requiredBy: []
-  timestamp: '2026-09-03 20:37:34+09:00'
+  timestamp: '2026-10-14 21:33:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: cplib/tmpl/sheep_old.nim

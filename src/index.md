@@ -971,7 +971,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/utils/monotone_minima.nim
       title: cplib/utils/monotone_minima.nim
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: cplib/utils/oeis.nim
       title: cplib/utils/oeis.nim
     - icon: ':heavy_check_mark:'
@@ -3535,6 +3535,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/lis_aoj_test.nim
       title: verify/utils/lis_aoj_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/oeis_function_test.nim
+      title: verify/utils/oeis_function_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/oeis_ssl_test.nim
+      title: verify/utils/oeis_ssl_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/restore_lis_aoj_test.nim
       title: verify/utils/restore_lis_aoj_test.nim

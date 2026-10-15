@@ -44,16 +44,16 @@ data:
 
     '
   dependsOn:
-  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep_interactive.nim
   requiredBy: []
-  timestamp: '2026-10-08 16:48:30+09:00'
+  timestamp: '2026-10-14 21:33:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/fastio_interactive_test.nim

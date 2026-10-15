@@ -175,13 +175,13 @@ data:
     \ = newSeq[T](size)\n        for mask in 0..<size: result[mask] = init(T, int(left[int(offsets[mask])]))\n"
   dependsOn:
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/convolution/private/subset_convolution_barrett.nim
   requiredBy:

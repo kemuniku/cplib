@@ -111,10 +111,10 @@ data:
     \ World\"\n"
   dependsOn:
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/SWAG.nim
   - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/SWAG.nim
   isVerificationFile: true
   path: verify/AI/SWAG_newswagwith_test.nim

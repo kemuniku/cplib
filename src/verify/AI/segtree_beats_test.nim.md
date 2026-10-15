@@ -47,8 +47,8 @@ data:
     \ == 15\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: true
   path: verify/AI/segtree_beats_test.nim

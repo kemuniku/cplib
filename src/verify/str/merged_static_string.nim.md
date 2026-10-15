@@ -85,26 +85,26 @@ data:
     \        assert $tmp2 == naive2\n        assert $tmp3 == naive3\n        assert\
     \ cmp(tmp2,tmp2) == 0\n\n"
   dependsOn:
+  - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/str/merged_static_string.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/static_string.nim
   - cplib/str/suffix_array.nim
+  - cplib/utils/backwards_index.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
+  - cplib/str/merged_static_string.nim
   isVerificationFile: false
   path: verify/str/merged_static_string.nim
   requiredBy: []
-  timestamp: '2026-10-08 16:48:30+09:00'
+  timestamp: '2026-10-14 21:33:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/str/merged_static_string.nim

@@ -35,8 +35,8 @@ data:
     \ \")"
   dependsOn:
   - cplib/str/hash_string.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim
