@@ -3,8 +3,8 @@ import sequtils, strutils, algorithm
 import cplib/graph/graph
 import cplib/collections/segtree
 import cplib/tree/heavylightdecomposition
-include atcoder/modint
-type mint = modint998244353
+import cplib/modint/modint
+type mint = modint998244353_barrett
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 

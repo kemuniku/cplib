@@ -2,8 +2,7 @@
 include cplib/str/hash_string
 
 {.checks:off.}
-import algorithm,sequtils,strutils
-import atcoder/string
+import cplib/str/suffix_array
 var S = stdin.readLine()
 var T = stdin.readLine()
 var SA = suffix_array((S & '$' & T))

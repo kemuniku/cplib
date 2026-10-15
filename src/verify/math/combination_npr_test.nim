@@ -1,6 +1,6 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 echo "Hello World"
-import atcoder/modint
+import cplib/modint/modint
 import cplib/math/combination
 
 proc naive_npr(n, r, m: int): int =
@@ -15,8 +15,8 @@ proc check_npr[ModInt]() =
         for r in 0..n:
             doAssert naive_npr(n, r, int(ModInt.umod())) == c.npr(n, r).val
 
-check_npr[modint998244353]()
-check_npr[modint1000000007]()
-type modint104717 = modint
+check_npr[modint998244353_barrett]()
+check_npr[modint1000000007_barrett]()
+type modint104717 = modint_barrett
 modint104717.setMod(104717)
 check_npr[modint104717]()

@@ -9,14 +9,15 @@ from pathlib import Path
 from typing import List
 import subprocess
 import tempfile
+import base64
 
 
 logger = getLogger(__name__)  # type: Logger
 
-ATCODER_INCLUDE = re.compile(r'\s*(include|import)\s*([a-zA-Z0-9_,./\s"]*)\s*')
+LIBRARY_INCLUDE = re.compile(r'\s*(include|import)\s*([a-zA-Z0-9_,./\s"]*)\s*')
 
 WHEN_STATEMENT = re.compile(r'^\s*when\s+.*:')
-ATCODER_DIR = re.compile('^(?:cplib)\/')
+CPLIB_DIR = re.compile('^(?:cplib)\/')
 INDENT_WIDTH = 2
 compress_type = "xz"  # "xz" or "bzip2" or "gzip"
 
@@ -55,7 +56,6 @@ def main():
     """
     メイン関数
     """
-    global ATCODER_DIR
     td = tempfile.TemporaryDirectory()
     lib_tmp = Path(td.name)
     basicConfig(
@@ -68,19 +68,16 @@ def main():
     parser.add_argument('-c', '--console', action='store_true', help='Print to console')
     parser.add_argument('-s', '--single-line', action='store_true', help='Single line import')
     parser.add_argument('-cmp', '--compress', action='store_true', help='Compress import')
-    parser.add_argument('--lib', nargs='*', help='Path to library')
+    parser.add_argument('--lib', action='append', help='Path to library')
     parser.add_argument('-d', '--directory', action='store_true', help='Submit by directory')
     parser.add_argument('-b', '--raw', action='store_true', help='Submit raw data')
-    parser.add_argument('--expand-atcoder', action='store_true', help='Expand Nim-ACL')
     opts = parser.parse_args()
 
-    if opts.expand_atcoder:
-        ATCODER_DIR = re.compile('^(?:cplib|atcoder)\/')
+    lib_path = [Path(__file__).parent.resolve()]
     if opts.lib:
-        lib_path = [Path(__file__).parent.resolve()]
         for d in opts.lib:
             lib_path.append(Path(d) / "src")
-    elif 'NIM_INCLUDE_PATH' in environ:
+    if 'NIM_INCLUDE_PATH' in environ:
         lib_path.append(Path(environ['NIM_INCLUDE_PATH']) / "src")
 
     def read_source(f: str, prefix: str, defined: set, lib_path: List[str], is_main=True, load_type=None) -> List[str]:
@@ -110,7 +107,7 @@ def main():
             os.makedirs(copy_source_path.parents[0], exist_ok=True)
             for d in lib_path:
                 if not path.exists(str(d / f)): continue
-                r = open(Path(lib_path / f)).read()
+                r = open(d / f).read()
                 break
             else:
                 raise Exception("Can't find {:s}".format(f))
@@ -124,7 +121,7 @@ def main():
             if WHEN_STATEMENT.match(line):
                 result.append(line)
             else:
-                matched = ATCODER_INCLUDE.match(line)
+                matched = LIBRARY_INCLUDE.match(line)
                 spaces = indent_level(line)
                 if matched:
                     keyword = line.strip().split()[0]
@@ -155,7 +152,7 @@ def main():
                         if fname[0] == '\"':
                             assert fname[-1] == '\"'
                             fname = fname[1:-1]
-                        if ATCODER_DIR.match(fname):
+                        if CPLIB_DIR.match(fname):
                             fname = strip_as(fname)
                             original_fname = fname
                             if not fname.endswith(".nim"):
@@ -178,8 +175,6 @@ def main():
                                         s0 += l
                                         s0 += '\\n'
 
-                                url = "https://github.com/zer0-star/Nim-ACL/tree/master/src/{}".format(fname)
-                                #result.append("# see {}".format(url))
                                 if opts.directory:
                                     result.append("{} {}".format(keyword, original_fname))
                                 else:
@@ -209,11 +204,11 @@ def main():
     outputSuffix = b""
     if opts.directory:
         global outputPrefix
-        subprocess.run("export XZ_OPT=-9 && tar -Jcvf atcoder.tar.xz atcoder", cwd=lib_tmp, shell=True, stdout=subprocess.PIPE)
-        md5sum = subprocess.run("md5sum atcoder.tar.xz", cwd=lib_tmp, shell=True, stdout=subprocess.PIPE).stdout.decode()
+        subprocess.run("export XZ_OPT=-9 && tar -Jcvf cplib.tar.xz cplib", cwd=lib_tmp, shell=True, stdout=subprocess.PIPE)
+        md5sum = subprocess.run("md5sum cplib.tar.xz", cwd=lib_tmp, shell=True, stdout=subprocess.PIPE).stdout.decode()
         second_compile_command = "nim cpp -d:release -d:SecondCompile -d:danger --path:./ --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off --checks:off -o:a.out"
         if opts.raw:
-            d = open(lib_tmp / "atcoder.tar.xz", 'rb').read()
+            d = open(lib_tmp / "cplib.tar.xz", 'rb').read()
             outputPrefix += """
 static:
   when not defined SecondCompile:
@@ -222,28 +217,25 @@ static:
       fn = getFileName()
       zs = {:d}
     block:
-      let (output, ex) = gorgeEx("if [ -e ./atcoder ]; then exit 1; else exit 0; fi")
-      doAssert ex == 0, "atcoder directory already exisits"
+      let (output, ex) = gorgeEx("if [ -e ./cplib ]; then exit 1; else exit 0; fi")
+      doAssert ex == 0, "cplib directory already exists"
     block:
-      let (output, ex) = gorgeEx("tail -c " & $zs & " " & fn & " > atcoder.tar.xz")
+      let (output, ex) = gorgeEx("tail -c " & $zs & " " & fn & " > cplib.tar.xz")
       doAssert ex == 0, "tail failed"
       # md5sum: {:s}
       let md5sum = staticExec("md5sum " & fn)
-      let tarResult = staticExec("tar -Jxvf atcoder.tar.xz")
+      let tarResult = staticExec("tar -Jxvf cplib.tar.xz")
       doAssert false, tarResult
     let ss = staticExec("MS=`wc --bytes " & fn & " | cut -d' ' -f1`; echo $((MS-{:d}))")
     discard staticExec("head -c " & ss & " " & fn & " > Main2.nim")
     let s = staticExec("du -a")
     doAssert false, s
     let (output, ex) = gorgeEx("{:s} Main2.nim")
-    discard staticExec("rm -rf ./atcoder && rm Main2.nim");doAssert ex == 0, output;quit(0)
+    discard staticExec("rm -rf ./cplib && rm Main2.nim");doAssert ex == 0, output;quit(0)
 """.format(len(d), md5sum, len(d), second_compile_command)
             outputSuffix += d
         else:
-            s = subprocess.run("cat atcoder.tar.xz | base64 -b 0", cwd=lib_tmp, shell=True, stdout=subprocess.PIPE).stdout.decode()
-            if s[-1] == '\n':
-                print("WARNING!!! newline")
-                s = s.strip()
+            s = base64.b64encode((lib_tmp / "cplib.tar.xz").read_bytes()).decode()
             outputPrefix += """
 static:
   when not defined SecondCompile:
@@ -251,11 +243,11 @@ static:
     template getFileName():string = instantiationInfo().filename
     let fn = getFileName()
     block:
-      let (output, ex) = gorgeEx("if [ -e ./atcoder ]; then exit 1; else exit 0; fi")
-      doAssert ex == 0, "atcoder directory already exisits"
-    discard staticExec("echo \\"{:s}\\" | base64 -d > atcoder.tar.xz && tar -Jxvf atcoder.tar.xz")
+      let (output, ex) = gorgeEx("if [ -e ./cplib ]; then exit 1; else exit 0; fi")
+      doAssert ex == 0, "cplib directory already exists"
+    discard staticExec("echo \\"{:s}\\" | base64 -d > cplib.tar.xz && tar -Jxvf cplib.tar.xz")
     let (output, ex) = gorgeEx("{:s} " & fn)
-    discard staticExec("rm -rf ./atcoder");doAssert ex == 0, output;quit(0)
+    discard staticExec("rm -rf ./cplib");doAssert ex == 0, output;quit(0)
 """.format(md5sum, s, second_compile_command)
 
     output = ('\n'.join(result)).encode() + outputSuffix

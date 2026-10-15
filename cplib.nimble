@@ -11,4 +11,4 @@ backend       = "cpp"
 
 # Dependencies
 
-requires "nim >= 1.6.14", "https://github.com/zer0-star/Nim-ACL >= 0.1.0"
+requires "nim >= 1.6.14"

@@ -19,10 +19,6 @@ jobs:
         nim-version:
           - 2.2.4
           - 1.6.20
-        include:
-          # Avoid rerunning Nim-ACL's non-idempotent install hook on cached packages.
-          - nim-version: 2.2.4
-            nimble-options: --solver:legacy
 
     # main の Nim 1.6.20 だけが検証結果を公開するため、deploy-doc と排他制御する。
     concurrency:
@@ -64,7 +60,7 @@ jobs:
 
       - name: Install Dependency
         id: install-dependency
-        run: nimble install -y ${{ matrix.nimble-options }}
+        run: nimble install -y
 
       - name: Restore Verify Cache
         id: restore-verify-cache

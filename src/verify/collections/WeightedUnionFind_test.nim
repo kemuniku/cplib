@@ -6,8 +6,8 @@ proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
 
 var N,Q = ii()
-import atcoder/modint
-type mint = modint998244353
+import cplib/modint/modint
+type mint = modint998244353_barrett
 var uf = initWeightedUnionFind(N,mint)
 for i in 0..<Q:
     var t = ii()

@@ -2,7 +2,6 @@
 import sequtils, strutils, tables
 import cplib/tree/rerooting
 import cplib/graph/graph
-import atcoder/modint
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 var N = ii()

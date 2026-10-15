@@ -115,6 +115,36 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
         LazySegmentTreeType[S, F](merge, mapping, composition)
             .initLazySegmentTreeImpl(v_or_n, default, id)
 
+    template getType*(ST: typedesc[LazySegmentTree], S, F: typedesc,
+                      op, e, mapping, composition, id: untyped): typedesc[LazySegmentTree] =
+        ## 演算と単位元を型に保持する遅延セグメント木型を作ります。O(1)。
+        proc op1(a, b: S): S {.gensym, inline.} = op(a, b)
+        proc mapping1(f: F, x: S): S {.gensym, inline.} = mapping(f, x)
+        proc composition1(f, g: F): F {.gensym, inline.} = composition(f, g)
+        proc e1(): S {.gensym, inline.} = e()
+        proc id1(): F {.gensym, inline.} = id()
+        LazySegmentTree[S, F, (op1, mapping1, composition1, e1, id1)]
+
+    template init*[ST: LazySegmentTree](self: typedesc[ST], v: seq[ST.S]): ST =
+        ## 型に保持した演算を使って木を構築します。O(N)。
+        self.initLazySegmentTreeImpl(v, ST.p[3](), ST.p[4]())
+
+    template calc_op*[ST: LazySegmentTree](self: ST or typedesc[ST], a, b: ST.S): auto =
+        ## 型に保持した二項演算を適用します。O(1)。
+        ST.p[0](a, b)
+
+    template calc_e*[ST: LazySegmentTree](self: ST or typedesc[ST]): auto =
+        ## 型に保持した演算の単位元を返します。O(1)。
+        ST.p[3]()
+
+    template calc_composition*[ST: LazySegmentTree](self: ST or typedesc[ST], a, b: ST.F): auto =
+        ## 型に保持した遅延作用の合成を適用します。O(1)。
+        ST.p[2](a, b)
+
+    template calc_id*[ST: LazySegmentTree](self: ST or typedesc[ST]): auto =
+        ## 型に保持した遅延作用の単位元を返します。O(1)。
+        ST.p[4]()
+
     template all_apply(self, p, f: untyped) =
         ## pの要素にfの値を作用させる。子がある場合はlazyを更新する。
         self.arr[p] = self.mappingOp(f, self.arr[p])
@@ -125,7 +155,7 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
                 self.lazy[p] = f
                 self.hasLazy[p] = true
 
-    proc pushNode[ST: LazySegmentTree](self: ST, p: int) {.noinline.} =
+    proc pushNode*[ST: LazySegmentTree](self: ST, p: int) {.noinline.} =
         ## pの子に作用を伝播させる。
         if self.hasLazy[p]:
             let
@@ -146,6 +176,10 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
                     self.lazy[right] = f
                     self.hasLazy[right] = true
             self.hasLazy[p] = false
+
+    proc treeSize*[ST: LazySegmentTree](self: ST): int =
+        ## 葉を保持する領域の先頭位置を返します。O(1)。
+        self.lastnode
 
     template push(self, p: untyped) =
         self.pushNode(p)
@@ -239,6 +273,10 @@ when not declared CPLIB_COLLECTIONS_LAZYSEGTREE_STATIC_OP:
         self: var ST, segment: HSlice[int, int]
     ): ST.S =
         return self.get(segment.a, segment.b + 1)
+
+    proc prod*[ST: LazySegmentTree](self: var ST, segment: HSlice[int, int]): ST.S =
+        ## 半開区間の演算結果を返します。O(log N)。
+        self.get(segment)
 
     proc `[]`*[ST: LazySegmentTree](
         self: var ST, segment: HSlice[int, int]

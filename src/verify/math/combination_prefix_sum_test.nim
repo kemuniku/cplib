@@ -1,7 +1,7 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 echo "Hello World"
 
-import atcoder/modint
+import cplib/modint/modint
 import cplib/math/combination
 import cplib/math/combination_prefix_sum
 
@@ -38,9 +38,9 @@ proc check[ModInt]() =
     let emptyRange: seq[(int, int, int)] = @[]
     doAssert combinationRangeSum[ModInt](emptyRange).len == 0
 
-check[modint998244353]()
-check[modint1000000007]()
+check[modint998244353_barrett]()
+check[modint1000000007_barrett]()
 
-type DynamicModInt = modint
+type DynamicModInt = modint_barrett
 DynamicModInt.setMod(1_000_000_007)
 check[DynamicModInt]()

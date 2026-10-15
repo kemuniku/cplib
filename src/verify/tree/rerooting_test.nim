@@ -2,10 +2,10 @@
 import sequtils, strutils, tables
 import cplib/tree/rerooting
 import cplib/graph/graph
-import atcoder/modint
+import cplib/modint/modint
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
-type mint = modint998244353
+type mint = modint998244353_barrett
 var N = ii()
 var A = newseqwith(N,ii())
 var G = initUnWeightedUnDirectedGraph(N)

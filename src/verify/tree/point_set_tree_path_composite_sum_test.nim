@@ -1,6 +1,6 @@
 # verification-helper: PROBLEM https://judge.yosupo.jp/problem/point_set_tree_path_composite_sum
 import sequtils, strutils
-import atcoder/modint
+import cplib/modint/modint
 import cplib/graph/graph
 import cplib/tree/heavylightdecomposition
 import cplib/tree/static_top_tree
@@ -10,7 +10,7 @@ proc scanf(formatstr: cstring) {.header: "<stdio.h>", varargs.}
 proc ii(): int = scanf("%lld", addr result)
 
 type
-    mint = modint998244353
+    mint = modint998244353_barrett
     Data = object
         mul, add, count, sum: mint
 

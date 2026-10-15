@@ -4,10 +4,10 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
     import cplib/graph/graph
     import cplib/graph/functional_graph
     import cplib/tree/heavylightdecomposition
-    import atcoder/lazysegtree
+    import cplib/collections/lazysegtree_static_op
 
     type FunctionalGraph_with_lazy_op*[ST] = ref object
-        ## ACLの遅延セグメント木を用いて、functional graph上の積と経路作用を扱う。
+        ## 遅延セグメント木を用いて、functional graph上の積と経路作用を扱う。
         ## 非サイクル頂点はst_hld、サイクル頂点はst_cycleだけに保持する。
         graph : Functional_Graph
         st_hld : ST
@@ -44,7 +44,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         values:seq[S],
         st_type:typedesc[ST]
     ):FunctionalGraph_with_lazy_op[ST]=
-        ## 明示したACL LazySegTree型STを使って構築する。O(N)
+        ## 明示したLazySegmentTree型STを使って構築する。O(N)
         ## 複数のfunctional graphを同じ型として保持したい場合に用いる。
         return initFunctionalGraph_with_lazy_op_impl(source,values,st_type)
 
@@ -63,11 +63,11 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         return initFunctionalGraph_with_lazy_op_impl(initFunctionalGraph(source),values,st_type)
 
     template initFunctionalGraph_with_lazy_op*(source,values,op,e,mapping,composition,id:untyped):untyped=
-        ## ACLのlazysegtreeと同じop/e/mapping/composition/idから構築する。O(N)
+        ## op/e/mapping/composition/idから遅延セグメント木を構築する。O(N)
         block:
             type S = typeof(values[0])
             type Action = typeof(id())
-            type ST = typeof(initLazySegTree[S,Action](values,op,e,mapping,composition,id))
+            type ST = LazySegmentTree.getType(S,Action,op,e,mapping,composition,id)
             initFunctionalGraph_with_lazy_op(source,values,ST)
 
     template initFunctionalGraph_with_op*(source,values,op,e,mapping,composition,id:untyped):untyped=
@@ -199,8 +199,8 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
 
     proc lazyPushAll[ST](st:var ST)=
         ## 親から順に遅延値を伝播し、全葉を読み出せる状態にする。O(len)
-        for p in 1..<st.size:
-            st.push(p)
+        for p in 1..<st.treeSize:
+            st.pushNode(p)
 
     proc prod_reachable_idempotent_all*[ST](self:FunctionalGraph_with_lazy_op[ST]):seq[ST.S]=
         ## 各頂点から到達可能な相異なる頂点の値の積を全頂点について返す。
@@ -212,9 +212,9 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
 
         template value(v:int):ST.S =
             (if self.graph.incycle(v):
-                self.st_cycle.d[self.st_cycle.size+self.lazyCycleIndex(v)]
+                self.st_cycle.arr[self.st_cycle.treeSize+self.lazyCycleIndex(v)]
             else:
-                self.st_hld.d[self.st_hld.size+self.lazyHldIndex(v)])
+                self.st_hld.arr[self.st_hld.treeSize+self.lazyHldIndex(v)])
 
         for cycle in self.graph.cycle:
             var cycle_prod = self.st_hld.calc_e()
@@ -291,9 +291,9 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         if right <= q_left or q_right <= left:
             return
         if right-left == 1:
-            values.add(st.d[k])
+            values.add(st.arr[k])
             return
-        st.push(k)
+        st.pushNode(k)
         let middle = (left+right) shr 1
         st.appendLazyRangeDfs(k shl 1,left,middle,q_left,q_right,values)
         st.appendLazyRangeDfs((k shl 1) or 1,middle,right,q_left,q_right,values)
@@ -302,7 +302,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         ## st[q_left..<q_right]の葉を左からvaluesへ追加する。O(log N + 出力長)
         assert 0 <= q_left and q_left <= q_right and q_right <= st.len, "指定した区間が有効な範囲内である必要があります: 0 <= q_left and q_left <= q_right and q_right <= st.len"
         if q_left < q_right:
-            st.appendLazyRangeDfs(1,0,st.size,q_left,q_right,values)
+            st.appendLazyRangeDfs(1,0,st.treeSize,q_left,q_right,values)
 
     proc walkValues[ST](self:FunctionalGraph_with_lazy_op[ST],start,count:int):seq[ST.S]=
         ## startから始まる訪問列の先頭count頂点分の値を返す。
@@ -386,7 +386,7 @@ when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:
         ## @[x]から始め、prefixのprodに対するfが初めてfalseになる移動距離。
         ## L回移動してもtrueならLを返す。O(log^2 N + log L)
         ## f(e)=trueであり、一度falseになった後は頂点を追加してもfalseのまま、
-        ## というACL max_rightと同じ単調性を仮定する。
+        ## というmax_rightと同じ単調性を仮定する。
         assert 0 <= x and x < len(self.graph.cycle_number), "頂点番号が範囲外です: 0 <= x and x < len(self.graph.cycle_number)"
         assert 0 <= L and L < high(int), "指定した値が有効な範囲内である必要があります: 0 <= L and L < high(int)"
         let limit = L+1
