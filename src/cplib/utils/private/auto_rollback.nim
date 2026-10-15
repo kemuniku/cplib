@@ -114,12 +114,14 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
 
         proc isScalar(t: NimNode): bool =
             ## 履歴に安全に値を保持できる組み込みの型か判定する。
+            if t.typeKind == ntyAlias: return isScalar(t.getTypeImpl)
             t.typeKind in {ntyBool, ntyChar, ntyEnum, ntyInt, ntyInt8, ntyInt16,
                 ntyInt32, ntyInt64, ntyUInt, ntyUInt8, ntyUInt16, ntyUInt32,
                 ntyUInt64, ntyFloat, ntyFloat32, ntyFloat64, ntyRange}
 
         proc concreteKind(t: NimNode): NimTypeKind =
             ## ジェネリック型も実体の型種別で判定する。
+            if t.typeKind == ntyAlias: return concreteKind(t.getTypeImpl)
             if t.typeKind != ntyGenericInst: return t.typeKind
             let impl = t.getTypeImpl
             case impl.kind
@@ -161,15 +163,20 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
                     return pragma[1].strVal
 
         proc staticCallee(n: NimNode): NimNode =
-            ## 関数のタプルリテラルを定数添字で選ぶ呼び出しを静的に解決する。
-            if n.kind == nnkBracketExpr and n.len == 2 and n[1].kind in {nnkIntLit..nnkUInt64Lit}:
+            ## 関数のタプルリテラルを定数添字・フィールド名で選ぶ呼び出しを静的に解決する。
+            if n.len == 2 and (n.kind == nnkDotExpr or
+                    (n.kind == nnkBracketExpr and n[1].kind in {nnkIntLit..nnkUInt64Lit})):
                 let values = staticCallee(n[0])
-                let index = n[1].intVal
-                if values.kind in {nnkTupleConstr, nnkPar, nnkBracket} and
-                        index >= 0 and index < values.len:
-                    for value in values:
+                if values.kind in {nnkTupleConstr, nnkPar, nnkBracket}:
+                    var index = if n.kind == nnkBracketExpr: n[1].intVal else: -1
+                    for i, field in values:
+                        let value = if field.kind == nnkExprColonExpr: field[1] else: field
                         if value.kind != nnkSym or value.symKind notin {nskProc, nskFunc}: return n
-                    return staticCallee(values[index.int])
+                        if n.kind == nnkDotExpr and field.kind == nnkExprColonExpr and
+                                field[0].eqIdent(n[1].strVal): index = i
+                    if index >= 0 and index < values.len:
+                        let field = values[index.int]
+                        return staticCallee(if field.kind == nnkExprColonExpr: field[1] else: field)
             n
 
         proc containsVariant(n: NimNode): bool =
@@ -223,7 +230,9 @@ when not declared CPLIB_UTILS_PRIVATE_AUTO_ROLLBACK:
             params.add(newIdentDefs(logParam, newTree(nnkVarTy, historyType)))
             var originalParams: seq[NimNode]
             for i in 1..<impl[3].len:
-                for j in 0..<impl[3][i].len - 2: originalParams.add(impl[3][i][j])
+                for j in 0..<impl[3][i].len - 2:
+                    let parameter = impl[3][i][j]
+                    originalParams.add(if parameter.kind == nnkPragmaExpr: parameter[0] else: parameter)
             var parameterIndex = 0
             for i in 1..<signature.len:
                 let formal = signature[i]

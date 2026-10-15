@@ -3,6 +3,7 @@ import random
 import cplib/utils/rollback_mo
 import cplib/utils/offline_dynamic_queries
 import cplib/collections/unionfind
+import cplib/collections/segtree_static_op
 
 block:
     var solver = initRollbackMo(0)
@@ -89,6 +90,107 @@ for trial in 0..<40:
         let l = rng.rand(n)
         ranges.add((l, rng.rand(l..n)))
     testFrequencies(values, ranges, rng.rand(n) + 1)
+
+for width in [1, 2, 4]:
+    let values = [2, 0, 2, 3, 1, 0, 3]
+    var mo = initRollbackMo(values.len, width = width)
+    var ranges: seq[(int, int)]
+    for l in 0..values.len:
+        for r in l..values.len:
+            mo.insert(l, r)
+            ranges.add((l, r))
+    var tree = newSegWith(4, l + r, 0)
+    for i in 0..<4: tree[i] = 1
+    let original = tree.arr
+    var total = 0
+    proc add(idx: int) =
+        tree[values[idx]] = tree[values[idx]] + 1
+        total = tree[0..3]
+    proc answer(idx: int) =
+        var expected = [1, 1, 1, 1]
+        let (l, r) = ranges[idx]
+        for i in l..<r: inc expected[values[i]]
+        for i in 0..<4: doAssert tree[i] == expected[i]
+        doAssert tree[1..2] == expected[1] + expected[2]
+        doAssert total == (if l == r: 0 else: 4 + r - l)
+    for repeat in 0..<2:
+        mo.runAutoRollback(add, answer)
+        doAssert tree.arr == original and total == 0
+
+proc testDirections(n, width: int) =
+    var mo = initRollbackMo(n, width = width)
+    var ranges: seq[(int, int)]
+    for l in 0..n:
+        for r in l..n: ranges.add((l, r))
+    rng.shuffle(ranges)
+    for query in ranges: mo.insert(query[0], query[1])
+    const powers = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000]
+    var digits = 0
+    var length = 0
+    var first = -1
+    var last = -1
+    var seen = 0
+    proc addLeft(idx: int) =
+        if length > 0: doAssert idx == first - 1
+        else: last = idx
+        first = idx
+        digits = (idx + 1) * powers[length] + digits
+        inc length
+    proc addRight(idx: int) =
+        if length > 0: doAssert idx == last + 1
+        else: first = idx
+        last = idx
+        digits = digits * 10 + idx + 1
+        inc length
+    proc answer(idx: int) =
+        let (l, r) = ranges[idx]
+        var expected = 0
+        for i in l..<r: expected = expected * 10 + i + 1
+        doAssert digits == expected and length == r - l
+        if l < r: doAssert first == l and last == r - 1
+        inc seen
+    for repeat in 0..<2:
+        mo.runAutoRollback(addLeft, addRight, answer)
+        doAssert digits == 0 and length == 0 and first == -1 and last == -1
+        doAssert seen == (repeat + 1) * ranges.len
+    var history: seq[(int, int, int, int)]
+    proc manualLeft(idx: int) =
+        history.add((digits, length, first, last))
+        addLeft(idx)
+    proc manualRight(idx: int) =
+        history.add((digits, length, first, last))
+        addRight(idx)
+    proc rollback() = (digits, length, first, last) = history.pop()
+    mo.run(manualLeft, manualRight, rollback, answer)
+    doAssert seen == 3 * ranges.len and history.len == 0
+    doAssert digits == 0 and length == 0 and first == -1 and last == -1
+
+for n in 0..8:
+    for width in [0, 1, 2, 3, n, n + 5]: testDirections(n, width)
+
+block:
+    var mo = initRollbackMo(3, width = 1)
+    mo.insert(0, 3)
+    var state = 7
+    proc addLeft(idx: int) = inc state
+    proc addRight(idx: int) = state += 2
+    proc failingLeft(idx: int) =
+        addLeft(idx)
+        state += 10 div idx
+    proc failingRight(idx: int) =
+        addRight(idx)
+        state += 10 div (idx - 1)
+    proc answer(idx: int) = discard
+    try:
+        mo.runAutoRollback(failingLeft, addRight, answer)
+        doAssert false
+    except DivByZeroDefect:
+        doAssert state == 7
+    try:
+        mo.runAutoRollback(addLeft, failingRight, answer)
+        doAssert false
+    except DivByZeroDefect:
+        doAssert state == 7
 
 for trial in 0..<30:
     const vertices = 10
