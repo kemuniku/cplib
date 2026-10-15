@@ -203,6 +203,28 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
     ): (RangeReverseLazySegmentTreeNode[S, F], RangeReverseLazySegmentTreeNode[S, F]) =
         split(node, k, self.merge, self.default, self.mapping, self.composition, self.id)
 
+    proc split*[S, F](self: RangeReverseLazySegmentTree[S, F], k: int): (RangeReverseLazySegmentTree[S, F], RangeReverseLazySegmentTree[S, F]) =
+        ## 先頭 k 要素で分割し、元の列を空にします。期待 O(log N)。
+        assert 0 <= k and k <= self.length, "0 <= k <= len が必要です"
+        let n = self.length
+        var root = move(self.root)
+        let (leftRoot, rightRoot) = self.splitRoot(root, k)
+        self.length = 0
+        result = (
+            RangeReverseLazySegmentTree[S, F](root: leftRoot, length: k, merge: self.merge, default: self.default, mapping: self.mapping, composition: self.composition, id: self.id),
+            RangeReverseLazySegmentTree[S, F](root: rightRoot, length: n - k, merge: self.merge, default: self.default, mapping: self.mapping, composition: self.composition, id: self.id)
+        )
+
+    proc merge*[S, F](left, right: RangeReverseLazySegmentTree[S, F]): RangeReverseLazySegmentTree[S, F] =
+        ## 左右の列を連結し、両方の元の列を空にします。同じ演算が必要です。期待 O(log N)。
+        assert left != right, "同じ列を連結できません"
+        let n = left.length + right.length
+        var leftRoot = move(left.root)
+        var rightRoot = move(right.root)
+        result = RangeReverseLazySegmentTree[S, F](root: left.mergeRoot(leftRoot, rightRoot), length: n, merge: left.merge, default: left.default, mapping: left.mapping, composition: left.composition, id: left.id)
+        left.length = 0
+        right.length = 0
+
     proc insert*[S, F](self: RangeReverseLazySegmentTree[S, F], index: int, value: S) =
         ## index の直前に value を挿入する。末尾には index = len を指定する。
         ## 期待 O(log N)。挿入前の区間更新は新しい要素には作用しない。
@@ -211,6 +233,22 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_LAZYSEGTREE:
         let node = newNode(value, rand(uint64), self.id)
         self.root = self.mergeRoot(left, self.mergeRoot(node, right))
         inc self.length
+
+    proc insort*[S, F](self: RangeReverseLazySegmentTree[S, F], value: S, less: proc(x, y: S): bool): int {.discardable.} =
+        ## ソート済みの列へ同値の末尾となる位置に挿入し、その位置を返します。期待 O(log N)。
+        var node = self.root
+        while not node.isNil:
+            node.push(self.mapping, self.composition, self.id)
+            if less(value, node.value):
+                node = node.left
+            else:
+                result += node.left.nodeLen + 1
+                node = node.right
+        self.insert(result, value)
+
+    proc insort*[S, F](self: RangeReverseLazySegmentTree[S, F], value: S): int {.discardable.} =
+        ## < でソート済みの列へ同値の末尾となる位置に挿入します。期待 O(log N)。
+        self.insort(value, proc(x, y: S): bool = x < y)
 
     proc erase*[S, F](self: RangeReverseLazySegmentTree[S, F], l, r: int) =
         ## 半開区間 [l, r) を削除する。木の操作は期待 O(log N)。

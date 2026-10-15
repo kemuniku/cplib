@@ -179,6 +179,28 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE:
     ): (RangeReverseDualSegmentTreeNode[S, F], RangeReverseDualSegmentTreeNode[S, F]) =
         split(node, k, self.mapping, self.composition, self.id)
 
+    proc split*[S, F](self: RangeReverseDualSegmentTree[S, F], k: int): (RangeReverseDualSegmentTree[S, F], RangeReverseDualSegmentTree[S, F]) =
+        ## 先頭 k 要素で分割し、元の列を空にします。期待 O(log N)。
+        assert 0 <= k and k <= self.length, "0 <= k <= len が必要です"
+        let n = self.length
+        var root = move(self.root)
+        let (leftRoot, rightRoot) = self.splitRoot(root, k)
+        self.length = 0
+        result = (
+            RangeReverseDualSegmentTree[S, F](root: leftRoot, length: k, mapping: self.mapping, composition: self.composition, id: self.id),
+            RangeReverseDualSegmentTree[S, F](root: rightRoot, length: n - k, mapping: self.mapping, composition: self.composition, id: self.id)
+        )
+
+    proc merge*[S, F](left, right: RangeReverseDualSegmentTree[S, F]): RangeReverseDualSegmentTree[S, F] =
+        ## 左右の列を連結し、両方の元の列を空にします。同じ演算が必要です。期待 O(log N)。
+        assert left != right, "同じ列を連結できません"
+        let n = left.length + right.length
+        var leftRoot = move(left.root)
+        var rightRoot = move(right.root)
+        result = RangeReverseDualSegmentTree[S, F](root: left.mergeRoot(leftRoot, rightRoot), length: n, mapping: left.mapping, composition: left.composition, id: left.id)
+        left.length = 0
+        right.length = 0
+
     proc insert*[S, F](self: RangeReverseDualSegmentTree[S, F], index: int, value: S) =
         ## index の直前に value を挿入する。末尾には index = len を指定する。
         ## 期待 O(log N)。挿入前の区間更新は新しい要素には作用しない。
@@ -187,6 +209,22 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_DUALSEGTREE:
         let node = newNode(value, rand(uint64), self.id)
         self.root = self.mergeRoot(left, self.mergeRoot(node, right))
         inc self.length
+
+    proc insort*[S, F](self: RangeReverseDualSegmentTree[S, F], value: S, less: proc(x, y: S): bool): int {.discardable.} =
+        ## ソート済みの列へ同値の末尾となる位置に挿入し、その位置を返します。期待 O(log N)。
+        var node = self.root
+        while not node.isNil:
+            node.push(self.mapping, self.composition, self.id)
+            if less(value, node.value):
+                node = node.left
+            else:
+                result += node.left.nodeLen + 1
+                node = node.right
+        self.insert(result, value)
+
+    proc insort*[S, F](self: RangeReverseDualSegmentTree[S, F], value: S): int {.discardable.} =
+        ## < でソート済みの列へ同値の末尾となる位置に挿入します。期待 O(log N)。
+        self.insort(value, proc(x, y: S): bool = x < y)
 
     proc erase*[S, F](self: RangeReverseDualSegmentTree[S, F], l, r: int) =
         ## 半開区間 [l, r) を削除する。木の操作は期待 O(log N)。
