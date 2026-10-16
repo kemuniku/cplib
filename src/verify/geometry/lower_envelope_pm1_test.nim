@@ -63,3 +63,5 @@ block:
         doAssert false
     except ValueError:
         discard
+
+echo "Hello World"

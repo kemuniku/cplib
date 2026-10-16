@@ -52,7 +52,7 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
             functions: seq[EnvelopeFunction[T]], bOffset: int,
             upper: static[bool]): EnvelopeDiagram[T] =
         ## 2つの包絡図を入力番号のオフセットを考慮して線形時間で合成する。
-        proc winner(a, b: int, x: T): int =
+        proc winner(a, b: int, x: T, functions: seq[EnvelopeFunction[T]]): int =
             ## 有限の境界点で比較する。同率なら小さい入力番号を返す。
             if a < 0: return b
             if b < 0: return a
@@ -71,7 +71,8 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
             d.point_sources.add(point)
             d.interval_sources.add(right)
 
-        proc merge(a, b: EnvelopeDiagram[T]): EnvelopeDiagram[T] =
+        proc merge(a, b: EnvelopeDiagram[T],
+                functions: seq[EnvelopeFunction[T]]): EnvelopeDiagram[T] =
             ## 2包絡図を同時に走査し、共通開区間内の交点で高々1回分割する。O(|a|+|b|)。
             result.xs = newSeqOfCap[T](a.xs.len + b.xs.len)
             result.point_sources = newSeqOfCap[int](a.xs.len + b.xs.len)
@@ -98,7 +99,7 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
                 elif v < 0:
                     first = u
                 elif functions[u].slope == functions[v].slope:
-                    first = winner(u, v, functions[u].x)
+                    first = winner(u, v, functions[u].x, functions)
                 else:
                     let f = functions[u]
                     let g = functions[v]
@@ -134,11 +135,11 @@ when not declared CPLIB_GEOMETRY_LOWER_ENVELOPE:
                 if j < b.xs.len and b.xs[j] == right:
                     atB = if b.point_sources[j] < 0: -1 else: b.point_sources[j] + bOffset
                     inc j
-                point = winner(atA, atB, right)
+                point = winner(atA, atB, right, functions)
                 left = right
                 hasLeft = true
 
-        result = merge(a, b)
+        result = merge(a, b, functions)
 
     proc envelopeBuild[T: EnvelopeNumber](curves: openArray[EnvelopeCurve[T]],
             upper: static[bool]): Envelope[T] =

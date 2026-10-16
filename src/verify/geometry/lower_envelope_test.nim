@@ -77,6 +77,13 @@ proc check(cs: seq[Input], upper: bool) =
     let e = if upper: upper_envelope(curves) else: lower_envelope(curves)
     let ef = if upper: upper_envelope(floats) else: lower_envelope(floats)
     doAssert curves == original
+    let middle = curves.len div 2
+    let left = if upper: upper_envelope(curves[0..<middle])
+        else: lower_envelope(curves[0..<middle])
+    let right = if upper: upper_envelope(curves[middle..<curves.len])
+        else: lower_envelope(curves[middle..<curves.len])
+    let combined = if upper: upper_envelope(left, right) else: lower_envelope(left, right)
+    doAssert combined.diagram == e.diagram
     let xs = criticalXs(cs)
     var expected: EnvelopeDiagram[Q]
     expected.interval_sources = @[brute(cs, if xs.len == 0: q(0) else: xs[0] - 1, upper)]
