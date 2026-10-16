@@ -2,8 +2,8 @@
 include cplib/matrix/matrix
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
-import atcoder/modint
-type mint = modint998244353
+import cplib/modint/modint
+type mint = modint998244353_barrett
 
 var n = ii()
 var a = @[@[mint(1), mint(1)], @[mint(1), mint(0)]].toMatrix

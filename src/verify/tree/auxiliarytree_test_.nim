@@ -4,8 +4,8 @@ proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 import cplib/graph/graph
 import cplib/tree/heavylightdecomposition
-import atcoder/modint
-type mint = modint998244353
+import cplib/modint/modint
+type mint = modint998244353_barrett
 var N = ii()
 var A = newseqwith(N,ii())
 

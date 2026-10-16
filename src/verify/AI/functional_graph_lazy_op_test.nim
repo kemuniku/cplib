@@ -2,8 +2,8 @@
 import cplib/graph/functional_graph_with_op
 import cplib/graph/functional_graph_with_lazy_op
 import cplib/graph/graph
-import atcoder/lazysegtree
-import std/random
+import cplib/collections/lazysegtree_static_op
+import random
 
 type
     Sum = tuple[sum,len:int]
@@ -204,7 +204,7 @@ let graphFg = initFunctionalGraph_with_lazy_op(
 doAssert graphFg.movekth(0,4) == 1
 
 # typedesc版なら複数インスタンスを同じ明示型で保持できる。
-type SumLazySeg = LazySegTree.getType(
+type SumLazySeg = LazySegmentTree.getType(
     Sum,Affine,sumOp,sumE,affineMapping,affineComposition,affineId
 )
 var sameTypeFgs:seq[FunctionalGraph_with_lazy_op[SumLazySeg]]
