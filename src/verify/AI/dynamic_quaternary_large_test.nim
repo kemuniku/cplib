@@ -1,3 +1,5 @@
+# verification-helper: IGNORE
+# 手動の全量検証スクリプトで実行する多段木テスト。
 import cplib/collections/dynamic_quaternary_waveletmatrix
 import cplib/collections/dynamic_quaternary_vector
 import cplib/collections/dynamic_bplus_kernels
