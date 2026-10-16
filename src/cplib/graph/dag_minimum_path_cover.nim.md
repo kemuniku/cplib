@@ -8,6 +8,12 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/maxflow.nim
+    title: cplib/graph/maxflow.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/maxflow.nim
+    title: cplib/graph/maxflow.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
   - icon: ':heavy_check_mark:'
@@ -39,25 +45,27 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_DAGMINIMUMPATHCOVER:\n    const CPLIB_GRAPH_DAGMINIMUMPATHCOVER*\
-    \ = 1\n    import cplib/graph/graph\n    import atcoder/maxflow\n    when defined(debug):\n\
-    \        import cplib/graph/topologicalsort\n\n    proc dag_minimum_path_cover*(G:UnWeightedDirectedGraph):int=\n\
+    \ = 1\n    import cplib/graph/graph\n    import cplib/graph/maxflow\n    when\
+    \ defined(debug):\n        import cplib/graph/topologicalsort\n\n    proc dag_minimum_path_cover*(G:UnWeightedDirectedGraph):int=\n\
     \        when defined(debug):\n            assert G.isDAG(), \"\u5165\u529B\u30B0\
     \u30E9\u30D5\u306F\u6709\u5411\u975E\u5DE1\u56DE\u30B0\u30E9\u30D5\u3067\u3042\
-    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        var MFG = init_mf_graph[int](len(G)*2+2)\n\
+    \u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n        var MFG = initMaxFlow[int](len(G)*2+2)\n\
     \        for i in 0..<len(G):\n            for j in G[i]:\n                MFG.add_edge(i,len(G)+j,1)\n\
     \        for i in 0..<len(G):\n            MFG.add_edge(2*len(G),i,1)\n      \
-    \      MFG.add_edge(len(G)+i,2*len(G)+1,1)\n        return len(G)-MFG.flow(2*len(G),2*len(G)+1)"
+    \      MFG.add_edge(len(G)+i,2*len(G)+1,1)\n        return len(G)-MFG.flow(2*len(G),2*len(G)+1)\n"
   dependsOn:
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/maxflow.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/maxflow.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/dag_minimum_path_cover.nim
   requiredBy:
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/dag_minimum_path_cover_test.nim

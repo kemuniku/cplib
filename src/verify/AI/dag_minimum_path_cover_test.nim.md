@@ -14,6 +14,12 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/maxflow.nim
+    title: cplib/graph/maxflow.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/maxflow.nim
+    title: cplib/graph/maxflow.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/topologicalsort.nim
     title: cplib/graph/topologicalsort.nim
   - icon: ':heavy_check_mark:'
@@ -65,16 +71,18 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/maxflow.nim
+  - cplib/graph/maxflow.nim
   isVerificationFile: true
   path: verify/AI/dag_minimum_path_cover_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/dag_minimum_path_cover_test.nim

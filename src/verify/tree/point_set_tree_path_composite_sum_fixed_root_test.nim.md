@@ -8,6 +8,30 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   - icon: ':heavy_check_mark:'
@@ -41,16 +65,16 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/point_set_tree_path_composite_sum_fixed_root\n\
-    import sequtils, strutils\nimport atcoder/modint\nimport cplib/graph/graph\nimport\
-    \ cplib/tree/heavylightdecomposition\nimport cplib/tree/static_top_tree\nimport\
-    \ cplib/tree/static_top_tree_dp\n\nproc scanf(formatstr: cstring) {.header: \"\
-    <stdio.h>\", varargs.}\nproc ii(): int = scanf(\"%lld\", addr result)\n\ntype\n\
-    \    mint = modint998244353\n    Data = object\n        mul, add, count, sum:\
-    \ mint\n\nproc compress(l, r: Data): Data =\n    Data(mul: l.mul * r.mul, add:\
-    \ l.mul * r.add + l.add,\n        count: l.count + r.count, sum: l.sum + l.mul\
-    \ * r.sum + l.add * r.count)\n\nproc rake(l, r: Data): Data =\n    Data(mul: l.mul,\
-    \ add: l.add, count: l.count + r.count, sum: l.sum + r.sum)\n\nlet n = ii()\n\
-    let q = ii()\nvar a = newSeqWith(n, mint(ii()))\nvar g = initUnWeightedUnDirectedStaticGraph(n)\n\
+    import sequtils, strutils\nimport cplib/modint/modint\nimport cplib/graph/graph\n\
+    import cplib/tree/heavylightdecomposition\nimport cplib/tree/static_top_tree\n\
+    import cplib/tree/static_top_tree_dp\n\nproc scanf(formatstr: cstring) {.header:\
+    \ \"<stdio.h>\", varargs.}\nproc ii(): int = scanf(\"%lld\", addr result)\n\n\
+    type\n    mint = modint998244353_barrett\n    Data = object\n        mul, add,\
+    \ count, sum: mint\n\nproc compress(l, r: Data): Data =\n    Data(mul: l.mul *\
+    \ r.mul, add: l.mul * r.add + l.add,\n        count: l.count + r.count, sum: l.sum\
+    \ + l.mul * r.sum + l.add * r.count)\n\nproc rake(l, r: Data): Data =\n    Data(mul:\
+    \ l.mul, add: l.add, count: l.count + r.count, sum: l.sum + r.sum)\n\nlet n =\
+    \ ii()\nlet q = ii()\nvar a = newSeqWith(n, mint(ii()))\nvar g = initUnWeightedUnDirectedStaticGraph(n)\n\
     var edges = newSeq[(int, int)](n - 1)\nvar b, c = newSeq[mint](n - 1)\nfor e in\
     \ 0..<n-1:\n    let u = ii()\n    let v = ii()\n    edges[e] = (u, v)\n    b[e]\
     \ = mint(ii())\n    c[e] = mint(ii())\n    g.add_edge(u, v)\ng.build()\nlet hld\
@@ -67,17 +91,25 @@ data:
     echo answers.join(\"\\n\")\n"
   dependsOn:
   - cplib/tree/static_top_tree.nim
-  - cplib/tree/static_top_tree_dp.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/modint/modint.nim
   - cplib/tree/static_top_tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/tree/static_top_tree_dp.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tree/static_top_tree_dp.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/modint/modint.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim

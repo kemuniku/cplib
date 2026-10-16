@@ -14,6 +14,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/lazysegtree_template.nim
     title: cplib/collections/lazysegtree_template.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_lazy_op.nim
+    title: cplib/graph/functional_graph_with_lazy_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_lazy_op.nim
+    title: cplib/graph/functional_graph_with_lazy_op.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/auto_rollback_values_test.nim
@@ -21,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/auto_rollback_values_test.nim
     title: verify/AI/auto_rollback_values_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/functional_graph_lazy_op_test.nim
+    title: verify/AI/functional_graph_lazy_op_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/lazysegtree_template_test.nim
     title: verify/AI/lazysegtree_template_test.nim
@@ -115,15 +127,40 @@ data:
     \        v_or_n: seq[S] or int,\n        merge: untyped,\n        default: S,\n\
     \        mapping: untyped,\n        composition: untyped,\n        id: F\n   \
     \ ): untyped =\n        LazySegmentTreeType[S, F](merge, mapping, composition)\n\
-    \            .initLazySegmentTreeImpl(v_or_n, default, id)\n\n    template all_apply(self,\
+    \            .initLazySegmentTreeImpl(v_or_n, default, id)\n\n    template getType*(ST:\
+    \ typedesc[LazySegmentTree], S, F: typedesc,\n                      op, e, mapping,\
+    \ composition, id: untyped): typedesc[LazySegmentTree] =\n        ## \u6F14\u7B97\
+    \u3068\u5358\u4F4D\u5143\u3092\u578B\u306B\u4FDD\u6301\u3059\u308B\u9045\u5EF6\
+    \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\u578B\u3092\u4F5C\u308A\u307E\u3059\u3002\
+    O(1)\u3002\n        proc op1(a, b: S): S {.gensym, inline.} = op(a, b)\n     \
+    \   proc mapping1(f: F, x: S): S {.gensym, inline.} = mapping(f, x)\n        proc\
+    \ composition1(f, g: F): F {.gensym, inline.} = composition(f, g)\n        proc\
+    \ e1(): S {.gensym, inline.} = e()\n        proc id1(): F {.gensym, inline.} =\
+    \ id()\n        LazySegmentTree[S, F, (op1, mapping1, composition1, e1, id1)]\n\
+    \n    template init*[ST: LazySegmentTree](self: typedesc[ST], v: seq[ST.S]): ST\
+    \ =\n        ## \u578B\u306B\u4FDD\u6301\u3057\u305F\u6F14\u7B97\u3092\u4F7F\u3063\
+    \u3066\u6728\u3092\u69CB\u7BC9\u3057\u307E\u3059\u3002O(N)\u3002\n        self.initLazySegmentTreeImpl(v,\
+    \ ST.p[3](), ST.p[4]())\n\n    template calc_op*[ST: LazySegmentTree](self: ST\
+    \ or typedesc[ST], a, b: ST.S): auto =\n        ## \u578B\u306B\u4FDD\u6301\u3057\
+    \u305F\u4E8C\u9805\u6F14\u7B97\u3092\u9069\u7528\u3057\u307E\u3059\u3002O(1)\u3002\
+    \n        ST.p[0](a, b)\n\n    template calc_e*[ST: LazySegmentTree](self: ST\
+    \ or typedesc[ST]): auto =\n        ## \u578B\u306B\u4FDD\u6301\u3057\u305F\u6F14\
+    \u7B97\u306E\u5358\u4F4D\u5143\u3092\u8FD4\u3057\u307E\u3059\u3002O(1)\u3002\n\
+    \        ST.p[3]()\n\n    template calc_composition*[ST: LazySegmentTree](self:\
+    \ ST or typedesc[ST], a, b: ST.F): auto =\n        ## \u578B\u306B\u4FDD\u6301\
+    \u3057\u305F\u9045\u5EF6\u4F5C\u7528\u306E\u5408\u6210\u3092\u9069\u7528\u3057\
+    \u307E\u3059\u3002O(1)\u3002\n        ST.p[2](a, b)\n\n    template calc_id*[ST:\
+    \ LazySegmentTree](self: ST or typedesc[ST]): auto =\n        ## \u578B\u306B\u4FDD\
+    \u6301\u3057\u305F\u9045\u5EF6\u4F5C\u7528\u306E\u5358\u4F4D\u5143\u3092\u8FD4\
+    \u3057\u307E\u3059\u3002O(1)\u3002\n        ST.p[4]()\n\n    template all_apply(self,\
     \ p, f: untyped) =\n        ## p\u306E\u8981\u7D20\u306Bf\u306E\u5024\u3092\u4F5C\
     \u7528\u3055\u305B\u308B\u3002\u5B50\u304C\u3042\u308B\u5834\u5408\u306Flazy\u3092\
     \u66F4\u65B0\u3059\u308B\u3002\n        self.arr[p] = self.mappingOp(f, self.arr[p])\n\
     \        if p < self.lastnode:\n            if self.hasLazy[p]:\n            \
     \    self.lazy[p] = self.compositionOp(f, self.lazy[p])\n            else:\n \
     \               self.lazy[p] = f\n                self.hasLazy[p] = true\n\n \
-    \   proc pushNode[ST: LazySegmentTree](self: ST, p: int) {.noinline.} =\n    \
-    \    ## p\u306E\u5B50\u306B\u4F5C\u7528\u3092\u4F1D\u64AD\u3055\u305B\u308B\u3002\
+    \   proc pushNode*[ST: LazySegmentTree](self: ST, p: int) {.noinline.} =\n   \
+    \     ## p\u306E\u5B50\u306B\u4F5C\u7528\u3092\u4F1D\u64AD\u3055\u305B\u308B\u3002\
     \n        if self.hasLazy[p]:\n            let\n                f = self.lazy[p]\n\
     \                left = 2 * p\n                right = left + 1\n            self.arr[left]\
     \ = self.mappingOp(f, self.arr[left])\n            self.arr[right] = self.mappingOp(f,\
@@ -134,14 +171,17 @@ data:
     \                    self.lazy[right] = self.compositionOp(f, self.lazy[right])\n\
     \                else:\n                    self.lazy[right] = f\n           \
     \         self.hasLazy[right] = true\n            self.hasLazy[p] = false\n\n\
-    \    template push(self, p: untyped) =\n        self.pushNode(p)\n\n    proc pushBoundaries[ST:\
-    \ LazySegmentTree](\n        self: ST, q_left, q_right: int\n    ) {.noinline.}\
-    \ =\n        let\n            leftZeros = countTrailingZeroBits(q_left)\n    \
-    \        rightZeros = countTrailingZeroBits(q_right)\n        for i in countdown(self.log,\
-    \ 1):\n            var leftNode = 0\n            if i > leftZeros:\n         \
-    \       leftNode = q_left shr i\n                self.pushNode(leftNode)\n   \
-    \         if i > rightZeros:\n                let rightNode = (q_right - 1) shr\
-    \ i\n                if rightNode != leftNode:\n                    self.pushNode(rightNode)\n\
+    \    proc treeSize*[ST: LazySegmentTree](self: ST): int =\n        ## \u8449\u3092\
+    \u4FDD\u6301\u3059\u308B\u9818\u57DF\u306E\u5148\u982D\u4F4D\u7F6E\u3092\u8FD4\
+    \u3057\u307E\u3059\u3002O(1)\u3002\n        self.lastnode\n\n    template push(self,\
+    \ p: untyped) =\n        self.pushNode(p)\n\n    proc pushBoundaries[ST: LazySegmentTree](\n\
+    \        self: ST, q_left, q_right: int\n    ) {.noinline.} =\n        let\n \
+    \           leftZeros = countTrailingZeroBits(q_left)\n            rightZeros\
+    \ = countTrailingZeroBits(q_right)\n        for i in countdown(self.log, 1):\n\
+    \            var leftNode = 0\n            if i > leftZeros:\n               \
+    \ leftNode = q_left shr i\n                self.pushNode(leftNode)\n         \
+    \   if i > rightZeros:\n                let rightNode = (q_right - 1) shr i\n\
+    \                if rightNode != leftNode:\n                    self.pushNode(rightNode)\n\
     \n    proc pullBoundaries[ST: LazySegmentTree](\n        self: ST, q_left, q_right:\
     \ int\n    ) {.noinline.} =\n        let\n            leftMin = countTrailingZeroBits(q_left)\
     \ + 1\n            rightMin = countTrailingZeroBits(q_right) + 1\n           \
@@ -187,18 +227,21 @@ data:
     \u5408\u306F\u5358\u4F4D\u5143\u3092\u8FD4\u3057\u307E\u3059\u3002\n        return\
     \ self.arr[1]\n\n    proc get*[ST: LazySegmentTree](\n        self: var ST, segment:\
     \ HSlice[int, int]\n    ): ST.S =\n        return self.get(segment.a, segment.b\
-    \ + 1)\n\n    proc `[]`*[ST: LazySegmentTree](\n        self: var ST, segment:\
-    \ HSlice[int, int]\n    ): ST.S =\n        self.get(segment)\n\n    proc `[]=`*[ST:\
-    \ LazySegmentTree](self: var ST, p: Natural, val: ST.S) {.backwardsIndex.} =\n\
-    \        self.update(p, val)\n\n    proc `$`*[ST: LazySegmentTree](self: var ST):\
-    \ string =\n        return (0..<self.len).toSeq.mapIt(self[it]).join(\" \")\n\n\
-    \    template newLazySegWith*(\n        v_or_n, merge, default, mapping, composition,\
-    \ id: untyped\n    ): untyped =\n        block:\n            type S = typeof(default)\n\
-    \            type F = typeof(id)\n            proc staticMerge(\n            \
-    \    l {.inject.}, r {.inject.}: S\n            ): S {.gensym, inline.} = merge\n\
-    \            proc staticMapping(\n                f {.inject.}: F, x {.inject.}:\
-    \ S\n            ): S {.gensym, inline.} = mapping\n            proc staticComposition(\n\
-    \                f {.inject.}, g {.inject.}: F\n            ): F {.gensym, inline.}\
+    \ + 1)\n\n    proc prod*[ST: LazySegmentTree](self: var ST, segment: HSlice[int,\
+    \ int]): ST.S =\n        ## \u534A\u958B\u533A\u9593\u306E\u6F14\u7B97\u7D50\u679C\
+    \u3092\u8FD4\u3057\u307E\u3059\u3002O(log N)\u3002\n        self.get(segment)\n\
+    \n    proc `[]`*[ST: LazySegmentTree](\n        self: var ST, segment: HSlice[int,\
+    \ int]\n    ): ST.S =\n        self.get(segment)\n\n    proc `[]=`*[ST: LazySegmentTree](self:\
+    \ var ST, p: Natural, val: ST.S) {.backwardsIndex.} =\n        self.update(p,\
+    \ val)\n\n    proc `$`*[ST: LazySegmentTree](self: var ST): string =\n       \
+    \ return (0..<self.len).toSeq.mapIt(self[it]).join(\" \")\n\n    template newLazySegWith*(\n\
+    \        v_or_n, merge, default, mapping, composition, id: untyped\n    ): untyped\
+    \ =\n        block:\n            type S = typeof(default)\n            type F\
+    \ = typeof(id)\n            proc staticMerge(\n                l {.inject.}, r\
+    \ {.inject.}: S\n            ): S {.gensym, inline.} = merge\n            proc\
+    \ staticMapping(\n                f {.inject.}: F, x {.inject.}: S\n         \
+    \   ): S {.gensym, inline.} = mapping\n            proc staticComposition(\n \
+    \               f {.inject.}, g {.inject.}: F\n            ): F {.gensym, inline.}\
     \ = composition\n            LazySegmentTree[S, F, (staticMerge, staticMapping,\
     \ staticComposition)]\n                .initLazySegmentTreeImpl(v_or_n, default,\
     \ id)\n\n    proc apply*[ST: LazySegmentTree](\n        self: var ST, q_left,\
@@ -263,9 +306,11 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree_static_op.nim
   requiredBy:
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/collections/lazysegtree_template.nim
   - cplib/collections/lazysegtree_template.nim
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
@@ -278,6 +323,8 @@ data:
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/auto_rollback_values_test.nim

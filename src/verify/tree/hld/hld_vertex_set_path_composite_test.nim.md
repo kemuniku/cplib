@@ -14,6 +14,30 @@ data:
     path: cplib/graph/graph.nim
     title: cplib/graph/graph.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
   - icon: ':heavy_check_mark:'
@@ -42,10 +66,10 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/vertex_set_path_composite\n\
     import sequtils, strutils, algorithm\nimport cplib/graph/graph\nimport cplib/collections/segtree\n\
-    import cplib/tree/heavylightdecomposition\ninclude atcoder/modint\ntype mint =\
-    \ modint998244353\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\n\
-    proc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\nvar n, q = ii()\n\
-    var a = newSeqWith(n, (mint(ii()), mint(ii())))\nvar g = initUnWeightedUnDirectedStaticGraph(n)\n\
+    import cplib/tree/heavylightdecomposition\nimport cplib/modint/modint\ntype mint\
+    \ = modint998244353_barrett\nproc scanf(formatstr: cstring){.header: \"<stdio.h>\"\
+    , varargs.}\nproc ii(): int {.inline.} = scanf(\"%lld\\n\", addr result)\n\nvar\
+    \ n, q = ii()\nvar a = newSeqWith(n, (mint(ii()), mint(ii())))\nvar g = initUnWeightedUnDirectedStaticGraph(n)\n\
     for i in 0..<n-1:\n    var u, v = ii()\n    g.add_edge(u, v)\ng.build\n\nvar hld\
     \ = initHld(g, 0)\nvar v = (0..<n).toSeq.mapIt(hld.toVtx(it)).mapIt(a[it])\nproc\
     \ op(x, y: (mint, mint)): (mint, mint) =\n    var (a, b) = x\n    var (c, d) =\
@@ -60,18 +84,26 @@ data:
     \ a = op(a, seg.get(l..<r))\n        ans.add((a[0] * x + a[1]).val)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/modint/modint.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/modint/modint.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_vertex_set_path_composite_test.nim

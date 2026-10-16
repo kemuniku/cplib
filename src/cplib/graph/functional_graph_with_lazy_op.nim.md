@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/lazysegtree_static_op.nim
+    title: cplib/collections/lazysegtree_static_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/lazysegtree_static_op.nim
+    title: cplib/collections/lazysegtree_static_op.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph.nim
     title: cplib/graph/functional_graph.nim
   - icon: ':heavy_check_mark:'
@@ -19,6 +25,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/tree/heavylightdecomposition.nim
     title: cplib/tree/heavylightdecomposition.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/utils/backwards_index.nim
+    title: cplib/utils/backwards_index.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -40,14 +52,14 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:\n    const CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP*\
     \ = 1\n    import sequtils\n    import cplib/graph/graph\n    import cplib/graph/functional_graph\n\
-    \    import cplib/tree/heavylightdecomposition\n    import atcoder/lazysegtree\n\
-    \n    type FunctionalGraph_with_lazy_op*[ST] = ref object\n        ## ACL\u306E\
-    \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\u3092\u7528\u3044\u3066\u3001\
-    functional graph\u4E0A\u306E\u7A4D\u3068\u7D4C\u8DEF\u4F5C\u7528\u3092\u6271\u3046\
-    \u3002\n        ## \u975E\u30B5\u30A4\u30AF\u30EB\u9802\u70B9\u306Fst_hld\u3001\
-    \u30B5\u30A4\u30AF\u30EB\u9802\u70B9\u306Fst_cycle\u3060\u3051\u306B\u4FDD\u6301\
-    \u3059\u308B\u3002\n        graph : Functional_Graph\n        st_hld : ST\n  \
-    \      st_cycle : ST\n        cum_cyclesize : seq[int]\n\n    proc initFunctionalGraph_with_lazy_op_impl[S,ST](\n\
+    \    import cplib/tree/heavylightdecomposition\n    import cplib/collections/lazysegtree_static_op\n\
+    \n    type FunctionalGraph_with_lazy_op*[ST] = ref object\n        ## \u9045\u5EF6\
+    \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\u3092\u7528\u3044\u3066\u3001functional graph\u4E0A\
+    \u306E\u7A4D\u3068\u7D4C\u8DEF\u4F5C\u7528\u3092\u6271\u3046\u3002\n        ##\
+    \ \u975E\u30B5\u30A4\u30AF\u30EB\u9802\u70B9\u306Fst_hld\u3001\u30B5\u30A4\u30AF\
+    \u30EB\u9802\u70B9\u306Fst_cycle\u3060\u3051\u306B\u4FDD\u6301\u3059\u308B\u3002\
+    \n        graph : Functional_Graph\n        st_hld : ST\n        st_cycle : ST\n\
+    \        cum_cyclesize : seq[int]\n\n    proc initFunctionalGraph_with_lazy_op_impl[S,ST](\n\
     \        graph:Functional_Graph,\n        values:seq[S],\n        st_type:typedesc[ST]\n\
     \    ):FunctionalGraph_with_lazy_op[ST]=\n        assert len(values) == len(graph.cycle_number),\
     \ \"\u5024\u306E\u914D\u5217\u306E\u9577\u3055\u306F\u9802\u70B9\u6570\u3068\u4E00\
@@ -68,7 +80,7 @@ data:
     \ = ST.init(cycle_values)\n\n    proc initFunctionalGraph_with_lazy_op*[S,ST](\n\
     \        source:Functional_Graph,\n        values:seq[S],\n        st_type:typedesc[ST]\n\
     \    ):FunctionalGraph_with_lazy_op[ST]=\n        ## \u660E\u793A\u3057\u305F\
-    ACL LazySegTree\u578BST\u3092\u4F7F\u3063\u3066\u69CB\u7BC9\u3059\u308B\u3002\
+    LazySegmentTree\u578BST\u3092\u4F7F\u3063\u3066\u69CB\u7BC9\u3059\u308B\u3002\
     O(N)\n        ## \u8907\u6570\u306Efunctional graph\u3092\u540C\u3058\u578B\u3068\
     \u3057\u3066\u4FDD\u6301\u3057\u305F\u3044\u5834\u5408\u306B\u7528\u3044\u308B\
     \u3002\n        return initFunctionalGraph_with_lazy_op_impl(source,values,st_type)\n\
@@ -79,10 +91,10 @@ data:
     \        values:seq[S],\n        st_type:typedesc[ST]\n    ):FunctionalGraph_with_lazy_op[ST]=\n\
     \        return initFunctionalGraph_with_lazy_op_impl(initFunctionalGraph(source),values,st_type)\n\
     \n    template initFunctionalGraph_with_lazy_op*(source,values,op,e,mapping,composition,id:untyped):untyped=\n\
-    \        ## ACL\u306Elazysegtree\u3068\u540C\u3058op/e/mapping/composition/id\u304B\
-    \u3089\u69CB\u7BC9\u3059\u308B\u3002O(N)\n        block:\n            type S =\
-    \ typeof(values[0])\n            type Action = typeof(id())\n            type\
-    \ ST = typeof(initLazySegTree[S,Action](values,op,e,mapping,composition,id))\n\
+    \        ## op/e/mapping/composition/id\u304B\u3089\u9045\u5EF6\u30BB\u30B0\u30E1\
+    \u30F3\u30C8\u6728\u3092\u69CB\u7BC9\u3059\u308B\u3002O(N)\n        block:\n \
+    \           type S = typeof(values[0])\n            type Action = typeof(id())\n\
+    \            type ST = LazySegmentTree.getType(S,Action,op,e,mapping,composition,id)\n\
     \            initFunctionalGraph_with_lazy_op(source,values,ST)\n\n    template\
     \ initFunctionalGraph_with_op*(source,values,op,e,mapping,composition,id:untyped):untyped=\n\
     \        ## \u9045\u5EF6\u4F5C\u7528\u3092\u4F7F\u3046\u5834\u5408\u306EinitFunctionalGraph_with_op\u30AA\
@@ -158,7 +170,7 @@ data:
     \n    proc lazyPushAll[ST](st:var ST)=\n        ## \u89AA\u304B\u3089\u9806\u306B\
     \u9045\u5EF6\u5024\u3092\u4F1D\u64AD\u3057\u3001\u5168\u8449\u3092\u8AAD\u307F\
     \u51FA\u305B\u308B\u72B6\u614B\u306B\u3059\u308B\u3002O(len)\n        for p in\
-    \ 1..<st.size:\n            st.push(p)\n\n    proc prod_reachable_idempotent_all*[ST](self:FunctionalGraph_with_lazy_op[ST]):seq[ST.S]=\n\
+    \ 1..<st.treeSize:\n            st.pushNode(p)\n\n    proc prod_reachable_idempotent_all*[ST](self:FunctionalGraph_with_lazy_op[ST]):seq[ST.S]=\n\
     \        ## \u5404\u9802\u70B9\u304B\u3089\u5230\u9054\u53EF\u80FD\u306A\u76F8\
     \u7570\u306A\u308B\u9802\u70B9\u306E\u5024\u306E\u7A4D\u3092\u5168\u9802\u70B9\
     \u306B\u3064\u3044\u3066\u8FD4\u3059\u3002\n        ## op\u306F\u7D50\u5408\u7684\
@@ -166,8 +178,8 @@ data:
     \u306A\u3044\u3002O(N)\n        let n = len(self.graph.cycle_number)\n       \
     \ result = newSeqWith(n,self.st_hld.calc_e())\n        self.st_hld.lazyPushAll()\n\
     \        self.st_cycle.lazyPushAll()\n\n        template value(v:int):ST.S =\n\
-    \            (if self.graph.incycle(v):\n                self.st_cycle.d[self.st_cycle.size+self.lazyCycleIndex(v)]\n\
-    \            else:\n                self.st_hld.d[self.st_hld.size+self.lazyHldIndex(v)])\n\
+    \            (if self.graph.incycle(v):\n                self.st_cycle.arr[self.st_cycle.treeSize+self.lazyCycleIndex(v)]\n\
+    \            else:\n                self.st_hld.arr[self.st_hld.treeSize+self.lazyHldIndex(v)])\n\
     \n        for cycle in self.graph.cycle:\n            var cycle_prod = self.st_hld.calc_e()\n\
     \            for v in cycle:\n                cycle_prod = self.st_hld.calc_op(cycle_prod,value(v))\n\
     \            for v in cycle:\n                result[v] = cycle_prod\n\n     \
@@ -208,8 +220,8 @@ data:
     \            )\n\n    proc appendLazyRangeDfs[ST](\n        st:var ST,\n     \
     \   k,left,right,q_left,q_right:int,\n        values:var seq[ST.S]\n    )=\n \
     \       if right <= q_left or q_right <= left:\n            return\n        if\
-    \ right-left == 1:\n            values.add(st.d[k])\n            return\n    \
-    \    st.push(k)\n        let middle = (left+right) shr 1\n        st.appendLazyRangeDfs(k\
+    \ right-left == 1:\n            values.add(st.arr[k])\n            return\n  \
+    \      st.pushNode(k)\n        let middle = (left+right) shr 1\n        st.appendLazyRangeDfs(k\
     \ shl 1,left,middle,q_left,q_right,values)\n        st.appendLazyRangeDfs((k shl\
     \ 1) or 1,middle,right,q_left,q_right,values)\n\n    proc appendLazyRange[ST](st:var\
     \ ST,q_left,q_right:int,values:var seq[ST.S])=\n        ## st[q_left..<q_right]\u306E\
@@ -218,7 +230,7 @@ data:
     \ q_right <= st.len, \"\u6307\u5B9A\u3057\u305F\u533A\u9593\u304C\u6709\u52B9\u306A\
     \u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
     : 0 <= q_left and q_left <= q_right and q_right <= st.len\"\n        if q_left\
-    \ < q_right:\n            st.appendLazyRangeDfs(1,0,st.size,q_left,q_right,values)\n\
+    \ < q_right:\n            st.appendLazyRangeDfs(1,0,st.treeSize,q_left,q_right,values)\n\
     \n    proc walkValues[ST](self:FunctionalGraph_with_lazy_op[ST],start,count:int):seq[ST.S]=\n\
     \        ## start\u304B\u3089\u59CB\u307E\u308B\u8A2A\u554F\u5217\u306E\u5148\u982D\
     count\u9802\u70B9\u5206\u306E\u5024\u3092\u8FD4\u3059\u3002\n        ## O(log^2\
@@ -272,25 +284,25 @@ data:
     \u3089L\u3092\u8FD4\u3059\u3002O(log^2 N + log L)\n        ## f(e)=true\u3067\u3042\
     \u308A\u3001\u4E00\u5EA6false\u306B\u306A\u3063\u305F\u5F8C\u306F\u9802\u70B9\u3092\
     \u8FFD\u52A0\u3057\u3066\u3082false\u306E\u307E\u307E\u3001\n        ## \u3068\
-    \u3044\u3046ACL max_right\u3068\u540C\u3058\u5358\u8ABF\u6027\u3092\u4EEE\u5B9A\
-    \u3059\u308B\u3002\n        assert 0 <= x and x < len(self.graph.cycle_number),\
-    \ \"\u9802\u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= x and x\
-    \ < len(self.graph.cycle_number)\"\n        assert 0 <= L and L < high(int), \"\
-    \u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\
-    \u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= L and L < high(int)\"\
-    \n        let limit = L+1\n        var value = self.get(x)\n        if not f(value):\n\
-    \            return 0\n        var used = 1\n        if used == limit:\n     \
-    \       return L\n\n        let root = self.graph.roots[x]\n        # \u30B5\u30A4\
-    \u30AF\u30EB\u5165\u53E3\u306Fcycle\u5074\u306E\u6B63\u672C\u3067\u51E6\u7406\u3059\
-    \u308B\u305F\u3081\u3001HLD path\u304B\u3089\u9664\u5916\u3059\u308B\u3002\n \
-    \       let tree_path = self.graph.tree.path(root,x,false,true)\n        var first_segment\
-    \ = true\n        for (l,r) in tree_path:\n            let nl = l+int(first_segment)\
-    \ # x\u306F\u51E6\u7406\u6E08\u307F\n            first_segment = false\n     \
-    \       let nr = nl+min(r-nl,limit-used)\n            if nl < nr:\n          \
-    \      let max_right = self.st_hld.max_right(nl,proc(v:ST.S):bool=\n         \
-    \           f(self.st_hld.calc_op(value,v))\n                )\n             \
-    \   if max_right < nr:\n                    used += max_right-nl\n           \
-    \         return used\n                value = self.st_hld.calc_op(value,self.st_hld.prod(nl..<nr))\n\
+    \u3044\u3046max_right\u3068\u540C\u3058\u5358\u8ABF\u6027\u3092\u4EEE\u5B9A\u3059\
+    \u308B\u3002\n        assert 0 <= x and x < len(self.graph.cycle_number), \"\u9802\
+    \u70B9\u756A\u53F7\u304C\u7BC4\u56F2\u5916\u3067\u3059: 0 <= x and x < len(self.graph.cycle_number)\"\
+    \n        assert 0 <= L and L < high(int), \"\u6307\u5B9A\u3057\u305F\u5024\u304C\
+    \u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308A\u307E\u3059: 0 <= L and L < high(int)\"\n        let limit = L+1\n    \
+    \    var value = self.get(x)\n        if not f(value):\n            return 0\n\
+    \        var used = 1\n        if used == limit:\n            return L\n\n   \
+    \     let root = self.graph.roots[x]\n        # \u30B5\u30A4\u30AF\u30EB\u5165\
+    \u53E3\u306Fcycle\u5074\u306E\u6B63\u672C\u3067\u51E6\u7406\u3059\u308B\u305F\u3081\
+    \u3001HLD path\u304B\u3089\u9664\u5916\u3059\u308B\u3002\n        let tree_path\
+    \ = self.graph.tree.path(root,x,false,true)\n        var first_segment = true\n\
+    \        for (l,r) in tree_path:\n            let nl = l+int(first_segment) #\
+    \ x\u306F\u51E6\u7406\u6E08\u307F\n            first_segment = false\n       \
+    \     let nr = nl+min(r-nl,limit-used)\n            if nl < nr:\n            \
+    \    let max_right = self.st_hld.max_right(nl,proc(v:ST.S):bool=\n           \
+    \         f(self.st_hld.calc_op(value,v))\n                )\n               \
+    \ if max_right < nr:\n                    used += max_right-nl\n             \
+    \       return used\n                value = self.st_hld.calc_op(value,self.st_hld.prod(nl..<nr))\n\
     \                used += nr-nl\n            if used == limit:\n              \
     \  return L\n\n        let cid = self.graph.cycle_number[root]\n        let csiz\
     \ = len(self.graph.cycle[cid])\n        let offset = self.cum_cyclesize[cid]\n\
@@ -320,16 +332,20 @@ data:
     \ used\n        rest -= first\n        if rest > 0 and not consumeCycle(0,rest):\n\
     \            return used\n        return used-1\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_lazy_op.nim
   requiredBy: []
-  timestamp: '2026-10-01 00:36:27+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim

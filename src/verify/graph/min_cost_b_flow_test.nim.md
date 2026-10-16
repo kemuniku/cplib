@@ -39,9 +39,9 @@ data:
     \        echo e.flow\n"
   dependsOn:
   - cplib/graph/min_cost_b_flow.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/graph/min_cost_b_flow.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/graph/min_cost_b_flow_test.nim
   requiredBy: []

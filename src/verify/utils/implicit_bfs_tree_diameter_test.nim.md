@@ -60,13 +60,13 @@ data:
     \ @[last], adjacent)\necho cost, \" \", path.len\necho path.join(\" \")\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
+  - cplib/utils/implicit_bfs.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
   - cplib/utils/implicit_bfs.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/implicit_bfs.nim
-  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/utils/implicit_bfs_tree_diameter_test.nim
   requiredBy: []

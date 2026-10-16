@@ -7,6 +7,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/combination.nim
     title: cplib/math/combination.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -23,20 +47,28 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
-    echo \"Hello World\"\nimport atcoder/modint\nimport cplib/math/combination\n\n\
-    proc naive_npr(n, r, m: int): int =\n    result = 1\n    for i in n-r+1..n:\n\
+    echo \"Hello World\"\nimport cplib/modint/modint\nimport cplib/math/combination\n\
+    \nproc naive_npr(n, r, m: int): int =\n    result = 1\n    for i in n-r+1..n:\n\
     \        result *= i\n        result = result mod m\n\nproc check_npr[ModInt]()\
     \ =\n    var c = initCombination[ModInt](20)\n    for n in 0..20:\n        for\
     \ r in 0..n:\n            doAssert naive_npr(n, r, int(ModInt.umod())) == c.npr(n,\
-    \ r).val\n\ncheck_npr[modint998244353]()\ncheck_npr[modint1000000007]()\ntype\
-    \ modint104717 = modint\nmodint104717.setMod(104717)\ncheck_npr[modint104717]()\n"
+    \ r).val\n\ncheck_npr[modint998244353_barrett]()\ncheck_npr[modint1000000007_barrett]()\n\
+    type modint104717 = modint_barrett\nmodint104717.setMod(104717)\ncheck_npr[modint104717]()\n"
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/combination.nim
   - cplib/math/combination.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/combination_npr_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/combination_npr_test.nim

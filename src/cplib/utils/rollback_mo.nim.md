@@ -129,10 +129,10 @@ data:
     \ bool) =\n                if left: add_left(idx)\n                else: add_right(idx)\n\
     \            runAutoRollbackImpl(self, addDirectional, answer, runDirectional)\n"
   dependsOn:
-  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false
   path: cplib/utils/rollback_mo.nim
   requiredBy: []

@@ -7,6 +7,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/weightedunionfind.nim
     title: cplib/collections/weightedunionfind.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -25,19 +49,27 @@ data:
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/unionfind_with_potential\n\
     import strutils\nimport cplib/collections/weightedunionfind\nproc scanf(formatstr:\
     \ cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int {.inline.} = scanf(\"\
-    %lld\\n\", addr result)\n\n\nvar N,Q = ii()\nimport atcoder/modint\ntype mint\
-    \ = modint998244353\nvar uf = initWeightedUnionFind(N,mint)\nfor i in 0..<Q:\n\
-    \    var t = ii()\n    if t == 0:\n        var u,v,x = ii()\n        if uf.unite(u,v,x):\n\
-    \            echo 1\n        else:\n            echo 0\n    else:\n        var\
-    \ u,v = ii()\n        if uf.issame(u,v):\n            echo uf.diff(u,v)\n    \
-    \    else:\n            echo -1\n"
+    %lld\\n\", addr result)\n\n\nvar N,Q = ii()\nimport cplib/modint/modint\ntype\
+    \ mint = modint998244353_barrett\nvar uf = initWeightedUnionFind(N,mint)\nfor\
+    \ i in 0..<Q:\n    var t = ii()\n    if t == 0:\n        var u,v,x = ii()\n  \
+    \      if uf.unite(u,v,x):\n            echo 1\n        else:\n            echo\
+    \ 0\n    else:\n        var u,v = ii()\n        if uf.issame(u,v):\n         \
+    \   echo uf.diff(u,v)\n        else:\n            echo -1\n"
   dependsOn:
   - cplib/collections/weightedunionfind.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/collections/weightedunionfind.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/collections/WeightedUnionFind_test.nim
   requiredBy: []
-  timestamp: '2026-09-30 20:33:13+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/WeightedUnionFind_test.nim

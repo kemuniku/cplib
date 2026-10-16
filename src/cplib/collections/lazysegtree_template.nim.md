@@ -178,7 +178,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree_template.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/lazysegtree_template_test.nim

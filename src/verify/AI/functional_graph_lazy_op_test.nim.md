@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/lazysegtree_static_op.nim
+    title: cplib/collections/lazysegtree_static_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/lazysegtree_static_op.nim
+    title: cplib/collections/lazysegtree_static_op.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/segtree.nim
     title: cplib/collections/segtree.nim
   - icon: ':heavy_check_mark:'
@@ -60,10 +66,10 @@ data:
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import cplib/graph/functional_graph_with_op\nimport cplib/graph/functional_graph_with_lazy_op\n\
-    import cplib/graph/graph\nimport atcoder/lazysegtree\nimport std/random\n\ntype\n\
-    \    Sum = tuple[sum,len:int]\n    Affine = tuple[a,b:int]\n\nproc sumOp(x,y:Sum):Sum=\n\
-    \    return (x.sum+y.sum,x.len+y.len)\n\nproc sumE():Sum=\n    return (0,0)\n\n\
-    proc affineMapping(f:Affine,x:Sum):Sum=\n    return (f.a*x.sum+f.b*x.len,x.len)\n\
+    import cplib/graph/graph\nimport cplib/collections/lazysegtree_static_op\nimport\
+    \ random\n\ntype\n    Sum = tuple[sum,len:int]\n    Affine = tuple[a,b:int]\n\n\
+    proc sumOp(x,y:Sum):Sum=\n    return (x.sum+y.sum,x.len+y.len)\n\nproc sumE():Sum=\n\
+    \    return (0,0)\n\nproc affineMapping(f:Affine,x:Sum):Sum=\n    return (f.a*x.sum+f.b*x.len,x.len)\n\
     \nproc affineComposition(f,g:Affine):Affine=\n    # f(g(x))\n    return (f.a*g.a,f.a*g.b+f.b)\n\
     \nproc affineId():Affine=\n    return (1,0)\n\nlet nxt = @[1,2,3,1,2,5,7,6,7]\n\
     var naive = @[1,2,3,4,5,6,7,8,9]\nvar initial = newSeq[Sum](len(naive))\nfor i,x\
@@ -135,7 +141,7 @@ data:
     \    g,initial,sumOp,sumE,affineMapping,affineComposition,affineId\n)\ndoAssert\
     \ graphFg.movekth(0,4) == 1\n\n# typedesc\u7248\u306A\u3089\u8907\u6570\u30A4\u30F3\
     \u30B9\u30BF\u30F3\u30B9\u3092\u540C\u3058\u660E\u793A\u578B\u3067\u4FDD\u6301\
-    \u3067\u304D\u308B\u3002\ntype SumLazySeg = LazySegTree.getType(\n    Sum,Affine,sumOp,sumE,affineMapping,affineComposition,affineId\n\
+    \u3067\u304D\u308B\u3002\ntype SumLazySeg = LazySegmentTree.getType(\n    Sum,Affine,sumOp,sumE,affineMapping,affineComposition,affineId\n\
     )\nvar sameTypeFgs:seq[FunctionalGraph_with_lazy_op[SumLazySeg]]\nsameTypeFgs.add(initFunctionalGraph_with_lazy_op(nxt,initial,SumLazySeg))\n\
     sameTypeFgs.add(initFunctionalGraph_with_lazy_op(g,initial,SumLazySeg))\ndoAssert\
     \ sameTypeFgs[0].prod(0,3) == sameTypeFgs[1].prod(0,3)\n\n# \u5F62\u306E\u7570\
@@ -208,24 +214,26 @@ data:
     \                if step < l+i:\n                    now = orderNext[now]\n  \
     \          doAssert product == expected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/graph/functional_graph_with_lazy_op.nim
-  - cplib/graph/functional_graph_with_lazy_op.nim
-  - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph_with_op.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/functional_graph_lazy_op_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 06:33:05+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/functional_graph_lazy_op_test.nim

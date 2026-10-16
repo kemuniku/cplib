@@ -110,12 +110,12 @@ data:
     \ 2, 3], sum, 0,\n    proc(x: int): bool = x <= 3) == @[2, 2, 3]\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/collections/SWAG.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/SWAG.nim
   - cplib/collections/SWAG.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/AI/SWAG_newswagwith_test.nim
   requiredBy: []

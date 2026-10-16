@@ -255,6 +255,12 @@ data:
     path: cplib/collections/waveletmatrix_fenwick.nim
     title: cplib/collections/waveletmatrix_fenwick.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_lazy_op.nim
+    title: cplib/graph/functional_graph_with_lazy_op.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/graph/functional_graph_with_lazy_op.nim
+    title: cplib/graph/functional_graph_with_lazy_op.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/graph/functional_graph_with_op.nim
     title: cplib/graph/functional_graph_with_op.nim
   - icon: ':heavy_check_mark:'
@@ -1443,6 +1449,8 @@ data:
   - verify/str/static_string/static_string_count_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
   - verify/tree/hld/hld_past202004o_test_.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/utils/inversion_number.nim

@@ -47,10 +47,10 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/tmpl/fastio.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
   requiredBy: []

@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/matrix/field_matrix_ops.nim
     title: cplib/matrix/field_matrix_ops.nim
   - icon: ':heavy_check_mark:'
@@ -13,6 +19,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/matrix/matrix.nim
     title: cplib/matrix/matrix.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -36,9 +60,9 @@ data:
 
     proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
-    import atcoder/modint
+    import cplib/modint/modint
 
-    type mint = modint1000000007
+    type mint = modint1000000007_barrett
 
 
     var n, k = ii()
@@ -49,14 +73,22 @@ data:
 
     '
   dependsOn:
-  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
   - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: verify/matrix/matrix_dpr_test_.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/matrix/matrix_dpr_test_.nim

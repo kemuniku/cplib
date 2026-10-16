@@ -116,15 +116,15 @@ data:
     \ expected\n    doAssert digitDp(@[1, 2], init, optionalNxt, 0, 1) == expected\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/digit_dp.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/utils/digit_dp.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/utils/digit_dp.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/utils/digit_dp_callbacks_test.nim

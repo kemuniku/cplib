@@ -20,6 +20,30 @@ data:
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/mo.nim
     title: cplib/utils/mo.nim
   - icon: ':heavy_check_mark:'
@@ -41,7 +65,7 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
-    echo \"Hello World\"\n\nimport atcoder/modint\nimport cplib/math/combination\n\
+    echo \"Hello World\"\n\nimport cplib/modint/modint\nimport cplib/math/combination\n\
     import cplib/math/combination_prefix_sum\n\nproc check[ModInt]() =\n    var queries:\
     \ seq[(int, int)]\n    for x in countdown(20, 0):\n        for y in 0..25:\n \
     \           queries.add((x, y))\n\n    let actual = combination_prefix_sum.combinationPrefixSum[ModInt](queries)\n\
@@ -56,21 +80,29 @@ data:
     \ = 0\n        for i in max(0, l)..<min(n + 1, r):\n            expected += combination.ncr(n,\
     \ i)\n        doAssert rangeActual[queryIndex] == expected\n\n    let emptyRange:\
     \ seq[(int, int, int)] = @[]\n    doAssert combinationRangeSum[ModInt](emptyRange).len\
-    \ == 0\n\ncheck[modint998244353]()\ncheck[modint1000000007]()\n\ntype DynamicModInt\
-    \ = modint\nDynamicModInt.setMod(1_000_000_007)\ncheck[DynamicModInt]()\n"
+    \ == 0\n\ncheck[modint998244353_barrett]()\ncheck[modint1000000007_barrett]()\n\
+    \ntype DynamicModInt = modint_barrett\nDynamicModInt.setMod(1_000_000_007)\ncheck[DynamicModInt]()\n"
   dependsOn:
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/modint/modint.nim
+  - cplib/utils/mo.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/combination_prefix_sum.nim
   - cplib/math/combination.nim
   - cplib/math/combination.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/combination_prefix_sum.nim
-  - cplib/math/combination_prefix_sum.nim
+  - cplib/utils/mo.nim
+  - cplib/modint/modint.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/combination_prefix_sum_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 00:37:04+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/combination_prefix_sum_test.nim

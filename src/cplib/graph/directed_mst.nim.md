@@ -119,9 +119,9 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
-  - cplib/collections/lazy_leftist_heap.nim
-  - cplib/collections/lazy_leftist_heap.nim
   - cplib/math/int128.nim
+  - cplib/collections/lazy_leftist_heap.nim
+  - cplib/collections/lazy_leftist_heap.nim
   - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/graph/directed_mst.nim

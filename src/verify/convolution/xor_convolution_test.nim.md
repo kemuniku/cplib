@@ -7,6 +7,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/convolution/xor_convolution.nim
     title: cplib/convolution/xor_convolution.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/isqrt.nim
+    title: cplib/math/isqrt.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/barrett_impl.nim
+    title: cplib/modint/barrett_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/modint.nim
+    title: cplib/modint/modint.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/modint/montgomery_impl.nim
+    title: cplib/modint/montgomery_impl.nim
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -27,7 +51,7 @@ data:
 
     import cplib/convolution/xor_convolution
 
-    import atcoder/modint
+    import cplib/modint/modint
 
     import sequtils,math,strutils
 
@@ -35,7 +59,7 @@ data:
 
     proc ii(): int {.inline.} = scanf("%lld\n", addr result)
 
-    type mint = modint998244353
+    type mint = modint998244353_barrett
 
 
     var N = ii()
@@ -49,12 +73,20 @@ data:
 
     echo C.join(" ")'
   dependsOn:
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/xor_convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/xor_convolution.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/convolution/xor_convolution_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/convolution/xor_convolution_test.nim

@@ -45,7 +45,7 @@ data:
   isVerificationFile: true
   path: verify/collections/lazysegtree/get_all_static_op_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/lazysegtree/get_all_static_op_test.nim

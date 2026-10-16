@@ -139,24 +139,24 @@ data:
     \    assert hi.get(1, 3) == -0.5\n    assert hi.get(1, 1) == float.low\necho \"\
     Hello World\"\n"
   dependsOn:
+  - cplib/collections/lazysegtree_template.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/collections/lazysegtree_static_op.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/collections/lazysegtree_static_op.nim
-  - cplib/collections/lazysegtree_static_op.nim
-  - cplib/collections/lazysegtree_template.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/collections/lazysegtree_template.nim
   - cplib/modint/barrett_impl.nim
   - cplib/utils/backwards_index.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/collections/lazysegtree_template.nim
+  - cplib/modint/modint.nim
   - cplib/utils/backwards_index.nim
   - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/lazysegtree_template_test.nim
   requiredBy: []
-  timestamp: '2026-10-08 06:34:57+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/lazysegtree_template_test.nim

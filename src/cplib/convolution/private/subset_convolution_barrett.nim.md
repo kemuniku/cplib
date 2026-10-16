@@ -174,11 +174,11 @@ data:
     \ addr left[0], addr right[0], addr ranks[0], addr offsets[0])\n        result\
     \ = newSeq[T](size)\n        for mask in 0..<size: result[mask] = init(T, int(left[int(offsets[mask])]))\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim

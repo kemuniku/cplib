@@ -225,6 +225,12 @@ data:
     path: verify/matrix/linear_algebra/judge_driver.nim
     title: verify/matrix/linear_algebra/judge_driver.nim
   - icon: ':warning:'
+    path: verify/matrix/matrix_dpr_test_.nim
+    title: verify/matrix/matrix_dpr_test_.nim
+  - icon: ':warning:'
+    path: verify/matrix/matrix_dpr_test_.nim
+    title: verify/matrix/matrix_dpr_test_.nim
+  - icon: ':warning:'
     path: verify/modint/barrett/abc277g_dynamic_test_.nim
     title: verify/modint/barrett/abc277g_dynamic_test_.nim
   - icon: ':warning:'
@@ -320,6 +326,12 @@ data:
   - icon: ':warning:'
     path: verify/modint/montgomery/keyence2021_static_test_.nim
     title: verify/modint/montgomery/keyence2021_static_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/auxiliarytree_test_.nim
+    title: verify/tree/auxiliarytree_test_.nim
+  - icon: ':warning:'
+    path: verify/tree/auxiliarytree_test_.nim
+    title: verify/tree/auxiliarytree_test_.nim
   - icon: ':warning:'
     path: verify/tree/diameter_path_dynamic_test_.nim
     title: verify/tree/diameter_path_dynamic_test_.nim
@@ -502,6 +514,12 @@ data:
     path: verify/AI/wildcard_matching_test.nim
     title: verify/AI/wildcard_matching_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/WeightedUnionFind_test.nim
+    title: verify/collections/WeightedUnionFind_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/WeightedUnionFind_test.nim
+    title: verify/collections/WeightedUnionFind_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
     title: verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
   - icon: ':heavy_check_mark:'
@@ -609,6 +627,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/convolution/xor_convolution_boundary_test.nim
     title: verify/convolution/xor_convolution_boundary_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_test.nim
+    title: verify/convolution/xor_convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/xor_convolution_test.nim
+    title: verify/convolution/xor_convolution_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/fps/algorithm_ntt_regression_test.nim
     title: verify/fps/algorithm_ntt_regression_test.nim
@@ -802,6 +826,24 @@ data:
     path: verify/math/bigint_unit_test.nim
     title: verify/math/bigint_unit_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/combination_npr_test.nim
+    title: verify/math/combination_npr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_npr_test.nim
+    title: verify/math/combination_npr_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_prefix_sum_test.nim
+    title: verify/math/combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_test.nim
+    title: verify/math/combination_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/combination_test.nim
+    title: verify/math/combination_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/crt_test.nim
     title: verify/math/crt_test.nim
   - icon: ':heavy_check_mark:'
@@ -898,11 +940,23 @@ data:
     path: verify/matrix/matrix_product_test.nim
     title: verify/matrix/matrix_product_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_zoistring_test.nim
+    title: verify/matrix/matrix_zoistring_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/matrix_zoistring_test.nim
+    title: verify/matrix/matrix_zoistring_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/matrix/static_matrix_avx2_unit_test.nim
     title: verify/matrix/static_matrix_avx2_unit_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/matrix/static_matrix_avx2_unit_test.nim
     title: verify/matrix/static_matrix_avx2_unit_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/static_string/static_matrix_zoistring_test.nim
+    title: verify/matrix/static_string/static_matrix_zoistring_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/matrix/static_string/static_matrix_zoistring_test.nim
+    title: verify/matrix/static_string/static_matrix_zoistring_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/modint/check_zerodivision_test.nim
     title: verify/modint/check_zerodivision_test.nim
@@ -975,6 +1029,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/str/wildcard_matching_test.nim
     title: verify/str/wildcard_matching_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+    title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+    title: verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/point_set_tree_path_composite_sum_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/point_set_tree_path_composite_sum_test.nim
+    title: verify/tree/point_set_tree_path_composite_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_test.nim
+    title: verify/tree/rerooting_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/tree/rerooting_test.nim
+    title: verify/tree/rerooting_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/utils/backwards_index_simd_test.nim
     title: verify/utils/backwards_index_simd_test.nim
@@ -1066,8 +1144,8 @@ data:
     \ - (a.mod - n)\n            if gcd(n, d) > 1: continue\n            v.add((n.abs\
     \ + d, n, d))\n        v.sort\n        return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
-  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
@@ -1107,12 +1185,16 @@ data:
   - verify/modint/montgomery/dpr_static_test_.nim
   - verify/modint/montgomery/keyence2021_static_test_.nim
   - verify/modint/montgomery/keyence2021_static_test_.nim
+  - verify/matrix/matrix_dpr_test_.nim
+  - verify/matrix/matrix_dpr_test_.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_dynamic_test_.nim
+  - verify/tree/auxiliarytree_test_.nim
+  - verify/tree/auxiliarytree_test_.nim
   - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_static_test_.nim
   - cplib/fps/composition.nim
@@ -1258,6 +1340,8 @@ data:
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/bitwise_or_convolution_test.nim
   - verify/convolution/bitwise_or_convolution_test.nim
+  - verify/convolution/xor_convolution_test.nim
+  - verify/convolution/xor_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/convolution/relaxed_convolution_test.nim
   - verify/modint/modint_arithmetic_test.nim
@@ -1290,6 +1374,8 @@ data:
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/collections/WeightedUnionFind_test.nim
+  - verify/collections/WeightedUnionFind_test.nim
   - verify/set_power_series/power_projection_of_set_power_series_test.nim
   - verify/set_power_series/power_projection_of_set_power_series_test.nim
   - verify/set_power_series/log_of_set_power_series_test.nim
@@ -1376,10 +1462,16 @@ data:
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/many_factorials_online_test.nim
   - verify/math/many_factorials_online_test.nim
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/math/combination_prefix_sum_test.nim
   - verify/math/many_factorials_test.nim
   - verify/math/many_factorials_test.nim
+  - verify/math/combination_npr_test.nim
+  - verify/math/combination_npr_test.nim
   - verify/math/addition_of_big_integers_test.nim
   - verify/math/addition_of_big_integers_test.nim
+  - verify/math/combination_test.nim
+  - verify/math/combination_test.nim
   - verify/math/generalized_floor_sum_test.nim
   - verify/math/generalized_floor_sum_test.nim
   - verify/math/bigint_unit_test.nim
@@ -1388,6 +1480,8 @@ data:
   - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_compatibility_test.nim
   - verify/matrix/matrix_avx2_compatibility_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
   - verify/matrix/matrix_product_avx2_unit_test.nim
   - verify/matrix/matrix_product_avx2_unit_test.nim
   - verify/matrix/matrix_pow_test.nim
@@ -1404,8 +1498,18 @@ data:
   - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/static_matrix_avx2_unit_test.nim
   - verify/matrix/static_matrix_avx2_unit_test.nim
+  - verify/matrix/static_string/static_matrix_zoistring_test.nim
+  - verify/matrix/static_string/static_matrix_zoistring_test.nim
   - verify/str/wildcard_matching_test.nim
   - verify/str/wildcard_matching_test.nim
+  - verify/tree/rerooting_test.nim
+  - verify/tree/rerooting_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/hld/hld_vertex_set_path_composite_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
+  - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
 documentation_of: cplib/modint/modint.nim
 layout: document
 redirect_from:

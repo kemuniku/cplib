@@ -176,19 +176,19 @@ data:
     \  proc answer(idx: int) = discard\n        mo.runAutoRollback(add, answer)\n\
     \    )\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/rollback_mo.nim
+  - cplib/collections/segtree_static_op.nim
+  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/offline_dynamic_queries.nim
+  - cplib/utils/rollback_mo.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/collections/unionfind.nim
-  - cplib/utils/rollback_mo.nim
-  - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/rollback_mo.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/collections/segtree_static_op.nim
-  - cplib/collections/segtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/offline_dynamic_queries.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_static_op.nim
   - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/AI/rollback_mo_test.nim

@@ -124,11 +124,23 @@ data:
     path: verify/AI/suffix_automaton_table_test.nim
     title: verify/AI/suffix_automaton_table_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+    title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+    title: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/edit_distance_test.nim
     title: verify/str/edit_distance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/hash_string/hash_string_LCS_test.nim
+    title: verify/str/hash_string/hash_string_LCS_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/str/hash_string/hash_string_LCS_test.nim
+    title: verify/str/hash_string/hash_string_LCS_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
     title: verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
@@ -384,10 +396,14 @@ data:
   - verify/AI/fixedlength_merged_static_string_test.nim
   - verify/AI/suffix_automaton_table_test.nim
   - verify/AI/suffix_automaton_table_test.nim
+  - verify/str/hash_string/hash_string_LCS_test.nim
+  - verify/str/hash_string/hash_string_LCS_test.nim
   - verify/str/edit_distance_test.nim
   - verify/str/edit_distance_test.nim
   - verify/str/suffix_array_test.nim
   - verify/str/suffix_array_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_LCS_test.nim
   - verify/str/static_string/static_string_zalgo_test.nim

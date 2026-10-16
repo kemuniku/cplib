@@ -8,6 +8,12 @@ data:
     path: cplib/str/can_reverse_hash_string.nim
     title: cplib/str/can_reverse_hash_string.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/str/suffix_array.nim
+    title: cplib/str/suffix_array.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/utils/backwards_index.nim
     title: cplib/utils/backwards_index.nim
   - icon: ':heavy_check_mark:'
@@ -29,28 +35,30 @@ data:
     \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/longest_common_substring\n\
-    import cplib/str/can_reverse_hash_string\n\n{.checks:off.}\nimport algorithm,sequtils,strutils\n\
-    import atcoder/string\nvar S = stdin.readLine()\nvar T = stdin.readLine()\nvar\
-    \ SA = suffix_array((S & '$' & T))\nvar X = (S & '$' & T).initRollingHash()\n\
-    var tmp : seq[RollingHash]\nfor i in 0..<len(X):\n    tmp.add(X[SA[i]..<len(X)])\n\
-    var ans = 0\nvar a = 0\nvar b = 0\nvar c = 0\nvar d = 0\nfor i in 0..<(len(X)-1):\n\
-    \    if (tmp[i].l in 0..<len(S) and tmp[i+1].l notin 0..<len(S)) or (tmp[i+1].l\
-    \ in 0..<len(S) and tmp[i].l notin 0..<len(S)):\n        var lcp = LCP(tmp[i],tmp[i+1])\n\
-    \        if ans < lcp:\n            ans = lcp\n            if tmp[i].l in 0..<len(S):\n\
+    import cplib/str/can_reverse_hash_string\n\n{.checks:off.}\nimport cplib/str/suffix_array\n\
+    var S = stdin.readLine()\nvar T = stdin.readLine()\nvar SA = suffix_array((S &\
+    \ '$' & T))\nvar X = (S & '$' & T).initRollingHash()\nvar tmp : seq[RollingHash]\n\
+    for i in 0..<len(X):\n    tmp.add(X[SA[i]..<len(X)])\nvar ans = 0\nvar a = 0\n\
+    var b = 0\nvar c = 0\nvar d = 0\nfor i in 0..<(len(X)-1):\n    if (tmp[i].l in\
+    \ 0..<len(S) and tmp[i+1].l notin 0..<len(S)) or (tmp[i+1].l in 0..<len(S) and\
+    \ tmp[i].l notin 0..<len(S)):\n        var lcp = LCP(tmp[i],tmp[i+1])\n      \
+    \  if ans < lcp:\n            ans = lcp\n            if tmp[i].l in 0..<len(S):\n\
     \                a = tmp[i].l\n                b = tmp[i].l+lcp\n            \
     \    c = tmp[i+1].l-len(S)-1\n                d = tmp[i+1].l+lcp-len(S)-1\n  \
     \          else:\n                a = tmp[i+1].l\n                b = tmp[i+1].l+lcp\n\
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
-    echo a,\" \",b,\" \",c,\" \",d"
+    echo a,\" \",b,\" \",c,\" \",d\n"
   dependsOn:
   - cplib/str/can_reverse_hash_string.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/can_reverse_hash_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
