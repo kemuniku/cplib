@@ -42,8 +42,8 @@ data:
   dependsOn:
   - cplib/graph/lowlink.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
   isVerificationFile: true

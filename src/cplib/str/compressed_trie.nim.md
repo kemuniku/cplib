@@ -106,13 +106,13 @@ data:
   - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/suffix_array.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/str/static_string.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []

@@ -45,11 +45,11 @@ data:
     '
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep_interactive.nim
   requiredBy: []

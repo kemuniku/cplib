@@ -14,6 +14,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/collections/SWAG.nim
     title: cplib/collections/SWAG.nim
+  - icon: ':warning:'
+    path: cplib/collections/avl_dualsegtree.nim
+    title: cplib/collections/avl_dualsegtree.nim
+  - icon: ':warning:'
+    path: cplib/collections/avl_dualsegtree.nim
+    title: cplib/collections/avl_dualsegtree.nim
+  - icon: ':warning:'
+    path: cplib/collections/avl_lazysegtree.nim
+    title: cplib/collections/avl_lazysegtree.nim
+  - icon: ':warning:'
+    path: cplib/collections/avl_lazysegtree.nim
+    title: cplib/collections/avl_lazysegtree.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/avl_monoid.nim
+    title: cplib/collections/avl_monoid.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/avl_monoid.nim
+    title: cplib/collections/avl_monoid.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/avl_seq.nim
+    title: cplib/collections/avl_seq.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/avl_seq.nim
+    title: cplib/collections/avl_seq.nim
   - icon: ':heavy_check_mark:'
     path: cplib/collections/binary_trie.nim
     title: cplib/collections/binary_trie.nim
@@ -790,6 +814,18 @@ data:
     path: verify/collections/SWAG_test.nim
     title: verify/collections/SWAG_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/collections/avl_balance_test.nim
+    title: verify/collections/avl_balance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/avl_balance_test.nim
+    title: verify/collections/avl_balance_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/avl_seq_test.nim
+    title: verify/collections/avl_seq_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/avl_seq_test.nim
+    title: verify/collections/avl_seq_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/collections/binary_trie_test.nim
     title: verify/collections/binary_trie_test.nim
   - icon: ':heavy_check_mark:'
@@ -1435,16 +1471,22 @@ data:
   - cplib/collections/range_reverse_array_monoid.nim
   - cplib/collections/staticbitset_avx512.nim
   - cplib/collections/staticbitset_avx512.nim
+  - cplib/collections/avl_monoid.nim
+  - cplib/collections/avl_monoid.nim
   - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/range_sort_segtree.nim
   - cplib/collections/range_sort_segtree.nim
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/avl_dualsegtree.nim
+  - cplib/collections/avl_dualsegtree.nim
   - cplib/collections/dynamic_segtree.nim
   - cplib/collections/dynamic_segtree.nim
   - cplib/collections/bitset_binary_trie.nim
   - cplib/collections/bitset_binary_trie.nim
+  - cplib/collections/avl_lazysegtree.nim
+  - cplib/collections/avl_lazysegtree.nim
   - cplib/collections/dynamic_lazysegtree.nim
   - cplib/collections/dynamic_lazysegtree.nim
   - cplib/collections/dualsegtree_static_op.nim
@@ -1481,6 +1523,8 @@ data:
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/collections/lazysegtree.nim
   - cplib/collections/lazysegtree.nim
+  - cplib/collections/avl_seq.nim
+  - cplib/collections/avl_seq.nim
   - cplib/collections/segtree_static_op.nim
   - cplib/collections/segtree_static_op.nim
   - cplib/collections/bitset_avx512.nim
@@ -1538,6 +1582,8 @@ data:
   - verify/collections/range_linear_add_range_min_test.nim
   - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/segtree_beats_assignment_test.nim
+  - verify/collections/avl_seq_test.nim
+  - verify/collections/avl_seq_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/dualsegtree/rangeaffinepointget_test.nim
@@ -1570,6 +1616,8 @@ data:
   - verify/collections/segtree/segtree_static_op_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim
   - verify/collections/segtree/segtree_PSRC_2_test.nim
+  - verify/collections/avl_balance_test.nim
+  - verify/collections/avl_balance_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/SWAG_test.nim

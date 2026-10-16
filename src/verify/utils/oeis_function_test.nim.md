@@ -67,10 +67,10 @@ data:
     \        failed = true\n    doAssert failed\n    doAssert requests.len == requestCount\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/oeis.nim
   - cplib/math/fractions.nim
   - cplib/utils/oeis.nim
   - cplib/math/fractions.nim
+  - cplib/utils/oeis.nim
   isVerificationFile: true
   path: verify/utils/oeis_function_test.nim
   requiredBy: []

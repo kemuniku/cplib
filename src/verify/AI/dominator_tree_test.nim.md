@@ -79,9 +79,9 @@ data:
     \ - 2:\n        doAssert fromZero[v] == v + 1\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/dominator_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dominator_tree.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/dominator_tree_test.nim
   requiredBy: []

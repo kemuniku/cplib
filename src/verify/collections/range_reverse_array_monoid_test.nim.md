@@ -106,14 +106,14 @@ data:
     \ == b\n        doAssert seg.min_left(b, proc(x: string): bool = target.endsWith(x))\
     \ == a\n    doAssert seg.toSeq == values\n"
   dependsOn:
-  - cplib/collections/range_reverse_array_monoid.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_array_monoid.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/range_reverse_array_monoid.nim
   isVerificationFile: true
   path: verify/collections/range_reverse_array_monoid_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-15 20:53:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_reverse_array_monoid_test.nim

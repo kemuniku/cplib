@@ -34,9 +34,9 @@ data:
     for _ in 0..<q:\n    case input(int)\n    of 0: heap.push(input(int))\n    of\
     \ 1: print(heap.popMin())\n    else: print(heap.popMax())\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/collections/double_ended_priority_queue.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/collections/double_ended_priority_queue.nim
   isVerificationFile: true
   path: verify/collections/double_ended_priority_queue_test.nim

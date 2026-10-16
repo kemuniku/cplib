@@ -87,22 +87,53 @@ data:
     \ op, e)\n\n    template newRangeReverseArrayMonoidWith*(V, op, e: untyped): untyped\
     \ =\n        initRangeReverseArrayMonoid[typeof(e)](V, proc (l{.inject.}, r{.inject.}:\
     \ typeof(e)): typeof(e) = op, e)\n\n    proc len*[T](self: RangeReverseArrayMonoid[T]):\
-    \ int =\n        self.length\n\n    proc insertNode[T](self: RangeReverseArrayMonoid[T],\
-    \ root, node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T]\
-    \ =\n        if root.isNil: return node\n        if node.priority > root.priority:\n\
-    \            (node.left, node.right) = split(root, k, self.op, self.e)\n     \
-    \       node.update(self.op, self.e)\n            return node\n        root.push\n\
-    \        let leftSize = root.left.nodeLen\n        if k <= leftSize:\n       \
-    \     root.left = self.insertNode(root.left, node, k)\n        else:\n       \
-    \     root.right = self.insertNode(root.right, node, k - leftSize - 1)\n     \
-    \   root.update(self.op, self.e)\n        return root\n\n    proc insert*[T](self:\
-    \ RangeReverseArrayMonoid[T], index: int, value: T) =\n        ## index \u306E\
-    \u76F4\u524D\u306B\u633F\u5165\u3059\u308B\u3002index = len \u306A\u3089\u672B\
-    \u5C3E\u3002\n        assert 0 <= index and index <= self.len, \"\u6307\u5B9A\u3057\
-    \u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\u5185\u3067\u3042\u308B\u5FC5\
-    \u8981\u304C\u3042\u308A\u307E\u3059: 0 <= index and index <= self.len\"\n   \
-    \     let node = newNode(value, rand(uint64))\n        self.root = self.insertNode(self.root,\
-    \ node, index)\n        inc self.length\n\n    proc eraseNode[T](self: RangeReverseArrayMonoid[T],\
+    \ int =\n        self.length\n\n    proc split*[T](self: RangeReverseArrayMonoid[T],\
+    \ k: int): (RangeReverseArrayMonoid[T], RangeReverseArrayMonoid[T]) =\n      \
+    \  ## \u5148\u982D k \u8981\u7D20\u3067\u5206\u5272\u3057\u3001\u5143\u306E\u5217\
+    \u3092\u7A7A\u306B\u3057\u307E\u3059\u3002\u671F\u5F85 O(log N)\u3002\n      \
+    \  assert 0 <= k and k <= self.length, \"0 <= k <= len \u304C\u5FC5\u8981\u3067\
+    \u3059\"\n        let n = self.length\n        var root = move(self.root)\n  \
+    \      let (leftRoot, rightRoot) = split(root, k, self.op, self.e)\n        self.length\
+    \ = 0\n        result = (\n            RangeReverseArrayMonoid[T](root: leftRoot,\
+    \ length: k, op: self.op, e: self.e),\n            RangeReverseArrayMonoid[T](root:\
+    \ rightRoot, length: n - k, op: self.op, e: self.e)\n        )\n\n    proc merge*[T](left,\
+    \ right: RangeReverseArrayMonoid[T]): RangeReverseArrayMonoid[T] =\n        ##\
+    \ \u5DE6\u53F3\u306E\u5217\u3092\u9023\u7D50\u3057\u3001\u4E21\u65B9\u306E\u5143\
+    \u306E\u5217\u3092\u7A7A\u306B\u3057\u307E\u3059\u3002\u540C\u3058\u6F14\u7B97\
+    \u304C\u5FC5\u8981\u3067\u3059\u3002\u671F\u5F85 O(log N)\u3002\n        assert\
+    \ left != right, \"\u540C\u3058\u5217\u3092\u9023\u7D50\u3067\u304D\u307E\u305B\
+    \u3093\"\n        let n = left.length + right.length\n        var leftRoot = move(left.root)\n\
+    \        var rightRoot = move(right.root)\n        result = RangeReverseArrayMonoid[T](root:\
+    \ merge(leftRoot, rightRoot, left.op, left.e), length: n, op: left.op, e: left.e)\n\
+    \        left.length = 0\n        right.length = 0\n\n    proc insertNode[T](self:\
+    \ RangeReverseArrayMonoid[T], root, node: RangeReverseArrayMonoidNode[T], k: int):\
+    \ RangeReverseArrayMonoidNode[T] =\n        if root.isNil: return node\n     \
+    \   if node.priority > root.priority:\n            (node.left, node.right) = split(root,\
+    \ k, self.op, self.e)\n            node.update(self.op, self.e)\n            return\
+    \ node\n        root.push\n        let leftSize = root.left.nodeLen\n        if\
+    \ k <= leftSize:\n            root.left = self.insertNode(root.left, node, k)\n\
+    \        else:\n            root.right = self.insertNode(root.right, node, k -\
+    \ leftSize - 1)\n        root.update(self.op, self.e)\n        return root\n\n\
+    \    proc insert*[T](self: RangeReverseArrayMonoid[T], index: int, value: T) =\n\
+    \        ## index \u306E\u76F4\u524D\u306B\u633F\u5165\u3059\u308B\u3002index\
+    \ = len \u306A\u3089\u672B\u5C3E\u3002\n        assert 0 <= index and index <=\
+    \ self.len, \"\u6307\u5B9A\u3057\u305F\u5024\u304C\u6709\u52B9\u306A\u7BC4\u56F2\
+    \u5185\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059: 0 <= index\
+    \ and index <= self.len\"\n        let node = newNode(value, rand(uint64))\n \
+    \       self.root = self.insertNode(self.root, node, index)\n        inc self.length\n\
+    \n    proc insort*[T](self: RangeReverseArrayMonoid[T], value: T, less: proc(x,\
+    \ y: T): bool): int {.discardable.} =\n        ## \u30BD\u30FC\u30C8\u6E08\u307F\
+    \u306E\u5217\u3078\u540C\u5024\u306E\u672B\u5C3E\u3068\u306A\u308B\u4F4D\u7F6E\
+    \u306B\u633F\u5165\u3057\u3001\u305D\u306E\u4F4D\u7F6E\u3092\u8FD4\u3057\u307E\
+    \u3059\u3002\u671F\u5F85 O(log N)\u3002\n        var node = self.root\n      \
+    \  while not node.isNil:\n            node.push\n            if less(value, node.value):\n\
+    \                node = node.left\n            else:\n                result +=\
+    \ node.left.nodeLen + 1\n                node = node.right\n        self.insert(result,\
+    \ value)\n\n    proc insort*[T](self: RangeReverseArrayMonoid[T], value: T): int\
+    \ {.discardable.} =\n        ## < \u3067\u30BD\u30FC\u30C8\u6E08\u307F\u306E\u5217\
+    \u3078\u540C\u5024\u306E\u672B\u5C3E\u3068\u306A\u308B\u4F4D\u7F6E\u306B\u633F\
+    \u5165\u3057\u307E\u3059\u3002\u671F\u5F85 O(log N)\u3002\n        self.insort(value,\
+    \ proc(x, y: T): bool = x < y)\n\n    proc eraseNode[T](self: RangeReverseArrayMonoid[T],\
     \ node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T]\
     \ =\n        node.push\n        let leftSize = node.left.nodeLen\n        if k\
     \ == leftSize: return merge(node.left, node.right, self.op, self.e)\n        if\
@@ -240,7 +271,7 @@ data:
   isVerificationFile: false
   path: cplib/collections/range_reverse_array_monoid.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-15 20:53:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/range_reverse_array_monoid_test.nim

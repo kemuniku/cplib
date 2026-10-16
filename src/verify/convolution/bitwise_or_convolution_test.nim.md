@@ -84,18 +84,18 @@ data:
 
     '
   dependsOn:
-  - cplib/convolution/bitwise_or_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/bitwise_or_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/set_transform.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/set_transform.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/set_transform.nim
+  - cplib/convolution/bitwise_or_convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/bitwise_or_convolution.nim
   isVerificationFile: true
   path: verify/convolution/bitwise_or_convolution_test.nim
   requiredBy: []

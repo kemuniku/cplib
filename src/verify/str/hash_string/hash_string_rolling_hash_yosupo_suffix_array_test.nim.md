@@ -34,9 +34,9 @@ data:
     \ in 0..<len(S):\n    tmp.add(S[i..<len(S)])\ntmp.sort()\n\necho tmp.mapit(it.l).join(\"\
     \ \")"
   dependsOn:
-  - cplib/str/hash_string.nim
-  - cplib/str/hash_string.nim
   - cplib/utils/backwards_index.nim
+  - cplib/str/hash_string.nim
+  - cplib/str/hash_string.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_rolling_hash_yosupo_suffix_array_test.nim

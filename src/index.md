@@ -9,6 +9,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/SWAG.nim
       title: cplib/collections/SWAG.nim
+    - icon: ':warning:'
+      path: cplib/collections/avl_dualsegtree.nim
+      title: cplib/collections/avl_dualsegtree.nim
+    - icon: ':warning:'
+      path: cplib/collections/avl_lazysegtree.nim
+      title: cplib/collections/avl_lazysegtree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/avl_monoid.nim
+      title: cplib/collections/avl_monoid.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/collections/avl_seq.nim
+      title: cplib/collections/avl_seq.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/avlset.nim
       title: cplib/collections/avlset.nim
@@ -2343,6 +2355,18 @@ data:
       path: verify/collections/associative_array_test.nim
       title: verify/collections/associative_array_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/collections/avl_balance_test.nim
+      title: verify/collections/avl_balance_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avl_seq_test.nim
+      title: verify/collections/avl_seq_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avl_sequence_test.nim
+      title: verify/collections/avl_sequence_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/avl_split_merge_insort_test.nim
+      title: verify/collections/avl_split_merge_insort_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/collections/binary_trie_test.nim
       title: verify/collections/binary_trie_test.nim
     - icon: ':heavy_check_mark:'
@@ -2420,6 +2444,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_reverse_segtree_insert_erase_test.nim
       title: verify/collections/range_reverse_segtree_insert_erase_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/range_reverse_split_merge_insort_test.nim
+      title: verify/collections/range_reverse_split_merge_insort_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/range_sort_segtree_test.nim
       title: verify/collections/range_sort_segtree_test.nim

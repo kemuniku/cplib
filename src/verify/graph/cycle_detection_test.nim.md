@@ -42,9 +42,9 @@ data:
     \    for id in cycle: echo id\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/cycle_detection.nim
   - cplib/graph/graph.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
   - cplib/graph/cycle_detection.nim
   isVerificationFile: true

@@ -55,13 +55,13 @@ data:
     \ 1\n    for i in 1..<path.len:\n        echo path[i - 1], \" \", path[i]\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/utils/implicit_dijkstra.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
+  - cplib/utils/implicit_dijkstra.nim
+  - cplib/utils/implicit_dijkstra.nim
   isVerificationFile: true
   path: verify/utils/implicit_dijkstra_shortest_path_test.nim
   requiredBy: []
