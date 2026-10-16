@@ -118,6 +118,28 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
     proc len*[T](self: RangeReverseArrayMonoid[T]): int =
         self.length
 
+    proc split*[T](self: RangeReverseArrayMonoid[T], k: int): (RangeReverseArrayMonoid[T], RangeReverseArrayMonoid[T]) =
+        ## 先頭 k 要素で分割し、元の列を空にします。期待 O(log N)。
+        assert 0 <= k and k <= self.length, "0 <= k <= len が必要です"
+        let n = self.length
+        var root = move(self.root)
+        let (leftRoot, rightRoot) = split(root, k, self.op, self.e)
+        self.length = 0
+        result = (
+            RangeReverseArrayMonoid[T](root: leftRoot, length: k, op: self.op, e: self.e),
+            RangeReverseArrayMonoid[T](root: rightRoot, length: n - k, op: self.op, e: self.e)
+        )
+
+    proc merge*[T](left, right: RangeReverseArrayMonoid[T]): RangeReverseArrayMonoid[T] =
+        ## 左右の列を連結し、両方の元の列を空にします。同じ演算が必要です。期待 O(log N)。
+        assert left != right, "同じ列を連結できません"
+        let n = left.length + right.length
+        var leftRoot = move(left.root)
+        var rightRoot = move(right.root)
+        result = RangeReverseArrayMonoid[T](root: merge(leftRoot, rightRoot, left.op, left.e), length: n, op: left.op, e: left.e)
+        left.length = 0
+        right.length = 0
+
     proc insertNode[T](self: RangeReverseArrayMonoid[T], root, node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T] =
         if root.isNil: return node
         if node.priority > root.priority:
@@ -139,6 +161,22 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY_MONOID:
         let node = newNode(value, rand(uint64))
         self.root = self.insertNode(self.root, node, index)
         inc self.length
+
+    proc insort*[T](self: RangeReverseArrayMonoid[T], value: T, less: proc(x, y: T): bool): int {.discardable.} =
+        ## ソート済みの列へ同値の末尾となる位置に挿入し、その位置を返します。期待 O(log N)。
+        var node = self.root
+        while not node.isNil:
+            node.push
+            if less(value, node.value):
+                node = node.left
+            else:
+                result += node.left.nodeLen + 1
+                node = node.right
+        self.insert(result, value)
+
+    proc insort*[T](self: RangeReverseArrayMonoid[T], value: T): int {.discardable.} =
+        ## < でソート済みの列へ同値の末尾となる位置に挿入します。期待 O(log N)。
+        self.insort(value, proc(x, y: T): bool = x < y)
 
     proc eraseNode[T](self: RangeReverseArrayMonoid[T], node: RangeReverseArrayMonoidNode[T], k: int): RangeReverseArrayMonoidNode[T] =
         node.push

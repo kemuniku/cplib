@@ -100,6 +100,48 @@ when not declared CPLIB_COLLECTIONS_RANGE_REVERSE_ARRAY:
     proc len*[T](self: RangeReverseArray[T]): int =
         self.length
 
+    proc split*[T](self: RangeReverseArray[T], k: int): (RangeReverseArray[T], RangeReverseArray[T]) =
+        ## 先頭 k 要素で分割し、元の列を空にします。期待 O(log N)。
+        assert 0 <= k and k <= self.length, "0 <= k <= len が必要です"
+        let n = self.length
+        var root = move(self.root)
+        let (leftRoot, rightRoot) = split(root, k)
+        self.length = 0
+        result = (RangeReverseArray[T](root: leftRoot, length: k), RangeReverseArray[T](root: rightRoot, length: n - k))
+
+    proc merge*[T](left, right: RangeReverseArray[T]): RangeReverseArray[T] =
+        ## 左右の列を連結し、両方の元の列を空にします。期待 O(log N)。
+        assert left != right, "同じ列を連結できません"
+        let n = left.length + right.length
+        var leftRoot = move(left.root)
+        var rightRoot = move(right.root)
+        result = RangeReverseArray[T](root: merge(leftRoot, rightRoot), length: n)
+        left.length = 0
+        right.length = 0
+
+    proc insert*[T](self: RangeReverseArray[T], index: int, value: T) =
+        ## index の直前に挿入します。末尾には len を指定します。期待 O(log N)。
+        assert 0 <= index and index <= self.length, "0 <= index <= len が必要です"
+        let (left, right) = split(self.root, index)
+        self.root = merge(left, merge(newNode(value, rand(uint64)), right))
+        inc self.length
+
+    proc insort*[T](self: RangeReverseArray[T], value: T, less: proc(x, y: T): bool): int {.discardable.} =
+        ## ソート済みの列へ同値の末尾となる位置に挿入し、その位置を返します。期待 O(log N)。
+        var node = self.root
+        while not node.isNil:
+            node.push
+            if less(value, node.value):
+                node = node.left
+            else:
+                result += node.left.nodeLen + 1
+                node = node.right
+        self.insert(result, value)
+
+    proc insort*[T](self: RangeReverseArray[T], value: T): int {.discardable.} =
+        ## < でソート済みの列へ同値の末尾となる位置に挿入します。期待 O(log N)。
+        self.insort(value, proc(x, y: T): bool = x < y)
+
     proc reverse*[T](self: RangeReverseArray[T], l, r: int) =
         ## 半開区間[l, r)を反転します。
         assert 0 <= l and l <= r and r <= self.length, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.length"
