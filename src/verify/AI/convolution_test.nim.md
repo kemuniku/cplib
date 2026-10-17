@@ -155,27 +155,27 @@ data:
     \ intB) ==\n  convolutionNaiveMod[998_244_353](intA, intB)\n"
   dependsOn:
   - cplib/convolution/semi_relaxed_convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/relaxed_convolution.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/algorithm_ntt.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/semi_relaxed_convolution.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
+  - cplib/convolution/relaxed_convolution.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/ntt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/ntt.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/ntt.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/convolution_test.nim
   requiredBy: []

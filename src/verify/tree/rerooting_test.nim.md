@@ -65,18 +65,18 @@ data:
     \    var (b,c) = T[(u,v)]\n    return (b*x[0]+c*x[1],x[1])\n\necho G.solve_Rerooting(merge,(mint(0),0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \ \")\n\n"
   dependsOn:
-  - cplib/tree/rerooting.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/graph/graph.nim
-  - cplib/tree/rerooting.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
   - cplib/math/isqrt.nim
+  - cplib/tree/rerooting.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/tree/rerooting.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
   requiredBy: []

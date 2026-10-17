@@ -67,8 +67,8 @@ data:
     \u5FC5\u8981\u3002\n        g.independentWeightedMatching(false)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/graph.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/internal/weighted_matching_engine.nim
   isVerificationFile: false
   path: cplib/graph/general_weighted_matching.nim

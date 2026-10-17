@@ -227,13 +227,17 @@ data:
     \        return (slice.a+slice.b)*len(slice)//2\n    \n    proc `<`[T](l,r:seq[T]):bool=\n\
     \        for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n     \
     \           return false\n            elif l[i] < r[i]:\n                return\
-    \ true\n        return len(l) < len(r)\n    \n    # Yes/No\n    proc yes*(b: bool\
-    \ = true): void = print(if b: \"Yes\" else: \"No\")\n\n    template dblock(body:\
-    \ untyped) =\n        when defined(debug):\n            block:\n             \
-    \   body\n"
+    \ true\n        return len(l) < len(r)\n    \n    proc `<=`[T](l,r:seq[T]):bool=\n\
+    \        for i in 0..<min(len(l),len(r)):\n            if l[i] > r[i]:\n     \
+    \           return false\n            elif l[i] < r[i]:\n                return\
+    \ true\n        return len(l) <= len(r)\n    \n    # char\n    proc `+`(a:char,b:int):char=\n\
+    \        return char(int(a)+b)\n\n    proc `-`(a,b:char):int=\n        return\
+    \ int(a) - int(b)\n    \n    # Yes/No\n    proc yes*(b: bool = true): void = print(if\
+    \ b: \"Yes\" else: \"No\")\n\n    template dblock(body: untyped) =\n        when\
+    \ defined(debug):\n            block:\n                body\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
@@ -243,7 +247,7 @@ data:
   - verify/str/merged_static_string.nim
   - cplib/tmpl/sheep_interactive.nim
   - cplib/tmpl/sheep_interactive.nim
-  timestamp: '2026-10-14 21:33:40+09:00'
+  timestamp: '2026-10-17 20:24:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/static/restore_dijkstra_radix_static_test.nim

@@ -56,7 +56,7 @@ data:
   isVerificationFile: true
   path: verify/utils/game_warning_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-17 20:24:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/game_warning_test.nim

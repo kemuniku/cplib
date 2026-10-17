@@ -56,14 +56,14 @@ data:
     \ parents.join(\" \")\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
   - cplib/math/int128.nim
-  - cplib/collections/lazy_leftist_heap.nim
-  - cplib/collections/lazy_leftist_heap.nim
   - cplib/math/int128.nim
-  - cplib/graph/directed_mst.nim
-  - cplib/tmpl/fastio.nim
   - cplib/graph/graph.nim
+  - cplib/collections/lazy_leftist_heap.nim
+  - cplib/collections/lazy_leftist_heap.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/directed_mst.nim
   - cplib/graph/directed_mst.nim
   isVerificationFile: true
   path: verify/graph/directed_mst_test.nim

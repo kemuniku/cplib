@@ -40,9 +40,9 @@ data:
     \ ii()\n        var (a, b) = swag.fold()\n        echo (a*x mod MOD + b) mod MOD\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/SWAG.nim
-  - cplib/collections/SWAG.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/SWAG.nim
+  - cplib/collections/SWAG.nim
   isVerificationFile: true
   path: verify/collections/SWAG_test.nim
   requiredBy: []

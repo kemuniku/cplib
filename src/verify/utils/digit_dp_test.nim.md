@@ -121,16 +121,16 @@ data:
     \ 1)\nexpectAssertion:\n    discard digitDp(\"-1\", 0, keepState, 0, 1)\nexpectAssertion:\n\
     \    discard digitDp(\"1a\", 0, keepState, 0, 1)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/utils/digit_dp.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/utils/digit_dp.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/digit_dp.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/utils/digit_dp.nim
   isVerificationFile: true
   path: verify/utils/digit_dp_test.nim
   requiredBy: []

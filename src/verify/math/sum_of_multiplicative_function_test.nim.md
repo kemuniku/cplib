@@ -77,28 +77,28 @@ data:
     \    let answer = multiplicativePrefixSum(n, @[a, b],\n        proc(p, e: int):\
     \ Mint = a * e + b * p)\n    print answer\n"
   dependsOn:
-  - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/modint/modint.nim
+  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/math/multiplicative_prefix_sum.nim
   - cplib/math/isprime.nim
+  - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/multiplicative_prefix_sum.nim
   - cplib/tmpl/fastio.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/sum_of_multiplicative_function_test.nim
   requiredBy: []
-  timestamp: '2026-10-14 21:33:40+09:00'
+  timestamp: '2026-10-17 20:24:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/sum_of_multiplicative_function_test.nim

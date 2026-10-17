@@ -115,29 +115,29 @@ data:
     checkBmbm(modint_montgomery)\n"
   dependsOn:
   - cplib/fps/bmbm.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/berlekamp_massey.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/berlekamp_massey.nim
   - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isqrt.nim
   - cplib/fps/bmbm.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/fps/bostan_mori.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/AI/bmbm_test.nim
   requiredBy: []

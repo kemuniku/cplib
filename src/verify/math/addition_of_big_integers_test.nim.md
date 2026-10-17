@@ -100,24 +100,24 @@ data:
     \ smallA) and tryParseSmallDecimal(b, smallB):\n        print(smallA + smallB)\n\
     \    else:\n        print(parseBigInt(a) + parseBigInt(b))\n"
   dependsOn:
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/tmpl/fastio.nim
   - cplib/math/isprime.nim
   - cplib/math/bigint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/modint/modint.nim
   - cplib/math/bigint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/addition_of_big_integers_test.nim
   requiredBy: []

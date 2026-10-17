@@ -70,18 +70,18 @@ data:
     \ status, 0) == child\ndoAssert WIFEXITED(status) and WEXITSTATUS(status) == 0\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/sheep_interactive.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep_interactive.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/sheep_interactive.nim
   isVerificationFile: true
   path: verify/AI/fastio_interactive_test.nim
   requiredBy: []
-  timestamp: '2026-10-14 21:33:40+09:00'
+  timestamp: '2026-10-17 20:24:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/fastio_interactive_test.nim

@@ -59,18 +59,18 @@ data:
     \ = farthest(0).vertex\nlet (last, cost) = farthest(first)\nlet (path, _) = shortest_path_implicit_bfs(@[first],\
     \ @[last], adjacent)\necho cost, \" \", path.len\necho path.join(\" \")\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/implicit_bfs.nim
   - cplib/utils/constants.nim
+  - cplib/utils/implicit_bfs.nim
+  - cplib/utils/implicit_bfs.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/implicit_bfs.nim
+  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/utils/implicit_bfs_tree_diameter_test.nim
   requiredBy: []
-  timestamp: '2026-10-14 21:33:40+09:00'
+  timestamp: '2026-10-17 20:24:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/utils/implicit_bfs_tree_diameter_test.nim

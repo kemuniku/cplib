@@ -172,13 +172,13 @@ data:
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/implicit_bfs.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/implicit_bfs.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/implicit_bfs.nim
+  - cplib/utils/implicit_bfs.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/implicit_bfs_test.nim
   requiredBy: []

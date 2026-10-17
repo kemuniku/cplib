@@ -116,9 +116,9 @@ data:
     \ mod 3 == 1:\n        supply[rng.rand(0..<n)] += 1\n        supply[rng.rand(0..<n)]\
     \ -= 1\n    compare(supply, edges)\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/graph/min_cost_b_flow.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/graph/min_cost_b_flow.nim
   isVerificationFile: true
   path: verify/AI/min_cost_b_flow_test.nim

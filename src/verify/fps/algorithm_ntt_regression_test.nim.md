@@ -161,38 +161,38 @@ data:
     \    let unit = f + 1\n    doAssert unit.powCoefficient(123456, degree) == unit.pow(123456,\
     \ degree + 1)[degree]\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/convolution/convolution.nim
   - cplib/fps/product_tree.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/fps/polynomial_interpolation.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/fps/bostan_mori.nim
   - cplib/convolution/relaxed_convolution.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/sparse_formal_power_series.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isqrt.nim
-  - cplib/fps/product_tree.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/power_projection.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/power_projection.nim
-  - cplib/convolution/ntt.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/fps/sparse_formal_power_series.nim
   - cplib/fps/polynomial_interpolation.nim
   - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/convolution.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/fps/power_projection.nim
   - cplib/fps/bostan_mori.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/polynomial_interpolation.nim
   - cplib/convolution/relaxed_convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/fps/power_projection.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/product_tree.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/sparse_formal_power_series.nim
+  - cplib/convolution/ntt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/convolution/ntt.nim
-  - cplib/convolution/convolution.nim
   isVerificationFile: true
   path: verify/fps/algorithm_ntt_regression_test.nim
   requiredBy: []

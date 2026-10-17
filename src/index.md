@@ -3542,6 +3542,9 @@ data:
       path: verify/utils/game_optimal_play_test.nim
       title: verify/utils/game_optimal_play_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/utils/game_terminal_test.nim
+      title: verify/utils/game_terminal_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/utils/game_test.nim
       title: verify/utils/game_test.nim
     - icon: ':heavy_check_mark:'

@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/tree/lca.nim
-  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/tree/lca/lca_yosupo_test.nim
   requiredBy: []
