@@ -12,10 +12,10 @@ parser.add_argument("--repeats", type=int, default=3)
 parser.add_argument("--seeds", nargs="+", type=int, default=[11, 29, 47])
 args = parser.parse_args()
 with open(args.output, "w", encoding="utf-8") as output:
-    for scenario in ["mixed60", "set30", "set32", "equal", "front", "endpoints", "boundary"]:
+    for scenario in ["mixed60", "set30", "set32", "equal", "front", "endpoints", "boundary", "sum"]:
         for seed in args.seeds:
             for repeat in range(args.repeats):
-                modes = ["fast", "offline", "compressed"]
+                modes = ["fast", "offline"] if scenario == "sum" else ["fast", "offline", "compressed"]
                 if repeat % 2:
                     modes.reverse()
                 group = []

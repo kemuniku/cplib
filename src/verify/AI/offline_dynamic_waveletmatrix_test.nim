@@ -114,6 +114,9 @@ check(@[int.low, 0, int.high], @[wmAccess(0), wmAccess(2), wmRangeLowerbound(0, 
     wmSelect(0, int.high), wmSet(0, int.high), wmSelect(1, int.high), wmErase(1), wmSelect(1, int.high)])
 check(@[int.low], @[wmSumUpperbound(0, 1, int.low), wmErase(0), wmInsert(0, int.high),
     wmSumSmallest(0, 1, 1), wmSet(0, 0), wmRangeSumWithCount(0, 1, int.low, int.high)])
+check(@[int.high, int.high], @[wmCount(0, 2, int.high), wmSumUpperbound(0, 1, int.high),
+    wmSet(1, int.low), wmRangeSumWithCount(0, 2, int.low, 0), wmErase(0)])
+check(@[int.low, int.low, 5, 7], @[wmRangeSumWithCount(0, 4, 5, 8), wmSumSmallest(2, 4, 2)])
 check(@[7, 7, 7], @[wmSelect(-1, 7), wmSelect(3, 7), wmInsert(0, 7), wmErase(2),
     wmSet(0, 7), wmSelect(2, 7), wmSumSmallestWithCount(0, 3, 3), wmRangeFreq(0, 3, 9, -9)])
 for seed in 0..<40:

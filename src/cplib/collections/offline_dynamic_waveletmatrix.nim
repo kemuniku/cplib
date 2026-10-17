@@ -5,7 +5,8 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
     ## M=初期長+insert/set数、S=異なる値数、L=ceil(log2(max(1,S)))。
     ## 前処理は期待O((N+Q)log(M+1)+M(L+1))、操作はO((L+1)log(M+1))。
     ## 記憶量O(M(L+1)+Q)。削除された版も固定位置として保持する。
-    ## sum操作がある場合だけ和配列を確保。内部部分和・差・積もint内であること。
+    ## sum操作がある場合だけ和配列を確保。内部和はuint64のmod演算。
+    ## 数学的な和を得るには回答がint内であること。範囲外は64bitで折り返す。
     ## 例: let answers = runOfflineDynamicWaveletMatrix(@[5, 1, 5], @[
     ##   wmInsert(1, 7), wmSet(0, -3), wmKthSmallest(0, 4, 1), wmErase(2),
     ##   wmPrevValue(0, 3, 7), wmSumSmallestWithCount(0, 3, 2)])
@@ -29,7 +30,7 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
             of owaSumCount: sumCount*: tuple[sum, count: int]
         OWMFenwick = object
             counts: seq[int32]
-            sums: seq[int]
+            sums: seq[uint64]
         OWMNode = object
             left, right, size: int
             priority: uint64
@@ -125,7 +126,7 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         while i > 0:
             result += int(t.counts[i])
             i -= i and -i
-    proc prefixSum(t: OWMFenwick, r: int): int {.inline.} =
+    proc prefixSum(t: OWMFenwick, r: int): uint64 {.inline.} =
         ## 有効値のprefix和。O(log M)。
         var i = r
         while i > 0:
@@ -134,7 +135,7 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
     proc amount(t: OWMFenwick, l, r: int): int {.inline.} =
         ## 半開区間の有効個数。O(log M)。
         t.prefix(r)-t.prefix(l)
-    proc weight(t: OWMFenwick, l, r: int): int {.inline.} =
+    proc weight(t: OWMFenwick, l, r: int): uint64 {.inline.} =
         ## 半開区間の有効値の和。O(log M)。
         t.prefixSum(r)-t.prefixSum(l)
     proc locate(t: OWMFenwick, k: int): int =
@@ -154,10 +155,10 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         while i < t.counts.len:
             if add:
                 inc t.counts[i]
-                if t.sums.len > 0: t.sums[i] += value
+                if t.sums.len > 0: t.sums[i] += cast[uint64](value)
             else:
                 dec t.counts[i]
-                if t.sums.len > 0: t.sums[i] -= value
+                if t.sums.len > 0: t.sums[i] -= cast[uint64](value)
             i += i and -i
     proc pull(nodes: var seq[OWMNode], root: int) =
         ## 前処理木の有効サイズを再計算。O(1)。
@@ -305,11 +306,11 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         result.trees = newSeq[OWMFenwick](result.height+1)
         for level in 0..result.height:
             var tree = OWMFenwick(counts: newSeq[int32](total+1))
-            if withSum: tree.sums = newSeq[int](total+1)
+            if withSum: tree.sums = newSeq[uint64](total+1)
             for i in 0..<total:
                 if active[perm[i]]:
                     tree.counts[i+1] = 1
-                    if withSum: tree.sums[i+1] = result.slotValues[perm[i]]
+                    if withSum: tree.sums[i+1] = cast[uint64](result.slotValues[perm[i]])
             for i in 1..total:
                 let parent = i+(i and -i)
                 if parent <= total:
@@ -350,7 +351,7 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
             if level < t.height:
                 let zero = int(t.zeros[level][pos])
                 pos = if t.zeros[level][pos+1] != t.zeros[level][pos]: zero else: t.middles[level]+pos-zero
-    proc less(t: OfflineDynamicWaveletMatrix, left, right, limit: int): tuple[sum, count: int] =
+    proc less(t: OfflineDynamicWaveletMatrix, left, right, limit: int): tuple[sum: uint64, count: int] =
         ## 圧縮値limit未満の個数と、必要なら和。O((L+1)log M)。
         if limit <= 0: return
         if limit >= t.values.len:
@@ -443,7 +444,7 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
                     if op.kind == owmNextValue and count < op.r-op.l: value = some(t.kth(l, r, count))
                     answer = OfflineWMAnswer(operationIndex: j, kind: owaOptional, optionalValue: value)
                 else:
-                    var pair: tuple[sum, count: int]
+                    var pair: tuple[sum: uint64, count: int]
                     case op.kind
                     of owmRank, owmCount:
                         let key = t.values.lowerBound(op.x)
@@ -462,12 +463,12 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
                         if op.k > 0:
                             let x = t.kth(l, r, op.k-1)
                             pair = t.less(l, r, t.values.lowerBound(x))
-                            pair.sum += (op.k-pair.count)*x
+                            pair.sum += uint64(op.k-pair.count)*cast[uint64](x)
                             pair.count = op.k
                     else: discard
                     if op.kind >= owmSumLowerboundWithCount:
-                        answer = OfflineWMAnswer(operationIndex: j, kind: owaSumCount, sumCount: pair)
-                    elif op.kind >= owmSumLowerbound: answer.value = pair.sum
+                        answer = OfflineWMAnswer(operationIndex: j, kind: owaSumCount, sumCount: (cast[int](pair.sum), pair.count))
+                    elif op.kind >= owmSumLowerbound: answer.value = cast[int](pair.sum)
                     else: answer.value = pair.count
             result.add answer
     proc runOfflineDynamicWaveletMatrix*(initial: openArray[int], operations: openArray[OfflineWMOperation]): seq[OfflineWMAnswer] =
