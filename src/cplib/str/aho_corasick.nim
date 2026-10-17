@@ -52,15 +52,14 @@ when not declared CPLIB_STR_AHO_CORASICK:
         while head < queue.len:
             let node = queue[head]
             inc head
+            let children = result.nodes[node].next
+            if node != 0:
+                result.nodes[node].next = result.nodes[result.nodes[node].failure].next
             for c in chars.a..chars.b:
-                let child = result.nodes[node].next[c]
-                if child == 0:
-                    if node != 0:
-                        result.nodes[node].next[c] = result.nodes[result.nodes[node].failure].next[c]
-                    continue
-                var failure = 0'i32
-                if node != 0:
-                    failure = result.nodes[result.nodes[node].failure].next[c]
+                let child = children[c]
+                if child == 0: continue
+                let failure = if node == 0: 0'i32 else: result.nodes[node].next[c]
+                result.nodes[node].next[c] = child
                 result.nodes[child].failure = failure
                 result.nodes[child].matched = result.nodes[child].terminal + result.nodes[failure].matched
                 result.nodes[child].output = if result.nodes[failure].terminal > 0: failure else: result.nodes[failure].output
