@@ -18,7 +18,10 @@ when not declared CPLIB_GEOMETRY_BASE:
     proc `-=`*[T](p: var Point[T], q: Point[T]) = (p.x -= q.x; p.y -= q.y)
     proc `*=`*[S](p: var Point[SomeFloat], x: S) = (p.x *= float(x); p.y *= float(x))
     proc `*=`*[T, S](p: var Point[T], x: S) = (p.x *= x; p.y *= x)
-    proc `/=`*[S](p: var Point[SomeFloat], x: S) = (p.x /= float(x); p.y /= float(x))
+    proc `/=`*[S](p: var Point[SomeFloat], x: S) =
+        ## 浮動小数点の各座標を x で割り、元の座標型に戻す。
+        p.x = typeof(p.x)(float(p.x) / float(x))
+        p.y = typeof(p.y)(float(p.y) / float(x))
     proc `/=`*[T, S](p: var Point[T], x: S) = (p.x /= x; p.y /= x)
     proc dot*[T](p, q: Point[T]): T =
         ##2点p,qの内積 (p.x * q.x + p.y * q.y)

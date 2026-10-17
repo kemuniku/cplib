@@ -3,6 +3,7 @@ when not declared CPLIB_GEOMETRY_DISTANCE:
     import math
     import cplib/geometry/base
     import cplib/geometry/intersect
+    import cplib/math/fractions
     proc norm*[T](p1, p2: Point[T]): T =
         ##点 p1, p2 のユークリッド距離の2乗
         norm(p1 - p2)
@@ -17,7 +18,11 @@ when not declared CPLIB_GEOMETRY_DISTANCE:
         return norm(p, initLine(s.s, s.t))
     proc norm*[T](s1, s2: Segment[T]): T =
         ##線分 s1, s2 のユークリッド距離の2乗
-        if intersect(s1, s2): return 0
+        if intersect(s1, s2):
+            when T is Fraction:
+                return initFraction(typeof(s1.s.x.num)(0))
+            else:
+                return 0
         result = norm(s1.s, s2)
         result = min(result, norm(s1.t, s2))
         result = min(result, norm(s2.s, s1))
