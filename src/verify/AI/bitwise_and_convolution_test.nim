@@ -11,8 +11,8 @@ proc naive[T](a, b: seq[T]): seq[T] =
             result[i and j] += a[i] * b[j]
 
 proc check[T](a, b: seq[T]) =
-    let originalA = a
-    let originalB = b
+    let originalA = a.mapIt(it)
+    let originalB = b.mapIt(it)
     let actual = bitwise_and_convolution(a, b)
     let expected = naive(a, b)
     when T is int:
@@ -48,3 +48,13 @@ for invalid in [(@[1], @[1, 2]), (@[1, 2, 3], @[4, 5, 6])]:
     assert rejected
 
 echo "Hello World"
+
+modint_barrett.setMod(101)
+modint_montgomery.setMod(101)
+for exponent in 0..5:
+    let n = 1 shl exponent
+    let a = newSeqWith(n, rng.rand(-100..100))
+    let b = newSeqWith(n, rng.rand(-100..100))
+    check(a.mapIt(modint_barrett.init(it)), b.mapIt(modint_barrett.init(it)))
+    check(a.mapIt(modint_montgomery.init(it)), b.mapIt(modint_montgomery.init(it)))
+assert bitwiseAndConvolution(@[1.25, -2.5], @[-0.5, 1.0]) == @[1.875, -2.5]
