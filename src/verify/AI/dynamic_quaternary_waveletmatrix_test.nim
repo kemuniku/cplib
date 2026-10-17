@@ -5,8 +5,13 @@ import cplib/collections/dynamic_bplus_kernels
 import dynamic_bplus_stress_trace
 import random, algorithm, options
 
+const quadTestBranch {.intdefine.} = 16
+const quadTestWords {.intdefine.} = 64
+
 template makeWM(values:untyped,H:untyped,signedValues:untyped=false,kernel:untyped=bpkAuto):untyped =
-    when defined(quadBranch24):
+    when defined(quadTestBranch) or defined(quadTestWords):
+        initDynamicQuadWaveletMatrix(values,QuadVector[quadTestBranch,quadTestWords],H,signedValues,kernel)
+    elif defined(quadBranch24):
         initDynamicQuadWaveletMatrix(values,QuadVector[24,64],H,signedValues,kernel)
     elif defined(quadBranch32):
         initDynamicQuadWaveletMatrix(values,QuadVector[32,128],H,signedValues,kernel)

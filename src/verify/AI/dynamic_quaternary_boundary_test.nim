@@ -5,6 +5,17 @@ import cplib/collections/dynamic_bplus_kernels
 import cplib/collections/dynamic_bplus_waveletmatrix
 import options
 
+const quadTestBranch {.intdefine.} = 16
+const quadTestWords {.intdefine.} = 64
+
+template makeWM(values:untyped,H:untyped = -1,signedValues:untyped = false,
+                kernel:untyped = bpkAuto,with_sum:untyped = false):untyped =
+    when defined(quadTestBranch) or defined(quadTestWords):
+        initDynamicQuadWaveletMatrix(values,QuadVector[quadTestBranch,quadTestWords],
+            H,signedValues,kernel,with_sum)
+    else:
+        initDynamicQuadWaveletMatrix(values,H,signedValues,kernel,with_sum)
+
 template rejects(error:typedesc,body:untyped) =
     block:
         var caught=false
@@ -41,7 +52,7 @@ for kernel in [bpkScalar,bpkAvx2,bpkAvx512]:
                 let x=maximum-(if uniqueValues:i else:0)
                 a.add(x)
                 if n==8:expected+=x
-            sums(initDynamicQuadWaveletMatrix(a,H=60,with_sum=true,kernel=kernel),0,maximum,expected,n==8)
+            sums(makeWM(a,H=60,with_sum=true,kernel=kernel),0,maximum,expected,n==8)
     for negative in [false,true]:
         for n in [16,17]:
             let x=if negative: -(1 shl 59) else:(1 shl 59)-1
@@ -50,11 +61,11 @@ for kernel in [bpkScalar,bpkAvx2,bpkAvx512]:
             for i in 0..<n:
                 a.add(x)
                 if n==16:expected+=x
-            sums(initDynamicQuadWaveletMatrix(a,H=60,signedValues=true,with_sum=true,kernel=kernel),-(1 shl 59),(1 shl 59)-1,expected,n==16)
-    sums(initDynamicQuadWaveletMatrix(@[int.low,int.high],H=64,signedValues=true,with_sum=true,kernel=kernel),int.low,int.high,-1,true)
+            sums(makeWM(a,H=60,signedValues=true,with_sum=true,kernel=kernel),-(1 shl 59),(1 shl 59)-1,expected,n==16)
+    sums(makeWM(@[int.low,int.high],H=64,signedValues=true,with_sum=true,kernel=kernel),int.low,int.high,-1,true)
     for signed in [false,true]:
         let a=if signed: @[-4,3,-1,0,3,-4] else: @[0,7,3,0,7,2]
-        let w=initDynamicQuadWaveletMatrix(a,H=3,signedValues=signed,with_sum=true,kernel=kernel)
+        let w=makeWM(a,H=3,signedValues=signed,with_sum=true,kernel=kernel)
         for l in 0..a.len:
             for r in l..a.len:
                 for low in -5..8:
@@ -70,16 +81,16 @@ for kernel in [bpkScalar,bpkAvx2,bpkAvx512]:
         for d in 0..3:count+=child.right[d]-child.left[d]
         doAssert count==a.len
     when defined(dynamicWmFullTest): echo "quad sums passed ",kernel
-let empty=initDynamicQuadWaveletMatrix(newSeq[int](),H=0,with_sum=true)
+let empty=makeWM(newSeq[int](),H=0,with_sum=true)
 doAssert empty.sum_smallest(0,0,0)==0
-rejects(AssertionDefect):discard initDynamicQuadWaveletMatrix(@[0],H=65,signedValues=true)
-rejects(AssertionDefect):discard initDynamicQuadWaveletMatrix(@[0],H=0,signedValues=true)
-let disabled=initDynamicQuadWaveletMatrix(@[1],H=2)
+rejects(AssertionDefect):discard makeWM(@[0],H=65,signedValues=true)
+rejects(AssertionDefect):discard makeWM(@[0],H=0,signedValues=true)
+let disabled=makeWM(@[1],H=2)
 rejects(AssertionDefect):discard disabled.sum_upperbound(0,1,1)
 let binary=initDynamicBPlusWaveletMatrix(@[2,1,2],H=2)
 doAssert binary.select(1,2)==2
 for kernel in BPlusKernel:
-    let w=initDynamicQuadWaveletMatrix(@[2,1,2],H=2,kernel=kernel)
+    let w=makeWM(@[2,1,2],H=2,kernel=kernel)
     if not kernelAvailable(kernel):doAssert w.activeKernel==bpkScalar
     doAssert w.select(1,2)==2
 when defined(dynamicWmFullTest): echo "quad boundary and binary coexistence passed"

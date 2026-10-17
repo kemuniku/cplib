@@ -2,6 +2,8 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_KERNELS:
     const CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_KERNELS* = 1
     when defined(dynamicWmPortable):
         {.passC: "-DDQV_PORTABLE".}
+    when defined(quadOptimized) or defined(quadFastRank):
+        {.passC: "-DDQV_FAST_RANK".}
     {.emit: """
 #include <stdint.h>
 #if !defined(DQV_PORTABLE) && (defined(__x86_64__) || defined(__i386__)) && (defined(__GNUC__) || defined(__clang__))
@@ -42,7 +44,12 @@ static int dqv_count_scalar(const uint64_t *a, int n, int d) {
   int s=0; for(int i=0;i<n;++i) s+=dqv_pop(dqv_matches(a[i],d)); return s;
 }
 #if DQV_X86
-DQV_TARGET("avx2") static int dqv_count_avx2(const uint64_t *a, int n, int d) {
+#ifdef DQV_FAST_RANK
+DQV_TARGET("avx2,popcnt")
+#else
+DQV_TARGET("avx2")
+#endif
+static int dqv_count_avx2(const uint64_t *a, int n, int d) {
   const __m256i lut=_mm256_setr_epi8(0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4);
   const __m256i mask=_mm256_set1_epi8(15);
   __m256i sum=_mm256_setzero_si256();
@@ -58,7 +65,12 @@ DQV_TARGET("avx2") static int dqv_count_avx2(const uint64_t *a, int n, int d) {
   }
   __m128i halves=_mm_add_epi64(_mm256_castsi256_si128(sum),_mm256_extracti128_si256(sum,1));
   int r=(int)_mm_cvtsi128_si64(halves)+(int)_mm_extract_epi64(halves,1);
+#ifdef DQV_FAST_RANK
+  for(;i<n;++i)r+=__builtin_popcountll(dqv_matches(a[i],d));
+  return r;
+#else
   return r+dqv_count_scalar(a+i,n-i,d);
+#endif
 }
 DQV_TARGET("avx2") static void dqv_left_avx2(uint64_t *a,int first,int last) {
   int i=last;
@@ -80,7 +92,12 @@ DQV_TARGET("avx2") static void dqv_right_avx2(uint64_t *a,int first,int last) {
 }
 #endif
 #if DQV_X86
-DQV_TARGET("avx512f,avx512bw") static int dqv_count_avx512(const uint64_t *a, int n, int d) {
+#ifdef DQV_FAST_RANK
+DQV_TARGET("avx512f,avx512bw,popcnt")
+#else
+DQV_TARGET("avx512f,avx512bw")
+#endif
+static int dqv_count_avx512(const uint64_t *a, int n, int d) {
   const __m512i lut=_mm512_broadcast_i32x4(_mm_setr_epi8(0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4));
   const __m512i mask=_mm512_set1_epi8(15);
   __m512i sum=_mm512_setzero_si512();
@@ -95,7 +112,12 @@ DQV_TARGET("avx512f,avx512bw") static int dqv_count_avx512(const uint64_t *a, in
     sum=_mm512_add_epi64(sum,_mm512_sad_epu8(cnt,_mm512_setzero_si512()));
   }
   int r=(int)_mm512_reduce_add_epi64(sum);
+#ifdef DQV_FAST_RANK
+  for(;i<n;++i)r+=__builtin_popcountll(dqv_matches(a[i],d));
+  return r;
+#else
   return r+dqv_count_scalar(a+i,n-i,d);
+#endif
 }
 DQV_TARGET("avx512f,avx512bw") static void dqv_left_avx512(uint64_t *a,int first,int last) {
   int i=last;
@@ -116,10 +138,30 @@ DQV_TARGET("avx512f,avx512bw") static void dqv_right_avx512(uint64_t *a,int firs
   for(;i<=last;++i) a[i]=(a[i]>>2)|(a[i+1]<<62);
 }
 #endif
+#if DQV_X86 && defined(DQV_FAST_RANK)
+/* 短い列は一度だけ選択したPOPCNT経路で全ワードを処理する。 */
+DQV_TARGET("popcnt") static int dqv_rank_hw(uint64_t *a,int p,int d,int mode) {
+  int n=p>>5,s=0,i=0;
+  if(mode==2 && n>=8)s=dqv_count_avx2(a,n,d);
+  else if(mode==3 && n>=8)s=dqv_count_avx512(a,n,d);
+  else {
+    uint64_t mask=UINT64_C(0x5555555555555555)*(uint64_t)d;
+    for(;i<n;++i){
+      uint64_t x=a[i]^mask;
+      s+=__builtin_popcountll(~(x|(x>>1))&UINT64_C(0x5555555555555555));
+    }
+  }
+  return s+__builtin_popcountll(dqv_matches(a[n],d)&((UINT64_C(1)<<(2*(p&31)))-1));
+}
+#endif
 #ifdef __cplusplus
 extern "C" {
 #endif
 int dqv_rank(uint64_t *a,int p,int d,int mode) {
+#if DQV_X86 && defined(DQV_FAST_RANK)
+  if(__builtin_cpu_supports("popcnt"))return dqv_rank_hw(a,p,d,mode);
+  mode=1;
+#endif
   int n=p>>5, s;
 #if DQV_X86
   if(mode==3) s=dqv_count_avx512(a,n,d);
@@ -191,12 +233,23 @@ static void dqv_all_pair_base(uint64_t *a,int l,int r,int *left,int *right) {
 #if DQV_X86
 DQV_TARGET("popcnt") static void dqv_all_hw(uint64_t *a,int p,int *out) {
     int lo=0,hi=0,both=0,n=p>>5;
+#ifdef DQV_FAST_RANK
+    for(int i=0;i<n;++i) {
+#else
     for(int i=0;i<=n;++i) {
+#endif
         uint64_t x=a[i];
+#ifndef DQV_FAST_RANK
         if(i==n) x &= (UINT64_C(1)<<(2*(p&31)))-1;
+#endif
         uint64_t l=x & UINT64_C(0x5555555555555555), h=(x>>1) & UINT64_C(0x5555555555555555);
         lo+=__builtin_popcountll(l); hi+=__builtin_popcountll(h); both+=__builtin_popcountll(l&h);
     }
+#ifdef DQV_FAST_RANK
+    uint64_t x=a[n]&((UINT64_C(1)<<(2*(p&31)))-1);
+    uint64_t l=x&UINT64_C(0x5555555555555555),h=(x>>1)&UINT64_C(0x5555555555555555);
+    lo+=__builtin_popcountll(l);hi+=__builtin_popcountll(h);both+=__builtin_popcountll(l&h);
+#endif
     out[0]=p-lo-hi+both;out[1]=lo-both;out[2]=hi-both;out[3]=both;
 }
 DQV_TARGET("popcnt") static void dqv_all_pair_hw(uint64_t *a,int l,int r,int *left,int *right) {
@@ -240,6 +293,106 @@ void dqv_all_pair(uint64_t *a,int l,int r,int *left,int *right) {
 #endif
     dqv_all_pair_base(a,l,r,left,right);
 }
+static void dqv_prefix_base(uint64_t *a,int n,int first,int group,uint16_t *out){
+    int i, d, end=(n+31)/32, sums[4];
+    for(d=0;d<4;++d) sums[d]=out[first*4+d];
+    for(i=first*group;i<end;++i){
+        int len=n-i*32; if(len>32)len=32;
+        uint64_t mask=len==32?UINT64_MAX:((UINT64_C(1)<<(len*2))-1);
+        uint64_t x=a[i]&mask, lo=x&UINT64_C(0x5555555555555555), hi=(x>>1)&UINT64_C(0x5555555555555555);
+        int l=dqv_pop_base(lo), h=dqv_pop_base(hi), both=dqv_pop_base(lo&hi);
+        sums[0]+=len-l-h+both; sums[1]+=l-both; sums[2]+=h-both; sums[3]+=both;
+        if((i+1)%group==0 || i+1==end)for(d=0;d<4;++d)out[((i/group)+1)*4+d]=(uint16_t)sums[d];
+    }
+}
+#if DQV_X86
+DQV_TARGET("popcnt") static void dqv_prefix_hw(uint64_t *a,int n,int first,int group,uint16_t *out){
+    int i, d, end=(n+31)/32, sums[4];
+    for(d=0;d<4;++d) sums[d]=out[first*4+d];
+    for(i=first*group;i<end;++i){
+        int len=n-i*32; if(len>32)len=32;
+        uint64_t mask=len==32?UINT64_MAX:((UINT64_C(1)<<(len*2))-1);
+        uint64_t x=a[i]&mask, lo=x&UINT64_C(0x5555555555555555), hi=(x>>1)&UINT64_C(0x5555555555555555);
+        int l=__builtin_popcountll(lo), h=__builtin_popcountll(hi), both=__builtin_popcountll(lo&hi);
+        sums[0]+=len-l-h+both; sums[1]+=l-both; sums[2]+=h-both; sums[3]+=both;
+        if((i+1)%group==0 || i+1==end)for(d=0;d<4;++d)out[((i/group)+1)*4+d]=(uint16_t)sums[d];
+    }
+}
+#endif
+void dqv_prefix(uint64_t *a,int n,int first,int group,uint16_t *out){
+#if DQV_X86
+ if(__builtin_cpu_supports("popcnt")){dqv_prefix_hw(a,n,first,group,out);return;}
+#endif
+ dqv_prefix_base(a,n,first,group,out);
+}
+#if DQV_X86
+/* 二種類の累積配列を同じ走査で更新する。 */
+DQV_TARGET("avx2") static void dqv_add_pair_avx2(int32_t *a,int32_t *b,int n,int d) {
+    int i=0;
+    const __m256i delta=_mm256_set1_epi32(d);
+    for(;i+8<=n;i+=8){
+        _mm256_storeu_si256((__m256i*)(a+i),_mm256_add_epi32(_mm256_loadu_si256((const __m256i*)(a+i)),delta));
+        _mm256_storeu_si256((__m256i*)(b+i),_mm256_add_epi32(_mm256_loadu_si256((const __m256i*)(b+i)),delta));
+    }
+    for(;i<n;++i){a[i]+=d;b[i]+=d;}
+}
+DQV_TARGET("avx512f") static void dqv_add_pair_avx512(int32_t *a,int32_t *b,int n,int d) {
+    int i=0;
+    const __m512i delta=_mm512_set1_epi32(d);
+    for(;i+16<=n;i+=16){
+        _mm512_storeu_si512((void*)(a+i),_mm512_add_epi32(_mm512_loadu_si512((const void*)(a+i)),delta));
+        _mm512_storeu_si512((void*)(b+i),_mm512_add_epi32(_mm512_loadu_si512((const void*)(b+i)),delta));
+    }
+    for(;i<n;++i){a[i]+=d;b[i]+=d;}
+}
+#endif
+void dqv_add_pair(int32_t *a,int32_t *b,int n,int d,int mode) {
+#if DQV_X86
+    if(mode==2){dqv_add_pair_avx2(a,b,n,d);return;}
+    if(mode==3){dqv_add_pair_avx512(a,b,n,d);return;}
+#endif
+    for(int i=0;i<n;++i){a[i]+=d;b[i]+=d;}
+}
+#if DQV_X86
+/* 既に比較した区間と重ねて最後の八要素を読み、端数分岐を減らす。 */
+DQV_TARGET("avx2") static int dqv_find_avx2(const int32_t *a,int n,int x) {
+    int i=0;
+    const __m256i key=_mm256_set1_epi32(x);
+    for(;i+8<=n;i+=8){
+        unsigned mask=(unsigned)_mm256_movemask_ps(_mm256_castsi256_ps(_mm256_cmpgt_epi32(_mm256_loadu_si256((const __m256i*)(a+i)),key)));
+        if(mask)return i+__builtin_ctz(mask);
+    }
+    if(i<n && n>=8){
+        unsigned mask=(unsigned)_mm256_movemask_ps(_mm256_castsi256_ps(_mm256_cmpgt_epi32(_mm256_loadu_si256((const __m256i*)(a+n-8)),key)));
+        return mask?n-8+__builtin_ctz(mask):n;
+    }
+    for(;i<n;++i)if(a[i]>x)return i;
+    return n;
+}
+DQV_TARGET("avx512f") static int dqv_find_avx512(const int32_t *a,int n,int x) {
+    int i=0;
+    const __m512i key=_mm512_set1_epi32(x);
+    for(;i+16<=n;i+=16){
+        unsigned mask=(unsigned)_mm512_cmpgt_epi32_mask(_mm512_loadu_si512((const void*)(a+i)),key);
+        if(mask)return i+__builtin_ctz(mask);
+    }
+    if(i<n){
+        unsigned active=(1U<<(n-i))-1;
+        unsigned mask=(unsigned)_mm512_cmpgt_epi32_mask(_mm512_maskz_loadu_epi32((__mmask16)active,(const void*)(a+i)),key)&active;
+        return mask?i+__builtin_ctz(mask):n;
+    }
+    return n;
+}
+#endif
+int dqv_find(int32_t *a,int n,int x,int mode) {
+#if DQV_X86
+    if(mode==2)return dqv_find_avx2(a,n,x);
+    if(mode==3)return dqv_find_avx512(a,n,x);
+#endif
+    int i=0;
+    while(i<n && a[i]<=x)++i;
+    return i;
+}
 #ifdef __cplusplus
 }
 #endif
@@ -254,3 +407,9 @@ void dqv_all_pair(uint64_t *a,int l,int r,int *left,int *right) {
         ## 全4桁のprefix個数を3個のbit-plane popcountから求める。O(p/32)。
     proc quadRanksPairRaw*(a: ptr uint64, l, r: cint, left, right: ptr cint) {.importc: "dqv_all_pair".}
         ## 全4桁の両端rankを共通prefixを共有して求める。0<=l<=r、O(r/32+1)。
+    proc quadPrefixesRaw*(a: ptr uint64, n, first, group: cint, counts: ptr uint16) {.importc: "dqv_prefix".}
+        ## first番目のワード群以後の4桁累積個数を更新する。O(n/32)。
+    proc quadPrefixAddPairRaw*(a, b: ptr int32, n, delta, mode: cint) {.importc: "dqv_add_pair".}
+        ## 二つの累積配列の同じ範囲へdeltaを一度の走査で加える。O(n)。
+    proc quadPrefixFindRaw*(a: ptr int32, n, x, mode: cint): cint {.importc: "dqv_find".}
+        ## 単調な累積和で最初にxを超える位置を返す。O(n)。

@@ -25,6 +25,7 @@ p.add_argument("--ops", type=int, default=200000)
 p.add_argument("--rate", type=int, default=50)
 p.add_argument("--pattern", choices=["random", "biased", "constant", "endpoints", "hotspot", "front_insert", "threshold_cycle"], default="random")
 p.add_argument("--compare-isa", action="store_true", help="同じB16/W64でscalarとAVX-512も比較")
+p.add_argument("--wide", action="store_true", help="B32/W256,W512のAVX2測定を追加。最適化/prefixは構築時のdefineで選ぶ")
 a = p.parse_args()
 if a.cpu not in os.sched_getaffinity(0) or a.repeats < 1 or not 1 <= a.seeds <= 1001 or a.n < 1 or a.ops < 0 or not 0 <= a.rate <= 100:
     p.error("CPU、反復数、seed数、N、Q、更新率が不正です")
@@ -37,6 +38,8 @@ if root == output or root in output.parents:
 configs = [("binary", 32, 4096, 2), ("quad", 16, 4096, 2), ("quad", 24, 4096, 2), ("quad", 32, 8192, 3)]
 if a.compare_isa:
     configs += [("quad", 16, 4096, 1), ("quad", 16, 4096, 3)]
+if a.wide:
+    configs += [("quad", 32, 16384, 2), ("quad", 32, 32768, 2)]
 jobs = [(c, seed, rep) for c in configs for seed in range(a.seeds) for rep in range(a.repeats)]
 random.Random(652801).shuffle(jobs)
 binaries = {"quad": a.quad.resolve(), "binary": a.binary.resolve()}

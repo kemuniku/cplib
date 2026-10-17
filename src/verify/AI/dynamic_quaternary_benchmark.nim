@@ -1,6 +1,7 @@
 # 引数: B ISA leafBits N H Q updatePercent pattern repetition [seed]
 # ISA: 0=auto, 1=scalar, 2=AVX2, 3=AVX-512。非対応ISAは終了値77でスキップ。
-# -d:dynamicWmBinary は二分岐 B32/W64、それ以外は四分岐 B16/W64, B24/W64, B32/W128。
+# -d:dynamicWmBinary は二分岐 B32/W64、それ以外は四分岐 B16/W64, B24/W64, B32/W128,256,512。
+# 大葉の推奨試行: -d:quadOptimized -d:quadLeafPrefix -d:quadPrefixWords:16、引数 B=32 leafBits=16384。
 when defined(dynamicWmBinary):
     import cplib/collections/dynamic_bplus_waveletmatrix
     import cplib/collections/dynamic_bplus_bitvector
@@ -63,4 +64,6 @@ else:
     if config==("16","4096"):run(QuadVector[16,64])
     elif config==("24","4096"):run(QuadVector[24,64])
     elif config==("32","8192"):run(QuadVector[32,128])
+    elif config==("32","16384"):run(QuadVector[32,256])
+    elif config==("32","32768"):run(QuadVector[32,512])
     else:quit(2)
