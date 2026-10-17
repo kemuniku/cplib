@@ -148,6 +148,21 @@ when not declared CPLIB_TMPL_SHEEP:
                 return true
         return len(l) < len(r)
     
+    proc `<=`[T](l,r:seq[T]):bool=
+        for i in 0..<min(len(l),len(r)):
+            if l[i] > r[i]:
+                return false
+            elif l[i] < r[i]:
+                return true
+        return len(l) <= len(r)
+    
+    # char
+    proc `+`(a:char,b:int):char=
+        return char(int(a)+b)
+
+    proc `-`(a,b:char):int=
+        return int(a) - int(b)
+    
     # Yes/No
     proc yes*(b: bool = true): void = print(if b: "Yes" else: "No")
 
