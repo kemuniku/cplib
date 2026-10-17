@@ -208,6 +208,37 @@ when not declared CPLIB_GRAPH_GRAPH:
         ## 辺数を返す。無向辺も一辺として数える。O(1)。
         g.edge_info.len
 
+    proc adjacent_count(g: DynamicGraphTypes or StaticGraphTypes, v: int): int =
+        ## 隣接要素数を返す。静的グラフは build 済みが必要。O(1)。
+        when g is StaticGraphTypes:
+            g.static_graph_initialized_check()
+            result = int(g.start[v + 1] - g.start[v])
+        else:
+            result = g.edges[v].len
+
+    proc degree*(g: UnDirectedGraph, v: int): int =
+        ## 無向頂点 v の次数を返す。自己ループは2、多重辺は各辺を数える。時間・追加領域 O(1)。
+        ## 0 <= v < g.len が前提。静的グラフは辺追加後に build が必要。
+        g.adjacent_count(v)
+
+    proc out_degree*(g: DirectedGraph, v: int): int =
+        ## 有向頂点 v の出次数を返す。自己ループは1、多重辺は各辺を数える。時間・追加領域 O(1)。
+        ## 0 <= v < g.len が前提。静的グラフは辺追加後に build が必要。
+        g.adjacent_count(v)
+
+    proc in_degrees*(g: DirectedGraph): seq[int] =
+        ## 全頂点の入次数を頂点番号順に返す。時間 O(V + E)、返り値の領域 O(V)、補助領域 O(1)。
+        ## 自己ループは1、多重辺は各辺を数える。静的グラフは空でも build が必要。
+        ## 入次数をキャッシュせず、各呼び出しで隣接配列を走査する。
+        when g is StaticGraphTypes:
+            g.static_graph_initialized_check()
+        result = newSeq[int](g.len)
+        when g is StaticGraphTypes:
+            for e in g.elist: inc result[e.dst.int]
+        else:
+            for edges in g.edges:
+                for e in edges: inc result[e.dst.int]
+
     proc get_edge*[T](g: DynamicGraph[T] or StaticGraph[T], id: int): auto =
         ## 辺番号から追加時の向きで、重みなしは (src, dst)、重みありは (src, dst, cost) を返す。O(1)。
         let e = g.edge_info[id]
