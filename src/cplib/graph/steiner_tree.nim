@@ -3,7 +3,7 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
     import cplib/graph/graph
     import cplib/utils/constants
     import cplib/utils/bititers
-    import sequtils, heapqueue
+    import sequtils, heapqueue, bitops
     proc steiner_tree_dp_impl[T](g: WeightedGraph[T] or UnWeightedGraph, terminal: openArray[int], zero, inf: T): seq[seq[T]] =
         ## terminal に含まれる頂点を全て連結にするために必要な最小のコストを出力する。
         ## 計算量 O(n3^t + (n+m)2^tlogn)
@@ -17,9 +17,16 @@ when not declared CPLIB_GRAPH_STEINER_TREE:
             dp[(1 shl i)][terminal[i]] = zero
 
         for bit in 1..<(1 shl k):
-            for u in 0..<n:
-                for bn in bitsubset(bit):
-                    dp[bit][u] = min(dp[bit][u], dp[bn][u] + dp[bit xor bn][u])
+            when T is SomeNumber:
+                # 数値型では最高位のビットを片側に固定し、対称な分割を除く。
+                let splitMask = bit xor (1 shl fastLog2(bit))
+                for u in 0..<n:
+                    for bn in bitsubseteq(splitMask):
+                        dp[bit][u] = min(dp[bit][u], dp[bn][u] + dp[bit xor bn][u])
+            else:
+                for u in 0..<n:
+                    for bn in bitsubset(bit):
+                        dp[bit][u] = min(dp[bit][u], dp[bn][u] + dp[bit xor bn][u])
             var q = initHeapQueue[(T, int)]()
             for u in 0..<n:
                 q.push((dp[bit][u], u))
