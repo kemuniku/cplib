@@ -9,5 +9,5 @@ pt.update_count
 var score = newSeqWith(pt.nodes.len, 0)
 for i in 1..<pt.nodes.len:
     var node = pt.nodes[i]
-    score[i] = score[node[].suffix_link[].id] + node[].count * node[].len
+    score[i] = score[node.suffix_link.id] + node.count * node.len
 echo score.max
