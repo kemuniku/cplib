@@ -64,7 +64,7 @@ when not declared CPLIB_MATH_MANY_FACTORIALS:
         result = table.blocks[blockIndex]
         for i in blockIndex * table.blockSize + 1..n: result *= i
 
-    proc manyFactorials*[T: BarrettModint or MontgomeryModint](
+    proc factorialQueries[T: BarrettModint or MontgomeryModint](
             ns: openArray[int]): seq[T] =
         ## 素数 p を法とする ns[i]! を入力順に返す。負数は不可、ns[i] >= p には 0 を返す。
         ## NTT 使用時 O(sqrt(p) log p + Q log Q + Q log^3 p)、Q = ns.len。
@@ -95,6 +95,12 @@ when not declared CPLIB_MATH_MANY_FACTORIALS:
                 result[i] = blocks[n div blockSize]
                 queries.add((n, i))
         queries.sort(proc(a, b: Query): int = cmp(a.n, b.n))
+
+        if ns.len <= 64:
+            for query in queries:
+                for i in (query.n div blockSize) * blockSize + 1..query.n:
+                    result[query.index] *= i
+            return
 
         var polynomial = @[init(T, 1), init(T, 1)]
         var width = 1
@@ -136,3 +142,41 @@ when not declared CPLIB_MATH_MANY_FACTORIALS:
             if 2 * width < blockSize:
                 polynomial = polynomial * taylorShift(polynomial, init(T, width))
             width *= 2
+
+    proc manyFactorials*[T: BarrettModint or MontgomeryModint](
+            ns: openArray[int]): seq[T] =
+        ## 素数 p を法とする ns[i]! を入力順に返す。負数は不可、ns[i] >= p には 0 を返す。
+        ## 法の後半はWilsonの定理と一括逆元で前半へ還元する。NTT 使用時 O(sqrt(p) log p + Q log Q + Q log^3 p)。
+        let modulus = T.umod.int
+        var maxOriginal = -1
+        var maxReduced = -1
+        var complementCount = 0
+        for n in ns:
+            if n >= 0 and n < modulus:
+                maxOriginal = max(maxOriginal, n)
+                maxReduced = max(maxReduced, min(n, modulus - 1 - n))
+                if n > (modulus - 1) div 2: inc complementCount
+        if complementCount == 0 or
+                (ns.len > 64 and maxReduced > maxOriginal div 4):
+            return factorialQueries[T](ns)
+        var reduced = newSeq[int](ns.len)
+        var complemented = newSeqOfCap[int](complementCount)
+        for i, n in ns:
+            if n >= 0 and n < modulus and n > (modulus - 1) div 2:
+                reduced[i] = modulus - 1 - n
+                complemented.add(i)
+            else:
+                reduced[i] = n
+        result = factorialQueries[T](reduced)
+        if complemented.len == 0: return
+        var products = newSeq[T](complemented.len + 1)
+        products[0] = init(T, 1)
+        for i, index in complemented:
+            products[i + 1] = products[i] * result[index]
+        var inverse = products[^1].inv
+        for i in countdown(complemented.high, 0):
+            let index = complemented[i]
+            let value = result[index]
+            result[index] = products[i] * inverse
+            inverse *= value
+            if (reduced[index] and 1) == 0: result[index] = -result[index]
