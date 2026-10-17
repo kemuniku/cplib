@@ -4,13 +4,15 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
     import cplib/utils/constants
     import cplib/graph/restore_shortest_path_from_prev
     import std/heapqueue, macros, algorithm
-    proc restore_dijkstra_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =
+    proc dijkstra_core_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T, keepPrev: static bool): auto =
+        ## 距離を求め、経路復元時だけ直前の頂点を保存する。
         var
             queue = initHeapQueue[(T, int)]()
             costs = newSeq[T](len(G))
-            prev = newseq[int](len(G))
         costs.fill(INF)
-        prev.fill(-1)
+        when keepPrev:
+            var prev = newSeq[int](len(G))
+            prev.fill(-1)
         when start is int:
             queue.push((ZERO, start))
             costs[start] = ZERO
@@ -25,10 +27,16 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
             for (j, c) in G.to_and_cost(i):
                 var temp = costs[i] + c
                 if temp < costs[j]:
-                    prev[j] = i
+                    when keepPrev: prev[j] = i
                     costs[j] = temp
                     queue.push((temp, j))
-        return (costs, prev)
+        when keepPrev:
+            return (costs, prev)
+        else:
+            return costs
+    proc restore_dijkstra_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =
+        ## 距離と経路復元用の直前頂点を返す。
+        dijkstra_core_impl(G, start, ZERO, INF, true)
     macro declareDijkstra(name, t, zero, inf) =
         let impl_name = ident($`name` & "_impl")
         if $t == "int":
@@ -46,8 +54,8 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
     proc restore_dijkstra*[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): auto =
         restore_dijkstra_impl(G, start, ZERO, INF)
     proc dijkstra_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): seq[T] =
-        var (costs, _) = restore_dijkstra(G, start, ZERO, INF)
-        return costs
+        ## 経路復元用の配列を確保せずに距離を返す。
+        dijkstra_core_impl(G, start, ZERO, INF, false)
     declareDijkstra(dijkstra, int, 0, INF64)
     declareDijkstra(dijkstra, int32, 0i32, INF32)
     declareDijkstra(dijkstra, float, 0.0, 1e100)

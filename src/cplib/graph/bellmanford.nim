@@ -4,12 +4,14 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
     import cplib/graph/graph
     import cplib/graph/restore_shortest_path_from_prev
     import cplib/utils/constants
-    proc restore_bellmanford_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =
+    proc bellmanford_core_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T, keepPrev: static bool): auto =
+        ## 距離を求め、経路復元時だけ直前の頂点を保存する。
         let N = len(G)
         var
             costs = newSeqWith(N, INF)
-            prev = newSeqWith(N, -1)
             changed: bool
+        when keepPrev:
+            var prev = newSeqWith(N, -1)
         when start is int:
             costs[start] = ZERO
         else:
@@ -22,7 +24,7 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
                 for (j, c) in G.to_and_cost(i):
                     var temp = costs[i] + c
                     if temp < costs[j]:
-                        prev[j] = i
+                        when keepPrev: prev[j] = i
                         costs[j] = temp
                         changed = true
             if not changed: break
@@ -34,8 +36,14 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
                         var temp = costs[i] + c
                         if temp < costs[j]:
                             costs[j] = -INF
-                            prev[j] = -1
-        return (costs, prev)
+                            when keepPrev: prev[j] = -1
+        when keepPrev:
+            return (costs, prev)
+        else:
+            return costs
+    proc restore_bellmanford_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): tuple[costs: seq[T], prev: seq[int]] =
+        ## 距離と経路復元用の直前頂点を返す。
+        bellmanford_core_impl(G, start, ZERO, INF, true)
     macro declareBellmanFord(name, t, zero, inf) =
         let impl_name = ident($`name` & "_impl")
         if $t == "int":
@@ -53,8 +61,8 @@ when not declared CPLIB_GRAPH_BELLMANFORD:
     proc restore_bellmanford*[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): auto =
         restore_bellmanford_impl(G, start, ZERO, INF)
     proc bellmanford_impl[T](G: WeightedGraph[T] or UnWeightedGraph, start: int or seq[int], ZERO, INF: T): auto =
-        var (costs, _) = restore_bellmanford(G, start, ZERO, INF)
-        return costs
+        ## 経路復元用の配列を確保せずに距離を返す。
+        bellmanford_core_impl(G, start, ZERO, INF, false)
     declareBellmanFord(bellmanford, int, 0, INF64)
     declareBellmanFord(bellmanford, int32, 0i32, INF32)
     declareBellmanFord(bellmanford, float, 0.0, 1e100)
