@@ -47,22 +47,38 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
         for i in 0..<H*W:
             result.arr[i] = -m.arr[i]
     proc `*=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], b: StaticMatrix[W,W,T]) =
+        ## 行列積を代入する。O(HW^2)。
         assert a.w == b.h, "左の行列の列数と右の行列の行数は等しい必要があります"
         var ans : StaticMatrix[H,W,T]
-        for i in 0..<a.h:
-            for j in 0..<b.w:
+        when T is SomeInteger and W >= 8:
+            for i in 0..<a.h:
                 for k in 0..<a.w:
-                    ans[i, j] += a[i, k] * b[k, j]
+                    let x = a.arr[i * W + k]
+                    for j in 0..<b.w:
+                        ans.arr[i * W + j] += x * b.arr[k * W + j]
+        else:
+            for i in 0..<a.h:
+                for j in 0..<b.w:
+                    for k in 0..<a.w:
+                        ans[i, j] += a[i, k] * b[k, j]
         swap(ans, a)
     proc `*=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], x: T) =
         for i in 0..<a.h:
             for j in 0..<a.w:
                 a[i, j] *= x
     proc `*`*[A: static int, B: static int, C: static int, T](a: StaticMatrix[A,B,T],b:StaticMatrix[B,C,T]): StaticMatrix[A,C,T] =
-        for i in 0..<A:
-            for j in 0..<C:
+        ## 行列積を返す。O(ABC)。
+        when T is SomeInteger and C >= 4:
+            for i in 0..<A:
                 for k in 0..<B:
-                    result[i, j] += a[i, k] * b[k, j]
+                    let x = a.arr[i * B + k]
+                    for j in 0..<C:
+                        result.arr[i * C + j] += x * b.arr[k * C + j]
+        else:
+            for i in 0..<A:
+                for j in 0..<C:
+                    for k in 0..<B:
+                        result[i, j] += a[i, k] * b[k, j]
 
     proc `*`*[H: static int, W: static int, T](a: StaticMatrix[H,W,T], x: T): StaticMatrix[H,W,T] = (result = a; result *= x)
     proc `*`*[H: static int, W: static int, T](x: T, a: StaticMatrix[H,W,T]): StaticMatrix[H,W,T] = a * x
