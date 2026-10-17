@@ -48,7 +48,8 @@ when not declared CPLIB_TREE_TREE_HASH:
         for v in 0..<n: parent[v] = -2
         parent[root] = -1
         var order = @[root]
-        var children = newSeq[seq[int]](n)
+        when reroot:
+            var children = newSeq[seq[int]](n)
         var index = 0
         while index < order.len:
             let u = order[index]
@@ -57,17 +58,27 @@ when not declared CPLIB_TREE_TREE_HASH:
                 if v == parent[u]: continue
                 assert parent[v] == -2, "入力は木である必要があります"
                 parent[v] = u
-                children[u].add(v)
+                when reroot: children[u].add(v)
                 order.add(v)
         assert order.len == n, "指定した根から全頂点に到達できる必要があります"
         var down = newSeq[TreeHashState](n)
         result.subtree = newSeq[uint64](n)
-        for i in countdown(n - 1, 0):
-            let u = order[i]
-            var value = treeHashIdentity
-            for v in children[u]: value = treeHashMerge(value, down[v])
-            down[u] = treeHashVertex(value)
-            result.subtree[u] = down[u].hash
+        when reroot:
+            for i in countdown(n - 1, 0):
+                let u = order[i]
+                var value = treeHashIdentity
+                for v in children[u]: value = treeHashMerge(value, down[v])
+                down[u] = treeHashVertex(value)
+                result.subtree[u] = down[u].hash
+        else:
+            # 子リストを確保せず、完成した子の寄与を親へ直接集約する。
+            for u in 0..<n: down[u] = treeHashIdentity
+            for i in countdown(n - 1, 0):
+                let u = order[i]
+                down[u] = treeHashVertex(down[u])
+                result.subtree[u] = down[u].hash
+                if parent[u] != -1:
+                    down[parent[u]] = treeHashMerge(down[parent[u]], down[u])
         when reroot:
             var up = newSeq[TreeHashState](n)
             up[root] = treeHashIdentity
