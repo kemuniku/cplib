@@ -1,6 +1,6 @@
 when not declared CPLIB_STR_SUFFIX_AUTOMATON_TABLE:
     ## Table遷移で連続部分文字列を認識するオンラインSuffix Automaton。
-    ## 固定文字範囲のarray版は cplib/str/suffix_automaton_array を使う。
+    ## 固定ordinal範囲のarray版は cplib/str/suffix_automaton_array を使う。
     ## stringはNUL・非ASCIIも含め0..255のbyte列として扱う。整数列などのopenArrayにも対応。
     ## 1状態は終端位置集合が等しい文字列群を表し、単一の文字列とは限らない。
     ## 状態vの長さ範囲は nodes[nodes[v].link].len + 1 .. nodes[v].len（根を除く）。
