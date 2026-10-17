@@ -424,3 +424,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
     proc range_sum_with_count*[QV](t: DynamicQuadWaveletMatrix[QV], l, r, low, high: int): tuple[sum, count: int] =
         ## [low,high)の和と個数を返す。
         (t.range_sum(l, r, low, high), t.range_freq(l, r, low, high))
+    proc initDynamicQuadWaveletMatrixFast*(values: openArray[int], H = -1, signedValues = false, kernel = bpkAuto, with_sum = false): DynamicQuadWaveletMatrix[FastQuadVector] =
+        ## B32・8192桁葉・16ワードprefixと六最適化で構築し、通常版と共存する。
+        ## CLI設定は不要。H・符号・ISA・和の契約は通常コンストラクタと同じ。
+        initDynamicQuadWaveletMatrix(values, FastQuadVector, H, signedValues, kernel, with_sum)

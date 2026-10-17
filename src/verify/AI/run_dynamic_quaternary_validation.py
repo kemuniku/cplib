@@ -17,6 +17,7 @@ BINARY = ["dynamic_bplus_bitvector", "dynamic_bplus_stress", "dynamic_bplus_boun
 PREFIX = ["-d:quadLeafPrefix", "-d:quadPrefixWords:16"]
 PROFILES = {
     "default": [],
+    "fast": [],
     "small": ["-d:quadOptimized"],
     "prefix": ["-d:quadOptimized"] + PREFIX,
     "large": ["-d:quadOptimized"] + PREFIX + ["-d:quadTestBranch:32", "-d:quadTestWords:256"],
@@ -40,12 +41,12 @@ def main():
         "例: --nim /path/nim-1.6.20/bin/nim --nim /path/nim-2.2.4/bin/nim。"
         "短縮確認は --quick --skip-large --modes c --profiles small,large。"
         "既定は従来のdefault全量/portable/sanitizer/expanderとmanual大規模を実行する。"
-        "最適化確認は --profiles small,large,wide512 を明示する。"))
+        "最適化確認は --profiles small,large,wide512、define不要Fast APIは --profiles fast を明示する。"))
     parser.add_argument("output", type=Path)
     parser.add_argument("--nim", action="append", help="複数指定可。既定は環境変数NIMまたはPATHのnim")
     parser.add_argument("--profiles", type=lambda x: choices(x, PROFILES), default=["default"])
     parser.add_argument("--modes", type=lambda x: choices(x, MODES), default=MODES)
-    parser.add_argument("--tests", help="通常modeのtest stemをcomma区切りで指定。expanderは型指定boundaryを使用")
+    parser.add_argument("--tests", help="通常modeのtest stemをcomma区切りで指定。expanderはboundary、fast profileではFast testを使用")
     parser.add_argument("--quick", action="store_true", help="dynamicWmFullTestを付けない")
     parser.add_argument("--skip-large", action="store_true", help="従来の140000要素manual試験を省く")
     args = parser.parse_args()
@@ -130,16 +131,20 @@ def main():
                 selected = explicit or (CORE + BINARY if profile == "default" else CORE)
                 if not explicit and profile in ("large", "wide512"):
                     selected = ["dynamic_quaternary_waveletmatrix", "dynamic_quaternary_boundary", "dynamic_quaternary_wide"]
+                if not explicit and profile == "fast":
+                    selected = ["dynamic_quaternary_fast", "dynamic_quaternary_fast_abc343f"]
                 for mode in args.modes:
                     if mode == "expander":
-                        source = "dynamic_quaternary_boundary"
+                        source = "dynamic_quaternary_fast" if profile == "fast" else "dynamic_quaternary_boundary"
                         for form in ("plain", "single_line", "compress"):
                             label = profile + "_expanded_" + form
                             expanded = folder / (label + ".nim")
                             extra = [] if form == "plain" else ["--" + form.replace("_", "-")]
                             run([str(expander), "--quiet"] + extra + ["--lib:" + str(REPO),
                                 "--output-file:" + str(expanded), str((VERIFY / (source + "_test.nim")).relative_to(REPO))], folder / (label + "_expand.log"))
-                            check(label, source, "cpp", flags, expanded=expanded)
+                            for backend in (["c", "cpp"] if profile == "fast" else ["cpp"]):
+                                compiled_label = label + "_" + backend if profile == "fast" else label
+                                check(compiled_label, source, backend, flags, expanded=expanded)
                         continue
                     extra = [] if args.quick or mode == "cpp" else ["-d:dynamicWmFullTest"]
                     if mode == "portable": extra += ["-d:dynamicWmPortable", "-d:cplibDynamicBitVectorPortable"]

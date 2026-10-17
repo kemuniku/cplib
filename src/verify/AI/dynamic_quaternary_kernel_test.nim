@@ -39,14 +39,31 @@ proc checkStorage(storage: seq[uint64], values: seq[int]) =
                 expected = expected or (uint64(values[p]) shl (2 * j))
         doAssert storage[1 + word] == expected
 
+proc checkRankVariants(storage: var seq[uint64], p: int, expected: Counts, mode: cint) =
+    var legacy, base, fast: array[6, cint]
+    for i in 0..5:
+        legacy[i] = cint(countGuard)
+        base[i] = cint(countGuard)
+        fast[i] = cint(countGuard)
+    quadRanksRaw(addr storage[1], cint(p), addr legacy[1])
+    quadRanksBaseRaw(addr storage[1], cint(p), addr base[1])
+    quadRanksFastRaw(addr storage[1], cint(p), addr fast[1])
+    for d in 0..3:
+        doAssert quadRankRaw(addr storage[1], cint(p), cint(d), mode) == cint(expected[d])
+        doAssert quadRankBaseRaw(addr storage[1], cint(p), cint(d), mode) == cint(expected[d])
+        doAssert quadRankFastRaw(addr storage[1], cint(p), cint(d), mode) == cint(expected[d])
+        doAssert legacy[d + 1] == cint(expected[d])
+        doAssert base[d + 1] == cint(expected[d])
+        doAssert fast[d + 1] == cint(expected[d])
+    for i in [0, 5]:
+        doAssert legacy[i] == cint(countGuard)
+        doAssert base[i] == cint(countGuard)
+        doAssert fast[i] == cint(countGuard)
+
 proc checkTotal(storage: var seq[uint64], values: seq[int], mode: cint) =
     var expected: Counts
     for d in values: inc expected[d]
-    var got: array[4, cint]
-    quadRanksRaw(addr storage[1], cint(values.len), addr got[0])
-    for d in 0..3:
-        doAssert quadRankRaw(addr storage[1], cint(values.len), cint(d), mode) == cint(expected[d])
-        doAssert got[d] == cint(expected[d])
+    checkRankVariants(storage, values.len, expected, mode)
 
 proc checkPrefixKernels(kernel: BPlusKernel) =
     let mode = cint(ord(kernel) + 1)
@@ -110,6 +127,10 @@ proc checkPackedRanks(kernel: BPlusKernel) =
     let mode = cint(ord(kernel) + 1)
     var rng = initRand(9451307)
     var positions = boundaryPositions(maxDigits)
+    # SIMDへの切替えと4/8ワード走査の全端数を通す。
+    for words in 0..17:
+        for delta in [-1, 0, 1, 31]: positions.addPosition(words * 32 + delta, maxDigits)
+    positions.sort()
     when defined(dynamicWmFullTest):
         positions.setLen(0)
         for p in 0..maxDigits: positions.add(p)
@@ -125,13 +146,11 @@ proc checkPackedRanks(kernel: BPlusKernel) =
         storage[1 + maxDigits div 32] = storage[1 + maxDigits div 32] or (not 3'u64)
         storage[^2] = not 0'u64
         for p in positions:
-            var got, left, right: array[4, cint]
-            quadRanksRaw(addr storage[1], cint(p), addr got[0])
+            checkRankVariants(storage, p, prefix[p], mode)
+            var left, right: array[4, cint]
             let l = p div 2
             quadRanksPairRaw(addr storage[1], cint(l), cint(p), addr left[0], addr right[0])
             for d in 0..3:
-                doAssert quadRankRaw(addr storage[1], cint(p), cint(d), mode) == cint(prefix[p][d])
-                doAssert got[d] == cint(prefix[p][d])
                 doAssert left[d] == cint(prefix[l][d])
                 doAssert right[d] == cint(prefix[p][d])
         doAssert storage[0] == wordGuard and storage[^1] == wordGuard
@@ -180,8 +199,17 @@ proc checkPackedEdits(kernel: BPlusKernel) =
                     checkStorage(storage, expected)
                     checkTotal(storage, expected, mode)
 
-for kernel in [bpkScalar, bpkAvx2, bpkAvx512]:
-    if kernelAvailable(kernel):
+var checked: set[BPlusKernel]
+for requested in [bpkScalar, bpkAvx2, bpkAvx512, bpkAuto]:
+    let kernel = resolveKernel(requested)
+    doAssert kernelAvailable(kernel)
+    if requested == bpkAuto or not kernelAvailable(requested):
+        doAssert kernel == bpkScalar
+    else:
+        doAssert kernel == requested
+    # Rawには解決済みmodeだけを渡し、未対応ISAを強制実行しない。
+    if kernel notin checked:
+        checked.incl(kernel)
         checkPrefixKernels(kernel)
         checkPackedRanks(kernel)
         checkPackedEdits(kernel)

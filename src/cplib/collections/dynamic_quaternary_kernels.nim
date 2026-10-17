@@ -44,12 +44,7 @@ static int dqv_count_scalar(const uint64_t *a, int n, int d) {
   int s=0; for(int i=0;i<n;++i) s+=dqv_pop(dqv_matches(a[i],d)); return s;
 }
 #if DQV_X86
-#ifdef DQV_FAST_RANK
-DQV_TARGET("avx2,popcnt")
-#else
-DQV_TARGET("avx2")
-#endif
-static int dqv_count_avx2(const uint64_t *a, int n, int d) {
+DQV_TARGET("avx2") static int dqv_count_avx2(const uint64_t *a, int n, int d) {
   const __m256i lut=_mm256_setr_epi8(0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4);
   const __m256i mask=_mm256_set1_epi8(15);
   __m256i sum=_mm256_setzero_si256();
@@ -65,12 +60,27 @@ static int dqv_count_avx2(const uint64_t *a, int n, int d) {
   }
   __m128i halves=_mm_add_epi64(_mm256_castsi256_si128(sum),_mm256_extracti128_si256(sum,1));
   int r=(int)_mm_cvtsi128_si64(halves)+(int)_mm_extract_epi64(halves,1);
-#ifdef DQV_FAST_RANK
+  return r+dqv_count_scalar(a+i,n-i,d);
+}
+/* SIMD走査後の端数も直接POPCNTで数える。 */
+DQV_TARGET("avx2,popcnt") static int dqv_count_avx2_fast(const uint64_t *a, int n, int d) {
+  const __m256i lut=_mm256_setr_epi8(0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4);
+  const __m256i mask=_mm256_set1_epi8(15);
+  __m256i sum=_mm256_setzero_si256();
+  int i=0;
+  for(;i+4<=n;i+=4) {
+    __m256i x=_mm256_loadu_si256((const __m256i*)(a+i));
+    x=_mm256_xor_si256(x,_mm256_set1_epi64x((long long)(UINT64_C(0x5555555555555555)*(uint64_t)d)));
+    x=_mm256_andnot_si256(_mm256_or_si256(x,_mm256_srli_epi64(x,1)),_mm256_set1_epi64x(UINT64_C(0x5555555555555555)));
+    __m256i lo=_mm256_and_si256(x,mask);
+    __m256i hi=_mm256_and_si256(_mm256_srli_epi16(x,4),mask);
+    __m256i cnt=_mm256_add_epi8(_mm256_shuffle_epi8(lut,lo),_mm256_shuffle_epi8(lut,hi));
+    sum=_mm256_add_epi64(sum,_mm256_sad_epu8(cnt,_mm256_setzero_si256()));
+  }
+  __m128i halves=_mm_add_epi64(_mm256_castsi256_si128(sum),_mm256_extracti128_si256(sum,1));
+  int r=(int)_mm_cvtsi128_si64(halves)+(int)_mm_extract_epi64(halves,1);
   for(;i<n;++i)r+=__builtin_popcountll(dqv_matches(a[i],d));
   return r;
-#else
-  return r+dqv_count_scalar(a+i,n-i,d);
-#endif
 }
 DQV_TARGET("avx2") static void dqv_left_avx2(uint64_t *a,int first,int last) {
   int i=last;
@@ -92,12 +102,7 @@ DQV_TARGET("avx2") static void dqv_right_avx2(uint64_t *a,int first,int last) {
 }
 #endif
 #if DQV_X86
-#ifdef DQV_FAST_RANK
-DQV_TARGET("avx512f,avx512bw,popcnt")
-#else
-DQV_TARGET("avx512f,avx512bw")
-#endif
-static int dqv_count_avx512(const uint64_t *a, int n, int d) {
+DQV_TARGET("avx512f,avx512bw") static int dqv_count_avx512(const uint64_t *a, int n, int d) {
   const __m512i lut=_mm512_broadcast_i32x4(_mm_setr_epi8(0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4));
   const __m512i mask=_mm512_set1_epi8(15);
   __m512i sum=_mm512_setzero_si512();
@@ -112,12 +117,26 @@ static int dqv_count_avx512(const uint64_t *a, int n, int d) {
     sum=_mm512_add_epi64(sum,_mm512_sad_epu8(cnt,_mm512_setzero_si512()));
   }
   int r=(int)_mm512_reduce_add_epi64(sum);
-#ifdef DQV_FAST_RANK
+  return r+dqv_count_scalar(a+i,n-i,d);
+}
+/* SIMD走査後の端数も直接POPCNTで数える。 */
+DQV_TARGET("avx512f,avx512bw,popcnt") static int dqv_count_avx512_fast(const uint64_t *a, int n, int d) {
+  const __m512i lut=_mm512_broadcast_i32x4(_mm_setr_epi8(0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4));
+  const __m512i mask=_mm512_set1_epi8(15);
+  __m512i sum=_mm512_setzero_si512();
+  int i=0;
+  for(;i+8<=n;i+=8) {
+    __m512i x=_mm512_loadu_si512((const void*)(a+i));
+    x=_mm512_xor_si512(x,_mm512_set1_epi64((long long)(UINT64_C(0x5555555555555555)*(uint64_t)d)));
+    x=_mm512_andnot_si512(_mm512_or_si512(x,_mm512_srli_epi64(x,1)),_mm512_set1_epi64(UINT64_C(0x5555555555555555)));
+    __m512i lo=_mm512_and_si512(x,mask);
+    __m512i hi=_mm512_and_si512(_mm512_srli_epi16(x,4),mask);
+    __m512i cnt=_mm512_add_epi8(_mm512_shuffle_epi8(lut,lo),_mm512_shuffle_epi8(lut,hi));
+    sum=_mm512_add_epi64(sum,_mm512_sad_epu8(cnt,_mm512_setzero_si512()));
+  }
+  int r=(int)_mm512_reduce_add_epi64(sum);
   for(;i<n;++i)r+=__builtin_popcountll(dqv_matches(a[i],d));
   return r;
-#else
-  return r+dqv_count_scalar(a+i,n-i,d);
-#endif
 }
 DQV_TARGET("avx512f,avx512bw") static void dqv_left_avx512(uint64_t *a,int first,int last) {
   int i=last;
@@ -138,12 +157,12 @@ DQV_TARGET("avx512f,avx512bw") static void dqv_right_avx512(uint64_t *a,int firs
   for(;i<=last;++i) a[i]=(a[i]>>2)|(a[i+1]<<62);
 }
 #endif
-#if DQV_X86 && defined(DQV_FAST_RANK)
+#if DQV_X86
 /* 短い列は一度だけ選択したPOPCNT経路で全ワードを処理する。 */
 DQV_TARGET("popcnt") static int dqv_rank_hw(uint64_t *a,int p,int d,int mode) {
   int n=p>>5,s=0,i=0;
-  if(mode==2 && n>=8)s=dqv_count_avx2(a,n,d);
-  else if(mode==3 && n>=8)s=dqv_count_avx512(a,n,d);
+  if(mode==2 && n>=8)s=dqv_count_avx2_fast(a,n,d);
+  else if(mode==3 && n>=8)s=dqv_count_avx512_fast(a,n,d);
   else {
     uint64_t mask=UINT64_C(0x5555555555555555)*(uint64_t)d;
     for(;i<n;++i){
@@ -157,11 +176,8 @@ DQV_TARGET("popcnt") static int dqv_rank_hw(uint64_t *a,int p,int d,int mode) {
 #ifdef __cplusplus
 extern "C" {
 #endif
-int dqv_rank(uint64_t *a,int p,int d,int mode) {
-#if DQV_X86 && defined(DQV_FAST_RANK)
-  if(__builtin_cpu_supports("popcnt"))return dqv_rank_hw(a,p,d,mode);
-  mode=1;
-#endif
+/* global設定に関係なく通常のrank経路を選ぶ。 */
+int dqv_rank_base_raw(uint64_t *a,int p,int d,int mode) {
   int n=p>>5, s;
 #if DQV_X86
   if(mode==3) s=dqv_count_avx512(a,n,d);
@@ -170,6 +186,21 @@ int dqv_rank(uint64_t *a,int p,int d,int mode) {
 #endif
   s=dqv_count_scalar(a,n,d);
   return s+dqv_pop(dqv_matches(a[n],d) & ((UINT64_C(1)<<(2*(p&31)))-1));
+}
+int dqv_rank_fast(uint64_t *a,int p,int d,int mode) {
+  /* POPCNT非対応時は命令拡張を要求しない経路へ戻す。 */
+#if DQV_X86
+  if(__builtin_cpu_supports("popcnt"))return dqv_rank_hw(a,p,d,mode);
+#endif
+  return dqv_rank_base_raw(a,p,d,1);
+}
+int dqv_rank(uint64_t *a,int p,int d,int mode) {
+  /* 既存の公開入口はglobal設定による選択を維持する。 */
+#ifdef DQV_FAST_RANK
+  return dqv_rank_fast(a,p,d,mode);
+#else
+  return dqv_rank_base_raw(a,p,d,mode);
+#endif
 }
 void dqv_insert(uint64_t *a,int n,int p,int d,int mode) {
   int w=p>>5, k=2*(p&31), last=n>>5;
@@ -233,23 +264,25 @@ static void dqv_all_pair_base(uint64_t *a,int l,int r,int *left,int *right) {
 #if DQV_X86
 DQV_TARGET("popcnt") static void dqv_all_hw(uint64_t *a,int p,int *out) {
     int lo=0,hi=0,both=0,n=p>>5;
-#ifdef DQV_FAST_RANK
-    for(int i=0;i<n;++i) {
-#else
     for(int i=0;i<=n;++i) {
-#endif
         uint64_t x=a[i];
-#ifndef DQV_FAST_RANK
         if(i==n) x &= (UINT64_C(1)<<(2*(p&31)))-1;
-#endif
         uint64_t l=x & UINT64_C(0x5555555555555555), h=(x>>1) & UINT64_C(0x5555555555555555);
         lo+=__builtin_popcountll(l); hi+=__builtin_popcountll(h); both+=__builtin_popcountll(l&h);
     }
-#ifdef DQV_FAST_RANK
+    out[0]=p-lo-hi+both;out[1]=lo-both;out[2]=hi-both;out[3]=both;
+}
+/* 完全ワードの走査と端数処理を分けて全四桁を数える。 */
+DQV_TARGET("popcnt") static void dqv_all_hw_fast(uint64_t *a,int p,int *out) {
+    int lo=0,hi=0,both=0,n=p>>5;
+    for(int i=0;i<n;++i) {
+        uint64_t x=a[i];
+        uint64_t l=x & UINT64_C(0x5555555555555555), h=(x>>1) & UINT64_C(0x5555555555555555);
+        lo+=__builtin_popcountll(l); hi+=__builtin_popcountll(h); both+=__builtin_popcountll(l&h);
+    }
     uint64_t x=a[n]&((UINT64_C(1)<<(2*(p&31)))-1);
     uint64_t l=x&UINT64_C(0x5555555555555555),h=(x>>1)&UINT64_C(0x5555555555555555);
     lo+=__builtin_popcountll(l);hi+=__builtin_popcountll(h);both+=__builtin_popcountll(l&h);
-#endif
     out[0]=p-lo-hi+both;out[1]=lo-both;out[2]=hi-both;out[3]=both;
 }
 DQV_TARGET("popcnt") static void dqv_all_pair_hw(uint64_t *a,int l,int r,int *left,int *right) {
@@ -280,11 +313,27 @@ DQV_TARGET("popcnt") static void dqv_all_pair_hw(uint64_t *a,int l,int r,int *le
     right[0]=r-lo-hi+both;right[1]=lo-both;right[2]=hi-both;right[3]=both;
 }
 #endif
-void dqv_all(uint64_t *a,int p,int *out) {
+/* global設定に関係なく通常の全四桁rank経路を選ぶ。 */
+void dqv_all_base_raw(uint64_t *a,int p,int *out) {
 #if DQV_X86
     if(__builtin_cpu_supports("popcnt")){dqv_all_hw(a,p,out);return;}
 #endif
     dqv_all_base(a,p,out);
+}
+/* global設定なしでも全四桁rankの高速経路を選ぶ。 */
+void dqv_all_fast(uint64_t *a,int p,int *out) {
+#if DQV_X86
+    if(__builtin_cpu_supports("popcnt")){dqv_all_hw_fast(a,p,out);return;}
+#endif
+    dqv_all_base(a,p,out);
+}
+void dqv_all(uint64_t *a,int p,int *out) {
+    /* 既存の公開入口はglobal設定による選択を維持する。 */
+#ifdef DQV_FAST_RANK
+    dqv_all_fast(a,p,out);
+#else
+    dqv_all_base_raw(a,p,out);
+#endif
 }
 void dqv_all_pair(uint64_t *a,int l,int r,int *left,int *right) {
     /* 実行可能な命令で両端の4桁rankをまとめて計算する。 */
@@ -399,12 +448,20 @@ int dqv_find(int32_t *a,int n,int x,int mode) {
 """.}
     proc quadRankRaw*(a: ptr uint64, p, d, mode: cint): cint {.importc: "dqv_rank".}
         ## 解決済みISAでpacked 2bit列のprefix rankを計算する。O(p/32)。
+    proc quadRankBaseRaw*(a: ptr uint64, p, d, mode: cint): cint {.importc: "dqv_rank_base_raw".}
+        ## global設定に依存せず通常経路でprefix rankを返す。modeは解決済み、O(p/32+1)。
+    proc quadRankFastRaw*(a: ptr uint64, p, d, mode: cint): cint {.importc: "dqv_rank_fast".}
+        ## global設定に依存せず高速経路でprefix rankを返す。modeは解決済み、O(p/32+1)。
     proc quadInsertRaw*(a: ptr uint64, n, p, d, mode: cint) {.importc: "dqv_insert".}
         ## 容量に余裕のあるpacked列を2bitずらして挿入する。O(n/32)。
     proc quadEraseRaw*(a: ptr uint64, n, p, mode: cint) {.importc: "dqv_erase".}
         ## packed列を2bitずらして削除する。O(n/32)。
     proc quadRanksRaw*(a: ptr uint64, p: cint, counts: ptr cint) {.importc: "dqv_all".}
         ## 全4桁のprefix個数を3個のbit-plane popcountから求める。O(p/32)。
+    proc quadRanksBaseRaw*(a: ptr uint64, p: cint, counts: ptr cint) {.importc: "dqv_all_base_raw".}
+        ## global設定に依存せず通常経路で全四桁のprefix個数を返す。O(p/32+1)。
+    proc quadRanksFastRaw*(a: ptr uint64, p: cint, counts: ptr cint) {.importc: "dqv_all_fast".}
+        ## global設定に依存せず高速経路で全四桁のprefix個数を返す。O(p/32+1)。
     proc quadRanksPairRaw*(a: ptr uint64, l, r: cint, left, right: ptr cint) {.importc: "dqv_all_pair".}
         ## 全4桁の両端rankを共通prefixを共有して求める。0<=l<=r、O(r/32+1)。
     proc quadPrefixesRaw*(a: ptr uint64, n, first, group: cint, counts: ptr uint16) {.importc: "dqv_prefix".}
