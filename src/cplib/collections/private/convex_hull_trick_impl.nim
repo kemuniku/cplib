@@ -36,9 +36,11 @@ when not declared CPLIB_COLLECTIONS_PRIVATE_CONVEX_HULL_TRICK_IMPL:
         let numerator = to_Int128(r.b) - to_Int128(l.b)
         let denominator = to_Int128(l.a) - to_Int128(r.a)
         assert denominator > 0, "denominatorは正である必要があります"
-        result = numerator div denominator
-        if numerator mod denominator > 0:
-            result += 1
+        # 差は最大64bitなので、正の分子への切り上げ補正も128bitに収まります。
+        if numerator > 0:
+            result = (numerator + denominator - 1) div denominator
+        else:
+            result = numerator div denominator
 
     proc chtRedundant*(l, m, r: CHTLine): bool =
         ## 傾きが降順の3直線について、中央の直線が不要か判定します。O(1)。
