@@ -187,4 +187,61 @@ for i in countdown(1499, 0):
     shifting.add wmErase(i div 2)
     shifting.add wmLen()
 check(@[], shifting)
+# 範囲外の公開結果は、検査有効時に折り返した正常値として返さない。
+for value in [int.high div 2+1, -(int.high div 2+1)]:
+    let initial = @[value, value, value, value]
+    let ops = @[
+        wmSumLowerbound(0, 4, value+1), wmSumUpperbound(0, 4, value),
+        wmRangeSum(0, 4, value, value+1), wmSumSmallest(0, 4, 4),
+        wmSumLowerboundWithCount(0, 4, value+1), wmSumUpperboundWithCount(0, 4, value),
+        wmRangeSumWithCount(0, 4, value, value+1), wmSumSmallestWithCount(0, 4, 4)]
+    for op in ops:
+        when compileOption("overflowChecks"):
+            var raised = false
+            try: discard runOfflineDynamicWaveletMatrix(initial, @[op])
+            except OverflowDefect: raised = true
+            doAssert raised
+            when defined(compareOfflineWMFast):
+                raised = false
+                try: discard baseline(initial, @[op])
+                except OverflowDefect: raised = true
+                doAssert raised
+        else:
+            discard runOfflineDynamicWaveletMatrix(initial, @[op])
+    check(initial, @[wmCount(0, 4, value), wmSumSmallest(0, 1, 1), wmErase(0), wmSumUpperbound(0, 1, value)])
+# 同じ値の積だけでなく、異なる値の加算によるoverflowも検出する。
+when compileOption("overflowChecks"):
+    for initial in [@[int.high-1, 2], @[int.low, -1]]:
+        let low = min(initial[0], initial[1])
+        let high = max(initial[0], initial[1])+1
+        for op in @[wmSumLowerbound(0, 2, high), wmSumUpperbound(0, 2, high),
+                wmRangeSum(0, 2, low, high), wmSumSmallest(0, 2, 2),
+                wmSumLowerboundWithCount(0, 2, high), wmSumUpperboundWithCount(0, 2, high),
+                wmRangeSumWithCount(0, 2, low, high), wmSumSmallestWithCount(0, 2, 2)]:
+            var raised = false
+            try: discard runOfflineDynamicWaveletMatrix(initial, @[op])
+            except OverflowDefect: raised = true
+            doAssert raised
+            when defined(compareOfflineWMFast):
+                raised = false
+                try: discard baseline(initial, @[op])
+                except OverflowDefect: raised = true
+                doAssert raised
+# 内部部分和がintを超えても最終和が収まる場合は、正確な内部和で処理可能。
+let cancellation = runOfflineDynamicWaveletMatrix(@[int.low, int.low, int.high, int.high, 2], @[
+    wmSumUpperbound(0, 5, int.high), wmSumSmallestWithCount(0, 5, 5)])
+doAssert cancellation[0].value == 0
+doAssert cancellation[1].sumCount == (0, 5)
+when defined(compareOfflineWMFast):
+    when compileOption("overflowChecks"):
+        var intermediateRaised = false
+        try: discard baseline(@[int.low, int.low, int.high, int.high, 2], @[wmSumUpperbound(0, 5, int.high)])
+        except OverflowDefect: intermediateRaised = true
+        doAssert intermediateRaised
+    when compileOption("assertions"):
+        var raised = false
+        let noSum = initDynamicQuadWaveletMatrixFast(@[-1, 2], H=64, signedValues=true)
+        try: discard noSum.sum_upperbound(0, 2, 2)
+        except AssertionDefect: raised = true
+        doAssert raised
 echo "Hello World"
