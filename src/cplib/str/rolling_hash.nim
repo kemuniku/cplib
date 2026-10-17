@@ -75,8 +75,12 @@ when not declared CPLIB_STR_ROLLING_HASH:
         result.build
 
     proc query*(rh: RollingHash, rng: HSlice[int, int]): uint =
-        var
+        ## 区間のハッシュを時間・追加領域O(1)で返す。半開区間では0 <= l <= r <= nを要求する。
+        ## 空区間l..<lも許容し、範囲・順序の検査はassertions有効時に行う。
+        let
+            n = rh.hash_accum.len - 1
             l = rng.a
-            r = rng.b + 1
-        assert l in 0..<rh.hash_accum.len and r in 0..<rh.hash_accum.len, "指定した値が有効な範囲内である必要があります: l in 0 ..< rh.hash_accum.len and r in 0 ..< rh.hash_accum.len"
+        assert l in 0..n and rng.b in -1..<n, "指定した区間が有効な範囲内である必要があります: 0 <= l <= n and -1 <= rng.b < n"
+        let r = rng.b + 1
+        assert l <= r, "指定した区間の始点は終点以下である必要があります: l <= r"
         return mul(rh.hash_accum[r] + RH_MOD - rh.hash_accum[l], rh.base_inv_pow[l]).calc_mod
