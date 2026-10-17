@@ -36,12 +36,30 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_VECTOR:
         not (x or (x shr 1)) and 0x5555555555555555'u64
     proc packedRank[W](a: QuadPacked[W], p, d: int, k: BPlusKernel): int {.inline.} =
         ## 2bit桁dのprefix rankをO(W)で返す。kは解決済み。
+        if a.counts[d] == 0: return 0
+        if a.counts[d] == a.n: return p
         int(quadRankRaw(unsafeAddr a.words[0], cint(p), cint(d), cint(ord(k)+1)))
     proc packedRanks[W](a: QuadPacked[W], p: int): array[4, int] =
         ## 全4桁のprefix rankを同じword走査で返す。O(W)。
+        for d in 0..3:
+            if a.counts[d] == a.n:
+                result[d] = p
+                return
         var counts: array[4, cint]
         quadRanksRaw(unsafeAddr a.words[0], cint(p), addr counts[0])
         for d in 0..3: result[d] = int(counts[d])
+    proc packedRanksPair[W](a: QuadPacked[W], l, r: int): tuple[left, right: array[4, int]] =
+        ## 全4桁の両端rankを共通wordの走査を共有して返す。O(W)。
+        for d in 0..3:
+            if a.counts[d] == a.n:
+                result.left[d] = l
+                result.right[d] = r
+                return
+        var left, right: array[4, cint]
+        quadRanksPairRaw(unsafeAddr a.words[0], cint(l), cint(r), addr left[0], addr right[0])
+        for d in 0..3:
+            result.left[d] = int(left[d])
+            result.right[d] = int(right[d])
     proc packedAccess[W](a: QuadPacked[W], p: int): int {.inline.} =
         ## p番目の2bit桁をO(1)で返す。
         int((a.words[p shr 5] shr (2*(p and 31))) and 3)
@@ -173,6 +191,40 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_VECTOR:
         ## pの桁とその桁の[0,p)個数を返す。O(B log_B(N/W)+W)。
         assert 0 <= p and p < t.len
         t.rankAccessNode(t.root, p)
+    proc replaceRankNode[B, W](t: QuadVector[B, W], v, p, digit: int): tuple[oldDigit, oldRank, newRank: int] =
+        ## 1回の降下で桁を置換し、旧桁と新旧rankを帰り道で累積する。
+        if t.nodes[v].leaf:
+            result.oldDigit = t.nodes[v].bits.packedAccess(p)
+            if result.oldDigit == digit:
+                result.oldRank = t.nodes[v].bits.packedRank(p, digit, t.kernel)
+                result.newRank = result.oldRank
+                return
+            let counts = t.nodes[v].bits.packedRanks(p)
+            result.oldRank = counts[result.oldDigit]
+            result.newRank = counts[digit]
+            t.nodes[v].bits.words[p shr 5] = t.nodes[v].bits.words[p shr 5] xor (uint64(result.oldDigit xor digit) shl (2*(p and 31)))
+            dec t.nodes[v].bits.counts[result.oldDigit]
+            inc t.nodes[v].bits.counts[digit]
+            dec t.nodes[v].totals[result.oldDigit]
+            inc t.nodes[v].totals[digit]
+            return
+        let j = prefixFind(addr t.nodes[v].sizes[0], t.nodes[v].used, p, t.kernel)
+        let offset = if j == 0: 0 else: int(t.nodes[v].sizes[j-1])
+        result = t.replaceRankNode(t.nodes[v].child[j], p-offset, digit)
+        if j > 0:
+            result.oldRank+=int(t.nodes[v].counts[result.oldDigit][j-1])
+            result.newRank+=int(t.nodes[v].counts[digit][j-1])
+        if result.oldDigit != digit:
+            prefixAdd(addr t.nodes[v].counts[result.oldDigit][j], t.nodes[v].used-j, -1, t.kernel)
+            prefixAdd(addr t.nodes[v].counts[digit][j], t.nodes[v].used-j, 1, t.kernel)
+            dec t.nodes[v].totals[result.oldDigit]
+            inc t.nodes[v].totals[digit]
+    proc replaceRank*[B, W](t: QuadVector[B, W], p, digit: int): tuple[oldDigit, oldRank, newRank: int] {.discardable.} =
+        ## pをdigitへ置換し、旧桁と新旧桁の[0,p)rankを返す。O(B log_B(N/W)+W)。
+        assert 0 <= p and p < t.len and 0 <= digit and digit < 4
+        if t.nodes[t.root].totals[digit] == t.nodes[t.root].size:
+            return (digit, p, p)
+        t.replaceRankNode(t.root, p, digit)
     proc `[]`*[B, W](t: QuadVector[B, W], p: int): int =
         ## p番目の桁を返す。
         t.rankAccess(p).digit
@@ -193,13 +245,12 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_VECTOR:
         ## 桁dの[0,p)個数を返す。O(B log_B(N/W)+W)。
         assert 0 <= p and p <= t.len and 0 <= d and d < 4
         t.rankFrom(t.root, p, d)
-    proc ranks*[B, W](t: QuadVector[B, W], p: int): array[4, int] =
-        ## 4桁のprefix rankを共有経路で返す。O(B log_B(N/W)+W)。
-        assert 0 <= p and p <= t.len
+    proc ranksFrom[B, W](t: QuadVector[B, W], start, p: int): array[4, int] =
+        ## 部分木から全4桁のprefix rankを共有経路で求める。
         var p = p
-        var v = t.root
+        var v = start
         if p == 0: return
-        if p == t.len:
+        if p == int(t.nodes[v].size):
             for d in 0..3: result[d] = int(t.nodes[v].totals[d])
             return
         while not t.nodes[v].leaf:
@@ -210,6 +261,58 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_VECTOR:
             v = t.nodes[v].child[j]
         let counts = t.nodes[v].bits.packedRanks(p)
         for d in 0..3: result[d]+=counts[d]
+    proc ranks*[B, W](t: QuadVector[B, W], p: int): array[4, int] =
+        ## 4桁のprefix rankを共有経路で返す。O(B log_B(N/W)+W)。
+        assert 0 <= p and p <= t.len
+        t.ranksFrom(t.root, p)
+    proc ranksPair*[B, W](t: QuadVector[B, W], l, r: int): tuple[left, right: array[4, int]] =
+        ## 全4桁の両端rankで木の経路と葉のprefix走査を共有する。O(B log_B(N/W)+W)。
+        assert 0 <= l and l <= r and r <= t.len
+        var v = t.root
+        var l = l
+        var r = r
+        var before: array[4, int]
+        while true:
+            if l == r:
+                let a = t.ranksFrom(v, l)
+                for d in 0..3:
+                    result.left[d] = before[d]+a[d]
+                    result.right[d] = result.left[d]
+                return
+            if l == 0:
+                let b = t.ranksFrom(v, r)
+                result.left = before
+                for d in 0..3: result.right[d] = before[d]+b[d]
+                return
+            if r == int(t.nodes[v].size):
+                let a = t.ranksFrom(v, l)
+                for d in 0..3:
+                    result.left[d] = before[d]+a[d]
+                    result.right[d] = before[d]+int(t.nodes[v].totals[d])
+                return
+            if t.nodes[v].leaf:
+                let a = t.nodes[v].bits.packedRanksPair(l, r)
+                for d in 0..3:
+                    result.left[d] = before[d]+a.left[d]
+                    result.right[d] = before[d]+a.right[d]
+                return
+            let a = prefixFind(addr t.nodes[v].sizes[0], t.nodes[v].used, l, t.kernel)
+            let b = if r <= int(t.nodes[v].sizes[a]): a else: prefixFind(addr t.nodes[v].sizes[0], t.nodes[v].used, r-1, t.kernel)
+            let offset = if a == 0: 0 else: int(t.nodes[v].sizes[a-1])
+            if a != b:
+                let offsetB = int(t.nodes[v].sizes[b-1])
+                let left = t.ranksFrom(t.nodes[v].child[a], l-offset)
+                let right = t.ranksFrom(t.nodes[v].child[b], r-offsetB)
+                for d in 0..3:
+                    let count = if a == 0: 0 else: int(t.nodes[v].counts[d][a-1])
+                    result.left[d] = before[d]+count+left[d]
+                    result.right[d] = before[d]+int(t.nodes[v].counts[d][b-1])+right[d]
+                return
+            if a > 0:
+                for d in 0..3: before[d]+=int(t.nodes[v].counts[d][a-1])
+            l-=offset
+            r-=offset
+            v = t.nodes[v].child[a]
     proc rankPair*[B, W](t: QuadVector[B, W], l, r, d: int): tuple[left, right: int] =
         ## 同じ桁の両端rankで共有経路を一度だけ辿る。O(B log_B(N/W)+W)。
         assert 0 <= l and l <= r and r <= t.len and 0 <= d and d < 4
@@ -396,7 +499,9 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_VECTOR:
             if t.nodes[v].leaf:
                 let a = t.nodes[v].bits
                 assert a.n <= W*32 and (root or a.n >= W*16)
-                assert a.counts == a.packedRanks(a.n)
+                var actual: array[4, cint]
+                quadRanksRaw(unsafeAddr a.words[0], cint(a.n), addr actual[0])
+                for d in 0..3: assert a.counts[d] == int(actual[d])
                 assert t.nodes[v].size == int32(a.n)
                 for d in 0..3: assert t.nodes[v].totals[d] == int32(a.counts[d])
                 for i in a.n..<a.words.len*32: assert a.packedAccess(i) == 0

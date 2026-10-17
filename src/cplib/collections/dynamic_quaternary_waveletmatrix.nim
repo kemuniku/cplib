@@ -138,22 +138,33 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         t.decode(key)
     proc `[]=`*[QV](t: DynamicQuadWaveletMatrix[QV], i, x: int) =
         ## 共通上位digitの層は変更せず、差が出た層以下を更新する。償却O(ceil(H/2) D)。
-        mixin rankAccess, erase, insert
+        mixin rankAccess, replaceRank, erase, insert
         assert 0 <= i and i < t.n and t.fits(x)
         let key = t.encode(x)
         var p = i
         for h in countdown(t.levels.len-1, 0):
-            let a = t.levels[h].rankAccess(p)
             let d = int((key shr (2*h)) and 3)
-            if a.digit == d:
-                p = t.offsets[h][d]+a.rank
-                continue
-            var oldPos = t.offsets[h][a.digit]+a.rank
-            discard t.levels[h].erase(p)
-            for other in a.digit+1..3: dec t.offsets[h][other]
-            let before = t.levels[h].insert(p, d)
-            var newPos = t.offsets[h][d]+before
-            for other in d+1..3: inc t.offsets[h][other]
+            var oldPos, newPos: int
+            when compiles(t.levels[h].replaceRank(p, d)):
+                let a = t.levels[h].replaceRank(p, d)
+                if a.oldDigit == d:
+                    p = t.offsets[h][d]+a.oldRank
+                    continue
+                oldPos = t.offsets[h][a.oldDigit]+a.oldRank
+                for other in a.oldDigit+1..3: dec t.offsets[h][other]
+                newPos = t.offsets[h][d]+a.newRank
+                for other in d+1..3: inc t.offsets[h][other]
+            else:
+                let a = t.levels[h].rankAccess(p)
+                if a.digit == d:
+                    p = t.offsets[h][d]+a.rank
+                    continue
+                oldPos = t.offsets[h][a.digit]+a.rank
+                discard t.levels[h].erase(p)
+                for other in a.digit+1..3: dec t.offsets[h][other]
+                let before = t.levels[h].insert(p, d)
+                newPos = t.offsets[h][d]+before
+                for other in d+1..3: inc t.offsets[h][other]
             for lower in countdown(h-1, 0):
                 let removed = t.levels[lower].erase(oldPos)
                 oldPos = t.offsets[lower][removed.digit]+removed.rank
@@ -172,15 +183,44 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         t[i] = x
     proc children[QV](t: DynamicQuadWaveletMatrix[QV], h, l, r: int): tuple[left, right: array[4, int]] =
         ## 各digitの子区間を0,1,2,3順で返す。
-        mixin ranks
-        let a = t.levels[h].ranks(l)
-        let b = t.levels[h].ranks(r)
+        mixin ranks, ranksPair
+        when compiles(t.levels[h].ranksPair(l, r)):
+            let a = t.levels[h].ranksPair(l, r)
+            result = a
+        else:
+            result.left = t.levels[h].ranks(l)
+            result.right = t.levels[h].ranks(r)
         for d in 0..3:
-            result.left[d] = t.offsets[h][d]+a[d]
-            result.right[d] = t.offsets[h][d]+b[d]
+            result.left[d]+=t.offsets[h][d]
+            result.right[d]+=t.offsets[h][d]
+    proc accessSuffix[QV](t: DynamicQuadWaveletMatrix[QV], h, p: int, prefix: uint64): int =
+        ## 上位桁が確定した一要素の下位桁を復元する。O((h+1) D)。
+        mixin rankAccess
+        var p = p
+        var key = prefix
+        for lower in countdown(h, 0):
+            let a = t.levels[lower].rankAccess(p)
+            key = key or (uint64(a.digit) shl (2*lower))
+            p = t.offsets[lower][a.digit]+a.rank
+        t.decode(key)
+    proc extremeValue[QV](t: DynamicQuadWaveletMatrix[QV], h, l, r: int, prefix: uint64, largest: static bool): int =
+        ## 上位桁が確定した非空区間の最小値・最大値を返す。O((h+1) D)。
+        var l = l
+        var r = r
+        var key = prefix
+        for lower in countdown(h, 0):
+            if r-l == 1: return t.accessSuffix(lower, l, key)
+            let c = t.children(lower, l, r)
+            var d = (if largest: 3 else: 0)
+            while c.left[d] == c.right[d]:
+                when largest: dec d
+                else: inc d
+            key = key or (uint64(d) shl (2*lower))
+            l = c.left[d]
+            r = c.right[d]
+        t.decode(key)
     proc kth_smallest*[QV](t: DynamicQuadWaveletMatrix[QV], l, r, k: int): int =
         ## 小さい順にk番目を返す。0始まり、O(ceil(H/2) D)。
-        mixin rankAccess
         t.checkRange(l, r)
         assert 0 <= k and k < r-l
         var l = l
@@ -188,13 +228,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         var k = k
         var key = 0'u64
         for h in countdown(t.levels.len-1, 0):
-            if r-l == 1:
-                var p = l
-                for lower in countdown(h, 0):
-                    let a = t.levels[lower].rankAccess(p)
-                    key = key or (uint64(a.digit) shl (2*lower))
-                    p = t.offsets[lower][a.digit]+a.rank
-                return t.decode(key)
+            if r-l == 1: return t.accessSuffix(h, l, key)
             let c = t.children(h, l, r)
             for d in 0..3:
                 let n = c.right[d]-c.left[d]
@@ -209,7 +243,8 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         ## 大きい順のk番目を返す。O(ceil(H/2) D)。
         t.checkRange(l, r)
         assert 0 <= k and k < r-l
-        t.kth_smallest(l, r, r-l-1-k)
+        if k == 0: t.extremeValue(t.levels.len-1, l, r, 0'u64, true)
+        else: t.kth_smallest(l, r, r-l-1-k)
     proc range_lowerbound*[QV](t: DynamicQuadWaveletMatrix[QV], l, r, x: int): int =
         ## [l,r)のx未満の個数。しきい値は固定値域外でもよい。O(ceil(H/2) D)。
         t.checkRange(l, r)
@@ -271,14 +306,59 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         for h in 0..<t.levels.len:
             let d = int((key shr (2*h)) and 3)
             result = t.levels[h].select(d, result-t.offsets[h][d])
+    proc adjacentValue[QV](t: DynamicQuadWaveletMatrix[QV], l, r, x: int, successor: static bool): Option[int] =
+        ## しきい値との共通上位桁を再利用して隣接値を探す。O(ceil(H/2) D)。
+        t.checkRange(l, r)
+        if l == r: return none(int)
+        let bounds = t.limits()
+        when successor:
+            if x > bounds.high: return none(int)
+            if x <= bounds.low: return some(t.extremeValue(t.levels.len-1, l, r, 0'u64, false))
+        else:
+            if x <= bounds.low: return none(int)
+            if x > bounds.high: return some(t.extremeValue(t.levels.len-1, l, r, 0'u64, true))
+        let key = t.encode(x)
+        var l = l
+        var r = r
+        var prefix = 0'u64
+        var candidateH = -2
+        var candidateL, candidateR: int
+        var candidateKey: uint64
+        for h in countdown(t.levels.len-1, 0):
+            if l == r: break
+            if r-l == 1:
+                let value = t.accessSuffix(h, l, prefix)
+                when successor:
+                    if value >= x: return some(value)
+                else:
+                    if value < x: return some(value)
+                l = r
+                break
+            let d = int((key shr (2*h)) and 3)
+            let c = t.children(h, l, r)
+            var sibling = d+(if successor: 1 else: -1)
+            while 0 <= sibling and sibling <= 3:
+                if c.left[sibling] < c.right[sibling]:
+                    candidateH = h-1
+                    candidateL = c.left[sibling]
+                    candidateR = c.right[sibling]
+                    candidateKey = prefix or (uint64(sibling) shl (2*h))
+                    break
+                when successor: inc sibling
+                else: dec sibling
+            prefix = prefix or (uint64(d) shl (2*h))
+            l = c.left[d]
+            r = c.right[d]
+        when successor:
+            if l < r: return some(x)
+        if candidateH == -2: return none(int)
+        some(t.extremeValue(candidateH, candidateL, candidateR, candidateKey, not successor))
     proc prev_value*[QV](t: DynamicQuadWaveletMatrix[QV], l, r, x: int): Option[int] =
-        ## x未満の最大値。未存在はnone。
-        let k = t.range_lowerbound(l, r, x)
-        if k == 0: none(int) else: some(t.kth_smallest(l, r, k-1))
+        ## x未満の最大値。未存在はnone。O(ceil(H/2) D)。
+        t.adjacentValue(l, r, x, false)
     proc next_value*[QV](t: DynamicQuadWaveletMatrix[QV], l, r, x: int): Option[int] =
-        ## x以上の最小値。未存在はnone。
-        let k = t.range_lowerbound(l, r, x)
-        if k == r-l: none(int) else: some(t.kth_smallest(l, r, k))
+        ## x以上の最小値。未存在はnone。O(ceil(H/2) D)。
+        t.adjacentValue(l, r, x, true)
     proc validate*[QV](t: DynamicQuadWaveletMatrix[QV]) =
         ## 各層の木・offset・最上位の未使用digitを検証する。
         mixin validate, total, len

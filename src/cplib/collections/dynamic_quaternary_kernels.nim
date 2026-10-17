@@ -161,6 +161,33 @@ static void dqv_all_base(uint64_t *a,int p,int *out) {
     }
     out[0]=p-lo-hi+both;out[1]=lo-both;out[2]=hi-both;out[3]=both;
 }
+static void dqv_all_pair_base(uint64_t *a,int l,int r,int *left,int *right) {
+    /* 両端の4桁rankを、共通prefixを一度だけ走査して求める。 */
+    int lo=0,hi=0,both=0,i=0;
+    for(;i<(l>>5);++i) {
+        uint64_t x=a[i];
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        lo+=dqv_pop_base(low);hi+=dqv_pop_base(high);both+=dqv_pop_base(low&high);
+    }
+    int ll=lo,lh=hi,lb=both;
+    if(l&31) {
+        uint64_t x=a[i] & ((UINT64_C(1)<<(2*(l&31)))-1);
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        ll+=dqv_pop_base(low);lh+=dqv_pop_base(high);lb+=dqv_pop_base(low&high);
+    }
+    left[0]=l-ll-lh+lb;left[1]=ll-lb;left[2]=lh-lb;left[3]=lb;
+    for(;i<(r>>5);++i) {
+        uint64_t x=a[i];
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        lo+=dqv_pop_base(low);hi+=dqv_pop_base(high);both+=dqv_pop_base(low&high);
+    }
+    if(r&31) {
+        uint64_t x=a[i] & ((UINT64_C(1)<<(2*(r&31)))-1);
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        lo+=dqv_pop_base(low);hi+=dqv_pop_base(high);both+=dqv_pop_base(low&high);
+    }
+    right[0]=r-lo-hi+both;right[1]=lo-both;right[2]=hi-both;right[3]=both;
+}
 #if DQV_X86
 DQV_TARGET("popcnt") static void dqv_all_hw(uint64_t *a,int p,int *out) {
     int lo=0,hi=0,both=0,n=p>>5;
@@ -172,12 +199,46 @@ DQV_TARGET("popcnt") static void dqv_all_hw(uint64_t *a,int p,int *out) {
     }
     out[0]=p-lo-hi+both;out[1]=lo-both;out[2]=hi-both;out[3]=both;
 }
+DQV_TARGET("popcnt") static void dqv_all_pair_hw(uint64_t *a,int l,int r,int *left,int *right) {
+    /* POPCNTで両端rankの共通prefixを一度だけ走査する。 */
+    int lo=0,hi=0,both=0,i=0;
+    for(;i<(l>>5);++i) {
+        uint64_t x=a[i];
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        lo+=__builtin_popcountll(low);hi+=__builtin_popcountll(high);both+=__builtin_popcountll(low&high);
+    }
+    int ll=lo,lh=hi,lb=both;
+    if(l&31) {
+        uint64_t x=a[i] & ((UINT64_C(1)<<(2*(l&31)))-1);
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        ll+=__builtin_popcountll(low);lh+=__builtin_popcountll(high);lb+=__builtin_popcountll(low&high);
+    }
+    left[0]=l-ll-lh+lb;left[1]=ll-lb;left[2]=lh-lb;left[3]=lb;
+    for(;i<(r>>5);++i) {
+        uint64_t x=a[i];
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        lo+=__builtin_popcountll(low);hi+=__builtin_popcountll(high);both+=__builtin_popcountll(low&high);
+    }
+    if(r&31) {
+        uint64_t x=a[i] & ((UINT64_C(1)<<(2*(r&31)))-1);
+        uint64_t low=x & UINT64_C(0x5555555555555555), high=(x>>1) & UINT64_C(0x5555555555555555);
+        lo+=__builtin_popcountll(low);hi+=__builtin_popcountll(high);both+=__builtin_popcountll(low&high);
+    }
+    right[0]=r-lo-hi+both;right[1]=lo-both;right[2]=hi-both;right[3]=both;
+}
 #endif
 void dqv_all(uint64_t *a,int p,int *out) {
 #if DQV_X86
     if(__builtin_cpu_supports("popcnt")){dqv_all_hw(a,p,out);return;}
 #endif
     dqv_all_base(a,p,out);
+}
+void dqv_all_pair(uint64_t *a,int l,int r,int *left,int *right) {
+    /* 実行可能な命令で両端の4桁rankをまとめて計算する。 */
+#if DQV_X86
+    if(__builtin_cpu_supports("popcnt")){dqv_all_pair_hw(a,l,r,left,right);return;}
+#endif
+    dqv_all_pair_base(a,l,r,left,right);
 }
 #ifdef __cplusplus
 }
@@ -191,3 +252,5 @@ void dqv_all(uint64_t *a,int p,int *out) {
         ## packed列を2bitずらして削除する。O(n/32)。
     proc quadRanksRaw*(a: ptr uint64, p: cint, counts: ptr cint) {.importc: "dqv_all".}
         ## 全4桁のprefix個数を3個のbit-plane popcountから求める。O(p/32)。
+    proc quadRanksPairRaw*(a: ptr uint64, l, r: cint, left, right: ptr cint) {.importc: "dqv_all_pair".}
+        ## 全4桁の両端rankを共通prefixを共有して求める。0<=l<=r、O(r/32+1)。

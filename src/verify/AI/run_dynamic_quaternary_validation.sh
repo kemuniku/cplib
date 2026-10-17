@@ -7,18 +7,24 @@ nim=${NIM:-nim}
 out=$(realpath -m "${1:?出力先をリポジトリ外に指定してください}")
 case "$out/" in "$repo/"*) echo '出力先はリポジトリ外にしてください' >&2; exit 2;; esac
 mkdir -p "$out"
-tests=(dynamic_quaternary_vector dynamic_quaternary_waveletmatrix dynamic_quaternary_boundary
+tests=(dynamic_quaternary_vector dynamic_quaternary_waveletmatrix dynamic_quaternary_boundary dynamic_quaternary_query
        dynamic_bplus_bitvector dynamic_bplus_stress dynamic_bplus_boundary)
 run_test() {
     local label=$1 source=$2 backend=$3
     shift 3
     local memory=()
     if [[ $backend == c ]]; then memory+=(--gc:orc); fi
+    local measure=()
+    if [[ -x /usr/bin/time ]]; then measure=(/usr/bin/time -f '%e seconds, %M KiB'); fi
     "$nim" "$backend" -d:release "${memory[@]}" --path:"$repo/src" --nimcache:"$out/cache_$label" \
         -o:"$out/$label" "$@" "$repo/src/verify/AI/${source}_test.nim" >"$out/${label}_compile.log" 2>&1
     ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 \
-        /usr/bin/time -f '%e seconds, %M KiB' "$out/$label" >"$out/$label.log" 2>"$out/$label.time"
-    echo "$label passed ($(cat "$out/$label.time"))"
+        "${measure[@]}" "$out/$label" >"$out/$label.log" 2>"$out/$label.time"
+    if [[ ${#measure[@]} -gt 0 ]]; then
+        echo "$label passed ($(cat "$out/$label.time"))"
+    else
+        echo "$label passed (timing unavailable: /usr/bin/time)"
+    fi
 }
 for test in "${tests[@]}"; do
     run_test "ci_$test" "$test" cpp
