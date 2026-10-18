@@ -278,6 +278,25 @@ when compileOption("overflowChecks"):
                 try: discard baseline(initial, @[op])
                 except OverflowDefect: raised = true
                 doAssert raised
+# 最上位の全体和だけでなく、四進laneのprefix和と差でも検査する。
+let large = int.high div 2+1
+let positiveLanes = @[0, 1, 2, 3, large, large, large, large, int.high]
+let negativeLanes = @[int.low, -large, -large, -large, -large, -1, 0, 1, 2]
+check(positiveLanes, @[wmRangeSumWithCount(0, positiveLanes.len, 0, 4)])
+check(negativeLanes, @[wmRangeSumWithCount(0, negativeLanes.len, -1, 3)])
+when compileOption("overflowChecks"):
+    for entry in @[
+            (values: positiveLanes, op: wmSumLowerboundWithCount(0, positiveLanes.len, large+1)),
+            (values: negativeLanes, op: wmRangeSumWithCount(0, negativeLanes.len, -large, 0))]:
+        var raised = false
+        try: discard runOfflineDynamicWaveletMatrix(entry.values, @[entry.op])
+        except OverflowDefect: raised = true
+        doAssert raised
+        when defined(compareOfflineWMFast):
+            raised = false
+            try: discard baseline(entry.values, @[entry.op])
+            except OverflowDefect: raised = true
+            doAssert raised
 # 内部部分和がintを超えても最終和が収まる場合は、正確な内部和で処理可能。
 let cancellation = runOfflineDynamicWaveletMatrix(@[int.low, int.low, int.high, int.high, 2], @[
     wmSumUpperbound(0, 5, int.high), wmSumSmallestWithCount(0, 5, 5)])
