@@ -187,6 +187,57 @@ for i in countdown(1499, 0):
     shifting.add wmErase(i div 2)
     shifting.add wmLen()
 check(@[], shifting)
+# 四進の段境界、奇数幅、rankの64位置境界と全ての旧新桁を確認。
+for sigma in [0, 1, 2, 3, 4, 5, 7, 8, 15, 16, 17, 31, 32, 63, 64, 65, 255, 256, 257]:
+    var initial: seq[int]
+    for i in 0..<sigma: initial.add i-130
+    var ops: seq[OfflineWMOperation]
+    let n = initial.len
+    for x in -132..sigma-128:
+        ops.add wmCount(0, n, x)
+        ops.add wmSelect(0, x)
+        ops.add wmRangeLowerbound(0, n, x)
+        ops.add wmRangeUpperbound(0, n, x)
+        ops.add wmPrevValue(0, n, x)
+        ops.add wmNextValue(0, n, x)
+        ops.add wmSumLowerbound(0, n, x)
+        ops.add wmSumUpperbound(0, n, x)
+        ops.add wmSumLowerboundWithCount(0, n, x)
+        ops.add wmSumUpperboundWithCount(0, n, x)
+        ops.add wmRangeFreq(0, n, x-2, x+2)
+        ops.add wmRangeSum(0, n, x-2, x+2)
+        ops.add wmRangeSumWithCount(0, n, x-2, x+2)
+    for k in 0..n:
+        ops.add wmSumSmallest(0, n, k)
+        ops.add wmSumSmallestWithCount(0, n, k)
+        if k < n:
+            ops.add wmKthSmallest(0, n, k)
+            ops.add wmKthLargest(0, n, k)
+    check(initial, ops)
+    if sigma > 0:
+        ops.setLen(0)
+        for oldDigit in 0..3:
+            for newDigit in 0..3:
+                ops.add wmSet(0, min(oldDigit, sigma-1)-130)
+                ops.add wmSet(0, min(newDigit, sigma-1)-130)
+                ops.add wmAccess(0)
+                ops.add wmSelect(0, min(newDigit, sigma-1)-130)
+                ops.add wmInsert(n, -130)
+                ops.add wmInsert(0, -130)
+                ops.add wmErase(n div 2)
+                ops.add wmErase(n)
+                ops.add wmSumSmallestWithCount(0, n, n)
+        check(initial, ops)
+for length in [63, 64, 65, 127, 128, 129]:
+    var initial = newSeq[int](length)
+    for i in 0..<length: initial[i] = i mod 4
+    var ops: seq[OfflineWMOperation]
+    for l in 0..length:
+        for d in 0..3:
+            ops.add wmCount(l, length, d)
+            ops.add wmRank(l, d)
+            ops.add wmSelect(l div 4, d)
+    check(initial, ops)
 # 範囲外の公開結果は、検査有効時に折り返した正常値として返さない。
 for value in [int.high div 2+1, -(int.high div 2+1)]:
     let initial = @[value, value, value, value]

@@ -3,6 +3,16 @@ import algorithm, random, times, os, strutils, json
 when defined(compareOfflineWMFast):
     import cplib/collections/dynamic_quaternary_waveletmatrix
 
+when defined(compareOfflineWMFast):
+    proc weightedPrefix[T](wm: T, dictionary: seq[int], l, r, bound: int): int =
+        proc visit(h, left, right, prefix: int): int =
+            if left == right or prefix >= bound: return 0
+            if h < 0: return dictionary[prefix]*(right-left)
+            let children = wm.get_children(h, left, right)
+            for d in 0..3:
+                result += visit(h-1, children.left[d], children.right[d], prefix or (d shl (2*h)))
+        visit((wm.bitWidth()+1) div 2-1, l, r, 0)
+
 let mode = paramStr(1)
 let scenario = paramStr(2)
 let seed = parseInt(paramStr(3))
@@ -50,6 +60,15 @@ for i in 0..<q:
 var checksum = 0'u64
 proc digest(x: int) =
     checksum = (checksum xor cast[uint64](x))*1099511628211'u64
+var traceChecksum = 1469598103934665603'u64
+for x in initial: traceChecksum = (traceChecksum xor cast[uint64](x))*1099511628211'u64
+for op in ops:
+    for x in [ord(op.kind), op.l, op.r, op.k, op.x, op.y]:
+        traceChecksum = (traceChecksum xor cast[uint64](x))*1099511628211'u64
+var cpuAffinity = ""
+when defined(linux):
+    for line in readFile("/proc/self/status").splitLines():
+        if line.startsWith("Cpus_allowed_list:"): cpuAffinity = line.splitWhitespace()[1]
 let started = epochTime()
 var prepared, finished: float
 var storage, bits: int
@@ -72,7 +91,6 @@ else:
         var dictionary: seq[int]
         let compressed = mode == "compressed"
         if compressed:
-            doAssert scenario != "sum"
             dictionary = initial
             for op in ops:
                 if op.kind in {owmInsert, owmSet}: dictionary.add op.x
@@ -98,7 +116,7 @@ else:
         if compressed:
             bits = 0
             while (1 shl bits) < dictionary.len: inc bits
-        if scenario == "sum": bits = 11
+        if scenario == "sum" and not compressed: bits = 11
         if scenario == "boundary" and not compressed: bits = 64
         let wm = initDynamicQuadWaveletMatrixFast(initial, H=bits, signedValues=scenario in ["sum", "boundary"] and not compressed, with_sum=scenario == "sum")
         prepared = epochTime()
@@ -117,12 +135,23 @@ else:
             of owmRangeLowerbound: digest(wm.range_lowerbound(op.l, op.r, op.x))
             of owmRangeFreq: digest(wm.range_freq(op.l, op.r, op.x, op.y))
             of owmSumSmallestWithCount:
-                let a = wm.sum_smallest_with_count(op.l, op.r, op.k)
-                digest(a.sum)
-                digest(a.count)
-            of owmSumUpperbound: digest(wm.sum_upperbound(op.l, op.r, op.x))
+                if compressed:
+                    var sum = 0
+                    if op.k > 0:
+                        let key = wm.kth_smallest(op.l, op.r, op.k-1)
+                        sum = weightedPrefix(wm, dictionary, op.l, op.r, key)+
+                            (op.k-wm.range_lowerbound(op.l, op.r, key))*dictionary[key]
+                    digest(sum)
+                    digest(op.k)
+                else:
+                    let a = wm.sum_smallest_with_count(op.l, op.r, op.k)
+                    digest(a.sum)
+                    digest(a.count)
+            of owmSumUpperbound:
+                if compressed: digest(weightedPrefix(wm, dictionary, op.l, op.r, dictionary.upperBound(op.x)))
+                else: digest(wm.sum_upperbound(op.l, op.r, op.x))
             else: doAssert false
         finished = epochTime()
         storage = wm.storageBytes()
     else: quit("Fast comparison requires its separate reference checkout", 1)
-echo $(%* {"mode":mode,"scenario":scenario,"seed":seed,"n":n,"q":q,"prepare":prepared-started,"operations":finished-prepared,"total":finished-started,"bytes":storage,"bits":bits,"checksum": $checksum})
+echo $(%* {"mode":mode,"scenario":scenario,"seed":seed,"n":n,"q":q,"prepare":prepared-started,"operations":finished-prepared,"total":finished-started,"bytes":storage,"bits":bits,"checksum": $checksum,"traceChecksum": $traceChecksum,"affinity":cpuAffinity})

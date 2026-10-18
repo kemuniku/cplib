@@ -1,10 +1,12 @@
 when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
     const CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX* = 1
-    import algorithm, options
+    import algorithm, options, bitops
     ## 全パラメータが既知の操作列専用。位置・kは0始まり、位置/値区間は半開。
-    ## M=初期長+insert/set数、S=異なる値数、L=ceil(log2(max(1,S)))。
+    ## M=初期長+insert/set数、S=異なる値数、L=ceil(log4(max(1,S)))。
     ## 前処理は期待O((N+Q)log(M+1)+M(L+1))、操作はO((L+1)log(M+1))。
     ## 記憶量O(M(L+1)+Q)。削除された版も固定位置として保持する。
+    ## 1層2bit。Fenwickの桁0..2を隣接配置し、桁3は残りとして扱う。
+    ## 静的rankは2本のbit列と64位置ごとの累積個数で求める。
     ## sum操作がある場合だけ128bit相当の和配列を確保。回答はint範囲内が必要。
     ## overflowChecks有効時は範囲外回答でOverflowDefect。無効時の範囲外結果は保証しない。
     ## 内部の大きい部分和は許容する。
@@ -35,6 +37,12 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         OWMFenwick = object
             counts: seq[int32]
             sums: seq[OWMWideSum]
+        OWMQuadLevel = object
+            lowBits, highBits: seq[uint64]
+            checkpoints: seq[array[3, int32]]
+            offsets: array[4, int]
+            counts: seq[array[3, int32]]
+            sums: seq[array[3, OWMWideSum]]
         OWMNode = object
             left, right, size: int
             priority: uint64
@@ -42,8 +50,7 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         OfflineDynamicWaveletMatrix* = ref object
             operations: seq[OfflineWMOperation]
             changes: seq[tuple[oldSlot, newSlot: int]]
-            zeros: seq[seq[int32]]
-            middles: seq[int]
+            quads: seq[OWMQuadLevel]
             trees: seq[OWMFenwick]
             values, slotValues, bottomSlots: seq[int]
             n, height: int
@@ -190,6 +197,61 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
                 dec t.counts[i]
                 if t.sums.len > 0: t.sums[i] = t.sums[i]-wide(value)
             i += i and -i
+    proc digit(q: OWMQuadLevel, pos: int): int {.inline.} =
+        ## 固定位置の2bit桁を読む。O(1)。
+        int((q.lowBits[pos shr 6] shr (pos and 63)) and 1) or
+            (int((q.highBits[pos shr 6] shr (pos and 63)) and 1) shl 1)
+    proc rank(q: OWMQuadLevel, pos, d: int): int {.inline.} =
+        ## 64位置ごとの累積個数とpopcountで静的rankを計算。O(1)。
+        let blockIndex = pos shr 6
+        let checkpoint = q.checkpoints[blockIndex]
+        if d < 3: result = int(checkpoint[d])
+        else: result = blockIndex*64-int(checkpoint[0])-int(checkpoint[1])-int(checkpoint[2])
+        let rem = pos and 63
+        if rem != 0:
+            let lo = q.lowBits[blockIndex]
+            let hi = q.highBits[blockIndex]
+            let matches = (if (d and 1) == 0: not lo else: lo) and
+                (if (d and 2) == 0: not hi else: hi)
+            result += countSetBits(matches and ((1'u64 shl rem)-1))
+    proc change(q: var OWMQuadLevel, pos, d, value: int, add: bool) =
+        ## 桁0..2の該当laneだけ更新。桁3の個数は残りで扱う。O(log M)。
+        if d == 3: return
+        var i = pos+1
+        let weight = wide(value)
+        while i < q.counts.len:
+            if add:
+                inc q.counts[i][d]
+                if q.sums.len > 0: q.sums[i][d] = q.sums[i][d]+weight
+            else:
+                dec q.counts[i][d]
+                if q.sums.len > 0: q.sums[i][d] = q.sums[i][d]-weight
+            i += i and -i
+    proc amounts(q: OWMQuadLevel, l, r: int): array[3, int] =
+        ## 一組のFenwick走査で3桁の区間個数を同時に取得。O(log M)。
+        var i = r
+        while i > 0:
+            for d in 0..2: result[d] += int(q.counts[i][d])
+            i -= i and -i
+        i = l
+        while i > 0:
+            for d in 0..2: result[d] -= int(q.counts[i][d])
+            i -= i and -i
+    proc below(q: OWMQuadLevel, l, r, digitLimit: int, withSum: bool): tuple[sum: OWMWideSum, count: int] =
+        ## 閾値桁未満のlaneを一組のFenwick走査で集計。O(log M)。
+        if digitLimit == 0: return
+        var i = r
+        while i > 0:
+            for d in 0..<digitLimit:
+                result.count += int(q.counts[i][d])
+                if withSum: result.sum = result.sum+q.sums[i][d]
+            i -= i and -i
+        i = l
+        while i > 0:
+            for d in 0..<digitLimit:
+                result.count -= int(q.counts[i][d])
+                if withSum: result.sum = result.sum-q.sums[i][d]
+            i -= i and -i
     proc pull(nodes: var seq[OWMNode], root: int) =
         ## 前処理木の有効サイズを再計算。O(1)。
         nodes[root].size = nodes[nodes[root].left].size+nodes[nodes[root].right].size+int(nodes[root].alive)
@@ -331,43 +393,71 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         for i, x in result.slotValues:
             keys[i] = unique.lowerBound(x)
             perm[i] = i
-        result.zeros = newSeq[seq[int32]](result.height)
-        result.middles = newSeq[int](result.height)
-        result.trees = newSeq[OWMFenwick](result.height+1)
-        for level in 0..result.height:
-            var tree = OWMFenwick(counts: newSeq[int32](total+1))
-            if withSum: tree.sums = newSeq[OWMWideSum](total+1)
-            for i in 0..<total:
-                if active[perm[i]]:
-                    tree.counts[i+1] = 1
-                    if withSum: tree.sums[i+1] = wide(result.slotValues[perm[i]])
+        let levels = (result.height+1) div 2
+        result.quads = newSeq[OWMQuadLevel](levels)
+        result.trees = newSeq[OWMFenwick](if levels == 0: 1 else: 2)
+        for level in 0..levels:
+            # 最上位は現在位置復元と全体和、最下位はselectに使用する。
+            if level == 0 or level == levels:
+                var tree = OWMFenwick(counts: newSeq[int32](total+1))
+                if level == 0 and withSum: tree.sums = newSeq[OWMWideSum](total+1)
+                for i in 0..<total:
+                    if active[perm[i]]:
+                        tree.counts[i+1] = 1
+                        if tree.sums.len > 0: tree.sums[i+1] = wide(result.slotValues[perm[i]])
+                for i in 1..total:
+                    let parent = i+(i and -i)
+                    if parent <= total:
+                        tree.counts[parent] += tree.counts[i]
+                        if tree.sums.len > 0: tree.sums[parent] = tree.sums[parent]+tree.sums[i]
+                result.trees[if level == 0: 0 else: 1] = move(tree)
+            if level == levels: break
+            let shift = 2*(levels-1-level)
+            var q = OWMQuadLevel(lowBits: newSeq[uint64]((total+63) div 64),
+                highBits: newSeq[uint64]((total+63) div 64),
+                checkpoints: newSeq[array[3, int32]](total div 64+1),
+                counts: newSeq[array[3, int32]](total+1))
+            if withSum: q.sums = newSeq[array[3, OWMWideSum]](total+1)
+            var counts: array[4, int]
+            for i in 0..total:
+                if (i and 63) == 0:
+                    for d in 0..2: q.checkpoints[i shr 6][d] = int32(counts[d])
+                if i == total: break
+                let d = (keys[i] shr shift) and 3
+                let mask = 1'u64 shl (i and 63)
+                if (d and 1) != 0: q.lowBits[i shr 6] = q.lowBits[i shr 6] or mask
+                if (d and 2) != 0: q.highBits[i shr 6] = q.highBits[i shr 6] or mask
+                inc counts[d]
+                if d < 3 and active[perm[i]]:
+                    q.counts[i+1][d] = 1
+                    if withSum: q.sums[i+1][d] = wide(result.slotValues[perm[i]])
+            for d in 1..3: q.offsets[d] = q.offsets[d-1]+counts[d-1]
             for i in 1..total:
                 let parent = i+(i and -i)
                 if parent <= total:
-                    tree.counts[parent] += tree.counts[i]
-                    if withSum: tree.sums[parent] = tree.sums[parent]+tree.sums[i]
-            result.trees[level] = tree
-            if level == result.height: break
-            let bit = result.height-1-level
-            var zeros = newSeq[int32](total+1)
-            for i in 0..<total:
-                zeros[i+1] = zeros[i]+int32((keys[i] shr bit and 1) == 0)
-            let mid = int(zeros[total])
-            result.zeros[level] = zeros
-            result.middles[level] = mid
+                    for d in 0..2:
+                        q.counts[parent][d] += q.counts[i][d]
+                        if withSum: q.sums[parent][d] = q.sums[parent][d]+q.sums[i][d]
             var nextKeys, nextPerm = newSeq[int](total)
+            var cursor = q.offsets
             for i in 0..<total:
-                let dest = if (keys[i] shr bit and 1) == 0: int(zeros[i]) else: mid+i-int(zeros[i])
+                let d = (keys[i] shr shift) and 3
+                let dest = cursor[d]
+                inc cursor[d]
                 nextKeys[dest] = keys[i]
                 nextPerm[dest] = perm[i]
+            result.quads[level] = move(q)
             keys = move(nextKeys)
             perm = move(nextPerm)
         result.bottomSlots = move(perm)
     proc storageBytes*(t: OfflineDynamicWaveletMatrix): int =
         ## 保持する配列の要素バイト数。seqヘッダ・容量余剰・前処理一時領域は除く。O(L)。
         result = t.operations.len*sizeof(OfflineWMOperation)+t.changes.len*sizeof(tuple[oldSlot, newSlot: int])
-        result += (t.values.len+t.slotValues.len+t.bottomSlots.len+t.middles.len)*sizeof(int)
-        for z in t.zeros: result += z.len*sizeof(int32)
+        result += (t.values.len+t.slotValues.len+t.bottomSlots.len)*sizeof(int)
+        for q in t.quads:
+            result += (q.lowBits.len+q.highBits.len)*sizeof(uint64)+sizeof(q.offsets)
+            result += q.checkpoints.len*sizeof(array[3, int32])+q.counts.len*sizeof(array[3, int32])
+            result += q.sums.len*sizeof(array[3, OWMWideSum])
         for tree in t.trees: result += tree.counts.len*sizeof(int32)+tree.sums.len*sizeof(OWMWideSum)
     proc bitWidth*(t: OfflineDynamicWaveletMatrix): int =
         ## 圧縮後の値のビット幅。O(1)。
@@ -376,11 +466,12 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         ## 固定位置から静的rankで全層の有効状態を更新。O((L+1)log M)。
         let value = t.slotValues[slot]
         var pos = slot
-        for level in 0..t.height:
-            t.trees[level].change(pos, value, add)
-            if level < t.height:
-                let zero = int(t.zeros[level][pos])
-                pos = if t.zeros[level][pos+1] != t.zeros[level][pos]: zero else: t.middles[level]+pos-zero
+        t.trees[0].change(pos, value, add)
+        for q in t.quads.mitems:
+            let d = q.digit(pos)
+            q.change(pos, d, value, add)
+            pos = q.offsets[d]+q.rank(pos, d)
+        if t.quads.len > 0: t.trees[^1].change(pos, value, add)
     proc less(t: OfflineDynamicWaveletMatrix, left, right, limit: int): tuple[sum: OWMWideSum, count: int] =
         ## 圧縮値limit未満の個数と、必要なら和。O((L+1)log M)。
         if limit <= 0: return
@@ -390,36 +481,28 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
             return
         var l = left
         var r = right
-        for level in 0..<t.height:
-            let zl = int(t.zeros[level][l])
-            let zr = int(t.zeros[level][r])
-            if (limit shr (t.height-1-level) and 1) != 0:
-                result.count += t.trees[level+1].amount(zl, zr)
-                if t.withSum: result.sum = result.sum+t.trees[level+1].weight(zl, zr)
-                l = t.middles[level]+l-zl
-                r = t.middles[level]+r-zr
-            else:
-                l = zl
-                r = zr
+        for level in 0..<t.quads.len:
+            let d = (limit shr (2*(t.quads.len-1-level))) and 3
+            let contribution = t.quads[level].below(l, r, d, t.withSum)
+            result.count += contribution.count
+            result.sum = result.sum+contribution.sum
+            l = t.quads[level].offsets[d]+t.quads[level].rank(l, d)
+            r = t.quads[level].offsets[d]+t.quads[level].rank(r, d)
     proc kth(t: OfflineDynamicWaveletMatrix, left, right, index: int): int =
         ## 有効要素の小さい順index番目。O((L+1)log M)。
         var l = left
         var r = right
         var k = index
         var key = 0
-        for level in 0..<t.height:
-            let zl = int(t.zeros[level][l])
-            let zr = int(t.zeros[level][r])
-            let count = t.trees[level+1].amount(zl, zr)
-            key = key shl 1
-            if k < count:
-                l = zl
-                r = zr
-            else:
-                k -= count
-                inc key
-                l = t.middles[level]+l-zl
-                r = t.middles[level]+r-zr
+        for q in t.quads:
+            let counts = q.amounts(l, r)
+            var d = 0
+            while d < 3 and k >= counts[d]:
+                k -= counts[d]
+                inc d
+            key = (key shl 2) or d
+            l = q.offsets[d]+q.rank(l, d)
+            r = q.offsets[d]+q.rank(r, d)
         t.values[key]
     proc occurrence(t: OfflineDynamicWaveletMatrix, k, x: int): int =
         ## 値xのk番目の現在位置。未存在は-1。O(L+log M)。
@@ -427,15 +510,10 @@ when not declared CPLIB_COLLECTIONS_OFFLINE_DYNAMIC_WAVELETMATRIX:
         if k < 0 or key == t.values.len or t.values[key] != x: return -1
         var l = 0
         var r = t.slotValues.len
-        for level in 0..<t.height:
-            let zl = int(t.zeros[level][l])
-            let zr = int(t.zeros[level][r])
-            if (key shr (t.height-1-level) and 1) == 0:
-                l = zl
-                r = zr
-            else:
-                l = t.middles[level]+l-zl
-                r = t.middles[level]+r-zr
+        for level in 0..<t.quads.len:
+            let d = (key shr (2*(t.quads.len-1-level))) and 3
+            l = t.quads[level].offsets[d]+t.quads[level].rank(l, d)
+            r = t.quads[level].offsets[d]+t.quads[level].rank(r, d)
         let start = t.trees[^1].prefix(l)
         if k >= t.trees[^1].prefix(r)-start: return -1
         let pos = t.trees[^1].locate(start+k)
