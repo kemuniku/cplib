@@ -161,8 +161,12 @@ block:
     doAssert w.min_count_largest_for_sum(0, 5, 7) == 1
     doAssert w.min_count_smallest_for_sum(0, 5, 17) == -1
 
-for a in [newSeq[int](), @[0, 0, 0], @[7, 7, 7], @[0, 5, 0, 5, 0],
-        @[9, 8, 1, 0], @[0, int.high-1, 1], @[int.high div 2, int.high div 2]]:
+var edgeCases = @[newSeq[int](), @[0, 0, 0], @[7, 7, 7], @[0, 5, 0, 5, 0],
+        @[9, 8, 1, 0], @[0, int.high-1, 1], @[int.high div 2, int.high div 2]]
+for shift in [2, 16, 32, 60]:
+    let base = 1 shl shift
+    edgeCases.add(@[0, base, base+1, base+2, base+3])
+for a in edgeCases:
     let w = initDynamicQuadWaveletMatrixSumFast(a)
     for l in 0..a.len:
         for r in l..a.len:

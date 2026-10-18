@@ -606,21 +606,32 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX_SUM:
             if t.uniform[h] >= 0:
                 key = key or (uint64(t.uniform[h]) shl (2*h))
                 continue
+            if key != 0:
+                let lower = int(key)
+                let upper = int(key or ((1'u64 shl (2*(h+1)))-1))
+                let count = (remaining-1) div upper+1
+                # 最大値から求めた必要個数で、最小値だけでも足りるなら下位桁を調べず確定する。
+                # count<=r-lなので積はこの部分木の実際の総和以下になる。
+                if count*lower >= remaining: return result+count
             let c = t.children(h, l, r)
+            var remainingCount = r-l
             for order in 0..3:
                 let d = (when largest: 3-order else: order)
                 let count = c.right[d]-c.left[d]
                 if count == 0: continue
                 let prefix = key or (uint64(d) shl (2*h))
-                let sum = t.subtreeSum(h-1, c.left[d], c.right[d], prefix)
-                if sum < remaining:
-                    remaining -= sum
-                    result += count
-                else:
-                    key = prefix
-                    l = c.left[d]
-                    r = c.right[d]
-                    break
+                # 最後の子、または総和の下限だけで足りる子への和問合せを省く。
+                if count < remainingCount and int(prefix)*count < remaining:
+                    let sum = t.subtreeSum(h-1, c.left[d], c.right[d], prefix)
+                    if sum < remaining:
+                        remaining -= sum
+                        remainingCount -= count
+                        result += count
+                        continue
+                key = prefix
+                l = c.left[d]
+                r = c.right[d]
+                break
         let value = t.decode(key)
         result += (remaining-1) div value+1
 
