@@ -329,9 +329,23 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_BPLUS_WAVELETMATRIX:
         let x = t.kth_smallest(l, r, k-1)
         t.sum_lowerbound(l, r, x)+(k-t.range_lowerbound(l, r, x))*x
 
+    proc sum_largest*[BV](t: DynamicBPlusWaveletMatrix[BV], l, r, k: int): int =
+        ## [l,r) 内の大きい方から k 個の和。最悪 O(dHD)、with_sum=true、0<=k<=r-l。
+        t.checkRange(l, r)
+        assert t.withSum and 0 <= k and k <= r-l
+        if k == 0: return 0
+        let x = t.kth_largest(l, r, k-1)
+        if x == int.high: return k*x
+        let greater = r-l-t.range_upperbound(l, r, x)
+        t.sumVisit(t.height-1, l, r, 0, x+1, int.high)+(k-greater)*x
+
     proc sum_smallest_with_count*[BV](t: DynamicBPlusWaveletMatrix[BV], l, r, k: int): tuple[sum, count: int] =
         ## 小さい k 個の和と個数。最悪 O(dHD)。
         (t.sum_smallest(l, r, k), k)
+
+    proc sum_largest_with_count*[BV](t: DynamicBPlusWaveletMatrix[BV], l, r, k: int): tuple[sum, count: int] =
+        ## 大きい k 個の和と個数。最悪 O(dHD)、with_sum=true が必要。
+        (t.sum_largest(l, r, k), k)
 
     proc sum_lowerbound_with_count*[BV](t: DynamicBPlusWaveletMatrix[BV], l, r, x: int): tuple[sum, count: int] =
         ## x 未満の和と個数。最悪 O(dHD)。

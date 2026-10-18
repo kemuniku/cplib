@@ -1,5 +1,6 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import cplib/collections/dynamic_quaternary_waveletmatrix
+import cplib/collections/dynamic_quaternary_waveletmatrix_sum
 import algorithm, options, random
 
 template rejects(error: typedesc, body: untyped) =
@@ -9,7 +10,7 @@ template rejects(error: typedesc, body: untyped) =
         except error: caught = true
         doAssert caught
 
-proc audit[W](w: W, a: seq[int], p: int, withSum = false) =
+proc audit[W](w: W, a: seq[int], p: int, withSum: static bool = false) =
     w.validate()
     doAssert w.len == a.len
     let position = min(p, a.len)
@@ -43,10 +44,10 @@ proc audit[W](w: W, a: seq[int], p: int, withSum = false) =
                 if y < x:
                     inc lower
                     previous = some(y)
-                    if withSum: lowerSum += y
+                    when withSum: lowerSum += y
                 if y <= x:
                     inc upper
-                    if withSum: upperSum += y
+                    when withSum: upperSum += y
                 if y >= x and following.isNone: following = some(y)
             doAssert w.count(l, r, x) == equal
             doAssert w.range_lowerbound(l, r, x) == lower
@@ -55,14 +56,14 @@ proc audit[W](w: W, a: seq[int], p: int, withSum = false) =
             doAssert w.next_value(l, r, x) == following
             if x < int.high: doAssert w.range_freq(l, r, x, x + 1) == equal
             doAssert w.range_freq(l, r, x, x) == 0
-            if withSum:
+            when withSum:
                 doAssert w.sum_lowerbound_with_count(l, r, x) == (lowerSum, lower)
                 doAssert w.sum_upperbound_with_count(l, r, x) == (upperSum, upper)
         if part.len > 0:
             for k in [0, part.len div 2, part.len - 1]:
                 doAssert w.kth_smallest(l, r, k) == part[k]
                 doAssert w.kth_largest(l, r, k) == part[part.len - 1 - k]
-        if withSum:
+        when withSum:
             var sum = 0
             doAssert w.sum_smallest_with_count(l, r, 0) == (0, 0)
             for i, x in part:
@@ -76,12 +77,12 @@ proc audit[W](w: W, a: seq[int], p: int, withSum = false) =
                     inc count
             doAssert w.range_sum_with_count(l, r, -4, 5) == (expected, count)
 
-proc run(width: int, signed, withSum: bool, n: int) =
+proc run(width: int, signed: bool, withSum: static bool, n: int) =
     let low = if not signed: 0 elif width == 64: int.low else: -(1 shl (width - 1))
     let high = if width == 64: int.high elif signed: (1 shl (width - 1)) - 1 else: (1 shl width) - 1
     var rng = initRand(73317 + width + n)
     proc value(step: int): int =
-        if withSum:
+        when withSum:
             return (if signed: rng.rand(14) - 7 else: rng.rand(7))
         case step mod 5
         of 0: low
@@ -95,8 +96,10 @@ proc run(width: int, signed, withSum: bool, n: int) =
     var a = newSeq[int](n)
     for i in 0..<n: a[i] = value(i)
     # 同じimportだけで通常型とFast型が共存することも確認する。
-    let normal = initDynamicQuadWaveletMatrix(a, width, signedValues = signed, with_sum = withSum)
-    var fast = initDynamicQuadWaveletMatrixFast(a, H = width, signedValues = signed, with_sum = withSum)
+    let normal = (when withSum: initDynamicQuadWaveletMatrixSum(a, width, signedValues = signed)
+        else: initDynamicQuadWaveletMatrix(a, width, signedValues = signed))
+    let fast = (when withSum: initDynamicQuadWaveletMatrixSumFast(a, H = width, signedValues = signed)
+        else: initDynamicQuadWaveletMatrixFast(a, H = width, signedValues = signed))
     audit(normal, a, 0, withSum)
     audit(fast, a, 0, withSum)
     let steps = if n > 8192: 60 elif defined(dynamicWmFullTest): 240 else: 48
@@ -142,7 +145,7 @@ let inferred = initDynamicQuadWaveletMatrixFast(@[3, 1, 3])
 doAssert inferred.bitWidth == 2
 doAssert inferred.count(0, 3, 3) == 2
 doAssert inferred.select(1, 3) == 2
-let empty = initDynamicQuadWaveletMatrixFast(newSeq[int](), H = 0, with_sum = true)
+let empty = initDynamicQuadWaveletMatrixSumFast(newSeq[int](), H = 0)
 audit(empty, @[], 0, true)
 for i in 0..<3: empty.insert(i, 0)
 audit(empty, @[0, 0, 0], 1, true)
@@ -162,12 +165,11 @@ rejects(AssertionDefect): discard initDynamicQuadWaveletMatrixFast(@[1 shl 30], 
 let bounded = initDynamicQuadWaveletMatrixFast(@[0], H = 30)
 rejects(AssertionDefect): bounded.insert(0, -1)
 rejects(AssertionDefect): bounded[0] = 1 shl 30
-rejects(AssertionDefect): discard bounded.sum_smallest(0, 1, 1)
+static: doAssert not compiles(bounded.sum_smallest(0, 1, 1))
 for x in [int.low, int.high]:
-    let one = initDynamicQuadWaveletMatrixFast(@[x], H = 64, signedValues = true, with_sum = true)
+    let one = initDynamicQuadWaveletMatrixSumFast(@[x], H = 64, signedValues = true)
     doAssert one.sum_smallest_with_count(0, 1, 1) == (x, 1)
-    let overflow = initDynamicQuadWaveletMatrixFast(@[x, x], H = 64, signedValues = true, with_sum = true)
-    rejects(OverflowDefect): discard overflow.sum_upperbound(0, 2, x)
-let cancellation = initDynamicQuadWaveletMatrixFast(@[int.low, int.high], H = 64, signedValues = true, with_sum = true)
+    rejects(OverflowDefect): discard initDynamicQuadWaveletMatrixSumFast(@[x, x], H = 64, signedValues = true)
+let cancellation = initDynamicQuadWaveletMatrixSumFast(@[int.low, int.high], H = 64, signedValues = true)
 doAssert cancellation.sum_smallest(0, 2, 2) == -1
 echo "Hello World"
