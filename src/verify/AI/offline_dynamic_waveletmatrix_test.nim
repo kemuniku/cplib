@@ -314,4 +314,55 @@ when defined(compareOfflineWMFast):
         try: discard noSum.sum_upperbound(0, 2, 2)
         except AssertionDefect: raised = true
         doAssert raised
+# 位置ブロックの分割、空ブロックの通過、全削除後の再挿入。
+block:
+    var initial: seq[int]
+    for i in 0..<1537: initial.add i mod 17-8
+    var ops: seq[OfflineWMOperation]
+    var n = initial.len
+    for i in 0..<1600:
+        ops.add wmInsert(0, i mod 23-11)
+        inc n
+        if i mod 127 == 0:
+            ops.add wmAccess(0)
+            ops.add wmSelect(0, i mod 23-11)
+    for i in 0..<n: ops.add wmErase(0)
+    ops.add wmLen()
+    ops.add wmRangeFreq(0, 0, -20, 20)
+    for i in 0..<1100: ops.add wmInsert(i, i mod 19-9)
+    for i in 0..<1100:
+        ops.add wmSet(i, i mod 13-6)
+        if i mod 63 == 0:
+            ops.add wmSumSmallestWithCount(0, i+1, i div 2)
+            ops.add wmAccess(i)
+    check(initial, ops)
+# set専用経路、同ブロック内の置換、radixの符号境界と64bit全域。
+block:
+    let values = @[int.low, int.low+1, -257, -256, -1, 0, 1, 255, 256, int.high-1, int.high]
+    var initial: seq[int]
+    for i in 0..<129: initial.add values[i mod values.len]
+    var ops: seq[OfflineWMOperation]
+    for i in 0..<400:
+        let at = i mod initial.len
+        let value = values[(i+3) mod values.len]
+        ops.add wmSet(at, value)
+        ops.add wmSet(at, value)
+        ops.add wmAccess(at)
+        ops.add wmCount(0, initial.len, value)
+        ops.add wmKthSmallest(0, initial.len, i mod initial.len)
+        ops.add wmSumSmallest(at, at+1, 1)
+    check(initial, ops)
+# 置換の差自体がint外でも、内部和と公開回答は正確。
+let exchanged = runOfflineDynamicWaveletMatrix(@[int.low, int.high], @[
+    wmSet(0, int.high), wmSumSmallest(0, 1, 1), wmSet(1, int.low),
+    wmSumSmallest(0, 2, 2), wmSet(0, int.low), wmSumSmallest(0, 1, 1)])
+doAssert exchanged[0].value == int.high
+doAssert exchanged[1].value == -1
+doAssert exchanged[2].value == int.low
+# 単一値経路にも現在位置と個数の意味を維持する。
+for value in [-7, 0, 11]:
+    check(@[value, value], @[wmSet(0, value), wmInsert(1, value), wmErase(2),
+        wmSelect(1, value), wmSelect(2, value), wmSelect(0, value+1),
+        wmPrevValue(0, 2, value), wmNextValue(0, 2, value),
+        wmSumSmallestWithCount(0, 2, 2), wmRangeSumWithCount(0, 2, value, value+1)])
 echo "Hello World"

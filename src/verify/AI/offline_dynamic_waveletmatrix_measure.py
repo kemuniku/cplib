@@ -7,7 +7,9 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("binary")
-parser.add_argument("--binary-reference", help="same benchmark linked against the saved binary offline implementation")
+parser.add_argument("--binary-reference", help="same benchmark linked against a saved offline implementation")
+parser.add_argument("--reference-label", default="binary")
+parser.add_argument("--candidate-label", default="quaternary")
 parser.add_argument("--cpu", type=int, required=True)
 parser.add_argument("--output", required=True)
 parser.add_argument("--size", type=int, default=200000)
@@ -28,9 +30,9 @@ with open(args.output, "w", encoding="utf-8") as output:
     for scenario in args.scenarios:
         for seed in args.seeds:
             for repeat in range(args.repeats):
-                middle = [("quaternary", args.binary, "offline"), ("compressed", args.binary, "compressed")]
+                middle = [(args.candidate_label, args.binary, "offline"), ("compressed", args.binary, "compressed")]
                 if args.binary_reference:
-                    middle.insert(0, ("binary", args.binary_reference, "offline"))
+                    middle.insert(0, (args.reference_label, args.binary_reference, "offline"))
                 if repeat % 2:
                     middle.reverse()
                 modes = [("fast", args.binary, "fast")] + middle + [("fast", args.binary, "fast")]
