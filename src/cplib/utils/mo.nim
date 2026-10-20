@@ -59,6 +59,55 @@ when not declared CPLIB_UTILS_MO:
             executeMo(self)
             {.pop.}
 
+    template runInline*(self: var Mo, add_left, add_right, delete_left, delete_right, remember: untyped) =
+        ## templateの更新本体を展開して区間を処理する。ソートO(Q log Q)、端点移動O(N² / width + Q * width)。
+        ## 引数順・端点操作・回答の登録番号はrunと同じ。初期状態は空区間[0, 0)とする。
+        ## 1個のintを受け取るtemplate名を渡す。各操作で直接展開し、proc値として保持しない。
+        ## callbackを返す式の一度だけの評価は保証しない。factoryやclosure値にはrunを使うこと。
+        ## 展開した本体にもchecks: offが適用されるため、添字などの妥当性は呼び出し側で保証する。
+        ## 実行中は登録内容を変更しないこと。selfは一度だけ評価し、コピーせず処理する。
+        runnableExamples:
+            let a = @[1, 2, 1, 3, 2]
+            # (l, r, x): 半開区間[l, r)にあるxの個数。
+            let queries = @[(0, 5, 1), (1, 4, 2), (2, 5, 2)]
+            var solver = initMo(a.len, queries.len)
+            for (l, r, x) in queries: solver.insert(l, r)
+            var freq = newSeq[int](4)
+            var answers = newSeq[int](queries.len)
+            template addValue(i: int) = inc freq[a[i]]
+            template deleteValue(i: int) = dec freq[a[i]]
+            template remember(q: int) = answers[q] = freq[queries[q][2]]
+            solver.runInline(addValue, addValue, deleteValue, deleteValue, remember)
+            assert answers == @[2, 1, 1]
+        block:
+            {.push checks: off.}
+            let solver = addr self
+            template callbackAddLeft(i: int) = add_left(i)
+            template callbackAddRight(i: int) = add_right(i)
+            template callbackDeleteLeft(i: int) = delete_left(i)
+            template callbackDeleteRight(i: int) = delete_right(i)
+            template callbackRemember(i: int) = remember(i)
+            var nl = 0
+            var nr = 0
+            const mask2 = ((1 shl 20)-1) shl 20
+            const mask3 = ((1 shl 20)-1)
+            for i in 0..<len(solver[].qli):
+                if len(solver[].qli[i]) == 0:
+                    continue
+                sort(solver[].qli[i])
+                if (i and 1) == 1:
+                    reverse(solver[].qli[i])
+                for x in solver[].qli[i]:
+                    let ri = x shr 40
+                    let li = (x and mask2) shr 20
+                    let idx = x and mask3
+                    while nl > li: nl.dec; callbackAddLeft(nl)
+                    while nr < ri: callbackAddRight(nr); nr.inc
+                    while nl < li: callbackDeleteLeft(nl); nl.inc
+                    while nr > ri: nr.dec; callbackDeleteRight(nr)
+                    callbackRemember(idx)
+            {.pop.}
+
     type TreeMo* = object
         width*: int
         tour, first: seq[int]
