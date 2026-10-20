@@ -25,6 +25,98 @@ when not declared CPLIB_UTILS_MO:
         self.qli[l div self.width].add((r shl 40) or ((l) shl 20) or self.size)
         self.size += 1
 
+    proc optimizeWidth*(self: var Mo) =
+        ## クエリの分布から移動回数を推定して幅を調整する。O(N + Q)、追加領域O(N + Q)。
+        ## insert後、run/runInline前に任意で呼ぶ。登録番号を保ち、現在の幅付近なら変更しない。
+        ## 幅の候補には2冪を用いる。端点の移動費用が左右同程度と仮定する。
+        ## 偏った区間や重い更新向けの推定であり、軽い更新やランダム区間では調整費用で遅くなる場合がある。
+        runnableExamples:
+            var solver = initMo(200000, 3)
+            solver.insert(0, 200000)
+            solver.insert(100, 199900)
+            solver.insert(200, 199800)
+            solver.optimizeWidth()
+            # この後、通常どおりrunまたはrunInlineへコールバックを渡す。
+        if self.size < 2: return
+        type Summary = object
+            count, minL, maxL, minR, maxR: int
+        var width = 1
+        var shift = 0
+        let minimum = max(1, self.width div 64)
+        while width <= minimum div 2:
+            width *= 2
+            inc shift
+        var buckets = newSeq[Summary](self.N div width + 1)
+        for bucket in self.qli:
+            for x in bucket:
+                let l = (x shr 20) and ((1 shl 20)-1)
+                let r = x shr 40
+                let b = l shr shift
+                if buckets[b].count == 0:
+                    buckets[b] = Summary(count: 1, minL: l, maxL: l, minR: r, maxR: r)
+                else:
+                    inc buckets[b].count
+                    buckets[b].minL = min(buckets[b].minL, l)
+                    buckets[b].maxL = max(buckets[b].maxL, l)
+                    buckets[b].minR = min(buckets[b].minR, r)
+                    buckets[b].maxR = max(buckets[b].maxR, r)
+        var length = buckets.len
+        var bestWidth = self.width
+        var bestShift = shift
+        var bestCost = high(float)
+        while true:
+            var cost = 0.0
+            var lastR, lastL: int
+            for b in 0..<length:
+                let info = buckets[b]
+                if info.count == 0: continue
+                let firstR = if (b and 1) == 0: info.minR else: info.maxR
+                let endR = if (b and 1) == 0: info.maxR else: info.minR
+                cost += float(abs(lastR-firstR) + info.maxR-info.minR)
+                cost += float(info.count-1) * float(info.maxL-info.minL) / 3.0
+                let midL = (info.minL+info.maxL) div 2
+                cost += float(abs(midL-lastL))
+                lastR = endR
+                lastL = midL
+            if cost < bestCost:
+                bestCost = cost
+                bestWidth = width
+                bestShift = shift
+            if length <= 1 or width div 2 >= self.width: break
+            let nextLength = (length+1) div 2
+            for b in 0..<nextLength:
+                var combined = buckets[b*2]
+                if b*2+1 < length:
+                    let other = buckets[b*2+1]
+                    if combined.count == 0: combined = other
+                    elif other.count > 0:
+                        combined.count += other.count
+                        combined.minL = min(combined.minL, other.minL)
+                        combined.maxL = max(combined.maxL, other.maxL)
+                        combined.minR = min(combined.minR, other.minR)
+                        combined.maxR = max(combined.maxR, other.maxR)
+                buckets[b] = combined
+            length = nextLength
+            width *= 2
+            inc shift
+        if bestWidth > self.width div 2 and bestWidth div 2 < self.width: return
+        if bestWidth != self.width:
+            let bucketCount = self.N div bestWidth + 1
+            var counts = newSeq[int](bucketCount)
+            for bucket in self.qli:
+                for x in bucket:
+                    let l = (x shr 20) and ((1 shl 20)-1)
+                    inc counts[l shr bestShift]
+            var queries = newSeq[seq[int]](bucketCount)
+            for i in 0..<bucketCount:
+                if counts[i] > 0: queries[i] = newSeqOfCap[int](counts[i])
+            for bucket in self.qli:
+                for x in bucket:
+                    let l = (x shr 20) and ((1 shl 20)-1)
+                    queries[l shr bestShift].add(x)
+            self.qli = move(queries)
+            self.width = bestWidth
+
     template run*(self: var Mo, add_left, add_right, delete_left, delete_right, remember: untyped) =
         ## 登録した区間を処理する。ソートO(Q log Q)、端点移動O(N² / width + Q * width)。
         block:
