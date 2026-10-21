@@ -6,6 +6,7 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_KERNELS:
         {.passC: "-DDQV_FAST_RANK".}
     {.emit: """
 #include <stdint.h>
+#include <string.h>
 #if !defined(DQV_PORTABLE) && (defined(__x86_64__) || defined(__i386__)) && (defined(__GNUC__) || defined(__clang__))
 #include <immintrin.h>
 #define DQV_X86 1
@@ -442,6 +443,184 @@ int dqv_find(int32_t *a,int n,int x,int mode) {
     while(i<n && a[i]<=x)++i;
     return i;
 }
+#if DQV_X86
+/* 32要素分の領域がある内部ノードでは比較を分岐せず並列に行う。 */
+DQV_TARGET("avx2") static int dqv_find32_avx2(const int32_t *a,int n,int x) {
+    const __m256i key=_mm256_set1_epi32(x);
+    uint32_t mask=0;
+    for(int i=0;i<32;i+=8)
+        mask|=(uint32_t)_mm256_movemask_ps(_mm256_castsi256_ps(
+            _mm256_cmpgt_epi32(_mm256_loadu_si256((const __m256i*)(a+i)),key)))<<i;
+    uint64_t end=UINT64_C(1)<<n;
+    return __builtin_ctzll(((uint64_t)mask&(end-1))|end);
+}
+DQV_TARGET("avx512f") static int dqv_find32_avx512(const int32_t *a,int n,int x) {
+    const __m512i key=_mm512_set1_epi32(x);
+    uint32_t mask=(uint32_t)_mm512_cmpgt_epi32_mask(_mm512_loadu_si512(a),key);
+    mask|=(uint32_t)_mm512_cmpgt_epi32_mask(_mm512_loadu_si512(a+16),key)<<16;
+    uint64_t end=UINT64_C(1)<<n;
+    return __builtin_ctzll(((uint64_t)mask&(end-1))|end);
+}
+#endif
+int dqv_find32(int32_t *a,int n,int x,int mode) {
+#if DQV_X86
+    if(mode==2)return dqv_find32_avx2(a,n,x);
+    if(mode==3)return dqv_find32_avx512(a,n,x);
+#endif
+    int i=0;
+    while(i<n && a[i]<=x)++i;
+    return i;
+}
+/* bit-planeの移動と64桁ごとのprefix更新を同じ走査にまとめる。 */
+static void dqv_plane_delta(uint16_t *prefix,int i,int old,int digit) {
+    uint64_t value;
+    memcpy(&value,prefix+4*i,8);
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+    value+=(UINT64_C(1)<<(16*(3-digit)))-(UINT64_C(1)<<(16*(3-old)));
+#else
+    value+=(UINT64_C(1)<<(16*digit))-(UINT64_C(1)<<(16*old));
+#endif
+    memcpy(prefix+4*i,&value,8);
+}
+static void dqv_plane_insert_word(uint64_t *lo,uint64_t *hi,int p,int digit) {
+    int w=p>>6, shift=p&63;
+    uint64_t mask=(UINT64_C(1)<<shift)-1;
+    lo[w]=(lo[w]&mask)|((lo[w]&~mask)<<1)|((uint64_t)(digit&1)<<shift);
+    hi[w]=(hi[w]&mask)|((hi[w]&~mask)<<1)|((uint64_t)(digit>>1)<<shift);
+}
+static void dqv_plane_erase_word(uint64_t *lo,uint64_t *hi,int p) {
+    int w=p>>6, shift=p&63;
+    uint64_t mask=(UINT64_C(1)<<shift)-1;
+    lo[w]=(lo[w]&mask)|(((lo[w]>>1)|(lo[w+1]<<63))&~mask);
+    hi[w]=(hi[w]&mask)|(((hi[w]>>1)|(hi[w+1]<<63))&~mask);
+}
+#if DQV_X86
+DQV_TARGET("avx2") static void dqv_plane_insert_avx2(uint64_t *lo,uint64_t *hi,uint16_t *prefix,int n,int p,int digit) {
+    int i=n>>6, w=p>>6;
+    const __m256i ones=_mm256_set1_epi64x(1);
+    const __m256i added=_mm256_set1_epi64x((long long)(UINT64_C(1)<<(16*digit)));
+    for(;i-w>=4;i-=4) {
+        __m256i a=_mm256_loadu_si256((const __m256i*)(lo+i-3));
+        __m256i b=_mm256_loadu_si256((const __m256i*)(hi+i-3));
+        __m256i ca=_mm256_srli_epi64(_mm256_loadu_si256((const __m256i*)(lo+i-4)),63);
+        __m256i cb=_mm256_srli_epi64(_mm256_loadu_si256((const __m256i*)(hi+i-4)),63);
+        __m256i shifts=_mm256_slli_epi64(_mm256_or_si256(ca,_mm256_slli_epi64(cb,1)),4);
+        __m256i delta=_mm256_sub_epi64(added,_mm256_sllv_epi64(ones,shifts));
+        __m256i *out=(__m256i*)(prefix+4*(i-3));
+        _mm256_storeu_si256(out,_mm256_add_epi64(_mm256_loadu_si256(out),delta));
+        _mm256_storeu_si256((__m256i*)(lo+i-3),_mm256_or_si256(_mm256_slli_epi64(a,1),ca));
+        _mm256_storeu_si256((__m256i*)(hi+i-3),_mm256_or_si256(_mm256_slli_epi64(b,1),cb));
+    }
+    for(;i>w;--i) {
+        int carry=(int)(lo[i-1]>>63)|((int)(hi[i-1]>>63)<<1);
+        dqv_plane_delta(prefix,i,carry,digit);
+        lo[i]=(lo[i]<<1)|(lo[i-1]>>63);
+        hi[i]=(hi[i]<<1)|(hi[i-1]>>63);
+    }
+    dqv_plane_insert_word(lo,hi,p,digit);
+}
+DQV_TARGET("avx2") static void dqv_plane_erase_avx2(uint64_t *lo,uint64_t *hi,uint16_t *prefix,int n,int p,int digit) {
+    int i=(p>>6)+1, last=(n-1)>>6;
+    const __m256i ones=_mm256_set1_epi64x(1);
+    const __m256i removed=_mm256_set1_epi64x((long long)(UINT64_C(1)<<(16*digit)));
+    dqv_plane_erase_word(lo,hi,p);
+    for(;i+3<=last;i+=4) {
+        __m256i a=_mm256_loadu_si256((const __m256i*)(lo+i));
+        __m256i b=_mm256_loadu_si256((const __m256i*)(hi+i));
+        __m256i ca=_mm256_and_si256(a,ones), cb=_mm256_and_si256(b,ones);
+        __m256i shifts=_mm256_slli_epi64(_mm256_or_si256(ca,_mm256_slli_epi64(cb,1)),4);
+        __m256i delta=_mm256_sub_epi64(_mm256_sllv_epi64(ones,shifts),removed);
+        __m256i *out=(__m256i*)(prefix+4*i);
+        _mm256_storeu_si256(out,_mm256_add_epi64(_mm256_loadu_si256(out),delta));
+        __m256i nexta=_mm256_loadu_si256((const __m256i*)(lo+i+1));
+        __m256i nextb=_mm256_loadu_si256((const __m256i*)(hi+i+1));
+        _mm256_storeu_si256((__m256i*)(lo+i),_mm256_or_si256(_mm256_srli_epi64(a,1),_mm256_slli_epi64(nexta,63)));
+        _mm256_storeu_si256((__m256i*)(hi+i),_mm256_or_si256(_mm256_srli_epi64(b,1),_mm256_slli_epi64(nextb,63)));
+    }
+    for(;i<=last;++i) {
+        int carry=(int)(lo[i]&1)|((int)(hi[i]&1)<<1);
+        dqv_plane_delta(prefix,i,digit,carry);
+        lo[i]=(lo[i]>>1)|(lo[i+1]<<63);
+        hi[i]=(hi[i]>>1)|(hi[i+1]<<63);
+    }
+}
+/* AVX-512では移動とprefix差分更新を8ワードずつ行う。端数はscalar。 */
+DQV_TARGET("avx512f") static void dqv_plane_insert_avx512(uint64_t *lo,uint64_t *hi,uint16_t *prefix,int n,int p,int digit) {
+    int i=n>>6, w=p>>6;
+    const __m512i ones=_mm512_set1_epi64(1);
+    const __m512i added=_mm512_set1_epi64((long long)(UINT64_C(1)<<(16*digit)));
+    for(;i-w>=8;i-=8) {
+        __m512i a=_mm512_loadu_si512((const void*)(lo+i-7));
+        __m512i b=_mm512_loadu_si512((const void*)(hi+i-7));
+        __m512i ca=_mm512_srli_epi64(_mm512_loadu_si512((const void*)(lo+i-8)),63);
+        __m512i cb=_mm512_srli_epi64(_mm512_loadu_si512((const void*)(hi+i-8)),63);
+        __m512i shifts=_mm512_slli_epi64(_mm512_or_si512(ca,_mm512_slli_epi64(cb,1)),4);
+        __m512i delta=_mm512_sub_epi64(added,_mm512_sllv_epi64(ones,shifts));
+        void *out=(void*)(prefix+4*(i-7));
+        _mm512_storeu_si512(out,_mm512_add_epi64(_mm512_loadu_si512(out),delta));
+        _mm512_storeu_si512((void*)(lo+i-7),_mm512_or_si512(_mm512_slli_epi64(a,1),ca));
+        _mm512_storeu_si512((void*)(hi+i-7),_mm512_or_si512(_mm512_slli_epi64(b,1),cb));
+    }
+    for(;i>w;--i) {
+        int carry=(int)(lo[i-1]>>63)|((int)(hi[i-1]>>63)<<1);
+        dqv_plane_delta(prefix,i,carry,digit);
+        lo[i]=(lo[i]<<1)|(lo[i-1]>>63);
+        hi[i]=(hi[i]<<1)|(hi[i-1]>>63);
+    }
+    dqv_plane_insert_word(lo,hi,p,digit);
+}
+DQV_TARGET("avx512f") static void dqv_plane_erase_avx512(uint64_t *lo,uint64_t *hi,uint16_t *prefix,int n,int p,int digit) {
+    int i=(p>>6)+1, last=(n-1)>>6;
+    const __m512i ones=_mm512_set1_epi64(1);
+    const __m512i removed=_mm512_set1_epi64((long long)(UINT64_C(1)<<(16*digit)));
+    dqv_plane_erase_word(lo,hi,p);
+    for(;i+7<=last;i+=8) {
+        __m512i a=_mm512_loadu_si512((const void*)(lo+i));
+        __m512i b=_mm512_loadu_si512((const void*)(hi+i));
+        __m512i ca=_mm512_and_si512(a,ones), cb=_mm512_and_si512(b,ones);
+        __m512i shifts=_mm512_slli_epi64(_mm512_or_si512(ca,_mm512_slli_epi64(cb,1)),4);
+        __m512i delta=_mm512_sub_epi64(_mm512_sllv_epi64(ones,shifts),removed);
+        void *out=(void*)(prefix+4*i);
+        _mm512_storeu_si512(out,_mm512_add_epi64(_mm512_loadu_si512(out),delta));
+        __m512i nexta=_mm512_loadu_si512((const void*)(lo+i+1));
+        __m512i nextb=_mm512_loadu_si512((const void*)(hi+i+1));
+        _mm512_storeu_si512((void*)(lo+i),_mm512_or_si512(_mm512_srli_epi64(a,1),_mm512_slli_epi64(nexta,63)));
+        _mm512_storeu_si512((void*)(hi+i),_mm512_or_si512(_mm512_srli_epi64(b,1),_mm512_slli_epi64(nextb,63)));
+    }
+    for(;i<=last;++i) {
+        int carry=(int)(lo[i]&1)|((int)(hi[i]&1)<<1);
+        dqv_plane_delta(prefix,i,digit,carry);
+        lo[i]=(lo[i]>>1)|(lo[i+1]<<63);
+        hi[i]=(hi[i]>>1)|(hi[i+1]<<63);
+    }
+}
+#endif
+void dqv_plane_insert(uint64_t *lo,uint64_t *hi,uint16_t *prefix,int n,int p,int digit,int mode) {
+#if DQV_X86
+    if(mode==2){dqv_plane_insert_avx2(lo,hi,prefix,n,p,digit);return;}
+    if(mode==3){dqv_plane_insert_avx512(lo,hi,prefix,n,p,digit);return;}
+#endif
+    for(int i=n>>6;i>(p>>6);--i) {
+        int carry=(int)(lo[i-1]>>63)|((int)(hi[i-1]>>63)<<1);
+        dqv_plane_delta(prefix,i,carry,digit);
+        lo[i]=(lo[i]<<1)|(lo[i-1]>>63);
+        hi[i]=(hi[i]<<1)|(hi[i-1]>>63);
+    }
+    dqv_plane_insert_word(lo,hi,p,digit);
+}
+void dqv_plane_erase(uint64_t *lo,uint64_t *hi,uint16_t *prefix,int n,int p,int digit,int mode) {
+#if DQV_X86
+    if(mode==2){dqv_plane_erase_avx2(lo,hi,prefix,n,p,digit);return;}
+    if(mode==3){dqv_plane_erase_avx512(lo,hi,prefix,n,p,digit);return;}
+#endif
+    dqv_plane_erase_word(lo,hi,p);
+    for(int i=(p>>6)+1;i<=((n-1)>>6);++i) {
+        int carry=(int)(lo[i]&1)|((int)(hi[i]&1)<<1);
+        dqv_plane_delta(prefix,i,digit,carry);
+        lo[i]=(lo[i]>>1)|(lo[i+1]<<63);
+        hi[i]=(hi[i]>>1)|(hi[i+1]<<63);
+    }
+}
 #ifdef __cplusplus
 }
 #endif
@@ -470,3 +649,9 @@ int dqv_find(int32_t *a,int n,int x,int mode) {
         ## 二つの累積配列の同じ範囲へdeltaを一度の走査で加える。O(n)。
     proc quadPrefixFindRaw*(a: ptr int32, n, x, mode: cint): cint {.importc: "dqv_find".}
         ## 単調な累積和で最初にxを超える位置を返す。O(n)。
+    proc quadPrefixFind32Raw*(a: ptr int32, n, x, mode: cint): cint {.importc: "dqv_find32".}
+        ## 32要素分確保した累積配列の先頭n要素を検索する。0<=n<=32、O(1)。
+    proc quadPlaneInsertRaw*(low, high: ptr uint64, prefixes: ptr uint16, n, p, d, mode: cint) {.importc: "dqv_plane_insert".}
+        ## 末尾に1ワードの余裕がある2本のbit-planeへ挿入し、64桁prefixを更新する。O(n/64)。
+    proc quadPlaneEraseRaw*(low, high: ptr uint64, prefixes: ptr uint16, n, p, d, mode: cint) {.importc: "dqv_plane_erase".}
+        ## 末尾に零ワードがある2本のbit-planeから削除し、64桁prefixを更新する。dは削除桁。O(n/64)。

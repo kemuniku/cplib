@@ -71,6 +71,8 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
                 inc counts[d]
             for d in 1..3: result.offsets[h][d] = result.offsets[h][d-1]+counts[d-1]
             result.levels[h] = initQuadVector(T, valuesAtLevel, kernel)
+            if counts[0] == values.len or counts[1] == values.len or counts[2] == values.len or counts[3] == values.len:
+                continue
             var positions = result.offsets[h]
             for i, x in current:
                 let d = valuesAtLevel[i]
@@ -95,6 +97,11 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         mixin storageBytes
         result = t.offsets.len*sizeof(array[4, int])
         for level in t.levels: result+=level.storageBytes()
+    proc uniformAt[QV](t: DynamicQuadWaveletMatrix[QV], h: int): int {.inline.} =
+        ## 層全体が同じ桁ならO(1)で取得する。未対応の4値列では省略しない。
+        mixin uniformDigit
+        when compiles(t.levels[h].uniformDigit()): t.levels[h].uniformDigit()
+        else: -1
     proc `[]`*[QV](t: DynamicQuadWaveletMatrix[QV], i: int): int =
         ## 要素をO(ceil(H/2) D)で取得する。Dは4値列のrank/update計算量。
         mixin rankAccess
@@ -135,44 +142,58 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         dec t.n
         t.decode(key)
     proc `[]=`*[QV](t: DynamicQuadWaveletMatrix[QV], i, x: int) =
-        ## 共通上位digitの層は変更せず、差が出た層以下を更新する。償却O(ceil(H/2) D)。
-        mixin rankAccess, replaceRank, erase, insert
+        ## 各層の削除・挿入を統合し、共通経路の更新を相殺する。償却O(ceil(H/2) D)。
+        mixin rankAccess, replaceRank, moveRank, erase, insert
         assert 0 <= i and i < t.n and t.fits(x)
         let key = t.encode(x)
         var p = i
-        for h in countdown(t.levels.len-1, 0):
-            let d = int((key shr (2*h)) and 3)
-            var oldPos, newPos: int
-            when compiles(t.levels[h].replaceRank(p, d)):
-                let a = t.levels[h].replaceRank(p, d)
+        when compiles(t.levels[0].moveRank(i, i, 0)):
+            var old = i
+            for h in countdown(t.levels.len-1, 0):
+                let d = int((key shr (2*h)) and 3)
+                if t.uniformAt(h) == d: continue
+                let a = t.levels[h].moveRank(old, p, d)
+                old = t.offsets[h][a.oldDigit]+a.oldRank
                 if a.oldDigit == d:
-                    p = t.offsets[h][d]+a.oldRank
+                    p = t.offsets[h][d]+a.newRank
                     continue
-                oldPos = t.offsets[h][a.oldDigit]+a.oldRank
                 for other in a.oldDigit+1..3: dec t.offsets[h][other]
-                newPos = t.offsets[h][d]+a.newRank
+                p = t.offsets[h][d]+a.newRank
                 for other in d+1..3: inc t.offsets[h][other]
-            else:
-                let a = t.levels[h].rankAccess(p)
-                if a.digit == d:
-                    p = t.offsets[h][d]+a.rank
-                    continue
-                oldPos = t.offsets[h][a.digit]+a.rank
-                discard t.levels[h].erase(p)
-                for other in a.digit+1..3: dec t.offsets[h][other]
-                let before = t.levels[h].insert(p, d)
-                newPos = t.offsets[h][d]+before
-                for other in d+1..3: inc t.offsets[h][other]
-            for lower in countdown(h-1, 0):
-                let removed = t.levels[lower].erase(oldPos)
-                oldPos = t.offsets[lower][removed.digit]+removed.rank
-                for other in removed.digit+1..3: dec t.offsets[lower][other]
-            for lower in countdown(h-1, 0):
-                let digit = int((key shr (2*lower)) and 3)
-                let rank = t.levels[lower].insert(newPos, digit)
-                newPos = t.offsets[lower][digit]+rank
-                for other in digit+1..3: inc t.offsets[lower][other]
-            return
+        else:
+            for h in countdown(t.levels.len-1, 0):
+                let d = int((key shr (2*h)) and 3)
+                var oldPos, newPos: int
+                when compiles(t.levels[h].replaceRank(p, d)):
+                    let a = t.levels[h].replaceRank(p, d)
+                    if a.oldDigit == d:
+                        p = t.offsets[h][d]+a.oldRank
+                        continue
+                    oldPos = t.offsets[h][a.oldDigit]+a.oldRank
+                    for other in a.oldDigit+1..3: dec t.offsets[h][other]
+                    newPos = t.offsets[h][d]+a.newRank
+                    for other in d+1..3: inc t.offsets[h][other]
+                else:
+                    let a = t.levels[h].rankAccess(p)
+                    if a.digit == d:
+                        p = t.offsets[h][d]+a.rank
+                        continue
+                    oldPos = t.offsets[h][a.digit]+a.rank
+                    discard t.levels[h].erase(p)
+                    for other in a.digit+1..3: dec t.offsets[h][other]
+                    let before = t.levels[h].insert(p, d)
+                    newPos = t.offsets[h][d]+before
+                    for other in d+1..3: inc t.offsets[h][other]
+                for lower in countdown(h-1, 0):
+                    let removed = t.levels[lower].erase(oldPos)
+                    oldPos = t.offsets[lower][removed.digit]+removed.rank
+                    for other in removed.digit+1..3: dec t.offsets[lower][other]
+                for lower in countdown(h-1, 0):
+                    let digit = int((key shr (2*lower)) and 3)
+                    let rank = t.levels[lower].insert(newPos, digit)
+                    newPos = t.offsets[lower][digit]+rank
+                    for other in digit+1..3: inc t.offsets[lower][other]
+                return
     proc update*[QV](t: DynamicQuadWaveletMatrix[QV], i, x: int) =
         ## 一点変更の別名。
         t[i] = x
@@ -197,6 +218,10 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         var p = p
         var key = prefix
         for lower in countdown(h, 0):
+            let uniform = t.uniformAt(lower)
+            if uniform >= 0:
+                key = key or (uint64(uniform) shl (2*lower))
+                continue
             let a = t.levels[lower].rankAccess(p)
             key = key or (uint64(a.digit) shl (2*lower))
             p = t.offsets[lower][a.digit]+a.rank
@@ -207,6 +232,10 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         var r = r
         var key = prefix
         for lower in countdown(h, 0):
+            let uniform = t.uniformAt(lower)
+            if uniform >= 0:
+                key = key or (uint64(uniform) shl (2*lower))
+                continue
             if r-l == 1: return t.accessSuffix(lower, l, key)
             let c = t.children(lower, l, r)
             var d = (if largest: 3 else: 0)
@@ -226,6 +255,10 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         var k = k
         var key = 0'u64
         for h in countdown(t.levels.len-1, 0):
+            let uniform = t.uniformAt(h)
+            if uniform >= 0:
+                key = key or (uint64(uniform) shl (2*h))
+                continue
             if r-l == 1: return t.accessSuffix(h, l, key)
             let c = t.children(h, l, r)
             for d in 0..3:
@@ -255,6 +288,11 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         for h in countdown(t.levels.len-1, 0):
             if l == r: break
             let d = int((key shr (2*h)) and 3)
+            let uniform = t.uniformAt(h)
+            if uniform >= 0:
+                if uniform < d: return result+r-l
+                if uniform > d: return
+                continue
             let c = t.children(h, l, r)
             for smaller in 0..<d: result+=c.right[smaller]-c.left[smaller]
             l = c.left[d]
@@ -268,6 +306,20 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         t.checkRange(l, r)
         if low >= high: return 0
         t.range_lowerbound(l, r, high)-t.range_lowerbound(l, r, low)
+    proc matchesSuffix[QV](t: DynamicQuadWaveletMatrix[QV], h, p: int, key: uint64): bool =
+        ## 一要素の下位桁を比較し、不一致の時点で終了する。O((h+1) D)。
+        mixin rankAccess
+        var p = p
+        for lower in countdown(h, 0):
+            let d = int((key shr (2*lower)) and 3)
+            let uniform = t.uniformAt(lower)
+            if uniform >= 0:
+                if uniform != d: return false
+                continue
+            let a = t.levels[lower].rankAccess(p)
+            if a.digit != d: return false
+            p = t.offsets[lower][d]+a.rank
+        true
     proc count*[QV](t: DynamicQuadWaveletMatrix[QV], l, r, x: int): int =
         ## [l,r)内のxの個数。O(ceil(H/2) D)。
         mixin rankPair
@@ -278,7 +330,12 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         var r = r
         for h in countdown(t.levels.len-1, 0):
             if l == r: return 0
+            if r-l == 1: return int(t.matchesSuffix(h, l, key))
             let d = int((key shr (2*h)) and 3)
+            let uniform = t.uniformAt(h)
+            if uniform >= 0:
+                if uniform != d: return 0
+                continue
             let a = t.levels[h].rankPair(l, r, d)
             l = t.offsets[h][d]+a.left
             r = t.offsets[h][d]+a.right
@@ -324,6 +381,15 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         var candidateKey: uint64
         for h in countdown(t.levels.len-1, 0):
             if l == r: break
+            let d = int((key shr (2*h)) and 3)
+            let uniform = t.uniformAt(h)
+            if uniform >= 0:
+                prefix = prefix or (uint64(uniform) shl (2*h))
+                if uniform == d: continue
+                if (when successor: uniform > d else: uniform < d):
+                    return some(t.extremeValue(h-1, l, r, prefix, not successor))
+                l = r
+                break
             if r-l == 1:
                 let value = t.accessSuffix(h, l, prefix)
                 when successor:
@@ -332,7 +398,6 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
                     if value < x: return some(value)
                 l = r
                 break
-            let d = int((key shr (2*h)) and 3)
             let c = t.children(h, l, r)
             var sibling = d+(if successor: 1 else: -1)
             while 0 <= sibling and sibling <= 3:
@@ -376,6 +441,6 @@ when not declared CPLIB_COLLECTIONS_DYNAMIC_QUATERNARY_WAVELETMATRIX:
         assert 0 <= h and h < t.levels.len
         t.children(h, l, r)
     proc initDynamicQuadWaveletMatrixFast*(values: openArray[int], H = -1, signedValues = false, kernel = bpkAuto): DynamicQuadWaveletMatrix[FastQuadVector] =
-        ## B32・8192桁葉・16ワードprefixと六最適化で構築し、通常版と共存する。
+        ## B32・8192桁bit-plane葉・既定64桁prefixとSIMD更新で構築し、通常版と共存する。
         ## CLI設定は不要。H・符号・ISAの契約は通常コンストラクタと同じ。
         initDynamicQuadWaveletMatrix(values, FastQuadVector, H, signedValues, kernel)

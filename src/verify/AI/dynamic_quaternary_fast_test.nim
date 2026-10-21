@@ -17,7 +17,7 @@ proc audit[W](w: W, a: seq[int], p: int, withSum: static bool = false) =
     if a.len <= 128:
         for i, x in a: doAssert w.access(i) == x
     else:
-        for i in [0, 31, 32, 511, 512, position - 1, position, a.len - 1]:
+        for i in [0, 31, 32, 63, 64, 127, 128, 129, 511, 512, position - 1, position, a.len - 1]:
             if 0 <= i and i < a.len: doAssert w[i] == a[i]
     let sample = if position < a.len: a[position] else: 0
     for x in [int.low, 0, sample, int.high]:
@@ -106,9 +106,9 @@ proc run(width: int, signed: bool, withSum: static bool, n: int) =
     for step in 0..<steps:
         let kind = if a.len == 0: 0 else: step mod 4
         let limit = a.len - int(kind != 0)
-        let points = [0, 31, 32, 33, 511, 512, 513, (n + 1) div 2,
+        let points = [0, 31, 32, 33, 63, 64, 65, 127, 128, 129, 511, 512, 513, (n + 1) div 2,
                       8191, 8192, 8193, limit]
-        # 4種類の更新と12境界の対応を巡回ごとにずらす。
+        # 4種類の更新と境界の対応を巡回ごとにずらす。
         let p = min(points[(step + step div 4) mod points.len], limit)
         let x = value(step + 11)
         case kind

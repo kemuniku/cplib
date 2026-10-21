@@ -68,6 +68,19 @@ proc checkTotal(storage: var seq[uint64], values: seq[int], mode: cint) =
 proc checkPrefixKernels(kernel: BPlusKernel) =
     let mode = cint(ord(kernel) + 1)
     var rng = initRand(752091)
+    for n in 0..32:
+        var padded: array[34, int32]
+        padded[0] = countGuard
+        padded[^1] = countGuard
+        var total = 0
+        for i in 0..<32:
+            total += rng.rand(3)
+            padded[i+1] = if i < n: int32(total) else: int32(rng.rand(200)-100)
+        for x in -1..total+1:
+            var expected = 0
+            while expected < n and padded[expected+1] <= int32(x): inc expected
+            doAssert quadPrefixFind32Raw(addr padded[1], cint(n), cint(x), mode) == cint(expected)
+        doAssert padded[0] == countGuard and padded[^1] == countGuard
     var lengths = @[0, 1, 7, 8, 9, 15, 16, 17, 31, 32, 33, 63, 64, 65, 127, 128, 129]
     when defined(dynamicWmFullTest):
         lengths.setLen(0)
@@ -199,6 +212,78 @@ proc checkPackedEdits(kernel: BPlusKernel) =
                     checkStorage(storage, expected)
                     checkTotal(storage, expected, mode)
 
+proc checkPlaneEdits(kernel: BPlusKernel) =
+    let mode = cint(ord(kernel)+1)
+    var rng = initRand(512343)
+    for n in [0, 1, 63, 64, 65, 447, 448, 449, 511, 512, 513,
+              575, 576, 577, 1023, 1024, 1025, 8191, 8192, 8193, 16384]:
+        let words = (n+1+63) div 64+1
+        for pattern in 0..(if defined(dynamicWmFullTest): 4 else: 1):
+            var values = newSeq[int](n)
+            for i in 0..<n:
+                values[i] = if pattern == 0: 3 elif pattern == 1: rng.rand(3) else: pattern-2
+            var positions = boundaryPositions(n)
+            for k in 0..17:
+                for delta in -1..1:
+                    positions.addPosition((n div 64-k)*64+delta, n)
+            proc packed(): tuple[low, high: seq[uint64], prefix: seq[uint16]] =
+                result.low = newSeq[uint64](words+2)
+                result.high = newSeq[uint64](words+2)
+                result.prefix = newSeq[uint16](4*(words+2))
+                result.low[0] = wordGuard
+                result.low[^1] = wordGuard
+                result.high[0] = wordGuard
+                result.high[^1] = wordGuard
+                for d in 0..3:
+                    result.prefix[d] = 0x6aed'u16
+                    result.prefix[result.prefix.len-4+d] = 0x6aed'u16
+                var counts: array[4, uint16]
+                for i, d in values:
+                    if i mod 64 == 0:
+                        for k in 0..3: result.prefix[4*(1+i div 64)+k] = counts[k]
+                    result.low[1+i div 64] = result.low[1+i div 64] or (uint64(d and 1) shl (i mod 64))
+                    result.high[1+i div 64] = result.high[1+i div 64] or (uint64(d shr 1) shl (i mod 64))
+                    inc counts[d]
+                if n mod 64 == 0:
+                    for d in 0..3: result.prefix[4*(1+n div 64)+d] = counts[d]
+            proc check(low, high: seq[uint64], prefix: seq[uint16], expected: seq[int]) =
+                doAssert low[0] == wordGuard and low[^1] == wordGuard
+                doAssert high[0] == wordGuard and high[^1] == wordGuard
+                for d in 0..3:
+                    doAssert prefix[d] == 0x6aed'u16
+                    doAssert prefix[prefix.len-4+d] == 0x6aed'u16
+                var counts: array[4, uint16]
+                for w in 0..<words:
+                    if w*64 < expected.len:
+                        for d in 0..3: doAssert prefix[4*(1+w)+d] == counts[d]
+                    var a, b: uint64
+                    for j in 0..<64:
+                        let p = w*64+j
+                        if p < expected.len:
+                            let d = expected[p]
+                            a = a or (uint64(d and 1) shl j)
+                            b = b or (uint64(d shr 1) shl j)
+                            inc counts[d]
+                    doAssert low[1+w] == a and high[1+w] == b
+            for p in positions:
+                for d in 0..3:
+                    var storage = packed()
+                    var expected = newSeq[int](n+1)
+                    for i in 0..<p: expected[i] = values[i]
+                    expected[p] = d
+                    for i in p..<n: expected[i+1] = values[i]
+                    quadPlaneInsertRaw(addr storage.low[1], addr storage.high[1], addr storage.prefix[4],
+                        cint(n), cint(p), cint(d), mode)
+                    check(storage.low, storage.high, storage.prefix, expected)
+                if p < n:
+                    var storage = packed()
+                    var expected = newSeq[int](n-1)
+                    for i in 0..<p: expected[i] = values[i]
+                    for i in p+1..<n: expected[i-1] = values[i]
+                    quadPlaneEraseRaw(addr storage.low[1], addr storage.high[1], addr storage.prefix[4],
+                        cint(n), cint(p), cint(values[p]), mode)
+                    check(storage.low, storage.high, storage.prefix, expected)
+
 var checked: set[BPlusKernel]
 for requested in [bpkScalar, bpkAvx2, bpkAvx512, bpkAuto]:
     let kernel = resolveKernel(requested)
@@ -213,4 +298,5 @@ for requested in [bpkScalar, bpkAvx2, bpkAvx512, bpkAuto]:
         checkPrefixKernels(kernel)
         checkPackedRanks(kernel)
         checkPackedEdits(kernel)
+        checkPlaneEdits(kernel)
 echo "Hello World"
