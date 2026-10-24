@@ -19,6 +19,12 @@ when not declared CPLIB_MATH_ONLINE_COMBINATION_PREFIX_SUM:
 
     proc initOnlineCombinationPrefixSum*[ModInt](maxN: int): OnlineCombinationPrefixSum[ModInt] =
         ## 0 <= n <= maxN のオンライン二項係数和を前計算する。時間 O(N sqrt(N))、空間 O(N)。
+        ## 素数法 p（素数性の判定なし）と 0 <= maxN < p が必要。範囲外は ValueError。
+        ## dynamic modint の法は構築前に設定し、使用中は変更しない。
+        ## N=0 も対応。オブジェクトは必ずこのコンストラクタで生成する。
+        ## 幅 B=floor(sqrt(N))+1 として S(aB,bB), 0<=b<=a だけを保存する。
+        ## 表は m(m+1)/2 要素（m=floor(N/B)+1）で O(N+1) 空間。
+        ## 半行走査により O(N+N^2/B) 時間。クエリ列の事前取得・整列は不要。
         if maxN < 0 or uint64(maxN) >= uint64(ModInt.umod()):
             raise newException(ValueError, "0 <= maxN < 法 が必要です（法は素数）")
         result.maxN = maxN
@@ -57,6 +63,9 @@ when not declared CPLIB_MATH_ONLINE_COMBINATION_PREFIX_SUM:
 
     proc prefixSum*[ModInt](self: OnlineCombinationPrefixSum[ModInt], n, k: int): ModInt =
         ## sum(i=0..k, nCi)（右端を含む）を O(sqrt(N)) 時間、O(1) 補助空間で返す。
+        ## k<0 は0、k>=n は2^n。k は任意の int を受け取る。
+        ## n が [0,maxN] 外、または現在の法が構築時と異なる場合は ValueError。
+        ## 保存点から n,k の各方向へ最大 B-1 回移動する。
         if n < 0 or n > self.maxN:
             raise newException(ValueError, "0 <= n <= maxN が必要です")
         if uint32(ModInt.umod()) != self.modulus:
@@ -78,6 +87,8 @@ when not declared CPLIB_MATH_ONLINE_COMBINATION_PREFIX_SUM:
 
     proc rangeSum*[ModInt](self: OnlineCombinationPrefixSum[ModInt], n, l, r: int): ModInt =
         ## sum(i=l..<r, nCi)（右端を含まない）を O(sqrt(N)) 時間で返す。l >= r なら 0。
+        ## [0,n] 外の項は0。l,r は low(int), high(int) を含む任意の int。
+        ## 空・逆転区間でも n と現在の法を検査する。補助空間 O(1)。
         let right = self.prefixSum(n, if r <= 0: -1 else: r - 1)
         if l >= r:
             return ModInt(0)

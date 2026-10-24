@@ -96,4 +96,16 @@ for n in 0..100:
 let offline = combinationPrefixSum[modint998244353_barrett](queries)
 for i, query in queries:
     doAssert online.prefixSum(query[0], query[1]) == offline[i]
+block:
+    type Mint = modint998244353_barrett
+    const limit = 200000
+    let sums = initOnlineCombinationPrefixSum[Mint](limit)
+    var rng = initRand(1085)
+    for i in 0..<1000:
+        let n = rng.rand(limit)
+        let k = rng.rand(n)
+        doAssert sums.prefixSum(n, k) + sums.prefixSum(n, n - k - 1) == Mint(2).pow(n)
+        if n < limit:
+            doAssert sums.prefixSum(n + 1, k) == sums.prefixSum(n, k) + sums.prefixSum(n, k - 1)
+
 echo "Hello World"
