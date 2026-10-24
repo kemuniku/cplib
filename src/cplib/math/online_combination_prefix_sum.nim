@@ -35,11 +35,25 @@ when not declared CPLIB_MATH_ONLINE_COMBINATION_PREFIX_SUM:
         for row in 0..<result.samples.len:
             let n = row * result.width
             result.samples[row] = newSeq[ModInt](row + 1)
+            let rowFact = result.fact[n]
             var sum: ModInt = 0
-            for k in 0..n:
-                sum += result.choose(n, k)
-                if k mod result.width == 0:
-                    result.samples[row][k div result.width] = sum
+            var nextLow = 0
+            var lowColumn = 0
+            var nextHigh = result.width - 1
+            var highColumn = row - 1
+            result.samples[row][row] = result.powersOfTwo[n]
+            # n! は保存時だけ掛け、前半の和から対称な後半の prefix も求める。
+            for k in 0..(n div 2):
+                sum += result.factInv[k] * result.factInv[n - k]
+                if k == nextLow:
+                    result.samples[row][lowColumn] = sum * rowFact
+                    inc lowColumn
+                    nextLow += result.width
+                # 反射元は (row - 列番号) * width - 1。剰余計算せず次の位置を持つ。
+                if highColumn >= 0 and k == nextHigh:
+                    result.samples[row][highColumn] = result.powersOfTwo[n] - sum * rowFact
+                    dec highColumn
+                    nextHigh += result.width
 
     proc prefixSum*[ModInt](self: OnlineCombinationPrefixSum[ModInt], n, k: int): ModInt =
         ## sum(i=0..k, nCi)（右端を含む）を O(sqrt(N)) 時間、O(1) 補助空間で返す。

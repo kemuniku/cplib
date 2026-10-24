@@ -31,9 +31,9 @@ proc check[M](limit: int) =
         if k < 0: return M(0)
         return prefixes[n][min(n, k)]
 
-    # 平方数とその前後を含む構築上限、非単調な照会順。
-    for cap in [0, 1, 2, 3, 4, 8, 9, 10, 15, 16, 17, 24, 25, 26, limit]:
-        if cap > limit: continue
+    # 小さい構築上限を全探索し、奇偶の行・幅、中央の反射点とブロック境界を検査。
+    for cap in 0..limit:
+        if cap > 64 and cap != limit: continue
         let sums = initOnlineCombinationPrefixSum[M](cap)
         for n in countdown(cap, 0):
             for k in -2..cap + 2:
