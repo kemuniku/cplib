@@ -18,7 +18,7 @@ with output.open("w") as log, tempfile.TemporaryDirectory(prefix="trie-string-ch
                 for test in ("trie_string_test", "trie_string_import_test"):
                     command = [compiler, backend, "-r", "--path:src", "--hints:off",
                                f"--nimcache:{tmp}/cache", f"--out:{tmp}/test", *flags,
-                               f"src/verify/str/{test}.nim"]
+                               f"tools/trie_string/tests/{test}.nim"]
                     result = subprocess.run(command, cwd=repo, text=True,
                                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                     log.write(label + " " + test + "\n" + result.stdout + "\n")

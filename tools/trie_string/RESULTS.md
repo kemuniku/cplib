@@ -4,6 +4,10 @@ VM101 (Linux amd64)、2026-10-24。独立したローカルcheckoutの
 `trie-string-handles` ブランチ、基点 `66de9ab369c0ab6451dd3caad1afed7ce7c0024d`。
 既存checkoutの変更を取り込まず、以下の検証・計測を独立して実施した。
 
+単独のassertionテストは `tools/trie_string/tests/` に配置する。
+オンラインジャッジのPROBLEM URLを要求する `oj-verify` の探索対象とは分離し、
+`.github/workflows/trie-string.yml` で下記の24通りを直接実行する。
+
 ## 正しさ
 
 Nim **1.6.20 / 2.2.4 / 2.2.6**、**C / C++**、**debug / release** の12通り。
@@ -88,7 +92,7 @@ python3 tools/trie_string/benchmark.py /path/to/nim-2.2.6/bin/nim
 単体実行例:
 
 ```sh
-nim c -r --path:src -d:release --out:/tmp/trie-test src/verify/str/trie_string_test.nim
+nim c -r --path:src -d:release --out:/tmp/trie-test tools/trie_string/tests/trie_string_test.nim
 nim c --path:src -d:release -d:array2 --out:/tmp/trie-bench src/verify/str/trie_string_benchmark.nim
 /usr/bin/time -f 'rss_kib=%M' /tmp/trie-bench 400000 chains
 ```

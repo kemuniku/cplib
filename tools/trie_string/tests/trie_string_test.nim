@@ -1,5 +1,5 @@
 import random
-include ../../cplib/str/trie_string
+include ../../../src/cplib/str/trie_string
 
 proc sign(x: int): int =
     return (if x < 0: -1 elif x > 0: 1 else: 0)

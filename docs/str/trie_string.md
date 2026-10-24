@@ -140,7 +140,7 @@ LCAの深さをlとすると、jump先が異なることはその深さがlよ�
 
 ## 検証
 
-`src/verify/str/trie_string_test.nim` は、完全二分Trieの全組合せ、3 seedの乱択、
+`tools/trie_string/tests/trie_string_test.nim` は、完全二分Trieの全組合せ、3 seedの乱択、
 同じ組のbrute文字列LCP、byte全256値、重複、接頭辞、根、不正ID、26万段の2本の鎖と途中分岐、
 全深さのskew不変条件、小深さの全祖先問い合わせ、Array/Tableの一致、整数と強制hash衝突を検査する。
 変換・一点取得・prefix/LCP節点は、全256byteと汎用整数のbrute列、長い鎖、分岐、
