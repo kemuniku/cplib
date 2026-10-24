@@ -1,4 +1,43 @@
 when not declared CPLIB_STR_TRIE_STRING:
+    ## Trieの節点IDで過去の文字列・要素列を保持する。辺(親, 要素)を正規化し、同じ列は同じIDになる。
+    ## initTrieStringArray('a'..'z')は固定char範囲、initTrieStringTable(T)は汎用辞書版。
+    ## initTrieString() / TrieStringはTable[char]版の短縮形。charはUnicode文字ではなく0..255のbyte。
+    ## add(node,c)は末尾追加、pop(node)は親ID（根では根）を返し、過去の節点は破棄しない。
+    ## compare(a,b)は-1/0/1、lcp(a,b)は共通接頭辞の長さ、lcpNode(a,b)はその節点IDを返す。
+    ## prefix(node,length)は指定長の既存祖先、self[node,index]は0始まりの要素取得。
+    ## toString(node)はchar版、toSeq(node)は両版で利用できる。根の変換結果は空列。
+    ## prefixの長さは0..length(node)、添字は0..<length(node)。範囲外は切り詰めずValueError。
+    ## 同一IDのLCPはその列全体、一方が接頭辞なら短い方、根とのLCPは根/長さ0。
+    ## IDは同一インスタンス内でのみ有効。不正IDと未初期化はreleaseでもValueError。
+    ## default値ではnodeCountだけ利用可能（0）。他の操作にはinitが必要。内部状態は非公開。
+    ## 同一式の引数評価中に構造を変更せず、addの戻り値を受けてから他の操作へ渡す。
+    ##
+    ## Nは根を含む作成済み節点数、σはArray版の文字種数。
+    ## Array版: 新規addは償却O(σ)、既存辺は最悪O(1)、空間O(Nσ)。σ固定なら償却O(1)、空間O(N)。
+    ## Table版: addは期待償却O(1)、空間O(N)。Tのコピー/hash/==/<が定数時間かつ整合的で不変とする。
+    ## 「期待」は良好なhash分布の仮定であり、悪意ある衝突では追加が線形時間になり得る。
+    ## ジャンプ作成そのものは最悪O(1)だが、seq/Tableの再確保を含む追加は最悪O(1)ではない。
+    ## popは最悪O(1)、compare/lcp/lcpNode/prefix/[]は最悪O(log(N+1))、追加空間O(1)。
+    ## 変換は長さLに対して時間・出力空間O(L+1)。構造全体のコピーはこれらの操作計算量に含めない。
+    ## 比較にはhashを使用しない。辞書のhash衝突でも==で辺を区別するため答えは厳密。
+    ##
+    ## 各節点のjumpは1本だけで、経路を長さ2^k-1のskew binaryブロックへ分割する。
+    ## jump列の長さは非減少、等長が許されるのは先頭の2個だけ。
+    ## 追加時は先頭2個が同長なら新節点と合体し、それ以外は長さ1を先頭に置くので更新は定数時間。
+    ## 祖先探索はブロックを飛ばすか、親へ1歩進みブロックを2つの小さいrankへ分割する。
+    ## 最初のブロック列と分割階層はいずれも対数個、各rankで飛ばす兄弟は高々1個なので最悪O(log N)。
+    ## 同じ深さならjump長も同じ。2節点のjump先が異なる時だけ同時にjumpし、同じなら親へ進むと、
+    ## LCAの1つ下の深さを目標とする祖先探索になる。正規化したTrieではLCAがLCPを表す。
+    ## 二分累乗表・rolling hash・GCは使用しない。
+    ##
+    ## 使用例:
+    ##   var t = initTrieStringArray('a'..'z')
+    ##   let a = t.add(t.root, 'a')
+    ##   let ab = t.add(a, 'b')
+    ##   echo t.toString(ab)  # ab
+    ##   echo t[ab, 1]        # b
+    ##   echo t.lcp(a, ab)    # 1
+    ##   echo t.prefix(ab, 1) == a  # true
     const CPLIB_STR_TRIE_STRING* = 1
     import tables
 

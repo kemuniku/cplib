@@ -1,5 +1,6 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import random
-include ../../../src/cplib/str/trie_string
+include ../../cplib/str/trie_string
 
 proc sign(x: int): int =
     return (if x < 0: -1 elif x > 0: 1 else: 0)
@@ -144,7 +145,7 @@ for target in 0..depth:
     maxSteps = max(maxSteps, deep.steps(left[depth], target))
     doAssert deep.ancestorAtDepth(left[depth], target) == left[target]
 doAssert maxSteps <= 4 * 20
-echo "PASS: byte alphabet, 1,046,529 exhaustive pairs, 600,000 random pairs, deep/branch/invalid/invariant tests; max traversal steps=", maxSteps
+stderr.writeLine "PASS: byte alphabet, 1,046,529 exhaustive pairs, 600,000 random pairs, deep/branch/invalid/invariant tests; max traversal steps=", maxSteps
 
 block:
     var arrayTrie = initTrieStringArray(char(0)..char(255))
@@ -242,7 +243,7 @@ block:
         doAssert collisions.add(0, Colliding(i)) == ids[i]
         for j in 0..<256:
             doAssert collisions.compare(ids[i], ids[j]) == sign(i - j)
-echo "PASS: array/table parity (200,000 pairs), array deep branches, generic integers, forced hash collisions"
+stderr.writeLine "PASS: array/table parity (200,000 pairs), array deep branches, generic integers, forced hash collisions"
 
 template longForks(makeTrie: untyped) =
     block:
@@ -263,9 +264,9 @@ template longForks(makeTrie: untyped) =
                 doAssert trie.lcp(branch, chain[forkDepth]) == forkDepth
 longForks(initTrieStringTable(char))
 longForks(initTrieStringArray('a'..'b'))
-echo "PASS: long suffixes below shared prefixes around skew-rank boundaries, both variants"
+stderr.writeLine "PASS: long suffixes below shared prefixes around skew-rank boundaries, both variants"
 
-echo "PASS: exact LCP exhaustive/random oracle, array/table parity, roots/identical/prefix/long forks/invalid handles"
+stderr.writeLine "PASS: exact LCP exhaustive/random oracle, array/table parity, roots/identical/prefix/long forks/invalid handles"
 
 template navigation(makeTrie: untyped) =
     block:
@@ -388,4 +389,6 @@ block:
     invalid: discard ints[ids[^1], words[^1].len]
     invalid: discard ints.prefix(ids[^1], -1)
     invalid: discard ints.prefix(ids[^1], words[^1].len + 1)
-echo "PASS: conversions, symbol access, canonical LCP/prefix handles, byte/int oracles, deep chains, invalid bounds"
+stderr.writeLine "PASS: conversions, symbol access, canonical LCP/prefix handles, byte/int oracles, deep chains, invalid bounds"
+
+echo "Hello World"

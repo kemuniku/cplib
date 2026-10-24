@@ -1,3 +1,4 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 import cplib/str/trie_string
 import hashes
 
@@ -32,4 +33,6 @@ doAssert tableTrie.lcpNode(x, y) == tableTrie.root
 doAssert tableTrie.pop(x) == tableTrie.root
 doAssert tableTrie.add(0, Symbol(-1)) == x
 doAssert tableTrie.length(y) == 1 and tableTrie.nodeCount == 3
-echo "PASS: public import API and caller-defined symbol operators"
+stderr.writeLine "PASS: public import API and caller-defined symbol operators"
+
+echo "Hello World"
