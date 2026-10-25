@@ -19,14 +19,25 @@ template invalid(body: untyped) =
         doAssert caught
 
 template checkBad(bad, good, symbol: untyped) =
+    invalid: discard id(bad)
     invalid: discard bad.add(symbol)
     invalid: discard bad.pop()
     invalid: discard bad.length
+    invalid: discard len(bad)
+    invalid: discard bad.len
     invalid: discard bad.prefix(0)
     invalid: discard bad[0]
     invalid: discard bad.toSeq()
-    invalid: discard bad.compare(good)
-    invalid: discard good.compare(bad)
+    invalid: discard bad.cmp(good)
+    invalid: discard good.cmp(bad)
+    invalid: discard bad < good
+    invalid: discard good < bad
+    invalid: discard bad <= good
+    invalid: discard good <= bad
+    invalid: discard bad > good
+    invalid: discard good > bad
+    invalid: discard bad >= good
+    invalid: discard good >= bad
     invalid: discard bad.lcp(good)
     invalid: discard good.lcp(bad)
     invalid: discard bad.lcpNode(good)
@@ -43,25 +54,29 @@ template basics(makeTrie: untyped) =
         doAssert emptyArena.nodeCount == 0
         invalid: discard emptyArena.root
         checkBad(defaultNode, root, 'a')
-        invalid: discard defaultNode.toString()
+        invalid: discard ($defaultNode)
         for id in [-1, trie.nodeCount, high(int)]:
             var bad = root
             bad.id = id
             checkBad(bad, root, 'a')
-            invalid: discard bad.toString()
+            invalid: discard ($bad)
         let otherArena = makeTrie
         let other = otherArena.root
-        invalid: discard root.compare(other)
-        invalid: discard other.compare(root)
+        invalid: discard root.cmp(other)
+        invalid: discard other.cmp(root)
+        invalid: discard root < other
+        invalid: discard root <= other
+        invalid: discard root > other
+        invalid: discard root >= other
         invalid: discard root.lcp(other)
         invalid: discard other.lcp(root)
         invalid: discard root.lcpNode(other)
         invalid: discard other.lcpNode(root)
         invalid: discard root == other
         doAssert root.pop() == root and root.prefix(0) == root
-        doAssert root.length == 0 and root.compare(root) == 0
+        doAssert root.length == 0 and root.cmp(root) == 0
         doAssert root.lcp(root) == 0 and root.lcpNode(root) == root
-        doAssert root.toString() == "" and root.toSeq().len == 0
+        doAssert ($root) == "" and root.toSeq().len == 0
         invalid: discard root[0]
         invalid: discard root[-1]
         invalid: discard root.prefix(1)
@@ -71,16 +86,16 @@ template basics(makeTrie: untyped) =
         let aCopy = a
         var moving = a
         moving = moving.add('b')
-        doAssert moving == ab and aCopy == a and a.toString() == "a"
+        doAssert moving == ab and aCopy == a and ($a) == "a"
         moving = moving.pop()
-        doAssert moving == a and ab.toString() == "ab"
+        doAssert moving == a and ($ab) == "ab"
         doAssert root.add('a').add('b') == ab
         let alias = trie
         doAssert alias.root == root
         trie = makeTrie
         doAssert alias.root.add('a') == a
-        invalid: discard trie.root.compare(a)
-        doAssert ab.toString() == "ab"
+        invalid: discard trie.root.cmp(a)
+        doAssert ($ab) == "ab"
         for bad in [-1, 2, high(int)]:
             invalid: discard ab[bad]
         for bad in [-1, 3, high(int)]:
@@ -108,13 +123,13 @@ template byteAlphabet(makeTrie: untyped) =
             doAssert root.add(char(i)) == nodes[^1]
             chain = chain.add(char(i))
             word.add(char(i))
-        doAssert chain.toString() == word
+        doAssert ($chain) == word
         let values = chain.toSeq()
         for a in 0..255:
             doAssert chain[a] == char(a) and values[a] == char(a)
-            doAssert chain.prefix(a).toString() == word[0..<a]
+            doAssert ($chain.prefix(a)) == word[0..<a]
             for b in 0..255:
-                doAssert nodes[a].compare(nodes[b]) == sign(a - b)
+                doAssert nodes[a].cmp(nodes[b]) == sign(a - b)
                 doAssert nodes[a].lcp(nodes[b]) == ord(a == b)
 byteAlphabet(initTrieStringTable(char))
 byteAlphabet(initTrieStringArray(char(0)..char(255)))
@@ -129,7 +144,7 @@ block:
             words.add(words[i] & c)
     for a in 0..<nodes.len:
         for b in 0..<nodes.len:
-            doAssert nodes[a].compare(nodes[b]) == sign(cmp(words[a], words[b]))
+            doAssert nodes[a].cmp(nodes[b]) == sign(cmp(words[a], words[b]))
             let common = bruteLcp(words[a], words[b])
             doAssert nodes[a].lcp(nodes[b]) == common
             doAssert nodes[a].lcpNode(nodes[b]) == nodes[a].prefix(common)
@@ -147,14 +162,14 @@ for seed in [1, 17, 20261024]:
         if v.id == nodes.len:
             nodes.add(v)
             words.add(words[p] & c)
-        doAssert v.toString() == words[p] & c
+        doAssert ($v) == words[p] & c
         doAssert nodes[p].add(c) == v and v.pop() == nodes[p]
-        doAssert v.length == words[v.id].len
+        doAssert v.length == words[v.id].len and len(v) == words[v.id].len
         cursor = (if i mod 11 == 0: nodes[p].pop().id else: v.id)
         for q in 0..<10:
             let a = rng.rand(nodes.high)
             let b = rng.rand(nodes.high)
-            doAssert nodes[a].compare(nodes[b]) == sign(cmp(words[a], words[b]))
+            doAssert nodes[a].cmp(nodes[b]) == sign(cmp(words[a], words[b]))
             doAssert nodes[a].lcp(nodes[b]) == bruteLcp(words[a], words[b])
         doAssert arena.nodeCount == nodes.len
 
@@ -176,13 +191,13 @@ block:
             tt.add(b)
             words.add(words[p] & c)
         doAssert aa[p].add(c) == a and a.pop() == aa[p]
-        doAssert a.toString() == words[a.id] and b.toString() == words[b.id]
+        doAssert ($a) == words[a.id] and ($b) == words[b.id]
         for j in 0..<10:
             let x = rng.rand(words.high)
             let y = rng.rand(words.high)
             let expected = sign(cmp(words[x], words[y]))
             let common = bruteLcp(words[x], words[y])
-            doAssert aa[x].compare(aa[y]) == expected and tt[x].compare(tt[y]) == expected
+            doAssert aa[x].cmp(aa[y]) == expected and tt[x].cmp(tt[y]) == expected
             doAssert aa[x].lcp(aa[y]) == common and tt[x].lcp(tt[y]) == common
     doAssert arrayArena.nodeCount == tableArena.nodeCount
 
@@ -199,9 +214,9 @@ template deepChains(makeTrie: untyped) =
         arena = nil
         for i in 1..depth:
             doAssert left[i].pop() == left[i - 1]
-            doAssert left[i].compare(right[i]) == -1
-            doAssert left[depth].compare(left[i - 1]) == 1
-            doAssert left[i].compare(right[depth]) == -1
+            doAssert left[i].cmp(right[i]) == -1
+            doAssert left[depth].cmp(left[i - 1]) == 1
+            doAssert left[i].cmp(right[depth]) == -1
             doAssert left[i - 1].add('a') == left[i]
             doAssert left[i].lcp(left[i]) == i
             doAssert left[depth].lcp(left[i - 1]) == i - 1
@@ -211,13 +226,13 @@ template deepChains(makeTrie: untyped) =
         for i in countup(0, depth - 1, 127):
             let branch = left[i].add('b')
             let extension = branch.add('a')
-            doAssert left[depth].compare(branch) == -1
-            doAssert left[depth].compare(extension) == -1
-            doAssert left[i].compare(branch) == -1 and branch.compare(extension) == -1
+            doAssert left[depth].cmp(branch) == -1
+            doAssert left[depth].cmp(extension) == -1
+            doAssert left[i].cmp(branch) == -1 and branch.cmp(extension) == -1
             doAssert left[^1].lcpNode(extension) == left[i]
             doAssert left[^1].prefix(i) == left[i]
             doAssert left[^1][i] == 'a'
-        let restored = left[^1].toString()
+        let restored = ($left[^1])
         let values = left[^1].toSeq()
         doAssert restored.len == depth and values.len == depth
         for i in 0..<depth:
@@ -260,9 +275,9 @@ template longForks(makeTrie: untyped) =
             for distance in 1..4097:
                 if distance > 1:
                     branch = branch.add('a')
-                doAssert chain[forkDepth + distance].compare(branch) == -1
-                doAssert chain[^1].compare(branch) == -1
-                doAssert branch.compare(chain[forkDepth]) == 1
+                doAssert chain[forkDepth + distance].cmp(branch) == -1
+                doAssert chain[^1].cmp(branch) == -1
+                doAssert branch.cmp(chain[forkDepth]) == 1
                 doAssert chain[forkDepth + distance].lcp(branch) == forkDepth
                 doAssert branch.lcp(chain[^1]) == forkDepth
                 doAssert branch.lcpNode(chain[^1]) == chain[forkDepth]
@@ -282,7 +297,7 @@ template navigation(makeTrie: untyped) =
             nodes.add(node)
             words.add(words[p] & c)
             let word = words[^1]
-            doAssert node.toString() == word
+            doAssert ($node) == word
             let values = node.toSeq()
             doAssert values.len == word.len
             for j in 0..<word.len:
@@ -290,7 +305,7 @@ template navigation(makeTrie: untyped) =
             var ancestor = node
             for j in countdown(word.len, 0):
                 doAssert node.prefix(j) == ancestor
-                doAssert ancestor.toString() == word[0..<j]
+                doAssert ($ancestor) == word[0..<j]
                 ancestor = ancestor.pop()
             doAssert node.prefix(word.len) == node and node.lcpNode(node) == node
             doAssert node.lcpNode(nodes[p]) == nodes[p] and nodes[p].lcpNode(node) == nodes[p]
@@ -299,7 +314,7 @@ template navigation(makeTrie: untyped) =
                 let common = bruteLcp(word, words[other])
                 let before = arena.nodeCount
                 doAssert node.lcpNode(nodes[other]) == node.prefix(common)
-                doAssert node.lcpNode(nodes[other]).toString() == word[0..<common]
+                doAssert ($node.lcpNode(nodes[other])) == word[0..<common]
                 doAssert arena.nodeCount == before
 navigation(initTrieString())
 navigation(initTrieStringArray(char(0)..char(255)))
@@ -310,7 +325,7 @@ block:
     var bad: typeof(root)
     checkBad(bad, root, 1)
     let other = initTrieStringTable(int).root
-    invalid: discard root.compare(other)
+    invalid: discard root.cmp(other)
     invalid: discard root.lcp(other)
     invalid: discard root.lcpNode(other)
     invalid: discard root == other
@@ -350,6 +365,6 @@ block:
     for i in 0..<256:
         doAssert root.add(Colliding(i)) == nodes[i]
         for j in 0..<256:
-            doAssert nodes[i].compare(nodes[j]) == sign(i - j)
+            doAssert nodes[i].cmp(nodes[j]) == sign(i - j)
 stderr.writeLine "PASS: typed handles, owners/lifetimes/copies, exact comparison/navigation, bytes/integers/collisions, deep growth"
 echo "Hello World"

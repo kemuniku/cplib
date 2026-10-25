@@ -3,9 +3,11 @@ when not declared CPLIB_STR_TRIE_STRING:
     ## initTrieStringArray('a'..'z') / initTrieStringTable(T)でarenaを作り、rootで空列の節点を得る。
     ## TrieStringArrayNode[chars] / TrieStringTableNode[T]はownerの強参照と内部添字を持つ値型。
     ## 節点コピー・arenaのseq再確保・元のarena変数のスコープ終了後も安全に利用できる。
-    ## arenaのコピーは同一arenaを共有する。節点は内部状態を公開せず、整数IDからは生成できない。
-    ## N.add(c)、N.pop()、N.compare(M)、N.lcp(M)、N.lcpNode(M)、N.prefix(length)、N[index]を使う。
-    ## N.toString()はchar版、N.toSeq()は両版。N.lengthは要素数、arena.nodeCountは総節点数。
+    ## arenaのコピーは同一arenaを共有する。節点の内部状態は変更できず、整数IDからは生成できない。
+    ## N.add(c)、N.pop()、N.cmp(M)、N.lcp(M)、N.lcpNode(M)、N.prefix(length)、N[index]を使う。
+    ## 節点の<、<=、>、>=は要素列の辞書順で比較する。最悪O(log N)。
+    ## $Nはchar版、N.toSeq()は両版。N.len / N.lengthは要素数、arena.nodeCountは総節点数。
+    ## N.idはarena内で一意な読み取り専用ID。根は0、新節点は作成順で、追加後も変わらない。取得O(1)。
     ## add/popは新しい節点ハンドルを返し、元のハンドルと履歴を変更しない。根のpopは根。
     ## 比較・LCP・節点の==は同じownerのみ許す。異なるowner、default節点はValueError。
     ## 異なる要素型・Arrayの異なる文字範囲の節点同士の演算は型検査で拒否される。
@@ -37,7 +39,7 @@ when not declared CPLIB_STR_TRIE_STRING:
     ##   let t = initTrieStringArray('a'..'z')
     ##   let a = t.root.add('a')
     ##   let ab = a.add('b')
-    ##   echo ab.toString()       # ab
+    ##   echo $ab                 # ab
     ##   echo ab[1]               # b
     ##   echo a.lcp(ab)           # 1
     ##   echo ab.prefix(1) == a   # true
@@ -57,7 +59,7 @@ when not declared CPLIB_STR_TRIE_STRING:
             nodes: seq[TrieStringEntry[char]]
             children: seq[array[chars.a..chars.b, int]]
         TrieStringTableNode*[T] = object
-            ## ownerを強参照する節点。コピーは同じarena・節点を共有し、添字は非公開。
+            ## ownerを強参照する節点。コピーは同じarena・節点を共有し、idは読み取り専用。
             owner: TrieStringTable[T]
             id: int
         TrieStringArrayNode*[chars: static[HSlice[char, char]]] = object
@@ -268,6 +270,11 @@ when not declared CPLIB_STR_TRIE_STRING:
         if a.owner != b.owner:
             raise newException(ValueError, "incompatible TrieString owners")
 
+    proc id*[S: TrieStringArrayNode | TrieStringTableNode](self: S): int {.inline.} =
+        ## arena内の節点IDを返す。根は0、不正な節点はValueError。O(1)。
+        self.checkHandle()
+        return self.id
+
     proc `==`*[T](a, b: TrieStringTableNode[T]): bool =
         ## 同じarenaの正規化された節点かを返す。不正・異なるownerはValueError。O(1)。
         checkCompatible(a, b)
@@ -282,6 +289,10 @@ when not declared CPLIB_STR_TRIE_STRING:
         ## 節点が表す列の要素数を返す。O(1)。
         self.checkHandle()
         return self.owner.nodes[self.id].depth
+
+    proc len*[S: TrieStringArrayNode | TrieStringTableNode](self: S): int {.inline.} =
+        ## 節点が表す列の要素数を返す。不正な節点はValueError。O(1)。
+        return self.length
 
     proc add*[T](self: TrieStringTableNode[T], c: T): TrieStringTableNode[T] =
         ## 末尾に1要素追加した節点を返す。期待償却O(1)。元の節点は変わらない。
@@ -301,10 +312,47 @@ when not declared CPLIB_STR_TRIE_STRING:
         result = self
         result.id = self.owner.parentId(self.id)
 
-    proc compare*[S: TrieStringArrayNode | TrieStringTableNode](a, b: S): int =
+    proc cmp*[chars](a, b: TrieStringArrayNode[chars]): int =
         ## 同じarenaの列を厳密な辞書順で-1/0/1に比較する。最悪O(log N)。
         checkCompatible(a, b)
         return a.owner.compareIds(a.id, b.id)
+
+    proc cmp*[T](a, b: TrieStringTableNode[T]): int =
+        ## 同じarenaの列を厳密な辞書順で-1/0/1に比較する。最悪O(log N)。
+        checkCompatible(a, b)
+        return a.owner.compareIds(a.id, b.id)
+
+    proc `<`*[chars](a, b: TrieStringArrayNode[chars]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で小さいかを返す。最悪O(log N)。
+        return cmp(a, b) < 0
+
+    proc `<`*[T](a, b: TrieStringTableNode[T]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で小さいかを返す。最悪O(log N)。
+        return cmp(a, b) < 0
+
+    proc `<=`*[chars](a, b: TrieStringArrayNode[chars]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で以下かを返す。最悪O(log N)。
+        return cmp(a, b) <= 0
+
+    proc `<=`*[T](a, b: TrieStringTableNode[T]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で以下かを返す。最悪O(log N)。
+        return cmp(a, b) <= 0
+
+    proc `>`*[chars](a, b: TrieStringArrayNode[chars]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で大きいかを返す。最悪O(log N)。
+        return cmp(a, b) > 0
+
+    proc `>`*[T](a, b: TrieStringTableNode[T]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で大きいかを返す。最悪O(log N)。
+        return cmp(a, b) > 0
+
+    proc `>=`*[chars](a, b: TrieStringArrayNode[chars]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で以上かを返す。最悪O(log N)。
+        return cmp(a, b) >= 0
+
+    proc `>=`*[T](a, b: TrieStringTableNode[T]): bool {.inline.} =
+        ## 同じarenaの列が辞書順で以上かを返す。最悪O(log N)。
+        return cmp(a, b) >= 0
 
     proc lcpNode*[S: TrieStringArrayNode | TrieStringTableNode](a, b: S): S =
         ## 同じarenaの最長共通接頭辞の節点を返す。最悪O(log N)。
@@ -342,7 +390,12 @@ when not declared CPLIB_STR_TRIE_STRING:
         self.checkHandle()
         return self.owner.restore(self.id)
 
-    proc toString*[S: TrieStringArrayNode | TrieStringTableNode[char]](self: S): string =
+    proc `$`*[chars](self: TrieStringArrayNode[chars]): string =
+        ## byte列をstringへ復元する。時間・出力空間O(長さ+1)。
+        self.checkHandle()
+        return self.owner.restoreString(self.id)
+
+    proc `$`*(self: TrieStringTableNode[char]): string =
         ## byte列をstringへ復元する。時間・出力空間O(長さ+1)。
         self.checkHandle()
         return self.owner.restoreString(self.id)
