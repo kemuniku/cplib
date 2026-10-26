@@ -208,6 +208,15 @@ when not declared CPLIB_GRAPH_GRAPH:
         ## 辺数を返す。無向辺も一辺として数える。O(1)。
         g.edge_info.len
 
+    proc degree*[T](g: DynamicGraph[T], v: int): int =
+        ## 頂点 v の次数（有向は出次数）を返す。無向の自己ループは 2 と数える。O(1)。
+        g.edges[v].len
+
+    proc degree*[T](g: StaticGraph[T], v: int): int =
+        ## 構築済みグラフの頂点 v の次数（有向は出次数）を返す。無向の自己ループは 2 と数える。O(1)。
+        g.static_graph_initialized_check()
+        int(g.start[v + 1] - g.start[v])
+
     proc get_edge*[T](g: DynamicGraph[T] or StaticGraph[T], id: int): auto =
         ## 辺番号から追加時の向きで、重みなしは (src, dst)、重みありは (src, dst, cost) を返す。O(1)。
         let e = g.edge_info[id]
