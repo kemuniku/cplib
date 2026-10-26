@@ -100,10 +100,10 @@ data:
   dependsOn:
   - cplib/utils/auto_rollback.nim
   - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/auto_rollback.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/auto_rollback.nim
   isVerificationFile: true
   path: verify/AI/temporary_index_cache_test.nim
   requiredBy: []

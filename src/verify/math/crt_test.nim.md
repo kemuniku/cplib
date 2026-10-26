@@ -165,25 +165,25 @@ data:
     \ 1, 1000000000, 1) == 1000000000999999999'i64\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/int128.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/crt.nim
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/crt.nim
   - cplib/math/int128.nim
-  - cplib/math/bigint.nim
-  - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/crt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/crt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/math/crt_test.nim
   requiredBy: []

@@ -159,15 +159,15 @@ data:
     \        for mask in 0..<size: result[mask] = left[mask * stride + int(ranks[mask])]\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/convolution/subset_convolution.nim
   requiredBy:

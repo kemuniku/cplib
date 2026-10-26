@@ -47,12 +47,12 @@ data:
     \        print(bounds.p, bounds.q, bounds.p, bounds.q)\n    else:\n        print(bounds.p,\
     \ bounds.q, bounds.r, bounds.s)\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/graph.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/tmpl/fastio.nim
   - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
   - cplib/math/fractions.nim
   isVerificationFile: true

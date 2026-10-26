@@ -58,9 +58,9 @@ data:
     \ + v)\necho ans\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/hashtable.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/hashtable.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true

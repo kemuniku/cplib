@@ -143,11 +143,11 @@ data:
     \ and checkedPrefixes > 10000\necho \"Hello World\"\n"
   dependsOn:
   - cplib/str/suffix_automaton_table.nim
-  - cplib/str/suffix_array.nim
   - cplib/str/suffix_automaton_array.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/suffix_automaton_array.nim
+  - cplib/str/suffix_array.nim
   - cplib/str/suffix_automaton_table.nim
+  - cplib/str/suffix_automaton_array.nim
   isVerificationFile: true
   path: verify/AI/suffix_automaton_array_test.nim
   requiredBy: []

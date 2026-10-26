@@ -44,9 +44,9 @@ data:
 
     '
   dependsOn:
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim

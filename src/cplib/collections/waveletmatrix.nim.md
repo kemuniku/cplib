@@ -9,6 +9,12 @@ data:
     title: cplib/collections/bitvector.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/collections/static_range_distinct.nim
+    title: cplib/collections/static_range_distinct.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/collections/static_range_distinct.nim
+    title: cplib/collections/static_range_distinct.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/collections/waveletmatrix_fenwick.nim
     title: cplib/collections/waveletmatrix_fenwick.nim
   - icon: ':heavy_check_mark:'
@@ -22,6 +28,12 @@ data:
     title: cplib/str/static_string_search.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/static_range_distinct_test.nim
+    title: verify/AI/static_range_distinct_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/static_range_distinct_test.nim
+    title: verify/AI/static_range_distinct_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/static_string_search_test.nim
     title: verify/AI/static_string_search_test.nim
   - icon: ':heavy_check_mark:'
@@ -39,6 +51,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/waveletmatrix_test.nim
     title: verify/AI/waveletmatrix_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/static_range_distinct_test.nim
+    title: verify/collections/static_range_distinct_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/collections/static_range_distinct_test.nim
+    title: verify/collections/static_range_distinct_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/collections/waveletmatrix_test.nim
     title: verify/collections/waveletmatrix_test.nim
@@ -341,6 +359,8 @@ data:
   isVerificationFile: false
   path: cplib/collections/waveletmatrix.nim
   requiredBy:
+  - cplib/collections/static_range_distinct.nim
+  - cplib/collections/static_range_distinct.nim
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/str/static_string_search.nim
@@ -352,12 +372,16 @@ data:
   - verify/utils/backwards_index_simd_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
+  - verify/collections/static_range_distinct_test.nim
+  - verify/collections/static_range_distinct_test.nim
   - verify/AI/waveletmatrix_test.nim
   - verify/AI/waveletmatrix_test.nim
   - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/static_string_search_test.nim
   - verify/AI/static_string_search_test.nim
+  - verify/AI/static_range_distinct_test.nim
+  - verify/AI/static_range_distinct_test.nim
 documentation_of: cplib/collections/waveletmatrix.nim
 layout: document
 redirect_from:

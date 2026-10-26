@@ -45,6 +45,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -202,6 +208,8 @@ data:
   - verify/AI/mo_test.nim
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
 documentation_of: cplib/utils/mo.nim
 layout: document
 redirect_from:

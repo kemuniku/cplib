@@ -33,8 +33,8 @@ data:
     \nlet context = newContext()\ncontext.destroyContext()\ndoAssert searchOEIS(newSeq[int]()).len\
     \ == 0\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/utils/oeis.nim
+  - cplib/math/fractions.nim
   - cplib/utils/oeis.nim
   - cplib/math/fractions.nim
   isVerificationFile: true

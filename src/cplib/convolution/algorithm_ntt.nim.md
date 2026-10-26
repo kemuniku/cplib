@@ -418,20 +418,20 @@ data:
     \ cast[ptr uint32](addr result[0]), addr values[0],\n                start.csize_t,\
     \ count.csize_t, T is MontgomeryModint)\n"
   dependsOn:
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
   - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/math/isprime.nim
   isVerificationFile: false
   path: cplib/convolution/algorithm_ntt.nim
   requiredBy:

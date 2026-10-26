@@ -27,6 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -68,11 +74,11 @@ data:
     \        for (queryIndex, prefixIndex) in queryIndices:\n            result[queryIndex]\
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
+  - cplib/utils/mo.nim
+  - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/math/combination.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/math/combination.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim
@@ -82,6 +88,8 @@ data:
   verifiedWith:
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
 documentation_of: cplib/math/combination_prefix_sum.nim
 layout: document
 redirect_from:

@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/combination_prefix_sum.nim
     title: cplib/math/combination_prefix_sum.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/online_combination_prefix_sum.nim
+    title: cplib/math/online_combination_prefix_sum.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/math/online_combination_prefix_sum.nim
+    title: cplib/math/online_combination_prefix_sum.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/combination_test.nim
@@ -33,6 +39,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/math/combination_test.nim
     title: verify/math/combination_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_yosupo_test.nim
+    title: verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_yosupo_test.nim
+    title: verify/math/online_combination_prefix_sum_yosupo_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -68,6 +86,8 @@ data:
   isVerificationFile: false
   path: cplib/math/combination.nim
   requiredBy:
+  - cplib/math/online_combination_prefix_sum.nim
+  - cplib/math/online_combination_prefix_sum.nim
   - cplib/math/combination_prefix_sum.nim
   - cplib/math/combination_prefix_sum.nim
   timestamp: '2026-09-13 17:15:27+09:00'
@@ -75,12 +95,16 @@ data:
   verifiedWith:
   - verify/AI/combination_test.nim
   - verify/AI/combination_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_npr_test.nim
   - verify/math/combination_npr_test.nim
   - verify/math/combination_test.nim
   - verify/math/combination_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
 documentation_of: cplib/math/combination.nim
 layout: document
 redirect_from:

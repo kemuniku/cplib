@@ -65,17 +65,17 @@ data:
     \ World\"\n"
   dependsOn:
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/math/multiplicative_prefix_sum.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/multiplicative_prefix_sum.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/AI/multiplicative_prefix_sum_limit_test.nim
   requiredBy: []

@@ -256,6 +256,12 @@ data:
     path: verify/math/isprime_yukicoder_test.nim
     title: verify/math/isprime_yukicoder_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_yosupo_test.nim
+    title: verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_yosupo_test.nim
+    title: verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/stern_brocot_tree_rational_approximation_test.nim
     title: verify/math/stern_brocot_tree_rational_approximation_test.nim
   - icon: ':heavy_check_mark:'
@@ -1080,6 +1086,8 @@ data:
   - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/addition_of_big_integers_test.nim

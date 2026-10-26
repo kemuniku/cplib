@@ -111,9 +111,9 @@ data:
     \ World\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/SWAG.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/SWAG.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true

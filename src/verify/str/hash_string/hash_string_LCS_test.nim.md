@@ -49,12 +49,12 @@ data:
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
     echo a,\" \",b,\" \",c,\" \",d\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/str/suffix_array.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/hash_string.nim
   - cplib/str/hash_string.nim
   - cplib/str/suffix_array.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/hash_string.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_LCS_test.nim
   requiredBy: []

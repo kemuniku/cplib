@@ -67,8 +67,8 @@ data:
     \        failed = true\n    doAssert failed\n    doAssert requests.len == requestCount\n\
     \necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
   - cplib/utils/oeis.nim
+  - cplib/math/fractions.nim
   - cplib/utils/oeis.nim
   - cplib/math/fractions.nim
   isVerificationFile: true

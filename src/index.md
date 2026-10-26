@@ -235,6 +235,9 @@ data:
       path: cplib/collections/staticRMQ.nim
       title: cplib/collections/staticRMQ.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/collections/static_range_distinct.nim
+      title: cplib/collections/static_range_distinct.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/collections/staticbitset.nim
       title: cplib/collections/staticbitset.nim
     - icon: ':heavy_check_mark:'
@@ -665,6 +668,9 @@ data:
       path: cplib/math/nearest_equiv.nim
       title: cplib/math/nearest_equiv.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/math/online_combination_prefix_sum.nim
+      title: cplib/math/online_combination_prefix_sum.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/math/osa_k.nim
       title: cplib/math/osa_k.nim
     - icon: ':heavy_check_mark:'
@@ -819,6 +825,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/trie.nim
       title: cplib/str/trie.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/str/trie_string.nim
+      title: cplib/str/trie_string.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/wildcard_matching.nim
       title: cplib/str/wildcard_matching.nim
@@ -2209,6 +2218,9 @@ data:
       path: verify/AI/static_matrix_test.nim
       title: verify/AI/static_matrix_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/static_range_distinct_test.nim
+      title: verify/AI/static_range_distinct_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/static_rectangle_add_rectangle_sum_test.nim
       title: verify/AI/static_rectangle_add_rectangle_sum_test.nim
     - icon: ':heavy_check_mark:'
@@ -2477,6 +2489,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/collections/staticRMQ_test.nim
       title: verify/collections/staticRMQ_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/collections/static_range_distinct_test.nim
+      title: verify/collections/static_range_distinct_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/collections/unionfind_test.nim
       title: verify/collections/unionfind_test.nim
@@ -3068,6 +3083,12 @@ data:
       path: verify/math/monoid_floor_sum_test.nim
       title: verify/math/monoid_floor_sum_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/math/online_combination_prefix_sum_test.nim
+      title: verify/math/online_combination_prefix_sum_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/math/online_combination_prefix_sum_yosupo_test.nim
+      title: verify/math/online_combination_prefix_sum_yosupo_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/math/stern_brocot_tree_bounds_test.nim
       title: verify/math/stern_brocot_tree_bounds_test.nim
     - icon: ':heavy_check_mark:'
@@ -3355,6 +3376,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/suffix_automaton_table_number_of_substrings_test.nim
       title: verify/str/suffix_automaton_table_number_of_substrings_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/trie_string_import_test.nim
+      title: verify/str/trie_string_import_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/trie_string_test.nim
+      title: verify/str/trie_string_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/wildcard_matching_test.nim
       title: verify/str/wildcard_matching_test.nim

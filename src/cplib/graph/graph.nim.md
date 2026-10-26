@@ -1162,6 +1162,12 @@ data:
     path: verify/math/combination_prefix_sum_test.nim
     title: verify/math/combination_prefix_sum_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/stern_brocot_tree_bounds_test.nim
     title: verify/math/stern_brocot_tree_bounds_test.nim
   - icon: ':heavy_check_mark:'
@@ -2018,6 +2024,8 @@ data:
   - verify/math/stern_brocot_tree_random_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/auxiliaryweightedtree_test.nim

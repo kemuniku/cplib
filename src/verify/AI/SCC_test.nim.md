@@ -71,8 +71,8 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
+  - cplib/graph/graph.nim
   - cplib/graph/SCC.nim
   isVerificationFile: true
   path: verify/AI/SCC_test.nim

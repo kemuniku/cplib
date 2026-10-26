@@ -66,17 +66,17 @@ data:
     \ \")\n\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/graph/graph.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tree/rerooting.nim
+  - cplib/tree/rerooting.nim
   - cplib/math/isqrt.nim
-  - cplib/tree/rerooting.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/tree/rerooting.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim
   requiredBy: []

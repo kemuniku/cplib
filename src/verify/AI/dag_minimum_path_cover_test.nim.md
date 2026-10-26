@@ -71,14 +71,14 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/maxflow.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/maxflow.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/maxflow.nim
+  - cplib/graph/topologicalsort.nim
+  - cplib/graph/maxflow.nim
   isVerificationFile: true
   path: verify/AI/dag_minimum_path_cover_test.nim
   requiredBy: []

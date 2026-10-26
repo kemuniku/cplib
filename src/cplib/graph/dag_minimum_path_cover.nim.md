@@ -54,10 +54,10 @@ data:
     \        for i in 0..<len(G):\n            MFG.add_edge(2*len(G),i,1)\n      \
     \      MFG.add_edge(len(G)+i,2*len(G)+1,1)\n        return len(G)-MFG.flow(2*len(G),2*len(G)+1)\n"
   dependsOn:
-  - cplib/graph/maxflow.nim
   - cplib/graph/graph.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
+  - cplib/graph/maxflow.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/maxflow.nim
   isVerificationFile: false

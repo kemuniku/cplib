@@ -880,6 +880,18 @@ data:
     path: verify/math/modfast_test.nim
     title: verify/math/modfast_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_test.nim
+    title: verify/math/online_combination_prefix_sum_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_yosupo_test.nim
+    title: verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/math/online_combination_prefix_sum_yosupo_test.nim
+    title: verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/math/sum_of_multiplicative_function_test.nim
     title: verify/math/sum_of_multiplicative_function_test.nim
   - icon: ':heavy_check_mark:'
@@ -1145,11 +1157,11 @@ data:
     \ + d, n, d))\n        v.sort\n        return $v[0].n & \"/\" & $v[0].d\n"
   dependsOn:
   - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   isVerificationFile: false
   path: cplib/modint/modint.nim
   requiredBy:
@@ -1458,6 +1470,8 @@ data:
   - verify/math/division_of_big_integers_test.nim
   - verify/math/bigint_parse_unit_test.nim
   - verify/math/bigint_parse_unit_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/sum_of_multiplicative_function_test.nim
   - verify/math/many_factorials_online_test.nim
@@ -1472,6 +1486,8 @@ data:
   - verify/math/addition_of_big_integers_test.nim
   - verify/math/combination_test.nim
   - verify/math/combination_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
   - verify/math/generalized_floor_sum_test.nim
   - verify/math/generalized_floor_sum_test.nim
   - verify/math/bigint_unit_test.nim
