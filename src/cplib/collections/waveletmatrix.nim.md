@@ -359,29 +359,29 @@ data:
   isVerificationFile: false
   path: cplib/collections/waveletmatrix.nim
   requiredBy:
-  - cplib/collections/static_range_distinct.nim
-  - cplib/collections/static_range_distinct.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/str/static_string_search.nim
   - cplib/str/static_string_search.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/static_range_distinct.nim
+  - cplib/collections/static_range_distinct.nim
   timestamp: '2026-09-27 01:00:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/utils/backwards_index_simd_test.nim
   - verify/utils/backwards_index_simd_test.nim
-  - verify/collections/waveletmatrix_test.nim
-  - verify/collections/waveletmatrix_test.nim
   - verify/collections/static_range_distinct_test.nim
   - verify/collections/static_range_distinct_test.nim
-  - verify/AI/waveletmatrix_test.nim
-  - verify/AI/waveletmatrix_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/collections/waveletmatrix_test.nim
+  - verify/collections/waveletmatrix_test.nim
   - verify/AI/static_string_search_test.nim
   - verify/AI/static_string_search_test.nim
   - verify/AI/static_range_distinct_test.nim
   - verify/AI/static_range_distinct_test.nim
+  - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
 documentation_of: cplib/collections/waveletmatrix.nim
 layout: document
 redirect_from:

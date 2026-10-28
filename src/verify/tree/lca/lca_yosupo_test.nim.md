@@ -36,14 +36,14 @@ data:
     var ans = newSeq[int](q)\nfor i in 0..<q:\n    let u = ii()\n    let v = ii()\n\
     \    ans[i] = tree.lca(u, v)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
   isVerificationFile: true
   path: verify/tree/lca/lca_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/lca/lca_yosupo_test.nim

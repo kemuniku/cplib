@@ -104,17 +104,26 @@ data:
     \ v) = g.get_edge(0)\n            doAssert (u, v) == (2, 0)\n            static:\
     \ doAssert not compiles(g.get_edge(0).cost)\n            static: doAssert not\
     \ compiles(g.edge_info[0].cost)\n            static: doAssert sizeof(EdgeInfo[void])\
-    \ == 2 * sizeof(int)\n        when isStatic: g.build()\n        let expected =\
-    \ when undirected: @[(2, 0), (1, 1), (1, 2), (0, 3), (0, 3)]\n               \
-    \        else: @[(1, 1), (1, 2), (0, 3)]\n        assert toSeq(g.to_and_id(0))\
-    \ == expected\n        for (dst, cost, id) in g.to_and_cost_and_id(0):\n     \
-    \       assert (dst, id) in expected\n            when weighted: assert cost ==\
-    \ g.get_edge(id).cost\n            else: assert cost == 1\n        when isStatic:\n\
-    \            g.build()\n            assert toSeq(g.to_and_id(0)) == expected\n\
-    \        assert add(1, 2, 13) == 4\n        when isStatic:\n            var rejected\
-    \ = false\n            try: discard toSeq(g.to_and_id(0))\n            except\
-    \ AssertionDefect: rejected = true\n            assert rejected\n            g.build()\n\
-    \        assert toSeq(g.to_and_id(0)) == expected\n        for u in 0..<g.len:\n\
+    \ == 2 * sizeof(int)\n        when isStatic:\n            var degreeRejected =\
+    \ false\n            try: discard g.degree(0)\n            except AssertionDefect:\
+    \ degreeRejected = true\n            doAssert degreeRejected\n            g.build()\n\
+    \        let expectedDegrees = when undirected: [5, 2, 1]\n                  \
+    \            else: [3, 0, 1]\n        for v in 0..<g.len:\n            doAssert\
+    \ g.degree(v) == expectedDegrees[v]\n        let expected = when undirected: @[(2,\
+    \ 0), (1, 1), (1, 2), (0, 3), (0, 3)]\n                       else: @[(1, 1),\
+    \ (1, 2), (0, 3)]\n        assert toSeq(g.to_and_id(0)) == expected\n        for\
+    \ (dst, cost, id) in g.to_and_cost_and_id(0):\n            assert (dst, id) in\
+    \ expected\n            when weighted: assert cost == g.get_edge(id).cost\n  \
+    \          else: assert cost == 1\n        when isStatic:\n            g.build()\n\
+    \            assert toSeq(g.to_and_id(0)) == expected\n        assert add(1, 2,\
+    \ 13) == 4\n        when isStatic:\n            var rejected = false\n       \
+    \     try: discard toSeq(g.to_and_id(0))\n            except AssertionDefect:\
+    \ rejected = true\n            assert rejected\n            rejected = false\n\
+    \            try: discard g.degree(0)\n            except AssertionDefect: rejected\
+    \ = true\n            doAssert rejected\n            g.build()\n        assert\
+    \ toSeq(g.to_and_id(0)) == expected\n        let updatedDegrees = when undirected:\
+    \ [5, 3, 2]\n                             else: [3, 1, 1]\n        for v in 0..<g.len:\n\
+    \            doAssert g.degree(v) == updatedDegrees[v]\n        for u in 0..<g.len:\n\
     \            for (dst, cost, id) in g.to_and_cost_and_id(u):\n               \
     \ assert (dst, id) in toSeq(g.to_and_id(u))\n                when weighted:\n\
     \                    assert cost == g.get_edge(id).cost\n                    assert\
@@ -140,43 +149,46 @@ data:
     \ false)\ncheckAlgorithms(initUnWeightedDirectedStaticGraph(3), true)\n\nvar empty\
     \ = initUnWeightedUnDirectedStaticGraph(0)\nempty.build()\nempty.build()\nassert\
     \ empty.edge_count == 0\nassert empty.len == 0\nvar isolated = initUnWeightedDirectedStaticGraph(2)\n\
-    isolated.build()\nassert toSeq(isolated[0]).len == 0\n\nvar tableGraph = initWeightedUnDirectedTableGraph(@[\"\
-    a\", \"b\"], float)\nassert tableGraph.add_edge(\"a\", \"b\", 1.5) == 0\nassert\
-    \ toSeq(tableGraph.to_and_id(\"b\")) == @[(\"a\", 0)]\nassert toSeq(tableGraph.to_and_cost_and_id(\"\
-    a\")) == @[(\"b\", 1.5, 0)]\nvar unweightedTableGraph = initUnWeightedDirectedTableGraph(@[\"\
+    isolated.build()\nassert toSeq(isolated[0]).len == 0\ndoAssert isolated.degree(0)\
+    \ == 0\ndoAssert isolated.degree(1) == 0\nlet dynamicIsolated = initWeightedUnDirectedGraph(2,\
+    \ float)\ndoAssert dynamicIsolated.degree(0) == 0\ndoAssert dynamicIsolated.degree(1)\
+    \ == 0\n\nvar tableGraph = initWeightedUnDirectedTableGraph(@[\"a\", \"b\"], float)\n\
+    assert tableGraph.add_edge(\"a\", \"b\", 1.5) == 0\nassert toSeq(tableGraph.to_and_id(\"\
+    b\")) == @[(\"a\", 0)]\nassert toSeq(tableGraph.to_and_cost_and_id(\"a\")) ==\
+    \ @[(\"b\", 1.5, 0)]\nvar unweightedTableGraph = initUnWeightedDirectedTableGraph(@[\"\
     a\", \"b\"])\nassert unweightedTableGraph.add_edge(\"a\", \"b\") == 0\nassert\
     \ toSeq(unweightedTableGraph.to_and_id(\"a\")) == @[(\"b\", 0)]\necho \"Hello\
     \ World\"\n\nvar tree = initUnWeightedUnDirectedGraph(3)\ntree.add_edge(0, 1)\n\
     tree.add_edge(1, 2)\nassert tree.steiner_tree_mincost(@[0, 2]) == 2\n"
   dependsOn:
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/steiner_tree.nim
   - cplib/utils/constants.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/graph.nim
   - cplib/graph/reverse_edge.nim
   - cplib/utils/bititers.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/reverse_edge.nim
   - cplib/graph/maxk_dijkstra.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
   - cplib/graph/steiner_tree.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/maxk_dijkstra.nim
   isVerificationFile: true
   path: verify/AI/graph_edge_id_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 00:30:54+09:00'
+  timestamp: '2026-10-29 04:15:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/graph_edge_id_test.nim

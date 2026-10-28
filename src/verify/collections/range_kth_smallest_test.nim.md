@@ -53,18 +53,18 @@ data:
     \ => (x <= k))\n    ans[idx] = cmp[tmp]\n\nM.run(ad,ad,dl,dl,mem)\n\necho ans.join(\"\
     \\n\")"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/graph.nim
   - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/root_rangesum.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
   - cplib/collections/root_rangesum.nim
   isVerificationFile: true
   path: verify/collections/range_kth_smallest_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 00:48:56+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_kth_smallest_test.nim

@@ -84,20 +84,20 @@ data:
   dependsOn:
   - cplib/collections/avltreenode.nim
   - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/avltreenode.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick.nim
   requiredBy: []
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
-  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
   - verify/collections/convex_hull_trick_test.nim
   - verify/collections/convex_hull_trick_test.nim
+  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
+  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
 documentation_of: cplib/collections/convex_hull_trick.nim
 layout: document
 redirect_from:

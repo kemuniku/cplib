@@ -113,14 +113,14 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
+  - verify/tree/auxiliaryweightedtree_test.nim
   - verify/collections/SWAG_test.nim
   - verify/collections/SWAG_test.nim
   - verify/AI/SWAG_newswagwith_test.nim
   - verify/AI/SWAG_newswagwith_test.nim
   - verify/AI/SWAG_test.nim
   - verify/AI/SWAG_test.nim
-  - verify/tree/auxiliaryweightedtree_test.nim
-  - verify/tree/auxiliaryweightedtree_test.nim
 documentation_of: cplib/collections/SWAG.nim
 layout: document
 redirect_from:

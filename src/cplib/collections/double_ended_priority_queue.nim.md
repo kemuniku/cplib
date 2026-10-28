@@ -120,10 +120,10 @@ data:
   timestamp: '2026-09-30 06:04:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/double_ended_priority_queue_test.nim
-  - verify/collections/double_ended_priority_queue_test.nim
   - verify/collections/double_ended_priority_queue_random_test.nim
   - verify/collections/double_ended_priority_queue_random_test.nim
+  - verify/collections/double_ended_priority_queue_test.nim
+  - verify/collections/double_ended_priority_queue_test.nim
 documentation_of: cplib/collections/double_ended_priority_queue.nim
 layout: document
 redirect_from:

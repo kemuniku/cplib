@@ -68,10 +68,10 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/deletable_heapqueue_test.nim
-  - verify/AI/deletable_heapqueue_test.nim
   - verify/AI/topk_sum_heapq_test.nim
   - verify/AI/topk_sum_heapq_test.nim
+  - verify/AI/deletable_heapqueue_test.nim
+  - verify/AI/deletable_heapqueue_test.nim
 documentation_of: cplib/collections/deletable_heapqueue.nim
 layout: document
 redirect_from:

@@ -174,38 +174,38 @@ data:
     \ addr left[0], addr right[0], addr ranks[0], addr offsets[0])\n        result\
     \ = newSeq[T](size)\n        for mask in 0..<size: result[mask] = init(T, int(left[int(offsets[mask])]))\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/private/subset_convolution_barrett.nim
   requiredBy:
-  - cplib/convolution/subset_convolution.nim
-  - cplib/convolution/subset_convolution.nim
   - cplib/set_power_series/set_power_series.nim
   - cplib/set_power_series/set_power_series.nim
+  - cplib/convolution/subset_convolution.nim
+  - cplib/convolution/subset_convolution.nim
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/set_power_series/power_projection_of_set_power_series_test.nim
-  - verify/set_power_series/power_projection_of_set_power_series_test.nim
-  - verify/set_power_series/log_of_set_power_series_test.nim
-  - verify/set_power_series/log_of_set_power_series_test.nim
-  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
-  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
-  - verify/set_power_series/subset_convolution_regression_test.nim
-  - verify/set_power_series/subset_convolution_regression_test.nim
-  - verify/set_power_series/set_power_series_regression_test.nim
-  - verify/set_power_series/set_power_series_regression_test.nim
-  - verify/set_power_series/exp_of_set_power_series_test.nim
-  - verify/set_power_series/exp_of_set_power_series_test.nim
   - verify/set_power_series/subset_convolution_test.nim
   - verify/set_power_series/subset_convolution_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - verify/set_power_series/exp_of_set_power_series_test.nim
+  - verify/set_power_series/exp_of_set_power_series_test.nim
+  - verify/set_power_series/log_of_set_power_series_test.nim
+  - verify/set_power_series/log_of_set_power_series_test.nim
+  - verify/set_power_series/subset_convolution_regression_test.nim
+  - verify/set_power_series/subset_convolution_regression_test.nim
 documentation_of: cplib/convolution/private/subset_convolution_barrett.nim
 layout: document
 redirect_from:

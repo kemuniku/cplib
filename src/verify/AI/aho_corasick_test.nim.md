@@ -135,14 +135,14 @@ data:
     \ == 2\nlp.add('a')\nassert lp.nodeId == longAc.patternNode(0)\nassert lp.restoreString\
     \ == longWord\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/str/aho_corasick.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/str/aho_corasick.nim
-  - cplib/graph/graph.nim
+  - cplib/str/aho_corasick.nim
   isVerificationFile: true
   path: verify/AI/aho_corasick_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/aho_corasick_test.nim

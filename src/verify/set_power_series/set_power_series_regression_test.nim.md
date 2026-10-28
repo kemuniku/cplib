@@ -234,30 +234,30 @@ data:
     rejects:\n    discard setSqrt(@[init(modint_barrett, 1)], init(modint_barrett,\
     \ 1))\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
-  - cplib/convolution/bitwise_or_convolution.nim
-  - cplib/convolution/bitwise_and_convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/bitwise_or_convolution.nim
-  - cplib/set_power_series/set_power_series.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
   - cplib/convolution/xor_convolution.nim
-  - cplib/convolution/subset_convolution.nim
-  - cplib/set_power_series/set_power_series.nim
-  - cplib/convolution/subset_convolution.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/bitwise_or_convolution.nim
+  - cplib/convolution/set_transform.nim
+  - cplib/convolution/bitwise_or_convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/subset_convolution.nim
   - cplib/convolution/set_transform.nim
   - cplib/convolution/bitwise_and_convolution.nim
-  - cplib/convolution/set_transform.nim
+  - cplib/set_power_series/set_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/convolution/subset_convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/xor_convolution.nim
+  - cplib/convolution/bitwise_and_convolution.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/set_power_series/set_power_series.nim
   isVerificationFile: true
   path: verify/set_power_series/set_power_series_regression_test.nim
   requiredBy: []

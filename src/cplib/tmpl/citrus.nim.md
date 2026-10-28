@@ -124,19 +124,19 @@ data:
     \ proc initHashSet[T](): Hashset[T] = initHashSet[T](0)\n"
   dependsOn:
   - cplib/math/isqrt.nim
-  - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
   - cplib/math/isqrt.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/citrus.nim
   requiredBy: []
   timestamp: '2026-09-30 20:31:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/citrus_test.nim
-  - verify/AI/citrus_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/AI/citrus_test.nim
+  - verify/AI/citrus_test.nim
 documentation_of: cplib/tmpl/citrus.nim
 layout: document
 redirect_from:

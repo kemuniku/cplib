@@ -40,15 +40,15 @@ data:
     \ in 0..<q:\n    let u = ii()\n    let v = ii()\n    print(tree.lca(u, v))\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
+  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
   isVerificationFile: true
   path: verify/tree/lca/lca_from_parent_yosupo_test.nim
   requiredBy: []
-  timestamp: '2026-10-08 16:48:30+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/lca/lca_from_parent_yosupo_test.nim

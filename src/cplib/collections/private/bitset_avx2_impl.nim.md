@@ -369,10 +369,10 @@ data:
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx2_impl.nim
   requiredBy:
-  - cplib/collections/staticbitset_avx2.nim
-  - cplib/collections/staticbitset_avx2.nim
   - cplib/collections/bitset_avx2.nim
   - cplib/collections/bitset_avx2.nim
+  - cplib/collections/staticbitset_avx2.nim
+  - cplib/collections/staticbitset_avx2.nim
   timestamp: '2026-09-13 04:30:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

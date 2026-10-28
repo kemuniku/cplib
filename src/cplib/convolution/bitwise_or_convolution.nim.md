@@ -49,10 +49,10 @@ data:
   timestamp: '2026-10-02 20:04:36+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/convolution/bitwise_or_convolution_test.nim
-  - verify/convolution/bitwise_or_convolution_test.nim
   - verify/set_power_series/set_power_series_regression_test.nim
   - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/convolution/bitwise_or_convolution_test.nim
+  - verify/convolution/bitwise_or_convolution_test.nim
 documentation_of: cplib/convolution/bitwise_or_convolution.nim
 layout: document
 redirect_from:

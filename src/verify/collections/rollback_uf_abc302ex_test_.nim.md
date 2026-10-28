@@ -49,14 +49,14 @@ data:
     \ min(e, s)\n        es[uf.root(a)] = (e-1, s)\n        cur += min(e-1, s)\ndfs(0,\
     \ -1)\necho ans.join(\" \")\n"
   dependsOn:
-  - cplib/collections/rollback_unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/rollback_unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/rollback_unionfind.nim
   isVerificationFile: false
   path: verify/collections/rollback_uf_abc302ex_test_.nim
   requiredBy: []
-  timestamp: '2026-09-18 01:13:21+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/collections/rollback_uf_abc302ex_test_.nim

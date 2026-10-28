@@ -67,7 +67,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/general_weighted_matching_sparse.nim
   requiredBy: []
-  timestamp: '2026-09-29 03:00:17+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/general_weighted_matching_sparse_test.nim

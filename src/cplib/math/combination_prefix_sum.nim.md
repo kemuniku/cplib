@@ -74,22 +74,22 @@ data:
     \        for (queryIndex, prefixIndex) in queryIndices:\n            result[queryIndex]\
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
   - cplib/math/combination.nim
   - cplib/math/combination.nim
+  - cplib/utils/mo.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim
   requiredBy: []
-  timestamp: '2026-09-27 00:37:04+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/combination_prefix_sum_test.nim
-  - verify/math/combination_prefix_sum_test.nim
   - verify/math/online_combination_prefix_sum_test.nim
   - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/math/combination_prefix_sum_test.nim
 documentation_of: cplib/math/combination_prefix_sum.nim
 layout: document
 redirect_from:

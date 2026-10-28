@@ -317,18 +317,18 @@ data:
   - verify/utils/backwards_index_collections_test.nim
   - verify/collections/lazysegtree/get_all_static_op_test.nim
   - verify/collections/lazysegtree/get_all_static_op_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/binary_search_static_op_test.nim
   - verify/collections/lazysegtree/binary_search_static_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/auto_rollback_values_test.nim
   - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
 documentation_of: cplib/collections/lazysegtree_static_op.nim
 layout: document
 redirect_from:

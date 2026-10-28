@@ -75,10 +75,10 @@ data:
   timestamp: '2026-09-30 05:26:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/optimize_cpp_test.nim
-  - verify/AI/optimize_cpp_test.nim
   - verify/AI/optimize_test.nim
   - verify/AI/optimize_test.nim
+  - verify/AI/optimize_cpp_test.nim
+  - verify/AI/optimize_cpp_test.nim
 documentation_of: cplib/tmpl/optimize.nim
 layout: document
 redirect_from:

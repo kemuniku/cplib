@@ -93,21 +93,21 @@ data:
   isVerificationFile: false
   path: cplib/collections/defaultdict.nim
   requiredBy:
-  - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
-  - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
-  - verify/collections/defaultdict/defaultdict_abc278d_test_.nim
-  - verify/collections/defaultdict/defaultdict_abc278d_test_.nim
-  - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
-  - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
   - verify/collections/defaultdict/defaultdict_abc348c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc235c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278d_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278d_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
+  - verify/collections/defaultdict/defaultdict_abc278c_test_.nim
   timestamp: '2026-10-04 21:25:36+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/defaultdict/defaultdict_unit_test.nim
-  - verify/collections/defaultdict/defaultdict_unit_test.nim
   - verify/collections/defaultdict/defaultdict_get_test.nim
   - verify/collections/defaultdict/defaultdict_get_test.nim
+  - verify/collections/defaultdict/defaultdict_unit_test.nim
+  - verify/collections/defaultdict/defaultdict_unit_test.nim
   - verify/AI/defaultdict_test.nim
   - verify/AI/defaultdict_test.nim
 documentation_of: cplib/collections/defaultdict.nim

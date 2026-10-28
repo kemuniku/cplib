@@ -496,6 +496,9 @@ data:
       path: cplib/graph/graph_debug.nim
       title: cplib/graph/graph_debug.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/graph/graph_visualization.nim
+      title: cplib/graph/graph_visualization.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/graph/grid_to_graph.nim
       title: cplib/graph/grid_to_graph.nim
     - icon: ':heavy_check_mark:'
@@ -543,6 +546,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/graph/range_edge_graph.nim
       title: cplib/graph/range_edge_graph.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/graph/remove_edge.nim
+      title: cplib/graph/remove_edge.nim
     - icon: ':heavy_check_mark:'
       path: cplib/graph/restore_shortest_path_from_prev.nim
       title: cplib/graph/restore_shortest_path_from_prev.nim
@@ -2869,6 +2875,12 @@ data:
       path: verify/graph/cycle_detection_undirected_test.nim
       title: verify/graph/cycle_detection_undirected_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/graph/dijkstra_custom_cmp_test.nim
+      title: verify/graph/dijkstra_custom_cmp_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/dijkstra_custom_types_test.nim
+      title: verify/graph/dijkstra_custom_types_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/graph/directed_mst_test.nim
       title: verify/graph/directed_mst_test.nim
     - icon: ':heavy_check_mark:'
@@ -2895,6 +2907,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/general_weighted_matching_test.nim
       title: verify/graph/general_weighted_matching_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/graph_visualization_test.nim
+      title: verify/graph/graph_visualization_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/hopcroft_karp_test.nim
       title: verify/graph/hopcroft_karp_test.nim
@@ -2925,6 +2940,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/push_relabel_test.nim
       title: verify/graph/push_relabel_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/remove_edge_test.nim
+      title: verify/graph/remove_edge_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/graph/two_edge_connected_components_test.nim
       title: verify/graph/two_edge_connected_components_test.nim

@@ -115,19 +115,19 @@ data:
     \  manhattan_mst(converted)\n"
   dependsOn:
   - cplib/collections/unionfind.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   - cplib/collections/unionfind.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/manhattan_mst.nim
   requiredBy: []
   timestamp: '2026-09-30 07:06:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/manhattan_mst_test.nim
-  - verify/geometry/manhattan_mst_test.nim
   - verify/geometry/manhattan_mst_random_test.nim
   - verify/geometry/manhattan_mst_random_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
 documentation_of: cplib/geometry/manhattan_mst.nim
 layout: document
 redirect_from:

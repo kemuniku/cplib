@@ -117,14 +117,14 @@ data:
     \ n, total - (n div 2) * (n div 2 + 1) div 2]\n    doAssert state == 1\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
+  - cplib/utils/mo.nim
   isVerificationFile: true
   path: verify/AI/tree_mo_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 00:37:04+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/tree_mo_test.nim

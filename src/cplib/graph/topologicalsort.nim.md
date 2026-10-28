@@ -102,31 +102,31 @@ data:
   isVerificationFile: false
   path: cplib/graph/topologicalsort.nim
   requiredBy:
-  - verify/graph/static/topologicalsort_1_static_test_.nim
-  - verify/graph/static/topologicalsort_1_static_test_.nim
-  - verify/graph/static/topologicalsort_2_static_test_.nim
-  - verify/graph/static/topologicalsort_2_static_test_.nim
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  - verify/graph/dynamic/topologicalsort_1_test_.nim
-  - verify/graph/dynamic/topologicalsort_1_test_.nim
   - verify/graph/dynamic/topologicalsort_2_test_.nim
   - verify/graph/dynamic/topologicalsort_2_test_.nim
-  - cplib/graph/count_topologicalsort.nim
-  - cplib/graph/count_topologicalsort.nim
+  - verify/graph/dynamic/topologicalsort_1_test_.nim
+  - verify/graph/dynamic/topologicalsort_1_test_.nim
+  - verify/graph/static/topologicalsort_2_static_test_.nim
+  - verify/graph/static/topologicalsort_2_static_test_.nim
+  - verify/graph/static/topologicalsort_1_static_test_.nim
+  - verify/graph/static/topologicalsort_1_static_test_.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  - cplib/graph/count_topologicalsort.nim
+  - cplib/graph/count_topologicalsort.nim
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
   - verify/AI/count_topologicalsort_test.nim
   - verify/AI/count_topologicalsort_test.nim
-  - verify/AI/dag_minimum_path_cover_test.nim
-  - verify/AI/dag_minimum_path_cover_test.nim
   - verify/AI/topologicalsort_test.nim
   - verify/AI/topologicalsort_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/topologicalsort.nim
 layout: document
 redirect_from:

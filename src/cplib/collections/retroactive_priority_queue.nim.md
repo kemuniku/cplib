@@ -363,33 +363,33 @@ data:
   isVerificationFile: false
   path: cplib/collections/retroactive_priority_queue.nim
   requiredBy:
-  - verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
-  - verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
   - verify/collections/retroactive_priority_queue_abc363g_test_.nim
   - verify/collections/retroactive_priority_queue_abc363g_test_.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
-  - cplib/collections/indexed_retroactive_priority_queue.nim
-  - cplib/collections/indexed_retroactive_priority_queue.nim
+  - verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
+  - verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
   - cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
+  - cplib/collections/indexed_retroactive_priority_queue.nim
+  - cplib/collections/indexed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
   timestamp: '2026-09-28 01:13:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/indexed_retroactive_priority_queue_test.nim
-  - verify/collections/indexed_retroactive_priority_queue_test.nim
-  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
-  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
   - verify/collections/retroactive_priority_queue_test.nim
   - verify/collections/retroactive_priority_queue_test.nim
-  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
-  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
   - verify/collections/dynamic_retroactive_priority_queue_test.nim
   - verify/collections/dynamic_retroactive_priority_queue_test.nim
+  - verify/collections/indexed_retroactive_priority_queue_test.nim
+  - verify/collections/indexed_retroactive_priority_queue_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
 documentation_of: cplib/collections/retroactive_priority_queue.nim
 layout: document
 redirect_from:

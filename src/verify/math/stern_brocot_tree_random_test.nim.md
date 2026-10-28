@@ -95,16 +95,16 @@ data:
     testSmall[int64]()\ntestLarge[int]()\ntestLarge[int32]()\ntestLarge[int64]()\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/math/stern_brocot_tree.nim
   - cplib/math/fractions.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/stern_brocot_tree.nim
   isVerificationFile: true
   path: verify/math/stern_brocot_tree_random_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 06:31:06+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/stern_brocot_tree_random_test.nim

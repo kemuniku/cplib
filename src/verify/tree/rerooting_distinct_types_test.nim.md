@@ -43,13 +43,13 @@ data:
     \ == @[3, 3, 3]\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
+  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
   isVerificationFile: true
   path: verify/tree/rerooting_distinct_types_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 00:34:14+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/rerooting_distinct_types_test.nim

@@ -107,10 +107,10 @@ data:
   timestamp: '2026-09-18 12:34:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/combination_arbitrary_mod_test.nim
-  - verify/AI/combination_arbitrary_mod_test.nim
   - verify/math/combination_arbitrary_mod_test.nim
   - verify/math/combination_arbitrary_mod_test.nim
+  - verify/AI/combination_arbitrary_mod_test.nim
+  - verify/AI/combination_arbitrary_mod_test.nim
 documentation_of: cplib/math/combination_arbitrary_mod.nim
 layout: document
 redirect_from:

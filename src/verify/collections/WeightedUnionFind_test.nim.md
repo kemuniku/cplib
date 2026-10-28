@@ -56,16 +56,16 @@ data:
     \ 0\n    else:\n        var u,v = ii()\n        if uf.issame(u,v):\n         \
     \   echo uf.diff(u,v)\n        else:\n            echo -1\n"
   dependsOn:
-  - cplib/collections/weightedunionfind.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/collections/weightedunionfind.nim
   - cplib/math/isqrt.nim
+  - cplib/collections/weightedunionfind.nim
+  - cplib/modint/modint.nim
+  - cplib/collections/weightedunionfind.nim
   isVerificationFile: true
   path: verify/collections/WeightedUnionFind_test.nim
   requiredBy: []

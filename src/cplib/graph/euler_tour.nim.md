@@ -96,7 +96,7 @@ data:
   isVerificationFile: false
   path: cplib/graph/euler_tour.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/euler_tour_test.nim

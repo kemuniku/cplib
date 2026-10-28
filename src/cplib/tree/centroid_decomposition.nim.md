@@ -102,7 +102,7 @@ data:
   isVerificationFile: false
   path: cplib/tree/centroid_decomposition.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/centroid_decomposition_test.nim

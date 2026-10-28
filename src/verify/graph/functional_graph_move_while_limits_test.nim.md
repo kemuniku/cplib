@@ -78,21 +78,21 @@ data:
     \ World\"\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/graph/functional_graph_with_op.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/utils/backwards_index.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
-  - cplib/graph/functional_graph.nim
   - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph.nim
+  - cplib/graph/functional_graph_with_op.nim
   - cplib/collections/segtree.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_move_while_limits_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 06:33:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/functional_graph_move_while_limits_test.nim

@@ -121,16 +121,16 @@ data:
   verifiedWith:
   - verify/utils/knapsack/bounded_zero_count_test.nim
   - verify/utils/knapsack/bounded_zero_count_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
-  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim
   - verify/utils/knapsack/solve_Bknapsack_test.nim
-  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
-  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
   - verify/utils/knapsack/solve_01knapsack_MIM_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
+  - verify/utils/knapsack/solve_01knapsack_NW_test.nim
   - verify/utils/knapsack/solve_01knapsack_NV_test.nim
   - verify/utils/knapsack/solve_01knapsack_NV_test.nim
+  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
+  - verify/utils/knapsack/solve_UBknapsack_NW_test.nim
   - verify/AI/knapsack_test.nim
   - verify/AI/knapsack_test.nim
 documentation_of: cplib/utils/knapsack.nim

@@ -52,20 +52,20 @@ data:
     \    let a, b, c = ii()\n    g.add_edge(a, b, c)\nlet lengths = g.k_shortest_walk(s,\
     \ t, k)\nfor i in 0..<k:\n    echo (if lengths[i] == INF: -1 else: lengths[i])\n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/k_shortest_walk.nim
+  - cplib/utils/constants.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/graph/k_shortest_walk.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/graph/dynamic/k_shortest_walk_test.nim
   requiredBy: []
-  timestamp: '2026-10-17 20:24:22+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dynamic/k_shortest_walk_test.nim

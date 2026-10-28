@@ -41,12 +41,12 @@ data:
     let d = initStaticRangeDistinct(A)\nfor _ in 0..<Q:\n    let l = ii()\n    let\
     \ r = ii()\n    echo d.count(l, r)\n"
   dependsOn:
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/static_range_distinct.nim
+  - cplib/collections/static_range_distinct.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
-  - cplib/collections/static_range_distinct.nim
   isVerificationFile: true
   path: verify/collections/static_range_distinct_test.nim
   requiredBy: []

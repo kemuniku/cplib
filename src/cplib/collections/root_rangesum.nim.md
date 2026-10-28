@@ -134,10 +134,10 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
-  - verify/collections/range_kth_smallest_test.nim
-  - verify/collections/range_kth_smallest_test.nim
   - verify/collections/root_rangesum_test.nim
   - verify/collections/root_rangesum_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
   - verify/AI/root_rangesum_test.nim
   - verify/AI/root_rangesum_test.nim
 documentation_of: cplib/collections/root_rangesum.nim

@@ -113,8 +113,8 @@ data:
     \u3051\u304C prev < l\u3001\u3059\u306A\u308F\u3061 prev+1 < l+1 \u3092\u6E80\u305F\
     \u3059\u3002\n        self.wm.range_lowerbound(l, r, l + 1)\n"
   dependsOn:
-  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
   isVerificationFile: false

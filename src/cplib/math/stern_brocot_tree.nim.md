@@ -265,22 +265,22 @@ data:
     \            if len(stack) != 0:\n                result.add_edge(stack[^1],v[i],(v[i].depth)-(stack[^1].depth))\n\
     \            stack.add(v[i])"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []
-  timestamp: '2026-10-01 06:31:06+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/stern_brocot_tree_random_test.nim
   - verify/math/stern_brocot_tree_random_test.nim
-  - verify/math/stern_brocot_tree_bounds_test.nim
-  - verify/math/stern_brocot_tree_bounds_test.nim
 documentation_of: cplib/math/stern_brocot_tree.nim
 layout: document
 redirect_from:

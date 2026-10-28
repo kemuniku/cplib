@@ -64,6 +64,12 @@ data:
     path: verify/AI/random_helper_test.nim
     title: verify/AI/random_helper_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/graph_visualization_test.nim
+    title: verify/graph/graph_visualization_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/graph_visualization_test.nim
+    title: verify/graph/graph_visualization_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
   - icon: ':heavy_check_mark:'
@@ -136,33 +142,35 @@ data:
   - cplib/utils/random_helper.nim
   - cplib/utils/itertools.nim
   - cplib/utils/itertools.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/utils/itertools/accumulatedr_test.nim
-  - verify/utils/itertools/accumulatedr_test.nim
-  - verify/utils/itertools/accumulatedr_2_test.nim
-  - verify/utils/itertools/accumulatedr_2_test.nim
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulate_test.nim
   - verify/utils/itertools/accumulate_test.nim
-  - verify/AI/prufer_test.nim
-  - verify/AI/prufer_test.nim
-  - verify/AI/itertools_enumeration_test.nim
-  - verify/AI/itertools_enumeration_test.nim
-  - verify/AI/itertools_test.nim
-  - verify/AI/itertools_test.nim
-  - verify/AI/planar_graph_test.nim
-  - verify/AI/planar_graph_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/graph/graph_visualization_test.nim
+  - verify/graph/graph_visualization_test.nim
   - verify/AI/itertools_trees_test.nim
   - verify/AI/itertools_trees_test.nim
+  - verify/AI/prufer_test.nim
+  - verify/AI/prufer_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_test.nim
   - verify/AI/random_helper_test.nim
   - verify/AI/random_helper_test.nim
+  - verify/AI/planar_graph_test.nim
+  - verify/AI/planar_graph_test.nim
+  - verify/AI/itertools_enumeration_test.nim
+  - verify/AI/itertools_enumeration_test.nim
 documentation_of: cplib/tree/prufer.nim
 layout: document
 redirect_from:

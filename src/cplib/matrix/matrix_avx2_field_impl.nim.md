@@ -224,14 +224,14 @@ data:
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2_field_impl.nim
   requiredBy:
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
   timestamp: '2026-09-11 02:58:09+09:00'

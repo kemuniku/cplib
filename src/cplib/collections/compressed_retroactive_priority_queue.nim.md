@@ -159,8 +159,8 @@ data:
     \       self.queue.poppedSum\n"
   dependsOn:
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: false
   path: cplib/collections/compressed_retroactive_priority_queue.nim
@@ -172,10 +172,10 @@ data:
   verifiedWith:
   - verify/collections/retroactive_priority_queue_test.nim
   - verify/collections/retroactive_priority_queue_test.nim
-  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
-  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
 documentation_of: cplib/collections/compressed_retroactive_priority_queue.nim
 layout: document
 redirect_from:

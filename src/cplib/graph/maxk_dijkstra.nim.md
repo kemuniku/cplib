@@ -156,34 +156,34 @@ data:
     \ seq[int], cost: T] =\n        return shortest_path_maxk_dijkstra_impl(G, start,\
     \ goal, k, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
   requiredBy:
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
-  - verify/graph/static/grid_to_graph_abc151d_test_.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/grid_to_graph_abc151d_test_.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/tsp_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
 documentation_of: cplib/graph/maxk_dijkstra.nim

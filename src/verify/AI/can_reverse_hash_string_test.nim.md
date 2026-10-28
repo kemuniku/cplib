@@ -58,8 +58,8 @@ data:
     assert arrayRh[0..2] == rh[0..2]\nassert initRollingHash(newSeq[char]()).len ==\
     \ 0\n"
   dependsOn:
-  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/backwards_index.nim
+  - cplib/str/can_reverse_hash_string.nim
   - cplib/utils/backwards_index.nim
   - cplib/str/can_reverse_hash_string.nim
   isVerificationFile: true

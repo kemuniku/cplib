@@ -55,16 +55,16 @@ data:
     \ r).val\n\ncheck_npr[modint998244353_barrett]()\ncheck_npr[modint1000000007_barrett]()\n\
     type modint104717 = modint_barrett\nmodint104717.setMod(104717)\ncheck_npr[modint104717]()\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/combination.nim
+  - cplib/modint/modint.nim
   - cplib/math/combination.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/math/combination_npr_test.nim
   requiredBy: []

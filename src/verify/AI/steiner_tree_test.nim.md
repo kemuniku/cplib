@@ -82,18 +82,18 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/steiner_tree.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/bititers.nim
   - cplib/graph/graph.nim
   - cplib/utils/bititers.nim
   - cplib/graph/steiner_tree.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/utils/bititers.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/steiner_tree_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 00:30:54+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/steiner_tree_test.nim

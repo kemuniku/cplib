@@ -71,22 +71,22 @@ data:
     \           return result\n        discard dfs(G.v[0],-1)\n        anss += ans\n\
     \necho anss\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: verify/tree/auxiliarytree_test_.nim
   requiredBy: []
-  timestamp: '2026-10-15 15:23:06+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/tree/auxiliarytree_test_.nim

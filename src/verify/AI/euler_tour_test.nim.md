@@ -77,14 +77,14 @@ data:
     \ g.euler_tour().len == 0\n    g.add_edge(n - 1, 0)\n    doAssert g.euler_tour().len\
     \ == n\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
+  - cplib/graph/euler_tour.nim
   - cplib/graph/graph.nim
   - cplib/graph/euler_tour.nim
-  - cplib/graph/euler_tour.nim
+  - cplib/graph/graph.nim
   isVerificationFile: true
   path: verify/AI/euler_tour_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/euler_tour_test.nim

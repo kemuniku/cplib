@@ -65,12 +65,12 @@ data:
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/xor_convolution_boundary_test.nim
   - verify/convolution/xor_convolution_test.nim
   - verify/convolution/xor_convolution_test.nim
-  - verify/set_power_series/set_power_series_regression_test.nim
-  - verify/set_power_series/set_power_series_regression_test.nim
   - verify/AI/xor_convolution_test.nim
   - verify/AI/xor_convolution_test.nim
 documentation_of: cplib/convolution/xor_convolution.nim

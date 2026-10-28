@@ -106,19 +106,19 @@ data:
   isVerificationFile: false
   path: cplib/collections/private/convex_hull_trick_impl.nim
   requiredBy:
-  - cplib/collections/convex_hull_trick_monotone.nim
-  - cplib/collections/convex_hull_trick_monotone.nim
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/convex_hull_trick_monotone.nim
+  - cplib/collections/convex_hull_trick_monotone.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
-  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
   - verify/collections/convex_hull_trick_test.nim
   - verify/collections/convex_hull_trick_test.nim
+  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
+  - verify/collections/convex_hull_trick_line_add_get_min_test.nim
 documentation_of: cplib/collections/private/convex_hull_trick_impl.nim
 layout: document
 redirect_from:

@@ -193,10 +193,10 @@ data:
   timestamp: '2026-09-28 04:29:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/double_ended_palindromic_tree_test.nim
-  - verify/AI/double_ended_palindromic_tree_test.nim
   - verify/str/double_ended_palindromic_tree_test.nim
   - verify/str/double_ended_palindromic_tree_test.nim
+  - verify/AI/double_ended_palindromic_tree_test.nim
+  - verify/AI/double_ended_palindromic_tree_test.nim
 documentation_of: cplib/str/double_ended_palindromic_tree.nim
 layout: document
 redirect_from:

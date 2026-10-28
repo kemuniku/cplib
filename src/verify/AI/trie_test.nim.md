@@ -126,14 +126,14 @@ data:
     \ bytes.toGraph()\nfor edge in byteGraph.edge_info:\n    assert bytes.nodes[edge.dst].character\
     \ == edge.cost\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/str/trie.nim
   - cplib/graph/graph.nim
+  - cplib/str/trie.nim
   - cplib/graph/graph.nim
   - cplib/str/trie.nim
   isVerificationFile: true
   path: verify/AI/trie_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/trie_test.nim

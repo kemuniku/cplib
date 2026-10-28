@@ -43,10 +43,10 @@ data:
   timestamp: '2026-07-06 04:42:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/cartesiantree_test.nim
-  - verify/AI/cartesiantree_test.nim
   - verify/tree/cartesiantree_test.nim
   - verify/tree/cartesiantree_test.nim
+  - verify/AI/cartesiantree_test.nim
+  - verify/AI/cartesiantree_test.nim
 documentation_of: cplib/tree/cartesiantree.nim
 layout: document
 redirect_from:

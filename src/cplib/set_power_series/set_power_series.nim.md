@@ -209,38 +209,38 @@ data:
     \        result[k] += falling * powers[k - j] * adjoints[j][0]\n             \
     \   falling *= init(T, k) - j\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isprime.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
-  - cplib/convolution/subset_convolution.nim
-  - cplib/convolution/subset_convolution.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/subset_convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/subset_convolution.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/set_power_series/set_power_series.nim
   requiredBy: []
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/set_power_series/power_projection_of_set_power_series_test.nim
-  - verify/set_power_series/power_projection_of_set_power_series_test.nim
-  - verify/set_power_series/log_of_set_power_series_test.nim
-  - verify/set_power_series/log_of_set_power_series_test.nim
-  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
-  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
-  - verify/set_power_series/set_power_series_regression_test.nim
-  - verify/set_power_series/set_power_series_regression_test.nim
-  - verify/set_power_series/exp_of_set_power_series_test.nim
-  - verify/set_power_series/exp_of_set_power_series_test.nim
   - verify/set_power_series/subset_convolution_test.nim
   - verify/set_power_series/subset_convolution_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/set_power_series_regression_test.nim
+  - verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - verify/set_power_series/power_projection_of_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - verify/set_power_series/exp_of_set_power_series_test.nim
+  - verify/set_power_series/exp_of_set_power_series_test.nim
+  - verify/set_power_series/log_of_set_power_series_test.nim
+  - verify/set_power_series/log_of_set_power_series_test.nim
 documentation_of: cplib/set_power_series/set_power_series.nim
 layout: document
 redirect_from:

@@ -96,14 +96,14 @@ data:
     \ - 1)\n    for v in 2..<n: doAssert starHashes[v] == starHashes[1]\n\necho \"\
     Hello World\"\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
   isVerificationFile: true
   path: verify/AI/tree_hash_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/tree_hash_test.nim

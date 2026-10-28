@@ -117,16 +117,16 @@ data:
     \u6728\u306E\u30B3\u30B9\u30C8\u304Cint64\u306E\u7BC4\u56F2\u3092\u8D85\u3048\u3066\
     \u3044\u307E\u3059\")\n        answer.cost = int64(total.to_int())\n        some(answer)\n"
   dependsOn:
-  - cplib/collections/lazy_leftist_heap.nim
+  - cplib/graph/graph.nim
   - cplib/math/int128.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/lazy_leftist_heap.nim
   - cplib/math/int128.nim
+  - cplib/collections/lazy_leftist_heap.nim
+  - cplib/collections/lazy_leftist_heap.nim
   isVerificationFile: false
   path: cplib/graph/directed_mst.nim
   requiredBy: []
-  timestamp: '2026-10-04 00:13:01+00:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/directed_mst_test.nim

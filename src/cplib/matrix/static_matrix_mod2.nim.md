@@ -209,10 +209,10 @@ data:
     \       let rows = fieldAdjugateInverse(matrixRows(a, a.h, a.w), true).get\n \
     \       for i in 0..<a.h:\n            for j in 0..<a.w: result[i, j] = rows[i][j]\n"
   dependsOn:
-  - cplib/matrix/bit_matrix_ops.nim
-  - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/bit_matrix_ops.nim
   isVerificationFile: false
   path: cplib/matrix/static_matrix_mod2.nim
   requiredBy:
@@ -221,18 +221,18 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/static_matrix_mod2_test.nim
-  - verify/AI/static_matrix_mod2_test.nim
   - verify/matrix/matrix_det_mod_2_static_test.nim
   - verify/matrix/matrix_det_mod_2_static_test.nim
-  - verify/matrix/matrix_rank_mod_2_static_test.nim
-  - verify/matrix/matrix_rank_mod_2_static_test.nim
-  - verify/matrix/matrix_product_mod_2_static_test.nim
-  - verify/matrix/matrix_product_mod_2_static_test.nim
-  - verify/matrix/inverse_matrix_mod_2_static_test.nim
-  - verify/matrix/inverse_matrix_mod_2_static_test.nim
   - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
   - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
+  - verify/matrix/matrix_rank_mod_2_static_test.nim
+  - verify/matrix/matrix_rank_mod_2_static_test.nim
+  - verify/matrix/inverse_matrix_mod_2_static_test.nim
+  - verify/matrix/inverse_matrix_mod_2_static_test.nim
+  - verify/matrix/matrix_product_mod_2_static_test.nim
+  - verify/matrix/matrix_product_mod_2_static_test.nim
+  - verify/AI/static_matrix_mod2_test.nim
+  - verify/AI/static_matrix_mod2_test.nim
 documentation_of: cplib/matrix/static_matrix_mod2.nim
 layout: document
 redirect_from:

@@ -56,10 +56,10 @@ data:
   timestamp: '2026-07-07 07:45:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/lcs_test.nim
-  - verify/AI/lcs_test.nim
   - verify/str/lcs_test.nim
   - verify/str/lcs_test.nim
+  - verify/AI/lcs_test.nim
+  - verify/AI/lcs_test.nim
 documentation_of: cplib/str/lcs.nim
 layout: document
 redirect_from:

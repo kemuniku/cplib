@@ -68,13 +68,13 @@ data:
     '
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
+  - cplib/graph/graph.nim
   - cplib/tree/rerooting.nim
   isVerificationFile: true
   path: verify/AI/rerooting_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 00:31:57+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/rerooting_test.nim

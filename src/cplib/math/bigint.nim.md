@@ -706,20 +706,20 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/inv_gcd.nim
   - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
@@ -728,22 +728,22 @@ data:
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/factoradic_signed_test.nim
-  - verify/AI/factoradic_signed_test.nim
-  - verify/AI/factoradic_test.nim
-  - verify/AI/factoradic_test.nim
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/crt_test.nim
-  - verify/math/crt_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/division_of_big_integers_test.nim
   - verify/math/bigint_parse_unit_test.nim
   - verify/math/bigint_parse_unit_test.nim
-  - verify/math/addition_of_big_integers_test.nim
-  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/crt_test.nim
+  - verify/math/crt_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
 documentation_of: cplib/math/bigint.nim
 layout: document
 redirect_from:

@@ -131,14 +131,14 @@ data:
   timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/temporary_index_cache_test.nim
+  - verify/AI/temporary_index_cache_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/temporary_rollback_log_test.nim
   - verify/AI/temporary_rollback_log_test.nim
-  - verify/AI/temporary_index_cache_test.nim
-  - verify/AI/temporary_index_cache_test.nim
-  - verify/AI/auto_rollback_values_test.nim
-  - verify/AI/auto_rollback_values_test.nim
 documentation_of: cplib/utils/auto_rollback.nim
 layout: document
 redirect_from:

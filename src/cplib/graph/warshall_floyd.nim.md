@@ -266,30 +266,30 @@ data:
     \u8CA0\u8FBA\u3082\u8A31\u5BB9\u3059\u308B\u3002\n        warshall_floyd_nonnegative_inplace_impl(d,\
     \ zero, inf)\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/graph.nim
   - cplib/graph/warshall_floyd_negative.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
-  - cplib/graph/warshall_floyd_negative.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/warshall_floyd_aoj_test.nim
-  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
   - verify/graph/dynamic/warshall_floyd_aoj_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/warshall_floyd_negative_test.nim
-  - verify/AI/warshall_floyd_negative_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
+  - verify/graph/static/warshall_floyd_aoj_test.nim
   - verify/AI/warshall_floyd_test.nim
   - verify/AI/warshall_floyd_test.nim
+  - verify/AI/warshall_floyd_negative_test.nim
+  - verify/AI/warshall_floyd_negative_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/warshall_floyd.nim
 layout: document
 redirect_from:

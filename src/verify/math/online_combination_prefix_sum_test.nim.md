@@ -128,28 +128,28 @@ data:
     \ + 1, k) == sums.prefixSum(n, k) + sums.prefixSum(n, k - 1)\n\necho \"Hello World\"\
     \n"
   dependsOn:
-  - cplib/utils/mo.nim
-  - cplib/modint/modint.nim
-  - cplib/math/online_combination_prefix_sum.nim
-  - cplib/math/online_combination_prefix_sum.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/combination.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/combination.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/mo.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/graph/graph.nim
-  - cplib/math/combination_prefix_sum.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/combination.nim
+  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
   - cplib/math/combination_prefix_sum.nim
   - cplib/math/isqrt.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
+  - cplib/math/online_combination_prefix_sum.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/online_combination_prefix_sum.nim
+  - cplib/math/combination.nim
   isVerificationFile: true
   path: verify/math/online_combination_prefix_sum_test.nim
   requiredBy: []
-  timestamp: '2026-10-26 00:17:02+09:00'
+  timestamp: '2026-10-29 04:34:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/online_combination_prefix_sum_test.nim

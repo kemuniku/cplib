@@ -50,14 +50,14 @@ data:
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/graph/functional_graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/graph/functional_graph.nim
   - cplib/graph/functional_graph.nim
   isVerificationFile: true
   path: verify/graph/functional_graph_movekth_overflow_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 00:36:27+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/functional_graph_movekth_overflow_test.nim

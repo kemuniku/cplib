@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: verify/AI/weighted_matching_structure_test.nim
   requiredBy: []
-  timestamp: '2026-09-29 03:00:17+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/weighted_matching_structure_test.nim

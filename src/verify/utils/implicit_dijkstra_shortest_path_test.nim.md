@@ -54,12 +54,12 @@ data:
     \    if path[^1] != t:\n        path.add(t)\n    echo cost, \" \", path.len -\
     \ 1\n    for i in 1..<path.len:\n        echo path[i - 1], \" \", path[i]\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
   - cplib/utils/implicit_dijkstra.nim
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   - cplib/utils/implicit_dijkstra.nim
   - cplib/tmpl/sheep.nim
   isVerificationFile: true

@@ -58,8 +58,8 @@ data:
     assert $s == \"E B x D a\"\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_lazysegtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_lazysegtree.nim
   isVerificationFile: true
   path: verify/collections/range_reverse_lazysegtree_test.nim

@@ -130,28 +130,28 @@ data:
     modint_montgomery.setMod(167772161)\nsuite[modint_montgomery](45)\nmodint_montgomery.setMod(1000000007)\n\
     suite[modint_montgomery](47)\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/composition.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/composition.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/power_projection.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/algorithm_ntt.nim
   - cplib/fps/power_projection.nim
-  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/convolution.nim
   - cplib/fps/formal_power_series.nim
   - cplib/math/isqrt.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/composition.nim
+  - cplib/math/isprime.nim
+  - cplib/fps/composition.nim
+  - cplib/fps/power_projection.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: true
   path: verify/fps/composition_regression_test.nim
   requiredBy: []

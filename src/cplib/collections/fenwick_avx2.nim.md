@@ -164,10 +164,10 @@ data:
   - verify/utils/backwards_index_simd_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
   - verify/collections/fenwick_tree_avx2_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/fenwick_tree_test.nim
   - verify/AI/fenwick_tree_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
 documentation_of: cplib/collections/fenwick_avx2.nim
 layout: document
 redirect_from:

@@ -34,6 +34,12 @@ data:
     path: verify/AI/itertools_trees_test.nim
     title: verify/AI/itertools_trees_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/graph/graph_visualization_test.nim
+    title: verify/graph/graph_visualization_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/graph_visualization_test.nim
+    title: verify/graph/graph_visualization_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/utils/itertools/accumulate_test.nim
     title: verify/utils/itertools/accumulate_test.nim
   - icon: ':heavy_check_mark:'
@@ -514,34 +520,36 @@ data:
     \ true\n                        break\n                    delta = delta div 2\n\
     \                if changed: break\n            if not changed: break\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/itertools.nim
   requiredBy: []
-  timestamp: '2026-09-22 15:33:23+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/utils/itertools/accumulatedr_test.nim
-  - verify/utils/itertools/accumulatedr_test.nim
-  - verify/utils/itertools/accumulatedr_2_test.nim
-  - verify/utils/itertools/accumulatedr_2_test.nim
   - verify/utils/itertools/accumulated_test.nim
   - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulate_test.nim
   - verify/utils/itertools/accumulate_test.nim
-  - verify/AI/itertools_enumeration_test.nim
-  - verify/AI/itertools_enumeration_test.nim
-  - verify/AI/itertools_test.nim
-  - verify/AI/itertools_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulatedr_2_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/graph/graph_visualization_test.nim
+  - verify/graph/graph_visualization_test.nim
   - verify/AI/itertools_trees_test.nim
   - verify/AI/itertools_trees_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_test.nim
+  - verify/AI/itertools_enumeration_test.nim
+  - verify/AI/itertools_enumeration_test.nim
 documentation_of: cplib/utils/itertools.nim
 layout: document
 redirect_from:

@@ -72,16 +72,16 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/graph/merge_tree.nim
-  - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
+  - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
+  - cplib/graph/merge_tree.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: true
   path: verify/AI/merge_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/merge_tree_test.nim

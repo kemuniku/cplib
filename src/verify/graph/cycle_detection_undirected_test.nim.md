@@ -43,15 +43,15 @@ data:
     \ \")\n    echo cycle.join(\" \")\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/graph/cycle_detection.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/cycle_detection.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/cycle_detection.nim
+  - cplib/graph/cycle_detection.nim
   isVerificationFile: true
   path: verify/graph/cycle_detection_undirected_test.nim
   requiredBy: []
-  timestamp: '2026-10-08 16:48:30+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/cycle_detection_undirected_test.nim

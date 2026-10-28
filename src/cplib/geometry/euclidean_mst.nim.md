@@ -183,10 +183,10 @@ data:
   dependsOn:
   - cplib/collections/unionfind.nim
   - cplib/math/int128.nim
-  - cplib/collections/unionfind.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/math/int128.nim
+  - cplib/geometry/base.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/geometry/euclidean_mst.nim
   requiredBy: []

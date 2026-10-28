@@ -204,19 +204,19 @@ data:
   isVerificationFile: false
   path: cplib/matrix/static_matrix.nim
   requiredBy:
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/static_matrix_test.nim
-  - verify/AI/static_matrix_test.nim
   - verify/matrix/static_string/static_matrix_zoistring_test.nim
   - verify/matrix/static_string/static_matrix_zoistring_test.nim
   - verify/matrix/static_string/static_matrix_unit_test.nim
   - verify/matrix/static_string/static_matrix_unit_test.nim
+  - verify/AI/static_matrix_test.nim
+  - verify/AI/static_matrix_test.nim
 documentation_of: cplib/matrix/static_matrix.nim
 layout: document
 redirect_from:

@@ -214,16 +214,16 @@ data:
   verifiedWith:
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
+  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/tree/link_cut_tree/link_cut_tree_test.nim
   - verify/tree/link_cut_tree/link_cut_tree_test.nim
   - verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
   - verify/tree/link_cut_tree/subtree_add_subtree_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
 documentation_of: cplib/tree/private/link_cut_tree_base.nim
 layout: document
 redirect_from:

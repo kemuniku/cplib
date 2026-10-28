@@ -258,12 +258,12 @@ data:
   timestamp: '2026-10-08 10:15:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/digit_dp_initial_state_test.nim
-  - verify/utils/digit_dp_initial_state_test.nim
   - verify/utils/digit_dp_callbacks_test.nim
   - verify/utils/digit_dp_callbacks_test.nim
   - verify/utils/digit_dp_test.nim
   - verify/utils/digit_dp_test.nim
+  - verify/utils/digit_dp_initial_state_test.nim
+  - verify/utils/digit_dp_initial_state_test.nim
 documentation_of: cplib/utils/digit_dp.nim
 layout: document
 redirect_from:

@@ -119,14 +119,14 @@ data:
   timestamp: '2026-09-23 19:26:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/static/restore_dijkstra_radix_static_test.nim
-  - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/dynamic/restore_dijkstra_radix_test.nim
-  - verify/AI/radix_heap_test.nim
-  - verify/AI/radix_heap_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/AI/dijkstra_radix_test.nim
   - verify/AI/dijkstra_radix_test.nim
+  - verify/AI/radix_heap_test.nim
+  - verify/AI/radix_heap_test.nim
 documentation_of: cplib/collections/radix_heap.nim
 layout: document
 redirect_from:

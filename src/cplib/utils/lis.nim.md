@@ -72,10 +72,10 @@ data:
   timestamp: '2026-09-12 08:45:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/lis_aoj_test.nim
-  - verify/utils/lis_aoj_test.nim
   - verify/utils/restore_lis_aoj_test.nim
   - verify/utils/restore_lis_aoj_test.nim
+  - verify/utils/lis_aoj_test.nim
+  - verify/utils/lis_aoj_test.nim
   - verify/AI/lis_test.nim
   - verify/AI/lis_test.nim
 documentation_of: cplib/utils/lis.nim

@@ -55,13 +55,13 @@ data:
     \        return self.uf.issame(u,v) or self.uf.issame(u,v+self.N)"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/collections/rootvalue_unionfind.nim
   isVerificationFile: false
   path: cplib/graph/dynamic_bipartite.nim
   requiredBy: []
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/dynamic_bipartite_test.nim

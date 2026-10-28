@@ -164,28 +164,28 @@ data:
     \ i + 1, value)\n                    power *= p\n                    inc e\n \
     \               inc i\n        visit(n, 0, init(T, 1))\n        result = answer\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/math/multiplicative_prefix_sum.nim
   requiredBy: []
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
-  - verify/math/sum_of_multiplicative_function_test.nim
-  - verify/math/sum_of_multiplicative_function_test.nim
 documentation_of: cplib/math/multiplicative_prefix_sum.nim
 layout: document
 redirect_from:

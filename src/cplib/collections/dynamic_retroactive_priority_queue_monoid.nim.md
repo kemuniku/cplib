@@ -127,8 +127,8 @@ data:
     \u3092\u8FD4\u3057\u307E\u3059\u3002O(M log(M+2)+\u51FA\u529B\u6587\u5B57\u6570\
     )\u3002\n        self.debugDump()\n"
   dependsOn:
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
   isVerificationFile: false
@@ -137,10 +137,10 @@ data:
   timestamp: '2026-09-28 01:13:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
-  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
 documentation_of: cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
 layout: document
 redirect_from:

@@ -115,22 +115,22 @@ data:
 
     '
   dependsOn:
+  - cplib/collections/staticRMQ.nim
+  - cplib/graph/graph.nim
   - cplib/str/static_string.nim
   - cplib/utils/backwards_index.nim
-  - cplib/str/suffix_array.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/str/compressed_trie.nim
   - cplib/graph/graph.nim
   - cplib/str/suffix_array.nim
-  - cplib/graph/graph.nim
-  - cplib/str/compressed_trie.nim
-  - cplib/str/compressed_trie.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/staticRMQ.nim
   - cplib/str/static_string.nim
+  - cplib/collections/staticRMQ.nim
+  - cplib/str/compressed_trie.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/AI/compressed_trie_test.nim
   requiredBy: []
-  timestamp: '2026-09-27 23:03:41+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/compressed_trie_test.nim

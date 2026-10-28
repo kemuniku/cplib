@@ -84,26 +84,26 @@ data:
     \ a = op(a, seg.get(l..<r))\n        ans.add((a[0] * x + a[1]).val)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/isqrt.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/segtree.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/collections/segtree.nim
-  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   requiredBy: []
-  timestamp: '2026-10-15 15:23:06+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/hld/hld_vertex_set_path_composite_test.nim

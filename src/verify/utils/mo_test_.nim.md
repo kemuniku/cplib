@@ -39,14 +39,14 @@ data:
     \ == 1:\n        now -= 1\n    count[c[id]] -= 1\n\nproc rem(id: int) =\n    ans[id]\
     \ = now\n\nm.run(addq, addq, delq, delq, rem)\n\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
+  - cplib/utils/mo.nim
   isVerificationFile: false
   path: verify/utils/mo_test_.nim
   requiredBy: []
-  timestamp: '2026-09-27 00:37:04+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/utils/mo_test_.nim

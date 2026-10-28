@@ -1284,36 +1284,36 @@ data:
     \u8CA0\u8FBA\u3082\u8A31\u5BB9\u3059\u308B\u3002\n        warshall_floyd_nonnegative_inplace_impl(d,\
     \ zero, inf)\n"
   dependsOn:
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/warshall_floyd_negative.nim
   - cplib/utils/constants.nim
   - cplib/graph/warshall_floyd_negative.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/warshall_floyd_avx512.nim
   requiredBy:
   - verify/AI/warshall_floyd_avx512_register_cases.nim
   - verify/AI/warshall_floyd_avx512_register_cases.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
-  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
-  - verify/AI/warshall_floyd_avx512_register_test.nim
-  - verify/AI/warshall_floyd_avx512_register_test.nim
   - verify/AI/warshall_floyd_negative_test.nim
   - verify/AI/warshall_floyd_negative_test.nim
-  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
-  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
-  - verify/AI/warshall_floyd_avx512_test.nim
-  - verify/AI/warshall_floyd_avx512_test.nim
-  - verify/AI/warshall_floyd_avx512_register_large_test.nim
-  - verify/AI/warshall_floyd_avx512_register_large_test.nim
-  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
-  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - verify/AI/warshall_floyd_avx512_register_test.nim
+  - verify/AI/warshall_floyd_avx512_register_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
   - verify/AI/warshall_floyd_avx512_register_packed_large_test.nim
+  - verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - verify/AI/warshall_floyd_avx512_register_large_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_tail_test.nim
+  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - verify/AI/warshall_floyd_avx512_register_int32_test.nim
+  - verify/AI/warshall_floyd_avx512_test.nim
+  - verify/AI/warshall_floyd_avx512_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
+  - verify/AI/warshall_floyd_avx512_register_packed_test.nim
 documentation_of: cplib/graph/warshall_floyd_avx512.nim
 layout: document
 redirect_from:

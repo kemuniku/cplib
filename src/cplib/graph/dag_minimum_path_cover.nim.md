@@ -55,17 +55,17 @@ data:
     \      MFG.add_edge(len(G)+i,2*len(G)+1,1)\n        return len(G)-MFG.flow(2*len(G),2*len(G)+1)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/topologicalsort.nim
+  - cplib/graph/maxflow.nim
   - cplib/graph/graph.nim
-  - cplib/graph/maxflow.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/maxflow.nim
+  - cplib/graph/topologicalsort.nim
   isVerificationFile: false
   path: cplib/graph/dag_minimum_path_cover.nim
   requiredBy:
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  timestamp: '2026-10-15 15:23:06+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/dag_minimum_path_cover_test.nim

@@ -90,26 +90,26 @@ data:
     \ = mint(ii())\n        add[v] = mint(ii())\n    dp.set(v, leaf(v))\n    answers.add(dp.getAll().sum.val)\n\
     echo answers.join(\"\\n\")\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/modint/modint.nim
-  - cplib/tree/static_top_tree_dp.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/math/isqrt.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/static_top_tree.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/tree/static_top_tree_dp.nim
   - cplib/math/isqrt.nim
   - cplib/tree/static_top_tree_dp.nim
+  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   requiredBy: []
-  timestamp: '2026-10-15 15:23:06+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim

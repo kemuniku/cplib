@@ -96,16 +96,16 @@ data:
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/rollback_unionfind_count_test.nim
-  - verify/collections/rollback_unionfind_count_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
   - verify/collections/rollbackuf_yosupo_snap_test.nim
-  - verify/AI/offline_dynamic_queries_test.nim
-  - verify/AI/offline_dynamic_queries_test.nim
+  - verify/collections/rollback_unionfind_count_test.nim
+  - verify/collections/rollback_unionfind_count_test.nim
   - verify/AI/rollback_unionfind_test.nim
   - verify/AI/rollback_unionfind_test.nim
+  - verify/AI/offline_dynamic_queries_test.nim
+  - verify/AI/offline_dynamic_queries_test.nim
 documentation_of: cplib/collections/rollback_unionfind.nim
 layout: document
 redirect_from:

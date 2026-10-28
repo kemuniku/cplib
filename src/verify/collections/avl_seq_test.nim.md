@@ -71,10 +71,10 @@ data:
     \ proc(a, b: int): bool = a > b) == 3\n    doAssert descending.toSeq == @[5, 3,\
     \ 3, 3, 1]\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/avl_seq.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/avl_seq.nim
-  - cplib/collections/avl_seq.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/avl_seq_test.nim
   requiredBy: []

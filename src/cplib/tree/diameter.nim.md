@@ -117,25 +117,25 @@ data:
   isVerificationFile: false
   path: cplib/tree/diameter.nim
   requiredBy:
-  - verify/tree/diameter_path_dynamic_test_.nim
-  - verify/tree/diameter_path_dynamic_test_.nim
   - verify/tree/diameter_path_static_test_.nim
   - verify/tree/diameter_path_static_test_.nim
-  timestamp: '2026-09-30 06:49:19+09:00'
+  - verify/tree/diameter_path_dynamic_test_.nim
+  - verify/tree/diameter_path_dynamic_test_.nim
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/tree/diameter_random_test.nim
+  - verify/tree/diameter_random_test.nim
+  - verify/tree/diameter_static_test.nim
+  - verify/tree/diameter_static_test.nim
+  - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_yosupo_test.nim
+  - verify/tree/diameter_dynamic_test.nim
+  - verify/tree/diameter_dynamic_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/diameter_test.nim
   - verify/AI/diameter_test.nim
-  - verify/tree/diameter_random_test.nim
-  - verify/tree/diameter_random_test.nim
-  - verify/tree/diameter_yosupo_test.nim
-  - verify/tree/diameter_yosupo_test.nim
-  - verify/tree/diameter_static_test.nim
-  - verify/tree/diameter_static_test.nim
-  - verify/tree/diameter_dynamic_test.nim
-  - verify/tree/diameter_dynamic_test.nim
 documentation_of: cplib/tree/diameter.nim
 layout: document
 redirect_from:

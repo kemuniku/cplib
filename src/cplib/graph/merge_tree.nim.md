@@ -97,16 +97,16 @@ data:
     \u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u3067x\u306F\u4F55\u756A\u76EE\u304B\u3092\
     \u8FD4\u3059\n        self.ret[x]\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy:
   - verify/graph/merge_tree_test_.nim
   - verify/graph/merge_tree_test_.nim
-  timestamp: '2026-09-17 22:59:05+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/merge_tree_test.nim

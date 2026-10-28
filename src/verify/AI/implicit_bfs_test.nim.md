@@ -169,20 +169,20 @@ data:
     \ [@[1]], adjacent) == (@[emptyState, @[1]], 1)\n    doAssert implicit_bfs_until(emptyState,\
     \ adjacent, [@[1]]) == 1\n"
   dependsOn:
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/constants.nim
   - cplib/graph/dijkstra.nim
   - cplib/utils/implicit_bfs.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/implicit_bfs.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/implicit_bfs_test.nim
   requiredBy: []
-  timestamp: '2026-10-05 12:14:47+00:00'
+  timestamp: '2026-10-29 04:15:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/implicit_bfs_test.nim

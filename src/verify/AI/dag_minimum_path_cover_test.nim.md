@@ -71,18 +71,18 @@ data:
 
     '
   dependsOn:
-  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/maxflow.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/maxflow.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/maxflow.nim
   isVerificationFile: true
   path: verify/AI/dag_minimum_path_cover_test.nim
   requiredBy: []
-  timestamp: '2026-10-15 15:23:06+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/dag_minimum_path_cover_test.nim

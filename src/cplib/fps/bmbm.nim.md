@@ -219,28 +219,28 @@ data:
     \        if coefficients.len == 0: return init(T, 0)\n        linearRecurrenceKth(a[0..<coefficients.len],\
     \ coefficients, k)\n"
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/fps/berlekamp_massey.nim
-  - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/fps/bostan_mori.nim
   - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
+  - cplib/fps/berlekamp_massey.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/fps/bostan_mori.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
   - cplib/fps/bostan_mori.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/fps/berlekamp_massey.nim
   - cplib/fps/formal_power_series.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/fps/bmbm.nim
   requiredBy:
@@ -249,38 +249,38 @@ data:
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
-  - verify/fps/composition_of_formal_power_series_large_test.nim
-  - verify/fps/composition_of_formal_power_series_large_test.nim
-  - verify/fps/log_of_formal_power_series_test.nim
-  - verify/fps/log_of_formal_power_series_test.nim
-  - verify/fps/inv_of_formal_power_series_test.nim
-  - verify/fps/inv_of_formal_power_series_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
-  - verify/fps/exp_of_formal_power_series_test.nim
-  - verify/fps/exp_of_formal_power_series_test.nim
   - verify/fps/pow_of_formal_power_series_test.nim
   - verify/fps/pow_of_formal_power_series_test.nim
-  - verify/fps/polynomial_taylor_shift_test.nim
-  - verify/fps/polynomial_taylor_shift_test.nim
   - verify/fps/product_of_polynomial_sequence_test.nim
   - verify/fps/product_of_polynomial_sequence_test.nim
-  - verify/fps/composition_of_formal_power_series_test.nim
-  - verify/fps/composition_of_formal_power_series_test.nim
-  - verify/fps/convolution_mod_test.nim
-  - verify/fps/convolution_mod_test.nim
-  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
-  - verify/fps/division_of_polynomials_test.nim
-  - verify/fps/division_of_polynomials_test.nim
-  - verify/fps/polynomial_interpolation_test.nim
-  - verify/fps/polynomial_interpolation_test.nim
+  - verify/fps/exp_of_formal_power_series_test.nim
+  - verify/fps/exp_of_formal_power_series_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
+  - verify/fps/compositional_inverse_of_formal_power_series_large_test.nim
+  - verify/fps/inv_of_formal_power_series_test.nim
+  - verify/fps/inv_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
   - verify/fps/compositional_inverse_of_formal_power_series_test.nim
+  - verify/fps/polynomial_interpolation_test.nim
+  - verify/fps/polynomial_interpolation_test.nim
+  - verify/fps/composition_of_formal_power_series_large_test.nim
+  - verify/fps/composition_of_formal_power_series_large_test.nim
+  - verify/fps/division_of_polynomials_test.nim
+  - verify/fps/division_of_polynomials_test.nim
+  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/fps/kth_term_of_linearly_recurrent_sequence_test.nim
+  - verify/fps/convolution_mod_test.nim
+  - verify/fps/convolution_mod_test.nim
+  - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/log_of_formal_power_series_test.nim
+  - verify/fps/composition_of_formal_power_series_test.nim
+  - verify/fps/composition_of_formal_power_series_test.nim
+  - verify/fps/polynomial_taylor_shift_test.nim
+  - verify/fps/polynomial_taylor_shift_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
   - verify/fps/sqrt_of_formal_power_series_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
+  - verify/fps/shift_of_sampling_points_of_polynomial_test.nim
   - verify/fps/multipoint_evaluation_test.nim
   - verify/fps/multipoint_evaluation_test.nim
   - verify/AI/fps_test.nim

@@ -216,8 +216,8 @@ data:
     \        let residue = (functional_graph.cycle_idx[x]-(k mod csiz)+csiz) mod csiz\n\
     \        return functional_graph.cycle_depth[cid][residue].upperBound(k)\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   isVerificationFile: false
@@ -229,21 +229,21 @@ data:
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_op.nim
   - cplib/graph/functional_graph_with_op.nim
-  timestamp: '2026-10-01 00:36:27+09:00'
+  timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/functional_graph_prod_max_count_test.nim
-  - verify/graph/functional_graph_prod_max_count_test.nim
-  - verify/graph/functional_graph_move_while_limits_test.nim
-  - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/graph/functional_graph_movekth_overflow_test.nim
   - verify/graph/functional_graph_movekth_overflow_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
   - verify/graph/functional_graph_prod_overflow_test.nim
   - verify/graph/functional_graph_prod_overflow_test.nim
-  - verify/AI/functional_graph_test.nim
-  - verify/AI/functional_graph_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_test.nim
+  - verify/AI/functional_graph_test.nim
 documentation_of: cplib/graph/functional_graph.nim
 layout: document
 redirect_from:

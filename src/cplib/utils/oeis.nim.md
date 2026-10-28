@@ -153,10 +153,10 @@ data:
   timestamp: '2026-10-14 21:36:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/oeis_function_test.nim
-  - verify/utils/oeis_function_test.nim
   - verify/utils/oeis_ssl_test.nim
   - verify/utils/oeis_ssl_test.nim
+  - verify/utils/oeis_function_test.nim
+  - verify/utils/oeis_function_test.nim
 documentation_of: cplib/utils/oeis.nim
 layout: document
 redirect_from:
