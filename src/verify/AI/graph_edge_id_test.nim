@@ -33,7 +33,16 @@ template checkGraph(init: untyped, weighted, undirected, isStatic: static bool) 
             static: doAssert not compiles(g.get_edge(0).cost)
             static: doAssert not compiles(g.edge_info[0].cost)
             static: doAssert sizeof(EdgeInfo[void]) == 2 * sizeof(int)
-        when isStatic: g.build()
+        when isStatic:
+            var degreeRejected = false
+            try: discard g.degree(0)
+            except AssertionDefect: degreeRejected = true
+            doAssert degreeRejected
+            g.build()
+        let expectedDegrees = when undirected: [5, 2, 1]
+                              else: [3, 0, 1]
+        for v in 0..<g.len:
+            doAssert g.degree(v) == expectedDegrees[v]
         let expected = when undirected: @[(2, 0), (1, 1), (1, 2), (0, 3), (0, 3)]
                        else: @[(1, 1), (1, 2), (0, 3)]
         assert toSeq(g.to_and_id(0)) == expected
@@ -50,8 +59,16 @@ template checkGraph(init: untyped, weighted, undirected, isStatic: static bool) 
             try: discard toSeq(g.to_and_id(0))
             except AssertionDefect: rejected = true
             assert rejected
+            rejected = false
+            try: discard g.degree(0)
+            except AssertionDefect: rejected = true
+            doAssert rejected
             g.build()
         assert toSeq(g.to_and_id(0)) == expected
+        let updatedDegrees = when undirected: [5, 3, 2]
+                             else: [3, 1, 1]
+        for v in 0..<g.len:
+            doAssert g.degree(v) == updatedDegrees[v]
         for u in 0..<g.len:
             for (dst, cost, id) in g.to_and_cost_and_id(u):
                 assert (dst, id) in toSeq(g.to_and_id(u))
@@ -102,6 +119,11 @@ assert empty.len == 0
 var isolated = initUnWeightedDirectedStaticGraph(2)
 isolated.build()
 assert toSeq(isolated[0]).len == 0
+doAssert isolated.degree(0) == 0
+doAssert isolated.degree(1) == 0
+let dynamicIsolated = initWeightedUnDirectedGraph(2, float)
+doAssert dynamicIsolated.degree(0) == 0
+doAssert dynamicIsolated.degree(1) == 0
 
 var tableGraph = initWeightedUnDirectedTableGraph(@["a", "b"], float)
 assert tableGraph.add_edge("a", "b", 1.5) == 0
