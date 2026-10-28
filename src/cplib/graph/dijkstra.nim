@@ -24,6 +24,8 @@ when not declared CPLIB_GRAPH_DIJKSTRA:
     proc restore_dijkstra*[T, S](G: WeightedGraph[S] or UnWeightedGraph, start: int or seq[int], add: proc(distance: T, edge: S): T, ZERO, INF: T, cmp: proc(a, b: T): int): tuple[costs: seq[T], prev: seq[int]] =
         ## 更新関数 add と比較関数 cmp で最短距離と復元用の親を求める。重みなしの辺は int の 1。
         ## T と S はグラフ・add・ZERO・INF から推論される。
+        # 間接 import でもヒープ要素の比較演算子を解決できるようにする。
+        bind `<`
         var
             queue = initHeapQueue[DijkstraQueueEntry[T]]()
             costs = newSeq[T](len(G))
