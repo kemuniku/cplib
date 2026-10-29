@@ -115,9 +115,9 @@ data:
     \  manhattan_mst(converted)\n"
   dependsOn:
   - cplib/collections/unionfind.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/collections/unionfind.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/manhattan_mst.nim
   requiredBy: []

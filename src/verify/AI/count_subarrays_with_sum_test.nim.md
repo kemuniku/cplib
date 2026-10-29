@@ -84,10 +84,10 @@ data:
     \ 0'i8) == 5000050000'i64\ndoAssert count_subarrays_with_sum(zeros, 1'i8) == 0\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/utils/count_subarrays_with_sum.nim
   - cplib/utils/count_subarrays_with_sum.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/count_subarrays_with_sum_test.nim
   requiredBy: []

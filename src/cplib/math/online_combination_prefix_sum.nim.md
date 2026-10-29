@@ -133,10 +133,10 @@ data:
     \ l >= r:\n            return ModInt(0)\n        let left = self.prefixSum(n,\
     \ if l <= 0: -1 else: l - 1)\n        return right - left\n"
   dependsOn:
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/math/combination.nim
   - cplib/math/combination.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/math/online_combination_prefix_sum.nim
   requiredBy: []

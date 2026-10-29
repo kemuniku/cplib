@@ -56,10 +56,10 @@ data:
 
     '
   dependsOn:
-  - cplib/math/osa_k.nim
-  - cplib/str/run_length_encode.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/osa_k.nim
+  - cplib/math/osa_k.nim
+  - cplib/str/run_length_encode.nim
   isVerificationFile: true
   path: verify/AI/osa_k_test.nim
   requiredBy: []

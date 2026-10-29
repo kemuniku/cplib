@@ -781,6 +781,9 @@ data:
       path: cplib/str/fixedlength_merged_static_string.nim
       title: cplib/str/fixedlength_merged_static_string.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/str/hamming_distance.nim
+      title: cplib/str/hamming_distance.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/str/hash_string.nim
       title: cplib/str/hash_string.nim
     - icon: ':heavy_check_mark:'
@@ -3355,6 +3358,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/get_palindromes_test.nim
       title: verify/str/get_palindromes_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/hamming_distance_test.nim
+      title: verify/str/hamming_distance_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/lcs_bitset_test.nim
       title: verify/str/lcs_bitset_test.nim

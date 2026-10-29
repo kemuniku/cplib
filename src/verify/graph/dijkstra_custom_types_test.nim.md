@@ -111,13 +111,13 @@ data:
     \    doAssert g.restore_dijkstra(0).prev == @[-1, 0, -1]\n    doAssert sg.shortest_path_dijkstra(0,\
     \ 1) == (@[0, 1], 1)\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
-  - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/graph/dijkstra_custom_types_test.nim

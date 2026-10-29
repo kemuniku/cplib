@@ -73,8 +73,8 @@ data:
   dependsOn:
   - cplib/collections/avl_seq.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/avl_seq.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/avl_seq.nim
   isVerificationFile: true
   path: verify/collections/avl_seq_test.nim
   requiredBy: []

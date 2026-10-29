@@ -164,26 +164,26 @@ data:
     \ 1, 3, 1) == high(int)\nwhen sizeof(int) == 8:\n    doAssert oversleeping(999999999,\
     \ 1, 1000000000, 1) == 1000000000999999999'i64\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/bigint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/int128.nim
-  - cplib/math/bigint.nim
-  - cplib/math/int128.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/crt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
-  - cplib/math/crt.nim
+  - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
   - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/math/inv_gcd.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/crt.nim
+  - cplib/modint/modint.nim
+  - cplib/math/int128.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/int128.nim
+  - cplib/math/crt.nim
+  - cplib/math/isprime.nim
   isVerificationFile: true
   path: verify/math/crt_test.nim
   requiredBy: []

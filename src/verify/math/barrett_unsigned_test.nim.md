@@ -58,14 +58,14 @@ data:
     \  modint_barrett.setMod(modulus)\n  check[modint_barrett]()\necho \"Hello World\"\
     \n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/math/barrett_unsigned_test.nim
   requiredBy: []

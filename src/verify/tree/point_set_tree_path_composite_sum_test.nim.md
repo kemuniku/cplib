@@ -96,21 +96,21 @@ data:
     n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/graph/graph.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/tree/static_top_tree.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/math/isqrt.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
   - cplib/modint/modint.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/tree/static_top_tree.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_test.nim
   requiredBy: []

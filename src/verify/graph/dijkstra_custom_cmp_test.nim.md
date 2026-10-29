@@ -90,14 +90,14 @@ data:
     \   let sum = proc(d, edge: int): int = d + edge\n    doAssert g.dijkstra(start,\
     \ sum, 0, 1000) == g.dijkstra(start, 0, 1000)\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   - cplib/utils/constants.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/graph/dijkstra_custom_cmp_test.nim
   requiredBy: []

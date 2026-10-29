@@ -209,20 +209,20 @@ data:
     \        result[k] += falling * powers[k - j] * adjoints[j][0]\n             \
     \   falling *= init(T, k) - j\n"
   dependsOn:
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/subset_convolution.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/subset_convolution.nim
   - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
   isVerificationFile: false
   path: cplib/set_power_series/set_power_series.nim
   requiredBy: []

@@ -96,9 +96,9 @@ data:
     \ - 1)\n    for v in 2..<n: doAssert starHashes[v] == starHashes[1]\n\necho \"\
     Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/tree_hash.nim
   isVerificationFile: true
   path: verify/AI/tree_hash_test.nim

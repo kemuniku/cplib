@@ -79,18 +79,18 @@ data:
 
     '
   dependsOn:
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/matrix/static_matrix.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/static_matrix.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   isVerificationFile: true
   path: verify/matrix/static_string/static_matrix_zoistring_test.nim
   requiredBy: []

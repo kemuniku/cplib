@@ -72,17 +72,17 @@ data:
     \necho anss\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/graph/graph.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/graph/graph.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: verify/tree/auxiliarytree_test_.nim
   requiredBy: []

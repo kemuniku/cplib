@@ -85,21 +85,21 @@ data:
     \\n\")\n"
   dependsOn:
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/graph/graph.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/utils/backwards_index.nim
-  - cplib/math/isqrt.nim
   - cplib/graph/graph.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/collections/segtree.nim
   - cplib/modint/modint.nim
   - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
+  - cplib/math/isqrt.nim
   - cplib/collections/segtree.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   requiredBy: []

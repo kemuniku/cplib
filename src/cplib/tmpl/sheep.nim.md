@@ -236,9 +236,9 @@ data:
     \ b: \"Yes\" else: \"No\")\n\n    template dblock(body: untyped) =\n        when\
     \ defined(debug):\n            block:\n                body\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim

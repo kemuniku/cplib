@@ -74,8 +74,8 @@ data:
     \    i = i shr 1\n            self.arr[i][j] = self.merge(self.arr[2*i][j], self.arr[2*i+1][j])\n"
   dependsOn:
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
   isVerificationFile: false
   path: cplib/collections/segtree2d.nim
