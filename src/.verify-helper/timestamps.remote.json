@@ -599,6 +599,7 @@
 "verify/str/edit_distance_bitset_test.nim": "2026-09-18 12:10:16 +0900",
 "verify/str/edit_distance_test.nim": "2026-09-27 22:50:40 +0900",
 "verify/str/get_palindromes_test.nim": "2026-10-17 20:24:22 +0900",
+"verify/str/hamming_distance_test.nim": "2026-10-19 01:28:08 +0900",
 "verify/str/hash_string/hash_string_LCP_test.nim": "2026-09-18 12:10:16 +0900",
 "verify/str/hash_string/hash_string_LCS_test.nim": "2026-10-15 15:23:06 +0900",
 "verify/str/hash_string/hash_string_Z_algo_test.nim": "2026-09-18 12:10:16 +0900",
