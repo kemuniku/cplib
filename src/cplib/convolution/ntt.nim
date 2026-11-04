@@ -47,7 +47,7 @@ when not declared CPLIB_CONVOLUTION_NTT:
         var prod = 1
         var iprod = 1
         var primitive_root = ntt_primitive_root_compiletime(m)
-        while sum_e + 2 <= ((m - 1).countTrailingZeroBits - 1):
+        while sum_e + 2 <= ((m - 1).countTrailingZeroBits):
             var root = nth_root(primitive_root, 1 shl (sum_e + 2), m)
             var iroot = ntt_powmod_compiletime(root, m - 2, m)
             rate2[sum_e] = (root * iprod) mod m
