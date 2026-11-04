@@ -2,10 +2,39 @@ when not declared CPLIB_STR_HASHSTRING:
     const CPLIB_STR_HASHSTRING* = 1
     import cplib/utils/backwards_index
     import random
+    # -d:cplibHashStringDebug の時だけ生文字列と構成 DAG を保持する。
+    # 通常ビルドの型・ハッシュ演算・既定の $ は従来通り。
+    # char 入力はコピー O(N)、連結・反復・prefix 除去は追加 O(1) ノード。
+    # RollingHash からの変換は元文字列を共有し、切り出しをコピーしない。
+    # 長さと反復回数は非負で int に収まること、removePrefix は一致する
+    # prefix を渡すことが既存 API の前提。公開 hash の手動変更は追跡しない。
+    # 整数入力は char と区別し、元整数値は保持しない。
+    when defined(cplibHashStringDebug):
+        import strutils
+        type
+            HashStringDebugKind = enum
+                hsChars, hsIntegers, hsUnknown, hsConcat, hsRepeat, hsSlice
+            HashStringDebugNode = ref object
+                kind: HashStringDebugKind
+                size, offset: int
+                text: string
+                left, right: HashStringDebugNode
+
+        proc debugSource(node: HashStringDebugNode, size: int): HashStringDebugNode =
+            ## 手動構築された値の情報欠落を記録する。時間・領域 O(1)。
+            if node == nil: HashStringDebugNode(kind: hsUnknown, size: size)
+            else: node
+
+        proc debugLeaf(text: string): HashStringDebugNode =
+            ## 文字列を保持する葉を作る。時間・領域 O(text.len)。
+            HashStringDebugNode(kind: hsChars, size: text.len, text: text)
+
     type HashString* = object
         hash*: uint
         bpow: uint
         size: int
+        when defined(cplibHashStringDebug):
+            debugNode: HashStringDebugNode
     const MASK30 = (1u shl 30) - 1
     const MASK31 = (1u shl 31) - 1
     const RH_MOD = (1u shl 61) - 1
@@ -58,6 +87,8 @@ when not declared CPLIB_STR_HASHSTRING:
 
     proc tohash*(S: int): HashString =
         result = HashString(hash: uint(S) mod RH_MOD, bpow: hashstring_base, size: 1)
+        when defined(cplibHashStringDebug):
+            result.debugNode = HashStringDebugNode(kind: hsIntegers, size: 1)
 
     proc tohash*[T](S: openArray[T]): HashString =
         var hash = 0u
@@ -66,15 +97,33 @@ when not declared CPLIB_STR_HASHSTRING:
             hash = (hash+mul(int(S[i]).tohash.hash, tmp)).calc_mod
             tmp = mul(tmp, hashstring_base).calc_mod
         result = HashString(hash: hash, bpow: base_pow(len(S)), size: len(S))
+        when defined(cplibHashStringDebug):
+            when T is char:
+                var text = newString(S.len)
+                for i in 0..<S.len: text[i] = S[i]
+                result.debugNode = debugLeaf(text)
+            else:
+                result.debugNode = HashStringDebugNode(kind: hsIntegers, size: S.len)
 
     proc tohash*(S: char): HashString =
         result = HashString(hash: uint(int(S)), bpow: hashstring_base, size: 1)
+        when defined(cplibHashStringDebug):
+            result.debugNode = debugLeaf($S)
 
     proc get_emptystring_hash*(): HashString =
         result = HashString(hash: 0u, bpow: 1u, size: 0)
+        when defined(cplibHashStringDebug):
+            result.debugNode = debugLeaf("")
 
     proc `&`*(L, R: HashString): HashString =
         result = HashString(hash: (mul(L.hash, R.bpow).calc_mod+R.hash).calc_mod, bpow: mul(L.bpow, R.bpow).calc_mod, size: L.size+R.size)
+        when defined(cplibHashStringDebug):
+            if L.size == 0: result.debugNode = R.debugNode
+            elif R.size == 0: result.debugNode = L.debugNode
+            else:
+                result.debugNode = HashStringDebugNode(kind: hsConcat,
+                    size: result.size, left: debugSource(L.debugNode, L.size),
+                    right: debugSource(R.debugNode, R.size))
 
     proc `==`*(L, R: HashString): bool =
         return (L.size == R.size) and (L.hash == R.hash)
@@ -97,15 +146,76 @@ when not declared CPLIB_STR_HASHSTRING:
                 tmp_hash = (mul(tmp_hash, tmp_b).calc_mod+tmp_hash).calc_mod
                 tmp_b = mul(tmp_b, tmp_b).calc_mod
             x = x shr 1
-        return HashString(hash: hash, bpow: bpow, size: size)
+        result = HashString(hash: hash, bpow: bpow, size: size)
+        when defined(cplibHashStringDebug):
+            if size == 0: result.debugNode = debugLeaf("")
+            else:
+                result.debugNode = HashStringDebugNode(kind: hsRepeat,
+                    size: size, left: debugSource(H.debugNode, H.size))
 
     proc removePrefix*(H, prefix: HashString): HashString =
         var hash = (H.hash + (RH_MOD - mul(prefix.hash, base_pow(len(H)-len(prefix))).calc_mod)).calc_mod
         var l = len(H)-len(prefix)
-        return HashString(hash: hash, bpow: base_pow(l), size: l)
+        result = HashString(hash: hash, bpow: base_pow(l), size: l)
+        when defined(cplibHashStringDebug):
+            if l == 0: result.debugNode = debugLeaf("")
+            else:
+                result.debugNode = HashStringDebugNode(kind: hsSlice,
+                    size: l, offset: prefix.size, left: debugSource(H.debugNode, H.size))
+
+    when defined(cplibHashStringDebug):
+        proc debugString*(H: HashString, maxChars: int = 80): string =
+            ## 最大 maxChars 要素のプレビューと全長を返す。負の上限は ValueError。
+            ## DAG を反復走査し、巨大な反復を実体化しない。k=min(len,maxChars)、
+            ## 深さ d に対し時間 O((k+1)(d+1))、追加領域 O(k+d+1)。
+            ## char は引用・エスケープし、整数列/情報なしは別の印で表示する。
+            if maxChars < 0:
+                raise newException(ValueError, "maxChars must be nonnegative")
+            type Frame = tuple[node: HashStringDebugNode, start, count: int]
+            var stack: seq[Frame] = @[(debugSource(H.debugNode, H.size), 0, min(H.size, maxChars))]
+            var text = ""
+            var part = ""
+            while stack.len > 0:
+                let (node, start, count) = stack.pop()
+                if count == 0: continue
+                if node.kind == hsChars:
+                    for i in 0..<count: part.add(node.text[node.offset + start + i])
+                    continue
+                if node.kind in {hsIntegers, hsUnknown} and part.len > 0:
+                    text.add(part.escape())
+                    part.setLen(0)
+                case node.kind
+                of hsChars: discard
+                of hsIntegers: text.add("<integers:" & $count & ">")
+                of hsUnknown: text.add("<unavailable:" & $count & ">")
+                of hsSlice: stack.add((node.left, start + node.offset, count))
+                of hsConcat:
+                    let leftCount = min(count, max(0, node.left.size - start))
+                    if leftCount < count:
+                        stack.add((node.right, max(0, start - node.left.size), count - leftCount))
+                    if leftCount > 0: stack.add((node.left, start, leftCount))
+                of hsRepeat:
+                    let offset = start mod node.left.size
+                    let firstCount = min(count, node.left.size - offset)
+                    if firstCount < count:
+                        stack.add((node, start + firstCount, count - firstCount))
+                    stack.add((node.left, offset, firstCount))
+            if part.len > 0: text.add(part.escape())
+            if text.len == 0:
+                if H.size == 0 and H.debugNode == nil: text = "<unavailable:0>"
+                elif H.size == 0 and H.debugNode.kind == hsIntegers: text = "<integers:0>"
+                else: text = "\"\""
+            if H.size > maxChars: text.add("...")
+            result = text & " (len=" & $H.size & ")"
+
+        proc `$`*(H: HashString): string =
+            ## デバッグ定義時のみ、最大80要素のプレビューを返す。
+            H.debugString()
 
     type RollingHashBase = ref object
         S: string
+        when defined(cplibHashStringDebug):
+            debugNode: HashStringDebugNode
         prefixs: seq[uint]
         size: int
 
@@ -153,6 +263,8 @@ when not declared CPLIB_STR_HASHSTRING:
         rolling.S = newString(len(S))
         for i in 0..<len(S):
             rolling.S[i] = S[i]
+        when defined(cplibHashStringDebug):
+            rolling.debugNode = debugLeaf(rolling.S)
         rolling.prefixs = newSeq[uint](len(S)+1)
         rolling.prefixs[0] = 0
         for i in 1..len(S):
@@ -165,7 +277,10 @@ when not declared CPLIB_STR_HASHSTRING:
 
 
     converter toHashString*(self: RollingHash): HashString =
-        return HashString(hash: (self.R.prefixs[self.r] + (RH_MOD - mul(self.R.prefixs[self.l], base_pow(self.r-self.l)).calc_mod)).calc_mod, bpow: base_pow(self.r-self.l), size: self.r-self.l)
+        result = HashString(hash: (self.R.prefixs[self.r] + (RH_MOD - mul(self.R.prefixs[self.l], base_pow(self.r-self.l)).calc_mod)).calc_mod, bpow: base_pow(self.r-self.l), size: self.r-self.l)
+        when defined(cplibHashStringDebug):
+            result.debugNode = HashStringDebugNode(kind: hsSlice,
+                size: self.r-self.l, offset: self.l, left: self.R.debugNode)
 
     proc `$`*(S: RollingHash): string =
         return S.R.S[S.l..<S.r]
