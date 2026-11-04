@@ -32,7 +32,34 @@ when not declared CPLIB_MATRIX_MATOPS:
         for i in 0..<4:
             result = result.rotated
             while result.len > 0 and result[^1].allIt(it == zero): discard result.pop
-    proc rotated*(a: seq[string], num: int = 1): seq[string] = a.mapIt(it.toSeq).rotated(num).mapIt(it.join(""))
+    proc rotated*(a: seq[string], num: int = 1): seq[string] =
+        ## 各行が同じバイト長の文字列行列を時計回りに90度×num回回転する。時間・結果領域 O(HW+H+W)。
+        if a.len == 0: return a
+        let h = a.len
+        let w = a[0].len
+        var turns = num mod 4
+        if turns < 0: turns += 4
+        case turns
+        of 0:
+            return a
+        of 1:
+            result = newSeq[string](w)
+            for i in 0..<w:
+                result[i] = newString(h)
+                for j in 0..<h:
+                    result[i][j] = a[h-1-j][i]
+        of 2:
+            result = newSeq[string](h)
+            for i in 0..<h:
+                result[i] = newString(w)
+                for j in 0..<w:
+                    result[i][j] = a[h-1-i][w-1-j]
+        else:
+            result = newSeq[string](w)
+            for i in 0..<w:
+                result[i] = newString(h)
+                for j in 0..<h:
+                    result[i][j] = a[j][w-1-i]
     proc rotate*[T](a: var seq[seq[T]], num: int = 1) = (a = rotated(a, num))
     proc rotate*(a: var seq[string], num: int = 1) = (a = rotated(a, num))
     proc transposed*(a: seq[string]): seq[string] = a.mapIt(it.toSeq).transposed.mapIt(it.join(""))
