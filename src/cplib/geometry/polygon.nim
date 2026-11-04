@@ -18,7 +18,7 @@ when not declared CPLIB_GEOMETRY_POLYGON:
         for i in 0..<p.v.len: result += cross(p.v[i], p.v[(i+1) mod p.v.len])
     proc area*[T](p: Polygon[Fraction[T]]): Fraction[T] =
         ## 多角形の面積、頂点列が時計回りの場合負の数が返る
-        result = initFraction(0)
+        result = initFraction(T(0))
         for i in 0..<p.v.len: result += cross(p.v[i], p.v[(i+1) mod p.v.len]) / 2
     proc area*(p: Polygon[float]): float =
         ## 多角形の面積、頂点列が時計回りの場合負の数が返る
