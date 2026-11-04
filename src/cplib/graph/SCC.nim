@@ -1,47 +1,60 @@
 when not declared CPLIB_GRAPH_SCC:
     const CPLIB_GRAPH_SCC* = 1
     import cplib/graph/graph
-    import sequtils
+    import sequtils, algorithm
     proc SCC*(G: UnweightedDirectedGraph or UnWeightedDirectedStaticGraph): seq[seq[int]] =
-        ##強連結成分分解をして、強連結成分を返します。リストはトポロジカルソートされています。
-        var postorder = newseqwith(len(G), -1)
-        var used = newSeqWith(len(G), false)
-        var count = len(G)-1
-
-        proc fdfs(x: int) =
-            for i in G[x]:
-                if not used[i]:
-                    used[i] = true
-                    fdfs(i)
-            postorder[count] = x
-            count -= 1
-
-        for i in 0..<len(G):
-            if not used[i]:
-                used[i] = true
-                fdfs(i)
-
-        var gout = newseq[seq[int]](len(G))
-        for i in 0..<len(G):
-            for j in G[i]:
-                gout[j].add(i)
-        var group: seq[seq[int]]
-        used = newSeqWith(len(G), false)
-        count = 0
-
-        proc sdfs(x: int) =
-            group[count].add(x)
-            for i in gout[x]:
-                if not used[i]:
-                    used[i] = true
-                    sdfs(i)
-        for i in postorder:
-            if not used[i]:
-                used[i] = true
-                group.add(@[])
-                sdfs(i)
-                count += 1
-        return group
+        ## 強連結成分をトポロジカル順にO(V+E)時間・O(V)補助領域で返します。DFSは非再帰です。
+        ## 成分内の頂点順と、互いに到達できない成分間の順序は保証しません。
+        let n = G.len
+        when G is StaticGraphTypes: G.static_graph_initialized_check()
+        var ord = newSeqWith(n, -1)
+        var low = newSeq[int](n)
+        var parent = newSeqWith(n, -1)
+        var next = newSeq[int](n)
+        var pending: seq[int]
+        var timer = 0
+        for root in 0..<n:
+            if ord[root] != -1: continue
+            var v = root
+            ord[v] = timer
+            low[v] = timer
+            inc timer
+            pending.add(v)
+            while v != -1:
+                when G is StaticGraphTypes:
+                    let degree = int(G.start[v+1] - G.start[v])
+                else:
+                    let degree = G.edges[v].len
+                if next[v] < degree:
+                    when G is StaticGraphTypes:
+                        let to = G.elist[int(G.start[v]) + next[v]][0].int
+                    else:
+                        let to = G.edges[v][next[v]][0].int
+                    inc next[v]
+                    if ord[to] == -1:
+                        parent[to] = v
+                        ord[to] = timer
+                        low[to] = timer
+                        inc timer
+                        pending.add(to)
+                        v = to
+                    else:
+                        low[v] = min(low[v], ord[to])
+                else:
+                    let p = parent[v]
+                    if p != -1: low[p] = min(low[p], low[v])
+                    if low[v] == ord[v]:
+                        var first = pending.len - 1
+                        while pending[first] != v: dec first
+                        var group = newSeq[int](pending.len - first)
+                        for i in 0..<group.len:
+                            let u = pending[pending.len-1-i]
+                            group[i] = u
+                            ord[u] = n
+                        pending.setLen(first)
+                        result.add(move(group))
+                    v = p
+        reverse(result)
     proc SCCG*[UG](G: UG): (UG, seq[int], seq[seq[int]]) =
         ##強連結成分分解をします。
         ##結果を、(頂点をまとめたグラフ,元の頂点→新頂点への対応,新頂点に含まれる頂点一覧)で返します。
