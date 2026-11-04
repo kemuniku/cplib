@@ -123,14 +123,15 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
         assert H == W and n == H, "正方行列で、指定したサイズnが行数Hと一致する必要があります"
         for i in 0..<H: result[i, i] = T(1)
     proc pow*[H: static int, W: static int, T](m: StaticMatrix[H,W,T], n: int): StaticMatrix[H,W,T] =
+        ## 非負整数乗を繰り返し二乗法で求める。O(H^3 log(n+1))。
         assert H == W, "行列は正方行列である必要があります"
         for i in 0..<H: result[i, i] = T(1)
         var m = m
         var n = n
         while n > 0:
             if (n and 1) == 1: result *= m
-            m *= m
             n = n shr 1
+            if n > 0: m *= m
     proc `**`*[H: static int, W: static int, T](m: StaticMatrix[H,W,T], n: int): StaticMatrix[H,W,T] = m.pow(n)
     proc sum*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): T =
         for i in 0..<H*W:
