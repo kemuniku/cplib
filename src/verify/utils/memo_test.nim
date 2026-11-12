@@ -1,3 +1,5 @@
+# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
+
 import cplib/utils/memo
 
 block:
@@ -67,3 +69,5 @@ block:
     doAssert retry(3) == 6
     doAssert retry(3) == 6
     doAssert calls == 2
+
+echo "Hello World"
