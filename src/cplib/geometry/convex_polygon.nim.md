@@ -191,14 +191,14 @@ data:
     \u5074\u3068\u5883\u754C\u306EPolygon\u3092\u8FD4\u3059\u3002\n        convex_cut(Polygon[T](v:\
     \ poly.vertices), line)\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/convex_polygon.nim
   requiredBy: []

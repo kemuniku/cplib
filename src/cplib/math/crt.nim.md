@@ -49,8 +49,8 @@ data:
     \u3044\u3002\n        ## \u4E0D\u6B63\u5165\u529B\u306E\u691C\u67FB\u30FB\u30AA\
     \u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u691C\u51FA\u306F release / assertions:off\
     \ \u3067\u3082\u6709\u52B9\u3002\n        ## \u8A08\u7B97\u91CF O(r.len * log(max(m)))\u3001\
-    \u88DC\u52A9\u7A7A\u9593 O(1)\u3002C++ \u30D0\u30C3\u30AF\u30A8\u30F3\u30C9\u3092\
-    \u4F7F\u7528\u3059\u308B\u3002\n        ## \u53C2\u8003: https://atcoder.github.io/ac-library/production/document_ja/math.html\
+    \u88DC\u52A9\u7A7A\u9593 O(1)\u3002__int128\u5BFE\u5FDC\u30B3\u30F3\u30D1\u30A4\
+    \u30E9\u3092\u4F7F\u7528\u3059\u308B\u3002\n        ## \u53C2\u8003: https://atcoder.github.io/ac-library/production/document_ja/math.html\
     \ (CC0)\n        if r.len != m.len:\n            raise newException(ValueError,\
     \ \"\u5270\u4F59\u5217\u3068\u6CD5\u5217\u306E\u9577\u3055\u304C\u4E00\u81F4\u3057\
     \u307E\u305B\u3093\")\n        for modulus in m:\n            if modulus <= 0:\n\
@@ -68,13 +68,13 @@ data:
     \            result.m *= factor\n"
   dependsOn:
   - cplib/math/inv_gcd.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/math/inv_gcd.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/math/crt.nim
   requiredBy: []
-  timestamp: '2026-10-02 19:57:44+00:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/math/crt_test.nim

@@ -3412,6 +3412,9 @@ data:
       path: verify/str/lcs_bitset_test.nim
       title: verify/str/lcs_bitset_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/str/lcs_linear_memory_test.nim
+      title: verify/str/lcs_linear_memory_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/str/lcs_test.nim
       title: verify/str/lcs_test.nim
     - icon: ':heavy_check_mark:'
@@ -3675,6 +3678,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/utils/lis_aoj_test.nim
       title: verify/utils/lis_aoj_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/utils/memo_test.nim
+      title: verify/utils/memo_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/utils/oeis_function_test.nim
       title: verify/utils/oeis_function_test.nim

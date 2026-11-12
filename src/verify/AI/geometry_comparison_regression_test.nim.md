@@ -100,9 +100,9 @@ data:
     \    doAssert initPoint(1, 2) < initPoint(1, 3)\n    doAssert not almost_equal(initPoint(1,\
     \ 2), initPoint(1, 3))\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/geometry_comparison_regression_test.nim

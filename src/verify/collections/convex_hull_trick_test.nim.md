@@ -120,22 +120,22 @@ data:
     \       discard hull.get_min(1)\n        discard hull.get_min(0)\n\necho \"Hello\
     \ World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
-  - cplib/collections/convex_hull_trick_monotone.nim
-  - cplib/collections/convex_hull_trick_monotone_slope.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/math/int128.nim
+  - cplib/collections/convex_hull_trick.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/convex_hull_trick_monotone_slope.nim
-  - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick_monotone.nim
   - cplib/collections/convex_hull_trick.nim
+  - cplib/collections/convex_hull_trick_monotone_slope.nim
   - cplib/collections/avltreenode.nim
+  - cplib/collections/convex_hull_trick_monotone.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/collections/convex_hull_trick_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/convex_hull_trick_test.nim

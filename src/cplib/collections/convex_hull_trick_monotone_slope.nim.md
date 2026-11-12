@@ -55,14 +55,14 @@ data:
     \     else:\n                r = m\n        chtAnswer(chtValue(self.hull.lines[l],\
     \ x))\n"
   dependsOn:
-  - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick_monotone_slope.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/collections/convex_hull_trick_test.nim

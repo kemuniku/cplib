@@ -164,30 +164,30 @@ data:
     \ 1, 3, 1) == high(int)\nwhen sizeof(int) == 8:\n    doAssert oversleeping(999999999,\
     \ 1, 1000000000, 1) == 1000000000999999999'i64\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/int128.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
   - cplib/math/bigint.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/crt.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/crt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/bigint.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/int128.nim
-  - cplib/math/crt.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/crt.nim
   isVerificationFile: true
   path: verify/math/crt_test.nim
   requiredBy: []
-  timestamp: '2026-10-08 06:34:57+09:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/math/crt_test.nim

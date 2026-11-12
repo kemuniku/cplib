@@ -41,11 +41,11 @@ data:
     \ = initPoint(int64(ii()), int64(ii()))\n    let (u, v) = closest_pair(points).get.indices\n\
     \    echo u, \" \", v\n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
+  - cplib/geometry/closest_pair.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/geometry/closest_pair.nim
   - cplib/geometry/base.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/geometry/closest_pair.nim
-  - cplib/geometry/closest_pair.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/closest_pair_test.nim

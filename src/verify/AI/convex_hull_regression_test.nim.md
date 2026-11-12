@@ -105,14 +105,14 @@ data:
     \ 0), initPoint(n-1, 1-n)]\n    doAssert convex_hull(line, false).len == n\n\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/AI/convex_hull_regression_test.nim
   requiredBy: []

@@ -224,26 +224,26 @@ data:
     \                partial[i * 2 + 1] * tree.nodes[i * 2]\n            first = first\
     \ div 2\n            size *= 2\n        partial[1].prefix(xs.len)\n"
   dependsOn:
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/product_tree.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/algorithm_ntt.nim
   - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/fps/product_tree.nim
   - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
   - cplib/fps/product_tree.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isprime.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/fps/formal_power_series.nim
   isVerificationFile: false
   path: cplib/fps/polynomial_interpolation.nim
   requiredBy:

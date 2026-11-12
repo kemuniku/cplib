@@ -225,12 +225,12 @@ data:
     \   lower.setLen(lower.len - 1)\n        upper.setLen(upper.len - 1)\n       \
     \ Polygon[T](v: lower & upper)\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
   - cplib/math/fractions.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy:

@@ -93,22 +93,22 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/set_power_series/set_power_series.nim
-  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
   - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/convolution/subset_convolution.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/math/isqrt.nim
+  - cplib/set_power_series/set_power_series.nim
   - cplib/convolution/subset_convolution.nim
   - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/subset_convolution.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/set_power_series/set_power_series.nim
-  - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/set_power_series/polynomial_composite_set_power_series_test.nim
   requiredBy: []

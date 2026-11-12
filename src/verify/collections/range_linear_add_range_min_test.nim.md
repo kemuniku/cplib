@@ -42,16 +42,16 @@ data:
     \   let l = ii()\n    let r = ii()\n    if t == 0:\n        let b = ii()\n   \
     \     let c = ii()\n        seg.add(l..<r, b, c)\n    else:\n        echo seg[l..<r]\n"
   dependsOn:
-  - cplib/math/int128.nim
   - cplib/collections/range_linear_add_range_min.nim
-  - cplib/math/int128.nim
-  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_linear_add_range_min.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/collections/range_linear_add_range_min_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/collections/range_linear_add_range_min_test.nim

@@ -44,14 +44,35 @@ data:
     \ == boundaryStrings.len\nassert $(parseInt128(boundaryStrings[^1]) + 1) == \"\
     -170141183460469231731687303715884105727\"\nassert $(parseInt128(boundaryStrings[^2])\
     \ - 1) == \"170141183460469231731687303715884105726\"\nassert $parseInt128(\"\
-    0\") == \"0\"\n"
+    0\") == \"0\"\n\nassert sizeof(Int128) == 16\nassert $to_Int128(high(uint64))\
+    \ == \"18446744073709551615\"\nassert $to_Int128(low(int64)) == \"-9223372036854775808\"\
+    \nassert to_Int128(high(int64)).to_int == high(int64)\nassert to_Int128(low(int64)).to_int\
+    \ == low(int64)\nassert to_Int128(high(uint8)) == 255\nassert to_Int128(low(int8))\
+    \ == -128\nassert to_Int128(high(uint16)) == 65535\nassert to_Int128(low(int16))\
+    \ == -32768\nassert $to_Int128(high(uint32)) == \"4294967295\"\nassert to_Int128(low(int32))\
+    \ == -2147483648\n\nlet wide = parseInt128(\"18446744073709551616\")\nvar updated\
+    \ = wide\nupdated += updated\nassert updated == wide * 2\nupdated -= wide\nupdated\
+    \ *= 3\nupdated.div= to_Int128(3)\nassert updated == wide\nupdated.mod= to_Int128(3)\n\
+    assert updated == 1\nupdated <<= 65\nassert updated == wide * 2\nupdated >>= 64\n\
+    assert updated == 2\nupdated |= wide\nupdated ^= 3\nupdated &= wide + 1\nassert\
+    \ updated == wide + 1\nupdated = -wide\nupdated >>= 64\nassert updated == -1\n\
+    assert (-wide - 1) div to_Int128(3) == -parseInt128(\"6148914691236517205\")\n\
+    assert (-wide - 1) mod to_Int128(3) == -2\nassert wide > wide - 1\nassert wide\
+    \ >= wide\nassert -wide <= -wide\nassert -wide < 0\n\ntype Int128Holder = object\n\
+    \    value: Int128\n    marker: int\n\nvar holders = newSeq[Int128Holder](2)\n\
+    assert holders[0].value == 0\nholders[0] = Int128Holder(value: wide, marker: 7)\n\
+    holders[1] = Int128Holder(value: -wide, marker: 9)\nfor i in 0..<100:\n    holders.add(Int128Holder(value:\
+    \ wide + i, marker: i))\nswap(holders[0], holders[1])\nassert holders[0].value\
+    \ == -wide and holders[0].marker == 9\nassert holders[1].value == wide and holders[1].marker\
+    \ == 7\nfor i in 0..<100:\n    assert holders[i + 2].value == wide + i\n    assert\
+    \ holders[i + 2].marker == i\n"
   dependsOn:
   - cplib/math/int128.nim
   - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/int128_test.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/int128_test.nim

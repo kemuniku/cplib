@@ -38,8 +38,8 @@ data:
 
     '
   dependsOn:
-  - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree_static_op.nim
   isVerificationFile: true

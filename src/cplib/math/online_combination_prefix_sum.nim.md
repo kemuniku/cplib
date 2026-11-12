@@ -134,8 +134,8 @@ data:
     \ if l <= 0: -1 else: l - 1)\n        return right - left\n"
   dependsOn:
   - cplib/math/combination.nim
-  - cplib/math/isqrt.nim
   - cplib/math/combination.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/math/online_combination_prefix_sum.nim

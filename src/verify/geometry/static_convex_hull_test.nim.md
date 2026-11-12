@@ -49,14 +49,14 @@ data:
     \ y)\n    let answer = convex_hull(points, true)\n    echo answer.len\n    for\
     \ p in answer:\n        echo p.x, \" \", p.y\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: true
   path: verify/geometry/static_convex_hull_test.nim
   requiredBy: []

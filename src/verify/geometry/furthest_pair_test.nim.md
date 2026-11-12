@@ -60,16 +60,16 @@ data:
     \u4F7F\u3044\u3001\u7570\u306A\u308B\u5165\u529Bindex\u3078\u623B\u3059\u3002\n\
     \    if a == b: b = (a + 1) mod n\n    echo a, \" \", b\n"
   dependsOn:
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/convex_polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/furthest_pair_test.nim
   requiredBy: []

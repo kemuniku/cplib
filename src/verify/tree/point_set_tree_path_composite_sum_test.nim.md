@@ -95,22 +95,22 @@ data:
     \ backward(v))\n    answers.add(dp.prod(ii()).sum.val)\necho answers.join(\"\\\
     n\")\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/tree/rerooting_static_top_tree_dp.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/tree/static_top_tree.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
   - cplib/tree/static_top_tree.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/tree/rerooting_static_top_tree_dp.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tree/static_top_tree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: true
   path: verify/tree/point_set_tree_path_composite_sum_test.nim
   requiredBy: []

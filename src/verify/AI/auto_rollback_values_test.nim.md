@@ -113,14 +113,14 @@ data:
     \ proc() = update\n        Temporary:\n            (op: update, other: choose()).op()\n\
     \    )\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/auto_rollback.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/private/auto_rollback.nim
   isVerificationFile: true

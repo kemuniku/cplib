@@ -49,8 +49,8 @@ data:
     \ size == length\n        doAssert tree.get_all == product\n\necho \"Hello World\"\
     \n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/avl_monoid.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/avl_monoid.nim
   isVerificationFile: true

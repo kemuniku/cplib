@@ -84,22 +84,22 @@ data:
     \ a = op(a, seg.get(l..<r))\n        ans.add((a[0] * x + a[1]).val)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/graph/graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/utils/backwards_index.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   requiredBy: []

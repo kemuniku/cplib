@@ -57,16 +57,16 @@ data:
     \    let s = point()\n    let t = point()\n    let clipped = convex_cut(poly,initLine(s,t))\n\
     \    echo &\"{abs(clipped.area):.10f}\"\n"
   dependsOn:
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/convex_polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
   requiredBy: []

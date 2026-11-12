@@ -90,18 +90,18 @@ data:
     doAssert euclidean_mst([(0'i8, 0'i8), (1'i8, 0'i8)]) == @[(0, 1)]\necho \"Hello\
     \ World\"\n"
   dependsOn:
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/base.nim
   - cplib/math/int128.nim
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/collections/unionfind.nim
   - cplib/math/int128.nim
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/collections/unionfind.nim
-  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/euclidean_mst_test.nim
   requiredBy: []
-  timestamp: '2026-10-06 01:57:50+00:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/euclidean_mst_test.nim

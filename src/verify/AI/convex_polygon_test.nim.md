@@ -155,16 +155,16 @@ data:
     \nstatic:\n    doAssert not compiles(convex_cut(initPolygon(@[initPoint(0,0)]),initLine(initPoint(0,0),initPoint(1,0))))\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/convex_polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/AI/convex_polygon_test.nim
   requiredBy: []

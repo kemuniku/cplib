@@ -42,11 +42,11 @@ data:
     \ = initPoint(parseFloat(si()), parseFloat(si()))\necho &\"{sqrt(closest_pair(points).get.distanceSquared):.10f}\"\
     \n"
   dependsOn:
+  - cplib/tmpl/fastio.nim
+  - cplib/geometry/closest_pair.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/geometry/closest_pair.nim
   - cplib/geometry/base.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/geometry/closest_pair.nim
-  - cplib/geometry/closest_pair.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim

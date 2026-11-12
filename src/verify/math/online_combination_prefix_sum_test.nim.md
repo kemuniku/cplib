@@ -128,24 +128,24 @@ data:
     \ + 1, k) == sums.prefixSum(n, k) + sums.prefixSum(n, k - 1)\n\necho \"Hello World\"\
     \n"
   dependsOn:
-  - cplib/math/combination_prefix_sum.nim
-  - cplib/graph/graph.nim
   - cplib/modint/modint.nim
-  - cplib/math/combination.nim
-  - cplib/graph/graph.nim
-  - cplib/math/online_combination_prefix_sum.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/utils/mo.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/mo.nim
-  - cplib/modint/modint.nim
   - cplib/math/combination_prefix_sum.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/online_combination_prefix_sum.nim
+  - cplib/modint/modint.nim
   - cplib/math/combination.nim
+  - cplib/math/online_combination_prefix_sum.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/combination.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/utils/mo.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/graph/graph.nim
+  - cplib/math/combination_prefix_sum.nim
+  - cplib/modint/montgomery_impl.nim
   isVerificationFile: true
   path: verify/math/online_combination_prefix_sum_test.nim
   requiredBy: []

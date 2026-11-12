@@ -56,35 +56,35 @@ data:
     \u4ED8\u304D\u6574\u6570\u3002\u91CD\u8907\u70B9\u3082\u5225\u9802\u70B9\u3068\
     \u3057\u3066\u6271\u3044\u3001N <= 1\u306A\u3089\u7A7A\u5217\u3092\u8FD4\u3059\
     \u3002\n        ## \u5E7E\u4F55\u5224\u5B9A\u306F\u6574\u6570\u3067\u53B3\u5BC6\
-    \u306B\u884C\u3046\u3002Int128\u3092\u4F7F\u3046\u305F\u3081C++\u30D0\u30C3\u30AF\
-    \u30A8\u30F3\u30C9\u304C\u5FC5\u8981\u3002\n        var sortedPoints = newSeq[tuple[x,\
-    \ y: int64, id: int]](points.len)\n        for i, p in points:\n            let\
-    \ x = int64(p.x)\n            let y = int64(p.y)\n            assert -1_000_000_000'i64\
-    \ <= x and x <= 1_000_000_000'i64,\n                \"x\u5EA7\u6A19\u306E\u7D76\
-    \u5BFE\u5024\u306F10^9\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
-    \u307E\u3059\"\n            assert -1_000_000_000'i64 <= y and y <= 1_000_000_000'i64,\n\
-    \                \"y\u5EA7\u6A19\u306E\u7D76\u5BFE\u5024\u306F10^9\u4EE5\u4E0B\
-    \u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\"\n            sortedPoints[i]\
-    \ = (x, y, i)\n        if points.len <= 1:\n            return @[]\n        sortedPoints.sort()\n\
-    \        result = newSeqOfCap[(int, int)](points.len - 1)\n        var sites =\
-    \ newSeqOfCap[tuple[x, y: int64, id: int]](points.len)\n        for p in sortedPoints:\n\
-    \            if sites.len > 0 and sites[^1].x == p.x and sites[^1].y == p.y:\n\
-    \                result.add((sites[^1].id, p.id))\n            else:\n       \
-    \         sites.add(p)\n        if sites.len == 1:\n            return\n\n   \
-    \     var edges = newSeqOfCap[EuclideanMstQuadEdge](3 * sites.len)\n        var\
-    \ unused: seq[int]\n\n        proc rotate(e: int): int =\n            ## \u8FBA\
-    \u3092\u53CC\u5BFE\u5074\u307890\u5EA6\u56DE\u8EE2\u3059\u308B\u3002\n       \
-    \     (e and not 3) or ((e + 1) and 3)\n\n        proc onext(e: int): int =\n\
-    \            ## \u540C\u3058\u59CB\u70B9\u3092\u6301\u3064\u6B21\u306E\u53CD\u6642\
-    \u8A08\u56DE\u308A\u306E\u8FBA\u3092\u8FD4\u3059\u3002\n            edges[e shr\
-    \ 2].next[e and 3]\n\n        proc origin(e: int): int =\n            ## \u6709\
-    \u5411\u8FBA\u306E\u59CB\u70B9\u3092\u8FD4\u3059\u3002\n            edges[e shr\
-    \ 2].vertex[(e shr 1) and 1]\n\n        proc destination(e: int): int =\n    \
-    \        ## \u6709\u5411\u8FBA\u306E\u7D42\u70B9\u3092\u8FD4\u3059\u3002\n   \
-    \         origin(e xor 2)\n\n        proc oprev(e: int): int =\n            ##\
-    \ \u540C\u3058\u59CB\u70B9\u3092\u6301\u3064\u6B21\u306E\u6642\u8A08\u56DE\u308A\
-    \u306E\u8FBA\u3092\u8FD4\u3059\u3002\n            rotate(onext(rotate(e)))\n\n\
-    \        proc lnext(e: int): int =\n            ## \u5DE6\u5074\u306E\u9762\u306E\
+    \u306B\u884C\u3046\u3002Int128\u3092\u4F7F\u3046\u305F\u3081__int128\u5BFE\u5FDC\
+    \u30B3\u30F3\u30D1\u30A4\u30E9\u304C\u5FC5\u8981\u3002\n        var sortedPoints\
+    \ = newSeq[tuple[x, y: int64, id: int]](points.len)\n        for i, p in points:\n\
+    \            let x = int64(p.x)\n            let y = int64(p.y)\n            assert\
+    \ -1_000_000_000'i64 <= x and x <= 1_000_000_000'i64,\n                \"x\u5EA7\
+    \u6A19\u306E\u7D76\u5BFE\u5024\u306F10^9\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\
+    \u304C\u3042\u308A\u307E\u3059\"\n            assert -1_000_000_000'i64 <= y and\
+    \ y <= 1_000_000_000'i64,\n                \"y\u5EA7\u6A19\u306E\u7D76\u5BFE\u5024\
+    \u306F10^9\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"\n            sortedPoints[i] = (x, y, i)\n        if points.len <= 1:\n   \
+    \         return @[]\n        sortedPoints.sort()\n        result = newSeqOfCap[(int,\
+    \ int)](points.len - 1)\n        var sites = newSeqOfCap[tuple[x, y: int64, id:\
+    \ int]](points.len)\n        for p in sortedPoints:\n            if sites.len\
+    \ > 0 and sites[^1].x == p.x and sites[^1].y == p.y:\n                result.add((sites[^1].id,\
+    \ p.id))\n            else:\n                sites.add(p)\n        if sites.len\
+    \ == 1:\n            return\n\n        var edges = newSeqOfCap[EuclideanMstQuadEdge](3\
+    \ * sites.len)\n        var unused: seq[int]\n\n        proc rotate(e: int): int\
+    \ =\n            ## \u8FBA\u3092\u53CC\u5BFE\u5074\u307890\u5EA6\u56DE\u8EE2\u3059\
+    \u308B\u3002\n            (e and not 3) or ((e + 1) and 3)\n\n        proc onext(e:\
+    \ int): int =\n            ## \u540C\u3058\u59CB\u70B9\u3092\u6301\u3064\u6B21\
+    \u306E\u53CD\u6642\u8A08\u56DE\u308A\u306E\u8FBA\u3092\u8FD4\u3059\u3002\n   \
+    \         edges[e shr 2].next[e and 3]\n\n        proc origin(e: int): int =\n\
+    \            ## \u6709\u5411\u8FBA\u306E\u59CB\u70B9\u3092\u8FD4\u3059\u3002\n\
+    \            edges[e shr 2].vertex[(e shr 1) and 1]\n\n        proc destination(e:\
+    \ int): int =\n            ## \u6709\u5411\u8FBA\u306E\u7D42\u70B9\u3092\u8FD4\
+    \u3059\u3002\n            origin(e xor 2)\n\n        proc oprev(e: int): int =\n\
+    \            ## \u540C\u3058\u59CB\u70B9\u3092\u6301\u3064\u6B21\u306E\u6642\u8A08\
+    \u56DE\u308A\u306E\u8FBA\u3092\u8FD4\u3059\u3002\n            rotate(onext(rotate(e)))\n\
+    \n        proc lnext(e: int): int =\n            ## \u5DE6\u5074\u306E\u9762\u306E\
     \u5883\u754C\u306B\u6CBF\u3063\u3066\u6B21\u306E\u8FBA\u3092\u8FD4\u3059\u3002\
     \n            rotate(onext(rotate(e) xor 2))\n\n        proc splice(a, b: int)\
     \ =\n            ## 2\u8FBA\u306E\u59CB\u70B9\u5468\u308A\u306E\u63A5\u7D9A\u3068\
@@ -181,16 +181,16 @@ data:
     \u540C\u3058\u3002\n        var converted = newSeq[Point[T]](points.len)\n   \
     \     for i, p in points:\n            converted[i] = initPoint(p)\n        euclidean_mst(converted)\n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/math/int128.nim
   - cplib/collections/unionfind.nim
-  - cplib/math/int128.nim
   - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/geometry/euclidean_mst.nim
   requiredBy: []
-  timestamp: '2026-10-06 01:57:50+00:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/euclidean_mst_test.nim

@@ -131,8 +131,8 @@ data:
     O(N log N)\n        return initStaticTopTree(initHldFromParent(parent, root))\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
   path: cplib/tree/static_top_tree.nim

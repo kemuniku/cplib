@@ -83,9 +83,9 @@ data:
     \ == 0\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/remove_edge.nim
-  - cplib/graph/remove_edge.nim
   - cplib/graph/graph.nim
+  - cplib/graph/remove_edge.nim
+  - cplib/graph/remove_edge.nim
   isVerificationFile: true
   path: verify/graph/remove_edge_test.nim
   requiredBy: []

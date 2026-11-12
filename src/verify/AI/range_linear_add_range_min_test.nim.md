@@ -68,16 +68,16 @@ data:
     \ a[i] += 99 * i + 9_999_999\n    apply(seg, a, 1, 128, -1_000_000, -1_000_000_000_000.int)\n\
     \    checkAll(seg, a)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
   - cplib/collections/range_linear_add_range_min.nim
-  - cplib/math/int128.nim
-  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_linear_add_range_min.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/range_linear_add_range_min_test.nim
   requiredBy: []
-  timestamp: '2026-09-18 12:10:16+09:00'
+  timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/range_linear_add_range_min_test.nim

@@ -62,8 +62,8 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/biconnected_components.nim
   - cplib/graph/graph.nim
+  - cplib/graph/biconnected_components.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/lowlink.nim
   isVerificationFile: false

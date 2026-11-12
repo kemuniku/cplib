@@ -122,16 +122,16 @@ data:
     \ convex_cut(poly,initLine(initPoint(z,z),initPoint(z,one))).len == 1\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/convex_polygon.nim
   - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/AI/convex_cut_test.nim
   requiredBy: []

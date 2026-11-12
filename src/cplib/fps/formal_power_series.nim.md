@@ -555,22 +555,22 @@ data:
     \ seq[T], x: T): T =\n        for i in countdown(f.high, 0): result = result *\
     \ x + f[i]\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/math/isqrt.nim
   isVerificationFile: false
   path: cplib/fps/formal_power_series.nim
   requiredBy:

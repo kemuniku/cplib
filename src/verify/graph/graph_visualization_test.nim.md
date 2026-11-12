@@ -123,14 +123,14 @@ data:
     \ 5)]: disconnected.add_edge(u, v)\ndiscard checkLayout(disconnected)\n\nremoveFile(path)\n\
     removeDir(directory)\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/graph.nim
   - cplib/utils/itertools.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph_visualization.nim
   - cplib/utils/itertools.nim
-  - cplib/tree/prufer.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/graph_visualization.nim
+  - cplib/tree/prufer.nim
+  - cplib/tree/prufer.nim
   isVerificationFile: true
   path: verify/graph/graph_visualization_test.nim
   requiredBy: []
