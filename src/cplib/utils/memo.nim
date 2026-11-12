@@ -3,6 +3,7 @@ when not declared CPLIB_UTILS_MEMO:
     import macros
     import tables
     macro memo*(p: untyped): untyped =
+        ## 関数の戻り値を引数ごとにキャッシュする。前方宣言を使った相互再帰にも対応する。
         expectKind(p, nnkProcDef)
 
         let name = p[0]
@@ -52,12 +53,7 @@ when not declared CPLIB_UTILS_MEMO:
         let implName = genSym(nskProc, $name & "Impl")
         let keyName = genSym(nskLet, "key")
 
-        # 元の名前の前方宣言
-        var forwardProc = copyNimTree(p)
-        forwardProc[4] = newEmptyNode()
-        forwardProc[6] = newEmptyNode()
-
-        # 元の本体を持つ実装関数
+        # 実装関数をラッパー内に置き、前方宣言の重複を避ける。
         var implProc = copyNimTree(p)
         implProc[0] = implName
         implProc[4] = newEmptyNode()
@@ -71,6 +67,7 @@ when not declared CPLIB_UTILS_MEMO:
         var wrapperProc = copyNimTree(p)
         wrapperProc[4] = newEmptyNode()
         wrapperProc[6] = quote do:
+            `implProc`
             let `keyName` = `keyExpr`
 
             if `cacheName`.hasKey(`keyName`):
@@ -80,7 +77,5 @@ when not declared CPLIB_UTILS_MEMO:
             `cacheName`[`keyName`] = result
 
         result = quote do:
-            `forwardProc`
             var `cacheName` = initTable[`keyType`, `retType`]()
-            `implProc`
             `wrapperProc`
