@@ -38,12 +38,18 @@ when not declared CPLIB_GEOMETRY_POLYGON:
         return is_convex_ccw(pn, strict)
 
     proc on_edge*[T](poly: Polygon[T], p: Point[T]): bool =
-        ## 点 p が多角形 poly の辺上にあるかどうかを判定
+        ## 点 p が多角形 poly の辺上にあるかを O(N) で判定。同一視される端点の辺は点として扱う。
         for i in 0..<poly.len:
-            if ccw(poly.v[i], poly.v[(i+1) mod poly.len], p) == ON_SEGMENT: return true
+            let a = poly.v[i]
+            let b = poly.v[(i+1) mod poly.len]
+            if (a.x == b.x and a.y == b.y) or a == b:
+                if p == a or p == b: return true
+            elif ccw(a, b, p) == ON_SEGMENT:
+                return true
         return false
     proc contains*[T](poly: Polygon[T], p: Point[T], strict: bool = false): bool =
         ## 自己交差のない多角形 poly 内に点 p が存在するかを判定、辺上にある場合を含めない場合は strict = true を設定
+        ## O(N) 時間。空列は false、単点・2点は辺上だけを含み、連続重複頂点も許容する。
         if on_edge(poly, p):
             if strict: return false
             else: return true
