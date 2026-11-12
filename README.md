@@ -49,7 +49,6 @@ oj t
 
 回帰テストは `src/verify` のNim verifyファイル（`*_test.nim`）に追加してください。
 既存の `verify.yml` がNim 1.6.20 / 2.2.4で実行します。
-CRTの実行手順は [docs/math/crt.md](docs/math/crt.md) を参照してください。
 expanderの回帰は次のコマンドで実行できます。展開・コンパイルの検査は
 verifyのコンパイル時に行い、生成物は一時ディレクトリへ保存します。
 
