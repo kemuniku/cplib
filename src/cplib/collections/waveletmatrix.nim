@@ -21,13 +21,14 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
             H : int
             N : int
             with_sum : bool
+            prefix_sum : seq[int]
             scan_h : int
             scan_values : seq[int]
 
     proc initWaveletMatrix*(v:openArray[int],H:int = -1,with_sum:bool = false):WaveletMatrix=
         ## 非負整数列から O(NH) 時間で構築する。H は全要素を表現できるビット数で、-1 なら自動設定する。
         ## 下位層の短縮用に最大 O(N) 個の int を保存する。
-        ## with_sum=true なら総和取得用に O(NH) 個の int を追加する。総和は int に収まる必要がある。
+        ## with_sum=true なら元配列の累積和に O(N)、各層の和に O(NH) 個の int を追加する。総和は int に収まる必要がある。
         var v = @v
         var N = len(v)
         var H = H
@@ -40,6 +41,10 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
                 H = fastLog2(max(v))+1
         assert 0 <= H and H <= sizeof(int) * 8, "Hはintのビット数以下の非負整数である必要があります"
         result = WaveletMatrix(dat:newSeq[WaveletLevel](H),N:N,H:H,with_sum:with_sum)
+        if with_sum:
+            result.prefix_sum = newSeq[int](N+1)
+            for i in 0..<N:
+                result.prefix_sum[i+1] = result.prefix_sum[i] + v[i]
         for level in result.dat.mitems:
             level.bits = newBitVector(N)
         var width = N
@@ -322,6 +327,36 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
                 r = r1
         result += k * value
 
+    proc sum_largest*(self:WaveletMatrix,l,r,k:int):int=
+        ## [l,r) 内の大きい方から k 個の総和を 1 回の走査で O(H) で返す。0 <= k <= r-l、with_sum=true が必要。
+        assert self.with_sum, "和を取得するにはwith_sumを有効にして初期化する必要があります"
+        assert 0 <= l and l <= r and r <= self.N, "指定した区間が有効な範囲内である必要があります: 0 <= l and l <= r and r <= self.N"
+        assert 0 <= k and k <= r-l, "指定した値が有効な範囲内である必要があります: 0 <= k and k <= r - l"
+        if k == 0:
+            return 0
+        result = self.prefix_sum[r] - self.prefix_sum[l]
+        if k == r-l:
+            return
+        var l = l
+        var r = r
+        var k = k
+        var value = 0
+        # 全体の和から、降順の探索で選ばない部分木の和を引く。
+        for h in countdown(self.H-1,0,1):
+            let (l0,r0,l1,r1) = self.get_child(h,l,r)
+            if k <= r1-l1:
+                result -= self.dat[h].zero_sum[r0] - self.dat[h].zero_sum[l0]
+                if k == r1-l1:
+                    return
+                value += 1 shl h
+                l = l1
+                r = r1
+            else:
+                k -= r1-l1
+                l = l0
+                r = r0
+        result -= (r-l-k) * value
+
     proc sum_upperbound*(self:WaveletMatrix,l,r,x:int):int=
         ## [l,r) 内の x 以下の要素の総和を 1 回の走査で O(H) で返す。構築時に with_sum=true が必要。
         assert self.with_sum, "和を取得するにはwith_sumを有効にして初期化する必要があります"
@@ -371,6 +406,10 @@ when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:
     proc sum_smallest_with_count*(self:WaveletMatrix,l,r,k:int):tuple[sum,count:int]=
         ## [l,r) 内の小さい方から k 個の総和と個数を O(H) で返す。with_sum=true が必要。
         return (sum:self.sum_smallest(l,r,k),count:k)
+
+    proc sum_largest_with_count*(self:WaveletMatrix,l,r,k:int):tuple[sum,count:int]=
+        ## [l,r) 内の大きい方から k 個の総和と個数を O(H) で返す。with_sum=true が必要。
+        return (sum:self.sum_largest(l,r,k),count:k)
 
     proc sum_upperbound_with_count*(self:WaveletMatrix,l,r,x:int):tuple[sum,count:int]=
         ## [l,r) 内の x 以下の総和と個数を同じ探索で O(H) で返す。with_sum=true が必要。
