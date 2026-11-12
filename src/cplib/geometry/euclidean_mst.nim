@@ -12,7 +12,7 @@ when not declared CPLIB_GEOMETRY_EUCLIDEAN_MST:
     proc euclidean_mst*[T: SomeSignedInt](points: openArray[Point[T]]): seq[(int, int)] =
         ## 平面上の点のユークリッド最小全域木を、入力の頂点番号の組で返す。O(N log N)時間、O(N)領域。
         ## 座標は絶対値10^9以下の符号付き整数。重複点も別頂点として扱い、N <= 1なら空列を返す。
-        ## 幾何判定は整数で厳密に行う。Int128を使うためC++バックエンドが必要。
+        ## 幾何判定は整数で厳密に行う。Int128を使うため__int128対応コンパイラが必要。
         var sortedPoints = newSeq[tuple[x, y: int64, id: int]](points.len)
         for i, p in points:
             let x = int64(p.x)
