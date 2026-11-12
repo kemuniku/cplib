@@ -4,32 +4,34 @@ when not declared CPLIB_STR_EDIT_DISTANCE:
     import cplib/collections/staticRMQ
     import cplib/str/suffix_array
 
-    proc editDistance*(s, t: string, k: int): int =
-        ## 挿入・削除・置換を各コスト 1 とする編集距離を返します。k を超える場合は -1。
-        ## k >= 0 が必要です。string の各バイトを 1 文字として扱います。
-        ## N = |s| + |t| として、時間 O(N log N + k^2)、空間 O(N log N + k)。ハッシュは使いません。
-        assert k >= 0, "kは非負である必要があります"
+    proc editDistanceImpl[I: SomeSignedInt](s, t, joined: string, sa: openArray[int], k: int): int =
+        ## 接尾辞の順位を再利用して LCP を構築し、対角線上の到達点を更新します。
         let n = s.len
         let m = t.len
-        if abs(n - m) > k:
-            return -1
-        if n == 0 or m == 0:
-            return max(n, m)
-        if k == 0:
-            return (if s == t: 0 else: -1)
-
-        let joined = s & t
-        let sa = suffix_array(joined)
-        var rank = newSeq[int](joined.len)
+        var rank = newSeq[I](joined.len)
         for i, p in sa:
-            rank[p] = i
-        let rmq = initRMQ(lcp_array(joined, sa))
+            rank[p] = I(i)
+        var lcp = newSeq[I](joined.len - 1)
+        var h = 0
+        for i in 0..<joined.len:
+            let r = int(rank[i])
+            if r == 0:
+                h = 0
+                continue
+            let j = sa[r - 1]
+            let bound = joined.len - max(i, j)
+            while h < bound and joined[i + h] == joined[j + h]:
+                inc h
+            lcp[r - 1] = I(h)
+            if h > 0:
+                dec h
+        let rmq = initRMQ(lcp)
 
         template extend(x, y: int): int =
             ## 両文字列の末尾を越えない共通接頭辞長を O(1) で求めます。
             (if x == n or y == m: 0 else:
                 min(min(n - x, m - y),
-                    rmq.query(min(rank[x], rank[n + y]), max(rank[x], rank[n + y]))))
+                    int(rmq.query(int(min(rank[x], rank[n + y])), int(max(rank[x], rank[n + y]))))))
 
         let limit = min(k, max(n, m))
         let offset = limit + 1
@@ -65,3 +67,23 @@ when not declared CPLIB_STR_EDIT_DISTANCE:
                     return edits
             swap(previous, current)
         return -1
+
+    proc editDistance*(s, t: string, k: int): int =
+        ## 挿入・削除・置換を各コスト 1 とする編集距離を返します。k を超える場合は -1。
+        ## k >= 0 が必要です。string の各バイトを 1 文字として扱います。
+        ## N = |s| + |t| として、時間 O(N log N + k^2)、空間 O(N log N + k)。ハッシュは使いません。
+        assert k >= 0, "kは非負である必要があります"
+        let n = s.len
+        let m = t.len
+        if abs(n - m) > k:
+            return -1
+        if n == 0 or m == 0:
+            return max(n, m)
+        if k == 0:
+            return (if s == t: 0 else: -1)
+
+        let joined = s & t
+        let sa = suffix_array(joined)
+        if joined.len <= int32.high.int:
+            return editDistanceImpl[int32](s, t, joined, sa, k)
+        return editDistanceImpl[int](s, t, joined, sa, k)
