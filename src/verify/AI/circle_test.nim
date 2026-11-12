@@ -7,9 +7,9 @@ proc length(p: Point[float]): float = hypot(p.x, p.y)
 proc close(a, b: float, scale = 1.0): bool = abs(a - b) <= 2e-8 * scale
 proc same(a, b: Point[float], scale = 1.0): bool = length(a - b) <= 2e-8 * scale
 proc point(x, y: float): Point[float] = initPoint(x, y)
-proc residual(c: Circle, p: Point[float], scale = 1.0) =
+proc residual(c: Circle[float], p: Point[float], scale = 1.0) =
     doAssert close(length(p - c.center), c.radius, scale)
-proc checkTangents(a, b: Circle, expected: int, scale = 1.0) =
+proc checkTangents(a, b: Circle[float], expected: int, scale = 1.0) =
     let res = common_tangents(a, b)
     doAssert res.kind == circleFinite
     doAssert res.tangents.len == expected

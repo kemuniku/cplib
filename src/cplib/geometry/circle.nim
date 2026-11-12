@@ -3,7 +3,9 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
     import math
     import cplib/geometry/base
 
-    ## float64の円周・円盤。整数入力も座標ごとにfloatへ変換してから演算する。
+    ## Circle[T]の円周・円盤。整数・Fractionは指定型の3点と共通尺度、floatは中心・半径で保持する。
+    ## 整数・Fractionの全中間計算は指定基底型に収まることが前提。自動BigInt化なし。
+    ## 明示floatの構築はfloat64へ変換し、以下の許容誤差付き浮動演算を使用する。
     ## 相対許容誤差の既定値は1e-10。絶対誤差の下限は設けず、GEOMETRY_EPSは使わない。
     ## 許容誤差内の接触は1交点・1接線に丸める。厳密な述語や正しい丸めは保証しない。
     ## 同一円の無限個という分類は中心・半径が厳密に一致する場合だけ行う。
@@ -14,9 +16,16 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
     ## 入力は有限値、差・距離・出力と正の尺度比もfloat64で表現可能であること。
     ## 極端な尺度差・悪条件の入力では精度を失う。検出できた非有限値はValueError。
     type
-        Circle* = object
-            centerValue: Point[float]
-            radiusValue: float
+        Circle*[T] = object
+            when T is SomeFloat:
+                centerValue: Point[float]
+                radiusValue: float
+            else:
+                definingPoints: array[3, Point[T]]
+                commonScale: T
+                initialized: bool
+        CirclePointLocation* = enum
+            circleOutside, circleBoundary, circleInside
         CircleResultKind* = enum
             circleFinite, circleInfinite
         CircleIntersections* = object
@@ -60,30 +69,30 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
         ##ベクトルを反時計回りに90度回転する。O(1)。
         initPoint(-p.y, p.x)
 
-    proc initCircle*[T: SomeNumber, R: SomeNumber](center: Point[T], radius: R): Circle =
+    proc circleFloatInit[T: SomeNumber, R: SomeNumber](center: Point[T], radius: R): Circle[float] =
         ##中心と非負半径からfloat64の円を構築する。O(1)。
         let p = initPoint(float(center.x), float(center.y))
         let r = float(radius)
         circleCheckPoint(p)
         if not circleFiniteValue(r) or r < 0:
             raise newException(ValueError, "円の半径は非負かつ有限である必要があります")
-        Circle(centerValue: p, radiusValue: r)
+        Circle[float](centerValue: p, radiusValue: r)
 
-    proc center*(c: Circle): Point[float] =
+    proc center*(c: Circle[float]): Point[float] =
         ##円の中心を返す。O(1)。
         c.centerValue
 
-    proc radius*(c: Circle): float =
+    proc radius*(c: Circle[float]): float =
         ##円の半径を返す。O(1)。
         c.radiusValue
 
-    proc contains*[T: SomeNumber](c: Circle, p: Point[T], tolerance: float = 1e-10): bool =
+    proc circleFloatContains[T: SomeNumber](c: Circle[float], p: Point[T], tolerance: float = 1e-10): bool =
         ##円盤が点を含むか相対許容誤差で判定する。O(1)。
         circleCheckTolerance(tolerance)
         let d = circleLength(initPoint(float(p.x), float(p.y)) - c.center)
         d <= c.radius or d - c.radius <= tolerance * max(d, c.radius)
 
-    proc cross_points*(c: Circle, l: Line[float], tolerance: float = 1e-10): CircleIntersections =
+    proc circleFloatCrossPoints(c: Circle[float], l: Line[float], tolerance: float = 1e-10): CircleIntersections =
         ##円周と非退化直線の交点を返す。O(1)。
         circleCheckTolerance(tolerance)
         circleCheckPoint(l.s)
@@ -109,7 +118,7 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
             result.points = @[foot - u * h, foot + u * h]
         for p in result.points: circleCheckPoint(p)
 
-    proc cross_points*(c: Circle, s: Segment[float], tolerance: float = 1e-10): CircleIntersections =
+    proc circleFloatCrossPoints(c: Circle[float], s: Segment[float], tolerance: float = 1e-10): CircleIntersections =
         ##円周と閉線分の交点を返す。退化線分も許す。O(1)。
         circleCheckTolerance(tolerance)
         circleCheckPoint(s.s)
@@ -121,13 +130,13 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
             if abs(d - c.radius) <= tolerance * max(d, c.radius): result.points = @[s.s]
             return
         let u = circleUnit(v, length)
-        let intersections = cross_points(c, Line[float](s: s.s, t: s.t), tolerance)
+        let intersections = circleFloatCrossPoints(c, Line[float](s: s.s, t: s.t), tolerance)
         for p in intersections.points:
             let t = dot(p - s.s, u)
             if t >= -tolerance * length and t - length <= tolerance * length:
                 result.points.add(p)
 
-    proc cross_points*(a, b: Circle, tolerance: float = 1e-10): CircleIntersections =
+    proc circleFloatCrossPoints(a, b: Circle[float], tolerance: float = 1e-10): CircleIntersections =
         ##2円周の交点を返す。同一の正半径円のみ無限個。O(1)。
         circleCheckTolerance(tolerance)
         let v = b.center - a.center
@@ -157,7 +166,7 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
             result.points = @[foot - offset, foot + offset]
         for p in result.points: circleCheckPoint(p)
 
-    proc common_tangents*(a, b: Circle, tolerance: float = 1e-10): CircleTangents =
+    proc circleFloatCommonTangents(a, b: Circle[float], tolerance: float = 1e-10): CircleTangents =
         ##2円の共通接線を接点と単位方向で返す。同一円は無限個。O(1)。
         circleCheckTolerance(tolerance)
         let v = b.center - a.center
@@ -186,6 +195,8 @@ when not declared CPLIB_GEOMETRY_CIRCLE:
                 circleCheckPoint(second)
                 result.tangents.add(CircleTangent(first: first, second: second, direction: circlePerpendicular(n)))
 
-    proc tangent_lines*[T: SomeNumber](c: Circle, p: Point[T], tolerance: float = 1e-10): CircleTangents =
+    proc circleFloatTangentLines[T: SomeNumber](c: Circle[float], p: Point[T], tolerance: float = 1e-10): CircleTangents =
         ##点から円への接線を返す。半径0の円自身では無限個。O(1)。
-        common_tangents(c, initCircle(p, 0), tolerance)
+        circleFloatCommonTangents(c, circleFloatInit(p, 0), tolerance)
+
+    include cplib/geometry/circle_integer_impl

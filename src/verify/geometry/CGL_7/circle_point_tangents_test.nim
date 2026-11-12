@@ -18,7 +18,7 @@ proc output(points: seq[Point[float]]) =
     stdout.write("\n")
 let p = point()
 let c = initCircle(point(), number())
-var points: seq[Point[float]]
-for t in tangent_lines(c, p).tangents: points.add(t.first)
-points.sort(compare)
-for p in points: echo &"{p.x:.10f} {p.y:.10f}"
+var outputPoints: seq[Point[float]]
+for t in tangent_lines(c, p).tangents: outputPoints.add(t.first)
+outputPoints.sort(compare)
+for p in outputPoints: echo &"{p.x:.10f} {p.y:.10f}"
