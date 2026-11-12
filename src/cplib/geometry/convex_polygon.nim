@@ -47,27 +47,23 @@ when not declared CPLIB_GEOMETRY_CONVEX_POLYGON:
             if convexLexLess(points[i], points[lo]): lo = i
             if convexLexLess(points[hi], points[i]): hi = i
         let zero = points[0].x - points[0].x
-        var collinear = true
-        for p in points:
-            if convexTurn(points[lo], points[hi], p) != zero:
-                collinear = false
-                break
-        if collinear:
-            return ConvexPolygon[T](vertices: @[points[lo], points[hi]])
+        # 共線上の丸め誤差で向きを反転しないよう、広い三角形の外積を使う。
+        var orientation = zero
         for i in 0..<points.len:
-            let turn = convexTurn(points[i], points[(i+1) mod points.len], points[(i+2) mod points.len])
-            if turn != zero:
-                if turn < zero:
-                    points.reverse()
-                    lo = points.len - 1 - lo
-                break
+            let turn = convexTurn(points[lo], points[i], points[(i+1) mod points.len])
+            if abs(turn) > abs(orientation): orientation = turn
+        if orientation == zero:
+            return ConvexPolygon[T](vertices: @[points[lo], points[hi]])
+        if orientation < zero:
+            points.reverse()
+            lo = points.len - 1 - lo
         var normalized: seq[Point[T]]
         for i in 0..<points.len:
             let p = points[(lo+i) mod points.len]
-            while normalized.len >= 2 and convexTurn(normalized[^2], normalized[^1], p) == zero:
+            while normalized.len >= 2 and convexTurn(normalized[^2], normalized[^1], p) <= zero:
                 discard normalized.pop()
             normalized.add(p)
-        while normalized.len >= 3 and convexTurn(normalized[^2], normalized[^1], normalized[0]) == zero:
+        while normalized.len >= 3 and convexTurn(normalized[^2], normalized[^1], normalized[0]) <= zero:
             discard normalized.pop()
         result.vertices = normalized
 
@@ -135,15 +131,16 @@ when not declared CPLIB_GEOMETRY_CONVEX_POLYGON:
             consider(0, 1)
         elif n >= 3:
             var j = 1
+            let zero = best.distance_sq - best.distance_sq
             for i in 0..<n:
                 let next = (i+1) mod n
-                while convexTurn(poly.vertices[i], poly.vertices[next], poly.vertices[(j+1) mod n]) >
-                        convexTurn(poly.vertices[i], poly.vertices[next], poly.vertices[j]):
+                let edge = poly.vertices[next] - poly.vertices[i]
+                # 近い面積同士の比較を避け、面積の増分を辺同士の外積で求める。
+                while cross(edge, poly.vertices[(j+1) mod n] - poly.vertices[j]) > zero:
                     j = (j+1) mod n
                 consider(i, j)
                 consider(next, j)
-                if convexTurn(poly.vertices[i], poly.vertices[next], poly.vertices[(j+1) mod n]) ==
-                        convexTurn(poly.vertices[i], poly.vertices[next], poly.vertices[j]):
+                if cross(edge, poly.vertices[(j+1) mod n] - poly.vertices[j]) == zero:
                     consider(i, (j+1) mod n)
                     consider(next, (j+1) mod n)
         some(best)

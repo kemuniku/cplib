@@ -167,6 +167,42 @@ block:
     doAssert not cp.contains(near,true)
     doAssert not cp.contains(initPoint(0.5,-GEOMETRY_EPS*4.0))
 
+proc checkFloatingDiameter[T: SomeFloat](vertices: seq[Point[T]], expected: T) =
+    let tolerance = (when T is float32: T(1e-5) else: T(1e-12))
+    for reversed in [false, true]:
+        for offset in [0, 1, vertices.len div 3, vertices.high]:
+            var v = vertices[offset..^1] & vertices[0..<offset]
+            if reversed: v.reverse()
+            v.add(v[0])
+            let cp = initConvexPolygon(v)
+            let d = cp.diameter.get
+            doAssert abs(d.distance_sq - expected) <= tolerance * expected
+            doAssert norm(d.endpoints[0] - d.endpoints[1]) == d.distance_sq
+            let normalized = cp.toSeq
+            for i in 0..<normalized.len:
+                doAssert turn(normalized[i], normalized[(i+1) mod normalized.len],
+                    normalized[(i+2) mod normalized.len]) > T(0)
+
+proc checkSubdividedPolygon[T: SomeFloat](corners: seq[Point[T]], divisions: int) =
+    var vertices: seq[Point[T]]
+    for i, a in corners:
+        let b = corners[(i+1) mod corners.len]
+        for j in 0..<divisions:
+            vertices.add(a + (b-a) * (T(j) / T(divisions)))
+    var expected = T(0)
+    for a in corners:
+        for b in corners: expected = max(expected, norm(a-b))
+    checkFloatingDiameter(vertices, expected)
+
+for divisions in [7, 30, 200, 1000]:
+    let diamond = @[initPoint(0.0,-10.0), initPoint(10.0,0.0),
+        initPoint(0.0,10.0), initPoint(-10.0,0.0)]
+    checkSubdividedPolygon(diamond, divisions)
+    checkSubdividedPolygon(diamond.mapIt(initPoint(it.x * 1e-12, it.y * 1e-12)), divisions)
+    checkSubdividedPolygon(diamond.mapIt(initPoint(float32(it.x), float32(it.y))), divisions)
+    checkSubdividedPolygon(@[initPoint(0.0,0.0), initPoint(40.0,10.0),
+        initPoint(40.0,40.0), initPoint(0.0,30.0)], divisions)
+
 static:
     doAssert not compiles(convex_cut(initPolygon(@[initPoint(0,0)]),initLine(initPoint(0,0),initPoint(1,0))))
 echo "Hello World"
