@@ -10,7 +10,7 @@ when not declared CPLIB_MATH_CRT:
         ## 入力順に併合し、整合する途中の最小公倍数が high(int) を超えた時点で
         ## OverflowDefect を送出する。その後の合同式の整合性は検査しない。
         ## 不正入力の検査・オーバーフロー検出は release / assertions:off でも有効。
-        ## 計算量 O(r.len * log(max(m)))、補助空間 O(1)。C++ バックエンドを使用する。
+        ## 計算量 O(r.len * log(max(m)))、補助空間 O(1)。__int128対応コンパイラを使用する。
         ## 参考: https://atcoder.github.io/ac-library/production/document_ja/math.html (CC0)
         if r.len != m.len:
             raise newException(ValueError, "剰余列と法列の長さが一致しません")
