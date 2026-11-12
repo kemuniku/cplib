@@ -20,13 +20,14 @@ when not declared CPLIB_STR_LCS:
                         now = DP[i][j]
         return DP[^1].max
 
-    proc restoreLCS*[T](A,B:openArray[T]):seq[T]=
+    proc restoreLCSImpl[T; I: SomeSignedInt](A,B:openArray[T]):seq[T]=
+        ## 指定した整数幅の DP 表で従来と同じ部分列を復元します。
         if len(A) == 0 or len(B) == 0:
             return newSeq[T](0)
-        var DP = newseqwith(len(B)+1,newSeqWith(len(A),0))
+        var DP = newseqwith(len(B)+1,newSeq[I](len(A)))
         for i in 0..<(len(B)):
             var t = B[i]
-            var now = 0
+            var now: I = 0
             for j in 0..<(len(A)):
                 if A[j] == t:
                     var tmp = DP[i][j]
@@ -49,3 +50,11 @@ when not declared CPLIB_STR_LCS:
                         break
                 ans.add(B[i-1])
         return ans.reversed()
+
+    proc restoreLCS*[T](A,B:openArray[T]):seq[T]=
+        ## 最長共通部分列を復元します。O(|A||B|) 時間・空間。
+        if len(A) == 0 or len(B) == 0:
+            return newSeq[T](0)
+        if min(len(A), len(B)) <= int32.high.int:
+            return restoreLCSImpl[T, int32](A, B)
+        return restoreLCSImpl[T, int](A, B)
