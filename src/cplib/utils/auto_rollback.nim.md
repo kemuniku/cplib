@@ -44,11 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_AUTO_ROLLBACK:\n    const CPLIB_UTILS_AUTO_ROLLBACK*\
     \ = 1\n    import macros\n    import cplib/utils/private/auto_rollback\n\n   \
@@ -123,20 +123,20 @@ data:
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
   isVerificationFile: false
   path: cplib/utils/auto_rollback.nim
   requiredBy: []
   timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/auto_rollback_values_test.nim
-  - verify/AI/auto_rollback_values_test.nim
   - verify/AI/temporary_index_cache_test.nim
   - verify/AI/temporary_index_cache_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/auto_rollback_scope_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/auto_rollback_values_test.nim
   - verify/AI/temporary_rollback_log_test.nim
   - verify/AI/temporary_rollback_log_test.nim
 documentation_of: cplib/utils/auto_rollback.nim

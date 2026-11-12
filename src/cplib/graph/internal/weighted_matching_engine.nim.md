@@ -56,11 +56,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u6700\u5927\u91CD\u307F\u30DE\u30C3\u30C1\u30F3\u30B0\u306E\u4E3B\u53CC\
     \u5BFE\u63A2\u7D22\u3002\n## \u82B1\u3092\u56FA\u5B9A\u9806\u306E\u5B50\u3068\u5DE1\
@@ -573,16 +573,16 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/weighted_matching_structure_test.nim
+  - verify/AI/weighted_matching_structure_test.nim
+  - verify/AI/general_weighted_matching_test.nim
+  - verify/AI/general_weighted_matching_test.nim
+  - verify/AI/general_weighted_matching_sparse_test.nim
+  - verify/AI/general_weighted_matching_sparse_test.nim
   - verify/graph/general_weighted_matching_test.nim
   - verify/graph/general_weighted_matching_test.nim
   - verify/graph/general_weighted_matching_sparse_test.nim
   - verify/graph/general_weighted_matching_sparse_test.nim
-  - verify/AI/general_weighted_matching_test.nim
-  - verify/AI/general_weighted_matching_test.nim
-  - verify/AI/weighted_matching_structure_test.nim
-  - verify/AI/weighted_matching_structure_test.nim
-  - verify/AI/general_weighted_matching_sparse_test.nim
-  - verify/AI/general_weighted_matching_sparse_test.nim
 documentation_of: cplib/graph/internal/weighted_matching_engine.nim
 layout: document
 redirect_from:

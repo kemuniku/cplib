@@ -146,11 +146,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TMPL_SHEEP:\n    const CPLIB_TMPL_SHEEP* = 1\n  \
     \  {.warning[UnusedImport]: off.}\n    {.hint[XDeclaredButNotUsed]: off.}\n  \
@@ -238,8 +238,8 @@ data:
   dependsOn:
   - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: cplib/tmpl/sheep.nim
   requiredBy:
@@ -250,44 +250,44 @@ data:
   timestamp: '2026-10-17 20:24:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/utils/area_of_union_of_rectangles_test.nim
-  - verify/utils/implicit_dijkstra_shortest_path_test.nim
-  - verify/utils/implicit_dijkstra_shortest_path_test.nim
-  - verify/utils/implicit_bfs_tree_diameter_test.nim
-  - verify/utils/implicit_bfs_tree_diameter_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/k_shortest_walk_test.nim
-  - verify/graph/dynamic/k_shortest_walk_test.nim
-  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
-  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
-  - verify/graph/static/k_shortest_walk_static_test.nim
-  - verify/graph/static/k_shortest_walk_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/shortest_path_static_test.nim
-  - verify/graph/static/restore_dijkstra_radix_static_test.nim
-  - verify/graph/static/restore_dijkstra_radix_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
-  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/hash_string/hash_string_mul_test.nim
   - verify/str/get_palindromes_test.nim
   - verify/str/get_palindromes_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yukicoder_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/isprime_yosupo_test.nim
-  - verify/math/sum_of_multiplicative_function_test.nim
-  - verify/math/sum_of_multiplicative_function_test.nim
-  - verify/AI/fastio_interactive_test.nim
-  - verify/AI/fastio_interactive_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
+  - verify/str/can_reverse_hash_string/can_reverse_hash_string_mul_test.nim
   - verify/AI/sheep_test.nim
   - verify/AI/sheep_test.nim
+  - verify/AI/fastio_interactive_test.nim
+  - verify/AI/fastio_interactive_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - verify/graph/dynamic/restore_dijkstra_radix_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
+  - verify/graph/dynamic/k_shortest_walk_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - verify/graph/static/restore_dijkstra_radix_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/shortest_path_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/restore_dijkstra_static_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
+  - verify/graph/static/k_shortest_walk_static_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - verify/utils/implicit_dijkstra_shortest_path_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
+  - verify/utils/implicit_bfs_tree_diameter_test.nim
+  - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/utils/area_of_union_of_rectangles_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/isprime_yukicoder_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/isprime_yosupo_test.nim
+  - verify/math/isprime_yosupo_test.nim
 documentation_of: cplib/tmpl/sheep.nim
 layout: document
 redirect_from:

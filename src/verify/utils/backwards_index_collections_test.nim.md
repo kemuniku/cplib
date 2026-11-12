@@ -160,11 +160,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import cplib/collections/segtree\nimport cplib/collections/segtree_static_op\n\
@@ -207,56 +207,56 @@ data:
     \ 3)\n    doAssert repeated[^1] == 'd'\n    doAssert repeated[^repeated.len] ==\
     \ 'b'\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/SWAG.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/lazysegtree_static_op.nim
   - cplib/collections/segtree_var.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/root_rangesum.nim
   - cplib/str/merged_static_string.nim
-  - cplib/str/repeated_static_string.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticbitset.nim
+  - cplib/utils/constants.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/collections/QSWAG.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/collections/bitset.nim
-  - cplib/collections/segtree_static_op.nim
+  - cplib/tree/link_cut_tree.nim
+  - cplib/collections/QSWAG.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/collections/root_rangesum.nim
+  - cplib/collections/lazysegtree.nim
+  - cplib/collections/tatyamset.nim
+  - cplib/collections/SWAG.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_beats_template.nim
   - cplib/collections/staticRMQ.nim
   - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/lazysegtree_static_op.nim
-  - cplib/collections/QSWAG.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree_var.nim
-  - cplib/collections/bitset.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/utils/constants.nim
+  - cplib/collections/segtree_static_op.nim
+  - cplib/collections/segtree_var.nim
+  - cplib/collections/tatyamset.nim
+  - cplib/str/static_string.nim
+  - cplib/collections/segtree.nim
+  - cplib/collections/segtree.nim
   - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/collections/dynamic_segtree.nim
+  - cplib/collections/staticbitset.nim
+  - cplib/collections/fenwick.nim
+  - cplib/tree/link_cut_tree.nim
+  - cplib/collections/lazysegtree_static_op.nim
+  - cplib/collections/bitset.nim
   - cplib/str/repeated_static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/collections/root_rangesum.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/str/merged_static_string.nim
+  - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/collections/bitset.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/collections/segtree_static_op.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/str/merged_static_string.nim
-  - cplib/collections/QSWAG.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/tatyamset.nim
+  - cplib/collections/dynamic_segtree.nim
   - cplib/collections/fenwick.nim
   - cplib/collections/SWAG.nim
-  - cplib/tree/link_cut_tree.nim
-  - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/collections/lazysegtree.nim
-  - cplib/collections/segtree_beats_template.nim
-  - cplib/collections/root_rangesum.nim
-  - cplib/tree/link_cut_tree.nim
   - cplib/collections/staticbitset.nim
-  - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/collections/fenwick.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/collections/tatyamset.nim
-  - cplib/str/suffix_array.nim
-  - cplib/collections/dynamic_segtree.nim
-  - cplib/collections/dynamic_segtree.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/utils/backwards_index_collections_test.nim
   requiredBy: []

@@ -34,11 +34,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc237/tasks/abc237_ex
     links:
     - https://atcoder.jp/contests/abc237/tasks/abc237_ex
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc237/tasks/abc237_ex\n\
     import cplib/graph/graph\nimport cplib/graph/dag_minimum_path_cover\nimport sets\n\
@@ -51,13 +51,13 @@ data:
     \ in palindromes[j]:\n                G.add_edge(i,j)\n\necho G.dag_minimum_path_cover()"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/maxflow.nim
   - cplib/graph/topologicalsort.nim
+  - cplib/graph/dag_minimum_path_cover.nim
+  - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxflow.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/dag_minimum_path_cover.nim
-  - cplib/graph/maxflow.nim
-  - cplib/graph/dag_minimum_path_cover.nim
   isVerificationFile: false
   path: verify/graph/dag_minimum_path_cover_hakata_test_.nim
   requiredBy: []

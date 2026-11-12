@@ -62,11 +62,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATRIX_MATRIX_AVX2_FIELD_IMPL:\n    const CPLIB_MATRIX_MATRIX_AVX2_FIELD_IMPL\
     \ = 1\n\n    {.emit: \"\"\"\n#ifndef CPLIB_MATRIX_FIELD_KERNEL_HPP\n#define CPLIB_MATRIX_FIELD_KERNEL_HPP\n\
@@ -224,27 +224,27 @@ data:
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2_field_impl.nim
   requiredBy:
-  - verify/matrix/linear_algebra/judge_driver.nim
-  - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/matrix_avx2.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   timestamp: '2026-09-11 02:58:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_simd_test.nim
-  - verify/utils/backwards_index_simd_test.nim
   - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_gc_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
 documentation_of: cplib/matrix/matrix_avx2_field_impl.nim
 layout: document
 redirect_from:

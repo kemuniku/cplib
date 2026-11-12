@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_COMBINATION_PREFIX_SUM:\n    const CPLIB_MATH_COMBINATION_PREFIX_SUM*\
     \ = 1\n\n    import cplib/math/combination\n    import cplib/utils/mo\n\n    proc\
@@ -74,11 +74,11 @@ data:
     \        for (queryIndex, prefixIndex) in queryIndices:\n            result[queryIndex]\
     \ = prefixSums[prefixIndex] - prefixSums[prefixIndex + 1]\n"
   dependsOn:
-  - cplib/utils/mo.nim
-  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
   - cplib/math/combination.nim
+  - cplib/utils/mo.nim
+  - cplib/graph/graph.nim
   - cplib/math/combination.nim
   isVerificationFile: false
   path: cplib/math/combination_prefix_sum.nim
@@ -86,10 +86,10 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/online_combination_prefix_sum_test.nim
-  - verify/math/online_combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
   - verify/math/combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
 documentation_of: cplib/math/combination_prefix_sum.nim
 layout: document
 redirect_from:

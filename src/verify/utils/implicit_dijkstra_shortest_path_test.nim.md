@@ -34,11 +34,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
     - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/shortest_path\n\
     include cplib/tmpl/sheep\nimport cplib/utils/implicit_dijkstra\n\nvar N, M, s,\
@@ -54,14 +54,14 @@ data:
     \    if path[^1] != t:\n        path.add(t)\n    echo cost, \" \", path.len -\
     \ 1\n    for i in 1..<path.len:\n        echo path[i - 1], \" \", path[i]\n"
   dependsOn:
-  - cplib/utils/implicit_dijkstra.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/implicit_dijkstra.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/utils/implicit_dijkstra.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/utils/implicit_dijkstra_shortest_path_test.nim
   requiredBy: []

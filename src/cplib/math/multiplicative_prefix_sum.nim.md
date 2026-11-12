@@ -56,11 +56,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_MULTIPLICATIVE_PREFIX_SUM:\n    const CPLIB_MATH_MULTIPLICATIVE_PREFIX_SUM*\
     \ = 1\n    import cplib/math/isqrt\n    import cplib/math/isprime\n    import\
@@ -164,28 +164,28 @@ data:
     \ i + 1, value)\n                    power *= p\n                    inc e\n \
     \               inc i\n        visit(n, 0, init(T, 1))\n        result = answer\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/math/multiplicative_prefix_sum.nim
   requiredBy: []
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/sum_of_multiplicative_function_test.nim
-  - verify/math/sum_of_multiplicative_function_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
   - verify/AI/multiplicative_prefix_sum_limit_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
   - verify/AI/multiplicative_prefix_sum_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
+  - verify/math/sum_of_multiplicative_function_test.nim
 documentation_of: cplib/math/multiplicative_prefix_sum.nim
 layout: document
 redirect_from:

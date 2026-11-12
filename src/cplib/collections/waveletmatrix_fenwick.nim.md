@@ -44,11 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## a_i\u3092\u56FA\u5B9A\u3057\u3001b_i\u3092\u66F4\u65B0\u3067\u304D\u308B\
     \u91CD\u307F\u4ED8\u304DWavelet Matrix\u3067\u3059\u3002\n## \u5024\u3092\u5EA7\
@@ -123,24 +123,24 @@ data:
     \u308A\u307E\u3059\"\n        self.sum_less_rank(l, r, self.keys.lowerBound(upper))\
     \ -\n            self.sum_less_rank(l, r, self.keys.lowerBound(lower))\n"
   dependsOn:
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/fenwick_avx2.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/bitvector.nim
   - cplib/collections/fenwick_avx2.nim
-  - cplib/collections/waveletmatrix.nim
   isVerificationFile: false
   path: cplib/collections/waveletmatrix_fenwick.nim
   requiredBy: []
   timestamp: '2026-09-27 01:42:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_simd_test.nim
-  - verify/utils/backwards_index_simd_test.nim
   - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
 documentation_of: cplib/collections/waveletmatrix_fenwick.nim
 layout: document
 redirect_from:

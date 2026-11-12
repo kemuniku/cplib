@@ -22,11 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc296/tasks/abc296_e
     links:
     - https://atcoder.jp/contests/abc296/tasks/abc296_e
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc296/tasks/abc296_e\n\
     import cplib/graph/graph\nimport cplib/graph/SCC\nimport sequtils, math\nproc\
@@ -37,9 +37,9 @@ data:
     var group = G.SCC()\necho group.mapit(len(it)).filterIt(it >= 2).sum()+ans\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/SCC.nim
+  - cplib/graph/SCC.nim
   - cplib/graph/graph.nim
-  - cplib/graph/SCC.nim
-  - cplib/graph/SCC.nim
   isVerificationFile: false
   path: verify/graph/static/SCC_static_test_.nim
   requiredBy: []

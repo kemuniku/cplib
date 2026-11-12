@@ -21,11 +21,11 @@ data:
   attributes:
     links:
     - https://nyaannyaan.github.io/library/modulo/arbitrary-mod-binomial.hpp.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_COMBINATION_ARBITRARY_MOD:\n    const CPLIB_MATH_COMBINATION_ARBITRARY_MOD*\
     \ = 1\n\n    # \u53C2\u8003: https://nyaannyaan.github.io/library/modulo/arbitrary-mod-binomial.hpp.html\n\
@@ -107,10 +107,10 @@ data:
   timestamp: '2026-09-18 12:34:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/combination_arbitrary_mod_test.nim
-  - verify/math/combination_arbitrary_mod_test.nim
   - verify/AI/combination_arbitrary_mod_test.nim
   - verify/AI/combination_arbitrary_mod_test.nim
+  - verify/math/combination_arbitrary_mod_test.nim
+  - verify/math/combination_arbitrary_mod_test.nim
 documentation_of: cplib/math/combination_arbitrary_mod.nim
 layout: document
 redirect_from:

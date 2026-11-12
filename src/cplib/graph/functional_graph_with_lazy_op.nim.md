@@ -44,11 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP:\n    const CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_LAZY_OP*\
     \ = 1\n    import sequtils\n    import cplib/graph/graph\n    import cplib/graph/functional_graph\n\
@@ -332,16 +332,16 @@ data:
     \ used\n        rest -= first\n        if rest > 0 and not consumeCycle(0,rest):\n\
     \            return used\n        return used-1\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/lazysegtree_static_op.nim
-  - cplib/graph/functional_graph.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/collections/lazysegtree_static_op.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/backwards_index.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/graph/functional_graph.nim
+  - cplib/collections/lazysegtree_static_op.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_lazy_op.nim
   requiredBy: []

@@ -28,11 +28,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc241/tasks/abc241_f
     links:
     - https://atcoder.jp/contests/abc241/tasks/abc241_f
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc241/tasks/abc241_f\n\
     proc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
@@ -46,12 +46,12 @@ data:
     \     alr[(i,j)] = alr[(x,y)] + 1\n                d.addLast((i,j))\n\nif (gx,gy)\
     \ in alr:\n    echo alr[(gx,gy)]\nelse:\n    echo -1"
   dependsOn:
+  - cplib/collections/avlset.nim
   - cplib/utils/grid_searcher.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avltreenode.nim
-  - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
   - cplib/utils/grid_searcher.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: verify/utils/grid_searcher/skate_tuple_test_.nim
   requiredBy: []

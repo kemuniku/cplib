@@ -112,11 +112,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\n\nimport std/math\nimport cplib/graph/bellmanford\nimport\
@@ -153,40 +153,40 @@ data:
     ]\nassertClose(tspPathCostFrom(dist, 0), 3.5)\nassertClose(tspPathCostFromTo(dist,\
     \ 0, 2), 3.5)\nassertClose(tspPathAnyStart(dist), 3.5)\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/graph/warshall_floyd.nim
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/bellmanford.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/graph/warshall_floyd_negative.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/kruskal.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/utils/bititers.nim
-  - cplib/graph/topologicalsort.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/reverse_edge.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/bellmanford.nim
   - cplib/graph/steiner_tree.nim
-  - cplib/tree/diameter.nim
-  - cplib/graph/tsp.nim
-  - cplib/graph/steiner_tree.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/maxk_dijkstra.nim
-  - cplib/graph/kruskal.nim
-  - cplib/graph/tsp.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/bititers.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/kruskal.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/tsp.nim
+  - cplib/graph/kruskal.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tree/diameter.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/bellmanford.nim
+  - cplib/graph/steiner_tree.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/graph/warshall_floyd_negative.nim
+  - cplib/utils/bititers.nim
+  - cplib/graph/warshall_floyd.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/tree/diameter.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/maxk_dijkstra.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/reverse_edge.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/topologicalsort.nim
   isVerificationFile: true
   path: verify/AI/graph_weight_type_test.nim
   requiredBy: []

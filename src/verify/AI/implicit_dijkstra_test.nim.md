@@ -40,11 +40,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\n\nimport hashes, tables\nimport cplib/utils/implicit_dijkstra\n\
@@ -208,16 +208,16 @@ data:
     \ [@[1]], adjacent) == (@[emptyState, @[1]], 1)\n    doAssert implicit_dijkstra_until(emptyState,\
     \ adjacent, [@[1]]) == 1\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/utils/implicit_dijkstra.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/implicit_dijkstra.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
+  - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/utils/implicit_dijkstra.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/implicit_dijkstra_test.nim
   requiredBy: []

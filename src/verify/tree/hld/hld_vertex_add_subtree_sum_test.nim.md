@@ -34,11 +34,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
     links:
     - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/vertex_add_subtree_sum\n\
     import sequtils, strutils, algorithm, sugar\nimport cplib/graph/graph\nimport\
@@ -53,14 +53,14 @@ data:
     \ = hld.subtree(u)\n        var a = seg.get(l..<r)\n        ans.add(a)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_add_subtree_sum_test.nim
   requiredBy: []

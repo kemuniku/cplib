@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_GAME:\n    const CPLIB_UTILS_GAME* = 1\n\n\
     \    import sets,tables,macros\n\n    type\n        NextStates*[T] = proc(state:\
@@ -552,12 +552,12 @@ data:
   verifiedWith:
   - verify/utils/game_optimal_play_test.nim
   - verify/utils/game_optimal_play_test.nim
+  - verify/utils/game_grundy_test.nim
+  - verify/utils/game_grundy_test.nim
   - verify/utils/game_test.nim
   - verify/utils/game_test.nim
   - verify/utils/game_terminal_test.nim
   - verify/utils/game_terminal_test.nim
-  - verify/utils/game_grundy_test.nim
-  - verify/utils/game_grundy_test.nim
   - verify/utils/game_warning_test.nim
   - verify/utils/game_warning_test.nim
 documentation_of: cplib/utils/game.nim

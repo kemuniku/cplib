@@ -56,11 +56,11 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATRIX_STATIC_MATRIX_AVX2:\n    const CPLIB_MATRIX_STATIC_MATRIX_AVX2*\
     \ = 1\n    import cplib/modint/modint\n    import cplib/matrix/matrix_avx2_kernel\n\
@@ -281,20 +281,20 @@ data:
     \        result.modulus = fieldModulus[T]()\n        fieldInverseAdjugateKernel(buffer(r.values),buffer(result.values),n,r.rank,cast[ptr\
     \ cint](buffer(r.pivots)),r.determinant,fieldModulus[T](),T is MontgomeryModint,true,W)\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
   isVerificationFile: false
   path: cplib/matrix/static_matrix_avx2.nim
   requiredBy:

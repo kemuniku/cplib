@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/convex_polygon.nim
+    title: cplib/geometry/convex_polygon.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/convex_polygon.nim
+    title: cplib/geometry/convex_polygon.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   - icon: ':heavy_check_mark:'
@@ -46,6 +52,24 @@ data:
     title: verify/math/fractions_abc308c_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_cut_test.nim
+    title: verify/AI/convex_cut_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_cut_test.nim
+    title: verify/AI/convex_cut_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_hull_regression_test.nim
+    title: verify/AI/convex_hull_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_hull_regression_test.nim
+    title: verify/AI/convex_hull_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_polygon_test.nim
+    title: verify/AI/convex_polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_polygon_test.nim
+    title: verify/AI/convex_polygon_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/fractions_infinity_order_test.nim
     title: verify/AI/fractions_infinity_order_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,6 +87,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/fractions_test.nim
     title: verify/AI/fractions_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/geometry_comparison_regression_test.nim
+    title: verify/AI/geometry_comparison_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/geometry_comparison_regression_test.nim
+    title: verify/AI/geometry_comparison_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_boundary_degenerate_test.nim
+    title: verify/AI/polygon_boundary_degenerate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_boundary_degenerate_test.nim
+    title: verify/AI/polygon_boundary_degenerate_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/polygon_test.nim
     title: verify/AI/polygon_test.nim
@@ -142,11 +178,35 @@ data:
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+    title: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+    title: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+    title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+    title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/furthest_pair_test.nim
+    title: verify/geometry/furthest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/furthest_pair_test.nim
+    title: verify/geometry/furthest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/static_convex_hull_test.nim
+    title: verify/geometry/static_convex_hull_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/static_convex_hull_test.nim
+    title: verify/geometry/static_convex_hull_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/fraction_inverse_sign_test.nim
     title: verify/math/fraction_inverse_sign_test.nim
@@ -194,11 +254,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_FRACTIONS:\n    const CPLIB_MATH_FRACTIONS*\
     \ = 1\n    import strformat, std/math, hashes\n    type Fraction*[T] = object\n\
@@ -295,69 +355,89 @@ data:
   requiredBy:
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
-  - verify/math/fractions_abc226d_test_.nim
-  - verify/math/fractions_abc226d_test_.nim
   - verify/math/fractions_abc308c_test_.nim
   - verify/math/fractions_abc308c_test_.nim
+  - verify/math/fractions_abc226d_test_.nim
+  - verify/math/fractions_abc226d_test_.nim
   - verify/math/fractions_abc225e_test_.nim
   - verify/math/fractions_abc225e_test_.nim
-  - cplib/utils/oeis.nim
-  - cplib/utils/oeis.nim
+  - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/convex_polygon.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
+  - cplib/utils/oeis.nim
+  - cplib/utils/oeis.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/math/stern_brocot_tree.nim
   timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/oeis_ssl_test.nim
-  - verify/utils/oeis_ssl_test.nim
-  - verify/utils/oeis_function_test.nim
-  - verify/utils/oeis_function_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/math/stern_brocot_tree_bounds_test.nim
-  - verify/math/stern_brocot_tree_bounds_test.nim
-  - verify/math/stern_brocot_tree_rational_approximation_test.nim
-  - verify/math/stern_brocot_tree_rational_approximation_test.nim
-  - verify/math/fractions_unit_test.nim
-  - verify/math/fractions_unit_test.nim
-  - verify/math/fraction_inverse_sign_test.nim
-  - verify/math/fraction_inverse_sign_test.nim
-  - verify/math/stern_brocot_tree_random_test.nim
-  - verify/math/stern_brocot_tree_random_test.nim
-  - verify/AI/fractions_pow_overflow_test.nim
-  - verify/AI/fractions_pow_overflow_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/polygon_test.nim
-  - verify/AI/fractions_test.nim
-  - verify/AI/fractions_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/fractions_pow_overflow_test.nim
+  - verify/AI/fractions_pow_overflow_test.nim
+  - verify/AI/geometry_comparison_regression_test.nim
+  - verify/AI/geometry_comparison_regression_test.nim
   - verify/AI/fractions_infinity_order_test.nim
   - verify/AI/fractions_infinity_order_test.nim
+  - verify/AI/fractions_test.nim
+  - verify/AI/fractions_test.nim
+  - verify/AI/convex_polygon_test.nim
+  - verify/AI/convex_polygon_test.nim
+  - verify/utils/oeis_ssl_test.nim
+  - verify/utils/oeis_ssl_test.nim
+  - verify/utils/oeis_function_test.nim
+  - verify/utils/oeis_function_test.nim
+  - verify/math/fractions_unit_test.nim
+  - verify/math/fractions_unit_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/fraction_inverse_sign_test.nim
+  - verify/math/fraction_inverse_sign_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_random_test.nim
+  - verify/math/stern_brocot_tree_random_test.nim
 documentation_of: cplib/math/fractions.nim
 layout: document
 redirect_from:

@@ -56,11 +56,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_BELLMANFORD:\n    const CPLIB_GRAPH_BELLMANFORD*\
     \ = 1\n    import deques, sequtils, macros\n    import cplib/graph/graph\n   \
@@ -120,28 +120,28 @@ data:
     \ or UnWeightedGraph, start, goal: int, ZERO, INF: T): tuple[path: seq[int], cost:\
     \ T] =\n        shortest_path_bellmanford_impl(G, start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/bellmanford.nim
   requiredBy: []
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - verify/graph/dynamic/bellmanford_grl1b_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
-  - verify/graph/static/bellmanford_grl1b_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/bellmanford_test.nim
   - verify/AI/bellmanford_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/dynamic/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
+  - verify/graph/static/bellmanford_grl1b_test.nim
 documentation_of: cplib/graph/bellmanford.nim
 layout: document
 redirect_from:

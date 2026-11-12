@@ -22,11 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/min_cost_b_flow
     links:
     - https://judge.yosupo.jp/problem/min_cost_b_flow
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/min_cost_b_flow\n\
     import cplib/graph/min_cost_b_flow\nimport cplib/math/int128\nimport strutils,\
@@ -38,10 +38,10 @@ data:
     \    for p in g.get_potential():\n        echo p\n    for e in g.get_edges():\n\
     \        echo e.flow\n"
   dependsOn:
-  - cplib/math/int128.nim
+  - cplib/graph/min_cost_b_flow.nim
   - cplib/graph/min_cost_b_flow.nim
   - cplib/math/int128.nim
-  - cplib/graph/min_cost_b_flow.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/graph/min_cost_b_flow_test.nim
   requiredBy: []

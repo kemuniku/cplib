@@ -86,11 +86,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_MAXFLOW:\n    const CPLIB_GRAPH_MAXFLOW* =\
     \ 1\n\n    type\n        MaxFlowEdge*[Cap] = object\n            src*, dst*: int\n\
@@ -181,33 +181,33 @@ data:
   requiredBy:
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
   - verify/graph/dag_minimum_path_cover_hakata_test_.nim
-  - cplib/utils/k_project_selection.nim
-  - cplib/utils/k_project_selection.nim
-  - cplib/utils/project_selection.nim
-  - cplib/utils/project_selection.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/dag_minimum_path_cover.nim
   - cplib/graph/lowerbound_maxflow.nim
   - cplib/graph/lowerbound_maxflow.nim
+  - cplib/utils/k_project_selection.nim
+  - cplib/utils/k_project_selection.nim
+  - cplib/utils/project_selection.nim
+  - cplib/utils/project_selection.nim
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/k_project_selection_abc326g_test.nim
-  - verify/utils/k_project_selection_abc326g_test.nim
+  - verify/AI/project_selection_test.nim
+  - verify/AI/project_selection_test.nim
+  - verify/AI/flow_test.nim
+  - verify/AI/flow_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/dag_minimum_path_cover_test.nim
+  - verify/AI/lowerbound_maxflow_test.nim
+  - verify/AI/lowerbound_maxflow_test.nim
+  - verify/AI/k_project_selection_test.nim
+  - verify/AI/k_project_selection_test.nim
   - verify/graph/maxflow_test.nim
   - verify/graph/maxflow_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
   - verify/graph/maxflow_bipartitematching_test.nim
-  - verify/AI/dag_minimum_path_cover_test.nim
-  - verify/AI/dag_minimum_path_cover_test.nim
-  - verify/AI/k_project_selection_test.nim
-  - verify/AI/k_project_selection_test.nim
-  - verify/AI/lowerbound_maxflow_test.nim
-  - verify/AI/lowerbound_maxflow_test.nim
-  - verify/AI/flow_test.nim
-  - verify/AI/flow_test.nim
-  - verify/AI/project_selection_test.nim
-  - verify/AI/project_selection_test.nim
+  - verify/utils/k_project_selection_abc326g_test.nim
+  - verify/utils/k_project_selection_abc326g_test.nim
 documentation_of: cplib/graph/maxflow.nim
 layout: document
 redirect_from:

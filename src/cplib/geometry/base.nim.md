@@ -15,6 +15,18 @@ data:
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/closest_pair.nim
+    title: cplib/geometry/closest_pair.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/closest_pair.nim
+    title: cplib/geometry/closest_pair.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/convex_polygon.nim
+    title: cplib/geometry/convex_polygon.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/convex_polygon.nim
+    title: cplib/geometry/convex_polygon.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
   - icon: ':heavy_check_mark:'
@@ -76,6 +88,30 @@ data:
     path: verify/AI/ccw_test.nim
     title: verify/AI/ccw_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/closest_pair_test.nim
+    title: verify/AI/closest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/closest_pair_test.nim
+    title: verify/AI/closest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_cut_test.nim
+    title: verify/AI/convex_cut_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_cut_test.nim
+    title: verify/AI/convex_cut_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_hull_regression_test.nim
+    title: verify/AI/convex_hull_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_hull_regression_test.nim
+    title: verify/AI/convex_hull_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_polygon_test.nim
+    title: verify/AI/convex_polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_polygon_test.nim
+    title: verify/AI/convex_polygon_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/distance_test.nim
     title: verify/AI/distance_test.nim
   - icon: ':heavy_check_mark:'
@@ -94,11 +130,23 @@ data:
     path: verify/AI/geometry_base_test.nim
     title: verify/AI/geometry_base_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/geometry_comparison_regression_test.nim
+    title: verify/AI/geometry_comparison_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/geometry_comparison_regression_test.nim
+    title: verify/AI/geometry_comparison_regression_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/intersect_test.nim
     title: verify/AI/intersect_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/intersect_test.nim
     title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_boundary_degenerate_test.nim
+    title: verify/AI/polygon_boundary_degenerate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_boundary_degenerate_test.nim
+    title: verify/AI/polygon_boundary_degenerate_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/polygon_test.nim
     title: verify/AI/polygon_test.nim
@@ -238,17 +286,47 @@ data:
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+    title: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+    title: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+    title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+    title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+    title: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+    title: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/closest_pair_test.nim
+    title: verify/geometry/closest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/closest_pair_test.nim
+    title: verify/geometry/closest_pair_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/euclidean_mst_test.nim
     title: verify/geometry/euclidean_mst_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/euclidean_mst_test.nim
     title: verify/geometry/euclidean_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/furthest_pair_test.nim
+    title: verify/geometry/furthest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/furthest_pair_test.nim
+    title: verify/geometry/furthest_pair_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/manhattan_mst_random_test.nim
     title: verify/geometry/manhattan_mst_random_test.nim
@@ -261,16 +339,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/manhattan_mst_test.nim
     title: verify/geometry/manhattan_mst_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/static_convex_hull_test.nim
+    title: verify/geometry/static_convex_hull_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/static_convex_hull_test.nim
+    title: verify/geometry/static_convex_hull_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_BASE:\n    const CPLIB_GEOMETRY_BASE* =\
     \ 1\n    import hashes, strformat\n    type Point*[T] = object\n        x*, y*:\
@@ -293,58 +377,95 @@ data:
     \ = cross(p, q)\n    proc norm*[T](p: Point[T]): T =\n        ##p\u306E\u30CE\u30EB\
     \u30E0 (p.x * p.x + p.y * p.y)\n        dot(p, p)\n    proc `$`*[T](p: Point[T]):\
     \ string = &\"({p.x}, {p.y})\"\n\n    proc geometry_eq*[T, S](x: T, y: S): bool\
-    \ = x == y\n    proc geometry_eq*(x, y: SomeFloat): bool = (abs(x - y) < GEOMETRY_EPS\
-    \ * x) or (abs(x - y) < GEOMETRY_EPS)\n    proc geometry_eq*(x: int, y: SomeFloat):\
-    \ bool = geometry_eq(float(x), y)\n    proc geometry_eq*(x: SomeFloat, y: int):\
-    \ bool = geometry_eq(x, float(y))\n    proc geometry_neq*[T, S](x: T, y: S): bool\
-    \ = not geometry_eq(x, y)\n    proc geometry_ge*[T, S](x: T, y: S): bool = geometry_eq(x,\
-    \ y) or (x > y)\n    proc geometry_ge*(x: int, y: SomeFloat): bool = geometry_ge(float(x),\
-    \ y)\n    proc geometry_ge*(x: SomeFloat, y: int): bool = geometry_ge(x, float(y))\n\
-    \    proc geometry_le*[T, S](x: T, y: S): bool = geometry_eq(x, y) or (x < y)\n\
-    \    proc geometry_le*(x: int, y: SomeFloat): bool = geometry_le(float(x), y)\n\
-    \    proc geometry_le*(x: SomeFloat, y: int): bool = geometry_le(x, float(y))\n\
-    \    proc geometry_gt*[T, S](x: T, y: S): bool = not geometry_le(x, y)\n    proc\
-    \ geometry_lt*[T, S](x: T, y: S): bool = not geometry_ge(x, y)\n    proc `<`*[T](p,\
-    \ q: Point[T]): bool =\n        if geometry_eq(p.x, q.x): return geometry_lt(p.y,\
-    \ q.y)\n        return geometry_lt(p.x, q.x)\n    proc `>`*[T](p, q: Point[T]):\
-    \ bool =\n        if geometry_eq(p.x, q.x): return geometry_gt(p.y, q.y)\n   \
-    \     return geometry_gt(p.x, q.x)\n    proc `==`*[T](p, q: Point[T]): bool =\
-    \ geometry_eq(p.x, q.x) and geometry_eq(p.y, q.y)\n    proc cmp*[T](p, q: Point[T]):\
-    \ int = (if p < q: -1 elif p == q: 0 else: 1)\n\n\n    proc `+`*[T](p: Point[T],\
-    \ q: Point[T]): Point[T] = (result = p; result += q)\n    proc `-`*[T](p: Point[T],\
-    \ q: Point[T]): Point[T] = (result = p; result -= q)\n    proc `*`*[T, S](p: Point[T],\
-    \ x: S): Point[T] = (result = p; result *= x)\n    proc `*`*[T, S](x: S, p: Point[T]):\
-    \ Point[T] = p * x\n    proc `/`*[T, S](p: Point[T], x: S): Point[T] = (result\
-    \ = p; result /= x)\n    proc `<=`*[T](p, q: Point[T]): bool = not (p > q)\n \
-    \   proc `>=`*[T](p, q: Point[T]): bool = not (p < q)\n\n    proc hash*[T](p:\
-    \ Point[T]): Hash =\n        result = result !& hash(p.x)\n        result = result\
-    \ !& hash(p.y)\n\n    type Line*[T] = object\n        s*, t*: Point[T]\n\n   \
-    \ proc initLine*[T](s, t: Point[T]): Line[T] =\n        ##2\u70B9 (s, t) \u3092\
-    \u901A\u308B\u76F4\u7DDA\u306E\u521D\u671F\u5316\n        (assert(s != t, \"\u59CB\
-    \u70B9\u3068\u7D42\u70B9\u306F\u7570\u306A\u308B\u70B9\u3067\u3042\u308B\u5FC5\
-    \u8981\u304C\u3042\u308A\u307E\u3059\"); return Line[T](s: s, t: t))\n    proc\
-    \ initLine*[T](a, b, c: int): Line[int] = assert false, \"\u4FC2\u6570(a,b,c)\u304B\
-    \u3089\u306E\u76F4\u7DDA\u306E\u521D\u671F\u5316\u306B\u306Fint\u3067\u306F\u306A\
-    \u304Ffloat\u307E\u305F\u306FFraction\u3092\u4F7F\u7528\u3057\u3066\u304F\u3060\
-    \u3055\u3044\"\n    proc initLine*[T](a, b, c: T): Line[T] =\n        ##\u76F4\
-    \u7DDA ax + by + c = 0 \u306E\u521D\u671F\u5316\u3001int \u578B\u306B\u5BFE\u3057\
-    \u3066\u306F\u4F7F\u7528\u4E0D\u53EF\n        assert geometry_neq(a, T(0)) or\
-    \ geometry_neq(b, T(0)), \"\u76F4\u7DDA\u306E\u4FC2\u6570a\u3068b\u306E\u5C11\u306A\
-    \u304F\u3068\u3082\u4E00\u65B9\u306F\u975E\u96F6\u3067\u3042\u308B\u5FC5\u8981\
-    \u304C\u3042\u308A\u307E\u3059\"\n        if geometry_eq(b, T(0)):\n         \
-    \   var s = Point[T](x: -c / a, y: T(0))\n            var t = Point[T](x: -c /\
-    \ a, y: T(1))\n            return Line[T](s: s, t: t)\n        else:\n       \
-    \     var s = Point[T](x: T(0), y: -c / b)\n            var t = Point[T](x: T(1),\
-    \ y: (-a-c) / b)\n            return Line[T](s: s, t: t)\n    proc vector*[T](l:\
-    \ Line[T]): Point[T] =\n        ##\u76F4\u7DDA\u306E\u63A5\u30D9\u30AF\u30C8\u30EB\
-    \uFF08\u76F4\u7DDA\u306E\u65B9\u5411\u306E\u30D9\u30AF\u30C8\u30EB\uFF09\n   \
-    \     l.t - l.s\n    proc `$`*[T](l: Line[T]): string = &\"({l.s}, {l.t})\"\n\n\
-    \n    type Segment*[T] = object\n        s*, t*: Point[T]\n    proc initSegment*[T](s,\
-    \ t: Point[T]): Segment[T] =\n        ##2\u70B9 (s, t) \u3092\u7D50\u3076\u7DDA\
-    \u5206\u306E\u521D\u671F\u5316\n        (assert(s != t, \"\u59CB\u70B9\u3068\u7D42\
-    \u70B9\u306F\u7570\u306A\u308B\u70B9\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308A\u307E\u3059\"); return Segment[T](s: s, t: t))\n    converter toLine*[T](s:\
-    \ Segment[T]): Line[T] = initLine(s.s, s.t)\n"
+    \ = x == y\n    proc geometry_eq*(x, y: SomeFloat): bool =\n        ## \u7D76\u5BFE\
+    \u30FB\u76F8\u5BFE\u8AA4\u5DEE\u3067\u8FD1\u4F3C\u4E00\u81F4\u3092\u5224\u5B9A\
+    \u3059\u308B\u3002GEOMETRY_EPS\u306F\u975E\u8CA0\u3092\u6307\u5B9A\u3059\u308B\
+    \u3002\n        if x == y: return true\n        if abs(x) == system.Inf or abs(y)\
+    \ == system.Inf: return false\n        let delta = abs(x - y)\n        delta <\
+    \ GEOMETRY_EPS or delta < GEOMETRY_EPS * max(abs(x), abs(y))\n    proc geometry_eq*(x:\
+    \ int, y: SomeFloat): bool = geometry_eq(float(x), y)\n    proc geometry_eq*(x:\
+    \ SomeFloat, y: int): bool = geometry_eq(x, float(y))\n    proc geometry_neq*[T,\
+    \ S](x: T, y: S): bool = not geometry_eq(x, y)\n    proc geometry_ge*[T, S](x:\
+    \ T, y: S): bool = geometry_eq(x, y) or (x > y)\n    proc geometry_ge*(x: int,\
+    \ y: SomeFloat): bool = geometry_ge(float(x), y)\n    proc geometry_ge*(x: SomeFloat,\
+    \ y: int): bool = geometry_ge(x, float(y))\n    proc geometry_le*[T, S](x: T,\
+    \ y: S): bool = geometry_eq(x, y) or (x < y)\n    proc geometry_le*(x: int, y:\
+    \ SomeFloat): bool = geometry_le(float(x), y)\n    proc geometry_le*(x: SomeFloat,\
+    \ y: int): bool = geometry_le(x, float(y))\n    proc geometry_gt*[T, S](x: T,\
+    \ y: S): bool = not geometry_le(x, y)\n    proc geometry_lt*[T, S](x: T, y: S):\
+    \ bool = not geometry_ge(x, y)\n    proc `<`*[T](p, q: Point[T]): bool =\n   \
+    \     ## EPS\u3092\u4F7F\u308F\u306A\u3044\u8F9E\u66F8\u9806\u6BD4\u8F03\u3002\
+    \u6D6E\u52D5\u5C0F\u6570\u70B9\u306E\u5EA7\u6A19\u306BNaN\u3092\u542B\u3081\u306A\
+    \u3044\u3053\u3068\u3002\n        if p.x == q.x: return p.y < q.y\n        return\
+    \ p.x < q.x\n    proc `>`*[T](p, q: Point[T]): bool =\n        ## EPS\u3092\u4F7F\
+    \u308F\u306A\u3044\u8F9E\u66F8\u9806\u6BD4\u8F03\u3002\n        q < p\n    proc\
+    \ exact_equal*[T](p, q: Point[T]): bool =\n        ## EPS\u3092\u4F7F\u308F\u305A\
+    \u5404\u5EA7\u6A19\u306E\u4E00\u81F4\u3092\u5224\u5B9A\u3059\u308B\u3002\n   \
+    \     p.x == q.x and p.y == q.y\n    proc almost_equal*[T](p, q: Point[T]): bool\
+    \ =\n        ## \u5404\u5EA7\u6A19\u3092geometry_eq\u3067\u6BD4\u8F03\u3059\u308B\
+    \u3002\u30BD\u30FC\u30C8\u3084\u30CF\u30C3\u30B7\u30E5\u306E\u7B49\u5024\u95A2\
+    \u4FC2\u306B\u306F\u4F7F\u7528\u3057\u306A\u3044\u3002\n        geometry_eq(p.x,\
+    \ q.x) and geometry_eq(p.y, q.y)\n    proc `==`*[T](p, q: Point[T]): bool =\n\
+    \        ## \u5404\u5EA7\u6A19\u306E\u8FD1\u4F3C\u4E00\u81F4\u3002\u53B3\u5BC6\
+    \u4E00\u81F4\u306B\u306Fexact_equal\u3092\u4F7F\u7528\u3059\u308B\u3002\n    \
+    \    almost_equal(p, q)\n    proc cmp*[T](p, q: Point[T]): int =\n        ## EPS\u3092\
+    \u4F7F\u308F\u306A\u3044\u8F9E\u66F8\u9806\u6BD4\u8F03\u3002\u8FD1\u4F3C\u4E00\
+    \u81F4\u306E==\u3068\u306F\u72EC\u7ACB\u3057\u3066\u9806\u5E8F\u3092\u6C7A\u3081\
+    \u308B\u3002\n        (if p < q: -1 elif q < p: 1 else: 0)\n\n\n    proc `+`*[T](p:\
+    \ Point[T], q: Point[T]): Point[T] = (result = p; result += q)\n    proc `-`*[T](p:\
+    \ Point[T], q: Point[T]): Point[T] = (result = p; result -= q)\n    proc `*`*[T,\
+    \ S](p: Point[T], x: S): Point[T] = (result = p; result *= x)\n    proc `*`*[T,\
+    \ S](x: S, p: Point[T]): Point[T] = p * x\n    proc `/`*[T, S](p: Point[T], x:\
+    \ S): Point[T] = (result = p; result /= x)\n    proc `<=`*[T](p, q: Point[T]):\
+    \ bool = not (p > q)\n    proc `>=`*[T](p, q: Point[T]): bool = not (p < q)\n\n\
+    \    type PointKey*[T] = object\n        x*, y*: T\n\n    proc toPointKey*[T](p:\
+    \ Point[T]): PointKey[T] =\n        ## \u70B9\u3092\u53B3\u5BC6\u6BD4\u8F03\u3059\
+    \u308B\u30CF\u30C3\u30B7\u30E5\u7528\u30AD\u30FC\u306B\u5909\u63DB\u3059\u308B\
+    \u3002\u5EA7\u6A19\u5024\u3092\u30B3\u30D4\u30FC\u3057\u3001EPS\u306B\u4F9D\u5B58\
+    \u3057\u306A\u3044\u3002\n        PointKey[T](x: p.x, y: p.y)\n    proc `==`*[T](p,\
+    \ q: PointKey[T]): bool =\n        ## \u30CF\u30C3\u30B7\u30E5\u7528\u30AD\u30FC\
+    \u306E\u5404\u5EA7\u6A19\u3092\u53B3\u5BC6\u306B\u6BD4\u8F03\u3059\u308B\u3002\
+    \n        p.x == q.x and p.y == q.y\n    proc hash*[T](p: PointKey[T]): Hash =\n\
+    \        ## \u53B3\u5BC6\u4E00\u81F4\u306B\u5BFE\u5FDC\u3059\u308B\u30CF\u30C3\
+    \u30B7\u30E5\u3002\u6D6E\u52D5\u5C0F\u6570\u70B9\u306E\u6B63\u8CA0\u306E\u30BC\
+    \u30ED\u306F\u540C\u3058\u5024\u306B\u3059\u308B\u3002\n        when T is SomeFloat:\n\
+    \            result = result !& hash(if p.x == T(0): T(0) else: p.x)\n       \
+    \     result = result !& hash(if p.y == T(0): T(0) else: p.y)\n        else:\n\
+    \            result = result !& hash(p.x)\n            result = result !& hash(p.y)\n\
+    \        result = !$result\n    proc hash*[T](p: Point[T]): Hash =\n        ##\
+    \ \u53B3\u5BC6\u4E00\u81F4\u3059\u308B\u5EA7\u6A19\u578B\u306E\u70B9\u3092\u30CF\
+    \u30C3\u30B7\u30E5\u5316\u3059\u308B\u3002\u6D6E\u52D5\u5C0F\u6570\u70B9\u306B\
+    \u306FtoPointKey\u3092\u4F7F\u7528\u3059\u308B\u3002\n        when T is SomeFloat:\n\
+    \            {.error: \"Point[float]\u306E==\u306F\u8FD1\u4F3C\u4E00\u81F4\u3067\
+    \u3059\u3002\u30CF\u30C3\u30B7\u30E5\u7528\u306B\u306FtoPointKey\u3092\u4F7F\u7528\
+    \u3057\u3066\u304F\u3060\u3055\u3044\".}\n        else:\n            hash(p.toPointKey)\n\
+    \n    type Line*[T] = object\n        s*, t*: Point[T]\n\n    proc initLine*[T](s,\
+    \ t: Point[T]): Line[T] =\n        ##2\u70B9 (s, t) \u3092\u901A\u308B\u76F4\u7DDA\
+    \u306E\u521D\u671F\u5316\n        (assert(s != t, \"\u59CB\u70B9\u3068\u7D42\u70B9\
+    \u306F\u7570\u306A\u308B\u70B9\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"); return Line[T](s: s, t: t))\n    proc initLine*[T](a, b, c: int):\
+    \ Line[int] = assert false, \"\u4FC2\u6570(a,b,c)\u304B\u3089\u306E\u76F4\u7DDA\
+    \u306E\u521D\u671F\u5316\u306B\u306Fint\u3067\u306F\u306A\u304Ffloat\u307E\u305F\
+    \u306FFraction\u3092\u4F7F\u7528\u3057\u3066\u304F\u3060\u3055\u3044\"\n    proc\
+    \ initLine*[T](a, b, c: T): Line[T] =\n        ##\u76F4\u7DDA ax + by + c = 0\
+    \ \u306E\u521D\u671F\u5316\u3001int \u578B\u306B\u5BFE\u3057\u3066\u306F\u4F7F\
+    \u7528\u4E0D\u53EF\n        assert geometry_neq(a, T(0)) or geometry_neq(b, T(0)),\
+    \ \"\u76F4\u7DDA\u306E\u4FC2\u6570a\u3068b\u306E\u5C11\u306A\u304F\u3068\u3082\
+    \u4E00\u65B9\u306F\u975E\u96F6\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\
+    \u307E\u3059\"\n        if geometry_eq(b, T(0)):\n            var s = Point[T](x:\
+    \ -c / a, y: T(0))\n            var t = Point[T](x: -c / a, y: T(1))\n       \
+    \     return Line[T](s: s, t: t)\n        else:\n            var s = Point[T](x:\
+    \ T(0), y: -c / b)\n            var t = Point[T](x: T(1), y: (-a-c) / b)\n   \
+    \         return Line[T](s: s, t: t)\n    proc vector*[T](l: Line[T]): Point[T]\
+    \ =\n        ##\u76F4\u7DDA\u306E\u63A5\u30D9\u30AF\u30C8\u30EB\uFF08\u76F4\u7DDA\
+    \u306E\u65B9\u5411\u306E\u30D9\u30AF\u30C8\u30EB\uFF09\n        l.t - l.s\n  \
+    \  proc `$`*[T](l: Line[T]): string = &\"({l.s}, {l.t})\"\n\n\n    type Segment*[T]\
+    \ = object\n        s*, t*: Point[T]\n    proc initSegment*[T](s, t: Point[T]):\
+    \ Segment[T] =\n        ##2\u70B9 (s, t) \u3092\u7D50\u3076\u7DDA\u5206\u306E\u521D\
+    \u671F\u5316\n        (assert(s != t, \"\u59CB\u70B9\u3068\u7D42\u70B9\u306F\u7570\
+    \u306A\u308B\u70B9\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\
+    \"); return Segment[T](s: s, t: t))\n    converter toLine*[T](s: Segment[T]):\
+    \ Line[T] = initLine(s.s, s.t)\n"
   dependsOn: []
   isVerificationFile: false
   path: cplib/geometry/base.nim
@@ -353,91 +474,119 @@ data:
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
-  - cplib/geometry/distance.nim
-  - cplib/geometry/distance.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/projection.nim
+  - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/manhattan_mst.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/closest_pair.nim
+  - cplib/geometry/closest_pair.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/intersect.nim
+  timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/euclidean_mst_test.nim
-  - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/manhattan_mst_random_test.nim
   - verify/geometry/manhattan_mst_random_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/manhattan_mst_test.nim
-  - verify/geometry/manhattan_mst_test.nim
-  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/closest_pair_test.nim
+  - verify/geometry/closest_pair_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
   - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_cgl1a_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
   - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/AI/euclidean_mst_test.nim
-  - verify/AI/euclidean_mst_test.nim
-  - verify/AI/projection_test.nim
-  - verify/AI/projection_test.nim
-  - verify/AI/geometry_base_test.nim
-  - verify/AI/geometry_base_test.nim
-  - verify/AI/intersect_test.nim
-  - verify/AI/intersect_test.nim
+  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
+  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/polygon_test.nim
-  - verify/AI/angle_test.nim
-  - verify/AI/angle_test.nim
-  - verify/AI/ccw_test.nim
-  - verify/AI/ccw_test.nim
   - verify/AI/distance_test.nim
   - verify/AI/distance_test.nim
+  - verify/AI/closest_pair_test.nim
+  - verify/AI/closest_pair_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/geometry_comparison_regression_test.nim
+  - verify/AI/geometry_comparison_regression_test.nim
+  - verify/AI/geometry_base_test.nim
+  - verify/AI/geometry_base_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/euclidean_mst_test.nim
+  - verify/AI/euclidean_mst_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/projection_test.nim
+  - verify/AI/projection_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/convex_polygon_test.nim
+  - verify/AI/convex_polygon_test.nim
 documentation_of: cplib/geometry/base.nim
 layout: document
 redirect_from:

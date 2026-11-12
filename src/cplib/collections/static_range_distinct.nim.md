@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_STATIC_RANGE_DISTINCT:\n    const CPLIB_COLLECTIONS_STATIC_RANGE_DISTINCT*\
     \ = 1\n    import cplib/collections/waveletmatrix\n    import algorithm, tables\n\
@@ -113,8 +113,8 @@ data:
     \u3051\u304C prev < l\u3001\u3059\u306A\u308F\u3061 prev+1 < l+1 \u3092\u6E80\u305F\
     \u3059\u3002\n        self.wm.range_lowerbound(l, r, l + 1)\n"
   dependsOn:
-  - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
+  - cplib/collections/bitvector.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/waveletmatrix.nim
   isVerificationFile: false
@@ -123,10 +123,10 @@ data:
   timestamp: '2026-10-25 20:56:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/static_range_distinct_test.nim
-  - verify/collections/static_range_distinct_test.nim
   - verify/AI/static_range_distinct_test.nim
   - verify/AI/static_range_distinct_test.nim
+  - verify/collections/static_range_distinct_test.nim
+  - verify/collections/static_range_distinct_test.nim
 documentation_of: cplib/collections/static_range_distinct.nim
 layout: document
 redirect_from:

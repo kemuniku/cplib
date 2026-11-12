@@ -104,11 +104,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATRIX_MATRIX:\n    const CPLIB_MATRIX_MATRIX* =\
     \ 1\n    import sequtils, strutils, hashes, std/math\n    type Matrix*[T] = object\n\
@@ -221,12 +221,6 @@ data:
   isVerificationFile: false
   path: cplib/matrix/matrix.nim
   requiredBy:
-  - verify/matrix/matrix_dpr_test_.nim
-  - verify/matrix/matrix_dpr_test_.nim
-  - verify/matrix/linear_algebra/judge_driver.nim
-  - verify/matrix/linear_algebra/judge_driver.nim
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/modint/barrett/dpr_static_test_.nim
   - verify/modint/barrett/dpr_static_test_.nim
   - verify/modint/barrett/dpr_dynamic_test_.nim
@@ -235,25 +229,31 @@ data:
   - verify/modint/montgomery/dpr_static_test_.nim
   - verify/modint/montgomery/dpr_dynamic_test_.nim
   - verify/modint/montgomery/dpr_dynamic_test_.nim
+  - verify/matrix/matrix_dpr_test_.nim
+  - verify/matrix/matrix_dpr_test_.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
   - cplib/matrix/matrix_product_avx2.nim
   - cplib/matrix/matrix_product_avx2.nim
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/matrix_test.nim
+  - verify/AI/matrix_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
+  - verify/matrix/matrix_zoistring_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_product_avx2_test.nim
   - verify/matrix/matrix_unit_test.nim
   - verify/matrix/matrix_unit_test.nim
   - verify/matrix/matrix_pow_test.nim
   - verify/matrix/matrix_pow_test.nim
-  - verify/matrix/matrix_product_avx2_unit_test.nim
-  - verify/matrix/matrix_product_avx2_unit_test.nim
-  - verify/matrix/matrix_product_avx2_test.nim
-  - verify/matrix/matrix_product_avx2_test.nim
-  - verify/matrix/matrix_zoistring_test.nim
-  - verify/matrix/matrix_zoistring_test.nim
   - verify/matrix/matrix_product_test.nim
   - verify/matrix/matrix_product_test.nim
-  - verify/AI/matrix_test.nim
-  - verify/AI/matrix_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
 documentation_of: cplib/matrix/matrix.nim
 layout: document
 redirect_from:

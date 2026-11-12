@@ -86,11 +86,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_CONVOLUTION_SUBSET_CONVOLUTION:\n    const CPLIB_CONVOLUTION_SUBSET_CONVOLUTION*\
     \ = 1\n    import bitops\n    when defined(cpp) and (defined(gcc) or defined(clang)):\n\
@@ -158,15 +158,15 @@ data:
     \            mobiusStage(1 shl h, 0, size)\n        result = newSeq[T](size)\n\
     \        for mask in 0..<size: result[mask] = left[mask * stride + int(ranks[mask])]\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/private/subset_convolution_barrett.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/private/subset_convolution_barrett.nim
   isVerificationFile: false
   path: cplib/convolution/subset_convolution.nim
@@ -176,20 +176,20 @@ data:
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/set_power_series/subset_convolution_regression_test.nim
+  - verify/set_power_series/subset_convolution_regression_test.nim
   - verify/set_power_series/subset_convolution_test.nim
   - verify/set_power_series/subset_convolution_test.nim
   - verify/set_power_series/set_power_series_regression_test.nim
   - verify/set_power_series/set_power_series_regression_test.nim
   - verify/set_power_series/power_projection_of_set_power_series_test.nim
   - verify/set_power_series/power_projection_of_set_power_series_test.nim
-  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
-  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
   - verify/set_power_series/exp_of_set_power_series_test.nim
   - verify/set_power_series/exp_of_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
+  - verify/set_power_series/polynomial_composite_set_power_series_test.nim
   - verify/set_power_series/log_of_set_power_series_test.nim
   - verify/set_power_series/log_of_set_power_series_test.nim
-  - verify/set_power_series/subset_convolution_regression_test.nim
-  - verify/set_power_series/subset_convolution_regression_test.nim
 documentation_of: cplib/convolution/subset_convolution.nim
 layout: document
 redirect_from:

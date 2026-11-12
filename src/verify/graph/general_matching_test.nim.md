@@ -28,11 +28,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/general_matching
     links:
     - https://judge.yosupo.jp/problem/general_matching
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/general_matching\n\
     import cplib/graph/graph\nimport cplib/graph/general_matching\ninclude cplib/tmpl/fastio\n\
@@ -42,9 +42,9 @@ data:
     \ u, \" \", v\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/general_matching.nim
   - cplib/graph/general_matching.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true

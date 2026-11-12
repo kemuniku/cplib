@@ -52,11 +52,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\n\nimport cplib/tmpl/sheep\nimport cplib/modint/modint\n\
@@ -94,19 +94,19 @@ data:
     \ 2 == 0) == 3\n    doAssert (0..<5).allIt(it >= 0)\n    doAssert (0..<5).anyIt(it\
     \ == 3)\n"
   dependsOn:
-  - cplib/tmpl/sheep.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/utils/constants.nim
   - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
-  - cplib/math/isqrt.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/AI/sheep_test.nim

@@ -28,11 +28,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import cplib/convolution/min_plus_convolution\nimport cplib/utils/smawk\nimport\
@@ -110,12 +110,12 @@ data:
     \ @[0'i8])\n    checkConcave(@[high(int8), 0'i8, low(int8)], @[0'i8])\n\necho\
     \ \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/smawk.nim
   - cplib/utils/monotone_minima.nim
   - cplib/utils/monotone_minima.nim
   - cplib/convolution/min_plus_convolution.nim
-  - cplib/utils/smawk.nim
   - cplib/convolution/min_plus_convolution.nim
+  - cplib/utils/smawk.nim
+  - cplib/utils/smawk.nim
   isVerificationFile: true
   path: verify/AI/min_plus_convolution_test.nim
   requiredBy: []

@@ -50,11 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_DIJKSTRA_RADIX:\n    const CPLIB_GRAPH_DIJKSTRA_RADIX*\
     \ = 1\n    import algorithm\n    import cplib/collections/radix_heap\n    import\
@@ -118,26 +118,26 @@ data:
     \ = dijkstraRadixImpl(G, start, ZERO, INF, true, true, goal)\n        result.path\
     \ = prev.restore_shortest_path_from_prev(goal)\n        result.cost = costs[goal]\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/collections/radix_heap.nim
   - cplib/collections/radix_heap.nim
   - cplib/utils/constants.nim
   - cplib/graph/graph.nim
-  - cplib/collections/radix_heap.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra_radix.nim
   requiredBy: []
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/dijkstra_radix_test.nim
+  - verify/AI/dijkstra_radix_test.nim
   - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/dynamic/restore_dijkstra_radix_test.nim
   - verify/graph/static/restore_dijkstra_radix_static_test.nim
   - verify/graph/static/restore_dijkstra_radix_static_test.nim
-  - verify/AI/dijkstra_radix_test.nim
-  - verify/AI/dijkstra_radix_test.nim
 documentation_of: cplib/graph/dijkstra_radix.nim
 layout: document
 redirect_from:

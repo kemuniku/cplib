@@ -46,11 +46,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
     links:
     - https://judge.yosupo.jp/problem/tree_path_composite_sum
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/tree_path_composite_sum\n\
     import sequtils, strutils, tables\nimport cplib/tree/rerooting\nimport cplib/graph/graph\n\
@@ -65,17 +65,17 @@ data:
     \    var (b,c) = T[(u,v)]\n    return (b*x[0]+c*x[1],x[1])\n\necho G.solve_Rerooting(merge,(mint(0),0),put_edge,put_vertex).mapit(it[0]).join(\"\
     \ \")\n\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/graph/graph.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/tree/rerooting.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/tree/rerooting.nim
   isVerificationFile: true
   path: verify/tree/rerooting_test.nim

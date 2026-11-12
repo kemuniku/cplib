@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_NEAREST_EQUIV:\n    const CPLIB_MATH_NEAREST_EQUIV*\
     \ = 1\n    proc nearest_equiv*(x, l, m: int): int =\n        ## (y \u2261 x mod\
@@ -42,10 +42,10 @@ data:
   isVerificationFile: false
   path: cplib/math/nearest_equiv.nim
   requiredBy:
-  - verify/math/nearear_equiv_abc342e_test_.nim
-  - verify/math/nearear_equiv_abc342e_test_.nim
   - verify/math/nearest_equiv_test_.nim
   - verify/math/nearest_equiv_test_.nim
+  - verify/math/nearear_equiv_abc342e_test_.nim
+  - verify/math/nearear_equiv_abc342e_test_.nim
   timestamp: '2024-03-21 20:57:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

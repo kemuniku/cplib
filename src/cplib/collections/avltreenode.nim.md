@@ -195,11 +195,11 @@ data:
   attributes:
     links:
     - https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_AVLTREE:\n    const CPLIB_COLLECTIONS_AVLTREE*\
     \ = 1\n    # \u4EE5\u4E0B\u3092Nim\u306B\u79FB\u690D\n    # https://nachiavivias.github.io/cp-library/cpp/array/bbst-list.html\n\
@@ -288,55 +288,63 @@ data:
   isVerificationFile: false
   path: cplib/collections/avltreenode.nim
   requiredBy:
-  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
-  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
+  - verify/collections/avlset/set/ABC217_index_test_.nim
+  - verify/collections/avlset/set/ABC217_index_test_.nim
+  - verify/collections/avlset/set/ABC236_test_.nim
+  - verify/collections/avlset/set/ABC236_test_.nim
+  - verify/collections/avlset/set/ABC294_test_.nim
+  - verify/collections/avlset/set/ABC294_test_.nim
+  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/set/ABC217_gele_test_.nim
+  - verify/collections/avlset/set/ABC217_gele_test_.nim
+  - verify/collections/avlset/set/ABC234D_access_test_.nim
+  - verify/collections/avlset/set/ABC234D_access_test_.nim
+  - verify/collections/avlset/multiset/ABC217_index_test_.nim
+  - verify/collections/avlset/multiset/ABC217_index_test_.nim
+  - verify/collections/avlset/multiset/ABC236_test_.nim
+  - verify/collections/avlset/multiset/ABC236_test_.nim
+  - verify/collections/avlset/multiset/ABC294_test_.nim
+  - verify/collections/avlset/multiset/ABC294_test_.nim
+  - verify/collections/avlset/multiset/ABC337_test_.nim
+  - verify/collections/avlset/multiset/ABC337_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
+  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
+  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
+  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
+  - verify/collections/avlset/multiset/index_right_test_.nim
+  - verify/collections/avlset/multiset/index_right_test_.nim
+  - verify/collections/rangeset_test_.nim
+  - verify/collections/rangeset_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
   - verify/utils/grid_searcher/skate_get_test_.nim
+  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
+  - verify/utils/grid_searcher/skate_get_tuple_test_.nim
   - verify/utils/grid_searcher/skate_tuple_test_.nim
   - verify/utils/grid_searcher/skate_tuple_test_.nim
   - verify/utils/grid_searcher/skate_test_.nim
   - verify/utils/grid_searcher/skate_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gele_test_.nim
-  - verify/collections/avlset/multiset/ABC294_test_.nim
-  - verify/collections/avlset/multiset/ABC294_test_.nim
-  - verify/collections/avlset/multiset/ABC236_test_.nim
-  - verify/collections/avlset/multiset/ABC236_test_.nim
-  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
-  - verify/collections/avlset/multiset/ABC234D_access_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/multiset/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/multiset/ABC217_index_test_.nim
-  - verify/collections/avlset/multiset/ABC217_index_test_.nim
-  - verify/collections/avlset/multiset/index_right_test_.nim
-  - verify/collections/avlset/multiset/index_right_test_.nim
-  - verify/collections/avlset/multiset/ABC337_test_.nim
-  - verify/collections/avlset/multiset/ABC337_test_.nim
-  - verify/collections/avlset/set/ABC217_gele_test_.nim
-  - verify/collections/avlset/set/ABC217_gele_test_.nim
-  - verify/collections/avlset/set/ABC294_test_.nim
-  - verify/collections/avlset/set/ABC294_test_.nim
-  - verify/collections/avlset/set/ABC236_test_.nim
-  - verify/collections/avlset/set/ABC236_test_.nim
-  - verify/collections/avlset/set/ABC234D_access_test_.nim
-  - verify/collections/avlset/set/ABC234D_access_test_.nim
-  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/set/ABC217_gtlt_test_.nim
-  - verify/collections/avlset/set/ABC217_index_test_.nim
-  - verify/collections/avlset/set/ABC217_index_test_.nim
-  - verify/collections/rangeset_test_.nim
-  - verify/collections/rangeset_test_.nim
-  - cplib/utils/grid_searcher.nim
-  - cplib/utils/grid_searcher.nim
+  - cplib/collections/rangeset.nim
+  - cplib/collections/rangeset.nim
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/convex_hull_trick.nim
   - cplib/collections/avlset.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/rangeset.nim
-  - cplib/collections/rangeset.nim
+  - cplib/utils/grid_searcher.nim
+  - cplib/utils/grid_searcher.nim
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/avltreenode_test.nim
+  - verify/AI/avltreenode_test.nim
+  - verify/AI/grid_searcher_test.nim
+  - verify/AI/grid_searcher_test.nim
+  - verify/AI/rangeset_test.nim
+  - verify/AI/rangeset_test.nim
+  - verify/AI/avlset_test.nim
+  - verify/AI/avlset_test.nim
   - verify/collections/avlset/avlset_empty_string_test.nim
   - verify/collections/avlset/avlset_empty_string_test.nim
   - verify/collections/avlset/set/ordered_set_test.nim
@@ -345,14 +353,6 @@ data:
   - verify/collections/convex_hull_trick_test.nim
   - verify/collections/convex_hull_trick_line_add_get_min_test.nim
   - verify/collections/convex_hull_trick_line_add_get_min_test.nim
-  - verify/AI/rangeset_test.nim
-  - verify/AI/rangeset_test.nim
-  - verify/AI/avltreenode_test.nim
-  - verify/AI/avltreenode_test.nim
-  - verify/AI/avlset_test.nim
-  - verify/AI/avlset_test.nim
-  - verify/AI/grid_searcher_test.nim
-  - verify/AI/grid_searcher_test.nim
 documentation_of: cplib/collections/avltreenode.nim
 layout: document
 redirect_from:

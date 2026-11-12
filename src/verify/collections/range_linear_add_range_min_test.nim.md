@@ -28,11 +28,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_linear_add_range_min
     links:
     - https://judge.yosupo.jp/problem/range_linear_add_range_min
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_linear_add_range_min\n\
     import sequtils\nimport cplib/collections/range_linear_add_range_min\n\nproc scanf(formatstr:\
@@ -42,12 +42,12 @@ data:
     \   let l = ii()\n    let r = ii()\n    if t == 0:\n        let b = ii()\n   \
     \     let c = ii()\n        seg.add(l..<r, b, c)\n    else:\n        echo seg[l..<r]\n"
   dependsOn:
+  - cplib/math/int128.nim
+  - cplib/collections/range_linear_add_range_min.nim
+  - cplib/math/int128.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_linear_add_range_min.nim
-  - cplib/collections/range_linear_add_range_min.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/collections/range_linear_add_range_min_test.nim
   requiredBy: []

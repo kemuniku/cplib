@@ -46,11 +46,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
     links:
     - https://judge.yosupo.jp/problem/range_affine_range_sum
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_range_sum\n\
     import sequtils\nimport cplib/collections/lazysegtree\nimport cplib/modint/modint\n\
@@ -65,18 +65,18 @@ data:
     \    if t == 0:\n        var l, r, b, c = ii()\n        seg.apply(l..<r, (mint(b),\
     \ mint(c)))\n    else:\n        var l, r = ii()\n        echo seg[l..<r][0]\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree.nim
   - cplib/collections/lazysegtree.nim
   - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/utils/backwards_index.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/collections/lazysegtree.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   requiredBy: []

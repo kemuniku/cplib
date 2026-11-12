@@ -56,11 +56,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATRIX_MATRIX_PRODUCT_AVX2:\n    const CPLIB_MATRIX_MATRIX_PRODUCT_AVX2*\
     \ = 1\n\n    when not defined(cpp):\n        {.error: \"matrix_product_avx2 requires\
@@ -247,28 +247,28 @@ data:
     \ = initMatrix(n, k, T.init(0))\n        for i in 0 ..< n:\n            for j\
     \ in 0 ..< k:\n                result[i, j] = T.init(flatC[i * k + j].int)\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/matrix/matrix.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/matrix/field_matrix_ops.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_product_avx2.nim
   requiredBy: []
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix/matrix_product_avx2_unit_test.nim
-  - verify/matrix/matrix_product_avx2_unit_test.nim
   - verify/matrix/matrix_product_avx2_test.nim
   - verify/matrix/matrix_product_avx2_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
+  - verify/matrix/matrix_product_avx2_unit_test.nim
 documentation_of: cplib/matrix/matrix_product_avx2.nim
 layout: document
 redirect_from:

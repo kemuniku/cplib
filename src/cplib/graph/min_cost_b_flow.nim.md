@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_MIN_COST_B_FLOW:\n    const CPLIB_GRAPH_MIN_COST_B_FLOW*\
     \ = 1\n    import heapqueue\n    import cplib/math/int128\n\n    type\n      \
@@ -163,10 +163,10 @@ data:
   timestamp: '2026-10-03 01:29:57+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/min_cost_b_flow_test.nim
-  - verify/graph/min_cost_b_flow_test.nim
   - verify/AI/min_cost_b_flow_test.nim
   - verify/AI/min_cost_b_flow_test.nim
+  - verify/graph/min_cost_b_flow_test.nim
+  - verify/graph/min_cost_b_flow_test.nim
 documentation_of: cplib/graph/min_cost_b_flow.nim
 layout: document
 redirect_from:

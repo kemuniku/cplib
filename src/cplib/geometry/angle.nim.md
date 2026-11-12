@@ -98,11 +98,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_ANGLE:\n    const CPLIB_GEOMETRY_ANGLE*\
     \ = 1\n    import cplib/geometry/base\n    const ANGLE_0* = 0;\n    const ANGLE_0_90*\
@@ -143,29 +143,29 @@ data:
   - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_test.nim
-  - verify/AI/intersect_test.nim
-  - verify/AI/intersect_test.nim
-  - verify/AI/angle_test.nim
-  - verify/AI/angle_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/AI/distance_test.nim
   - verify/AI/distance_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
 documentation_of: cplib/geometry/angle.nim
 layout: document
 redirect_from:

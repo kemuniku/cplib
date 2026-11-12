@@ -86,11 +86,11 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "include cplib/tmpl/fastio\nimport cplib/modint/modint\nimport options\nwhen\
     \ defined(testStaticAvxMatrix):\n    import cplib/matrix/static_matrix_avx2\n\
@@ -140,32 +140,32 @@ data:
     : run[38,38]()\n    else: run[500,500]()\nelse:\n    var a = initMatrix(n,m,Mint(0))\n\
     \    solve(a)\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/math/isqrt.nim
-  - cplib/matrix/static_matrix_avx2.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/static_matrix_avx2.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/judge_driver.nim
   requiredBy: []

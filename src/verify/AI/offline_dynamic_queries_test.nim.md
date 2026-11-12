@@ -34,11 +34,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import random\nimport cplib/utils/offline_dynamic_queries\nimport cplib/collections/rollback_unionfind\n\
@@ -96,14 +96,14 @@ data:
     \ rollback, answer)\n    doAssert answered == expected.len\n    doAssert uf.get_state\
     \ == 0 and uf.count == n\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/collections/rollback_unionfind.nim
   - cplib/utils/private/auto_rollback.nim
-  - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/collections/rollback_unionfind.nim
   - cplib/utils/offline_dynamic_queries.nim
-  - cplib/utils/private/temporary_rollback_log.nim
+  - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/offline_dynamic_queries.nim
+  - cplib/collections/rollback_unionfind.nim
   isVerificationFile: true
   path: verify/AI/offline_dynamic_queries_test.nim
   requiredBy: []

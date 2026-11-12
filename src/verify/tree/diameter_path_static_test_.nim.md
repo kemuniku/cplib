@@ -46,11 +46,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc221/tasks/abc221_f
     links:
     - https://atcoder.jp/contests/abc221/tasks/abc221_f
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc221/tasks/abc221_f\n\
     import sequtils, math\nimport cplib/graph/graph\nimport cplib/tree/diameter\n\
@@ -70,18 +70,18 @@ data:
     \ ch1 = find_leaf(c1, c2, 0)\n    var ch2 = find_leaf(c2, c1, 0)\n    echo (mint(ch1)\
     \ * mint(ch2))\n"
   dependsOn:
-  - cplib/tree/diameter.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/graph/graph.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/graph/graph.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/tree/diameter.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/graph/graph.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tree/diameter.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: verify/tree/diameter_path_static_test_.nim
   requiredBy: []

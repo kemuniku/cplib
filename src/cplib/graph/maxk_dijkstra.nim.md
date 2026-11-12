@@ -80,11 +80,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_MAXK_DIJKSTRA:\n    const CPLIB_GRAPH_MAXK_DIJKSTRA*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
@@ -156,23 +156,23 @@ data:
     \ seq[int], cost: T] =\n        return shortest_path_maxk_dijkstra_impl(G, start,\
     \ goal, k, ZERO, INF)\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/maxk_dijkstra.nim
   requiredBy:
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
   - verify/graph/dynamic/grid_to_graph_abc151d_test_.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
-  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/dynamic/maxk_dijkstra_abc176d_test_.nim
   - verify/graph/static/grid_to_graph_abc151d_test_.nim
   - verify/graph/static/grid_to_graph_abc151d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
+  - verify/graph/static/maxk_dijkstra_abc176d_test_.nim
   - cplib/graph/tsp.nim
   - cplib/graph/tsp.nim
   timestamp: '2026-10-27 08:51:05+09:00'
@@ -180,12 +180,12 @@ data:
   verifiedWith:
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
   - verify/AI/maxk_dijkstra_test.nim
   - verify/AI/maxk_dijkstra_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
 documentation_of: cplib/graph/maxk_dijkstra.nim
 layout: document
 redirect_from:

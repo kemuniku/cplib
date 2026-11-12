@@ -70,35 +70,35 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C\n\
     \nimport strutils\nimport cplib/str/lcs_bitset\n\nfor _ in 0..<stdin.readLine().parseInt():\n\
     \    let s = stdin.readLine()\n    let t = stdin.readLine()\n    echo LCS(s, t)\n"
   dependsOn:
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/str/lcs_bitset.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/str/lcs_bitset.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/str/lcs_bitset.nim
+  - cplib/str/lcs_bitset.nim
   - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_search_impl.nim
   - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/bitset_avx512.nim
   isVerificationFile: true
   path: verify/str/lcs_bitset_test.nim

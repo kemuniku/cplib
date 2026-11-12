@@ -44,11 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_EULER_PHI:\n    const CPLIB_MATH_EULER_PHI*\
     \ = 1\n    import sequtils\n    proc euler_phi*(n: int): int =\n        result\
@@ -69,16 +69,16 @@ data:
   timestamp: '2024-01-07 17:44:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/euler_phi_aoj_test.nim
-  - verify/math/euler_phi_aoj_test.nim
-  - verify/math/euler_phi_list_yukicoder_test.nim
-  - verify/math/euler_phi_list_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/AI/exp_modint_test.nim
-  - verify/AI/exp_modint_test.nim
   - verify/AI/euler_phi_test.nim
   - verify/AI/euler_phi_test.nim
+  - verify/AI/exp_modint_test.nim
+  - verify/AI/exp_modint_test.nim
+  - verify/math/euler_phi_list_yukicoder_test.nim
+  - verify/math/euler_phi_list_yukicoder_test.nim
+  - verify/math/euler_phi_aoj_test.nim
+  - verify/math/euler_phi_aoj_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
 documentation_of: cplib/math/euler_phi.nim
 layout: document
 redirect_from:

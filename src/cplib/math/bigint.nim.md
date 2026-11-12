@@ -104,11 +104,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_BIGINT:\n    const CPLIB_MATH_BIGINT* = 1\n\
     \    import hashes\n    import cplib/convolution/convolution\n\n    type BigInt*\
@@ -706,20 +706,20 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
@@ -728,22 +728,22 @@ data:
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/bigint_parse_unit_test.nim
-  - verify/math/bigint_parse_unit_test.nim
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/bigint_bitops_unit_test.nim
-  - verify/math/crt_test.nim
-  - verify/math/crt_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/addition_of_big_integers_test.nim
-  - verify/math/addition_of_big_integers_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/factoradic_test.nim
   - verify/AI/factoradic_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/bigint_bitops_unit_test.nim
+  - verify/math/crt_test.nim
+  - verify/math/crt_test.nim
 documentation_of: cplib/math/bigint.nim
 layout: document
 redirect_from:

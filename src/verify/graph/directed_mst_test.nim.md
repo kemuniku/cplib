@@ -40,11 +40,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/directedmst
     links:
     - https://judge.yosupo.jp/problem/directedmst
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/directedmst\n\
     import cplib/graph/graph\nimport cplib/graph/directed_mst\nimport options\ninclude\
@@ -56,14 +56,14 @@ data:
     \ parents.join(\" \")\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/directed_mst.nim
-  - cplib/graph/directed_mst.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/graph/graph.nim
+  - cplib/graph/directed_mst.nim
   - cplib/tmpl/fastio.nim
   - cplib/collections/lazy_leftist_heap.nim
+  - cplib/graph/directed_mst.nim
   - cplib/collections/lazy_leftist_heap.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/directed_mst_test.nim

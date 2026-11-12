@@ -74,11 +74,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_LOWLINK:\n    const CPLIB_GRAPH_LOWLINK* =\
     \ 1\n    import cplib/graph/graph\n    import sequtils\n\n    type LowLink* =\
@@ -128,29 +128,29 @@ data:
   isVerificationFile: false
   path: cplib/graph/lowlink.nim
   requiredBy:
-  - cplib/graph/block_cut_tree.nim
-  - cplib/graph/block_cut_tree.nim
-  - cplib/graph/round_square_tree.nim
-  - cplib/graph/round_square_tree.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/two_edge_connected_components.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/biconnected_components.nim
+  - cplib/graph/block_cut_tree.nim
+  - cplib/graph/block_cut_tree.nim
+  - cplib/graph/round_square_tree.nim
+  - cplib/graph/round_square_tree.nim
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/lowlink_articulation_test.nim
-  - verify/graph/lowlink_articulation_test.nim
-  - verify/graph/lowlink_bridges_test.nim
-  - verify/graph/lowlink_bridges_test.nim
-  - verify/graph/biconnected_components_test.nim
-  - verify/graph/biconnected_components_test.nim
-  - verify/graph/two_edge_connected_components_test.nim
-  - verify/graph/two_edge_connected_components_test.nim
-  - verify/AI/round_square_tree_test.nim
-  - verify/AI/round_square_tree_test.nim
   - verify/AI/lowlink_test.nim
   - verify/AI/lowlink_test.nim
+  - verify/AI/round_square_tree_test.nim
+  - verify/AI/round_square_tree_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/lowlink_bridges_test.nim
+  - verify/graph/two_edge_connected_components_test.nim
+  - verify/graph/two_edge_connected_components_test.nim
+  - verify/graph/biconnected_components_test.nim
+  - verify/graph/biconnected_components_test.nim
+  - verify/graph/lowlink_articulation_test.nim
+  - verify/graph/lowlink_articulation_test.nim
 documentation_of: cplib/graph/lowlink.nim
 layout: document
 redirect_from:

@@ -45,11 +45,11 @@ data:
   attributes:
     links:
     - https://www.ics.uci.edu/~eppstein/pubs/Epp-TR-94-26.pdf
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_K_SHORTEST_WALK:\n    const CPLIB_GRAPH_K_SHORTEST_WALK*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
@@ -162,8 +162,8 @@ data:
     \u3081\u308B\u3002\n        G.k_shortest_walk(s, t, k, INF64)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/k_shortest_walk.nim
@@ -171,14 +171,14 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/k_shortest_walk_test.nim
+  - verify/AI/k_shortest_walk_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/dynamic/k_shortest_walk_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
   - verify/graph/static/k_shortest_walk_static_test.nim
-  - verify/AI/k_shortest_walk_test.nim
-  - verify/AI/k_shortest_walk_test.nim
-  - verify/AI/graph_edge_id_test.nim
-  - verify/AI/graph_edge_id_test.nim
 documentation_of: cplib/graph/k_shortest_walk.nim
 layout: document
 redirect_from:

@@ -22,11 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/number_of_substrings
     links:
     - https://judge.yosupo.jp/problem/number_of_substrings
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/number_of_substrings\n\
     include cplib/str/hash_string\n\n{.checks:off.}\nimport algorithm,sequtils,strutils\n\
@@ -35,8 +35,8 @@ data:
     \ 0..<(len(S)-1):\n    sm += LCP(tmp[i],tmp[i+1])\necho len(S)*(len(S)+1) div\
     \ 2 - sm"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/hash_string.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: true

@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_COUNT_SUBARRAYS_WITH_SUM:\n    const CPLIB_UTILS_COUNT_SUBARRAYS_WITH_SUM*\
     \ = 1\n    import tables\n\n    proc count_subarrays_with_sum*[T: SomeInteger](a:\
@@ -74,10 +74,10 @@ data:
   isVerificationFile: false
   path: cplib/utils/count_subarrays_with_sum.nim
   requiredBy:
-  - verify/utils/count_subarrays_with_sum_zero_test_.nim
-  - verify/utils/count_subarrays_with_sum_zero_test_.nim
   - verify/utils/count_subarrays_with_sum_test_.nim
   - verify/utils/count_subarrays_with_sum_test_.nim
+  - verify/utils/count_subarrays_with_sum_zero_test_.nim
+  - verify/utils/count_subarrays_with_sum_zero_test_.nim
   timestamp: '2026-10-05 11:50:12+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

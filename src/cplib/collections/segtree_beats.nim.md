@@ -50,11 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_SEGTREE_BEATS:\n    const CPLIB_COLLECTIONS_SEGTREE_BEATS*\
     \ = 1\n    import cplib/utils/backwards_index\n    import algorithm, sequtils,\
@@ -168,16 +168,16 @@ data:
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/collections/segtree_beats_assignment_test.nim
-  - verify/collections/segtree_beats_assignment_test.nim
-  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/AI/segtree_beats_template_test.nim
   - verify/AI/segtree_beats_template_test.nim
   - verify/AI/segtree_beats_test.nim
   - verify/AI/segtree_beats_test.nim
+  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - verify/collections/segtree_beats_assignment_test.nim
+  - verify/collections/segtree_beats_assignment_test.nim
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/collections/segtree_beats.nim
 layout: document
 redirect_from:

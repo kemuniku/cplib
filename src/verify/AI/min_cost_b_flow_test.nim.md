@@ -22,11 +22,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import cplib/graph/min_cost_b_flow\nimport cplib/math/int128\nimport random\n\n\
@@ -116,10 +116,10 @@ data:
     \ mod 3 == 1:\n        supply[rng.rand(0..<n)] += 1\n        supply[rng.rand(0..<n)]\
     \ -= 1\n    compare(supply, edges)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
+  - cplib/graph/min_cost_b_flow.nim
   - cplib/graph/min_cost_b_flow.nim
   - cplib/math/int128.nim
-  - cplib/graph/min_cost_b_flow.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/min_cost_b_flow_test.nim
   requiredBy: []

@@ -34,11 +34,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc363/tasks/abc363_g
     links:
     - https://atcoder.jp/contests/abc363/tasks/abc363_g
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc363/tasks/abc363_g\n\
     import algorithm\ninclude cplib/tmpl/fastio\nimport cplib/collections/compressed_retroactive_priority_queue\n\
@@ -56,11 +56,11 @@ data:
   dependsOn:
   - cplib/collections/retroactive_priority_queue.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/tmpl/fastio.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
-  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: false
   path: verify/collections/retroactive_priority_queue_abc363g_test_.nim

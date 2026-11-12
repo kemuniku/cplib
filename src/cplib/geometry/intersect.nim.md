@@ -80,11 +80,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_INTERSECT:\n    const CPLIB_GEOMETRY_INTERSECT*\
     \ = 1\n    import cplib/geometry/base\n    import cplib/geometry/ccw\n    import\
@@ -111,12 +111,12 @@ data:
     \ return l1.s\n        var d1 = cross(l1.vector, l2.vector)\n        var d2 =\
     \ cross(l1.vector, l1.t - l2.s)\n        return l2.s + l2.vector * (d2 / d1)\n"
   dependsOn:
-  - cplib/geometry/angle.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/intersect.nim
   requiredBy:
@@ -126,21 +126,21 @@ data:
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - cplib/geometry/distance.nim
   - cplib/geometry/distance.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/AI/intersect_test.nim
-  - verify/AI/intersect_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/AI/distance_test.nim
   - verify/AI/distance_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
 documentation_of: cplib/geometry/intersect.nim
 layout: document
 redirect_from:

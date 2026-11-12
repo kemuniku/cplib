@@ -34,11 +34,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/biconnected_components
     links:
     - https://judge.yosupo.jp/problem/biconnected_components
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/biconnected_components\n\
     import cplib/graph/graph\nimport cplib/graph/biconnected_components\ninclude cplib/tmpl/fastio\n\
@@ -48,13 +48,13 @@ data:
     \ decomposition.groups:\n    print(group.len, *group)\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/graph/lowlink.nim
+  - cplib/tmpl/fastio.nim
   - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: true
   path: verify/graph/biconnected_components_test.nim
   requiredBy: []

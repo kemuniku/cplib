@@ -98,11 +98,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u8907\u6570\u4EE3\u5165\u3092SSA\u5F62\u5F0F\u306B\u76F4\u3057\u3001\u7E70\
     \u308A\u8D8A\u3057\u3092\u6301\u3064\u4E00\u3064\u306E\u8D70\u67FB\u306B\u878D\
@@ -312,35 +312,35 @@ data:
   - cplib/str/edit_distance_bitset.nim
   - cplib/str/lcs_bitset.nim
   - cplib/str/lcs_bitset.nim
-  - cplib/collections/bitset_avx512.nim
-  - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/bitset_avx512.nim
+  - cplib/collections/bitset_avx512.nim
   timestamp: '2026-09-17 21:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_simd_test.nim
-  - verify/utils/backwards_index_simd_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
   - verify/str/lcs_bitset_test.nim
   - verify/str/lcs_bitset_test.nim
   - verify/str/edit_distance_bitset_test.nim
   - verify/str/edit_distance_bitset_test.nim
-  - verify/str/restore_lcs_bitset_test.nim
-  - verify/str/restore_lcs_bitset_test.nim
-  - verify/AI/bitset_avx512_shift_assign_test.nim
-  - verify/AI/bitset_avx512_shift_assign_test.nim
-  - verify/AI/bitset_avx512_prev_set_bit_test.nim
-  - verify/AI/bitset_avx512_prev_set_bit_test.nim
-  - verify/AI/bitset_avx512_fuse_test.nim
-  - verify/AI/bitset_avx512_fuse_test.nim
-  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
-  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
-  - verify/AI/edit_distance_bitset_test.nim
-  - verify/AI/edit_distance_bitset_test.nim
-  - verify/AI/bitset_avx512_fuse_block_test.nim
-  - verify/AI/bitset_avx512_fuse_block_test.nim
   - verify/AI/bitset_avx512_add_test.nim
   - verify/AI/bitset_avx512_add_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
 documentation_of: cplib/collections/private/bitset_avx512_fuse_block.nim
 layout: document
 redirect_from:

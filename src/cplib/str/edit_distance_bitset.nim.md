@@ -74,11 +74,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_EDIT_DISTANCE_BITSET:\n    const CPLIB_STR_EDIT_DISTANCE_BITSET*\
     \ = 1\n\n    import cplib/collections/bitset_avx512\n\n    proc editDistance_bitset*(s,\
@@ -117,23 +117,23 @@ data:
     \ ord(positiveLast) - ord(negativeLast)\n"
   dependsOn:
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
+  - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
+  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
+  - cplib/collections/private/bitset_avx512_shift_assign.nim
+  - cplib/collections/private/bitset_avx512_fuse_shift.nim
   - cplib/collections/private/bitset_search_impl.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_shift_assign.nim
-  - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/bitset_avx512.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/bitset_avx512.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_fuse.nim
   - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/collections/private/bitset_avx512_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/bitset_avx512.nim
   isVerificationFile: false
   path: cplib/str/edit_distance_bitset.nim
   requiredBy: []

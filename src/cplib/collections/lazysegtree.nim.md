@@ -62,11 +62,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_LAZYSEGTREE:\n    const CPLIB_COLLECTIONS_LAZYSEGTREE*\
     \ = 1\n    import cplib/utils/backwards_index\n    import algorithm, sequtils,\
@@ -213,20 +213,20 @@ data:
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
-  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/AI/compressed_lazysegtree_test.nim
+  - verify/AI/compressed_lazysegtree_test.nim
+  - verify/AI/lazysegtree_test.nim
+  - verify/AI/lazysegtree_test.nim
   - verify/collections/lazysegtree/get_all_test.nim
   - verify/collections/lazysegtree/get_all_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/binary_search_test.nim
   - verify/collections/lazysegtree/binary_search_test.nim
-  - verify/AI/compressed_lazysegtree_test.nim
-  - verify/AI/compressed_lazysegtree_test.nim
-  - verify/AI/lazysegtree_test.nim
-  - verify/AI/lazysegtree_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/collections/lazysegtree/rangesetrangecomposite_test.nim
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/collections/lazysegtree.nim
 layout: document
 redirect_from:

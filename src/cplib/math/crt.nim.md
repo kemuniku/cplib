@@ -27,11 +27,11 @@ data:
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_ja/math.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_CRT:\n    const CPLIB_MATH_CRT* = 1\n    import\
     \ cplib/math/inv_gcd\n    import cplib/math/int128\n\n    proc crt*(r, m: openArray[int]):\
@@ -68,9 +68,9 @@ data:
     \            result.m *= factor\n"
   dependsOn:
   - cplib/math/inv_gcd.nim
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   isVerificationFile: false
   path: cplib/math/crt.nim
   requiredBy: []

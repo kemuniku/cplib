@@ -20,11 +20,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u9577\u65B9\u5F62\u3078\u306E\u52A0\u7B97\u5F8C\u3001\u9577\u65B9\u5F62\
     \u5185\u306E\u7DCF\u548C\u3092\u30AA\u30D5\u30E9\u30A4\u30F3\u3067\u6C42\u3081\
@@ -177,10 +177,10 @@ data:
   timestamp: '2026-09-27 22:49:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
-  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
   - verify/AI/static_rectangle_add_rectangle_sum_test.nim
   - verify/AI/static_rectangle_add_rectangle_sum_test.nim
+  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
+  - verify/utils/static_rectangle_add_rectangle_sum_test.nim
 documentation_of: cplib/utils/static_rectangle_add_rectangle_sum.nim
 layout: document
 redirect_from:

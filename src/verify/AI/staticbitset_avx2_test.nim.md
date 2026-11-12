@@ -34,11 +34,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     # AVX2\u5BFE\u5FDC\u306ECPU\u304C\u5FC5\u8981\u3067\u3059\u3002\necho \"Hello\
@@ -123,11 +123,11 @@ data:
     \ '0'\n    assert $bits == expected\nstatic:\n    doAssert not compiles(initBitSet(-1))\n\
     \    doAssert not compiles(initBitSet(64) & initBitSet(65))\n"
   dependsOn:
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx2_impl.nim
-  - cplib/collections/staticbitset_avx2.nim
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/staticbitset_avx2.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/staticbitset_avx2.nim
   - cplib/collections/private/bitset_avx2_impl.nim

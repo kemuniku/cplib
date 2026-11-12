@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_MANHATTAN_MST:\n    const CPLIB_GEOMETRY_MANHATTAN_MST*\
     \ = 1\n    import algorithm\n    import cplib/geometry/base\n    import cplib/collections/unionfind\n\
@@ -114,14 +114,14 @@ data:
     \        for i, p in points:\n            converted[i] = initPoint(p)\n      \
     \  manhattan_mst(converted)\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/manhattan_mst.nim
   requiredBy: []
-  timestamp: '2026-09-30 07:06:44+09:00'
+  timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/manhattan_mst_random_test.nim

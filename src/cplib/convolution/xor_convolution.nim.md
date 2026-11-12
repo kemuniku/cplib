@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_CONVOLUTION_XOR_CONVOLUTION:\n    const CPLIB_CONVOLUTION_XOR_CONVOLUTION*\
     \ = 1\n    import bitops\n    proc FastHadamardTransForm*[T](u:var seq[T])=\n\
@@ -67,12 +67,12 @@ data:
   verifiedWith:
   - verify/set_power_series/set_power_series_regression_test.nim
   - verify/set_power_series/set_power_series_regression_test.nim
-  - verify/convolution/xor_convolution_boundary_test.nim
-  - verify/convolution/xor_convolution_boundary_test.nim
-  - verify/convolution/xor_convolution_test.nim
-  - verify/convolution/xor_convolution_test.nim
   - verify/AI/xor_convolution_test.nim
   - verify/AI/xor_convolution_test.nim
+  - verify/convolution/xor_convolution_test.nim
+  - verify/convolution/xor_convolution_test.nim
+  - verify/convolution/xor_convolution_boundary_test.nim
+  - verify/convolution/xor_convolution_boundary_test.nim
 documentation_of: cplib/convolution/xor_convolution.nim
 layout: document
 redirect_from:

@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_MERGE_TREE:\n    const CPLIB_GRAPH_MERGE_TREE*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/collections/unionfind\n\
@@ -97,10 +97,10 @@ data:
     \u30E9\u30FC\u30C4\u30A2\u30FC\u9806\u3067x\u306F\u4F55\u756A\u76EE\u304B\u3092\
     \u8FD4\u3059\n        self.ret[x]\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
   - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy:

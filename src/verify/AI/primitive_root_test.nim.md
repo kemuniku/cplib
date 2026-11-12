@@ -46,29 +46,29 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\n\nimport algorithm, sequtils\nimport cplib/math/primitive_root\n\
     \nlet g = primitive_root(17)\nvar seen: seq[int]\nvar cur = 1\nfor _ in 0..<16:\n\
     \  seen.add(cur)\n  cur = (cur * g) mod 17\nassert seen.sorted == (1..16).toSeq\n"
   dependsOn:
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
+  - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/primitive_root.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/primitive_root.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/powmod.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primitive_root.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primitive_root.nim
   isVerificationFile: true
   path: verify/AI/primitive_root_test.nim
   requiredBy: []

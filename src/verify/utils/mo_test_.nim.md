@@ -22,11 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc174/tasks/abc174_f
     links:
     - https://atcoder.jp/contests/abc174/tasks/abc174_f
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc174/tasks/abc174_f\n\
     import std/sequtils\nimport std/algorithm\nimport std/strutils\nimport cplib/utils/mo\n\
@@ -39,8 +39,8 @@ data:
     \ == 1:\n        now -= 1\n    count[c[id]] -= 1\n\nproc rem(id: int) =\n    ans[id]\
     \ = now\n\nm.run(addq, addq, delq, delq, rem)\n\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/utils/mo.nim
   - cplib/graph/graph.nim
+  - cplib/utils/mo.nim
   - cplib/utils/mo.nim
   - cplib/graph/graph.nim
   isVerificationFile: false

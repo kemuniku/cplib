@@ -104,11 +104,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_PRIMEFACTOR:\n    const CPLIB_MATH_PRIMEFACTOR*\
     \ = 1\n    import cplib/math/inner_math\n    import cplib/math/isprime\n    import\
@@ -144,35 +144,35 @@ data:
   isVerificationFile: false
   path: cplib/math/primefactor.nim
   requiredBy:
-  - verify/math/factorize_table_abc284d_test_.nim
-  - verify/math/factorize_table_abc284d_test_.nim
   - verify/math/factorize_tuple_abc324b_test_.nim
   - verify/math/factorize_tuple_abc324b_test_.nim
-  - verify/math/divisor_many_atcoder_test_.nim
-  - verify/math/divisor_many_atcoder_test_.nim
   - verify/math/divisor_atcoder_test_.nim
   - verify/math/divisor_atcoder_test_.nim
-  - cplib/math/modfast.nim
-  - cplib/math/modfast.nim
+  - verify/math/divisor_many_atcoder_test_.nim
+  - verify/math/divisor_many_atcoder_test_.nim
+  - verify/math/factorize_table_abc284d_test_.nim
+  - verify/math/factorize_table_abc284d_test_.nim
   - cplib/math/divisor.nim
   - cplib/math/divisor.nim
+  - cplib/math/modfast.nim
+  - cplib/math/modfast.nim
   - cplib/math/primitive_root.nim
   - cplib/math/primitive_root.nim
   timestamp: '2026-09-14 18:23:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/modfast_test.nim
-  - verify/math/modfast_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/euler_phi_yukicoder_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/math/factorize_yosupo_test.nim
-  - verify/AI/primitive_root_test.nim
-  - verify/AI/primitive_root_test.nim
   - verify/AI/divisor_test.nim
   - verify/AI/divisor_test.nim
   - verify/AI/primefactor_test.nim
   - verify/AI/primefactor_test.nim
+  - verify/AI/primitive_root_test.nim
+  - verify/AI/primitive_root_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/factorize_yosupo_test.nim
+  - verify/math/modfast_test.nim
+  - verify/math/modfast_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
+  - verify/math/euler_phi_yukicoder_test.nim
 documentation_of: cplib/math/primefactor.nim
 layout: document
 redirect_from:

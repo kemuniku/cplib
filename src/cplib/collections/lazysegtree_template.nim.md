@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u3088\u304F\u4F7F\u3046\u533A\u9593\u66F4\u65B0\u30FB\u533A\u9593\u53D6\
     \u5F97\u3092static_op\u7248\u306E\u9045\u5EF6\u30BB\u30B0\u6728\u3067\u63D0\u4F9B\
@@ -171,10 +171,10 @@ data:
     \u53D6\u5F97\u7528\u3002\u69CB\u7BC9O(N)\u3001\u64CD\u4F5CO(log N)\u3002\n   \
     \     initRangeSumTree[T, 2](v)\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/lazysegtree_static_op.nim
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/lazysegtree_static_op.nim
   isVerificationFile: false
   path: cplib/collections/lazysegtree_template.nim
   requiredBy: []

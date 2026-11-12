@@ -56,11 +56,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_BINARY_SEARCH:\n    const CPLIB_UTILS_BINARY_SEARCH*\
     \ = 1\n    proc meguru_bisect*(ok, ng: int, is_ok: proc(x: int): bool): int =\n\
@@ -83,10 +83,6 @@ data:
   timestamp: '2026-07-07 06:54:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/binary_search_int_test.nim
-  - verify/utils/binary_search_int_test.nim
-  - verify/utils/binary_search_float_test.nim
-  - verify/utils/binary_search_float_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
@@ -95,6 +91,10 @@ data:
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/AI/binary_search_test.nim
   - verify/AI/binary_search_test.nim
+  - verify/utils/binary_search_int_test.nim
+  - verify/utils/binary_search_int_test.nim
+  - verify/utils/binary_search_float_test.nim
+  - verify/utils/binary_search_float_test.nim
 documentation_of: cplib/utils/binary_search.nim
 layout: document
 redirect_from:

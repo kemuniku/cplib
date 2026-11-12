@@ -74,11 +74,11 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "import cplib/modint/modint\nimport options, random, sequtils\nwhen defined(testStaticMatrix):\n\
     \    import cplib/matrix/static_matrix\nelif defined(testAvxMatrix):\n    import\
@@ -160,28 +160,28 @@ data:
     \ == 1\nelse:\n    let empty = initMatrix(0,3,Mint(0))\n    doAssert (-empty).w\
     \ == 3\n    doAssert empty != initMatrix(0,2,Mint(0))\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/matrix/matrix_avx2.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/modint/modint.nim
-  - cplib/matrix/matrix_avx2_field_impl.nim
-  - cplib/matrix/matrix.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/matrix/static_matrix.nim
-  - cplib/matrix/matrix_avx2_kernel.nim
-  - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2_field_impl.nim
   - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/matrix/matrix_avx2_field_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/matrix/matrix_avx2.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/matrix/matrix.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/matrix/field_matrix_ops.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/matrix/static_matrix.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/matrix_avx2_kernel.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: verify/matrix/linear_algebra/field_algorithms_unit.nim
   requiredBy: []

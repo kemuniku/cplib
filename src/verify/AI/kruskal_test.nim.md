@@ -34,11 +34,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\n\nimport cplib/graph/graph\nimport cplib/graph/kruskal\n\
@@ -50,13 +50,13 @@ data:
     \ costSum == 6\n\nvar disconnected = initWeightedUnDirectedGraph(3)\ndisconnected.add_edge(0,\
     \ 1, 1)\nassert disconnected.get_MST_cost == INF64\n"
   dependsOn:
-  - cplib/graph/kruskal.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
-  - cplib/graph/kruskal.nim
   - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/kruskal.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/graph/kruskal.nim
   - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/AI/kruskal_test.nim

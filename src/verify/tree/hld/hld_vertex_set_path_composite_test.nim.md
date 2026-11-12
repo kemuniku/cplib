@@ -58,11 +58,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
     links:
     - https://judge.yosupo.jp/problem/vertex_set_path_composite
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/vertex_set_path_composite\n\
     import sequtils, strutils, algorithm\nimport cplib/graph/graph\nimport cplib/collections/segtree\n\
@@ -84,22 +84,22 @@ data:
     \ a = op(a, seg.get(l..<r))\n        ans.add((a[0] * x + a[1]).val)\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/graph/graph.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/collections/segtree.nim
-  - cplib/modint/modint.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/math/isqrt.nim
-  - cplib/collections/segtree.nim
   - cplib/modint/modint.nim
+  - cplib/collections/segtree.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/tree/hld/hld_vertex_set_path_composite_test.nim
   requiredBy: []

@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## AVX2\u3067\u8AD6\u7406\u6F14\u7B97\u30FB\u30B7\u30D5\u30C8\u30FB\u30D3\
     \u30C3\u30C8\u6570\u306E\u96C6\u8A08\u3092\u9AD8\u901F\u5316\u3057\u305F\u52D5\
@@ -598,10 +598,10 @@ data:
     \u30C3\u30C8\u305A\u3064\u5224\u5B9A\u3057\u307E\u3059\u3002\n        if x.size\
     \ > 0:\n            result = avxAny(unsafeAddr x.bits[0], x.size.csize_t) != 0\n"
   dependsOn:
-  - cplib/collections/private/bitset_search_impl.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx2_impl.nim
   - cplib/collections/private/bitset_search_impl.nim
+  - cplib/collections/private/bitset_search_impl.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/private/bitset_avx2_impl.nim
   isVerificationFile: false
@@ -610,10 +610,10 @@ data:
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_simd_test.nim
-  - verify/utils/backwards_index_simd_test.nim
   - verify/AI/bitset_avx2_test.nim
   - verify/AI/bitset_avx2_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
 documentation_of: cplib/collections/bitset_avx2.nim
 layout: document
 redirect_from:

@@ -410,6 +410,12 @@ data:
       path: cplib/geometry/ccw.nim
       title: cplib/geometry/ccw.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/geometry/closest_pair.nim
+      title: cplib/geometry/closest_pair.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/geometry/convex_polygon.nim
+      title: cplib/geometry/convex_polygon.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/distance.nim
       title: cplib/geometry/distance.nim
     - icon: ':heavy_check_mark:'
@@ -804,6 +810,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/str/palindromic_tree.nim
       title: cplib/str/palindromic_tree.nim
+    - icon: ':heavy_check_mark:'
+      path: cplib/str/palindromic_tree_table.nim
+      title: cplib/str/palindromic_tree_table.nim
     - icon: ':heavy_check_mark:'
       path: cplib/str/repeated_static_string.nim
       title: cplib/str/repeated_static_string.nim
@@ -1642,6 +1651,9 @@ data:
       path: verify/AI/citrus_test.nim
       title: verify/AI/citrus_test.nim
     - icon: ':heavy_check_mark:'
+      path: verify/AI/closest_pair_test.nim
+      title: verify/AI/closest_pair_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/AI/combination_arbitrary_mod_test.nim
       title: verify/AI/combination_arbitrary_mod_test.nim
     - icon: ':heavy_check_mark:'
@@ -1665,6 +1677,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/constants_test.nim
       title: verify/AI/constants_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/convex_cut_test.nim
+      title: verify/AI/convex_cut_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/convex_hull_regression_test.nim
+      title: verify/AI/convex_hull_regression_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/convex_polygon_test.nim
+      title: verify/AI/convex_polygon_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/convolution_old_test.nim
       title: verify/AI/convolution_old_test.nim
@@ -1836,6 +1857,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/geometry_base_test.nim
       title: verify/AI/geometry_base_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/geometry_comparison_regression_test.nim
+      title: verify/AI/geometry_comparison_regression_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/golden_section_search_test.nim
       title: verify/AI/golden_section_search_test.nim
@@ -2091,6 +2115,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/AI/planar_graph_test.nim
       title: verify/AI/planar_graph_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/AI/polygon_boundary_degenerate_test.nim
+      title: verify/AI/polygon_boundary_degenerate_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/AI/polygon_test.nim
       title: verify/AI/polygon_test.nim
@@ -2853,19 +2880,39 @@ data:
   - name: verify/geometry/CGL_4
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+      title: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
       title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+      title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - name: verify/geometry/CGL_5
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+      title: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
   - name: verify/geometry
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/geometry/closest_pair_test.nim
+      title: verify/geometry/closest_pair_test.nim
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/euclidean_mst_test.nim
       title: verify/geometry/euclidean_mst_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/furthest_pair_test.nim
+      title: verify/geometry/furthest_pair_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/geometry/manhattan_mst_random_test.nim
       title: verify/geometry/manhattan_mst_random_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/geometry/manhattan_mst_test.nim
       title: verify/geometry/manhattan_mst_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/static_convex_hull_test.nim
+      title: verify/geometry/static_convex_hull_test.nim
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -3370,6 +3417,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/str/manacher_test.nim
       title: verify/str/manacher_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/palindromic_tree_append_test.nim
+      title: verify/str/palindromic_tree_append_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/palindromic_tree_eertree_test.nim
+      title: verify/str/palindromic_tree_eertree_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/palindromic_tree_series_link_test.nim
+      title: verify/str/palindromic_tree_series_link_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/str/palindromic_tree_table_test.nim
+      title: verify/str/palindromic_tree_table_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/str/palindromic_tree_test.nim
       title: verify/str/palindromic_tree_test.nim

@@ -64,11 +64,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_multiplicative_function
     links:
     - https://judge.yosupo.jp/problem/sum_of_multiplicative_function
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/sum_of_multiplicative_function\n\
     include cplib/tmpl/sheep\nimport cplib/modint/modint\nimport cplib/math/multiplicative_prefix_sum\n\
@@ -77,24 +77,24 @@ data:
     \    let answer = multiplicativePrefixSum(n, @[a, b],\n        proc(p, e: int):\
     \ Mint = a * e + b * p)\n    print answer\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
-  - cplib/utils/constants.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/multiplicative_prefix_sum.nim
-  - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/tmpl/sheep.nim
   - cplib/math/isprime.nim
+  - cplib/utils/constants.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/math/multiplicative_prefix_sum.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   isVerificationFile: true
   path: verify/math/sum_of_multiplicative_function_test.nim
   requiredBy: []

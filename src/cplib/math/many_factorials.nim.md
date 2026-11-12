@@ -98,11 +98,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_MANY_FACTORIALS:\n    const CPLIB_MATH_MANY_FACTORIALS*\
     \ = 1\n\n    import algorithm\n    import cplib/fps/formal_power_series\n    import\
@@ -202,42 +202,42 @@ data:
     \            if 2 * width < blockSize:\n                polynomial = polynomial\
     \ * taylorShift(polynomial, init(T, width))\n            width *= 2\n"
   dependsOn:
-  - cplib/modint/modint.nim
   - cplib/fps/formal_power_series.nim
   - cplib/fps/product_tree.nim
-  - cplib/fps/formal_power_series.nim
   - cplib/math/isprime.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/modint.nim
   - cplib/fps/taylor_shift.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/algorithm_ntt.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/math/inv_gcd.nim
   - cplib/fps/product_tree.nim
+  - cplib/fps/taylor_shift.nim
   isVerificationFile: false
   path: cplib/math/many_factorials.nim
   requiredBy: []
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/many_factorials_test.nim
-  - verify/math/many_factorials_test.nim
-  - verify/math/many_factorials_online_test.nim
-  - verify/math/many_factorials_online_test.nim
   - verify/AI/many_factorials_test.nim
   - verify/AI/many_factorials_test.nim
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_online_test.nim
+  - verify/math/many_factorials_test.nim
+  - verify/math/many_factorials_test.nim
 documentation_of: cplib/math/many_factorials.nim
 layout: document
 redirect_from:

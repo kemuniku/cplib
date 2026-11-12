@@ -212,11 +212,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_SUFFIX_ARRAY:\n    const CPLIB_STR_SUFFIX_ARRAY*\
     \ = 1\n\n    import algorithm\n\n    # \u516C\u958B API \u3067\u524D\u63D0\u6761\
@@ -355,73 +355,73 @@ data:
   - verify/str/static_string/static_string_count_test_.nim
   - verify/str/merged_static_string.nim
   - verify/str/merged_static_string.nim
-  - cplib/str/static_string_search.nim
-  - cplib/str/static_string_search.nim
   - cplib/str/static_string.nim
   - cplib/str/static_string.nim
-  - cplib/str/edit_distance.nim
-  - cplib/str/edit_distance.nim
-  - cplib/str/repeated_static_string.nim
-  - cplib/str/repeated_static_string.nim
   - cplib/str/merged_static_string.nim
   - cplib/str/merged_static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/repeated_static_string.nim
+  - cplib/str/repeated_static_string.nim
   - cplib/str/compressed_trie.nim
   - cplib/str/compressed_trie.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/edit_distance.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/static_string_search.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/fixedlength_merged_static_string.nim
   timestamp: '2026-09-17 19:04:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/utils/backwards_index_collections_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_SA_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_LCS_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_lcp_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_initSA_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_zalgo_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/static_string/static_string_LCS_useSA_test.nim
+  - verify/str/hash_string/hash_string_LCS_test.nim
+  - verify/str/hash_string/hash_string_LCS_test.nim
+  - verify/str/suffix_array_test.nim
+  - verify/str/suffix_array_test.nim
   - verify/str/edit_distance_test.nim
   - verify/str/edit_distance_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_initSA_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_initSA_fromstatic_string_test.nim
-  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
-  - verify/str/static_string/static_string_LCS_sortStaticStrings_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/static_string/static_string_LCS_useSA_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_LCS_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_SA_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_lcp_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/static_string/static_string_zalgo_test.nim
-  - verify/str/suffix_array_test.nim
-  - verify/str/suffix_array_test.nim
-  - verify/str/hash_string/hash_string_LCS_test.nim
-  - verify/str/hash_string/hash_string_LCS_test.nim
-  - verify/AI/edit_distance_test.nim
-  - verify/AI/edit_distance_test.nim
   - verify/AI/static_string_search_test.nim
   - verify/AI/static_string_search_test.nim
-  - verify/AI/merged_static_string_test.nim
-  - verify/AI/merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
-  - verify/AI/fixedlength_merged_static_string_test.nim
-  - verify/AI/static_string_specialization_test.nim
-  - verify/AI/static_string_specialization_test.nim
-  - verify/AI/static_string_sort_test.nim
-  - verify/AI/static_string_sort_test.nim
-  - verify/AI/static_string_test.nim
-  - verify/AI/static_string_test.nim
-  - verify/AI/suffix_automaton_table_test.nim
-  - verify/AI/suffix_automaton_table_test.nim
-  - verify/AI/suffix_automaton_array_test.nim
-  - verify/AI/suffix_automaton_array_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/compressed_trie_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
+  - verify/AI/static_string_sort_test.nim
+  - verify/AI/static_string_sort_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/merged_static_string_test.nim
+  - verify/AI/suffix_automaton_array_test.nim
+  - verify/AI/suffix_automaton_array_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/AI/fixedlength_merged_static_string_test.nim
+  - verify/AI/static_string_test.nim
+  - verify/AI/static_string_test.nim
+  - verify/AI/edit_distance_test.nim
+  - verify/AI/edit_distance_test.nim
+  - verify/AI/static_string_specialization_test.nim
+  - verify/AI/static_string_specialization_test.nim
+  - verify/AI/suffix_automaton_table_test.nim
+  - verify/AI/suffix_automaton_table_test.nim
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/str/suffix_array.nim
 layout: document
 redirect_from:

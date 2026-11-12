@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u30C7\u30D0\u30C3\u30B0: debugOperations()\u306F\u64CD\u4F5C\u4E00\u89A7\
     \u3001debugTimeline()\u306F\u518D\u5B9F\u884C\u3057\u305Fpop\u7D50\u679C\u4ED8\
@@ -129,18 +129,18 @@ data:
   dependsOn:
   - cplib/collections/retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
   isVerificationFile: false
   path: cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
   requiredBy: []
   timestamp: '2026-09-28 01:13:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/retroactive_priority_queue_debug_test.nim
-  - verify/collections/retroactive_priority_queue_debug_test.nim
   - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
   - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
+  - verify/collections/retroactive_priority_queue_debug_test.nim
+  - verify/collections/retroactive_priority_queue_debug_test.nim
 documentation_of: cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
 layout: document
 redirect_from:

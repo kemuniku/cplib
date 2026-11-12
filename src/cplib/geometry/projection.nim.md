@@ -44,11 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_PROJECTION:\n    const CPLIB_GEOMETRY_PROJECTION*\
     \ = 1\n    import cplib/geometry/base\n    proc projection*[T](l: Line[T], p:\
@@ -63,17 +63,17 @@ data:
   isVerificationFile: false
   path: cplib/geometry/projection.nim
   requiredBy: []
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
   - verify/AI/projection_test.nim
   - verify/AI/projection_test.nim
 documentation_of: cplib/geometry/projection.nim

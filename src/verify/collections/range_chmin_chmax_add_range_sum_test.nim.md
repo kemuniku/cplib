@@ -34,11 +34,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum
     links:
     - https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum\n\
     import sequtils\nimport cplib/collections/segtree_beats_template\n\nproc scanf(formatstr:\
@@ -50,13 +50,13 @@ data:
     \ t == 2:\n        var l, r, b = ii()\n        seg.add(l..<r, b)\n    else:\n\
     \        var l, r = ii()\n        echo seg[l..<r].sum\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats_template.nim
   - cplib/utils/constants.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats_template.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_beats_template.nim
+  - cplib/utils/constants.nim
   - cplib/collections/segtree_beats.nim
   isVerificationFile: true
   path: verify/collections/range_chmin_chmax_add_range_sum_test.nim

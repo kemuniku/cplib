@@ -50,11 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_CONVOLUTION_MIN_PLUS_CONVOLUTION:\n    ## c[k] =\
     \ min(a[i] + b[j] | i+j=k) \u3092\u8FD4\u3059\u3002\u7247\u65B9\u304C\u7A7A\u306A\
@@ -182,9 +182,9 @@ data:
     \ h)\n        var indices = newSeq[int](h)\n        concaveDivide(a, b, 0, h,\
     \ 0, b.len, result, columns, indices)\n"
   dependsOn:
+  - cplib/utils/monotone_minima.nim
+  - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
-  - cplib/utils/monotone_minima.nim
-  - cplib/utils/monotone_minima.nim
   - cplib/utils/smawk.nim
   isVerificationFile: false
   path: cplib/convolution/min_plus_convolution.nim
@@ -192,16 +192,16 @@ data:
   timestamp: '2026-09-14 23:21:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-  - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
-  - verify/convolution/min_plus_convolution_convex_convex_test.nim
-  - verify/convolution/min_plus_convolution_convex_convex_test.nim
   - verify/AI/min_plus_convolution_test.nim
   - verify/AI/min_plus_convolution_test.nim
+  - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
+  - verify/convolution/min_plus_convolution_concave_arbitrary_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_monotone_minima_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
+  - verify/convolution/min_plus_convolution_convex_arbitrary_smawk_test.nim
+  - verify/convolution/min_plus_convolution_convex_convex_test.nim
+  - verify/convolution/min_plus_convolution_convex_convex_test.nim
 documentation_of: cplib/convolution/min_plus_convolution.nim
 layout: document
 redirect_from:

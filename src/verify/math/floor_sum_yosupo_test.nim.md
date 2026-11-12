@@ -22,21 +22,21 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_floor_of_linear
     links:
     - https://judge.yosupo.jp/problem/sum_of_floor_of_linear
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/sum_of_floor_of_linear\n\
     import cplib/math/floor_sum\nimport strutils\n\nlet t = stdin.readLine.parseInt\n\
     for _ in 0..<t:\n    let query = stdin.readLine.splitWhitespace\n    echo floor_sum(query[0].parseInt,\
     \ query[1].parseInt,\n                   query[2].parseInt, query[3].parseInt)\n"
   dependsOn:
-  - cplib/math/floor_sum.nim
+  - cplib/math/int128.nim
   - cplib/math/floor_sum.nim
   - cplib/math/int128.nim
-  - cplib/math/int128.nim
+  - cplib/math/floor_sum.nim
   isVerificationFile: true
   path: verify/math/floor_sum_yosupo_test.nim
   requiredBy: []

@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_CYCLE_DETECTION:\n    const CPLIB_GRAPH_CYCLE_DETECTION*\
     \ = 1\n    import cplib/graph/graph\n    import sequtils\n\n    proc restore_cycle_vertices*(g:\
@@ -96,12 +96,12 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/cycle_detection_undirected_test.nim
-  - verify/graph/cycle_detection_undirected_test.nim
-  - verify/graph/cycle_detection_test.nim
-  - verify/graph/cycle_detection_test.nim
   - verify/AI/cycle_detection_test.nim
   - verify/AI/cycle_detection_test.nim
+  - verify/graph/cycle_detection_test.nim
+  - verify/graph/cycle_detection_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/cycle_detection_undirected_test.nim
 documentation_of: cplib/graph/cycle_detection.nim
 layout: document
 redirect_from:

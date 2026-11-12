@@ -62,11 +62,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_CONVOLUTION_CONVOLUTION:\n    const CPLIB_CONVOLUTION_CONVOLUTION*\
     \ = 1\n    import bitops, sequtils, std/math\n    import cplib/modint/modint\n\
@@ -111,30 +111,30 @@ data:
     \ 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n            ans[i]\
     \ = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/ntt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isqrt.nim
   - cplib/convolution/ntt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/convolution/convolution_old.nim
   requiredBy: []
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/convolution_old_test.nim
+  - verify/AI/convolution_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_montgomery_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
   - verify/convolution/convolution/convolution_dynamic_barrett_old_test.nim
-  - verify/AI/convolution_old_test.nim
-  - verify/AI/convolution_old_test.nim
 documentation_of: cplib/convolution/convolution_old.nim
 layout: document
 redirect_from:

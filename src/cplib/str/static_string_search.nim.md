@@ -50,11 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_STATIC_STRING_SEARCH:\n    const CPLIB_STR_STATIC_STRING_SEARCH*\
     \ = 1\n    import tables\n    import cplib/str/static_string\n    import cplib/collections/staticRMQ\n\
@@ -209,18 +209,18 @@ data:
     \u3001\u8FFD\u52A0\u7A7A\u9593\u306F O(1)\u3002\n        for position in target.search.findAll(target.target,\
     \ pattern):\n            yield position\n"
   dependsOn:
+  - cplib/collections/waveletmatrix.nim
   - cplib/str/static_string.nim
-  - cplib/collections/staticRMQ.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/bitvector.nim
   - cplib/collections/staticRMQ.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/suffix_array.nim
+  - cplib/collections/staticRMQ.nim
   - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/collections/waveletmatrix.nim
   isVerificationFile: false
   path: cplib/str/static_string_search.nim
   requiredBy: []

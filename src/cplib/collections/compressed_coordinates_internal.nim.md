@@ -62,11 +62,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_COMPRESSED_COORDINATES_INTERNAL:\n  \
     \  const CPLIB_COLLECTIONS_COMPRESSED_COORDINATES_INTERNAL = 1\n    import algorithm\n\
@@ -127,25 +127,25 @@ data:
   requiredBy:
   - verify/collections/retroactive_priority_queue_abc363g_test_.nim
   - verify/collections/retroactive_priority_queue_abc363g_test_.nim
-  - cplib/collections/compressed_lazysegtree.nim
-  - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_lazysegtree.nim
+  - cplib/collections/compressed_lazysegtree.nim
   - cplib/collections/compressed_segtree.nim
   - cplib/collections/compressed_segtree.nim
   timestamp: '2026-09-17 19:00:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/compressed_lazysegtree_test.nim
+  - verify/AI/compressed_lazysegtree_test.nim
+  - verify/AI/compressed_segtree_test.nim
+  - verify/AI/compressed_segtree_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
   - verify/collections/retroactive_priority_queue_test.nim
   - verify/collections/retroactive_priority_queue_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
   - verify/collections/retroactive_priority_queue_debug_test.nim
-  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
-  - verify/collections/retroactive_priority_queue_popped_sum_test.nim
-  - verify/AI/compressed_segtree_test.nim
-  - verify/AI/compressed_segtree_test.nim
-  - verify/AI/compressed_lazysegtree_test.nim
-  - verify/AI/compressed_lazysegtree_test.nim
 documentation_of: cplib/collections/compressed_coordinates_internal.nim
 layout: document
 redirect_from:

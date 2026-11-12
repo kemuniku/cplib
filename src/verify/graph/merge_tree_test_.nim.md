@@ -34,11 +34,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc183/tasks/abc183_f
     links:
     - https://atcoder.jp/contests/abc183/tasks/abc183_f
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc183/tasks/abc183_f\n\
     proc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
@@ -50,14 +50,14 @@ data:
     for i in 0..<(Q):\n    var (t,x,y) = querys[i]\n    if t == 1:\n        MT.unite(x-1,y-1)\n\
     \    else:\n        echo SRC.count(MT.get_range(x-1),y)"
   dependsOn:
-  - cplib/collections/unionfind.nim
+  - cplib/graph/merge_tree.nim
   - cplib/graph/graph.nim
-  - cplib/graph/merge_tree.nim
-  - cplib/graph/merge_tree.nim
   - cplib/collections/unionfind.nim
+  - cplib/graph/merge_tree.nim
   - cplib/collections/staticrangecount.nim
   - cplib/graph/graph.nim
   - cplib/collections/staticrangecount.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: verify/graph/merge_tree_test_.nim
   requiredBy: []

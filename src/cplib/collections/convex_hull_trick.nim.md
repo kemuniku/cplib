@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_CONVEX_HULL_TRICK:\n    const CPLIB_COLLECTIONS_CONVEX_HULL_TRICK*\
     \ = 1\n    import cplib/math/int128\n    import cplib/collections/avltreenode\n\
@@ -82,12 +82,12 @@ data:
     \      node = node.r\n            else:\n                node = node.l\n     \
     \   chtAnswer(chtValue(best.key, x))\n"
   dependsOn:
-  - cplib/collections/avltreenode.nim
-  - cplib/math/int128.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/private/convex_hull_trick_impl.nim
   - cplib/math/int128.nim
   - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/math/int128.nim
+  - cplib/collections/private/convex_hull_trick_impl.nim
+  - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: cplib/collections/convex_hull_trick.nim
   requiredBy: []

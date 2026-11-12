@@ -44,11 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATRIX_STATIC_MATRIX:\n    const CPLIB_MATRIX_STATIC_MATRIX*\
     \ = 1\n    import sequtils, hashes\n    type StaticMatrix*[H: static int, W: static\
@@ -204,19 +204,19 @@ data:
   isVerificationFile: false
   path: cplib/matrix/static_matrix.nim
   requiredBy:
-  - verify/matrix/linear_algebra/judge_driver.nim
-  - verify/matrix/linear_algebra/judge_driver.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
   - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
   timestamp: '2026-09-18 01:13:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix/static_string/static_matrix_zoistring_test.nim
-  - verify/matrix/static_string/static_matrix_zoistring_test.nim
-  - verify/matrix/static_string/static_matrix_unit_test.nim
-  - verify/matrix/static_string/static_matrix_unit_test.nim
   - verify/AI/static_matrix_test.nim
   - verify/AI/static_matrix_test.nim
+  - verify/matrix/static_string/static_matrix_unit_test.nim
+  - verify/matrix/static_string/static_matrix_unit_test.nim
+  - verify/matrix/static_string/static_matrix_zoistring_test.nim
+  - verify/matrix/static_string/static_matrix_zoistring_test.nim
 documentation_of: cplib/matrix/static_matrix.nim
 layout: document
 redirect_from:

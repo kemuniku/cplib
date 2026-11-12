@@ -28,11 +28,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/cycle_detection_undirected
     links:
     - https://judge.yosupo.jp/problem/cycle_detection_undirected
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/cycle_detection_undirected\n\
     import strutils\nimport cplib/graph/graph\nimport cplib/graph/cycle_detection\n\
@@ -44,9 +44,9 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/cycle_detection.nim
+  - cplib/graph/cycle_detection.nim
   - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/cycle_detection.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/graph/cycle_detection_undirected_test.nim

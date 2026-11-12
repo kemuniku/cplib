@@ -45,11 +45,11 @@ data:
   attributes:
     links:
     - https://kanpurin.hatenablog.com/entry/2023/02/20/184752
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_RANDOMHELPER:\n    const CPLIB_UTILS_RANDOMHELPER*\
     \ = 1\n    import random,sequtils,sets,algorithm,math,strutils\n    import cplib/graph/graph\n\
@@ -233,10 +233,10 @@ data:
   - cplib/math/isprime.nim
   - cplib/graph/planar_graph.nim
   - cplib/tree/prufer.nim
-  - cplib/math/isprime.nim
-  - cplib/graph/graph.nim
-  - cplib/tree/prufer.nim
   - cplib/graph/planar_graph.nim
+  - cplib/graph/graph.nim
+  - cplib/math/isprime.nim
+  - cplib/tree/prufer.nim
   isVerificationFile: false
   path: cplib/utils/random_helper.nim
   requiredBy: []

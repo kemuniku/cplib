@@ -22,11 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
     - https://judge.yosupo.jp/problem/point_set_range_composite
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/point_set_range_composite\n\
     import sequtils\nimport cplib/collections/segtree\n\nproc scanf(formatstr: cstring){.header:\
@@ -38,10 +38,10 @@ data:
     \ (c, d))\n    else:\n        var l, r, x = ii()\n        var (a, b) = st.get(l,\
     \ r)\n        echo (a*x mod MOD + b) mod MOD\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/segtree/segtree_PSRC_test.nim
   requiredBy: []

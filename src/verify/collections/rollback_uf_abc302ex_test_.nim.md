@@ -22,11 +22,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc302/tasks/abc302_ex
     links:
     - https://atcoder.jp/contests/abc302/tasks/abc302_ex
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc302/tasks/abc302_ex\n\
     import sequtils, strutils\nimport cplib/graph/graph\nimport cplib/collections/rollback_unionfind\n\
@@ -49,10 +49,10 @@ data:
     \ min(e, s)\n        es[uf.root(a)] = (e-1, s)\n        cur += min(e-1, s)\ndfs(0,\
     \ -1)\necho ans.join(\" \")\n"
   dependsOn:
-  - cplib/collections/rollback_unionfind.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/collections/rollback_unionfind.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/rollback_unionfind.nim
   isVerificationFile: false
   path: verify/collections/rollback_uf_abc302ex_test_.nim
   requiredBy: []

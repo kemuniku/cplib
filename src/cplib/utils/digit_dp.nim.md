@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_DIGIT_DP:\n    const CPLIB_UTILS_DIGIT_DP*\
     \ = 1\n\n    import algorithm, options, tables\n\n    type\n        DigitDpTransition*[S]\
@@ -258,12 +258,12 @@ data:
   timestamp: '2026-10-08 10:15:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/utils/digit_dp_initial_state_test.nim
+  - verify/utils/digit_dp_initial_state_test.nim
   - verify/utils/digit_dp_callbacks_test.nim
   - verify/utils/digit_dp_callbacks_test.nim
   - verify/utils/digit_dp_test.nim
   - verify/utils/digit_dp_test.nim
-  - verify/utils/digit_dp_initial_state_test.nim
-  - verify/utils/digit_dp_initial_state_test.nim
 documentation_of: cplib/utils/digit_dp.nim
 layout: document
 redirect_from:

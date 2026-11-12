@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_COMPRESSED_LAZYSEGTREE:\n    const CPLIB_COLLECTIONS_COMPRESSED_LAZYSEGTREE*\
     \ = 1\n    import algorithm, bitops\n    import cplib/collections/lazysegtree\n\
@@ -287,12 +287,12 @@ data:
     \ default, mapping, composition, id,\n            (proc(x: typeof(coords[0])):\
     \ typeof(default))(nil))\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/lazysegtree.nim
   - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/compressed_lazysegtree.nim
   requiredBy: []

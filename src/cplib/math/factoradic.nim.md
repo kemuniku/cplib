@@ -68,11 +68,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u7B26\u53F7\u4ED8\u304D\u968E\u4E57\u9032\u6570\u3002digits[i] \u306F\
     \u7D76\u5BFE\u5024\u306E i! \u306E\u4FC2\u6570\u3067\u30010 <= digits[i] <= i\u3002\
@@ -522,22 +522,22 @@ data:
     \ = next\n                width = width shr 1\n            result[i] = value\n\
     \            counts.removeFactoradicValue(value)\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/bigint.nim
   - cplib/math/isprime.nim
-  - cplib/modint/modint.nim
-  - cplib/math/bigint.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
-  - cplib/math/bigint.nim
   - cplib/convolution/convolution.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/bigint.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: false
   path: cplib/math/factoradic.nim
   requiredBy: []

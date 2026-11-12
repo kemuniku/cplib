@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## --mm:arc\u63A8\u5968\u304B\u3082\u3002\nwhen not declared CPLIB_COLLECTIONS_PERSISTENT_BINARY_TRIE:\n\
     \    const CPLIB_COLLECTIONS_PERSISTENT_BINARY_TRIE* = 1\n    type PersistentBinaryTrieNode\
@@ -118,12 +118,12 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/persistent_binary_trie_test.nim
-  - verify/collections/persistent_binary_trie_test.nim
-  - verify/collections/persistnt_binary_trie_unionfind_test.nim
-  - verify/collections/persistnt_binary_trie_unionfind_test.nim
   - verify/AI/persistent_binary_trie_test.nim
   - verify/AI/persistent_binary_trie_test.nim
+  - verify/collections/persistnt_binary_trie_unionfind_test.nim
+  - verify/collections/persistnt_binary_trie_unionfind_test.nim
+  - verify/collections/persistent_binary_trie_test.nim
+  - verify/collections/persistent_binary_trie_test.nim
 documentation_of: cplib/collections/persistent_binary_trie.nim
 layout: document
 redirect_from:

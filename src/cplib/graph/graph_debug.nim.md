@@ -24,11 +24,11 @@ data:
     - https://hello-world-494ec.firebaseapp.com/?format=normal&indexed={indexed}&weighted=false&directed=true&data={len(G)}+{M}
     - https://hello-world-494ec.firebaseapp.com/?format=normal&indexed={indexed}&weighted=true&directed=false&data={len(G)}+{M}
     - https://hello-world-494ec.firebaseapp.com/?format=normal&indexed={indexed}&weighted=true&directed=true&data={len(G)}+{M}
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_GRAPHDEBUG:\n    const CPLIB_GRAPH_GRAPHDEBUG*\
     \ = 1\n    import strformat\n    import cplib/graph/graph\n    proc dump_graph*(G:\

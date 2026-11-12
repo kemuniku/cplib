@@ -46,11 +46,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/past202004-open/tasks/past202004_o
     links:
     - https://atcoder.jp/contests/past202004-open/tasks/past202004_o
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/past202004-open/tasks/past202004_o\n\
     import sequtils, tables, strutils, heapqueue, hashes\nimport cplib/graph/graph\n\
@@ -73,17 +73,17 @@ data:
     \ false): mx = max(mx, seg.get(l..<r))\n    ans[i] = ai - mx + c\necho ans.join(\"\
     \\n\")\n"
   dependsOn:
+  - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/unionfind.nim
-  - cplib/graph/graph.nim
+  - cplib/collections/segtree.nim
   - cplib/utils/constants.nim
-  - cplib/collections/segtree.nim
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/unionfind.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: verify/tree/hld/hld_past202004o_test_.nim

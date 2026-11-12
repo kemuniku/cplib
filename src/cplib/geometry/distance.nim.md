@@ -50,11 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_DISTANCE:\n    const CPLIB_GEOMETRY_DISTANCE*\
     \ = 1\n    import math\n    import cplib/geometry/base\n    import cplib/geometry/intersect\n\
@@ -86,20 +86,20 @@ data:
     \ manhattan*[T](p1, p2: Point[T]): T =\n        ##2\u70B9 p1, p2 \u306E\u30DE\u30F3\
     \u30CF\u30C3\u30BF\u30F3\u8DDD\u96E2\n        manhattan(p1 - p2)\n"
   dependsOn:
-  - cplib/geometry/angle.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/base.nim
   isVerificationFile: false
   path: cplib/geometry/distance.nim
   requiredBy:
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/CGL_2/distance_cgl2d_test.nim

@@ -34,11 +34,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc266/tasks/abc266_f
     links:
     - https://atcoder.jp/contests/abc266/tasks/abc266_f
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc266/tasks/abc266_f\n\
     proc scanf(formatstr: cstring){.header: \"<stdio.h>\", varargs.}\nproc ii(): int\
@@ -49,13 +49,13 @@ data:
     \ 0..<Q:\n    var x,y = ii()-1\n    var (_,a) = namori.dist(x,y)\n    if a ==\
     \ INF64:\n        echo \"Yes\"\n    else:\n        echo \"No\"\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
   - cplib/graph/namori_graph.nim
   - cplib/graph/graph.nim
+  - cplib/graph/namori_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/utils/constants.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/namori_graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: verify/graph/namori_graph_test_.nim

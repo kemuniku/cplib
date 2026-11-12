@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_ROUND_SQUARE_TREE:\n    const CPLIB_GRAPH_ROUND_SQUARE_TREE*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/graph/biconnected_components\n\
@@ -58,10 +58,10 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/biconnected_components.nim
   - cplib/graph/graph.nim
   - cplib/graph/biconnected_components.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: false
   path: cplib/graph/round_square_tree.nim
   requiredBy: []

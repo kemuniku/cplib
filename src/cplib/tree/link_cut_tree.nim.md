@@ -50,11 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TREE_LINK_CUT_TREE:\n    const CPLIB_TREE_LINK_CUT_TREE*\
     \ = 1\n    import sequtils\n    import cplib/tree/private/link_cut_tree_base\n\
@@ -127,24 +127,24 @@ data:
   dependsOn:
   - cplib/tree/private/link_cut_tree_base.nim
   - cplib/utils/backwards_index.nim
-  - cplib/tree/private/link_cut_tree_base.nim
   - cplib/utils/backwards_index.nim
+  - cplib/tree/private/link_cut_tree_base.nim
   isVerificationFile: false
   path: cplib/tree/link_cut_tree.nim
   requiredBy: []
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/utils/backwards_index_collections_test.nim
+  - verify/tree/link_cut_tree/link_cut_tree_test.nim
+  - verify/tree/link_cut_tree/link_cut_tree_test.nim
   - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
   - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
   - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
   - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
-  - verify/tree/link_cut_tree/link_cut_tree_test.nim
-  - verify/tree/link_cut_tree/link_cut_tree_test.nim
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/tree/link_cut_tree.nim
 layout: document
 redirect_from:

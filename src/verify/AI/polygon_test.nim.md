@@ -34,11 +34,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     echo \"Hello World\"\n\nimport sequtils\nimport cplib/geometry/base\nimport cplib/geometry/polygon\n\
@@ -55,18 +55,18 @@ data:
     \ initPoint(1, 1), initPoint(0, 1), initPoint(1, 0)])\nassert hull.len == 4\n\
     assert hull.area.abs == 2\n"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/polygon.nim
   - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/polygon_test.nim
   requiredBy: []
-  timestamp: '2026-10-01 02:25:40+09:00'
+  timestamp: '2026-11-13 04:20:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/polygon_test.nim

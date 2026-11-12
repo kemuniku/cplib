@@ -34,11 +34,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/rational_approximation
     links:
     - https://judge.yosupo.jp/problem/rational_approximation
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/rational_approximation\n\
     import cplib/math/stern_brocot_tree\ninclude cplib/tmpl/fastio\n\nlet t = input(int)\n\
@@ -47,12 +47,12 @@ data:
     \        print(bounds.p, bounds.q, bounds.p, bounds.q)\n    else:\n        print(bounds.p,\
     \ bounds.q, bounds.r, bounds.s)\n"
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/graph/graph.nim
   - cplib/graph/graph.nim
   - cplib/math/fractions.nim
-  - cplib/math/stern_brocot_tree.nim
-  - cplib/graph/graph.nim
   - cplib/tmpl/fastio.nim
+  - cplib/math/stern_brocot_tree.nim
+  - cplib/math/fractions.nim
   - cplib/math/stern_brocot_tree.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true

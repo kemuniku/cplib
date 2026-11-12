@@ -20,11 +20,11 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_COMBINATION_INT:\n    const CPLIB_MATH_COMBINATION_INT*\
     \ = 1\n\n    import cplib/math/int128\n    import cplib/utils/constants\n\n  \
@@ -39,9 +39,9 @@ data:
     \ 1..rr:\n            res = res*(n-rr+i) div i\n            if res >= limit128:\n\
     \                return limit\n        return res.to_int\n"
   dependsOn:
+  - cplib/math/int128.nim
+  - cplib/math/int128.nim
   - cplib/utils/constants.nim
-  - cplib/math/int128.nim
-  - cplib/math/int128.nim
   - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/math/combination_int.nim

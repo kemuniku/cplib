@@ -52,11 +52,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
     - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/shortest_path\n\
     include cplib/tmpl/sheep\nimport cplib/graph/graph\nimport cplib/graph/dijkstra_radix\n\
@@ -65,20 +65,20 @@ data:
     \ t)\nif cost == INF64:\n    echo -1\nelse:\n    echo cost, \" \", path.len -\
     \ 1\n    for i in 0..<path.len - 1:\n        echo path[i], \" \", path[i + 1]\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/tmpl/sheep.nim
   - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/dijkstra_radix.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/collections/radix_heap.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/collections/radix_heap.nim
-  - cplib/graph/dijkstra_radix.nim
   - cplib/tmpl/fastio.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/collections/radix_heap.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/sheep.nim
+  - cplib/graph/dijkstra_radix.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: true
   path: verify/graph/dynamic/restore_dijkstra_radix_test.nim
   requiredBy: []

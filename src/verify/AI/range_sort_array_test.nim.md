@@ -34,11 +34,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import algorithm, random\nimport cplib/collections/range_sort_array\nimport cplib/collections/range_sort_segtree\n\
@@ -90,13 +90,13 @@ data:
     \ 1, 0])\n        a[1] = 1\n        a[1] = 3\n        a.check(@[2, 3, 0])\n\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
   - cplib/collections/range_sort_segtree.nim
   - cplib/collections/segtree.nim
-  - cplib/collections/range_sort_segtree.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/range_sort_array.nim
+  - cplib/collections/range_sort_segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
   - cplib/collections/range_sort_array.nim
   isVerificationFile: true
   path: verify/AI/range_sort_array_test.nim

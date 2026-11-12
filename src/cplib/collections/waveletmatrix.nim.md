@@ -74,11 +74,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_WAVELETMATRIX:\n    const CPLIB_COLLECTIONS_WAVELETMATRIX*\
     \ = 1\n    import cplib/collections/bitvector\n    import sequtils\n    import\
@@ -368,20 +368,20 @@ data:
   timestamp: '2026-09-27 01:00:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_simd_test.nim
-  - verify/utils/backwards_index_simd_test.nim
+  - verify/AI/static_range_distinct_test.nim
+  - verify/AI/static_range_distinct_test.nim
+  - verify/AI/static_string_search_test.nim
+  - verify/AI/static_string_search_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_test.nim
   - verify/collections/static_range_distinct_test.nim
   - verify/collections/static_range_distinct_test.nim
   - verify/collections/waveletmatrix_test.nim
   - verify/collections/waveletmatrix_test.nim
-  - verify/AI/static_string_search_test.nim
-  - verify/AI/static_string_search_test.nim
-  - verify/AI/static_range_distinct_test.nim
-  - verify/AI/static_range_distinct_test.nim
-  - verify/AI/waveletmatrix_test.nim
-  - verify/AI/waveletmatrix_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
 documentation_of: cplib/collections/waveletmatrix.nim
 layout: document
 redirect_from:

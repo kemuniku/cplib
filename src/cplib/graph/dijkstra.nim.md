@@ -116,11 +116,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_DIJKSTRA:\n    const CPLIB_GRAPH_DIJKSTRA*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/utils/constants\n    import\
@@ -262,12 +262,12 @@ data:
     \u7D4C\u8DEF\u3068\u6700\u77ED\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n        shortest_path_dijkstra_impl(G,\
     \ start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy:
@@ -276,34 +276,34 @@ data:
   timestamp: '2026-10-29 04:15:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dijkstra_custom_types_test.nim
-  - verify/graph/dijkstra_custom_types_test.nim
-  - verify/graph/dijkstra_custom_cmp_test.nim
-  - verify/graph/dijkstra_custom_cmp_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/implicit_bfs_test.nim
+  - verify/AI/implicit_bfs_test.nim
+  - verify/AI/implicit_dijkstra_test.nim
+  - verify/AI/implicit_dijkstra_test.nim
+  - verify/AI/dijkstra_radix_test.nim
+  - verify/AI/dijkstra_radix_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/graph_storage_test.nim
+  - verify/AI/graph_storage_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
   - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/AI/implicit_dijkstra_test.nim
-  - verify/AI/implicit_dijkstra_test.nim
-  - verify/AI/dijkstra_test.nim
-  - verify/AI/dijkstra_test.nim
-  - verify/AI/dijkstra_radix_test.nim
-  - verify/AI/dijkstra_radix_test.nim
-  - verify/AI/graph_edge_id_test.nim
-  - verify/AI/graph_edge_id_test.nim
-  - verify/AI/implicit_bfs_test.nim
-  - verify/AI/implicit_bfs_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_storage_test.nim
-  - verify/AI/graph_storage_test.nim
+  - verify/graph/dijkstra_custom_cmp_test.nim
+  - verify/graph/dijkstra_custom_cmp_test.nim
+  - verify/graph/dijkstra_custom_types_test.nim
+  - verify/graph/dijkstra_custom_types_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

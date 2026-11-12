@@ -62,11 +62,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP:\n    const CPLIB_GRAPH_FUNCTIONALGRAPH_WITH_OP*\
     \ = 1\n    import sequtils\n    import algorithm\n    import cplib/graph/graph\n\
@@ -240,30 +240,30 @@ data:
     \ int(used)\n        rest -= first\n        if rest > 0 and not consume_cycle(0,rest):\n\
     \            return int(used)\n        return int(used-1'u)\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
   - cplib/collections/segtree.nim
   - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/graph/graph.nim
   - cplib/utils/backwards_index.nim
   - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/functional_graph_move_while_limits_test.nim
-  - verify/graph/functional_graph_move_while_limits_test.nim
-  - verify/graph/functional_graph_prod_max_count_test.nim
-  - verify/graph/functional_graph_prod_max_count_test.nim
-  - verify/graph/functional_graph_prod_overflow_test.nim
-  - verify/graph/functional_graph_prod_overflow_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_move_while_limits_test.nim
 documentation_of: cplib/graph/functional_graph_with_op.nim
 layout: document
 redirect_from:

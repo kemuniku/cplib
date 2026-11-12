@@ -51,11 +51,11 @@ data:
   attributes:
     links:
     - https://maspypy.com/library-checker-point-set-tree-path-composite-sum
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u9802\u70B9\u3068\u89AA\u8FBA\u3092\u8449\u3068\u3059\u308BStatic Top\
     \ Tree\u3002\u6728\u306E\u5F62\u3068\u69CB\u7BC9\u6642\u306E\u6839\u306F\u56FA\
@@ -130,8 +130,8 @@ data:
     \u7BC9\u3059\u308B\u3002parent[root]\u306F\u53C2\u7167\u3057\u306A\u3044\u3002\
     O(N log N)\n        return initStaticTopTree(initHldFromParent(parent, root))\n"
   dependsOn:
-  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
+  - cplib/tree/heavylightdecomposition.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
   isVerificationFile: false
@@ -144,12 +144,12 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/static_top_tree_test.nim
+  - verify/AI/static_top_tree_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/tree/point_set_tree_path_composite_sum_fixed_root_test.nim
   - verify/tree/point_set_tree_path_composite_sum_test.nim
   - verify/tree/point_set_tree_path_composite_sum_test.nim
-  - verify/AI/static_top_tree_test.nim
-  - verify/AI/static_top_tree_test.nim
 documentation_of: cplib/tree/static_top_tree.nim
 layout: document
 redirect_from:

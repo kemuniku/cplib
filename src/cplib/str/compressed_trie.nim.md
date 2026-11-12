@@ -44,11 +44,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_COMPRESSED_TRIE:\n    import cplib/str/static_string\n\
     \    import algorithm\n    import cplib/graph/graph\n    const CPLIB_STR_COMPRESSED_TRIE*\
@@ -103,16 +103,16 @@ data:
     \ get_subtree_sum*(node:VirtualTrieNode):int=\n        if node.now.len() == 0:\n\
     \            return node.current_node.subtree_sum\n        return node.current_node.child[node.now[0]].subtree_sum\n"
   dependsOn:
+  - cplib/graph/graph.nim
   - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/staticRMQ.nim
   - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
   isVerificationFile: false
   path: cplib/str/compressed_trie.nim
   requiredBy: []

@@ -20,11 +20,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u8A08\u7B97\u91CF\u3067\u306FN\u3092\u5165\u529B\u914D\u5217\u9577\u3001\
     U\u3092\u5BB9\u91CF2^24\u3068\u3057\u307E\u3059\u3002\u6728\u306E\u6BB5\u6570\u3068\
@@ -116,10 +116,10 @@ data:
   timestamp: '2026-09-08 05:12:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/word_size_tree_test.nim
-  - verify/collections/word_size_tree_test.nim
   - verify/AI/wordsizetree_test.nim
   - verify/AI/wordsizetree_test.nim
+  - verify/collections/word_size_tree_test.nim
+  - verify/collections/word_size_tree_test.nim
 documentation_of: cplib/collections/wordsizetree.nim
 layout: document
 redirect_from:

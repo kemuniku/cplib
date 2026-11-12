@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_MATH_STERN_BROCOT_TREE:\n    import cplib/math/fractions\n\
     \    import cplib/graph/graph\n    import sequtils,algorithm,options\n    const\
@@ -265,20 +265,20 @@ data:
     \            if len(stack) != 0:\n                result.add_edge(stack[^1],v[i],(v[i].depth)-(stack[^1].depth))\n\
     \            stack.add(v[i])"
   dependsOn:
-  - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   - cplib/graph/graph.nim
   - cplib/graph/graph.nim
+  - cplib/math/fractions.nim
+  - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/math/stern_brocot_tree.nim
   requiredBy: []
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/stern_brocot_tree_bounds_test.nim
-  - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/math/stern_brocot_tree_random_test.nim
   - verify/math/stern_brocot_tree_random_test.nim
 documentation_of: cplib/math/stern_brocot_tree.nim

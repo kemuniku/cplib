@@ -41,11 +41,11 @@ data:
     - https://arxiv.org/abs/2005.11188
     - https://doi.org/10.1007/BFb0040379
     - https://www.lrvideckis.com/blog/2024/02/29/linear_level_ancestors.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_TREE_LCA:\n    const CPLIB_TREE_LCA* = 1\n    import\
     \ bitops, sequtils\n    import cplib/graph/graph\n\n    template lcaUninit(T:\
@@ -371,14 +371,14 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/lca_test.nim
+  - verify/AI/lca_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
   - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim
-  - verify/AI/lca_test.nim
-  - verify/AI/lca_test.nim
 documentation_of: cplib/tree/lca.nim
 layout: document
 redirect_from:

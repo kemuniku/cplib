@@ -50,11 +50,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_STR_REPEATED_STATIC_STRING:\n    const CPLIB_STR_REPEATED_STATIC_STRING*\
     \ = 1\n    import cplib/utils/backwards_index\n    import cplib/str/static_string\n\
@@ -128,26 +128,26 @@ data:
     \            for i in 0..<len(S):\n                if i > 0:\n               \
     \     result &= \" \"\n                result &= $S[i]\n"
   dependsOn:
+  - cplib/str/fixedlength_merged_static_string.nim
   - cplib/str/static_string.nim
+  - cplib/str/suffix_array.nim
+  - cplib/str/fixedlength_merged_static_string.nim
+  - cplib/str/static_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/collections/staticRMQ.nim
   - cplib/utils/backwards_index.nim
-  - cplib/str/fixedlength_merged_static_string.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/str/suffix_array.nim
   - cplib/collections/staticRMQ.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/suffix_array.nim
-  - cplib/str/static_string.nim
-  - cplib/str/fixedlength_merged_static_string.nim
   isVerificationFile: false
   path: cplib/str/repeated_static_string.nim
   requiredBy: []
   timestamp: '2026-09-27 23:03:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/utils/backwards_index_collections_test.nim
   - verify/AI/repeated_static_string_test.nim
   - verify/AI/repeated_static_string_test.nim
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/str/repeated_static_string.nim
 layout: document
 redirect_from:

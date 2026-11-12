@@ -52,11 +52,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/prefix_sum_of_binomial_coefficient
     links:
     - https://judge.yosupo.jp/problem/prefix_sum_of_binomial_coefficient
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/prefix_sum_of_binomial_coefficient\n\
     \ninclude cplib/tmpl/fastio\nimport cplib/math/online_combination_prefix_sum\n\
@@ -64,19 +64,19 @@ data:
     let sums = initOnlineCombinationPrefixSum[Mint](200000)\nfor _ in 0..<t:\n   \
     \ let n = ii()\n    let k = ii()\n    print(sums.prefixSum(n, k))\n"
   dependsOn:
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/online_combination_prefix_sum.nim
+  - cplib/math/combination.nim
+  - cplib/math/online_combination_prefix_sum.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
   - cplib/tmpl/fastio.nim
-  - cplib/math/combination.nim
-  - cplib/math/online_combination_prefix_sum.nim
-  - cplib/math/combination.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/math/combination.nim
   - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/math/online_combination_prefix_sum.nim
-  - cplib/math/isqrt.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/math/online_combination_prefix_sum_yosupo_test.nim

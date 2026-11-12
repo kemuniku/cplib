@@ -56,11 +56,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_MO:\n    const CPLIB_UTILS_MO* = 1\n    import\
     \ math, algorithm\n    import cplib/graph/graph\n    type Mo* = object\n     \
@@ -200,16 +200,16 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/online_combination_prefix_sum_test.nim
-  - verify/math/online_combination_prefix_sum_test.nim
-  - verify/math/combination_prefix_sum_test.nim
-  - verify/math/combination_prefix_sum_test.nim
-  - verify/collections/range_kth_smallest_test.nim
-  - verify/collections/range_kth_smallest_test.nim
-  - verify/AI/mo_test.nim
-  - verify/AI/mo_test.nim
   - verify/AI/tree_mo_test.nim
   - verify/AI/tree_mo_test.nim
+  - verify/AI/mo_test.nim
+  - verify/AI/mo_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/collections/range_kth_smallest_test.nim
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/math/combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_test.nim
 documentation_of: cplib/utils/mo.nim
 layout: document
 redirect_from:

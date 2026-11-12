@@ -16,25 +16,25 @@ data:
     PROBLEM: https://yukicoder.me/problems/no/2606
     links:
     - https://yukicoder.me/problems/no/2606
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://yukicoder.me/problems/no/2606\nimport\
     \ strutils, sequtils, algorithm\nimport cplib/str/palindromic_tree\n\nvar s =\
     \ stdin.readLine.reversed.join(\"\")\nvar pt = initPalindromicTree(s)\npt.update_count\n\
     \nvar score = newSeqWith(pt.nodes.len, 0)\nfor i in 1..<pt.nodes.len:\n    var\
-    \ node = pt.nodes[i]\n    score[i] = score[node[].suffix_link[].id] + node[].count\
-    \ * node[].len\necho score.max\n"
+    \ node = pt.nodes[i]\n    score[i] = score[node.suffix_link.id] + node.count *\
+    \ node.len\necho score.max\n"
   dependsOn:
   - cplib/str/palindromic_tree.nim
   - cplib/str/palindromic_tree.nim
   isVerificationFile: true
   path: verify/str/palindromic_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-10-01 03:07:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/str/palindromic_tree_test.nim

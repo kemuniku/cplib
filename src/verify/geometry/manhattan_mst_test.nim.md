@@ -34,11 +34,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/manhattanmst
     links:
     - https://judge.yosupo.jp/problem/manhattanmst
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/manhattanmst\n\
     import cplib/geometry/manhattan_mst\ninclude cplib/tmpl/fastio\n\nlet n = ii()\n\
@@ -47,18 +47,18 @@ data:
     \ v) in edges:\n    total += abs(points[u][0] - points[v][0]) + abs(points[u][1]\
     \ - points[v][1])\necho total\nfor (u, v) in edges:\n    echo u, \" \", v\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/manhattan_mst.nim
   - cplib/tmpl/fastio.nim
-  - cplib/geometry/base.nim
+  - cplib/collections/unionfind.nim
   - cplib/geometry/manhattan_mst.nim
-  - cplib/geometry/manhattan_mst.nim
-  - cplib/geometry/base.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/geometry/manhattan_mst_test.nim
   requiredBy: []
-  timestamp: '2026-10-08 16:48:30+09:00'
+  timestamp: '2026-11-13 04:16:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/manhattan_mst_test.nim

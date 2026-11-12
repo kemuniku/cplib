@@ -22,11 +22,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/double_ended_priority_queue
     links:
     - https://judge.yosupo.jp/problem/double_ended_priority_queue
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/double_ended_priority_queue\n\
     include cplib/tmpl/fastio\nimport cplib/collections/double_ended_priority_queue\n\
@@ -35,8 +35,8 @@ data:
     \ 1: print(heap.popMin())\n    else: print(heap.popMax())\n"
   dependsOn:
   - cplib/collections/double_ended_priority_queue.nim
-  - cplib/tmpl/fastio.nim
   - cplib/collections/double_ended_priority_queue.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
   isVerificationFile: true
   path: verify/collections/double_ended_priority_queue_test.nim

@@ -22,11 +22,11 @@ data:
     PROBLEM: https://yukicoder.me/problems/no/878
     links:
     - https://yukicoder.me/problems/no/878
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://yukicoder.me/problems/no/878\nimport\
     \ cplib/collections/segtree_var\nimport sequtils, strutils, algorithm\n\nproc\
@@ -42,10 +42,10 @@ data:
     \    for x in ad[li]:\n            seg_add[x] = seg_add[x] + 1\n        li +=\
     \ 1\n    ans[id] = seg_add[l..<r]\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_var.nim
   - cplib/collections/segtree_var.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree_var.nim
   isVerificationFile: true
   path: verify/collections/segtree_var/segtree_maxright_yuki878_test.nim
   requiredBy: []

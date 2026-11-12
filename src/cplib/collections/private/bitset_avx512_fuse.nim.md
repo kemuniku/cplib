@@ -110,11 +110,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## fuse\u30DE\u30AF\u30ED\u3068\u52D5\u7684\u30D3\u30C3\u30C8\u30BB\u30C3\
     \u30C8\u7528\u306E\u878D\u5408\u6F14\u7B97\u3067\u3059\u3002\ninclude cplib/collections/private/bitset_avx512_fuse_shift\n\
@@ -357,11 +357,11 @@ data:
     \u3002\n    result = fuseBlock(body)\n    if result == nil:\n        result =\
     \ newBlockStmt(newCall(bindSym\"fuseSingleStatements\", body))\n"
   dependsOn:
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
+  - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_fuse_arithmetic.nim
-  - cplib/collections/private/bitset_avx512_fuse_block.nim
   - cplib/collections/private/bitset_avx512_fuse_shift.nim
   isVerificationFile: false
   path: cplib/collections/private/bitset_avx512_fuse.nim
@@ -375,28 +375,28 @@ data:
   timestamp: '2026-09-17 21:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_simd_test.nim
-  - verify/utils/backwards_index_simd_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
+  - verify/str/restore_lcs_bitset_test.nim
   - verify/str/lcs_bitset_test.nim
   - verify/str/lcs_bitset_test.nim
   - verify/str/edit_distance_bitset_test.nim
   - verify/str/edit_distance_bitset_test.nim
-  - verify/str/restore_lcs_bitset_test.nim
-  - verify/str/restore_lcs_bitset_test.nim
-  - verify/AI/bitset_avx512_shift_assign_test.nim
-  - verify/AI/bitset_avx512_shift_assign_test.nim
-  - verify/AI/bitset_avx512_prev_set_bit_test.nim
-  - verify/AI/bitset_avx512_prev_set_bit_test.nim
-  - verify/AI/bitset_avx512_fuse_test.nim
-  - verify/AI/bitset_avx512_fuse_test.nim
-  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
-  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
-  - verify/AI/edit_distance_bitset_test.nim
-  - verify/AI/edit_distance_bitset_test.nim
-  - verify/AI/bitset_avx512_fuse_block_test.nim
-  - verify/AI/bitset_avx512_fuse_block_test.nim
   - verify/AI/bitset_avx512_add_test.nim
   - verify/AI/bitset_avx512_add_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_prev_set_bit_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_arithmetic_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_fuse_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_shift_assign_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/bitset_avx512_fuse_block_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/AI/edit_distance_bitset_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
 documentation_of: cplib/collections/private/bitset_avx512_fuse.nim
 layout: document
 redirect_from:

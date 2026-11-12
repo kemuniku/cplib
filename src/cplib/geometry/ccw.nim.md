@@ -9,6 +9,12 @@ data:
     title: cplib/geometry/base.nim
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/convex_polygon.nim
+    title: cplib/geometry/convex_polygon.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/convex_polygon.nim
+    title: cplib/geometry/convex_polygon.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/distance.nim
     title: cplib/geometry/distance.nim
   - icon: ':heavy_check_mark:'
@@ -46,6 +52,24 @@ data:
     path: verify/AI/ccw_test.nim
     title: verify/AI/ccw_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_cut_test.nim
+    title: verify/AI/convex_cut_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_cut_test.nim
+    title: verify/AI/convex_cut_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_hull_regression_test.nim
+    title: verify/AI/convex_hull_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_hull_regression_test.nim
+    title: verify/AI/convex_hull_regression_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_polygon_test.nim
+    title: verify/AI/convex_polygon_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/convex_polygon_test.nim
+    title: verify/AI/convex_polygon_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/distance_test.nim
     title: verify/AI/distance_test.nim
   - icon: ':heavy_check_mark:'
@@ -57,6 +81,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/intersect_test.nim
     title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_boundary_degenerate_test.nim
+    title: verify/AI/polygon_boundary_degenerate_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/polygon_boundary_degenerate_test.nim
+    title: verify/AI/polygon_boundary_degenerate_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/polygon_test.nim
     title: verify/AI/polygon_test.nim
@@ -148,21 +178,45 @@ data:
     path: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
     title: verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+    title: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+    title: verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
     title: verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+    title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+    title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/furthest_pair_test.nim
+    title: verify/geometry/furthest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/furthest_pair_test.nim
+    title: verify/geometry/furthest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/static_convex_hull_test.nim
+    title: verify/geometry/static_convex_hull_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/static_convex_hull_test.nim
+    title: verify/geometry/static_convex_hull_test.nim
   _isVerificationFailed: false
   _pathExtension: nim
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GEOMETRY_CCW:\n    const CPLIB_GEOMETRY_CCW* = 1\n\
     \    import cplib/geometry/base\n    const\n        COUNTER_CLOCKWISE* = 2\n \
@@ -196,53 +250,71 @@ data:
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
-  - cplib/geometry/distance.nim
-  - cplib/geometry/distance.nim
+  - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/convex_polygon.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/distance.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
-  timestamp: '2026-09-13 17:15:27+09:00'
+  timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
   - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/contains_cgl3c_test.nim
   - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
   - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_2/distance_cgl2d_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_2/intersect_cgl2b_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/AI/intersect_test.nim
-  - verify/AI/intersect_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/polygon_test.nim
-  - verify/AI/ccw_test.nim
-  - verify/AI/ccw_test.nim
   - verify/AI/distance_test.nim
   - verify/AI/distance_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/convex_polygon_test.nim
+  - verify/AI/convex_polygon_test.nim
 documentation_of: cplib/geometry/ccw.nim
 layout: document
 redirect_from:

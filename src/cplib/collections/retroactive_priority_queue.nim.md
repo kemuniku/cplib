@@ -80,11 +80,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## poppedSum\u306F\u73FE\u5728\u306E\u64CD\u4F5C\u5217\u3067pop\u3055\u308C\
     \u305F\u5024\u306E\u7DCF\u548C\u3092O(1)\u3067\u8FD4\u3057\u307E\u3059\u3002sum\u306F\
@@ -363,33 +363,33 @@ data:
   isVerificationFile: false
   path: cplib/collections/retroactive_priority_queue.nim
   requiredBy:
-  - verify/collections/retroactive_priority_queue_abc363g_test_.nim
-  - verify/collections/retroactive_priority_queue_abc363g_test_.nim
   - verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
   - verify/collections/dynamic_retroactive_priority_queue_abc363g_test_.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
-  - cplib/collections/dynamic_retroactive_priority_queue.nim
+  - verify/collections/retroactive_priority_queue_abc363g_test_.nim
+  - verify/collections/retroactive_priority_queue_abc363g_test_.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/compressed_retroactive_priority_queue.nim
   - cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
   - cplib/collections/dynamic_retroactive_priority_queue_monoid.nim
   - cplib/collections/indexed_retroactive_priority_queue.nim
   - cplib/collections/indexed_retroactive_priority_queue.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
-  - cplib/collections/compressed_retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
+  - cplib/collections/dynamic_retroactive_priority_queue.nim
   timestamp: '2026-09-28 01:13:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/retroactive_priority_queue_test.nim
-  - verify/collections/retroactive_priority_queue_test.nim
-  - verify/collections/retroactive_priority_queue_debug_test.nim
-  - verify/collections/retroactive_priority_queue_debug_test.nim
-  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
-  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
-  - verify/collections/dynamic_retroactive_priority_queue_test.nim
-  - verify/collections/dynamic_retroactive_priority_queue_test.nim
   - verify/collections/indexed_retroactive_priority_queue_test.nim
   - verify/collections/indexed_retroactive_priority_queue_test.nim
   - verify/collections/retroactive_priority_queue_popped_sum_test.nim
   - verify/collections/retroactive_priority_queue_popped_sum_test.nim
+  - verify/collections/retroactive_priority_queue_test.nim
+  - verify/collections/retroactive_priority_queue_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_monoid_test.nim
+  - verify/collections/retroactive_priority_queue_debug_test.nim
+  - verify/collections/retroactive_priority_queue_debug_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_test.nim
+  - verify/collections/dynamic_retroactive_priority_queue_test.nim
 documentation_of: cplib/collections/retroactive_priority_queue.nim
 layout: document
 redirect_from:

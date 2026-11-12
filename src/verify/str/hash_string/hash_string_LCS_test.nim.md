@@ -28,11 +28,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/longest_common_substring
     links:
     - https://judge.yosupo.jp/problem/longest_common_substring
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/longest_common_substring\n\
     include cplib/str/hash_string\n\n{.checks:off.}\nimport cplib/str/suffix_array\n\
@@ -49,11 +49,11 @@ data:
     \                c = tmp[i].l-len(S)-1\n                d = tmp[i].l+lcp-len(S)-1\n\
     echo a,\" \",b,\" \",c,\" \",d\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
-  - cplib/str/hash_string.nim
-  - cplib/str/hash_string.nim
-  - cplib/utils/backwards_index.nim
   - cplib/str/suffix_array.nim
+  - cplib/str/hash_string.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/str/hash_string.nim
+  - cplib/utils/backwards_index.nim
   - cplib/str/suffix_array.nim
   isVerificationFile: true
   path: verify/str/hash_string/hash_string_LCS_test.nim

@@ -32,11 +32,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_UTILS_K_PROJECT_SELECTION:\n    const CPLIB_UTILS_K_PROJECT_SELECTION*\
     \ = 1\n    import cplib/utils/project_selection\n\n    type\n        KProjectSelection*[Cost]\
@@ -179,20 +179,20 @@ data:
     \ = newSeq[int](opt.sizes.len)\n        for i, k in opt.sizes:\n            for\
     \ t in 1..<k:\n                if answer.assignment[opt.kpsGe(i, t)]: inc result.assignment[i]\n"
   dependsOn:
-  - cplib/graph/maxflow.nim
+  - cplib/utils/project_selection.nim
   - cplib/graph/maxflow.nim
   - cplib/utils/project_selection.nim
-  - cplib/utils/project_selection.nim
+  - cplib/graph/maxflow.nim
   isVerificationFile: false
   path: cplib/utils/k_project_selection.nim
   requiredBy: []
   timestamp: '2026-09-14 12:19:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/k_project_selection_abc326g_test.nim
-  - verify/utils/k_project_selection_abc326g_test.nim
   - verify/AI/k_project_selection_test.nim
   - verify/AI/k_project_selection_test.nim
+  - verify/utils/k_project_selection_abc326g_test.nim
+  - verify/utils/k_project_selection_abc326g_test.nim
 documentation_of: cplib/utils/k_project_selection.nim
 layout: document
 redirect_from:

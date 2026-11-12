@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_GRAPH_DAGMINIMUMPATHCOVER:\n    const CPLIB_GRAPH_DAGMINIMUMPATHCOVER*\
     \ = 1\n    import cplib/graph/graph\n    import cplib/graph/maxflow\n    when\
@@ -55,11 +55,11 @@ data:
     \      MFG.add_edge(len(G)+i,2*len(G)+1,1)\n        return len(G)-MFG.flow(2*len(G),2*len(G)+1)\n"
   dependsOn:
   - cplib/graph/graph.nim
+  - cplib/graph/maxflow.nim
   - cplib/graph/topologicalsort.nim
   - cplib/graph/graph.nim
   - cplib/graph/maxflow.nim
   - cplib/graph/topologicalsort.nim
-  - cplib/graph/maxflow.nim
   isVerificationFile: false
   path: cplib/graph/dag_minimum_path_cover.nim
   requiredBy:

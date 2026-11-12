@@ -16,11 +16,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: '# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
 
@@ -34,42 +34,42 @@ data:
 
     var pt = initPalindromicTree("ababa")
 
-    let lens = pt.nodes.mapIt(it[].len).sorted
+    let lens = pt.nodes.mapIt(it.len).sorted
 
     assert lens == @[-1, 0, 1, 1, 3, 3, 5]
 
-    let longest = pt.nodes.filterIt(it[].len == 5)[0]
+    let longest = pt.nodes.filterIt(it.len == 5)[0]
 
-    assert longest[].id >= 0
+    assert longest.id >= 0
 
-    assert longest[].count == 1
+    assert longest.count == 1
 
-    assert pt.get_palindrome(longest) == @[0, 1, 0, 1, 0]
+    assert pt.get_palindrome(longest) == @[''a'', ''b'', ''a'', ''b'', ''a'']
 
     pt.update_count()
 
-    let aNode = pt.nodes.filterIt(it[].len == 1 and pt.get_palindrome(it) == @[0])[0]
+    let aNode = pt.nodes.filterIt(it.len == 1 and pt.get_palindrome(it) == @[''a''])[0]
 
-    assert aNode[].count == 3
+    assert aNode.count == 3
 
 
-    let intPt = initPalindromicTree(@[0, 2, 0])
+    let intPt = initPalindromicTree(@[0, 2, 0], 0..2)
 
-    let intLongest = intPt.nodes.filterIt(it[].len == 3)[0]
+    let intLongest = intPt.nodes.filterIt(it.len == 3)[0]
 
     assert intPt.get_palindrome(intLongest) == @[0, 2, 0]
 
 
     let charPt = initPalindromicTree([''a'', ''b'', ''a''])
 
-    let charLongest = charPt.nodes.filterIt(it[].len == 3)[0]
+    let charLongest = charPt.nodes.filterIt(it.len == 3)[0]
 
-    assert charPt.get_palindrome(charLongest) == @[0, 1, 0]
+    assert charPt.get_palindrome(charLongest) == @[''a'', ''b'', ''a'']
 
 
-    let emptyPt = initPalindromicTree(newSeq[int]())
+    let emptyPt = initPalindromicTree(newSeq[int](), 0..2)
 
-    assert emptyPt.nodes.mapIt(it[].len) == @[-1, 0]
+    assert emptyPt.nodes.mapIt(it.len) == @[-1, 0]
 
     '
   dependsOn:
@@ -78,7 +78,7 @@ data:
   isVerificationFile: true
   path: verify/AI/palindromic_tree_test.nim
   requiredBy: []
-  timestamp: '2026-09-04 08:24:17+09:00'
+  timestamp: '2026-10-01 03:07:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/AI/palindromic_tree_test.nim

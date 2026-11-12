@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "## \u6574\u6570\u30AD\u30FC\u306B\u3088\u308B\u533A\u9593\u30BD\u30FC\u30C8\
     \u3068\u3001\u73FE\u5728\u306E\u914D\u5217\u9806\u3067\u306E\u30E2\u30CE\u30A4\
@@ -295,22 +295,22 @@ data:
     \ 1 <= segment.b and segment.b < self.len, \"\u533A\u9593\u304C\u7BC4\u56F2\u5916\
     \u3067\u3059\"\n        self.sort(segment.a, segment.b + 1, order)\n"
   dependsOn:
-  - cplib/utils/backwards_index.nim
+  - cplib/collections/segtree.nim
   - cplib/collections/segtree.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/collections/range_sort_segtree.nim
   requiredBy: []
   timestamp: '2026-09-28 03:02:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/collections/range_sort_segtree_test.nim
-  - verify/collections/range_sort_segtree_test.nim
   - verify/AI/range_sort_segtree_test.nim
   - verify/AI/range_sort_segtree_test.nim
   - verify/AI/range_sort_array_test.nim
   - verify/AI/range_sort_array_test.nim
+  - verify/collections/range_sort_segtree_test.nim
+  - verify/collections/range_sort_segtree_test.nim
 documentation_of: cplib/collections/range_sort_segtree.nim
 layout: document
 redirect_from:

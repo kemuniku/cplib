@@ -39,11 +39,11 @@ data:
   attributes:
     links:
     - https://trap.jp/post/1702/
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# https://trap.jp/post/1702/ \u3092\u53C2\u8003\u306B\u4F5C\u6210\nwhen not\
     \ declared CPLIB_TREE_REROOTING:\n    const CPLIB_TREE_REROOTING* = 1\n    import\
@@ -91,12 +91,12 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/rerooting_test.nim
+  - verify/AI/rerooting_test.nim
   - verify/tree/rerooting_distinct_types_test.nim
   - verify/tree/rerooting_distinct_types_test.nim
   - verify/tree/rerooting_test.nim
   - verify/tree/rerooting_test.nim
-  - verify/AI/rerooting_test.nim
-  - verify/AI/rerooting_test.nim
 documentation_of: cplib/tree/rerooting.nim
 layout: document
 redirect_from:

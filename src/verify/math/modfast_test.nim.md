@@ -76,11 +76,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A\n\
     import random\nimport cplib/math/modfast\nimport cplib/math/powmod\nimport cplib/modint/modint\n\
@@ -128,28 +128,28 @@ data:
     \ old.inv(init(TestMint, 2))\n    except AssertionDefect:\n        rejected =\
     \ true\n    doAssert rejected\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/modint/modint.nim
-  - cplib/math/modfast.nim
+  - cplib/math/powmod.nim
+  - cplib/math/primefactor.nim
   - cplib/str/run_length_encode.nim
   - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/primitive_root.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
-  - cplib/math/inner_math.nim
-  - cplib/math/primefactor.nim
+  - cplib/math/powmod.nim
   - cplib/modint/modint.nim
-  - cplib/math/primitive_root.nim
-  - cplib/math/isqrt.nim
-  - cplib/math/powmod.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/modfast.nim
+  - cplib/math/primefactor.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/modfast.nim
+  - cplib/modint/modint.nim
   - cplib/math/isprime.nim
-  - cplib/math/powmod.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/primitive_root.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/str/run_length_encode.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/inner_math.nim
+  - cplib/math/primitive_root.nim
   isVerificationFile: true
   path: verify/math/modfast_test.nim
   requiredBy: []

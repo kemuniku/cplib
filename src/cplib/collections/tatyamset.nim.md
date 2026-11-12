@@ -75,11 +75,11 @@ data:
   attributes:
     links:
     - https://github.com/tatyam-prime/SortedSet/blob/main/SortedMultiset.py
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# https://github.com/tatyam-prime/SortedSet/blob/main/SortedMultiset.py\n\
     when not declared CPLIB_COLLECTIONS_TATYAMSET:\n    import algorithm, math, sequtils,\
@@ -162,29 +162,29 @@ data:
   isVerificationFile: false
   path: cplib/collections/tatyamset.nim
   requiredBy:
-  - verify/collections/tatyamset/ABC217_gele_test_.nim
-  - verify/collections/tatyamset/ABC217_gele_test_.nim
-  - verify/collections/tatyamset/ABC294_test_.nim
-  - verify/collections/tatyamset/ABC294_test_.nim
-  - verify/collections/tatyamset/ABC236_test_.nim
-  - verify/collections/tatyamset/ABC236_test_.nim
-  - verify/collections/tatyamset/ABC234D_access_test_.nim
-  - verify/collections/tatyamset/ABC234D_access_test_.nim
-  - verify/collections/tatyamset/ABC217_gtlt_test_.nim
-  - verify/collections/tatyamset/ABC217_gtlt_test_.nim
   - verify/collections/tatyamset/ABC217_index_test_.nim
   - verify/collections/tatyamset/ABC217_index_test_.nim
-  - verify/collections/tatyamset/index_right_test_.nim
-  - verify/collections/tatyamset/index_right_test_.nim
+  - verify/collections/tatyamset/ABC236_test_.nim
+  - verify/collections/tatyamset/ABC236_test_.nim
+  - verify/collections/tatyamset/ABC294_test_.nim
+  - verify/collections/tatyamset/ABC294_test_.nim
   - verify/collections/tatyamset/ABC337_test_.nim
   - verify/collections/tatyamset/ABC337_test_.nim
+  - verify/collections/tatyamset/ABC217_gtlt_test_.nim
+  - verify/collections/tatyamset/ABC217_gtlt_test_.nim
+  - verify/collections/tatyamset/ABC217_gele_test_.nim
+  - verify/collections/tatyamset/ABC217_gele_test_.nim
+  - verify/collections/tatyamset/ABC234D_access_test_.nim
+  - verify/collections/tatyamset/ABC234D_access_test_.nim
+  - verify/collections/tatyamset/index_right_test_.nim
+  - verify/collections/tatyamset/index_right_test_.nim
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/utils/backwards_index_collections_test.nim
-  - verify/utils/backwards_index_collections_test.nim
   - verify/AI/tatyamset_test.nim
   - verify/AI/tatyamset_test.nim
+  - verify/utils/backwards_index_collections_test.nim
+  - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/collections/tatyamset.nim
 layout: document
 redirect_from:

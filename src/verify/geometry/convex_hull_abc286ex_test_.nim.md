@@ -53,11 +53,11 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc286/tasks/abc286_ex
     links:
     - https://atcoder.jp/contests/abc286/tasks/abc286_ex
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://atcoder.jp/contests/abc286/tasks/abc286_ex\n\
     # verification-helper: ERROR 1e-6\nimport sequtils, strutils, std/math\nimport\
@@ -76,24 +76,24 @@ data:
     \ vi.v[^(i+1)])).sqrt\na2 += float(norm(vi.v[^1], vi.v[0])).sqrt\necho min(a1,\
     \ a2)\n"
   dependsOn:
-  - cplib/geometry/distance.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/distance.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/angle.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/intersect.nim
+  - cplib/geometry/distance.nim
   - cplib/math/fractions.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/polygon.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/distance.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/intersect.nim
-  - cplib/geometry/angle.nim
   isVerificationFile: false
   path: verify/geometry/convex_hull_abc286ex_test_.nim
   requiredBy: []
-  timestamp: '2026-10-01 02:25:40+09:00'
+  timestamp: '2026-11-13 04:20:53+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/geometry/convex_hull_abc286ex_test_.nim

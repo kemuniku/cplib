@@ -46,11 +46,11 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
     links:
     - https://judge.yosupo.jp/problem/range_affine_point_get
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_point_get\n\
     import sequtils\nimport cplib/collections/dualsegtree_static_op\nimport cplib/modint/modint\n\
@@ -65,18 +65,18 @@ data:
     \        st.apply(l, r, (mint(b), mint(c)))\n    else:\n        let i = ii()\n\
     \        echo st[i]\n"
   dependsOn:
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/modint/modint.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/dualsegtree_static_op.nim
-  - cplib/modint/modint.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/dualsegtree_static_op.nim
-  - cplib/math/isqrt.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
   isVerificationFile: true
   path: verify/collections/dualsegtree/rangeaffinepointget_static_op_test.nim
   requiredBy: []

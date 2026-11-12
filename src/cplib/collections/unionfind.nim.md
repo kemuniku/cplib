@@ -128,11 +128,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/home/runner/.local/lib/python3.12/site-packages/onlinejudge_verify/languages/nim.py\"\
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/home/runner/.local/lib/python3.14/site-packages/onlinejudge_verify/languages/nim.py\"\
     , line 86, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "when not declared CPLIB_COLLECTIONS_UNIONFIND:\n    const CPLIB_COLLECTIONS_UNIONFIND*\
     \ = 1\n    import algorithm, sequtils\n    type UnionFind* = ref object\n    \
@@ -161,49 +161,49 @@ data:
   isVerificationFile: false
   path: cplib/collections/unionfind.nim
   requiredBy:
-  - verify/graph/merge_tree_test_.nim
-  - verify/graph/merge_tree_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
-  - verify/tree/hld/hld_past202004o_test_.nim
   - verify/itertools/itertools_combinations_test_.nim
   - verify/itertools/itertools_combinations_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/tree/hld/hld_past202004o_test_.nim
+  - verify/graph/merge_tree_test_.nim
+  - verify/graph/merge_tree_test_.nim
   - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/manhattan_mst.nim
-  - cplib/graph/merge_tree.nim
-  - cplib/graph/merge_tree.nim
   - cplib/graph/kruskal.nim
   - cplib/graph/kruskal.nim
+  - cplib/graph/merge_tree.nim
+  - cplib/graph/merge_tree.nim
   timestamp: '2026-07-09 02:51:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/euclidean_mst_test.nim
-  - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/manhattan_mst_random_test.nim
   - verify/geometry/manhattan_mst_random_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/manhattan_mst_test.nim
   - verify/geometry/manhattan_mst_test.nim
-  - verify/collections/unionfind_test.nim
-  - verify/collections/unionfind_test.nim
-  - verify/AI/euclidean_mst_test.nim
-  - verify/AI/euclidean_mst_test.nim
-  - verify/AI/merge_tree_test.nim
-  - verify/AI/merge_tree_test.nim
   - verify/AI/rollback_mo_test.nim
   - verify/AI/rollback_mo_test.nim
-  - verify/AI/kruskal_test.nim
-  - verify/AI/kruskal_test.nim
-  - verify/AI/parallel_binary_search_test.nim
-  - verify/AI/parallel_binary_search_test.nim
-  - verify/AI/auto_rollback_test.nim
-  - verify/AI/auto_rollback_test.nim
   - verify/AI/graph_weight_type_test.nim
   - verify/AI/graph_weight_type_test.nim
+  - verify/AI/parallel_binary_search_test.nim
+  - verify/AI/parallel_binary_search_test.nim
+  - verify/AI/euclidean_mst_test.nim
+  - verify/AI/euclidean_mst_test.nim
   - verify/AI/auto_rollback_scope_test.nim
   - verify/AI/auto_rollback_scope_test.nim
+  - verify/AI/merge_tree_test.nim
+  - verify/AI/merge_tree_test.nim
+  - verify/AI/kruskal_test.nim
+  - verify/AI/kruskal_test.nim
   - verify/AI/unionfind_test.nim
   - verify/AI/unionfind_test.nim
+  - verify/AI/auto_rollback_test.nim
+  - verify/AI/auto_rollback_test.nim
+  - verify/collections/unionfind_test.nim
+  - verify/collections/unionfind_test.nim
 documentation_of: cplib/collections/unionfind.nim
 layout: document
 redirect_from:
