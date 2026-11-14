@@ -1,5 +1,5 @@
 # verification-helper: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A
-import math, options, random, algorithm
+import math, random, algorithm
 import cplib/geometry/base
 import cplib/geometry/circle
 import cplib/geometry/minimum_enclosing_circle
@@ -36,18 +36,20 @@ proc check(points: seq[Point[float]], expected: float, seed: int64 = 0, error = 
     for p in points: saved.add((p.x, p.y))
     let res = minimum_enclosing_circle(points, seed)
     for i, p in points: doAssert p.x == saved[i][0] and p.y == saved[i][1]
-    doAssert res.isSome
-    let circle = res.get
+    let circle = res
     doAssert abs(circle.radius - expected) <= error
     for p in points:
         doAssert circle.contains(p, 0)
         doAssert hypot(p.x - circle.center.x, p.y - circle.center.y) <= circle.radius + error
-    let repeated = minimum_enclosing_circle(points, seed).get
+    let repeated = minimum_enclosing_circle(points, seed)
     doAssert repeated.center.x == circle.center.x and repeated.center.y == circle.center.y
     doAssert repeated.radius == circle.radius
 
 let empty: seq[Point[float]] = @[]
-doAssert minimum_enclosing_circle(empty).isNone
+var emptyRejected = false
+try: discard minimum_enclosing_circle(empty)
+except ValueError: emptyRejected = true
+doAssert emptyRejected
 check(@[initPoint(3.0, 4.0)], 0)
 check(@[initPoint(3.0, 4.0), initPoint(3.0, 4.0)], 0)
 check(@[initPoint(-5.0, 0.0), initPoint(2.0, 0.0), initPoint(5.0, 0.0)], 5)
@@ -65,9 +67,9 @@ for invalid in [system.Inf, NaN]:
     try: discard minimum_enclosing_circle(@[initPoint(invalid, 0.0)])
     except ValueError: rejected = true
     doAssert rejected
-let ints = @[initPoint(0'i64, 0'i64), initPoint(4000000000'i64, 0'i64)]
-doAssert minimum_enclosing_circle(ints).get.radius == 2000000000.0
-let singleHuge = minimum_enclosing_circle(@[initPoint(1.7e308, 1.7e308)]).get
+let ints = @[initPoint(0.0, 0.0), initPoint(4000000000.0, 0.0)]
+doAssert minimum_enclosing_circle(ints).radius == 2000000000.0
+let singleHuge = minimum_enclosing_circle(@[initPoint(1.7e308, 1.7e308)])
 doAssert singleHuge.radius == 0
 for scale in [1e-150, 1.0, 1e150]:
     check(@[initPoint(-scale, 0.0), initPoint(scale, 0.0), initPoint(0.0, scale)], scale, error = scale * 1e-8)

@@ -5,7 +5,7 @@ import strformat
 proc scanf(formatstr: cstring){.header: "<stdio.h>", varargs.}
 proc integer(): int = scanf("%lld", addr result)
 let n = integer()
-var points: seq[Point[int]]
-for _ in 0..<n: points.add(initPoint(integer(), integer()))
-let c = minimum_enclosing_circle(points).get
+var points: seq[Point[float]]
+for _ in 0..<n: points.add(initPoint(float(integer()), float(integer())))
+let c = minimum_enclosing_circle(points)
 echo &"{c.radius:.12f}"
