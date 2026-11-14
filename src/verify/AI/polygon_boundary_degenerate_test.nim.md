@@ -102,13 +102,13 @@ data:
     \ 3), r))\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
   isVerificationFile: true
   path: verify/AI/polygon_boundary_degenerate_test.nim
   requiredBy: []

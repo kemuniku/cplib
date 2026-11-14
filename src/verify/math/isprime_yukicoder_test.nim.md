@@ -47,12 +47,12 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
+  - cplib/math/isprime.nim
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
-  - cplib/tmpl/sheep.nim
-  - cplib/math/isprime.nim
   - cplib/math/isprime.nim
   - cplib/utils/constants.nim
+  - cplib/tmpl/sheep.nim
   isVerificationFile: true
   path: verify/math/isprime_yukicoder_test.nim
   requiredBy: []

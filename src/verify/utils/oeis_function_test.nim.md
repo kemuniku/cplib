@@ -68,9 +68,9 @@ data:
     \necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/fractions.nim
+  - cplib/utils/oeis.nim
+  - cplib/utils/oeis.nim
   - cplib/math/fractions.nim
-  - cplib/utils/oeis.nim
-  - cplib/utils/oeis.nim
   isVerificationFile: true
   path: verify/utils/oeis_function_test.nim
   requiredBy: []

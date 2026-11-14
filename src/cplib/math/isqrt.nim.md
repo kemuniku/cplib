@@ -213,6 +213,12 @@ data:
     path: cplib/tmpl/citrus.nim
     title: cplib/tmpl/citrus.nim
   - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
+  - icon: ':warning:'
     path: verify/math/isqrt_test_.nim
     title: verify/math/isqrt_test_.nim
   - icon: ':warning:'
@@ -388,6 +394,12 @@ data:
     path: verify/AI/chirp_z_test.nim
     title: verify/AI/chirp_z_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/citrus_test.nim
     title: verify/AI/citrus_test.nim
   - icon: ':heavy_check_mark:'
@@ -411,6 +423,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/factoradic_signed_test.nim
     title: verify/AI/factoradic_signed_test.nim
@@ -465,6 +483,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/mo_test.nim
     title: verify/AI/mo_test.nim
@@ -1139,6 +1163,8 @@ data:
   isVerificationFile: false
   path: cplib/math/isqrt.nim
   requiredBy:
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_oracle_driver.nim
   - verify/tree/auxiliarytree_test_.nim
   - verify/tree/auxiliarytree_test_.nim
   - verify/tree/diameter_path_static_test_.nim
@@ -1292,6 +1318,8 @@ data:
   - verify/AI/ntt_test.nim
   - verify/AI/bitwise_and_convolution_test.nim
   - verify/AI/bitwise_and_convolution_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/exact_circle_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/citrus_test.nim
@@ -1316,6 +1344,8 @@ data:
   - verify/AI/many_factorials_test.nim
   - verify/AI/factoradic_test.nim
   - verify/AI/factoradic_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/fps_composite_modulus_test.nim
@@ -1332,6 +1362,8 @@ data:
   - verify/AI/static_rectangle_add_rectangle_sum_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
   - verify/AI/mo_test.nim
   - verify/AI/mo_test.nim
   - verify/AI/bostan_mori_frequency_reuse_test.nim

@@ -73,15 +73,15 @@ data:
 
     echo C.join(" ")'
   dependsOn:
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/xor_convolution.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/modint/modint.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
   - cplib/convolution/xor_convolution.nim
   isVerificationFile: true
   path: verify/convolution/xor_convolution_test.nim

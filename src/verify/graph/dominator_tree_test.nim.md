@@ -42,9 +42,9 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/graph/dominator_tree.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/graph/dominator_tree.nim
   isVerificationFile: true
   path: verify/graph/dominator_tree_test.nim

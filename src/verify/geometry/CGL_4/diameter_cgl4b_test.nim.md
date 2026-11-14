@@ -74,15 +74,15 @@ data:
     '
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/convex_polygon.nim
   isVerificationFile: true
   path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
   requiredBy: []

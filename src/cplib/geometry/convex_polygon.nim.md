@@ -192,13 +192,13 @@ data:
     \ poly.vertices), line)\n"
   dependsOn:
   - cplib/geometry/ccw.nim
-  - cplib/geometry/polygon.nim
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/polygon.nim
   - cplib/geometry/base.nim
   - cplib/geometry/ccw.nim
+  - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/geometry/convex_polygon.nim
   requiredBy: []

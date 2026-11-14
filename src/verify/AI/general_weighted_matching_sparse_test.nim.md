@@ -136,12 +136,12 @@ data:
     \ == int64(count)\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/graph/general_weighted_matching_sparse.nim
-  - cplib/graph/general_matching.nim
   - cplib/graph/graph.nim
-  - cplib/graph/general_matching.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/general_weighted_matching.nim
   - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/general_matching.nim
+  - cplib/graph/general_matching.nim
+  - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/general_weighted_matching_sparse.nim
   - cplib/graph/general_weighted_matching.nim

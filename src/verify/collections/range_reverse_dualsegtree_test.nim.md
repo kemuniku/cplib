@@ -57,8 +57,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_dualsegtree.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/range_reverse_dualsegtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/range_reverse_dualsegtree_test.nim
   requiredBy: []

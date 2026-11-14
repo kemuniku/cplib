@@ -43,9 +43,9 @@ data:
     \ r))\n    if answers.len > 0:\n        print(*answers, sep=\"\\n\")\n\nmain()\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/tmpl/fastio.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick_avx2.nim
+  - cplib/utils/backwards_index.nim
+  - cplib/tmpl/fastio.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/fenwick_avx2.nim
   isVerificationFile: true

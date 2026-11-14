@@ -36,8 +36,8 @@ data:
     \   var p, x = ii()\n        st[p] = st[p] + x\n    else:\n        var l, r =\
     \ ii()\n        echo st[l..<r]\n"
   dependsOn:
-  - cplib/collections/root_rangesum.nim
   - cplib/utils/backwards_index.nim
+  - cplib/collections/root_rangesum.nim
   - cplib/utils/backwards_index.nim
   - cplib/collections/root_rangesum.nim
   isVerificationFile: true

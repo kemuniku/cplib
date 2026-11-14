@@ -42,11 +42,11 @@ data:
     \    echo u, \" \", v\n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/geometry/closest_pair.nim
+  - cplib/geometry/base.nim
   - cplib/tmpl/fastio.nim
   - cplib/geometry/closest_pair.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/closest_pair.nim
   isVerificationFile: true
   path: verify/geometry/closest_pair_test.nim
   requiredBy: []

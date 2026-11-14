@@ -36,9 +36,9 @@ data:
     var ans = newSeq[int](q)\nfor i in 0..<q:\n    let u = ii()\n    let v = ii()\n\
     \    ans[i] = tree.lca(u, v)\necho ans.join(\"\\n\")\n"
   dependsOn:
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/tree/lca.nim
   isVerificationFile: true
   path: verify/tree/lca/lca_yosupo_test.nim

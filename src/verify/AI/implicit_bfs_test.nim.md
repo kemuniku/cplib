@@ -170,14 +170,14 @@ data:
     \ adjacent, [@[1]]) == 1\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/implicit_bfs.nim
-  - cplib/utils/implicit_bfs.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/implicit_bfs.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
+  - cplib/utils/implicit_bfs.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/AI/implicit_bfs_test.nim

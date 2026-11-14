@@ -43,11 +43,11 @@ data:
     \n"
   dependsOn:
   - cplib/tmpl/fastio.nim
-  - cplib/geometry/closest_pair.nim
+  - cplib/geometry/base.nim
   - cplib/tmpl/fastio.nim
   - cplib/geometry/closest_pair.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/geometry/closest_pair.nim
   isVerificationFile: true
   path: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
   requiredBy: []

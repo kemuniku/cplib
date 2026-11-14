@@ -37,8 +37,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_static_op.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/segtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/segtree/segtree_static_op_test.nim
   requiredBy: []

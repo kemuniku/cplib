@@ -208,14 +208,14 @@ data:
     \ [@[1]], adjacent) == (@[emptyState, @[1]], 1)\n    doAssert implicit_dijkstra_until(emptyState,\
     \ adjacent, [@[1]]) == 1\n"
   dependsOn:
+  - cplib/utils/constants.nim
   - cplib/utils/implicit_dijkstra.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/graph.nim
   - cplib/utils/implicit_dijkstra.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true

@@ -158,6 +158,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/str/wildcard_matching.nim
     title: cplib/str/wildcard_matching.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/berlekamp_massey_test.nim
@@ -190,11 +196,23 @@ data:
     path: verify/AI/chirp_z_test.nim
     title: verify/AI/chirp_z_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/convolution_test.nim
     title: verify/AI/convolution_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/factoradic_signed_test.nim
     title: verify/AI/factoradic_signed_test.nim
@@ -231,6 +249,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/many_factorials_test.nim
     title: verify/AI/many_factorials_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/multipoint_cyclic_ntt_test.nim
     title: verify/AI/multipoint_cyclic_ntt_test.nim
@@ -1726,21 +1750,23 @@ data:
     \ [0u, 0u, M123, 2u * M123, 3u * M123]\n            x -= offset[diff mod 5]\n\
     \            ans[i] = cast[int](x)\n        return ans\n"
   dependsOn:
-  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/convolution/convolution.nim
   requiredBy:
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_oracle_driver.nim
   - cplib/str/wildcard_matching.nim
   - cplib/str/wildcard_matching.nim
   - cplib/convolution/algorithm_ntt.nim
@@ -1790,6 +1816,8 @@ data:
   - verify/AI/multipoint_cyclic_ntt_test.nim
   - verify/AI/bostan_mori_prefix_test.nim
   - verify/AI/bostan_mori_prefix_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/exact_circle_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/shift_of_sampling_points_test.nim
   - verify/AI/convolution_test.nim
@@ -1804,6 +1832,8 @@ data:
   - verify/AI/many_factorials_test.nim
   - verify/AI/factoradic_test.nim
   - verify/AI/factoradic_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/sparse_fps_elementary_test.nim
   - verify/AI/fps_composite_modulus_test.nim
@@ -1816,6 +1846,8 @@ data:
   - verify/AI/bmbm_test.nim
   - verify/AI/fps_test.nim
   - verify/AI/fps_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
   - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/AI/bostan_mori_frequency_reuse_test.nim
   - verify/convolution/relaxed_convolution_test.nim

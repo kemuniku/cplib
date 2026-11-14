@@ -50,8 +50,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: cplib/math/factoradic.nim
     title: cplib/math/factoradic.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/factoradic_signed_test.nim
     title: verify/AI/factoradic_signed_test.nim
   - icon: ':heavy_check_mark:'
@@ -63,6 +81,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/factoradic_test.nim
     title: verify/AI/factoradic_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/math/addition_of_big_integers_test.nim
     title: verify/math/addition_of_big_integers_test.nim
@@ -706,32 +730,40 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isqrt.nim
   - cplib/math/isprime.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/modint.nim
   - cplib/math/isqrt.nim
+  - cplib/math/isqrt.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/convolution/convolution.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_oracle_driver.nim
   - cplib/math/factoradic.nim
   - cplib/math/factoradic.nim
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/exact_circle_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/factoradic_signed_test.nim
   - verify/AI/factoradic_test.nim
   - verify/AI/factoradic_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/bigint_unit_test.nim
   - verify/math/division_of_big_integers_test.nim

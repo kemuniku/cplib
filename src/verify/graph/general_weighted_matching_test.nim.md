@@ -50,11 +50,11 @@ data:
   dependsOn:
   - cplib/tmpl/fastio.nim
   - cplib/tmpl/fastio.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/internal/weighted_matching_engine.nim
   - cplib/graph/general_weighted_matching.nim
+  - cplib/graph/graph.nim
   - cplib/graph/internal/weighted_matching_engine.nim
-  - cplib/graph/internal/weighted_matching_engine.nim
+  - cplib/graph/graph.nim
   - cplib/graph/general_weighted_matching.nim
   isVerificationFile: true
   path: verify/graph/general_weighted_matching_test.nim

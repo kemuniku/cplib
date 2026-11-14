@@ -15,6 +15,12 @@ data:
     path: cplib/geometry/ccw.nim
     title: cplib/geometry/ccw.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/circle.nim
+    title: cplib/geometry/circle.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/circle.nim
+    title: cplib/geometry/circle.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/closest_pair.nim
     title: cplib/geometry/closest_pair.nim
   - icon: ':heavy_check_mark:'
@@ -51,6 +57,12 @@ data:
     path: cplib/geometry/manhattan_mst.nim
     title: cplib/geometry/manhattan_mst.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/minimum_enclosing_circle.nim
+    title: cplib/geometry/minimum_enclosing_circle.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/minimum_enclosing_circle.nim
+    title: cplib/geometry/minimum_enclosing_circle.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/polygon.nim
     title: cplib/geometry/polygon.nim
   - icon: ':heavy_check_mark:'
@@ -63,6 +75,18 @@ data:
     path: cplib/geometry/projection.nim
     title: cplib/geometry/projection.nim
   - icon: ':warning:'
+    path: verify/AI/exact_circle_benchmark.nim
+    title: verify/AI/exact_circle_benchmark.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_benchmark.nim
+    title: verify/AI/exact_circle_benchmark.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
+  - icon: ':warning:'
+    path: verify/AI/exact_circle_oracle_driver.nim
+    title: verify/AI/exact_circle_oracle_driver.nim
+  - icon: ':warning:'
     path: verify/geometry/CGL_2/intersect_past16m_test_.nim
     title: verify/geometry/CGL_2/intersect_past16m_test_.nim
   - icon: ':warning:'
@@ -74,6 +98,18 @@ data:
   - icon: ':warning:'
     path: verify/geometry/convex_hull_abc286ex_test_.nim
     title: verify/geometry/convex_hull_abc286ex_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+    title: verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+    title: verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+    title: verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - icon: ':warning:'
+    path: verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+    title: verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/AI/angle_test.nim
@@ -88,6 +124,18 @@ data:
     path: verify/AI/ccw_test.nim
     title: verify/AI/ccw_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_generic_type_test.nim
+    title: verify/AI/circle_generic_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_test.nim
+    title: verify/AI/circle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/circle_test.nim
+    title: verify/AI/circle_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/closest_pair_test.nim
     title: verify/AI/closest_pair_test.nim
   - icon: ':heavy_check_mark:'
@@ -124,6 +172,24 @@ data:
     path: verify/AI/euclidean_mst_test.nim
     title: verify/AI/euclidean_mst_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_import_test.nim
+    title: verify/AI/exact_circle_import_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_import_test.nim
+    title: verify/AI/exact_circle_import_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_test.nim
+    title: verify/AI/exact_circle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_type_test.nim
+    title: verify/AI/exact_circle_type_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/exact_circle_type_test.nim
+    title: verify/AI/exact_circle_type_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/AI/geometry_base_test.nim
     title: verify/AI/geometry_base_test.nim
   - icon: ':heavy_check_mark:'
@@ -141,6 +207,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/AI/intersect_test.nim
     title: verify/AI/intersect_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_exact_test.nim
+    title: verify/AI/minimum_enclosing_circle_exact_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_test.nim
+    title: verify/AI/minimum_enclosing_circle_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/AI/minimum_enclosing_circle_test.nim
+    title: verify/AI/minimum_enclosing_circle_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/AI/polygon_boundary_degenerate_test.nim
     title: verify/AI/polygon_boundary_degenerate_test.nim
@@ -309,6 +387,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
     title: verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+    title: verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+    title: verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_common_tangents_test.nim
+    title: verify/geometry/CGL_7/circle_common_tangents_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_common_tangents_test.nim
+    title: verify/geometry/CGL_7/circle_common_tangents_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_line_cross_points_test.nim
+    title: verify/geometry/CGL_7/circle_line_cross_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_line_cross_points_test.nim
+    title: verify/geometry/CGL_7/circle_line_cross_points_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_point_tangents_test.nim
+    title: verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/circle_point_tangents_test.nim
+    title: verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/exact_circle_relation_test.nim
+    title: verify/geometry/CGL_7/exact_circle_relation_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_7/exact_circle_relation_test.nim
+    title: verify/geometry/CGL_7/exact_circle_relation_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/closest_pair_test.nim
     title: verify/geometry/closest_pair_test.nim
@@ -470,10 +578,18 @@ data:
   isVerificationFile: false
   path: cplib/geometry/base.nim
   requiredBy:
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - verify/geometry/CGL_2/intersect_past16m_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
   - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/AI/exact_circle_benchmark.nim
+  - verify/AI/exact_circle_benchmark.nim
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_oracle_driver.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/projection.nim
   - cplib/geometry/convex_polygon.nim
@@ -484,6 +600,10 @@ data:
   - cplib/geometry/euclidean_mst.nim
   - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/manhattan_mst.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
@@ -519,6 +639,16 @@ data:
   - verify/geometry/static_convex_hull_test.nim
   - verify/geometry/euclidean_mst_test.nim
   - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - verify/geometry/CGL_7/exact_circle_relation_test.nim
+  - verify/geometry/CGL_7/exact_circle_relation_test.nim
+  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_common_tangents_test.nim
+  - verify/geometry/CGL_7/circle_common_tangents_test.nim
   - verify/geometry/furthest_pair_test.nim
   - verify/geometry/furthest_pair_test.nim
   - verify/geometry/CGL_3/area_float_cgl3a_test.nim
@@ -561,12 +691,16 @@ data:
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/AI/polygon_boundary_degenerate_test.nim
   - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/AI/exact_circle_import_test.nim
+  - verify/AI/exact_circle_import_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/polygon_test.nim
   - verify/AI/distance_test.nim
   - verify/AI/distance_test.nim
   - verify/AI/closest_pair_test.nim
   - verify/AI/closest_pair_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/exact_circle_test.nim
   - verify/AI/convex_cut_test.nim
   - verify/AI/convex_cut_test.nim
   - verify/AI/convex_hull_regression_test.nim
@@ -581,12 +715,22 @@ data:
   - verify/AI/euclidean_mst_test.nim
   - verify/AI/angle_test.nim
   - verify/AI/angle_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/circle_test.nim
+  - verify/AI/circle_test.nim
   - verify/AI/projection_test.nim
   - verify/AI/projection_test.nim
   - verify/AI/intersect_test.nim
   - verify/AI/intersect_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/exact_circle_type_test.nim
+  - verify/AI/exact_circle_type_test.nim
   - verify/AI/convex_polygon_test.nim
   - verify/AI/convex_polygon_test.nim
+  - verify/AI/minimum_enclosing_circle_test.nim
+  - verify/AI/minimum_enclosing_circle_test.nim
 documentation_of: cplib/geometry/base.nim
 layout: document
 redirect_from:
