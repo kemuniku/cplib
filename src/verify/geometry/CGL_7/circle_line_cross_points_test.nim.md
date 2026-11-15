@@ -56,13 +56,13 @@ data:
     \    output(points)\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle.nim
-  - cplib/geometry/circle.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
   isVerificationFile: true
   path: verify/geometry/CGL_7/circle_line_cross_points_test.nim
   requiredBy: []

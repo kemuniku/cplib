@@ -129,8 +129,8 @@ data:
     \    checkLarge(points, 1'i64)\n    checkLarge(points.mapIt(initPoint(float64(it.x),\
     \ float64(it.y))), 1.0)\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/geometry/base.nim
   - cplib/geometry/closest_pair.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/closest_pair.nim
   isVerificationFile: true

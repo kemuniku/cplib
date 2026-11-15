@@ -21,6 +21,12 @@ data:
     path: cplib/geometry/convex_polygon.nim
     title: cplib/geometry/convex_polygon.nim
   - icon: ':heavy_check_mark:'
+    path: cplib/geometry/half_plane_intersection.nim
+    title: cplib/geometry/half_plane_intersection.nim
+  - icon: ':heavy_check_mark:'
+    path: cplib/geometry/half_plane_intersection.nim
+    title: cplib/geometry/half_plane_intersection.nim
+  - icon: ':heavy_check_mark:'
     path: cplib/geometry/minimum_enclosing_circle.nim
     title: cplib/geometry/minimum_enclosing_circle.nim
   - icon: ':heavy_check_mark:'
@@ -280,6 +286,12 @@ data:
     path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
     title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+    title: verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+    title: verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/CGL_7/circle_circle_cross_points_test.nim
     title: verify/geometry/CGL_7/circle_circle_cross_points_test.nim
   - icon: ':heavy_check_mark:'
@@ -315,6 +327,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/furthest_pair_test.nim
     title: verify/geometry/furthest_pair_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/half_plane_intersection_test.nim
+    title: verify/geometry/half_plane_intersection_test.nim
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/half_plane_intersection_test.nim
+    title: verify/geometry/half_plane_intersection_test.nim
   - icon: ':heavy_check_mark:'
     path: verify/geometry/static_convex_hull_test.nim
     title: verify/geometry/static_convex_hull_test.nim
@@ -487,6 +505,8 @@ data:
   - cplib/geometry/convex_polygon.nim
   - cplib/geometry/polygon.nim
   - cplib/geometry/polygon.nim
+  - cplib/geometry/half_plane_intersection.nim
+  - cplib/geometry/half_plane_intersection.nim
   - cplib/geometry/circle.nim
   - cplib/geometry/circle.nim
   - cplib/geometry/minimum_enclosing_circle.nim
@@ -500,6 +520,8 @@ data:
   timestamp: '2026-10-01 02:25:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/geometry/half_plane_intersection_test.nim
+  - verify/geometry/half_plane_intersection_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
   - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
@@ -544,6 +566,8 @@ data:
   - verify/geometry/CGL_4/diameter_cgl4b_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
   - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+  - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
   - verify/AI/polygon_boundary_degenerate_test.nim
   - verify/AI/polygon_boundary_degenerate_test.nim
   - verify/AI/exact_circle_import_test.nim

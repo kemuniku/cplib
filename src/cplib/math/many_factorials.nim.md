@@ -202,30 +202,30 @@ data:
     \            if 2 * width < blockSize:\n                polynomial = polynomial\
     \ * taylorShift(polynomial, init(T, width))\n            width *= 2\n"
   dependsOn:
-  - cplib/math/isprime.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/fps/shift_of_sampling_points.nim
   - cplib/fps/taylor_shift.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
   - cplib/fps/product_tree.nim
-  - cplib/modint/modint.nim
-  - cplib/fps/taylor_shift.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/fps/product_tree.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/algorithm_ntt.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/fps/shift_of_sampling_points.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/fps/taylor_shift.nim
+  - cplib/fps/shift_of_sampling_points.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/math/many_factorials.nim
   requiredBy: []

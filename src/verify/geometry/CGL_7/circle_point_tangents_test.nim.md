@@ -56,13 +56,13 @@ data:
     \n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle.nim
-  - cplib/geometry/circle.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
   isVerificationFile: true
   path: verify/geometry/CGL_7/circle_point_tangents_test.nim
   requiredBy: []

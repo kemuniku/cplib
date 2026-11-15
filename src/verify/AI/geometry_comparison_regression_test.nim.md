@@ -101,9 +101,9 @@ data:
     \ 2), initPoint(1, 3))\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
   isVerificationFile: true
   path: verify/AI/geometry_comparison_regression_test.nim
   requiredBy: []

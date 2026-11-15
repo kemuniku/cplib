@@ -428,6 +428,9 @@ data:
       path: cplib/geometry/euclidean_mst.nim
       title: cplib/geometry/euclidean_mst.nim
     - icon: ':heavy_check_mark:'
+      path: cplib/geometry/half_plane_intersection.nim
+      title: cplib/geometry/half_plane_intersection.nim
+    - icon: ':heavy_check_mark:'
       path: cplib/geometry/intersect.nim
       title: cplib/geometry/intersect.nim
     - icon: ':heavy_check_mark:'
@@ -2936,6 +2939,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/CGL_4/diameter_cgl4b_test.nim
       title: verify/geometry/CGL_4/diameter_cgl4b_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+      title: verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
   - name: verify/geometry/CGL_5
     pages:
     - icon: ':heavy_check_mark:'
@@ -2969,6 +2975,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/furthest_pair_test.nim
       title: verify/geometry/furthest_pair_test.nim
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/half_plane_intersection_test.nim
+      title: verify/geometry/half_plane_intersection_test.nim
     - icon: ':heavy_check_mark:'
       path: verify/geometry/manhattan_mst_random_test.nim
       title: verify/geometry/manhattan_mst_random_test.nim

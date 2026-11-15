@@ -209,14 +209,14 @@ data:
     \ adjacent, [@[1]]) == 1\n"
   dependsOn:
   - cplib/utils/constants.nim
+  - cplib/graph/graph.nim
   - cplib/utils/implicit_dijkstra.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
-  - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
   - cplib/utils/implicit_dijkstra.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/AI/implicit_dijkstra_test.nim

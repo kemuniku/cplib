@@ -159,9 +159,9 @@ data:
     \       self.queue.poppedSum\n"
   dependsOn:
   - cplib/collections/retroactive_priority_queue.nim
-  - cplib/collections/compressed_coordinates_internal.nim
-  - cplib/collections/compressed_coordinates_internal.nim
   - cplib/collections/retroactive_priority_queue.nim
+  - cplib/collections/compressed_coordinates_internal.nim
+  - cplib/collections/compressed_coordinates_internal.nim
   isVerificationFile: false
   path: cplib/collections/compressed_retroactive_priority_queue.nim
   requiredBy:

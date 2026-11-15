@@ -112,12 +112,12 @@ data:
     \ 1) == (@[0, 1], 1)\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/utils/constants.nim
-  - cplib/graph/dijkstra.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
+  - cplib/graph/graph.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
-  - cplib/graph/graph.nim
+  - cplib/graph/dijkstra.nim
   - cplib/graph/dijkstra.nim
   isVerificationFile: true
   path: verify/graph/dijkstra_custom_types_test.nim

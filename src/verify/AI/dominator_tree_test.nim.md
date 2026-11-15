@@ -78,8 +78,8 @@ data:
     \ fromZero[n - 1] == -1\n    doAssert fromZero[n - 2] == 0\n    for v in 1..<n\
     \ - 2:\n        doAssert fromZero[v] == v + 1\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/graph/dominator_tree.nim
   - cplib/graph/graph.nim
+  - cplib/graph/dominator_tree.nim
   - cplib/graph/graph.nim
   - cplib/graph/dominator_tree.nim
   isVerificationFile: true

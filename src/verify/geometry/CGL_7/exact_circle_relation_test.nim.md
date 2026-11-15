@@ -61,13 +61,13 @@ data:
     '
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle.nim
-  - cplib/geometry/circle.nim
-  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
   isVerificationFile: true
   path: verify/geometry/CGL_7/exact_circle_relation_test.nim
   requiredBy: []

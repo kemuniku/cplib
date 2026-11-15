@@ -59,12 +59,12 @@ data:
     \ = farthest(0).vertex\nlet (last, cost) = farthest(first)\nlet (path, _) = shortest_path_implicit_bfs(@[first],\
     \ @[last], adjacent)\necho cost, \" \", path.len\necho path.join(\" \")\n"
   dependsOn:
-  - cplib/tmpl/fastio.nim
   - cplib/utils/constants.nim
-  - cplib/tmpl/fastio.nim
+  - cplib/utils/constants.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/implicit_bfs.nim
-  - cplib/utils/constants.nim
+  - cplib/tmpl/fastio.nim
+  - cplib/tmpl/fastio.nim
   - cplib/tmpl/sheep.nim
   - cplib/utils/implicit_bfs.nim
   isVerificationFile: true

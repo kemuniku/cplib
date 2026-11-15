@@ -76,18 +76,18 @@ data:
     1\")))\nstatic:\n    doAssert not declared(CPLIB_MATH_BIGINT)\n    doAssert not\
     \ compiles(initCircle(initPoint(0'u64, 0'u64), 1))\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/int128.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle.nim
   - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/geometry/circle.nim
-  - cplib/geometry/base.nim
-  - cplib/math/int128.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/circle.nim
+  - cplib/math/int128.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/exact_circle_type_test.nim
   requiredBy: []

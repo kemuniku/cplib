@@ -154,34 +154,34 @@ data:
     \ = minimum_enclosing_circle(large)\nfor p in large: doAssert enclosing.contains(p)\n\
     echo \"Hello World\"\n"
   dependsOn:
-  - cplib/math/bigint.nim
-  - cplib/math/isprime.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/math/isqrt.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
   - cplib/modint/modint.nim
   - cplib/geometry/base.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/int128.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/geometry/circle.nim
-  - cplib/math/int128.nim
-  - cplib/math/fractions.nim
   - cplib/convolution/convolution.nim
+  - cplib/math/inv_gcd.nim
   - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/geometry/circle.nim
+  - cplib/math/fractions.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
+  - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/int128.nim
   - cplib/math/isprime.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/circle.nim
+  - cplib/math/bigint.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/math/fractions.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/math/isprime.nim
+  - cplib/math/bigint.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/minimum_enclosing_circle_exact_test.nim
   requiredBy: []

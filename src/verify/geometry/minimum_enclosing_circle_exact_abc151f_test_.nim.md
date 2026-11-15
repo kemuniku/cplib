@@ -81,16 +81,16 @@ data:
   dependsOn:
   - cplib/math/int128.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle.nim
   - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/geometry/circle.nim
-  - cplib/geometry/base.nim
-  - cplib/math/int128.nim
   - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/base.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/math/int128.nim
   isVerificationFile: false
   path: verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
   requiredBy: []

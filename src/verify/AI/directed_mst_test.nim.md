@@ -121,13 +121,13 @@ data:
     \ World\"\n"
   dependsOn:
   - cplib/math/int128.nim
+  - cplib/collections/lazy_leftist_heap.nim
   - cplib/graph/graph.nim
   - cplib/collections/lazy_leftist_heap.nim
   - cplib/graph/directed_mst.nim
-  - cplib/graph/directed_mst.nim
-  - cplib/graph/graph.nim
   - cplib/math/int128.nim
-  - cplib/collections/lazy_leftist_heap.nim
+  - cplib/graph/graph.nim
+  - cplib/graph/directed_mst.nim
   isVerificationFile: true
   path: verify/AI/directed_mst_test.nim
   requiredBy: []

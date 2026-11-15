@@ -70,8 +70,8 @@ data:
   dependsOn:
   - cplib/math/isprime.nim
   - cplib/math/eratosthenes.nim
-  - cplib/math/eratosthenes.nim
   - cplib/math/isprime.nim
+  - cplib/math/eratosthenes.nim
   isVerificationFile: true
   path: verify/AI/eratosthenes_test.nim
   requiredBy: []

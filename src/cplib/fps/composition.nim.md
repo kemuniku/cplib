@@ -317,26 +317,26 @@ data:
     \            m = next\n\n    proc compositionalInverse*[T: BarrettModint or MontgomeryModint](\n\
     \            f: seq[T]): seq[T] = f.compositionalInverse(f.len)\n"
   dependsOn:
-  - cplib/fps/power_projection.nim
-  - cplib/math/isprime.nim
+  - cplib/fps/formal_power_series.nim
   - cplib/fps/power_projection.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/modint.nim
-  - cplib/modint/modint.nim
   - cplib/convolution/convolution.nim
-  - cplib/convolution/algorithm_ntt.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
   - cplib/modint/montgomery_impl.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
+  - cplib/modint/modint.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/convolution/algorithm_ntt.nim
-  - cplib/fps/formal_power_series.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isprime.nim
-  - cplib/fps/formal_power_series.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/fps/power_projection.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/convolution/algorithm_ntt.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/modint.nim
   isVerificationFile: false
   path: cplib/fps/composition.nim
   requiredBy:
