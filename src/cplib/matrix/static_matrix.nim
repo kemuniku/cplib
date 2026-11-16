@@ -1,6 +1,7 @@
 when not declared CPLIB_MATRIX_STATIC_MATRIX:
     const CPLIB_MATRIX_STATIC_MATRIX* = 1
     import sequtils, hashes
+    import cplib/matrix/semiring_matrix_ops
     type StaticMatrix*[H: static int, W: static int, T] = object
         arr: array[H*W,T]
     type SubArray*[H:static int,W:static int,T] = object
@@ -22,6 +23,10 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
     proc initMatrix*[H: static int, W: static int, T](val: T): StaticMatrix[H,W,T] =
         for i in 0..<H*W:
             result.arr[i] = val
+
+    proc initMatrix*[H: static int, W: static int, T](): StaticMatrix[H,W,T] =
+        ## 要素型の加法単位元で初期化する。O(HW)。
+        for i in 0..<H*W: result.arr[i] = matrixZero(T)
 
     proc h*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): int = H
     proc w*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): int = W
@@ -47,8 +52,10 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
         for i in 0..<H*W:
             result.arr[i] = -m.arr[i]
     proc `*=`*[H: static int, W: static int, T](a: var StaticMatrix[H,W,T], b: StaticMatrix[W,W,T]) =
+        ## 半環の行列積で更新する。O(HW(W+1))、追加領域O(HW)。
         assert a.w == b.h, "左の行列の列数と右の行列の行数は等しい必要があります"
-        var ans : StaticMatrix[H,W,T]
+        var ans: StaticMatrix[H,W,T]
+        for i in 0..<H*W: ans.arr[i] = matrixZero(T)
         for i in 0..<a.h:
             for j in 0..<b.w:
                 for k in 0..<a.w:
@@ -59,6 +66,8 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
             for j in 0..<a.w:
                 a[i, j] *= x
     proc `*`*[A: static int, B: static int, C: static int, T](a: StaticMatrix[A,B,T],b:StaticMatrix[B,C,T]): StaticMatrix[A,C,T] =
+        ## 半環の行列積を求める。O(AC(B+1))、結果領域O(AC)。
+        for i in 0..<A*C: result.arr[i] = matrixZero(T)
         for i in 0..<A:
             for j in 0..<C:
                 for k in 0..<B:
@@ -120,19 +129,33 @@ when not declared CPLIB_MATRIX_STATIC_MATRIX:
             result.arr[i] = zero
         for i in 0..<H: result[i, i] = one
     proc identity_matrix*[H: static int, W: static int, T](n: int): StaticMatrix[H,W,T] =
+        ## 要素型の単位元から単位行列を作る。O(HW)。
         assert H == W and n == H, "正方行列で、指定したサイズnが行数Hと一致する必要があります"
-        for i in 0..<H: result[i, i] = T(1)
+        for i in 0..<H*W: result.arr[i] = matrixZero(T)
+        for i in 0..<H: result[i, i] = matrixOne(T)
     proc pow*[H: static int, W: static int, T](m: StaticMatrix[H,W,T], n: int): StaticMatrix[H,W,T] =
-        assert H == W, "行列は正方行列である必要があります"
-        for i in 0..<H: result[i, i] = T(1)
-        var m = m
-        var n = n
-        while n > 0:
-            if (n and 1) == 1: result *= m
-            m *= m
-            n = n shr 1
+        ## zero/oneを持つ半環は非負整数乗。O(H^2+H^3 log(n+1))、追加領域O(H^2)。
+        when hasMatrixIdentities(T):
+            when H != W:
+                raise newException(ValueError, "正方行列が必要です")
+            else:
+                var identity: StaticMatrix[H,W,T]
+                for i in 0..<H*W: identity.arr[i] = matrixZero(T)
+                for i in 0..<H: identity[i, i] = matrixOne(T)
+                return semiringMatrixPow(m, n, identity)
+        else:
+            assert H == W, "行列は正方行列である必要があります"
+            for i in 0..<H: result[i, i] = T(1)
+            var m = m
+            var n = n
+            while n > 0:
+                if (n and 1) == 1: result *= m
+                m *= m
+                n = n shr 1
     proc `**`*[H: static int, W: static int, T](m: StaticMatrix[H,W,T], n: int): StaticMatrix[H,W,T] = m.pow(n)
     proc sum*[H: static int, W: static int, T](m: StaticMatrix[H,W,T]): T =
+        ## 要素を半環の加法で集約する。空行列は加法単位元。O(HW)。
+        result = matrixZero(T)
         for i in 0..<H*W:
             result += m.arr[i]
 
