@@ -262,12 +262,12 @@ data:
     \u7D4C\u8DEF\u3068\u6700\u77ED\u8DDD\u96E2\u3092\u8FD4\u3059\u3002\n        shortest_path_dijkstra_impl(G,\
     \ start, goal, ZERO, INF)\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
   - cplib/utils/constants.nim
   - cplib/graph/restore_shortest_path_from_prev.nim
-  - cplib/graph/restore_shortest_path_from_prev.nim
   - cplib/graph/graph.nim
+  - cplib/utils/constants.nim
   isVerificationFile: false
   path: cplib/graph/dijkstra.nim
   requiredBy:
@@ -276,34 +276,34 @@ data:
   timestamp: '2026-10-29 04:15:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/graph_edge_id_test.nim
-  - verify/AI/graph_edge_id_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
   - verify/AI/implicit_bfs_test.nim
   - verify/AI/implicit_bfs_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/tsp_test.nim
+  - verify/AI/graph_storage_test.nim
+  - verify/AI/graph_storage_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/graph_edge_id_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/dijkstra_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
   - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/implicit_dijkstra_test.nim
   - verify/AI/dijkstra_radix_test.nim
   - verify/AI/dijkstra_radix_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/tsp_test.nim
-  - verify/AI/dijkstra_test.nim
-  - verify/AI/dijkstra_test.nim
-  - verify/AI/graph_storage_test.nim
-  - verify/AI/graph_storage_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/shortest_path_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
-  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dijkstra_custom_cmp_test.nim
+  - verify/graph/dijkstra_custom_cmp_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/shortest_path_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
   - verify/graph/static/restore_dijkstra_static_test.nim
-  - verify/graph/dijkstra_custom_cmp_test.nim
-  - verify/graph/dijkstra_custom_cmp_test.nim
   - verify/graph/dijkstra_custom_types_test.nim
   - verify/graph/dijkstra_custom_types_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/shortest_path_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
+  - verify/graph/dynamic/restore_dijkstra_test.nim
 documentation_of: cplib/graph/dijkstra.nim
 layout: document
 redirect_from:

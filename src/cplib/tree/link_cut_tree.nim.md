@@ -126,8 +126,8 @@ data:
     \ self.inverse(self.nodes[child].all))\n\n    declareLinkCutTreeOperations(LinkCutTree)\n"
   dependsOn:
   - cplib/tree/private/link_cut_tree_base.nim
-  - cplib/utils/backwards_index.nim
   - cplib/tree/private/link_cut_tree_base.nim
+  - cplib/utils/backwards_index.nim
   - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/tree/link_cut_tree.nim
@@ -135,16 +135,16 @@ data:
   timestamp: '2026-09-18 12:10:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tree/link_cut_tree/link_cut_tree_test.nim
-  - verify/tree/link_cut_tree/link_cut_tree_test.nim
-  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
-  - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
-  - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
+  - verify/tree/link_cut_tree/link_cut_tree_test.nim
+  - verify/tree/link_cut_tree/link_cut_tree_test.nim
+  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_path_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_add_subtree_sum_test.nim
+  - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
+  - verify/tree/link_cut_tree/vertex_set_path_composite_test.nim
 documentation_of: cplib/tree/link_cut_tree.nim
 layout: document
 redirect_from:

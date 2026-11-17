@@ -730,52 +730,52 @@ data:
     \        for digit in x.digits:\n            result = result !& hashes.hash(digit)\n\
     \        result = !$result\n"
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
   - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/math/isprime.nim
-  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
   - cplib/math/isqrt.nim
-  - cplib/math/isprime.nim
+  - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
-  - cplib/modint/barrett_impl.nim
-  - cplib/modint/barrett_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
   - cplib/math/inv_gcd.nim
   isVerificationFile: false
   path: cplib/math/bigint.nim
   requiredBy:
-  - verify/AI/exact_circle_oracle_driver.nim
-  - verify/AI/exact_circle_oracle_driver.nim
   - cplib/math/factoradic.nim
   - cplib/math/factoradic.nim
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_oracle_driver.nim
   timestamp: '2026-10-08 06:34:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/exact_circle_test.nim
-  - verify/AI/exact_circle_test.nim
-  - verify/AI/factoradic_signed_test.nim
-  - verify/AI/factoradic_signed_test.nim
-  - verify/AI/factoradic_test.nim
-  - verify/AI/factoradic_test.nim
-  - verify/AI/minimum_enclosing_circle_exact_test.nim
-  - verify/AI/minimum_enclosing_circle_exact_test.nim
-  - verify/AI/circle_generic_type_test.nim
-  - verify/AI/circle_generic_type_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/bigint_unit_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/division_of_big_integers_test.nim
-  - verify/math/bigint_parse_unit_test.nim
-  - verify/math/bigint_parse_unit_test.nim
-  - verify/math/addition_of_big_integers_test.nim
-  - verify/math/addition_of_big_integers_test.nim
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/bigint_bitops_unit_test.nim
   - verify/math/crt_test.nim
   - verify/math/crt_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/bigint_unit_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/bigint_parse_unit_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/addition_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/math/division_of_big_integers_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/factoradic_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/factoradic_signed_test.nim
+  - verify/AI/factoradic_signed_test.nim
 documentation_of: cplib/math/bigint.nim
 layout: document
 redirect_from:

@@ -181,22 +181,22 @@ data:
     \u540C\u3058\u3002\n        var converted = newSeq[Point[T]](points.len)\n   \
     \     for i, p in points:\n            converted[i] = initPoint(p)\n        euclidean_mst(converted)\n"
   dependsOn:
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/math/int128.nim
   - cplib/math/int128.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/geometry/euclidean_mst.nim
   requiredBy: []
   timestamp: '2026-11-13 04:38:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/euclidean_mst_test.nim
-  - verify/geometry/euclidean_mst_test.nim
   - verify/AI/euclidean_mst_test.nim
   - verify/AI/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
 documentation_of: cplib/geometry/euclidean_mst.nim
 layout: document
 redirect_from:

@@ -125,12 +125,12 @@ data:
     \ RangeChminChmaxRangeSumMaxMin[T], segment: HSlice[int, int], val: T) = self.seg.apply(segment,\
     \ F_rch[T](lb: -self.inf, ub: self.inf, add: val))\n"
   dependsOn:
-  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/utils/constants.nim
   - cplib/utils/backwards_index.nim
+  - cplib/utils/constants.nim
+  - cplib/collections/segtree_beats.nim
   - cplib/utils/backwards_index.nim
-  - cplib/collections/segtree_beats.nim
-  - cplib/collections/segtree_beats.nim
   isVerificationFile: false
   path: cplib/collections/segtree_beats_template.nim
   requiredBy: []
@@ -139,10 +139,10 @@ data:
   verifiedWith:
   - verify/AI/segtree_beats_template_test.nim
   - verify/AI/segtree_beats_template_test.nim
-  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
-  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/collections/segtree_beats_assignment_test.nim
   - verify/collections/segtree_beats_assignment_test.nim
+  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
+  - verify/collections/range_chmin_chmax_add_range_sum_test.nim
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/collections/segtree_beats_template.nim

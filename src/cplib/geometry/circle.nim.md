@@ -299,52 +299,52 @@ data:
     \n        circleFloatCommonTangents(c, circleFloatInit(p, 0), tolerance)\n\n \
     \   include cplib/geometry/circle_integer_impl\n"
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle_integer_impl.nim
   isVerificationFile: false
   path: cplib/geometry/circle.nim
   requiredBy:
-  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
-  - verify/AI/exact_circle_benchmark.nim
-  - verify/AI/exact_circle_benchmark.nim
-  - verify/AI/exact_circle_oracle_driver.nim
-  - verify/AI/exact_circle_oracle_driver.nim
   - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/geometry/minimum_enclosing_circle.nim
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_benchmark.nim
+  - verify/AI/exact_circle_benchmark.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
   timestamp: '2026-11-15 07:34:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/CGL_7/circle_point_tangents_test.nim
-  - verify/geometry/CGL_7/circle_point_tangents_test.nim
-  - verify/geometry/CGL_7/exact_circle_relation_test.nim
-  - verify/geometry/CGL_7/exact_circle_relation_test.nim
-  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_common_tangents_test.nim
-  - verify/geometry/CGL_7/circle_common_tangents_test.nim
-  - verify/AI/exact_circle_import_test.nim
-  - verify/AI/exact_circle_import_test.nim
-  - verify/AI/exact_circle_test.nim
-  - verify/AI/exact_circle_test.nim
-  - verify/AI/minimum_enclosing_circle_exact_test.nim
-  - verify/AI/minimum_enclosing_circle_exact_test.nim
   - verify/AI/circle_test.nim
   - verify/AI/circle_test.nim
-  - verify/AI/circle_generic_type_test.nim
-  - verify/AI/circle_generic_type_test.nim
   - verify/AI/exact_circle_type_test.nim
   - verify/AI/exact_circle_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/exact_circle_import_test.nim
+  - verify/AI/exact_circle_import_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
   - verify/AI/minimum_enclosing_circle_test.nim
   - verify/AI/minimum_enclosing_circle_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - verify/geometry/CGL_7/circle_common_tangents_test.nim
+  - verify/geometry/CGL_7/circle_common_tangents_test.nim
+  - verify/geometry/CGL_7/exact_circle_relation_test.nim
+  - verify/geometry/CGL_7/exact_circle_relation_test.nim
+  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
 documentation_of: cplib/geometry/circle.nim
 layout: document
 redirect_from:

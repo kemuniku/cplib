@@ -276,25 +276,25 @@ data:
   isVerificationFile: false
   path: cplib/matrix/matrix_avx2_kernel.nim
   requiredBy:
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
-  - verify/matrix/linear_algebra/field_algorithms_unit.nim
-  - verify/matrix/linear_algebra/judge_driver.nim
-  - verify/matrix/linear_algebra/judge_driver.nim
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/static_matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
   - cplib/matrix/matrix_avx2.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/judge_driver.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
+  - verify/matrix/linear_algebra/field_algorithms_unit.nim
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix/matrix_avx2_gc_test.nim
-  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/utils/backwards_index_simd_test.nim
+  - verify/utils/backwards_index_simd_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
   - verify/matrix/matrix_avx2_unit_test.nim
-  - verify/utils/backwards_index_simd_test.nim
-  - verify/utils/backwards_index_simd_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
+  - verify/matrix/matrix_avx2_gc_test.nim
 documentation_of: cplib/matrix/matrix_avx2_kernel.nim
 layout: document
 redirect_from:

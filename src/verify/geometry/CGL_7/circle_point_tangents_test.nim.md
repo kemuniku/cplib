@@ -55,10 +55,10 @@ data:
     outputPoints.sort(compare)\nfor p in outputPoints: echo &\"{p.x:.10f} {p.y:.10f}\"\
     \n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/circle.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/base.nim
   - cplib/geometry/circle.nim
   - cplib/geometry/circle_integer_impl.nim

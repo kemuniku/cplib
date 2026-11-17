@@ -73,18 +73,18 @@ data:
 
     '
   dependsOn:
-  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/math/isqrt.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/matrix/matrix.nim
+  - cplib/modint/montgomery_impl.nim
   - cplib/modint/barrett_impl.nim
-  - cplib/matrix/matrix.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/matrix/field_matrix_ops.nim
   - cplib/modint/modint.nim
+  - cplib/modint/modint.nim
+  - cplib/matrix/matrix.nim
   isVerificationFile: false
   path: verify/matrix/matrix_dpr_test_.nim
   requiredBy: []

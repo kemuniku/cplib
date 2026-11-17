@@ -207,10 +207,10 @@ data:
     doAssert stairs.kind == hpiUnbounded and stairs.dimension == 2\ndoAssert stairs.vertices.len\
     \ == 19999\n\necho \"Hello World\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/half_plane_intersection.nim
   - cplib/geometry/half_plane_intersection.nim
   isVerificationFile: true

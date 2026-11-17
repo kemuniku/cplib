@@ -217,10 +217,10 @@ data:
   - verify/AI/compressed_lazysegtree_test.nim
   - verify/AI/lazysegtree_test.nim
   - verify/AI/lazysegtree_test.nim
-  - verify/collections/lazysegtree/get_all_test.nim
-  - verify/collections/lazysegtree/get_all_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
   - verify/collections/lazysegtree/rangeaffinerangesum_test.nim
+  - verify/collections/lazysegtree/get_all_test.nim
+  - verify/collections/lazysegtree/get_all_test.nim
   - verify/collections/lazysegtree/binary_search_test.nim
   - verify/collections/lazysegtree/binary_search_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_test.nim

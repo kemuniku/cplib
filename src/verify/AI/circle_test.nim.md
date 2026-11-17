@@ -121,11 +121,11 @@ data:
     \ + 1) + 1e-9: inc segmentCount\n    doAssert cross_points(a, sl).points.len ==\
     \ segmentCount\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/circle.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/circle.nim
   - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle_integer_impl.nim

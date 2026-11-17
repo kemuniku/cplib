@@ -70,10 +70,10 @@ data:
   verifiedWith:
   - verify/AI/graph_edge_id_test.nim
   - verify/AI/graph_edge_id_test.nim
-  - verify/AI/graph_weight_type_test.nim
-  - verify/AI/graph_weight_type_test.nim
   - verify/AI/reverse_edge_test.nim
   - verify/AI/reverse_edge_test.nim
+  - verify/AI/graph_weight_type_test.nim
+  - verify/AI/graph_weight_type_test.nim
 documentation_of: cplib/graph/reverse_edge.nim
 layout: document
 redirect_from:

@@ -74,10 +74,10 @@ data:
   verifiedWith:
   - verify/AI/weightedunionfind_test.nim
   - verify/AI/weightedunionfind_test.nim
-  - verify/collections/WeightedUnionFind_test.nim
-  - verify/collections/WeightedUnionFind_test.nim
   - verify/collections/weightedunionfind_assertions_off_test.nim
   - verify/collections/weightedunionfind_assertions_off_test.nim
+  - verify/collections/WeightedUnionFind_test.nim
+  - verify/collections/WeightedUnionFind_test.nim
 documentation_of: cplib/collections/weightedunionfind.nim
 layout: document
 redirect_from:

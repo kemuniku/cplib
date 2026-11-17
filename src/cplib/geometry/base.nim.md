@@ -596,165 +596,165 @@ data:
   isVerificationFile: false
   path: cplib/geometry/base.nim
   requiredBy:
-  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
-  - verify/geometry/CGL_2/intersect_past16m_test_.nim
-  - verify/geometry/CGL_2/intersect_past16m_test_.nim
-  - verify/geometry/convex_hull_abc286ex_test_.nim
-  - verify/geometry/convex_hull_abc286ex_test_.nim
-  - verify/AI/exact_circle_benchmark.nim
-  - verify/AI/exact_circle_benchmark.nim
-  - verify/AI/exact_circle_oracle_driver.nim
-  - verify/AI/exact_circle_oracle_driver.nim
-  - cplib/geometry/projection.nim
-  - cplib/geometry/projection.nim
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/convex_polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/polygon.nim
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/geometry/euclidean_mst.nim
-  - cplib/geometry/manhattan_mst.nim
-  - cplib/geometry/manhattan_mst.nim
-  - cplib/geometry/half_plane_intersection.nim
-  - cplib/geometry/half_plane_intersection.nim
-  - cplib/geometry/circle.nim
-  - cplib/geometry/circle.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/geometry/ccw.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/angle.nim
   - cplib/geometry/angle.nim
-  - cplib/geometry/distance.nim
-  - cplib/geometry/distance.nim
-  - cplib/geometry/closest_pair.nim
-  - cplib/geometry/closest_pair.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/manhattan_mst.nim
+  - cplib/geometry/manhattan_mst.nim
   - cplib/geometry/intersect.nim
   - cplib/geometry/intersect.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/circle.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/geometry/euclidean_mst.nim
+  - cplib/geometry/closest_pair.nim
+  - cplib/geometry/closest_pair.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/convex_polygon.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/half_plane_intersection.nim
+  - cplib/geometry/half_plane_intersection.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/distance.nim
+  - cplib/geometry/projection.nim
+  - cplib/geometry/projection.nim
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_oracle_driver.nim
+  - verify/AI/exact_circle_benchmark.nim
+  - verify/AI/exact_circle_benchmark.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/CGL_2/intersect_past16m_test_.nim
+  - verify/geometry/CGL_2/intersect_past16m_test_.nim
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
   timestamp: '2026-10-06 01:57:50+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/manhattan_mst_random_test.nim
-  - verify/geometry/manhattan_mst_random_test.nim
-  - verify/geometry/closest_pair_test.nim
-  - verify/geometry/closest_pair_test.nim
-  - verify/geometry/half_plane_intersection_test.nim
-  - verify/geometry/half_plane_intersection_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
-  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
-  - verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - verify/geometry/CGL_1/projection_cgl1a_test.nim
-  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
-  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
-  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/AI/circle_test.nim
+  - verify/AI/circle_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/convex_hull_regression_test.nim
+  - verify/AI/exact_circle_type_test.nim
+  - verify/AI/exact_circle_type_test.nim
+  - verify/AI/projection_test.nim
+  - verify/AI/projection_test.nim
+  - verify/AI/convex_polygon_test.nim
+  - verify/AI/convex_polygon_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/geometry_base_test.nim
+  - verify/AI/geometry_base_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/angle_test.nim
+  - verify/AI/geometry_comparison_regression_test.nim
+  - verify/AI/geometry_comparison_regression_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/exact_circle_import_test.nim
+  - verify/AI/exact_circle_import_test.nim
+  - verify/AI/euclidean_mst_test.nim
+  - verify/AI/euclidean_mst_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/ccw_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_exact_test.nim
+  - verify/AI/minimum_enclosing_circle_test.nim
+  - verify/AI/minimum_enclosing_circle_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/exact_circle_test.nim
+  - verify/AI/distance_test.nim
+  - verify/AI/distance_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/AI/closest_pair_test.nim
+  - verify/AI/closest_pair_test.nim
+  - verify/AI/intersect_test.nim
+  - verify/AI/intersect_test.nim
   - verify/geometry/static_convex_hull_test.nim
   - verify/geometry/static_convex_hull_test.nim
-  - verify/geometry/euclidean_mst_test.nim
-  - verify/geometry/euclidean_mst_test.nim
-  - verify/geometry/CGL_7/circle_point_tangents_test.nim
-  - verify/geometry/CGL_7/circle_point_tangents_test.nim
-  - verify/geometry/CGL_7/exact_circle_relation_test.nim
-  - verify/geometry/CGL_7/exact_circle_relation_test.nim
-  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
-  - verify/geometry/CGL_7/circle_common_tangents_test.nim
-  - verify/geometry/CGL_7/circle_common_tangents_test.nim
   - verify/geometry/furthest_pair_test.nim
   - verify/geometry/furthest_pair_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
   - verify/geometry/CGL_3/contains_cgl3c_test.nim
   - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
   - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
   - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
   - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+  - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_cgl1a_test.nim
+  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_cgl1c_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/reflection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_fraction_dgl1c_test.nim
+  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/projection_fractions_cgl1a_test.nim
+  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
+  - verify/geometry/CGL_1/ccw_float_cgl1c_test.nim
+  - verify/geometry/CGL_1/projection_cgl1a_test.nim
+  - verify/geometry/CGL_1/projection_cgl1a_test.nim
+  - verify/geometry/manhattan_mst_random_test.nim
+  - verify/geometry/manhattan_mst_random_test.nim
+  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/manhattan_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/euclidean_mst_test.nim
+  - verify/geometry/half_plane_intersection_test.nim
+  - verify/geometry/half_plane_intersection_test.nim
+  - verify/geometry/closest_pair_test.nim
+  - verify/geometry/closest_pair_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
   - verify/geometry/CGL_2/distance_cgl2d_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_fraction_cgl2c_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_test.nim
   - verify/geometry/CGL_2/parallel_cgl2a_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
   - verify/geometry/CGL_2/cross_point_cgl2c_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
-  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
   - verify/geometry/CGL_2/intersect_cgl2b_test.nim
-  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
-  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
-  - verify/geometry/manhattan_mst_test.nim
-  - verify/geometry/manhattan_mst_test.nim
-  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
-  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
-  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
-  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
-  - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
-  - verify/AI/polygon_boundary_degenerate_test.nim
-  - verify/AI/polygon_boundary_degenerate_test.nim
-  - verify/AI/exact_circle_import_test.nim
-  - verify/AI/exact_circle_import_test.nim
-  - verify/AI/polygon_test.nim
-  - verify/AI/polygon_test.nim
-  - verify/AI/distance_test.nim
-  - verify/AI/distance_test.nim
-  - verify/AI/closest_pair_test.nim
-  - verify/AI/closest_pair_test.nim
-  - verify/AI/exact_circle_test.nim
-  - verify/AI/exact_circle_test.nim
-  - verify/AI/convex_cut_test.nim
-  - verify/AI/convex_cut_test.nim
-  - verify/AI/convex_hull_regression_test.nim
-  - verify/AI/convex_hull_regression_test.nim
-  - verify/AI/geometry_comparison_regression_test.nim
-  - verify/AI/geometry_comparison_regression_test.nim
-  - verify/AI/geometry_base_test.nim
-  - verify/AI/geometry_base_test.nim
-  - verify/AI/ccw_test.nim
-  - verify/AI/ccw_test.nim
-  - verify/AI/euclidean_mst_test.nim
-  - verify/AI/euclidean_mst_test.nim
-  - verify/AI/angle_test.nim
-  - verify/AI/angle_test.nim
-  - verify/AI/minimum_enclosing_circle_exact_test.nim
-  - verify/AI/minimum_enclosing_circle_exact_test.nim
-  - verify/AI/circle_test.nim
-  - verify/AI/circle_test.nim
-  - verify/AI/projection_test.nim
-  - verify/AI/projection_test.nim
-  - verify/AI/intersect_test.nim
-  - verify/AI/intersect_test.nim
-  - verify/AI/circle_generic_type_test.nim
-  - verify/AI/circle_generic_type_test.nim
-  - verify/AI/exact_circle_type_test.nim
-  - verify/AI/exact_circle_type_test.nim
-  - verify/AI/convex_polygon_test.nim
-  - verify/AI/convex_polygon_test.nim
-  - verify/AI/minimum_enclosing_circle_test.nim
-  - verify/AI/minimum_enclosing_circle_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_float_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_2/parallel_cgl2a_fraction_test.nim
+  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_circle_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - verify/geometry/CGL_7/circle_point_tangents_test.nim
+  - verify/geometry/CGL_7/circle_common_tangents_test.nim
+  - verify/geometry/CGL_7/circle_common_tangents_test.nim
+  - verify/geometry/CGL_7/exact_circle_relation_test.nim
+  - verify/geometry/CGL_7/exact_circle_relation_test.nim
+  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
+  - verify/geometry/CGL_7/circle_line_cross_points_test.nim
 documentation_of: cplib/geometry/base.nim
 layout: document
 redirect_from:

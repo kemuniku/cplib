@@ -129,22 +129,22 @@ data:
   dependsOn:
   - cplib/graph/graph.nim
   - cplib/graph/lowlink.nim
-  - cplib/graph/lowlink.nim
   - cplib/graph/graph.nim
+  - cplib/graph/lowlink.nim
   isVerificationFile: false
   path: cplib/graph/biconnected_components.nim
   requiredBy:
-  - cplib/graph/block_cut_tree.nim
-  - cplib/graph/block_cut_tree.nim
   - cplib/graph/round_square_tree.nim
   - cplib/graph/round_square_tree.nim
+  - cplib/graph/block_cut_tree.nim
+  - cplib/graph/block_cut_tree.nim
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/lowlink_test.nim
-  - verify/AI/lowlink_test.nim
   - verify/AI/round_square_tree_test.nim
   - verify/AI/round_square_tree_test.nim
+  - verify/AI/lowlink_test.nim
+  - verify/AI/lowlink_test.nim
   - verify/graph/biconnected_components_test.nim
   - verify/graph/biconnected_components_test.nim
 documentation_of: cplib/graph/biconnected_components.nim

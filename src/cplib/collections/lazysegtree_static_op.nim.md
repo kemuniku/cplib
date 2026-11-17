@@ -306,27 +306,27 @@ data:
   isVerificationFile: false
   path: cplib/collections/lazysegtree_static_op.nim
   requiredBy:
-  - cplib/collections/lazysegtree_template.nim
-  - cplib/collections/lazysegtree_template.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
   - cplib/graph/functional_graph_with_lazy_op.nim
+  - cplib/collections/lazysegtree_template.nim
+  - cplib/collections/lazysegtree_template.nim
   timestamp: '2026-10-15 15:23:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/AI/lazysegtree_template_test.nim
   - verify/AI/lazysegtree_template_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
-  - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/auto_rollback_values_test.nim
   - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
+  - verify/AI/functional_graph_lazy_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
   - verify/collections/lazysegtree/rangesetrangecomposite_static_op_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
-  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/collections/lazysegtree/binary_search_static_op_test.nim
   - verify/collections/lazysegtree/binary_search_static_op_test.nim
   - verify/collections/lazysegtree/get_all_static_op_test.nim
   - verify/collections/lazysegtree/get_all_static_op_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
+  - verify/collections/lazysegtree/rangeaffinerangesum_static_op_test.nim
   - verify/utils/backwards_index_collections_test.nim
   - verify/utils/backwards_index_collections_test.nim
 documentation_of: cplib/collections/lazysegtree_static_op.nim

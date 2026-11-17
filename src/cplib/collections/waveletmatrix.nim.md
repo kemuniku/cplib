@@ -361,21 +361,21 @@ data:
   requiredBy:
   - cplib/str/static_string_search.nim
   - cplib/str/static_string_search.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
-  - cplib/collections/waveletmatrix_fenwick.nim
   - cplib/collections/static_range_distinct.nim
   - cplib/collections/static_range_distinct.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
+  - cplib/collections/waveletmatrix_fenwick.nim
   timestamp: '2026-09-27 01:00:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/static_range_distinct_test.nim
-  - verify/AI/static_range_distinct_test.nim
   - verify/AI/static_string_search_test.nim
   - verify/AI/static_string_search_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
-  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/static_range_distinct_test.nim
+  - verify/AI/static_range_distinct_test.nim
   - verify/AI/waveletmatrix_test.nim
   - verify/AI/waveletmatrix_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
+  - verify/AI/waveletmatrix_fenwick_test.nim
   - verify/collections/static_range_distinct_test.nim
   - verify/collections/static_range_distinct_test.nim
   - verify/collections/waveletmatrix_test.nim

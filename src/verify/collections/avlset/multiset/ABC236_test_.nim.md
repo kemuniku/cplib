@@ -35,9 +35,9 @@ data:
     No\"\n"
   dependsOn:
   - cplib/collections/avlset.nim
+  - cplib/collections/avltreenode.nim
+  - cplib/collections/avltreenode.nim
   - cplib/collections/avlset.nim
-  - cplib/collections/avltreenode.nim
-  - cplib/collections/avltreenode.nim
   isVerificationFile: false
   path: verify/collections/avlset/multiset/ABC236_test_.nim
   requiredBy: []

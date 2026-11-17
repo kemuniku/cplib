@@ -143,10 +143,10 @@ data:
   timestamp: '2026-10-26 00:17:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/online_combination_prefix_sum_yosupo_test.nim
-  - verify/math/online_combination_prefix_sum_yosupo_test.nim
   - verify/math/online_combination_prefix_sum_test.nim
   - verify/math/online_combination_prefix_sum_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
+  - verify/math/online_combination_prefix_sum_yosupo_test.nim
 documentation_of: cplib/math/online_combination_prefix_sum.nim
 layout: document
 redirect_from:

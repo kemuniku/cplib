@@ -48,10 +48,10 @@ data:
     \    let a = region.vertices[i]\n        let b = region.vertices[(i+1) mod region.vertices.len]\n\
     \        area += a.x*b.y-a.y*b.x\n    echo &\"{area/2:.10f}\"\n"
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/half_plane_intersection.nim
   - cplib/geometry/half_plane_intersection.nim
   isVerificationFile: true

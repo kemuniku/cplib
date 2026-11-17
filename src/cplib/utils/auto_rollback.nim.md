@@ -123,8 +123,8 @@ data:
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false
   path: cplib/utils/auto_rollback.nim
   requiredBy: []
@@ -133,12 +133,12 @@ data:
   verifiedWith:
   - verify/AI/temporary_index_cache_test.nim
   - verify/AI/temporary_index_cache_test.nim
-  - verify/AI/auto_rollback_scope_test.nim
-  - verify/AI/auto_rollback_scope_test.nim
-  - verify/AI/auto_rollback_values_test.nim
-  - verify/AI/auto_rollback_values_test.nim
   - verify/AI/temporary_rollback_log_test.nim
   - verify/AI/temporary_rollback_log_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/auto_rollback_scope_test.nim
+  - verify/AI/auto_rollback_scope_test.nim
 documentation_of: cplib/utils/auto_rollback.nim
 layout: document
 redirect_from:

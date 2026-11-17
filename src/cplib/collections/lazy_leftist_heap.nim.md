@@ -104,12 +104,12 @@ data:
   timestamp: '2026-10-04 00:13:01+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/directed_mst_test.nim
+  - verify/AI/directed_mst_test.nim
   - verify/AI/lazy_leftist_heap_test.nim
   - verify/AI/lazy_leftist_heap_test.nim
   - verify/AI/lazy_leftist_heap_int128_test.nim
   - verify/AI/lazy_leftist_heap_int128_test.nim
-  - verify/AI/directed_mst_test.nim
-  - verify/AI/directed_mst_test.nim
   - verify/graph/directed_mst_test.nim
   - verify/graph/directed_mst_test.nim
 documentation_of: cplib/collections/lazy_leftist_heap.nim

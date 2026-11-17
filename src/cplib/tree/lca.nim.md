@@ -375,10 +375,10 @@ data:
   - verify/AI/lca_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
   - verify/tree/lca/lca_from_parent_yosupo_test.nim
-  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
-  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim
   - verify/tree/lca/lca_yosupo_test.nim
+  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
+  - verify/tree/lca/la_jump_on_tree_yosupo_test.nim
 documentation_of: cplib/tree/lca.nim
 layout: document
 redirect_from:

@@ -195,34 +195,34 @@ data:
     \u5168\u5224\u5B9A\u306F\u53B3\u5BC6\u3002\n        when T is SomeFloat: mecFloatRun(points,\
     \ seed, tolerance)\n        else: mecExactRun(points, seed)\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/circle.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/circle.nim
   - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle_integer_impl.nim
   isVerificationFile: false
   path: cplib/geometry/minimum_enclosing_circle.nim
   requiredBy:
-  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
-  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
   - verify/AI/exact_circle_oracle_driver.nim
   - verify/AI/exact_circle_oracle_driver.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_exact_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
+  - verify/geometry/minimum_enclosing_circle_abc151f_test_.nim
   timestamp: '2026-11-15 07:34:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/exact_circle_type_test.nim
+  - verify/AI/exact_circle_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
+  - verify/AI/circle_generic_type_test.nim
   - verify/AI/exact_circle_import_test.nim
   - verify/AI/exact_circle_import_test.nim
   - verify/AI/minimum_enclosing_circle_exact_test.nim
   - verify/AI/minimum_enclosing_circle_exact_test.nim
-  - verify/AI/circle_generic_type_test.nim
-  - verify/AI/circle_generic_type_test.nim
-  - verify/AI/exact_circle_type_test.nim
-  - verify/AI/exact_circle_type_test.nim
   - verify/AI/minimum_enclosing_circle_test.nim
   - verify/AI/minimum_enclosing_circle_test.nim
 documentation_of: cplib/geometry/minimum_enclosing_circle.nim

@@ -530,26 +530,26 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/itertools_enumeration_test.nim
+  - verify/AI/itertools_enumeration_test.nim
   - verify/AI/itertools_test.nim
   - verify/AI/itertools_test.nim
   - verify/AI/itertools_trees_test.nim
   - verify/AI/itertools_trees_test.nim
-  - verify/AI/itertools_enumeration_test.nim
-  - verify/AI/itertools_enumeration_test.nim
   - verify/graph/graph_visualization_test.nim
   - verify/graph/graph_visualization_test.nim
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/utils/itertools/accumulater_test.nim
-  - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulated_test.nim
-  - verify/utils/itertools/accumulate_test.nim
-  - verify/utils/itertools/accumulate_test.nim
   - verify/utils/itertools/accumulatedr_2_test.nim
   - verify/utils/itertools/accumulatedr_2_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
-  - verify/utils/itertools/accumulated_2_test.nim
   - verify/utils/itertools/accumulatedr_test.nim
   - verify/utils/itertools/accumulatedr_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulated_2_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulate_test.nim
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulated_test.nim
+  - verify/utils/itertools/accumulater_test.nim
+  - verify/utils/itertools/accumulater_test.nim
 documentation_of: cplib/utils/itertools.nim
 layout: document
 redirect_from:

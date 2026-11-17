@@ -141,33 +141,33 @@ data:
     \    of \"fraction-int128\": run[Fraction[Int128]]()\n    of \"fraction-bigint\"\
     : run[Fraction[BigInt]]()\n    else: quit(\"unknown type\")\n"
   dependsOn:
-  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/isqrt.nim
   - cplib/geometry/base.nim
   - cplib/math/isqrt.nim
   - cplib/convolution/convolution.nim
-  - cplib/math/inv_gcd.nim
   - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/geometry/circle.nim
-  - cplib/math/fractions.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/convolution/convolution.nim
-  - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/int128.nim
   - cplib/math/isprime.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/circle.nim
   - cplib/math/bigint.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/math/fractions.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/math/isprime.nim
   - cplib/math/bigint.nim
+  - cplib/convolution/convolution.nim
+  - cplib/geometry/circle_integer_impl.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/circle.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
+  - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/fractions.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/modint/modint.nim
   - cplib/math/int128.nim
   isVerificationFile: false
   path: verify/AI/exact_circle_oracle_driver.nim

@@ -98,10 +98,10 @@ data:
   verifiedWith:
   - verify/AI/cycle_detection_test.nim
   - verify/AI/cycle_detection_test.nim
-  - verify/graph/cycle_detection_test.nim
-  - verify/graph/cycle_detection_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
   - verify/graph/cycle_detection_undirected_test.nim
+  - verify/graph/cycle_detection_test.nim
+  - verify/graph/cycle_detection_test.nim
 documentation_of: cplib/graph/cycle_detection.nim
 layout: document
 redirect_from:

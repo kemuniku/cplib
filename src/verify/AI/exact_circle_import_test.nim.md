@@ -64,13 +64,13 @@ data:
     \ is int\n    doAssert not declared(CPLIB_MATH_BIGINT)\n    doAssert not declared(CPLIB_MATH_INT128)\n\
     echo \"Hello World\"\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/circle.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/geometry/circle.nim
   - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle_integer_impl.nim

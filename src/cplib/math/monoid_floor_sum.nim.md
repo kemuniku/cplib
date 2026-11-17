@@ -75,10 +75,10 @@ data:
   timestamp: '2026-09-13 17:15:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/monoid_floor_sum_test.nim
-  - verify/math/monoid_floor_sum_test.nim
   - verify/math/generalized_floor_sum_test.nim
   - verify/math/generalized_floor_sum_test.nim
+  - verify/math/monoid_floor_sum_test.nim
+  - verify/math/monoid_floor_sum_test.nim
 documentation_of: cplib/math/monoid_floor_sum.nim
 layout: document
 redirect_from:

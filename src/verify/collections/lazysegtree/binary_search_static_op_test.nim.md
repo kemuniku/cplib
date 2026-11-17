@@ -40,8 +40,8 @@ data:
   dependsOn:
   - cplib/collections/lazysegtree_static_op.nim
   - cplib/utils/backwards_index.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/lazysegtree_static_op.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/lazysegtree/binary_search_static_op_test.nim
   requiredBy: []

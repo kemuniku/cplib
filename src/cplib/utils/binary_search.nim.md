@@ -85,10 +85,10 @@ data:
   verifiedWith:
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
   - verify/str/can_reverse_hash_string/can_reverse_hash_string_manacher_test.nim
-  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
-  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
   - verify/str/rolling_hash_yosupo_enumerate_palindromes_test.nim
+  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
+  - verify/str/rolling_hash_yosupo_zalgorithm_test.nim
   - verify/AI/binary_search_test.nim
   - verify/AI/binary_search_test.nim
   - verify/utils/binary_search_int_test.nim

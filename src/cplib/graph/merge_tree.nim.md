@@ -98,9 +98,9 @@ data:
     \u8FD4\u3059\n        self.ret[x]\n"
   dependsOn:
   - cplib/graph/graph.nim
-  - cplib/collections/unionfind.nim
-  - cplib/collections/unionfind.nim
   - cplib/graph/graph.nim
+  - cplib/collections/unionfind.nim
+  - cplib/collections/unionfind.nim
   isVerificationFile: false
   path: cplib/graph/merge_tree.nim
   requiredBy:

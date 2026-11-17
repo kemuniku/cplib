@@ -251,32 +251,32 @@ data:
     \ tangent.first.y): found = true\n        doAssert found\necho \"Hello World\"\
     \n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/math/int128.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/geometry/circle.nim
-  - cplib/math/fractions.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/geometry/base.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/int128.nim
   - cplib/math/isprime.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/circle.nim
   - cplib/math/bigint.nim
+  - cplib/math/bigint.nim
   - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/math/fractions.nim
-  - cplib/math/inv_gcd.nim
+  - cplib/convolution/convolution.nim
+  - cplib/modint/barrett_impl.nim
+  - cplib/geometry/circle.nim
   - cplib/modint/montgomery_impl.nim
   - cplib/math/isprime.nim
-  - cplib/math/bigint.nim
-  - cplib/modint/barrett_impl.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/fractions.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/exact_circle_test.nim
   requiredBy: []

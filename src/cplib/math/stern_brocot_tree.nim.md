@@ -275,10 +275,10 @@ data:
   timestamp: '2026-10-27 08:51:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/math/stern_brocot_tree_rational_approximation_test.nim
-  - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
   - verify/math/stern_brocot_tree_bounds_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
+  - verify/math/stern_brocot_tree_rational_approximation_test.nim
   - verify/math/stern_brocot_tree_random_test.nim
   - verify/math/stern_brocot_tree_random_test.nim
 documentation_of: cplib/math/stern_brocot_tree.nim

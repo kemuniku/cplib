@@ -42,11 +42,11 @@ data:
     \ r = ii()\n    echo d.count(l, r)\n"
   dependsOn:
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/static_range_distinct.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/static_range_distinct.nim
   - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/static_range_distinct.nim
   isVerificationFile: true
   path: verify/collections/static_range_distinct_test.nim
   requiredBy: []

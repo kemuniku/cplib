@@ -147,6 +147,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: cplib/collections/max_heapqueue.nim
       title: cplib/collections/max_heapqueue.nim
+    - icon: ':warning:'
+      path: cplib/collections/merge_sort_tree.nim
+      title: cplib/collections/merge_sort_tree.nim
     - icon: ':heavy_check_mark:'
       path: cplib/collections/parallel_unionfind.nim
       title: cplib/collections/parallel_unionfind.nim

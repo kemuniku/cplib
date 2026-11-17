@@ -38,8 +38,8 @@ data:
   dependsOn:
   - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
-  - cplib/utils/backwards_index.nim
   - cplib/collections/binary_trie.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: true
   path: verify/collections/binary_trie_test.nim
   requiredBy: []

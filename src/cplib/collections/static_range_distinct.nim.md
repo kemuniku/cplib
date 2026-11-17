@@ -114,9 +114,9 @@ data:
     \u3059\u3002\n        self.wm.range_lowerbound(l, r, l + 1)\n"
   dependsOn:
   - cplib/collections/bitvector.nim
+  - cplib/collections/waveletmatrix.nim
+  - cplib/collections/waveletmatrix.nim
   - cplib/collections/bitvector.nim
-  - cplib/collections/waveletmatrix.nim
-  - cplib/collections/waveletmatrix.nim
   isVerificationFile: false
   path: cplib/collections/static_range_distinct.nim
   requiredBy: []

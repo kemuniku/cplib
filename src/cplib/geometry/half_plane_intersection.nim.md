@@ -194,20 +194,20 @@ data:
     \    let side = hpiChecked(dx * (p.y - line.s.y) - dy * (p.x - line.s.x))\n  \
     \          if side < zero: return false\n        true\n"
   dependsOn:
-  - cplib/math/fractions.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   isVerificationFile: false
   path: cplib/geometry/half_plane_intersection.nim
   requiredBy: []
   timestamp: '2026-11-16 00:30:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/half_plane_intersection_test.nim
-  - verify/geometry/half_plane_intersection_test.nim
   - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
   - verify/geometry/CGL_4/half_plane_intersection_cgl4c_test.nim
+  - verify/geometry/half_plane_intersection_test.nim
+  - verify/geometry/half_plane_intersection_test.nim
 documentation_of: cplib/geometry/half_plane_intersection.nim
 layout: document
 redirect_from:

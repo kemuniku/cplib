@@ -34,8 +34,8 @@ data:
     \ == 0\n\necho \"Hello World\"\n"
   dependsOn:
   - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
   - cplib/utils/oeis.nim
+  - cplib/math/fractions.nim
   - cplib/utils/oeis.nim
   isVerificationFile: true
   path: verify/utils/oeis_ssl_test.nim

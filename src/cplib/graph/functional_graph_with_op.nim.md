@@ -240,16 +240,16 @@ data:
     \ int(used)\n        rest -= first\n        if rest > 0 and not consume_cycle(0,rest):\n\
     \            return int(used)\n        return int(used-1'u)\n"
   dependsOn:
-  - cplib/graph/functional_graph.nim
+  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
   - cplib/graph/graph.nim
   - cplib/graph/functional_graph.nim
-  - cplib/collections/segtree.nim
-  - cplib/collections/segtree.nim
-  - cplib/utils/backwards_index.nim
+  - cplib/graph/functional_graph.nim
   - cplib/utils/backwards_index.nim
   - cplib/graph/graph.nim
   - cplib/tree/heavylightdecomposition.nim
-  - cplib/tree/heavylightdecomposition.nim
+  - cplib/collections/segtree.nim
+  - cplib/utils/backwards_index.nim
   isVerificationFile: false
   path: cplib/graph/functional_graph_with_op.nim
   requiredBy: []
@@ -258,12 +258,12 @@ data:
   verifiedWith:
   - verify/AI/functional_graph_lazy_op_test.nim
   - verify/AI/functional_graph_lazy_op_test.nim
-  - verify/graph/functional_graph_prod_overflow_test.nim
-  - verify/graph/functional_graph_prod_overflow_test.nim
-  - verify/graph/functional_graph_prod_max_count_test.nim
-  - verify/graph/functional_graph_prod_max_count_test.nim
   - verify/graph/functional_graph_move_while_limits_test.nim
   - verify/graph/functional_graph_move_while_limits_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_max_count_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
+  - verify/graph/functional_graph_prod_overflow_test.nim
 documentation_of: cplib/graph/functional_graph_with_op.nim
 layout: document
 redirect_from:

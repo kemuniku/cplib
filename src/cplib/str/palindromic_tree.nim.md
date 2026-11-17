@@ -257,12 +257,12 @@ data:
   verifiedWith:
   - verify/str/palindromic_tree_test.nim
   - verify/str/palindromic_tree_test.nim
-  - verify/str/palindromic_tree_series_link_test.nim
-  - verify/str/palindromic_tree_series_link_test.nim
-  - verify/str/palindromic_tree_append_test.nim
-  - verify/str/palindromic_tree_append_test.nim
   - verify/str/palindromic_tree_eertree_test.nim
   - verify/str/palindromic_tree_eertree_test.nim
+  - verify/str/palindromic_tree_append_test.nim
+  - verify/str/palindromic_tree_append_test.nim
+  - verify/str/palindromic_tree_series_link_test.nim
+  - verify/str/palindromic_tree_series_link_test.nim
   - verify/AI/palindromic_tree_test.nim
   - verify/AI/palindromic_tree_test.nim
 documentation_of: cplib/str/palindromic_tree.nim

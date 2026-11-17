@@ -155,12 +155,12 @@ data:
   timestamp: '2026-11-13 04:16:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/closest_pair_test.nim
-  - verify/geometry/closest_pair_test.nim
-  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
-  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
   - verify/AI/closest_pair_test.nim
   - verify/AI/closest_pair_test.nim
+  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - verify/geometry/CGL_5/closest_pair_cgl5a_test.nim
+  - verify/geometry/closest_pair_test.nim
+  - verify/geometry/closest_pair_test.nim
 documentation_of: cplib/geometry/closest_pair.nim
 layout: document
 redirect_from:

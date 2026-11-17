@@ -36,10 +36,10 @@ data:
   timestamp: '2023-11-02 03:44:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/tmpl/citrus_and_qcfium_test.nim
-  - verify/tmpl/citrus_and_qcfium_test.nim
   - verify/AI/qcfium_test.nim
   - verify/AI/qcfium_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
+  - verify/tmpl/citrus_and_qcfium_test.nim
 documentation_of: cplib/tmpl/qcfium.nim
 layout: document
 redirect_from:

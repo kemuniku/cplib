@@ -113,14 +113,14 @@ data:
     \    let angle = 2 * PI * float(i) / 10000\n    stress.add(initPoint(cos(angle),\
     \ sin(angle)))\ncheck(stress, 1)\n\necho \"Hello World\"\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/base.nim
   - cplib/geometry/circle.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/circle.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle_integer_impl.nim
   isVerificationFile: true

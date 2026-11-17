@@ -699,33 +699,33 @@ data:
   isVerificationFile: false
   path: cplib/utils/private/auto_rollback.nim
   requiredBy:
-  - cplib/tree/dsu_on_tree.nim
-  - cplib/tree/dsu_on_tree.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/utils/auto_rollback.nim
-  - cplib/utils/offline_dynamic_queries.nim
-  - cplib/utils/offline_dynamic_queries.nim
   - cplib/utils/rollback_mo.nim
   - cplib/utils/rollback_mo.nim
+  - cplib/utils/offline_dynamic_queries.nim
+  - cplib/utils/offline_dynamic_queries.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/utils/auto_rollback.nim
+  - cplib/tree/dsu_on_tree.nim
+  - cplib/tree/dsu_on_tree.nim
   timestamp: '2026-10-14 21:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/rollback_mo_test.nim
-  - verify/AI/rollback_mo_test.nim
-  - verify/AI/temporary_index_cache_test.nim
-  - verify/AI/temporary_index_cache_test.nim
-  - verify/AI/offline_dynamic_queries_test.nim
-  - verify/AI/offline_dynamic_queries_test.nim
   - verify/AI/dsu_on_tree_test.nim
   - verify/AI/dsu_on_tree_test.nim
-  - verify/AI/auto_rollback_scope_test.nim
-  - verify/AI/auto_rollback_scope_test.nim
-  - verify/AI/auto_rollback_values_test.nim
-  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/temporary_index_cache_test.nim
+  - verify/AI/temporary_index_cache_test.nim
+  - verify/AI/rollback_mo_test.nim
+  - verify/AI/rollback_mo_test.nim
   - verify/AI/temporary_rollback_log_test.nim
   - verify/AI/temporary_rollback_log_test.nim
   - verify/AI/auto_rollback_test.nim
   - verify/AI/auto_rollback_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/auto_rollback_values_test.nim
+  - verify/AI/offline_dynamic_queries_test.nim
+  - verify/AI/offline_dynamic_queries_test.nim
+  - verify/AI/auto_rollback_scope_test.nim
+  - verify/AI/auto_rollback_scope_test.nim
 documentation_of: cplib/utils/private/auto_rollback.nim
 layout: document
 redirect_from:

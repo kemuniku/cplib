@@ -191,30 +191,30 @@ data:
     \u5074\u3068\u5883\u754C\u306EPolygon\u3092\u8FD4\u3059\u3002\n        convex_cut(Polygon[T](v:\
     \ poly.vertices), line)\n"
   dependsOn:
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/polygon.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
   - cplib/geometry/polygon.nim
+  - cplib/geometry/polygon.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/convex_polygon.nim
   requiredBy: []
   timestamp: '2026-11-13 04:50:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/AI/convex_polygon_test.nim
+  - verify/AI/convex_polygon_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_cut_test.nim
   - verify/geometry/furthest_pair_test.nim
   - verify/geometry/furthest_pair_test.nim
   - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
   - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
   - verify/geometry/CGL_4/diameter_cgl4b_test.nim
   - verify/geometry/CGL_4/diameter_cgl4b_test.nim
-  - verify/AI/convex_cut_test.nim
-  - verify/AI/convex_cut_test.nim
-  - verify/AI/convex_polygon_test.nim
-  - verify/AI/convex_polygon_test.nim
 documentation_of: cplib/geometry/convex_polygon.nim
 layout: document
 redirect_from:

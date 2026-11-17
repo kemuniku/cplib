@@ -153,34 +153,34 @@ data:
     doAssert z.radius == 0 and z.center == initPoint(1.0, 2.0)\necho \"Hello World\"\
     \n"
   dependsOn:
-  - cplib/geometry/base.nim
-  - cplib/math/int128.nim
-  - cplib/math/isqrt.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/inv_gcd.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/geometry/circle.nim
-  - cplib/math/fractions.nim
-  - cplib/convolution/convolution.nim
   - cplib/math/isqrt.nim
-  - cplib/modint/modint.nim
+  - cplib/geometry/base.nim
+  - cplib/math/isqrt.nim
+  - cplib/convolution/convolution.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
   - cplib/modint/barrett_impl.nim
   - cplib/math/int128.nim
   - cplib/math/isprime.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/circle.nim
   - cplib/math/bigint.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/geometry/circle_integer_impl.nim
-  - cplib/math/fractions.nim
-  - cplib/math/inv_gcd.nim
-  - cplib/modint/montgomery_impl.nim
-  - cplib/geometry/minimum_enclosing_circle.nim
-  - cplib/math/isprime.nim
   - cplib/math/bigint.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/convolution/convolution.nim
   - cplib/modint/barrett_impl.nim
+  - cplib/geometry/minimum_enclosing_circle.nim
+  - cplib/geometry/circle.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/math/isprime.nim
   - cplib/modint/modint.nim
+  - cplib/math/inv_gcd.nim
+  - cplib/math/fractions.nim
+  - cplib/modint/montgomery_impl.nim
+  - cplib/geometry/circle_integer_impl.nim
+  - cplib/modint/modint.nim
+  - cplib/math/int128.nim
   isVerificationFile: true
   path: verify/AI/circle_generic_type_test.nim
   requiredBy: []

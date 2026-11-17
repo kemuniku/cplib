@@ -188,8 +188,8 @@ data:
   dependsOn:
   - cplib/utils/private/auto_rollback.nim
   - cplib/utils/private/temporary_rollback_log.nim
-  - cplib/utils/private/temporary_rollback_log.nim
   - cplib/utils/private/auto_rollback.nim
+  - cplib/utils/private/temporary_rollback_log.nim
   isVerificationFile: false
   path: cplib/utils/offline_dynamic_queries.nim
   requiredBy: []
@@ -198,10 +198,10 @@ data:
   verifiedWith:
   - verify/AI/rollback_mo_test.nim
   - verify/AI/rollback_mo_test.nim
-  - verify/AI/offline_dynamic_queries_test.nim
-  - verify/AI/offline_dynamic_queries_test.nim
   - verify/AI/auto_rollback_test.nim
   - verify/AI/auto_rollback_test.nim
+  - verify/AI/offline_dynamic_queries_test.nim
+  - verify/AI/offline_dynamic_queries_test.nim
 documentation_of: cplib/utils/offline_dynamic_queries.nim
 layout: document
 redirect_from:

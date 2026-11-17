@@ -225,56 +225,56 @@ data:
     \   lower.setLen(lower.len - 1)\n        upper.setLen(upper.len - 1)\n       \
     \ Polygon[T](v: lower & upper)\n"
   dependsOn:
-  - cplib/geometry/ccw.nim
-  - cplib/math/fractions.nim
-  - cplib/math/fractions.nim
-  - cplib/geometry/ccw.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
   - cplib/geometry/base.nim
+  - cplib/math/fractions.nim
+  - cplib/geometry/ccw.nim
+  - cplib/geometry/ccw.nim
   isVerificationFile: false
   path: cplib/geometry/polygon.nim
   requiredBy:
-  - verify/geometry/convex_hull_abc286ex_test_.nim
-  - verify/geometry/convex_hull_abc286ex_test_.nim
   - cplib/geometry/convex_polygon.nim
   - cplib/geometry/convex_polygon.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
+  - verify/geometry/convex_hull_abc286ex_test_.nim
   timestamp: '2026-11-13 04:20:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/static_convex_hull_test.nim
-  - verify/geometry/static_convex_hull_test.nim
-  - verify/geometry/furthest_pair_test.nim
-  - verify/geometry/furthest_pair_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/contains_cgl3c_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
-  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
-  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
-  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
-  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
-  - verify/AI/polygon_boundary_degenerate_test.nim
-  - verify/AI/polygon_boundary_degenerate_test.nim
-  - verify/AI/polygon_test.nim
-  - verify/AI/polygon_test.nim
-  - verify/AI/convex_cut_test.nim
-  - verify/AI/convex_cut_test.nim
   - verify/AI/convex_hull_regression_test.nim
   - verify/AI/convex_hull_regression_test.nim
   - verify/AI/convex_polygon_test.nim
   - verify/AI/convex_polygon_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/polygon_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/convex_cut_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/AI/polygon_boundary_degenerate_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/static_convex_hull_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/furthest_pair_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/contains_cgl3c_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_float_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_int_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/isconvex_fraction_cgl3b_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_int_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_fraction_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_3/area_float_cgl3a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_hull_cgl4a_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/convex_cut_cgl4c_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
+  - verify/geometry/CGL_4/diameter_cgl4b_test.nim
 documentation_of: cplib/geometry/polygon.nim
 layout: document
 redirect_from:

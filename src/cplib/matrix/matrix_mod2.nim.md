@@ -345,8 +345,8 @@ data:
   dependsOn:
   - cplib/matrix/bit_matrix_ops.nim
   - cplib/matrix/field_matrix_ops.nim
-  - cplib/matrix/field_matrix_ops.nim
   - cplib/matrix/bit_matrix_ops.nim
+  - cplib/matrix/field_matrix_ops.nim
   isVerificationFile: false
   path: cplib/matrix/matrix_mod2.nim
   requiredBy:
@@ -355,18 +355,18 @@ data:
   timestamp: '2026-09-30 06:48:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix/matrix_mod2_rank_unit_test.nim
-  - verify/matrix/matrix_mod2_rank_unit_test.nim
-  - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
-  - verify/matrix/matrix_det_mod_2_test.nim
-  - verify/matrix/matrix_det_mod_2_test.nim
-  - verify/matrix/inverse_matrix_mod_2_test.nim
-  - verify/matrix/inverse_matrix_mod_2_test.nim
-  - verify/matrix/matrix_product_mod_2_test.nim
-  - verify/matrix/matrix_product_mod_2_test.nim
   - verify/matrix/matrix_rank_mod_2_test.nim
   - verify/matrix/matrix_rank_mod_2_test.nim
+  - verify/matrix/matrix_product_mod_2_test.nim
+  - verify/matrix/matrix_product_mod_2_test.nim
+  - verify/matrix/matrix_mod2_rank_unit_test.nim
+  - verify/matrix/matrix_mod2_rank_unit_test.nim
+  - verify/matrix/matrix_det_mod_2_test.nim
+  - verify/matrix/matrix_det_mod_2_test.nim
+  - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
+  - verify/matrix/matrix_mod2_field_algorithms_unit_test.nim
+  - verify/matrix/inverse_matrix_mod_2_test.nim
+  - verify/matrix/inverse_matrix_mod_2_test.nim
 documentation_of: cplib/matrix/matrix_mod2.nim
 layout: document
 redirect_from:

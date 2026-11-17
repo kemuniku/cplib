@@ -47,10 +47,10 @@ data:
   timestamp: '2024-07-21 21:50:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/AI/ext_gcd_test.nim
-  - verify/AI/ext_gcd_test.nim
   - verify/math/ext_gcd_aoj_test.nim
   - verify/math/ext_gcd_aoj_test.nim
+  - verify/AI/ext_gcd_test.nim
+  - verify/AI/ext_gcd_test.nim
 documentation_of: cplib/math/ext_gcd.nim
 layout: document
 redirect_from:

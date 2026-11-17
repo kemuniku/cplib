@@ -49,11 +49,11 @@ data:
     \ div 201) mod 201 - 100, 7))))\necho &\"Fraction[int]: 10000 contains, CPU {cpuTime()-start:.3f}s,\
     \ checksum {sum}\"\n"
   dependsOn:
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
   - cplib/geometry/circle.nim
+  - cplib/geometry/base.nim
   - cplib/math/fractions.nim
-  - cplib/geometry/base.nim
-  - cplib/geometry/base.nim
   - cplib/geometry/circle.nim
   - cplib/geometry/circle_integer_impl.nim
   - cplib/geometry/circle_integer_impl.nim

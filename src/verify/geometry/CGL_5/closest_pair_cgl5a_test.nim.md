@@ -42,9 +42,9 @@ data:
     \ = initPoint(parseFloat(si()), parseFloat(si()))\necho &\"{sqrt(closest_pair(points).get.distanceSquared):.10f}\"\
     \n"
   dependsOn:
-  - cplib/geometry/closest_pair.nim
   - cplib/tmpl/fastio.nim
   - cplib/geometry/base.nim
+  - cplib/geometry/closest_pair.nim
   - cplib/geometry/base.nim
   - cplib/tmpl/fastio.nim
   - cplib/geometry/closest_pair.nim

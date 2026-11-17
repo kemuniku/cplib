@@ -137,10 +137,10 @@ data:
   verifiedWith:
   - verify/str/suffix_automaton_table_number_of_substrings_test.nim
   - verify/str/suffix_automaton_table_number_of_substrings_test.nim
-  - verify/AI/suffix_automaton_array_test.nim
-  - verify/AI/suffix_automaton_array_test.nim
   - verify/AI/suffix_automaton_table_test.nim
   - verify/AI/suffix_automaton_table_test.nim
+  - verify/AI/suffix_automaton_array_test.nim
+  - verify/AI/suffix_automaton_array_test.nim
 documentation_of: cplib/str/suffix_automaton_table.nim
 layout: document
 redirect_from:
