@@ -8,7 +8,7 @@ when not declared CPLIB_TREE_LAZY_SUBTREE_LINK_CUT_TREE:
         rev: bool
         value, prod, rprod, virtual, all: S
         lazy, cancel: F # 全体への累積作用と、親から受け取り済みの累積作用。
-        pathLazy: F # 左右の子だけへ伝播するパスの作用。
+        pathLazy: F     # 左右の子だけへ伝播するパスの作用。
         hasPathLazy: bool
 
     type LazySubtreeLinkCutTree*[S, F] = ref object
@@ -75,7 +75,7 @@ when not declared CPLIB_TREE_LAZY_SUBTREE_LINK_CUT_TREE:
         if v == 0: return
         self.nodes[v].value = self.mapping(f, self.nodes[v].value)
         self.nodes[v].prod = self.mapping(f, self.nodes[v].prod)
-        self.nodes[v].rprod = self.mapping(f, self.nodes[v].rprod)
+        self.nodes[v].rprod = self.nodes[v].prod
         self.nodes[v].virtual = self.mapping(f, self.nodes[v].virtual)
         self.nodes[v].all = self.mapping(f, self.nodes[v].all)
         self.nodes[v].lazy = self.composition(f, self.nodes[v].lazy)
@@ -86,7 +86,7 @@ when not declared CPLIB_TREE_LAZY_SUBTREE_LINK_CUT_TREE:
         let oldProd = self.nodes[v].prod
         self.nodes[v].value = self.mapping(f, self.nodes[v].value)
         self.nodes[v].prod = self.mapping(f, oldProd)
-        self.nodes[v].rprod = self.mapping(f, self.nodes[v].rprod)
+        self.nodes[v].rprod = self.nodes[v].prod
         self.nodes[v].all = self.merge(
             self.nodes[v].all, self.merge(self.inverse(oldProd), self.nodes[v].prod)
         )
@@ -134,7 +134,7 @@ when not declared CPLIB_TREE_LAZY_SUBTREE_LINK_CUT_TREE:
         self.push(l)
         self.push(r)
         self.nodes[v].prod = self.merge(self.merge(self.nodes[l].prod, self.nodes[v].value), self.nodes[r].prod)
-        self.nodes[v].rprod = self.merge(self.merge(self.nodes[r].rprod, self.nodes[v].value), self.nodes[l].rprod)
+        self.nodes[v].rprod = self.nodes[v].prod
         self.nodes[v].all = self.merge(
             self.merge(self.nodes[l].all, self.nodes[r].all),
             self.merge(self.nodes[v].value, self.nodes[v].virtual)

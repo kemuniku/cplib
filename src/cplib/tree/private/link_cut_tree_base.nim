@@ -61,6 +61,9 @@ when not declared CPLIB_TREE_PRIVATE_LINK_CUT_TREE_BASE:
 
         proc accessNode[T: TreeType](self: T, v: int) =
             ## 根からvまでをpreferred pathにし、vを補助木の根にする。償却O(log N)。
+            if self.nodes[v].parent == 0 and self.nodes[v].right == 0:
+                self.push(v)
+                return
             var last = 0
             var x = v
             while x != 0:
