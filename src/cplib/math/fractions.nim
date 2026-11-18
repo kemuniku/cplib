@@ -1,6 +1,6 @@
 when not declared CPLIB_MATH_FRACTIONS:
     const CPLIB_MATH_FRACTIONS* = 1
-    import strformat, std/math, hashes
+    import strformat, math, hashes
     type Fraction*[T] = object
         num*, den*: T
     type FractionScalar = concept type T
@@ -9,7 +9,14 @@ when not declared CPLIB_MATH_FRACTIONS:
     var FRACTION_REDUCE_LIMIT = 1000000000
     proc isNaN*(x: Fraction): bool = x.den == 0 and x.num == 0
     proc reduce*[T](self: var Fraction[T]) =
-        if isNaN(self): return
+        ## 分母を非負にして約分する。整数・ゼロ・無限大はGCDを計算しない。
+        if self.den == 1: return
+        if self.num == 0:
+            if self.den != 0: self.den = T(1)
+            return
+        if self.den == 0:
+            self.num = if self.num < 0: T(-1) else: T(1)
+            return
         var g = gcd(abs(self.num), abs(self.den))
         self.num = self.num div g
         self.den = self.den div g
@@ -35,6 +42,7 @@ when not declared CPLIB_MATH_FRACTIONS:
     proc abs*[T](x: Fraction[T]): Fraction[T] = (if x.num < 0: Fraction[T](num: -x.num, den: x.den) else: x)
     proc `-`*[T](x: Fraction[T]): Fraction[T] = Fraction[T](num: -x.num, den: x.den)
     proc `+=`*[T](x: var Fraction[T], y: Fraction[T]) =
+        ## 分数を加算する。同分母では通分せず、必要な場合だけ約分する。
         if isNaN(x) or isNaN(y):
             x = initFraction(T(0), T(0))
             return
@@ -45,9 +53,17 @@ when not declared CPLIB_MATH_FRACTIONS:
         if x.den == 0 or y.den == 0:
             if x.den != 0: x = y
             return
-        x.num = x.num * y.den + y.num * x.den
-        x.den *= y.den
+        if x.den == y.den:
+            x.num += y.num
+        else:
+            x.num = x.num * y.den + y.num * x.den
+            x.den *= y.den
         x.check_and_reduce()
+    proc sum*[T](values: openArray[Fraction[T]]): Fraction[T] =
+        ## 分数列の総和を返す。空列は0/1。N回の加算（約分の計算量を除きO(N)）。
+        result = initFraction(T(0))
+        for value in values:
+            result += value
     proc `-=`*[T](x: var Fraction[T], y: Fraction[T]) = x += (-y)
     proc `*=`*[T](x: var Fraction[T], y: Fraction[T]) =
         if isNaN(x) or isNaN(y):
