@@ -7,10 +7,12 @@ when not declared CPLIB_UTILS_KNAPSACK:
         ## O(NW)
         var DP = newseqwith(W+1,-INF64)
         DP[0] = 0
+        var reached = 0
         for i in 0..<len(items):
             var (v,w) = items[i]
-            for j in countdown(W-w,0,1):
+            for j in countdown(min(reached,W-w),0,1):
                 DP[j+w] = max(DP[j+w],DP[j]+v)
+            reached += min(w,W-reached)
         return DP.max()
 
     proc solve_01knapsack_NV*(items:openArray[tuple[v:int,w:int]],W:int):int=
@@ -19,10 +21,12 @@ when not declared CPLIB_UTILS_KNAPSACK:
         var V = items.mapit(it.v).sum()
         var DP = newseqwith(V+1,INF64)
         DP[0] = 0
+        var reached = 0
         for i in 0..<len(items):
             var (v,w) = items[i]
-            for j in countdown(V-v,0,1):
+            for j in countdown(reached,0,1):
                 DP[j+v] = min(DP[j+v],DP[j]+w)
+            reached += v
         for i in countdown(V,0,1):
             if DP[i] <= W:
                 return i
