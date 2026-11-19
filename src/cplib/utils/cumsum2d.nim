@@ -8,12 +8,17 @@ when not declared CPLIB_UTILS_CUMSUM2D:
         W : int
     
     proc toCumSum2D*(X:openArray[seq[int]]):Cumsum2D=
+        ## 行列Xの二次元累積和をO(HW)時間・領域で構築する。
         var H = len(X)
         var W = if H != 0 : len(X[0]) else: 0
         var B = newseqwith(H+1,newseqwith(W+1,0))
         for i in 1..H:
+            var left, diagonal = 0
             for j in 1..W:
-                B[i][j] = B[i-1][j] + B[i][j-1] - B[i-1][j-1] + X[i-1][j-1]
+                let above = B[i-1][j]
+                left = above + left - diagonal + X[i-1][j-1]
+                B[i][j] = left
+                diagonal = above
 
         result = Cumsum2D(B:B,H:H,W:W)
     
