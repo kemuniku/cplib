@@ -52,15 +52,12 @@ when not declared CPLIB_COLLECTIONS_PERSISTENT_ARRAY:
         return v
 
     proc `[]`*[shift,T](PA:PersistentArray[shift,T],index:Natural):T=
+        ## indexの要素をO(log N)で取得します。
         assert index in 0..<PA.size, "指定した値が有効な範囲内である必要があります: index in 0 ..< PA.size"
-        var idx = index
-        var indexs = newseq[int](PA.h)
-        for i in countdown(PA.h-1,0,1):
-            indexs[i] = idx and ((1 shl shift)-1)
-            idx = idx shr shift
         var now = PA.root
-        for i in 0..<PA.h:
-            now = now.arr[indexs[i]]
+        for depth in countdown(PA.h-1,0):
+            let slot = (index shr (depth * shift)) and ((1 shl shift)-1)
+            now = now.arr[slot]
         return now.value
 
     proc change_value*[shift,T](PA:PersistentArray[shift,T],index:Natural,value:T):PersistentArray[shift,T]=
