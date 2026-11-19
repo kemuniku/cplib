@@ -4,7 +4,7 @@ when not declared CPLIB_STR_ROLLING_HASH:
 
     type RollingHash*[T] = object
         s: T
-        hash_accum, base_pow, base_inv_pow: seq[uint]
+        hash_accum, base_inv_pow: seq[uint]
 
     const MASK30 = (1u shl 30) - 1
     const MASK31 = (1u shl 31) - 1
@@ -52,26 +52,28 @@ when not declared CPLIB_STR_ROLLING_HASH:
     var initialized = false
 
     proc build*(rh: var RollingHash, maxa: uint = 1000000000, seed: int = -1) =
+        ## ローリングハッシュをO(N)時間・O(N)領域で構築する。
         if not initialized:
             initialized = true
             (base, base_inv) = find_base(maxa, seed)
         rh.hash_accum = newSeq[uint](rh.s.len + 1)
         rh.hash_accum[0] = 0u
-        rh.base_pow = newSeq[uint](rh.s.len + 1)
-        rh.base_pow[0] = 1u
+        var power = 1u
         rh.base_inv_pow = newSeq[uint](rh.s.len + 1)
         rh.base_inv_pow[0] = 1u
         for i in 0..<rh.s.len:
-            rh.hash_accum[i+1] = (rh.hash_accum[i] + mul(uint(rh.s[i]), rh.base_pow[i])).calc_mod
-            rh.base_pow[i+1] = mul(rh.base_pow[i], base).calc_mod
+            rh.hash_accum[i+1] = (rh.hash_accum[i] + mul(uint(rh.s[i]), power)).calc_mod
+            power = mul(power, base).calc_mod
             rh.base_inv_pow[i+1] = mul(rh.base_inv_pow[i], base_inv).calc_mod
 
     proc initRollingHash*[T](s: openArray[T]): RollingHash[seq[T]] =
-        result = RollingHash[seq[T]](s: @s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())
+        ## 列sのローリングハッシュをO(N)時間・O(N)領域で構築する。
+        result = RollingHash[seq[T]](s: @s, hash_accum: newSeq[uint](), base_inv_pow: newSeq[uint]())
         result.build
 
     proc initRollingHash*(s: string): RollingHash[string] =
-        result = RollingHash[string](s: s, hash_accum: newSeq[uint](), base_pow: newSeq[uint](), base_inv_pow: newSeq[uint]())
+        ## 文字列sのローリングハッシュをO(N)時間・O(N)領域で構築する。
+        result = RollingHash[string](s: s, hash_accum: newSeq[uint](), base_inv_pow: newSeq[uint]())
         result.build
 
     proc query*(rh: RollingHash, rng: HSlice[int, int]): uint =
