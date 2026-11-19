@@ -32,12 +32,28 @@ when not declared CPLIB_MATRIX_MATRIX:
 
     proc `-`*[T](m: Matrix[T]): Matrix[T] = Matrix[T](arr: m.arr.mapIt(it.mapIt(-it)), emptyWidth: m.emptyWidth)
     proc `*=`*[T](a: var Matrix[T], b: Matrix[T]) =
+        ## 行列積を代入する。O(HKW)。
         assert a.w == b.h, "左の行列の列数と右の行列の行数は等しい必要があります"
         var ans = initMatrix[T](a.h, b.w, 0)
-        for i in 0..<a.h:
-            for j in 0..<b.w:
-                for k in 0..<a.w:
-                    ans[i, j] += a[i, k] * b[k, j]
+        when T is SomeInteger:
+            if b.w >= 4:
+                for i in 0..<a.h:
+                    for k in 0..<a.w:
+                        let x = a.arr[i][k]
+                        for j in 0..<b.w:
+                            ans.arr[i][j] += x * b.arr[k][j]
+            else:
+                for i in 0..<a.h:
+                    for j in 0..<b.w:
+                        var value = ans.arr[i][j]
+                        for k in 0..<a.w:
+                            value += a.arr[i][k] * b.arr[k][j]
+                        ans.arr[i][j] = value
+        else:
+            for i in 0..<a.h:
+                for j in 0..<b.w:
+                    for k in 0..<a.w:
+                        ans[i, j] += a[i, k] * b[k, j]
         swap(ans, a)
     proc `*=`*[T](a: var Matrix[T], x: T) =
         for i in 0..<a.h:
